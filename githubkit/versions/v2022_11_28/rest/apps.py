@@ -27,16 +27,6 @@ if TYPE_CHECKING:
     from githubkit.typing import Missing
     from githubkit.response import Response
 
-    from ..types import (
-        AppPermissionsType,
-        AppHookConfigPatchBodyType,
-        ApplicationsClientIdTokenPostBodyType,
-        ApplicationsClientIdTokenPatchBodyType,
-        ApplicationsClientIdGrantDeleteBodyType,
-        ApplicationsClientIdTokenDeleteBodyType,
-        ApplicationsClientIdTokenScopedPostBodyType,
-        AppInstallationsInstallationIdAccessTokensPostBodyType,
-    )
     from ..models import (
         Integration,
         HookDelivery,
@@ -54,6 +44,32 @@ if TYPE_CHECKING:
         AppManifestsCodeConversionsPostResponse201,
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
         UserInstallationsInstallationIdRepositoriesGetResponse200,
+    )
+    from ..types import (
+        IntegrationType,
+        HookDeliveryType,
+        InstallationType,
+        AuthorizationType,
+        WebhookConfigType,
+        AppPermissionsType,
+        HookDeliveryItemType,
+        InstallationTokenType,
+        MarketplacePurchaseType,
+        AppHookConfigPatchBodyType,
+        MarketplaceListingPlanType,
+        UserMarketplacePurchaseType,
+        IntegrationInstallationRequestType,
+        UserInstallationsGetResponse200Type,
+        ApplicationsClientIdTokenPostBodyType,
+        ApplicationsClientIdTokenPatchBodyType,
+        ApplicationsClientIdGrantDeleteBodyType,
+        ApplicationsClientIdTokenDeleteBodyType,
+        InstallationRepositoriesGetResponse200Type,
+        ApplicationsClientIdTokenScopedPostBodyType,
+        AppManifestsCodeConversionsPostResponse201Type,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+        AppInstallationsInstallationIdAccessTokensPostBodyType,
+        UserInstallationsInstallationIdRepositoriesGetResponse200Type,
     )
 
 
@@ -76,7 +92,7 @@ class AppsClient:
         self,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Union[Integration, None]]:
+    ) -> Response[Union[Integration, None], Union[IntegrationType, None]]:
         """See also: https://docs.github.com/rest/apps/apps#get-the-authenticated-app"""
 
         from typing import Union
@@ -98,7 +114,7 @@ class AppsClient:
         self,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Union[Integration, None]]:
+    ) -> Response[Union[Integration, None], Union[IntegrationType, None]]:
         """See also: https://docs.github.com/rest/apps/apps#get-the-authenticated-app"""
 
         from typing import Union
@@ -121,7 +137,10 @@ class AppsClient:
         code: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[AppManifestsCodeConversionsPostResponse201]:
+    ) -> Response[
+        AppManifestsCodeConversionsPostResponse201,
+        AppManifestsCodeConversionsPostResponse201Type,
+    ]:
         """See also: https://docs.github.com/rest/apps/apps#create-a-github-app-from-a-manifest"""
 
         from ..models import (
@@ -150,7 +169,10 @@ class AppsClient:
         code: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[AppManifestsCodeConversionsPostResponse201]:
+    ) -> Response[
+        AppManifestsCodeConversionsPostResponse201,
+        AppManifestsCodeConversionsPostResponse201Type,
+    ]:
         """See also: https://docs.github.com/rest/apps/apps#create-a-github-app-from-a-manifest"""
 
         from ..models import (
@@ -178,7 +200,7 @@ class AppsClient:
         self,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[WebhookConfig]:
+    ) -> Response[WebhookConfig, WebhookConfigType]:
         """See also: https://docs.github.com/rest/apps/webhooks#get-a-webhook-configuration-for-an-app"""
 
         from ..models import WebhookConfig
@@ -198,7 +220,7 @@ class AppsClient:
         self,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[WebhookConfig]:
+    ) -> Response[WebhookConfig, WebhookConfigType]:
         """See also: https://docs.github.com/rest/apps/webhooks#get-a-webhook-configuration-for-an-app"""
 
         from ..models import WebhookConfig
@@ -220,7 +242,7 @@ class AppsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: AppHookConfigPatchBodyType,
-    ) -> Response[WebhookConfig]: ...
+    ) -> Response[WebhookConfig, WebhookConfigType]: ...
 
     @overload
     def update_webhook_config_for_app(
@@ -232,7 +254,7 @@ class AppsClient:
         content_type: Missing[str] = UNSET,
         secret: Missing[str] = UNSET,
         insecure_ssl: Missing[Union[str, float]] = UNSET,
-    ) -> Response[WebhookConfig]: ...
+    ) -> Response[WebhookConfig, WebhookConfigType]: ...
 
     def update_webhook_config_for_app(
         self,
@@ -240,7 +262,7 @@ class AppsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[AppHookConfigPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[WebhookConfig]:
+    ) -> Response[WebhookConfig, WebhookConfigType]:
         """See also: https://docs.github.com/rest/apps/webhooks#update-a-webhook-configuration-for-an-app"""
 
         from ..models import WebhookConfig, AppHookConfigPatchBody
@@ -272,7 +294,7 @@ class AppsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: AppHookConfigPatchBodyType,
-    ) -> Response[WebhookConfig]: ...
+    ) -> Response[WebhookConfig, WebhookConfigType]: ...
 
     @overload
     async def async_update_webhook_config_for_app(
@@ -284,7 +306,7 @@ class AppsClient:
         content_type: Missing[str] = UNSET,
         secret: Missing[str] = UNSET,
         insecure_ssl: Missing[Union[str, float]] = UNSET,
-    ) -> Response[WebhookConfig]: ...
+    ) -> Response[WebhookConfig, WebhookConfigType]: ...
 
     async def async_update_webhook_config_for_app(
         self,
@@ -292,7 +314,7 @@ class AppsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[AppHookConfigPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[WebhookConfig]:
+    ) -> Response[WebhookConfig, WebhookConfigType]:
         """See also: https://docs.github.com/rest/apps/webhooks#update-a-webhook-configuration-for-an-app"""
 
         from ..models import WebhookConfig, AppHookConfigPatchBody
@@ -324,7 +346,7 @@ class AppsClient:
         cursor: Missing[str] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[HookDeliveryItem]]:
+    ) -> Response[list[HookDeliveryItem], list[HookDeliveryItemType]]:
         """See also: https://docs.github.com/rest/apps/webhooks#list-deliveries-for-an-app-webhook"""
 
         from ..models import BasicError, ValidationError, HookDeliveryItem
@@ -356,7 +378,7 @@ class AppsClient:
         cursor: Missing[str] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[HookDeliveryItem]]:
+    ) -> Response[list[HookDeliveryItem], list[HookDeliveryItemType]]:
         """See also: https://docs.github.com/rest/apps/webhooks#list-deliveries-for-an-app-webhook"""
 
         from ..models import BasicError, ValidationError, HookDeliveryItem
@@ -387,7 +409,7 @@ class AppsClient:
         delivery_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[HookDelivery]:
+    ) -> Response[HookDelivery, HookDeliveryType]:
         """See also: https://docs.github.com/rest/apps/webhooks#get-a-delivery-for-an-app-webhook"""
 
         from ..models import BasicError, HookDelivery, ValidationError
@@ -412,7 +434,7 @@ class AppsClient:
         delivery_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[HookDelivery]:
+    ) -> Response[HookDelivery, HookDeliveryType]:
         """See also: https://docs.github.com/rest/apps/webhooks#get-a-delivery-for-an-app-webhook"""
 
         from ..models import BasicError, HookDelivery, ValidationError
@@ -437,7 +459,10 @@ class AppsClient:
         delivery_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]:
+    ) -> Response[
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+    ]:
         """See also: https://docs.github.com/rest/apps/webhooks#redeliver-a-delivery-for-an-app-webhook"""
 
         from ..models import (
@@ -466,7 +491,10 @@ class AppsClient:
         delivery_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]:
+    ) -> Response[
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+    ]:
         """See also: https://docs.github.com/rest/apps/webhooks#redeliver-a-delivery-for-an-app-webhook"""
 
         from ..models import (
@@ -496,7 +524,9 @@ class AppsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[IntegrationInstallationRequest]]:
+    ) -> Response[
+        list[IntegrationInstallationRequest], list[IntegrationInstallationRequestType]
+    ]:
         """See also: https://docs.github.com/rest/apps/apps#list-installation-requests-for-the-authenticated-app"""
 
         from ..models import BasicError, IntegrationInstallationRequest
@@ -527,7 +557,9 @@ class AppsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[IntegrationInstallationRequest]]:
+    ) -> Response[
+        list[IntegrationInstallationRequest], list[IntegrationInstallationRequestType]
+    ]:
         """See also: https://docs.github.com/rest/apps/apps#list-installation-requests-for-the-authenticated-app"""
 
         from ..models import BasicError, IntegrationInstallationRequest
@@ -560,7 +592,7 @@ class AppsClient:
         outdated: Missing[str] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Installation]]:
+    ) -> Response[list[Installation], list[InstallationType]]:
         """See also: https://docs.github.com/rest/apps/apps#list-installations-for-the-authenticated-app"""
 
         from ..models import Installation
@@ -592,7 +624,7 @@ class AppsClient:
         outdated: Missing[str] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Installation]]:
+    ) -> Response[list[Installation], list[InstallationType]]:
         """See also: https://docs.github.com/rest/apps/apps#list-installations-for-the-authenticated-app"""
 
         from ..models import Installation
@@ -621,7 +653,7 @@ class AppsClient:
         installation_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Installation]:
+    ) -> Response[Installation, InstallationType]:
         """See also: https://docs.github.com/rest/apps/apps#get-an-installation-for-the-authenticated-app"""
 
         from ..models import BasicError, Installation
@@ -645,7 +677,7 @@ class AppsClient:
         installation_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Installation]:
+    ) -> Response[Installation, InstallationType]:
         """See also: https://docs.github.com/rest/apps/apps#get-an-installation-for-the-authenticated-app"""
 
         from ..models import BasicError, Installation
@@ -717,7 +749,7 @@ class AppsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: Missing[AppInstallationsInstallationIdAccessTokensPostBodyType] = UNSET,
-    ) -> Response[InstallationToken]: ...
+    ) -> Response[InstallationToken, InstallationTokenType]: ...
 
     @overload
     def create_installation_access_token(
@@ -729,7 +761,7 @@ class AppsClient:
         repositories: Missing[list[str]] = UNSET,
         repository_ids: Missing[list[int]] = UNSET,
         permissions: Missing[AppPermissionsType] = UNSET,
-    ) -> Response[InstallationToken]: ...
+    ) -> Response[InstallationToken, InstallationTokenType]: ...
 
     def create_installation_access_token(
         self,
@@ -738,7 +770,7 @@ class AppsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[AppInstallationsInstallationIdAccessTokensPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[InstallationToken]:
+    ) -> Response[InstallationToken, InstallationTokenType]:
         """See also: https://docs.github.com/rest/apps/apps#create-an-installation-access-token-for-an-app"""
 
         from ..models import (
@@ -784,7 +816,7 @@ class AppsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: Missing[AppInstallationsInstallationIdAccessTokensPostBodyType] = UNSET,
-    ) -> Response[InstallationToken]: ...
+    ) -> Response[InstallationToken, InstallationTokenType]: ...
 
     @overload
     async def async_create_installation_access_token(
@@ -796,7 +828,7 @@ class AppsClient:
         repositories: Missing[list[str]] = UNSET,
         repository_ids: Missing[list[int]] = UNSET,
         permissions: Missing[AppPermissionsType] = UNSET,
-    ) -> Response[InstallationToken]: ...
+    ) -> Response[InstallationToken, InstallationTokenType]: ...
 
     async def async_create_installation_access_token(
         self,
@@ -805,7 +837,7 @@ class AppsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[AppInstallationsInstallationIdAccessTokensPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[InstallationToken]:
+    ) -> Response[InstallationToken, InstallationTokenType]:
         """See also: https://docs.github.com/rest/apps/apps#create-an-installation-access-token-for-an-app"""
 
         from ..models import (
@@ -1051,7 +1083,7 @@ class AppsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ApplicationsClientIdTokenPostBodyType,
-    ) -> Response[Authorization]: ...
+    ) -> Response[Authorization, AuthorizationType]: ...
 
     @overload
     def check_token(
@@ -1061,7 +1093,7 @@ class AppsClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         access_token: str,
-    ) -> Response[Authorization]: ...
+    ) -> Response[Authorization, AuthorizationType]: ...
 
     def check_token(
         self,
@@ -1070,7 +1102,7 @@ class AppsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ApplicationsClientIdTokenPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Authorization]:
+    ) -> Response[Authorization, AuthorizationType]:
         """See also: https://docs.github.com/rest/apps/oauth-applications#check-a-token"""
 
         from ..models import (
@@ -1112,7 +1144,7 @@ class AppsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ApplicationsClientIdTokenPostBodyType,
-    ) -> Response[Authorization]: ...
+    ) -> Response[Authorization, AuthorizationType]: ...
 
     @overload
     async def async_check_token(
@@ -1122,7 +1154,7 @@ class AppsClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         access_token: str,
-    ) -> Response[Authorization]: ...
+    ) -> Response[Authorization, AuthorizationType]: ...
 
     async def async_check_token(
         self,
@@ -1131,7 +1163,7 @@ class AppsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ApplicationsClientIdTokenPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Authorization]:
+    ) -> Response[Authorization, AuthorizationType]:
         """See also: https://docs.github.com/rest/apps/oauth-applications#check-a-token"""
 
         from ..models import (
@@ -1281,7 +1313,7 @@ class AppsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ApplicationsClientIdTokenPatchBodyType,
-    ) -> Response[Authorization]: ...
+    ) -> Response[Authorization, AuthorizationType]: ...
 
     @overload
     def reset_token(
@@ -1291,7 +1323,7 @@ class AppsClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         access_token: str,
-    ) -> Response[Authorization]: ...
+    ) -> Response[Authorization, AuthorizationType]: ...
 
     def reset_token(
         self,
@@ -1300,7 +1332,7 @@ class AppsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ApplicationsClientIdTokenPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Authorization]:
+    ) -> Response[Authorization, AuthorizationType]:
         """See also: https://docs.github.com/rest/apps/oauth-applications#reset-a-token"""
 
         from ..models import (
@@ -1340,7 +1372,7 @@ class AppsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ApplicationsClientIdTokenPatchBodyType,
-    ) -> Response[Authorization]: ...
+    ) -> Response[Authorization, AuthorizationType]: ...
 
     @overload
     async def async_reset_token(
@@ -1350,7 +1382,7 @@ class AppsClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         access_token: str,
-    ) -> Response[Authorization]: ...
+    ) -> Response[Authorization, AuthorizationType]: ...
 
     async def async_reset_token(
         self,
@@ -1359,7 +1391,7 @@ class AppsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ApplicationsClientIdTokenPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Authorization]:
+    ) -> Response[Authorization, AuthorizationType]:
         """See also: https://docs.github.com/rest/apps/oauth-applications#reset-a-token"""
 
         from ..models import (
@@ -1399,7 +1431,7 @@ class AppsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ApplicationsClientIdTokenScopedPostBodyType,
-    ) -> Response[Authorization]: ...
+    ) -> Response[Authorization, AuthorizationType]: ...
 
     @overload
     def scope_token(
@@ -1414,7 +1446,7 @@ class AppsClient:
         repositories: Missing[list[str]] = UNSET,
         repository_ids: Missing[list[int]] = UNSET,
         permissions: Missing[AppPermissionsType] = UNSET,
-    ) -> Response[Authorization]: ...
+    ) -> Response[Authorization, AuthorizationType]: ...
 
     def scope_token(
         self,
@@ -1423,7 +1455,7 @@ class AppsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ApplicationsClientIdTokenScopedPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Authorization]:
+    ) -> Response[Authorization, AuthorizationType]:
         """See also: https://docs.github.com/rest/apps/apps#create-a-scoped-access-token"""
 
         from ..models import (
@@ -1467,7 +1499,7 @@ class AppsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ApplicationsClientIdTokenScopedPostBodyType,
-    ) -> Response[Authorization]: ...
+    ) -> Response[Authorization, AuthorizationType]: ...
 
     @overload
     async def async_scope_token(
@@ -1482,7 +1514,7 @@ class AppsClient:
         repositories: Missing[list[str]] = UNSET,
         repository_ids: Missing[list[int]] = UNSET,
         permissions: Missing[AppPermissionsType] = UNSET,
-    ) -> Response[Authorization]: ...
+    ) -> Response[Authorization, AuthorizationType]: ...
 
     async def async_scope_token(
         self,
@@ -1491,7 +1523,7 @@ class AppsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ApplicationsClientIdTokenScopedPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Authorization]:
+    ) -> Response[Authorization, AuthorizationType]:
         """See also: https://docs.github.com/rest/apps/apps#create-a-scoped-access-token"""
 
         from ..models import (
@@ -1533,7 +1565,7 @@ class AppsClient:
         app_slug: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Union[Integration, None]]:
+    ) -> Response[Union[Integration, None], Union[IntegrationType, None]]:
         """See also: https://docs.github.com/rest/apps/apps#get-an-app"""
 
         from typing import Union
@@ -1560,7 +1592,7 @@ class AppsClient:
         app_slug: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Union[Integration, None]]:
+    ) -> Response[Union[Integration, None], Union[IntegrationType, None]]:
         """See also: https://docs.github.com/rest/apps/apps#get-an-app"""
 
         from typing import Union
@@ -1588,7 +1620,10 @@ class AppsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[InstallationRepositoriesGetResponse200]:
+    ) -> Response[
+        InstallationRepositoriesGetResponse200,
+        InstallationRepositoriesGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/rest/apps/installations#list-repositories-accessible-to-the-app-installation"""
 
         from ..models import BasicError, InstallationRepositoriesGetResponse200
@@ -1620,7 +1655,10 @@ class AppsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[InstallationRepositoriesGetResponse200]:
+    ) -> Response[
+        InstallationRepositoriesGetResponse200,
+        InstallationRepositoriesGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/rest/apps/installations#list-repositories-accessible-to-the-app-installation"""
 
         from ..models import BasicError, InstallationRepositoriesGetResponse200
@@ -1685,7 +1723,7 @@ class AppsClient:
         account_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[MarketplacePurchase]:
+    ) -> Response[MarketplacePurchase, MarketplacePurchaseType]:
         """See also: https://docs.github.com/rest/apps/marketplace#get-a-subscription-plan-for-an-account"""
 
         from ..models import BasicError, MarketplacePurchase
@@ -1710,7 +1748,7 @@ class AppsClient:
         account_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[MarketplacePurchase]:
+    ) -> Response[MarketplacePurchase, MarketplacePurchaseType]:
         """See also: https://docs.github.com/rest/apps/marketplace#get-a-subscription-plan-for-an-account"""
 
         from ..models import BasicError, MarketplacePurchase
@@ -1736,7 +1774,7 @@ class AppsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[MarketplaceListingPlan]]:
+    ) -> Response[list[MarketplaceListingPlan], list[MarketplaceListingPlanType]]:
         """See also: https://docs.github.com/rest/apps/marketplace#list-plans"""
 
         from ..models import BasicError, MarketplaceListingPlan
@@ -1768,7 +1806,7 @@ class AppsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[MarketplaceListingPlan]]:
+    ) -> Response[list[MarketplaceListingPlan], list[MarketplaceListingPlanType]]:
         """See also: https://docs.github.com/rest/apps/marketplace#list-plans"""
 
         from ..models import BasicError, MarketplaceListingPlan
@@ -1803,7 +1841,7 @@ class AppsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[MarketplacePurchase]]:
+    ) -> Response[list[MarketplacePurchase], list[MarketplacePurchaseType]]:
         """See also: https://docs.github.com/rest/apps/marketplace#list-accounts-for-a-plan"""
 
         from ..models import BasicError, ValidationError, MarketplacePurchase
@@ -1841,7 +1879,7 @@ class AppsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[MarketplacePurchase]]:
+    ) -> Response[list[MarketplacePurchase], list[MarketplacePurchaseType]]:
         """See also: https://docs.github.com/rest/apps/marketplace#list-accounts-for-a-plan"""
 
         from ..models import BasicError, ValidationError, MarketplacePurchase
@@ -1875,7 +1913,7 @@ class AppsClient:
         account_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[MarketplacePurchase]:
+    ) -> Response[MarketplacePurchase, MarketplacePurchaseType]:
         """See also: https://docs.github.com/rest/apps/marketplace#get-a-subscription-plan-for-an-account-stubbed"""
 
         from ..models import BasicError, MarketplacePurchase
@@ -1899,7 +1937,7 @@ class AppsClient:
         account_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[MarketplacePurchase]:
+    ) -> Response[MarketplacePurchase, MarketplacePurchaseType]:
         """See also: https://docs.github.com/rest/apps/marketplace#get-a-subscription-plan-for-an-account-stubbed"""
 
         from ..models import BasicError, MarketplacePurchase
@@ -1924,7 +1962,7 @@ class AppsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[MarketplaceListingPlan]]:
+    ) -> Response[list[MarketplaceListingPlan], list[MarketplaceListingPlanType]]:
         """See also: https://docs.github.com/rest/apps/marketplace#list-plans-stubbed"""
 
         from ..models import BasicError, MarketplaceListingPlan
@@ -1955,7 +1993,7 @@ class AppsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[MarketplaceListingPlan]]:
+    ) -> Response[list[MarketplaceListingPlan], list[MarketplaceListingPlanType]]:
         """See also: https://docs.github.com/rest/apps/marketplace#list-plans-stubbed"""
 
         from ..models import BasicError, MarketplaceListingPlan
@@ -1989,7 +2027,7 @@ class AppsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[MarketplacePurchase]]:
+    ) -> Response[list[MarketplacePurchase], list[MarketplacePurchaseType]]:
         """See also: https://docs.github.com/rest/apps/marketplace#list-accounts-for-a-plan-stubbed"""
 
         from ..models import BasicError, MarketplacePurchase
@@ -2025,7 +2063,7 @@ class AppsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[MarketplacePurchase]]:
+    ) -> Response[list[MarketplacePurchase], list[MarketplacePurchaseType]]:
         """See also: https://docs.github.com/rest/apps/marketplace#list-accounts-for-a-plan-stubbed"""
 
         from ..models import BasicError, MarketplacePurchase
@@ -2057,7 +2095,7 @@ class AppsClient:
         org: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Installation]:
+    ) -> Response[Installation, InstallationType]:
         """See also: https://docs.github.com/rest/apps/apps#get-an-organization-installation-for-the-authenticated-app"""
 
         from ..models import Installation
@@ -2078,7 +2116,7 @@ class AppsClient:
         org: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Installation]:
+    ) -> Response[Installation, InstallationType]:
         """See also: https://docs.github.com/rest/apps/apps#get-an-organization-installation-for-the-authenticated-app"""
 
         from ..models import Installation
@@ -2100,7 +2138,7 @@ class AppsClient:
         repo: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Installation]:
+    ) -> Response[Installation, InstallationType]:
         """See also: https://docs.github.com/rest/apps/apps#get-a-repository-installation-for-the-authenticated-app"""
 
         from ..models import BasicError, Installation
@@ -2125,7 +2163,7 @@ class AppsClient:
         repo: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Installation]:
+    ) -> Response[Installation, InstallationType]:
         """See also: https://docs.github.com/rest/apps/apps#get-a-repository-installation-for-the-authenticated-app"""
 
         from ..models import BasicError, Installation
@@ -2150,7 +2188,7 @@ class AppsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[UserInstallationsGetResponse200]:
+    ) -> Response[UserInstallationsGetResponse200, UserInstallationsGetResponse200Type]:
         """See also: https://docs.github.com/rest/apps/installations#list-app-installations-accessible-to-the-user-access-token"""
 
         from ..models import BasicError, UserInstallationsGetResponse200
@@ -2182,7 +2220,7 @@ class AppsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[UserInstallationsGetResponse200]:
+    ) -> Response[UserInstallationsGetResponse200, UserInstallationsGetResponse200Type]:
         """See also: https://docs.github.com/rest/apps/installations#list-app-installations-accessible-to-the-user-access-token"""
 
         from ..models import BasicError, UserInstallationsGetResponse200
@@ -2215,7 +2253,10 @@ class AppsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[UserInstallationsInstallationIdRepositoriesGetResponse200]:
+    ) -> Response[
+        UserInstallationsInstallationIdRepositoriesGetResponse200,
+        UserInstallationsInstallationIdRepositoriesGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/rest/apps/installations#list-repositories-accessible-to-the-user-access-token"""
 
         from ..models import (
@@ -2251,7 +2292,10 @@ class AppsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[UserInstallationsInstallationIdRepositoriesGetResponse200]:
+    ) -> Response[
+        UserInstallationsInstallationIdRepositoriesGetResponse200,
+        UserInstallationsInstallationIdRepositoriesGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/rest/apps/installations#list-repositories-accessible-to-the-user-access-token"""
 
         from ..models import (
@@ -2386,7 +2430,7 @@ class AppsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[UserMarketplacePurchase]]:
+    ) -> Response[list[UserMarketplacePurchase], list[UserMarketplacePurchaseType]]:
         """See also: https://docs.github.com/rest/apps/marketplace#list-subscriptions-for-the-authenticated-user"""
 
         from ..models import BasicError, UserMarketplacePurchase
@@ -2418,7 +2462,7 @@ class AppsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[UserMarketplacePurchase]]:
+    ) -> Response[list[UserMarketplacePurchase], list[UserMarketplacePurchaseType]]:
         """See also: https://docs.github.com/rest/apps/marketplace#list-subscriptions-for-the-authenticated-user"""
 
         from ..models import BasicError, UserMarketplacePurchase
@@ -2450,7 +2494,7 @@ class AppsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[UserMarketplacePurchase]]:
+    ) -> Response[list[UserMarketplacePurchase], list[UserMarketplacePurchaseType]]:
         """See also: https://docs.github.com/rest/apps/marketplace#list-subscriptions-for-the-authenticated-user-stubbed"""
 
         from ..models import BasicError, UserMarketplacePurchase
@@ -2481,7 +2525,7 @@ class AppsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[UserMarketplacePurchase]]:
+    ) -> Response[list[UserMarketplacePurchase], list[UserMarketplacePurchaseType]]:
         """See also: https://docs.github.com/rest/apps/marketplace#list-subscriptions-for-the-authenticated-user-stubbed"""
 
         from ..models import BasicError, UserMarketplacePurchase
@@ -2511,7 +2555,7 @@ class AppsClient:
         username: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Installation]:
+    ) -> Response[Installation, InstallationType]:
         """See also: https://docs.github.com/rest/apps/apps#get-a-user-installation-for-the-authenticated-app"""
 
         from ..models import Installation
@@ -2532,7 +2576,7 @@ class AppsClient:
         username: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Installation]:
+    ) -> Response[Installation, InstallationType]:
         """See also: https://docs.github.com/rest/apps/apps#get-a-user-installation-for-the-authenticated-app"""
 
         from ..models import Installation

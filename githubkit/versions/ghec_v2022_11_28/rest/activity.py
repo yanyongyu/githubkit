@@ -27,12 +27,6 @@ if TYPE_CHECKING:
     from githubkit.typing import Missing
     from githubkit.response import Response
 
-    from ..types import (
-        NotificationsPutBodyType,
-        ReposOwnerRepoSubscriptionPutBodyType,
-        ReposOwnerRepoNotificationsPutBodyType,
-        NotificationsThreadsThreadIdSubscriptionPutBodyType,
-    )
     from ..models import (
         Feed,
         Event,
@@ -46,6 +40,24 @@ if TYPE_CHECKING:
         RepositorySubscription,
         NotificationsPutResponse202,
         ReposOwnerRepoNotificationsPutResponse202,
+    )
+    from ..types import (
+        FeedType,
+        EventType,
+        ThreadType,
+        StargazerType,
+        RepositoryType,
+        SimpleUserType,
+        MinimalRepositoryType,
+        StarredRepositoryType,
+        ThreadSubscriptionType,
+        NotificationsPutBodyType,
+        RepositorySubscriptionType,
+        NotificationsPutResponse202Type,
+        ReposOwnerRepoSubscriptionPutBodyType,
+        ReposOwnerRepoNotificationsPutBodyType,
+        ReposOwnerRepoNotificationsPutResponse202Type,
+        NotificationsThreadsThreadIdSubscriptionPutBodyType,
     )
 
 
@@ -70,7 +82,7 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Event]]:
+    ) -> Response[list[Event], list[EventType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/events#list-public-events"""
 
         from ..models import (
@@ -106,7 +118,7 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Event]]:
+    ) -> Response[list[Event], list[EventType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/events#list-public-events"""
 
         from ..models import (
@@ -140,7 +152,7 @@ class ActivityClient:
         self,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Feed]:
+    ) -> Response[Feed, FeedType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/feeds#get-feeds"""
 
         from ..models import Feed
@@ -160,7 +172,7 @@ class ActivityClient:
         self,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Feed]:
+    ) -> Response[Feed, FeedType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/feeds#get-feeds"""
 
         from ..models import Feed
@@ -184,7 +196,7 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Event]]:
+    ) -> Response[list[Event], list[EventType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/events#list-public-events-for-a-network-of-repositories"""
 
         from ..models import Event, BasicError
@@ -218,7 +230,7 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Event]]:
+    ) -> Response[list[Event], list[EventType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/events#list-public-events-for-a-network-of-repositories"""
 
         from ..models import Event, BasicError
@@ -254,7 +266,7 @@ class ActivityClient:
         per_page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Thread]]:
+    ) -> Response[list[Thread], list[ThreadType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/notifications#list-notifications-for-the-authenticated-user"""
 
         from ..models import Thread, BasicError, ValidationError
@@ -295,7 +307,7 @@ class ActivityClient:
         per_page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Thread]]:
+    ) -> Response[list[Thread], list[ThreadType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/notifications#list-notifications-for-the-authenticated-user"""
 
         from ..models import Thread, BasicError, ValidationError
@@ -332,7 +344,7 @@ class ActivityClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: Missing[NotificationsPutBodyType] = UNSET,
-    ) -> Response[NotificationsPutResponse202]: ...
+    ) -> Response[NotificationsPutResponse202, NotificationsPutResponse202Type]: ...
 
     @overload
     def mark_notifications_as_read(
@@ -342,7 +354,7 @@ class ActivityClient:
         headers: Optional[dict[str, str]] = None,
         last_read_at: Missing[datetime] = UNSET,
         read: Missing[bool] = UNSET,
-    ) -> Response[NotificationsPutResponse202]: ...
+    ) -> Response[NotificationsPutResponse202, NotificationsPutResponse202Type]: ...
 
     def mark_notifications_as_read(
         self,
@@ -350,7 +362,7 @@ class ActivityClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[NotificationsPutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[NotificationsPutResponse202]:
+    ) -> Response[NotificationsPutResponse202, NotificationsPutResponse202Type]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/notifications#mark-notifications-as-read"""
 
         from ..models import (
@@ -390,7 +402,7 @@ class ActivityClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: Missing[NotificationsPutBodyType] = UNSET,
-    ) -> Response[NotificationsPutResponse202]: ...
+    ) -> Response[NotificationsPutResponse202, NotificationsPutResponse202Type]: ...
 
     @overload
     async def async_mark_notifications_as_read(
@@ -400,7 +412,7 @@ class ActivityClient:
         headers: Optional[dict[str, str]] = None,
         last_read_at: Missing[datetime] = UNSET,
         read: Missing[bool] = UNSET,
-    ) -> Response[NotificationsPutResponse202]: ...
+    ) -> Response[NotificationsPutResponse202, NotificationsPutResponse202Type]: ...
 
     async def async_mark_notifications_as_read(
         self,
@@ -408,7 +420,7 @@ class ActivityClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[NotificationsPutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[NotificationsPutResponse202]:
+    ) -> Response[NotificationsPutResponse202, NotificationsPutResponse202Type]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/notifications#mark-notifications-as-read"""
 
         from ..models import (
@@ -447,7 +459,7 @@ class ActivityClient:
         thread_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Thread]:
+    ) -> Response[Thread, ThreadType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/notifications#get-a-thread"""
 
         from ..models import Thread, BasicError
@@ -472,7 +484,7 @@ class ActivityClient:
         thread_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Thread]:
+    ) -> Response[Thread, ThreadType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/notifications#get-a-thread"""
 
         from ..models import Thread, BasicError
@@ -579,7 +591,7 @@ class ActivityClient:
         thread_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ThreadSubscription]:
+    ) -> Response[ThreadSubscription, ThreadSubscriptionType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/notifications#get-a-thread-subscription-for-the-authenticated-user"""
 
         from ..models import BasicError, ThreadSubscription
@@ -604,7 +616,7 @@ class ActivityClient:
         thread_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ThreadSubscription]:
+    ) -> Response[ThreadSubscription, ThreadSubscriptionType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/notifications#get-a-thread-subscription-for-the-authenticated-user"""
 
         from ..models import BasicError, ThreadSubscription
@@ -631,7 +643,7 @@ class ActivityClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: Missing[NotificationsThreadsThreadIdSubscriptionPutBodyType] = UNSET,
-    ) -> Response[ThreadSubscription]: ...
+    ) -> Response[ThreadSubscription, ThreadSubscriptionType]: ...
 
     @overload
     def set_thread_subscription(
@@ -641,7 +653,7 @@ class ActivityClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         ignored: Missing[bool] = UNSET,
-    ) -> Response[ThreadSubscription]: ...
+    ) -> Response[ThreadSubscription, ThreadSubscriptionType]: ...
 
     def set_thread_subscription(
         self,
@@ -650,7 +662,7 @@ class ActivityClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[NotificationsThreadsThreadIdSubscriptionPutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[ThreadSubscription]:
+    ) -> Response[ThreadSubscription, ThreadSubscriptionType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/notifications#set-a-thread-subscription"""
 
         from ..models import (
@@ -693,7 +705,7 @@ class ActivityClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: Missing[NotificationsThreadsThreadIdSubscriptionPutBodyType] = UNSET,
-    ) -> Response[ThreadSubscription]: ...
+    ) -> Response[ThreadSubscription, ThreadSubscriptionType]: ...
 
     @overload
     async def async_set_thread_subscription(
@@ -703,7 +715,7 @@ class ActivityClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         ignored: Missing[bool] = UNSET,
-    ) -> Response[ThreadSubscription]: ...
+    ) -> Response[ThreadSubscription, ThreadSubscriptionType]: ...
 
     async def async_set_thread_subscription(
         self,
@@ -712,7 +724,7 @@ class ActivityClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[NotificationsThreadsThreadIdSubscriptionPutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[ThreadSubscription]:
+    ) -> Response[ThreadSubscription, ThreadSubscriptionType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/notifications#set-a-thread-subscription"""
 
         from ..models import (
@@ -803,7 +815,7 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Event]]:
+    ) -> Response[list[Event], list[EventType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/events#list-public-organization-events"""
 
         from ..models import Event
@@ -832,7 +844,7 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Event]]:
+    ) -> Response[list[Event], list[EventType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/events#list-public-organization-events"""
 
         from ..models import Event
@@ -862,7 +874,7 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Event]]:
+    ) -> Response[list[Event], list[EventType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/events#list-repository-events"""
 
         from ..models import Event
@@ -892,7 +904,7 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Event]]:
+    ) -> Response[list[Event], list[EventType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/events#list-repository-events"""
 
         from ..models import Event
@@ -926,7 +938,7 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Thread]]:
+    ) -> Response[list[Thread], list[ThreadType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/notifications#list-repository-notifications-for-the-authenticated-user"""
 
         from ..models import Thread
@@ -964,7 +976,7 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Thread]]:
+    ) -> Response[list[Thread], list[ThreadType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/notifications#list-repository-notifications-for-the-authenticated-user"""
 
         from ..models import Thread
@@ -998,7 +1010,10 @@ class ActivityClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoNotificationsPutBodyType] = UNSET,
-    ) -> Response[ReposOwnerRepoNotificationsPutResponse202]: ...
+    ) -> Response[
+        ReposOwnerRepoNotificationsPutResponse202,
+        ReposOwnerRepoNotificationsPutResponse202Type,
+    ]: ...
 
     @overload
     def mark_repo_notifications_as_read(
@@ -1009,7 +1024,10 @@ class ActivityClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         last_read_at: Missing[datetime] = UNSET,
-    ) -> Response[ReposOwnerRepoNotificationsPutResponse202]: ...
+    ) -> Response[
+        ReposOwnerRepoNotificationsPutResponse202,
+        ReposOwnerRepoNotificationsPutResponse202Type,
+    ]: ...
 
     def mark_repo_notifications_as_read(
         self,
@@ -1019,7 +1037,10 @@ class ActivityClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoNotificationsPutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[ReposOwnerRepoNotificationsPutResponse202]:
+    ) -> Response[
+        ReposOwnerRepoNotificationsPutResponse202,
+        ReposOwnerRepoNotificationsPutResponse202Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/notifications#mark-repository-notifications-as-read"""
 
         from ..models import (
@@ -1056,7 +1077,10 @@ class ActivityClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoNotificationsPutBodyType] = UNSET,
-    ) -> Response[ReposOwnerRepoNotificationsPutResponse202]: ...
+    ) -> Response[
+        ReposOwnerRepoNotificationsPutResponse202,
+        ReposOwnerRepoNotificationsPutResponse202Type,
+    ]: ...
 
     @overload
     async def async_mark_repo_notifications_as_read(
@@ -1067,7 +1091,10 @@ class ActivityClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         last_read_at: Missing[datetime] = UNSET,
-    ) -> Response[ReposOwnerRepoNotificationsPutResponse202]: ...
+    ) -> Response[
+        ReposOwnerRepoNotificationsPutResponse202,
+        ReposOwnerRepoNotificationsPutResponse202Type,
+    ]: ...
 
     async def async_mark_repo_notifications_as_read(
         self,
@@ -1077,7 +1104,10 @@ class ActivityClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoNotificationsPutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[ReposOwnerRepoNotificationsPutResponse202]:
+    ) -> Response[
+        ReposOwnerRepoNotificationsPutResponse202,
+        ReposOwnerRepoNotificationsPutResponse202Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/notifications#mark-repository-notifications-as-read"""
 
         from ..models import (
@@ -1114,7 +1144,10 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Union[list[SimpleUser], list[Stargazer]]]:
+    ) -> Response[
+        Union[list[SimpleUser], list[Stargazer]],
+        Union[list[SimpleUserType], list[StargazerType]],
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/starring#list-stargazers"""
 
         from typing import Union
@@ -1149,7 +1182,10 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Union[list[SimpleUser], list[Stargazer]]]:
+    ) -> Response[
+        Union[list[SimpleUser], list[Stargazer]],
+        Union[list[SimpleUserType], list[StargazerType]],
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/starring#list-stargazers"""
 
         from typing import Union
@@ -1184,7 +1220,7 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[SimpleUser]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/watching#list-watchers"""
 
         from ..models import SimpleUser
@@ -1214,7 +1250,7 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[SimpleUser]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/watching#list-watchers"""
 
         from ..models import SimpleUser
@@ -1242,7 +1278,7 @@ class ActivityClient:
         repo: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[RepositorySubscription]:
+    ) -> Response[RepositorySubscription, RepositorySubscriptionType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/watching#get-a-repository-subscription"""
 
         from ..models import BasicError, RepositorySubscription
@@ -1267,7 +1303,7 @@ class ActivityClient:
         repo: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[RepositorySubscription]:
+    ) -> Response[RepositorySubscription, RepositorySubscriptionType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/watching#get-a-repository-subscription"""
 
         from ..models import BasicError, RepositorySubscription
@@ -1294,7 +1330,7 @@ class ActivityClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoSubscriptionPutBodyType] = UNSET,
-    ) -> Response[RepositorySubscription]: ...
+    ) -> Response[RepositorySubscription, RepositorySubscriptionType]: ...
 
     @overload
     def set_repo_subscription(
@@ -1306,7 +1342,7 @@ class ActivityClient:
         headers: Optional[dict[str, str]] = None,
         subscribed: Missing[bool] = UNSET,
         ignored: Missing[bool] = UNSET,
-    ) -> Response[RepositorySubscription]: ...
+    ) -> Response[RepositorySubscription, RepositorySubscriptionType]: ...
 
     def set_repo_subscription(
         self,
@@ -1316,7 +1352,7 @@ class ActivityClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoSubscriptionPutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[RepositorySubscription]:
+    ) -> Response[RepositorySubscription, RepositorySubscriptionType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/watching#set-a-repository-subscription"""
 
         from ..models import RepositorySubscription, ReposOwnerRepoSubscriptionPutBody
@@ -1350,7 +1386,7 @@ class ActivityClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoSubscriptionPutBodyType] = UNSET,
-    ) -> Response[RepositorySubscription]: ...
+    ) -> Response[RepositorySubscription, RepositorySubscriptionType]: ...
 
     @overload
     async def async_set_repo_subscription(
@@ -1362,7 +1398,7 @@ class ActivityClient:
         headers: Optional[dict[str, str]] = None,
         subscribed: Missing[bool] = UNSET,
         ignored: Missing[bool] = UNSET,
-    ) -> Response[RepositorySubscription]: ...
+    ) -> Response[RepositorySubscription, RepositorySubscriptionType]: ...
 
     async def async_set_repo_subscription(
         self,
@@ -1372,7 +1408,7 @@ class ActivityClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoSubscriptionPutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[RepositorySubscription]:
+    ) -> Response[RepositorySubscription, RepositorySubscriptionType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/watching#set-a-repository-subscription"""
 
         from ..models import RepositorySubscription, ReposOwnerRepoSubscriptionPutBody
@@ -1444,7 +1480,7 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Repository]]:
+    ) -> Response[list[Repository], list[RepositoryType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/starring#list-repositories-starred-by-the-authenticated-user"""
 
         from ..models import BasicError, Repository
@@ -1480,7 +1516,7 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Repository]]:
+    ) -> Response[list[Repository], list[RepositoryType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/starring#list-repositories-starred-by-the-authenticated-user"""
 
         from ..models import BasicError, Repository
@@ -1670,7 +1706,7 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[MinimalRepository]]:
+    ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/watching#list-repositories-watched-by-the-authenticated-user"""
 
         from ..models import BasicError, MinimalRepository
@@ -1702,7 +1738,7 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[MinimalRepository]]:
+    ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/watching#list-repositories-watched-by-the-authenticated-user"""
 
         from ..models import BasicError, MinimalRepository
@@ -1735,7 +1771,7 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Event]]:
+    ) -> Response[list[Event], list[EventType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/events#list-events-for-the-authenticated-user"""
 
         from ..models import Event
@@ -1764,7 +1800,7 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Event]]:
+    ) -> Response[list[Event], list[EventType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/events#list-events-for-the-authenticated-user"""
 
         from ..models import Event
@@ -1794,7 +1830,7 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Event]]:
+    ) -> Response[list[Event], list[EventType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/events#list-organization-events-for-the-authenticated-user"""
 
         from ..models import Event
@@ -1824,7 +1860,7 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Event]]:
+    ) -> Response[list[Event], list[EventType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/events#list-organization-events-for-the-authenticated-user"""
 
         from ..models import Event
@@ -1853,7 +1889,7 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Event]]:
+    ) -> Response[list[Event], list[EventType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/events#list-public-events-for-a-user"""
 
         from ..models import Event
@@ -1882,7 +1918,7 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Event]]:
+    ) -> Response[list[Event], list[EventType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/events#list-public-events-for-a-user"""
 
         from ..models import Event
@@ -1911,7 +1947,7 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Event]]:
+    ) -> Response[list[Event], list[EventType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/events#list-events-received-by-the-authenticated-user"""
 
         from ..models import Event
@@ -1940,7 +1976,7 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Event]]:
+    ) -> Response[list[Event], list[EventType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/events#list-events-received-by-the-authenticated-user"""
 
         from ..models import Event
@@ -1969,7 +2005,7 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Event]]:
+    ) -> Response[list[Event], list[EventType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/events#list-public-events-received-by-a-user"""
 
         from ..models import Event
@@ -1998,7 +2034,7 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Event]]:
+    ) -> Response[list[Event], list[EventType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/events#list-public-events-received-by-a-user"""
 
         from ..models import Event
@@ -2029,7 +2065,10 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Union[list[StarredRepository], list[Repository]]]:
+    ) -> Response[
+        Union[list[StarredRepository], list[Repository]],
+        Union[list[StarredRepositoryType], list[RepositoryType]],
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/starring#list-repositories-starred-by-a-user"""
 
         from typing import Union
@@ -2064,7 +2103,10 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Union[list[StarredRepository], list[Repository]]]:
+    ) -> Response[
+        Union[list[StarredRepository], list[Repository]],
+        Union[list[StarredRepositoryType], list[RepositoryType]],
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/starring#list-repositories-starred-by-a-user"""
 
         from typing import Union
@@ -2097,7 +2139,7 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[MinimalRepository]]:
+    ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/watching#list-repositories-watched-by-a-user"""
 
         from ..models import MinimalRepository
@@ -2126,7 +2168,7 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[MinimalRepository]]:
+    ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/watching#list-repositories-watched-by-a-user"""
 
         from ..models import MinimalRepository

@@ -38,16 +38,24 @@ if TYPE_CHECKING:
         ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200,
     )
     from ..types import (
+        CheckRunType,
+        CheckSuiteType,
+        EmptyObjectType,
+        CheckAnnotationType,
+        CheckSuitePreferenceType,
         ReposOwnerRepoCheckSuitesPostBodyType,
         ReposOwnerRepoCheckRunsPostBodyOneof0Type,
         ReposOwnerRepoCheckRunsPostBodyOneof1Type,
         ReposOwnerRepoCheckRunsPostBodyPropOutputType,
         ReposOwnerRepoCheckSuitesPreferencesPatchBodyType,
         ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType,
+        ReposOwnerRepoCommitsRefCheckRunsGetResponse200Type,
         ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0Type,
         ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1Type,
+        ReposOwnerRepoCommitsRefCheckSuitesGetResponse200Type,
         ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputType,
         ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsType,
+        ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200Type,
         ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsType,
     )
 
@@ -78,7 +86,7 @@ class ChecksClient:
             ReposOwnerRepoCheckRunsPostBodyOneof0Type,
             ReposOwnerRepoCheckRunsPostBodyOneof1Type,
         ],
-    ) -> Response[CheckRun]: ...
+    ) -> Response[CheckRun, CheckRunType]: ...
 
     @overload
     def create(
@@ -109,7 +117,7 @@ class ChecksClient:
         actions: Missing[
             list[ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType]
         ] = UNSET,
-    ) -> Response[CheckRun]: ...
+    ) -> Response[CheckRun, CheckRunType]: ...
 
     @overload
     def create(
@@ -144,7 +152,7 @@ class ChecksClient:
         actions: Missing[
             list[ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType]
         ] = UNSET,
-    ) -> Response[CheckRun]: ...
+    ) -> Response[CheckRun, CheckRunType]: ...
 
     def create(
         self,
@@ -159,7 +167,7 @@ class ChecksClient:
             ]
         ] = UNSET,
         **kwargs,
-    ) -> Response[CheckRun]:
+    ) -> Response[CheckRun, CheckRunType]:
         """See also: https://docs.github.com/rest/checks/runs#create-a-check-run"""
 
         from typing import Union
@@ -208,7 +216,7 @@ class ChecksClient:
             ReposOwnerRepoCheckRunsPostBodyOneof0Type,
             ReposOwnerRepoCheckRunsPostBodyOneof1Type,
         ],
-    ) -> Response[CheckRun]: ...
+    ) -> Response[CheckRun, CheckRunType]: ...
 
     @overload
     async def async_create(
@@ -239,7 +247,7 @@ class ChecksClient:
         actions: Missing[
             list[ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType]
         ] = UNSET,
-    ) -> Response[CheckRun]: ...
+    ) -> Response[CheckRun, CheckRunType]: ...
 
     @overload
     async def async_create(
@@ -274,7 +282,7 @@ class ChecksClient:
         actions: Missing[
             list[ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType]
         ] = UNSET,
-    ) -> Response[CheckRun]: ...
+    ) -> Response[CheckRun, CheckRunType]: ...
 
     async def async_create(
         self,
@@ -289,7 +297,7 @@ class ChecksClient:
             ]
         ] = UNSET,
         **kwargs,
-    ) -> Response[CheckRun]:
+    ) -> Response[CheckRun, CheckRunType]:
         """See also: https://docs.github.com/rest/checks/runs#create-a-check-run"""
 
         from typing import Union
@@ -334,7 +342,7 @@ class ChecksClient:
         check_run_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[CheckRun]:
+    ) -> Response[CheckRun, CheckRunType]:
         """See also: https://docs.github.com/rest/checks/runs#get-a-check-run"""
 
         from ..models import CheckRun
@@ -357,7 +365,7 @@ class ChecksClient:
         check_run_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[CheckRun]:
+    ) -> Response[CheckRun, CheckRunType]:
         """See also: https://docs.github.com/rest/checks/runs#get-a-check-run"""
 
         from ..models import CheckRun
@@ -385,7 +393,7 @@ class ChecksClient:
             ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0Type,
             ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1Type,
         ],
-    ) -> Response[CheckRun]: ...
+    ) -> Response[CheckRun, CheckRunType]: ...
 
     @overload
     def update(
@@ -418,7 +426,7 @@ class ChecksClient:
         actions: Missing[
             list[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsType]
         ] = UNSET,
-    ) -> Response[CheckRun]: ...
+    ) -> Response[CheckRun, CheckRunType]: ...
 
     @overload
     def update(
@@ -453,7 +461,7 @@ class ChecksClient:
         actions: Missing[
             list[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsType]
         ] = UNSET,
-    ) -> Response[CheckRun]: ...
+    ) -> Response[CheckRun, CheckRunType]: ...
 
     def update(
         self,
@@ -469,7 +477,7 @@ class ChecksClient:
             ]
         ] = UNSET,
         **kwargs,
-    ) -> Response[CheckRun]:
+    ) -> Response[CheckRun, CheckRunType]:
         """See also: https://docs.github.com/rest/checks/runs#update-a-check-run"""
 
         from typing import Union
@@ -519,7 +527,7 @@ class ChecksClient:
             ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0Type,
             ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1Type,
         ],
-    ) -> Response[CheckRun]: ...
+    ) -> Response[CheckRun, CheckRunType]: ...
 
     @overload
     async def async_update(
@@ -552,7 +560,7 @@ class ChecksClient:
         actions: Missing[
             list[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsType]
         ] = UNSET,
-    ) -> Response[CheckRun]: ...
+    ) -> Response[CheckRun, CheckRunType]: ...
 
     @overload
     async def async_update(
@@ -587,7 +595,7 @@ class ChecksClient:
         actions: Missing[
             list[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsType]
         ] = UNSET,
-    ) -> Response[CheckRun]: ...
+    ) -> Response[CheckRun, CheckRunType]: ...
 
     async def async_update(
         self,
@@ -603,7 +611,7 @@ class ChecksClient:
             ]
         ] = UNSET,
         **kwargs,
-    ) -> Response[CheckRun]:
+    ) -> Response[CheckRun, CheckRunType]:
         """See also: https://docs.github.com/rest/checks/runs#update-a-check-run"""
 
         from typing import Union
@@ -650,7 +658,7 @@ class ChecksClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[CheckAnnotation]]:
+    ) -> Response[list[CheckAnnotation], list[CheckAnnotationType]]:
         """See also: https://docs.github.com/rest/checks/runs#list-check-run-annotations"""
 
         from ..models import CheckAnnotation
@@ -681,7 +689,7 @@ class ChecksClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[CheckAnnotation]]:
+    ) -> Response[list[CheckAnnotation], list[CheckAnnotationType]]:
         """See also: https://docs.github.com/rest/checks/runs#list-check-run-annotations"""
 
         from ..models import CheckAnnotation
@@ -710,7 +718,7 @@ class ChecksClient:
         check_run_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[EmptyObject]:
+    ) -> Response[EmptyObject, EmptyObjectType]:
         """See also: https://docs.github.com/rest/checks/runs#rerequest-a-check-run"""
 
         from ..models import BasicError, EmptyObject
@@ -738,7 +746,7 @@ class ChecksClient:
         check_run_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[EmptyObject]:
+    ) -> Response[EmptyObject, EmptyObjectType]:
         """See also: https://docs.github.com/rest/checks/runs#rerequest-a-check-run"""
 
         from ..models import BasicError, EmptyObject
@@ -767,7 +775,7 @@ class ChecksClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoCheckSuitesPostBodyType,
-    ) -> Response[CheckSuite]: ...
+    ) -> Response[CheckSuite, CheckSuiteType]: ...
 
     @overload
     def create_suite(
@@ -778,7 +786,7 @@ class ChecksClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         head_sha: str,
-    ) -> Response[CheckSuite]: ...
+    ) -> Response[CheckSuite, CheckSuiteType]: ...
 
     def create_suite(
         self,
@@ -788,7 +796,7 @@ class ChecksClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoCheckSuitesPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[CheckSuite]:
+    ) -> Response[CheckSuite, CheckSuiteType]:
         """See also: https://docs.github.com/rest/checks/suites#create-a-check-suite"""
 
         from ..models import CheckSuite, ReposOwnerRepoCheckSuitesPostBody
@@ -822,7 +830,7 @@ class ChecksClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoCheckSuitesPostBodyType,
-    ) -> Response[CheckSuite]: ...
+    ) -> Response[CheckSuite, CheckSuiteType]: ...
 
     @overload
     async def async_create_suite(
@@ -833,7 +841,7 @@ class ChecksClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         head_sha: str,
-    ) -> Response[CheckSuite]: ...
+    ) -> Response[CheckSuite, CheckSuiteType]: ...
 
     async def async_create_suite(
         self,
@@ -843,7 +851,7 @@ class ChecksClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoCheckSuitesPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[CheckSuite]:
+    ) -> Response[CheckSuite, CheckSuiteType]:
         """See also: https://docs.github.com/rest/checks/suites#create-a-check-suite"""
 
         from ..models import CheckSuite, ReposOwnerRepoCheckSuitesPostBody
@@ -877,7 +885,7 @@ class ChecksClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoCheckSuitesPreferencesPatchBodyType,
-    ) -> Response[CheckSuitePreference]: ...
+    ) -> Response[CheckSuitePreference, CheckSuitePreferenceType]: ...
 
     @overload
     def set_suites_preferences(
@@ -892,7 +900,7 @@ class ChecksClient:
                 ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsType
             ]
         ] = UNSET,
-    ) -> Response[CheckSuitePreference]: ...
+    ) -> Response[CheckSuitePreference, CheckSuitePreferenceType]: ...
 
     def set_suites_preferences(
         self,
@@ -902,7 +910,7 @@ class ChecksClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoCheckSuitesPreferencesPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[CheckSuitePreference]:
+    ) -> Response[CheckSuitePreference, CheckSuitePreferenceType]:
         """See also: https://docs.github.com/rest/checks/suites#update-repository-preferences-for-check-suites"""
 
         from ..models import (
@@ -941,7 +949,7 @@ class ChecksClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoCheckSuitesPreferencesPatchBodyType,
-    ) -> Response[CheckSuitePreference]: ...
+    ) -> Response[CheckSuitePreference, CheckSuitePreferenceType]: ...
 
     @overload
     async def async_set_suites_preferences(
@@ -956,7 +964,7 @@ class ChecksClient:
                 ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsType
             ]
         ] = UNSET,
-    ) -> Response[CheckSuitePreference]: ...
+    ) -> Response[CheckSuitePreference, CheckSuitePreferenceType]: ...
 
     async def async_set_suites_preferences(
         self,
@@ -966,7 +974,7 @@ class ChecksClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoCheckSuitesPreferencesPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[CheckSuitePreference]:
+    ) -> Response[CheckSuitePreference, CheckSuitePreferenceType]:
         """See also: https://docs.github.com/rest/checks/suites#update-repository-preferences-for-check-suites"""
 
         from ..models import (
@@ -1004,7 +1012,7 @@ class ChecksClient:
         check_suite_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[CheckSuite]:
+    ) -> Response[CheckSuite, CheckSuiteType]:
         """See also: https://docs.github.com/rest/checks/suites#get-a-check-suite"""
 
         from ..models import CheckSuite
@@ -1027,7 +1035,7 @@ class ChecksClient:
         check_suite_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[CheckSuite]:
+    ) -> Response[CheckSuite, CheckSuiteType]:
         """See also: https://docs.github.com/rest/checks/suites#get-a-check-suite"""
 
         from ..models import CheckSuite
@@ -1055,7 +1063,10 @@ class ChecksClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200]:
+    ) -> Response[
+        ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200,
+        ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/rest/checks/runs#list-check-runs-in-a-check-suite"""
 
         from ..models import (
@@ -1094,7 +1105,10 @@ class ChecksClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200]:
+    ) -> Response[
+        ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200,
+        ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/rest/checks/runs#list-check-runs-in-a-check-suite"""
 
         from ..models import (
@@ -1128,7 +1142,7 @@ class ChecksClient:
         check_suite_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[EmptyObject]:
+    ) -> Response[EmptyObject, EmptyObjectType]:
         """See also: https://docs.github.com/rest/checks/suites#rerequest-a-check-suite"""
 
         from ..models import EmptyObject
@@ -1151,7 +1165,7 @@ class ChecksClient:
         check_suite_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[EmptyObject]:
+    ) -> Response[EmptyObject, EmptyObjectType]:
         """See also: https://docs.github.com/rest/checks/suites#rerequest-a-check-suite"""
 
         from ..models import EmptyObject
@@ -1180,7 +1194,10 @@ class ChecksClient:
         app_id: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ReposOwnerRepoCommitsRefCheckRunsGetResponse200]:
+    ) -> Response[
+        ReposOwnerRepoCommitsRefCheckRunsGetResponse200,
+        ReposOwnerRepoCommitsRefCheckRunsGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/rest/checks/runs#list-check-runs-for-a-git-reference"""
 
         from ..models import ReposOwnerRepoCommitsRefCheckRunsGetResponse200
@@ -1219,7 +1236,10 @@ class ChecksClient:
         app_id: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ReposOwnerRepoCommitsRefCheckRunsGetResponse200]:
+    ) -> Response[
+        ReposOwnerRepoCommitsRefCheckRunsGetResponse200,
+        ReposOwnerRepoCommitsRefCheckRunsGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/rest/checks/runs#list-check-runs-for-a-git-reference"""
 
         from ..models import ReposOwnerRepoCommitsRefCheckRunsGetResponse200
@@ -1256,7 +1276,10 @@ class ChecksClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ReposOwnerRepoCommitsRefCheckSuitesGetResponse200]:
+    ) -> Response[
+        ReposOwnerRepoCommitsRefCheckSuitesGetResponse200,
+        ReposOwnerRepoCommitsRefCheckSuitesGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/rest/checks/suites#list-check-suites-for-a-git-reference"""
 
         from ..models import ReposOwnerRepoCommitsRefCheckSuitesGetResponse200
@@ -1291,7 +1314,10 @@ class ChecksClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ReposOwnerRepoCommitsRefCheckSuitesGetResponse200]:
+    ) -> Response[
+        ReposOwnerRepoCommitsRefCheckSuitesGetResponse200,
+        ReposOwnerRepoCommitsRefCheckSuitesGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/rest/checks/suites#list-check-suites-for-a-git-reference"""
 
         from ..models import ReposOwnerRepoCommitsRefCheckSuitesGetResponse200

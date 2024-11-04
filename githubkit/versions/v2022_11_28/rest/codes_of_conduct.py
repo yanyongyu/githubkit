@@ -19,6 +19,7 @@ if TYPE_CHECKING:
     from githubkit.response import Response
 
     from ..models import CodeOfConduct
+    from ..types import CodeOfConductType
 
 
 class CodesOfConductClient:
@@ -40,7 +41,7 @@ class CodesOfConductClient:
         self,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[CodeOfConduct]]:
+    ) -> Response[list[CodeOfConduct], list[CodeOfConductType]]:
         """See also: https://docs.github.com/rest/codes-of-conduct/codes-of-conduct#get-all-codes-of-conduct"""
 
         from ..models import CodeOfConduct
@@ -60,7 +61,7 @@ class CodesOfConductClient:
         self,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[CodeOfConduct]]:
+    ) -> Response[list[CodeOfConduct], list[CodeOfConductType]]:
         """See also: https://docs.github.com/rest/codes-of-conduct/codes-of-conduct#get-all-codes-of-conduct"""
 
         from ..models import CodeOfConduct
@@ -81,7 +82,7 @@ class CodesOfConductClient:
         key: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[CodeOfConduct]:
+    ) -> Response[CodeOfConduct, CodeOfConductType]:
         """See also: https://docs.github.com/rest/codes-of-conduct/codes-of-conduct#get-a-code-of-conduct"""
 
         from ..models import BasicError, CodeOfConduct
@@ -105,7 +106,7 @@ class CodesOfConductClient:
         key: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[CodeOfConduct]:
+    ) -> Response[CodeOfConduct, CodeOfConductType]:
         """See also: https://docs.github.com/rest/codes-of-conduct/codes-of-conduct#get-a-code-of-conduct"""
 
         from ..models import BasicError, CodeOfConduct

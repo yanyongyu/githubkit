@@ -40,6 +40,16 @@ if TYPE_CHECKING:
         UsersUsernameAttestationsSubjectDigestGetResponse200,
     )
     from ..types import (
+        KeyType,
+        EmailType,
+        GpgKeyType,
+        HovercardType,
+        KeySimpleType,
+        PublicUserType,
+        SimpleUserType,
+        PrivateUserType,
+        SocialAccountType,
+        SshSigningKeyType,
         UserPatchBodyType,
         UserKeysPostBodyType,
         UserGpgKeysPostBodyType,
@@ -49,6 +59,7 @@ if TYPE_CHECKING:
         UserSshSigningKeysPostBodyType,
         UserEmailVisibilityPatchBodyType,
         UserSocialAccountsDeleteBodyType,
+        UsersUsernameAttestationsSubjectDigestGetResponse200Type,
     )
 
 
@@ -71,7 +82,9 @@ class UsersClient:
         self,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Union[PrivateUser, PublicUser]]:
+    ) -> Response[
+        Union[PrivateUser, PublicUser], Union[PrivateUserType, PublicUserType]
+    ]:
         """See also: https://docs.github.com/rest/users/users#get-the-authenticated-user"""
 
         from typing import Union
@@ -97,7 +110,9 @@ class UsersClient:
         self,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Union[PrivateUser, PublicUser]]:
+    ) -> Response[
+        Union[PrivateUser, PublicUser], Union[PrivateUserType, PublicUserType]
+    ]:
         """See also: https://docs.github.com/rest/users/users#get-the-authenticated-user"""
 
         from typing import Union
@@ -125,7 +140,7 @@ class UsersClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: Missing[UserPatchBodyType] = UNSET,
-    ) -> Response[PrivateUser]: ...
+    ) -> Response[PrivateUser, PrivateUserType]: ...
 
     @overload
     def update_authenticated(
@@ -141,7 +156,7 @@ class UsersClient:
         location: Missing[str] = UNSET,
         hireable: Missing[bool] = UNSET,
         bio: Missing[str] = UNSET,
-    ) -> Response[PrivateUser]: ...
+    ) -> Response[PrivateUser, PrivateUserType]: ...
 
     def update_authenticated(
         self,
@@ -149,7 +164,7 @@ class UsersClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[UserPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[PrivateUser]:
+    ) -> Response[PrivateUser, PrivateUserType]:
         """See also: https://docs.github.com/rest/users/users#update-the-authenticated-user"""
 
         from ..models import BasicError, PrivateUser, UserPatchBody, ValidationError
@@ -187,7 +202,7 @@ class UsersClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: Missing[UserPatchBodyType] = UNSET,
-    ) -> Response[PrivateUser]: ...
+    ) -> Response[PrivateUser, PrivateUserType]: ...
 
     @overload
     async def async_update_authenticated(
@@ -203,7 +218,7 @@ class UsersClient:
         location: Missing[str] = UNSET,
         hireable: Missing[bool] = UNSET,
         bio: Missing[str] = UNSET,
-    ) -> Response[PrivateUser]: ...
+    ) -> Response[PrivateUser, PrivateUserType]: ...
 
     async def async_update_authenticated(
         self,
@@ -211,7 +226,7 @@ class UsersClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[UserPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[PrivateUser]:
+    ) -> Response[PrivateUser, PrivateUserType]:
         """See also: https://docs.github.com/rest/users/users#update-the-authenticated-user"""
 
         from ..models import BasicError, PrivateUser, UserPatchBody, ValidationError
@@ -249,7 +264,7 @@ class UsersClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[SimpleUser]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """See also: https://docs.github.com/rest/users/blocking#list-users-blocked-by-the-authenticated-user"""
 
         from ..models import BasicError, SimpleUser
@@ -282,7 +297,7 @@ class UsersClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[SimpleUser]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """See also: https://docs.github.com/rest/users/blocking#list-users-blocked-by-the-authenticated-user"""
 
         from ..models import BasicError, SimpleUser
@@ -467,7 +482,7 @@ class UsersClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: UserEmailVisibilityPatchBodyType,
-    ) -> Response[list[Email]]: ...
+    ) -> Response[list[Email], list[EmailType]]: ...
 
     @overload
     def set_primary_email_visibility_for_authenticated_user(
@@ -476,7 +491,7 @@ class UsersClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         visibility: Literal["public", "private"],
-    ) -> Response[list[Email]]: ...
+    ) -> Response[list[Email], list[EmailType]]: ...
 
     def set_primary_email_visibility_for_authenticated_user(
         self,
@@ -484,7 +499,7 @@ class UsersClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[UserEmailVisibilityPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[list[Email]]:
+    ) -> Response[list[Email], list[EmailType]]:
         """See also: https://docs.github.com/rest/users/emails#set-primary-email-visibility-for-the-authenticated-user"""
 
         from ..models import (
@@ -527,7 +542,7 @@ class UsersClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: UserEmailVisibilityPatchBodyType,
-    ) -> Response[list[Email]]: ...
+    ) -> Response[list[Email], list[EmailType]]: ...
 
     @overload
     async def async_set_primary_email_visibility_for_authenticated_user(
@@ -536,7 +551,7 @@ class UsersClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         visibility: Literal["public", "private"],
-    ) -> Response[list[Email]]: ...
+    ) -> Response[list[Email], list[EmailType]]: ...
 
     async def async_set_primary_email_visibility_for_authenticated_user(
         self,
@@ -544,7 +559,7 @@ class UsersClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[UserEmailVisibilityPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[list[Email]]:
+    ) -> Response[list[Email], list[EmailType]]:
         """See also: https://docs.github.com/rest/users/emails#set-primary-email-visibility-for-the-authenticated-user"""
 
         from ..models import (
@@ -587,7 +602,7 @@ class UsersClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Email]]:
+    ) -> Response[list[Email], list[EmailType]]:
         """See also: https://docs.github.com/rest/users/emails#list-email-addresses-for-the-authenticated-user"""
 
         from ..models import Email, BasicError
@@ -620,7 +635,7 @@ class UsersClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Email]]:
+    ) -> Response[list[Email], list[EmailType]]:
         """See also: https://docs.github.com/rest/users/emails#list-email-addresses-for-the-authenticated-user"""
 
         from ..models import Email, BasicError
@@ -653,7 +668,7 @@ class UsersClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: Missing[Union[UserEmailsPostBodyOneof0Type, list[str], str]] = UNSET,
-    ) -> Response[list[Email]]: ...
+    ) -> Response[list[Email], list[EmailType]]: ...
 
     @overload
     def add_email_for_authenticated_user(
@@ -662,7 +677,7 @@ class UsersClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         emails: list[str],
-    ) -> Response[list[Email]]: ...
+    ) -> Response[list[Email], list[EmailType]]: ...
 
     def add_email_for_authenticated_user(
         self,
@@ -670,7 +685,7 @@ class UsersClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[Union[UserEmailsPostBodyOneof0Type, list[str], str]] = UNSET,
         **kwargs,
-    ) -> Response[list[Email]]:
+    ) -> Response[list[Email], list[EmailType]]:
         """See also: https://docs.github.com/rest/users/emails#add-an-email-address-for-the-authenticated-user"""
 
         from typing import Union
@@ -724,7 +739,7 @@ class UsersClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: Missing[Union[UserEmailsPostBodyOneof0Type, list[str], str]] = UNSET,
-    ) -> Response[list[Email]]: ...
+    ) -> Response[list[Email], list[EmailType]]: ...
 
     @overload
     async def async_add_email_for_authenticated_user(
@@ -733,7 +748,7 @@ class UsersClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         emails: list[str],
-    ) -> Response[list[Email]]: ...
+    ) -> Response[list[Email], list[EmailType]]: ...
 
     async def async_add_email_for_authenticated_user(
         self,
@@ -741,7 +756,7 @@ class UsersClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[Union[UserEmailsPostBodyOneof0Type, list[str], str]] = UNSET,
         **kwargs,
-    ) -> Response[list[Email]]:
+    ) -> Response[list[Email], list[EmailType]]:
         """See also: https://docs.github.com/rest/users/emails#add-an-email-address-for-the-authenticated-user"""
 
         from typing import Union
@@ -925,7 +940,7 @@ class UsersClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[SimpleUser]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """See also: https://docs.github.com/rest/users/followers#list-followers-of-the-authenticated-user"""
 
         from ..models import BasicError, SimpleUser
@@ -957,7 +972,7 @@ class UsersClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[SimpleUser]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """See also: https://docs.github.com/rest/users/followers#list-followers-of-the-authenticated-user"""
 
         from ..models import BasicError, SimpleUser
@@ -989,7 +1004,7 @@ class UsersClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[SimpleUser]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """See also: https://docs.github.com/rest/users/followers#list-the-people-the-authenticated-user-follows"""
 
         from ..models import BasicError, SimpleUser
@@ -1021,7 +1036,7 @@ class UsersClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[SimpleUser]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """See also: https://docs.github.com/rest/users/followers#list-the-people-the-authenticated-user-follows"""
 
         from ..models import BasicError, SimpleUser
@@ -1203,7 +1218,7 @@ class UsersClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[GpgKey]]:
+    ) -> Response[list[GpgKey], list[GpgKeyType]]:
         """See also: https://docs.github.com/rest/users/gpg-keys#list-gpg-keys-for-the-authenticated-user"""
 
         from ..models import GpgKey, BasicError
@@ -1236,7 +1251,7 @@ class UsersClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[GpgKey]]:
+    ) -> Response[list[GpgKey], list[GpgKeyType]]:
         """See also: https://docs.github.com/rest/users/gpg-keys#list-gpg-keys-for-the-authenticated-user"""
 
         from ..models import GpgKey, BasicError
@@ -1266,7 +1281,7 @@ class UsersClient:
     @overload
     def create_gpg_key_for_authenticated_user(
         self, *, headers: Optional[dict[str, str]] = None, data: UserGpgKeysPostBodyType
-    ) -> Response[GpgKey]: ...
+    ) -> Response[GpgKey, GpgKeyType]: ...
 
     @overload
     def create_gpg_key_for_authenticated_user(
@@ -1276,7 +1291,7 @@ class UsersClient:
         headers: Optional[dict[str, str]] = None,
         name: Missing[str] = UNSET,
         armored_public_key: str,
-    ) -> Response[GpgKey]: ...
+    ) -> Response[GpgKey, GpgKeyType]: ...
 
     def create_gpg_key_for_authenticated_user(
         self,
@@ -1284,7 +1299,7 @@ class UsersClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[UserGpgKeysPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[GpgKey]:
+    ) -> Response[GpgKey, GpgKeyType]:
         """See also: https://docs.github.com/rest/users/gpg-keys#create-a-gpg-key-for-the-authenticated-user"""
 
         from ..models import GpgKey, BasicError, ValidationError, UserGpgKeysPostBody
@@ -1319,7 +1334,7 @@ class UsersClient:
     @overload
     async def async_create_gpg_key_for_authenticated_user(
         self, *, headers: Optional[dict[str, str]] = None, data: UserGpgKeysPostBodyType
-    ) -> Response[GpgKey]: ...
+    ) -> Response[GpgKey, GpgKeyType]: ...
 
     @overload
     async def async_create_gpg_key_for_authenticated_user(
@@ -1329,7 +1344,7 @@ class UsersClient:
         headers: Optional[dict[str, str]] = None,
         name: Missing[str] = UNSET,
         armored_public_key: str,
-    ) -> Response[GpgKey]: ...
+    ) -> Response[GpgKey, GpgKeyType]: ...
 
     async def async_create_gpg_key_for_authenticated_user(
         self,
@@ -1337,7 +1352,7 @@ class UsersClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[UserGpgKeysPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[GpgKey]:
+    ) -> Response[GpgKey, GpgKeyType]:
         """See also: https://docs.github.com/rest/users/gpg-keys#create-a-gpg-key-for-the-authenticated-user"""
 
         from ..models import GpgKey, BasicError, ValidationError, UserGpgKeysPostBody
@@ -1374,7 +1389,7 @@ class UsersClient:
         gpg_key_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[GpgKey]:
+    ) -> Response[GpgKey, GpgKeyType]:
         """See also: https://docs.github.com/rest/users/gpg-keys#get-a-gpg-key-for-the-authenticated-user"""
 
         from ..models import GpgKey, BasicError
@@ -1400,7 +1415,7 @@ class UsersClient:
         gpg_key_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[GpgKey]:
+    ) -> Response[GpgKey, GpgKeyType]:
         """See also: https://docs.github.com/rest/users/gpg-keys#get-a-gpg-key-for-the-authenticated-user"""
 
         from ..models import GpgKey, BasicError
@@ -1479,7 +1494,7 @@ class UsersClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Key]]:
+    ) -> Response[list[Key], list[KeyType]]:
         """See also: https://docs.github.com/rest/users/keys#list-public-ssh-keys-for-the-authenticated-user"""
 
         from ..models import Key, BasicError
@@ -1512,7 +1527,7 @@ class UsersClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Key]]:
+    ) -> Response[list[Key], list[KeyType]]:
         """See also: https://docs.github.com/rest/users/keys#list-public-ssh-keys-for-the-authenticated-user"""
 
         from ..models import Key, BasicError
@@ -1542,7 +1557,7 @@ class UsersClient:
     @overload
     def create_public_ssh_key_for_authenticated_user(
         self, *, headers: Optional[dict[str, str]] = None, data: UserKeysPostBodyType
-    ) -> Response[Key]: ...
+    ) -> Response[Key, KeyType]: ...
 
     @overload
     def create_public_ssh_key_for_authenticated_user(
@@ -1552,7 +1567,7 @@ class UsersClient:
         headers: Optional[dict[str, str]] = None,
         title: Missing[str] = UNSET,
         key: str,
-    ) -> Response[Key]: ...
+    ) -> Response[Key, KeyType]: ...
 
     def create_public_ssh_key_for_authenticated_user(
         self,
@@ -1560,7 +1575,7 @@ class UsersClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[UserKeysPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Key]:
+    ) -> Response[Key, KeyType]:
         """See also: https://docs.github.com/rest/users/keys#create-a-public-ssh-key-for-the-authenticated-user"""
 
         from ..models import Key, BasicError, ValidationError, UserKeysPostBody
@@ -1595,7 +1610,7 @@ class UsersClient:
     @overload
     async def async_create_public_ssh_key_for_authenticated_user(
         self, *, headers: Optional[dict[str, str]] = None, data: UserKeysPostBodyType
-    ) -> Response[Key]: ...
+    ) -> Response[Key, KeyType]: ...
 
     @overload
     async def async_create_public_ssh_key_for_authenticated_user(
@@ -1605,7 +1620,7 @@ class UsersClient:
         headers: Optional[dict[str, str]] = None,
         title: Missing[str] = UNSET,
         key: str,
-    ) -> Response[Key]: ...
+    ) -> Response[Key, KeyType]: ...
 
     async def async_create_public_ssh_key_for_authenticated_user(
         self,
@@ -1613,7 +1628,7 @@ class UsersClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[UserKeysPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Key]:
+    ) -> Response[Key, KeyType]:
         """See also: https://docs.github.com/rest/users/keys#create-a-public-ssh-key-for-the-authenticated-user"""
 
         from ..models import Key, BasicError, ValidationError, UserKeysPostBody
@@ -1650,7 +1665,7 @@ class UsersClient:
         key_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Key]:
+    ) -> Response[Key, KeyType]:
         """See also: https://docs.github.com/rest/users/keys#get-a-public-ssh-key-for-the-authenticated-user"""
 
         from ..models import Key, BasicError
@@ -1676,7 +1691,7 @@ class UsersClient:
         key_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Key]:
+    ) -> Response[Key, KeyType]:
         """See also: https://docs.github.com/rest/users/keys#get-a-public-ssh-key-for-the-authenticated-user"""
 
         from ..models import Key, BasicError
@@ -1753,7 +1768,7 @@ class UsersClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Email]]:
+    ) -> Response[list[Email], list[EmailType]]:
         """See also: https://docs.github.com/rest/users/emails#list-public-email-addresses-for-the-authenticated-user"""
 
         from ..models import Email, BasicError
@@ -1786,7 +1801,7 @@ class UsersClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Email]]:
+    ) -> Response[list[Email], list[EmailType]]:
         """See also: https://docs.github.com/rest/users/emails#list-public-email-addresses-for-the-authenticated-user"""
 
         from ..models import Email, BasicError
@@ -1819,7 +1834,7 @@ class UsersClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[SocialAccount]]:
+    ) -> Response[list[SocialAccount], list[SocialAccountType]]:
         """See also: https://docs.github.com/rest/users/social-accounts#list-social-accounts-for-the-authenticated-user"""
 
         from ..models import BasicError, SocialAccount
@@ -1852,7 +1867,7 @@ class UsersClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[SocialAccount]]:
+    ) -> Response[list[SocialAccount], list[SocialAccountType]]:
         """See also: https://docs.github.com/rest/users/social-accounts#list-social-accounts-for-the-authenticated-user"""
 
         from ..models import BasicError, SocialAccount
@@ -1885,7 +1900,7 @@ class UsersClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: UserSocialAccountsPostBodyType,
-    ) -> Response[list[SocialAccount]]: ...
+    ) -> Response[list[SocialAccount], list[SocialAccountType]]: ...
 
     @overload
     def add_social_account_for_authenticated_user(
@@ -1894,7 +1909,7 @@ class UsersClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         account_urls: list[str],
-    ) -> Response[list[SocialAccount]]: ...
+    ) -> Response[list[SocialAccount], list[SocialAccountType]]: ...
 
     def add_social_account_for_authenticated_user(
         self,
@@ -1902,7 +1917,7 @@ class UsersClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[UserSocialAccountsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[list[SocialAccount]]:
+    ) -> Response[list[SocialAccount], list[SocialAccountType]]:
         """See also: https://docs.github.com/rest/users/social-accounts#add-social-accounts-for-the-authenticated-user"""
 
         from ..models import (
@@ -1945,7 +1960,7 @@ class UsersClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: UserSocialAccountsPostBodyType,
-    ) -> Response[list[SocialAccount]]: ...
+    ) -> Response[list[SocialAccount], list[SocialAccountType]]: ...
 
     @overload
     async def async_add_social_account_for_authenticated_user(
@@ -1954,7 +1969,7 @@ class UsersClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         account_urls: list[str],
-    ) -> Response[list[SocialAccount]]: ...
+    ) -> Response[list[SocialAccount], list[SocialAccountType]]: ...
 
     async def async_add_social_account_for_authenticated_user(
         self,
@@ -1962,7 +1977,7 @@ class UsersClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[UserSocialAccountsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[list[SocialAccount]]:
+    ) -> Response[list[SocialAccount], list[SocialAccountType]]:
         """See also: https://docs.github.com/rest/users/social-accounts#add-social-accounts-for-the-authenticated-user"""
 
         from ..models import (
@@ -2113,7 +2128,7 @@ class UsersClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[SshSigningKey]]:
+    ) -> Response[list[SshSigningKey], list[SshSigningKeyType]]:
         """See also: https://docs.github.com/rest/users/ssh-signing-keys#list-ssh-signing-keys-for-the-authenticated-user"""
 
         from ..models import BasicError, SshSigningKey
@@ -2146,7 +2161,7 @@ class UsersClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[SshSigningKey]]:
+    ) -> Response[list[SshSigningKey], list[SshSigningKeyType]]:
         """See also: https://docs.github.com/rest/users/ssh-signing-keys#list-ssh-signing-keys-for-the-authenticated-user"""
 
         from ..models import BasicError, SshSigningKey
@@ -2179,7 +2194,7 @@ class UsersClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: UserSshSigningKeysPostBodyType,
-    ) -> Response[SshSigningKey]: ...
+    ) -> Response[SshSigningKey, SshSigningKeyType]: ...
 
     @overload
     def create_ssh_signing_key_for_authenticated_user(
@@ -2189,7 +2204,7 @@ class UsersClient:
         headers: Optional[dict[str, str]] = None,
         title: Missing[str] = UNSET,
         key: str,
-    ) -> Response[SshSigningKey]: ...
+    ) -> Response[SshSigningKey, SshSigningKeyType]: ...
 
     def create_ssh_signing_key_for_authenticated_user(
         self,
@@ -2197,7 +2212,7 @@ class UsersClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[UserSshSigningKeysPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[SshSigningKey]:
+    ) -> Response[SshSigningKey, SshSigningKeyType]:
         """See also: https://docs.github.com/rest/users/ssh-signing-keys#create-a-ssh-signing-key-for-the-authenticated-user"""
 
         from ..models import (
@@ -2240,7 +2255,7 @@ class UsersClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: UserSshSigningKeysPostBodyType,
-    ) -> Response[SshSigningKey]: ...
+    ) -> Response[SshSigningKey, SshSigningKeyType]: ...
 
     @overload
     async def async_create_ssh_signing_key_for_authenticated_user(
@@ -2250,7 +2265,7 @@ class UsersClient:
         headers: Optional[dict[str, str]] = None,
         title: Missing[str] = UNSET,
         key: str,
-    ) -> Response[SshSigningKey]: ...
+    ) -> Response[SshSigningKey, SshSigningKeyType]: ...
 
     async def async_create_ssh_signing_key_for_authenticated_user(
         self,
@@ -2258,7 +2273,7 @@ class UsersClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[UserSshSigningKeysPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[SshSigningKey]:
+    ) -> Response[SshSigningKey, SshSigningKeyType]:
         """See also: https://docs.github.com/rest/users/ssh-signing-keys#create-a-ssh-signing-key-for-the-authenticated-user"""
 
         from ..models import (
@@ -2300,7 +2315,7 @@ class UsersClient:
         ssh_signing_key_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[SshSigningKey]:
+    ) -> Response[SshSigningKey, SshSigningKeyType]:
         """See also: https://docs.github.com/rest/users/ssh-signing-keys#get-an-ssh-signing-key-for-the-authenticated-user"""
 
         from ..models import BasicError, SshSigningKey
@@ -2326,7 +2341,7 @@ class UsersClient:
         ssh_signing_key_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[SshSigningKey]:
+    ) -> Response[SshSigningKey, SshSigningKeyType]:
         """See also: https://docs.github.com/rest/users/ssh-signing-keys#get-an-ssh-signing-key-for-the-authenticated-user"""
 
         from ..models import BasicError, SshSigningKey
@@ -2402,7 +2417,9 @@ class UsersClient:
         account_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Union[PrivateUser, PublicUser]]:
+    ) -> Response[
+        Union[PrivateUser, PublicUser], Union[PrivateUserType, PublicUserType]
+    ]:
         """See also: https://docs.github.com/rest/users/users#get-a-user-using-their-id"""
 
         from typing import Union
@@ -2428,7 +2445,9 @@ class UsersClient:
         account_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Union[PrivateUser, PublicUser]]:
+    ) -> Response[
+        Union[PrivateUser, PublicUser], Union[PrivateUserType, PublicUserType]
+    ]:
         """See also: https://docs.github.com/rest/users/users#get-a-user-using-their-id"""
 
         from typing import Union
@@ -2455,7 +2474,7 @@ class UsersClient:
         per_page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[SimpleUser]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """See also: https://docs.github.com/rest/users/users#list-users"""
 
         from ..models import SimpleUser
@@ -2483,7 +2502,7 @@ class UsersClient:
         per_page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[SimpleUser]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """See also: https://docs.github.com/rest/users/users#list-users"""
 
         from ..models import SimpleUser
@@ -2510,7 +2529,9 @@ class UsersClient:
         username: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Union[PrivateUser, PublicUser]]:
+    ) -> Response[
+        Union[PrivateUser, PublicUser], Union[PrivateUserType, PublicUserType]
+    ]:
         """See also: https://docs.github.com/rest/users/users#get-a-user"""
 
         from typing import Union
@@ -2536,7 +2557,9 @@ class UsersClient:
         username: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Union[PrivateUser, PublicUser]]:
+    ) -> Response[
+        Union[PrivateUser, PublicUser], Union[PrivateUserType, PublicUserType]
+    ]:
         """See also: https://docs.github.com/rest/users/users#get-a-user"""
 
         from typing import Union
@@ -2566,7 +2589,10 @@ class UsersClient:
         after: Missing[str] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[UsersUsernameAttestationsSubjectDigestGetResponse200]:
+    ) -> Response[
+        UsersUsernameAttestationsSubjectDigestGetResponse200,
+        UsersUsernameAttestationsSubjectDigestGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/rest/users/attestations#list-attestations"""
 
         from ..models import (
@@ -2604,7 +2630,10 @@ class UsersClient:
         after: Missing[str] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[UsersUsernameAttestationsSubjectDigestGetResponse200]:
+    ) -> Response[
+        UsersUsernameAttestationsSubjectDigestGetResponse200,
+        UsersUsernameAttestationsSubjectDigestGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/rest/users/attestations#list-attestations"""
 
         from ..models import (
@@ -2640,7 +2669,7 @@ class UsersClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[SimpleUser]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """See also: https://docs.github.com/rest/users/followers#list-followers-of-a-user"""
 
         from ..models import SimpleUser
@@ -2669,7 +2698,7 @@ class UsersClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[SimpleUser]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """See also: https://docs.github.com/rest/users/followers#list-followers-of-a-user"""
 
         from ..models import SimpleUser
@@ -2698,7 +2727,7 @@ class UsersClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[SimpleUser]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """See also: https://docs.github.com/rest/users/followers#list-the-people-a-user-follows"""
 
         from ..models import SimpleUser
@@ -2727,7 +2756,7 @@ class UsersClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[SimpleUser]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """See also: https://docs.github.com/rest/users/followers#list-the-people-a-user-follows"""
 
         from ..models import SimpleUser
@@ -2796,7 +2825,7 @@ class UsersClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[GpgKey]]:
+    ) -> Response[list[GpgKey], list[GpgKeyType]]:
         """See also: https://docs.github.com/rest/users/gpg-keys#list-gpg-keys-for-a-user"""
 
         from ..models import GpgKey
@@ -2825,7 +2854,7 @@ class UsersClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[GpgKey]]:
+    ) -> Response[list[GpgKey], list[GpgKeyType]]:
         """See also: https://docs.github.com/rest/users/gpg-keys#list-gpg-keys-for-a-user"""
 
         from ..models import GpgKey
@@ -2856,7 +2885,7 @@ class UsersClient:
         subject_id: Missing[str] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Hovercard]:
+    ) -> Response[Hovercard, HovercardType]:
         """See also: https://docs.github.com/rest/users/users#get-contextual-information-for-a-user"""
 
         from ..models import Hovercard, BasicError, ValidationError
@@ -2891,7 +2920,7 @@ class UsersClient:
         subject_id: Missing[str] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Hovercard]:
+    ) -> Response[Hovercard, HovercardType]:
         """See also: https://docs.github.com/rest/users/users#get-contextual-information-for-a-user"""
 
         from ..models import Hovercard, BasicError, ValidationError
@@ -2924,7 +2953,7 @@ class UsersClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[KeySimple]]:
+    ) -> Response[list[KeySimple], list[KeySimpleType]]:
         """See also: https://docs.github.com/rest/users/keys#list-public-keys-for-a-user"""
 
         from ..models import KeySimple
@@ -2953,7 +2982,7 @@ class UsersClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[KeySimple]]:
+    ) -> Response[list[KeySimple], list[KeySimpleType]]:
         """See also: https://docs.github.com/rest/users/keys#list-public-keys-for-a-user"""
 
         from ..models import KeySimple
@@ -2982,7 +3011,7 @@ class UsersClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[SocialAccount]]:
+    ) -> Response[list[SocialAccount], list[SocialAccountType]]:
         """See also: https://docs.github.com/rest/users/social-accounts#list-social-accounts-for-a-user"""
 
         from ..models import SocialAccount
@@ -3011,7 +3040,7 @@ class UsersClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[SocialAccount]]:
+    ) -> Response[list[SocialAccount], list[SocialAccountType]]:
         """See also: https://docs.github.com/rest/users/social-accounts#list-social-accounts-for-a-user"""
 
         from ..models import SocialAccount
@@ -3040,7 +3069,7 @@ class UsersClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[SshSigningKey]]:
+    ) -> Response[list[SshSigningKey], list[SshSigningKeyType]]:
         """See also: https://docs.github.com/rest/users/ssh-signing-keys#list-ssh-signing-keys-for-a-user"""
 
         from ..models import SshSigningKey
@@ -3069,7 +3098,7 @@ class UsersClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[SshSigningKey]]:
+    ) -> Response[list[SshSigningKey], list[SshSigningKeyType]]:
         """See also: https://docs.github.com/rest/users/ssh-signing-keys#list-ssh-signing-keys-for-a-user"""
 
         from ..models import SshSigningKey

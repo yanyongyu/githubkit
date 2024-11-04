@@ -47,7 +47,7 @@ class MarkdownClient:
     @overload
     def render(
         self, *, headers: Optional[dict[str, str]] = None, data: MarkdownPostBodyType
-    ) -> Response[str]: ...
+    ) -> Response[str, str]: ...
 
     @overload
     def render(
@@ -58,7 +58,7 @@ class MarkdownClient:
         text: str,
         mode: Missing[Literal["markdown", "gfm"]] = UNSET,
         context: Missing[str] = UNSET,
-    ) -> Response[str]: ...
+    ) -> Response[str, str]: ...
 
     def render(
         self,
@@ -66,7 +66,7 @@ class MarkdownClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[MarkdownPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[str]:
+    ) -> Response[str, str]:
         """See also: https://docs.github.com/rest/markdown/markdown#render-a-markdown-document"""
 
         from ..models import MarkdownPostBody
@@ -95,7 +95,7 @@ class MarkdownClient:
     @overload
     async def async_render(
         self, *, headers: Optional[dict[str, str]] = None, data: MarkdownPostBodyType
-    ) -> Response[str]: ...
+    ) -> Response[str, str]: ...
 
     @overload
     async def async_render(
@@ -106,7 +106,7 @@ class MarkdownClient:
         text: str,
         mode: Missing[Literal["markdown", "gfm"]] = UNSET,
         context: Missing[str] = UNSET,
-    ) -> Response[str]: ...
+    ) -> Response[str, str]: ...
 
     async def async_render(
         self,
@@ -114,7 +114,7 @@ class MarkdownClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[MarkdownPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[str]:
+    ) -> Response[str, str]:
         """See also: https://docs.github.com/rest/markdown/markdown#render-a-markdown-document"""
 
         from ..models import MarkdownPostBody
@@ -145,7 +145,7 @@ class MarkdownClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: str,
-    ) -> Response[str]:
+    ) -> Response[str, str]:
         """See also: https://docs.github.com/rest/markdown/markdown#render-a-markdown-document-in-raw-mode"""
 
         url = "/markdown/raw"
@@ -171,7 +171,7 @@ class MarkdownClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: str,
-    ) -> Response[str]:
+    ) -> Response[str, str]:
         """See also: https://docs.github.com/rest/markdown/markdown#render-a-markdown-document-in-raw-mode"""
 
         url = "/markdown/raw"

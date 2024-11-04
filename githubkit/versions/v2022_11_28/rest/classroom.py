@@ -29,6 +29,14 @@ if TYPE_CHECKING:
         SimpleClassroomAssignment,
         ClassroomAcceptedAssignment,
     )
+    from ..types import (
+        ClassroomType,
+        SimpleClassroomType,
+        ClassroomAssignmentType,
+        ClassroomAssignmentGradeType,
+        SimpleClassroomAssignmentType,
+        ClassroomAcceptedAssignmentType,
+    )
 
 
 class ClassroomClient:
@@ -51,7 +59,7 @@ class ClassroomClient:
         assignment_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ClassroomAssignment]:
+    ) -> Response[ClassroomAssignment, ClassroomAssignmentType]:
         """See also: https://docs.github.com/rest/classroom/classroom#get-an-assignment"""
 
         from ..models import BasicError, ClassroomAssignment
@@ -75,7 +83,7 @@ class ClassroomClient:
         assignment_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ClassroomAssignment]:
+    ) -> Response[ClassroomAssignment, ClassroomAssignmentType]:
         """See also: https://docs.github.com/rest/classroom/classroom#get-an-assignment"""
 
         from ..models import BasicError, ClassroomAssignment
@@ -101,7 +109,9 @@ class ClassroomClient:
         per_page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[ClassroomAcceptedAssignment]]:
+    ) -> Response[
+        list[ClassroomAcceptedAssignment], list[ClassroomAcceptedAssignmentType]
+    ]:
         """See also: https://docs.github.com/rest/classroom/classroom#list-accepted-assignments-for-an-assignment"""
 
         from ..models import ClassroomAcceptedAssignment
@@ -130,7 +140,9 @@ class ClassroomClient:
         per_page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[ClassroomAcceptedAssignment]]:
+    ) -> Response[
+        list[ClassroomAcceptedAssignment], list[ClassroomAcceptedAssignmentType]
+    ]:
         """See also: https://docs.github.com/rest/classroom/classroom#list-accepted-assignments-for-an-assignment"""
 
         from ..models import ClassroomAcceptedAssignment
@@ -157,7 +169,7 @@ class ClassroomClient:
         assignment_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[ClassroomAssignmentGrade]]:
+    ) -> Response[list[ClassroomAssignmentGrade], list[ClassroomAssignmentGradeType]]:
         """See also: https://docs.github.com/rest/classroom/classroom#get-assignment-grades"""
 
         from ..models import BasicError, ClassroomAssignmentGrade
@@ -181,7 +193,7 @@ class ClassroomClient:
         assignment_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[ClassroomAssignmentGrade]]:
+    ) -> Response[list[ClassroomAssignmentGrade], list[ClassroomAssignmentGradeType]]:
         """See also: https://docs.github.com/rest/classroom/classroom#get-assignment-grades"""
 
         from ..models import BasicError, ClassroomAssignmentGrade
@@ -206,7 +218,7 @@ class ClassroomClient:
         per_page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[SimpleClassroom]]:
+    ) -> Response[list[SimpleClassroom], list[SimpleClassroomType]]:
         """See also: https://docs.github.com/rest/classroom/classroom#list-classrooms"""
 
         from ..models import SimpleClassroom
@@ -234,7 +246,7 @@ class ClassroomClient:
         per_page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[SimpleClassroom]]:
+    ) -> Response[list[SimpleClassroom], list[SimpleClassroomType]]:
         """See also: https://docs.github.com/rest/classroom/classroom#list-classrooms"""
 
         from ..models import SimpleClassroom
@@ -261,7 +273,7 @@ class ClassroomClient:
         classroom_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Classroom]:
+    ) -> Response[Classroom, ClassroomType]:
         """See also: https://docs.github.com/rest/classroom/classroom#get-a-classroom"""
 
         from ..models import Classroom, BasicError
@@ -285,7 +297,7 @@ class ClassroomClient:
         classroom_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Classroom]:
+    ) -> Response[Classroom, ClassroomType]:
         """See also: https://docs.github.com/rest/classroom/classroom#get-a-classroom"""
 
         from ..models import Classroom, BasicError
@@ -311,7 +323,7 @@ class ClassroomClient:
         per_page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[SimpleClassroomAssignment]]:
+    ) -> Response[list[SimpleClassroomAssignment], list[SimpleClassroomAssignmentType]]:
         """See also: https://docs.github.com/rest/classroom/classroom#list-assignments-for-a-classroom"""
 
         from ..models import SimpleClassroomAssignment
@@ -340,7 +352,7 @@ class ClassroomClient:
         per_page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[SimpleClassroomAssignment]]:
+    ) -> Response[list[SimpleClassroomAssignment], list[SimpleClassroomAssignmentType]]:
         """See also: https://docs.github.com/rest/classroom/classroom#list-assignments-for-a-classroom"""
 
         from ..models import SimpleClassroomAssignment

@@ -19,6 +19,7 @@ if TYPE_CHECKING:
     from githubkit.response import Response
 
     from ..models import RateLimitOverview
+    from ..types import RateLimitOverviewType
 
 
 class RateLimitClient:
@@ -40,7 +41,7 @@ class RateLimitClient:
         self,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[RateLimitOverview]:
+    ) -> Response[RateLimitOverview, RateLimitOverviewType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/rate-limit/rate-limit#get-rate-limit-status-for-the-authenticated-user"""
 
         from ..models import BasicError, RateLimitOverview
@@ -63,7 +64,7 @@ class RateLimitClient:
         self,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[RateLimitOverview]:
+    ) -> Response[RateLimitOverview, RateLimitOverviewType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/rate-limit/rate-limit#get-rate-limit-status-for-the-authenticated-user"""
 
         from ..models import BasicError, RateLimitOverview

@@ -49,8 +49,13 @@ if TYPE_CHECKING:
     {% for import_ in endpoint.success_response.response_schema.get_using_imports() %}
     {{ import_ }}
     {% endfor %}
+    {# response json types #}
+    {% for import_ in endpoint.success_response.response_schema.get_param_imports() %}
+    {{ import_ }}
+    {% endfor %}
     {% endif %}
     {% endfor %}
+
 
 class {{ pascal_case(tag) }}Client:
     _REST_API_VERSION = "{{ rest_api_version }}"

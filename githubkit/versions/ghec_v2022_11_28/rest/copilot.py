@@ -24,12 +24,6 @@ if TYPE_CHECKING:
     from githubkit.typing import Missing
     from githubkit.response import Response
 
-    from ..types import (
-        OrgsOrgCopilotBillingSelectedTeamsPostBodyType,
-        OrgsOrgCopilotBillingSelectedUsersPostBodyType,
-        OrgsOrgCopilotBillingSelectedTeamsDeleteBodyType,
-        OrgsOrgCopilotBillingSelectedUsersDeleteBodyType,
-    )
     from ..models import (
         CopilotSeatDetails,
         CopilotUsageMetrics,
@@ -41,6 +35,22 @@ if TYPE_CHECKING:
         OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200,
         OrgsOrgCopilotBillingSelectedUsersDeleteResponse200,
         EnterprisesEnterpriseCopilotBillingSeatsGetResponse200,
+    )
+    from ..types import (
+        CopilotSeatDetailsType,
+        CopilotUsageMetricsType,
+        CopilotUsageMetricsDayType,
+        CopilotOrganizationDetailsType,
+        OrgsOrgCopilotBillingSeatsGetResponse200Type,
+        OrgsOrgCopilotBillingSelectedTeamsPostBodyType,
+        OrgsOrgCopilotBillingSelectedUsersPostBodyType,
+        OrgsOrgCopilotBillingSelectedTeamsDeleteBodyType,
+        OrgsOrgCopilotBillingSelectedUsersDeleteBodyType,
+        OrgsOrgCopilotBillingSelectedTeamsPostResponse201Type,
+        OrgsOrgCopilotBillingSelectedUsersPostResponse201Type,
+        OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200Type,
+        OrgsOrgCopilotBillingSelectedUsersDeleteResponse200Type,
+        EnterprisesEnterpriseCopilotBillingSeatsGetResponse200Type,
     )
 
 
@@ -66,7 +76,10 @@ class CopilotClient:
         per_page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[EnterprisesEnterpriseCopilotBillingSeatsGetResponse200]:
+    ) -> Response[
+        EnterprisesEnterpriseCopilotBillingSeatsGetResponse200,
+        EnterprisesEnterpriseCopilotBillingSeatsGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#list-all-copilot-seat-assignments-for-an-enterprise"""
 
         from ..models import (
@@ -104,7 +117,10 @@ class CopilotClient:
         per_page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[EnterprisesEnterpriseCopilotBillingSeatsGetResponse200]:
+    ) -> Response[
+        EnterprisesEnterpriseCopilotBillingSeatsGetResponse200,
+        EnterprisesEnterpriseCopilotBillingSeatsGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#list-all-copilot-seat-assignments-for-an-enterprise"""
 
         from ..models import (
@@ -144,7 +160,7 @@ class CopilotClient:
         per_page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[CopilotUsageMetricsDay]]:
+    ) -> Response[list[CopilotUsageMetricsDay], list[CopilotUsageMetricsDayType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-metrics#get-copilot-metrics-for-an-enterprise"""
 
         from ..models import BasicError, CopilotUsageMetricsDay
@@ -183,7 +199,7 @@ class CopilotClient:
         per_page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[CopilotUsageMetricsDay]]:
+    ) -> Response[list[CopilotUsageMetricsDay], list[CopilotUsageMetricsDayType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-metrics#get-copilot-metrics-for-an-enterprise"""
 
         from ..models import BasicError, CopilotUsageMetricsDay
@@ -222,7 +238,7 @@ class CopilotClient:
         per_page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[CopilotUsageMetrics]]:
+    ) -> Response[list[CopilotUsageMetrics], list[CopilotUsageMetricsType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-usage#get-a-summary-of-copilot-usage-for-enterprise-members"""
 
         from ..models import BasicError, CopilotUsageMetrics
@@ -261,7 +277,7 @@ class CopilotClient:
         per_page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[CopilotUsageMetrics]]:
+    ) -> Response[list[CopilotUsageMetrics], list[CopilotUsageMetricsType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-usage#get-a-summary-of-copilot-usage-for-enterprise-members"""
 
         from ..models import BasicError, CopilotUsageMetrics
@@ -301,7 +317,7 @@ class CopilotClient:
         per_page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[CopilotUsageMetricsDay]]:
+    ) -> Response[list[CopilotUsageMetricsDay], list[CopilotUsageMetricsDayType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-metrics#get-copilot-metrics-for-an-enterprise-team"""
 
         from ..models import BasicError, CopilotUsageMetricsDay
@@ -341,7 +357,7 @@ class CopilotClient:
         per_page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[CopilotUsageMetricsDay]]:
+    ) -> Response[list[CopilotUsageMetricsDay], list[CopilotUsageMetricsDayType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-metrics#get-copilot-metrics-for-an-enterprise-team"""
 
         from ..models import BasicError, CopilotUsageMetricsDay
@@ -381,7 +397,7 @@ class CopilotClient:
         per_page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[CopilotUsageMetrics]]:
+    ) -> Response[list[CopilotUsageMetrics], list[CopilotUsageMetricsType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-usage#get-a-summary-of-copilot-usage-for-an-enterprise-team"""
 
         from ..models import BasicError, CopilotUsageMetrics
@@ -421,7 +437,7 @@ class CopilotClient:
         per_page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[CopilotUsageMetrics]]:
+    ) -> Response[list[CopilotUsageMetrics], list[CopilotUsageMetricsType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-usage#get-a-summary-of-copilot-usage-for-an-enterprise-team"""
 
         from ..models import BasicError, CopilotUsageMetrics
@@ -456,7 +472,7 @@ class CopilotClient:
         org: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[CopilotOrganizationDetails]:
+    ) -> Response[CopilotOrganizationDetails, CopilotOrganizationDetailsType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#get-copilot-seat-information-and-settings-for-an-organization"""
 
         from ..models import BasicError, CopilotOrganizationDetails
@@ -483,7 +499,7 @@ class CopilotClient:
         org: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[CopilotOrganizationDetails]:
+    ) -> Response[CopilotOrganizationDetails, CopilotOrganizationDetailsType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#get-copilot-seat-information-and-settings-for-an-organization"""
 
         from ..models import BasicError, CopilotOrganizationDetails
@@ -512,7 +528,10 @@ class CopilotClient:
         per_page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[OrgsOrgCopilotBillingSeatsGetResponse200]:
+    ) -> Response[
+        OrgsOrgCopilotBillingSeatsGetResponse200,
+        OrgsOrgCopilotBillingSeatsGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#list-all-copilot-seat-assignments-for-an-organization"""
 
         from ..models import BasicError, OrgsOrgCopilotBillingSeatsGetResponse200
@@ -547,7 +566,10 @@ class CopilotClient:
         per_page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[OrgsOrgCopilotBillingSeatsGetResponse200]:
+    ) -> Response[
+        OrgsOrgCopilotBillingSeatsGetResponse200,
+        OrgsOrgCopilotBillingSeatsGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#list-all-copilot-seat-assignments-for-an-organization"""
 
         from ..models import BasicError, OrgsOrgCopilotBillingSeatsGetResponse200
@@ -582,7 +604,10 @@ class CopilotClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: OrgsOrgCopilotBillingSelectedTeamsPostBodyType,
-    ) -> Response[OrgsOrgCopilotBillingSelectedTeamsPostResponse201]: ...
+    ) -> Response[
+        OrgsOrgCopilotBillingSelectedTeamsPostResponse201,
+        OrgsOrgCopilotBillingSelectedTeamsPostResponse201Type,
+    ]: ...
 
     @overload
     def add_copilot_seats_for_teams(
@@ -592,7 +617,10 @@ class CopilotClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         selected_teams: list[str],
-    ) -> Response[OrgsOrgCopilotBillingSelectedTeamsPostResponse201]: ...
+    ) -> Response[
+        OrgsOrgCopilotBillingSelectedTeamsPostResponse201,
+        OrgsOrgCopilotBillingSelectedTeamsPostResponse201Type,
+    ]: ...
 
     def add_copilot_seats_for_teams(
         self,
@@ -601,7 +629,10 @@ class CopilotClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgCopilotBillingSelectedTeamsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[OrgsOrgCopilotBillingSelectedTeamsPostResponse201]:
+    ) -> Response[
+        OrgsOrgCopilotBillingSelectedTeamsPostResponse201,
+        OrgsOrgCopilotBillingSelectedTeamsPostResponse201Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#add-teams-to-the-copilot-subscription-for-an-organization"""
 
         from ..models import (
@@ -646,7 +677,10 @@ class CopilotClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: OrgsOrgCopilotBillingSelectedTeamsPostBodyType,
-    ) -> Response[OrgsOrgCopilotBillingSelectedTeamsPostResponse201]: ...
+    ) -> Response[
+        OrgsOrgCopilotBillingSelectedTeamsPostResponse201,
+        OrgsOrgCopilotBillingSelectedTeamsPostResponse201Type,
+    ]: ...
 
     @overload
     async def async_add_copilot_seats_for_teams(
@@ -656,7 +690,10 @@ class CopilotClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         selected_teams: list[str],
-    ) -> Response[OrgsOrgCopilotBillingSelectedTeamsPostResponse201]: ...
+    ) -> Response[
+        OrgsOrgCopilotBillingSelectedTeamsPostResponse201,
+        OrgsOrgCopilotBillingSelectedTeamsPostResponse201Type,
+    ]: ...
 
     async def async_add_copilot_seats_for_teams(
         self,
@@ -665,7 +702,10 @@ class CopilotClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgCopilotBillingSelectedTeamsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[OrgsOrgCopilotBillingSelectedTeamsPostResponse201]:
+    ) -> Response[
+        OrgsOrgCopilotBillingSelectedTeamsPostResponse201,
+        OrgsOrgCopilotBillingSelectedTeamsPostResponse201Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#add-teams-to-the-copilot-subscription-for-an-organization"""
 
         from ..models import (
@@ -710,7 +750,10 @@ class CopilotClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: OrgsOrgCopilotBillingSelectedTeamsDeleteBodyType,
-    ) -> Response[OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200]: ...
+    ) -> Response[
+        OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200,
+        OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200Type,
+    ]: ...
 
     @overload
     def cancel_copilot_seat_assignment_for_teams(
@@ -720,7 +763,10 @@ class CopilotClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         selected_teams: list[str],
-    ) -> Response[OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200]: ...
+    ) -> Response[
+        OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200,
+        OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200Type,
+    ]: ...
 
     def cancel_copilot_seat_assignment_for_teams(
         self,
@@ -729,7 +775,10 @@ class CopilotClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgCopilotBillingSelectedTeamsDeleteBodyType] = UNSET,
         **kwargs,
-    ) -> Response[OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200]:
+    ) -> Response[
+        OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200,
+        OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#remove-teams-from-the-copilot-subscription-for-an-organization"""
 
         from ..models import (
@@ -774,7 +823,10 @@ class CopilotClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: OrgsOrgCopilotBillingSelectedTeamsDeleteBodyType,
-    ) -> Response[OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200]: ...
+    ) -> Response[
+        OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200,
+        OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200Type,
+    ]: ...
 
     @overload
     async def async_cancel_copilot_seat_assignment_for_teams(
@@ -784,7 +836,10 @@ class CopilotClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         selected_teams: list[str],
-    ) -> Response[OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200]: ...
+    ) -> Response[
+        OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200,
+        OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200Type,
+    ]: ...
 
     async def async_cancel_copilot_seat_assignment_for_teams(
         self,
@@ -793,7 +848,10 @@ class CopilotClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgCopilotBillingSelectedTeamsDeleteBodyType] = UNSET,
         **kwargs,
-    ) -> Response[OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200]:
+    ) -> Response[
+        OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200,
+        OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#remove-teams-from-the-copilot-subscription-for-an-organization"""
 
         from ..models import (
@@ -838,7 +896,10 @@ class CopilotClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: OrgsOrgCopilotBillingSelectedUsersPostBodyType,
-    ) -> Response[OrgsOrgCopilotBillingSelectedUsersPostResponse201]: ...
+    ) -> Response[
+        OrgsOrgCopilotBillingSelectedUsersPostResponse201,
+        OrgsOrgCopilotBillingSelectedUsersPostResponse201Type,
+    ]: ...
 
     @overload
     def add_copilot_seats_for_users(
@@ -848,7 +909,10 @@ class CopilotClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         selected_usernames: list[str],
-    ) -> Response[OrgsOrgCopilotBillingSelectedUsersPostResponse201]: ...
+    ) -> Response[
+        OrgsOrgCopilotBillingSelectedUsersPostResponse201,
+        OrgsOrgCopilotBillingSelectedUsersPostResponse201Type,
+    ]: ...
 
     def add_copilot_seats_for_users(
         self,
@@ -857,7 +921,10 @@ class CopilotClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgCopilotBillingSelectedUsersPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[OrgsOrgCopilotBillingSelectedUsersPostResponse201]:
+    ) -> Response[
+        OrgsOrgCopilotBillingSelectedUsersPostResponse201,
+        OrgsOrgCopilotBillingSelectedUsersPostResponse201Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#add-users-to-the-copilot-subscription-for-an-organization"""
 
         from ..models import (
@@ -902,7 +969,10 @@ class CopilotClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: OrgsOrgCopilotBillingSelectedUsersPostBodyType,
-    ) -> Response[OrgsOrgCopilotBillingSelectedUsersPostResponse201]: ...
+    ) -> Response[
+        OrgsOrgCopilotBillingSelectedUsersPostResponse201,
+        OrgsOrgCopilotBillingSelectedUsersPostResponse201Type,
+    ]: ...
 
     @overload
     async def async_add_copilot_seats_for_users(
@@ -912,7 +982,10 @@ class CopilotClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         selected_usernames: list[str],
-    ) -> Response[OrgsOrgCopilotBillingSelectedUsersPostResponse201]: ...
+    ) -> Response[
+        OrgsOrgCopilotBillingSelectedUsersPostResponse201,
+        OrgsOrgCopilotBillingSelectedUsersPostResponse201Type,
+    ]: ...
 
     async def async_add_copilot_seats_for_users(
         self,
@@ -921,7 +994,10 @@ class CopilotClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgCopilotBillingSelectedUsersPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[OrgsOrgCopilotBillingSelectedUsersPostResponse201]:
+    ) -> Response[
+        OrgsOrgCopilotBillingSelectedUsersPostResponse201,
+        OrgsOrgCopilotBillingSelectedUsersPostResponse201Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#add-users-to-the-copilot-subscription-for-an-organization"""
 
         from ..models import (
@@ -966,7 +1042,10 @@ class CopilotClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: OrgsOrgCopilotBillingSelectedUsersDeleteBodyType,
-    ) -> Response[OrgsOrgCopilotBillingSelectedUsersDeleteResponse200]: ...
+    ) -> Response[
+        OrgsOrgCopilotBillingSelectedUsersDeleteResponse200,
+        OrgsOrgCopilotBillingSelectedUsersDeleteResponse200Type,
+    ]: ...
 
     @overload
     def cancel_copilot_seat_assignment_for_users(
@@ -976,7 +1055,10 @@ class CopilotClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         selected_usernames: list[str],
-    ) -> Response[OrgsOrgCopilotBillingSelectedUsersDeleteResponse200]: ...
+    ) -> Response[
+        OrgsOrgCopilotBillingSelectedUsersDeleteResponse200,
+        OrgsOrgCopilotBillingSelectedUsersDeleteResponse200Type,
+    ]: ...
 
     def cancel_copilot_seat_assignment_for_users(
         self,
@@ -985,7 +1067,10 @@ class CopilotClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgCopilotBillingSelectedUsersDeleteBodyType] = UNSET,
         **kwargs,
-    ) -> Response[OrgsOrgCopilotBillingSelectedUsersDeleteResponse200]:
+    ) -> Response[
+        OrgsOrgCopilotBillingSelectedUsersDeleteResponse200,
+        OrgsOrgCopilotBillingSelectedUsersDeleteResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#remove-users-from-the-copilot-subscription-for-an-organization"""
 
         from ..models import (
@@ -1030,7 +1115,10 @@ class CopilotClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: OrgsOrgCopilotBillingSelectedUsersDeleteBodyType,
-    ) -> Response[OrgsOrgCopilotBillingSelectedUsersDeleteResponse200]: ...
+    ) -> Response[
+        OrgsOrgCopilotBillingSelectedUsersDeleteResponse200,
+        OrgsOrgCopilotBillingSelectedUsersDeleteResponse200Type,
+    ]: ...
 
     @overload
     async def async_cancel_copilot_seat_assignment_for_users(
@@ -1040,7 +1128,10 @@ class CopilotClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         selected_usernames: list[str],
-    ) -> Response[OrgsOrgCopilotBillingSelectedUsersDeleteResponse200]: ...
+    ) -> Response[
+        OrgsOrgCopilotBillingSelectedUsersDeleteResponse200,
+        OrgsOrgCopilotBillingSelectedUsersDeleteResponse200Type,
+    ]: ...
 
     async def async_cancel_copilot_seat_assignment_for_users(
         self,
@@ -1049,7 +1140,10 @@ class CopilotClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgCopilotBillingSelectedUsersDeleteBodyType] = UNSET,
         **kwargs,
-    ) -> Response[OrgsOrgCopilotBillingSelectedUsersDeleteResponse200]:
+    ) -> Response[
+        OrgsOrgCopilotBillingSelectedUsersDeleteResponse200,
+        OrgsOrgCopilotBillingSelectedUsersDeleteResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#remove-users-from-the-copilot-subscription-for-an-organization"""
 
         from ..models import (
@@ -1096,7 +1190,7 @@ class CopilotClient:
         per_page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[CopilotUsageMetricsDay]]:
+    ) -> Response[list[CopilotUsageMetricsDay], list[CopilotUsageMetricsDayType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-metrics#get-copilot-metrics-for-an-organization"""
 
         from ..models import BasicError, CopilotUsageMetricsDay
@@ -1135,7 +1229,7 @@ class CopilotClient:
         per_page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[CopilotUsageMetricsDay]]:
+    ) -> Response[list[CopilotUsageMetricsDay], list[CopilotUsageMetricsDayType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-metrics#get-copilot-metrics-for-an-organization"""
 
         from ..models import BasicError, CopilotUsageMetricsDay
@@ -1174,7 +1268,7 @@ class CopilotClient:
         per_page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[CopilotUsageMetrics]]:
+    ) -> Response[list[CopilotUsageMetrics], list[CopilotUsageMetricsType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-usage#get-a-summary-of-copilot-usage-for-organization-members"""
 
         from ..models import BasicError, CopilotUsageMetrics
@@ -1213,7 +1307,7 @@ class CopilotClient:
         per_page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[CopilotUsageMetrics]]:
+    ) -> Response[list[CopilotUsageMetrics], list[CopilotUsageMetricsType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-usage#get-a-summary-of-copilot-usage-for-organization-members"""
 
         from ..models import BasicError, CopilotUsageMetrics
@@ -1249,7 +1343,7 @@ class CopilotClient:
         username: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[CopilotSeatDetails]:
+    ) -> Response[CopilotSeatDetails, CopilotSeatDetailsType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#get-copilot-seat-assignment-details-for-a-user"""
 
         from ..models import BasicError, CopilotSeatDetails
@@ -1277,7 +1371,7 @@ class CopilotClient:
         username: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[CopilotSeatDetails]:
+    ) -> Response[CopilotSeatDetails, CopilotSeatDetailsType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#get-copilot-seat-assignment-details-for-a-user"""
 
         from ..models import BasicError, CopilotSeatDetails
@@ -1309,7 +1403,7 @@ class CopilotClient:
         per_page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[CopilotUsageMetricsDay]]:
+    ) -> Response[list[CopilotUsageMetricsDay], list[CopilotUsageMetricsDayType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-metrics#get-copilot-metrics-for-a-team"""
 
         from ..models import BasicError, CopilotUsageMetricsDay
@@ -1349,7 +1443,7 @@ class CopilotClient:
         per_page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[CopilotUsageMetricsDay]]:
+    ) -> Response[list[CopilotUsageMetricsDay], list[CopilotUsageMetricsDayType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-metrics#get-copilot-metrics-for-a-team"""
 
         from ..models import BasicError, CopilotUsageMetricsDay
@@ -1389,7 +1483,7 @@ class CopilotClient:
         per_page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[CopilotUsageMetrics]]:
+    ) -> Response[list[CopilotUsageMetrics], list[CopilotUsageMetricsType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-usage#get-a-summary-of-copilot-usage-for-a-team"""
 
         from ..models import BasicError, CopilotUsageMetrics
@@ -1429,7 +1523,7 @@ class CopilotClient:
         per_page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[CopilotUsageMetrics]]:
+    ) -> Response[list[CopilotUsageMetrics], list[CopilotUsageMetricsType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-usage#get-a-summary-of-copilot-usage-for-a-team"""
 
         from ..models import BasicError, CopilotUsageMetrics

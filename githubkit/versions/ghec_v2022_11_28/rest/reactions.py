@@ -28,6 +28,7 @@ if TYPE_CHECKING:
 
     from ..models import Reaction
     from ..types import (
+        ReactionType,
         ReposOwnerRepoCommentsCommentIdReactionsPostBodyType,
         ReposOwnerRepoIssuesIssueNumberReactionsPostBodyType,
         ReposOwnerRepoReleasesReleaseIdReactionsPostBodyType,
@@ -70,7 +71,7 @@ class ReactionsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Reaction]]:
+    ) -> Response[list[Reaction], list[ReactionType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#list-reactions-for-a-team-discussion-comment"""
 
         from ..models import Reaction
@@ -108,7 +109,7 @@ class ReactionsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Reaction]]:
+    ) -> Response[list[Reaction], list[ReactionType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#list-reactions-for-a-team-discussion-comment"""
 
         from ..models import Reaction
@@ -141,7 +142,7 @@ class ReactionsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType,
-    ) -> Response[Reaction]: ...
+    ) -> Response[Reaction, ReactionType]: ...
 
     @overload
     def create_for_team_discussion_comment_in_org(
@@ -156,7 +157,7 @@ class ReactionsClient:
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
-    ) -> Response[Reaction]: ...
+    ) -> Response[Reaction, ReactionType]: ...
 
     def create_for_team_discussion_comment_in_org(
         self,
@@ -170,7 +171,7 @@ class ReactionsClient:
             OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[Reaction]:
+    ) -> Response[Reaction, ReactionType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#create-reaction-for-a-team-discussion-comment"""
 
         from ..models import (
@@ -212,7 +213,7 @@ class ReactionsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType,
-    ) -> Response[Reaction]: ...
+    ) -> Response[Reaction, ReactionType]: ...
 
     @overload
     async def async_create_for_team_discussion_comment_in_org(
@@ -227,7 +228,7 @@ class ReactionsClient:
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
-    ) -> Response[Reaction]: ...
+    ) -> Response[Reaction, ReactionType]: ...
 
     async def async_create_for_team_discussion_comment_in_org(
         self,
@@ -241,7 +242,7 @@ class ReactionsClient:
             OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[Reaction]:
+    ) -> Response[Reaction, ReactionType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#create-reaction-for-a-team-discussion-comment"""
 
         from ..models import (
@@ -331,7 +332,7 @@ class ReactionsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Reaction]]:
+    ) -> Response[list[Reaction], list[ReactionType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#list-reactions-for-a-team-discussion"""
 
         from ..models import Reaction
@@ -368,7 +369,7 @@ class ReactionsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Reaction]]:
+    ) -> Response[list[Reaction], list[ReactionType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#list-reactions-for-a-team-discussion"""
 
         from ..models import Reaction
@@ -400,7 +401,7 @@ class ReactionsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBodyType,
-    ) -> Response[Reaction]: ...
+    ) -> Response[Reaction, ReactionType]: ...
 
     @overload
     def create_for_team_discussion_in_org(
@@ -414,7 +415,7 @@ class ReactionsClient:
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
-    ) -> Response[Reaction]: ...
+    ) -> Response[Reaction, ReactionType]: ...
 
     def create_for_team_discussion_in_org(
         self,
@@ -427,7 +428,7 @@ class ReactionsClient:
             OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[Reaction]:
+    ) -> Response[Reaction, ReactionType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#create-reaction-for-a-team-discussion"""
 
         from ..models import (
@@ -467,7 +468,7 @@ class ReactionsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBodyType,
-    ) -> Response[Reaction]: ...
+    ) -> Response[Reaction, ReactionType]: ...
 
     @overload
     async def async_create_for_team_discussion_in_org(
@@ -481,7 +482,7 @@ class ReactionsClient:
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
-    ) -> Response[Reaction]: ...
+    ) -> Response[Reaction, ReactionType]: ...
 
     async def async_create_for_team_discussion_in_org(
         self,
@@ -494,7 +495,7 @@ class ReactionsClient:
             OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[Reaction]:
+    ) -> Response[Reaction, ReactionType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#create-reaction-for-a-team-discussion"""
 
         from ..models import (
@@ -581,7 +582,7 @@ class ReactionsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Reaction]]:
+    ) -> Response[list[Reaction], list[ReactionType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#list-reactions-for-a-commit-comment"""
 
         from ..models import Reaction, BasicError
@@ -621,7 +622,7 @@ class ReactionsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Reaction]]:
+    ) -> Response[list[Reaction], list[ReactionType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#list-reactions-for-a-commit-comment"""
 
         from ..models import Reaction, BasicError
@@ -656,7 +657,7 @@ class ReactionsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoCommentsCommentIdReactionsPostBodyType,
-    ) -> Response[Reaction]: ...
+    ) -> Response[Reaction, ReactionType]: ...
 
     @overload
     def create_for_commit_comment(
@@ -670,7 +671,7 @@ class ReactionsClient:
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
-    ) -> Response[Reaction]: ...
+    ) -> Response[Reaction, ReactionType]: ...
 
     def create_for_commit_comment(
         self,
@@ -681,7 +682,7 @@ class ReactionsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoCommentsCommentIdReactionsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Reaction]:
+    ) -> Response[Reaction, ReactionType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#create-reaction-for-a-commit-comment"""
 
         from ..models import (
@@ -725,7 +726,7 @@ class ReactionsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoCommentsCommentIdReactionsPostBodyType,
-    ) -> Response[Reaction]: ...
+    ) -> Response[Reaction, ReactionType]: ...
 
     @overload
     async def async_create_for_commit_comment(
@@ -739,7 +740,7 @@ class ReactionsClient:
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
-    ) -> Response[Reaction]: ...
+    ) -> Response[Reaction, ReactionType]: ...
 
     async def async_create_for_commit_comment(
         self,
@@ -750,7 +751,7 @@ class ReactionsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoCommentsCommentIdReactionsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Reaction]:
+    ) -> Response[Reaction, ReactionType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#create-reaction-for-a-commit-comment"""
 
         from ..models import (
@@ -841,7 +842,7 @@ class ReactionsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Reaction]]:
+    ) -> Response[list[Reaction], list[ReactionType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#list-reactions-for-an-issue-comment"""
 
         from ..models import Reaction, BasicError
@@ -881,7 +882,7 @@ class ReactionsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Reaction]]:
+    ) -> Response[list[Reaction], list[ReactionType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#list-reactions-for-an-issue-comment"""
 
         from ..models import Reaction, BasicError
@@ -916,7 +917,7 @@ class ReactionsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBodyType,
-    ) -> Response[Reaction]: ...
+    ) -> Response[Reaction, ReactionType]: ...
 
     @overload
     def create_for_issue_comment(
@@ -930,7 +931,7 @@ class ReactionsClient:
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
-    ) -> Response[Reaction]: ...
+    ) -> Response[Reaction, ReactionType]: ...
 
     def create_for_issue_comment(
         self,
@@ -943,7 +944,7 @@ class ReactionsClient:
             ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[Reaction]:
+    ) -> Response[Reaction, ReactionType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#create-reaction-for-an-issue-comment"""
 
         from ..models import (
@@ -987,7 +988,7 @@ class ReactionsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBodyType,
-    ) -> Response[Reaction]: ...
+    ) -> Response[Reaction, ReactionType]: ...
 
     @overload
     async def async_create_for_issue_comment(
@@ -1001,7 +1002,7 @@ class ReactionsClient:
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
-    ) -> Response[Reaction]: ...
+    ) -> Response[Reaction, ReactionType]: ...
 
     async def async_create_for_issue_comment(
         self,
@@ -1014,7 +1015,7 @@ class ReactionsClient:
             ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[Reaction]:
+    ) -> Response[Reaction, ReactionType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#create-reaction-for-an-issue-comment"""
 
         from ..models import (
@@ -1105,7 +1106,7 @@ class ReactionsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Reaction]]:
+    ) -> Response[list[Reaction], list[ReactionType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#list-reactions-for-an-issue"""
 
         from ..models import Reaction, BasicError
@@ -1146,7 +1147,7 @@ class ReactionsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Reaction]]:
+    ) -> Response[list[Reaction], list[ReactionType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#list-reactions-for-an-issue"""
 
         from ..models import Reaction, BasicError
@@ -1182,7 +1183,7 @@ class ReactionsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoIssuesIssueNumberReactionsPostBodyType,
-    ) -> Response[Reaction]: ...
+    ) -> Response[Reaction, ReactionType]: ...
 
     @overload
     def create_for_issue(
@@ -1196,7 +1197,7 @@ class ReactionsClient:
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
-    ) -> Response[Reaction]: ...
+    ) -> Response[Reaction, ReactionType]: ...
 
     def create_for_issue(
         self,
@@ -1207,7 +1208,7 @@ class ReactionsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesIssueNumberReactionsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Reaction]:
+    ) -> Response[Reaction, ReactionType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#create-reaction-for-an-issue"""
 
         from ..models import (
@@ -1251,7 +1252,7 @@ class ReactionsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoIssuesIssueNumberReactionsPostBodyType,
-    ) -> Response[Reaction]: ...
+    ) -> Response[Reaction, ReactionType]: ...
 
     @overload
     async def async_create_for_issue(
@@ -1265,7 +1266,7 @@ class ReactionsClient:
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
-    ) -> Response[Reaction]: ...
+    ) -> Response[Reaction, ReactionType]: ...
 
     async def async_create_for_issue(
         self,
@@ -1276,7 +1277,7 @@ class ReactionsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesIssueNumberReactionsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Reaction]:
+    ) -> Response[Reaction, ReactionType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#create-reaction-for-an-issue"""
 
         from ..models import (
@@ -1367,7 +1368,7 @@ class ReactionsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Reaction]]:
+    ) -> Response[list[Reaction], list[ReactionType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#list-reactions-for-a-pull-request-review-comment"""
 
         from ..models import Reaction, BasicError
@@ -1407,7 +1408,7 @@ class ReactionsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Reaction]]:
+    ) -> Response[list[Reaction], list[ReactionType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#list-reactions-for-a-pull-request-review-comment"""
 
         from ..models import Reaction, BasicError
@@ -1442,7 +1443,7 @@ class ReactionsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoPullsCommentsCommentIdReactionsPostBodyType,
-    ) -> Response[Reaction]: ...
+    ) -> Response[Reaction, ReactionType]: ...
 
     @overload
     def create_for_pull_request_review_comment(
@@ -1456,7 +1457,7 @@ class ReactionsClient:
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
-    ) -> Response[Reaction]: ...
+    ) -> Response[Reaction, ReactionType]: ...
 
     def create_for_pull_request_review_comment(
         self,
@@ -1469,7 +1470,7 @@ class ReactionsClient:
             ReposOwnerRepoPullsCommentsCommentIdReactionsPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[Reaction]:
+    ) -> Response[Reaction, ReactionType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#create-reaction-for-a-pull-request-review-comment"""
 
         from ..models import (
@@ -1513,7 +1514,7 @@ class ReactionsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoPullsCommentsCommentIdReactionsPostBodyType,
-    ) -> Response[Reaction]: ...
+    ) -> Response[Reaction, ReactionType]: ...
 
     @overload
     async def async_create_for_pull_request_review_comment(
@@ -1527,7 +1528,7 @@ class ReactionsClient:
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
-    ) -> Response[Reaction]: ...
+    ) -> Response[Reaction, ReactionType]: ...
 
     async def async_create_for_pull_request_review_comment(
         self,
@@ -1540,7 +1541,7 @@ class ReactionsClient:
             ReposOwnerRepoPullsCommentsCommentIdReactionsPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[Reaction]:
+    ) -> Response[Reaction, ReactionType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#create-reaction-for-a-pull-request-review-comment"""
 
         from ..models import (
@@ -1633,7 +1634,7 @@ class ReactionsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Reaction]]:
+    ) -> Response[list[Reaction], list[ReactionType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#list-reactions-for-a-release"""
 
         from ..models import Reaction, BasicError
@@ -1671,7 +1672,7 @@ class ReactionsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Reaction]]:
+    ) -> Response[list[Reaction], list[ReactionType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#list-reactions-for-a-release"""
 
         from ..models import Reaction, BasicError
@@ -1706,7 +1707,7 @@ class ReactionsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoReleasesReleaseIdReactionsPostBodyType,
-    ) -> Response[Reaction]: ...
+    ) -> Response[Reaction, ReactionType]: ...
 
     @overload
     def create_for_release(
@@ -1718,7 +1719,7 @@ class ReactionsClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         content: Literal["+1", "laugh", "heart", "hooray", "rocket", "eyes"],
-    ) -> Response[Reaction]: ...
+    ) -> Response[Reaction, ReactionType]: ...
 
     def create_for_release(
         self,
@@ -1729,7 +1730,7 @@ class ReactionsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoReleasesReleaseIdReactionsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Reaction]:
+    ) -> Response[Reaction, ReactionType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#create-reaction-for-a-release"""
 
         from ..models import (
@@ -1773,7 +1774,7 @@ class ReactionsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoReleasesReleaseIdReactionsPostBodyType,
-    ) -> Response[Reaction]: ...
+    ) -> Response[Reaction, ReactionType]: ...
 
     @overload
     async def async_create_for_release(
@@ -1785,7 +1786,7 @@ class ReactionsClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         content: Literal["+1", "laugh", "heart", "hooray", "rocket", "eyes"],
-    ) -> Response[Reaction]: ...
+    ) -> Response[Reaction, ReactionType]: ...
 
     async def async_create_for_release(
         self,
@@ -1796,7 +1797,7 @@ class ReactionsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoReleasesReleaseIdReactionsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Reaction]:
+    ) -> Response[Reaction, ReactionType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#create-reaction-for-a-release"""
 
         from ..models import (
@@ -1887,7 +1888,7 @@ class ReactionsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Reaction]]:
+    ) -> Response[list[Reaction], list[ReactionType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#list-reactions-for-a-team-discussion-comment-legacy"""
 
         from ..models import Reaction
@@ -1924,7 +1925,7 @@ class ReactionsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Reaction]]:
+    ) -> Response[list[Reaction], list[ReactionType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#list-reactions-for-a-team-discussion-comment-legacy"""
 
         from ..models import Reaction
@@ -1956,7 +1957,7 @@ class ReactionsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType,
-    ) -> Response[Reaction]: ...
+    ) -> Response[Reaction, ReactionType]: ...
 
     @overload
     def create_for_team_discussion_comment_legacy(
@@ -1970,7 +1971,7 @@ class ReactionsClient:
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
-    ) -> Response[Reaction]: ...
+    ) -> Response[Reaction, ReactionType]: ...
 
     def create_for_team_discussion_comment_legacy(
         self,
@@ -1983,7 +1984,7 @@ class ReactionsClient:
             TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[Reaction]:
+    ) -> Response[Reaction, ReactionType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#create-reaction-for-a-team-discussion-comment-legacy"""
 
         from ..models import (
@@ -2024,7 +2025,7 @@ class ReactionsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType,
-    ) -> Response[Reaction]: ...
+    ) -> Response[Reaction, ReactionType]: ...
 
     @overload
     async def async_create_for_team_discussion_comment_legacy(
@@ -2038,7 +2039,7 @@ class ReactionsClient:
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
-    ) -> Response[Reaction]: ...
+    ) -> Response[Reaction, ReactionType]: ...
 
     async def async_create_for_team_discussion_comment_legacy(
         self,
@@ -2051,7 +2052,7 @@ class ReactionsClient:
             TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[Reaction]:
+    ) -> Response[Reaction, ReactionType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#create-reaction-for-a-team-discussion-comment-legacy"""
 
         from ..models import (
@@ -2096,7 +2097,7 @@ class ReactionsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Reaction]]:
+    ) -> Response[list[Reaction], list[ReactionType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#list-reactions-for-a-team-discussion-legacy"""
 
         from ..models import Reaction
@@ -2132,7 +2133,7 @@ class ReactionsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Reaction]]:
+    ) -> Response[list[Reaction], list[ReactionType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#list-reactions-for-a-team-discussion-legacy"""
 
         from ..models import Reaction
@@ -2163,7 +2164,7 @@ class ReactionsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBodyType,
-    ) -> Response[Reaction]: ...
+    ) -> Response[Reaction, ReactionType]: ...
 
     @overload
     def create_for_team_discussion_legacy(
@@ -2176,7 +2177,7 @@ class ReactionsClient:
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
-    ) -> Response[Reaction]: ...
+    ) -> Response[Reaction, ReactionType]: ...
 
     def create_for_team_discussion_legacy(
         self,
@@ -2188,7 +2189,7 @@ class ReactionsClient:
             TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[Reaction]:
+    ) -> Response[Reaction, ReactionType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#create-reaction-for-a-team-discussion-legacy"""
 
         from ..models import (
@@ -2227,7 +2228,7 @@ class ReactionsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBodyType,
-    ) -> Response[Reaction]: ...
+    ) -> Response[Reaction, ReactionType]: ...
 
     @overload
     async def async_create_for_team_discussion_legacy(
@@ -2240,7 +2241,7 @@ class ReactionsClient:
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
-    ) -> Response[Reaction]: ...
+    ) -> Response[Reaction, ReactionType]: ...
 
     async def async_create_for_team_discussion_legacy(
         self,
@@ -2252,7 +2253,7 @@ class ReactionsClient:
             TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[Reaction]:
+    ) -> Response[Reaction, ReactionType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#create-reaction-for-a-team-discussion-legacy"""
 
         from ..models import (

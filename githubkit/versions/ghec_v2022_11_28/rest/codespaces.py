@@ -26,23 +26,6 @@ if TYPE_CHECKING:
     from githubkit.typing import Missing
     from githubkit.response import Response
 
-    from ..types import (
-        UserCodespacesPostBodyOneof0Type,
-        UserCodespacesPostBodyOneof1Type,
-        OrgsOrgCodespacesAccessPutBodyType,
-        ReposOwnerRepoCodespacesPostBodyType,
-        UserCodespacesCodespaceNamePatchBodyType,
-        UserCodespacesSecretsSecretNamePutBodyType,
-        OrgsOrgCodespacesSecretsSecretNamePutBodyType,
-        UserCodespacesCodespaceNamePublishPostBodyType,
-        UserCodespacesPostBodyOneof1PropPullRequestType,
-        OrgsOrgCodespacesAccessSelectedUsersPostBodyType,
-        OrgsOrgCodespacesAccessSelectedUsersDeleteBodyType,
-        ReposOwnerRepoPullsPullNumberCodespacesPostBodyType,
-        ReposOwnerRepoCodespacesSecretsSecretNamePutBodyType,
-        UserCodespacesSecretsSecretNameRepositoriesPutBodyType,
-        OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBodyType,
-    )
     from ..models import (
         Codespace,
         EmptyObject,
@@ -69,6 +52,47 @@ if TYPE_CHECKING:
         UserCodespacesSecretsSecretNameRepositoriesGetResponse200,
         OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200,
     )
+    from ..types import (
+        CodespaceType,
+        EmptyObjectType,
+        CodespacesSecretType,
+        CodespacesOrgSecretType,
+        CodespacesPublicKeyType,
+        RepoCodespacesSecretType,
+        CodespaceExportDetailsType,
+        CodespacesUserPublicKeyType,
+        CodespaceWithFullRepositoryType,
+        UserCodespacesGetResponse200Type,
+        UserCodespacesPostBodyOneof0Type,
+        UserCodespacesPostBodyOneof1Type,
+        OrgsOrgCodespacesAccessPutBodyType,
+        OrgsOrgCodespacesGetResponse200Type,
+        ReposOwnerRepoCodespacesPostBodyType,
+        UserCodespacesSecretsGetResponse200Type,
+        UserCodespacesCodespaceNamePatchBodyType,
+        OrgsOrgCodespacesSecretsGetResponse200Type,
+        ReposOwnerRepoCodespacesGetResponse200Type,
+        UserCodespacesSecretsSecretNamePutBodyType,
+        CodespacesPermissionsCheckForDevcontainerType,
+        OrgsOrgCodespacesSecretsSecretNamePutBodyType,
+        ReposOwnerRepoCodespacesNewGetResponse200Type,
+        UserCodespacesCodespaceNamePublishPostBodyType,
+        UserCodespacesPostBodyOneof1PropPullRequestType,
+        OrgsOrgCodespacesAccessSelectedUsersPostBodyType,
+        ReposOwnerRepoCodespacesSecretsGetResponse200Type,
+        OrgsOrgCodespacesAccessSelectedUsersDeleteBodyType,
+        OrgsOrgMembersUsernameCodespacesGetResponse200Type,
+        ReposOwnerRepoCodespacesMachinesGetResponse200Type,
+        ReposOwnerRepoPullsPullNumberCodespacesPostBodyType,
+        ReposOwnerRepoCodespacesSecretsSecretNamePutBodyType,
+        UserCodespacesCodespaceNameMachinesGetResponse200Type,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+        UserCodespacesSecretsSecretNameRepositoriesPutBodyType,
+        ReposOwnerRepoCodespacesDevcontainersGetResponse200Type,
+        OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBodyType,
+        UserCodespacesSecretsSecretNameRepositoriesGetResponse200Type,
+        OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200Type,
+    )
 
 
 class CodespacesClient:
@@ -93,7 +117,7 @@ class CodespacesClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[OrgsOrgCodespacesGetResponse200]:
+    ) -> Response[OrgsOrgCodespacesGetResponse200, OrgsOrgCodespacesGetResponse200Type]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/organizations#list-codespaces-for-the-organization"""
 
         from ..models import BasicError, OrgsOrgCodespacesGetResponse200
@@ -128,7 +152,7 @@ class CodespacesClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[OrgsOrgCodespacesGetResponse200]:
+    ) -> Response[OrgsOrgCodespacesGetResponse200, OrgsOrgCodespacesGetResponse200Type]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/organizations#list-codespaces-for-the-organization"""
 
         from ..models import BasicError, OrgsOrgCodespacesGetResponse200
@@ -535,7 +559,10 @@ class CodespacesClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[OrgsOrgCodespacesSecretsGetResponse200]:
+    ) -> Response[
+        OrgsOrgCodespacesSecretsGetResponse200,
+        OrgsOrgCodespacesSecretsGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/organization-secrets#list-organization-secrets"""
 
         from ..models import OrgsOrgCodespacesSecretsGetResponse200
@@ -564,7 +591,10 @@ class CodespacesClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[OrgsOrgCodespacesSecretsGetResponse200]:
+    ) -> Response[
+        OrgsOrgCodespacesSecretsGetResponse200,
+        OrgsOrgCodespacesSecretsGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/organization-secrets#list-organization-secrets"""
 
         from ..models import OrgsOrgCodespacesSecretsGetResponse200
@@ -591,7 +621,7 @@ class CodespacesClient:
         org: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[CodespacesPublicKey]:
+    ) -> Response[CodespacesPublicKey, CodespacesPublicKeyType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/organization-secrets#get-an-organization-public-key"""
 
         from ..models import CodespacesPublicKey
@@ -612,7 +642,7 @@ class CodespacesClient:
         org: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[CodespacesPublicKey]:
+    ) -> Response[CodespacesPublicKey, CodespacesPublicKeyType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/organization-secrets#get-an-organization-public-key"""
 
         from ..models import CodespacesPublicKey
@@ -634,7 +664,7 @@ class CodespacesClient:
         secret_name: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[CodespacesOrgSecret]:
+    ) -> Response[CodespacesOrgSecret, CodespacesOrgSecretType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/organization-secrets#get-an-organization-secret"""
 
         from ..models import CodespacesOrgSecret
@@ -656,7 +686,7 @@ class CodespacesClient:
         secret_name: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[CodespacesOrgSecret]:
+    ) -> Response[CodespacesOrgSecret, CodespacesOrgSecretType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/organization-secrets#get-an-organization-secret"""
 
         from ..models import CodespacesOrgSecret
@@ -680,7 +710,7 @@ class CodespacesClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: OrgsOrgCodespacesSecretsSecretNamePutBodyType,
-    ) -> Response[EmptyObject]: ...
+    ) -> Response[EmptyObject, EmptyObjectType]: ...
 
     @overload
     def create_or_update_org_secret(
@@ -694,7 +724,7 @@ class CodespacesClient:
         key_id: Missing[str] = UNSET,
         visibility: Literal["all", "private", "selected"],
         selected_repository_ids: Missing[list[int]] = UNSET,
-    ) -> Response[EmptyObject]: ...
+    ) -> Response[EmptyObject, EmptyObjectType]: ...
 
     def create_or_update_org_secret(
         self,
@@ -704,7 +734,7 @@ class CodespacesClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgCodespacesSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[EmptyObject]:
+    ) -> Response[EmptyObject, EmptyObjectType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/organization-secrets#create-or-update-an-organization-secret"""
 
         from ..models import (
@@ -747,7 +777,7 @@ class CodespacesClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: OrgsOrgCodespacesSecretsSecretNamePutBodyType,
-    ) -> Response[EmptyObject]: ...
+    ) -> Response[EmptyObject, EmptyObjectType]: ...
 
     @overload
     async def async_create_or_update_org_secret(
@@ -761,7 +791,7 @@ class CodespacesClient:
         key_id: Missing[str] = UNSET,
         visibility: Literal["all", "private", "selected"],
         selected_repository_ids: Missing[list[int]] = UNSET,
-    ) -> Response[EmptyObject]: ...
+    ) -> Response[EmptyObject, EmptyObjectType]: ...
 
     async def async_create_or_update_org_secret(
         self,
@@ -771,7 +801,7 @@ class CodespacesClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgCodespacesSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[EmptyObject]:
+    ) -> Response[EmptyObject, EmptyObjectType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/organization-secrets#create-or-update-an-organization-secret"""
 
         from ..models import (
@@ -862,7 +892,10 @@ class CodespacesClient:
         per_page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200]:
+    ) -> Response[
+        OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200,
+        OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/organization-secrets#list-selected-repositories-for-an-organization-secret"""
 
         from ..models import (
@@ -898,7 +931,10 @@ class CodespacesClient:
         per_page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200]:
+    ) -> Response[
+        OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200,
+        OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/organization-secrets#list-selected-repositories-for-an-organization-secret"""
 
         from ..models import (
@@ -1174,7 +1210,10 @@ class CodespacesClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[OrgsOrgMembersUsernameCodespacesGetResponse200]:
+    ) -> Response[
+        OrgsOrgMembersUsernameCodespacesGetResponse200,
+        OrgsOrgMembersUsernameCodespacesGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/organizations#list-codespaces-for-a-user-in-organization"""
 
         from ..models import BasicError, OrgsOrgMembersUsernameCodespacesGetResponse200
@@ -1210,7 +1249,10 @@ class CodespacesClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[OrgsOrgMembersUsernameCodespacesGetResponse200]:
+    ) -> Response[
+        OrgsOrgMembersUsernameCodespacesGetResponse200,
+        OrgsOrgMembersUsernameCodespacesGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/organizations#list-codespaces-for-a-user-in-organization"""
 
         from ..models import BasicError, OrgsOrgMembersUsernameCodespacesGetResponse200
@@ -1245,7 +1287,10 @@ class CodespacesClient:
         codespace_name: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]:
+    ) -> Response[
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/organizations#delete-a-codespace-from-the-organization"""
 
         from ..models import (
@@ -1277,7 +1322,10 @@ class CodespacesClient:
         codespace_name: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]:
+    ) -> Response[
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/organizations#delete-a-codespace-from-the-organization"""
 
         from ..models import (
@@ -1309,7 +1357,7 @@ class CodespacesClient:
         codespace_name: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Codespace]:
+    ) -> Response[Codespace, CodespaceType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/organizations#stop-a-codespace-for-an-organization-user"""
 
         from ..models import Codespace, BasicError
@@ -1338,7 +1386,7 @@ class CodespacesClient:
         codespace_name: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Codespace]:
+    ) -> Response[Codespace, CodespaceType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/organizations#stop-a-codespace-for-an-organization-user"""
 
         from ..models import Codespace, BasicError
@@ -1368,7 +1416,10 @@ class CodespacesClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ReposOwnerRepoCodespacesGetResponse200]:
+    ) -> Response[
+        ReposOwnerRepoCodespacesGetResponse200,
+        ReposOwnerRepoCodespacesGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/codespaces#list-codespaces-in-a-repository-for-the-authenticated-user"""
 
         from ..models import BasicError, ReposOwnerRepoCodespacesGetResponse200
@@ -1404,7 +1455,10 @@ class CodespacesClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ReposOwnerRepoCodespacesGetResponse200]:
+    ) -> Response[
+        ReposOwnerRepoCodespacesGetResponse200,
+        ReposOwnerRepoCodespacesGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/codespaces#list-codespaces-in-a-repository-for-the-authenticated-user"""
 
         from ..models import BasicError, ReposOwnerRepoCodespacesGetResponse200
@@ -1440,7 +1494,7 @@ class CodespacesClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: Union[ReposOwnerRepoCodespacesPostBodyType, None],
-    ) -> Response[Codespace]: ...
+    ) -> Response[Codespace, CodespaceType]: ...
 
     @overload
     def create_with_repo_for_authenticated_user(
@@ -1463,7 +1517,7 @@ class CodespacesClient:
         idle_timeout_minutes: Missing[int] = UNSET,
         display_name: Missing[str] = UNSET,
         retention_period_minutes: Missing[int] = UNSET,
-    ) -> Response[Codespace]: ...
+    ) -> Response[Codespace, CodespaceType]: ...
 
     def create_with_repo_for_authenticated_user(
         self,
@@ -1473,7 +1527,7 @@ class CodespacesClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[Union[ReposOwnerRepoCodespacesPostBodyType, None]] = UNSET,
         **kwargs,
-    ) -> Response[Codespace]:
+    ) -> Response[Codespace, CodespaceType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/codespaces#create-a-codespace-in-a-repository"""
 
         from typing import Union
@@ -1523,7 +1577,7 @@ class CodespacesClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: Union[ReposOwnerRepoCodespacesPostBodyType, None],
-    ) -> Response[Codespace]: ...
+    ) -> Response[Codespace, CodespaceType]: ...
 
     @overload
     async def async_create_with_repo_for_authenticated_user(
@@ -1546,7 +1600,7 @@ class CodespacesClient:
         idle_timeout_minutes: Missing[int] = UNSET,
         display_name: Missing[str] = UNSET,
         retention_period_minutes: Missing[int] = UNSET,
-    ) -> Response[Codespace]: ...
+    ) -> Response[Codespace, CodespaceType]: ...
 
     async def async_create_with_repo_for_authenticated_user(
         self,
@@ -1556,7 +1610,7 @@ class CodespacesClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[Union[ReposOwnerRepoCodespacesPostBodyType, None]] = UNSET,
         **kwargs,
-    ) -> Response[Codespace]:
+    ) -> Response[Codespace, CodespaceType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/codespaces#create-a-codespace-in-a-repository"""
 
         from typing import Union
@@ -1606,7 +1660,10 @@ class CodespacesClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ReposOwnerRepoCodespacesDevcontainersGetResponse200]:
+    ) -> Response[
+        ReposOwnerRepoCodespacesDevcontainersGetResponse200,
+        ReposOwnerRepoCodespacesDevcontainersGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/codespaces#list-devcontainer-configurations-in-a-repository-for-the-authenticated-user"""
 
         from ..models import (
@@ -1646,7 +1703,10 @@ class CodespacesClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ReposOwnerRepoCodespacesDevcontainersGetResponse200]:
+    ) -> Response[
+        ReposOwnerRepoCodespacesDevcontainersGetResponse200,
+        ReposOwnerRepoCodespacesDevcontainersGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/codespaces#list-devcontainer-configurations-in-a-repository-for-the-authenticated-user"""
 
         from ..models import (
@@ -1687,7 +1747,10 @@ class CodespacesClient:
         ref: Missing[str] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ReposOwnerRepoCodespacesMachinesGetResponse200]:
+    ) -> Response[
+        ReposOwnerRepoCodespacesMachinesGetResponse200,
+        ReposOwnerRepoCodespacesMachinesGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/machines#list-available-machine-types-for-a-repository"""
 
         from ..models import BasicError, ReposOwnerRepoCodespacesMachinesGetResponse200
@@ -1725,7 +1788,10 @@ class CodespacesClient:
         ref: Missing[str] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ReposOwnerRepoCodespacesMachinesGetResponse200]:
+    ) -> Response[
+        ReposOwnerRepoCodespacesMachinesGetResponse200,
+        ReposOwnerRepoCodespacesMachinesGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/machines#list-available-machine-types-for-a-repository"""
 
         from ..models import BasicError, ReposOwnerRepoCodespacesMachinesGetResponse200
@@ -1762,7 +1828,10 @@ class CodespacesClient:
         client_ip: Missing[str] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ReposOwnerRepoCodespacesNewGetResponse200]:
+    ) -> Response[
+        ReposOwnerRepoCodespacesNewGetResponse200,
+        ReposOwnerRepoCodespacesNewGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/codespaces#get-default-attributes-for-a-codespace"""
 
         from ..models import BasicError, ReposOwnerRepoCodespacesNewGetResponse200
@@ -1797,7 +1866,10 @@ class CodespacesClient:
         client_ip: Missing[str] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ReposOwnerRepoCodespacesNewGetResponse200]:
+    ) -> Response[
+        ReposOwnerRepoCodespacesNewGetResponse200,
+        ReposOwnerRepoCodespacesNewGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/codespaces#get-default-attributes-for-a-codespace"""
 
         from ..models import BasicError, ReposOwnerRepoCodespacesNewGetResponse200
@@ -1832,7 +1904,10 @@ class CodespacesClient:
         devcontainer_path: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[CodespacesPermissionsCheckForDevcontainer]:
+    ) -> Response[
+        CodespacesPermissionsCheckForDevcontainer,
+        CodespacesPermissionsCheckForDevcontainerType,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/codespaces#check-if-permissions-defined-by-a-devcontainer-have-been-accepted-by-the-authenticated-user"""
 
         from ..models import (
@@ -1874,7 +1949,10 @@ class CodespacesClient:
         devcontainer_path: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[CodespacesPermissionsCheckForDevcontainer]:
+    ) -> Response[
+        CodespacesPermissionsCheckForDevcontainer,
+        CodespacesPermissionsCheckForDevcontainerType,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/codespaces#check-if-permissions-defined-by-a-devcontainer-have-been-accepted-by-the-authenticated-user"""
 
         from ..models import (
@@ -1916,7 +1994,10 @@ class CodespacesClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ReposOwnerRepoCodespacesSecretsGetResponse200]:
+    ) -> Response[
+        ReposOwnerRepoCodespacesSecretsGetResponse200,
+        ReposOwnerRepoCodespacesSecretsGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/repository-secrets#list-repository-secrets"""
 
         from ..models import ReposOwnerRepoCodespacesSecretsGetResponse200
@@ -1946,7 +2027,10 @@ class CodespacesClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ReposOwnerRepoCodespacesSecretsGetResponse200]:
+    ) -> Response[
+        ReposOwnerRepoCodespacesSecretsGetResponse200,
+        ReposOwnerRepoCodespacesSecretsGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/repository-secrets#list-repository-secrets"""
 
         from ..models import ReposOwnerRepoCodespacesSecretsGetResponse200
@@ -1974,7 +2058,7 @@ class CodespacesClient:
         repo: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[CodespacesPublicKey]:
+    ) -> Response[CodespacesPublicKey, CodespacesPublicKeyType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/repository-secrets#get-a-repository-public-key"""
 
         from ..models import CodespacesPublicKey
@@ -1996,7 +2080,7 @@ class CodespacesClient:
         repo: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[CodespacesPublicKey]:
+    ) -> Response[CodespacesPublicKey, CodespacesPublicKeyType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/repository-secrets#get-a-repository-public-key"""
 
         from ..models import CodespacesPublicKey
@@ -2019,7 +2103,7 @@ class CodespacesClient:
         secret_name: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[RepoCodespacesSecret]:
+    ) -> Response[RepoCodespacesSecret, RepoCodespacesSecretType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/repository-secrets#get-a-repository-secret"""
 
         from ..models import RepoCodespacesSecret
@@ -2042,7 +2126,7 @@ class CodespacesClient:
         secret_name: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[RepoCodespacesSecret]:
+    ) -> Response[RepoCodespacesSecret, RepoCodespacesSecretType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/repository-secrets#get-a-repository-secret"""
 
         from ..models import RepoCodespacesSecret
@@ -2067,7 +2151,7 @@ class CodespacesClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoCodespacesSecretsSecretNamePutBodyType,
-    ) -> Response[EmptyObject]: ...
+    ) -> Response[EmptyObject, EmptyObjectType]: ...
 
     @overload
     def create_or_update_repo_secret(
@@ -2080,7 +2164,7 @@ class CodespacesClient:
         headers: Optional[dict[str, str]] = None,
         encrypted_value: Missing[str] = UNSET,
         key_id: Missing[str] = UNSET,
-    ) -> Response[EmptyObject]: ...
+    ) -> Response[EmptyObject, EmptyObjectType]: ...
 
     def create_or_update_repo_secret(
         self,
@@ -2091,7 +2175,7 @@ class CodespacesClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoCodespacesSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[EmptyObject]:
+    ) -> Response[EmptyObject, EmptyObjectType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/repository-secrets#create-or-update-a-repository-secret"""
 
         from ..models import (
@@ -2131,7 +2215,7 @@ class CodespacesClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoCodespacesSecretsSecretNamePutBodyType,
-    ) -> Response[EmptyObject]: ...
+    ) -> Response[EmptyObject, EmptyObjectType]: ...
 
     @overload
     async def async_create_or_update_repo_secret(
@@ -2144,7 +2228,7 @@ class CodespacesClient:
         headers: Optional[dict[str, str]] = None,
         encrypted_value: Missing[str] = UNSET,
         key_id: Missing[str] = UNSET,
-    ) -> Response[EmptyObject]: ...
+    ) -> Response[EmptyObject, EmptyObjectType]: ...
 
     async def async_create_or_update_repo_secret(
         self,
@@ -2155,7 +2239,7 @@ class CodespacesClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoCodespacesSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[EmptyObject]:
+    ) -> Response[EmptyObject, EmptyObjectType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/repository-secrets#create-or-update-a-repository-secret"""
 
         from ..models import (
@@ -2235,7 +2319,7 @@ class CodespacesClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: Union[ReposOwnerRepoPullsPullNumberCodespacesPostBodyType, None],
-    ) -> Response[Codespace]: ...
+    ) -> Response[Codespace, CodespaceType]: ...
 
     @overload
     def create_with_pr_for_authenticated_user(
@@ -2258,7 +2342,7 @@ class CodespacesClient:
         idle_timeout_minutes: Missing[int] = UNSET,
         display_name: Missing[str] = UNSET,
         retention_period_minutes: Missing[int] = UNSET,
-    ) -> Response[Codespace]: ...
+    ) -> Response[Codespace, CodespaceType]: ...
 
     def create_with_pr_for_authenticated_user(
         self,
@@ -2271,7 +2355,7 @@ class CodespacesClient:
             Union[ReposOwnerRepoPullsPullNumberCodespacesPostBodyType, None]
         ] = UNSET,
         **kwargs,
-    ) -> Response[Codespace]:
+    ) -> Response[Codespace, CodespaceType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/codespaces#create-a-codespace-from-a-pull-request"""
 
         from typing import Union
@@ -2321,7 +2405,7 @@ class CodespacesClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: Union[ReposOwnerRepoPullsPullNumberCodespacesPostBodyType, None],
-    ) -> Response[Codespace]: ...
+    ) -> Response[Codespace, CodespaceType]: ...
 
     @overload
     async def async_create_with_pr_for_authenticated_user(
@@ -2344,7 +2428,7 @@ class CodespacesClient:
         idle_timeout_minutes: Missing[int] = UNSET,
         display_name: Missing[str] = UNSET,
         retention_period_minutes: Missing[int] = UNSET,
-    ) -> Response[Codespace]: ...
+    ) -> Response[Codespace, CodespaceType]: ...
 
     async def async_create_with_pr_for_authenticated_user(
         self,
@@ -2357,7 +2441,7 @@ class CodespacesClient:
             Union[ReposOwnerRepoPullsPullNumberCodespacesPostBodyType, None]
         ] = UNSET,
         **kwargs,
-    ) -> Response[Codespace]:
+    ) -> Response[Codespace, CodespaceType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/codespaces#create-a-codespace-from-a-pull-request"""
 
         from typing import Union
@@ -2405,7 +2489,7 @@ class CodespacesClient:
         repository_id: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[UserCodespacesGetResponse200]:
+    ) -> Response[UserCodespacesGetResponse200, UserCodespacesGetResponse200Type]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/codespaces#list-codespaces-for-the-authenticated-user"""
 
         from ..models import BasicError, UserCodespacesGetResponse200
@@ -2441,7 +2525,7 @@ class CodespacesClient:
         repository_id: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[UserCodespacesGetResponse200]:
+    ) -> Response[UserCodespacesGetResponse200, UserCodespacesGetResponse200Type]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/codespaces#list-codespaces-for-the-authenticated-user"""
 
         from ..models import BasicError, UserCodespacesGetResponse200
@@ -2476,7 +2560,7 @@ class CodespacesClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: Union[UserCodespacesPostBodyOneof0Type, UserCodespacesPostBodyOneof1Type],
-    ) -> Response[Codespace]: ...
+    ) -> Response[Codespace, CodespaceType]: ...
 
     @overload
     def create_for_authenticated_user(
@@ -2498,7 +2582,7 @@ class CodespacesClient:
         idle_timeout_minutes: Missing[int] = UNSET,
         display_name: Missing[str] = UNSET,
         retention_period_minutes: Missing[int] = UNSET,
-    ) -> Response[Codespace]: ...
+    ) -> Response[Codespace, CodespaceType]: ...
 
     @overload
     def create_for_authenticated_user(
@@ -2515,7 +2599,7 @@ class CodespacesClient:
         devcontainer_path: Missing[str] = UNSET,
         working_directory: Missing[str] = UNSET,
         idle_timeout_minutes: Missing[int] = UNSET,
-    ) -> Response[Codespace]: ...
+    ) -> Response[Codespace, CodespaceType]: ...
 
     def create_for_authenticated_user(
         self,
@@ -2525,7 +2609,7 @@ class CodespacesClient:
             Union[UserCodespacesPostBodyOneof0Type, UserCodespacesPostBodyOneof1Type]
         ] = UNSET,
         **kwargs,
-    ) -> Response[Codespace]:
+    ) -> Response[Codespace, CodespaceType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/codespaces#create-a-codespace-for-the-authenticated-user"""
 
         from typing import Union
@@ -2573,7 +2657,7 @@ class CodespacesClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: Union[UserCodespacesPostBodyOneof0Type, UserCodespacesPostBodyOneof1Type],
-    ) -> Response[Codespace]: ...
+    ) -> Response[Codespace, CodespaceType]: ...
 
     @overload
     async def async_create_for_authenticated_user(
@@ -2595,7 +2679,7 @@ class CodespacesClient:
         idle_timeout_minutes: Missing[int] = UNSET,
         display_name: Missing[str] = UNSET,
         retention_period_minutes: Missing[int] = UNSET,
-    ) -> Response[Codespace]: ...
+    ) -> Response[Codespace, CodespaceType]: ...
 
     @overload
     async def async_create_for_authenticated_user(
@@ -2612,7 +2696,7 @@ class CodespacesClient:
         devcontainer_path: Missing[str] = UNSET,
         working_directory: Missing[str] = UNSET,
         idle_timeout_minutes: Missing[int] = UNSET,
-    ) -> Response[Codespace]: ...
+    ) -> Response[Codespace, CodespaceType]: ...
 
     async def async_create_for_authenticated_user(
         self,
@@ -2622,7 +2706,7 @@ class CodespacesClient:
             Union[UserCodespacesPostBodyOneof0Type, UserCodespacesPostBodyOneof1Type]
         ] = UNSET,
         **kwargs,
-    ) -> Response[Codespace]:
+    ) -> Response[Codespace, CodespaceType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/codespaces#create-a-codespace-for-the-authenticated-user"""
 
         from typing import Union
@@ -2670,7 +2754,9 @@ class CodespacesClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[UserCodespacesSecretsGetResponse200]:
+    ) -> Response[
+        UserCodespacesSecretsGetResponse200, UserCodespacesSecretsGetResponse200Type
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/secrets#list-secrets-for-the-authenticated-user"""
 
         from ..models import UserCodespacesSecretsGetResponse200
@@ -2698,7 +2784,9 @@ class CodespacesClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[UserCodespacesSecretsGetResponse200]:
+    ) -> Response[
+        UserCodespacesSecretsGetResponse200, UserCodespacesSecretsGetResponse200Type
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/secrets#list-secrets-for-the-authenticated-user"""
 
         from ..models import UserCodespacesSecretsGetResponse200
@@ -2724,7 +2812,7 @@ class CodespacesClient:
         self,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[CodespacesUserPublicKey]:
+    ) -> Response[CodespacesUserPublicKey, CodespacesUserPublicKeyType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/secrets#get-public-key-for-the-authenticated-user"""
 
         from ..models import CodespacesUserPublicKey
@@ -2744,7 +2832,7 @@ class CodespacesClient:
         self,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[CodespacesUserPublicKey]:
+    ) -> Response[CodespacesUserPublicKey, CodespacesUserPublicKeyType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/secrets#get-public-key-for-the-authenticated-user"""
 
         from ..models import CodespacesUserPublicKey
@@ -2765,7 +2853,7 @@ class CodespacesClient:
         secret_name: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[CodespacesSecret]:
+    ) -> Response[CodespacesSecret, CodespacesSecretType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/secrets#get-a-secret-for-the-authenticated-user"""
 
         from ..models import CodespacesSecret
@@ -2786,7 +2874,7 @@ class CodespacesClient:
         secret_name: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[CodespacesSecret]:
+    ) -> Response[CodespacesSecret, CodespacesSecretType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/secrets#get-a-secret-for-the-authenticated-user"""
 
         from ..models import CodespacesSecret
@@ -2809,7 +2897,7 @@ class CodespacesClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: UserCodespacesSecretsSecretNamePutBodyType,
-    ) -> Response[EmptyObject]: ...
+    ) -> Response[EmptyObject, EmptyObjectType]: ...
 
     @overload
     def create_or_update_secret_for_authenticated_user(
@@ -2821,7 +2909,7 @@ class CodespacesClient:
         encrypted_value: Missing[str] = UNSET,
         key_id: str,
         selected_repository_ids: Missing[list[Union[int, str]]] = UNSET,
-    ) -> Response[EmptyObject]: ...
+    ) -> Response[EmptyObject, EmptyObjectType]: ...
 
     def create_or_update_secret_for_authenticated_user(
         self,
@@ -2830,7 +2918,7 @@ class CodespacesClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[UserCodespacesSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[EmptyObject]:
+    ) -> Response[EmptyObject, EmptyObjectType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/secrets#create-or-update-a-secret-for-the-authenticated-user"""
 
         from ..models import (
@@ -2872,7 +2960,7 @@ class CodespacesClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: UserCodespacesSecretsSecretNamePutBodyType,
-    ) -> Response[EmptyObject]: ...
+    ) -> Response[EmptyObject, EmptyObjectType]: ...
 
     @overload
     async def async_create_or_update_secret_for_authenticated_user(
@@ -2884,7 +2972,7 @@ class CodespacesClient:
         encrypted_value: Missing[str] = UNSET,
         key_id: str,
         selected_repository_ids: Missing[list[Union[int, str]]] = UNSET,
-    ) -> Response[EmptyObject]: ...
+    ) -> Response[EmptyObject, EmptyObjectType]: ...
 
     async def async_create_or_update_secret_for_authenticated_user(
         self,
@@ -2893,7 +2981,7 @@ class CodespacesClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[UserCodespacesSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[EmptyObject]:
+    ) -> Response[EmptyObject, EmptyObjectType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/secrets#create-or-update-a-secret-for-the-authenticated-user"""
 
         from ..models import (
@@ -2969,7 +3057,10 @@ class CodespacesClient:
         secret_name: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[UserCodespacesSecretsSecretNameRepositoriesGetResponse200]:
+    ) -> Response[
+        UserCodespacesSecretsSecretNameRepositoriesGetResponse200,
+        UserCodespacesSecretsSecretNameRepositoriesGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/secrets#list-selected-repositories-for-a-user-secret"""
 
         from ..models import (
@@ -2999,7 +3090,10 @@ class CodespacesClient:
         secret_name: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[UserCodespacesSecretsSecretNameRepositoriesGetResponse200]:
+    ) -> Response[
+        UserCodespacesSecretsSecretNameRepositoriesGetResponse200,
+        UserCodespacesSecretsSecretNameRepositoriesGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/secrets#list-selected-repositories-for-a-user-secret"""
 
         from ..models import (
@@ -3261,7 +3355,7 @@ class CodespacesClient:
         codespace_name: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Codespace]:
+    ) -> Response[Codespace, CodespaceType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/codespaces#get-a-codespace-for-the-authenticated-user"""
 
         from ..models import Codespace, BasicError
@@ -3288,7 +3382,7 @@ class CodespacesClient:
         codespace_name: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Codespace]:
+    ) -> Response[Codespace, CodespaceType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/codespaces#get-a-codespace-for-the-authenticated-user"""
 
         from ..models import Codespace, BasicError
@@ -3315,7 +3409,10 @@ class CodespacesClient:
         codespace_name: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]:
+    ) -> Response[
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/codespaces#delete-a-codespace-for-the-authenticated-user"""
 
         from ..models import (
@@ -3345,7 +3442,10 @@ class CodespacesClient:
         codespace_name: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]:
+    ) -> Response[
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/codespaces#delete-a-codespace-for-the-authenticated-user"""
 
         from ..models import (
@@ -3377,7 +3477,7 @@ class CodespacesClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: Missing[UserCodespacesCodespaceNamePatchBodyType] = UNSET,
-    ) -> Response[Codespace]: ...
+    ) -> Response[Codespace, CodespaceType]: ...
 
     @overload
     def update_for_authenticated_user(
@@ -3389,7 +3489,7 @@ class CodespacesClient:
         machine: Missing[str] = UNSET,
         display_name: Missing[str] = UNSET,
         recent_folders: Missing[list[str]] = UNSET,
-    ) -> Response[Codespace]: ...
+    ) -> Response[Codespace, CodespaceType]: ...
 
     def update_for_authenticated_user(
         self,
@@ -3398,7 +3498,7 @@ class CodespacesClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[UserCodespacesCodespaceNamePatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Codespace]:
+    ) -> Response[Codespace, CodespaceType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/codespaces#update-a-codespace-for-the-authenticated-user"""
 
         from ..models import Codespace, BasicError, UserCodespacesCodespaceNamePatchBody
@@ -3436,7 +3536,7 @@ class CodespacesClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: Missing[UserCodespacesCodespaceNamePatchBodyType] = UNSET,
-    ) -> Response[Codespace]: ...
+    ) -> Response[Codespace, CodespaceType]: ...
 
     @overload
     async def async_update_for_authenticated_user(
@@ -3448,7 +3548,7 @@ class CodespacesClient:
         machine: Missing[str] = UNSET,
         display_name: Missing[str] = UNSET,
         recent_folders: Missing[list[str]] = UNSET,
-    ) -> Response[Codespace]: ...
+    ) -> Response[Codespace, CodespaceType]: ...
 
     async def async_update_for_authenticated_user(
         self,
@@ -3457,7 +3557,7 @@ class CodespacesClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[UserCodespacesCodespaceNamePatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Codespace]:
+    ) -> Response[Codespace, CodespaceType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/codespaces#update-a-codespace-for-the-authenticated-user"""
 
         from ..models import Codespace, BasicError, UserCodespacesCodespaceNamePatchBody
@@ -3493,7 +3593,7 @@ class CodespacesClient:
         codespace_name: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[CodespaceExportDetails]:
+    ) -> Response[CodespaceExportDetails, CodespaceExportDetailsType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/codespaces#export-a-codespace-for-the-authenticated-user"""
 
         from ..models import BasicError, ValidationError, CodespaceExportDetails
@@ -3521,7 +3621,7 @@ class CodespacesClient:
         codespace_name: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[CodespaceExportDetails]:
+    ) -> Response[CodespaceExportDetails, CodespaceExportDetailsType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/codespaces#export-a-codespace-for-the-authenticated-user"""
 
         from ..models import BasicError, ValidationError, CodespaceExportDetails
@@ -3550,7 +3650,7 @@ class CodespacesClient:
         export_id: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[CodespaceExportDetails]:
+    ) -> Response[CodespaceExportDetails, CodespaceExportDetailsType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/codespaces#get-details-about-a-codespace-export"""
 
         from ..models import BasicError, CodespaceExportDetails
@@ -3575,7 +3675,7 @@ class CodespacesClient:
         export_id: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[CodespaceExportDetails]:
+    ) -> Response[CodespaceExportDetails, CodespaceExportDetailsType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/codespaces#get-details-about-a-codespace-export"""
 
         from ..models import BasicError, CodespaceExportDetails
@@ -3599,7 +3699,10 @@ class CodespacesClient:
         codespace_name: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[UserCodespacesCodespaceNameMachinesGetResponse200]:
+    ) -> Response[
+        UserCodespacesCodespaceNameMachinesGetResponse200,
+        UserCodespacesCodespaceNameMachinesGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/machines#list-machine-types-for-a-codespace"""
 
         from ..models import (
@@ -3629,7 +3732,10 @@ class CodespacesClient:
         codespace_name: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[UserCodespacesCodespaceNameMachinesGetResponse200]:
+    ) -> Response[
+        UserCodespacesCodespaceNameMachinesGetResponse200,
+        UserCodespacesCodespaceNameMachinesGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/machines#list-machine-types-for-a-codespace"""
 
         from ..models import (
@@ -3661,7 +3767,7 @@ class CodespacesClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: UserCodespacesCodespaceNamePublishPostBodyType,
-    ) -> Response[CodespaceWithFullRepository]: ...
+    ) -> Response[CodespaceWithFullRepository, CodespaceWithFullRepositoryType]: ...
 
     @overload
     def publish_for_authenticated_user(
@@ -3672,7 +3778,7 @@ class CodespacesClient:
         headers: Optional[dict[str, str]] = None,
         name: Missing[str] = UNSET,
         private: Missing[bool] = UNSET,
-    ) -> Response[CodespaceWithFullRepository]: ...
+    ) -> Response[CodespaceWithFullRepository, CodespaceWithFullRepositoryType]: ...
 
     def publish_for_authenticated_user(
         self,
@@ -3681,7 +3787,7 @@ class CodespacesClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[UserCodespacesCodespaceNamePublishPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[CodespaceWithFullRepository]:
+    ) -> Response[CodespaceWithFullRepository, CodespaceWithFullRepositoryType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/codespaces#create-a-repository-from-an-unpublished-codespace"""
 
         from ..models import (
@@ -3727,7 +3833,7 @@ class CodespacesClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: UserCodespacesCodespaceNamePublishPostBodyType,
-    ) -> Response[CodespaceWithFullRepository]: ...
+    ) -> Response[CodespaceWithFullRepository, CodespaceWithFullRepositoryType]: ...
 
     @overload
     async def async_publish_for_authenticated_user(
@@ -3738,7 +3844,7 @@ class CodespacesClient:
         headers: Optional[dict[str, str]] = None,
         name: Missing[str] = UNSET,
         private: Missing[bool] = UNSET,
-    ) -> Response[CodespaceWithFullRepository]: ...
+    ) -> Response[CodespaceWithFullRepository, CodespaceWithFullRepositoryType]: ...
 
     async def async_publish_for_authenticated_user(
         self,
@@ -3747,7 +3853,7 @@ class CodespacesClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[UserCodespacesCodespaceNamePublishPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[CodespaceWithFullRepository]:
+    ) -> Response[CodespaceWithFullRepository, CodespaceWithFullRepositoryType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/codespaces#create-a-repository-from-an-unpublished-codespace"""
 
         from ..models import (
@@ -3791,7 +3897,7 @@ class CodespacesClient:
         codespace_name: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Codespace]:
+    ) -> Response[Codespace, CodespaceType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/codespaces#start-a-codespace-for-the-authenticated-user"""
 
         from ..models import Codespace, BasicError
@@ -3821,7 +3927,7 @@ class CodespacesClient:
         codespace_name: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Codespace]:
+    ) -> Response[Codespace, CodespaceType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/codespaces#start-a-codespace-for-the-authenticated-user"""
 
         from ..models import Codespace, BasicError
@@ -3851,7 +3957,7 @@ class CodespacesClient:
         codespace_name: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Codespace]:
+    ) -> Response[Codespace, CodespaceType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/codespaces#stop-a-codespace-for-the-authenticated-user"""
 
         from ..models import Codespace, BasicError
@@ -3878,7 +3984,7 @@ class CodespacesClient:
         codespace_name: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Codespace]:
+    ) -> Response[Codespace, CodespaceType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/codespaces/codespaces#stop-a-codespace-for-the-authenticated-user"""
 
         from ..models import Codespace, BasicError

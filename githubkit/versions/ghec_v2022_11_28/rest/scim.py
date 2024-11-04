@@ -26,6 +26,8 @@ if TYPE_CHECKING:
 
     from ..models import ScimUser, ScimUserList
     from ..types import (
+        ScimUserType,
+        ScimUserListType,
         ScimV2OrganizationsOrgUsersPostBodyType,
         ScimV2OrganizationsOrgUsersPostBodyPropNameType,
         ScimV2OrganizationsOrgUsersScimUserIdPutBodyType,
@@ -60,7 +62,7 @@ class ScimClient:
         filter_: Missing[str] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ScimUserList]:
+    ) -> Response[ScimUserList, ScimUserListType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/scim/scim#list-scim-provisioned-identities"""
 
         from ..models import ScimError, ScimUserList
@@ -97,7 +99,7 @@ class ScimClient:
         filter_: Missing[str] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ScimUserList]:
+    ) -> Response[ScimUserList, ScimUserListType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/scim/scim#list-scim-provisioned-identities"""
 
         from ..models import ScimError, ScimUserList
@@ -133,7 +135,7 @@ class ScimClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ScimV2OrganizationsOrgUsersPostBodyType,
-    ) -> Response[ScimUser]: ...
+    ) -> Response[ScimUser, ScimUserType]: ...
 
     @overload
     def provision_and_invite_user(
@@ -150,7 +152,7 @@ class ScimClient:
         external_id: Missing[str] = UNSET,
         groups: Missing[list[str]] = UNSET,
         active: Missing[bool] = UNSET,
-    ) -> Response[ScimUser]: ...
+    ) -> Response[ScimUser, ScimUserType]: ...
 
     def provision_and_invite_user(
         self,
@@ -159,7 +161,7 @@ class ScimClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ScimV2OrganizationsOrgUsersPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[ScimUser]:
+    ) -> Response[ScimUser, ScimUserType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/scim/scim#provision-and-invite-a-scim-user"""
 
         from ..models import ScimUser, ScimError, ScimV2OrganizationsOrgUsersPostBody
@@ -199,7 +201,7 @@ class ScimClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ScimV2OrganizationsOrgUsersPostBodyType,
-    ) -> Response[ScimUser]: ...
+    ) -> Response[ScimUser, ScimUserType]: ...
 
     @overload
     async def async_provision_and_invite_user(
@@ -216,7 +218,7 @@ class ScimClient:
         external_id: Missing[str] = UNSET,
         groups: Missing[list[str]] = UNSET,
         active: Missing[bool] = UNSET,
-    ) -> Response[ScimUser]: ...
+    ) -> Response[ScimUser, ScimUserType]: ...
 
     async def async_provision_and_invite_user(
         self,
@@ -225,7 +227,7 @@ class ScimClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ScimV2OrganizationsOrgUsersPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[ScimUser]:
+    ) -> Response[ScimUser, ScimUserType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/scim/scim#provision-and-invite-a-scim-user"""
 
         from ..models import ScimUser, ScimError, ScimV2OrganizationsOrgUsersPostBody
@@ -264,7 +266,7 @@ class ScimClient:
         scim_user_id: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ScimUser]:
+    ) -> Response[ScimUser, ScimUserType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/scim/scim#get-scim-provisioning-information-for-a-user"""
 
         from ..models import ScimUser, ScimError
@@ -290,7 +292,7 @@ class ScimClient:
         scim_user_id: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ScimUser]:
+    ) -> Response[ScimUser, ScimUserType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/scim/scim#get-scim-provisioning-information-for-a-user"""
 
         from ..models import ScimUser, ScimError
@@ -318,7 +320,7 @@ class ScimClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ScimV2OrganizationsOrgUsersScimUserIdPutBodyType,
-    ) -> Response[ScimUser]: ...
+    ) -> Response[ScimUser, ScimUserType]: ...
 
     @overload
     def set_information_for_provisioned_user(
@@ -336,7 +338,7 @@ class ScimClient:
         user_name: str,
         name: ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropNameType,
         emails: list[ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItemsType],
-    ) -> Response[ScimUser]: ...
+    ) -> Response[ScimUser, ScimUserType]: ...
 
     def set_information_for_provisioned_user(
         self,
@@ -346,7 +348,7 @@ class ScimClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ScimV2OrganizationsOrgUsersScimUserIdPutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[ScimUser]:
+    ) -> Response[ScimUser, ScimUserType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/scim/scim#update-a-provisioned-organization-membership"""
 
         from ..models import (
@@ -390,7 +392,7 @@ class ScimClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ScimV2OrganizationsOrgUsersScimUserIdPutBodyType,
-    ) -> Response[ScimUser]: ...
+    ) -> Response[ScimUser, ScimUserType]: ...
 
     @overload
     async def async_set_information_for_provisioned_user(
@@ -408,7 +410,7 @@ class ScimClient:
         user_name: str,
         name: ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropNameType,
         emails: list[ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItemsType],
-    ) -> Response[ScimUser]: ...
+    ) -> Response[ScimUser, ScimUserType]: ...
 
     async def async_set_information_for_provisioned_user(
         self,
@@ -418,7 +420,7 @@ class ScimClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ScimV2OrganizationsOrgUsersScimUserIdPutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[ScimUser]:
+    ) -> Response[ScimUser, ScimUserType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/scim/scim#update-a-provisioned-organization-membership"""
 
         from ..models import (
@@ -512,7 +514,7 @@ class ScimClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ScimV2OrganizationsOrgUsersScimUserIdPatchBodyType,
-    ) -> Response[ScimUser]: ...
+    ) -> Response[ScimUser, ScimUserType]: ...
 
     @overload
     def update_attribute_for_user(
@@ -526,7 +528,7 @@ class ScimClient:
         operations: list[
             ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsType
         ],
-    ) -> Response[ScimUser]: ...
+    ) -> Response[ScimUser, ScimUserType]: ...
 
     def update_attribute_for_user(
         self,
@@ -536,7 +538,7 @@ class ScimClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ScimV2OrganizationsOrgUsersScimUserIdPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[ScimUser]:
+    ) -> Response[ScimUser, ScimUserType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/scim/scim#update-an-attribute-for-a-scim-user"""
 
         from ..models import (
@@ -583,7 +585,7 @@ class ScimClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ScimV2OrganizationsOrgUsersScimUserIdPatchBodyType,
-    ) -> Response[ScimUser]: ...
+    ) -> Response[ScimUser, ScimUserType]: ...
 
     @overload
     async def async_update_attribute_for_user(
@@ -597,7 +599,7 @@ class ScimClient:
         operations: list[
             ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsType
         ],
-    ) -> Response[ScimUser]: ...
+    ) -> Response[ScimUser, ScimUserType]: ...
 
     async def async_update_attribute_for_user(
         self,
@@ -607,7 +609,7 @@ class ScimClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ScimV2OrganizationsOrgUsersScimUserIdPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[ScimUser]:
+    ) -> Response[ScimUser, ScimUserType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/scim/scim#update-an-attribute-for-a-scim-user"""
 
         from ..models import (

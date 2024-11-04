@@ -37,6 +37,9 @@ if TYPE_CHECKING:
         SnapshotPropJobType,
         SnapshotPropDetectorType,
         SnapshotPropManifestsType,
+        DependencyGraphSpdxSbomType,
+        DependencyGraphDiffItemsType,
+        ReposOwnerRepoDependencyGraphSnapshotsPostResponse201Type,
     )
 
 
@@ -63,7 +66,7 @@ class DependencyGraphClient:
         name: Missing[str] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[DependencyGraphDiffItems]]:
+    ) -> Response[list[DependencyGraphDiffItems], list[DependencyGraphDiffItemsType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/dependency-graph/dependency-review#get-a-diff-of-the-dependencies-between-commits"""
 
         from ..models import BasicError, DependencyGraphDiffItems
@@ -96,7 +99,7 @@ class DependencyGraphClient:
         name: Missing[str] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[DependencyGraphDiffItems]]:
+    ) -> Response[list[DependencyGraphDiffItems], list[DependencyGraphDiffItemsType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/dependency-graph/dependency-review#get-a-diff-of-the-dependencies-between-commits"""
 
         from ..models import BasicError, DependencyGraphDiffItems
@@ -127,7 +130,7 @@ class DependencyGraphClient:
         repo: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[DependencyGraphSpdxSbom]:
+    ) -> Response[DependencyGraphSpdxSbom, DependencyGraphSpdxSbomType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/dependency-graph/sboms#export-a-software-bill-of-materials-sbom-for-a-repository"""
 
         from ..models import BasicError, DependencyGraphSpdxSbom
@@ -153,7 +156,7 @@ class DependencyGraphClient:
         repo: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[DependencyGraphSpdxSbom]:
+    ) -> Response[DependencyGraphSpdxSbom, DependencyGraphSpdxSbomType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/dependency-graph/sboms#export-a-software-bill-of-materials-sbom-for-a-repository"""
 
         from ..models import BasicError, DependencyGraphSpdxSbom
@@ -181,7 +184,10 @@ class DependencyGraphClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: SnapshotType,
-    ) -> Response[ReposOwnerRepoDependencyGraphSnapshotsPostResponse201]: ...
+    ) -> Response[
+        ReposOwnerRepoDependencyGraphSnapshotsPostResponse201,
+        ReposOwnerRepoDependencyGraphSnapshotsPostResponse201Type,
+    ]: ...
 
     @overload
     def create_repository_snapshot(
@@ -199,7 +205,10 @@ class DependencyGraphClient:
         metadata: Missing[MetadataType] = UNSET,
         manifests: Missing[SnapshotPropManifestsType] = UNSET,
         scanned: datetime,
-    ) -> Response[ReposOwnerRepoDependencyGraphSnapshotsPostResponse201]: ...
+    ) -> Response[
+        ReposOwnerRepoDependencyGraphSnapshotsPostResponse201,
+        ReposOwnerRepoDependencyGraphSnapshotsPostResponse201Type,
+    ]: ...
 
     def create_repository_snapshot(
         self,
@@ -209,7 +218,10 @@ class DependencyGraphClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[SnapshotType] = UNSET,
         **kwargs,
-    ) -> Response[ReposOwnerRepoDependencyGraphSnapshotsPostResponse201]:
+    ) -> Response[
+        ReposOwnerRepoDependencyGraphSnapshotsPostResponse201,
+        ReposOwnerRepoDependencyGraphSnapshotsPostResponse201Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/dependency-graph/dependency-submission#create-a-snapshot-of-dependencies-for-a-repository"""
 
         from ..models import (
@@ -246,7 +258,10 @@ class DependencyGraphClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: SnapshotType,
-    ) -> Response[ReposOwnerRepoDependencyGraphSnapshotsPostResponse201]: ...
+    ) -> Response[
+        ReposOwnerRepoDependencyGraphSnapshotsPostResponse201,
+        ReposOwnerRepoDependencyGraphSnapshotsPostResponse201Type,
+    ]: ...
 
     @overload
     async def async_create_repository_snapshot(
@@ -264,7 +279,10 @@ class DependencyGraphClient:
         metadata: Missing[MetadataType] = UNSET,
         manifests: Missing[SnapshotPropManifestsType] = UNSET,
         scanned: datetime,
-    ) -> Response[ReposOwnerRepoDependencyGraphSnapshotsPostResponse201]: ...
+    ) -> Response[
+        ReposOwnerRepoDependencyGraphSnapshotsPostResponse201,
+        ReposOwnerRepoDependencyGraphSnapshotsPostResponse201Type,
+    ]: ...
 
     async def async_create_repository_snapshot(
         self,
@@ -274,7 +292,10 @@ class DependencyGraphClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[SnapshotType] = UNSET,
         **kwargs,
-    ) -> Response[ReposOwnerRepoDependencyGraphSnapshotsPostResponse201]:
+    ) -> Response[
+        ReposOwnerRepoDependencyGraphSnapshotsPostResponse201,
+        ReposOwnerRepoDependencyGraphSnapshotsPostResponse201Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/dependency-graph/dependency-submission#create-a-snapshot-of-dependencies-for-a-repository"""
 
         from ..models import (

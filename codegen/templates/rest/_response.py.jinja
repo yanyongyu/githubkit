@@ -4,6 +4,12 @@
 {%- endif %}
 {% endmacro %}
 
+{% macro build_response_json_type(response) %}
+{% if response and response.response_schema %}
+{{ response.response_schema.get_param_type_string() }}
+{%- endif %}
+{% endmacro %}
+
 {% macro build_error_models(error_responses) %}
 {% for code, response in error_responses.items() %}
 {% if response and response.response_schema %}
@@ -14,7 +20,7 @@
 
 {% macro build_response_type(response) %}
 {% if response and response.response_schema %}
-Response[{{ build_response_model(response) }}]
+Response[{{ build_response_model(response) }}, {{ build_response_json_type(response) }}]
 {%- else %}
 Response
 {%- endif %}

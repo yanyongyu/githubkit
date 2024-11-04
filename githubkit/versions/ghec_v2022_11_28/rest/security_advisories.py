@@ -33,6 +33,9 @@ if TYPE_CHECKING:
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
     )
     from ..types import (
+        FullRepositoryType,
+        GlobalAdvisoryType,
+        RepositoryAdvisoryType,
         RepositoryAdvisoryCreateType,
         RepositoryAdvisoryUpdateType,
         PrivateVulnerabilityReportCreateType,
@@ -40,6 +43,7 @@ if TYPE_CHECKING:
         RepositoryAdvisoryUpdatePropCreditsItemsType,
         RepositoryAdvisoryCreatePropVulnerabilitiesItemsType,
         RepositoryAdvisoryUpdatePropVulnerabilitiesItemsType,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
         PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsType,
     )
 
@@ -101,7 +105,7 @@ class SecurityAdvisoriesClient:
         ] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[GlobalAdvisory]]:
+    ) -> Response[list[GlobalAdvisory], list[GlobalAdvisoryType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/security-advisories/global-advisories#list-global-security-advisories"""
 
         from ..models import BasicError, GlobalAdvisory, ValidationErrorSimple
@@ -185,7 +189,7 @@ class SecurityAdvisoriesClient:
         ] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[GlobalAdvisory]]:
+    ) -> Response[list[GlobalAdvisory], list[GlobalAdvisoryType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/security-advisories/global-advisories#list-global-security-advisories"""
 
         from ..models import BasicError, GlobalAdvisory, ValidationErrorSimple
@@ -232,7 +236,7 @@ class SecurityAdvisoriesClient:
         ghsa_id: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[GlobalAdvisory]:
+    ) -> Response[GlobalAdvisory, GlobalAdvisoryType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/security-advisories/global-advisories#get-a-global-security-advisory"""
 
         from ..models import BasicError, GlobalAdvisory
@@ -256,7 +260,7 @@ class SecurityAdvisoriesClient:
         ghsa_id: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[GlobalAdvisory]:
+    ) -> Response[GlobalAdvisory, GlobalAdvisoryType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/security-advisories/global-advisories#get-a-global-security-advisory"""
 
         from ..models import BasicError, GlobalAdvisory
@@ -286,7 +290,7 @@ class SecurityAdvisoriesClient:
         state: Missing[Literal["triage", "draft", "published", "closed"]] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[RepositoryAdvisory]]:
+    ) -> Response[list[RepositoryAdvisory], list[RepositoryAdvisoryType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/security-advisories/repository-advisories#list-repository-security-advisories-for-an-organization"""
 
         from ..models import BasicError, RepositoryAdvisory
@@ -327,7 +331,7 @@ class SecurityAdvisoriesClient:
         state: Missing[Literal["triage", "draft", "published", "closed"]] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[RepositoryAdvisory]]:
+    ) -> Response[list[RepositoryAdvisory], list[RepositoryAdvisoryType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/security-advisories/repository-advisories#list-repository-security-advisories-for-an-organization"""
 
         from ..models import BasicError, RepositoryAdvisory
@@ -369,7 +373,7 @@ class SecurityAdvisoriesClient:
         state: Missing[Literal["triage", "draft", "published", "closed"]] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[RepositoryAdvisory]]:
+    ) -> Response[list[RepositoryAdvisory], list[RepositoryAdvisoryType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/security-advisories/repository-advisories#list-repository-security-advisories"""
 
         from ..models import BasicError, RepositoryAdvisory
@@ -411,7 +415,7 @@ class SecurityAdvisoriesClient:
         state: Missing[Literal["triage", "draft", "published", "closed"]] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[RepositoryAdvisory]]:
+    ) -> Response[list[RepositoryAdvisory], list[RepositoryAdvisoryType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/security-advisories/repository-advisories#list-repository-security-advisories"""
 
         from ..models import BasicError, RepositoryAdvisory
@@ -449,7 +453,7 @@ class SecurityAdvisoriesClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: RepositoryAdvisoryCreateType,
-    ) -> Response[RepositoryAdvisory]: ...
+    ) -> Response[RepositoryAdvisory, RepositoryAdvisoryType]: ...
 
     @overload
     def create_repository_advisory(
@@ -472,7 +476,7 @@ class SecurityAdvisoriesClient:
         ] = UNSET,
         cvss_vector_string: Missing[Union[str, None]] = UNSET,
         start_private_fork: Missing[bool] = UNSET,
-    ) -> Response[RepositoryAdvisory]: ...
+    ) -> Response[RepositoryAdvisory, RepositoryAdvisoryType]: ...
 
     def create_repository_advisory(
         self,
@@ -482,7 +486,7 @@ class SecurityAdvisoriesClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[RepositoryAdvisoryCreateType] = UNSET,
         **kwargs,
-    ) -> Response[RepositoryAdvisory]:
+    ) -> Response[RepositoryAdvisory, RepositoryAdvisoryType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/security-advisories/repository-advisories#create-a-repository-security-advisory"""
 
         from ..models import (
@@ -526,7 +530,7 @@ class SecurityAdvisoriesClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: RepositoryAdvisoryCreateType,
-    ) -> Response[RepositoryAdvisory]: ...
+    ) -> Response[RepositoryAdvisory, RepositoryAdvisoryType]: ...
 
     @overload
     async def async_create_repository_advisory(
@@ -549,7 +553,7 @@ class SecurityAdvisoriesClient:
         ] = UNSET,
         cvss_vector_string: Missing[Union[str, None]] = UNSET,
         start_private_fork: Missing[bool] = UNSET,
-    ) -> Response[RepositoryAdvisory]: ...
+    ) -> Response[RepositoryAdvisory, RepositoryAdvisoryType]: ...
 
     async def async_create_repository_advisory(
         self,
@@ -559,7 +563,7 @@ class SecurityAdvisoriesClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[RepositoryAdvisoryCreateType] = UNSET,
         **kwargs,
-    ) -> Response[RepositoryAdvisory]:
+    ) -> Response[RepositoryAdvisory, RepositoryAdvisoryType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/security-advisories/repository-advisories#create-a-repository-security-advisory"""
 
         from ..models import (
@@ -603,7 +607,7 @@ class SecurityAdvisoriesClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: PrivateVulnerabilityReportCreateType,
-    ) -> Response[RepositoryAdvisory]: ...
+    ) -> Response[RepositoryAdvisory, RepositoryAdvisoryType]: ...
 
     @overload
     def create_private_vulnerability_report(
@@ -626,7 +630,7 @@ class SecurityAdvisoriesClient:
         ] = UNSET,
         cvss_vector_string: Missing[Union[str, None]] = UNSET,
         start_private_fork: Missing[bool] = UNSET,
-    ) -> Response[RepositoryAdvisory]: ...
+    ) -> Response[RepositoryAdvisory, RepositoryAdvisoryType]: ...
 
     def create_private_vulnerability_report(
         self,
@@ -636,7 +640,7 @@ class SecurityAdvisoriesClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[PrivateVulnerabilityReportCreateType] = UNSET,
         **kwargs,
-    ) -> Response[RepositoryAdvisory]:
+    ) -> Response[RepositoryAdvisory, RepositoryAdvisoryType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/security-advisories/repository-advisories#privately-report-a-security-vulnerability"""
 
         from ..models import (
@@ -680,7 +684,7 @@ class SecurityAdvisoriesClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: PrivateVulnerabilityReportCreateType,
-    ) -> Response[RepositoryAdvisory]: ...
+    ) -> Response[RepositoryAdvisory, RepositoryAdvisoryType]: ...
 
     @overload
     async def async_create_private_vulnerability_report(
@@ -703,7 +707,7 @@ class SecurityAdvisoriesClient:
         ] = UNSET,
         cvss_vector_string: Missing[Union[str, None]] = UNSET,
         start_private_fork: Missing[bool] = UNSET,
-    ) -> Response[RepositoryAdvisory]: ...
+    ) -> Response[RepositoryAdvisory, RepositoryAdvisoryType]: ...
 
     async def async_create_private_vulnerability_report(
         self,
@@ -713,7 +717,7 @@ class SecurityAdvisoriesClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[PrivateVulnerabilityReportCreateType] = UNSET,
         **kwargs,
-    ) -> Response[RepositoryAdvisory]:
+    ) -> Response[RepositoryAdvisory, RepositoryAdvisoryType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/security-advisories/repository-advisories#privately-report-a-security-vulnerability"""
 
         from ..models import (
@@ -756,7 +760,7 @@ class SecurityAdvisoriesClient:
         ghsa_id: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[RepositoryAdvisory]:
+    ) -> Response[RepositoryAdvisory, RepositoryAdvisoryType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/security-advisories/repository-advisories#get-a-repository-security-advisory"""
 
         from ..models import BasicError, RepositoryAdvisory
@@ -783,7 +787,7 @@ class SecurityAdvisoriesClient:
         ghsa_id: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[RepositoryAdvisory]:
+    ) -> Response[RepositoryAdvisory, RepositoryAdvisoryType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/security-advisories/repository-advisories#get-a-repository-security-advisory"""
 
         from ..models import BasicError, RepositoryAdvisory
@@ -812,7 +816,7 @@ class SecurityAdvisoriesClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: RepositoryAdvisoryUpdateType,
-    ) -> Response[RepositoryAdvisory]: ...
+    ) -> Response[RepositoryAdvisory, RepositoryAdvisoryType]: ...
 
     @overload
     def update_repository_advisory(
@@ -840,7 +844,7 @@ class SecurityAdvisoriesClient:
         state: Missing[Literal["published", "closed", "draft"]] = UNSET,
         collaborating_users: Missing[Union[list[str], None]] = UNSET,
         collaborating_teams: Missing[Union[list[str], None]] = UNSET,
-    ) -> Response[RepositoryAdvisory]: ...
+    ) -> Response[RepositoryAdvisory, RepositoryAdvisoryType]: ...
 
     def update_repository_advisory(
         self,
@@ -851,7 +855,7 @@ class SecurityAdvisoriesClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[RepositoryAdvisoryUpdateType] = UNSET,
         **kwargs,
-    ) -> Response[RepositoryAdvisory]:
+    ) -> Response[RepositoryAdvisory, RepositoryAdvisoryType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/security-advisories/repository-advisories#update-a-repository-security-advisory"""
 
         from ..models import (
@@ -896,7 +900,7 @@ class SecurityAdvisoriesClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: RepositoryAdvisoryUpdateType,
-    ) -> Response[RepositoryAdvisory]: ...
+    ) -> Response[RepositoryAdvisory, RepositoryAdvisoryType]: ...
 
     @overload
     async def async_update_repository_advisory(
@@ -924,7 +928,7 @@ class SecurityAdvisoriesClient:
         state: Missing[Literal["published", "closed", "draft"]] = UNSET,
         collaborating_users: Missing[Union[list[str], None]] = UNSET,
         collaborating_teams: Missing[Union[list[str], None]] = UNSET,
-    ) -> Response[RepositoryAdvisory]: ...
+    ) -> Response[RepositoryAdvisory, RepositoryAdvisoryType]: ...
 
     async def async_update_repository_advisory(
         self,
@@ -935,7 +939,7 @@ class SecurityAdvisoriesClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[RepositoryAdvisoryUpdateType] = UNSET,
         **kwargs,
-    ) -> Response[RepositoryAdvisory]:
+    ) -> Response[RepositoryAdvisory, RepositoryAdvisoryType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/security-advisories/repository-advisories#update-a-repository-security-advisory"""
 
         from ..models import (
@@ -978,7 +982,10 @@ class SecurityAdvisoriesClient:
         ghsa_id: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]:
+    ) -> Response[
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/security-advisories/repository-advisories#request-a-cve-for-a-repository-security-advisory"""
 
         from ..models import (
@@ -1011,7 +1018,10 @@ class SecurityAdvisoriesClient:
         ghsa_id: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]:
+    ) -> Response[
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/security-advisories/repository-advisories#request-a-cve-for-a-repository-security-advisory"""
 
         from ..models import (
@@ -1044,7 +1054,7 @@ class SecurityAdvisoriesClient:
         ghsa_id: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[FullRepository]:
+    ) -> Response[FullRepository, FullRepositoryType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/security-advisories/repository-advisories#create-a-temporary-private-fork"""
 
         from ..models import BasicError, FullRepository, ValidationError
@@ -1073,7 +1083,7 @@ class SecurityAdvisoriesClient:
         ghsa_id: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[FullRepository]:
+    ) -> Response[FullRepository, FullRepositoryType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/security-advisories/repository-advisories#create-a-temporary-private-fork"""
 
         from ..models import BasicError, FullRepository, ValidationError

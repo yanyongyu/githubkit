@@ -60,8 +60,38 @@ if TYPE_CHECKING:
         ReviewRequestRemovedIssueEvent,
     )
     from ..types import (
+        IssueType,
+        LabelType,
+        MilestoneType,
+        IssueEventType,
+        SimpleUserType,
+        IssueCommentType,
+        LockedIssueEventType,
+        LabeledIssueEventType,
+        RenamedIssueEventType,
+        AssignedIssueEventType,
+        UnlabeledIssueEventType,
+        MilestonedIssueEventType,
+        TimelineCommentEventType,
+        UnassignedIssueEventType,
+        StateChangeIssueEventType,
+        TimelineReviewedEventType,
+        DemilestonedIssueEventType,
+        TimelineCommittedEventType,
+        AddedToProjectIssueEventType,
+        ReviewDismissedIssueEventType,
+        ReviewRequestedIssueEventType,
+        TimelineAssignedIssueEventType,
+        TimelineLineCommentedEventType,
+        RemovedFromProjectIssueEventType,
         ReposOwnerRepoIssuesPostBodyType,
         ReposOwnerRepoLabelsPostBodyType,
+        TimelineCommitCommentedEventType,
+        TimelineCrossReferencedEventType,
+        TimelineUnassignedIssueEventType,
+        ConvertedNoteToIssueIssueEventType,
+        MovedColumnInProjectIssueEventType,
+        ReviewRequestRemovedIssueEventType,
         ReposOwnerRepoMilestonesPostBodyType,
         ReposOwnerRepoLabelsNamePatchBodyType,
         ReposOwnerRepoIssuesIssueNumberPatchBodyType,
@@ -117,7 +147,7 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Issue]]:
+    ) -> Response[list[Issue], list[IssueType]]:
         """See also: https://docs.github.com/rest/issues/issues#list-issues-assigned-to-the-authenticated-user"""
 
         from ..models import Issue, BasicError, ValidationError
@@ -171,7 +201,7 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Issue]]:
+    ) -> Response[list[Issue], list[IssueType]]:
         """See also: https://docs.github.com/rest/issues/issues#list-issues-assigned-to-the-authenticated-user"""
 
         from ..models import Issue, BasicError, ValidationError
@@ -222,7 +252,7 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Issue]]:
+    ) -> Response[list[Issue], list[IssueType]]:
         """See also: https://docs.github.com/rest/issues/issues#list-organization-issues-assigned-to-the-authenticated-user"""
 
         from ..models import Issue, BasicError
@@ -268,7 +298,7 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Issue]]:
+    ) -> Response[list[Issue], list[IssueType]]:
         """See also: https://docs.github.com/rest/issues/issues#list-organization-issues-assigned-to-the-authenticated-user"""
 
         from ..models import Issue, BasicError
@@ -307,7 +337,7 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[SimpleUser]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """See also: https://docs.github.com/rest/issues/assignees#list-assignees"""
 
         from ..models import BasicError, SimpleUser
@@ -340,7 +370,7 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[SimpleUser]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """See also: https://docs.github.com/rest/issues/assignees#list-assignees"""
 
         from ..models import BasicError, SimpleUser
@@ -432,7 +462,7 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Issue]]:
+    ) -> Response[list[Issue], list[IssueType]]:
         """See also: https://docs.github.com/rest/issues/issues#list-repository-issues"""
 
         from ..models import Issue, BasicError, ValidationError
@@ -484,7 +514,7 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Issue]]:
+    ) -> Response[list[Issue], list[IssueType]]:
         """See also: https://docs.github.com/rest/issues/issues#list-repository-issues"""
 
         from ..models import Issue, BasicError, ValidationError
@@ -527,7 +557,7 @@ class IssuesClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoIssuesPostBodyType,
-    ) -> Response[Issue]: ...
+    ) -> Response[Issue, IssueType]: ...
 
     @overload
     def create(
@@ -545,7 +575,7 @@ class IssuesClient:
             list[Union[str, ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1Type]]
         ] = UNSET,
         assignees: Missing[list[str]] = UNSET,
-    ) -> Response[Issue]: ...
+    ) -> Response[Issue, IssueType]: ...
 
     def create(
         self,
@@ -555,7 +585,7 @@ class IssuesClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Issue]:
+    ) -> Response[Issue, IssueType]:
         """See also: https://docs.github.com/rest/issues/issues#create-an-issue"""
 
         from ..models import (
@@ -603,7 +633,7 @@ class IssuesClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoIssuesPostBodyType,
-    ) -> Response[Issue]: ...
+    ) -> Response[Issue, IssueType]: ...
 
     @overload
     async def async_create(
@@ -621,7 +651,7 @@ class IssuesClient:
             list[Union[str, ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1Type]]
         ] = UNSET,
         assignees: Missing[list[str]] = UNSET,
-    ) -> Response[Issue]: ...
+    ) -> Response[Issue, IssueType]: ...
 
     async def async_create(
         self,
@@ -631,7 +661,7 @@ class IssuesClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Issue]:
+    ) -> Response[Issue, IssueType]:
         """See also: https://docs.github.com/rest/issues/issues#create-an-issue"""
 
         from ..models import (
@@ -682,7 +712,7 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[IssueComment]]:
+    ) -> Response[list[IssueComment], list[IssueCommentType]]:
         """See also: https://docs.github.com/rest/issues/comments#list-issue-comments-for-a-repository"""
 
         from ..models import BasicError, IssueComment, ValidationError
@@ -722,7 +752,7 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[IssueComment]]:
+    ) -> Response[list[IssueComment], list[IssueCommentType]]:
         """See also: https://docs.github.com/rest/issues/comments#list-issue-comments-for-a-repository"""
 
         from ..models import BasicError, IssueComment, ValidationError
@@ -758,7 +788,7 @@ class IssuesClient:
         comment_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[IssueComment]:
+    ) -> Response[IssueComment, IssueCommentType]:
         """See also: https://docs.github.com/rest/issues/comments#get-an-issue-comment"""
 
         from ..models import BasicError, IssueComment
@@ -784,7 +814,7 @@ class IssuesClient:
         comment_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[IssueComment]:
+    ) -> Response[IssueComment, IssueCommentType]:
         """See also: https://docs.github.com/rest/issues/comments#get-an-issue-comment"""
 
         from ..models import BasicError, IssueComment
@@ -852,7 +882,7 @@ class IssuesClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoIssuesCommentsCommentIdPatchBodyType,
-    ) -> Response[IssueComment]: ...
+    ) -> Response[IssueComment, IssueCommentType]: ...
 
     @overload
     def update_comment(
@@ -864,7 +894,7 @@ class IssuesClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         body: str,
-    ) -> Response[IssueComment]: ...
+    ) -> Response[IssueComment, IssueCommentType]: ...
 
     def update_comment(
         self,
@@ -875,7 +905,7 @@ class IssuesClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesCommentsCommentIdPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[IssueComment]:
+    ) -> Response[IssueComment, IssueCommentType]:
         """See also: https://docs.github.com/rest/issues/comments#update-an-issue-comment"""
 
         from ..models import (
@@ -919,7 +949,7 @@ class IssuesClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoIssuesCommentsCommentIdPatchBodyType,
-    ) -> Response[IssueComment]: ...
+    ) -> Response[IssueComment, IssueCommentType]: ...
 
     @overload
     async def async_update_comment(
@@ -931,7 +961,7 @@ class IssuesClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         body: str,
-    ) -> Response[IssueComment]: ...
+    ) -> Response[IssueComment, IssueCommentType]: ...
 
     async def async_update_comment(
         self,
@@ -942,7 +972,7 @@ class IssuesClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesCommentsCommentIdPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[IssueComment]:
+    ) -> Response[IssueComment, IssueCommentType]:
         """See also: https://docs.github.com/rest/issues/comments#update-an-issue-comment"""
 
         from ..models import (
@@ -985,7 +1015,7 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[IssueEvent]]:
+    ) -> Response[list[IssueEvent], list[IssueEventType]]:
         """See also: https://docs.github.com/rest/issues/events#list-issue-events-for-a-repository"""
 
         from ..models import IssueEvent, ValidationError
@@ -1018,7 +1048,7 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[IssueEvent]]:
+    ) -> Response[list[IssueEvent], list[IssueEventType]]:
         """See also: https://docs.github.com/rest/issues/events#list-issue-events-for-a-repository"""
 
         from ..models import IssueEvent, ValidationError
@@ -1050,7 +1080,7 @@ class IssuesClient:
         event_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[IssueEvent]:
+    ) -> Response[IssueEvent, IssueEventType]:
         """See also: https://docs.github.com/rest/issues/events#get-an-issue-event"""
 
         from ..models import BasicError, IssueEvent
@@ -1078,7 +1108,7 @@ class IssuesClient:
         event_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[IssueEvent]:
+    ) -> Response[IssueEvent, IssueEventType]:
         """See also: https://docs.github.com/rest/issues/events#get-an-issue-event"""
 
         from ..models import BasicError, IssueEvent
@@ -1106,7 +1136,7 @@ class IssuesClient:
         issue_number: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Issue]:
+    ) -> Response[Issue, IssueType]:
         """See also: https://docs.github.com/rest/issues/issues#get-an-issue"""
 
         from ..models import Issue, BasicError
@@ -1133,7 +1163,7 @@ class IssuesClient:
         issue_number: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Issue]:
+    ) -> Response[Issue, IssueType]:
         """See also: https://docs.github.com/rest/issues/issues#get-an-issue"""
 
         from ..models import Issue, BasicError
@@ -1162,7 +1192,7 @@ class IssuesClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesIssueNumberPatchBodyType] = UNSET,
-    ) -> Response[Issue]: ...
+    ) -> Response[Issue, IssueType]: ...
 
     @overload
     def update(
@@ -1190,7 +1220,7 @@ class IssuesClient:
             ]
         ] = UNSET,
         assignees: Missing[list[str]] = UNSET,
-    ) -> Response[Issue]: ...
+    ) -> Response[Issue, IssueType]: ...
 
     def update(
         self,
@@ -1201,7 +1231,7 @@ class IssuesClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesIssueNumberPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Issue]:
+    ) -> Response[Issue, IssueType]:
         """See also: https://docs.github.com/rest/issues/issues#update-an-issue"""
 
         from ..models import (
@@ -1249,7 +1279,7 @@ class IssuesClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesIssueNumberPatchBodyType] = UNSET,
-    ) -> Response[Issue]: ...
+    ) -> Response[Issue, IssueType]: ...
 
     @overload
     async def async_update(
@@ -1277,7 +1307,7 @@ class IssuesClient:
             ]
         ] = UNSET,
         assignees: Missing[list[str]] = UNSET,
-    ) -> Response[Issue]: ...
+    ) -> Response[Issue, IssueType]: ...
 
     async def async_update(
         self,
@@ -1288,7 +1318,7 @@ class IssuesClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesIssueNumberPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Issue]:
+    ) -> Response[Issue, IssueType]:
         """See also: https://docs.github.com/rest/issues/issues#update-an-issue"""
 
         from ..models import (
@@ -1336,7 +1366,7 @@ class IssuesClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType] = UNSET,
-    ) -> Response[Issue]: ...
+    ) -> Response[Issue, IssueType]: ...
 
     @overload
     def add_assignees(
@@ -1348,7 +1378,7 @@ class IssuesClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         assignees: Missing[list[str]] = UNSET,
-    ) -> Response[Issue]: ...
+    ) -> Response[Issue, IssueType]: ...
 
     def add_assignees(
         self,
@@ -1359,7 +1389,7 @@ class IssuesClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Issue]:
+    ) -> Response[Issue, IssueType]:
         """See also: https://docs.github.com/rest/issues/assignees#add-assignees-to-an-issue"""
 
         from ..models import Issue, ReposOwnerRepoIssuesIssueNumberAssigneesPostBody
@@ -1396,7 +1426,7 @@ class IssuesClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType] = UNSET,
-    ) -> Response[Issue]: ...
+    ) -> Response[Issue, IssueType]: ...
 
     @overload
     async def async_add_assignees(
@@ -1408,7 +1438,7 @@ class IssuesClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         assignees: Missing[list[str]] = UNSET,
-    ) -> Response[Issue]: ...
+    ) -> Response[Issue, IssueType]: ...
 
     async def async_add_assignees(
         self,
@@ -1419,7 +1449,7 @@ class IssuesClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Issue]:
+    ) -> Response[Issue, IssueType]:
         """See also: https://docs.github.com/rest/issues/assignees#add-assignees-to-an-issue"""
 
         from ..models import Issue, ReposOwnerRepoIssuesIssueNumberAssigneesPostBody
@@ -1456,7 +1486,7 @@ class IssuesClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyType] = UNSET,
-    ) -> Response[Issue]: ...
+    ) -> Response[Issue, IssueType]: ...
 
     @overload
     def remove_assignees(
@@ -1468,7 +1498,7 @@ class IssuesClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         assignees: Missing[list[str]] = UNSET,
-    ) -> Response[Issue]: ...
+    ) -> Response[Issue, IssueType]: ...
 
     def remove_assignees(
         self,
@@ -1479,7 +1509,7 @@ class IssuesClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Issue]:
+    ) -> Response[Issue, IssueType]:
         """See also: https://docs.github.com/rest/issues/assignees#remove-assignees-from-an-issue"""
 
         from ..models import Issue, ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBody
@@ -1516,7 +1546,7 @@ class IssuesClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyType] = UNSET,
-    ) -> Response[Issue]: ...
+    ) -> Response[Issue, IssueType]: ...
 
     @overload
     async def async_remove_assignees(
@@ -1528,7 +1558,7 @@ class IssuesClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         assignees: Missing[list[str]] = UNSET,
-    ) -> Response[Issue]: ...
+    ) -> Response[Issue, IssueType]: ...
 
     async def async_remove_assignees(
         self,
@@ -1539,7 +1569,7 @@ class IssuesClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Issue]:
+    ) -> Response[Issue, IssueType]:
         """See also: https://docs.github.com/rest/issues/assignees#remove-assignees-from-an-issue"""
 
         from ..models import Issue, ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBody
@@ -1629,7 +1659,7 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[IssueComment]]:
+    ) -> Response[list[IssueComment], list[IssueCommentType]]:
         """See also: https://docs.github.com/rest/issues/comments#list-issue-comments"""
 
         from ..models import BasicError, IssueComment
@@ -1666,7 +1696,7 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[IssueComment]]:
+    ) -> Response[list[IssueComment], list[IssueCommentType]]:
         """See also: https://docs.github.com/rest/issues/comments#list-issue-comments"""
 
         from ..models import BasicError, IssueComment
@@ -1702,7 +1732,7 @@ class IssuesClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoIssuesIssueNumberCommentsPostBodyType,
-    ) -> Response[IssueComment]: ...
+    ) -> Response[IssueComment, IssueCommentType]: ...
 
     @overload
     def create_comment(
@@ -1714,7 +1744,7 @@ class IssuesClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         body: str,
-    ) -> Response[IssueComment]: ...
+    ) -> Response[IssueComment, IssueCommentType]: ...
 
     def create_comment(
         self,
@@ -1725,7 +1755,7 @@ class IssuesClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesIssueNumberCommentsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[IssueComment]:
+    ) -> Response[IssueComment, IssueCommentType]:
         """See also: https://docs.github.com/rest/issues/comments#create-an-issue-comment"""
 
         from ..models import (
@@ -1773,7 +1803,7 @@ class IssuesClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoIssuesIssueNumberCommentsPostBodyType,
-    ) -> Response[IssueComment]: ...
+    ) -> Response[IssueComment, IssueCommentType]: ...
 
     @overload
     async def async_create_comment(
@@ -1785,7 +1815,7 @@ class IssuesClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         body: str,
-    ) -> Response[IssueComment]: ...
+    ) -> Response[IssueComment, IssueCommentType]: ...
 
     async def async_create_comment(
         self,
@@ -1796,7 +1826,7 @@ class IssuesClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesIssueNumberCommentsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[IssueComment]:
+    ) -> Response[IssueComment, IssueCommentType]:
         """See also: https://docs.github.com/rest/issues/comments#create-an-issue-comment"""
 
         from ..models import (
@@ -1863,7 +1893,26 @@ class IssuesClient:
                 RemovedFromProjectIssueEvent,
                 ConvertedNoteToIssueIssueEvent,
             ]
-        ]
+        ],
+        list[
+            Union[
+                LabeledIssueEventType,
+                UnlabeledIssueEventType,
+                AssignedIssueEventType,
+                UnassignedIssueEventType,
+                MilestonedIssueEventType,
+                DemilestonedIssueEventType,
+                RenamedIssueEventType,
+                ReviewRequestedIssueEventType,
+                ReviewRequestRemovedIssueEventType,
+                ReviewDismissedIssueEventType,
+                LockedIssueEventType,
+                AddedToProjectIssueEventType,
+                MovedColumnInProjectIssueEventType,
+                RemovedFromProjectIssueEventType,
+                ConvertedNoteToIssueIssueEventType,
+            ]
+        ],
     ]:
         """See also: https://docs.github.com/rest/issues/events#list-issue-events"""
 
@@ -1954,7 +2003,26 @@ class IssuesClient:
                 RemovedFromProjectIssueEvent,
                 ConvertedNoteToIssueIssueEvent,
             ]
-        ]
+        ],
+        list[
+            Union[
+                LabeledIssueEventType,
+                UnlabeledIssueEventType,
+                AssignedIssueEventType,
+                UnassignedIssueEventType,
+                MilestonedIssueEventType,
+                DemilestonedIssueEventType,
+                RenamedIssueEventType,
+                ReviewRequestedIssueEventType,
+                ReviewRequestRemovedIssueEventType,
+                ReviewDismissedIssueEventType,
+                LockedIssueEventType,
+                AddedToProjectIssueEventType,
+                MovedColumnInProjectIssueEventType,
+                RemovedFromProjectIssueEventType,
+                ConvertedNoteToIssueIssueEventType,
+            ]
+        ],
     ]:
         """See also: https://docs.github.com/rest/issues/events#list-issue-events"""
 
@@ -2026,7 +2094,7 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Label]]:
+    ) -> Response[list[Label], list[LabelType]]:
         """See also: https://docs.github.com/rest/issues/labels#list-labels-for-an-issue"""
 
         from ..models import Label, BasicError
@@ -2061,7 +2129,7 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Label]]:
+    ) -> Response[list[Label], list[LabelType]]:
         """See also: https://docs.github.com/rest/issues/labels#list-labels-for-an-issue"""
 
         from ..models import Label, BasicError
@@ -2104,7 +2172,7 @@ class IssuesClient:
                 str,
             ]
         ] = UNSET,
-    ) -> Response[list[Label]]: ...
+    ) -> Response[list[Label], list[LabelType]]: ...
 
     @overload
     def set_labels(
@@ -2116,7 +2184,7 @@ class IssuesClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         labels: Missing[list[str]] = UNSET,
-    ) -> Response[list[Label]]: ...
+    ) -> Response[list[Label], list[LabelType]]: ...
 
     @overload
     def set_labels(
@@ -2130,7 +2198,7 @@ class IssuesClient:
         labels: Missing[
             list[ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsType]
         ] = UNSET,
-    ) -> Response[list[Label]]: ...
+    ) -> Response[list[Label], list[LabelType]]: ...
 
     def set_labels(
         self,
@@ -2149,7 +2217,7 @@ class IssuesClient:
             ]
         ] = UNSET,
         **kwargs,
-    ) -> Response[list[Label]]:
+    ) -> Response[list[Label], list[LabelType]]:
         """See also: https://docs.github.com/rest/issues/labels#set-labels-for-an-issue"""
 
         from typing import Union
@@ -2220,7 +2288,7 @@ class IssuesClient:
                 str,
             ]
         ] = UNSET,
-    ) -> Response[list[Label]]: ...
+    ) -> Response[list[Label], list[LabelType]]: ...
 
     @overload
     async def async_set_labels(
@@ -2232,7 +2300,7 @@ class IssuesClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         labels: Missing[list[str]] = UNSET,
-    ) -> Response[list[Label]]: ...
+    ) -> Response[list[Label], list[LabelType]]: ...
 
     @overload
     async def async_set_labels(
@@ -2246,7 +2314,7 @@ class IssuesClient:
         labels: Missing[
             list[ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsType]
         ] = UNSET,
-    ) -> Response[list[Label]]: ...
+    ) -> Response[list[Label], list[LabelType]]: ...
 
     async def async_set_labels(
         self,
@@ -2265,7 +2333,7 @@ class IssuesClient:
             ]
         ] = UNSET,
         **kwargs,
-    ) -> Response[list[Label]]:
+    ) -> Response[list[Label], list[LabelType]]:
         """See also: https://docs.github.com/rest/issues/labels#set-labels-for-an-issue"""
 
         from typing import Union
@@ -2336,7 +2404,7 @@ class IssuesClient:
                 str,
             ]
         ] = UNSET,
-    ) -> Response[list[Label]]: ...
+    ) -> Response[list[Label], list[LabelType]]: ...
 
     @overload
     def add_labels(
@@ -2348,7 +2416,7 @@ class IssuesClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         labels: Missing[list[str]] = UNSET,
-    ) -> Response[list[Label]]: ...
+    ) -> Response[list[Label], list[LabelType]]: ...
 
     @overload
     def add_labels(
@@ -2362,7 +2430,7 @@ class IssuesClient:
         labels: Missing[
             list[ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItemsType]
         ] = UNSET,
-    ) -> Response[list[Label]]: ...
+    ) -> Response[list[Label], list[LabelType]]: ...
 
     def add_labels(
         self,
@@ -2381,7 +2449,7 @@ class IssuesClient:
             ]
         ] = UNSET,
         **kwargs,
-    ) -> Response[list[Label]]:
+    ) -> Response[list[Label], list[LabelType]]:
         """See also: https://docs.github.com/rest/issues/labels#add-labels-to-an-issue"""
 
         from typing import Union
@@ -2452,7 +2520,7 @@ class IssuesClient:
                 str,
             ]
         ] = UNSET,
-    ) -> Response[list[Label]]: ...
+    ) -> Response[list[Label], list[LabelType]]: ...
 
     @overload
     async def async_add_labels(
@@ -2464,7 +2532,7 @@ class IssuesClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         labels: Missing[list[str]] = UNSET,
-    ) -> Response[list[Label]]: ...
+    ) -> Response[list[Label], list[LabelType]]: ...
 
     @overload
     async def async_add_labels(
@@ -2478,7 +2546,7 @@ class IssuesClient:
         labels: Missing[
             list[ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItemsType]
         ] = UNSET,
-    ) -> Response[list[Label]]: ...
+    ) -> Response[list[Label], list[LabelType]]: ...
 
     async def async_add_labels(
         self,
@@ -2497,7 +2565,7 @@ class IssuesClient:
             ]
         ] = UNSET,
         **kwargs,
-    ) -> Response[list[Label]]:
+    ) -> Response[list[Label], list[LabelType]]:
         """See also: https://docs.github.com/rest/issues/labels#add-labels-to-an-issue"""
 
         from typing import Union
@@ -2611,7 +2679,7 @@ class IssuesClient:
         name: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Label]]:
+    ) -> Response[list[Label], list[LabelType]]:
         """See also: https://docs.github.com/rest/issues/labels#remove-a-label-from-an-issue"""
 
         from ..models import Label, BasicError
@@ -2639,7 +2707,7 @@ class IssuesClient:
         name: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Label]]:
+    ) -> Response[list[Label], list[LabelType]]:
         """See also: https://docs.github.com/rest/issues/labels#remove-a-label-from-an-issue"""
 
         from ..models import Label, BasicError
@@ -2900,7 +2968,33 @@ class IssuesClient:
                 TimelineUnassignedIssueEvent,
                 StateChangeIssueEvent,
             ]
-        ]
+        ],
+        list[
+            Union[
+                LabeledIssueEventType,
+                UnlabeledIssueEventType,
+                MilestonedIssueEventType,
+                DemilestonedIssueEventType,
+                RenamedIssueEventType,
+                ReviewRequestedIssueEventType,
+                ReviewRequestRemovedIssueEventType,
+                ReviewDismissedIssueEventType,
+                LockedIssueEventType,
+                AddedToProjectIssueEventType,
+                MovedColumnInProjectIssueEventType,
+                RemovedFromProjectIssueEventType,
+                ConvertedNoteToIssueIssueEventType,
+                TimelineCommentEventType,
+                TimelineCrossReferencedEventType,
+                TimelineCommittedEventType,
+                TimelineReviewedEventType,
+                TimelineLineCommentedEventType,
+                TimelineCommitCommentedEventType,
+                TimelineAssignedIssueEventType,
+                TimelineUnassignedIssueEventType,
+                StateChangeIssueEventType,
+            ]
+        ],
     ]:
         """See also: https://docs.github.com/rest/issues/timeline#list-timeline-events-for-an-issue"""
 
@@ -3013,7 +3107,33 @@ class IssuesClient:
                 TimelineUnassignedIssueEvent,
                 StateChangeIssueEvent,
             ]
-        ]
+        ],
+        list[
+            Union[
+                LabeledIssueEventType,
+                UnlabeledIssueEventType,
+                MilestonedIssueEventType,
+                DemilestonedIssueEventType,
+                RenamedIssueEventType,
+                ReviewRequestedIssueEventType,
+                ReviewRequestRemovedIssueEventType,
+                ReviewDismissedIssueEventType,
+                LockedIssueEventType,
+                AddedToProjectIssueEventType,
+                MovedColumnInProjectIssueEventType,
+                RemovedFromProjectIssueEventType,
+                ConvertedNoteToIssueIssueEventType,
+                TimelineCommentEventType,
+                TimelineCrossReferencedEventType,
+                TimelineCommittedEventType,
+                TimelineReviewedEventType,
+                TimelineLineCommentedEventType,
+                TimelineCommitCommentedEventType,
+                TimelineAssignedIssueEventType,
+                TimelineUnassignedIssueEventType,
+                StateChangeIssueEventType,
+            ]
+        ],
     ]:
         """See also: https://docs.github.com/rest/issues/timeline#list-timeline-events-for-an-issue"""
 
@@ -3099,7 +3219,7 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Label]]:
+    ) -> Response[list[Label], list[LabelType]]:
         """See also: https://docs.github.com/rest/issues/labels#list-labels-for-a-repository"""
 
         from ..models import Label, BasicError
@@ -3132,7 +3252,7 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Label]]:
+    ) -> Response[list[Label], list[LabelType]]:
         """See also: https://docs.github.com/rest/issues/labels#list-labels-for-a-repository"""
 
         from ..models import Label, BasicError
@@ -3165,7 +3285,7 @@ class IssuesClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoLabelsPostBodyType,
-    ) -> Response[Label]: ...
+    ) -> Response[Label, LabelType]: ...
 
     @overload
     def create_label(
@@ -3178,7 +3298,7 @@ class IssuesClient:
         name: str,
         color: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
-    ) -> Response[Label]: ...
+    ) -> Response[Label, LabelType]: ...
 
     def create_label(
         self,
@@ -3188,7 +3308,7 @@ class IssuesClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoLabelsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Label]:
+    ) -> Response[Label, LabelType]:
         """See also: https://docs.github.com/rest/issues/labels#create-a-label"""
 
         from ..models import (
@@ -3231,7 +3351,7 @@ class IssuesClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoLabelsPostBodyType,
-    ) -> Response[Label]: ...
+    ) -> Response[Label, LabelType]: ...
 
     @overload
     async def async_create_label(
@@ -3244,7 +3364,7 @@ class IssuesClient:
         name: str,
         color: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
-    ) -> Response[Label]: ...
+    ) -> Response[Label, LabelType]: ...
 
     async def async_create_label(
         self,
@@ -3254,7 +3374,7 @@ class IssuesClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoLabelsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Label]:
+    ) -> Response[Label, LabelType]:
         """See also: https://docs.github.com/rest/issues/labels#create-a-label"""
 
         from ..models import (
@@ -3296,7 +3416,7 @@ class IssuesClient:
         name: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Label]:
+    ) -> Response[Label, LabelType]:
         """See also: https://docs.github.com/rest/issues/labels#get-a-label"""
 
         from ..models import Label, BasicError
@@ -3322,7 +3442,7 @@ class IssuesClient:
         name: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Label]:
+    ) -> Response[Label, LabelType]:
         """See also: https://docs.github.com/rest/issues/labels#get-a-label"""
 
         from ..models import Label, BasicError
@@ -3390,7 +3510,7 @@ class IssuesClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoLabelsNamePatchBodyType] = UNSET,
-    ) -> Response[Label]: ...
+    ) -> Response[Label, LabelType]: ...
 
     @overload
     def update_label(
@@ -3404,7 +3524,7 @@ class IssuesClient:
         new_name: Missing[str] = UNSET,
         color: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
-    ) -> Response[Label]: ...
+    ) -> Response[Label, LabelType]: ...
 
     def update_label(
         self,
@@ -3415,7 +3535,7 @@ class IssuesClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoLabelsNamePatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Label]:
+    ) -> Response[Label, LabelType]:
         """See also: https://docs.github.com/rest/issues/labels#update-a-label"""
 
         from ..models import Label, ReposOwnerRepoLabelsNamePatchBody
@@ -3450,7 +3570,7 @@ class IssuesClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoLabelsNamePatchBodyType] = UNSET,
-    ) -> Response[Label]: ...
+    ) -> Response[Label, LabelType]: ...
 
     @overload
     async def async_update_label(
@@ -3464,7 +3584,7 @@ class IssuesClient:
         new_name: Missing[str] = UNSET,
         color: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
-    ) -> Response[Label]: ...
+    ) -> Response[Label, LabelType]: ...
 
     async def async_update_label(
         self,
@@ -3475,7 +3595,7 @@ class IssuesClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoLabelsNamePatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Label]:
+    ) -> Response[Label, LabelType]:
         """See also: https://docs.github.com/rest/issues/labels#update-a-label"""
 
         from ..models import Label, ReposOwnerRepoLabelsNamePatchBody
@@ -3512,7 +3632,7 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Milestone]]:
+    ) -> Response[list[Milestone], list[MilestoneType]]:
         """See also: https://docs.github.com/rest/issues/milestones#list-milestones"""
 
         from ..models import Milestone, BasicError
@@ -3551,7 +3671,7 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Milestone]]:
+    ) -> Response[list[Milestone], list[MilestoneType]]:
         """See also: https://docs.github.com/rest/issues/milestones#list-milestones"""
 
         from ..models import Milestone, BasicError
@@ -3587,7 +3707,7 @@ class IssuesClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoMilestonesPostBodyType,
-    ) -> Response[Milestone]: ...
+    ) -> Response[Milestone, MilestoneType]: ...
 
     @overload
     def create_milestone(
@@ -3601,7 +3721,7 @@ class IssuesClient:
         state: Missing[Literal["open", "closed"]] = UNSET,
         description: Missing[str] = UNSET,
         due_on: Missing[datetime] = UNSET,
-    ) -> Response[Milestone]: ...
+    ) -> Response[Milestone, MilestoneType]: ...
 
     def create_milestone(
         self,
@@ -3611,7 +3731,7 @@ class IssuesClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoMilestonesPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Milestone]:
+    ) -> Response[Milestone, MilestoneType]:
         """See also: https://docs.github.com/rest/issues/milestones#create-a-milestone"""
 
         from ..models import (
@@ -3654,7 +3774,7 @@ class IssuesClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoMilestonesPostBodyType,
-    ) -> Response[Milestone]: ...
+    ) -> Response[Milestone, MilestoneType]: ...
 
     @overload
     async def async_create_milestone(
@@ -3668,7 +3788,7 @@ class IssuesClient:
         state: Missing[Literal["open", "closed"]] = UNSET,
         description: Missing[str] = UNSET,
         due_on: Missing[datetime] = UNSET,
-    ) -> Response[Milestone]: ...
+    ) -> Response[Milestone, MilestoneType]: ...
 
     async def async_create_milestone(
         self,
@@ -3678,7 +3798,7 @@ class IssuesClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoMilestonesPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Milestone]:
+    ) -> Response[Milestone, MilestoneType]:
         """See also: https://docs.github.com/rest/issues/milestones#create-a-milestone"""
 
         from ..models import (
@@ -3720,7 +3840,7 @@ class IssuesClient:
         milestone_number: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Milestone]:
+    ) -> Response[Milestone, MilestoneType]:
         """See also: https://docs.github.com/rest/issues/milestones#get-a-milestone"""
 
         from ..models import Milestone, BasicError
@@ -3746,7 +3866,7 @@ class IssuesClient:
         milestone_number: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Milestone]:
+    ) -> Response[Milestone, MilestoneType]:
         """See also: https://docs.github.com/rest/issues/milestones#get-a-milestone"""
 
         from ..models import Milestone, BasicError
@@ -3824,7 +3944,7 @@ class IssuesClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoMilestonesMilestoneNumberPatchBodyType] = UNSET,
-    ) -> Response[Milestone]: ...
+    ) -> Response[Milestone, MilestoneType]: ...
 
     @overload
     def update_milestone(
@@ -3839,7 +3959,7 @@ class IssuesClient:
         state: Missing[Literal["open", "closed"]] = UNSET,
         description: Missing[str] = UNSET,
         due_on: Missing[datetime] = UNSET,
-    ) -> Response[Milestone]: ...
+    ) -> Response[Milestone, MilestoneType]: ...
 
     def update_milestone(
         self,
@@ -3850,7 +3970,7 @@ class IssuesClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoMilestonesMilestoneNumberPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Milestone]:
+    ) -> Response[Milestone, MilestoneType]:
         """See also: https://docs.github.com/rest/issues/milestones#update-a-milestone"""
 
         from ..models import Milestone, ReposOwnerRepoMilestonesMilestoneNumberPatchBody
@@ -3887,7 +4007,7 @@ class IssuesClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoMilestonesMilestoneNumberPatchBodyType] = UNSET,
-    ) -> Response[Milestone]: ...
+    ) -> Response[Milestone, MilestoneType]: ...
 
     @overload
     async def async_update_milestone(
@@ -3902,7 +4022,7 @@ class IssuesClient:
         state: Missing[Literal["open", "closed"]] = UNSET,
         description: Missing[str] = UNSET,
         due_on: Missing[datetime] = UNSET,
-    ) -> Response[Milestone]: ...
+    ) -> Response[Milestone, MilestoneType]: ...
 
     async def async_update_milestone(
         self,
@@ -3913,7 +4033,7 @@ class IssuesClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoMilestonesMilestoneNumberPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Milestone]:
+    ) -> Response[Milestone, MilestoneType]:
         """See also: https://docs.github.com/rest/issues/milestones#update-a-milestone"""
 
         from ..models import Milestone, ReposOwnerRepoMilestonesMilestoneNumberPatchBody
@@ -3950,7 +4070,7 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Label]]:
+    ) -> Response[list[Label], list[LabelType]]:
         """See also: https://docs.github.com/rest/issues/labels#list-labels-for-issues-in-a-milestone"""
 
         from ..models import Label
@@ -3981,7 +4101,7 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Label]]:
+    ) -> Response[list[Label], list[LabelType]]:
         """See also: https://docs.github.com/rest/issues/labels#list-labels-for-issues-in-a-milestone"""
 
         from ..models import Label
@@ -4017,7 +4137,7 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Issue]]:
+    ) -> Response[list[Issue], list[IssueType]]:
         """See also: https://docs.github.com/rest/issues/issues#list-user-account-issues-assigned-to-the-authenticated-user"""
 
         from ..models import Issue, BasicError
@@ -4062,7 +4182,7 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Issue]]:
+    ) -> Response[list[Issue], list[IssueType]]:
         """See also: https://docs.github.com/rest/issues/issues#list-user-account-issues-assigned-to-the-authenticated-user"""
 
         from ..models import Issue, BasicError

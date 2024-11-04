@@ -26,12 +26,6 @@ if TYPE_CHECKING:
     from githubkit.typing import Missing
     from githubkit.response import Response
 
-    from ..types import (
-        OrgsOrgDependabotSecretsSecretNamePutBodyType,
-        ReposOwnerRepoDependabotSecretsSecretNamePutBodyType,
-        ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyType,
-        OrgsOrgDependabotSecretsSecretNameRepositoriesPutBodyType,
-    )
     from ..models import (
         EmptyObject,
         DependabotAlert,
@@ -42,6 +36,21 @@ if TYPE_CHECKING:
         OrgsOrgDependabotSecretsGetResponse200,
         ReposOwnerRepoDependabotSecretsGetResponse200,
         OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200,
+    )
+    from ..types import (
+        EmptyObjectType,
+        DependabotAlertType,
+        DependabotSecretType,
+        DependabotPublicKeyType,
+        OrganizationDependabotSecretType,
+        DependabotAlertWithRepositoryType,
+        OrgsOrgDependabotSecretsGetResponse200Type,
+        OrgsOrgDependabotSecretsSecretNamePutBodyType,
+        ReposOwnerRepoDependabotSecretsGetResponse200Type,
+        ReposOwnerRepoDependabotSecretsSecretNamePutBodyType,
+        ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyType,
+        OrgsOrgDependabotSecretsSecretNameRepositoriesPutBodyType,
+        OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200Type,
     )
 
 
@@ -77,7 +86,9 @@ class DependabotClient:
         per_page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[DependabotAlertWithRepository]]:
+    ) -> Response[
+        list[DependabotAlertWithRepository], list[DependabotAlertWithRepositoryType]
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/alerts#list-dependabot-alerts-for-an-enterprise"""
 
         from ..models import (
@@ -135,7 +146,9 @@ class DependabotClient:
         per_page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[DependabotAlertWithRepository]]:
+    ) -> Response[
+        list[DependabotAlertWithRepository], list[DependabotAlertWithRepositoryType]
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/alerts#list-dependabot-alerts-for-an-enterprise"""
 
         from ..models import (
@@ -193,7 +206,9 @@ class DependabotClient:
         per_page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[DependabotAlertWithRepository]]:
+    ) -> Response[
+        list[DependabotAlertWithRepository], list[DependabotAlertWithRepositoryType]
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/alerts#list-dependabot-alerts-for-an-organization"""
 
         from ..models import (
@@ -252,7 +267,9 @@ class DependabotClient:
         per_page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[DependabotAlertWithRepository]]:
+    ) -> Response[
+        list[DependabotAlertWithRepository], list[DependabotAlertWithRepositoryType]
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/alerts#list-dependabot-alerts-for-an-organization"""
 
         from ..models import (
@@ -301,7 +318,10 @@ class DependabotClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[OrgsOrgDependabotSecretsGetResponse200]:
+    ) -> Response[
+        OrgsOrgDependabotSecretsGetResponse200,
+        OrgsOrgDependabotSecretsGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/secrets#list-organization-secrets"""
 
         from ..models import OrgsOrgDependabotSecretsGetResponse200
@@ -330,7 +350,10 @@ class DependabotClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[OrgsOrgDependabotSecretsGetResponse200]:
+    ) -> Response[
+        OrgsOrgDependabotSecretsGetResponse200,
+        OrgsOrgDependabotSecretsGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/secrets#list-organization-secrets"""
 
         from ..models import OrgsOrgDependabotSecretsGetResponse200
@@ -357,7 +380,7 @@ class DependabotClient:
         org: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[DependabotPublicKey]:
+    ) -> Response[DependabotPublicKey, DependabotPublicKeyType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/secrets#get-an-organization-public-key"""
 
         from ..models import DependabotPublicKey
@@ -378,7 +401,7 @@ class DependabotClient:
         org: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[DependabotPublicKey]:
+    ) -> Response[DependabotPublicKey, DependabotPublicKeyType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/secrets#get-an-organization-public-key"""
 
         from ..models import DependabotPublicKey
@@ -400,7 +423,7 @@ class DependabotClient:
         secret_name: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[OrganizationDependabotSecret]:
+    ) -> Response[OrganizationDependabotSecret, OrganizationDependabotSecretType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/secrets#get-an-organization-secret"""
 
         from ..models import OrganizationDependabotSecret
@@ -422,7 +445,7 @@ class DependabotClient:
         secret_name: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[OrganizationDependabotSecret]:
+    ) -> Response[OrganizationDependabotSecret, OrganizationDependabotSecretType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/secrets#get-an-organization-secret"""
 
         from ..models import OrganizationDependabotSecret
@@ -446,7 +469,7 @@ class DependabotClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: OrgsOrgDependabotSecretsSecretNamePutBodyType,
-    ) -> Response[EmptyObject]: ...
+    ) -> Response[EmptyObject, EmptyObjectType]: ...
 
     @overload
     def create_or_update_org_secret(
@@ -460,7 +483,7 @@ class DependabotClient:
         key_id: Missing[str] = UNSET,
         visibility: Literal["all", "private", "selected"],
         selected_repository_ids: Missing[list[str]] = UNSET,
-    ) -> Response[EmptyObject]: ...
+    ) -> Response[EmptyObject, EmptyObjectType]: ...
 
     def create_or_update_org_secret(
         self,
@@ -470,7 +493,7 @@ class DependabotClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgDependabotSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[EmptyObject]:
+    ) -> Response[EmptyObject, EmptyObjectType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/secrets#create-or-update-an-organization-secret"""
 
         from ..models import EmptyObject, OrgsOrgDependabotSecretsSecretNamePutBody
@@ -504,7 +527,7 @@ class DependabotClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: OrgsOrgDependabotSecretsSecretNamePutBodyType,
-    ) -> Response[EmptyObject]: ...
+    ) -> Response[EmptyObject, EmptyObjectType]: ...
 
     @overload
     async def async_create_or_update_org_secret(
@@ -518,7 +541,7 @@ class DependabotClient:
         key_id: Missing[str] = UNSET,
         visibility: Literal["all", "private", "selected"],
         selected_repository_ids: Missing[list[str]] = UNSET,
-    ) -> Response[EmptyObject]: ...
+    ) -> Response[EmptyObject, EmptyObjectType]: ...
 
     async def async_create_or_update_org_secret(
         self,
@@ -528,7 +551,7 @@ class DependabotClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgDependabotSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[EmptyObject]:
+    ) -> Response[EmptyObject, EmptyObjectType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/secrets#create-or-update-an-organization-secret"""
 
         from ..models import EmptyObject, OrgsOrgDependabotSecretsSecretNamePutBody
@@ -600,7 +623,10 @@ class DependabotClient:
         per_page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200]:
+    ) -> Response[
+        OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200,
+        OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/secrets#list-selected-repositories-for-an-organization-secret"""
 
         from ..models import (
@@ -632,7 +658,10 @@ class DependabotClient:
         per_page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200]:
+    ) -> Response[
+        OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200,
+        OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/secrets#list-selected-repositories-for-an-organization-secret"""
 
         from ..models import (
@@ -884,7 +913,7 @@ class DependabotClient:
         last: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[DependabotAlert]]:
+    ) -> Response[list[DependabotAlert], list[DependabotAlertType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/alerts#list-dependabot-alerts-for-a-repository"""
 
         from ..models import BasicError, DependabotAlert, ValidationErrorSimple
@@ -944,7 +973,7 @@ class DependabotClient:
         last: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[DependabotAlert]]:
+    ) -> Response[list[DependabotAlert], list[DependabotAlertType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/alerts#list-dependabot-alerts-for-a-repository"""
 
         from ..models import BasicError, DependabotAlert, ValidationErrorSimple
@@ -991,7 +1020,7 @@ class DependabotClient:
         alert_number: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[DependabotAlert]:
+    ) -> Response[DependabotAlert, DependabotAlertType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/alerts#get-a-dependabot-alert"""
 
         from ..models import BasicError, DependabotAlert
@@ -1018,7 +1047,7 @@ class DependabotClient:
         alert_number: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[DependabotAlert]:
+    ) -> Response[DependabotAlert, DependabotAlertType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/alerts#get-a-dependabot-alert"""
 
         from ..models import BasicError, DependabotAlert
@@ -1047,7 +1076,7 @@ class DependabotClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyType,
-    ) -> Response[DependabotAlert]: ...
+    ) -> Response[DependabotAlert, DependabotAlertType]: ...
 
     @overload
     def update_alert(
@@ -1069,7 +1098,7 @@ class DependabotClient:
             ]
         ] = UNSET,
         dismissed_comment: Missing[str] = UNSET,
-    ) -> Response[DependabotAlert]: ...
+    ) -> Response[DependabotAlert, DependabotAlertType]: ...
 
     def update_alert(
         self,
@@ -1080,7 +1109,7 @@ class DependabotClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[DependabotAlert]:
+    ) -> Response[DependabotAlert, DependabotAlertType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/alerts#update-a-dependabot-alert"""
 
         from ..models import (
@@ -1129,7 +1158,7 @@ class DependabotClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyType,
-    ) -> Response[DependabotAlert]: ...
+    ) -> Response[DependabotAlert, DependabotAlertType]: ...
 
     @overload
     async def async_update_alert(
@@ -1151,7 +1180,7 @@ class DependabotClient:
             ]
         ] = UNSET,
         dismissed_comment: Missing[str] = UNSET,
-    ) -> Response[DependabotAlert]: ...
+    ) -> Response[DependabotAlert, DependabotAlertType]: ...
 
     async def async_update_alert(
         self,
@@ -1162,7 +1191,7 @@ class DependabotClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[DependabotAlert]:
+    ) -> Response[DependabotAlert, DependabotAlertType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/alerts#update-a-dependabot-alert"""
 
         from ..models import (
@@ -1210,7 +1239,10 @@ class DependabotClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ReposOwnerRepoDependabotSecretsGetResponse200]:
+    ) -> Response[
+        ReposOwnerRepoDependabotSecretsGetResponse200,
+        ReposOwnerRepoDependabotSecretsGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/secrets#list-repository-secrets"""
 
         from ..models import ReposOwnerRepoDependabotSecretsGetResponse200
@@ -1240,7 +1272,10 @@ class DependabotClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ReposOwnerRepoDependabotSecretsGetResponse200]:
+    ) -> Response[
+        ReposOwnerRepoDependabotSecretsGetResponse200,
+        ReposOwnerRepoDependabotSecretsGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/secrets#list-repository-secrets"""
 
         from ..models import ReposOwnerRepoDependabotSecretsGetResponse200
@@ -1268,7 +1303,7 @@ class DependabotClient:
         repo: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[DependabotPublicKey]:
+    ) -> Response[DependabotPublicKey, DependabotPublicKeyType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/secrets#get-a-repository-public-key"""
 
         from ..models import DependabotPublicKey
@@ -1290,7 +1325,7 @@ class DependabotClient:
         repo: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[DependabotPublicKey]:
+    ) -> Response[DependabotPublicKey, DependabotPublicKeyType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/secrets#get-a-repository-public-key"""
 
         from ..models import DependabotPublicKey
@@ -1313,7 +1348,7 @@ class DependabotClient:
         secret_name: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[DependabotSecret]:
+    ) -> Response[DependabotSecret, DependabotSecretType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/secrets#get-a-repository-secret"""
 
         from ..models import DependabotSecret
@@ -1336,7 +1371,7 @@ class DependabotClient:
         secret_name: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[DependabotSecret]:
+    ) -> Response[DependabotSecret, DependabotSecretType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/secrets#get-a-repository-secret"""
 
         from ..models import DependabotSecret
@@ -1361,7 +1396,7 @@ class DependabotClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoDependabotSecretsSecretNamePutBodyType,
-    ) -> Response[EmptyObject]: ...
+    ) -> Response[EmptyObject, EmptyObjectType]: ...
 
     @overload
     def create_or_update_repo_secret(
@@ -1374,7 +1409,7 @@ class DependabotClient:
         headers: Optional[dict[str, str]] = None,
         encrypted_value: Missing[str] = UNSET,
         key_id: Missing[str] = UNSET,
-    ) -> Response[EmptyObject]: ...
+    ) -> Response[EmptyObject, EmptyObjectType]: ...
 
     def create_or_update_repo_secret(
         self,
@@ -1385,7 +1420,7 @@ class DependabotClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoDependabotSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[EmptyObject]:
+    ) -> Response[EmptyObject, EmptyObjectType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/secrets#create-or-update-a-repository-secret"""
 
         from ..models import (
@@ -1425,7 +1460,7 @@ class DependabotClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoDependabotSecretsSecretNamePutBodyType,
-    ) -> Response[EmptyObject]: ...
+    ) -> Response[EmptyObject, EmptyObjectType]: ...
 
     @overload
     async def async_create_or_update_repo_secret(
@@ -1438,7 +1473,7 @@ class DependabotClient:
         headers: Optional[dict[str, str]] = None,
         encrypted_value: Missing[str] = UNSET,
         key_id: Missing[str] = UNSET,
-    ) -> Response[EmptyObject]: ...
+    ) -> Response[EmptyObject, EmptyObjectType]: ...
 
     async def async_create_or_update_repo_secret(
         self,
@@ -1449,7 +1484,7 @@ class DependabotClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoDependabotSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[EmptyObject]:
+    ) -> Response[EmptyObject, EmptyObjectType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/secrets#create-or-update-a-repository-secret"""
 
         from ..models import (

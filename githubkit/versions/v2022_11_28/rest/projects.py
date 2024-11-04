@@ -36,9 +36,14 @@ if TYPE_CHECKING:
         ProjectsColumnsCardsCardIdMovesPostResponse201,
     )
     from ..types import (
+        ProjectType,
+        SimpleUserType,
+        ProjectCardType,
+        ProjectColumnType,
         UserProjectsPostBodyType,
         OrgsOrgProjectsPostBodyType,
         ProjectsProjectIdPatchBodyType,
+        ProjectCollaboratorPermissionType,
         ReposOwnerRepoProjectsPostBodyType,
         ProjectsColumnsColumnIdPatchBodyType,
         ProjectsProjectIdColumnsPostBodyType,
@@ -47,7 +52,9 @@ if TYPE_CHECKING:
         ProjectsColumnsCardsCardIdMovesPostBodyType,
         ProjectsColumnsColumnIdCardsPostBodyOneof0Type,
         ProjectsColumnsColumnIdCardsPostBodyOneof1Type,
+        ProjectsColumnsColumnIdMovesPostResponse201Type,
         ProjectsProjectIdCollaboratorsUsernamePutBodyType,
+        ProjectsColumnsCardsCardIdMovesPostResponse201Type,
     )
 
 
@@ -74,7 +81,7 @@ class ProjectsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Project]]:
+    ) -> Response[list[Project], list[ProjectType]]:
         """See also: https://docs.github.com/rest/projects/projects#list-organization-projects"""
 
         from ..models import Project, ValidationErrorSimple
@@ -108,7 +115,7 @@ class ProjectsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Project]]:
+    ) -> Response[list[Project], list[ProjectType]]:
         """See also: https://docs.github.com/rest/projects/projects#list-organization-projects"""
 
         from ..models import Project, ValidationErrorSimple
@@ -141,7 +148,7 @@ class ProjectsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: OrgsOrgProjectsPostBodyType,
-    ) -> Response[Project]: ...
+    ) -> Response[Project, ProjectType]: ...
 
     @overload
     def create_for_org(
@@ -152,7 +159,7 @@ class ProjectsClient:
         headers: Optional[dict[str, str]] = None,
         name: str,
         body: Missing[str] = UNSET,
-    ) -> Response[Project]: ...
+    ) -> Response[Project, ProjectType]: ...
 
     def create_for_org(
         self,
@@ -161,7 +168,7 @@ class ProjectsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgProjectsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Project]:
+    ) -> Response[Project, ProjectType]:
         """See also: https://docs.github.com/rest/projects/projects#create-an-organization-project"""
 
         from ..models import (
@@ -206,7 +213,7 @@ class ProjectsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: OrgsOrgProjectsPostBodyType,
-    ) -> Response[Project]: ...
+    ) -> Response[Project, ProjectType]: ...
 
     @overload
     async def async_create_for_org(
@@ -217,7 +224,7 @@ class ProjectsClient:
         headers: Optional[dict[str, str]] = None,
         name: str,
         body: Missing[str] = UNSET,
-    ) -> Response[Project]: ...
+    ) -> Response[Project, ProjectType]: ...
 
     async def async_create_for_org(
         self,
@@ -226,7 +233,7 @@ class ProjectsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgProjectsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Project]:
+    ) -> Response[Project, ProjectType]:
         """See also: https://docs.github.com/rest/projects/projects#create-an-organization-project"""
 
         from ..models import (
@@ -269,7 +276,7 @@ class ProjectsClient:
         card_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ProjectCard]:
+    ) -> Response[ProjectCard, ProjectCardType]:
         """See also: https://docs.github.com/rest/projects/cards#get-a-project-card"""
 
         from ..models import BasicError, ProjectCard
@@ -295,7 +302,7 @@ class ProjectsClient:
         card_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ProjectCard]:
+    ) -> Response[ProjectCard, ProjectCardType]:
         """See also: https://docs.github.com/rest/projects/cards#get-a-project-card"""
 
         from ..models import BasicError, ProjectCard
@@ -373,7 +380,7 @@ class ProjectsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: Missing[ProjectsColumnsCardsCardIdPatchBodyType] = UNSET,
-    ) -> Response[ProjectCard]: ...
+    ) -> Response[ProjectCard, ProjectCardType]: ...
 
     @overload
     def update_card(
@@ -384,7 +391,7 @@ class ProjectsClient:
         headers: Optional[dict[str, str]] = None,
         note: Missing[Union[str, None]] = UNSET,
         archived: Missing[bool] = UNSET,
-    ) -> Response[ProjectCard]: ...
+    ) -> Response[ProjectCard, ProjectCardType]: ...
 
     def update_card(
         self,
@@ -393,7 +400,7 @@ class ProjectsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ProjectsColumnsCardsCardIdPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[ProjectCard]:
+    ) -> Response[ProjectCard, ProjectCardType]:
         """See also: https://docs.github.com/rest/projects/cards#update-an-existing-project-card"""
 
         from ..models import (
@@ -437,7 +444,7 @@ class ProjectsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: Missing[ProjectsColumnsCardsCardIdPatchBodyType] = UNSET,
-    ) -> Response[ProjectCard]: ...
+    ) -> Response[ProjectCard, ProjectCardType]: ...
 
     @overload
     async def async_update_card(
@@ -448,7 +455,7 @@ class ProjectsClient:
         headers: Optional[dict[str, str]] = None,
         note: Missing[Union[str, None]] = UNSET,
         archived: Missing[bool] = UNSET,
-    ) -> Response[ProjectCard]: ...
+    ) -> Response[ProjectCard, ProjectCardType]: ...
 
     async def async_update_card(
         self,
@@ -457,7 +464,7 @@ class ProjectsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ProjectsColumnsCardsCardIdPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[ProjectCard]:
+    ) -> Response[ProjectCard, ProjectCardType]:
         """See also: https://docs.github.com/rest/projects/cards#update-an-existing-project-card"""
 
         from ..models import (
@@ -501,7 +508,10 @@ class ProjectsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ProjectsColumnsCardsCardIdMovesPostBodyType,
-    ) -> Response[ProjectsColumnsCardsCardIdMovesPostResponse201]: ...
+    ) -> Response[
+        ProjectsColumnsCardsCardIdMovesPostResponse201,
+        ProjectsColumnsCardsCardIdMovesPostResponse201Type,
+    ]: ...
 
     @overload
     def move_card(
@@ -512,7 +522,10 @@ class ProjectsClient:
         headers: Optional[dict[str, str]] = None,
         position: str,
         column_id: Missing[int] = UNSET,
-    ) -> Response[ProjectsColumnsCardsCardIdMovesPostResponse201]: ...
+    ) -> Response[
+        ProjectsColumnsCardsCardIdMovesPostResponse201,
+        ProjectsColumnsCardsCardIdMovesPostResponse201Type,
+    ]: ...
 
     def move_card(
         self,
@@ -521,7 +534,10 @@ class ProjectsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ProjectsColumnsCardsCardIdMovesPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[ProjectsColumnsCardsCardIdMovesPostResponse201]:
+    ) -> Response[
+        ProjectsColumnsCardsCardIdMovesPostResponse201,
+        ProjectsColumnsCardsCardIdMovesPostResponse201Type,
+    ]:
         """See also: https://docs.github.com/rest/projects/cards#move-a-project-card"""
 
         from ..models import (
@@ -567,7 +583,10 @@ class ProjectsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ProjectsColumnsCardsCardIdMovesPostBodyType,
-    ) -> Response[ProjectsColumnsCardsCardIdMovesPostResponse201]: ...
+    ) -> Response[
+        ProjectsColumnsCardsCardIdMovesPostResponse201,
+        ProjectsColumnsCardsCardIdMovesPostResponse201Type,
+    ]: ...
 
     @overload
     async def async_move_card(
@@ -578,7 +597,10 @@ class ProjectsClient:
         headers: Optional[dict[str, str]] = None,
         position: str,
         column_id: Missing[int] = UNSET,
-    ) -> Response[ProjectsColumnsCardsCardIdMovesPostResponse201]: ...
+    ) -> Response[
+        ProjectsColumnsCardsCardIdMovesPostResponse201,
+        ProjectsColumnsCardsCardIdMovesPostResponse201Type,
+    ]: ...
 
     async def async_move_card(
         self,
@@ -587,7 +609,10 @@ class ProjectsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ProjectsColumnsCardsCardIdMovesPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[ProjectsColumnsCardsCardIdMovesPostResponse201]:
+    ) -> Response[
+        ProjectsColumnsCardsCardIdMovesPostResponse201,
+        ProjectsColumnsCardsCardIdMovesPostResponse201Type,
+    ]:
         """See also: https://docs.github.com/rest/projects/cards#move-a-project-card"""
 
         from ..models import (
@@ -631,7 +656,7 @@ class ProjectsClient:
         column_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ProjectColumn]:
+    ) -> Response[ProjectColumn, ProjectColumnType]:
         """See also: https://docs.github.com/rest/projects/columns#get-a-project-column"""
 
         from ..models import BasicError, ProjectColumn
@@ -657,7 +682,7 @@ class ProjectsClient:
         column_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ProjectColumn]:
+    ) -> Response[ProjectColumn, ProjectColumnType]:
         """See also: https://docs.github.com/rest/projects/columns#get-a-project-column"""
 
         from ..models import BasicError, ProjectColumn
@@ -733,7 +758,7 @@ class ProjectsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ProjectsColumnsColumnIdPatchBodyType,
-    ) -> Response[ProjectColumn]: ...
+    ) -> Response[ProjectColumn, ProjectColumnType]: ...
 
     @overload
     def update_column(
@@ -743,7 +768,7 @@ class ProjectsClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         name: str,
-    ) -> Response[ProjectColumn]: ...
+    ) -> Response[ProjectColumn, ProjectColumnType]: ...
 
     def update_column(
         self,
@@ -752,7 +777,7 @@ class ProjectsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ProjectsColumnsColumnIdPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[ProjectColumn]:
+    ) -> Response[ProjectColumn, ProjectColumnType]:
         """See also: https://docs.github.com/rest/projects/columns#update-an-existing-project-column"""
 
         from ..models import BasicError, ProjectColumn, ProjectsColumnsColumnIdPatchBody
@@ -789,7 +814,7 @@ class ProjectsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ProjectsColumnsColumnIdPatchBodyType,
-    ) -> Response[ProjectColumn]: ...
+    ) -> Response[ProjectColumn, ProjectColumnType]: ...
 
     @overload
     async def async_update_column(
@@ -799,7 +824,7 @@ class ProjectsClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         name: str,
-    ) -> Response[ProjectColumn]: ...
+    ) -> Response[ProjectColumn, ProjectColumnType]: ...
 
     async def async_update_column(
         self,
@@ -808,7 +833,7 @@ class ProjectsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ProjectsColumnsColumnIdPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[ProjectColumn]:
+    ) -> Response[ProjectColumn, ProjectColumnType]:
         """See also: https://docs.github.com/rest/projects/columns#update-an-existing-project-column"""
 
         from ..models import BasicError, ProjectColumn, ProjectsColumnsColumnIdPatchBody
@@ -846,7 +871,7 @@ class ProjectsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[ProjectCard]]:
+    ) -> Response[list[ProjectCard], list[ProjectCardType]]:
         """See also: https://docs.github.com/rest/projects/cards#list-project-cards"""
 
         from ..models import BasicError, ProjectCard
@@ -881,7 +906,7 @@ class ProjectsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[ProjectCard]]:
+    ) -> Response[list[ProjectCard], list[ProjectCardType]]:
         """See also: https://docs.github.com/rest/projects/cards#list-project-cards"""
 
         from ..models import BasicError, ProjectCard
@@ -918,7 +943,7 @@ class ProjectsClient:
             ProjectsColumnsColumnIdCardsPostBodyOneof0Type,
             ProjectsColumnsColumnIdCardsPostBodyOneof1Type,
         ],
-    ) -> Response[ProjectCard]: ...
+    ) -> Response[ProjectCard, ProjectCardType]: ...
 
     @overload
     def create_card(
@@ -928,7 +953,7 @@ class ProjectsClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         note: Union[str, None],
-    ) -> Response[ProjectCard]: ...
+    ) -> Response[ProjectCard, ProjectCardType]: ...
 
     @overload
     def create_card(
@@ -939,7 +964,7 @@ class ProjectsClient:
         headers: Optional[dict[str, str]] = None,
         content_id: int,
         content_type: str,
-    ) -> Response[ProjectCard]: ...
+    ) -> Response[ProjectCard, ProjectCardType]: ...
 
     def create_card(
         self,
@@ -953,7 +978,7 @@ class ProjectsClient:
             ]
         ] = UNSET,
         **kwargs,
-    ) -> Response[ProjectCard]:
+    ) -> Response[ProjectCard, ProjectCardType]:
         """See also: https://docs.github.com/rest/projects/cards#create-a-project-card"""
 
         from typing import Union
@@ -1011,7 +1036,7 @@ class ProjectsClient:
             ProjectsColumnsColumnIdCardsPostBodyOneof0Type,
             ProjectsColumnsColumnIdCardsPostBodyOneof1Type,
         ],
-    ) -> Response[ProjectCard]: ...
+    ) -> Response[ProjectCard, ProjectCardType]: ...
 
     @overload
     async def async_create_card(
@@ -1021,7 +1046,7 @@ class ProjectsClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         note: Union[str, None],
-    ) -> Response[ProjectCard]: ...
+    ) -> Response[ProjectCard, ProjectCardType]: ...
 
     @overload
     async def async_create_card(
@@ -1032,7 +1057,7 @@ class ProjectsClient:
         headers: Optional[dict[str, str]] = None,
         content_id: int,
         content_type: str,
-    ) -> Response[ProjectCard]: ...
+    ) -> Response[ProjectCard, ProjectCardType]: ...
 
     async def async_create_card(
         self,
@@ -1046,7 +1071,7 @@ class ProjectsClient:
             ]
         ] = UNSET,
         **kwargs,
-    ) -> Response[ProjectCard]:
+    ) -> Response[ProjectCard, ProjectCardType]:
         """See also: https://docs.github.com/rest/projects/cards#create-a-project-card"""
 
         from typing import Union
@@ -1101,7 +1126,10 @@ class ProjectsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ProjectsColumnsColumnIdMovesPostBodyType,
-    ) -> Response[ProjectsColumnsColumnIdMovesPostResponse201]: ...
+    ) -> Response[
+        ProjectsColumnsColumnIdMovesPostResponse201,
+        ProjectsColumnsColumnIdMovesPostResponse201Type,
+    ]: ...
 
     @overload
     def move_column(
@@ -1111,7 +1139,10 @@ class ProjectsClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         position: str,
-    ) -> Response[ProjectsColumnsColumnIdMovesPostResponse201]: ...
+    ) -> Response[
+        ProjectsColumnsColumnIdMovesPostResponse201,
+        ProjectsColumnsColumnIdMovesPostResponse201Type,
+    ]: ...
 
     def move_column(
         self,
@@ -1120,7 +1151,10 @@ class ProjectsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ProjectsColumnsColumnIdMovesPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[ProjectsColumnsColumnIdMovesPostResponse201]:
+    ) -> Response[
+        ProjectsColumnsColumnIdMovesPostResponse201,
+        ProjectsColumnsColumnIdMovesPostResponse201Type,
+    ]:
         """See also: https://docs.github.com/rest/projects/columns#move-a-project-column"""
 
         from ..models import (
@@ -1163,7 +1197,10 @@ class ProjectsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ProjectsColumnsColumnIdMovesPostBodyType,
-    ) -> Response[ProjectsColumnsColumnIdMovesPostResponse201]: ...
+    ) -> Response[
+        ProjectsColumnsColumnIdMovesPostResponse201,
+        ProjectsColumnsColumnIdMovesPostResponse201Type,
+    ]: ...
 
     @overload
     async def async_move_column(
@@ -1173,7 +1210,10 @@ class ProjectsClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         position: str,
-    ) -> Response[ProjectsColumnsColumnIdMovesPostResponse201]: ...
+    ) -> Response[
+        ProjectsColumnsColumnIdMovesPostResponse201,
+        ProjectsColumnsColumnIdMovesPostResponse201Type,
+    ]: ...
 
     async def async_move_column(
         self,
@@ -1182,7 +1222,10 @@ class ProjectsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ProjectsColumnsColumnIdMovesPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[ProjectsColumnsColumnIdMovesPostResponse201]:
+    ) -> Response[
+        ProjectsColumnsColumnIdMovesPostResponse201,
+        ProjectsColumnsColumnIdMovesPostResponse201Type,
+    ]:
         """See also: https://docs.github.com/rest/projects/columns#move-a-project-column"""
 
         from ..models import (
@@ -1223,7 +1266,7 @@ class ProjectsClient:
         project_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Project]:
+    ) -> Response[Project, ProjectType]:
         """See also: https://docs.github.com/rest/projects/projects#get-a-project"""
 
         from ..models import Project, BasicError
@@ -1248,7 +1291,7 @@ class ProjectsClient:
         project_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Project]:
+    ) -> Response[Project, ProjectType]:
         """See also: https://docs.github.com/rest/projects/projects#get-a-project"""
 
         from ..models import Project, BasicError
@@ -1327,7 +1370,7 @@ class ProjectsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: Missing[ProjectsProjectIdPatchBodyType] = UNSET,
-    ) -> Response[Project]: ...
+    ) -> Response[Project, ProjectType]: ...
 
     @overload
     def update(
@@ -1343,7 +1386,7 @@ class ProjectsClient:
             Literal["read", "write", "admin", "none"]
         ] = UNSET,
         private: Missing[bool] = UNSET,
-    ) -> Response[Project]: ...
+    ) -> Response[Project, ProjectType]: ...
 
     def update(
         self,
@@ -1352,7 +1395,7 @@ class ProjectsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ProjectsProjectIdPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Project]:
+    ) -> Response[Project, ProjectType]:
         """See also: https://docs.github.com/rest/projects/projects#update-a-project"""
 
         from ..models import (
@@ -1397,7 +1440,7 @@ class ProjectsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: Missing[ProjectsProjectIdPatchBodyType] = UNSET,
-    ) -> Response[Project]: ...
+    ) -> Response[Project, ProjectType]: ...
 
     @overload
     async def async_update(
@@ -1413,7 +1456,7 @@ class ProjectsClient:
             Literal["read", "write", "admin", "none"]
         ] = UNSET,
         private: Missing[bool] = UNSET,
-    ) -> Response[Project]: ...
+    ) -> Response[Project, ProjectType]: ...
 
     async def async_update(
         self,
@@ -1422,7 +1465,7 @@ class ProjectsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ProjectsProjectIdPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Project]:
+    ) -> Response[Project, ProjectType]:
         """See also: https://docs.github.com/rest/projects/projects#update-a-project"""
 
         from ..models import (
@@ -1468,7 +1511,7 @@ class ProjectsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[SimpleUser]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """See also: https://docs.github.com/rest/projects/collaborators#list-project-collaborators"""
 
         from ..models import BasicError, SimpleUser, ValidationError
@@ -1505,7 +1548,7 @@ class ProjectsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[SimpleUser]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """See also: https://docs.github.com/rest/projects/collaborators#list-project-collaborators"""
 
         from ..models import BasicError, SimpleUser, ValidationError
@@ -1738,7 +1781,7 @@ class ProjectsClient:
         username: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ProjectCollaboratorPermission]:
+    ) -> Response[ProjectCollaboratorPermission, ProjectCollaboratorPermissionType]:
         """See also: https://docs.github.com/rest/projects/collaborators#get-project-permission-for-a-user"""
 
         from ..models import BasicError, ValidationError, ProjectCollaboratorPermission
@@ -1766,7 +1809,7 @@ class ProjectsClient:
         username: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ProjectCollaboratorPermission]:
+    ) -> Response[ProjectCollaboratorPermission, ProjectCollaboratorPermissionType]:
         """See also: https://docs.github.com/rest/projects/collaborators#get-project-permission-for-a-user"""
 
         from ..models import BasicError, ValidationError, ProjectCollaboratorPermission
@@ -1795,7 +1838,7 @@ class ProjectsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[ProjectColumn]]:
+    ) -> Response[list[ProjectColumn], list[ProjectColumnType]]:
         """See also: https://docs.github.com/rest/projects/columns#list-project-columns"""
 
         from ..models import BasicError, ProjectColumn
@@ -1828,7 +1871,7 @@ class ProjectsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[ProjectColumn]]:
+    ) -> Response[list[ProjectColumn], list[ProjectColumnType]]:
         """See also: https://docs.github.com/rest/projects/columns#list-project-columns"""
 
         from ..models import BasicError, ProjectColumn
@@ -1861,7 +1904,7 @@ class ProjectsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ProjectsProjectIdColumnsPostBodyType,
-    ) -> Response[ProjectColumn]: ...
+    ) -> Response[ProjectColumn, ProjectColumnType]: ...
 
     @overload
     def create_column(
@@ -1871,7 +1914,7 @@ class ProjectsClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         name: str,
-    ) -> Response[ProjectColumn]: ...
+    ) -> Response[ProjectColumn, ProjectColumnType]: ...
 
     def create_column(
         self,
@@ -1880,7 +1923,7 @@ class ProjectsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ProjectsProjectIdColumnsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[ProjectColumn]:
+    ) -> Response[ProjectColumn, ProjectColumnType]:
         """See also: https://docs.github.com/rest/projects/columns#create-a-project-column"""
 
         from ..models import (
@@ -1923,7 +1966,7 @@ class ProjectsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ProjectsProjectIdColumnsPostBodyType,
-    ) -> Response[ProjectColumn]: ...
+    ) -> Response[ProjectColumn, ProjectColumnType]: ...
 
     @overload
     async def async_create_column(
@@ -1933,7 +1976,7 @@ class ProjectsClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         name: str,
-    ) -> Response[ProjectColumn]: ...
+    ) -> Response[ProjectColumn, ProjectColumnType]: ...
 
     async def async_create_column(
         self,
@@ -1942,7 +1985,7 @@ class ProjectsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ProjectsProjectIdColumnsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[ProjectColumn]:
+    ) -> Response[ProjectColumn, ProjectColumnType]:
         """See also: https://docs.github.com/rest/projects/columns#create-a-project-column"""
 
         from ..models import (
@@ -1987,7 +2030,7 @@ class ProjectsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Project]]:
+    ) -> Response[list[Project], list[ProjectType]]:
         """See also: https://docs.github.com/rest/projects/projects#list-repository-projects"""
 
         from ..models import Project, BasicError, ValidationErrorSimple
@@ -2026,7 +2069,7 @@ class ProjectsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Project]]:
+    ) -> Response[list[Project], list[ProjectType]]:
         """See also: https://docs.github.com/rest/projects/projects#list-repository-projects"""
 
         from ..models import Project, BasicError, ValidationErrorSimple
@@ -2064,7 +2107,7 @@ class ProjectsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoProjectsPostBodyType,
-    ) -> Response[Project]: ...
+    ) -> Response[Project, ProjectType]: ...
 
     @overload
     def create_for_repo(
@@ -2076,7 +2119,7 @@ class ProjectsClient:
         headers: Optional[dict[str, str]] = None,
         name: str,
         body: Missing[str] = UNSET,
-    ) -> Response[Project]: ...
+    ) -> Response[Project, ProjectType]: ...
 
     def create_for_repo(
         self,
@@ -2086,7 +2129,7 @@ class ProjectsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoProjectsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Project]:
+    ) -> Response[Project, ProjectType]:
         """See also: https://docs.github.com/rest/projects/projects#create-a-repository-project"""
 
         from ..models import (
@@ -2132,7 +2175,7 @@ class ProjectsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoProjectsPostBodyType,
-    ) -> Response[Project]: ...
+    ) -> Response[Project, ProjectType]: ...
 
     @overload
     async def async_create_for_repo(
@@ -2144,7 +2187,7 @@ class ProjectsClient:
         headers: Optional[dict[str, str]] = None,
         name: str,
         body: Missing[str] = UNSET,
-    ) -> Response[Project]: ...
+    ) -> Response[Project, ProjectType]: ...
 
     async def async_create_for_repo(
         self,
@@ -2154,7 +2197,7 @@ class ProjectsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoProjectsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Project]:
+    ) -> Response[Project, ProjectType]:
         """See also: https://docs.github.com/rest/projects/projects#create-a-repository-project"""
 
         from ..models import (
@@ -2198,7 +2241,7 @@ class ProjectsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: UserProjectsPostBodyType,
-    ) -> Response[Project]: ...
+    ) -> Response[Project, ProjectType]: ...
 
     @overload
     def create_for_authenticated_user(
@@ -2208,7 +2251,7 @@ class ProjectsClient:
         headers: Optional[dict[str, str]] = None,
         name: str,
         body: Missing[Union[str, None]] = UNSET,
-    ) -> Response[Project]: ...
+    ) -> Response[Project, ProjectType]: ...
 
     def create_for_authenticated_user(
         self,
@@ -2216,7 +2259,7 @@ class ProjectsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[UserProjectsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Project]:
+    ) -> Response[Project, ProjectType]:
         """See also: https://docs.github.com/rest/projects/projects#create-a-user-project"""
 
         from ..models import (
@@ -2258,7 +2301,7 @@ class ProjectsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: UserProjectsPostBodyType,
-    ) -> Response[Project]: ...
+    ) -> Response[Project, ProjectType]: ...
 
     @overload
     async def async_create_for_authenticated_user(
@@ -2268,7 +2311,7 @@ class ProjectsClient:
         headers: Optional[dict[str, str]] = None,
         name: str,
         body: Missing[Union[str, None]] = UNSET,
-    ) -> Response[Project]: ...
+    ) -> Response[Project, ProjectType]: ...
 
     async def async_create_for_authenticated_user(
         self,
@@ -2276,7 +2319,7 @@ class ProjectsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[UserProjectsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Project]:
+    ) -> Response[Project, ProjectType]:
         """See also: https://docs.github.com/rest/projects/projects#create-a-user-project"""
 
         from ..models import (
@@ -2320,7 +2363,7 @@ class ProjectsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Project]]:
+    ) -> Response[list[Project], list[ProjectType]]:
         """See also: https://docs.github.com/rest/projects/projects#list-user-projects"""
 
         from ..models import Project, ValidationError
@@ -2354,7 +2397,7 @@ class ProjectsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Project]]:
+    ) -> Response[list[Project], list[ProjectType]]:
         """See also: https://docs.github.com/rest/projects/projects#list-user-projects"""
 
         from ..models import Project, ValidationError

@@ -59,25 +59,53 @@ if TYPE_CHECKING:
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
     )
     from ..types import (
+        TeamType,
+        OrgHookType,
+        SimpleUserType,
+        TeamSimpleType,
+        HookDeliveryType,
+        OrgMembershipType,
+        WebhookConfigType,
         CustomPropertyType,
+        HookDeliveryItemType,
+        OrganizationFullType,
+        OrganizationRoleType,
         OrgsOrgPatchBodyType,
+        MinimalRepositoryType,
+        OrganizationSimpleType,
+        TeamRoleAssignmentType,
+        UserRoleAssignmentType,
         CustomPropertyValueType,
         OrgsOrgHooksPostBodyType,
+        OrganizationInvitationType,
+        ApiInsightsSummaryStatsType,
+        ApiInsightsTimeStatsItemsType,
+        ApiInsightsUserStatsItemsType,
+        ApiInsightsRouteStatsItemsType,
         OrgsOrgInvitationsPostBodyType,
+        OrgRepoCustomPropertyValuesType,
         OrgsOrgHooksHookIdPatchBodyType,
+        ApiInsightsSubjectStatsItemsType,
         OrgsOrgHooksPostBodyPropConfigType,
         UserMembershipsOrgsOrgPatchBodyType,
         OrgsOrgPropertiesSchemaPatchBodyType,
         OrgsOrgPropertiesValuesPatchBodyType,
         OrgsOrgHooksHookIdConfigPatchBodyType,
         OrgsOrgMembershipsUsernamePutBodyType,
+        OrgsOrgInstallationsGetResponse200Type,
+        OrganizationProgrammaticAccessGrantType,
         OrgsOrgPersonalAccessTokensPostBodyType,
         OrgsOrgHooksHookIdPatchBodyPropConfigType,
+        OrgsOrgOrganizationRolesGetResponse200Type,
         OrgsOrgPersonalAccessTokensPatIdPostBodyType,
         OrgsOrgSecurityProductEnablementPostBodyType,
+        OrganizationProgrammaticAccessGrantRequestType,
         OrgsOrgOutsideCollaboratorsUsernamePutBodyType,
         OrgsOrgPersonalAccessTokenRequestsPostBodyType,
+        OrgsOrgAttestationsSubjectDigestGetResponse200Type,
         OrgsOrgPropertiesSchemaCustomPropertyNamePutBodyType,
+        OrgsOrgOutsideCollaboratorsUsernamePutResponse202Type,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
         OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBodyType,
     )
 
@@ -103,7 +131,7 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[OrganizationSimple]]:
+    ) -> Response[list[OrganizationSimple], list[OrganizationSimpleType]]:
         """See also: https://docs.github.com/rest/orgs/orgs#list-organizations"""
 
         from ..models import OrganizationSimple
@@ -131,7 +159,7 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[OrganizationSimple]]:
+    ) -> Response[list[OrganizationSimple], list[OrganizationSimpleType]]:
         """See also: https://docs.github.com/rest/orgs/orgs#list-organizations"""
 
         from ..models import OrganizationSimple
@@ -158,7 +186,7 @@ class OrgsClient:
         org: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[OrganizationFull]:
+    ) -> Response[OrganizationFull, OrganizationFullType]:
         """See also: https://docs.github.com/rest/orgs/orgs#get-an-organization"""
 
         from ..models import BasicError, OrganizationFull
@@ -182,7 +210,7 @@ class OrgsClient:
         org: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[OrganizationFull]:
+    ) -> Response[OrganizationFull, OrganizationFullType]:
         """See also: https://docs.github.com/rest/orgs/orgs#get-an-organization"""
 
         from ..models import BasicError, OrganizationFull
@@ -206,7 +234,10 @@ class OrgsClient:
         org: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]:
+    ) -> Response[
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+    ]:
         """See also: https://docs.github.com/rest/orgs/orgs#delete-an-organization"""
 
         from ..models import (
@@ -234,7 +265,10 @@ class OrgsClient:
         org: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]:
+    ) -> Response[
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+    ]:
         """See also: https://docs.github.com/rest/orgs/orgs#delete-an-organization"""
 
         from ..models import (
@@ -264,7 +298,7 @@ class OrgsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgPatchBodyType] = UNSET,
-    ) -> Response[OrganizationFull]: ...
+    ) -> Response[OrganizationFull, OrganizationFullType]: ...
 
     @overload
     def update(
@@ -308,7 +342,7 @@ class OrgsClient:
         ] = UNSET,
         secret_scanning_push_protection_custom_link_enabled: Missing[bool] = UNSET,
         secret_scanning_push_protection_custom_link: Missing[str] = UNSET,
-    ) -> Response[OrganizationFull]: ...
+    ) -> Response[OrganizationFull, OrganizationFullType]: ...
 
     def update(
         self,
@@ -317,7 +351,7 @@ class OrgsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[OrganizationFull]:
+    ) -> Response[OrganizationFull, OrganizationFullType]:
         """See also: https://docs.github.com/rest/orgs/orgs#update-an-organization"""
 
         from typing import Union
@@ -362,7 +396,7 @@ class OrgsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgPatchBodyType] = UNSET,
-    ) -> Response[OrganizationFull]: ...
+    ) -> Response[OrganizationFull, OrganizationFullType]: ...
 
     @overload
     async def async_update(
@@ -406,7 +440,7 @@ class OrgsClient:
         ] = UNSET,
         secret_scanning_push_protection_custom_link_enabled: Missing[bool] = UNSET,
         secret_scanning_push_protection_custom_link: Missing[str] = UNSET,
-    ) -> Response[OrganizationFull]: ...
+    ) -> Response[OrganizationFull, OrganizationFullType]: ...
 
     async def async_update(
         self,
@@ -415,7 +449,7 @@ class OrgsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[OrganizationFull]:
+    ) -> Response[OrganizationFull, OrganizationFullType]:
         """See also: https://docs.github.com/rest/orgs/orgs#update-an-organization"""
 
         from typing import Union
@@ -462,7 +496,10 @@ class OrgsClient:
         after: Missing[str] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[OrgsOrgAttestationsSubjectDigestGetResponse200]:
+    ) -> Response[
+        OrgsOrgAttestationsSubjectDigestGetResponse200,
+        OrgsOrgAttestationsSubjectDigestGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/rest/orgs/orgs#list-attestations"""
 
         from ..models import OrgsOrgAttestationsSubjectDigestGetResponse200
@@ -494,7 +531,10 @@ class OrgsClient:
         after: Missing[str] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[OrgsOrgAttestationsSubjectDigestGetResponse200]:
+    ) -> Response[
+        OrgsOrgAttestationsSubjectDigestGetResponse200,
+        OrgsOrgAttestationsSubjectDigestGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/rest/orgs/orgs#list-attestations"""
 
         from ..models import OrgsOrgAttestationsSubjectDigestGetResponse200
@@ -524,7 +564,7 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[SimpleUser]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """See also: https://docs.github.com/rest/orgs/blocking#list-users-blocked-by-an-organization"""
 
         from ..models import SimpleUser
@@ -553,7 +593,7 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[SimpleUser]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """See also: https://docs.github.com/rest/orgs/blocking#list-users-blocked-by-an-organization"""
 
         from ..models import SimpleUser
@@ -716,7 +756,7 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[OrganizationInvitation]]:
+    ) -> Response[list[OrganizationInvitation], list[OrganizationInvitationType]]:
         """See also: https://docs.github.com/rest/orgs/members#list-failed-organization-invitations"""
 
         from ..models import BasicError, OrganizationInvitation
@@ -748,7 +788,7 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[OrganizationInvitation]]:
+    ) -> Response[list[OrganizationInvitation], list[OrganizationInvitationType]]:
         """See also: https://docs.github.com/rest/orgs/members#list-failed-organization-invitations"""
 
         from ..models import BasicError, OrganizationInvitation
@@ -780,7 +820,7 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[OrgHook]]:
+    ) -> Response[list[OrgHook], list[OrgHookType]]:
         """See also: https://docs.github.com/rest/orgs/webhooks#list-organization-webhooks"""
 
         from ..models import OrgHook, BasicError
@@ -812,7 +852,7 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[OrgHook]]:
+    ) -> Response[list[OrgHook], list[OrgHookType]]:
         """See also: https://docs.github.com/rest/orgs/webhooks#list-organization-webhooks"""
 
         from ..models import OrgHook, BasicError
@@ -844,7 +884,7 @@ class OrgsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: OrgsOrgHooksPostBodyType,
-    ) -> Response[OrgHook]: ...
+    ) -> Response[OrgHook, OrgHookType]: ...
 
     @overload
     def create_webhook(
@@ -857,7 +897,7 @@ class OrgsClient:
         config: OrgsOrgHooksPostBodyPropConfigType,
         events: Missing[list[str]] = UNSET,
         active: Missing[bool] = UNSET,
-    ) -> Response[OrgHook]: ...
+    ) -> Response[OrgHook, OrgHookType]: ...
 
     def create_webhook(
         self,
@@ -866,7 +906,7 @@ class OrgsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgHooksPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[OrgHook]:
+    ) -> Response[OrgHook, OrgHookType]:
         """See also: https://docs.github.com/rest/orgs/webhooks#create-an-organization-webhook"""
 
         from ..models import OrgHook, BasicError, ValidationError, OrgsOrgHooksPostBody
@@ -903,7 +943,7 @@ class OrgsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: OrgsOrgHooksPostBodyType,
-    ) -> Response[OrgHook]: ...
+    ) -> Response[OrgHook, OrgHookType]: ...
 
     @overload
     async def async_create_webhook(
@@ -916,7 +956,7 @@ class OrgsClient:
         config: OrgsOrgHooksPostBodyPropConfigType,
         events: Missing[list[str]] = UNSET,
         active: Missing[bool] = UNSET,
-    ) -> Response[OrgHook]: ...
+    ) -> Response[OrgHook, OrgHookType]: ...
 
     async def async_create_webhook(
         self,
@@ -925,7 +965,7 @@ class OrgsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgHooksPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[OrgHook]:
+    ) -> Response[OrgHook, OrgHookType]:
         """See also: https://docs.github.com/rest/orgs/webhooks#create-an-organization-webhook"""
 
         from ..models import OrgHook, BasicError, ValidationError, OrgsOrgHooksPostBody
@@ -961,7 +1001,7 @@ class OrgsClient:
         hook_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[OrgHook]:
+    ) -> Response[OrgHook, OrgHookType]:
         """See also: https://docs.github.com/rest/orgs/webhooks#get-an-organization-webhook"""
 
         from ..models import OrgHook, BasicError
@@ -986,7 +1026,7 @@ class OrgsClient:
         hook_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[OrgHook]:
+    ) -> Response[OrgHook, OrgHookType]:
         """See also: https://docs.github.com/rest/orgs/webhooks#get-an-organization-webhook"""
 
         from ..models import OrgHook, BasicError
@@ -1061,7 +1101,7 @@ class OrgsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgHooksHookIdPatchBodyType] = UNSET,
-    ) -> Response[OrgHook]: ...
+    ) -> Response[OrgHook, OrgHookType]: ...
 
     @overload
     def update_webhook(
@@ -1075,7 +1115,7 @@ class OrgsClient:
         events: Missing[list[str]] = UNSET,
         active: Missing[bool] = UNSET,
         name: Missing[str] = UNSET,
-    ) -> Response[OrgHook]: ...
+    ) -> Response[OrgHook, OrgHookType]: ...
 
     def update_webhook(
         self,
@@ -1085,7 +1125,7 @@ class OrgsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgHooksHookIdPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[OrgHook]:
+    ) -> Response[OrgHook, OrgHookType]:
         """See also: https://docs.github.com/rest/orgs/webhooks#update-an-organization-webhook"""
 
         from ..models import (
@@ -1128,7 +1168,7 @@ class OrgsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgHooksHookIdPatchBodyType] = UNSET,
-    ) -> Response[OrgHook]: ...
+    ) -> Response[OrgHook, OrgHookType]: ...
 
     @overload
     async def async_update_webhook(
@@ -1142,7 +1182,7 @@ class OrgsClient:
         events: Missing[list[str]] = UNSET,
         active: Missing[bool] = UNSET,
         name: Missing[str] = UNSET,
-    ) -> Response[OrgHook]: ...
+    ) -> Response[OrgHook, OrgHookType]: ...
 
     async def async_update_webhook(
         self,
@@ -1152,7 +1192,7 @@ class OrgsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgHooksHookIdPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[OrgHook]:
+    ) -> Response[OrgHook, OrgHookType]:
         """See also: https://docs.github.com/rest/orgs/webhooks#update-an-organization-webhook"""
 
         from ..models import (
@@ -1193,7 +1233,7 @@ class OrgsClient:
         hook_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[WebhookConfig]:
+    ) -> Response[WebhookConfig, WebhookConfigType]:
         """See also: https://docs.github.com/rest/orgs/webhooks#get-a-webhook-configuration-for-an-organization"""
 
         from ..models import WebhookConfig
@@ -1215,7 +1255,7 @@ class OrgsClient:
         hook_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[WebhookConfig]:
+    ) -> Response[WebhookConfig, WebhookConfigType]:
         """See also: https://docs.github.com/rest/orgs/webhooks#get-a-webhook-configuration-for-an-organization"""
 
         from ..models import WebhookConfig
@@ -1239,7 +1279,7 @@ class OrgsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgHooksHookIdConfigPatchBodyType] = UNSET,
-    ) -> Response[WebhookConfig]: ...
+    ) -> Response[WebhookConfig, WebhookConfigType]: ...
 
     @overload
     def update_webhook_config_for_org(
@@ -1253,7 +1293,7 @@ class OrgsClient:
         content_type: Missing[str] = UNSET,
         secret: Missing[str] = UNSET,
         insecure_ssl: Missing[Union[str, float]] = UNSET,
-    ) -> Response[WebhookConfig]: ...
+    ) -> Response[WebhookConfig, WebhookConfigType]: ...
 
     def update_webhook_config_for_org(
         self,
@@ -1263,7 +1303,7 @@ class OrgsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgHooksHookIdConfigPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[WebhookConfig]:
+    ) -> Response[WebhookConfig, WebhookConfigType]:
         """See also: https://docs.github.com/rest/orgs/webhooks#update-a-webhook-configuration-for-an-organization"""
 
         from ..models import WebhookConfig, OrgsOrgHooksHookIdConfigPatchBody
@@ -1297,7 +1337,7 @@ class OrgsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgHooksHookIdConfigPatchBodyType] = UNSET,
-    ) -> Response[WebhookConfig]: ...
+    ) -> Response[WebhookConfig, WebhookConfigType]: ...
 
     @overload
     async def async_update_webhook_config_for_org(
@@ -1311,7 +1351,7 @@ class OrgsClient:
         content_type: Missing[str] = UNSET,
         secret: Missing[str] = UNSET,
         insecure_ssl: Missing[Union[str, float]] = UNSET,
-    ) -> Response[WebhookConfig]: ...
+    ) -> Response[WebhookConfig, WebhookConfigType]: ...
 
     async def async_update_webhook_config_for_org(
         self,
@@ -1321,7 +1361,7 @@ class OrgsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgHooksHookIdConfigPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[WebhookConfig]:
+    ) -> Response[WebhookConfig, WebhookConfigType]:
         """See also: https://docs.github.com/rest/orgs/webhooks#update-a-webhook-configuration-for-an-organization"""
 
         from ..models import WebhookConfig, OrgsOrgHooksHookIdConfigPatchBody
@@ -1355,7 +1395,7 @@ class OrgsClient:
         cursor: Missing[str] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[HookDeliveryItem]]:
+    ) -> Response[list[HookDeliveryItem], list[HookDeliveryItemType]]:
         """See also: https://docs.github.com/rest/orgs/webhooks#list-deliveries-for-an-organization-webhook"""
 
         from ..models import BasicError, ValidationError, HookDeliveryItem
@@ -1389,7 +1429,7 @@ class OrgsClient:
         cursor: Missing[str] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[HookDeliveryItem]]:
+    ) -> Response[list[HookDeliveryItem], list[HookDeliveryItemType]]:
         """See also: https://docs.github.com/rest/orgs/webhooks#list-deliveries-for-an-organization-webhook"""
 
         from ..models import BasicError, ValidationError, HookDeliveryItem
@@ -1422,7 +1462,7 @@ class OrgsClient:
         delivery_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[HookDelivery]:
+    ) -> Response[HookDelivery, HookDeliveryType]:
         """See also: https://docs.github.com/rest/orgs/webhooks#get-a-webhook-delivery-for-an-organization-webhook"""
 
         from ..models import BasicError, HookDelivery, ValidationError
@@ -1449,7 +1489,7 @@ class OrgsClient:
         delivery_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[HookDelivery]:
+    ) -> Response[HookDelivery, HookDeliveryType]:
         """See also: https://docs.github.com/rest/orgs/webhooks#get-a-webhook-delivery-for-an-organization-webhook"""
 
         from ..models import BasicError, HookDelivery, ValidationError
@@ -1476,7 +1516,10 @@ class OrgsClient:
         delivery_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]:
+    ) -> Response[
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+    ]:
         """See also: https://docs.github.com/rest/orgs/webhooks#redeliver-a-delivery-for-an-organization-webhook"""
 
         from ..models import (
@@ -1507,7 +1550,10 @@ class OrgsClient:
         delivery_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]:
+    ) -> Response[
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+    ]:
         """See also: https://docs.github.com/rest/orgs/webhooks#redeliver-a-delivery-for-an-organization-webhook"""
 
         from ..models import (
@@ -1609,7 +1655,9 @@ class OrgsClient:
         ] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[ApiInsightsRouteStatsItems]]:
+    ) -> Response[
+        list[ApiInsightsRouteStatsItems], list[ApiInsightsRouteStatsItemsType]
+    ]:
         """See also: https://docs.github.com/rest/orgs/api-insights#get-route-stats-by-actor"""
 
         from ..models import ApiInsightsRouteStatsItems
@@ -1665,7 +1713,9 @@ class OrgsClient:
         ] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[ApiInsightsRouteStatsItems]]:
+    ) -> Response[
+        list[ApiInsightsRouteStatsItems], list[ApiInsightsRouteStatsItemsType]
+    ]:
         """See also: https://docs.github.com/rest/orgs/api-insights#get-route-stats-by-actor"""
 
         from ..models import ApiInsightsRouteStatsItems
@@ -1712,7 +1762,9 @@ class OrgsClient:
         ] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[ApiInsightsSubjectStatsItems]]:
+    ) -> Response[
+        list[ApiInsightsSubjectStatsItems], list[ApiInsightsSubjectStatsItemsType]
+    ]:
         """See also: https://docs.github.com/rest/orgs/api-insights#get-subject-stats"""
 
         from ..models import ApiInsightsSubjectStatsItems
@@ -1759,7 +1811,9 @@ class OrgsClient:
         ] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[ApiInsightsSubjectStatsItems]]:
+    ) -> Response[
+        list[ApiInsightsSubjectStatsItems], list[ApiInsightsSubjectStatsItemsType]
+    ]:
         """See also: https://docs.github.com/rest/orgs/api-insights#get-subject-stats"""
 
         from ..models import ApiInsightsSubjectStatsItems
@@ -1792,7 +1846,7 @@ class OrgsClient:
         max_timestamp: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ApiInsightsSummaryStats]:
+    ) -> Response[ApiInsightsSummaryStats, ApiInsightsSummaryStatsType]:
         """See also: https://docs.github.com/rest/orgs/api-insights#get-summary-stats"""
 
         from ..models import ApiInsightsSummaryStats
@@ -1821,7 +1875,7 @@ class OrgsClient:
         max_timestamp: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ApiInsightsSummaryStats]:
+    ) -> Response[ApiInsightsSummaryStats, ApiInsightsSummaryStatsType]:
         """See also: https://docs.github.com/rest/orgs/api-insights#get-summary-stats"""
 
         from ..models import ApiInsightsSummaryStats
@@ -1851,7 +1905,7 @@ class OrgsClient:
         max_timestamp: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ApiInsightsSummaryStats]:
+    ) -> Response[ApiInsightsSummaryStats, ApiInsightsSummaryStatsType]:
         """See also: https://docs.github.com/rest/orgs/api-insights#get-summary-stats-by-user"""
 
         from ..models import ApiInsightsSummaryStats
@@ -1881,7 +1935,7 @@ class OrgsClient:
         max_timestamp: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ApiInsightsSummaryStats]:
+    ) -> Response[ApiInsightsSummaryStats, ApiInsightsSummaryStatsType]:
         """See also: https://docs.github.com/rest/orgs/api-insights#get-summary-stats-by-user"""
 
         from ..models import ApiInsightsSummaryStats
@@ -1918,7 +1972,7 @@ class OrgsClient:
         max_timestamp: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ApiInsightsSummaryStats]:
+    ) -> Response[ApiInsightsSummaryStats, ApiInsightsSummaryStatsType]:
         """See also: https://docs.github.com/rest/orgs/api-insights#get-summary-stats-by-actor"""
 
         from ..models import ApiInsightsSummaryStats
@@ -1955,7 +2009,7 @@ class OrgsClient:
         max_timestamp: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ApiInsightsSummaryStats]:
+    ) -> Response[ApiInsightsSummaryStats, ApiInsightsSummaryStatsType]:
         """See also: https://docs.github.com/rest/orgs/api-insights#get-summary-stats-by-actor"""
 
         from ..models import ApiInsightsSummaryStats
@@ -1985,7 +2039,7 @@ class OrgsClient:
         timestamp_increment: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[ApiInsightsTimeStatsItems]]:
+    ) -> Response[list[ApiInsightsTimeStatsItems], list[ApiInsightsTimeStatsItemsType]]:
         """See also: https://docs.github.com/rest/orgs/api-insights#get-time-stats"""
 
         from ..models import ApiInsightsTimeStatsItems
@@ -2016,7 +2070,7 @@ class OrgsClient:
         timestamp_increment: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[ApiInsightsTimeStatsItems]]:
+    ) -> Response[list[ApiInsightsTimeStatsItems], list[ApiInsightsTimeStatsItemsType]]:
         """See also: https://docs.github.com/rest/orgs/api-insights#get-time-stats"""
 
         from ..models import ApiInsightsTimeStatsItems
@@ -2048,7 +2102,7 @@ class OrgsClient:
         timestamp_increment: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[ApiInsightsTimeStatsItems]]:
+    ) -> Response[list[ApiInsightsTimeStatsItems], list[ApiInsightsTimeStatsItemsType]]:
         """See also: https://docs.github.com/rest/orgs/api-insights#get-time-stats-by-user"""
 
         from ..models import ApiInsightsTimeStatsItems
@@ -2080,7 +2134,7 @@ class OrgsClient:
         timestamp_increment: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[ApiInsightsTimeStatsItems]]:
+    ) -> Response[list[ApiInsightsTimeStatsItems], list[ApiInsightsTimeStatsItemsType]]:
         """See also: https://docs.github.com/rest/orgs/api-insights#get-time-stats-by-user"""
 
         from ..models import ApiInsightsTimeStatsItems
@@ -2119,7 +2173,7 @@ class OrgsClient:
         timestamp_increment: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[ApiInsightsTimeStatsItems]]:
+    ) -> Response[list[ApiInsightsTimeStatsItems], list[ApiInsightsTimeStatsItemsType]]:
         """See also: https://docs.github.com/rest/orgs/api-insights#get-time-stats-by-actor"""
 
         from ..models import ApiInsightsTimeStatsItems
@@ -2158,7 +2212,7 @@ class OrgsClient:
         timestamp_increment: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[ApiInsightsTimeStatsItems]]:
+    ) -> Response[list[ApiInsightsTimeStatsItems], list[ApiInsightsTimeStatsItemsType]]:
         """See also: https://docs.github.com/rest/orgs/api-insights#get-time-stats-by-actor"""
 
         from ..models import ApiInsightsTimeStatsItems
@@ -2203,7 +2257,7 @@ class OrgsClient:
         ] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[ApiInsightsUserStatsItems]]:
+    ) -> Response[list[ApiInsightsUserStatsItems], list[ApiInsightsUserStatsItemsType]]:
         """See also: https://docs.github.com/rest/orgs/api-insights#get-user-stats"""
 
         from ..models import ApiInsightsUserStatsItems
@@ -2251,7 +2305,7 @@ class OrgsClient:
         ] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[ApiInsightsUserStatsItems]]:
+    ) -> Response[list[ApiInsightsUserStatsItems], list[ApiInsightsUserStatsItemsType]]:
         """See also: https://docs.github.com/rest/orgs/api-insights#get-user-stats"""
 
         from ..models import ApiInsightsUserStatsItems
@@ -2284,7 +2338,9 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[OrgsOrgInstallationsGetResponse200]:
+    ) -> Response[
+        OrgsOrgInstallationsGetResponse200, OrgsOrgInstallationsGetResponse200Type
+    ]:
         """See also: https://docs.github.com/rest/orgs/orgs#list-app-installations-for-an-organization"""
 
         from ..models import OrgsOrgInstallationsGetResponse200
@@ -2313,7 +2369,9 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[OrgsOrgInstallationsGetResponse200]:
+    ) -> Response[
+        OrgsOrgInstallationsGetResponse200, OrgsOrgInstallationsGetResponse200Type
+    ]:
         """See also: https://docs.github.com/rest/orgs/orgs#list-app-installations-for-an-organization"""
 
         from ..models import OrgsOrgInstallationsGetResponse200
@@ -2348,7 +2406,7 @@ class OrgsClient:
         invitation_source: Missing[Literal["all", "member", "scim"]] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[OrganizationInvitation]]:
+    ) -> Response[list[OrganizationInvitation], list[OrganizationInvitationType]]:
         """See also: https://docs.github.com/rest/orgs/members#list-pending-organization-invitations"""
 
         from ..models import BasicError, OrganizationInvitation
@@ -2388,7 +2446,7 @@ class OrgsClient:
         invitation_source: Missing[Literal["all", "member", "scim"]] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[OrganizationInvitation]]:
+    ) -> Response[list[OrganizationInvitation], list[OrganizationInvitationType]]:
         """See also: https://docs.github.com/rest/orgs/members#list-pending-organization-invitations"""
 
         from ..models import BasicError, OrganizationInvitation
@@ -2422,7 +2480,7 @@ class OrgsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgInvitationsPostBodyType] = UNSET,
-    ) -> Response[OrganizationInvitation]: ...
+    ) -> Response[OrganizationInvitation, OrganizationInvitationType]: ...
 
     @overload
     def create_invitation(
@@ -2437,7 +2495,7 @@ class OrgsClient:
             Literal["admin", "direct_member", "billing_manager", "reinstate"]
         ] = UNSET,
         team_ids: Missing[list[int]] = UNSET,
-    ) -> Response[OrganizationInvitation]: ...
+    ) -> Response[OrganizationInvitation, OrganizationInvitationType]: ...
 
     def create_invitation(
         self,
@@ -2446,7 +2504,7 @@ class OrgsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgInvitationsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[OrganizationInvitation]:
+    ) -> Response[OrganizationInvitation, OrganizationInvitationType]:
         """See also: https://docs.github.com/rest/orgs/members#create-an-organization-invitation"""
 
         from ..models import (
@@ -2488,7 +2546,7 @@ class OrgsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgInvitationsPostBodyType] = UNSET,
-    ) -> Response[OrganizationInvitation]: ...
+    ) -> Response[OrganizationInvitation, OrganizationInvitationType]: ...
 
     @overload
     async def async_create_invitation(
@@ -2503,7 +2561,7 @@ class OrgsClient:
             Literal["admin", "direct_member", "billing_manager", "reinstate"]
         ] = UNSET,
         team_ids: Missing[list[int]] = UNSET,
-    ) -> Response[OrganizationInvitation]: ...
+    ) -> Response[OrganizationInvitation, OrganizationInvitationType]: ...
 
     async def async_create_invitation(
         self,
@@ -2512,7 +2570,7 @@ class OrgsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgInvitationsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[OrganizationInvitation]:
+    ) -> Response[OrganizationInvitation, OrganizationInvitationType]:
         """See also: https://docs.github.com/rest/orgs/members#create-an-organization-invitation"""
 
         from ..models import (
@@ -2605,7 +2663,7 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Team]]:
+    ) -> Response[list[Team], list[TeamType]]:
         """See also: https://docs.github.com/rest/orgs/members#list-organization-invitation-teams"""
 
         from ..models import Team, BasicError
@@ -2638,7 +2696,7 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Team]]:
+    ) -> Response[list[Team], list[TeamType]]:
         """See also: https://docs.github.com/rest/orgs/members#list-organization-invitation-teams"""
 
         from ..models import Team, BasicError
@@ -2672,7 +2730,7 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[SimpleUser]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """See also: https://docs.github.com/rest/orgs/members#list-organization-members"""
 
         from ..models import SimpleUser, ValidationError
@@ -2708,7 +2766,7 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[SimpleUser]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """See also: https://docs.github.com/rest/orgs/members#list-organization-members"""
 
         from ..models import SimpleUser, ValidationError
@@ -2829,7 +2887,7 @@ class OrgsClient:
         username: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[OrgMembership]:
+    ) -> Response[OrgMembership, OrgMembershipType]:
         """See also: https://docs.github.com/rest/orgs/members#get-organization-membership-for-a-user"""
 
         from ..models import BasicError, OrgMembership
@@ -2855,7 +2913,7 @@ class OrgsClient:
         username: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[OrgMembership]:
+    ) -> Response[OrgMembership, OrgMembershipType]:
         """See also: https://docs.github.com/rest/orgs/members#get-organization-membership-for-a-user"""
 
         from ..models import BasicError, OrgMembership
@@ -2883,7 +2941,7 @@ class OrgsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgMembershipsUsernamePutBodyType] = UNSET,
-    ) -> Response[OrgMembership]: ...
+    ) -> Response[OrgMembership, OrgMembershipType]: ...
 
     @overload
     def set_membership_for_user(
@@ -2894,7 +2952,7 @@ class OrgsClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         role: Missing[Literal["admin", "member"]] = UNSET,
-    ) -> Response[OrgMembership]: ...
+    ) -> Response[OrgMembership, OrgMembershipType]: ...
 
     def set_membership_for_user(
         self,
@@ -2904,7 +2962,7 @@ class OrgsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgMembershipsUsernamePutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[OrgMembership]:
+    ) -> Response[OrgMembership, OrgMembershipType]:
         """See also: https://docs.github.com/rest/orgs/members#set-organization-membership-for-a-user"""
 
         from ..models import (
@@ -2947,7 +3005,7 @@ class OrgsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgMembershipsUsernamePutBodyType] = UNSET,
-    ) -> Response[OrgMembership]: ...
+    ) -> Response[OrgMembership, OrgMembershipType]: ...
 
     @overload
     async def async_set_membership_for_user(
@@ -2958,7 +3016,7 @@ class OrgsClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         role: Missing[Literal["admin", "member"]] = UNSET,
-    ) -> Response[OrgMembership]: ...
+    ) -> Response[OrgMembership, OrgMembershipType]: ...
 
     async def async_set_membership_for_user(
         self,
@@ -2968,7 +3026,7 @@ class OrgsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgMembershipsUsernamePutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[OrgMembership]:
+    ) -> Response[OrgMembership, OrgMembershipType]:
         """See also: https://docs.github.com/rest/orgs/members#set-organization-membership-for-a-user"""
 
         from ..models import (
@@ -3058,7 +3116,10 @@ class OrgsClient:
         org: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[OrgsOrgOrganizationRolesGetResponse200]:
+    ) -> Response[
+        OrgsOrgOrganizationRolesGetResponse200,
+        OrgsOrgOrganizationRolesGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/rest/orgs/organization-roles#get-all-organization-roles-for-an-organization"""
 
         from ..models import (
@@ -3087,7 +3148,10 @@ class OrgsClient:
         org: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[OrgsOrgOrganizationRolesGetResponse200]:
+    ) -> Response[
+        OrgsOrgOrganizationRolesGetResponse200,
+        OrgsOrgOrganizationRolesGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/rest/orgs/organization-roles#get-all-organization-roles-for-an-organization"""
 
         from ..models import (
@@ -3357,7 +3421,7 @@ class OrgsClient:
         role_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[OrganizationRole]:
+    ) -> Response[OrganizationRole, OrganizationRoleType]:
         """See also: https://docs.github.com/rest/orgs/organization-roles#get-an-organization-role"""
 
         from ..models import BasicError, ValidationError, OrganizationRole
@@ -3383,7 +3447,7 @@ class OrgsClient:
         role_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[OrganizationRole]:
+    ) -> Response[OrganizationRole, OrganizationRoleType]:
         """See also: https://docs.github.com/rest/orgs/organization-roles#get-an-organization-role"""
 
         from ..models import BasicError, ValidationError, OrganizationRole
@@ -3411,7 +3475,7 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[TeamRoleAssignment]]:
+    ) -> Response[list[TeamRoleAssignment], list[TeamRoleAssignmentType]]:
         """See also: https://docs.github.com/rest/orgs/organization-roles#list-teams-that-are-assigned-to-an-organization-role"""
 
         from ..models import TeamRoleAssignment
@@ -3442,7 +3506,7 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[TeamRoleAssignment]]:
+    ) -> Response[list[TeamRoleAssignment], list[TeamRoleAssignmentType]]:
         """See also: https://docs.github.com/rest/orgs/organization-roles#list-teams-that-are-assigned-to-an-organization-role"""
 
         from ..models import TeamRoleAssignment
@@ -3473,7 +3537,7 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[UserRoleAssignment]]:
+    ) -> Response[list[UserRoleAssignment], list[UserRoleAssignmentType]]:
         """See also: https://docs.github.com/rest/orgs/organization-roles#list-users-that-are-assigned-to-an-organization-role"""
 
         from ..models import UserRoleAssignment
@@ -3504,7 +3568,7 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[UserRoleAssignment]]:
+    ) -> Response[list[UserRoleAssignment], list[UserRoleAssignmentType]]:
         """See also: https://docs.github.com/rest/orgs/organization-roles#list-users-that-are-assigned-to-an-organization-role"""
 
         from ..models import UserRoleAssignment
@@ -3535,7 +3599,7 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[SimpleUser]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """See also: https://docs.github.com/rest/orgs/outside-collaborators#list-outside-collaborators-for-an-organization"""
 
         from ..models import SimpleUser
@@ -3566,7 +3630,7 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[SimpleUser]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """See also: https://docs.github.com/rest/orgs/outside-collaborators#list-outside-collaborators-for-an-organization"""
 
         from ..models import SimpleUser
@@ -3597,7 +3661,10 @@ class OrgsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgOutsideCollaboratorsUsernamePutBodyType] = UNSET,
-    ) -> Response[OrgsOrgOutsideCollaboratorsUsernamePutResponse202]: ...
+    ) -> Response[
+        OrgsOrgOutsideCollaboratorsUsernamePutResponse202,
+        OrgsOrgOutsideCollaboratorsUsernamePutResponse202Type,
+    ]: ...
 
     @overload
     def convert_member_to_outside_collaborator(
@@ -3608,7 +3675,10 @@ class OrgsClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         async_: Missing[bool] = UNSET,
-    ) -> Response[OrgsOrgOutsideCollaboratorsUsernamePutResponse202]: ...
+    ) -> Response[
+        OrgsOrgOutsideCollaboratorsUsernamePutResponse202,
+        OrgsOrgOutsideCollaboratorsUsernamePutResponse202Type,
+    ]: ...
 
     def convert_member_to_outside_collaborator(
         self,
@@ -3618,7 +3688,10 @@ class OrgsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgOutsideCollaboratorsUsernamePutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[OrgsOrgOutsideCollaboratorsUsernamePutResponse202]:
+    ) -> Response[
+        OrgsOrgOutsideCollaboratorsUsernamePutResponse202,
+        OrgsOrgOutsideCollaboratorsUsernamePutResponse202Type,
+    ]:
         """See also: https://docs.github.com/rest/orgs/outside-collaborators#convert-an-organization-member-to-outside-collaborator"""
 
         from ..models import (
@@ -3661,7 +3734,10 @@ class OrgsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgOutsideCollaboratorsUsernamePutBodyType] = UNSET,
-    ) -> Response[OrgsOrgOutsideCollaboratorsUsernamePutResponse202]: ...
+    ) -> Response[
+        OrgsOrgOutsideCollaboratorsUsernamePutResponse202,
+        OrgsOrgOutsideCollaboratorsUsernamePutResponse202Type,
+    ]: ...
 
     @overload
     async def async_convert_member_to_outside_collaborator(
@@ -3672,7 +3748,10 @@ class OrgsClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         async_: Missing[bool] = UNSET,
-    ) -> Response[OrgsOrgOutsideCollaboratorsUsernamePutResponse202]: ...
+    ) -> Response[
+        OrgsOrgOutsideCollaboratorsUsernamePutResponse202,
+        OrgsOrgOutsideCollaboratorsUsernamePutResponse202Type,
+    ]: ...
 
     async def async_convert_member_to_outside_collaborator(
         self,
@@ -3682,7 +3761,10 @@ class OrgsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgOutsideCollaboratorsUsernamePutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[OrgsOrgOutsideCollaboratorsUsernamePutResponse202]:
+    ) -> Response[
+        OrgsOrgOutsideCollaboratorsUsernamePutResponse202,
+        OrgsOrgOutsideCollaboratorsUsernamePutResponse202Type,
+    ]:
         """See also: https://docs.github.com/rest/orgs/outside-collaborators#convert-an-organization-member-to-outside-collaborator"""
 
         from ..models import (
@@ -3779,7 +3861,10 @@ class OrgsClient:
         last_used_after: Missing[datetime] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[OrganizationProgrammaticAccessGrantRequest]]:
+    ) -> Response[
+        list[OrganizationProgrammaticAccessGrantRequest],
+        list[OrganizationProgrammaticAccessGrantRequestType],
+    ]:
         """See also: https://docs.github.com/rest/orgs/personal-access-tokens#list-requests-to-access-organization-resources-with-fine-grained-personal-access-tokens"""
 
         from ..models import (
@@ -3832,7 +3917,10 @@ class OrgsClient:
         last_used_after: Missing[datetime] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[OrganizationProgrammaticAccessGrantRequest]]:
+    ) -> Response[
+        list[OrganizationProgrammaticAccessGrantRequest],
+        list[OrganizationProgrammaticAccessGrantRequestType],
+    ]:
         """See also: https://docs.github.com/rest/orgs/personal-access-tokens#list-requests-to-access-organization-resources-with-fine-grained-personal-access-tokens"""
 
         from ..models import (
@@ -3878,7 +3966,10 @@ class OrgsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: OrgsOrgPersonalAccessTokenRequestsPostBodyType,
-    ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]: ...
+    ) -> Response[
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+    ]: ...
 
     @overload
     def review_pat_grant_requests_in_bulk(
@@ -3890,7 +3981,10 @@ class OrgsClient:
         pat_request_ids: Missing[list[int]] = UNSET,
         action: Literal["approve", "deny"],
         reason: Missing[Union[str, None]] = UNSET,
-    ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]: ...
+    ) -> Response[
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+    ]: ...
 
     def review_pat_grant_requests_in_bulk(
         self,
@@ -3899,7 +3993,10 @@ class OrgsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgPersonalAccessTokenRequestsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]:
+    ) -> Response[
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+    ]:
         """See also: https://docs.github.com/rest/orgs/personal-access-tokens#review-requests-to-access-organization-resources-with-fine-grained-personal-access-tokens"""
 
         from ..models import (
@@ -3945,7 +4042,10 @@ class OrgsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: OrgsOrgPersonalAccessTokenRequestsPostBodyType,
-    ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]: ...
+    ) -> Response[
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+    ]: ...
 
     @overload
     async def async_review_pat_grant_requests_in_bulk(
@@ -3957,7 +4057,10 @@ class OrgsClient:
         pat_request_ids: Missing[list[int]] = UNSET,
         action: Literal["approve", "deny"],
         reason: Missing[Union[str, None]] = UNSET,
-    ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]: ...
+    ) -> Response[
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+    ]: ...
 
     async def async_review_pat_grant_requests_in_bulk(
         self,
@@ -3966,7 +4069,10 @@ class OrgsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgPersonalAccessTokenRequestsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]:
+    ) -> Response[
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+    ]:
         """See also: https://docs.github.com/rest/orgs/personal-access-tokens#review-requests-to-access-organization-resources-with-fine-grained-personal-access-tokens"""
 
         from ..models import (
@@ -4151,7 +4257,7 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[MinimalRepository]]:
+    ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
         """See also: https://docs.github.com/rest/orgs/personal-access-tokens#list-repositories-requested-to-be-accessed-by-a-fine-grained-personal-access-token"""
 
         from ..models import BasicError, MinimalRepository
@@ -4188,7 +4294,7 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[MinimalRepository]]:
+    ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
         """See also: https://docs.github.com/rest/orgs/personal-access-tokens#list-repositories-requested-to-be-accessed-by-a-fine-grained-personal-access-token"""
 
         from ..models import BasicError, MinimalRepository
@@ -4231,7 +4337,10 @@ class OrgsClient:
         last_used_after: Missing[datetime] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[OrganizationProgrammaticAccessGrant]]:
+    ) -> Response[
+        list[OrganizationProgrammaticAccessGrant],
+        list[OrganizationProgrammaticAccessGrantType],
+    ]:
         """See also: https://docs.github.com/rest/orgs/personal-access-tokens#list-fine-grained-personal-access-tokens-with-access-to-organization-resources"""
 
         from ..models import (
@@ -4284,7 +4393,10 @@ class OrgsClient:
         last_used_after: Missing[datetime] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[OrganizationProgrammaticAccessGrant]]:
+    ) -> Response[
+        list[OrganizationProgrammaticAccessGrant],
+        list[OrganizationProgrammaticAccessGrantType],
+    ]:
         """See also: https://docs.github.com/rest/orgs/personal-access-tokens#list-fine-grained-personal-access-tokens-with-access-to-organization-resources"""
 
         from ..models import (
@@ -4330,7 +4442,10 @@ class OrgsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: OrgsOrgPersonalAccessTokensPostBodyType,
-    ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]: ...
+    ) -> Response[
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+    ]: ...
 
     @overload
     def update_pat_accesses(
@@ -4341,7 +4456,10 @@ class OrgsClient:
         headers: Optional[dict[str, str]] = None,
         action: Literal["revoke"],
         pat_ids: list[int],
-    ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]: ...
+    ) -> Response[
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+    ]: ...
 
     def update_pat_accesses(
         self,
@@ -4350,7 +4468,10 @@ class OrgsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgPersonalAccessTokensPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]:
+    ) -> Response[
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+    ]:
         """See also: https://docs.github.com/rest/orgs/personal-access-tokens#update-the-access-to-organization-resources-via-fine-grained-personal-access-tokens"""
 
         from ..models import (
@@ -4394,7 +4515,10 @@ class OrgsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: OrgsOrgPersonalAccessTokensPostBodyType,
-    ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]: ...
+    ) -> Response[
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+    ]: ...
 
     @overload
     async def async_update_pat_accesses(
@@ -4405,7 +4529,10 @@ class OrgsClient:
         headers: Optional[dict[str, str]] = None,
         action: Literal["revoke"],
         pat_ids: list[int],
-    ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]: ...
+    ) -> Response[
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+    ]: ...
 
     async def async_update_pat_accesses(
         self,
@@ -4414,7 +4541,10 @@ class OrgsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgPersonalAccessTokensPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]:
+    ) -> Response[
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+    ]:
         """See also: https://docs.github.com/rest/orgs/personal-access-tokens#update-the-access-to-organization-resources-via-fine-grained-personal-access-tokens"""
 
         from ..models import (
@@ -4587,7 +4717,7 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[MinimalRepository]]:
+    ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
         """See also: https://docs.github.com/rest/orgs/personal-access-tokens#list-repositories-a-fine-grained-personal-access-token-has-access-to"""
 
         from ..models import BasicError, MinimalRepository
@@ -4622,7 +4752,7 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[MinimalRepository]]:
+    ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
         """See also: https://docs.github.com/rest/orgs/personal-access-tokens#list-repositories-a-fine-grained-personal-access-token-has-access-to"""
 
         from ..models import BasicError, MinimalRepository
@@ -4654,7 +4784,7 @@ class OrgsClient:
         org: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[CustomProperty]]:
+    ) -> Response[list[CustomProperty], list[CustomPropertyType]]:
         """See also: https://docs.github.com/rest/orgs/custom-properties#get-all-custom-properties-for-an-organization"""
 
         from ..models import BasicError, CustomProperty
@@ -4679,7 +4809,7 @@ class OrgsClient:
         org: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[CustomProperty]]:
+    ) -> Response[list[CustomProperty], list[CustomPropertyType]]:
         """See also: https://docs.github.com/rest/orgs/custom-properties#get-all-custom-properties-for-an-organization"""
 
         from ..models import BasicError, CustomProperty
@@ -4706,7 +4836,7 @@ class OrgsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: OrgsOrgPropertiesSchemaPatchBodyType,
-    ) -> Response[list[CustomProperty]]: ...
+    ) -> Response[list[CustomProperty], list[CustomPropertyType]]: ...
 
     @overload
     def create_or_update_custom_properties(
@@ -4716,7 +4846,7 @@ class OrgsClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         properties: list[CustomPropertyType],
-    ) -> Response[list[CustomProperty]]: ...
+    ) -> Response[list[CustomProperty], list[CustomPropertyType]]: ...
 
     def create_or_update_custom_properties(
         self,
@@ -4725,7 +4855,7 @@ class OrgsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgPropertiesSchemaPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[list[CustomProperty]]:
+    ) -> Response[list[CustomProperty], list[CustomPropertyType]]:
         """See also: https://docs.github.com/rest/orgs/custom-properties#create-or-update-custom-properties-for-an-organization"""
 
         from ..models import (
@@ -4766,7 +4896,7 @@ class OrgsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: OrgsOrgPropertiesSchemaPatchBodyType,
-    ) -> Response[list[CustomProperty]]: ...
+    ) -> Response[list[CustomProperty], list[CustomPropertyType]]: ...
 
     @overload
     async def async_create_or_update_custom_properties(
@@ -4776,7 +4906,7 @@ class OrgsClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         properties: list[CustomPropertyType],
-    ) -> Response[list[CustomProperty]]: ...
+    ) -> Response[list[CustomProperty], list[CustomPropertyType]]: ...
 
     async def async_create_or_update_custom_properties(
         self,
@@ -4785,7 +4915,7 @@ class OrgsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgPropertiesSchemaPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[list[CustomProperty]]:
+    ) -> Response[list[CustomProperty], list[CustomPropertyType]]:
         """See also: https://docs.github.com/rest/orgs/custom-properties#create-or-update-custom-properties-for-an-organization"""
 
         from ..models import (
@@ -4825,7 +4955,7 @@ class OrgsClient:
         custom_property_name: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[CustomProperty]:
+    ) -> Response[CustomProperty, CustomPropertyType]:
         """See also: https://docs.github.com/rest/orgs/custom-properties#get-a-custom-property-for-an-organization"""
 
         from ..models import BasicError, CustomProperty
@@ -4851,7 +4981,7 @@ class OrgsClient:
         custom_property_name: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[CustomProperty]:
+    ) -> Response[CustomProperty, CustomPropertyType]:
         """See also: https://docs.github.com/rest/orgs/custom-properties#get-a-custom-property-for-an-organization"""
 
         from ..models import BasicError, CustomProperty
@@ -4879,7 +5009,7 @@ class OrgsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: OrgsOrgPropertiesSchemaCustomPropertyNamePutBodyType,
-    ) -> Response[CustomProperty]: ...
+    ) -> Response[CustomProperty, CustomPropertyType]: ...
 
     @overload
     def create_or_update_custom_property(
@@ -4894,7 +5024,7 @@ class OrgsClient:
         default_value: Missing[Union[str, list[str], None]] = UNSET,
         description: Missing[Union[str, None]] = UNSET,
         allowed_values: Missing[Union[list[str], None]] = UNSET,
-    ) -> Response[CustomProperty]: ...
+    ) -> Response[CustomProperty, CustomPropertyType]: ...
 
     def create_or_update_custom_property(
         self,
@@ -4904,7 +5034,7 @@ class OrgsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgPropertiesSchemaCustomPropertyNamePutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[CustomProperty]:
+    ) -> Response[CustomProperty, CustomPropertyType]:
         """See also: https://docs.github.com/rest/orgs/custom-properties#create-or-update-a-custom-property-for-an-organization"""
 
         from ..models import (
@@ -4948,7 +5078,7 @@ class OrgsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: OrgsOrgPropertiesSchemaCustomPropertyNamePutBodyType,
-    ) -> Response[CustomProperty]: ...
+    ) -> Response[CustomProperty, CustomPropertyType]: ...
 
     @overload
     async def async_create_or_update_custom_property(
@@ -4963,7 +5093,7 @@ class OrgsClient:
         default_value: Missing[Union[str, list[str], None]] = UNSET,
         description: Missing[Union[str, None]] = UNSET,
         allowed_values: Missing[Union[list[str], None]] = UNSET,
-    ) -> Response[CustomProperty]: ...
+    ) -> Response[CustomProperty, CustomPropertyType]: ...
 
     async def async_create_or_update_custom_property(
         self,
@@ -4973,7 +5103,7 @@ class OrgsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgPropertiesSchemaCustomPropertyNamePutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[CustomProperty]:
+    ) -> Response[CustomProperty, CustomPropertyType]:
         """See also: https://docs.github.com/rest/orgs/custom-properties#create-or-update-a-custom-property-for-an-organization"""
 
         from ..models import (
@@ -5067,7 +5197,9 @@ class OrgsClient:
         repository_query: Missing[str] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[OrgRepoCustomPropertyValues]]:
+    ) -> Response[
+        list[OrgRepoCustomPropertyValues], list[OrgRepoCustomPropertyValuesType]
+    ]:
         """See also: https://docs.github.com/rest/orgs/custom-properties#list-custom-property-values-for-organization-repositories"""
 
         from ..models import BasicError, OrgRepoCustomPropertyValues
@@ -5102,7 +5234,9 @@ class OrgsClient:
         repository_query: Missing[str] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[OrgRepoCustomPropertyValues]]:
+    ) -> Response[
+        list[OrgRepoCustomPropertyValues], list[OrgRepoCustomPropertyValuesType]
+    ]:
         """See also: https://docs.github.com/rest/orgs/custom-properties#list-custom-property-values-for-organization-repositories"""
 
         from ..models import BasicError, OrgRepoCustomPropertyValues
@@ -5258,7 +5392,7 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[SimpleUser]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """See also: https://docs.github.com/rest/orgs/members#list-public-organization-members"""
 
         from ..models import SimpleUser
@@ -5287,7 +5421,7 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[SimpleUser]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """See also: https://docs.github.com/rest/orgs/members#list-public-organization-members"""
 
         from ..models import SimpleUser
@@ -5440,7 +5574,7 @@ class OrgsClient:
         org: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[TeamSimple]]:
+    ) -> Response[list[TeamSimple], list[TeamSimpleType]]:
         """See also: https://docs.github.com/rest/orgs/security-managers#list-security-manager-teams"""
 
         from ..models import TeamSimple
@@ -5461,7 +5595,7 @@ class OrgsClient:
         org: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[TeamSimple]]:
+    ) -> Response[list[TeamSimple], list[TeamSimpleType]]:
         """See also: https://docs.github.com/rest/orgs/security-managers#list-security-manager-teams"""
 
         from ..models import TeamSimple
@@ -5724,7 +5858,7 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[OrgMembership]]:
+    ) -> Response[list[OrgMembership], list[OrgMembershipType]]:
         """See also: https://docs.github.com/rest/orgs/members#list-organization-memberships-for-the-authenticated-user"""
 
         from ..models import BasicError, OrgMembership, ValidationError
@@ -5759,7 +5893,7 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[OrgMembership]]:
+    ) -> Response[list[OrgMembership], list[OrgMembershipType]]:
         """See also: https://docs.github.com/rest/orgs/members#list-organization-memberships-for-the-authenticated-user"""
 
         from ..models import BasicError, OrgMembership, ValidationError
@@ -5792,7 +5926,7 @@ class OrgsClient:
         org: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[OrgMembership]:
+    ) -> Response[OrgMembership, OrgMembershipType]:
         """See also: https://docs.github.com/rest/orgs/members#get-an-organization-membership-for-the-authenticated-user"""
 
         from ..models import BasicError, OrgMembership
@@ -5817,7 +5951,7 @@ class OrgsClient:
         org: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[OrgMembership]:
+    ) -> Response[OrgMembership, OrgMembershipType]:
         """See also: https://docs.github.com/rest/orgs/members#get-an-organization-membership-for-the-authenticated-user"""
 
         from ..models import BasicError, OrgMembership
@@ -5844,7 +5978,7 @@ class OrgsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: UserMembershipsOrgsOrgPatchBodyType,
-    ) -> Response[OrgMembership]: ...
+    ) -> Response[OrgMembership, OrgMembershipType]: ...
 
     @overload
     def update_membership_for_authenticated_user(
@@ -5854,7 +5988,7 @@ class OrgsClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         state: Literal["active"],
-    ) -> Response[OrgMembership]: ...
+    ) -> Response[OrgMembership, OrgMembershipType]: ...
 
     def update_membership_for_authenticated_user(
         self,
@@ -5863,7 +5997,7 @@ class OrgsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[UserMembershipsOrgsOrgPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[OrgMembership]:
+    ) -> Response[OrgMembership, OrgMembershipType]:
         """See also: https://docs.github.com/rest/orgs/members#update-an-organization-membership-for-the-authenticated-user"""
 
         from ..models import (
@@ -5906,7 +6040,7 @@ class OrgsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: UserMembershipsOrgsOrgPatchBodyType,
-    ) -> Response[OrgMembership]: ...
+    ) -> Response[OrgMembership, OrgMembershipType]: ...
 
     @overload
     async def async_update_membership_for_authenticated_user(
@@ -5916,7 +6050,7 @@ class OrgsClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         state: Literal["active"],
-    ) -> Response[OrgMembership]: ...
+    ) -> Response[OrgMembership, OrgMembershipType]: ...
 
     async def async_update_membership_for_authenticated_user(
         self,
@@ -5925,7 +6059,7 @@ class OrgsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[UserMembershipsOrgsOrgPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[OrgMembership]:
+    ) -> Response[OrgMembership, OrgMembershipType]:
         """See also: https://docs.github.com/rest/orgs/members#update-an-organization-membership-for-the-authenticated-user"""
 
         from ..models import (
@@ -5967,7 +6101,7 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[OrganizationSimple]]:
+    ) -> Response[list[OrganizationSimple], list[OrganizationSimpleType]]:
         """See also: https://docs.github.com/rest/orgs/orgs#list-organizations-for-the-authenticated-user"""
 
         from ..models import BasicError, OrganizationSimple
@@ -5999,7 +6133,7 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[OrganizationSimple]]:
+    ) -> Response[list[OrganizationSimple], list[OrganizationSimpleType]]:
         """See also: https://docs.github.com/rest/orgs/orgs#list-organizations-for-the-authenticated-user"""
 
         from ..models import BasicError, OrganizationSimple
@@ -6032,7 +6166,7 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[OrganizationSimple]]:
+    ) -> Response[list[OrganizationSimple], list[OrganizationSimpleType]]:
         """See also: https://docs.github.com/rest/orgs/orgs#list-organizations-for-a-user"""
 
         from ..models import OrganizationSimple
@@ -6061,7 +6195,7 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[OrganizationSimple]]:
+    ) -> Response[list[OrganizationSimple], list[OrganizationSimpleType]]:
         """See also: https://docs.github.com/rest/orgs/orgs#list-organizations-for-a-user"""
 
         from ..models import OrganizationSimple

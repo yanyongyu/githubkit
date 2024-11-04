@@ -35,11 +35,17 @@ if TYPE_CHECKING:
         OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200,
     )
     from ..types import (
+        CodeSecurityConfigurationType,
+        CodeSecurityConfigurationRepositoriesType,
+        CodeSecurityConfigurationForRepositoryType,
+        CodeSecurityDefaultConfigurationsItemsType,
         OrgsOrgCodeSecurityConfigurationsPostBodyType,
         OrgsOrgCodeSecurityConfigurationsDetachDeleteBodyType,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
         OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyType,
         OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBodyType,
         OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType,
+        OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200Type,
         OrgsOrgCodeSecurityConfigurationsPostBodyPropSecretScanningDelegatedBypassOptionsType,
         OrgsOrgCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptionsType,
         OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDelegatedBypassOptionsType,
@@ -71,7 +77,7 @@ class CodeSecurityClient:
         after: Missing[str] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[CodeSecurityConfiguration]]:
+    ) -> Response[list[CodeSecurityConfiguration], list[CodeSecurityConfigurationType]]:
         """See also: https://docs.github.com/rest/code-security/configurations#get-code-security-configurations-for-an-organization"""
 
         from ..models import BasicError, CodeSecurityConfiguration
@@ -108,7 +114,7 @@ class CodeSecurityClient:
         after: Missing[str] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[CodeSecurityConfiguration]]:
+    ) -> Response[list[CodeSecurityConfiguration], list[CodeSecurityConfigurationType]]:
         """See also: https://docs.github.com/rest/code-security/configurations#get-code-security-configurations-for-an-organization"""
 
         from ..models import BasicError, CodeSecurityConfiguration
@@ -143,7 +149,7 @@ class CodeSecurityClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: OrgsOrgCodeSecurityConfigurationsPostBodyType,
-    ) -> Response[CodeSecurityConfiguration]: ...
+    ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]: ...
 
     @overload
     def create_configuration(
@@ -189,7 +195,7 @@ class CodeSecurityClient:
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
         enforcement: Missing[Literal["enforced", "unenforced"]] = UNSET,
-    ) -> Response[CodeSecurityConfiguration]: ...
+    ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]: ...
 
     def create_configuration(
         self,
@@ -198,7 +204,7 @@ class CodeSecurityClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgCodeSecurityConfigurationsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[CodeSecurityConfiguration]:
+    ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]:
         """See also: https://docs.github.com/rest/code-security/configurations#create-a-code-security-configuration"""
 
         from ..models import (
@@ -234,7 +240,7 @@ class CodeSecurityClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: OrgsOrgCodeSecurityConfigurationsPostBodyType,
-    ) -> Response[CodeSecurityConfiguration]: ...
+    ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]: ...
 
     @overload
     async def async_create_configuration(
@@ -280,7 +286,7 @@ class CodeSecurityClient:
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
         enforcement: Missing[Literal["enforced", "unenforced"]] = UNSET,
-    ) -> Response[CodeSecurityConfiguration]: ...
+    ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]: ...
 
     async def async_create_configuration(
         self,
@@ -289,7 +295,7 @@ class CodeSecurityClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgCodeSecurityConfigurationsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[CodeSecurityConfiguration]:
+    ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]:
         """See also: https://docs.github.com/rest/code-security/configurations#create-a-code-security-configuration"""
 
         from ..models import (
@@ -323,7 +329,10 @@ class CodeSecurityClient:
         org: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[CodeSecurityDefaultConfigurationsItems]]:
+    ) -> Response[
+        list[CodeSecurityDefaultConfigurationsItems],
+        list[CodeSecurityDefaultConfigurationsItemsType],
+    ]:
         """See also: https://docs.github.com/rest/code-security/configurations#get-default-code-security-configurations"""
 
         from ..models import BasicError, CodeSecurityDefaultConfigurationsItems
@@ -348,7 +357,10 @@ class CodeSecurityClient:
         org: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[CodeSecurityDefaultConfigurationsItems]]:
+    ) -> Response[
+        list[CodeSecurityDefaultConfigurationsItems],
+        list[CodeSecurityDefaultConfigurationsItemsType],
+    ]:
         """See also: https://docs.github.com/rest/code-security/configurations#get-default-code-security-configurations"""
 
         from ..models import BasicError, CodeSecurityDefaultConfigurationsItems
@@ -498,7 +510,7 @@ class CodeSecurityClient:
         configuration_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[CodeSecurityConfiguration]:
+    ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]:
         """See also: https://docs.github.com/rest/code-security/configurations#get-a-code-security-configuration"""
 
         from ..models import BasicError, CodeSecurityConfiguration
@@ -524,7 +536,7 @@ class CodeSecurityClient:
         configuration_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[CodeSecurityConfiguration]:
+    ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]:
         """See also: https://docs.github.com/rest/code-security/configurations#get-a-code-security-configuration"""
 
         from ..models import BasicError, CodeSecurityConfiguration
@@ -606,7 +618,7 @@ class CodeSecurityClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyType,
-    ) -> Response[CodeSecurityConfiguration]: ...
+    ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]: ...
 
     @overload
     def update_configuration(
@@ -653,7 +665,7 @@ class CodeSecurityClient:
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
         enforcement: Missing[Literal["enforced", "unenforced"]] = UNSET,
-    ) -> Response[CodeSecurityConfiguration]: ...
+    ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]: ...
 
     def update_configuration(
         self,
@@ -665,7 +677,7 @@ class CodeSecurityClient:
             OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[CodeSecurityConfiguration]:
+    ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]:
         """See also: https://docs.github.com/rest/code-security/configurations#update-a-code-security-configuration"""
 
         from ..models import (
@@ -704,7 +716,7 @@ class CodeSecurityClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyType,
-    ) -> Response[CodeSecurityConfiguration]: ...
+    ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]: ...
 
     @overload
     async def async_update_configuration(
@@ -751,7 +763,7 @@ class CodeSecurityClient:
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
         enforcement: Missing[Literal["enforced", "unenforced"]] = UNSET,
-    ) -> Response[CodeSecurityConfiguration]: ...
+    ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]: ...
 
     async def async_update_configuration(
         self,
@@ -763,7 +775,7 @@ class CodeSecurityClient:
             OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[CodeSecurityConfiguration]:
+    ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]:
         """See also: https://docs.github.com/rest/code-security/configurations#update-a-code-security-configuration"""
 
         from ..models import (
@@ -802,7 +814,10 @@ class CodeSecurityClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBodyType,
-    ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]: ...
+    ) -> Response[
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+    ]: ...
 
     @overload
     def attach_configuration(
@@ -820,7 +835,10 @@ class CodeSecurityClient:
             "selected",
         ],
         selected_repository_ids: Missing[list[int]] = UNSET,
-    ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]: ...
+    ) -> Response[
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+    ]: ...
 
     def attach_configuration(
         self,
@@ -832,7 +850,10 @@ class CodeSecurityClient:
             OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]:
+    ) -> Response[
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+    ]:
         """See also: https://docs.github.com/rest/code-security/configurations#attach-a-configuration-to-repositories"""
 
         from ..models import (
@@ -871,7 +892,10 @@ class CodeSecurityClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBodyType,
-    ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]: ...
+    ) -> Response[
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+    ]: ...
 
     @overload
     async def async_attach_configuration(
@@ -889,7 +913,10 @@ class CodeSecurityClient:
             "selected",
         ],
         selected_repository_ids: Missing[list[int]] = UNSET,
-    ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]: ...
+    ) -> Response[
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+    ]: ...
 
     async def async_attach_configuration(
         self,
@@ -901,7 +928,10 @@ class CodeSecurityClient:
             OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]:
+    ) -> Response[
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+    ]:
         """See also: https://docs.github.com/rest/code-security/configurations#attach-a-configuration-to-repositories"""
 
         from ..models import (
@@ -941,7 +971,8 @@ class CodeSecurityClient:
         headers: Optional[dict[str, str]] = None,
         data: OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType,
     ) -> Response[
-        OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200
+        OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200,
+        OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200Type,
     ]: ...
 
     @overload
@@ -956,7 +987,8 @@ class CodeSecurityClient:
             Literal["all", "none", "private_and_internal", "public"]
         ] = UNSET,
     ) -> Response[
-        OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200
+        OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200,
+        OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200Type,
     ]: ...
 
     def set_configuration_as_default(
@@ -970,7 +1002,8 @@ class CodeSecurityClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[
-        OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200
+        OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200,
+        OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200Type,
     ]:
         """See also: https://docs.github.com/rest/code-security/configurations#set-a-code-security-configuration-as-a-default-for-an-organization"""
 
@@ -1016,7 +1049,8 @@ class CodeSecurityClient:
         headers: Optional[dict[str, str]] = None,
         data: OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType,
     ) -> Response[
-        OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200
+        OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200,
+        OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200Type,
     ]: ...
 
     @overload
@@ -1031,7 +1065,8 @@ class CodeSecurityClient:
             Literal["all", "none", "private_and_internal", "public"]
         ] = UNSET,
     ) -> Response[
-        OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200
+        OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200,
+        OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200Type,
     ]: ...
 
     async def async_set_configuration_as_default(
@@ -1045,7 +1080,8 @@ class CodeSecurityClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[
-        OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200
+        OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200,
+        OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200Type,
     ]:
         """See also: https://docs.github.com/rest/code-security/configurations#set-a-code-security-configuration-as-a-default-for-an-organization"""
 
@@ -1092,7 +1128,10 @@ class CodeSecurityClient:
         status: Missing[str] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[CodeSecurityConfigurationRepositories]]:
+    ) -> Response[
+        list[CodeSecurityConfigurationRepositories],
+        list[CodeSecurityConfigurationRepositoriesType],
+    ]:
         """See also: https://docs.github.com/rest/code-security/configurations#get-repositories-associated-with-a-code-security-configuration"""
 
         from ..models import BasicError, CodeSecurityConfigurationRepositories
@@ -1132,7 +1171,10 @@ class CodeSecurityClient:
         status: Missing[str] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[CodeSecurityConfigurationRepositories]]:
+    ) -> Response[
+        list[CodeSecurityConfigurationRepositories],
+        list[CodeSecurityConfigurationRepositoriesType],
+    ]:
         """See also: https://docs.github.com/rest/code-security/configurations#get-repositories-associated-with-a-code-security-configuration"""
 
         from ..models import BasicError, CodeSecurityConfigurationRepositories
@@ -1168,7 +1210,10 @@ class CodeSecurityClient:
         repo: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[CodeSecurityConfigurationForRepository]:
+    ) -> Response[
+        CodeSecurityConfigurationForRepository,
+        CodeSecurityConfigurationForRepositoryType,
+    ]:
         """See also: https://docs.github.com/rest/code-security/configurations#get-the-code-security-configuration-associated-with-a-repository"""
 
         from ..models import BasicError, CodeSecurityConfigurationForRepository
@@ -1194,7 +1239,10 @@ class CodeSecurityClient:
         repo: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[CodeSecurityConfigurationForRepository]:
+    ) -> Response[
+        CodeSecurityConfigurationForRepository,
+        CodeSecurityConfigurationForRepositoryType,
+    ]:
         """See also: https://docs.github.com/rest/code-security/configurations#get-the-code-security-configuration-associated-with-a-repository"""
 
         from ..models import BasicError, CodeSecurityConfigurationForRepository

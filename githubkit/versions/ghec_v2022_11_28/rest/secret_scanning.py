@@ -33,6 +33,10 @@ if TYPE_CHECKING:
         SecretScanningPushProtectionBypass,
     )
     from ..types import (
+        SecretScanningAlertType,
+        SecretScanningLocationType,
+        OrganizationSecretScanningAlertType,
+        SecretScanningPushProtectionBypassType,
         ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyType,
         ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyType,
     )
@@ -69,7 +73,9 @@ class SecretScanningClient:
         is_multi_repo: Missing[bool] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[OrganizationSecretScanningAlert]]:
+    ) -> Response[
+        list[OrganizationSecretScanningAlert], list[OrganizationSecretScanningAlertType]
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/secret-scanning#list-secret-scanning-alerts-for-an-enterprise"""
 
         from ..models import (
@@ -124,7 +130,9 @@ class SecretScanningClient:
         is_multi_repo: Missing[bool] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[OrganizationSecretScanningAlert]]:
+    ) -> Response[
+        list[OrganizationSecretScanningAlert], list[OrganizationSecretScanningAlertType]
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/secret-scanning#list-secret-scanning-alerts-for-an-enterprise"""
 
         from ..models import (
@@ -180,7 +188,9 @@ class SecretScanningClient:
         is_multi_repo: Missing[bool] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[OrganizationSecretScanningAlert]]:
+    ) -> Response[
+        list[OrganizationSecretScanningAlert], list[OrganizationSecretScanningAlertType]
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/secret-scanning#list-secret-scanning-alerts-for-an-organization"""
 
         from ..models import (
@@ -237,7 +247,9 @@ class SecretScanningClient:
         is_multi_repo: Missing[bool] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[OrganizationSecretScanningAlert]]:
+    ) -> Response[
+        list[OrganizationSecretScanningAlert], list[OrganizationSecretScanningAlertType]
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/secret-scanning#list-secret-scanning-alerts-for-an-organization"""
 
         from ..models import (
@@ -295,7 +307,7 @@ class SecretScanningClient:
         is_multi_repo: Missing[bool] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[SecretScanningAlert]]:
+    ) -> Response[list[SecretScanningAlert], list[SecretScanningAlertType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/secret-scanning#list-secret-scanning-alerts-for-a-repository"""
 
         from ..models import (
@@ -351,7 +363,7 @@ class SecretScanningClient:
         is_multi_repo: Missing[bool] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[SecretScanningAlert]]:
+    ) -> Response[list[SecretScanningAlert], list[SecretScanningAlertType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/secret-scanning#list-secret-scanning-alerts-for-a-repository"""
 
         from ..models import (
@@ -396,7 +408,7 @@ class SecretScanningClient:
         alert_number: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[SecretScanningAlert]:
+    ) -> Response[SecretScanningAlert, SecretScanningAlertType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/secret-scanning#get-a-secret-scanning-alert"""
 
         from ..models import (
@@ -425,7 +437,7 @@ class SecretScanningClient:
         alert_number: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[SecretScanningAlert]:
+    ) -> Response[SecretScanningAlert, SecretScanningAlertType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/secret-scanning#get-a-secret-scanning-alert"""
 
         from ..models import (
@@ -456,7 +468,7 @@ class SecretScanningClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyType,
-    ) -> Response[SecretScanningAlert]: ...
+    ) -> Response[SecretScanningAlert, SecretScanningAlertType]: ...
 
     @overload
     def update_alert(
@@ -474,7 +486,7 @@ class SecretScanningClient:
             ]
         ] = UNSET,
         resolution_comment: Missing[Union[str, None]] = UNSET,
-    ) -> Response[SecretScanningAlert]: ...
+    ) -> Response[SecretScanningAlert, SecretScanningAlertType]: ...
 
     def update_alert(
         self,
@@ -487,7 +499,7 @@ class SecretScanningClient:
             ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[SecretScanningAlert]:
+    ) -> Response[SecretScanningAlert, SecretScanningAlertType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/secret-scanning#update-a-secret-scanning-alert"""
 
         from ..models import (
@@ -531,7 +543,7 @@ class SecretScanningClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyType,
-    ) -> Response[SecretScanningAlert]: ...
+    ) -> Response[SecretScanningAlert, SecretScanningAlertType]: ...
 
     @overload
     async def async_update_alert(
@@ -549,7 +561,7 @@ class SecretScanningClient:
             ]
         ] = UNSET,
         resolution_comment: Missing[Union[str, None]] = UNSET,
-    ) -> Response[SecretScanningAlert]: ...
+    ) -> Response[SecretScanningAlert, SecretScanningAlertType]: ...
 
     async def async_update_alert(
         self,
@@ -562,7 +574,7 @@ class SecretScanningClient:
             ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[SecretScanningAlert]:
+    ) -> Response[SecretScanningAlert, SecretScanningAlertType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/secret-scanning#update-a-secret-scanning-alert"""
 
         from ..models import (
@@ -606,7 +618,7 @@ class SecretScanningClient:
         per_page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[SecretScanningLocation]]:
+    ) -> Response[list[SecretScanningLocation], list[SecretScanningLocationType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/secret-scanning#list-locations-for-a-secret-scanning-alert"""
 
         from ..models import (
@@ -643,7 +655,7 @@ class SecretScanningClient:
         per_page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[SecretScanningLocation]]:
+    ) -> Response[list[SecretScanningLocation], list[SecretScanningLocationType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/secret-scanning#list-locations-for-a-secret-scanning-alert"""
 
         from ..models import (
@@ -679,7 +691,9 @@ class SecretScanningClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyType,
-    ) -> Response[SecretScanningPushProtectionBypass]: ...
+    ) -> Response[
+        SecretScanningPushProtectionBypass, SecretScanningPushProtectionBypassType
+    ]: ...
 
     @overload
     def create_push_protection_bypass(
@@ -691,7 +705,9 @@ class SecretScanningClient:
         headers: Optional[dict[str, str]] = None,
         reason: Literal["false_positive", "used_in_tests", "will_fix_later"],
         placeholder_id: str,
-    ) -> Response[SecretScanningPushProtectionBypass]: ...
+    ) -> Response[
+        SecretScanningPushProtectionBypass, SecretScanningPushProtectionBypassType
+    ]: ...
 
     def create_push_protection_bypass(
         self,
@@ -703,7 +719,9 @@ class SecretScanningClient:
             ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[SecretScanningPushProtectionBypass]:
+    ) -> Response[
+        SecretScanningPushProtectionBypass, SecretScanningPushProtectionBypassType
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/secret-scanning#create-a-push-protection-bypass"""
 
         from ..models import (
@@ -746,7 +764,9 @@ class SecretScanningClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyType,
-    ) -> Response[SecretScanningPushProtectionBypass]: ...
+    ) -> Response[
+        SecretScanningPushProtectionBypass, SecretScanningPushProtectionBypassType
+    ]: ...
 
     @overload
     async def async_create_push_protection_bypass(
@@ -758,7 +778,9 @@ class SecretScanningClient:
         headers: Optional[dict[str, str]] = None,
         reason: Literal["false_positive", "used_in_tests", "will_fix_later"],
         placeholder_id: str,
-    ) -> Response[SecretScanningPushProtectionBypass]: ...
+    ) -> Response[
+        SecretScanningPushProtectionBypass, SecretScanningPushProtectionBypassType
+    ]: ...
 
     async def async_create_push_protection_bypass(
         self,
@@ -770,7 +792,9 @@ class SecretScanningClient:
             ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[SecretScanningPushProtectionBypass]:
+    ) -> Response[
+        SecretScanningPushProtectionBypass, SecretScanningPushProtectionBypassType
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/secret-scanning#create-a-push-protection-bypass"""
 
         from ..models import (
