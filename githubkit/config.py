@@ -6,6 +6,7 @@ import httpx
 
 from .retry import RETRY_DEFAULT
 from .typing import RetryDecisionFunc
+from .cache import DEFAULT_CACHE_STRATEGY, BaseCacheStrategy
 
 
 @dataclass(frozen=True)
@@ -15,6 +16,7 @@ class Config:
     user_agent: str
     follow_redirects: bool
     timeout: httpx.Timeout
+    cache_strategy: BaseCacheStrategy
     http_cache: bool
     auto_retry: Optional[RetryDecisionFunc]
     rest_api_validate_body: bool
@@ -64,6 +66,12 @@ def build_timeout(
     return timeout if isinstance(timeout, httpx.Timeout) else httpx.Timeout(timeout)
 
 
+def build_cache_strategy(
+    cache_strategy: Optional[BaseCacheStrategy],
+) -> BaseCacheStrategy:
+    return cache_strategy or DEFAULT_CACHE_STRATEGY
+
+
 def build_auto_retry(
     auto_retry: Union[bool, RetryDecisionFunc] = True,
 ) -> Optional[RetryDecisionFunc]:
@@ -76,12 +84,14 @@ def build_auto_retry(
 
 
 def get_config(
+    *,
     base_url: Optional[Union[str, httpx.URL]] = None,
     accept_format: Optional[str] = None,
     previews: Optional[list[str]] = None,
     user_agent: Optional[str] = None,
     follow_redirects: bool = True,
     timeout: Optional[Union[float, httpx.Timeout]] = None,
+    cache_strategy: Optional[BaseCacheStrategy] = None,
     http_cache: bool = True,
     auto_retry: Union[bool, RetryDecisionFunc] = True,
     rest_api_validate_body: bool = True,
@@ -92,6 +102,7 @@ def get_config(
         build_user_agent(user_agent),
         follow_redirects,
         build_timeout(timeout),
+        build_cache_strategy(cache_strategy),
         http_cache,
         build_auto_retry(auto_retry),
         rest_api_validate_body,
