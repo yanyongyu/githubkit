@@ -12,6 +12,7 @@ import hishel
 
 from .utils import UNSET
 from .response import Response
+from .cache import BaseCacheStrategy
 from .compat import to_jsonable_python
 from .config import Config, get_config
 from .auth import BaseAuthStrategy, TokenAuthStrategy, UnauthAuthStrategy
@@ -79,6 +80,7 @@ class GitHubCore(Generic[A]):
         user_agent: Optional[str] = None,
         follow_redirects: bool = True,
         timeout: Optional[Union[float, httpx.Timeout]] = None,
+        cache_strategy: Optional[BaseCacheStrategy] = None,
         http_cache: bool = True,
         auto_retry: Union[bool, RetryDecisionFunc] = True,
         rest_api_validate_body: bool = True,
@@ -96,6 +98,7 @@ class GitHubCore(Generic[A]):
         user_agent: Optional[str] = None,
         follow_redirects: bool = True,
         timeout: Optional[Union[float, httpx.Timeout]] = None,
+        cache_strategy: Optional[BaseCacheStrategy] = None,
         http_cache: bool = True,
         auto_retry: Union[bool, RetryDecisionFunc] = True,
         rest_api_validate_body: bool = True,
@@ -113,6 +116,7 @@ class GitHubCore(Generic[A]):
         user_agent: Optional[str] = None,
         follow_redirects: bool = True,
         timeout: Optional[Union[float, httpx.Timeout]] = None,
+        cache_strategy: Optional[BaseCacheStrategy] = None,
         http_cache: bool = True,
         auto_retry: Union[bool, RetryDecisionFunc] = True,
         rest_api_validate_body: bool = True,
@@ -129,6 +133,7 @@ class GitHubCore(Generic[A]):
         user_agent: Optional[str] = None,
         follow_redirects: bool = True,
         timeout: Optional[Union[float, httpx.Timeout]] = None,
+        cache_strategy: Optional[BaseCacheStrategy] = None,
         http_cache: bool = True,
         auto_retry: Union[bool, RetryDecisionFunc] = True,
         rest_api_validate_body: bool = True,
@@ -139,15 +144,16 @@ class GitHubCore(Generic[A]):
         )
 
         self.config = config or get_config(
-            base_url,
-            accept_format,
-            previews,
-            user_agent,
-            follow_redirects,
-            timeout,
-            http_cache,
-            auto_retry,
-            rest_api_validate_body,
+            base_url=base_url,
+            accept_format=accept_format,
+            previews=previews,
+            user_agent=user_agent,
+            follow_redirects=follow_redirects,
+            timeout=timeout,
+            cache_strategy=cache_strategy,
+            http_cache=http_cache,
+            auto_retry=auto_retry,
+            rest_api_validate_body=rest_api_validate_body,
         )
 
         self.__sync_client: ContextVar[Optional[httpx.Client]] = ContextVar(
@@ -206,7 +212,8 @@ class GitHubCore(Generic[A]):
     def _create_sync_client(self) -> httpx.Client:
         if self.config.http_cache:
             transport = hishel.CacheTransport(
-                httpx.HTTPTransport(), storage=hishel.InMemoryStorage()
+                httpx.HTTPTransport(),
+                storage=self.config.cache_strategy.get_hishel_storage(),
             )
         else:
             transport = httpx.HTTPTransport()
@@ -229,7 +236,8 @@ class GitHubCore(Generic[A]):
     def _create_async_client(self) -> httpx.AsyncClient:
         if self.config.http_cache:
             transport = hishel.AsyncCacheTransport(
-                httpx.AsyncHTTPTransport(), storage=hishel.AsyncInMemoryStorage()
+                httpx.AsyncHTTPTransport(),
+                storage=self.config.cache_strategy.get_async_hishel_storage(),
             )
         else:
             transport = httpx.AsyncHTTPTransport()

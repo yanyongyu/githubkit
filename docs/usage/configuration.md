@@ -12,6 +12,7 @@ github = GitHub(
     user_agent="GitHubKit/Python",
     follow_redirects=True,
     timeout=None,
+    cache_strategy=None,
     http_cache=True,
     auto_retry=True,
     rest_api_validate_body=True,
@@ -24,6 +25,7 @@ Or, you can pass the config object directly (not recommended):
 import httpx
 from githubkit import GitHub, Config
 from githubkit.retry import RETRY_DEFAULT
+from githubkit.cache import DEFAULT_CACHE_STRATEGY
 
 config = Config(
     base_url="https://api.github.com/",
@@ -31,6 +33,7 @@ config = Config(
     user_agent="GitHubKit/Python",
     follow_redirects=True,
     timeout=httpx.Timeout(None),
+    cache_strategy=DEFAULT_CACHE_STRATEGY,
     http_cache=True,
     auto_retry=RETRY_DEFAULT,
     rest_api_validate_body=True,
@@ -64,6 +67,10 @@ The `follow_redirects` option is used to enable or disable the HTTP redirect fol
 ### `timeout`
 
 The `timeout` option is used to set the request timeout. You can pass a float, `None` or `httpx.Timeout` to this field. By default, the requests will never timeout. See [Timeout](https://www.python-httpx.org/advanced/timeouts/) for more information.
+
+### `cache_strategy`
+
+The `cache_strategy` option defines how to cache the tokens or http responses. You can provide a githubkit built-in cache strategy or a custom one that implements the `BaseCacheStrategy` interface. By default, githubkit uses the `MemCacheStrategy` to cache the data in memory.
 
 ### `http_cache`
 

@@ -1,12 +1,12 @@
 from dataclasses import dataclass
-from typing import TYPE_CHECKING, Union, Optional
+from typing_extensions import LiteralString
 from datetime import datetime, timezone, timedelta
 from collections.abc import Generator, AsyncGenerator
+from typing import TYPE_CHECKING, Union, ClassVar, Optional
 
 import httpx
 
 from githubkit.exception import AuthCredentialError
-from githubkit.cache import DEFAULT_CACHE, BaseCache
 from githubkit.utils import UNSET, Unset, exclude_unset
 from githubkit.compat import model_dump, type_validate_python
 
@@ -38,10 +38,9 @@ class AppAuth(httpx.Auth):
     repositories: Union[Unset, list[str]] = UNSET
     repository_ids: Union[Unset, list[int]] = UNSET
     permissions: Union[Unset, "AppPermissionsType"] = UNSET
-    cache: "BaseCache" = DEFAULT_CACHE
 
-    JWT_CACHE_KEY = "githubkit:auth:app:{issuer}:jwt"
-    INSTALLATION_CACHE_KEY = (
+    JWT_CACHE_KEY: ClassVar[LiteralString] = "githubkit:auth:app:{issuer}:jwt"
+    INSTALLATION_CACHE_KEY: ClassVar[LiteralString] = (
         "githubkit:auth:app:{issuer}:installation:"
         "{installation_id}:{permissions}:{repositories}:{repository_ids}"
     )
@@ -89,17 +88,19 @@ class AppAuth(httpx.Auth):
         return self.JWT_CACHE_KEY.format(issuer=self.issuer)
 
     def get_jwt(self) -> str:
+        cache = self.github.config.cache_strategy.get_cache_storage()
         cache_key = self._get_jwt_cache_key()
-        if not (token := self.cache.get(cache_key)):
+        if not (token := cache.get(cache_key)):
             token = self._create_jwt()
-            self.cache.set(cache_key, token, timedelta(minutes=8))
+            cache.set(cache_key, token, timedelta(minutes=8))
         return token
 
     async def aget_jwt(self) -> str:
+        cache = self.github.config.cache_strategy.get_async_cache_storage()
         cache_key = self._get_jwt_cache_key()
-        if not (token := await self.cache.aget(cache_key)):
+        if not (token := await cache.aget(cache_key)):
             token = self._create_jwt()
-            await self.cache.aset(cache_key, token, timedelta(minutes=8))
+            await cache.aset(cache_key, token, timedelta(minutes=8))
         return token
 
     def _build_installation_auth_request(self) -> httpx.Request:
@@ -202,8 +203,9 @@ class AppAuth(httpx.Auth):
             ).sync_auth_flow(request)
             return
 
+        cache = self.github.config.cache_strategy.get_cache_storage()
         key = self._get_installation_cache_key()
-        if not (token := self.cache.get(key)):
+        if not (token := cache.get(key)):
             token_request = self._build_installation_auth_request()
             token_request.headers["Authorization"] = f"Bearer {self.get_jwt()}"
             response = yield token_request
@@ -213,7 +215,7 @@ class AppAuth(httpx.Auth):
             expire = datetime.strptime(
                 response.parsed_data.expires_at, "%Y-%m-%dT%H:%M:%SZ"
             ).replace(tzinfo=timezone.utc) - datetime.now(timezone.utc)
-            self.cache.set(key, token, expire)
+            cache.set(key, token, expire)
         request.headers["Authorization"] = f"token {token}"
         yield request
 
@@ -239,8 +241,9 @@ class AppAuth(httpx.Auth):
                 yield request
             return
 
+        cache = self.github.config.cache_strategy.get_async_cache_storage()
         key = self._get_installation_cache_key()
-        if not (token := await self.cache.aget(key)):
+        if not (token := await cache.aget(key)):
             token_request = self._build_installation_auth_request()
             token_request.headers["Authorization"] = f"Bearer {await self.aget_jwt()}"
             response = yield token_request
@@ -250,7 +253,7 @@ class AppAuth(httpx.Auth):
             expire = datetime.strptime(
                 response.parsed_data.expires_at, "%Y-%m-%dT%H:%M:%SZ"
             ).replace(tzinfo=timezone.utc) - datetime.now(timezone.utc)
-            await self.cache.aset(key, token, expire)
+            await cache.aset(key, token, expire)
         request.headers["Authorization"] = f"token {token}"
         yield request
 
@@ -263,7 +266,6 @@ class AppAuthStrategy(BaseAuthStrategy):
     private_key: str
     client_id: Optional[str] = None
     client_secret: Optional[str] = None
-    cache: "BaseCache" = DEFAULT_CACHE
 
     def __post_init__(self):
         # either app_id or client_id must be provided
@@ -288,7 +290,6 @@ class AppAuthStrategy(BaseAuthStrategy):
             repositories,
             repository_ids,
             permissions,
-            self.cache,
         )
 
     def as_oauth_app(self) -> OAuthAppAuthStrategy:
@@ -305,7 +306,6 @@ class AppAuthStrategy(BaseAuthStrategy):
             self.private_key,
             self.client_id,
             self.client_secret,
-            cache=self.cache,
         )
 
 
@@ -321,7 +321,6 @@ class AppInstallationAuthStrategy(BaseAuthStrategy):
     repositories: Union[Unset, list[str]] = UNSET
     repository_ids: Union[Unset, list[int]] = UNSET
     permissions: Union[Unset, "AppPermissionsType"] = UNSET
-    cache: "BaseCache" = DEFAULT_CACHE
 
     def __post_init__(self):
         # either app_id or client_id must be provided
@@ -336,7 +335,6 @@ class AppInstallationAuthStrategy(BaseAuthStrategy):
             self.private_key,
             self.client_id,
             self.client_secret,
-            self.cache,
         )
 
     def get_auth_flow(self, github: "GitHubCore") -> httpx.Auth:
@@ -350,5 +348,4 @@ class AppInstallationAuthStrategy(BaseAuthStrategy):
             self.repositories,
             self.repository_ids,
             self.permissions,
-            cache=self.cache,
         )
