@@ -14,6 +14,10 @@ E = TypeVar("E", bound=Exception)
 class GitHubException(Exception): ...
 
 
+class CacheUnsupportedError(GitHubException):
+    """Unsupported Cache Usage Error"""
+
+
 class AuthCredentialError(GitHubException):
     """Auth Credential Error"""
 
