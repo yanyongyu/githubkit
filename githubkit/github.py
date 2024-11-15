@@ -16,6 +16,7 @@ if TYPE_CHECKING:
 
     from .config import Config
     from .cache import BaseCacheStrategy
+    from .throttling import BaseThrottler
     from .auth import TokenAuthStrategy, UnauthAuthStrategy
 
 
@@ -75,6 +76,7 @@ class GitHub(GitHubCore[A]):
             timeout: Optional[Union[float, httpx.Timeout]] = None,
             cache_strategy: Optional["BaseCacheStrategy"] = None,
             http_cache: bool = True,
+            throttler: Optional["BaseThrottler"] = None,
             auto_retry: Union[bool, RetryDecisionFunc] = True,
             rest_api_validate_body: bool = True,
         ): ...
@@ -93,6 +95,7 @@ class GitHub(GitHubCore[A]):
             timeout: Optional[Union[float, httpx.Timeout]] = None,
             cache_strategy: Optional["BaseCacheStrategy"] = None,
             http_cache: bool = True,
+            throttler: Optional["BaseThrottler"] = None,
             auto_retry: Union[bool, RetryDecisionFunc] = True,
             rest_api_validate_body: bool = True,
         ): ...
@@ -111,6 +114,7 @@ class GitHub(GitHubCore[A]):
             timeout: Optional[Union[float, httpx.Timeout]] = None,
             cache_strategy: Optional["BaseCacheStrategy"] = None,
             http_cache: bool = True,
+            throttler: Optional["BaseThrottler"] = None,
             auto_retry: Union[bool, RetryDecisionFunc] = True,
             rest_api_validate_body: bool = True,
         ): ...
