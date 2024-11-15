@@ -72,6 +72,12 @@ The `timeout` option is used to set the request timeout. You can pass a float, `
 
 The `cache_strategy` option defines how to cache the tokens or http responses. You can provide a githubkit built-in cache strategy or a custom one that implements the `BaseCacheStrategy` interface. By default, githubkit uses the `MemCacheStrategy` to cache the data in memory.
 
+Available built-in cache strategies:
+
+- `MemCacheStrategy`: Cache the data in memory.
+- `RedisCacheStrategy`: Cache the data in Redis (Sync only).
+- `AsyncRedisCacheStrategy`: Cache the data in Redis (Async only).
+
 ### `http_cache`
 
 The `http_cache` option enables the http caching feature powered by [Hishel](https://hishel.com/) for HTTPX. GitHub API limits the number of requests that you can make within a specific amount of time. This feature is useful to reduce the number of requests to GitHub API and avoid hitting the rate limit.
