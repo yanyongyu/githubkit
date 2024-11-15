@@ -14,6 +14,7 @@ github = GitHub(
     timeout=None,
     cache_strategy=None,
     http_cache=True,
+    throttler=None,
     auto_retry=True,
     rest_api_validate_body=True,
 )
@@ -35,6 +36,7 @@ config = Config(
     timeout=httpx.Timeout(None),
     cache_strategy=DEFAULT_CACHE_STRATEGY,
     http_cache=True,
+    throttler=None,
     auto_retry=RETRY_DEFAULT,
     rest_api_validate_body=True,
 )
@@ -81,6 +83,14 @@ Available built-in cache strategies:
 ### `http_cache`
 
 The `http_cache` option enables the http caching feature powered by [Hishel](https://hishel.com/) for HTTPX. GitHub API limits the number of requests that you can make within a specific amount of time. This feature is useful to reduce the number of requests to GitHub API and avoid hitting the rate limit.
+
+### `throttler`
+
+The `throttler` option is used to control the request concurrency to avoid hitting the rate limit. You can provide a githubkit built-in throttler or a custom one that implements the `BaseThrottler` interface. By default, githubkit uses the `LocalThrottler` to control the request concurrency.
+
+Available built-in throttlers:
+
+- `LocalThrottler`: Control the request concurrency in the local process / event loop.
 
 ### `auto_retry`
 
