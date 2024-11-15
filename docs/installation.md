@@ -58,32 +58,6 @@ If you want to auth as github app, you should install `auth-app` extra dependenc
     pip install githubkit[auth-app]
     ```
 
-If you want to mix sync and async calls in oauth device callback, you should install `auth-oauth-device` extra dependencies:
-
-=== "poetry"
-
-    ```bash
-    poetry add githubkit[auth-oauth-device]
-    ```
-
-=== "pdm"
-
-    ```bash
-    pdm add githubkit[auth-oauth-device]
-    ```
-
-=== "uv"
-
-    ```bash
-    uv add githubkit[auth-oauth-device]
-    ```
-
-=== "pip"
-
-    ```bash
-    pip install githubkit[auth-oauth-device]
-    ```
-
 ## Full Installation
 
 You can install fully featured githubkit with `all` extra dependencies:

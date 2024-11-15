@@ -1805,13 +1805,13 @@ test = ["big-O", "importlib-resources", "jaraco.functools", "jaraco.itertools", 
 type = ["pytest-mypy"]
 
 [extras]
-all = ["PyJWT", "anyio"]
-auth = ["PyJWT", "anyio"]
+all = ["PyJWT"]
+auth = ["PyJWT"]
 auth-app = ["PyJWT"]
-auth-oauth-device = ["anyio"]
+auth-oauth-device = []
 jwt = ["PyJWT"]
 
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9"
-content-hash = "b6423573ac36c61240aad2a5793ce3a7fa571717ab0ebce9c5b413a26e61209f"
+content-hash = "128f2a87aaf264f32508ed706af8f9137967e0d9935bab5d20d0cfe35467ab37"
