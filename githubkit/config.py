@@ -6,6 +6,7 @@ import httpx
 
 from .retry import RETRY_DEFAULT
 from .typing import RetryDecisionFunc
+from .throttling import BaseThrottler, LocalThrottler
 from .cache import DEFAULT_CACHE_STRATEGY, BaseCacheStrategy
 
 
@@ -18,6 +19,7 @@ class Config:
     timeout: httpx.Timeout
     cache_strategy: BaseCacheStrategy
     http_cache: bool
+    throttler: BaseThrottler
     auto_retry: Optional[RetryDecisionFunc]
     rest_api_validate_body: bool
 
@@ -72,6 +74,14 @@ def build_cache_strategy(
     return cache_strategy or DEFAULT_CACHE_STRATEGY
 
 
+def build_throttler(
+    throttler: Optional[BaseThrottler],
+) -> BaseThrottler:
+    # https://docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits
+    # > No more than 100 concurrent requests are allowed
+    return throttler or LocalThrottler(100)
+
+
 def build_auto_retry(
     auto_retry: Union[bool, RetryDecisionFunc] = True,
 ) -> Optional[RetryDecisionFunc]:
@@ -93,6 +103,7 @@ def get_config(
     timeout: Optional[Union[float, httpx.Timeout]] = None,
     cache_strategy: Optional[BaseCacheStrategy] = None,
     http_cache: bool = True,
+    throttler: Optional[BaseThrottler] = None,
     auto_retry: Union[bool, RetryDecisionFunc] = True,
     rest_api_validate_body: bool = True,
 ) -> Config:
@@ -104,6 +115,7 @@ def get_config(
         build_timeout(timeout),
         build_cache_strategy(cache_strategy),
         http_cache,
+        build_throttler(throttler),
         build_auto_retry(auto_retry),
         rest_api_validate_body,
     )

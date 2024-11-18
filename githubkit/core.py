@@ -13,6 +13,7 @@ import hishel
 from .utils import UNSET
 from .response import Response
 from .cache import BaseCacheStrategy
+from .throttling import BaseThrottler
 from .compat import to_jsonable_python
 from .config import Config, get_config
 from .auth import BaseAuthStrategy, TokenAuthStrategy, UnauthAuthStrategy
@@ -82,6 +83,7 @@ class GitHubCore(Generic[A]):
         timeout: Optional[Union[float, httpx.Timeout]] = None,
         cache_strategy: Optional[BaseCacheStrategy] = None,
         http_cache: bool = True,
+        throttler: Optional[BaseThrottler] = None,
         auto_retry: Union[bool, RetryDecisionFunc] = True,
         rest_api_validate_body: bool = True,
     ): ...
@@ -100,6 +102,7 @@ class GitHubCore(Generic[A]):
         timeout: Optional[Union[float, httpx.Timeout]] = None,
         cache_strategy: Optional[BaseCacheStrategy] = None,
         http_cache: bool = True,
+        throttler: Optional[BaseThrottler] = None,
         auto_retry: Union[bool, RetryDecisionFunc] = True,
         rest_api_validate_body: bool = True,
     ): ...
@@ -118,6 +121,7 @@ class GitHubCore(Generic[A]):
         timeout: Optional[Union[float, httpx.Timeout]] = None,
         cache_strategy: Optional[BaseCacheStrategy] = None,
         http_cache: bool = True,
+        throttler: Optional[BaseThrottler] = None,
         auto_retry: Union[bool, RetryDecisionFunc] = True,
         rest_api_validate_body: bool = True,
     ): ...
@@ -135,6 +139,7 @@ class GitHubCore(Generic[A]):
         timeout: Optional[Union[float, httpx.Timeout]] = None,
         cache_strategy: Optional[BaseCacheStrategy] = None,
         http_cache: bool = True,
+        throttler: Optional[BaseThrottler] = None,
         auto_retry: Union[bool, RetryDecisionFunc] = True,
         rest_api_validate_body: bool = True,
     ):
@@ -152,6 +157,7 @@ class GitHubCore(Generic[A]):
             timeout=timeout,
             cache_strategy=cache_strategy,
             http_cache=http_cache,
+            throttler=throttler,
             auto_retry=auto_retry,
             rest_api_validate_body=rest_api_validate_body,
         )
@@ -271,22 +277,24 @@ class GitHubCore(Generic[A]):
         cookies: Optional[CookieTypes] = None,
     ) -> httpx.Response:
         with self.get_sync_client() as client:
-            try:
-                return client.request(
-                    method,
-                    url,
-                    params=params,
-                    content=content,
-                    data=data,
-                    files=files,
-                    json=to_jsonable_python(json),
-                    headers=headers,
-                    cookies=cookies,
-                )
-            except httpx.TimeoutException as e:
-                raise RequestTimeout(e) from e
-            except Exception as e:
-                raise RequestError(e) from e
+            request = client.build_request(
+                method,
+                url,
+                params=params,
+                content=content,
+                data=data,
+                files=files,
+                json=to_jsonable_python(json),
+                headers=headers,
+                cookies=cookies,
+            )
+            with self.config.throttler.acquire(request):
+                try:
+                    return client.send(request)
+                except httpx.TimeoutException as e:
+                    raise RequestTimeout(e) from e
+                except Exception as e:
+                    raise RequestError(e) from e
 
     # async request
     async def _arequest(
@@ -302,23 +310,27 @@ class GitHubCore(Generic[A]):
         headers: Optional[HeaderTypes] = None,
         cookies: Optional[CookieTypes] = None,
     ) -> httpx.Response:
-        async with self.get_async_client() as client:
-            try:
-                return await client.request(
-                    method,
-                    url,
-                    params=params,
-                    content=content,
-                    data=data,
-                    files=files,
-                    json=to_jsonable_python(json),
-                    headers=headers,
-                    cookies=cookies,
-                )
-            except httpx.TimeoutException as e:
-                raise RequestTimeout(e) from e
-            except Exception as e:
-                raise RequestError(e) from e
+        async with (
+            self.get_async_client() as client,
+        ):
+            request = client.build_request(
+                method,
+                url,
+                params=params,
+                content=content,
+                data=data,
+                files=files,
+                json=to_jsonable_python(json),
+                headers=headers,
+                cookies=cookies,
+            )
+            async with self.config.throttler.async_acquire(request):
+                try:
+                    return await client.send(request)
+                except httpx.TimeoutException as e:
+                    raise RequestTimeout(e) from e
+                except Exception as e:
+                    raise RequestError(e) from e
 
     # check and parse response
     @overload
