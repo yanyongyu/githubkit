@@ -219,7 +219,7 @@ repo: dict[str, Any] = resp.json()
 
 === "Pydantic v1"
 
-    If you have already got the parsed data and want to dump it into a dict object or JSON string, you can use the pydantic model's `dict` method:
+    If you have already got the parsed data and want to dump it into a dict object or JSON string, you can use the pydantic model's `dict` or `json` method:
 
     ```python hl_lines="8-9"
     from typing import Any
@@ -235,9 +235,9 @@ repo: dict[str, Any] = resp.json()
 
 === "Pydantic v2"
 
-    If you have already got the parsed data and want to dump it into a dict object or JSON string, you can use the pydantic model's `model_dump` method:
+    If you have already got the parsed data and want to dump it into a dict object or JSON string, you can use the pydantic model's `model_dump` or `model_dump_json` method:
 
-    ```python hl_lines="8-9"
+    ```python hl_lines="8-11"
     from typing import Any
     from githubkit import Response
     from githubkit.versions.latest.models import FullRepository
@@ -245,7 +245,9 @@ repo: dict[str, Any] = resp.json()
     resp: Response[FullRepository] = github.rest.repos.get("owner", "repo")
     repo: FullRepository = resp.parsed_data
 
-    repo_dict: dict[str, Any] = repo.model_dump(mode="json", by_alias=True, exclude_unset=True)
+    repo_dict: dict[str, Any] = repo.model_dump(
+        mode="json", by_alias=True, exclude_unset=True
+    )
     repo_json: str = repo.model_dump_json(by_alias=True, exclude_unset=True)
     ```
 
