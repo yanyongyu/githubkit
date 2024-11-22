@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.utils import UNSET
@@ -16,40 +18,21 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class RepositoryRuleWorkflowsPropParameters(GitHubModel):
-    """RepositoryRuleWorkflowsPropParameters"""
+class RepositoryRuleCommitterEmailPatternPropParameters(GitHubModel):
+    """RepositoryRuleCommitterEmailPatternPropParameters"""
 
-    do_not_enforce_on_create: Missing[bool] = Field(
-        default=UNSET,
-        description="Allow repositories and branches to be created if a check would otherwise prohibit it.",
+    name: Missing[str] = Field(
+        default=UNSET, description="How this rule will appear to users."
     )
-    workflows: list[RepositoryRuleParamsWorkflowFileReference] = Field(
-        description="Workflows that must pass for this rule to pass."
+    negate: Missing[bool] = Field(
+        default=UNSET, description="If true, the rule will fail if the pattern matches."
     )
-
-
-class RepositoryRuleParamsWorkflowFileReference(GitHubModel):
-    """WorkflowFileReference
-
-    A workflow that must run for this rule to pass
-    """
-
-    path: str = Field(description="The path to the workflow file")
-    ref: Missing[str] = Field(
-        default=UNSET, description="The ref (branch or tag) of the workflow file to use"
+    operator: Literal["starts_with", "ends_with", "contains", "regex"] = Field(
+        description="The operator to use for matching."
     )
-    repository_id: int = Field(
-        description="The ID of the repository where the workflow is defined"
-    )
-    sha: Missing[str] = Field(
-        default=UNSET, description="The commit SHA of the workflow file to use"
-    )
+    pattern: str = Field(description="The pattern to match with.")
 
 
-model_rebuild(RepositoryRuleWorkflowsPropParameters)
-model_rebuild(RepositoryRuleParamsWorkflowFileReference)
+model_rebuild(RepositoryRuleCommitterEmailPatternPropParameters)
 
-__all__ = (
-    "RepositoryRuleWorkflowsPropParameters",
-    "RepositoryRuleParamsWorkflowFileReference",
-)
+__all__ = ("RepositoryRuleCommitterEmailPatternPropParameters",)

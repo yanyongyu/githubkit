@@ -13,22 +13,22 @@ from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0122 import RepositoryRuleUpdateType
-from .group_0148 import RepositoryRuleOneof18Type
-from .group_0144 import RepositoryRuleWorkflowsType
+from .group_0149 import RepositoryRuleOneof18Type
+from .group_0145 import RepositoryRuleWorkflowsType
 from .group_0125 import RepositoryRuleMergeQueueType
-from .group_0129 import RepositoryRulePullRequestType
+from .group_0130 import RepositoryRulePullRequestType
 from .group_0118 import OrgRulesetConditionsOneof0Type
 from .group_0119 import OrgRulesetConditionsOneof1Type
 from .group_0120 import OrgRulesetConditionsOneof2Type
-from .group_0146 import RepositoryRuleCodeScanningType
+from .group_0147 import RepositoryRuleCodeScanningType
 from .group_0109 import RepositoryRulesetBypassActorType
-from .group_0141 import RepositoryRuleTagNamePatternType
-from .group_0139 import RepositoryRuleBranchNamePatternType
+from .group_0142 import RepositoryRuleTagNamePatternType
+from .group_0140 import RepositoryRuleBranchNamePatternType
 from .group_0127 import RepositoryRuleRequiredDeploymentsType
-from .group_0131 import RepositoryRuleRequiredStatusChecksType
-from .group_0133 import RepositoryRuleCommitMessagePatternType
-from .group_0137 import RepositoryRuleCommitterEmailPatternType
-from .group_0135 import RepositoryRuleCommitAuthorEmailPatternType
+from .group_0132 import RepositoryRuleRequiredStatusChecksType
+from .group_0134 import RepositoryRuleCommitMessagePatternType
+from .group_0138 import RepositoryRuleCommitterEmailPatternType
+from .group_0136 import RepositoryRuleCommitAuthorEmailPatternType
 from .group_0124 import (
     RepositoryRuleOneof16Type,
     RepositoryRuleRequiredLinearHistoryType,
@@ -43,12 +43,12 @@ from .group_0121 import (
 )
 
 
-class OrgsOrgRulesetsRulesetIdPutBodyType(TypedDict):
-    """OrgsOrgRulesetsRulesetIdPutBody"""
+class OrgsOrgRulesetsPostBodyType(TypedDict):
+    """OrgsOrgRulesetsPostBody"""
 
-    name: NotRequired[str]
+    name: str
     target: NotRequired[Literal["branch", "tag", "push"]]
-    enforcement: NotRequired[Literal["disabled", "active", "evaluate"]]
+    enforcement: Literal["disabled", "active", "evaluate"]
     bypass_actors: NotRequired[list[RepositoryRulesetBypassActorType]]
     conditions: NotRequired[
         Union[
@@ -86,4 +86,4 @@ class OrgsOrgRulesetsRulesetIdPutBodyType(TypedDict):
     ]
 
 
-__all__ = ("OrgsOrgRulesetsRulesetIdPutBodyType",)
+__all__ = ("OrgsOrgRulesetsPostBodyType",)

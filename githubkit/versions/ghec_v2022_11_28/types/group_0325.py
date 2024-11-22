@@ -9,29 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
+from datetime import datetime
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0002 import SimpleUserType
-from .group_0008 import IntegrationType
+from .group_0326 import TimelineCrossReferencedEventPropSourceType
 
 
-class StateChangeIssueEventType(TypedDict):
-    """State Change Issue Event
+class TimelineCrossReferencedEventType(TypedDict):
+    """Timeline Cross Referenced Event
 
-    State Change Issue Event
+    Timeline Cross Referenced Event
     """
 
-    id: int
-    node_id: str
-    url: str
-    actor: SimpleUserType
-    event: str
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationType, None]
-    state_reason: NotRequired[Union[str, None]]
+    event: Literal["cross-referenced"]
+    actor: NotRequired[SimpleUserType]
+    created_at: datetime
+    updated_at: datetime
+    source: TimelineCrossReferencedEventPropSourceType
 
 
-__all__ = ("StateChangeIssueEventType",)
+__all__ = ("TimelineCrossReferencedEventType",)

@@ -11,18 +11,19 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class ReposOwnerRepoPullsPullNumberMergePutResponse409(GitHubModel):
-    """ReposOwnerRepoPullsPullNumberMergePutResponse409"""
-
-    message: Missing[str] = Field(default=UNSET)
-    documentation_url: Missing[str] = Field(default=UNSET)
+from .group_0136 import CustomPropertyValue
 
 
-model_rebuild(ReposOwnerRepoPullsPullNumberMergePutResponse409)
+class ReposOwnerRepoPropertiesValuesPatchBody(GitHubModel):
+    """ReposOwnerRepoPropertiesValuesPatchBody"""
 
-__all__ = ("ReposOwnerRepoPullsPullNumberMergePutResponse409",)
+    properties: list[CustomPropertyValue] = Field(
+        description="A list of custom property names and associated values to apply to the repositories."
+    )
+
+
+model_rebuild(ReposOwnerRepoPropertiesValuesPatchBody)
+
+__all__ = ("ReposOwnerRepoPropertiesValuesPatchBody",)

@@ -72,6 +72,7 @@ class DependabotClient:
     def list_alerts_for_enterprise(
         self,
         enterprise: str,
+        *,
         state: Missing[str] = UNSET,
         severity: Missing[str] = UNSET,
         ecosystem: Missing[str] = UNSET,
@@ -84,7 +85,6 @@ class DependabotClient:
         first: Missing[int] = UNSET,
         last: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         list[DependabotAlertWithRepository], list[DependabotAlertWithRepositoryType]
@@ -132,6 +132,7 @@ class DependabotClient:
     async def async_list_alerts_for_enterprise(
         self,
         enterprise: str,
+        *,
         state: Missing[str] = UNSET,
         severity: Missing[str] = UNSET,
         ecosystem: Missing[str] = UNSET,
@@ -144,7 +145,6 @@ class DependabotClient:
         first: Missing[int] = UNSET,
         last: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         list[DependabotAlertWithRepository], list[DependabotAlertWithRepositoryType]
@@ -192,6 +192,7 @@ class DependabotClient:
     def list_alerts_for_org(
         self,
         org: str,
+        *,
         state: Missing[str] = UNSET,
         severity: Missing[str] = UNSET,
         ecosystem: Missing[str] = UNSET,
@@ -204,7 +205,6 @@ class DependabotClient:
         first: Missing[int] = UNSET,
         last: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         list[DependabotAlertWithRepository], list[DependabotAlertWithRepositoryType]
@@ -253,6 +253,7 @@ class DependabotClient:
     async def async_list_alerts_for_org(
         self,
         org: str,
+        *,
         state: Missing[str] = UNSET,
         severity: Missing[str] = UNSET,
         ecosystem: Missing[str] = UNSET,
@@ -265,7 +266,6 @@ class DependabotClient:
         first: Missing[int] = UNSET,
         last: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         list[DependabotAlertWithRepository], list[DependabotAlertWithRepositoryType]
@@ -314,9 +314,9 @@ class DependabotClient:
     def list_org_secrets(
         self,
         org: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         OrgsOrgDependabotSecretsGetResponse200,
@@ -346,9 +346,9 @@ class DependabotClient:
     async def async_list_org_secrets(
         self,
         org: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         OrgsOrgDependabotSecretsGetResponse200,
@@ -619,9 +619,9 @@ class DependabotClient:
         self,
         org: str,
         secret_name: str,
+        *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200,
@@ -654,9 +654,9 @@ class DependabotClient:
         self,
         org: str,
         secret_name: str,
+        *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200,
@@ -897,6 +897,7 @@ class DependabotClient:
         self,
         owner: str,
         repo: str,
+        *,
         state: Missing[str] = UNSET,
         severity: Missing[str] = UNSET,
         ecosystem: Missing[str] = UNSET,
@@ -911,7 +912,6 @@ class DependabotClient:
         after: Missing[str] = UNSET,
         first: Missing[int] = UNSET,
         last: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[DependabotAlert], list[DependabotAlertType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/alerts#list-dependabot-alerts-for-a-repository"""
@@ -957,6 +957,7 @@ class DependabotClient:
         self,
         owner: str,
         repo: str,
+        *,
         state: Missing[str] = UNSET,
         severity: Missing[str] = UNSET,
         ecosystem: Missing[str] = UNSET,
@@ -971,7 +972,6 @@ class DependabotClient:
         after: Missing[str] = UNSET,
         first: Missing[int] = UNSET,
         last: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[DependabotAlert], list[DependabotAlertType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/alerts#list-dependabot-alerts-for-a-repository"""
@@ -1235,9 +1235,9 @@ class DependabotClient:
         self,
         owner: str,
         repo: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoDependabotSecretsGetResponse200,
@@ -1268,9 +1268,9 @@ class DependabotClient:
         self,
         owner: str,
         repo: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoDependabotSecretsGetResponse200,

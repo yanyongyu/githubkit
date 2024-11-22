@@ -9,38 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from datetime import datetime
-from typing_extensions import TypedDict, NotRequired
-
-from .group_0002 import SimpleUserType
+from typing_extensions import TypedDict
 
 
-class EnvironmentApprovalsType(TypedDict):
-    """Environment Approval
+class ActionsSecretType(TypedDict):
+    """Actions Secret
 
-    An entry in the reviews log for environment deployments
+    Set secrets for GitHub Actions.
     """
 
-    environments: list[EnvironmentApprovalsPropEnvironmentsItemsType]
-    state: Literal["approved", "rejected", "pending"]
-    user: SimpleUserType
-    comment: str
+    name: str
+    created_at: datetime
+    updated_at: datetime
 
 
-class EnvironmentApprovalsPropEnvironmentsItemsType(TypedDict):
-    """EnvironmentApprovalsPropEnvironmentsItems"""
-
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    name: NotRequired[str]
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    created_at: NotRequired[datetime]
-    updated_at: NotRequired[datetime]
-
-
-__all__ = (
-    "EnvironmentApprovalsType",
-    "EnvironmentApprovalsPropEnvironmentsItemsType",
-)
+__all__ = ("ActionsSecretType",)

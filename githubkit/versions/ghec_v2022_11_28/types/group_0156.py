@@ -12,18 +12,17 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0157 import RepositoryRuleRequiredStatusChecksPropParametersType
+from .group_0157 import RepositoryRuleMergeQueuePropParametersType
 
 
-class RepositoryRuleRequiredStatusChecksType(TypedDict):
-    """required_status_checks
+class RepositoryRuleMergeQueueType(TypedDict):
+    """merge_queue
 
-    Choose which status checks must pass before the ref is updated. When enabled,
-    commits must first be pushed to another ref where the checks pass.
+    Merges must be performed via a merge queue.
     """
 
-    type: Literal["required_status_checks"]
-    parameters: NotRequired[RepositoryRuleRequiredStatusChecksPropParametersType]
+    type: Literal["merge_queue"]
+    parameters: NotRequired[RepositoryRuleMergeQueuePropParametersType]
 
 
-__all__ = ("RepositoryRuleRequiredStatusChecksType",)
+__all__ = ("RepositoryRuleMergeQueueType",)

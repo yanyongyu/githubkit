@@ -80,6 +80,16 @@ class OrganizationSecretScanningAlert(GitHubModel):
         default=UNSET,
         description="The time that push protection was bypassed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
     )
+    push_protection_bypass_request_reviewer: Missing[Union[None, SimpleUser]] = Field(
+        default=UNSET
+    )
+    push_protection_bypass_request_comment: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="An optional comment when requesting a push protection bypass.",
+    )
+    push_protection_bypass_request_html_url: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The URL to a push protection bypass request."
+    )
     resolution_comment: Missing[Union[str, None]] = Field(
         default=UNSET,
         description="The comment that was optionally added when this alert was closed",

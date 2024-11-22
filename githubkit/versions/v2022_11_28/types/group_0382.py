@@ -12,14 +12,23 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class KeySimpleType(TypedDict):
-    """Key Simple
+class HovercardType(TypedDict):
+    """Hovercard
 
-    Key Simple
+    Hovercard
     """
 
-    id: int
-    key: str
+    contexts: list[HovercardPropContextsItemsType]
 
 
-__all__ = ("KeySimpleType",)
+class HovercardPropContextsItemsType(TypedDict):
+    """HovercardPropContextsItems"""
+
+    message: str
+    octicon: str
+
+
+__all__ = (
+    "HovercardType",
+    "HovercardPropContextsItemsType",
+)

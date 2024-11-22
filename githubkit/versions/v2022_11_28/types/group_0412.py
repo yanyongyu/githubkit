@@ -9,25 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class WebhooksMembershipType(TypedDict):
-    """Membership
+class WebhooksMilestone3Type(TypedDict):
+    """Milestone
 
-    The membership between the user and the organization. Not present when the
-    action is `member_invited`.
+    A collection of related issues and pull requests.
     """
 
-    organization_url: str
-    role: str
-    state: str
+    closed_at: Union[datetime, None]
+    closed_issues: int
+    created_at: datetime
+    creator: Union[WebhooksMilestone3PropCreatorType, None]
+    description: Union[str, None]
+    due_on: Union[datetime, None]
+    html_url: str
+    id: int
+    labels_url: str
+    node_id: str
+    number: int
+    open_issues: int
+    state: Literal["open", "closed"]
+    title: str
+    updated_at: datetime
     url: str
-    user: Union[WebhooksMembershipPropUserType, None]
 
 
-class WebhooksMembershipPropUserType(TypedDict):
+class WebhooksMilestone3PropCreatorType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -55,6 +66,6 @@ class WebhooksMembershipPropUserType(TypedDict):
 
 
 __all__ = (
-    "WebhooksMembershipType",
-    "WebhooksMembershipPropUserType",
+    "WebhooksMilestone3Type",
+    "WebhooksMilestone3PropCreatorType",
 )

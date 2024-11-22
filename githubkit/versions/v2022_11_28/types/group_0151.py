@@ -9,20 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from datetime import datetime
-from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class RuleSuiteType(TypedDict):
-    """Rule Suite
-
-    Response
-    """
+class RuleSuitesItemsType(TypedDict):
+    """RuleSuitesItems"""
 
     id: NotRequired[int]
-    actor_id: NotRequired[Union[int, None]]
-    actor_name: NotRequired[Union[str, None]]
+    actor_id: NotRequired[int]
+    actor_name: NotRequired[str]
     before_sha: NotRequired[str]
     after_sha: NotRequired[str]
     ref: NotRequired[str]
@@ -30,30 +27,7 @@ class RuleSuiteType(TypedDict):
     repository_name: NotRequired[str]
     pushed_at: NotRequired[datetime]
     result: NotRequired[Literal["pass", "fail", "bypass"]]
-    evaluation_result: NotRequired[Union[None, Literal["pass", "fail", "bypass"]]]
-    rule_evaluations: NotRequired[list[RuleSuitePropRuleEvaluationsItemsType]]
+    evaluation_result: NotRequired[Literal["pass", "fail", "bypass"]]
 
 
-class RuleSuitePropRuleEvaluationsItemsType(TypedDict):
-    """RuleSuitePropRuleEvaluationsItems"""
-
-    rule_source: NotRequired[RuleSuitePropRuleEvaluationsItemsPropRuleSourceType]
-    enforcement: NotRequired[Literal["active", "evaluate", "deleted ruleset"]]
-    result: NotRequired[Literal["pass", "fail"]]
-    rule_type: NotRequired[str]
-    details: NotRequired[Union[str, None]]
-
-
-class RuleSuitePropRuleEvaluationsItemsPropRuleSourceType(TypedDict):
-    """RuleSuitePropRuleEvaluationsItemsPropRuleSource"""
-
-    type: NotRequired[str]
-    id: NotRequired[Union[int, None]]
-    name: NotRequired[Union[str, None]]
-
-
-__all__ = (
-    "RuleSuiteType",
-    "RuleSuitePropRuleEvaluationsItemsType",
-    "RuleSuitePropRuleEvaluationsItemsPropRuleSourceType",
-)
+__all__ = ("RuleSuitesItemsType",)

@@ -62,6 +62,7 @@ class ReactionsClient:
         team_slug: str,
         discussion_number: int,
         comment_number: int,
+        *,
         content: Missing[
             Literal[
                 "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
@@ -69,7 +70,6 @@ class ReactionsClient:
         ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Reaction], list[ReactionType]]:
         """See also: https://docs.github.com/rest/reactions/reactions#list-reactions-for-a-team-discussion-comment"""
@@ -100,6 +100,7 @@ class ReactionsClient:
         team_slug: str,
         discussion_number: int,
         comment_number: int,
+        *,
         content: Missing[
             Literal[
                 "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
@@ -107,7 +108,6 @@ class ReactionsClient:
         ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Reaction], list[ReactionType]]:
         """See also: https://docs.github.com/rest/reactions/reactions#list-reactions-for-a-team-discussion-comment"""
@@ -323,6 +323,7 @@ class ReactionsClient:
         org: str,
         team_slug: str,
         discussion_number: int,
+        *,
         content: Missing[
             Literal[
                 "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
@@ -330,7 +331,6 @@ class ReactionsClient:
         ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Reaction], list[ReactionType]]:
         """See also: https://docs.github.com/rest/reactions/reactions#list-reactions-for-a-team-discussion"""
@@ -360,6 +360,7 @@ class ReactionsClient:
         org: str,
         team_slug: str,
         discussion_number: int,
+        *,
         content: Missing[
             Literal[
                 "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
@@ -367,7 +368,6 @@ class ReactionsClient:
         ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Reaction], list[ReactionType]]:
         """See also: https://docs.github.com/rest/reactions/reactions#list-reactions-for-a-team-discussion"""
@@ -573,6 +573,7 @@ class ReactionsClient:
         owner: str,
         repo: str,
         comment_id: int,
+        *,
         content: Missing[
             Literal[
                 "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
@@ -580,7 +581,6 @@ class ReactionsClient:
         ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Reaction], list[ReactionType]]:
         """See also: https://docs.github.com/rest/reactions/reactions#list-reactions-for-a-commit-comment"""
@@ -613,6 +613,7 @@ class ReactionsClient:
         owner: str,
         repo: str,
         comment_id: int,
+        *,
         content: Missing[
             Literal[
                 "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
@@ -620,7 +621,6 @@ class ReactionsClient:
         ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Reaction], list[ReactionType]]:
         """See also: https://docs.github.com/rest/reactions/reactions#list-reactions-for-a-commit-comment"""
@@ -833,6 +833,7 @@ class ReactionsClient:
         owner: str,
         repo: str,
         comment_id: int,
+        *,
         content: Missing[
             Literal[
                 "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
@@ -840,7 +841,6 @@ class ReactionsClient:
         ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Reaction], list[ReactionType]]:
         """See also: https://docs.github.com/rest/reactions/reactions#list-reactions-for-an-issue-comment"""
@@ -873,6 +873,7 @@ class ReactionsClient:
         owner: str,
         repo: str,
         comment_id: int,
+        *,
         content: Missing[
             Literal[
                 "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
@@ -880,7 +881,6 @@ class ReactionsClient:
         ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Reaction], list[ReactionType]]:
         """See also: https://docs.github.com/rest/reactions/reactions#list-reactions-for-an-issue-comment"""
@@ -1097,6 +1097,7 @@ class ReactionsClient:
         owner: str,
         repo: str,
         issue_number: int,
+        *,
         content: Missing[
             Literal[
                 "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
@@ -1104,7 +1105,6 @@ class ReactionsClient:
         ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Reaction], list[ReactionType]]:
         """See also: https://docs.github.com/rest/reactions/reactions#list-reactions-for-an-issue"""
@@ -1138,6 +1138,7 @@ class ReactionsClient:
         owner: str,
         repo: str,
         issue_number: int,
+        *,
         content: Missing[
             Literal[
                 "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
@@ -1145,7 +1146,6 @@ class ReactionsClient:
         ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Reaction], list[ReactionType]]:
         """See also: https://docs.github.com/rest/reactions/reactions#list-reactions-for-an-issue"""
@@ -1359,6 +1359,7 @@ class ReactionsClient:
         owner: str,
         repo: str,
         comment_id: int,
+        *,
         content: Missing[
             Literal[
                 "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
@@ -1366,7 +1367,6 @@ class ReactionsClient:
         ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Reaction], list[ReactionType]]:
         """See also: https://docs.github.com/rest/reactions/reactions#list-reactions-for-a-pull-request-review-comment"""
@@ -1399,6 +1399,7 @@ class ReactionsClient:
         owner: str,
         repo: str,
         comment_id: int,
+        *,
         content: Missing[
             Literal[
                 "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
@@ -1406,7 +1407,6 @@ class ReactionsClient:
         ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Reaction], list[ReactionType]]:
         """See also: https://docs.github.com/rest/reactions/reactions#list-reactions-for-a-pull-request-review-comment"""
@@ -1627,12 +1627,12 @@ class ReactionsClient:
         owner: str,
         repo: str,
         release_id: int,
+        *,
         content: Missing[
             Literal["+1", "laugh", "heart", "hooray", "rocket", "eyes"]
         ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Reaction], list[ReactionType]]:
         """See also: https://docs.github.com/rest/reactions/reactions#list-reactions-for-a-release"""
@@ -1665,12 +1665,12 @@ class ReactionsClient:
         owner: str,
         repo: str,
         release_id: int,
+        *,
         content: Missing[
             Literal["+1", "laugh", "heart", "hooray", "rocket", "eyes"]
         ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Reaction], list[ReactionType]]:
         """See also: https://docs.github.com/rest/reactions/reactions#list-reactions-for-a-release"""
@@ -1879,6 +1879,7 @@ class ReactionsClient:
         team_id: int,
         discussion_number: int,
         comment_number: int,
+        *,
         content: Missing[
             Literal[
                 "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
@@ -1886,7 +1887,6 @@ class ReactionsClient:
         ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Reaction], list[ReactionType]]:
         """See also: https://docs.github.com/rest/reactions/reactions#list-reactions-for-a-team-discussion-comment-legacy"""
@@ -1916,6 +1916,7 @@ class ReactionsClient:
         team_id: int,
         discussion_number: int,
         comment_number: int,
+        *,
         content: Missing[
             Literal[
                 "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
@@ -1923,7 +1924,6 @@ class ReactionsClient:
         ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Reaction], list[ReactionType]]:
         """See also: https://docs.github.com/rest/reactions/reactions#list-reactions-for-a-team-discussion-comment-legacy"""
@@ -2088,6 +2088,7 @@ class ReactionsClient:
         self,
         team_id: int,
         discussion_number: int,
+        *,
         content: Missing[
             Literal[
                 "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
@@ -2095,7 +2096,6 @@ class ReactionsClient:
         ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Reaction], list[ReactionType]]:
         """See also: https://docs.github.com/rest/reactions/reactions#list-reactions-for-a-team-discussion-legacy"""
@@ -2124,6 +2124,7 @@ class ReactionsClient:
         self,
         team_id: int,
         discussion_number: int,
+        *,
         content: Missing[
             Literal[
                 "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
@@ -2131,7 +2132,6 @@ class ReactionsClient:
         ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Reaction], list[ReactionType]]:
         """See also: https://docs.github.com/rest/reactions/reactions#list-reactions-for-a-team-discussion-legacy"""

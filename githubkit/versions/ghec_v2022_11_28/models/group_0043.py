@@ -10,6 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Union
+from datetime import datetime
 
 from pydantic import Field
 
@@ -18,23 +19,18 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class CodeScanningAnalysisTool(GitHubModel):
-    """CodeScanningAnalysisTool"""
+class GetAuditLogStreamConfigsItems(GitHubModel):
+    """GetAuditLogStreamConfigsItems"""
 
-    name: Missing[str] = Field(
-        default=UNSET,
-        description="The name of the tool used to generate the code scanning analysis.",
-    )
-    version: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The version of the tool used to generate the code scanning analysis.",
-    )
-    guid: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The GUID of the tool used to generate the code scanning analysis, if provided in the uploaded SARIF data.",
-    )
+    id: Missing[int] = Field(default=UNSET)
+    stream_type: Missing[str] = Field(default=UNSET)
+    stream_details: Missing[str] = Field(default=UNSET)
+    enabled: Missing[bool] = Field(default=UNSET)
+    created_at: Missing[datetime] = Field(default=UNSET)
+    updated_at: Missing[datetime] = Field(default=UNSET)
+    paused_at: Missing[Union[datetime, None]] = Field(default=UNSET)
 
 
-model_rebuild(CodeScanningAnalysisTool)
+model_rebuild(GetAuditLogStreamConfigsItems)
 
-__all__ = ("CodeScanningAnalysisTool",)
+__all__ = ("GetAuditLogStreamConfigsItems",)

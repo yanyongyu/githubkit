@@ -9,54 +9,87 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
 
 
-class ExternalGroup(GitHubModel):
-    """ExternalGroup
+class CopilotOrganizationDetails(ExtraGitHubModel):
+    """Copilot Organization Details
 
-    Information about an external group's usage and its members
+    Information about the seat breakdown and policies set for an organization with a
+    Copilot Business or Copilot Enterprise subscription.
     """
 
-    group_id: int = Field(description="The internal ID of the group")
-    group_name: str = Field(description="The display name for the group")
-    updated_at: Missing[str] = Field(
-        default=UNSET, description="The date when the group was last updated_at"
+    seat_breakdown: CopilotSeatBreakdown = Field(
+        title="Copilot Business Seat Breakdown",
+        description="The breakdown of Copilot Business seats for the organization.",
     )
-    teams: list[ExternalGroupPropTeamsItems] = Field(
-        description="An array of teams linked to this group"
+    public_code_suggestions: Literal["allow", "block", "unconfigured", "unknown"] = (
+        Field(
+            description="The organization policy for allowing or disallowing Copilot to make suggestions that match public code."
+        )
     )
-    members: list[ExternalGroupPropMembersItems] = Field(
-        description="An array of external members linked to this group"
+    ide_chat: Missing[Literal["enabled", "disabled", "unconfigured"]] = Field(
+        default=UNSET,
+        description="The organization policy for allowing or disallowing organization members to use Copilot Chat within their editor.",
+    )
+    platform_chat: Missing[Literal["enabled", "disabled", "unconfigured"]] = Field(
+        default=UNSET,
+        description="The organization policy for allowing or disallowing organization members to use Copilot features within github.com.",
+    )
+    cli: Missing[Literal["enabled", "disabled", "unconfigured"]] = Field(
+        default=UNSET,
+        description="The organization policy for allowing or disallowing organization members to use Copilot within their CLI.",
+    )
+    seat_management_setting: Literal[
+        "assign_all", "assign_selected", "disabled", "unconfigured"
+    ] = Field(description="The mode of assigning new seats.")
+    plan_type: Missing[Literal["business", "enterprise", "unknown"]] = Field(
+        default=UNSET,
+        description="The Copilot plan of the organization, or the parent enterprise, when applicable.",
     )
 
 
-class ExternalGroupPropTeamsItems(GitHubModel):
-    """ExternalGroupPropTeamsItems"""
+class CopilotSeatBreakdown(GitHubModel):
+    """Copilot Business Seat Breakdown
 
-    team_id: int = Field(description="The id for a team")
-    team_name: str = Field(description="The name of the team")
+    The breakdown of Copilot Business seats for the organization.
+    """
+
+    total: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of seats being billed for the organization as of the current billing cycle.",
+    )
+    added_this_cycle: Missing[int] = Field(
+        default=UNSET, description="Seats added during the current billing cycle."
+    )
+    pending_cancellation: Missing[int] = Field(
+        default=UNSET,
+        description="The number of seats that are pending cancellation at the end of the current billing cycle.",
+    )
+    pending_invitation: Missing[int] = Field(
+        default=UNSET,
+        description="The number of seats that have been assigned to users that have not yet accepted an invitation to this organization.",
+    )
+    active_this_cycle: Missing[int] = Field(
+        default=UNSET,
+        description="The number of seats that have used Copilot during the current billing cycle.",
+    )
+    inactive_this_cycle: Missing[int] = Field(
+        default=UNSET,
+        description="The number of seats that have not used Copilot during the current billing cycle.",
+    )
 
 
-class ExternalGroupPropMembersItems(GitHubModel):
-    """ExternalGroupPropMembersItems"""
-
-    member_id: int = Field(description="The internal user ID of the identity")
-    member_login: str = Field(description="The handle/login for the user")
-    member_name: str = Field(description="The user display name/profile name")
-    member_email: str = Field(description="An email attached to a user")
-
-
-model_rebuild(ExternalGroup)
-model_rebuild(ExternalGroupPropTeamsItems)
-model_rebuild(ExternalGroupPropMembersItems)
+model_rebuild(CopilotOrganizationDetails)
+model_rebuild(CopilotSeatBreakdown)
 
 __all__ = (
-    "ExternalGroup",
-    "ExternalGroupPropTeamsItems",
-    "ExternalGroupPropMembersItems",
+    "CopilotOrganizationDetails",
+    "CopilotSeatBreakdown",
 )

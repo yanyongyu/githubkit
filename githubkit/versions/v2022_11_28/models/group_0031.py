@@ -74,7 +74,7 @@ class CopilotDotcomChatPropModelsItems(GitHubModel):
 
     name: Missing[str] = Field(
         default=UNSET,
-        description="Name of the language used for Copilot code completion suggestions, for the given editor.",
+        description="Name of the model used for Copilot code completion suggestions. If the default model is used will appear as 'default'.",
     )
     is_custom_model: Missing[bool] = Field(
         default=UNSET, description="Indicates whether a model is custom or default."
@@ -128,7 +128,7 @@ class CopilotIdeChatPropEditorsItemsPropModelsItems(GitHubModel):
 
     name: Missing[str] = Field(
         default=UNSET,
-        description="Name of the language used for Copilot code completion suggestions, for the given editor.",
+        description="Name of the model used for Copilot code completion suggestions. If the default model is used will appear as 'default'.",
     )
     is_custom_model: Missing[bool] = Field(
         default=UNSET, description="Indicates whether a model is custom or default."
@@ -191,7 +191,7 @@ class CopilotDotcomPullRequestsPropRepositoriesItemsPropModelsItems(GitHubModel)
 
     name: Missing[str] = Field(
         default=UNSET,
-        description="Name of the language used for Copilot code completion suggestions, for the given editor.",
+        description="Name of the model used for Copilot code completion suggestions. If the default model is used will appear as 'default'.",
     )
     is_custom_model: Missing[bool] = Field(
         default=UNSET, description="Indicates whether a model is custom or default."
@@ -268,7 +268,7 @@ class CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItems(GitHubModel):
 
     name: Missing[str] = Field(
         default=UNSET,
-        description="Name of the language used for Copilot code completion suggestions, for the given editor.",
+        description="Name of the model used for Copilot code completion suggestions. If the default model is used will appear as 'default'.",
     )
     is_custom_model: Missing[bool] = Field(
         default=UNSET, description="Indicates whether a model is custom or default."

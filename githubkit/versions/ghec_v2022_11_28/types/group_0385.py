@@ -9,20 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict, NotRequired
+from typing_extensions import TypedDict
 
 
-class MetaType(TypedDict):
-    """Meta
+class TopicType(TypedDict):
+    """Topic
 
-    The metadata associated with the creation/updates to the user.
+    A topic aggregates entities that are related to a subject.
     """
 
-    resource_type: Literal["User", "Group"]
-    created: NotRequired[str]
-    last_modified: NotRequired[str]
-    location: NotRequired[str]
+    names: list[str]
 
 
-__all__ = ("MetaType",)
+__all__ = ("TopicType",)

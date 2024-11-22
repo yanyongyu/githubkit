@@ -18,10 +18,13 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class RepositoryRuleDetailedOneof6(GitHubModel):
-    """RepositoryRuleDetailedOneof6"""
+class RepositoryRuleRulesetInfo(GitHubModel):
+    """repository ruleset data for rule
 
-    type: Literal["required_signatures"] = Field()
+    User-defined metadata to store domain-specific information limited to 8 keys
+    with scalar values.
+    """
+
     ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
         default=UNSET,
         description="The type of source for the ruleset that includes this rule.",
@@ -35,6 +38,6 @@ class RepositoryRuleDetailedOneof6(GitHubModel):
     )
 
 
-model_rebuild(RepositoryRuleDetailedOneof6)
+model_rebuild(RepositoryRuleRulesetInfo)
 
-__all__ = ("RepositoryRuleDetailedOneof6",)
+__all__ = ("RepositoryRuleRulesetInfo",)

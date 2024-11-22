@@ -31,6 +31,7 @@ if TYPE_CHECKING:
         Runner,
         AuditLogEvent,
         SelectedActions,
+        AuditLogStreamKey,
         RunnerApplication,
         AnnouncementBanner,
         AuthenticationToken,
@@ -38,10 +39,12 @@ if TYPE_CHECKING:
         GetLicenseSyncStatus,
         RunnerGroupsEnterprise,
         ScimEnterpriseUserList,
+        GetAuditLogStreamConfig,
         ScimEnterpriseGroupList,
         ScimEnterpriseUserResponse,
         ScimEnterpriseGroupResponse,
         ActionsEnterprisePermissions,
+        GetAuditLogStreamConfigsItems,
         EnterpriseSecurityAnalysisSettings,
         EnterprisesEnterpriseActionsRunnersGetResponse200,
         EnterprisesEnterpriseActionsRunnerGroupsGetResponse200,
@@ -58,11 +61,18 @@ if TYPE_CHECKING:
         UserNameType,
         PatchSchemaType,
         AnnouncementType,
+        SplunkConfigType,
         AuditLogEventType,
+        DatadogConfigType,
         UserRoleItemsType,
+        AzureHubConfigType,
+        AzureBlobConfigType,
         SelectedActionsType,
         UserEmailsItemsType,
+        AuditLogStreamKeyType,
+        GoogleCloudConfigType,
         RunnerApplicationType,
+        AmazonS3OidcConfigType,
         AnnouncementBannerType,
         AuthenticationTokenType,
         GetConsumedLicensesType,
@@ -70,15 +80,20 @@ if TYPE_CHECKING:
         GroupPropMembersItemsType,
         RunnerGroupsEnterpriseType,
         ScimEnterpriseUserListType,
+        GetAuditLogStreamConfigType,
         ScimEnterpriseGroupListType,
+        AmazonS3AccessKeysConfigType,
         ScimEnterpriseUserResponseType,
         ScimEnterpriseGroupResponseType,
         ActionsEnterprisePermissionsType,
+        GetAuditLogStreamConfigsItemsType,
         PatchSchemaPropOperationsItemsType,
         EnterpriseSecurityAnalysisSettingsType,
+        EnterprisesEnterpriseAuditLogStreamsPostBodyType,
         EnterprisesEnterpriseActionsPermissionsPutBodyType,
         EnterprisesEnterpriseActionsRunnerGroupsPostBodyType,
         EnterprisesEnterpriseActionsRunnersGetResponse200Type,
+        EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyType,
         EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBodyType,
         EnterprisesEnterpriseActionsRunnerGroupsGetResponse200Type,
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBodyType,
@@ -263,9 +278,9 @@ class EnterpriseAdminClient:
     def list_selected_organizations_enabled_github_actions_enterprise(
         self,
         enterprise: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200,
@@ -297,9 +312,9 @@ class EnterpriseAdminClient:
     async def async_list_selected_organizations_enabled_github_actions_enterprise(
         self,
         enterprise: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200,
@@ -665,10 +680,10 @@ class EnterpriseAdminClient:
     def list_self_hosted_runner_groups_for_enterprise(
         self,
         enterprise: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         visible_to_organization: Missing[str] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnerGroupsGetResponse200,
@@ -699,10 +714,10 @@ class EnterpriseAdminClient:
     async def async_list_self_hosted_runner_groups_for_enterprise(
         self,
         enterprise: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         visible_to_organization: Missing[str] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnerGroupsGetResponse200,
@@ -1078,9 +1093,9 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         runner_group_id: int,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200,
@@ -1113,9 +1128,9 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         runner_group_id: int,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200,
@@ -1350,9 +1365,9 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         runner_group_id: int,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200,
@@ -1387,9 +1402,9 @@ class EnterpriseAdminClient:
         self,
         enterprise: str,
         runner_group_id: int,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200,
@@ -1629,10 +1644,10 @@ class EnterpriseAdminClient:
     def list_self_hosted_runners_for_enterprise(
         self,
         enterprise: str,
+        *,
         name: Missing[str] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersGetResponse200,
@@ -1663,10 +1678,10 @@ class EnterpriseAdminClient:
     async def async_list_self_hosted_runners_for_enterprise(
         self,
         enterprise: str,
+        *,
         name: Missing[str] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersGetResponse200,
@@ -2593,6 +2608,7 @@ class EnterpriseAdminClient:
     def get_audit_log(
         self,
         enterprise: str,
+        *,
         phrase: Missing[str] = UNSET,
         include: Missing[Literal["web", "git", "all"]] = UNSET,
         after: Missing[str] = UNSET,
@@ -2600,7 +2616,6 @@ class EnterpriseAdminClient:
         order: Missing[Literal["desc", "asc"]] = UNSET,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[AuditLogEvent], list[AuditLogEventType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/audit-log#get-the-audit-log-for-an-enterprise"""
@@ -2632,6 +2647,7 @@ class EnterpriseAdminClient:
     async def async_get_audit_log(
         self,
         enterprise: str,
+        *,
         phrase: Missing[str] = UNSET,
         include: Missing[Literal["web", "git", "all"]] = UNSET,
         after: Missing[str] = UNSET,
@@ -2639,7 +2655,6 @@ class EnterpriseAdminClient:
         order: Missing[Literal["desc", "asc"]] = UNSET,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[AuditLogEvent], list[AuditLogEventType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/audit-log#get-the-audit-log-for-an-enterprise"""
@@ -2666,6 +2681,490 @@ class EnterpriseAdminClient:
             params=exclude_unset(params),
             headers=exclude_unset(headers),
             response_model=list[AuditLogEvent],
+        )
+
+    def get_audit_log_stream_key(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[AuditLogStreamKey, AuditLogStreamKeyType]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/audit-log#get-the-audit-log-stream-key-for-encrypting-secrets"""
+
+        from ..models import AuditLogStreamKey
+
+        url = f"/enterprises/{enterprise}/audit-log/stream-key"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=AuditLogStreamKey,
+        )
+
+    async def async_get_audit_log_stream_key(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[AuditLogStreamKey, AuditLogStreamKeyType]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/audit-log#get-the-audit-log-stream-key-for-encrypting-secrets"""
+
+        from ..models import AuditLogStreamKey
+
+        url = f"/enterprises/{enterprise}/audit-log/stream-key"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=AuditLogStreamKey,
+        )
+
+    def get_audit_log_streams(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[
+        list[GetAuditLogStreamConfigsItems], list[GetAuditLogStreamConfigsItemsType]
+    ]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/audit-log#list-audit-log-stream-configurations-for-an-enterprise"""
+
+        from ..models import GetAuditLogStreamConfigsItems
+
+        url = f"/enterprises/{enterprise}/audit-log/streams"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=list[GetAuditLogStreamConfigsItems],
+        )
+
+    async def async_get_audit_log_streams(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[
+        list[GetAuditLogStreamConfigsItems], list[GetAuditLogStreamConfigsItemsType]
+    ]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/audit-log#list-audit-log-stream-configurations-for-an-enterprise"""
+
+        from ..models import GetAuditLogStreamConfigsItems
+
+        url = f"/enterprises/{enterprise}/audit-log/streams"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=list[GetAuditLogStreamConfigsItems],
+        )
+
+    @overload
+    def create_audit_log_stream(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[dict[str, str]] = None,
+        data: EnterprisesEnterpriseAuditLogStreamsPostBodyType,
+    ) -> Response[GetAuditLogStreamConfig, GetAuditLogStreamConfigType]: ...
+
+    @overload
+    def create_audit_log_stream(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[dict[str, str]] = None,
+        enabled: bool,
+        stream_type: Literal[
+            "Azure Blob Storage",
+            "Azure Event Hubs",
+            "Amazon S3",
+            "Splunk",
+            "HTTPS Event Collector",
+            "Google Cloud Storage",
+            "Datadog",
+        ],
+        vendor_specific: Union[
+            AzureBlobConfigType,
+            AzureHubConfigType,
+            AmazonS3OidcConfigType,
+            AmazonS3AccessKeysConfigType,
+            SplunkConfigType,
+            GoogleCloudConfigType,
+            DatadogConfigType,
+        ],
+    ) -> Response[GetAuditLogStreamConfig, GetAuditLogStreamConfigType]: ...
+
+    def create_audit_log_stream(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[dict[str, str]] = None,
+        data: Missing[EnterprisesEnterpriseAuditLogStreamsPostBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[GetAuditLogStreamConfig, GetAuditLogStreamConfigType]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/audit-log#create-an-audit-log-streaming-configuration-for-an-enterprise"""
+
+        from ..models import (
+            GetAuditLogStreamConfig,
+            EnterprisesEnterpriseAuditLogStreamsPostBody,
+        )
+
+        url = f"/enterprises/{enterprise}/audit-log/streams"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseAuditLogStreamsPostBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=GetAuditLogStreamConfig,
+        )
+
+    @overload
+    async def async_create_audit_log_stream(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[dict[str, str]] = None,
+        data: EnterprisesEnterpriseAuditLogStreamsPostBodyType,
+    ) -> Response[GetAuditLogStreamConfig, GetAuditLogStreamConfigType]: ...
+
+    @overload
+    async def async_create_audit_log_stream(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[dict[str, str]] = None,
+        enabled: bool,
+        stream_type: Literal[
+            "Azure Blob Storage",
+            "Azure Event Hubs",
+            "Amazon S3",
+            "Splunk",
+            "HTTPS Event Collector",
+            "Google Cloud Storage",
+            "Datadog",
+        ],
+        vendor_specific: Union[
+            AzureBlobConfigType,
+            AzureHubConfigType,
+            AmazonS3OidcConfigType,
+            AmazonS3AccessKeysConfigType,
+            SplunkConfigType,
+            GoogleCloudConfigType,
+            DatadogConfigType,
+        ],
+    ) -> Response[GetAuditLogStreamConfig, GetAuditLogStreamConfigType]: ...
+
+    async def async_create_audit_log_stream(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[dict[str, str]] = None,
+        data: Missing[EnterprisesEnterpriseAuditLogStreamsPostBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[GetAuditLogStreamConfig, GetAuditLogStreamConfigType]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/audit-log#create-an-audit-log-streaming-configuration-for-an-enterprise"""
+
+        from ..models import (
+            GetAuditLogStreamConfig,
+            EnterprisesEnterpriseAuditLogStreamsPostBody,
+        )
+
+        url = f"/enterprises/{enterprise}/audit-log/streams"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseAuditLogStreamsPostBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=GetAuditLogStreamConfig,
+        )
+
+    def get_one_audit_log_stream(
+        self,
+        enterprise: str,
+        stream_id: int,
+        *,
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[GetAuditLogStreamConfig, GetAuditLogStreamConfigType]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/audit-log#list-one-audit-log-streaming-configuration-via-a-stream-id"""
+
+        from ..models import GetAuditLogStreamConfig
+
+        url = f"/enterprises/{enterprise}/audit-log/streams/{stream_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=GetAuditLogStreamConfig,
+        )
+
+    async def async_get_one_audit_log_stream(
+        self,
+        enterprise: str,
+        stream_id: int,
+        *,
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[GetAuditLogStreamConfig, GetAuditLogStreamConfigType]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/audit-log#list-one-audit-log-streaming-configuration-via-a-stream-id"""
+
+        from ..models import GetAuditLogStreamConfig
+
+        url = f"/enterprises/{enterprise}/audit-log/streams/{stream_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=GetAuditLogStreamConfig,
+        )
+
+    @overload
+    def update_audit_log_stream(
+        self,
+        enterprise: str,
+        stream_id: int,
+        *,
+        headers: Optional[dict[str, str]] = None,
+        data: EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyType,
+    ) -> Response[GetAuditLogStreamConfig, GetAuditLogStreamConfigType]: ...
+
+    @overload
+    def update_audit_log_stream(
+        self,
+        enterprise: str,
+        stream_id: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[dict[str, str]] = None,
+        enabled: bool,
+        stream_type: Literal[
+            "Azure Blob Storage",
+            "Azure Event Hubs",
+            "Amazon S3",
+            "Splunk",
+            "HTTPS Event Collector",
+            "Google Cloud Storage",
+            "Datadog",
+        ],
+        vendor_specific: Union[
+            AzureBlobConfigType,
+            AzureHubConfigType,
+            AmazonS3OidcConfigType,
+            AmazonS3AccessKeysConfigType,
+            SplunkConfigType,
+            GoogleCloudConfigType,
+            DatadogConfigType,
+        ],
+    ) -> Response[GetAuditLogStreamConfig, GetAuditLogStreamConfigType]: ...
+
+    def update_audit_log_stream(
+        self,
+        enterprise: str,
+        stream_id: int,
+        *,
+        headers: Optional[dict[str, str]] = None,
+        data: Missing[EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[GetAuditLogStreamConfig, GetAuditLogStreamConfigType]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/audit-log#update-an-existing-audit-log-stream-configuration"""
+
+        from ..models import (
+            GetAuditLogStreamConfig,
+            EnterprisesEnterpriseAuditLogStreamsStreamIdPutBody,
+            EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422,
+        )
+
+        url = f"/enterprises/{enterprise}/audit-log/streams/{stream_id}"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseAuditLogStreamsStreamIdPutBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=GetAuditLogStreamConfig,
+            error_models={
+                "422": EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422,
+            },
+        )
+
+    @overload
+    async def async_update_audit_log_stream(
+        self,
+        enterprise: str,
+        stream_id: int,
+        *,
+        headers: Optional[dict[str, str]] = None,
+        data: EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyType,
+    ) -> Response[GetAuditLogStreamConfig, GetAuditLogStreamConfigType]: ...
+
+    @overload
+    async def async_update_audit_log_stream(
+        self,
+        enterprise: str,
+        stream_id: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[dict[str, str]] = None,
+        enabled: bool,
+        stream_type: Literal[
+            "Azure Blob Storage",
+            "Azure Event Hubs",
+            "Amazon S3",
+            "Splunk",
+            "HTTPS Event Collector",
+            "Google Cloud Storage",
+            "Datadog",
+        ],
+        vendor_specific: Union[
+            AzureBlobConfigType,
+            AzureHubConfigType,
+            AmazonS3OidcConfigType,
+            AmazonS3AccessKeysConfigType,
+            SplunkConfigType,
+            GoogleCloudConfigType,
+            DatadogConfigType,
+        ],
+    ) -> Response[GetAuditLogStreamConfig, GetAuditLogStreamConfigType]: ...
+
+    async def async_update_audit_log_stream(
+        self,
+        enterprise: str,
+        stream_id: int,
+        *,
+        headers: Optional[dict[str, str]] = None,
+        data: Missing[EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[GetAuditLogStreamConfig, GetAuditLogStreamConfigType]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/audit-log#update-an-existing-audit-log-stream-configuration"""
+
+        from ..models import (
+            GetAuditLogStreamConfig,
+            EnterprisesEnterpriseAuditLogStreamsStreamIdPutBody,
+            EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422,
+        )
+
+        url = f"/enterprises/{enterprise}/audit-log/streams/{stream_id}"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseAuditLogStreamsStreamIdPutBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=GetAuditLogStreamConfig,
+            error_models={
+                "422": EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422,
+            },
+        )
+
+    def delete_audit_log_stream(
+        self,
+        enterprise: str,
+        stream_id: int,
+        *,
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/audit-log#delete-an-audit-log-streaming-configuration-for-an-enterprise"""
+
+        url = f"/enterprises/{enterprise}/audit-log/streams/{stream_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+        )
+
+    async def async_delete_audit_log_stream(
+        self,
+        enterprise: str,
+        stream_id: int,
+        *,
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/audit-log#delete-an-audit-log-streaming-configuration-for-an-enterprise"""
+
+        url = f"/enterprises/{enterprise}/audit-log/streams/{stream_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
         )
 
     def get_security_analysis_settings_for_enterprise(
@@ -2869,9 +3368,9 @@ class EnterpriseAdminClient:
     def get_consumed_licenses(
         self,
         enterprise: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[GetConsumedLicenses, GetConsumedLicensesType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/license#list-enterprise-consumed-licenses"""
@@ -2898,9 +3397,9 @@ class EnterpriseAdminClient:
     async def async_get_consumed_licenses(
         self,
         enterprise: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[GetConsumedLicenses, GetConsumedLicensesType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/license#list-enterprise-consumed-licenses"""
@@ -3033,11 +3532,11 @@ class EnterpriseAdminClient:
     def list_provisioned_groups_enterprise(
         self,
         enterprise: str,
+        *,
         filter_: Missing[str] = UNSET,
         excluded_attributes: Missing[str] = UNSET,
         start_index: Missing[int] = UNSET,
         count: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[ScimEnterpriseGroupList, ScimEnterpriseGroupListType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#list-provisioned-scim-groups-for-an-enterprise"""
@@ -3071,11 +3570,11 @@ class EnterpriseAdminClient:
     async def async_list_provisioned_groups_enterprise(
         self,
         enterprise: str,
+        *,
         filter_: Missing[str] = UNSET,
         excluded_attributes: Missing[str] = UNSET,
         start_index: Missing[int] = UNSET,
         count: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[ScimEnterpriseGroupList, ScimEnterpriseGroupListType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#list-provisioned-scim-groups-for-an-enterprise"""
@@ -3230,8 +3729,8 @@ class EnterpriseAdminClient:
         self,
         scim_group_id: str,
         enterprise: str,
-        excluded_attributes: Missing[str] = UNSET,
         *,
+        excluded_attributes: Missing[str] = UNSET,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[ScimEnterpriseGroupResponse, ScimEnterpriseGroupResponseType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#get-scim-provisioning-information-for-an-enterprise-group"""
@@ -3264,8 +3763,8 @@ class EnterpriseAdminClient:
         self,
         scim_group_id: str,
         enterprise: str,
-        excluded_attributes: Missing[str] = UNSET,
         *,
+        excluded_attributes: Missing[str] = UNSET,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[ScimEnterpriseGroupResponse, ScimEnterpriseGroupResponseType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#get-scim-provisioning-information-for-an-enterprise-group"""
@@ -3601,10 +4100,10 @@ class EnterpriseAdminClient:
     def list_provisioned_identities_enterprise(
         self,
         enterprise: str,
+        *,
         filter_: Missing[str] = UNSET,
         start_index: Missing[int] = UNSET,
         count: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[ScimEnterpriseUserList, ScimEnterpriseUserListType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#list-scim-provisioned-identities-for-an-enterprise"""
@@ -3637,10 +4136,10 @@ class EnterpriseAdminClient:
     async def async_list_provisioned_identities_enterprise(
         self,
         enterprise: str,
+        *,
         filter_: Missing[str] = UNSET,
         start_index: Missing[int] = UNSET,
         count: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[ScimEnterpriseUserList, ScimEnterpriseUserListType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#list-scim-provisioned-identities-for-an-enterprise"""

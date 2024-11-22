@@ -14,33 +14,25 @@ from datetime import datetime
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0002 import SimpleUser
 
+class WebhooksProjectColumn(GitHubModel):
+    """Project Column"""
 
-class ProjectsV2(GitHubModel):
-    """Projects v2 Project
-
-    A projects v2 project
-    """
-
-    id: float = Field()
-    node_id: str = Field()
-    owner: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    creator: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    title: str = Field()
-    description: Union[str, None] = Field()
-    public: bool = Field()
-    closed_at: Union[datetime, None] = Field()
+    after_id: Missing[Union[int, None]] = Field(default=UNSET)
+    cards_url: str = Field()
     created_at: datetime = Field()
+    id: int = Field(description="The unique identifier of the project column")
+    name: str = Field(description="Name of the project column")
+    node_id: str = Field()
+    project_url: str = Field()
     updated_at: datetime = Field()
-    number: int = Field()
-    short_description: Union[str, None] = Field()
-    deleted_at: Union[datetime, None] = Field()
-    deleted_by: Union[None, SimpleUser] = Field()
+    url: str = Field()
 
 
-model_rebuild(ProjectsV2)
+model_rebuild(WebhooksProjectColumn)
 
-__all__ = ("ProjectsV2",)
+__all__ = ("WebhooksProjectColumn",)

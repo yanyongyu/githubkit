@@ -9,8 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from datetime import datetime
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -32,6 +32,18 @@ class OrganizationRole(GitHubModel):
     description: Missing[Union[str, None]] = Field(
         default=UNSET,
         description="A short description about who this role is for or what permissions it grants.",
+    )
+    base_role: Missing[
+        Union[None, Literal["read", "triage", "write", "maintain", "admin"]]
+    ] = Field(
+        default=UNSET,
+        description="The system role from which this role inherits permissions.",
+    )
+    source: Missing[
+        Union[None, Literal["Organization", "Enterprise", "Predefined"]]
+    ] = Field(
+        default=UNSET,
+        description='Source answers the question, "where did this role come from?"',
     )
     permissions: list[str] = Field(
         description="A list of permissions included in this role."

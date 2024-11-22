@@ -11,18 +11,24 @@ from __future__ import annotations
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class Topic(GitHubModel):
-    """Topic
+class TagProtection(GitHubModel):
+    """Tag protection
 
-    A topic aggregates entities that are related to a subject.
+    Tag protection
     """
 
-    names: list[str] = Field()
+    id: Missing[int] = Field(default=UNSET)
+    created_at: Missing[str] = Field(default=UNSET)
+    updated_at: Missing[str] = Field(default=UNSET)
+    enabled: Missing[bool] = Field(default=UNSET)
+    pattern: str = Field()
 
 
-model_rebuild(Topic)
+model_rebuild(TagProtection)
 
-__all__ = ("Topic",)
+__all__ = ("TagProtection",)

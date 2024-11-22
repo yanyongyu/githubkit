@@ -9,18 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+from typing import Union, Literal
+
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ParticipationStats(GitHubModel):
-    """Participation Stats"""
+class SecretScanningPushProtectionBypass(GitHubModel):
+    """SecretScanningPushProtectionBypass"""
 
-    all_: list[int] = Field(alias="all")
-    owner: list[int] = Field()
+    reason: Missing[Literal["false_positive", "used_in_tests", "will_fix_later"]] = (
+        Field(default=UNSET, description="The reason for bypassing push protection.")
+    )
+    expire_at: Missing[Union[datetime, None]] = Field(
+        default=UNSET,
+        description="The time that the bypass will expire in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+    )
+    token_type: Missing[str] = Field(
+        default=UNSET, description="The token type this bypass is for."
+    )
 
 
-model_rebuild(ParticipationStats)
+model_rebuild(SecretScanningPushProtectionBypass)
 
-__all__ = ("ParticipationStats",)
+__all__ = ("SecretScanningPushProtectionBypass",)

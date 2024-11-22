@@ -11,22 +11,25 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class GitUser(GitHubModel):
-    """Git User
+class Autolink(GitHubModel):
+    """Autolink reference
 
-    Metaproperties for Git author/committer information.
+    An autolink reference.
     """
 
-    name: Missing[str] = Field(default=UNSET)
-    email: Missing[str] = Field(default=UNSET)
-    date: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    key_prefix: str = Field(description="The prefix of a key that is linkified.")
+    url_template: str = Field(
+        description="A template for the target URL that is generated if a key was found."
+    )
+    is_alphanumeric: bool = Field(
+        description="Whether this autolink reference matches alphanumeric characters. If false, this autolink reference only matches numeric characters."
+    )
 
 
-model_rebuild(GitUser)
+model_rebuild(Autolink)
 
-__all__ = ("GitUser",)
+__all__ = ("Autolink",)

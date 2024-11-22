@@ -99,9 +99,9 @@ class TeamsClient:
         self,
         org: str,
         group_id: int,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[ExternalGroup, ExternalGroupType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/external-groups#get-an-external-group"""
@@ -129,9 +129,9 @@ class TeamsClient:
         self,
         org: str,
         group_id: int,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[ExternalGroup, ExternalGroupType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/external-groups#get-an-external-group"""
@@ -158,10 +158,10 @@ class TeamsClient:
     def list_external_idp_groups_for_org(
         self,
         org: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         display_name: Missing[str] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[ExternalGroups, ExternalGroupsType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/external-groups#list-external-groups-in-an-organization"""
@@ -189,10 +189,10 @@ class TeamsClient:
     async def async_list_external_idp_groups_for_org(
         self,
         org: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         display_name: Missing[str] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[ExternalGroups, ExternalGroupsType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/external-groups#list-external-groups-in-an-organization"""
@@ -220,10 +220,10 @@ class TeamsClient:
     def list_idp_groups_for_org(
         self,
         org: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[str] = UNSET,
         q: Missing[str] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[GroupMapping, GroupMappingType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/team-sync#list-idp-groups-for-an-organization"""
@@ -251,10 +251,10 @@ class TeamsClient:
     async def async_list_idp_groups_for_org(
         self,
         org: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[str] = UNSET,
         q: Missing[str] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[GroupMapping, GroupMappingType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/team-sync#list-idp-groups-for-an-organization"""
@@ -282,9 +282,9 @@ class TeamsClient:
     def list(
         self,
         org: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Team], list[TeamType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#list-teams"""
@@ -314,9 +314,9 @@ class TeamsClient:
     async def async_list(
         self,
         org: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Team], list[TeamType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#list-teams"""
@@ -709,11 +709,11 @@ class TeamsClient:
         self,
         org: str,
         team_slug: str,
+        *,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         pinned: Missing[str] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[TeamDiscussion], list[TeamDiscussionType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#list-discussions"""
@@ -743,11 +743,11 @@ class TeamsClient:
         self,
         org: str,
         team_slug: str,
+        *,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         pinned: Missing[str] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[TeamDiscussion], list[TeamDiscussionType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#list-discussions"""
@@ -1114,10 +1114,10 @@ class TeamsClient:
         org: str,
         team_slug: str,
         discussion_number: int,
+        *,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[TeamDiscussionComment], list[TeamDiscussionCommentType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#list-discussion-comments"""
@@ -1147,10 +1147,10 @@ class TeamsClient:
         org: str,
         team_slug: str,
         discussion_number: int,
+        *,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[TeamDiscussionComment], list[TeamDiscussionCommentType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#list-discussion-comments"""
@@ -1733,9 +1733,9 @@ class TeamsClient:
         self,
         org: str,
         team_slug: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[OrganizationInvitation], list[OrganizationInvitationType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/members#list-pending-team-invitations"""
@@ -1763,9 +1763,9 @@ class TeamsClient:
         self,
         org: str,
         team_slug: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[OrganizationInvitation], list[OrganizationInvitationType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/members#list-pending-team-invitations"""
@@ -1793,10 +1793,10 @@ class TeamsClient:
         self,
         org: str,
         team_slug: str,
+        *,
         role: Missing[Literal["member", "maintainer", "all"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/members#list-team-members"""
@@ -1825,10 +1825,10 @@ class TeamsClient:
         self,
         org: str,
         team_slug: str,
+        *,
         role: Missing[Literal["member", "maintainer", "all"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/members#list-team-members"""
@@ -2075,9 +2075,9 @@ class TeamsClient:
         self,
         org: str,
         team_slug: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[TeamProject], list[TeamProjectType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#list-team-projects"""
@@ -2105,9 +2105,9 @@ class TeamsClient:
         self,
         org: str,
         team_slug: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[TeamProject], list[TeamProjectType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#list-team-projects"""
@@ -2365,9 +2365,9 @@ class TeamsClient:
         self,
         org: str,
         team_slug: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#list-team-repositories"""
@@ -2395,9 +2395,9 @@ class TeamsClient:
         self,
         org: str,
         team_slug: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#list-team-repositories"""
@@ -2805,9 +2805,9 @@ class TeamsClient:
         self,
         org: str,
         team_slug: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Team], list[TeamType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#list-child-teams"""
@@ -2835,9 +2835,9 @@ class TeamsClient:
         self,
         org: str,
         team_slug: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Team], list[TeamType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#list-child-teams"""
@@ -3088,10 +3088,10 @@ class TeamsClient:
     def list_discussions_legacy(
         self,
         team_id: int,
+        *,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[TeamDiscussion], list[TeamDiscussionType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#list-discussions-legacy"""
@@ -3119,10 +3119,10 @@ class TeamsClient:
     async def async_list_discussions_legacy(
         self,
         team_id: int,
+        *,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[TeamDiscussion], list[TeamDiscussionType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#list-discussions-legacy"""
@@ -3463,10 +3463,10 @@ class TeamsClient:
         self,
         team_id: int,
         discussion_number: int,
+        *,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[TeamDiscussionComment], list[TeamDiscussionCommentType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#list-discussion-comments-legacy"""
@@ -3495,10 +3495,10 @@ class TeamsClient:
         self,
         team_id: int,
         discussion_number: int,
+        *,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[TeamDiscussionComment], list[TeamDiscussionCommentType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#list-discussion-comments-legacy"""
@@ -3868,9 +3868,9 @@ class TeamsClient:
     def list_pending_invitations_legacy(
         self,
         team_id: int,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[OrganizationInvitation], list[OrganizationInvitationType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/members#list-pending-team-invitations-legacy"""
@@ -3897,9 +3897,9 @@ class TeamsClient:
     async def async_list_pending_invitations_legacy(
         self,
         team_id: int,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[OrganizationInvitation], list[OrganizationInvitationType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/members#list-pending-team-invitations-legacy"""
@@ -3926,10 +3926,10 @@ class TeamsClient:
     def list_members_legacy(
         self,
         team_id: int,
+        *,
         role: Missing[Literal["member", "maintainer", "all"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/members#list-team-members-legacy"""
@@ -3960,10 +3960,10 @@ class TeamsClient:
     async def async_list_members_legacy(
         self,
         team_id: int,
+        *,
         role: Missing[Literal["member", "maintainer", "all"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/members#list-team-members-legacy"""
@@ -4336,9 +4336,9 @@ class TeamsClient:
     def list_projects_legacy(
         self,
         team_id: int,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[TeamProject], list[TeamProjectType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#list-team-projects-legacy"""
@@ -4368,9 +4368,9 @@ class TeamsClient:
     async def async_list_projects_legacy(
         self,
         team_id: int,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[TeamProject], list[TeamProjectType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#list-team-projects-legacy"""
@@ -4624,9 +4624,9 @@ class TeamsClient:
     def list_repos_legacy(
         self,
         team_id: int,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#list-team-repositories-legacy"""
@@ -4656,9 +4656,9 @@ class TeamsClient:
     async def async_list_repos_legacy(
         self,
         team_id: int,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#list-team-repositories-legacy"""
@@ -5080,9 +5080,9 @@ class TeamsClient:
     def list_child_legacy(
         self,
         team_id: int,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Team], list[TeamType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#list-child-teams-legacy"""
@@ -5114,9 +5114,9 @@ class TeamsClient:
     async def async_list_child_legacy(
         self,
         team_id: int,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Team], list[TeamType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#list-child-teams-legacy"""
@@ -5147,9 +5147,9 @@ class TeamsClient:
 
     def list_for_authenticated_user(
         self,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[TeamFull], list[TeamFullType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#list-teams-for-the-authenticated-user"""
@@ -5179,9 +5179,9 @@ class TeamsClient:
 
     async def async_list_for_authenticated_user(
         self,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[TeamFull], list[TeamFullType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#list-teams-for-the-authenticated-user"""

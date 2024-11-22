@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union, Literal
+from typing import Union
 
 from pydantic import Field
 
@@ -18,71 +17,95 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0002 import SimpleUser
 
+class PagesHealthCheck(GitHubModel):
+    """Pages Health Check Status
 
-class PullRequestReview(GitHubModel):
-    """Pull Request Review
-
-    Pull Request Reviews are reviews on pull requests.
+    Pages Health Check Status
     """
 
-    id: int = Field(description="Unique identifier of the review")
-    node_id: str = Field()
-    user: Union[None, SimpleUser] = Field()
-    body: str = Field(description="The text of the review.")
-    state: str = Field()
-    html_url: str = Field()
-    pull_request_url: str = Field()
-    links: PullRequestReviewPropLinks = Field(alias="_links")
-    submitted_at: Missing[datetime] = Field(default=UNSET)
-    commit_id: Union[str, None] = Field(
-        description="A commit SHA for the review. If the commit object was garbage collected or forcibly deleted, then it no longer exists in Git and this value will be `null`."
-    )
-    body_html: Missing[str] = Field(default=UNSET)
-    body_text: Missing[str] = Field(default=UNSET)
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ] = Field(
-        title="author_association",
-        description="How the author is associated with the repository.",
+    domain: Missing[PagesHealthCheckPropDomain] = Field(default=UNSET)
+    alt_domain: Missing[Union[PagesHealthCheckPropAltDomain, None]] = Field(
+        default=UNSET
     )
 
 
-class PullRequestReviewPropLinks(GitHubModel):
-    """PullRequestReviewPropLinks"""
+class PagesHealthCheckPropDomain(GitHubModel):
+    """PagesHealthCheckPropDomain"""
 
-    html: PullRequestReviewPropLinksPropHtml = Field()
-    pull_request: PullRequestReviewPropLinksPropPullRequest = Field()
+    host: Missing[str] = Field(default=UNSET)
+    uri: Missing[str] = Field(default=UNSET)
+    nameservers: Missing[str] = Field(default=UNSET)
+    dns_resolves: Missing[bool] = Field(default=UNSET)
+    is_proxied: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_cloudflare_ip: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_fastly_ip: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_old_ip_address: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_a_record: Missing[Union[bool, None]] = Field(default=UNSET)
+    has_cname_record: Missing[Union[bool, None]] = Field(default=UNSET)
+    has_mx_records_present: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_valid_domain: Missing[bool] = Field(default=UNSET)
+    is_apex_domain: Missing[bool] = Field(default=UNSET)
+    should_be_a_record: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_cname_to_github_user_domain: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_cname_to_pages_dot_github_dot_com: Missing[Union[bool, None]] = Field(
+        default=UNSET
+    )
+    is_cname_to_fastly: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_pointed_to_github_pages_ip: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_non_github_pages_ip_present: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_pages_domain: Missing[bool] = Field(default=UNSET)
+    is_served_by_pages: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_valid: Missing[bool] = Field(default=UNSET)
+    reason: Missing[Union[str, None]] = Field(default=UNSET)
+    responds_to_https: Missing[bool] = Field(default=UNSET)
+    enforces_https: Missing[bool] = Field(default=UNSET)
+    https_error: Missing[Union[str, None]] = Field(default=UNSET)
+    is_https_eligible: Missing[Union[bool, None]] = Field(default=UNSET)
+    caa_error: Missing[Union[str, None]] = Field(default=UNSET)
 
 
-class PullRequestReviewPropLinksPropHtml(GitHubModel):
-    """PullRequestReviewPropLinksPropHtml"""
+class PagesHealthCheckPropAltDomain(GitHubModel):
+    """PagesHealthCheckPropAltDomain"""
 
-    href: str = Field()
+    host: Missing[str] = Field(default=UNSET)
+    uri: Missing[str] = Field(default=UNSET)
+    nameservers: Missing[str] = Field(default=UNSET)
+    dns_resolves: Missing[bool] = Field(default=UNSET)
+    is_proxied: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_cloudflare_ip: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_fastly_ip: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_old_ip_address: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_a_record: Missing[Union[bool, None]] = Field(default=UNSET)
+    has_cname_record: Missing[Union[bool, None]] = Field(default=UNSET)
+    has_mx_records_present: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_valid_domain: Missing[bool] = Field(default=UNSET)
+    is_apex_domain: Missing[bool] = Field(default=UNSET)
+    should_be_a_record: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_cname_to_github_user_domain: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_cname_to_pages_dot_github_dot_com: Missing[Union[bool, None]] = Field(
+        default=UNSET
+    )
+    is_cname_to_fastly: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_pointed_to_github_pages_ip: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_non_github_pages_ip_present: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_pages_domain: Missing[bool] = Field(default=UNSET)
+    is_served_by_pages: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_valid: Missing[bool] = Field(default=UNSET)
+    reason: Missing[Union[str, None]] = Field(default=UNSET)
+    responds_to_https: Missing[bool] = Field(default=UNSET)
+    enforces_https: Missing[bool] = Field(default=UNSET)
+    https_error: Missing[Union[str, None]] = Field(default=UNSET)
+    is_https_eligible: Missing[Union[bool, None]] = Field(default=UNSET)
+    caa_error: Missing[Union[str, None]] = Field(default=UNSET)
 
 
-class PullRequestReviewPropLinksPropPullRequest(GitHubModel):
-    """PullRequestReviewPropLinksPropPullRequest"""
-
-    href: str = Field()
-
-
-model_rebuild(PullRequestReview)
-model_rebuild(PullRequestReviewPropLinks)
-model_rebuild(PullRequestReviewPropLinksPropHtml)
-model_rebuild(PullRequestReviewPropLinksPropPullRequest)
+model_rebuild(PagesHealthCheck)
+model_rebuild(PagesHealthCheckPropDomain)
+model_rebuild(PagesHealthCheckPropAltDomain)
 
 __all__ = (
-    "PullRequestReview",
-    "PullRequestReviewPropLinks",
-    "PullRequestReviewPropLinksPropHtml",
-    "PullRequestReviewPropLinksPropPullRequest",
+    "PagesHealthCheck",
+    "PagesHealthCheckPropDomain",
+    "PagesHealthCheckPropAltDomain",
 )

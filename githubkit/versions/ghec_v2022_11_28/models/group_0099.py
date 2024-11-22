@@ -10,86 +10,169 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
+from datetime import datetime
 
 from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
-from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class CopilotOrganizationDetails(ExtraGitHubModel):
-    """Copilot Organization Details
+class CodeSecurityConfiguration(GitHubModel):
+    """CodeSecurityConfiguration
 
-    Information about the seat breakdown and policies set for an organization with a
-    Copilot Business or Copilot Enterprise subscription.
+    A code security configuration
     """
 
-    seat_breakdown: CopilotSeatBreakdown = Field(
-        title="Copilot Business Seat Breakdown",
-        description="The breakdown of Copilot Business seats for the organization.",
+    id: Missing[int] = Field(
+        default=UNSET, description="The ID of the code security configuration"
     )
-    public_code_suggestions: Literal["allow", "block", "unconfigured", "unknown"] = (
+    name: Missing[str] = Field(
+        default=UNSET,
+        description="The name of the code security configuration. Must be unique within the organization.",
+    )
+    target_type: Missing[Literal["global", "organization", "enterprise"]] = Field(
+        default=UNSET, description="The type of the code security configuration."
+    )
+    description: Missing[str] = Field(
+        default=UNSET, description="A description of the code security configuration"
+    )
+    advanced_security: Missing[Literal["enabled", "disabled"]] = Field(
+        default=UNSET, description="The enablement status of GitHub Advanced Security"
+    )
+    dependency_graph: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
+        default=UNSET, description="The enablement status of Dependency Graph"
+    )
+    dependency_graph_autosubmit_action: Missing[
+        Literal["enabled", "disabled", "not_set"]
+    ] = Field(
+        default=UNSET,
+        description="The enablement status of Automatic dependency submission",
+    )
+    dependency_graph_autosubmit_action_options: Missing[
+        CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptions
+    ] = Field(
+        default=UNSET, description="Feature options for Automatic dependency submission"
+    )
+    dependabot_alerts: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
+        default=UNSET, description="The enablement status of Dependabot alerts"
+    )
+    dependabot_security_updates: Missing[Literal["enabled", "disabled", "not_set"]] = (
         Field(
-            description="The organization policy for allowing or disallowing Copilot to make suggestions that match public code."
+            default=UNSET,
+            description="The enablement status of Dependabot security updates",
         )
     )
-    ide_chat: Missing[Literal["enabled", "disabled", "unconfigured"]] = Field(
-        default=UNSET,
-        description="The organization policy for allowing or disallowing organization members to use Copilot Chat within their editor.",
+    code_scanning_default_setup: Missing[Literal["enabled", "disabled", "not_set"]] = (
+        Field(
+            default=UNSET,
+            description="The enablement status of code scanning default setup",
+        )
     )
-    platform_chat: Missing[Literal["enabled", "disabled", "unconfigured"]] = Field(
-        default=UNSET,
-        description="The organization policy for allowing or disallowing organization members to use Copilot features within github.com.",
+    secret_scanning: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
+        default=UNSET, description="The enablement status of secret scanning"
     )
-    cli: Missing[Literal["enabled", "disabled", "unconfigured"]] = Field(
+    secret_scanning_push_protection: Missing[
+        Literal["enabled", "disabled", "not_set"]
+    ] = Field(
         default=UNSET,
-        description="The organization policy for allowing or disallowing organization members to use Copilot within their CLI.",
+        description="The enablement status of secret scanning push protection",
     )
-    seat_management_setting: Literal[
-        "assign_all", "assign_selected", "disabled", "unconfigured"
-    ] = Field(description="The mode of assigning new seats.")
-    plan_type: Missing[Literal["business", "enterprise", "unknown"]] = Field(
+    secret_scanning_delegated_bypass: Missing[
+        Literal["enabled", "disabled", "not_set"]
+    ] = Field(
         default=UNSET,
-        description="The Copilot plan of the organization, or the parent enterprise, when applicable.",
+        description="The enablement status of secret scanning delegated bypass",
     )
+    secret_scanning_delegated_bypass_options: Missing[
+        CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptions
+    ] = Field(
+        default=UNSET,
+        description="Feature options for secret scanning delegated bypass",
+    )
+    secret_scanning_validity_checks: Missing[
+        Literal["enabled", "disabled", "not_set"]
+    ] = Field(
+        default=UNSET,
+        description="The enablement status of secret scanning validity checks",
+    )
+    secret_scanning_non_provider_patterns: Missing[
+        Literal["enabled", "disabled", "not_set"]
+    ] = Field(
+        default=UNSET,
+        description="The enablement status of secret scanning non-provider patterns",
+    )
+    private_vulnerability_reporting: Missing[
+        Literal["enabled", "disabled", "not_set"]
+    ] = Field(
+        default=UNSET,
+        description="The enablement status of private vulnerability reporting",
+    )
+    enforcement: Missing[Literal["enforced", "unenforced"]] = Field(
+        default=UNSET, description="The enforcement status for a security configuration"
+    )
+    url: Missing[str] = Field(default=UNSET, description="The URL of the configuration")
+    html_url: Missing[str] = Field(
+        default=UNSET, description="The URL of the configuration"
+    )
+    created_at: Missing[datetime] = Field(default=UNSET)
+    updated_at: Missing[datetime] = Field(default=UNSET)
 
 
-class CopilotSeatBreakdown(GitHubModel):
-    """Copilot Business Seat Breakdown
+class CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptions(GitHubModel):
+    """CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptions
 
-    The breakdown of Copilot Business seats for the organization.
+    Feature options for Automatic dependency submission
     """
 
-    total: Missing[int] = Field(
+    labeled_runners: Missing[bool] = Field(
         default=UNSET,
-        description="The total number of seats being billed for the organization as of the current billing cycle.",
-    )
-    added_this_cycle: Missing[int] = Field(
-        default=UNSET, description="Seats added during the current billing cycle."
-    )
-    pending_cancellation: Missing[int] = Field(
-        default=UNSET,
-        description="The number of seats that are pending cancellation at the end of the current billing cycle.",
-    )
-    pending_invitation: Missing[int] = Field(
-        default=UNSET,
-        description="The number of seats that have been assigned to users that have not yet accepted an invitation to this organization.",
-    )
-    active_this_cycle: Missing[int] = Field(
-        default=UNSET,
-        description="The number of seats that have used Copilot during the current billing cycle.",
-    )
-    inactive_this_cycle: Missing[int] = Field(
-        default=UNSET,
-        description="The number of seats that have not used Copilot during the current billing cycle.",
+        description="Whether to use runners labeled with 'dependency-submission' or standard GitHub runners.",
     )
 
 
-model_rebuild(CopilotOrganizationDetails)
-model_rebuild(CopilotSeatBreakdown)
+class CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptions(GitHubModel):
+    """CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptions
+
+    Feature options for secret scanning delegated bypass
+    """
+
+    reviewers: Missing[
+        list[
+            CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropReviewersItems
+        ]
+    ] = Field(
+        default=UNSET,
+        description="The bypass reviewers for secret scanning delegated bypass",
+    )
+
+
+class CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropReviewersItems(
+    GitHubModel
+):
+    """CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropReviewersIt
+    ems
+    """
+
+    reviewer_id: int = Field(
+        description="The ID of the team or role selected as a bypass reviewer"
+    )
+    reviewer_type: Literal["TEAM", "ROLE"] = Field(
+        description="The type of the bypass reviewer"
+    )
+
+
+model_rebuild(CodeSecurityConfiguration)
+model_rebuild(CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptions)
+model_rebuild(CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptions)
+model_rebuild(
+    CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropReviewersItems
+)
 
 __all__ = (
-    "CopilotOrganizationDetails",
-    "CopilotSeatBreakdown",
+    "CodeSecurityConfiguration",
+    "CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptions",
+    "CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptions",
+    "CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropReviewersItems",
 )

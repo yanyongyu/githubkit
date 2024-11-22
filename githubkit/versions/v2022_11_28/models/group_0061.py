@@ -111,6 +111,10 @@ class OrganizationFull(GitHubModel):
     created_at: datetime = Field()
     updated_at: datetime = Field()
     archived_at: Union[datetime, None] = Field()
+    deploy_keys_enabled_for_repositories: Missing[bool] = Field(
+        default=UNSET,
+        description="Controls whether or not deploy keys may be added and used for repositories in the organization.",
+    )
 
 
 class OrganizationFullPropPlan(GitHubModel):

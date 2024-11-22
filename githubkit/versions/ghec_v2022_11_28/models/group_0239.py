@@ -11,22 +11,46 @@ from __future__ import annotations
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0238 import CodeScanningVariantAnalysisRepository
+from .group_0091 import MinimalRepository
 
 
-class CodeScanningVariantAnalysisSkippedRepoGroup(GitHubModel):
-    """CodeScanningVariantAnalysisSkippedRepoGroup"""
+class CheckSuitePreference(GitHubModel):
+    """Check Suite Preference
 
-    repository_count: int = Field(
-        description="The total number of repositories that were skipped for this reason."
+    Check suite configuration preferences for a repository.
+    """
+
+    preferences: CheckSuitePreferencePropPreferences = Field()
+    repository: MinimalRepository = Field(
+        title="Minimal Repository", description="Minimal Repository"
     )
-    repositories: list[CodeScanningVariantAnalysisRepository] = Field(
-        description="A list of repositories that were skipped. This list may not include all repositories that were skipped. This is only available when the repository was found and the user has access to it."
-    )
 
 
-model_rebuild(CodeScanningVariantAnalysisSkippedRepoGroup)
+class CheckSuitePreferencePropPreferences(GitHubModel):
+    """CheckSuitePreferencePropPreferences"""
 
-__all__ = ("CodeScanningVariantAnalysisSkippedRepoGroup",)
+    auto_trigger_checks: Missing[
+        list[CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems]
+    ] = Field(default=UNSET)
+
+
+class CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems(GitHubModel):
+    """CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems"""
+
+    app_id: int = Field()
+    setting: bool = Field()
+
+
+model_rebuild(CheckSuitePreference)
+model_rebuild(CheckSuitePreferencePropPreferences)
+model_rebuild(CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems)
+
+__all__ = (
+    "CheckSuitePreference",
+    "CheckSuitePreferencePropPreferences",
+    "CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems",
+)

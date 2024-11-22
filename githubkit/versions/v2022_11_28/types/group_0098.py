@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0028 import TeamSimpleType
@@ -21,6 +21,7 @@ class TeamRoleAssignmentType(TypedDict):
     The Relationship a Team has with a role.
     """
 
+    assignment: NotRequired[Literal["direct", "indirect", "mixed"]]
     id: int
     node_id: str
     name: str

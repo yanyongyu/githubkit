@@ -10,22 +10,23 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Union
+from datetime import datetime
 from typing_extensions import TypedDict, NotRequired
 
 
-class EnterpriseSecurityAnalysisSettingsType(TypedDict):
-    """Enterprise Security Analysis Settings"""
+class GetAuditLogStreamConfigType(TypedDict):
+    """Get an audit log streaming configuration
 
-    advanced_security_enabled_for_new_repositories: bool
-    advanced_security_enabled_for_new_user_namespace_repositories: NotRequired[bool]
-    dependabot_alerts_enabled_for_new_repositories: bool
-    secret_scanning_enabled_for_new_repositories: bool
-    secret_scanning_push_protection_enabled_for_new_repositories: bool
-    secret_scanning_push_protection_custom_link: NotRequired[Union[str, None]]
-    secret_scanning_non_provider_patterns_enabled_for_new_repositories: NotRequired[
-        bool
-    ]
-    secret_scanning_validity_checks_enabled: NotRequired[bool]
+    Get an audit log streaming configuration for an enterprise.
+    """
+
+    id: int
+    stream_type: str
+    stream_details: str
+    enabled: bool
+    created_at: datetime
+    updated_at: datetime
+    paused_at: NotRequired[Union[datetime, None]]
 
 
-__all__ = ("EnterpriseSecurityAnalysisSettingsType",)
+__all__ = ("GetAuditLogStreamConfigType",)

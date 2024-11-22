@@ -131,6 +131,7 @@ class IssuesClient:
 
     def list(
         self,
+        *,
         filter_: Missing[
             Literal["assigned", "created", "mentioned", "subscribed", "repos", "all"]
         ] = UNSET,
@@ -145,7 +146,6 @@ class IssuesClient:
         pulls: Missing[bool] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Issue], list[IssueType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#list-issues-assigned-to-the-authenticated-user"""
@@ -185,6 +185,7 @@ class IssuesClient:
 
     async def async_list(
         self,
+        *,
         filter_: Missing[
             Literal["assigned", "created", "mentioned", "subscribed", "repos", "all"]
         ] = UNSET,
@@ -199,7 +200,6 @@ class IssuesClient:
         pulls: Missing[bool] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Issue], list[IssueType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#list-issues-assigned-to-the-authenticated-user"""
@@ -240,6 +240,7 @@ class IssuesClient:
     def list_for_org(
         self,
         org: str,
+        *,
         filter_: Missing[
             Literal["assigned", "created", "mentioned", "subscribed", "repos", "all"]
         ] = UNSET,
@@ -250,7 +251,6 @@ class IssuesClient:
         since: Missing[datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Issue], list[IssueType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#list-organization-issues-assigned-to-the-authenticated-user"""
@@ -286,6 +286,7 @@ class IssuesClient:
     async def async_list_for_org(
         self,
         org: str,
+        *,
         filter_: Missing[
             Literal["assigned", "created", "mentioned", "subscribed", "repos", "all"]
         ] = UNSET,
@@ -296,7 +297,6 @@ class IssuesClient:
         since: Missing[datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Issue], list[IssueType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#list-organization-issues-assigned-to-the-authenticated-user"""
@@ -333,9 +333,9 @@ class IssuesClient:
         self,
         owner: str,
         repo: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/assignees#list-assignees"""
@@ -366,9 +366,9 @@ class IssuesClient:
         self,
         owner: str,
         repo: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/assignees#list-assignees"""
@@ -449,6 +449,7 @@ class IssuesClient:
         self,
         owner: str,
         repo: str,
+        *,
         milestone: Missing[str] = UNSET,
         state: Missing[Literal["open", "closed", "all"]] = UNSET,
         assignee: Missing[str] = UNSET,
@@ -460,7 +461,6 @@ class IssuesClient:
         since: Missing[datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Issue], list[IssueType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#list-repository-issues"""
@@ -501,6 +501,7 @@ class IssuesClient:
         self,
         owner: str,
         repo: str,
+        *,
         milestone: Missing[str] = UNSET,
         state: Missing[Literal["open", "closed", "all"]] = UNSET,
         assignee: Missing[str] = UNSET,
@@ -512,7 +513,6 @@ class IssuesClient:
         since: Missing[datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Issue], list[IssueType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#list-repository-issues"""
@@ -705,12 +705,12 @@ class IssuesClient:
         self,
         owner: str,
         repo: str,
+        *,
         sort: Missing[Literal["created", "updated"]] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         since: Missing[datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[IssueComment], list[IssueCommentType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/comments#list-issue-comments-for-a-repository"""
@@ -745,12 +745,12 @@ class IssuesClient:
         self,
         owner: str,
         repo: str,
+        *,
         sort: Missing[Literal["created", "updated"]] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         since: Missing[datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[IssueComment], list[IssueCommentType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/comments#list-issue-comments-for-a-repository"""
@@ -1011,9 +1011,9 @@ class IssuesClient:
         self,
         owner: str,
         repo: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[IssueEvent], list[IssueEventType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/events#list-issue-events-for-a-repository"""
@@ -1044,9 +1044,9 @@ class IssuesClient:
         self,
         owner: str,
         repo: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[IssueEvent], list[IssueEventType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/events#list-issue-events-for-a-repository"""
@@ -1654,10 +1654,10 @@ class IssuesClient:
         owner: str,
         repo: str,
         issue_number: int,
+        *,
         since: Missing[datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[IssueComment], list[IssueCommentType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/comments#list-issue-comments"""
@@ -1691,10 +1691,10 @@ class IssuesClient:
         owner: str,
         repo: str,
         issue_number: int,
+        *,
         since: Missing[datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[IssueComment], list[IssueCommentType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/comments#list-issue-comments"""
@@ -1870,9 +1870,9 @@ class IssuesClient:
         owner: str,
         repo: str,
         issue_number: int,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         list[
@@ -1980,9 +1980,9 @@ class IssuesClient:
         owner: str,
         repo: str,
         issue_number: int,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         list[
@@ -2090,9 +2090,9 @@ class IssuesClient:
         owner: str,
         repo: str,
         issue_number: int,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Label], list[LabelType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/labels#list-labels-for-an-issue"""
@@ -2125,9 +2125,9 @@ class IssuesClient:
         owner: str,
         repo: str,
         issue_number: int,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Label], list[LabelType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/labels#list-labels-for-an-issue"""
@@ -2938,9 +2938,9 @@ class IssuesClient:
         owner: str,
         repo: str,
         issue_number: int,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         list[
@@ -3077,9 +3077,9 @@ class IssuesClient:
         owner: str,
         repo: str,
         issue_number: int,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         list[
@@ -3215,9 +3215,9 @@ class IssuesClient:
         self,
         owner: str,
         repo: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Label], list[LabelType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/labels#list-labels-for-a-repository"""
@@ -3248,9 +3248,9 @@ class IssuesClient:
         self,
         owner: str,
         repo: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Label], list[LabelType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/labels#list-labels-for-a-repository"""
@@ -3625,12 +3625,12 @@ class IssuesClient:
         self,
         owner: str,
         repo: str,
+        *,
         state: Missing[Literal["open", "closed", "all"]] = UNSET,
         sort: Missing[Literal["due_on", "completeness"]] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Milestone], list[MilestoneType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/milestones#list-milestones"""
@@ -3664,12 +3664,12 @@ class IssuesClient:
         self,
         owner: str,
         repo: str,
+        *,
         state: Missing[Literal["open", "closed", "all"]] = UNSET,
         sort: Missing[Literal["due_on", "completeness"]] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Milestone], list[MilestoneType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/milestones#list-milestones"""
@@ -4066,9 +4066,9 @@ class IssuesClient:
         owner: str,
         repo: str,
         milestone_number: int,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Label], list[LabelType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/labels#list-labels-for-issues-in-a-milestone"""
@@ -4097,9 +4097,9 @@ class IssuesClient:
         owner: str,
         repo: str,
         milestone_number: int,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Label], list[LabelType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/labels#list-labels-for-issues-in-a-milestone"""
@@ -4125,6 +4125,7 @@ class IssuesClient:
 
     def list_for_authenticated_user(
         self,
+        *,
         filter_: Missing[
             Literal["assigned", "created", "mentioned", "subscribed", "repos", "all"]
         ] = UNSET,
@@ -4135,7 +4136,6 @@ class IssuesClient:
         since: Missing[datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Issue], list[IssueType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#list-user-account-issues-assigned-to-the-authenticated-user"""
@@ -4170,6 +4170,7 @@ class IssuesClient:
 
     async def async_list_for_authenticated_user(
         self,
+        *,
         filter_: Missing[
             Literal["assigned", "created", "mentioned", "subscribed", "repos", "all"]
         ] = UNSET,
@@ -4180,7 +4181,6 @@ class IssuesClient:
         since: Missing[datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Issue], list[IssueType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#list-user-account-issues-assigned-to-the-authenticated-user"""

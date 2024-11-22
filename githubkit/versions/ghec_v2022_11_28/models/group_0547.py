@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,15 +18,20 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 from .group_0002 import SimpleUser
-from .group_0420 import EnterpriseWebhooks
-from .group_0421 import SimpleInstallation
-from .group_0423 import RepositoryWebhooks
-from .group_0422 import OrganizationSimpleWebhooks
+from .group_0442 import Discussion
+from .group_0427 import EnterpriseWebhooks
+from .group_0428 import SimpleInstallation
+from .group_0430 import RepositoryWebhooks
+from .group_0429 import OrganizationSimpleWebhooks
 
 
-class WebhookGollum(GitHubModel):
-    """gollum event"""
+class WebhookDiscussionUnpinned(GitHubModel):
+    """discussion unpinned event"""
 
+    action: Literal["unpinned"] = Field()
+    discussion: Discussion = Field(
+        title="Discussion", description="A Discussion in a repository."
+    )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -42,9 +47,6 @@ class WebhookGollum(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    pages: list[WebhookGollumPropPagesItems] = Field(
-        description="The pages that were updated."
-    )
     repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
@@ -52,23 +54,6 @@ class WebhookGollum(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-class WebhookGollumPropPagesItems(GitHubModel):
-    """WebhookGollumPropPagesItems"""
+model_rebuild(WebhookDiscussionUnpinned)
 
-    action: Literal["created", "edited"] = Field(
-        description="The action that was performed on the page. Can be `created` or `edited`."
-    )
-    html_url: str = Field(description="Points to the HTML wiki page.")
-    page_name: str = Field(description="The name of the page.")
-    sha: str = Field(description="The latest commit SHA of the page.")
-    summary: Union[str, None] = Field()
-    title: str = Field(description="The current page title.")
-
-
-model_rebuild(WebhookGollum)
-model_rebuild(WebhookGollumPropPagesItems)
-
-__all__ = (
-    "WebhookGollum",
-    "WebhookGollumPropPagesItems",
-)
+__all__ = ("WebhookDiscussionUnpinned",)

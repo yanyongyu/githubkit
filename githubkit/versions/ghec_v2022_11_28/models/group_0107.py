@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -17,29 +17,23 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0002 import SimpleUser
+
+class OrganizationCustomRepositoryRoleCreateSchema(GitHubModel):
+    """OrganizationCustomRepositoryRoleCreateSchema"""
+
+    name: str = Field(description="The name of the custom role.")
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="A short description about who this role is for or what permissions it grants.",
+    )
+    base_role: Literal["read", "triage", "write", "maintain"] = Field(
+        description="The system role from which this role inherits permissions."
+    )
+    permissions: list[str] = Field(
+        description="A list of additional permissions included in this role."
+    )
 
 
-class OrganizationInvitation(GitHubModel):
-    """Organization Invitation
+model_rebuild(OrganizationCustomRepositoryRoleCreateSchema)
 
-    Organization Invitation
-    """
-
-    id: int = Field()
-    login: Union[str, None] = Field()
-    email: Union[str, None] = Field()
-    role: str = Field()
-    created_at: str = Field()
-    failed_at: Missing[Union[str, None]] = Field(default=UNSET)
-    failed_reason: Missing[Union[str, None]] = Field(default=UNSET)
-    inviter: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    team_count: int = Field()
-    node_id: str = Field()
-    invitation_teams_url: str = Field()
-    invitation_source: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(OrganizationInvitation)
-
-__all__ = ("OrganizationInvitation",)
+__all__ = ("OrganizationCustomRepositoryRoleCreateSchema",)

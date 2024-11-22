@@ -9,30 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName(GitHubModel):
-    """RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName"""
+class CodeOfConductSimple(GitHubModel):
+    """Code Of Conduct Simple
 
-    include: Missing[list[str]] = Field(
-        default=UNSET,
-        description="Array of repository names or patterns to include. One of these patterns must match for the condition to pass. Also accepts `~ALL` to include all repositories.",
-    )
-    exclude: Missing[list[str]] = Field(
-        default=UNSET,
-        description="Array of repository names or patterns to exclude. The condition will not pass if any of these patterns match.",
-    )
-    protected: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether renaming of target repositories is prevented.",
-    )
+    Code of Conduct Simple
+    """
+
+    url: str = Field()
+    key: str = Field()
+    name: str = Field()
+    html_url: Union[str, None] = Field()
 
 
-model_rebuild(RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName)
+model_rebuild(CodeOfConductSimple)
 
-__all__ = ("RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName",)
+__all__ = ("CodeOfConductSimple",)

@@ -13,12 +13,12 @@ from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class ReviewCustomGatesStateRequiredType(TypedDict):
-    """ReviewCustomGatesStateRequired"""
+class ActionsRepositoryPermissionsType(TypedDict):
+    """ActionsRepositoryPermissions"""
 
-    environment_name: str
-    state: Literal["approved", "rejected"]
-    comment: NotRequired[str]
+    enabled: bool
+    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
+    selected_actions_url: NotRequired[str]
 
 
-__all__ = ("ReviewCustomGatesStateRequiredType",)
+__all__ = ("ActionsRepositoryPermissionsType",)

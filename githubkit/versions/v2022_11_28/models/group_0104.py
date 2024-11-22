@@ -29,6 +29,9 @@ class CustomProperty(GitHubModel):
         default=UNSET,
         description="The URL that can be used to fetch, update, or delete info about this property via the API.",
     )
+    source_type: Missing[Literal["organization", "enterprise"]] = Field(
+        default=UNSET, description="The source type of the property"
+    )
     value_type: Literal["string", "single_select", "multi_select", "true_false"] = (
         Field(description="The type of the value for the property")
     )

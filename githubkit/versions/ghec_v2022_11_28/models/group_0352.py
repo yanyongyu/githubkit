@@ -9,32 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from datetime import datetime
+from typing import Union, Literal
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0002 import SimpleUser
 
-class RepositoryRuleDetailedOneof3(GitHubModel):
-    """RepositoryRuleDetailedOneof3"""
 
-    type: Literal["required_linear_history"] = Field()
-    ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
-        default=UNSET,
-        description="The type of source for the ruleset that includes this rule.",
+class ReleaseAsset(GitHubModel):
+    """Release Asset
+
+    Data related to a release.
+    """
+
+    url: str = Field()
+    browser_download_url: str = Field()
+    id: int = Field()
+    node_id: str = Field()
+    name: str = Field(description="The file name of the asset.")
+    label: Union[str, None] = Field()
+    state: Literal["uploaded", "open"] = Field(
+        description="State of the release asset."
     )
-    ruleset_source: Missing[str] = Field(
-        default=UNSET,
-        description="The name of the source of the ruleset that includes this rule.",
-    )
-    ruleset_id: Missing[int] = Field(
-        default=UNSET, description="The ID of the ruleset that includes this rule."
-    )
+    content_type: str = Field()
+    size: int = Field()
+    download_count: int = Field()
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+    uploader: Union[None, SimpleUser] = Field()
 
 
-model_rebuild(RepositoryRuleDetailedOneof3)
+model_rebuild(ReleaseAsset)
 
-__all__ = ("RepositoryRuleDetailedOneof3",)
+__all__ = ("ReleaseAsset",)

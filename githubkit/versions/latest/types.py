@@ -4863,6 +4863,9 @@ if TYPE_CHECKING:
         RepositoryRuleCommitterEmailPatternPropParametersType as RepositoryRuleCommitterEmailPatternPropParametersType,
     )
     from githubkit.versions.v2022_11_28.types import (
+        RepositoryRuleParamsRequiredReviewerConfigurationType as RepositoryRuleParamsRequiredReviewerConfigurationType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         RepositoryRulesetConditionsRepositoryPropertySpecType as RepositoryRulesetConditionsRepositoryPropertySpecType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -5347,6 +5350,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.types import (
         WebhookWorkflowRunInProgressPropWorkflowRunPropActorType as WebhookWorkflowRunInProgressPropWorkflowRunPropActorType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        DependencyGraphSpdxSbomPropSbomPropRelationshipsItemsType as DependencyGraphSpdxSbomPropSbomPropRelationshipsItemsType,
     )
     from githubkit.versions.v2022_11_28.types import (
         OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBodyType as OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBodyType,
@@ -9892,6 +9898,7 @@ else:
             "RepositoryRuleMergeQueuePropParametersType",
             "RepositoryRuleRequiredDeploymentsType",
             "RepositoryRuleRequiredDeploymentsPropParametersType",
+            "RepositoryRuleParamsRequiredReviewerConfigurationType",
             "RepositoryRulePullRequestType",
             "RepositoryRulePullRequestPropParametersType",
             "RepositoryRuleRequiredStatusChecksType",
@@ -10136,6 +10143,7 @@ else:
             "DependencyGraphSpdxSbomType",
             "DependencyGraphSpdxSbomPropSbomType",
             "DependencyGraphSpdxSbomPropSbomPropCreationInfoType",
+            "DependencyGraphSpdxSbomPropSbomPropRelationshipsItemsType",
             "DependencyGraphSpdxSbomPropSbomPropPackagesItemsType",
             "DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItemsType",
             "MetadataType",

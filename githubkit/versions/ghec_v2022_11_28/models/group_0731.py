@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
@@ -17,93 +17,72 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0002 import SimpleUser
-from .group_0465 import WebhooksRelease
-from .group_0420 import EnterpriseWebhooks
-from .group_0421 import SimpleInstallation
-from .group_0423 import RepositoryWebhooks
-from .group_0422 import OrganizationSimpleWebhooks
+from .group_0732 import (
+    WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersion,
+)
 
 
-class WebhookReleaseEdited(GitHubModel):
-    """release edited event"""
+class WebhookRegistryPackagePublishedPropRegistryPackage(GitHubModel):
+    """WebhookRegistryPackagePublishedPropRegistryPackage"""
 
-    action: Literal["edited"] = Field()
-    changes: WebhookReleaseEditedPropChanges = Field()
-    enterprise: Missing[EnterpriseWebhooks] = Field(
-        default=UNSET,
-        title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."',
-    )
-    installation: Missing[SimpleInstallation] = Field(
-        default=UNSET,
-        title="Simple Installation",
-        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
-    )
-    organization: Missing[OrganizationSimpleWebhooks] = Field(
-        default=UNSET,
-        title="Organization Simple",
-        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
-    )
-    release: WebhooksRelease = Field(
-        title="Release",
-        description="The [release](https://docs.github.com/enterprise-cloud@latest//rest/releases/releases/#get-a-release) object.",
-    )
-    repository: RepositoryWebhooks = Field(
-        title="Repository",
-        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
-    )
-    sender: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
-    )
+    created_at: Union[str, None] = Field()
+    description: Union[str, None] = Field()
+    ecosystem: str = Field()
+    html_url: str = Field()
+    id: int = Field()
+    name: str = Field()
+    namespace: str = Field()
+    owner: WebhookRegistryPackagePublishedPropRegistryPackagePropOwner = Field()
+    package_type: str = Field()
+    package_version: Union[
+        WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersion, None
+    ] = Field()
+    registry: Union[
+        WebhookRegistryPackagePublishedPropRegistryPackagePropRegistry, None
+    ] = Field()
+    updated_at: Union[str, None] = Field()
 
 
-class WebhookReleaseEditedPropChanges(GitHubModel):
-    """WebhookReleaseEditedPropChanges"""
+class WebhookRegistryPackagePublishedPropRegistryPackagePropOwner(GitHubModel):
+    """WebhookRegistryPackagePublishedPropRegistryPackagePropOwner"""
 
-    body: Missing[WebhookReleaseEditedPropChangesPropBody] = Field(default=UNSET)
-    name: Missing[WebhookReleaseEditedPropChangesPropName] = Field(default=UNSET)
-    make_latest: Missing[WebhookReleaseEditedPropChangesPropMakeLatest] = Field(
-        default=UNSET
-    )
-
-
-class WebhookReleaseEditedPropChangesPropBody(GitHubModel):
-    """WebhookReleaseEditedPropChangesPropBody"""
-
-    from_: str = Field(
-        alias="from",
-        description="The previous version of the body if the action was `edited`.",
-    )
-
-
-class WebhookReleaseEditedPropChangesPropName(GitHubModel):
-    """WebhookReleaseEditedPropChangesPropName"""
-
-    from_: str = Field(
-        alias="from",
-        description="The previous version of the name if the action was `edited`.",
-    )
+    avatar_url: str = Field()
+    events_url: str = Field()
+    followers_url: str = Field()
+    following_url: str = Field()
+    gists_url: str = Field()
+    gravatar_id: str = Field()
+    html_url: str = Field()
+    id: int = Field()
+    login: str = Field()
+    node_id: str = Field()
+    organizations_url: str = Field()
+    received_events_url: str = Field()
+    repos_url: str = Field()
+    site_admin: bool = Field()
+    starred_url: str = Field()
+    subscriptions_url: str = Field()
+    type: str = Field()
+    url: str = Field()
+    user_view_type: Missing[str] = Field(default=UNSET)
 
 
-class WebhookReleaseEditedPropChangesPropMakeLatest(GitHubModel):
-    """WebhookReleaseEditedPropChangesPropMakeLatest"""
+class WebhookRegistryPackagePublishedPropRegistryPackagePropRegistry(GitHubModel):
+    """WebhookRegistryPackagePublishedPropRegistryPackagePropRegistry"""
 
-    to: bool = Field(
-        description="Whether this release was explicitly `edited` to be the latest."
-    )
+    about_url: Missing[str] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    type: Missing[str] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    vendor: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhookReleaseEdited)
-model_rebuild(WebhookReleaseEditedPropChanges)
-model_rebuild(WebhookReleaseEditedPropChangesPropBody)
-model_rebuild(WebhookReleaseEditedPropChangesPropName)
-model_rebuild(WebhookReleaseEditedPropChangesPropMakeLatest)
+model_rebuild(WebhookRegistryPackagePublishedPropRegistryPackage)
+model_rebuild(WebhookRegistryPackagePublishedPropRegistryPackagePropOwner)
+model_rebuild(WebhookRegistryPackagePublishedPropRegistryPackagePropRegistry)
 
 __all__ = (
-    "WebhookReleaseEdited",
-    "WebhookReleaseEditedPropChanges",
-    "WebhookReleaseEditedPropChangesPropBody",
-    "WebhookReleaseEditedPropChangesPropName",
-    "WebhookReleaseEditedPropChangesPropMakeLatest",
+    "WebhookRegistryPackagePublishedPropRegistryPackage",
+    "WebhookRegistryPackagePublishedPropRegistryPackagePropOwner",
+    "WebhookRegistryPackagePublishedPropRegistryPackagePropRegistry",
 )

@@ -13,17 +13,17 @@ from datetime import datetime
 from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoDependabotSecretsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoDependabotSecretsGetResponse200"""
+class ReposOwnerRepoCodespacesSecretsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoCodespacesSecretsGetResponse200"""
 
     total_count: int
-    secrets: list[DependabotSecretType]
+    secrets: list[RepoCodespacesSecretType]
 
 
-class DependabotSecretType(TypedDict):
-    """Dependabot Secret
+class RepoCodespacesSecretType(TypedDict):
+    """Codespaces Secret
 
-    Set secrets for Dependabot.
+    Set repository secrets for GitHub Codespaces.
     """
 
     name: str
@@ -32,6 +32,6 @@ class DependabotSecretType(TypedDict):
 
 
 __all__ = (
-    "ReposOwnerRepoDependabotSecretsGetResponse200Type",
-    "DependabotSecretType",
+    "ReposOwnerRepoCodespacesSecretsGetResponse200Type",
+    "RepoCodespacesSecretType",
 )

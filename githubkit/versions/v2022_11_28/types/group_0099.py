@@ -9,8 +9,10 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
+
+from .group_0028 import TeamSimpleType
 
 
 class UserRoleAssignmentType(TypedDict):
@@ -19,6 +21,8 @@ class UserRoleAssignmentType(TypedDict):
     The Relationship a User has with a role.
     """
 
+    assignment: NotRequired[Literal["direct", "indirect", "mixed"]]
+    inherited_from: NotRequired[list[TeamSimpleType]]
     name: NotRequired[Union[str, None]]
     email: NotRequired[Union[str, None]]
     login: str

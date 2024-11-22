@@ -18,13 +18,20 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBody(GitHubModel):
-    """OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBody"""
+class OrgsOrgActionsRunnerGroupsPostBody(GitHubModel):
+    """OrgsOrgActionsRunnerGroupsPostBody"""
 
     name: str = Field(description="Name of the runner group.")
     visibility: Missing[Literal["selected", "all", "private"]] = Field(
         default=UNSET,
-        description="Visibility of a runner group. You can select all repositories, select individual repositories, or all private repositories.",
+        description="Visibility of a runner group. You can select all repositories, select individual repositories, or limit access to private repositories.",
+    )
+    selected_repository_ids: Missing[list[int]] = Field(
+        default=UNSET,
+        description="List of repository IDs that can access the runner group.",
+    )
+    runners: Missing[list[int]] = Field(
+        default=UNSET, description="List of runner IDs to add to the runner group."
     )
     allows_public_repositories: Missing[bool] = Field(
         default=UNSET,
@@ -40,6 +47,6 @@ class OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBody(GitHubModel):
     )
 
 
-model_rebuild(OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBody)
+model_rebuild(OrgsOrgActionsRunnerGroupsPostBody)
 
-__all__ = ("OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBody",)
+__all__ = ("OrgsOrgActionsRunnerGroupsPostBody",)

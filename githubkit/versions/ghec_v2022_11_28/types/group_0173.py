@@ -12,25 +12,17 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
+from .group_0174 import RepositoryRuleTagNamePatternPropParametersType
 
-class RepositoryRuleOneof18Type(TypedDict):
-    """max_file_size
 
-    Prevent commits that exceed a specified file size limit from being pushed to the
-    commit.
+class RepositoryRuleTagNamePatternType(TypedDict):
+    """tag_name_pattern
+
+    Parameters to be used for the tag_name_pattern rule
     """
 
-    type: Literal["max_file_size"]
-    parameters: NotRequired[RepositoryRuleOneof18PropParametersType]
+    type: Literal["tag_name_pattern"]
+    parameters: NotRequired[RepositoryRuleTagNamePatternPropParametersType]
 
 
-class RepositoryRuleOneof18PropParametersType(TypedDict):
-    """RepositoryRuleOneof18PropParameters"""
-
-    max_file_size: int
-
-
-__all__ = (
-    "RepositoryRuleOneof18Type",
-    "RepositoryRuleOneof18PropParametersType",
-)
+__all__ = ("RepositoryRuleTagNamePatternType",)

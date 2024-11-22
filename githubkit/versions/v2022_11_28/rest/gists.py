@@ -59,10 +59,10 @@ class GistsClient:
 
     def list(
         self,
+        *,
         since: Missing[datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[BaseGist], list[BaseGistType]]:
         """See also: https://docs.github.com/rest/gists/gists#list-gists-for-the-authenticated-user"""
@@ -92,10 +92,10 @@ class GistsClient:
 
     async def async_list(
         self,
+        *,
         since: Missing[datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[BaseGist], list[BaseGistType]]:
         """See also: https://docs.github.com/rest/gists/gists#list-gists-for-the-authenticated-user"""
@@ -231,10 +231,10 @@ class GistsClient:
 
     def list_public(
         self,
+        *,
         since: Missing[datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[BaseGist], list[BaseGistType]]:
         """See also: https://docs.github.com/rest/gists/gists#list-public-gists"""
@@ -265,10 +265,10 @@ class GistsClient:
 
     async def async_list_public(
         self,
+        *,
         since: Missing[datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[BaseGist], list[BaseGistType]]:
         """See also: https://docs.github.com/rest/gists/gists#list-public-gists"""
@@ -299,10 +299,10 @@ class GistsClient:
 
     def list_starred(
         self,
+        *,
         since: Missing[datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[BaseGist], list[BaseGistType]]:
         """See also: https://docs.github.com/rest/gists/gists#list-starred-gists"""
@@ -333,10 +333,10 @@ class GistsClient:
 
     async def async_list_starred(
         self,
+        *,
         since: Missing[datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[BaseGist], list[BaseGistType]]:
         """See also: https://docs.github.com/rest/gists/gists#list-starred-gists"""
@@ -594,9 +594,9 @@ class GistsClient:
     def list_comments(
         self,
         gist_id: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[GistComment], list[GistCommentType]]:
         """See also: https://docs.github.com/rest/gists/comments#list-gist-comments"""
@@ -627,9 +627,9 @@ class GistsClient:
     async def async_list_comments(
         self,
         gist_id: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[GistComment], list[GistCommentType]]:
         """See also: https://docs.github.com/rest/gists/comments#list-gist-comments"""
@@ -998,9 +998,9 @@ class GistsClient:
     def list_commits(
         self,
         gist_id: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[GistCommit], list[GistCommitType]]:
         """See also: https://docs.github.com/rest/gists/gists#list-gist-commits"""
@@ -1031,9 +1031,9 @@ class GistsClient:
     async def async_list_commits(
         self,
         gist_id: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[GistCommit], list[GistCommitType]]:
         """See also: https://docs.github.com/rest/gists/gists#list-gist-commits"""
@@ -1064,9 +1064,9 @@ class GistsClient:
     def list_forks(
         self,
         gist_id: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[GistSimple], list[GistSimpleType]]:
         """See also: https://docs.github.com/rest/gists/gists#list-gist-forks"""
@@ -1097,9 +1097,9 @@ class GistsClient:
     async def async_list_forks(
         self,
         gist_id: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[GistSimple], list[GistSimpleType]]:
         """See also: https://docs.github.com/rest/gists/gists#list-gist-forks"""
@@ -1380,10 +1380,10 @@ class GistsClient:
     def list_for_user(
         self,
         username: str,
+        *,
         since: Missing[datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[BaseGist], list[BaseGistType]]:
         """See also: https://docs.github.com/rest/gists/gists#list-gists-for-a-user"""
@@ -1414,10 +1414,10 @@ class GistsClient:
     async def async_list_for_user(
         self,
         username: str,
+        *,
         since: Missing[datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[BaseGist], list[BaseGistType]]:
         """See also: https://docs.github.com/rest/gists/gists#list-gists-for-a-user"""

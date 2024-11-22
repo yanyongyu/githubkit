@@ -14,16 +14,16 @@ from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class WebhooksRelease1Type(TypedDict):
+class WebhooksReleaseType(TypedDict):
     """Release
 
     The [release](https://docs.github.com/rest/releases/releases/#get-a-release)
     object.
     """
 
-    assets: list[Union[WebhooksRelease1PropAssetsItemsType, None]]
+    assets: list[WebhooksReleasePropAssetsItemsType]
     assets_url: str
-    author: Union[WebhooksRelease1PropAuthorType, None]
+    author: Union[WebhooksReleasePropAuthorType, None]
     body: Union[str, None]
     created_at: Union[datetime, None]
     discussion_url: NotRequired[str]
@@ -34,7 +34,7 @@ class WebhooksRelease1Type(TypedDict):
     node_id: str
     prerelease: bool
     published_at: Union[datetime, None]
-    reactions: NotRequired[WebhooksRelease1PropReactionsType]
+    reactions: NotRequired[WebhooksReleasePropReactionsType]
     tag_name: str
     tarball_url: Union[str, None]
     target_commitish: str
@@ -43,54 +43,7 @@ class WebhooksRelease1Type(TypedDict):
     zipball_url: Union[str, None]
 
 
-class WebhooksRelease1PropAssetsItemsType(TypedDict):
-    """Release Asset
-
-    Data related to a release.
-    """
-
-    browser_download_url: str
-    content_type: str
-    created_at: datetime
-    download_count: int
-    id: int
-    label: Union[str, None]
-    name: str
-    node_id: str
-    size: int
-    state: Literal["uploaded"]
-    updated_at: datetime
-    uploader: NotRequired[Union[WebhooksRelease1PropAssetsItemsPropUploaderType, None]]
-    url: str
-
-
-class WebhooksRelease1PropAssetsItemsPropUploaderType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-
-
-class WebhooksRelease1PropAuthorType(TypedDict):
+class WebhooksReleasePropAuthorType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -117,7 +70,7 @@ class WebhooksRelease1PropAuthorType(TypedDict):
     user_view_type: NotRequired[str]
 
 
-class WebhooksRelease1PropReactionsType(TypedDict):
+class WebhooksReleasePropReactionsType(TypedDict):
     """Reactions"""
 
     plus_one: int
@@ -132,10 +85,57 @@ class WebhooksRelease1PropReactionsType(TypedDict):
     url: str
 
 
+class WebhooksReleasePropAssetsItemsType(TypedDict):
+    """Release Asset
+
+    Data related to a release.
+    """
+
+    browser_download_url: str
+    content_type: str
+    created_at: datetime
+    download_count: int
+    id: int
+    label: Union[str, None]
+    name: str
+    node_id: str
+    size: int
+    state: Literal["uploaded"]
+    updated_at: datetime
+    uploader: NotRequired[Union[WebhooksReleasePropAssetsItemsPropUploaderType, None]]
+    url: str
+
+
+class WebhooksReleasePropAssetsItemsPropUploaderType(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+
+
 __all__ = (
-    "WebhooksRelease1Type",
-    "WebhooksRelease1PropAssetsItemsType",
-    "WebhooksRelease1PropAssetsItemsPropUploaderType",
-    "WebhooksRelease1PropAuthorType",
-    "WebhooksRelease1PropReactionsType",
+    "WebhooksReleaseType",
+    "WebhooksReleasePropAuthorType",
+    "WebhooksReleasePropReactionsType",
+    "WebhooksReleasePropAssetsItemsType",
+    "WebhooksReleasePropAssetsItemsPropUploaderType",
 )

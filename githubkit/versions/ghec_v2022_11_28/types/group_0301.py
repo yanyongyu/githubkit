@@ -9,114 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0050 import TeamType
-from .group_0069 import IssueType
-from .group_0002 import SimpleUserType
-from .group_0008 import IntegrationType
+from .group_0227 import VerificationType
 
 
-class IssueEventType(TypedDict):
-    """Issue Event
+class GitTagType(TypedDict):
+    """Git Tag
 
-    Issue Event
+    Metadata for a Git tag
     """
 
-    id: int
     node_id: str
+    tag: str
+    sha: str
     url: str
-    actor: Union[None, SimpleUserType]
-    event: str
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: datetime
-    issue: NotRequired[Union[None, IssueType]]
-    label: NotRequired[IssueEventLabelType]
-    assignee: NotRequired[Union[None, SimpleUserType]]
-    assigner: NotRequired[Union[None, SimpleUserType]]
-    review_requester: NotRequired[Union[None, SimpleUserType]]
-    requested_reviewer: NotRequired[Union[None, SimpleUserType]]
-    requested_team: NotRequired[TeamType]
-    dismissed_review: NotRequired[IssueEventDismissedReviewType]
-    milestone: NotRequired[IssueEventMilestoneType]
-    project_card: NotRequired[IssueEventProjectCardType]
-    rename: NotRequired[IssueEventRenameType]
-    author_association: NotRequired[
-        Literal[
-            "COLLABORATOR",
-            "CONTRIBUTOR",
-            "FIRST_TIMER",
-            "FIRST_TIME_CONTRIBUTOR",
-            "MANNEQUIN",
-            "MEMBER",
-            "NONE",
-            "OWNER",
-        ]
-    ]
-    lock_reason: NotRequired[Union[str, None]]
-    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
+    message: str
+    tagger: GitTagPropTaggerType
+    object_: GitTagPropObjectType
+    verification: NotRequired[VerificationType]
 
 
-class IssueEventLabelType(TypedDict):
-    """Issue Event Label
+class GitTagPropTaggerType(TypedDict):
+    """GitTagPropTagger"""
 
-    Issue Event Label
-    """
-
-    name: Union[str, None]
-    color: Union[str, None]
+    date: str
+    email: str
+    name: str
 
 
-class IssueEventDismissedReviewType(TypedDict):
-    """Issue Event Dismissed Review"""
+class GitTagPropObjectType(TypedDict):
+    """GitTagPropObject"""
 
-    state: str
-    review_id: int
-    dismissal_message: Union[str, None]
-    dismissal_commit_id: NotRequired[Union[str, None]]
-
-
-class IssueEventMilestoneType(TypedDict):
-    """Issue Event Milestone
-
-    Issue Event Milestone
-    """
-
-    title: str
-
-
-class IssueEventProjectCardType(TypedDict):
-    """Issue Event Project Card
-
-    Issue Event Project Card
-    """
-
+    sha: str
+    type: str
     url: str
-    id: int
-    project_url: str
-    project_id: int
-    column_name: str
-    previous_column_name: NotRequired[str]
-
-
-class IssueEventRenameType(TypedDict):
-    """Issue Event Rename
-
-    Issue Event Rename
-    """
-
-    from_: str
-    to: str
 
 
 __all__ = (
-    "IssueEventType",
-    "IssueEventLabelType",
-    "IssueEventDismissedReviewType",
-    "IssueEventMilestoneType",
-    "IssueEventProjectCardType",
-    "IssueEventRenameType",
+    "GitTagType",
+    "GitTagPropTaggerType",
+    "GitTagPropObjectType",
 )

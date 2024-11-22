@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
+from typing import Union
 
 from pydantic import Field
 
@@ -18,34 +18,65 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ContentDirectoryItems(GitHubModel):
-    """ContentDirectoryItems"""
+class ContentTree(GitHubModel):
+    """Content Tree
 
-    type: Literal["dir", "file", "submodule", "symlink"] = Field()
+    Content Tree
+    """
+
+    type: str = Field()
     size: int = Field()
     name: str = Field()
     path: str = Field()
-    content: Missing[str] = Field(default=UNSET)
     sha: str = Field()
+    content: Missing[str] = Field(default=UNSET)
     url: str = Field()
     git_url: Union[str, None] = Field()
     html_url: Union[str, None] = Field()
     download_url: Union[str, None] = Field()
-    links: ContentDirectoryItemsPropLinks = Field(alias="_links")
+    entries: Missing[list[ContentTreePropEntriesItems]] = Field(default=UNSET)
+    links: ContentTreePropLinks = Field(alias="_links")
 
 
-class ContentDirectoryItemsPropLinks(GitHubModel):
-    """ContentDirectoryItemsPropLinks"""
+class ContentTreePropLinks(GitHubModel):
+    """ContentTreePropLinks"""
 
     git: Union[str, None] = Field()
     html: Union[str, None] = Field()
     self_: str = Field(alias="self")
 
 
-model_rebuild(ContentDirectoryItems)
-model_rebuild(ContentDirectoryItemsPropLinks)
+class ContentTreePropEntriesItems(GitHubModel):
+    """ContentTreePropEntriesItems"""
+
+    type: str = Field()
+    size: int = Field()
+    name: str = Field()
+    path: str = Field()
+    sha: str = Field()
+    url: str = Field()
+    git_url: Union[str, None] = Field()
+    html_url: Union[str, None] = Field()
+    download_url: Union[str, None] = Field()
+    links: ContentTreePropEntriesItemsPropLinks = Field(alias="_links")
+
+
+class ContentTreePropEntriesItemsPropLinks(GitHubModel):
+    """ContentTreePropEntriesItemsPropLinks"""
+
+    git: Union[str, None] = Field()
+    html: Union[str, None] = Field()
+    self_: str = Field(alias="self")
+
+
+model_rebuild(ContentTree)
+model_rebuild(ContentTreePropLinks)
+model_rebuild(ContentTreePropEntriesItems)
+model_rebuild(ContentTreePropEntriesItemsPropLinks)
 
 __all__ = (
-    "ContentDirectoryItems",
-    "ContentDirectoryItemsPropLinks",
+    "ContentTree",
+    "ContentTreePropLinks",
+    "ContentTreePropEntriesItems",
+    "ContentTreePropEntriesItemsPropLinks",
 )

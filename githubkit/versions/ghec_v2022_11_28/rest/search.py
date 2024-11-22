@@ -60,12 +60,12 @@ class SearchClient:
 
     def code(
         self,
+        *,
         q: str,
         sort: Missing[Literal["indexed"]] = UNSET,
         order: Missing[Literal["desc", "asc"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[SearchCodeGetResponse200, SearchCodeGetResponse200Type]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/search/search#search-code"""
@@ -104,12 +104,12 @@ class SearchClient:
 
     async def async_code(
         self,
+        *,
         q: str,
         sort: Missing[Literal["indexed"]] = UNSET,
         order: Missing[Literal["desc", "asc"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[SearchCodeGetResponse200, SearchCodeGetResponse200Type]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/search/search#search-code"""
@@ -148,12 +148,12 @@ class SearchClient:
 
     def commits(
         self,
+        *,
         q: str,
         sort: Missing[Literal["author-date", "committer-date"]] = UNSET,
         order: Missing[Literal["desc", "asc"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[SearchCommitsGetResponse200, SearchCommitsGetResponse200Type]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/search/search#search-commits"""
@@ -182,12 +182,12 @@ class SearchClient:
 
     async def async_commits(
         self,
+        *,
         q: str,
         sort: Missing[Literal["author-date", "committer-date"]] = UNSET,
         order: Missing[Literal["desc", "asc"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[SearchCommitsGetResponse200, SearchCommitsGetResponse200Type]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/search/search#search-commits"""
@@ -216,6 +216,7 @@ class SearchClient:
 
     def issues_and_pull_requests(
         self,
+        *,
         q: str,
         sort: Missing[
             Literal[
@@ -235,7 +236,6 @@ class SearchClient:
         order: Missing[Literal["desc", "asc"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[SearchIssuesGetResponse200, SearchIssuesGetResponse200Type]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/search/search#search-issues-and-pull-requests"""
@@ -274,6 +274,7 @@ class SearchClient:
 
     async def async_issues_and_pull_requests(
         self,
+        *,
         q: str,
         sort: Missing[
             Literal[
@@ -293,7 +294,6 @@ class SearchClient:
         order: Missing[Literal["desc", "asc"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[SearchIssuesGetResponse200, SearchIssuesGetResponse200Type]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/search/search#search-issues-and-pull-requests"""
@@ -332,13 +332,13 @@ class SearchClient:
 
     def labels(
         self,
+        *,
         repository_id: int,
         q: str,
         sort: Missing[Literal["created", "updated"]] = UNSET,
         order: Missing[Literal["desc", "asc"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[SearchLabelsGetResponse200, SearchLabelsGetResponse200Type]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/search/search#search-labels"""
@@ -373,13 +373,13 @@ class SearchClient:
 
     async def async_labels(
         self,
+        *,
         repository_id: int,
         q: str,
         sort: Missing[Literal["created", "updated"]] = UNSET,
         order: Missing[Literal["desc", "asc"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[SearchLabelsGetResponse200, SearchLabelsGetResponse200Type]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/search/search#search-labels"""
@@ -414,6 +414,7 @@ class SearchClient:
 
     def repos(
         self,
+        *,
         q: str,
         sort: Missing[
             Literal["stars", "forks", "help-wanted-issues", "updated"]
@@ -421,7 +422,6 @@ class SearchClient:
         order: Missing[Literal["desc", "asc"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         SearchRepositoriesGetResponse200, SearchRepositoriesGetResponse200Type
@@ -460,6 +460,7 @@ class SearchClient:
 
     async def async_repos(
         self,
+        *,
         q: str,
         sort: Missing[
             Literal["stars", "forks", "help-wanted-issues", "updated"]
@@ -467,7 +468,6 @@ class SearchClient:
         order: Missing[Literal["desc", "asc"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         SearchRepositoriesGetResponse200, SearchRepositoriesGetResponse200Type
@@ -506,10 +506,10 @@ class SearchClient:
 
     def topics(
         self,
+        *,
         q: str,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[SearchTopicsGetResponse200, SearchTopicsGetResponse200Type]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/search/search#search-topics"""
@@ -536,10 +536,10 @@ class SearchClient:
 
     async def async_topics(
         self,
+        *,
         q: str,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[SearchTopicsGetResponse200, SearchTopicsGetResponse200Type]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/search/search#search-topics"""
@@ -566,12 +566,12 @@ class SearchClient:
 
     def users(
         self,
+        *,
         q: str,
         sort: Missing[Literal["followers", "repositories", "joined"]] = UNSET,
         order: Missing[Literal["desc", "asc"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[SearchUsersGetResponse200, SearchUsersGetResponse200Type]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/search/search#search-users"""
@@ -608,12 +608,12 @@ class SearchClient:
 
     async def async_users(
         self,
+        *,
         q: str,
         sort: Missing[Literal["followers", "repositories", "joined"]] = UNSET,
         order: Missing[Literal["desc", "asc"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[SearchUsersGetResponse200, SearchUsersGetResponse200Type]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/search/search#search-users"""

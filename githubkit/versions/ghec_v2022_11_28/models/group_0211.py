@@ -9,41 +9,58 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from datetime import datetime
-from typing import Union, Literal
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 from .group_0002 import SimpleUser
 
 
-class Activity(GitHubModel):
-    """Activity
+class EnvironmentApprovals(GitHubModel):
+    """Environment Approval
 
-    Activity
+    An entry in the reviews log for environment deployments
     """
 
-    id: int = Field()
-    node_id: str = Field()
-    before: str = Field(description="The SHA of the commit before the activity.")
-    after: str = Field(description="The SHA of the commit after the activity.")
-    ref: str = Field(
-        description="The full Git reference, formatted as `refs/heads/<branch name>`."
+    environments: list[EnvironmentApprovalsPropEnvironmentsItems] = Field(
+        description="The list of environments that were approved or rejected"
     )
-    timestamp: datetime = Field(description="The time when the activity occurred.")
-    activity_type: Literal[
-        "push",
-        "force_push",
-        "branch_deletion",
-        "branch_creation",
-        "pr_merge",
-        "merge_queue_merge",
-    ] = Field(description="The type of the activity that was performed.")
-    actor: Union[None, SimpleUser] = Field()
+    state: Literal["approved", "rejected", "pending"] = Field(
+        description="Whether deployment to the environment(s) was approved or rejected or pending (with comments)"
+    )
+    user: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    comment: str = Field(description="The comment submitted with the deployment review")
 
 
-model_rebuild(Activity)
+class EnvironmentApprovalsPropEnvironmentsItems(GitHubModel):
+    """EnvironmentApprovalsPropEnvironmentsItems"""
 
-__all__ = ("Activity",)
+    id: Missing[int] = Field(default=UNSET, description="The id of the environment.")
+    node_id: Missing[str] = Field(default=UNSET)
+    name: Missing[str] = Field(
+        default=UNSET, description="The name of the environment."
+    )
+    url: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    created_at: Missing[datetime] = Field(
+        default=UNSET,
+        description="The time that the environment was created, in ISO 8601 format.",
+    )
+    updated_at: Missing[datetime] = Field(
+        default=UNSET,
+        description="The time that the environment was last updated, in ISO 8601 format.",
+    )
+
+
+model_rebuild(EnvironmentApprovals)
+model_rebuild(EnvironmentApprovalsPropEnvironmentsItems)
+
+__all__ = (
+    "EnvironmentApprovals",
+    "EnvironmentApprovalsPropEnvironmentsItems",
+)

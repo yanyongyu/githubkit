@@ -9,22 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from datetime import datetime
-from typing_extensions import TypedDict, NotRequired
+from typing_extensions import TypedDict
 
 
-class ExemptionResponseType(TypedDict):
-    """Exemption response
+class HovercardType(TypedDict):
+    """Hovercard
 
-    A response to an exemption request by a delegated bypasser.
+    Hovercard
     """
 
-    id: NotRequired[int]
-    reviewer_id: NotRequired[int]
-    reviewer_login: NotRequired[str]
-    status: NotRequired[Literal["approved", "rejected", "dismissed"]]
-    created_at: NotRequired[datetime]
+    contexts: list[HovercardPropContextsItemsType]
 
 
-__all__ = ("ExemptionResponseType",)
+class HovercardPropContextsItemsType(TypedDict):
+    """HovercardPropContextsItems"""
+
+    message: str
+    octicon: str
+
+
+__all__ = (
+    "HovercardType",
+    "HovercardPropContextsItemsType",
+)

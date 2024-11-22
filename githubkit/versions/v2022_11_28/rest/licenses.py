@@ -42,10 +42,10 @@ class LicensesClient:
 
     def get_all_commonly_used(
         self,
+        *,
         featured: Missing[bool] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[LicenseSimple], list[LicenseSimpleType]]:
         """See also: https://docs.github.com/rest/licenses/licenses#get-all-commonly-used-licenses"""
@@ -72,10 +72,10 @@ class LicensesClient:
 
     async def async_get_all_commonly_used(
         self,
+        *,
         featured: Missing[bool] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[LicenseSimple], list[LicenseSimpleType]]:
         """See also: https://docs.github.com/rest/licenses/licenses#get-all-commonly-used-licenses"""
@@ -154,8 +154,8 @@ class LicensesClient:
         self,
         owner: str,
         repo: str,
-        ref: Missing[str] = UNSET,
         *,
+        ref: Missing[str] = UNSET,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[LicenseContent, LicenseContentType]:
         """See also: https://docs.github.com/rest/licenses/licenses#get-the-license-for-a-repository"""
@@ -185,8 +185,8 @@ class LicensesClient:
         self,
         owner: str,
         repo: str,
-        ref: Missing[str] = UNSET,
         *,
+        ref: Missing[str] = UNSET,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[LicenseContent, LicenseContentType]:
         """See also: https://docs.github.com/rest/licenses/licenses#get-the-license-for-a-repository"""

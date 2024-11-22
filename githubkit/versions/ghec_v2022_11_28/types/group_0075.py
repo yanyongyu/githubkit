@@ -9,118 +9,95 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from datetime import datetime
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
+from .group_0073 import MilestoneType
 from .group_0002 import SimpleUserType
-from .group_0074 import GistHistoryType, GistSimplePropForkOfType
+from .group_0019 import RepositoryType
+from .group_0008 import IntegrationType
+from .group_0074 import ReactionRollupType
 
 
-class GistSimpleType(TypedDict):
-    """Gist Simple
+class IssueType(TypedDict):
+    """Issue
 
-    Gist Simple
+    Issues are a great way to keep track of tasks, enhancements, and bugs for your
+    projects.
     """
 
-    forks: NotRequired[Union[list[GistSimplePropForksItemsType], None]]
-    history: NotRequired[Union[list[GistHistoryType], None]]
-    fork_of: NotRequired[Union[GistSimplePropForkOfType, None]]
-    url: NotRequired[str]
-    forks_url: NotRequired[str]
-    commits_url: NotRequired[str]
-    id: NotRequired[str]
-    node_id: NotRequired[str]
-    git_pull_url: NotRequired[str]
-    git_push_url: NotRequired[str]
-    html_url: NotRequired[str]
-    files: NotRequired[GistSimplePropFilesType]
-    public: NotRequired[bool]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
-    description: NotRequired[Union[str, None]]
-    comments: NotRequired[int]
-    user: NotRequired[Union[str, None]]
-    comments_url: NotRequired[str]
-    owner: NotRequired[SimpleUserType]
-    truncated: NotRequired[bool]
-
-
-class GistSimplePropFilesType(TypedDict):
-    """GistSimplePropFiles"""
-
-
-class GistSimplePropForksItemsType(TypedDict):
-    """GistSimplePropForksItems"""
-
-    id: NotRequired[str]
-    url: NotRequired[str]
-    user: NotRequired[PublicUserType]
-    created_at: NotRequired[datetime]
-    updated_at: NotRequired[datetime]
-
-
-class PublicUserType(TypedDict):
-    """Public User
-
-    Public User
-    """
-
-    login: str
     id: int
-    user_view_type: NotRequired[str]
     node_id: str
-    avatar_url: str
-    gravatar_id: Union[str, None]
     url: str
-    html_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    starred_url: str
-    subscriptions_url: str
-    organizations_url: str
-    repos_url: str
+    repository_url: str
+    labels_url: str
+    comments_url: str
     events_url: str
-    received_events_url: str
-    type: str
-    site_admin: bool
-    name: Union[str, None]
-    company: Union[str, None]
-    blog: Union[str, None]
-    location: Union[str, None]
-    email: Union[str, None]
-    notification_email: NotRequired[Union[str, None]]
-    hireable: Union[bool, None]
-    bio: Union[str, None]
-    twitter_username: NotRequired[Union[str, None]]
-    public_repos: int
-    public_gists: int
-    followers: int
-    following: int
+    html_url: str
+    number: int
+    state: str
+    state_reason: NotRequired[
+        Union[None, Literal["completed", "reopened", "not_planned"]]
+    ]
+    title: str
+    body: NotRequired[Union[str, None]]
+    user: Union[None, SimpleUserType]
+    labels: list[Union[str, IssuePropLabelsItemsOneof1Type]]
+    assignee: Union[None, SimpleUserType]
+    assignees: NotRequired[Union[list[SimpleUserType], None]]
+    milestone: Union[None, MilestoneType]
+    locked: bool
+    active_lock_reason: NotRequired[Union[str, None]]
+    comments: int
+    pull_request: NotRequired[IssuePropPullRequestType]
+    closed_at: Union[datetime, None]
     created_at: datetime
     updated_at: datetime
-    plan: NotRequired[PublicUserPropPlanType]
-    private_gists: NotRequired[int]
-    total_private_repos: NotRequired[int]
-    owned_private_repos: NotRequired[int]
-    disk_usage: NotRequired[int]
-    collaborators: NotRequired[int]
+    draft: NotRequired[bool]
+    closed_by: NotRequired[Union[None, SimpleUserType]]
+    body_html: NotRequired[Union[str, None]]
+    body_text: NotRequired[Union[str, None]]
+    timeline_url: NotRequired[str]
+    repository: NotRequired[RepositoryType]
+    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    reactions: NotRequired[ReactionRollupType]
 
 
-class PublicUserPropPlanType(TypedDict):
-    """PublicUserPropPlan"""
+class IssuePropLabelsItemsOneof1Type(TypedDict):
+    """IssuePropLabelsItemsOneof1"""
 
-    collaborators: int
-    name: str
-    space: int
-    private_repos: int
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    url: NotRequired[str]
+    name: NotRequired[str]
+    description: NotRequired[Union[str, None]]
+    color: NotRequired[Union[str, None]]
+    default: NotRequired[bool]
+
+
+class IssuePropPullRequestType(TypedDict):
+    """IssuePropPullRequest"""
+
+    merged_at: NotRequired[Union[datetime, None]]
+    diff_url: Union[str, None]
+    html_url: Union[str, None]
+    patch_url: Union[str, None]
+    url: Union[str, None]
 
 
 __all__ = (
-    "GistSimpleType",
-    "GistSimplePropFilesType",
-    "GistSimplePropForksItemsType",
-    "PublicUserType",
-    "PublicUserPropPlanType",
+    "IssueType",
+    "IssuePropLabelsItemsOneof1Type",
+    "IssuePropPullRequestType",
 )

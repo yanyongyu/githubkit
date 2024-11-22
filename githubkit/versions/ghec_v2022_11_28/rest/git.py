@@ -1207,8 +1207,8 @@ class GitClient:
         owner: str,
         repo: str,
         tree_sha: str,
-        recursive: Missing[str] = UNSET,
         *,
+        recursive: Missing[str] = UNSET,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[GitTree, GitTreeType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/git/trees#get-a-tree"""
@@ -1241,8 +1241,8 @@ class GitClient:
         owner: str,
         repo: str,
         tree_sha: str,
-        recursive: Missing[str] = UNSET,
         *,
+        recursive: Missing[str] = UNSET,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[GitTree, GitTreeType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/git/trees#get-a-tree"""

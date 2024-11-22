@@ -9,32 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing_extensions import TypedDict, NotRequired
-
-from .group_0296 import HookResponseType
-from .group_0009 import WebhookConfigType
+from typing_extensions import TypedDict
 
 
-class HookType(TypedDict):
-    """Webhook
+class ShortBlobType(TypedDict):
+    """Short Blob
 
-    Webhooks for repositories.
+    Short Blob
     """
 
-    type: str
-    id: int
-    name: str
-    active: bool
-    events: list[str]
-    config: WebhookConfigType
-    updated_at: datetime
-    created_at: datetime
     url: str
-    test_url: str
-    ping_url: str
-    deliveries_url: NotRequired[str]
-    last_response: HookResponseType
+    sha: str
 
 
-__all__ = ("HookType",)
+__all__ = ("ShortBlobType",)

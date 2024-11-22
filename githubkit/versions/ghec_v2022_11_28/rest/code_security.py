@@ -71,11 +71,11 @@ class CodeSecurityClient:
     def get_configurations_for_org(
         self,
         org: str,
+        *,
         target_type: Missing[Literal["global", "all"]] = UNSET,
         per_page: Missing[int] = UNSET,
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[CodeSecurityConfiguration], list[CodeSecurityConfigurationType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations#get-code-security-configurations-for-an-organization"""
@@ -108,11 +108,11 @@ class CodeSecurityClient:
     async def async_get_configurations_for_org(
         self,
         org: str,
+        *,
         target_type: Missing[Literal["global", "all"]] = UNSET,
         per_page: Missing[int] = UNSET,
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[CodeSecurityConfiguration], list[CodeSecurityConfigurationType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations#get-code-security-configurations-for-an-organization"""
@@ -1122,11 +1122,11 @@ class CodeSecurityClient:
         self,
         org: str,
         configuration_id: int,
+        *,
         per_page: Missing[int] = UNSET,
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
         status: Missing[str] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         list[CodeSecurityConfigurationRepositories],
@@ -1165,11 +1165,11 @@ class CodeSecurityClient:
         self,
         org: str,
         configuration_id: int,
+        *,
         per_page: Missing[int] = UNSET,
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
         status: Missing[str] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         list[CodeSecurityConfigurationRepositories],

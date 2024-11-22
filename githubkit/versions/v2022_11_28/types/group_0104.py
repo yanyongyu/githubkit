@@ -21,6 +21,7 @@ class CustomPropertyType(TypedDict):
 
     property_name: str
     url: NotRequired[str]
+    source_type: NotRequired[Literal["organization", "enterprise"]]
     value_type: Literal["string", "single_select", "multi_select", "true_false"]
     required: NotRequired[bool]
     default_value: NotRequired[Union[str, list[str], None]]

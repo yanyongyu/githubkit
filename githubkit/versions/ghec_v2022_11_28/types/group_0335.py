@@ -10,87 +10,41 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Union
-from typing_extensions import TypedDict, NotRequired
+from typing_extensions import TypedDict
+
+from .group_0018 import LicenseSimpleType
 
 
-class PagesHealthCheckType(TypedDict):
-    """Pages Health Check Status
+class LicenseContentType(TypedDict):
+    """License Content
 
-    Pages Health Check Status
+    License Content
     """
 
-    domain: NotRequired[PagesHealthCheckPropDomainType]
-    alt_domain: NotRequired[Union[PagesHealthCheckPropAltDomainType, None]]
+    name: str
+    path: str
+    sha: str
+    size: int
+    url: str
+    html_url: Union[str, None]
+    git_url: Union[str, None]
+    download_url: Union[str, None]
+    type: str
+    content: str
+    encoding: str
+    links: LicenseContentPropLinksType
+    license_: Union[None, LicenseSimpleType]
 
 
-class PagesHealthCheckPropDomainType(TypedDict):
-    """PagesHealthCheckPropDomain"""
+class LicenseContentPropLinksType(TypedDict):
+    """LicenseContentPropLinks"""
 
-    host: NotRequired[str]
-    uri: NotRequired[str]
-    nameservers: NotRequired[str]
-    dns_resolves: NotRequired[bool]
-    is_proxied: NotRequired[Union[bool, None]]
-    is_cloudflare_ip: NotRequired[Union[bool, None]]
-    is_fastly_ip: NotRequired[Union[bool, None]]
-    is_old_ip_address: NotRequired[Union[bool, None]]
-    is_a_record: NotRequired[Union[bool, None]]
-    has_cname_record: NotRequired[Union[bool, None]]
-    has_mx_records_present: NotRequired[Union[bool, None]]
-    is_valid_domain: NotRequired[bool]
-    is_apex_domain: NotRequired[bool]
-    should_be_a_record: NotRequired[Union[bool, None]]
-    is_cname_to_github_user_domain: NotRequired[Union[bool, None]]
-    is_cname_to_pages_dot_github_dot_com: NotRequired[Union[bool, None]]
-    is_cname_to_fastly: NotRequired[Union[bool, None]]
-    is_pointed_to_github_pages_ip: NotRequired[Union[bool, None]]
-    is_non_github_pages_ip_present: NotRequired[Union[bool, None]]
-    is_pages_domain: NotRequired[bool]
-    is_served_by_pages: NotRequired[Union[bool, None]]
-    is_valid: NotRequired[bool]
-    reason: NotRequired[Union[str, None]]
-    responds_to_https: NotRequired[bool]
-    enforces_https: NotRequired[bool]
-    https_error: NotRequired[Union[str, None]]
-    is_https_eligible: NotRequired[Union[bool, None]]
-    caa_error: NotRequired[Union[str, None]]
-
-
-class PagesHealthCheckPropAltDomainType(TypedDict):
-    """PagesHealthCheckPropAltDomain"""
-
-    host: NotRequired[str]
-    uri: NotRequired[str]
-    nameservers: NotRequired[str]
-    dns_resolves: NotRequired[bool]
-    is_proxied: NotRequired[Union[bool, None]]
-    is_cloudflare_ip: NotRequired[Union[bool, None]]
-    is_fastly_ip: NotRequired[Union[bool, None]]
-    is_old_ip_address: NotRequired[Union[bool, None]]
-    is_a_record: NotRequired[Union[bool, None]]
-    has_cname_record: NotRequired[Union[bool, None]]
-    has_mx_records_present: NotRequired[Union[bool, None]]
-    is_valid_domain: NotRequired[bool]
-    is_apex_domain: NotRequired[bool]
-    should_be_a_record: NotRequired[Union[bool, None]]
-    is_cname_to_github_user_domain: NotRequired[Union[bool, None]]
-    is_cname_to_pages_dot_github_dot_com: NotRequired[Union[bool, None]]
-    is_cname_to_fastly: NotRequired[Union[bool, None]]
-    is_pointed_to_github_pages_ip: NotRequired[Union[bool, None]]
-    is_non_github_pages_ip_present: NotRequired[Union[bool, None]]
-    is_pages_domain: NotRequired[bool]
-    is_served_by_pages: NotRequired[Union[bool, None]]
-    is_valid: NotRequired[bool]
-    reason: NotRequired[Union[str, None]]
-    responds_to_https: NotRequired[bool]
-    enforces_https: NotRequired[bool]
-    https_error: NotRequired[Union[str, None]]
-    is_https_eligible: NotRequired[Union[bool, None]]
-    caa_error: NotRequired[Union[str, None]]
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
 
 
 __all__ = (
-    "PagesHealthCheckType",
-    "PagesHealthCheckPropDomainType",
-    "PagesHealthCheckPropAltDomainType",
+    "LicenseContentType",
+    "LicenseContentPropLinksType",
 )

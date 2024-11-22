@@ -9,8 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union, Literal, Annotated
+from typing import Union, Literal
+from datetime import date, datetime
 
 from pydantic import Field
 
@@ -18,65 +18,71 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0056 import Team
 from .group_0002 import SimpleUser
-from .group_0045 import SimpleRepository
-from .group_0056 import DependabotAlertSecurityAdvisory
-from .group_0055 import DependabotAlertSecurityVulnerability
-from .group_0058 import DependabotAlertWithRepositoryPropDependency
+from .group_0031 import OrganizationSimple
 
 
-class DependabotAlertWithRepository(GitHubModel):
-    """DependabotAlertWithRepository
+class CopilotSeatDetails(GitHubModel):
+    """Copilot Business Seat Detail
 
-    A Dependabot alert.
+    Information about a Copilot Business seat assignment for a user, team, or
+    organization.
     """
 
-    number: int = Field(description="The security alert number.")
-    state: Literal["auto_dismissed", "dismissed", "fixed", "open"] = Field(
-        description="The state of the Dependabot alert."
-    )
-    dependency: DependabotAlertWithRepositoryPropDependency = Field(
-        description="Details for the vulnerable dependency."
-    )
-    security_advisory: DependabotAlertSecurityAdvisory = Field(
-        description="Details for the GitHub Security Advisory."
-    )
-    security_vulnerability: DependabotAlertSecurityVulnerability = Field(
-        description="Details pertaining to one vulnerable version range for the advisory."
-    )
-    url: str = Field(description="The REST API URL of the alert resource.")
-    html_url: str = Field(description="The GitHub URL of the alert resource.")
-    created_at: datetime = Field(
-        description="The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
-    )
-    updated_at: datetime = Field(
-        description="The time that the alert was last updated in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
-    )
-    dismissed_at: Union[datetime, None] = Field(
-        description="The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
-    )
-    dismissed_by: Union[None, SimpleUser] = Field()
-    dismissed_reason: Union[
-        None,
-        Literal[
-            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
-        ],
-    ] = Field(description="The reason that the alert was dismissed.")
-    dismissed_comment: Union[Annotated[str, Field(max_length=280)], None] = Field(
-        description="An optional comment associated with the alert's dismissal."
-    )
-    fixed_at: Union[datetime, None] = Field(
-        description="The time that the alert was no longer detected and was considered fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
-    )
-    auto_dismissed_at: Missing[Union[datetime, None]] = Field(
+    assignee: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    organization: Missing[Union[None, OrganizationSimple]] = Field(default=UNSET)
+    assigning_team: Missing[Union[Team, EnterpriseTeam, None]] = Field(
         default=UNSET,
-        description="The time that the alert was auto-dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        description="The team through which the assignee is granted access to GitHub Copilot, if applicable.",
     )
-    repository: SimpleRepository = Field(
-        title="Simple Repository", description="A GitHub repository."
+    pending_cancellation_date: Missing[Union[date, None]] = Field(
+        default=UNSET,
+        description="The pending cancellation date for the seat, in `YYYY-MM-DD` format. This will be null unless the assignee's Copilot access has been canceled during the current billing cycle. If the seat has been cancelled, this corresponds to the start of the organization's next billing cycle.",
+    )
+    last_activity_at: Missing[Union[datetime, None]] = Field(
+        default=UNSET,
+        description="Timestamp of user's last GitHub Copilot activity, in ISO 8601 format.",
+    )
+    last_activity_editor: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="Last editor that was used by the user for a GitHub Copilot completion.",
+    )
+    created_at: datetime = Field(
+        description="Timestamp of when the assignee was last granted access to GitHub Copilot, in ISO 8601 format."
+    )
+    updated_at: Missing[datetime] = Field(
+        default=UNSET,
+        description="Timestamp of when the assignee's GitHub Copilot access was last updated, in ISO 8601 format.",
+    )
+    plan_type: Missing[Literal["business", "enterprise", "unknown"]] = Field(
+        default=UNSET,
+        description="The Copilot plan of the organization, or the parent enterprise, when applicable.",
     )
 
 
-model_rebuild(DependabotAlertWithRepository)
+class EnterpriseTeam(GitHubModel):
+    """Enterprise Team
 
-__all__ = ("DependabotAlertWithRepository",)
+    Group of enterprise owners and/or members
+    """
+
+    id: int = Field()
+    name: str = Field()
+    slug: str = Field()
+    url: str = Field()
+    sync_to_organizations: str = Field()
+    group_id: Missing[Union[str, None]] = Field(default=UNSET)
+    html_url: str = Field()
+    members_url: str = Field()
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+
+
+model_rebuild(CopilotSeatDetails)
+model_rebuild(EnterpriseTeam)
+
+__all__ = (
+    "CopilotSeatDetails",
+    "EnterpriseTeam",
+)

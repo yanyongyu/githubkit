@@ -9,39 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
-from typing_extensions import TypedDict
-
-from .group_0002 import SimpleUserType
-from .group_0008 import IntegrationType
+from typing_extensions import TypedDict, NotRequired
 
 
-class LabeledIssueEventType(TypedDict):
-    """Labeled Issue Event
+class GitTreeType(TypedDict):
+    """Git Tree
 
-    Labeled Issue Event
+    The hierarchy between files in a Git repository.
     """
 
-    id: int
-    node_id: str
+    sha: str
     url: str
-    actor: SimpleUserType
-    event: Literal["labeled"]
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationType, None]
-    label: LabeledIssueEventPropLabelType
+    truncated: bool
+    tree: list[GitTreePropTreeItemsType]
 
 
-class LabeledIssueEventPropLabelType(TypedDict):
-    """LabeledIssueEventPropLabel"""
+class GitTreePropTreeItemsType(TypedDict):
+    """GitTreePropTreeItems"""
 
-    name: str
-    color: str
+    path: NotRequired[str]
+    mode: NotRequired[str]
+    type: NotRequired[str]
+    sha: NotRequired[str]
+    size: NotRequired[int]
+    url: NotRequired[str]
 
 
 __all__ = (
-    "LabeledIssueEventType",
-    "LabeledIssueEventPropLabelType",
+    "GitTreeType",
+    "GitTreePropTreeItemsType",
 )

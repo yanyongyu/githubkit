@@ -13,49 +13,40 @@ from typing import Union, Literal
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 from .group_0002 import SimpleUser
 from .group_0008 import Integration
 
 
-class AddedToProjectIssueEvent(GitHubModel):
-    """Added to Project Issue Event
+class MilestonedIssueEvent(GitHubModel):
+    """Milestoned Issue Event
 
-    Added to Project Issue Event
+    Milestoned Issue Event
     """
 
     id: int = Field()
     node_id: str = Field()
     url: str = Field()
     actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: Literal["added_to_project"] = Field()
+    event: Literal["milestoned"] = Field()
     commit_id: Union[str, None] = Field()
     commit_url: Union[str, None] = Field()
     created_at: str = Field()
     performed_via_github_app: Union[None, Integration, None] = Field()
-    project_card: Missing[AddedToProjectIssueEventPropProjectCard] = Field(
-        default=UNSET
-    )
+    milestone: MilestonedIssueEventPropMilestone = Field()
 
 
-class AddedToProjectIssueEventPropProjectCard(GitHubModel):
-    """AddedToProjectIssueEventPropProjectCard"""
+class MilestonedIssueEventPropMilestone(GitHubModel):
+    """MilestonedIssueEventPropMilestone"""
 
-    id: int = Field()
-    url: str = Field()
-    project_id: int = Field()
-    project_url: str = Field()
-    column_name: str = Field()
-    previous_column_name: Missing[str] = Field(default=UNSET)
+    title: str = Field()
 
 
-model_rebuild(AddedToProjectIssueEvent)
-model_rebuild(AddedToProjectIssueEventPropProjectCard)
+model_rebuild(MilestonedIssueEvent)
+model_rebuild(MilestonedIssueEventPropMilestone)
 
 __all__ = (
-    "AddedToProjectIssueEvent",
-    "AddedToProjectIssueEventPropProjectCard",
+    "MilestonedIssueEvent",
+    "MilestonedIssueEventPropMilestone",
 )

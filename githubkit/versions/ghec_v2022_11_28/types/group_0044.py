@@ -9,48 +9,59 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
-from typing_extensions import TypedDict, NotRequired
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class CodeScanningAlertInstanceType(TypedDict):
-    """CodeScanningAlertInstance"""
+class AzureBlobConfigType(TypedDict):
+    """AzureBlobConfig
 
-    ref: NotRequired[str]
-    analysis_key: NotRequired[str]
-    environment: NotRequired[str]
-    category: NotRequired[str]
-    state: NotRequired[Union[None, Literal["open", "dismissed", "fixed"]]]
-    commit_sha: NotRequired[str]
-    message: NotRequired[CodeScanningAlertInstancePropMessageType]
-    location: NotRequired[CodeScanningAlertLocationType]
-    html_url: NotRequired[str]
-    classifications: NotRequired[
-        list[Union[None, Literal["source", "generated", "test", "library"]]]
-    ]
-
-
-class CodeScanningAlertLocationType(TypedDict):
-    """CodeScanningAlertLocation
-
-    Describe a region within a file for the alert.
+    Azure Blob Config for audit log streaming configuration.
     """
 
-    path: NotRequired[str]
-    start_line: NotRequired[int]
-    end_line: NotRequired[int]
-    start_column: NotRequired[int]
-    end_column: NotRequired[int]
+    key_id: str
+    encrypted_sas_url: str
 
 
-class CodeScanningAlertInstancePropMessageType(TypedDict):
-    """CodeScanningAlertInstancePropMessage"""
+class AzureHubConfigType(TypedDict):
+    """AzureHubConfig
 
-    text: NotRequired[str]
+    Azure Event Hubs Config for audit log streaming configuration.
+    """
+
+    name: str
+    encrypted_connstring: str
+    key_id: str
+
+
+class AmazonS3AccessKeysConfigType(TypedDict):
+    """AmazonS3AccessKeysConfig
+
+    Amazon S3 Access Keys Config for audit log streaming configuration.
+    """
+
+    bucket: str
+    region: str
+    key_id: str
+    authentication_type: Literal["access_keys"]
+    encrypted_secret_key: str
+    encrypted_access_key_id: str
+
+
+class GoogleCloudConfigType(TypedDict):
+    """GoogleCloudConfig
+
+    Google Cloud Config for audit log streaming configuration.
+    """
+
+    bucket: str
+    key_id: str
+    encrypted_json_credentials: str
 
 
 __all__ = (
-    "CodeScanningAlertInstanceType",
-    "CodeScanningAlertLocationType",
-    "CodeScanningAlertInstancePropMessageType",
+    "AzureBlobConfigType",
+    "AzureHubConfigType",
+    "AmazonS3AccessKeysConfigType",
+    "GoogleCloudConfigType",
 )

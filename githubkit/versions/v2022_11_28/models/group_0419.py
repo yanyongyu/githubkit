@@ -9,8 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from datetime import datetime
-from typing import Union, Literal
 
 from pydantic import Field
 
@@ -18,31 +18,24 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0002 import SimpleUser
+
+class WebhooksProjectChanges(GitHubModel):
+    """WebhooksProjectChanges"""
+
+    archived_at: Missing[WebhooksProjectChangesPropArchivedAt] = Field(default=UNSET)
 
 
-class ProjectsV2Item(GitHubModel):
-    """Projects v2 Item
+class WebhooksProjectChangesPropArchivedAt(GitHubModel):
+    """WebhooksProjectChangesPropArchivedAt"""
 
-    An item belonging to a project
-    """
-
-    id: float = Field()
-    node_id: Missing[str] = Field(default=UNSET)
-    project_node_id: Missing[str] = Field(default=UNSET)
-    content_node_id: str = Field()
-    content_type: Literal["Issue", "PullRequest", "DraftIssue"] = Field(
-        title="Projects v2 Item Content Type",
-        description="The type of content tracked in a project item",
-    )
-    creator: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
-    )
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    archived_at: Union[datetime, None] = Field()
+    from_: Missing[Union[datetime, None]] = Field(default=UNSET, alias="from")
+    to: Missing[Union[datetime, None]] = Field(default=UNSET)
 
 
-model_rebuild(ProjectsV2Item)
+model_rebuild(WebhooksProjectChanges)
+model_rebuild(WebhooksProjectChangesPropArchivedAt)
 
-__all__ = ("ProjectsV2Item",)
+__all__ = (
+    "WebhooksProjectChanges",
+    "WebhooksProjectChangesPropArchivedAt",
+)

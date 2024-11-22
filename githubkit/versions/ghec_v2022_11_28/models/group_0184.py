@@ -15,22 +15,33 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0002 import SimpleUser
 
-class TeamMembership(GitHubModel):
-    """Team Membership
 
-    Team Membership
+class RepositoryAdvisoryCredit(GitHubModel):
+    """RepositoryAdvisoryCredit
+
+    A credit given to a user for a repository security advisory.
     """
 
-    url: str = Field()
-    role: Literal["member", "maintainer"] = Field(
-        default="member", description="The role of the user in the team."
+    user: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    type: Literal[
+        "analyst",
+        "finder",
+        "reporter",
+        "coordinator",
+        "remediation_developer",
+        "remediation_reviewer",
+        "remediation_verifier",
+        "tool",
+        "sponsor",
+        "other",
+    ] = Field(description="The type of credit the user is receiving.")
+    state: Literal["accepted", "declined", "pending"] = Field(
+        description="The state of the user's acceptance of the credit."
     )
-    state: Literal["active", "pending"] = Field(
-        description="The state of the user's membership in the team."
-    )
 
 
-model_rebuild(TeamMembership)
+model_rebuild(RepositoryAdvisoryCredit)
 
-__all__ = ("TeamMembership",)
+__all__ = ("RepositoryAdvisoryCredit",)

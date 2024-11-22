@@ -9,28 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict, NotRequired
+from typing_extensions import TypedDict
 
 
-class PagesDeploymentStatusType(TypedDict):
-    """GitHub Pages deployment status"""
+class LanguageType(TypedDict):
+    """Language
 
-    status: NotRequired[
-        Literal[
-            "deployment_in_progress",
-            "syncing_files",
-            "finished_file_sync",
-            "updating_pages",
-            "purging_cdn",
-            "deployment_cancelled",
-            "deployment_failed",
-            "deployment_content_failed",
-            "deployment_attempt_error",
-            "deployment_lost",
-            "succeed",
-        ]
-    ]
+    Language
+    """
 
 
-__all__ = ("PagesDeploymentStatusType",)
+__all__ = ("LanguageType",)

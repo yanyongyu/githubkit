@@ -9,42 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from datetime import datetime
+from typing import Union, Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 from .group_0002 import SimpleUser
+from .group_0008 import Integration
 
 
-class PageBuild(GitHubModel):
-    """Page Build
+class TimelineUnassignedIssueEvent(GitHubModel):
+    """Timeline Unassigned Issue Event
 
-    Page Build
+    Timeline Unassigned Issue Event
     """
 
+    id: int = Field()
+    node_id: str = Field()
     url: str = Field()
-    status: str = Field()
-    error: PageBuildPropError = Field()
-    pusher: Union[None, SimpleUser] = Field()
-    commit: str = Field()
-    duration: int = Field()
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
+    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    event: Literal["unassigned"] = Field()
+    commit_id: Union[str, None] = Field()
+    commit_url: Union[str, None] = Field()
+    created_at: str = Field()
+    performed_via_github_app: Union[None, Integration, None] = Field()
+    assignee: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-class PageBuildPropError(GitHubModel):
-    """PageBuildPropError"""
+model_rebuild(TimelineUnassignedIssueEvent)
 
-    message: Union[str, None] = Field()
-
-
-model_rebuild(PageBuild)
-model_rebuild(PageBuildPropError)
-
-__all__ = (
-    "PageBuild",
-    "PageBuildPropError",
-)
+__all__ = ("TimelineUnassignedIssueEvent",)

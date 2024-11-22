@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -26,6 +26,10 @@ class TeamRoleAssignment(GitHubModel):
     The Relationship a Team has with a role.
     """
 
+    assignment: Missing[Literal["direct", "indirect", "mixed"]] = Field(
+        default=UNSET,
+        description="Determines if the team has a direct, indirect, or mixed relationship to a role",
+    )
     id: int = Field()
     node_id: str = Field()
     name: str = Field()

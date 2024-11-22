@@ -12,16 +12,11 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class ContentTrafficType(TypedDict):
-    """Content Traffic
+class ParticipationStatsType(TypedDict):
+    """Participation Stats"""
 
-    Content Traffic
-    """
-
-    path: str
-    title: str
-    count: int
-    uniques: int
+    all_: list[int]
+    owner: list[int]
 
 
-__all__ = ("ContentTrafficType",)
+__all__ = ("ParticipationStatsType",)

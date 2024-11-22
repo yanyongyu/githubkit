@@ -113,9 +113,9 @@ class CodespacesClient:
     def list_in_organization(
         self,
         org: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[OrgsOrgCodespacesGetResponse200, OrgsOrgCodespacesGetResponse200Type]:
         """See also: https://docs.github.com/rest/codespaces/organizations#list-codespaces-for-the-organization"""
@@ -148,9 +148,9 @@ class CodespacesClient:
     async def async_list_in_organization(
         self,
         org: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[OrgsOrgCodespacesGetResponse200, OrgsOrgCodespacesGetResponse200Type]:
         """See also: https://docs.github.com/rest/codespaces/organizations#list-codespaces-for-the-organization"""
@@ -555,9 +555,9 @@ class CodespacesClient:
     def list_org_secrets(
         self,
         org: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         OrgsOrgCodespacesSecretsGetResponse200,
@@ -587,9 +587,9 @@ class CodespacesClient:
     async def async_list_org_secrets(
         self,
         org: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         OrgsOrgCodespacesSecretsGetResponse200,
@@ -888,9 +888,9 @@ class CodespacesClient:
         self,
         org: str,
         secret_name: str,
+        *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200,
@@ -927,9 +927,9 @@ class CodespacesClient:
         self,
         org: str,
         secret_name: str,
+        *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200,
@@ -1206,9 +1206,9 @@ class CodespacesClient:
         self,
         org: str,
         username: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         OrgsOrgMembersUsernameCodespacesGetResponse200,
@@ -1245,9 +1245,9 @@ class CodespacesClient:
         self,
         org: str,
         username: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         OrgsOrgMembersUsernameCodespacesGetResponse200,
@@ -1412,9 +1412,9 @@ class CodespacesClient:
         self,
         owner: str,
         repo: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoCodespacesGetResponse200,
@@ -1451,9 +1451,9 @@ class CodespacesClient:
         self,
         owner: str,
         repo: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoCodespacesGetResponse200,
@@ -1656,9 +1656,9 @@ class CodespacesClient:
         self,
         owner: str,
         repo: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoCodespacesDevcontainersGetResponse200,
@@ -1699,9 +1699,9 @@ class CodespacesClient:
         self,
         owner: str,
         repo: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoCodespacesDevcontainersGetResponse200,
@@ -1742,10 +1742,10 @@ class CodespacesClient:
         self,
         owner: str,
         repo: str,
+        *,
         location: Missing[str] = UNSET,
         client_ip: Missing[str] = UNSET,
         ref: Missing[str] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoCodespacesMachinesGetResponse200,
@@ -1783,10 +1783,10 @@ class CodespacesClient:
         self,
         owner: str,
         repo: str,
+        *,
         location: Missing[str] = UNSET,
         client_ip: Missing[str] = UNSET,
         ref: Missing[str] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoCodespacesMachinesGetResponse200,
@@ -1824,9 +1824,9 @@ class CodespacesClient:
         self,
         owner: str,
         repo: str,
+        *,
         ref: Missing[str] = UNSET,
         client_ip: Missing[str] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoCodespacesNewGetResponse200,
@@ -1862,9 +1862,9 @@ class CodespacesClient:
         self,
         owner: str,
         repo: str,
+        *,
         ref: Missing[str] = UNSET,
         client_ip: Missing[str] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoCodespacesNewGetResponse200,
@@ -1900,9 +1900,9 @@ class CodespacesClient:
         self,
         owner: str,
         repo: str,
+        *,
         ref: str,
         devcontainer_path: str,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         CodespacesPermissionsCheckForDevcontainer,
@@ -1945,9 +1945,9 @@ class CodespacesClient:
         self,
         owner: str,
         repo: str,
+        *,
         ref: str,
         devcontainer_path: str,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         CodespacesPermissionsCheckForDevcontainer,
@@ -1990,9 +1990,9 @@ class CodespacesClient:
         self,
         owner: str,
         repo: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoCodespacesSecretsGetResponse200,
@@ -2023,9 +2023,9 @@ class CodespacesClient:
         self,
         owner: str,
         repo: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoCodespacesSecretsGetResponse200,
@@ -2484,10 +2484,10 @@ class CodespacesClient:
 
     def list_for_authenticated_user(
         self,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         repository_id: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[UserCodespacesGetResponse200, UserCodespacesGetResponse200Type]:
         """See also: https://docs.github.com/rest/codespaces/codespaces#list-codespaces-for-the-authenticated-user"""
@@ -2520,10 +2520,10 @@ class CodespacesClient:
 
     async def async_list_for_authenticated_user(
         self,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         repository_id: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[UserCodespacesGetResponse200, UserCodespacesGetResponse200Type]:
         """See also: https://docs.github.com/rest/codespaces/codespaces#list-codespaces-for-the-authenticated-user"""
@@ -2750,9 +2750,9 @@ class CodespacesClient:
 
     def list_secrets_for_authenticated_user(
         self,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         UserCodespacesSecretsGetResponse200, UserCodespacesSecretsGetResponse200Type
@@ -2780,9 +2780,9 @@ class CodespacesClient:
 
     async def async_list_secrets_for_authenticated_user(
         self,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         UserCodespacesSecretsGetResponse200, UserCodespacesSecretsGetResponse200Type

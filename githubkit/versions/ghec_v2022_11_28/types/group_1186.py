@@ -9,14 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict, NotRequired
+from typing_extensions import TypedDict
+
+from .group_0017 import InstallationType
 
 
-class UserSshSigningKeysPostBodyType(TypedDict):
-    """UserSshSigningKeysPostBody"""
+class UserInstallationsGetResponse200Type(TypedDict):
+    """UserInstallationsGetResponse200"""
 
-    title: NotRequired[str]
-    key: str
+    total_count: int
+    installations: list[InstallationType]
 
 
-__all__ = ("UserSshSigningKeysPostBodyType",)
+__all__ = ("UserInstallationsGetResponse200Type",)

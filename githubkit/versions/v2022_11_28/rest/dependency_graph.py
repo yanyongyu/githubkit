@@ -63,8 +63,8 @@ class DependencyGraphClient:
         owner: str,
         repo: str,
         basehead: str,
-        name: Missing[str] = UNSET,
         *,
+        name: Missing[str] = UNSET,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[DependencyGraphDiffItems], list[DependencyGraphDiffItemsType]]:
         """See also: https://docs.github.com/rest/dependency-graph/dependency-review#get-a-diff-of-the-dependencies-between-commits"""
@@ -96,8 +96,8 @@ class DependencyGraphClient:
         owner: str,
         repo: str,
         basehead: str,
-        name: Missing[str] = UNSET,
         *,
+        name: Missing[str] = UNSET,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[DependencyGraphDiffItems], list[DependencyGraphDiffItemsType]]:
         """See also: https://docs.github.com/rest/dependency-graph/dependency-review#get-a-diff-of-the-dependencies-between-commits"""

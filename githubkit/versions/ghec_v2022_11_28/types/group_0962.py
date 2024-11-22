@@ -12,12 +12,11 @@ from __future__ import annotations
 from typing_extensions import TypedDict, NotRequired
 
 
-class ProjectsProjectIdDeleteResponse403Type(TypedDict):
-    """ProjectsProjectIdDeleteResponse403"""
+class ProjectsColumnsCardsCardIdMovesPostBodyType(TypedDict):
+    """ProjectsColumnsCardsCardIdMovesPostBody"""
 
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
-    errors: NotRequired[list[str]]
+    position: str
+    column_id: NotRequired[int]
 
 
-__all__ = ("ProjectsProjectIdDeleteResponse403Type",)
+__all__ = ("ProjectsColumnsCardsCardIdMovesPostBodyType",)

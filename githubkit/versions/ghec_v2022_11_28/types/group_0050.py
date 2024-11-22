@@ -9,45 +9,48 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0049 import TeamSimpleType
+
+class CodeScanningAlertInstanceType(TypedDict):
+    """CodeScanningAlertInstance"""
+
+    ref: NotRequired[str]
+    analysis_key: NotRequired[str]
+    environment: NotRequired[str]
+    category: NotRequired[str]
+    state: NotRequired[Union[None, Literal["open", "dismissed", "fixed"]]]
+    commit_sha: NotRequired[str]
+    message: NotRequired[CodeScanningAlertInstancePropMessageType]
+    location: NotRequired[CodeScanningAlertLocationType]
+    html_url: NotRequired[str]
+    classifications: NotRequired[
+        list[Union[None, Literal["source", "generated", "test", "library"]]]
+    ]
 
 
-class TeamType(TypedDict):
-    """Team
+class CodeScanningAlertLocationType(TypedDict):
+    """CodeScanningAlertLocation
 
-    Groups of organization members that gives permissions on specified repositories.
+    Describe a region within a file for the alert.
     """
 
-    id: int
-    node_id: str
-    name: str
-    slug: str
-    description: Union[str, None]
-    privacy: NotRequired[str]
-    notification_setting: NotRequired[str]
-    permission: str
-    permissions: NotRequired[TeamPropPermissionsType]
-    url: str
-    html_url: str
-    members_url: str
-    repositories_url: str
-    parent: Union[None, TeamSimpleType]
+    path: NotRequired[str]
+    start_line: NotRequired[int]
+    end_line: NotRequired[int]
+    start_column: NotRequired[int]
+    end_column: NotRequired[int]
 
 
-class TeamPropPermissionsType(TypedDict):
-    """TeamPropPermissions"""
+class CodeScanningAlertInstancePropMessageType(TypedDict):
+    """CodeScanningAlertInstancePropMessage"""
 
-    pull: bool
-    triage: bool
-    push: bool
-    maintain: bool
-    admin: bool
+    text: NotRequired[str]
 
 
 __all__ = (
-    "TeamType",
-    "TeamPropPermissionsType",
+    "CodeScanningAlertInstanceType",
+    "CodeScanningAlertLocationType",
+    "CodeScanningAlertInstancePropMessageType",
 )

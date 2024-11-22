@@ -9,22 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class Verification(GitHubModel):
-    """Verification"""
+class CheckAutomatedSecurityFixes(GitHubModel):
+    """Check Automated Security Fixes
 
-    verified: bool = Field()
-    reason: str = Field()
-    payload: Union[str, None] = Field()
-    signature: Union[str, None] = Field()
+    Check Automated Security Fixes
+    """
+
+    enabled: bool = Field(
+        description="Whether automated security fixes are enabled for the repository."
+    )
+    paused: bool = Field(
+        description="Whether automated security fixes are paused for the repository."
+    )
 
 
-model_rebuild(Verification)
+model_rebuild(CheckAutomatedSecurityFixes)
 
-__all__ = ("Verification",)
+__all__ = ("CheckAutomatedSecurityFixes",)

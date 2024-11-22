@@ -11,13 +11,14 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict, NotRequired
 
-
-class EnterprisesEnterpriseSecretScanningAlertsGetResponse503Type(TypedDict):
-    """EnterprisesEnterpriseSecretScanningAlertsGetResponse503"""
-
-    code: NotRequired[str]
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
+from .group_0030 import CopilotSeatDetailsType
 
 
-__all__ = ("EnterprisesEnterpriseSecretScanningAlertsGetResponse503Type",)
+class EnterprisesEnterpriseCopilotBillingSeatsGetResponse200Type(TypedDict):
+    """EnterprisesEnterpriseCopilotBillingSeatsGetResponse200"""
+
+    total_seats: NotRequired[int]
+    seats: NotRequired[list[CopilotSeatDetailsType]]
+
+
+__all__ = ("EnterprisesEnterpriseCopilotBillingSeatsGetResponse200Type",)

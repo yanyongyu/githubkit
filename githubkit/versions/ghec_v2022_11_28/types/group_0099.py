@@ -10,42 +10,95 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
+from datetime import datetime
 from typing_extensions import TypedDict, NotRequired
 
 
-class CopilotOrganizationDetailsType(TypedDict):
-    """Copilot Organization Details
+class CodeSecurityConfigurationType(TypedDict):
+    """CodeSecurityConfiguration
 
-    Information about the seat breakdown and policies set for an organization with a
-    Copilot Business or Copilot Enterprise subscription.
+    A code security configuration
     """
 
-    seat_breakdown: CopilotSeatBreakdownType
-    public_code_suggestions: Literal["allow", "block", "unconfigured", "unknown"]
-    ide_chat: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
-    platform_chat: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
-    cli: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
-    seat_management_setting: Literal[
-        "assign_all", "assign_selected", "disabled", "unconfigured"
+    id: NotRequired[int]
+    name: NotRequired[str]
+    target_type: NotRequired[Literal["global", "organization", "enterprise"]]
+    description: NotRequired[str]
+    advanced_security: NotRequired[Literal["enabled", "disabled"]]
+    dependency_graph: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    dependency_graph_autosubmit_action: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
     ]
-    plan_type: NotRequired[Literal["business", "enterprise", "unknown"]]
+    dependency_graph_autosubmit_action_options: NotRequired[
+        CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptionsType
+    ]
+    dependabot_alerts: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    dependabot_security_updates: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    code_scanning_default_setup: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    secret_scanning: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    secret_scanning_push_protection: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    secret_scanning_delegated_bypass: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    secret_scanning_delegated_bypass_options: NotRequired[
+        CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsType
+    ]
+    secret_scanning_validity_checks: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    secret_scanning_non_provider_patterns: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    private_vulnerability_reporting: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    enforcement: NotRequired[Literal["enforced", "unenforced"]]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    created_at: NotRequired[datetime]
+    updated_at: NotRequired[datetime]
 
 
-class CopilotSeatBreakdownType(TypedDict):
-    """Copilot Business Seat Breakdown
+class CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptionsType(
+    TypedDict
+):
+    """CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptions
 
-    The breakdown of Copilot Business seats for the organization.
+    Feature options for Automatic dependency submission
     """
 
-    total: NotRequired[int]
-    added_this_cycle: NotRequired[int]
-    pending_cancellation: NotRequired[int]
-    pending_invitation: NotRequired[int]
-    active_this_cycle: NotRequired[int]
-    inactive_this_cycle: NotRequired[int]
+    labeled_runners: NotRequired[bool]
+
+
+class CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsType(TypedDict):
+    """CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptions
+
+    Feature options for secret scanning delegated bypass
+    """
+
+    reviewers: NotRequired[
+        list[
+            CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropReviewersItemsType
+        ]
+    ]
+
+
+class CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropReviewersItemsType(
+    TypedDict
+):
+    """CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropReviewersIt
+    ems
+    """
+
+    reviewer_id: int
+    reviewer_type: Literal["TEAM", "ROLE"]
 
 
 __all__ = (
-    "CopilotOrganizationDetailsType",
-    "CopilotSeatBreakdownType",
+    "CodeSecurityConfigurationType",
+    "CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptionsType",
+    "CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsType",
+    "CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropReviewersItemsType",
 )

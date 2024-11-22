@@ -9,19 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+from typing import Union, Literal
 from typing_extensions import TypedDict
 
+from .group_0002 import SimpleUserType
 
-class AutolinkType(TypedDict):
-    """Autolink reference
 
-    An autolink reference.
+class ActivityType(TypedDict):
+    """Activity
+
+    Activity
     """
 
     id: int
-    key_prefix: str
-    url_template: str
-    is_alphanumeric: bool
+    node_id: str
+    before: str
+    after: str
+    ref: str
+    timestamp: datetime
+    activity_type: Literal[
+        "push",
+        "force_push",
+        "branch_deletion",
+        "branch_creation",
+        "pr_merge",
+        "merge_queue_merge",
+    ]
+    actor: Union[None, SimpleUserType]
 
 
-__all__ = ("AutolinkType",)
+__all__ = ("ActivityType",)

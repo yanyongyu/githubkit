@@ -16,14 +16,19 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ProjectsProjectIdDeleteResponse403(GitHubModel):
-    """ProjectsProjectIdDeleteResponse403"""
+class ProjectsColumnsCardsCardIdMovesPostBody(GitHubModel):
+    """ProjectsColumnsCardsCardIdMovesPostBody"""
 
-    message: Missing[str] = Field(default=UNSET)
-    documentation_url: Missing[str] = Field(default=UNSET)
-    errors: Missing[list[str]] = Field(default=UNSET)
+    position: str = Field(
+        pattern="^(?:top|bottom|after:\\d+)$",
+        description="The position of the card in a column. Can be one of: `top`, `bottom`, or `after:<card_id>` to place after the specified card.",
+    )
+    column_id: Missing[int] = Field(
+        default=UNSET,
+        description="The unique identifier of the column the card should be moved to",
+    )
 
 
-model_rebuild(ProjectsProjectIdDeleteResponse403)
+model_rebuild(ProjectsColumnsCardsCardIdMovesPostBody)
 
-__all__ = ("ProjectsProjectIdDeleteResponse403",)
+__all__ = ("ProjectsColumnsCardsCardIdMovesPostBody",)

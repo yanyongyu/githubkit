@@ -13,99 +13,44 @@ from typing import Union
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0018 import LicenseSimple
 
-class PagesHealthCheck(GitHubModel):
-    """Pages Health Check Status
 
-    Pages Health Check Status
+class LicenseContent(GitHubModel):
+    """License Content
+
+    License Content
     """
 
-    domain: Missing[PagesHealthCheckPropDomain] = Field(default=UNSET)
-    alt_domain: Missing[Union[PagesHealthCheckPropAltDomain, None]] = Field(
-        default=UNSET
-    )
+    name: str = Field()
+    path: str = Field()
+    sha: str = Field()
+    size: int = Field()
+    url: str = Field()
+    html_url: Union[str, None] = Field()
+    git_url: Union[str, None] = Field()
+    download_url: Union[str, None] = Field()
+    type: str = Field()
+    content: str = Field()
+    encoding: str = Field()
+    links: LicenseContentPropLinks = Field(alias="_links")
+    license_: Union[None, LicenseSimple] = Field(alias="license")
 
 
-class PagesHealthCheckPropDomain(GitHubModel):
-    """PagesHealthCheckPropDomain"""
+class LicenseContentPropLinks(GitHubModel):
+    """LicenseContentPropLinks"""
 
-    host: Missing[str] = Field(default=UNSET)
-    uri: Missing[str] = Field(default=UNSET)
-    nameservers: Missing[str] = Field(default=UNSET)
-    dns_resolves: Missing[bool] = Field(default=UNSET)
-    is_proxied: Missing[Union[bool, None]] = Field(default=UNSET)
-    is_cloudflare_ip: Missing[Union[bool, None]] = Field(default=UNSET)
-    is_fastly_ip: Missing[Union[bool, None]] = Field(default=UNSET)
-    is_old_ip_address: Missing[Union[bool, None]] = Field(default=UNSET)
-    is_a_record: Missing[Union[bool, None]] = Field(default=UNSET)
-    has_cname_record: Missing[Union[bool, None]] = Field(default=UNSET)
-    has_mx_records_present: Missing[Union[bool, None]] = Field(default=UNSET)
-    is_valid_domain: Missing[bool] = Field(default=UNSET)
-    is_apex_domain: Missing[bool] = Field(default=UNSET)
-    should_be_a_record: Missing[Union[bool, None]] = Field(default=UNSET)
-    is_cname_to_github_user_domain: Missing[Union[bool, None]] = Field(default=UNSET)
-    is_cname_to_pages_dot_github_dot_com: Missing[Union[bool, None]] = Field(
-        default=UNSET
-    )
-    is_cname_to_fastly: Missing[Union[bool, None]] = Field(default=UNSET)
-    is_pointed_to_github_pages_ip: Missing[Union[bool, None]] = Field(default=UNSET)
-    is_non_github_pages_ip_present: Missing[Union[bool, None]] = Field(default=UNSET)
-    is_pages_domain: Missing[bool] = Field(default=UNSET)
-    is_served_by_pages: Missing[Union[bool, None]] = Field(default=UNSET)
-    is_valid: Missing[bool] = Field(default=UNSET)
-    reason: Missing[Union[str, None]] = Field(default=UNSET)
-    responds_to_https: Missing[bool] = Field(default=UNSET)
-    enforces_https: Missing[bool] = Field(default=UNSET)
-    https_error: Missing[Union[str, None]] = Field(default=UNSET)
-    is_https_eligible: Missing[Union[bool, None]] = Field(default=UNSET)
-    caa_error: Missing[Union[str, None]] = Field(default=UNSET)
+    git: Union[str, None] = Field()
+    html: Union[str, None] = Field()
+    self_: str = Field(alias="self")
 
 
-class PagesHealthCheckPropAltDomain(GitHubModel):
-    """PagesHealthCheckPropAltDomain"""
-
-    host: Missing[str] = Field(default=UNSET)
-    uri: Missing[str] = Field(default=UNSET)
-    nameservers: Missing[str] = Field(default=UNSET)
-    dns_resolves: Missing[bool] = Field(default=UNSET)
-    is_proxied: Missing[Union[bool, None]] = Field(default=UNSET)
-    is_cloudflare_ip: Missing[Union[bool, None]] = Field(default=UNSET)
-    is_fastly_ip: Missing[Union[bool, None]] = Field(default=UNSET)
-    is_old_ip_address: Missing[Union[bool, None]] = Field(default=UNSET)
-    is_a_record: Missing[Union[bool, None]] = Field(default=UNSET)
-    has_cname_record: Missing[Union[bool, None]] = Field(default=UNSET)
-    has_mx_records_present: Missing[Union[bool, None]] = Field(default=UNSET)
-    is_valid_domain: Missing[bool] = Field(default=UNSET)
-    is_apex_domain: Missing[bool] = Field(default=UNSET)
-    should_be_a_record: Missing[Union[bool, None]] = Field(default=UNSET)
-    is_cname_to_github_user_domain: Missing[Union[bool, None]] = Field(default=UNSET)
-    is_cname_to_pages_dot_github_dot_com: Missing[Union[bool, None]] = Field(
-        default=UNSET
-    )
-    is_cname_to_fastly: Missing[Union[bool, None]] = Field(default=UNSET)
-    is_pointed_to_github_pages_ip: Missing[Union[bool, None]] = Field(default=UNSET)
-    is_non_github_pages_ip_present: Missing[Union[bool, None]] = Field(default=UNSET)
-    is_pages_domain: Missing[bool] = Field(default=UNSET)
-    is_served_by_pages: Missing[Union[bool, None]] = Field(default=UNSET)
-    is_valid: Missing[bool] = Field(default=UNSET)
-    reason: Missing[Union[str, None]] = Field(default=UNSET)
-    responds_to_https: Missing[bool] = Field(default=UNSET)
-    enforces_https: Missing[bool] = Field(default=UNSET)
-    https_error: Missing[Union[str, None]] = Field(default=UNSET)
-    is_https_eligible: Missing[Union[bool, None]] = Field(default=UNSET)
-    caa_error: Missing[Union[str, None]] = Field(default=UNSET)
-
-
-model_rebuild(PagesHealthCheck)
-model_rebuild(PagesHealthCheckPropDomain)
-model_rebuild(PagesHealthCheckPropAltDomain)
+model_rebuild(LicenseContent)
+model_rebuild(LicenseContentPropLinks)
 
 __all__ = (
-    "PagesHealthCheck",
-    "PagesHealthCheckPropDomain",
-    "PagesHealthCheckPropAltDomain",
+    "LicenseContent",
+    "LicenseContentPropLinks",
 )
