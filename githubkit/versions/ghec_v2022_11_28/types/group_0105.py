@@ -9,40 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class ExternalGroupType(TypedDict):
-    """ExternalGroup
+class CopilotOrganizationDetailsType(TypedDict):
+    """Copilot Organization Details
 
-    Information about an external group's usage and its members
+    Information about the seat breakdown and policies set for an organization with a
+    Copilot Business or Copilot Enterprise subscription.
     """
 
-    group_id: int
-    group_name: str
-    updated_at: NotRequired[str]
-    teams: list[ExternalGroupPropTeamsItemsType]
-    members: list[ExternalGroupPropMembersItemsType]
+    seat_breakdown: CopilotSeatBreakdownType
+    public_code_suggestions: Literal["allow", "block", "unconfigured", "unknown"]
+    ide_chat: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
+    platform_chat: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
+    cli: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
+    seat_management_setting: Literal[
+        "assign_all", "assign_selected", "disabled", "unconfigured"
+    ]
+    plan_type: NotRequired[Literal["business", "enterprise", "unknown"]]
 
 
-class ExternalGroupPropTeamsItemsType(TypedDict):
-    """ExternalGroupPropTeamsItems"""
+class CopilotSeatBreakdownType(TypedDict):
+    """Copilot Business Seat Breakdown
 
-    team_id: int
-    team_name: str
+    The breakdown of Copilot Business seats for the organization.
+    """
 
-
-class ExternalGroupPropMembersItemsType(TypedDict):
-    """ExternalGroupPropMembersItems"""
-
-    member_id: int
-    member_login: str
-    member_name: str
-    member_email: str
+    total: NotRequired[int]
+    added_this_cycle: NotRequired[int]
+    pending_cancellation: NotRequired[int]
+    pending_invitation: NotRequired[int]
+    active_this_cycle: NotRequired[int]
+    inactive_this_cycle: NotRequired[int]
 
 
 __all__ = (
-    "ExternalGroupType",
-    "ExternalGroupPropTeamsItemsType",
-    "ExternalGroupPropMembersItemsType",
+    "CopilotOrganizationDetailsType",
+    "CopilotSeatBreakdownType",
 )

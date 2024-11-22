@@ -18,17 +18,17 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 from .group_0002 import SimpleUser
-from .group_0396 import Discussion
-from .group_0383 import EnterpriseWebhooks
-from .group_0384 import SimpleInstallation
-from .group_0386 import RepositoryWebhooks
-from .group_0385 import OrganizationSimpleWebhooks
+from .group_0397 import Discussion
+from .group_0384 import EnterpriseWebhooks
+from .group_0385 import SimpleInstallation
+from .group_0387 import RepositoryWebhooks
+from .group_0386 import OrganizationSimpleWebhooks
 
 
-class WebhookDiscussionReopened(GitHubModel):
-    """discussion reopened event"""
+class WebhookDiscussionPinned(GitHubModel):
+    """discussion pinned event"""
 
-    action: Literal["reopened"] = Field()
+    action: Literal["pinned"] = Field()
     discussion: Discussion = Field(
         title="Discussion", description="A Discussion in a repository."
     )
@@ -54,6 +54,6 @@ class WebhookDiscussionReopened(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookDiscussionReopened)
+model_rebuild(WebhookDiscussionPinned)
 
-__all__ = ("WebhookDiscussionReopened",)
+__all__ = ("WebhookDiscussionPinned",)

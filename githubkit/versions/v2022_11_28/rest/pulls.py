@@ -87,6 +87,7 @@ class PullsClient:
         self,
         owner: str,
         repo: str,
+        *,
         state: Missing[Literal["open", "closed", "all"]] = UNSET,
         head: Missing[str] = UNSET,
         base: Missing[str] = UNSET,
@@ -96,7 +97,6 @@ class PullsClient:
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[PullRequestSimple], list[PullRequestSimpleType]]:
         """See also: https://docs.github.com/rest/pulls/pulls#list-pull-requests"""
@@ -132,6 +132,7 @@ class PullsClient:
         self,
         owner: str,
         repo: str,
+        *,
         state: Missing[Literal["open", "closed", "all"]] = UNSET,
         head: Missing[str] = UNSET,
         base: Missing[str] = UNSET,
@@ -141,7 +142,6 @@ class PullsClient:
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[PullRequestSimple], list[PullRequestSimpleType]]:
         """See also: https://docs.github.com/rest/pulls/pulls#list-pull-requests"""
@@ -319,12 +319,12 @@ class PullsClient:
         self,
         owner: str,
         repo: str,
+        *,
         sort: Missing[Literal["created", "updated", "created_at"]] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         since: Missing[datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[PullRequestReviewComment], list[PullRequestReviewCommentType]]:
         """See also: https://docs.github.com/rest/pulls/comments#list-review-comments-in-a-repository"""
@@ -355,12 +355,12 @@ class PullsClient:
         self,
         owner: str,
         repo: str,
+        *,
         sort: Missing[Literal["created", "updated", "created_at"]] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         since: Missing[datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[PullRequestReviewComment], list[PullRequestReviewCommentType]]:
         """See also: https://docs.github.com/rest/pulls/comments#list-review-comments-in-a-repository"""
@@ -828,12 +828,12 @@ class PullsClient:
         owner: str,
         repo: str,
         pull_number: int,
+        *,
         sort: Missing[Literal["created", "updated"]] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         since: Missing[datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[PullRequestReviewComment], list[PullRequestReviewCommentType]]:
         """See also: https://docs.github.com/rest/pulls/comments#list-review-comments-on-a-pull-request"""
@@ -865,12 +865,12 @@ class PullsClient:
         owner: str,
         repo: str,
         pull_number: int,
+        *,
         sort: Missing[Literal["created", "updated"]] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         since: Missing[datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[PullRequestReviewComment], list[PullRequestReviewCommentType]]:
         """See also: https://docs.github.com/rest/pulls/comments#list-review-comments-on-a-pull-request"""
@@ -1202,9 +1202,9 @@ class PullsClient:
         owner: str,
         repo: str,
         pull_number: int,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Commit], list[CommitType]]:
         """See also: https://docs.github.com/rest/pulls/pulls#list-commits-on-a-pull-request"""
@@ -1233,9 +1233,9 @@ class PullsClient:
         owner: str,
         repo: str,
         pull_number: int,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Commit], list[CommitType]]:
         """See also: https://docs.github.com/rest/pulls/pulls#list-commits-on-a-pull-request"""
@@ -1264,9 +1264,9 @@ class PullsClient:
         owner: str,
         repo: str,
         pull_number: int,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[DiffEntry], list[DiffEntryType]]:
         """See also: https://docs.github.com/rest/pulls/pulls#list-pull-requests-files"""
@@ -1305,9 +1305,9 @@ class PullsClient:
         owner: str,
         repo: str,
         pull_number: int,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[DiffEntry], list[DiffEntryType]]:
         """See also: https://docs.github.com/rest/pulls/pulls#list-pull-requests-files"""
@@ -1936,9 +1936,9 @@ class PullsClient:
         owner: str,
         repo: str,
         pull_number: int,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[PullRequestReview], list[PullRequestReviewType]]:
         """See also: https://docs.github.com/rest/pulls/reviews#list-reviews-for-a-pull-request"""
@@ -1967,9 +1967,9 @@ class PullsClient:
         owner: str,
         repo: str,
         pull_number: int,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[PullRequestReview], list[PullRequestReviewType]]:
         """See also: https://docs.github.com/rest/pulls/reviews#list-reviews-for-a-pull-request"""
@@ -2397,9 +2397,9 @@ class PullsClient:
         repo: str,
         pull_number: int,
         review_id: int,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[ReviewComment], list[ReviewCommentType]]:
         """See also: https://docs.github.com/rest/pulls/reviews#list-comments-for-a-pull-request-review"""
@@ -2432,9 +2432,9 @@ class PullsClient:
         repo: str,
         pull_number: int,
         review_id: int,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[ReviewComment], list[ReviewCommentType]]:
         """See also: https://docs.github.com/rest/pulls/reviews#list-comments-for-a-pull-request-review"""

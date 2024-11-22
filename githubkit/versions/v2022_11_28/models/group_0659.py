@@ -17,27 +17,27 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0040 import Milestone
 from .group_0002 import SimpleUser
-from .group_0383 import EnterpriseWebhooks
-from .group_0384 import SimpleInstallation
-from .group_0386 import RepositoryWebhooks
-from .group_0421 import PullRequestWebhook
-from .group_0385 import OrganizationSimpleWebhooks
+from .group_0384 import EnterpriseWebhooks
+from .group_0387 import RepositoryWebhooks
+from .group_0424 import WebhooksPullRequest5
+from .group_0386 import OrganizationSimpleWebhooks
 
 
-class WebhookPullRequestOpened(GitHubModel):
-    """pull_request opened event"""
+class WebhookPullRequestMilestoned(GitHubModel):
+    """pull_request milestoned event"""
 
-    action: Literal["opened"] = Field()
+    action: Literal["milestoned"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
         description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."',
     )
-    installation: Missing[SimpleInstallation] = Field(
+    milestone: Missing[Milestone] = Field(
         default=UNSET,
-        title="Simple Installation",
-        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
+        title="Milestone",
+        description="A collection of related issues and pull requests.",
     )
     number: int = Field(description="The pull request number.")
     organization: Missing[OrganizationSimpleWebhooks] = Field(
@@ -45,14 +45,16 @@ class WebhookPullRequestOpened(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    pull_request: PullRequestWebhook = Field()
+    pull_request: WebhooksPullRequest5 = Field(title="Pull Request")
     repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    sender: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
+    )
 
 
-model_rebuild(WebhookPullRequestOpened)
+model_rebuild(WebhookPullRequestMilestoned)
 
-__all__ = ("WebhookPullRequestOpened",)
+__all__ = ("WebhookPullRequestMilestoned",)

@@ -9,20 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+from datetime import datetime
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0002 import SimpleUser
 
-class Topic(GitHubModel):
-    """Topic
 
-    A topic aggregates entities that are related to a subject.
+class Stargazer(GitHubModel):
+    """Stargazer
+
+    Stargazer
     """
 
-    names: list[str] = Field()
+    starred_at: datetime = Field()
+    user: Union[None, SimpleUser] = Field()
 
 
-model_rebuild(Topic)
+model_rebuild(Stargazer)
 
-__all__ = ("Topic",)
+__all__ = ("Stargazer",)

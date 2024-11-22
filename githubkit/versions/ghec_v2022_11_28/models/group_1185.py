@@ -11,22 +11,20 @@ from __future__ import annotations
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class UserSocialAccountsDeleteBody(GitHubModel):
-    """UserSocialAccountsDeleteBody
+class UserGpgKeysPostBody(GitHubModel):
+    """UserGpgKeysPostBody"""
 
-    Examples:
-        {'account_urls': ['https://www.linkedin.com/company/github/',
-    'https://twitter.com/github']}
-    """
-
-    account_urls: list[str] = Field(
-        description="Full URLs for the social media profiles to delete."
+    name: Missing[str] = Field(
+        default=UNSET, description="A descriptive name for the new key."
     )
+    armored_public_key: str = Field(description="A GPG key in ASCII-armored format.")
 
 
-model_rebuild(UserSocialAccountsDeleteBody)
+model_rebuild(UserGpgKeysPostBody)
 
-__all__ = ("UserSocialAccountsDeleteBody",)
+__all__ = ("UserGpgKeysPostBody",)

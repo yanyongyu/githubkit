@@ -10,45 +10,34 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Any, Union
-from typing_extensions import TypedDict, NotRequired
+from typing import Union, Literal
+from typing_extensions import TypedDict
 
 from .group_0002 import SimpleUserType
 
 
-class BaseGistType(TypedDict):
-    """Base Gist
+class MilestoneType(TypedDict):
+    """Milestone
 
-    Base Gist
+    A collection of related issues and pull requests.
     """
 
     url: str
-    forks_url: str
-    commits_url: str
-    id: str
-    node_id: str
-    git_pull_url: str
-    git_push_url: str
     html_url: str
-    files: BaseGistPropFilesType
-    public: bool
+    labels_url: str
+    id: int
+    node_id: str
+    number: int
+    state: Literal["open", "closed"]
+    title: str
+    description: Union[str, None]
+    creator: Union[None, SimpleUserType]
+    open_issues: int
+    closed_issues: int
     created_at: datetime
     updated_at: datetime
-    description: Union[str, None]
-    comments: int
-    user: Union[None, SimpleUserType]
-    comments_url: str
-    owner: NotRequired[SimpleUserType]
-    truncated: NotRequired[bool]
-    forks: NotRequired[list[Any]]
-    history: NotRequired[list[Any]]
+    closed_at: Union[datetime, None]
+    due_on: Union[datetime, None]
 
 
-class BaseGistPropFilesType(TypedDict):
-    """BaseGistPropFiles"""
-
-
-__all__ = (
-    "BaseGistType",
-    "BaseGistPropFilesType",
-)
+__all__ = ("MilestoneType",)

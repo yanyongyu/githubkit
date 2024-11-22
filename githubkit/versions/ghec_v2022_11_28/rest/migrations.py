@@ -66,10 +66,10 @@ class MigrationsClient:
     def list_for_org(
         self,
         org: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         exclude: Missing[list[Literal["repositories"]]] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Migration], list[MigrationType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/orgs#list-organization-migrations"""
@@ -97,10 +97,10 @@ class MigrationsClient:
     async def async_list_for_org(
         self,
         org: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         exclude: Missing[list[Literal["repositories"]]] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Migration], list[MigrationType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/orgs#list-organization-migrations"""
@@ -267,8 +267,8 @@ class MigrationsClient:
         self,
         org: str,
         migration_id: int,
-        exclude: Missing[list[Literal["repositories"]]] = UNSET,
         *,
+        exclude: Missing[list[Literal["repositories"]]] = UNSET,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[Migration, MigrationType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/orgs#get-an-organization-migration-status"""
@@ -298,8 +298,8 @@ class MigrationsClient:
         self,
         org: str,
         migration_id: int,
-        exclude: Missing[list[Literal["repositories"]]] = UNSET,
         *,
+        exclude: Missing[list[Literal["repositories"]]] = UNSET,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[Migration, MigrationType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/orgs#get-an-organization-migration-status"""
@@ -475,9 +475,9 @@ class MigrationsClient:
         self,
         org: str,
         migration_id: int,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/orgs#list-repositories-in-an-organization-migration"""
@@ -508,9 +508,9 @@ class MigrationsClient:
         self,
         org: str,
         migration_id: int,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/orgs#list-repositories-in-an-organization-migration"""
@@ -909,8 +909,8 @@ class MigrationsClient:
         self,
         owner: str,
         repo: str,
-        since: Missing[int] = UNSET,
         *,
+        since: Missing[int] = UNSET,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[PorterAuthor], list[PorterAuthorType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/source-imports#get-commit-authors"""
@@ -941,8 +941,8 @@ class MigrationsClient:
         self,
         owner: str,
         repo: str,
-        since: Missing[int] = UNSET,
         *,
+        since: Missing[int] = UNSET,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[PorterAuthor], list[PorterAuthorType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/source-imports#get-commit-authors"""
@@ -1291,9 +1291,9 @@ class MigrationsClient:
 
     def list_for_authenticated_user(
         self,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Migration], list[MigrationType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/users#list-user-migrations"""
@@ -1323,9 +1323,9 @@ class MigrationsClient:
 
     async def async_list_for_authenticated_user(
         self,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Migration], list[MigrationType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/users#list-user-migrations"""
@@ -1490,8 +1490,8 @@ class MigrationsClient:
     def get_status_for_authenticated_user(
         self,
         migration_id: int,
-        exclude: Missing[list[str]] = UNSET,
         *,
+        exclude: Missing[list[str]] = UNSET,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[Migration, MigrationType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/users#get-a-user-migration-status"""
@@ -1522,8 +1522,8 @@ class MigrationsClient:
     async def async_get_status_for_authenticated_user(
         self,
         migration_id: int,
-        exclude: Missing[list[str]] = UNSET,
         *,
+        exclude: Missing[list[str]] = UNSET,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[Migration, MigrationType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/users#get-a-user-migration-status"""
@@ -1704,9 +1704,9 @@ class MigrationsClient:
     def list_repos_for_authenticated_user(
         self,
         migration_id: int,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/users#list-repositories-for-a-user-migration"""
@@ -1736,9 +1736,9 @@ class MigrationsClient:
     async def async_list_repos_for_authenticated_user(
         self,
         migration_id: int,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/users#list-repositories-for-a-user-migration"""

@@ -10,44 +10,22 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Union
-from datetime import date
 from typing_extensions import TypedDict, NotRequired
 
 
-class CopilotUsageMetricsType(TypedDict):
-    """Copilot Usage Metrics
+class EnterpriseSecurityAnalysisSettingsType(TypedDict):
+    """Enterprise Security Analysis Settings"""
 
-    Summary of Copilot usage.
-    """
-
-    day: date
-    total_suggestions_count: NotRequired[int]
-    total_acceptances_count: NotRequired[int]
-    total_lines_suggested: NotRequired[int]
-    total_lines_accepted: NotRequired[int]
-    total_active_users: NotRequired[int]
-    total_chat_acceptances: NotRequired[int]
-    total_chat_turns: NotRequired[int]
-    total_active_chat_users: NotRequired[int]
-    breakdown: Union[list[CopilotUsageMetricsPropBreakdownItemsType], None]
+    advanced_security_enabled_for_new_repositories: bool
+    advanced_security_enabled_for_new_user_namespace_repositories: NotRequired[bool]
+    dependabot_alerts_enabled_for_new_repositories: bool
+    secret_scanning_enabled_for_new_repositories: bool
+    secret_scanning_push_protection_enabled_for_new_repositories: bool
+    secret_scanning_push_protection_custom_link: NotRequired[Union[str, None]]
+    secret_scanning_non_provider_patterns_enabled_for_new_repositories: NotRequired[
+        bool
+    ]
+    secret_scanning_validity_checks_enabled: NotRequired[bool]
 
 
-class CopilotUsageMetricsPropBreakdownItemsType(TypedDict):
-    """CopilotUsageMetricsPropBreakdownItems
-
-    Breakdown of Copilot usage by editor for this language
-    """
-
-    language: NotRequired[str]
-    editor: NotRequired[str]
-    suggestions_count: NotRequired[int]
-    acceptances_count: NotRequired[int]
-    lines_suggested: NotRequired[int]
-    lines_accepted: NotRequired[int]
-    active_users: NotRequired[int]
-
-
-__all__ = (
-    "CopilotUsageMetricsType",
-    "CopilotUsageMetricsPropBreakdownItemsType",
-)
+__all__ = ("EnterpriseSecurityAnalysisSettingsType",)

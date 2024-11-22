@@ -13,26 +13,23 @@ from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0002 import SimpleUserType
-from .group_0420 import EnterpriseWebhooksType
-from .group_0421 import SimpleInstallationType
-from .group_0423 import RepositoryWebhooksType
-from .group_0422 import OrganizationSimpleWebhooksType
-from .group_0446 import WebhooksMarketplacePurchaseType
-from .group_0447 import WebhooksPreviousMarketplacePurchaseType
+from .group_0444 import WebhooksLabelType
+from .group_0427 import EnterpriseWebhooksType
+from .group_0428 import SimpleInstallationType
+from .group_0430 import RepositoryWebhooksType
+from .group_0429 import OrganizationSimpleWebhooksType
 
 
-class WebhookMarketplacePurchasePurchasedType(TypedDict):
-    """marketplace_purchase purchased event"""
+class WebhookLabelCreatedType(TypedDict):
+    """label created event"""
 
-    action: Literal["purchased"]
-    effective_date: str
+    action: Literal["created"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    marketplace_purchase: WebhooksMarketplacePurchaseType
+    label: WebhooksLabelType
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    previous_marketplace_purchase: NotRequired[WebhooksPreviousMarketplacePurchaseType]
-    repository: NotRequired[RepositoryWebhooksType]
-    sender: SimpleUserType
+    repository: RepositoryWebhooksType
+    sender: NotRequired[SimpleUserType]
 
 
-__all__ = ("WebhookMarketplacePurchasePurchasedType",)
+__all__ = ("WebhookLabelCreatedType",)

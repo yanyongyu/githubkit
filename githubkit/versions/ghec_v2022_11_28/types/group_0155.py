@@ -9,17 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import TypedDict, NotRequired
 
 
-class RepositoryRulePullRequestPropParametersType(TypedDict):
-    """RepositoryRulePullRequestPropParameters"""
+class RepositoryRuleRequiredLinearHistoryType(TypedDict):
+    """required_linear_history
 
-    dismiss_stale_reviews_on_push: bool
-    require_code_owner_review: bool
-    require_last_push_approval: bool
-    required_approving_review_count: int
-    required_review_thread_resolution: bool
+    Prevent merge commits from being pushed to matching refs.
+    """
+
+    type: Literal["required_linear_history"]
 
 
-__all__ = ("RepositoryRulePullRequestPropParametersType",)
+class RepositoryRuleOneof16Type(TypedDict):
+    """max_file_path_length
+
+    Prevent commits that include file paths that exceed a specified character limit
+    from being pushed to the commit graph.
+    """
+
+    type: Literal["max_file_path_length"]
+    parameters: NotRequired[RepositoryRuleOneof16PropParametersType]
+
+
+class RepositoryRuleOneof16PropParametersType(TypedDict):
+    """RepositoryRuleOneof16PropParameters"""
+
+    max_file_path_length: int
+
+
+__all__ = (
+    "RepositoryRuleRequiredLinearHistoryType",
+    "RepositoryRuleOneof16Type",
+    "RepositoryRuleOneof16PropParametersType",
+)

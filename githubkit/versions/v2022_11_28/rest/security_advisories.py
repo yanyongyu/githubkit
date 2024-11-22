@@ -65,6 +65,7 @@ class SecurityAdvisoriesClient:
 
     def list_global_advisories(
         self,
+        *,
         ghsa_id: Missing[str] = UNSET,
         type: Missing[Literal["reviewed", "malware", "unreviewed"]] = UNSET,
         cve_id: Missing[str] = UNSET,
@@ -103,7 +104,6 @@ class SecurityAdvisoriesClient:
         sort: Missing[
             Literal["updated", "published", "epss_percentage", "epss_percentile"]
         ] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[GlobalAdvisory], list[GlobalAdvisoryType]]:
         """See also: https://docs.github.com/rest/security-advisories/global-advisories#list-global-security-advisories"""
@@ -149,6 +149,7 @@ class SecurityAdvisoriesClient:
 
     async def async_list_global_advisories(
         self,
+        *,
         ghsa_id: Missing[str] = UNSET,
         type: Missing[Literal["reviewed", "malware", "unreviewed"]] = UNSET,
         cve_id: Missing[str] = UNSET,
@@ -187,7 +188,6 @@ class SecurityAdvisoriesClient:
         sort: Missing[
             Literal["updated", "published", "epss_percentage", "epss_percentile"]
         ] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[GlobalAdvisory], list[GlobalAdvisoryType]]:
         """See also: https://docs.github.com/rest/security-advisories/global-advisories#list-global-security-advisories"""
@@ -282,13 +282,13 @@ class SecurityAdvisoriesClient:
     def list_org_repository_advisories(
         self,
         org: str,
+        *,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         sort: Missing[Literal["created", "updated", "published"]] = UNSET,
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
         per_page: Missing[int] = UNSET,
         state: Missing[Literal["triage", "draft", "published", "closed"]] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[RepositoryAdvisory], list[RepositoryAdvisoryType]]:
         """See also: https://docs.github.com/rest/security-advisories/repository-advisories#list-repository-security-advisories-for-an-organization"""
@@ -323,13 +323,13 @@ class SecurityAdvisoriesClient:
     async def async_list_org_repository_advisories(
         self,
         org: str,
+        *,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         sort: Missing[Literal["created", "updated", "published"]] = UNSET,
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
         per_page: Missing[int] = UNSET,
         state: Missing[Literal["triage", "draft", "published", "closed"]] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[RepositoryAdvisory], list[RepositoryAdvisoryType]]:
         """See also: https://docs.github.com/rest/security-advisories/repository-advisories#list-repository-security-advisories-for-an-organization"""
@@ -365,13 +365,13 @@ class SecurityAdvisoriesClient:
         self,
         owner: str,
         repo: str,
+        *,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         sort: Missing[Literal["created", "updated", "published"]] = UNSET,
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
         per_page: Missing[int] = UNSET,
         state: Missing[Literal["triage", "draft", "published", "closed"]] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[RepositoryAdvisory], list[RepositoryAdvisoryType]]:
         """See also: https://docs.github.com/rest/security-advisories/repository-advisories#list-repository-security-advisories"""
@@ -407,13 +407,13 @@ class SecurityAdvisoriesClient:
         self,
         owner: str,
         repo: str,
+        *,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         sort: Missing[Literal["created", "updated", "published"]] = UNSET,
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
         per_page: Missing[int] = UNSET,
         state: Missing[Literal["triage", "draft", "published", "closed"]] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[RepositoryAdvisory], list[RepositoryAdvisoryType]]:
         """See also: https://docs.github.com/rest/security-advisories/repository-advisories#list-repository-security-advisories"""

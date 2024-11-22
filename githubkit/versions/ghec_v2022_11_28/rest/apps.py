@@ -342,9 +342,9 @@ class AppsClient:
 
     def list_webhook_deliveries(
         self,
+        *,
         per_page: Missing[int] = UNSET,
         cursor: Missing[str] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[HookDeliveryItem], list[HookDeliveryItemType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/webhooks#list-deliveries-for-an-app-webhook"""
@@ -374,9 +374,9 @@ class AppsClient:
 
     async def async_list_webhook_deliveries(
         self,
+        *,
         per_page: Missing[int] = UNSET,
         cursor: Missing[str] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[HookDeliveryItem], list[HookDeliveryItemType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/webhooks#list-deliveries-for-an-app-webhook"""
@@ -520,9 +520,9 @@ class AppsClient:
 
     def list_installation_requests_for_authenticated_app(
         self,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         list[IntegrationInstallationRequest], list[IntegrationInstallationRequestType]
@@ -553,9 +553,9 @@ class AppsClient:
 
     async def async_list_installation_requests_for_authenticated_app(
         self,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         list[IntegrationInstallationRequest], list[IntegrationInstallationRequestType]
@@ -586,11 +586,11 @@ class AppsClient:
 
     def list_installations(
         self,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         since: Missing[datetime] = UNSET,
         outdated: Missing[str] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Installation], list[InstallationType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/apps#list-installations-for-the-authenticated-app"""
@@ -618,11 +618,11 @@ class AppsClient:
 
     async def async_list_installations(
         self,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         since: Missing[datetime] = UNSET,
         outdated: Missing[str] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Installation], list[InstallationType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/apps#list-installations-for-the-authenticated-app"""
@@ -1616,9 +1616,9 @@ class AppsClient:
 
     def list_repos_accessible_to_installation(
         self,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         InstallationRepositoriesGetResponse200,
@@ -1651,9 +1651,9 @@ class AppsClient:
 
     async def async_list_repos_accessible_to_installation(
         self,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         InstallationRepositoriesGetResponse200,
@@ -1770,9 +1770,9 @@ class AppsClient:
 
     def list_plans(
         self,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[MarketplaceListingPlan], list[MarketplaceListingPlanType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/marketplace#list-plans"""
@@ -1802,9 +1802,9 @@ class AppsClient:
 
     async def async_list_plans(
         self,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[MarketplaceListingPlan], list[MarketplaceListingPlanType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/marketplace#list-plans"""
@@ -1835,11 +1835,11 @@ class AppsClient:
     def list_accounts_for_plan(
         self,
         plan_id: int,
+        *,
         sort: Missing[Literal["created", "updated"]] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[MarketplacePurchase], list[MarketplacePurchaseType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/marketplace#list-accounts-for-a-plan"""
@@ -1873,11 +1873,11 @@ class AppsClient:
     async def async_list_accounts_for_plan(
         self,
         plan_id: int,
+        *,
         sort: Missing[Literal["created", "updated"]] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[MarketplacePurchase], list[MarketplacePurchaseType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/marketplace#list-accounts-for-a-plan"""
@@ -1958,9 +1958,9 @@ class AppsClient:
 
     def list_plans_stubbed(
         self,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[MarketplaceListingPlan], list[MarketplaceListingPlanType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/marketplace#list-plans-stubbed"""
@@ -1989,9 +1989,9 @@ class AppsClient:
 
     async def async_list_plans_stubbed(
         self,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[MarketplaceListingPlan], list[MarketplaceListingPlanType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/marketplace#list-plans-stubbed"""
@@ -2021,11 +2021,11 @@ class AppsClient:
     def list_accounts_for_plan_stubbed(
         self,
         plan_id: int,
+        *,
         sort: Missing[Literal["created", "updated"]] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[MarketplacePurchase], list[MarketplacePurchaseType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/marketplace#list-accounts-for-a-plan-stubbed"""
@@ -2057,11 +2057,11 @@ class AppsClient:
     async def async_list_accounts_for_plan_stubbed(
         self,
         plan_id: int,
+        *,
         sort: Missing[Literal["created", "updated"]] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[MarketplacePurchase], list[MarketplacePurchaseType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/marketplace#list-accounts-for-a-plan-stubbed"""
@@ -2184,9 +2184,9 @@ class AppsClient:
 
     def list_installations_for_authenticated_user(
         self,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[UserInstallationsGetResponse200, UserInstallationsGetResponse200Type]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/installations#list-app-installations-accessible-to-the-user-access-token"""
@@ -2216,9 +2216,9 @@ class AppsClient:
 
     async def async_list_installations_for_authenticated_user(
         self,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[UserInstallationsGetResponse200, UserInstallationsGetResponse200Type]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/installations#list-app-installations-accessible-to-the-user-access-token"""
@@ -2249,9 +2249,9 @@ class AppsClient:
     def list_installation_repos_for_authenticated_user(
         self,
         installation_id: int,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         UserInstallationsInstallationIdRepositoriesGetResponse200,
@@ -2288,9 +2288,9 @@ class AppsClient:
     async def async_list_installation_repos_for_authenticated_user(
         self,
         installation_id: int,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         UserInstallationsInstallationIdRepositoriesGetResponse200,
@@ -2426,9 +2426,9 @@ class AppsClient:
 
     def list_subscriptions_for_authenticated_user(
         self,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[UserMarketplacePurchase], list[UserMarketplacePurchaseType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/marketplace#list-subscriptions-for-the-authenticated-user"""
@@ -2458,9 +2458,9 @@ class AppsClient:
 
     async def async_list_subscriptions_for_authenticated_user(
         self,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[UserMarketplacePurchase], list[UserMarketplacePurchaseType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/marketplace#list-subscriptions-for-the-authenticated-user"""
@@ -2490,9 +2490,9 @@ class AppsClient:
 
     def list_subscriptions_for_authenticated_user_stubbed(
         self,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[UserMarketplacePurchase], list[UserMarketplacePurchaseType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/marketplace#list-subscriptions-for-the-authenticated-user-stubbed"""
@@ -2521,9 +2521,9 @@ class AppsClient:
 
     async def async_list_subscriptions_for_authenticated_user_stubbed(
         self,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[UserMarketplacePurchase], list[UserMarketplacePurchaseType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/marketplace#list-subscriptions-for-the-authenticated-user-stubbed"""

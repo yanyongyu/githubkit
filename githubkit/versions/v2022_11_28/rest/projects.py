@@ -76,10 +76,10 @@ class ProjectsClient:
     def list_for_org(
         self,
         org: str,
+        *,
         state: Missing[Literal["open", "closed", "all"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Project], list[ProjectType]]:
         """See also: https://docs.github.com/rest/projects/projects#list-organization-projects"""
@@ -110,10 +110,10 @@ class ProjectsClient:
     async def async_list_for_org(
         self,
         org: str,
+        *,
         state: Missing[Literal["open", "closed", "all"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Project], list[ProjectType]]:
         """See also: https://docs.github.com/rest/projects/projects#list-organization-projects"""
@@ -866,10 +866,10 @@ class ProjectsClient:
     def list_cards(
         self,
         column_id: int,
+        *,
         archived_state: Missing[Literal["all", "archived", "not_archived"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[ProjectCard], list[ProjectCardType]]:
         """See also: https://docs.github.com/rest/projects/cards#list-project-cards"""
@@ -901,10 +901,10 @@ class ProjectsClient:
     async def async_list_cards(
         self,
         column_id: int,
+        *,
         archived_state: Missing[Literal["all", "archived", "not_archived"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[ProjectCard], list[ProjectCardType]]:
         """See also: https://docs.github.com/rest/projects/cards#list-project-cards"""
@@ -1506,10 +1506,10 @@ class ProjectsClient:
     def list_collaborators(
         self,
         project_id: int,
+        *,
         affiliation: Missing[Literal["outside", "direct", "all"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """See also: https://docs.github.com/rest/projects/collaborators#list-project-collaborators"""
@@ -1543,10 +1543,10 @@ class ProjectsClient:
     async def async_list_collaborators(
         self,
         project_id: int,
+        *,
         affiliation: Missing[Literal["outside", "direct", "all"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """See also: https://docs.github.com/rest/projects/collaborators#list-project-collaborators"""
@@ -1834,9 +1834,9 @@ class ProjectsClient:
     def list_columns(
         self,
         project_id: int,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[ProjectColumn], list[ProjectColumnType]]:
         """See also: https://docs.github.com/rest/projects/columns#list-project-columns"""
@@ -1867,9 +1867,9 @@ class ProjectsClient:
     async def async_list_columns(
         self,
         project_id: int,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[ProjectColumn], list[ProjectColumnType]]:
         """See also: https://docs.github.com/rest/projects/columns#list-project-columns"""
@@ -2025,10 +2025,10 @@ class ProjectsClient:
         self,
         owner: str,
         repo: str,
+        *,
         state: Missing[Literal["open", "closed", "all"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Project], list[ProjectType]]:
         """See also: https://docs.github.com/rest/projects/projects#list-repository-projects"""
@@ -2064,10 +2064,10 @@ class ProjectsClient:
         self,
         owner: str,
         repo: str,
+        *,
         state: Missing[Literal["open", "closed", "all"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Project], list[ProjectType]]:
         """See also: https://docs.github.com/rest/projects/projects#list-repository-projects"""
@@ -2358,10 +2358,10 @@ class ProjectsClient:
     def list_for_user(
         self,
         username: str,
+        *,
         state: Missing[Literal["open", "closed", "all"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Project], list[ProjectType]]:
         """See also: https://docs.github.com/rest/projects/projects#list-user-projects"""
@@ -2392,10 +2392,10 @@ class ProjectsClient:
     async def async_list_for_user(
         self,
         username: str,
+        *,
         state: Missing[Literal["open", "closed", "all"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Project], list[ProjectType]]:
         """See also: https://docs.github.com/rest/projects/projects#list-user-projects"""

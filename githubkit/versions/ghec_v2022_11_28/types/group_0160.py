@@ -9,20 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict, NotRequired
-
-from .group_0161 import RepositoryRuleCommitAuthorEmailPatternPropParametersType
+from typing_extensions import TypedDict
 
 
-class RepositoryRuleCommitAuthorEmailPatternType(TypedDict):
-    """commit_author_email_pattern
+class RepositoryRuleParamsRequiredReviewerConfigurationType(TypedDict):
+    """RequiredReviewerConfiguration
 
-    Parameters to be used for the commit_author_email_pattern rule
+    A reviewing team, and file patterns describing which files they must approve
+    changes to.
     """
 
-    type: Literal["commit_author_email_pattern"]
-    parameters: NotRequired[RepositoryRuleCommitAuthorEmailPatternPropParametersType]
+    file_patterns: list[str]
+    minimum_approvals: int
+    reviewer_id: str
 
 
-__all__ = ("RepositoryRuleCommitAuthorEmailPatternType",)
+__all__ = ("RepositoryRuleParamsRequiredReviewerConfigurationType",)

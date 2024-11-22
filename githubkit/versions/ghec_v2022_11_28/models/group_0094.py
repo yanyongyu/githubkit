@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from datetime import datetime
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -17,23 +18,32 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0093 import CodeSecurityConfiguration
+from .group_0002 import SimpleUser
 
 
-class CodeSecurityDefaultConfigurationsItems(GitHubModel):
-    """CodeSecurityDefaultConfigurationsItems"""
+class OrganizationCustomRepositoryRole(GitHubModel):
+    """Organization Custom Repository Role
 
-    default_for_new_repos: Missing[Literal["public", "private_and_internal", "all"]] = (
-        Field(
-            default=UNSET,
-            description="The visibility of newly created repositories for which the code security configuration will be applied to by default",
-        )
+    Custom repository roles created by organization owners
+    """
+
+    id: int = Field(description="The unique identifier of the custom role.")
+    name: str = Field(description="The name of the custom role.")
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="A short description about who this role is for or what permissions it grants.",
     )
-    configuration: Missing[CodeSecurityConfiguration] = Field(
-        default=UNSET, description="A code security configuration"
+    base_role: Literal["read", "triage", "write", "maintain"] = Field(
+        description="The system role from which this role inherits permissions."
     )
+    permissions: list[str] = Field(
+        description="A list of additional permissions included in this role."
+    )
+    organization: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
 
 
-model_rebuild(CodeSecurityDefaultConfigurationsItems)
+model_rebuild(OrganizationCustomRepositoryRole)
 
-__all__ = ("CodeSecurityDefaultConfigurationsItems",)
+__all__ = ("OrganizationCustomRepositoryRole",)

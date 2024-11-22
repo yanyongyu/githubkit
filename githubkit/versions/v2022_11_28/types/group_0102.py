@@ -29,6 +29,7 @@ class OrganizationProgrammaticAccessGrantType(TypedDict):
     permissions: OrganizationProgrammaticAccessGrantPropPermissionsType
     access_granted_at: str
     token_id: int
+    token_name: str
     token_expired: bool
     token_expires_at: Union[str, None]
     token_last_used_at: Union[str, None]

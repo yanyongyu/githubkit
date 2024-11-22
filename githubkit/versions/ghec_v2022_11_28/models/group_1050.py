@@ -9,61 +9,73 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
-
 from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0282 import DeploymentBranchPolicySettings
 
+class ReposOwnerRepoContentsPathPutBody(GitHubModel):
+    """ReposOwnerRepoContentsPathPutBody"""
 
-class ReposOwnerRepoEnvironmentsEnvironmentNamePutBody(GitHubModel):
-    """ReposOwnerRepoEnvironmentsEnvironmentNamePutBody"""
-
-    wait_timer: Missing[int] = Field(
+    message: str = Field(description="The commit message.")
+    content: str = Field(description="The new file content, using Base64 encoding.")
+    sha: Missing[str] = Field(
         default=UNSET,
-        description="The amount of time to delay a job after the job is initially triggered. The time (in minutes) must be an integer between 0 and 43,200 (30 days).",
+        description="**Required if you are updating a file**. The blob SHA of the file being replaced.",
     )
-    prevent_self_review: Missing[bool] = Field(
+    branch: Missing[str] = Field(
         default=UNSET,
-        description="Whether or not a user who created the job is prevented from approving their own job.",
+        description="The branch name. Default: the repository’s default branch.",
     )
-    reviewers: Missing[
-        Union[
-            list[ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems],
-            None,
-        ]
-    ] = Field(
+    committer: Missing[ReposOwnerRepoContentsPathPutBodyPropCommitter] = Field(
         default=UNSET,
-        description="The people or teams that may review jobs that reference the environment. You can list up to six users or teams as reviewers. The reviewers must have at least read access to the repository. Only one of the required reviewers needs to approve the job for it to proceed.",
+        description="The person that committed the file. Default: the authenticated user.",
     )
-    deployment_branch_policy: Missing[Union[DeploymentBranchPolicySettings, None]] = (
-        Field(
-            default=UNSET,
-            description="The type of deployment branch policy for this environment. To allow all branches to deploy, set to `null`.",
-        )
-    )
-
-
-class ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems(GitHubModel):
-    """ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems"""
-
-    type: Missing[Literal["User", "Team"]] = Field(
-        default=UNSET, description="The type of reviewer."
-    )
-    id: Missing[int] = Field(
+    author: Missing[ReposOwnerRepoContentsPathPutBodyPropAuthor] = Field(
         default=UNSET,
-        description="The id of the user or team who can review the deployment",
+        description="The author of the file. Default: The `committer` or the authenticated user if you omit `committer`.",
     )
 
 
-model_rebuild(ReposOwnerRepoEnvironmentsEnvironmentNamePutBody)
-model_rebuild(ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems)
+class ReposOwnerRepoContentsPathPutBodyPropCommitter(GitHubModel):
+    """ReposOwnerRepoContentsPathPutBodyPropCommitter
+
+    The person that committed the file. Default: the authenticated user.
+    """
+
+    name: str = Field(
+        description="The name of the author or committer of the commit. You'll receive a `422` status code if `name` is omitted."
+    )
+    email: str = Field(
+        description="The email of the author or committer of the commit. You'll receive a `422` status code if `email` is omitted."
+    )
+    date: Missing[str] = Field(default=UNSET)
+
+
+class ReposOwnerRepoContentsPathPutBodyPropAuthor(GitHubModel):
+    """ReposOwnerRepoContentsPathPutBodyPropAuthor
+
+    The author of the file. Default: The `committer` or the authenticated user if
+    you omit `committer`.
+    """
+
+    name: str = Field(
+        description="The name of the author or committer of the commit. You'll receive a `422` status code if `name` is omitted."
+    )
+    email: str = Field(
+        description="The email of the author or committer of the commit. You'll receive a `422` status code if `email` is omitted."
+    )
+    date: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(ReposOwnerRepoContentsPathPutBody)
+model_rebuild(ReposOwnerRepoContentsPathPutBodyPropCommitter)
+model_rebuild(ReposOwnerRepoContentsPathPutBodyPropAuthor)
 
 __all__ = (
-    "ReposOwnerRepoEnvironmentsEnvironmentNamePutBody",
-    "ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems",
+    "ReposOwnerRepoContentsPathPutBody",
+    "ReposOwnerRepoContentsPathPutBodyPropCommitter",
+    "ReposOwnerRepoContentsPathPutBodyPropAuthor",
 )

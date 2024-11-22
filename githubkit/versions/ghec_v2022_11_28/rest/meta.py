@@ -124,8 +124,8 @@ class MetaClient:
 
     def get_octocat(
         self,
-        s: Missing[str] = UNSET,
         *,
+        s: Missing[str] = UNSET,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[str, str]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/meta/meta#get-octocat"""
@@ -148,8 +148,8 @@ class MetaClient:
 
     async def async_get_octocat(
         self,
-        s: Missing[str] = UNSET,
         *,
+        s: Missing[str] = UNSET,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[str, str]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/meta/meta#get-octocat"""

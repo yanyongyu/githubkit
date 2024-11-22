@@ -72,9 +72,9 @@ class CopilotClient:
     def list_copilot_seats_for_enterprise(
         self,
         enterprise: str,
+        *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         EnterprisesEnterpriseCopilotBillingSeatsGetResponse200,
@@ -113,9 +113,9 @@ class CopilotClient:
     async def async_list_copilot_seats_for_enterprise(
         self,
         enterprise: str,
+        *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         EnterprisesEnterpriseCopilotBillingSeatsGetResponse200,
@@ -154,11 +154,11 @@ class CopilotClient:
     def copilot_metrics_for_enterprise(
         self,
         enterprise: str,
+        *,
         since: Missing[str] = UNSET,
         until: Missing[str] = UNSET,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[CopilotUsageMetricsDay], list[CopilotUsageMetricsDayType]]:
         """See also: https://docs.github.com/rest/copilot/copilot-metrics#get-copilot-metrics-for-an-enterprise"""
@@ -193,11 +193,11 @@ class CopilotClient:
     async def async_copilot_metrics_for_enterprise(
         self,
         enterprise: str,
+        *,
         since: Missing[str] = UNSET,
         until: Missing[str] = UNSET,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[CopilotUsageMetricsDay], list[CopilotUsageMetricsDayType]]:
         """See also: https://docs.github.com/rest/copilot/copilot-metrics#get-copilot-metrics-for-an-enterprise"""
@@ -232,11 +232,11 @@ class CopilotClient:
     def usage_metrics_for_enterprise(
         self,
         enterprise: str,
+        *,
         since: Missing[str] = UNSET,
         until: Missing[str] = UNSET,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[CopilotUsageMetrics], list[CopilotUsageMetricsType]]:
         """See also: https://docs.github.com/rest/copilot/copilot-usage#get-a-summary-of-copilot-usage-for-enterprise-members"""
@@ -271,11 +271,11 @@ class CopilotClient:
     async def async_usage_metrics_for_enterprise(
         self,
         enterprise: str,
+        *,
         since: Missing[str] = UNSET,
         until: Missing[str] = UNSET,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[CopilotUsageMetrics], list[CopilotUsageMetricsType]]:
         """See also: https://docs.github.com/rest/copilot/copilot-usage#get-a-summary-of-copilot-usage-for-enterprise-members"""
@@ -311,11 +311,11 @@ class CopilotClient:
         self,
         enterprise: str,
         team_slug: str,
+        *,
         since: Missing[str] = UNSET,
         until: Missing[str] = UNSET,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[CopilotUsageMetricsDay], list[CopilotUsageMetricsDayType]]:
         """See also: https://docs.github.com/rest/copilot/copilot-metrics#get-copilot-metrics-for-an-enterprise-team"""
@@ -351,11 +351,11 @@ class CopilotClient:
         self,
         enterprise: str,
         team_slug: str,
+        *,
         since: Missing[str] = UNSET,
         until: Missing[str] = UNSET,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[CopilotUsageMetricsDay], list[CopilotUsageMetricsDayType]]:
         """See also: https://docs.github.com/rest/copilot/copilot-metrics#get-copilot-metrics-for-an-enterprise-team"""
@@ -391,11 +391,11 @@ class CopilotClient:
         self,
         enterprise: str,
         team_slug: str,
+        *,
         since: Missing[str] = UNSET,
         until: Missing[str] = UNSET,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[CopilotUsageMetrics], list[CopilotUsageMetricsType]]:
         """See also: https://docs.github.com/rest/copilot/copilot-usage#get-a-summary-of-copilot-usage-for-an-enterprise-team"""
@@ -431,11 +431,11 @@ class CopilotClient:
         self,
         enterprise: str,
         team_slug: str,
+        *,
         since: Missing[str] = UNSET,
         until: Missing[str] = UNSET,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[CopilotUsageMetrics], list[CopilotUsageMetricsType]]:
         """See also: https://docs.github.com/rest/copilot/copilot-usage#get-a-summary-of-copilot-usage-for-an-enterprise-team"""
@@ -524,9 +524,9 @@ class CopilotClient:
     def list_copilot_seats(
         self,
         org: str,
+        *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         OrgsOrgCopilotBillingSeatsGetResponse200,
@@ -562,9 +562,9 @@ class CopilotClient:
     async def async_list_copilot_seats(
         self,
         org: str,
+        *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         OrgsOrgCopilotBillingSeatsGetResponse200,
@@ -1184,11 +1184,11 @@ class CopilotClient:
     def copilot_metrics_for_organization(
         self,
         org: str,
+        *,
         since: Missing[str] = UNSET,
         until: Missing[str] = UNSET,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[CopilotUsageMetricsDay], list[CopilotUsageMetricsDayType]]:
         """See also: https://docs.github.com/rest/copilot/copilot-metrics#get-copilot-metrics-for-an-organization"""
@@ -1223,11 +1223,11 @@ class CopilotClient:
     async def async_copilot_metrics_for_organization(
         self,
         org: str,
+        *,
         since: Missing[str] = UNSET,
         until: Missing[str] = UNSET,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[CopilotUsageMetricsDay], list[CopilotUsageMetricsDayType]]:
         """See also: https://docs.github.com/rest/copilot/copilot-metrics#get-copilot-metrics-for-an-organization"""
@@ -1262,11 +1262,11 @@ class CopilotClient:
     def usage_metrics_for_org(
         self,
         org: str,
+        *,
         since: Missing[str] = UNSET,
         until: Missing[str] = UNSET,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[CopilotUsageMetrics], list[CopilotUsageMetricsType]]:
         """See also: https://docs.github.com/rest/copilot/copilot-usage#get-a-summary-of-copilot-usage-for-organization-members"""
@@ -1301,11 +1301,11 @@ class CopilotClient:
     async def async_usage_metrics_for_org(
         self,
         org: str,
+        *,
         since: Missing[str] = UNSET,
         until: Missing[str] = UNSET,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[CopilotUsageMetrics], list[CopilotUsageMetricsType]]:
         """See also: https://docs.github.com/rest/copilot/copilot-usage#get-a-summary-of-copilot-usage-for-organization-members"""
@@ -1397,11 +1397,11 @@ class CopilotClient:
         self,
         org: str,
         team_slug: str,
+        *,
         since: Missing[str] = UNSET,
         until: Missing[str] = UNSET,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[CopilotUsageMetricsDay], list[CopilotUsageMetricsDayType]]:
         """See also: https://docs.github.com/rest/copilot/copilot-metrics#get-copilot-metrics-for-a-team"""
@@ -1437,11 +1437,11 @@ class CopilotClient:
         self,
         org: str,
         team_slug: str,
+        *,
         since: Missing[str] = UNSET,
         until: Missing[str] = UNSET,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[CopilotUsageMetricsDay], list[CopilotUsageMetricsDayType]]:
         """See also: https://docs.github.com/rest/copilot/copilot-metrics#get-copilot-metrics-for-a-team"""
@@ -1477,11 +1477,11 @@ class CopilotClient:
         self,
         org: str,
         team_slug: str,
+        *,
         since: Missing[str] = UNSET,
         until: Missing[str] = UNSET,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[CopilotUsageMetrics], list[CopilotUsageMetricsType]]:
         """See also: https://docs.github.com/rest/copilot/copilot-usage#get-a-summary-of-copilot-usage-for-a-team"""
@@ -1517,11 +1517,11 @@ class CopilotClient:
         self,
         org: str,
         team_slug: str,
+        *,
         since: Missing[str] = UNSET,
         until: Missing[str] = UNSET,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[CopilotUsageMetrics], list[CopilotUsageMetricsType]]:
         """See also: https://docs.github.com/rest/copilot/copilot-usage#get-a-summary-of-copilot-usage-for-a-team"""

@@ -11,15 +11,18 @@ from __future__ import annotations
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ProjectsColumnsColumnIdPatchBody(GitHubModel):
-    """ProjectsColumnsColumnIdPatchBody"""
+class OrgsOrgTeamsTeamSlugProjectsProjectIdPutResponse403(GitHubModel):
+    """OrgsOrgTeamsTeamSlugProjectsProjectIdPutResponse403"""
 
-    name: str = Field(description="Name of the project column")
+    message: Missing[str] = Field(default=UNSET)
+    documentation_url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(ProjectsColumnsColumnIdPatchBody)
+model_rebuild(OrgsOrgTeamsTeamSlugProjectsProjectIdPutResponse403)
 
-__all__ = ("ProjectsColumnsColumnIdPatchBody",)
+__all__ = ("OrgsOrgTeamsTeamSlugProjectsProjectIdPutResponse403",)

@@ -9,13 +9,15 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Union, Literal
 
 from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
+
+from .group_0028 import TeamSimple
 
 
 class UserRoleAssignment(GitHubModel):
@@ -24,6 +26,13 @@ class UserRoleAssignment(GitHubModel):
     The Relationship a User has with a role.
     """
 
+    assignment: Missing[Literal["direct", "indirect", "mixed"]] = Field(
+        default=UNSET,
+        description="Determines if the user has a direct, indirect, or mixed relationship to a role",
+    )
+    inherited_from: Missing[list[TeamSimple]] = Field(
+        default=UNSET, description="Team the user has gotten the role through"
+    )
     name: Missing[Union[str, None]] = Field(default=UNSET)
     email: Missing[Union[str, None]] = Field(default=UNSET)
     login: str = Field()

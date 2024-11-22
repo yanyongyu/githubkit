@@ -18,17 +18,17 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 from .group_0002 import SimpleUser
-from .group_0383 import EnterpriseWebhooks
-from .group_0384 import SimpleInstallation
-from .group_0386 import RepositoryWebhooks
-from .group_0421 import PullRequestWebhook
-from .group_0385 import OrganizationSimpleWebhooks
+from .group_0384 import EnterpriseWebhooks
+from .group_0385 import SimpleInstallation
+from .group_0387 import RepositoryWebhooks
+from .group_0422 import PullRequestWebhook
+from .group_0386 import OrganizationSimpleWebhooks
 
 
-class WebhookPullRequestConvertedToDraft(GitHubModel):
-    """pull_request converted_to_draft event"""
+class WebhookPullRequestClosed(GitHubModel):
+    """pull_request closed event"""
 
-    action: Literal["converted_to_draft"] = Field()
+    action: Literal["closed"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -53,6 +53,6 @@ class WebhookPullRequestConvertedToDraft(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookPullRequestConvertedToDraft)
+model_rebuild(WebhookPullRequestClosed)
 
-__all__ = ("WebhookPullRequestConvertedToDraft",)
+__all__ = ("WebhookPullRequestClosed",)

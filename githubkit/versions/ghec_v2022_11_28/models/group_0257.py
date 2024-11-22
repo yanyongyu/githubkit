@@ -9,33 +9,47 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
+from typing import Union
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0002 import SimpleUser
 
+class CodeownersErrors(GitHubModel):
+    """CODEOWNERS errors
 
-class AutoMerge(GitHubModel):
-    """Auto merge
-
-    The status of auto merging a pull request.
+    A list of errors found in a repo's CODEOWNERS file
     """
 
-    enabled_by: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    merge_method: Literal["merge", "squash", "rebase"] = Field(
-        description="The merge method to use."
-    )
-    commit_title: Union[str, None] = Field(
-        description="Title for the merge commit message."
-    )
-    commit_message: Union[str, None] = Field(
-        description="Commit message for the merge commit."
-    )
+    errors: list[CodeownersErrorsPropErrorsItems] = Field()
 
 
-model_rebuild(AutoMerge)
+class CodeownersErrorsPropErrorsItems(GitHubModel):
+    """CodeownersErrorsPropErrorsItems"""
 
-__all__ = ("AutoMerge",)
+    line: int = Field(description="The line number where this errors occurs.")
+    column: int = Field(description="The column number where this errors occurs.")
+    source: Missing[str] = Field(
+        default=UNSET, description="The contents of the line where the error occurs."
+    )
+    kind: str = Field(description="The type of error.")
+    suggestion: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="Suggested action to fix the error. This will usually be `null`, but is provided for some common errors.",
+    )
+    message: str = Field(
+        description="A human-readable description of the error, combining information from multiple fields, laid out for display in a monospaced typeface (for example, a command-line setting)."
+    )
+    path: str = Field(description="The path of the file where the error occured.")
+
+
+model_rebuild(CodeownersErrors)
+model_rebuild(CodeownersErrorsPropErrorsItems)
+
+__all__ = (
+    "CodeownersErrors",
+    "CodeownersErrorsPropErrorsItems",
+)

@@ -9,21 +9,15 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict, NotRequired
-
-from .group_0285 import EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType
+from typing_extensions import TypedDict
 
 
-class EnvironmentPropProtectionRulesItemsAnyof1Type(TypedDict):
-    """EnvironmentPropProtectionRulesItemsAnyof1"""
+class MetadataType(TypedDict):
+    """metadata
 
-    id: int
-    node_id: str
-    prevent_self_review: NotRequired[bool]
-    type: str
-    reviewers: NotRequired[
-        list[EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType]
-    ]
+    User-defined metadata to store domain-specific information limited to 8 keys
+    with scalar values.
+    """
 
 
-__all__ = ("EnvironmentPropProtectionRulesItemsAnyof1Type",)
+__all__ = ("MetadataType",)

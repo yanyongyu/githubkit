@@ -9,26 +9,52 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+from datetime import datetime
+
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0086 import MarketplaceListingPlan
 
-class SimpleInstallation(GitHubModel):
-    """Simple Installation
 
-    The GitHub App installation. Webhook payloads contain the `installation`
-    property when the event is configured
-    for and sent to a GitHub App. For more information,
-    see "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-
-    cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-
-    with-github-apps)."
+class UserMarketplacePurchase(GitHubModel):
+    """User Marketplace Purchase
+
+    User Marketplace Purchase
     """
 
-    id: int = Field(description="The ID of the installation.")
-    node_id: str = Field(description="The global node ID of the installation.")
+    billing_cycle: str = Field()
+    next_billing_date: Union[datetime, None] = Field()
+    unit_count: Union[int, None] = Field()
+    on_free_trial: bool = Field()
+    free_trial_ends_on: Union[datetime, None] = Field()
+    updated_at: Union[datetime, None] = Field()
+    account: MarketplaceAccount = Field(title="Marketplace Account")
+    plan: MarketplaceListingPlan = Field(
+        title="Marketplace Listing Plan", description="Marketplace Listing Plan"
+    )
 
 
-model_rebuild(SimpleInstallation)
+class MarketplaceAccount(GitHubModel):
+    """Marketplace Account"""
 
-__all__ = ("SimpleInstallation",)
+    url: str = Field()
+    id: int = Field()
+    type: str = Field()
+    node_id: Missing[str] = Field(default=UNSET)
+    login: str = Field()
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    organization_billing_email: Missing[Union[str, None]] = Field(default=UNSET)
+
+
+model_rebuild(UserMarketplacePurchase)
+model_rebuild(MarketplaceAccount)
+
+__all__ = (
+    "UserMarketplacePurchase",
+    "MarketplaceAccount",
+)

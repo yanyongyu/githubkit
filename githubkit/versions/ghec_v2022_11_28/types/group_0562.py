@@ -9,39 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union, Literal
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import TypedDict, NotRequired
 
-from .group_0561 import (
-    WebhookIssueCommentCreatedPropIssueAllof0PropMilestonePropCreatorType,
-)
-
-
-class WebhookIssueCommentCreatedPropIssueAllof0PropMilestoneType(TypedDict):
-    """Milestone
-
-    A collection of related issues and pull requests.
-    """
-
-    closed_at: Union[datetime, None]
-    closed_issues: int
-    created_at: datetime
-    creator: Union[
-        WebhookIssueCommentCreatedPropIssueAllof0PropMilestonePropCreatorType, None
-    ]
-    description: Union[str, None]
-    due_on: Union[datetime, None]
-    html_url: str
-    id: int
-    labels_url: str
-    node_id: str
-    number: int
-    open_issues: int
-    state: Literal["open", "closed"]
-    title: str
-    updated_at: datetime
-    url: str
+from .group_0002 import SimpleUserType
+from .group_0017 import InstallationType
+from .group_0427 import EnterpriseWebhooksType
+from .group_0430 import RepositoryWebhooksType
+from .group_0445 import WebhooksRepositoriesItemsType
+from .group_0429 import OrganizationSimpleWebhooksType
 
 
-__all__ = ("WebhookIssueCommentCreatedPropIssueAllof0PropMilestoneType",)
+class WebhookInstallationUnsuspendType(TypedDict):
+    """installation unsuspend event"""
+
+    action: Literal["unsuspend"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: InstallationType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repositories: NotRequired[list[WebhooksRepositoriesItemsType]]
+    repository: NotRequired[RepositoryWebhooksType]
+    requester: NotRequired[None]
+    sender: SimpleUserType
+
+
+__all__ = ("WebhookInstallationUnsuspendType",)

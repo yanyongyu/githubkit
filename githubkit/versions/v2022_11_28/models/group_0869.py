@@ -18,22 +18,22 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 from .group_0122 import RepositoryRuleUpdate
-from .group_0148 import RepositoryRuleOneof18
-from .group_0144 import RepositoryRuleWorkflows
+from .group_0149 import RepositoryRuleOneof18
+from .group_0145 import RepositoryRuleWorkflows
 from .group_0125 import RepositoryRuleMergeQueue
-from .group_0129 import RepositoryRulePullRequest
+from .group_0130 import RepositoryRulePullRequest
 from .group_0118 import OrgRulesetConditionsOneof0
 from .group_0119 import OrgRulesetConditionsOneof1
 from .group_0120 import OrgRulesetConditionsOneof2
-from .group_0146 import RepositoryRuleCodeScanning
+from .group_0147 import RepositoryRuleCodeScanning
 from .group_0109 import RepositoryRulesetBypassActor
-from .group_0141 import RepositoryRuleTagNamePattern
-from .group_0139 import RepositoryRuleBranchNamePattern
+from .group_0142 import RepositoryRuleTagNamePattern
+from .group_0140 import RepositoryRuleBranchNamePattern
 from .group_0127 import RepositoryRuleRequiredDeployments
-from .group_0131 import RepositoryRuleRequiredStatusChecks
-from .group_0133 import RepositoryRuleCommitMessagePattern
-from .group_0137 import RepositoryRuleCommitterEmailPattern
-from .group_0135 import RepositoryRuleCommitAuthorEmailPattern
+from .group_0132 import RepositoryRuleRequiredStatusChecks
+from .group_0134 import RepositoryRuleCommitMessagePattern
+from .group_0138 import RepositoryRuleCommitterEmailPattern
+from .group_0136 import RepositoryRuleCommitAuthorEmailPattern
 from .group_0124 import RepositoryRuleOneof16, RepositoryRuleRequiredLinearHistory
 from .group_0121 import (
     RepositoryRuleOneof15,
@@ -45,16 +45,15 @@ from .group_0121 import (
 )
 
 
-class OrgsOrgRulesetsRulesetIdPutBody(GitHubModel):
-    """OrgsOrgRulesetsRulesetIdPutBody"""
+class OrgsOrgRulesetsPostBody(GitHubModel):
+    """OrgsOrgRulesetsPostBody"""
 
-    name: Missing[str] = Field(default=UNSET, description="The name of the ruleset.")
+    name: str = Field(description="The name of the ruleset.")
     target: Missing[Literal["branch", "tag", "push"]] = Field(
         default=UNSET, description="The target of the ruleset"
     )
-    enforcement: Missing[Literal["disabled", "active", "evaluate"]] = Field(
-        default=UNSET,
-        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise).",
+    enforcement: Literal["disabled", "active", "evaluate"] = Field(
+        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise)."
     )
     bypass_actors: Missing[list[RepositoryRulesetBypassActor]] = Field(
         default=UNSET,
@@ -100,6 +99,6 @@ class OrgsOrgRulesetsRulesetIdPutBody(GitHubModel):
     ] = Field(default=UNSET, description="An array of rules within the ruleset.")
 
 
-model_rebuild(OrgsOrgRulesetsRulesetIdPutBody)
+model_rebuild(OrgsOrgRulesetsPostBody)
 
-__all__ = ("OrgsOrgRulesetsRulesetIdPutBody",)
+__all__ = ("OrgsOrgRulesetsPostBody",)

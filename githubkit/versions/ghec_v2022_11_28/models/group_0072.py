@@ -16,79 +16,48 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class Feed(GitHubModel):
-    """Feed
+class BillingUsageReport(GitHubModel):
+    """BillingUsageReport"""
 
-    Feed
-    """
-
-    timeline_url: str = Field()
-    user_url: str = Field()
-    current_user_public_url: Missing[str] = Field(default=UNSET)
-    current_user_url: Missing[str] = Field(default=UNSET)
-    current_user_actor_url: Missing[str] = Field(default=UNSET)
-    current_user_organization_url: Missing[str] = Field(default=UNSET)
-    current_user_organization_urls: Missing[list[str]] = Field(default=UNSET)
-    security_advisories_url: Missing[str] = Field(default=UNSET)
-    repository_discussions_url: Missing[str] = Field(
-        default=UNSET, description="A feed of discussions for a given repository."
-    )
-    repository_discussions_category_url: Missing[str] = Field(
-        default=UNSET,
-        description="A feed of discussions for a given repository and category.",
-    )
-    links: FeedPropLinks = Field(alias="_links")
-
-
-class FeedPropLinks(GitHubModel):
-    """FeedPropLinks"""
-
-    timeline: LinkWithType = Field(
-        title="Link With Type", description="Hypermedia Link with Type"
-    )
-    user: LinkWithType = Field(
-        title="Link With Type", description="Hypermedia Link with Type"
-    )
-    security_advisories: Missing[LinkWithType] = Field(
-        default=UNSET, title="Link With Type", description="Hypermedia Link with Type"
-    )
-    current_user: Missing[LinkWithType] = Field(
-        default=UNSET, title="Link With Type", description="Hypermedia Link with Type"
-    )
-    current_user_public: Missing[LinkWithType] = Field(
-        default=UNSET, title="Link With Type", description="Hypermedia Link with Type"
-    )
-    current_user_actor: Missing[LinkWithType] = Field(
-        default=UNSET, title="Link With Type", description="Hypermedia Link with Type"
-    )
-    current_user_organization: Missing[LinkWithType] = Field(
-        default=UNSET, title="Link With Type", description="Hypermedia Link with Type"
-    )
-    current_user_organizations: Missing[list[LinkWithType]] = Field(default=UNSET)
-    repository_discussions: Missing[LinkWithType] = Field(
-        default=UNSET, title="Link With Type", description="Hypermedia Link with Type"
-    )
-    repository_discussions_category: Missing[LinkWithType] = Field(
-        default=UNSET, title="Link With Type", description="Hypermedia Link with Type"
+    usage_items: Missing[list[BillingUsageReportPropUsageItemsItems]] = Field(
+        default=UNSET, alias="usageItems"
     )
 
 
-class LinkWithType(GitHubModel):
-    """Link With Type
+class BillingUsageReportPropUsageItemsItems(GitHubModel):
+    """BillingUsageReportPropUsageItemsItems"""
 
-    Hypermedia Link with Type
-    """
+    date: str = Field(description="Date of the usage line item.")
+    product: str = Field(description="Product name.")
+    sku: str = Field(description="SKU name.")
+    quantity: int = Field(description="Quantity of the usage line item.")
+    unit_type: str = Field(
+        alias="unitType", description="Unit type of the usage line item."
+    )
+    price_per_unit: float = Field(
+        alias="pricePerUnit", description="Price per unit of the usage line item."
+    )
+    gross_amount: float = Field(
+        alias="grossAmount", description="Gross amount of the usage line item."
+    )
+    discount_amount: float = Field(
+        alias="discountAmount", description="Discount amount of the usage line item."
+    )
+    net_amount: float = Field(
+        alias="netAmount", description="Net amount of the usage line item."
+    )
+    organization_name: str = Field(
+        alias="organizationName", description="Name of the organization."
+    )
+    repository_name: Missing[str] = Field(
+        default=UNSET, alias="repositoryName", description="Name of the repository."
+    )
 
-    href: str = Field()
-    type: str = Field()
 
-
-model_rebuild(Feed)
-model_rebuild(FeedPropLinks)
-model_rebuild(LinkWithType)
+model_rebuild(BillingUsageReport)
+model_rebuild(BillingUsageReportPropUsageItemsItems)
 
 __all__ = (
-    "Feed",
-    "FeedPropLinks",
-    "LinkWithType",
+    "BillingUsageReport",
+    "BillingUsageReportPropUsageItemsItems",
 )

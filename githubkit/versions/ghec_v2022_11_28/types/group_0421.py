@@ -9,22 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Union
+from datetime import datetime
+from typing_extensions import TypedDict, NotRequired
+
+from .group_0086 import MarketplaceListingPlanType
 
 
-class SimpleInstallationType(TypedDict):
-    """Simple Installation
+class UserMarketplacePurchaseType(TypedDict):
+    """User Marketplace Purchase
 
-    The GitHub App installation. Webhook payloads contain the `installation`
-    property when the event is configured
-    for and sent to a GitHub App. For more information,
-    see "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-
-    cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-
-    with-github-apps)."
+    User Marketplace Purchase
     """
 
+    billing_cycle: str
+    next_billing_date: Union[datetime, None]
+    unit_count: Union[int, None]
+    on_free_trial: bool
+    free_trial_ends_on: Union[datetime, None]
+    updated_at: Union[datetime, None]
+    account: MarketplaceAccountType
+    plan: MarketplaceListingPlanType
+
+
+class MarketplaceAccountType(TypedDict):
+    """Marketplace Account"""
+
+    url: str
     id: int
-    node_id: str
+    type: str
+    node_id: NotRequired[str]
+    login: str
+    email: NotRequired[Union[str, None]]
+    organization_billing_email: NotRequired[Union[str, None]]
 
 
-__all__ = ("SimpleInstallationType",)
+__all__ = (
+    "UserMarketplacePurchaseType",
+    "MarketplaceAccountType",
+)

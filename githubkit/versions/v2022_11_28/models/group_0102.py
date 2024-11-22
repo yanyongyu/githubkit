@@ -46,6 +46,9 @@ class OrganizationProgrammaticAccessGrant(GitHubModel):
     token_id: int = Field(
         description="Unique identifier of the user's token. This field can also be found in audit log events and the organization's settings for their PAT grants."
     )
+    token_name: str = Field(
+        description="The name given to the user's token. This field can also be found in an organization's settings page for Active Tokens."
+    )
     token_expired: bool = Field(
         description="Whether the associated fine-grained personal access token has expired."
     )

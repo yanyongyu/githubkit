@@ -18,28 +18,23 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrganizationCustomOrganizationRoleUpdateSchema(GitHubModel):
-    """OrganizationCustomOrganizationRoleUpdateSchema"""
+class InteractionLimit(GitHubModel):
+    """Interaction Restrictions
 
-    name: Missing[str] = Field(
-        default=UNSET, description="The name of the custom role."
+    Limit interactions to a specific type of user for a specified duration
+    """
+
+    limit: Literal["existing_users", "contributors_only", "collaborators_only"] = Field(
+        description="The type of GitHub user that can comment, open issues, or create pull requests while the interaction limit is in effect."
     )
-    description: Missing[str] = Field(
-        default=UNSET,
-        description="A short description about the intended use of this role or the permissions it grants.",
-    )
-    permissions: Missing[list[str]] = Field(
-        default=UNSET,
-        description="A list of additional permissions included in this role.",
-    )
-    base_role: Missing[
-        Literal["none", "read", "triage", "write", "maintain", "admin"]
+    expiry: Missing[
+        Literal["one_day", "three_days", "one_week", "one_month", "six_months"]
     ] = Field(
         default=UNSET,
-        description="The system role from which this role can inherit permissions.",
+        description="The duration of the interaction restriction. Default: `one_day`.",
     )
 
 
-model_rebuild(OrganizationCustomOrganizationRoleUpdateSchema)
+model_rebuild(InteractionLimit)
 
-__all__ = ("OrganizationCustomOrganizationRoleUpdateSchema",)
+__all__ = ("InteractionLimit",)

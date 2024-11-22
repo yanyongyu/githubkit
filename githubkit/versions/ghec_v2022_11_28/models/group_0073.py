@@ -10,55 +10,41 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Any, Union
+from typing import Union, Literal
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
-from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 
 from .group_0002 import SimpleUser
 
 
-class BaseGist(GitHubModel):
-    """Base Gist
+class Milestone(GitHubModel):
+    """Milestone
 
-    Base Gist
+    A collection of related issues and pull requests.
     """
 
     url: str = Field()
-    forks_url: str = Field()
-    commits_url: str = Field()
-    id: str = Field()
-    node_id: str = Field()
-    git_pull_url: str = Field()
-    git_push_url: str = Field()
     html_url: str = Field()
-    files: BaseGistPropFiles = Field()
-    public: bool = Field()
+    labels_url: str = Field()
+    id: int = Field()
+    node_id: str = Field()
+    number: int = Field(description="The number of the milestone.")
+    state: Literal["open", "closed"] = Field(
+        default="open", description="The state of the milestone."
+    )
+    title: str = Field(description="The title of the milestone.")
+    description: Union[str, None] = Field()
+    creator: Union[None, SimpleUser] = Field()
+    open_issues: int = Field()
+    closed_issues: int = Field()
     created_at: datetime = Field()
     updated_at: datetime = Field()
-    description: Union[str, None] = Field()
-    comments: int = Field()
-    user: Union[None, SimpleUser] = Field()
-    comments_url: str = Field()
-    owner: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
-    )
-    truncated: Missing[bool] = Field(default=UNSET)
-    forks: Missing[list[Any]] = Field(default=UNSET)
-    history: Missing[list[Any]] = Field(default=UNSET)
+    closed_at: Union[datetime, None] = Field()
+    due_on: Union[datetime, None] = Field()
 
 
-class BaseGistPropFiles(ExtraGitHubModel):
-    """BaseGistPropFiles"""
+model_rebuild(Milestone)
 
-
-model_rebuild(BaseGist)
-model_rebuild(BaseGistPropFiles)
-
-__all__ = (
-    "BaseGist",
-    "BaseGistPropFiles",
-)
+__all__ = ("Milestone",)

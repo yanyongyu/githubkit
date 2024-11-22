@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -18,17 +18,18 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 from .group_0002 import SimpleUser
-from .group_0420 import EnterpriseWebhooks
-from .group_0421 import SimpleInstallation
-from .group_0423 import RepositoryWebhooks
-from .group_0422 import OrganizationSimpleWebhooks
-from .group_0646 import WebhookPackagePublishedPropPackage
+from .group_0440 import WebhooksUser
+from .group_0427 import EnterpriseWebhooks
+from .group_0428 import SimpleInstallation
+from .group_0430 import RepositoryWebhooks
+from .group_0429 import OrganizationSimpleWebhooks
 
 
-class WebhookPackagePublished(GitHubModel):
-    """package published event"""
+class WebhookOrgBlockUnblocked(GitHubModel):
+    """org_block unblocked event"""
 
-    action: Literal["published"] = Field()
+    action: Literal["unblocked"] = Field()
+    blocked_user: Union[WebhooksUser, None] = Field(title="User")
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -39,13 +40,9 @@ class WebhookPackagePublished(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    organization: Missing[OrganizationSimpleWebhooks] = Field(
-        default=UNSET,
+    organization: OrganizationSimpleWebhooks = Field(
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
-    )
-    package: WebhookPackagePublishedPropPackage = Field(
-        description="Information about the package."
     )
     repository: Missing[RepositoryWebhooks] = Field(
         default=UNSET,
@@ -55,6 +52,6 @@ class WebhookPackagePublished(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookPackagePublished)
+model_rebuild(WebhookOrgBlockUnblocked)
 
-__all__ = ("WebhookPackagePublished",)
+__all__ = ("WebhookOrgBlockUnblocked",)

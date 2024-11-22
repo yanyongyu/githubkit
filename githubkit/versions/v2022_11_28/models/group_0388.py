@@ -9,8 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from datetime import datetime
-from typing import Union, Literal
 
 from pydantic import Field
 
@@ -18,58 +18,72 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0008 import Integration
-from .group_0058 import MinimalRepository
-from .group_0178 import PullRequestMinimal
 
+class WebhooksRule(GitHubModel):
+    """branch protection rule
 
-class SimpleCheckSuite(GitHubModel):
-    """SimpleCheckSuite
-
-    A suite of checks performed on the code of a given code change
+    The branch protection rule. Includes a `name` and all the [branch protection
+    settings](https://docs.github.com/github/administering-a-repository/defining-
+    the-mergeability-of-pull-requests/about-protected-branches#about-branch-
+    protection-settings) applied to branches that match the name. Binary settings
+    are boolean. Multi-level configurations are one of `off`, `non_admins`, or
+    `everyone`. Actor and build lists are arrays of strings.
     """
 
-    after: Missing[Union[str, None]] = Field(default=UNSET)
-    app: Missing[Union[Integration, None]] = Field(
+    admin_enforced: bool = Field()
+    allow_deletions_enforcement_level: Literal["off", "non_admins", "everyone"] = (
+        Field()
+    )
+    allow_force_pushes_enforcement_level: Literal["off", "non_admins", "everyone"] = (
+        Field()
+    )
+    authorized_actor_names: list[str] = Field()
+    authorized_actors_only: bool = Field()
+    authorized_dismissal_actors_only: bool = Field()
+    create_protected: Missing[bool] = Field(default=UNSET)
+    created_at: datetime = Field()
+    dismiss_stale_reviews_on_push: bool = Field()
+    id: int = Field()
+    ignore_approvals_from_contributors: bool = Field()
+    linear_history_requirement_enforcement_level: Literal[
+        "off", "non_admins", "everyone"
+    ] = Field()
+    lock_branch_enforcement_level: Literal["off", "non_admins", "everyone"] = Field(
+        description="The enforcement level of the branch lock setting. `off` means the branch is not locked, `non_admins` means the branch is read-only for non_admins, and `everyone` means the branch is read-only for everyone."
+    )
+    lock_allows_fork_sync: Missing[bool] = Field(
         default=UNSET,
-        title="GitHub app",
-        description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
+        description="Whether users can pull changes from upstream when the branch is locked. Set to `true` to allow users to pull changes from upstream when the branch is locked. This setting is only applicable for forks.",
     )
-    before: Missing[Union[str, None]] = Field(default=UNSET)
-    conclusion: Missing[
-        Union[
-            None,
-            Literal[
-                "success",
-                "failure",
-                "neutral",
-                "cancelled",
-                "skipped",
-                "timed_out",
-                "action_required",
-                "stale",
-                "startup_failure",
-            ],
-        ]
-    ] = Field(default=UNSET)
-    created_at: Missing[datetime] = Field(default=UNSET)
-    head_branch: Missing[Union[str, None]] = Field(default=UNSET)
-    head_sha: Missing[str] = Field(
-        default=UNSET, description="The SHA of the head commit that is being checked."
+    merge_queue_enforcement_level: Literal["off", "non_admins", "everyone"] = Field()
+    name: str = Field()
+    pull_request_reviews_enforcement_level: Literal["off", "non_admins", "everyone"] = (
+        Field()
     )
-    id: Missing[int] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    pull_requests: Missing[list[PullRequestMinimal]] = Field(default=UNSET)
-    repository: Missing[MinimalRepository] = Field(
-        default=UNSET, title="Minimal Repository", description="Minimal Repository"
+    repository_id: int = Field()
+    require_code_owner_review: bool = Field()
+    require_last_push_approval: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether the most recent push must be approved by someone other than the person who pushed it",
     )
-    status: Missing[
-        Literal["queued", "in_progress", "completed", "pending", "waiting"]
-    ] = Field(default=UNSET)
-    updated_at: Missing[datetime] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
+    required_approving_review_count: int = Field()
+    required_conversation_resolution_level: Literal["off", "non_admins", "everyone"] = (
+        Field()
+    )
+    required_deployments_enforcement_level: Literal["off", "non_admins", "everyone"] = (
+        Field()
+    )
+    required_status_checks: list[str] = Field()
+    required_status_checks_enforcement_level: Literal[
+        "off", "non_admins", "everyone"
+    ] = Field()
+    signature_requirement_enforcement_level: Literal[
+        "off", "non_admins", "everyone"
+    ] = Field()
+    strict_required_status_checks_policy: bool = Field()
+    updated_at: datetime = Field()
 
 
-model_rebuild(SimpleCheckSuite)
+model_rebuild(WebhooksRule)
 
-__all__ = ("SimpleCheckSuite",)
+__all__ = ("WebhooksRule",)

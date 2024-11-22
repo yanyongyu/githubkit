@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
-
 from pydantic import Field
 
 from githubkit.utils import UNSET
@@ -18,42 +16,44 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 from .group_0002 import SimpleUser
-from .group_0017 import Installation
-from .group_0433 import WebhooksUser
-from .group_0420 import EnterpriseWebhooks
-from .group_0423 import RepositoryWebhooks
-from .group_0438 import WebhooksRepositoriesItems
-from .group_0422 import OrganizationSimpleWebhooks
+from .group_0427 import EnterpriseWebhooks
+from .group_0428 import SimpleInstallation
+from .group_0430 import RepositoryWebhooks
+from .group_0549 import WebhookForkPropForkee
+from .group_0429 import OrganizationSimpleWebhooks
 
 
-class WebhookInstallationCreated(GitHubModel):
-    """installation created event"""
+class WebhookFork(GitHubModel):
+    """fork event
 
-    action: Literal["created"] = Field()
+    A user forks a repository.
+    """
+
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
         description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."',
     )
-    installation: Installation = Field(title="Installation", description="Installation")
+    forkee: WebhookForkPropForkee = Field(
+        description="The created [`repository`](https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#get-a-repository) resource."
+    )
+    installation: Missing[SimpleInstallation] = Field(
+        default=UNSET,
+        title="Simple Installation",
+        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
+    )
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repositories: Missing[list[WebhooksRepositoriesItems]] = Field(
-        default=UNSET,
-        description="An array of repository objects that the installation can access.",
-    )
-    repository: Missing[RepositoryWebhooks] = Field(
-        default=UNSET,
+    repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    requester: Missing[Union[WebhooksUser, None]] = Field(default=UNSET, title="User")
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookInstallationCreated)
+model_rebuild(WebhookFork)
 
-__all__ = ("WebhookInstallationCreated",)
+__all__ = ("WebhookFork",)

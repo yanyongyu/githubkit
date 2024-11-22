@@ -9,24 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0190 import RateLimitType
+from .group_0002 import SimpleUserType
 
 
-class RateLimitOverviewPropResourcesType(TypedDict):
-    """RateLimitOverviewPropResources"""
+class TeamProjectType(TypedDict):
+    """Team Project
 
-    core: RateLimitType
-    graphql: NotRequired[RateLimitType]
-    search: RateLimitType
-    code_search: NotRequired[RateLimitType]
-    source_import: NotRequired[RateLimitType]
-    integration_manifest: NotRequired[RateLimitType]
-    code_scanning_upload: NotRequired[RateLimitType]
-    actions_runner_registration: NotRequired[RateLimitType]
-    scim: NotRequired[RateLimitType]
-    dependency_snapshots: NotRequired[RateLimitType]
+    A team's access to a project.
+    """
+
+    owner_url: str
+    url: str
+    html_url: str
+    columns_url: str
+    id: int
+    node_id: str
+    name: str
+    body: Union[str, None]
+    number: int
+    state: str
+    creator: SimpleUserType
+    created_at: str
+    updated_at: str
+    organization_permission: NotRequired[str]
+    private: NotRequired[bool]
+    permissions: TeamProjectPropPermissionsType
 
 
-__all__ = ("RateLimitOverviewPropResourcesType",)
+class TeamProjectPropPermissionsType(TypedDict):
+    """TeamProjectPropPermissions"""
+
+    read: bool
+    write: bool
+    admin: bool
+
+
+__all__ = (
+    "TeamProjectType",
+    "TeamProjectPropPermissionsType",
+)

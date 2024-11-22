@@ -9,80 +9,145 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
-from datetime import date, datetime
+from typing import Union
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0050 import Team
 from .group_0002 import SimpleUser
-from .group_0031 import OrganizationSimple
 
 
-class CopilotSeatDetails(GitHubModel):
-    """Copilot Business Seat Detail
+class SimpleRepository(GitHubModel):
+    """Simple Repository
 
-    Information about a Copilot Business seat assignment for a user, team, or
-    organization.
+    A GitHub repository.
     """
 
-    assignee: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    organization: Missing[Union[None, OrganizationSimple]] = Field(default=UNSET)
-    assigning_team: Missing[Union[Team, EnterpriseTeam, None]] = Field(
-        default=UNSET,
-        description="The team through which the assignee is granted access to GitHub Copilot, if applicable.",
+    id: int = Field(description="A unique identifier of the repository.")
+    node_id: str = Field(description="The GraphQL identifier of the repository.")
+    name: str = Field(description="The name of the repository.")
+    full_name: str = Field(
+        description="The full, globally unique, name of the repository."
     )
-    pending_cancellation_date: Missing[Union[date, None]] = Field(
-        default=UNSET,
-        description="The pending cancellation date for the seat, in `YYYY-MM-DD` format. This will be null unless the assignee's Copilot access has been canceled during the current billing cycle. If the seat has been cancelled, this corresponds to the start of the organization's next billing cycle.",
+    owner: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    private: bool = Field(description="Whether the repository is private.")
+    html_url: str = Field(description="The URL to view the repository on GitHub.com.")
+    description: Union[str, None] = Field(description="The repository description.")
+    fork: bool = Field(description="Whether the repository is a fork.")
+    url: str = Field(
+        description="The URL to get more information about the repository from the GitHub API."
     )
-    last_activity_at: Missing[Union[datetime, None]] = Field(
-        default=UNSET,
-        description="Timestamp of user's last GitHub Copilot activity, in ISO 8601 format.",
+    archive_url: str = Field(
+        description="A template for the API URL to download the repository as an archive."
     )
-    last_activity_editor: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="Last editor that was used by the user for a GitHub Copilot completion.",
+    assignees_url: str = Field(
+        description="A template for the API URL to list the available assignees for issues in the repository."
     )
-    created_at: datetime = Field(
-        description="Timestamp of when the assignee was last granted access to GitHub Copilot, in ISO 8601 format."
+    blobs_url: str = Field(
+        description="A template for the API URL to create or retrieve a raw Git blob in the repository."
     )
-    updated_at: Missing[datetime] = Field(
-        default=UNSET,
-        description="Timestamp of when the assignee's GitHub Copilot access was last updated, in ISO 8601 format.",
+    branches_url: str = Field(
+        description="A template for the API URL to get information about branches in the repository."
     )
-    plan_type: Missing[Literal["business", "enterprise", "unknown"]] = Field(
-        default=UNSET,
-        description="The Copilot plan of the organization, or the parent enterprise, when applicable.",
+    collaborators_url: str = Field(
+        description="A template for the API URL to get information about collaborators of the repository."
+    )
+    comments_url: str = Field(
+        description="A template for the API URL to get information about comments on the repository."
+    )
+    commits_url: str = Field(
+        description="A template for the API URL to get information about commits on the repository."
+    )
+    compare_url: str = Field(
+        description="A template for the API URL to compare two commits or refs."
+    )
+    contents_url: str = Field(
+        description="A template for the API URL to get the contents of the repository."
+    )
+    contributors_url: str = Field(
+        description="A template for the API URL to list the contributors to the repository."
+    )
+    deployments_url: str = Field(
+        description="The API URL to list the deployments of the repository."
+    )
+    downloads_url: str = Field(
+        description="The API URL to list the downloads on the repository."
+    )
+    events_url: str = Field(
+        description="The API URL to list the events of the repository."
+    )
+    forks_url: str = Field(
+        description="The API URL to list the forks of the repository."
+    )
+    git_commits_url: str = Field(
+        description="A template for the API URL to get information about Git commits of the repository."
+    )
+    git_refs_url: str = Field(
+        description="A template for the API URL to get information about Git refs of the repository."
+    )
+    git_tags_url: str = Field(
+        description="A template for the API URL to get information about Git tags of the repository."
+    )
+    issue_comment_url: str = Field(
+        description="A template for the API URL to get information about issue comments on the repository."
+    )
+    issue_events_url: str = Field(
+        description="A template for the API URL to get information about issue events on the repository."
+    )
+    issues_url: str = Field(
+        description="A template for the API URL to get information about issues on the repository."
+    )
+    keys_url: str = Field(
+        description="A template for the API URL to get information about deploy keys on the repository."
+    )
+    labels_url: str = Field(
+        description="A template for the API URL to get information about labels of the repository."
+    )
+    languages_url: str = Field(
+        description="The API URL to get information about the languages of the repository."
+    )
+    merges_url: str = Field(
+        description="The API URL to merge branches in the repository."
+    )
+    milestones_url: str = Field(
+        description="A template for the API URL to get information about milestones of the repository."
+    )
+    notifications_url: str = Field(
+        description="A template for the API URL to get information about notifications on the repository."
+    )
+    pulls_url: str = Field(
+        description="A template for the API URL to get information about pull requests on the repository."
+    )
+    releases_url: str = Field(
+        description="A template for the API URL to get information about releases on the repository."
+    )
+    stargazers_url: str = Field(
+        description="The API URL to list the stargazers on the repository."
+    )
+    statuses_url: str = Field(
+        description="A template for the API URL to get information about statuses of a commit."
+    )
+    subscribers_url: str = Field(
+        description="The API URL to list the subscribers on the repository."
+    )
+    subscription_url: str = Field(
+        description="The API URL to subscribe to notifications for this repository."
+    )
+    tags_url: str = Field(
+        description="The API URL to get information about tags on the repository."
+    )
+    teams_url: str = Field(
+        description="The API URL to list the teams on the repository."
+    )
+    trees_url: str = Field(
+        description="A template for the API URL to create or retrieve a raw Git tree of the repository."
+    )
+    hooks_url: str = Field(
+        description="The API URL to list the hooks on the repository."
     )
 
 
-class EnterpriseTeam(GitHubModel):
-    """Enterprise Team
+model_rebuild(SimpleRepository)
 
-    Group of enterprise owners and/or members
-    """
-
-    id: int = Field()
-    name: str = Field()
-    slug: str = Field()
-    url: str = Field()
-    sync_to_organizations: str = Field()
-    group_id: Missing[Union[int, None]] = Field(default=UNSET)
-    html_url: str = Field()
-    members_url: str = Field()
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-
-
-model_rebuild(CopilotSeatDetails)
-model_rebuild(EnterpriseTeam)
-
-__all__ = (
-    "CopilotSeatDetails",
-    "EnterpriseTeam",
-)
+__all__ = ("SimpleRepository",)

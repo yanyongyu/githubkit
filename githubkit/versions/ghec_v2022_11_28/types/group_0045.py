@@ -9,64 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 from typing_extensions import TypedDict
 
-from .group_0002 import SimpleUserType
 
+class AmazonS3OidcConfigType(TypedDict):
+    """AmazonS3OIDCConfig
 
-class SimpleRepositoryType(TypedDict):
-    """Simple Repository
-
-    A GitHub repository.
+    Amazon S3 OIDC Config for audit log streaming configuration.
     """
 
-    id: int
-    node_id: str
-    name: str
-    full_name: str
-    owner: SimpleUserType
-    private: bool
-    html_url: str
-    description: Union[str, None]
-    fork: bool
-    url: str
-    archive_url: str
-    assignees_url: str
-    blobs_url: str
-    branches_url: str
-    collaborators_url: str
-    comments_url: str
-    commits_url: str
-    compare_url: str
-    contents_url: str
-    contributors_url: str
-    deployments_url: str
-    downloads_url: str
-    events_url: str
-    forks_url: str
-    git_commits_url: str
-    git_refs_url: str
-    git_tags_url: str
-    issue_comment_url: str
-    issue_events_url: str
-    issues_url: str
-    keys_url: str
-    labels_url: str
-    languages_url: str
-    merges_url: str
-    milestones_url: str
-    notifications_url: str
-    pulls_url: str
-    releases_url: str
-    stargazers_url: str
-    statuses_url: str
-    subscribers_url: str
-    subscription_url: str
-    tags_url: str
-    teams_url: str
-    trees_url: str
-    hooks_url: str
+    bucket: str
+    region: str
+    key_id: str
+    authentication_type: Literal["oidc"]
+    arn_role: str
 
 
-__all__ = ("SimpleRepositoryType",)
+class SplunkConfigType(TypedDict):
+    """SplunkConfig
+
+    Splunk Config for Audit Log Stream Configuration
+    """
+
+    domain: str
+    port: int
+    key_id: str
+    encrypted_token: str
+    ssl_verify: bool
+
+
+__all__ = (
+    "AmazonS3OidcConfigType",
+    "SplunkConfigType",
+)

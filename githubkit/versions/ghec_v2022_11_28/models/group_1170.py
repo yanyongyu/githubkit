@@ -11,18 +11,35 @@ from __future__ import annotations
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0096 import CodespaceMachine
+
+class TeamsTeamIdTeamSyncGroupMappingsPatchBody(GitHubModel):
+    """TeamsTeamIdTeamSyncGroupMappingsPatchBody"""
+
+    groups: list[TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItems] = Field(
+        description="The IdP groups you want to connect to a GitHub team. When updating, the new `groups` object will replace the original one. You must include any existing groups that you don't want to remove."
+    )
+    synced_at: Missing[str] = Field(default=UNSET)
 
 
-class UserCodespacesCodespaceNameMachinesGetResponse200(GitHubModel):
-    """UserCodespacesCodespaceNameMachinesGetResponse200"""
+class TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItems(GitHubModel):
+    """TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItems"""
 
-    total_count: int = Field()
-    machines: list[CodespaceMachine] = Field()
+    group_id: str = Field(description="ID of the IdP group.")
+    group_name: str = Field(description="Name of the IdP group.")
+    group_description: str = Field(description="Description of the IdP group.")
+    id: Missing[str] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    description: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(UserCodespacesCodespaceNameMachinesGetResponse200)
+model_rebuild(TeamsTeamIdTeamSyncGroupMappingsPatchBody)
+model_rebuild(TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItems)
 
-__all__ = ("UserCodespacesCodespaceNameMachinesGetResponse200",)
+__all__ = (
+    "TeamsTeamIdTeamSyncGroupMappingsPatchBody",
+    "TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItems",
+)

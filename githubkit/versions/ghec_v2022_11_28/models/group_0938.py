@@ -16,17 +16,15 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody(GitHubModel):
-    """OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody"""
+class OrgsOrgProjectsPostBody(GitHubModel):
+    """OrgsOrgProjectsPostBody"""
 
-    title: Missing[str] = Field(
-        default=UNSET, description="The discussion post's title."
-    )
+    name: str = Field(description="The name of the project.")
     body: Missing[str] = Field(
-        default=UNSET, description="The discussion post's body text."
+        default=UNSET, description="The description of the project."
     )
 
 
-model_rebuild(OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody)
+model_rebuild(OrgsOrgProjectsPostBody)
 
-__all__ = ("OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody",)
+__all__ = ("OrgsOrgProjectsPostBody",)

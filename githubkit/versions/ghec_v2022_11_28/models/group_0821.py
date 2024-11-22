@@ -9,13 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from githubkit.compat import ExtraGitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class EmojisGetResponse200(ExtraGitHubModel):
-    """EmojisGetResponse200"""
+class AppHookDeliveriesDeliveryIdAttemptsPostResponse202(GitHubModel):
+    """AppHookDeliveriesDeliveryIdAttemptsPostResponse202"""
 
 
-model_rebuild(EmojisGetResponse200)
+model_rebuild(AppHookDeliveriesDeliveryIdAttemptsPostResponse202)
 
-__all__ = ("EmojisGetResponse200",)
+__all__ = ("AppHookDeliveriesDeliveryIdAttemptsPostResponse202",)

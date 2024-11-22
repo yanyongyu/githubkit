@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
+from typing import Literal
 
 from pydantic import Field
 
@@ -17,39 +17,29 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0391 import UserRoleItems
-from .group_0390 import UserNameResponse, UserEmailsResponseItems
 
+class Meta(GitHubModel):
+    """Meta
 
-class UserResponse(GitHubModel):
-    """UserResponse"""
+    The metadata associated with the creation/updates to the user.
+    """
 
-    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:User"]] = Field(
-        description="The URIs that are used to indicate the namespaces of the SCIM schemas."
+    resource_type: Literal["User", "Group"] = Field(
+        alias="resourceType", description="A type of a resource"
     )
-    external_id: Missing[Union[str, None]] = Field(
+    created: Missing[str] = Field(
+        default=UNSET, description="A date and time when the user was created."
+    )
+    last_modified: Missing[str] = Field(
         default=UNSET,
-        alias="externalId",
-        description="A unique identifier for the resource as defined by the provisioning client.",
+        alias="lastModified",
+        description="A data and time when the user was last modified.",
     )
-    active: bool = Field(description="Whether the user active in the IdP.")
-    user_name: Missing[str] = Field(
-        default=UNSET, alias="userName", description="The username for the user."
-    )
-    name: Missing[UserNameResponse] = Field(default=UNSET)
-    display_name: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        alias="displayName",
-        description="A human-readable name for the user.",
-    )
-    emails: list[UserEmailsResponseItems] = Field(
-        description="The emails for the user."
-    )
-    roles: Missing[list[UserRoleItems]] = Field(
-        default=UNSET, description="The roles assigned to the user."
+    location: Missing[str] = Field(
+        default=UNSET, description="A URL location of an object"
     )
 
 
-model_rebuild(UserResponse)
+model_rebuild(Meta)
 
-__all__ = ("UserResponse",)
+__all__ = ("Meta",)

@@ -9,26 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import TypedDict
 
 
-class HovercardType(TypedDict):
-    """Hovercard
+class EmailType(TypedDict):
+    """Email
 
-    Hovercard
+    Email
     """
 
-    contexts: list[HovercardPropContextsItemsType]
+    email: str
+    primary: bool
+    verified: bool
+    visibility: Union[str, None]
 
 
-class HovercardPropContextsItemsType(TypedDict):
-    """HovercardPropContextsItems"""
-
-    message: str
-    octicon: str
-
-
-__all__ = (
-    "HovercardType",
-    "HovercardPropContextsItemsType",
-)
+__all__ = ("EmailType",)

@@ -9,16 +9,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0105 import CustomPropertyValueType
-
-
-class OrgsOrgPropertiesValuesPatchBodyType(TypedDict):
-    """OrgsOrgPropertiesValuesPatchBody"""
-
-    repository_names: list[str]
-    properties: list[CustomPropertyValueType]
+from typing import Union, Literal
+from typing_extensions import TypedDict, NotRequired
 
 
-__all__ = ("OrgsOrgPropertiesValuesPatchBodyType",)
+class OrgsOrgPropertiesSchemaCustomPropertyNamePutBodyType(TypedDict):
+    """OrgsOrgPropertiesSchemaCustomPropertyNamePutBody"""
+
+    value_type: Literal["string", "single_select", "multi_select", "true_false"]
+    required: NotRequired[bool]
+    default_value: NotRequired[Union[str, list[str], None]]
+    description: NotRequired[Union[str, None]]
+    allowed_values: NotRequired[Union[list[str], None]]
+
+
+__all__ = ("OrgsOrgPropertiesSchemaCustomPropertyNamePutBodyType",)

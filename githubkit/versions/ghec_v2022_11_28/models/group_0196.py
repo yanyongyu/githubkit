@@ -9,28 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0002 import SimpleUser
 
-class OidcCustomSubRepo(GitHubModel):
-    """Actions OIDC subject customization for a repository
 
-    Actions OIDC subject customization for a repository
+class ProjectCollaboratorPermission(GitHubModel):
+    """Project Collaborator Permission
+
+    Project Collaborator Permission
     """
 
-    use_default: bool = Field(
-        description="Whether to use the default template or not. If `true`, the `include_claim_keys` field is ignored."
-    )
-    include_claim_keys: Missing[list[str]] = Field(
-        default=UNSET,
-        description="Array of unique strings. Each claim key can only contain alphanumeric characters and underscores.",
-    )
+    permission: str = Field()
+    user: Union[None, SimpleUser] = Field()
 
 
-model_rebuild(OidcCustomSubRepo)
+model_rebuild(ProjectCollaboratorPermission)
 
-__all__ = ("OidcCustomSubRepo",)
+__all__ = ("ProjectCollaboratorPermission",)

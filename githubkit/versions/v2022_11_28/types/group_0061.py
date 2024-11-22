@@ -77,6 +77,7 @@ class OrganizationFullType(TypedDict):
     created_at: datetime
     updated_at: datetime
     archived_at: Union[datetime, None]
+    deploy_keys_enabled_for_repositories: NotRequired[bool]
 
 
 class OrganizationFullPropPlanType(TypedDict):

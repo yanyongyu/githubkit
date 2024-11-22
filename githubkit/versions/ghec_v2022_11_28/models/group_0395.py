@@ -9,21 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ScimEnterpriseUserResponseAllof1PropGroupsItems(GitHubModel):
-    """ScimEnterpriseUserResponseAllof1PropGroupsItems"""
+class Group(GitHubModel):
+    """Group"""
 
-    value: Missing[str] = Field(default=UNSET)
-    ref: Missing[str] = Field(default=UNSET, alias="$ref")
-    display: Missing[str] = Field(default=UNSET)
+    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:Group"]] = Field(
+        description="The URIs that are used to indicate the namespaces of the SCIM schemas."
+    )
+    external_id: str = Field(
+        alias="externalId",
+        description="A unique identifier for the resource as defined by the provisioning client.",
+    )
+    display_name: str = Field(
+        alias="displayName", description="A human-readable name for a security group."
+    )
+    members: list[GroupPropMembersItems] = Field(description="The group members.")
 
 
-model_rebuild(ScimEnterpriseUserResponseAllof1PropGroupsItems)
+class GroupPropMembersItems(GitHubModel):
+    """GroupPropMembersItems"""
 
-__all__ = ("ScimEnterpriseUserResponseAllof1PropGroupsItems",)
+    value: str = Field(description="The local unique identifier for the member")
+    display_name: str = Field(
+        alias="displayName", description="The display name associated with the member"
+    )
+
+
+model_rebuild(Group)
+model_rebuild(GroupPropMembersItems)
+
+__all__ = (
+    "Group",
+    "GroupPropMembersItems",
+)

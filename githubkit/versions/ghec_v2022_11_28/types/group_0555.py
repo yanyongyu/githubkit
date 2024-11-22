@@ -9,28 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0002 import SimpleUserType
 from .group_0017 import InstallationType
-from .group_0420 import EnterpriseWebhooksType
-from .group_0423 import RepositoryWebhooksType
-from .group_0438 import WebhooksRepositoriesItemsType
-from .group_0422 import OrganizationSimpleWebhooksType
+from .group_0440 import WebhooksUserType
+from .group_0427 import EnterpriseWebhooksType
+from .group_0430 import RepositoryWebhooksType
+from .group_0445 import WebhooksRepositoriesItemsType
+from .group_0429 import OrganizationSimpleWebhooksType
 
 
-class WebhookInstallationUnsuspendType(TypedDict):
-    """installation unsuspend event"""
+class WebhookInstallationCreatedType(TypedDict):
+    """installation created event"""
 
-    action: Literal["unsuspend"]
+    action: Literal["created"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: InstallationType
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repositories: NotRequired[list[WebhooksRepositoriesItemsType]]
     repository: NotRequired[RepositoryWebhooksType]
-    requester: NotRequired[None]
+    requester: NotRequired[Union[WebhooksUserType, None]]
     sender: SimpleUserType
 
 
-__all__ = ("WebhookInstallationUnsuspendType",)
+__all__ = ("WebhookInstallationCreatedType",)

@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union, Literal
+from typing import Union
 
 from pydantic import Field
 
@@ -18,32 +17,44 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0002 import SimpleUser
+from .group_0086 import MarketplaceListingPlan
 
 
-class OrganizationCustomRepositoryRole(GitHubModel):
-    """Organization Custom Repository Role
+class MarketplacePurchasePropMarketplacePendingChange(GitHubModel):
+    """MarketplacePurchasePropMarketplacePendingChange"""
 
-    Custom repository roles created by organization owners
-    """
-
-    id: int = Field(description="The unique identifier of the custom role.")
-    name: str = Field(description="The name of the custom role.")
-    description: Missing[Union[str, None]] = Field(
+    is_installed: Missing[bool] = Field(default=UNSET)
+    effective_date: Missing[str] = Field(default=UNSET)
+    unit_count: Missing[Union[int, None]] = Field(default=UNSET)
+    id: Missing[int] = Field(default=UNSET)
+    plan: Missing[MarketplaceListingPlan] = Field(
         default=UNSET,
-        description="A short description about who this role is for or what permissions it grants.",
+        title="Marketplace Listing Plan",
+        description="Marketplace Listing Plan",
     )
-    base_role: Literal["read", "triage", "write", "maintain"] = Field(
-        description="The system role from which this role inherits permissions."
-    )
-    permissions: list[str] = Field(
-        description="A list of additional permissions included in this role."
-    )
-    organization: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
 
 
-model_rebuild(OrganizationCustomRepositoryRole)
+class MarketplacePurchasePropMarketplacePurchase(GitHubModel):
+    """MarketplacePurchasePropMarketplacePurchase"""
 
-__all__ = ("OrganizationCustomRepositoryRole",)
+    billing_cycle: Missing[str] = Field(default=UNSET)
+    next_billing_date: Missing[Union[str, None]] = Field(default=UNSET)
+    is_installed: Missing[bool] = Field(default=UNSET)
+    unit_count: Missing[Union[int, None]] = Field(default=UNSET)
+    on_free_trial: Missing[bool] = Field(default=UNSET)
+    free_trial_ends_on: Missing[Union[str, None]] = Field(default=UNSET)
+    updated_at: Missing[str] = Field(default=UNSET)
+    plan: Missing[MarketplaceListingPlan] = Field(
+        default=UNSET,
+        title="Marketplace Listing Plan",
+        description="Marketplace Listing Plan",
+    )
+
+
+model_rebuild(MarketplacePurchasePropMarketplacePendingChange)
+model_rebuild(MarketplacePurchasePropMarketplacePurchase)
+
+__all__ = (
+    "MarketplacePurchasePropMarketplacePendingChange",
+    "MarketplacePurchasePropMarketplacePurchase",
+)

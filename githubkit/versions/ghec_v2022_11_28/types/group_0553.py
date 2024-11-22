@@ -10,27 +10,16 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import TypedDict, NotRequired
+from typing_extensions import TypedDict
 
 from .group_0002 import SimpleUserType
-from .group_0017 import InstallationType
-from .group_0420 import EnterpriseWebhooksType
-from .group_0423 import RepositoryWebhooksType
-from .group_0438 import WebhooksRepositoriesItemsType
-from .group_0422 import OrganizationSimpleWebhooksType
 
 
-class WebhookInstallationSuspendType(TypedDict):
-    """installation suspend event"""
+class WebhookGithubAppAuthorizationRevokedType(TypedDict):
+    """github_app_authorization revoked event"""
 
-    action: Literal["suspend"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: InstallationType
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repositories: NotRequired[list[WebhooksRepositoriesItemsType]]
-    repository: NotRequired[RepositoryWebhooksType]
-    requester: NotRequired[None]
+    action: Literal["revoked"]
     sender: SimpleUserType
 
 
-__all__ = ("WebhookInstallationSuspendType",)
+__all__ = ("WebhookGithubAppAuthorizationRevokedType",)

@@ -10,28 +10,42 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Union, Literal
-from typing_extensions import TypedDict
+from typing_extensions import TypedDict, NotRequired
 
 from .group_0002 import SimpleUserType
 from .group_0008 import IntegrationType
 
 
-class TimelineAssignedIssueEventType(TypedDict):
-    """Timeline Assigned Issue Event
+class ConvertedNoteToIssueIssueEventType(TypedDict):
+    """Converted Note to Issue Issue Event
 
-    Timeline Assigned Issue Event
+    Converted Note to Issue Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserType
-    event: Literal["assigned"]
+    event: Literal["converted_note_to_issue"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
-    performed_via_github_app: Union[None, IntegrationType, None]
-    assignee: SimpleUserType
+    performed_via_github_app: Union[IntegrationType, None]
+    project_card: NotRequired[ConvertedNoteToIssueIssueEventPropProjectCardType]
 
 
-__all__ = ("TimelineAssignedIssueEventType",)
+class ConvertedNoteToIssueIssueEventPropProjectCardType(TypedDict):
+    """ConvertedNoteToIssueIssueEventPropProjectCard"""
+
+    id: int
+    url: str
+    project_id: int
+    project_url: str
+    column_name: str
+    previous_column_name: NotRequired[str]
+
+
+__all__ = (
+    "ConvertedNoteToIssueIssueEventType",
+    "ConvertedNoteToIssueIssueEventPropProjectCardType",
+)

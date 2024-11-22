@@ -18,24 +18,22 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 from .group_0002 import SimpleUser
-from .group_0420 import EnterpriseWebhooks
-from .group_0421 import SimpleInstallation
-from .group_0423 import RepositoryWebhooks
-from .group_0422 import OrganizationSimpleWebhooks
+from .group_0427 import EnterpriseWebhooks
+from .group_0428 import SimpleInstallation
+from .group_0430 import RepositoryWebhooks
+from .group_0429 import OrganizationSimpleWebhooks
 
 
-class WebhookInstallationTargetRenamed(GitHubModel):
-    """WebhookInstallationTargetRenamed"""
+class WebhookGollum(GitHubModel):
+    """gollum event"""
 
-    account: WebhookInstallationTargetRenamedPropAccount = Field()
-    action: Literal["renamed"] = Field()
-    changes: WebhookInstallationTargetRenamedPropChanges = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
         description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."',
     )
-    installation: SimpleInstallation = Field(
+    installation: Missing[SimpleInstallation] = Field(
+        default=UNSET,
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
@@ -44,92 +42,33 @@ class WebhookInstallationTargetRenamed(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repository: Missing[RepositoryWebhooks] = Field(
-        default=UNSET,
+    pages: list[WebhookGollumPropPagesItems] = Field(
+        description="The pages that were updated."
+    )
+    repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    sender: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
+    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+
+
+class WebhookGollumPropPagesItems(GitHubModel):
+    """WebhookGollumPropPagesItems"""
+
+    action: Literal["created", "edited"] = Field(
+        description="The action that was performed on the page. Can be `created` or `edited`."
     )
-    target_type: str = Field()
+    html_url: str = Field(description="Points to the HTML wiki page.")
+    page_name: str = Field(description="The name of the page.")
+    sha: str = Field(description="The latest commit SHA of the page.")
+    summary: Union[str, None] = Field()
+    title: str = Field(description="The current page title.")
 
 
-class WebhookInstallationTargetRenamedPropAccount(GitHubModel):
-    """WebhookInstallationTargetRenamedPropAccount"""
-
-    archived_at: Missing[Union[str, None]] = Field(default=UNSET)
-    avatar_url: str = Field()
-    created_at: Missing[str] = Field(default=UNSET)
-    description: Missing[None] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers: Missing[int] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following: Missing[int] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    has_organization_projects: Missing[bool] = Field(default=UNSET)
-    has_repository_projects: Missing[bool] = Field(default=UNSET)
-    hooks_url: Missing[str] = Field(default=UNSET)
-    html_url: str = Field()
-    id: int = Field()
-    is_verified: Missing[bool] = Field(default=UNSET)
-    issues_url: Missing[str] = Field(default=UNSET)
-    login: Missing[str] = Field(default=UNSET)
-    members_url: Missing[str] = Field(default=UNSET)
-    name: Missing[str] = Field(default=UNSET)
-    node_id: str = Field()
-    organizations_url: Missing[str] = Field(default=UNSET)
-    public_gists: Missing[int] = Field(default=UNSET)
-    public_members_url: Missing[str] = Field(default=UNSET)
-    public_repos: Missing[int] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    slug: Missing[str] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[str] = Field(default=UNSET)
-    updated_at: Missing[str] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-    website_url: Missing[None] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
-
-
-class WebhookInstallationTargetRenamedPropChanges(GitHubModel):
-    """WebhookInstallationTargetRenamedPropChanges"""
-
-    login: Missing[WebhookInstallationTargetRenamedPropChangesPropLogin] = Field(
-        default=UNSET
-    )
-    slug: Missing[WebhookInstallationTargetRenamedPropChangesPropSlug] = Field(
-        default=UNSET
-    )
-
-
-class WebhookInstallationTargetRenamedPropChangesPropLogin(GitHubModel):
-    """WebhookInstallationTargetRenamedPropChangesPropLogin"""
-
-    from_: str = Field(alias="from")
-
-
-class WebhookInstallationTargetRenamedPropChangesPropSlug(GitHubModel):
-    """WebhookInstallationTargetRenamedPropChangesPropSlug"""
-
-    from_: str = Field(alias="from")
-
-
-model_rebuild(WebhookInstallationTargetRenamed)
-model_rebuild(WebhookInstallationTargetRenamedPropAccount)
-model_rebuild(WebhookInstallationTargetRenamedPropChanges)
-model_rebuild(WebhookInstallationTargetRenamedPropChangesPropLogin)
-model_rebuild(WebhookInstallationTargetRenamedPropChangesPropSlug)
+model_rebuild(WebhookGollum)
+model_rebuild(WebhookGollumPropPagesItems)
 
 __all__ = (
-    "WebhookInstallationTargetRenamed",
-    "WebhookInstallationTargetRenamedPropAccount",
-    "WebhookInstallationTargetRenamedPropChanges",
-    "WebhookInstallationTargetRenamedPropChangesPropLogin",
-    "WebhookInstallationTargetRenamedPropChangesPropSlug",
+    "WebhookGollum",
+    "WebhookGollumPropPagesItems",
 )

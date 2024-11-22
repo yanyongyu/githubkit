@@ -10,36 +10,44 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Union
+from datetime import datetime
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0050 import TeamType
 from .group_0002 import SimpleUserType
 from .group_0008 import IntegrationType
 
 
-class ProtectedBranchPullRequestReviewPropDismissalRestrictionsType(TypedDict):
-    """ProtectedBranchPullRequestReviewPropDismissalRestrictions"""
+class DeploymentType(TypedDict):
+    """Deployment
 
-    users: NotRequired[list[SimpleUserType]]
-    teams: NotRequired[list[TeamType]]
-    apps: NotRequired[list[Union[IntegrationType, None]]]
-    url: NotRequired[str]
-    users_url: NotRequired[str]
-    teams_url: NotRequired[str]
-
-
-class ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesType(TypedDict):
-    """ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances
-
-    Allow specific users, teams, or apps to bypass pull request requirements.
+    A request for a specific ref(branch,sha,tag) to be deployed
     """
 
-    users: NotRequired[list[SimpleUserType]]
-    teams: NotRequired[list[TeamType]]
-    apps: NotRequired[list[Union[IntegrationType, None]]]
+    url: str
+    id: int
+    node_id: str
+    sha: str
+    ref: str
+    task: str
+    payload: Union[DeploymentPropPayloadOneof0Type, str]
+    original_environment: NotRequired[str]
+    environment: str
+    description: Union[str, None]
+    creator: Union[None, SimpleUserType]
+    created_at: datetime
+    updated_at: datetime
+    statuses_url: str
+    repository_url: str
+    transient_environment: NotRequired[bool]
+    production_environment: NotRequired[bool]
+    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
+
+
+class DeploymentPropPayloadOneof0Type(TypedDict):
+    """DeploymentPropPayloadOneof0"""
 
 
 __all__ = (
-    "ProtectedBranchPullRequestReviewPropDismissalRestrictionsType",
-    "ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesType",
+    "DeploymentType",
+    "DeploymentPropPayloadOneof0Type",
 )

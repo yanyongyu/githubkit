@@ -83,6 +83,7 @@ class CodeScanningClient:
     def list_alerts_for_enterprise(
         self,
         enterprise: str,
+        *,
         tool_name: Missing[str] = UNSET,
         tool_guid: Missing[Union[str, None]] = UNSET,
         before: Missing[str] = UNSET,
@@ -92,7 +93,6 @@ class CodeScanningClient:
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         state: Missing[Literal["open", "closed", "dismissed", "fixed"]] = UNSET,
         sort: Missing[Literal["created", "updated"]] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         list[CodeScanningOrganizationAlertItems],
@@ -137,6 +137,7 @@ class CodeScanningClient:
     async def async_list_alerts_for_enterprise(
         self,
         enterprise: str,
+        *,
         tool_name: Missing[str] = UNSET,
         tool_guid: Missing[Union[str, None]] = UNSET,
         before: Missing[str] = UNSET,
@@ -146,7 +147,6 @@ class CodeScanningClient:
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         state: Missing[Literal["open", "closed", "dismissed", "fixed"]] = UNSET,
         sort: Missing[Literal["created", "updated"]] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         list[CodeScanningOrganizationAlertItems],
@@ -191,6 +191,7 @@ class CodeScanningClient:
     def list_alerts_for_org(
         self,
         org: str,
+        *,
         tool_name: Missing[str] = UNSET,
         tool_guid: Missing[Union[str, None]] = UNSET,
         before: Missing[str] = UNSET,
@@ -203,7 +204,6 @@ class CodeScanningClient:
         severity: Missing[
             Literal["critical", "high", "medium", "low", "warning", "note", "error"]
         ] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         list[CodeScanningOrganizationAlertItems],
@@ -249,6 +249,7 @@ class CodeScanningClient:
     async def async_list_alerts_for_org(
         self,
         org: str,
+        *,
         tool_name: Missing[str] = UNSET,
         tool_guid: Missing[Union[str, None]] = UNSET,
         before: Missing[str] = UNSET,
@@ -261,7 +262,6 @@ class CodeScanningClient:
         severity: Missing[
             Literal["critical", "high", "medium", "low", "warning", "note", "error"]
         ] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         list[CodeScanningOrganizationAlertItems],
@@ -308,6 +308,7 @@ class CodeScanningClient:
         self,
         owner: str,
         repo: str,
+        *,
         tool_name: Missing[str] = UNSET,
         tool_guid: Missing[Union[str, None]] = UNSET,
         page: Missing[int] = UNSET,
@@ -322,7 +323,6 @@ class CodeScanningClient:
         severity: Missing[
             Literal["critical", "high", "medium", "low", "warning", "note", "error"]
         ] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[CodeScanningAlertItems], list[CodeScanningAlertItemsType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#list-code-scanning-alerts-for-a-repository"""
@@ -369,6 +369,7 @@ class CodeScanningClient:
         self,
         owner: str,
         repo: str,
+        *,
         tool_name: Missing[str] = UNSET,
         tool_guid: Missing[Union[str, None]] = UNSET,
         page: Missing[int] = UNSET,
@@ -383,7 +384,6 @@ class CodeScanningClient:
         severity: Missing[
             Literal["critical", "high", "medium", "low", "warning", "note", "error"]
         ] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[CodeScanningAlertItems], list[CodeScanningAlertItemsType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#list-code-scanning-alerts-for-a-repository"""
@@ -643,11 +643,11 @@ class CodeScanningClient:
         owner: str,
         repo: str,
         alert_number: int,
+        *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         ref: Missing[str] = UNSET,
         pr: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[CodeScanningAlertInstance], list[CodeScanningAlertInstanceType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#list-instances-of-a-code-scanning-alert"""
@@ -687,11 +687,11 @@ class CodeScanningClient:
         owner: str,
         repo: str,
         alert_number: int,
+        *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         ref: Missing[str] = UNSET,
         pr: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[CodeScanningAlertInstance], list[CodeScanningAlertInstanceType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#list-instances-of-a-code-scanning-alert"""
@@ -730,6 +730,7 @@ class CodeScanningClient:
         self,
         owner: str,
         repo: str,
+        *,
         tool_name: Missing[str] = UNSET,
         tool_guid: Missing[Union[str, None]] = UNSET,
         page: Missing[int] = UNSET,
@@ -739,7 +740,6 @@ class CodeScanningClient:
         sarif_id: Missing[str] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         sort: Missing[Literal["created"]] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[CodeScanningAnalysis], list[CodeScanningAnalysisType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#list-code-scanning-analyses-for-a-repository"""
@@ -783,6 +783,7 @@ class CodeScanningClient:
         self,
         owner: str,
         repo: str,
+        *,
         tool_name: Missing[str] = UNSET,
         tool_guid: Missing[Union[str, None]] = UNSET,
         page: Missing[int] = UNSET,
@@ -792,7 +793,6 @@ class CodeScanningClient:
         sarif_id: Missing[str] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         sort: Missing[Literal["created"]] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[CodeScanningAnalysis], list[CodeScanningAnalysisType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#list-code-scanning-analyses-for-a-repository"""
@@ -901,8 +901,8 @@ class CodeScanningClient:
         owner: str,
         repo: str,
         analysis_id: int,
-        confirm_delete: Missing[Union[str, None]] = UNSET,
         *,
+        confirm_delete: Missing[Union[str, None]] = UNSET,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[CodeScanningAnalysisDeletion, CodeScanningAnalysisDeletionType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#delete-a-code-scanning-analysis-from-a-repository"""
@@ -940,8 +940,8 @@ class CodeScanningClient:
         owner: str,
         repo: str,
         analysis_id: int,
-        confirm_delete: Missing[Union[str, None]] = UNSET,
         *,
+        confirm_delete: Missing[Union[str, None]] = UNSET,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[CodeScanningAnalysisDeletion, CodeScanningAnalysisDeletionType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#delete-a-code-scanning-analysis-from-a-repository"""

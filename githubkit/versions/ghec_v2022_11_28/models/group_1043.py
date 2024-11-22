@@ -16,17 +16,17 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoDependabotSecretsGetResponse200(GitHubModel):
-    """ReposOwnerRepoDependabotSecretsGetResponse200"""
+class ReposOwnerRepoCodespacesSecretsGetResponse200(GitHubModel):
+    """ReposOwnerRepoCodespacesSecretsGetResponse200"""
 
     total_count: int = Field()
-    secrets: list[DependabotSecret] = Field()
+    secrets: list[RepoCodespacesSecret] = Field()
 
 
-class DependabotSecret(GitHubModel):
-    """Dependabot Secret
+class RepoCodespacesSecret(GitHubModel):
+    """Codespaces Secret
 
-    Set secrets for Dependabot.
+    Set repository secrets for GitHub Codespaces.
     """
 
     name: str = Field(description="The name of the secret.")
@@ -34,10 +34,10 @@ class DependabotSecret(GitHubModel):
     updated_at: datetime = Field()
 
 
-model_rebuild(ReposOwnerRepoDependabotSecretsGetResponse200)
-model_rebuild(DependabotSecret)
+model_rebuild(ReposOwnerRepoCodespacesSecretsGetResponse200)
+model_rebuild(RepoCodespacesSecret)
 
 __all__ = (
-    "ReposOwnerRepoDependabotSecretsGetResponse200",
-    "DependabotSecret",
+    "ReposOwnerRepoCodespacesSecretsGetResponse200",
+    "RepoCodespacesSecret",
 )

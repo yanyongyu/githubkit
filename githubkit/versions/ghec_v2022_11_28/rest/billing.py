@@ -108,9 +108,9 @@ class BillingClient:
     def get_github_advanced_security_billing_ghe(
         self,
         enterprise: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         AdvancedSecurityActiveCommitters, AdvancedSecurityActiveCommittersType
@@ -139,9 +139,9 @@ class BillingClient:
     async def async_get_github_advanced_security_billing_ghe(
         self,
         enterprise: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         AdvancedSecurityActiveCommitters, AdvancedSecurityActiveCommittersType
@@ -638,12 +638,12 @@ class BillingClient:
     def get_github_billing_usage_report_ghe(
         self,
         enterprise: str,
+        *,
         year: Missing[int] = UNSET,
         month: Missing[int] = UNSET,
         day: Missing[int] = UNSET,
         hour: Missing[int] = UNSET,
         cost_center_id: Missing[str] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[BillingUsageReport, BillingUsageReportType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#get-billing-usage-report-for-an-enterprise"""
@@ -683,12 +683,12 @@ class BillingClient:
     async def async_get_github_billing_usage_report_ghe(
         self,
         enterprise: str,
+        *,
         year: Missing[int] = UNSET,
         month: Missing[int] = UNSET,
         day: Missing[int] = UNSET,
         hour: Missing[int] = UNSET,
         cost_center_id: Missing[str] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[BillingUsageReport, BillingUsageReportType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#get-billing-usage-report-for-an-enterprise"""
@@ -770,9 +770,9 @@ class BillingClient:
     def get_github_advanced_security_billing_org(
         self,
         org: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         AdvancedSecurityActiveCommitters, AdvancedSecurityActiveCommittersType
@@ -801,9 +801,9 @@ class BillingClient:
     async def async_get_github_advanced_security_billing_org(
         self,
         org: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         AdvancedSecurityActiveCommitters, AdvancedSecurityActiveCommittersType

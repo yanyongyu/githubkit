@@ -9,50 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from datetime import datetime
-
 from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0002 import SimpleUser
-from .group_0019 import Repository
 
+class ApiInsightsSummaryStats(GitHubModel):
+    """Summary Stats
 
-class Migration(GitHubModel):
-    """Migration
-
-    A migration.
+    API Insights usage summary stats for an organization
     """
 
-    id: int = Field()
-    owner: Union[None, SimpleUser] = Field()
-    guid: str = Field()
-    state: str = Field()
-    lock_repositories: bool = Field()
-    exclude_metadata: bool = Field()
-    exclude_git_data: bool = Field()
-    exclude_attachments: bool = Field()
-    exclude_releases: bool = Field()
-    exclude_owner_projects: bool = Field()
-    org_metadata_only: bool = Field()
-    repositories: list[Repository] = Field(
-        description="The repositories included in the migration. Only returned for export migrations."
-    )
-    url: str = Field()
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    node_id: str = Field()
-    archive_url: Missing[str] = Field(default=UNSET)
-    exclude: Missing[list[str]] = Field(
+    total_request_count: Missing[int] = Field(
         default=UNSET,
-        description='Exclude related items from being returned in the response in order to improve performance of the request. The array can include any of: `"repositories"`.',
+        description="The total number of requests within the queried time period",
+    )
+    rate_limited_request_count: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of requests that were rate limited within the queried time period",
     )
 
 
-model_rebuild(Migration)
+model_rebuild(ApiInsightsSummaryStats)
 
-__all__ = ("Migration",)
+__all__ = ("ApiInsightsSummaryStats",)

@@ -13,16 +13,22 @@ from typing import Union
 from typing_extensions import TypedDict, NotRequired
 
 
-class PageDeploymentType(TypedDict):
-    """GitHub Pages
+class DeployKeyType(TypedDict):
+    """Deploy Key
 
-    The GitHub Pages deployment status.
+    An SSH key granting access to a single repository.
     """
 
-    id: Union[int, str]
-    status_url: str
-    page_url: str
-    preview_url: NotRequired[str]
+    id: int
+    key: str
+    url: str
+    title: str
+    verified: bool
+    created_at: str
+    read_only: bool
+    added_by: NotRequired[Union[str, None]]
+    last_used: NotRequired[Union[str, None]]
+    enabled: NotRequired[bool]
 
 
-__all__ = ("PageDeploymentType",)
+__all__ = ("DeployKeyType",)

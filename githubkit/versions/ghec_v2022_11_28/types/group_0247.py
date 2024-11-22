@@ -9,14 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-
-class CodeScanningSarifsReceiptType(TypedDict):
-    """CodeScanningSarifsReceipt"""
-
-    id: NotRequired[str]
-    url: NotRequired[str]
+from .group_0002 import SimpleUserType
+from .group_0051 import SimpleRepositoryType
+from .group_0249 import CodeScanningVariantAnalysisPropSkippedRepositoriesType
+from .group_0248 import CodeScanningVariantAnalysisPropScannedRepositoriesItemsType
 
 
-__all__ = ("CodeScanningSarifsReceiptType",)
+class CodeScanningVariantAnalysisType(TypedDict):
+    """Variant Analysis
+
+    A run of a CodeQL query against one or more repositories.
+    """
+
+    id: int
+    controller_repo: SimpleRepositoryType
+    actor: SimpleUserType
+    query_language: Literal[
+        "cpp", "csharp", "go", "java", "javascript", "python", "ruby", "swift"
+    ]
+    query_pack_url: str
+    created_at: NotRequired[datetime]
+    updated_at: NotRequired[datetime]
+    completed_at: NotRequired[Union[datetime, None]]
+    status: Literal["in_progress", "succeeded", "failed", "cancelled"]
+    actions_workflow_run_id: NotRequired[int]
+    failure_reason: NotRequired[
+        Literal["no_repos_queried", "actions_workflow_run_failed", "internal_error"]
+    ]
+    scanned_repositories: NotRequired[
+        list[CodeScanningVariantAnalysisPropScannedRepositoriesItemsType]
+    ]
+    skipped_repositories: NotRequired[
+        CodeScanningVariantAnalysisPropSkippedRepositoriesType
+    ]
+
+
+__all__ = ("CodeScanningVariantAnalysisType",)

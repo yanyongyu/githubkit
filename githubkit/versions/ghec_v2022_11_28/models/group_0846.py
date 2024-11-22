@@ -13,37 +13,44 @@ from typing import Union, Literal
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
-from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 
-
-class GistsPostBody(GitHubModel):
-    """GistsPostBody"""
-
-    description: Missing[str] = Field(
-        default=UNSET, description="Description of the gist"
-    )
-    files: GistsPostBodyPropFiles = Field(
-        description="Names and content for the files that make up the gist"
-    )
-    public: Missing[Union[bool, Literal["true", "false"]]] = Field(default=UNSET)
-
-
-class GistsPostBodyPropFiles(ExtraGitHubModel):
-    """GistsPostBodyPropFiles
-
-    Names and content for the files that make up the gist
-
-    Examples:
-        {'hello.rb': {'content': 'puts "Hello, World!"'}}
-    """
-
-
-model_rebuild(GistsPostBody)
-model_rebuild(GistsPostBodyPropFiles)
-
-__all__ = (
-    "GistsPostBody",
-    "GistsPostBodyPropFiles",
+from .group_0046 import DatadogConfig
+from .group_0045 import SplunkConfig, AmazonS3OidcConfig
+from .group_0044 import (
+    AzureHubConfig,
+    AzureBlobConfig,
+    GoogleCloudConfig,
+    AmazonS3AccessKeysConfig,
 )
+
+
+class EnterprisesEnterpriseAuditLogStreamsPostBody(GitHubModel):
+    """EnterprisesEnterpriseAuditLogStreamsPostBody"""
+
+    enabled: bool = Field(description="This setting pauses or resumes a stream.")
+    stream_type: Literal[
+        "Azure Blob Storage",
+        "Azure Event Hubs",
+        "Amazon S3",
+        "Splunk",
+        "HTTPS Event Collector",
+        "Google Cloud Storage",
+        "Datadog",
+    ] = Field(
+        description="The audit log streaming provider. The name is case sensitive."
+    )
+    vendor_specific: Union[
+        AzureBlobConfig,
+        AzureHubConfig,
+        AmazonS3OidcConfig,
+        AmazonS3AccessKeysConfig,
+        SplunkConfig,
+        GoogleCloudConfig,
+        DatadogConfig,
+    ] = Field()
+
+
+model_rebuild(EnterprisesEnterpriseAuditLogStreamsPostBody)
+
+__all__ = ("EnterprisesEnterpriseAuditLogStreamsPostBody",)

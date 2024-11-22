@@ -11,33 +11,20 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ProjectsColumnsColumnIdCardsPostResponse503(GitHubModel):
-    """ProjectsColumnsColumnIdCardsPostResponse503"""
+class ProjectsColumnsColumnIdCardsPostBodyOneof1(GitHubModel):
+    """ProjectsColumnsColumnIdCardsPostBodyOneof1"""
 
-    code: Missing[str] = Field(default=UNSET)
-    message: Missing[str] = Field(default=UNSET)
-    documentation_url: Missing[str] = Field(default=UNSET)
-    errors: Missing[
-        list[ProjectsColumnsColumnIdCardsPostResponse503PropErrorsItems]
-    ] = Field(default=UNSET)
-
-
-class ProjectsColumnsColumnIdCardsPostResponse503PropErrorsItems(GitHubModel):
-    """ProjectsColumnsColumnIdCardsPostResponse503PropErrorsItems"""
-
-    code: Missing[str] = Field(default=UNSET)
-    message: Missing[str] = Field(default=UNSET)
+    content_id: int = Field(
+        description="The unique identifier of the content associated with the card"
+    )
+    content_type: str = Field(
+        description="The piece of content associated with the card"
+    )
 
 
-model_rebuild(ProjectsColumnsColumnIdCardsPostResponse503)
-model_rebuild(ProjectsColumnsColumnIdCardsPostResponse503PropErrorsItems)
+model_rebuild(ProjectsColumnsColumnIdCardsPostBodyOneof1)
 
-__all__ = (
-    "ProjectsColumnsColumnIdCardsPostResponse503",
-    "ProjectsColumnsColumnIdCardsPostResponse503PropErrorsItems",
-)
+__all__ = ("ProjectsColumnsColumnIdCardsPostBodyOneof1",)

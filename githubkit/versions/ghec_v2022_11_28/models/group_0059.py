@@ -9,48 +9,102 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+from datetime import date
+
 from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
 
 
-class GetLicenseSyncStatus(GitHubModel):
-    """License Sync Status
+class CopilotUsageMetrics(GitHubModel):
+    """Copilot Usage Metrics
 
-    Information about the status of a license sync job for an enterprise.
+    Summary of Copilot usage.
     """
 
-    server_instances: Missing[list[GetLicenseSyncStatusPropServerInstancesItems]] = (
-        Field(default=UNSET)
+    day: date = Field(
+        description="The date for which the usage metrics are reported, in `YYYY-MM-DD` format."
+    )
+    total_suggestions_count: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of Copilot code completion suggestions shown to users.",
+    )
+    total_acceptances_count: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of Copilot code completion suggestions accepted by users.",
+    )
+    total_lines_suggested: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of lines of code completions suggested by Copilot.",
+    )
+    total_lines_accepted: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of lines of code completions accepted by users.",
+    )
+    total_active_users: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of users who were shown Copilot code completion suggestions during the day specified.",
+    )
+    total_chat_acceptances: Missing[int] = Field(
+        default=UNSET,
+        description="The total instances of users who accepted code suggested by Copilot Chat in the IDE (panel and inline).",
+    )
+    total_chat_turns: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of chat turns (prompt and response pairs) sent between users and Copilot Chat in the IDE.",
+    )
+    total_active_chat_users: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of users who interacted with Copilot Chat in the IDE during the day specified.",
+    )
+    breakdown: Union[list[CopilotUsageMetricsPropBreakdownItems], None] = Field(
+        description="Breakdown of Copilot code completions usage by language and editor"
     )
 
 
-class GetLicenseSyncStatusPropServerInstancesItems(GitHubModel):
-    """GetLicenseSyncStatusPropServerInstancesItems"""
+class CopilotUsageMetricsPropBreakdownItems(ExtraGitHubModel):
+    """CopilotUsageMetricsPropBreakdownItems
 
-    server_id: Missing[str] = Field(default=UNSET)
-    hostname: Missing[str] = Field(default=UNSET)
-    last_sync: Missing[GetLicenseSyncStatusPropServerInstancesItemsPropLastSync] = (
-        Field(default=UNSET)
+    Breakdown of Copilot usage by editor for this language
+    """
+
+    language: Missing[str] = Field(
+        default=UNSET,
+        description="The language in which Copilot suggestions were shown to users in the specified editor.",
+    )
+    editor: Missing[str] = Field(
+        default=UNSET,
+        description="The editor in which Copilot suggestions were shown to users for the specified language.",
+    )
+    suggestions_count: Missing[int] = Field(
+        default=UNSET,
+        description="The number of Copilot suggestions shown to users in the editor specified during the day specified.",
+    )
+    acceptances_count: Missing[int] = Field(
+        default=UNSET,
+        description="The number of Copilot suggestions accepted by users in the editor specified during the day specified.",
+    )
+    lines_suggested: Missing[int] = Field(
+        default=UNSET,
+        description="The number of lines of code suggested by Copilot in the editor specified during the day specified.",
+    )
+    lines_accepted: Missing[int] = Field(
+        default=UNSET,
+        description="The number of lines of code accepted by users in the editor specified during the day specified.",
+    )
+    active_users: Missing[int] = Field(
+        default=UNSET,
+        description="The number of users who were shown Copilot completion suggestions in the editor specified during the day specified.",
     )
 
 
-class GetLicenseSyncStatusPropServerInstancesItemsPropLastSync(GitHubModel):
-    """GetLicenseSyncStatusPropServerInstancesItemsPropLastSync"""
-
-    date: Missing[str] = Field(default=UNSET)
-    status: Missing[str] = Field(default=UNSET)
-    error: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(GetLicenseSyncStatus)
-model_rebuild(GetLicenseSyncStatusPropServerInstancesItems)
-model_rebuild(GetLicenseSyncStatusPropServerInstancesItemsPropLastSync)
+model_rebuild(CopilotUsageMetrics)
+model_rebuild(CopilotUsageMetricsPropBreakdownItems)
 
 __all__ = (
-    "GetLicenseSyncStatus",
-    "GetLicenseSyncStatusPropServerInstancesItems",
-    "GetLicenseSyncStatusPropServerInstancesItemsPropLastSync",
+    "CopilotUsageMetrics",
+    "CopilotUsageMetricsPropBreakdownItems",
 )

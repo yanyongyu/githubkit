@@ -12,8 +12,8 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class EmojisGetResponse200Type(TypedDict):
-    """EmojisGetResponse200"""
+class AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type(TypedDict):
+    """AppHookDeliveriesDeliveryIdAttemptsPostResponse202"""
 
 
-__all__ = ("EmojisGetResponse200Type",)
+__all__ = ("AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type",)

@@ -10,28 +10,40 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Union, Literal
-from typing_extensions import TypedDict, NotRequired
+from typing_extensions import TypedDict
 
-
-class GistsPostBodyType(TypedDict):
-    """GistsPostBody"""
-
-    description: NotRequired[str]
-    files: GistsPostBodyPropFilesType
-    public: NotRequired[Union[bool, Literal["true", "false"]]]
-
-
-class GistsPostBodyPropFilesType(TypedDict):
-    """GistsPostBodyPropFiles
-
-    Names and content for the files that make up the gist
-
-    Examples:
-        {'hello.rb': {'content': 'puts "Hello, World!"'}}
-    """
-
-
-__all__ = (
-    "GistsPostBodyType",
-    "GistsPostBodyPropFilesType",
+from .group_0046 import DatadogConfigType
+from .group_0045 import SplunkConfigType, AmazonS3OidcConfigType
+from .group_0044 import (
+    AzureHubConfigType,
+    AzureBlobConfigType,
+    GoogleCloudConfigType,
+    AmazonS3AccessKeysConfigType,
 )
+
+
+class EnterprisesEnterpriseAuditLogStreamsPostBodyType(TypedDict):
+    """EnterprisesEnterpriseAuditLogStreamsPostBody"""
+
+    enabled: bool
+    stream_type: Literal[
+        "Azure Blob Storage",
+        "Azure Event Hubs",
+        "Amazon S3",
+        "Splunk",
+        "HTTPS Event Collector",
+        "Google Cloud Storage",
+        "Datadog",
+    ]
+    vendor_specific: Union[
+        AzureBlobConfigType,
+        AzureHubConfigType,
+        AmazonS3OidcConfigType,
+        AmazonS3AccessKeysConfigType,
+        SplunkConfigType,
+        GoogleCloudConfigType,
+        DatadogConfigType,
+    ]
+
+
+__all__ = ("EnterprisesEnterpriseAuditLogStreamsPostBodyType",)

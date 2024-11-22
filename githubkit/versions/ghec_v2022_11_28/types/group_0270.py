@@ -10,105 +10,48 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Union
+from datetime import datetime
 from typing_extensions import TypedDict, NotRequired
 
+from .group_0018 import LicenseSimpleType
+from .group_0138 import CodeOfConductSimpleType
 
-class FileCommitType(TypedDict):
-    """File Commit
 
-    File Commit
+class CommunityProfilePropFilesType(TypedDict):
+    """CommunityProfilePropFiles"""
+
+    code_of_conduct: Union[None, CodeOfConductSimpleType]
+    code_of_conduct_file: Union[None, CommunityHealthFileType]
+    license_: Union[None, LicenseSimpleType]
+    contributing: Union[None, CommunityHealthFileType]
+    readme: Union[None, CommunityHealthFileType]
+    issue_template: Union[None, CommunityHealthFileType]
+    pull_request_template: Union[None, CommunityHealthFileType]
+
+
+class CommunityHealthFileType(TypedDict):
+    """Community Health File"""
+
+    url: str
+    html_url: str
+
+
+class CommunityProfileType(TypedDict):
+    """Community Profile
+
+    Community Profile
     """
 
-    content: Union[FileCommitPropContentType, None]
-    commit: FileCommitPropCommitType
-
-
-class FileCommitPropContentType(TypedDict):
-    """FileCommitPropContent"""
-
-    name: NotRequired[str]
-    path: NotRequired[str]
-    sha: NotRequired[str]
-    size: NotRequired[int]
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    git_url: NotRequired[str]
-    download_url: NotRequired[str]
-    type: NotRequired[str]
-    links: NotRequired[FileCommitPropContentPropLinksType]
-
-
-class FileCommitPropContentPropLinksType(TypedDict):
-    """FileCommitPropContentPropLinks"""
-
-    self_: NotRequired[str]
-    git: NotRequired[str]
-    html: NotRequired[str]
-
-
-class FileCommitPropCommitType(TypedDict):
-    """FileCommitPropCommit"""
-
-    sha: NotRequired[str]
-    node_id: NotRequired[str]
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    author: NotRequired[FileCommitPropCommitPropAuthorType]
-    committer: NotRequired[FileCommitPropCommitPropCommitterType]
-    message: NotRequired[str]
-    tree: NotRequired[FileCommitPropCommitPropTreeType]
-    parents: NotRequired[list[FileCommitPropCommitPropParentsItemsType]]
-    verification: NotRequired[FileCommitPropCommitPropVerificationType]
-
-
-class FileCommitPropCommitPropAuthorType(TypedDict):
-    """FileCommitPropCommitPropAuthor"""
-
-    date: NotRequired[str]
-    name: NotRequired[str]
-    email: NotRequired[str]
-
-
-class FileCommitPropCommitPropCommitterType(TypedDict):
-    """FileCommitPropCommitPropCommitter"""
-
-    date: NotRequired[str]
-    name: NotRequired[str]
-    email: NotRequired[str]
-
-
-class FileCommitPropCommitPropTreeType(TypedDict):
-    """FileCommitPropCommitPropTree"""
-
-    url: NotRequired[str]
-    sha: NotRequired[str]
-
-
-class FileCommitPropCommitPropParentsItemsType(TypedDict):
-    """FileCommitPropCommitPropParentsItems"""
-
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    sha: NotRequired[str]
-
-
-class FileCommitPropCommitPropVerificationType(TypedDict):
-    """FileCommitPropCommitPropVerification"""
-
-    verified: NotRequired[bool]
-    reason: NotRequired[str]
-    signature: NotRequired[Union[str, None]]
-    payload: NotRequired[Union[str, None]]
+    health_percentage: int
+    description: Union[str, None]
+    documentation: Union[str, None]
+    files: CommunityProfilePropFilesType
+    updated_at: Union[datetime, None]
+    content_reports_enabled: NotRequired[bool]
 
 
 __all__ = (
-    "FileCommitType",
-    "FileCommitPropContentType",
-    "FileCommitPropContentPropLinksType",
-    "FileCommitPropCommitType",
-    "FileCommitPropCommitPropAuthorType",
-    "FileCommitPropCommitPropCommitterType",
-    "FileCommitPropCommitPropTreeType",
-    "FileCommitPropCommitPropParentsItemsType",
-    "FileCommitPropCommitPropVerificationType",
+    "CommunityProfilePropFilesType",
+    "CommunityHealthFileType",
+    "CommunityProfileType",
 )

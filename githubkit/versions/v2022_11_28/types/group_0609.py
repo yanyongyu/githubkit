@@ -13,16 +13,16 @@ from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0002 import SimpleUserType
-from .group_0383 import EnterpriseWebhooksType
-from .group_0384 import SimpleInstallationType
-from .group_0385 import OrganizationSimpleWebhooksType
-from .group_0413 import PersonalAccessTokenRequestType
+from .group_0384 import EnterpriseWebhooksType
+from .group_0385 import SimpleInstallationType
+from .group_0386 import OrganizationSimpleWebhooksType
+from .group_0414 import PersonalAccessTokenRequestType
 
 
-class WebhookPersonalAccessTokenRequestCancelledType(TypedDict):
-    """personal_access_token_request cancelled event"""
+class WebhookPersonalAccessTokenRequestApprovedType(TypedDict):
+    """personal_access_token_request approved event"""
 
-    action: Literal["cancelled"]
+    action: Literal["approved"]
     personal_access_token_request: PersonalAccessTokenRequestType
     enterprise: NotRequired[EnterpriseWebhooksType]
     organization: OrganizationSimpleWebhooksType
@@ -30,4 +30,4 @@ class WebhookPersonalAccessTokenRequestCancelledType(TypedDict):
     installation: SimpleInstallationType
 
 
-__all__ = ("WebhookPersonalAccessTokenRequestCancelledType",)
+__all__ = ("WebhookPersonalAccessTokenRequestApprovedType",)

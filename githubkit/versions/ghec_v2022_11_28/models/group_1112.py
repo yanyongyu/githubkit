@@ -9,47 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union, Literal
+
 from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_1109 import ReposOwnerRepoPagesPutBodyPropSourceAnyof1
 
-class ReposOwnerRepoPullsPostBody(GitHubModel):
-    """ReposOwnerRepoPullsPostBody"""
 
-    title: Missing[str] = Field(
+class ReposOwnerRepoPagesPutBodyAnyof2(GitHubModel):
+    """ReposOwnerRepoPagesPutBodyAnyof2"""
+
+    cname: Union[str, None] = Field(
+        description='Specify a custom domain for the repository. Sending a `null` value will remove the custom domain. For more about custom domains, see "[Using a custom domain with GitHub Pages](https://docs.github.com/enterprise-cloud@latest//pages/configuring-a-custom-domain-for-your-github-pages-site)."'
+    )
+    https_enforced: Missing[bool] = Field(
         default=UNSET,
-        description="The title of the new pull request. Required unless `issue` is specified.",
+        description="Specify whether HTTPS should be enforced for the repository.",
     )
-    head: str = Field(
-        description="The name of the branch where your changes are implemented. For cross-repository pull requests in the same network, namespace `head` with a user like this: `username:branch`."
-    )
-    head_repo: Missing[str] = Field(
+    build_type: Missing[Literal["legacy", "workflow"]] = Field(
         default=UNSET,
-        description="The name of the repository where the changes in the pull request were made. This field is required for cross-repository pull requests if both repositories are owned by the same organization.",
+        description="The process by which the GitHub Pages site will be built. `workflow` means that the site is built by a custom GitHub Actions workflow. `legacy` means that the site is built by GitHub when changes are pushed to a specific branch.",
     )
-    base: str = Field(
-        description="The name of the branch you want the changes pulled into. This should be an existing branch on the current repository. You cannot submit a pull request to one repository that requests a merge to a base of another repository."
-    )
-    body: Missing[str] = Field(
-        default=UNSET, description="The contents of the pull request."
-    )
-    maintainer_can_modify: Missing[bool] = Field(
+    source: Missing[
+        Union[
+            Literal["gh-pages", "master", "master /docs"],
+            ReposOwnerRepoPagesPutBodyPropSourceAnyof1,
+        ]
+    ] = Field(default=UNSET)
+    public: Missing[bool] = Field(
         default=UNSET,
-        description="Indicates whether [maintainers can modify](https://docs.github.com/enterprise-cloud@latest//articles/allowing-changes-to-a-pull-request-branch-created-from-a-fork/) the pull request.",
-    )
-    draft: Missing[bool] = Field(
-        default=UNSET,
-        description='Indicates whether the pull request is a draft. See "[Draft Pull Requests](https://docs.github.com/enterprise-cloud@latest//articles/about-pull-requests#draft-pull-requests)" in the GitHub Help documentation to learn more.',
-    )
-    issue: Missing[int] = Field(
-        default=UNSET,
-        description="An issue in the repository to convert to a pull request. The issue title, body, and comments will become the title, body, and comments on the new pull request. Required unless `title` is specified.",
+        description="Configures access controls for the GitHub Pages site. If public is set to `true`, the site is accessible to anyone on the internet. If set to `false`, the site will only be accessible to users who have at least `read` access to the repository that published the site. This includes anyone in your Enterprise if the repository is set to `internal` visibility.",
     )
 
 
-model_rebuild(ReposOwnerRepoPullsPostBody)
+model_rebuild(ReposOwnerRepoPagesPutBodyAnyof2)
 
-__all__ = ("ReposOwnerRepoPullsPostBody",)
+__all__ = ("ReposOwnerRepoPagesPutBodyAnyof2",)

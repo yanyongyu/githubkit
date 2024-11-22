@@ -9,32 +9,128 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from datetime import datetime
+from typing import Union, Literal
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class RepositorySubscription(GitHubModel):
-    """Repository Invitation
+class RepositoryAdvisoryCreate(GitHubModel):
+    """RepositoryAdvisoryCreate"""
 
-    Repository invitations let you manage who you collaborate with.
+    summary: str = Field(
+        max_length=1024, description="A short summary of the advisory."
+    )
+    description: str = Field(
+        max_length=65535,
+        description="A detailed description of what the advisory impacts.",
+    )
+    cve_id: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The Common Vulnerabilities and Exposures (CVE) ID."
+    )
+    vulnerabilities: list[RepositoryAdvisoryCreatePropVulnerabilitiesItems] = Field(
+        description="A product affected by the vulnerability detailed in a repository security advisory."
+    )
+    cwe_ids: Missing[Union[list[str], None]] = Field(
+        default=UNSET, description="A list of Common Weakness Enumeration (CWE) IDs."
+    )
+    credits_: Missing[Union[list[RepositoryAdvisoryCreatePropCreditsItems], None]] = (
+        Field(
+            default=UNSET,
+            alias="credits",
+            description="A list of users receiving credit for their participation in the security advisory.",
+        )
+    )
+    severity: Missing[Union[None, Literal["critical", "high", "medium", "low"]]] = (
+        Field(
+            default=UNSET,
+            description="The severity of the advisory. You must choose between setting this field or `cvss_vector_string`.",
+        )
+    )
+    cvss_vector_string: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The CVSS vector that calculates the severity of the advisory. You must choose between setting this field or `severity`.",
+    )
+    start_private_fork: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether to create a temporary private fork of the repository to collaborate on a fix.",
+    )
+
+
+class RepositoryAdvisoryCreatePropCreditsItems(GitHubModel):
+    """RepositoryAdvisoryCreatePropCreditsItems"""
+
+    login: str = Field(description="The username of the user credited.")
+    type: Literal[
+        "analyst",
+        "finder",
+        "reporter",
+        "coordinator",
+        "remediation_developer",
+        "remediation_reviewer",
+        "remediation_verifier",
+        "tool",
+        "sponsor",
+        "other",
+    ] = Field(description="The type of credit the user is receiving.")
+
+
+class RepositoryAdvisoryCreatePropVulnerabilitiesItems(GitHubModel):
+    """RepositoryAdvisoryCreatePropVulnerabilitiesItems"""
+
+    package: RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackage = Field(
+        description="The name of the package affected by the vulnerability."
+    )
+    vulnerable_version_range: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The range of the package versions affected by the vulnerability.",
+    )
+    patched_versions: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The package version(s) that resolve the vulnerability.",
+    )
+    vulnerable_functions: Missing[Union[list[str], None]] = Field(
+        default=UNSET, description="The functions in the package that are affected."
+    )
+
+
+class RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackage(GitHubModel):
+    """RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackage
+
+    The name of the package affected by the vulnerability.
     """
 
-    subscribed: bool = Field(
-        description="Determines if notifications should be received from this repository."
+    ecosystem: Literal[
+        "rubygems",
+        "npm",
+        "pip",
+        "maven",
+        "nuget",
+        "composer",
+        "go",
+        "rust",
+        "erlang",
+        "actions",
+        "pub",
+        "other",
+        "swift",
+    ] = Field(description="The package's language or package management ecosystem.")
+    name: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The unique package name within its ecosystem."
     )
-    ignored: bool = Field(
-        description="Determines if all notifications should be blocked from this repository."
-    )
-    reason: Union[str, None] = Field()
-    created_at: datetime = Field()
-    url: str = Field()
-    repository_url: str = Field()
 
 
-model_rebuild(RepositorySubscription)
+model_rebuild(RepositoryAdvisoryCreate)
+model_rebuild(RepositoryAdvisoryCreatePropCreditsItems)
+model_rebuild(RepositoryAdvisoryCreatePropVulnerabilitiesItems)
+model_rebuild(RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackage)
 
-__all__ = ("RepositorySubscription",)
+__all__ = (
+    "RepositoryAdvisoryCreate",
+    "RepositoryAdvisoryCreatePropCreditsItems",
+    "RepositoryAdvisoryCreatePropVulnerabilitiesItems",
+    "RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackage",
+)

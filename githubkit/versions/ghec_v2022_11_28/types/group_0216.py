@@ -9,128 +9,85 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import TypedDict, NotRequired
 
 
-class BranchRestrictionPolicyType(TypedDict):
-    """Branch Restriction Policy
+class WorkflowRunUsageType(TypedDict):
+    """Workflow Run Usage
 
-    Branch Restriction Policy
+    Workflow Run Usage
     """
 
-    url: str
-    users_url: str
-    teams_url: str
-    apps_url: str
-    users: list[BranchRestrictionPolicyPropUsersItemsType]
-    teams: list[BranchRestrictionPolicyPropTeamsItemsType]
-    apps: list[BranchRestrictionPolicyPropAppsItemsType]
+    billable: WorkflowRunUsagePropBillableType
+    run_duration_ms: NotRequired[int]
 
 
-class BranchRestrictionPolicyPropUsersItemsType(TypedDict):
-    """BranchRestrictionPolicyPropUsersItems"""
+class WorkflowRunUsagePropBillableType(TypedDict):
+    """WorkflowRunUsagePropBillable"""
 
-    login: NotRequired[str]
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    avatar_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    organizations_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    events_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    type: NotRequired[str]
-    site_admin: NotRequired[bool]
-    user_view_type: NotRequired[str]
+    ubuntu: NotRequired[WorkflowRunUsagePropBillablePropUbuntuType]
+    macos: NotRequired[WorkflowRunUsagePropBillablePropMacosType]
+    windows: NotRequired[WorkflowRunUsagePropBillablePropWindowsType]
 
 
-class BranchRestrictionPolicyPropTeamsItemsType(TypedDict):
-    """BranchRestrictionPolicyPropTeamsItems"""
+class WorkflowRunUsagePropBillablePropUbuntuType(TypedDict):
+    """WorkflowRunUsagePropBillablePropUbuntu"""
 
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    name: NotRequired[str]
-    slug: NotRequired[str]
-    description: NotRequired[Union[str, None]]
-    privacy: NotRequired[str]
-    notification_setting: NotRequired[str]
-    permission: NotRequired[str]
-    members_url: NotRequired[str]
-    repositories_url: NotRequired[str]
-    parent: NotRequired[Union[str, None]]
+    total_ms: int
+    jobs: int
+    job_runs: NotRequired[
+        list[WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItemsType]
+    ]
 
 
-class BranchRestrictionPolicyPropAppsItemsType(TypedDict):
-    """BranchRestrictionPolicyPropAppsItems"""
+class WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItemsType(TypedDict):
+    """WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItems"""
 
-    id: NotRequired[int]
-    slug: NotRequired[str]
-    node_id: NotRequired[str]
-    owner: NotRequired[BranchRestrictionPolicyPropAppsItemsPropOwnerType]
-    name: NotRequired[str]
-    client_id: NotRequired[str]
-    description: NotRequired[str]
-    external_url: NotRequired[str]
-    html_url: NotRequired[str]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
-    permissions: NotRequired[BranchRestrictionPolicyPropAppsItemsPropPermissionsType]
-    events: NotRequired[list[str]]
+    job_id: int
+    duration_ms: int
 
 
-class BranchRestrictionPolicyPropAppsItemsPropOwnerType(TypedDict):
-    """BranchRestrictionPolicyPropAppsItemsPropOwner"""
+class WorkflowRunUsagePropBillablePropMacosType(TypedDict):
+    """WorkflowRunUsagePropBillablePropMacos"""
 
-    login: NotRequired[str]
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    url: NotRequired[str]
-    repos_url: NotRequired[str]
-    events_url: NotRequired[str]
-    hooks_url: NotRequired[str]
-    issues_url: NotRequired[str]
-    members_url: NotRequired[str]
-    public_members_url: NotRequired[str]
-    avatar_url: NotRequired[str]
-    description: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    type: NotRequired[str]
-    site_admin: NotRequired[bool]
-    user_view_type: NotRequired[str]
+    total_ms: int
+    jobs: int
+    job_runs: NotRequired[
+        list[WorkflowRunUsagePropBillablePropMacosPropJobRunsItemsType]
+    ]
 
 
-class BranchRestrictionPolicyPropAppsItemsPropPermissionsType(TypedDict):
-    """BranchRestrictionPolicyPropAppsItemsPropPermissions"""
+class WorkflowRunUsagePropBillablePropMacosPropJobRunsItemsType(TypedDict):
+    """WorkflowRunUsagePropBillablePropMacosPropJobRunsItems"""
 
-    metadata: NotRequired[str]
-    contents: NotRequired[str]
-    issues: NotRequired[str]
-    single_file: NotRequired[str]
+    job_id: int
+    duration_ms: int
+
+
+class WorkflowRunUsagePropBillablePropWindowsType(TypedDict):
+    """WorkflowRunUsagePropBillablePropWindows"""
+
+    total_ms: int
+    jobs: int
+    job_runs: NotRequired[
+        list[WorkflowRunUsagePropBillablePropWindowsPropJobRunsItemsType]
+    ]
+
+
+class WorkflowRunUsagePropBillablePropWindowsPropJobRunsItemsType(TypedDict):
+    """WorkflowRunUsagePropBillablePropWindowsPropJobRunsItems"""
+
+    job_id: int
+    duration_ms: int
 
 
 __all__ = (
-    "BranchRestrictionPolicyType",
-    "BranchRestrictionPolicyPropUsersItemsType",
-    "BranchRestrictionPolicyPropTeamsItemsType",
-    "BranchRestrictionPolicyPropAppsItemsType",
-    "BranchRestrictionPolicyPropAppsItemsPropOwnerType",
-    "BranchRestrictionPolicyPropAppsItemsPropPermissionsType",
+    "WorkflowRunUsageType",
+    "WorkflowRunUsagePropBillableType",
+    "WorkflowRunUsagePropBillablePropUbuntuType",
+    "WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItemsType",
+    "WorkflowRunUsagePropBillablePropMacosType",
+    "WorkflowRunUsagePropBillablePropMacosPropJobRunsItemsType",
+    "WorkflowRunUsagePropBillablePropWindowsType",
+    "WorkflowRunUsagePropBillablePropWindowsPropJobRunsItemsType",
 )

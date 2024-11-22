@@ -9,52 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from datetime import datetime
-
 from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0219 import GitUser
-from .group_0220 import Verification
+from .group_0392 import Meta
+from .group_0402 import ScimEnterpriseUserResponseAllof1PropGroupsItems
 
 
-class CommitSearchResultItemPropCommit(GitHubModel):
-    """CommitSearchResultItemPropCommit"""
+class ScimEnterpriseUserResponseAllof1(GitHubModel):
+    """ScimEnterpriseUserResponseAllof1"""
 
-    author: CommitSearchResultItemPropCommitPropAuthor = Field()
-    committer: Union[None, GitUser] = Field()
-    comment_count: int = Field()
-    message: str = Field()
-    tree: CommitSearchResultItemPropCommitPropTree = Field()
-    url: str = Field()
-    verification: Missing[Verification] = Field(default=UNSET, title="Verification")
-
-
-class CommitSearchResultItemPropCommitPropAuthor(GitHubModel):
-    """CommitSearchResultItemPropCommitPropAuthor"""
-
-    name: str = Field()
-    email: str = Field()
-    date: datetime = Field()
+    id: str = Field(description="The internally generated id for the user object.")
+    groups: Missing[list[ScimEnterpriseUserResponseAllof1PropGroupsItems]] = Field(
+        default=UNSET,
+        description="Provisioned SCIM groups that the user is a member of.",
+    )
+    meta: Meta = Field(
+        description="The metadata associated with the creation/updates to the user."
+    )
 
 
-class CommitSearchResultItemPropCommitPropTree(GitHubModel):
-    """CommitSearchResultItemPropCommitPropTree"""
+model_rebuild(ScimEnterpriseUserResponseAllof1)
 
-    sha: str = Field()
-    url: str = Field()
-
-
-model_rebuild(CommitSearchResultItemPropCommit)
-model_rebuild(CommitSearchResultItemPropCommitPropAuthor)
-model_rebuild(CommitSearchResultItemPropCommitPropTree)
-
-__all__ = (
-    "CommitSearchResultItemPropCommit",
-    "CommitSearchResultItemPropCommitPropAuthor",
-    "CommitSearchResultItemPropCommitPropTree",
-)
+__all__ = ("ScimEnterpriseUserResponseAllof1",)

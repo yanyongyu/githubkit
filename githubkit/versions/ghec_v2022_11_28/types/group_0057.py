@@ -9,44 +9,52 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union, Literal
+from datetime import date, datetime
 from typing_extensions import TypedDict, NotRequired
 
+from .group_0056 import TeamType
 from .group_0002 import SimpleUserType
-from .group_0045 import SimpleRepositoryType
-from .group_0056 import DependabotAlertSecurityAdvisoryType
-from .group_0055 import DependabotAlertSecurityVulnerabilityType
-from .group_0058 import DependabotAlertWithRepositoryPropDependencyType
+from .group_0031 import OrganizationSimpleType
 
 
-class DependabotAlertWithRepositoryType(TypedDict):
-    """DependabotAlertWithRepository
+class CopilotSeatDetailsType(TypedDict):
+    """Copilot Business Seat Detail
 
-    A Dependabot alert.
+    Information about a Copilot Business seat assignment for a user, team, or
+    organization.
     """
 
-    number: int
-    state: Literal["auto_dismissed", "dismissed", "fixed", "open"]
-    dependency: DependabotAlertWithRepositoryPropDependencyType
-    security_advisory: DependabotAlertSecurityAdvisoryType
-    security_vulnerability: DependabotAlertSecurityVulnerabilityType
+    assignee: SimpleUserType
+    organization: NotRequired[Union[None, OrganizationSimpleType]]
+    assigning_team: NotRequired[Union[TeamType, EnterpriseTeamType, None]]
+    pending_cancellation_date: NotRequired[Union[date, None]]
+    last_activity_at: NotRequired[Union[datetime, None]]
+    last_activity_editor: NotRequired[Union[str, None]]
+    created_at: datetime
+    updated_at: NotRequired[datetime]
+    plan_type: NotRequired[Literal["business", "enterprise", "unknown"]]
+
+
+class EnterpriseTeamType(TypedDict):
+    """Enterprise Team
+
+    Group of enterprise owners and/or members
+    """
+
+    id: int
+    name: str
+    slug: str
     url: str
+    sync_to_organizations: str
+    group_id: NotRequired[Union[str, None]]
     html_url: str
+    members_url: str
     created_at: datetime
     updated_at: datetime
-    dismissed_at: Union[datetime, None]
-    dismissed_by: Union[None, SimpleUserType]
-    dismissed_reason: Union[
-        None,
-        Literal[
-            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
-        ],
-    ]
-    dismissed_comment: Union[str, None]
-    fixed_at: Union[datetime, None]
-    auto_dismissed_at: NotRequired[Union[datetime, None]]
-    repository: SimpleRepositoryType
 
 
-__all__ = ("DependabotAlertWithRepositoryType",)
+__all__ = (
+    "CopilotSeatDetailsType",
+    "EnterpriseTeamType",
+)

@@ -14,7 +14,7 @@ from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class WebhooksMilestone3Type(TypedDict):
+class WebhooksMilestoneType(TypedDict):
     """Milestone
 
     A collection of related issues and pull requests.
@@ -23,7 +23,7 @@ class WebhooksMilestone3Type(TypedDict):
     closed_at: Union[datetime, None]
     closed_issues: int
     created_at: datetime
-    creator: Union[WebhooksMilestone3PropCreatorType, None]
+    creator: Union[WebhooksMilestonePropCreatorType, None]
     description: Union[str, None]
     due_on: Union[datetime, None]
     html_url: str
@@ -38,7 +38,7 @@ class WebhooksMilestone3Type(TypedDict):
     url: str
 
 
-class WebhooksMilestone3PropCreatorType(TypedDict):
+class WebhooksMilestonePropCreatorType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -60,12 +60,12 @@ class WebhooksMilestone3PropCreatorType(TypedDict):
     site_admin: NotRequired[bool]
     starred_url: NotRequired[str]
     subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
     url: NotRequired[str]
     user_view_type: NotRequired[str]
 
 
 __all__ = (
-    "WebhooksMilestone3Type",
-    "WebhooksMilestone3PropCreatorType",
+    "WebhooksMilestoneType",
+    "WebhooksMilestonePropCreatorType",
 )

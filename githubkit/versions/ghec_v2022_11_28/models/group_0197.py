@@ -9,24 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ActionsSecret(GitHubModel):
-    """Actions Secret
+class RateLimit(GitHubModel):
+    """Rate Limit"""
 
-    Set secrets for GitHub Actions.
-    """
-
-    name: str = Field(description="The name of the secret.")
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
+    limit: int = Field()
+    remaining: int = Field()
+    reset: int = Field()
+    used: int = Field()
 
 
-model_rebuild(ActionsSecret)
+model_rebuild(RateLimit)
 
-__all__ = ("ActionsSecret",)
+__all__ = ("RateLimit",)

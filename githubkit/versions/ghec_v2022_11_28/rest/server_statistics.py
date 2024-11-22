@@ -43,9 +43,9 @@ class ServerStatisticsClient:
     def get_server_statistics(
         self,
         enterprise_or_org: str,
+        *,
         date_start: Missing[str] = UNSET,
         date_end: Missing[str] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[ServerStatisticsItems], list[ServerStatisticsItemsType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/admin-stats#get-github-enterprise-server-statistics"""
@@ -72,9 +72,9 @@ class ServerStatisticsClient:
     async def async_get_server_statistics(
         self,
         enterprise_or_org: str,
+        *,
         date_start: Missing[str] = UNSET,
         date_end: Missing[str] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[ServerStatisticsItems], list[ServerStatisticsItemsType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/admin-stats#get-github-enterprise-server-statistics"""

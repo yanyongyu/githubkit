@@ -9,16 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
+from typing_extensions import TypedDict, NotRequired
 
 
-class HookResponseType(TypedDict):
-    """Hook Response"""
+class GitTreeType(TypedDict):
+    """Git Tree
 
-    code: Union[int, None]
-    status: Union[str, None]
-    message: Union[str, None]
+    The hierarchy between files in a Git repository.
+    """
+
+    sha: str
+    url: str
+    truncated: bool
+    tree: list[GitTreePropTreeItemsType]
 
 
-__all__ = ("HookResponseType",)
+class GitTreePropTreeItemsType(TypedDict):
+    """GitTreePropTreeItems"""
+
+    path: NotRequired[str]
+    mode: NotRequired[str]
+    type: NotRequired[str]
+    sha: NotRequired[str]
+    size: NotRequired[int]
+    url: NotRequired[str]
+
+
+__all__ = (
+    "GitTreeType",
+    "GitTreePropTreeItemsType",
+)

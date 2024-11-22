@@ -18,35 +18,24 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class RepositoryAdvisoryUpdate(GitHubModel):
-    """RepositoryAdvisoryUpdate"""
+class PrivateVulnerabilityReportCreate(GitHubModel):
+    """PrivateVulnerabilityReportCreate"""
 
-    summary: Missing[str] = Field(
-        max_length=1024, default=UNSET, description="A short summary of the advisory."
+    summary: str = Field(
+        max_length=1024, description="A short summary of the advisory."
     )
-    description: Missing[str] = Field(
+    description: str = Field(
         max_length=65535,
-        default=UNSET,
         description="A detailed description of what the advisory impacts.",
     )
-    cve_id: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The Common Vulnerabilities and Exposures (CVE) ID."
-    )
-    vulnerabilities: Missing[list[RepositoryAdvisoryUpdatePropVulnerabilitiesItems]] = (
-        Field(
-            default=UNSET,
-            description="A product affected by the vulnerability detailed in a repository security advisory.",
-        )
+    vulnerabilities: Missing[
+        Union[list[PrivateVulnerabilityReportCreatePropVulnerabilitiesItems], None]
+    ] = Field(
+        default=UNSET,
+        description="An array of products affected by the vulnerability detailed in a repository security advisory.",
     )
     cwe_ids: Missing[Union[list[str], None]] = Field(
         default=UNSET, description="A list of Common Weakness Enumeration (CWE) IDs."
-    )
-    credits_: Missing[Union[list[RepositoryAdvisoryUpdatePropCreditsItems], None]] = (
-        Field(
-            default=UNSET,
-            alias="credits",
-            description="A list of users receiving credit for their participation in the security advisory.",
-        )
     )
     severity: Missing[Union[None, Literal["critical", "high", "medium", "low"]]] = (
         Field(
@@ -58,42 +47,17 @@ class RepositoryAdvisoryUpdate(GitHubModel):
         default=UNSET,
         description="The CVSS vector that calculates the severity of the advisory. You must choose between setting this field or `severity`.",
     )
-    state: Missing[Literal["published", "closed", "draft"]] = Field(
-        default=UNSET, description="The state of the advisory."
-    )
-    collaborating_users: Missing[Union[list[str], None]] = Field(
+    start_private_fork: Missing[bool] = Field(
         default=UNSET,
-        description="A list of usernames who have been granted write access to the advisory.",
-    )
-    collaborating_teams: Missing[Union[list[str], None]] = Field(
-        default=UNSET,
-        description="A list of team slugs which have been granted write access to the advisory.",
+        description="Whether to create a temporary private fork of the repository to collaborate on a fix.",
     )
 
 
-class RepositoryAdvisoryUpdatePropCreditsItems(GitHubModel):
-    """RepositoryAdvisoryUpdatePropCreditsItems"""
+class PrivateVulnerabilityReportCreatePropVulnerabilitiesItems(GitHubModel):
+    """PrivateVulnerabilityReportCreatePropVulnerabilitiesItems"""
 
-    login: str = Field(description="The username of the user credited.")
-    type: Literal[
-        "analyst",
-        "finder",
-        "reporter",
-        "coordinator",
-        "remediation_developer",
-        "remediation_reviewer",
-        "remediation_verifier",
-        "tool",
-        "sponsor",
-        "other",
-    ] = Field(description="The type of credit the user is receiving.")
-
-
-class RepositoryAdvisoryUpdatePropVulnerabilitiesItems(GitHubModel):
-    """RepositoryAdvisoryUpdatePropVulnerabilitiesItems"""
-
-    package: RepositoryAdvisoryUpdatePropVulnerabilitiesItemsPropPackage = Field(
-        description="The name of the package affected by the vulnerability."
+    package: PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackage = (
+        Field(description="The name of the package affected by the vulnerability.")
     )
     vulnerable_version_range: Missing[Union[str, None]] = Field(
         default=UNSET,
@@ -108,8 +72,8 @@ class RepositoryAdvisoryUpdatePropVulnerabilitiesItems(GitHubModel):
     )
 
 
-class RepositoryAdvisoryUpdatePropVulnerabilitiesItemsPropPackage(GitHubModel):
-    """RepositoryAdvisoryUpdatePropVulnerabilitiesItemsPropPackage
+class PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackage(GitHubModel):
+    """PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackage
 
     The name of the package affected by the vulnerability.
     """
@@ -134,14 +98,12 @@ class RepositoryAdvisoryUpdatePropVulnerabilitiesItemsPropPackage(GitHubModel):
     )
 
 
-model_rebuild(RepositoryAdvisoryUpdate)
-model_rebuild(RepositoryAdvisoryUpdatePropCreditsItems)
-model_rebuild(RepositoryAdvisoryUpdatePropVulnerabilitiesItems)
-model_rebuild(RepositoryAdvisoryUpdatePropVulnerabilitiesItemsPropPackage)
+model_rebuild(PrivateVulnerabilityReportCreate)
+model_rebuild(PrivateVulnerabilityReportCreatePropVulnerabilitiesItems)
+model_rebuild(PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackage)
 
 __all__ = (
-    "RepositoryAdvisoryUpdate",
-    "RepositoryAdvisoryUpdatePropCreditsItems",
-    "RepositoryAdvisoryUpdatePropVulnerabilitiesItems",
-    "RepositoryAdvisoryUpdatePropVulnerabilitiesItemsPropPackage",
+    "PrivateVulnerabilityReportCreate",
+    "PrivateVulnerabilityReportCreatePropVulnerabilitiesItems",
+    "PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackage",
 )

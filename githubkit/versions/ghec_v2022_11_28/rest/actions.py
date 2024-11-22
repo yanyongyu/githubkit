@@ -690,9 +690,9 @@ class ActionsClient:
     def get_actions_cache_usage_by_repo_for_org(
         self,
         org: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         OrgsOrgActionsCacheUsageByRepositoryGetResponse200,
@@ -722,9 +722,9 @@ class ActionsClient:
     async def async_get_actions_cache_usage_by_repo_for_org(
         self,
         org: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         OrgsOrgActionsCacheUsageByRepositoryGetResponse200,
@@ -900,9 +900,9 @@ class ActionsClient:
     def list_selected_repositories_enabled_github_actions_organization(
         self,
         org: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         OrgsOrgActionsPermissionsRepositoriesGetResponse200,
@@ -932,9 +932,9 @@ class ActionsClient:
     async def async_list_selected_repositories_enabled_github_actions_organization(
         self,
         org: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         OrgsOrgActionsPermissionsRepositoriesGetResponse200,
@@ -1446,10 +1446,10 @@ class ActionsClient:
     def list_self_hosted_runner_groups_for_org(
         self,
         org: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         visible_to_repository: Missing[str] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         OrgsOrgActionsRunnerGroupsGetResponse200,
@@ -1480,10 +1480,10 @@ class ActionsClient:
     async def async_list_self_hosted_runner_groups_for_org(
         self,
         org: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         visible_to_repository: Missing[str] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         OrgsOrgActionsRunnerGroupsGetResponse200,
@@ -1841,9 +1841,9 @@ class ActionsClient:
         self,
         org: str,
         runner_group_id: int,
+        *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200,
@@ -1876,9 +1876,9 @@ class ActionsClient:
         self,
         org: str,
         runner_group_id: int,
+        *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200,
@@ -2107,9 +2107,9 @@ class ActionsClient:
         self,
         org: str,
         runner_group_id: int,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200,
@@ -2142,9 +2142,9 @@ class ActionsClient:
         self,
         org: str,
         runner_group_id: int,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200,
@@ -2372,10 +2372,10 @@ class ActionsClient:
     def list_self_hosted_runners_for_org(
         self,
         org: str,
+        *,
         name: Missing[str] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         OrgsOrgActionsRunnersGetResponse200, OrgsOrgActionsRunnersGetResponse200Type
@@ -2405,10 +2405,10 @@ class ActionsClient:
     async def async_list_self_hosted_runners_for_org(
         self,
         org: str,
+        *,
         name: Missing[str] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         OrgsOrgActionsRunnersGetResponse200, OrgsOrgActionsRunnersGetResponse200Type
@@ -3288,9 +3288,9 @@ class ActionsClient:
     def list_org_secrets(
         self,
         org: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         OrgsOrgActionsSecretsGetResponse200, OrgsOrgActionsSecretsGetResponse200Type
@@ -3319,9 +3319,9 @@ class ActionsClient:
     async def async_list_org_secrets(
         self,
         org: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         OrgsOrgActionsSecretsGetResponse200, OrgsOrgActionsSecretsGetResponse200Type
@@ -3591,9 +3591,9 @@ class ActionsClient:
         self,
         org: str,
         secret_name: str,
+        *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200,
@@ -3624,9 +3624,9 @@ class ActionsClient:
         self,
         org: str,
         secret_name: str,
+        *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200,
@@ -3852,9 +3852,9 @@ class ActionsClient:
     def list_org_variables(
         self,
         org: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         OrgsOrgActionsVariablesGetResponse200, OrgsOrgActionsVariablesGetResponse200Type
@@ -3883,9 +3883,9 @@ class ActionsClient:
     async def async_list_org_variables(
         self,
         org: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         OrgsOrgActionsVariablesGetResponse200, OrgsOrgActionsVariablesGetResponse200Type
@@ -4219,9 +4219,9 @@ class ActionsClient:
         self,
         org: str,
         name: str,
+        *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         OrgsOrgActionsVariablesNameRepositoriesGetResponse200,
@@ -4253,9 +4253,9 @@ class ActionsClient:
         self,
         org: str,
         name: str,
+        *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         OrgsOrgActionsVariablesNameRepositoriesGetResponse200,
@@ -4485,10 +4485,10 @@ class ActionsClient:
         self,
         owner: str,
         repo: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         name: Missing[str] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoActionsArtifactsGetResponse200,
@@ -4520,10 +4520,10 @@ class ActionsClient:
         self,
         owner: str,
         repo: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         name: Missing[str] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoActionsArtifactsGetResponse200,
@@ -4737,6 +4737,7 @@ class ActionsClient:
         self,
         owner: str,
         repo: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         ref: Missing[str] = UNSET,
@@ -4745,7 +4746,6 @@ class ActionsClient:
             Literal["created_at", "last_accessed_at", "size_in_bytes"]
         ] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[ActionsCacheList, ActionsCacheListType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/cache#list-github-actions-caches-for-a-repository"""
@@ -4777,6 +4777,7 @@ class ActionsClient:
         self,
         owner: str,
         repo: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         ref: Missing[str] = UNSET,
@@ -4785,7 +4786,6 @@ class ActionsClient:
             Literal["created_at", "last_accessed_at", "size_in_bytes"]
         ] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[ActionsCacheList, ActionsCacheListType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/cache#list-github-actions-caches-for-a-repository"""
@@ -4817,9 +4817,9 @@ class ActionsClient:
         self,
         owner: str,
         repo: str,
+        *,
         key: str,
         ref: Missing[str] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[ActionsCacheList, ActionsCacheListType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/cache#delete-github-actions-caches-for-a-repository-using-a-cache-key"""
@@ -4847,9 +4847,9 @@ class ActionsClient:
         self,
         owner: str,
         repo: str,
+        *,
         key: str,
         ref: Missing[str] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[ActionsCacheList, ActionsCacheListType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/cache#delete-github-actions-caches-for-a-repository-using-a-cache-key"""
@@ -5337,9 +5337,9 @@ class ActionsClient:
         self,
         owner: str,
         repo: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoActionsOrganizationSecretsGetResponse200,
@@ -5370,9 +5370,9 @@ class ActionsClient:
         self,
         owner: str,
         repo: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoActionsOrganizationSecretsGetResponse200,
@@ -5403,9 +5403,9 @@ class ActionsClient:
         self,
         owner: str,
         repo: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoActionsOrganizationVariablesGetResponse200,
@@ -5436,9 +5436,9 @@ class ActionsClient:
         self,
         owner: str,
         repo: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoActionsOrganizationVariablesGetResponse200,
@@ -6095,10 +6095,10 @@ class ActionsClient:
         self,
         owner: str,
         repo: str,
+        *,
         name: Missing[str] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoActionsRunnersGetResponse200,
@@ -6130,10 +6130,10 @@ class ActionsClient:
         self,
         owner: str,
         repo: str,
+        *,
         name: Missing[str] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoActionsRunnersGetResponse200,
@@ -7053,6 +7053,7 @@ class ActionsClient:
         self,
         owner: str,
         repo: str,
+        *,
         actor: Missing[str] = UNSET,
         branch: Missing[str] = UNSET,
         event: Missing[str] = UNSET,
@@ -7080,7 +7081,6 @@ class ActionsClient:
         exclude_pull_requests: Missing[bool] = UNSET,
         check_suite_id: Missing[int] = UNSET,
         head_sha: Missing[str] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoActionsRunsGetResponse200,
@@ -7119,6 +7119,7 @@ class ActionsClient:
         self,
         owner: str,
         repo: str,
+        *,
         actor: Missing[str] = UNSET,
         branch: Missing[str] = UNSET,
         event: Missing[str] = UNSET,
@@ -7146,7 +7147,6 @@ class ActionsClient:
         exclude_pull_requests: Missing[bool] = UNSET,
         check_suite_id: Missing[int] = UNSET,
         head_sha: Missing[str] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoActionsRunsGetResponse200,
@@ -7186,8 +7186,8 @@ class ActionsClient:
         owner: str,
         repo: str,
         run_id: int,
-        exclude_pull_requests: Missing[bool] = UNSET,
         *,
+        exclude_pull_requests: Missing[bool] = UNSET,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[WorkflowRun, WorkflowRunType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#get-a-workflow-run"""
@@ -7215,8 +7215,8 @@ class ActionsClient:
         owner: str,
         repo: str,
         run_id: int,
-        exclude_pull_requests: Missing[bool] = UNSET,
         *,
+        exclude_pull_requests: Missing[bool] = UNSET,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[WorkflowRun, WorkflowRunType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#get-a-workflow-run"""
@@ -7384,10 +7384,10 @@ class ActionsClient:
         owner: str,
         repo: str,
         run_id: int,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         name: Missing[str] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200,
@@ -7420,10 +7420,10 @@ class ActionsClient:
         owner: str,
         repo: str,
         run_id: int,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         name: Missing[str] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200,
@@ -7457,8 +7457,8 @@ class ActionsClient:
         repo: str,
         run_id: int,
         attempt_number: int,
-        exclude_pull_requests: Missing[bool] = UNSET,
         *,
+        exclude_pull_requests: Missing[bool] = UNSET,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[WorkflowRun, WorkflowRunType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#get-a-workflow-run-attempt"""
@@ -7487,8 +7487,8 @@ class ActionsClient:
         repo: str,
         run_id: int,
         attempt_number: int,
-        exclude_pull_requests: Missing[bool] = UNSET,
         *,
+        exclude_pull_requests: Missing[bool] = UNSET,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[WorkflowRun, WorkflowRunType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#get-a-workflow-run-attempt"""
@@ -7517,9 +7517,9 @@ class ActionsClient:
         repo: str,
         run_id: int,
         attempt_number: int,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200,
@@ -7558,9 +7558,9 @@ class ActionsClient:
         repo: str,
         run_id: int,
         attempt_number: int,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200,
@@ -7916,10 +7916,10 @@ class ActionsClient:
         owner: str,
         repo: str,
         run_id: int,
+        *,
         filter_: Missing[Literal["latest", "all"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoActionsRunsRunIdJobsGetResponse200,
@@ -7952,10 +7952,10 @@ class ActionsClient:
         owner: str,
         repo: str,
         run_id: int,
+        *,
         filter_: Missing[Literal["latest", "all"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoActionsRunsRunIdJobsGetResponse200,
@@ -8575,9 +8575,9 @@ class ActionsClient:
         self,
         owner: str,
         repo: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoActionsSecretsGetResponse200,
@@ -8608,9 +8608,9 @@ class ActionsClient:
         self,
         owner: str,
         repo: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoActionsSecretsGetResponse200,
@@ -8893,9 +8893,9 @@ class ActionsClient:
         self,
         owner: str,
         repo: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoActionsVariablesGetResponse200,
@@ -8926,9 +8926,9 @@ class ActionsClient:
         self,
         owner: str,
         repo: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoActionsVariablesGetResponse200,
@@ -9275,9 +9275,9 @@ class ActionsClient:
         self,
         owner: str,
         repo: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoActionsWorkflowsGetResponse200,
@@ -9308,9 +9308,9 @@ class ActionsClient:
         self,
         owner: str,
         repo: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoActionsWorkflowsGetResponse200,
@@ -9596,6 +9596,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         workflow_id: Union[int, str],
+        *,
         actor: Missing[str] = UNSET,
         branch: Missing[str] = UNSET,
         event: Missing[str] = UNSET,
@@ -9623,7 +9624,6 @@ class ActionsClient:
         exclude_pull_requests: Missing[bool] = UNSET,
         check_suite_id: Missing[int] = UNSET,
         head_sha: Missing[str] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200,
@@ -9663,6 +9663,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         workflow_id: Union[int, str],
+        *,
         actor: Missing[str] = UNSET,
         branch: Missing[str] = UNSET,
         event: Missing[str] = UNSET,
@@ -9690,7 +9691,6 @@ class ActionsClient:
         exclude_pull_requests: Missing[bool] = UNSET,
         check_suite_id: Missing[int] = UNSET,
         head_sha: Missing[str] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200,
@@ -9776,9 +9776,9 @@ class ActionsClient:
         owner: str,
         repo: str,
         environment_name: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200,
@@ -9812,9 +9812,9 @@ class ActionsClient:
         owner: str,
         repo: str,
         environment_name: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200,
@@ -10126,9 +10126,9 @@ class ActionsClient:
         owner: str,
         repo: str,
         environment_name: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200,
@@ -10162,9 +10162,9 @@ class ActionsClient:
         owner: str,
         repo: str,
         environment_name: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200,

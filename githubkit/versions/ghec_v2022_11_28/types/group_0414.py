@@ -13,38 +13,68 @@ from typing import Union
 from datetime import datetime
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0080 import MarketplaceListingPlanType
 
+class PrivateUserType(TypedDict):
+    """Private User
 
-class UserMarketplacePurchaseType(TypedDict):
-    """User Marketplace Purchase
-
-    User Marketplace Purchase
+    Private User
     """
 
-    billing_cycle: str
-    next_billing_date: Union[datetime, None]
-    unit_count: Union[int, None]
-    on_free_trial: bool
-    free_trial_ends_on: Union[datetime, None]
-    updated_at: Union[datetime, None]
-    account: MarketplaceAccountType
-    plan: MarketplaceListingPlanType
-
-
-class MarketplaceAccountType(TypedDict):
-    """Marketplace Account"""
-
-    url: str
-    id: int
-    type: str
-    node_id: NotRequired[str]
     login: str
-    email: NotRequired[Union[str, None]]
-    organization_billing_email: NotRequired[Union[str, None]]
+    id: int
+    user_view_type: NotRequired[str]
+    node_id: str
+    avatar_url: str
+    gravatar_id: Union[str, None]
+    url: str
+    html_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    name: Union[str, None]
+    company: Union[str, None]
+    blog: Union[str, None]
+    location: Union[str, None]
+    email: Union[str, None]
+    notification_email: NotRequired[Union[str, None]]
+    hireable: Union[bool, None]
+    bio: Union[str, None]
+    twitter_username: NotRequired[Union[str, None]]
+    public_repos: int
+    public_gists: int
+    followers: int
+    following: int
+    created_at: datetime
+    updated_at: datetime
+    private_gists: int
+    total_private_repos: int
+    owned_private_repos: int
+    disk_usage: int
+    collaborators: int
+    two_factor_authentication: bool
+    plan: NotRequired[PrivateUserPropPlanType]
+    business_plus: NotRequired[bool]
+    ldap_dn: NotRequired[str]
+
+
+class PrivateUserPropPlanType(TypedDict):
+    """PrivateUserPropPlan"""
+
+    collaborators: int
+    name: str
+    space: int
+    private_repos: int
 
 
 __all__ = (
-    "UserMarketplacePurchaseType",
-    "MarketplaceAccountType",
+    "PrivateUserType",
+    "PrivateUserPropPlanType",
 )

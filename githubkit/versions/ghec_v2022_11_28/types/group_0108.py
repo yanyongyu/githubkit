@@ -9,17 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Union, Literal
+from typing_extensions import TypedDict, NotRequired
 
 
-class RepositoryFineGrainedPermissionType(TypedDict):
-    """Repository Fine-Grained Permission
+class OrganizationCustomRepositoryRoleUpdateSchemaType(TypedDict):
+    """OrganizationCustomRepositoryRoleUpdateSchema"""
 
-    A fine-grained permission that protects repository resources.
-    """
+    name: NotRequired[str]
+    description: NotRequired[Union[str, None]]
+    base_role: NotRequired[Literal["read", "triage", "write", "maintain"]]
+    permissions: NotRequired[list[str]]
 
-    name: str
-    description: str
 
-
-__all__ = ("RepositoryFineGrainedPermissionType",)
+__all__ = ("OrganizationCustomRepositoryRoleUpdateSchemaType",)

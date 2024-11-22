@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -18,18 +18,17 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 from .group_0002 import SimpleUser
-from .group_0174 import RepositoryRuleset
-from .group_0420 import EnterpriseWebhooks
-from .group_0421 import SimpleInstallation
-from .group_0423 import RepositoryWebhooks
-from .group_0422 import OrganizationSimpleWebhooks
-from .group_0750 import WebhookRepositoryRulesetEditedPropChanges
+from .group_0427 import EnterpriseWebhooks
+from .group_0428 import SimpleInstallation
+from .group_0430 import RepositoryWebhooks
+from .group_0429 import OrganizationSimpleWebhooks
 
 
-class WebhookRepositoryRulesetEdited(GitHubModel):
-    """repository ruleset edited event"""
+class WebhookRepositoryEdited(GitHubModel):
+    """repository edited event"""
 
     action: Literal["edited"] = Field()
+    changes: WebhookRepositoryEditedPropChanges = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -45,19 +44,64 @@ class WebhookRepositoryRulesetEdited(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repository: Missing[RepositoryWebhooks] = Field(
-        default=UNSET,
+    repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    repository_ruleset: RepositoryRuleset = Field(
-        title="Repository ruleset",
-        description="A set of rules to apply when specified conditions are met.",
-    )
-    changes: Missing[WebhookRepositoryRulesetEditedPropChanges] = Field(default=UNSET)
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookRepositoryRulesetEdited)
+class WebhookRepositoryEditedPropChanges(GitHubModel):
+    """WebhookRepositoryEditedPropChanges"""
 
-__all__ = ("WebhookRepositoryRulesetEdited",)
+    default_branch: Missing[WebhookRepositoryEditedPropChangesPropDefaultBranch] = (
+        Field(default=UNSET)
+    )
+    description: Missing[WebhookRepositoryEditedPropChangesPropDescription] = Field(
+        default=UNSET
+    )
+    homepage: Missing[WebhookRepositoryEditedPropChangesPropHomepage] = Field(
+        default=UNSET
+    )
+    topics: Missing[WebhookRepositoryEditedPropChangesPropTopics] = Field(default=UNSET)
+
+
+class WebhookRepositoryEditedPropChangesPropDefaultBranch(GitHubModel):
+    """WebhookRepositoryEditedPropChangesPropDefaultBranch"""
+
+    from_: str = Field(alias="from")
+
+
+class WebhookRepositoryEditedPropChangesPropDescription(GitHubModel):
+    """WebhookRepositoryEditedPropChangesPropDescription"""
+
+    from_: Union[str, None] = Field(alias="from")
+
+
+class WebhookRepositoryEditedPropChangesPropHomepage(GitHubModel):
+    """WebhookRepositoryEditedPropChangesPropHomepage"""
+
+    from_: Union[str, None] = Field(alias="from")
+
+
+class WebhookRepositoryEditedPropChangesPropTopics(GitHubModel):
+    """WebhookRepositoryEditedPropChangesPropTopics"""
+
+    from_: Missing[Union[list[str], None]] = Field(default=UNSET, alias="from")
+
+
+model_rebuild(WebhookRepositoryEdited)
+model_rebuild(WebhookRepositoryEditedPropChanges)
+model_rebuild(WebhookRepositoryEditedPropChangesPropDefaultBranch)
+model_rebuild(WebhookRepositoryEditedPropChangesPropDescription)
+model_rebuild(WebhookRepositoryEditedPropChangesPropHomepage)
+model_rebuild(WebhookRepositoryEditedPropChangesPropTopics)
+
+__all__ = (
+    "WebhookRepositoryEdited",
+    "WebhookRepositoryEditedPropChanges",
+    "WebhookRepositoryEditedPropChangesPropDefaultBranch",
+    "WebhookRepositoryEditedPropChangesPropDescription",
+    "WebhookRepositoryEditedPropChangesPropHomepage",
+    "WebhookRepositoryEditedPropChangesPropTopics",
+)

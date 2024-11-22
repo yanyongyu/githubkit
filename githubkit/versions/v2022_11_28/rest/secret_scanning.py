@@ -60,6 +60,7 @@ class SecretScanningClient:
     def list_alerts_for_enterprise(
         self,
         enterprise: str,
+        *,
         state: Missing[Literal["open", "resolved"]] = UNSET,
         secret_type: Missing[str] = UNSET,
         resolution: Missing[str] = UNSET,
@@ -71,7 +72,6 @@ class SecretScanningClient:
         validity: Missing[str] = UNSET,
         is_publicly_leaked: Missing[bool] = UNSET,
         is_multi_repo: Missing[bool] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         list[OrganizationSecretScanningAlert], list[OrganizationSecretScanningAlertType]
@@ -117,6 +117,7 @@ class SecretScanningClient:
     async def async_list_alerts_for_enterprise(
         self,
         enterprise: str,
+        *,
         state: Missing[Literal["open", "resolved"]] = UNSET,
         secret_type: Missing[str] = UNSET,
         resolution: Missing[str] = UNSET,
@@ -128,7 +129,6 @@ class SecretScanningClient:
         validity: Missing[str] = UNSET,
         is_publicly_leaked: Missing[bool] = UNSET,
         is_multi_repo: Missing[bool] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         list[OrganizationSecretScanningAlert], list[OrganizationSecretScanningAlertType]
@@ -174,6 +174,7 @@ class SecretScanningClient:
     def list_alerts_for_org(
         self,
         org: str,
+        *,
         state: Missing[Literal["open", "resolved"]] = UNSET,
         secret_type: Missing[str] = UNSET,
         resolution: Missing[str] = UNSET,
@@ -186,7 +187,6 @@ class SecretScanningClient:
         validity: Missing[str] = UNSET,
         is_publicly_leaked: Missing[bool] = UNSET,
         is_multi_repo: Missing[bool] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         list[OrganizationSecretScanningAlert], list[OrganizationSecretScanningAlertType]
@@ -233,6 +233,7 @@ class SecretScanningClient:
     async def async_list_alerts_for_org(
         self,
         org: str,
+        *,
         state: Missing[Literal["open", "resolved"]] = UNSET,
         secret_type: Missing[str] = UNSET,
         resolution: Missing[str] = UNSET,
@@ -245,7 +246,6 @@ class SecretScanningClient:
         validity: Missing[str] = UNSET,
         is_publicly_leaked: Missing[bool] = UNSET,
         is_multi_repo: Missing[bool] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         list[OrganizationSecretScanningAlert], list[OrganizationSecretScanningAlertType]
@@ -293,6 +293,7 @@ class SecretScanningClient:
         self,
         owner: str,
         repo: str,
+        *,
         state: Missing[Literal["open", "resolved"]] = UNSET,
         secret_type: Missing[str] = UNSET,
         resolution: Missing[str] = UNSET,
@@ -305,7 +306,6 @@ class SecretScanningClient:
         validity: Missing[str] = UNSET,
         is_publicly_leaked: Missing[bool] = UNSET,
         is_multi_repo: Missing[bool] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[SecretScanningAlert], list[SecretScanningAlertType]]:
         """See also: https://docs.github.com/rest/secret-scanning/secret-scanning#list-secret-scanning-alerts-for-a-repository"""
@@ -349,6 +349,7 @@ class SecretScanningClient:
         self,
         owner: str,
         repo: str,
+        *,
         state: Missing[Literal["open", "resolved"]] = UNSET,
         secret_type: Missing[str] = UNSET,
         resolution: Missing[str] = UNSET,
@@ -361,7 +362,6 @@ class SecretScanningClient:
         validity: Missing[str] = UNSET,
         is_publicly_leaked: Missing[bool] = UNSET,
         is_multi_repo: Missing[bool] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[SecretScanningAlert], list[SecretScanningAlertType]]:
         """See also: https://docs.github.com/rest/secret-scanning/secret-scanning#list-secret-scanning-alerts-for-a-repository"""
@@ -614,9 +614,9 @@ class SecretScanningClient:
         owner: str,
         repo: str,
         alert_number: int,
+        *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[SecretScanningLocation], list[SecretScanningLocationType]]:
         """See also: https://docs.github.com/rest/secret-scanning/secret-scanning#list-locations-for-a-secret-scanning-alert"""
@@ -651,9 +651,9 @@ class SecretScanningClient:
         owner: str,
         repo: str,
         alert_number: int,
+        *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[SecretScanningLocation], list[SecretScanningLocationType]]:
         """See also: https://docs.github.com/rest/secret-scanning/secret-scanning#list-locations-for-a-secret-scanning-alert"""

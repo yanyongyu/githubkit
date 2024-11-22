@@ -57,10 +57,10 @@ class ScimClient:
     def list_provisioned_identities(
         self,
         org: str,
+        *,
         start_index: Missing[int] = UNSET,
         count: Missing[int] = UNSET,
         filter_: Missing[str] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[ScimUserList, ScimUserListType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/scim/scim#list-scim-provisioned-identities"""
@@ -94,10 +94,10 @@ class ScimClient:
     async def async_list_provisioned_identities(
         self,
         org: str,
+        *,
         start_index: Missing[int] = UNSET,
         count: Missing[int] = UNSET,
         filter_: Missing[str] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[ScimUserList, ScimUserListType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/scim/scim#list-scim-provisioned-identities"""

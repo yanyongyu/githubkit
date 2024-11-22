@@ -17,21 +17,22 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_1038 import ReposOwnerRepoPagesPostBodyPropSource
 
+class ReposOwnerRepoPagesPostBodyPropSource(GitHubModel):
+    """ReposOwnerRepoPagesPostBodyPropSource
 
-class ReposOwnerRepoPagesPostBodyAnyof0(GitHubModel):
-    """ReposOwnerRepoPagesPostBodyAnyof0"""
+    The source branch and directory used to publish your Pages site.
+    """
 
-    build_type: Missing[Literal["legacy", "workflow"]] = Field(
+    branch: str = Field(
+        description="The repository branch used to publish your site's source files."
+    )
+    path: Missing[Literal["/", "/docs"]] = Field(
         default=UNSET,
-        description='The process in which the Page will be built. Possible values are `"legacy"` and `"workflow"`.',
-    )
-    source: ReposOwnerRepoPagesPostBodyPropSource = Field(
-        description="The source branch and directory used to publish your Pages site."
+        description="The repository directory that includes the source files for the Pages site. Allowed paths are `/` or `/docs`. Default: `/`",
     )
 
 
-model_rebuild(ReposOwnerRepoPagesPostBodyAnyof0)
+model_rebuild(ReposOwnerRepoPagesPostBodyPropSource)
 
-__all__ = ("ReposOwnerRepoPagesPostBodyAnyof0",)
+__all__ = ("ReposOwnerRepoPagesPostBodyPropSource",)

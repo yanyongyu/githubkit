@@ -105,9 +105,9 @@ class ClassroomClient:
     def list_accepted_assignments_for_an_assignment(
         self,
         assignment_id: int,
+        *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         list[ClassroomAcceptedAssignment], list[ClassroomAcceptedAssignmentType]
@@ -136,9 +136,9 @@ class ClassroomClient:
     async def async_list_accepted_assignments_for_an_assignment(
         self,
         assignment_id: int,
+        *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         list[ClassroomAcceptedAssignment], list[ClassroomAcceptedAssignmentType]
@@ -214,9 +214,9 @@ class ClassroomClient:
 
     def list_classrooms(
         self,
+        *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[SimpleClassroom], list[SimpleClassroomType]]:
         """See also: https://docs.github.com/rest/classroom/classroom#list-classrooms"""
@@ -242,9 +242,9 @@ class ClassroomClient:
 
     async def async_list_classrooms(
         self,
+        *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[SimpleClassroom], list[SimpleClassroomType]]:
         """See also: https://docs.github.com/rest/classroom/classroom#list-classrooms"""
@@ -319,9 +319,9 @@ class ClassroomClient:
     def list_assignments_for_a_classroom(
         self,
         classroom_id: int,
+        *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[SimpleClassroomAssignment], list[SimpleClassroomAssignmentType]]:
         """See also: https://docs.github.com/rest/classroom/classroom#list-assignments-for-a-classroom"""
@@ -348,9 +348,9 @@ class ClassroomClient:
     async def async_list_assignments_for_a_classroom(
         self,
         classroom_id: int,
+        *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[SimpleClassroomAssignment], list[SimpleClassroomAssignmentType]]:
         """See also: https://docs.github.com/rest/classroom/classroom#list-assignments-for-a-classroom"""

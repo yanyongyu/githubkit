@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
+from typing import Literal
 
 from pydantic import Field
 
@@ -17,23 +17,35 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0051 import SimpleRepository
 
-class OrganizationCustomRepositoryRoleCreateSchema(GitHubModel):
-    """OrganizationCustomRepositoryRoleCreateSchema"""
 
-    name: str = Field(description="The name of the custom role.")
-    description: Missing[Union[str, None]] = Field(
+class CodeSecurityConfigurationRepositories(GitHubModel):
+    """CodeSecurityConfigurationRepositories
+
+    Repositories associated with a code security configuration and attachment status
+    """
+
+    status: Missing[
+        Literal[
+            "attached",
+            "attaching",
+            "detached",
+            "removed",
+            "enforced",
+            "failed",
+            "updating",
+            "removed_by_enterprise",
+        ]
+    ] = Field(
         default=UNSET,
-        description="A short description about who this role is for or what permissions it grants.",
+        description="The attachment status of the code security configuration on the repository.",
     )
-    base_role: Literal["read", "triage", "write", "maintain"] = Field(
-        description="The system role from which this role inherits permissions."
-    )
-    permissions: list[str] = Field(
-        description="A list of additional permissions included in this role."
+    repository: Missing[SimpleRepository] = Field(
+        default=UNSET, title="Simple Repository", description="A GitHub repository."
     )
 
 
-model_rebuild(OrganizationCustomRepositoryRoleCreateSchema)
+model_rebuild(CodeSecurityConfigurationRepositories)
 
-__all__ = ("OrganizationCustomRepositoryRoleCreateSchema",)
+__all__ = ("CodeSecurityConfigurationRepositories",)

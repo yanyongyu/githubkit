@@ -18,34 +18,86 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0002 import SimpleUser
+from .group_0075 import Issue
+from .group_0076 import IssueComment
 
 
-class GistCommit(GitHubModel):
-    """Gist Commit
+class EventPropPayload(GitHubModel):
+    """EventPropPayload"""
 
-    Gist Commit
+    action: Missing[str] = Field(default=UNSET)
+    issue: Missing[Issue] = Field(
+        default=UNSET,
+        title="Issue",
+        description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
+    )
+    comment: Missing[IssueComment] = Field(
+        default=UNSET,
+        title="Issue Comment",
+        description="Comments provide a way for people to collaborate on an issue.",
+    )
+    pages: Missing[list[EventPropPayloadPropPagesItems]] = Field(default=UNSET)
+
+
+class EventPropPayloadPropPagesItems(GitHubModel):
+    """EventPropPayloadPropPagesItems"""
+
+    page_name: Missing[str] = Field(default=UNSET)
+    title: Missing[str] = Field(default=UNSET)
+    summary: Missing[Union[str, None]] = Field(default=UNSET)
+    action: Missing[str] = Field(default=UNSET)
+    sha: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+
+
+class Event(GitHubModel):
+    """Event
+
+    Event
     """
 
+    id: str = Field()
+    type: Union[str, None] = Field()
+    actor: Actor = Field(title="Actor", description="Actor")
+    repo: EventPropRepo = Field()
+    org: Missing[Actor] = Field(default=UNSET, title="Actor", description="Actor")
+    payload: EventPropPayload = Field()
+    public: bool = Field()
+    created_at: Union[datetime, None] = Field()
+
+
+class Actor(GitHubModel):
+    """Actor
+
+    Actor
+    """
+
+    id: int = Field()
+    login: str = Field()
+    display_login: Missing[str] = Field(default=UNSET)
+    gravatar_id: Union[str, None] = Field()
     url: str = Field()
-    version: str = Field()
-    user: Union[None, SimpleUser] = Field()
-    change_status: GistCommitPropChangeStatus = Field()
-    committed_at: datetime = Field()
+    avatar_url: str = Field()
 
 
-class GistCommitPropChangeStatus(GitHubModel):
-    """GistCommitPropChangeStatus"""
+class EventPropRepo(GitHubModel):
+    """EventPropRepo"""
 
-    total: Missing[int] = Field(default=UNSET)
-    additions: Missing[int] = Field(default=UNSET)
-    deletions: Missing[int] = Field(default=UNSET)
+    id: int = Field()
+    name: str = Field()
+    url: str = Field()
 
 
-model_rebuild(GistCommit)
-model_rebuild(GistCommitPropChangeStatus)
+model_rebuild(EventPropPayload)
+model_rebuild(EventPropPayloadPropPagesItems)
+model_rebuild(Event)
+model_rebuild(Actor)
+model_rebuild(EventPropRepo)
 
 __all__ = (
-    "GistCommit",
-    "GistCommitPropChangeStatus",
+    "EventPropPayload",
+    "EventPropPayloadPropPagesItems",
+    "Event",
+    "Actor",
+    "EventPropRepo",
 )

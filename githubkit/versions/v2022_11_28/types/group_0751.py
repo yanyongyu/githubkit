@@ -14,25 +14,25 @@ from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0002 import SimpleUserType
-from .group_0433 import WebhooksTeam1Type
-from .group_0383 import EnterpriseWebhooksType
-from .group_0384 import SimpleInstallationType
-from .group_0385 import OrganizationSimpleWebhooksType
+from .group_0434 import WebhooksTeam1Type
+from .group_0384 import EnterpriseWebhooksType
+from .group_0385 import SimpleInstallationType
+from .group_0386 import OrganizationSimpleWebhooksType
 
 
-class WebhookTeamDeletedType(TypedDict):
-    """team deleted event"""
+class WebhookTeamCreatedType(TypedDict):
+    """team created event"""
 
-    action: Literal["deleted"]
+    action: Literal["created"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: OrganizationSimpleWebhooksType
-    repository: NotRequired[WebhookTeamDeletedPropRepositoryType]
-    sender: NotRequired[SimpleUserType]
+    repository: NotRequired[WebhookTeamCreatedPropRepositoryType]
+    sender: SimpleUserType
     team: WebhooksTeam1Type
 
 
-class WebhookTeamDeletedPropRepositoryType(TypedDict):
+class WebhookTeamCreatedPropRepositoryType(TypedDict):
     """Repository
 
     A git repository
@@ -58,7 +58,7 @@ class WebhookTeamDeletedPropRepositoryType(TypedDict):
     contributors_url: str
     created_at: Union[int, datetime]
     custom_properties: NotRequired[
-        WebhookTeamDeletedPropRepositoryPropCustomPropertiesType
+        WebhookTeamCreatedPropRepositoryPropCustomPropertiesType
     ]
     default_branch: str
     delete_branch_on_merge: NotRequired[bool]
@@ -93,7 +93,7 @@ class WebhookTeamDeletedPropRepositoryType(TypedDict):
     labels_url: str
     language: Union[str, None]
     languages_url: str
-    license_: Union[WebhookTeamDeletedPropRepositoryPropLicenseType, None]
+    license_: Union[WebhookTeamCreatedPropRepositoryPropLicenseType, None]
     master_branch: NotRequired[str]
     merges_url: str
     milestones_url: str
@@ -104,8 +104,8 @@ class WebhookTeamDeletedPropRepositoryType(TypedDict):
     open_issues: int
     open_issues_count: int
     organization: NotRequired[str]
-    owner: Union[WebhookTeamDeletedPropRepositoryPropOwnerType, None]
-    permissions: NotRequired[WebhookTeamDeletedPropRepositoryPropPermissionsType]
+    owner: Union[WebhookTeamCreatedPropRepositoryPropOwnerType, None]
+    permissions: NotRequired[WebhookTeamCreatedPropRepositoryPropPermissionsType]
     private: bool
     public: NotRequired[bool]
     pulls_url: str
@@ -132,8 +132,8 @@ class WebhookTeamDeletedPropRepositoryType(TypedDict):
     watchers_count: int
 
 
-class WebhookTeamDeletedPropRepositoryPropCustomPropertiesType(TypedDict):
-    """WebhookTeamDeletedPropRepositoryPropCustomProperties
+class WebhookTeamCreatedPropRepositoryPropCustomPropertiesType(TypedDict):
+    """WebhookTeamCreatedPropRepositoryPropCustomProperties
 
     The custom properties that were defined for the repository. The keys are the
     custom property names, and the values are the corresponding custom property
@@ -141,7 +141,7 @@ class WebhookTeamDeletedPropRepositoryPropCustomPropertiesType(TypedDict):
     """
 
 
-class WebhookTeamDeletedPropRepositoryPropLicenseType(TypedDict):
+class WebhookTeamCreatedPropRepositoryPropLicenseType(TypedDict):
     """License"""
 
     key: str
@@ -151,7 +151,7 @@ class WebhookTeamDeletedPropRepositoryPropLicenseType(TypedDict):
     url: Union[str, None]
 
 
-class WebhookTeamDeletedPropRepositoryPropOwnerType(TypedDict):
+class WebhookTeamCreatedPropRepositoryPropOwnerType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -178,8 +178,8 @@ class WebhookTeamDeletedPropRepositoryPropOwnerType(TypedDict):
     user_view_type: NotRequired[str]
 
 
-class WebhookTeamDeletedPropRepositoryPropPermissionsType(TypedDict):
-    """WebhookTeamDeletedPropRepositoryPropPermissions"""
+class WebhookTeamCreatedPropRepositoryPropPermissionsType(TypedDict):
+    """WebhookTeamCreatedPropRepositoryPropPermissions"""
 
     admin: bool
     maintain: NotRequired[bool]
@@ -189,10 +189,10 @@ class WebhookTeamDeletedPropRepositoryPropPermissionsType(TypedDict):
 
 
 __all__ = (
-    "WebhookTeamDeletedType",
-    "WebhookTeamDeletedPropRepositoryType",
-    "WebhookTeamDeletedPropRepositoryPropCustomPropertiesType",
-    "WebhookTeamDeletedPropRepositoryPropLicenseType",
-    "WebhookTeamDeletedPropRepositoryPropOwnerType",
-    "WebhookTeamDeletedPropRepositoryPropPermissionsType",
+    "WebhookTeamCreatedType",
+    "WebhookTeamCreatedPropRepositoryType",
+    "WebhookTeamCreatedPropRepositoryPropCustomPropertiesType",
+    "WebhookTeamCreatedPropRepositoryPropLicenseType",
+    "WebhookTeamCreatedPropRepositoryPropOwnerType",
+    "WebhookTeamCreatedPropRepositoryPropPermissionsType",
 )

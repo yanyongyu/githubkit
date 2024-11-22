@@ -9,20 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict
 
-from .group_0190 import RateLimitType
-from .group_0192 import RateLimitOverviewPropResourcesType
 
+class TeamMembershipType(TypedDict):
+    """Team Membership
 
-class RateLimitOverviewType(TypedDict):
-    """Rate Limit Overview
-
-    Rate Limit Overview
+    Team Membership
     """
 
-    resources: RateLimitOverviewPropResourcesType
-    rate: RateLimitType
+    url: str
+    role: Literal["member", "maintainer"]
+    state: Literal["active", "pending"]
 
 
-__all__ = ("RateLimitOverviewType",)
+__all__ = ("TeamMembershipType",)

@@ -11,18 +11,9 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0031 import OrganizationSimpleType
+
+class EmojisGetResponse200Type(TypedDict):
+    """EmojisGetResponse200"""
 
 
-class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200Type(
-    TypedDict
-):
-    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200"""
-
-    total_count: float
-    organizations: list[OrganizationSimpleType]
-
-
-__all__ = (
-    "EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200Type",
-)
+__all__ = ("EmojisGetResponse200Type",)

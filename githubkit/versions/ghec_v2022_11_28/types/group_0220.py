@@ -9,17 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import TypedDict
 
 
-class VerificationType(TypedDict):
-    """Verification"""
+class CheckAutomatedSecurityFixesType(TypedDict):
+    """Check Automated Security Fixes
 
-    verified: bool
-    reason: str
-    payload: Union[str, None]
-    signature: Union[str, None]
+    Check Automated Security Fixes
+    """
+
+    enabled: bool
+    paused: bool
 
 
-__all__ = ("VerificationType",)
+__all__ = ("CheckAutomatedSecurityFixesType",)

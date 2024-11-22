@@ -78,9 +78,9 @@ class ActivityClient:
 
     def list_public_events(
         self,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Event], list[EventType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/events#list-public-events"""
@@ -114,9 +114,9 @@ class ActivityClient:
 
     async def async_list_public_events(
         self,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Event], list[EventType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/events#list-public-events"""
@@ -192,9 +192,9 @@ class ActivityClient:
         self,
         owner: str,
         repo: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Event], list[EventType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/events#list-public-events-for-a-network-of-repositories"""
@@ -226,9 +226,9 @@ class ActivityClient:
         self,
         owner: str,
         repo: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Event], list[EventType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/events#list-public-events-for-a-network-of-repositories"""
@@ -258,13 +258,13 @@ class ActivityClient:
 
     def list_notifications_for_authenticated_user(
         self,
+        *,
         all_: Missing[bool] = UNSET,
         participating: Missing[bool] = UNSET,
         since: Missing[datetime] = UNSET,
         before: Missing[datetime] = UNSET,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Thread], list[ThreadType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/notifications#list-notifications-for-the-authenticated-user"""
@@ -299,13 +299,13 @@ class ActivityClient:
 
     async def async_list_notifications_for_authenticated_user(
         self,
+        *,
         all_: Missing[bool] = UNSET,
         participating: Missing[bool] = UNSET,
         since: Missing[datetime] = UNSET,
         before: Missing[datetime] = UNSET,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Thread], list[ThreadType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/notifications#list-notifications-for-the-authenticated-user"""
@@ -811,9 +811,9 @@ class ActivityClient:
     def list_public_org_events(
         self,
         org: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Event], list[EventType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/events#list-public-organization-events"""
@@ -840,9 +840,9 @@ class ActivityClient:
     async def async_list_public_org_events(
         self,
         org: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Event], list[EventType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/events#list-public-organization-events"""
@@ -870,9 +870,9 @@ class ActivityClient:
         self,
         owner: str,
         repo: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Event], list[EventType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/events#list-repository-events"""
@@ -900,9 +900,9 @@ class ActivityClient:
         self,
         owner: str,
         repo: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Event], list[EventType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/events#list-repository-events"""
@@ -930,13 +930,13 @@ class ActivityClient:
         self,
         owner: str,
         repo: str,
+        *,
         all_: Missing[bool] = UNSET,
         participating: Missing[bool] = UNSET,
         since: Missing[datetime] = UNSET,
         before: Missing[datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Thread], list[ThreadType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/notifications#list-repository-notifications-for-the-authenticated-user"""
@@ -968,13 +968,13 @@ class ActivityClient:
         self,
         owner: str,
         repo: str,
+        *,
         all_: Missing[bool] = UNSET,
         participating: Missing[bool] = UNSET,
         since: Missing[datetime] = UNSET,
         before: Missing[datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Thread], list[ThreadType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/notifications#list-repository-notifications-for-the-authenticated-user"""
@@ -1140,9 +1140,9 @@ class ActivityClient:
         self,
         owner: str,
         repo: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         Union[list[SimpleUser], list[Stargazer]],
@@ -1178,9 +1178,9 @@ class ActivityClient:
         self,
         owner: str,
         repo: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         Union[list[SimpleUser], list[Stargazer]],
@@ -1216,9 +1216,9 @@ class ActivityClient:
         self,
         owner: str,
         repo: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/watching#list-watchers"""
@@ -1246,9 +1246,9 @@ class ActivityClient:
         self,
         owner: str,
         repo: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/watching#list-watchers"""
@@ -1474,11 +1474,11 @@ class ActivityClient:
 
     def list_repos_starred_by_authenticated_user(
         self,
+        *,
         sort: Missing[Literal["created", "updated"]] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Repository], list[RepositoryType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/starring#list-repositories-starred-by-the-authenticated-user"""
@@ -1510,11 +1510,11 @@ class ActivityClient:
 
     async def async_list_repos_starred_by_authenticated_user(
         self,
+        *,
         sort: Missing[Literal["created", "updated"]] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Repository], list[RepositoryType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/starring#list-repositories-starred-by-the-authenticated-user"""
@@ -1702,9 +1702,9 @@ class ActivityClient:
 
     def list_watched_repos_for_authenticated_user(
         self,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/watching#list-repositories-watched-by-the-authenticated-user"""
@@ -1734,9 +1734,9 @@ class ActivityClient:
 
     async def async_list_watched_repos_for_authenticated_user(
         self,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/watching#list-repositories-watched-by-the-authenticated-user"""
@@ -1767,9 +1767,9 @@ class ActivityClient:
     def list_events_for_authenticated_user(
         self,
         username: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Event], list[EventType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/events#list-events-for-the-authenticated-user"""
@@ -1796,9 +1796,9 @@ class ActivityClient:
     async def async_list_events_for_authenticated_user(
         self,
         username: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Event], list[EventType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/events#list-events-for-the-authenticated-user"""
@@ -1826,9 +1826,9 @@ class ActivityClient:
         self,
         username: str,
         org: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Event], list[EventType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/events#list-organization-events-for-the-authenticated-user"""
@@ -1856,9 +1856,9 @@ class ActivityClient:
         self,
         username: str,
         org: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Event], list[EventType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/events#list-organization-events-for-the-authenticated-user"""
@@ -1885,9 +1885,9 @@ class ActivityClient:
     def list_public_events_for_user(
         self,
         username: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Event], list[EventType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/events#list-public-events-for-a-user"""
@@ -1914,9 +1914,9 @@ class ActivityClient:
     async def async_list_public_events_for_user(
         self,
         username: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Event], list[EventType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/events#list-public-events-for-a-user"""
@@ -1943,9 +1943,9 @@ class ActivityClient:
     def list_received_events_for_user(
         self,
         username: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Event], list[EventType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/events#list-events-received-by-the-authenticated-user"""
@@ -1972,9 +1972,9 @@ class ActivityClient:
     async def async_list_received_events_for_user(
         self,
         username: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Event], list[EventType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/events#list-events-received-by-the-authenticated-user"""
@@ -2001,9 +2001,9 @@ class ActivityClient:
     def list_received_public_events_for_user(
         self,
         username: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Event], list[EventType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/events#list-public-events-received-by-a-user"""
@@ -2030,9 +2030,9 @@ class ActivityClient:
     async def async_list_received_public_events_for_user(
         self,
         username: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Event], list[EventType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/events#list-public-events-received-by-a-user"""
@@ -2059,11 +2059,11 @@ class ActivityClient:
     def list_repos_starred_by_user(
         self,
         username: str,
+        *,
         sort: Missing[Literal["created", "updated"]] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         Union[list[StarredRepository], list[Repository]],
@@ -2097,11 +2097,11 @@ class ActivityClient:
     async def async_list_repos_starred_by_user(
         self,
         username: str,
+        *,
         sort: Missing[Literal["created", "updated"]] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         Union[list[StarredRepository], list[Repository]],
@@ -2135,9 +2135,9 @@ class ActivityClient:
     def list_repos_watched_by_user(
         self,
         username: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/watching#list-repositories-watched-by-a-user"""
@@ -2164,9 +2164,9 @@ class ActivityClient:
     async def async_list_repos_watched_by_user(
         self,
         username: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/watching#list-repositories-watched-by-a-user"""

@@ -14,12 +14,12 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ProjectsProjectIdColumnsPostBody(GitHubModel):
-    """ProjectsProjectIdColumnsPostBody"""
+class ProjectsColumnsColumnIdPatchBody(GitHubModel):
+    """ProjectsColumnsColumnIdPatchBody"""
 
     name: str = Field(description="Name of the project column")
 
 
-model_rebuild(ProjectsProjectIdColumnsPostBody)
+model_rebuild(ProjectsColumnsColumnIdPatchBody)
 
-__all__ = ("ProjectsProjectIdColumnsPostBody",)
+__all__ = ("ProjectsColumnsColumnIdPatchBody",)

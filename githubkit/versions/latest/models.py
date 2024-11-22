@@ -4689,6 +4689,9 @@ if TYPE_CHECKING:
         RepositoryRuleCommitterEmailPatternPropParameters as RepositoryRuleCommitterEmailPatternPropParameters,
     )
     from githubkit.versions.v2022_11_28.models import (
+        RepositoryRuleParamsRequiredReviewerConfiguration as RepositoryRuleParamsRequiredReviewerConfiguration,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         RepositoryRulesetConditionsRepositoryPropertySpec as RepositoryRulesetConditionsRepositoryPropertySpec,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -5173,6 +5176,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookWorkflowRunInProgressPropWorkflowRunPropActor as WebhookWorkflowRunInProgressPropWorkflowRunPropActor,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        DependencyGraphSpdxSbomPropSbomPropRelationshipsItems as DependencyGraphSpdxSbomPropSbomPropRelationshipsItems,
     )
     from githubkit.versions.v2022_11_28.models import (
         OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBody as OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBody,
@@ -9718,6 +9724,7 @@ else:
             "RepositoryRuleMergeQueuePropParameters",
             "RepositoryRuleRequiredDeployments",
             "RepositoryRuleRequiredDeploymentsPropParameters",
+            "RepositoryRuleParamsRequiredReviewerConfiguration",
             "RepositoryRulePullRequest",
             "RepositoryRulePullRequestPropParameters",
             "RepositoryRuleRequiredStatusChecks",
@@ -9962,6 +9969,7 @@ else:
             "DependencyGraphSpdxSbom",
             "DependencyGraphSpdxSbomPropSbom",
             "DependencyGraphSpdxSbomPropSbomPropCreationInfo",
+            "DependencyGraphSpdxSbomPropSbomPropRelationshipsItems",
             "DependencyGraphSpdxSbomPropSbomPropPackagesItems",
             "DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItems",
             "Metadata",

@@ -350,6 +350,7 @@ class ReposClient:
     def list_for_org(
         self,
         org: str,
+        *,
         type: Missing[
             Literal["all", "private", "forks", "sources", "member", "internal"]
         ] = UNSET,
@@ -357,7 +358,6 @@ class ReposClient:
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#list-organization-repositories"""
@@ -387,6 +387,7 @@ class ReposClient:
     async def async_list_for_org(
         self,
         org: str,
+        *,
         type: Missing[
             Literal["all", "private", "forks", "sources", "member", "internal"]
         ] = UNSET,
@@ -394,7 +395,6 @@ class ReposClient:
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#list-organization-repositories"""
@@ -606,10 +606,10 @@ class ReposClient:
     def get_org_rulesets(
         self,
         org: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         targets: Missing[str] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[RepositoryRuleset], list[RepositoryRulesetType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/rules#get-all-organization-repository-rulesets"""
@@ -641,10 +641,10 @@ class ReposClient:
     async def async_get_org_rulesets(
         self,
         org: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         targets: Missing[str] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[RepositoryRuleset], list[RepositoryRulesetType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/rules#get-all-organization-repository-rulesets"""
@@ -862,6 +862,7 @@ class ReposClient:
     def get_org_rule_suites(
         self,
         org: str,
+        *,
         ref: Missing[str] = UNSET,
         repository_name: Missing[int] = UNSET,
         time_period: Missing[Literal["hour", "day", "week", "month"]] = UNSET,
@@ -869,7 +870,6 @@ class ReposClient:
         rule_suite_result: Missing[Literal["pass", "fail", "bypass", "all"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[RuleSuitesItems], list[RuleSuitesItemsType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/rule-suites#list-organization-rule-suites"""
@@ -905,6 +905,7 @@ class ReposClient:
     async def async_get_org_rule_suites(
         self,
         org: str,
+        *,
         ref: Missing[str] = UNSET,
         repository_name: Missing[int] = UNSET,
         time_period: Missing[Literal["hour", "day", "week", "month"]] = UNSET,
@@ -912,7 +913,6 @@ class ReposClient:
         rule_suite_result: Missing[Literal["pass", "fail", "bypass", "all"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[RuleSuitesItems], list[RuleSuitesItemsType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/rule-suites#list-organization-rule-suites"""
@@ -1595,6 +1595,7 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
+        *,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         per_page: Missing[int] = UNSET,
         before: Missing[str] = UNSET,
@@ -1614,7 +1615,6 @@ class ReposClient:
                 "merge_queue_merge",
             ]
         ] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Activity], list[ActivityType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#list-repository-activities"""
@@ -1651,6 +1651,7 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
+        *,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         per_page: Missing[int] = UNSET,
         before: Missing[str] = UNSET,
@@ -1670,7 +1671,6 @@ class ReposClient:
                 "merge_queue_merge",
             ]
         ] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Activity], list[ActivityType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#list-repository-activities"""
@@ -1854,10 +1854,10 @@ class ReposClient:
         owner: str,
         repo: str,
         subject_digest: str,
+        *,
         per_page: Missing[int] = UNSET,
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoAttestationsSubjectDigestGetResponse200,
@@ -1890,10 +1890,10 @@ class ReposClient:
         owner: str,
         repo: str,
         subject_digest: str,
+        *,
         per_page: Missing[int] = UNSET,
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoAttestationsSubjectDigestGetResponse200,
@@ -2313,10 +2313,10 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
+        *,
         protected: Missing[bool] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[ShortBranch], list[ShortBranchType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branches#list-branches"""
@@ -2348,10 +2348,10 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
+        *,
         protected: Missing[bool] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[ShortBranch], list[ShortBranchType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branches#list-branches"""
@@ -5859,8 +5859,8 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
-        ref: Missing[str] = UNSET,
         *,
+        ref: Missing[str] = UNSET,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[CodeownersErrors, CodeownersErrorsType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#list-codeowners-errors"""
@@ -5888,8 +5888,8 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
-        ref: Missing[str] = UNSET,
         *,
+        ref: Missing[str] = UNSET,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[CodeownersErrors, CodeownersErrorsType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#list-codeowners-errors"""
@@ -5917,13 +5917,13 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
+        *,
         affiliation: Missing[Literal["outside", "direct", "all"]] = UNSET,
         permission: Missing[
             Literal["pull", "triage", "push", "maintain", "admin"]
         ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Collaborator], list[CollaboratorType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/collaborators/collaborators#list-repository-collaborators"""
@@ -5956,13 +5956,13 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
+        *,
         affiliation: Missing[Literal["outside", "direct", "all"]] = UNSET,
         permission: Missing[
             Literal["pull", "triage", "push", "maintain", "admin"]
         ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Collaborator], list[CollaboratorType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/collaborators/collaborators#list-repository-collaborators"""
@@ -6283,9 +6283,9 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[CommitComment], list[CommitCommentType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/commits/comments#list-commit-comments-for-a-repository"""
@@ -6313,9 +6313,9 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[CommitComment], list[CommitCommentType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/commits/comments#list-commit-comments-for-a-repository"""
@@ -6575,6 +6575,7 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
+        *,
         sha: Missing[str] = UNSET,
         path: Missing[str] = UNSET,
         author: Missing[str] = UNSET,
@@ -6583,7 +6584,6 @@ class ReposClient:
         until: Missing[datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Commit], list[CommitType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/commits/commits#list-commits"""
@@ -6623,6 +6623,7 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
+        *,
         sha: Missing[str] = UNSET,
         path: Missing[str] = UNSET,
         author: Missing[str] = UNSET,
@@ -6631,7 +6632,6 @@ class ReposClient:
         until: Missing[datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Commit], list[CommitType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/commits/commits#list-commits"""
@@ -6726,9 +6726,9 @@ class ReposClient:
         owner: str,
         repo: str,
         commit_sha: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[CommitComment], list[CommitCommentType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/commits/comments#list-commit-comments"""
@@ -6757,9 +6757,9 @@ class ReposClient:
         owner: str,
         repo: str,
         commit_sha: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[CommitComment], list[CommitCommentType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/commits/comments#list-commit-comments"""
@@ -6932,9 +6932,9 @@ class ReposClient:
         owner: str,
         repo: str,
         commit_sha: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[PullRequestSimple], list[PullRequestSimpleType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/commits/commits#list-pull-requests-associated-with-a-commit"""
@@ -6966,9 +6966,9 @@ class ReposClient:
         owner: str,
         repo: str,
         commit_sha: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[PullRequestSimple], list[PullRequestSimpleType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/commits/commits#list-pull-requests-associated-with-a-commit"""
@@ -7000,9 +7000,9 @@ class ReposClient:
         owner: str,
         repo: str,
         ref: str,
+        *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[Commit, CommitType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/commits/commits#get-a-commit"""
@@ -7043,9 +7043,9 @@ class ReposClient:
         owner: str,
         repo: str,
         ref: str,
+        *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[Commit, CommitType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/commits/commits#get-a-commit"""
@@ -7086,9 +7086,9 @@ class ReposClient:
         owner: str,
         repo: str,
         ref: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[CombinedCommitStatus, CombinedCommitStatusType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/commits/statuses#get-the-combined-status-for-a-specific-reference"""
@@ -7120,9 +7120,9 @@ class ReposClient:
         owner: str,
         repo: str,
         ref: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[CombinedCommitStatus, CombinedCommitStatusType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/commits/statuses#get-the-combined-status-for-a-specific-reference"""
@@ -7154,9 +7154,9 @@ class ReposClient:
         owner: str,
         repo: str,
         ref: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Status], list[StatusType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/commits/statuses#list-commit-statuses-for-a-reference"""
@@ -7185,9 +7185,9 @@ class ReposClient:
         owner: str,
         repo: str,
         ref: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Status], list[StatusType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/commits/statuses#list-commit-statuses-for-a-reference"""
@@ -7260,9 +7260,9 @@ class ReposClient:
         owner: str,
         repo: str,
         basehead: str,
+        *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[CommitComparison, CommitComparisonType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/commits/commits#compare-two-commits"""
@@ -7300,9 +7300,9 @@ class ReposClient:
         owner: str,
         repo: str,
         basehead: str,
+        *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[CommitComparison, CommitComparisonType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/commits/commits#compare-two-commits"""
@@ -7340,8 +7340,8 @@ class ReposClient:
         owner: str,
         repo: str,
         path: str,
-        ref: Missing[str] = UNSET,
         *,
+        ref: Missing[str] = UNSET,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         Union[
@@ -7396,8 +7396,8 @@ class ReposClient:
         owner: str,
         repo: str,
         path: str,
-        ref: Missing[str] = UNSET,
         *,
+        ref: Missing[str] = UNSET,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         Union[
@@ -7755,10 +7755,10 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
+        *,
         anon: Missing[str] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Contributor], list[ContributorType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#list-repository-contributors"""
@@ -7791,10 +7791,10 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
+        *,
         anon: Missing[str] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Contributor], list[ContributorType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#list-repository-contributors"""
@@ -7827,13 +7827,13 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
+        *,
         sha: Missing[str] = UNSET,
         ref: Missing[str] = UNSET,
         task: Missing[str] = UNSET,
         environment: Missing[Union[str, None]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Deployment], list[DeploymentType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/deployments/deployments#list-deployments"""
@@ -7865,13 +7865,13 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
+        *,
         sha: Missing[str] = UNSET,
         ref: Missing[str] = UNSET,
         task: Missing[str] = UNSET,
         environment: Missing[Union[str, None]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Deployment], list[DeploymentType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/deployments/deployments#list-deployments"""
@@ -8152,9 +8152,9 @@ class ReposClient:
         owner: str,
         repo: str,
         deployment_id: int,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[DeploymentStatus], list[DeploymentStatusType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/deployments/statuses#list-deployment-statuses"""
@@ -8186,9 +8186,9 @@ class ReposClient:
         owner: str,
         repo: str,
         deployment_id: int,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[DeploymentStatus], list[DeploymentStatusType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/deployments/statuses#list-deployment-statuses"""
@@ -8569,9 +8569,9 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoEnvironmentsGetResponse200,
@@ -8602,9 +8602,9 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoEnvironmentsGetResponse200,
@@ -8892,9 +8892,9 @@ class ReposClient:
         owner: str,
         repo: str,
         environment_name: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200,
@@ -8928,9 +8928,9 @@ class ReposClient:
         owner: str,
         repo: str,
         environment_name: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200,
@@ -9490,9 +9490,9 @@ class ReposClient:
         environment_name: str,
         repo: str,
         owner: str,
+        *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200,
@@ -9526,9 +9526,9 @@ class ReposClient:
         environment_name: str,
         repo: str,
         owner: str,
+        *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200,
@@ -9651,10 +9651,10 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
+        *,
         sort: Missing[Literal["newest", "oldest", "stargazers", "watchers"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/forks#list-forks"""
@@ -9686,10 +9686,10 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
+        *,
         sort: Missing[Literal["newest", "oldest", "stargazers", "watchers"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/forks#list-forks"""
@@ -9861,9 +9861,9 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Hook], list[HookType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/webhooks#list-repository-webhooks"""
@@ -9894,9 +9894,9 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Hook], list[HookType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/webhooks#list-repository-webhooks"""
@@ -10480,9 +10480,9 @@ class ReposClient:
         owner: str,
         repo: str,
         hook_id: int,
+        *,
         per_page: Missing[int] = UNSET,
         cursor: Missing[str] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[HookDeliveryItem], list[HookDeliveryItemType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/webhooks#list-deliveries-for-a-repository-webhook"""
@@ -10515,9 +10515,9 @@ class ReposClient:
         owner: str,
         repo: str,
         hook_id: int,
+        *,
         per_page: Missing[int] = UNSET,
         cursor: Missing[str] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[HookDeliveryItem], list[HookDeliveryItemType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/webhooks#list-deliveries-for-a-repository-webhook"""
@@ -10775,9 +10775,9 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[RepositoryInvitation], list[RepositoryInvitationType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/collaborators/invitations#list-repository-invitations"""
@@ -10805,9 +10805,9 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[RepositoryInvitation], list[RepositoryInvitationType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/collaborators/invitations#list-repository-invitations"""
@@ -11005,9 +11005,9 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[DeployKey], list[DeployKeyType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/deploy-keys/deploy-keys#list-deploy-keys"""
@@ -11035,9 +11035,9 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[DeployKey], list[DeployKeyType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/deploy-keys/deploy-keys#list-deploy-keys"""
@@ -12315,9 +12315,9 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[PageBuild], list[PageBuildType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/pages/pages#list-apiname-pages-builds"""
@@ -12345,9 +12345,9 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[PageBuild], list[PageBuildType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/pages/pages#list-apiname-pages-builds"""
@@ -13135,8 +13135,8 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
-        ref: Missing[str] = UNSET,
         *,
+        ref: Missing[str] = UNSET,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[ContentFile, ContentFileType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/contents#get-a-repository-readme"""
@@ -13167,8 +13167,8 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
-        ref: Missing[str] = UNSET,
         *,
+        ref: Missing[str] = UNSET,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[ContentFile, ContentFileType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/contents#get-a-repository-readme"""
@@ -13200,8 +13200,8 @@ class ReposClient:
         owner: str,
         repo: str,
         dir_: str,
-        ref: Missing[str] = UNSET,
         *,
+        ref: Missing[str] = UNSET,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[ContentFile, ContentFileType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/contents#get-a-repository-readme-for-a-directory"""
@@ -13233,8 +13233,8 @@ class ReposClient:
         owner: str,
         repo: str,
         dir_: str,
-        ref: Missing[str] = UNSET,
         *,
+        ref: Missing[str] = UNSET,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[ContentFile, ContentFileType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/contents#get-a-repository-readme-for-a-directory"""
@@ -13265,9 +13265,9 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Release], list[ReleaseType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/releases/releases#list-releases"""
@@ -13298,9 +13298,9 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Release], list[ReleaseType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/releases/releases#list-releases"""
@@ -14154,9 +14154,9 @@ class ReposClient:
         owner: str,
         repo: str,
         release_id: int,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[ReleaseAsset], list[ReleaseAssetType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/releases/assets#list-release-assets"""
@@ -14185,9 +14185,9 @@ class ReposClient:
         owner: str,
         repo: str,
         release_id: int,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[ReleaseAsset], list[ReleaseAssetType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/releases/assets#list-release-assets"""
@@ -14216,9 +14216,9 @@ class ReposClient:
         owner: str,
         repo: str,
         release_id: int,
+        *,
         name: str,
         label: Missing[str] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
         data: FileTypes,
     ) -> Response[ReleaseAsset, ReleaseAssetType]:
@@ -14256,9 +14256,9 @@ class ReposClient:
         owner: str,
         repo: str,
         release_id: int,
+        *,
         name: str,
         label: Missing[str] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
         data: FileTypes,
     ) -> Response[ReleaseAsset, ReleaseAssetType]:
@@ -14296,9 +14296,9 @@ class ReposClient:
         owner: str,
         repo: str,
         branch: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         list[
@@ -14410,9 +14410,9 @@ class ReposClient:
         owner: str,
         repo: str,
         branch: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         list[
@@ -14523,11 +14523,11 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         includes_parents: Missing[bool] = UNSET,
         targets: Missing[str] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[RepositoryRuleset], list[RepositoryRulesetType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/rules#get-all-repository-rulesets"""
@@ -14561,11 +14561,11 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         includes_parents: Missing[bool] = UNSET,
         targets: Missing[str] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[RepositoryRuleset], list[RepositoryRulesetType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/rules#get-all-repository-rulesets"""
@@ -14787,13 +14787,13 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
+        *,
         ref: Missing[str] = UNSET,
         time_period: Missing[Literal["hour", "day", "week", "month"]] = UNSET,
         actor_name: Missing[str] = UNSET,
         rule_suite_result: Missing[Literal["pass", "fail", "bypass", "all"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[RuleSuitesItems], list[RuleSuitesItemsType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/rule-suites#list-repository-rule-suites"""
@@ -14829,13 +14829,13 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
+        *,
         ref: Missing[str] = UNSET,
         time_period: Missing[Literal["hour", "day", "week", "month"]] = UNSET,
         actor_name: Missing[str] = UNSET,
         rule_suite_result: Missing[Literal["pass", "fail", "bypass", "all"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[RuleSuitesItems], list[RuleSuitesItemsType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/rule-suites#list-repository-rule-suites"""
@@ -14926,8 +14926,8 @@ class ReposClient:
         owner: str,
         repo: str,
         ruleset_id: int,
-        includes_parents: Missing[bool] = UNSET,
         *,
+        includes_parents: Missing[bool] = UNSET,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[RepositoryRuleset, RepositoryRulesetType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/rules#get-a-repository-ruleset"""
@@ -14959,8 +14959,8 @@ class ReposClient:
         owner: str,
         repo: str,
         ruleset_id: int,
-        includes_parents: Missing[bool] = UNSET,
         *,
+        includes_parents: Missing[bool] = UNSET,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[RepositoryRuleset, RepositoryRulesetType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/rules#get-a-repository-ruleset"""
@@ -15579,9 +15579,9 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Tag], list[TagType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#list-repository-tags"""
@@ -15609,9 +15609,9 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Tag], list[TagType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#list-repository-tags"""
@@ -15909,9 +15909,9 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Team], list[TeamType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#list-repository-teams"""
@@ -15942,9 +15942,9 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Team], list[TeamType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#list-repository-teams"""
@@ -15975,9 +15975,9 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
+        *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[Topic, TopicType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#get-all-repository-topics"""
@@ -16008,9 +16008,9 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
+        *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[Topic, TopicType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#get-all-repository-topics"""
@@ -16169,8 +16169,8 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
-        per: Missing[Literal["day", "week"]] = UNSET,
         *,
+        per: Missing[Literal["day", "week"]] = UNSET,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[CloneTraffic, CloneTrafficType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/metrics/traffic#get-repository-clones"""
@@ -16200,8 +16200,8 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
-        per: Missing[Literal["day", "week"]] = UNSET,
         *,
+        per: Missing[Literal["day", "week"]] = UNSET,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[CloneTraffic, CloneTrafficType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/metrics/traffic#get-repository-clones"""
@@ -16331,8 +16331,8 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
-        per: Missing[Literal["day", "week"]] = UNSET,
         *,
+        per: Missing[Literal["day", "week"]] = UNSET,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[ViewTraffic, ViewTrafficType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/metrics/traffic#get-page-views"""
@@ -16362,8 +16362,8 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
-        per: Missing[Literal["day", "week"]] = UNSET,
         *,
+        per: Missing[Literal["day", "week"]] = UNSET,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[ViewTraffic, ViewTrafficType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/metrics/traffic#get-page-views"""
@@ -16789,8 +16789,8 @@ class ReposClient:
 
     def list_public(
         self,
-        since: Missing[int] = UNSET,
         *,
+        since: Missing[int] = UNSET,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#list-public-repositories"""
@@ -16818,8 +16818,8 @@ class ReposClient:
 
     async def async_list_public(
         self,
-        since: Missing[int] = UNSET,
         *,
+        since: Missing[int] = UNSET,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#list-public-repositories"""
@@ -16847,6 +16847,7 @@ class ReposClient:
 
     def list_for_authenticated_user(
         self,
+        *,
         visibility: Missing[Literal["all", "public", "private"]] = UNSET,
         affiliation: Missing[str] = UNSET,
         type: Missing[Literal["all", "owner", "public", "private", "member"]] = UNSET,
@@ -16856,7 +16857,6 @@ class ReposClient:
         page: Missing[int] = UNSET,
         since: Missing[datetime] = UNSET,
         before: Missing[datetime] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Repository], list[RepositoryType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#list-repositories-for-the-authenticated-user"""
@@ -16894,6 +16894,7 @@ class ReposClient:
 
     async def async_list_for_authenticated_user(
         self,
+        *,
         visibility: Missing[Literal["all", "public", "private"]] = UNSET,
         affiliation: Missing[str] = UNSET,
         type: Missing[Literal["all", "owner", "public", "private", "member"]] = UNSET,
@@ -16903,7 +16904,6 @@ class ReposClient:
         page: Missing[int] = UNSET,
         since: Missing[datetime] = UNSET,
         before: Missing[datetime] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Repository], list[RepositoryType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#list-repositories-for-the-authenticated-user"""
@@ -17109,9 +17109,9 @@ class ReposClient:
 
     def list_invitations_for_authenticated_user(
         self,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[RepositoryInvitation], list[RepositoryInvitationType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/collaborators/invitations#list-repository-invitations-for-the-authenticated-user"""
@@ -17142,9 +17142,9 @@ class ReposClient:
 
     async def async_list_invitations_for_authenticated_user(
         self,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[RepositoryInvitation], list[RepositoryInvitationType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/collaborators/invitations#list-repository-invitations-for-the-authenticated-user"""
@@ -17276,12 +17276,12 @@ class ReposClient:
     def list_for_user(
         self,
         username: str,
+        *,
         type: Missing[Literal["all", "owner", "member"]] = UNSET,
         sort: Missing[Literal["created", "updated", "pushed", "full_name"]] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#list-repositories-for-a-user"""
@@ -17311,12 +17311,12 @@ class ReposClient:
     async def async_list_for_user(
         self,
         username: str,
+        *,
         type: Missing[Literal["all", "owner", "member"]] = UNSET,
         sort: Missing[Literal["created", "updated", "pushed", "full_name"]] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#list-repositories-for-a-user"""

@@ -10,63 +10,28 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Union, Literal
-from datetime import date, datetime
-from typing_extensions import TypedDict, NotRequired
+from typing_extensions import TypedDict
+
+from .group_0002 import SimpleUserType
+from .group_0008 import IntegrationType
 
 
-class PageType(TypedDict):
-    """GitHub Pages
+class TimelineAssignedIssueEventType(TypedDict):
+    """Timeline Assigned Issue Event
 
-    The configuration for GitHub Pages for a repository.
+    Timeline Assigned Issue Event
     """
 
+    id: int
+    node_id: str
     url: str
-    status: Union[None, Literal["built", "building", "errored"]]
-    cname: Union[str, None]
-    protected_domain_state: NotRequired[
-        Union[None, Literal["pending", "verified", "unverified"]]
-    ]
-    pending_domain_unverified_at: NotRequired[Union[datetime, None]]
-    custom_404: bool
-    html_url: NotRequired[str]
-    build_type: NotRequired[Union[None, Literal["legacy", "workflow"]]]
-    source: NotRequired[PagesSourceHashType]
-    public: bool
-    https_certificate: NotRequired[PagesHttpsCertificateType]
-    https_enforced: NotRequired[bool]
+    actor: SimpleUserType
+    event: Literal["assigned"]
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
+    created_at: str
+    performed_via_github_app: Union[None, IntegrationType, None]
+    assignee: SimpleUserType
 
 
-class PagesSourceHashType(TypedDict):
-    """Pages Source Hash"""
-
-    branch: str
-    path: str
-
-
-class PagesHttpsCertificateType(TypedDict):
-    """Pages Https Certificate"""
-
-    state: Literal[
-        "new",
-        "authorization_created",
-        "authorization_pending",
-        "authorized",
-        "authorization_revoked",
-        "issued",
-        "uploaded",
-        "approved",
-        "errored",
-        "bad_authz",
-        "destroy_pending",
-        "dns_changed",
-    ]
-    description: str
-    domains: list[str]
-    expires_at: NotRequired[date]
-
-
-__all__ = (
-    "PageType",
-    "PagesSourceHashType",
-    "PagesHttpsCertificateType",
-)
+__all__ = ("TimelineAssignedIssueEventType",)

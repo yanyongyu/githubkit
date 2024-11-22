@@ -9,17 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing_extensions import TypedDict
 
-
-class ActionsVariableType(TypedDict):
-    """Actions Variable"""
-
-    name: str
-    value: str
-    created_at: datetime
-    updated_at: datetime
+from .group_0197 import RateLimitType
+from .group_0199 import RateLimitOverviewPropResourcesType
 
 
-__all__ = ("ActionsVariableType",)
+class RateLimitOverviewType(TypedDict):
+    """Rate Limit Overview
+
+    Rate Limit Overview
+    """
+
+    resources: RateLimitOverviewPropResourcesType
+    rate: RateLimitType
+
+
+__all__ = ("RateLimitOverviewType",)

@@ -9,44 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class GroupMapping(GitHubModel):
-    """GroupMapping
+class RepositoryRuleCodeScanningPropParameters(GitHubModel):
+    """RepositoryRuleCodeScanningPropParameters"""
 
-    External Groups to be mapped to a team for membership
+    code_scanning_tools: list[RepositoryRuleParamsCodeScanningTool] = Field(
+        description="Tools that must provide code scanning results for this rule to pass."
+    )
+
+
+class RepositoryRuleParamsCodeScanningTool(GitHubModel):
+    """CodeScanningTool
+
+    A tool that must provide code scanning results for this rule to pass.
     """
 
-    groups: Missing[list[GroupMappingPropGroupsItems]] = Field(
-        default=UNSET, description="Array of groups to be mapped to this team"
+    alerts_threshold: Literal["none", "errors", "errors_and_warnings", "all"] = Field(
+        description='The severity level at which code scanning results that raise alerts block a reference update. For more information on alert severity levels, see "[About code scanning alerts](https://docs.github.com/enterprise-cloud@latest//code-security/code-scanning/managing-code-scanning-alerts/about-code-scanning-alerts#about-alert-severity-and-security-severity-levels)."'
     )
-
-
-class GroupMappingPropGroupsItems(GitHubModel):
-    """GroupMappingPropGroupsItems"""
-
-    group_id: str = Field(description="The ID of the group")
-    group_name: str = Field(description="The name of the group")
-    group_description: str = Field(description="a description of the group")
-    status: Missing[str] = Field(
-        default=UNSET, description="synchronization status for this group mapping"
+    security_alerts_threshold: Literal[
+        "none", "critical", "high_or_higher", "medium_or_higher", "all"
+    ] = Field(
+        description='The severity level at which code scanning results that raise security alerts block a reference update. For more information on security severity levels, see "[About code scanning alerts](https://docs.github.com/enterprise-cloud@latest//code-security/code-scanning/managing-code-scanning-alerts/about-code-scanning-alerts#about-alert-severity-and-security-severity-levels)."'
     )
-    synced_at: Missing[Union[str, None]] = Field(
-        default=UNSET, description="the time of the last sync for this group-mapping"
-    )
+    tool: str = Field(description="The name of a code scanning tool")
 
 
-model_rebuild(GroupMapping)
-model_rebuild(GroupMappingPropGroupsItems)
+model_rebuild(RepositoryRuleCodeScanningPropParameters)
+model_rebuild(RepositoryRuleParamsCodeScanningTool)
 
 __all__ = (
-    "GroupMapping",
-    "GroupMappingPropGroupsItems",
+    "RepositoryRuleCodeScanningPropParameters",
+    "RepositoryRuleParamsCodeScanningTool",
 )

@@ -18,17 +18,17 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 from .group_0002 import SimpleUser
-from .group_0415 import WebhooksProject
-from .group_0383 import EnterpriseWebhooks
-from .group_0384 import SimpleInstallation
-from .group_0386 import RepositoryWebhooks
-from .group_0385 import OrganizationSimpleWebhooks
+from .group_0384 import EnterpriseWebhooks
+from .group_0385 import SimpleInstallation
+from .group_0387 import RepositoryWebhooks
+from .group_0417 import WebhooksProjectColumn
+from .group_0386 import OrganizationSimpleWebhooks
 
 
-class WebhookProjectCreated(GitHubModel):
-    """project created event"""
+class WebhookProjectColumnMoved(GitHubModel):
+    """project_column moved event"""
 
-    action: Literal["created"] = Field()
+    action: Literal["moved"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -44,7 +44,7 @@ class WebhookProjectCreated(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    project: WebhooksProject = Field(title="Project")
+    project_column: WebhooksProjectColumn = Field(title="Project Column")
     repository: Missing[RepositoryWebhooks] = Field(
         default=UNSET,
         title="Repository",
@@ -53,6 +53,6 @@ class WebhookProjectCreated(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookProjectCreated)
+model_rebuild(WebhookProjectColumnMoved)
 
-__all__ = ("WebhookProjectCreated",)
+__all__ = ("WebhookProjectColumnMoved",)

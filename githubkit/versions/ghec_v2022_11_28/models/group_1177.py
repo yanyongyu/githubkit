@@ -11,21 +11,18 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0019 import Repository
+from .group_0091 import MinimalRepository
 
 
-class UserInstallationsInstallationIdRepositoriesGetResponse200(GitHubModel):
-    """UserInstallationsInstallationIdRepositoriesGetResponse200"""
+class UserCodespacesSecretsSecretNameRepositoriesGetResponse200(GitHubModel):
+    """UserCodespacesSecretsSecretNameRepositoriesGetResponse200"""
 
     total_count: int = Field()
-    repository_selection: Missing[str] = Field(default=UNSET)
-    repositories: list[Repository] = Field()
+    repositories: list[MinimalRepository] = Field()
 
 
-model_rebuild(UserInstallationsInstallationIdRepositoriesGetResponse200)
+model_rebuild(UserCodespacesSecretsSecretNameRepositoriesGetResponse200)
 
-__all__ = ("UserInstallationsInstallationIdRepositoriesGetResponse200",)
+__all__ = ("UserCodespacesSecretsSecretNameRepositoriesGetResponse200",)

@@ -9,13 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import TypedDict, NotRequired
 
 
-class ReposOwnerRepoTagsProtectionPostBodyType(TypedDict):
-    """ReposOwnerRepoTagsProtectionPostBody"""
+class ReposOwnerRepoSubscriptionPutBodyType(TypedDict):
+    """ReposOwnerRepoSubscriptionPutBody"""
 
-    pattern: str
+    subscribed: NotRequired[bool]
+    ignored: NotRequired[bool]
 
 
-__all__ = ("ReposOwnerRepoTagsProtectionPostBodyType",)
+__all__ = ("ReposOwnerRepoSubscriptionPutBodyType",)

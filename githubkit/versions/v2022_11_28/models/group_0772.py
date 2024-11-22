@@ -11,17 +11,31 @@ from __future__ import annotations
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0016 import AppPermissions
 
-class ApplicationsClientIdGrantDeleteBody(GitHubModel):
-    """ApplicationsClientIdGrantDeleteBody"""
 
-    access_token: str = Field(
-        description="The OAuth access token used to authenticate to the GitHub API."
+class AppInstallationsInstallationIdAccessTokensPostBody(GitHubModel):
+    """AppInstallationsInstallationIdAccessTokensPostBody"""
+
+    repositories: Missing[list[str]] = Field(
+        default=UNSET,
+        description="List of repository names that the token should have access to",
+    )
+    repository_ids: Missing[list[int]] = Field(
+        default=UNSET,
+        description="List of repository IDs that the token should have access to",
+    )
+    permissions: Missing[AppPermissions] = Field(
+        default=UNSET,
+        title="App Permissions",
+        description="The permissions granted to the user access token.",
     )
 
 
-model_rebuild(ApplicationsClientIdGrantDeleteBody)
+model_rebuild(AppInstallationsInstallationIdAccessTokensPostBody)
 
-__all__ = ("ApplicationsClientIdGrantDeleteBody",)
+__all__ = ("AppInstallationsInstallationIdAccessTokensPostBody",)

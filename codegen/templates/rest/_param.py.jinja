@@ -32,20 +32,20 @@
 
 {% macro endpoint_raw_params(endpoint) %}
 {{ path_params(endpoint) }}
+*,
 {{ query_params(endpoint) }}
 {{ header_params(endpoint) }}
 {{ cookie_params(endpoint) }}
-*,
 headers: Optional[dict[str, str]] = None,
 {{ endpoint.request_body.get_raw_definition() }}
 {% endmacro %}
 
 {% macro endpoint_model_params(endpoint, model) %}
 {{ path_params(endpoint) }}
+*,
 {{ query_params(endpoint) }}
 {{ header_params(endpoint) }}
 {{ cookie_params(endpoint) }}
-*,
 data: UnsetType = UNSET,
 headers: Optional[dict[str, str]] = None,
 {{ body_params(model, endpoint.param_names) }}
@@ -53,10 +53,10 @@ headers: Optional[dict[str, str]] = None,
 
 {% macro endpoint_params(endpoint, model) %}
 {{ path_params(endpoint) }}
+*,
 {{ query_params(endpoint) }}
 {{ header_params(endpoint) }}
 {{ cookie_params(endpoint) }}
-*,
 headers: Optional[dict[str, str]] = None,
 {%- if endpoint.request_body %}
 {{ endpoint.request_body.get_endpoint_definition() }},

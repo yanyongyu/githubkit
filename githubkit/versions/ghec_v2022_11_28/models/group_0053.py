@@ -10,101 +10,51 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Union
-from datetime import date
 
 from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
-from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class CopilotUsageMetrics(GitHubModel):
-    """Copilot Usage Metrics
+class EnterpriseSecurityAnalysisSettings(GitHubModel):
+    """Enterprise Security Analysis Settings"""
 
-    Summary of Copilot usage.
-    """
-
-    day: date = Field(
-        description="The date for which the usage metrics are reported, in `YYYY-MM-DD` format."
+    advanced_security_enabled_for_new_repositories: bool = Field(
+        description="Whether GitHub advanced security is automatically enabled for new repositories and repositories transferred to\nthis enterprise."
     )
-    total_suggestions_count: Missing[int] = Field(
+    advanced_security_enabled_for_new_user_namespace_repositories: Missing[bool] = (
+        Field(
+            default=UNSET,
+            description="Whether GitHub Advanced Security is automatically enabled for new user namespace repositories.",
+        )
+    )
+    dependabot_alerts_enabled_for_new_repositories: bool = Field(
+        description="Whether Dependabot alerts are automatically enabled for new repositories and repositories transferred to this\nenterprise."
+    )
+    secret_scanning_enabled_for_new_repositories: bool = Field(
+        description="Whether secret scanning is automatically enabled for new repositories and repositories transferred to this\nenterprise."
+    )
+    secret_scanning_push_protection_enabled_for_new_repositories: bool = Field(
+        description="Whether secret scanning push protection is automatically enabled for new repositories and repositories\ntransferred to this enterprise."
+    )
+    secret_scanning_push_protection_custom_link: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="The total number of Copilot code completion suggestions shown to users.",
+        description="An optional URL string to display to contributors who are blocked from pushing a secret.",
     )
-    total_acceptances_count: Missing[int] = Field(
+    secret_scanning_non_provider_patterns_enabled_for_new_repositories: Missing[
+        bool
+    ] = Field(
         default=UNSET,
-        description="The total number of Copilot code completion suggestions accepted by users.",
+        description="Whether secret scanning of non-provider patterns is enabled for new repositories under this enterprise.",
     )
-    total_lines_suggested: Missing[int] = Field(
+    secret_scanning_validity_checks_enabled: Missing[bool] = Field(
         default=UNSET,
-        description="The total number of lines of code completions suggested by Copilot.",
-    )
-    total_lines_accepted: Missing[int] = Field(
-        default=UNSET,
-        description="The total number of lines of code completions accepted by users.",
-    )
-    total_active_users: Missing[int] = Field(
-        default=UNSET,
-        description="The total number of users who were shown Copilot code completion suggestions during the day specified.",
-    )
-    total_chat_acceptances: Missing[int] = Field(
-        default=UNSET,
-        description="The total instances of users who accepted code suggested by Copilot Chat in the IDE (panel and inline).",
-    )
-    total_chat_turns: Missing[int] = Field(
-        default=UNSET,
-        description="The total number of chat turns (prompt and response pairs) sent between users and Copilot Chat in the IDE.",
-    )
-    total_active_chat_users: Missing[int] = Field(
-        default=UNSET,
-        description="The total number of users who interacted with Copilot Chat in the IDE during the day specified.",
-    )
-    breakdown: Union[list[CopilotUsageMetricsPropBreakdownItems], None] = Field(
-        description="Breakdown of Copilot code completions usage by language and editor"
+        description="Whether secret scanning automatic validity checks on supported partner tokens is enabled for all repositories under this enterprise.",
     )
 
 
-class CopilotUsageMetricsPropBreakdownItems(ExtraGitHubModel):
-    """CopilotUsageMetricsPropBreakdownItems
+model_rebuild(EnterpriseSecurityAnalysisSettings)
 
-    Breakdown of Copilot usage by editor for this language
-    """
-
-    language: Missing[str] = Field(
-        default=UNSET,
-        description="The language in which Copilot suggestions were shown to users in the specified editor.",
-    )
-    editor: Missing[str] = Field(
-        default=UNSET,
-        description="The editor in which Copilot suggestions were shown to users for the specified language.",
-    )
-    suggestions_count: Missing[int] = Field(
-        default=UNSET,
-        description="The number of Copilot suggestions shown to users in the editor specified during the day specified.",
-    )
-    acceptances_count: Missing[int] = Field(
-        default=UNSET,
-        description="The number of Copilot suggestions accepted by users in the editor specified during the day specified.",
-    )
-    lines_suggested: Missing[int] = Field(
-        default=UNSET,
-        description="The number of lines of code suggested by Copilot in the editor specified during the day specified.",
-    )
-    lines_accepted: Missing[int] = Field(
-        default=UNSET,
-        description="The number of lines of code accepted by users in the editor specified during the day specified.",
-    )
-    active_users: Missing[int] = Field(
-        default=UNSET,
-        description="The number of users who were shown Copilot completion suggestions in the editor specified during the day specified.",
-    )
-
-
-model_rebuild(CopilotUsageMetrics)
-model_rebuild(CopilotUsageMetricsPropBreakdownItems)
-
-__all__ = (
-    "CopilotUsageMetrics",
-    "CopilotUsageMetricsPropBreakdownItems",
-)
+__all__ = ("EnterpriseSecurityAnalysisSettings",)

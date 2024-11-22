@@ -9,20 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from datetime import datetime
-from typing_extensions import TypedDict
+from typing_extensions import TypedDict, NotRequired
 
 
-class InteractionLimitResponseType(TypedDict):
-    """Interaction Limits
+class OrgHookType(TypedDict):
+    """Org Hook
 
-    Interaction limit settings.
+    Org Hook
     """
 
-    limit: Literal["existing_users", "contributors_only", "collaborators_only"]
-    origin: str
-    expires_at: datetime
+    id: int
+    url: str
+    ping_url: str
+    deliveries_url: NotRequired[str]
+    name: str
+    events: list[str]
+    active: bool
+    config: OrgHookPropConfigType
+    updated_at: datetime
+    created_at: datetime
+    type: str
 
 
-__all__ = ("InteractionLimitResponseType",)
+class OrgHookPropConfigType(TypedDict):
+    """OrgHookPropConfig"""
+
+    url: NotRequired[str]
+    insecure_ssl: NotRequired[str]
+    content_type: NotRequired[str]
+    secret: NotRequired[str]
+
+
+__all__ = (
+    "OrgHookType",
+    "OrgHookPropConfigType",
+)

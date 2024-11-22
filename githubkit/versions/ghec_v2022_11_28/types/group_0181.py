@@ -9,39 +9,122 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from datetime import datetime
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0002 import SimpleUserType
-from .group_0068 import ReactionRollupType
+from .group_0153 import RepositoryRuleUpdateType
+from .group_0180 import RepositoryRuleOneof18Type
+from .group_0176 import RepositoryRuleWorkflowsType
+from .group_0156 import RepositoryRuleMergeQueueType
+from .group_0161 import RepositoryRulePullRequestType
+from .group_0149 import OrgRulesetConditionsOneof0Type
+from .group_0150 import OrgRulesetConditionsOneof1Type
+from .group_0151 import OrgRulesetConditionsOneof2Type
+from .group_0178 import RepositoryRuleCodeScanningType
+from .group_0141 import RepositoryRulesetConditionsType
+from .group_0140 import RepositoryRulesetBypassActorType
+from .group_0173 import RepositoryRuleTagNamePatternType
+from .group_0171 import RepositoryRuleBranchNamePatternType
+from .group_0158 import RepositoryRuleRequiredDeploymentsType
+from .group_0163 import RepositoryRuleRequiredStatusChecksType
+from .group_0165 import RepositoryRuleCommitMessagePatternType
+from .group_0169 import RepositoryRuleCommitterEmailPatternType
+from .group_0167 import RepositoryRuleCommitAuthorEmailPatternType
+from .group_0155 import (
+    RepositoryRuleOneof16Type,
+    RepositoryRuleRequiredLinearHistoryType,
+)
+from .group_0152 import (
+    RepositoryRuleOneof15Type,
+    RepositoryRuleOneof17Type,
+    RepositoryRuleCreationType,
+    RepositoryRuleDeletionType,
+    RepositoryRuleNonFastForwardType,
+    RepositoryRuleRequiredSignaturesType,
+)
 
 
-class TeamDiscussionType(TypedDict):
-    """Team Discussion
+class RepositoryRulesetType(TypedDict):
+    """Repository ruleset
 
-    A team discussion is a persistent record of a free-form conversation within a
-    team.
+    A set of rules to apply when specified conditions are met.
     """
 
-    author: Union[None, SimpleUserType]
-    body: str
-    body_html: str
-    body_version: str
-    comments_count: int
-    comments_url: str
-    created_at: datetime
-    last_edited_at: Union[datetime, None]
-    html_url: str
-    node_id: str
-    number: int
-    pinned: bool
-    private: bool
-    team_url: str
-    title: str
-    updated_at: datetime
-    url: str
-    reactions: NotRequired[ReactionRollupType]
+    id: int
+    name: str
+    target: NotRequired[Literal["branch", "tag", "push"]]
+    source_type: NotRequired[Literal["Repository", "Organization"]]
+    source: str
+    enforcement: Literal["disabled", "active", "evaluate"]
+    bypass_actors: NotRequired[list[RepositoryRulesetBypassActorType]]
+    current_user_can_bypass: NotRequired[
+        Literal["always", "pull_requests_only", "never"]
+    ]
+    node_id: NotRequired[str]
+    links: NotRequired[RepositoryRulesetPropLinksType]
+    conditions: NotRequired[
+        Union[
+            RepositoryRulesetConditionsType,
+            OrgRulesetConditionsOneof0Type,
+            OrgRulesetConditionsOneof1Type,
+            OrgRulesetConditionsOneof2Type,
+            None,
+        ]
+    ]
+    rules: NotRequired[
+        list[
+            Union[
+                RepositoryRuleCreationType,
+                RepositoryRuleUpdateType,
+                RepositoryRuleDeletionType,
+                RepositoryRuleRequiredLinearHistoryType,
+                RepositoryRuleMergeQueueType,
+                RepositoryRuleRequiredDeploymentsType,
+                RepositoryRuleRequiredSignaturesType,
+                RepositoryRulePullRequestType,
+                RepositoryRuleRequiredStatusChecksType,
+                RepositoryRuleNonFastForwardType,
+                RepositoryRuleCommitMessagePatternType,
+                RepositoryRuleCommitAuthorEmailPatternType,
+                RepositoryRuleCommitterEmailPatternType,
+                RepositoryRuleBranchNamePatternType,
+                RepositoryRuleTagNamePatternType,
+                RepositoryRuleOneof15Type,
+                RepositoryRuleOneof16Type,
+                RepositoryRuleOneof17Type,
+                RepositoryRuleOneof18Type,
+                RepositoryRuleWorkflowsType,
+                RepositoryRuleCodeScanningType,
+            ]
+        ]
+    ]
+    created_at: NotRequired[datetime]
+    updated_at: NotRequired[datetime]
 
 
-__all__ = ("TeamDiscussionType",)
+class RepositoryRulesetPropLinksType(TypedDict):
+    """RepositoryRulesetPropLinks"""
+
+    self_: NotRequired[RepositoryRulesetPropLinksPropSelfType]
+    html: NotRequired[Union[RepositoryRulesetPropLinksPropHtmlType, None]]
+
+
+class RepositoryRulesetPropLinksPropSelfType(TypedDict):
+    """RepositoryRulesetPropLinksPropSelf"""
+
+    href: NotRequired[str]
+
+
+class RepositoryRulesetPropLinksPropHtmlType(TypedDict):
+    """RepositoryRulesetPropLinksPropHtml"""
+
+    href: NotRequired[str]
+
+
+__all__ = (
+    "RepositoryRulesetType",
+    "RepositoryRulesetPropLinksType",
+    "RepositoryRulesetPropLinksPropSelfType",
+    "RepositoryRulesetPropLinksPropHtmlType",
+)

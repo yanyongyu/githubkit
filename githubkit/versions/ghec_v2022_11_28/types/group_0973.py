@@ -9,16 +9,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0198 import ActionsVariableType
-
-
-class ReposOwnerRepoActionsOrganizationVariablesGetResponse200Type(TypedDict):
-    """ReposOwnerRepoActionsOrganizationVariablesGetResponse200"""
-
-    total_count: int
-    variables: list[ActionsVariableType]
+from typing import Union, Literal
+from typing_extensions import TypedDict, NotRequired
 
 
-__all__ = ("ReposOwnerRepoActionsOrganizationVariablesGetResponse200Type",)
+class ProjectsProjectIdPatchBodyType(TypedDict):
+    """ProjectsProjectIdPatchBody"""
+
+    name: NotRequired[str]
+    body: NotRequired[Union[str, None]]
+    state: NotRequired[str]
+    organization_permission: NotRequired[Literal["read", "write", "admin", "none"]]
+    private: NotRequired[bool]
+
+
+__all__ = ("ProjectsProjectIdPatchBodyType",)

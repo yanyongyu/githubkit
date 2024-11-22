@@ -95,13 +95,13 @@ class PackagesClient:
     def list_packages_for_organization(
         self,
         org: str,
+        *,
         package_type: Literal[
             "npm", "maven", "rubygems", "docker", "nuget", "container"
         ],
         visibility: Missing[Literal["public", "private", "internal"]] = UNSET,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Package], list[PackageType]]:
         """See also: https://docs.github.com/rest/packages/packages#list-packages-for-an-organization"""
@@ -134,13 +134,13 @@ class PackagesClient:
     async def async_list_packages_for_organization(
         self,
         org: str,
+        *,
         package_type: Literal[
             "npm", "maven", "rubygems", "docker", "nuget", "container"
         ],
         visibility: Missing[Literal["public", "private", "internal"]] = UNSET,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Package], list[PackageType]]:
         """See also: https://docs.github.com/rest/packages/packages#list-packages-for-an-organization"""
@@ -285,8 +285,8 @@ class PackagesClient:
         ],
         package_name: str,
         org: str,
-        token: Missing[str] = UNSET,
         *,
+        token: Missing[str] = UNSET,
         headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/packages/packages#restore-a-package-for-an-organization"""
@@ -320,8 +320,8 @@ class PackagesClient:
         ],
         package_name: str,
         org: str,
-        token: Missing[str] = UNSET,
         *,
+        token: Missing[str] = UNSET,
         headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/packages/packages#restore-a-package-for-an-organization"""
@@ -355,10 +355,10 @@ class PackagesClient:
         ],
         package_name: str,
         org: str,
+        *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         state: Missing[Literal["active", "deleted"]] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[PackageVersion], list[PackageVersionType]]:
         """See also: https://docs.github.com/rest/packages/packages#list-package-versions-for-a-package-owned-by-an-organization"""
@@ -395,10 +395,10 @@ class PackagesClient:
         ],
         package_name: str,
         org: str,
+        *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         state: Missing[Literal["active", "deleted"]] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[PackageVersion], list[PackageVersionType]]:
         """See also: https://docs.github.com/rest/packages/packages#list-package-versions-for-a-package-owned-by-an-organization"""
@@ -642,13 +642,13 @@ class PackagesClient:
 
     def list_packages_for_authenticated_user(
         self,
+        *,
         package_type: Literal[
             "npm", "maven", "rubygems", "docker", "nuget", "container"
         ],
         visibility: Missing[Literal["public", "private", "internal"]] = UNSET,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Package], list[PackageType]]:
         """See also: https://docs.github.com/rest/packages/packages#list-packages-for-the-authenticated-users-namespace"""
@@ -677,13 +677,13 @@ class PackagesClient:
 
     async def async_list_packages_for_authenticated_user(
         self,
+        *,
         package_type: Literal[
             "npm", "maven", "rubygems", "docker", "nuget", "container"
         ],
         visibility: Missing[Literal["public", "private", "internal"]] = UNSET,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Package], list[PackageType]]:
         """See also: https://docs.github.com/rest/packages/packages#list-packages-for-the-authenticated-users-namespace"""
@@ -820,8 +820,8 @@ class PackagesClient:
             "npm", "maven", "rubygems", "docker", "nuget", "container"
         ],
         package_name: str,
-        token: Missing[str] = UNSET,
         *,
+        token: Missing[str] = UNSET,
         headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/packages/packages#restore-a-package-for-the-authenticated-user"""
@@ -854,8 +854,8 @@ class PackagesClient:
             "npm", "maven", "rubygems", "docker", "nuget", "container"
         ],
         package_name: str,
-        token: Missing[str] = UNSET,
         *,
+        token: Missing[str] = UNSET,
         headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/packages/packages#restore-a-package-for-the-authenticated-user"""
@@ -888,10 +888,10 @@ class PackagesClient:
             "npm", "maven", "rubygems", "docker", "nuget", "container"
         ],
         package_name: str,
+        *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         state: Missing[Literal["active", "deleted"]] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[PackageVersion], list[PackageVersionType]]:
         """See also: https://docs.github.com/rest/packages/packages#list-package-versions-for-a-package-owned-by-the-authenticated-user"""
@@ -927,10 +927,10 @@ class PackagesClient:
             "npm", "maven", "rubygems", "docker", "nuget", "container"
         ],
         package_name: str,
+        *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         state: Missing[Literal["active", "deleted"]] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[PackageVersion], list[PackageVersionType]]:
         """See also: https://docs.github.com/rest/packages/packages#list-package-versions-for-a-package-owned-by-the-authenticated-user"""
@@ -1179,13 +1179,13 @@ class PackagesClient:
     def list_packages_for_user(
         self,
         username: str,
+        *,
         package_type: Literal[
             "npm", "maven", "rubygems", "docker", "nuget", "container"
         ],
         visibility: Missing[Literal["public", "private", "internal"]] = UNSET,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Package], list[PackageType]]:
         """See also: https://docs.github.com/rest/packages/packages#list-packages-for-a-user"""
@@ -1218,13 +1218,13 @@ class PackagesClient:
     async def async_list_packages_for_user(
         self,
         username: str,
+        *,
         package_type: Literal[
             "npm", "maven", "rubygems", "docker", "nuget", "container"
         ],
         visibility: Missing[Literal["public", "private", "internal"]] = UNSET,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Package], list[PackageType]]:
         """See also: https://docs.github.com/rest/packages/packages#list-packages-for-a-user"""
@@ -1369,8 +1369,8 @@ class PackagesClient:
         ],
         package_name: str,
         username: str,
-        token: Missing[str] = UNSET,
         *,
+        token: Missing[str] = UNSET,
         headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/packages/packages#restore-a-package-for-a-user"""
@@ -1404,8 +1404,8 @@ class PackagesClient:
         ],
         package_name: str,
         username: str,
-        token: Missing[str] = UNSET,
         *,
+        token: Missing[str] = UNSET,
         headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/packages/packages#restore-a-package-for-a-user"""

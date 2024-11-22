@@ -9,26 +9,48 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0018 import LicenseSimple
 
-class MergedUpstream(GitHubModel):
-    """Merged upstream
 
-    Results of a successful merge upstream request
+class LicenseContent(GitHubModel):
+    """License Content
+
+    License Content
     """
 
-    message: Missing[str] = Field(default=UNSET)
-    merge_type: Missing[Literal["merge", "fast-forward", "none"]] = Field(default=UNSET)
-    base_branch: Missing[str] = Field(default=UNSET)
+    name: str = Field()
+    path: str = Field()
+    sha: str = Field()
+    size: int = Field()
+    url: str = Field()
+    html_url: Union[str, None] = Field()
+    git_url: Union[str, None] = Field()
+    download_url: Union[str, None] = Field()
+    type: str = Field()
+    content: str = Field()
+    encoding: str = Field()
+    links: LicenseContentPropLinks = Field(alias="_links")
+    license_: Union[None, LicenseSimple] = Field(alias="license")
 
 
-model_rebuild(MergedUpstream)
+class LicenseContentPropLinks(GitHubModel):
+    """LicenseContentPropLinks"""
 
-__all__ = ("MergedUpstream",)
+    git: Union[str, None] = Field()
+    html: Union[str, None] = Field()
+    self_: str = Field(alias="self")
+
+
+model_rebuild(LicenseContent)
+model_rebuild(LicenseContentPropLinks)
+
+__all__ = (
+    "LicenseContent",
+    "LicenseContentPropLinks",
+)

@@ -9,45 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
-
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0002 import SimpleUser
-from .group_0008 import Integration
 
+class GitTree(GitHubModel):
+    """Git Tree
 
-class LabeledIssueEvent(GitHubModel):
-    """Labeled Issue Event
-
-    Labeled Issue Event
+    The hierarchy between files in a Git repository.
     """
 
-    id: int = Field()
-    node_id: str = Field()
+    sha: str = Field()
     url: str = Field()
-    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: Literal["labeled"] = Field()
-    commit_id: Union[str, None] = Field()
-    commit_url: Union[str, None] = Field()
-    created_at: str = Field()
-    performed_via_github_app: Union[None, Integration, None] = Field()
-    label: LabeledIssueEventPropLabel = Field()
+    truncated: bool = Field()
+    tree: list[GitTreePropTreeItems] = Field(
+        description="Objects specifying a tree structure"
+    )
 
 
-class LabeledIssueEventPropLabel(GitHubModel):
-    """LabeledIssueEventPropLabel"""
+class GitTreePropTreeItems(GitHubModel):
+    """GitTreePropTreeItems"""
 
-    name: str = Field()
-    color: str = Field()
+    path: Missing[str] = Field(default=UNSET)
+    mode: Missing[str] = Field(default=UNSET)
+    type: Missing[str] = Field(default=UNSET)
+    sha: Missing[str] = Field(default=UNSET)
+    size: Missing[int] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(LabeledIssueEvent)
-model_rebuild(LabeledIssueEventPropLabel)
+model_rebuild(GitTree)
+model_rebuild(GitTreePropTreeItems)
 
 __all__ = (
-    "LabeledIssueEvent",
-    "LabeledIssueEventPropLabel",
+    "GitTree",
+    "GitTreePropTreeItems",
 )

@@ -11,23 +11,46 @@ from __future__ import annotations
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class CombinedBillingUsage(GitHubModel):
-    """CombinedBillingUsage"""
+class GetLicenseSyncStatus(GitHubModel):
+    """License Sync Status
 
-    days_left_in_billing_cycle: int = Field(
-        description="Numbers of days left in billing cycle."
-    )
-    estimated_paid_storage_for_month: int = Field(
-        description="Estimated storage space (GB) used in billing cycle."
-    )
-    estimated_storage_for_month: int = Field(
-        description="Estimated sum of free and paid storage space (GB) used in billing cycle."
+    Information about the status of a license sync job for an enterprise.
+    """
+
+    server_instances: Missing[list[GetLicenseSyncStatusPropServerInstancesItems]] = (
+        Field(default=UNSET)
     )
 
 
-model_rebuild(CombinedBillingUsage)
+class GetLicenseSyncStatusPropServerInstancesItems(GitHubModel):
+    """GetLicenseSyncStatusPropServerInstancesItems"""
 
-__all__ = ("CombinedBillingUsage",)
+    server_id: Missing[str] = Field(default=UNSET)
+    hostname: Missing[str] = Field(default=UNSET)
+    last_sync: Missing[GetLicenseSyncStatusPropServerInstancesItemsPropLastSync] = (
+        Field(default=UNSET)
+    )
+
+
+class GetLicenseSyncStatusPropServerInstancesItemsPropLastSync(GitHubModel):
+    """GetLicenseSyncStatusPropServerInstancesItemsPropLastSync"""
+
+    date: Missing[str] = Field(default=UNSET)
+    status: Missing[str] = Field(default=UNSET)
+    error: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(GetLicenseSyncStatus)
+model_rebuild(GetLicenseSyncStatusPropServerInstancesItems)
+model_rebuild(GetLicenseSyncStatusPropServerInstancesItemsPropLastSync)
+
+__all__ = (
+    "GetLicenseSyncStatus",
+    "GetLicenseSyncStatusPropServerInstancesItems",
+    "GetLicenseSyncStatusPropServerInstancesItemsPropLastSync",
+)

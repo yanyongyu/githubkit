@@ -260,9 +260,9 @@ class UsersClient:
 
     def list_blocked_by_authenticated_user(
         self,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/blocking#list-users-blocked-by-the-authenticated-user"""
@@ -293,9 +293,9 @@ class UsersClient:
 
     async def async_list_blocked_by_authenticated_user(
         self,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/blocking#list-users-blocked-by-the-authenticated-user"""
@@ -598,9 +598,9 @@ class UsersClient:
 
     def list_emails_for_authenticated_user(
         self,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Email], list[EmailType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/emails#list-email-addresses-for-the-authenticated-user"""
@@ -631,9 +631,9 @@ class UsersClient:
 
     async def async_list_emails_for_authenticated_user(
         self,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Email], list[EmailType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/emails#list-email-addresses-for-the-authenticated-user"""
@@ -936,9 +936,9 @@ class UsersClient:
 
     def list_followers_for_authenticated_user(
         self,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/followers#list-followers-of-the-authenticated-user"""
@@ -968,9 +968,9 @@ class UsersClient:
 
     async def async_list_followers_for_authenticated_user(
         self,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/followers#list-followers-of-the-authenticated-user"""
@@ -1000,9 +1000,9 @@ class UsersClient:
 
     def list_followed_by_authenticated_user(
         self,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/followers#list-the-people-the-authenticated-user-follows"""
@@ -1032,9 +1032,9 @@ class UsersClient:
 
     async def async_list_followed_by_authenticated_user(
         self,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/followers#list-the-people-the-authenticated-user-follows"""
@@ -1120,7 +1120,7 @@ class UsersClient:
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/followers#follow-a-user"""
 
-        from ..models import BasicError
+        from ..models import BasicError, ValidationError
 
         url = f"/user/following/{username}"
 
@@ -1134,6 +1134,7 @@ class UsersClient:
                 "404": BasicError,
                 "403": BasicError,
                 "401": BasicError,
+                "422": ValidationError,
             },
         )
 
@@ -1145,7 +1146,7 @@ class UsersClient:
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/followers#follow-a-user"""
 
-        from ..models import BasicError
+        from ..models import BasicError, ValidationError
 
         url = f"/user/following/{username}"
 
@@ -1159,6 +1160,7 @@ class UsersClient:
                 "404": BasicError,
                 "403": BasicError,
                 "401": BasicError,
+                "422": ValidationError,
             },
         )
 
@@ -1214,9 +1216,9 @@ class UsersClient:
 
     def list_gpg_keys_for_authenticated_user(
         self,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[GpgKey], list[GpgKeyType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/gpg-keys#list-gpg-keys-for-the-authenticated-user"""
@@ -1247,9 +1249,9 @@ class UsersClient:
 
     async def async_list_gpg_keys_for_authenticated_user(
         self,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[GpgKey], list[GpgKeyType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/gpg-keys#list-gpg-keys-for-the-authenticated-user"""
@@ -1490,9 +1492,9 @@ class UsersClient:
 
     def list_public_ssh_keys_for_authenticated_user(
         self,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Key], list[KeyType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/keys#list-public-ssh-keys-for-the-authenticated-user"""
@@ -1523,9 +1525,9 @@ class UsersClient:
 
     async def async_list_public_ssh_keys_for_authenticated_user(
         self,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Key], list[KeyType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/keys#list-public-ssh-keys-for-the-authenticated-user"""
@@ -1764,9 +1766,9 @@ class UsersClient:
 
     def list_public_emails_for_authenticated_user(
         self,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Email], list[EmailType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/emails#list-public-email-addresses-for-the-authenticated-user"""
@@ -1797,9 +1799,9 @@ class UsersClient:
 
     async def async_list_public_emails_for_authenticated_user(
         self,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[Email], list[EmailType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/emails#list-public-email-addresses-for-the-authenticated-user"""
@@ -1830,9 +1832,9 @@ class UsersClient:
 
     def list_social_accounts_for_authenticated_user(
         self,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[SocialAccount], list[SocialAccountType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/social-accounts#list-social-accounts-for-the-authenticated-user"""
@@ -1863,9 +1865,9 @@ class UsersClient:
 
     async def async_list_social_accounts_for_authenticated_user(
         self,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[SocialAccount], list[SocialAccountType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/social-accounts#list-social-accounts-for-the-authenticated-user"""
@@ -2124,9 +2126,9 @@ class UsersClient:
 
     def list_ssh_signing_keys_for_authenticated_user(
         self,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[SshSigningKey], list[SshSigningKeyType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/ssh-signing-keys#list-ssh-signing-keys-for-the-authenticated-user"""
@@ -2157,9 +2159,9 @@ class UsersClient:
 
     async def async_list_ssh_signing_keys_for_authenticated_user(
         self,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[SshSigningKey], list[SshSigningKeyType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/ssh-signing-keys#list-ssh-signing-keys-for-the-authenticated-user"""
@@ -2470,9 +2472,9 @@ class UsersClient:
 
     def list(
         self,
+        *,
         since: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/users#list-users"""
@@ -2498,9 +2500,9 @@ class UsersClient:
 
     async def async_list(
         self,
+        *,
         since: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/users#list-users"""
@@ -2584,10 +2586,10 @@ class UsersClient:
         self,
         username: str,
         subject_digest: str,
+        *,
         per_page: Missing[int] = UNSET,
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         UsersUsernameAttestationsSubjectDigestGetResponse200,
@@ -2625,10 +2627,10 @@ class UsersClient:
         self,
         username: str,
         subject_digest: str,
+        *,
         per_page: Missing[int] = UNSET,
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         UsersUsernameAttestationsSubjectDigestGetResponse200,
@@ -2665,9 +2667,9 @@ class UsersClient:
     def list_followers_for_user(
         self,
         username: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/followers#list-followers-of-a-user"""
@@ -2694,9 +2696,9 @@ class UsersClient:
     async def async_list_followers_for_user(
         self,
         username: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/followers#list-followers-of-a-user"""
@@ -2723,9 +2725,9 @@ class UsersClient:
     def list_following_for_user(
         self,
         username: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/followers#list-the-people-a-user-follows"""
@@ -2752,9 +2754,9 @@ class UsersClient:
     async def async_list_following_for_user(
         self,
         username: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/followers#list-the-people-a-user-follows"""
@@ -2821,9 +2823,9 @@ class UsersClient:
     def list_gpg_keys_for_user(
         self,
         username: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[GpgKey], list[GpgKeyType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/gpg-keys#list-gpg-keys-for-a-user"""
@@ -2850,9 +2852,9 @@ class UsersClient:
     async def async_list_gpg_keys_for_user(
         self,
         username: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[GpgKey], list[GpgKeyType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/gpg-keys#list-gpg-keys-for-a-user"""
@@ -2879,11 +2881,11 @@ class UsersClient:
     def get_context_for_user(
         self,
         username: str,
+        *,
         subject_type: Missing[
             Literal["organization", "repository", "issue", "pull_request"]
         ] = UNSET,
         subject_id: Missing[str] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[Hovercard, HovercardType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/users#get-contextual-information-for-a-user"""
@@ -2914,11 +2916,11 @@ class UsersClient:
     async def async_get_context_for_user(
         self,
         username: str,
+        *,
         subject_type: Missing[
             Literal["organization", "repository", "issue", "pull_request"]
         ] = UNSET,
         subject_id: Missing[str] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[Hovercard, HovercardType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/users#get-contextual-information-for-a-user"""
@@ -2949,9 +2951,9 @@ class UsersClient:
     def list_public_keys_for_user(
         self,
         username: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[KeySimple], list[KeySimpleType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/keys#list-public-keys-for-a-user"""
@@ -2978,9 +2980,9 @@ class UsersClient:
     async def async_list_public_keys_for_user(
         self,
         username: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[KeySimple], list[KeySimpleType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/keys#list-public-keys-for-a-user"""
@@ -3007,9 +3009,9 @@ class UsersClient:
     def list_social_accounts_for_user(
         self,
         username: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[SocialAccount], list[SocialAccountType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/social-accounts#list-social-accounts-for-a-user"""
@@ -3036,9 +3038,9 @@ class UsersClient:
     async def async_list_social_accounts_for_user(
         self,
         username: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[SocialAccount], list[SocialAccountType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/social-accounts#list-social-accounts-for-a-user"""
@@ -3065,9 +3067,9 @@ class UsersClient:
     def list_ssh_signing_keys_for_user(
         self,
         username: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[SshSigningKey], list[SshSigningKeyType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/ssh-signing-keys#list-ssh-signing-keys-for-a-user"""
@@ -3094,9 +3096,9 @@ class UsersClient:
     async def async_list_ssh_signing_keys_for_user(
         self,
         username: str,
+        *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[SshSigningKey], list[SshSigningKeyType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/ssh-signing-keys#list-ssh-signing-keys-for-a-user"""

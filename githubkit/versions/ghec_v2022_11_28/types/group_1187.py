@@ -9,143 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import TypedDict, NotRequired
 
-
-class UsersUsernameAttestationsSubjectDigestGetResponse200Type(TypedDict):
-    """UsersUsernameAttestationsSubjectDigestGetResponse200"""
-
-    attestations: NotRequired[
-        list[
-            UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsType
-        ]
-    ]
+from .group_0019 import RepositoryType
 
 
-class UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsType(
-    TypedDict
-):
-    """UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems"""
+class UserInstallationsInstallationIdRepositoriesGetResponse200Type(TypedDict):
+    """UserInstallationsInstallationIdRepositoriesGetResponse200"""
 
-    bundle: NotRequired[SigstoreBundle0Type]
-    repository_id: NotRequired[int]
-
-
-class SigstoreBundle0Type(TypedDict):
-    """Sigstore Bundle v0.1
-
-    Sigstore Bundle v0.1
-    """
-
-    media_type: NotRequired[str]
-    verification_material: NotRequired[SigstoreBundle0PropVerificationMaterialType]
-    dsse_envelope: NotRequired[SigstoreBundle0PropDsseEnvelopeType]
+    total_count: int
+    repository_selection: NotRequired[str]
+    repositories: list[RepositoryType]
 
 
-class SigstoreBundle0PropDsseEnvelopeType(TypedDict):
-    """SigstoreBundle0PropDsseEnvelope"""
-
-    payload: NotRequired[str]
-    payload_type: NotRequired[str]
-    signatures: NotRequired[
-        list[SigstoreBundle0PropDsseEnvelopePropSignaturesItemsType]
-    ]
-
-
-class SigstoreBundle0PropDsseEnvelopePropSignaturesItemsType(TypedDict):
-    """SigstoreBundle0PropDsseEnvelopePropSignaturesItems"""
-
-    sig: NotRequired[str]
-    keyid: NotRequired[str]
-
-
-class SigstoreBundle0PropVerificationMaterialType(TypedDict):
-    """SigstoreBundle0PropVerificationMaterial"""
-
-    x_509_certificate_chain: NotRequired[
-        SigstoreBundle0PropVerificationMaterialPropX509CertificateChainType
-    ]
-    tlog_entries: NotRequired[
-        list[SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsType]
-    ]
-    timestamp_verification_data: NotRequired[Union[str, None]]
-
-
-class SigstoreBundle0PropVerificationMaterialPropX509CertificateChainType(TypedDict):
-    """SigstoreBundle0PropVerificationMaterialPropX509CertificateChain"""
-
-    certificates: NotRequired[
-        list[
-            SigstoreBundle0PropVerificationMaterialPropX509CertificateChainPropCertificatesItemsType
-        ]
-    ]
-
-
-class SigstoreBundle0PropVerificationMaterialPropX509CertificateChainPropCertificatesItemsType(
-    TypedDict
-):
-    """SigstoreBundle0PropVerificationMaterialPropX509CertificateChainPropCertificatesI
-    tems
-    """
-
-    raw_bytes: NotRequired[str]
-
-
-class SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsType(TypedDict):
-    """SigstoreBundle0PropVerificationMaterialPropTlogEntriesItems"""
-
-    log_index: NotRequired[str]
-    log_id: NotRequired[
-        SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropLogIdType
-    ]
-    kind_version: NotRequired[
-        SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropKindVersionType
-    ]
-    integrated_time: NotRequired[str]
-    inclusion_promise: NotRequired[
-        SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropInclusionPromiseType
-    ]
-    inclusion_proof: NotRequired[Union[str, None]]
-    canonicalized_body: NotRequired[str]
-
-
-class SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropLogIdType(
-    TypedDict
-):
-    """SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropLogId"""
-
-    key_id: NotRequired[str]
-
-
-class SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropKindVersionType(
-    TypedDict
-):
-    """SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropKindVersion"""
-
-    kind: NotRequired[str]
-    version: NotRequired[str]
-
-
-class SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropInclusionPromiseType(
-    TypedDict
-):
-    """SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropInclusionPromise"""
-
-    signed_entry_timestamp: NotRequired[str]
-
-
-__all__ = (
-    "UsersUsernameAttestationsSubjectDigestGetResponse200Type",
-    "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsType",
-    "SigstoreBundle0Type",
-    "SigstoreBundle0PropDsseEnvelopeType",
-    "SigstoreBundle0PropDsseEnvelopePropSignaturesItemsType",
-    "SigstoreBundle0PropVerificationMaterialType",
-    "SigstoreBundle0PropVerificationMaterialPropX509CertificateChainType",
-    "SigstoreBundle0PropVerificationMaterialPropX509CertificateChainPropCertificatesItemsType",
-    "SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsType",
-    "SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropLogIdType",
-    "SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropKindVersionType",
-    "SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropInclusionPromiseType",
-)
+__all__ = ("UserInstallationsInstallationIdRepositoriesGetResponse200Type",)
