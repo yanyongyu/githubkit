@@ -12,11 +12,11 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
 
-from .group_0760 import WebhookRepositoryRulesetEditedPropChangesPropRules
 from .group_0758 import WebhookRepositoryRulesetEditedPropChangesPropConditions
+from .group_0760 import WebhookRepositoryRulesetEditedPropChangesPropRules
 
 
 class WebhookRepositoryRulesetEditedPropChanges(GitHubModel):
@@ -54,6 +54,6 @@ model_rebuild(WebhookRepositoryRulesetEditedPropChangesPropEnforcement)
 
 __all__ = (
     "WebhookRepositoryRulesetEditedPropChanges",
-    "WebhookRepositoryRulesetEditedPropChangesPropName",
     "WebhookRepositoryRulesetEditedPropChangesPropEnforcement",
+    "WebhookRepositoryRulesetEditedPropChangesPropName",
 )

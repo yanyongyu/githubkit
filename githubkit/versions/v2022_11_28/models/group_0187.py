@@ -12,8 +12,8 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
 
 
 class WorkflowRunUsage(GitHubModel):
@@ -103,10 +103,10 @@ model_rebuild(WorkflowRunUsagePropBillablePropWindowsPropJobRunsItems)
 __all__ = (
     "WorkflowRunUsage",
     "WorkflowRunUsagePropBillable",
-    "WorkflowRunUsagePropBillablePropUbuntu",
-    "WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItems",
     "WorkflowRunUsagePropBillablePropMacos",
     "WorkflowRunUsagePropBillablePropMacosPropJobRunsItems",
+    "WorkflowRunUsagePropBillablePropUbuntu",
+    "WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItems",
     "WorkflowRunUsagePropBillablePropWindows",
     "WorkflowRunUsagePropBillablePropWindowsPropJobRunsItems",
 )

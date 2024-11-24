@@ -1,11 +1,11 @@
-from datetime import timedelta
 from typing import TYPE_CHECKING, Generic, TypeVar
+from datetime import timedelta
 
 import httpx
 
 if TYPE_CHECKING:
-    from .response import Response
     from .graphql import GraphQLResponse
+    from .response import Response
 
 
 E = TypeVar("E", bound=Exception)

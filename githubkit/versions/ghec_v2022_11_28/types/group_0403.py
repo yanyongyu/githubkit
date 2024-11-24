@@ -46,7 +46,7 @@ class UserEmailsItemsType(TypedDict):
 
 
 __all__ = (
-    "UserType",
-    "UserNameType",
     "UserEmailsItemsType",
+    "UserNameType",
+    "UserType",
 )

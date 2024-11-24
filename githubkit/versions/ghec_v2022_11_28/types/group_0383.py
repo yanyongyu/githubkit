@@ -33,6 +33,6 @@ class TagPropCommitType(TypedDict):
 
 
 __all__ = (
-    "TagType",
     "TagPropCommitType",
+    "TagType",
 )

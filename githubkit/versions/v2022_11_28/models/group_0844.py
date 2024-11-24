@@ -15,8 +15,8 @@ from datetime import datetime
 from pydantic import Field
 
 from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
 
 
 class OrgsOrgDependabotSecretsGetResponse200(GitHubModel):
@@ -45,6 +45,6 @@ model_rebuild(OrgsOrgDependabotSecretsGetResponse200)
 model_rebuild(OrganizationDependabotSecret)
 
 __all__ = (
-    "OrgsOrgDependabotSecretsGetResponse200",
     "OrganizationDependabotSecret",
+    "OrgsOrgDependabotSecretsGetResponse200",
 )

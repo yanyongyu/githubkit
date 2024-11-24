@@ -12,12 +12,12 @@ from __future__ import annotations
 from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0395 import WebhooksUserType
-from .group_0410 import WebhooksTeamType
 from .group_0384 import EnterpriseWebhooksType
 from .group_0385 import SimpleInstallationType
-from .group_0387 import RepositoryWebhooksType
 from .group_0386 import OrganizationSimpleWebhooksType
+from .group_0387 import RepositoryWebhooksType
+from .group_0395 import WebhooksUserType
+from .group_0410 import WebhooksTeamType
 
 
 class WebhookMembershipRemovedType(TypedDict):
@@ -62,6 +62,6 @@ class WebhookMembershipRemovedPropSenderType(TypedDict):
 
 
 __all__ = (
-    "WebhookMembershipRemovedType",
     "WebhookMembershipRemovedPropSenderType",
+    "WebhookMembershipRemovedType",
 )

@@ -49,7 +49,7 @@ class SimpleCommitPropCommitterType(TypedDict):
 
 
 __all__ = (
-    "SimpleCommitType",
     "SimpleCommitPropAuthorType",
     "SimpleCommitPropCommitterType",
+    "SimpleCommitType",
 )

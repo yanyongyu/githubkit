@@ -48,6 +48,6 @@ class GetConsumedLicensesPropUsersItemsType(TypedDict):
 
 
 __all__ = (
-    "GetConsumedLicensesType",
     "GetConsumedLicensesPropUsersItemsType",
+    "GetConsumedLicensesType",
 )

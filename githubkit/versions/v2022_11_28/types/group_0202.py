@@ -11,8 +11,8 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0200 import CommitType
 from .group_0195 import BranchProtectionType
+from .group_0200 import CommitType
 
 
 class BranchWithProtectionType(TypedDict):
@@ -39,6 +39,6 @@ class BranchWithProtectionPropLinksType(TypedDict):
 
 
 __all__ = (
-    "BranchWithProtectionType",
     "BranchWithProtectionPropLinksType",
+    "BranchWithProtectionType",
 )

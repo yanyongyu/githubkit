@@ -39,6 +39,6 @@ class PageBuildPropErrorType(TypedDict):
 
 
 __all__ = (
-    "PageBuildType",
     "PageBuildPropErrorType",
+    "PageBuildType",
 )

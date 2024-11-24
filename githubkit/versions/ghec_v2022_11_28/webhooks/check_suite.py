@@ -39,4 +39,4 @@ action_types: dict[str, type[GitHubModel]] = {
 
 check_suite_action_types = action_types
 
-__all__ = ("Event", "CheckSuiteEvent", "action_types", "check_suite_action_types")
+__all__ = ("CheckSuiteEvent", "Event", "action_types", "check_suite_action_types")

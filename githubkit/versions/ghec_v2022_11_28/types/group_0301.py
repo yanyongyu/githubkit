@@ -47,7 +47,7 @@ class GitTagPropObjectType(TypedDict):
 
 
 __all__ = (
-    "GitTagType",
-    "GitTagPropTaggerType",
     "GitTagPropObjectType",
+    "GitTagPropTaggerType",
+    "GitTagType",
 )

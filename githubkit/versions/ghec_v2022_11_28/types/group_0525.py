@@ -9,17 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union, Literal
+from datetime import datetime
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0002 import SimpleUserType
 from .group_0427 import EnterpriseWebhooksType
 from .group_0428 import SimpleInstallationType
-from .group_0430 import RepositoryWebhooksType
-from .group_0439 import WebhooksWorkflowJobRunType
 from .group_0429 import OrganizationSimpleWebhooksType
+from .group_0430 import RepositoryWebhooksType
 from .group_0438 import WebhooksApproverType, WebhooksReviewersItemsType
+from .group_0439 import WebhooksWorkflowJobRunType
 
 
 class WebhookDeploymentReviewApprovedType(TypedDict):
@@ -408,20 +408,20 @@ class WebhookDeploymentReviewApprovedPropWorkflowRunPropPullRequestsItemsPropHea
 
 
 __all__ = (
-    "WebhookDeploymentReviewApprovedType",
     "WebhookDeploymentReviewApprovedPropWorkflowJobRunsItemsType",
-    "WebhookDeploymentReviewApprovedPropWorkflowRunType",
     "WebhookDeploymentReviewApprovedPropWorkflowRunPropActorType",
     "WebhookDeploymentReviewApprovedPropWorkflowRunPropHeadCommitType",
-    "WebhookDeploymentReviewApprovedPropWorkflowRunPropReferencedWorkflowsItemsType",
-    "WebhookDeploymentReviewApprovedPropWorkflowRunPropTriggeringActorType",
-    "WebhookDeploymentReviewApprovedPropWorkflowRunPropHeadRepositoryType",
     "WebhookDeploymentReviewApprovedPropWorkflowRunPropHeadRepositoryPropOwnerType",
-    "WebhookDeploymentReviewApprovedPropWorkflowRunPropRepositoryType",
-    "WebhookDeploymentReviewApprovedPropWorkflowRunPropRepositoryPropOwnerType",
-    "WebhookDeploymentReviewApprovedPropWorkflowRunPropPullRequestsItemsType",
-    "WebhookDeploymentReviewApprovedPropWorkflowRunPropPullRequestsItemsPropBaseType",
+    "WebhookDeploymentReviewApprovedPropWorkflowRunPropHeadRepositoryType",
     "WebhookDeploymentReviewApprovedPropWorkflowRunPropPullRequestsItemsPropBasePropRepoType",
-    "WebhookDeploymentReviewApprovedPropWorkflowRunPropPullRequestsItemsPropHeadType",
+    "WebhookDeploymentReviewApprovedPropWorkflowRunPropPullRequestsItemsPropBaseType",
     "WebhookDeploymentReviewApprovedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepoType",
+    "WebhookDeploymentReviewApprovedPropWorkflowRunPropPullRequestsItemsPropHeadType",
+    "WebhookDeploymentReviewApprovedPropWorkflowRunPropPullRequestsItemsType",
+    "WebhookDeploymentReviewApprovedPropWorkflowRunPropReferencedWorkflowsItemsType",
+    "WebhookDeploymentReviewApprovedPropWorkflowRunPropRepositoryPropOwnerType",
+    "WebhookDeploymentReviewApprovedPropWorkflowRunPropRepositoryType",
+    "WebhookDeploymentReviewApprovedPropWorkflowRunPropTriggeringActorType",
+    "WebhookDeploymentReviewApprovedPropWorkflowRunType",
+    "WebhookDeploymentReviewApprovedType",
 )

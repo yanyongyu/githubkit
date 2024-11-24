@@ -73,7 +73,7 @@ class WebhookRegistryPackagePublishedPropRegistryPackagePropRegistryType(TypedDi
 
 
 __all__ = (
-    "WebhookRegistryPackagePublishedPropRegistryPackageType",
     "WebhookRegistryPackagePublishedPropRegistryPackagePropOwnerType",
     "WebhookRegistryPackagePublishedPropRegistryPackagePropRegistryType",
+    "WebhookRegistryPackagePublishedPropRegistryPackageType",
 )

@@ -35,6 +35,6 @@ class CodespacesOrgSecretType(TypedDict):
 
 
 __all__ = (
-    "OrgsOrgCodespacesSecretsGetResponse200Type",
     "CodespacesOrgSecretType",
+    "OrgsOrgCodespacesSecretsGetResponse200Type",
 )

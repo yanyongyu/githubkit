@@ -29,6 +29,6 @@ class PatchSchemaPropOperationsItemsType(TypedDict):
 
 
 __all__ = (
-    "PatchSchemaType",
     "PatchSchemaPropOperationsItemsType",
+    "PatchSchemaType",
 )

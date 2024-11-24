@@ -9,14 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from weakref import ref
 from typing import TYPE_CHECKING, Literal, Optional, Annotated, overload
+from weakref import ref
 
 from pydantic import Field, BaseModel
 
-from githubkit.typing import Missing, UnsetType
 from githubkit.utils import UNSET, exclude_unset
 from githubkit.compat import model_dump, type_validate_python
+from githubkit.typing import Missing, UnsetType
 
 if TYPE_CHECKING:
     from typing import Union, Literal
@@ -26,19 +26,6 @@ if TYPE_CHECKING:
     from githubkit.typing import Missing
     from githubkit.response import Response
 
-    from ..models import (
-        Key,
-        Email,
-        GpgKey,
-        Hovercard,
-        KeySimple,
-        PublicUser,
-        SimpleUser,
-        PrivateUser,
-        SocialAccount,
-        SshSigningKey,
-        UsersUsernameAttestationsSubjectDigestGetResponse200,
-    )
     from ..types import (
         KeyType,
         EmailType,
@@ -60,6 +47,19 @@ if TYPE_CHECKING:
         UserEmailVisibilityPatchBodyType,
         UserSocialAccountsDeleteBodyType,
         UsersUsernameAttestationsSubjectDigestGetResponse200Type,
+    )
+    from ..models import (
+        Key,
+        Email,
+        GpgKey,
+        Hovercard,
+        KeySimple,
+        PublicUser,
+        SimpleUser,
+        PrivateUser,
+        SocialAccount,
+        SshSigningKey,
+        UsersUsernameAttestationsSubjectDigestGetResponse200,
     )
 
 

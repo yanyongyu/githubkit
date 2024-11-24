@@ -90,7 +90,7 @@ class PagesHealthCheckPropAltDomainType(TypedDict):
 
 
 __all__ = (
-    "PagesHealthCheckType",
-    "PagesHealthCheckPropDomainType",
     "PagesHealthCheckPropAltDomainType",
+    "PagesHealthCheckPropDomainType",
+    "PagesHealthCheckType",
 )

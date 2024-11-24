@@ -42,6 +42,6 @@ class ActionsBillingUsagePropMinutesUsedBreakdownType(TypedDict):
 
 
 __all__ = (
-    "ActionsBillingUsageType",
     "ActionsBillingUsagePropMinutesUsedBreakdownType",
+    "ActionsBillingUsageType",
 )

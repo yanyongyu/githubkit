@@ -31,6 +31,6 @@ class RepositoryRuleOneof18PropParametersType(TypedDict):
 
 
 __all__ = (
-    "RepositoryRuleOneof18Type",
     "RepositoryRuleOneof18PropParametersType",
+    "RepositoryRuleOneof18Type",
 )

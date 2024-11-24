@@ -9,11 +9,11 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from weakref import ref
 from typing import TYPE_CHECKING, Literal, Optional
+from weakref import ref
 
-from githubkit.typing import Missing
 from githubkit.utils import UNSET, exclude_unset
+from githubkit.typing import Missing
 
 if TYPE_CHECKING:
     from typing import Literal
@@ -23,8 +23,8 @@ if TYPE_CHECKING:
     from githubkit.typing import Missing
     from githubkit.response import Response
 
-    from ..models import Package, PackageVersion
     from ..types import PackageType, PackageVersionType
+    from ..models import Package, PackageVersion
 
 
 class PackagesClient:

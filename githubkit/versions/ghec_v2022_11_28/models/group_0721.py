@@ -9,20 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union, Literal
+from datetime import datetime
 
 from pydantic import Field
 
 from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
 
 from .group_0002 import SimpleUser
 from .group_0427 import EnterpriseWebhooks
 from .group_0428 import SimpleInstallation
-from .group_0430 import RepositoryWebhooks
 from .group_0429 import OrganizationSimpleWebhooks
+from .group_0430 import RepositoryWebhooks
 
 
 class WebhookPullRequestReviewRequestedOneof1(GitHubModel):
@@ -1278,19 +1278,24 @@ model_rebuild(
 
 __all__ = (
     "WebhookPullRequestReviewRequestedOneof1",
-    "WebhookPullRequestReviewRequestedOneof1PropRequestedTeam",
-    "WebhookPullRequestReviewRequestedOneof1PropRequestedTeamPropParent",
     "WebhookPullRequestReviewRequestedOneof1PropPullRequest",
     "WebhookPullRequestReviewRequestedOneof1PropPullRequestPropAssignee",
     "WebhookPullRequestReviewRequestedOneof1PropPullRequestPropAssigneesItems",
     "WebhookPullRequestReviewRequestedOneof1PropPullRequestPropAutoMerge",
     "WebhookPullRequestReviewRequestedOneof1PropPullRequestPropAutoMergePropEnabledBy",
+    "WebhookPullRequestReviewRequestedOneof1PropPullRequestPropBase",
+    "WebhookPullRequestReviewRequestedOneof1PropPullRequestPropBasePropRepo",
+    "WebhookPullRequestReviewRequestedOneof1PropPullRequestPropBasePropRepoPropLicense",
+    "WebhookPullRequestReviewRequestedOneof1PropPullRequestPropBasePropRepoPropOwner",
+    "WebhookPullRequestReviewRequestedOneof1PropPullRequestPropBasePropRepoPropPermissions",
+    "WebhookPullRequestReviewRequestedOneof1PropPullRequestPropBasePropUser",
+    "WebhookPullRequestReviewRequestedOneof1PropPullRequestPropHead",
+    "WebhookPullRequestReviewRequestedOneof1PropPullRequestPropHeadPropRepo",
+    "WebhookPullRequestReviewRequestedOneof1PropPullRequestPropHeadPropRepoPropLicense",
+    "WebhookPullRequestReviewRequestedOneof1PropPullRequestPropHeadPropRepoPropOwner",
+    "WebhookPullRequestReviewRequestedOneof1PropPullRequestPropHeadPropRepoPropPermissions",
+    "WebhookPullRequestReviewRequestedOneof1PropPullRequestPropHeadPropUser",
     "WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLabelsItems",
-    "WebhookPullRequestReviewRequestedOneof1PropPullRequestPropMergedBy",
-    "WebhookPullRequestReviewRequestedOneof1PropPullRequestPropMilestone",
-    "WebhookPullRequestReviewRequestedOneof1PropPullRequestPropMilestonePropCreator",
-    "WebhookPullRequestReviewRequestedOneof1PropPullRequestPropRequestedReviewersItemsOneof0",
-    "WebhookPullRequestReviewRequestedOneof1PropPullRequestPropUser",
     "WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinks",
     "WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropComments",
     "WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropCommits",
@@ -1300,20 +1305,15 @@ __all__ = (
     "WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropReviewComments",
     "WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropSelf",
     "WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropStatuses",
-    "WebhookPullRequestReviewRequestedOneof1PropPullRequestPropBase",
-    "WebhookPullRequestReviewRequestedOneof1PropPullRequestPropBasePropUser",
-    "WebhookPullRequestReviewRequestedOneof1PropPullRequestPropBasePropRepo",
-    "WebhookPullRequestReviewRequestedOneof1PropPullRequestPropBasePropRepoPropLicense",
-    "WebhookPullRequestReviewRequestedOneof1PropPullRequestPropBasePropRepoPropOwner",
-    "WebhookPullRequestReviewRequestedOneof1PropPullRequestPropBasePropRepoPropPermissions",
-    "WebhookPullRequestReviewRequestedOneof1PropPullRequestPropHead",
-    "WebhookPullRequestReviewRequestedOneof1PropPullRequestPropHeadPropUser",
-    "WebhookPullRequestReviewRequestedOneof1PropPullRequestPropHeadPropRepo",
-    "WebhookPullRequestReviewRequestedOneof1PropPullRequestPropHeadPropRepoPropLicense",
-    "WebhookPullRequestReviewRequestedOneof1PropPullRequestPropHeadPropRepoPropOwner",
-    "WebhookPullRequestReviewRequestedOneof1PropPullRequestPropHeadPropRepoPropPermissions",
+    "WebhookPullRequestReviewRequestedOneof1PropPullRequestPropMergedBy",
+    "WebhookPullRequestReviewRequestedOneof1PropPullRequestPropMilestone",
+    "WebhookPullRequestReviewRequestedOneof1PropPullRequestPropMilestonePropCreator",
+    "WebhookPullRequestReviewRequestedOneof1PropPullRequestPropRequestedReviewersItemsOneof0",
     "WebhookPullRequestReviewRequestedOneof1PropPullRequestPropRequestedReviewersItemsOneof1",
     "WebhookPullRequestReviewRequestedOneof1PropPullRequestPropRequestedReviewersItemsOneof1PropParent",
     "WebhookPullRequestReviewRequestedOneof1PropPullRequestPropRequestedTeamsItems",
     "WebhookPullRequestReviewRequestedOneof1PropPullRequestPropRequestedTeamsItemsPropParent",
+    "WebhookPullRequestReviewRequestedOneof1PropPullRequestPropUser",
+    "WebhookPullRequestReviewRequestedOneof1PropRequestedTeam",
+    "WebhookPullRequestReviewRequestedOneof1PropRequestedTeamPropParent",
 )

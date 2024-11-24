@@ -9,34 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union, Literal
+from datetime import datetime
 
 from pydantic import Field
 
 from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
 
-from .group_0153 import RepositoryRuleUpdate
-from .group_0180 import RepositoryRuleOneof18
-from .group_0176 import RepositoryRuleWorkflows
-from .group_0156 import RepositoryRuleMergeQueue
-from .group_0161 import RepositoryRulePullRequest
+from .group_0140 import RepositoryRulesetBypassActor
+from .group_0141 import RepositoryRulesetConditions
 from .group_0149 import OrgRulesetConditionsOneof0
 from .group_0150 import OrgRulesetConditionsOneof1
 from .group_0151 import OrgRulesetConditionsOneof2
-from .group_0178 import RepositoryRuleCodeScanning
-from .group_0141 import RepositoryRulesetConditions
-from .group_0140 import RepositoryRulesetBypassActor
-from .group_0173 import RepositoryRuleTagNamePattern
-from .group_0171 import RepositoryRuleBranchNamePattern
-from .group_0158 import RepositoryRuleRequiredDeployments
-from .group_0163 import RepositoryRuleRequiredStatusChecks
-from .group_0165 import RepositoryRuleCommitMessagePattern
-from .group_0169 import RepositoryRuleCommitterEmailPattern
-from .group_0167 import RepositoryRuleCommitAuthorEmailPattern
-from .group_0155 import RepositoryRuleOneof16, RepositoryRuleRequiredLinearHistory
 from .group_0152 import (
     RepositoryRuleOneof15,
     RepositoryRuleOneof17,
@@ -45,6 +31,20 @@ from .group_0152 import (
     RepositoryRuleNonFastForward,
     RepositoryRuleRequiredSignatures,
 )
+from .group_0153 import RepositoryRuleUpdate
+from .group_0155 import RepositoryRuleOneof16, RepositoryRuleRequiredLinearHistory
+from .group_0156 import RepositoryRuleMergeQueue
+from .group_0158 import RepositoryRuleRequiredDeployments
+from .group_0161 import RepositoryRulePullRequest
+from .group_0163 import RepositoryRuleRequiredStatusChecks
+from .group_0165 import RepositoryRuleCommitMessagePattern
+from .group_0167 import RepositoryRuleCommitAuthorEmailPattern
+from .group_0169 import RepositoryRuleCommitterEmailPattern
+from .group_0171 import RepositoryRuleBranchNamePattern
+from .group_0173 import RepositoryRuleTagNamePattern
+from .group_0176 import RepositoryRuleWorkflows
+from .group_0178 import RepositoryRuleCodeScanning
+from .group_0180 import RepositoryRuleOneof18
 
 
 class RepositoryRuleset(GitHubModel):
@@ -148,6 +148,6 @@ model_rebuild(RepositoryRulesetPropLinksPropHtml)
 __all__ = (
     "RepositoryRuleset",
     "RepositoryRulesetPropLinks",
-    "RepositoryRulesetPropLinksPropSelf",
     "RepositoryRulesetPropLinksPropHtml",
+    "RepositoryRulesetPropLinksPropSelf",
 )

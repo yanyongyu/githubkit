@@ -36,6 +36,6 @@ class CommitPropCommitPropTreeType(TypedDict):
 
 
 __all__ = (
-    "CommitPropCommitType",
     "CommitPropCommitPropTreeType",
+    "CommitPropCommitType",
 )

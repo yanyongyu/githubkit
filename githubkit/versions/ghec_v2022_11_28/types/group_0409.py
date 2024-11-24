@@ -9,14 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union, Literal
+from datetime import datetime
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0073 import MilestoneType
 from .group_0002 import SimpleUserType
-from .group_0019 import RepositoryType
 from .group_0008 import IntegrationType
+from .group_0019 import RepositoryType
+from .group_0073 import MilestoneType
 from .group_0074 import ReactionRollupType
 from .group_0405 import SearchResultTextMatchesItemsType
 
@@ -104,8 +104,8 @@ class SearchIssuesGetResponse200Type(TypedDict):
 
 
 __all__ = (
-    "IssueSearchResultItemType",
     "IssueSearchResultItemPropLabelsItemsType",
     "IssueSearchResultItemPropPullRequestType",
+    "IssueSearchResultItemType",
     "SearchIssuesGetResponse200Type",
 )

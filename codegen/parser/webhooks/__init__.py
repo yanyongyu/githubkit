@@ -3,8 +3,8 @@ from typing import TYPE_CHECKING
 import openapi_pydantic as oas
 
 from ..data import WebhookData
-from ..schemas import parse_schema
 from ..utils import snake_case, concat_snake_name, type_ref_from_source
+from ..schemas import parse_schema
 
 if TYPE_CHECKING:
     from ...source import Source

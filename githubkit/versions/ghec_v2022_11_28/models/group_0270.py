@@ -15,8 +15,8 @@ from datetime import datetime
 from pydantic import Field
 
 from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
 
 from .group_0018 import LicenseSimple
 from .group_0138 import CodeOfConductSimple
@@ -60,7 +60,7 @@ model_rebuild(CommunityHealthFile)
 model_rebuild(CommunityProfile)
 
 __all__ = (
-    "CommunityProfilePropFiles",
     "CommunityHealthFile",
     "CommunityProfile",
+    "CommunityProfilePropFiles",
 )

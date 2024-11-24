@@ -38,6 +38,6 @@ class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChe
 
 
 __all__ = (
-    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyType",
     "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItemsType",
+    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyType",
 )

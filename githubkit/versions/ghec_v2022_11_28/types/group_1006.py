@@ -71,9 +71,9 @@ class ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItems
 
 
 __all__ = (
-    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200Type",
-    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsType",
-    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundleType",
-    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterialType",
     "ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelopeType",
+    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterialType",
+    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundleType",
+    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsType",
+    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200Type",
 )

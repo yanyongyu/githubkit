@@ -55,6 +55,6 @@ class WebhooksTeam1PropParentType(TypedDict):
 
 
 __all__ = (
-    "WebhooksTeam1Type",
     "WebhooksTeam1PropParentType",
+    "WebhooksTeam1Type",
 )

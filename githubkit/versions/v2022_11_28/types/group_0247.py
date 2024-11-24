@@ -41,6 +41,6 @@ class ContentSubmodulePropLinksType(TypedDict):
 
 
 __all__ = (
-    "ContentSubmoduleType",
     "ContentSubmodulePropLinksType",
+    "ContentSubmoduleType",
 )

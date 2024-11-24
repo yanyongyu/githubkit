@@ -14,13 +14,13 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
 
 from .group_0002 import SimpleUser
-from .group_0418 import ProjectsV2
 from .group_0385 import SimpleInstallation
 from .group_0386 import OrganizationSimpleWebhooks
+from .group_0418 import ProjectsV2
 
 
 class WebhookProjectsV2ProjectReopened(GitHubModel):

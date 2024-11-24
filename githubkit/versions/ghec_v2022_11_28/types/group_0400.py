@@ -13,8 +13,8 @@ from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0392 import MetaType
-from .group_0398 import UserRoleItemsType
 from .group_0397 import UserNameResponseType, UserEmailsResponseItemsType
+from .group_0398 import UserRoleItemsType
 from .group_0402 import ScimEnterpriseUserResponseAllof1PropGroupsItemsType
 
 
@@ -45,6 +45,6 @@ class ScimEnterpriseUserListType(TypedDict):
 
 
 __all__ = (
-    "ScimEnterpriseUserResponseType",
     "ScimEnterpriseUserListType",
+    "ScimEnterpriseUserResponseType",
 )

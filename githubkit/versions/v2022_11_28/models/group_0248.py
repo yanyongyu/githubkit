@@ -14,8 +14,8 @@ from typing import Union
 from pydantic import Field
 
 from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
 
 
 class FileCommit(GitHubModel):
@@ -120,12 +120,12 @@ model_rebuild(FileCommitPropCommitPropVerification)
 
 __all__ = (
     "FileCommit",
-    "FileCommitPropContent",
-    "FileCommitPropContentPropLinks",
     "FileCommitPropCommit",
     "FileCommitPropCommitPropAuthor",
     "FileCommitPropCommitPropCommitter",
-    "FileCommitPropCommitPropTree",
     "FileCommitPropCommitPropParentsItems",
+    "FileCommitPropCommitPropTree",
     "FileCommitPropCommitPropVerification",
+    "FileCommitPropContent",
+    "FileCommitPropContentPropLinks",
 )

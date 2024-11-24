@@ -72,11 +72,11 @@ class SecurityAndAnalysisPropSecretScanningAiDetectionType(TypedDict):
 
 
 __all__ = (
-    "SecurityAndAnalysisType",
     "SecurityAndAnalysisPropAdvancedSecurityType",
     "SecurityAndAnalysisPropDependabotSecurityUpdatesType",
-    "SecurityAndAnalysisPropSecretScanningType",
-    "SecurityAndAnalysisPropSecretScanningPushProtectionType",
-    "SecurityAndAnalysisPropSecretScanningNonProviderPatternsType",
     "SecurityAndAnalysisPropSecretScanningAiDetectionType",
+    "SecurityAndAnalysisPropSecretScanningNonProviderPatternsType",
+    "SecurityAndAnalysisPropSecretScanningPushProtectionType",
+    "SecurityAndAnalysisPropSecretScanningType",
+    "SecurityAndAnalysisType",
 )

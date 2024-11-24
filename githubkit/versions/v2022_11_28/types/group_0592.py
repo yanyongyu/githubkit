@@ -13,11 +13,11 @@ from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0002 import SimpleUserType
-from .group_0405 import WebhooksMilestoneType
 from .group_0384 import EnterpriseWebhooksType
 from .group_0385 import SimpleInstallationType
-from .group_0387 import RepositoryWebhooksType
 from .group_0386 import OrganizationSimpleWebhooksType
+from .group_0387 import RepositoryWebhooksType
+from .group_0405 import WebhooksMilestoneType
 
 
 class WebhookMilestoneEditedType(TypedDict):
@@ -63,9 +63,9 @@ class WebhookMilestoneEditedPropChangesPropTitleType(TypedDict):
 
 
 __all__ = (
-    "WebhookMilestoneEditedType",
-    "WebhookMilestoneEditedPropChangesType",
     "WebhookMilestoneEditedPropChangesPropDescriptionType",
     "WebhookMilestoneEditedPropChangesPropDueOnType",
     "WebhookMilestoneEditedPropChangesPropTitleType",
+    "WebhookMilestoneEditedPropChangesType",
+    "WebhookMilestoneEditedType",
 )

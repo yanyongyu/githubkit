@@ -170,11 +170,11 @@ class WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropRele
 
 
 __all__ = (
-    "WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionType",
     "WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropAuthorType",
     "WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropDockerMetadataItemsType",
     "WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropMetadataItemsType",
     "WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropPackageFilesItemsType",
-    "WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropReleaseType",
     "WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropReleasePropAuthorType",
+    "WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropReleaseType",
+    "WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionType",
 )

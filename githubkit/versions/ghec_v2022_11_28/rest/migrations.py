@@ -9,14 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from weakref import ref
 from typing import TYPE_CHECKING, Literal, Optional, overload
+from weakref import ref
 
 from pydantic import BaseModel
 
-from githubkit.typing import Missing, UnsetType
 from githubkit.utils import UNSET, exclude_unset
 from githubkit.compat import model_dump, type_validate_python
+from githubkit.typing import Missing, UnsetType
 
 if TYPE_CHECKING:
     from typing import Union, Literal
@@ -26,13 +26,6 @@ if TYPE_CHECKING:
     from githubkit.typing import Missing
     from githubkit.response import Response
 
-    from ..models import (
-        Import,
-        Migration,
-        PorterAuthor,
-        PorterLargeFile,
-        MinimalRepository,
-    )
     from ..types import (
         ImportType,
         MigrationType,
@@ -45,6 +38,13 @@ if TYPE_CHECKING:
         ReposOwnerRepoImportPatchBodyType,
         ReposOwnerRepoImportLfsPatchBodyType,
         ReposOwnerRepoImportAuthorsAuthorIdPatchBodyType,
+    )
+    from ..models import (
+        Import,
+        Migration,
+        PorterAuthor,
+        PorterLargeFile,
+        MinimalRepository,
     )
 
 

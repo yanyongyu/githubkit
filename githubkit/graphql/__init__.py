@@ -1,13 +1,13 @@
 import re
-from weakref import ref
 from typing import TYPE_CHECKING, Any, Optional, cast
+from weakref import ref
 
 from githubkit.exception import GraphQLFailed, PrimaryRateLimitExceeded
 
-from .paginator import Paginator as Paginator
 from .models import GraphQLError as GraphQLError
 from .models import SourceLocation as SourceLocation
 from .models import GraphQLResponse as GraphQLResponse
+from .paginator import Paginator as Paginator
 
 if TYPE_CHECKING:
     from githubkit.core import GitHubCore

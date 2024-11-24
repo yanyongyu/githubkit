@@ -79,10 +79,10 @@ class GitCommitPropVerificationType(TypedDict):
 
 
 __all__ = (
-    "GitCommitType",
     "GitCommitPropAuthorType",
     "GitCommitPropCommitterType",
-    "GitCommitPropTreeType",
     "GitCommitPropParentsItemsType",
+    "GitCommitPropTreeType",
     "GitCommitPropVerificationType",
+    "GitCommitType",
 )

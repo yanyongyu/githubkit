@@ -12,8 +12,8 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
 
 
 class RepositoryRuleRequiredStatusChecksPropParameters(GitHubModel):
@@ -50,6 +50,6 @@ model_rebuild(RepositoryRuleRequiredStatusChecksPropParameters)
 model_rebuild(RepositoryRuleParamsStatusCheckConfiguration)
 
 __all__ = (
-    "RepositoryRuleRequiredStatusChecksPropParameters",
     "RepositoryRuleParamsStatusCheckConfiguration",
+    "RepositoryRuleRequiredStatusChecksPropParameters",
 )

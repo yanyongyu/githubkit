@@ -14,11 +14,11 @@ from datetime import datetime
 from pydantic import Field
 
 from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
 
-from .group_0274 import HookResponse
 from .group_0009 import WebhookConfig
+from .group_0274 import HookResponse
 
 
 class Hook(GitHubModel):

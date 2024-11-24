@@ -6,14 +6,14 @@ import pytest
 
 from githubkit import GitHub, GitHubModel
 from githubkit.versions import LATEST_VERSION
-from githubkit.versions.latest.webhooks import EventNameType
-from githubkit.versions.latest.models import WebhookPush, WebhookPullRequestOpened
 from githubkit.webhooks import (
     parse,
     parse_obj,
     parse_without_name,
     parse_obj_without_name,
 )
+from githubkit.versions.latest.models import WebhookPush, WebhookPullRequestOpened
+from githubkit.versions.latest.webhooks import EventNameType
 
 TEST_CASES: list[tuple[EventNameType, str, type[GitHubModel]]] = [
     (

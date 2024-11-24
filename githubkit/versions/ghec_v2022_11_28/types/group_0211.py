@@ -41,6 +41,6 @@ class EnvironmentApprovalsPropEnvironmentsItemsType(TypedDict):
 
 
 __all__ = (
-    "EnvironmentApprovalsType",
     "EnvironmentApprovalsPropEnvironmentsItemsType",
+    "EnvironmentApprovalsType",
 )

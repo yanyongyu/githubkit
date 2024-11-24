@@ -9,19 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union, Literal, Annotated
+from datetime import datetime
 
 from pydantic import Field
 
 from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
 
 from .group_0002 import SimpleUser
-from .group_0252 import DependabotAlertPropDependency
-from .group_0035 import DependabotAlertSecurityAdvisory
 from .group_0034 import DependabotAlertSecurityVulnerability
+from .group_0035 import DependabotAlertSecurityAdvisory
+from .group_0252 import DependabotAlertPropDependency
 
 
 class DependabotAlert(GitHubModel):

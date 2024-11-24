@@ -30,6 +30,6 @@ class GistsGistIdGetResponse403PropBlockType(TypedDict):
 
 
 __all__ = (
-    "GistsGistIdGetResponse403Type",
     "GistsGistIdGetResponse403PropBlockType",
+    "GistsGistIdGetResponse403Type",
 )

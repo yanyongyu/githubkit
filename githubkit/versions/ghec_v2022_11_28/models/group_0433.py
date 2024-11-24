@@ -9,14 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union, Literal
+from datetime import datetime
 
 from pydantic import Field
 
 from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
 
 from .group_0432 import ExemptionResponse
 
@@ -180,10 +180,10 @@ model_rebuild(ExemptionRequestSecretScanningPropDataItemsPropLocationsItems)
 
 __all__ = (
     "ExemptionRequest",
-    "ExemptionRequestSecretScanningMetadata",
     "ExemptionRequestPushRulesetBypass",
     "ExemptionRequestPushRulesetBypassPropDataItems",
     "ExemptionRequestSecretScanning",
+    "ExemptionRequestSecretScanningMetadata",
     "ExemptionRequestSecretScanningPropDataItems",
     "ExemptionRequestSecretScanningPropDataItemsPropLocationsItems",
 )

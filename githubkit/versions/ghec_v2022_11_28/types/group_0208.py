@@ -55,9 +55,9 @@ class PullRequestMinimalPropBasePropRepoType(TypedDict):
 
 
 __all__ = (
-    "PullRequestMinimalType",
-    "PullRequestMinimalPropHeadType",
-    "PullRequestMinimalPropHeadPropRepoType",
-    "PullRequestMinimalPropBaseType",
     "PullRequestMinimalPropBasePropRepoType",
+    "PullRequestMinimalPropBaseType",
+    "PullRequestMinimalPropHeadPropRepoType",
+    "PullRequestMinimalPropHeadType",
+    "PullRequestMinimalType",
 )

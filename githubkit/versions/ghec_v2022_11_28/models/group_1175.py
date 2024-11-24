@@ -49,6 +49,6 @@ model_rebuild(UserCodespacesSecretsGetResponse200)
 model_rebuild(CodespacesSecret)
 
 __all__ = (
-    "UserCodespacesSecretsGetResponse200",
     "CodespacesSecret",
+    "UserCodespacesSecretsGetResponse200",
 )

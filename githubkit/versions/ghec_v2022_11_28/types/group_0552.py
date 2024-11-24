@@ -124,7 +124,7 @@ class WebhookForkPropForkeeAllof1PropOwnerType(TypedDict):
 
 
 __all__ = (
-    "WebhookForkPropForkeeAllof1Type",
     "WebhookForkPropForkeeAllof1PropLicenseType",
     "WebhookForkPropForkeeAllof1PropOwnerType",
+    "WebhookForkPropForkeeAllof1Type",
 )

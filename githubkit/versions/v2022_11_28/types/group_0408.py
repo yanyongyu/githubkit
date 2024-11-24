@@ -50,7 +50,7 @@ class WebhooksMarketplacePurchasePropPlanType(TypedDict):
 
 
 __all__ = (
-    "WebhooksMarketplacePurchaseType",
     "WebhooksMarketplacePurchasePropAccountType",
     "WebhooksMarketplacePurchasePropPlanType",
+    "WebhooksMarketplacePurchaseType",
 )

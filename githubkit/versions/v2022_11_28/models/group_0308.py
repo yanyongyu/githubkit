@@ -15,8 +15,8 @@ from datetime import date, datetime
 from pydantic import Field
 
 from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
 
 
 class Page(GitHubModel):
@@ -95,6 +95,6 @@ model_rebuild(PagesHttpsCertificate)
 
 __all__ = (
     "Page",
-    "PagesSourceHash",
     "PagesHttpsCertificate",
+    "PagesSourceHash",
 )

@@ -36,6 +36,6 @@ class ContributorActivityPropWeeksItemsType(TypedDict):
 
 
 __all__ = (
-    "ContributorActivityType",
     "ContributorActivityPropWeeksItemsType",
+    "ContributorActivityType",
 )

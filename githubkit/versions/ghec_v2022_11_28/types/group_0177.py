@@ -32,6 +32,6 @@ class RepositoryRuleParamsWorkflowFileReferenceType(TypedDict):
 
 
 __all__ = (
-    "RepositoryRuleWorkflowsPropParametersType",
     "RepositoryRuleParamsWorkflowFileReferenceType",
+    "RepositoryRuleWorkflowsPropParametersType",
 )

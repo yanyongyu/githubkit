@@ -35,6 +35,6 @@ class OrganizationDependabotSecretType(TypedDict):
 
 
 __all__ = (
-    "OrgsOrgDependabotSecretsGetResponse200Type",
     "OrganizationDependabotSecretType",
+    "OrgsOrgDependabotSecretsGetResponse200Type",
 )

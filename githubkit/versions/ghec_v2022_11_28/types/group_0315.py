@@ -42,6 +42,6 @@ class RenamedIssueEventPropRenameType(TypedDict):
 
 
 __all__ = (
-    "RenamedIssueEventType",
     "RenamedIssueEventPropRenameType",
+    "RenamedIssueEventType",
 )

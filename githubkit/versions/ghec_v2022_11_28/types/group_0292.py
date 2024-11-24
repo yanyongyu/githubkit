@@ -12,8 +12,8 @@ from __future__ import annotations
 from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0056 import TeamType
 from .group_0002 import SimpleUserType
+from .group_0056 import TeamType
 
 
 class EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType(TypedDict):

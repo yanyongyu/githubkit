@@ -68,6 +68,6 @@ class SearchUsersGetResponse200Type(TypedDict):
 
 
 __all__ = (
-    "UserSearchResultItemType",
     "SearchUsersGetResponse200Type",
+    "UserSearchResultItemType",
 )

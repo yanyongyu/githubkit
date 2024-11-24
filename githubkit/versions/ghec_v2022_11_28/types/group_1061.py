@@ -35,6 +35,6 @@ class DeploymentBranchPolicyType(TypedDict):
 
 
 __all__ = (
-    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200Type",
     "DeploymentBranchPolicyType",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200Type",
 )

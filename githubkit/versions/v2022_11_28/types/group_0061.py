@@ -91,6 +91,6 @@ class OrganizationFullPropPlanType(TypedDict):
 
 
 __all__ = (
-    "OrganizationFullType",
     "OrganizationFullPropPlanType",
+    "OrganizationFullType",
 )

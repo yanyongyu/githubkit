@@ -11,8 +11,8 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0056 import TeamType
 from .group_0002 import SimpleUserType
+from .group_0056 import TeamType
 
 
 class PullRequestReviewRequestType(TypedDict):

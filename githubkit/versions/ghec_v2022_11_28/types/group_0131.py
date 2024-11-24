@@ -54,8 +54,8 @@ class PackageVersionPropMetadataPropDockerType(TypedDict):
 
 
 __all__ = (
-    "PackageVersionType",
-    "PackageVersionPropMetadataType",
     "PackageVersionPropMetadataPropContainerType",
     "PackageVersionPropMetadataPropDockerType",
+    "PackageVersionPropMetadataType",
+    "PackageVersionType",
 )

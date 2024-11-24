@@ -14,11 +14,11 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
 
-from .group_0019 import Repository
 from .group_0016 import AppPermissions
+from .group_0019 import Repository
 
 
 class InstallationToken(GitHubModel):

@@ -48,6 +48,6 @@ class TeamPropPermissionsType(TypedDict):
 
 
 __all__ = (
-    "TeamType",
     "TeamPropPermissionsType",
+    "TeamType",
 )

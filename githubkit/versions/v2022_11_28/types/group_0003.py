@@ -9,8 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union, Literal
+from datetime import datetime
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0001 import CvssSeveritiesType
@@ -114,11 +114,11 @@ class VulnerabilityPropPackageType(TypedDict):
 
 
 __all__ = (
-    "GlobalAdvisoryType",
-    "GlobalAdvisoryPropIdentifiersItemsType",
     "GlobalAdvisoryPropCvssType",
     "GlobalAdvisoryPropCwesItemsType",
     "GlobalAdvisoryPropEpssType",
-    "VulnerabilityType",
+    "GlobalAdvisoryPropIdentifiersItemsType",
+    "GlobalAdvisoryType",
     "VulnerabilityPropPackageType",
+    "VulnerabilityType",
 )

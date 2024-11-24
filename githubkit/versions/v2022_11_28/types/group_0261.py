@@ -69,8 +69,8 @@ class ReposOwnerRepoEnvironmentsGetResponse200Type(TypedDict):
 
 
 __all__ = (
-    "EnvironmentType",
     "EnvironmentPropProtectionRulesItemsAnyof0Type",
     "EnvironmentPropProtectionRulesItemsAnyof2Type",
+    "EnvironmentType",
     "ReposOwnerRepoEnvironmentsGetResponse200Type",
 )

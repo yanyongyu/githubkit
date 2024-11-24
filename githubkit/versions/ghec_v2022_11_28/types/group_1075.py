@@ -31,6 +31,6 @@ class ReposOwnerRepoGitTreesPostBodyPropTreeItemsType(TypedDict):
 
 
 __all__ = (
-    "ReposOwnerRepoGitTreesPostBodyType",
     "ReposOwnerRepoGitTreesPostBodyPropTreeItemsType",
+    "ReposOwnerRepoGitTreesPostBodyType",
 )

@@ -9,8 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union, Literal
+from datetime import datetime
 from typing_extensions import TypedDict, NotRequired
 
 
@@ -133,9 +133,9 @@ class WebhooksRelease1PropReactionsType(TypedDict):
 
 
 __all__ = (
-    "WebhooksRelease1Type",
-    "WebhooksRelease1PropAssetsItemsType",
     "WebhooksRelease1PropAssetsItemsPropUploaderType",
+    "WebhooksRelease1PropAssetsItemsType",
     "WebhooksRelease1PropAuthorType",
     "WebhooksRelease1PropReactionsType",
+    "WebhooksRelease1Type",
 )

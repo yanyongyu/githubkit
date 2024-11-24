@@ -115,7 +115,6 @@ class WebhookIssuesClosedPropIssueAllof1PropUserType(TypedDict):
 
 
 __all__ = (
-    "WebhookIssuesClosedPropIssueAllof1Type",
     "WebhookIssuesClosedPropIssueAllof1PropAssigneeType",
     "WebhookIssuesClosedPropIssueAllof1PropAssigneesItemsType",
     "WebhookIssuesClosedPropIssueAllof1PropLabelsItemsType",
@@ -123,4 +122,5 @@ __all__ = (
     "WebhookIssuesClosedPropIssueAllof1PropPerformedViaGithubAppType",
     "WebhookIssuesClosedPropIssueAllof1PropReactionsType",
     "WebhookIssuesClosedPropIssueAllof1PropUserType",
+    "WebhookIssuesClosedPropIssueAllof1Type",
 )

@@ -9,15 +9,15 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union, Literal
+from datetime import datetime
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0002 import SimpleUserType
 from .group_0427 import EnterpriseWebhooksType
 from .group_0428 import SimpleInstallationType
-from .group_0430 import RepositoryWebhooksType
 from .group_0429 import OrganizationSimpleWebhooksType
+from .group_0430 import RepositoryWebhooksType
 
 
 class WebhookPullRequestReviewThreadResolvedType(TypedDict):
@@ -1063,18 +1063,23 @@ class WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsPropLinks
 
 
 __all__ = (
-    "WebhookPullRequestReviewThreadResolvedType",
-    "WebhookPullRequestReviewThreadResolvedPropPullRequestType",
     "WebhookPullRequestReviewThreadResolvedPropPullRequestPropAssigneeType",
     "WebhookPullRequestReviewThreadResolvedPropPullRequestPropAssigneesItemsType",
-    "WebhookPullRequestReviewThreadResolvedPropPullRequestPropAutoMergeType",
     "WebhookPullRequestReviewThreadResolvedPropPullRequestPropAutoMergePropEnabledByType",
+    "WebhookPullRequestReviewThreadResolvedPropPullRequestPropAutoMergeType",
+    "WebhookPullRequestReviewThreadResolvedPropPullRequestPropBasePropRepoPropLicenseType",
+    "WebhookPullRequestReviewThreadResolvedPropPullRequestPropBasePropRepoPropOwnerType",
+    "WebhookPullRequestReviewThreadResolvedPropPullRequestPropBasePropRepoPropPermissionsType",
+    "WebhookPullRequestReviewThreadResolvedPropPullRequestPropBasePropRepoType",
+    "WebhookPullRequestReviewThreadResolvedPropPullRequestPropBasePropUserType",
+    "WebhookPullRequestReviewThreadResolvedPropPullRequestPropBaseType",
+    "WebhookPullRequestReviewThreadResolvedPropPullRequestPropHeadPropRepoPropLicenseType",
+    "WebhookPullRequestReviewThreadResolvedPropPullRequestPropHeadPropRepoPropOwnerType",
+    "WebhookPullRequestReviewThreadResolvedPropPullRequestPropHeadPropRepoPropPermissionsType",
+    "WebhookPullRequestReviewThreadResolvedPropPullRequestPropHeadPropRepoType",
+    "WebhookPullRequestReviewThreadResolvedPropPullRequestPropHeadPropUserType",
+    "WebhookPullRequestReviewThreadResolvedPropPullRequestPropHeadType",
     "WebhookPullRequestReviewThreadResolvedPropPullRequestPropLabelsItemsType",
-    "WebhookPullRequestReviewThreadResolvedPropPullRequestPropMilestoneType",
-    "WebhookPullRequestReviewThreadResolvedPropPullRequestPropMilestonePropCreatorType",
-    "WebhookPullRequestReviewThreadResolvedPropPullRequestPropRequestedReviewersItemsOneof0Type",
-    "WebhookPullRequestReviewThreadResolvedPropPullRequestPropUserType",
-    "WebhookPullRequestReviewThreadResolvedPropPullRequestPropLinksType",
     "WebhookPullRequestReviewThreadResolvedPropPullRequestPropLinksPropCommentsType",
     "WebhookPullRequestReviewThreadResolvedPropPullRequestPropLinksPropCommitsType",
     "WebhookPullRequestReviewThreadResolvedPropPullRequestPropLinksPropHtmlType",
@@ -1083,28 +1088,23 @@ __all__ = (
     "WebhookPullRequestReviewThreadResolvedPropPullRequestPropLinksPropReviewCommentsType",
     "WebhookPullRequestReviewThreadResolvedPropPullRequestPropLinksPropSelfType",
     "WebhookPullRequestReviewThreadResolvedPropPullRequestPropLinksPropStatusesType",
-    "WebhookPullRequestReviewThreadResolvedPropPullRequestPropBaseType",
-    "WebhookPullRequestReviewThreadResolvedPropPullRequestPropBasePropUserType",
-    "WebhookPullRequestReviewThreadResolvedPropPullRequestPropBasePropRepoType",
-    "WebhookPullRequestReviewThreadResolvedPropPullRequestPropBasePropRepoPropLicenseType",
-    "WebhookPullRequestReviewThreadResolvedPropPullRequestPropBasePropRepoPropOwnerType",
-    "WebhookPullRequestReviewThreadResolvedPropPullRequestPropBasePropRepoPropPermissionsType",
-    "WebhookPullRequestReviewThreadResolvedPropPullRequestPropHeadType",
-    "WebhookPullRequestReviewThreadResolvedPropPullRequestPropHeadPropRepoType",
-    "WebhookPullRequestReviewThreadResolvedPropPullRequestPropHeadPropRepoPropLicenseType",
-    "WebhookPullRequestReviewThreadResolvedPropPullRequestPropHeadPropRepoPropOwnerType",
-    "WebhookPullRequestReviewThreadResolvedPropPullRequestPropHeadPropRepoPropPermissionsType",
-    "WebhookPullRequestReviewThreadResolvedPropPullRequestPropHeadPropUserType",
-    "WebhookPullRequestReviewThreadResolvedPropPullRequestPropRequestedReviewersItemsOneof1Type",
+    "WebhookPullRequestReviewThreadResolvedPropPullRequestPropLinksType",
+    "WebhookPullRequestReviewThreadResolvedPropPullRequestPropMilestonePropCreatorType",
+    "WebhookPullRequestReviewThreadResolvedPropPullRequestPropMilestoneType",
+    "WebhookPullRequestReviewThreadResolvedPropPullRequestPropRequestedReviewersItemsOneof0Type",
     "WebhookPullRequestReviewThreadResolvedPropPullRequestPropRequestedReviewersItemsOneof1PropParentType",
-    "WebhookPullRequestReviewThreadResolvedPropPullRequestPropRequestedTeamsItemsType",
+    "WebhookPullRequestReviewThreadResolvedPropPullRequestPropRequestedReviewersItemsOneof1Type",
     "WebhookPullRequestReviewThreadResolvedPropPullRequestPropRequestedTeamsItemsPropParentType",
-    "WebhookPullRequestReviewThreadResolvedPropThreadType",
-    "WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsType",
-    "WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsPropReactionsType",
-    "WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsPropUserType",
-    "WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsPropLinksType",
+    "WebhookPullRequestReviewThreadResolvedPropPullRequestPropRequestedTeamsItemsType",
+    "WebhookPullRequestReviewThreadResolvedPropPullRequestPropUserType",
+    "WebhookPullRequestReviewThreadResolvedPropPullRequestType",
     "WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsPropLinksPropHtmlType",
     "WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsPropLinksPropPullRequestType",
     "WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsPropLinksPropSelfType",
+    "WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsPropLinksType",
+    "WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsPropReactionsType",
+    "WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsPropUserType",
+    "WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsType",
+    "WebhookPullRequestReviewThreadResolvedPropThreadType",
+    "WebhookPullRequestReviewThreadResolvedType",
 )

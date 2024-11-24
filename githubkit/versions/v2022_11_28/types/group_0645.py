@@ -14,8 +14,8 @@ from typing_extensions import TypedDict, NotRequired
 
 from .group_0002 import SimpleUserType
 from .group_0385 import SimpleInstallationType
-from .group_0421 import ProjectsV2StatusUpdateType
 from .group_0386 import OrganizationSimpleWebhooksType
+from .group_0421 import ProjectsV2StatusUpdateType
 
 
 class WebhookProjectsV2StatusUpdateDeletedType(TypedDict):

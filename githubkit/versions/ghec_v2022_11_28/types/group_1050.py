@@ -47,7 +47,7 @@ class ReposOwnerRepoContentsPathPutBodyPropAuthorType(TypedDict):
 
 
 __all__ = (
-    "ReposOwnerRepoContentsPathPutBodyType",
-    "ReposOwnerRepoContentsPathPutBodyPropCommitterType",
     "ReposOwnerRepoContentsPathPutBodyPropAuthorType",
+    "ReposOwnerRepoContentsPathPutBodyPropCommitterType",
+    "ReposOwnerRepoContentsPathPutBodyType",
 )

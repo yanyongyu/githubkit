@@ -9,8 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from weakref import ref
 from typing import TYPE_CHECKING, Optional
+from weakref import ref
 
 from githubkit.utils import exclude_unset
 
@@ -18,8 +18,8 @@ if TYPE_CHECKING:
     from githubkit import GitHubCore
     from githubkit.response import Response
 
-    from ..models import RateLimitOverview
     from ..types import RateLimitOverviewType
+    from ..models import RateLimitOverview
 
 
 class RateLimitClient:

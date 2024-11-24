@@ -44,6 +44,6 @@ class ArtifactPropWorkflowRunType(TypedDict):
 
 
 __all__ = (
-    "ArtifactType",
     "ArtifactPropWorkflowRunType",
+    "ArtifactType",
 )

@@ -9,20 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union, Literal
+from datetime import datetime
 
 from pydantic import Field
 
 from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
+from githubkit.typing import Missing
 
 from .group_0002 import SimpleUser
-from .group_0434 import WebhooksTeam1
 from .group_0384 import EnterpriseWebhooks
 from .group_0385 import SimpleInstallation
 from .group_0386 import OrganizationSimpleWebhooks
+from .group_0434 import WebhooksTeam1
 
 
 class WebhookTeamEdited(GitHubModel):
@@ -343,17 +343,17 @@ model_rebuild(WebhookTeamEditedPropChangesPropRepositoryPropPermissionsPropFrom)
 
 __all__ = (
     "WebhookTeamEdited",
+    "WebhookTeamEditedPropChanges",
+    "WebhookTeamEditedPropChangesPropDescription",
+    "WebhookTeamEditedPropChangesPropName",
+    "WebhookTeamEditedPropChangesPropNotificationSetting",
+    "WebhookTeamEditedPropChangesPropPrivacy",
+    "WebhookTeamEditedPropChangesPropRepository",
+    "WebhookTeamEditedPropChangesPropRepositoryPropPermissions",
+    "WebhookTeamEditedPropChangesPropRepositoryPropPermissionsPropFrom",
     "WebhookTeamEditedPropRepository",
     "WebhookTeamEditedPropRepositoryPropCustomProperties",
     "WebhookTeamEditedPropRepositoryPropLicense",
     "WebhookTeamEditedPropRepositoryPropOwner",
     "WebhookTeamEditedPropRepositoryPropPermissions",
-    "WebhookTeamEditedPropChanges",
-    "WebhookTeamEditedPropChangesPropDescription",
-    "WebhookTeamEditedPropChangesPropName",
-    "WebhookTeamEditedPropChangesPropPrivacy",
-    "WebhookTeamEditedPropChangesPropNotificationSetting",
-    "WebhookTeamEditedPropChangesPropRepository",
-    "WebhookTeamEditedPropChangesPropRepositoryPropPermissions",
-    "WebhookTeamEditedPropChangesPropRepositoryPropPermissionsPropFrom",
 )

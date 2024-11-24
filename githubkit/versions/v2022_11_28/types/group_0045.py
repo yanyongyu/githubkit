@@ -57,7 +57,7 @@ class LinkWithTypeType(TypedDict):
 
 
 __all__ = (
-    "FeedType",
     "FeedPropLinksType",
+    "FeedType",
     "LinkWithTypeType",
 )

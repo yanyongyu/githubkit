@@ -102,13 +102,13 @@ class FileCommitPropCommitPropVerificationType(TypedDict):
 
 
 __all__ = (
-    "FileCommitType",
-    "FileCommitPropContentType",
-    "FileCommitPropContentPropLinksType",
-    "FileCommitPropCommitType",
     "FileCommitPropCommitPropAuthorType",
     "FileCommitPropCommitPropCommitterType",
-    "FileCommitPropCommitPropTreeType",
     "FileCommitPropCommitPropParentsItemsType",
+    "FileCommitPropCommitPropTreeType",
     "FileCommitPropCommitPropVerificationType",
+    "FileCommitPropCommitType",
+    "FileCommitPropContentPropLinksType",
+    "FileCommitPropContentType",
+    "FileCommitType",
 )

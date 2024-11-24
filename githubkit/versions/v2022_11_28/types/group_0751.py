@@ -9,15 +9,15 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union, Literal
+from datetime import datetime
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0002 import SimpleUserType
-from .group_0434 import WebhooksTeam1Type
 from .group_0384 import EnterpriseWebhooksType
 from .group_0385 import SimpleInstallationType
 from .group_0386 import OrganizationSimpleWebhooksType
+from .group_0434 import WebhooksTeam1Type
 
 
 class WebhookTeamCreatedType(TypedDict):
@@ -189,10 +189,10 @@ class WebhookTeamCreatedPropRepositoryPropPermissionsType(TypedDict):
 
 
 __all__ = (
-    "WebhookTeamCreatedType",
-    "WebhookTeamCreatedPropRepositoryType",
     "WebhookTeamCreatedPropRepositoryPropCustomPropertiesType",
     "WebhookTeamCreatedPropRepositoryPropLicenseType",
     "WebhookTeamCreatedPropRepositoryPropOwnerType",
     "WebhookTeamCreatedPropRepositoryPropPermissionsType",
+    "WebhookTeamCreatedPropRepositoryType",
+    "WebhookTeamCreatedType",
 )

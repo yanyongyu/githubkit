@@ -14,8 +14,8 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
 
 
 class RepositoryRuleRequiredLinearHistory(GitHubModel):
@@ -53,7 +53,7 @@ model_rebuild(RepositoryRuleOneof16)
 model_rebuild(RepositoryRuleOneof16PropParameters)
 
 __all__ = (
-    "RepositoryRuleRequiredLinearHistory",
     "RepositoryRuleOneof16",
     "RepositoryRuleOneof16PropParameters",
+    "RepositoryRuleRequiredLinearHistory",
 )

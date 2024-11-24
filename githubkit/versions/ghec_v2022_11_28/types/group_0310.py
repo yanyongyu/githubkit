@@ -42,6 +42,6 @@ class UnlabeledIssueEventPropLabelType(TypedDict):
 
 
 __all__ = (
-    "UnlabeledIssueEventType",
     "UnlabeledIssueEventPropLabelType",
+    "UnlabeledIssueEventType",
 )

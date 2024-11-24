@@ -9,14 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Any, Union, Literal
+from datetime import datetime
 
 from pydantic import Field
 
 from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.typing import Missing
 
 
 class ScimUserList(GitHubModel):
@@ -145,13 +145,13 @@ model_rebuild(ScimUserPropOperationsItems)
 model_rebuild(ScimUserPropOperationsItemsPropValueOneof1)
 
 __all__ = (
-    "ScimUserList",
     "ScimUser",
-    "ScimUserPropName",
+    "ScimUserList",
     "ScimUserPropEmailsItems",
-    "ScimUserPropMeta",
     "ScimUserPropGroupsItems",
-    "ScimUserPropRolesItems",
+    "ScimUserPropMeta",
+    "ScimUserPropName",
     "ScimUserPropOperationsItems",
     "ScimUserPropOperationsItemsPropValueOneof1",
+    "ScimUserPropRolesItems",
 )

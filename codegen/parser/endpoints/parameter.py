@@ -3,8 +3,8 @@ from typing import TYPE_CHECKING
 import openapi_pydantic as oas
 
 from ..data import Parameter
-from ..schemas import parse_schema, build_any_schema
 from ..utils import build_prop_name, concat_snake_name, type_ref_from_source
+from ..schemas import parse_schema, build_any_schema
 
 if TYPE_CHECKING:
     from ...source import Source

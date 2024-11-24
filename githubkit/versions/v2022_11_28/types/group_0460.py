@@ -36,6 +36,6 @@ class WebhookCustomPropertyDeletedPropDefinitionType(TypedDict):
 
 
 __all__ = (
-    "WebhookCustomPropertyDeletedType",
     "WebhookCustomPropertyDeletedPropDefinitionType",
+    "WebhookCustomPropertyDeletedType",
 )

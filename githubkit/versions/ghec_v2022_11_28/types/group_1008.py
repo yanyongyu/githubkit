@@ -130,11 +130,11 @@ class ReposOwnerRepoBranchesBranchProtectionPutBodyPropRestrictionsType(TypedDic
 
 
 __all__ = (
-    "ReposOwnerRepoBranchesBranchProtectionPutBodyType",
-    "ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksType",
-    "ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksPropChecksItemsType",
-    "ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsType",
-    "ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropDismissalRestrictionsType",
     "ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesType",
+    "ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropDismissalRestrictionsType",
+    "ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsType",
+    "ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksPropChecksItemsType",
+    "ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksType",
     "ReposOwnerRepoBranchesBranchProtectionPutBodyPropRestrictionsType",
+    "ReposOwnerRepoBranchesBranchProtectionPutBodyType",
 )

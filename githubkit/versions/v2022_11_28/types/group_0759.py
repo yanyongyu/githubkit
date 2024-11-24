@@ -60,6 +60,6 @@ class WebhookWorkflowJobCompletedPropWorkflowJobAllof1PropStepsItemsType(TypedDi
 
 
 __all__ = (
-    "WebhookWorkflowJobCompletedPropWorkflowJobAllof1Type",
     "WebhookWorkflowJobCompletedPropWorkflowJobAllof1PropStepsItemsType",
+    "WebhookWorkflowJobCompletedPropWorkflowJobAllof1Type",
 )

@@ -9,20 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union, Literal
+from datetime import datetime
 
 from pydantic import Field
 
 from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
 
 from .group_0002 import SimpleUser
 from .group_0384 import EnterpriseWebhooks
 from .group_0385 import SimpleInstallation
-from .group_0387 import RepositoryWebhooks
 from .group_0386 import OrganizationSimpleWebhooks
+from .group_0387 import RepositoryWebhooks
 
 
 class WebhookPullRequestReviewThreadResolved(GitHubModel):
@@ -1325,11 +1325,19 @@ __all__ = (
     "WebhookPullRequestReviewThreadResolvedPropPullRequestPropAssigneesItems",
     "WebhookPullRequestReviewThreadResolvedPropPullRequestPropAutoMerge",
     "WebhookPullRequestReviewThreadResolvedPropPullRequestPropAutoMergePropEnabledBy",
+    "WebhookPullRequestReviewThreadResolvedPropPullRequestPropBase",
+    "WebhookPullRequestReviewThreadResolvedPropPullRequestPropBasePropRepo",
+    "WebhookPullRequestReviewThreadResolvedPropPullRequestPropBasePropRepoPropLicense",
+    "WebhookPullRequestReviewThreadResolvedPropPullRequestPropBasePropRepoPropOwner",
+    "WebhookPullRequestReviewThreadResolvedPropPullRequestPropBasePropRepoPropPermissions",
+    "WebhookPullRequestReviewThreadResolvedPropPullRequestPropBasePropUser",
+    "WebhookPullRequestReviewThreadResolvedPropPullRequestPropHead",
+    "WebhookPullRequestReviewThreadResolvedPropPullRequestPropHeadPropRepo",
+    "WebhookPullRequestReviewThreadResolvedPropPullRequestPropHeadPropRepoPropLicense",
+    "WebhookPullRequestReviewThreadResolvedPropPullRequestPropHeadPropRepoPropOwner",
+    "WebhookPullRequestReviewThreadResolvedPropPullRequestPropHeadPropRepoPropPermissions",
+    "WebhookPullRequestReviewThreadResolvedPropPullRequestPropHeadPropUser",
     "WebhookPullRequestReviewThreadResolvedPropPullRequestPropLabelsItems",
-    "WebhookPullRequestReviewThreadResolvedPropPullRequestPropMilestone",
-    "WebhookPullRequestReviewThreadResolvedPropPullRequestPropMilestonePropCreator",
-    "WebhookPullRequestReviewThreadResolvedPropPullRequestPropRequestedReviewersItemsOneof0",
-    "WebhookPullRequestReviewThreadResolvedPropPullRequestPropUser",
     "WebhookPullRequestReviewThreadResolvedPropPullRequestPropLinks",
     "WebhookPullRequestReviewThreadResolvedPropPullRequestPropLinksPropComments",
     "WebhookPullRequestReviewThreadResolvedPropPullRequestPropLinksPropCommits",
@@ -1339,28 +1347,20 @@ __all__ = (
     "WebhookPullRequestReviewThreadResolvedPropPullRequestPropLinksPropReviewComments",
     "WebhookPullRequestReviewThreadResolvedPropPullRequestPropLinksPropSelf",
     "WebhookPullRequestReviewThreadResolvedPropPullRequestPropLinksPropStatuses",
-    "WebhookPullRequestReviewThreadResolvedPropPullRequestPropBase",
-    "WebhookPullRequestReviewThreadResolvedPropPullRequestPropBasePropUser",
-    "WebhookPullRequestReviewThreadResolvedPropPullRequestPropBasePropRepo",
-    "WebhookPullRequestReviewThreadResolvedPropPullRequestPropBasePropRepoPropLicense",
-    "WebhookPullRequestReviewThreadResolvedPropPullRequestPropBasePropRepoPropOwner",
-    "WebhookPullRequestReviewThreadResolvedPropPullRequestPropBasePropRepoPropPermissions",
-    "WebhookPullRequestReviewThreadResolvedPropPullRequestPropHead",
-    "WebhookPullRequestReviewThreadResolvedPropPullRequestPropHeadPropRepo",
-    "WebhookPullRequestReviewThreadResolvedPropPullRequestPropHeadPropRepoPropLicense",
-    "WebhookPullRequestReviewThreadResolvedPropPullRequestPropHeadPropRepoPropOwner",
-    "WebhookPullRequestReviewThreadResolvedPropPullRequestPropHeadPropRepoPropPermissions",
-    "WebhookPullRequestReviewThreadResolvedPropPullRequestPropHeadPropUser",
+    "WebhookPullRequestReviewThreadResolvedPropPullRequestPropMilestone",
+    "WebhookPullRequestReviewThreadResolvedPropPullRequestPropMilestonePropCreator",
+    "WebhookPullRequestReviewThreadResolvedPropPullRequestPropRequestedReviewersItemsOneof0",
     "WebhookPullRequestReviewThreadResolvedPropPullRequestPropRequestedReviewersItemsOneof1",
     "WebhookPullRequestReviewThreadResolvedPropPullRequestPropRequestedReviewersItemsOneof1PropParent",
     "WebhookPullRequestReviewThreadResolvedPropPullRequestPropRequestedTeamsItems",
     "WebhookPullRequestReviewThreadResolvedPropPullRequestPropRequestedTeamsItemsPropParent",
+    "WebhookPullRequestReviewThreadResolvedPropPullRequestPropUser",
     "WebhookPullRequestReviewThreadResolvedPropThread",
     "WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItems",
-    "WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsPropReactions",
-    "WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsPropUser",
     "WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsPropLinks",
     "WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsPropLinksPropHtml",
     "WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsPropLinksPropPullRequest",
     "WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsPropLinksPropSelf",
+    "WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsPropReactions",
+    "WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsPropUser",
 )

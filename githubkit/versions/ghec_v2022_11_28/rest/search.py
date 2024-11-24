@@ -9,11 +9,11 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from weakref import ref
 from typing import TYPE_CHECKING, Literal, Optional
+from weakref import ref
 
-from githubkit.typing import Missing
 from githubkit.utils import UNSET, exclude_unset
+from githubkit.typing import Missing
 
 if TYPE_CHECKING:
     from typing import Literal
@@ -23,15 +23,6 @@ if TYPE_CHECKING:
     from githubkit.typing import Missing
     from githubkit.response import Response
 
-    from ..models import (
-        SearchCodeGetResponse200,
-        SearchUsersGetResponse200,
-        SearchIssuesGetResponse200,
-        SearchLabelsGetResponse200,
-        SearchTopicsGetResponse200,
-        SearchCommitsGetResponse200,
-        SearchRepositoriesGetResponse200,
-    )
     from ..types import (
         SearchCodeGetResponse200Type,
         SearchUsersGetResponse200Type,
@@ -40,6 +31,15 @@ if TYPE_CHECKING:
         SearchTopicsGetResponse200Type,
         SearchCommitsGetResponse200Type,
         SearchRepositoriesGetResponse200Type,
+    )
+    from ..models import (
+        SearchCodeGetResponse200,
+        SearchUsersGetResponse200,
+        SearchIssuesGetResponse200,
+        SearchLabelsGetResponse200,
+        SearchTopicsGetResponse200,
+        SearchCommitsGetResponse200,
+        SearchRepositoriesGetResponse200,
     )
 
 

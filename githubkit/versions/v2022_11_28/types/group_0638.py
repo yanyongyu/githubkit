@@ -13,9 +13,9 @@ from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0002 import SimpleUserType
-from .group_0420 import ProjectsV2ItemType
 from .group_0385 import SimpleInstallationType
 from .group_0386 import OrganizationSimpleWebhooksType
+from .group_0420 import ProjectsV2ItemType
 
 
 class WebhookProjectsV2ItemCreatedType(TypedDict):

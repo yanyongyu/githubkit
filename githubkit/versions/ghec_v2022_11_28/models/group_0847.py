@@ -15,14 +15,14 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0046 import DatadogConfig
-from .group_0045 import SplunkConfig, AmazonS3OidcConfig
 from .group_0044 import (
     AzureHubConfig,
     AzureBlobConfig,
     GoogleCloudConfig,
     AmazonS3AccessKeysConfig,
 )
+from .group_0045 import SplunkConfig, AmazonS3OidcConfig
+from .group_0046 import DatadogConfig
 
 
 class EnterprisesEnterpriseAuditLogStreamsStreamIdPutBody(GitHubModel):

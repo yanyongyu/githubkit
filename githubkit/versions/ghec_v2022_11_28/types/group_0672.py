@@ -56,6 +56,6 @@ class WebhookProjectCardMovedPropProjectCardAllof1PropCreatorType(TypedDict):
 
 
 __all__ = (
-    "WebhookProjectCardMovedPropProjectCardAllof1Type",
     "WebhookProjectCardMovedPropProjectCardAllof1PropCreatorType",
+    "WebhookProjectCardMovedPropProjectCardAllof1Type",
 )

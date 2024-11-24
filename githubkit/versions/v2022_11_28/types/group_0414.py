@@ -131,18 +131,18 @@ class PersonalAccessTokenRequestPropPermissionsResultPropOtherType(TypedDict):
 
 
 __all__ = (
-    "PersonalAccessTokenRequestType",
-    "PersonalAccessTokenRequestPropRepositoriesItemsType",
-    "PersonalAccessTokenRequestPropPermissionsAddedType",
     "PersonalAccessTokenRequestPropPermissionsAddedPropOrganizationType",
-    "PersonalAccessTokenRequestPropPermissionsAddedPropRepositoryType",
     "PersonalAccessTokenRequestPropPermissionsAddedPropOtherType",
-    "PersonalAccessTokenRequestPropPermissionsUpgradedType",
-    "PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganizationType",
-    "PersonalAccessTokenRequestPropPermissionsUpgradedPropRepositoryType",
-    "PersonalAccessTokenRequestPropPermissionsUpgradedPropOtherType",
-    "PersonalAccessTokenRequestPropPermissionsResultType",
+    "PersonalAccessTokenRequestPropPermissionsAddedPropRepositoryType",
+    "PersonalAccessTokenRequestPropPermissionsAddedType",
     "PersonalAccessTokenRequestPropPermissionsResultPropOrganizationType",
-    "PersonalAccessTokenRequestPropPermissionsResultPropRepositoryType",
     "PersonalAccessTokenRequestPropPermissionsResultPropOtherType",
+    "PersonalAccessTokenRequestPropPermissionsResultPropRepositoryType",
+    "PersonalAccessTokenRequestPropPermissionsResultType",
+    "PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganizationType",
+    "PersonalAccessTokenRequestPropPermissionsUpgradedPropOtherType",
+    "PersonalAccessTokenRequestPropPermissionsUpgradedPropRepositoryType",
+    "PersonalAccessTokenRequestPropPermissionsUpgradedType",
+    "PersonalAccessTokenRequestPropRepositoriesItemsType",
+    "PersonalAccessTokenRequestType",
 )

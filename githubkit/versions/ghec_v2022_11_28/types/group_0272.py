@@ -65,8 +65,8 @@ class ContentTreePropEntriesItemsPropLinksType(TypedDict):
 
 
 __all__ = (
-    "ContentTreeType",
-    "ContentTreePropLinksType",
-    "ContentTreePropEntriesItemsType",
     "ContentTreePropEntriesItemsPropLinksType",
+    "ContentTreePropEntriesItemsType",
+    "ContentTreePropLinksType",
+    "ContentTreeType",
 )

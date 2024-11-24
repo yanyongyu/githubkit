@@ -42,6 +42,6 @@ class OrgHookPropConfigType(TypedDict):
 
 
 __all__ = (
-    "OrgHookType",
     "OrgHookPropConfigType",
+    "OrgHookType",
 )

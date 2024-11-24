@@ -20,8 +20,8 @@ action_types = WebhookDeploymentProtectionRuleRequested
 deployment_protection_rule_action_types = action_types
 
 __all__ = (
-    "Event",
     "DeploymentProtectionRuleEvent",
+    "Event",
     "action_types",
     "deployment_protection_rule_action_types",
 )

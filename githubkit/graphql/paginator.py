@@ -1,6 +1,6 @@
+from typing import TYPE_CHECKING, Any, Optional, TypedDict
 from weakref import ref
 from typing_extensions import Self
-from typing import TYPE_CHECKING, Any, Optional, TypedDict
 
 from githubkit.exception import GraphQLMissingPageInfo, GraphQLMissingCursorChange
 

@@ -12,8 +12,8 @@ from __future__ import annotations
 from typing import Union
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0199 import DiffEntryType
 from .group_0002 import SimpleUserType
+from .group_0199 import DiffEntryType
 from .group_0201 import CommitPropCommitType
 
 
@@ -60,8 +60,8 @@ class CommitPropStatsType(TypedDict):
 
 
 __all__ = (
-    "CommitType",
-    "EmptyObjectType",
     "CommitPropParentsItemsType",
     "CommitPropStatsType",
+    "CommitType",
+    "EmptyObjectType",
 )

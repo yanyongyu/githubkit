@@ -14,8 +14,8 @@ from datetime import datetime
 from pydantic import Field
 
 from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
+from githubkit.typing import Missing
 
 from .group_0255 import Metadata
 
@@ -90,7 +90,7 @@ model_rebuild(SnapshotPropManifests)
 
 __all__ = (
     "Snapshot",
-    "SnapshotPropJob",
     "SnapshotPropDetector",
+    "SnapshotPropJob",
     "SnapshotPropManifests",
 )

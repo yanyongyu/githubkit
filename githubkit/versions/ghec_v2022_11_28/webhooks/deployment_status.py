@@ -20,8 +20,8 @@ action_types = WebhookDeploymentStatusCreated
 deployment_status_action_types = action_types
 
 __all__ = (
-    "Event",
     "DeploymentStatusEvent",
+    "Event",
     "action_types",
     "deployment_status_action_types",
 )

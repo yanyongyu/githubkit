@@ -15,8 +15,8 @@ from datetime import datetime
 from pydantic import Field
 
 from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
 
 from .group_0362 import SearchResultTextMatchesItems
 
@@ -78,6 +78,6 @@ model_rebuild(UserSearchResultItem)
 model_rebuild(SearchUsersGetResponse200)
 
 __all__ = (
-    "UserSearchResultItem",
     "SearchUsersGetResponse200",
+    "UserSearchResultItem",
 )

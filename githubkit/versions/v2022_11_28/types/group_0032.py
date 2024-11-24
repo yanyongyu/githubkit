@@ -48,6 +48,6 @@ class CopilotUsageMetricsPropBreakdownItemsType(TypedDict):
 
 
 __all__ = (
-    "CopilotUsageMetricsType",
     "CopilotUsageMetricsPropBreakdownItemsType",
+    "CopilotUsageMetricsType",
 )

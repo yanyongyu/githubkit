@@ -9,14 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union, Literal
+from datetime import datetime
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0008 import IntegrationType
+from .group_0179 import PullRequestMinimalType
 from .group_0206 import DeploymentSimpleType
 from .group_0389 import SimpleCheckSuiteType
-from .group_0179 import PullRequestMinimalType
 
 
 class CheckRunWithSimpleCheckSuiteType(TypedDict):
@@ -70,6 +70,6 @@ class CheckRunWithSimpleCheckSuitePropOutputType(TypedDict):
 
 
 __all__ = (
-    "CheckRunWithSimpleCheckSuiteType",
     "CheckRunWithSimpleCheckSuitePropOutputType",
+    "CheckRunWithSimpleCheckSuiteType",
 )

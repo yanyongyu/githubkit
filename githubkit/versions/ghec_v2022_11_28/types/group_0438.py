@@ -72,6 +72,6 @@ class WebhooksReviewersItemsPropReviewerType(TypedDict):
 
 __all__ = (
     "WebhooksApproverType",
-    "WebhooksReviewersItemsType",
     "WebhooksReviewersItemsPropReviewerType",
+    "WebhooksReviewersItemsType",
 )

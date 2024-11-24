@@ -36,6 +36,6 @@ class ReposOwnerRepoGitTagsPostBodyPropTaggerType(TypedDict):
 
 
 __all__ = (
-    "ReposOwnerRepoGitTagsPostBodyType",
     "ReposOwnerRepoGitTagsPostBodyPropTaggerType",
+    "ReposOwnerRepoGitTagsPostBodyType",
 )

@@ -32,6 +32,6 @@ class GistsPostBodyPropFilesType(TypedDict):
 
 
 __all__ = (
-    "GistsPostBodyType",
     "GistsPostBodyPropFilesType",
+    "GistsPostBodyType",
 )

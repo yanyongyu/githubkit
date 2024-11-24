@@ -37,6 +37,6 @@ class PullRequestSimplePropBaseType(TypedDict):
 
 
 __all__ = (
-    "PullRequestSimplePropHeadType",
     "PullRequestSimplePropBaseType",
+    "PullRequestSimplePropHeadType",
 )

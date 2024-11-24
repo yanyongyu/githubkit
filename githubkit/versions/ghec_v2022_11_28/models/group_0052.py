@@ -9,20 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union, Literal, Annotated
+from datetime import datetime
 
 from pydantic import Field
 
 from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
 
 from .group_0002 import SimpleUser
-from .group_0051 import SimpleRepository
+from .group_0048 import CodeScanningAlertRuleSummary
 from .group_0049 import CodeScanningAnalysisTool
 from .group_0050 import CodeScanningAlertInstance
-from .group_0048 import CodeScanningAlertRuleSummary
+from .group_0051 import SimpleRepository
 
 
 class CodeScanningOrganizationAlertItems(GitHubModel):

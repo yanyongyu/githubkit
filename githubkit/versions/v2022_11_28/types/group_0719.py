@@ -14,8 +14,8 @@ from typing_extensions import TypedDict, NotRequired
 
 from .group_0002 import SimpleUserType
 from .group_0385 import SimpleInstallationType
-from .group_0387 import RepositoryWebhooksType
 from .group_0386 import OrganizationSimpleWebhooksType
+from .group_0387 import RepositoryWebhooksType
 from .group_0430 import SecretScanningAlertWebhookType
 
 
@@ -218,19 +218,19 @@ class SecretScanningLocationPullRequestReviewCommentType(TypedDict):
 
 
 __all__ = (
-    "WebhookSecretScanningAlertLocationCreatedType",
-    "SecretScanningLocationType",
     "SecretScanningLocationCommitType",
-    "SecretScanningLocationWikiCommitType",
-    "SecretScanningLocationIssueTitleType",
-    "SecretScanningLocationIssueBodyType",
-    "SecretScanningLocationIssueCommentType",
-    "SecretScanningLocationDiscussionTitleType",
     "SecretScanningLocationDiscussionBodyType",
     "SecretScanningLocationDiscussionCommentType",
-    "SecretScanningLocationPullRequestTitleType",
+    "SecretScanningLocationDiscussionTitleType",
+    "SecretScanningLocationIssueBodyType",
+    "SecretScanningLocationIssueCommentType",
+    "SecretScanningLocationIssueTitleType",
     "SecretScanningLocationPullRequestBodyType",
     "SecretScanningLocationPullRequestCommentType",
-    "SecretScanningLocationPullRequestReviewType",
     "SecretScanningLocationPullRequestReviewCommentType",
+    "SecretScanningLocationPullRequestReviewType",
+    "SecretScanningLocationPullRequestTitleType",
+    "SecretScanningLocationType",
+    "SecretScanningLocationWikiCommitType",
+    "WebhookSecretScanningAlertLocationCreatedType",
 )

@@ -9,7 +9,6 @@
     "vscode": {
       "settings": {
         "python.analysis.diagnosticMode": "workspace",
-        "python.analysis.typeCheckingMode": "basic",
         "[python]": {
           "editor.defaultFormatter": "charliermarsh.ruff",
           "editor.codeActionsOnSave": {

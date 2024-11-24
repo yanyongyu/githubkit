@@ -15,9 +15,9 @@ from typing_extensions import TypedDict, NotRequired
 from .group_0002 import SimpleUserType
 from .group_0427 import EnterpriseWebhooksType
 from .group_0428 import SimpleInstallationType
+from .group_0429 import OrganizationSimpleWebhooksType
 from .group_0430 import RepositoryWebhooksType
 from .group_0467 import PullRequestWebhookType
-from .group_0429 import OrganizationSimpleWebhooksType
 
 
 class WebhookPullRequestEditedType(TypedDict):
@@ -77,11 +77,11 @@ class WebhookPullRequestEditedPropChangesPropBasePropShaType(TypedDict):
 
 
 __all__ = (
-    "WebhookPullRequestEditedType",
-    "WebhookPullRequestEditedPropChangesType",
-    "WebhookPullRequestEditedPropChangesPropBodyType",
-    "WebhookPullRequestEditedPropChangesPropTitleType",
-    "WebhookPullRequestEditedPropChangesPropBaseType",
     "WebhookPullRequestEditedPropChangesPropBasePropRefType",
     "WebhookPullRequestEditedPropChangesPropBasePropShaType",
+    "WebhookPullRequestEditedPropChangesPropBaseType",
+    "WebhookPullRequestEditedPropChangesPropBodyType",
+    "WebhookPullRequestEditedPropChangesPropTitleType",
+    "WebhookPullRequestEditedPropChangesType",
+    "WebhookPullRequestEditedType",
 )

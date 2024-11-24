@@ -7,8 +7,8 @@ bash ./scripts/run-codegen.sh
 See https://github.com/github/rest-api-description for more information.
 """
 
-import importlib
 from typing import TYPE_CHECKING, Any, Literal, ClassVar, overload
+import importlib
 
 from . import VERSIONS, VERSION_TYPE, LATEST_VERSION
 

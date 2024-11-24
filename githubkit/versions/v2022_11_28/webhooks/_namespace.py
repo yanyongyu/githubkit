@@ -9,17 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 import hmac
 import json
+from typing import TYPE_CHECKING, Any, Union, Literal, overload
 import importlib
 from typing_extensions import TypeAlias
-from typing import TYPE_CHECKING, Any, Union, Literal, overload
 
-from githubkit.exception import WebhookTypeNotFound
 from githubkit.compat import (
     GitHubModel,
     model_dump,
     type_validate_json,
     type_validate_python,
 )
+from githubkit.exception import WebhookTypeNotFound
 
 if TYPE_CHECKING:
     from .fork import ForkEvent
@@ -30,6 +30,7 @@ if TYPE_CHECKING:
     from .team import TeamEvent
     from .label import LabelEvent
     from .watch import WatchEvent
+    from ._types import WebhookEvent
     from .create import CreateEvent
     from .delete import DeleteEvent
     from .gollum import GollumEvent
@@ -37,37 +38,36 @@ if TYPE_CHECKING:
     from .member import MemberEvent
     from .public import PublicEvent
     from .status import StatusEvent
-    from ._types import WebhookEvent
     from .package import PackageEvent
     from .project import ProjectEvent
     from .release import ReleaseEvent
     from .team_add import TeamAddEvent
     from .check_run import CheckRunEvent
-    from .org_block import OrgBlockEvent
     from .milestone import MilestoneEvent
+    from .org_block import OrgBlockEvent
     from .deploy_key import DeployKeyEvent
-    from .page_build import PageBuildEvent
-    from .sub_issues import SubIssuesEvent
     from .deployment import DeploymentEvent
     from .discussion import DiscussionEvent
     from .membership import MembershipEvent
+    from .page_build import PageBuildEvent
     from .repository import RepositoryEvent
+    from .sub_issues import SubIssuesEvent
     from .check_suite import CheckSuiteEvent
     from .merge_group import MergeGroupEvent
     from .projects_v2 import ProjectsV2Event
     from .sponsorship import SponsorshipEvent
+    from .installation import InstallationEvent
+    from .organization import OrganizationEvent
     from .project_card import ProjectCardEvent
     from .pull_request import PullRequestEvent
     from .workflow_job import WorkflowJobEvent
     from .workflow_run import WorkflowRunEvent
-    from .installation import InstallationEvent
-    from .organization import OrganizationEvent
     from .issue_comment import IssueCommentEvent
     from .commit_comment import CommitCommentEvent
     from .project_column import ProjectColumnEvent
     from .custom_property import CustomPropertyEvent
-    from .projects_v2_item import ProjectsV2ItemEvent
     from .dependabot_alert import DependabotAlertEvent
+    from .projects_v2_item import ProjectsV2ItemEvent
     from .registry_package import RegistryPackageEvent
     from .deployment_review import DeploymentReviewEvent
     from .deployment_status import DeploymentStatusEvent
@@ -77,8 +77,8 @@ if TYPE_CHECKING:
     from .discussion_comment import DiscussionCommentEvent
     from .repository_ruleset import RepositoryRulesetEvent
     from .code_scanning_alert import CodeScanningAlertEvent
-    from .pull_request_review import PullRequestReviewEvent
     from .installation_target import InstallationTargetEvent
+    from .pull_request_review import PullRequestReviewEvent
     from .repository_advisory import RepositoryAdvisoryEvent
     from .repository_dispatch import RepositoryDispatchEvent
     from .marketplace_purchase import MarketplacePurchaseEvent
@@ -87,14 +87,14 @@ if TYPE_CHECKING:
     from .branch_protection_rule import BranchProtectionRuleEvent
     from .custom_property_values import CustomPropertyValuesEvent
     from .github_app_authorization import GithubAppAuthorizationEvent
-    from .projects_v2_status_update import ProjectsV2StatusUpdateEvent
     from .installation_repositories import InstallationRepositoriesEvent
-    from .pull_request_review_thread import PullRequestReviewThreadEvent
+    from .projects_v2_status_update import ProjectsV2StatusUpdateEvent
     from .deployment_protection_rule import DeploymentProtectionRuleEvent
+    from .pull_request_review_thread import PullRequestReviewThreadEvent
     from .pull_request_review_comment import PullRequestReviewCommentEvent
     from .personal_access_token_request import PersonalAccessTokenRequestEvent
-    from .secret_scanning_alert_location import SecretScanningAlertLocationEvent
     from .repository_vulnerability_alert import RepositoryVulnerabilityAlertEvent
+    from .secret_scanning_alert_location import SecretScanningAlertLocationEvent
     from .branch_protection_configuration import BranchProtectionConfigurationEvent
 
 

@@ -80,10 +80,10 @@ class DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItemsType(
 
 
 __all__ = (
-    "DependencyGraphSpdxSbomType",
-    "DependencyGraphSpdxSbomPropSbomType",
     "DependencyGraphSpdxSbomPropSbomPropCreationInfoType",
-    "DependencyGraphSpdxSbomPropSbomPropRelationshipsItemsType",
-    "DependencyGraphSpdxSbomPropSbomPropPackagesItemsType",
     "DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItemsType",
+    "DependencyGraphSpdxSbomPropSbomPropPackagesItemsType",
+    "DependencyGraphSpdxSbomPropSbomPropRelationshipsItemsType",
+    "DependencyGraphSpdxSbomPropSbomType",
+    "DependencyGraphSpdxSbomType",
 )

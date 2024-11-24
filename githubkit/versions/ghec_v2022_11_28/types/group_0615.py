@@ -9,15 +9,15 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union, Literal
+from datetime import datetime
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0002 import SimpleUserType
 from .group_0427 import EnterpriseWebhooksType
 from .group_0428 import SimpleInstallationType
-from .group_0430 import RepositoryWebhooksType
 from .group_0429 import OrganizationSimpleWebhooksType
+from .group_0430 import RepositoryWebhooksType
 
 
 class WebhookIssuesOpenedType(TypedDict):
@@ -864,35 +864,35 @@ class WebhookIssuesOpenedPropChangesPropOldRepositoryPropPermissionsType(TypedDi
 
 
 __all__ = (
-    "WebhookIssuesOpenedType",
-    "WebhookIssuesOpenedPropIssueType",
-    "WebhookIssuesOpenedPropIssuePropAssigneeType",
-    "WebhookIssuesOpenedPropIssuePropAssigneesItemsType",
-    "WebhookIssuesOpenedPropIssuePropLabelsItemsType",
-    "WebhookIssuesOpenedPropIssuePropMilestoneType",
-    "WebhookIssuesOpenedPropIssuePropMilestonePropCreatorType",
-    "WebhookIssuesOpenedPropIssuePropPerformedViaGithubAppType",
-    "WebhookIssuesOpenedPropIssuePropPerformedViaGithubAppPropOwnerType",
-    "WebhookIssuesOpenedPropIssuePropPerformedViaGithubAppPropPermissionsType",
-    "WebhookIssuesOpenedPropIssuePropPullRequestType",
-    "WebhookIssuesOpenedPropIssuePropReactionsType",
-    "WebhookIssuesOpenedPropIssuePropUserType",
-    "WebhookIssuesOpenedPropChangesType",
-    "WebhookIssuesOpenedPropChangesPropOldIssueType",
     "WebhookIssuesOpenedPropChangesPropOldIssuePropAssigneeType",
     "WebhookIssuesOpenedPropChangesPropOldIssuePropAssigneesItemsType",
     "WebhookIssuesOpenedPropChangesPropOldIssuePropLabelsItemsType",
-    "WebhookIssuesOpenedPropChangesPropOldIssuePropMilestoneType",
     "WebhookIssuesOpenedPropChangesPropOldIssuePropMilestonePropCreatorType",
-    "WebhookIssuesOpenedPropChangesPropOldIssuePropPerformedViaGithubAppType",
+    "WebhookIssuesOpenedPropChangesPropOldIssuePropMilestoneType",
     "WebhookIssuesOpenedPropChangesPropOldIssuePropPerformedViaGithubAppPropOwnerType",
     "WebhookIssuesOpenedPropChangesPropOldIssuePropPerformedViaGithubAppPropPermissionsType",
+    "WebhookIssuesOpenedPropChangesPropOldIssuePropPerformedViaGithubAppType",
     "WebhookIssuesOpenedPropChangesPropOldIssuePropPullRequestType",
     "WebhookIssuesOpenedPropChangesPropOldIssuePropReactionsType",
     "WebhookIssuesOpenedPropChangesPropOldIssuePropUserType",
-    "WebhookIssuesOpenedPropChangesPropOldRepositoryType",
+    "WebhookIssuesOpenedPropChangesPropOldIssueType",
     "WebhookIssuesOpenedPropChangesPropOldRepositoryPropCustomPropertiesType",
     "WebhookIssuesOpenedPropChangesPropOldRepositoryPropLicenseType",
     "WebhookIssuesOpenedPropChangesPropOldRepositoryPropOwnerType",
     "WebhookIssuesOpenedPropChangesPropOldRepositoryPropPermissionsType",
+    "WebhookIssuesOpenedPropChangesPropOldRepositoryType",
+    "WebhookIssuesOpenedPropChangesType",
+    "WebhookIssuesOpenedPropIssuePropAssigneeType",
+    "WebhookIssuesOpenedPropIssuePropAssigneesItemsType",
+    "WebhookIssuesOpenedPropIssuePropLabelsItemsType",
+    "WebhookIssuesOpenedPropIssuePropMilestonePropCreatorType",
+    "WebhookIssuesOpenedPropIssuePropMilestoneType",
+    "WebhookIssuesOpenedPropIssuePropPerformedViaGithubAppPropOwnerType",
+    "WebhookIssuesOpenedPropIssuePropPerformedViaGithubAppPropPermissionsType",
+    "WebhookIssuesOpenedPropIssuePropPerformedViaGithubAppType",
+    "WebhookIssuesOpenedPropIssuePropPullRequestType",
+    "WebhookIssuesOpenedPropIssuePropReactionsType",
+    "WebhookIssuesOpenedPropIssuePropUserType",
+    "WebhookIssuesOpenedPropIssueType",
+    "WebhookIssuesOpenedType",
 )

@@ -39,6 +39,6 @@ class DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionType(TypedDict)
 
 
 __all__ = (
-    "DependabotAlertSecurityVulnerabilityType",
     "DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionType",
+    "DependabotAlertSecurityVulnerabilityType",
 )

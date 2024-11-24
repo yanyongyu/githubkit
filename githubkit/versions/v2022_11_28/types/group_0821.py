@@ -91,8 +91,8 @@ class OrgsOrgCodeSecurityConfigurationsPostBodyPropSecretScanningDelegatedBypass
 
 
 __all__ = (
-    "OrgsOrgCodeSecurityConfigurationsPostBodyType",
     "OrgsOrgCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptionsType",
-    "OrgsOrgCodeSecurityConfigurationsPostBodyPropSecretScanningDelegatedBypassOptionsType",
     "OrgsOrgCodeSecurityConfigurationsPostBodyPropSecretScanningDelegatedBypassOptionsPropReviewersItemsType",
+    "OrgsOrgCodeSecurityConfigurationsPostBodyPropSecretScanningDelegatedBypassOptionsType",
+    "OrgsOrgCodeSecurityConfigurationsPostBodyType",
 )

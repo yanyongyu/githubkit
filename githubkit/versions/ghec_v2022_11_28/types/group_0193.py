@@ -125,6 +125,6 @@ class TeamRepositoryPropPermissionsType(TypedDict):
 
 
 __all__ = (
-    "TeamRepositoryType",
     "TeamRepositoryPropPermissionsType",
+    "TeamRepositoryType",
 )

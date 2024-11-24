@@ -86,10 +86,10 @@ class RepositoryRuleOneof17PropParametersType(TypedDict):
 __all__ = (
     "RepositoryRuleCreationType",
     "RepositoryRuleDeletionType",
-    "RepositoryRuleRequiredSignaturesType",
     "RepositoryRuleNonFastForwardType",
-    "RepositoryRuleOneof15Type",
     "RepositoryRuleOneof15PropParametersType",
-    "RepositoryRuleOneof17Type",
+    "RepositoryRuleOneof15Type",
     "RepositoryRuleOneof17PropParametersType",
+    "RepositoryRuleOneof17Type",
+    "RepositoryRuleRequiredSignaturesType",
 )

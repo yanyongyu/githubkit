@@ -9,32 +9,15 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union, Literal
+from datetime import datetime
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0153 import RepositoryRuleUpdateType
-from .group_0180 import RepositoryRuleOneof18Type
-from .group_0176 import RepositoryRuleWorkflowsType
-from .group_0156 import RepositoryRuleMergeQueueType
-from .group_0161 import RepositoryRulePullRequestType
+from .group_0140 import RepositoryRulesetBypassActorType
+from .group_0141 import RepositoryRulesetConditionsType
 from .group_0149 import OrgRulesetConditionsOneof0Type
 from .group_0150 import OrgRulesetConditionsOneof1Type
 from .group_0151 import OrgRulesetConditionsOneof2Type
-from .group_0178 import RepositoryRuleCodeScanningType
-from .group_0141 import RepositoryRulesetConditionsType
-from .group_0140 import RepositoryRulesetBypassActorType
-from .group_0173 import RepositoryRuleTagNamePatternType
-from .group_0171 import RepositoryRuleBranchNamePatternType
-from .group_0158 import RepositoryRuleRequiredDeploymentsType
-from .group_0163 import RepositoryRuleRequiredStatusChecksType
-from .group_0165 import RepositoryRuleCommitMessagePatternType
-from .group_0169 import RepositoryRuleCommitterEmailPatternType
-from .group_0167 import RepositoryRuleCommitAuthorEmailPatternType
-from .group_0155 import (
-    RepositoryRuleOneof16Type,
-    RepositoryRuleRequiredLinearHistoryType,
-)
 from .group_0152 import (
     RepositoryRuleOneof15Type,
     RepositoryRuleOneof17Type,
@@ -43,6 +26,23 @@ from .group_0152 import (
     RepositoryRuleNonFastForwardType,
     RepositoryRuleRequiredSignaturesType,
 )
+from .group_0153 import RepositoryRuleUpdateType
+from .group_0155 import (
+    RepositoryRuleOneof16Type,
+    RepositoryRuleRequiredLinearHistoryType,
+)
+from .group_0156 import RepositoryRuleMergeQueueType
+from .group_0158 import RepositoryRuleRequiredDeploymentsType
+from .group_0161 import RepositoryRulePullRequestType
+from .group_0163 import RepositoryRuleRequiredStatusChecksType
+from .group_0165 import RepositoryRuleCommitMessagePatternType
+from .group_0167 import RepositoryRuleCommitAuthorEmailPatternType
+from .group_0169 import RepositoryRuleCommitterEmailPatternType
+from .group_0171 import RepositoryRuleBranchNamePatternType
+from .group_0173 import RepositoryRuleTagNamePatternType
+from .group_0176 import RepositoryRuleWorkflowsType
+from .group_0178 import RepositoryRuleCodeScanningType
+from .group_0180 import RepositoryRuleOneof18Type
 
 
 class RepositoryRulesetType(TypedDict):
@@ -123,8 +123,8 @@ class RepositoryRulesetPropLinksPropHtmlType(TypedDict):
 
 
 __all__ = (
-    "RepositoryRulesetType",
-    "RepositoryRulesetPropLinksType",
-    "RepositoryRulesetPropLinksPropSelfType",
     "RepositoryRulesetPropLinksPropHtmlType",
+    "RepositoryRulesetPropLinksPropSelfType",
+    "RepositoryRulesetPropLinksType",
+    "RepositoryRulesetType",
 )

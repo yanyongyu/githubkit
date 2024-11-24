@@ -14,16 +14,16 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
 
 from .group_0002 import SimpleUser
-from .group_0478 import WebhooksChanges8
 from .group_0427 import EnterpriseWebhooks
 from .group_0428 import SimpleInstallation
+from .group_0429 import OrganizationSimpleWebhooks
 from .group_0430 import RepositoryWebhooks
 from .group_0477 import WebhooksSponsorship
-from .group_0429 import OrganizationSimpleWebhooks
+from .group_0478 import WebhooksChanges8
 
 
 class WebhookSponsorshipPendingTierChange(GitHubModel):

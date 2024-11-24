@@ -9,38 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from weakref import ref
 from typing import TYPE_CHECKING, Literal, Optional, overload
+from weakref import ref
 
 from pydantic import BaseModel
 
-from githubkit.typing import Missing, UnsetType
 from githubkit.utils import UNSET, exclude_unset
 from githubkit.compat import model_dump, type_validate_python
+from githubkit.typing import Missing, UnsetType
 
 if TYPE_CHECKING:
-    from datetime import datetime
     from typing import Union, Literal
+    from datetime import datetime
 
     from githubkit import GitHubCore
     from githubkit.utils import UNSET
     from githubkit.typing import Missing
     from githubkit.response import Response
 
-    from ..models import (
-        Feed,
-        Event,
-        Thread,
-        Stargazer,
-        Repository,
-        SimpleUser,
-        MinimalRepository,
-        StarredRepository,
-        ThreadSubscription,
-        RepositorySubscription,
-        NotificationsPutResponse202,
-        ReposOwnerRepoNotificationsPutResponse202,
-    )
     from ..types import (
         FeedType,
         EventType,
@@ -58,6 +44,20 @@ if TYPE_CHECKING:
         ReposOwnerRepoNotificationsPutBodyType,
         ReposOwnerRepoNotificationsPutResponse202Type,
         NotificationsThreadsThreadIdSubscriptionPutBodyType,
+    )
+    from ..models import (
+        Feed,
+        Event,
+        Thread,
+        Stargazer,
+        Repository,
+        SimpleUser,
+        MinimalRepository,
+        StarredRepository,
+        ThreadSubscription,
+        RepositorySubscription,
+        NotificationsPutResponse202,
+        ReposOwnerRepoNotificationsPutResponse202,
     )
 
 

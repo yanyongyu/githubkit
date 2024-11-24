@@ -42,6 +42,6 @@ class ThreadPropSubjectType(TypedDict):
 
 
 __all__ = (
-    "ThreadType",
     "ThreadPropSubjectType",
+    "ThreadType",
 )

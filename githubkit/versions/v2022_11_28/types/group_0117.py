@@ -34,6 +34,6 @@ class RepositoryRulesetConditionsRepositoryPropertySpecType(TypedDict):
 
 
 __all__ = (
-    "RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType",
     "RepositoryRulesetConditionsRepositoryPropertySpecType",
+    "RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType",
 )

@@ -14,14 +14,14 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
 
 from .group_0002 import SimpleUser
-from .group_0397 import Discussion
-from .group_0396 import WebhooksAnswer
-from .group_0387 import RepositoryWebhooks
 from .group_0386 import OrganizationSimpleWebhooks
+from .group_0387 import RepositoryWebhooks
+from .group_0396 import WebhooksAnswer
+from .group_0397 import Discussion
 
 
 class WebhookDiscussionUnanswered(GitHubModel):

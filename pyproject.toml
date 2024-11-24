@@ -21,9 +21,8 @@ pydantic = ">=1.9.1, <3.0.0, !=2.5.0, !=2.5.1"
 PyJWT = { version = "^2.4.0", extras = ["crypto"], optional = true }
 
 [tool.poetry.group.dev.dependencies]
-ruff = "^0.7.0"
+ruff = "^0.8.0"
 redis = "^5.2.0"
-isort = "^5.13.2"
 Jinja2 = "^3.1.2"
 nonemoji = "^0.1.2"
 pre-commit = "^4.0.0"
@@ -91,10 +90,10 @@ line-ending = "lf"
 
 [tool.ruff.lint]
 select = [
-  "F", # Pyflakes
-  "W", # pycodestyle warnings
-  "E", # pycodestyle errors
-  # "I",     # isort
+  "F",     # Pyflakes
+  "W",     # pycodestyle warnings
+  "E",     # pycodestyle errors
+  "I",     # isort
   "UP",    # pyupgrade
   "ASYNC", # flake8-async
   "C4",    # flake8-comprehensions
@@ -120,7 +119,6 @@ ignore = [
 
 [tool.ruff.lint.isort]
 length-sort = true
-lines-after-imports = 1
 force-sort-within-sections = true
 extra-standard-library = ["typing_extensions"]
 

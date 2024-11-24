@@ -12,8 +12,8 @@ from __future__ import annotations
 from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0398 import UserRoleItemsType
 from .group_0397 import UserNameResponseType, UserEmailsResponseItemsType
+from .group_0398 import UserRoleItemsType
 
 
 class UserResponseType(TypedDict):

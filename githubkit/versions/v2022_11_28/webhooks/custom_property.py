@@ -40,8 +40,8 @@ action_types: dict[str, type[GitHubModel]] = {
 custom_property_action_types = action_types
 
 __all__ = (
-    "Event",
     "CustomPropertyEvent",
+    "Event",
     "action_types",
     "custom_property_action_types",
 )

@@ -38,6 +38,6 @@ class GistCommitPropChangeStatusType(TypedDict):
 
 
 __all__ = (
-    "GistCommitType",
     "GistCommitPropChangeStatusType",
+    "GistCommitType",
 )

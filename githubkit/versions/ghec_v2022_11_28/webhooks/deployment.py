@@ -19,4 +19,4 @@ action_types = WebhookDeploymentCreated
 
 deployment_action_types = action_types
 
-__all__ = ("Event", "DeploymentEvent", "action_types", "deployment_action_types")
+__all__ = ("DeploymentEvent", "Event", "action_types", "deployment_action_types")

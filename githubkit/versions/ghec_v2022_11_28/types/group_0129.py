@@ -49,6 +49,6 @@ class TeamRoleAssignmentPropPermissionsType(TypedDict):
 
 
 __all__ = (
-    "TeamRoleAssignmentType",
     "TeamRoleAssignmentPropPermissionsType",
+    "TeamRoleAssignmentType",
 )

@@ -46,7 +46,7 @@ class ScimV2OrganizationsOrgUsersPostBodyPropEmailsItemsType(TypedDict):
 
 
 __all__ = (
-    "ScimV2OrganizationsOrgUsersPostBodyType",
-    "ScimV2OrganizationsOrgUsersPostBodyPropNameType",
     "ScimV2OrganizationsOrgUsersPostBodyPropEmailsItemsType",
+    "ScimV2OrganizationsOrgUsersPostBodyPropNameType",
+    "ScimV2OrganizationsOrgUsersPostBodyType",
 )

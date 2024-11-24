@@ -14,8 +14,8 @@ from datetime import datetime
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0002 import SimpleUserType
-from .group_0352 import ReleaseAssetType
 from .group_0074 import ReactionRollupType
+from .group_0352 import ReleaseAssetType
 
 
 class ReleaseType(TypedDict):

@@ -30,6 +30,6 @@ class ExternalGroupsPropGroupsItemsType(TypedDict):
 
 
 __all__ = (
-    "ExternalGroupsType",
     "ExternalGroupsPropGroupsItemsType",
+    "ExternalGroupsType",
 )

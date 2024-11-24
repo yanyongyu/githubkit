@@ -9,55 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from weakref import ref
 from typing import TYPE_CHECKING, Literal, Optional, overload
+from weakref import ref
 
 from pydantic import BaseModel
 
-from githubkit.typing import Missing, UnsetType
 from githubkit.utils import UNSET, exclude_unset
 from githubkit.compat import model_dump, type_validate_python
+from githubkit.typing import Missing, UnsetType
 
 if TYPE_CHECKING:
-    from datetime import datetime
     from typing import Union, Literal
+    from datetime import datetime
 
     from githubkit import GitHubCore
     from githubkit.utils import UNSET
     from githubkit.typing import Missing
     from githubkit.response import Response
 
-    from ..models import (
-        Team,
-        OrgHook,
-        SimpleUser,
-        TeamSimple,
-        HookDelivery,
-        OrgMembership,
-        WebhookConfig,
-        CustomProperty,
-        HookDeliveryItem,
-        OrganizationFull,
-        OrganizationRole,
-        MinimalRepository,
-        OrganizationSimple,
-        TeamRoleAssignment,
-        UserRoleAssignment,
-        OrganizationInvitation,
-        ApiInsightsSummaryStats,
-        ApiInsightsTimeStatsItems,
-        ApiInsightsUserStatsItems,
-        ApiInsightsRouteStatsItems,
-        OrgRepoCustomPropertyValues,
-        ApiInsightsSubjectStatsItems,
-        OrgsOrgInstallationsGetResponse200,
-        OrganizationProgrammaticAccessGrant,
-        OrgsOrgOrganizationRolesGetResponse200,
-        OrganizationProgrammaticAccessGrantRequest,
-        OrgsOrgAttestationsSubjectDigestGetResponse200,
-        OrgsOrgOutsideCollaboratorsUsernamePutResponse202,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-    )
     from ..types import (
         TeamType,
         OrgHookType,
@@ -107,6 +76,37 @@ if TYPE_CHECKING:
         OrgsOrgOutsideCollaboratorsUsernamePutResponse202Type,
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
         OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBodyType,
+    )
+    from ..models import (
+        Team,
+        OrgHook,
+        SimpleUser,
+        TeamSimple,
+        HookDelivery,
+        OrgMembership,
+        WebhookConfig,
+        CustomProperty,
+        HookDeliveryItem,
+        OrganizationFull,
+        OrganizationRole,
+        MinimalRepository,
+        OrganizationSimple,
+        TeamRoleAssignment,
+        UserRoleAssignment,
+        OrganizationInvitation,
+        ApiInsightsSummaryStats,
+        ApiInsightsTimeStatsItems,
+        ApiInsightsUserStatsItems,
+        ApiInsightsRouteStatsItems,
+        OrgRepoCustomPropertyValues,
+        ApiInsightsSubjectStatsItems,
+        OrgsOrgInstallationsGetResponse200,
+        OrganizationProgrammaticAccessGrant,
+        OrgsOrgOrganizationRolesGetResponse200,
+        OrganizationProgrammaticAccessGrantRequest,
+        OrgsOrgAttestationsSubjectDigestGetResponse200,
+        OrgsOrgOutsideCollaboratorsUsernamePutResponse202,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
     )
 
 

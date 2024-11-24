@@ -9,13 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union, Literal
+from datetime import datetime
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0002 import SimpleUserType
-from .group_0019 import RepositoryType
 from .group_0018 import LicenseSimpleType
+from .group_0019 import RepositoryType
 from .group_0090 import SecurityAndAnalysisType
 from .group_0138 import CodeOfConductSimpleType
 
@@ -153,7 +153,7 @@ class FullRepositoryPropCustomPropertiesType(TypedDict):
 
 
 __all__ = (
-    "FullRepositoryType",
-    "FullRepositoryPropPermissionsType",
     "FullRepositoryPropCustomPropertiesType",
+    "FullRepositoryPropPermissionsType",
+    "FullRepositoryType",
 )

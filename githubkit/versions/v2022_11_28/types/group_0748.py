@@ -12,12 +12,12 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0042 import IssueType
 from .group_0002 import SimpleUserType
 from .group_0019 import RepositoryType
+from .group_0042 import IssueType
 from .group_0385 import SimpleInstallationType
-from .group_0387 import RepositoryWebhooksType
 from .group_0386 import OrganizationSimpleWebhooksType
+from .group_0387 import RepositoryWebhooksType
 
 
 class WebhookSubIssuesSubIssueRemovedType(TypedDict):

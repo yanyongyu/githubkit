@@ -9,14 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from weakref import ref
 from typing import TYPE_CHECKING, Literal, Optional, overload
+from weakref import ref
 
 from pydantic import BaseModel
 
-from githubkit.typing import Missing, UnsetType
 from githubkit.utils import UNSET, exclude_unset
 from githubkit.compat import model_dump, type_validate_python
+from githubkit.typing import Missing, UnsetType
 
 if TYPE_CHECKING:
     from typing import Literal
@@ -26,17 +26,6 @@ if TYPE_CHECKING:
     from githubkit.typing import Missing
     from githubkit.response import Response
 
-    from ..models import (
-        EmptyObject,
-        DependabotAlert,
-        DependabotSecret,
-        DependabotPublicKey,
-        OrganizationDependabotSecret,
-        DependabotAlertWithRepository,
-        OrgsOrgDependabotSecretsGetResponse200,
-        ReposOwnerRepoDependabotSecretsGetResponse200,
-        OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200,
-    )
     from ..types import (
         EmptyObjectType,
         DependabotAlertType,
@@ -51,6 +40,17 @@ if TYPE_CHECKING:
         ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyType,
         OrgsOrgDependabotSecretsSecretNameRepositoriesPutBodyType,
         OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200Type,
+    )
+    from ..models import (
+        EmptyObject,
+        DependabotAlert,
+        DependabotSecret,
+        DependabotPublicKey,
+        OrganizationDependabotSecret,
+        DependabotAlertWithRepository,
+        OrgsOrgDependabotSecretsGetResponse200,
+        ReposOwnerRepoDependabotSecretsGetResponse200,
+        OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200,
     )
 
 

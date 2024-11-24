@@ -92,12 +92,12 @@ class WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackageType(TypedDict)
 
 
 __all__ = (
-    "WebhooksSecurityAdvisoryType",
     "WebhooksSecurityAdvisoryPropCvssType",
     "WebhooksSecurityAdvisoryPropCwesItemsType",
     "WebhooksSecurityAdvisoryPropIdentifiersItemsType",
     "WebhooksSecurityAdvisoryPropReferencesItemsType",
-    "WebhooksSecurityAdvisoryPropVulnerabilitiesItemsType",
     "WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionType",
     "WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackageType",
+    "WebhooksSecurityAdvisoryPropVulnerabilitiesItemsType",
+    "WebhooksSecurityAdvisoryType",
 )

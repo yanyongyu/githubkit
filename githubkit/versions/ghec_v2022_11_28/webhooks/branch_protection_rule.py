@@ -40,8 +40,8 @@ action_types: dict[str, type[GitHubModel]] = {
 branch_protection_rule_action_types = action_types
 
 __all__ = (
-    "Event",
     "BranchProtectionRuleEvent",
+    "Event",
     "action_types",
     "branch_protection_rule_action_types",
 )

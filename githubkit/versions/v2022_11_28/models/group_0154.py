@@ -9,18 +9,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union, Literal, Annotated
+from datetime import datetime
 
 from pydantic import Field
 
 from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
 
-from .group_0029 import Team
-from .group_0002 import SimpleUser
 from .group_0001 import CvssSeverities
+from .group_0002 import SimpleUser
+from .group_0029 import Team
 from .group_0153 import RepositoryAdvisoryCredit
 
 
@@ -198,11 +198,11 @@ model_rebuild(RepositoryAdvisoryVulnerabilityPropPackage)
 
 __all__ = (
     "RepositoryAdvisory",
-    "RepositoryAdvisoryPropIdentifiersItems",
-    "RepositoryAdvisoryPropSubmission",
+    "RepositoryAdvisoryPropCreditsItems",
     "RepositoryAdvisoryPropCvss",
     "RepositoryAdvisoryPropCwesItems",
-    "RepositoryAdvisoryPropCreditsItems",
+    "RepositoryAdvisoryPropIdentifiersItems",
+    "RepositoryAdvisoryPropSubmission",
     "RepositoryAdvisoryVulnerability",
     "RepositoryAdvisoryVulnerabilityPropPackage",
 )

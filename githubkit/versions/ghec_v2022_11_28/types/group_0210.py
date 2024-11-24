@@ -14,9 +14,9 @@ from datetime import datetime
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0002 import SimpleUserType
-from .group_0209 import SimpleCommitType
 from .group_0091 import MinimalRepositoryType
 from .group_0208 import PullRequestMinimalType
+from .group_0209 import SimpleCommitType
 
 
 class WorkflowRunType(TypedDict):
@@ -75,6 +75,6 @@ class ReferencedWorkflowType(TypedDict):
 
 
 __all__ = (
-    "WorkflowRunType",
     "ReferencedWorkflowType",
+    "WorkflowRunType",
 )

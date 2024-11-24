@@ -9,15 +9,15 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union, Literal
+from datetime import datetime
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0002 import SimpleUserType
 from .group_0384 import EnterpriseWebhooksType
 from .group_0385 import SimpleInstallationType
-from .group_0387 import RepositoryWebhooksType
 from .group_0386 import OrganizationSimpleWebhooksType
+from .group_0387 import RepositoryWebhooksType
 
 
 class WebhookPullRequestReviewRequestRemovedOneof0Type(TypedDict):
@@ -1035,20 +1035,23 @@ class WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropRequestedTe
 
 
 __all__ = (
-    "WebhookPullRequestReviewRequestRemovedOneof0Type",
-    "WebhookPullRequestReviewRequestRemovedOneof0PropRequestedReviewerType",
-    "WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestType",
     "WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropAssigneeType",
     "WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropAssigneesItemsType",
-    "WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropAutoMergeType",
     "WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropAutoMergePropEnabledByType",
+    "WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropAutoMergeType",
+    "WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropBasePropRepoPropLicenseType",
+    "WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropBasePropRepoPropOwnerType",
+    "WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropBasePropRepoPropPermissionsType",
+    "WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropBasePropRepoType",
+    "WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropBasePropUserType",
+    "WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropBaseType",
+    "WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropHeadPropRepoPropLicenseType",
+    "WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropHeadPropRepoPropOwnerType",
+    "WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropHeadPropRepoPropPermissionsType",
+    "WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropHeadPropRepoType",
+    "WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropHeadPropUserType",
+    "WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropHeadType",
     "WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropLabelsItemsType",
-    "WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropMergedByType",
-    "WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropMilestoneType",
-    "WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropMilestonePropCreatorType",
-    "WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropRequestedReviewersItemsOneof0Type",
-    "WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropUserType",
-    "WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropLinksType",
     "WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropLinksPropCommentsType",
     "WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropLinksPropCommitsType",
     "WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropLinksPropHtmlType",
@@ -1057,20 +1060,17 @@ __all__ = (
     "WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropLinksPropReviewCommentsType",
     "WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropLinksPropSelfType",
     "WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropLinksPropStatusesType",
-    "WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropBaseType",
-    "WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropBasePropUserType",
-    "WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropBasePropRepoType",
-    "WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropBasePropRepoPropLicenseType",
-    "WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropBasePropRepoPropOwnerType",
-    "WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropBasePropRepoPropPermissionsType",
-    "WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropHeadType",
-    "WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropHeadPropUserType",
-    "WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropHeadPropRepoType",
-    "WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropHeadPropRepoPropLicenseType",
-    "WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropHeadPropRepoPropOwnerType",
-    "WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropHeadPropRepoPropPermissionsType",
-    "WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropRequestedReviewersItemsOneof1Type",
+    "WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropLinksType",
+    "WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropMergedByType",
+    "WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropMilestonePropCreatorType",
+    "WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropMilestoneType",
+    "WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropRequestedReviewersItemsOneof0Type",
     "WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropRequestedReviewersItemsOneof1PropParentType",
-    "WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropRequestedTeamsItemsType",
+    "WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropRequestedReviewersItemsOneof1Type",
     "WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropRequestedTeamsItemsPropParentType",
+    "WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropRequestedTeamsItemsType",
+    "WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropUserType",
+    "WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestType",
+    "WebhookPullRequestReviewRequestRemovedOneof0PropRequestedReviewerType",
+    "WebhookPullRequestReviewRequestRemovedOneof0Type",
 )

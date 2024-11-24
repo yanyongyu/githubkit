@@ -62,8 +62,8 @@ class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValue
 
 
 __all__ = (
-    "ScimV2OrganizationsOrgUsersScimUserIdPatchBodyType",
-    "ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsType",
     "ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0Type",
     "ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1ItemsType",
+    "ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsType",
+    "ScimV2OrganizationsOrgUsersScimUserIdPatchBodyType",
 )

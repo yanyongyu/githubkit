@@ -52,8 +52,8 @@ action_types: dict[str, type[GitHubModel]] = {
 dependabot_alert_action_types = action_types
 
 __all__ = (
-    "Event",
     "DependabotAlertEvent",
+    "Event",
     "action_types",
     "dependabot_alert_action_types",
 )

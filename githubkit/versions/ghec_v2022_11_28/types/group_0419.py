@@ -9,8 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Any, Union
+from datetime import datetime
 from typing_extensions import TypedDict, NotRequired
 
 
@@ -71,8 +71,8 @@ class GpgKeyPropSubkeysItemsPropEmailsItemsType(TypedDict):
 
 
 __all__ = (
-    "GpgKeyType",
     "GpgKeyPropEmailsItemsType",
-    "GpgKeyPropSubkeysItemsType",
     "GpgKeyPropSubkeysItemsPropEmailsItemsType",
+    "GpgKeyPropSubkeysItemsType",
+    "GpgKeyType",
 )

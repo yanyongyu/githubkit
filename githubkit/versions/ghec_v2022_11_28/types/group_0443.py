@@ -83,7 +83,7 @@ class WebhooksCommentPropUserType(TypedDict):
 
 
 __all__ = (
-    "WebhooksCommentType",
     "WebhooksCommentPropReactionsType",
     "WebhooksCommentPropUserType",
+    "WebhooksCommentType",
 )

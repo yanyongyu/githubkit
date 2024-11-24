@@ -9,21 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union, Literal
+from datetime import datetime
 
 from pydantic import Field
 
 from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
 
 from .group_0002 import SimpleUser
-from .group_0471 import WebhooksReview
 from .group_0427 import EnterpriseWebhooks
 from .group_0428 import SimpleInstallation
-from .group_0430 import RepositoryWebhooks
 from .group_0429 import OrganizationSimpleWebhooks
+from .group_0430 import RepositoryWebhooks
+from .group_0471 import WebhooksReview
 
 
 class WebhookPullRequestReviewSubmitted(GitHubModel):
@@ -1134,11 +1134,19 @@ __all__ = (
     "WebhookPullRequestReviewSubmittedPropPullRequestPropAssigneesItems",
     "WebhookPullRequestReviewSubmittedPropPullRequestPropAutoMerge",
     "WebhookPullRequestReviewSubmittedPropPullRequestPropAutoMergePropEnabledBy",
+    "WebhookPullRequestReviewSubmittedPropPullRequestPropBase",
+    "WebhookPullRequestReviewSubmittedPropPullRequestPropBasePropRepo",
+    "WebhookPullRequestReviewSubmittedPropPullRequestPropBasePropRepoPropLicense",
+    "WebhookPullRequestReviewSubmittedPropPullRequestPropBasePropRepoPropOwner",
+    "WebhookPullRequestReviewSubmittedPropPullRequestPropBasePropRepoPropPermissions",
+    "WebhookPullRequestReviewSubmittedPropPullRequestPropBasePropUser",
+    "WebhookPullRequestReviewSubmittedPropPullRequestPropHead",
+    "WebhookPullRequestReviewSubmittedPropPullRequestPropHeadPropRepo",
+    "WebhookPullRequestReviewSubmittedPropPullRequestPropHeadPropRepoPropLicense",
+    "WebhookPullRequestReviewSubmittedPropPullRequestPropHeadPropRepoPropOwner",
+    "WebhookPullRequestReviewSubmittedPropPullRequestPropHeadPropRepoPropPermissions",
+    "WebhookPullRequestReviewSubmittedPropPullRequestPropHeadPropUser",
     "WebhookPullRequestReviewSubmittedPropPullRequestPropLabelsItems",
-    "WebhookPullRequestReviewSubmittedPropPullRequestPropMilestone",
-    "WebhookPullRequestReviewSubmittedPropPullRequestPropMilestonePropCreator",
-    "WebhookPullRequestReviewSubmittedPropPullRequestPropRequestedReviewersItemsOneof0",
-    "WebhookPullRequestReviewSubmittedPropPullRequestPropUser",
     "WebhookPullRequestReviewSubmittedPropPullRequestPropLinks",
     "WebhookPullRequestReviewSubmittedPropPullRequestPropLinksPropComments",
     "WebhookPullRequestReviewSubmittedPropPullRequestPropLinksPropCommits",
@@ -1148,20 +1156,12 @@ __all__ = (
     "WebhookPullRequestReviewSubmittedPropPullRequestPropLinksPropReviewComments",
     "WebhookPullRequestReviewSubmittedPropPullRequestPropLinksPropSelf",
     "WebhookPullRequestReviewSubmittedPropPullRequestPropLinksPropStatuses",
-    "WebhookPullRequestReviewSubmittedPropPullRequestPropBase",
-    "WebhookPullRequestReviewSubmittedPropPullRequestPropBasePropUser",
-    "WebhookPullRequestReviewSubmittedPropPullRequestPropBasePropRepo",
-    "WebhookPullRequestReviewSubmittedPropPullRequestPropBasePropRepoPropLicense",
-    "WebhookPullRequestReviewSubmittedPropPullRequestPropBasePropRepoPropOwner",
-    "WebhookPullRequestReviewSubmittedPropPullRequestPropBasePropRepoPropPermissions",
-    "WebhookPullRequestReviewSubmittedPropPullRequestPropHead",
-    "WebhookPullRequestReviewSubmittedPropPullRequestPropHeadPropRepo",
-    "WebhookPullRequestReviewSubmittedPropPullRequestPropHeadPropRepoPropLicense",
-    "WebhookPullRequestReviewSubmittedPropPullRequestPropHeadPropRepoPropOwner",
-    "WebhookPullRequestReviewSubmittedPropPullRequestPropHeadPropRepoPropPermissions",
-    "WebhookPullRequestReviewSubmittedPropPullRequestPropHeadPropUser",
+    "WebhookPullRequestReviewSubmittedPropPullRequestPropMilestone",
+    "WebhookPullRequestReviewSubmittedPropPullRequestPropMilestonePropCreator",
+    "WebhookPullRequestReviewSubmittedPropPullRequestPropRequestedReviewersItemsOneof0",
     "WebhookPullRequestReviewSubmittedPropPullRequestPropRequestedReviewersItemsOneof1",
     "WebhookPullRequestReviewSubmittedPropPullRequestPropRequestedReviewersItemsOneof1PropParent",
     "WebhookPullRequestReviewSubmittedPropPullRequestPropRequestedTeamsItems",
     "WebhookPullRequestReviewSubmittedPropPullRequestPropRequestedTeamsItemsPropParent",
+    "WebhookPullRequestReviewSubmittedPropPullRequestPropUser",
 )

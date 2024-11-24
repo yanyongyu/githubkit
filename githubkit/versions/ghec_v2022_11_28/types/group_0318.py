@@ -44,6 +44,6 @@ class ReviewDismissedIssueEventPropDismissedReviewType(TypedDict):
 
 
 __all__ = (
-    "ReviewDismissedIssueEventType",
     "ReviewDismissedIssueEventPropDismissedReviewType",
+    "ReviewDismissedIssueEventType",
 )

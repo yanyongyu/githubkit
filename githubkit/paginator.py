@@ -1,6 +1,6 @@
+from typing import Any, Union, Generic, TypeVar, Callable, Optional, cast, overload
 from collections.abc import Awaitable
 from typing_extensions import Self, ParamSpec
-from typing import Any, Union, Generic, TypeVar, Callable, Optional, cast, overload
 
 from .utils import is_async
 from .response import Response

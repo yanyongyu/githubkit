@@ -47,8 +47,8 @@ class ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelopeType(TypedDict
 
 
 __all__ = (
-    "ReposOwnerRepoAttestationsPostBodyType",
-    "ReposOwnerRepoAttestationsPostBodyPropBundleType",
-    "ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterialType",
     "ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelopeType",
+    "ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterialType",
+    "ReposOwnerRepoAttestationsPostBodyPropBundleType",
+    "ReposOwnerRepoAttestationsPostBodyType",
 )

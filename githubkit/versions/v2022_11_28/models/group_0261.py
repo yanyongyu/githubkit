@@ -15,8 +15,8 @@ from datetime import datetime
 from pydantic import Field
 
 from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
 
 from .group_0260 import DeploymentBranchPolicySettings
 from .group_0262 import EnvironmentPropProtectionRulesItemsAnyof1

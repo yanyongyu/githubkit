@@ -44,6 +44,6 @@ class ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1Type(TypedDic
 
 
 __all__ = (
-    "ReposOwnerRepoIssuesIssueNumberPatchBodyType",
     "ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1Type",
+    "ReposOwnerRepoIssuesIssueNumberPatchBodyType",
 )

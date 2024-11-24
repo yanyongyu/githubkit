@@ -35,6 +35,6 @@ class OrgsOrgHooksHookIdPatchBodyPropConfigType(TypedDict):
 
 
 __all__ = (
-    "OrgsOrgHooksHookIdPatchBodyType",
     "OrgsOrgHooksHookIdPatchBodyPropConfigType",
+    "OrgsOrgHooksHookIdPatchBodyType",
 )

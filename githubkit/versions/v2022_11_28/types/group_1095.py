@@ -35,6 +35,6 @@ class CodespacesSecretType(TypedDict):
 
 
 __all__ = (
-    "UserCodespacesSecretsGetResponse200Type",
     "CodespacesSecretType",
+    "UserCodespacesSecretsGetResponse200Type",
 )

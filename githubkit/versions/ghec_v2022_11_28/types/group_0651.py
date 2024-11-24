@@ -42,8 +42,8 @@ class WebhookRubygemsMetadataPropDependenciesItemsType(TypedDict):
 
 
 __all__ = (
-    "WebhookRubygemsMetadataType",
-    "WebhookRubygemsMetadataPropVersionInfoType",
-    "WebhookRubygemsMetadataPropMetadataType",
     "WebhookRubygemsMetadataPropDependenciesItemsType",
+    "WebhookRubygemsMetadataPropMetadataType",
+    "WebhookRubygemsMetadataPropVersionInfoType",
+    "WebhookRubygemsMetadataType",
 )

@@ -9,8 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union, Literal
+from datetime import datetime
 from typing_extensions import TypedDict, NotRequired
 
 
@@ -328,16 +328,16 @@ class WebhooksIssue2PropUserType(TypedDict):
 
 
 __all__ = (
-    "WebhooksIssue2Type",
     "WebhooksIssue2PropAssigneeType",
     "WebhooksIssue2PropAssigneesItemsType",
     "WebhooksIssue2PropLabelsItemsType",
-    "WebhooksIssue2PropMilestoneType",
     "WebhooksIssue2PropMilestonePropCreatorType",
-    "WebhooksIssue2PropPerformedViaGithubAppType",
+    "WebhooksIssue2PropMilestoneType",
     "WebhooksIssue2PropPerformedViaGithubAppPropOwnerType",
     "WebhooksIssue2PropPerformedViaGithubAppPropPermissionsType",
+    "WebhooksIssue2PropPerformedViaGithubAppType",
     "WebhooksIssue2PropPullRequestType",
     "WebhooksIssue2PropReactionsType",
     "WebhooksIssue2PropUserType",
+    "WebhooksIssue2Type",
 )

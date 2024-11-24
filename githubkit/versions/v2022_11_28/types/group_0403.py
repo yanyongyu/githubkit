@@ -28,6 +28,6 @@ class WebhooksChangesPropBodyType(TypedDict):
 
 
 __all__ = (
-    "WebhooksChangesType",
     "WebhooksChangesPropBodyType",
+    "WebhooksChangesType",
 )
