@@ -77,8 +77,50 @@ The `cache_strategy` option defines how to cache the tokens or http responses. Y
 Available built-in cache strategies:
 
 - `MemCacheStrategy`: Cache the data in memory.
+
+      Normally, you do not need to specifically use this cache strategy. It is used by default.
+
+      ```python
+      from githubkit.cache import DEFAULT_CACHE_STRATEGY, MemCacheStrategy
+
+      # Use the default cache strategy
+      github = GitHub(cache_strategy=DEFAULT_CACHE_STRATEGY)
+      # Or you can initialize another MemCacheStrategy instance
+      # this will create a new cache instance and not share the cache with the global one
+      github = GitHub(cache_strategy=MemCacheStrategy())
+      ```
+
 - `RedisCacheStrategy`: Cache the data in Redis (Sync only).
+
+      To cache the data in Redis (Sync only), you need to provide a redis client to the `RedisCacheStrategy`. For example:
+
+      ```python
+      from redis import Redis
+
+      github = GitHub(
+          cache_strategy=RedisCacheStrategy(
+              client=Redis(host="localhost", port=6379)
+          )
+      )
+      ```
+
+      Note that using this sync only cache strategy will cause the `GitHub` instance to be sync only.
+
 - `AsyncRedisCacheStrategy`: Cache the data in Redis (Async only).
+
+      To cache the data in Redis (Async only), you need to provide an async redis client to the `AsyncRedisCacheStrategy`. For example:
+
+      ```python
+      from redis.asyncio import Redis
+
+      github = GitHub(
+          cache_strategy=AsyncRedisCacheStrategy(
+              client=Redis(host="localhost", port=6379)
+          )
+      )
+      ```
+
+      Note that using this async only cache strategy will cause the `GitHub` instance to be async only.
 
 ### `http_cache`
 
@@ -91,6 +133,12 @@ The `throttler` option is used to control the request concurrency to avoid hitti
 Available built-in throttlers:
 
 - `LocalThrottler`: Control the request concurrency in the local process / event loop.
+
+      ```python
+      from githubkit.throttling import LocalThrottler
+
+      github = GitHub(throttler=LocalThrottler(100))
+      ```
 
 ### `auto_retry`
 
