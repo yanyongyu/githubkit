@@ -9,18 +9,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union, Literal
+from datetime import datetime
 
 from pydantic import Field
 
 from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
 
 from .group_0008 import Integration
-from .group_0206 import DeploymentSimple
 from .group_0179 import PullRequestMinimal
+from .group_0206 import DeploymentSimple
 
 
 class CheckRun(GitHubModel):
@@ -91,6 +91,6 @@ model_rebuild(CheckRunPropCheckSuite)
 
 __all__ = (
     "CheckRun",
-    "CheckRunPropOutput",
     "CheckRunPropCheckSuite",
+    "CheckRunPropOutput",
 )

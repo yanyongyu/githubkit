@@ -75,7 +75,7 @@ class WebhookPackagePublishedPropPackagePropRegistryType(TypedDict):
 
 
 __all__ = (
-    "WebhookPackagePublishedPropPackageType",
     "WebhookPackagePublishedPropPackagePropOwnerType",
     "WebhookPackagePublishedPropPackagePropRegistryType",
+    "WebhookPackagePublishedPropPackageType",
 )

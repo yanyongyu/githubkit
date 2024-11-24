@@ -12,8 +12,8 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
+from githubkit.typing import Missing
 
 
 class AuditLogEvent(GitHubModel):
@@ -135,9 +135,9 @@ model_rebuild(AuditLogEventPropEventsWereItems)
 __all__ = (
     "AuditLogEvent",
     "AuditLogEventPropActorLocation",
-    "AuditLogEventPropData",
     "AuditLogEventPropConfigItems",
     "AuditLogEventPropConfigWasItems",
+    "AuditLogEventPropData",
     "AuditLogEventPropEventsItems",
     "AuditLogEventPropEventsWereItems",
 )

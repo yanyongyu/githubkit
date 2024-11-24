@@ -67,8 +67,8 @@ class ApiOverviewPropDomainsPropArtifactAttestationsType(TypedDict):
 
 
 __all__ = (
-    "ApiOverviewType",
-    "ApiOverviewPropSshKeyFingerprintsType",
-    "ApiOverviewPropDomainsType",
     "ApiOverviewPropDomainsPropArtifactAttestationsType",
+    "ApiOverviewPropDomainsType",
+    "ApiOverviewPropSshKeyFingerprintsType",
+    "ApiOverviewType",
 )

@@ -14,11 +14,11 @@ from typing import Union
 from pydantic import Field
 
 from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
 
-from .group_0199 import DiffEntry
 from .group_0002 import SimpleUser
+from .group_0199 import DiffEntry
 from .group_0201 import CommitPropCommit
 
 
@@ -71,7 +71,7 @@ model_rebuild(CommitPropStats)
 
 __all__ = (
     "Commit",
-    "EmptyObject",
     "CommitPropParentsItems",
     "CommitPropStats",
+    "EmptyObject",
 )

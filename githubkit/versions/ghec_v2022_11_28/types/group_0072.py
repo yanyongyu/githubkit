@@ -35,6 +35,6 @@ class BillingUsageReportPropUsageItemsItemsType(TypedDict):
 
 
 __all__ = (
-    "BillingUsageReportType",
     "BillingUsageReportPropUsageItemsItemsType",
+    "BillingUsageReportType",
 )

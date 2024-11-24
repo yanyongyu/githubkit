@@ -43,6 +43,6 @@ model_rebuild(PullRequestSimplePropHead)
 model_rebuild(PullRequestSimplePropBase)
 
 __all__ = (
-    "PullRequestSimplePropHead",
     "PullRequestSimplePropBase",
+    "PullRequestSimplePropHead",
 )

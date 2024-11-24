@@ -15,8 +15,8 @@ from datetime import datetime
 from pydantic import Field
 
 from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
 
 from .group_0075 import Issue
 from .group_0076 import IssueComment
@@ -95,9 +95,9 @@ model_rebuild(Actor)
 model_rebuild(EventPropRepo)
 
 __all__ = (
+    "Actor",
+    "Event",
     "EventPropPayload",
     "EventPropPayloadPropPagesItems",
-    "Event",
-    "Actor",
     "EventPropRepo",
 )

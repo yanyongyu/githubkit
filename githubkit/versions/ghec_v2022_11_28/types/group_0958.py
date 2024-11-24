@@ -29,6 +29,6 @@ class OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItemsType(Type
 
 
 __all__ = (
-    "OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyType",
     "OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItemsType",
+    "OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyType",
 )

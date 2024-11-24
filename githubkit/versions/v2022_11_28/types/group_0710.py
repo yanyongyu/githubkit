@@ -12,26 +12,6 @@ from __future__ import annotations
 from typing import Union
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0122 import RepositoryRuleUpdateType
-from .group_0149 import RepositoryRuleOneof18Type
-from .group_0145 import RepositoryRuleWorkflowsType
-from .group_0125 import RepositoryRuleMergeQueueType
-from .group_0130 import RepositoryRulePullRequestType
-from .group_0147 import RepositoryRuleCodeScanningType
-from .group_0142 import RepositoryRuleTagNamePatternType
-from .group_0140 import RepositoryRuleBranchNamePatternType
-from .group_0127 import RepositoryRuleRequiredDeploymentsType
-from .group_0132 import RepositoryRuleRequiredStatusChecksType
-from .group_0134 import RepositoryRuleCommitMessagePatternType
-from .group_0138 import RepositoryRuleCommitterEmailPatternType
-from .group_0136 import RepositoryRuleCommitAuthorEmailPatternType
-from .group_0124 import (
-    RepositoryRuleOneof16Type,
-    RepositoryRuleRequiredLinearHistoryType,
-)
-from .group_0711 import (
-    WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsType,
-)
 from .group_0121 import (
     RepositoryRuleOneof15Type,
     RepositoryRuleOneof17Type,
@@ -39,6 +19,26 @@ from .group_0121 import (
     RepositoryRuleDeletionType,
     RepositoryRuleNonFastForwardType,
     RepositoryRuleRequiredSignaturesType,
+)
+from .group_0122 import RepositoryRuleUpdateType
+from .group_0124 import (
+    RepositoryRuleOneof16Type,
+    RepositoryRuleRequiredLinearHistoryType,
+)
+from .group_0125 import RepositoryRuleMergeQueueType
+from .group_0127 import RepositoryRuleRequiredDeploymentsType
+from .group_0130 import RepositoryRulePullRequestType
+from .group_0132 import RepositoryRuleRequiredStatusChecksType
+from .group_0134 import RepositoryRuleCommitMessagePatternType
+from .group_0136 import RepositoryRuleCommitAuthorEmailPatternType
+from .group_0138 import RepositoryRuleCommitterEmailPatternType
+from .group_0140 import RepositoryRuleBranchNamePatternType
+from .group_0142 import RepositoryRuleTagNamePatternType
+from .group_0145 import RepositoryRuleWorkflowsType
+from .group_0147 import RepositoryRuleCodeScanningType
+from .group_0149 import RepositoryRuleOneof18Type
+from .group_0711 import (
+    WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsType,
 )
 
 

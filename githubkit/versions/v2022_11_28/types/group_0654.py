@@ -9,15 +9,15 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union, Literal
+from datetime import datetime
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0002 import SimpleUserType
 from .group_0384 import EnterpriseWebhooksType
 from .group_0385 import SimpleInstallationType
-from .group_0387 import RepositoryWebhooksType
 from .group_0386 import OrganizationSimpleWebhooksType
+from .group_0387 import RepositoryWebhooksType
 
 
 class WebhookPullRequestDequeuedType(TypedDict):
@@ -929,19 +929,23 @@ class WebhookPullRequestDequeuedPropPullRequestPropRequestedTeamsItemsPropParent
 
 
 __all__ = (
-    "WebhookPullRequestDequeuedType",
-    "WebhookPullRequestDequeuedPropPullRequestType",
     "WebhookPullRequestDequeuedPropPullRequestPropAssigneeType",
     "WebhookPullRequestDequeuedPropPullRequestPropAssigneesItemsType",
-    "WebhookPullRequestDequeuedPropPullRequestPropAutoMergeType",
     "WebhookPullRequestDequeuedPropPullRequestPropAutoMergePropEnabledByType",
+    "WebhookPullRequestDequeuedPropPullRequestPropAutoMergeType",
+    "WebhookPullRequestDequeuedPropPullRequestPropBasePropRepoPropLicenseType",
+    "WebhookPullRequestDequeuedPropPullRequestPropBasePropRepoPropOwnerType",
+    "WebhookPullRequestDequeuedPropPullRequestPropBasePropRepoPropPermissionsType",
+    "WebhookPullRequestDequeuedPropPullRequestPropBasePropRepoType",
+    "WebhookPullRequestDequeuedPropPullRequestPropBasePropUserType",
+    "WebhookPullRequestDequeuedPropPullRequestPropBaseType",
+    "WebhookPullRequestDequeuedPropPullRequestPropHeadPropRepoPropLicenseType",
+    "WebhookPullRequestDequeuedPropPullRequestPropHeadPropRepoPropOwnerType",
+    "WebhookPullRequestDequeuedPropPullRequestPropHeadPropRepoPropPermissionsType",
+    "WebhookPullRequestDequeuedPropPullRequestPropHeadPropRepoType",
+    "WebhookPullRequestDequeuedPropPullRequestPropHeadPropUserType",
+    "WebhookPullRequestDequeuedPropPullRequestPropHeadType",
     "WebhookPullRequestDequeuedPropPullRequestPropLabelsItemsType",
-    "WebhookPullRequestDequeuedPropPullRequestPropMergedByType",
-    "WebhookPullRequestDequeuedPropPullRequestPropMilestoneType",
-    "WebhookPullRequestDequeuedPropPullRequestPropMilestonePropCreatorType",
-    "WebhookPullRequestDequeuedPropPullRequestPropRequestedReviewersItemsOneof0Type",
-    "WebhookPullRequestDequeuedPropPullRequestPropUserType",
-    "WebhookPullRequestDequeuedPropPullRequestPropLinksType",
     "WebhookPullRequestDequeuedPropPullRequestPropLinksPropCommentsType",
     "WebhookPullRequestDequeuedPropPullRequestPropLinksPropCommitsType",
     "WebhookPullRequestDequeuedPropPullRequestPropLinksPropHtmlType",
@@ -950,20 +954,16 @@ __all__ = (
     "WebhookPullRequestDequeuedPropPullRequestPropLinksPropReviewCommentsType",
     "WebhookPullRequestDequeuedPropPullRequestPropLinksPropSelfType",
     "WebhookPullRequestDequeuedPropPullRequestPropLinksPropStatusesType",
-    "WebhookPullRequestDequeuedPropPullRequestPropBaseType",
-    "WebhookPullRequestDequeuedPropPullRequestPropBasePropUserType",
-    "WebhookPullRequestDequeuedPropPullRequestPropBasePropRepoType",
-    "WebhookPullRequestDequeuedPropPullRequestPropBasePropRepoPropLicenseType",
-    "WebhookPullRequestDequeuedPropPullRequestPropBasePropRepoPropOwnerType",
-    "WebhookPullRequestDequeuedPropPullRequestPropBasePropRepoPropPermissionsType",
-    "WebhookPullRequestDequeuedPropPullRequestPropHeadType",
-    "WebhookPullRequestDequeuedPropPullRequestPropHeadPropUserType",
-    "WebhookPullRequestDequeuedPropPullRequestPropHeadPropRepoType",
-    "WebhookPullRequestDequeuedPropPullRequestPropHeadPropRepoPropLicenseType",
-    "WebhookPullRequestDequeuedPropPullRequestPropHeadPropRepoPropOwnerType",
-    "WebhookPullRequestDequeuedPropPullRequestPropHeadPropRepoPropPermissionsType",
-    "WebhookPullRequestDequeuedPropPullRequestPropRequestedReviewersItemsOneof1Type",
+    "WebhookPullRequestDequeuedPropPullRequestPropLinksType",
+    "WebhookPullRequestDequeuedPropPullRequestPropMergedByType",
+    "WebhookPullRequestDequeuedPropPullRequestPropMilestonePropCreatorType",
+    "WebhookPullRequestDequeuedPropPullRequestPropMilestoneType",
+    "WebhookPullRequestDequeuedPropPullRequestPropRequestedReviewersItemsOneof0Type",
     "WebhookPullRequestDequeuedPropPullRequestPropRequestedReviewersItemsOneof1PropParentType",
-    "WebhookPullRequestDequeuedPropPullRequestPropRequestedTeamsItemsType",
+    "WebhookPullRequestDequeuedPropPullRequestPropRequestedReviewersItemsOneof1Type",
     "WebhookPullRequestDequeuedPropPullRequestPropRequestedTeamsItemsPropParentType",
+    "WebhookPullRequestDequeuedPropPullRequestPropRequestedTeamsItemsType",
+    "WebhookPullRequestDequeuedPropPullRequestPropUserType",
+    "WebhookPullRequestDequeuedPropPullRequestType",
+    "WebhookPullRequestDequeuedType",
 )

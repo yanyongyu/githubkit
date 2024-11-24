@@ -9,13 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union, Literal
+from datetime import datetime
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0056 import TeamType
-from .group_0002 import SimpleUserType
 from .group_0001 import CvssSeveritiesType
+from .group_0002 import SimpleUserType
+from .group_0056 import TeamType
 from .group_0184 import RepositoryAdvisoryCreditType
 
 
@@ -139,12 +139,12 @@ class RepositoryAdvisoryVulnerabilityPropPackageType(TypedDict):
 
 
 __all__ = (
-    "RepositoryAdvisoryType",
-    "RepositoryAdvisoryPropIdentifiersItemsType",
-    "RepositoryAdvisoryPropSubmissionType",
+    "RepositoryAdvisoryPropCreditsItemsType",
     "RepositoryAdvisoryPropCvssType",
     "RepositoryAdvisoryPropCwesItemsType",
-    "RepositoryAdvisoryPropCreditsItemsType",
-    "RepositoryAdvisoryVulnerabilityType",
+    "RepositoryAdvisoryPropIdentifiersItemsType",
+    "RepositoryAdvisoryPropSubmissionType",
+    "RepositoryAdvisoryType",
     "RepositoryAdvisoryVulnerabilityPropPackageType",
+    "RepositoryAdvisoryVulnerabilityType",
 )

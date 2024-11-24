@@ -13,10 +13,10 @@ from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0002 import SimpleUserType
-from .group_0397 import DiscussionType
-from .group_0396 import WebhooksAnswerType
-from .group_0387 import RepositoryWebhooksType
 from .group_0386 import OrganizationSimpleWebhooksType
+from .group_0387 import RepositoryWebhooksType
+from .group_0396 import WebhooksAnswerType
+from .group_0397 import DiscussionType
 
 
 class WebhookDiscussionUnansweredType(TypedDict):

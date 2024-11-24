@@ -9,17 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union, Literal
+from datetime import datetime
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0073 import MilestoneType
-from .group_0264 import AutoMergeType
 from .group_0002 import SimpleUserType
 from .group_0055 import TeamSimpleType
-from .group_0346 import PullRequestPropLinksType
+from .group_0073 import MilestoneType
+from .group_0264 import AutoMergeType
 from .group_0344 import PullRequestPropLabelsItemsType
 from .group_0345 import PullRequestPropBaseType, PullRequestPropHeadType
+from .group_0346 import PullRequestPropLinksType
 
 
 class PullRequestWebhookType(TypedDict):

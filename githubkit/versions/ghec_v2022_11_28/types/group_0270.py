@@ -51,7 +51,7 @@ class CommunityProfileType(TypedDict):
 
 
 __all__ = (
-    "CommunityProfilePropFilesType",
     "CommunityHealthFileType",
+    "CommunityProfilePropFilesType",
     "CommunityProfileType",
 )

@@ -9,18 +9,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union, Literal
+from datetime import datetime
 
 from pydantic import Field
 
 from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
 
 from .group_0602 import WebhookIssuesClosedPropIssueAllof0PropMilestone
-from .group_0605 import WebhookIssuesClosedPropIssueAllof0PropPullRequest
 from .group_0604 import WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubApp
+from .group_0605 import WebhookIssuesClosedPropIssueAllof0PropPullRequest
 
 
 class WebhookIssuesClosedPropIssueAllof0(GitHubModel):

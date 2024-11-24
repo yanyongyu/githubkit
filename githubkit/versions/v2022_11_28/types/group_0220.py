@@ -39,6 +39,6 @@ class CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundReposType(
 
 
 __all__ = (
-    "CodeScanningVariantAnalysisPropSkippedRepositoriesType",
     "CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundReposType",
+    "CodeScanningVariantAnalysisPropSkippedRepositoriesType",
 )

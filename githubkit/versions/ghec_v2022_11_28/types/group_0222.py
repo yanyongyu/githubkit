@@ -12,9 +12,9 @@ from __future__ import annotations
 from typing import Union
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0056 import TeamType
 from .group_0002 import SimpleUserType
 from .group_0008 import IntegrationType
+from .group_0056 import TeamType
 
 
 class ProtectedBranchPullRequestReviewPropDismissalRestrictionsType(TypedDict):
@@ -40,6 +40,6 @@ class ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesType(TypedD
 
 
 __all__ = (
-    "ProtectedBranchPullRequestReviewPropDismissalRestrictionsType",
     "ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesType",
+    "ProtectedBranchPullRequestReviewPropDismissalRestrictionsType",
 )

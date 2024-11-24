@@ -19,4 +19,4 @@ action_types = WebhookDelete
 
 delete_action_types = action_types
 
-__all__ = ("Event", "DeleteEvent", "action_types", "delete_action_types")
+__all__ = ("DeleteEvent", "Event", "action_types", "delete_action_types")

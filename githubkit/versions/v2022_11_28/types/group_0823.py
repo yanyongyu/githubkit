@@ -91,8 +91,8 @@ class OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScannin
 
 
 __all__ = (
-    "OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyType",
     "OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptionsType",
-    "OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDelegatedBypassOptionsType",
     "OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDelegatedBypassOptionsPropReviewersItemsType",
+    "OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDelegatedBypassOptionsType",
+    "OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyType",
 )

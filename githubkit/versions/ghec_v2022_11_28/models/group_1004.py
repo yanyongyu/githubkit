@@ -12,8 +12,8 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
+from githubkit.typing import Missing
 
 
 class ReposOwnerRepoAttestationsPostBody(GitHubModel):
@@ -60,6 +60,6 @@ model_rebuild(ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelope)
 __all__ = (
     "ReposOwnerRepoAttestationsPostBody",
     "ReposOwnerRepoAttestationsPostBodyPropBundle",
-    "ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterial",
     "ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelope",
+    "ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterial",
 )

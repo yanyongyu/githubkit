@@ -37,6 +37,6 @@ class GistsGistIdPatchBodyPropFilesType(TypedDict):
 
 
 __all__ = (
-    "GistsGistIdPatchBodyType",
     "GistsGistIdPatchBodyPropFilesType",
+    "GistsGistIdPatchBodyType",
 )

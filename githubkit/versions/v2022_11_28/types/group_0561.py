@@ -9,16 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union, Literal
+from datetime import datetime
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0002 import SimpleUserType
-from .group_0399 import WebhooksLabelType
 from .group_0384 import EnterpriseWebhooksType
 from .group_0385 import SimpleInstallationType
-from .group_0387 import RepositoryWebhooksType
 from .group_0386 import OrganizationSimpleWebhooksType
+from .group_0387 import RepositoryWebhooksType
+from .group_0399 import WebhooksLabelType
 
 
 class WebhookIssuesEditedType(TypedDict):
@@ -376,20 +376,20 @@ class WebhookIssuesEditedPropIssuePropUserType(TypedDict):
 
 
 __all__ = (
-    "WebhookIssuesEditedType",
-    "WebhookIssuesEditedPropChangesType",
     "WebhookIssuesEditedPropChangesPropBodyType",
     "WebhookIssuesEditedPropChangesPropTitleType",
-    "WebhookIssuesEditedPropIssueType",
+    "WebhookIssuesEditedPropChangesType",
     "WebhookIssuesEditedPropIssuePropAssigneeType",
     "WebhookIssuesEditedPropIssuePropAssigneesItemsType",
     "WebhookIssuesEditedPropIssuePropLabelsItemsType",
-    "WebhookIssuesEditedPropIssuePropMilestoneType",
     "WebhookIssuesEditedPropIssuePropMilestonePropCreatorType",
-    "WebhookIssuesEditedPropIssuePropPerformedViaGithubAppType",
+    "WebhookIssuesEditedPropIssuePropMilestoneType",
     "WebhookIssuesEditedPropIssuePropPerformedViaGithubAppPropOwnerType",
     "WebhookIssuesEditedPropIssuePropPerformedViaGithubAppPropPermissionsType",
+    "WebhookIssuesEditedPropIssuePropPerformedViaGithubAppType",
     "WebhookIssuesEditedPropIssuePropPullRequestType",
     "WebhookIssuesEditedPropIssuePropReactionsType",
     "WebhookIssuesEditedPropIssuePropUserType",
+    "WebhookIssuesEditedPropIssueType",
+    "WebhookIssuesEditedType",
 )

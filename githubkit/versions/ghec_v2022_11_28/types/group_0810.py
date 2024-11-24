@@ -16,8 +16,8 @@ from .group_0002 import SimpleUserType
 from .group_0215 import DeploymentType
 from .group_0427 import EnterpriseWebhooksType
 from .group_0428 import SimpleInstallationType
-from .group_0430 import RepositoryWebhooksType
 from .group_0429 import OrganizationSimpleWebhooksType
+from .group_0430 import RepositoryWebhooksType
 
 
 class WebhookWorkflowJobInProgressType(TypedDict):
@@ -73,7 +73,7 @@ class WebhookWorkflowJobInProgressPropWorkflowJobMergedStepsType(TypedDict):
 
 
 __all__ = (
-    "WebhookWorkflowJobInProgressType",
-    "WebhookWorkflowJobInProgressPropWorkflowJobType",
     "WebhookWorkflowJobInProgressPropWorkflowJobMergedStepsType",
+    "WebhookWorkflowJobInProgressPropWorkflowJobType",
+    "WebhookWorkflowJobInProgressType",
 )

@@ -9,15 +9,15 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union, Literal
+from datetime import datetime
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0002 import SimpleUserType
 from .group_0384 import EnterpriseWebhooksType
 from .group_0385 import SimpleInstallationType
-from .group_0387 import RepositoryWebhooksType
 from .group_0386 import OrganizationSimpleWebhooksType
+from .group_0387 import RepositoryWebhooksType
 
 
 class WebhookPullRequestReviewDismissedType(TypedDict):
@@ -988,23 +988,23 @@ class WebhookPullRequestReviewDismissedPropPullRequestPropRequestedTeamsItemsPro
 
 
 __all__ = (
-    "WebhookPullRequestReviewDismissedType",
-    "WebhookPullRequestReviewDismissedPropReviewType",
-    "WebhookPullRequestReviewDismissedPropReviewPropUserType",
-    "WebhookPullRequestReviewDismissedPropReviewPropLinksType",
-    "WebhookPullRequestReviewDismissedPropReviewPropLinksPropHtmlType",
-    "WebhookPullRequestReviewDismissedPropReviewPropLinksPropPullRequestType",
-    "WebhookPullRequestReviewDismissedPropPullRequestType",
     "WebhookPullRequestReviewDismissedPropPullRequestPropAssigneeType",
     "WebhookPullRequestReviewDismissedPropPullRequestPropAssigneesItemsType",
-    "WebhookPullRequestReviewDismissedPropPullRequestPropAutoMergeType",
     "WebhookPullRequestReviewDismissedPropPullRequestPropAutoMergePropEnabledByType",
+    "WebhookPullRequestReviewDismissedPropPullRequestPropAutoMergeType",
+    "WebhookPullRequestReviewDismissedPropPullRequestPropBasePropRepoPropLicenseType",
+    "WebhookPullRequestReviewDismissedPropPullRequestPropBasePropRepoPropOwnerType",
+    "WebhookPullRequestReviewDismissedPropPullRequestPropBasePropRepoPropPermissionsType",
+    "WebhookPullRequestReviewDismissedPropPullRequestPropBasePropRepoType",
+    "WebhookPullRequestReviewDismissedPropPullRequestPropBasePropUserType",
+    "WebhookPullRequestReviewDismissedPropPullRequestPropBaseType",
+    "WebhookPullRequestReviewDismissedPropPullRequestPropHeadPropRepoPropLicenseType",
+    "WebhookPullRequestReviewDismissedPropPullRequestPropHeadPropRepoPropOwnerType",
+    "WebhookPullRequestReviewDismissedPropPullRequestPropHeadPropRepoPropPermissionsType",
+    "WebhookPullRequestReviewDismissedPropPullRequestPropHeadPropRepoType",
+    "WebhookPullRequestReviewDismissedPropPullRequestPropHeadPropUserType",
+    "WebhookPullRequestReviewDismissedPropPullRequestPropHeadType",
     "WebhookPullRequestReviewDismissedPropPullRequestPropLabelsItemsType",
-    "WebhookPullRequestReviewDismissedPropPullRequestPropMilestoneType",
-    "WebhookPullRequestReviewDismissedPropPullRequestPropMilestonePropCreatorType",
-    "WebhookPullRequestReviewDismissedPropPullRequestPropRequestedReviewersItemsOneof0Type",
-    "WebhookPullRequestReviewDismissedPropPullRequestPropUserType",
-    "WebhookPullRequestReviewDismissedPropPullRequestPropLinksType",
     "WebhookPullRequestReviewDismissedPropPullRequestPropLinksPropCommentsType",
     "WebhookPullRequestReviewDismissedPropPullRequestPropLinksPropCommitsType",
     "WebhookPullRequestReviewDismissedPropPullRequestPropLinksPropHtmlType",
@@ -1013,20 +1013,20 @@ __all__ = (
     "WebhookPullRequestReviewDismissedPropPullRequestPropLinksPropReviewCommentsType",
     "WebhookPullRequestReviewDismissedPropPullRequestPropLinksPropSelfType",
     "WebhookPullRequestReviewDismissedPropPullRequestPropLinksPropStatusesType",
-    "WebhookPullRequestReviewDismissedPropPullRequestPropBaseType",
-    "WebhookPullRequestReviewDismissedPropPullRequestPropBasePropUserType",
-    "WebhookPullRequestReviewDismissedPropPullRequestPropBasePropRepoType",
-    "WebhookPullRequestReviewDismissedPropPullRequestPropBasePropRepoPropLicenseType",
-    "WebhookPullRequestReviewDismissedPropPullRequestPropBasePropRepoPropOwnerType",
-    "WebhookPullRequestReviewDismissedPropPullRequestPropBasePropRepoPropPermissionsType",
-    "WebhookPullRequestReviewDismissedPropPullRequestPropHeadType",
-    "WebhookPullRequestReviewDismissedPropPullRequestPropHeadPropRepoType",
-    "WebhookPullRequestReviewDismissedPropPullRequestPropHeadPropRepoPropLicenseType",
-    "WebhookPullRequestReviewDismissedPropPullRequestPropHeadPropRepoPropOwnerType",
-    "WebhookPullRequestReviewDismissedPropPullRequestPropHeadPropRepoPropPermissionsType",
-    "WebhookPullRequestReviewDismissedPropPullRequestPropHeadPropUserType",
-    "WebhookPullRequestReviewDismissedPropPullRequestPropRequestedReviewersItemsOneof1Type",
+    "WebhookPullRequestReviewDismissedPropPullRequestPropLinksType",
+    "WebhookPullRequestReviewDismissedPropPullRequestPropMilestonePropCreatorType",
+    "WebhookPullRequestReviewDismissedPropPullRequestPropMilestoneType",
+    "WebhookPullRequestReviewDismissedPropPullRequestPropRequestedReviewersItemsOneof0Type",
     "WebhookPullRequestReviewDismissedPropPullRequestPropRequestedReviewersItemsOneof1PropParentType",
-    "WebhookPullRequestReviewDismissedPropPullRequestPropRequestedTeamsItemsType",
+    "WebhookPullRequestReviewDismissedPropPullRequestPropRequestedReviewersItemsOneof1Type",
     "WebhookPullRequestReviewDismissedPropPullRequestPropRequestedTeamsItemsPropParentType",
+    "WebhookPullRequestReviewDismissedPropPullRequestPropRequestedTeamsItemsType",
+    "WebhookPullRequestReviewDismissedPropPullRequestPropUserType",
+    "WebhookPullRequestReviewDismissedPropPullRequestType",
+    "WebhookPullRequestReviewDismissedPropReviewPropLinksPropHtmlType",
+    "WebhookPullRequestReviewDismissedPropReviewPropLinksPropPullRequestType",
+    "WebhookPullRequestReviewDismissedPropReviewPropLinksType",
+    "WebhookPullRequestReviewDismissedPropReviewPropUserType",
+    "WebhookPullRequestReviewDismissedPropReviewType",
+    "WebhookPullRequestReviewDismissedType",
 )

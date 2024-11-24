@@ -36,6 +36,6 @@ class ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1Type(TypedDict):
 
 
 __all__ = (
-    "ReposOwnerRepoIssuesPostBodyType",
     "ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1Type",
+    "ReposOwnerRepoIssuesPostBodyType",
 )

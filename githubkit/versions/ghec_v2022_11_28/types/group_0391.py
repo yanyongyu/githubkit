@@ -36,6 +36,6 @@ class GroupResponsePropMembersItemsType(TypedDict):
 
 
 __all__ = (
-    "GroupResponseType",
     "GroupResponsePropMembersItemsType",
+    "GroupResponseType",
 )

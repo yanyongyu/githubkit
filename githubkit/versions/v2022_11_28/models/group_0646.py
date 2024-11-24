@@ -9,19 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import date
 from typing import Union, Literal
+from datetime import date
 
 from pydantic import Field
 
 from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
 
 from .group_0002 import SimpleUser
 from .group_0385 import SimpleInstallation
-from .group_0421 import ProjectsV2StatusUpdate
 from .group_0386 import OrganizationSimpleWebhooks
+from .group_0421 import ProjectsV2StatusUpdate
 
 
 class WebhookProjectsV2StatusUpdateEdited(GitHubModel):
@@ -107,7 +107,7 @@ __all__ = (
     "WebhookProjectsV2StatusUpdateEdited",
     "WebhookProjectsV2StatusUpdateEditedPropChanges",
     "WebhookProjectsV2StatusUpdateEditedPropChangesPropBody",
-    "WebhookProjectsV2StatusUpdateEditedPropChangesPropStatus",
     "WebhookProjectsV2StatusUpdateEditedPropChangesPropStartDate",
+    "WebhookProjectsV2StatusUpdateEditedPropChangesPropStatus",
     "WebhookProjectsV2StatusUpdateEditedPropChangesPropTargetDate",
 )

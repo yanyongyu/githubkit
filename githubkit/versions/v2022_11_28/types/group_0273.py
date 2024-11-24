@@ -36,6 +36,6 @@ class GitTreePropTreeItemsType(TypedDict):
 
 
 __all__ = (
-    "GitTreeType",
     "GitTreePropTreeItemsType",
+    "GitTreeType",
 )

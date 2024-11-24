@@ -59,8 +59,8 @@ class SnapshotPropManifestsType(TypedDict):
 
 
 __all__ = (
-    "SnapshotType",
-    "SnapshotPropJobType",
     "SnapshotPropDetectorType",
+    "SnapshotPropJobType",
     "SnapshotPropManifestsType",
+    "SnapshotType",
 )

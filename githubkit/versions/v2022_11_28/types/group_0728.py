@@ -110,12 +110,12 @@ class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesIte
 
 
 __all__ = (
-    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryType",
     "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCvssType",
     "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCwesItemsType",
     "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropIdentifiersItemsType",
     "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropReferencesItemsType",
-    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsType",
     "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionType",
     "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackageType",
+    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsType",
+    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryType",
 )

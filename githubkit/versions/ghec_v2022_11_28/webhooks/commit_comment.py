@@ -19,4 +19,4 @@ action_types = WebhookCommitCommentCreated
 
 commit_comment_action_types = action_types
 
-__all__ = ("Event", "CommitCommentEvent", "action_types", "commit_comment_action_types")
+__all__ = ("CommitCommentEvent", "Event", "action_types", "commit_comment_action_types")

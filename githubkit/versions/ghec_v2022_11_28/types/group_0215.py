@@ -48,6 +48,6 @@ class DeploymentPropPayloadOneof0Type(TypedDict):
 
 
 __all__ = (
-    "DeploymentType",
     "DeploymentPropPayloadOneof0Type",
+    "DeploymentType",
 )

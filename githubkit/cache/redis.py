@@ -1,6 +1,6 @@
+from typing import TYPE_CHECKING, Any, NoReturn, Optional
 from datetime import timedelta
 from typing_extensions import override
-from typing import TYPE_CHECKING, Any, NoReturn, Optional
 
 from hishel import RedisStorage, AsyncBaseStorage, AsyncRedisStorage
 

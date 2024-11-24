@@ -80,8 +80,8 @@ model_rebuild(AmazonS3AccessKeysConfig)
 model_rebuild(GoogleCloudConfig)
 
 __all__ = (
+    "AmazonS3AccessKeysConfig",
     "AzureBlobConfig",
     "AzureHubConfig",
-    "AmazonS3AccessKeysConfig",
     "GoogleCloudConfig",
 )

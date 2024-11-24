@@ -9,11 +9,11 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from weakref import ref
 from typing import TYPE_CHECKING, Optional
+from weakref import ref
 
-from githubkit.typing import Missing
 from githubkit.utils import UNSET, exclude_unset
+from githubkit.typing import Missing
 
 if TYPE_CHECKING:
     from githubkit import GitHubCore
@@ -21,14 +21,6 @@ if TYPE_CHECKING:
     from githubkit.typing import Missing
     from githubkit.response import Response
 
-    from ..models import (
-        Classroom,
-        SimpleClassroom,
-        ClassroomAssignment,
-        ClassroomAssignmentGrade,
-        SimpleClassroomAssignment,
-        ClassroomAcceptedAssignment,
-    )
     from ..types import (
         ClassroomType,
         SimpleClassroomType,
@@ -36,6 +28,14 @@ if TYPE_CHECKING:
         ClassroomAssignmentGradeType,
         SimpleClassroomAssignmentType,
         ClassroomAcceptedAssignmentType,
+    )
+    from ..models import (
+        Classroom,
+        SimpleClassroom,
+        ClassroomAssignment,
+        ClassroomAssignmentGrade,
+        SimpleClassroomAssignment,
+        ClassroomAcceptedAssignment,
     )
 
 

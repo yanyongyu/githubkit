@@ -40,8 +40,8 @@ action_types: dict[str, type[GitHubModel]] = {
 discussion_comment_action_types = action_types
 
 __all__ = (
-    "Event",
     "DiscussionCommentEvent",
+    "Event",
     "action_types",
     "discussion_comment_action_types",
 )

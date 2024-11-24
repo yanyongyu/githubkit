@@ -55,6 +55,6 @@ class WebhooksMembershipPropUserType(TypedDict):
 
 
 __all__ = (
-    "WebhooksMembershipType",
     "WebhooksMembershipPropUserType",
+    "WebhooksMembershipType",
 )

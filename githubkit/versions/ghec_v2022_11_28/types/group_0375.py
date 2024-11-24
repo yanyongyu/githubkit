@@ -81,8 +81,8 @@ class RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackageType(TypedDict)
 
 
 __all__ = (
-    "RepositoryAdvisoryCreateType",
     "RepositoryAdvisoryCreatePropCreditsItemsType",
-    "RepositoryAdvisoryCreatePropVulnerabilitiesItemsType",
     "RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackageType",
+    "RepositoryAdvisoryCreatePropVulnerabilitiesItemsType",
+    "RepositoryAdvisoryCreateType",
 )

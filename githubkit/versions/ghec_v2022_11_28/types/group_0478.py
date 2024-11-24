@@ -44,7 +44,7 @@ class WebhooksChanges8PropTierPropFromType(TypedDict):
 
 
 __all__ = (
-    "WebhooksChanges8Type",
-    "WebhooksChanges8PropTierType",
     "WebhooksChanges8PropTierPropFromType",
+    "WebhooksChanges8PropTierType",
+    "WebhooksChanges8Type",
 )

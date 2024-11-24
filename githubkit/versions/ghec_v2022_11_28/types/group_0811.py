@@ -57,6 +57,6 @@ class WebhookWorkflowJobInProgressPropWorkflowJobAllof0PropStepsItemsType(TypedD
 
 
 __all__ = (
-    "WebhookWorkflowJobInProgressPropWorkflowJobAllof0Type",
     "WebhookWorkflowJobInProgressPropWorkflowJobAllof0PropStepsItemsType",
+    "WebhookWorkflowJobInProgressPropWorkflowJobAllof0Type",
 )

@@ -30,6 +30,6 @@ class UserEmailsResponseItemsType(TypedDict):
 
 
 __all__ = (
-    "UserNameResponseType",
     "UserEmailsResponseItemsType",
+    "UserNameResponseType",
 )

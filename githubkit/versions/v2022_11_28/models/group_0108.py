@@ -9,18 +9,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union, Literal
+from datetime import datetime
 
 from pydantic import Field
 
 from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
+from githubkit.typing import Missing
 
 from .group_0002 import SimpleUser
-from .group_0019 import Repository
 from .group_0018 import LicenseSimple
+from .group_0019 import Repository
 from .group_0057 import SecurityAndAnalysis
 from .group_0107 import CodeOfConductSimple
 
@@ -199,6 +199,6 @@ model_rebuild(FullRepositoryPropCustomProperties)
 
 __all__ = (
     "FullRepository",
-    "FullRepositoryPropPermissions",
     "FullRepositoryPropCustomProperties",
+    "FullRepositoryPropPermissions",
 )

@@ -9,15 +9,15 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union, Literal
+from datetime import datetime
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0002 import SimpleUserType
 from .group_0427 import EnterpriseWebhooksType
 from .group_0428 import SimpleInstallationType
-from .group_0430 import RepositoryWebhooksType
 from .group_0429 import OrganizationSimpleWebhooksType
+from .group_0430 import RepositoryWebhooksType
 
 
 class WebhookCheckSuiteCompletedType(TypedDict):
@@ -260,17 +260,17 @@ class WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropHeadPropR
 
 
 __all__ = (
-    "WebhookCheckSuiteCompletedType",
-    "WebhookCheckSuiteCompletedPropCheckSuiteType",
-    "WebhookCheckSuiteCompletedPropCheckSuitePropAppType",
     "WebhookCheckSuiteCompletedPropCheckSuitePropAppPropOwnerType",
     "WebhookCheckSuiteCompletedPropCheckSuitePropAppPropPermissionsType",
-    "WebhookCheckSuiteCompletedPropCheckSuitePropHeadCommitType",
+    "WebhookCheckSuiteCompletedPropCheckSuitePropAppType",
     "WebhookCheckSuiteCompletedPropCheckSuitePropHeadCommitPropAuthorType",
     "WebhookCheckSuiteCompletedPropCheckSuitePropHeadCommitPropCommitterType",
-    "WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsType",
-    "WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropBaseType",
+    "WebhookCheckSuiteCompletedPropCheckSuitePropHeadCommitType",
     "WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropBasePropRepoType",
-    "WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropHeadType",
+    "WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropBaseType",
     "WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropHeadPropRepoType",
+    "WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropHeadType",
+    "WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsType",
+    "WebhookCheckSuiteCompletedPropCheckSuiteType",
+    "WebhookCheckSuiteCompletedType",
 )

@@ -38,6 +38,6 @@ model_rebuild(ReposOwnerRepoCodespacesSecretsGetResponse200)
 model_rebuild(RepoCodespacesSecret)
 
 __all__ = (
-    "ReposOwnerRepoCodespacesSecretsGetResponse200",
     "RepoCodespacesSecret",
+    "ReposOwnerRepoCodespacesSecretsGetResponse200",
 )

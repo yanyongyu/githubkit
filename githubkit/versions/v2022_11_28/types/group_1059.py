@@ -37,6 +37,6 @@ class ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItemsType(TypedDic
 
 
 __all__ = (
-    "ReposOwnerRepoPullsPullNumberReviewsPostBodyType",
     "ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItemsType",
+    "ReposOwnerRepoPullsPullNumberReviewsPostBodyType",
 )

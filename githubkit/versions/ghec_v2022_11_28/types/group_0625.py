@@ -13,11 +13,11 @@ from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0002 import SimpleUserType
-from .group_0444 import WebhooksLabelType
 from .group_0427 import EnterpriseWebhooksType
 from .group_0428 import SimpleInstallationType
-from .group_0430 import RepositoryWebhooksType
 from .group_0429 import OrganizationSimpleWebhooksType
+from .group_0430 import RepositoryWebhooksType
+from .group_0444 import WebhooksLabelType
 
 
 class WebhookLabelEditedType(TypedDict):
@@ -63,9 +63,9 @@ class WebhookLabelEditedPropChangesPropNameType(TypedDict):
 
 
 __all__ = (
-    "WebhookLabelEditedType",
-    "WebhookLabelEditedPropChangesType",
     "WebhookLabelEditedPropChangesPropColorType",
     "WebhookLabelEditedPropChangesPropDescriptionType",
     "WebhookLabelEditedPropChangesPropNameType",
+    "WebhookLabelEditedPropChangesType",
+    "WebhookLabelEditedType",
 )

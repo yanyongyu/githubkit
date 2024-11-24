@@ -50,7 +50,7 @@ class CodeScanningAlertInstancePropMessageType(TypedDict):
 
 
 __all__ = (
+    "CodeScanningAlertInstancePropMessageType",
     "CodeScanningAlertInstanceType",
     "CodeScanningAlertLocationType",
-    "CodeScanningAlertInstancePropMessageType",
 )

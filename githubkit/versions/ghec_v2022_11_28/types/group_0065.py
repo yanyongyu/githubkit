@@ -40,7 +40,7 @@ class GetLicenseSyncStatusPropServerInstancesItemsPropLastSyncType(TypedDict):
 
 
 __all__ = (
-    "GetLicenseSyncStatusType",
-    "GetLicenseSyncStatusPropServerInstancesItemsType",
     "GetLicenseSyncStatusPropServerInstancesItemsPropLastSyncType",
+    "GetLicenseSyncStatusPropServerInstancesItemsType",
+    "GetLicenseSyncStatusType",
 )

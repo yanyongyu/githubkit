@@ -168,12 +168,12 @@ class ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningValidityCh
 
 
 __all__ = (
-    "ReposOwnerRepoPatchBodyType",
-    "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisType",
     "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropAdvancedSecurityType",
-    "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningType",
-    "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningPushProtectionType",
     "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningAiDetectionType",
     "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningNonProviderPatternsType",
+    "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningPushProtectionType",
+    "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningType",
     "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningValidityChecksType",
+    "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisType",
+    "ReposOwnerRepoPatchBodyType",
 )

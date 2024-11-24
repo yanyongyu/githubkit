@@ -13,9 +13,9 @@ from typing import Union, Literal
 from datetime import date, datetime
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0029 import TeamType
 from .group_0002 import SimpleUserType
 from .group_0027 import OrganizationSimpleType
+from .group_0029 import TeamType
 
 
 class CopilotSeatDetailsType(TypedDict):

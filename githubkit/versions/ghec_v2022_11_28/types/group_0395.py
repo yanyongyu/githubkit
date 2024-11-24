@@ -30,6 +30,6 @@ class GroupPropMembersItemsType(TypedDict):
 
 
 __all__ = (
-    "GroupType",
     "GroupPropMembersItemsType",
+    "GroupType",
 )

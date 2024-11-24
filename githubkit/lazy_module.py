@@ -1,11 +1,11 @@
 import re
 import sys
-import importlib
-from itertools import chain
 from types import ModuleType
 from typing import Any, Optional
-from collections.abc import Sequence
+import importlib
+from itertools import chain
 from importlib.abc import MetaPathFinder
+from collections.abc import Sequence
 from importlib.machinery import ModuleSpec, PathFinder, SourceFileLoader
 
 LAZY_MODULES = (

@@ -2,11 +2,11 @@ from typing import TYPE_CHECKING
 
 import openapi_pydantic as oas
 
-from .parameter import build_param
-from .response import build_response
-from ..utils import concat_snake_name
-from .request_body import build_request_body
 from ..data import EndpointData as EndpointData
+from ..utils import concat_snake_name
+from .response import build_response
+from .parameter import build_param
+from .request_body import build_request_body
 
 if TYPE_CHECKING:
     from ...source import Source

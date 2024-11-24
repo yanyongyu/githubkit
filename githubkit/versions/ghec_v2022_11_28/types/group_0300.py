@@ -33,6 +33,6 @@ class GitRefPropObjectType(TypedDict):
 
 
 __all__ = (
-    "GitRefType",
     "GitRefPropObjectType",
+    "GitRefType",
 )

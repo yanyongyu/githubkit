@@ -36,6 +36,6 @@ class ValidationErrorPropErrorsItemsType(TypedDict):
 
 
 __all__ = (
-    "ValidationErrorType",
     "ValidationErrorPropErrorsItemsType",
+    "ValidationErrorType",
 )

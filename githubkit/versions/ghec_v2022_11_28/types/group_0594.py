@@ -145,7 +145,6 @@ class WebhookIssueCommentEditedPropIssueAllof1PropUserType(TypedDict):
 
 
 __all__ = (
-    "WebhookIssueCommentEditedPropIssueAllof1Type",
     "WebhookIssueCommentEditedPropIssueAllof1PropAssigneeType",
     "WebhookIssueCommentEditedPropIssueAllof1PropAssigneesItemsType",
     "WebhookIssueCommentEditedPropIssueAllof1PropLabelsItemsType",
@@ -153,4 +152,5 @@ __all__ = (
     "WebhookIssueCommentEditedPropIssueAllof1PropPerformedViaGithubAppType",
     "WebhookIssueCommentEditedPropIssueAllof1PropReactionsType",
     "WebhookIssueCommentEditedPropIssueAllof1PropUserType",
+    "WebhookIssueCommentEditedPropIssueAllof1Type",
 )

@@ -41,6 +41,6 @@ class ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItemsType(Typ
 
 
 __all__ = (
-    "ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyType",
     "ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItemsType",
+    "ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyType",
 )

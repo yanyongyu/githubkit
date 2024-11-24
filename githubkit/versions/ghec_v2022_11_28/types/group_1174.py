@@ -36,6 +36,6 @@ class UserCodespacesPostBodyOneof1PropPullRequestType(TypedDict):
 
 
 __all__ = (
-    "UserCodespacesPostBodyOneof1Type",
     "UserCodespacesPostBodyOneof1PropPullRequestType",
+    "UserCodespacesPostBodyOneof1Type",
 )

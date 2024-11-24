@@ -49,6 +49,6 @@ class AuthorizationPropAppType(TypedDict):
 
 
 __all__ = (
-    "AuthorizationType",
     "AuthorizationPropAppType",
+    "AuthorizationType",
 )

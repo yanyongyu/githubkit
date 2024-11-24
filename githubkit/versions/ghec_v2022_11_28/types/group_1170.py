@@ -31,6 +31,6 @@ class TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItemsType(TypedDict):
 
 
 __all__ = (
-    "TeamsTeamIdTeamSyncGroupMappingsPatchBodyType",
     "TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItemsType",
+    "TeamsTeamIdTeamSyncGroupMappingsPatchBodyType",
 )

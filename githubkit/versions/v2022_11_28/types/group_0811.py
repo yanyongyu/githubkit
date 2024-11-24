@@ -35,6 +35,6 @@ class OrganizationActionsSecretType(TypedDict):
 
 
 __all__ = (
-    "OrgsOrgActionsSecretsGetResponse200Type",
     "OrganizationActionsSecretType",
+    "OrgsOrgActionsSecretsGetResponse200Type",
 )

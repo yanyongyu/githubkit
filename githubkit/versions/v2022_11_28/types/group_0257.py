@@ -37,7 +37,7 @@ class ManifestPropResolvedType(TypedDict):
 
 
 __all__ = (
-    "ManifestType",
     "ManifestPropFileType",
     "ManifestPropResolvedType",
+    "ManifestType",
 )

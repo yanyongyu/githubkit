@@ -37,6 +37,6 @@ class OrgsOrgHooksPostBodyPropConfigType(TypedDict):
 
 
 __all__ = (
-    "OrgsOrgHooksPostBodyType",
     "OrgsOrgHooksPostBodyPropConfigType",
+    "OrgsOrgHooksPostBodyType",
 )

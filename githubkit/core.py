@@ -1,30 +1,20 @@
 import time
 from types import TracebackType
-from contextvars import ContextVar
-from datetime import datetime, timezone, timedelta
-from collections.abc import Generator, AsyncGenerator
-from contextlib import contextmanager, asynccontextmanager
 from typing import Any, Union, Generic, TypeVar, Optional, cast, overload
+from datetime import datetime, timezone, timedelta
+from contextlib import contextmanager, asynccontextmanager
+from contextvars import ContextVar
+from collections.abc import Generator, AsyncGenerator
 
 import anyio
 import httpx
 import hishel
 
-from .utils import UNSET
-from .response import Response
+from .auth import BaseAuthStrategy, TokenAuthStrategy, UnauthAuthStrategy
 from .cache import BaseCacheStrategy
-from .throttling import BaseThrottler
+from .utils import UNSET
 from .compat import to_jsonable_python
 from .config import Config, get_config
-from .auth import BaseAuthStrategy, TokenAuthStrategy, UnauthAuthStrategy
-from .exception import (
-    RequestError,
-    RequestFailed,
-    RequestTimeout,
-    GitHubException,
-    PrimaryRateLimitExceeded,
-    SecondaryRateLimitExceeded,
-)
 from .typing import (
     URLTypes,
     UnsetType,
@@ -35,6 +25,16 @@ from .typing import (
     QueryParamTypes,
     RetryDecisionFunc,
 )
+from .response import Response
+from .exception import (
+    RequestError,
+    RequestFailed,
+    RequestTimeout,
+    GitHubException,
+    PrimaryRateLimitExceeded,
+    SecondaryRateLimitExceeded,
+)
+from .throttling import BaseThrottler
 
 T = TypeVar("T")
 A = TypeVar("A", bound="BaseAuthStrategy")

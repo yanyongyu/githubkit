@@ -9,14 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from weakref import ref
 from typing import TYPE_CHECKING, Optional, overload
+from weakref import ref
 
 from pydantic import BaseModel
 
-from githubkit.typing import Missing, UnsetType
 from githubkit.utils import UNSET, exclude_unset
 from githubkit.compat import model_dump, type_validate_python
+from githubkit.typing import Missing, UnsetType
 
 if TYPE_CHECKING:
     from githubkit import GitHubCore
@@ -24,18 +24,6 @@ if TYPE_CHECKING:
     from githubkit.typing import Missing
     from githubkit.response import Response
 
-    from ..models import (
-        CopilotSeatDetails,
-        CopilotUsageMetrics,
-        CopilotUsageMetricsDay,
-        CopilotOrganizationDetails,
-        OrgsOrgCopilotBillingSeatsGetResponse200,
-        OrgsOrgCopilotBillingSelectedTeamsPostResponse201,
-        OrgsOrgCopilotBillingSelectedUsersPostResponse201,
-        OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200,
-        OrgsOrgCopilotBillingSelectedUsersDeleteResponse200,
-        EnterprisesEnterpriseCopilotBillingSeatsGetResponse200,
-    )
     from ..types import (
         CopilotSeatDetailsType,
         CopilotUsageMetricsType,
@@ -51,6 +39,18 @@ if TYPE_CHECKING:
         OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200Type,
         OrgsOrgCopilotBillingSelectedUsersDeleteResponse200Type,
         EnterprisesEnterpriseCopilotBillingSeatsGetResponse200Type,
+    )
+    from ..models import (
+        CopilotSeatDetails,
+        CopilotUsageMetrics,
+        CopilotUsageMetricsDay,
+        CopilotOrganizationDetails,
+        OrgsOrgCopilotBillingSeatsGetResponse200,
+        OrgsOrgCopilotBillingSelectedTeamsPostResponse201,
+        OrgsOrgCopilotBillingSelectedUsersPostResponse201,
+        OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200,
+        OrgsOrgCopilotBillingSelectedUsersDeleteResponse200,
+        EnterprisesEnterpriseCopilotBillingSeatsGetResponse200,
     )
 
 

@@ -41,7 +41,7 @@ class AdvancedSecurityActiveCommittersUserType(TypedDict):
 
 
 __all__ = (
-    "AdvancedSecurityActiveCommittersType",
     "AdvancedSecurityActiveCommittersRepositoryType",
+    "AdvancedSecurityActiveCommittersType",
     "AdvancedSecurityActiveCommittersUserType",
 )

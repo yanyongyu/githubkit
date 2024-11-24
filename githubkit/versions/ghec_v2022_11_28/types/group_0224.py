@@ -12,8 +12,8 @@ from __future__ import annotations
 from typing import Union
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0223 import BranchRestrictionPolicyType
 from .group_0221 import ProtectedBranchPullRequestReviewType
+from .group_0223 import BranchRestrictionPolicyType
 
 
 class BranchProtectionType(TypedDict):
@@ -131,16 +131,16 @@ class ProtectedBranchRequiredStatusCheckPropChecksItemsType(TypedDict):
 
 
 __all__ = (
+    "BranchProtectionPropAllowDeletionsType",
+    "BranchProtectionPropAllowForcePushesType",
+    "BranchProtectionPropAllowForkSyncingType",
+    "BranchProtectionPropBlockCreationsType",
+    "BranchProtectionPropLockBranchType",
+    "BranchProtectionPropRequiredConversationResolutionType",
+    "BranchProtectionPropRequiredLinearHistoryType",
+    "BranchProtectionPropRequiredSignaturesType",
     "BranchProtectionType",
     "ProtectedBranchAdminEnforcedType",
-    "BranchProtectionPropRequiredLinearHistoryType",
-    "BranchProtectionPropAllowForcePushesType",
-    "BranchProtectionPropAllowDeletionsType",
-    "BranchProtectionPropBlockCreationsType",
-    "BranchProtectionPropRequiredConversationResolutionType",
-    "BranchProtectionPropRequiredSignaturesType",
-    "BranchProtectionPropLockBranchType",
-    "BranchProtectionPropAllowForkSyncingType",
-    "ProtectedBranchRequiredStatusCheckType",
     "ProtectedBranchRequiredStatusCheckPropChecksItemsType",
+    "ProtectedBranchRequiredStatusCheckType",
 )

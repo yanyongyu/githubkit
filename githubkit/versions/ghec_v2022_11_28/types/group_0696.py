@@ -9,14 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import date
 from typing import Union, Literal
+from datetime import date
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0002 import SimpleUserType
 from .group_0428 import SimpleInstallationType
-from .group_0466 import ProjectsV2StatusUpdateType
 from .group_0429 import OrganizationSimpleWebhooksType
+from .group_0466 import ProjectsV2StatusUpdateType
 
 
 class WebhookProjectsV2StatusUpdateEditedType(TypedDict):
@@ -76,10 +76,10 @@ class WebhookProjectsV2StatusUpdateEditedPropChangesPropTargetDateType(TypedDict
 
 
 __all__ = (
-    "WebhookProjectsV2StatusUpdateEditedType",
-    "WebhookProjectsV2StatusUpdateEditedPropChangesType",
     "WebhookProjectsV2StatusUpdateEditedPropChangesPropBodyType",
-    "WebhookProjectsV2StatusUpdateEditedPropChangesPropStatusType",
     "WebhookProjectsV2StatusUpdateEditedPropChangesPropStartDateType",
+    "WebhookProjectsV2StatusUpdateEditedPropChangesPropStatusType",
     "WebhookProjectsV2StatusUpdateEditedPropChangesPropTargetDateType",
+    "WebhookProjectsV2StatusUpdateEditedPropChangesType",
+    "WebhookProjectsV2StatusUpdateEditedType",
 )

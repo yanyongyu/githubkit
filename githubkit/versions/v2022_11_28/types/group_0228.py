@@ -35,6 +35,6 @@ class CodeownersErrorsPropErrorsItemsType(TypedDict):
 
 
 __all__ = (
-    "CodeownersErrorsType",
     "CodeownersErrorsPropErrorsItemsType",
+    "CodeownersErrorsType",
 )

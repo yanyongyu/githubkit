@@ -9,20 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union, Literal
+from datetime import datetime
 
 from pydantic import Field
 
 from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
 
 from .group_0002 import SimpleUser
 from .group_0384 import EnterpriseWebhooks
 from .group_0385 import SimpleInstallation
-from .group_0387 import RepositoryWebhooks
 from .group_0386 import OrganizationSimpleWebhooks
+from .group_0387 import RepositoryWebhooks
 
 
 class WebhookPullRequestDequeued(GitHubModel):
@@ -1151,12 +1151,19 @@ __all__ = (
     "WebhookPullRequestDequeuedPropPullRequestPropAssigneesItems",
     "WebhookPullRequestDequeuedPropPullRequestPropAutoMerge",
     "WebhookPullRequestDequeuedPropPullRequestPropAutoMergePropEnabledBy",
+    "WebhookPullRequestDequeuedPropPullRequestPropBase",
+    "WebhookPullRequestDequeuedPropPullRequestPropBasePropRepo",
+    "WebhookPullRequestDequeuedPropPullRequestPropBasePropRepoPropLicense",
+    "WebhookPullRequestDequeuedPropPullRequestPropBasePropRepoPropOwner",
+    "WebhookPullRequestDequeuedPropPullRequestPropBasePropRepoPropPermissions",
+    "WebhookPullRequestDequeuedPropPullRequestPropBasePropUser",
+    "WebhookPullRequestDequeuedPropPullRequestPropHead",
+    "WebhookPullRequestDequeuedPropPullRequestPropHeadPropRepo",
+    "WebhookPullRequestDequeuedPropPullRequestPropHeadPropRepoPropLicense",
+    "WebhookPullRequestDequeuedPropPullRequestPropHeadPropRepoPropOwner",
+    "WebhookPullRequestDequeuedPropPullRequestPropHeadPropRepoPropPermissions",
+    "WebhookPullRequestDequeuedPropPullRequestPropHeadPropUser",
     "WebhookPullRequestDequeuedPropPullRequestPropLabelsItems",
-    "WebhookPullRequestDequeuedPropPullRequestPropMergedBy",
-    "WebhookPullRequestDequeuedPropPullRequestPropMilestone",
-    "WebhookPullRequestDequeuedPropPullRequestPropMilestonePropCreator",
-    "WebhookPullRequestDequeuedPropPullRequestPropRequestedReviewersItemsOneof0",
-    "WebhookPullRequestDequeuedPropPullRequestPropUser",
     "WebhookPullRequestDequeuedPropPullRequestPropLinks",
     "WebhookPullRequestDequeuedPropPullRequestPropLinksPropComments",
     "WebhookPullRequestDequeuedPropPullRequestPropLinksPropCommits",
@@ -1166,20 +1173,13 @@ __all__ = (
     "WebhookPullRequestDequeuedPropPullRequestPropLinksPropReviewComments",
     "WebhookPullRequestDequeuedPropPullRequestPropLinksPropSelf",
     "WebhookPullRequestDequeuedPropPullRequestPropLinksPropStatuses",
-    "WebhookPullRequestDequeuedPropPullRequestPropBase",
-    "WebhookPullRequestDequeuedPropPullRequestPropBasePropUser",
-    "WebhookPullRequestDequeuedPropPullRequestPropBasePropRepo",
-    "WebhookPullRequestDequeuedPropPullRequestPropBasePropRepoPropLicense",
-    "WebhookPullRequestDequeuedPropPullRequestPropBasePropRepoPropOwner",
-    "WebhookPullRequestDequeuedPropPullRequestPropBasePropRepoPropPermissions",
-    "WebhookPullRequestDequeuedPropPullRequestPropHead",
-    "WebhookPullRequestDequeuedPropPullRequestPropHeadPropUser",
-    "WebhookPullRequestDequeuedPropPullRequestPropHeadPropRepo",
-    "WebhookPullRequestDequeuedPropPullRequestPropHeadPropRepoPropLicense",
-    "WebhookPullRequestDequeuedPropPullRequestPropHeadPropRepoPropOwner",
-    "WebhookPullRequestDequeuedPropPullRequestPropHeadPropRepoPropPermissions",
+    "WebhookPullRequestDequeuedPropPullRequestPropMergedBy",
+    "WebhookPullRequestDequeuedPropPullRequestPropMilestone",
+    "WebhookPullRequestDequeuedPropPullRequestPropMilestonePropCreator",
+    "WebhookPullRequestDequeuedPropPullRequestPropRequestedReviewersItemsOneof0",
     "WebhookPullRequestDequeuedPropPullRequestPropRequestedReviewersItemsOneof1",
     "WebhookPullRequestDequeuedPropPullRequestPropRequestedReviewersItemsOneof1PropParent",
     "WebhookPullRequestDequeuedPropPullRequestPropRequestedTeamsItems",
     "WebhookPullRequestDequeuedPropPullRequestPropRequestedTeamsItemsPropParent",
+    "WebhookPullRequestDequeuedPropPullRequestPropUser",
 )

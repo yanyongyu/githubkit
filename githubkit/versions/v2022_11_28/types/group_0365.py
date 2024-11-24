@@ -45,7 +45,7 @@ class CommitSearchResultItemPropCommitPropTreeType(TypedDict):
 
 
 __all__ = (
-    "CommitSearchResultItemPropCommitType",
     "CommitSearchResultItemPropCommitPropAuthorType",
     "CommitSearchResultItemPropCommitPropTreeType",
+    "CommitSearchResultItemPropCommitType",
 )

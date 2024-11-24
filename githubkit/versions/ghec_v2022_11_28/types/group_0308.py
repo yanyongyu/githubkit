@@ -9,14 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union, Literal
+from datetime import datetime
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0056 import TeamType
-from .group_0075 import IssueType
 from .group_0002 import SimpleUserType
 from .group_0008 import IntegrationType
+from .group_0056 import TeamType
+from .group_0075 import IssueType
 
 
 class IssueEventType(TypedDict):
@@ -113,10 +113,10 @@ class IssueEventRenameType(TypedDict):
 
 
 __all__ = (
-    "IssueEventType",
-    "IssueEventLabelType",
     "IssueEventDismissedReviewType",
+    "IssueEventLabelType",
     "IssueEventMilestoneType",
     "IssueEventProjectCardType",
     "IssueEventRenameType",
+    "IssueEventType",
 )

@@ -1,14 +1,14 @@
-import inspect
 from enum import Enum
 from typing import Any, Generic, Literal, TypeVar, final
+import inspect
 
 from pydantic import BaseModel
 
 from .compat import PYDANTIC_V2, custom_validation, type_validate_python
 
 if PYDANTIC_V2:  # pragma: pydantic-v2
-    from pydantic_core import core_schema
     from pydantic import GetCoreSchemaHandler
+    from pydantic_core import core_schema
 
 T = TypeVar("T")
 
@@ -69,7 +69,7 @@ def is_async(obj: Any) -> bool:
 
 
 class TaggedUnion(Generic[T]):
-    __slots__ = ("type_", "discriminator", "tag")
+    __slots__ = ("discriminator", "tag", "type_")
 
     def __init__(self, type_: type[T], discriminator: str, tag: str) -> None:
         self.type_ = type_

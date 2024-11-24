@@ -123,9 +123,9 @@ class WebhooksSponsorshipPropTierType(TypedDict):
 
 
 __all__ = (
-    "WebhooksSponsorshipType",
     "WebhooksSponsorshipPropMaintainerType",
     "WebhooksSponsorshipPropSponsorType",
     "WebhooksSponsorshipPropSponsorableType",
     "WebhooksSponsorshipPropTierType",
+    "WebhooksSponsorshipType",
 )

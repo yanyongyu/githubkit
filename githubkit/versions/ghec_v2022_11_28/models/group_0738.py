@@ -14,15 +14,15 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
 
 from .group_0002 import SimpleUser
-from .group_0472 import WebhooksRelease
 from .group_0427 import EnterpriseWebhooks
 from .group_0428 import SimpleInstallation
-from .group_0430 import RepositoryWebhooks
 from .group_0429 import OrganizationSimpleWebhooks
+from .group_0430 import RepositoryWebhooks
+from .group_0472 import WebhooksRelease
 
 
 class WebhookReleaseEdited(GitHubModel):
@@ -104,6 +104,6 @@ __all__ = (
     "WebhookReleaseEdited",
     "WebhookReleaseEditedPropChanges",
     "WebhookReleaseEditedPropChangesPropBody",
-    "WebhookReleaseEditedPropChangesPropName",
     "WebhookReleaseEditedPropChangesPropMakeLatest",
+    "WebhookReleaseEditedPropChangesPropName",
 )

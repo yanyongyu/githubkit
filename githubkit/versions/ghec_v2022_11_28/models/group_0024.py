@@ -9,8 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union, Literal
+from datetime import datetime
 
 from pydantic import Field
 
@@ -111,7 +111,7 @@ model_rebuild(Classroom)
 model_rebuild(SimpleClassroomOrganization)
 
 __all__ = (
-    "ClassroomAssignment",
     "Classroom",
+    "ClassroomAssignment",
     "SimpleClassroomOrganization",
 )

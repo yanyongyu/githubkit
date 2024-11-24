@@ -15,8 +15,8 @@ from datetime import date
 from pydantic import Field
 
 from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
+from githubkit.typing import Missing
 
 
 class CopilotUsageMetricsDay(ExtraGitHubModel):
@@ -341,18 +341,18 @@ model_rebuild(
 )
 
 __all__ = (
-    "CopilotUsageMetricsDay",
     "CopilotDotcomChat",
     "CopilotDotcomChatPropModelsItems",
-    "CopilotIdeChat",
-    "CopilotIdeChatPropEditorsItems",
-    "CopilotIdeChatPropEditorsItemsPropModelsItems",
     "CopilotDotcomPullRequests",
     "CopilotDotcomPullRequestsPropRepositoriesItems",
     "CopilotDotcomPullRequestsPropRepositoriesItemsPropModelsItems",
+    "CopilotIdeChat",
+    "CopilotIdeChatPropEditorsItems",
+    "CopilotIdeChatPropEditorsItemsPropModelsItems",
     "CopilotIdeCodeCompletions",
-    "CopilotIdeCodeCompletionsPropLanguagesItems",
     "CopilotIdeCodeCompletionsPropEditorsItems",
     "CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItems",
     "CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItemsPropLanguagesItems",
+    "CopilotIdeCodeCompletionsPropLanguagesItems",
+    "CopilotUsageMetricsDay",
 )

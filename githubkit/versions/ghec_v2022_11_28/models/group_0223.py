@@ -14,8 +14,8 @@ from typing import Union
 from pydantic import Field
 
 from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
 
 
 class BranchRestrictionPolicy(GitHubModel):
@@ -142,9 +142,9 @@ model_rebuild(BranchRestrictionPolicyPropAppsItemsPropPermissions)
 
 __all__ = (
     "BranchRestrictionPolicy",
-    "BranchRestrictionPolicyPropUsersItems",
-    "BranchRestrictionPolicyPropTeamsItems",
     "BranchRestrictionPolicyPropAppsItems",
     "BranchRestrictionPolicyPropAppsItemsPropOwner",
     "BranchRestrictionPolicyPropAppsItemsPropPermissions",
+    "BranchRestrictionPolicyPropTeamsItems",
+    "BranchRestrictionPolicyPropUsersItems",
 )

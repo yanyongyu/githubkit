@@ -12,9 +12,9 @@ from __future__ import annotations
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0002 import SimpleUserType
+from .group_0429 import OrganizationSimpleWebhooksType
 from .group_0430 import RepositoryWebhooksType
 from .group_0664 import WebhookPingPropHookType
-from .group_0429 import OrganizationSimpleWebhooksType
 
 
 class WebhookPingType(TypedDict):

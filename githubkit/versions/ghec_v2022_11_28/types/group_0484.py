@@ -13,11 +13,11 @@ from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0002 import SimpleUserType
-from .group_0431 import WebhooksRuleType
 from .group_0427 import EnterpriseWebhooksType
 from .group_0428 import SimpleInstallationType
-from .group_0430 import RepositoryWebhooksType
 from .group_0429 import OrganizationSimpleWebhooksType
+from .group_0430 import RepositoryWebhooksType
+from .group_0431 import WebhooksRuleType
 
 
 class WebhookBranchProtectionRuleEditedType(TypedDict):
@@ -165,17 +165,17 @@ class WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforc
 
 
 __all__ = (
-    "WebhookBranchProtectionRuleEditedType",
-    "WebhookBranchProtectionRuleEditedPropChangesType",
     "WebhookBranchProtectionRuleEditedPropChangesPropAdminEnforcedType",
     "WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorNamesType",
     "WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorsOnlyType",
     "WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedDismissalActorsOnlyType",
     "WebhookBranchProtectionRuleEditedPropChangesPropLinearHistoryRequirementEnforcementLevelType",
-    "WebhookBranchProtectionRuleEditedPropChangesPropLockBranchEnforcementLevelType",
     "WebhookBranchProtectionRuleEditedPropChangesPropLockAllowsForkSyncType",
+    "WebhookBranchProtectionRuleEditedPropChangesPropLockBranchEnforcementLevelType",
     "WebhookBranchProtectionRuleEditedPropChangesPropPullRequestReviewsEnforcementLevelType",
     "WebhookBranchProtectionRuleEditedPropChangesPropRequireLastPushApprovalType",
-    "WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksType",
     "WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementLevelType",
+    "WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksType",
+    "WebhookBranchProtectionRuleEditedPropChangesType",
+    "WebhookBranchProtectionRuleEditedType",
 )

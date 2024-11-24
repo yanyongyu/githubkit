@@ -9,12 +9,12 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union, Literal
+from datetime import datetime
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0557 import WebhookIssuesClosedPropIssueMergedMilestoneType
 from .group_0555 import WebhookIssuesClosedPropIssueAllof0PropPullRequestType
+from .group_0557 import WebhookIssuesClosedPropIssueMergedMilestoneType
 from .group_0558 import WebhookIssuesClosedPropIssueMergedPerformedViaGithubAppType
 
 
@@ -178,10 +178,10 @@ class WebhookIssuesClosedPropIssueMergedUserType(TypedDict):
 
 
 __all__ = (
-    "WebhookIssuesClosedPropIssueType",
     "WebhookIssuesClosedPropIssueMergedAssigneeType",
     "WebhookIssuesClosedPropIssueMergedAssigneesType",
     "WebhookIssuesClosedPropIssueMergedLabelsType",
     "WebhookIssuesClosedPropIssueMergedReactionsType",
     "WebhookIssuesClosedPropIssueMergedUserType",
+    "WebhookIssuesClosedPropIssueType",
 )

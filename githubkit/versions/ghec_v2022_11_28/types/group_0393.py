@@ -50,7 +50,7 @@ class ScimEnterpriseGroupListType(TypedDict):
 
 
 __all__ = (
-    "ScimEnterpriseGroupResponseType",
-    "ScimEnterpriseGroupResponseMergedMembersType",
     "ScimEnterpriseGroupListType",
+    "ScimEnterpriseGroupResponseMergedMembersType",
+    "ScimEnterpriseGroupResponseType",
 )

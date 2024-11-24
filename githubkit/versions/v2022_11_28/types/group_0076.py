@@ -9,15 +9,15 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union, Literal
+from datetime import datetime
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0002 import SimpleUserType
 from .group_0036 import SimpleRepositoryType
+from .group_0073 import CodeScanningAlertRuleSummaryType
 from .group_0074 import CodeScanningAnalysisToolType
 from .group_0075 import CodeScanningAlertInstanceType
-from .group_0073 import CodeScanningAlertRuleSummaryType
 
 
 class CodeScanningOrganizationAlertItemsType(TypedDict):

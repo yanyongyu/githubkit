@@ -1,14 +1,7 @@
 from typing import TYPE_CHECKING
 
-from .. import add_schema
 from . import parse_schema
-from .int_schema import build_int_schema
-from .bool_schema import build_bool_schema
-from .list_schema import build_list_schema
-from .none_schema import build_none_schema
-from .float_schema import build_float_schema
-from .model_schema import build_model_schema
-from .string_schema import build_string_schema
+from .. import add_schema
 from ..utils import concat_snake_name, schema_from_source
 from .schema import (
     AnySchema,
@@ -26,6 +19,13 @@ from .schema import (
     DateTimeSchema,
     UniqueListSchema,
 )
+from .int_schema import build_int_schema
+from .bool_schema import build_bool_schema
+from .list_schema import build_list_schema
+from .none_schema import build_none_schema
+from .float_schema import build_float_schema
+from .model_schema import build_model_schema
+from .string_schema import build_string_schema
 
 if TYPE_CHECKING:
     from ...source import Source

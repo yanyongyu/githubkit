@@ -76,9 +76,9 @@ class EventPropRepoType(TypedDict):
 
 
 __all__ = (
-    "EventPropPayloadType",
-    "EventPropPayloadPropPagesItemsType",
-    "EventType",
     "ActorType",
+    "EventPropPayloadPropPagesItemsType",
+    "EventPropPayloadType",
     "EventPropRepoType",
+    "EventType",
 )

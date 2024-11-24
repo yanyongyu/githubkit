@@ -49,8 +49,8 @@ action_types: dict[str, type[GitHubModel]] = {
 code_scanning_alert_action_types = action_types
 
 __all__ = (
-    "Event",
     "CodeScanningAlertEvent",
+    "Event",
     "action_types",
     "code_scanning_alert_action_types",
 )

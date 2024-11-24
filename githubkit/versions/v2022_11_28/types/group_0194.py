@@ -127,10 +127,10 @@ class BranchRestrictionPolicyPropAppsItemsPropPermissionsType(TypedDict):
 
 
 __all__ = (
-    "BranchRestrictionPolicyType",
-    "BranchRestrictionPolicyPropUsersItemsType",
-    "BranchRestrictionPolicyPropTeamsItemsType",
-    "BranchRestrictionPolicyPropAppsItemsType",
     "BranchRestrictionPolicyPropAppsItemsPropOwnerType",
     "BranchRestrictionPolicyPropAppsItemsPropPermissionsType",
+    "BranchRestrictionPolicyPropAppsItemsType",
+    "BranchRestrictionPolicyPropTeamsItemsType",
+    "BranchRestrictionPolicyPropUsersItemsType",
+    "BranchRestrictionPolicyType",
 )

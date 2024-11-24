@@ -31,6 +31,6 @@ class BranchShortPropCommitType(TypedDict):
 
 
 __all__ = (
-    "BranchShortType",
     "BranchShortPropCommitType",
+    "BranchShortType",
 )

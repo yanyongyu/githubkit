@@ -33,6 +33,6 @@ class ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsType(
 
 
 __all__ = (
-    "ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyType",
     "ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsType",
+    "ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyType",
 )

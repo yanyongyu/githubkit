@@ -46,6 +46,6 @@ class MovedColumnInProjectIssueEventPropProjectCardType(TypedDict):
 
 
 __all__ = (
-    "MovedColumnInProjectIssueEventType",
     "MovedColumnInProjectIssueEventPropProjectCardType",
+    "MovedColumnInProjectIssueEventType",
 )

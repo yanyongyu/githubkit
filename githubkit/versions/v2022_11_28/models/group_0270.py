@@ -96,7 +96,7 @@ __all__ = (
     "GitCommit",
     "GitCommitPropAuthor",
     "GitCommitPropCommitter",
-    "GitCommitPropTree",
     "GitCommitPropParentsItems",
+    "GitCommitPropTree",
     "GitCommitPropVerification",
 )

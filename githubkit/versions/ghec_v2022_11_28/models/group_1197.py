@@ -14,8 +14,8 @@ from typing import Union
 from pydantic import Field
 
 from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
 
 
 class UsersUsernameAttestationsSubjectDigestGetResponse200(GitHubModel):
@@ -168,16 +168,16 @@ model_rebuild(
 )
 
 __all__ = (
-    "UsersUsernameAttestationsSubjectDigestGetResponse200",
-    "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems",
     "SigstoreBundle0",
     "SigstoreBundle0PropDsseEnvelope",
     "SigstoreBundle0PropDsseEnvelopePropSignaturesItems",
     "SigstoreBundle0PropVerificationMaterial",
+    "SigstoreBundle0PropVerificationMaterialPropTlogEntriesItems",
+    "SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropInclusionPromise",
+    "SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropKindVersion",
+    "SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropLogId",
     "SigstoreBundle0PropVerificationMaterialPropX509CertificateChain",
     "SigstoreBundle0PropVerificationMaterialPropX509CertificateChainPropCertificatesItems",
-    "SigstoreBundle0PropVerificationMaterialPropTlogEntriesItems",
-    "SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropLogId",
-    "SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropKindVersion",
-    "SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropInclusionPromise",
+    "UsersUsernameAttestationsSubjectDigestGetResponse200",
+    "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems",
 )

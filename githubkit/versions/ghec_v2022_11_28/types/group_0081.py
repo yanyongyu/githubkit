@@ -118,9 +118,9 @@ class PublicUserPropPlanType(TypedDict):
 
 
 __all__ = (
-    "GistSimpleType",
     "GistSimplePropFilesType",
     "GistSimplePropForksItemsType",
-    "PublicUserType",
+    "GistSimpleType",
     "PublicUserPropPlanType",
+    "PublicUserType",
 )

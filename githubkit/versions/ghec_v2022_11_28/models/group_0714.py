@@ -9,21 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union, Literal
+from datetime import datetime
 
 from pydantic import Field
 
 from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
 
 from .group_0002 import SimpleUser
 from .group_0427 import EnterpriseWebhooks
 from .group_0428 import SimpleInstallation
+from .group_0429 import OrganizationSimpleWebhooks
 from .group_0430 import RepositoryWebhooks
 from .group_0470 import WebhooksReviewComment
-from .group_0429 import OrganizationSimpleWebhooks
 
 
 class WebhookPullRequestReviewCommentDeleted(GitHubModel):
@@ -1172,11 +1172,19 @@ __all__ = (
     "WebhookPullRequestReviewCommentDeletedPropPullRequestPropAssigneesItems",
     "WebhookPullRequestReviewCommentDeletedPropPullRequestPropAutoMerge",
     "WebhookPullRequestReviewCommentDeletedPropPullRequestPropAutoMergePropEnabledBy",
+    "WebhookPullRequestReviewCommentDeletedPropPullRequestPropBase",
+    "WebhookPullRequestReviewCommentDeletedPropPullRequestPropBasePropRepo",
+    "WebhookPullRequestReviewCommentDeletedPropPullRequestPropBasePropRepoPropLicense",
+    "WebhookPullRequestReviewCommentDeletedPropPullRequestPropBasePropRepoPropOwner",
+    "WebhookPullRequestReviewCommentDeletedPropPullRequestPropBasePropRepoPropPermissions",
+    "WebhookPullRequestReviewCommentDeletedPropPullRequestPropBasePropUser",
+    "WebhookPullRequestReviewCommentDeletedPropPullRequestPropHead",
+    "WebhookPullRequestReviewCommentDeletedPropPullRequestPropHeadPropRepo",
+    "WebhookPullRequestReviewCommentDeletedPropPullRequestPropHeadPropRepoPropLicense",
+    "WebhookPullRequestReviewCommentDeletedPropPullRequestPropHeadPropRepoPropOwner",
+    "WebhookPullRequestReviewCommentDeletedPropPullRequestPropHeadPropRepoPropPermissions",
+    "WebhookPullRequestReviewCommentDeletedPropPullRequestPropHeadPropUser",
     "WebhookPullRequestReviewCommentDeletedPropPullRequestPropLabelsItems",
-    "WebhookPullRequestReviewCommentDeletedPropPullRequestPropMilestone",
-    "WebhookPullRequestReviewCommentDeletedPropPullRequestPropMilestonePropCreator",
-    "WebhookPullRequestReviewCommentDeletedPropPullRequestPropRequestedReviewersItemsOneof0",
-    "WebhookPullRequestReviewCommentDeletedPropPullRequestPropUser",
     "WebhookPullRequestReviewCommentDeletedPropPullRequestPropLinks",
     "WebhookPullRequestReviewCommentDeletedPropPullRequestPropLinksPropComments",
     "WebhookPullRequestReviewCommentDeletedPropPullRequestPropLinksPropCommits",
@@ -1186,20 +1194,12 @@ __all__ = (
     "WebhookPullRequestReviewCommentDeletedPropPullRequestPropLinksPropReviewComments",
     "WebhookPullRequestReviewCommentDeletedPropPullRequestPropLinksPropSelf",
     "WebhookPullRequestReviewCommentDeletedPropPullRequestPropLinksPropStatuses",
-    "WebhookPullRequestReviewCommentDeletedPropPullRequestPropBase",
-    "WebhookPullRequestReviewCommentDeletedPropPullRequestPropBasePropUser",
-    "WebhookPullRequestReviewCommentDeletedPropPullRequestPropBasePropRepo",
-    "WebhookPullRequestReviewCommentDeletedPropPullRequestPropBasePropRepoPropLicense",
-    "WebhookPullRequestReviewCommentDeletedPropPullRequestPropBasePropRepoPropOwner",
-    "WebhookPullRequestReviewCommentDeletedPropPullRequestPropBasePropRepoPropPermissions",
-    "WebhookPullRequestReviewCommentDeletedPropPullRequestPropHead",
-    "WebhookPullRequestReviewCommentDeletedPropPullRequestPropHeadPropRepo",
-    "WebhookPullRequestReviewCommentDeletedPropPullRequestPropHeadPropRepoPropLicense",
-    "WebhookPullRequestReviewCommentDeletedPropPullRequestPropHeadPropRepoPropOwner",
-    "WebhookPullRequestReviewCommentDeletedPropPullRequestPropHeadPropRepoPropPermissions",
-    "WebhookPullRequestReviewCommentDeletedPropPullRequestPropHeadPropUser",
+    "WebhookPullRequestReviewCommentDeletedPropPullRequestPropMilestone",
+    "WebhookPullRequestReviewCommentDeletedPropPullRequestPropMilestonePropCreator",
+    "WebhookPullRequestReviewCommentDeletedPropPullRequestPropRequestedReviewersItemsOneof0",
     "WebhookPullRequestReviewCommentDeletedPropPullRequestPropRequestedReviewersItemsOneof1",
     "WebhookPullRequestReviewCommentDeletedPropPullRequestPropRequestedReviewersItemsOneof1PropParent",
     "WebhookPullRequestReviewCommentDeletedPropPullRequestPropRequestedTeamsItems",
     "WebhookPullRequestReviewCommentDeletedPropPullRequestPropRequestedTeamsItemsPropParent",
+    "WebhookPullRequestReviewCommentDeletedPropPullRequestPropUser",
 )

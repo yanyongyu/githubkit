@@ -44,6 +44,6 @@ class ContentFilePropLinksType(TypedDict):
 
 
 __all__ = (
-    "ContentFileType",
     "ContentFilePropLinksType",
+    "ContentFileType",
 )

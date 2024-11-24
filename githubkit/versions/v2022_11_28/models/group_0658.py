@@ -9,20 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union, Literal
+from datetime import datetime
 
 from pydantic import Field
 
 from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
 
 from .group_0002 import SimpleUser
 from .group_0384 import EnterpriseWebhooks
 from .group_0385 import SimpleInstallation
-from .group_0387 import RepositoryWebhooks
 from .group_0386 import OrganizationSimpleWebhooks
+from .group_0387 import RepositoryWebhooks
 
 
 class WebhookPullRequestLocked(GitHubModel):
@@ -1128,12 +1128,19 @@ __all__ = (
     "WebhookPullRequestLockedPropPullRequestPropAssigneesItems",
     "WebhookPullRequestLockedPropPullRequestPropAutoMerge",
     "WebhookPullRequestLockedPropPullRequestPropAutoMergePropEnabledBy",
+    "WebhookPullRequestLockedPropPullRequestPropBase",
+    "WebhookPullRequestLockedPropPullRequestPropBasePropRepo",
+    "WebhookPullRequestLockedPropPullRequestPropBasePropRepoPropLicense",
+    "WebhookPullRequestLockedPropPullRequestPropBasePropRepoPropOwner",
+    "WebhookPullRequestLockedPropPullRequestPropBasePropRepoPropPermissions",
+    "WebhookPullRequestLockedPropPullRequestPropBasePropUser",
+    "WebhookPullRequestLockedPropPullRequestPropHead",
+    "WebhookPullRequestLockedPropPullRequestPropHeadPropRepo",
+    "WebhookPullRequestLockedPropPullRequestPropHeadPropRepoPropLicense",
+    "WebhookPullRequestLockedPropPullRequestPropHeadPropRepoPropOwner",
+    "WebhookPullRequestLockedPropPullRequestPropHeadPropRepoPropPermissions",
+    "WebhookPullRequestLockedPropPullRequestPropHeadPropUser",
     "WebhookPullRequestLockedPropPullRequestPropLabelsItems",
-    "WebhookPullRequestLockedPropPullRequestPropMergedBy",
-    "WebhookPullRequestLockedPropPullRequestPropMilestone",
-    "WebhookPullRequestLockedPropPullRequestPropMilestonePropCreator",
-    "WebhookPullRequestLockedPropPullRequestPropRequestedReviewersItemsOneof0",
-    "WebhookPullRequestLockedPropPullRequestPropUser",
     "WebhookPullRequestLockedPropPullRequestPropLinks",
     "WebhookPullRequestLockedPropPullRequestPropLinksPropComments",
     "WebhookPullRequestLockedPropPullRequestPropLinksPropCommits",
@@ -1143,20 +1150,13 @@ __all__ = (
     "WebhookPullRequestLockedPropPullRequestPropLinksPropReviewComments",
     "WebhookPullRequestLockedPropPullRequestPropLinksPropSelf",
     "WebhookPullRequestLockedPropPullRequestPropLinksPropStatuses",
-    "WebhookPullRequestLockedPropPullRequestPropBase",
-    "WebhookPullRequestLockedPropPullRequestPropBasePropUser",
-    "WebhookPullRequestLockedPropPullRequestPropBasePropRepo",
-    "WebhookPullRequestLockedPropPullRequestPropBasePropRepoPropLicense",
-    "WebhookPullRequestLockedPropPullRequestPropBasePropRepoPropOwner",
-    "WebhookPullRequestLockedPropPullRequestPropBasePropRepoPropPermissions",
-    "WebhookPullRequestLockedPropPullRequestPropHead",
-    "WebhookPullRequestLockedPropPullRequestPropHeadPropRepo",
-    "WebhookPullRequestLockedPropPullRequestPropHeadPropRepoPropLicense",
-    "WebhookPullRequestLockedPropPullRequestPropHeadPropRepoPropOwner",
-    "WebhookPullRequestLockedPropPullRequestPropHeadPropRepoPropPermissions",
-    "WebhookPullRequestLockedPropPullRequestPropHeadPropUser",
+    "WebhookPullRequestLockedPropPullRequestPropMergedBy",
+    "WebhookPullRequestLockedPropPullRequestPropMilestone",
+    "WebhookPullRequestLockedPropPullRequestPropMilestonePropCreator",
+    "WebhookPullRequestLockedPropPullRequestPropRequestedReviewersItemsOneof0",
     "WebhookPullRequestLockedPropPullRequestPropRequestedReviewersItemsOneof1",
     "WebhookPullRequestLockedPropPullRequestPropRequestedReviewersItemsOneof1PropParent",
     "WebhookPullRequestLockedPropPullRequestPropRequestedTeamsItems",
     "WebhookPullRequestLockedPropPullRequestPropRequestedTeamsItemsPropParent",
+    "WebhookPullRequestLockedPropPullRequestPropUser",
 )

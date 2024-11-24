@@ -14,8 +14,8 @@ from typing import Union, Literal
 from pydantic import Field
 
 from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
+from githubkit.typing import Missing
 
 from .group_0002 import SimpleUser
 
@@ -188,17 +188,17 @@ model_rebuild(PersonalAccessTokenRequestPropPermissionsResultPropOther)
 
 __all__ = (
     "PersonalAccessTokenRequest",
-    "PersonalAccessTokenRequestPropRepositoriesItems",
     "PersonalAccessTokenRequestPropPermissionsAdded",
     "PersonalAccessTokenRequestPropPermissionsAddedPropOrganization",
-    "PersonalAccessTokenRequestPropPermissionsAddedPropRepository",
     "PersonalAccessTokenRequestPropPermissionsAddedPropOther",
-    "PersonalAccessTokenRequestPropPermissionsUpgraded",
-    "PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganization",
-    "PersonalAccessTokenRequestPropPermissionsUpgradedPropRepository",
-    "PersonalAccessTokenRequestPropPermissionsUpgradedPropOther",
+    "PersonalAccessTokenRequestPropPermissionsAddedPropRepository",
     "PersonalAccessTokenRequestPropPermissionsResult",
     "PersonalAccessTokenRequestPropPermissionsResultPropOrganization",
-    "PersonalAccessTokenRequestPropPermissionsResultPropRepository",
     "PersonalAccessTokenRequestPropPermissionsResultPropOther",
+    "PersonalAccessTokenRequestPropPermissionsResultPropRepository",
+    "PersonalAccessTokenRequestPropPermissionsUpgraded",
+    "PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganization",
+    "PersonalAccessTokenRequestPropPermissionsUpgradedPropOther",
+    "PersonalAccessTokenRequestPropPermissionsUpgradedPropRepository",
+    "PersonalAccessTokenRequestPropRepositoriesItems",
 )

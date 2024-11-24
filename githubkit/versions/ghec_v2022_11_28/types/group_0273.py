@@ -38,6 +38,6 @@ class ContentDirectoryItemsPropLinksType(TypedDict):
 
 
 __all__ = (
-    "ContentDirectoryItemsType",
     "ContentDirectoryItemsPropLinksType",
+    "ContentDirectoryItemsType",
 )

@@ -64,8 +64,8 @@ model_rebuild(PullRequestMinimalPropBasePropRepo)
 
 __all__ = (
     "PullRequestMinimal",
-    "PullRequestMinimalPropHead",
-    "PullRequestMinimalPropHeadPropRepo",
     "PullRequestMinimalPropBase",
     "PullRequestMinimalPropBasePropRepo",
+    "PullRequestMinimalPropHead",
+    "PullRequestMinimalPropHeadPropRepo",
 )

@@ -12,8 +12,8 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
+from githubkit.typing import Missing
 
 
 class WebhookRubygemsMetadata(GitHubModel):
@@ -54,7 +54,7 @@ model_rebuild(WebhookRubygemsMetadataPropDependenciesItems)
 
 __all__ = (
     "WebhookRubygemsMetadata",
-    "WebhookRubygemsMetadataPropVersionInfo",
-    "WebhookRubygemsMetadataPropMetadata",
     "WebhookRubygemsMetadataPropDependenciesItems",
+    "WebhookRubygemsMetadataPropMetadata",
+    "WebhookRubygemsMetadataPropVersionInfo",
 )

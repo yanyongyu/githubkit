@@ -46,6 +46,6 @@ class ConvertedNoteToIssueIssueEventPropProjectCardType(TypedDict):
 
 
 __all__ = (
-    "ConvertedNoteToIssueIssueEventType",
     "ConvertedNoteToIssueIssueEventPropProjectCardType",
+    "ConvertedNoteToIssueIssueEventType",
 )

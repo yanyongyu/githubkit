@@ -38,6 +38,6 @@ class OrgMembershipPropPermissionsType(TypedDict):
 
 
 __all__ = (
-    "OrgMembershipType",
     "OrgMembershipPropPermissionsType",
+    "OrgMembershipType",
 )

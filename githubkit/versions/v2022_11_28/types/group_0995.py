@@ -51,7 +51,7 @@ class ReposOwnerRepoGitCommitsPostBodyPropCommitterType(TypedDict):
 
 
 __all__ = (
-    "ReposOwnerRepoGitCommitsPostBodyType",
     "ReposOwnerRepoGitCommitsPostBodyPropAuthorType",
     "ReposOwnerRepoGitCommitsPostBodyPropCommitterType",
+    "ReposOwnerRepoGitCommitsPostBodyType",
 )

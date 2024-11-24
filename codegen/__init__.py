@@ -6,10 +6,8 @@ from pathlib import Path
 import httpx
 from jinja2 import Environment, PackageLoader
 
-from .config import Config
-from .source import get_source
 from .log import logger as logger
-from .parser.schemas import UnionSchema
+from .config import Config
 from .parser import (
     ModelGroup,
     WebhookData,
@@ -20,6 +18,8 @@ from .parser import (
     pascal_case,
     parse_openapi_spec,
 )
+from .source import get_source
+from .parser.schemas import UnionSchema
 
 if sys.version_info >= (3, 11):
     import tomllib

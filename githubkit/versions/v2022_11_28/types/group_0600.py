@@ -15,9 +15,9 @@ from typing_extensions import TypedDict, NotRequired
 from .group_0002 import SimpleUserType
 from .group_0384 import EnterpriseWebhooksType
 from .group_0385 import SimpleInstallationType
+from .group_0386 import OrganizationSimpleWebhooksType
 from .group_0387 import RepositoryWebhooksType
 from .group_0413 import WebhooksMembershipType
-from .group_0386 import OrganizationSimpleWebhooksType
 
 
 class WebhookOrganizationRenamedType(TypedDict):
@@ -46,7 +46,7 @@ class WebhookOrganizationRenamedPropChangesPropLoginType(TypedDict):
 
 
 __all__ = (
-    "WebhookOrganizationRenamedType",
-    "WebhookOrganizationRenamedPropChangesType",
     "WebhookOrganizationRenamedPropChangesPropLoginType",
+    "WebhookOrganizationRenamedPropChangesType",
+    "WebhookOrganizationRenamedType",
 )

@@ -14,8 +14,8 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
 
 
 class RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty(
@@ -53,6 +53,6 @@ model_rebuild(RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryP
 model_rebuild(RepositoryRulesetConditionsRepositoryPropertySpec)
 
 __all__ = (
-    "RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty",
     "RepositoryRulesetConditionsRepositoryPropertySpec",
+    "RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty",
 )

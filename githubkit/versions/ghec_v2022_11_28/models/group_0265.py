@@ -9,21 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union, Literal
+from datetime import datetime
 
 from pydantic import Field
 
 from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
 
+from .group_0002 import SimpleUser
 from .group_0056 import Team
 from .group_0073 import Milestone
 from .group_0264 import AutoMerge
-from .group_0002 import SimpleUser
-from .group_0267 import PullRequestSimplePropLinks
 from .group_0266 import PullRequestSimplePropBase, PullRequestSimplePropHead
+from .group_0267 import PullRequestSimplePropLinks
 
 
 class PullRequestSimple(GitHubModel):

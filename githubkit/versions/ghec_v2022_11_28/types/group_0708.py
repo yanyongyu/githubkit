@@ -9,15 +9,15 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union, Literal
+from datetime import datetime
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0002 import SimpleUserType
 from .group_0427 import EnterpriseWebhooksType
 from .group_0428 import SimpleInstallationType
-from .group_0430 import RepositoryWebhooksType
 from .group_0429 import OrganizationSimpleWebhooksType
+from .group_0430 import RepositoryWebhooksType
 
 
 class WebhookPullRequestLockedType(TypedDict):
@@ -905,19 +905,23 @@ class WebhookPullRequestLockedPropPullRequestPropRequestedTeamsItemsPropParentTy
 
 
 __all__ = (
-    "WebhookPullRequestLockedType",
-    "WebhookPullRequestLockedPropPullRequestType",
     "WebhookPullRequestLockedPropPullRequestPropAssigneeType",
     "WebhookPullRequestLockedPropPullRequestPropAssigneesItemsType",
-    "WebhookPullRequestLockedPropPullRequestPropAutoMergeType",
     "WebhookPullRequestLockedPropPullRequestPropAutoMergePropEnabledByType",
+    "WebhookPullRequestLockedPropPullRequestPropAutoMergeType",
+    "WebhookPullRequestLockedPropPullRequestPropBasePropRepoPropLicenseType",
+    "WebhookPullRequestLockedPropPullRequestPropBasePropRepoPropOwnerType",
+    "WebhookPullRequestLockedPropPullRequestPropBasePropRepoPropPermissionsType",
+    "WebhookPullRequestLockedPropPullRequestPropBasePropRepoType",
+    "WebhookPullRequestLockedPropPullRequestPropBasePropUserType",
+    "WebhookPullRequestLockedPropPullRequestPropBaseType",
+    "WebhookPullRequestLockedPropPullRequestPropHeadPropRepoPropLicenseType",
+    "WebhookPullRequestLockedPropPullRequestPropHeadPropRepoPropOwnerType",
+    "WebhookPullRequestLockedPropPullRequestPropHeadPropRepoPropPermissionsType",
+    "WebhookPullRequestLockedPropPullRequestPropHeadPropRepoType",
+    "WebhookPullRequestLockedPropPullRequestPropHeadPropUserType",
+    "WebhookPullRequestLockedPropPullRequestPropHeadType",
     "WebhookPullRequestLockedPropPullRequestPropLabelsItemsType",
-    "WebhookPullRequestLockedPropPullRequestPropMergedByType",
-    "WebhookPullRequestLockedPropPullRequestPropMilestoneType",
-    "WebhookPullRequestLockedPropPullRequestPropMilestonePropCreatorType",
-    "WebhookPullRequestLockedPropPullRequestPropRequestedReviewersItemsOneof0Type",
-    "WebhookPullRequestLockedPropPullRequestPropUserType",
-    "WebhookPullRequestLockedPropPullRequestPropLinksType",
     "WebhookPullRequestLockedPropPullRequestPropLinksPropCommentsType",
     "WebhookPullRequestLockedPropPullRequestPropLinksPropCommitsType",
     "WebhookPullRequestLockedPropPullRequestPropLinksPropHtmlType",
@@ -926,20 +930,16 @@ __all__ = (
     "WebhookPullRequestLockedPropPullRequestPropLinksPropReviewCommentsType",
     "WebhookPullRequestLockedPropPullRequestPropLinksPropSelfType",
     "WebhookPullRequestLockedPropPullRequestPropLinksPropStatusesType",
-    "WebhookPullRequestLockedPropPullRequestPropBaseType",
-    "WebhookPullRequestLockedPropPullRequestPropBasePropUserType",
-    "WebhookPullRequestLockedPropPullRequestPropBasePropRepoType",
-    "WebhookPullRequestLockedPropPullRequestPropBasePropRepoPropLicenseType",
-    "WebhookPullRequestLockedPropPullRequestPropBasePropRepoPropOwnerType",
-    "WebhookPullRequestLockedPropPullRequestPropBasePropRepoPropPermissionsType",
-    "WebhookPullRequestLockedPropPullRequestPropHeadType",
-    "WebhookPullRequestLockedPropPullRequestPropHeadPropRepoType",
-    "WebhookPullRequestLockedPropPullRequestPropHeadPropRepoPropLicenseType",
-    "WebhookPullRequestLockedPropPullRequestPropHeadPropRepoPropOwnerType",
-    "WebhookPullRequestLockedPropPullRequestPropHeadPropRepoPropPermissionsType",
-    "WebhookPullRequestLockedPropPullRequestPropHeadPropUserType",
-    "WebhookPullRequestLockedPropPullRequestPropRequestedReviewersItemsOneof1Type",
+    "WebhookPullRequestLockedPropPullRequestPropLinksType",
+    "WebhookPullRequestLockedPropPullRequestPropMergedByType",
+    "WebhookPullRequestLockedPropPullRequestPropMilestonePropCreatorType",
+    "WebhookPullRequestLockedPropPullRequestPropMilestoneType",
+    "WebhookPullRequestLockedPropPullRequestPropRequestedReviewersItemsOneof0Type",
     "WebhookPullRequestLockedPropPullRequestPropRequestedReviewersItemsOneof1PropParentType",
-    "WebhookPullRequestLockedPropPullRequestPropRequestedTeamsItemsType",
+    "WebhookPullRequestLockedPropPullRequestPropRequestedReviewersItemsOneof1Type",
     "WebhookPullRequestLockedPropPullRequestPropRequestedTeamsItemsPropParentType",
+    "WebhookPullRequestLockedPropPullRequestPropRequestedTeamsItemsType",
+    "WebhookPullRequestLockedPropPullRequestPropUserType",
+    "WebhookPullRequestLockedPropPullRequestType",
+    "WebhookPullRequestLockedType",
 )

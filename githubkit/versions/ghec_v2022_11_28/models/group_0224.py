@@ -14,11 +14,11 @@ from typing import Union
 from pydantic import Field
 
 from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
 
-from .group_0223 import BranchRestrictionPolicy
 from .group_0221 import ProtectedBranchPullRequestReview
+from .group_0223 import BranchRestrictionPolicy
 
 
 class BranchProtection(GitHubModel):
@@ -178,15 +178,15 @@ model_rebuild(ProtectedBranchRequiredStatusCheckPropChecksItems)
 
 __all__ = (
     "BranchProtection",
-    "ProtectedBranchAdminEnforced",
-    "BranchProtectionPropRequiredLinearHistory",
-    "BranchProtectionPropAllowForcePushes",
     "BranchProtectionPropAllowDeletions",
-    "BranchProtectionPropBlockCreations",
-    "BranchProtectionPropRequiredConversationResolution",
-    "BranchProtectionPropRequiredSignatures",
-    "BranchProtectionPropLockBranch",
+    "BranchProtectionPropAllowForcePushes",
     "BranchProtectionPropAllowForkSyncing",
+    "BranchProtectionPropBlockCreations",
+    "BranchProtectionPropLockBranch",
+    "BranchProtectionPropRequiredConversationResolution",
+    "BranchProtectionPropRequiredLinearHistory",
+    "BranchProtectionPropRequiredSignatures",
+    "ProtectedBranchAdminEnforced",
     "ProtectedBranchRequiredStatusCheck",
     "ProtectedBranchRequiredStatusCheckPropChecksItems",
 )

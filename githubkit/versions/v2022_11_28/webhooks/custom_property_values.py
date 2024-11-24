@@ -20,8 +20,8 @@ action_types = WebhookCustomPropertyValuesUpdated
 custom_property_values_action_types = action_types
 
 __all__ = (
-    "Event",
     "CustomPropertyValuesEvent",
+    "Event",
     "action_types",
     "custom_property_values_action_types",
 )

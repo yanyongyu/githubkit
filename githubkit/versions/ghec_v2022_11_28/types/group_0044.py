@@ -60,8 +60,8 @@ class GoogleCloudConfigType(TypedDict):
 
 
 __all__ = (
+    "AmazonS3AccessKeysConfigType",
     "AzureBlobConfigType",
     "AzureHubConfigType",
-    "AmazonS3AccessKeysConfigType",
     "GoogleCloudConfigType",
 )

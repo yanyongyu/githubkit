@@ -63,9 +63,9 @@ class OrganizationProgrammaticAccessGrantPropPermissionsPropOtherType(TypedDict)
 
 
 __all__ = (
-    "OrganizationProgrammaticAccessGrantType",
-    "OrganizationProgrammaticAccessGrantPropPermissionsType",
     "OrganizationProgrammaticAccessGrantPropPermissionsPropOrganizationType",
-    "OrganizationProgrammaticAccessGrantPropPermissionsPropRepositoryType",
     "OrganizationProgrammaticAccessGrantPropPermissionsPropOtherType",
+    "OrganizationProgrammaticAccessGrantPropPermissionsPropRepositoryType",
+    "OrganizationProgrammaticAccessGrantPropPermissionsType",
+    "OrganizationProgrammaticAccessGrantType",
 )

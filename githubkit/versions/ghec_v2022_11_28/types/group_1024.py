@@ -63,8 +63,8 @@ class ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType(TypedDict):
 
 
 __all__ = (
-    "ReposOwnerRepoCheckRunsPostBodyPropOutputType",
+    "ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType",
     "ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItemsType",
     "ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItemsType",
-    "ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType",
+    "ReposOwnerRepoCheckRunsPostBodyPropOutputType",
 )

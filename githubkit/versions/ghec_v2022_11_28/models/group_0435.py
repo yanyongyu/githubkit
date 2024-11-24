@@ -9,19 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union, Literal
+from datetime import datetime
 
 from pydantic import Field
 
 from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
 
 from .group_0008 import Integration
+from .group_0208 import PullRequestMinimal
 from .group_0235 import DeploymentSimple
 from .group_0434 import SimpleCheckSuite
-from .group_0208 import PullRequestMinimal
 
 
 class CheckRunWithSimpleCheckSuite(GitHubModel):

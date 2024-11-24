@@ -14,8 +14,8 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
 
 
 class RepositoryRuleCreation(GitHubModel):
@@ -104,10 +104,10 @@ model_rebuild(RepositoryRuleOneof17PropParameters)
 __all__ = (
     "RepositoryRuleCreation",
     "RepositoryRuleDeletion",
-    "RepositoryRuleRequiredSignatures",
     "RepositoryRuleNonFastForward",
     "RepositoryRuleOneof15",
     "RepositoryRuleOneof15PropParameters",
     "RepositoryRuleOneof17",
     "RepositoryRuleOneof17PropParameters",
+    "RepositoryRuleRequiredSignatures",
 )

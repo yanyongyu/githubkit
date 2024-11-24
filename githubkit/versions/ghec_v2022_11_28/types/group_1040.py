@@ -32,6 +32,6 @@ class ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItemsT
 
 
 __all__ = (
-    "ReposOwnerRepoCodespacesDevcontainersGetResponse200Type",
     "ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItemsType",
+    "ReposOwnerRepoCodespacesDevcontainersGetResponse200Type",
 )

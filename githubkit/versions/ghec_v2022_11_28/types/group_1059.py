@@ -29,6 +29,6 @@ class ReposOwnerRepoDispatchesPostBodyPropClientPayloadType(TypedDict):
 
 
 __all__ = (
-    "ReposOwnerRepoDispatchesPostBodyType",
     "ReposOwnerRepoDispatchesPostBodyPropClientPayloadType",
+    "ReposOwnerRepoDispatchesPostBodyType",
 )

@@ -38,6 +38,6 @@ class DependencyGraphDiffItemsPropVulnerabilitiesItemsType(TypedDict):
 
 
 __all__ = (
-    "DependencyGraphDiffItemsType",
     "DependencyGraphDiffItemsPropVulnerabilitiesItemsType",
+    "DependencyGraphDiffItemsType",
 )

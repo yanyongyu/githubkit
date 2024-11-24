@@ -165,11 +165,11 @@ class WebhookPackageUpdatedPropPackagePropPackageVersionPropReleasePropAuthorTyp
 
 
 __all__ = (
-    "WebhookPackageUpdatedPropPackagePropPackageVersionType",
     "WebhookPackageUpdatedPropPackagePropPackageVersionPropAuthorType",
     "WebhookPackageUpdatedPropPackagePropPackageVersionPropDockerMetadataItemsType",
     "WebhookPackageUpdatedPropPackagePropPackageVersionPropMetadataItemsType",
     "WebhookPackageUpdatedPropPackagePropPackageVersionPropPackageFilesItemsType",
-    "WebhookPackageUpdatedPropPackagePropPackageVersionPropReleaseType",
     "WebhookPackageUpdatedPropPackagePropPackageVersionPropReleasePropAuthorType",
+    "WebhookPackageUpdatedPropPackagePropPackageVersionPropReleaseType",
+    "WebhookPackageUpdatedPropPackagePropPackageVersionType",
 )

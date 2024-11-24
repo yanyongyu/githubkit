@@ -63,7 +63,7 @@ class PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackageType(
 
 
 __all__ = (
-    "PrivateVulnerabilityReportCreateType",
-    "PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsType",
     "PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackageType",
+    "PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsType",
+    "PrivateVulnerabilityReportCreateType",
 )

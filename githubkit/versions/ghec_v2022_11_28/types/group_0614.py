@@ -9,16 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union, Literal
+from datetime import datetime
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0002 import SimpleUserType
-from .group_0450 import WebhooksMilestoneType
 from .group_0427 import EnterpriseWebhooksType
 from .group_0428 import SimpleInstallationType
-from .group_0430 import RepositoryWebhooksType
 from .group_0429 import OrganizationSimpleWebhooksType
+from .group_0430 import RepositoryWebhooksType
+from .group_0450 import WebhooksMilestoneType
 
 
 class WebhookIssuesMilestonedType(TypedDict):
@@ -355,17 +355,17 @@ class WebhookIssuesMilestonedPropIssuePropUserType(TypedDict):
 
 
 __all__ = (
-    "WebhookIssuesMilestonedType",
-    "WebhookIssuesMilestonedPropIssueType",
     "WebhookIssuesMilestonedPropIssuePropAssigneeType",
     "WebhookIssuesMilestonedPropIssuePropAssigneesItemsType",
     "WebhookIssuesMilestonedPropIssuePropLabelsItemsType",
-    "WebhookIssuesMilestonedPropIssuePropMilestoneType",
     "WebhookIssuesMilestonedPropIssuePropMilestonePropCreatorType",
-    "WebhookIssuesMilestonedPropIssuePropPerformedViaGithubAppType",
+    "WebhookIssuesMilestonedPropIssuePropMilestoneType",
     "WebhookIssuesMilestonedPropIssuePropPerformedViaGithubAppPropOwnerType",
     "WebhookIssuesMilestonedPropIssuePropPerformedViaGithubAppPropPermissionsType",
+    "WebhookIssuesMilestonedPropIssuePropPerformedViaGithubAppType",
     "WebhookIssuesMilestonedPropIssuePropPullRequestType",
     "WebhookIssuesMilestonedPropIssuePropReactionsType",
     "WebhookIssuesMilestonedPropIssuePropUserType",
+    "WebhookIssuesMilestonedPropIssueType",
+    "WebhookIssuesMilestonedType",
 )

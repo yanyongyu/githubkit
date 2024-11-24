@@ -42,7 +42,7 @@ class ExternalGroupPropMembersItemsType(TypedDict):
 
 
 __all__ = (
-    "ExternalGroupType",
-    "ExternalGroupPropTeamsItemsType",
     "ExternalGroupPropMembersItemsType",
+    "ExternalGroupPropTeamsItemsType",
+    "ExternalGroupType",
 )

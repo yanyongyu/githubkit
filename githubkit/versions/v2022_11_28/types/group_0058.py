@@ -146,8 +146,8 @@ class MinimalRepositoryPropLicenseType(TypedDict):
 
 
 __all__ = (
-    "MinimalRepositoryType",
     "CodeOfConductType",
-    "MinimalRepositoryPropPermissionsType",
     "MinimalRepositoryPropLicenseType",
+    "MinimalRepositoryPropPermissionsType",
+    "MinimalRepositoryType",
 )

@@ -41,6 +41,6 @@ class MilestonedIssueEventPropMilestoneType(TypedDict):
 
 
 __all__ = (
-    "MilestonedIssueEventType",
     "MilestonedIssueEventPropMilestoneType",
+    "MilestonedIssueEventType",
 )

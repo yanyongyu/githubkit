@@ -54,8 +54,8 @@ class RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceh
 
 
 __all__ = (
-    "RepositoryRuleViolationErrorType",
-    "RepositoryRuleViolationErrorPropMetadataType",
-    "RepositoryRuleViolationErrorPropMetadataPropSecretScanningType",
     "RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItemsType",
+    "RepositoryRuleViolationErrorPropMetadataPropSecretScanningType",
+    "RepositoryRuleViolationErrorPropMetadataType",
+    "RepositoryRuleViolationErrorType",
 )

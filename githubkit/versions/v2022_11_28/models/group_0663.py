@@ -9,20 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union, Literal
+from datetime import datetime
 
 from pydantic import Field
 
 from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
 
 from .group_0002 import SimpleUser
 from .group_0384 import EnterpriseWebhooks
 from .group_0385 import SimpleInstallation
-from .group_0387 import RepositoryWebhooks
 from .group_0386 import OrganizationSimpleWebhooks
+from .group_0387 import RepositoryWebhooks
 
 
 class WebhookPullRequestReviewCommentCreated(GitHubModel):
@@ -1343,22 +1343,30 @@ model_rebuild(
 __all__ = (
     "WebhookPullRequestReviewCommentCreated",
     "WebhookPullRequestReviewCommentCreatedPropComment",
-    "WebhookPullRequestReviewCommentCreatedPropCommentPropReactions",
-    "WebhookPullRequestReviewCommentCreatedPropCommentPropUser",
     "WebhookPullRequestReviewCommentCreatedPropCommentPropLinks",
     "WebhookPullRequestReviewCommentCreatedPropCommentPropLinksPropHtml",
     "WebhookPullRequestReviewCommentCreatedPropCommentPropLinksPropPullRequest",
     "WebhookPullRequestReviewCommentCreatedPropCommentPropLinksPropSelf",
+    "WebhookPullRequestReviewCommentCreatedPropCommentPropReactions",
+    "WebhookPullRequestReviewCommentCreatedPropCommentPropUser",
     "WebhookPullRequestReviewCommentCreatedPropPullRequest",
     "WebhookPullRequestReviewCommentCreatedPropPullRequestPropAssignee",
     "WebhookPullRequestReviewCommentCreatedPropPullRequestPropAssigneesItems",
     "WebhookPullRequestReviewCommentCreatedPropPullRequestPropAutoMerge",
     "WebhookPullRequestReviewCommentCreatedPropPullRequestPropAutoMergePropEnabledBy",
+    "WebhookPullRequestReviewCommentCreatedPropPullRequestPropBase",
+    "WebhookPullRequestReviewCommentCreatedPropPullRequestPropBasePropRepo",
+    "WebhookPullRequestReviewCommentCreatedPropPullRequestPropBasePropRepoPropLicense",
+    "WebhookPullRequestReviewCommentCreatedPropPullRequestPropBasePropRepoPropOwner",
+    "WebhookPullRequestReviewCommentCreatedPropPullRequestPropBasePropRepoPropPermissions",
+    "WebhookPullRequestReviewCommentCreatedPropPullRequestPropBasePropUser",
+    "WebhookPullRequestReviewCommentCreatedPropPullRequestPropHead",
+    "WebhookPullRequestReviewCommentCreatedPropPullRequestPropHeadPropRepo",
+    "WebhookPullRequestReviewCommentCreatedPropPullRequestPropHeadPropRepoPropLicense",
+    "WebhookPullRequestReviewCommentCreatedPropPullRequestPropHeadPropRepoPropOwner",
+    "WebhookPullRequestReviewCommentCreatedPropPullRequestPropHeadPropRepoPropPermissions",
+    "WebhookPullRequestReviewCommentCreatedPropPullRequestPropHeadPropUser",
     "WebhookPullRequestReviewCommentCreatedPropPullRequestPropLabelsItems",
-    "WebhookPullRequestReviewCommentCreatedPropPullRequestPropMilestone",
-    "WebhookPullRequestReviewCommentCreatedPropPullRequestPropMilestonePropCreator",
-    "WebhookPullRequestReviewCommentCreatedPropPullRequestPropRequestedReviewersItemsOneof0",
-    "WebhookPullRequestReviewCommentCreatedPropPullRequestPropUser",
     "WebhookPullRequestReviewCommentCreatedPropPullRequestPropLinks",
     "WebhookPullRequestReviewCommentCreatedPropPullRequestPropLinksPropComments",
     "WebhookPullRequestReviewCommentCreatedPropPullRequestPropLinksPropCommits",
@@ -1368,20 +1376,12 @@ __all__ = (
     "WebhookPullRequestReviewCommentCreatedPropPullRequestPropLinksPropReviewComments",
     "WebhookPullRequestReviewCommentCreatedPropPullRequestPropLinksPropSelf",
     "WebhookPullRequestReviewCommentCreatedPropPullRequestPropLinksPropStatuses",
-    "WebhookPullRequestReviewCommentCreatedPropPullRequestPropBase",
-    "WebhookPullRequestReviewCommentCreatedPropPullRequestPropBasePropUser",
-    "WebhookPullRequestReviewCommentCreatedPropPullRequestPropBasePropRepo",
-    "WebhookPullRequestReviewCommentCreatedPropPullRequestPropBasePropRepoPropLicense",
-    "WebhookPullRequestReviewCommentCreatedPropPullRequestPropBasePropRepoPropOwner",
-    "WebhookPullRequestReviewCommentCreatedPropPullRequestPropBasePropRepoPropPermissions",
-    "WebhookPullRequestReviewCommentCreatedPropPullRequestPropHead",
-    "WebhookPullRequestReviewCommentCreatedPropPullRequestPropHeadPropRepo",
-    "WebhookPullRequestReviewCommentCreatedPropPullRequestPropHeadPropRepoPropLicense",
-    "WebhookPullRequestReviewCommentCreatedPropPullRequestPropHeadPropRepoPropOwner",
-    "WebhookPullRequestReviewCommentCreatedPropPullRequestPropHeadPropRepoPropPermissions",
-    "WebhookPullRequestReviewCommentCreatedPropPullRequestPropHeadPropUser",
+    "WebhookPullRequestReviewCommentCreatedPropPullRequestPropMilestone",
+    "WebhookPullRequestReviewCommentCreatedPropPullRequestPropMilestonePropCreator",
+    "WebhookPullRequestReviewCommentCreatedPropPullRequestPropRequestedReviewersItemsOneof0",
     "WebhookPullRequestReviewCommentCreatedPropPullRequestPropRequestedReviewersItemsOneof1",
     "WebhookPullRequestReviewCommentCreatedPropPullRequestPropRequestedReviewersItemsOneof1PropParent",
     "WebhookPullRequestReviewCommentCreatedPropPullRequestPropRequestedTeamsItems",
     "WebhookPullRequestReviewCommentCreatedPropPullRequestPropRequestedTeamsItemsPropParent",
+    "WebhookPullRequestReviewCommentCreatedPropPullRequestPropUser",
 )

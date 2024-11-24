@@ -11,8 +11,8 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0710 import WebhookRepositoryRulesetEditedPropChangesPropRulesType
 from .group_0708 import WebhookRepositoryRulesetEditedPropChangesPropConditionsType
+from .group_0710 import WebhookRepositoryRulesetEditedPropChangesPropRulesType
 
 
 class WebhookRepositoryRulesetEditedPropChangesType(TypedDict):
@@ -39,7 +39,7 @@ class WebhookRepositoryRulesetEditedPropChangesPropEnforcementType(TypedDict):
 
 
 __all__ = (
-    "WebhookRepositoryRulesetEditedPropChangesType",
-    "WebhookRepositoryRulesetEditedPropChangesPropNameType",
     "WebhookRepositoryRulesetEditedPropChangesPropEnforcementType",
+    "WebhookRepositoryRulesetEditedPropChangesPropNameType",
+    "WebhookRepositoryRulesetEditedPropChangesType",
 )

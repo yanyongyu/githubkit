@@ -9,18 +9,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union, Literal
+from datetime import datetime
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0584 import WebhookIssueCommentDeletedPropIssueMergedMilestoneType
-from .group_0585 import (
-    WebhookIssueCommentDeletedPropIssueMergedPerformedViaGithubAppType,
-)
 from .group_0578 import (
     WebhookIssueCommentDeletedPropIssueAllof0PropAssigneeType,
     WebhookIssueCommentDeletedPropIssueAllof0PropLabelsItemsType,
     WebhookIssueCommentDeletedPropIssueAllof0PropPullRequestType,
+)
+from .group_0584 import WebhookIssueCommentDeletedPropIssueMergedMilestoneType
+from .group_0585 import (
+    WebhookIssueCommentDeletedPropIssueMergedPerformedViaGithubAppType,
 )
 
 
@@ -150,8 +150,8 @@ class WebhookIssueCommentDeletedPropIssueMergedUserType(TypedDict):
 
 
 __all__ = (
-    "WebhookIssueCommentDeletedPropIssueType",
     "WebhookIssueCommentDeletedPropIssueMergedAssigneesType",
     "WebhookIssueCommentDeletedPropIssueMergedReactionsType",
     "WebhookIssueCommentDeletedPropIssueMergedUserType",
+    "WebhookIssueCommentDeletedPropIssueType",
 )

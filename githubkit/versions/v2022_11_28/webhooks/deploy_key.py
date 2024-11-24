@@ -33,4 +33,4 @@ action_types: dict[str, type[GitHubModel]] = {
 
 deploy_key_action_types = action_types
 
-__all__ = ("Event", "DeployKeyEvent", "action_types", "deploy_key_action_types")
+__all__ = ("DeployKeyEvent", "Event", "action_types", "deploy_key_action_types")

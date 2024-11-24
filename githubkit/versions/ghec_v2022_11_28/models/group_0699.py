@@ -9,20 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union, Literal
+from datetime import datetime
 
 from pydantic import Field
 
 from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
 
 from .group_0002 import SimpleUser
 from .group_0427 import EnterpriseWebhooks
 from .group_0428 import SimpleInstallation
-from .group_0430 import RepositoryWebhooks
 from .group_0429 import OrganizationSimpleWebhooks
+from .group_0430 import RepositoryWebhooks
 
 
 class WebhookPullRequestAutoMergeDisabled(GitHubModel):
@@ -1196,12 +1196,19 @@ __all__ = (
     "WebhookPullRequestAutoMergeDisabledPropPullRequestPropAssigneesItems",
     "WebhookPullRequestAutoMergeDisabledPropPullRequestPropAutoMerge",
     "WebhookPullRequestAutoMergeDisabledPropPullRequestPropAutoMergePropEnabledBy",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropBase",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropBasePropRepo",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropBasePropRepoPropLicense",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropBasePropRepoPropOwner",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropBasePropRepoPropPermissions",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropBasePropUser",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropHead",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropHeadPropRepo",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropHeadPropRepoPropLicense",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropHeadPropRepoPropOwner",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropHeadPropRepoPropPermissions",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropHeadPropUser",
     "WebhookPullRequestAutoMergeDisabledPropPullRequestPropLabelsItems",
-    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropMergedBy",
-    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropMilestone",
-    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropMilestonePropCreator",
-    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropRequestedReviewersItemsOneof0",
-    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropUser",
     "WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinks",
     "WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropComments",
     "WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropCommits",
@@ -1211,20 +1218,13 @@ __all__ = (
     "WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropReviewComments",
     "WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropSelf",
     "WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropStatuses",
-    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropBase",
-    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropBasePropUser",
-    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropBasePropRepo",
-    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropBasePropRepoPropLicense",
-    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropBasePropRepoPropOwner",
-    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropBasePropRepoPropPermissions",
-    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropHead",
-    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropHeadPropUser",
-    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropHeadPropRepo",
-    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropHeadPropRepoPropLicense",
-    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropHeadPropRepoPropOwner",
-    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropHeadPropRepoPropPermissions",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropMergedBy",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropMilestone",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropMilestonePropCreator",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropRequestedReviewersItemsOneof0",
     "WebhookPullRequestAutoMergeDisabledPropPullRequestPropRequestedReviewersItemsOneof1",
     "WebhookPullRequestAutoMergeDisabledPropPullRequestPropRequestedReviewersItemsOneof1PropParent",
     "WebhookPullRequestAutoMergeDisabledPropPullRequestPropRequestedTeamsItems",
     "WebhookPullRequestAutoMergeDisabledPropPullRequestPropRequestedTeamsItemsPropParent",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropUser",
 )

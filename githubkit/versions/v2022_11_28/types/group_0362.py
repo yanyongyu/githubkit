@@ -31,6 +31,6 @@ class SearchResultTextMatchesItemsPropMatchesItemsType(TypedDict):
 
 
 __all__ = (
-    "SearchResultTextMatchesItemsType",
     "SearchResultTextMatchesItemsPropMatchesItemsType",
+    "SearchResultTextMatchesItemsType",
 )

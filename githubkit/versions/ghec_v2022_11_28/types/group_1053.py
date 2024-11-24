@@ -32,6 +32,6 @@ class DependabotSecretType(TypedDict):
 
 
 __all__ = (
-    "ReposOwnerRepoDependabotSecretsGetResponse200Type",
     "DependabotSecretType",
+    "ReposOwnerRepoDependabotSecretsGetResponse200Type",
 )

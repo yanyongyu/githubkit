@@ -40,7 +40,7 @@ class CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsType(TypedDic
 
 
 __all__ = (
-    "CheckSuitePreferenceType",
-    "CheckSuitePreferencePropPreferencesType",
     "CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsType",
+    "CheckSuitePreferencePropPreferencesType",
+    "CheckSuitePreferenceType",
 )

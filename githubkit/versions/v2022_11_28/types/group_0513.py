@@ -15,10 +15,10 @@ from typing_extensions import TypedDict, NotRequired
 from .group_0002 import SimpleUserType
 from .group_0384 import EnterpriseWebhooksType
 from .group_0385 import SimpleInstallationType
-from .group_0387 import RepositoryWebhooksType
 from .group_0386 import OrganizationSimpleWebhooksType
-from .group_0515 import WebhookIssueCommentCreatedPropIssueType
+from .group_0387 import RepositoryWebhooksType
 from .group_0514 import WebhookIssueCommentCreatedPropCommentType
+from .group_0515 import WebhookIssueCommentCreatedPropIssueType
 
 
 class WebhookIssueCommentCreatedType(TypedDict):

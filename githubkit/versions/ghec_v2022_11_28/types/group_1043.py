@@ -32,6 +32,6 @@ class RepoCodespacesSecretType(TypedDict):
 
 
 __all__ = (
-    "ReposOwnerRepoCodespacesSecretsGetResponse200Type",
     "RepoCodespacesSecretType",
+    "ReposOwnerRepoCodespacesSecretsGetResponse200Type",
 )

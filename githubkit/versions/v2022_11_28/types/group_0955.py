@@ -32,6 +32,6 @@ class ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsTyp
 
 
 __all__ = (
-    "ReposOwnerRepoCheckSuitesPreferencesPatchBodyType",
     "ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsType",
+    "ReposOwnerRepoCheckSuitesPreferencesPatchBodyType",
 )

@@ -15,9 +15,9 @@ from typing_extensions import TypedDict, NotRequired
 from .group_0002 import SimpleUserType
 from .group_0427 import EnterpriseWebhooksType
 from .group_0428 import SimpleInstallationType
+from .group_0429 import OrganizationSimpleWebhooksType
 from .group_0430 import RepositoryWebhooksType
 from .group_0462 import WebhooksProjectColumnType
-from .group_0429 import OrganizationSimpleWebhooksType
 
 
 class WebhookProjectColumnEditedType(TypedDict):
@@ -46,7 +46,7 @@ class WebhookProjectColumnEditedPropChangesPropNameType(TypedDict):
 
 
 __all__ = (
-    "WebhookProjectColumnEditedType",
-    "WebhookProjectColumnEditedPropChangesType",
     "WebhookProjectColumnEditedPropChangesPropNameType",
+    "WebhookProjectColumnEditedPropChangesType",
+    "WebhookProjectColumnEditedType",
 )

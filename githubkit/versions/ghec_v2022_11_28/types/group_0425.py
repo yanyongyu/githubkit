@@ -29,6 +29,6 @@ class HovercardPropContextsItemsType(TypedDict):
 
 
 __all__ = (
-    "HovercardType",
     "HovercardPropContextsItemsType",
+    "HovercardType",
 )

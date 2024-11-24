@@ -28,6 +28,6 @@ class WebhooksProjectChangesPropArchivedAtType(TypedDict):
 
 
 __all__ = (
-    "WebhooksProjectChangesType",
     "WebhooksProjectChangesPropArchivedAtType",
+    "WebhooksProjectChangesType",
 )

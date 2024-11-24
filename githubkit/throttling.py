@@ -1,9 +1,9 @@
 import abc
-import threading
 from typing import Any, Optional
-from typing_extensions import override
-from collections.abc import Generator, AsyncGenerator
+import threading
 from contextlib import contextmanager, asynccontextmanager
+from collections.abc import Generator, AsyncGenerator
+from typing_extensions import override
 
 import anyio
 import httpx

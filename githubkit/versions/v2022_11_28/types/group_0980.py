@@ -34,6 +34,6 @@ class ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0Type(TypedDict):
 
 
 __all__ = (
-    "ReposOwnerRepoDeploymentsPostBodyType",
     "ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0Type",
+    "ReposOwnerRepoDeploymentsPostBodyType",
 )

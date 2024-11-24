@@ -41,6 +41,6 @@ class ContentSymlinkPropLinksType(TypedDict):
 
 
 __all__ = (
-    "ContentSymlinkType",
     "ContentSymlinkPropLinksType",
+    "ContentSymlinkType",
 )

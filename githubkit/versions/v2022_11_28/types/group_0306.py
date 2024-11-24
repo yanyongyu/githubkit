@@ -45,6 +45,6 @@ class LicenseContentPropLinksType(TypedDict):
 
 
 __all__ = (
-    "LicenseContentType",
     "LicenseContentPropLinksType",
+    "LicenseContentType",
 )

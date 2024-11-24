@@ -126,16 +126,16 @@ class StatusCheckPolicyPropChecksItemsType(TypedDict):
 
 
 __all__ = (
-    "ProtectedBranchType",
-    "ProtectedBranchPropRequiredSignaturesType",
-    "ProtectedBranchPropEnforceAdminsType",
-    "ProtectedBranchPropRequiredLinearHistoryType",
-    "ProtectedBranchPropAllowForcePushesType",
     "ProtectedBranchPropAllowDeletionsType",
-    "ProtectedBranchPropRequiredConversationResolutionType",
-    "ProtectedBranchPropBlockCreationsType",
-    "ProtectedBranchPropLockBranchType",
+    "ProtectedBranchPropAllowForcePushesType",
     "ProtectedBranchPropAllowForkSyncingType",
-    "StatusCheckPolicyType",
+    "ProtectedBranchPropBlockCreationsType",
+    "ProtectedBranchPropEnforceAdminsType",
+    "ProtectedBranchPropLockBranchType",
+    "ProtectedBranchPropRequiredConversationResolutionType",
+    "ProtectedBranchPropRequiredLinearHistoryType",
+    "ProtectedBranchPropRequiredSignaturesType",
+    "ProtectedBranchType",
     "StatusCheckPolicyPropChecksItemsType",
+    "StatusCheckPolicyType",
 )

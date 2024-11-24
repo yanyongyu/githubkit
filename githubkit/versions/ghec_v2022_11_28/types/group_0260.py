@@ -66,7 +66,7 @@ class CollaboratorPropPermissionsType(TypedDict):
 
 
 __all__ = (
-    "RepositoryCollaboratorPermissionType",
-    "CollaboratorType",
     "CollaboratorPropPermissionsType",
+    "CollaboratorType",
+    "RepositoryCollaboratorPermissionType",
 )

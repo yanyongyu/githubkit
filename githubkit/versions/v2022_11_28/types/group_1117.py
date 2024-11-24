@@ -136,16 +136,16 @@ class SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropInclusionPr
 
 
 __all__ = (
-    "UsersUsernameAttestationsSubjectDigestGetResponse200Type",
-    "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsType",
-    "SigstoreBundle0Type",
-    "SigstoreBundle0PropDsseEnvelopeType",
     "SigstoreBundle0PropDsseEnvelopePropSignaturesItemsType",
-    "SigstoreBundle0PropVerificationMaterialType",
-    "SigstoreBundle0PropVerificationMaterialPropX509CertificateChainType",
-    "SigstoreBundle0PropVerificationMaterialPropX509CertificateChainPropCertificatesItemsType",
-    "SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsType",
-    "SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropLogIdType",
-    "SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropKindVersionType",
+    "SigstoreBundle0PropDsseEnvelopeType",
     "SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropInclusionPromiseType",
+    "SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropKindVersionType",
+    "SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropLogIdType",
+    "SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsType",
+    "SigstoreBundle0PropVerificationMaterialPropX509CertificateChainPropCertificatesItemsType",
+    "SigstoreBundle0PropVerificationMaterialPropX509CertificateChainType",
+    "SigstoreBundle0PropVerificationMaterialType",
+    "SigstoreBundle0Type",
+    "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsType",
+    "UsersUsernameAttestationsSubjectDigestGetResponse200Type",
 )

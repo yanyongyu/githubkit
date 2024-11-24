@@ -9,14 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from weakref import ref
 from typing import TYPE_CHECKING, Literal, Optional, overload
+from weakref import ref
 
 from pydantic import BaseModel
 
-from githubkit.typing import Missing, UnsetType
 from githubkit.utils import UNSET, exclude_unset
 from githubkit.compat import model_dump, type_validate_python
+from githubkit.typing import Missing, UnsetType
 
 if TYPE_CHECKING:
     from typing import Union, Literal
@@ -26,63 +26,6 @@ if TYPE_CHECKING:
     from githubkit.typing import Missing
     from githubkit.response import Response
 
-    from ..models import (
-        Job,
-        Runner,
-        Artifact,
-        Workflow,
-        Deployment,
-        EmptyObject,
-        WorkflowRun,
-        ActionsSecret,
-        WorkflowUsage,
-        ActionsVariable,
-        RunnerGroupsOrg,
-        SelectedActions,
-        ActionsCacheList,
-        ActionsPublicKey,
-        WorkflowRunUsage,
-        OidcCustomSubRepo,
-        PendingDeployment,
-        RunnerApplication,
-        AuthenticationToken,
-        EnvironmentApprovals,
-        OrganizationActionsSecret,
-        OrganizationActionsVariable,
-        ActionsRepositoryPermissions,
-        ActionsCacheUsageByRepository,
-        ActionsCacheUsageOrgEnterprise,
-        ActionsOrganizationPermissions,
-        ActionsWorkflowAccessToRepository,
-        OrgsOrgActionsRunnersGetResponse200,
-        OrgsOrgActionsSecretsGetResponse200,
-        ActionsGetDefaultWorkflowPermissions,
-        OrgsOrgActionsVariablesGetResponse200,
-        ReposOwnerRepoActionsRunsGetResponse200,
-        OrgsOrgActionsRunnerGroupsGetResponse200,
-        ReposOwnerRepoActionsRunnersGetResponse200,
-        ReposOwnerRepoActionsSecretsGetResponse200,
-        ReposOwnerRepoActionsArtifactsGetResponse200,
-        ReposOwnerRepoActionsVariablesGetResponse200,
-        ReposOwnerRepoActionsWorkflowsGetResponse200,
-        ReposOwnerRepoActionsRunsRunIdJobsGetResponse200,
-        OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
-        OrgsOrgActionsCacheUsageByRepositoryGetResponse200,
-        OrgsOrgActionsPermissionsRepositoriesGetResponse200,
-        OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200,
-        OrgsOrgActionsRunnersGenerateJitconfigPostResponse201,
-        OrgsOrgActionsVariablesNameRepositoriesGetResponse200,
-        ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200,
-        ReposOwnerRepoActionsOrganizationSecretsGetResponse200,
-        ReposOwnerRepoActionsOrganizationVariablesGetResponse200,
-        OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200,
-        ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200,
-        OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200,
-        ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200,
-        ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200,
-        OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200,
-        ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200,
-    )
     from ..types import (
         JobType,
         RunnerType,
@@ -173,6 +116,63 @@ if TYPE_CHECKING:
         ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBodyType,
         ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsType,
         ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200Type,
+    )
+    from ..models import (
+        Job,
+        Runner,
+        Artifact,
+        Workflow,
+        Deployment,
+        EmptyObject,
+        WorkflowRun,
+        ActionsSecret,
+        WorkflowUsage,
+        ActionsVariable,
+        RunnerGroupsOrg,
+        SelectedActions,
+        ActionsCacheList,
+        ActionsPublicKey,
+        WorkflowRunUsage,
+        OidcCustomSubRepo,
+        PendingDeployment,
+        RunnerApplication,
+        AuthenticationToken,
+        EnvironmentApprovals,
+        OrganizationActionsSecret,
+        OrganizationActionsVariable,
+        ActionsRepositoryPermissions,
+        ActionsCacheUsageByRepository,
+        ActionsCacheUsageOrgEnterprise,
+        ActionsOrganizationPermissions,
+        ActionsWorkflowAccessToRepository,
+        OrgsOrgActionsRunnersGetResponse200,
+        OrgsOrgActionsSecretsGetResponse200,
+        ActionsGetDefaultWorkflowPermissions,
+        OrgsOrgActionsVariablesGetResponse200,
+        ReposOwnerRepoActionsRunsGetResponse200,
+        OrgsOrgActionsRunnerGroupsGetResponse200,
+        ReposOwnerRepoActionsRunnersGetResponse200,
+        ReposOwnerRepoActionsSecretsGetResponse200,
+        ReposOwnerRepoActionsArtifactsGetResponse200,
+        ReposOwnerRepoActionsVariablesGetResponse200,
+        ReposOwnerRepoActionsWorkflowsGetResponse200,
+        ReposOwnerRepoActionsRunsRunIdJobsGetResponse200,
+        OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
+        OrgsOrgActionsCacheUsageByRepositoryGetResponse200,
+        OrgsOrgActionsPermissionsRepositoriesGetResponse200,
+        OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200,
+        OrgsOrgActionsRunnersGenerateJitconfigPostResponse201,
+        OrgsOrgActionsVariablesNameRepositoriesGetResponse200,
+        ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200,
+        ReposOwnerRepoActionsOrganizationSecretsGetResponse200,
+        ReposOwnerRepoActionsOrganizationVariablesGetResponse200,
+        OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200,
+        ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200,
+        OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200,
+        ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200,
+        ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200,
+        OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200,
+        ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200,
     )
 
 

@@ -1,6 +1,3 @@
-from datetime import timedelta
-from collections.abc import Hashable
-from typing_extensions import TypeAlias
 from typing import (
     IO,
     Union,
@@ -11,6 +8,9 @@ from typing import (
     Annotated,
     NamedTuple,
 )
+from datetime import timedelta
+from collections.abc import Hashable
+from typing_extensions import TypeAlias
 
 import httpx
 from pydantic import Field

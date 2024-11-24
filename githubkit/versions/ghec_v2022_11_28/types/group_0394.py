@@ -31,6 +31,6 @@ class ScimEnterpriseGroupResponseAllof1PropMembersItemsType(TypedDict):
 
 
 __all__ = (
-    "ScimEnterpriseGroupResponseAllof1Type",
     "ScimEnterpriseGroupResponseAllof1PropMembersItemsType",
+    "ScimEnterpriseGroupResponseAllof1Type",
 )

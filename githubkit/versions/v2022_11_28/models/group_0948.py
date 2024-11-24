@@ -14,8 +14,8 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.typing import Missing
 
 
 class ReposOwnerRepoCheckRunsPostBodyPropOutput(GitHubModel):
@@ -118,8 +118,8 @@ model_rebuild(ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItems)
 model_rebuild(ReposOwnerRepoCheckRunsPostBodyPropActionsItems)
 
 __all__ = (
+    "ReposOwnerRepoCheckRunsPostBodyPropActionsItems",
     "ReposOwnerRepoCheckRunsPostBodyPropOutput",
     "ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItems",
     "ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItems",
-    "ReposOwnerRepoCheckRunsPostBodyPropActionsItems",
 )

@@ -46,6 +46,6 @@ class RemovedFromProjectIssueEventPropProjectCardType(TypedDict):
 
 
 __all__ = (
-    "RemovedFromProjectIssueEventType",
     "RemovedFromProjectIssueEventPropProjectCardType",
+    "RemovedFromProjectIssueEventType",
 )

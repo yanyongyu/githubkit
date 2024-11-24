@@ -1,23 +1,23 @@
-from collections.abc import Awaitable
-from functools import cached_property
-from typing_extensions import ParamSpec
 from typing import TYPE_CHECKING, Any, Union, TypeVar, Callable, Optional, overload
+from functools import cached_property
+from collections.abc import Awaitable
+from typing_extensions import ParamSpec
 
-from .core import GitHubCore
-from .response import Response
-from .paginator import Paginator
 from .auth import BaseAuthStrategy
-from .graphql import GraphQLNamespace
+from .core import GitHubCore
 from .typing import RetryDecisionFunc
+from .graphql import GraphQLNamespace
+from .response import Response
 from .versions import RestVersionSwitcher, WebhooksVersionSwitcher
+from .paginator import Paginator
 
 if TYPE_CHECKING:
     import httpx
 
-    from .config import Config
-    from .cache import BaseCacheStrategy
-    from .throttling import BaseThrottler
     from .auth import TokenAuthStrategy, UnauthAuthStrategy
+    from .cache import BaseCacheStrategy
+    from .config import Config
+    from .throttling import BaseThrottler
 
 
 A = TypeVar("A", bound=BaseAuthStrategy)

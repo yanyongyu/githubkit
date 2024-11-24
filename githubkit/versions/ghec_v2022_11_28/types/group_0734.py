@@ -67,7 +67,7 @@ class WebhookRegistryPackageUpdatedPropRegistryPackagePropRegistryType(TypedDict
 
 
 __all__ = (
-    "WebhookRegistryPackageUpdatedPropRegistryPackageType",
     "WebhookRegistryPackageUpdatedPropRegistryPackagePropOwnerType",
     "WebhookRegistryPackageUpdatedPropRegistryPackagePropRegistryType",
+    "WebhookRegistryPackageUpdatedPropRegistryPackageType",
 )

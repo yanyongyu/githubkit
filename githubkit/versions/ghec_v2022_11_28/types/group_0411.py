@@ -134,7 +134,7 @@ class SearchRepositoriesGetResponse200Type(TypedDict):
 
 
 __all__ = (
-    "RepoSearchResultItemType",
     "RepoSearchResultItemPropPermissionsType",
+    "RepoSearchResultItemType",
     "SearchRepositoriesGetResponse200Type",
 )

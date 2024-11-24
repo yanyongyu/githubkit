@@ -40,7 +40,7 @@ class RepositoryRuleOneof16PropParametersType(TypedDict):
 
 
 __all__ = (
-    "RepositoryRuleRequiredLinearHistoryType",
-    "RepositoryRuleOneof16Type",
     "RepositoryRuleOneof16PropParametersType",
+    "RepositoryRuleOneof16Type",
+    "RepositoryRuleRequiredLinearHistoryType",
 )

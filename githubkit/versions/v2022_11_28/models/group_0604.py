@@ -14,8 +14,8 @@ from typing import Union, Literal
 from pydantic import Field
 
 from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
+from githubkit.typing import Missing
 
 from .group_0601 import WebhookRubygemsMetadata
 
@@ -550,23 +550,23 @@ __all__ = (
     "WebhookPackagePublishedPropPackagePropPackageVersionPropMetadataItems",
     "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadata",
     "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropAuthor",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropBin",
     "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropBugs",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropContributorsItems",
     "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDependencies",
     "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDevDependencies",
-    "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropPeerDependencies",
-    "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropOptionalDependencies",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDirectories",
     "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDist",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropEngines",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropMaintainersItems",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropMan",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropOptionalDependencies",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropPeerDependencies",
     "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropRepository",
     "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropScripts",
-    "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropMaintainersItems",
-    "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropContributorsItems",
-    "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropEngines",
-    "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropBin",
-    "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropMan",
-    "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDirectories",
-    "WebhookPackagePublishedPropPackagePropPackageVersionPropPackageFilesItems",
     "WebhookPackagePublishedPropPackagePropPackageVersionPropNugetMetadataItems",
     "WebhookPackagePublishedPropPackagePropPackageVersionPropNugetMetadataItemsPropValueOneof3",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropPackageFilesItems",
     "WebhookPackagePublishedPropPackagePropPackageVersionPropRelease",
     "WebhookPackagePublishedPropPackagePropPackageVersionPropReleasePropAuthor",
 )

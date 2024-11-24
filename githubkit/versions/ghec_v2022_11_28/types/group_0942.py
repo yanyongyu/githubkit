@@ -54,6 +54,6 @@ class OrgsOrgReposPostBodyPropCustomPropertiesType(TypedDict):
 
 
 __all__ = (
-    "OrgsOrgReposPostBodyType",
     "OrgsOrgReposPostBodyPropCustomPropertiesType",
+    "OrgsOrgReposPostBodyType",
 )

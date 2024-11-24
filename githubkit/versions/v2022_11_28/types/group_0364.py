@@ -12,9 +12,9 @@ from __future__ import annotations
 from typing import Union
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0197 import GitUserType
 from .group_0002 import SimpleUserType
 from .group_0058 import MinimalRepositoryType
+from .group_0197 import GitUserType
 from .group_0362 import SearchResultTextMatchesItemsType
 from .group_0365 import CommitSearchResultItemPropCommitType
 
@@ -56,7 +56,7 @@ class SearchCommitsGetResponse200Type(TypedDict):
 
 
 __all__ = (
-    "CommitSearchResultItemType",
     "CommitSearchResultItemPropParentsItemsType",
+    "CommitSearchResultItemType",
     "SearchCommitsGetResponse200Type",
 )

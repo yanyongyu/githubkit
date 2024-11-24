@@ -70,9 +70,9 @@ class OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOtherType(Typ
 
 
 __all__ = (
-    "OrganizationProgrammaticAccessGrantRequestType",
-    "OrganizationProgrammaticAccessGrantRequestPropPermissionsType",
     "OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganizationType",
-    "OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepositoryType",
     "OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOtherType",
+    "OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepositoryType",
+    "OrganizationProgrammaticAccessGrantRequestPropPermissionsType",
+    "OrganizationProgrammaticAccessGrantRequestType",
 )

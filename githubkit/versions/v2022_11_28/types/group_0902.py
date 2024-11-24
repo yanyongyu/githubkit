@@ -152,11 +152,11 @@ class ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningNonProvide
 
 
 __all__ = (
-    "ReposOwnerRepoPatchBodyType",
-    "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisType",
     "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropAdvancedSecurityType",
-    "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningType",
-    "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningPushProtectionType",
     "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningAiDetectionType",
     "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningNonProviderPatternsType",
+    "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningPushProtectionType",
+    "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningType",
+    "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisType",
+    "ReposOwnerRepoPatchBodyType",
 )

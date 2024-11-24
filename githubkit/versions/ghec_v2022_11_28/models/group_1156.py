@@ -12,8 +12,8 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.typing import Missing
 
 
 class ScimV2OrganizationsOrgUsersPostBody(GitHubModel):
@@ -64,6 +64,6 @@ model_rebuild(ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems)
 
 __all__ = (
     "ScimV2OrganizationsOrgUsersPostBody",
-    "ScimV2OrganizationsOrgUsersPostBodyPropName",
     "ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems",
+    "ScimV2OrganizationsOrgUsersPostBodyPropName",
 )

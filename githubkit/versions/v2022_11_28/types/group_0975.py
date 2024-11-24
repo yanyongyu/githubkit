@@ -43,7 +43,7 @@ class ReposOwnerRepoContentsPathDeleteBodyPropAuthorType(TypedDict):
 
 
 __all__ = (
-    "ReposOwnerRepoContentsPathDeleteBodyType",
-    "ReposOwnerRepoContentsPathDeleteBodyPropCommitterType",
     "ReposOwnerRepoContentsPathDeleteBodyPropAuthorType",
+    "ReposOwnerRepoContentsPathDeleteBodyPropCommitterType",
+    "ReposOwnerRepoContentsPathDeleteBodyType",
 )

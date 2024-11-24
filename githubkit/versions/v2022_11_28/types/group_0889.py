@@ -31,6 +31,6 @@ class ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItemsType(TypedDic
 
 
 __all__ = (
-    "ProjectsColumnsCardsCardIdMovesPostResponse503Type",
     "ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItemsType",
+    "ProjectsColumnsCardsCardIdMovesPostResponse503Type",
 )

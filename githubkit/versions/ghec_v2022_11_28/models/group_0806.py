@@ -14,14 +14,14 @@ from typing import Union
 from pydantic import Field
 
 from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
+from githubkit.typing import Missing
 
 from .group_0002 import SimpleUser
 from .group_0427 import EnterpriseWebhooks
 from .group_0428 import SimpleInstallation
-from .group_0430 import RepositoryWebhooks
 from .group_0429 import OrganizationSimpleWebhooks
+from .group_0430 import RepositoryWebhooks
 
 
 class WebhookWorkflowDispatch(GitHubModel):

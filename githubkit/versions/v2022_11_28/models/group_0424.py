@@ -9,14 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union, Literal
+from datetime import datetime
 
 from pydantic import Field
 
 from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
 
 
 class WebhooksPullRequest5(GitHubModel):
@@ -1046,12 +1046,19 @@ __all__ = (
     "WebhooksPullRequest5PropAssigneesItems",
     "WebhooksPullRequest5PropAutoMerge",
     "WebhooksPullRequest5PropAutoMergePropEnabledBy",
+    "WebhooksPullRequest5PropBase",
+    "WebhooksPullRequest5PropBasePropRepo",
+    "WebhooksPullRequest5PropBasePropRepoPropLicense",
+    "WebhooksPullRequest5PropBasePropRepoPropOwner",
+    "WebhooksPullRequest5PropBasePropRepoPropPermissions",
+    "WebhooksPullRequest5PropBasePropUser",
+    "WebhooksPullRequest5PropHead",
+    "WebhooksPullRequest5PropHeadPropRepo",
+    "WebhooksPullRequest5PropHeadPropRepoPropLicense",
+    "WebhooksPullRequest5PropHeadPropRepoPropOwner",
+    "WebhooksPullRequest5PropHeadPropRepoPropPermissions",
+    "WebhooksPullRequest5PropHeadPropUser",
     "WebhooksPullRequest5PropLabelsItems",
-    "WebhooksPullRequest5PropMergedBy",
-    "WebhooksPullRequest5PropMilestone",
-    "WebhooksPullRequest5PropMilestonePropCreator",
-    "WebhooksPullRequest5PropRequestedReviewersItemsOneof0",
-    "WebhooksPullRequest5PropUser",
     "WebhooksPullRequest5PropLinks",
     "WebhooksPullRequest5PropLinksPropComments",
     "WebhooksPullRequest5PropLinksPropCommits",
@@ -1061,20 +1068,13 @@ __all__ = (
     "WebhooksPullRequest5PropLinksPropReviewComments",
     "WebhooksPullRequest5PropLinksPropSelf",
     "WebhooksPullRequest5PropLinksPropStatuses",
-    "WebhooksPullRequest5PropBase",
-    "WebhooksPullRequest5PropBasePropUser",
-    "WebhooksPullRequest5PropBasePropRepo",
-    "WebhooksPullRequest5PropBasePropRepoPropLicense",
-    "WebhooksPullRequest5PropBasePropRepoPropOwner",
-    "WebhooksPullRequest5PropBasePropRepoPropPermissions",
-    "WebhooksPullRequest5PropHead",
-    "WebhooksPullRequest5PropHeadPropUser",
-    "WebhooksPullRequest5PropHeadPropRepo",
-    "WebhooksPullRequest5PropHeadPropRepoPropLicense",
-    "WebhooksPullRequest5PropHeadPropRepoPropOwner",
-    "WebhooksPullRequest5PropHeadPropRepoPropPermissions",
+    "WebhooksPullRequest5PropMergedBy",
+    "WebhooksPullRequest5PropMilestone",
+    "WebhooksPullRequest5PropMilestonePropCreator",
+    "WebhooksPullRequest5PropRequestedReviewersItemsOneof0",
     "WebhooksPullRequest5PropRequestedReviewersItemsOneof1",
     "WebhooksPullRequest5PropRequestedReviewersItemsOneof1PropParent",
     "WebhooksPullRequest5PropRequestedTeamsItems",
     "WebhooksPullRequest5PropRequestedTeamsItemsPropParent",
+    "WebhooksPullRequest5PropUser",
 )

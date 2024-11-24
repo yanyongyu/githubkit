@@ -31,6 +31,6 @@ class RepositoryRuleParamsStatusCheckConfigurationType(TypedDict):
 
 
 __all__ = (
-    "RepositoryRuleRequiredStatusChecksPropParametersType",
     "RepositoryRuleParamsStatusCheckConfigurationType",
+    "RepositoryRuleRequiredStatusChecksPropParametersType",
 )

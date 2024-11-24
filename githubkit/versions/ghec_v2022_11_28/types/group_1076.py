@@ -35,6 +35,6 @@ class ReposOwnerRepoHooksPostBodyPropConfigType(TypedDict):
 
 
 __all__ = (
-    "ReposOwnerRepoHooksPostBodyType",
     "ReposOwnerRepoHooksPostBodyPropConfigType",
+    "ReposOwnerRepoHooksPostBodyType",
 )

@@ -9,8 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union, Literal
+from datetime import datetime
 from typing_extensions import TypedDict, NotRequired
 
 
@@ -839,18 +839,23 @@ class WebhooksPullRequest5PropRequestedTeamsItemsPropParentType(TypedDict):
 
 
 __all__ = (
-    "WebhooksPullRequest5Type",
     "WebhooksPullRequest5PropAssigneeType",
     "WebhooksPullRequest5PropAssigneesItemsType",
-    "WebhooksPullRequest5PropAutoMergeType",
     "WebhooksPullRequest5PropAutoMergePropEnabledByType",
+    "WebhooksPullRequest5PropAutoMergeType",
+    "WebhooksPullRequest5PropBasePropRepoPropLicenseType",
+    "WebhooksPullRequest5PropBasePropRepoPropOwnerType",
+    "WebhooksPullRequest5PropBasePropRepoPropPermissionsType",
+    "WebhooksPullRequest5PropBasePropRepoType",
+    "WebhooksPullRequest5PropBasePropUserType",
+    "WebhooksPullRequest5PropBaseType",
+    "WebhooksPullRequest5PropHeadPropRepoPropLicenseType",
+    "WebhooksPullRequest5PropHeadPropRepoPropOwnerType",
+    "WebhooksPullRequest5PropHeadPropRepoPropPermissionsType",
+    "WebhooksPullRequest5PropHeadPropRepoType",
+    "WebhooksPullRequest5PropHeadPropUserType",
+    "WebhooksPullRequest5PropHeadType",
     "WebhooksPullRequest5PropLabelsItemsType",
-    "WebhooksPullRequest5PropMergedByType",
-    "WebhooksPullRequest5PropMilestoneType",
-    "WebhooksPullRequest5PropMilestonePropCreatorType",
-    "WebhooksPullRequest5PropRequestedReviewersItemsOneof0Type",
-    "WebhooksPullRequest5PropUserType",
-    "WebhooksPullRequest5PropLinksType",
     "WebhooksPullRequest5PropLinksPropCommentsType",
     "WebhooksPullRequest5PropLinksPropCommitsType",
     "WebhooksPullRequest5PropLinksPropHtmlType",
@@ -859,20 +864,15 @@ __all__ = (
     "WebhooksPullRequest5PropLinksPropReviewCommentsType",
     "WebhooksPullRequest5PropLinksPropSelfType",
     "WebhooksPullRequest5PropLinksPropStatusesType",
-    "WebhooksPullRequest5PropBaseType",
-    "WebhooksPullRequest5PropBasePropUserType",
-    "WebhooksPullRequest5PropBasePropRepoType",
-    "WebhooksPullRequest5PropBasePropRepoPropLicenseType",
-    "WebhooksPullRequest5PropBasePropRepoPropOwnerType",
-    "WebhooksPullRequest5PropBasePropRepoPropPermissionsType",
-    "WebhooksPullRequest5PropHeadType",
-    "WebhooksPullRequest5PropHeadPropUserType",
-    "WebhooksPullRequest5PropHeadPropRepoType",
-    "WebhooksPullRequest5PropHeadPropRepoPropLicenseType",
-    "WebhooksPullRequest5PropHeadPropRepoPropOwnerType",
-    "WebhooksPullRequest5PropHeadPropRepoPropPermissionsType",
-    "WebhooksPullRequest5PropRequestedReviewersItemsOneof1Type",
+    "WebhooksPullRequest5PropLinksType",
+    "WebhooksPullRequest5PropMergedByType",
+    "WebhooksPullRequest5PropMilestonePropCreatorType",
+    "WebhooksPullRequest5PropMilestoneType",
+    "WebhooksPullRequest5PropRequestedReviewersItemsOneof0Type",
     "WebhooksPullRequest5PropRequestedReviewersItemsOneof1PropParentType",
-    "WebhooksPullRequest5PropRequestedTeamsItemsType",
+    "WebhooksPullRequest5PropRequestedReviewersItemsOneof1Type",
     "WebhooksPullRequest5PropRequestedTeamsItemsPropParentType",
+    "WebhooksPullRequest5PropRequestedTeamsItemsType",
+    "WebhooksPullRequest5PropUserType",
+    "WebhooksPullRequest5Type",
 )

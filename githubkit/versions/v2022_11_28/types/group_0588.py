@@ -15,8 +15,8 @@ from typing_extensions import TypedDict, NotRequired
 from .group_0002 import SimpleUserType
 from .group_0384 import EnterpriseWebhooksType
 from .group_0385 import SimpleInstallationType
-from .group_0387 import RepositoryWebhooksType
 from .group_0386 import OrganizationSimpleWebhooksType
+from .group_0387 import RepositoryWebhooksType
 
 
 class WebhookMetaDeletedType(TypedDict):
@@ -59,7 +59,7 @@ class WebhookMetaDeletedPropHookPropConfigType(TypedDict):
 
 
 __all__ = (
-    "WebhookMetaDeletedType",
-    "WebhookMetaDeletedPropHookType",
     "WebhookMetaDeletedPropHookPropConfigType",
+    "WebhookMetaDeletedPropHookType",
+    "WebhookMetaDeletedType",
 )

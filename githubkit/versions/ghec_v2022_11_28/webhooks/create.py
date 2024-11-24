@@ -19,4 +19,4 @@ action_types = WebhookCreate
 
 create_action_types = action_types
 
-__all__ = ("Event", "CreateEvent", "action_types", "create_action_types")
+__all__ = ("CreateEvent", "Event", "action_types", "create_action_types")

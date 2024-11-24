@@ -87,11 +87,11 @@ class AuditLogEventPropEventsWereItemsType(TypedDict):
 
 
 __all__ = (
-    "AuditLogEventType",
     "AuditLogEventPropActorLocationType",
-    "AuditLogEventPropDataType",
     "AuditLogEventPropConfigItemsType",
     "AuditLogEventPropConfigWasItemsType",
+    "AuditLogEventPropDataType",
     "AuditLogEventPropEventsItemsType",
     "AuditLogEventPropEventsWereItemsType",
+    "AuditLogEventType",
 )

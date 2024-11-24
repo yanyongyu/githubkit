@@ -35,7 +35,7 @@ class CvssSeveritiesPropCvssV4Type(TypedDict):
 
 
 __all__ = (
-    "CvssSeveritiesType",
     "CvssSeveritiesPropCvssV3Type",
     "CvssSeveritiesPropCvssV4Type",
+    "CvssSeveritiesType",
 )

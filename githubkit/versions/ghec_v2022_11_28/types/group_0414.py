@@ -75,6 +75,6 @@ class PrivateUserPropPlanType(TypedDict):
 
 
 __all__ = (
-    "PrivateUserType",
     "PrivateUserPropPlanType",
+    "PrivateUserType",
 )

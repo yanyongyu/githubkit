@@ -9,8 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union, Literal
+from datetime import datetime
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0551 import WebhookForkPropForkeeAllof0PropPermissionsType
@@ -152,7 +152,7 @@ class WebhookForkPropForkeeAllof0PropOwnerType(TypedDict):
 
 
 __all__ = (
-    "WebhookForkPropForkeeAllof0Type",
     "WebhookForkPropForkeeAllof0PropLicenseType",
     "WebhookForkPropForkeeAllof0PropOwnerType",
+    "WebhookForkPropForkeeAllof0Type",
 )

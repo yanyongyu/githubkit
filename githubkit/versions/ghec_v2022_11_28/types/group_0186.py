@@ -33,6 +33,6 @@ class GroupMappingPropGroupsItemsType(TypedDict):
 
 
 __all__ = (
-    "GroupMappingType",
     "GroupMappingPropGroupsItemsType",
+    "GroupMappingType",
 )

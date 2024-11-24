@@ -12,8 +12,8 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0019 import RepositoryType
 from .group_0016 import AppPermissionsType
+from .group_0019 import RepositoryType
 
 
 class InstallationTokenType(TypedDict):

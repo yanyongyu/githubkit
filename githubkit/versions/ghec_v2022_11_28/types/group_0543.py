@@ -11,8 +11,8 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0442 import DiscussionType
 from .group_0430 import RepositoryWebhooksType
+from .group_0442 import DiscussionType
 
 
 class WebhookDiscussionTransferredPropChangesType(TypedDict):

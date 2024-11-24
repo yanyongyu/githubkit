@@ -9,20 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union, Literal
+from datetime import datetime
 
 from pydantic import Field
 
 from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
 
 from .group_0002 import SimpleUser
 from .group_0427 import EnterpriseWebhooks
 from .group_0428 import SimpleInstallation
-from .group_0430 import RepositoryWebhooks
 from .group_0429 import OrganizationSimpleWebhooks
+from .group_0430 import RepositoryWebhooks
 
 
 class WebhookPullRequestReviewDismissed(GitHubModel):
@@ -1218,21 +1218,24 @@ model_rebuild(
 
 __all__ = (
     "WebhookPullRequestReviewDismissed",
-    "WebhookPullRequestReviewDismissedPropReview",
-    "WebhookPullRequestReviewDismissedPropReviewPropUser",
-    "WebhookPullRequestReviewDismissedPropReviewPropLinks",
-    "WebhookPullRequestReviewDismissedPropReviewPropLinksPropHtml",
-    "WebhookPullRequestReviewDismissedPropReviewPropLinksPropPullRequest",
     "WebhookPullRequestReviewDismissedPropPullRequest",
     "WebhookPullRequestReviewDismissedPropPullRequestPropAssignee",
     "WebhookPullRequestReviewDismissedPropPullRequestPropAssigneesItems",
     "WebhookPullRequestReviewDismissedPropPullRequestPropAutoMerge",
     "WebhookPullRequestReviewDismissedPropPullRequestPropAutoMergePropEnabledBy",
+    "WebhookPullRequestReviewDismissedPropPullRequestPropBase",
+    "WebhookPullRequestReviewDismissedPropPullRequestPropBasePropRepo",
+    "WebhookPullRequestReviewDismissedPropPullRequestPropBasePropRepoPropLicense",
+    "WebhookPullRequestReviewDismissedPropPullRequestPropBasePropRepoPropOwner",
+    "WebhookPullRequestReviewDismissedPropPullRequestPropBasePropRepoPropPermissions",
+    "WebhookPullRequestReviewDismissedPropPullRequestPropBasePropUser",
+    "WebhookPullRequestReviewDismissedPropPullRequestPropHead",
+    "WebhookPullRequestReviewDismissedPropPullRequestPropHeadPropRepo",
+    "WebhookPullRequestReviewDismissedPropPullRequestPropHeadPropRepoPropLicense",
+    "WebhookPullRequestReviewDismissedPropPullRequestPropHeadPropRepoPropOwner",
+    "WebhookPullRequestReviewDismissedPropPullRequestPropHeadPropRepoPropPermissions",
+    "WebhookPullRequestReviewDismissedPropPullRequestPropHeadPropUser",
     "WebhookPullRequestReviewDismissedPropPullRequestPropLabelsItems",
-    "WebhookPullRequestReviewDismissedPropPullRequestPropMilestone",
-    "WebhookPullRequestReviewDismissedPropPullRequestPropMilestonePropCreator",
-    "WebhookPullRequestReviewDismissedPropPullRequestPropRequestedReviewersItemsOneof0",
-    "WebhookPullRequestReviewDismissedPropPullRequestPropUser",
     "WebhookPullRequestReviewDismissedPropPullRequestPropLinks",
     "WebhookPullRequestReviewDismissedPropPullRequestPropLinksPropComments",
     "WebhookPullRequestReviewDismissedPropPullRequestPropLinksPropCommits",
@@ -1242,20 +1245,17 @@ __all__ = (
     "WebhookPullRequestReviewDismissedPropPullRequestPropLinksPropReviewComments",
     "WebhookPullRequestReviewDismissedPropPullRequestPropLinksPropSelf",
     "WebhookPullRequestReviewDismissedPropPullRequestPropLinksPropStatuses",
-    "WebhookPullRequestReviewDismissedPropPullRequestPropBase",
-    "WebhookPullRequestReviewDismissedPropPullRequestPropBasePropUser",
-    "WebhookPullRequestReviewDismissedPropPullRequestPropBasePropRepo",
-    "WebhookPullRequestReviewDismissedPropPullRequestPropBasePropRepoPropLicense",
-    "WebhookPullRequestReviewDismissedPropPullRequestPropBasePropRepoPropOwner",
-    "WebhookPullRequestReviewDismissedPropPullRequestPropBasePropRepoPropPermissions",
-    "WebhookPullRequestReviewDismissedPropPullRequestPropHead",
-    "WebhookPullRequestReviewDismissedPropPullRequestPropHeadPropRepo",
-    "WebhookPullRequestReviewDismissedPropPullRequestPropHeadPropRepoPropLicense",
-    "WebhookPullRequestReviewDismissedPropPullRequestPropHeadPropRepoPropOwner",
-    "WebhookPullRequestReviewDismissedPropPullRequestPropHeadPropRepoPropPermissions",
-    "WebhookPullRequestReviewDismissedPropPullRequestPropHeadPropUser",
+    "WebhookPullRequestReviewDismissedPropPullRequestPropMilestone",
+    "WebhookPullRequestReviewDismissedPropPullRequestPropMilestonePropCreator",
+    "WebhookPullRequestReviewDismissedPropPullRequestPropRequestedReviewersItemsOneof0",
     "WebhookPullRequestReviewDismissedPropPullRequestPropRequestedReviewersItemsOneof1",
     "WebhookPullRequestReviewDismissedPropPullRequestPropRequestedReviewersItemsOneof1PropParent",
     "WebhookPullRequestReviewDismissedPropPullRequestPropRequestedTeamsItems",
     "WebhookPullRequestReviewDismissedPropPullRequestPropRequestedTeamsItemsPropParent",
+    "WebhookPullRequestReviewDismissedPropPullRequestPropUser",
+    "WebhookPullRequestReviewDismissedPropReview",
+    "WebhookPullRequestReviewDismissedPropReviewPropLinks",
+    "WebhookPullRequestReviewDismissedPropReviewPropLinksPropHtml",
+    "WebhookPullRequestReviewDismissedPropReviewPropLinksPropPullRequest",
+    "WebhookPullRequestReviewDismissedPropReviewPropUser",
 )

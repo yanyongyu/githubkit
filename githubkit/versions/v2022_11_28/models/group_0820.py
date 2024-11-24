@@ -12,8 +12,8 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
+from githubkit.typing import Missing
 
 
 class OrgsOrgAttestationsSubjectDigestGetResponse200(GitHubModel):
@@ -88,6 +88,6 @@ __all__ = (
     "OrgsOrgAttestationsSubjectDigestGetResponse200",
     "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems",
     "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle",
-    "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterial",
     "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelope",
+    "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterial",
 )

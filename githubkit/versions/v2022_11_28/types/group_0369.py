@@ -83,10 +83,10 @@ class SearchTopicsGetResponse200Type(TypedDict):
 
 
 __all__ = (
-    "TopicSearchResultItemType",
-    "TopicSearchResultItemPropRelatedItemsType",
-    "TopicSearchResultItemPropRelatedItemsPropTopicRelationType",
-    "TopicSearchResultItemPropAliasesItemsType",
-    "TopicSearchResultItemPropAliasesItemsPropTopicRelationType",
     "SearchTopicsGetResponse200Type",
+    "TopicSearchResultItemPropAliasesItemsPropTopicRelationType",
+    "TopicSearchResultItemPropAliasesItemsType",
+    "TopicSearchResultItemPropRelatedItemsPropTopicRelationType",
+    "TopicSearchResultItemPropRelatedItemsType",
+    "TopicSearchResultItemType",
 )

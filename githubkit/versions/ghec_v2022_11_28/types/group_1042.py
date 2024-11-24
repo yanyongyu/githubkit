@@ -30,6 +30,6 @@ class ReposOwnerRepoCodespacesNewGetResponse200PropDefaultsType(TypedDict):
 
 
 __all__ = (
-    "ReposOwnerRepoCodespacesNewGetResponse200Type",
     "ReposOwnerRepoCodespacesNewGetResponse200PropDefaultsType",
+    "ReposOwnerRepoCodespacesNewGetResponse200Type",
 )
