@@ -5,8 +5,8 @@ from weakref import ref
 from githubkit.exception import GraphQLFailed, PrimaryRateLimitExceeded
 
 from .models import GraphQLError as GraphQLError
-from .models import SourceLocation as SourceLocation
 from .models import GraphQLResponse as GraphQLResponse
+from .models import SourceLocation as SourceLocation
 from .paginator import Paginator as Paginator
 
 if TYPE_CHECKING:

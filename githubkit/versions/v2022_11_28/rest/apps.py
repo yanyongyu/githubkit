@@ -14,62 +14,62 @@ from weakref import ref
 
 from pydantic import BaseModel
 
-from githubkit.utils import UNSET, exclude_unset
 from githubkit.compat import model_dump, type_validate_python
 from githubkit.typing import Missing, UnsetType
+from githubkit.utils import UNSET, exclude_unset
 
 if TYPE_CHECKING:
-    from typing import Union, Literal
     from datetime import datetime
+    from typing import Literal, Union
 
     from githubkit import GitHubCore
-    from githubkit.utils import UNSET
-    from githubkit.typing import Missing
     from githubkit.response import Response
+    from githubkit.typing import Missing
+    from githubkit.utils import UNSET
 
+    from ..models import (
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
+        AppManifestsCodeConversionsPostResponse201,
+        Authorization,
+        HookDelivery,
+        HookDeliveryItem,
+        Installation,
+        InstallationRepositoriesGetResponse200,
+        InstallationToken,
+        Integration,
+        IntegrationInstallationRequest,
+        MarketplaceListingPlan,
+        MarketplacePurchase,
+        UserInstallationsGetResponse200,
+        UserInstallationsInstallationIdRepositoriesGetResponse200,
+        UserMarketplacePurchase,
+        WebhookConfig,
+    )
     from ..types import (
-        IntegrationType,
-        HookDeliveryType,
-        InstallationType,
-        AuthorizationType,
-        WebhookConfigType,
-        AppPermissionsType,
-        HookDeliveryItemType,
-        InstallationTokenType,
-        MarketplacePurchaseType,
         AppHookConfigPatchBodyType,
-        MarketplaceListingPlanType,
-        UserMarketplacePurchaseType,
-        IntegrationInstallationRequestType,
-        UserInstallationsGetResponse200Type,
-        ApplicationsClientIdTokenPostBodyType,
-        ApplicationsClientIdTokenPatchBodyType,
-        ApplicationsClientIdGrantDeleteBodyType,
-        ApplicationsClientIdTokenDeleteBodyType,
-        InstallationRepositoriesGetResponse200Type,
-        ApplicationsClientIdTokenScopedPostBodyType,
-        AppManifestsCodeConversionsPostResponse201Type,
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
         AppInstallationsInstallationIdAccessTokensPostBodyType,
+        ApplicationsClientIdGrantDeleteBodyType,
+        ApplicationsClientIdTokenDeleteBodyType,
+        ApplicationsClientIdTokenPatchBodyType,
+        ApplicationsClientIdTokenPostBodyType,
+        ApplicationsClientIdTokenScopedPostBodyType,
+        AppManifestsCodeConversionsPostResponse201Type,
+        AppPermissionsType,
+        AuthorizationType,
+        HookDeliveryItemType,
+        HookDeliveryType,
+        InstallationRepositoriesGetResponse200Type,
+        InstallationTokenType,
+        InstallationType,
+        IntegrationInstallationRequestType,
+        IntegrationType,
+        MarketplaceListingPlanType,
+        MarketplacePurchaseType,
+        UserInstallationsGetResponse200Type,
         UserInstallationsInstallationIdRepositoriesGetResponse200Type,
-    )
-    from ..models import (
-        Integration,
-        HookDelivery,
-        Installation,
-        Authorization,
-        WebhookConfig,
-        HookDeliveryItem,
-        InstallationToken,
-        MarketplacePurchase,
-        MarketplaceListingPlan,
-        UserMarketplacePurchase,
-        IntegrationInstallationRequest,
-        UserInstallationsGetResponse200,
-        InstallationRepositoriesGetResponse200,
-        AppManifestsCodeConversionsPostResponse201,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-        UserInstallationsInstallationIdRepositoriesGetResponse200,
+        UserMarketplacePurchaseType,
+        WebhookConfigType,
     )
 
 
@@ -144,9 +144,9 @@ class AppsClient:
         """See also: https://docs.github.com/rest/apps/apps#create-a-github-app-from-a-manifest"""
 
         from ..models import (
+            AppManifestsCodeConversionsPostResponse201,
             BasicError,
             ValidationErrorSimple,
-            AppManifestsCodeConversionsPostResponse201,
         )
 
         url = f"/app-manifests/{code}/conversions"
@@ -176,9 +176,9 @@ class AppsClient:
         """See also: https://docs.github.com/rest/apps/apps#create-a-github-app-from-a-manifest"""
 
         from ..models import (
+            AppManifestsCodeConversionsPostResponse201,
             BasicError,
             ValidationErrorSimple,
-            AppManifestsCodeConversionsPostResponse201,
         )
 
         url = f"/app-manifests/{code}/conversions"
@@ -265,7 +265,7 @@ class AppsClient:
     ) -> Response[WebhookConfig, WebhookConfigType]:
         """See also: https://docs.github.com/rest/apps/webhooks#update-a-webhook-configuration-for-an-app"""
 
-        from ..models import WebhookConfig, AppHookConfigPatchBody
+        from ..models import AppHookConfigPatchBody, WebhookConfig
 
         url = "/app/hook/config"
 
@@ -317,7 +317,7 @@ class AppsClient:
     ) -> Response[WebhookConfig, WebhookConfigType]:
         """See also: https://docs.github.com/rest/apps/webhooks#update-a-webhook-configuration-for-an-app"""
 
-        from ..models import WebhookConfig, AppHookConfigPatchBody
+        from ..models import AppHookConfigPatchBody, WebhookConfig
 
         url = "/app/hook/config"
 
@@ -349,7 +349,7 @@ class AppsClient:
     ) -> Response[list[HookDeliveryItem], list[HookDeliveryItemType]]:
         """See also: https://docs.github.com/rest/apps/webhooks#list-deliveries-for-an-app-webhook"""
 
-        from ..models import BasicError, ValidationError, HookDeliveryItem
+        from ..models import BasicError, HookDeliveryItem, ValidationError
 
         url = "/app/hook/deliveries"
 
@@ -381,7 +381,7 @@ class AppsClient:
     ) -> Response[list[HookDeliveryItem], list[HookDeliveryItemType]]:
         """See also: https://docs.github.com/rest/apps/webhooks#list-deliveries-for-an-app-webhook"""
 
-        from ..models import BasicError, ValidationError, HookDeliveryItem
+        from ..models import BasicError, HookDeliveryItem, ValidationError
 
         url = "/app/hook/deliveries"
 
@@ -466,9 +466,9 @@ class AppsClient:
         """See also: https://docs.github.com/rest/apps/webhooks#redeliver-a-delivery-for-an-app-webhook"""
 
         from ..models import (
+            AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
             BasicError,
             ValidationError,
-            AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
         )
 
         url = f"/app/hook/deliveries/{delivery_id}/attempts"
@@ -498,9 +498,9 @@ class AppsClient:
         """See also: https://docs.github.com/rest/apps/webhooks#redeliver-a-delivery-for-an-app-webhook"""
 
         from ..models import (
+            AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
             BasicError,
             ValidationError,
-            AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
         )
 
         url = f"/app/hook/deliveries/{delivery_id}/attempts"
@@ -774,10 +774,10 @@ class AppsClient:
         """See also: https://docs.github.com/rest/apps/apps#create-an-installation-access-token-for-an-app"""
 
         from ..models import (
-            BasicError,
-            ValidationError,
-            InstallationToken,
             AppInstallationsInstallationIdAccessTokensPostBody,
+            BasicError,
+            InstallationToken,
+            ValidationError,
         )
 
         url = f"/app/installations/{installation_id}/access_tokens"
@@ -841,10 +841,10 @@ class AppsClient:
         """See also: https://docs.github.com/rest/apps/apps#create-an-installation-access-token-for-an-app"""
 
         from ..models import (
-            BasicError,
-            ValidationError,
-            InstallationToken,
             AppInstallationsInstallationIdAccessTokensPostBody,
+            BasicError,
+            InstallationToken,
+            ValidationError,
         )
 
         url = f"/app/installations/{installation_id}/access_tokens"
@@ -997,7 +997,7 @@ class AppsClient:
     ) -> Response:
         """See also: https://docs.github.com/rest/apps/oauth-applications#delete-an-app-authorization"""
 
-        from ..models import ValidationError, ApplicationsClientIdGrantDeleteBody
+        from ..models import ApplicationsClientIdGrantDeleteBody, ValidationError
 
         url = f"/applications/{client_id}/grant"
 
@@ -1051,7 +1051,7 @@ class AppsClient:
     ) -> Response:
         """See also: https://docs.github.com/rest/apps/oauth-applications#delete-an-app-authorization"""
 
-        from ..models import ValidationError, ApplicationsClientIdGrantDeleteBody
+        from ..models import ApplicationsClientIdGrantDeleteBody, ValidationError
 
         url = f"/applications/{client_id}/grant"
 
@@ -1106,10 +1106,10 @@ class AppsClient:
         """See also: https://docs.github.com/rest/apps/oauth-applications#check-a-token"""
 
         from ..models import (
-            BasicError,
-            Authorization,
-            ValidationError,
             ApplicationsClientIdTokenPostBody,
+            Authorization,
+            BasicError,
+            ValidationError,
         )
 
         url = f"/applications/{client_id}/token"
@@ -1167,10 +1167,10 @@ class AppsClient:
         """See also: https://docs.github.com/rest/apps/oauth-applications#check-a-token"""
 
         from ..models import (
-            BasicError,
-            Authorization,
-            ValidationError,
             ApplicationsClientIdTokenPostBody,
+            Authorization,
+            BasicError,
+            ValidationError,
         )
 
         url = f"/applications/{client_id}/token"
@@ -1227,7 +1227,7 @@ class AppsClient:
     ) -> Response:
         """See also: https://docs.github.com/rest/apps/oauth-applications#delete-an-app-token"""
 
-        from ..models import ValidationError, ApplicationsClientIdTokenDeleteBody
+        from ..models import ApplicationsClientIdTokenDeleteBody, ValidationError
 
         url = f"/applications/{client_id}/token"
 
@@ -1281,7 +1281,7 @@ class AppsClient:
     ) -> Response:
         """See also: https://docs.github.com/rest/apps/oauth-applications#delete-an-app-token"""
 
-        from ..models import ValidationError, ApplicationsClientIdTokenDeleteBody
+        from ..models import ApplicationsClientIdTokenDeleteBody, ValidationError
 
         url = f"/applications/{client_id}/token"
 
@@ -1336,9 +1336,9 @@ class AppsClient:
         """See also: https://docs.github.com/rest/apps/oauth-applications#reset-a-token"""
 
         from ..models import (
+            ApplicationsClientIdTokenPatchBody,
             Authorization,
             ValidationError,
-            ApplicationsClientIdTokenPatchBody,
         )
 
         url = f"/applications/{client_id}/token"
@@ -1395,9 +1395,9 @@ class AppsClient:
         """See also: https://docs.github.com/rest/apps/oauth-applications#reset-a-token"""
 
         from ..models import (
+            ApplicationsClientIdTokenPatchBody,
             Authorization,
             ValidationError,
-            ApplicationsClientIdTokenPatchBody,
         )
 
         url = f"/applications/{client_id}/token"
@@ -1459,10 +1459,10 @@ class AppsClient:
         """See also: https://docs.github.com/rest/apps/apps#create-a-scoped-access-token"""
 
         from ..models import (
-            BasicError,
-            Authorization,
-            ValidationError,
             ApplicationsClientIdTokenScopedPostBody,
+            Authorization,
+            BasicError,
+            ValidationError,
         )
 
         url = f"/applications/{client_id}/token/scoped"
@@ -1527,10 +1527,10 @@ class AppsClient:
         """See also: https://docs.github.com/rest/apps/apps#create-a-scoped-access-token"""
 
         from ..models import (
-            BasicError,
-            Authorization,
-            ValidationError,
             ApplicationsClientIdTokenScopedPostBody,
+            Authorization,
+            BasicError,
+            ValidationError,
         )
 
         url = f"/applications/{client_id}/token/scoped"
@@ -1844,7 +1844,7 @@ class AppsClient:
     ) -> Response[list[MarketplacePurchase], list[MarketplacePurchaseType]]:
         """See also: https://docs.github.com/rest/apps/marketplace#list-accounts-for-a-plan"""
 
-        from ..models import BasicError, ValidationError, MarketplacePurchase
+        from ..models import BasicError, MarketplacePurchase, ValidationError
 
         url = f"/marketplace_listing/plans/{plan_id}/accounts"
 
@@ -1882,7 +1882,7 @@ class AppsClient:
     ) -> Response[list[MarketplacePurchase], list[MarketplacePurchaseType]]:
         """See also: https://docs.github.com/rest/apps/marketplace#list-accounts-for-a-plan"""
 
-        from ..models import BasicError, ValidationError, MarketplacePurchase
+        from ..models import BasicError, MarketplacePurchase, ValidationError
 
         url = f"/marketplace_listing/plans/{plan_id}/accounts"
 

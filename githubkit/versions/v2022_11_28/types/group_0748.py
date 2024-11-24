@@ -10,20 +10,20 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import TypedDict, NotRequired
+from typing_extensions import NotRequired, TypedDict
 
 from .group_0002 import SimpleUserType
 from .group_0019 import RepositoryType
 from .group_0042 import IssueType
-from .group_0385 import SimpleInstallationType
-from .group_0386 import OrganizationSimpleWebhooksType
-from .group_0387 import RepositoryWebhooksType
+from .group_0386 import SimpleInstallationType
+from .group_0387 import OrganizationSimpleWebhooksType
+from .group_0388 import RepositoryWebhooksType
 
 
-class WebhookSubIssuesSubIssueRemovedType(TypedDict):
-    """sub-issue removed event"""
+class WebhookSubIssuesSubIssueAddedType(TypedDict):
+    """sub-issue added event"""
 
-    action: Literal["sub_issue_removed"]
+    action: Literal["sub_issue_added"]
     sub_issue_id: float
     sub_issue: IssueType
     sub_issue_repo: RepositoryType
@@ -35,4 +35,4 @@ class WebhookSubIssuesSubIssueRemovedType(TypedDict):
     sender: NotRequired[SimpleUserType]
 
 
-__all__ = ("WebhookSubIssuesSubIssueRemovedType",)
+__all__ = ("WebhookSubIssuesSubIssueAddedType",)

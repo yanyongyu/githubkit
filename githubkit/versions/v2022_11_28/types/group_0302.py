@@ -9,24 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
+from typing import Literal, Union
 from typing_extensions import TypedDict
 
 from .group_0002 import SimpleUserType
 from .group_0008 import IntegrationType
 
 
-class TimelineUnassignedIssueEventType(TypedDict):
-    """Timeline Unassigned Issue Event
+class TimelineAssignedIssueEventType(TypedDict):
+    """Timeline Assigned Issue Event
 
-    Timeline Unassigned Issue Event
+    Timeline Assigned Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserType
-    event: Literal["unassigned"]
+    event: Literal["assigned"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
@@ -34,4 +34,4 @@ class TimelineUnassignedIssueEventType(TypedDict):
     assignee: SimpleUserType
 
 
-__all__ = ("TimelineUnassignedIssueEventType",)
+__all__ = ("TimelineAssignedIssueEventType",)

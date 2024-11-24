@@ -14,47 +14,47 @@ from weakref import ref
 
 from pydantic import BaseModel
 
-from githubkit.utils import UNSET, exclude_unset
 from githubkit.compat import model_dump, type_validate_python
 from githubkit.typing import Missing, UnsetType
+from githubkit.utils import UNSET, exclude_unset
 
 if TYPE_CHECKING:
-    from typing import Union, Literal
+    from typing import Literal, Union
 
     from githubkit import GitHubCore
-    from githubkit.utils import UNSET
-    from githubkit.typing import Missing
     from githubkit.response import Response
+    from githubkit.typing import Missing
+    from githubkit.utils import UNSET
 
-    from ..types import (
-        ProjectType,
-        SimpleUserType,
-        ProjectCardType,
-        ProjectColumnType,
-        UserProjectsPostBodyType,
-        OrgsOrgProjectsPostBodyType,
-        ProjectsProjectIdPatchBodyType,
-        ProjectCollaboratorPermissionType,
-        ReposOwnerRepoProjectsPostBodyType,
-        ProjectsColumnsColumnIdPatchBodyType,
-        ProjectsProjectIdColumnsPostBodyType,
-        ProjectsColumnsCardsCardIdPatchBodyType,
-        ProjectsColumnsColumnIdMovesPostBodyType,
-        ProjectsColumnsCardsCardIdMovesPostBodyType,
-        ProjectsColumnsColumnIdCardsPostBodyOneof0Type,
-        ProjectsColumnsColumnIdCardsPostBodyOneof1Type,
-        ProjectsColumnsColumnIdMovesPostResponse201Type,
-        ProjectsProjectIdCollaboratorsUsernamePutBodyType,
-        ProjectsColumnsCardsCardIdMovesPostResponse201Type,
-    )
     from ..models import (
         Project,
-        SimpleUser,
         ProjectCard,
-        ProjectColumn,
         ProjectCollaboratorPermission,
-        ProjectsColumnsColumnIdMovesPostResponse201,
+        ProjectColumn,
         ProjectsColumnsCardsCardIdMovesPostResponse201,
+        ProjectsColumnsColumnIdMovesPostResponse201,
+        SimpleUser,
+    )
+    from ..types import (
+        OrgsOrgProjectsPostBodyType,
+        ProjectCardType,
+        ProjectCollaboratorPermissionType,
+        ProjectColumnType,
+        ProjectsColumnsCardsCardIdMovesPostBodyType,
+        ProjectsColumnsCardsCardIdMovesPostResponse201Type,
+        ProjectsColumnsCardsCardIdPatchBodyType,
+        ProjectsColumnsColumnIdCardsPostBodyOneof0Type,
+        ProjectsColumnsColumnIdCardsPostBodyOneof1Type,
+        ProjectsColumnsColumnIdMovesPostBodyType,
+        ProjectsColumnsColumnIdMovesPostResponse201Type,
+        ProjectsColumnsColumnIdPatchBodyType,
+        ProjectsProjectIdCollaboratorsUsernamePutBodyType,
+        ProjectsProjectIdColumnsPostBodyType,
+        ProjectsProjectIdPatchBodyType,
+        ProjectType,
+        ReposOwnerRepoProjectsPostBodyType,
+        SimpleUserType,
+        UserProjectsPostBodyType,
     )
 
 
@@ -172,10 +172,10 @@ class ProjectsClient:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/projects#create-an-organization-project"""
 
         from ..models import (
-            Project,
             BasicError,
-            ValidationErrorSimple,
             OrgsOrgProjectsPostBody,
+            Project,
+            ValidationErrorSimple,
         )
 
         url = f"/orgs/{org}/projects"
@@ -237,10 +237,10 @@ class ProjectsClient:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/projects#create-an-organization-project"""
 
         from ..models import (
-            Project,
             BasicError,
-            ValidationErrorSimple,
             OrgsOrgProjectsPostBody,
+            Project,
+            ValidationErrorSimple,
         )
 
         url = f"/orgs/{org}/projects"
@@ -406,8 +406,8 @@ class ProjectsClient:
         from ..models import (
             BasicError,
             ProjectCard,
-            ValidationErrorSimple,
             ProjectsColumnsCardsCardIdPatchBody,
+            ValidationErrorSimple,
         )
 
         url = f"/projects/columns/cards/{card_id}"
@@ -470,8 +470,8 @@ class ProjectsClient:
         from ..models import (
             BasicError,
             ProjectCard,
-            ValidationErrorSimple,
             ProjectsColumnsCardsCardIdPatchBody,
+            ValidationErrorSimple,
         )
 
         url = f"/projects/columns/cards/{card_id}"
@@ -542,11 +542,11 @@ class ProjectsClient:
 
         from ..models import (
             BasicError,
-            ValidationError,
             ProjectsColumnsCardsCardIdMovesPostBody,
             ProjectsColumnsCardsCardIdMovesPostResponse201,
             ProjectsColumnsCardsCardIdMovesPostResponse403,
             ProjectsColumnsCardsCardIdMovesPostResponse503,
+            ValidationError,
         )
 
         url = f"/projects/columns/cards/{card_id}/moves"
@@ -617,11 +617,11 @@ class ProjectsClient:
 
         from ..models import (
             BasicError,
-            ValidationError,
             ProjectsColumnsCardsCardIdMovesPostBody,
             ProjectsColumnsCardsCardIdMovesPostResponse201,
             ProjectsColumnsCardsCardIdMovesPostResponse403,
             ProjectsColumnsCardsCardIdMovesPostResponse503,
+            ValidationError,
         )
 
         url = f"/projects/columns/cards/{card_id}/moves"
@@ -986,11 +986,11 @@ class ProjectsClient:
         from ..models import (
             BasicError,
             ProjectCard,
-            ValidationError,
-            ValidationErrorSimple,
             ProjectsColumnsColumnIdCardsPostBodyOneof0,
             ProjectsColumnsColumnIdCardsPostBodyOneof1,
             ProjectsColumnsColumnIdCardsPostResponse503,
+            ValidationError,
+            ValidationErrorSimple,
         )
 
         url = f"/projects/columns/{column_id}/cards"
@@ -1079,11 +1079,11 @@ class ProjectsClient:
         from ..models import (
             BasicError,
             ProjectCard,
-            ValidationError,
-            ValidationErrorSimple,
             ProjectsColumnsColumnIdCardsPostBodyOneof0,
             ProjectsColumnsColumnIdCardsPostBodyOneof1,
             ProjectsColumnsColumnIdCardsPostResponse503,
+            ValidationError,
+            ValidationErrorSimple,
         )
 
         url = f"/projects/columns/{column_id}/cards"
@@ -1159,9 +1159,9 @@ class ProjectsClient:
 
         from ..models import (
             BasicError,
-            ValidationErrorSimple,
             ProjectsColumnsColumnIdMovesPostBody,
             ProjectsColumnsColumnIdMovesPostResponse201,
+            ValidationErrorSimple,
         )
 
         url = f"/projects/columns/{column_id}/moves"
@@ -1230,9 +1230,9 @@ class ProjectsClient:
 
         from ..models import (
             BasicError,
-            ValidationErrorSimple,
             ProjectsColumnsColumnIdMovesPostBody,
             ProjectsColumnsColumnIdMovesPostResponse201,
+            ValidationErrorSimple,
         )
 
         url = f"/projects/columns/{column_id}/moves"
@@ -1269,7 +1269,7 @@ class ProjectsClient:
     ) -> Response[Project, ProjectType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/projects#get-a-project"""
 
-        from ..models import Project, BasicError
+        from ..models import BasicError, Project
 
         url = f"/projects/{project_id}"
 
@@ -1294,7 +1294,7 @@ class ProjectsClient:
     ) -> Response[Project, ProjectType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/projects#get-a-project"""
 
-        from ..models import Project, BasicError
+        from ..models import BasicError, Project
 
         url = f"/projects/{project_id}"
 
@@ -1399,11 +1399,11 @@ class ProjectsClient:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/projects#update-a-project"""
 
         from ..models import (
-            Project,
             BasicError,
-            ValidationErrorSimple,
+            Project,
             ProjectsProjectIdPatchBody,
             ProjectsProjectIdPatchResponse403,
+            ValidationErrorSimple,
         )
 
         url = f"/projects/{project_id}"
@@ -1469,11 +1469,11 @@ class ProjectsClient:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/projects#update-a-project"""
 
         from ..models import (
-            Project,
             BasicError,
-            ValidationErrorSimple,
+            Project,
             ProjectsProjectIdPatchBody,
             ProjectsProjectIdPatchResponse403,
+            ValidationErrorSimple,
         )
 
         url = f"/projects/{project_id}"
@@ -1617,8 +1617,8 @@ class ProjectsClient:
 
         from ..models import (
             BasicError,
-            ValidationError,
             ProjectsProjectIdCollaboratorsUsernamePutBody,
+            ValidationError,
         )
 
         url = f"/projects/{project_id}/collaborators/{username}"
@@ -1689,8 +1689,8 @@ class ProjectsClient:
 
         from ..models import (
             BasicError,
-            ValidationError,
             ProjectsProjectIdCollaboratorsUsernamePutBody,
+            ValidationError,
         )
 
         url = f"/projects/{project_id}/collaborators/{username}"
@@ -1784,7 +1784,7 @@ class ProjectsClient:
     ) -> Response[ProjectCollaboratorPermission, ProjectCollaboratorPermissionType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/collaborators#get-project-permission-for-a-user"""
 
-        from ..models import BasicError, ValidationError, ProjectCollaboratorPermission
+        from ..models import BasicError, ProjectCollaboratorPermission, ValidationError
 
         url = f"/projects/{project_id}/collaborators/{username}/permission"
 
@@ -1812,7 +1812,7 @@ class ProjectsClient:
     ) -> Response[ProjectCollaboratorPermission, ProjectCollaboratorPermissionType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/collaborators#get-project-permission-for-a-user"""
 
-        from ..models import BasicError, ValidationError, ProjectCollaboratorPermission
+        from ..models import BasicError, ProjectCollaboratorPermission, ValidationError
 
         url = f"/projects/{project_id}/collaborators/{username}/permission"
 
@@ -1929,8 +1929,8 @@ class ProjectsClient:
         from ..models import (
             BasicError,
             ProjectColumn,
-            ValidationErrorSimple,
             ProjectsProjectIdColumnsPostBody,
+            ValidationErrorSimple,
         )
 
         url = f"/projects/{project_id}/columns"
@@ -1991,8 +1991,8 @@ class ProjectsClient:
         from ..models import (
             BasicError,
             ProjectColumn,
-            ValidationErrorSimple,
             ProjectsProjectIdColumnsPostBody,
+            ValidationErrorSimple,
         )
 
         url = f"/projects/{project_id}/columns"
@@ -2033,7 +2033,7 @@ class ProjectsClient:
     ) -> Response[list[Project], list[ProjectType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/projects#list-repository-projects"""
 
-        from ..models import Project, BasicError, ValidationErrorSimple
+        from ..models import BasicError, Project, ValidationErrorSimple
 
         url = f"/repos/{owner}/{repo}/projects"
 
@@ -2072,7 +2072,7 @@ class ProjectsClient:
     ) -> Response[list[Project], list[ProjectType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/projects#list-repository-projects"""
 
-        from ..models import Project, BasicError, ValidationErrorSimple
+        from ..models import BasicError, Project, ValidationErrorSimple
 
         url = f"/repos/{owner}/{repo}/projects"
 
@@ -2133,10 +2133,10 @@ class ProjectsClient:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/projects#create-a-repository-project"""
 
         from ..models import (
-            Project,
             BasicError,
-            ValidationErrorSimple,
+            Project,
             ReposOwnerRepoProjectsPostBody,
+            ValidationErrorSimple,
         )
 
         url = f"/repos/{owner}/{repo}/projects"
@@ -2201,10 +2201,10 @@ class ProjectsClient:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/projects#create-a-repository-project"""
 
         from ..models import (
-            Project,
             BasicError,
-            ValidationErrorSimple,
+            Project,
             ReposOwnerRepoProjectsPostBody,
+            ValidationErrorSimple,
         )
 
         url = f"/repos/{owner}/{repo}/projects"
@@ -2263,8 +2263,8 @@ class ProjectsClient:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/projects#create-a-user-project"""
 
         from ..models import (
-            Project,
             BasicError,
+            Project,
             UserProjectsPostBody,
             ValidationErrorSimple,
         )
@@ -2323,8 +2323,8 @@ class ProjectsClient:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/projects#create-a-user-project"""
 
         from ..models import (
-            Project,
             BasicError,
+            Project,
             UserProjectsPostBody,
             ValidationErrorSimple,
         )

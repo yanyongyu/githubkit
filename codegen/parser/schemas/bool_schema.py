@@ -1,6 +1,6 @@
+from ...source import Source
 from ..utils import build_boolean, schema_from_source
 from .schema import BoolSchema
-from ...source import Source
 
 
 def build_bool_schema(source: Source) -> BoolSchema:

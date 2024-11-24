@@ -1,6 +1,6 @@
 import pytest
 
-from githubkit import GitHub, ActionAuthStrategy
+from githubkit import ActionAuthStrategy, GitHub
 
 
 @pytest.fixture

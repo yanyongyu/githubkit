@@ -9,29 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
 
 
-class WebhooksPreviousMarketplacePurchase(GitHubModel):
+class WebhooksMarketplacePurchase(GitHubModel):
     """Marketplace Purchase"""
 
-    account: WebhooksPreviousMarketplacePurchasePropAccount = Field()
+    account: WebhooksMarketplacePurchasePropAccount = Field()
     billing_cycle: str = Field()
-    free_trial_ends_on: None = Field()
-    next_billing_date: Missing[Union[str, None]] = Field(default=UNSET)
+    free_trial_ends_on: Union[str, None] = Field()
+    next_billing_date: Union[str, None] = Field()
     on_free_trial: bool = Field()
-    plan: WebhooksPreviousMarketplacePurchasePropPlan = Field()
+    plan: WebhooksMarketplacePurchasePropPlan = Field()
     unit_count: int = Field()
 
 
-class WebhooksPreviousMarketplacePurchasePropAccount(GitHubModel):
-    """WebhooksPreviousMarketplacePurchasePropAccount"""
+class WebhooksMarketplacePurchasePropAccount(GitHubModel):
+    """WebhooksMarketplacePurchasePropAccount"""
 
     id: int = Field()
     login: str = Field()
@@ -40,10 +38,10 @@ class WebhooksPreviousMarketplacePurchasePropAccount(GitHubModel):
     type: str = Field()
 
 
-class WebhooksPreviousMarketplacePurchasePropPlan(GitHubModel):
-    """WebhooksPreviousMarketplacePurchasePropPlan"""
+class WebhooksMarketplacePurchasePropPlan(GitHubModel):
+    """WebhooksMarketplacePurchasePropPlan"""
 
-    bullets: list[str] = Field()
+    bullets: list[Union[str, None]] = Field()
     description: str = Field()
     has_free_trial: bool = Field()
     id: int = Field()
@@ -54,12 +52,12 @@ class WebhooksPreviousMarketplacePurchasePropPlan(GitHubModel):
     yearly_price_in_cents: int = Field()
 
 
-model_rebuild(WebhooksPreviousMarketplacePurchase)
-model_rebuild(WebhooksPreviousMarketplacePurchasePropAccount)
-model_rebuild(WebhooksPreviousMarketplacePurchasePropPlan)
+model_rebuild(WebhooksMarketplacePurchase)
+model_rebuild(WebhooksMarketplacePurchasePropAccount)
+model_rebuild(WebhooksMarketplacePurchasePropPlan)
 
 __all__ = (
-    "WebhooksPreviousMarketplacePurchase",
-    "WebhooksPreviousMarketplacePurchasePropAccount",
-    "WebhooksPreviousMarketplacePurchasePropPlan",
+    "WebhooksMarketplacePurchase",
+    "WebhooksMarketplacePurchasePropAccount",
+    "WebhooksMarketplacePurchasePropPlan",
 )

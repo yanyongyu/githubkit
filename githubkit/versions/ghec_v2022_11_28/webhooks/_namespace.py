@@ -8,9 +8,9 @@ See https://github.com/github/rest-api-description for more information.
 """
 
 import hmac
-import json
-from typing import TYPE_CHECKING, Any, Union, Literal, overload
 import importlib
+import json
+from typing import TYPE_CHECKING, Any, Literal, Union, overload
 from typing_extensions import TypeAlias
 
 from githubkit.compat import (
@@ -22,82 +22,82 @@ from githubkit.compat import (
 from githubkit.exception import WebhookTypeNotFound
 
 if TYPE_CHECKING:
-    from .fork import ForkEvent
-    from .meta import MetaEvent
-    from .ping import PingEvent
-    from .push import PushEvent
-    from .star import StarEvent
-    from .team import TeamEvent
-    from .label import LabelEvent
-    from .watch import WatchEvent
     from ._types import WebhookEvent
-    from .create import CreateEvent
-    from .delete import DeleteEvent
-    from .gollum import GollumEvent
-    from .issues import IssuesEvent
-    from .member import MemberEvent
-    from .public import PublicEvent
-    from .status import StatusEvent
-    from .package import PackageEvent
-    from .project import ProjectEvent
-    from .release import ReleaseEvent
-    from .team_add import TeamAddEvent
+    from .branch_protection_configuration import BranchProtectionConfigurationEvent
+    from .branch_protection_rule import BranchProtectionRuleEvent
     from .check_run import CheckRunEvent
-    from .milestone import MilestoneEvent
-    from .org_block import OrgBlockEvent
+    from .check_suite import CheckSuiteEvent
+    from .code_scanning_alert import CodeScanningAlertEvent
+    from .commit_comment import CommitCommentEvent
+    from .create import CreateEvent
+    from .custom_property import CustomPropertyEvent
+    from .custom_property_values import CustomPropertyValuesEvent
+    from .delete import DeleteEvent
+    from .dependabot_alert import DependabotAlertEvent
     from .deploy_key import DeployKeyEvent
     from .deployment import DeploymentEvent
-    from .discussion import DiscussionEvent
-    from .membership import MembershipEvent
-    from .page_build import PageBuildEvent
-    from .repository import RepositoryEvent
-    from .sub_issues import SubIssuesEvent
-    from .check_suite import CheckSuiteEvent
-    from .merge_group import MergeGroupEvent
-    from .projects_v2 import ProjectsV2Event
-    from .sponsorship import SponsorshipEvent
-    from .installation import InstallationEvent
-    from .organization import OrganizationEvent
-    from .project_card import ProjectCardEvent
-    from .pull_request import PullRequestEvent
-    from .workflow_job import WorkflowJobEvent
-    from .workflow_run import WorkflowRunEvent
-    from .issue_comment import IssueCommentEvent
-    from .commit_comment import CommitCommentEvent
-    from .project_column import ProjectColumnEvent
-    from .custom_property import CustomPropertyEvent
-    from .dependabot_alert import DependabotAlertEvent
-    from .projects_v2_item import ProjectsV2ItemEvent
-    from .registry_package import RegistryPackageEvent
+    from .deployment_protection_rule import DeploymentProtectionRuleEvent
     from .deployment_review import DeploymentReviewEvent
     from .deployment_status import DeploymentStatusEvent
-    from .repository_import import RepositoryImportEvent
-    from .security_advisory import SecurityAdvisoryEvent
-    from .workflow_dispatch import WorkflowDispatchEvent
+    from .discussion import DiscussionEvent
     from .discussion_comment import DiscussionCommentEvent
-    from .repository_ruleset import RepositoryRulesetEvent
-    from .code_scanning_alert import CodeScanningAlertEvent
+    from .exemption_request_push_ruleset import ExemptionRequestPushRulesetEvent
+    from .exemption_request_secret_scanning import ExemptionRequestSecretScanningEvent
+    from .fork import ForkEvent
+    from .github_app_authorization import GithubAppAuthorizationEvent
+    from .gollum import GollumEvent
+    from .installation import InstallationEvent
+    from .installation_repositories import InstallationRepositoriesEvent
     from .installation_target import InstallationTargetEvent
+    from .issue_comment import IssueCommentEvent
+    from .issues import IssuesEvent
+    from .label import LabelEvent
+    from .marketplace_purchase import MarketplacePurchaseEvent
+    from .member import MemberEvent
+    from .membership import MembershipEvent
+    from .merge_group import MergeGroupEvent
+    from .meta import MetaEvent
+    from .milestone import MilestoneEvent
+    from .org_block import OrgBlockEvent
+    from .organization import OrganizationEvent
+    from .package import PackageEvent
+    from .page_build import PageBuildEvent
+    from .personal_access_token_request import PersonalAccessTokenRequestEvent
+    from .ping import PingEvent
+    from .project import ProjectEvent
+    from .project_card import ProjectCardEvent
+    from .project_column import ProjectColumnEvent
+    from .projects_v2 import ProjectsV2Event
+    from .projects_v2_item import ProjectsV2ItemEvent
+    from .projects_v2_status_update import ProjectsV2StatusUpdateEvent
+    from .public import PublicEvent
+    from .pull_request import PullRequestEvent
     from .pull_request_review import PullRequestReviewEvent
+    from .pull_request_review_comment import PullRequestReviewCommentEvent
+    from .pull_request_review_thread import PullRequestReviewThreadEvent
+    from .push import PushEvent
+    from .registry_package import RegistryPackageEvent
+    from .release import ReleaseEvent
+    from .repository import RepositoryEvent
     from .repository_advisory import RepositoryAdvisoryEvent
     from .repository_dispatch import RepositoryDispatchEvent
-    from .marketplace_purchase import MarketplacePurchaseEvent
-    from .secret_scanning_alert import SecretScanningAlertEvent
-    from .security_and_analysis import SecurityAndAnalysisEvent
-    from .branch_protection_rule import BranchProtectionRuleEvent
-    from .custom_property_values import CustomPropertyValuesEvent
-    from .github_app_authorization import GithubAppAuthorizationEvent
-    from .installation_repositories import InstallationRepositoriesEvent
-    from .projects_v2_status_update import ProjectsV2StatusUpdateEvent
-    from .deployment_protection_rule import DeploymentProtectionRuleEvent
-    from .pull_request_review_thread import PullRequestReviewThreadEvent
-    from .pull_request_review_comment import PullRequestReviewCommentEvent
-    from .personal_access_token_request import PersonalAccessTokenRequestEvent
-    from .exemption_request_push_ruleset import ExemptionRequestPushRulesetEvent
+    from .repository_import import RepositoryImportEvent
+    from .repository_ruleset import RepositoryRulesetEvent
     from .repository_vulnerability_alert import RepositoryVulnerabilityAlertEvent
+    from .secret_scanning_alert import SecretScanningAlertEvent
     from .secret_scanning_alert_location import SecretScanningAlertLocationEvent
-    from .branch_protection_configuration import BranchProtectionConfigurationEvent
-    from .exemption_request_secret_scanning import ExemptionRequestSecretScanningEvent
+    from .security_advisory import SecurityAdvisoryEvent
+    from .security_and_analysis import SecurityAndAnalysisEvent
+    from .sponsorship import SponsorshipEvent
+    from .star import StarEvent
+    from .status import StatusEvent
+    from .sub_issues import SubIssuesEvent
+    from .team import TeamEvent
+    from .team_add import TeamAddEvent
+    from .watch import WatchEvent
+    from .workflow_dispatch import WorkflowDispatchEvent
+    from .workflow_job import WorkflowJobEvent
+    from .workflow_run import WorkflowRunEvent
 
 
 EventNameType: TypeAlias = Literal[

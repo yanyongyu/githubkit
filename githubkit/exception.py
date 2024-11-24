@@ -1,5 +1,5 @@
-from typing import TYPE_CHECKING, Generic, TypeVar
 from datetime import timedelta
+from typing import TYPE_CHECKING, Generic, TypeVar
 
 import httpx
 

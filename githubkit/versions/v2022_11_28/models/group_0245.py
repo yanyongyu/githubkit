@@ -9,49 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ContentFile(GitHubModel):
-    """Content File
+class ContentDirectoryItems(GitHubModel):
+    """ContentDirectoryItems"""
 
-    Content File
-    """
-
-    type: Literal["file"] = Field()
-    encoding: str = Field()
+    type: Literal["dir", "file", "submodule", "symlink"] = Field()
     size: int = Field()
     name: str = Field()
     path: str = Field()
-    content: str = Field()
+    content: Missing[str] = Field(default=UNSET)
     sha: str = Field()
     url: str = Field()
     git_url: Union[str, None] = Field()
     html_url: Union[str, None] = Field()
     download_url: Union[str, None] = Field()
-    links: ContentFilePropLinks = Field(alias="_links")
-    target: Missing[str] = Field(default=UNSET)
-    submodule_git_url: Missing[str] = Field(default=UNSET)
+    links: ContentDirectoryItemsPropLinks = Field(alias="_links")
 
 
-class ContentFilePropLinks(GitHubModel):
-    """ContentFilePropLinks"""
+class ContentDirectoryItemsPropLinks(GitHubModel):
+    """ContentDirectoryItemsPropLinks"""
 
     git: Union[str, None] = Field()
     html: Union[str, None] = Field()
     self_: str = Field(alias="self")
 
 
-model_rebuild(ContentFile)
-model_rebuild(ContentFilePropLinks)
+model_rebuild(ContentDirectoryItems)
+model_rebuild(ContentDirectoryItemsPropLinks)
 
 __all__ = (
-    "ContentFile",
-    "ContentFilePropLinks",
+    "ContentDirectoryItems",
+    "ContentDirectoryItemsPropLinks",
 )

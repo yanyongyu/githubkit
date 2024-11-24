@@ -13,22 +13,25 @@ from typing import Literal
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBody(GitHubModel):
-    """OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBody"""
+class OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody(GitHubModel):
+    """OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody"""
 
-    default_for_new_repos: Missing[
-        Literal["all", "none", "private_and_internal", "public"]
+    scope: Literal[
+        "all", "all_without_configurations", "public", "private_or_internal", "selected"
     ] = Field(
+        description="The type of repositories to attach the configuration to. `selected` means the configuration will be attached to only the repositories specified by `selected_repository_ids`"
+    )
+    selected_repository_ids: Missing[list[int]] = Field(
         default=UNSET,
-        description="Specify which types of repository this security configuration should be applied to by default.",
+        description="An array of repository IDs to attach the configuration to. You can only provide a list of repository ids when the `scope` is set to `selected`.",
     )
 
 
-model_rebuild(OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBody)
+model_rebuild(OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody)
 
-__all__ = ("OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBody",)
+__all__ = ("OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody",)

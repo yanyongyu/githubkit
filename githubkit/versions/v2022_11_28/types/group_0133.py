@@ -9,28 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict, NotRequired
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0134 import RepositoryRuleRequiredStatusChecksPropParametersType
 
 
-class RepositoryRuleRequiredStatusChecksPropParametersType(TypedDict):
-    """RepositoryRuleRequiredStatusChecksPropParameters"""
+class RepositoryRuleRequiredStatusChecksType(TypedDict):
+    """required_status_checks
 
-    do_not_enforce_on_create: NotRequired[bool]
-    required_status_checks: list[RepositoryRuleParamsStatusCheckConfigurationType]
-    strict_required_status_checks_policy: bool
-
-
-class RepositoryRuleParamsStatusCheckConfigurationType(TypedDict):
-    """StatusCheckConfiguration
-
-    Required status check
+    Choose which status checks must pass before the ref is updated. When enabled,
+    commits must first be pushed to another ref where the checks pass.
     """
 
-    context: str
-    integration_id: NotRequired[int]
+    type: Literal["required_status_checks"]
+    parameters: NotRequired[RepositoryRuleRequiredStatusChecksPropParametersType]
 
 
-__all__ = (
-    "RepositoryRuleParamsStatusCheckConfigurationType",
-    "RepositoryRuleRequiredStatusChecksPropParametersType",
-)
+__all__ = ("RepositoryRuleRequiredStatusChecksType",)

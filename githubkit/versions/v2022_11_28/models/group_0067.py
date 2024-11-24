@@ -13,24 +13,20 @@ from typing import Literal
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
 
 
-class ActionsSetDefaultWorkflowPermissions(GitHubModel):
-    """ActionsSetDefaultWorkflowPermissions"""
+class ActionsGetDefaultWorkflowPermissions(GitHubModel):
+    """ActionsGetDefaultWorkflowPermissions"""
 
-    default_workflow_permissions: Missing[Literal["read", "write"]] = Field(
-        default=UNSET,
-        description="The default workflow permissions granted to the GITHUB_TOKEN when running workflows.",
+    default_workflow_permissions: Literal["read", "write"] = Field(
+        description="The default workflow permissions granted to the GITHUB_TOKEN when running workflows."
     )
-    can_approve_pull_request_reviews: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether GitHub Actions can approve pull requests. Enabling this can be a security risk.",
+    can_approve_pull_request_reviews: bool = Field(
+        description="Whether GitHub Actions can approve pull requests. Enabling this can be a security risk."
     )
 
 
-model_rebuild(ActionsSetDefaultWorkflowPermissions)
+model_rebuild(ActionsGetDefaultWorkflowPermissions)
 
-__all__ = ("ActionsSetDefaultWorkflowPermissions",)
+__all__ = ("ActionsGetDefaultWorkflowPermissions",)

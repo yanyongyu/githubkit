@@ -9,19 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
-from typing_extensions import TypedDict, NotRequired
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 from .group_0140 import RepositoryRulesetBypassActorType
 from .group_0149 import OrgRulesetConditionsOneof0Type
 from .group_0150 import OrgRulesetConditionsOneof1Type
 from .group_0151 import OrgRulesetConditionsOneof2Type
 from .group_0152 import (
-    RepositoryRuleOneof15Type,
-    RepositoryRuleOneof17Type,
     RepositoryRuleCreationType,
     RepositoryRuleDeletionType,
     RepositoryRuleNonFastForwardType,
+    RepositoryRuleOneof15Type,
+    RepositoryRuleOneof17Type,
     RepositoryRuleRequiredSignaturesType,
 )
 from .group_0153 import RepositoryRuleUpdateType

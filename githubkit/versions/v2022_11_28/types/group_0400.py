@@ -9,17 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import TypedDict
 
 
-class WebhooksRepositoriesItemsType(TypedDict):
-    """WebhooksRepositoriesItems"""
+class WebhooksLabelType(TypedDict):
+    """Label"""
 
-    full_name: str
+    color: str
+    default: bool
+    description: Union[str, None]
     id: int
     name: str
     node_id: str
-    private: bool
+    url: str
 
 
-__all__ = ("WebhooksRepositoriesItemsType",)
+__all__ = ("WebhooksLabelType",)

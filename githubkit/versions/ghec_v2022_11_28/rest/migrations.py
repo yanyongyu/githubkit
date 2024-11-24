@@ -14,37 +14,37 @@ from weakref import ref
 
 from pydantic import BaseModel
 
-from githubkit.utils import UNSET, exclude_unset
 from githubkit.compat import model_dump, type_validate_python
 from githubkit.typing import Missing, UnsetType
+from githubkit.utils import UNSET, exclude_unset
 
 if TYPE_CHECKING:
-    from typing import Union, Literal
+    from typing import Literal, Union
 
     from githubkit import GitHubCore
-    from githubkit.utils import UNSET
-    from githubkit.typing import Missing
     from githubkit.response import Response
+    from githubkit.typing import Missing
+    from githubkit.utils import UNSET
 
-    from ..types import (
-        ImportType,
-        MigrationType,
-        PorterAuthorType,
-        PorterLargeFileType,
-        MinimalRepositoryType,
-        UserMigrationsPostBodyType,
-        OrgsOrgMigrationsPostBodyType,
-        ReposOwnerRepoImportPutBodyType,
-        ReposOwnerRepoImportPatchBodyType,
-        ReposOwnerRepoImportLfsPatchBodyType,
-        ReposOwnerRepoImportAuthorsAuthorIdPatchBodyType,
-    )
     from ..models import (
         Import,
         Migration,
+        MinimalRepository,
         PorterAuthor,
         PorterLargeFile,
-        MinimalRepository,
+    )
+    from ..types import (
+        ImportType,
+        MigrationType,
+        MinimalRepositoryType,
+        OrgsOrgMigrationsPostBodyType,
+        PorterAuthorType,
+        PorterLargeFileType,
+        ReposOwnerRepoImportAuthorsAuthorIdPatchBodyType,
+        ReposOwnerRepoImportLfsPatchBodyType,
+        ReposOwnerRepoImportPatchBodyType,
+        ReposOwnerRepoImportPutBodyType,
+        UserMigrationsPostBodyType,
     )
 
 
@@ -163,10 +163,10 @@ class MigrationsClient:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/orgs#start-an-organization-migration"""
 
         from ..models import (
-            Migration,
             BasicError,
-            ValidationError,
+            Migration,
             OrgsOrgMigrationsPostBody,
+            ValidationError,
         )
 
         url = f"/orgs/{org}/migrations"
@@ -232,10 +232,10 @@ class MigrationsClient:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/orgs#start-an-organization-migration"""
 
         from ..models import (
-            Migration,
             BasicError,
-            ValidationError,
+            Migration,
             OrgsOrgMigrationsPostBody,
+            ValidationError,
         )
 
         url = f"/orgs/{org}/migrations"
@@ -273,7 +273,7 @@ class MigrationsClient:
     ) -> Response[Migration, MigrationType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/orgs#get-an-organization-migration-status"""
 
-        from ..models import Migration, BasicError
+        from ..models import BasicError, Migration
 
         url = f"/orgs/{org}/migrations/{migration_id}"
 
@@ -304,7 +304,7 @@ class MigrationsClient:
     ) -> Response[Migration, MigrationType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/orgs#get-an-organization-migration-status"""
 
-        from ..models import Migration, BasicError
+        from ..models import BasicError, Migration
 
         url = f"/orgs/{org}/migrations/{migration_id}"
 
@@ -546,7 +546,7 @@ class MigrationsClient:
     ) -> Response[Import, ImportType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/source-imports#get-an-import-status"""
 
-        from ..models import Import, BasicError
+        from ..models import BasicError, Import
 
         url = f"/repos/{owner}/{repo}/import"
 
@@ -572,7 +572,7 @@ class MigrationsClient:
     ) -> Response[Import, ImportType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/source-imports#get-an-import-status"""
 
-        from ..models import Import, BasicError
+        from ..models import BasicError, Import
 
         url = f"/repos/{owner}/{repo}/import"
 
@@ -626,10 +626,10 @@ class MigrationsClient:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/source-imports#start-an-import"""
 
         from ..models import (
-            Import,
             BasicError,
-            ValidationError,
+            Import,
             ReposOwnerRepoImportPutBody,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/import"
@@ -695,10 +695,10 @@ class MigrationsClient:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/source-imports#start-an-import"""
 
         from ..models import (
-            Import,
             BasicError,
-            ValidationError,
+            Import,
             ReposOwnerRepoImportPutBody,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/import"
@@ -812,7 +812,7 @@ class MigrationsClient:
 
         from typing import Union
 
-        from ..models import Import, BasicError, ReposOwnerRepoImportPatchBody
+        from ..models import BasicError, Import, ReposOwnerRepoImportPatchBody
 
         url = f"/repos/{owner}/{repo}/import"
 
@@ -877,7 +877,7 @@ class MigrationsClient:
 
         from typing import Union
 
-        from ..models import Import, BasicError, ReposOwnerRepoImportPatchBody
+        from ..models import BasicError, Import, ReposOwnerRepoImportPatchBody
 
         url = f"/repos/{owner}/{repo}/import"
 
@@ -1008,8 +1008,8 @@ class MigrationsClient:
         from ..models import (
             BasicError,
             PorterAuthor,
-            ValidationError,
             ReposOwnerRepoImportAuthorsAuthorIdPatchBody,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/import/authors/{author_id}"
@@ -1079,8 +1079,8 @@ class MigrationsClient:
         from ..models import (
             BasicError,
             PorterAuthor,
-            ValidationError,
             ReposOwnerRepoImportAuthorsAuthorIdPatchBody,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/import/authors/{author_id}"
@@ -1194,10 +1194,10 @@ class MigrationsClient:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/source-imports#update-git-lfs-preference"""
 
         from ..models import (
-            Import,
             BasicError,
-            ValidationError,
+            Import,
             ReposOwnerRepoImportLfsPatchBody,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/import/lfs"
@@ -1258,10 +1258,10 @@ class MigrationsClient:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/source-imports#update-git-lfs-preference"""
 
         from ..models import (
-            Import,
             BasicError,
-            ValidationError,
+            Import,
             ReposOwnerRepoImportLfsPatchBody,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/import/lfs"
@@ -1298,7 +1298,7 @@ class MigrationsClient:
     ) -> Response[list[Migration], list[MigrationType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/users#list-user-migrations"""
 
-        from ..models import Migration, BasicError
+        from ..models import BasicError, Migration
 
         url = "/user/migrations"
 
@@ -1330,7 +1330,7 @@ class MigrationsClient:
     ) -> Response[list[Migration], list[MigrationType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/users#list-user-migrations"""
 
-        from ..models import Migration, BasicError
+        from ..models import BasicError, Migration
 
         url = "/user/migrations"
 
@@ -1388,10 +1388,10 @@ class MigrationsClient:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/users#start-a-user-migration"""
 
         from ..models import (
-            Migration,
             BasicError,
-            ValidationError,
+            Migration,
             UserMigrationsPostBody,
+            ValidationError,
         )
 
         url = "/user/migrations"
@@ -1455,10 +1455,10 @@ class MigrationsClient:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/users#start-a-user-migration"""
 
         from ..models import (
-            Migration,
             BasicError,
-            ValidationError,
+            Migration,
             UserMigrationsPostBody,
+            ValidationError,
         )
 
         url = "/user/migrations"
@@ -1496,7 +1496,7 @@ class MigrationsClient:
     ) -> Response[Migration, MigrationType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/users#get-a-user-migration-status"""
 
-        from ..models import Migration, BasicError
+        from ..models import BasicError, Migration
 
         url = f"/user/migrations/{migration_id}"
 
@@ -1528,7 +1528,7 @@ class MigrationsClient:
     ) -> Response[Migration, MigrationType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/users#get-a-user-migration-status"""
 
-        from ..models import Migration, BasicError
+        from ..models import BasicError, Migration
 
         url = f"/user/migrations/{migration_id}"
 

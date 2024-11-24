@@ -7,17 +7,17 @@ bash ./scripts/run-codegen.sh
 See https://github.com/github/rest-api-description for more information.
 """
 
+import importlib
 from typing import TYPE_CHECKING, Any, Literal, overload
 from weakref import WeakKeyDictionary, ref
-import importlib
 
-from . import VERSIONS, VERSION_TYPE, LATEST_VERSION
+from . import LATEST_VERSION, VERSION_TYPE, VERSIONS
 
 if TYPE_CHECKING:
     from githubkit import GitHubCore
 
-    from .v2022_11_28.rest import RestNamespace as V20221128RestNamespace
     from .ghec_v2022_11_28.rest import RestNamespace as GhecV20221128RestNamespace
+    from .v2022_11_28.rest import RestNamespace as V20221128RestNamespace
 
 if TYPE_CHECKING:
 

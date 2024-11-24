@@ -13,20 +13,20 @@ from typing import Literal
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 from .group_0002 import SimpleUser
-from .group_0385 import SimpleInstallation
-from .group_0386 import OrganizationSimpleWebhooks
-from .group_0420 import ProjectsV2Item
+from .group_0386 import SimpleInstallation
+from .group_0387 import OrganizationSimpleWebhooks
+from .group_0421 import ProjectsV2Item
 
 
-class WebhookProjectsV2ItemDeleted(GitHubModel):
-    """Projects v2 Item Deleted Event"""
+class WebhookProjectsV2ItemCreated(GitHubModel):
+    """Projects v2 Item Created Event"""
 
-    action: Literal["deleted"] = Field()
+    action: Literal["created"] = Field()
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
         title="Simple Installation",
@@ -42,6 +42,6 @@ class WebhookProjectsV2ItemDeleted(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookProjectsV2ItemDeleted)
+model_rebuild(WebhookProjectsV2ItemCreated)
 
-__all__ = ("WebhookProjectsV2ItemDeleted",)
+__all__ = ("WebhookProjectsV2ItemCreated",)

@@ -1,7 +1,7 @@
 from typing import TYPE_CHECKING
 
 from ..utils import schema_from_source
-from .schema import DateSchema, FileSchema, StringSchema, DateTimeSchema
+from .schema import DateSchema, DateTimeSchema, FileSchema, StringSchema
 
 if TYPE_CHECKING:
     from ...source import Source

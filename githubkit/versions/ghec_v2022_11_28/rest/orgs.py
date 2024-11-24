@@ -14,120 +14,120 @@ from weakref import ref
 
 from pydantic import BaseModel
 
-from githubkit.utils import UNSET, exclude_unset
 from githubkit.compat import model_dump, type_validate_python
 from githubkit.typing import Missing, UnsetType
+from githubkit.utils import UNSET, exclude_unset
 
 if TYPE_CHECKING:
-    from typing import Union, Literal
     from datetime import datetime
+    from typing import Literal, Union
 
     from githubkit import GitHubCore
-    from githubkit.utils import UNSET
-    from githubkit.typing import Missing
     from githubkit.response import Response
+    from githubkit.typing import Missing
+    from githubkit.utils import UNSET
 
-    from ..types import (
-        TeamType,
-        OrgHookType,
-        SimpleUserType,
-        TeamSimpleType,
-        AnnouncementType,
-        HookDeliveryType,
-        AuditLogEventType,
-        OrgMembershipType,
-        WebhookConfigType,
-        CustomPropertyType,
-        HookDeliveryItemType,
-        OrganizationFullType,
-        OrganizationRoleType,
-        OrgsOrgPatchBodyType,
-        MinimalRepositoryType,
-        AnnouncementBannerType,
-        OrganizationSimpleType,
-        TeamRoleAssignmentType,
-        UserRoleAssignmentType,
-        CustomPropertyValueType,
-        OrgsOrgHooksPostBodyType,
-        OrganizationInvitationType,
-        ApiInsightsSummaryStatsType,
-        CredentialAuthorizationType,
-        ApiInsightsTimeStatsItemsType,
-        ApiInsightsUserStatsItemsType,
-        ApiInsightsRouteStatsItemsType,
-        OrgsOrgInvitationsPostBodyType,
-        OrgRepoCustomPropertyValuesType,
-        OrgsOrgHooksHookIdPatchBodyType,
-        ApiInsightsSubjectStatsItemsType,
-        OrgsOrgHooksPostBodyPropConfigType,
-        RepositoryFineGrainedPermissionType,
-        UserMembershipsOrgsOrgPatchBodyType,
-        OrganizationCustomRepositoryRoleType,
-        OrgsOrgPropertiesSchemaPatchBodyType,
-        OrgsOrgPropertiesValuesPatchBodyType,
-        OrganizationFineGrainedPermissionType,
-        OrgsOrgHooksHookIdConfigPatchBodyType,
-        OrgsOrgMembershipsUsernamePutBodyType,
-        OrgsOrgInstallationsGetResponse200Type,
-        OrganizationProgrammaticAccessGrantType,
-        OrgsOrgPersonalAccessTokensPostBodyType,
-        OrgsOrgHooksHookIdPatchBodyPropConfigType,
-        OrgsOrgOrganizationRolesGetResponse200Type,
-        OrgsOrgPersonalAccessTokensPatIdPostBodyType,
-        OrgsOrgSecurityProductEnablementPostBodyType,
-        OrganizationProgrammaticAccessGrantRequestType,
-        OrgsOrgCustomRepositoryRolesGetResponse200Type,
-        OrgsOrgOutsideCollaboratorsUsernamePutBodyType,
-        OrgsOrgPersonalAccessTokenRequestsPostBodyType,
-        OrganizationCustomRepositoryRoleCreateSchemaType,
-        OrganizationCustomRepositoryRoleUpdateSchemaType,
-        OrganizationCustomOrganizationRoleCreateSchemaType,
-        OrganizationCustomOrganizationRoleUpdateSchemaType,
-        OrgsOrgAttestationsSubjectDigestGetResponse200Type,
-        OrgsOrgPropertiesSchemaCustomPropertyNamePutBodyType,
-        OrgsOrgOutsideCollaboratorsUsernamePutResponse202Type,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
-        OrganizationsOrganizationIdCustomRolesGetResponse200Type,
-        OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBodyType,
-    )
     from ..models import (
-        Team,
-        OrgHook,
-        SimpleUser,
-        TeamSimple,
-        HookDelivery,
-        AuditLogEvent,
-        OrgMembership,
-        WebhookConfig,
-        CustomProperty,
-        HookDeliveryItem,
-        OrganizationFull,
-        OrganizationRole,
-        MinimalRepository,
         AnnouncementBanner,
-        OrganizationSimple,
-        TeamRoleAssignment,
-        UserRoleAssignment,
-        OrganizationInvitation,
+        ApiInsightsRouteStatsItems,
+        ApiInsightsSubjectStatsItems,
         ApiInsightsSummaryStats,
-        CredentialAuthorization,
         ApiInsightsTimeStatsItems,
         ApiInsightsUserStatsItems,
-        ApiInsightsRouteStatsItems,
-        OrgRepoCustomPropertyValues,
-        ApiInsightsSubjectStatsItems,
-        RepositoryFineGrainedPermission,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
+        AuditLogEvent,
+        CredentialAuthorization,
+        CustomProperty,
+        HookDelivery,
+        HookDeliveryItem,
+        MinimalRepository,
         OrganizationCustomRepositoryRole,
         OrganizationFineGrainedPermission,
-        OrgsOrgInstallationsGetResponse200,
+        OrganizationFull,
+        OrganizationInvitation,
         OrganizationProgrammaticAccessGrant,
-        OrgsOrgOrganizationRolesGetResponse200,
         OrganizationProgrammaticAccessGrantRequest,
-        OrgsOrgCustomRepositoryRolesGetResponse200,
-        OrgsOrgAttestationsSubjectDigestGetResponse200,
-        OrgsOrgOutsideCollaboratorsUsernamePutResponse202,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
+        OrganizationRole,
+        OrganizationSimple,
         OrganizationsOrganizationIdCustomRolesGetResponse200,
+        OrgHook,
+        OrgMembership,
+        OrgRepoCustomPropertyValues,
+        OrgsOrgAttestationsSubjectDigestGetResponse200,
+        OrgsOrgCustomRepositoryRolesGetResponse200,
+        OrgsOrgInstallationsGetResponse200,
+        OrgsOrgOrganizationRolesGetResponse200,
+        OrgsOrgOutsideCollaboratorsUsernamePutResponse202,
+        RepositoryFineGrainedPermission,
+        SimpleUser,
+        Team,
+        TeamRoleAssignment,
+        TeamSimple,
+        UserRoleAssignment,
+        WebhookConfig,
+    )
+    from ..types import (
+        AnnouncementBannerType,
+        AnnouncementType,
+        ApiInsightsRouteStatsItemsType,
+        ApiInsightsSubjectStatsItemsType,
+        ApiInsightsSummaryStatsType,
+        ApiInsightsTimeStatsItemsType,
+        ApiInsightsUserStatsItemsType,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+        AuditLogEventType,
+        CredentialAuthorizationType,
+        CustomPropertyType,
+        CustomPropertyValueType,
+        HookDeliveryItemType,
+        HookDeliveryType,
+        MinimalRepositoryType,
+        OrganizationCustomOrganizationRoleCreateSchemaType,
+        OrganizationCustomOrganizationRoleUpdateSchemaType,
+        OrganizationCustomRepositoryRoleCreateSchemaType,
+        OrganizationCustomRepositoryRoleType,
+        OrganizationCustomRepositoryRoleUpdateSchemaType,
+        OrganizationFineGrainedPermissionType,
+        OrganizationFullType,
+        OrganizationInvitationType,
+        OrganizationProgrammaticAccessGrantRequestType,
+        OrganizationProgrammaticAccessGrantType,
+        OrganizationRoleType,
+        OrganizationSimpleType,
+        OrganizationsOrganizationIdCustomRolesGetResponse200Type,
+        OrgHookType,
+        OrgMembershipType,
+        OrgRepoCustomPropertyValuesType,
+        OrgsOrgAttestationsSubjectDigestGetResponse200Type,
+        OrgsOrgCustomRepositoryRolesGetResponse200Type,
+        OrgsOrgHooksHookIdConfigPatchBodyType,
+        OrgsOrgHooksHookIdPatchBodyPropConfigType,
+        OrgsOrgHooksHookIdPatchBodyType,
+        OrgsOrgHooksPostBodyPropConfigType,
+        OrgsOrgHooksPostBodyType,
+        OrgsOrgInstallationsGetResponse200Type,
+        OrgsOrgInvitationsPostBodyType,
+        OrgsOrgMembershipsUsernamePutBodyType,
+        OrgsOrgOrganizationRolesGetResponse200Type,
+        OrgsOrgOutsideCollaboratorsUsernamePutBodyType,
+        OrgsOrgOutsideCollaboratorsUsernamePutResponse202Type,
+        OrgsOrgPatchBodyType,
+        OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBodyType,
+        OrgsOrgPersonalAccessTokenRequestsPostBodyType,
+        OrgsOrgPersonalAccessTokensPatIdPostBodyType,
+        OrgsOrgPersonalAccessTokensPostBodyType,
+        OrgsOrgPropertiesSchemaCustomPropertyNamePutBodyType,
+        OrgsOrgPropertiesSchemaPatchBodyType,
+        OrgsOrgPropertiesValuesPatchBodyType,
+        OrgsOrgSecurityProductEnablementPostBodyType,
+        RepositoryFineGrainedPermissionType,
+        SimpleUserType,
+        TeamRoleAssignmentType,
+        TeamSimpleType,
+        TeamType,
+        UserMembershipsOrgsOrgPatchBodyType,
+        UserRoleAssignmentType,
+        WebhookConfigType,
     )
 
 
@@ -310,8 +310,8 @@ class OrgsClient:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#delete-an-organization"""
 
         from ..models import (
-            BasicError,
             AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
+            BasicError,
         )
 
         url = f"/orgs/{org}"
@@ -341,8 +341,8 @@ class OrgsClient:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#delete-an-organization"""
 
         from ..models import (
-            BasicError,
             AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
+            BasicError,
         )
 
         url = f"/orgs/{org}"
@@ -429,9 +429,9 @@ class OrgsClient:
 
         from ..models import (
             BasicError,
-            ValidationError,
             OrganizationFull,
             OrgsOrgPatchBody,
+            ValidationError,
             ValidationErrorSimple,
         )
 
@@ -529,9 +529,9 @@ class OrgsClient:
 
         from ..models import (
             BasicError,
-            ValidationError,
             OrganizationFull,
             OrgsOrgPatchBody,
+            ValidationError,
             ValidationErrorSimple,
         )
 
@@ -1278,9 +1278,9 @@ class OrgsClient:
 
         from ..models import (
             BasicError,
-            ValidationError,
             OrganizationCustomRepositoryRole,
             OrganizationCustomRepositoryRoleCreateSchema,
+            ValidationError,
         )
 
         url = f"/orgs/{org}/custom-repository-roles"
@@ -1350,9 +1350,9 @@ class OrgsClient:
 
         from ..models import (
             BasicError,
-            ValidationError,
             OrganizationCustomRepositoryRole,
             OrganizationCustomRepositoryRoleCreateSchema,
+            ValidationError,
         )
 
         url = f"/orgs/{org}/custom-repository-roles"
@@ -1517,9 +1517,9 @@ class OrgsClient:
 
         from ..models import (
             BasicError,
-            ValidationError,
             OrganizationCustomRepositoryRole,
             OrganizationCustomRepositoryRoleUpdateSchema,
+            ValidationError,
         )
 
         url = f"/orgs/{org}/custom-repository-roles/{role_id}"
@@ -1592,9 +1592,9 @@ class OrgsClient:
 
         from ..models import (
             BasicError,
-            ValidationError,
             OrganizationCustomRepositoryRole,
             OrganizationCustomRepositoryRoleUpdateSchema,
+            ValidationError,
         )
 
         url = f"/orgs/{org}/custom-repository-roles/{role_id}"
@@ -1664,9 +1664,9 @@ class OrgsClient:
 
         from ..models import (
             BasicError,
-            ValidationError,
             OrganizationCustomRepositoryRole,
             OrganizationCustomRepositoryRoleCreateSchema,
+            ValidationError,
         )
 
         url = f"/orgs/{org}/custom_roles"
@@ -1736,9 +1736,9 @@ class OrgsClient:
 
         from ..models import (
             BasicError,
-            ValidationError,
             OrganizationCustomRepositoryRole,
             OrganizationCustomRepositoryRoleCreateSchema,
+            ValidationError,
         )
 
         url = f"/orgs/{org}/custom_roles"
@@ -1903,9 +1903,9 @@ class OrgsClient:
 
         from ..models import (
             BasicError,
-            ValidationError,
             OrganizationCustomRepositoryRole,
             OrganizationCustomRepositoryRoleUpdateSchema,
+            ValidationError,
         )
 
         url = f"/orgs/{org}/custom_roles/{role_id}"
@@ -1978,9 +1978,9 @@ class OrgsClient:
 
         from ..models import (
             BasicError,
-            ValidationError,
             OrganizationCustomRepositoryRole,
             OrganizationCustomRepositoryRoleUpdateSchema,
+            ValidationError,
         )
 
         url = f"/orgs/{org}/custom_roles/{role_id}"
@@ -2130,7 +2130,7 @@ class OrgsClient:
     ) -> Response[list[OrgHook], list[OrgHookType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/webhooks#list-organization-webhooks"""
 
-        from ..models import OrgHook, BasicError
+        from ..models import BasicError, OrgHook
 
         url = f"/orgs/{org}/hooks"
 
@@ -2162,7 +2162,7 @@ class OrgsClient:
     ) -> Response[list[OrgHook], list[OrgHookType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/webhooks#list-organization-webhooks"""
 
-        from ..models import OrgHook, BasicError
+        from ..models import BasicError, OrgHook
 
         url = f"/orgs/{org}/hooks"
 
@@ -2216,7 +2216,7 @@ class OrgsClient:
     ) -> Response[OrgHook, OrgHookType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/webhooks#create-an-organization-webhook"""
 
-        from ..models import OrgHook, BasicError, ValidationError, OrgsOrgHooksPostBody
+        from ..models import BasicError, OrgHook, OrgsOrgHooksPostBody, ValidationError
 
         url = f"/orgs/{org}/hooks"
 
@@ -2275,7 +2275,7 @@ class OrgsClient:
     ) -> Response[OrgHook, OrgHookType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/webhooks#create-an-organization-webhook"""
 
-        from ..models import OrgHook, BasicError, ValidationError, OrgsOrgHooksPostBody
+        from ..models import BasicError, OrgHook, OrgsOrgHooksPostBody, ValidationError
 
         url = f"/orgs/{org}/hooks"
 
@@ -2311,7 +2311,7 @@ class OrgsClient:
     ) -> Response[OrgHook, OrgHookType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/webhooks#get-an-organization-webhook"""
 
-        from ..models import OrgHook, BasicError
+        from ..models import BasicError, OrgHook
 
         url = f"/orgs/{org}/hooks/{hook_id}"
 
@@ -2336,7 +2336,7 @@ class OrgsClient:
     ) -> Response[OrgHook, OrgHookType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/webhooks#get-an-organization-webhook"""
 
-        from ..models import OrgHook, BasicError
+        from ..models import BasicError, OrgHook
 
         url = f"/orgs/{org}/hooks/{hook_id}"
 
@@ -2436,10 +2436,10 @@ class OrgsClient:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/webhooks#update-an-organization-webhook"""
 
         from ..models import (
-            OrgHook,
             BasicError,
-            ValidationError,
+            OrgHook,
             OrgsOrgHooksHookIdPatchBody,
+            ValidationError,
         )
 
         url = f"/orgs/{org}/hooks/{hook_id}"
@@ -2503,10 +2503,10 @@ class OrgsClient:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/webhooks#update-an-organization-webhook"""
 
         from ..models import (
-            OrgHook,
             BasicError,
-            ValidationError,
+            OrgHook,
             OrgsOrgHooksHookIdPatchBody,
+            ValidationError,
         )
 
         url = f"/orgs/{org}/hooks/{hook_id}"
@@ -2613,7 +2613,7 @@ class OrgsClient:
     ) -> Response[WebhookConfig, WebhookConfigType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/webhooks#update-a-webhook-configuration-for-an-organization"""
 
-        from ..models import WebhookConfig, OrgsOrgHooksHookIdConfigPatchBody
+        from ..models import OrgsOrgHooksHookIdConfigPatchBody, WebhookConfig
 
         url = f"/orgs/{org}/hooks/{hook_id}/config"
 
@@ -2671,7 +2671,7 @@ class OrgsClient:
     ) -> Response[WebhookConfig, WebhookConfigType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/webhooks#update-a-webhook-configuration-for-an-organization"""
 
-        from ..models import WebhookConfig, OrgsOrgHooksHookIdConfigPatchBody
+        from ..models import OrgsOrgHooksHookIdConfigPatchBody, WebhookConfig
 
         url = f"/orgs/{org}/hooks/{hook_id}/config"
 
@@ -2705,7 +2705,7 @@ class OrgsClient:
     ) -> Response[list[HookDeliveryItem], list[HookDeliveryItemType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/webhooks#list-deliveries-for-an-organization-webhook"""
 
-        from ..models import BasicError, ValidationError, HookDeliveryItem
+        from ..models import BasicError, HookDeliveryItem, ValidationError
 
         url = f"/orgs/{org}/hooks/{hook_id}/deliveries"
 
@@ -2739,7 +2739,7 @@ class OrgsClient:
     ) -> Response[list[HookDeliveryItem], list[HookDeliveryItemType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/webhooks#list-deliveries-for-an-organization-webhook"""
 
-        from ..models import BasicError, ValidationError, HookDeliveryItem
+        from ..models import BasicError, HookDeliveryItem, ValidationError
 
         url = f"/orgs/{org}/hooks/{hook_id}/deliveries"
 
@@ -2830,9 +2830,9 @@ class OrgsClient:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/webhooks#redeliver-a-delivery-for-an-organization-webhook"""
 
         from ..models import (
+            AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
             BasicError,
             ValidationError,
-            AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
         )
 
         url = f"/orgs/{org}/hooks/{hook_id}/deliveries/{delivery_id}/attempts"
@@ -2864,9 +2864,9 @@ class OrgsClient:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/webhooks#redeliver-a-delivery-for-an-organization-webhook"""
 
         from ..models import (
+            AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
             BasicError,
             ValidationError,
-            AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
         )
 
         url = f"/orgs/{org}/hooks/{hook_id}/deliveries/{delivery_id}/attempts"
@@ -3816,9 +3816,9 @@ class OrgsClient:
 
         from ..models import (
             BasicError,
-            ValidationError,
             OrganizationInvitation,
             OrgsOrgInvitationsPostBody,
+            ValidationError,
         )
 
         url = f"/orgs/{org}/invitations"
@@ -3882,9 +3882,9 @@ class OrgsClient:
 
         from ..models import (
             BasicError,
-            ValidationError,
             OrganizationInvitation,
             OrgsOrgInvitationsPostBody,
+            ValidationError,
         )
 
         url = f"/orgs/{org}/invitations"
@@ -3973,7 +3973,7 @@ class OrgsClient:
     ) -> Response[list[Team], list[TeamType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/members#list-organization-invitation-teams"""
 
-        from ..models import Team, BasicError
+        from ..models import BasicError, Team
 
         url = f"/orgs/{org}/invitations/{invitation_id}/teams"
 
@@ -4006,7 +4006,7 @@ class OrgsClient:
     ) -> Response[list[Team], list[TeamType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/members#list-organization-invitation-teams"""
 
-        from ..models import Team, BasicError
+        from ..models import BasicError, Team
 
         url = f"/orgs/{org}/invitations/{invitation_id}/teams"
 
@@ -4275,8 +4275,8 @@ class OrgsClient:
         from ..models import (
             BasicError,
             OrgMembership,
-            ValidationError,
             OrgsOrgMembershipsUsernamePutBody,
+            ValidationError,
         )
 
         url = f"/orgs/{org}/memberships/{username}"
@@ -4339,8 +4339,8 @@ class OrgsClient:
         from ..models import (
             BasicError,
             OrgMembership,
-            ValidationError,
             OrgsOrgMembershipsUsernamePutBody,
+            ValidationError,
         )
 
         url = f"/orgs/{org}/memberships/{username}"
@@ -4431,8 +4431,8 @@ class OrgsClient:
 
         from ..models import (
             BasicError,
-            ValidationError,
             OrganizationFineGrainedPermission,
+            ValidationError,
         )
 
         url = f"/orgs/{org}/organization-fine-grained-permissions"
@@ -4463,8 +4463,8 @@ class OrgsClient:
 
         from ..models import (
             BasicError,
-            ValidationError,
             OrganizationFineGrainedPermission,
+            ValidationError,
         )
 
         url = f"/orgs/{org}/organization-fine-grained-permissions"
@@ -4495,8 +4495,8 @@ class OrgsClient:
 
         from ..models import (
             BasicError,
-            ValidationError,
             OrgsOrgOrganizationRolesGetResponse200,
+            ValidationError,
         )
 
         url = f"/orgs/{org}/organization-roles"
@@ -4527,8 +4527,8 @@ class OrgsClient:
 
         from ..models import (
             BasicError,
-            ValidationError,
             OrgsOrgOrganizationRolesGetResponse200,
+            ValidationError,
         )
 
         url = f"/orgs/{org}/organization-roles"
@@ -4582,9 +4582,9 @@ class OrgsClient:
 
         from ..models import (
             BasicError,
-            ValidationError,
-            OrganizationRole,
             OrganizationCustomOrganizationRoleCreateSchema,
+            OrganizationRole,
+            ValidationError,
         )
 
         url = f"/orgs/{org}/organization-roles"
@@ -4651,9 +4651,9 @@ class OrgsClient:
 
         from ..models import (
             BasicError,
-            ValidationError,
-            OrganizationRole,
             OrganizationCustomOrganizationRoleCreateSchema,
+            OrganizationRole,
+            ValidationError,
         )
 
         url = f"/orgs/{org}/organization-roles"
@@ -4933,7 +4933,7 @@ class OrgsClient:
     ) -> Response[OrganizationRole, OrganizationRoleType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/organization-roles#get-an-organization-role"""
 
-        from ..models import BasicError, ValidationError, OrganizationRole
+        from ..models import BasicError, OrganizationRole, ValidationError
 
         url = f"/orgs/{org}/organization-roles/{role_id}"
 
@@ -4959,7 +4959,7 @@ class OrgsClient:
     ) -> Response[OrganizationRole, OrganizationRoleType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/organization-roles#get-an-organization-role"""
 
-        from ..models import BasicError, ValidationError, OrganizationRole
+        from ..models import BasicError, OrganizationRole, ValidationError
 
         url = f"/orgs/{org}/organization-roles/{role_id}"
 
@@ -5053,9 +5053,9 @@ class OrgsClient:
 
         from ..models import (
             BasicError,
-            ValidationError,
-            OrganizationRole,
             OrganizationCustomOrganizationRoleUpdateSchema,
+            OrganizationRole,
+            ValidationError,
         )
 
         url = f"/orgs/{org}/organization-roles/{role_id}"
@@ -5125,9 +5125,9 @@ class OrgsClient:
 
         from ..models import (
             BasicError,
-            ValidationError,
-            OrganizationRole,
             OrganizationCustomOrganizationRoleUpdateSchema,
+            OrganizationRole,
+            ValidationError,
         )
 
         url = f"/orgs/{org}/organization-roles/{role_id}"
@@ -5560,8 +5560,8 @@ class OrgsClient:
 
         from ..models import (
             BasicError,
-            ValidationError,
             OrganizationProgrammaticAccessGrantRequest,
+            ValidationError,
         )
 
         url = f"/orgs/{org}/personal-access-token-requests"
@@ -5616,8 +5616,8 @@ class OrgsClient:
 
         from ..models import (
             BasicError,
-            ValidationError,
             OrganizationProgrammaticAccessGrantRequest,
+            ValidationError,
         )
 
         url = f"/orgs/{org}/personal-access-token-requests"
@@ -5691,10 +5691,10 @@ class OrgsClient:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/personal-access-tokens#review-requests-to-access-organization-resources-with-fine-grained-personal-access-tokens"""
 
         from ..models import (
-            BasicError,
-            ValidationError,
-            OrgsOrgPersonalAccessTokenRequestsPostBody,
             AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
+            BasicError,
+            OrgsOrgPersonalAccessTokenRequestsPostBody,
+            ValidationError,
         )
 
         url = f"/orgs/{org}/personal-access-token-requests"
@@ -5767,10 +5767,10 @@ class OrgsClient:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/personal-access-tokens#review-requests-to-access-organization-resources-with-fine-grained-personal-access-tokens"""
 
         from ..models import (
-            BasicError,
-            ValidationError,
-            OrgsOrgPersonalAccessTokenRequestsPostBody,
             AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
+            BasicError,
+            OrgsOrgPersonalAccessTokenRequestsPostBody,
+            ValidationError,
         )
 
         url = f"/orgs/{org}/personal-access-token-requests"
@@ -5839,8 +5839,8 @@ class OrgsClient:
 
         from ..models import (
             BasicError,
-            ValidationError,
             OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody,
+            ValidationError,
         )
 
         url = f"/orgs/{org}/personal-access-token-requests/{pat_request_id}"
@@ -5908,8 +5908,8 @@ class OrgsClient:
 
         from ..models import (
             BasicError,
-            ValidationError,
             OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody,
+            ValidationError,
         )
 
         url = f"/orgs/{org}/personal-access-token-requests/{pat_request_id}"
@@ -6036,8 +6036,8 @@ class OrgsClient:
 
         from ..models import (
             BasicError,
-            ValidationError,
             OrganizationProgrammaticAccessGrant,
+            ValidationError,
         )
 
         url = f"/orgs/{org}/personal-access-tokens"
@@ -6092,8 +6092,8 @@ class OrgsClient:
 
         from ..models import (
             BasicError,
-            ValidationError,
             OrganizationProgrammaticAccessGrant,
+            ValidationError,
         )
 
         url = f"/orgs/{org}/personal-access-tokens"
@@ -6166,10 +6166,10 @@ class OrgsClient:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/personal-access-tokens#update-the-access-to-organization-resources-via-fine-grained-personal-access-tokens"""
 
         from ..models import (
-            BasicError,
-            ValidationError,
-            OrgsOrgPersonalAccessTokensPostBody,
             AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
+            BasicError,
+            OrgsOrgPersonalAccessTokensPostBody,
+            ValidationError,
         )
 
         url = f"/orgs/{org}/personal-access-tokens"
@@ -6239,10 +6239,10 @@ class OrgsClient:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/personal-access-tokens#update-the-access-to-organization-resources-via-fine-grained-personal-access-tokens"""
 
         from ..models import (
-            BasicError,
-            ValidationError,
-            OrgsOrgPersonalAccessTokensPostBody,
             AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
+            BasicError,
+            OrgsOrgPersonalAccessTokensPostBody,
+            ValidationError,
         )
 
         url = f"/orgs/{org}/personal-access-tokens"
@@ -6306,8 +6306,8 @@ class OrgsClient:
 
         from ..models import (
             BasicError,
-            ValidationError,
             OrgsOrgPersonalAccessTokensPatIdPostBody,
+            ValidationError,
         )
 
         url = f"/orgs/{org}/personal-access-tokens/{pat_id}"
@@ -6370,8 +6370,8 @@ class OrgsClient:
 
         from ..models import (
             BasicError,
-            ValidationError,
             OrgsOrgPersonalAccessTokensPatIdPostBody,
+            ValidationError,
         )
 
         url = f"/orgs/{org}/personal-access-tokens/{pat_id}"
@@ -6986,8 +6986,8 @@ class OrgsClient:
 
         from ..models import (
             BasicError,
-            ValidationError,
             OrgsOrgPropertiesValuesPatchBody,
+            ValidationError,
         )
 
         url = f"/orgs/{org}/properties/values"
@@ -7047,8 +7047,8 @@ class OrgsClient:
 
         from ..models import (
             BasicError,
-            ValidationError,
             OrgsOrgPropertiesValuesPatchBody,
+            ValidationError,
         )
 
         url = f"/orgs/{org}/properties/values"
@@ -7740,8 +7740,8 @@ class OrgsClient:
         from ..models import (
             BasicError,
             OrgMembership,
-            ValidationError,
             UserMembershipsOrgsOrgPatchBody,
+            ValidationError,
         )
 
         url = f"/user/memberships/orgs/{org}"
@@ -7802,8 +7802,8 @@ class OrgsClient:
         from ..models import (
             BasicError,
             OrgMembership,
-            ValidationError,
             UserMembershipsOrgsOrgPatchBody,
+            ValidationError,
         )
 
         url = f"/user/memberships/orgs/{org}"

@@ -10,26 +10,26 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import TypedDict, NotRequired
+from typing_extensions import NotRequired, TypedDict
 
 from .group_0002 import SimpleUserType
-from .group_0384 import EnterpriseWebhooksType
-from .group_0385 import SimpleInstallationType
-from .group_0386 import OrganizationSimpleWebhooksType
-from .group_0387 import RepositoryWebhooksType
-from .group_0428 import WebhooksRelease1Type
+from .group_0385 import EnterpriseWebhooksType
+from .group_0386 import SimpleInstallationType
+from .group_0387 import OrganizationSimpleWebhooksType
+from .group_0388 import RepositoryWebhooksType
+from .group_0428 import WebhooksReleaseType
 
 
-class WebhookReleaseUnpublishedType(TypedDict):
-    """release unpublished event"""
+class WebhookReleaseReleasedType(TypedDict):
+    """release released event"""
 
-    action: Literal["unpublished"]
+    action: Literal["released"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    release: WebhooksRelease1Type
+    release: WebhooksReleaseType
     repository: RepositoryWebhooksType
     sender: NotRequired[SimpleUserType]
 
 
-__all__ = ("WebhookReleaseUnpublishedType",)
+__all__ = ("WebhookReleaseReleasedType",)

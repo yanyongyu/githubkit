@@ -9,14 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from datetime import datetime
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0002 import SimpleUserType
 
 
-class ReviewCustomGatesCommentRequiredType(TypedDict):
-    """ReviewCustomGatesCommentRequired"""
+class EnvironmentApprovalsType(TypedDict):
+    """Environment Approval
 
-    environment_name: str
+    An entry in the reviews log for environment deployments
+    """
+
+    environments: list[EnvironmentApprovalsPropEnvironmentsItemsType]
+    state: Literal["approved", "rejected", "pending"]
+    user: SimpleUserType
     comment: str
 
 
-__all__ = ("ReviewCustomGatesCommentRequiredType",)
+class EnvironmentApprovalsPropEnvironmentsItemsType(TypedDict):
+    """EnvironmentApprovalsPropEnvironmentsItems"""
+
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    name: NotRequired[str]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    created_at: NotRequired[datetime]
+    updated_at: NotRequired[datetime]
+
+
+__all__ = (
+    "EnvironmentApprovalsPropEnvironmentsItemsType",
+    "EnvironmentApprovalsType",
+)

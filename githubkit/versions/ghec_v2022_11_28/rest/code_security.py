@@ -14,42 +14,42 @@ from weakref import ref
 
 from pydantic import BaseModel
 
-from githubkit.utils import UNSET, exclude_unset
 from githubkit.compat import model_dump, type_validate_python
 from githubkit.typing import Missing, UnsetType
+from githubkit.utils import UNSET, exclude_unset
 
 if TYPE_CHECKING:
     from typing import Literal
 
     from githubkit import GitHubCore
-    from githubkit.utils import UNSET
-    from githubkit.typing import Missing
     from githubkit.response import Response
+    from githubkit.typing import Missing
+    from githubkit.utils import UNSET
 
+    from ..models import (
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
+        CodeSecurityConfiguration,
+        CodeSecurityConfigurationForRepository,
+        CodeSecurityConfigurationRepositories,
+        CodeSecurityDefaultConfigurationsItems,
+        OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200,
+    )
     from ..types import (
-        CodeSecurityConfigurationType,
-        CodeSecurityConfigurationRepositoriesType,
-        CodeSecurityConfigurationForRepositoryType,
-        CodeSecurityDefaultConfigurationsItemsType,
-        OrgsOrgCodeSecurityConfigurationsPostBodyType,
-        OrgsOrgCodeSecurityConfigurationsDetachDeleteBodyType,
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
-        OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyType,
+        CodeSecurityConfigurationForRepositoryType,
+        CodeSecurityConfigurationRepositoriesType,
+        CodeSecurityConfigurationType,
+        CodeSecurityDefaultConfigurationsItemsType,
         OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBodyType,
         OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType,
         OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200Type,
-        OrgsOrgCodeSecurityConfigurationsPostBodyPropSecretScanningDelegatedBypassOptionsType,
-        OrgsOrgCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptionsType,
-        OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDelegatedBypassOptionsType,
         OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptionsType,
-    )
-    from ..models import (
-        CodeSecurityConfiguration,
-        CodeSecurityConfigurationRepositories,
-        CodeSecurityConfigurationForRepository,
-        CodeSecurityDefaultConfigurationsItems,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-        OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200,
+        OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDelegatedBypassOptionsType,
+        OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyType,
+        OrgsOrgCodeSecurityConfigurationsDetachDeleteBodyType,
+        OrgsOrgCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptionsType,
+        OrgsOrgCodeSecurityConfigurationsPostBodyPropSecretScanningDelegatedBypassOptionsType,
+        OrgsOrgCodeSecurityConfigurationsPostBodyType,
     )
 
 

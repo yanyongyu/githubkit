@@ -14,294 +14,78 @@ from weakref import ref
 
 from pydantic import BaseModel
 
-from githubkit.utils import UNSET, exclude_unset
 from githubkit.compat import model_dump, type_validate_python
 from githubkit.typing import Missing, UnsetType
+from githubkit.utils import UNSET, exclude_unset
 
 if TYPE_CHECKING:
-    from typing import Union, Literal
     from datetime import datetime
+    from typing import Literal, Union
 
     from githubkit import GitHubCore
-    from githubkit.utils import UNSET
-    from githubkit.typing import Missing, FileTypes
     from githubkit.response import Response
+    from githubkit.typing import FileTypes, Missing
+    from githubkit.utils import UNSET
 
-    from ..types import (
-        TagType,
-        HookType,
-        PageType,
-        TeamType,
-        TopicType,
-        CommitType,
-        StatusType,
-        ReleaseType,
-        ActivityType,
-        AutolinkType,
-        LanguageType,
-        DeployKeyType,
-        PageBuildType,
-        RuleSuiteType,
-        DeploymentType,
-        FileCommitType,
-        RepositoryType,
-        SimpleUserType,
-        BranchShortType,
-        ContentFileType,
-        ContributorType,
-        EnvironmentType,
-        IntegrationType,
-        ShortBranchType,
-        ViewTrafficType,
-        CloneTrafficType,
-        CollaboratorType,
-        HookDeliveryType,
-        ReleaseAssetType,
-        CommitCommentType,
-        TagProtectionType,
-        WebhookConfigType,
-        CommitActivityType,
-        ContentSymlinkType,
-        ContentTrafficType,
-        FullRepositoryType,
-        MergedUpstreamType,
-        PageDeploymentType,
-        PageBuildStatusType,
-        ProtectedBranchType,
-        ReferrerTrafficType,
-        RuleSuitesItemsType,
-        BranchProtectionType,
-        CodeownersErrorsType,
-        CommitComparisonType,
-        CommunityProfileType,
-        ContentSubmoduleType,
-        DeploymentStatusType,
-        HookDeliveryItemType,
-        PagesHealthCheckType,
-        MinimalRepositoryType,
-        PullRequestSimpleType,
-        RepositoryRulesetType,
-        StatusCheckPolicyType,
-        UserReposPostBodyType,
-        ParticipationStatsType,
-        ContributorActivityType,
-        CustomPropertyValueType,
-        ReleaseNotesContentType,
-        BranchWithProtectionType,
-        CombinedCommitStatusType,
-        OrgsOrgReposPostBodyType,
-        RepositoryInvitationType,
-        RepositoryRuleUpdateType,
-        ContentDirectoryItemsType,
-        PagesDeploymentStatusType,
-        RepositoryRuleOneof15Type,
-        RepositoryRuleOneof16Type,
-        RepositoryRuleOneof17Type,
-        RepositoryRuleOneof18Type,
-        DeploymentBranchPolicyType,
-        RepositoryRuleCreationType,
-        RepositoryRuleDeletionType,
-        BranchRestrictionPolicyType,
-        OrgsOrgRulesetsPostBodyType,
-        RepositoryRuleWorkflowsType,
-        ReposOwnerRepoPatchBodyType,
-        DeploymentProtectionRuleType,
-        RepositoryRuleMergeQueueType,
-        RepositoryRulePullRequestType,
-        OrgRulesetConditionsOneof0Type,
-        OrgRulesetConditionsOneof1Type,
-        OrgRulesetConditionsOneof2Type,
-        RepositoryRuleCodeScanningType,
-        ReposOwnerRepoKeysPostBodyType,
-        CheckAutomatedSecurityFixesType,
-        RepositoryRulesetConditionsType,
-        ReposOwnerRepoForksPostBodyType,
-        ReposOwnerRepoHooksPostBodyType,
-        ReposOwnerRepoTopicsPutBodyType,
-        ProtectedBranchAdminEnforcedType,
-        RepositoryRuleDetailedOneof0Type,
-        RepositoryRuleDetailedOneof1Type,
-        RepositoryRuleDetailedOneof2Type,
-        RepositoryRuleDetailedOneof3Type,
-        RepositoryRuleDetailedOneof4Type,
-        RepositoryRuleDetailedOneof5Type,
-        RepositoryRuleDetailedOneof6Type,
-        RepositoryRuleDetailedOneof7Type,
-        RepositoryRuleDetailedOneof8Type,
-        RepositoryRuleDetailedOneof9Type,
-        RepositoryRuleNonFastForwardType,
-        RepositoryRulesetBypassActorType,
-        RepositoryRuleTagNamePatternType,
-        ReposOwnerRepoMergesPostBodyType,
-        RepositoryRuleDetailedOneof10Type,
-        RepositoryRuleDetailedOneof11Type,
-        RepositoryRuleDetailedOneof12Type,
-        RepositoryRuleDetailedOneof13Type,
-        RepositoryRuleDetailedOneof14Type,
-        RepositoryRuleDetailedOneof15Type,
-        RepositoryRuleDetailedOneof16Type,
-        DeploymentBranchPolicySettingsType,
-        ReposOwnerRepoReleasesPostBodyType,
-        ReposOwnerRepoRulesetsPostBodyType,
-        ReposOwnerRepoTransferPostBodyType,
-        OrgsOrgRulesetsRulesetIdPutBodyType,
-        RepositoryRuleBranchNamePatternType,
-        ReposOwnerRepoAutolinksPostBodyType,
-        ProtectedBranchPullRequestReviewType,
-        RepositoryCollaboratorPermissionType,
-        RepositoryRuleRequiredSignaturesType,
-        ReposOwnerRepoDispatchesPostBodyType,
-        ReposOwnerRepoPagesPutBodyAnyof0Type,
-        ReposOwnerRepoPagesPutBodyAnyof1Type,
-        ReposOwnerRepoPagesPutBodyAnyof2Type,
-        ReposOwnerRepoPagesPutBodyAnyof3Type,
-        ReposOwnerRepoPagesPutBodyAnyof4Type,
-        DeploymentBranchPolicyNamePatternType,
-        RepositoryRuleRequiredDeploymentsType,
-        ReposOwnerRepoContentsPathPutBodyType,
-        ReposOwnerRepoDeploymentsPostBodyType,
-        ReposOwnerRepoPagesPostBodyAnyof0Type,
-        ReposOwnerRepoPagesPostBodyAnyof1Type,
-        ReposOwnerRepoStatusesShaPostBodyType,
-        RepositoryRuleCommitMessagePatternType,
-        RepositoryRuleRequiredStatusChecksType,
-        ReposOwnerRepoAttestationsPostBodyType,
-        ReposOwnerRepoHooksHookIdPatchBodyType,
-        RepositoryRuleCommitterEmailPatternType,
-        RepositoryRuleRequiredLinearHistoryType,
-        ReposOwnerRepoMergeUpstreamPostBodyType,
-        ReposOwnerRepoContentsPathDeleteBodyType,
-        ReposOwnerRepoTagsProtectionPostBodyType,
-        ReposOwnerRepoHooksPostBodyPropConfigType,
-        ReposOwnerRepoPagesPostBodyPropSourceType,
-        RepositoryRuleCommitAuthorEmailPatternType,
-        ReposOwnerRepoPagesDeploymentsPostBodyType,
-        ReposOwnerRepoRulesetsRulesetIdPutBodyType,
-        ReposOwnerRepoPropertiesValuesPatchBodyType,
-        OrgsOrgReposPostBodyPropCustomPropertiesType,
-        ReposOwnerRepoCommentsCommentIdPatchBodyType,
-        ReposOwnerRepoEnvironmentsGetResponse200Type,
-        ReposOwnerRepoHooksHookIdConfigPatchBodyType,
-        ReposOwnerRepoReleasesReleaseIdPatchBodyType,
-        DeploymentBranchPolicyNamePatternWithTypeType,
-        ReposOwnerRepoAttestationsPostResponse201Type,
-        ReposOwnerRepoBranchesBranchRenamePostBodyType,
-        ReposOwnerRepoCollaboratorsUsernamePutBodyType,
-        ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
-        ReposOwnerRepoContentsPathPutBodyPropAuthorType,
-        ReposOwnerRepoReleasesGenerateNotesPostBodyType,
-        ReposOwnerRepoAttestationsPostBodyPropBundleType,
-        ReposOwnerRepoReleasesAssetsAssetIdPatchBodyType,
-        ReposOwnerRepoBranchesBranchProtectionPutBodyType,
-        ReposOwnerRepoCommitsCommitShaCommentsPostBodyType,
-        ReposOwnerRepoContentsPathDeleteBodyPropAuthorType,
-        ReposOwnerRepoContentsPathPutBodyPropCommitterType,
-        ReposOwnerRepoInvitationsInvitationIdPatchBodyType,
-        ReposOwnerRepoPatchBodyPropSecurityAndAnalysisType,
-        ReposTemplateOwnerTemplateRepoGeneratePostBodyType,
-        ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyType,
-        ReposOwnerRepoContentsPathDeleteBodyPropCommitterType,
-        ReposOwnerRepoDispatchesPostBodyPropClientPayloadType,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
-        ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0Type,
-        ReposOwnerRepoAttestationsSubjectDigestGetResponse200Type,
-        ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyType,
-        ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200Type,
-        ReposOwnerRepoBranchesBranchProtectionPutBodyPropRestrictionsType,
-        ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyType,
-        ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyType,
-        ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyType,
-        ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyType,
-        ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyType,
-        ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyType,
-        ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItemsType,
-        ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyType,
-        ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0Type,
-        ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksType,
-        ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0Type,
-        ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0Type,
-        ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyType,
-        ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBodyType,
-        ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsType,
-        ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0Type,
-        ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200Type,
-        ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0Type,
-        ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200Type,
-        ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0Type,
-        ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItemsType,
-        ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200Type,
-        ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictionsType,
-        ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowancesType,
-    )
     from ..models import (
-        Tag,
-        Hook,
-        Page,
-        Team,
-        Topic,
-        Commit,
-        Status,
-        Release,
         Activity,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
         Autolink,
-        Language,
-        DeployKey,
-        PageBuild,
-        RuleSuite,
-        Deployment,
-        FileCommit,
-        Repository,
-        SimpleUser,
-        BranchShort,
-        ContentFile,
-        Contributor,
-        Environment,
-        Integration,
-        ShortBranch,
-        ViewTraffic,
-        CloneTraffic,
-        Collaborator,
-        HookDelivery,
-        ReleaseAsset,
-        CommitComment,
-        TagProtection,
-        WebhookConfig,
-        CommitActivity,
-        ContentSymlink,
-        ContentTraffic,
-        FullRepository,
-        MergedUpstream,
-        PageDeployment,
-        PageBuildStatus,
-        ProtectedBranch,
-        ReferrerTraffic,
-        RuleSuitesItems,
         BranchProtection,
+        BranchRestrictionPolicy,
+        BranchShort,
+        BranchWithProtection,
+        CheckAutomatedSecurityFixes,
+        CloneTraffic,
         CodeownersErrors,
+        Collaborator,
+        CombinedCommitStatus,
+        Commit,
+        CommitActivity,
+        CommitComment,
         CommitComparison,
         CommunityProfile,
+        ContentDirectoryItems,
+        ContentFile,
         ContentSubmodule,
-        DeploymentStatus,
-        HookDeliveryItem,
-        PagesHealthCheck,
-        MinimalRepository,
-        PullRequestSimple,
-        RepositoryRuleset,
-        StatusCheckPolicy,
-        ParticipationStats,
+        ContentSymlink,
+        ContentTraffic,
+        Contributor,
         ContributorActivity,
         CustomPropertyValue,
-        ReleaseNotesContent,
-        BranchWithProtection,
-        CombinedCommitStatus,
-        RepositoryInvitation,
-        ContentDirectoryItems,
-        PagesDeploymentStatus,
+        DeployKey,
+        Deployment,
         DeploymentBranchPolicy,
-        BranchRestrictionPolicy,
         DeploymentProtectionRule,
-        CheckAutomatedSecurityFixes,
+        DeploymentStatus,
+        Environment,
+        FileCommit,
+        FullRepository,
+        Hook,
+        HookDelivery,
+        HookDeliveryItem,
+        Integration,
+        Language,
+        MergedUpstream,
+        MinimalRepository,
+        Page,
+        PageBuild,
+        PageBuildStatus,
+        PageDeployment,
+        PagesDeploymentStatus,
+        PagesHealthCheck,
+        ParticipationStats,
+        ProtectedBranch,
         ProtectedBranchAdminEnforced,
+        ProtectedBranchPullRequestReview,
+        PullRequestSimple,
+        ReferrerTraffic,
+        Release,
+        ReleaseAsset,
+        ReleaseNotesContent,
+        Repository,
+        RepositoryCollaboratorPermission,
+        RepositoryInvitation,
         RepositoryRuleDetailedOneof0,
         RepositoryRuleDetailedOneof1,
         RepositoryRuleDetailedOneof2,
@@ -319,16 +103,232 @@ if TYPE_CHECKING:
         RepositoryRuleDetailedOneof14,
         RepositoryRuleDetailedOneof15,
         RepositoryRuleDetailedOneof16,
-        ProtectedBranchPullRequestReview,
-        RepositoryCollaboratorPermission,
-        ReposOwnerRepoEnvironmentsGetResponse200,
+        RepositoryRuleset,
         ReposOwnerRepoAttestationsPostResponse201,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
         ReposOwnerRepoAttestationsSubjectDigestGetResponse200,
-        ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200,
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200,
-        ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200,
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200,
+        ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200,
+        ReposOwnerRepoEnvironmentsGetResponse200,
+        ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200,
+        RuleSuite,
+        RuleSuitesItems,
+        ShortBranch,
+        SimpleUser,
+        Status,
+        StatusCheckPolicy,
+        Tag,
+        TagProtection,
+        Team,
+        Topic,
+        ViewTraffic,
+        WebhookConfig,
+    )
+    from ..types import (
+        ActivityType,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+        AutolinkType,
+        BranchProtectionType,
+        BranchRestrictionPolicyType,
+        BranchShortType,
+        BranchWithProtectionType,
+        CheckAutomatedSecurityFixesType,
+        CloneTrafficType,
+        CodeownersErrorsType,
+        CollaboratorType,
+        CombinedCommitStatusType,
+        CommitActivityType,
+        CommitCommentType,
+        CommitComparisonType,
+        CommitType,
+        CommunityProfileType,
+        ContentDirectoryItemsType,
+        ContentFileType,
+        ContentSubmoduleType,
+        ContentSymlinkType,
+        ContentTrafficType,
+        ContributorActivityType,
+        ContributorType,
+        CustomPropertyValueType,
+        DeployKeyType,
+        DeploymentBranchPolicyNamePatternType,
+        DeploymentBranchPolicyNamePatternWithTypeType,
+        DeploymentBranchPolicySettingsType,
+        DeploymentBranchPolicyType,
+        DeploymentProtectionRuleType,
+        DeploymentStatusType,
+        DeploymentType,
+        EnvironmentType,
+        FileCommitType,
+        FullRepositoryType,
+        HookDeliveryItemType,
+        HookDeliveryType,
+        HookType,
+        IntegrationType,
+        LanguageType,
+        MergedUpstreamType,
+        MinimalRepositoryType,
+        OrgRulesetConditionsOneof0Type,
+        OrgRulesetConditionsOneof1Type,
+        OrgRulesetConditionsOneof2Type,
+        OrgsOrgReposPostBodyPropCustomPropertiesType,
+        OrgsOrgReposPostBodyType,
+        OrgsOrgRulesetsPostBodyType,
+        OrgsOrgRulesetsRulesetIdPutBodyType,
+        PageBuildStatusType,
+        PageBuildType,
+        PageDeploymentType,
+        PagesDeploymentStatusType,
+        PagesHealthCheckType,
+        PageType,
+        ParticipationStatsType,
+        ProtectedBranchAdminEnforcedType,
+        ProtectedBranchPullRequestReviewType,
+        ProtectedBranchType,
+        PullRequestSimpleType,
+        ReferrerTrafficType,
+        ReleaseAssetType,
+        ReleaseNotesContentType,
+        ReleaseType,
+        RepositoryCollaboratorPermissionType,
+        RepositoryInvitationType,
+        RepositoryRuleBranchNamePatternType,
+        RepositoryRuleCodeScanningType,
+        RepositoryRuleCommitAuthorEmailPatternType,
+        RepositoryRuleCommitMessagePatternType,
+        RepositoryRuleCommitterEmailPatternType,
+        RepositoryRuleCreationType,
+        RepositoryRuleDeletionType,
+        RepositoryRuleDetailedOneof0Type,
+        RepositoryRuleDetailedOneof1Type,
+        RepositoryRuleDetailedOneof2Type,
+        RepositoryRuleDetailedOneof3Type,
+        RepositoryRuleDetailedOneof4Type,
+        RepositoryRuleDetailedOneof5Type,
+        RepositoryRuleDetailedOneof6Type,
+        RepositoryRuleDetailedOneof7Type,
+        RepositoryRuleDetailedOneof8Type,
+        RepositoryRuleDetailedOneof9Type,
+        RepositoryRuleDetailedOneof10Type,
+        RepositoryRuleDetailedOneof11Type,
+        RepositoryRuleDetailedOneof12Type,
+        RepositoryRuleDetailedOneof13Type,
+        RepositoryRuleDetailedOneof14Type,
+        RepositoryRuleDetailedOneof15Type,
+        RepositoryRuleDetailedOneof16Type,
+        RepositoryRuleMergeQueueType,
+        RepositoryRuleNonFastForwardType,
+        RepositoryRuleOneof15Type,
+        RepositoryRuleOneof16Type,
+        RepositoryRuleOneof17Type,
+        RepositoryRuleOneof18Type,
+        RepositoryRulePullRequestType,
+        RepositoryRuleRequiredDeploymentsType,
+        RepositoryRuleRequiredLinearHistoryType,
+        RepositoryRuleRequiredSignaturesType,
+        RepositoryRuleRequiredStatusChecksType,
+        RepositoryRulesetBypassActorType,
+        RepositoryRulesetConditionsType,
+        RepositoryRulesetType,
+        RepositoryRuleTagNamePatternType,
+        RepositoryRuleUpdateType,
+        RepositoryRuleWorkflowsType,
+        RepositoryType,
+        ReposOwnerRepoAttestationsPostBodyPropBundleType,
+        ReposOwnerRepoAttestationsPostBodyType,
+        ReposOwnerRepoAttestationsPostResponse201Type,
+        ReposOwnerRepoAttestationsSubjectDigestGetResponse200Type,
+        ReposOwnerRepoAutolinksPostBodyType,
+        ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsType,
+        ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksType,
+        ReposOwnerRepoBranchesBranchProtectionPutBodyPropRestrictionsType,
+        ReposOwnerRepoBranchesBranchProtectionPutBodyType,
+        ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowancesType,
+        ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictionsType,
+        ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyType,
+        ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0Type,
+        ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0Type,
+        ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0Type,
+        ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItemsType,
+        ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyType,
+        ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyType,
+        ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyType,
+        ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyType,
+        ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0Type,
+        ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0Type,
+        ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0Type,
+        ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyType,
+        ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyType,
+        ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyType,
+        ReposOwnerRepoBranchesBranchRenamePostBodyType,
+        ReposOwnerRepoCollaboratorsUsernamePutBodyType,
+        ReposOwnerRepoCommentsCommentIdPatchBodyType,
+        ReposOwnerRepoCommitsCommitShaCommentsPostBodyType,
+        ReposOwnerRepoContentsPathDeleteBodyPropAuthorType,
+        ReposOwnerRepoContentsPathDeleteBodyPropCommitterType,
+        ReposOwnerRepoContentsPathDeleteBodyType,
+        ReposOwnerRepoContentsPathPutBodyPropAuthorType,
+        ReposOwnerRepoContentsPathPutBodyPropCommitterType,
+        ReposOwnerRepoContentsPathPutBodyType,
+        ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyType,
+        ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0Type,
+        ReposOwnerRepoDeploymentsPostBodyType,
+        ReposOwnerRepoDispatchesPostBodyPropClientPayloadType,
+        ReposOwnerRepoDispatchesPostBodyType,
+        ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200Type,
+        ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200Type,
+        ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200Type,
+        ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBodyType,
+        ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItemsType,
+        ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyType,
+        ReposOwnerRepoEnvironmentsGetResponse200Type,
+        ReposOwnerRepoForksPostBodyType,
+        ReposOwnerRepoHooksHookIdConfigPatchBodyType,
+        ReposOwnerRepoHooksHookIdPatchBodyType,
+        ReposOwnerRepoHooksPostBodyPropConfigType,
+        ReposOwnerRepoHooksPostBodyType,
+        ReposOwnerRepoInvitationsInvitationIdPatchBodyType,
+        ReposOwnerRepoKeysPostBodyType,
+        ReposOwnerRepoMergesPostBodyType,
+        ReposOwnerRepoMergeUpstreamPostBodyType,
+        ReposOwnerRepoPagesDeploymentsPostBodyType,
+        ReposOwnerRepoPagesPostBodyAnyof0Type,
+        ReposOwnerRepoPagesPostBodyAnyof1Type,
+        ReposOwnerRepoPagesPostBodyPropSourceType,
+        ReposOwnerRepoPagesPutBodyAnyof0Type,
+        ReposOwnerRepoPagesPutBodyAnyof1Type,
+        ReposOwnerRepoPagesPutBodyAnyof2Type,
+        ReposOwnerRepoPagesPutBodyAnyof3Type,
+        ReposOwnerRepoPagesPutBodyAnyof4Type,
+        ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
+        ReposOwnerRepoPatchBodyPropSecurityAndAnalysisType,
+        ReposOwnerRepoPatchBodyType,
+        ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200Type,
+        ReposOwnerRepoPropertiesValuesPatchBodyType,
+        ReposOwnerRepoReleasesAssetsAssetIdPatchBodyType,
+        ReposOwnerRepoReleasesGenerateNotesPostBodyType,
+        ReposOwnerRepoReleasesPostBodyType,
+        ReposOwnerRepoReleasesReleaseIdPatchBodyType,
+        ReposOwnerRepoRulesetsPostBodyType,
+        ReposOwnerRepoRulesetsRulesetIdPutBodyType,
+        ReposOwnerRepoStatusesShaPostBodyType,
+        ReposOwnerRepoTagsProtectionPostBodyType,
+        ReposOwnerRepoTopicsPutBodyType,
+        ReposOwnerRepoTransferPostBodyType,
+        ReposTemplateOwnerTemplateRepoGeneratePostBodyType,
+        RuleSuitesItemsType,
+        RuleSuiteType,
+        ShortBranchType,
+        SimpleUserType,
+        StatusCheckPolicyType,
+        StatusType,
+        TagProtectionType,
+        TagType,
+        TeamType,
+        TopicType,
+        UserReposPostBodyType,
+        ViewTrafficType,
+        WebhookConfigType,
     )
 
 
@@ -483,8 +483,8 @@ class ReposClient:
         from ..models import (
             BasicError,
             FullRepository,
-            ValidationError,
             OrgsOrgReposPostBody,
+            ValidationError,
         )
 
         url = f"/orgs/{org}/repos"
@@ -574,8 +574,8 @@ class ReposClient:
         from ..models import (
             BasicError,
             FullRepository,
-            ValidationError,
             OrgsOrgReposPostBody,
+            ValidationError,
         )
 
         url = f"/orgs/{org}/repos"
@@ -739,7 +739,7 @@ class ReposClient:
     ) -> Response[RepositoryRuleset, RepositoryRulesetType]:
         """See also: https://docs.github.com/rest/orgs/rules#create-an-organization-repository-ruleset"""
 
-        from ..models import BasicError, RepositoryRuleset, OrgsOrgRulesetsPostBody
+        from ..models import BasicError, OrgsOrgRulesetsPostBody, RepositoryRuleset
 
         url = f"/orgs/{org}/rulesets"
 
@@ -832,7 +832,7 @@ class ReposClient:
     ) -> Response[RepositoryRuleset, RepositoryRulesetType]:
         """See also: https://docs.github.com/rest/orgs/rules#create-an-organization-repository-ruleset"""
 
-        from ..models import BasicError, RepositoryRuleset, OrgsOrgRulesetsPostBody
+        from ..models import BasicError, OrgsOrgRulesetsPostBody, RepositoryRuleset
 
         url = f"/orgs/{org}/rulesets"
 
@@ -954,7 +954,7 @@ class ReposClient:
     ) -> Response[RuleSuite, RuleSuiteType]:
         """See also: https://docs.github.com/rest/orgs/rule-suites#get-an-organization-rule-suite"""
 
-        from ..models import RuleSuite, BasicError
+        from ..models import BasicError, RuleSuite
 
         url = f"/orgs/{org}/rulesets/rule-suites/{rule_suite_id}"
 
@@ -980,7 +980,7 @@ class ReposClient:
     ) -> Response[RuleSuite, RuleSuiteType]:
         """See also: https://docs.github.com/rest/orgs/rule-suites#get-an-organization-rule-suite"""
 
-        from ..models import RuleSuite, BasicError
+        from ..models import BasicError, RuleSuite
 
         url = f"/orgs/{org}/rulesets/rule-suites/{rule_suite_id}"
 
@@ -1120,8 +1120,8 @@ class ReposClient:
 
         from ..models import (
             BasicError,
-            RepositoryRuleset,
             OrgsOrgRulesetsRulesetIdPutBody,
+            RepositoryRuleset,
         )
 
         url = f"/orgs/{org}/rulesets/{ruleset_id}"
@@ -1220,8 +1220,8 @@ class ReposClient:
 
         from ..models import (
             BasicError,
-            RepositoryRuleset,
             OrgsOrgRulesetsRulesetIdPutBody,
+            RepositoryRuleset,
         )
 
         url = f"/orgs/{org}/rulesets/{ruleset_id}"
@@ -1466,8 +1466,8 @@ class ReposClient:
         from ..models import (
             BasicError,
             FullRepository,
-            ValidationError,
             ReposOwnerRepoPatchBody,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}"
@@ -1561,8 +1561,8 @@ class ReposClient:
         from ..models import (
             BasicError,
             FullRepository,
-            ValidationError,
             ReposOwnerRepoPatchBody,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}"
@@ -1746,9 +1746,9 @@ class ReposClient:
 
         from ..models import (
             BasicError,
-            ValidationError,
             ReposOwnerRepoAttestationsPostBody,
             ReposOwnerRepoAttestationsPostResponse201,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/attestations"
@@ -1819,9 +1819,9 @@ class ReposClient:
 
         from ..models import (
             BasicError,
-            ValidationError,
             ReposOwnerRepoAttestationsPostBody,
             ReposOwnerRepoAttestationsPostResponse201,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/attestations"
@@ -1999,7 +1999,7 @@ class ReposClient:
     ) -> Response[Autolink, AutolinkType]:
         """See also: https://docs.github.com/rest/repos/autolinks#create-an-autolink-reference-for-a-repository"""
 
-        from ..models import Autolink, ValidationError, ReposOwnerRepoAutolinksPostBody
+        from ..models import Autolink, ReposOwnerRepoAutolinksPostBody, ValidationError
 
         url = f"/repos/{owner}/{repo}/autolinks"
 
@@ -2059,7 +2059,7 @@ class ReposClient:
     ) -> Response[Autolink, AutolinkType]:
         """See also: https://docs.github.com/rest/repos/autolinks#create-an-autolink-reference-for-a-repository"""
 
-        from ..models import Autolink, ValidationError, ReposOwnerRepoAutolinksPostBody
+        from ..models import Autolink, ReposOwnerRepoAutolinksPostBody, ValidationError
 
         url = f"/repos/{owner}/{repo}/autolinks"
 
@@ -2539,8 +2539,8 @@ class ReposClient:
         from ..models import (
             BasicError,
             ProtectedBranch,
-            ValidationErrorSimple,
             ReposOwnerRepoBranchesBranchProtectionPutBody,
+            ValidationErrorSimple,
         )
 
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection"
@@ -2627,8 +2627,8 @@ class ReposClient:
         from ..models import (
             BasicError,
             ProtectedBranch,
-            ValidationErrorSimple,
             ReposOwnerRepoBranchesBranchProtectionPutBody,
+            ValidationErrorSimple,
         )
 
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection"
@@ -3006,9 +3006,9 @@ class ReposClient:
         """See also: https://docs.github.com/rest/branches/branch-protection#update-pull-request-review-protection"""
 
         from ..models import (
-            ValidationError,
             ProtectedBranchPullRequestReview,
             ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews"
@@ -3093,9 +3093,9 @@ class ReposClient:
         """See also: https://docs.github.com/rest/branches/branch-protection#update-pull-request-review-protection"""
 
         from ..models import (
-            ValidationError,
             ProtectedBranchPullRequestReview,
             ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews"
@@ -3426,9 +3426,9 @@ class ReposClient:
 
         from ..models import (
             BasicError,
-            ValidationError,
-            StatusCheckPolicy,
             ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBody,
+            StatusCheckPolicy,
+            ValidationError,
         )
 
         url = (
@@ -3508,9 +3508,9 @@ class ReposClient:
 
         from ..models import (
             BasicError,
-            ValidationError,
-            StatusCheckPolicy,
             ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBody,
+            StatusCheckPolicy,
+            ValidationError,
         )
 
         url = (
@@ -3644,8 +3644,8 @@ class ReposClient:
 
         from ..models import (
             BasicError,
-            ValidationError,
             ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts"
@@ -3728,8 +3728,8 @@ class ReposClient:
 
         from ..models import (
             BasicError,
-            ValidationError,
             ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts"
@@ -3812,8 +3812,8 @@ class ReposClient:
 
         from ..models import (
             BasicError,
-            ValidationError,
             ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts"
@@ -3897,8 +3897,8 @@ class ReposClient:
 
         from ..models import (
             BasicError,
-            ValidationError,
             ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts"
@@ -3982,8 +3982,8 @@ class ReposClient:
 
         from ..models import (
             BasicError,
-            ValidationError,
             ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts"
@@ -4066,8 +4066,8 @@ class ReposClient:
 
         from ..models import (
             BasicError,
-            ValidationError,
             ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts"
@@ -4294,8 +4294,8 @@ class ReposClient:
 
         from ..models import (
             Integration,
-            ValidationError,
             ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBody,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps"
@@ -4369,8 +4369,8 @@ class ReposClient:
 
         from ..models import (
             Integration,
-            ValidationError,
             ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBody,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps"
@@ -4444,8 +4444,8 @@ class ReposClient:
 
         from ..models import (
             Integration,
-            ValidationError,
             ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBody,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps"
@@ -4519,8 +4519,8 @@ class ReposClient:
 
         from ..models import (
             Integration,
-            ValidationError,
             ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBody,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps"
@@ -4594,8 +4594,8 @@ class ReposClient:
 
         from ..models import (
             Integration,
-            ValidationError,
             ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBody,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps"
@@ -4669,8 +4669,8 @@ class ReposClient:
 
         from ..models import (
             Integration,
-            ValidationError,
             ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBody,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps"
@@ -4709,7 +4709,7 @@ class ReposClient:
     ) -> Response[list[Team], list[TeamType]]:
         """See also: https://docs.github.com/rest/branches/branch-protection#get-teams-with-access-to-the-protected-branch"""
 
-        from ..models import Team, BasicError
+        from ..models import BasicError, Team
 
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams"
 
@@ -4735,7 +4735,7 @@ class ReposClient:
     ) -> Response[list[Team], list[TeamType]]:
         """See also: https://docs.github.com/rest/branches/branch-protection#get-teams-with-access-to-the-protected-branch"""
 
-        from ..models import Team, BasicError
+        from ..models import BasicError, Team
 
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams"
 
@@ -4799,9 +4799,9 @@ class ReposClient:
         from typing import Union
 
         from ..models import (
+            ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0,
             Team,
             ValidationError,
-            ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0,
         )
 
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams"
@@ -4882,9 +4882,9 @@ class ReposClient:
         from typing import Union
 
         from ..models import (
+            ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0,
             Team,
             ValidationError,
-            ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0,
         )
 
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams"
@@ -4965,9 +4965,9 @@ class ReposClient:
         from typing import Union
 
         from ..models import (
+            ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0,
             Team,
             ValidationError,
-            ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0,
         )
 
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams"
@@ -5048,9 +5048,9 @@ class ReposClient:
         from typing import Union
 
         from ..models import (
+            ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0,
             Team,
             ValidationError,
-            ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0,
         )
 
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams"
@@ -5131,9 +5131,9 @@ class ReposClient:
         from typing import Union
 
         from ..models import (
+            ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0,
             Team,
             ValidationError,
-            ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0,
         )
 
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams"
@@ -5214,9 +5214,9 @@ class ReposClient:
         from typing import Union
 
         from ..models import (
+            ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0,
             Team,
             ValidationError,
-            ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0,
         )
 
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams"
@@ -5339,9 +5339,9 @@ class ReposClient:
         """See also: https://docs.github.com/rest/branches/branch-protection#set-user-access-restrictions"""
 
         from ..models import (
+            ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBody,
             SimpleUser,
             ValidationError,
-            ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBody,
         )
 
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users"
@@ -5408,9 +5408,9 @@ class ReposClient:
         """See also: https://docs.github.com/rest/branches/branch-protection#set-user-access-restrictions"""
 
         from ..models import (
+            ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBody,
             SimpleUser,
             ValidationError,
-            ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBody,
         )
 
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users"
@@ -5477,9 +5477,9 @@ class ReposClient:
         """See also: https://docs.github.com/rest/branches/branch-protection#add-user-access-restrictions"""
 
         from ..models import (
+            ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBody,
             SimpleUser,
             ValidationError,
-            ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBody,
         )
 
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users"
@@ -5546,9 +5546,9 @@ class ReposClient:
         """See also: https://docs.github.com/rest/branches/branch-protection#add-user-access-restrictions"""
 
         from ..models import (
+            ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBody,
             SimpleUser,
             ValidationError,
-            ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBody,
         )
 
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users"
@@ -5615,9 +5615,9 @@ class ReposClient:
         """See also: https://docs.github.com/rest/branches/branch-protection#remove-user-access-restrictions"""
 
         from ..models import (
+            ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBody,
             SimpleUser,
             ValidationError,
-            ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBody,
         )
 
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users"
@@ -5684,9 +5684,9 @@ class ReposClient:
         """See also: https://docs.github.com/rest/branches/branch-protection#remove-user-access-restrictions"""
 
         from ..models import (
+            ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBody,
             SimpleUser,
             ValidationError,
-            ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBody,
         )
 
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users"
@@ -5752,9 +5752,9 @@ class ReposClient:
 
         from ..models import (
             BasicError,
-            ValidationError,
             BranchWithProtection,
             ReposOwnerRepoBranchesBranchRenamePostBody,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/branches/{branch}/rename"
@@ -5822,9 +5822,9 @@ class ReposClient:
 
         from ..models import (
             BasicError,
-            ValidationError,
             BranchWithProtection,
             ReposOwnerRepoBranchesBranchRenamePostBody,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/branches/{branch}/rename"
@@ -6070,9 +6070,9 @@ class ReposClient:
 
         from ..models import (
             BasicError,
-            ValidationError,
             RepositoryInvitation,
             ReposOwnerRepoCollaboratorsUsernamePutBody,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/collaborators/{username}"
@@ -6139,9 +6139,9 @@ class ReposClient:
 
         from ..models import (
             BasicError,
-            ValidationError,
             RepositoryInvitation,
             ReposOwnerRepoCollaboratorsUsernamePutBody,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/collaborators/{username}"
@@ -6588,7 +6588,7 @@ class ReposClient:
     ) -> Response[list[Commit], list[CommitType]]:
         """See also: https://docs.github.com/rest/commits/commits#list-commits"""
 
-        from ..models import Commit, BasicError
+        from ..models import BasicError, Commit
 
         url = f"/repos/{owner}/{repo}/commits"
 
@@ -6636,7 +6636,7 @@ class ReposClient:
     ) -> Response[list[Commit], list[CommitType]]:
         """See also: https://docs.github.com/rest/commits/commits#list-commits"""
 
-        from ..models import Commit, BasicError
+        from ..models import BasicError, Commit
 
         url = f"/repos/{owner}/{repo}/commits"
 
@@ -6824,8 +6824,8 @@ class ReposClient:
         from ..models import (
             BasicError,
             CommitComment,
-            ValidationError,
             ReposOwnerRepoCommitsCommitShaCommentsPostBody,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/commits/{commit_sha}/comments"
@@ -6896,8 +6896,8 @@ class ReposClient:
         from ..models import (
             BasicError,
             CommitComment,
-            ValidationError,
             ReposOwnerRepoCommitsCommitShaCommentsPostBody,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/commits/{commit_sha}/comments"
@@ -7008,10 +7008,10 @@ class ReposClient:
         """See also: https://docs.github.com/rest/commits/commits#get-a-commit"""
 
         from ..models import (
-            Commit,
             BasicError,
-            ValidationError,
+            Commit,
             EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/commits/{ref}"
@@ -7051,10 +7051,10 @@ class ReposClient:
         """See also: https://docs.github.com/rest/commits/commits#get-a-commit"""
 
         from ..models import (
-            Commit,
             BasicError,
-            ValidationError,
+            Commit,
             EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/commits/{ref}"
@@ -7360,10 +7360,10 @@ class ReposClient:
 
         from ..models import (
             BasicError,
-            ContentFile,
-            ContentSymlink,
-            ContentSubmodule,
             ContentDirectoryItems,
+            ContentFile,
+            ContentSubmodule,
+            ContentSymlink,
         )
 
         url = f"/repos/{owner}/{repo}/contents/{path}"
@@ -7416,10 +7416,10 @@ class ReposClient:
 
         from ..models import (
             BasicError,
-            ContentFile,
-            ContentSymlink,
-            ContentSubmodule,
             ContentDirectoryItems,
+            ContentFile,
+            ContentSubmodule,
+            ContentSymlink,
         )
 
         url = f"/repos/{owner}/{repo}/contents/{path}"
@@ -7492,9 +7492,9 @@ class ReposClient:
         from ..models import (
             BasicError,
             FileCommit,
-            ValidationError,
             RepositoryRuleViolationError,
             ReposOwnerRepoContentsPathPutBody,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/contents/{path}"
@@ -7568,9 +7568,9 @@ class ReposClient:
         from ..models import (
             BasicError,
             FileCommit,
-            ValidationError,
             RepositoryRuleViolationError,
             ReposOwnerRepoContentsPathPutBody,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/contents/{path}"
@@ -7642,10 +7642,10 @@ class ReposClient:
 
         from ..models import (
             BasicError,
-            FileCommit,
-            ValidationError,
-            ReposOwnerRepoContentsPathDeleteBody,
             EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            FileCommit,
+            ReposOwnerRepoContentsPathDeleteBody,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/contents/{path}"
@@ -7718,10 +7718,10 @@ class ReposClient:
 
         from ..models import (
             BasicError,
-            FileCommit,
-            ValidationError,
-            ReposOwnerRepoContentsPathDeleteBody,
             EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            FileCommit,
+            ReposOwnerRepoContentsPathDeleteBody,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/contents/{path}"
@@ -7943,8 +7943,8 @@ class ReposClient:
 
         from ..models import (
             Deployment,
-            ValidationError,
             ReposOwnerRepoDeploymentsPostBody,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/deployments"
@@ -8015,8 +8015,8 @@ class ReposClient:
 
         from ..models import (
             Deployment,
-            ValidationError,
             ReposOwnerRepoDeploymentsPostBody,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/deployments"
@@ -8267,9 +8267,9 @@ class ReposClient:
         """See also: https://docs.github.com/rest/deployments/statuses#create-a-deployment-status"""
 
         from ..models import (
-            ValidationError,
             DeploymentStatus,
             ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/deployments/{deployment_id}/statuses"
@@ -8350,9 +8350,9 @@ class ReposClient:
         """See also: https://docs.github.com/rest/deployments/statuses#create-a-deployment-status"""
 
         from ..models import (
-            ValidationError,
             DeploymentStatus,
             ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/deployments/{deployment_id}/statuses"
@@ -8472,8 +8472,8 @@ class ReposClient:
 
         from ..models import (
             BasicError,
-            ValidationError,
             ReposOwnerRepoDispatchesPostBody,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/dispatches"
@@ -8537,8 +8537,8 @@ class ReposClient:
 
         from ..models import (
             BasicError,
-            ValidationError,
             ReposOwnerRepoDispatchesPostBody,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/dispatches"
@@ -9756,8 +9756,8 @@ class ReposClient:
         from ..models import (
             BasicError,
             FullRepository,
-            ValidationError,
             ReposOwnerRepoForksPostBody,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/forks"
@@ -9826,8 +9826,8 @@ class ReposClient:
         from ..models import (
             BasicError,
             FullRepository,
-            ValidationError,
             ReposOwnerRepoForksPostBody,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/forks"
@@ -9868,7 +9868,7 @@ class ReposClient:
     ) -> Response[list[Hook], list[HookType]]:
         """See also: https://docs.github.com/rest/repos/webhooks#list-repository-webhooks"""
 
-        from ..models import Hook, BasicError
+        from ..models import BasicError, Hook
 
         url = f"/repos/{owner}/{repo}/hooks"
 
@@ -9901,7 +9901,7 @@ class ReposClient:
     ) -> Response[list[Hook], list[HookType]]:
         """See also: https://docs.github.com/rest/repos/webhooks#list-repository-webhooks"""
 
-        from ..models import Hook, BasicError
+        from ..models import BasicError, Hook
 
         url = f"/repos/{owner}/{repo}/hooks"
 
@@ -9961,10 +9961,10 @@ class ReposClient:
         from typing import Union
 
         from ..models import (
-            Hook,
             BasicError,
-            ValidationError,
+            Hook,
             ReposOwnerRepoHooksPostBody,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/hooks"
@@ -10031,10 +10031,10 @@ class ReposClient:
         from typing import Union
 
         from ..models import (
-            Hook,
             BasicError,
-            ValidationError,
+            Hook,
             ReposOwnerRepoHooksPostBody,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/hooks"
@@ -10073,7 +10073,7 @@ class ReposClient:
     ) -> Response[Hook, HookType]:
         """See also: https://docs.github.com/rest/repos/webhooks#get-a-repository-webhook"""
 
-        from ..models import Hook, BasicError
+        from ..models import BasicError, Hook
 
         url = f"/repos/{owner}/{repo}/hooks/{hook_id}"
 
@@ -10099,7 +10099,7 @@ class ReposClient:
     ) -> Response[Hook, HookType]:
         """See also: https://docs.github.com/rest/repos/webhooks#get-a-repository-webhook"""
 
-        from ..models import Hook, BasicError
+        from ..models import BasicError, Hook
 
         url = f"/repos/{owner}/{repo}/hooks/{hook_id}"
 
@@ -10205,10 +10205,10 @@ class ReposClient:
         """See also: https://docs.github.com/rest/repos/webhooks#update-a-repository-webhook"""
 
         from ..models import (
-            Hook,
             BasicError,
-            ValidationError,
+            Hook,
             ReposOwnerRepoHooksHookIdPatchBody,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/hooks/{hook_id}"
@@ -10276,10 +10276,10 @@ class ReposClient:
         """See also: https://docs.github.com/rest/repos/webhooks#update-a-repository-webhook"""
 
         from ..models import (
-            Hook,
             BasicError,
-            ValidationError,
+            Hook,
             ReposOwnerRepoHooksHookIdPatchBody,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/hooks/{hook_id}"
@@ -10391,7 +10391,7 @@ class ReposClient:
     ) -> Response[WebhookConfig, WebhookConfigType]:
         """See also: https://docs.github.com/rest/repos/webhooks#update-a-webhook-configuration-for-a-repository"""
 
-        from ..models import WebhookConfig, ReposOwnerRepoHooksHookIdConfigPatchBody
+        from ..models import ReposOwnerRepoHooksHookIdConfigPatchBody, WebhookConfig
 
         url = f"/repos/{owner}/{repo}/hooks/{hook_id}/config"
 
@@ -10452,7 +10452,7 @@ class ReposClient:
     ) -> Response[WebhookConfig, WebhookConfigType]:
         """See also: https://docs.github.com/rest/repos/webhooks#update-a-webhook-configuration-for-a-repository"""
 
-        from ..models import WebhookConfig, ReposOwnerRepoHooksHookIdConfigPatchBody
+        from ..models import ReposOwnerRepoHooksHookIdConfigPatchBody, WebhookConfig
 
         url = f"/repos/{owner}/{repo}/hooks/{hook_id}/config"
 
@@ -10487,7 +10487,7 @@ class ReposClient:
     ) -> Response[list[HookDeliveryItem], list[HookDeliveryItemType]]:
         """See also: https://docs.github.com/rest/repos/webhooks#list-deliveries-for-a-repository-webhook"""
 
-        from ..models import BasicError, ValidationError, HookDeliveryItem
+        from ..models import BasicError, HookDeliveryItem, ValidationError
 
         url = f"/repos/{owner}/{repo}/hooks/{hook_id}/deliveries"
 
@@ -10522,7 +10522,7 @@ class ReposClient:
     ) -> Response[list[HookDeliveryItem], list[HookDeliveryItemType]]:
         """See also: https://docs.github.com/rest/repos/webhooks#list-deliveries-for-a-repository-webhook"""
 
-        from ..models import BasicError, ValidationError, HookDeliveryItem
+        from ..models import BasicError, HookDeliveryItem, ValidationError
 
         url = f"/repos/{owner}/{repo}/hooks/{hook_id}/deliveries"
 
@@ -10616,9 +10616,9 @@ class ReposClient:
         """See also: https://docs.github.com/rest/repos/webhooks#redeliver-a-delivery-for-a-repository-webhook"""
 
         from ..models import (
+            AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
             BasicError,
             ValidationError,
-            AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
         )
 
         url = f"/repos/{owner}/{repo}/hooks/{hook_id}/deliveries/{delivery_id}/attempts"
@@ -10651,9 +10651,9 @@ class ReposClient:
         """See also: https://docs.github.com/rest/repos/webhooks#redeliver-a-delivery-for-a-repository-webhook"""
 
         from ..models import (
+            AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
             BasicError,
             ValidationError,
-            AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
         )
 
         url = f"/repos/{owner}/{repo}/hooks/{hook_id}/deliveries/{delivery_id}/attempts"
@@ -11095,7 +11095,7 @@ class ReposClient:
     ) -> Response[DeployKey, DeployKeyType]:
         """See also: https://docs.github.com/rest/deploy-keys/deploy-keys#create-a-deploy-key"""
 
-        from ..models import DeployKey, ValidationError, ReposOwnerRepoKeysPostBody
+        from ..models import DeployKey, ReposOwnerRepoKeysPostBody, ValidationError
 
         url = f"/repos/{owner}/{repo}/keys"
 
@@ -11155,7 +11155,7 @@ class ReposClient:
     ) -> Response[DeployKey, DeployKeyType]:
         """See also: https://docs.github.com/rest/deploy-keys/deploy-keys#create-a-deploy-key"""
 
-        from ..models import DeployKey, ValidationError, ReposOwnerRepoKeysPostBody
+        from ..models import DeployKey, ReposOwnerRepoKeysPostBody, ValidationError
 
         url = f"/repos/{owner}/{repo}/keys"
 
@@ -11191,7 +11191,7 @@ class ReposClient:
     ) -> Response[DeployKey, DeployKeyType]:
         """See also: https://docs.github.com/rest/deploy-keys/deploy-keys#get-a-deploy-key"""
 
-        from ..models import DeployKey, BasicError
+        from ..models import BasicError, DeployKey
 
         url = f"/repos/{owner}/{repo}/keys/{key_id}"
 
@@ -11217,7 +11217,7 @@ class ReposClient:
     ) -> Response[DeployKey, DeployKeyType]:
         """See also: https://docs.github.com/rest/deploy-keys/deploy-keys#get-a-deploy-key"""
 
-        from ..models import DeployKey, BasicError
+        from ..models import BasicError, DeployKey
 
         url = f"/repos/{owner}/{repo}/keys/{key_id}"
 
@@ -11464,10 +11464,10 @@ class ReposClient:
         """See also: https://docs.github.com/rest/branches/branches#merge-a-branch"""
 
         from ..models import (
-            Commit,
             BasicError,
-            ValidationError,
+            Commit,
             ReposOwnerRepoMergesPostBody,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/merges"
@@ -11530,10 +11530,10 @@ class ReposClient:
         """See also: https://docs.github.com/rest/branches/branches#merge-a-branch"""
 
         from ..models import (
-            Commit,
             BasicError,
-            ValidationError,
+            Commit,
             ReposOwnerRepoMergesPostBody,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/merges"
@@ -11570,7 +11570,7 @@ class ReposClient:
     ) -> Response[Page, PageType]:
         """See also: https://docs.github.com/rest/pages/pages#get-a-apiname-pages-site"""
 
-        from ..models import Page, BasicError
+        from ..models import BasicError, Page
 
         url = f"/repos/{owner}/{repo}/pages"
 
@@ -11595,7 +11595,7 @@ class ReposClient:
     ) -> Response[Page, PageType]:
         """See also: https://docs.github.com/rest/pages/pages#get-a-apiname-pages-site"""
 
-        from ..models import Page, BasicError
+        from ..models import BasicError, Page
 
         url = f"/repos/{owner}/{repo}/pages"
 
@@ -11743,12 +11743,12 @@ class ReposClient:
 
         from ..models import (
             BasicError,
-            ValidationError,
             ReposOwnerRepoPagesPutBodyAnyof0,
             ReposOwnerRepoPagesPutBodyAnyof1,
             ReposOwnerRepoPagesPutBodyAnyof2,
             ReposOwnerRepoPagesPutBodyAnyof3,
             ReposOwnerRepoPagesPutBodyAnyof4,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/pages"
@@ -11917,12 +11917,12 @@ class ReposClient:
 
         from ..models import (
             BasicError,
-            ValidationError,
             ReposOwnerRepoPagesPutBodyAnyof0,
             ReposOwnerRepoPagesPutBodyAnyof1,
             ReposOwnerRepoPagesPutBodyAnyof2,
             ReposOwnerRepoPagesPutBodyAnyof3,
             ReposOwnerRepoPagesPutBodyAnyof4,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/pages"
@@ -12019,11 +12019,11 @@ class ReposClient:
         from typing import Union
 
         from ..models import (
-            Page,
             BasicError,
-            ValidationError,
+            Page,
             ReposOwnerRepoPagesPostBodyAnyof0,
             ReposOwnerRepoPagesPostBodyAnyof1,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/pages"
@@ -12119,11 +12119,11 @@ class ReposClient:
         from typing import Union
 
         from ..models import (
-            Page,
             BasicError,
-            ValidationError,
+            Page,
             ReposOwnerRepoPagesPostBodyAnyof0,
             ReposOwnerRepoPagesPostBodyAnyof1,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/pages"
@@ -12444,8 +12444,8 @@ class ReposClient:
         from ..models import (
             BasicError,
             PageDeployment,
-            ValidationError,
             ReposOwnerRepoPagesDeploymentsPostBody,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/pages/deployments"
@@ -12513,8 +12513,8 @@ class ReposClient:
         from ..models import (
             BasicError,
             PageDeployment,
-            ValidationError,
             ReposOwnerRepoPagesDeploymentsPostBody,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/pages/deployments"
@@ -12939,8 +12939,8 @@ class ReposClient:
 
         from ..models import (
             BasicError,
-            ValidationError,
             ReposOwnerRepoPropertiesValuesPatchBody,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/properties/values"
@@ -13002,8 +13002,8 @@ class ReposClient:
 
         from ..models import (
             BasicError,
-            ValidationError,
             ReposOwnerRepoPropertiesValuesPatchBody,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/properties/values"
@@ -13172,7 +13172,7 @@ class ReposClient:
     ) -> Response[list[Release], list[ReleaseType]]:
         """See also: https://docs.github.com/rest/releases/releases#list-releases"""
 
-        from ..models import Release, BasicError
+        from ..models import BasicError, Release
 
         url = f"/repos/{owner}/{repo}/releases"
 
@@ -13205,7 +13205,7 @@ class ReposClient:
     ) -> Response[list[Release], list[ReleaseType]]:
         """See also: https://docs.github.com/rest/releases/releases#list-releases"""
 
-        from ..models import Release, BasicError
+        from ..models import BasicError, Release
 
         url = f"/repos/{owner}/{repo}/releases"
 
@@ -13268,10 +13268,10 @@ class ReposClient:
         """See also: https://docs.github.com/rest/releases/releases#create-a-release"""
 
         from ..models import (
-            Release,
             BasicError,
-            ValidationError,
+            Release,
             ReposOwnerRepoReleasesPostBody,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/releases"
@@ -13340,10 +13340,10 @@ class ReposClient:
         """See also: https://docs.github.com/rest/releases/releases#create-a-release"""
 
         from ..models import (
-            Release,
             BasicError,
-            ValidationError,
+            Release,
             ReposOwnerRepoReleasesPostBody,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/releases"
@@ -13775,7 +13775,7 @@ class ReposClient:
     ) -> Response[Release, ReleaseType]:
         """See also: https://docs.github.com/rest/releases/releases#get-a-release-by-tag-name"""
 
-        from ..models import Release, BasicError
+        from ..models import BasicError, Release
 
         url = f"/repos/{owner}/{repo}/releases/tags/{tag}"
 
@@ -13801,7 +13801,7 @@ class ReposClient:
     ) -> Response[Release, ReleaseType]:
         """See also: https://docs.github.com/rest/releases/releases#get-a-release-by-tag-name"""
 
-        from ..models import Release, BasicError
+        from ..models import BasicError, Release
 
         url = f"/repos/{owner}/{repo}/releases/tags/{tag}"
 
@@ -13948,8 +13948,8 @@ class ReposClient:
         """See also: https://docs.github.com/rest/releases/releases#update-a-release"""
 
         from ..models import (
-            Release,
             BasicError,
+            Release,
             ReposOwnerRepoReleasesReleaseIdPatchBody,
         )
 
@@ -14020,8 +14020,8 @@ class ReposClient:
         """See also: https://docs.github.com/rest/releases/releases#update-a-release"""
 
         from ..models import (
-            Release,
             BasicError,
+            Release,
             ReposOwnerRepoReleasesReleaseIdPatchBody,
         )
 
@@ -14777,7 +14777,7 @@ class ReposClient:
     ) -> Response[RuleSuite, RuleSuiteType]:
         """See also: https://docs.github.com/rest/repos/rule-suites#get-a-repository-rule-suite"""
 
-        from ..models import RuleSuite, BasicError
+        from ..models import BasicError, RuleSuite
 
         url = f"/repos/{owner}/{repo}/rulesets/rule-suites/{rule_suite_id}"
 
@@ -14804,7 +14804,7 @@ class ReposClient:
     ) -> Response[RuleSuite, RuleSuiteType]:
         """See also: https://docs.github.com/rest/repos/rule-suites#get-a-repository-rule-suite"""
 
-        from ..models import RuleSuite, BasicError
+        from ..models import BasicError, RuleSuite
 
         url = f"/repos/{owner}/{repo}/rulesets/rule-suites/{rule_suite_id}"
 
@@ -15391,7 +15391,7 @@ class ReposClient:
     ) -> Response[Status, StatusType]:
         """See also: https://docs.github.com/rest/commits/statuses#create-a-commit-status"""
 
-        from ..models import Status, ReposOwnerRepoStatusesShaPostBody
+        from ..models import ReposOwnerRepoStatusesShaPostBody, Status
 
         url = f"/repos/{owner}/{repo}/statuses/{sha}"
 
@@ -15452,7 +15452,7 @@ class ReposClient:
     ) -> Response[Status, StatusType]:
         """See also: https://docs.github.com/rest/commits/statuses#create-a-commit-status"""
 
-        from ..models import Status, ReposOwnerRepoStatusesShaPostBody
+        from ..models import ReposOwnerRepoStatusesShaPostBody, Status
 
         url = f"/repos/{owner}/{repo}/statuses/{sha}"
 
@@ -15621,8 +15621,8 @@ class ReposClient:
 
         from ..models import (
             BasicError,
-            TagProtection,
             ReposOwnerRepoTagsProtectionPostBody,
+            TagProtection,
         )
 
         url = f"/repos/{owner}/{repo}/tags/protection"
@@ -15684,8 +15684,8 @@ class ReposClient:
 
         from ..models import (
             BasicError,
-            TagProtection,
             ReposOwnerRepoTagsProtectionPostBody,
+            TagProtection,
         )
 
         url = f"/repos/{owner}/{repo}/tags/protection"
@@ -15816,7 +15816,7 @@ class ReposClient:
     ) -> Response[list[Team], list[TeamType]]:
         """See also: https://docs.github.com/rest/repos/repos#list-repository-teams"""
 
-        from ..models import Team, BasicError
+        from ..models import BasicError, Team
 
         url = f"/repos/{owner}/{repo}/teams"
 
@@ -15849,7 +15849,7 @@ class ReposClient:
     ) -> Response[list[Team], list[TeamType]]:
         """See also: https://docs.github.com/rest/repos/repos#list-repository-teams"""
 
-        from ..models import Team, BasicError
+        from ..models import BasicError, Team
 
         url = f"/repos/{owner}/{repo}/teams"
 
@@ -15882,7 +15882,7 @@ class ReposClient:
     ) -> Response[Topic, TopicType]:
         """See also: https://docs.github.com/rest/repos/repos#get-all-repository-topics"""
 
-        from ..models import Topic, BasicError
+        from ..models import BasicError, Topic
 
         url = f"/repos/{owner}/{repo}/topics"
 
@@ -15915,7 +15915,7 @@ class ReposClient:
     ) -> Response[Topic, TopicType]:
         """See also: https://docs.github.com/rest/repos/repos#get-all-repository-topics"""
 
-        from ..models import Topic, BasicError
+        from ..models import BasicError, Topic
 
         url = f"/repos/{owner}/{repo}/topics"
 
@@ -15970,10 +15970,10 @@ class ReposClient:
         """See also: https://docs.github.com/rest/repos/repos#replace-all-repository-topics"""
 
         from ..models import (
-            Topic,
             BasicError,
-            ValidationErrorSimple,
             ReposOwnerRepoTopicsPutBody,
+            Topic,
+            ValidationErrorSimple,
         )
 
         url = f"/repos/{owner}/{repo}/topics"
@@ -16034,10 +16034,10 @@ class ReposClient:
         """See also: https://docs.github.com/rest/repos/repos#replace-all-repository-topics"""
 
         from ..models import (
-            Topic,
             BasicError,
-            ValidationErrorSimple,
             ReposOwnerRepoTopicsPutBody,
+            Topic,
+            ValidationErrorSimple,
         )
 
         url = f"/repos/{owner}/{repo}/topics"
@@ -16695,7 +16695,7 @@ class ReposClient:
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
         """See also: https://docs.github.com/rest/repos/repos#list-public-repositories"""
 
-        from ..models import ValidationError, MinimalRepository
+        from ..models import MinimalRepository, ValidationError
 
         url = "/repositories"
 
@@ -16724,7 +16724,7 @@ class ReposClient:
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
         """See also: https://docs.github.com/rest/repos/repos#list-public-repositories"""
 
-        from ..models import ValidationError, MinimalRepository
+        from ..models import MinimalRepository, ValidationError
 
         url = "/repositories"
 
@@ -16891,8 +16891,8 @@ class ReposClient:
         from ..models import (
             BasicError,
             FullRepository,
-            ValidationError,
             UserReposPostBody,
+            ValidationError,
         )
 
         url = "/user/repos"
@@ -16975,8 +16975,8 @@ class ReposClient:
         from ..models import (
             BasicError,
             FullRepository,
-            ValidationError,
             UserReposPostBody,
+            ValidationError,
         )
 
         url = "/user/repos"

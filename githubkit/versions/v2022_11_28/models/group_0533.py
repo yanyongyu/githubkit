@@ -9,171 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
+from datetime import datetime
+from typing import Union
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-
-class WebhookIssueCommentDeletedPropIssueAllof1(GitHubModel):
-    """WebhookIssueCommentDeletedPropIssueAllof1"""
-
-    active_lock_reason: Missing[Union[str, None]] = Field(default=UNSET)
-    assignee: Union[WebhookIssueCommentDeletedPropIssueAllof1PropAssignee, None] = (
-        Field(title="User")
-    )
-    assignees: Missing[
-        list[Union[WebhookIssueCommentDeletedPropIssueAllof1PropAssigneesItems, None]]
-    ] = Field(default=UNSET)
-    author_association: Missing[str] = Field(default=UNSET)
-    body: Missing[Union[str, None]] = Field(default=UNSET)
-    closed_at: Missing[Union[str, None]] = Field(default=UNSET)
-    comments: Missing[int] = Field(default=UNSET)
-    comments_url: Missing[str] = Field(default=UNSET)
-    created_at: Missing[str] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: Missing[int] = Field(default=UNSET)
-    labels: list[WebhookIssueCommentDeletedPropIssueAllof1PropLabelsItems] = Field()
-    labels_url: Missing[str] = Field(default=UNSET)
-    locked: bool = Field()
-    milestone: Missing[
-        Union[WebhookIssueCommentDeletedPropIssueAllof1PropMilestone, None]
-    ] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    number: Missing[int] = Field(default=UNSET)
-    performed_via_github_app: Missing[
-        Union[WebhookIssueCommentDeletedPropIssueAllof1PropPerformedViaGithubApp, None]
-    ] = Field(default=UNSET)
-    reactions: Missing[WebhookIssueCommentDeletedPropIssueAllof1PropReactions] = Field(
-        default=UNSET
-    )
-    repository_url: Missing[str] = Field(default=UNSET)
-    state: Literal["open", "closed"] = Field(
-        description="State of the issue; either 'open' or 'closed'"
-    )
-    timeline_url: Missing[str] = Field(default=UNSET)
-    title: Missing[str] = Field(default=UNSET)
-    updated_at: Missing[str] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-    user: Missing[WebhookIssueCommentDeletedPropIssueAllof1PropUser] = Field(
-        default=UNSET
-    )
-
-
-class WebhookIssueCommentDeletedPropIssueAllof1PropAssignee(GitHubModel):
-    """User"""
-
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field()
-    login: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization", "Mannequin"]] = Field(
-        default=UNSET
-    )
-    url: Missing[str] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
-
-
-class WebhookIssueCommentDeletedPropIssueAllof1PropAssigneesItems(GitHubModel):
-    """WebhookIssueCommentDeletedPropIssueAllof1PropAssigneesItems"""
-
-
-class WebhookIssueCommentDeletedPropIssueAllof1PropLabelsItems(GitHubModel):
-    """Label"""
-
-    color: str = Field(
-        description="6-character hex code, without the leading #, identifying the color"
-    )
-    default: bool = Field()
-    description: Union[str, None] = Field()
-    id: int = Field()
-    name: str = Field(description="The name of the label.")
-    node_id: str = Field()
-    url: str = Field(description="URL for the label")
-
-
-class WebhookIssueCommentDeletedPropIssueAllof1PropMilestone(GitHubModel):
-    """WebhookIssueCommentDeletedPropIssueAllof1PropMilestone"""
-
-
-class WebhookIssueCommentDeletedPropIssueAllof1PropPerformedViaGithubApp(GitHubModel):
-    """WebhookIssueCommentDeletedPropIssueAllof1PropPerformedViaGithubApp"""
-
-
-class WebhookIssueCommentDeletedPropIssueAllof1PropReactions(GitHubModel):
-    """WebhookIssueCommentDeletedPropIssueAllof1PropReactions"""
-
-    plus_one: Missing[int] = Field(default=UNSET, alias="+1")
-    minus_one: Missing[int] = Field(default=UNSET, alias="-1")
-    confused: Missing[int] = Field(default=UNSET)
-    eyes: Missing[int] = Field(default=UNSET)
-    heart: Missing[int] = Field(default=UNSET)
-    hooray: Missing[int] = Field(default=UNSET)
-    laugh: Missing[int] = Field(default=UNSET)
-    rocket: Missing[int] = Field(default=UNSET)
-    total_count: Missing[int] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-
-
-class WebhookIssueCommentDeletedPropIssueAllof1PropUser(GitHubModel):
-    """WebhookIssueCommentDeletedPropIssueAllof1PropUser"""
-
-    avatar_url: Missing[str] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: Missing[int] = Field(default=UNSET)
-    login: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[str] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(WebhookIssueCommentDeletedPropIssueAllof1)
-model_rebuild(WebhookIssueCommentDeletedPropIssueAllof1PropAssignee)
-model_rebuild(WebhookIssueCommentDeletedPropIssueAllof1PropAssigneesItems)
-model_rebuild(WebhookIssueCommentDeletedPropIssueAllof1PropLabelsItems)
-model_rebuild(WebhookIssueCommentDeletedPropIssueAllof1PropMilestone)
-model_rebuild(WebhookIssueCommentDeletedPropIssueAllof1PropPerformedViaGithubApp)
-model_rebuild(WebhookIssueCommentDeletedPropIssueAllof1PropReactions)
-model_rebuild(WebhookIssueCommentDeletedPropIssueAllof1PropUser)
-
-__all__ = (
-    "WebhookIssueCommentDeletedPropIssueAllof1",
-    "WebhookIssueCommentDeletedPropIssueAllof1PropAssignee",
-    "WebhookIssueCommentDeletedPropIssueAllof1PropAssigneesItems",
-    "WebhookIssueCommentDeletedPropIssueAllof1PropLabelsItems",
-    "WebhookIssueCommentDeletedPropIssueAllof1PropMilestone",
-    "WebhookIssueCommentDeletedPropIssueAllof1PropPerformedViaGithubApp",
-    "WebhookIssueCommentDeletedPropIssueAllof1PropReactions",
-    "WebhookIssueCommentDeletedPropIssueAllof1PropUser",
+from .group_0532 import (
+    WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropOwner,
+    WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropPermissions,
 )
+
+
+class WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubApp(GitHubModel):
+    """App
+
+    GitHub apps are a new way to extend GitHub. They can be installed directly on
+    organizations and user accounts and granted access to specific repositories.
+    They come with granular permissions and built-in webhooks. GitHub apps are first
+    class actors within GitHub.
+    """
+
+    created_at: Union[datetime, None] = Field()
+    description: Union[str, None] = Field()
+    events: Missing[list[str]] = Field(
+        default=UNSET, description="The list of events for the GitHub app"
+    )
+    external_url: Union[str, None] = Field()
+    html_url: str = Field()
+    id: Union[int, None] = Field(description="Unique identifier of the GitHub app")
+    name: str = Field(description="The name of the GitHub app")
+    node_id: str = Field()
+    owner: Union[
+        WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropOwner,
+        None,
+    ] = Field(title="User")
+    permissions: Missing[
+        WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropPermissions
+    ] = Field(default=UNSET, description="The set of permissions for the GitHub app")
+    slug: Missing[str] = Field(
+        default=UNSET, description="The slug name of the GitHub app"
+    )
+    updated_at: Union[datetime, None] = Field()
+
+
+model_rebuild(WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubApp)
+
+__all__ = ("WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubApp",)

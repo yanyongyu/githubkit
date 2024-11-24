@@ -10,16 +10,19 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import TypedDict, NotRequired
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0136 import RepositoryRuleCommitMessagePatternPropParametersType
 
 
-class RepositoryRuleCommitMessagePatternPropParametersType(TypedDict):
-    """RepositoryRuleCommitMessagePatternPropParameters"""
+class RepositoryRuleCommitMessagePatternType(TypedDict):
+    """commit_message_pattern
 
-    name: NotRequired[str]
-    negate: NotRequired[bool]
-    operator: Literal["starts_with", "ends_with", "contains", "regex"]
-    pattern: str
+    Parameters to be used for the commit_message_pattern rule
+    """
+
+    type: Literal["commit_message_pattern"]
+    parameters: NotRequired[RepositoryRuleCommitMessagePatternPropParametersType]
 
 
-__all__ = ("RepositoryRuleCommitMessagePatternPropParametersType",)
+__all__ = ("RepositoryRuleCommitMessagePatternType",)

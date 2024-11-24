@@ -9,45 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
-from datetime import datetime
-from typing_extensions import TypedDict, NotRequired
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0274 import HookResponseType
-
-
-class WebhookPingPropHookType(TypedDict):
-    """Webhook
-
-    The webhook that is being pinged
-    """
-
-    active: bool
-    app_id: NotRequired[int]
-    config: WebhookPingPropHookPropConfigType
-    created_at: datetime
-    deliveries_url: NotRequired[str]
-    events: list[str]
-    id: int
-    last_response: NotRequired[HookResponseType]
-    name: Literal["web"]
-    ping_url: NotRequired[str]
-    test_url: NotRequired[str]
-    type: str
-    updated_at: datetime
-    url: NotRequired[str]
+from .group_0002 import SimpleUserType
+from .group_0387 import OrganizationSimpleWebhooksType
+from .group_0388 import RepositoryWebhooksType
+from .group_0615 import WebhookPingPropHookType
 
 
-class WebhookPingPropHookPropConfigType(TypedDict):
-    """WebhookPingPropHookPropConfig"""
+class WebhookPingType(TypedDict):
+    """WebhookPing"""
 
-    content_type: NotRequired[str]
-    insecure_ssl: NotRequired[Union[str, float]]
-    secret: NotRequired[str]
-    url: NotRequired[str]
+    hook: NotRequired[WebhookPingPropHookType]
+    hook_id: NotRequired[int]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: NotRequired[SimpleUserType]
+    zen: NotRequired[str]
 
 
-__all__ = (
-    "WebhookPingPropHookPropConfigType",
-    "WebhookPingPropHookType",
-)
+__all__ = ("WebhookPingType",)

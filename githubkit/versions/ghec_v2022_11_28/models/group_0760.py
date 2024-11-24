@@ -13,16 +13,16 @@ from typing import Union
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 from .group_0152 import (
-    RepositoryRuleOneof15,
-    RepositoryRuleOneof17,
     RepositoryRuleCreation,
     RepositoryRuleDeletion,
     RepositoryRuleNonFastForward,
+    RepositoryRuleOneof15,
+    RepositoryRuleOneof17,
     RepositoryRuleRequiredSignatures,
 )
 from .group_0153 import RepositoryRuleUpdate

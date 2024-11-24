@@ -14,32 +14,32 @@ from weakref import ref
 
 from pydantic import BaseModel
 
-from githubkit.utils import UNSET, exclude_unset
 from githubkit.compat import model_dump, type_validate_python
 from githubkit.typing import Missing, UnsetType
+from githubkit.utils import UNSET, exclude_unset
 
 if TYPE_CHECKING:
     from datetime import datetime
 
     from githubkit import GitHubCore
-    from githubkit.utils import UNSET
-    from githubkit.typing import Missing
     from githubkit.response import Response
+    from githubkit.typing import Missing
+    from githubkit.utils import UNSET
 
-    from ..types import (
-        MetadataType,
-        SnapshotType,
-        SnapshotPropJobType,
-        SnapshotPropDetectorType,
-        SnapshotPropManifestsType,
-        DependencyGraphSpdxSbomType,
-        DependencyGraphDiffItemsType,
-        ReposOwnerRepoDependencyGraphSnapshotsPostResponse201Type,
-    )
     from ..models import (
-        DependencyGraphSpdxSbom,
         DependencyGraphDiffItems,
+        DependencyGraphSpdxSbom,
         ReposOwnerRepoDependencyGraphSnapshotsPostResponse201,
+    )
+    from ..types import (
+        DependencyGraphDiffItemsType,
+        DependencyGraphSpdxSbomType,
+        MetadataType,
+        ReposOwnerRepoDependencyGraphSnapshotsPostResponse201Type,
+        SnapshotPropDetectorType,
+        SnapshotPropJobType,
+        SnapshotPropManifestsType,
+        SnapshotType,
     )
 
 
@@ -225,8 +225,8 @@ class DependencyGraphClient:
         """See also: https://docs.github.com/rest/dependency-graph/dependency-submission#create-a-snapshot-of-dependencies-for-a-repository"""
 
         from ..models import (
-            Snapshot,
             ReposOwnerRepoDependencyGraphSnapshotsPostResponse201,
+            Snapshot,
         )
 
         url = f"/repos/{owner}/{repo}/dependency-graph/snapshots"
@@ -299,8 +299,8 @@ class DependencyGraphClient:
         """See also: https://docs.github.com/rest/dependency-graph/dependency-submission#create-a-snapshot-of-dependencies-for-a-repository"""
 
         from ..models import (
-            Snapshot,
             ReposOwnerRepoDependencyGraphSnapshotsPostResponse201,
+            Snapshot,
         )
 
         url = f"/repos/{owner}/{repo}/dependency-graph/snapshots"

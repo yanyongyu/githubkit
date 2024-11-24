@@ -12,19 +12,19 @@ from __future__ import annotations
 from typing import TYPE_CHECKING, Optional
 from weakref import ref
 
-from githubkit.utils import UNSET, exclude_unset
 from githubkit.typing import Missing
+from githubkit.utils import UNSET, exclude_unset
 
 if TYPE_CHECKING:
     from datetime import date
 
     from githubkit import GitHubCore
-    from githubkit.utils import UNSET
-    from githubkit.typing import Missing
     from githubkit.response import Response
+    from githubkit.typing import Missing
+    from githubkit.utils import UNSET
 
-    from ..types import RootType, ApiOverviewType
-    from ..models import Root, ApiOverview
+    from ..models import ApiOverview, Root
+    from ..types import ApiOverviewType, RootType
 
 
 class MetaClient:

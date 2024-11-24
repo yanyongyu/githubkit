@@ -9,25 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
-from typing_extensions import TypedDict, NotRequired
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 from .group_0002 import SimpleUserType
 
 
-class OrganizationProgrammaticAccessGrantType(TypedDict):
-    """Organization Programmatic Access Grant
+class OrganizationProgrammaticAccessGrantRequestType(TypedDict):
+    """Simple Organization Programmatic Access Grant Request
 
-    Minimal representation of an organization programmatic access grant for
+    Minimal representation of an organization programmatic access grant request for
     enumerations
     """
 
     id: int
+    reason: Union[str, None]
     owner: SimpleUserType
     repository_selection: Literal["none", "all", "subset"]
     repositories_url: str
-    permissions: OrganizationProgrammaticAccessGrantPropPermissionsType
-    access_granted_at: str
+    permissions: OrganizationProgrammaticAccessGrantRequestPropPermissionsType
+    created_at: str
     token_id: int
     token_name: str
     token_expired: bool
@@ -35,37 +36,43 @@ class OrganizationProgrammaticAccessGrantType(TypedDict):
     token_last_used_at: Union[str, None]
 
 
-class OrganizationProgrammaticAccessGrantPropPermissionsType(TypedDict):
-    """OrganizationProgrammaticAccessGrantPropPermissions
+class OrganizationProgrammaticAccessGrantRequestPropPermissionsType(TypedDict):
+    """OrganizationProgrammaticAccessGrantRequestPropPermissions
 
     Permissions requested, categorized by type of permission.
     """
 
     organization: NotRequired[
-        OrganizationProgrammaticAccessGrantPropPermissionsPropOrganizationType
+        OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganizationType
     ]
     repository: NotRequired[
-        OrganizationProgrammaticAccessGrantPropPermissionsPropRepositoryType
+        OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepositoryType
     ]
-    other: NotRequired[OrganizationProgrammaticAccessGrantPropPermissionsPropOtherType]
+    other: NotRequired[
+        OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOtherType
+    ]
 
 
-class OrganizationProgrammaticAccessGrantPropPermissionsPropOrganizationType(TypedDict):
-    """OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization"""
+class OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganizationType(
+    TypedDict
+):
+    """OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganization"""
 
 
-class OrganizationProgrammaticAccessGrantPropPermissionsPropRepositoryType(TypedDict):
-    """OrganizationProgrammaticAccessGrantPropPermissionsPropRepository"""
+class OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepositoryType(
+    TypedDict
+):
+    """OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepository"""
 
 
-class OrganizationProgrammaticAccessGrantPropPermissionsPropOtherType(TypedDict):
-    """OrganizationProgrammaticAccessGrantPropPermissionsPropOther"""
+class OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOtherType(TypedDict):
+    """OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOther"""
 
 
 __all__ = (
-    "OrganizationProgrammaticAccessGrantPropPermissionsPropOrganizationType",
-    "OrganizationProgrammaticAccessGrantPropPermissionsPropOtherType",
-    "OrganizationProgrammaticAccessGrantPropPermissionsPropRepositoryType",
-    "OrganizationProgrammaticAccessGrantPropPermissionsType",
-    "OrganizationProgrammaticAccessGrantType",
+    "OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganizationType",
+    "OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOtherType",
+    "OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepositoryType",
+    "OrganizationProgrammaticAccessGrantRequestPropPermissionsType",
+    "OrganizationProgrammaticAccessGrantRequestType",
 )

@@ -9,20 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from datetime import datetime
 from typing_extensions import TypedDict
 
-from .group_0002 import SimpleUserType
 
+class ProjectColumnType(TypedDict):
+    """Project Column
 
-class ProjectCollaboratorPermissionType(TypedDict):
-    """Project Collaborator Permission
-
-    Project Collaborator Permission
+    Project columns contain cards of work.
     """
 
-    permission: str
-    user: Union[None, SimpleUserType]
+    url: str
+    project_url: str
+    cards_url: str
+    id: int
+    node_id: str
+    name: str
+    created_at: datetime
+    updated_at: datetime
 
 
-__all__ = ("ProjectCollaboratorPermissionType",)
+__all__ = ("ProjectColumnType",)

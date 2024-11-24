@@ -18,8 +18,8 @@ if TYPE_CHECKING:
     from githubkit import GitHubCore
     from githubkit.response import Response
 
-    from ..types import RateLimitOverviewType
     from ..models import RateLimitOverview
+    from ..types import RateLimitOverviewType
 
 
 class RateLimitClient:

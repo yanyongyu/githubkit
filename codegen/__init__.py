@@ -1,25 +1,25 @@
-import sys
-import shutil
-from typing import Any
 from pathlib import Path
+import shutil
+import sys
+from typing import Any
 
 import httpx
 from jinja2 import Environment, PackageLoader
 
-from .log import logger as logger
 from .config import Config
+from .log import logger as logger
 from .parser import (
+    EndpointData,
     ModelGroup,
     WebhookData,
-    EndpointData,
-    sanitize,
     kebab_case,
-    snake_case,
-    pascal_case,
     parse_openapi_spec,
+    pascal_case,
+    sanitize,
+    snake_case,
 )
-from .source import get_source
 from .parser.schemas import UnionSchema
+from .source import get_source
 
 if sys.version_info >= (3, 11):
     import tomllib

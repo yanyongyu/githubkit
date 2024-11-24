@@ -9,23 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0036 import SimpleRepositoryType
 
 
-class CodespaceMachineType(TypedDict):
-    """Codespace machine
+class CodeSecurityConfigurationRepositoriesType(TypedDict):
+    """CodeSecurityConfigurationRepositories
 
-    A description of the machine powering a codespace.
+    Repositories associated with a code security configuration and attachment status
     """
 
-    name: str
-    display_name: str
-    operating_system: str
-    storage_in_bytes: int
-    memory_in_bytes: int
-    cpus: int
-    prebuild_availability: Union[None, Literal["none", "ready", "in_progress"]]
+    status: NotRequired[
+        Literal[
+            "attached",
+            "attaching",
+            "detached",
+            "removed",
+            "enforced",
+            "failed",
+            "updating",
+            "removed_by_enterprise",
+        ]
+    ]
+    repository: NotRequired[SimpleRepositoryType]
 
 
-__all__ = ("CodespaceMachineType",)
+__all__ = ("CodeSecurityConfigurationRepositoriesType",)

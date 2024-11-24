@@ -9,24 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict, NotRequired
-
-from .group_0111 import RepositoryRulesetConditionsPropRefNameType
-from .group_0113 import (
-    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType,
-)
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgRulesetConditionsOneof0Type(TypedDict):
-    """repository_name_and_ref_name
+class RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType(
+    TypedDict
+):
+    """RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty"""
 
-    Conditions to target repositories by name and refs by name
+    include: NotRequired[list[RepositoryRulesetConditionsRepositoryPropertySpecType]]
+    exclude: NotRequired[list[RepositoryRulesetConditionsRepositoryPropertySpecType]]
+
+
+class RepositoryRulesetConditionsRepositoryPropertySpecType(TypedDict):
+    """Repository ruleset property targeting definition
+
+    Parameters for a targeting a repository property
     """
 
-    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
-    repository_name: (
-        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType
-    )
+    name: str
+    property_values: list[str]
+    source: NotRequired[Literal["custom", "system"]]
 
 
-__all__ = ("OrgRulesetConditionsOneof0Type",)
+__all__ = (
+    "RepositoryRulesetConditionsRepositoryPropertySpecType",
+    "RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType",
+)

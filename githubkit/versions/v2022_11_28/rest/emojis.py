@@ -18,8 +18,8 @@ if TYPE_CHECKING:
     from githubkit import GitHubCore
     from githubkit.response import Response
 
-    from ..types import EmojisGetResponse200Type
     from ..models import EmojisGetResponse200
+    from ..types import EmojisGetResponse200Type
 
 
 class EmojisClient:

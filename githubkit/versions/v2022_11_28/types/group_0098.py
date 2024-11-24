@@ -9,46 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
-from typing_extensions import TypedDict, NotRequired
+from datetime import datetime
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0028 import TeamSimpleType
+from .group_0002 import SimpleUserType
 
 
-class TeamRoleAssignmentType(TypedDict):
-    """A Role Assignment for a Team
+class OrganizationRoleType(TypedDict):
+    """Organization Role
 
-    The Relationship a Team has with a role.
+    Organization roles
     """
 
-    assignment: NotRequired[Literal["direct", "indirect", "mixed"]]
     id: int
-    node_id: str
     name: str
-    slug: str
-    description: Union[str, None]
-    privacy: NotRequired[str]
-    notification_setting: NotRequired[str]
-    permission: str
-    permissions: NotRequired[TeamRoleAssignmentPropPermissionsType]
-    url: str
-    html_url: str
-    members_url: str
-    repositories_url: str
-    parent: Union[None, TeamSimpleType]
+    description: NotRequired[Union[str, None]]
+    base_role: NotRequired[
+        Union[None, Literal["read", "triage", "write", "maintain", "admin"]]
+    ]
+    source: NotRequired[
+        Union[None, Literal["Organization", "Enterprise", "Predefined"]]
+    ]
+    permissions: list[str]
+    organization: Union[None, SimpleUserType]
+    created_at: datetime
+    updated_at: datetime
 
 
-class TeamRoleAssignmentPropPermissionsType(TypedDict):
-    """TeamRoleAssignmentPropPermissions"""
+class OrgsOrgOrganizationRolesGetResponse200Type(TypedDict):
+    """OrgsOrgOrganizationRolesGetResponse200"""
 
-    pull: bool
-    triage: bool
-    push: bool
-    maintain: bool
-    admin: bool
+    total_count: NotRequired[int]
+    roles: NotRequired[list[OrganizationRoleType]]
 
 
 __all__ = (
-    "TeamRoleAssignmentPropPermissionsType",
-    "TeamRoleAssignmentType",
+    "OrganizationRoleType",
+    "OrgsOrgOrganizationRolesGetResponse200Type",
 )

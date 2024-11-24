@@ -9,20 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Literal
-from typing_extensions import TypedDict, NotRequired
+from typing_extensions import TypedDict
 
 
-class InteractionLimitType(TypedDict):
-    """Interaction Restrictions
+class InteractionLimitResponseType(TypedDict):
+    """Interaction Limits
 
-    Limit interactions to a specific type of user for a specified duration
+    Interaction limit settings.
     """
 
     limit: Literal["existing_users", "contributors_only", "collaborators_only"]
-    expiry: NotRequired[
-        Literal["one_day", "three_days", "one_week", "one_month", "six_months"]
-    ]
+    origin: str
+    expires_at: datetime
 
 
-__all__ = ("InteractionLimitType",)
+__all__ = ("InteractionLimitResponseType",)

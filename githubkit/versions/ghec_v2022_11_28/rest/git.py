@@ -14,37 +14,37 @@ from weakref import ref
 
 from pydantic import BaseModel
 
-from githubkit.utils import UNSET, exclude_unset
 from githubkit.compat import model_dump, type_validate_python
 from githubkit.typing import Missing, UnsetType
+from githubkit.utils import UNSET, exclude_unset
 
 if TYPE_CHECKING:
     from typing import Literal
 
     from githubkit import GitHubCore
-    from githubkit.utils import UNSET
-    from githubkit.typing import Missing
     from githubkit.response import Response
+    from githubkit.typing import Missing
+    from githubkit.utils import UNSET
 
+    from ..models import Blob, GitCommit, GitRef, GitTag, GitTree, ShortBlob
     from ..types import (
         BlobType,
+        GitCommitType,
         GitRefType,
         GitTagType,
         GitTreeType,
-        GitCommitType,
-        ShortBlobType,
-        ReposOwnerRepoGitRefsPostBodyType,
-        ReposOwnerRepoGitTagsPostBodyType,
         ReposOwnerRepoGitBlobsPostBodyType,
-        ReposOwnerRepoGitTreesPostBodyType,
+        ReposOwnerRepoGitCommitsPostBodyPropAuthorType,
+        ReposOwnerRepoGitCommitsPostBodyPropCommitterType,
         ReposOwnerRepoGitCommitsPostBodyType,
+        ReposOwnerRepoGitRefsPostBodyType,
         ReposOwnerRepoGitRefsRefPatchBodyType,
         ReposOwnerRepoGitTagsPostBodyPropTaggerType,
-        ReposOwnerRepoGitCommitsPostBodyPropAuthorType,
+        ReposOwnerRepoGitTagsPostBodyType,
         ReposOwnerRepoGitTreesPostBodyPropTreeItemsType,
-        ReposOwnerRepoGitCommitsPostBodyPropCommitterType,
+        ReposOwnerRepoGitTreesPostBodyType,
+        ShortBlobType,
     )
-    from ..models import Blob, GitRef, GitTag, GitTree, GitCommit, ShortBlob
 
 
 class GitClient:
@@ -98,11 +98,11 @@ class GitClient:
         from typing import Union
 
         from ..models import (
-            ShortBlob,
             BasicError,
-            ValidationError,
             RepositoryRuleViolationError,
             ReposOwnerRepoGitBlobsPostBody,
+            ShortBlob,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/git/blobs"
@@ -168,11 +168,11 @@ class GitClient:
         from typing import Union
 
         from ..models import (
-            ShortBlob,
             BasicError,
-            ValidationError,
             RepositoryRuleViolationError,
             ReposOwnerRepoGitBlobsPostBody,
+            ShortBlob,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/git/blobs"
@@ -212,7 +212,7 @@ class GitClient:
     ) -> Response[Blob, BlobType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/git/blobs#get-a-blob"""
 
-        from ..models import Blob, BasicError, ValidationError
+        from ..models import BasicError, Blob, ValidationError
 
         url = f"/repos/{owner}/{repo}/git/blobs/{file_sha}"
 
@@ -241,7 +241,7 @@ class GitClient:
     ) -> Response[Blob, BlobType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/git/blobs#get-a-blob"""
 
-        from ..models import Blob, BasicError, ValidationError
+        from ..models import BasicError, Blob, ValidationError
 
         url = f"/repos/{owner}/{repo}/git/blobs/{file_sha}"
 
@@ -298,10 +298,10 @@ class GitClient:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/git/commits#create-a-commit"""
 
         from ..models import (
-            GitCommit,
             BasicError,
-            ValidationError,
+            GitCommit,
             ReposOwnerRepoGitCommitsPostBody,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/git/commits"
@@ -368,10 +368,10 @@ class GitClient:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/git/commits#create-a-commit"""
 
         from ..models import (
-            GitCommit,
             BasicError,
-            ValidationError,
+            GitCommit,
             ReposOwnerRepoGitCommitsPostBody,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/git/commits"
@@ -410,7 +410,7 @@ class GitClient:
     ) -> Response[GitCommit, GitCommitType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/git/commits#get-a-commit-object"""
 
-        from ..models import GitCommit, BasicError
+        from ..models import BasicError, GitCommit
 
         url = f"/repos/{owner}/{repo}/git/commits/{commit_sha}"
 
@@ -437,7 +437,7 @@ class GitClient:
     ) -> Response[GitCommit, GitCommitType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/git/commits#get-a-commit-object"""
 
-        from ..models import GitCommit, BasicError
+        from ..models import BasicError, GitCommit
 
         url = f"/repos/{owner}/{repo}/git/commits/{commit_sha}"
 
@@ -464,7 +464,7 @@ class GitClient:
     ) -> Response[list[GitRef], list[GitRefType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/git/refs#list-matching-references"""
 
-        from ..models import GitRef, BasicError
+        from ..models import BasicError, GitRef
 
         url = f"/repos/{owner}/{repo}/git/matching-refs/{ref}"
 
@@ -490,7 +490,7 @@ class GitClient:
     ) -> Response[list[GitRef], list[GitRefType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/git/refs#list-matching-references"""
 
-        from ..models import GitRef, BasicError
+        from ..models import BasicError, GitRef
 
         url = f"/repos/{owner}/{repo}/git/matching-refs/{ref}"
 
@@ -516,7 +516,7 @@ class GitClient:
     ) -> Response[GitRef, GitRefType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/git/refs#get-a-reference"""
 
-        from ..models import GitRef, BasicError
+        from ..models import BasicError, GitRef
 
         url = f"/repos/{owner}/{repo}/git/ref/{ref}"
 
@@ -543,7 +543,7 @@ class GitClient:
     ) -> Response[GitRef, GitRefType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/git/refs#get-a-reference"""
 
-        from ..models import GitRef, BasicError
+        from ..models import BasicError, GitRef
 
         url = f"/repos/{owner}/{repo}/git/ref/{ref}"
 
@@ -594,10 +594,10 @@ class GitClient:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/git/refs#create-a-reference"""
 
         from ..models import (
-            GitRef,
             BasicError,
-            ValidationError,
+            GitRef,
             ReposOwnerRepoGitRefsPostBody,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/git/refs"
@@ -659,10 +659,10 @@ class GitClient:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/git/refs#create-a-reference"""
 
         from ..models import (
-            GitRef,
             BasicError,
-            ValidationError,
+            GitRef,
             ReposOwnerRepoGitRefsPostBody,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/git/refs"
@@ -779,10 +779,10 @@ class GitClient:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/git/refs#update-a-reference"""
 
         from ..models import (
-            GitRef,
             BasicError,
-            ValidationError,
+            GitRef,
             ReposOwnerRepoGitRefsRefPatchBody,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/git/refs/{ref}"
@@ -847,10 +847,10 @@ class GitClient:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/git/refs#update-a-reference"""
 
         from ..models import (
-            GitRef,
             BasicError,
-            ValidationError,
+            GitRef,
             ReposOwnerRepoGitRefsRefPatchBody,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/git/refs/{ref}"
@@ -915,10 +915,10 @@ class GitClient:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/git/tags#create-a-tag-object"""
 
         from ..models import (
-            GitTag,
             BasicError,
-            ValidationError,
+            GitTag,
             ReposOwnerRepoGitTagsPostBody,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/git/tags"
@@ -983,10 +983,10 @@ class GitClient:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/git/tags#create-a-tag-object"""
 
         from ..models import (
-            GitTag,
             BasicError,
-            ValidationError,
+            GitTag,
             ReposOwnerRepoGitTagsPostBody,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/git/tags"
@@ -1024,7 +1024,7 @@ class GitClient:
     ) -> Response[GitTag, GitTagType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/git/tags#get-a-tag"""
 
-        from ..models import GitTag, BasicError
+        from ..models import BasicError, GitTag
 
         url = f"/repos/{owner}/{repo}/git/tags/{tag_sha}"
 
@@ -1051,7 +1051,7 @@ class GitClient:
     ) -> Response[GitTag, GitTagType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/git/tags#get-a-tag"""
 
-        from ..models import GitTag, BasicError
+        from ..models import BasicError, GitTag
 
         url = f"/repos/{owner}/{repo}/git/tags/{tag_sha}"
 
@@ -1102,10 +1102,10 @@ class GitClient:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/git/trees#create-a-tree"""
 
         from ..models import (
-            GitTree,
             BasicError,
-            ValidationError,
+            GitTree,
             ReposOwnerRepoGitTreesPostBody,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/git/trees"
@@ -1169,10 +1169,10 @@ class GitClient:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/git/trees#create-a-tree"""
 
         from ..models import (
-            GitTree,
             BasicError,
-            ValidationError,
+            GitTree,
             ReposOwnerRepoGitTreesPostBody,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/git/trees"
@@ -1213,7 +1213,7 @@ class GitClient:
     ) -> Response[GitTree, GitTreeType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/git/trees#get-a-tree"""
 
-        from ..models import GitTree, BasicError, ValidationError
+        from ..models import BasicError, GitTree, ValidationError
 
         url = f"/repos/{owner}/{repo}/git/trees/{tree_sha}"
 
@@ -1247,7 +1247,7 @@ class GitClient:
     ) -> Response[GitTree, GitTreeType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/git/trees#get-a-tree"""
 
-        from ..models import GitTree, BasicError, ValidationError
+        from ..models import BasicError, GitTree, ValidationError
 
         url = f"/repos/{owner}/{repo}/git/trees/{tree_sha}"
 

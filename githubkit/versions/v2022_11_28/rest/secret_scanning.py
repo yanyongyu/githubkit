@@ -14,31 +14,31 @@ from weakref import ref
 
 from pydantic import BaseModel
 
-from githubkit.utils import UNSET, exclude_unset
 from githubkit.compat import model_dump, type_validate_python
 from githubkit.typing import Missing, UnsetType
+from githubkit.utils import UNSET, exclude_unset
 
 if TYPE_CHECKING:
-    from typing import Union, Literal
+    from typing import Literal, Union
 
     from githubkit import GitHubCore
-    from githubkit.utils import UNSET
-    from githubkit.typing import Missing
     from githubkit.response import Response
+    from githubkit.typing import Missing
+    from githubkit.utils import UNSET
 
-    from ..types import (
-        SecretScanningAlertType,
-        SecretScanningLocationType,
-        OrganizationSecretScanningAlertType,
-        SecretScanningPushProtectionBypassType,
-        ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyType,
-        ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyType,
-    )
     from ..models import (
+        OrganizationSecretScanningAlert,
         SecretScanningAlert,
         SecretScanningLocation,
-        OrganizationSecretScanningAlert,
         SecretScanningPushProtectionBypass,
+    )
+    from ..types import (
+        OrganizationSecretScanningAlertType,
+        ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyType,
+        ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyType,
+        SecretScanningAlertType,
+        SecretScanningLocationType,
+        SecretScanningPushProtectionBypassType,
     )
 
 
@@ -80,8 +80,8 @@ class SecretScanningClient:
 
         from ..models import (
             BasicError,
-            OrganizationSecretScanningAlert,
             EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            OrganizationSecretScanningAlert,
         )
 
         url = f"/enterprises/{enterprise}/secret-scanning/alerts"
@@ -137,8 +137,8 @@ class SecretScanningClient:
 
         from ..models import (
             BasicError,
-            OrganizationSecretScanningAlert,
             EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            OrganizationSecretScanningAlert,
         )
 
         url = f"/enterprises/{enterprise}/secret-scanning/alerts"
@@ -195,8 +195,8 @@ class SecretScanningClient:
 
         from ..models import (
             BasicError,
-            OrganizationSecretScanningAlert,
             EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            OrganizationSecretScanningAlert,
         )
 
         url = f"/orgs/{org}/secret-scanning/alerts"
@@ -254,8 +254,8 @@ class SecretScanningClient:
 
         from ..models import (
             BasicError,
-            OrganizationSecretScanningAlert,
             EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            OrganizationSecretScanningAlert,
         )
 
         url = f"/orgs/{org}/secret-scanning/alerts"
@@ -311,8 +311,8 @@ class SecretScanningClient:
         """See also: https://docs.github.com/rest/secret-scanning/secret-scanning#list-secret-scanning-alerts-for-a-repository"""
 
         from ..models import (
-            SecretScanningAlert,
             EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            SecretScanningAlert,
         )
 
         url = f"/repos/{owner}/{repo}/secret-scanning/alerts"
@@ -367,8 +367,8 @@ class SecretScanningClient:
         """See also: https://docs.github.com/rest/secret-scanning/secret-scanning#list-secret-scanning-alerts-for-a-repository"""
 
         from ..models import (
-            SecretScanningAlert,
             EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            SecretScanningAlert,
         )
 
         url = f"/repos/{owner}/{repo}/secret-scanning/alerts"
@@ -412,8 +412,8 @@ class SecretScanningClient:
         """See also: https://docs.github.com/rest/secret-scanning/secret-scanning#get-a-secret-scanning-alert"""
 
         from ..models import (
-            SecretScanningAlert,
             EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            SecretScanningAlert,
         )
 
         url = f"/repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}"
@@ -441,8 +441,8 @@ class SecretScanningClient:
         """See also: https://docs.github.com/rest/secret-scanning/secret-scanning#get-a-secret-scanning-alert"""
 
         from ..models import (
-            SecretScanningAlert,
             EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            SecretScanningAlert,
         )
 
         url = f"/repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}"
@@ -503,9 +503,9 @@ class SecretScanningClient:
         """See also: https://docs.github.com/rest/secret-scanning/secret-scanning#update-a-secret-scanning-alert"""
 
         from ..models import (
-            SecretScanningAlert,
-            ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBody,
             EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBody,
+            SecretScanningAlert,
         )
 
         url = f"/repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}"
@@ -578,9 +578,9 @@ class SecretScanningClient:
         """See also: https://docs.github.com/rest/secret-scanning/secret-scanning#update-a-secret-scanning-alert"""
 
         from ..models import (
-            SecretScanningAlert,
-            ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBody,
             EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBody,
+            SecretScanningAlert,
         )
 
         url = f"/repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}"
@@ -622,8 +622,8 @@ class SecretScanningClient:
         """See also: https://docs.github.com/rest/secret-scanning/secret-scanning#list-locations-for-a-secret-scanning-alert"""
 
         from ..models import (
-            SecretScanningLocation,
             EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            SecretScanningLocation,
         )
 
         url = f"/repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}/locations"
@@ -659,8 +659,8 @@ class SecretScanningClient:
         """See also: https://docs.github.com/rest/secret-scanning/secret-scanning#list-locations-for-a-secret-scanning-alert"""
 
         from ..models import (
-            SecretScanningLocation,
             EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            SecretScanningLocation,
         )
 
         url = f"/repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}/locations"
@@ -725,9 +725,9 @@ class SecretScanningClient:
         """See also: https://docs.github.com/rest/secret-scanning/secret-scanning#create-a-push-protection-bypass"""
 
         from ..models import (
-            SecretScanningPushProtectionBypass,
             EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
             ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody,
+            SecretScanningPushProtectionBypass,
         )
 
         url = f"/repos/{owner}/{repo}/secret-scanning/push-protection-bypasses"
@@ -798,9 +798,9 @@ class SecretScanningClient:
         """See also: https://docs.github.com/rest/secret-scanning/secret-scanning#create-a-push-protection-bypass"""
 
         from ..models import (
-            SecretScanningPushProtectionBypass,
             EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
             ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody,
+            SecretScanningPushProtectionBypass,
         )
 
         url = f"/repos/{owner}/{repo}/secret-scanning/push-protection-bypasses"

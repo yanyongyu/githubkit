@@ -12,17 +12,17 @@ from __future__ import annotations
 from typing import TYPE_CHECKING, Optional
 from weakref import ref
 
-from githubkit.utils import UNSET, exclude_unset
 from githubkit.typing import Missing
+from githubkit.utils import UNSET, exclude_unset
 
 if TYPE_CHECKING:
     from githubkit import GitHubCore
-    from githubkit.utils import UNSET
-    from githubkit.typing import Missing
     from githubkit.response import Response
+    from githubkit.typing import Missing
+    from githubkit.utils import UNSET
 
-    from ..types import ServerStatisticsItemsType
     from ..models import ServerStatisticsItems
+    from ..types import ServerStatisticsItemsType
 
 
 class ServerStatisticsClient:

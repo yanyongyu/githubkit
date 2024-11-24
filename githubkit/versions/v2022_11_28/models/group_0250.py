@@ -9,45 +9,67 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
-from githubkit.utils import UNSET
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class Contributor(GitHubModel):
-    """Contributor
+class RepositoryRuleViolationError(GitHubModel):
+    """RepositoryRuleViolationError
 
-    Contributor
+    Repository rule violation was detected
     """
 
-    login: Missing[str] = Field(default=UNSET)
-    id: Missing[int] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    avatar_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[Union[str, None]] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    type: str = Field()
-    site_admin: Missing[bool] = Field(default=UNSET)
-    contributions: int = Field()
-    email: Missing[str] = Field(default=UNSET)
-    name: Missing[str] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
+    message: Missing[str] = Field(default=UNSET)
+    documentation_url: Missing[str] = Field(default=UNSET)
+    status: Missing[str] = Field(default=UNSET)
+    metadata: Missing[RepositoryRuleViolationErrorPropMetadata] = Field(default=UNSET)
 
 
-model_rebuild(Contributor)
+class RepositoryRuleViolationErrorPropMetadata(GitHubModel):
+    """RepositoryRuleViolationErrorPropMetadata"""
 
-__all__ = ("Contributor",)
+    secret_scanning: Missing[
+        RepositoryRuleViolationErrorPropMetadataPropSecretScanning
+    ] = Field(default=UNSET)
+
+
+class RepositoryRuleViolationErrorPropMetadataPropSecretScanning(GitHubModel):
+    """RepositoryRuleViolationErrorPropMetadataPropSecretScanning"""
+
+    bypass_placeholders: Missing[
+        list[
+            RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItems
+        ]
+    ] = Field(default=UNSET)
+
+
+class RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItems(
+    GitHubModel
+):
+    """RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholders
+    Items
+    """
+
+    placeholder_id: Missing[str] = Field(
+        default=UNSET,
+        description="The ID of the push protection bypass placeholder. This value is returned on any push protected routes.",
+    )
+    token_type: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(RepositoryRuleViolationError)
+model_rebuild(RepositoryRuleViolationErrorPropMetadata)
+model_rebuild(RepositoryRuleViolationErrorPropMetadataPropSecretScanning)
+model_rebuild(
+    RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItems
+)
+
+__all__ = (
+    "RepositoryRuleViolationError",
+    "RepositoryRuleViolationErrorPropMetadata",
+    "RepositoryRuleViolationErrorPropMetadataPropSecretScanning",
+    "RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItems",
+)

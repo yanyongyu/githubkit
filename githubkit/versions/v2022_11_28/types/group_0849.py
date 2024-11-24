@@ -10,20 +10,20 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Union
-from typing_extensions import TypedDict, NotRequired
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgHooksHookIdPatchBodyType(TypedDict):
-    """OrgsOrgHooksHookIdPatchBody"""
+class OrgsOrgHooksPostBodyType(TypedDict):
+    """OrgsOrgHooksPostBody"""
 
-    config: NotRequired[OrgsOrgHooksHookIdPatchBodyPropConfigType]
+    name: str
+    config: OrgsOrgHooksPostBodyPropConfigType
     events: NotRequired[list[str]]
     active: NotRequired[bool]
-    name: NotRequired[str]
 
 
-class OrgsOrgHooksHookIdPatchBodyPropConfigType(TypedDict):
-    """OrgsOrgHooksHookIdPatchBodyPropConfig
+class OrgsOrgHooksPostBodyPropConfigType(TypedDict):
+    """OrgsOrgHooksPostBodyPropConfig
 
     Key/value pairs to provide settings for this webhook.
     """
@@ -32,9 +32,11 @@ class OrgsOrgHooksHookIdPatchBodyPropConfigType(TypedDict):
     content_type: NotRequired[str]
     secret: NotRequired[str]
     insecure_ssl: NotRequired[Union[str, float]]
+    username: NotRequired[str]
+    password: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgHooksHookIdPatchBodyPropConfigType",
-    "OrgsOrgHooksHookIdPatchBodyType",
+    "OrgsOrgHooksPostBodyPropConfigType",
+    "OrgsOrgHooksPostBodyType",
 )

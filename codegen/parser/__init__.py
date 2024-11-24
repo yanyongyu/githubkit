@@ -1,5 +1,5 @@
-from typing import TYPE_CHECKING, Optional
 from contextvars import ContextVar
+from typing import TYPE_CHECKING, Optional
 
 import httpx
 from openapi_pydantic import OpenAPI
@@ -31,20 +31,20 @@ def add_schema(ref: httpx.URL, schema: "SchemaData"):
     _schemas.get()[ref] = schema
 
 
+from .data import EndpointData as EndpointData
 from .data import ModelGroup as ModelGroup
 from .data import OpenAPIData as OpenAPIData
 from .data import WebhookData as WebhookData
-from .data import EndpointData as EndpointData
-from .utils import sanitize as sanitize
-from .utils import kebab_case as kebab_case
-from .utils import snake_case as snake_case
-from .utils import pascal_case as pascal_case
-from .utils import merge_inplace
-from .utils import fix_reserved_words as fix_reserved_words
-from .models import parse_models
-from .schemas import SchemaData, ModelSchema, parse_schema
-from .webhooks import parse_webhook
 from .endpoints import parse_endpoint
+from .models import parse_models
+from .schemas import ModelSchema, SchemaData, parse_schema
+from .utils import fix_reserved_words as fix_reserved_words
+from .utils import kebab_case as kebab_case
+from .utils import merge_inplace
+from .utils import pascal_case as pascal_case
+from .utils import sanitize as sanitize
+from .utils import snake_case as snake_case
+from .webhooks import parse_webhook
 
 
 def parse_openapi_spec(source: "Source", override: "Override") -> OpenAPIData:

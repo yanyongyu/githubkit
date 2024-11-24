@@ -10,115 +10,63 @@ See https://github.com/github/rest-api-description for more information.
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from .fork import ForkEvent as ForkEvent
-    from .fork import fork_action_types as fork_action_types
-    from .meta import MetaEvent as MetaEvent
-    from .meta import meta_action_types as meta_action_types
-    from .ping import PingEvent as PingEvent
-    from .ping import ping_action_types as ping_action_types
-    from .push import PushEvent as PushEvent
-    from .push import push_action_types as push_action_types
-    from .star import StarEvent as StarEvent
-    from .star import star_action_types as star_action_types
-    from .team import TeamEvent as TeamEvent
-    from .team import team_action_types as team_action_types
-    from .label import LabelEvent as LabelEvent
-    from .label import label_action_types as label_action_types
-    from .watch import WatchEvent as WatchEvent
-    from .watch import watch_action_types as watch_action_types
-    from ._types import WebhookEvent as WebhookEvent
-    from ._types import webhook_event_types as webhook_event_types
-    from ._types import webhook_action_types as webhook_action_types
-    from .create import CreateEvent as CreateEvent
-    from .create import create_action_types as create_action_types
-    from .delete import DeleteEvent as DeleteEvent
-    from .delete import delete_action_types as delete_action_types
-    from .gollum import GollumEvent as GollumEvent
-    from .gollum import gollum_action_types as gollum_action_types
-    from .issues import IssuesEvent as IssuesEvent
-    from .issues import issues_action_types as issues_action_types
-    from .member import MemberEvent as MemberEvent
-    from .member import member_action_types as member_action_types
-    from .public import PublicEvent as PublicEvent
-    from .public import public_action_types as public_action_types
-    from .status import StatusEvent as StatusEvent
-    from .status import status_action_types as status_action_types
-    from .package import PackageEvent as PackageEvent
-    from .package import package_action_types as package_action_types
-    from .project import ProjectEvent as ProjectEvent
-    from .project import project_action_types as project_action_types
-    from .release import ReleaseEvent as ReleaseEvent
-    from .release import release_action_types as release_action_types
-    from .team_add import TeamAddEvent as TeamAddEvent
-    from .team_add import team_add_action_types as team_add_action_types
-    from .check_run import CheckRunEvent as CheckRunEvent
-    from .check_run import check_run_action_types as check_run_action_types
-    from .milestone import MilestoneEvent as MilestoneEvent
-    from .milestone import milestone_action_types as milestone_action_types
-    from .org_block import OrgBlockEvent as OrgBlockEvent
-    from .org_block import org_block_action_types as org_block_action_types
     from ._namespace import VALID_EVENT_NAMES as VALID_EVENT_NAMES
     from ._namespace import EventNameType as EventNameType
     from ._namespace import WebhookNamespace as WebhookNamespace
-    from .deploy_key import DeployKeyEvent as DeployKeyEvent
-    from .deploy_key import deploy_key_action_types as deploy_key_action_types
-    from .deployment import DeploymentEvent as DeploymentEvent
-    from .deployment import deployment_action_types as deployment_action_types
-    from .discussion import DiscussionEvent as DiscussionEvent
-    from .discussion import discussion_action_types as discussion_action_types
-    from .membership import MembershipEvent as MembershipEvent
-    from .membership import membership_action_types as membership_action_types
-    from .page_build import PageBuildEvent as PageBuildEvent
-    from .page_build import page_build_action_types as page_build_action_types
-    from .repository import RepositoryEvent as RepositoryEvent
-    from .repository import repository_action_types as repository_action_types
-    from .sub_issues import SubIssuesEvent as SubIssuesEvent
-    from .sub_issues import sub_issues_action_types as sub_issues_action_types
+    from ._types import WebhookEvent as WebhookEvent
+    from ._types import webhook_action_types as webhook_action_types
+    from ._types import webhook_event_types as webhook_event_types
+    from .branch_protection_configuration import (
+        BranchProtectionConfigurationEvent as BranchProtectionConfigurationEvent,
+    )
+    from .branch_protection_configuration import (
+        branch_protection_configuration_action_types as branch_protection_configuration_action_types,
+    )
+    from .branch_protection_rule import (
+        BranchProtectionRuleEvent as BranchProtectionRuleEvent,
+    )
+    from .branch_protection_rule import (
+        branch_protection_rule_action_types as branch_protection_rule_action_types,
+    )
+    from .check_run import CheckRunEvent as CheckRunEvent
+    from .check_run import check_run_action_types as check_run_action_types
     from .check_suite import CheckSuiteEvent as CheckSuiteEvent
     from .check_suite import check_suite_action_types as check_suite_action_types
-    from .merge_group import MergeGroupEvent as MergeGroupEvent
-    from .merge_group import merge_group_action_types as merge_group_action_types
-    from .projects_v2 import ProjectsV2Event as ProjectsV2Event
-    from .projects_v2 import projects_v2_action_types as projects_v2_action_types
-    from .sponsorship import SponsorshipEvent as SponsorshipEvent
-    from .sponsorship import sponsorship_action_types as sponsorship_action_types
-    from .installation import InstallationEvent as InstallationEvent
-    from .installation import installation_action_types as installation_action_types
-    from .organization import OrganizationEvent as OrganizationEvent
-    from .organization import organization_action_types as organization_action_types
-    from .project_card import ProjectCardEvent as ProjectCardEvent
-    from .project_card import project_card_action_types as project_card_action_types
-    from .pull_request import PullRequestEvent as PullRequestEvent
-    from .pull_request import pull_request_action_types as pull_request_action_types
-    from .workflow_job import WorkflowJobEvent as WorkflowJobEvent
-    from .workflow_job import workflow_job_action_types as workflow_job_action_types
-    from .workflow_run import WorkflowRunEvent as WorkflowRunEvent
-    from .workflow_run import workflow_run_action_types as workflow_run_action_types
-    from .issue_comment import IssueCommentEvent as IssueCommentEvent
-    from .issue_comment import issue_comment_action_types as issue_comment_action_types
+    from .code_scanning_alert import CodeScanningAlertEvent as CodeScanningAlertEvent
+    from .code_scanning_alert import (
+        code_scanning_alert_action_types as code_scanning_alert_action_types,
+    )
     from .commit_comment import CommitCommentEvent as CommitCommentEvent
     from .commit_comment import (
         commit_comment_action_types as commit_comment_action_types,
     )
-    from .project_column import ProjectColumnEvent as ProjectColumnEvent
-    from .project_column import (
-        project_column_action_types as project_column_action_types,
-    )
+    from .create import CreateEvent as CreateEvent
+    from .create import create_action_types as create_action_types
     from .custom_property import CustomPropertyEvent as CustomPropertyEvent
     from .custom_property import (
         custom_property_action_types as custom_property_action_types,
     )
+    from .custom_property_values import (
+        CustomPropertyValuesEvent as CustomPropertyValuesEvent,
+    )
+    from .custom_property_values import (
+        custom_property_values_action_types as custom_property_values_action_types,
+    )
+    from .delete import DeleteEvent as DeleteEvent
+    from .delete import delete_action_types as delete_action_types
     from .dependabot_alert import DependabotAlertEvent as DependabotAlertEvent
     from .dependabot_alert import (
         dependabot_alert_action_types as dependabot_alert_action_types,
     )
-    from .projects_v2_item import ProjectsV2ItemEvent as ProjectsV2ItemEvent
-    from .projects_v2_item import (
-        projects_v2_item_action_types as projects_v2_item_action_types,
+    from .deploy_key import DeployKeyEvent as DeployKeyEvent
+    from .deploy_key import deploy_key_action_types as deploy_key_action_types
+    from .deployment import DeploymentEvent as DeploymentEvent
+    from .deployment import deployment_action_types as deployment_action_types
+    from .deployment_protection_rule import (
+        DeploymentProtectionRuleEvent as DeploymentProtectionRuleEvent,
     )
-    from .registry_package import RegistryPackageEvent as RegistryPackageEvent
-    from .registry_package import (
-        registry_package_action_types as registry_package_action_types,
+    from .deployment_protection_rule import (
+        deployment_protection_rule_action_types as deployment_protection_rule_action_types,
     )
     from .deployment_review import DeploymentReviewEvent as DeploymentReviewEvent
     from .deployment_review import (
@@ -128,38 +76,134 @@ if TYPE_CHECKING:
     from .deployment_status import (
         deployment_status_action_types as deployment_status_action_types,
     )
-    from .repository_import import RepositoryImportEvent as RepositoryImportEvent
-    from .repository_import import (
-        repository_import_action_types as repository_import_action_types,
-    )
-    from .security_advisory import SecurityAdvisoryEvent as SecurityAdvisoryEvent
-    from .security_advisory import (
-        security_advisory_action_types as security_advisory_action_types,
-    )
-    from .workflow_dispatch import WorkflowDispatchEvent as WorkflowDispatchEvent
-    from .workflow_dispatch import (
-        workflow_dispatch_action_types as workflow_dispatch_action_types,
-    )
+    from .discussion import DiscussionEvent as DiscussionEvent
+    from .discussion import discussion_action_types as discussion_action_types
     from .discussion_comment import DiscussionCommentEvent as DiscussionCommentEvent
     from .discussion_comment import (
         discussion_comment_action_types as discussion_comment_action_types,
     )
-    from .repository_ruleset import RepositoryRulesetEvent as RepositoryRulesetEvent
-    from .repository_ruleset import (
-        repository_ruleset_action_types as repository_ruleset_action_types,
+    from .exemption_request_push_ruleset import (
+        ExemptionRequestPushRulesetEvent as ExemptionRequestPushRulesetEvent,
     )
-    from .code_scanning_alert import CodeScanningAlertEvent as CodeScanningAlertEvent
-    from .code_scanning_alert import (
-        code_scanning_alert_action_types as code_scanning_alert_action_types,
+    from .exemption_request_push_ruleset import (
+        exemption_request_push_ruleset_action_types as exemption_request_push_ruleset_action_types,
+    )
+    from .exemption_request_secret_scanning import (
+        ExemptionRequestSecretScanningEvent as ExemptionRequestSecretScanningEvent,
+    )
+    from .exemption_request_secret_scanning import (
+        exemption_request_secret_scanning_action_types as exemption_request_secret_scanning_action_types,
+    )
+    from .fork import ForkEvent as ForkEvent
+    from .fork import fork_action_types as fork_action_types
+    from .github_app_authorization import (
+        GithubAppAuthorizationEvent as GithubAppAuthorizationEvent,
+    )
+    from .github_app_authorization import (
+        github_app_authorization_action_types as github_app_authorization_action_types,
+    )
+    from .gollum import GollumEvent as GollumEvent
+    from .gollum import gollum_action_types as gollum_action_types
+    from .installation import InstallationEvent as InstallationEvent
+    from .installation import installation_action_types as installation_action_types
+    from .installation_repositories import (
+        InstallationRepositoriesEvent as InstallationRepositoriesEvent,
+    )
+    from .installation_repositories import (
+        installation_repositories_action_types as installation_repositories_action_types,
     )
     from .installation_target import InstallationTargetEvent as InstallationTargetEvent
     from .installation_target import (
         installation_target_action_types as installation_target_action_types,
     )
+    from .issue_comment import IssueCommentEvent as IssueCommentEvent
+    from .issue_comment import issue_comment_action_types as issue_comment_action_types
+    from .issues import IssuesEvent as IssuesEvent
+    from .issues import issues_action_types as issues_action_types
+    from .label import LabelEvent as LabelEvent
+    from .label import label_action_types as label_action_types
+    from .marketplace_purchase import (
+        MarketplacePurchaseEvent as MarketplacePurchaseEvent,
+    )
+    from .marketplace_purchase import (
+        marketplace_purchase_action_types as marketplace_purchase_action_types,
+    )
+    from .member import MemberEvent as MemberEvent
+    from .member import member_action_types as member_action_types
+    from .membership import MembershipEvent as MembershipEvent
+    from .membership import membership_action_types as membership_action_types
+    from .merge_group import MergeGroupEvent as MergeGroupEvent
+    from .merge_group import merge_group_action_types as merge_group_action_types
+    from .meta import MetaEvent as MetaEvent
+    from .meta import meta_action_types as meta_action_types
+    from .milestone import MilestoneEvent as MilestoneEvent
+    from .milestone import milestone_action_types as milestone_action_types
+    from .org_block import OrgBlockEvent as OrgBlockEvent
+    from .org_block import org_block_action_types as org_block_action_types
+    from .organization import OrganizationEvent as OrganizationEvent
+    from .organization import organization_action_types as organization_action_types
+    from .package import PackageEvent as PackageEvent
+    from .package import package_action_types as package_action_types
+    from .page_build import PageBuildEvent as PageBuildEvent
+    from .page_build import page_build_action_types as page_build_action_types
+    from .personal_access_token_request import (
+        PersonalAccessTokenRequestEvent as PersonalAccessTokenRequestEvent,
+    )
+    from .personal_access_token_request import (
+        personal_access_token_request_action_types as personal_access_token_request_action_types,
+    )
+    from .ping import PingEvent as PingEvent
+    from .ping import ping_action_types as ping_action_types
+    from .project import ProjectEvent as ProjectEvent
+    from .project import project_action_types as project_action_types
+    from .project_card import ProjectCardEvent as ProjectCardEvent
+    from .project_card import project_card_action_types as project_card_action_types
+    from .project_column import ProjectColumnEvent as ProjectColumnEvent
+    from .project_column import (
+        project_column_action_types as project_column_action_types,
+    )
+    from .projects_v2 import ProjectsV2Event as ProjectsV2Event
+    from .projects_v2 import projects_v2_action_types as projects_v2_action_types
+    from .projects_v2_item import ProjectsV2ItemEvent as ProjectsV2ItemEvent
+    from .projects_v2_item import (
+        projects_v2_item_action_types as projects_v2_item_action_types,
+    )
+    from .projects_v2_status_update import (
+        ProjectsV2StatusUpdateEvent as ProjectsV2StatusUpdateEvent,
+    )
+    from .projects_v2_status_update import (
+        projects_v2_status_update_action_types as projects_v2_status_update_action_types,
+    )
+    from .public import PublicEvent as PublicEvent
+    from .public import public_action_types as public_action_types
+    from .pull_request import PullRequestEvent as PullRequestEvent
+    from .pull_request import pull_request_action_types as pull_request_action_types
     from .pull_request_review import PullRequestReviewEvent as PullRequestReviewEvent
     from .pull_request_review import (
         pull_request_review_action_types as pull_request_review_action_types,
     )
+    from .pull_request_review_comment import (
+        PullRequestReviewCommentEvent as PullRequestReviewCommentEvent,
+    )
+    from .pull_request_review_comment import (
+        pull_request_review_comment_action_types as pull_request_review_comment_action_types,
+    )
+    from .pull_request_review_thread import (
+        PullRequestReviewThreadEvent as PullRequestReviewThreadEvent,
+    )
+    from .pull_request_review_thread import (
+        pull_request_review_thread_action_types as pull_request_review_thread_action_types,
+    )
+    from .push import PushEvent as PushEvent
+    from .push import push_action_types as push_action_types
+    from .registry_package import RegistryPackageEvent as RegistryPackageEvent
+    from .registry_package import (
+        registry_package_action_types as registry_package_action_types,
+    )
+    from .release import ReleaseEvent as ReleaseEvent
+    from .release import release_action_types as release_action_types
+    from .repository import RepositoryEvent as RepositoryEvent
+    from .repository import repository_action_types as repository_action_types
     from .repository_advisory import RepositoryAdvisoryEvent as RepositoryAdvisoryEvent
     from .repository_advisory import (
         repository_advisory_action_types as repository_advisory_action_types,
@@ -168,83 +212,13 @@ if TYPE_CHECKING:
     from .repository_dispatch import (
         repository_dispatch_action_types as repository_dispatch_action_types,
     )
-    from .marketplace_purchase import (
-        MarketplacePurchaseEvent as MarketplacePurchaseEvent,
+    from .repository_import import RepositoryImportEvent as RepositoryImportEvent
+    from .repository_import import (
+        repository_import_action_types as repository_import_action_types,
     )
-    from .marketplace_purchase import (
-        marketplace_purchase_action_types as marketplace_purchase_action_types,
-    )
-    from .secret_scanning_alert import (
-        SecretScanningAlertEvent as SecretScanningAlertEvent,
-    )
-    from .secret_scanning_alert import (
-        secret_scanning_alert_action_types as secret_scanning_alert_action_types,
-    )
-    from .security_and_analysis import (
-        SecurityAndAnalysisEvent as SecurityAndAnalysisEvent,
-    )
-    from .security_and_analysis import (
-        security_and_analysis_action_types as security_and_analysis_action_types,
-    )
-    from .branch_protection_rule import (
-        BranchProtectionRuleEvent as BranchProtectionRuleEvent,
-    )
-    from .branch_protection_rule import (
-        branch_protection_rule_action_types as branch_protection_rule_action_types,
-    )
-    from .custom_property_values import (
-        CustomPropertyValuesEvent as CustomPropertyValuesEvent,
-    )
-    from .custom_property_values import (
-        custom_property_values_action_types as custom_property_values_action_types,
-    )
-    from .github_app_authorization import (
-        GithubAppAuthorizationEvent as GithubAppAuthorizationEvent,
-    )
-    from .github_app_authorization import (
-        github_app_authorization_action_types as github_app_authorization_action_types,
-    )
-    from .installation_repositories import (
-        InstallationRepositoriesEvent as InstallationRepositoriesEvent,
-    )
-    from .installation_repositories import (
-        installation_repositories_action_types as installation_repositories_action_types,
-    )
-    from .projects_v2_status_update import (
-        ProjectsV2StatusUpdateEvent as ProjectsV2StatusUpdateEvent,
-    )
-    from .projects_v2_status_update import (
-        projects_v2_status_update_action_types as projects_v2_status_update_action_types,
-    )
-    from .deployment_protection_rule import (
-        DeploymentProtectionRuleEvent as DeploymentProtectionRuleEvent,
-    )
-    from .deployment_protection_rule import (
-        deployment_protection_rule_action_types as deployment_protection_rule_action_types,
-    )
-    from .pull_request_review_thread import (
-        PullRequestReviewThreadEvent as PullRequestReviewThreadEvent,
-    )
-    from .pull_request_review_thread import (
-        pull_request_review_thread_action_types as pull_request_review_thread_action_types,
-    )
-    from .pull_request_review_comment import (
-        PullRequestReviewCommentEvent as PullRequestReviewCommentEvent,
-    )
-    from .pull_request_review_comment import (
-        pull_request_review_comment_action_types as pull_request_review_comment_action_types,
-    )
-    from .personal_access_token_request import (
-        PersonalAccessTokenRequestEvent as PersonalAccessTokenRequestEvent,
-    )
-    from .personal_access_token_request import (
-        personal_access_token_request_action_types as personal_access_token_request_action_types,
-    )
-    from .exemption_request_push_ruleset import (
-        ExemptionRequestPushRulesetEvent as ExemptionRequestPushRulesetEvent,
-    )
-    from .exemption_request_push_ruleset import (
-        exemption_request_push_ruleset_action_types as exemption_request_push_ruleset_action_types,
+    from .repository_ruleset import RepositoryRulesetEvent as RepositoryRulesetEvent
+    from .repository_ruleset import (
+        repository_ruleset_action_types as repository_ruleset_action_types,
     )
     from .repository_vulnerability_alert import (
         RepositoryVulnerabilityAlertEvent as RepositoryVulnerabilityAlertEvent,
@@ -252,24 +226,50 @@ if TYPE_CHECKING:
     from .repository_vulnerability_alert import (
         repository_vulnerability_alert_action_types as repository_vulnerability_alert_action_types,
     )
+    from .secret_scanning_alert import (
+        SecretScanningAlertEvent as SecretScanningAlertEvent,
+    )
+    from .secret_scanning_alert import (
+        secret_scanning_alert_action_types as secret_scanning_alert_action_types,
+    )
     from .secret_scanning_alert_location import (
         SecretScanningAlertLocationEvent as SecretScanningAlertLocationEvent,
     )
     from .secret_scanning_alert_location import (
         secret_scanning_alert_location_action_types as secret_scanning_alert_location_action_types,
     )
-    from .branch_protection_configuration import (
-        BranchProtectionConfigurationEvent as BranchProtectionConfigurationEvent,
+    from .security_advisory import SecurityAdvisoryEvent as SecurityAdvisoryEvent
+    from .security_advisory import (
+        security_advisory_action_types as security_advisory_action_types,
     )
-    from .branch_protection_configuration import (
-        branch_protection_configuration_action_types as branch_protection_configuration_action_types,
+    from .security_and_analysis import (
+        SecurityAndAnalysisEvent as SecurityAndAnalysisEvent,
     )
-    from .exemption_request_secret_scanning import (
-        ExemptionRequestSecretScanningEvent as ExemptionRequestSecretScanningEvent,
+    from .security_and_analysis import (
+        security_and_analysis_action_types as security_and_analysis_action_types,
     )
-    from .exemption_request_secret_scanning import (
-        exemption_request_secret_scanning_action_types as exemption_request_secret_scanning_action_types,
+    from .sponsorship import SponsorshipEvent as SponsorshipEvent
+    from .sponsorship import sponsorship_action_types as sponsorship_action_types
+    from .star import StarEvent as StarEvent
+    from .star import star_action_types as star_action_types
+    from .status import StatusEvent as StatusEvent
+    from .status import status_action_types as status_action_types
+    from .sub_issues import SubIssuesEvent as SubIssuesEvent
+    from .sub_issues import sub_issues_action_types as sub_issues_action_types
+    from .team import TeamEvent as TeamEvent
+    from .team import team_action_types as team_action_types
+    from .team_add import TeamAddEvent as TeamAddEvent
+    from .team_add import team_add_action_types as team_add_action_types
+    from .watch import WatchEvent as WatchEvent
+    from .watch import watch_action_types as watch_action_types
+    from .workflow_dispatch import WorkflowDispatchEvent as WorkflowDispatchEvent
+    from .workflow_dispatch import (
+        workflow_dispatch_action_types as workflow_dispatch_action_types,
     )
+    from .workflow_job import WorkflowJobEvent as WorkflowJobEvent
+    from .workflow_job import workflow_job_action_types as workflow_job_action_types
+    from .workflow_run import WorkflowRunEvent as WorkflowRunEvent
+    from .workflow_run import workflow_run_action_types as workflow_run_action_types
 else:
     __lazy_vars__ = {
         ".branch_protection_configuration": (

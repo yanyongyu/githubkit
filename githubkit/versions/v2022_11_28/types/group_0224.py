@@ -9,19 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict, NotRequired
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class CodeScanningDefaultSetupUpdateResponseType(TypedDict):
-    """CodeScanningDefaultSetupUpdateResponse
+class CodeScanningDefaultSetupUpdateType(TypedDict):
+    """CodeScanningDefaultSetupUpdate
 
-    You can use `run_url` to track the status of the run. This includes a property
-    status and conclusion.
-    You should not rely on this always being an actions workflow run object.
+    Configuration for code scanning default setup.
     """
 
-    run_id: NotRequired[int]
-    run_url: NotRequired[str]
+    state: NotRequired[Literal["configured", "not-configured"]]
+    query_suite: NotRequired[Literal["default", "extended"]]
+    languages: NotRequired[
+        list[
+            Literal[
+                "c-cpp",
+                "csharp",
+                "go",
+                "java-kotlin",
+                "javascript-typescript",
+                "python",
+                "ruby",
+                "swift",
+            ]
+        ]
+    ]
 
 
-__all__ = ("CodeScanningDefaultSetupUpdateResponseType",)
+__all__ = ("CodeScanningDefaultSetupUpdateType",)

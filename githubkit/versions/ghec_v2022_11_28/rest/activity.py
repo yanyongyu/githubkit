@@ -14,50 +14,50 @@ from weakref import ref
 
 from pydantic import BaseModel
 
-from githubkit.utils import UNSET, exclude_unset
 from githubkit.compat import model_dump, type_validate_python
 from githubkit.typing import Missing, UnsetType
+from githubkit.utils import UNSET, exclude_unset
 
 if TYPE_CHECKING:
-    from typing import Union, Literal
     from datetime import datetime
+    from typing import Literal, Union
 
     from githubkit import GitHubCore
-    from githubkit.utils import UNSET
-    from githubkit.typing import Missing
     from githubkit.response import Response
+    from githubkit.typing import Missing
+    from githubkit.utils import UNSET
 
+    from ..models import (
+        Event,
+        Feed,
+        MinimalRepository,
+        NotificationsPutResponse202,
+        Repository,
+        RepositorySubscription,
+        ReposOwnerRepoNotificationsPutResponse202,
+        SimpleUser,
+        Stargazer,
+        StarredRepository,
+        Thread,
+        ThreadSubscription,
+    )
     from ..types import (
-        FeedType,
         EventType,
-        ThreadType,
-        StargazerType,
-        RepositoryType,
-        SimpleUserType,
+        FeedType,
         MinimalRepositoryType,
-        StarredRepositoryType,
-        ThreadSubscriptionType,
         NotificationsPutBodyType,
-        RepositorySubscriptionType,
         NotificationsPutResponse202Type,
-        ReposOwnerRepoSubscriptionPutBodyType,
+        NotificationsThreadsThreadIdSubscriptionPutBodyType,
+        RepositorySubscriptionType,
+        RepositoryType,
         ReposOwnerRepoNotificationsPutBodyType,
         ReposOwnerRepoNotificationsPutResponse202Type,
-        NotificationsThreadsThreadIdSubscriptionPutBodyType,
-    )
-    from ..models import (
-        Feed,
-        Event,
-        Thread,
-        Stargazer,
-        Repository,
-        SimpleUser,
-        MinimalRepository,
-        StarredRepository,
-        ThreadSubscription,
-        RepositorySubscription,
-        NotificationsPutResponse202,
-        ReposOwnerRepoNotificationsPutResponse202,
+        ReposOwnerRepoSubscriptionPutBodyType,
+        SimpleUserType,
+        StargazerType,
+        StarredRepositoryType,
+        ThreadSubscriptionType,
+        ThreadType,
     )
 
 
@@ -86,9 +86,9 @@ class ActivityClient:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/events#list-public-events"""
 
         from ..models import (
-            Event,
             BasicError,
             EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            Event,
         )
 
         url = "/events"
@@ -122,9 +122,9 @@ class ActivityClient:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/events#list-public-events"""
 
         from ..models import (
-            Event,
             BasicError,
             EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            Event,
         )
 
         url = "/events"
@@ -199,7 +199,7 @@ class ActivityClient:
     ) -> Response[list[Event], list[EventType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/events#list-public-events-for-a-network-of-repositories"""
 
-        from ..models import Event, BasicError
+        from ..models import BasicError, Event
 
         url = f"/networks/{owner}/{repo}/events"
 
@@ -233,7 +233,7 @@ class ActivityClient:
     ) -> Response[list[Event], list[EventType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/events#list-public-events-for-a-network-of-repositories"""
 
-        from ..models import Event, BasicError
+        from ..models import BasicError, Event
 
         url = f"/networks/{owner}/{repo}/events"
 
@@ -269,7 +269,7 @@ class ActivityClient:
     ) -> Response[list[Thread], list[ThreadType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/notifications#list-notifications-for-the-authenticated-user"""
 
-        from ..models import Thread, BasicError, ValidationError
+        from ..models import BasicError, Thread, ValidationError
 
         url = "/notifications"
 
@@ -310,7 +310,7 @@ class ActivityClient:
     ) -> Response[list[Thread], list[ThreadType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/notifications#list-notifications-for-the-authenticated-user"""
 
-        from ..models import Thread, BasicError, ValidationError
+        from ..models import BasicError, Thread, ValidationError
 
         url = "/notifications"
 
@@ -462,7 +462,7 @@ class ActivityClient:
     ) -> Response[Thread, ThreadType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/notifications#get-a-thread"""
 
-        from ..models import Thread, BasicError
+        from ..models import BasicError, Thread
 
         url = f"/notifications/threads/{thread_id}"
 
@@ -487,7 +487,7 @@ class ActivityClient:
     ) -> Response[Thread, ThreadType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/activity/notifications#get-a-thread"""
 
-        from ..models import Thread, BasicError
+        from ..models import BasicError, Thread
 
         url = f"/notifications/threads/{thread_id}"
 
@@ -667,8 +667,8 @@ class ActivityClient:
 
         from ..models import (
             BasicError,
-            ThreadSubscription,
             NotificationsThreadsThreadIdSubscriptionPutBody,
+            ThreadSubscription,
         )
 
         url = f"/notifications/threads/{thread_id}/subscription"
@@ -729,8 +729,8 @@ class ActivityClient:
 
         from ..models import (
             BasicError,
-            ThreadSubscription,
             NotificationsThreadsThreadIdSubscriptionPutBody,
+            ThreadSubscription,
         )
 
         url = f"/notifications/threads/{thread_id}/subscription"
@@ -1152,7 +1152,7 @@ class ActivityClient:
 
         from typing import Union
 
-        from ..models import Stargazer, SimpleUser, ValidationError
+        from ..models import SimpleUser, Stargazer, ValidationError
 
         url = f"/repos/{owner}/{repo}/stargazers"
 
@@ -1190,7 +1190,7 @@ class ActivityClient:
 
         from typing import Union
 
-        from ..models import Stargazer, SimpleUser, ValidationError
+        from ..models import SimpleUser, Stargazer, ValidationError
 
         url = f"/repos/{owner}/{repo}/stargazers"
 

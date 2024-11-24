@@ -9,27 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
 from datetime import datetime
+from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 from .group_0002 import SimpleUser
-from .group_0186 import Deployment
-from .group_0384 import EnterpriseWebhooks
-from .group_0385 import SimpleInstallation
-from .group_0386 import OrganizationSimpleWebhooks
-from .group_0387 import RepositoryWebhooks
+from .group_0187 import Deployment
+from .group_0385 import EnterpriseWebhooks
+from .group_0386 import SimpleInstallation
+from .group_0387 import OrganizationSimpleWebhooks
+from .group_0388 import RepositoryWebhooks
 
 
-class WebhookWorkflowJobWaiting(GitHubModel):
-    """workflow_job waiting event"""
+class WebhookWorkflowJobQueued(GitHubModel):
+    """workflow_job queued event"""
 
-    action: Literal["waiting"] = Field()
+    action: Literal["queued"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -50,7 +50,7 @@ class WebhookWorkflowJobWaiting(GitHubModel):
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    workflow_job: WebhookWorkflowJobWaitingPropWorkflowJob = Field()
+    workflow_job: WebhookWorkflowJobQueuedPropWorkflowJob = Field()
     deployment: Missing[Deployment] = Field(
         default=UNSET,
         title="Deployment",
@@ -58,8 +58,8 @@ class WebhookWorkflowJobWaiting(GitHubModel):
     )
 
 
-class WebhookWorkflowJobWaitingPropWorkflowJob(GitHubModel):
-    """WebhookWorkflowJobWaitingPropWorkflowJob"""
+class WebhookWorkflowJobQueuedPropWorkflowJob(GitHubModel):
+    """WebhookWorkflowJobQueuedPropWorkflowJob"""
 
     check_run_url: str = Field()
     completed_at: Union[str, None] = Field()
@@ -79,14 +79,14 @@ class WebhookWorkflowJobWaitingPropWorkflowJob(GitHubModel):
     runner_id: Union[int, None] = Field()
     runner_name: Union[str, None] = Field()
     started_at: datetime = Field()
+    status: Literal["queued", "in_progress", "completed", "waiting"] = Field()
     head_branch: Union[str, None] = Field(description="The name of the current branch.")
     workflow_name: Union[str, None] = Field(description="The name of the workflow.")
-    status: Literal["queued", "in_progress", "completed", "waiting"] = Field()
-    steps: list[WebhookWorkflowJobWaitingPropWorkflowJobPropStepsItems] = Field()
+    steps: list[WebhookWorkflowJobQueuedPropWorkflowJobPropStepsItems] = Field()
     url: str = Field()
 
 
-class WebhookWorkflowJobWaitingPropWorkflowJobPropStepsItems(GitHubModel):
+class WebhookWorkflowJobQueuedPropWorkflowJobPropStepsItems(GitHubModel):
     """Workflow Step"""
 
     completed_at: Union[str, None] = Field()
@@ -96,17 +96,15 @@ class WebhookWorkflowJobWaitingPropWorkflowJobPropStepsItems(GitHubModel):
     name: str = Field()
     number: int = Field()
     started_at: Union[str, None] = Field()
-    status: Literal["completed", "in_progress", "queued", "pending", "waiting"] = (
-        Field()
-    )
+    status: Literal["completed", "in_progress", "queued", "pending"] = Field()
 
 
-model_rebuild(WebhookWorkflowJobWaiting)
-model_rebuild(WebhookWorkflowJobWaitingPropWorkflowJob)
-model_rebuild(WebhookWorkflowJobWaitingPropWorkflowJobPropStepsItems)
+model_rebuild(WebhookWorkflowJobQueued)
+model_rebuild(WebhookWorkflowJobQueuedPropWorkflowJob)
+model_rebuild(WebhookWorkflowJobQueuedPropWorkflowJobPropStepsItems)
 
 __all__ = (
-    "WebhookWorkflowJobWaiting",
-    "WebhookWorkflowJobWaitingPropWorkflowJob",
-    "WebhookWorkflowJobWaitingPropWorkflowJobPropStepsItems",
+    "WebhookWorkflowJobQueued",
+    "WebhookWorkflowJobQueuedPropWorkflowJob",
+    "WebhookWorkflowJobQueuedPropWorkflowJobPropStepsItems",
 )

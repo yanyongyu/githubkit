@@ -13,21 +13,20 @@ from typing import Literal
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 from .group_0002 import SimpleUser
-from .group_0384 import EnterpriseWebhooks
-from .group_0385 import SimpleInstallation
-from .group_0386 import OrganizationSimpleWebhooks
-from .group_0387 import RepositoryWebhooks
+from .group_0385 import EnterpriseWebhooks
+from .group_0386 import SimpleInstallation
+from .group_0387 import OrganizationSimpleWebhooks
+from .group_0388 import RepositoryWebhooks
 
 
-class WebhookRepositoryPrivatized(GitHubModel):
-    """repository privatized event"""
+class WebhookRepositoryImport(GitHubModel):
+    """repository_import event"""
 
-    action: Literal["privatized"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -48,8 +47,9 @@ class WebhookRepositoryPrivatized(GitHubModel):
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    status: Literal["success", "cancelled", "failure"] = Field()
 
 
-model_rebuild(WebhookRepositoryPrivatized)
+model_rebuild(WebhookRepositoryImport)
 
-__all__ = ("WebhookRepositoryPrivatized",)
+__all__ = ("WebhookRepositoryImport",)

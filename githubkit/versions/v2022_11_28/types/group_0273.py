@@ -9,33 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict, NotRequired
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0199 import VerificationType
 
 
-class GitTreeType(TypedDict):
-    """Git Tree
+class GitTagType(TypedDict):
+    """Git Tag
 
-    The hierarchy between files in a Git repository.
+    Metadata for a Git tag
     """
 
+    node_id: str
+    tag: str
     sha: str
     url: str
-    truncated: bool
-    tree: list[GitTreePropTreeItemsType]
+    message: str
+    tagger: GitTagPropTaggerType
+    object_: GitTagPropObjectType
+    verification: NotRequired[VerificationType]
 
 
-class GitTreePropTreeItemsType(TypedDict):
-    """GitTreePropTreeItems"""
+class GitTagPropTaggerType(TypedDict):
+    """GitTagPropTagger"""
 
-    path: NotRequired[str]
-    mode: NotRequired[str]
-    type: NotRequired[str]
-    sha: NotRequired[str]
-    size: NotRequired[int]
-    url: NotRequired[str]
+    date: str
+    email: str
+    name: str
+
+
+class GitTagPropObjectType(TypedDict):
+    """GitTagPropObject"""
+
+    sha: str
+    type: str
+    url: str
 
 
 __all__ = (
-    "GitTreePropTreeItemsType",
-    "GitTreeType",
+    "GitTagPropObjectType",
+    "GitTagPropTaggerType",
+    "GitTagType",
 )

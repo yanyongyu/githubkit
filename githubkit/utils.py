@@ -1,6 +1,6 @@
 from enum import Enum
-from typing import Any, Generic, Literal, TypeVar, final
 import inspect
+from typing import Any, Generic, Literal, TypeVar, final
 
 from pydantic import BaseModel
 

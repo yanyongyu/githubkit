@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -19,17 +19,17 @@ from .group_0002 import SimpleUser
 from .group_0008 import Integration
 
 
-class TimelineUnassignedIssueEvent(GitHubModel):
-    """Timeline Unassigned Issue Event
+class TimelineAssignedIssueEvent(GitHubModel):
+    """Timeline Assigned Issue Event
 
-    Timeline Unassigned Issue Event
+    Timeline Assigned Issue Event
     """
 
     id: int = Field()
     node_id: str = Field()
     url: str = Field()
     actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: Literal["unassigned"] = Field()
+    event: Literal["assigned"] = Field()
     commit_id: Union[str, None] = Field()
     commit_url: Union[str, None] = Field()
     created_at: str = Field()
@@ -37,6 +37,6 @@ class TimelineUnassignedIssueEvent(GitHubModel):
     assignee: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(TimelineUnassignedIssueEvent)
+model_rebuild(TimelineAssignedIssueEvent)
 
-__all__ = ("TimelineUnassignedIssueEvent",)
+__all__ = ("TimelineAssignedIssueEvent",)

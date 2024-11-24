@@ -1,9 +1,9 @@
-from typing import Literal
 from collections import defaultdict
-from dataclasses import field, dataclass
+from dataclasses import dataclass, field
+from typing import Literal
 
-from .utils import snake_case, concat_snake_name, fix_reserved_words
-from .schemas import Property, SchemaData, ModelSchema, UnionSchema
+from .schemas import ModelSchema, Property, SchemaData, UnionSchema
+from .utils import concat_snake_name, fix_reserved_words, snake_case
 
 
 @dataclass(eq=False)

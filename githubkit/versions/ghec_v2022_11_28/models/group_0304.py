@@ -13,9 +13,9 @@ from datetime import datetime
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 from .group_0009 import WebhookConfig
 from .group_0303 import HookResponse

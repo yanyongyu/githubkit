@@ -9,38 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict, NotRequired
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0002 import SimpleUserType
-from .group_0008 import IntegrationType
-from .group_0029 import TeamType
+from .group_0206 import (
+    ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesType,
+    ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsType,
+)
 
 
-class ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsType(
-    TypedDict
-):
-    """ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions"""
+class ProtectedBranchPropRequiredPullRequestReviewsType(TypedDict):
+    """ProtectedBranchPropRequiredPullRequestReviews"""
 
     url: str
-    users_url: str
-    teams_url: str
-    users: list[SimpleUserType]
-    teams: list[TeamType]
-    apps: NotRequired[list[Union[IntegrationType, None]]]
+    dismiss_stale_reviews: NotRequired[bool]
+    require_code_owner_reviews: NotRequired[bool]
+    required_approving_review_count: NotRequired[int]
+    require_last_push_approval: NotRequired[bool]
+    dismissal_restrictions: NotRequired[
+        ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsType
+    ]
+    bypass_pull_request_allowances: NotRequired[
+        ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesType
+    ]
 
 
-class ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesType(
-    TypedDict
-):
-    """ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances"""
-
-    users: list[SimpleUserType]
-    teams: list[TeamType]
-    apps: NotRequired[list[Union[IntegrationType, None]]]
-
-
-__all__ = (
-    "ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesType",
-    "ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsType",
-)
+__all__ = ("ProtectedBranchPropRequiredPullRequestReviewsType",)

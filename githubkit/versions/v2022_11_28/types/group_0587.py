@@ -10,20 +10,19 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import TypedDict, NotRequired
+from typing_extensions import NotRequired, TypedDict
 
 from .group_0002 import SimpleUserType
-from .group_0385 import SimpleInstallationType
-from .group_0386 import OrganizationSimpleWebhooksType
-from .group_0387 import RepositoryWebhooksType
-from .group_0411 import MergeGroupType
+from .group_0386 import SimpleInstallationType
+from .group_0387 import OrganizationSimpleWebhooksType
+from .group_0388 import RepositoryWebhooksType
+from .group_0412 import MergeGroupType
 
 
-class WebhookMergeGroupDestroyedType(TypedDict):
-    """WebhookMergeGroupDestroyed"""
+class WebhookMergeGroupChecksRequestedType(TypedDict):
+    """WebhookMergeGroupChecksRequested"""
 
-    action: Literal["destroyed"]
-    reason: NotRequired[Literal["merged", "invalidated", "dequeued"]]
+    action: Literal["checks_requested"]
     installation: NotRequired[SimpleInstallationType]
     merge_group: MergeGroupType
     organization: NotRequired[OrganizationSimpleWebhooksType]
@@ -31,4 +30,4 @@ class WebhookMergeGroupDestroyedType(TypedDict):
     sender: NotRequired[SimpleUserType]
 
 
-__all__ = ("WebhookMergeGroupDestroyedType",)
+__all__ = ("WebhookMergeGroupChecksRequestedType",)

@@ -10,28 +10,24 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import TypedDict, NotRequired
+from typing_extensions import NotRequired, TypedDict
 
 from .group_0002 import SimpleUserType
-from .group_0384 import EnterpriseWebhooksType
-from .group_0385 import SimpleInstallationType
-from .group_0386 import OrganizationSimpleWebhooksType
-from .group_0387 import RepositoryWebhooksType
-from .group_0397 import DiscussionType
-from .group_0399 import WebhooksLabelType
+from .group_0387 import OrganizationSimpleWebhooksType
+from .group_0388 import RepositoryWebhooksType
+from .group_0397 import WebhooksAnswerType
+from .group_0398 import DiscussionType
 
 
-class WebhookDiscussionUnlabeledType(TypedDict):
-    """discussion unlabeled event"""
+class WebhookDiscussionUnansweredType(TypedDict):
+    """discussion unanswered event"""
 
-    action: Literal["unlabeled"]
+    action: Literal["unanswered"]
     discussion: DiscussionType
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    label: WebhooksLabelType
+    old_answer: WebhooksAnswerType
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
-    sender: SimpleUserType
+    sender: NotRequired[SimpleUserType]
 
 
-__all__ = ("WebhookDiscussionUnlabeledType",)
+__all__ = ("WebhookDiscussionUnansweredType",)

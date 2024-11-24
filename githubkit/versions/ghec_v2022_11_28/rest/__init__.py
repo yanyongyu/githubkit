@@ -7,52 +7,52 @@ bash ./scripts/run-codegen.sh
 See https://github.com/github/rest-api-description for more information.
 """
 
+from functools import cached_property
 from typing import TYPE_CHECKING
 from weakref import ref
-from functools import cached_property
 
 if TYPE_CHECKING:
     from githubkit import GitHubCore
 
-    from .git import GitClient
-    from .apps import AppsClient
-    from .meta import MetaClient
-    from .oidc import OidcClient
-    from .orgs import OrgsClient
-    from .scim import ScimClient
-    from .gists import GistsClient
-    from .pulls import PullsClient
-    from .repos import ReposClient
-    from .teams import TeamsClient
-    from .users import UsersClient
-    from .checks import ChecksClient
-    from .emojis import EmojisClient
-    from .issues import IssuesClient
-    from .search import SearchClient
     from .actions import ActionsClient
-    from .billing import BillingClient
-    from .copilot import CopilotClient
     from .activity import ActivityClient
-    from .licenses import LicensesClient
-    from .markdown import MarkdownClient
-    from .packages import PackagesClient
-    from .projects import ProjectsClient
+    from .apps import AppsClient
+    from .billing import BillingClient
+    from .checks import ChecksClient
     from .classroom import ClassroomClient
-    from .gitignore import GitignoreClient
-    from .reactions import ReactionsClient
-    from .codespaces import CodespacesClient
-    from .dependabot import DependabotClient
-    from .migrations import MigrationsClient
-    from .rate_limit import RateLimitClient
-    from .interactions import InteractionsClient
     from .code_scanning import CodeScanningClient
     from .code_security import CodeSecurityClient
-    from .secret_scanning import SecretScanningClient
     from .codes_of_conduct import CodesOfConductClient
+    from .codespaces import CodespacesClient
+    from .copilot import CopilotClient
+    from .dependabot import DependabotClient
     from .dependency_graph import DependencyGraphClient
+    from .emojis import EmojisClient
     from .enterprise_admin import EnterpriseAdminClient
-    from .server_statistics import ServerStatisticsClient
+    from .gists import GistsClient
+    from .git import GitClient
+    from .gitignore import GitignoreClient
+    from .interactions import InteractionsClient
+    from .issues import IssuesClient
+    from .licenses import LicensesClient
+    from .markdown import MarkdownClient
+    from .meta import MetaClient
+    from .migrations import MigrationsClient
+    from .oidc import OidcClient
+    from .orgs import OrgsClient
+    from .packages import PackagesClient
+    from .projects import ProjectsClient
+    from .pulls import PullsClient
+    from .rate_limit import RateLimitClient
+    from .reactions import ReactionsClient
+    from .repos import ReposClient
+    from .scim import ScimClient
+    from .search import SearchClient
+    from .secret_scanning import SecretScanningClient
     from .security_advisories import SecurityAdvisoriesClient
+    from .server_statistics import ServerStatisticsClient
+    from .teams import TeamsClient
+    from .users import UsersClient
 
 
 class RestNamespace:

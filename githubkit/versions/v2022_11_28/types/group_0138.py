@@ -10,19 +10,16 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import TypedDict, NotRequired
-
-from .group_0139 import RepositoryRuleCommitterEmailPatternPropParametersType
+from typing_extensions import NotRequired, TypedDict
 
 
-class RepositoryRuleCommitterEmailPatternType(TypedDict):
-    """committer_email_pattern
+class RepositoryRuleCommitAuthorEmailPatternPropParametersType(TypedDict):
+    """RepositoryRuleCommitAuthorEmailPatternPropParameters"""
 
-    Parameters to be used for the committer_email_pattern rule
-    """
+    name: NotRequired[str]
+    negate: NotRequired[bool]
+    operator: Literal["starts_with", "ends_with", "contains", "regex"]
+    pattern: str
 
-    type: Literal["committer_email_pattern"]
-    parameters: NotRequired[RepositoryRuleCommitterEmailPatternPropParametersType]
 
-
-__all__ = ("RepositoryRuleCommitterEmailPatternType",)
+__all__ = ("RepositoryRuleCommitAuthorEmailPatternPropParametersType",)

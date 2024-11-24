@@ -1,9 +1,9 @@
-from typing import Any, Union, Generic, TypeVar, Callable, Optional, cast, overload
 from collections.abc import Awaitable
-from typing_extensions import Self, ParamSpec
+from typing import Any, Callable, Generic, Optional, TypeVar, Union, cast, overload
+from typing_extensions import ParamSpec, Self
 
-from .utils import is_async
 from .response import Response
+from .utils import is_async
 
 CP = ParamSpec("CP")
 CT = TypeVar("CT")

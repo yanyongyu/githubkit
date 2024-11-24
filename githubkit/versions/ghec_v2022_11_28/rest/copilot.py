@@ -14,43 +14,43 @@ from weakref import ref
 
 from pydantic import BaseModel
 
-from githubkit.utils import UNSET, exclude_unset
 from githubkit.compat import model_dump, type_validate_python
 from githubkit.typing import Missing, UnsetType
+from githubkit.utils import UNSET, exclude_unset
 
 if TYPE_CHECKING:
     from githubkit import GitHubCore
-    from githubkit.utils import UNSET
-    from githubkit.typing import Missing
     from githubkit.response import Response
+    from githubkit.typing import Missing
+    from githubkit.utils import UNSET
 
-    from ..types import (
-        CopilotSeatDetailsType,
-        CopilotUsageMetricsType,
-        CopilotUsageMetricsDayType,
-        CopilotOrganizationDetailsType,
-        OrgsOrgCopilotBillingSeatsGetResponse200Type,
-        OrgsOrgCopilotBillingSelectedTeamsPostBodyType,
-        OrgsOrgCopilotBillingSelectedUsersPostBodyType,
-        OrgsOrgCopilotBillingSelectedTeamsDeleteBodyType,
-        OrgsOrgCopilotBillingSelectedUsersDeleteBodyType,
-        OrgsOrgCopilotBillingSelectedTeamsPostResponse201Type,
-        OrgsOrgCopilotBillingSelectedUsersPostResponse201Type,
-        OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200Type,
-        OrgsOrgCopilotBillingSelectedUsersDeleteResponse200Type,
-        EnterprisesEnterpriseCopilotBillingSeatsGetResponse200Type,
-    )
     from ..models import (
+        CopilotOrganizationDetails,
         CopilotSeatDetails,
         CopilotUsageMetrics,
         CopilotUsageMetricsDay,
-        CopilotOrganizationDetails,
-        OrgsOrgCopilotBillingSeatsGetResponse200,
-        OrgsOrgCopilotBillingSelectedTeamsPostResponse201,
-        OrgsOrgCopilotBillingSelectedUsersPostResponse201,
-        OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200,
-        OrgsOrgCopilotBillingSelectedUsersDeleteResponse200,
         EnterprisesEnterpriseCopilotBillingSeatsGetResponse200,
+        OrgsOrgCopilotBillingSeatsGetResponse200,
+        OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200,
+        OrgsOrgCopilotBillingSelectedTeamsPostResponse201,
+        OrgsOrgCopilotBillingSelectedUsersDeleteResponse200,
+        OrgsOrgCopilotBillingSelectedUsersPostResponse201,
+    )
+    from ..types import (
+        CopilotOrganizationDetailsType,
+        CopilotSeatDetailsType,
+        CopilotUsageMetricsDayType,
+        CopilotUsageMetricsType,
+        EnterprisesEnterpriseCopilotBillingSeatsGetResponse200Type,
+        OrgsOrgCopilotBillingSeatsGetResponse200Type,
+        OrgsOrgCopilotBillingSelectedTeamsDeleteBodyType,
+        OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200Type,
+        OrgsOrgCopilotBillingSelectedTeamsPostBodyType,
+        OrgsOrgCopilotBillingSelectedTeamsPostResponse201Type,
+        OrgsOrgCopilotBillingSelectedUsersDeleteBodyType,
+        OrgsOrgCopilotBillingSelectedUsersDeleteResponse200Type,
+        OrgsOrgCopilotBillingSelectedUsersPostBodyType,
+        OrgsOrgCopilotBillingSelectedUsersPostResponse201Type,
     )
 
 

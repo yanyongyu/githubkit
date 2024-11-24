@@ -9,13 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict, NotRequired
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoCollaboratorsUsernamePutBodyType(TypedDict):
-    """ReposOwnerRepoCollaboratorsUsernamePutBody"""
+class ReposOwnerRepoCodespacesSecretsSecretNamePutBodyType(TypedDict):
+    """ReposOwnerRepoCodespacesSecretsSecretNamePutBody"""
 
-    permission: NotRequired[str]
+    encrypted_value: NotRequired[str]
+    key_id: NotRequired[str]
 
 
-__all__ = ("ReposOwnerRepoCollaboratorsUsernamePutBodyType",)
+__all__ = ("ReposOwnerRepoCodespacesSecretsSecretNamePutBodyType",)

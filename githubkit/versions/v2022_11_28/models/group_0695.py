@@ -13,21 +13,22 @@ from typing import Literal
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 from .group_0002 import SimpleUser
-from .group_0384 import EnterpriseWebhooks
-from .group_0385 import SimpleInstallation
-from .group_0386 import OrganizationSimpleWebhooks
-from .group_0387 import RepositoryWebhooks
+from .group_0155 import RepositoryAdvisory
+from .group_0385 import EnterpriseWebhooks
+from .group_0386 import SimpleInstallation
+from .group_0387 import OrganizationSimpleWebhooks
+from .group_0388 import RepositoryWebhooks
 
 
-class WebhookRepositoryArchived(GitHubModel):
-    """repository archived event"""
+class WebhookRepositoryAdvisoryReported(GitHubModel):
+    """Repository advisory reported event"""
 
-    action: Literal["archived"] = Field()
+    action: Literal["reported"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -47,9 +48,14 @@ class WebhookRepositoryArchived(GitHubModel):
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    repository_advisory: RepositoryAdvisory = Field(
+        description="A repository security advisory."
+    )
+    sender: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
+    )
 
 
-model_rebuild(WebhookRepositoryArchived)
+model_rebuild(WebhookRepositoryAdvisoryReported)
 
-__all__ = ("WebhookRepositoryArchived",)
+__all__ = ("WebhookRepositoryAdvisoryReported",)

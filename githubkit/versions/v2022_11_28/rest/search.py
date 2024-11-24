@@ -12,34 +12,34 @@ from __future__ import annotations
 from typing import TYPE_CHECKING, Literal, Optional
 from weakref import ref
 
-from githubkit.utils import UNSET, exclude_unset
 from githubkit.typing import Missing
+from githubkit.utils import UNSET, exclude_unset
 
 if TYPE_CHECKING:
     from typing import Literal
 
     from githubkit import GitHubCore
-    from githubkit.utils import UNSET
-    from githubkit.typing import Missing
     from githubkit.response import Response
+    from githubkit.typing import Missing
+    from githubkit.utils import UNSET
 
-    from ..types import (
-        SearchCodeGetResponse200Type,
-        SearchUsersGetResponse200Type,
-        SearchIssuesGetResponse200Type,
-        SearchLabelsGetResponse200Type,
-        SearchTopicsGetResponse200Type,
-        SearchCommitsGetResponse200Type,
-        SearchRepositoriesGetResponse200Type,
-    )
     from ..models import (
         SearchCodeGetResponse200,
-        SearchUsersGetResponse200,
+        SearchCommitsGetResponse200,
         SearchIssuesGetResponse200,
         SearchLabelsGetResponse200,
-        SearchTopicsGetResponse200,
-        SearchCommitsGetResponse200,
         SearchRepositoriesGetResponse200,
+        SearchTopicsGetResponse200,
+        SearchUsersGetResponse200,
+    )
+    from ..types import (
+        SearchCodeGetResponse200Type,
+        SearchCommitsGetResponse200Type,
+        SearchIssuesGetResponse200Type,
+        SearchLabelsGetResponse200Type,
+        SearchRepositoriesGetResponse200Type,
+        SearchTopicsGetResponse200Type,
+        SearchUsersGetResponse200Type,
     )
 
 
@@ -72,9 +72,9 @@ class SearchClient:
 
         from ..models import (
             BasicError,
-            ValidationError,
-            SearchCodeGetResponse200,
             EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            SearchCodeGetResponse200,
+            ValidationError,
         )
 
         url = "/search/code"
@@ -116,9 +116,9 @@ class SearchClient:
 
         from ..models import (
             BasicError,
-            ValidationError,
-            SearchCodeGetResponse200,
             EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            SearchCodeGetResponse200,
+            ValidationError,
         )
 
         url = "/search/code"
@@ -242,9 +242,9 @@ class SearchClient:
 
         from ..models import (
             BasicError,
-            ValidationError,
-            SearchIssuesGetResponse200,
             EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            SearchIssuesGetResponse200,
+            ValidationError,
         )
 
         url = "/search/issues"
@@ -300,9 +300,9 @@ class SearchClient:
 
         from ..models import (
             BasicError,
-            ValidationError,
-            SearchIssuesGetResponse200,
             EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            SearchIssuesGetResponse200,
+            ValidationError,
         )
 
         url = "/search/issues"
@@ -343,7 +343,7 @@ class SearchClient:
     ) -> Response[SearchLabelsGetResponse200, SearchLabelsGetResponse200Type]:
         """See also: https://docs.github.com/rest/search/search#search-labels"""
 
-        from ..models import BasicError, ValidationError, SearchLabelsGetResponse200
+        from ..models import BasicError, SearchLabelsGetResponse200, ValidationError
 
         url = "/search/labels"
 
@@ -384,7 +384,7 @@ class SearchClient:
     ) -> Response[SearchLabelsGetResponse200, SearchLabelsGetResponse200Type]:
         """See also: https://docs.github.com/rest/search/search#search-labels"""
 
-        from ..models import BasicError, ValidationError, SearchLabelsGetResponse200
+        from ..models import BasicError, SearchLabelsGetResponse200, ValidationError
 
         url = "/search/labels"
 
@@ -429,9 +429,9 @@ class SearchClient:
         """See also: https://docs.github.com/rest/search/search#search-repositories"""
 
         from ..models import (
-            ValidationError,
-            SearchRepositoriesGetResponse200,
             EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            SearchRepositoriesGetResponse200,
+            ValidationError,
         )
 
         url = "/search/repositories"
@@ -475,9 +475,9 @@ class SearchClient:
         """See also: https://docs.github.com/rest/search/search#search-repositories"""
 
         from ..models import (
-            ValidationError,
-            SearchRepositoriesGetResponse200,
             EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            SearchRepositoriesGetResponse200,
+            ValidationError,
         )
 
         url = "/search/repositories"
@@ -577,9 +577,9 @@ class SearchClient:
         """See also: https://docs.github.com/rest/search/search#search-users"""
 
         from ..models import (
-            ValidationError,
-            SearchUsersGetResponse200,
             EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            SearchUsersGetResponse200,
+            ValidationError,
         )
 
         url = "/search/users"
@@ -619,9 +619,9 @@ class SearchClient:
         """See also: https://docs.github.com/rest/search/search#search-users"""
 
         from ..models import (
-            ValidationError,
-            SearchUsersGetResponse200,
             EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            SearchUsersGetResponse200,
+            ValidationError,
         )
 
         url = "/search/users"

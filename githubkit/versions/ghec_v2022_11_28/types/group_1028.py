@@ -9,13 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from datetime import datetime
-from typing_extensions import TypedDict, NotRequired
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 from .group_1027 import (
-    ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputType,
     ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsType,
+    ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputType,
 )
 
 

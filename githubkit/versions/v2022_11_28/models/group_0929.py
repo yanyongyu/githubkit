@@ -11,17 +11,55 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoAttestationsPostResponse201(GitHubModel):
-    """ReposOwnerRepoAttestationsPostResponse201"""
+class ReposOwnerRepoAttestationsPostBody(GitHubModel):
+    """ReposOwnerRepoAttestationsPostBody"""
 
-    id: Missing[int] = Field(default=UNSET, description="The ID of the attestation.")
+    bundle: ReposOwnerRepoAttestationsPostBodyPropBundle = Field(
+        description="The attestation's Sigstore Bundle.\nRefer to the [Sigstore Bundle Specification](https://github.com/sigstore/protobuf-specs/blob/main/protos/sigstore_bundle.proto) for more information."
+    )
 
 
-model_rebuild(ReposOwnerRepoAttestationsPostResponse201)
+class ReposOwnerRepoAttestationsPostBodyPropBundle(GitHubModel):
+    """ReposOwnerRepoAttestationsPostBodyPropBundle
 
-__all__ = ("ReposOwnerRepoAttestationsPostResponse201",)
+    The attestation's Sigstore Bundle.
+    Refer to the [Sigstore Bundle
+    Specification](https://github.com/sigstore/protobuf-
+    specs/blob/main/protos/sigstore_bundle.proto) for more information.
+    """
+
+    media_type: Missing[str] = Field(default=UNSET, alias="mediaType")
+    verification_material: Missing[
+        ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterial
+    ] = Field(default=UNSET, alias="verificationMaterial")
+    dsse_envelope: Missing[
+        ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelope
+    ] = Field(default=UNSET, alias="dsseEnvelope")
+
+
+class ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterial(
+    ExtraGitHubModel
+):
+    """ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterial"""
+
+
+class ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelope(ExtraGitHubModel):
+    """ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelope"""
+
+
+model_rebuild(ReposOwnerRepoAttestationsPostBody)
+model_rebuild(ReposOwnerRepoAttestationsPostBodyPropBundle)
+model_rebuild(ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterial)
+model_rebuild(ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelope)
+
+__all__ = (
+    "ReposOwnerRepoAttestationsPostBody",
+    "ReposOwnerRepoAttestationsPostBodyPropBundle",
+    "ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelope",
+    "ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterial",
+)

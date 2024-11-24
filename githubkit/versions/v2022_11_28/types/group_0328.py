@@ -10,19 +10,16 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import TypedDict, NotRequired
-
-from .group_0123 import RepositoryRuleUpdatePropParametersType
+from typing_extensions import NotRequired, TypedDict
 
 
-class RepositoryRuleDetailedOneof1Type(TypedDict):
-    """RepositoryRuleDetailedOneof1"""
+class RepositoryRuleDetailedOneof0Type(TypedDict):
+    """RepositoryRuleDetailedOneof0"""
 
-    type: Literal["update"]
-    parameters: NotRequired[RepositoryRuleUpdatePropParametersType]
+    type: Literal["creation"]
     ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
     ruleset_source: NotRequired[str]
     ruleset_id: NotRequired[int]
 
 
-__all__ = ("RepositoryRuleDetailedOneof1Type",)
+__all__ = ("RepositoryRuleDetailedOneof0Type",)

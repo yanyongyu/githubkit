@@ -9,29 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict, NotRequired
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0147 import RepositoryRuleWorkflowsPropParametersType
 
 
-class RepositoryRuleWorkflowsPropParametersType(TypedDict):
-    """RepositoryRuleWorkflowsPropParameters"""
+class RepositoryRuleWorkflowsType(TypedDict):
+    """workflows
 
-    do_not_enforce_on_create: NotRequired[bool]
-    workflows: list[RepositoryRuleParamsWorkflowFileReferenceType]
-
-
-class RepositoryRuleParamsWorkflowFileReferenceType(TypedDict):
-    """WorkflowFileReference
-
-    A workflow that must run for this rule to pass
+    Require all changes made to a targeted branch to pass the specified workflows
+    before they can be merged.
     """
 
-    path: str
-    ref: NotRequired[str]
-    repository_id: int
-    sha: NotRequired[str]
+    type: Literal["workflows"]
+    parameters: NotRequired[RepositoryRuleWorkflowsPropParametersType]
 
 
-__all__ = (
-    "RepositoryRuleParamsWorkflowFileReferenceType",
-    "RepositoryRuleWorkflowsPropParametersType",
-)
+__all__ = ("RepositoryRuleWorkflowsType",)

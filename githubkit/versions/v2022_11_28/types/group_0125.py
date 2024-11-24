@@ -10,19 +10,37 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import TypedDict, NotRequired
-
-from .group_0126 import RepositoryRuleMergeQueuePropParametersType
+from typing_extensions import NotRequired, TypedDict
 
 
-class RepositoryRuleMergeQueueType(TypedDict):
-    """merge_queue
+class RepositoryRuleRequiredLinearHistoryType(TypedDict):
+    """required_linear_history
 
-    Merges must be performed via a merge queue.
+    Prevent merge commits from being pushed to matching refs.
     """
 
-    type: Literal["merge_queue"]
-    parameters: NotRequired[RepositoryRuleMergeQueuePropParametersType]
+    type: Literal["required_linear_history"]
 
 
-__all__ = ("RepositoryRuleMergeQueueType",)
+class RepositoryRuleOneof16Type(TypedDict):
+    """max_file_path_length
+
+    Prevent commits that include file paths that exceed a specified character limit
+    from being pushed to the commit graph.
+    """
+
+    type: Literal["max_file_path_length"]
+    parameters: NotRequired[RepositoryRuleOneof16PropParametersType]
+
+
+class RepositoryRuleOneof16PropParametersType(TypedDict):
+    """RepositoryRuleOneof16PropParameters"""
+
+    max_file_path_length: int
+
+
+__all__ = (
+    "RepositoryRuleOneof16PropParametersType",
+    "RepositoryRuleOneof16Type",
+    "RepositoryRuleRequiredLinearHistoryType",
+)

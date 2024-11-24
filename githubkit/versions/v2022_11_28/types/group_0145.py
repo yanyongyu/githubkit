@@ -9,21 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict, NotRequired
-
-from .group_0146 import RepositoryRuleWorkflowsPropParametersType
+from typing_extensions import NotRequired, TypedDict
 
 
-class RepositoryRuleWorkflowsType(TypedDict):
-    """workflows
+class RepositoryRuleParamsRestrictedCommitsType(TypedDict):
+    """RestrictedCommits
 
-    Require all changes made to a targeted branch to pass the specified workflows
-    before they can be merged.
+    Restricted commit
     """
 
-    type: Literal["workflows"]
-    parameters: NotRequired[RepositoryRuleWorkflowsPropParametersType]
+    oid: str
+    reason: NotRequired[str]
 
 
-__all__ = ("RepositoryRuleWorkflowsType",)
+__all__ = ("RepositoryRuleParamsRestrictedCommitsType",)

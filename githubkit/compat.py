@@ -1,5 +1,5 @@
-from typing import TYPE_CHECKING, Any, TypeVar, Callable, Protocol
 from collections.abc import Generator
+from typing import TYPE_CHECKING, Any, Callable, Protocol, TypeVar
 
 from pydantic import VERSION
 
@@ -23,8 +23,8 @@ if PYDANTIC_V2:  # pragma: pydantic-v2
     from pydantic import (
         BaseModel,
         ConfigDict,
-        TypeAdapter,
         GetCoreSchemaHandler,
+        TypeAdapter,
         model_validator,
     )
     from pydantic_core import CoreSchema, core_schema
@@ -72,7 +72,7 @@ if PYDANTIC_V2:  # pragma: pydantic-v2
         return class_
 
 else:  # pragma: pydantic-v1
-    from pydantic import Extra, BaseModel, parse_obj_as, parse_raw_as, root_validator
+    from pydantic import BaseModel, Extra, parse_obj_as, parse_raw_as, root_validator
     from pydantic.json import pydantic_encoder
 
     class GitHubModel(BaseModel):

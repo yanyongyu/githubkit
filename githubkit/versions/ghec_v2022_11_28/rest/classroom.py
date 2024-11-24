@@ -12,30 +12,30 @@ from __future__ import annotations
 from typing import TYPE_CHECKING, Optional
 from weakref import ref
 
-from githubkit.utils import UNSET, exclude_unset
 from githubkit.typing import Missing
+from githubkit.utils import UNSET, exclude_unset
 
 if TYPE_CHECKING:
     from githubkit import GitHubCore
-    from githubkit.utils import UNSET
-    from githubkit.typing import Missing
     from githubkit.response import Response
+    from githubkit.typing import Missing
+    from githubkit.utils import UNSET
 
-    from ..types import (
-        ClassroomType,
-        SimpleClassroomType,
-        ClassroomAssignmentType,
-        ClassroomAssignmentGradeType,
-        SimpleClassroomAssignmentType,
-        ClassroomAcceptedAssignmentType,
-    )
     from ..models import (
         Classroom,
-        SimpleClassroom,
+        ClassroomAcceptedAssignment,
         ClassroomAssignment,
         ClassroomAssignmentGrade,
+        SimpleClassroom,
         SimpleClassroomAssignment,
-        ClassroomAcceptedAssignment,
+    )
+    from ..types import (
+        ClassroomAcceptedAssignmentType,
+        ClassroomAssignmentGradeType,
+        ClassroomAssignmentType,
+        ClassroomType,
+        SimpleClassroomAssignmentType,
+        SimpleClassroomType,
     )
 
 
@@ -276,7 +276,7 @@ class ClassroomClient:
     ) -> Response[Classroom, ClassroomType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/classroom/classroom#get-a-classroom"""
 
-        from ..models import Classroom, BasicError
+        from ..models import BasicError, Classroom
 
         url = f"/classrooms/{classroom_id}"
 
@@ -300,7 +300,7 @@ class ClassroomClient:
     ) -> Response[Classroom, ClassroomType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/classroom/classroom#get-a-classroom"""
 
-        from ..models import Classroom, BasicError
+        from ..models import BasicError, Classroom
 
         url = f"/classrooms/{classroom_id}"
 

@@ -13,15 +13,18 @@ from typing import Literal
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class RepositoryRuleDetailedOneof0(GitHubModel):
-    """RepositoryRuleDetailedOneof0"""
+class RepositoryRuleRulesetInfo(GitHubModel):
+    """repository ruleset data for rule
 
-    type: Literal["creation"] = Field()
+    User-defined metadata to store domain-specific information limited to 8 keys
+    with scalar values.
+    """
+
     ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
         default=UNSET,
         description="The type of source for the ruleset that includes this rule.",
@@ -35,6 +38,6 @@ class RepositoryRuleDetailedOneof0(GitHubModel):
     )
 
 
-model_rebuild(RepositoryRuleDetailedOneof0)
+model_rebuild(RepositoryRuleRulesetInfo)
 
-__all__ = ("RepositoryRuleDetailedOneof0",)
+__all__ = ("RepositoryRuleRulesetInfo",)

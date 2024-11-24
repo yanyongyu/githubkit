@@ -1,12 +1,12 @@
+from collections.abc import Sequence
+import importlib
+from importlib.abc import MetaPathFinder
+from importlib.machinery import ModuleSpec, PathFinder, SourceFileLoader
+from itertools import chain
 import re
 import sys
 from types import ModuleType
 from typing import Any, Optional
-import importlib
-from itertools import chain
-from importlib.abc import MetaPathFinder
-from collections.abc import Sequence
-from importlib.machinery import ModuleSpec, PathFinder, SourceFileLoader
 
 LAZY_MODULES = (
     r"^githubkit\.rest$",

@@ -9,28 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
-from githubkit.utils import UNSET
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0019 import Repository
 
 
-class MarkdownPostBody(GitHubModel):
-    """MarkdownPostBody"""
+class InstallationRepositoriesGetResponse200(GitHubModel):
+    """InstallationRepositoriesGetResponse200"""
 
-    text: str = Field(description="The Markdown text to render in HTML.")
-    mode: Missing[Literal["markdown", "gfm"]] = Field(
-        default=UNSET, description="The rendering mode."
-    )
-    context: Missing[str] = Field(
-        default=UNSET,
-        description="The repository context to use when creating references in `gfm` mode.  For example, setting `context` to `octo-org/octo-repo` will change the text `#42` into an HTML link to issue 42 in the `octo-org/octo-repo` repository.",
-    )
+    total_count: int = Field()
+    repositories: list[Repository] = Field()
+    repository_selection: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(MarkdownPostBody)
+model_rebuild(InstallationRepositoriesGetResponse200)
 
-__all__ = ("MarkdownPostBody",)
+__all__ = ("InstallationRepositoriesGetResponse200",)

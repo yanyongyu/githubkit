@@ -1,5 +1,5 @@
+from dataclasses import dataclass, field
 from typing import Any, ClassVar
-from dataclasses import field, dataclass
 from typing_extensions import override
 
 

@@ -9,108 +9,108 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Literal, Optional, Annotated, overload
+from typing import TYPE_CHECKING, Annotated, Literal, Optional, overload
 from weakref import ref
 
-from pydantic import Field, BaseModel
+from pydantic import BaseModel, Field
 
-from githubkit.utils import UNSET, exclude_unset
 from githubkit.compat import model_dump, type_validate_python
 from githubkit.typing import Missing, UnsetType
+from githubkit.utils import UNSET, exclude_unset
 
 if TYPE_CHECKING:
-    from typing import Union, Literal
     from datetime import datetime
+    from typing import Literal, Union
 
     from githubkit import GitHubCore
-    from githubkit.utils import UNSET
-    from githubkit.typing import Missing
     from githubkit.response import Response
+    from githubkit.typing import Missing
+    from githubkit.utils import UNSET
 
-    from ..types import (
-        IssueType,
-        LabelType,
-        MilestoneType,
-        IssueEventType,
-        SimpleUserType,
-        IssueCommentType,
-        LockedIssueEventType,
-        LabeledIssueEventType,
-        RenamedIssueEventType,
-        AssignedIssueEventType,
-        UnlabeledIssueEventType,
-        MilestonedIssueEventType,
-        TimelineCommentEventType,
-        UnassignedIssueEventType,
-        StateChangeIssueEventType,
-        TimelineReviewedEventType,
-        DemilestonedIssueEventType,
-        TimelineCommittedEventType,
-        AddedToProjectIssueEventType,
-        ReviewDismissedIssueEventType,
-        ReviewRequestedIssueEventType,
-        TimelineAssignedIssueEventType,
-        TimelineLineCommentedEventType,
-        RemovedFromProjectIssueEventType,
-        ReposOwnerRepoIssuesPostBodyType,
-        ReposOwnerRepoLabelsPostBodyType,
-        TimelineCommitCommentedEventType,
-        TimelineCrossReferencedEventType,
-        TimelineUnassignedIssueEventType,
-        ConvertedNoteToIssueIssueEventType,
-        MovedColumnInProjectIssueEventType,
-        ReviewRequestRemovedIssueEventType,
-        ReposOwnerRepoMilestonesPostBodyType,
-        ReposOwnerRepoLabelsNamePatchBodyType,
-        ReposOwnerRepoIssuesIssueNumberPatchBodyType,
-        ReposOwnerRepoIssuesIssueNumberLockPutBodyType,
-        ReposOwnerRepoIssuesCommentsCommentIdPatchBodyType,
-        ReposOwnerRepoIssuesIssueNumberCommentsPostBodyType,
-        ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType,
-        ReposOwnerRepoMilestonesMilestoneNumberPatchBodyType,
-        ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1Type,
-        ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyType,
-        ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0Type,
-        ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2Type,
-        ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0Type,
-        ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Type,
-        ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3ItemsType,
-        ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3ItemsType,
-        ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1Type,
-        ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsType,
-        ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItemsType,
-    )
     from ..models import (
-        Issue,
-        Label,
-        Milestone,
-        IssueEvent,
-        SimpleUser,
-        IssueComment,
-        LockedIssueEvent,
-        LabeledIssueEvent,
-        RenamedIssueEvent,
-        AssignedIssueEvent,
-        UnlabeledIssueEvent,
-        MilestonedIssueEvent,
-        TimelineCommentEvent,
-        UnassignedIssueEvent,
-        StateChangeIssueEvent,
-        TimelineReviewedEvent,
-        DemilestonedIssueEvent,
-        TimelineCommittedEvent,
         AddedToProjectIssueEvent,
+        AssignedIssueEvent,
+        ConvertedNoteToIssueIssueEvent,
+        DemilestonedIssueEvent,
+        Issue,
+        IssueComment,
+        IssueEvent,
+        Label,
+        LabeledIssueEvent,
+        LockedIssueEvent,
+        Milestone,
+        MilestonedIssueEvent,
+        MovedColumnInProjectIssueEvent,
+        RemovedFromProjectIssueEvent,
+        RenamedIssueEvent,
         ReviewDismissedIssueEvent,
         ReviewRequestedIssueEvent,
-        TimelineAssignedIssueEvent,
-        TimelineLineCommentedEvent,
-        RemovedFromProjectIssueEvent,
-        TimelineCommitCommentedEvent,
-        TimelineCrossReferencedEvent,
-        TimelineUnassignedIssueEvent,
-        ConvertedNoteToIssueIssueEvent,
-        MovedColumnInProjectIssueEvent,
         ReviewRequestRemovedIssueEvent,
+        SimpleUser,
+        StateChangeIssueEvent,
+        TimelineAssignedIssueEvent,
+        TimelineCommentEvent,
+        TimelineCommitCommentedEvent,
+        TimelineCommittedEvent,
+        TimelineCrossReferencedEvent,
+        TimelineLineCommentedEvent,
+        TimelineReviewedEvent,
+        TimelineUnassignedIssueEvent,
+        UnassignedIssueEvent,
+        UnlabeledIssueEvent,
+    )
+    from ..types import (
+        AddedToProjectIssueEventType,
+        AssignedIssueEventType,
+        ConvertedNoteToIssueIssueEventType,
+        DemilestonedIssueEventType,
+        IssueCommentType,
+        IssueEventType,
+        IssueType,
+        LabeledIssueEventType,
+        LabelType,
+        LockedIssueEventType,
+        MilestonedIssueEventType,
+        MilestoneType,
+        MovedColumnInProjectIssueEventType,
+        RemovedFromProjectIssueEventType,
+        RenamedIssueEventType,
+        ReposOwnerRepoIssuesCommentsCommentIdPatchBodyType,
+        ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyType,
+        ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType,
+        ReposOwnerRepoIssuesIssueNumberCommentsPostBodyType,
+        ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0Type,
+        ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItemsType,
+        ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Type,
+        ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3ItemsType,
+        ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0Type,
+        ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsType,
+        ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2Type,
+        ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3ItemsType,
+        ReposOwnerRepoIssuesIssueNumberLockPutBodyType,
+        ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1Type,
+        ReposOwnerRepoIssuesIssueNumberPatchBodyType,
+        ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1Type,
+        ReposOwnerRepoIssuesPostBodyType,
+        ReposOwnerRepoLabelsNamePatchBodyType,
+        ReposOwnerRepoLabelsPostBodyType,
+        ReposOwnerRepoMilestonesMilestoneNumberPatchBodyType,
+        ReposOwnerRepoMilestonesPostBodyType,
+        ReviewDismissedIssueEventType,
+        ReviewRequestedIssueEventType,
+        ReviewRequestRemovedIssueEventType,
+        SimpleUserType,
+        StateChangeIssueEventType,
+        TimelineAssignedIssueEventType,
+        TimelineCommentEventType,
+        TimelineCommitCommentedEventType,
+        TimelineCommittedEventType,
+        TimelineCrossReferencedEventType,
+        TimelineLineCommentedEventType,
+        TimelineReviewedEventType,
+        TimelineUnassignedIssueEventType,
+        UnassignedIssueEventType,
+        UnlabeledIssueEventType,
     )
 
 
@@ -150,7 +150,7 @@ class IssuesClient:
     ) -> Response[list[Issue], list[IssueType]]:
         """See also: https://docs.github.com/rest/issues/issues#list-issues-assigned-to-the-authenticated-user"""
 
-        from ..models import Issue, BasicError, ValidationError
+        from ..models import BasicError, Issue, ValidationError
 
         url = "/issues"
 
@@ -204,7 +204,7 @@ class IssuesClient:
     ) -> Response[list[Issue], list[IssueType]]:
         """See also: https://docs.github.com/rest/issues/issues#list-issues-assigned-to-the-authenticated-user"""
 
-        from ..models import Issue, BasicError, ValidationError
+        from ..models import BasicError, Issue, ValidationError
 
         url = "/issues"
 
@@ -255,7 +255,7 @@ class IssuesClient:
     ) -> Response[list[Issue], list[IssueType]]:
         """See also: https://docs.github.com/rest/issues/issues#list-organization-issues-assigned-to-the-authenticated-user"""
 
-        from ..models import Issue, BasicError
+        from ..models import BasicError, Issue
 
         url = f"/orgs/{org}/issues"
 
@@ -301,7 +301,7 @@ class IssuesClient:
     ) -> Response[list[Issue], list[IssueType]]:
         """See also: https://docs.github.com/rest/issues/issues#list-organization-issues-assigned-to-the-authenticated-user"""
 
-        from ..models import Issue, BasicError
+        from ..models import BasicError, Issue
 
         url = f"/orgs/{org}/issues"
 
@@ -465,7 +465,7 @@ class IssuesClient:
     ) -> Response[list[Issue], list[IssueType]]:
         """See also: https://docs.github.com/rest/issues/issues#list-repository-issues"""
 
-        from ..models import Issue, BasicError, ValidationError
+        from ..models import BasicError, Issue, ValidationError
 
         url = f"/repos/{owner}/{repo}/issues"
 
@@ -517,7 +517,7 @@ class IssuesClient:
     ) -> Response[list[Issue], list[IssueType]]:
         """See also: https://docs.github.com/rest/issues/issues#list-repository-issues"""
 
-        from ..models import Issue, BasicError, ValidationError
+        from ..models import BasicError, Issue, ValidationError
 
         url = f"/repos/{owner}/{repo}/issues"
 
@@ -589,11 +589,11 @@ class IssuesClient:
         """See also: https://docs.github.com/rest/issues/issues#create-an-issue"""
 
         from ..models import (
-            Issue,
             BasicError,
-            ValidationError,
-            ReposOwnerRepoIssuesPostBody,
             EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            Issue,
+            ReposOwnerRepoIssuesPostBody,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/issues"
@@ -665,11 +665,11 @@ class IssuesClient:
         """See also: https://docs.github.com/rest/issues/issues#create-an-issue"""
 
         from ..models import (
-            Issue,
             BasicError,
-            ValidationError,
-            ReposOwnerRepoIssuesPostBody,
             EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            Issue,
+            ReposOwnerRepoIssuesPostBody,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/issues"
@@ -910,8 +910,8 @@ class IssuesClient:
 
         from ..models import (
             IssueComment,
-            ValidationError,
             ReposOwnerRepoIssuesCommentsCommentIdPatchBody,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/issues/comments/{comment_id}"
@@ -977,8 +977,8 @@ class IssuesClient:
 
         from ..models import (
             IssueComment,
-            ValidationError,
             ReposOwnerRepoIssuesCommentsCommentIdPatchBody,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/issues/comments/{comment_id}"
@@ -1139,7 +1139,7 @@ class IssuesClient:
     ) -> Response[Issue, IssueType]:
         """See also: https://docs.github.com/rest/issues/issues#get-an-issue"""
 
-        from ..models import Issue, BasicError
+        from ..models import BasicError, Issue
 
         url = f"/repos/{owner}/{repo}/issues/{issue_number}"
 
@@ -1166,7 +1166,7 @@ class IssuesClient:
     ) -> Response[Issue, IssueType]:
         """See also: https://docs.github.com/rest/issues/issues#get-an-issue"""
 
-        from ..models import Issue, BasicError
+        from ..models import BasicError, Issue
 
         url = f"/repos/{owner}/{repo}/issues/{issue_number}"
 
@@ -1235,11 +1235,11 @@ class IssuesClient:
         """See also: https://docs.github.com/rest/issues/issues#update-an-issue"""
 
         from ..models import (
-            Issue,
             BasicError,
-            ValidationError,
-            ReposOwnerRepoIssuesIssueNumberPatchBody,
             EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            Issue,
+            ReposOwnerRepoIssuesIssueNumberPatchBody,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/issues/{issue_number}"
@@ -1322,11 +1322,11 @@ class IssuesClient:
         """See also: https://docs.github.com/rest/issues/issues#update-an-issue"""
 
         from ..models import (
-            Issue,
             BasicError,
-            ValidationError,
-            ReposOwnerRepoIssuesIssueNumberPatchBody,
             EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            Issue,
+            ReposOwnerRepoIssuesIssueNumberPatchBody,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/issues/{issue_number}"
@@ -1761,8 +1761,8 @@ class IssuesClient:
         from ..models import (
             BasicError,
             IssueComment,
-            ValidationError,
             ReposOwnerRepoIssuesIssueNumberCommentsPostBody,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/comments"
@@ -1832,8 +1832,8 @@ class IssuesClient:
         from ..models import (
             BasicError,
             IssueComment,
-            ValidationError,
             ReposOwnerRepoIssuesIssueNumberCommentsPostBody,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/comments"
@@ -1919,22 +1919,22 @@ class IssuesClient:
         from typing import Union
 
         from ..models import (
-            BasicError,
-            LockedIssueEvent,
-            LabeledIssueEvent,
-            RenamedIssueEvent,
-            AssignedIssueEvent,
-            UnlabeledIssueEvent,
-            MilestonedIssueEvent,
-            UnassignedIssueEvent,
-            DemilestonedIssueEvent,
             AddedToProjectIssueEvent,
+            AssignedIssueEvent,
+            BasicError,
+            ConvertedNoteToIssueIssueEvent,
+            DemilestonedIssueEvent,
+            LabeledIssueEvent,
+            LockedIssueEvent,
+            MilestonedIssueEvent,
+            MovedColumnInProjectIssueEvent,
+            RemovedFromProjectIssueEvent,
+            RenamedIssueEvent,
             ReviewDismissedIssueEvent,
             ReviewRequestedIssueEvent,
-            RemovedFromProjectIssueEvent,
-            ConvertedNoteToIssueIssueEvent,
-            MovedColumnInProjectIssueEvent,
             ReviewRequestRemovedIssueEvent,
+            UnassignedIssueEvent,
+            UnlabeledIssueEvent,
         )
 
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/events"
@@ -2029,22 +2029,22 @@ class IssuesClient:
         from typing import Union
 
         from ..models import (
-            BasicError,
-            LockedIssueEvent,
-            LabeledIssueEvent,
-            RenamedIssueEvent,
-            AssignedIssueEvent,
-            UnlabeledIssueEvent,
-            MilestonedIssueEvent,
-            UnassignedIssueEvent,
-            DemilestonedIssueEvent,
             AddedToProjectIssueEvent,
+            AssignedIssueEvent,
+            BasicError,
+            ConvertedNoteToIssueIssueEvent,
+            DemilestonedIssueEvent,
+            LabeledIssueEvent,
+            LockedIssueEvent,
+            MilestonedIssueEvent,
+            MovedColumnInProjectIssueEvent,
+            RemovedFromProjectIssueEvent,
+            RenamedIssueEvent,
             ReviewDismissedIssueEvent,
             ReviewRequestedIssueEvent,
-            RemovedFromProjectIssueEvent,
-            ConvertedNoteToIssueIssueEvent,
-            MovedColumnInProjectIssueEvent,
             ReviewRequestRemovedIssueEvent,
+            UnassignedIssueEvent,
+            UnlabeledIssueEvent,
         )
 
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/events"
@@ -2097,7 +2097,7 @@ class IssuesClient:
     ) -> Response[list[Label], list[LabelType]]:
         """See also: https://docs.github.com/rest/issues/labels#list-labels-for-an-issue"""
 
-        from ..models import Label, BasicError
+        from ..models import BasicError, Label
 
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/labels"
 
@@ -2132,7 +2132,7 @@ class IssuesClient:
     ) -> Response[list[Label], list[LabelType]]:
         """See also: https://docs.github.com/rest/issues/labels#list-labels-for-an-issue"""
 
-        from ..models import Label, BasicError
+        from ..models import BasicError, Label
 
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/labels"
 
@@ -2225,12 +2225,12 @@ class IssuesClient:
         from githubkit.compat import PYDANTIC_V2
 
         from ..models import (
-            Label,
             BasicError,
-            ValidationError,
+            Label,
             ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0,
             ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2,
             ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3Items,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/labels"
@@ -2341,12 +2341,12 @@ class IssuesClient:
         from githubkit.compat import PYDANTIC_V2
 
         from ..models import (
-            Label,
             BasicError,
-            ValidationError,
+            Label,
             ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0,
             ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2,
             ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3Items,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/labels"
@@ -2457,12 +2457,12 @@ class IssuesClient:
         from githubkit.compat import PYDANTIC_V2
 
         from ..models import (
-            Label,
             BasicError,
-            ValidationError,
+            Label,
             ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0,
             ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2,
             ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3Items,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/labels"
@@ -2573,12 +2573,12 @@ class IssuesClient:
         from githubkit.compat import PYDANTIC_V2
 
         from ..models import (
-            Label,
             BasicError,
-            ValidationError,
+            Label,
             ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0,
             ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2,
             ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3Items,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/labels"
@@ -2682,7 +2682,7 @@ class IssuesClient:
     ) -> Response[list[Label], list[LabelType]]:
         """See also: https://docs.github.com/rest/issues/labels#remove-a-label-from-an-issue"""
 
-        from ..models import Label, BasicError
+        from ..models import BasicError, Label
 
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/labels/{name}"
 
@@ -2710,7 +2710,7 @@ class IssuesClient:
     ) -> Response[list[Label], list[LabelType]]:
         """See also: https://docs.github.com/rest/issues/labels#remove-a-label-from-an-issue"""
 
-        from ..models import Label, BasicError
+        from ..models import BasicError, Label
 
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/labels/{name}"
 
@@ -2772,8 +2772,8 @@ class IssuesClient:
 
         from ..models import (
             BasicError,
-            ValidationError,
             ReposOwnerRepoIssuesIssueNumberLockPutBody,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/lock"
@@ -2849,8 +2849,8 @@ class IssuesClient:
 
         from ..models import (
             BasicError,
-            ValidationError,
             ReposOwnerRepoIssuesIssueNumberLockPutBody,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/lock"
@@ -3001,29 +3001,29 @@ class IssuesClient:
         from typing import Union
 
         from ..models import (
-            BasicError,
-            LockedIssueEvent,
-            LabeledIssueEvent,
-            RenamedIssueEvent,
-            UnlabeledIssueEvent,
-            MilestonedIssueEvent,
-            TimelineCommentEvent,
-            StateChangeIssueEvent,
-            TimelineReviewedEvent,
-            DemilestonedIssueEvent,
-            TimelineCommittedEvent,
             AddedToProjectIssueEvent,
+            BasicError,
+            ConvertedNoteToIssueIssueEvent,
+            DemilestonedIssueEvent,
+            LabeledIssueEvent,
+            LockedIssueEvent,
+            MilestonedIssueEvent,
+            MovedColumnInProjectIssueEvent,
+            RemovedFromProjectIssueEvent,
+            RenamedIssueEvent,
             ReviewDismissedIssueEvent,
             ReviewRequestedIssueEvent,
-            TimelineAssignedIssueEvent,
-            TimelineLineCommentedEvent,
-            RemovedFromProjectIssueEvent,
-            TimelineCommitCommentedEvent,
-            TimelineCrossReferencedEvent,
-            TimelineUnassignedIssueEvent,
-            ConvertedNoteToIssueIssueEvent,
-            MovedColumnInProjectIssueEvent,
             ReviewRequestRemovedIssueEvent,
+            StateChangeIssueEvent,
+            TimelineAssignedIssueEvent,
+            TimelineCommentEvent,
+            TimelineCommitCommentedEvent,
+            TimelineCommittedEvent,
+            TimelineCrossReferencedEvent,
+            TimelineLineCommentedEvent,
+            TimelineReviewedEvent,
+            TimelineUnassignedIssueEvent,
+            UnlabeledIssueEvent,
         )
 
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/timeline"
@@ -3140,29 +3140,29 @@ class IssuesClient:
         from typing import Union
 
         from ..models import (
-            BasicError,
-            LockedIssueEvent,
-            LabeledIssueEvent,
-            RenamedIssueEvent,
-            UnlabeledIssueEvent,
-            MilestonedIssueEvent,
-            TimelineCommentEvent,
-            StateChangeIssueEvent,
-            TimelineReviewedEvent,
-            DemilestonedIssueEvent,
-            TimelineCommittedEvent,
             AddedToProjectIssueEvent,
+            BasicError,
+            ConvertedNoteToIssueIssueEvent,
+            DemilestonedIssueEvent,
+            LabeledIssueEvent,
+            LockedIssueEvent,
+            MilestonedIssueEvent,
+            MovedColumnInProjectIssueEvent,
+            RemovedFromProjectIssueEvent,
+            RenamedIssueEvent,
             ReviewDismissedIssueEvent,
             ReviewRequestedIssueEvent,
-            TimelineAssignedIssueEvent,
-            TimelineLineCommentedEvent,
-            RemovedFromProjectIssueEvent,
-            TimelineCommitCommentedEvent,
-            TimelineCrossReferencedEvent,
-            TimelineUnassignedIssueEvent,
-            ConvertedNoteToIssueIssueEvent,
-            MovedColumnInProjectIssueEvent,
             ReviewRequestRemovedIssueEvent,
+            StateChangeIssueEvent,
+            TimelineAssignedIssueEvent,
+            TimelineCommentEvent,
+            TimelineCommitCommentedEvent,
+            TimelineCommittedEvent,
+            TimelineCrossReferencedEvent,
+            TimelineLineCommentedEvent,
+            TimelineReviewedEvent,
+            TimelineUnassignedIssueEvent,
+            UnlabeledIssueEvent,
         )
 
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/timeline"
@@ -3222,7 +3222,7 @@ class IssuesClient:
     ) -> Response[list[Label], list[LabelType]]:
         """See also: https://docs.github.com/rest/issues/labels#list-labels-for-a-repository"""
 
-        from ..models import Label, BasicError
+        from ..models import BasicError, Label
 
         url = f"/repos/{owner}/{repo}/labels"
 
@@ -3255,7 +3255,7 @@ class IssuesClient:
     ) -> Response[list[Label], list[LabelType]]:
         """See also: https://docs.github.com/rest/issues/labels#list-labels-for-a-repository"""
 
-        from ..models import Label, BasicError
+        from ..models import BasicError, Label
 
         url = f"/repos/{owner}/{repo}/labels"
 
@@ -3312,10 +3312,10 @@ class IssuesClient:
         """See also: https://docs.github.com/rest/issues/labels#create-a-label"""
 
         from ..models import (
-            Label,
             BasicError,
-            ValidationError,
+            Label,
             ReposOwnerRepoLabelsPostBody,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/labels"
@@ -3378,10 +3378,10 @@ class IssuesClient:
         """See also: https://docs.github.com/rest/issues/labels#create-a-label"""
 
         from ..models import (
-            Label,
             BasicError,
-            ValidationError,
+            Label,
             ReposOwnerRepoLabelsPostBody,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/labels"
@@ -3419,7 +3419,7 @@ class IssuesClient:
     ) -> Response[Label, LabelType]:
         """See also: https://docs.github.com/rest/issues/labels#get-a-label"""
 
-        from ..models import Label, BasicError
+        from ..models import BasicError, Label
 
         url = f"/repos/{owner}/{repo}/labels/{name}"
 
@@ -3445,7 +3445,7 @@ class IssuesClient:
     ) -> Response[Label, LabelType]:
         """See also: https://docs.github.com/rest/issues/labels#get-a-label"""
 
-        from ..models import Label, BasicError
+        from ..models import BasicError, Label
 
         url = f"/repos/{owner}/{repo}/labels/{name}"
 
@@ -3635,7 +3635,7 @@ class IssuesClient:
     ) -> Response[list[Milestone], list[MilestoneType]]:
         """See also: https://docs.github.com/rest/issues/milestones#list-milestones"""
 
-        from ..models import Milestone, BasicError
+        from ..models import BasicError, Milestone
 
         url = f"/repos/{owner}/{repo}/milestones"
 
@@ -3674,7 +3674,7 @@ class IssuesClient:
     ) -> Response[list[Milestone], list[MilestoneType]]:
         """See also: https://docs.github.com/rest/issues/milestones#list-milestones"""
 
-        from ..models import Milestone, BasicError
+        from ..models import BasicError, Milestone
 
         url = f"/repos/{owner}/{repo}/milestones"
 
@@ -3735,10 +3735,10 @@ class IssuesClient:
         """See also: https://docs.github.com/rest/issues/milestones#create-a-milestone"""
 
         from ..models import (
-            Milestone,
             BasicError,
-            ValidationError,
+            Milestone,
             ReposOwnerRepoMilestonesPostBody,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/milestones"
@@ -3802,10 +3802,10 @@ class IssuesClient:
         """See also: https://docs.github.com/rest/issues/milestones#create-a-milestone"""
 
         from ..models import (
-            Milestone,
             BasicError,
-            ValidationError,
+            Milestone,
             ReposOwnerRepoMilestonesPostBody,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/milestones"
@@ -3843,7 +3843,7 @@ class IssuesClient:
     ) -> Response[Milestone, MilestoneType]:
         """See also: https://docs.github.com/rest/issues/milestones#get-a-milestone"""
 
-        from ..models import Milestone, BasicError
+        from ..models import BasicError, Milestone
 
         url = f"/repos/{owner}/{repo}/milestones/{milestone_number}"
 
@@ -3869,7 +3869,7 @@ class IssuesClient:
     ) -> Response[Milestone, MilestoneType]:
         """See also: https://docs.github.com/rest/issues/milestones#get-a-milestone"""
 
-        from ..models import Milestone, BasicError
+        from ..models import BasicError, Milestone
 
         url = f"/repos/{owner}/{repo}/milestones/{milestone_number}"
 
@@ -4140,7 +4140,7 @@ class IssuesClient:
     ) -> Response[list[Issue], list[IssueType]]:
         """See also: https://docs.github.com/rest/issues/issues#list-user-account-issues-assigned-to-the-authenticated-user"""
 
-        from ..models import Issue, BasicError
+        from ..models import BasicError, Issue
 
         url = "/user/issues"
 
@@ -4185,7 +4185,7 @@ class IssuesClient:
     ) -> Response[list[Issue], list[IssueType]]:
         """See also: https://docs.github.com/rest/issues/issues#list-user-account-issues-assigned-to-the-authenticated-user"""
 
-        from ..models import Issue, BasicError
+        from ..models import BasicError, Issue
 
         url = "/user/issues"
 

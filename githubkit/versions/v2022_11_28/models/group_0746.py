@@ -13,22 +13,22 @@ from typing import Literal
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 from .group_0002 import SimpleUser
 from .group_0019 import Repository
 from .group_0042 import Issue
-from .group_0385 import SimpleInstallation
-from .group_0386 import OrganizationSimpleWebhooks
-from .group_0387 import RepositoryWebhooks
+from .group_0386 import SimpleInstallation
+from .group_0387 import OrganizationSimpleWebhooks
+from .group_0388 import RepositoryWebhooks
 
 
-class WebhookSubIssuesParentIssueRemoved(GitHubModel):
-    """parent issue removed event"""
+class WebhookSubIssuesParentIssueAdded(GitHubModel):
+    """parent issue added event"""
 
-    action: Literal["parent_issue_removed"] = Field()
+    action: Literal["parent_issue_added"] = Field()
     parent_issue_id: float = Field(description="The ID of the parent issue.")
     parent_issue: Issue = Field(
         title="Issue",
@@ -62,6 +62,6 @@ class WebhookSubIssuesParentIssueRemoved(GitHubModel):
     )
 
 
-model_rebuild(WebhookSubIssuesParentIssueRemoved)
+model_rebuild(WebhookSubIssuesParentIssueAdded)
 
-__all__ = ("WebhookSubIssuesParentIssueRemoved",)
+__all__ = ("WebhookSubIssuesParentIssueAdded",)

@@ -10,93 +10,39 @@ See https://github.com/github/rest-api-description for more information.
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from githubkit.versions.v2022_11_28.webhooks import ForkEvent as ForkEvent
-    from githubkit.versions.v2022_11_28.webhooks import MetaEvent as MetaEvent
-    from githubkit.versions.v2022_11_28.webhooks import PingEvent as PingEvent
-    from githubkit.versions.v2022_11_28.webhooks import PushEvent as PushEvent
-    from githubkit.versions.v2022_11_28.webhooks import StarEvent as StarEvent
-    from githubkit.versions.v2022_11_28.webhooks import TeamEvent as TeamEvent
-    from githubkit.versions.v2022_11_28.webhooks import LabelEvent as LabelEvent
-    from githubkit.versions.v2022_11_28.webhooks import WatchEvent as WatchEvent
-    from githubkit.versions.v2022_11_28.webhooks import CreateEvent as CreateEvent
-    from githubkit.versions.v2022_11_28.webhooks import DeleteEvent as DeleteEvent
-    from githubkit.versions.v2022_11_28.webhooks import GollumEvent as GollumEvent
-    from githubkit.versions.v2022_11_28.webhooks import IssuesEvent as IssuesEvent
-    from githubkit.versions.v2022_11_28.webhooks import MemberEvent as MemberEvent
-    from githubkit.versions.v2022_11_28.webhooks import PublicEvent as PublicEvent
-    from githubkit.versions.v2022_11_28.webhooks import StatusEvent as StatusEvent
-    from githubkit.versions.v2022_11_28.webhooks import PackageEvent as PackageEvent
-    from githubkit.versions.v2022_11_28.webhooks import ProjectEvent as ProjectEvent
-    from githubkit.versions.v2022_11_28.webhooks import ReleaseEvent as ReleaseEvent
-    from githubkit.versions.v2022_11_28.webhooks import TeamAddEvent as TeamAddEvent
+    from githubkit.versions.v2022_11_28.webhooks import (
+        BranchProtectionConfigurationEvent as BranchProtectionConfigurationEvent,
+    )
+    from githubkit.versions.v2022_11_28.webhooks import (
+        BranchProtectionRuleEvent as BranchProtectionRuleEvent,
+    )
     from githubkit.versions.v2022_11_28.webhooks import CheckRunEvent as CheckRunEvent
-    from githubkit.versions.v2022_11_28.webhooks import OrgBlockEvent as OrgBlockEvent
-    from githubkit.versions.v2022_11_28.webhooks import DeployKeyEvent as DeployKeyEvent
-    from githubkit.versions.v2022_11_28.webhooks import MilestoneEvent as MilestoneEvent
-    from githubkit.versions.v2022_11_28.webhooks import PageBuildEvent as PageBuildEvent
-    from githubkit.versions.v2022_11_28.webhooks import SubIssuesEvent as SubIssuesEvent
     from githubkit.versions.v2022_11_28.webhooks import (
         CheckSuiteEvent as CheckSuiteEvent,
     )
     from githubkit.versions.v2022_11_28.webhooks import (
-        DeploymentEvent as DeploymentEvent,
-    )
-    from githubkit.versions.v2022_11_28.webhooks import (
-        DiscussionEvent as DiscussionEvent,
-    )
-    from githubkit.versions.v2022_11_28.webhooks import (
-        MembershipEvent as MembershipEvent,
-    )
-    from githubkit.versions.v2022_11_28.webhooks import (
-        MergeGroupEvent as MergeGroupEvent,
-    )
-    from githubkit.versions.v2022_11_28.webhooks import (
-        ProjectsV2Event as ProjectsV2Event,
-    )
-    from githubkit.versions.v2022_11_28.webhooks import (
-        RepositoryEvent as RepositoryEvent,
-    )
-    from githubkit.versions.v2022_11_28.webhooks import (
-        ProjectCardEvent as ProjectCardEvent,
-    )
-    from githubkit.versions.v2022_11_28.webhooks import (
-        PullRequestEvent as PullRequestEvent,
-    )
-    from githubkit.versions.v2022_11_28.webhooks import (
-        SponsorshipEvent as SponsorshipEvent,
-    )
-    from githubkit.versions.v2022_11_28.webhooks import (
-        WorkflowJobEvent as WorkflowJobEvent,
-    )
-    from githubkit.versions.v2022_11_28.webhooks import (
-        WorkflowRunEvent as WorkflowRunEvent,
-    )
-    from githubkit.versions.v2022_11_28.webhooks import (
-        InstallationEvent as InstallationEvent,
-    )
-    from githubkit.versions.v2022_11_28.webhooks import (
-        IssueCommentEvent as IssueCommentEvent,
-    )
-    from githubkit.versions.v2022_11_28.webhooks import (
-        OrganizationEvent as OrganizationEvent,
+        CodeScanningAlertEvent as CodeScanningAlertEvent,
     )
     from githubkit.versions.v2022_11_28.webhooks import (
         CommitCommentEvent as CommitCommentEvent,
     )
-    from githubkit.versions.v2022_11_28.webhooks import (
-        ProjectColumnEvent as ProjectColumnEvent,
-    )
+    from githubkit.versions.v2022_11_28.webhooks import CreateEvent as CreateEvent
     from githubkit.versions.v2022_11_28.webhooks import (
         CustomPropertyEvent as CustomPropertyEvent,
     )
     from githubkit.versions.v2022_11_28.webhooks import (
-        ProjectsV2ItemEvent as ProjectsV2ItemEvent,
+        CustomPropertyValuesEvent as CustomPropertyValuesEvent,
     )
+    from githubkit.versions.v2022_11_28.webhooks import DeleteEvent as DeleteEvent
     from githubkit.versions.v2022_11_28.webhooks import (
         DependabotAlertEvent as DependabotAlertEvent,
     )
+    from githubkit.versions.v2022_11_28.webhooks import DeployKeyEvent as DeployKeyEvent
     from githubkit.versions.v2022_11_28.webhooks import (
-        RegistryPackageEvent as RegistryPackageEvent,
+        DeploymentEvent as DeploymentEvent,
+    )
+    from githubkit.versions.v2022_11_28.webhooks import (
+        DeploymentProtectionRuleEvent as DeploymentProtectionRuleEvent,
     )
     from githubkit.versions.v2022_11_28.webhooks import (
         DeploymentReviewEvent as DeploymentReviewEvent,
@@ -105,29 +51,86 @@ if TYPE_CHECKING:
         DeploymentStatusEvent as DeploymentStatusEvent,
     )
     from githubkit.versions.v2022_11_28.webhooks import (
-        RepositoryImportEvent as RepositoryImportEvent,
-    )
-    from githubkit.versions.v2022_11_28.webhooks import (
-        SecurityAdvisoryEvent as SecurityAdvisoryEvent,
-    )
-    from githubkit.versions.v2022_11_28.webhooks import (
-        WorkflowDispatchEvent as WorkflowDispatchEvent,
-    )
-    from githubkit.versions.v2022_11_28.webhooks import (
-        CodeScanningAlertEvent as CodeScanningAlertEvent,
-    )
-    from githubkit.versions.v2022_11_28.webhooks import (
         DiscussionCommentEvent as DiscussionCommentEvent,
+    )
+    from githubkit.versions.v2022_11_28.webhooks import (
+        DiscussionEvent as DiscussionEvent,
+    )
+    from githubkit.versions.v2022_11_28.webhooks import ForkEvent as ForkEvent
+    from githubkit.versions.v2022_11_28.webhooks import (
+        GithubAppAuthorizationEvent as GithubAppAuthorizationEvent,
+    )
+    from githubkit.versions.v2022_11_28.webhooks import GollumEvent as GollumEvent
+    from githubkit.versions.v2022_11_28.webhooks import (
+        InstallationEvent as InstallationEvent,
+    )
+    from githubkit.versions.v2022_11_28.webhooks import (
+        InstallationRepositoriesEvent as InstallationRepositoriesEvent,
+    )
+    from githubkit.versions.v2022_11_28.webhooks import (
+        InstallationTargetEvent as InstallationTargetEvent,
+    )
+    from githubkit.versions.v2022_11_28.webhooks import (
+        IssueCommentEvent as IssueCommentEvent,
+    )
+    from githubkit.versions.v2022_11_28.webhooks import IssuesEvent as IssuesEvent
+    from githubkit.versions.v2022_11_28.webhooks import LabelEvent as LabelEvent
+    from githubkit.versions.v2022_11_28.webhooks import (
+        MarketplacePurchaseEvent as MarketplacePurchaseEvent,
+    )
+    from githubkit.versions.v2022_11_28.webhooks import MemberEvent as MemberEvent
+    from githubkit.versions.v2022_11_28.webhooks import (
+        MembershipEvent as MembershipEvent,
+    )
+    from githubkit.versions.v2022_11_28.webhooks import (
+        MergeGroupEvent as MergeGroupEvent,
+    )
+    from githubkit.versions.v2022_11_28.webhooks import MetaEvent as MetaEvent
+    from githubkit.versions.v2022_11_28.webhooks import MilestoneEvent as MilestoneEvent
+    from githubkit.versions.v2022_11_28.webhooks import (
+        OrganizationEvent as OrganizationEvent,
+    )
+    from githubkit.versions.v2022_11_28.webhooks import OrgBlockEvent as OrgBlockEvent
+    from githubkit.versions.v2022_11_28.webhooks import PackageEvent as PackageEvent
+    from githubkit.versions.v2022_11_28.webhooks import PageBuildEvent as PageBuildEvent
+    from githubkit.versions.v2022_11_28.webhooks import (
+        PersonalAccessTokenRequestEvent as PersonalAccessTokenRequestEvent,
+    )
+    from githubkit.versions.v2022_11_28.webhooks import PingEvent as PingEvent
+    from githubkit.versions.v2022_11_28.webhooks import (
+        ProjectCardEvent as ProjectCardEvent,
+    )
+    from githubkit.versions.v2022_11_28.webhooks import (
+        ProjectColumnEvent as ProjectColumnEvent,
+    )
+    from githubkit.versions.v2022_11_28.webhooks import ProjectEvent as ProjectEvent
+    from githubkit.versions.v2022_11_28.webhooks import (
+        ProjectsV2Event as ProjectsV2Event,
+    )
+    from githubkit.versions.v2022_11_28.webhooks import (
+        ProjectsV2ItemEvent as ProjectsV2ItemEvent,
+    )
+    from githubkit.versions.v2022_11_28.webhooks import (
+        ProjectsV2StatusUpdateEvent as ProjectsV2StatusUpdateEvent,
+    )
+    from githubkit.versions.v2022_11_28.webhooks import PublicEvent as PublicEvent
+    from githubkit.versions.v2022_11_28.webhooks import (
+        PullRequestEvent as PullRequestEvent,
+    )
+    from githubkit.versions.v2022_11_28.webhooks import (
+        PullRequestReviewCommentEvent as PullRequestReviewCommentEvent,
     )
     from githubkit.versions.v2022_11_28.webhooks import (
         PullRequestReviewEvent as PullRequestReviewEvent,
     )
     from githubkit.versions.v2022_11_28.webhooks import (
-        RepositoryRulesetEvent as RepositoryRulesetEvent,
+        PullRequestReviewThreadEvent as PullRequestReviewThreadEvent,
     )
+    from githubkit.versions.v2022_11_28.webhooks import PushEvent as PushEvent
     from githubkit.versions.v2022_11_28.webhooks import (
-        InstallationTargetEvent as InstallationTargetEvent,
+        RegistryPackageEvent as RegistryPackageEvent,
     )
+    from githubkit.versions.v2022_11_28.webhooks import ReleaseEvent as ReleaseEvent
     from githubkit.versions.v2022_11_28.webhooks import (
         RepositoryAdvisoryEvent as RepositoryAdvisoryEvent,
     )
@@ -135,115 +138,79 @@ if TYPE_CHECKING:
         RepositoryDispatchEvent as RepositoryDispatchEvent,
     )
     from githubkit.versions.v2022_11_28.webhooks import (
-        MarketplacePurchaseEvent as MarketplacePurchaseEvent,
+        RepositoryEvent as RepositoryEvent,
     )
     from githubkit.versions.v2022_11_28.webhooks import (
-        SecretScanningAlertEvent as SecretScanningAlertEvent,
+        RepositoryImportEvent as RepositoryImportEvent,
     )
     from githubkit.versions.v2022_11_28.webhooks import (
-        SecurityAndAnalysisEvent as SecurityAndAnalysisEvent,
-    )
-    from githubkit.versions.v2022_11_28.webhooks import (
-        BranchProtectionRuleEvent as BranchProtectionRuleEvent,
-    )
-    from githubkit.versions.v2022_11_28.webhooks import (
-        CustomPropertyValuesEvent as CustomPropertyValuesEvent,
-    )
-    from githubkit.versions.v2022_11_28.webhooks import (
-        GithubAppAuthorizationEvent as GithubAppAuthorizationEvent,
-    )
-    from githubkit.versions.v2022_11_28.webhooks import (
-        ProjectsV2StatusUpdateEvent as ProjectsV2StatusUpdateEvent,
-    )
-    from githubkit.versions.v2022_11_28.webhooks import (
-        PullRequestReviewThreadEvent as PullRequestReviewThreadEvent,
-    )
-    from githubkit.versions.v2022_11_28.webhooks import (
-        DeploymentProtectionRuleEvent as DeploymentProtectionRuleEvent,
-    )
-    from githubkit.versions.v2022_11_28.webhooks import (
-        InstallationRepositoriesEvent as InstallationRepositoriesEvent,
-    )
-    from githubkit.versions.v2022_11_28.webhooks import (
-        PullRequestReviewCommentEvent as PullRequestReviewCommentEvent,
-    )
-    from githubkit.versions.v2022_11_28.webhooks import (
-        PersonalAccessTokenRequestEvent as PersonalAccessTokenRequestEvent,
-    )
-    from githubkit.versions.v2022_11_28.webhooks import (
-        SecretScanningAlertLocationEvent as SecretScanningAlertLocationEvent,
+        RepositoryRulesetEvent as RepositoryRulesetEvent,
     )
     from githubkit.versions.v2022_11_28.webhooks import (
         RepositoryVulnerabilityAlertEvent as RepositoryVulnerabilityAlertEvent,
     )
     from githubkit.versions.v2022_11_28.webhooks import (
-        BranchProtectionConfigurationEvent as BranchProtectionConfigurationEvent,
+        SecretScanningAlertEvent as SecretScanningAlertEvent,
     )
     from githubkit.versions.v2022_11_28.webhooks import (
-        fork_action_types as fork_action_types,
+        SecretScanningAlertLocationEvent as SecretScanningAlertLocationEvent,
     )
     from githubkit.versions.v2022_11_28.webhooks import (
-        meta_action_types as meta_action_types,
+        SecurityAdvisoryEvent as SecurityAdvisoryEvent,
     )
     from githubkit.versions.v2022_11_28.webhooks import (
-        ping_action_types as ping_action_types,
+        SecurityAndAnalysisEvent as SecurityAndAnalysisEvent,
     )
     from githubkit.versions.v2022_11_28.webhooks import (
-        push_action_types as push_action_types,
+        SponsorshipEvent as SponsorshipEvent,
+    )
+    from githubkit.versions.v2022_11_28.webhooks import StarEvent as StarEvent
+    from githubkit.versions.v2022_11_28.webhooks import StatusEvent as StatusEvent
+    from githubkit.versions.v2022_11_28.webhooks import SubIssuesEvent as SubIssuesEvent
+    from githubkit.versions.v2022_11_28.webhooks import TeamAddEvent as TeamAddEvent
+    from githubkit.versions.v2022_11_28.webhooks import TeamEvent as TeamEvent
+    from githubkit.versions.v2022_11_28.webhooks import WatchEvent as WatchEvent
+    from githubkit.versions.v2022_11_28.webhooks import (
+        WorkflowDispatchEvent as WorkflowDispatchEvent,
     )
     from githubkit.versions.v2022_11_28.webhooks import (
-        star_action_types as star_action_types,
+        WorkflowJobEvent as WorkflowJobEvent,
     )
     from githubkit.versions.v2022_11_28.webhooks import (
-        team_action_types as team_action_types,
+        WorkflowRunEvent as WorkflowRunEvent,
     )
     from githubkit.versions.v2022_11_28.webhooks import (
-        label_action_types as label_action_types,
+        branch_protection_configuration_action_types as branch_protection_configuration_action_types,
     )
     from githubkit.versions.v2022_11_28.webhooks import (
-        watch_action_types as watch_action_types,
-    )
-    from githubkit.versions.v2022_11_28.webhooks import (
-        create_action_types as create_action_types,
-    )
-    from githubkit.versions.v2022_11_28.webhooks import (
-        delete_action_types as delete_action_types,
-    )
-    from githubkit.versions.v2022_11_28.webhooks import (
-        gollum_action_types as gollum_action_types,
-    )
-    from githubkit.versions.v2022_11_28.webhooks import (
-        issues_action_types as issues_action_types,
-    )
-    from githubkit.versions.v2022_11_28.webhooks import (
-        member_action_types as member_action_types,
-    )
-    from githubkit.versions.v2022_11_28.webhooks import (
-        public_action_types as public_action_types,
-    )
-    from githubkit.versions.v2022_11_28.webhooks import (
-        status_action_types as status_action_types,
-    )
-    from githubkit.versions.v2022_11_28.webhooks import (
-        package_action_types as package_action_types,
-    )
-    from githubkit.versions.v2022_11_28.webhooks import (
-        project_action_types as project_action_types,
-    )
-    from githubkit.versions.v2022_11_28.webhooks import (
-        release_action_types as release_action_types,
-    )
-    from githubkit.versions.v2022_11_28.webhooks import (
-        team_add_action_types as team_add_action_types,
+        branch_protection_rule_action_types as branch_protection_rule_action_types,
     )
     from githubkit.versions.v2022_11_28.webhooks import (
         check_run_action_types as check_run_action_types,
     )
     from githubkit.versions.v2022_11_28.webhooks import (
-        milestone_action_types as milestone_action_types,
+        check_suite_action_types as check_suite_action_types,
     )
     from githubkit.versions.v2022_11_28.webhooks import (
-        org_block_action_types as org_block_action_types,
+        code_scanning_alert_action_types as code_scanning_alert_action_types,
+    )
+    from githubkit.versions.v2022_11_28.webhooks import (
+        commit_comment_action_types as commit_comment_action_types,
+    )
+    from githubkit.versions.v2022_11_28.webhooks import (
+        create_action_types as create_action_types,
+    )
+    from githubkit.versions.v2022_11_28.webhooks import (
+        custom_property_action_types as custom_property_action_types,
+    )
+    from githubkit.versions.v2022_11_28.webhooks import (
+        custom_property_values_action_types as custom_property_values_action_types,
+    )
+    from githubkit.versions.v2022_11_28.webhooks import (
+        delete_action_types as delete_action_types,
+    )
+    from githubkit.versions.v2022_11_28.webhooks import (
+        dependabot_alert_action_types as dependabot_alert_action_types,
     )
     from githubkit.versions.v2022_11_28.webhooks import (
         deploy_key_action_types as deploy_key_action_types,
@@ -252,70 +219,7 @@ if TYPE_CHECKING:
         deployment_action_types as deployment_action_types,
     )
     from githubkit.versions.v2022_11_28.webhooks import (
-        discussion_action_types as discussion_action_types,
-    )
-    from githubkit.versions.v2022_11_28.webhooks import (
-        membership_action_types as membership_action_types,
-    )
-    from githubkit.versions.v2022_11_28.webhooks import (
-        page_build_action_types as page_build_action_types,
-    )
-    from githubkit.versions.v2022_11_28.webhooks import (
-        repository_action_types as repository_action_types,
-    )
-    from githubkit.versions.v2022_11_28.webhooks import (
-        sub_issues_action_types as sub_issues_action_types,
-    )
-    from githubkit.versions.v2022_11_28.webhooks import (
-        check_suite_action_types as check_suite_action_types,
-    )
-    from githubkit.versions.v2022_11_28.webhooks import (
-        merge_group_action_types as merge_group_action_types,
-    )
-    from githubkit.versions.v2022_11_28.webhooks import (
-        projects_v2_action_types as projects_v2_action_types,
-    )
-    from githubkit.versions.v2022_11_28.webhooks import (
-        sponsorship_action_types as sponsorship_action_types,
-    )
-    from githubkit.versions.v2022_11_28.webhooks import (
-        installation_action_types as installation_action_types,
-    )
-    from githubkit.versions.v2022_11_28.webhooks import (
-        organization_action_types as organization_action_types,
-    )
-    from githubkit.versions.v2022_11_28.webhooks import (
-        project_card_action_types as project_card_action_types,
-    )
-    from githubkit.versions.v2022_11_28.webhooks import (
-        pull_request_action_types as pull_request_action_types,
-    )
-    from githubkit.versions.v2022_11_28.webhooks import (
-        workflow_job_action_types as workflow_job_action_types,
-    )
-    from githubkit.versions.v2022_11_28.webhooks import (
-        workflow_run_action_types as workflow_run_action_types,
-    )
-    from githubkit.versions.v2022_11_28.webhooks import (
-        issue_comment_action_types as issue_comment_action_types,
-    )
-    from githubkit.versions.v2022_11_28.webhooks import (
-        commit_comment_action_types as commit_comment_action_types,
-    )
-    from githubkit.versions.v2022_11_28.webhooks import (
-        project_column_action_types as project_column_action_types,
-    )
-    from githubkit.versions.v2022_11_28.webhooks import (
-        custom_property_action_types as custom_property_action_types,
-    )
-    from githubkit.versions.v2022_11_28.webhooks import (
-        dependabot_alert_action_types as dependabot_alert_action_types,
-    )
-    from githubkit.versions.v2022_11_28.webhooks import (
-        projects_v2_item_action_types as projects_v2_item_action_types,
-    )
-    from githubkit.versions.v2022_11_28.webhooks import (
-        registry_package_action_types as registry_package_action_types,
+        deployment_protection_rule_action_types as deployment_protection_rule_action_types,
     )
     from githubkit.versions.v2022_11_28.webhooks import (
         deployment_review_action_types as deployment_review_action_types,
@@ -324,28 +228,118 @@ if TYPE_CHECKING:
         deployment_status_action_types as deployment_status_action_types,
     )
     from githubkit.versions.v2022_11_28.webhooks import (
-        repository_import_action_types as repository_import_action_types,
-    )
-    from githubkit.versions.v2022_11_28.webhooks import (
-        security_advisory_action_types as security_advisory_action_types,
-    )
-    from githubkit.versions.v2022_11_28.webhooks import (
-        workflow_dispatch_action_types as workflow_dispatch_action_types,
+        discussion_action_types as discussion_action_types,
     )
     from githubkit.versions.v2022_11_28.webhooks import (
         discussion_comment_action_types as discussion_comment_action_types,
     )
     from githubkit.versions.v2022_11_28.webhooks import (
-        repository_ruleset_action_types as repository_ruleset_action_types,
+        fork_action_types as fork_action_types,
     )
     from githubkit.versions.v2022_11_28.webhooks import (
-        code_scanning_alert_action_types as code_scanning_alert_action_types,
+        github_app_authorization_action_types as github_app_authorization_action_types,
+    )
+    from githubkit.versions.v2022_11_28.webhooks import (
+        gollum_action_types as gollum_action_types,
+    )
+    from githubkit.versions.v2022_11_28.webhooks import (
+        installation_action_types as installation_action_types,
+    )
+    from githubkit.versions.v2022_11_28.webhooks import (
+        installation_repositories_action_types as installation_repositories_action_types,
     )
     from githubkit.versions.v2022_11_28.webhooks import (
         installation_target_action_types as installation_target_action_types,
     )
     from githubkit.versions.v2022_11_28.webhooks import (
+        issue_comment_action_types as issue_comment_action_types,
+    )
+    from githubkit.versions.v2022_11_28.webhooks import (
+        issues_action_types as issues_action_types,
+    )
+    from githubkit.versions.v2022_11_28.webhooks import (
+        label_action_types as label_action_types,
+    )
+    from githubkit.versions.v2022_11_28.webhooks import (
+        marketplace_purchase_action_types as marketplace_purchase_action_types,
+    )
+    from githubkit.versions.v2022_11_28.webhooks import (
+        member_action_types as member_action_types,
+    )
+    from githubkit.versions.v2022_11_28.webhooks import (
+        membership_action_types as membership_action_types,
+    )
+    from githubkit.versions.v2022_11_28.webhooks import (
+        merge_group_action_types as merge_group_action_types,
+    )
+    from githubkit.versions.v2022_11_28.webhooks import (
+        meta_action_types as meta_action_types,
+    )
+    from githubkit.versions.v2022_11_28.webhooks import (
+        milestone_action_types as milestone_action_types,
+    )
+    from githubkit.versions.v2022_11_28.webhooks import (
+        org_block_action_types as org_block_action_types,
+    )
+    from githubkit.versions.v2022_11_28.webhooks import (
+        organization_action_types as organization_action_types,
+    )
+    from githubkit.versions.v2022_11_28.webhooks import (
+        package_action_types as package_action_types,
+    )
+    from githubkit.versions.v2022_11_28.webhooks import (
+        page_build_action_types as page_build_action_types,
+    )
+    from githubkit.versions.v2022_11_28.webhooks import (
+        personal_access_token_request_action_types as personal_access_token_request_action_types,
+    )
+    from githubkit.versions.v2022_11_28.webhooks import (
+        ping_action_types as ping_action_types,
+    )
+    from githubkit.versions.v2022_11_28.webhooks import (
+        project_action_types as project_action_types,
+    )
+    from githubkit.versions.v2022_11_28.webhooks import (
+        project_card_action_types as project_card_action_types,
+    )
+    from githubkit.versions.v2022_11_28.webhooks import (
+        project_column_action_types as project_column_action_types,
+    )
+    from githubkit.versions.v2022_11_28.webhooks import (
+        projects_v2_action_types as projects_v2_action_types,
+    )
+    from githubkit.versions.v2022_11_28.webhooks import (
+        projects_v2_item_action_types as projects_v2_item_action_types,
+    )
+    from githubkit.versions.v2022_11_28.webhooks import (
+        projects_v2_status_update_action_types as projects_v2_status_update_action_types,
+    )
+    from githubkit.versions.v2022_11_28.webhooks import (
+        public_action_types as public_action_types,
+    )
+    from githubkit.versions.v2022_11_28.webhooks import (
+        pull_request_action_types as pull_request_action_types,
+    )
+    from githubkit.versions.v2022_11_28.webhooks import (
         pull_request_review_action_types as pull_request_review_action_types,
+    )
+    from githubkit.versions.v2022_11_28.webhooks import (
+        pull_request_review_comment_action_types as pull_request_review_comment_action_types,
+    )
+    from githubkit.versions.v2022_11_28.webhooks import (
+        pull_request_review_thread_action_types as pull_request_review_thread_action_types,
+    )
+    from githubkit.versions.v2022_11_28.webhooks import (
+        push_action_types as push_action_types,
+    )
+    from githubkit.versions.v2022_11_28.webhooks import (
+        registry_package_action_types as registry_package_action_types,
+    )
+    from githubkit.versions.v2022_11_28.webhooks import (
+        release_action_types as release_action_types,
+    )
+    from githubkit.versions.v2022_11_28.webhooks import (
+        repository_action_types as repository_action_types,
     )
     from githubkit.versions.v2022_11_28.webhooks import (
         repository_advisory_action_types as repository_advisory_action_types,
@@ -354,58 +348,55 @@ if TYPE_CHECKING:
         repository_dispatch_action_types as repository_dispatch_action_types,
     )
     from githubkit.versions.v2022_11_28.webhooks import (
-        marketplace_purchase_action_types as marketplace_purchase_action_types,
+        repository_import_action_types as repository_import_action_types,
     )
     from githubkit.versions.v2022_11_28.webhooks import (
-        secret_scanning_alert_action_types as secret_scanning_alert_action_types,
-    )
-    from githubkit.versions.v2022_11_28.webhooks import (
-        security_and_analysis_action_types as security_and_analysis_action_types,
-    )
-    from githubkit.versions.v2022_11_28.webhooks import (
-        branch_protection_rule_action_types as branch_protection_rule_action_types,
-    )
-    from githubkit.versions.v2022_11_28.webhooks import (
-        custom_property_values_action_types as custom_property_values_action_types,
-    )
-    from githubkit.versions.v2022_11_28.webhooks import (
-        github_app_authorization_action_types as github_app_authorization_action_types,
-    )
-    from githubkit.versions.v2022_11_28.webhooks import (
-        installation_repositories_action_types as installation_repositories_action_types,
-    )
-    from githubkit.versions.v2022_11_28.webhooks import (
-        projects_v2_status_update_action_types as projects_v2_status_update_action_types,
-    )
-    from githubkit.versions.v2022_11_28.webhooks import (
-        deployment_protection_rule_action_types as deployment_protection_rule_action_types,
-    )
-    from githubkit.versions.v2022_11_28.webhooks import (
-        pull_request_review_thread_action_types as pull_request_review_thread_action_types,
-    )
-    from githubkit.versions.v2022_11_28.webhooks import (
-        pull_request_review_comment_action_types as pull_request_review_comment_action_types,
-    )
-    from githubkit.versions.v2022_11_28.webhooks import (
-        personal_access_token_request_action_types as personal_access_token_request_action_types,
+        repository_ruleset_action_types as repository_ruleset_action_types,
     )
     from githubkit.versions.v2022_11_28.webhooks import (
         repository_vulnerability_alert_action_types as repository_vulnerability_alert_action_types,
     )
     from githubkit.versions.v2022_11_28.webhooks import (
+        secret_scanning_alert_action_types as secret_scanning_alert_action_types,
+    )
+    from githubkit.versions.v2022_11_28.webhooks import (
         secret_scanning_alert_location_action_types as secret_scanning_alert_location_action_types,
     )
     from githubkit.versions.v2022_11_28.webhooks import (
-        branch_protection_configuration_action_types as branch_protection_configuration_action_types,
+        security_advisory_action_types as security_advisory_action_types,
     )
-    from githubkit.versions.v2022_11_28.webhooks._types import (
-        WebhookEvent as WebhookEvent,
+    from githubkit.versions.v2022_11_28.webhooks import (
+        security_and_analysis_action_types as security_and_analysis_action_types,
     )
-    from githubkit.versions.v2022_11_28.webhooks._types import (
-        webhook_event_types as webhook_event_types,
+    from githubkit.versions.v2022_11_28.webhooks import (
+        sponsorship_action_types as sponsorship_action_types,
     )
-    from githubkit.versions.v2022_11_28.webhooks._types import (
-        webhook_action_types as webhook_action_types,
+    from githubkit.versions.v2022_11_28.webhooks import (
+        star_action_types as star_action_types,
+    )
+    from githubkit.versions.v2022_11_28.webhooks import (
+        status_action_types as status_action_types,
+    )
+    from githubkit.versions.v2022_11_28.webhooks import (
+        sub_issues_action_types as sub_issues_action_types,
+    )
+    from githubkit.versions.v2022_11_28.webhooks import (
+        team_action_types as team_action_types,
+    )
+    from githubkit.versions.v2022_11_28.webhooks import (
+        team_add_action_types as team_add_action_types,
+    )
+    from githubkit.versions.v2022_11_28.webhooks import (
+        watch_action_types as watch_action_types,
+    )
+    from githubkit.versions.v2022_11_28.webhooks import (
+        workflow_dispatch_action_types as workflow_dispatch_action_types,
+    )
+    from githubkit.versions.v2022_11_28.webhooks import (
+        workflow_job_action_types as workflow_job_action_types,
+    )
+    from githubkit.versions.v2022_11_28.webhooks import (
+        workflow_run_action_types as workflow_run_action_types,
     )
     from githubkit.versions.v2022_11_28.webhooks._namespace import (
         VALID_EVENT_NAMES as VALID_EVENT_NAMES,
@@ -415,6 +406,15 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.webhooks._namespace import (
         WebhookNamespace as WebhookNamespace,
+    )
+    from githubkit.versions.v2022_11_28.webhooks._types import (
+        WebhookEvent as WebhookEvent,
+    )
+    from githubkit.versions.v2022_11_28.webhooks._types import (
+        webhook_action_types as webhook_action_types,
+    )
+    from githubkit.versions.v2022_11_28.webhooks._types import (
+        webhook_event_types as webhook_event_types,
     )
 else:
     __lazy_vars__ = {

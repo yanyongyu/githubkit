@@ -9,14 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict, NotRequired
+from datetime import datetime
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoNotificationsPutResponse202Type(TypedDict):
-    """ReposOwnerRepoNotificationsPutResponse202"""
+class ReposOwnerRepoNotificationsPutBodyType(TypedDict):
+    """ReposOwnerRepoNotificationsPutBody"""
 
-    message: NotRequired[str]
-    url: NotRequired[str]
+    last_read_at: NotRequired[datetime]
 
 
-__all__ = ("ReposOwnerRepoNotificationsPutResponse202Type",)
+__all__ = ("ReposOwnerRepoNotificationsPutBodyType",)

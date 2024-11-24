@@ -9,35 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from datetime import datetime
-from typing_extensions import TypedDict, NotRequired
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0951 import (
-    ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputType,
+from .group_0952 import (
     ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsType,
+    ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputType,
 )
 
 
-class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1Type(TypedDict):
-    """ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1"""
+class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0Type(TypedDict):
+    """ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0"""
 
     name: NotRequired[str]
     details_url: NotRequired[str]
     external_id: NotRequired[str]
     started_at: NotRequired[datetime]
-    status: NotRequired[Literal["queued", "in_progress"]]
-    conclusion: NotRequired[
-        Literal[
-            "action_required",
-            "cancelled",
-            "failure",
-            "neutral",
-            "success",
-            "skipped",
-            "stale",
-            "timed_out",
-        ]
+    status: NotRequired[Literal["completed"]]
+    conclusion: Literal[
+        "action_required",
+        "cancelled",
+        "failure",
+        "neutral",
+        "success",
+        "skipped",
+        "stale",
+        "timed_out",
     ]
     completed_at: NotRequired[datetime]
     output: NotRequired[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputType]
@@ -46,4 +44,4 @@ class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1Type(TypedDict):
     ]
 
 
-__all__ = ("ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1Type",)
+__all__ = ("ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0Type",)

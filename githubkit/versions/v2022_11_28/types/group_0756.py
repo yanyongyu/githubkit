@@ -9,34 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict, NotRequired
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 from .group_0002 import SimpleUserType
-from .group_0384 import EnterpriseWebhooksType
-from .group_0385 import SimpleInstallationType
-from .group_0386 import OrganizationSimpleWebhooksType
-from .group_0387 import RepositoryWebhooksType
+from .group_0385 import EnterpriseWebhooksType
+from .group_0386 import SimpleInstallationType
+from .group_0387 import OrganizationSimpleWebhooksType
+from .group_0388 import RepositoryWebhooksType
 
 
-class WebhookWorkflowDispatchType(TypedDict):
-    """workflow_dispatch event"""
+class WebhookWatchStartedType(TypedDict):
+    """watch started event"""
 
+    action: Literal["started"]
     enterprise: NotRequired[EnterpriseWebhooksType]
-    inputs: Union[WebhookWorkflowDispatchPropInputsType, None]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    ref: str
     repository: RepositoryWebhooksType
     sender: SimpleUserType
-    workflow: str
 
 
-class WebhookWorkflowDispatchPropInputsType(TypedDict):
-    """WebhookWorkflowDispatchPropInputs"""
-
-
-__all__ = (
-    "WebhookWorkflowDispatchPropInputsType",
-    "WebhookWorkflowDispatchType",
-)
+__all__ = ("WebhookWatchStartedType",)

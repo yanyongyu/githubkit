@@ -13,15 +13,15 @@ from typing import Literal
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class RepositoryRuleDetailedOneof3(GitHubModel):
-    """RepositoryRuleDetailedOneof3"""
+class RepositoryRuleDetailedOneof2(GitHubModel):
+    """RepositoryRuleDetailedOneof2"""
 
-    type: Literal["required_linear_history"] = Field()
+    type: Literal["deletion"] = Field()
     ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
         default=UNSET,
         description="The type of source for the ruleset that includes this rule.",
@@ -35,6 +35,6 @@ class RepositoryRuleDetailedOneof3(GitHubModel):
     )
 
 
-model_rebuild(RepositoryRuleDetailedOneof3)
+model_rebuild(RepositoryRuleDetailedOneof2)
 
-__all__ = ("RepositoryRuleDetailedOneof3",)
+__all__ = ("RepositoryRuleDetailedOneof2",)

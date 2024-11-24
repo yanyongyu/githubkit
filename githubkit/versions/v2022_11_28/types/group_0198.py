@@ -9,17 +9,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class VerificationType(TypedDict):
-    """Verification"""
+class GitUserType(TypedDict):
+    """Git User
 
-    verified: bool
-    reason: str
-    payload: Union[str, None]
-    signature: Union[str, None]
+    Metaproperties for Git author/committer information.
+    """
+
+    name: NotRequired[str]
+    email: NotRequired[str]
+    date: NotRequired[str]
 
 
-__all__ = ("VerificationType",)
+__all__ = ("GitUserType",)

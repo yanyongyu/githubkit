@@ -14,99 +14,99 @@ from weakref import ref
 
 from pydantic import BaseModel
 
-from githubkit.utils import UNSET, exclude_unset
 from githubkit.compat import model_dump, type_validate_python
 from githubkit.typing import Missing, UnsetType
+from githubkit.utils import UNSET, exclude_unset
 
 if TYPE_CHECKING:
-    from typing import Union, Literal
     from datetime import datetime
+    from typing import Literal, Union
 
     from githubkit import GitHubCore
-    from githubkit.utils import UNSET
-    from githubkit.typing import Missing
     from githubkit.response import Response
+    from githubkit.typing import Missing
+    from githubkit.utils import UNSET
 
-    from ..types import (
-        UserType,
-        GroupType,
-        RunnerType,
-        UserNameType,
-        PatchSchemaType,
-        AnnouncementType,
-        SplunkConfigType,
-        AuditLogEventType,
-        DatadogConfigType,
-        UserRoleItemsType,
-        AzureHubConfigType,
-        AzureBlobConfigType,
-        SelectedActionsType,
-        UserEmailsItemsType,
-        AuditLogStreamKeyType,
-        GoogleCloudConfigType,
-        RunnerApplicationType,
-        AmazonS3OidcConfigType,
-        AnnouncementBannerType,
-        AuthenticationTokenType,
-        GetConsumedLicensesType,
-        GetLicenseSyncStatusType,
-        GroupPropMembersItemsType,
-        RunnerGroupsEnterpriseType,
-        ScimEnterpriseUserListType,
-        GetAuditLogStreamConfigType,
-        ScimEnterpriseGroupListType,
-        AmazonS3AccessKeysConfigType,
-        ScimEnterpriseUserResponseType,
-        ScimEnterpriseGroupResponseType,
-        ActionsEnterprisePermissionsType,
-        GetAuditLogStreamConfigsItemsType,
-        PatchSchemaPropOperationsItemsType,
-        EnterpriseSecurityAnalysisSettingsType,
-        EnterprisesEnterpriseAuditLogStreamsPostBodyType,
-        EnterprisesEnterpriseActionsPermissionsPutBodyType,
-        EnterprisesEnterpriseActionsRunnerGroupsPostBodyType,
-        EnterprisesEnterpriseActionsRunnersGetResponse200Type,
-        EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyType,
-        EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBodyType,
-        EnterprisesEnterpriseActionsRunnerGroupsGetResponse200Type,
-        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBodyType,
-        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBodyType,
-        EnterprisesEnterpriseActionsPermissionsOrganizationsPutBodyType,
-        EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBodyType,
-        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
-        EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200Type,
-        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200Type,
-        EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersPutBodyType,
-        EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsPutBodyType,
-        EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200Type,
-        EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200Type,
-    )
     from ..models import (
-        Runner,
-        AuditLogEvent,
-        SelectedActions,
-        AuditLogStreamKey,
-        RunnerApplication,
+        ActionsEnterprisePermissions,
         AnnouncementBanner,
+        AuditLogEvent,
+        AuditLogStreamKey,
         AuthenticationToken,
+        EnterpriseSecurityAnalysisSettings,
+        EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200,
+        EnterprisesEnterpriseActionsRunnerGroupsGetResponse200,
+        EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200,
+        EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200,
+        EnterprisesEnterpriseActionsRunnersGetResponse200,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
+        GetAuditLogStreamConfig,
+        GetAuditLogStreamConfigsItems,
         GetConsumedLicenses,
         GetLicenseSyncStatus,
+        Runner,
+        RunnerApplication,
         RunnerGroupsEnterprise,
-        ScimEnterpriseUserList,
-        GetAuditLogStreamConfig,
         ScimEnterpriseGroupList,
-        ScimEnterpriseUserResponse,
         ScimEnterpriseGroupResponse,
-        ActionsEnterprisePermissions,
-        GetAuditLogStreamConfigsItems,
-        EnterpriseSecurityAnalysisSettings,
-        EnterprisesEnterpriseActionsRunnersGetResponse200,
-        EnterprisesEnterpriseActionsRunnerGroupsGetResponse200,
-        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
-        EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200,
-        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200,
-        EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200,
-        EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200,
+        ScimEnterpriseUserList,
+        ScimEnterpriseUserResponse,
+        SelectedActions,
+    )
+    from ..types import (
+        ActionsEnterprisePermissionsType,
+        AmazonS3AccessKeysConfigType,
+        AmazonS3OidcConfigType,
+        AnnouncementBannerType,
+        AnnouncementType,
+        AuditLogEventType,
+        AuditLogStreamKeyType,
+        AuthenticationTokenType,
+        AzureBlobConfigType,
+        AzureHubConfigType,
+        DatadogConfigType,
+        EnterpriseSecurityAnalysisSettingsType,
+        EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200Type,
+        EnterprisesEnterpriseActionsPermissionsOrganizationsPutBodyType,
+        EnterprisesEnterpriseActionsPermissionsPutBodyType,
+        EnterprisesEnterpriseActionsRunnerGroupsGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnerGroupsPostBodyType,
+        EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsPutBodyType,
+        EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBodyType,
+        EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersPutBodyType,
+        EnterprisesEnterpriseActionsRunnersGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200Type,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBodyType,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBodyType,
+        EnterprisesEnterpriseAuditLogStreamsPostBodyType,
+        EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyType,
+        EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBodyType,
+        GetAuditLogStreamConfigsItemsType,
+        GetAuditLogStreamConfigType,
+        GetConsumedLicensesType,
+        GetLicenseSyncStatusType,
+        GoogleCloudConfigType,
+        GroupPropMembersItemsType,
+        GroupType,
+        PatchSchemaPropOperationsItemsType,
+        PatchSchemaType,
+        RunnerApplicationType,
+        RunnerGroupsEnterpriseType,
+        RunnerType,
+        ScimEnterpriseGroupListType,
+        ScimEnterpriseGroupResponseType,
+        ScimEnterpriseUserListType,
+        ScimEnterpriseUserResponseType,
+        SelectedActionsType,
+        SplunkConfigType,
+        UserEmailsItemsType,
+        UserNameType,
+        UserRoleItemsType,
+        UserType,
     )
 
 
@@ -781,8 +781,8 @@ class EnterpriseAdminClient:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#create-a-self-hosted-runner-group-for-an-enterprise"""
 
         from ..models import (
-            RunnerGroupsEnterprise,
             EnterprisesEnterpriseActionsRunnerGroupsPostBody,
+            RunnerGroupsEnterprise,
         )
 
         url = f"/enterprises/{enterprise}/actions/runner-groups"
@@ -844,8 +844,8 @@ class EnterpriseAdminClient:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#create-a-self-hosted-runner-group-for-an-enterprise"""
 
         from ..models import (
-            RunnerGroupsEnterprise,
             EnterprisesEnterpriseActionsRunnerGroupsPostBody,
+            RunnerGroupsEnterprise,
         )
 
         url = f"/enterprises/{enterprise}/actions/runner-groups"
@@ -994,8 +994,8 @@ class EnterpriseAdminClient:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#update-a-self-hosted-runner-group-for-an-enterprise"""
 
         from ..models import (
-            RunnerGroupsEnterprise,
             EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBody,
+            RunnerGroupsEnterprise,
         )
 
         url = f"/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}"
@@ -1062,8 +1062,8 @@ class EnterpriseAdminClient:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#update-a-self-hosted-runner-group-for-an-enterprise"""
 
         from ..models import (
-            RunnerGroupsEnterprise,
             EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBody,
+            RunnerGroupsEnterprise,
         )
 
         url = f"/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}"
@@ -2024,9 +2024,9 @@ class EnterpriseAdminClient:
 
         from ..models import (
             BasicError,
-            ValidationErrorSimple,
-            EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBody,
             EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
+            EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBody,
+            ValidationErrorSimple,
         )
 
         url = f"/enterprises/{enterprise}/actions/runners/{runner_id}/labels"
@@ -2101,9 +2101,9 @@ class EnterpriseAdminClient:
 
         from ..models import (
             BasicError,
-            ValidationErrorSimple,
-            EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBody,
             EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
+            EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBody,
+            ValidationErrorSimple,
         )
 
         url = f"/enterprises/{enterprise}/actions/runners/{runner_id}/labels"
@@ -2178,9 +2178,9 @@ class EnterpriseAdminClient:
 
         from ..models import (
             BasicError,
-            ValidationErrorSimple,
-            EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBody,
             EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
+            EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBody,
+            ValidationErrorSimple,
         )
 
         url = f"/enterprises/{enterprise}/actions/runners/{runner_id}/labels"
@@ -2255,9 +2255,9 @@ class EnterpriseAdminClient:
 
         from ..models import (
             BasicError,
-            ValidationErrorSimple,
-            EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBody,
             EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
+            EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBody,
+            ValidationErrorSimple,
         )
 
         url = f"/enterprises/{enterprise}/actions/runners/{runner_id}/labels"
@@ -2301,8 +2301,8 @@ class EnterpriseAdminClient:
 
         from ..models import (
             BasicError,
-            ValidationErrorSimple,
             EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200,
+            ValidationErrorSimple,
         )
 
         url = f"/enterprises/{enterprise}/actions/runners/{runner_id}/labels"
@@ -2334,8 +2334,8 @@ class EnterpriseAdminClient:
 
         from ..models import (
             BasicError,
-            ValidationErrorSimple,
             EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200,
+            ValidationErrorSimple,
         )
 
         url = f"/enterprises/{enterprise}/actions/runners/{runner_id}/labels"
@@ -2368,8 +2368,8 @@ class EnterpriseAdminClient:
 
         from ..models import (
             BasicError,
-            ValidationErrorSimple,
             EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
+            ValidationErrorSimple,
         )
 
         url = f"/enterprises/{enterprise}/actions/runners/{runner_id}/labels/{name}"
@@ -2402,8 +2402,8 @@ class EnterpriseAdminClient:
 
         from ..models import (
             BasicError,
-            ValidationErrorSimple,
             EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
+            ValidationErrorSimple,
         )
 
         url = f"/enterprises/{enterprise}/actions/runners/{runner_id}/labels/{name}"
@@ -2819,8 +2819,8 @@ class EnterpriseAdminClient:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/audit-log#create-an-audit-log-streaming-configuration-for-an-enterprise"""
 
         from ..models import (
-            GetAuditLogStreamConfig,
             EnterprisesEnterpriseAuditLogStreamsPostBody,
+            GetAuditLogStreamConfig,
         )
 
         url = f"/enterprises/{enterprise}/audit-log/streams"
@@ -2894,8 +2894,8 @@ class EnterpriseAdminClient:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/audit-log#create-an-audit-log-streaming-configuration-for-an-enterprise"""
 
         from ..models import (
-            GetAuditLogStreamConfig,
             EnterprisesEnterpriseAuditLogStreamsPostBody,
+            GetAuditLogStreamConfig,
         )
 
         url = f"/enterprises/{enterprise}/audit-log/streams"
@@ -3016,9 +3016,9 @@ class EnterpriseAdminClient:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/audit-log#update-an-existing-audit-log-stream-configuration"""
 
         from ..models import (
-            GetAuditLogStreamConfig,
             EnterprisesEnterpriseAuditLogStreamsStreamIdPutBody,
             EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422,
+            GetAuditLogStreamConfig,
         )
 
         url = f"/enterprises/{enterprise}/audit-log/streams/{stream_id}"
@@ -3098,9 +3098,9 @@ class EnterpriseAdminClient:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/audit-log#update-an-existing-audit-log-stream-configuration"""
 
         from ..models import (
-            GetAuditLogStreamConfig,
             EnterprisesEnterpriseAuditLogStreamsStreamIdPutBody,
             EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422,
+            GetAuditLogStreamConfig,
         )
 
         url = f"/enterprises/{enterprise}/audit-log/streams/{stream_id}"
@@ -3541,7 +3541,7 @@ class EnterpriseAdminClient:
     ) -> Response[ScimEnterpriseGroupList, ScimEnterpriseGroupListType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#list-provisioned-scim-groups-for-an-enterprise"""
 
-        from ..models import ScimError, ScimEnterpriseGroupList
+        from ..models import ScimEnterpriseGroupList, ScimError
 
         url = f"/scim/v2/enterprises/{enterprise}/Groups"
 
@@ -3579,7 +3579,7 @@ class EnterpriseAdminClient:
     ) -> Response[ScimEnterpriseGroupList, ScimEnterpriseGroupListType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#list-provisioned-scim-groups-for-an-enterprise"""
 
-        from ..models import ScimError, ScimEnterpriseGroupList
+        from ..models import ScimEnterpriseGroupList, ScimError
 
         url = f"/scim/v2/enterprises/{enterprise}/Groups"
 
@@ -3637,7 +3637,7 @@ class EnterpriseAdminClient:
     ) -> Response[ScimEnterpriseGroupResponse, ScimEnterpriseGroupResponseType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#provision-a-scim-enterprise-group"""
 
-        from ..models import Group, ScimError, ScimEnterpriseGroupResponse
+        from ..models import Group, ScimEnterpriseGroupResponse, ScimError
 
         url = f"/scim/v2/enterprises/{enterprise}/Groups"
 
@@ -3697,7 +3697,7 @@ class EnterpriseAdminClient:
     ) -> Response[ScimEnterpriseGroupResponse, ScimEnterpriseGroupResponseType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#provision-a-scim-enterprise-group"""
 
-        from ..models import Group, ScimError, ScimEnterpriseGroupResponse
+        from ..models import Group, ScimEnterpriseGroupResponse, ScimError
 
         url = f"/scim/v2/enterprises/{enterprise}/Groups"
 
@@ -3735,7 +3735,7 @@ class EnterpriseAdminClient:
     ) -> Response[ScimEnterpriseGroupResponse, ScimEnterpriseGroupResponseType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#get-scim-provisioning-information-for-an-enterprise-group"""
 
-        from ..models import ScimError, BasicError, ScimEnterpriseGroupResponse
+        from ..models import BasicError, ScimEnterpriseGroupResponse, ScimError
 
         url = f"/scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}"
 
@@ -3769,7 +3769,7 @@ class EnterpriseAdminClient:
     ) -> Response[ScimEnterpriseGroupResponse, ScimEnterpriseGroupResponseType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#get-scim-provisioning-information-for-an-enterprise-group"""
 
-        from ..models import ScimError, BasicError, ScimEnterpriseGroupResponse
+        from ..models import BasicError, ScimEnterpriseGroupResponse, ScimError
 
         url = f"/scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}"
 
@@ -3828,7 +3828,7 @@ class EnterpriseAdminClient:
     ) -> Response[ScimEnterpriseGroupResponse, ScimEnterpriseGroupResponseType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#set-scim-information-for-a-provisioned-enterprise-group"""
 
-        from ..models import Group, ScimError, BasicError, ScimEnterpriseGroupResponse
+        from ..models import BasicError, Group, ScimEnterpriseGroupResponse, ScimError
 
         url = f"/scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}"
 
@@ -3892,7 +3892,7 @@ class EnterpriseAdminClient:
     ) -> Response[ScimEnterpriseGroupResponse, ScimEnterpriseGroupResponseType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#set-scim-information-for-a-provisioned-enterprise-group"""
 
-        from ..models import Group, ScimError, BasicError, ScimEnterpriseGroupResponse
+        from ..models import BasicError, Group, ScimEnterpriseGroupResponse, ScimError
 
         url = f"/scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}"
 
@@ -3930,7 +3930,7 @@ class EnterpriseAdminClient:
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#delete-a-scim-group-from-an-enterprise"""
 
-        from ..models import ScimError, BasicError
+        from ..models import BasicError, ScimError
 
         url = f"/scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}"
 
@@ -3957,7 +3957,7 @@ class EnterpriseAdminClient:
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#delete-a-scim-group-from-an-enterprise"""
 
-        from ..models import ScimError, BasicError
+        from ..models import BasicError, ScimError
 
         url = f"/scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}"
 
@@ -4008,7 +4008,7 @@ class EnterpriseAdminClient:
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#update-an-attribute-for-a-scim-enterprise-group"""
 
-        from ..models import ScimError, BasicError, PatchSchema
+        from ..models import BasicError, PatchSchema, ScimError
 
         url = f"/scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}"
 
@@ -4069,7 +4069,7 @@ class EnterpriseAdminClient:
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#update-an-attribute-for-a-scim-enterprise-group"""
 
-        from ..models import ScimError, BasicError, PatchSchema
+        from ..models import BasicError, PatchSchema, ScimError
 
         url = f"/scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}"
 
@@ -4108,7 +4108,7 @@ class EnterpriseAdminClient:
     ) -> Response[ScimEnterpriseUserList, ScimEnterpriseUserListType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#list-scim-provisioned-identities-for-an-enterprise"""
 
-        from ..models import ScimError, ScimEnterpriseUserList
+        from ..models import ScimEnterpriseUserList, ScimError
 
         url = f"/scim/v2/enterprises/{enterprise}/Users"
 
@@ -4144,7 +4144,7 @@ class EnterpriseAdminClient:
     ) -> Response[ScimEnterpriseUserList, ScimEnterpriseUserListType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#list-scim-provisioned-identities-for-an-enterprise"""
 
-        from ..models import ScimError, ScimEnterpriseUserList
+        from ..models import ScimEnterpriseUserList, ScimError
 
         url = f"/scim/v2/enterprises/{enterprise}/Users"
 
@@ -4205,7 +4205,7 @@ class EnterpriseAdminClient:
     ) -> Response[ScimEnterpriseUserResponse, ScimEnterpriseUserResponseType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#provision-a-scim-enterprise-user"""
 
-        from ..models import User, ScimError, ScimEnterpriseUserResponse
+        from ..models import ScimEnterpriseUserResponse, ScimError, User
 
         url = f"/scim/v2/enterprises/{enterprise}/Users"
 
@@ -4269,7 +4269,7 @@ class EnterpriseAdminClient:
     ) -> Response[ScimEnterpriseUserResponse, ScimEnterpriseUserResponseType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#provision-a-scim-enterprise-user"""
 
-        from ..models import User, ScimError, ScimEnterpriseUserResponse
+        from ..models import ScimEnterpriseUserResponse, ScimError, User
 
         url = f"/scim/v2/enterprises/{enterprise}/Users"
 
@@ -4306,7 +4306,7 @@ class EnterpriseAdminClient:
     ) -> Response[ScimEnterpriseUserResponse, ScimEnterpriseUserResponseType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#get-scim-provisioning-information-for-an-enterprise-user"""
 
-        from ..models import ScimError, BasicError, ScimEnterpriseUserResponse
+        from ..models import BasicError, ScimEnterpriseUserResponse, ScimError
 
         url = f"/scim/v2/enterprises/{enterprise}/Users/{scim_user_id}"
 
@@ -4334,7 +4334,7 @@ class EnterpriseAdminClient:
     ) -> Response[ScimEnterpriseUserResponse, ScimEnterpriseUserResponseType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#get-scim-provisioning-information-for-an-enterprise-user"""
 
-        from ..models import ScimError, BasicError, ScimEnterpriseUserResponse
+        from ..models import BasicError, ScimEnterpriseUserResponse, ScimError
 
         url = f"/scim/v2/enterprises/{enterprise}/Users/{scim_user_id}"
 
@@ -4392,7 +4392,7 @@ class EnterpriseAdminClient:
     ) -> Response[ScimEnterpriseUserResponse, ScimEnterpriseUserResponseType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#set-scim-information-for-a-provisioned-enterprise-user"""
 
-        from ..models import User, ScimError, BasicError, ScimEnterpriseUserResponse
+        from ..models import BasicError, ScimEnterpriseUserResponse, ScimError, User
 
         url = f"/scim/v2/enterprises/{enterprise}/Users/{scim_user_id}"
 
@@ -4460,7 +4460,7 @@ class EnterpriseAdminClient:
     ) -> Response[ScimEnterpriseUserResponse, ScimEnterpriseUserResponseType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#set-scim-information-for-a-provisioned-enterprise-user"""
 
-        from ..models import User, ScimError, BasicError, ScimEnterpriseUserResponse
+        from ..models import BasicError, ScimEnterpriseUserResponse, ScimError, User
 
         url = f"/scim/v2/enterprises/{enterprise}/Users/{scim_user_id}"
 
@@ -4498,7 +4498,7 @@ class EnterpriseAdminClient:
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#delete-a-scim-user-from-an-enterprise"""
 
-        from ..models import ScimError, BasicError
+        from ..models import BasicError, ScimError
 
         url = f"/scim/v2/enterprises/{enterprise}/Users/{scim_user_id}"
 
@@ -4525,7 +4525,7 @@ class EnterpriseAdminClient:
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#delete-a-scim-user-from-an-enterprise"""
 
-        from ..models import ScimError, BasicError
+        from ..models import BasicError, ScimError
 
         url = f"/scim/v2/enterprises/{enterprise}/Users/{scim_user_id}"
 
@@ -4577,10 +4577,10 @@ class EnterpriseAdminClient:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#update-an-attribute-for-a-scim-enterprise-user"""
 
         from ..models import (
-            ScimError,
             BasicError,
             PatchSchema,
             ScimEnterpriseUserResponse,
+            ScimError,
         )
 
         url = f"/scim/v2/enterprises/{enterprise}/Users/{scim_user_id}"
@@ -4644,10 +4644,10 @@ class EnterpriseAdminClient:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#update-an-attribute-for-a-scim-enterprise-user"""
 
         from ..models import (
-            ScimError,
             BasicError,
             PatchSchema,
             ScimEnterpriseUserResponse,
+            ScimError,
         )
 
         url = f"/scim/v2/enterprises/{enterprise}/Users/{scim_user_id}"

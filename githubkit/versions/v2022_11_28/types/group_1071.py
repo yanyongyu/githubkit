@@ -9,44 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
-from typing_extensions import TypedDict, NotRequired
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0109 import RepositoryRulesetBypassActorType
-from .group_0110 import RepositoryRulesetConditionsType
-from .group_0121 import (
-    RepositoryRuleOneof15Type,
-    RepositoryRuleOneof17Type,
+from .group_0110 import RepositoryRulesetBypassActorType
+from .group_0111 import RepositoryRulesetConditionsType
+from .group_0122 import (
     RepositoryRuleCreationType,
     RepositoryRuleDeletionType,
     RepositoryRuleNonFastForwardType,
+    RepositoryRuleOneof15Type,
+    RepositoryRuleOneof17Type,
     RepositoryRuleRequiredSignaturesType,
 )
-from .group_0122 import RepositoryRuleUpdateType
-from .group_0124 import (
+from .group_0123 import RepositoryRuleUpdateType
+from .group_0125 import (
     RepositoryRuleOneof16Type,
     RepositoryRuleRequiredLinearHistoryType,
 )
-from .group_0125 import RepositoryRuleMergeQueueType
-from .group_0127 import RepositoryRuleRequiredDeploymentsType
-from .group_0130 import RepositoryRulePullRequestType
-from .group_0132 import RepositoryRuleRequiredStatusChecksType
-from .group_0134 import RepositoryRuleCommitMessagePatternType
-from .group_0136 import RepositoryRuleCommitAuthorEmailPatternType
-from .group_0138 import RepositoryRuleCommitterEmailPatternType
-from .group_0140 import RepositoryRuleBranchNamePatternType
-from .group_0142 import RepositoryRuleTagNamePatternType
-from .group_0145 import RepositoryRuleWorkflowsType
-from .group_0147 import RepositoryRuleCodeScanningType
-from .group_0149 import RepositoryRuleOneof18Type
+from .group_0126 import RepositoryRuleMergeQueueType
+from .group_0128 import RepositoryRuleRequiredDeploymentsType
+from .group_0131 import RepositoryRulePullRequestType
+from .group_0133 import RepositoryRuleRequiredStatusChecksType
+from .group_0135 import RepositoryRuleCommitMessagePatternType
+from .group_0137 import RepositoryRuleCommitAuthorEmailPatternType
+from .group_0139 import RepositoryRuleCommitterEmailPatternType
+from .group_0141 import RepositoryRuleBranchNamePatternType
+from .group_0143 import RepositoryRuleTagNamePatternType
+from .group_0146 import RepositoryRuleWorkflowsType
+from .group_0148 import RepositoryRuleCodeScanningType
+from .group_0150 import RepositoryRuleOneof18Type
 
 
-class ReposOwnerRepoRulesetsRulesetIdPutBodyType(TypedDict):
-    """ReposOwnerRepoRulesetsRulesetIdPutBody"""
+class ReposOwnerRepoRulesetsPostBodyType(TypedDict):
+    """ReposOwnerRepoRulesetsPostBody"""
 
-    name: NotRequired[str]
+    name: str
     target: NotRequired[Literal["branch", "tag", "push"]]
-    enforcement: NotRequired[Literal["disabled", "active", "evaluate"]]
+    enforcement: Literal["disabled", "active", "evaluate"]
     bypass_actors: NotRequired[list[RepositoryRulesetBypassActorType]]
     conditions: NotRequired[RepositoryRulesetConditionsType]
     rules: NotRequired[
@@ -78,4 +78,4 @@ class ReposOwnerRepoRulesetsRulesetIdPutBodyType(TypedDict):
     ]
 
 
-__all__ = ("ReposOwnerRepoRulesetsRulesetIdPutBodyType",)
+__all__ = ("ReposOwnerRepoRulesetsPostBodyType",)

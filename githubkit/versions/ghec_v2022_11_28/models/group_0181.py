@@ -9,14 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
 from datetime import datetime
+from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 from .group_0140 import RepositoryRulesetBypassActor
 from .group_0141 import RepositoryRulesetConditions
@@ -24,11 +24,11 @@ from .group_0149 import OrgRulesetConditionsOneof0
 from .group_0150 import OrgRulesetConditionsOneof1
 from .group_0151 import OrgRulesetConditionsOneof2
 from .group_0152 import (
-    RepositoryRuleOneof15,
-    RepositoryRuleOneof17,
     RepositoryRuleCreation,
     RepositoryRuleDeletion,
     RepositoryRuleNonFastForward,
+    RepositoryRuleOneof15,
+    RepositoryRuleOneof17,
     RepositoryRuleRequiredSignatures,
 )
 from .group_0153 import RepositoryRuleUpdate

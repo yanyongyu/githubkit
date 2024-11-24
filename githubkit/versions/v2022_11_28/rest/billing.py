@@ -12,18 +12,27 @@ from __future__ import annotations
 from typing import TYPE_CHECKING, Optional
 from weakref import ref
 
-from githubkit.utils import exclude_unset
+from githubkit.typing import Missing
+from githubkit.utils import UNSET, exclude_unset
 
 if TYPE_CHECKING:
     from githubkit import GitHubCore
     from githubkit.response import Response
+    from githubkit.typing import Missing
+    from githubkit.utils import UNSET
 
+    from ..models import (
+        ActionsBillingUsage,
+        BillingUsageReport,
+        CombinedBillingUsage,
+        PackagesBillingUsage,
+    )
     from ..types import (
         ActionsBillingUsageType,
+        BillingUsageReportType,
         CombinedBillingUsageType,
         PackagesBillingUsageType,
     )
-    from ..models import ActionsBillingUsage, CombinedBillingUsage, PackagesBillingUsage
 
 
 class BillingClient:
@@ -39,6 +48,92 @@ class BillingClient:
         raise RuntimeError(
             "GitHub client has already been collected. "
             "Do not use this client after the client has been collected."
+        )
+
+    def get_github_billing_usage_report_org(
+        self,
+        org: str,
+        *,
+        year: Missing[int] = UNSET,
+        month: Missing[int] = UNSET,
+        day: Missing[int] = UNSET,
+        hour: Missing[int] = UNSET,
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[BillingUsageReport, BillingUsageReportType]:
+        """See also: https://docs.github.com/rest/billing/enhanced-billing#get-billing-usage-report-for-an-organization"""
+
+        from ..models import (
+            BasicError,
+            BillingUsageReport,
+            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+        )
+
+        url = f"/organizations/{org}/settings/billing/usage"
+
+        params = {
+            "year": year,
+            "month": month,
+            "day": day,
+            "hour": hour,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=BillingUsageReport,
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "500": BasicError,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            },
+        )
+
+    async def async_get_github_billing_usage_report_org(
+        self,
+        org: str,
+        *,
+        year: Missing[int] = UNSET,
+        month: Missing[int] = UNSET,
+        day: Missing[int] = UNSET,
+        hour: Missing[int] = UNSET,
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[BillingUsageReport, BillingUsageReportType]:
+        """See also: https://docs.github.com/rest/billing/enhanced-billing#get-billing-usage-report-for-an-organization"""
+
+        from ..models import (
+            BasicError,
+            BillingUsageReport,
+            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+        )
+
+        url = f"/organizations/{org}/settings/billing/usage"
+
+        params = {
+            "year": year,
+            "month": month,
+            "day": day,
+            "hour": hour,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=BillingUsageReport,
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "500": BasicError,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            },
         )
 
     def get_github_actions_billing_org(

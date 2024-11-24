@@ -9,43 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 from .group_0002 import SimpleUser
 from .group_0008 import Integration
 
 
-class ConvertedNoteToIssueIssueEvent(GitHubModel):
-    """Converted Note to Issue Issue Event
+class RemovedFromProjectIssueEvent(GitHubModel):
+    """Removed from Project Issue Event
 
-    Converted Note to Issue Issue Event
+    Removed from Project Issue Event
     """
 
     id: int = Field()
     node_id: str = Field()
     url: str = Field()
     actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: Literal["converted_note_to_issue"] = Field()
+    event: Literal["removed_from_project"] = Field()
     commit_id: Union[str, None] = Field()
     commit_url: Union[str, None] = Field()
     created_at: str = Field()
-    performed_via_github_app: Union[Integration, None] = Field(
-        title="GitHub app",
-        description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
-    )
-    project_card: Missing[ConvertedNoteToIssueIssueEventPropProjectCard] = Field(
+    performed_via_github_app: Union[None, Integration, None] = Field()
+    project_card: Missing[RemovedFromProjectIssueEventPropProjectCard] = Field(
         default=UNSET
     )
 
 
-class ConvertedNoteToIssueIssueEventPropProjectCard(GitHubModel):
-    """ConvertedNoteToIssueIssueEventPropProjectCard"""
+class RemovedFromProjectIssueEventPropProjectCard(GitHubModel):
+    """RemovedFromProjectIssueEventPropProjectCard"""
 
     id: int = Field()
     url: str = Field()
@@ -55,10 +52,10 @@ class ConvertedNoteToIssueIssueEventPropProjectCard(GitHubModel):
     previous_column_name: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(ConvertedNoteToIssueIssueEvent)
-model_rebuild(ConvertedNoteToIssueIssueEventPropProjectCard)
+model_rebuild(RemovedFromProjectIssueEvent)
+model_rebuild(RemovedFromProjectIssueEventPropProjectCard)
 
 __all__ = (
-    "ConvertedNoteToIssueIssueEvent",
-    "ConvertedNoteToIssueIssueEventPropProjectCard",
+    "RemovedFromProjectIssueEvent",
+    "RemovedFromProjectIssueEventPropProjectCard",
 )

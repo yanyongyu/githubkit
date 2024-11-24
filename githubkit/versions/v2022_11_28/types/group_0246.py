@@ -9,31 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class ContentSymlinkType(TypedDict):
-    """Symlink Content
+class ContentFileType(TypedDict):
+    """Content File
 
-    An object describing a symlink
+    Content File
     """
 
-    type: Literal["symlink"]
-    target: str
+    type: Literal["file"]
+    encoding: str
     size: int
     name: str
     path: str
+    content: str
     sha: str
     url: str
     git_url: Union[str, None]
     html_url: Union[str, None]
     download_url: Union[str, None]
-    links: ContentSymlinkPropLinksType
+    links: ContentFilePropLinksType
+    target: NotRequired[str]
+    submodule_git_url: NotRequired[str]
 
 
-class ContentSymlinkPropLinksType(TypedDict):
-    """ContentSymlinkPropLinks"""
+class ContentFilePropLinksType(TypedDict):
+    """ContentFilePropLinks"""
 
     git: Union[str, None]
     html: Union[str, None]
@@ -41,6 +44,6 @@ class ContentSymlinkPropLinksType(TypedDict):
 
 
 __all__ = (
-    "ContentSymlinkPropLinksType",
-    "ContentSymlinkType",
+    "ContentFilePropLinksType",
+    "ContentFileType",
 )

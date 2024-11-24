@@ -1,10 +1,10 @@
+from .action import ActionAuthStrategy as ActionAuthStrategy
 from .app import AppAuthStrategy as AppAuthStrategy
 from .app import AppInstallationAuthStrategy as AppInstallationAuthStrategy
 from .base import BaseAuthStrategy as BaseAuthStrategy
 from .oauth import OAuthAppAuthStrategy as OAuthAppAuthStrategy
-from .oauth import OAuthWebAuthStrategy as OAuthWebAuthStrategy
-from .oauth import OAuthTokenAuthStrategy as OAuthTokenAuthStrategy
 from .oauth import OAuthDeviceAuthStrategy as OAuthDeviceAuthStrategy
+from .oauth import OAuthTokenAuthStrategy as OAuthTokenAuthStrategy
+from .oauth import OAuthWebAuthStrategy as OAuthWebAuthStrategy
 from .token import TokenAuthStrategy as TokenAuthStrategy
-from .action import ActionAuthStrategy as ActionAuthStrategy
 from .unauth import UnauthAuthStrategy as UnauthAuthStrategy

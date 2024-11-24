@@ -9,31 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict, NotRequired
-
-from .group_0077 import CodeSecurityConfigurationType
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class CodeSecurityConfigurationForRepositoryType(TypedDict):
-    """CodeSecurityConfigurationForRepository
+class CodeScanningSarifsStatusType(TypedDict):
+    """CodeScanningSarifsStatus"""
 
-    Code security configuration associated with a repository and attachment status
-    """
-
-    status: NotRequired[
-        Literal[
-            "attached",
-            "attaching",
-            "detached",
-            "removed",
-            "enforced",
-            "failed",
-            "updating",
-            "removed_by_enterprise",
-        ]
-    ]
-    configuration: NotRequired[CodeSecurityConfigurationType]
+    processing_status: NotRequired[Literal["pending", "complete", "failed"]]
+    analyses_url: NotRequired[Union[str, None]]
+    errors: NotRequired[Union[list[str], None]]
 
 
-__all__ = ("CodeSecurityConfigurationForRepositoryType",)
+__all__ = ("CodeScanningSarifsStatusType",)

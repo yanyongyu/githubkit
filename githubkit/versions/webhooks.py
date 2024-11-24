@@ -7,16 +7,16 @@ bash ./scripts/run-codegen.sh
 See https://github.com/github/rest-api-description for more information.
 """
 
-from typing import TYPE_CHECKING, Any, Literal, ClassVar, overload
 import importlib
+from typing import TYPE_CHECKING, Any, ClassVar, Literal, overload
 
-from . import VERSIONS, VERSION_TYPE, LATEST_VERSION
+from . import LATEST_VERSION, VERSION_TYPE, VERSIONS
 
 if TYPE_CHECKING:
-    from .v2022_11_28.webhooks import WebhookNamespace as V20221128WebhookNamespace
     from .ghec_v2022_11_28.webhooks import (
         WebhookNamespace as GhecV20221128WebhookNamespace,
     )
+    from .v2022_11_28.webhooks import WebhookNamespace as V20221128WebhookNamespace
 
 if TYPE_CHECKING:
 

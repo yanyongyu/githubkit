@@ -9,28 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
 from datetime import datetime
-from typing_extensions import TypedDict, NotRequired
-
-from .group_0002 import SimpleUserType
-
-
-class ProjectsV2ItemType(TypedDict):
-    """Projects v2 Item
-
-    An item belonging to a project
-    """
-
-    id: float
-    node_id: NotRequired[str]
-    project_node_id: NotRequired[str]
-    content_node_id: str
-    content_type: Literal["Issue", "PullRequest", "DraftIssue"]
-    creator: NotRequired[SimpleUserType]
-    created_at: datetime
-    updated_at: datetime
-    archived_at: Union[datetime, None]
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-__all__ = ("ProjectsV2ItemType",)
+class WebhooksProjectChangesType(TypedDict):
+    """WebhooksProjectChanges"""
+
+    archived_at: NotRequired[WebhooksProjectChangesPropArchivedAtType]
+
+
+class WebhooksProjectChangesPropArchivedAtType(TypedDict):
+    """WebhooksProjectChangesPropArchivedAt"""
+
+    from_: NotRequired[Union[datetime, None]]
+    to: NotRequired[Union[datetime, None]]
+
+
+__all__ = (
+    "WebhooksProjectChangesPropArchivedAtType",
+    "WebhooksProjectChangesType",
+)

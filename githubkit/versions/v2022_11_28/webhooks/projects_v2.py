@@ -7,7 +7,7 @@ bash ./scripts/run-codegen.sh
 See https://github.com/github/rest-api-description for more information.
 """
 
-from typing import Union, Annotated
+from typing import Annotated, Union
 from typing_extensions import TypeAlias
 
 from pydantic import Field
@@ -16,9 +16,9 @@ from githubkit.compat import GitHubModel
 
 from ..models import (
     WebhookProjectsV2ProjectClosed,
-    WebhookProjectsV2ProjectEdited,
     WebhookProjectsV2ProjectCreated,
     WebhookProjectsV2ProjectDeleted,
+    WebhookProjectsV2ProjectEdited,
     WebhookProjectsV2ProjectReopened,
 )
 

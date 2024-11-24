@@ -1,9 +1,9 @@
 from datetime import timedelta
 
+from .exception import GitHubException, RateLimitExceeded, RequestFailed
 from .log import logger
-from .typing import RetryOption as RetryOption
 from .typing import RetryDecisionFunc as RetryDecisionFunc
-from .exception import RequestFailed, GitHubException, RateLimitExceeded
+from .typing import RetryOption as RetryOption
 
 
 class RetryRateLimit:

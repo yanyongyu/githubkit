@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -19,34 +19,34 @@ from .group_0002 import SimpleUser
 from .group_0008 import Integration
 
 
-class DemilestonedIssueEvent(GitHubModel):
-    """Demilestoned Issue Event
+class MilestonedIssueEvent(GitHubModel):
+    """Milestoned Issue Event
 
-    Demilestoned Issue Event
+    Milestoned Issue Event
     """
 
     id: int = Field()
     node_id: str = Field()
     url: str = Field()
     actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: Literal["demilestoned"] = Field()
+    event: Literal["milestoned"] = Field()
     commit_id: Union[str, None] = Field()
     commit_url: Union[str, None] = Field()
     created_at: str = Field()
     performed_via_github_app: Union[None, Integration, None] = Field()
-    milestone: DemilestonedIssueEventPropMilestone = Field()
+    milestone: MilestonedIssueEventPropMilestone = Field()
 
 
-class DemilestonedIssueEventPropMilestone(GitHubModel):
-    """DemilestonedIssueEventPropMilestone"""
+class MilestonedIssueEventPropMilestone(GitHubModel):
+    """MilestonedIssueEventPropMilestone"""
 
     title: str = Field()
 
 
-model_rebuild(DemilestonedIssueEvent)
-model_rebuild(DemilestonedIssueEventPropMilestone)
+model_rebuild(MilestonedIssueEvent)
+model_rebuild(MilestonedIssueEventPropMilestone)
 
 __all__ = (
-    "DemilestonedIssueEvent",
-    "DemilestonedIssueEventPropMilestone",
+    "MilestonedIssueEvent",
+    "MilestonedIssueEventPropMilestone",
 )

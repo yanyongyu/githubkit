@@ -11,20 +11,22 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
+
+from .group_0116 import RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId
 
 
-class RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId(GitHubModel):
-    """RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId"""
+class RepositoryRulesetConditionsRepositoryIdTarget(GitHubModel):
+    """Repository ruleset conditions for repository IDs
 
-    repository_ids: Missing[list[int]] = Field(
-        default=UNSET,
-        description="The repository IDs that the ruleset applies to. One of these IDs must match for the condition to pass.",
+    Parameters for a repository ID condition
+    """
+
+    repository_id: RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId = (
+        Field()
     )
 
 
-model_rebuild(RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId)
+model_rebuild(RepositoryRulesetConditionsRepositoryIdTarget)
 
-__all__ = ("RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId",)
+__all__ = ("RepositoryRulesetConditionsRepositoryIdTarget",)

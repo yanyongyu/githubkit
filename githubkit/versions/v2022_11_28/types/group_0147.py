@@ -9,22 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict, NotRequired
-
-from .group_0148 import RepositoryRuleCodeScanningPropParametersType
+from typing_extensions import NotRequired, TypedDict
 
 
-class RepositoryRuleCodeScanningType(TypedDict):
-    """code_scanning
+class RepositoryRuleWorkflowsPropParametersType(TypedDict):
+    """RepositoryRuleWorkflowsPropParameters"""
 
-    Choose which tools must provide code scanning results before the reference is
-    updated. When configured, code scanning must be enabled and have results for
-    both the commit and the reference being updated.
+    do_not_enforce_on_create: NotRequired[bool]
+    workflows: list[RepositoryRuleParamsWorkflowFileReferenceType]
+
+
+class RepositoryRuleParamsWorkflowFileReferenceType(TypedDict):
+    """WorkflowFileReference
+
+    A workflow that must run for this rule to pass
     """
 
-    type: Literal["code_scanning"]
-    parameters: NotRequired[RepositoryRuleCodeScanningPropParametersType]
+    path: str
+    ref: NotRequired[str]
+    repository_id: int
+    sha: NotRequired[str]
 
 
-__all__ = ("RepositoryRuleCodeScanningType",)
+__all__ = (
+    "RepositoryRuleParamsWorkflowFileReferenceType",
+    "RepositoryRuleWorkflowsPropParametersType",
+)

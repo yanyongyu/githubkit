@@ -9,22 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from datetime import datetime
+from typing import Literal
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoMilestonesMilestoneNumberPatchBody(GitHubModel):
-    """ReposOwnerRepoMilestonesMilestoneNumberPatchBody"""
+class ReposOwnerRepoMilestonesPostBody(GitHubModel):
+    """ReposOwnerRepoMilestonesPostBody"""
 
-    title: Missing[str] = Field(
-        default=UNSET, description="The title of the milestone."
-    )
+    title: str = Field(description="The title of the milestone.")
     state: Missing[Literal["open", "closed"]] = Field(
         default=UNSET,
         description="The state of the milestone. Either `open` or `closed`.",
@@ -38,6 +36,6 @@ class ReposOwnerRepoMilestonesMilestoneNumberPatchBody(GitHubModel):
     )
 
 
-model_rebuild(ReposOwnerRepoMilestonesMilestoneNumberPatchBody)
+model_rebuild(ReposOwnerRepoMilestonesPostBody)
 
-__all__ = ("ReposOwnerRepoMilestonesMilestoneNumberPatchBody",)
+__all__ = ("ReposOwnerRepoMilestonesPostBody",)

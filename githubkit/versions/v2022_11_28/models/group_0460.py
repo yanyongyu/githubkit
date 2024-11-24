@@ -13,21 +13,25 @@ from typing import Literal
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 from .group_0002 import SimpleUser
-from .group_0384 import EnterpriseWebhooks
-from .group_0385 import SimpleInstallation
-from .group_0386 import OrganizationSimpleWebhooks
+from .group_0105 import CustomProperty
+from .group_0385 import EnterpriseWebhooks
+from .group_0386 import SimpleInstallation
+from .group_0387 import OrganizationSimpleWebhooks
 
 
-class WebhookCustomPropertyDeleted(GitHubModel):
-    """custom property deleted event"""
+class WebhookCustomPropertyCreated(GitHubModel):
+    """custom property created event"""
 
-    action: Literal["deleted"] = Field()
-    definition: WebhookCustomPropertyDeletedPropDefinition = Field()
+    action: Literal["created"] = Field()
+    definition: CustomProperty = Field(
+        title="Organization Custom Property",
+        description="Custom property defined on an organization",
+    )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -48,16 +52,6 @@ class WebhookCustomPropertyDeleted(GitHubModel):
     )
 
 
-class WebhookCustomPropertyDeletedPropDefinition(GitHubModel):
-    """WebhookCustomPropertyDeletedPropDefinition"""
+model_rebuild(WebhookCustomPropertyCreated)
 
-    property_name: str = Field(description="The name of the property that was deleted.")
-
-
-model_rebuild(WebhookCustomPropertyDeleted)
-model_rebuild(WebhookCustomPropertyDeletedPropDefinition)
-
-__all__ = (
-    "WebhookCustomPropertyDeleted",
-    "WebhookCustomPropertyDeletedPropDefinition",
-)
+__all__ = ("WebhookCustomPropertyCreated",)

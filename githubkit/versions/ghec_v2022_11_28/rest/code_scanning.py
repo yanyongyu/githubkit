@@ -14,54 +14,54 @@ from weakref import ref
 
 from pydantic import BaseModel
 
-from githubkit.utils import UNSET, exclude_unset
 from githubkit.compat import model_dump, type_validate_python
 from githubkit.typing import Missing, UnsetType
+from githubkit.utils import UNSET, exclude_unset
 
 if TYPE_CHECKING:
-    from typing import Union, Literal
     from datetime import datetime
+    from typing import Literal, Union
 
     from githubkit import GitHubCore
-    from githubkit.utils import UNSET
-    from githubkit.typing import Missing
     from githubkit.response import Response
+    from githubkit.typing import Missing
+    from githubkit.utils import UNSET
 
+    from ..models import (
+        CodeScanningAlert,
+        CodeScanningAlertInstance,
+        CodeScanningAlertItems,
+        CodeScanningAnalysis,
+        CodeScanningAnalysisDeletion,
+        CodeScanningCodeqlDatabase,
+        CodeScanningDefaultSetup,
+        CodeScanningOrganizationAlertItems,
+        CodeScanningSarifsReceipt,
+        CodeScanningSarifsStatus,
+        CodeScanningVariantAnalysis,
+        CodeScanningVariantAnalysisRepoTask,
+        EmptyObject,
+    )
     from ..types import (
-        EmptyObjectType,
-        CodeScanningAlertType,
-        CodeScanningAnalysisType,
-        CodeScanningAlertItemsType,
-        CodeScanningDefaultSetupType,
-        CodeScanningSarifsStatusType,
         CodeScanningAlertInstanceType,
-        CodeScanningSarifsReceiptType,
-        CodeScanningCodeqlDatabaseType,
-        CodeScanningVariantAnalysisType,
+        CodeScanningAlertItemsType,
+        CodeScanningAlertType,
         CodeScanningAnalysisDeletionType,
+        CodeScanningAnalysisType,
+        CodeScanningCodeqlDatabaseType,
+        CodeScanningDefaultSetupType,
         CodeScanningDefaultSetupUpdateType,
         CodeScanningOrganizationAlertItemsType,
+        CodeScanningSarifsReceiptType,
+        CodeScanningSarifsStatusType,
         CodeScanningVariantAnalysisRepoTaskType,
-        ReposOwnerRepoCodeScanningSarifsPostBodyType,
+        CodeScanningVariantAnalysisType,
+        EmptyObjectType,
         ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyType,
         ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0Type,
         ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1Type,
         ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2Type,
-    )
-    from ..models import (
-        EmptyObject,
-        CodeScanningAlert,
-        CodeScanningAnalysis,
-        CodeScanningAlertItems,
-        CodeScanningDefaultSetup,
-        CodeScanningSarifsStatus,
-        CodeScanningAlertInstance,
-        CodeScanningSarifsReceipt,
-        CodeScanningCodeqlDatabase,
-        CodeScanningVariantAnalysis,
-        CodeScanningAnalysisDeletion,
-        CodeScanningOrganizationAlertItems,
-        CodeScanningVariantAnalysisRepoTask,
+        ReposOwnerRepoCodeScanningSarifsPostBodyType,
     )
 
 
@@ -532,8 +532,8 @@ class CodeScanningClient:
         from ..models import (
             BasicError,
             CodeScanningAlert,
-            ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBody,
             EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBody,
         )
 
         url = f"/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}"
@@ -606,8 +606,8 @@ class CodeScanningClient:
         from ..models import (
             BasicError,
             CodeScanningAlert,
-            ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBody,
             EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBody,
         )
 
         url = f"/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}"
@@ -1659,8 +1659,8 @@ class CodeScanningClient:
 
         from ..models import (
             BasicError,
-            EmptyObject,
             CodeScanningDefaultSetupUpdate,
+            EmptyObject,
             EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
         )
 
@@ -1740,8 +1740,8 @@ class CodeScanningClient:
 
         from ..models import (
             BasicError,
-            EmptyObject,
             CodeScanningDefaultSetupUpdate,
+            EmptyObject,
             EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
         )
 
@@ -1813,8 +1813,8 @@ class CodeScanningClient:
         from ..models import (
             BasicError,
             CodeScanningSarifsReceipt,
-            ReposOwnerRepoCodeScanningSarifsPostBody,
             EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            ReposOwnerRepoCodeScanningSarifsPostBody,
         )
 
         url = f"/repos/{owner}/{repo}/code-scanning/sarifs"
@@ -1884,8 +1884,8 @@ class CodeScanningClient:
         from ..models import (
             BasicError,
             CodeScanningSarifsReceipt,
-            ReposOwnerRepoCodeScanningSarifsPostBody,
             EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            ReposOwnerRepoCodeScanningSarifsPostBody,
         )
 
         url = f"/repos/{owner}/{repo}/code-scanning/sarifs"

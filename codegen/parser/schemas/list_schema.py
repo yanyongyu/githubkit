@@ -1,7 +1,7 @@
 from typing import TYPE_CHECKING
 
-from . import parse_schema
 from ..utils import concat_snake_name, schema_from_source
+from . import parse_schema
 from .schema import ListSchema, UniqueListSchema
 
 if TYPE_CHECKING:

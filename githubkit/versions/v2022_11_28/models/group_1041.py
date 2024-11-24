@@ -13,25 +13,25 @@ from typing import Literal
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_1039 import ReposOwnerRepoPagesPostBodyPropSource
+from .group_1040 import ReposOwnerRepoPagesPostBodyPropSource
 
 
-class ReposOwnerRepoPagesPostBodyAnyof1(GitHubModel):
-    """ReposOwnerRepoPagesPostBodyAnyof1"""
+class ReposOwnerRepoPagesPostBodyAnyof0(GitHubModel):
+    """ReposOwnerRepoPagesPostBodyAnyof0"""
 
-    build_type: Literal["legacy", "workflow"] = Field(
-        description='The process in which the Page will be built. Possible values are `"legacy"` and `"workflow"`.'
-    )
-    source: Missing[ReposOwnerRepoPagesPostBodyPropSource] = Field(
+    build_type: Missing[Literal["legacy", "workflow"]] = Field(
         default=UNSET,
-        description="The source branch and directory used to publish your Pages site.",
+        description='The process in which the Page will be built. Possible values are `"legacy"` and `"workflow"`.',
+    )
+    source: ReposOwnerRepoPagesPostBodyPropSource = Field(
+        description="The source branch and directory used to publish your Pages site."
     )
 
 
-model_rebuild(ReposOwnerRepoPagesPostBodyAnyof1)
+model_rebuild(ReposOwnerRepoPagesPostBodyAnyof0)
 
-__all__ = ("ReposOwnerRepoPagesPostBodyAnyof1",)
+__all__ = ("ReposOwnerRepoPagesPostBodyAnyof0",)

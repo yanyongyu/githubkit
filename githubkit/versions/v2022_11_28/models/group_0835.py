@@ -11,23 +11,17 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-
-from .group_0030 import CopilotSeatDetails
 
 
-class OrgsOrgCopilotBillingSeatsGetResponse200(GitHubModel):
-    """OrgsOrgCopilotBillingSeatsGetResponse200"""
+class OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBody(GitHubModel):
+    """OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBody"""
 
-    total_seats: Missing[int] = Field(
-        default=UNSET,
-        description="Total number of Copilot seats for the organization currently being billed.",
+    selected_repository_ids: list[int] = Field(
+        description="An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the `visibility` is set to `selected`. You can add and remove individual repositories using the [Set selected repositories for an organization secret](https://docs.github.com/rest/codespaces/organization-secrets#set-selected-repositories-for-an-organization-secret) and [Remove selected repository from an organization secret](https://docs.github.com/rest/codespaces/organization-secrets#remove-selected-repository-from-an-organization-secret) endpoints."
     )
-    seats: Missing[list[CopilotSeatDetails]] = Field(default=UNSET)
 
 
-model_rebuild(OrgsOrgCopilotBillingSeatsGetResponse200)
+model_rebuild(OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBody)
 
-__all__ = ("OrgsOrgCopilotBillingSeatsGetResponse200",)
+__all__ = ("OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBody",)

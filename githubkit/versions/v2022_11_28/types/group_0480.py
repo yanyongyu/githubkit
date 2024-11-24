@@ -10,22 +10,22 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from datetime import datetime
-from typing_extensions import TypedDict, NotRequired
+from typing_extensions import NotRequired, TypedDict
 
 from .group_0002 import SimpleUserType
-from .group_0384 import EnterpriseWebhooksType
-from .group_0385 import SimpleInstallationType
-from .group_0386 import OrganizationSimpleWebhooksType
-from .group_0387 import RepositoryWebhooksType
-from .group_0397 import DiscussionType
+from .group_0385 import EnterpriseWebhooksType
+from .group_0386 import SimpleInstallationType
+from .group_0387 import OrganizationSimpleWebhooksType
+from .group_0388 import RepositoryWebhooksType
+from .group_0397 import WebhooksAnswerType
+from .group_0398 import DiscussionType
 
 
-class WebhookDiscussionCategoryChangedType(TypedDict):
-    """discussion category changed event"""
+class WebhookDiscussionAnsweredType(TypedDict):
+    """discussion answered event"""
 
-    action: Literal["category_changed"]
-    changes: WebhookDiscussionCategoryChangedPropChangesType
+    action: Literal["answered"]
+    answer: WebhooksAnswerType
     discussion: DiscussionType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
@@ -34,36 +34,4 @@ class WebhookDiscussionCategoryChangedType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookDiscussionCategoryChangedPropChangesType(TypedDict):
-    """WebhookDiscussionCategoryChangedPropChanges"""
-
-    category: WebhookDiscussionCategoryChangedPropChangesPropCategoryType
-
-
-class WebhookDiscussionCategoryChangedPropChangesPropCategoryType(TypedDict):
-    """WebhookDiscussionCategoryChangedPropChangesPropCategory"""
-
-    from_: WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFromType
-
-
-class WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFromType(TypedDict):
-    """WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFrom"""
-
-    created_at: datetime
-    description: str
-    emoji: str
-    id: int
-    is_answerable: bool
-    name: str
-    node_id: NotRequired[str]
-    repository_id: int
-    slug: str
-    updated_at: str
-
-
-__all__ = (
-    "WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFromType",
-    "WebhookDiscussionCategoryChangedPropChangesPropCategoryType",
-    "WebhookDiscussionCategoryChangedPropChangesType",
-    "WebhookDiscussionCategoryChangedType",
-)
+__all__ = ("WebhookDiscussionAnsweredType",)

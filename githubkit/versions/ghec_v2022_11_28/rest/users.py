@@ -9,57 +9,57 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Literal, Optional, Annotated, overload
+from typing import TYPE_CHECKING, Annotated, Literal, Optional, overload
 from weakref import ref
 
-from pydantic import Field, BaseModel
+from pydantic import BaseModel, Field
 
-from githubkit.utils import UNSET, exclude_unset
 from githubkit.compat import model_dump, type_validate_python
 from githubkit.typing import Missing, UnsetType
+from githubkit.utils import UNSET, exclude_unset
 
 if TYPE_CHECKING:
-    from typing import Union, Literal
+    from typing import Literal, Union
 
     from githubkit import GitHubCore
-    from githubkit.utils import UNSET
-    from githubkit.typing import Missing
     from githubkit.response import Response
+    from githubkit.typing import Missing
+    from githubkit.utils import UNSET
 
+    from ..models import (
+        Email,
+        GpgKey,
+        Hovercard,
+        Key,
+        KeySimple,
+        PrivateUser,
+        PublicUser,
+        SimpleUser,
+        SocialAccount,
+        SshSigningKey,
+        UsersUsernameAttestationsSubjectDigestGetResponse200,
+    )
     from ..types import (
-        KeyType,
         EmailType,
         GpgKeyType,
         HovercardType,
         KeySimpleType,
+        KeyType,
+        PrivateUserType,
         PublicUserType,
         SimpleUserType,
-        PrivateUserType,
         SocialAccountType,
         SshSigningKeyType,
-        UserPatchBodyType,
-        UserKeysPostBodyType,
-        UserGpgKeysPostBodyType,
-        UserEmailsPostBodyOneof0Type,
         UserEmailsDeleteBodyOneof0Type,
+        UserEmailsPostBodyOneof0Type,
+        UserEmailVisibilityPatchBodyType,
+        UserGpgKeysPostBodyType,
+        UserKeysPostBodyType,
+        UserPatchBodyType,
+        UserSocialAccountsDeleteBodyType,
         UserSocialAccountsPostBodyType,
         UserSshSigningKeysPostBodyType,
-        UserEmailVisibilityPatchBodyType,
-        UserSocialAccountsDeleteBodyType,
         UsersUsernameAttestationsSubjectDigestGetResponse200Type,
-    )
-    from ..models import (
-        Key,
-        Email,
-        GpgKey,
-        Hovercard,
-        KeySimple,
-        PublicUser,
-        SimpleUser,
-        PrivateUser,
-        SocialAccount,
-        SshSigningKey,
-        UsersUsernameAttestationsSubjectDigestGetResponse200,
     )
 
 
@@ -89,7 +89,7 @@ class UsersClient:
 
         from typing import Union
 
-        from ..models import BasicError, PublicUser, PrivateUser
+        from ..models import BasicError, PrivateUser, PublicUser
 
         url = "/user"
 
@@ -117,7 +117,7 @@ class UsersClient:
 
         from typing import Union
 
-        from ..models import BasicError, PublicUser, PrivateUser
+        from ..models import BasicError, PrivateUser, PublicUser
 
         url = "/user"
 
@@ -503,10 +503,10 @@ class UsersClient:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/emails#set-primary-email-visibility-for-the-authenticated-user"""
 
         from ..models import (
-            Email,
             BasicError,
-            ValidationError,
+            Email,
             UserEmailVisibilityPatchBody,
+            ValidationError,
         )
 
         url = "/user/email/visibility"
@@ -563,10 +563,10 @@ class UsersClient:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/emails#set-primary-email-visibility-for-the-authenticated-user"""
 
         from ..models import (
-            Email,
             BasicError,
-            ValidationError,
+            Email,
             UserEmailVisibilityPatchBody,
+            ValidationError,
         )
 
         url = "/user/email/visibility"
@@ -605,7 +605,7 @@ class UsersClient:
     ) -> Response[list[Email], list[EmailType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/emails#list-email-addresses-for-the-authenticated-user"""
 
-        from ..models import Email, BasicError
+        from ..models import BasicError, Email
 
         url = "/user/emails"
 
@@ -638,7 +638,7 @@ class UsersClient:
     ) -> Response[list[Email], list[EmailType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/emails#list-email-addresses-for-the-authenticated-user"""
 
-        from ..models import Email, BasicError
+        from ..models import BasicError, Email
 
         url = "/user/emails"
 
@@ -693,10 +693,10 @@ class UsersClient:
         from githubkit.compat import PYDANTIC_V2
 
         from ..models import (
-            Email,
             BasicError,
-            ValidationError,
+            Email,
             UserEmailsPostBodyOneof0,
+            ValidationError,
         )
 
         url = "/user/emails"
@@ -764,10 +764,10 @@ class UsersClient:
         from githubkit.compat import PYDANTIC_V2
 
         from ..models import (
-            Email,
             BasicError,
-            ValidationError,
+            Email,
             UserEmailsPostBodyOneof0,
+            ValidationError,
         )
 
         url = "/user/emails"
@@ -834,7 +834,7 @@ class UsersClient:
 
         from githubkit.compat import PYDANTIC_V2
 
-        from ..models import BasicError, ValidationError, UserEmailsDeleteBodyOneof0
+        from ..models import BasicError, UserEmailsDeleteBodyOneof0, ValidationError
 
         url = "/user/emails"
 
@@ -899,7 +899,7 @@ class UsersClient:
 
         from githubkit.compat import PYDANTIC_V2
 
-        from ..models import BasicError, ValidationError, UserEmailsDeleteBodyOneof0
+        from ..models import BasicError, UserEmailsDeleteBodyOneof0, ValidationError
 
         url = "/user/emails"
 
@@ -1223,7 +1223,7 @@ class UsersClient:
     ) -> Response[list[GpgKey], list[GpgKeyType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/gpg-keys#list-gpg-keys-for-the-authenticated-user"""
 
-        from ..models import GpgKey, BasicError
+        from ..models import BasicError, GpgKey
 
         url = "/user/gpg_keys"
 
@@ -1256,7 +1256,7 @@ class UsersClient:
     ) -> Response[list[GpgKey], list[GpgKeyType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/gpg-keys#list-gpg-keys-for-the-authenticated-user"""
 
-        from ..models import GpgKey, BasicError
+        from ..models import BasicError, GpgKey
 
         url = "/user/gpg_keys"
 
@@ -1304,7 +1304,7 @@ class UsersClient:
     ) -> Response[GpgKey, GpgKeyType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/gpg-keys#create-a-gpg-key-for-the-authenticated-user"""
 
-        from ..models import GpgKey, BasicError, ValidationError, UserGpgKeysPostBody
+        from ..models import BasicError, GpgKey, UserGpgKeysPostBody, ValidationError
 
         url = "/user/gpg_keys"
 
@@ -1357,7 +1357,7 @@ class UsersClient:
     ) -> Response[GpgKey, GpgKeyType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/gpg-keys#create-a-gpg-key-for-the-authenticated-user"""
 
-        from ..models import GpgKey, BasicError, ValidationError, UserGpgKeysPostBody
+        from ..models import BasicError, GpgKey, UserGpgKeysPostBody, ValidationError
 
         url = "/user/gpg_keys"
 
@@ -1394,7 +1394,7 @@ class UsersClient:
     ) -> Response[GpgKey, GpgKeyType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/gpg-keys#get-a-gpg-key-for-the-authenticated-user"""
 
-        from ..models import GpgKey, BasicError
+        from ..models import BasicError, GpgKey
 
         url = f"/user/gpg_keys/{gpg_key_id}"
 
@@ -1420,7 +1420,7 @@ class UsersClient:
     ) -> Response[GpgKey, GpgKeyType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/gpg-keys#get-a-gpg-key-for-the-authenticated-user"""
 
-        from ..models import GpgKey, BasicError
+        from ..models import BasicError, GpgKey
 
         url = f"/user/gpg_keys/{gpg_key_id}"
 
@@ -1499,7 +1499,7 @@ class UsersClient:
     ) -> Response[list[Key], list[KeyType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/keys#list-public-ssh-keys-for-the-authenticated-user"""
 
-        from ..models import Key, BasicError
+        from ..models import BasicError, Key
 
         url = "/user/keys"
 
@@ -1532,7 +1532,7 @@ class UsersClient:
     ) -> Response[list[Key], list[KeyType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/keys#list-public-ssh-keys-for-the-authenticated-user"""
 
-        from ..models import Key, BasicError
+        from ..models import BasicError, Key
 
         url = "/user/keys"
 
@@ -1580,7 +1580,7 @@ class UsersClient:
     ) -> Response[Key, KeyType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/keys#create-a-public-ssh-key-for-the-authenticated-user"""
 
-        from ..models import Key, BasicError, ValidationError, UserKeysPostBody
+        from ..models import BasicError, Key, UserKeysPostBody, ValidationError
 
         url = "/user/keys"
 
@@ -1633,7 +1633,7 @@ class UsersClient:
     ) -> Response[Key, KeyType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/keys#create-a-public-ssh-key-for-the-authenticated-user"""
 
-        from ..models import Key, BasicError, ValidationError, UserKeysPostBody
+        from ..models import BasicError, Key, UserKeysPostBody, ValidationError
 
         url = "/user/keys"
 
@@ -1670,7 +1670,7 @@ class UsersClient:
     ) -> Response[Key, KeyType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/keys#get-a-public-ssh-key-for-the-authenticated-user"""
 
-        from ..models import Key, BasicError
+        from ..models import BasicError, Key
 
         url = f"/user/keys/{key_id}"
 
@@ -1696,7 +1696,7 @@ class UsersClient:
     ) -> Response[Key, KeyType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/keys#get-a-public-ssh-key-for-the-authenticated-user"""
 
-        from ..models import Key, BasicError
+        from ..models import BasicError, Key
 
         url = f"/user/keys/{key_id}"
 
@@ -1773,7 +1773,7 @@ class UsersClient:
     ) -> Response[list[Email], list[EmailType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/emails#list-public-email-addresses-for-the-authenticated-user"""
 
-        from ..models import Email, BasicError
+        from ..models import BasicError, Email
 
         url = "/user/public_emails"
 
@@ -1806,7 +1806,7 @@ class UsersClient:
     ) -> Response[list[Email], list[EmailType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/emails#list-public-email-addresses-for-the-authenticated-user"""
 
-        from ..models import Email, BasicError
+        from ..models import BasicError, Email
 
         url = "/user/public_emails"
 
@@ -1925,8 +1925,8 @@ class UsersClient:
         from ..models import (
             BasicError,
             SocialAccount,
-            ValidationError,
             UserSocialAccountsPostBody,
+            ValidationError,
         )
 
         url = "/user/social_accounts"
@@ -1985,8 +1985,8 @@ class UsersClient:
         from ..models import (
             BasicError,
             SocialAccount,
-            ValidationError,
             UserSocialAccountsPostBody,
+            ValidationError,
         )
 
         url = "/user/social_accounts"
@@ -2042,7 +2042,7 @@ class UsersClient:
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/social-accounts#delete-social-accounts-for-the-authenticated-user"""
 
-        from ..models import BasicError, ValidationError, UserSocialAccountsDeleteBody
+        from ..models import BasicError, UserSocialAccountsDeleteBody, ValidationError
 
         url = "/user/social_accounts"
 
@@ -2096,7 +2096,7 @@ class UsersClient:
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/social-accounts#delete-social-accounts-for-the-authenticated-user"""
 
-        from ..models import BasicError, ValidationError, UserSocialAccountsDeleteBody
+        from ..models import BasicError, UserSocialAccountsDeleteBody, ValidationError
 
         url = "/user/social_accounts"
 
@@ -2220,8 +2220,8 @@ class UsersClient:
         from ..models import (
             BasicError,
             SshSigningKey,
-            ValidationError,
             UserSshSigningKeysPostBody,
+            ValidationError,
         )
 
         url = "/user/ssh_signing_keys"
@@ -2281,8 +2281,8 @@ class UsersClient:
         from ..models import (
             BasicError,
             SshSigningKey,
-            ValidationError,
             UserSshSigningKeysPostBody,
+            ValidationError,
         )
 
         url = "/user/ssh_signing_keys"
@@ -2426,7 +2426,7 @@ class UsersClient:
 
         from typing import Union
 
-        from ..models import BasicError, PublicUser, PrivateUser
+        from ..models import BasicError, PrivateUser, PublicUser
 
         url = f"/user/{account_id}"
 
@@ -2454,7 +2454,7 @@ class UsersClient:
 
         from typing import Union
 
-        from ..models import BasicError, PublicUser, PrivateUser
+        from ..models import BasicError, PrivateUser, PublicUser
 
         url = f"/user/{account_id}"
 
@@ -2538,7 +2538,7 @@ class UsersClient:
 
         from typing import Union
 
-        from ..models import BasicError, PublicUser, PrivateUser
+        from ..models import BasicError, PrivateUser, PublicUser
 
         url = f"/users/{username}"
 
@@ -2566,7 +2566,7 @@ class UsersClient:
 
         from typing import Union
 
-        from ..models import BasicError, PublicUser, PrivateUser
+        from ..models import BasicError, PrivateUser, PublicUser
 
         url = f"/users/{username}"
 
@@ -2890,7 +2890,7 @@ class UsersClient:
     ) -> Response[Hovercard, HovercardType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/users#get-contextual-information-for-a-user"""
 
-        from ..models import Hovercard, BasicError, ValidationError
+        from ..models import BasicError, Hovercard, ValidationError
 
         url = f"/users/{username}/hovercard"
 
@@ -2925,7 +2925,7 @@ class UsersClient:
     ) -> Response[Hovercard, HovercardType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/users#get-contextual-information-for-a-user"""
 
-        from ..models import Hovercard, BasicError, ValidationError
+        from ..models import BasicError, Hovercard, ValidationError
 
         url = f"/users/{username}/hovercard"
 

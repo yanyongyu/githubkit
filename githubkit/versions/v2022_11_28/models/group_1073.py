@@ -9,24 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody(GitHubModel):
-    """ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody"""
+class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBody(GitHubModel):
+    """ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBody"""
 
-    reason: Literal["false_positive", "used_in_tests", "will_fix_later"] = Field(
-        description="The reason for bypassing push protection."
+    state: Literal["open", "resolved"] = Field(
+        description="Sets the state of the secret scanning alert. You must provide `resolution` when you set the state to `resolved`."
     )
-    placeholder_id: str = Field(
-        description="The ID of the push protection bypass placeholder. This value is returned on any push protected routes."
+    resolution: Missing[
+        Union[None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]]
+    ] = Field(
+        default=UNSET,
+        description="**Required when the `state` is `resolved`.** The reason for resolving the alert.",
+    )
+    resolution_comment: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="An optional comment when closing an alert. Cannot be updated or deleted. Must be `null` when changing `state` to `open`.",
     )
 
 
-model_rebuild(ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody)
+model_rebuild(ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBody)
 
-__all__ = ("ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody",)
+__all__ = ("ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBody",)

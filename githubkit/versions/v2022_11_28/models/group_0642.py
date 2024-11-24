@@ -9,26 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 from .group_0002 import SimpleUser
-from .group_0385 import SimpleInstallation
-from .group_0386 import OrganizationSimpleWebhooks
-from .group_0419 import WebhooksProjectChanges
-from .group_0420 import ProjectsV2Item
+from .group_0386 import SimpleInstallation
+from .group_0387 import OrganizationSimpleWebhooks
+from .group_0421 import ProjectsV2Item
 
 
-class WebhookProjectsV2ItemRestored(GitHubModel):
-    """Projects v2 Item Restored Event"""
+class WebhookProjectsV2ItemReordered(GitHubModel):
+    """Projects v2 Item Reordered Event"""
 
-    action: Literal["restored"] = Field()
-    changes: WebhooksProjectChanges = Field()
+    action: Literal["reordered"] = Field()
+    changes: WebhookProjectsV2ItemReorderedPropChanges = Field()
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
         title="Simple Installation",
@@ -44,6 +43,29 @@ class WebhookProjectsV2ItemRestored(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookProjectsV2ItemRestored)
+class WebhookProjectsV2ItemReorderedPropChanges(GitHubModel):
+    """WebhookProjectsV2ItemReorderedPropChanges"""
 
-__all__ = ("WebhookProjectsV2ItemRestored",)
+    previous_projects_v2_item_node_id: Missing[
+        WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeId
+    ] = Field(default=UNSET)
+
+
+class WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeId(
+    GitHubModel
+):
+    """WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeId"""
+
+    from_: Missing[Union[str, None]] = Field(default=UNSET, alias="from")
+    to: Missing[Union[str, None]] = Field(default=UNSET)
+
+
+model_rebuild(WebhookProjectsV2ItemReordered)
+model_rebuild(WebhookProjectsV2ItemReorderedPropChanges)
+model_rebuild(WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeId)
+
+__all__ = (
+    "WebhookProjectsV2ItemReordered",
+    "WebhookProjectsV2ItemReorderedPropChanges",
+    "WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeId",
+)

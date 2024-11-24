@@ -1,13 +1,13 @@
-from typing import Any, Union, Optional
 from dataclasses import asdict, dataclass
+from typing import Any, Optional, Union
 from typing_extensions import Self
 
 import httpx
 
 from .cache import DEFAULT_CACHE_STRATEGY, BaseCacheStrategy
 from .retry import RETRY_DEFAULT
-from .typing import RetryDecisionFunc
 from .throttling import BaseThrottler, LocalThrottler
+from .typing import RetryDecisionFunc
 
 
 @dataclass(frozen=True)

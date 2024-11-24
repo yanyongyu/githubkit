@@ -9,132 +9,135 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
+from typing import Union
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0002 import SimpleUser
-from .group_0384 import EnterpriseWebhooks
-from .group_0385 import SimpleInstallation
-from .group_0386 import OrganizationSimpleWebhooks
-from .group_0387 import RepositoryWebhooks
-
-
-class WebhookRepositoryTransferred(GitHubModel):
-    """repository transferred event"""
-
-    action: Literal["transferred"] = Field()
-    changes: WebhookRepositoryTransferredPropChanges = Field()
-    enterprise: Missing[EnterpriseWebhooks] = Field(
-        default=UNSET,
-        title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."',
-    )
-    installation: Missing[SimpleInstallation] = Field(
-        default=UNSET,
-        title="Simple Installation",
-        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
-    )
-    organization: Missing[OrganizationSimpleWebhooks] = Field(
-        default=UNSET,
-        title="Organization Simple",
-        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
-    )
-    repository: RepositoryWebhooks = Field(
-        title="Repository",
-        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
-    )
-    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+from .group_0122 import (
+    RepositoryRuleCreation,
+    RepositoryRuleDeletion,
+    RepositoryRuleNonFastForward,
+    RepositoryRuleOneof15,
+    RepositoryRuleOneof17,
+    RepositoryRuleRequiredSignatures,
+)
+from .group_0123 import RepositoryRuleUpdate
+from .group_0125 import RepositoryRuleOneof16, RepositoryRuleRequiredLinearHistory
+from .group_0126 import RepositoryRuleMergeQueue
+from .group_0128 import RepositoryRuleRequiredDeployments
+from .group_0131 import RepositoryRulePullRequest
+from .group_0133 import RepositoryRuleRequiredStatusChecks
+from .group_0135 import RepositoryRuleCommitMessagePattern
+from .group_0137 import RepositoryRuleCommitAuthorEmailPattern
+from .group_0139 import RepositoryRuleCommitterEmailPattern
+from .group_0141 import RepositoryRuleBranchNamePattern
+from .group_0143 import RepositoryRuleTagNamePattern
+from .group_0146 import RepositoryRuleWorkflows
+from .group_0148 import RepositoryRuleCodeScanning
+from .group_0150 import RepositoryRuleOneof18
 
 
-class WebhookRepositoryTransferredPropChanges(GitHubModel):
-    """WebhookRepositoryTransferredPropChanges"""
+class WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItems(GitHubModel):
+    """WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItems"""
 
-    owner: WebhookRepositoryTransferredPropChangesPropOwner = Field()
+    rule: Missing[
+        Union[
+            RepositoryRuleCreation,
+            RepositoryRuleUpdate,
+            RepositoryRuleDeletion,
+            RepositoryRuleRequiredLinearHistory,
+            RepositoryRuleMergeQueue,
+            RepositoryRuleRequiredDeployments,
+            RepositoryRuleRequiredSignatures,
+            RepositoryRulePullRequest,
+            RepositoryRuleRequiredStatusChecks,
+            RepositoryRuleNonFastForward,
+            RepositoryRuleCommitMessagePattern,
+            RepositoryRuleCommitAuthorEmailPattern,
+            RepositoryRuleCommitterEmailPattern,
+            RepositoryRuleBranchNamePattern,
+            RepositoryRuleTagNamePattern,
+            RepositoryRuleOneof15,
+            RepositoryRuleOneof16,
+            RepositoryRuleOneof17,
+            RepositoryRuleOneof18,
+            RepositoryRuleWorkflows,
+            RepositoryRuleCodeScanning,
+        ]
+    ] = Field(default=UNSET, title="Repository Rule", description="A repository rule.")
+    changes: Missing[
+        WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChanges
+    ] = Field(default=UNSET)
 
 
-class WebhookRepositoryTransferredPropChangesPropOwner(GitHubModel):
-    """WebhookRepositoryTransferredPropChangesPropOwner"""
-
-    from_: WebhookRepositoryTransferredPropChangesPropOwnerPropFrom = Field(
-        alias="from"
-    )
-
-
-class WebhookRepositoryTransferredPropChangesPropOwnerPropFrom(GitHubModel):
-    """WebhookRepositoryTransferredPropChangesPropOwnerPropFrom"""
-
-    organization: Missing[
-        WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropOrganization
-    ] = Field(default=UNSET, title="Organization")
-    user: Missing[
-        Union[WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropUser, None]
-    ] = Field(default=UNSET, title="User")
-
-
-class WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropOrganization(
+class WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChanges(
     GitHubModel
 ):
-    """Organization"""
+    """WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChanges"""
 
-    avatar_url: str = Field()
-    description: Union[str, None] = Field()
-    events_url: str = Field()
-    hooks_url: str = Field()
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field()
-    issues_url: str = Field()
-    login: str = Field()
-    members_url: str = Field()
-    node_id: str = Field()
-    public_members_url: str = Field()
-    repos_url: str = Field()
-    url: str = Field()
+    configuration: Missing[
+        WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropConfiguration
+    ] = Field(default=UNSET)
+    rule_type: Missing[
+        WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropRuleType
+    ] = Field(default=UNSET)
+    pattern: Missing[
+        WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropPattern
+    ] = Field(default=UNSET)
 
 
-class WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropUser(GitHubModel):
-    """User"""
+class WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropConfiguration(
+    GitHubModel
+):
+    """WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPro
+    pConfiguration
+    """
 
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field()
-    login: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
+    from_: Missing[str] = Field(default=UNSET, alias="from")
 
 
-model_rebuild(WebhookRepositoryTransferred)
-model_rebuild(WebhookRepositoryTransferredPropChanges)
-model_rebuild(WebhookRepositoryTransferredPropChangesPropOwner)
-model_rebuild(WebhookRepositoryTransferredPropChangesPropOwnerPropFrom)
-model_rebuild(WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropOrganization)
-model_rebuild(WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropUser)
+class WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropRuleType(
+    GitHubModel
+):
+    """WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPro
+    pRuleType
+    """
+
+    from_: Missing[str] = Field(default=UNSET, alias="from")
+
+
+class WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropPattern(
+    GitHubModel
+):
+    """WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPro
+    pPattern
+    """
+
+    from_: Missing[str] = Field(default=UNSET, alias="from")
+
+
+model_rebuild(WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItems)
+model_rebuild(
+    WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChanges
+)
+model_rebuild(
+    WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropConfiguration
+)
+model_rebuild(
+    WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropRuleType
+)
+model_rebuild(
+    WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropPattern
+)
 
 __all__ = (
-    "WebhookRepositoryTransferred",
-    "WebhookRepositoryTransferredPropChanges",
-    "WebhookRepositoryTransferredPropChangesPropOwner",
-    "WebhookRepositoryTransferredPropChangesPropOwnerPropFrom",
-    "WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropOrganization",
-    "WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropUser",
+    "WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItems",
+    "WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChanges",
+    "WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropConfiguration",
+    "WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropPattern",
+    "WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropRuleType",
 )

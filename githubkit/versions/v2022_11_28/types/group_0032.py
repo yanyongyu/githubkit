@@ -9,9 +9,9 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from datetime import date
-from typing_extensions import TypedDict, NotRequired
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
 class CopilotUsageMetricsType(TypedDict):

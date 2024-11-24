@@ -14,84 +14,84 @@ from weakref import ref
 
 from pydantic import BaseModel
 
-from githubkit.utils import UNSET, exclude_unset
 from githubkit.compat import model_dump, type_validate_python
 from githubkit.typing import Missing, UnsetType
+from githubkit.utils import UNSET, exclude_unset
 
 if TYPE_CHECKING:
-    from typing import Union, Literal
+    from typing import Literal, Union
 
     from githubkit import GitHubCore
-    from githubkit.utils import UNSET
-    from githubkit.typing import Missing
     from githubkit.response import Response
+    from githubkit.typing import Missing
+    from githubkit.utils import UNSET
 
-    from ..types import (
-        CodespaceType,
-        EmptyObjectType,
-        CodespacesSecretType,
-        CodespacesOrgSecretType,
-        CodespacesPublicKeyType,
-        RepoCodespacesSecretType,
-        CodespaceExportDetailsType,
-        CodespacesUserPublicKeyType,
-        CodespaceWithFullRepositoryType,
-        UserCodespacesGetResponse200Type,
-        UserCodespacesPostBodyOneof0Type,
-        UserCodespacesPostBodyOneof1Type,
-        OrgsOrgCodespacesAccessPutBodyType,
-        OrgsOrgCodespacesGetResponse200Type,
-        ReposOwnerRepoCodespacesPostBodyType,
-        UserCodespacesSecretsGetResponse200Type,
-        UserCodespacesCodespaceNamePatchBodyType,
-        OrgsOrgCodespacesSecretsGetResponse200Type,
-        ReposOwnerRepoCodespacesGetResponse200Type,
-        UserCodespacesSecretsSecretNamePutBodyType,
-        CodespacesPermissionsCheckForDevcontainerType,
-        OrgsOrgCodespacesSecretsSecretNamePutBodyType,
-        ReposOwnerRepoCodespacesNewGetResponse200Type,
-        UserCodespacesCodespaceNamePublishPostBodyType,
-        UserCodespacesPostBodyOneof1PropPullRequestType,
-        OrgsOrgCodespacesAccessSelectedUsersPostBodyType,
-        ReposOwnerRepoCodespacesSecretsGetResponse200Type,
-        OrgsOrgCodespacesAccessSelectedUsersDeleteBodyType,
-        OrgsOrgMembersUsernameCodespacesGetResponse200Type,
-        ReposOwnerRepoCodespacesMachinesGetResponse200Type,
-        ReposOwnerRepoPullsPullNumberCodespacesPostBodyType,
-        ReposOwnerRepoCodespacesSecretsSecretNamePutBodyType,
-        UserCodespacesCodespaceNameMachinesGetResponse200Type,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
-        UserCodespacesSecretsSecretNameRepositoriesPutBodyType,
-        ReposOwnerRepoCodespacesDevcontainersGetResponse200Type,
-        OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBodyType,
-        UserCodespacesSecretsSecretNameRepositoriesGetResponse200Type,
-        OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200Type,
-    )
     from ..models import (
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
         Codespace,
-        EmptyObject,
-        CodespacesSecret,
-        CodespacesOrgSecret,
-        CodespacesPublicKey,
-        RepoCodespacesSecret,
         CodespaceExportDetails,
+        CodespacesOrgSecret,
+        CodespacesPermissionsCheckForDevcontainer,
+        CodespacesPublicKey,
+        CodespacesSecret,
         CodespacesUserPublicKey,
         CodespaceWithFullRepository,
-        UserCodespacesGetResponse200,
+        EmptyObject,
         OrgsOrgCodespacesGetResponse200,
-        UserCodespacesSecretsGetResponse200,
         OrgsOrgCodespacesSecretsGetResponse200,
+        OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200,
+        OrgsOrgMembersUsernameCodespacesGetResponse200,
+        RepoCodespacesSecret,
+        ReposOwnerRepoCodespacesDevcontainersGetResponse200,
         ReposOwnerRepoCodespacesGetResponse200,
-        CodespacesPermissionsCheckForDevcontainer,
+        ReposOwnerRepoCodespacesMachinesGetResponse200,
         ReposOwnerRepoCodespacesNewGetResponse200,
         ReposOwnerRepoCodespacesSecretsGetResponse200,
-        OrgsOrgMembersUsernameCodespacesGetResponse200,
-        ReposOwnerRepoCodespacesMachinesGetResponse200,
         UserCodespacesCodespaceNameMachinesGetResponse200,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-        ReposOwnerRepoCodespacesDevcontainersGetResponse200,
+        UserCodespacesGetResponse200,
+        UserCodespacesSecretsGetResponse200,
         UserCodespacesSecretsSecretNameRepositoriesGetResponse200,
-        OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200,
+    )
+    from ..types import (
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+        CodespaceExportDetailsType,
+        CodespacesOrgSecretType,
+        CodespacesPermissionsCheckForDevcontainerType,
+        CodespacesPublicKeyType,
+        CodespacesSecretType,
+        CodespacesUserPublicKeyType,
+        CodespaceType,
+        CodespaceWithFullRepositoryType,
+        EmptyObjectType,
+        OrgsOrgCodespacesAccessPutBodyType,
+        OrgsOrgCodespacesAccessSelectedUsersDeleteBodyType,
+        OrgsOrgCodespacesAccessSelectedUsersPostBodyType,
+        OrgsOrgCodespacesGetResponse200Type,
+        OrgsOrgCodespacesSecretsGetResponse200Type,
+        OrgsOrgCodespacesSecretsSecretNamePutBodyType,
+        OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200Type,
+        OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBodyType,
+        OrgsOrgMembersUsernameCodespacesGetResponse200Type,
+        RepoCodespacesSecretType,
+        ReposOwnerRepoCodespacesDevcontainersGetResponse200Type,
+        ReposOwnerRepoCodespacesGetResponse200Type,
+        ReposOwnerRepoCodespacesMachinesGetResponse200Type,
+        ReposOwnerRepoCodespacesNewGetResponse200Type,
+        ReposOwnerRepoCodespacesPostBodyType,
+        ReposOwnerRepoCodespacesSecretsGetResponse200Type,
+        ReposOwnerRepoCodespacesSecretsSecretNamePutBodyType,
+        ReposOwnerRepoPullsPullNumberCodespacesPostBodyType,
+        UserCodespacesCodespaceNameMachinesGetResponse200Type,
+        UserCodespacesCodespaceNamePatchBodyType,
+        UserCodespacesCodespaceNamePublishPostBodyType,
+        UserCodespacesGetResponse200Type,
+        UserCodespacesPostBodyOneof0Type,
+        UserCodespacesPostBodyOneof1PropPullRequestType,
+        UserCodespacesPostBodyOneof1Type,
+        UserCodespacesSecretsGetResponse200Type,
+        UserCodespacesSecretsSecretNamePutBodyType,
+        UserCodespacesSecretsSecretNameRepositoriesGetResponse200Type,
+        UserCodespacesSecretsSecretNameRepositoriesPutBodyType,
     )
 
 
@@ -215,7 +215,7 @@ class CodespacesClient:
     ) -> Response:
         """See also: https://docs.github.com/rest/codespaces/organizations#manage-access-control-for-organization-codespaces"""
 
-        from ..models import BasicError, ValidationError, OrgsOrgCodespacesAccessPutBody
+        from ..models import BasicError, OrgsOrgCodespacesAccessPutBody, ValidationError
 
         url = f"/orgs/{org}/codespaces/access"
 
@@ -277,7 +277,7 @@ class CodespacesClient:
     ) -> Response:
         """See also: https://docs.github.com/rest/codespaces/organizations#manage-access-control-for-organization-codespaces"""
 
-        from ..models import BasicError, ValidationError, OrgsOrgCodespacesAccessPutBody
+        from ..models import BasicError, OrgsOrgCodespacesAccessPutBody, ValidationError
 
         url = f"/orgs/{org}/codespaces/access"
 
@@ -335,8 +335,8 @@ class CodespacesClient:
 
         from ..models import (
             BasicError,
-            ValidationError,
             OrgsOrgCodespacesAccessSelectedUsersPostBody,
+            ValidationError,
         )
 
         url = f"/orgs/{org}/codespaces/access/selected_users"
@@ -397,8 +397,8 @@ class CodespacesClient:
 
         from ..models import (
             BasicError,
-            ValidationError,
             OrgsOrgCodespacesAccessSelectedUsersPostBody,
+            ValidationError,
         )
 
         url = f"/orgs/{org}/codespaces/access/selected_users"
@@ -459,8 +459,8 @@ class CodespacesClient:
 
         from ..models import (
             BasicError,
-            ValidationError,
             OrgsOrgCodespacesAccessSelectedUsersDeleteBody,
+            ValidationError,
         )
 
         url = f"/orgs/{org}/codespaces/access/selected_users"
@@ -521,8 +521,8 @@ class CodespacesClient:
 
         from ..models import (
             BasicError,
-            ValidationError,
             OrgsOrgCodespacesAccessSelectedUsersDeleteBody,
+            ValidationError,
         )
 
         url = f"/orgs/{org}/codespaces/access/selected_users"
@@ -740,8 +740,8 @@ class CodespacesClient:
         from ..models import (
             BasicError,
             EmptyObject,
-            ValidationError,
             OrgsOrgCodespacesSecretsSecretNamePutBody,
+            ValidationError,
         )
 
         url = f"/orgs/{org}/codespaces/secrets/{secret_name}"
@@ -807,8 +807,8 @@ class CodespacesClient:
         from ..models import (
             BasicError,
             EmptyObject,
-            ValidationError,
             OrgsOrgCodespacesSecretsSecretNamePutBody,
+            ValidationError,
         )
 
         url = f"/orgs/{org}/codespaces/secrets/{secret_name}"
@@ -1294,8 +1294,8 @@ class CodespacesClient:
         """See also: https://docs.github.com/rest/codespaces/organizations#delete-a-codespace-from-the-organization"""
 
         from ..models import (
-            BasicError,
             AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
+            BasicError,
         )
 
         url = f"/orgs/{org}/members/{username}/codespaces/{codespace_name}"
@@ -1329,8 +1329,8 @@ class CodespacesClient:
         """See also: https://docs.github.com/rest/codespaces/organizations#delete-a-codespace-from-the-organization"""
 
         from ..models import (
-            BasicError,
             AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
+            BasicError,
         )
 
         url = f"/orgs/{org}/members/{username}/codespaces/{codespace_name}"
@@ -1360,7 +1360,7 @@ class CodespacesClient:
     ) -> Response[Codespace, CodespaceType]:
         """See also: https://docs.github.com/rest/codespaces/organizations#stop-a-codespace-for-an-organization-user"""
 
-        from ..models import Codespace, BasicError
+        from ..models import BasicError, Codespace
 
         url = f"/orgs/{org}/members/{username}/codespaces/{codespace_name}/stop"
 
@@ -1389,7 +1389,7 @@ class CodespacesClient:
     ) -> Response[Codespace, CodespaceType]:
         """See also: https://docs.github.com/rest/codespaces/organizations#stop-a-codespace-for-an-organization-user"""
 
-        from ..models import Codespace, BasicError
+        from ..models import BasicError, Codespace
 
         url = f"/orgs/{org}/members/{username}/codespaces/{codespace_name}/stop"
 
@@ -1533,10 +1533,10 @@ class CodespacesClient:
         from typing import Union
 
         from ..models import (
-            Codespace,
             BasicError,
-            ReposOwnerRepoCodespacesPostBody,
+            Codespace,
             EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            ReposOwnerRepoCodespacesPostBody,
         )
 
         url = f"/repos/{owner}/{repo}/codespaces"
@@ -1616,10 +1616,10 @@ class CodespacesClient:
         from typing import Union
 
         from ..models import (
-            Codespace,
             BasicError,
-            ReposOwnerRepoCodespacesPostBody,
+            Codespace,
             EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            ReposOwnerRepoCodespacesPostBody,
         )
 
         url = f"/repos/{owner}/{repo}/codespaces"
@@ -1912,9 +1912,9 @@ class CodespacesClient:
 
         from ..models import (
             BasicError,
-            ValidationError,
             CodespacesPermissionsCheckForDevcontainer,
             EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/codespaces/permissions_check"
@@ -1957,9 +1957,9 @@ class CodespacesClient:
 
         from ..models import (
             BasicError,
-            ValidationError,
             CodespacesPermissionsCheckForDevcontainer,
             EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/codespaces/permissions_check"
@@ -2361,10 +2361,10 @@ class CodespacesClient:
         from typing import Union
 
         from ..models import (
-            Codespace,
             BasicError,
-            ReposOwnerRepoPullsPullNumberCodespacesPostBody,
+            Codespace,
             EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            ReposOwnerRepoPullsPullNumberCodespacesPostBody,
         )
 
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/codespaces"
@@ -2447,10 +2447,10 @@ class CodespacesClient:
         from typing import Union
 
         from ..models import (
-            Codespace,
             BasicError,
-            ReposOwnerRepoPullsPullNumberCodespacesPostBody,
+            Codespace,
             EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            ReposOwnerRepoPullsPullNumberCodespacesPostBody,
         )
 
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/codespaces"
@@ -2615,11 +2615,11 @@ class CodespacesClient:
         from typing import Union
 
         from ..models import (
-            Codespace,
             BasicError,
+            Codespace,
+            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
             UserCodespacesPostBodyOneof0,
             UserCodespacesPostBodyOneof1,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
         )
 
         url = "/user/codespaces"
@@ -2712,11 +2712,11 @@ class CodespacesClient:
         from typing import Union
 
         from ..models import (
-            Codespace,
             BasicError,
+            Codespace,
+            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
             UserCodespacesPostBodyOneof0,
             UserCodespacesPostBodyOneof1,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
         )
 
         url = "/user/codespaces"
@@ -2924,8 +2924,8 @@ class CodespacesClient:
         from ..models import (
             BasicError,
             EmptyObject,
-            ValidationError,
             UserCodespacesSecretsSecretNamePutBody,
+            ValidationError,
         )
 
         url = f"/user/codespaces/secrets/{secret_name}"
@@ -2987,8 +2987,8 @@ class CodespacesClient:
         from ..models import (
             BasicError,
             EmptyObject,
-            ValidationError,
             UserCodespacesSecretsSecretNamePutBody,
+            ValidationError,
         )
 
         url = f"/user/codespaces/secrets/{secret_name}"
@@ -3358,7 +3358,7 @@ class CodespacesClient:
     ) -> Response[Codespace, CodespaceType]:
         """See also: https://docs.github.com/rest/codespaces/codespaces#get-a-codespace-for-the-authenticated-user"""
 
-        from ..models import Codespace, BasicError
+        from ..models import BasicError, Codespace
 
         url = f"/user/codespaces/{codespace_name}"
 
@@ -3385,7 +3385,7 @@ class CodespacesClient:
     ) -> Response[Codespace, CodespaceType]:
         """See also: https://docs.github.com/rest/codespaces/codespaces#get-a-codespace-for-the-authenticated-user"""
 
-        from ..models import Codespace, BasicError
+        from ..models import BasicError, Codespace
 
         url = f"/user/codespaces/{codespace_name}"
 
@@ -3416,8 +3416,8 @@ class CodespacesClient:
         """See also: https://docs.github.com/rest/codespaces/codespaces#delete-a-codespace-for-the-authenticated-user"""
 
         from ..models import (
-            BasicError,
             AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
+            BasicError,
         )
 
         url = f"/user/codespaces/{codespace_name}"
@@ -3449,8 +3449,8 @@ class CodespacesClient:
         """See also: https://docs.github.com/rest/codespaces/codespaces#delete-a-codespace-for-the-authenticated-user"""
 
         from ..models import (
-            BasicError,
             AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
+            BasicError,
         )
 
         url = f"/user/codespaces/{codespace_name}"
@@ -3501,7 +3501,7 @@ class CodespacesClient:
     ) -> Response[Codespace, CodespaceType]:
         """See also: https://docs.github.com/rest/codespaces/codespaces#update-a-codespace-for-the-authenticated-user"""
 
-        from ..models import Codespace, BasicError, UserCodespacesCodespaceNamePatchBody
+        from ..models import BasicError, Codespace, UserCodespacesCodespaceNamePatchBody
 
         url = f"/user/codespaces/{codespace_name}"
 
@@ -3560,7 +3560,7 @@ class CodespacesClient:
     ) -> Response[Codespace, CodespaceType]:
         """See also: https://docs.github.com/rest/codespaces/codespaces#update-a-codespace-for-the-authenticated-user"""
 
-        from ..models import Codespace, BasicError, UserCodespacesCodespaceNamePatchBody
+        from ..models import BasicError, Codespace, UserCodespacesCodespaceNamePatchBody
 
         url = f"/user/codespaces/{codespace_name}"
 
@@ -3596,7 +3596,7 @@ class CodespacesClient:
     ) -> Response[CodespaceExportDetails, CodespaceExportDetailsType]:
         """See also: https://docs.github.com/rest/codespaces/codespaces#export-a-codespace-for-the-authenticated-user"""
 
-        from ..models import BasicError, ValidationError, CodespaceExportDetails
+        from ..models import BasicError, CodespaceExportDetails, ValidationError
 
         url = f"/user/codespaces/{codespace_name}/exports"
 
@@ -3624,7 +3624,7 @@ class CodespacesClient:
     ) -> Response[CodespaceExportDetails, CodespaceExportDetailsType]:
         """See also: https://docs.github.com/rest/codespaces/codespaces#export-a-codespace-for-the-authenticated-user"""
 
-        from ..models import BasicError, ValidationError, CodespaceExportDetails
+        from ..models import BasicError, CodespaceExportDetails, ValidationError
 
         url = f"/user/codespaces/{codespace_name}/exports"
 
@@ -3792,9 +3792,9 @@ class CodespacesClient:
 
         from ..models import (
             BasicError,
-            ValidationError,
             CodespaceWithFullRepository,
             UserCodespacesCodespaceNamePublishPostBody,
+            ValidationError,
         )
 
         url = f"/user/codespaces/{codespace_name}/publish"
@@ -3858,9 +3858,9 @@ class CodespacesClient:
 
         from ..models import (
             BasicError,
-            ValidationError,
             CodespaceWithFullRepository,
             UserCodespacesCodespaceNamePublishPostBody,
+            ValidationError,
         )
 
         url = f"/user/codespaces/{codespace_name}/publish"
@@ -3900,7 +3900,7 @@ class CodespacesClient:
     ) -> Response[Codespace, CodespaceType]:
         """See also: https://docs.github.com/rest/codespaces/codespaces#start-a-codespace-for-the-authenticated-user"""
 
-        from ..models import Codespace, BasicError
+        from ..models import BasicError, Codespace
 
         url = f"/user/codespaces/{codespace_name}/start"
 
@@ -3930,7 +3930,7 @@ class CodespacesClient:
     ) -> Response[Codespace, CodespaceType]:
         """See also: https://docs.github.com/rest/codespaces/codespaces#start-a-codespace-for-the-authenticated-user"""
 
-        from ..models import Codespace, BasicError
+        from ..models import BasicError, Codespace
 
         url = f"/user/codespaces/{codespace_name}/start"
 
@@ -3960,7 +3960,7 @@ class CodespacesClient:
     ) -> Response[Codespace, CodespaceType]:
         """See also: https://docs.github.com/rest/codespaces/codespaces#stop-a-codespace-for-the-authenticated-user"""
 
-        from ..models import Codespace, BasicError
+        from ..models import BasicError, Codespace
 
         url = f"/user/codespaces/{codespace_name}/stop"
 
@@ -3987,7 +3987,7 @@ class CodespacesClient:
     ) -> Response[Codespace, CodespaceType]:
         """See also: https://docs.github.com/rest/codespaces/codespaces#stop-a-codespace-for-the-authenticated-user"""
 
-        from ..models import Codespace, BasicError
+        from ..models import BasicError, Codespace
 
         url = f"/user/codespaces/{codespace_name}/stop"
 

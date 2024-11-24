@@ -1,6 +1,6 @@
+from collections.abc import Generator
 import os
 from typing import TYPE_CHECKING
-from collections.abc import Generator
 
 import httpx
 

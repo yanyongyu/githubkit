@@ -9,27 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict, NotRequired
-
-from .group_0002 import SimpleUserType
-from .group_0384 import EnterpriseWebhooksType
-from .group_0385 import SimpleInstallationType
-from .group_0386 import OrganizationSimpleWebhooksType
-from .group_0387 import RepositoryWebhooksType
-from .group_0416 import WebhooksProjectType
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class WebhookProjectClosedType(TypedDict):
-    """project closed event"""
+class WebhookProjectCardMovedPropProjectCardAllof1Type(TypedDict):
+    """WebhookProjectCardMovedPropProjectCardAllof1"""
 
-    action: Literal["closed"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    project: WebhooksProjectType
-    repository: NotRequired[RepositoryWebhooksType]
-    sender: SimpleUserType
+    after_id: Union[int, None]
+    archived: NotRequired[bool]
+    column_id: NotRequired[int]
+    column_url: NotRequired[str]
+    created_at: NotRequired[str]
+    creator: NotRequired[
+        Union[WebhookProjectCardMovedPropProjectCardAllof1PropCreatorType, None]
+    ]
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    note: NotRequired[Union[str, None]]
+    project_url: NotRequired[str]
+    updated_at: NotRequired[str]
+    url: NotRequired[str]
 
 
-__all__ = ("WebhookProjectClosedType",)
+class WebhookProjectCardMovedPropProjectCardAllof1PropCreatorType(TypedDict):
+    """WebhookProjectCardMovedPropProjectCardAllof1PropCreator"""
+
+    avatar_url: NotRequired[str]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: NotRequired[int]
+    login: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[str]
+    url: NotRequired[str]
+
+
+__all__ = (
+    "WebhookProjectCardMovedPropProjectCardAllof1PropCreatorType",
+    "WebhookProjectCardMovedPropProjectCardAllof1Type",
+)

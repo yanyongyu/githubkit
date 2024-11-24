@@ -9,26 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
-from githubkit.utils import UNSET
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoSubscriptionPutBody(GitHubModel):
-    """ReposOwnerRepoSubscriptionPutBody"""
+class ReposOwnerRepoStatusesShaPostBody(GitHubModel):
+    """ReposOwnerRepoStatusesShaPostBody"""
 
-    subscribed: Missing[bool] = Field(
-        default=UNSET,
-        description="Determines if notifications should be received from this repository.",
+    state: Literal["error", "failure", "pending", "success"] = Field(
+        description="The state of the status."
     )
-    ignored: Missing[bool] = Field(
+    target_url: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="Determines if all notifications should be blocked from this repository.",
+        description="The target URL to associate with this status. This URL will be linked from the GitHub UI to allow users to easily see the source of the status.  \nFor example, if your continuous integration system is posting build status, you would want to provide the deep link for the build output for this specific SHA:  \n`http://ci.example.com/user/repo/build/sha`",
+    )
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET, description="A short description of the status."
+    )
+    context: Missing[str] = Field(
+        default=UNSET,
+        description="A string label to differentiate this status from the status of other systems. This field is case-insensitive.",
     )
 
 
-model_rebuild(ReposOwnerRepoSubscriptionPutBody)
+model_rebuild(ReposOwnerRepoStatusesShaPostBody)
 
-__all__ = ("ReposOwnerRepoSubscriptionPutBody",)
+__all__ = ("ReposOwnerRepoStatusesShaPostBody",)

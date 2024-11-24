@@ -9,16 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0069 import RunnerType
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgActionsRunnersGenerateJitconfigPostResponse201Type(TypedDict):
-    """OrgsOrgActionsRunnersGenerateJitconfigPostResponse201"""
+class OrgsOrgActionsRunnersGenerateJitconfigPostBodyType(TypedDict):
+    """OrgsOrgActionsRunnersGenerateJitconfigPostBody"""
 
-    runner: RunnerType
-    encoded_jit_config: str
+    name: str
+    runner_group_id: int
+    labels: list[str]
+    work_folder: NotRequired[str]
 
 
-__all__ = ("OrgsOrgActionsRunnersGenerateJitconfigPostResponse201Type",)
+__all__ = ("OrgsOrgActionsRunnersGenerateJitconfigPostBodyType",)

@@ -9,96 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from datetime import datetime
-from typing_extensions import TypedDict, NotRequired
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0002 import SimpleUserType
+from .group_0036 import SimpleRepositoryType
+from .group_0074 import CodeScanningAlertRuleSummaryType
+from .group_0075 import CodeScanningAnalysisToolType
+from .group_0076 import CodeScanningAlertInstanceType
 
 
-class CodeSecurityConfigurationType(TypedDict):
-    """CodeSecurityConfiguration
+class CodeScanningOrganizationAlertItemsType(TypedDict):
+    """CodeScanningOrganizationAlertItems"""
 
-    A code security configuration
-    """
-
-    id: NotRequired[int]
-    name: NotRequired[str]
-    target_type: NotRequired[Literal["global", "organization", "enterprise"]]
-    description: NotRequired[str]
-    advanced_security: NotRequired[Literal["enabled", "disabled"]]
-    dependency_graph: NotRequired[Literal["enabled", "disabled", "not_set"]]
-    dependency_graph_autosubmit_action: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    dependency_graph_autosubmit_action_options: NotRequired[
-        CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptionsType
-    ]
-    dependabot_alerts: NotRequired[Literal["enabled", "disabled", "not_set"]]
-    dependabot_security_updates: NotRequired[Literal["enabled", "disabled", "not_set"]]
-    code_scanning_default_setup: NotRequired[Literal["enabled", "disabled", "not_set"]]
-    secret_scanning: NotRequired[Literal["enabled", "disabled", "not_set"]]
-    secret_scanning_push_protection: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    secret_scanning_delegated_bypass: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    secret_scanning_delegated_bypass_options: NotRequired[
-        CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsType
-    ]
-    secret_scanning_validity_checks: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    secret_scanning_non_provider_patterns: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    private_vulnerability_reporting: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    enforcement: NotRequired[Literal["enforced", "unenforced"]]
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    created_at: NotRequired[datetime]
+    number: int
+    created_at: datetime
     updated_at: NotRequired[datetime]
-
-
-class CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptionsType(
-    TypedDict
-):
-    """CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptions
-
-    Feature options for Automatic dependency submission
-    """
-
-    labeled_runners: NotRequired[bool]
-
-
-class CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsType(TypedDict):
-    """CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptions
-
-    Feature options for secret scanning delegated bypass
-    """
-
-    reviewers: NotRequired[
-        list[
-            CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropReviewersItemsType
-        ]
+    url: str
+    html_url: str
+    instances_url: str
+    state: Union[None, Literal["open", "dismissed", "fixed"]]
+    fixed_at: NotRequired[Union[datetime, None]]
+    dismissed_by: Union[None, SimpleUserType]
+    dismissed_at: Union[datetime, None]
+    dismissed_reason: Union[
+        None, Literal["false positive", "won't fix", "used in tests"]
     ]
+    dismissed_comment: NotRequired[Union[str, None]]
+    rule: CodeScanningAlertRuleSummaryType
+    tool: CodeScanningAnalysisToolType
+    most_recent_instance: CodeScanningAlertInstanceType
+    repository: SimpleRepositoryType
 
 
-class CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropReviewersItemsType(
-    TypedDict
-):
-    """CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropReviewersIt
-    ems
-    """
-
-    reviewer_id: int
-    reviewer_type: Literal["TEAM", "ROLE"]
-
-
-__all__ = (
-    "CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptionsType",
-    "CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropReviewersItemsType",
-    "CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsType",
-    "CodeSecurityConfigurationType",
-)
+__all__ = ("CodeScanningOrganizationAlertItemsType",)

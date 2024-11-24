@@ -13,22 +13,22 @@ from typing import Literal
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 from .group_0002 import SimpleUser
-from .group_0154 import RepositoryAdvisory
-from .group_0384 import EnterpriseWebhooks
-from .group_0385 import SimpleInstallation
-from .group_0386 import OrganizationSimpleWebhooks
-from .group_0387 import RepositoryWebhooks
+from .group_0155 import RepositoryAdvisory
+from .group_0385 import EnterpriseWebhooks
+from .group_0386 import SimpleInstallation
+from .group_0387 import OrganizationSimpleWebhooks
+from .group_0388 import RepositoryWebhooks
 
 
-class WebhookRepositoryAdvisoryReported(GitHubModel):
-    """Repository advisory reported event"""
+class WebhookRepositoryAdvisoryPublished(GitHubModel):
+    """Repository advisory published event"""
 
-    action: Literal["reported"] = Field()
+    action: Literal["published"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -56,6 +56,6 @@ class WebhookRepositoryAdvisoryReported(GitHubModel):
     )
 
 
-model_rebuild(WebhookRepositoryAdvisoryReported)
+model_rebuild(WebhookRepositoryAdvisoryPublished)
 
-__all__ = ("WebhookRepositoryAdvisoryReported",)
+__all__ = ("WebhookRepositoryAdvisoryPublished",)

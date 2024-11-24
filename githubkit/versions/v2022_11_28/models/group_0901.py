@@ -11,18 +11,15 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
 
 
-class ReposOwnerRepoDeleteResponse403(GitHubModel):
-    """ReposOwnerRepoDeleteResponse403"""
+class ProjectsProjectIdColumnsPostBody(GitHubModel):
+    """ProjectsProjectIdColumnsPostBody"""
 
-    message: Missing[str] = Field(default=UNSET)
-    documentation_url: Missing[str] = Field(default=UNSET)
+    name: str = Field(description="Name of the project column")
 
 
-model_rebuild(ReposOwnerRepoDeleteResponse403)
+model_rebuild(ProjectsProjectIdColumnsPostBody)
 
-__all__ = ("ReposOwnerRepoDeleteResponse403",)
+__all__ = ("ProjectsProjectIdColumnsPostBody",)

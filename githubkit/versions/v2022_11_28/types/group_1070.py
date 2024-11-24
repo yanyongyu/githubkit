@@ -9,73 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
-from typing_extensions import TypedDict, NotRequired
-
-from .group_0109 import RepositoryRulesetBypassActorType
-from .group_0110 import RepositoryRulesetConditionsType
-from .group_0121 import (
-    RepositoryRuleOneof15Type,
-    RepositoryRuleOneof17Type,
-    RepositoryRuleCreationType,
-    RepositoryRuleDeletionType,
-    RepositoryRuleNonFastForwardType,
-    RepositoryRuleRequiredSignaturesType,
-)
-from .group_0122 import RepositoryRuleUpdateType
-from .group_0124 import (
-    RepositoryRuleOneof16Type,
-    RepositoryRuleRequiredLinearHistoryType,
-)
-from .group_0125 import RepositoryRuleMergeQueueType
-from .group_0127 import RepositoryRuleRequiredDeploymentsType
-from .group_0130 import RepositoryRulePullRequestType
-from .group_0132 import RepositoryRuleRequiredStatusChecksType
-from .group_0134 import RepositoryRuleCommitMessagePatternType
-from .group_0136 import RepositoryRuleCommitAuthorEmailPatternType
-from .group_0138 import RepositoryRuleCommitterEmailPatternType
-from .group_0140 import RepositoryRuleBranchNamePatternType
-from .group_0142 import RepositoryRuleTagNamePatternType
-from .group_0145 import RepositoryRuleWorkflowsType
-from .group_0147 import RepositoryRuleCodeScanningType
-from .group_0149 import RepositoryRuleOneof18Type
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoRulesetsPostBodyType(TypedDict):
-    """ReposOwnerRepoRulesetsPostBody"""
+class ReposOwnerRepoReleasesReleaseIdReactionsPostBodyType(TypedDict):
+    """ReposOwnerRepoReleasesReleaseIdReactionsPostBody"""
 
-    name: str
-    target: NotRequired[Literal["branch", "tag", "push"]]
-    enforcement: Literal["disabled", "active", "evaluate"]
-    bypass_actors: NotRequired[list[RepositoryRulesetBypassActorType]]
-    conditions: NotRequired[RepositoryRulesetConditionsType]
-    rules: NotRequired[
-        list[
-            Union[
-                RepositoryRuleCreationType,
-                RepositoryRuleUpdateType,
-                RepositoryRuleDeletionType,
-                RepositoryRuleRequiredLinearHistoryType,
-                RepositoryRuleMergeQueueType,
-                RepositoryRuleRequiredDeploymentsType,
-                RepositoryRuleRequiredSignaturesType,
-                RepositoryRulePullRequestType,
-                RepositoryRuleRequiredStatusChecksType,
-                RepositoryRuleNonFastForwardType,
-                RepositoryRuleCommitMessagePatternType,
-                RepositoryRuleCommitAuthorEmailPatternType,
-                RepositoryRuleCommitterEmailPatternType,
-                RepositoryRuleBranchNamePatternType,
-                RepositoryRuleTagNamePatternType,
-                RepositoryRuleOneof15Type,
-                RepositoryRuleOneof16Type,
-                RepositoryRuleOneof17Type,
-                RepositoryRuleOneof18Type,
-                RepositoryRuleWorkflowsType,
-                RepositoryRuleCodeScanningType,
-            ]
-        ]
-    ]
+    content: Literal["+1", "laugh", "heart", "hooray", "rocket", "eyes"]
 
 
-__all__ = ("ReposOwnerRepoRulesetsPostBodyType",)
+__all__ = ("ReposOwnerRepoReleasesReleaseIdReactionsPostBodyType",)

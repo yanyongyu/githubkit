@@ -14,29 +14,29 @@ from weakref import ref
 
 from pydantic import BaseModel
 
-from githubkit.utils import UNSET, exclude_unset
 from githubkit.compat import model_dump, type_validate_python
 from githubkit.typing import Missing, UnsetType
+from githubkit.utils import UNSET, exclude_unset
 
 if TYPE_CHECKING:
     from githubkit import GitHubCore
-    from githubkit.utils import UNSET
-    from githubkit.typing import Missing
     from githubkit.response import Response
+    from githubkit.typing import Missing
+    from githubkit.utils import UNSET
 
-    from ..types import (
-        ScimUserType,
-        ScimUserListType,
-        ScimV2OrganizationsOrgUsersPostBodyType,
-        ScimV2OrganizationsOrgUsersPostBodyPropNameType,
-        ScimV2OrganizationsOrgUsersScimUserIdPutBodyType,
-        ScimV2OrganizationsOrgUsersScimUserIdPatchBodyType,
-        ScimV2OrganizationsOrgUsersPostBodyPropEmailsItemsType,
-        ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropNameType,
-        ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItemsType,
-        ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsType,
-    )
     from ..models import ScimUser, ScimUserList
+    from ..types import (
+        ScimUserListType,
+        ScimUserType,
+        ScimV2OrganizationsOrgUsersPostBodyPropEmailsItemsType,
+        ScimV2OrganizationsOrgUsersPostBodyPropNameType,
+        ScimV2OrganizationsOrgUsersPostBodyType,
+        ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsType,
+        ScimV2OrganizationsOrgUsersScimUserIdPatchBodyType,
+        ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItemsType,
+        ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropNameType,
+        ScimV2OrganizationsOrgUsersScimUserIdPutBodyType,
+    )
 
 
 class ScimClient:
@@ -164,7 +164,7 @@ class ScimClient:
     ) -> Response[ScimUser, ScimUserType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/scim/scim#provision-and-invite-a-scim-user"""
 
-        from ..models import ScimUser, ScimError, ScimV2OrganizationsOrgUsersPostBody
+        from ..models import ScimError, ScimUser, ScimV2OrganizationsOrgUsersPostBody
 
         url = f"/scim/v2/organizations/{org}/Users"
 
@@ -230,7 +230,7 @@ class ScimClient:
     ) -> Response[ScimUser, ScimUserType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/scim/scim#provision-and-invite-a-scim-user"""
 
-        from ..models import ScimUser, ScimError, ScimV2OrganizationsOrgUsersPostBody
+        from ..models import ScimError, ScimUser, ScimV2OrganizationsOrgUsersPostBody
 
         url = f"/scim/v2/organizations/{org}/Users"
 
@@ -269,7 +269,7 @@ class ScimClient:
     ) -> Response[ScimUser, ScimUserType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/scim/scim#get-scim-provisioning-information-for-a-user"""
 
-        from ..models import ScimUser, ScimError
+        from ..models import ScimError, ScimUser
 
         url = f"/scim/v2/organizations/{org}/Users/{scim_user_id}"
 
@@ -295,7 +295,7 @@ class ScimClient:
     ) -> Response[ScimUser, ScimUserType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/scim/scim#get-scim-provisioning-information-for-a-user"""
 
-        from ..models import ScimUser, ScimError
+        from ..models import ScimError, ScimUser
 
         url = f"/scim/v2/organizations/{org}/Users/{scim_user_id}"
 
@@ -352,8 +352,8 @@ class ScimClient:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/scim/scim#update-a-provisioned-organization-membership"""
 
         from ..models import (
-            ScimUser,
             ScimError,
+            ScimUser,
             ScimV2OrganizationsOrgUsersScimUserIdPutBody,
         )
 
@@ -424,8 +424,8 @@ class ScimClient:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/scim/scim#update-a-provisioned-organization-membership"""
 
         from ..models import (
-            ScimUser,
             ScimError,
+            ScimUser,
             ScimV2OrganizationsOrgUsersScimUserIdPutBody,
         )
 
@@ -542,9 +542,9 @@ class ScimClient:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/scim/scim#update-an-attribute-for-a-scim-user"""
 
         from ..models import (
-            ScimUser,
-            ScimError,
             BasicError,
+            ScimError,
+            ScimUser,
             ScimV2OrganizationsOrgUsersScimUserIdPatchBody,
         )
 
@@ -613,9 +613,9 @@ class ScimClient:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/scim/scim#update-an-attribute-for-a-scim-user"""
 
         from ..models import (
-            ScimUser,
-            ScimError,
             BasicError,
+            ScimError,
+            ScimUser,
             ScimV2OrganizationsOrgUsersScimUserIdPatchBody,
         )
 

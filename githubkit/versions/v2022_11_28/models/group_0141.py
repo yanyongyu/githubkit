@@ -13,26 +13,25 @@ from typing import Literal
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0142 import RepositoryRuleBranchNamePatternPropParameters
 
 
-class RepositoryRuleBranchNamePatternPropParameters(GitHubModel):
-    """RepositoryRuleBranchNamePatternPropParameters"""
+class RepositoryRuleBranchNamePattern(GitHubModel):
+    """branch_name_pattern
 
-    name: Missing[str] = Field(
-        default=UNSET, description="How this rule will appear to users."
+    Parameters to be used for the branch_name_pattern rule
+    """
+
+    type: Literal["branch_name_pattern"] = Field()
+    parameters: Missing[RepositoryRuleBranchNamePatternPropParameters] = Field(
+        default=UNSET
     )
-    negate: Missing[bool] = Field(
-        default=UNSET, description="If true, the rule will fail if the pattern matches."
-    )
-    operator: Literal["starts_with", "ends_with", "contains", "regex"] = Field(
-        description="The operator to use for matching."
-    )
-    pattern: str = Field(description="The pattern to match with.")
 
 
-model_rebuild(RepositoryRuleBranchNamePatternPropParameters)
+model_rebuild(RepositoryRuleBranchNamePattern)
 
-__all__ = ("RepositoryRuleBranchNamePatternPropParameters",)
+__all__ = ("RepositoryRuleBranchNamePattern",)

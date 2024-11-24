@@ -1,16 +1,16 @@
-from typing import TYPE_CHECKING, Union, ClassVar, Optional
-from datetime import datetime, timezone, timedelta
+from collections.abc import AsyncGenerator, Generator
 from dataclasses import dataclass
-from collections.abc import Generator, AsyncGenerator
+from datetime import datetime, timedelta, timezone
+from typing import TYPE_CHECKING, ClassVar, Optional, Union
 from typing_extensions import LiteralString
 
 import httpx
 
-from githubkit.utils import UNSET, Unset, exclude_unset
 from githubkit.compat import model_dump, type_validate_python
 from githubkit.exception import AuthCredentialError
+from githubkit.utils import UNSET, Unset, exclude_unset
 
-from ._url import require_bypass, require_app_auth, require_basic_auth
+from ._url import require_app_auth, require_basic_auth, require_bypass
 from .base import BaseAuthStrategy
 from .oauth import OAuthAppAuthStrategy
 
@@ -20,9 +20,9 @@ except ImportError:
     jwt = None
 
 if TYPE_CHECKING:
-    from githubkit import Response, GitHubCore
-    from githubkit.versions.latest.types import AppPermissionsType
+    from githubkit import GitHubCore, Response
     from githubkit.versions.latest.models import InstallationToken
+    from githubkit.versions.latest.types import AppPermissionsType
 
 
 @dataclass
@@ -144,8 +144,8 @@ class AppAuth(httpx.Auth):
     ) -> "Response[InstallationToken]":
         from githubkit.versions.latest.models import (
             BasicError,
-            ValidationError,
             InstallationToken,
+            ValidationError,
         )
 
         return self.github._check(

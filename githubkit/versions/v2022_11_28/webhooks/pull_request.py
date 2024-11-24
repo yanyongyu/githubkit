@@ -7,38 +7,38 @@ bash ./scripts/run-codegen.sh
 See https://github.com/github/rest-api-description for more information.
 """
 
-from typing import Union, Annotated
+from typing import Annotated, Union
 from typing_extensions import TypeAlias
 
 from pydantic import Field
 
-from githubkit.utils import TaggedUnion
 from githubkit.compat import GitHubModel
+from githubkit.utils import TaggedUnion
 
 from ..models import (
-    WebhookPullRequestClosed,
-    WebhookPullRequestEdited,
-    WebhookPullRequestLocked,
-    WebhookPullRequestOpened,
-    WebhookPullRequestLabeled,
     WebhookPullRequestAssigned,
-    WebhookPullRequestDequeued,
-    WebhookPullRequestEnqueued,
-    WebhookPullRequestReopened,
-    WebhookPullRequestUnlocked,
-    WebhookPullRequestUnlabeled,
-    WebhookPullRequestMilestoned,
-    WebhookPullRequestUnassigned,
-    WebhookPullRequestSynchronize,
-    WebhookPullRequestDemilestoned,
-    WebhookPullRequestReadyForReview,
-    WebhookPullRequestAutoMergeEnabled,
-    WebhookPullRequestConvertedToDraft,
     WebhookPullRequestAutoMergeDisabled,
+    WebhookPullRequestAutoMergeEnabled,
+    WebhookPullRequestClosed,
+    WebhookPullRequestConvertedToDraft,
+    WebhookPullRequestDemilestoned,
+    WebhookPullRequestDequeued,
+    WebhookPullRequestEdited,
+    WebhookPullRequestEnqueued,
+    WebhookPullRequestLabeled,
+    WebhookPullRequestLocked,
+    WebhookPullRequestMilestoned,
+    WebhookPullRequestOpened,
+    WebhookPullRequestReadyForReview,
+    WebhookPullRequestReopened,
     WebhookPullRequestReviewRequestedOneof0,
     WebhookPullRequestReviewRequestedOneof1,
     WebhookPullRequestReviewRequestRemovedOneof0,
     WebhookPullRequestReviewRequestRemovedOneof1,
+    WebhookPullRequestSynchronize,
+    WebhookPullRequestUnassigned,
+    WebhookPullRequestUnlabeled,
+    WebhookPullRequestUnlocked,
 )
 
 Event: TypeAlias = Annotated[

@@ -14,30 +14,30 @@ from weakref import ref
 
 from pydantic import BaseModel
 
-from githubkit.utils import UNSET, exclude_unset
 from githubkit.compat import model_dump, type_validate_python
 from githubkit.typing import Missing, UnsetType
+from githubkit.utils import UNSET, exclude_unset
 
 if TYPE_CHECKING:
-    from typing import Union, Literal
+    from typing import Literal, Union
 
     from githubkit import GitHubCore
-    from githubkit.utils import UNSET
-    from githubkit.typing import Missing
     from githubkit.response import Response
+    from githubkit.typing import Missing
+    from githubkit.utils import UNSET
 
-    from ..types import (
-        InteractionLimitType,
-        InteractionLimitResponseType,
-        UserInteractionLimitsGetResponse200Anyof1Type,
-        OrgsOrgInteractionLimitsGetResponse200Anyof1Type,
-        ReposOwnerRepoInteractionLimitsGetResponse200Anyof1Type,
-    )
     from ..models import (
         InteractionLimitResponse,
-        UserInteractionLimitsGetResponse200Anyof1,
         OrgsOrgInteractionLimitsGetResponse200Anyof1,
         ReposOwnerRepoInteractionLimitsGetResponse200Anyof1,
+        UserInteractionLimitsGetResponse200Anyof1,
+    )
+    from ..types import (
+        InteractionLimitResponseType,
+        InteractionLimitType,
+        OrgsOrgInteractionLimitsGetResponse200Anyof1Type,
+        ReposOwnerRepoInteractionLimitsGetResponse200Anyof1Type,
+        UserInteractionLimitsGetResponse200Anyof1Type,
     )
 
 
@@ -156,7 +156,7 @@ class InteractionsClient:
     ) -> Response[InteractionLimitResponse, InteractionLimitResponseType]:
         """See also: https://docs.github.com/rest/interactions/orgs#set-interaction-restrictions-for-an-organization"""
 
-        from ..models import ValidationError, InteractionLimit, InteractionLimitResponse
+        from ..models import InteractionLimit, InteractionLimitResponse, ValidationError
 
         url = f"/orgs/{org}/interaction-limits"
 
@@ -214,7 +214,7 @@ class InteractionsClient:
     ) -> Response[InteractionLimitResponse, InteractionLimitResponseType]:
         """See also: https://docs.github.com/rest/interactions/orgs#set-interaction-restrictions-for-an-organization"""
 
-        from ..models import ValidationError, InteractionLimit, InteractionLimitResponse
+        from ..models import InteractionLimit, InteractionLimitResponse, ValidationError
 
         url = f"/orgs/{org}/interaction-limits"
 
@@ -602,7 +602,7 @@ class InteractionsClient:
     ) -> Response[InteractionLimitResponse, InteractionLimitResponseType]:
         """See also: https://docs.github.com/rest/interactions/user#set-interaction-restrictions-for-your-public-repositories"""
 
-        from ..models import ValidationError, InteractionLimit, InteractionLimitResponse
+        from ..models import InteractionLimit, InteractionLimitResponse, ValidationError
 
         url = "/user/interaction-limits"
 
@@ -654,7 +654,7 @@ class InteractionsClient:
     ) -> Response[InteractionLimitResponse, InteractionLimitResponseType]:
         """See also: https://docs.github.com/rest/interactions/user#set-interaction-restrictions-for-your-public-repositories"""
 
-        from ..models import ValidationError, InteractionLimit, InteractionLimitResponse
+        from ..models import InteractionLimit, InteractionLimitResponse, ValidationError
 
         url = "/user/interaction-limits"
 

@@ -9,34 +9,49 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 from .group_0002 import SimpleUser
 from .group_0008 import Integration
 
 
-class LockedIssueEvent(GitHubModel):
-    """Locked Issue Event
+class ReviewDismissedIssueEvent(GitHubModel):
+    """Review Dismissed Issue Event
 
-    Locked Issue Event
+    Review Dismissed Issue Event
     """
 
     id: int = Field()
     node_id: str = Field()
     url: str = Field()
     actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: Literal["locked"] = Field()
+    event: Literal["review_dismissed"] = Field()
     commit_id: Union[str, None] = Field()
     commit_url: Union[str, None] = Field()
     created_at: str = Field()
     performed_via_github_app: Union[None, Integration, None] = Field()
-    lock_reason: Union[str, None] = Field()
+    dismissed_review: ReviewDismissedIssueEventPropDismissedReview = Field()
 
 
-model_rebuild(LockedIssueEvent)
+class ReviewDismissedIssueEventPropDismissedReview(GitHubModel):
+    """ReviewDismissedIssueEventPropDismissedReview"""
 
-__all__ = ("LockedIssueEvent",)
+    state: str = Field()
+    review_id: int = Field()
+    dismissal_message: Union[str, None] = Field()
+    dismissal_commit_id: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(ReviewDismissedIssueEvent)
+model_rebuild(ReviewDismissedIssueEventPropDismissedReview)
+
+__all__ = (
+    "ReviewDismissedIssueEvent",
+    "ReviewDismissedIssueEventPropDismissedReview",
+)

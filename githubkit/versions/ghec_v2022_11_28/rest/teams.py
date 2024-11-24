@@ -14,69 +14,69 @@ from weakref import ref
 
 from pydantic import BaseModel
 
-from githubkit.utils import UNSET, exclude_unset
 from githubkit.compat import model_dump, type_validate_python
 from githubkit.typing import Missing, UnsetType
+from githubkit.utils import UNSET, exclude_unset
 
 if TYPE_CHECKING:
-    from typing import Union, Literal
+    from typing import Literal, Union
 
     from githubkit import GitHubCore
-    from githubkit.utils import UNSET
-    from githubkit.typing import Missing
     from githubkit.response import Response
+    from githubkit.typing import Missing
+    from githubkit.utils import UNSET
 
-    from ..types import (
-        TeamType,
-        TeamFullType,
-        SimpleUserType,
-        TeamProjectType,
-        GroupMappingType,
-        ExternalGroupType,
-        ExternalGroupsType,
-        TeamDiscussionType,
-        TeamMembershipType,
-        TeamRepositoryType,
-        MinimalRepositoryType,
-        OrgsOrgTeamsPostBodyType,
-        TeamsTeamIdPatchBodyType,
-        TeamDiscussionCommentType,
-        OrganizationInvitationType,
-        OrgsOrgTeamsTeamSlugPatchBodyType,
-        TeamsTeamIdDiscussionsPostBodyType,
-        TeamsTeamIdReposOwnerRepoPutBodyType,
-        TeamsTeamIdProjectsProjectIdPutBodyType,
-        TeamsTeamIdMembershipsUsernamePutBodyType,
-        OrgsOrgTeamsTeamSlugDiscussionsPostBodyType,
-        OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyType,
-        TeamsTeamIdTeamSyncGroupMappingsPatchBodyType,
-        OrgsOrgTeamsTeamSlugExternalGroupsPatchBodyType,
-        OrgsOrgTeamsTeamSlugProjectsProjectIdPutBodyType,
-        OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyType,
-        TeamsTeamIdDiscussionsDiscussionNumberPatchBodyType,
-        OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyType,
-        TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBodyType,
-        OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBodyType,
-        TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItemsType,
-        OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBodyType,
-        OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItemsType,
-        TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType,
-        OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType,
-    )
     from ..models import (
-        Team,
-        TeamFull,
-        SimpleUser,
-        TeamProject,
-        GroupMapping,
         ExternalGroup,
         ExternalGroups,
-        TeamDiscussion,
-        TeamMembership,
-        TeamRepository,
+        GroupMapping,
         MinimalRepository,
-        TeamDiscussionComment,
         OrganizationInvitation,
+        SimpleUser,
+        Team,
+        TeamDiscussion,
+        TeamDiscussionComment,
+        TeamFull,
+        TeamMembership,
+        TeamProject,
+        TeamRepository,
+    )
+    from ..types import (
+        ExternalGroupsType,
+        ExternalGroupType,
+        GroupMappingType,
+        MinimalRepositoryType,
+        OrganizationInvitationType,
+        OrgsOrgTeamsPostBodyType,
+        OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType,
+        OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBodyType,
+        OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBodyType,
+        OrgsOrgTeamsTeamSlugDiscussionsPostBodyType,
+        OrgsOrgTeamsTeamSlugExternalGroupsPatchBodyType,
+        OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyType,
+        OrgsOrgTeamsTeamSlugPatchBodyType,
+        OrgsOrgTeamsTeamSlugProjectsProjectIdPutBodyType,
+        OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyType,
+        OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItemsType,
+        OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyType,
+        SimpleUserType,
+        TeamDiscussionCommentType,
+        TeamDiscussionType,
+        TeamFullType,
+        TeamMembershipType,
+        TeamProjectType,
+        TeamRepositoryType,
+        TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType,
+        TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBodyType,
+        TeamsTeamIdDiscussionsDiscussionNumberPatchBodyType,
+        TeamsTeamIdDiscussionsPostBodyType,
+        TeamsTeamIdMembershipsUsernamePutBodyType,
+        TeamsTeamIdPatchBodyType,
+        TeamsTeamIdProjectsProjectIdPutBodyType,
+        TeamsTeamIdReposOwnerRepoPutBodyType,
+        TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItemsType,
+        TeamsTeamIdTeamSyncGroupMappingsPatchBodyType,
+        TeamType,
     )
 
 
@@ -289,7 +289,7 @@ class TeamsClient:
     ) -> Response[list[Team], list[TeamType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#list-teams"""
 
-        from ..models import Team, BasicError
+        from ..models import BasicError, Team
 
         url = f"/orgs/{org}/teams"
 
@@ -321,7 +321,7 @@ class TeamsClient:
     ) -> Response[list[Team], list[TeamType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#list-teams"""
 
-        from ..models import Team, BasicError
+        from ..models import BasicError, Team
 
         url = f"/orgs/{org}/teams"
 
@@ -381,7 +381,7 @@ class TeamsClient:
     ) -> Response[TeamFull, TeamFullType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#create-a-team"""
 
-        from ..models import TeamFull, BasicError, ValidationError, OrgsOrgTeamsPostBody
+        from ..models import BasicError, OrgsOrgTeamsPostBody, TeamFull, ValidationError
 
         url = f"/orgs/{org}/teams"
 
@@ -446,7 +446,7 @@ class TeamsClient:
     ) -> Response[TeamFull, TeamFullType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#create-a-team"""
 
-        from ..models import TeamFull, BasicError, ValidationError, OrgsOrgTeamsPostBody
+        from ..models import BasicError, OrgsOrgTeamsPostBody, TeamFull, ValidationError
 
         url = f"/orgs/{org}/teams"
 
@@ -482,7 +482,7 @@ class TeamsClient:
     ) -> Response[TeamFull, TeamFullType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#get-a-team-by-name"""
 
-        from ..models import TeamFull, BasicError
+        from ..models import BasicError, TeamFull
 
         url = f"/orgs/{org}/teams/{team_slug}"
 
@@ -507,7 +507,7 @@ class TeamsClient:
     ) -> Response[TeamFull, TeamFullType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#get-a-team-by-name"""
 
-        from ..models import TeamFull, BasicError
+        from ..models import BasicError, TeamFull
 
         url = f"/orgs/{org}/teams/{team_slug}"
 
@@ -601,10 +601,10 @@ class TeamsClient:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#update-a-team"""
 
         from ..models import (
-            TeamFull,
             BasicError,
-            ValidationError,
             OrgsOrgTeamsTeamSlugPatchBody,
+            TeamFull,
+            ValidationError,
         )
 
         url = f"/orgs/{org}/teams/{team_slug}"
@@ -673,10 +673,10 @@ class TeamsClient:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#update-a-team"""
 
         from ..models import (
-            TeamFull,
             BasicError,
-            ValidationError,
             OrgsOrgTeamsTeamSlugPatchBody,
+            TeamFull,
+            ValidationError,
         )
 
         url = f"/orgs/{org}/teams/{team_slug}"
@@ -807,7 +807,7 @@ class TeamsClient:
     ) -> Response[TeamDiscussion, TeamDiscussionType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#create-a-discussion"""
 
-        from ..models import TeamDiscussion, OrgsOrgTeamsTeamSlugDiscussionsPostBody
+        from ..models import OrgsOrgTeamsTeamSlugDiscussionsPostBody, TeamDiscussion
 
         url = f"/orgs/{org}/teams/{team_slug}/discussions"
 
@@ -864,7 +864,7 @@ class TeamsClient:
     ) -> Response[TeamDiscussion, TeamDiscussionType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#create-a-discussion"""
 
-        from ..models import TeamDiscussion, OrgsOrgTeamsTeamSlugDiscussionsPostBody
+        from ..models import OrgsOrgTeamsTeamSlugDiscussionsPostBody, TeamDiscussion
 
         url = f"/orgs/{org}/teams/{team_slug}/discussions"
 
@@ -1014,8 +1014,8 @@ class TeamsClient:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#update-a-discussion"""
 
         from ..models import (
-            TeamDiscussion,
             OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody,
+            TeamDiscussion,
         )
 
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}"
@@ -1082,8 +1082,8 @@ class TeamsClient:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#update-a-discussion"""
 
         from ..models import (
-            TeamDiscussion,
             OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody,
+            TeamDiscussion,
         )
 
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}"
@@ -1213,8 +1213,8 @@ class TeamsClient:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#create-a-discussion-comment"""
 
         from ..models import (
-            TeamDiscussionComment,
             OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBody,
+            TeamDiscussionComment,
         )
 
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments"
@@ -1278,8 +1278,8 @@ class TeamsClient:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#create-a-discussion-comment"""
 
         from ..models import (
-            TeamDiscussionComment,
             OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBody,
+            TeamDiscussionComment,
         )
 
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments"
@@ -1436,8 +1436,8 @@ class TeamsClient:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#update-a-discussion-comment"""
 
         from ..models import (
-            TeamDiscussionComment,
             OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBody,
+            TeamDiscussionComment,
         )
 
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}"
@@ -1505,8 +1505,8 @@ class TeamsClient:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#update-a-discussion-comment"""
 
         from ..models import (
-            TeamDiscussionComment,
             OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBody,
+            TeamDiscussionComment,
         )
 
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}"
@@ -1937,8 +1937,8 @@ class TeamsClient:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/members#add-or-update-team-membership-for-a-user"""
 
         from ..models import (
-            TeamMembership,
             OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody,
+            TeamMembership,
         )
 
         url = f"/orgs/{org}/teams/{team_slug}/memberships/{username}"
@@ -2001,8 +2001,8 @@ class TeamsClient:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/members#add-or-update-team-membership-for-a-user"""
 
         from ..models import (
-            TeamMembership,
             OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody,
+            TeamMembership,
         )
 
         url = f"/orgs/{org}/teams/{team_slug}/memberships/{username}"
@@ -2869,7 +2869,7 @@ class TeamsClient:
     ) -> Response[TeamFull, TeamFullType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#get-a-team-legacy"""
 
-        from ..models import TeamFull, BasicError
+        from ..models import BasicError, TeamFull
 
         url = f"/teams/{team_id}"
 
@@ -2893,7 +2893,7 @@ class TeamsClient:
     ) -> Response[TeamFull, TeamFullType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#get-a-team-legacy"""
 
-        from ..models import TeamFull, BasicError
+        from ..models import BasicError, TeamFull
 
         url = f"/teams/{team_id}"
 
@@ -2993,7 +2993,7 @@ class TeamsClient:
     ) -> Response[TeamFull, TeamFullType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#update-a-team-legacy"""
 
-        from ..models import TeamFull, BasicError, ValidationError, TeamsTeamIdPatchBody
+        from ..models import BasicError, TeamFull, TeamsTeamIdPatchBody, ValidationError
 
         url = f"/teams/{team_id}"
 
@@ -3057,7 +3057,7 @@ class TeamsClient:
     ) -> Response[TeamFull, TeamFullType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#update-a-team-legacy"""
 
-        from ..models import TeamFull, BasicError, ValidationError, TeamsTeamIdPatchBody
+        from ..models import BasicError, TeamFull, TeamsTeamIdPatchBody, ValidationError
 
         url = f"/teams/{team_id}"
 
@@ -4477,9 +4477,9 @@ class TeamsClient:
 
         from ..models import (
             BasicError,
-            ValidationError,
             TeamsTeamIdProjectsProjectIdPutBody,
             TeamsTeamIdProjectsProjectIdPutResponse403,
+            ValidationError,
         )
 
         url = f"/teams/{team_id}/projects/{project_id}"
@@ -4541,9 +4541,9 @@ class TeamsClient:
 
         from ..models import (
             BasicError,
-            ValidationError,
             TeamsTeamIdProjectsProjectIdPutBody,
             TeamsTeamIdProjectsProjectIdPutResponse403,
+            ValidationError,
         )
 
         url = f"/teams/{team_id}/projects/{project_id}"
@@ -4770,8 +4770,8 @@ class TeamsClient:
 
         from ..models import (
             BasicError,
-            ValidationError,
             TeamsTeamIdReposOwnerRepoPutBody,
+            ValidationError,
         )
 
         url = f"/teams/{team_id}/repos/{owner}/{repo}"
@@ -4835,8 +4835,8 @@ class TeamsClient:
 
         from ..models import (
             BasicError,
-            ValidationError,
             TeamsTeamIdReposOwnerRepoPutBody,
+            ValidationError,
         )
 
         url = f"/teams/{team_id}/repos/{owner}/{repo}"
@@ -4986,8 +4986,8 @@ class TeamsClient:
         from ..models import (
             BasicError,
             GroupMapping,
-            ValidationError,
             TeamsTeamIdTeamSyncGroupMappingsPatchBody,
+            ValidationError,
         )
 
         url = f"/teams/{team_id}/team-sync/group-mappings"
@@ -5048,8 +5048,8 @@ class TeamsClient:
         from ..models import (
             BasicError,
             GroupMapping,
-            ValidationError,
             TeamsTeamIdTeamSyncGroupMappingsPatchBody,
+            ValidationError,
         )
 
         url = f"/teams/{team_id}/team-sync/group-mappings"
@@ -5087,7 +5087,7 @@ class TeamsClient:
     ) -> Response[list[Team], list[TeamType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#list-child-teams-legacy"""
 
-        from ..models import Team, BasicError, ValidationError
+        from ..models import BasicError, Team, ValidationError
 
         url = f"/teams/{team_id}/teams"
 
@@ -5121,7 +5121,7 @@ class TeamsClient:
     ) -> Response[list[Team], list[TeamType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#list-child-teams-legacy"""
 
-        from ..models import Team, BasicError, ValidationError
+        from ..models import BasicError, Team, ValidationError
 
         url = f"/teams/{team_id}/teams"
 
@@ -5154,7 +5154,7 @@ class TeamsClient:
     ) -> Response[list[TeamFull], list[TeamFullType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#list-teams-for-the-authenticated-user"""
 
-        from ..models import TeamFull, BasicError
+        from ..models import BasicError, TeamFull
 
         url = "/user/teams"
 
@@ -5186,7 +5186,7 @@ class TeamsClient:
     ) -> Response[list[TeamFull], list[TeamFullType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#list-teams-for-the-authenticated-user"""
 
-        from ..models import TeamFull, BasicError
+        from ..models import BasicError, TeamFull
 
         url = "/user/teams"
 

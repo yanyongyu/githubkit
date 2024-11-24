@@ -11,12 +11,14 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-
-class ReposOwnerRepoActionsVariablesPostBodyType(TypedDict):
-    """ReposOwnerRepoActionsVariablesPostBody"""
-
-    name: str
-    value: str
+from .group_0177 import ActionsVariableType
 
 
-__all__ = ("ReposOwnerRepoActionsVariablesPostBodyType",)
+class ReposOwnerRepoActionsVariablesGetResponse200Type(TypedDict):
+    """ReposOwnerRepoActionsVariablesGetResponse200"""
+
+    total_count: int
+    variables: list[ActionsVariableType]
+
+
+__all__ = ("ReposOwnerRepoActionsVariablesGetResponse200Type",)

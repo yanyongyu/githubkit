@@ -9,14 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict, NotRequired
+from typing_extensions import NotRequired, TypedDict
 
 
-class CodeScanningSarifsReceiptType(TypedDict):
-    """CodeScanningSarifsReceipt"""
+class CodeScanningDefaultSetupUpdateResponseType(TypedDict):
+    """CodeScanningDefaultSetupUpdateResponse
 
-    id: NotRequired[str]
-    url: NotRequired[str]
+    You can use `run_url` to track the status of the run. This includes a property
+    status and conclusion.
+    You should not rely on this always being an actions workflow run object.
+    """
+
+    run_id: NotRequired[int]
+    run_url: NotRequired[str]
 
 
-__all__ = ("CodeScanningSarifsReceiptType",)
+__all__ = ("CodeScanningDefaultSetupUpdateResponseType",)

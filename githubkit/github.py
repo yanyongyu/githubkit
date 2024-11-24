@@ -1,15 +1,15 @@
-from typing import TYPE_CHECKING, Any, Union, TypeVar, Callable, Optional, overload
-from functools import cached_property
 from collections.abc import Awaitable
+from functools import cached_property
+from typing import TYPE_CHECKING, Any, Callable, Optional, TypeVar, Union, overload
 from typing_extensions import ParamSpec
 
 from .auth import BaseAuthStrategy
 from .core import GitHubCore
-from .typing import RetryDecisionFunc
 from .graphql import GraphQLNamespace
-from .response import Response
-from .versions import RestVersionSwitcher, WebhooksVersionSwitcher
 from .paginator import Paginator
+from .response import Response
+from .typing import RetryDecisionFunc
+from .versions import RestVersionSwitcher, WebhooksVersionSwitcher
 
 if TYPE_CHECKING:
     import httpx

@@ -9,40 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 from .group_0002 import SimpleUser
 from .group_0008 import Integration
 
 
-class MovedColumnInProjectIssueEvent(GitHubModel):
-    """Moved Column in Project Issue Event
+class AddedToProjectIssueEvent(GitHubModel):
+    """Added to Project Issue Event
 
-    Moved Column in Project Issue Event
+    Added to Project Issue Event
     """
 
     id: int = Field()
     node_id: str = Field()
     url: str = Field()
     actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: Literal["moved_columns_in_project"] = Field()
+    event: Literal["added_to_project"] = Field()
     commit_id: Union[str, None] = Field()
     commit_url: Union[str, None] = Field()
     created_at: str = Field()
     performed_via_github_app: Union[None, Integration, None] = Field()
-    project_card: Missing[MovedColumnInProjectIssueEventPropProjectCard] = Field(
+    project_card: Missing[AddedToProjectIssueEventPropProjectCard] = Field(
         default=UNSET
     )
 
 
-class MovedColumnInProjectIssueEventPropProjectCard(GitHubModel):
-    """MovedColumnInProjectIssueEventPropProjectCard"""
+class AddedToProjectIssueEventPropProjectCard(GitHubModel):
+    """AddedToProjectIssueEventPropProjectCard"""
 
     id: int = Field()
     url: str = Field()
@@ -52,10 +52,10 @@ class MovedColumnInProjectIssueEventPropProjectCard(GitHubModel):
     previous_column_name: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(MovedColumnInProjectIssueEvent)
-model_rebuild(MovedColumnInProjectIssueEventPropProjectCard)
+model_rebuild(AddedToProjectIssueEvent)
+model_rebuild(AddedToProjectIssueEventPropProjectCard)
 
 __all__ = (
-    "MovedColumnInProjectIssueEvent",
-    "MovedColumnInProjectIssueEventPropProjectCard",
+    "AddedToProjectIssueEvent",
+    "AddedToProjectIssueEventPropProjectCard",
 )

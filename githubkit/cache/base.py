@@ -1,8 +1,8 @@
 import abc
-from typing import Optional
 from datetime import timedelta
+from typing import Optional
 
-from hishel import BaseStorage, AsyncBaseStorage
+from hishel import AsyncBaseStorage, BaseStorage
 
 
 class BaseCache(abc.ABC):

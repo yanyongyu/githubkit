@@ -13,53 +13,34 @@ from typing import Literal
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoPullsPullNumberCodespacesPostBody(GitHubModel):
-    """ReposOwnerRepoPullsPullNumberCodespacesPostBody"""
+class ReposOwnerRepoPullsPullNumberPatchBody(GitHubModel):
+    """ReposOwnerRepoPullsPullNumberPatchBody"""
 
-    location: Missing[str] = Field(
+    title: Missing[str] = Field(
+        default=UNSET, description="The title of the pull request."
+    )
+    body: Missing[str] = Field(
+        default=UNSET, description="The contents of the pull request."
+    )
+    state: Missing[Literal["open", "closed"]] = Field(
         default=UNSET,
-        description="The requested location for a new codespace. Best efforts are made to respect this upon creation. Assigned by IP if not provided.",
+        description="State of this Pull Request. Either `open` or `closed`.",
     )
-    geo: Missing[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]] = Field(
+    base: Missing[str] = Field(
         default=UNSET,
-        description="The geographic area for this codespace. If not specified, the value is assigned by IP. This property replaces `location`, which is closing down.",
+        description="The name of the branch you want your changes pulled into. This should be an existing branch on the current repository. You cannot update the base branch on a pull request to point to another repository.",
     )
-    client_ip: Missing[str] = Field(
+    maintainer_can_modify: Missing[bool] = Field(
         default=UNSET,
-        description="IP for location auto-detection when proxying a request",
-    )
-    machine: Missing[str] = Field(
-        default=UNSET, description="Machine type to use for this codespace"
-    )
-    devcontainer_path: Missing[str] = Field(
-        default=UNSET,
-        description="Path to devcontainer.json config to use for this codespace",
-    )
-    multi_repo_permissions_opt_out: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether to authorize requested permissions from devcontainer.json",
-    )
-    working_directory: Missing[str] = Field(
-        default=UNSET, description="Working directory for this codespace"
-    )
-    idle_timeout_minutes: Missing[int] = Field(
-        default=UNSET,
-        description="Time in minutes before codespace stops from inactivity",
-    )
-    display_name: Missing[str] = Field(
-        default=UNSET, description="Display name for this codespace"
-    )
-    retention_period_minutes: Missing[int] = Field(
-        default=UNSET,
-        description="Duration in minutes after codespace has gone idle in which it will be deleted. Must be integer minutes between 0 and 43200 (30 days).",
+        description="Indicates whether [maintainers can modify](https://docs.github.com/articles/allowing-changes-to-a-pull-request-branch-created-from-a-fork/) the pull request.",
     )
 
 
-model_rebuild(ReposOwnerRepoPullsPullNumberCodespacesPostBody)
+model_rebuild(ReposOwnerRepoPullsPullNumberPatchBody)
 
-__all__ = ("ReposOwnerRepoPullsPullNumberCodespacesPostBody",)
+__all__ = ("ReposOwnerRepoPullsPullNumberPatchBody",)

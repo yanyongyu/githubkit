@@ -7,14 +7,14 @@ bash ./scripts/run-codegen.sh
 See https://github.com/github/rest-api-description for more information.
 """
 
-from typing import Union, Annotated
+from typing import Annotated, Union
 from typing_extensions import TypeAlias
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel
 
-from ..models import WebhookRegistryPackageUpdated, WebhookRegistryPackagePublished
+from ..models import WebhookRegistryPackagePublished, WebhookRegistryPackageUpdated
 
 Event: TypeAlias = Annotated[
     Union[

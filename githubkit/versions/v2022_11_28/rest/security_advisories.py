@@ -14,37 +14,37 @@ from weakref import ref
 
 from pydantic import BaseModel
 
-from githubkit.utils import UNSET, exclude_unset
 from githubkit.compat import model_dump, type_validate_python
 from githubkit.typing import Missing, UnsetType
+from githubkit.utils import UNSET, exclude_unset
 
 if TYPE_CHECKING:
-    from typing import Union, Literal
+    from typing import Literal, Union
 
     from githubkit import GitHubCore
-    from githubkit.utils import UNSET
-    from githubkit.typing import Missing
     from githubkit.response import Response
+    from githubkit.typing import Missing
+    from githubkit.utils import UNSET
 
-    from ..types import (
-        FullRepositoryType,
-        GlobalAdvisoryType,
-        RepositoryAdvisoryType,
-        RepositoryAdvisoryCreateType,
-        RepositoryAdvisoryUpdateType,
-        PrivateVulnerabilityReportCreateType,
-        RepositoryAdvisoryCreatePropCreditsItemsType,
-        RepositoryAdvisoryUpdatePropCreditsItemsType,
-        RepositoryAdvisoryCreatePropVulnerabilitiesItemsType,
-        RepositoryAdvisoryUpdatePropVulnerabilitiesItemsType,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
-        PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsType,
-    )
     from ..models import (
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
         FullRepository,
         GlobalAdvisory,
         RepositoryAdvisory,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
+    )
+    from ..types import (
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+        FullRepositoryType,
+        GlobalAdvisoryType,
+        PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsType,
+        PrivateVulnerabilityReportCreateType,
+        RepositoryAdvisoryCreatePropCreditsItemsType,
+        RepositoryAdvisoryCreatePropVulnerabilitiesItemsType,
+        RepositoryAdvisoryCreateType,
+        RepositoryAdvisoryType,
+        RepositoryAdvisoryUpdatePropCreditsItemsType,
+        RepositoryAdvisoryUpdatePropVulnerabilitiesItemsType,
+        RepositoryAdvisoryUpdateType,
     )
 
 
@@ -491,9 +491,9 @@ class SecurityAdvisoriesClient:
 
         from ..models import (
             BasicError,
-            ValidationError,
             RepositoryAdvisory,
             RepositoryAdvisoryCreate,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/security-advisories"
@@ -568,9 +568,9 @@ class SecurityAdvisoriesClient:
 
         from ..models import (
             BasicError,
-            ValidationError,
             RepositoryAdvisory,
             RepositoryAdvisoryCreate,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/security-advisories"
@@ -645,9 +645,9 @@ class SecurityAdvisoriesClient:
 
         from ..models import (
             BasicError,
-            ValidationError,
-            RepositoryAdvisory,
             PrivateVulnerabilityReportCreate,
+            RepositoryAdvisory,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/security-advisories/reports"
@@ -722,9 +722,9 @@ class SecurityAdvisoriesClient:
 
         from ..models import (
             BasicError,
-            ValidationError,
-            RepositoryAdvisory,
             PrivateVulnerabilityReportCreate,
+            RepositoryAdvisory,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/security-advisories/reports"
@@ -860,9 +860,9 @@ class SecurityAdvisoriesClient:
 
         from ..models import (
             BasicError,
-            ValidationError,
             RepositoryAdvisory,
             RepositoryAdvisoryUpdate,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/security-advisories/{ghsa_id}"
@@ -944,9 +944,9 @@ class SecurityAdvisoriesClient:
 
         from ..models import (
             BasicError,
-            ValidationError,
             RepositoryAdvisory,
             RepositoryAdvisoryUpdate,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/security-advisories/{ghsa_id}"
@@ -989,9 +989,9 @@ class SecurityAdvisoriesClient:
         """See also: https://docs.github.com/rest/security-advisories/repository-advisories#request-a-cve-for-a-repository-security-advisory"""
 
         from ..models import (
+            AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
             BasicError,
             ValidationError,
-            AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
         )
 
         url = f"/repos/{owner}/{repo}/security-advisories/{ghsa_id}/cve"
@@ -1025,9 +1025,9 @@ class SecurityAdvisoriesClient:
         """See also: https://docs.github.com/rest/security-advisories/repository-advisories#request-a-cve-for-a-repository-security-advisory"""
 
         from ..models import (
+            AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
             BasicError,
             ValidationError,
-            AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
         )
 
         url = f"/repos/{owner}/{repo}/security-advisories/{ghsa_id}/cve"

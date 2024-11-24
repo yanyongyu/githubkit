@@ -9,21 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict, NotRequired
+from datetime import datetime
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0019 import RepositoryType
 
 
-class ActionsPublicKeyType(TypedDict):
-    """ActionsPublicKey
+class AuthenticationTokenType(TypedDict):
+    """Authentication Token
 
-    The public key used for setting Actions Secrets.
+    Authentication Token
     """
 
-    key_id: str
-    key: str
-    id: NotRequired[int]
-    url: NotRequired[str]
-    title: NotRequired[str]
-    created_at: NotRequired[str]
+    token: str
+    expires_at: datetime
+    permissions: NotRequired[AuthenticationTokenPropPermissionsType]
+    repositories: NotRequired[list[RepositoryType]]
+    single_file: NotRequired[Union[str, None]]
+    repository_selection: NotRequired[Literal["all", "selected"]]
 
 
-__all__ = ("ActionsPublicKeyType",)
+class AuthenticationTokenPropPermissionsType(TypedDict):
+    """AuthenticationTokenPropPermissions
+
+    Examples:
+        {'issues': 'read', 'deployments': 'write'}
+    """
+
+
+__all__ = (
+    "AuthenticationTokenPropPermissionsType",
+    "AuthenticationTokenType",
+)

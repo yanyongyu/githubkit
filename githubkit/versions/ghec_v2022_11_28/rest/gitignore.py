@@ -18,8 +18,8 @@ if TYPE_CHECKING:
     from githubkit import GitHubCore
     from githubkit.response import Response
 
-    from ..types import GitignoreTemplateType
     from ..models import GitignoreTemplate
+    from ..types import GitignoreTemplateType
 
 
 class GitignoreClient:

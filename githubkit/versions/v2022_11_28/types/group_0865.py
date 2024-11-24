@@ -9,15 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0104 import CustomPropertyType
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgPropertiesSchemaPatchBodyType(TypedDict):
-    """OrgsOrgPropertiesSchemaPatchBody"""
+class OrgsOrgProjectsPostBodyType(TypedDict):
+    """OrgsOrgProjectsPostBody"""
 
-    properties: list[CustomPropertyType]
+    name: str
+    body: NotRequired[str]
 
 
-__all__ = ("OrgsOrgPropertiesSchemaPatchBodyType",)
+__all__ = ("OrgsOrgProjectsPostBodyType",)

@@ -9,41 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0217 import CodeScanningVariantAnalysisSkippedRepoGroup
-
-
-class CodeScanningVariantAnalysisPropSkippedRepositories(GitHubModel):
-    """CodeScanningVariantAnalysisPropSkippedRepositories
-
-    Information about repositories that were skipped from processing. This
-    information is only available to the user that initiated the variant analysis.
-    """
-
-    access_mismatch_repos: CodeScanningVariantAnalysisSkippedRepoGroup = Field()
-    not_found_repos: CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos = Field()
-    no_codeql_db_repos: CodeScanningVariantAnalysisSkippedRepoGroup = Field()
-    over_limit_repos: CodeScanningVariantAnalysisSkippedRepoGroup = Field()
+from .group_0217 import CodeScanningVariantAnalysisRepository
 
 
-class CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos(GitHubModel):
-    """CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos"""
+class CodeScanningVariantAnalysisPropScannedRepositoriesItems(GitHubModel):
+    """CodeScanningVariantAnalysisPropScannedRepositoriesItems"""
 
-    repository_count: int = Field(
-        description="The total number of repositories that were skipped for this reason."
+    repository: CodeScanningVariantAnalysisRepository = Field(
+        title="Repository Identifier", description="Repository Identifier"
     )
-    repository_full_names: list[str] = Field(
-        description="A list of full repository names that were skipped. This list may not include all repositories that were skipped."
+    analysis_status: Literal[
+        "pending", "in_progress", "succeeded", "failed", "canceled", "timed_out"
+    ] = Field(
+        description="The new status of the CodeQL variant analysis repository task."
+    )
+    result_count: Missing[int] = Field(
+        default=UNSET,
+        description="The number of results in the case of a successful analysis. This is only available for successful analyses.",
+    )
+    artifact_size_in_bytes: Missing[int] = Field(
+        default=UNSET,
+        description="The size of the artifact. This is only available for successful analyses.",
+    )
+    failure_message: Missing[str] = Field(
+        default=UNSET,
+        description="The reason of the failure of this repo task. This is only available if the repository task has failed.",
     )
 
 
-model_rebuild(CodeScanningVariantAnalysisPropSkippedRepositories)
-model_rebuild(CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos)
+model_rebuild(CodeScanningVariantAnalysisPropScannedRepositoriesItems)
 
-__all__ = (
-    "CodeScanningVariantAnalysisPropSkippedRepositories",
-    "CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos",
-)
+__all__ = ("CodeScanningVariantAnalysisPropScannedRepositoriesItems",)

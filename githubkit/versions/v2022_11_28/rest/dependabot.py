@@ -14,43 +14,43 @@ from weakref import ref
 
 from pydantic import BaseModel
 
-from githubkit.utils import UNSET, exclude_unset
 from githubkit.compat import model_dump, type_validate_python
 from githubkit.typing import Missing, UnsetType
+from githubkit.utils import UNSET, exclude_unset
 
 if TYPE_CHECKING:
     from typing import Literal
 
     from githubkit import GitHubCore
-    from githubkit.utils import UNSET
-    from githubkit.typing import Missing
     from githubkit.response import Response
+    from githubkit.typing import Missing
+    from githubkit.utils import UNSET
 
+    from ..models import (
+        DependabotAlert,
+        DependabotAlertWithRepository,
+        DependabotPublicKey,
+        DependabotSecret,
+        EmptyObject,
+        OrganizationDependabotSecret,
+        OrgsOrgDependabotSecretsGetResponse200,
+        OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200,
+        ReposOwnerRepoDependabotSecretsGetResponse200,
+    )
     from ..types import (
-        EmptyObjectType,
         DependabotAlertType,
-        DependabotSecretType,
-        DependabotPublicKeyType,
-        OrganizationDependabotSecretType,
         DependabotAlertWithRepositoryType,
+        DependabotPublicKeyType,
+        DependabotSecretType,
+        EmptyObjectType,
+        OrganizationDependabotSecretType,
         OrgsOrgDependabotSecretsGetResponse200Type,
         OrgsOrgDependabotSecretsSecretNamePutBodyType,
+        OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200Type,
+        OrgsOrgDependabotSecretsSecretNameRepositoriesPutBodyType,
+        ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyType,
         ReposOwnerRepoDependabotSecretsGetResponse200Type,
         ReposOwnerRepoDependabotSecretsSecretNamePutBodyType,
-        ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyType,
-        OrgsOrgDependabotSecretsSecretNameRepositoriesPutBodyType,
-        OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200Type,
-    )
-    from ..models import (
-        EmptyObject,
-        DependabotAlert,
-        DependabotSecret,
-        DependabotPublicKey,
-        OrganizationDependabotSecret,
-        DependabotAlertWithRepository,
-        OrgsOrgDependabotSecretsGetResponse200,
-        ReposOwnerRepoDependabotSecretsGetResponse200,
-        OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200,
     )
 
 
@@ -93,8 +93,8 @@ class DependabotClient:
 
         from ..models import (
             BasicError,
-            ValidationErrorSimple,
             DependabotAlertWithRepository,
+            ValidationErrorSimple,
         )
 
         url = f"/enterprises/{enterprise}/dependabot/alerts"
@@ -153,8 +153,8 @@ class DependabotClient:
 
         from ..models import (
             BasicError,
-            ValidationErrorSimple,
             DependabotAlertWithRepository,
+            ValidationErrorSimple,
         )
 
         url = f"/enterprises/{enterprise}/dependabot/alerts"
@@ -213,8 +213,8 @@ class DependabotClient:
 
         from ..models import (
             BasicError,
-            ValidationErrorSimple,
             DependabotAlertWithRepository,
+            ValidationErrorSimple,
         )
 
         url = f"/orgs/{org}/dependabot/alerts"
@@ -274,8 +274,8 @@ class DependabotClient:
 
         from ..models import (
             BasicError,
-            ValidationErrorSimple,
             DependabotAlertWithRepository,
+            ValidationErrorSimple,
         )
 
         url = f"/orgs/{org}/dependabot/alerts"
@@ -1115,8 +1115,8 @@ class DependabotClient:
         from ..models import (
             BasicError,
             DependabotAlert,
-            ValidationErrorSimple,
             ReposOwnerRepoDependabotAlertsAlertNumberPatchBody,
+            ValidationErrorSimple,
         )
 
         url = f"/repos/{owner}/{repo}/dependabot/alerts/{alert_number}"
@@ -1197,8 +1197,8 @@ class DependabotClient:
         from ..models import (
             BasicError,
             DependabotAlert,
-            ValidationErrorSimple,
             ReposOwnerRepoDependabotAlertsAlertNumberPatchBody,
+            ValidationErrorSimple,
         )
 
         url = f"/repos/{owner}/{repo}/dependabot/alerts/{alert_number}"

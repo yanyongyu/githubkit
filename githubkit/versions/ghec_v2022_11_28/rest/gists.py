@@ -14,32 +14,32 @@ from weakref import ref
 
 from pydantic import BaseModel
 
-from githubkit.utils import UNSET, exclude_unset
 from githubkit.compat import model_dump, type_validate_python
 from githubkit.typing import Missing, UnsetType
+from githubkit.utils import UNSET, exclude_unset
 
 if TYPE_CHECKING:
-    from typing import Union, Literal
     from datetime import datetime
+    from typing import Literal, Union
 
     from githubkit import GitHubCore
-    from githubkit.utils import UNSET
-    from githubkit.typing import Missing
     from githubkit.response import Response
+    from githubkit.typing import Missing
+    from githubkit.utils import UNSET
 
+    from ..models import BaseGist, GistComment, GistCommit, GistSimple
     from ..types import (
         BaseGistType,
-        GistCommitType,
-        GistSimpleType,
         GistCommentType,
-        GistsPostBodyType,
-        GistsGistIdPatchBodyType,
-        GistsPostBodyPropFilesType,
+        GistCommitType,
+        GistsGistIdCommentsCommentIdPatchBodyType,
         GistsGistIdCommentsPostBodyType,
         GistsGistIdPatchBodyPropFilesType,
-        GistsGistIdCommentsCommentIdPatchBodyType,
+        GistsGistIdPatchBodyType,
+        GistSimpleType,
+        GistsPostBodyPropFilesType,
+        GistsPostBodyType,
     )
-    from ..models import BaseGist, GistCommit, GistSimple, GistComment
 
 
 class GistsClient:
@@ -373,7 +373,7 @@ class GistsClient:
     ) -> Response[GistSimple, GistSimpleType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/gists#get-a-gist"""
 
-        from ..models import BasicError, GistSimple, GistsGistIdGetResponse403
+        from ..models import BasicError, GistsGistIdGetResponse403, GistSimple
 
         url = f"/gists/{gist_id}"
 
@@ -398,7 +398,7 @@ class GistsClient:
     ) -> Response[GistSimple, GistSimpleType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/gists#get-a-gist"""
 
-        from ..models import BasicError, GistSimple, GistsGistIdGetResponse403
+        from ..models import BasicError, GistsGistIdGetResponse403, GistSimple
 
         url = f"/gists/{gist_id}"
 
@@ -497,9 +497,9 @@ class GistsClient:
 
         from ..models import (
             BasicError,
+            GistsGistIdPatchBody,
             GistSimple,
             ValidationError,
-            GistsGistIdPatchBody,
         )
 
         url = f"/gists/{gist_id}"
@@ -561,9 +561,9 @@ class GistsClient:
 
         from ..models import (
             BasicError,
+            GistsGistIdPatchBody,
             GistSimple,
             ValidationError,
-            GistsGistIdPatchBody,
         )
 
         url = f"/gists/{gist_id}"

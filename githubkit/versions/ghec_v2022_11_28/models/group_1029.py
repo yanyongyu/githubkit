@@ -9,18 +9,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from datetime import datetime
+from typing import Literal
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
 from githubkit.compat import PYDANTIC_V2, ExtraGitHubModel, model_rebuild
 from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 from .group_1027 import (
-    ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutput,
     ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItems,
+    ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutput,
 )
 
 

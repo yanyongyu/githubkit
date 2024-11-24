@@ -9,65 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict, NotRequired
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0685 import (
-    WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionType,
-)
-
-
-class WebhookRegistryPackageUpdatedPropRegistryPackageType(TypedDict):
-    """WebhookRegistryPackageUpdatedPropRegistryPackage"""
-
-    created_at: str
-    description: None
-    ecosystem: str
-    html_url: str
-    id: int
-    name: str
-    namespace: str
-    owner: WebhookRegistryPackageUpdatedPropRegistryPackagePropOwnerType
-    package_type: str
-    package_version: (
-        WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionType
-    )
-    registry: Union[
-        WebhookRegistryPackageUpdatedPropRegistryPackagePropRegistryType, None
-    ]
-    updated_at: str
+from .group_0002 import SimpleUserType
+from .group_0385 import EnterpriseWebhooksType
+from .group_0386 import SimpleInstallationType
+from .group_0387 import OrganizationSimpleWebhooksType
+from .group_0388 import RepositoryWebhooksType
+from .group_0685 import WebhookRegistryPackageUpdatedPropRegistryPackageType
 
 
-class WebhookRegistryPackageUpdatedPropRegistryPackagePropOwnerType(TypedDict):
-    """WebhookRegistryPackageUpdatedPropRegistryPackagePropOwner"""
+class WebhookRegistryPackageUpdatedType(TypedDict):
+    """WebhookRegistryPackageUpdated"""
 
-    avatar_url: str
-    events_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    gravatar_id: str
-    html_url: str
-    id: int
-    login: str
-    node_id: str
-    organizations_url: str
-    received_events_url: str
-    repos_url: str
-    site_admin: bool
-    starred_url: str
-    subscriptions_url: str
-    type: str
-    url: str
-    user_view_type: NotRequired[str]
+    action: Literal["updated"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    registry_package: WebhookRegistryPackageUpdatedPropRegistryPackageType
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: SimpleUserType
 
 
-class WebhookRegistryPackageUpdatedPropRegistryPackagePropRegistryType(TypedDict):
-    """WebhookRegistryPackageUpdatedPropRegistryPackagePropRegistry"""
-
-
-__all__ = (
-    "WebhookRegistryPackageUpdatedPropRegistryPackagePropOwnerType",
-    "WebhookRegistryPackageUpdatedPropRegistryPackagePropRegistryType",
-    "WebhookRegistryPackageUpdatedPropRegistryPackageType",
-)
+__all__ = ("WebhookRegistryPackageUpdatedType",)

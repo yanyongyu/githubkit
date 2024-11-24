@@ -9,11 +9,11 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
-from typing_extensions import TypedDict, NotRequired
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 from .group_0392 import MetaType
-from .group_0397 import UserNameResponseType, UserEmailsResponseItemsType
+from .group_0397 import UserEmailsResponseItemsType, UserNameResponseType
 from .group_0398 import UserRoleItemsType
 from .group_0402 import ScimEnterpriseUserResponseAllof1PropGroupsItemsType
 

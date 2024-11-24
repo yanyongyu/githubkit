@@ -9,33 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
-from githubkit.utils import UNSET
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class OrgsOrgActionsRunnerGroupsPostBody(GitHubModel):
-    """OrgsOrgActionsRunnerGroupsPostBody"""
+class OrgsOrgActionsRunnerGroupsGetResponse200(GitHubModel):
+    """OrgsOrgActionsRunnerGroupsGetResponse200"""
 
-    name: str = Field(description="Name of the runner group.")
-    visibility: Missing[Literal["selected", "all", "private"]] = Field(
+    total_count: float = Field()
+    runner_groups: list[RunnerGroupsOrg] = Field()
+
+
+class RunnerGroupsOrg(GitHubModel):
+    """RunnerGroupsOrg"""
+
+    id: float = Field()
+    name: str = Field()
+    visibility: str = Field()
+    default: bool = Field()
+    selected_repositories_url: Missing[str] = Field(
         default=UNSET,
-        description="Visibility of a runner group. You can select all repositories, select individual repositories, or limit access to private repositories.",
+        description="Link to the selected repositories resource for this runner group. Not present unless visibility was set to `selected`",
     )
-    selected_repository_ids: Missing[list[int]] = Field(
+    runners_url: str = Field()
+    hosted_runners_url: Missing[str] = Field(default=UNSET)
+    inherited: bool = Field()
+    inherited_allows_public_repositories: Missing[bool] = Field(default=UNSET)
+    allows_public_repositories: bool = Field()
+    workflow_restrictions_read_only: Missing[bool] = Field(
         default=UNSET,
-        description="List of repository IDs that can access the runner group.",
-    )
-    runners: Missing[list[int]] = Field(
-        default=UNSET, description="List of runner IDs to add to the runner group."
-    )
-    allows_public_repositories: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether the runner group can be used by `public` repositories.",
+        description="If `true`, the `restricted_to_workflows` and `selected_workflows` fields cannot be modified.",
     )
     restricted_to_workflows: Missing[bool] = Field(
         default=UNSET,
@@ -47,6 +53,10 @@ class OrgsOrgActionsRunnerGroupsPostBody(GitHubModel):
     )
 
 
-model_rebuild(OrgsOrgActionsRunnerGroupsPostBody)
+model_rebuild(OrgsOrgActionsRunnerGroupsGetResponse200)
+model_rebuild(RunnerGroupsOrg)
 
-__all__ = ("OrgsOrgActionsRunnerGroupsPostBody",)
+__all__ = (
+    "OrgsOrgActionsRunnerGroupsGetResponse200",
+    "RunnerGroupsOrg",
+)

@@ -10,19 +10,16 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import TypedDict, NotRequired
-
-from .group_0141 import RepositoryRuleBranchNamePatternPropParametersType
+from typing_extensions import NotRequired, TypedDict
 
 
-class RepositoryRuleBranchNamePatternType(TypedDict):
-    """branch_name_pattern
+class RepositoryRuleCommitterEmailPatternPropParametersType(TypedDict):
+    """RepositoryRuleCommitterEmailPatternPropParameters"""
 
-    Parameters to be used for the branch_name_pattern rule
-    """
+    name: NotRequired[str]
+    negate: NotRequired[bool]
+    operator: Literal["starts_with", "ends_with", "contains", "regex"]
+    pattern: str
 
-    type: Literal["branch_name_pattern"]
-    parameters: NotRequired[RepositoryRuleBranchNamePatternPropParametersType]
 
-
-__all__ = ("RepositoryRuleBranchNamePatternType",)
+__all__ = ("RepositoryRuleCommitterEmailPatternPropParametersType",)

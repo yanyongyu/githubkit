@@ -9,30 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 from .group_0002 import SimpleUser
 from .group_0008 import Integration
 from .group_0029 import Team
 
 
-class ReviewRequestRemovedIssueEvent(GitHubModel):
-    """Review Request Removed Issue Event
+class ReviewRequestedIssueEvent(GitHubModel):
+    """Review Requested Issue Event
 
-    Review Request Removed Issue Event
+    Review Requested Issue Event
     """
 
     id: int = Field()
     node_id: str = Field()
     url: str = Field()
     actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: Literal["review_request_removed"] = Field()
+    event: Literal["review_requested"] = Field()
     commit_id: Union[str, None] = Field()
     commit_url: Union[str, None] = Field()
     created_at: str = Field()
@@ -50,6 +50,6 @@ class ReviewRequestRemovedIssueEvent(GitHubModel):
     )
 
 
-model_rebuild(ReviewRequestRemovedIssueEvent)
+model_rebuild(ReviewRequestedIssueEvent)
 
-__all__ = ("ReviewRequestRemovedIssueEvent",)
+__all__ = ("ReviewRequestedIssueEvent",)

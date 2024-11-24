@@ -1,23 +1,23 @@
+from collections.abc import Hashable
+from datetime import timedelta
 from typing import (
     IO,
-    Union,
-    Literal,
-    TypeVar,
-    Callable,
-    Optional,
     Annotated,
+    Callable,
+    Literal,
     NamedTuple,
+    Optional,
+    TypeVar,
+    Union,
 )
-from datetime import timedelta
-from collections.abc import Hashable
 from typing_extensions import TypeAlias
 
 import httpx
 from pydantic import Field
 
-from .utils import Unset
 from .compat import PYDANTIC_V2
 from .exception import GitHubException
+from .utils import Unset
 
 T = TypeVar("T")
 H = TypeVar("H", bound=Hashable)

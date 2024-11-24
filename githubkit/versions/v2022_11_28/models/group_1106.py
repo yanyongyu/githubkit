@@ -12,17 +12,19 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0017 import Installation
-
-
-class UserInstallationsGetResponse200(GitHubModel):
-    """UserInstallationsGetResponse200"""
-
-    total_count: int = Field()
-    installations: list[Installation] = Field()
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-model_rebuild(UserInstallationsGetResponse200)
+class UserGpgKeysPostBody(GitHubModel):
+    """UserGpgKeysPostBody"""
 
-__all__ = ("UserInstallationsGetResponse200",)
+    name: Missing[str] = Field(
+        default=UNSET, description="A descriptive name for the new key."
+    )
+    armored_public_key: str = Field(description="A GPG key in ASCII-armored format.")
+
+
+model_rebuild(UserGpgKeysPostBody)
+
+__all__ = ("UserGpgKeysPostBody",)

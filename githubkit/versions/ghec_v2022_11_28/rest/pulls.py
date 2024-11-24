@@ -14,57 +14,57 @@ from weakref import ref
 
 from pydantic import BaseModel
 
-from githubkit.utils import UNSET, exclude_unset
 from githubkit.compat import model_dump, type_validate_python
 from githubkit.typing import Missing, UnsetType
+from githubkit.utils import UNSET, exclude_unset
 
 if TYPE_CHECKING:
-    from typing import Union, Literal
     from datetime import datetime
+    from typing import Literal, Union
 
     from githubkit import GitHubCore
-    from githubkit.utils import UNSET
-    from githubkit.typing import Missing
     from githubkit.response import Response
+    from githubkit.typing import Missing
+    from githubkit.utils import UNSET
 
-    from ..types import (
-        CommitType,
-        DiffEntryType,
-        PullRequestType,
-        ReviewCommentType,
-        PullRequestReviewType,
-        PullRequestSimpleType,
-        PullRequestMergeResultType,
-        PullRequestReviewCommentType,
-        PullRequestReviewRequestType,
-        ReposOwnerRepoPullsPostBodyType,
-        ReposOwnerRepoPullsPullNumberPatchBodyType,
-        ReposOwnerRepoPullsPullNumberMergePutBodyType,
-        ReposOwnerRepoPullsPullNumberReviewsPostBodyType,
-        ReposOwnerRepoPullsCommentsCommentIdPatchBodyType,
-        ReposOwnerRepoPullsPullNumberCommentsPostBodyType,
-        ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyType,
-        ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBodyType,
-        ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202Type,
-        ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBodyType,
-        ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyType,
-        ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBodyType,
-        ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0Type,
-        ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1Type,
-        ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItemsType,
-        ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyType,
-    )
     from ..models import (
         Commit,
         DiffEntry,
         PullRequest,
-        ReviewComment,
-        PullRequestReview,
-        PullRequestSimple,
         PullRequestMergeResult,
+        PullRequestReview,
         PullRequestReviewComment,
         PullRequestReviewRequest,
+        PullRequestSimple,
         ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202,
+        ReviewComment,
+    )
+    from ..types import (
+        CommitType,
+        DiffEntryType,
+        PullRequestMergeResultType,
+        PullRequestReviewCommentType,
+        PullRequestReviewRequestType,
+        PullRequestReviewType,
+        PullRequestSimpleType,
+        PullRequestType,
+        ReposOwnerRepoPullsCommentsCommentIdPatchBodyType,
+        ReposOwnerRepoPullsPostBodyType,
+        ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBodyType,
+        ReposOwnerRepoPullsPullNumberCommentsPostBodyType,
+        ReposOwnerRepoPullsPullNumberMergePutBodyType,
+        ReposOwnerRepoPullsPullNumberPatchBodyType,
+        ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBodyType,
+        ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0Type,
+        ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1Type,
+        ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItemsType,
+        ReposOwnerRepoPullsPullNumberReviewsPostBodyType,
+        ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyType,
+        ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyType,
+        ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBodyType,
+        ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyType,
+        ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202Type,
+        ReviewCommentType,
     )
 
 
@@ -101,7 +101,7 @@ class PullsClient:
     ) -> Response[list[PullRequestSimple], list[PullRequestSimpleType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/pulls/pulls#list-pull-requests"""
 
-        from ..models import ValidationError, PullRequestSimple
+        from ..models import PullRequestSimple, ValidationError
 
         url = f"/repos/{owner}/{repo}/pulls"
 
@@ -146,7 +146,7 @@ class PullsClient:
     ) -> Response[list[PullRequestSimple], list[PullRequestSimpleType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/pulls/pulls#list-pull-requests"""
 
-        from ..models import ValidationError, PullRequestSimple
+        from ..models import PullRequestSimple, ValidationError
 
         url = f"/repos/{owner}/{repo}/pulls"
 
@@ -215,8 +215,8 @@ class PullsClient:
         from ..models import (
             BasicError,
             PullRequest,
-            ValidationError,
             ReposOwnerRepoPullsPostBody,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/pulls"
@@ -286,8 +286,8 @@ class PullsClient:
         from ..models import (
             BasicError,
             PullRequest,
-            ValidationError,
             ReposOwnerRepoPullsPostBody,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/pulls"
@@ -627,8 +627,8 @@ class PullsClient:
 
         from ..models import (
             BasicError,
-            PullRequest,
             EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            PullRequest,
         )
 
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}"
@@ -660,8 +660,8 @@ class PullsClient:
 
         from ..models import (
             BasicError,
-            PullRequest,
             EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            PullRequest,
         )
 
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}"
@@ -723,8 +723,8 @@ class PullsClient:
         from ..models import (
             BasicError,
             PullRequest,
-            ValidationError,
             ReposOwnerRepoPullsPullNumberPatchBody,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}"
@@ -794,8 +794,8 @@ class PullsClient:
         from ..models import (
             BasicError,
             PullRequest,
-            ValidationError,
             ReposOwnerRepoPullsPullNumberPatchBody,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}"
@@ -943,9 +943,9 @@ class PullsClient:
 
         from ..models import (
             BasicError,
-            ValidationError,
             PullRequestReviewComment,
             ReposOwnerRepoPullsPullNumberCommentsPostBody,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/comments"
@@ -1021,9 +1021,9 @@ class PullsClient:
 
         from ..models import (
             BasicError,
-            ValidationError,
             PullRequestReviewComment,
             ReposOwnerRepoPullsPullNumberCommentsPostBody,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/comments"
@@ -1272,10 +1272,10 @@ class PullsClient:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/pulls/pulls#list-pull-requests-files"""
 
         from ..models import (
-            DiffEntry,
             BasicError,
-            ValidationError,
+            DiffEntry,
             EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/files"
@@ -1313,10 +1313,10 @@ class PullsClient:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/pulls/pulls#list-pull-requests-files"""
 
         from ..models import (
-            DiffEntry,
             BasicError,
-            ValidationError,
+            DiffEntry,
             EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/files"
@@ -1429,11 +1429,11 @@ class PullsClient:
 
         from ..models import (
             BasicError,
-            ValidationError,
             PullRequestMergeResult,
             ReposOwnerRepoPullsPullNumberMergePutBody,
             ReposOwnerRepoPullsPullNumberMergePutResponse405,
             ReposOwnerRepoPullsPullNumberMergePutResponse409,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/merge"
@@ -1512,11 +1512,11 @@ class PullsClient:
 
         from ..models import (
             BasicError,
-            ValidationError,
             PullRequestMergeResult,
             ReposOwnerRepoPullsPullNumberMergePutBody,
             ReposOwnerRepoPullsPullNumberMergePutResponse405,
             ReposOwnerRepoPullsPullNumberMergePutResponse409,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/merge"
@@ -1830,9 +1830,9 @@ class PullsClient:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/pulls/review-requests#remove-requested-reviewers-from-a-pull-request"""
 
         from ..models import (
-            ValidationError,
             PullRequestSimple,
             ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers"
@@ -1900,9 +1900,9 @@ class PullsClient:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/pulls/review-requests#remove-requested-reviewers-from-a-pull-request"""
 
         from ..models import (
-            ValidationError,
             PullRequestSimple,
             ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers"
@@ -2036,8 +2036,8 @@ class PullsClient:
         from ..models import (
             BasicError,
             PullRequestReview,
-            ValidationErrorSimple,
             ReposOwnerRepoPullsPullNumberReviewsPostBody,
+            ValidationErrorSimple,
         )
 
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/reviews"
@@ -2110,8 +2110,8 @@ class PullsClient:
         from ..models import (
             BasicError,
             PullRequestReview,
-            ValidationErrorSimple,
             ReposOwnerRepoPullsPullNumberReviewsPostBody,
+            ValidationErrorSimple,
         )
 
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/reviews"
@@ -2235,8 +2235,8 @@ class PullsClient:
 
         from ..models import (
             PullRequestReview,
-            ValidationErrorSimple,
             ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBody,
+            ValidationErrorSimple,
         )
 
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}"
@@ -2305,8 +2305,8 @@ class PullsClient:
 
         from ..models import (
             PullRequestReview,
-            ValidationErrorSimple,
             ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBody,
+            ValidationErrorSimple,
         )
 
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}"
@@ -2505,8 +2505,8 @@ class PullsClient:
         from ..models import (
             BasicError,
             PullRequestReview,
-            ValidationErrorSimple,
             ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody,
+            ValidationErrorSimple,
         )
 
         url = (
@@ -2582,8 +2582,8 @@ class PullsClient:
         from ..models import (
             BasicError,
             PullRequestReview,
-            ValidationErrorSimple,
             ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody,
+            ValidationErrorSimple,
         )
 
         url = (
@@ -2659,8 +2659,8 @@ class PullsClient:
         from ..models import (
             BasicError,
             PullRequestReview,
-            ValidationErrorSimple,
             ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody,
+            ValidationErrorSimple,
         )
 
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/events"
@@ -2735,8 +2735,8 @@ class PullsClient:
         from ..models import (
             BasicError,
             PullRequestReview,
-            ValidationErrorSimple,
             ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody,
+            ValidationErrorSimple,
         )
 
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/events"
@@ -2819,9 +2819,9 @@ class PullsClient:
 
         from ..models import (
             BasicError,
-            ValidationError,
             ReposOwnerRepoPullsPullNumberUpdateBranchPutBody,
             ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/update-branch"
@@ -2903,9 +2903,9 @@ class PullsClient:
 
         from ..models import (
             BasicError,
-            ValidationError,
             ReposOwnerRepoPullsPullNumberUpdateBranchPutBody,
             ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/update-branch"

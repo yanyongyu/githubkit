@@ -12,19 +12,19 @@ from __future__ import annotations
 from typing import TYPE_CHECKING, Literal, Optional
 from weakref import ref
 
-from githubkit.utils import UNSET, exclude_unset
 from githubkit.typing import Missing
+from githubkit.utils import UNSET, exclude_unset
 
 if TYPE_CHECKING:
     from typing import Literal
 
     from githubkit import GitHubCore
-    from githubkit.utils import UNSET
-    from githubkit.typing import Missing
     from githubkit.response import Response
+    from githubkit.typing import Missing
+    from githubkit.utils import UNSET
 
-    from ..types import PackageType, PackageVersionType
     from ..models import Package, PackageVersion
+    from ..types import PackageType, PackageVersionType
 
 
 class PackagesClient:
@@ -50,7 +50,7 @@ class PackagesClient:
     ) -> Response[list[Package], list[PackageType]]:
         """See also: https://docs.github.com/rest/packages/packages#get-list-of-conflicting-packages-during-docker-migration-for-organization"""
 
-        from ..models import Package, BasicError
+        from ..models import BasicError, Package
 
         url = f"/orgs/{org}/docker/conflicts"
 
@@ -75,7 +75,7 @@ class PackagesClient:
     ) -> Response[list[Package], list[PackageType]]:
         """See also: https://docs.github.com/rest/packages/packages#get-list-of-conflicting-packages-during-docker-migration-for-organization"""
 
-        from ..models import Package, BasicError
+        from ..models import BasicError, Package
 
         url = f"/orgs/{org}/docker/conflicts"
 
@@ -106,7 +106,7 @@ class PackagesClient:
     ) -> Response[list[Package], list[PackageType]]:
         """See also: https://docs.github.com/rest/packages/packages#list-packages-for-an-organization"""
 
-        from ..models import Package, BasicError
+        from ..models import BasicError, Package
 
         url = f"/orgs/{org}/packages"
 
@@ -145,7 +145,7 @@ class PackagesClient:
     ) -> Response[list[Package], list[PackageType]]:
         """See also: https://docs.github.com/rest/packages/packages#list-packages-for-an-organization"""
 
-        from ..models import Package, BasicError
+        from ..models import BasicError, Package
 
         url = f"/orgs/{org}/packages"
 
@@ -1134,7 +1134,7 @@ class PackagesClient:
     ) -> Response[list[Package], list[PackageType]]:
         """See also: https://docs.github.com/rest/packages/packages#get-list-of-conflicting-packages-during-docker-migration-for-user"""
 
-        from ..models import Package, BasicError
+        from ..models import BasicError, Package
 
         url = f"/users/{username}/docker/conflicts"
 
@@ -1159,7 +1159,7 @@ class PackagesClient:
     ) -> Response[list[Package], list[PackageType]]:
         """See also: https://docs.github.com/rest/packages/packages#get-list-of-conflicting-packages-during-docker-migration-for-user"""
 
-        from ..models import Package, BasicError
+        from ..models import BasicError, Package
 
         url = f"/users/{username}/docker/conflicts"
 
@@ -1190,7 +1190,7 @@ class PackagesClient:
     ) -> Response[list[Package], list[PackageType]]:
         """See also: https://docs.github.com/rest/packages/packages#list-packages-for-a-user"""
 
-        from ..models import Package, BasicError
+        from ..models import BasicError, Package
 
         url = f"/users/{username}/packages"
 
@@ -1229,7 +1229,7 @@ class PackagesClient:
     ) -> Response[list[Package], list[PackageType]]:
         """See also: https://docs.github.com/rest/packages/packages#list-packages-for-a-user"""
 
-        from ..models import Package, BasicError
+        from ..models import BasicError, Package
 
         url = f"/users/{username}/packages"
 

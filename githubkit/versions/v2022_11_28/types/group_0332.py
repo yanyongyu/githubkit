@@ -10,19 +10,19 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import TypedDict, NotRequired
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0128 import RepositoryRuleRequiredDeploymentsPropParametersType
+from .group_0127 import RepositoryRuleMergeQueuePropParametersType
 
 
-class RepositoryRuleDetailedOneof5Type(TypedDict):
-    """RepositoryRuleDetailedOneof5"""
+class RepositoryRuleDetailedOneof4Type(TypedDict):
+    """RepositoryRuleDetailedOneof4"""
 
-    type: Literal["required_deployments"]
-    parameters: NotRequired[RepositoryRuleRequiredDeploymentsPropParametersType]
+    type: Literal["merge_queue"]
+    parameters: NotRequired[RepositoryRuleMergeQueuePropParametersType]
     ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
     ruleset_source: NotRequired[str]
     ruleset_id: NotRequired[int]
 
 
-__all__ = ("RepositoryRuleDetailedOneof5Type",)
+__all__ = ("RepositoryRuleDetailedOneof4Type",)

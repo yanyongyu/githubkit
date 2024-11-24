@@ -14,16 +14,16 @@ from weakref import ref
 
 from pydantic import BaseModel
 
-from githubkit.utils import UNSET, exclude_unset
 from githubkit.compat import model_dump, type_validate_python
 from githubkit.typing import Missing, UnsetType
+from githubkit.utils import UNSET, exclude_unset
 
 if TYPE_CHECKING:
     from githubkit import GitHubCore
     from githubkit.response import Response
 
-    from ..types import EmptyObjectType, OidcCustomSubType
     from ..models import EmptyObject, OidcCustomSub
+    from ..types import EmptyObjectType, OidcCustomSubType
 
 
 class OidcClient:

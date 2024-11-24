@@ -11,28 +11,30 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0069 import RunnerLabel
 
 
-class RunnerApplication(GitHubModel):
-    """Runner Application
+class Runner(GitHubModel):
+    """Self hosted runners
 
-    Runner Application
+    A self hosted runner
     """
 
-    os: str = Field()
-    architecture: str = Field()
-    download_url: str = Field()
-    filename: str = Field()
-    temp_download_token: Missing[str] = Field(
-        default=UNSET,
-        description="A short lived bearer token used to download the runner, if needed.",
+    id: int = Field(description="The id of the runner.")
+    runner_group_id: Missing[int] = Field(
+        default=UNSET, description="The id of the runner group."
     )
-    sha256_checksum: Missing[str] = Field(default=UNSET)
+    name: str = Field(description="The name of the runner.")
+    os: str = Field(description="The Operating System of the runner.")
+    status: str = Field(description="The status of the runner.")
+    busy: bool = Field()
+    labels: list[RunnerLabel] = Field()
 
 
-model_rebuild(RunnerApplication)
+model_rebuild(Runner)
 
-__all__ = ("RunnerApplication",)
+__all__ = ("Runner",)

@@ -2,29 +2,29 @@ from typing import TYPE_CHECKING, TypeVar
 
 import openapi_pydantic as oas
 
-from . import parse_schema
 from .. import add_schema
 from ..utils import (
-    build_prop_name,
     build_class_name,
+    build_prop_name,
     concat_snake_name,
     schema_from_source,
 )
+from . import parse_schema
 from .schema import (
-    Property,
-    IntSchema,
     BoolSchema,
     DateSchema,
+    DateTimeSchema,
     EnumSchema,
     FileSchema,
-    ListSchema,
-    NoneSchema,
-    SchemaData,
     FloatSchema,
+    IntSchema,
+    ListSchema,
     ModelSchema,
-    UnionSchema,
+    NoneSchema,
+    Property,
+    SchemaData,
     StringSchema,
-    DateTimeSchema,
+    UnionSchema,
     UniqueListSchema,
 )
 

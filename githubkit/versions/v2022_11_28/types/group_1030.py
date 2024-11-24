@@ -9,18 +9,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from datetime import datetime
-from typing_extensions import TypedDict, NotRequired
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoMilestonesMilestoneNumberPatchBodyType(TypedDict):
-    """ReposOwnerRepoMilestonesMilestoneNumberPatchBody"""
+class ReposOwnerRepoMilestonesPostBodyType(TypedDict):
+    """ReposOwnerRepoMilestonesPostBody"""
 
-    title: NotRequired[str]
+    title: str
     state: NotRequired[Literal["open", "closed"]]
     description: NotRequired[str]
     due_on: NotRequired[datetime]
 
 
-__all__ = ("ReposOwnerRepoMilestonesMilestoneNumberPatchBodyType",)
+__all__ = ("ReposOwnerRepoMilestonesPostBodyType",)

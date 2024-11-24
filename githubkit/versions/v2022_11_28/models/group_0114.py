@@ -12,21 +12,27 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0115 import RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId
 
+class RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName(GitHubModel):
+    """RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName"""
 
-class RepositoryRulesetConditionsRepositoryIdTarget(GitHubModel):
-    """Repository ruleset conditions for repository IDs
-
-    Parameters for a repository ID condition
-    """
-
-    repository_id: RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId = (
-        Field()
+    include: Missing[list[str]] = Field(
+        default=UNSET,
+        description="Array of repository names or patterns to include. One of these patterns must match for the condition to pass. Also accepts `~ALL` to include all repositories.",
+    )
+    exclude: Missing[list[str]] = Field(
+        default=UNSET,
+        description="Array of repository names or patterns to exclude. The condition will not pass if any of these patterns match.",
+    )
+    protected: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether renaming of target repositories is prevented.",
     )
 
 
-model_rebuild(RepositoryRulesetConditionsRepositoryIdTarget)
+model_rebuild(RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName)
 
-__all__ = ("RepositoryRulesetConditionsRepositoryIdTarget",)
+__all__ = ("RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName",)

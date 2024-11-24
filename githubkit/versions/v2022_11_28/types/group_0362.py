@@ -9,28 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict, NotRequired
+from typing_extensions import TypedDict
+
+from .group_0358 import TrafficType
 
 
-class SearchResultTextMatchesItemsType(TypedDict):
-    """SearchResultTextMatchesItems"""
+class ViewTrafficType(TypedDict):
+    """View Traffic
 
-    object_url: NotRequired[str]
-    object_type: NotRequired[Union[str, None]]
-    property_: NotRequired[str]
-    fragment: NotRequired[str]
-    matches: NotRequired[list[SearchResultTextMatchesItemsPropMatchesItemsType]]
+    View Traffic
+    """
 
-
-class SearchResultTextMatchesItemsPropMatchesItemsType(TypedDict):
-    """SearchResultTextMatchesItemsPropMatchesItems"""
-
-    text: NotRequired[str]
-    indices: NotRequired[list[int]]
+    count: int
+    uniques: int
+    views: list[TrafficType]
 
 
-__all__ = (
-    "SearchResultTextMatchesItemsPropMatchesItemsType",
-    "SearchResultTextMatchesItemsType",
-)
+__all__ = ("ViewTrafficType",)

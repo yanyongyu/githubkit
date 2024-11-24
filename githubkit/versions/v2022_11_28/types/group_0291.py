@@ -9,43 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
-from typing_extensions import TypedDict, NotRequired
+from typing import Literal, Union
+from typing_extensions import TypedDict
 
 from .group_0002 import SimpleUserType
 from .group_0008 import IntegrationType
 
 
-class AddedToProjectIssueEventType(TypedDict):
-    """Added to Project Issue Event
+class LockedIssueEventType(TypedDict):
+    """Locked Issue Event
 
-    Added to Project Issue Event
+    Locked Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserType
-    event: Literal["added_to_project"]
+    event: Literal["locked"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationType, None]
-    project_card: NotRequired[AddedToProjectIssueEventPropProjectCardType]
+    lock_reason: Union[str, None]
 
 
-class AddedToProjectIssueEventPropProjectCardType(TypedDict):
-    """AddedToProjectIssueEventPropProjectCard"""
-
-    id: int
-    url: str
-    project_id: int
-    project_url: str
-    column_name: str
-    previous_column_name: NotRequired[str]
-
-
-__all__ = (
-    "AddedToProjectIssueEventPropProjectCardType",
-    "AddedToProjectIssueEventType",
-)
+__all__ = ("LockedIssueEventType",)

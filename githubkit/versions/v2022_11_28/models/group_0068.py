@@ -13,27 +13,24 @@ from typing import Literal
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class RunnerLabel(GitHubModel):
-    """Self hosted runner label
+class ActionsSetDefaultWorkflowPermissions(GitHubModel):
+    """ActionsSetDefaultWorkflowPermissions"""
 
-    A label for a self hosted runner
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET, description="Unique identifier of the label."
-    )
-    name: str = Field(description="Name of the label.")
-    type: Missing[Literal["read-only", "custom"]] = Field(
+    default_workflow_permissions: Missing[Literal["read", "write"]] = Field(
         default=UNSET,
-        description="The type of label. Read-only labels are applied automatically when the runner is configured.",
+        description="The default workflow permissions granted to the GITHUB_TOKEN when running workflows.",
+    )
+    can_approve_pull_request_reviews: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether GitHub Actions can approve pull requests. Enabling this can be a security risk.",
     )
 
 
-model_rebuild(RunnerLabel)
+model_rebuild(ActionsSetDefaultWorkflowPermissions)
 
-__all__ = ("RunnerLabel",)
+__all__ = ("ActionsSetDefaultWorkflowPermissions",)

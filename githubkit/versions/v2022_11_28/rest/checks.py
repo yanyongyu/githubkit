@@ -14,49 +14,49 @@ from weakref import ref
 
 from pydantic import BaseModel
 
-from githubkit.utils import UNSET, exclude_unset
 from githubkit.compat import model_dump, type_validate_python
 from githubkit.typing import Missing, UnsetType
+from githubkit.utils import UNSET, exclude_unset
 
 if TYPE_CHECKING:
-    from typing import Union, Literal
     from datetime import datetime
+    from typing import Literal, Union
 
     from githubkit import GitHubCore
-    from githubkit.utils import UNSET
-    from githubkit.typing import Missing
     from githubkit.response import Response
+    from githubkit.typing import Missing
+    from githubkit.utils import UNSET
 
-    from ..types import (
-        CheckRunType,
-        CheckSuiteType,
-        EmptyObjectType,
-        CheckAnnotationType,
-        CheckSuitePreferenceType,
-        ReposOwnerRepoCheckSuitesPostBodyType,
-        ReposOwnerRepoCheckRunsPostBodyOneof0Type,
-        ReposOwnerRepoCheckRunsPostBodyOneof1Type,
-        ReposOwnerRepoCheckRunsPostBodyPropOutputType,
-        ReposOwnerRepoCheckSuitesPreferencesPatchBodyType,
-        ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType,
-        ReposOwnerRepoCommitsRefCheckRunsGetResponse200Type,
-        ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0Type,
-        ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1Type,
-        ReposOwnerRepoCommitsRefCheckSuitesGetResponse200Type,
-        ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputType,
-        ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsType,
-        ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200Type,
-        ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsType,
-    )
     from ..models import (
+        CheckAnnotation,
         CheckRun,
         CheckSuite,
-        EmptyObject,
-        CheckAnnotation,
         CheckSuitePreference,
+        EmptyObject,
+        ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200,
         ReposOwnerRepoCommitsRefCheckRunsGetResponse200,
         ReposOwnerRepoCommitsRefCheckSuitesGetResponse200,
-        ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200,
+    )
+    from ..types import (
+        CheckAnnotationType,
+        CheckRunType,
+        CheckSuitePreferenceType,
+        CheckSuiteType,
+        EmptyObjectType,
+        ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0Type,
+        ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1Type,
+        ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsType,
+        ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputType,
+        ReposOwnerRepoCheckRunsPostBodyOneof0Type,
+        ReposOwnerRepoCheckRunsPostBodyOneof1Type,
+        ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType,
+        ReposOwnerRepoCheckRunsPostBodyPropOutputType,
+        ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200Type,
+        ReposOwnerRepoCheckSuitesPostBodyType,
+        ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsType,
+        ReposOwnerRepoCheckSuitesPreferencesPatchBodyType,
+        ReposOwnerRepoCommitsRefCheckRunsGetResponse200Type,
+        ReposOwnerRepoCommitsRefCheckSuitesGetResponse200Type,
     )
 
 

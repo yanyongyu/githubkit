@@ -12,17 +12,17 @@ from __future__ import annotations
 from typing import TYPE_CHECKING, Optional
 from weakref import ref
 
-from githubkit.utils import UNSET, exclude_unset
 from githubkit.typing import Missing
+from githubkit.utils import UNSET, exclude_unset
 
 if TYPE_CHECKING:
     from githubkit import GitHubCore
-    from githubkit.utils import UNSET
-    from githubkit.typing import Missing
     from githubkit.response import Response
+    from githubkit.typing import Missing
+    from githubkit.utils import UNSET
 
-    from ..types import LicenseType, LicenseSimpleType, LicenseContentType
-    from ..models import License, LicenseSimple, LicenseContent
+    from ..models import License, LicenseContent, LicenseSimple
+    from ..types import LicenseContentType, LicenseSimpleType, LicenseType
 
 
 class LicensesClient:
@@ -108,7 +108,7 @@ class LicensesClient:
     ) -> Response[License, LicenseType]:
         """See also: https://docs.github.com/rest/licenses/licenses#get-a-license"""
 
-        from ..models import License, BasicError
+        from ..models import BasicError, License
 
         url = f"/licenses/{license}"
 
@@ -133,7 +133,7 @@ class LicensesClient:
     ) -> Response[License, LicenseType]:
         """See also: https://docs.github.com/rest/licenses/licenses#get-a-license"""
 
-        from ..models import License, BasicError
+        from ..models import BasicError, License
 
         url = f"/licenses/{license}"
 
