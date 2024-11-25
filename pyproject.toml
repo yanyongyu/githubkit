@@ -23,7 +23,6 @@ PyJWT = { version = "^2.4.0", extras = ["crypto"], optional = true }
 [tool.poetry.group.dev.dependencies]
 ruff = "^0.8.0"
 redis = "^5.2.0"
-isort = "^5.13.2"
 Jinja2 = "^3.1.2"
 nonemoji = "^0.1.2"
 pre-commit = "^4.0.0"
