@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,28 +18,15 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ProjectsColumnsCardsCardIdMovesPostResponse503(GitHubModel):
-    """ProjectsColumnsCardsCardIdMovesPostResponse503"""
+class OrgsOrgSecurityProductEnablementPostBody(GitHubModel):
+    """OrgsOrgSecurityProductEnablementPostBody"""
 
-    code: Missing[str] = Field(default=UNSET)
-    message: Missing[str] = Field(default=UNSET)
-    documentation_url: Missing[str] = Field(default=UNSET)
-    errors: Missing[
-        list[ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItems]
-    ] = Field(default=UNSET)
+    query_suite: Missing[Literal["default", "extended"]] = Field(
+        default=UNSET,
+        description="CodeQL query suite to be used. If you specify the `query_suite` parameter, the default setup will be configured with this query suite only on all repositories that didn't have default setup already configured. It will not change the query suite on repositories that already have default setup configured.\nIf you don't specify any `query_suite` in your request, the preferred query suite of the organization will be applied.",
+    )
 
 
-class ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItems(GitHubModel):
-    """ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItems"""
+model_rebuild(OrgsOrgSecurityProductEnablementPostBody)
 
-    code: Missing[str] = Field(default=UNSET)
-    message: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(ProjectsColumnsCardsCardIdMovesPostResponse503)
-model_rebuild(ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItems)
-
-__all__ = (
-    "ProjectsColumnsCardsCardIdMovesPostResponse503",
-    "ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItems",
-)
+__all__ = ("OrgsOrgSecurityProductEnablementPostBody",)

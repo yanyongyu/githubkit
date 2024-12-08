@@ -18,16 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0002 import SimpleUser
-from .group_0385 import EnterpriseWebhooks
-from .group_0386 import SimpleInstallation
-from .group_0387 import OrganizationSimpleWebhooks
-from .group_0388 import RepositoryWebhooks
+from .group_0388 import EnterpriseWebhooks
+from .group_0389 import SimpleInstallation
+from .group_0390 import OrganizationSimpleWebhooks
+from .group_0391 import RepositoryWebhooks
+from .group_0431 import WebhooksRelease
 
 
-class WebhookRepositoryDeleted(GitHubModel):
-    """repository deleted event"""
+class WebhookReleaseReleased(GitHubModel):
+    """release released event"""
 
-    action: Literal["deleted"] = Field()
+    action: Literal["released"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -43,13 +44,19 @@ class WebhookRepositoryDeleted(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
+    release: WebhooksRelease = Field(
+        title="Release",
+        description="The [release](https://docs.github.com/rest/releases/releases/#get-a-release) object.",
+    )
     repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    sender: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
+    )
 
 
-model_rebuild(WebhookRepositoryDeleted)
+model_rebuild(WebhookReleaseReleased)
 
-__all__ = ("WebhookRepositoryDeleted",)
+__all__ = ("WebhookReleaseReleased",)

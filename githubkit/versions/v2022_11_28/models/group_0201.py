@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -17,61 +17,28 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0002 import SimpleUser
-from .group_0200 import DiffEntry
-from .group_0202 import CommitPropCommit
 
+class DiffEntry(GitHubModel):
+    """Diff Entry
 
-class Commit(GitHubModel):
-    """Commit
-
-    Commit
+    Diff Entry
     """
 
-    url: str = Field()
     sha: str = Field()
-    node_id: str = Field()
-    html_url: str = Field()
-    comments_url: str = Field()
-    commit: CommitPropCommit = Field()
-    author: Union[SimpleUser, EmptyObject, None] = Field()
-    committer: Union[SimpleUser, EmptyObject, None] = Field()
-    parents: list[CommitPropParentsItems] = Field()
-    stats: Missing[CommitPropStats] = Field(default=UNSET)
-    files: Missing[list[DiffEntry]] = Field(default=UNSET)
+    filename: str = Field()
+    status: Literal[
+        "added", "removed", "modified", "renamed", "copied", "changed", "unchanged"
+    ] = Field()
+    additions: int = Field()
+    deletions: int = Field()
+    changes: int = Field()
+    blob_url: Union[str, None] = Field()
+    raw_url: Union[str, None] = Field()
+    contents_url: str = Field()
+    patch: Missing[str] = Field(default=UNSET)
+    previous_filename: Missing[str] = Field(default=UNSET)
 
 
-class EmptyObject(GitHubModel):
-    """Empty Object
+model_rebuild(DiffEntry)
 
-    An object without any properties.
-    """
-
-
-class CommitPropParentsItems(GitHubModel):
-    """CommitPropParentsItems"""
-
-    sha: str = Field()
-    url: str = Field()
-    html_url: Missing[str] = Field(default=UNSET)
-
-
-class CommitPropStats(GitHubModel):
-    """CommitPropStats"""
-
-    additions: Missing[int] = Field(default=UNSET)
-    deletions: Missing[int] = Field(default=UNSET)
-    total: Missing[int] = Field(default=UNSET)
-
-
-model_rebuild(Commit)
-model_rebuild(EmptyObject)
-model_rebuild(CommitPropParentsItems)
-model_rebuild(CommitPropStats)
-
-__all__ = (
-    "Commit",
-    "CommitPropParentsItems",
-    "CommitPropStats",
-    "EmptyObject",
-)
+__all__ = ("DiffEntry",)

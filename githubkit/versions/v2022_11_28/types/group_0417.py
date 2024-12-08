@@ -9,30 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksProjectType(TypedDict):
-    """Project"""
+class WebhooksMembershipType(TypedDict):
+    """Membership
 
-    body: Union[str, None]
-    columns_url: str
-    created_at: datetime
-    creator: Union[WebhooksProjectPropCreatorType, None]
-    html_url: str
-    id: int
-    name: str
-    node_id: str
-    number: int
-    owner_url: str
-    state: Literal["open", "closed"]
-    updated_at: datetime
+    The membership between the user and the organization. Not present when the
+    action is `member_invited`.
+    """
+
+    organization_url: str
+    role: str
+    state: str
     url: str
+    user: Union[WebhooksMembershipPropUserType, None]
 
 
-class WebhooksProjectPropCreatorType(TypedDict):
+class WebhooksMembershipPropUserType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -60,6 +55,6 @@ class WebhooksProjectPropCreatorType(TypedDict):
 
 
 __all__ = (
-    "WebhooksProjectPropCreatorType",
-    "WebhooksProjectType",
+    "WebhooksMembershipPropUserType",
+    "WebhooksMembershipType",
 )

@@ -19,39 +19,37 @@ from githubkit.utils import UNSET
 
 from .group_0002 import SimpleUser
 from .group_0008 import Integration
+from .group_0056 import Team
 
 
-class ReviewDismissedIssueEvent(GitHubModel):
-    """Review Dismissed Issue Event
+class ReviewRequestRemovedIssueEvent(GitHubModel):
+    """Review Request Removed Issue Event
 
-    Review Dismissed Issue Event
+    Review Request Removed Issue Event
     """
 
     id: int = Field()
     node_id: str = Field()
     url: str = Field()
     actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: Literal["review_dismissed"] = Field()
+    event: Literal["review_request_removed"] = Field()
     commit_id: Union[str, None] = Field()
     commit_url: Union[str, None] = Field()
     created_at: str = Field()
     performed_via_github_app: Union[None, Integration, None] = Field()
-    dismissed_review: ReviewDismissedIssueEventPropDismissedReview = Field()
+    review_requester: SimpleUser = Field(
+        title="Simple User", description="A GitHub user."
+    )
+    requested_team: Missing[Team] = Field(
+        default=UNSET,
+        title="Team",
+        description="Groups of organization members that gives permissions on specified repositories.",
+    )
+    requested_reviewer: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
+    )
 
 
-class ReviewDismissedIssueEventPropDismissedReview(GitHubModel):
-    """ReviewDismissedIssueEventPropDismissedReview"""
+model_rebuild(ReviewRequestRemovedIssueEvent)
 
-    state: str = Field()
-    review_id: int = Field()
-    dismissal_message: Union[str, None] = Field()
-    dismissal_commit_id: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(ReviewDismissedIssueEvent)
-model_rebuild(ReviewDismissedIssueEventPropDismissedReview)
-
-__all__ = (
-    "ReviewDismissedIssueEvent",
-    "ReviewDismissedIssueEventPropDismissedReview",
-)
+__all__ = ("ReviewRequestRemovedIssueEvent",)

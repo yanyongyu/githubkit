@@ -1629,6 +1629,8 @@ class CodeScanningClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         state: Missing[Literal["configured", "not-configured"]] = UNSET,
+        runner_type: Missing[Literal["standard", "labeled"]] = UNSET,
+        runner_label: Missing[Union[str, None]] = UNSET,
         query_suite: Missing[Literal["default", "extended"]] = UNSET,
         languages: Missing[
             list[
@@ -1710,6 +1712,8 @@ class CodeScanningClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         state: Missing[Literal["configured", "not-configured"]] = UNSET,
+        runner_type: Missing[Literal["standard", "labeled"]] = UNSET,
+        runner_label: Missing[Union[str, None]] = UNSET,
         query_suite: Missing[Literal["default", "extended"]] = UNSET,
         languages: Missing[
             list[

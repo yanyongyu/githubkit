@@ -10,62 +10,64 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0002 import SimpleUser
-from .group_0008 import Integration
+from .group_0056 import Team
 
 
-class Deployment(GitHubModel):
-    """Deployment
+class PendingDeploymentPropReviewersItems(GitHubModel):
+    """PendingDeploymentPropReviewersItems"""
 
-    A request for a specific ref(branch,sha,tag) to be deployed
+    type: Missing[Literal["User", "Team"]] = Field(
+        default=UNSET, description="The type of reviewer."
+    )
+    reviewer: Missing[Union[SimpleUser, Team]] = Field(default=UNSET)
+
+
+class PendingDeployment(GitHubModel):
+    """Pending Deployment
+
+    Details of a deployment that is waiting for protection rules to pass
     """
 
-    url: str = Field()
-    id: int = Field(description="Unique identifier of the deployment")
-    node_id: str = Field()
-    sha: str = Field()
-    ref: str = Field(
-        description="The ref to deploy. This can be a branch, tag, or sha."
+    environment: PendingDeploymentPropEnvironment = Field()
+    wait_timer: int = Field(description="The set duration of the wait timer")
+    wait_timer_started_at: Union[datetime, None] = Field(
+        description="The time that the wait timer began."
     )
-    task: str = Field(description="Parameter to specify a task to execute")
-    payload: Union[DeploymentPropPayloadOneof0, str] = Field()
-    original_environment: Missing[str] = Field(default=UNSET)
-    environment: str = Field(description="Name for the target deployment environment.")
-    description: Union[str, None] = Field()
-    creator: Union[None, SimpleUser] = Field()
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    statuses_url: str = Field()
-    repository_url: str = Field()
-    transient_environment: Missing[bool] = Field(
-        default=UNSET,
-        description="Specifies if the given environment is will no longer exist at some point in the future. Default: false.",
+    current_user_can_approve: bool = Field(
+        description="Whether the currently authenticated user can approve the deployment"
     )
-    production_environment: Missing[bool] = Field(
-        default=UNSET,
-        description="Specifies if the given environment is one that end-users directly interact with. Default: false.",
-    )
-    performed_via_github_app: Missing[Union[None, Integration, None]] = Field(
-        default=UNSET
+    reviewers: list[PendingDeploymentPropReviewersItems] = Field(
+        description="The people or teams that may approve jobs that reference the environment. You can list up to six users or teams as reviewers. The reviewers must have at least read access to the repository. Only one of the required reviewers needs to approve the job for it to proceed."
     )
 
 
-class DeploymentPropPayloadOneof0(ExtraGitHubModel):
-    """DeploymentPropPayloadOneof0"""
+class PendingDeploymentPropEnvironment(GitHubModel):
+    """PendingDeploymentPropEnvironment"""
+
+    id: Missing[int] = Field(default=UNSET, description="The id of the environment.")
+    node_id: Missing[str] = Field(default=UNSET)
+    name: Missing[str] = Field(
+        default=UNSET, description="The name of the environment."
+    )
+    url: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(Deployment)
-model_rebuild(DeploymentPropPayloadOneof0)
+model_rebuild(PendingDeploymentPropReviewersItems)
+model_rebuild(PendingDeployment)
+model_rebuild(PendingDeploymentPropEnvironment)
 
 __all__ = (
-    "Deployment",
-    "DeploymentPropPayloadOneof0",
+    "PendingDeployment",
+    "PendingDeploymentPropEnvironment",
+    "PendingDeploymentPropReviewersItems",
 )

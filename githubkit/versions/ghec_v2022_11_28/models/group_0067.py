@@ -9,99 +9,103 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class ActionsBillingUsage(GitHubModel):
-    """ActionsBillingUsage"""
-
-    total_minutes_used: int = Field(
-        description="The sum of the free and paid GitHub Actions minutes used."
-    )
-    total_paid_minutes_used: int = Field(
-        description="The total paid GitHub Actions minutes used."
-    )
-    included_minutes: int = Field(
-        description="The amount of free GitHub Actions minutes available."
-    )
-    minutes_used_breakdown: ActionsBillingUsagePropMinutesUsedBreakdown = Field()
+from .group_0002 import SimpleUser
+from .group_0051 import SimpleRepository
 
 
-class ActionsBillingUsagePropMinutesUsedBreakdown(GitHubModel):
-    """ActionsBillingUsagePropMinutesUsedBreakdown"""
+class OrganizationSecretScanningAlert(GitHubModel):
+    """OrganizationSecretScanningAlert"""
 
-    ubuntu: Missing[int] = Field(
-        default=UNSET,
-        alias="UBUNTU",
-        description="Total minutes used on Ubuntu runner machines.",
+    number: Missing[int] = Field(
+        default=UNSET, description="The security alert number."
     )
-    macos: Missing[int] = Field(
+    created_at: Missing[datetime] = Field(
         default=UNSET,
-        alias="MACOS",
-        description="Total minutes used on macOS runner machines.",
+        description="The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
     )
-    windows: Missing[int] = Field(
+    updated_at: Missing[Union[None, datetime]] = Field(default=UNSET)
+    url: Missing[str] = Field(
+        default=UNSET, description="The REST API URL of the alert resource."
+    )
+    html_url: Missing[str] = Field(
+        default=UNSET, description="The GitHub URL of the alert resource."
+    )
+    locations_url: Missing[str] = Field(
         default=UNSET,
-        alias="WINDOWS",
-        description="Total minutes used on Windows runner machines.",
+        description="The REST API URL of the code locations for this alert.",
     )
-    ubuntu_4_core: Missing[int] = Field(
+    state: Missing[Literal["open", "resolved"]] = Field(
         default=UNSET,
-        description="Total minutes used on Ubuntu 4 core runner machines.",
+        description="Sets the state of the secret scanning alert. You must provide `resolution` when you set the state to `resolved`.",
     )
-    ubuntu_8_core: Missing[int] = Field(
+    resolution: Missing[
+        Union[None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]]
+    ] = Field(
         default=UNSET,
-        description="Total minutes used on Ubuntu 8 core runner machines.",
+        description="**Required when the `state` is `resolved`.** The reason for resolving the alert.",
     )
-    ubuntu_16_core: Missing[int] = Field(
+    resolved_at: Missing[Union[datetime, None]] = Field(
         default=UNSET,
-        description="Total minutes used on Ubuntu 16 core runner machines.",
+        description="The time that the alert was resolved in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
     )
-    ubuntu_32_core: Missing[int] = Field(
+    resolved_by: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
+    secret_type: Missing[str] = Field(
+        default=UNSET, description="The type of secret that secret scanning detected."
+    )
+    secret_type_display_name: Missing[str] = Field(
         default=UNSET,
-        description="Total minutes used on Ubuntu 32 core runner machines.",
+        description='User-friendly name for the detected secret, matching the `secret_type`.\nFor a list of built-in patterns, see "[Supported secret scanning patterns](https://docs.github.com/enterprise-cloud@latest//code-security/secret-scanning/introduction/supported-secret-scanning-patterns#supported-secrets)."',
     )
-    ubuntu_64_core: Missing[int] = Field(
+    secret: Missing[str] = Field(
+        default=UNSET, description="The secret that was detected."
+    )
+    repository: Missing[SimpleRepository] = Field(
+        default=UNSET, title="Simple Repository", description="A GitHub repository."
+    )
+    push_protection_bypassed: Missing[Union[bool, None]] = Field(
         default=UNSET,
-        description="Total minutes used on Ubuntu 64 core runner machines.",
+        description="Whether push protection was bypassed for the detected secret.",
     )
-    windows_4_core: Missing[int] = Field(
+    push_protection_bypassed_by: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
+    push_protection_bypassed_at: Missing[Union[datetime, None]] = Field(
         default=UNSET,
-        description="Total minutes used on Windows 4 core runner machines.",
+        description="The time that push protection was bypassed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
     )
-    windows_8_core: Missing[int] = Field(
+    push_protection_bypass_request_reviewer: Missing[Union[None, SimpleUser]] = Field(
+        default=UNSET
+    )
+    push_protection_bypass_request_comment: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="Total minutes used on Windows 8 core runner machines.",
+        description="An optional comment when requesting a push protection bypass.",
     )
-    windows_16_core: Missing[int] = Field(
+    push_protection_bypass_request_html_url: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The URL to a push protection bypass request."
+    )
+    resolution_comment: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="Total minutes used on Windows 16 core runner machines.",
+        description="The comment that was optionally added when this alert was closed",
     )
-    windows_32_core: Missing[int] = Field(
+    validity: Missing[Literal["active", "inactive", "unknown"]] = Field(
+        default=UNSET, description="The token status as of the latest validity check."
+    )
+    publicly_leaked: Missing[Union[bool, None]] = Field(
+        default=UNSET, description="Whether the secret was publicly leaked."
+    )
+    multi_repo: Missing[Union[bool, None]] = Field(
         default=UNSET,
-        description="Total minutes used on Windows 32 core runner machines.",
-    )
-    windows_64_core: Missing[int] = Field(
-        default=UNSET,
-        description="Total minutes used on Windows 64 core runner machines.",
-    )
-    macos_12_core: Missing[int] = Field(
-        default=UNSET,
-        description="Total minutes used on macOS 12 core runner machines.",
-    )
-    total: Missing[int] = Field(
-        default=UNSET, description="Total minutes used on all runner machines."
+        description="Whether the detected secret was found in multiple repositories in the same organization or enterprise.",
     )
 
 
-model_rebuild(ActionsBillingUsage)
-model_rebuild(ActionsBillingUsagePropMinutesUsedBreakdown)
+model_rebuild(OrganizationSecretScanningAlert)
 
-__all__ = (
-    "ActionsBillingUsage",
-    "ActionsBillingUsagePropMinutesUsedBreakdown",
-)
+__all__ = ("OrganizationSecretScanningAlert",)

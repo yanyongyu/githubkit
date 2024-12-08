@@ -13,21 +13,23 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0002 import SimpleUserType
-from .group_0386 import SimpleInstallationType
-from .group_0387 import OrganizationSimpleWebhooksType
-from .group_0388 import RepositoryWebhooksType
-from .group_0391 import CheckRunWithSimpleCheckSuiteType
+from .group_0388 import EnterpriseWebhooksType
+from .group_0389 import SimpleInstallationType
+from .group_0390 import OrganizationSimpleWebhooksType
+from .group_0391 import RepositoryWebhooksType
+from .group_0392 import WebhooksRuleType
 
 
-class WebhookCheckRunCompletedType(TypedDict):
-    """Check Run Completed Event"""
+class WebhookBranchProtectionRuleCreatedType(TypedDict):
+    """branch protection rule created event"""
 
-    action: Literal["completed"]
-    check_run: CheckRunWithSimpleCheckSuiteType
+    action: Literal["created"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
+    rule: WebhooksRuleType
     sender: SimpleUserType
 
 
-__all__ = ("WebhookCheckRunCompletedType",)
+__all__ = ("WebhookBranchProtectionRuleCreatedType",)

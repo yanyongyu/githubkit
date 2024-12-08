@@ -18,17 +18,16 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0002 import SimpleUser
-from .group_0385 import EnterpriseWebhooks
-from .group_0386 import SimpleInstallation
-from .group_0387 import OrganizationSimpleWebhooks
-from .group_0388 import RepositoryWebhooks
-from .group_0389 import WebhooksRule
+from .group_0388 import EnterpriseWebhooks
+from .group_0389 import SimpleInstallation
+from .group_0390 import OrganizationSimpleWebhooks
+from .group_0391 import RepositoryWebhooks
 
 
-class WebhookBranchProtectionRuleDeleted(GitHubModel):
-    """branch protection rule deleted event"""
+class WebhookBranchProtectionConfigurationDisabled(GitHubModel):
+    """branch protection configuration disabled event"""
 
-    action: Literal["deleted"] = Field()
+    action: Literal["disabled"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -48,13 +47,9 @@ class WebhookBranchProtectionRuleDeleted(GitHubModel):
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    rule: WebhooksRule = Field(
-        title="branch protection rule",
-        description="The branch protection rule. Includes a `name` and all the [branch protection settings](https://docs.github.com/github/administering-a-repository/defining-the-mergeability-of-pull-requests/about-protected-branches#about-branch-protection-settings) applied to branches that match the name. Binary settings are boolean. Multi-level configurations are one of `off`, `non_admins`, or `everyone`. Actor and build lists are arrays of strings.",
-    )
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookBranchProtectionRuleDeleted)
+model_rebuild(WebhookBranchProtectionConfigurationDisabled)
 
-__all__ = ("WebhookBranchProtectionRuleDeleted",)
+__all__ = ("WebhookBranchProtectionConfigurationDisabled",)

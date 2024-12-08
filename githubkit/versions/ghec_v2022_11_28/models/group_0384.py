@@ -12,23 +12,15 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class TagProtection(GitHubModel):
-    """Tag protection
+class ParticipationStats(GitHubModel):
+    """Participation Stats"""
 
-    Tag protection
-    """
-
-    id: Missing[int] = Field(default=UNSET)
-    created_at: Missing[str] = Field(default=UNSET)
-    updated_at: Missing[str] = Field(default=UNSET)
-    enabled: Missing[bool] = Field(default=UNSET)
-    pattern: str = Field()
+    all_: list[int] = Field(alias="all")
+    owner: list[int] = Field()
 
 
-model_rebuild(TagProtection)
+model_rebuild(ParticipationStats)
 
-__all__ = ("TagProtection",)
+__all__ = ("ParticipationStats",)

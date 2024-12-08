@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,15 +18,16 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0002 import SimpleUser
-from .group_0386 import SimpleInstallation
-from .group_0387 import OrganizationSimpleWebhooks
-from .group_0419 import ProjectsV2
+from .group_0389 import SimpleInstallation
+from .group_0390 import OrganizationSimpleWebhooks
+from .group_0424 import ProjectsV2Item
 
 
-class WebhookProjectsV2ProjectReopened(GitHubModel):
-    """Projects v2 Project Reopened Event"""
+class WebhookProjectsV2ItemConverted(GitHubModel):
+    """Projects v2 Item Converted Event"""
 
-    action: Literal["reopened"] = Field()
+    action: Literal["converted"] = Field()
+    changes: WebhookProjectsV2ItemConvertedPropChanges = Field()
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
         title="Simple Installation",
@@ -36,12 +37,33 @@ class WebhookProjectsV2ProjectReopened(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    projects_v2: ProjectsV2 = Field(
-        title="Projects v2 Project", description="A projects v2 project"
+    projects_v2_item: ProjectsV2Item = Field(
+        title="Projects v2 Item", description="An item belonging to a project"
     )
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookProjectsV2ProjectReopened)
+class WebhookProjectsV2ItemConvertedPropChanges(GitHubModel):
+    """WebhookProjectsV2ItemConvertedPropChanges"""
 
-__all__ = ("WebhookProjectsV2ProjectReopened",)
+    content_type: Missing[WebhookProjectsV2ItemConvertedPropChangesPropContentType] = (
+        Field(default=UNSET)
+    )
+
+
+class WebhookProjectsV2ItemConvertedPropChangesPropContentType(GitHubModel):
+    """WebhookProjectsV2ItemConvertedPropChangesPropContentType"""
+
+    from_: Missing[Union[str, None]] = Field(default=UNSET, alias="from")
+    to: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(WebhookProjectsV2ItemConverted)
+model_rebuild(WebhookProjectsV2ItemConvertedPropChanges)
+model_rebuild(WebhookProjectsV2ItemConvertedPropChangesPropContentType)
+
+__all__ = (
+    "WebhookProjectsV2ItemConverted",
+    "WebhookProjectsV2ItemConvertedPropChanges",
+    "WebhookProjectsV2ItemConvertedPropChangesPropContentType",
+)

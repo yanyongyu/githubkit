@@ -11,13 +11,9 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0135 import CustomPropertyType
+
+class OrgsOrgOutsideCollaboratorsUsernamePutResponse202Type(TypedDict):
+    """OrgsOrgOutsideCollaboratorsUsernamePutResponse202"""
 
 
-class OrgsOrgPropertiesSchemaPatchBodyType(TypedDict):
-    """OrgsOrgPropertiesSchemaPatchBody"""
-
-    properties: list[CustomPropertyType]
-
-
-__all__ = ("OrgsOrgPropertiesSchemaPatchBodyType",)
+__all__ = ("OrgsOrgOutsideCollaboratorsUsernamePutResponse202Type",)

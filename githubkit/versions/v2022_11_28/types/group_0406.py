@@ -13,32 +13,55 @@ from datetime import datetime
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0008 import IntegrationType
 
-class WebhooksMilestoneType(TypedDict):
-    """Milestone
 
-    A collection of related issues and pull requests.
+class WebhooksIssueCommentType(TypedDict):
+    """issue comment
+
+    The [comment](https://docs.github.com/rest/issues/comments#get-an-issue-comment)
+    itself.
     """
 
-    closed_at: Union[datetime, None]
-    closed_issues: int
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    body: str
     created_at: datetime
-    creator: Union[WebhooksMilestonePropCreatorType, None]
-    description: Union[str, None]
-    due_on: Union[datetime, None]
     html_url: str
     id: int
-    labels_url: str
+    issue_url: str
     node_id: str
-    number: int
-    open_issues: int
-    state: Literal["open", "closed"]
-    title: str
+    performed_via_github_app: Union[IntegrationType, None]
+    reactions: WebhooksIssueCommentPropReactionsType
     updated_at: datetime
+    url: str
+    user: Union[WebhooksIssueCommentPropUserType, None]
+
+
+class WebhooksIssueCommentPropReactionsType(TypedDict):
+    """Reactions"""
+
+    plus_one: int
+    minus_one: int
+    confused: int
+    eyes: int
+    heart: int
+    hooray: int
+    laugh: int
+    rocket: int
+    total_count: int
     url: str
 
 
-class WebhooksMilestonePropCreatorType(TypedDict):
+class WebhooksIssueCommentPropUserType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -66,6 +89,7 @@ class WebhooksMilestonePropCreatorType(TypedDict):
 
 
 __all__ = (
-    "WebhooksMilestonePropCreatorType",
-    "WebhooksMilestoneType",
+    "WebhooksIssueCommentPropReactionsType",
+    "WebhooksIssueCommentPropUserType",
+    "WebhooksIssueCommentType",
 )

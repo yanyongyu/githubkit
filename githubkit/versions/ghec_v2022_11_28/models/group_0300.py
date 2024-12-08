@@ -9,35 +9,97 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class GitRef(GitHubModel):
-    """Git Reference
+class GitCommit(GitHubModel):
+    """Git Commit
 
-    Git references within a repository
+    Low-level Git commit operations within a repository
     """
 
-    ref: str = Field()
+    sha: str = Field(description="SHA for the commit")
     node_id: str = Field()
     url: str = Field()
-    object_: GitRefPropObject = Field(alias="object")
+    author: GitCommitPropAuthor = Field(
+        description="Identifying information for the git-user"
+    )
+    committer: GitCommitPropCommitter = Field(
+        description="Identifying information for the git-user"
+    )
+    message: str = Field(description="Message describing the purpose of the commit")
+    tree: GitCommitPropTree = Field()
+    parents: list[GitCommitPropParentsItems] = Field()
+    verification: GitCommitPropVerification = Field()
+    html_url: str = Field()
 
 
-class GitRefPropObject(GitHubModel):
-    """GitRefPropObject"""
+class GitCommitPropAuthor(GitHubModel):
+    """GitCommitPropAuthor
 
-    type: str = Field()
-    sha: str = Field(min_length=40, max_length=40, description="SHA for the reference")
+    Identifying information for the git-user
+    """
+
+    date: datetime = Field(description="Timestamp of the commit")
+    email: str = Field(description="Git email address of the user")
+    name: str = Field(description="Name of the git user")
+
+
+class GitCommitPropCommitter(GitHubModel):
+    """GitCommitPropCommitter
+
+    Identifying information for the git-user
+    """
+
+    date: datetime = Field(description="Timestamp of the commit")
+    email: str = Field(description="Git email address of the user")
+    name: str = Field(description="Name of the git user")
+
+
+class GitCommitPropTree(GitHubModel):
+    """GitCommitPropTree"""
+
+    sha: str = Field(description="SHA for the commit")
     url: str = Field()
 
 
-model_rebuild(GitRef)
-model_rebuild(GitRefPropObject)
+class GitCommitPropParentsItems(GitHubModel):
+    """GitCommitPropParentsItems"""
+
+    sha: str = Field(description="SHA for the commit")
+    url: str = Field()
+    html_url: str = Field()
+
+
+class GitCommitPropVerification(GitHubModel):
+    """GitCommitPropVerification"""
+
+    verified: bool = Field()
+    reason: str = Field()
+    signature: Union[str, None] = Field()
+    payload: Union[str, None] = Field()
+    verified_at: Missing[Union[str, None]] = Field(default=UNSET)
+
+
+model_rebuild(GitCommit)
+model_rebuild(GitCommitPropAuthor)
+model_rebuild(GitCommitPropCommitter)
+model_rebuild(GitCommitPropTree)
+model_rebuild(GitCommitPropParentsItems)
+model_rebuild(GitCommitPropVerification)
 
 __all__ = (
-    "GitRef",
-    "GitRefPropObject",
+    "GitCommit",
+    "GitCommitPropAuthor",
+    "GitCommitPropCommitter",
+    "GitCommitPropParentsItems",
+    "GitCommitPropTree",
+    "GitCommitPropVerification",
 )

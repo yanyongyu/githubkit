@@ -12,35 +12,51 @@ from __future__ import annotations
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0405 import SearchResultTextMatchesItemsType
+from .group_0002 import SimpleUserType
+from .group_0092 import MinimalRepositoryType
+from .group_0227 import GitUserType
+from .group_0408 import SearchResultTextMatchesItemsType
+from .group_0411 import CommitSearchResultItemPropCommitType
 
 
-class LabelSearchResultItemType(TypedDict):
-    """Label Search Result Item
+class CommitSearchResultItemType(TypedDict):
+    """Commit Search Result Item
 
-    Label Search Result Item
+    Commit Search Result Item
     """
 
-    id: int
-    node_id: str
     url: str
-    name: str
-    color: str
-    default: bool
-    description: Union[str, None]
+    sha: str
+    html_url: str
+    comments_url: str
+    commit: CommitSearchResultItemPropCommitType
+    author: Union[None, SimpleUserType]
+    committer: Union[None, GitUserType]
+    parents: list[CommitSearchResultItemPropParentsItemsType]
+    repository: MinimalRepositoryType
     score: float
+    node_id: str
     text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
 
 
-class SearchLabelsGetResponse200Type(TypedDict):
-    """SearchLabelsGetResponse200"""
+class CommitSearchResultItemPropParentsItemsType(TypedDict):
+    """CommitSearchResultItemPropParentsItems"""
+
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    sha: NotRequired[str]
+
+
+class SearchCommitsGetResponse200Type(TypedDict):
+    """SearchCommitsGetResponse200"""
 
     total_count: int
     incomplete_results: bool
-    items: list[LabelSearchResultItemType]
+    items: list[CommitSearchResultItemType]
 
 
 __all__ = (
-    "LabelSearchResultItemType",
-    "SearchLabelsGetResponse200Type",
+    "CommitSearchResultItemPropParentsItemsType",
+    "CommitSearchResultItemType",
+    "SearchCommitsGetResponse200Type",
 )

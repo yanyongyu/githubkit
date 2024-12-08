@@ -9,42 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0392 import Meta
 
+class GroupResponse(GitHubModel):
+    """GroupResponse"""
 
-class ScimEnterpriseGroupResponseAllof1(GitHubModel):
-    """ScimEnterpriseGroupResponseAllof1"""
-
-    id: Missing[str] = Field(
-        default=UNSET, description="The internally generated id for the group object."
+    schemas: list[
+        Literal[
+            "urn:ietf:params:scim:schemas:core:2.0:Group",
+            "urn:ietf:params:scim:api:messages:2.0:ListResponse",
+        ]
+    ] = Field(
+        description="The URIs that are used to indicate the namespaces of the SCIM schemas."
     )
-    members: Missing[list[ScimEnterpriseGroupResponseAllof1PropMembersItems]] = Field(
-        default=UNSET, description="The security group members."
-    )
-    meta: Missing[Meta] = Field(
+    external_id: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="The metadata associated with the creation/updates to the user.",
+        alias="externalId",
+        description="A unique identifier for the resource as defined by the provisioning client.",
+    )
+    display_name: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        alias="displayName",
+        description="A human-readable name for a security group.",
+    )
+    members: Missing[list[GroupResponsePropMembersItems]] = Field(
+        default=UNSET, description="The group members."
     )
 
 
-class ScimEnterpriseGroupResponseAllof1PropMembersItems(GitHubModel):
-    """ScimEnterpriseGroupResponseAllof1PropMembersItems"""
+class GroupResponsePropMembersItems(GitHubModel):
+    """GroupResponsePropMembersItems"""
 
-    value: Missing[str] = Field(default=UNSET)
-    ref: Missing[str] = Field(default=UNSET, alias="$ref")
-    display: Missing[str] = Field(default=UNSET)
+    value: str = Field(description="The local unique identifier for the member")
+    ref: str = Field(alias="$ref")
+    display: Missing[str] = Field(
+        default=UNSET, description="The display name associated with the member"
+    )
 
 
-model_rebuild(ScimEnterpriseGroupResponseAllof1)
-model_rebuild(ScimEnterpriseGroupResponseAllof1PropMembersItems)
+model_rebuild(GroupResponse)
+model_rebuild(GroupResponsePropMembersItems)
 
 __all__ = (
-    "ScimEnterpriseGroupResponseAllof1",
-    "ScimEnterpriseGroupResponseAllof1PropMembersItems",
+    "GroupResponse",
+    "GroupResponsePropMembersItems",
 )

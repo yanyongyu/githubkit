@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Literal, Union
 
 from pydantic import Field
@@ -19,54 +18,40 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class WebhooksAnswer(GitHubModel):
-    """WebhooksAnswer"""
+class WebhooksApprover(GitHubModel):
+    """WebhooksApprover"""
 
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ] = Field(
-        title="AuthorAssociation",
-        description="How the author is associated with the repository.",
+    avatar_url: Missing[str] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: Missing[int] = Field(default=UNSET)
+    login: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[str] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
+
+
+class WebhooksReviewersItems(GitHubModel):
+    """WebhooksReviewersItems"""
+
+    reviewer: Missing[Union[WebhooksReviewersItemsPropReviewer, None]] = Field(
+        default=UNSET, title="User"
     )
-    body: str = Field()
-    child_comment_count: int = Field()
-    created_at: datetime = Field()
-    discussion_id: int = Field()
-    html_url: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    parent_id: None = Field()
-    reactions: Missing[WebhooksAnswerPropReactions] = Field(
-        default=UNSET, title="Reactions"
-    )
-    repository_url: str = Field()
-    updated_at: datetime = Field()
-    user: Union[WebhooksAnswerPropUser, None] = Field(title="User")
+    type: Missing[Literal["User"]] = Field(default=UNSET)
 
 
-class WebhooksAnswerPropReactions(GitHubModel):
-    """Reactions"""
-
-    plus_one: int = Field(alias="+1")
-    minus_one: int = Field(alias="-1")
-    confused: int = Field()
-    eyes: int = Field()
-    heart: int = Field()
-    hooray: int = Field()
-    laugh: int = Field()
-    rocket: int = Field()
-    total_count: int = Field()
-    url: str = Field()
-
-
-class WebhooksAnswerPropUser(GitHubModel):
+class WebhooksReviewersItemsPropReviewer(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -90,15 +75,14 @@ class WebhooksAnswerPropUser(GitHubModel):
     subscriptions_url: Missing[str] = Field(default=UNSET)
     type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
     url: Missing[str] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhooksAnswer)
-model_rebuild(WebhooksAnswerPropReactions)
-model_rebuild(WebhooksAnswerPropUser)
+model_rebuild(WebhooksApprover)
+model_rebuild(WebhooksReviewersItems)
+model_rebuild(WebhooksReviewersItemsPropReviewer)
 
 __all__ = (
-    "WebhooksAnswer",
-    "WebhooksAnswerPropReactions",
-    "WebhooksAnswerPropUser",
+    "WebhooksApprover",
+    "WebhooksReviewersItems",
+    "WebhooksReviewersItemsPropReviewer",
 )

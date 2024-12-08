@@ -9,48 +9,63 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksMarketplacePurchaseType(TypedDict):
-    """Marketplace Purchase"""
+class WebhooksMilestoneType(TypedDict):
+    """Milestone
 
-    account: WebhooksMarketplacePurchasePropAccountType
-    billing_cycle: str
-    free_trial_ends_on: Union[str, None]
-    next_billing_date: Union[str, None]
-    on_free_trial: bool
-    plan: WebhooksMarketplacePurchasePropPlanType
-    unit_count: int
+    A collection of related issues and pull requests.
+    """
+
+    closed_at: Union[datetime, None]
+    closed_issues: int
+    created_at: datetime
+    creator: Union[WebhooksMilestonePropCreatorType, None]
+    description: Union[str, None]
+    due_on: Union[datetime, None]
+    html_url: str
+    id: int
+    labels_url: str
+    node_id: str
+    number: int
+    open_issues: int
+    state: Literal["open", "closed"]
+    title: str
+    updated_at: datetime
+    url: str
 
 
-class WebhooksMarketplacePurchasePropAccountType(TypedDict):
-    """WebhooksMarketplacePurchasePropAccount"""
+class WebhooksMilestonePropCreatorType(TypedDict):
+    """User"""
 
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
     id: int
     login: str
-    node_id: str
-    organization_billing_email: Union[str, None]
-    type: str
-
-
-class WebhooksMarketplacePurchasePropPlanType(TypedDict):
-    """WebhooksMarketplacePurchasePropPlan"""
-
-    bullets: list[Union[str, None]]
-    description: str
-    has_free_trial: bool
-    id: int
-    monthly_price_in_cents: int
-    name: str
-    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
-    unit_name: Union[str, None]
-    yearly_price_in_cents: int
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
 __all__ = (
-    "WebhooksMarketplacePurchasePropAccountType",
-    "WebhooksMarketplacePurchasePropPlanType",
-    "WebhooksMarketplacePurchaseType",
+    "WebhooksMilestonePropCreatorType",
+    "WebhooksMilestoneType",
 )

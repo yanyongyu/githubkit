@@ -18,17 +18,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0002 import SimpleUser
-from .group_0427 import EnterpriseWebhooks
-from .group_0428 import SimpleInstallation
-from .group_0429 import OrganizationSimpleWebhooks
-from .group_0430 import RepositoryWebhooks
-from .group_0778 import WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisory
+from .group_0430 import EnterpriseWebhooks
+from .group_0431 import SimpleInstallation
+from .group_0432 import OrganizationSimpleWebhooks
+from .group_0433 import RepositoryWebhooks
+from .group_0478 import SecretScanningAlertWebhook
 
 
-class WebhookSecurityAdvisoryWithdrawn(GitHubModel):
-    """security_advisory withdrawn event"""
+class WebhookSecretScanningAlertPubliclyLeaked(GitHubModel):
+    """secret_scanning_alert publicly leaked event"""
 
-    action: Literal["withdrawn"] = Field()
+    action: Literal["publicly_leaked"] = Field()
+    alert: SecretScanningAlertWebhook = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -44,19 +45,15 @@ class WebhookSecurityAdvisoryWithdrawn(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repository: Missing[RepositoryWebhooks] = Field(
-        default=UNSET,
+    repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
-    )
-    security_advisory: WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisory = Field(
-        description="The details of the security advisory, including summary, description, and severity."
     )
     sender: Missing[SimpleUser] = Field(
         default=UNSET, title="Simple User", description="A GitHub user."
     )
 
 
-model_rebuild(WebhookSecurityAdvisoryWithdrawn)
+model_rebuild(WebhookSecretScanningAlertPubliclyLeaked)
 
-__all__ = ("WebhookSecurityAdvisoryWithdrawn",)
+__all__ = ("WebhookSecretScanningAlertPubliclyLeaked",)

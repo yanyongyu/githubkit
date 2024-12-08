@@ -14,25 +14,31 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksProjectCardType(TypedDict):
-    """Project Card"""
+class WebhooksMilestone3Type(TypedDict):
+    """Milestone
 
-    after_id: NotRequired[Union[int, None]]
-    archived: bool
-    column_id: int
-    column_url: str
-    content_url: NotRequired[str]
+    A collection of related issues and pull requests.
+    """
+
+    closed_at: Union[datetime, None]
+    closed_issues: int
     created_at: datetime
-    creator: Union[WebhooksProjectCardPropCreatorType, None]
+    creator: Union[WebhooksMilestone3PropCreatorType, None]
+    description: Union[str, None]
+    due_on: Union[datetime, None]
+    html_url: str
     id: int
+    labels_url: str
     node_id: str
-    note: Union[str, None]
-    project_url: str
+    number: int
+    open_issues: int
+    state: Literal["open", "closed"]
+    title: str
     updated_at: datetime
     url: str
 
 
-class WebhooksProjectCardPropCreatorType(TypedDict):
+class WebhooksMilestone3PropCreatorType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -60,6 +66,6 @@ class WebhooksProjectCardPropCreatorType(TypedDict):
 
 
 __all__ = (
-    "WebhooksProjectCardPropCreatorType",
-    "WebhooksProjectCardType",
+    "WebhooksMilestone3PropCreatorType",
+    "WebhooksMilestone3Type",
 )

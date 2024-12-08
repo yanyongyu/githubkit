@@ -9,20 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import TypedDict
 
 
-class EmailType(TypedDict):
-    """Email
+class CodespacesUserPublicKeyType(TypedDict):
+    """CodespacesUserPublicKey
 
-    Email
+    The public key used for setting user Codespaces' Secrets.
     """
 
-    email: str
-    primary: bool
-    verified: bool
-    visibility: Union[str, None]
+    key_id: str
+    key: str
 
 
-__all__ = ("EmailType",)
+__all__ = ("CodespacesUserPublicKeyType",)

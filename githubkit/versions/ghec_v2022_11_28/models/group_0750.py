@@ -18,15 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0002 import SimpleUser
-from .group_0427 import EnterpriseWebhooks
-from .group_0428 import SimpleInstallation
-from .group_0429 import OrganizationSimpleWebhooks
-from .group_0430 import RepositoryWebhooks
+from .group_0186 import RepositoryAdvisory
+from .group_0430 import EnterpriseWebhooks
+from .group_0431 import SimpleInstallation
+from .group_0432 import OrganizationSimpleWebhooks
+from .group_0433 import RepositoryWebhooks
 
 
-class WebhookRepositoryImport(GitHubModel):
-    """repository_import event"""
+class WebhookRepositoryAdvisoryReported(GitHubModel):
+    """Repository advisory reported event"""
 
+    action: Literal["reported"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -46,10 +48,14 @@ class WebhookRepositoryImport(GitHubModel):
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    status: Literal["success", "cancelled", "failure"] = Field()
+    repository_advisory: RepositoryAdvisory = Field(
+        description="A repository security advisory."
+    )
+    sender: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
+    )
 
 
-model_rebuild(WebhookRepositoryImport)
+model_rebuild(WebhookRepositoryAdvisoryReported)
 
-__all__ = ("WebhookRepositoryImport",)
+__all__ = ("WebhookRepositoryAdvisoryReported",)

@@ -9,77 +9,56 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0002 import SimpleUserType
-from .group_0427 import EnterpriseWebhooksType
-from .group_0428 import SimpleInstallationType
-from .group_0429 import OrganizationSimpleWebhooksType
-from .group_0430 import RepositoryWebhooksType
+from .group_0430 import EnterpriseWebhooksType
+from .group_0431 import SimpleInstallationType
+from .group_0432 import OrganizationSimpleWebhooksType
+from .group_0433 import RepositoryWebhooksType
 
 
-class WebhookCommitCommentCreatedType(TypedDict):
-    """commit_comment created event"""
+class WebhookCodeScanningAlertFixedType(TypedDict):
+    """code_scanning_alert fixed event"""
 
-    action: Literal["created"]
-    comment: WebhookCommitCommentCreatedPropCommentType
+    action: Literal["fixed"]
+    alert: WebhookCodeScanningAlertFixedPropAlertType
+    commit_oid: str
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
+    ref: str
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookCommitCommentCreatedPropCommentType(TypedDict):
-    """WebhookCommitCommentCreatedPropComment
+class WebhookCodeScanningAlertFixedPropAlertType(TypedDict):
+    """WebhookCodeScanningAlertFixedPropAlert
 
-    The [commit
-    comment](${externalDocsUpapp/api/description/components/schemas/webhooks/issue-
-    comment-created.yamlrl}/rest/commits/comments#get-a-commit-comment) resource.
+    The code scanning alert involved in the event.
     """
 
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
+    created_at: datetime
+    dismissed_at: Union[datetime, None]
+    dismissed_by: Union[WebhookCodeScanningAlertFixedPropAlertPropDismissedByType, None]
+    dismissed_reason: Union[
+        None, Literal["false positive", "won't fix", "used in tests"]
     ]
-    body: str
-    commit_id: str
-    created_at: str
     html_url: str
-    id: int
-    line: Union[int, None]
-    node_id: str
-    path: Union[str, None]
-    position: Union[int, None]
-    reactions: NotRequired[WebhookCommitCommentCreatedPropCommentPropReactionsType]
-    updated_at: str
-    url: str
-    user: Union[WebhookCommitCommentCreatedPropCommentPropUserType, None]
-
-
-class WebhookCommitCommentCreatedPropCommentPropReactionsType(TypedDict):
-    """Reactions"""
-
-    plus_one: int
-    minus_one: int
-    confused: int
-    eyes: int
-    heart: int
-    hooray: int
-    laugh: int
-    rocket: int
-    total_count: int
+    instances_url: NotRequired[str]
+    most_recent_instance: NotRequired[
+        Union[WebhookCodeScanningAlertFixedPropAlertPropMostRecentInstanceType, None]
+    ]
+    number: int
+    rule: WebhookCodeScanningAlertFixedPropAlertPropRuleType
+    state: Literal["fixed"]
+    tool: WebhookCodeScanningAlertFixedPropAlertPropToolType
     url: str
 
 
-class WebhookCommitCommentCreatedPropCommentPropUserType(TypedDict):
+class WebhookCodeScanningAlertFixedPropAlertPropDismissedByType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -106,9 +85,72 @@ class WebhookCommitCommentCreatedPropCommentPropUserType(TypedDict):
     user_view_type: NotRequired[str]
 
 
+class WebhookCodeScanningAlertFixedPropAlertPropMostRecentInstanceType(TypedDict):
+    """Alert Instance"""
+
+    analysis_key: str
+    category: NotRequired[str]
+    classifications: NotRequired[list[str]]
+    commit_sha: NotRequired[str]
+    environment: str
+    location: NotRequired[
+        WebhookCodeScanningAlertFixedPropAlertPropMostRecentInstancePropLocationType
+    ]
+    message: NotRequired[
+        WebhookCodeScanningAlertFixedPropAlertPropMostRecentInstancePropMessageType
+    ]
+    ref: str
+    state: Literal["open", "dismissed", "fixed"]
+
+
+class WebhookCodeScanningAlertFixedPropAlertPropMostRecentInstancePropLocationType(
+    TypedDict
+):
+    """WebhookCodeScanningAlertFixedPropAlertPropMostRecentInstancePropLocation"""
+
+    end_column: NotRequired[int]
+    end_line: NotRequired[int]
+    path: NotRequired[str]
+    start_column: NotRequired[int]
+    start_line: NotRequired[int]
+
+
+class WebhookCodeScanningAlertFixedPropAlertPropMostRecentInstancePropMessageType(
+    TypedDict
+):
+    """WebhookCodeScanningAlertFixedPropAlertPropMostRecentInstancePropMessage"""
+
+    text: NotRequired[str]
+
+
+class WebhookCodeScanningAlertFixedPropAlertPropRuleType(TypedDict):
+    """WebhookCodeScanningAlertFixedPropAlertPropRule"""
+
+    description: str
+    full_description: NotRequired[str]
+    help_: NotRequired[Union[str, None]]
+    help_uri: NotRequired[Union[str, None]]
+    id: str
+    name: NotRequired[str]
+    severity: Union[None, Literal["none", "note", "warning", "error"]]
+    tags: NotRequired[Union[list[str], None]]
+
+
+class WebhookCodeScanningAlertFixedPropAlertPropToolType(TypedDict):
+    """WebhookCodeScanningAlertFixedPropAlertPropTool"""
+
+    guid: NotRequired[Union[str, None]]
+    name: str
+    version: Union[str, None]
+
+
 __all__ = (
-    "WebhookCommitCommentCreatedPropCommentPropReactionsType",
-    "WebhookCommitCommentCreatedPropCommentPropUserType",
-    "WebhookCommitCommentCreatedPropCommentType",
-    "WebhookCommitCommentCreatedType",
+    "WebhookCodeScanningAlertFixedPropAlertPropDismissedByType",
+    "WebhookCodeScanningAlertFixedPropAlertPropMostRecentInstancePropLocationType",
+    "WebhookCodeScanningAlertFixedPropAlertPropMostRecentInstancePropMessageType",
+    "WebhookCodeScanningAlertFixedPropAlertPropMostRecentInstanceType",
+    "WebhookCodeScanningAlertFixedPropAlertPropRuleType",
+    "WebhookCodeScanningAlertFixedPropAlertPropToolType",
+    "WebhookCodeScanningAlertFixedPropAlertType",
+    "WebhookCodeScanningAlertFixedType",
 )

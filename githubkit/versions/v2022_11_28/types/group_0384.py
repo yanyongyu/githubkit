@@ -9,17 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing_extensions import TypedDict
 
 
-class KeySimpleType(TypedDict):
-    """Key Simple
+class SshSigningKeyType(TypedDict):
+    """SSH Signing Key
 
-    Key Simple
+    A public SSH key used to sign Git commits
     """
 
-    id: int
     key: str
+    id: int
+    title: str
+    created_at: datetime
 
 
-__all__ = ("KeySimpleType",)
+__all__ = ("SshSigningKeyType",)

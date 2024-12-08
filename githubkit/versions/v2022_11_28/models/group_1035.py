@@ -9,39 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_1034 import ReposOwnerRepoPagesPutBodyPropSourceAnyof1
 
+class ReposOwnerRepoLabelsPostBody(GitHubModel):
+    """ReposOwnerRepoLabelsPostBody"""
 
-class ReposOwnerRepoPagesPutBodyAnyof0(GitHubModel):
-    """ReposOwnerRepoPagesPutBodyAnyof0"""
-
-    cname: Missing[Union[str, None]] = Field(
+    name: str = Field(
+        description='The name of the label. Emoji can be added to label names, using either native emoji or colon-style markup. For example, typing `:strawberry:` will render the emoji ![:strawberry:](https://github.githubassets.com/images/icons/emoji/unicode/1f353.png ":strawberry:"). For a full list of available emoji and codes, see "[Emoji cheat sheet](https://github.com/ikatyang/emoji-cheat-sheet)."'
+    )
+    color: Missing[str] = Field(
         default=UNSET,
-        description='Specify a custom domain for the repository. Sending a `null` value will remove the custom domain. For more about custom domains, see "[Using a custom domain with GitHub Pages](https://docs.github.com/pages/configuring-a-custom-domain-for-your-github-pages-site)."',
+        description="The [hexadecimal color code](http://www.color-hex.com/) for the label, without the leading `#`.",
     )
-    https_enforced: Missing[bool] = Field(
+    description: Missing[str] = Field(
         default=UNSET,
-        description="Specify whether HTTPS should be enforced for the repository.",
+        description="A short description of the label. Must be 100 characters or fewer.",
     )
-    build_type: Literal["legacy", "workflow"] = Field(
-        description="The process by which the GitHub Pages site will be built. `workflow` means that the site is built by a custom GitHub Actions workflow. `legacy` means that the site is built by GitHub when changes are pushed to a specific branch."
-    )
-    source: Missing[
-        Union[
-            Literal["gh-pages", "master", "master /docs"],
-            ReposOwnerRepoPagesPutBodyPropSourceAnyof1,
-        ]
-    ] = Field(default=UNSET)
 
 
-model_rebuild(ReposOwnerRepoPagesPutBodyAnyof0)
+model_rebuild(ReposOwnerRepoLabelsPostBody)
 
-__all__ = ("ReposOwnerRepoPagesPutBodyAnyof0",)
+__all__ = ("ReposOwnerRepoLabelsPostBody",)

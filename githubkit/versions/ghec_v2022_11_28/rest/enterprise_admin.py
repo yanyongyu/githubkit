@@ -33,6 +33,7 @@ if TYPE_CHECKING:
         AuditLogEvent,
         AuditLogStreamKey,
         AuthenticationToken,
+        CustomProperty,
         EnterpriseSecurityAnalysisSettings,
         EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200,
         EnterprisesEnterpriseActionsRunnerGroupsGetResponse200,
@@ -65,6 +66,7 @@ if TYPE_CHECKING:
         AuthenticationTokenType,
         AzureBlobConfigType,
         AzureHubConfigType,
+        CustomPropertyType,
         DatadogConfigType,
         EnterpriseSecurityAnalysisSettingsType,
         EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200Type,
@@ -85,6 +87,7 @@ if TYPE_CHECKING:
         EnterprisesEnterpriseAuditLogStreamsPostBodyType,
         EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyType,
         EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBodyType,
+        EnterprisesEnterprisePropertiesSchemaPatchBodyType,
         GetAuditLogStreamConfigsItemsType,
         GetAuditLogStreamConfigType,
         GetConsumedLicensesType,
@@ -3463,6 +3466,334 @@ class EnterpriseAdminClient:
             url,
             headers=exclude_unset(headers),
             response_model=GetLicenseSyncStatus,
+        )
+
+    def get_enterprise_custom_properties(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[CustomProperty], list[CustomPropertyType]]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties#get-custom-properties-for-an-enterprise"""
+
+        from ..models import BasicError, CustomProperty
+
+        url = f"/enterprises/{enterprise}/properties/schema"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=list[CustomProperty],
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_get_enterprise_custom_properties(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[CustomProperty], list[CustomPropertyType]]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties#get-custom-properties-for-an-enterprise"""
+
+        from ..models import BasicError, CustomProperty
+
+        url = f"/enterprises/{enterprise}/properties/schema"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=list[CustomProperty],
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def create_or_update_enterprise_custom_properties(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[dict[str, str]] = None,
+        data: EnterprisesEnterprisePropertiesSchemaPatchBodyType,
+    ) -> Response[list[CustomProperty], list[CustomPropertyType]]: ...
+
+    @overload
+    def create_or_update_enterprise_custom_properties(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[dict[str, str]] = None,
+        properties: list[CustomPropertyType],
+    ) -> Response[list[CustomProperty], list[CustomPropertyType]]: ...
+
+    def create_or_update_enterprise_custom_properties(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[dict[str, str]] = None,
+        data: Missing[EnterprisesEnterprisePropertiesSchemaPatchBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[list[CustomProperty], list[CustomPropertyType]]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties#create-or-update-custom-properties-for-an-enterprise"""
+
+        from ..models import (
+            BasicError,
+            CustomProperty,
+            EnterprisesEnterprisePropertiesSchemaPatchBody,
+        )
+
+        url = f"/enterprises/{enterprise}/properties/schema"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterprisePropertiesSchemaPatchBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=list[CustomProperty],
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    async def async_create_or_update_enterprise_custom_properties(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[dict[str, str]] = None,
+        data: EnterprisesEnterprisePropertiesSchemaPatchBodyType,
+    ) -> Response[list[CustomProperty], list[CustomPropertyType]]: ...
+
+    @overload
+    async def async_create_or_update_enterprise_custom_properties(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[dict[str, str]] = None,
+        properties: list[CustomPropertyType],
+    ) -> Response[list[CustomProperty], list[CustomPropertyType]]: ...
+
+    async def async_create_or_update_enterprise_custom_properties(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[dict[str, str]] = None,
+        data: Missing[EnterprisesEnterprisePropertiesSchemaPatchBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[list[CustomProperty], list[CustomPropertyType]]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties#create-or-update-custom-properties-for-an-enterprise"""
+
+        from ..models import (
+            BasicError,
+            CustomProperty,
+            EnterprisesEnterprisePropertiesSchemaPatchBody,
+        )
+
+        url = f"/enterprises/{enterprise}/properties/schema"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterprisePropertiesSchemaPatchBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=list[CustomProperty],
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    def get_enterprise_custom_property(
+        self,
+        enterprise: str,
+        custom_property_name: str,
+        *,
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[CustomProperty, CustomPropertyType]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties#get-a-custom-property-for-an-enterprise"""
+
+        from ..models import BasicError, CustomProperty
+
+        url = f"/enterprises/{enterprise}/properties/schema/{custom_property_name}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=CustomProperty,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_get_enterprise_custom_property(
+        self,
+        enterprise: str,
+        custom_property_name: str,
+        *,
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[CustomProperty, CustomPropertyType]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties#get-a-custom-property-for-an-enterprise"""
+
+        from ..models import BasicError, CustomProperty
+
+        url = f"/enterprises/{enterprise}/properties/schema/{custom_property_name}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=CustomProperty,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    def create_or_update_enterprise_custom_property(
+        self,
+        enterprise: str,
+        custom_property_name: str,
+        *,
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[CustomProperty, CustomPropertyType]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties#create-or-update-a-custom-property-for-an-enterprise"""
+
+        from ..models import BasicError, CustomProperty
+
+        url = f"/enterprises/{enterprise}/properties/schema/{custom_property_name}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "PUT",
+            url,
+            headers=exclude_unset(headers),
+            response_model=CustomProperty,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_create_or_update_enterprise_custom_property(
+        self,
+        enterprise: str,
+        custom_property_name: str,
+        *,
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[CustomProperty, CustomPropertyType]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties#create-or-update-a-custom-property-for-an-enterprise"""
+
+        from ..models import BasicError, CustomProperty
+
+        url = f"/enterprises/{enterprise}/properties/schema/{custom_property_name}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            headers=exclude_unset(headers),
+            response_model=CustomProperty,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    def remove_enterprise_custom_property(
+        self,
+        enterprise: str,
+        custom_property_name: str,
+        *,
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties#remove-a-custom-property-for-an-enterprise"""
+
+        from ..models import BasicError
+
+        url = f"/enterprises/{enterprise}/properties/schema/{custom_property_name}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_remove_enterprise_custom_property(
+        self,
+        enterprise: str,
+        custom_property_name: str,
+        *,
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties#remove-a-custom-property-for-an-enterprise"""
+
+        from ..models import BasicError
+
+        url = f"/enterprises/{enterprise}/properties/schema/{custom_property_name}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
         )
 
     def post_security_product_enablement_for_enterprise(

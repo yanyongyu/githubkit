@@ -18,36 +18,50 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoReleasesReleaseIdPatchBody(GitHubModel):
-    """ReposOwnerRepoReleasesReleaseIdPatchBody"""
+class ReposOwnerRepoPullsPullNumberReviewsPostBody(GitHubModel):
+    """ReposOwnerRepoPullsPullNumberReviewsPostBody"""
 
-    tag_name: Missing[str] = Field(default=UNSET, description="The name of the tag.")
-    target_commitish: Missing[str] = Field(
+    commit_id: Missing[str] = Field(
         default=UNSET,
-        description="Specifies the commitish value that determines where the Git tag is created from. Can be any branch or commit SHA. Unused if the Git tag already exists. Default: the repository's default branch.",
+        description="The SHA of the commit that needs a review. Not using the latest commit SHA may render your review comment outdated if a subsequent commit modifies the line you specify as the `position`. Defaults to the most recent commit in the pull request when you do not specify a value.",
     )
-    name: Missing[str] = Field(default=UNSET, description="The name of the release.")
     body: Missing[str] = Field(
-        default=UNSET, description="Text describing the contents of the tag."
-    )
-    draft: Missing[bool] = Field(
         default=UNSET,
-        description="`true` makes the release a draft, and `false` publishes the release.",
+        description="**Required** when using `REQUEST_CHANGES` or `COMMENT` for the `event` parameter. The body text of the pull request review.",
     )
-    prerelease: Missing[bool] = Field(
+    event: Missing[Literal["APPROVE", "REQUEST_CHANGES", "COMMENT"]] = Field(
         default=UNSET,
-        description="`true` to identify the release as a prerelease, `false` to identify the release as a full release.",
+        description="The review action you want to perform. The review actions include: `APPROVE`, `REQUEST_CHANGES`, or `COMMENT`. By leaving this blank, you set the review action state to `PENDING`, which means you will need to [submit the pull request review](https://docs.github.com/rest/pulls/reviews#submit-a-review-for-a-pull-request) when you are ready.",
     )
-    make_latest: Missing[Literal["true", "false", "legacy"]] = Field(
+    comments: Missing[
+        list[ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItems]
+    ] = Field(
         default=UNSET,
-        description="Specifies whether this release should be set as the latest release for the repository. Drafts and prereleases cannot be set as latest. Defaults to `true` for newly published releases. `legacy` specifies that the latest release should be determined based on the release creation date and higher semantic version.",
-    )
-    discussion_category_name: Missing[str] = Field(
-        default=UNSET,
-        description='If specified, a discussion of the specified category is created and linked to the release. The value must be a category that already exists in the repository. If there is already a discussion linked to the release, this parameter is ignored. For more information, see "[Managing categories for discussions in your repository](https://docs.github.com/discussions/managing-discussions-for-your-community/managing-categories-for-discussions-in-your-repository)."',
+        description="Use the following table to specify the location, destination, and contents of the draft review comment.",
     )
 
 
-model_rebuild(ReposOwnerRepoReleasesReleaseIdPatchBody)
+class ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItems(GitHubModel):
+    """ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItems"""
 
-__all__ = ("ReposOwnerRepoReleasesReleaseIdPatchBody",)
+    path: str = Field(
+        description="The relative path to the file that necessitates a review comment."
+    )
+    position: Missing[int] = Field(
+        default=UNSET,
+        description='The position in the diff where you want to add a review comment. Note this value is not the same as the line number in the file. The `position` value equals the number of lines down from the first "@@" hunk header in the file you want to add a comment. The line just below the "@@" line is position 1, the next line is position 2, and so on. The position in the diff continues to increase through lines of whitespace and additional hunks until the beginning of a new file.',
+    )
+    body: str = Field(description="Text of the review comment.")
+    line: Missing[int] = Field(default=UNSET)
+    side: Missing[str] = Field(default=UNSET)
+    start_line: Missing[int] = Field(default=UNSET)
+    start_side: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(ReposOwnerRepoPullsPullNumberReviewsPostBody)
+model_rebuild(ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItems)
+
+__all__ = (
+    "ReposOwnerRepoPullsPullNumberReviewsPostBody",
+    "ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItems",
+)

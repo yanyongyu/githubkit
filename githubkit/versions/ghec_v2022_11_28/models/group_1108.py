@@ -16,13 +16,16 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoNotificationsPutResponse202(GitHubModel):
-    """ReposOwnerRepoNotificationsPutResponse202"""
+class ReposOwnerRepoIssuesIssueNumberSubIssuesPostBody(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberSubIssuesPostBody"""
 
-    message: Missing[str] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
+    sub_issue_id: int = Field(description="The sub-issue to add")
+    replace_parent: Missing[bool] = Field(
+        default=UNSET,
+        description="Option that, when true, instructs the operation to replace the sub-issues current parent issue",
+    )
 
 
-model_rebuild(ReposOwnerRepoNotificationsPutResponse202)
+model_rebuild(ReposOwnerRepoIssuesIssueNumberSubIssuesPostBody)
 
-__all__ = ("ReposOwnerRepoNotificationsPutResponse202",)
+__all__ = ("ReposOwnerRepoIssuesIssueNumberSubIssuesPostBody",)

@@ -2936,11 +2936,11 @@ class OrgsClient:
         self,
         org: str,
         actor_type: Literal[
-            "installations",
-            "classic_pats",
-            "fine_grained_pats",
-            "oauth_apps",
-            "github_apps_user_to_server",
+            "installation",
+            "classic_pat",
+            "fine_grained_pat",
+            "oauth_app",
+            "github_app_user_to_server",
         ],
         actor_id: int,
         *,
@@ -2961,6 +2961,7 @@ class OrgsClient:
                 ]
             ]
         ] = UNSET,
+        api_route_substring: Missing[str] = UNSET,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         list[ApiInsightsRouteStatsItems], list[ApiInsightsRouteStatsItemsType]
@@ -2978,6 +2979,7 @@ class OrgsClient:
             "per_page": per_page,
             "direction": direction,
             "sort": sort,
+            "api_route_substring": api_route_substring,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -2994,11 +2996,11 @@ class OrgsClient:
         self,
         org: str,
         actor_type: Literal[
-            "installations",
-            "classic_pats",
-            "fine_grained_pats",
-            "oauth_apps",
-            "github_apps_user_to_server",
+            "installation",
+            "classic_pat",
+            "fine_grained_pat",
+            "oauth_app",
+            "github_app_user_to_server",
         ],
         actor_id: int,
         *,
@@ -3019,6 +3021,7 @@ class OrgsClient:
                 ]
             ]
         ] = UNSET,
+        api_route_substring: Missing[str] = UNSET,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         list[ApiInsightsRouteStatsItems], list[ApiInsightsRouteStatsItemsType]
@@ -3036,6 +3039,7 @@ class OrgsClient:
             "per_page": per_page,
             "direction": direction,
             "sort": sort,
+            "api_route_substring": api_route_substring,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -3068,6 +3072,7 @@ class OrgsClient:
                 ]
             ]
         ] = UNSET,
+        subject_name_substring: Missing[str] = UNSET,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         list[ApiInsightsSubjectStatsItems], list[ApiInsightsSubjectStatsItemsType]
@@ -3085,6 +3090,7 @@ class OrgsClient:
             "per_page": per_page,
             "direction": direction,
             "sort": sort,
+            "subject_name_substring": subject_name_substring,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -3117,6 +3123,7 @@ class OrgsClient:
                 ]
             ]
         ] = UNSET,
+        subject_name_substring: Missing[str] = UNSET,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
         list[ApiInsightsSubjectStatsItems], list[ApiInsightsSubjectStatsItemsType]
@@ -3134,6 +3141,7 @@ class OrgsClient:
             "per_page": per_page,
             "direction": direction,
             "sort": sort,
+            "subject_name_substring": subject_name_substring,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -3268,11 +3276,11 @@ class OrgsClient:
         self,
         org: str,
         actor_type: Literal[
-            "installations",
-            "classic_pats",
-            "fine_grained_pats",
-            "oauth_apps",
-            "github_apps_user_to_server",
+            "installation",
+            "classic_pat",
+            "fine_grained_pat",
+            "oauth_app",
+            "github_app_user_to_server",
         ],
         actor_id: int,
         *,
@@ -3305,11 +3313,11 @@ class OrgsClient:
         self,
         org: str,
         actor_type: Literal[
-            "installations",
-            "classic_pats",
-            "fine_grained_pats",
-            "oauth_apps",
-            "github_apps_user_to_server",
+            "installation",
+            "classic_pat",
+            "fine_grained_pat",
+            "oauth_app",
+            "github_app_user_to_server",
         ],
         actor_id: int,
         *,
@@ -3468,11 +3476,11 @@ class OrgsClient:
         self,
         org: str,
         actor_type: Literal[
-            "installations",
-            "classic_pats",
-            "fine_grained_pats",
-            "oauth_apps",
-            "github_apps_user_to_server",
+            "installation",
+            "classic_pat",
+            "fine_grained_pat",
+            "oauth_app",
+            "github_app_user_to_server",
         ],
         actor_id: int,
         *,
@@ -3507,11 +3515,11 @@ class OrgsClient:
         self,
         org: str,
         actor_type: Literal[
-            "installations",
-            "classic_pats",
-            "fine_grained_pats",
-            "oauth_apps",
-            "github_apps_user_to_server",
+            "installation",
+            "classic_pat",
+            "fine_grained_pat",
+            "oauth_app",
+            "github_app_user_to_server",
         ],
         actor_id: int,
         *,
@@ -3563,6 +3571,7 @@ class OrgsClient:
                 ]
             ]
         ] = UNSET,
+        actor_name_substring: Missing[str] = UNSET,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[ApiInsightsUserStatsItems], list[ApiInsightsUserStatsItemsType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/api-insights#get-user-stats"""
@@ -3578,6 +3587,7 @@ class OrgsClient:
             "per_page": per_page,
             "direction": direction,
             "sort": sort,
+            "actor_name_substring": actor_name_substring,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -3611,6 +3621,7 @@ class OrgsClient:
                 ]
             ]
         ] = UNSET,
+        actor_name_substring: Missing[str] = UNSET,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[list[ApiInsightsUserStatsItems], list[ApiInsightsUserStatsItemsType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/api-insights#get-user-stats"""
@@ -3626,6 +3637,7 @@ class OrgsClient:
             "per_page": per_page,
             "direction": direction,
             "sort": sort,
+            "actor_name_substring": actor_name_substring,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}

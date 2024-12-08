@@ -16,13 +16,13 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202(GitHubModel):
-    """ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202"""
+class ReposOwnerRepoPullsPullNumberMergePutResponse409(GitHubModel):
+    """ReposOwnerRepoPullsPullNumberMergePutResponse409"""
 
     message: Missing[str] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
+    documentation_url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202)
+model_rebuild(ReposOwnerRepoPullsPullNumberMergePutResponse409)
 
-__all__ = ("ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202",)
+__all__ = ("ReposOwnerRepoPullsPullNumberMergePutResponse409",)

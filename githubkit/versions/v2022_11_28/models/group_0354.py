@@ -9,32 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class RepositorySubscription(GitHubModel):
-    """Repository Invitation
+class CommitActivity(GitHubModel):
+    """Commit Activity
 
-    Repository invitations let you manage who you collaborate with.
+    Commit Activity
     """
 
-    subscribed: bool = Field(
-        description="Determines if notifications should be received from this repository."
-    )
-    ignored: bool = Field(
-        description="Determines if all notifications should be blocked from this repository."
-    )
-    reason: Union[str, None] = Field()
-    created_at: datetime = Field()
-    url: str = Field()
-    repository_url: str = Field()
+    days: list[int] = Field()
+    total: int = Field()
+    week: int = Field()
 
 
-model_rebuild(RepositorySubscription)
+model_rebuild(CommitActivity)
 
-__all__ = ("RepositorySubscription",)
+__all__ = ("CommitActivity",)

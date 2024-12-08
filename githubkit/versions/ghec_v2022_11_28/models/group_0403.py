@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -17,65 +17,75 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0398 import UserRoleItems
+from .group_0395 import Meta
+from .group_0400 import UserEmailsResponseItems, UserNameResponse
+from .group_0401 import UserRoleItems
+from .group_0405 import ScimEnterpriseUserResponseAllof1PropGroupsItems
 
 
-class User(GitHubModel):
-    """User"""
+class ScimEnterpriseUserResponse(GitHubModel):
+    """ScimEnterpriseUserResponse"""
 
     schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:User"]] = Field(
         description="The URIs that are used to indicate the namespaces of the SCIM schemas."
     )
-    external_id: str = Field(
+    external_id: Missing[Union[str, None]] = Field(
+        default=UNSET,
         alias="externalId",
         description="A unique identifier for the resource as defined by the provisioning client.",
     )
     active: bool = Field(description="Whether the user active in the IdP.")
-    user_name: str = Field(alias="userName", description="The username for the user.")
-    name: Missing[UserName] = Field(default=UNSET)
-    display_name: str = Field(
-        alias="displayName", description="A human-readable name for the user."
+    user_name: Missing[str] = Field(
+        default=UNSET, alias="userName", description="The username for the user."
     )
-    emails: list[UserEmailsItems] = Field(description="The emails for the user.")
+    name: Missing[UserNameResponse] = Field(default=UNSET)
+    display_name: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        alias="displayName",
+        description="A human-readable name for the user.",
+    )
+    emails: list[UserEmailsResponseItems] = Field(
+        description="The emails for the user."
+    )
     roles: Missing[list[UserRoleItems]] = Field(
         default=UNSET, description="The roles assigned to the user."
     )
-
-
-class UserName(GitHubModel):
-    """UserName"""
-
-    formatted: Missing[str] = Field(
+    id: str = Field(description="The internally generated id for the user object.")
+    groups: Missing[list[ScimEnterpriseUserResponseAllof1PropGroupsItems]] = Field(
         default=UNSET,
-        description="The full name, including all middle names, titles, and suffixes as appropriate, formatted for display.",
+        description="Provisioned SCIM groups that the user is a member of.",
     )
-    family_name: str = Field(
-        alias="familyName", description="The family name of the user."
-    )
-    given_name: str = Field(
-        alias="givenName", description="The given name of the user."
-    )
-    middle_name: Missing[str] = Field(
-        default=UNSET, alias="middleName", description="The middle name(s) of the user."
+    meta: Meta = Field(
+        description="The metadata associated with the creation/updates to the user."
     )
 
 
-class UserEmailsItems(GitHubModel):
-    """UserEmailsItems"""
+class ScimEnterpriseUserList(GitHubModel):
+    """ScimEnterpriseUserList"""
 
-    value: str = Field(description="The email address.")
-    type: str = Field(description="The type of email address.")
-    primary: bool = Field(
-        description="Whether this email address is the primary address."
+    schemas: list[Literal["urn:ietf:params:scim:api:messages:2.0:ListResponse"]] = (
+        Field(
+            description="The URIs that are used to indicate the namespaces of the list SCIM schemas."
+        )
+    )
+    total_results: int = Field(
+        alias="totalResults", description="Number of results found"
+    )
+    resources: list[ScimEnterpriseUserResponse] = Field(
+        alias="Resources", description="Information about each provisioned account."
+    )
+    start_index: int = Field(
+        alias="startIndex", description="A starting index for the returned page"
+    )
+    items_per_page: int = Field(
+        alias="itemsPerPage", description="Number of objects per page"
     )
 
 
-model_rebuild(User)
-model_rebuild(UserName)
-model_rebuild(UserEmailsItems)
+model_rebuild(ScimEnterpriseUserResponse)
+model_rebuild(ScimEnterpriseUserList)
 
 __all__ = (
-    "User",
-    "UserEmailsItems",
-    "UserName",
+    "ScimEnterpriseUserList",
+    "ScimEnterpriseUserResponse",
 )

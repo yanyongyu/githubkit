@@ -283,6 +283,9 @@ if TYPE_CHECKING:
         CodeScanningDefaultSetup as CodeScanningDefaultSetup,
     )
     from githubkit.versions.v2022_11_28.models import (
+        CodeScanningDefaultSetupOptions as CodeScanningDefaultSetupOptions,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         CodeScanningDefaultSetupUpdate as CodeScanningDefaultSetupUpdate,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -326,6 +329,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         CodeSecurityConfigurationForRepository as CodeSecurityConfigurationForRepository,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        CodeSecurityConfigurationPropCodeScanningDefaultSetupOptions as CodeSecurityConfigurationPropCodeScanningDefaultSetupOptions,
     )
     from githubkit.versions.v2022_11_28.models import (
         CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptions as CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptions,
@@ -917,6 +923,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         IssueSearchResultItemPropPullRequest as IssueSearchResultItemPropPullRequest,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        IssueSearchResultItemPropSubIssuesSummary as IssueSearchResultItemPropSubIssuesSummary,
     )
     from githubkit.versions.v2022_11_28.models import Job as Job
     from githubkit.versions.v2022_11_28.models import (
@@ -2583,6 +2592,15 @@ if TYPE_CHECKING:
         ReposOwnerRepoIssuesIssueNumberReactionsPostBody as ReposOwnerRepoIssuesIssueNumberReactionsPostBody,
     )
     from githubkit.versions.v2022_11_28.models import (
+        ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBody as ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBody,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        ReposOwnerRepoIssuesIssueNumberSubIssuesPostBody as ReposOwnerRepoIssuesIssueNumberSubIssuesPostBody,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBody as ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBody,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoIssuesPostBody as ReposOwnerRepoIssuesPostBody,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -2900,6 +2918,18 @@ if TYPE_CHECKING:
         SecretScanningPushProtectionBypass as SecretScanningPushProtectionBypass,
     )
     from githubkit.versions.v2022_11_28.models import (
+        SecretScanningScan as SecretScanningScan,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        SecretScanningScanHistory as SecretScanningScanHistory,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        SecretScanningScanHistoryPropCustomPatternBackfillScansItems as SecretScanningScanHistoryPropCustomPatternBackfillScansItems,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1 as SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         SecurityAndAnalysis as SecurityAndAnalysis,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -3010,6 +3040,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         StatusCheckPolicyPropChecksItems as StatusCheckPolicyPropChecksItems,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        SubIssuesSummary as SubIssuesSummary,
     )
     from githubkit.versions.v2022_11_28.models import Tag as Tag
     from githubkit.versions.v2022_11_28.models import TagPropCommit as TagPropCommit
@@ -4160,6 +4193,9 @@ if TYPE_CHECKING:
         WebhookIssueCommentCreatedPropIssueAllof0PropReactions as WebhookIssueCommentCreatedPropIssueAllof0PropReactions,
     )
     from githubkit.versions.v2022_11_28.models import (
+        WebhookIssueCommentCreatedPropIssueAllof0PropSubIssuesSummary as WebhookIssueCommentCreatedPropIssueAllof0PropSubIssuesSummary,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         WebhookIssueCommentCreatedPropIssueAllof0PropUser as WebhookIssueCommentCreatedPropIssueAllof0PropUser,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -4241,6 +4277,9 @@ if TYPE_CHECKING:
         WebhookIssueCommentDeletedPropIssueAllof0PropReactions as WebhookIssueCommentDeletedPropIssueAllof0PropReactions,
     )
     from githubkit.versions.v2022_11_28.models import (
+        WebhookIssueCommentDeletedPropIssueAllof0PropSubIssuesSummary as WebhookIssueCommentDeletedPropIssueAllof0PropSubIssuesSummary,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         WebhookIssueCommentDeletedPropIssueAllof0PropUser as WebhookIssueCommentDeletedPropIssueAllof0PropUser,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -4320,6 +4359,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookIssueCommentEditedPropIssueAllof0PropReactions as WebhookIssueCommentEditedPropIssueAllof0PropReactions,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookIssueCommentEditedPropIssueAllof0PropSubIssuesSummary as WebhookIssueCommentEditedPropIssueAllof0PropSubIssuesSummary,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookIssueCommentEditedPropIssueAllof0PropUser as WebhookIssueCommentEditedPropIssueAllof0PropUser,
@@ -4406,6 +4448,9 @@ if TYPE_CHECKING:
         WebhookIssuesClosedPropIssueAllof0PropReactions as WebhookIssuesClosedPropIssueAllof0PropReactions,
     )
     from githubkit.versions.v2022_11_28.models import (
+        WebhookIssuesClosedPropIssueAllof0PropSubIssuesSummary as WebhookIssuesClosedPropIssueAllof0PropSubIssuesSummary,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesClosedPropIssueAllof0PropUser as WebhookIssuesClosedPropIssueAllof0PropUser,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -4490,6 +4535,9 @@ if TYPE_CHECKING:
         WebhookIssuesDeletedPropIssuePropReactions as WebhookIssuesDeletedPropIssuePropReactions,
     )
     from githubkit.versions.v2022_11_28.models import (
+        WebhookIssuesDeletedPropIssuePropSubIssuesSummary as WebhookIssuesDeletedPropIssuePropSubIssuesSummary,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesDeletedPropIssuePropUser as WebhookIssuesDeletedPropIssuePropUser,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -4527,6 +4575,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesDemilestonedPropIssuePropReactions as WebhookIssuesDemilestonedPropIssuePropReactions,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookIssuesDemilestonedPropIssuePropSubIssuesSummary as WebhookIssuesDemilestonedPropIssuePropSubIssuesSummary,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesDemilestonedPropIssuePropUser as WebhookIssuesDemilestonedPropIssuePropUser,
@@ -4577,6 +4628,9 @@ if TYPE_CHECKING:
         WebhookIssuesEditedPropIssuePropReactions as WebhookIssuesEditedPropIssuePropReactions,
     )
     from githubkit.versions.v2022_11_28.models import (
+        WebhookIssuesEditedPropIssuePropSubIssuesSummary as WebhookIssuesEditedPropIssuePropSubIssuesSummary,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesEditedPropIssuePropUser as WebhookIssuesEditedPropIssuePropUser,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -4614,6 +4668,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesLabeledPropIssuePropReactions as WebhookIssuesLabeledPropIssuePropReactions,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookIssuesLabeledPropIssuePropSubIssuesSummary as WebhookIssuesLabeledPropIssuePropSubIssuesSummary,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesLabeledPropIssuePropUser as WebhookIssuesLabeledPropIssuePropUser,
@@ -4655,6 +4712,9 @@ if TYPE_CHECKING:
         WebhookIssuesLockedPropIssuePropReactions as WebhookIssuesLockedPropIssuePropReactions,
     )
     from githubkit.versions.v2022_11_28.models import (
+        WebhookIssuesLockedPropIssuePropSubIssuesSummary as WebhookIssuesLockedPropIssuePropSubIssuesSummary,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesLockedPropIssuePropUser as WebhookIssuesLockedPropIssuePropUser,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -4692,6 +4752,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesMilestonedPropIssuePropReactions as WebhookIssuesMilestonedPropIssuePropReactions,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookIssuesMilestonedPropIssuePropSubIssuesSummary as WebhookIssuesMilestonedPropIssuePropSubIssuesSummary,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesMilestonedPropIssuePropUser as WebhookIssuesMilestonedPropIssuePropUser,
@@ -4734,6 +4797,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesOpenedPropChangesPropOldIssuePropReactions as WebhookIssuesOpenedPropChangesPropOldIssuePropReactions,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookIssuesOpenedPropChangesPropOldIssuePropSubIssuesSummary as WebhookIssuesOpenedPropChangesPropOldIssuePropSubIssuesSummary,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesOpenedPropChangesPropOldIssuePropUser as WebhookIssuesOpenedPropChangesPropOldIssuePropUser,
@@ -4787,6 +4853,9 @@ if TYPE_CHECKING:
         WebhookIssuesOpenedPropIssuePropReactions as WebhookIssuesOpenedPropIssuePropReactions,
     )
     from githubkit.versions.v2022_11_28.models import (
+        WebhookIssuesOpenedPropIssuePropSubIssuesSummary as WebhookIssuesOpenedPropIssuePropSubIssuesSummary,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesOpenedPropIssuePropUser as WebhookIssuesOpenedPropIssuePropUser,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -4829,6 +4898,9 @@ if TYPE_CHECKING:
         WebhookIssuesReopenedPropIssuePropReactions as WebhookIssuesReopenedPropIssuePropReactions,
     )
     from githubkit.versions.v2022_11_28.models import (
+        WebhookIssuesReopenedPropIssuePropSubIssuesSummary as WebhookIssuesReopenedPropIssuePropSubIssuesSummary,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesReopenedPropIssuePropUser as WebhookIssuesReopenedPropIssuePropUser,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -4869,6 +4941,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesTransferredPropChangesPropNewIssuePropReactions as WebhookIssuesTransferredPropChangesPropNewIssuePropReactions,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookIssuesTransferredPropChangesPropNewIssuePropSubIssuesSummary as WebhookIssuesTransferredPropChangesPropNewIssuePropSubIssuesSummary,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesTransferredPropChangesPropNewIssuePropUser as WebhookIssuesTransferredPropChangesPropNewIssuePropUser,
@@ -4929,6 +5004,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesUnlockedPropIssuePropReactions as WebhookIssuesUnlockedPropIssuePropReactions,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookIssuesUnlockedPropIssuePropSubIssuesSummary as WebhookIssuesUnlockedPropIssuePropSubIssuesSummary,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesUnlockedPropIssuePropUser as WebhookIssuesUnlockedPropIssuePropUser,
@@ -8684,6 +8762,9 @@ if TYPE_CHECKING:
         WebhooksIssue2PropReactions as WebhooksIssue2PropReactions,
     )
     from githubkit.versions.v2022_11_28.models import (
+        WebhooksIssue2PropSubIssuesSummary as WebhooksIssue2PropSubIssuesSummary,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         WebhooksIssue2PropUser as WebhooksIssue2PropUser,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -8724,6 +8805,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhooksIssuePropReactions as WebhooksIssuePropReactions,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhooksIssuePropSubIssuesSummary as WebhooksIssuePropSubIssuesSummary,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhooksIssuePropUser as WebhooksIssuePropUser,
@@ -9576,6 +9660,7 @@ else:
             "Milestone",
             "ReactionRollup",
             "Issue",
+            "SubIssuesSummary",
             "IssuePropLabelsItemsOneof1",
             "IssuePropPullRequest",
             "IssueComment",
@@ -9649,8 +9734,10 @@ else:
             "CodeScanningOrganizationAlertItems",
             "CodeSecurityConfiguration",
             "CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptions",
+            "CodeSecurityConfigurationPropCodeScanningDefaultSetupOptions",
             "CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptions",
             "CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropReviewersItems",
+            "CodeScanningDefaultSetupOptions",
             "CodeSecurityDefaultConfigurationsItems",
             "CodeSecurityConfigurationRepositories",
             "CodespaceMachine",
@@ -10128,6 +10215,10 @@ else:
             "RepositoryRuleDetailedOneof16",
             "SecretScanningAlert",
             "SecretScanningPushProtectionBypass",
+            "SecretScanningScanHistory",
+            "SecretScanningScan",
+            "SecretScanningScanHistoryPropCustomPatternBackfillScansItems",
+            "SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1",
             "RepositoryAdvisoryCreate",
             "RepositoryAdvisoryCreatePropCreditsItems",
             "RepositoryAdvisoryCreatePropVulnerabilitiesItems",
@@ -10166,6 +10257,7 @@ else:
             "CommitSearchResultItemPropCommitPropTree",
             "IssueSearchResultItem",
             "IssueSearchResultItemPropLabelsItems",
+            "IssueSearchResultItemPropSubIssuesSummary",
             "IssueSearchResultItemPropPullRequest",
             "SearchIssuesGetResponse200",
             "LabelSearchResultItem",
@@ -10253,6 +10345,7 @@ else:
             "WebhooksIssuePropPerformedViaGithubAppPropPermissions",
             "WebhooksIssuePropPullRequest",
             "WebhooksIssuePropReactions",
+            "WebhooksIssuePropSubIssuesSummary",
             "WebhooksIssuePropUser",
             "WebhooksMilestone",
             "WebhooksMilestonePropCreator",
@@ -10267,6 +10360,7 @@ else:
             "WebhooksIssue2PropPerformedViaGithubAppPropPermissions",
             "WebhooksIssue2PropPullRequest",
             "WebhooksIssue2PropReactions",
+            "WebhooksIssue2PropSubIssuesSummary",
             "WebhooksIssue2PropUser",
             "WebhooksUserMannequin",
             "WebhooksMarketplacePurchase",
@@ -10690,6 +10784,7 @@ else:
             "WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropOwner",
             "WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropPermissions",
             "WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubApp",
+            "WebhookIssueCommentCreatedPropIssueAllof0PropSubIssuesSummary",
             "WebhookIssueCommentCreatedPropIssueAllof1",
             "WebhookIssueCommentCreatedPropIssueAllof1PropAssignee",
             "WebhookIssueCommentCreatedPropIssueAllof1PropAssigneesItems",
@@ -10717,6 +10812,7 @@ else:
             "WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropOwner",
             "WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropPermissions",
             "WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubApp",
+            "WebhookIssueCommentDeletedPropIssueAllof0PropSubIssuesSummary",
             "WebhookIssueCommentDeletedPropIssueAllof1",
             "WebhookIssueCommentDeletedPropIssueAllof1PropAssignee",
             "WebhookIssueCommentDeletedPropIssueAllof1PropAssigneesItems",
@@ -10744,6 +10840,7 @@ else:
             "WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropOwner",
             "WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropPermissions",
             "WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubApp",
+            "WebhookIssueCommentEditedPropIssueAllof0PropSubIssuesSummary",
             "WebhookIssueCommentEditedPropIssueAllof1",
             "WebhookIssueCommentEditedPropIssueAllof1PropAssignee",
             "WebhookIssueCommentEditedPropIssueAllof1PropAssigneesItems",
@@ -10774,6 +10871,7 @@ else:
             "WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropPermissions",
             "WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubApp",
             "WebhookIssuesClosedPropIssueAllof0PropPullRequest",
+            "WebhookIssuesClosedPropIssueAllof0PropSubIssuesSummary",
             "WebhookIssuesClosedPropIssueAllof1",
             "WebhookIssuesClosedPropIssueAllof1PropAssignee",
             "WebhookIssuesClosedPropIssueAllof1PropAssigneesItems",
@@ -10796,6 +10894,7 @@ else:
             "WebhookIssuesDeletedPropIssuePropPerformedViaGithubAppPropPermissions",
             "WebhookIssuesDeletedPropIssuePropPullRequest",
             "WebhookIssuesDeletedPropIssuePropReactions",
+            "WebhookIssuesDeletedPropIssuePropSubIssuesSummary",
             "WebhookIssuesDeletedPropIssuePropUser",
             "WebhookIssuesDemilestoned",
             "WebhookIssuesDemilestonedPropIssue",
@@ -10809,6 +10908,7 @@ else:
             "WebhookIssuesDemilestonedPropIssuePropPerformedViaGithubAppPropPermissions",
             "WebhookIssuesDemilestonedPropIssuePropPullRequest",
             "WebhookIssuesDemilestonedPropIssuePropReactions",
+            "WebhookIssuesDemilestonedPropIssuePropSubIssuesSummary",
             "WebhookIssuesDemilestonedPropIssuePropUser",
             "WebhookIssuesEdited",
             "WebhookIssuesEditedPropChanges",
@@ -10825,6 +10925,7 @@ else:
             "WebhookIssuesEditedPropIssuePropPerformedViaGithubAppPropPermissions",
             "WebhookIssuesEditedPropIssuePropPullRequest",
             "WebhookIssuesEditedPropIssuePropReactions",
+            "WebhookIssuesEditedPropIssuePropSubIssuesSummary",
             "WebhookIssuesEditedPropIssuePropUser",
             "WebhookIssuesLabeled",
             "WebhookIssuesLabeledPropIssue",
@@ -10838,6 +10939,7 @@ else:
             "WebhookIssuesLabeledPropIssuePropPerformedViaGithubAppPropPermissions",
             "WebhookIssuesLabeledPropIssuePropPullRequest",
             "WebhookIssuesLabeledPropIssuePropReactions",
+            "WebhookIssuesLabeledPropIssuePropSubIssuesSummary",
             "WebhookIssuesLabeledPropIssuePropUser",
             "WebhookIssuesLocked",
             "WebhookIssuesLockedPropIssue",
@@ -10851,6 +10953,7 @@ else:
             "WebhookIssuesLockedPropIssuePropPerformedViaGithubAppPropPermissions",
             "WebhookIssuesLockedPropIssuePropPullRequest",
             "WebhookIssuesLockedPropIssuePropReactions",
+            "WebhookIssuesLockedPropIssuePropSubIssuesSummary",
             "WebhookIssuesLockedPropIssuePropUser",
             "WebhookIssuesMilestoned",
             "WebhookIssuesMilestonedPropIssue",
@@ -10864,6 +10967,7 @@ else:
             "WebhookIssuesMilestonedPropIssuePropPerformedViaGithubAppPropPermissions",
             "WebhookIssuesMilestonedPropIssuePropPullRequest",
             "WebhookIssuesMilestonedPropIssuePropReactions",
+            "WebhookIssuesMilestonedPropIssuePropSubIssuesSummary",
             "WebhookIssuesMilestonedPropIssuePropUser",
             "WebhookIssuesOpened",
             "WebhookIssuesOpenedPropIssue",
@@ -10877,6 +10981,7 @@ else:
             "WebhookIssuesOpenedPropIssuePropPerformedViaGithubAppPropPermissions",
             "WebhookIssuesOpenedPropIssuePropPullRequest",
             "WebhookIssuesOpenedPropIssuePropReactions",
+            "WebhookIssuesOpenedPropIssuePropSubIssuesSummary",
             "WebhookIssuesOpenedPropIssuePropUser",
             "WebhookIssuesOpenedPropChanges",
             "WebhookIssuesOpenedPropChangesPropOldIssue",
@@ -10890,6 +10995,7 @@ else:
             "WebhookIssuesOpenedPropChangesPropOldIssuePropPerformedViaGithubAppPropPermissions",
             "WebhookIssuesOpenedPropChangesPropOldIssuePropPullRequest",
             "WebhookIssuesOpenedPropChangesPropOldIssuePropReactions",
+            "WebhookIssuesOpenedPropChangesPropOldIssuePropSubIssuesSummary",
             "WebhookIssuesOpenedPropChangesPropOldIssuePropUser",
             "WebhookIssuesOpenedPropChangesPropOldRepository",
             "WebhookIssuesOpenedPropChangesPropOldRepositoryPropCustomProperties",
@@ -10909,6 +11015,7 @@ else:
             "WebhookIssuesReopenedPropIssuePropPerformedViaGithubAppPropPermissions",
             "WebhookIssuesReopenedPropIssuePropPullRequest",
             "WebhookIssuesReopenedPropIssuePropReactions",
+            "WebhookIssuesReopenedPropIssuePropSubIssuesSummary",
             "WebhookIssuesReopenedPropIssuePropUser",
             "WebhookIssuesTransferred",
             "WebhookIssuesTransferredPropChanges",
@@ -10923,6 +11030,7 @@ else:
             "WebhookIssuesTransferredPropChangesPropNewIssuePropPerformedViaGithubAppPropPermissions",
             "WebhookIssuesTransferredPropChangesPropNewIssuePropPullRequest",
             "WebhookIssuesTransferredPropChangesPropNewIssuePropReactions",
+            "WebhookIssuesTransferredPropChangesPropNewIssuePropSubIssuesSummary",
             "WebhookIssuesTransferredPropChangesPropNewIssuePropUser",
             "WebhookIssuesTransferredPropChangesPropNewRepository",
             "WebhookIssuesTransferredPropChangesPropNewRepositoryPropCustomProperties",
@@ -10943,6 +11051,7 @@ else:
             "WebhookIssuesUnlockedPropIssuePropPerformedViaGithubAppPropPermissions",
             "WebhookIssuesUnlockedPropIssuePropPullRequest",
             "WebhookIssuesUnlockedPropIssuePropReactions",
+            "WebhookIssuesUnlockedPropIssuePropSubIssuesSummary",
             "WebhookIssuesUnlockedPropIssuePropUser",
             "WebhookIssuesUnpinned",
             "WebhookLabelCreated",
@@ -12665,6 +12774,9 @@ else:
             "ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3Items",
             "ReposOwnerRepoIssuesIssueNumberLockPutBody",
             "ReposOwnerRepoIssuesIssueNumberReactionsPostBody",
+            "ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBody",
+            "ReposOwnerRepoIssuesIssueNumberSubIssuesPostBody",
+            "ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBody",
             "ReposOwnerRepoKeysPostBody",
             "ReposOwnerRepoLabelsPostBody",
             "ReposOwnerRepoLabelsNamePatchBody",

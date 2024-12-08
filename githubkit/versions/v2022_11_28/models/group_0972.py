@@ -9,23 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class ReposOwnerRepoCommentsCommentIdReactionsPostBody(GitHubModel):
-    """ReposOwnerRepoCommentsCommentIdReactionsPostBody"""
-
-    content: Literal[
-        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-    ] = Field(
-        description="The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the commit comment."
-    )
+from .group_0082 import CodespaceMachine
 
 
-model_rebuild(ReposOwnerRepoCommentsCommentIdReactionsPostBody)
+class ReposOwnerRepoCodespacesMachinesGetResponse200(GitHubModel):
+    """ReposOwnerRepoCodespacesMachinesGetResponse200"""
 
-__all__ = ("ReposOwnerRepoCommentsCommentIdReactionsPostBody",)
+    total_count: int = Field()
+    machines: list[CodespaceMachine] = Field()
+
+
+model_rebuild(ReposOwnerRepoCodespacesMachinesGetResponse200)
+
+__all__ = ("ReposOwnerRepoCodespacesMachinesGetResponse200",)

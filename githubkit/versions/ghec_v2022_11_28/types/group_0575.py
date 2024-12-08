@@ -9,29 +9,15 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0002 import SimpleUserType
-from .group_0427 import EnterpriseWebhooksType
-from .group_0428 import SimpleInstallationType
-from .group_0429 import OrganizationSimpleWebhooksType
-from .group_0430 import RepositoryWebhooksType
-from .group_0447 import WebhooksIssueCommentType
-from .group_0576 import WebhookIssueCommentDeletedPropIssueType
+from typing_extensions import TypedDict
 
 
-class WebhookIssueCommentDeletedType(TypedDict):
-    """issue_comment deleted event"""
+class WebhookIssueCommentCreatedPropIssueAllof0PropSubIssuesSummaryType(TypedDict):
+    """Sub-issues Summary"""
 
-    action: Literal["deleted"]
-    comment: WebhooksIssueCommentType
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    issue: WebhookIssueCommentDeletedPropIssueType
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
+    total: int
+    completed: int
+    percent_completed: int
 
 
-__all__ = ("WebhookIssueCommentDeletedType",)
+__all__ = ("WebhookIssueCommentCreatedPropIssueAllof0PropSubIssuesSummaryType",)

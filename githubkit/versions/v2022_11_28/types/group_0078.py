@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
@@ -35,6 +35,9 @@ class CodeSecurityConfigurationType(TypedDict):
     dependabot_alerts: NotRequired[Literal["enabled", "disabled", "not_set"]]
     dependabot_security_updates: NotRequired[Literal["enabled", "disabled", "not_set"]]
     code_scanning_default_setup: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    code_scanning_default_setup_options: NotRequired[
+        Union[CodeSecurityConfigurationPropCodeScanningDefaultSetupOptionsType, None]
+    ]
     secret_scanning: NotRequired[Literal["enabled", "disabled", "not_set"]]
     secret_scanning_push_protection: NotRequired[
         Literal["enabled", "disabled", "not_set"]
@@ -72,6 +75,16 @@ class CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptionsType(
     labeled_runners: NotRequired[bool]
 
 
+class CodeSecurityConfigurationPropCodeScanningDefaultSetupOptionsType(TypedDict):
+    """CodeSecurityConfigurationPropCodeScanningDefaultSetupOptions
+
+    Feature options for code scanning default setup
+    """
+
+    runner_type: NotRequired[Union[None, Literal["standard", "labeled", "not_set"]]]
+    runner_label: NotRequired[Union[str, None]]
+
+
 class CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsType(TypedDict):
     """CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptions
 
@@ -97,6 +110,7 @@ class CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropRevie
 
 
 __all__ = (
+    "CodeSecurityConfigurationPropCodeScanningDefaultSetupOptionsType",
     "CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptionsType",
     "CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropReviewersItemsType",
     "CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsType",

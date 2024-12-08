@@ -31,6 +31,7 @@ if TYPE_CHECKING:
         SecretScanningAlert,
         SecretScanningLocation,
         SecretScanningPushProtectionBypass,
+        SecretScanningScanHistory,
     )
     from ..types import (
         OrganizationSecretScanningAlertType,
@@ -39,6 +40,7 @@ if TYPE_CHECKING:
         SecretScanningAlertType,
         SecretScanningLocationType,
         SecretScanningPushProtectionBypassType,
+        SecretScanningScanHistoryType,
     )
 
 
@@ -824,6 +826,62 @@ class SecretScanningClient:
             json=exclude_unset(json),
             headers=exclude_unset(headers),
             response_model=SecretScanningPushProtectionBypass,
+            error_models={
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            },
+        )
+
+    def get_scan_history(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[SecretScanningScanHistory, SecretScanningScanHistoryType]:
+        """See also: https://docs.github.com/rest/secret-scanning/secret-scanning#get-secret-scanning-scan-history-for-a-repository"""
+
+        from ..models import (
+            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            SecretScanningScanHistory,
+        )
+
+        url = f"/repos/{owner}/{repo}/secret-scanning/scan-history"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=SecretScanningScanHistory,
+            error_models={
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            },
+        )
+
+    async def async_get_scan_history(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[SecretScanningScanHistory, SecretScanningScanHistoryType]:
+        """See also: https://docs.github.com/rest/secret-scanning/secret-scanning#get-secret-scanning-scan-history-for-a-repository"""
+
+        from ..models import (
+            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            SecretScanningScanHistory,
+        )
+
+        url = f"/repos/{owner}/{repo}/secret-scanning/scan-history"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=SecretScanningScanHistory,
             error_models={
                 "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
             },

@@ -90,6 +90,9 @@ if TYPE_CHECKING:
         ReposOwnerRepoIssuesIssueNumberLockPutBodyType,
         ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1Type,
         ReposOwnerRepoIssuesIssueNumberPatchBodyType,
+        ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBodyType,
+        ReposOwnerRepoIssuesIssueNumberSubIssuesPostBodyType,
+        ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBodyType,
         ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1Type,
         ReposOwnerRepoIssuesPostBodyType,
         ReposOwnerRepoLabelsNamePatchBodyType,
@@ -2930,6 +2933,508 @@ class IssuesClient:
             error_models={
                 "403": BasicError,
                 "404": BasicError,
+            },
+        )
+
+    @overload
+    def remove_sub_issue(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        *,
+        headers: Optional[dict[str, str]] = None,
+        data: ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBodyType,
+    ) -> Response[Issue, IssueType]: ...
+
+    @overload
+    def remove_sub_issue(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[dict[str, str]] = None,
+        sub_issue_id: int,
+    ) -> Response[Issue, IssueType]: ...
+
+    def remove_sub_issue(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        *,
+        headers: Optional[dict[str, str]] = None,
+        data: Missing[ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[Issue, IssueType]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/sub-issues#remove-sub-issue"""
+
+        from ..models import (
+            BasicError,
+            Issue,
+            ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBody,
+        )
+
+        url = f"/repos/{owner}/{repo}/issues/{issue_number}/sub_issue"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "DELETE",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=Issue,
+            error_models={
+                "400": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    async def async_remove_sub_issue(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        *,
+        headers: Optional[dict[str, str]] = None,
+        data: ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBodyType,
+    ) -> Response[Issue, IssueType]: ...
+
+    @overload
+    async def async_remove_sub_issue(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[dict[str, str]] = None,
+        sub_issue_id: int,
+    ) -> Response[Issue, IssueType]: ...
+
+    async def async_remove_sub_issue(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        *,
+        headers: Optional[dict[str, str]] = None,
+        data: Missing[ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[Issue, IssueType]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/sub-issues#remove-sub-issue"""
+
+        from ..models import (
+            BasicError,
+            Issue,
+            ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBody,
+        )
+
+        url = f"/repos/{owner}/{repo}/issues/{issue_number}/sub_issue"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=Issue,
+            error_models={
+                "400": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    def list_sub_issues(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        *,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Issue], list[IssueType]]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/sub-issues#list-sub-issues"""
+
+        from ..models import BasicError, Issue
+
+        url = f"/repos/{owner}/{repo}/issues/{issue_number}/sub_issues"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=list[Issue],
+            error_models={
+                "404": BasicError,
+                "410": BasicError,
+            },
+        )
+
+    async def async_list_sub_issues(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        *,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Issue], list[IssueType]]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/sub-issues#list-sub-issues"""
+
+        from ..models import BasicError, Issue
+
+        url = f"/repos/{owner}/{repo}/issues/{issue_number}/sub_issues"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=list[Issue],
+            error_models={
+                "404": BasicError,
+                "410": BasicError,
+            },
+        )
+
+    @overload
+    def add_sub_issue(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        *,
+        headers: Optional[dict[str, str]] = None,
+        data: ReposOwnerRepoIssuesIssueNumberSubIssuesPostBodyType,
+    ) -> Response[Issue, IssueType]: ...
+
+    @overload
+    def add_sub_issue(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[dict[str, str]] = None,
+        sub_issue_id: int,
+        replace_parent: Missing[bool] = UNSET,
+    ) -> Response[Issue, IssueType]: ...
+
+    def add_sub_issue(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        *,
+        headers: Optional[dict[str, str]] = None,
+        data: Missing[ReposOwnerRepoIssuesIssueNumberSubIssuesPostBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[Issue, IssueType]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/sub-issues#add-sub-issue"""
+
+        from ..models import (
+            BasicError,
+            Issue,
+            ReposOwnerRepoIssuesIssueNumberSubIssuesPostBody,
+            ValidationError,
+        )
+
+        url = f"/repos/{owner}/{repo}/issues/{issue_number}/sub_issues"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                ReposOwnerRepoIssuesIssueNumberSubIssuesPostBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=Issue,
+            error_models={
+                "403": BasicError,
+                "410": BasicError,
+                "422": ValidationError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    async def async_add_sub_issue(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        *,
+        headers: Optional[dict[str, str]] = None,
+        data: ReposOwnerRepoIssuesIssueNumberSubIssuesPostBodyType,
+    ) -> Response[Issue, IssueType]: ...
+
+    @overload
+    async def async_add_sub_issue(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[dict[str, str]] = None,
+        sub_issue_id: int,
+        replace_parent: Missing[bool] = UNSET,
+    ) -> Response[Issue, IssueType]: ...
+
+    async def async_add_sub_issue(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        *,
+        headers: Optional[dict[str, str]] = None,
+        data: Missing[ReposOwnerRepoIssuesIssueNumberSubIssuesPostBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[Issue, IssueType]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/sub-issues#add-sub-issue"""
+
+        from ..models import (
+            BasicError,
+            Issue,
+            ReposOwnerRepoIssuesIssueNumberSubIssuesPostBody,
+            ValidationError,
+        )
+
+        url = f"/repos/{owner}/{repo}/issues/{issue_number}/sub_issues"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                ReposOwnerRepoIssuesIssueNumberSubIssuesPostBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=Issue,
+            error_models={
+                "403": BasicError,
+                "410": BasicError,
+                "422": ValidationError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def reprioritize_sub_issue(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        *,
+        headers: Optional[dict[str, str]] = None,
+        data: ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBodyType,
+    ) -> Response[Issue, IssueType]: ...
+
+    @overload
+    def reprioritize_sub_issue(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[dict[str, str]] = None,
+        sub_issue_id: int,
+        after_id: Missing[int] = UNSET,
+        before_id: Missing[int] = UNSET,
+    ) -> Response[Issue, IssueType]: ...
+
+    def reprioritize_sub_issue(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        *,
+        headers: Optional[dict[str, str]] = None,
+        data: Missing[
+            ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[Issue, IssueType]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/sub-issues#reprioritize-sub-issue"""
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            Issue,
+            ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBody,
+            ValidationErrorSimple,
+        )
+
+        url = f"/repos/{owner}/{repo}/issues/{issue_number}/sub_issues/priority"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=Issue,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationErrorSimple,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
+    @overload
+    async def async_reprioritize_sub_issue(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        *,
+        headers: Optional[dict[str, str]] = None,
+        data: ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBodyType,
+    ) -> Response[Issue, IssueType]: ...
+
+    @overload
+    async def async_reprioritize_sub_issue(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[dict[str, str]] = None,
+        sub_issue_id: int,
+        after_id: Missing[int] = UNSET,
+        before_id: Missing[int] = UNSET,
+    ) -> Response[Issue, IssueType]: ...
+
+    async def async_reprioritize_sub_issue(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        *,
+        headers: Optional[dict[str, str]] = None,
+        data: Missing[
+            ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[Issue, IssueType]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/sub-issues#reprioritize-sub-issue"""
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            Issue,
+            ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBody,
+            ValidationErrorSimple,
+        )
+
+        url = f"/repos/{owner}/{repo}/issues/{issue_number}/sub_issues/priority"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=Issue,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationErrorSimple,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
             },
         )
 

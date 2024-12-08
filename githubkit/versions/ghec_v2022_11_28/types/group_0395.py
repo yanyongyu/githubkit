@@ -10,26 +10,19 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class GroupType(TypedDict):
-    """Group"""
+class MetaType(TypedDict):
+    """Meta
 
-    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:Group"]]
-    external_id: str
-    display_name: str
-    members: list[GroupPropMembersItemsType]
+    The metadata associated with the creation/updates to the user.
+    """
 
-
-class GroupPropMembersItemsType(TypedDict):
-    """GroupPropMembersItems"""
-
-    value: str
-    display_name: str
+    resource_type: Literal["User", "Group"]
+    created: NotRequired[str]
+    last_modified: NotRequired[str]
+    location: NotRequired[str]
 
 
-__all__ = (
-    "GroupPropMembersItemsType",
-    "GroupType",
-)
+__all__ = ("MetaType",)

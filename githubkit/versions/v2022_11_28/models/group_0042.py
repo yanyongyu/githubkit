@@ -90,6 +90,17 @@ class Issue(GitHubModel):
         description="How the author is associated with the repository.",
     )
     reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
+    sub_issues_summary: Missing[SubIssuesSummary] = Field(
+        default=UNSET, title="Sub-issues Summary"
+    )
+
+
+class SubIssuesSummary(GitHubModel):
+    """Sub-issues Summary"""
+
+    total: int = Field()
+    completed: int = Field()
+    percent_completed: int = Field()
 
 
 class IssuePropLabelsItemsOneof1(GitHubModel):
@@ -115,6 +126,7 @@ class IssuePropPullRequest(GitHubModel):
 
 
 model_rebuild(Issue)
+model_rebuild(SubIssuesSummary)
 model_rebuild(IssuePropLabelsItemsOneof1)
 model_rebuild(IssuePropPullRequest)
 
@@ -122,4 +134,5 @@ __all__ = (
     "Issue",
     "IssuePropLabelsItemsOneof1",
     "IssuePropPullRequest",
+    "SubIssuesSummary",
 )

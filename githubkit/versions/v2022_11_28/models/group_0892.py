@@ -14,14 +14,21 @@ from typing import Union
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ProjectsColumnsColumnIdCardsPostBodyOneof0(GitHubModel):
-    """ProjectsColumnsColumnIdCardsPostBodyOneof0"""
+class ProjectsColumnsCardsCardIdPatchBody(GitHubModel):
+    """ProjectsColumnsCardsCardIdPatchBody"""
 
-    note: Union[str, None] = Field(description="The project card's note")
+    note: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The project card's note"
+    )
+    archived: Missing[bool] = Field(
+        default=UNSET, description="Whether or not the card is archived"
+    )
 
 
-model_rebuild(ProjectsColumnsColumnIdCardsPostBodyOneof0)
+model_rebuild(ProjectsColumnsCardsCardIdPatchBody)
 
-__all__ = ("ProjectsColumnsColumnIdCardsPostBodyOneof0",)
+__all__ = ("ProjectsColumnsCardsCardIdPatchBody",)

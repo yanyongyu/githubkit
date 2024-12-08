@@ -13,68 +13,128 @@ from datetime import datetime
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0002 import SimpleUserType
+from .group_0018 import LicenseSimpleType
+from .group_0366 import SearchResultTextMatchesItemsType
 
-class PrivateUserType(TypedDict):
-    """Private User
 
-    Private User
+class RepoSearchResultItemType(TypedDict):
+    """Repo Search Result Item
+
+    Repo Search Result Item
     """
 
-    login: str
     id: int
-    user_view_type: NotRequired[str]
     node_id: str
-    avatar_url: str
-    gravatar_id: Union[str, None]
-    url: str
+    name: str
+    full_name: str
+    owner: Union[None, SimpleUserType]
+    private: bool
     html_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    starred_url: str
-    subscriptions_url: str
-    organizations_url: str
-    repos_url: str
-    events_url: str
-    received_events_url: str
-    type: str
-    site_admin: bool
-    name: Union[str, None]
-    company: Union[str, None]
-    blog: Union[str, None]
-    location: Union[str, None]
-    email: Union[str, None]
-    notification_email: NotRequired[Union[str, None]]
-    hireable: Union[bool, None]
-    bio: Union[str, None]
-    twitter_username: NotRequired[Union[str, None]]
-    public_repos: int
-    public_gists: int
-    followers: int
-    following: int
+    description: Union[str, None]
+    fork: bool
+    url: str
     created_at: datetime
     updated_at: datetime
-    private_gists: int
-    total_private_repos: int
-    owned_private_repos: int
-    disk_usage: int
-    collaborators: int
-    two_factor_authentication: bool
-    plan: NotRequired[PrivateUserPropPlanType]
-    business_plus: NotRequired[bool]
-    ldap_dn: NotRequired[str]
+    pushed_at: datetime
+    homepage: Union[str, None]
+    size: int
+    stargazers_count: int
+    watchers_count: int
+    language: Union[str, None]
+    forks_count: int
+    open_issues_count: int
+    master_branch: NotRequired[str]
+    default_branch: str
+    score: float
+    forks_url: str
+    keys_url: str
+    collaborators_url: str
+    teams_url: str
+    hooks_url: str
+    issue_events_url: str
+    events_url: str
+    assignees_url: str
+    branches_url: str
+    tags_url: str
+    blobs_url: str
+    git_tags_url: str
+    git_refs_url: str
+    trees_url: str
+    statuses_url: str
+    languages_url: str
+    stargazers_url: str
+    contributors_url: str
+    subscribers_url: str
+    subscription_url: str
+    commits_url: str
+    git_commits_url: str
+    comments_url: str
+    issue_comment_url: str
+    contents_url: str
+    compare_url: str
+    merges_url: str
+    archive_url: str
+    downloads_url: str
+    issues_url: str
+    pulls_url: str
+    milestones_url: str
+    notifications_url: str
+    labels_url: str
+    releases_url: str
+    deployments_url: str
+    git_url: str
+    ssh_url: str
+    clone_url: str
+    svn_url: str
+    forks: int
+    open_issues: int
+    watchers: int
+    topics: NotRequired[list[str]]
+    mirror_url: Union[str, None]
+    has_issues: bool
+    has_projects: bool
+    has_pages: bool
+    has_wiki: bool
+    has_downloads: bool
+    has_discussions: NotRequired[bool]
+    archived: bool
+    disabled: bool
+    visibility: NotRequired[str]
+    license_: Union[None, LicenseSimpleType]
+    permissions: NotRequired[RepoSearchResultItemPropPermissionsType]
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
+    temp_clone_token: NotRequired[Union[str, None]]
+    allow_merge_commit: NotRequired[bool]
+    allow_squash_merge: NotRequired[bool]
+    allow_rebase_merge: NotRequired[bool]
+    allow_auto_merge: NotRequired[bool]
+    delete_branch_on_merge: NotRequired[bool]
+    allow_forking: NotRequired[bool]
+    is_template: NotRequired[bool]
+    web_commit_signoff_required: NotRequired[bool]
 
 
-class PrivateUserPropPlanType(TypedDict):
-    """PrivateUserPropPlan"""
+class RepoSearchResultItemPropPermissionsType(TypedDict):
+    """RepoSearchResultItemPropPermissions"""
 
-    collaborators: int
-    name: str
-    space: int
-    private_repos: int
+    admin: bool
+    maintain: NotRequired[bool]
+    push: bool
+    triage: NotRequired[bool]
+    pull: bool
+
+
+class SearchRepositoriesGetResponse200Type(TypedDict):
+    """SearchRepositoriesGetResponse200"""
+
+    total_count: int
+    incomplete_results: bool
+    items: list[RepoSearchResultItemType]
 
 
 __all__ = (
-    "PrivateUserPropPlanType",
-    "PrivateUserType",
+    "RepoSearchResultItemPropPermissionsType",
+    "RepoSearchResultItemType",
+    "SearchRepositoriesGetResponse200Type",
 )

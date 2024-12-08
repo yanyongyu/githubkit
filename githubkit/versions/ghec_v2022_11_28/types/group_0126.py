@@ -10,41 +10,37 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0002 import SimpleUserType
+from .group_0019 import RepositoryType
 
 
-class OrganizationRoleType(TypedDict):
-    """Organization Role
+class MigrationType(TypedDict):
+    """Migration
 
-    Organization roles
+    A migration.
     """
 
     id: int
-    name: str
-    description: NotRequired[Union[str, None]]
-    base_role: NotRequired[
-        Union[None, Literal["read", "triage", "write", "maintain", "admin"]]
-    ]
-    source: NotRequired[
-        Union[None, Literal["Organization", "Enterprise", "Predefined"]]
-    ]
-    permissions: list[str]
-    organization: Union[None, SimpleUserType]
+    owner: Union[None, SimpleUserType]
+    guid: str
+    state: str
+    lock_repositories: bool
+    exclude_metadata: bool
+    exclude_git_data: bool
+    exclude_attachments: bool
+    exclude_releases: bool
+    exclude_owner_projects: bool
+    org_metadata_only: bool
+    repositories: list[RepositoryType]
+    url: str
     created_at: datetime
     updated_at: datetime
+    node_id: str
+    archive_url: NotRequired[str]
+    exclude: NotRequired[list[str]]
 
 
-class OrgsOrgOrganizationRolesGetResponse200Type(TypedDict):
-    """OrgsOrgOrganizationRolesGetResponse200"""
-
-    total_count: NotRequired[int]
-    roles: NotRequired[list[OrganizationRoleType]]
-
-
-__all__ = (
-    "OrganizationRoleType",
-    "OrgsOrgOrganizationRolesGetResponse200Type",
-)
+__all__ = ("MigrationType",)

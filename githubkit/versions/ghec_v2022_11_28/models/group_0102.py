@@ -9,36 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0100 import CodeSecurityConfiguration
 
 
-class CodespaceMachine(GitHubModel):
-    """Codespace machine
+class CodeSecurityDefaultConfigurationsItems(GitHubModel):
+    """CodeSecurityDefaultConfigurationsItems"""
 
-    A description of the machine powering a codespace.
-    """
-
-    name: str = Field(description="The name of the machine.")
-    display_name: str = Field(
-        description="The display name of the machine includes cores, memory, and storage."
+    default_for_new_repos: Missing[Literal["public", "private_and_internal", "all"]] = (
+        Field(
+            default=UNSET,
+            description="The visibility of newly created repositories for which the code security configuration will be applied to by default",
+        )
     )
-    operating_system: str = Field(description="The operating system of the machine.")
-    storage_in_bytes: int = Field(
-        description="How much storage is available to the codespace."
-    )
-    memory_in_bytes: int = Field(
-        description="How much memory is available to the codespace."
-    )
-    cpus: int = Field(description="How many cores are available to the codespace.")
-    prebuild_availability: Union[None, Literal["none", "ready", "in_progress"]] = Field(
-        description='Whether a prebuild is currently available when creating a codespace for this machine and repository. If a branch was not specified as a ref, the default branch will be assumed. Value will be "null" if prebuilds are not supported or prebuild availability could not be determined. Value will be "none" if no prebuild is available. Latest values "ready" and "in_progress" indicate the prebuild availability status.'
+    configuration: Missing[CodeSecurityConfiguration] = Field(
+        default=UNSET, description="A code security configuration"
     )
 
 
-model_rebuild(CodespaceMachine)
+model_rebuild(CodeSecurityDefaultConfigurationsItems)
 
-__all__ = ("CodespaceMachine",)
+__all__ = ("CodeSecurityDefaultConfigurationsItems",)

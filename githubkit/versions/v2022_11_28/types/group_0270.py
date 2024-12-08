@@ -9,23 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class BlobType(TypedDict):
-    """Blob
+class ShortBlobType(TypedDict):
+    """Short Blob
 
-    Blob
+    Short Blob
     """
 
-    content: str
-    encoding: str
     url: str
     sha: str
-    size: Union[int, None]
-    node_id: str
-    highlighted_content: NotRequired[str]
 
 
-__all__ = ("BlobType",)
+__all__ = ("ShortBlobType",)

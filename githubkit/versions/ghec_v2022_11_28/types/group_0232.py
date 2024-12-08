@@ -9,133 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0223 import BranchRestrictionPolicyType
-from .group_0233 import ProtectedBranchPropRequiredPullRequestReviewsType
+from .group_0225 import BranchProtectionType
+from .group_0230 import CommitType
 
 
-class ProtectedBranchType(TypedDict):
-    """Protected Branch
+class BranchWithProtectionType(TypedDict):
+    """Branch With Protection
 
-    Branch protections protect branches
+    Branch With Protection
     """
 
-    url: str
-    required_status_checks: NotRequired[StatusCheckPolicyType]
-    required_pull_request_reviews: NotRequired[
-        ProtectedBranchPropRequiredPullRequestReviewsType
-    ]
-    required_signatures: NotRequired[ProtectedBranchPropRequiredSignaturesType]
-    enforce_admins: NotRequired[ProtectedBranchPropEnforceAdminsType]
-    required_linear_history: NotRequired[ProtectedBranchPropRequiredLinearHistoryType]
-    allow_force_pushes: NotRequired[ProtectedBranchPropAllowForcePushesType]
-    allow_deletions: NotRequired[ProtectedBranchPropAllowDeletionsType]
-    restrictions: NotRequired[BranchRestrictionPolicyType]
-    required_conversation_resolution: NotRequired[
-        ProtectedBranchPropRequiredConversationResolutionType
-    ]
-    block_creations: NotRequired[ProtectedBranchPropBlockCreationsType]
-    lock_branch: NotRequired[ProtectedBranchPropLockBranchType]
-    allow_fork_syncing: NotRequired[ProtectedBranchPropAllowForkSyncingType]
+    name: str
+    commit: CommitType
+    links: BranchWithProtectionPropLinksType
+    protected: bool
+    protection: BranchProtectionType
+    protection_url: str
+    pattern: NotRequired[str]
+    required_approving_review_count: NotRequired[int]
 
 
-class ProtectedBranchPropRequiredSignaturesType(TypedDict):
-    """ProtectedBranchPropRequiredSignatures"""
+class BranchWithProtectionPropLinksType(TypedDict):
+    """BranchWithProtectionPropLinks"""
 
-    url: str
-    enabled: bool
-
-
-class ProtectedBranchPropEnforceAdminsType(TypedDict):
-    """ProtectedBranchPropEnforceAdmins"""
-
-    url: str
-    enabled: bool
-
-
-class ProtectedBranchPropRequiredLinearHistoryType(TypedDict):
-    """ProtectedBranchPropRequiredLinearHistory"""
-
-    enabled: bool
-
-
-class ProtectedBranchPropAllowForcePushesType(TypedDict):
-    """ProtectedBranchPropAllowForcePushes"""
-
-    enabled: bool
-
-
-class ProtectedBranchPropAllowDeletionsType(TypedDict):
-    """ProtectedBranchPropAllowDeletions"""
-
-    enabled: bool
-
-
-class ProtectedBranchPropRequiredConversationResolutionType(TypedDict):
-    """ProtectedBranchPropRequiredConversationResolution"""
-
-    enabled: NotRequired[bool]
-
-
-class ProtectedBranchPropBlockCreationsType(TypedDict):
-    """ProtectedBranchPropBlockCreations"""
-
-    enabled: bool
-
-
-class ProtectedBranchPropLockBranchType(TypedDict):
-    """ProtectedBranchPropLockBranch
-
-    Whether to set the branch as read-only. If this is true, users will not be able
-    to push to the branch.
-    """
-
-    enabled: NotRequired[bool]
-
-
-class ProtectedBranchPropAllowForkSyncingType(TypedDict):
-    """ProtectedBranchPropAllowForkSyncing
-
-    Whether users can pull changes from upstream when the branch is locked. Set to
-    `true` to allow fork syncing. Set to `false` to prevent fork syncing.
-    """
-
-    enabled: NotRequired[bool]
-
-
-class StatusCheckPolicyType(TypedDict):
-    """Status Check Policy
-
-    Status Check Policy
-    """
-
-    url: str
-    strict: bool
-    contexts: list[str]
-    checks: list[StatusCheckPolicyPropChecksItemsType]
-    contexts_url: str
-
-
-class StatusCheckPolicyPropChecksItemsType(TypedDict):
-    """StatusCheckPolicyPropChecksItems"""
-
-    context: str
-    app_id: Union[int, None]
+    html: str
+    self_: str
 
 
 __all__ = (
-    "ProtectedBranchPropAllowDeletionsType",
-    "ProtectedBranchPropAllowForcePushesType",
-    "ProtectedBranchPropAllowForkSyncingType",
-    "ProtectedBranchPropBlockCreationsType",
-    "ProtectedBranchPropEnforceAdminsType",
-    "ProtectedBranchPropLockBranchType",
-    "ProtectedBranchPropRequiredConversationResolutionType",
-    "ProtectedBranchPropRequiredLinearHistoryType",
-    "ProtectedBranchPropRequiredSignaturesType",
-    "ProtectedBranchType",
-    "StatusCheckPolicyPropChecksItemsType",
-    "StatusCheckPolicyType",
+    "BranchWithProtectionPropLinksType",
+    "BranchWithProtectionType",
 )

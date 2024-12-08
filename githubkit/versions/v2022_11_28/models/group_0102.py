@@ -9,103 +9,71 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from datetime import datetime
+from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0002 import SimpleUser
 
+class PackageVersion(GitHubModel):
+    """Package Version
 
-class OrganizationProgrammaticAccessGrantRequest(GitHubModel):
-    """Simple Organization Programmatic Access Grant Request
-
-    Minimal representation of an organization programmatic access grant request for
-    enumerations
+    A version of a software package
     """
 
-    id: int = Field(
-        description="Unique identifier of the request for access via fine-grained personal access token. The `pat_request_id` used to review PAT requests."
-    )
-    reason: Union[str, None] = Field(description="Reason for requesting access.")
-    owner: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    repository_selection: Literal["none", "all", "subset"] = Field(
-        description="Type of repository selection requested."
-    )
-    repositories_url: str = Field(
-        description="URL to the list of repositories requested to be accessed via fine-grained personal access token. Should only be followed when `repository_selection` is `subset`."
-    )
-    permissions: OrganizationProgrammaticAccessGrantRequestPropPermissions = Field(
-        description="Permissions requested, categorized by type of permission."
-    )
-    created_at: str = Field(
-        description="Date and time when the request for access was created."
-    )
-    token_id: int = Field(
-        description="Unique identifier of the user's token. This field can also be found in audit log events and the organization's settings for their PAT grants."
-    )
-    token_name: str = Field(
-        description="The name given to the user's token. This field can also be found in an organization's settings page for Active Tokens."
-    )
-    token_expired: bool = Field(
-        description="Whether the associated fine-grained personal access token has expired."
-    )
-    token_expires_at: Union[str, None] = Field(
-        description="Date and time when the associated fine-grained personal access token expires."
-    )
-    token_last_used_at: Union[str, None] = Field(
-        description="Date and time when the associated fine-grained personal access token was last used for authentication."
+    id: int = Field(description="Unique identifier of the package version.")
+    name: str = Field(description="The name of the package version.")
+    url: str = Field()
+    package_html_url: str = Field()
+    html_url: Missing[str] = Field(default=UNSET)
+    license_: Missing[str] = Field(default=UNSET, alias="license")
+    description: Missing[str] = Field(default=UNSET)
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+    deleted_at: Missing[datetime] = Field(default=UNSET)
+    metadata: Missing[PackageVersionPropMetadata] = Field(
+        default=UNSET, title="Package Version Metadata"
     )
 
 
-class OrganizationProgrammaticAccessGrantRequestPropPermissions(GitHubModel):
-    """OrganizationProgrammaticAccessGrantRequestPropPermissions
+class PackageVersionPropMetadata(GitHubModel):
+    """Package Version Metadata"""
 
-    Permissions requested, categorized by type of permission.
-    """
-
-    organization: Missing[
-        OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganization
-    ] = Field(default=UNSET)
-    repository: Missing[
-        OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepository
-    ] = Field(default=UNSET)
-    other: Missing[
-        OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOther
-    ] = Field(default=UNSET)
+    package_type: Literal[
+        "npm", "maven", "rubygems", "docker", "nuget", "container"
+    ] = Field()
+    container: Missing[PackageVersionPropMetadataPropContainer] = Field(
+        default=UNSET, title="Container Metadata"
+    )
+    docker: Missing[PackageVersionPropMetadataPropDocker] = Field(
+        default=UNSET, title="Docker Metadata"
+    )
 
 
-class OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganization(
-    ExtraGitHubModel
-):
-    """OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganization"""
+class PackageVersionPropMetadataPropContainer(GitHubModel):
+    """Container Metadata"""
+
+    tags: list[str] = Field()
 
 
-class OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepository(
-    ExtraGitHubModel
-):
-    """OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepository"""
+class PackageVersionPropMetadataPropDocker(GitHubModel):
+    """Docker Metadata"""
+
+    tag: Missing[list[str]] = Field(default=UNSET)
 
 
-class OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOther(
-    ExtraGitHubModel
-):
-    """OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOther"""
-
-
-model_rebuild(OrganizationProgrammaticAccessGrantRequest)
-model_rebuild(OrganizationProgrammaticAccessGrantRequestPropPermissions)
-model_rebuild(OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganization)
-model_rebuild(OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepository)
-model_rebuild(OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOther)
+model_rebuild(PackageVersion)
+model_rebuild(PackageVersionPropMetadata)
+model_rebuild(PackageVersionPropMetadataPropContainer)
+model_rebuild(PackageVersionPropMetadataPropDocker)
 
 __all__ = (
-    "OrganizationProgrammaticAccessGrantRequest",
-    "OrganizationProgrammaticAccessGrantRequestPropPermissions",
-    "OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganization",
-    "OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOther",
-    "OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepository",
+    "PackageVersion",
+    "PackageVersionPropMetadata",
+    "PackageVersionPropMetadataPropContainer",
+    "PackageVersionPropMetadataPropDocker",
 )

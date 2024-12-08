@@ -9,21 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ProjectsProjectIdPatchResponse403(GitHubModel):
-    """ProjectsProjectIdPatchResponse403"""
+class ProjectsColumnsColumnIdCardsPostBodyOneof0(GitHubModel):
+    """ProjectsColumnsColumnIdCardsPostBodyOneof0"""
 
-    message: Missing[str] = Field(default=UNSET)
-    documentation_url: Missing[str] = Field(default=UNSET)
-    errors: Missing[list[str]] = Field(default=UNSET)
+    note: Union[str, None] = Field(description="The project card's note")
 
 
-model_rebuild(ProjectsProjectIdPatchResponse403)
+model_rebuild(ProjectsColumnsColumnIdCardsPostBodyOneof0)
 
-__all__ = ("ProjectsProjectIdPatchResponse403",)
+__all__ = ("ProjectsColumnsColumnIdCardsPostBodyOneof0",)

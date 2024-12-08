@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -69,6 +69,11 @@ class CodeSecurityConfiguration(GitHubModel):
             default=UNSET,
             description="The enablement status of code scanning default setup",
         )
+    )
+    code_scanning_default_setup_options: Missing[
+        Union[CodeSecurityConfigurationPropCodeScanningDefaultSetupOptions, None]
+    ] = Field(
+        default=UNSET, description="Feature options for code scanning default setup"
     )
     secret_scanning: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
         default=UNSET, description="The enablement status of secret scanning"
@@ -132,6 +137,24 @@ class CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptions(GitHub
     )
 
 
+class CodeSecurityConfigurationPropCodeScanningDefaultSetupOptions(GitHubModel):
+    """CodeSecurityConfigurationPropCodeScanningDefaultSetupOptions
+
+    Feature options for code scanning default setup
+    """
+
+    runner_type: Missing[Union[None, Literal["standard", "labeled", "not_set"]]] = (
+        Field(
+            default=UNSET,
+            description="Whether to use labeled runners or standard GitHub runners.",
+        )
+    )
+    runner_label: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The label of the runner to use for code scanning when runner_type is 'labeled'.",
+    )
+
+
 class CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptions(GitHubModel):
     """CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptions
 
@@ -165,6 +188,7 @@ class CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropRevie
 
 model_rebuild(CodeSecurityConfiguration)
 model_rebuild(CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptions)
+model_rebuild(CodeSecurityConfigurationPropCodeScanningDefaultSetupOptions)
 model_rebuild(CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptions)
 model_rebuild(
     CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropReviewersItems
@@ -172,6 +196,7 @@ model_rebuild(
 
 __all__ = (
     "CodeSecurityConfiguration",
+    "CodeSecurityConfigurationPropCodeScanningDefaultSetupOptions",
     "CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptions",
     "CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptions",
     "CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropReviewersItems",

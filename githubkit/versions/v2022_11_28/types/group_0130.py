@@ -12,16 +12,10 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class RepositoryRuleParamsRequiredReviewerConfigurationType(TypedDict):
-    """RequiredReviewerConfiguration
+class RepositoryRuleRequiredDeploymentsPropParametersType(TypedDict):
+    """RepositoryRuleRequiredDeploymentsPropParameters"""
 
-    A reviewing team, and file patterns describing which files they must approve
-    changes to.
-    """
-
-    file_patterns: list[str]
-    minimum_approvals: int
-    reviewer_id: str
+    required_deployment_environments: list[str]
 
 
-__all__ = ("RepositoryRuleParamsRequiredReviewerConfigurationType",)
+__all__ = ("RepositoryRuleRequiredDeploymentsPropParametersType",)

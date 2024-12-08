@@ -19,7 +19,7 @@ from githubkit.typing import Missing, UnsetType
 from githubkit.utils import UNSET, exclude_unset
 
 if TYPE_CHECKING:
-    from typing import Literal
+    from typing import Literal, Union
 
     from githubkit import GitHubCore
     from githubkit.response import Response
@@ -36,6 +36,7 @@ if TYPE_CHECKING:
     )
     from ..types import (
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+        CodeScanningDefaultSetupOptionsType,
         CodeSecurityConfigurationForRepositoryType,
         CodeSecurityConfigurationRepositoriesType,
         CodeSecurityConfigurationType,
@@ -175,6 +176,9 @@ class CodeSecurityClient:
         code_scanning_default_setup: Missing[
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
+        code_scanning_default_setup_options: Missing[
+            Union[CodeScanningDefaultSetupOptionsType, None]
+        ] = UNSET,
         secret_scanning: Missing[Literal["enabled", "disabled", "not_set"]] = UNSET,
         secret_scanning_push_protection: Missing[
             Literal["enabled", "disabled", "not_set"]
@@ -265,6 +269,9 @@ class CodeSecurityClient:
         ] = UNSET,
         code_scanning_default_setup: Missing[
             Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
+        code_scanning_default_setup_options: Missing[
+            Union[CodeScanningDefaultSetupOptionsType, None]
         ] = UNSET,
         secret_scanning: Missing[Literal["enabled", "disabled", "not_set"]] = UNSET,
         secret_scanning_push_protection: Missing[
@@ -645,6 +652,9 @@ class CodeSecurityClient:
         code_scanning_default_setup: Missing[
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
+        code_scanning_default_setup_options: Missing[
+            Union[CodeScanningDefaultSetupOptionsType, None]
+        ] = UNSET,
         secret_scanning: Missing[Literal["enabled", "disabled", "not_set"]] = UNSET,
         secret_scanning_push_protection: Missing[
             Literal["enabled", "disabled", "not_set"]
@@ -742,6 +752,9 @@ class CodeSecurityClient:
         ] = UNSET,
         code_scanning_default_setup: Missing[
             Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
+        code_scanning_default_setup_options: Missing[
+            Union[CodeScanningDefaultSetupOptionsType, None]
         ] = UNSET,
         secret_scanning: Missing[Literal["enabled", "disabled", "not_set"]] = UNSET,
         secret_scanning_push_protection: Missing[

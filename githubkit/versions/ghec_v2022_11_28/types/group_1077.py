@@ -11,17 +11,12 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0009 import WebhookConfigType
+
+class ReposOwnerRepoGitBlobsPostBodyType(TypedDict):
+    """ReposOwnerRepoGitBlobsPostBody"""
+
+    content: str
+    encoding: NotRequired[str]
 
 
-class ReposOwnerRepoHooksHookIdPatchBodyType(TypedDict):
-    """ReposOwnerRepoHooksHookIdPatchBody"""
-
-    config: NotRequired[WebhookConfigType]
-    events: NotRequired[list[str]]
-    add_events: NotRequired[list[str]]
-    remove_events: NotRequired[list[str]]
-    active: NotRequired[bool]
-
-
-__all__ = ("ReposOwnerRepoHooksHookIdPatchBodyType",)
+__all__ = ("ReposOwnerRepoGitBlobsPostBodyType",)

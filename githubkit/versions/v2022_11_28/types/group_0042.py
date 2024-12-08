@@ -72,6 +72,15 @@ class IssueType(TypedDict):
         "OWNER",
     ]
     reactions: NotRequired[ReactionRollupType]
+    sub_issues_summary: NotRequired[SubIssuesSummaryType]
+
+
+class SubIssuesSummaryType(TypedDict):
+    """Sub-issues Summary"""
+
+    total: int
+    completed: int
+    percent_completed: int
 
 
 class IssuePropLabelsItemsOneof1Type(TypedDict):
@@ -100,4 +109,5 @@ __all__ = (
     "IssuePropLabelsItemsOneof1Type",
     "IssuePropPullRequestType",
     "IssueType",
+    "SubIssuesSummaryType",
 )

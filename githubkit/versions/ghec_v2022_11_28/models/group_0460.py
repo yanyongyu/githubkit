@@ -19,25 +19,31 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class WebhooksProjectCard(GitHubModel):
-    """Project Card"""
+class WebhooksMilestone3(GitHubModel):
+    """Milestone
 
-    after_id: Missing[Union[int, None]] = Field(default=UNSET)
-    archived: bool = Field(description="Whether or not the card is archived")
-    column_id: int = Field()
-    column_url: str = Field()
-    content_url: Missing[str] = Field(default=UNSET)
+    A collection of related issues and pull requests.
+    """
+
+    closed_at: Union[datetime, None] = Field()
+    closed_issues: int = Field()
     created_at: datetime = Field()
-    creator: Union[WebhooksProjectCardPropCreator, None] = Field(title="User")
-    id: int = Field(description="The project card's ID")
+    creator: Union[WebhooksMilestone3PropCreator, None] = Field(title="User")
+    description: Union[str, None] = Field()
+    due_on: Union[datetime, None] = Field()
+    html_url: str = Field()
+    id: int = Field()
+    labels_url: str = Field()
     node_id: str = Field()
-    note: Union[str, None] = Field()
-    project_url: str = Field()
+    number: int = Field(description="The number of the milestone.")
+    open_issues: int = Field()
+    state: Literal["open", "closed"] = Field(description="The state of the milestone.")
+    title: str = Field(description="The title of the milestone.")
     updated_at: datetime = Field()
     url: str = Field()
 
 
-class WebhooksProjectCardPropCreator(GitHubModel):
+class WebhooksMilestone3PropCreator(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -64,10 +70,10 @@ class WebhooksProjectCardPropCreator(GitHubModel):
     user_view_type: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhooksProjectCard)
-model_rebuild(WebhooksProjectCardPropCreator)
+model_rebuild(WebhooksMilestone3)
+model_rebuild(WebhooksMilestone3PropCreator)
 
 __all__ = (
-    "WebhooksProjectCard",
-    "WebhooksProjectCardPropCreator",
+    "WebhooksMilestone3",
+    "WebhooksMilestone3PropCreator",
 )
