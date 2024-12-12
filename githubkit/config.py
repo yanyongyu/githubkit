@@ -1,4 +1,4 @@
-from dataclasses import asdict, dataclass
+from dataclasses import dataclass, fields
 from typing import Any, Optional, Union
 from typing_extensions import Self
 
@@ -24,9 +24,11 @@ class Config:
     rest_api_validate_body: bool
 
     def dict(self) -> dict[str, Any]:
-        return asdict(self)
+        """Return the config as a dictionary without copy values."""
+        return {field.name: getattr(self, field.name) for field in fields(self)}
 
     def copy(self) -> Self:
+        """Return a shallow copy of the config."""
         return self.__class__(**self.dict())
 
 
@@ -107,6 +109,7 @@ def get_config(
     auto_retry: Union[bool, RetryDecisionFunc] = True,
     rest_api_validate_body: bool = True,
 ) -> Config:
+    """Build the configs from the given options."""
     return Config(
         build_base_url(base_url),
         build_accept(accept_format, previews),
