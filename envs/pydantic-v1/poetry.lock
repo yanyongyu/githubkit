@@ -295,7 +295,7 @@ testing = ["hatch", "pre-commit", "pytest", "tox"]
 
 [[package]]
 name = "githubkit"
-version = "0.12.1"
+version = "0.12.2"
 description = "GitHub SDK for Python"
 optional = false
 python-versions = "^3.9"
