@@ -35,8 +35,14 @@ class BaseThrottler(abc.ABC):
 class LocalThrottler(BaseThrottler):
     def __init__(self, max_concurrency: int) -> None:
         self.max_concurrency = max_concurrency
-        self.semaphore = threading.Semaphore(max_concurrency)
+        self._semaphore: Optional[threading.Semaphore] = None
         self._async_semaphore: Optional[anyio.Semaphore] = None
+
+    @property
+    def semaphore(self) -> threading.Semaphore:
+        if self._semaphore is None:
+            self._semaphore = threading.Semaphore(self.max_concurrency)
+        return self._semaphore
 
     @property
     def async_semaphore(self) -> anyio.Semaphore:
