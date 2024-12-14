@@ -12,19 +12,25 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ReviewCustomGatesCommentRequired(GitHubModel):
-    """ReviewCustomGatesCommentRequired"""
+class OidcCustomSubRepo(GitHubModel):
+    """Actions OIDC subject customization for a repository
 
-    environment_name: str = Field(
-        description="The name of the environment to approve or reject."
+    Actions OIDC subject customization for a repository
+    """
+
+    use_default: bool = Field(
+        description="Whether to use the default template or not. If `true`, the `include_claim_keys` field is ignored."
     )
-    comment: str = Field(
-        description="Comment associated with the pending deployment protection rule. **Required when state is not provided.**"
+    include_claim_keys: Missing[list[str]] = Field(
+        default=UNSET,
+        description="Array of unique strings. Each claim key can only contain alphanumeric characters and underscores.",
     )
 
 
-model_rebuild(ReviewCustomGatesCommentRequired)
+model_rebuild(OidcCustomSubRepo)
 
-__all__ = ("ReviewCustomGatesCommentRequired",)
+__all__ = ("OidcCustomSubRepo",)

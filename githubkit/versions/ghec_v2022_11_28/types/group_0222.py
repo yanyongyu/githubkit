@@ -9,31 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0223 import (
-    ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesType,
-    ProtectedBranchPullRequestReviewPropDismissalRestrictionsType,
-)
+from typing_extensions import TypedDict
 
 
-class ProtectedBranchPullRequestReviewType(TypedDict):
-    """Protected Branch Pull Request Review
+class ReviewCustomGatesCommentRequiredType(TypedDict):
+    """ReviewCustomGatesCommentRequired"""
 
-    Protected Branch Pull Request Review
-    """
-
-    url: NotRequired[str]
-    dismissal_restrictions: NotRequired[
-        ProtectedBranchPullRequestReviewPropDismissalRestrictionsType
-    ]
-    bypass_pull_request_allowances: NotRequired[
-        ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesType
-    ]
-    dismiss_stale_reviews: bool
-    require_code_owner_reviews: bool
-    required_approving_review_count: NotRequired[int]
-    require_last_push_approval: NotRequired[bool]
+    environment_name: str
+    comment: str
 
 
-__all__ = ("ProtectedBranchPullRequestReviewType",)
+__all__ = ("ReviewCustomGatesCommentRequiredType",)

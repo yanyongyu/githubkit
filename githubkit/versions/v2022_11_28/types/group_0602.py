@@ -13,17 +13,17 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0002 import SimpleUserType
-from .group_0388 import EnterpriseWebhooksType
-from .group_0389 import SimpleInstallationType
-from .group_0390 import OrganizationSimpleWebhooksType
-from .group_0391 import RepositoryWebhooksType
-from .group_0399 import WebhooksUserType
+from .group_0389 import EnterpriseWebhooksType
+from .group_0390 import SimpleInstallationType
+from .group_0391 import OrganizationSimpleWebhooksType
+from .group_0392 import RepositoryWebhooksType
+from .group_0400 import WebhooksUserType
 
 
-class WebhookOrgBlockUnblockedType(TypedDict):
-    """org_block unblocked event"""
+class WebhookOrgBlockBlockedType(TypedDict):
+    """org_block blocked event"""
 
-    action: Literal["unblocked"]
+    action: Literal["blocked"]
     blocked_user: Union[WebhooksUserType, None]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
@@ -32,4 +32,4 @@ class WebhookOrgBlockUnblockedType(TypedDict):
     sender: SimpleUserType
 
 
-__all__ = ("WebhookOrgBlockUnblockedType",)
+__all__ = ("WebhookOrgBlockBlockedType",)

@@ -13,23 +13,23 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0002 import SimpleUserType
-from .group_0430 import EnterpriseWebhooksType
-from .group_0431 import SimpleInstallationType
-from .group_0432 import OrganizationSimpleWebhooksType
-from .group_0433 import RepositoryWebhooksType
-from .group_0480 import WebhooksSponsorshipType
+from .group_0439 import EnterpriseWebhooksType
+from .group_0440 import SimpleInstallationType
+from .group_0441 import OrganizationSimpleWebhooksType
+from .group_0442 import RepositoryWebhooksType
+from .group_0487 import SecretScanningAlertWebhookType
 
 
-class WebhookSponsorshipCancelledType(TypedDict):
-    """sponsorship cancelled event"""
+class WebhookSecretScanningAlertResolvedType(TypedDict):
+    """secret_scanning_alert resolved event"""
 
-    action: Literal["cancelled"]
+    action: Literal["resolved"]
+    alert: SecretScanningAlertWebhookType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: NotRequired[RepositoryWebhooksType]
-    sender: SimpleUserType
-    sponsorship: WebhooksSponsorshipType
+    repository: RepositoryWebhooksType
+    sender: NotRequired[SimpleUserType]
 
 
-__all__ = ("WebhookSponsorshipCancelledType",)
+__all__ = ("WebhookSecretScanningAlertResolvedType",)

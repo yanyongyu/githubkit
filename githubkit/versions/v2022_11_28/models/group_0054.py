@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Union
 
 from pydantic import Field
@@ -17,30 +18,22 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0055 import (
-    MarketplacePurchasePropMarketplacePendingChange,
-    MarketplacePurchasePropMarketplacePurchase,
-)
 
+class ThreadSubscription(GitHubModel):
+    """Thread Subscription
 
-class MarketplacePurchase(GitHubModel):
-    """Marketplace Purchase
-
-    Marketplace Purchase
+    Thread Subscription
     """
 
+    subscribed: bool = Field()
+    ignored: bool = Field()
+    reason: Union[str, None] = Field()
+    created_at: Union[datetime, None] = Field()
     url: str = Field()
-    type: str = Field()
-    id: int = Field()
-    login: str = Field()
-    organization_billing_email: Missing[str] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    marketplace_pending_change: Missing[
-        Union[MarketplacePurchasePropMarketplacePendingChange, None]
-    ] = Field(default=UNSET)
-    marketplace_purchase: MarketplacePurchasePropMarketplacePurchase = Field()
+    thread_url: Missing[str] = Field(default=UNSET)
+    repository_url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(MarketplacePurchase)
+model_rebuild(ThreadSubscription)
 
-__all__ = ("MarketplacePurchase",)
+__all__ = ("ThreadSubscription",)

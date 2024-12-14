@@ -18,17 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0002 import SimpleUser
-from .group_0156 import RepositoryAdvisory
-from .group_0388 import EnterpriseWebhooks
-from .group_0389 import SimpleInstallation
-from .group_0390 import OrganizationSimpleWebhooks
-from .group_0391 import RepositoryWebhooks
+from .group_0157 import RepositoryAdvisory
+from .group_0389 import EnterpriseWebhooks
+from .group_0390 import SimpleInstallation
+from .group_0391 import OrganizationSimpleWebhooks
+from .group_0392 import RepositoryWebhooks
 
 
-class WebhookRepositoryAdvisoryReported(GitHubModel):
-    """Repository advisory reported event"""
+class WebhookRepositoryAdvisoryPublished(GitHubModel):
+    """Repository advisory published event"""
 
-    action: Literal["reported"] = Field()
+    action: Literal["published"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -56,6 +56,6 @@ class WebhookRepositoryAdvisoryReported(GitHubModel):
     )
 
 
-model_rebuild(WebhookRepositoryAdvisoryReported)
+model_rebuild(WebhookRepositoryAdvisoryPublished)
 
-__all__ = ("WebhookRepositoryAdvisoryReported",)
+__all__ = ("WebhookRepositoryAdvisoryPublished",)

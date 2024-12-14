@@ -66,6 +66,7 @@ if TYPE_CHECKING:
         AuthenticationTokenType,
         AzureBlobConfigType,
         AzureHubConfigType,
+        CustomPropertySetPayloadType,
         CustomPropertyType,
         DatadogConfigType,
         EnterpriseSecurityAnalysisSettingsType,
@@ -3694,24 +3695,61 @@ class EnterpriseAdminClient:
             },
         )
 
+    @overload
     def create_or_update_enterprise_custom_property(
         self,
         enterprise: str,
         custom_property_name: str,
         *,
         headers: Optional[dict[str, str]] = None,
+        data: CustomPropertySetPayloadType,
+    ) -> Response[CustomProperty, CustomPropertyType]: ...
+
+    @overload
+    def create_or_update_enterprise_custom_property(
+        self,
+        enterprise: str,
+        custom_property_name: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[dict[str, str]] = None,
+        value_type: Literal["string", "single_select", "multi_select", "true_false"],
+        required: Missing[bool] = UNSET,
+        default_value: Missing[Union[str, list[str], None]] = UNSET,
+        description: Missing[Union[str, None]] = UNSET,
+        allowed_values: Missing[Union[list[str], None]] = UNSET,
+    ) -> Response[CustomProperty, CustomPropertyType]: ...
+
+    def create_or_update_enterprise_custom_property(
+        self,
+        enterprise: str,
+        custom_property_name: str,
+        *,
+        headers: Optional[dict[str, str]] = None,
+        data: Missing[CustomPropertySetPayloadType] = UNSET,
+        **kwargs,
     ) -> Response[CustomProperty, CustomPropertyType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties#create-or-update-a-custom-property-for-an-enterprise"""
 
-        from ..models import BasicError, CustomProperty
+        from ..models import BasicError, CustomProperty, CustomPropertySetPayload
 
         url = f"/enterprises/{enterprise}/properties/schema/{custom_property_name}"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(CustomPropertySetPayload, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
             url,
+            json=exclude_unset(json),
             headers=exclude_unset(headers),
             response_model=CustomProperty,
             error_models={
@@ -3720,24 +3758,61 @@ class EnterpriseAdminClient:
             },
         )
 
+    @overload
     async def async_create_or_update_enterprise_custom_property(
         self,
         enterprise: str,
         custom_property_name: str,
         *,
         headers: Optional[dict[str, str]] = None,
+        data: CustomPropertySetPayloadType,
+    ) -> Response[CustomProperty, CustomPropertyType]: ...
+
+    @overload
+    async def async_create_or_update_enterprise_custom_property(
+        self,
+        enterprise: str,
+        custom_property_name: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[dict[str, str]] = None,
+        value_type: Literal["string", "single_select", "multi_select", "true_false"],
+        required: Missing[bool] = UNSET,
+        default_value: Missing[Union[str, list[str], None]] = UNSET,
+        description: Missing[Union[str, None]] = UNSET,
+        allowed_values: Missing[Union[list[str], None]] = UNSET,
+    ) -> Response[CustomProperty, CustomPropertyType]: ...
+
+    async def async_create_or_update_enterprise_custom_property(
+        self,
+        enterprise: str,
+        custom_property_name: str,
+        *,
+        headers: Optional[dict[str, str]] = None,
+        data: Missing[CustomPropertySetPayloadType] = UNSET,
+        **kwargs,
     ) -> Response[CustomProperty, CustomPropertyType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties#create-or-update-a-custom-property-for-an-enterprise"""
 
-        from ..models import BasicError, CustomProperty
+        from ..models import BasicError, CustomProperty, CustomPropertySetPayload
 
         url = f"/enterprises/{enterprise}/properties/schema/{custom_property_name}"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(CustomPropertySetPayload, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
             url,
+            json=exclude_unset(json),
             headers=exclude_unset(headers),
             response_model=CustomProperty,
             error_models={

@@ -9,42 +9,69 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from datetime import datetime
+from typing import Any, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0055 import TeamSimpleType
+from .group_0002 import SimpleUserType
 
 
-class UserRoleAssignmentType(TypedDict):
-    """A Role Assignment for a User
+class GistHistoryType(TypedDict):
+    """Gist History
 
-    The Relationship a User has with a role.
+    Gist History
     """
 
-    assignment: NotRequired[Literal["direct", "indirect", "mixed"]]
-    inherited_from: NotRequired[list[TeamSimpleType]]
-    name: NotRequired[Union[str, None]]
-    email: NotRequired[Union[str, None]]
-    login: str
-    id: int
-    node_id: str
-    avatar_url: str
-    gravatar_id: Union[str, None]
+    user: NotRequired[Union[None, SimpleUserType]]
+    version: NotRequired[str]
+    committed_at: NotRequired[datetime]
+    change_status: NotRequired[GistHistoryPropChangeStatusType]
+    url: NotRequired[str]
+
+
+class GistHistoryPropChangeStatusType(TypedDict):
+    """GistHistoryPropChangeStatus"""
+
+    total: NotRequired[int]
+    additions: NotRequired[int]
+    deletions: NotRequired[int]
+
+
+class GistSimplePropForkOfType(TypedDict):
+    """Gist
+
+    Gist
+    """
+
     url: str
+    forks_url: str
+    commits_url: str
+    id: str
+    node_id: str
+    git_pull_url: str
+    git_push_url: str
     html_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    starred_url: str
-    subscriptions_url: str
-    organizations_url: str
-    repos_url: str
-    events_url: str
-    received_events_url: str
-    type: str
-    site_admin: bool
-    starred_at: NotRequired[str]
-    user_view_type: NotRequired[str]
+    files: GistSimplePropForkOfPropFilesType
+    public: bool
+    created_at: datetime
+    updated_at: datetime
+    description: Union[str, None]
+    comments: int
+    user: Union[None, SimpleUserType]
+    comments_url: str
+    owner: NotRequired[Union[None, SimpleUserType]]
+    truncated: NotRequired[bool]
+    forks: NotRequired[list[Any]]
+    history: NotRequired[list[Any]]
 
 
-__all__ = ("UserRoleAssignmentType",)
+class GistSimplePropForkOfPropFilesType(TypedDict):
+    """GistSimplePropForkOfPropFiles"""
+
+
+__all__ = (
+    "GistHistoryPropChangeStatusType",
+    "GistHistoryType",
+    "GistSimplePropForkOfPropFilesType",
+    "GistSimplePropForkOfType",
+)

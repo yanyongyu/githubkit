@@ -9,55 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from datetime import datetime
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class GroupResponse(GitHubModel):
-    """GroupResponse"""
+class RepositorySubscription(GitHubModel):
+    """Repository Invitation
 
-    schemas: list[
-        Literal[
-            "urn:ietf:params:scim:schemas:core:2.0:Group",
-            "urn:ietf:params:scim:api:messages:2.0:ListResponse",
-        ]
-    ] = Field(
-        description="The URIs that are used to indicate the namespaces of the SCIM schemas."
+    Repository invitations let you manage who you collaborate with.
+    """
+
+    subscribed: bool = Field(
+        description="Determines if notifications should be received from this repository."
     )
-    external_id: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        alias="externalId",
-        description="A unique identifier for the resource as defined by the provisioning client.",
+    ignored: bool = Field(
+        description="Determines if all notifications should be blocked from this repository."
     )
-    display_name: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        alias="displayName",
-        description="A human-readable name for a security group.",
-    )
-    members: Missing[list[GroupResponsePropMembersItems]] = Field(
-        default=UNSET, description="The group members."
-    )
+    reason: Union[str, None] = Field()
+    created_at: datetime = Field()
+    url: str = Field()
+    repository_url: str = Field()
 
 
-class GroupResponsePropMembersItems(GitHubModel):
-    """GroupResponsePropMembersItems"""
+model_rebuild(RepositorySubscription)
 
-    value: str = Field(description="The local unique identifier for the member")
-    ref: str = Field(alias="$ref")
-    display: Missing[str] = Field(
-        default=UNSET, description="The display name associated with the member"
-    )
-
-
-model_rebuild(GroupResponse)
-model_rebuild(GroupResponsePropMembersItems)
-
-__all__ = (
-    "GroupResponse",
-    "GroupResponsePropMembersItems",
-)
+__all__ = ("RepositorySubscription",)

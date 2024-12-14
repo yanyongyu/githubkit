@@ -14,44 +14,40 @@ from typing import Literal, Union
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 from .group_0002 import SimpleUser
 from .group_0008 import Integration
 
 
-class ReviewDismissedIssueEvent(GitHubModel):
-    """Review Dismissed Issue Event
+class LabeledIssueEvent(GitHubModel):
+    """Labeled Issue Event
 
-    Review Dismissed Issue Event
+    Labeled Issue Event
     """
 
     id: int = Field()
     node_id: str = Field()
     url: str = Field()
     actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: Literal["review_dismissed"] = Field()
+    event: Literal["labeled"] = Field()
     commit_id: Union[str, None] = Field()
     commit_url: Union[str, None] = Field()
     created_at: str = Field()
     performed_via_github_app: Union[None, Integration, None] = Field()
-    dismissed_review: ReviewDismissedIssueEventPropDismissedReview = Field()
+    label: LabeledIssueEventPropLabel = Field()
 
 
-class ReviewDismissedIssueEventPropDismissedReview(GitHubModel):
-    """ReviewDismissedIssueEventPropDismissedReview"""
+class LabeledIssueEventPropLabel(GitHubModel):
+    """LabeledIssueEventPropLabel"""
 
-    state: str = Field()
-    review_id: int = Field()
-    dismissal_message: Union[str, None] = Field()
-    dismissal_commit_id: Missing[str] = Field(default=UNSET)
+    name: str = Field()
+    color: str = Field()
 
 
-model_rebuild(ReviewDismissedIssueEvent)
-model_rebuild(ReviewDismissedIssueEventPropDismissedReview)
+model_rebuild(LabeledIssueEvent)
+model_rebuild(LabeledIssueEventPropLabel)
 
 __all__ = (
-    "ReviewDismissedIssueEvent",
-    "ReviewDismissedIssueEventPropDismissedReview",
+    "LabeledIssueEvent",
+    "LabeledIssueEventPropLabel",
 )

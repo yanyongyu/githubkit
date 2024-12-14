@@ -10,64 +10,111 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Union
+from typing import Any, Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0408 import SearchResultTextMatchesItemsType
 
+class ScimUserListType(TypedDict):
+    """SCIM User List
 
-class UserSearchResultItemType(TypedDict):
-    """User Search Result Item
-
-    User Search Result Item
+    SCIM User List
     """
 
-    login: str
-    id: int
-    node_id: str
-    avatar_url: str
-    gravatar_id: Union[str, None]
-    url: str
-    html_url: str
-    followers_url: str
-    subscriptions_url: str
-    organizations_url: str
-    repos_url: str
-    received_events_url: str
-    type: str
-    score: float
-    following_url: str
-    gists_url: str
-    starred_url: str
-    events_url: str
-    public_repos: NotRequired[int]
-    public_gists: NotRequired[int]
-    followers: NotRequired[int]
-    following: NotRequired[int]
-    created_at: NotRequired[datetime]
-    updated_at: NotRequired[datetime]
-    name: NotRequired[Union[str, None]]
-    bio: NotRequired[Union[str, None]]
-    email: NotRequired[Union[str, None]]
-    location: NotRequired[Union[str, None]]
-    site_admin: bool
-    hireable: NotRequired[Union[bool, None]]
-    text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
-    blog: NotRequired[Union[str, None]]
-    company: NotRequired[Union[str, None]]
-    suspended_at: NotRequired[Union[datetime, None]]
-    user_view_type: NotRequired[str]
+    schemas: list[str]
+    total_results: int
+    items_per_page: int
+    start_index: int
+    resources: list[ScimUserType]
 
 
-class SearchUsersGetResponse200Type(TypedDict):
-    """SearchUsersGetResponse200"""
+class ScimUserType(TypedDict):
+    """SCIM /Users
 
-    total_count: int
-    incomplete_results: bool
-    items: list[UserSearchResultItemType]
+    SCIM /Users provisioning endpoints
+    """
+
+    schemas: list[str]
+    id: str
+    external_id: NotRequired[Union[str, None]]
+    user_name: NotRequired[Union[str, None]]
+    display_name: NotRequired[Union[str, None]]
+    name: NotRequired[ScimUserPropNameType]
+    emails: list[ScimUserPropEmailsItemsType]
+    active: bool
+    meta: ScimUserPropMetaType
+    organization_id: NotRequired[int]
+    operations: NotRequired[list[ScimUserPropOperationsItemsType]]
+    groups: NotRequired[list[ScimUserPropGroupsItemsType]]
+    roles: NotRequired[list[ScimUserPropRolesItemsType]]
+
+
+class ScimUserPropNameType(TypedDict):
+    """ScimUserPropName
+
+    Examples:
+        {'givenName': 'Jane', 'familyName': 'User'}
+    """
+
+    given_name: NotRequired[Union[str, None]]
+    family_name: NotRequired[Union[str, None]]
+    formatted: NotRequired[Union[str, None]]
+
+
+class ScimUserPropEmailsItemsType(TypedDict):
+    """ScimUserPropEmailsItems"""
+
+    value: str
+    primary: NotRequired[bool]
+    type: NotRequired[str]
+
+
+class ScimUserPropMetaType(TypedDict):
+    """ScimUserPropMeta"""
+
+    resource_type: NotRequired[str]
+    created: NotRequired[datetime]
+    last_modified: NotRequired[datetime]
+    location: NotRequired[str]
+
+
+class ScimUserPropGroupsItemsType(TypedDict):
+    """ScimUserPropGroupsItems"""
+
+    value: NotRequired[str]
+    display: NotRequired[str]
+
+
+class ScimUserPropRolesItemsType(TypedDict):
+    """ScimUserPropRolesItems"""
+
+    value: NotRequired[str]
+    primary: NotRequired[bool]
+    type: NotRequired[str]
+    display: NotRequired[str]
+
+
+class ScimUserPropOperationsItemsType(TypedDict):
+    """ScimUserPropOperationsItems"""
+
+    op: Literal["add", "remove", "replace"]
+    path: NotRequired[str]
+    value: NotRequired[
+        Union[str, ScimUserPropOperationsItemsPropValueOneof1Type, list[Any]]
+    ]
+
+
+class ScimUserPropOperationsItemsPropValueOneof1Type(TypedDict):
+    """ScimUserPropOperationsItemsPropValueOneof1"""
 
 
 __all__ = (
-    "SearchUsersGetResponse200Type",
-    "UserSearchResultItemType",
+    "ScimUserListType",
+    "ScimUserPropEmailsItemsType",
+    "ScimUserPropGroupsItemsType",
+    "ScimUserPropMetaType",
+    "ScimUserPropNameType",
+    "ScimUserPropOperationsItemsPropValueOneof1Type",
+    "ScimUserPropOperationsItemsType",
+    "ScimUserPropRolesItemsType",
+    "ScimUserType",
 )

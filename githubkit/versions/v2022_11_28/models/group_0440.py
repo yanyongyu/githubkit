@@ -18,16 +18,16 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0002 import SimpleUser
-from .group_0388 import EnterpriseWebhooks
-from .group_0389 import SimpleInstallation
-from .group_0390 import OrganizationSimpleWebhooks
-from .group_0391 import RepositoryWebhooks
+from .group_0389 import EnterpriseWebhooks
+from .group_0390 import SimpleInstallation
+from .group_0391 import OrganizationSimpleWebhooks
+from .group_0392 import RepositoryWebhooks
 
 
-class WebhookBranchProtectionConfigurationEnabled(GitHubModel):
-    """branch protection configuration enabled event"""
+class WebhookBranchProtectionConfigurationDisabled(GitHubModel):
+    """branch protection configuration disabled event"""
 
-    action: Literal["enabled"] = Field()
+    action: Literal["disabled"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -50,6 +50,6 @@ class WebhookBranchProtectionConfigurationEnabled(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookBranchProtectionConfigurationEnabled)
+model_rebuild(WebhookBranchProtectionConfigurationDisabled)
 
-__all__ = ("WebhookBranchProtectionConfigurationEnabled",)
+__all__ = ("WebhookBranchProtectionConfigurationDisabled",)

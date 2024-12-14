@@ -13,24 +13,23 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0002 import SimpleUserType
-from .group_0017 import InstallationType
-from .group_0430 import EnterpriseWebhooksType
-from .group_0432 import OrganizationSimpleWebhooksType
-from .group_0433 import RepositoryWebhooksType
-from .group_0448 import WebhooksRepositoriesItemsType
+from .group_0439 import EnterpriseWebhooksType
+from .group_0440 import SimpleInstallationType
+from .group_0441 import OrganizationSimpleWebhooksType
+from .group_0442 import RepositoryWebhooksType
+from .group_0454 import DiscussionType
 
 
-class WebhookInstallationDeletedType(TypedDict):
-    """installation deleted event"""
+class WebhookDiscussionUnpinnedType(TypedDict):
+    """discussion unpinned event"""
 
-    action: Literal["deleted"]
+    action: Literal["unpinned"]
+    discussion: DiscussionType
     enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: InstallationType
+    installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repositories: NotRequired[list[WebhooksRepositoriesItemsType]]
-    repository: NotRequired[RepositoryWebhooksType]
-    requester: NotRequired[None]
+    repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-__all__ = ("WebhookInstallationDeletedType",)
+__all__ = ("WebhookDiscussionUnpinnedType",)

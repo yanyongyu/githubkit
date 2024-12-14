@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,22 +18,21 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class CodeScanningDefaultSetupOptions(GitHubModel):
-    """CodeScanningDefaultSetupOptions
+class RepositoryRuleCommitterEmailPatternPropParameters(GitHubModel):
+    """RepositoryRuleCommitterEmailPatternPropParameters"""
 
-    Feature options for code scanning default setup
-    """
-
-    runner_type: Missing[Literal["standard", "labeled", "not_set"]] = Field(
-        default=UNSET,
-        description="Whether to use labeled runners or standard GitHub runners.",
+    name: Missing[str] = Field(
+        default=UNSET, description="How this rule will appear to users."
     )
-    runner_label: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The label of the runner to use for code scanning default setup when runner_type is 'labeled'.",
+    negate: Missing[bool] = Field(
+        default=UNSET, description="If true, the rule will fail if the pattern matches."
     )
+    operator: Literal["starts_with", "ends_with", "contains", "regex"] = Field(
+        description="The operator to use for matching."
+    )
+    pattern: str = Field(description="The pattern to match with.")
 
 
-model_rebuild(CodeScanningDefaultSetupOptions)
+model_rebuild(RepositoryRuleCommitterEmailPatternPropParameters)
 
-__all__ = ("CodeScanningDefaultSetupOptions",)
+__all__ = ("RepositoryRuleCommitterEmailPatternPropParameters",)

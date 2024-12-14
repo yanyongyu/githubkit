@@ -12,29 +12,21 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class WebhooksChanges(GitHubModel):
-    """WebhooksChanges
+class WebhooksWorkflowJobRun(GitHubModel):
+    """WebhooksWorkflowJobRun"""
 
-    The changes to the comment.
-    """
-
-    body: Missing[WebhooksChangesPropBody] = Field(default=UNSET)
-
-
-class WebhooksChangesPropBody(GitHubModel):
-    """WebhooksChangesPropBody"""
-
-    from_: str = Field(alias="from", description="The previous version of the body.")
+    conclusion: None = Field()
+    created_at: str = Field()
+    environment: str = Field()
+    html_url: str = Field()
+    id: int = Field()
+    name: None = Field()
+    status: str = Field()
+    updated_at: str = Field()
 
 
-model_rebuild(WebhooksChanges)
-model_rebuild(WebhooksChangesPropBody)
+model_rebuild(WebhooksWorkflowJobRun)
 
-__all__ = (
-    "WebhooksChanges",
-    "WebhooksChangesPropBody",
-)
+__all__ = ("WebhooksWorkflowJobRun",)

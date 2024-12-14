@@ -13,24 +13,15 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class RepositoryRuleOneof18Type(TypedDict):
-    """max_file_size
+class OrganizationCustomOrganizationRoleUpdateSchemaType(TypedDict):
+    """OrganizationCustomOrganizationRoleUpdateSchema"""
 
-    Prevent commits that exceed a specified file size limit from being pushed to the
-    commit.
-    """
-
-    type: Literal["max_file_size"]
-    parameters: NotRequired[RepositoryRuleOneof18PropParametersType]
-
-
-class RepositoryRuleOneof18PropParametersType(TypedDict):
-    """RepositoryRuleOneof18PropParameters"""
-
-    max_file_size: int
+    name: NotRequired[str]
+    description: NotRequired[str]
+    permissions: NotRequired[list[str]]
+    base_role: NotRequired[
+        Literal["none", "read", "triage", "write", "maintain", "admin"]
+    ]
 
 
-__all__ = (
-    "RepositoryRuleOneof18PropParametersType",
-    "RepositoryRuleOneof18Type",
-)
+__all__ = ("OrganizationCustomOrganizationRoleUpdateSchemaType",)

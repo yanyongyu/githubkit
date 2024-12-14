@@ -12,14 +12,17 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0100 import CodeSecurityConfigurationType
+from .group_0103 import RepositoryRuleBranchNamePatternPropParametersType
 
 
-class CodeSecurityDefaultConfigurationsItemsType(TypedDict):
-    """CodeSecurityDefaultConfigurationsItems"""
+class RepositoryRuleBranchNamePatternType(TypedDict):
+    """branch_name_pattern
 
-    default_for_new_repos: NotRequired[Literal["public", "private_and_internal", "all"]]
-    configuration: NotRequired[CodeSecurityConfigurationType]
+    Parameters to be used for the branch_name_pattern rule
+    """
+
+    type: Literal["branch_name_pattern"]
+    parameters: NotRequired[RepositoryRuleBranchNamePatternPropParametersType]
 
 
-__all__ = ("CodeSecurityDefaultConfigurationsItemsType",)
+__all__ = ("RepositoryRuleBranchNamePatternType",)

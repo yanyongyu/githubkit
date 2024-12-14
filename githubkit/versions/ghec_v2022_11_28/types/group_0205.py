@@ -13,15 +13,20 @@ from datetime import datetime
 from typing_extensions import TypedDict
 
 
-class ActionsSecretType(TypedDict):
-    """Actions Secret
+class ProjectColumnType(TypedDict):
+    """Project Column
 
-    Set secrets for GitHub Actions.
+    Project columns contain cards of work.
     """
 
+    url: str
+    project_url: str
+    cards_url: str
+    id: int
+    node_id: str
     name: str
     created_at: datetime
     updated_at: datetime
 
 
-__all__ = ("ActionsSecretType",)
+__all__ = ("ProjectColumnType",)

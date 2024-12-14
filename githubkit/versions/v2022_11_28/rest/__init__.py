@@ -102,12 +102,6 @@ class RestNamespace:
         return EmojisClient(self._github)
 
     @cached_property
-    def copilot(self) -> "CopilotClient":
-        from .copilot import CopilotClient
-
-        return CopilotClient(self._github)
-
-    @cached_property
     def dependabot(self) -> "DependabotClient":
         from .dependabot import DependabotClient
 
@@ -196,6 +190,12 @@ class RestNamespace:
         from .codespaces import CodespacesClient
 
         return CodespacesClient(self._github)
+
+    @cached_property
+    def copilot(self) -> "CopilotClient":
+        from .copilot import CopilotClient
+
+        return CopilotClient(self._github)
 
     @cached_property
     def packages(self) -> "PackagesClient":

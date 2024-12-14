@@ -13,21 +13,20 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class PackagesBillingUsage(GitHubModel):
-    """PackagesBillingUsage"""
-
-    total_gigabytes_bandwidth_used: int = Field(
-        description="Sum of the free and paid storage space (GB) for GitHuub Packages."
-    )
-    total_paid_gigabytes_bandwidth_used: int = Field(
-        description="Total paid storage space (GB) for GitHuub Packages."
-    )
-    included_gigabytes_bandwidth: int = Field(
-        description="Free storage space (GB) for GitHub Packages."
-    )
+from .group_0072 import (
+    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName,
+)
 
 
-model_rebuild(PackagesBillingUsage)
+class RepositoryRulesetConditionsRepositoryNameTarget(GitHubModel):
+    """Repository ruleset conditions for repository names
 
-__all__ = ("PackagesBillingUsage",)
+    Parameters for a repository name condition
+    """
+
+    repository_name: RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName = Field()
+
+
+model_rebuild(RepositoryRulesetConditionsRepositoryNameTarget)
+
+__all__ = ("RepositoryRulesetConditionsRepositoryNameTarget",)

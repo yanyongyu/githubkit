@@ -12,12 +12,18 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class SelectedActionsType(TypedDict):
-    """SelectedActions"""
+class RunnerApplicationType(TypedDict):
+    """Runner Application
 
-    github_owned_allowed: NotRequired[bool]
-    verified_allowed: NotRequired[bool]
-    patterns_allowed: NotRequired[list[str]]
+    Runner Application
+    """
+
+    os: str
+    architecture: str
+    download_url: str
+    filename: str
+    temp_download_token: NotRequired[str]
+    sha256_checksum: NotRequired[str]
 
 
-__all__ = ("SelectedActionsType",)
+__all__ = ("RunnerApplicationType",)

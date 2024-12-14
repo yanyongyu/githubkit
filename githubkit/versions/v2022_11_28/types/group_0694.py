@@ -13,17 +13,17 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0002 import SimpleUserType
-from .group_0388 import EnterpriseWebhooksType
-from .group_0389 import SimpleInstallationType
-from .group_0390 import OrganizationSimpleWebhooksType
-from .group_0391 import RepositoryWebhooksType
-from .group_0431 import WebhooksReleaseType
+from .group_0389 import EnterpriseWebhooksType
+from .group_0390 import SimpleInstallationType
+from .group_0391 import OrganizationSimpleWebhooksType
+from .group_0392 import RepositoryWebhooksType
+from .group_0432 import WebhooksReleaseType
 
 
-class WebhookReleaseDeletedType(TypedDict):
-    """release deleted event"""
+class WebhookReleaseCreatedType(TypedDict):
+    """release created event"""
 
-    action: Literal["deleted"]
+    action: Literal["created"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
@@ -32,4 +32,4 @@ class WebhookReleaseDeletedType(TypedDict):
     sender: SimpleUserType
 
 
-__all__ = ("WebhookReleaseDeletedType",)
+__all__ = ("WebhookReleaseCreatedType",)

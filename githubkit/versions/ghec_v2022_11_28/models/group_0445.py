@@ -18,174 +18,172 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0444 import ExemptionResponse
 
-class Discussion(GitHubModel):
-    """Discussion
 
-    A Discussion in a repository.
+class ExemptionRequest(GitHubModel):
+    """Exemption Request
+
+    A request from a user to be exempted from a set of rules.
     """
 
-    active_lock_reason: Union[str, None] = Field()
-    answer_chosen_at: Union[str, None] = Field()
-    answer_chosen_by: Union[DiscussionPropAnswerChosenBy, None] = Field(title="User")
-    answer_html_url: Union[str, None] = Field()
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
+    id: Missing[int] = Field(
+        default=UNSET, description="The ID of the exemption request."
+    )
+    number: Missing[int] = Field(
+        default=UNSET,
+        description="The number uniquely identifying the exemption request within it's repository.",
+    )
+    repository_id: Missing[int] = Field(
+        default=UNSET,
+        description="The ID of the repository the exemption request is for.",
+    )
+    requester_id: Missing[int] = Field(
+        default=UNSET, description="The ID of the user who requested the exemption."
+    )
+    requester_login: Missing[str] = Field(
+        default=UNSET, description="The login of the user who requested the exemption."
+    )
+    request_type: Missing[Literal["push_ruleset_bypass", "secret_scanning"]] = Field(
+        default=UNSET, description="The type of request."
+    )
+    exemption_request_data: Missing[
+        Union[ExemptionRequestPushRulesetBypass, ExemptionRequestSecretScanning]
+    ] = Field(default=UNSET)
+    resource_identifier: Missing[str] = Field(
+        default=UNSET,
+        description="The unique identifier for the request type of the exemption request. For example, a commit SHA.",
+    )
+    status: Missing[Literal["pending", "rejected", "cancelled", "completed"]] = Field(
+        default=UNSET, description="The status of the exemption request."
+    )
+    requester_comment: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The comment the requester provided when creating the exemption request.",
+    )
+    metadata: Missing[Union[ExemptionRequestSecretScanningMetadata, None]] = Field(
+        default=UNSET, description="Metadata about the exemption request."
+    )
+    expires_at: Missing[datetime] = Field(
+        default=UNSET,
+        description="The date and time the exemption request will expire.",
+    )
+    created_at: Missing[datetime] = Field(
+        default=UNSET,
+        description="The date and time the exemption request was created.",
+    )
+    responses: Missing[Union[list[ExemptionResponse], None]] = Field(
+        default=UNSET, description="The responses to the exemption request."
+    )
+    html_url: Missing[str] = Field(
+        default=UNSET, description="The URL to view the exemption request in a browser."
+    )
+
+
+class ExemptionRequestSecretScanningMetadata(GitHubModel):
+    """Secret Scanning Push Protection Exemption Request Metadata
+
+    Metadata for a secret scanning push protection exemption request.
+    """
+
+    label: Missing[str] = Field(
+        default=UNSET, description="The label for the secret type"
+    )
+    reason: Missing[Literal["fixed_later", "false_positive", "tests"]] = Field(
+        default=UNSET, description="The reason for the exemption request"
+    )
+
+
+class ExemptionRequestPushRulesetBypass(GitHubModel):
+    """Push ruleset bypass exemption request data
+
+    Push rules that are being requested to be bypassed.
+    """
+
+    type: Missing[Literal["push_ruleset_bypass"]] = Field(
+        default=UNSET, description="The type of request"
+    )
+    data: Missing[list[ExemptionRequestPushRulesetBypassPropDataItems]] = Field(
+        default=UNSET,
+        description="The data pertaining to the push rules that are being requested to be bypassed.",
+    )
+
+
+class ExemptionRequestPushRulesetBypassPropDataItems(GitHubModel):
+    """ExemptionRequestPushRulesetBypassPropDataItems"""
+
+    ruleset_id: Missing[int] = Field(
+        default=UNSET,
+        description="The ID of the ruleset for the rules that were violated",
+    )
+    ruleset_name: Missing[str] = Field(
+        default=UNSET,
+        description="The name of the ruleset for the rules that were violated",
+    )
+    total_violations: Missing[int] = Field(
+        default=UNSET, description="The number of violations"
+    )
+    rule_type: Missing[str] = Field(
+        default=UNSET, description="The type of rule that was violated"
+    )
+
+
+class ExemptionRequestSecretScanning(GitHubModel):
+    """Secret scanning push protection exemption request data
+
+    Secret scanning push protections that are being requested to be bypassed.
+    """
+
+    type: Missing[Literal["secret_scanning"]] = Field(
+        default=UNSET, description="The type of request"
+    )
+    data: Missing[list[ExemptionRequestSecretScanningPropDataItems]] = Field(
+        default=UNSET,
+        description="The data pertaining to the secret scanning push protections that are being requested to be bypassed.",
+    )
+
+
+class ExemptionRequestSecretScanningPropDataItems(GitHubModel):
+    """ExemptionRequestSecretScanningPropDataItems"""
+
+    secret_type: Missing[str] = Field(
+        default=UNSET, description="The type of secret that was detected"
+    )
+    locations: Missing[
+        list[ExemptionRequestSecretScanningPropDataItemsPropLocationsItems]
     ] = Field(
-        title="AuthorAssociation",
-        description="How the author is associated with the repository.",
-    )
-    body: str = Field()
-    category: DiscussionPropCategory = Field()
-    comments: int = Field()
-    created_at: datetime = Field()
-    html_url: str = Field()
-    id: int = Field()
-    locked: bool = Field()
-    node_id: str = Field()
-    number: int = Field()
-    reactions: Missing[DiscussionPropReactions] = Field(
-        default=UNSET, title="Reactions"
-    )
-    repository_url: str = Field()
-    state: Literal["open", "closed", "locked", "converting", "transferring"] = Field(
-        description="The current state of the discussion.\n`converting` means that the discussion is being converted from an issue.\n`transferring` means that the discussion is being transferred from another repository."
-    )
-    state_reason: Union[
-        None, Literal["resolved", "outdated", "duplicate", "reopened"]
-    ] = Field(description="The reason for the current state")
-    timeline_url: Missing[str] = Field(default=UNSET)
-    title: str = Field()
-    updated_at: datetime = Field()
-    user: Union[DiscussionPropUser, None] = Field(title="User")
-    labels: Missing[list[Label]] = Field(default=UNSET)
-
-
-class Label(GitHubModel):
-    """Label
-
-    Color-coded labels help you categorize and filter your issues (just like labels
-    in Gmail).
-    """
-
-    id: int = Field(description="Unique identifier for the label.")
-    node_id: str = Field()
-    url: str = Field(description="URL for the label")
-    name: str = Field(description="The name of the label.")
-    description: Union[str, None] = Field(
-        description="Optional description of the label, such as its purpose."
-    )
-    color: str = Field(
-        description="6-character hex code, without the leading #, identifying the color"
-    )
-    default: bool = Field(
-        description="Whether this label comes by default in a new repository."
+        default=UNSET, description="The location data of the secret that was detected"
     )
 
 
-class DiscussionPropAnswerChosenBy(GitHubModel):
-    """User"""
+class ExemptionRequestSecretScanningPropDataItemsPropLocationsItems(GitHubModel):
+    """ExemptionRequestSecretScanningPropDataItemsPropLocationsItems"""
 
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field()
-    login: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
+    commit: Missing[str] = Field(
+        default=UNSET, description="The commit SHA where the secret was detected"
+    )
+    branch: Missing[str] = Field(
+        default=UNSET, description="The branch where the secret was detected"
+    )
+    path: Missing[str] = Field(
+        default=UNSET, description="The path of the file where the secret was detected"
+    )
 
 
-class DiscussionPropCategory(GitHubModel):
-    """DiscussionPropCategory"""
-
-    created_at: datetime = Field()
-    description: str = Field()
-    emoji: str = Field()
-    id: int = Field()
-    is_answerable: bool = Field()
-    name: str = Field()
-    node_id: Missing[str] = Field(default=UNSET)
-    repository_id: int = Field()
-    slug: str = Field()
-    updated_at: str = Field()
-
-
-class DiscussionPropReactions(GitHubModel):
-    """Reactions"""
-
-    plus_one: int = Field(alias="+1")
-    minus_one: int = Field(alias="-1")
-    confused: int = Field()
-    eyes: int = Field()
-    heart: int = Field()
-    hooray: int = Field()
-    laugh: int = Field()
-    rocket: int = Field()
-    total_count: int = Field()
-    url: str = Field()
-
-
-class DiscussionPropUser(GitHubModel):
-    """User"""
-
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field()
-    login: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(Discussion)
-model_rebuild(Label)
-model_rebuild(DiscussionPropAnswerChosenBy)
-model_rebuild(DiscussionPropCategory)
-model_rebuild(DiscussionPropReactions)
-model_rebuild(DiscussionPropUser)
+model_rebuild(ExemptionRequest)
+model_rebuild(ExemptionRequestSecretScanningMetadata)
+model_rebuild(ExemptionRequestPushRulesetBypass)
+model_rebuild(ExemptionRequestPushRulesetBypassPropDataItems)
+model_rebuild(ExemptionRequestSecretScanning)
+model_rebuild(ExemptionRequestSecretScanningPropDataItems)
+model_rebuild(ExemptionRequestSecretScanningPropDataItemsPropLocationsItems)
 
 __all__ = (
-    "Discussion",
-    "DiscussionPropAnswerChosenBy",
-    "DiscussionPropCategory",
-    "DiscussionPropReactions",
-    "DiscussionPropUser",
-    "Label",
+    "ExemptionRequest",
+    "ExemptionRequestPushRulesetBypass",
+    "ExemptionRequestPushRulesetBypassPropDataItems",
+    "ExemptionRequestSecretScanning",
+    "ExemptionRequestSecretScanningMetadata",
+    "ExemptionRequestSecretScanningPropDataItems",
+    "ExemptionRequestSecretScanningPropDataItemsPropLocationsItems",
 )

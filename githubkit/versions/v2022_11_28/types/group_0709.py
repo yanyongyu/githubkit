@@ -13,16 +13,16 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0002 import SimpleUserType
-from .group_0388 import EnterpriseWebhooksType
-from .group_0389 import SimpleInstallationType
-from .group_0390 import OrganizationSimpleWebhooksType
-from .group_0391 import RepositoryWebhooksType
+from .group_0389 import EnterpriseWebhooksType
+from .group_0390 import SimpleInstallationType
+from .group_0391 import OrganizationSimpleWebhooksType
+from .group_0392 import RepositoryWebhooksType
 
 
-class WebhookRepositoryPublicizedType(TypedDict):
-    """repository publicized event"""
+class WebhookRepositoryPrivatizedType(TypedDict):
+    """repository privatized event"""
 
-    action: Literal["publicized"]
+    action: Literal["privatized"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
@@ -30,4 +30,4 @@ class WebhookRepositoryPublicizedType(TypedDict):
     sender: SimpleUserType
 
 
-__all__ = ("WebhookRepositoryPublicizedType",)
+__all__ = ("WebhookRepositoryPrivatizedType",)

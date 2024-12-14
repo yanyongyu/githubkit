@@ -17,19 +17,35 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0155 import RepositoryRuleUpdatePropParameters
+from .group_0051 import SimpleRepository
 
 
-class RepositoryRuleUpdate(GitHubModel):
-    """update
+class CodeSecurityConfigurationRepositories(GitHubModel):
+    """CodeSecurityConfigurationRepositories
 
-    Only allow users with bypass permission to update matching refs.
+    Repositories associated with a code security configuration and attachment status
     """
 
-    type: Literal["update"] = Field()
-    parameters: Missing[RepositoryRuleUpdatePropParameters] = Field(default=UNSET)
+    status: Missing[
+        Literal[
+            "attached",
+            "attaching",
+            "detached",
+            "removed",
+            "enforced",
+            "failed",
+            "updating",
+            "removed_by_enterprise",
+        ]
+    ] = Field(
+        default=UNSET,
+        description="The attachment status of the code security configuration on the repository.",
+    )
+    repository: Missing[SimpleRepository] = Field(
+        default=UNSET, title="Simple Repository", description="A GitHub repository."
+    )
 
 
-model_rebuild(RepositoryRuleUpdate)
+model_rebuild(CodeSecurityConfigurationRepositories)
 
-__all__ = ("RepositoryRuleUpdate",)
+__all__ = ("CodeSecurityConfigurationRepositories",)

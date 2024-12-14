@@ -9,19 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0294 import MetadataType
 
 
-class CustomDeploymentRuleAppType(TypedDict):
-    """Custom deployment protection rule app
+class ManifestType(TypedDict):
+    """Manifest"""
 
-    A GitHub App that is providing a custom deployment protection rule.
+    name: str
+    file: NotRequired[ManifestPropFileType]
+    metadata: NotRequired[MetadataType]
+    resolved: NotRequired[ManifestPropResolvedType]
+
+
+class ManifestPropFileType(TypedDict):
+    """ManifestPropFile"""
+
+    source_location: NotRequired[str]
+
+
+class ManifestPropResolvedType(TypedDict):
+    """ManifestPropResolved
+
+    A collection of resolved package dependencies.
     """
 
-    id: int
-    slug: str
-    integration_url: str
-    node_id: str
 
-
-__all__ = ("CustomDeploymentRuleAppType",)
+__all__ = (
+    "ManifestPropFileType",
+    "ManifestPropResolvedType",
+    "ManifestType",
+)

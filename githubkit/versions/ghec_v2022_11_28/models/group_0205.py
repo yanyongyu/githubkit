@@ -16,17 +16,22 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ActionsSecret(GitHubModel):
-    """Actions Secret
+class ProjectColumn(GitHubModel):
+    """Project Column
 
-    Set secrets for GitHub Actions.
+    Project columns contain cards of work.
     """
 
-    name: str = Field(description="The name of the secret.")
+    url: str = Field()
+    project_url: str = Field()
+    cards_url: str = Field()
+    id: int = Field(description="The unique identifier of the project column")
+    node_id: str = Field()
+    name: str = Field(description="Name of the project column")
     created_at: datetime = Field()
     updated_at: datetime = Field()
 
 
-model_rebuild(ActionsSecret)
+model_rebuild(ProjectColumn)
 
-__all__ = ("ActionsSecret",)
+__all__ = ("ProjectColumn",)

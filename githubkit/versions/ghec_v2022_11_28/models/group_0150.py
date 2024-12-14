@@ -15,22 +15,21 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0143 import RepositoryRulesetConditionsPropRefName
-from .group_0145 import (
-    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName,
-)
 
+class ActionsPublicKey(GitHubModel):
+    """ActionsPublicKey
 
-class OrgRulesetConditionsOneof0(GitHubModel):
-    """repository_name_and_ref_name
-
-    Conditions to target repositories by name and refs by name
+    The public key used for setting Actions Secrets.
     """
 
-    ref_name: Missing[RepositoryRulesetConditionsPropRefName] = Field(default=UNSET)
-    repository_name: RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName = Field()
+    key_id: str = Field(description="The identifier for the key.")
+    key: str = Field(description="The Base64 encoded public key.")
+    id: Missing[int] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    title: Missing[str] = Field(default=UNSET)
+    created_at: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(OrgRulesetConditionsOneof0)
+model_rebuild(ActionsPublicKey)
 
-__all__ = ("OrgRulesetConditionsOneof0",)
+__all__ = ("ActionsPublicKey",)

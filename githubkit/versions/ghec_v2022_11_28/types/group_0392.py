@@ -9,18 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0002 import SimpleUserType
 
 
-class ReferrerTrafficType(TypedDict):
-    """Referrer Traffic
+class ContributorActivityType(TypedDict):
+    """Contributor Activity
 
-    Referrer Traffic
+    Contributor Activity
     """
 
-    referrer: str
-    count: int
-    uniques: int
+    author: Union[None, SimpleUserType]
+    total: int
+    weeks: list[ContributorActivityPropWeeksItemsType]
 
 
-__all__ = ("ReferrerTrafficType",)
+class ContributorActivityPropWeeksItemsType(TypedDict):
+    """ContributorActivityPropWeeksItems"""
+
+    w: NotRequired[int]
+    a: NotRequired[int]
+    d: NotRequired[int]
+    c: NotRequired[int]
+
+
+__all__ = (
+    "ContributorActivityPropWeeksItemsType",
+    "ContributorActivityType",
+)

@@ -9,16 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import TypedDict
 
 
-class HookResponseType(TypedDict):
-    """Hook Response"""
+class DeploymentBranchPolicyNamePatternType(TypedDict):
+    """Deployment branch policy name pattern"""
 
-    code: Union[int, None]
-    status: Union[str, None]
-    message: Union[str, None]
+    name: str
 
 
-__all__ = ("HookResponseType",)
+__all__ = ("DeploymentBranchPolicyNamePatternType",)

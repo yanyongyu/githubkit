@@ -16,20 +16,16 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class CodespacesPublicKey(GitHubModel):
-    """CodespacesPublicKey
+class RepositoryRuleParamsRestrictedCommits(GitHubModel):
+    """RestrictedCommits
 
-    The public key used for setting Codespaces secrets.
+    Restricted commit
     """
 
-    key_id: str = Field(description="The identifier for the key.")
-    key: str = Field(description="The Base64 encoded public key.")
-    id: Missing[int] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-    title: Missing[str] = Field(default=UNSET)
-    created_at: Missing[str] = Field(default=UNSET)
+    oid: str = Field(description="Full or abbreviated commit hash to reject")
+    reason: Missing[str] = Field(default=UNSET, description="Reason for restriction")
 
 
-model_rebuild(CodespacesPublicKey)
+model_rebuild(RepositoryRuleParamsRestrictedCommits)
 
-__all__ = ("CodespacesPublicKey",)
+__all__ = ("RepositoryRuleParamsRestrictedCommits",)

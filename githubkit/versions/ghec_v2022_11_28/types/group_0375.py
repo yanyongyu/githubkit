@@ -9,17 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class SecretScanningPushProtectionBypassType(TypedDict):
-    """SecretScanningPushProtectionBypass"""
+class RepositoryRuleDetailedOneof9Type(TypedDict):
+    """RepositoryRuleDetailedOneof9"""
 
-    reason: NotRequired[Literal["false_positive", "used_in_tests", "will_fix_later"]]
-    expire_at: NotRequired[Union[datetime, None]]
-    token_type: NotRequired[str]
+    type: Literal["non_fast_forward"]
+    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
+    ruleset_source: NotRequired[str]
+    ruleset_id: NotRequired[int]
 
 
-__all__ = ("SecretScanningPushProtectionBypassType",)
+__all__ = ("RepositoryRuleDetailedOneof9Type",)

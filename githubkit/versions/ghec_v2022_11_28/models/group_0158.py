@@ -13,41 +13,83 @@ from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class RepositoryRuleMergeQueuePropParameters(GitHubModel):
-    """RepositoryRuleMergeQueuePropParameters"""
+class CopilotOrganizationDetails(ExtraGitHubModel):
+    """Copilot Organization Details
 
-    check_response_timeout_minutes: int = Field(
-        le=360.0,
-        ge=1.0,
-        description="Maximum time for a required status check to report a conclusion. After this much time has elapsed, checks that have not reported a conclusion will be assumed to have failed",
+    Information about the seat breakdown and policies set for an organization with a
+    Copilot Business or Copilot Enterprise subscription.
+    """
+
+    seat_breakdown: CopilotSeatBreakdown = Field(
+        title="Copilot Business Seat Breakdown",
+        description="The breakdown of Copilot Business seats for the organization.",
     )
-    grouping_strategy: Literal["ALLGREEN", "HEADGREEN"] = Field(
-        description="When set to ALLGREEN, the merge commit created by merge queue for each PR in the group must pass all required checks to merge. When set to HEADGREEN, only the commit at the head of the merge group, i.e. the commit containing changes from all of the PRs in the group, must pass its required checks to merge."
+    public_code_suggestions: Literal["allow", "block", "unconfigured", "unknown"] = (
+        Field(
+            description="The organization policy for allowing or disallowing Copilot to make suggestions that match public code."
+        )
     )
-    max_entries_to_build: int = Field(
-        le=100.0,
-        description="Limit the number of queued pull requests requesting checks and workflow runs at the same time.",
+    ide_chat: Missing[Literal["enabled", "disabled", "unconfigured"]] = Field(
+        default=UNSET,
+        description="The organization policy for allowing or disallowing organization members to use Copilot Chat within their editor.",
     )
-    max_entries_to_merge: int = Field(
-        le=100.0,
-        description="The maximum number of PRs that will be merged together in a group.",
+    platform_chat: Missing[Literal["enabled", "disabled", "unconfigured"]] = Field(
+        default=UNSET,
+        description="The organization policy for allowing or disallowing organization members to use Copilot features within github.com.",
     )
-    merge_method: Literal["MERGE", "SQUASH", "REBASE"] = Field(
-        description="Method to use when merging changes from queued pull requests."
+    cli: Missing[Literal["enabled", "disabled", "unconfigured"]] = Field(
+        default=UNSET,
+        description="The organization policy for allowing or disallowing organization members to use Copilot within their CLI.",
     )
-    min_entries_to_merge: int = Field(
-        le=100.0,
-        description="The minimum number of PRs that will be merged together in a group.",
-    )
-    min_entries_to_merge_wait_minutes: int = Field(
-        le=360.0,
-        description="The time merge queue should wait after the first PR is added to the queue for the minimum group size to be met. After this time has elapsed, the minimum group size will be ignored and a smaller group will be merged.",
+    seat_management_setting: Literal[
+        "assign_all", "assign_selected", "disabled", "unconfigured"
+    ] = Field(description="The mode of assigning new seats.")
+    plan_type: Missing[Literal["business", "enterprise", "unknown"]] = Field(
+        default=UNSET,
+        description="The Copilot plan of the organization, or the parent enterprise, when applicable.",
     )
 
 
-model_rebuild(RepositoryRuleMergeQueuePropParameters)
+class CopilotSeatBreakdown(GitHubModel):
+    """Copilot Business Seat Breakdown
 
-__all__ = ("RepositoryRuleMergeQueuePropParameters",)
+    The breakdown of Copilot Business seats for the organization.
+    """
+
+    total: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of seats being billed for the organization as of the current billing cycle.",
+    )
+    added_this_cycle: Missing[int] = Field(
+        default=UNSET, description="Seats added during the current billing cycle."
+    )
+    pending_cancellation: Missing[int] = Field(
+        default=UNSET,
+        description="The number of seats that are pending cancellation at the end of the current billing cycle.",
+    )
+    pending_invitation: Missing[int] = Field(
+        default=UNSET,
+        description="The number of seats that have been assigned to users that have not yet accepted an invitation to this organization.",
+    )
+    active_this_cycle: Missing[int] = Field(
+        default=UNSET,
+        description="The number of seats that have used Copilot during the current billing cycle.",
+    )
+    inactive_this_cycle: Missing[int] = Field(
+        default=UNSET,
+        description="The number of seats that have not used Copilot during the current billing cycle.",
+    )
+
+
+model_rebuild(CopilotOrganizationDetails)
+model_rebuild(CopilotSeatBreakdown)
+
+__all__ = (
+    "CopilotOrganizationDetails",
+    "CopilotSeatBreakdown",
+)

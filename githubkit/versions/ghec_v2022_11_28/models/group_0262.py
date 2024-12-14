@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Literal, Union
 
 from pydantic import Field
@@ -18,60 +17,42 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0002 import SimpleUser
-from .group_0075 import ReactionRollup
 
+class CodeScanningDefaultSetupUpdate(GitHubModel):
+    """CodeScanningDefaultSetupUpdate
 
-class CommitComment(GitHubModel):
-    """Commit Comment
-
-    Commit Comment
+    Configuration for code scanning default setup.
     """
 
-    html_url: str = Field()
-    url: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    body: str = Field()
-    path: Union[str, None] = Field()
-    position: Union[int, None] = Field()
-    line: Union[int, None] = Field()
-    commit_id: str = Field()
-    user: Union[None, SimpleUser] = Field()
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ] = Field(
-        title="author_association",
-        description="How the author is associated with the repository.",
+    state: Missing[Literal["configured", "not-configured"]] = Field(
+        default=UNSET, description="The desired state of code scanning default setup."
     )
-    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
+    runner_type: Missing[Literal["standard", "labeled"]] = Field(
+        default=UNSET, description="Runner type to be used."
+    )
+    runner_label: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="Runner label to be used if the runner type is labeled.",
+    )
+    query_suite: Missing[Literal["default", "extended"]] = Field(
+        default=UNSET, description="CodeQL query suite to be used."
+    )
+    languages: Missing[
+        list[
+            Literal[
+                "c-cpp",
+                "csharp",
+                "go",
+                "java-kotlin",
+                "javascript-typescript",
+                "python",
+                "ruby",
+                "swift",
+            ]
+        ]
+    ] = Field(default=UNSET, description="CodeQL languages to be analyzed.")
 
 
-class TimelineCommitCommentedEvent(GitHubModel):
-    """Timeline Commit Commented Event
+model_rebuild(CodeScanningDefaultSetupUpdate)
 
-    Timeline Commit Commented Event
-    """
-
-    event: Missing[Literal["commit_commented"]] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    commit_id: Missing[str] = Field(default=UNSET)
-    comments: Missing[list[CommitComment]] = Field(default=UNSET)
-
-
-model_rebuild(CommitComment)
-model_rebuild(TimelineCommitCommentedEvent)
-
-__all__ = (
-    "CommitComment",
-    "TimelineCommitCommentedEvent",
-)
+__all__ = ("CodeScanningDefaultSetupUpdate",)

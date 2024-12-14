@@ -18,41 +18,26 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty(
-    GitHubModel
-):
-    """RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty"""
+class ActionsOrganizationPermissions(GitHubModel):
+    """ActionsOrganizationPermissions"""
 
-    include: Missing[list[RepositoryRulesetConditionsRepositoryPropertySpec]] = Field(
+    enabled_repositories: Literal["all", "none", "selected"] = Field(
+        description="The policy that controls the repositories in the organization that are allowed to run GitHub Actions."
+    )
+    selected_repositories_url: Missing[str] = Field(
         default=UNSET,
-        description="The repository properties and values to include. All of these properties must match for the condition to pass.",
+        description="The API URL to use to get or set the selected repositories that are allowed to run GitHub Actions, when `enabled_repositories` is set to `selected`.",
     )
-    exclude: Missing[list[RepositoryRulesetConditionsRepositoryPropertySpec]] = Field(
+    allowed_actions: Missing[Literal["all", "local_only", "selected"]] = Field(
         default=UNSET,
-        description="The repository properties and values to exclude. The condition will not pass if any of these properties match.",
+        description="The permissions policy that controls the actions and reusable workflows that are allowed to run.",
     )
-
-
-class RepositoryRulesetConditionsRepositoryPropertySpec(GitHubModel):
-    """Repository ruleset property targeting definition
-
-    Parameters for a targeting a repository property
-    """
-
-    name: str = Field(description="The name of the repository property to target")
-    property_values: list[str] = Field(
-        description="The values to match for the repository property"
-    )
-    source: Missing[Literal["custom", "system"]] = Field(
+    selected_actions_url: Missing[str] = Field(
         default=UNSET,
-        description="The source of the repository property. Defaults to 'custom' if not specified.",
+        description="The API URL to use to get or set the actions and reusable workflows that are allowed to run, when `allowed_actions` is set to `selected`.",
     )
 
 
-model_rebuild(RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty)
-model_rebuild(RepositoryRulesetConditionsRepositoryPropertySpec)
+model_rebuild(ActionsOrganizationPermissions)
 
-__all__ = (
-    "RepositoryRulesetConditionsRepositoryPropertySpec",
-    "RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty",
-)
+__all__ = ("ActionsOrganizationPermissions",)

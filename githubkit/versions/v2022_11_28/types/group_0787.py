@@ -9,15 +9,11 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseSecretScanningAlertsGetResponse503Type(TypedDict):
-    """EnterprisesEnterpriseSecretScanningAlertsGetResponse503"""
-
-    code: NotRequired[str]
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
+class EmojisGetResponse200Type(TypedDict):
+    """EmojisGetResponse200"""
 
 
-__all__ = ("EnterprisesEnterpriseSecretScanningAlertsGetResponse503Type",)
+__all__ = ("EmojisGetResponse200Type",)

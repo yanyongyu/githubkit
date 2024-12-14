@@ -9,135 +9,52 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0657 import WebhookRubygemsMetadataType
+from .group_0002 import SimpleUserType
+from .group_0439 import EnterpriseWebhooksType
+from .group_0440 import SimpleInstallationType
+from .group_0441 import OrganizationSimpleWebhooksType
+from .group_0442 import RepositoryWebhooksType
+from .group_0452 import WebhooksUserType
 
 
-class WebhookPackageUpdatedPropPackagePropPackageVersionType(TypedDict):
-    """WebhookPackageUpdatedPropPackagePropPackageVersion"""
+class WebhookOrganizationMemberInvitedType(TypedDict):
+    """organization member_invited event"""
 
-    author: Union[
-        WebhookPackageUpdatedPropPackagePropPackageVersionPropAuthorType, None
-    ]
-    body: str
-    body_html: str
-    created_at: str
-    description: str
-    docker_metadata: NotRequired[
-        list[
-            WebhookPackageUpdatedPropPackagePropPackageVersionPropDockerMetadataItemsType
-        ]
-    ]
-    draft: NotRequired[bool]
-    html_url: str
-    id: int
-    installation_command: str
-    manifest: NotRequired[str]
-    metadata: list[
-        WebhookPackageUpdatedPropPackagePropPackageVersionPropMetadataItemsType
-    ]
-    name: str
-    package_files: list[
-        WebhookPackageUpdatedPropPackagePropPackageVersionPropPackageFilesItemsType
-    ]
-    package_url: NotRequired[str]
-    prerelease: NotRequired[bool]
-    release: NotRequired[
-        WebhookPackageUpdatedPropPackagePropPackageVersionPropReleaseType
-    ]
-    rubygems_metadata: NotRequired[list[WebhookRubygemsMetadataType]]
-    source_url: NotRequired[str]
-    summary: str
-    tag_name: NotRequired[str]
-    target_commitish: str
-    target_oid: str
-    updated_at: str
-    version: str
+    action: Literal["member_invited"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    invitation: WebhookOrganizationMemberInvitedPropInvitationType
+    organization: OrganizationSimpleWebhooksType
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: SimpleUserType
+    user: NotRequired[Union[WebhooksUserType, None]]
 
 
-class WebhookPackageUpdatedPropPackagePropPackageVersionPropAuthorType(TypedDict):
-    """User"""
+class WebhookOrganizationMemberInvitedPropInvitationType(TypedDict):
+    """WebhookOrganizationMemberInvitedPropInvitation
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    The invitation for the user or email if the action is `member_invited`.
+    """
+
+    created_at: datetime
+    email: Union[str, None]
+    failed_at: Union[datetime, None]
+    failed_reason: Union[str, None]
+    id: float
+    invitation_teams_url: str
+    inviter: Union[WebhookOrganizationMemberInvitedPropInvitationPropInviterType, None]
+    login: Union[str, None]
+    node_id: str
+    role: str
+    team_count: float
+    invitation_source: NotRequired[str]
 
 
-class WebhookPackageUpdatedPropPackagePropPackageVersionPropDockerMetadataItemsType(
-    TypedDict
-):
-    """WebhookPackageUpdatedPropPackagePropPackageVersionPropDockerMetadataItems"""
-
-    tags: NotRequired[list[str]]
-
-
-class WebhookPackageUpdatedPropPackagePropPackageVersionPropMetadataItemsType(
-    TypedDict
-):
-    """WebhookPackageUpdatedPropPackagePropPackageVersionPropMetadataItems"""
-
-
-class WebhookPackageUpdatedPropPackagePropPackageVersionPropPackageFilesItemsType(
-    TypedDict
-):
-    """WebhookPackageUpdatedPropPackagePropPackageVersionPropPackageFilesItems"""
-
-    content_type: str
-    created_at: str
-    download_url: str
-    id: int
-    md5: Union[str, None]
-    name: str
-    sha1: Union[str, None]
-    sha256: str
-    size: int
-    state: str
-    updated_at: str
-
-
-class WebhookPackageUpdatedPropPackagePropPackageVersionPropReleaseType(TypedDict):
-    """WebhookPackageUpdatedPropPackagePropPackageVersionPropRelease"""
-
-    author: Union[
-        WebhookPackageUpdatedPropPackagePropPackageVersionPropReleasePropAuthorType,
-        None,
-    ]
-    created_at: str
-    draft: bool
-    html_url: str
-    id: int
-    name: str
-    prerelease: bool
-    published_at: str
-    tag_name: str
-    target_commitish: str
-    url: str
-
-
-class WebhookPackageUpdatedPropPackagePropPackageVersionPropReleasePropAuthorType(
-    TypedDict
-):
+class WebhookOrganizationMemberInvitedPropInvitationPropInviterType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -165,11 +82,7 @@ class WebhookPackageUpdatedPropPackagePropPackageVersionPropReleasePropAuthorTyp
 
 
 __all__ = (
-    "WebhookPackageUpdatedPropPackagePropPackageVersionPropAuthorType",
-    "WebhookPackageUpdatedPropPackagePropPackageVersionPropDockerMetadataItemsType",
-    "WebhookPackageUpdatedPropPackagePropPackageVersionPropMetadataItemsType",
-    "WebhookPackageUpdatedPropPackagePropPackageVersionPropPackageFilesItemsType",
-    "WebhookPackageUpdatedPropPackagePropPackageVersionPropReleasePropAuthorType",
-    "WebhookPackageUpdatedPropPackagePropPackageVersionPropReleaseType",
-    "WebhookPackageUpdatedPropPackagePropPackageVersionType",
+    "WebhookOrganizationMemberInvitedPropInvitationPropInviterType",
+    "WebhookOrganizationMemberInvitedPropInvitationType",
+    "WebhookOrganizationMemberInvitedType",
 )

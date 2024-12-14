@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -17,18 +17,19 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0002 import SimpleUser
+from .group_0082 import Team
 
-class DeploymentBranchPolicyNamePatternWithType(GitHubModel):
-    """Deployment branch and tag policy name pattern"""
 
-    name: str = Field(
-        description="The name pattern that branches or tags must match in order to deploy to the environment.\n\nWildcard characters will not match `/`. For example, to match branches that begin with `release/` and contain an additional single slash, use `release/*/*`.\nFor more information about pattern matching syntax, see the [Ruby File.fnmatch documentation](https://ruby-doc.org/core-2.5.1/File.html#method-c-fnmatch)."
+class EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems(GitHubModel):
+    """EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems"""
+
+    type: Missing[Literal["User", "Team"]] = Field(
+        default=UNSET, description="The type of reviewer."
     )
-    type: Missing[Literal["branch", "tag"]] = Field(
-        default=UNSET, description="Whether this rule targets a branch or tag"
-    )
+    reviewer: Missing[Union[SimpleUser, Team]] = Field(default=UNSET)
 
 
-model_rebuild(DeploymentBranchPolicyNamePatternWithType)
+model_rebuild(EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems)
 
-__all__ = ("DeploymentBranchPolicyNamePatternWithType",)
+__all__ = ("EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems",)

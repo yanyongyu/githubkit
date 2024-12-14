@@ -14,29 +14,48 @@ from typing import Literal, Union
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 from .group_0002 import SimpleUser
 from .group_0008 import Integration
 
 
-class TimelineAssignedIssueEvent(GitHubModel):
-    """Timeline Assigned Issue Event
+class MovedColumnInProjectIssueEvent(GitHubModel):
+    """Moved Column in Project Issue Event
 
-    Timeline Assigned Issue Event
+    Moved Column in Project Issue Event
     """
 
     id: int = Field()
     node_id: str = Field()
     url: str = Field()
     actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: Literal["assigned"] = Field()
+    event: Literal["moved_columns_in_project"] = Field()
     commit_id: Union[str, None] = Field()
     commit_url: Union[str, None] = Field()
     created_at: str = Field()
     performed_via_github_app: Union[None, Integration, None] = Field()
-    assignee: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    project_card: Missing[MovedColumnInProjectIssueEventPropProjectCard] = Field(
+        default=UNSET
+    )
 
 
-model_rebuild(TimelineAssignedIssueEvent)
+class MovedColumnInProjectIssueEventPropProjectCard(GitHubModel):
+    """MovedColumnInProjectIssueEventPropProjectCard"""
 
-__all__ = ("TimelineAssignedIssueEvent",)
+    id: int = Field()
+    url: str = Field()
+    project_id: int = Field()
+    project_url: str = Field()
+    column_name: str = Field()
+    previous_column_name: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(MovedColumnInProjectIssueEvent)
+model_rebuild(MovedColumnInProjectIssueEventPropProjectCard)
+
+__all__ = (
+    "MovedColumnInProjectIssueEvent",
+    "MovedColumnInProjectIssueEventPropProjectCard",
+)

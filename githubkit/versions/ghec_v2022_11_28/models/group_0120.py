@@ -16,22 +16,46 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ApiInsightsSummaryStats(GitHubModel):
-    """Summary Stats
+class AdvancedSecurityActiveCommitters(GitHubModel):
+    """AdvancedSecurityActiveCommitters"""
 
-    API Insights usage summary stats for an organization
-    """
-
-    total_request_count: Missing[int] = Field(
+    total_advanced_security_committers: Missing[int] = Field(default=UNSET)
+    total_count: Missing[int] = Field(default=UNSET)
+    maximum_advanced_security_committers: Missing[int] = Field(
         default=UNSET,
-        description="The total number of requests within the queried time period",
+        description="The total number of GitHub Advanced Security licences required if all repositories were to enable GitHub Advanced Security",
     )
-    rate_limited_request_count: Missing[int] = Field(
+    purchased_advanced_security_committers: Missing[int] = Field(
         default=UNSET,
-        description="The total number of requests that were rate limited within the queried time period",
+        description="The total number of GitHub Advanced Security licences purchased",
     )
+    repositories: list[AdvancedSecurityActiveCommittersRepository] = Field()
 
 
-model_rebuild(ApiInsightsSummaryStats)
+class AdvancedSecurityActiveCommittersRepository(GitHubModel):
+    """AdvancedSecurityActiveCommittersRepository"""
 
-__all__ = ("ApiInsightsSummaryStats",)
+    name: str = Field()
+    advanced_security_committers: int = Field()
+    advanced_security_committers_breakdown: list[
+        AdvancedSecurityActiveCommittersUser
+    ] = Field()
+
+
+class AdvancedSecurityActiveCommittersUser(GitHubModel):
+    """AdvancedSecurityActiveCommittersUser"""
+
+    user_login: str = Field()
+    last_pushed_date: str = Field()
+    last_pushed_email: str = Field()
+
+
+model_rebuild(AdvancedSecurityActiveCommitters)
+model_rebuild(AdvancedSecurityActiveCommittersRepository)
+model_rebuild(AdvancedSecurityActiveCommittersUser)
+
+__all__ = (
+    "AdvancedSecurityActiveCommitters",
+    "AdvancedSecurityActiveCommittersRepository",
+    "AdvancedSecurityActiveCommittersUser",
+)

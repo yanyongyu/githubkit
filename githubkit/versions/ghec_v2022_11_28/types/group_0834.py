@@ -9,11 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from datetime import datetime
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0002 import SimpleUserType
+from .group_0007 import IntegrationPropPermissionsType
 
 
-class EmojisGetResponse200Type(TypedDict):
-    """EmojisGetResponse200"""
+class AppManifestsCodeConversionsPostResponse201Type(TypedDict):
+    """AppManifestsCodeConversionsPostResponse201"""
+
+    id: int
+    slug: NotRequired[str]
+    node_id: str
+    client_id: str
+    owner: Union[None, SimpleUserType]
+    name: str
+    description: Union[str, None]
+    external_url: str
+    html_url: str
+    created_at: datetime
+    updated_at: datetime
+    permissions: IntegrationPropPermissionsType
+    events: list[str]
+    installations_count: NotRequired[int]
+    client_secret: str
+    webhook_secret: Union[Union[str, None], None]
+    pem: str
 
 
-__all__ = ("EmojisGetResponse200Type",)
+__all__ = ("AppManifestsCodeConversionsPostResponse201Type",)

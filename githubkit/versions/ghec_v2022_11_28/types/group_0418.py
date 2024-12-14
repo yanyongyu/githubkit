@@ -9,17 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from datetime import datetime
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0143 import MinimalRepositoryType
+from .group_0417 import SearchResultTextMatchesItemsType
 
 
-class CodespacesUserPublicKeyType(TypedDict):
-    """CodespacesUserPublicKey
+class CodeSearchResultItemType(TypedDict):
+    """Code Search Result Item
 
-    The public key used for setting user Codespaces' Secrets.
+    Code Search Result Item
     """
 
-    key_id: str
-    key: str
+    name: str
+    path: str
+    sha: str
+    url: str
+    git_url: str
+    html_url: str
+    repository: MinimalRepositoryType
+    score: float
+    file_size: NotRequired[int]
+    language: NotRequired[Union[str, None]]
+    last_modified_at: NotRequired[datetime]
+    line_numbers: NotRequired[list[str]]
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
 
 
-__all__ = ("CodespacesUserPublicKeyType",)
+class SearchCodeGetResponse200Type(TypedDict):
+    """SearchCodeGetResponse200"""
+
+    total_count: int
+    incomplete_results: bool
+    items: list[CodeSearchResultItemType]
+
+
+__all__ = (
+    "CodeSearchResultItemType",
+    "SearchCodeGetResponse200Type",
+)

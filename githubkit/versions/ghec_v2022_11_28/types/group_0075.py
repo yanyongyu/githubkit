@@ -11,20 +11,20 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-
-class ReactionRollupType(TypedDict):
-    """Reaction Rollup"""
-
-    url: str
-    total_count: int
-    plus_one: int
-    minus_one: int
-    laugh: int
-    confused: int
-    heart: int
-    hooray: int
-    eyes: int
-    rocket: int
+from .group_0076 import (
+    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType,
+)
 
 
-__all__ = ("ReactionRollupType",)
+class RepositoryRulesetConditionsRepositoryPropertyTargetType(TypedDict):
+    """Repository ruleset conditions for repository properties
+
+    Parameters for a repository property condition
+    """
+
+    repository_property: (
+        RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType
+    )
+
+
+__all__ = ("RepositoryRulesetConditionsRepositoryPropertyTargetType",)

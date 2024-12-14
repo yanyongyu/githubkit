@@ -11,45 +11,39 @@ from __future__ import annotations
 
 from datetime import datetime
 from typing import Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class SimpleCommitType(TypedDict):
-    """Simple Commit
+class ArtifactType(TypedDict):
+    """Artifact
 
-    A commit.
+    An artifact
     """
 
-    id: str
-    tree_id: str
-    message: str
-    timestamp: datetime
-    author: Union[SimpleCommitPropAuthorType, None]
-    committer: Union[SimpleCommitPropCommitterType, None]
-
-
-class SimpleCommitPropAuthorType(TypedDict):
-    """SimpleCommitPropAuthor
-
-    Information about the Git author
-    """
-
+    id: int
+    node_id: str
     name: str
-    email: str
+    size_in_bytes: int
+    url: str
+    archive_download_url: str
+    expired: bool
+    created_at: Union[datetime, None]
+    expires_at: Union[datetime, None]
+    updated_at: Union[datetime, None]
+    workflow_run: NotRequired[Union[ArtifactPropWorkflowRunType, None]]
 
 
-class SimpleCommitPropCommitterType(TypedDict):
-    """SimpleCommitPropCommitter
+class ArtifactPropWorkflowRunType(TypedDict):
+    """ArtifactPropWorkflowRun"""
 
-    Information about the Git committer
-    """
-
-    name: str
-    email: str
+    id: NotRequired[int]
+    repository_id: NotRequired[int]
+    head_repository_id: NotRequired[int]
+    head_branch: NotRequired[str]
+    head_sha: NotRequired[str]
 
 
 __all__ = (
-    "SimpleCommitPropAuthorType",
-    "SimpleCommitPropCommitterType",
-    "SimpleCommitType",
+    "ArtifactPropWorkflowRunType",
+    "ArtifactType",
 )

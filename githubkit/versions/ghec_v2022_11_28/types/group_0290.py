@@ -9,18 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from datetime import datetime
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0002 import SimpleUserType
+from .group_0061 import DependabotAlertSecurityVulnerabilityType
+from .group_0062 import DependabotAlertSecurityAdvisoryType
+from .group_0291 import DependabotAlertPropDependencyType
 
 
-class DeploymentBranchPolicySettingsType(TypedDict):
-    """DeploymentBranchPolicySettings
+class DependabotAlertType(TypedDict):
+    """DependabotAlert
 
-    The type of deployment branch policy for this environment. To allow all branches
-    to deploy, set to `null`.
+    A Dependabot alert.
     """
 
-    protected_branches: bool
-    custom_branch_policies: bool
+    number: int
+    state: Literal["auto_dismissed", "dismissed", "fixed", "open"]
+    dependency: DependabotAlertPropDependencyType
+    security_advisory: DependabotAlertSecurityAdvisoryType
+    security_vulnerability: DependabotAlertSecurityVulnerabilityType
+    url: str
+    html_url: str
+    created_at: datetime
+    updated_at: datetime
+    dismissed_at: Union[datetime, None]
+    dismissed_by: Union[None, SimpleUserType]
+    dismissed_reason: Union[
+        None,
+        Literal[
+            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
+        ],
+    ]
+    dismissed_comment: Union[str, None]
+    fixed_at: Union[datetime, None]
+    auto_dismissed_at: NotRequired[Union[datetime, None]]
 
 
-__all__ = ("DeploymentBranchPolicySettingsType",)
+__all__ = ("DependabotAlertType",)

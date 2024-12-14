@@ -9,20 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing_extensions import TypedDict
 
-from .group_0019 import RepositoryType
 
+class CodespacesUserPublicKeyType(TypedDict):
+    """CodespacesUserPublicKey
 
-class StarredRepositoryType(TypedDict):
-    """Starred Repository
-
-    Starred Repository
+    The public key used for setting user Codespaces' Secrets.
     """
 
-    starred_at: datetime
-    repo: RepositoryType
+    key_id: str
+    key: str
 
 
-__all__ = ("StarredRepositoryType",)
+__all__ = ("CodespacesUserPublicKeyType",)

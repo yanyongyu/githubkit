@@ -13,14 +13,25 @@ from typing import Union
 from typing_extensions import TypedDict
 
 
-class CustomPropertyValueType(TypedDict):
-    """Custom Property Value
+class LicenseType(TypedDict):
+    """License
 
-    Custom property name and associated value
+    License
     """
 
-    property_name: str
-    value: Union[str, list[str], None]
+    key: str
+    name: str
+    spdx_id: Union[str, None]
+    url: Union[str, None]
+    node_id: str
+    html_url: str
+    description: str
+    implementation: str
+    permissions: list[str]
+    conditions: list[str]
+    limitations: list[str]
+    body: str
+    featured: bool
 
 
-__all__ = ("CustomPropertyValueType",)
+__all__ = ("LicenseType",)

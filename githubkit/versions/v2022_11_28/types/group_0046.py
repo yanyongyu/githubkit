@@ -9,46 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Any, Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0002 import SimpleUserType
+from typing import Union
+from typing_extensions import TypedDict
 
 
-class BaseGistType(TypedDict):
-    """Base Gist
+class LicenseType(TypedDict):
+    """License
 
-    Base Gist
+    License
     """
 
-    url: str
-    forks_url: str
-    commits_url: str
-    id: str
+    key: str
+    name: str
+    spdx_id: Union[str, None]
+    url: Union[str, None]
     node_id: str
-    git_pull_url: str
-    git_push_url: str
     html_url: str
-    files: BaseGistPropFilesType
-    public: bool
-    created_at: datetime
-    updated_at: datetime
-    description: Union[str, None]
-    comments: int
-    user: Union[None, SimpleUserType]
-    comments_url: str
-    owner: NotRequired[SimpleUserType]
-    truncated: NotRequired[bool]
-    forks: NotRequired[list[Any]]
-    history: NotRequired[list[Any]]
+    description: str
+    implementation: str
+    permissions: list[str]
+    conditions: list[str]
+    limitations: list[str]
+    body: str
+    featured: bool
 
 
-class BaseGistPropFilesType(TypedDict):
-    """BaseGistPropFiles"""
-
-
-__all__ = (
-    "BaseGistPropFilesType",
-    "BaseGistType",
-)
+__all__ = ("LicenseType",)

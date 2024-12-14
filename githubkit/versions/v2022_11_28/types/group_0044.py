@@ -13,72 +13,31 @@ from datetime import datetime
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0042 import IssueType
-from .group_0043 import IssueCommentType
+from .group_0002 import SimpleUserType
 
 
-class EventPropPayloadType(TypedDict):
-    """EventPropPayload"""
+class GistCommitType(TypedDict):
+    """Gist Commit
 
-    action: NotRequired[str]
-    issue: NotRequired[IssueType]
-    comment: NotRequired[IssueCommentType]
-    pages: NotRequired[list[EventPropPayloadPropPagesItemsType]]
-
-
-class EventPropPayloadPropPagesItemsType(TypedDict):
-    """EventPropPayloadPropPagesItems"""
-
-    page_name: NotRequired[str]
-    title: NotRequired[str]
-    summary: NotRequired[Union[str, None]]
-    action: NotRequired[str]
-    sha: NotRequired[str]
-    html_url: NotRequired[str]
-
-
-class EventType(TypedDict):
-    """Event
-
-    Event
+    Gist Commit
     """
 
-    id: str
-    type: Union[str, None]
-    actor: ActorType
-    repo: EventPropRepoType
-    org: NotRequired[ActorType]
-    payload: EventPropPayloadType
-    public: bool
-    created_at: Union[datetime, None]
-
-
-class ActorType(TypedDict):
-    """Actor
-
-    Actor
-    """
-
-    id: int
-    login: str
-    display_login: NotRequired[str]
-    gravatar_id: Union[str, None]
     url: str
-    avatar_url: str
+    version: str
+    user: Union[None, SimpleUserType]
+    change_status: GistCommitPropChangeStatusType
+    committed_at: datetime
 
 
-class EventPropRepoType(TypedDict):
-    """EventPropRepo"""
+class GistCommitPropChangeStatusType(TypedDict):
+    """GistCommitPropChangeStatus"""
 
-    id: int
-    name: str
-    url: str
+    total: NotRequired[int]
+    additions: NotRequired[int]
+    deletions: NotRequired[int]
 
 
 __all__ = (
-    "ActorType",
-    "EventPropPayloadPropPagesItemsType",
-    "EventPropPayloadType",
-    "EventPropRepoType",
-    "EventType",
+    "GistCommitPropChangeStatusType",
+    "GistCommitType",
 )

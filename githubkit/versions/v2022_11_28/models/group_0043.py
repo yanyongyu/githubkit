@@ -15,33 +15,23 @@ from typing import Literal, Union
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 from .group_0002 import SimpleUser
-from .group_0008 import Integration
-from .group_0041 import ReactionRollup
 
 
-class IssueComment(GitHubModel):
-    """Issue Comment
+class GistComment(GitHubModel):
+    """Gist Comment
 
-    Comments provide a way for people to collaborate on an issue.
+    A comment made to a gist.
     """
 
-    id: int = Field(description="Unique identifier of the issue comment")
+    id: int = Field()
     node_id: str = Field()
-    url: str = Field(description="URL for the issue comment")
-    body: Missing[str] = Field(
-        default=UNSET, description="Contents of the issue comment"
-    )
-    body_text: Missing[str] = Field(default=UNSET)
-    body_html: Missing[str] = Field(default=UNSET)
-    html_url: str = Field()
+    url: str = Field()
+    body: str = Field(max_length=65535, description="The comment text.")
     user: Union[None, SimpleUser] = Field()
     created_at: datetime = Field()
     updated_at: datetime = Field()
-    issue_url: str = Field()
     author_association: Literal[
         "COLLABORATOR",
         "CONTRIBUTOR",
@@ -55,12 +45,8 @@ class IssueComment(GitHubModel):
         title="author_association",
         description="How the author is associated with the repository.",
     )
-    performed_via_github_app: Missing[Union[None, Integration, None]] = Field(
-        default=UNSET
-    )
-    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
 
 
-model_rebuild(IssueComment)
+model_rebuild(GistComment)
 
-__all__ = ("IssueComment",)
+__all__ = ("GistComment",)

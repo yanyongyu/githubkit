@@ -15,52 +15,43 @@ from typing import Union
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class SimpleCommit(GitHubModel):
-    """Simple Commit
+class Artifact(GitHubModel):
+    """Artifact
 
-    A commit.
+    An artifact
     """
 
-    id: str = Field(description="SHA for the commit")
-    tree_id: str = Field(description="SHA for the commit's tree")
-    message: str = Field(description="Message describing the purpose of the commit")
-    timestamp: datetime = Field(description="Timestamp of the commit")
-    author: Union[SimpleCommitPropAuthor, None] = Field(
-        description="Information about the Git author"
-    )
-    committer: Union[SimpleCommitPropCommitter, None] = Field(
-        description="Information about the Git committer"
-    )
+    id: int = Field()
+    node_id: str = Field()
+    name: str = Field(description="The name of the artifact.")
+    size_in_bytes: int = Field(description="The size in bytes of the artifact.")
+    url: str = Field()
+    archive_download_url: str = Field()
+    expired: bool = Field(description="Whether or not the artifact has expired.")
+    created_at: Union[datetime, None] = Field()
+    expires_at: Union[datetime, None] = Field()
+    updated_at: Union[datetime, None] = Field()
+    workflow_run: Missing[Union[ArtifactPropWorkflowRun, None]] = Field(default=UNSET)
 
 
-class SimpleCommitPropAuthor(GitHubModel):
-    """SimpleCommitPropAuthor
+class ArtifactPropWorkflowRun(GitHubModel):
+    """ArtifactPropWorkflowRun"""
 
-    Information about the Git author
-    """
-
-    name: str = Field(description="Name of the commit's author")
-    email: str = Field(description="Git email address of the commit's author")
-
-
-class SimpleCommitPropCommitter(GitHubModel):
-    """SimpleCommitPropCommitter
-
-    Information about the Git committer
-    """
-
-    name: str = Field(description="Name of the commit's committer")
-    email: str = Field(description="Git email address of the commit's committer")
+    id: Missing[int] = Field(default=UNSET)
+    repository_id: Missing[int] = Field(default=UNSET)
+    head_repository_id: Missing[int] = Field(default=UNSET)
+    head_branch: Missing[str] = Field(default=UNSET)
+    head_sha: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(SimpleCommit)
-model_rebuild(SimpleCommitPropAuthor)
-model_rebuild(SimpleCommitPropCommitter)
+model_rebuild(Artifact)
+model_rebuild(ArtifactPropWorkflowRun)
 
 __all__ = (
-    "SimpleCommit",
-    "SimpleCommitPropAuthor",
-    "SimpleCommitPropCommitter",
+    "Artifact",
+    "ArtifactPropWorkflowRun",
 )

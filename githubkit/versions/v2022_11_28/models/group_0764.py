@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,17 +18,16 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0002 import SimpleUser
-from .group_0188 import Deployment
-from .group_0388 import EnterpriseWebhooks
-from .group_0389 import SimpleInstallation
-from .group_0390 import OrganizationSimpleWebhooks
-from .group_0391 import RepositoryWebhooks
+from .group_0389 import EnterpriseWebhooks
+from .group_0390 import SimpleInstallation
+from .group_0391 import OrganizationSimpleWebhooks
+from .group_0392 import RepositoryWebhooks
 
 
-class WebhookWorkflowJobCompleted(GitHubModel):
-    """workflow_job completed event"""
+class WebhookWatchStarted(GitHubModel):
+    """watch started event"""
 
-    action: Literal["completed"] = Field()
+    action: Literal["started"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -49,85 +48,8 @@ class WebhookWorkflowJobCompleted(GitHubModel):
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    workflow_job: WebhookWorkflowJobCompletedPropWorkflowJob = Field()
-    deployment: Missing[Deployment] = Field(
-        default=UNSET,
-        title="Deployment",
-        description="A request for a specific ref(branch,sha,tag) to be deployed",
-    )
 
 
-class WebhookWorkflowJobCompletedPropWorkflowJob(GitHubModel):
-    """WebhookWorkflowJobCompletedPropWorkflowJob"""
+model_rebuild(WebhookWatchStarted)
 
-    check_run_url: str = Field()
-    completed_at: str = Field()
-    conclusion: Literal[
-        "success",
-        "failure",
-        "skipped",
-        "cancelled",
-        "action_required",
-        "neutral",
-        "timed_out",
-    ] = Field()
-    created_at: str = Field(description="The time that the job created.")
-    head_sha: str = Field()
-    html_url: str = Field()
-    id: int = Field()
-    labels: list[str] = Field(
-        description='Custom labels for the job. Specified by the [`"runs-on"` attribute](https://docs.github.com/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on) in the workflow YAML.'
-    )
-    name: str = Field()
-    node_id: str = Field()
-    run_attempt: int = Field()
-    run_id: int = Field()
-    run_url: str = Field()
-    runner_group_id: Union[Union[int, None], None] = Field(
-        description="The ID of the runner group that is running this job. This will be `null` as long as `workflow_job[status]` is `queued`."
-    )
-    runner_group_name: Union[Union[str, None], None] = Field(
-        description="The name of the runner group that is running this job. This will be `null` as long as `workflow_job[status]` is `queued`."
-    )
-    runner_id: Union[Union[int, None], None] = Field(
-        description="The ID of the runner that is running this job. This will be `null` as long as `workflow_job[status]` is `queued`."
-    )
-    runner_name: Union[Union[str, None], None] = Field(
-        description="The name of the runner that is running this job. This will be `null` as long as `workflow_job[status]` is `queued`."
-    )
-    started_at: str = Field()
-    status: Literal["queued", "in_progress", "completed", "waiting"] = Field(
-        description="The current status of the job. Can be `queued`, `in_progress`, `waiting`, or `completed`."
-    )
-    head_branch: Union[Union[str, None], None] = Field(
-        description="The name of the current branch."
-    )
-    workflow_name: Union[Union[str, None], None] = Field(
-        description="The name of the workflow."
-    )
-    steps: list[WebhookWorkflowJobCompletedPropWorkflowJobMergedSteps] = Field()
-    url: str = Field()
-
-
-class WebhookWorkflowJobCompletedPropWorkflowJobMergedSteps(GitHubModel):
-    """WebhookWorkflowJobCompletedPropWorkflowJobMergedSteps"""
-
-    completed_at: Union[str, None] = Field()
-    conclusion: Union[None, Literal["failure", "skipped", "success", "cancelled"]] = (
-        Field()
-    )
-    name: str = Field()
-    number: int = Field()
-    started_at: Union[str, None] = Field()
-    status: Literal["in_progress", "completed", "queued"] = Field()
-
-
-model_rebuild(WebhookWorkflowJobCompleted)
-model_rebuild(WebhookWorkflowJobCompletedPropWorkflowJob)
-model_rebuild(WebhookWorkflowJobCompletedPropWorkflowJobMergedSteps)
-
-__all__ = (
-    "WebhookWorkflowJobCompleted",
-    "WebhookWorkflowJobCompletedPropWorkflowJob",
-    "WebhookWorkflowJobCompletedPropWorkflowJobMergedSteps",
-)
+__all__ = ("WebhookWatchStarted",)

@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Literal, Union
 
 from pydantic import Field
@@ -19,27 +18,7 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class WebhooksProject(GitHubModel):
-    """Project"""
-
-    body: Union[str, None] = Field(description="Body of the project")
-    columns_url: str = Field()
-    created_at: datetime = Field()
-    creator: Union[WebhooksProjectPropCreator, None] = Field(title="User")
-    html_url: str = Field()
-    id: int = Field()
-    name: str = Field(description="Name of the project")
-    node_id: str = Field()
-    number: int = Field()
-    owner_url: str = Field()
-    state: Literal["open", "closed"] = Field(
-        description="State of the project; either 'open' or 'closed'"
-    )
-    updated_at: datetime = Field()
-    url: str = Field()
-
-
-class WebhooksProjectPropCreator(GitHubModel):
+class WebhooksUserMannequin(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -61,15 +40,13 @@ class WebhooksProjectPropCreator(GitHubModel):
     site_admin: Missing[bool] = Field(default=UNSET)
     starred_url: Missing[str] = Field(default=UNSET)
     subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization", "Mannequin"]] = Field(
+        default=UNSET
+    )
     url: Missing[str] = Field(default=UNSET)
     user_view_type: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhooksProject)
-model_rebuild(WebhooksProjectPropCreator)
+model_rebuild(WebhooksUserMannequin)
 
-__all__ = (
-    "WebhooksProject",
-    "WebhooksProjectPropCreator",
-)
+__all__ = ("WebhooksUserMannequin",)

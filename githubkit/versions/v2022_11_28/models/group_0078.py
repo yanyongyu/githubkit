@@ -18,186 +18,157 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0002 import SimpleUser
+from .group_0052 import MinimalRepository
+from .group_0077 import CodespaceMachine
 
-class CodeSecurityConfiguration(GitHubModel):
-    """CodeSecurityConfiguration
 
-    A code security configuration
+class Codespace(GitHubModel):
+    """Codespace
+
+    A codespace.
     """
 
-    id: Missing[int] = Field(
-        default=UNSET, description="The ID of the code security configuration"
+    id: int = Field()
+    name: str = Field(description="Automatically generated name of this codespace.")
+    display_name: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Display name for this codespace."
     )
-    name: Missing[str] = Field(
+    environment_id: Union[str, None] = Field(
+        description="UUID identifying this codespace's environment."
+    )
+    owner: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    billable_owner: SimpleUser = Field(
+        title="Simple User", description="A GitHub user."
+    )
+    repository: MinimalRepository = Field(
+        title="Minimal Repository", description="Minimal Repository"
+    )
+    machine: Union[None, CodespaceMachine] = Field()
+    devcontainer_path: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="The name of the code security configuration. Must be unique within the organization.",
+        description="Path to devcontainer.json from repo root used to create Codespace.",
     )
-    target_type: Missing[Literal["global", "organization", "enterprise"]] = Field(
-        default=UNSET, description="The type of the code security configuration."
+    prebuild: Union[bool, None] = Field(
+        description="Whether the codespace was created from a prebuild."
     )
-    description: Missing[str] = Field(
-        default=UNSET, description="A description of the code security configuration"
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+    last_used_at: datetime = Field(
+        description="Last known time this codespace was started."
     )
-    advanced_security: Missing[Literal["enabled", "disabled"]] = Field(
-        default=UNSET, description="The enablement status of GitHub Advanced Security"
+    state: Literal[
+        "Unknown",
+        "Created",
+        "Queued",
+        "Provisioning",
+        "Available",
+        "Awaiting",
+        "Unavailable",
+        "Deleted",
+        "Moved",
+        "Shutdown",
+        "Archived",
+        "Starting",
+        "ShuttingDown",
+        "Failed",
+        "Exporting",
+        "Updating",
+        "Rebuilding",
+    ] = Field(description="State of this codespace.")
+    url: str = Field(description="API URL for this codespace.")
+    git_status: CodespacePropGitStatus = Field(
+        description="Details about the codespace's git repository."
     )
-    dependency_graph: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
-        default=UNSET, description="The enablement status of Dependency Graph"
+    location: Literal["EastUs", "SouthEastAsia", "WestEurope", "WestUs2"] = Field(
+        description="The initally assigned location of a new codespace."
     )
-    dependency_graph_autosubmit_action: Missing[
-        Literal["enabled", "disabled", "not_set"]
-    ] = Field(
+    idle_timeout_minutes: Union[int, None] = Field(
+        description="The number of minutes of inactivity after which this codespace will be automatically stopped."
+    )
+    web_url: str = Field(description="URL to access this codespace on the web.")
+    machines_url: str = Field(
+        description="API URL to access available alternate machine types for this codespace."
+    )
+    start_url: str = Field(description="API URL to start this codespace.")
+    stop_url: str = Field(description="API URL to stop this codespace.")
+    publish_url: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="The enablement status of Automatic dependency submission",
+        description="API URL to publish this codespace to a new repository.",
     )
-    dependency_graph_autosubmit_action_options: Missing[
-        CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptions
-    ] = Field(
-        default=UNSET, description="Feature options for Automatic dependency submission"
+    pulls_url: Union[str, None] = Field(
+        description="API URL for the Pull Request associated with this codespace, if any."
     )
-    dependabot_alerts: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
-        default=UNSET, description="The enablement status of Dependabot alerts"
-    )
-    dependabot_security_updates: Missing[Literal["enabled", "disabled", "not_set"]] = (
-        Field(
-            default=UNSET,
-            description="The enablement status of Dependabot security updates",
-        )
-    )
-    code_scanning_default_setup: Missing[Literal["enabled", "disabled", "not_set"]] = (
-        Field(
-            default=UNSET,
-            description="The enablement status of code scanning default setup",
-        )
-    )
-    code_scanning_default_setup_options: Missing[
-        Union[CodeSecurityConfigurationPropCodeScanningDefaultSetupOptions, None]
-    ] = Field(
-        default=UNSET, description="Feature options for code scanning default setup"
-    )
-    secret_scanning: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
-        default=UNSET, description="The enablement status of secret scanning"
-    )
-    secret_scanning_push_protection: Missing[
-        Literal["enabled", "disabled", "not_set"]
-    ] = Field(
+    recent_folders: list[str] = Field()
+    runtime_constraints: Missing[CodespacePropRuntimeConstraints] = Field(default=UNSET)
+    pending_operation: Missing[Union[bool, None]] = Field(
         default=UNSET,
-        description="The enablement status of secret scanning push protection",
+        description="Whether or not a codespace has a pending async operation. This would mean that the codespace is temporarily unavailable. The only thing that you can do with a codespace in this state is delete it.",
     )
-    secret_scanning_delegated_bypass: Missing[
-        Literal["enabled", "disabled", "not_set"]
-    ] = Field(
+    pending_operation_disabled_reason: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="The enablement status of secret scanning delegated bypass",
+        description="Text to show user when codespace is disabled by a pending operation",
     )
-    secret_scanning_delegated_bypass_options: Missing[
-        CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptions
-    ] = Field(
+    idle_timeout_notice: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="Feature options for secret scanning delegated bypass",
+        description="Text to show user when codespace idle timeout minutes has been overriden by an organization policy",
     )
-    secret_scanning_validity_checks: Missing[
-        Literal["enabled", "disabled", "not_set"]
-    ] = Field(
+    retention_period_minutes: Missing[Union[int, None]] = Field(
         default=UNSET,
-        description="The enablement status of secret scanning validity checks",
+        description="Duration in minutes after codespace has gone idle in which it will be deleted. Must be integer minutes between 0 and 43200 (30 days).",
     )
-    secret_scanning_non_provider_patterns: Missing[
-        Literal["enabled", "disabled", "not_set"]
-    ] = Field(
+    retention_expires_at: Missing[Union[datetime, None]] = Field(
         default=UNSET,
-        description="The enablement status of secret scanning non-provider patterns",
+        description='When a codespace will be auto-deleted based on the "retention_period_minutes" and "last_used_at"',
     )
-    private_vulnerability_reporting: Missing[
-        Literal["enabled", "disabled", "not_set"]
-    ] = Field(
+    last_known_stop_notice: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="The enablement status of private vulnerability reporting",
+        description="The text to display to a user when a codespace has been stopped for a potentially actionable reason.",
     )
-    enforcement: Missing[Literal["enforced", "unenforced"]] = Field(
-        default=UNSET, description="The enforcement status for a security configuration"
-    )
-    url: Missing[str] = Field(default=UNSET, description="The URL of the configuration")
-    html_url: Missing[str] = Field(
-        default=UNSET, description="The URL of the configuration"
-    )
-    created_at: Missing[datetime] = Field(default=UNSET)
-    updated_at: Missing[datetime] = Field(default=UNSET)
 
 
-class CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptions(GitHubModel):
-    """CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptions
+class CodespacePropGitStatus(GitHubModel):
+    """CodespacePropGitStatus
 
-    Feature options for Automatic dependency submission
+    Details about the codespace's git repository.
     """
 
-    labeled_runners: Missing[bool] = Field(
+    ahead: Missing[int] = Field(
         default=UNSET,
-        description="Whether to use runners labeled with 'dependency-submission' or standard GitHub runners.",
+        description="The number of commits the local repository is ahead of the remote.",
     )
-
-
-class CodeSecurityConfigurationPropCodeScanningDefaultSetupOptions(GitHubModel):
-    """CodeSecurityConfigurationPropCodeScanningDefaultSetupOptions
-
-    Feature options for code scanning default setup
-    """
-
-    runner_type: Missing[Union[None, Literal["standard", "labeled", "not_set"]]] = (
-        Field(
-            default=UNSET,
-            description="Whether to use labeled runners or standard GitHub runners.",
-        )
-    )
-    runner_label: Missing[Union[str, None]] = Field(
+    behind: Missing[int] = Field(
         default=UNSET,
-        description="The label of the runner to use for code scanning when runner_type is 'labeled'.",
+        description="The number of commits the local repository is behind the remote.",
     )
-
-
-class CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptions(GitHubModel):
-    """CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptions
-
-    Feature options for secret scanning delegated bypass
-    """
-
-    reviewers: Missing[
-        list[
-            CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropReviewersItems
-        ]
-    ] = Field(
+    has_unpushed_changes: Missing[bool] = Field(
+        default=UNSET, description="Whether the local repository has unpushed changes."
+    )
+    has_uncommitted_changes: Missing[bool] = Field(
         default=UNSET,
-        description="The bypass reviewers for secret scanning delegated bypass",
+        description="Whether the local repository has uncommitted changes.",
+    )
+    ref: Missing[str] = Field(
+        default=UNSET,
+        description="The current branch (or SHA if in detached HEAD state) of the local repository.",
     )
 
 
-class CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropReviewersItems(
-    GitHubModel
-):
-    """CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropReviewersIt
-    ems
-    """
+class CodespacePropRuntimeConstraints(GitHubModel):
+    """CodespacePropRuntimeConstraints"""
 
-    reviewer_id: int = Field(
-        description="The ID of the team or role selected as a bypass reviewer"
-    )
-    reviewer_type: Literal["TEAM", "ROLE"] = Field(
-        description="The type of the bypass reviewer"
+    allowed_port_privacy_settings: Missing[Union[list[str], None]] = Field(
+        default=UNSET,
+        description="The privacy settings a user can select from when forwarding a port.",
     )
 
 
-model_rebuild(CodeSecurityConfiguration)
-model_rebuild(CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptions)
-model_rebuild(CodeSecurityConfigurationPropCodeScanningDefaultSetupOptions)
-model_rebuild(CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptions)
-model_rebuild(
-    CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropReviewersItems
-)
+model_rebuild(Codespace)
+model_rebuild(CodespacePropGitStatus)
+model_rebuild(CodespacePropRuntimeConstraints)
 
 __all__ = (
-    "CodeSecurityConfiguration",
-    "CodeSecurityConfigurationPropCodeScanningDefaultSetupOptions",
-    "CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptions",
-    "CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptions",
-    "CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropReviewersItems",
+    "Codespace",
+    "CodespacePropGitStatus",
+    "CodespacePropRuntimeConstraints",
 )

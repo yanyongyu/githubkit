@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,29 +18,30 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class SearchResultTextMatchesItems(GitHubModel):
-    """SearchResultTextMatchesItems"""
+class PatchSchema(GitHubModel):
+    """PatchSchema"""
 
-    object_url: Missing[str] = Field(default=UNSET)
-    object_type: Missing[Union[str, None]] = Field(default=UNSET)
-    property_: Missing[str] = Field(default=UNSET, alias="property")
-    fragment: Missing[str] = Field(default=UNSET)
-    matches: Missing[list[SearchResultTextMatchesItemsPropMatchesItems]] = Field(
-        default=UNSET
+    operations: list[PatchSchemaPropOperationsItems] = Field(
+        alias="Operations", description="patch operations list"
+    )
+    schemas: list[Literal["urn:ietf:params:scim:api:messages:2.0:PatchOp"]] = Field()
+
+
+class PatchSchemaPropOperationsItems(GitHubModel):
+    """PatchSchemaPropOperationsItems"""
+
+    op: Literal["add", "replace", "remove"] = Field()
+    path: Missing[str] = Field(default=UNSET)
+    value: Missing[str] = Field(
+        default=UNSET,
+        description="Corresponding 'value' of that field specified by 'path'",
     )
 
 
-class SearchResultTextMatchesItemsPropMatchesItems(GitHubModel):
-    """SearchResultTextMatchesItemsPropMatchesItems"""
-
-    text: Missing[str] = Field(default=UNSET)
-    indices: Missing[list[int]] = Field(default=UNSET)
-
-
-model_rebuild(SearchResultTextMatchesItems)
-model_rebuild(SearchResultTextMatchesItemsPropMatchesItems)
+model_rebuild(PatchSchema)
+model_rebuild(PatchSchemaPropOperationsItems)
 
 __all__ = (
-    "SearchResultTextMatchesItems",
-    "SearchResultTextMatchesItemsPropMatchesItems",
+    "PatchSchema",
+    "PatchSchemaPropOperationsItems",
 )

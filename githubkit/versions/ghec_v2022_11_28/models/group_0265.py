@@ -14,28 +14,27 @@ from typing import Literal, Union
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0002 import SimpleUser
 
+class CodeScanningSarifsStatus(GitHubModel):
+    """CodeScanningSarifsStatus"""
 
-class AutoMerge(GitHubModel):
-    """Auto merge
-
-    The status of auto merging a pull request.
-    """
-
-    enabled_by: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    merge_method: Literal["merge", "squash", "rebase"] = Field(
-        description="The merge method to use."
+    processing_status: Missing[Literal["pending", "complete", "failed"]] = Field(
+        default=UNSET,
+        description="`pending` files have not yet been processed, while `complete` means results from the SARIF have been stored. `failed` files have either not been processed at all, or could only be partially processed.",
     )
-    commit_title: Union[str, None] = Field(
-        description="Title for the merge commit message."
+    analyses_url: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The REST API URL for getting the analyses associated with the upload.",
     )
-    commit_message: Union[str, None] = Field(
-        description="Commit message for the merge commit."
+    errors: Missing[Union[list[str], None]] = Field(
+        default=UNSET,
+        description="Any errors that ocurred during processing of the delivery.",
     )
 
 
-model_rebuild(AutoMerge)
+model_rebuild(CodeScanningSarifsStatus)
 
-__all__ = ("AutoMerge",)
+__all__ = ("CodeScanningSarifsStatus",)

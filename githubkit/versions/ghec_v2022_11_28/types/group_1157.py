@@ -9,73 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0141 import RepositoryRulesetBypassActorType
-from .group_0142 import RepositoryRulesetConditionsType
-from .group_0153 import (
-    RepositoryRuleCreationType,
-    RepositoryRuleDeletionType,
-    RepositoryRuleNonFastForwardType,
-    RepositoryRuleOneof15Type,
-    RepositoryRuleOneof17Type,
-    RepositoryRuleRequiredSignaturesType,
-)
-from .group_0154 import RepositoryRuleUpdateType
-from .group_0156 import (
-    RepositoryRuleOneof16Type,
-    RepositoryRuleRequiredLinearHistoryType,
-)
-from .group_0157 import RepositoryRuleMergeQueueType
-from .group_0159 import RepositoryRuleRequiredDeploymentsType
-from .group_0162 import RepositoryRulePullRequestType
-from .group_0164 import RepositoryRuleRequiredStatusChecksType
-from .group_0166 import RepositoryRuleCommitMessagePatternType
-from .group_0168 import RepositoryRuleCommitAuthorEmailPatternType
-from .group_0170 import RepositoryRuleCommitterEmailPatternType
-from .group_0172 import RepositoryRuleBranchNamePatternType
-from .group_0174 import RepositoryRuleTagNamePatternType
-from .group_0177 import RepositoryRuleWorkflowsType
-from .group_0179 import RepositoryRuleCodeScanningType
-from .group_0181 import RepositoryRuleOneof18Type
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoRulesetsRulesetIdPutBodyType(TypedDict):
-    """ReposOwnerRepoRulesetsRulesetIdPutBody"""
+class ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBodyType(TypedDict):
+    """ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBody"""
 
-    name: NotRequired[str]
-    target: NotRequired[Literal["branch", "tag", "push"]]
-    enforcement: NotRequired[Literal["disabled", "active", "evaluate"]]
-    bypass_actors: NotRequired[list[RepositoryRulesetBypassActorType]]
-    conditions: NotRequired[RepositoryRulesetConditionsType]
-    rules: NotRequired[
-        list[
-            Union[
-                RepositoryRuleCreationType,
-                RepositoryRuleUpdateType,
-                RepositoryRuleDeletionType,
-                RepositoryRuleRequiredLinearHistoryType,
-                RepositoryRuleMergeQueueType,
-                RepositoryRuleRequiredDeploymentsType,
-                RepositoryRuleRequiredSignaturesType,
-                RepositoryRulePullRequestType,
-                RepositoryRuleRequiredStatusChecksType,
-                RepositoryRuleNonFastForwardType,
-                RepositoryRuleCommitMessagePatternType,
-                RepositoryRuleCommitAuthorEmailPatternType,
-                RepositoryRuleCommitterEmailPatternType,
-                RepositoryRuleBranchNamePatternType,
-                RepositoryRuleTagNamePatternType,
-                RepositoryRuleOneof15Type,
-                RepositoryRuleOneof16Type,
-                RepositoryRuleOneof17Type,
-                RepositoryRuleOneof18Type,
-                RepositoryRuleWorkflowsType,
-                RepositoryRuleCodeScanningType,
-            ]
-        ]
-    ]
+    body: str
 
 
-__all__ = ("ReposOwnerRepoRulesetsRulesetIdPutBodyType",)
+__all__ = ("ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBodyType",)

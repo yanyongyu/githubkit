@@ -9,20 +9,15 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal
 from typing_extensions import TypedDict
 
 
-class InteractionLimitResponseType(TypedDict):
-    """Interaction Limits
+class CombinedBillingUsageType(TypedDict):
+    """CombinedBillingUsage"""
 
-    Interaction limit settings.
-    """
-
-    limit: Literal["existing_users", "contributors_only", "collaborators_only"]
-    origin: str
-    expires_at: datetime
+    days_left_in_billing_cycle: int
+    estimated_paid_storage_for_month: int
+    estimated_storage_for_month: int
 
 
-__all__ = ("InteractionLimitResponseType",)
+__all__ = ("CombinedBillingUsageType",)

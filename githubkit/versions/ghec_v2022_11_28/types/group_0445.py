@@ -13,152 +13,96 @@ from datetime import datetime
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0444 import ExemptionResponseType
 
-class DiscussionType(TypedDict):
-    """Discussion
 
-    A Discussion in a repository.
+class ExemptionRequestType(TypedDict):
+    """Exemption Request
+
+    A request from a user to be exempted from a set of rules.
     """
 
-    active_lock_reason: Union[str, None]
-    answer_chosen_at: Union[str, None]
-    answer_chosen_by: Union[DiscussionPropAnswerChosenByType, None]
-    answer_html_url: Union[str, None]
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
+    id: NotRequired[int]
+    number: NotRequired[int]
+    repository_id: NotRequired[int]
+    requester_id: NotRequired[int]
+    requester_login: NotRequired[str]
+    request_type: NotRequired[Literal["push_ruleset_bypass", "secret_scanning"]]
+    exemption_request_data: NotRequired[
+        Union[ExemptionRequestPushRulesetBypassType, ExemptionRequestSecretScanningType]
     ]
-    body: str
-    category: DiscussionPropCategoryType
-    comments: int
-    created_at: datetime
-    html_url: str
-    id: int
-    locked: bool
-    node_id: str
-    number: int
-    reactions: NotRequired[DiscussionPropReactionsType]
-    repository_url: str
-    state: Literal["open", "closed", "locked", "converting", "transferring"]
-    state_reason: Union[None, Literal["resolved", "outdated", "duplicate", "reopened"]]
-    timeline_url: NotRequired[str]
-    title: str
-    updated_at: datetime
-    user: Union[DiscussionPropUserType, None]
-    labels: NotRequired[list[LabelType]]
+    resource_identifier: NotRequired[str]
+    status: NotRequired[Literal["pending", "rejected", "cancelled", "completed"]]
+    requester_comment: NotRequired[Union[str, None]]
+    metadata: NotRequired[Union[ExemptionRequestSecretScanningMetadataType, None]]
+    expires_at: NotRequired[datetime]
+    created_at: NotRequired[datetime]
+    responses: NotRequired[Union[list[ExemptionResponseType], None]]
+    html_url: NotRequired[str]
 
 
-class LabelType(TypedDict):
-    """Label
+class ExemptionRequestSecretScanningMetadataType(TypedDict):
+    """Secret Scanning Push Protection Exemption Request Metadata
 
-    Color-coded labels help you categorize and filter your issues (just like labels
-    in Gmail).
+    Metadata for a secret scanning push protection exemption request.
     """
 
-    id: int
-    node_id: str
-    url: str
-    name: str
-    description: Union[str, None]
-    color: str
-    default: bool
+    label: NotRequired[str]
+    reason: NotRequired[Literal["fixed_later", "false_positive", "tests"]]
 
 
-class DiscussionPropAnswerChosenByType(TypedDict):
-    """User"""
+class ExemptionRequestPushRulesetBypassType(TypedDict):
+    """Push ruleset bypass exemption request data
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    Push rules that are being requested to be bypassed.
+    """
+
+    type: NotRequired[Literal["push_ruleset_bypass"]]
+    data: NotRequired[list[ExemptionRequestPushRulesetBypassPropDataItemsType]]
 
 
-class DiscussionPropCategoryType(TypedDict):
-    """DiscussionPropCategory"""
+class ExemptionRequestPushRulesetBypassPropDataItemsType(TypedDict):
+    """ExemptionRequestPushRulesetBypassPropDataItems"""
 
-    created_at: datetime
-    description: str
-    emoji: str
-    id: int
-    is_answerable: bool
-    name: str
-    node_id: NotRequired[str]
-    repository_id: int
-    slug: str
-    updated_at: str
+    ruleset_id: NotRequired[int]
+    ruleset_name: NotRequired[str]
+    total_violations: NotRequired[int]
+    rule_type: NotRequired[str]
 
 
-class DiscussionPropReactionsType(TypedDict):
-    """Reactions"""
+class ExemptionRequestSecretScanningType(TypedDict):
+    """Secret scanning push protection exemption request data
 
-    plus_one: int
-    minus_one: int
-    confused: int
-    eyes: int
-    heart: int
-    hooray: int
-    laugh: int
-    rocket: int
-    total_count: int
-    url: str
+    Secret scanning push protections that are being requested to be bypassed.
+    """
+
+    type: NotRequired[Literal["secret_scanning"]]
+    data: NotRequired[list[ExemptionRequestSecretScanningPropDataItemsType]]
 
 
-class DiscussionPropUserType(TypedDict):
-    """User"""
+class ExemptionRequestSecretScanningPropDataItemsType(TypedDict):
+    """ExemptionRequestSecretScanningPropDataItems"""
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    secret_type: NotRequired[str]
+    locations: NotRequired[
+        list[ExemptionRequestSecretScanningPropDataItemsPropLocationsItemsType]
+    ]
+
+
+class ExemptionRequestSecretScanningPropDataItemsPropLocationsItemsType(TypedDict):
+    """ExemptionRequestSecretScanningPropDataItemsPropLocationsItems"""
+
+    commit: NotRequired[str]
+    branch: NotRequired[str]
+    path: NotRequired[str]
 
 
 __all__ = (
-    "DiscussionPropAnswerChosenByType",
-    "DiscussionPropCategoryType",
-    "DiscussionPropReactionsType",
-    "DiscussionPropUserType",
-    "DiscussionType",
-    "LabelType",
+    "ExemptionRequestPushRulesetBypassPropDataItemsType",
+    "ExemptionRequestPushRulesetBypassType",
+    "ExemptionRequestSecretScanningMetadataType",
+    "ExemptionRequestSecretScanningPropDataItemsPropLocationsItemsType",
+    "ExemptionRequestSecretScanningPropDataItemsType",
+    "ExemptionRequestSecretScanningType",
+    "ExemptionRequestType",
 )

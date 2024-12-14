@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from datetime import datetime
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -17,25 +18,51 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0002 import SimpleUser
+from .group_0008 import Integration
+from .group_0126 import ReactionRollup
 
-class DeployKey(GitHubModel):
-    """Deploy Key
 
-    An SSH key granting access to a single repository.
+class TimelineCommentEvent(GitHubModel):
+    """Timeline Comment Event
+
+    Timeline Comment Event
     """
 
-    id: int = Field()
-    key: str = Field()
-    url: str = Field()
-    title: str = Field()
-    verified: bool = Field()
-    created_at: str = Field()
-    read_only: bool = Field()
-    added_by: Missing[Union[str, None]] = Field(default=UNSET)
-    last_used: Missing[Union[str, None]] = Field(default=UNSET)
-    enabled: Missing[bool] = Field(default=UNSET)
+    event: Literal["commented"] = Field()
+    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    id: int = Field(description="Unique identifier of the issue comment")
+    node_id: str = Field()
+    url: str = Field(description="URL for the issue comment")
+    body: Missing[str] = Field(
+        default=UNSET, description="Contents of the issue comment"
+    )
+    body_text: Missing[str] = Field(default=UNSET)
+    body_html: Missing[str] = Field(default=UNSET)
+    html_url: str = Field()
+    user: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+    issue_url: str = Field()
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ] = Field(
+        title="author_association",
+        description="How the author is associated with the repository.",
+    )
+    performed_via_github_app: Missing[Union[None, Integration, None]] = Field(
+        default=UNSET
+    )
+    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
 
 
-model_rebuild(DeployKey)
+model_rebuild(TimelineCommentEvent)
 
-__all__ = ("DeployKey",)
+__all__ = ("TimelineCommentEvent",)

@@ -9,33 +9,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0002 import SimpleUserType
+from typing_extensions import TypedDict
 
 
-class ContributorActivityType(TypedDict):
-    """Contributor Activity
+class CommitActivityType(TypedDict):
+    """Commit Activity
 
-    Contributor Activity
+    Commit Activity
     """
 
-    author: Union[None, SimpleUserType]
+    days: list[int]
     total: int
-    weeks: list[ContributorActivityPropWeeksItemsType]
+    week: int
 
 
-class ContributorActivityPropWeeksItemsType(TypedDict):
-    """ContributorActivityPropWeeksItems"""
-
-    w: NotRequired[int]
-    a: NotRequired[int]
-    d: NotRequired[int]
-    c: NotRequired[int]
-
-
-__all__ = (
-    "ContributorActivityPropWeeksItemsType",
-    "ContributorActivityType",
-)
+__all__ = ("CommitActivityType",)

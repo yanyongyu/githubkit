@@ -9,29 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0088 import RepositoryRuleMergeQueuePropParametersType
 
 
-class MarketplaceListingPlanType(TypedDict):
-    """Marketplace Listing Plan
+class RepositoryRuleMergeQueueType(TypedDict):
+    """merge_queue
 
-    Marketplace Listing Plan
+    Merges must be performed via a merge queue.
     """
 
-    url: str
-    accounts_url: str
-    id: int
-    number: int
-    name: str
-    description: str
-    monthly_price_in_cents: int
-    yearly_price_in_cents: int
-    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
-    has_free_trial: bool
-    unit_name: Union[str, None]
-    state: str
-    bullets: list[str]
+    type: Literal["merge_queue"]
+    parameters: NotRequired[RepositoryRuleMergeQueuePropParametersType]
 
 
-__all__ = ("MarketplaceListingPlanType",)
+__all__ = ("RepositoryRuleMergeQueueType",)

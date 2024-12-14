@@ -9,25 +9,54 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0002 import SimpleUserType
+from .group_0143 import MinimalRepositoryType
+from .group_0236 import GitUserType
+from .group_0417 import SearchResultTextMatchesItemsType
+from .group_0420 import CommitSearchResultItemPropCommitType
 
-class CodespaceExportDetailsType(TypedDict):
-    """Fetches information about an export of a codespace.
 
-    An export of a codespace. Also, latest export details for a codespace can be
-    fetched with id = latest
+class CommitSearchResultItemType(TypedDict):
+    """Commit Search Result Item
+
+    Commit Search Result Item
     """
 
-    state: NotRequired[Union[str, None]]
-    completed_at: NotRequired[Union[datetime, None]]
-    branch: NotRequired[Union[str, None]]
-    sha: NotRequired[Union[str, None]]
-    id: NotRequired[str]
-    export_url: NotRequired[str]
-    html_url: NotRequired[Union[str, None]]
+    url: str
+    sha: str
+    html_url: str
+    comments_url: str
+    commit: CommitSearchResultItemPropCommitType
+    author: Union[None, SimpleUserType]
+    committer: Union[None, GitUserType]
+    parents: list[CommitSearchResultItemPropParentsItemsType]
+    repository: MinimalRepositoryType
+    score: float
+    node_id: str
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
 
 
-__all__ = ("CodespaceExportDetailsType",)
+class CommitSearchResultItemPropParentsItemsType(TypedDict):
+    """CommitSearchResultItemPropParentsItems"""
+
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    sha: NotRequired[str]
+
+
+class SearchCommitsGetResponse200Type(TypedDict):
+    """SearchCommitsGetResponse200"""
+
+    total_count: int
+    incomplete_results: bool
+    items: list[CommitSearchResultItemType]
+
+
+__all__ = (
+    "CommitSearchResultItemPropParentsItemsType",
+    "CommitSearchResultItemType",
+    "SearchCommitsGetResponse200Type",
+)

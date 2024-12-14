@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from datetime import datetime
 
 from pydantic import Field
 
@@ -17,21 +17,39 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0169 import RepositoryRuleCommitAuthorEmailPatternPropParameters
 
+class OrgHook(GitHubModel):
+    """Org Hook
 
-class RepositoryRuleCommitAuthorEmailPattern(GitHubModel):
-    """commit_author_email_pattern
-
-    Parameters to be used for the commit_author_email_pattern rule
+    Org Hook
     """
 
-    type: Literal["commit_author_email_pattern"] = Field()
-    parameters: Missing[RepositoryRuleCommitAuthorEmailPatternPropParameters] = Field(
-        default=UNSET
-    )
+    id: int = Field()
+    url: str = Field()
+    ping_url: str = Field()
+    deliveries_url: Missing[str] = Field(default=UNSET)
+    name: str = Field()
+    events: list[str] = Field()
+    active: bool = Field()
+    config: OrgHookPropConfig = Field()
+    updated_at: datetime = Field()
+    created_at: datetime = Field()
+    type: str = Field()
 
 
-model_rebuild(RepositoryRuleCommitAuthorEmailPattern)
+class OrgHookPropConfig(GitHubModel):
+    """OrgHookPropConfig"""
 
-__all__ = ("RepositoryRuleCommitAuthorEmailPattern",)
+    url: Missing[str] = Field(default=UNSET)
+    insecure_ssl: Missing[str] = Field(default=UNSET)
+    content_type: Missing[str] = Field(default=UNSET)
+    secret: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(OrgHook)
+model_rebuild(OrgHookPropConfig)
+
+__all__ = (
+    "OrgHook",
+    "OrgHookPropConfig",
+)

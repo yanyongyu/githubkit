@@ -9,24 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0400 import UserEmailsResponseItemsType, UserNameResponseType
-from .group_0401 import UserRoleItemsType
+from .group_0398 import TrafficType
 
 
-class UserResponseType(TypedDict):
-    """UserResponse"""
+class ViewTrafficType(TypedDict):
+    """View Traffic
 
-    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:User"]]
-    external_id: NotRequired[Union[str, None]]
-    active: bool
-    user_name: NotRequired[str]
-    name: NotRequired[UserNameResponseType]
-    display_name: NotRequired[Union[str, None]]
-    emails: list[UserEmailsResponseItemsType]
-    roles: NotRequired[list[UserRoleItemsType]]
+    View Traffic
+    """
+
+    count: int
+    uniques: int
+    views: list[TrafficType]
 
 
-__all__ = ("UserResponseType",)
+__all__ = ("ViewTrafficType",)

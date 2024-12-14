@@ -9,38 +9,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0408 import SearchResultTextMatchesItemsType
+from .group_0404 import MetaType
+from .group_0414 import ScimEnterpriseUserResponseAllof1PropGroupsItemsType
 
 
-class LabelSearchResultItemType(TypedDict):
-    """Label Search Result Item
+class ScimEnterpriseUserResponseAllof1Type(TypedDict):
+    """ScimEnterpriseUserResponseAllof1"""
 
-    Label Search Result Item
-    """
-
-    id: int
-    node_id: str
-    url: str
-    name: str
-    color: str
-    default: bool
-    description: Union[str, None]
-    score: float
-    text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
+    id: str
+    groups: NotRequired[list[ScimEnterpriseUserResponseAllof1PropGroupsItemsType]]
+    meta: MetaType
 
 
-class SearchLabelsGetResponse200Type(TypedDict):
-    """SearchLabelsGetResponse200"""
-
-    total_count: int
-    incomplete_results: bool
-    items: list[LabelSearchResultItemType]
-
-
-__all__ = (
-    "LabelSearchResultItemType",
-    "SearchLabelsGetResponse200Type",
-)
+__all__ = ("ScimEnterpriseUserResponseAllof1Type",)

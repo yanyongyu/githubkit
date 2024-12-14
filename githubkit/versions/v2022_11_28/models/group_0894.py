@@ -9,13 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from pydantic import Field
+
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ProjectsColumnsCardsCardIdMovesPostResponse201(GitHubModel):
-    """ProjectsColumnsCardsCardIdMovesPostResponse201"""
+class ProjectsColumnsCardsCardIdMovesPostResponse403(GitHubModel):
+    """ProjectsColumnsCardsCardIdMovesPostResponse403"""
+
+    message: Missing[str] = Field(default=UNSET)
+    documentation_url: Missing[str] = Field(default=UNSET)
+    errors: Missing[
+        list[ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItems]
+    ] = Field(default=UNSET)
 
 
-model_rebuild(ProjectsColumnsCardsCardIdMovesPostResponse201)
+class ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItems(GitHubModel):
+    """ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItems"""
 
-__all__ = ("ProjectsColumnsCardsCardIdMovesPostResponse201",)
+    code: Missing[str] = Field(default=UNSET)
+    message: Missing[str] = Field(default=UNSET)
+    resource: Missing[str] = Field(default=UNSET)
+    field: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(ProjectsColumnsCardsCardIdMovesPostResponse403)
+model_rebuild(ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItems)
+
+__all__ = (
+    "ProjectsColumnsCardsCardIdMovesPostResponse403",
+    "ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItems",
+)

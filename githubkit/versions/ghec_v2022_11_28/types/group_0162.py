@@ -9,21 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0163 import RepositoryRulePullRequestPropParametersType
+from typing_extensions import TypedDict
 
 
-class RepositoryRulePullRequestType(TypedDict):
-    """pull_request
+class DependabotPublicKeyType(TypedDict):
+    """DependabotPublicKey
 
-    Require all commits be made to a non-target branch and submitted via a pull
-    request before they can be merged.
+    The public key used for setting Dependabot Secrets.
     """
 
-    type: Literal["pull_request"]
-    parameters: NotRequired[RepositoryRulePullRequestPropParametersType]
+    key_id: str
+    key: str
 
 
-__all__ = ("RepositoryRulePullRequestType",)
+__all__ = ("DependabotPublicKeyType",)

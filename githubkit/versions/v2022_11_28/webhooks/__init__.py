@@ -226,6 +226,10 @@ if TYPE_CHECKING:
     from .secret_scanning_alert_location import (
         secret_scanning_alert_location_action_types as secret_scanning_alert_location_action_types,
     )
+    from .secret_scanning_scan import SecretScanningScanEvent as SecretScanningScanEvent
+    from .secret_scanning_scan import (
+        secret_scanning_scan_action_types as secret_scanning_scan_action_types,
+    )
     from .security_advisory import SecurityAdvisoryEvent as SecurityAdvisoryEvent
     from .security_advisory import (
         security_advisory_action_types as security_advisory_action_types,
@@ -392,6 +396,10 @@ else:
         ".secret_scanning_alert_location": (
             "SecretScanningAlertLocationEvent",
             "secret_scanning_alert_location_action_types",
+        ),
+        ".secret_scanning_scan": (
+            "SecretScanningScanEvent",
+            "secret_scanning_scan_action_types",
         ),
         ".security_advisory": (
             "SecurityAdvisoryEvent",

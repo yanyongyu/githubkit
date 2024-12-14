@@ -10,33 +10,46 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import TypedDict
 
-from .group_0002 import SimpleUserType
 
+class SimpleCommitType(TypedDict):
+    """Simple Commit
 
-class ActivityType(TypedDict):
-    """Activity
-
-    Activity
+    A commit.
     """
 
-    id: int
-    node_id: str
-    before: str
-    after: str
-    ref: str
+    id: str
+    tree_id: str
+    message: str
     timestamp: datetime
-    activity_type: Literal[
-        "push",
-        "force_push",
-        "branch_deletion",
-        "branch_creation",
-        "pr_merge",
-        "merge_queue_merge",
-    ]
-    actor: Union[None, SimpleUserType]
+    author: Union[SimpleCommitPropAuthorType, None]
+    committer: Union[SimpleCommitPropCommitterType, None]
 
 
-__all__ = ("ActivityType",)
+class SimpleCommitPropAuthorType(TypedDict):
+    """SimpleCommitPropAuthor
+
+    Information about the Git author
+    """
+
+    name: str
+    email: str
+
+
+class SimpleCommitPropCommitterType(TypedDict):
+    """SimpleCommitPropCommitter
+
+    Information about the Git committer
+    """
+
+    name: str
+    email: str
+
+
+__all__ = (
+    "SimpleCommitPropAuthorType",
+    "SimpleCommitPropCommitterType",
+    "SimpleCommitType",
+)

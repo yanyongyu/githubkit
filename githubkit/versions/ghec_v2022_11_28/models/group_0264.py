@@ -12,17 +12,20 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class Link(GitHubModel):
-    """Link
+class CodeScanningSarifsReceipt(GitHubModel):
+    """CodeScanningSarifsReceipt"""
 
-    Hypermedia Link
-    """
+    id: Missing[str] = Field(default=UNSET, description="An identifier for the upload.")
+    url: Missing[str] = Field(
+        default=UNSET,
+        description="The REST API URL for checking the status of the upload.",
+    )
 
-    href: str = Field()
 
+model_rebuild(CodeScanningSarifsReceipt)
 
-model_rebuild(Link)
-
-__all__ = ("Link",)
+__all__ = ("CodeScanningSarifsReceipt",)

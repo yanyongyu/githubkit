@@ -9,28 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class BranchShortType(TypedDict):
-    """Branch Short
+class CodeScanningDefaultSetupUpdateResponseType(TypedDict):
+    """CodeScanningDefaultSetupUpdateResponse
 
-    Branch Short
+    You can use `run_url` to track the status of the run. This includes a property
+    status and conclusion.
+    You should not rely on this always being an actions workflow run object.
     """
 
-    name: str
-    commit: BranchShortPropCommitType
-    protected: bool
+    run_id: NotRequired[int]
+    run_url: NotRequired[str]
 
 
-class BranchShortPropCommitType(TypedDict):
-    """BranchShortPropCommit"""
-
-    sha: str
-    url: str
-
-
-__all__ = (
-    "BranchShortPropCommitType",
-    "BranchShortType",
-)
+__all__ = ("CodeScanningDefaultSetupUpdateResponseType",)

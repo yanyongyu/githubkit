@@ -19,16 +19,16 @@ from githubkit.utils import UNSET
 
 from .group_0002 import SimpleUser
 from .group_0017 import Installation
-from .group_0388 import EnterpriseWebhooks
-from .group_0390 import OrganizationSimpleWebhooks
-from .group_0391 import RepositoryWebhooks
-from .group_0404 import WebhooksRepositoriesItems
+from .group_0389 import EnterpriseWebhooks
+from .group_0391 import OrganizationSimpleWebhooks
+from .group_0392 import RepositoryWebhooks
+from .group_0405 import WebhooksRepositoriesItems
 
 
-class WebhookInstallationNewPermissionsAccepted(GitHubModel):
-    """installation new_permissions_accepted event"""
+class WebhookInstallationDeleted(GitHubModel):
+    """installation deleted event"""
 
-    action: Literal["new_permissions_accepted"] = Field()
+    action: Literal["deleted"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -53,6 +53,6 @@ class WebhookInstallationNewPermissionsAccepted(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookInstallationNewPermissionsAccepted)
+model_rebuild(WebhookInstallationDeleted)
 
-__all__ = ("WebhookInstallationNewPermissionsAccepted",)
+__all__ = ("WebhookInstallationDeleted",)

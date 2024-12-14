@@ -10,71 +10,32 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0002 import SimpleUserType
-from .group_0092 import MinimalRepositoryType
-from .group_0209 import PullRequestMinimalType
-from .group_0210 import SimpleCommitType
 
+class ActionsCacheListType(TypedDict):
+    """Repository actions caches
 
-class WorkflowRunType(TypedDict):
-    """Workflow Run
-
-    An invocation of a workflow
+    Repository actions caches
     """
 
-    id: int
-    name: NotRequired[Union[str, None]]
-    node_id: str
-    check_suite_id: NotRequired[int]
-    check_suite_node_id: NotRequired[str]
-    head_branch: Union[str, None]
-    head_sha: str
-    path: str
-    run_number: int
-    run_attempt: NotRequired[int]
-    referenced_workflows: NotRequired[Union[list[ReferencedWorkflowType], None]]
-    event: str
-    status: Union[str, None]
-    conclusion: Union[str, None]
-    workflow_id: int
-    url: str
-    html_url: str
-    pull_requests: Union[list[PullRequestMinimalType], None]
-    created_at: datetime
-    updated_at: datetime
-    actor: NotRequired[SimpleUserType]
-    triggering_actor: NotRequired[SimpleUserType]
-    run_started_at: NotRequired[datetime]
-    jobs_url: str
-    logs_url: str
-    check_suite_url: str
-    artifacts_url: str
-    cancel_url: str
-    rerun_url: str
-    previous_attempt_url: NotRequired[Union[str, None]]
-    workflow_url: str
-    head_commit: Union[None, SimpleCommitType]
-    repository: MinimalRepositoryType
-    head_repository: MinimalRepositoryType
-    head_repository_id: NotRequired[int]
-    display_title: str
+    total_count: int
+    actions_caches: list[ActionsCacheListPropActionsCachesItemsType]
 
 
-class ReferencedWorkflowType(TypedDict):
-    """Referenced workflow
+class ActionsCacheListPropActionsCachesItemsType(TypedDict):
+    """ActionsCacheListPropActionsCachesItems"""
 
-    A workflow referenced/reused by the initial caller workflow
-    """
-
-    path: str
-    sha: str
+    id: NotRequired[int]
     ref: NotRequired[str]
+    key: NotRequired[str]
+    version: NotRequired[str]
+    last_accessed_at: NotRequired[datetime]
+    created_at: NotRequired[datetime]
+    size_in_bytes: NotRequired[int]
 
 
 __all__ = (
-    "ReferencedWorkflowType",
-    "WorkflowRunType",
+    "ActionsCacheListPropActionsCachesItemsType",
+    "ActionsCacheListType",
 )

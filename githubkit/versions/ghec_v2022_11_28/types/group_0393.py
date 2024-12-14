@@ -11,18 +11,12 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0389 import TrafficType
+
+class ParticipationStatsType(TypedDict):
+    """Participation Stats"""
+
+    all_: list[int]
+    owner: list[int]
 
 
-class ViewTrafficType(TypedDict):
-    """View Traffic
-
-    View Traffic
-    """
-
-    count: int
-    uniques: int
-    views: list[TrafficType]
-
-
-__all__ = ("ViewTrafficType",)
+__all__ = ("ParticipationStatsType",)

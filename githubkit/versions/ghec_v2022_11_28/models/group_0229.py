@@ -9,36 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class DiffEntry(GitHubModel):
-    """Diff Entry
+class Autolink(GitHubModel):
+    """Autolink reference
 
-    Diff Entry
+    An autolink reference.
     """
 
-    sha: str = Field()
-    filename: str = Field()
-    status: Literal[
-        "added", "removed", "modified", "renamed", "copied", "changed", "unchanged"
-    ] = Field()
-    additions: int = Field()
-    deletions: int = Field()
-    changes: int = Field()
-    blob_url: Union[str, None] = Field()
-    raw_url: Union[str, None] = Field()
-    contents_url: str = Field()
-    patch: Missing[str] = Field(default=UNSET)
-    previous_filename: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    key_prefix: str = Field(description="The prefix of a key that is linkified.")
+    url_template: str = Field(
+        description="A template for the target URL that is generated if a key was found."
+    )
+    is_alphanumeric: bool = Field(
+        description="Whether this autolink reference matches alphanumeric characters. If false, this autolink reference only matches numeric characters."
+    )
 
 
-model_rebuild(DiffEntry)
+model_rebuild(Autolink)
 
-__all__ = ("DiffEntry",)
+__all__ = ("Autolink",)

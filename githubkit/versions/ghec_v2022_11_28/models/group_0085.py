@@ -14,16 +14,14 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class GitignoreTemplate(GitHubModel):
-    """Gitignore Template
+class RepositoryRuleUpdatePropParameters(GitHubModel):
+    """RepositoryRuleUpdatePropParameters"""
 
-    Gitignore Template
-    """
-
-    name: str = Field()
-    source: str = Field()
+    update_allows_fetch_and_merge: bool = Field(
+        description="Branch can pull changes from its upstream repository"
+    )
 
 
-model_rebuild(GitignoreTemplate)
+model_rebuild(RepositoryRuleUpdatePropParameters)
 
-__all__ = ("GitignoreTemplate",)
+__all__ = ("RepositoryRuleUpdatePropParameters",)

@@ -13,25 +13,30 @@ from datetime import datetime
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0002 import SimpleUserType
+from .group_0008 import IntegrationType
 
 
-class CodeScanningCodeqlDatabaseType(TypedDict):
-    """CodeQL Database
+class DeploymentSimpleType(TypedDict):
+    """Deployment
 
-    A CodeQL database.
+    A deployment created as the result of an Actions check run from a workflow that
+    references an environment
     """
 
+    url: str
     id: int
-    name: str
-    language: str
-    uploader: SimpleUserType
-    content_type: str
-    size: int
+    node_id: str
+    task: str
+    original_environment: NotRequired[str]
+    environment: str
+    description: Union[str, None]
     created_at: datetime
     updated_at: datetime
-    url: str
-    commit_oid: NotRequired[Union[str, None]]
+    statuses_url: str
+    repository_url: str
+    transient_environment: NotRequired[bool]
+    production_environment: NotRequired[bool]
+    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
 
 
-__all__ = ("CodeScanningCodeqlDatabaseType",)
+__all__ = ("DeploymentSimpleType",)

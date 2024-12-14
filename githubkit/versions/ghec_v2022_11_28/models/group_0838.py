@@ -15,43 +15,27 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class EnterprisesEnterpriseActionsRunnerGroupsGetResponse200(GitHubModel):
-    """EnterprisesEnterpriseActionsRunnerGroupsGetResponse200"""
-
-    total_count: float = Field()
-    runner_groups: list[RunnerGroupsEnterprise] = Field()
+from .group_0016 import AppPermissions
 
 
-class RunnerGroupsEnterprise(GitHubModel):
-    """RunnerGroupsEnterprise"""
+class AppInstallationsInstallationIdAccessTokensPostBody(GitHubModel):
+    """AppInstallationsInstallationIdAccessTokensPostBody"""
 
-    id: float = Field()
-    name: str = Field()
-    visibility: str = Field()
-    default: bool = Field()
-    selected_organizations_url: Missing[str] = Field(default=UNSET)
-    runners_url: str = Field()
-    hosted_runners_url: Missing[str] = Field(default=UNSET)
-    allows_public_repositories: bool = Field()
-    workflow_restrictions_read_only: Missing[bool] = Field(
+    repositories: Missing[list[str]] = Field(
         default=UNSET,
-        description="If `true`, the `restricted_to_workflows` and `selected_workflows` fields cannot be modified.",
+        description="List of repository names that the token should have access to",
     )
-    restricted_to_workflows: Missing[bool] = Field(
+    repository_ids: Missing[list[int]] = Field(
         default=UNSET,
-        description="If `true`, the runner group will be restricted to running only the workflows specified in the `selected_workflows` array.",
+        description="List of repository IDs that the token should have access to",
     )
-    selected_workflows: Missing[list[str]] = Field(
+    permissions: Missing[AppPermissions] = Field(
         default=UNSET,
-        description="List of workflows the runner group should be allowed to run. This setting will be ignored unless `restricted_to_workflows` is set to `true`.",
+        title="App Permissions",
+        description="The permissions granted to the user access token.",
     )
 
 
-model_rebuild(EnterprisesEnterpriseActionsRunnerGroupsGetResponse200)
-model_rebuild(RunnerGroupsEnterprise)
+model_rebuild(AppInstallationsInstallationIdAccessTokensPostBody)
 
-__all__ = (
-    "EnterprisesEnterpriseActionsRunnerGroupsGetResponse200",
-    "RunnerGroupsEnterprise",
-)
+__all__ = ("AppInstallationsInstallationIdAccessTokensPostBody",)

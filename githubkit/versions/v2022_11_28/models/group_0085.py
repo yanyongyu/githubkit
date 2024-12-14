@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from datetime import date
+from typing import Union
 
 from pydantic import Field
 
@@ -18,78 +19,92 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class CopilotOrganizationDetails(ExtraGitHubModel):
-    """Copilot Organization Details
+class CopilotUsageMetrics(GitHubModel):
+    """Copilot Usage Metrics
 
-    Information about the seat breakdown and policies set for an organization with a
-    Copilot Business or Copilot Enterprise subscription.
+    Summary of Copilot usage.
     """
 
-    seat_breakdown: CopilotSeatBreakdown = Field(
-        title="Copilot Business Seat Breakdown",
-        description="The breakdown of Copilot Business seats for the organization.",
+    day: date = Field(
+        description="The date for which the usage metrics are reported, in `YYYY-MM-DD` format."
     )
-    public_code_suggestions: Literal["allow", "block", "unconfigured", "unknown"] = (
-        Field(
-            description="The organization policy for allowing or disallowing Copilot to make suggestions that match public code."
-        )
-    )
-    ide_chat: Missing[Literal["enabled", "disabled", "unconfigured"]] = Field(
+    total_suggestions_count: Missing[int] = Field(
         default=UNSET,
-        description="The organization policy for allowing or disallowing organization members to use Copilot Chat within their editor.",
+        description="The total number of Copilot code completion suggestions shown to users.",
     )
-    platform_chat: Missing[Literal["enabled", "disabled", "unconfigured"]] = Field(
+    total_acceptances_count: Missing[int] = Field(
         default=UNSET,
-        description="The organization policy for allowing or disallowing organization members to use Copilot features within github.com.",
+        description="The total number of Copilot code completion suggestions accepted by users.",
     )
-    cli: Missing[Literal["enabled", "disabled", "unconfigured"]] = Field(
+    total_lines_suggested: Missing[int] = Field(
         default=UNSET,
-        description="The organization policy for allowing or disallowing organization members to use Copilot within their CLI.",
+        description="The total number of lines of code completions suggested by Copilot.",
     )
-    seat_management_setting: Literal[
-        "assign_all", "assign_selected", "disabled", "unconfigured"
-    ] = Field(description="The mode of assigning new seats.")
-    plan_type: Missing[Literal["business", "enterprise", "unknown"]] = Field(
+    total_lines_accepted: Missing[int] = Field(
         default=UNSET,
-        description="The Copilot plan of the organization, or the parent enterprise, when applicable.",
+        description="The total number of lines of code completions accepted by users.",
+    )
+    total_active_users: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of users who were shown Copilot code completion suggestions during the day specified.",
+    )
+    total_chat_acceptances: Missing[int] = Field(
+        default=UNSET,
+        description="The total instances of users who accepted code suggested by Copilot Chat in the IDE (panel and inline).",
+    )
+    total_chat_turns: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of chat turns (prompt and response pairs) sent between users and Copilot Chat in the IDE.",
+    )
+    total_active_chat_users: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of users who interacted with Copilot Chat in the IDE during the day specified.",
+    )
+    breakdown: Union[list[CopilotUsageMetricsPropBreakdownItems], None] = Field(
+        description="Breakdown of Copilot code completions usage by language and editor"
     )
 
 
-class CopilotSeatBreakdown(GitHubModel):
-    """Copilot Business Seat Breakdown
+class CopilotUsageMetricsPropBreakdownItems(ExtraGitHubModel):
+    """CopilotUsageMetricsPropBreakdownItems
 
-    The breakdown of Copilot Business seats for the organization.
+    Breakdown of Copilot usage by editor for this language
     """
 
-    total: Missing[int] = Field(
+    language: Missing[str] = Field(
         default=UNSET,
-        description="The total number of seats being billed for the organization as of the current billing cycle.",
+        description="The language in which Copilot suggestions were shown to users in the specified editor.",
     )
-    added_this_cycle: Missing[int] = Field(
-        default=UNSET, description="Seats added during the current billing cycle."
-    )
-    pending_cancellation: Missing[int] = Field(
+    editor: Missing[str] = Field(
         default=UNSET,
-        description="The number of seats that are pending cancellation at the end of the current billing cycle.",
+        description="The editor in which Copilot suggestions were shown to users for the specified language.",
     )
-    pending_invitation: Missing[int] = Field(
+    suggestions_count: Missing[int] = Field(
         default=UNSET,
-        description="The number of seats that have been assigned to users that have not yet accepted an invitation to this organization.",
+        description="The number of Copilot suggestions shown to users in the editor specified during the day specified.",
     )
-    active_this_cycle: Missing[int] = Field(
+    acceptances_count: Missing[int] = Field(
         default=UNSET,
-        description="The number of seats that have used Copilot during the current billing cycle.",
+        description="The number of Copilot suggestions accepted by users in the editor specified during the day specified.",
     )
-    inactive_this_cycle: Missing[int] = Field(
+    lines_suggested: Missing[int] = Field(
         default=UNSET,
-        description="The number of seats that have not used Copilot during the current billing cycle.",
+        description="The number of lines of code suggested by Copilot in the editor specified during the day specified.",
+    )
+    lines_accepted: Missing[int] = Field(
+        default=UNSET,
+        description="The number of lines of code accepted by users in the editor specified during the day specified.",
+    )
+    active_users: Missing[int] = Field(
+        default=UNSET,
+        description="The number of users who were shown Copilot completion suggestions in the editor specified during the day specified.",
     )
 
 
-model_rebuild(CopilotOrganizationDetails)
-model_rebuild(CopilotSeatBreakdown)
+model_rebuild(CopilotUsageMetrics)
+model_rebuild(CopilotUsageMetricsPropBreakdownItems)
 
 __all__ = (
-    "CopilotOrganizationDetails",
-    "CopilotSeatBreakdown",
+    "CopilotUsageMetrics",
+    "CopilotUsageMetricsPropBreakdownItems",
 )

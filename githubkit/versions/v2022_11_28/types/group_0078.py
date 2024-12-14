@@ -13,106 +13,90 @@ from datetime import datetime
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0002 import SimpleUserType
+from .group_0052 import MinimalRepositoryType
+from .group_0077 import CodespaceMachineType
 
-class CodeSecurityConfigurationType(TypedDict):
-    """CodeSecurityConfiguration
 
-    A code security configuration
+class CodespaceType(TypedDict):
+    """Codespace
+
+    A codespace.
     """
 
-    id: NotRequired[int]
-    name: NotRequired[str]
-    target_type: NotRequired[Literal["global", "organization", "enterprise"]]
-    description: NotRequired[str]
-    advanced_security: NotRequired[Literal["enabled", "disabled"]]
-    dependency_graph: NotRequired[Literal["enabled", "disabled", "not_set"]]
-    dependency_graph_autosubmit_action: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
+    id: int
+    name: str
+    display_name: NotRequired[Union[str, None]]
+    environment_id: Union[str, None]
+    owner: SimpleUserType
+    billable_owner: SimpleUserType
+    repository: MinimalRepositoryType
+    machine: Union[None, CodespaceMachineType]
+    devcontainer_path: NotRequired[Union[str, None]]
+    prebuild: Union[bool, None]
+    created_at: datetime
+    updated_at: datetime
+    last_used_at: datetime
+    state: Literal[
+        "Unknown",
+        "Created",
+        "Queued",
+        "Provisioning",
+        "Available",
+        "Awaiting",
+        "Unavailable",
+        "Deleted",
+        "Moved",
+        "Shutdown",
+        "Archived",
+        "Starting",
+        "ShuttingDown",
+        "Failed",
+        "Exporting",
+        "Updating",
+        "Rebuilding",
     ]
-    dependency_graph_autosubmit_action_options: NotRequired[
-        CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptionsType
-    ]
-    dependabot_alerts: NotRequired[Literal["enabled", "disabled", "not_set"]]
-    dependabot_security_updates: NotRequired[Literal["enabled", "disabled", "not_set"]]
-    code_scanning_default_setup: NotRequired[Literal["enabled", "disabled", "not_set"]]
-    code_scanning_default_setup_options: NotRequired[
-        Union[CodeSecurityConfigurationPropCodeScanningDefaultSetupOptionsType, None]
-    ]
-    secret_scanning: NotRequired[Literal["enabled", "disabled", "not_set"]]
-    secret_scanning_push_protection: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    secret_scanning_delegated_bypass: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    secret_scanning_delegated_bypass_options: NotRequired[
-        CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsType
-    ]
-    secret_scanning_validity_checks: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    secret_scanning_non_provider_patterns: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    private_vulnerability_reporting: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    enforcement: NotRequired[Literal["enforced", "unenforced"]]
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    created_at: NotRequired[datetime]
-    updated_at: NotRequired[datetime]
+    url: str
+    git_status: CodespacePropGitStatusType
+    location: Literal["EastUs", "SouthEastAsia", "WestEurope", "WestUs2"]
+    idle_timeout_minutes: Union[int, None]
+    web_url: str
+    machines_url: str
+    start_url: str
+    stop_url: str
+    publish_url: NotRequired[Union[str, None]]
+    pulls_url: Union[str, None]
+    recent_folders: list[str]
+    runtime_constraints: NotRequired[CodespacePropRuntimeConstraintsType]
+    pending_operation: NotRequired[Union[bool, None]]
+    pending_operation_disabled_reason: NotRequired[Union[str, None]]
+    idle_timeout_notice: NotRequired[Union[str, None]]
+    retention_period_minutes: NotRequired[Union[int, None]]
+    retention_expires_at: NotRequired[Union[datetime, None]]
+    last_known_stop_notice: NotRequired[Union[str, None]]
 
 
-class CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptionsType(
-    TypedDict
-):
-    """CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptions
+class CodespacePropGitStatusType(TypedDict):
+    """CodespacePropGitStatus
 
-    Feature options for Automatic dependency submission
+    Details about the codespace's git repository.
     """
 
-    labeled_runners: NotRequired[bool]
+    ahead: NotRequired[int]
+    behind: NotRequired[int]
+    has_unpushed_changes: NotRequired[bool]
+    has_uncommitted_changes: NotRequired[bool]
+    ref: NotRequired[str]
 
 
-class CodeSecurityConfigurationPropCodeScanningDefaultSetupOptionsType(TypedDict):
-    """CodeSecurityConfigurationPropCodeScanningDefaultSetupOptions
+class CodespacePropRuntimeConstraintsType(TypedDict):
+    """CodespacePropRuntimeConstraints"""
 
-    Feature options for code scanning default setup
-    """
-
-    runner_type: NotRequired[Union[None, Literal["standard", "labeled", "not_set"]]]
-    runner_label: NotRequired[Union[str, None]]
-
-
-class CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsType(TypedDict):
-    """CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptions
-
-    Feature options for secret scanning delegated bypass
-    """
-
-    reviewers: NotRequired[
-        list[
-            CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropReviewersItemsType
-        ]
-    ]
-
-
-class CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropReviewersItemsType(
-    TypedDict
-):
-    """CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropReviewersIt
-    ems
-    """
-
-    reviewer_id: int
-    reviewer_type: Literal["TEAM", "ROLE"]
+    allowed_port_privacy_settings: NotRequired[Union[list[str], None]]
 
 
 __all__ = (
-    "CodeSecurityConfigurationPropCodeScanningDefaultSetupOptionsType",
-    "CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptionsType",
-    "CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropReviewersItemsType",
-    "CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsType",
-    "CodeSecurityConfigurationType",
+    "CodespacePropGitStatusType",
+    "CodespacePropRuntimeConstraintsType",
+    "CodespaceType",
 )

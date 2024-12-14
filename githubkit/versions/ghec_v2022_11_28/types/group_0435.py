@@ -10,21 +10,19 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ExemptionResponseType(TypedDict):
-    """Exemption response
+class SshSigningKeyType(TypedDict):
+    """SSH Signing Key
 
-    A response to an exemption request by a delegated bypasser.
+    A public SSH key used to sign Git commits
     """
 
-    id: NotRequired[int]
-    reviewer_id: NotRequired[int]
-    reviewer_login: NotRequired[str]
-    status: NotRequired[Literal["approved", "rejected", "dismissed"]]
-    created_at: NotRequired[datetime]
+    key: str
+    id: int
+    title: str
+    created_at: datetime
 
 
-__all__ = ("ExemptionResponseType",)
+__all__ = ("SshSigningKeyType",)

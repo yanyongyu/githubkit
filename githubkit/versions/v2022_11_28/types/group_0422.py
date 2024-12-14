@@ -11,31 +11,21 @@ from __future__ import annotations
 
 from datetime import datetime
 from typing import Union
-from typing_extensions import TypedDict
-
-from .group_0002 import SimpleUserType
+from typing_extensions import NotRequired, TypedDict
 
 
-class ProjectsV2Type(TypedDict):
-    """Projects v2 Project
+class WebhooksProjectColumnType(TypedDict):
+    """Project Column"""
 
-    A projects v2 project
-    """
-
-    id: float
-    node_id: str
-    owner: SimpleUserType
-    creator: SimpleUserType
-    title: str
-    description: Union[str, None]
-    public: bool
-    closed_at: Union[datetime, None]
+    after_id: NotRequired[Union[int, None]]
+    cards_url: str
     created_at: datetime
+    id: int
+    name: str
+    node_id: str
+    project_url: str
     updated_at: datetime
-    number: int
-    short_description: Union[str, None]
-    deleted_at: Union[datetime, None]
-    deleted_by: Union[None, SimpleUserType]
+    url: str
 
 
-__all__ = ("ProjectsV2Type",)
+__all__ = ("WebhooksProjectColumnType",)

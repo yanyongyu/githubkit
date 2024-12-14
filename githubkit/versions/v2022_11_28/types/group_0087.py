@@ -14,7 +14,7 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0002 import SimpleUserType
-from .group_0058 import MinimalRepositoryType
+from .group_0052 import MinimalRepositoryType
 
 
 class PackageType(TypedDict):

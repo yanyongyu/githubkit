@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,21 +16,22 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class RepositoryRuleCommitterEmailPatternPropParameters(GitHubModel):
-    """RepositoryRuleCommitterEmailPatternPropParameters"""
+class ApiInsightsSummaryStats(GitHubModel):
+    """Summary Stats
 
-    name: Missing[str] = Field(
-        default=UNSET, description="How this rule will appear to users."
+    API Insights usage summary stats for an organization
+    """
+
+    total_request_count: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of requests within the queried time period",
     )
-    negate: Missing[bool] = Field(
-        default=UNSET, description="If true, the rule will fail if the pattern matches."
+    rate_limited_request_count: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of requests that were rate limited within the queried time period",
     )
-    operator: Literal["starts_with", "ends_with", "contains", "regex"] = Field(
-        description="The operator to use for matching."
-    )
-    pattern: str = Field(description="The pattern to match with.")
 
 
-model_rebuild(RepositoryRuleCommitterEmailPatternPropParameters)
+model_rebuild(ApiInsightsSummaryStats)
 
-__all__ = ("RepositoryRuleCommitterEmailPatternPropParameters",)
+__all__ = ("ApiInsightsSummaryStats",)

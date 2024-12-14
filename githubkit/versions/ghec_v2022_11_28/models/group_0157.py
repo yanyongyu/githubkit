@@ -9,27 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0158 import RepositoryRuleMergeQueuePropParameters
 
+class CodespacesPublicKey(GitHubModel):
+    """CodespacesPublicKey
 
-class RepositoryRuleMergeQueue(GitHubModel):
-    """merge_queue
-
-    Merges must be performed via a merge queue.
+    The public key used for setting Codespaces secrets.
     """
 
-    type: Literal["merge_queue"] = Field()
-    parameters: Missing[RepositoryRuleMergeQueuePropParameters] = Field(default=UNSET)
+    key_id: str = Field(description="The identifier for the key.")
+    key: str = Field(description="The Base64 encoded public key.")
+    id: Missing[int] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    title: Missing[str] = Field(default=UNSET)
+    created_at: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(RepositoryRuleMergeQueue)
+model_rebuild(CodespacesPublicKey)
 
-__all__ = ("RepositoryRuleMergeQueue",)
+__all__ = ("CodespacesPublicKey",)

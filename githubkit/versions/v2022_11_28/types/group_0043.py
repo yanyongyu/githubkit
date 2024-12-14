@@ -11,30 +11,24 @@ from __future__ import annotations
 
 from datetime import datetime
 from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 from .group_0002 import SimpleUserType
-from .group_0008 import IntegrationType
-from .group_0041 import ReactionRollupType
 
 
-class IssueCommentType(TypedDict):
-    """Issue Comment
+class GistCommentType(TypedDict):
+    """Gist Comment
 
-    Comments provide a way for people to collaborate on an issue.
+    A comment made to a gist.
     """
 
     id: int
     node_id: str
     url: str
-    body: NotRequired[str]
-    body_text: NotRequired[str]
-    body_html: NotRequired[str]
-    html_url: str
+    body: str
     user: Union[None, SimpleUserType]
     created_at: datetime
     updated_at: datetime
-    issue_url: str
     author_association: Literal[
         "COLLABORATOR",
         "CONTRIBUTOR",
@@ -45,8 +39,6 @@ class IssueCommentType(TypedDict):
         "NONE",
         "OWNER",
     ]
-    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
-    reactions: NotRequired[ReactionRollupType]
 
 
-__all__ = ("IssueCommentType",)
+__all__ = ("GistCommentType",)

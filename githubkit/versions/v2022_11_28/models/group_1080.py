@@ -17,9 +17,9 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0111 import RepositoryRulesetBypassActor
-from .group_0112 import RepositoryRulesetConditions
-from .group_0123 import (
+from .group_0112 import RepositoryRulesetBypassActor
+from .group_0113 import RepositoryRulesetConditions
+from .group_0124 import (
     RepositoryRuleCreation,
     RepositoryRuleDeletion,
     RepositoryRuleNonFastForward,
@@ -27,31 +27,32 @@ from .group_0123 import (
     RepositoryRuleOneof17,
     RepositoryRuleRequiredSignatures,
 )
-from .group_0124 import RepositoryRuleUpdate
-from .group_0126 import RepositoryRuleOneof16, RepositoryRuleRequiredLinearHistory
-from .group_0127 import RepositoryRuleMergeQueue
-from .group_0129 import RepositoryRuleRequiredDeployments
-from .group_0132 import RepositoryRulePullRequest
-from .group_0134 import RepositoryRuleRequiredStatusChecks
-from .group_0136 import RepositoryRuleCommitMessagePattern
-from .group_0138 import RepositoryRuleCommitAuthorEmailPattern
-from .group_0140 import RepositoryRuleCommitterEmailPattern
-from .group_0142 import RepositoryRuleBranchNamePattern
-from .group_0144 import RepositoryRuleTagNamePattern
-from .group_0147 import RepositoryRuleWorkflows
-from .group_0149 import RepositoryRuleCodeScanning
-from .group_0151 import RepositoryRuleOneof18
+from .group_0125 import RepositoryRuleUpdate
+from .group_0127 import RepositoryRuleOneof16, RepositoryRuleRequiredLinearHistory
+from .group_0128 import RepositoryRuleMergeQueue
+from .group_0130 import RepositoryRuleRequiredDeployments
+from .group_0133 import RepositoryRulePullRequest
+from .group_0135 import RepositoryRuleRequiredStatusChecks
+from .group_0137 import RepositoryRuleCommitMessagePattern
+from .group_0139 import RepositoryRuleCommitAuthorEmailPattern
+from .group_0141 import RepositoryRuleCommitterEmailPattern
+from .group_0143 import RepositoryRuleBranchNamePattern
+from .group_0145 import RepositoryRuleTagNamePattern
+from .group_0148 import RepositoryRuleWorkflows
+from .group_0150 import RepositoryRuleCodeScanning
+from .group_0152 import RepositoryRuleOneof18
 
 
-class ReposOwnerRepoRulesetsPostBody(GitHubModel):
-    """ReposOwnerRepoRulesetsPostBody"""
+class ReposOwnerRepoRulesetsRulesetIdPutBody(GitHubModel):
+    """ReposOwnerRepoRulesetsRulesetIdPutBody"""
 
-    name: str = Field(description="The name of the ruleset.")
+    name: Missing[str] = Field(default=UNSET, description="The name of the ruleset.")
     target: Missing[Literal["branch", "tag", "push"]] = Field(
         default=UNSET, description="The target of the ruleset"
     )
-    enforcement: Literal["disabled", "active", "evaluate"] = Field(
-        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise)."
+    enforcement: Missing[Literal["disabled", "active", "evaluate"]] = Field(
+        default=UNSET,
+        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise).",
     )
     bypass_actors: Missing[list[RepositoryRulesetBypassActor]] = Field(
         default=UNSET,
@@ -91,6 +92,6 @@ class ReposOwnerRepoRulesetsPostBody(GitHubModel):
     ] = Field(default=UNSET, description="An array of rules within the ruleset.")
 
 
-model_rebuild(ReposOwnerRepoRulesetsPostBody)
+model_rebuild(ReposOwnerRepoRulesetsRulesetIdPutBody)
 
-__all__ = ("ReposOwnerRepoRulesetsPostBody",)
+__all__ = ("ReposOwnerRepoRulesetsRulesetIdPutBody",)

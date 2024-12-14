@@ -9,17 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class RepositoryRuleCommitterEmailPatternPropParametersType(TypedDict):
-    """RepositoryRuleCommitterEmailPatternPropParameters"""
+class ApiInsightsSummaryStatsType(TypedDict):
+    """Summary Stats
 
-    name: NotRequired[str]
-    negate: NotRequired[bool]
-    operator: Literal["starts_with", "ends_with", "contains", "regex"]
-    pattern: str
+    API Insights usage summary stats for an organization
+    """
+
+    total_request_count: NotRequired[int]
+    rate_limited_request_count: NotRequired[int]
 
 
-__all__ = ("RepositoryRuleCommitterEmailPatternPropParametersType",)
+__all__ = ("ApiInsightsSummaryStatsType",)

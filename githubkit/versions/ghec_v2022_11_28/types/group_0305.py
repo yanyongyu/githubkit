@@ -9,32 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0009 import WebhookConfigType
-from .group_0304 import HookResponseType
+from typing_extensions import TypedDict
 
 
-class HookType(TypedDict):
-    """Webhook
+class CustomDeploymentRuleAppType(TypedDict):
+    """Custom deployment protection rule app
 
-    Webhooks for repositories.
+    A GitHub App that is providing a custom deployment protection rule.
     """
 
-    type: str
     id: int
-    name: str
-    active: bool
-    events: list[str]
-    config: WebhookConfigType
-    updated_at: datetime
-    created_at: datetime
-    url: str
-    test_url: str
-    ping_url: str
-    deliveries_url: NotRequired[str]
-    last_response: HookResponseType
+    slug: str
+    integration_url: str
+    node_id: str
 
 
-__all__ = ("HookType",)
+__all__ = ("CustomDeploymentRuleAppType",)

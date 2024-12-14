@@ -35,6 +35,7 @@ class UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems(
         default=UNSET, title="Sigstore Bundle v0.1", description="Sigstore Bundle v0.1"
     )
     repository_id: Missing[int] = Field(default=UNSET)
+    bundle_url: Missing[str] = Field(default=UNSET)
 
 
 class SigstoreBundle0(GitHubModel):

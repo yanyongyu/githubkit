@@ -9,37 +9,58 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0296 import CustomDeploymentRuleAppType
+from .group_0294 import MetadataType
 
 
-class DeploymentProtectionRuleType(TypedDict):
-    """Deployment protection rule
+class SnapshotType(TypedDict):
+    """snapshot
 
-    Deployment protection rule
+    Create a new snapshot of a repository's dependencies.
     """
 
-    id: int
-    node_id: str
-    enabled: bool
-    app: CustomDeploymentRuleAppType
+    version: int
+    job: SnapshotPropJobType
+    sha: str
+    ref: str
+    detector: SnapshotPropDetectorType
+    metadata: NotRequired[MetadataType]
+    manifests: NotRequired[SnapshotPropManifestsType]
+    scanned: datetime
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200Type(
-    TypedDict
-):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200
+class SnapshotPropJobType(TypedDict):
+    """SnapshotPropJob"""
 
-    Examples:
-        {'$ref': '#/components/examples/deployment-protection-rules'}
+    id: str
+    correlator: str
+    html_url: NotRequired[str]
+
+
+class SnapshotPropDetectorType(TypedDict):
+    """SnapshotPropDetector
+
+    A description of the detector used.
     """
 
-    total_count: NotRequired[int]
-    custom_deployment_protection_rules: NotRequired[list[DeploymentProtectionRuleType]]
+    name: str
+    version: str
+    url: str
+
+
+class SnapshotPropManifestsType(TypedDict):
+    """SnapshotPropManifests
+
+    A collection of package manifests, which are a collection of related
+    dependencies declared in a file or representing a logical group of dependencies.
+    """
 
 
 __all__ = (
-    "DeploymentProtectionRuleType",
-    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200Type",
+    "SnapshotPropDetectorType",
+    "SnapshotPropJobType",
+    "SnapshotPropManifestsType",
+    "SnapshotType",
 )

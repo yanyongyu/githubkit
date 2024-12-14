@@ -539,6 +539,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import CustomProperty as CustomProperty
     from githubkit.versions.v2022_11_28.models import (
+        CustomPropertySetPayload as CustomPropertySetPayload,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         CustomPropertyValue as CustomPropertyValue,
     )
     from githubkit.versions.v2022_11_28.models import CvssSeverities as CvssSeverities
@@ -665,9 +668,6 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import EmptyObject as EmptyObject
     from githubkit.versions.v2022_11_28.models import Enterprise as Enterprise
-    from githubkit.versions.v2022_11_28.models import (
-        EnterprisesEnterpriseCopilotBillingSeatsGetResponse200 as EnterprisesEnterpriseCopilotBillingSeatsGetResponse200,
-    )
     from githubkit.versions.v2022_11_28.models import (
         EnterprisesEnterpriseSecretScanningAlertsGetResponse503 as EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
     )
@@ -1356,9 +1356,6 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         OrgsOrgProjectsPostBody as OrgsOrgProjectsPostBody,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        OrgsOrgPropertiesSchemaCustomPropertyNamePutBody as OrgsOrgPropertiesSchemaCustomPropertyNamePutBody,
     )
     from githubkit.versions.v2022_11_28.models import (
         OrgsOrgPropertiesSchemaPatchBody as OrgsOrgPropertiesSchemaPatchBody,
@@ -8688,6 +8685,9 @@ if TYPE_CHECKING:
         WebhookSecretScanningAlertValidated as WebhookSecretScanningAlertValidated,
     )
     from githubkit.versions.v2022_11_28.models import (
+        WebhookSecretScanningScanCompleted as WebhookSecretScanningScanCompleted,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         WebhookSecurityAdvisoryPublished as WebhookSecurityAdvisoryPublished,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -9623,28 +9623,6 @@ else:
             "SimpleClassroomAssignment",
             "SimpleClassroom",
             "ClassroomAssignmentGrade",
-            "OrganizationSimple",
-            "TeamSimple",
-            "Team",
-            "TeamPropPermissions",
-            "CopilotSeatDetails",
-            "EnterpriseTeam",
-            "CopilotUsageMetricsDay",
-            "CopilotDotcomChat",
-            "CopilotDotcomChatPropModelsItems",
-            "CopilotIdeChat",
-            "CopilotIdeChatPropEditorsItems",
-            "CopilotIdeChatPropEditorsItemsPropModelsItems",
-            "CopilotDotcomPullRequests",
-            "CopilotDotcomPullRequestsPropRepositoriesItems",
-            "CopilotDotcomPullRequestsPropRepositoriesItemsPropModelsItems",
-            "CopilotIdeCodeCompletions",
-            "CopilotIdeCodeCompletionsPropLanguagesItems",
-            "CopilotIdeCodeCompletionsPropEditorsItems",
-            "CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItems",
-            "CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItemsPropLanguagesItems",
-            "CopilotUsageMetrics",
-            "CopilotUsageMetricsPropBreakdownItems",
             "DependabotAlertPackage",
             "DependabotAlertSecurityVulnerability",
             "DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion",
@@ -9710,6 +9688,7 @@ else:
             "Thread",
             "ThreadPropSubject",
             "ThreadSubscription",
+            "OrganizationSimple",
             "BillingUsageReport",
             "BillingUsageReportPropUsageItemsItems",
             "OrganizationFull",
@@ -9747,6 +9726,28 @@ else:
             "CodespacesPublicKey",
             "CopilotOrganizationDetails",
             "CopilotSeatBreakdown",
+            "TeamSimple",
+            "Team",
+            "TeamPropPermissions",
+            "CopilotSeatDetails",
+            "EnterpriseTeam",
+            "OrgsOrgCopilotBillingSeatsGetResponse200",
+            "CopilotUsageMetricsDay",
+            "CopilotDotcomChat",
+            "CopilotDotcomChatPropModelsItems",
+            "CopilotIdeChat",
+            "CopilotIdeChatPropEditorsItems",
+            "CopilotIdeChatPropEditorsItemsPropModelsItems",
+            "CopilotDotcomPullRequests",
+            "CopilotDotcomPullRequestsPropRepositoriesItems",
+            "CopilotDotcomPullRequestsPropRepositoriesItemsPropModelsItems",
+            "CopilotIdeCodeCompletions",
+            "CopilotIdeCodeCompletionsPropLanguagesItems",
+            "CopilotIdeCodeCompletionsPropEditorsItems",
+            "CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItems",
+            "CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItemsPropLanguagesItems",
+            "CopilotUsageMetrics",
+            "CopilotUsageMetricsPropBreakdownItems",
             "DependabotPublicKey",
             "Package",
             "OrganizationInvitation",
@@ -9783,6 +9784,7 @@ else:
             "OrganizationProgrammaticAccessGrantPropPermissionsPropOther",
             "Project",
             "CustomProperty",
+            "CustomPropertySetPayload",
             "CustomPropertyValue",
             "OrgRepoCustomPropertyValues",
             "CodeOfConductSimple",
@@ -12284,6 +12286,7 @@ else:
             "WebhookSecretScanningAlertReopened",
             "WebhookSecretScanningAlertResolved",
             "WebhookSecretScanningAlertValidated",
+            "WebhookSecretScanningScanCompleted",
             "WebhookSecurityAdvisoryPublished",
             "WebhookSecurityAdvisoryUpdated",
             "WebhookSecurityAdvisoryWithdrawn",
@@ -12452,7 +12455,6 @@ else:
             "ApplicationsClientIdTokenPatchBody",
             "ApplicationsClientIdTokenScopedPostBody",
             "EmojisGetResponse200",
-            "EnterprisesEnterpriseCopilotBillingSeatsGetResponse200",
             "EnterprisesEnterpriseSecretScanningAlertsGetResponse503",
             "GistsPostBody",
             "GistsPostBodyPropFiles",
@@ -12526,7 +12528,6 @@ else:
             "OrgsOrgCodespacesSecretsSecretNamePutBody",
             "OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200",
             "OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBody",
-            "OrgsOrgCopilotBillingSeatsGetResponse200",
             "OrgsOrgCopilotBillingSelectedTeamsPostBody",
             "OrgsOrgCopilotBillingSelectedTeamsPostResponse201",
             "OrgsOrgCopilotBillingSelectedTeamsDeleteBody",
@@ -12560,7 +12561,6 @@ else:
             "OrgsOrgPersonalAccessTokensPatIdPostBody",
             "OrgsOrgProjectsPostBody",
             "OrgsOrgPropertiesSchemaPatchBody",
-            "OrgsOrgPropertiesSchemaCustomPropertyNamePutBody",
             "OrgsOrgPropertiesValuesPatchBody",
             "OrgsOrgReposPostBody",
             "OrgsOrgReposPostBodyPropCustomProperties",

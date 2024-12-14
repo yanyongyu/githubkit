@@ -156,6 +156,9 @@ if TYPE_CHECKING:
         SecretScanningAlertLocationEvent as SecretScanningAlertLocationEvent,
     )
     from githubkit.versions.v2022_11_28.webhooks import (
+        SecretScanningScanEvent as SecretScanningScanEvent,
+    )
+    from githubkit.versions.v2022_11_28.webhooks import (
         SecurityAdvisoryEvent as SecurityAdvisoryEvent,
     )
     from githubkit.versions.v2022_11_28.webhooks import (
@@ -361,6 +364,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.webhooks import (
         secret_scanning_alert_location_action_types as secret_scanning_alert_location_action_types,
+    )
+    from githubkit.versions.v2022_11_28.webhooks import (
+        secret_scanning_scan_action_types as secret_scanning_scan_action_types,
     )
     from githubkit.versions.v2022_11_28.webhooks import (
         security_advisory_action_types as security_advisory_action_types,
@@ -661,6 +667,10 @@ else:
         "githubkit.versions.v2022_11_28.webhooks.secret_scanning_alert_location": (
             "SecretScanningAlertLocationEvent",
             "secret_scanning_alert_location_action_types",
+        ),
+        "githubkit.versions.v2022_11_28.webhooks.secret_scanning_scan": (
+            "SecretScanningScanEvent",
+            "secret_scanning_scan_action_types",
         ),
         "githubkit.versions.v2022_11_28.webhooks.security_advisory": (
             "SecurityAdvisoryEvent",

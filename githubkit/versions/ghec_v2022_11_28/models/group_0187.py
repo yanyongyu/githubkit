@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from datetime import datetime
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -17,36 +18,38 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0002 import SimpleUser
 
-class GroupMapping(GitHubModel):
-    """GroupMapping
 
-    External Groups to be mapped to a team for membership
+class Project(GitHubModel):
+    """Project
+
+    Projects are a way to organize columns and cards of work.
     """
 
-    groups: Missing[list[GroupMappingPropGroupsItems]] = Field(
-        default=UNSET, description="Array of groups to be mapped to this team"
+    owner_url: str = Field()
+    url: str = Field()
+    html_url: str = Field()
+    columns_url: str = Field()
+    id: int = Field()
+    node_id: str = Field()
+    name: str = Field(description="Name of the project")
+    body: Union[str, None] = Field(description="Body of the project")
+    number: int = Field()
+    state: str = Field(description="State of the project; either 'open' or 'closed'")
+    creator: Union[None, SimpleUser] = Field()
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+    organization_permission: Missing[Literal["read", "write", "admin", "none"]] = Field(
+        default=UNSET,
+        description="The baseline permission that all organization members have on this project. Only present if owner is an organization.",
+    )
+    private: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether or not this project can be seen by everyone. Only present if owner is an organization.",
     )
 
 
-class GroupMappingPropGroupsItems(GitHubModel):
-    """GroupMappingPropGroupsItems"""
+model_rebuild(Project)
 
-    group_id: str = Field(description="The ID of the group")
-    group_name: str = Field(description="The name of the group")
-    group_description: str = Field(description="a description of the group")
-    status: Missing[str] = Field(
-        default=UNSET, description="synchronization status for this group mapping"
-    )
-    synced_at: Missing[Union[str, None]] = Field(
-        default=UNSET, description="the time of the last sync for this group-mapping"
-    )
-
-
-model_rebuild(GroupMapping)
-model_rebuild(GroupMappingPropGroupsItems)
-
-__all__ = (
-    "GroupMapping",
-    "GroupMappingPropGroupsItems",
-)
+__all__ = ("Project",)

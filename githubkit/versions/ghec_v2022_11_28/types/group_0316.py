@@ -9,39 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import TypedDict
 
-from .group_0002 import SimpleUserType
-from .group_0008 import IntegrationType
 
+class PorterAuthorType(TypedDict):
+    """Porter Author
 
-class RenamedIssueEventType(TypedDict):
-    """Renamed Issue Event
-
-    Renamed Issue Event
+    Porter Author
     """
 
     id: int
-    node_id: str
+    remote_id: str
+    remote_name: str
+    email: str
+    name: str
     url: str
-    actor: SimpleUserType
-    event: Literal["renamed"]
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationType, None]
-    rename: RenamedIssueEventPropRenameType
+    import_url: str
 
 
-class RenamedIssueEventPropRenameType(TypedDict):
-    """RenamedIssueEventPropRename"""
-
-    from_: str
-    to: str
-
-
-__all__ = (
-    "RenamedIssueEventPropRenameType",
-    "RenamedIssueEventType",
-)
+__all__ = ("PorterAuthorType",)

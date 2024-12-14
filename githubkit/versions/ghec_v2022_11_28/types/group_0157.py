@@ -9,20 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0158 import RepositoryRuleMergeQueuePropParametersType
 
+class CodespacesPublicKeyType(TypedDict):
+    """CodespacesPublicKey
 
-class RepositoryRuleMergeQueueType(TypedDict):
-    """merge_queue
-
-    Merges must be performed via a merge queue.
+    The public key used for setting Codespaces secrets.
     """
 
-    type: Literal["merge_queue"]
-    parameters: NotRequired[RepositoryRuleMergeQueuePropParametersType]
+    key_id: str
+    key: str
+    id: NotRequired[int]
+    url: NotRequired[str]
+    title: NotRequired[str]
+    created_at: NotRequired[str]
 
 
-__all__ = ("RepositoryRuleMergeQueueType",)
+__all__ = ("CodespacesPublicKeyType",)

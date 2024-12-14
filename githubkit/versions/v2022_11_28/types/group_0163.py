@@ -10,26 +10,32 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 from .group_0002 import SimpleUserType
+from .group_0035 import ReactionRollupType
 
 
-class ReactionType(TypedDict):
-    """Reaction
+class TeamDiscussionCommentType(TypedDict):
+    """Team Discussion Comment
 
-    Reactions to conversations provide a way to help people express their feelings
-    more simply and effectively.
+    A reply to a discussion within a team.
     """
 
-    id: int
-    node_id: str
-    user: Union[None, SimpleUserType]
-    content: Literal[
-        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-    ]
+    author: Union[None, SimpleUserType]
+    body: str
+    body_html: str
+    body_version: str
     created_at: datetime
+    last_edited_at: Union[datetime, None]
+    discussion_url: str
+    html_url: str
+    node_id: str
+    number: int
+    updated_at: datetime
+    url: str
+    reactions: NotRequired[ReactionRollupType]
 
 
-__all__ = ("ReactionType",)
+__all__ = ("TeamDiscussionCommentType",)

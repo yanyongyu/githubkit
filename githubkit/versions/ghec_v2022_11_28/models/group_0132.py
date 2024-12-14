@@ -9,54 +9,79 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from datetime import datetime
+from typing import Any, Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0055 import TeamSimple
+from .group_0002 import SimpleUser
 
 
-class UserRoleAssignment(GitHubModel):
-    """A Role Assignment for a User
+class GistHistory(GitHubModel):
+    """Gist History
 
-    The Relationship a User has with a role.
+    Gist History
     """
 
-    assignment: Missing[Literal["direct", "indirect", "mixed"]] = Field(
-        default=UNSET,
-        description="Determines if the user has a direct, indirect, or mixed relationship to a role",
-    )
-    inherited_from: Missing[list[TeamSimple]] = Field(
-        default=UNSET, description="Team the user has gotten the role through"
-    )
-    name: Missing[Union[str, None]] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    login: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    avatar_url: str = Field()
-    gravatar_id: Union[str, None] = Field()
+    user: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
+    version: Missing[str] = Field(default=UNSET)
+    committed_at: Missing[datetime] = Field(default=UNSET)
+    change_status: Missing[GistHistoryPropChangeStatus] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+
+
+class GistHistoryPropChangeStatus(GitHubModel):
+    """GistHistoryPropChangeStatus"""
+
+    total: Missing[int] = Field(default=UNSET)
+    additions: Missing[int] = Field(default=UNSET)
+    deletions: Missing[int] = Field(default=UNSET)
+
+
+class GistSimplePropForkOf(GitHubModel):
+    """Gist
+
+    Gist
+    """
+
     url: str = Field()
+    forks_url: str = Field()
+    commits_url: str = Field()
+    id: str = Field()
+    node_id: str = Field()
+    git_pull_url: str = Field()
+    git_push_url: str = Field()
     html_url: str = Field()
-    followers_url: str = Field()
-    following_url: str = Field()
-    gists_url: str = Field()
-    starred_url: str = Field()
-    subscriptions_url: str = Field()
-    organizations_url: str = Field()
-    repos_url: str = Field()
-    events_url: str = Field()
-    received_events_url: str = Field()
-    type: str = Field()
-    site_admin: bool = Field()
-    starred_at: Missing[str] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
+    files: GistSimplePropForkOfPropFiles = Field()
+    public: bool = Field()
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+    description: Union[str, None] = Field()
+    comments: int = Field()
+    user: Union[None, SimpleUser] = Field()
+    comments_url: str = Field()
+    owner: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
+    truncated: Missing[bool] = Field(default=UNSET)
+    forks: Missing[list[Any]] = Field(default=UNSET)
+    history: Missing[list[Any]] = Field(default=UNSET)
 
 
-model_rebuild(UserRoleAssignment)
+class GistSimplePropForkOfPropFiles(ExtraGitHubModel):
+    """GistSimplePropForkOfPropFiles"""
 
-__all__ = ("UserRoleAssignment",)
+
+model_rebuild(GistHistory)
+model_rebuild(GistHistoryPropChangeStatus)
+model_rebuild(GistSimplePropForkOf)
+model_rebuild(GistSimplePropForkOfPropFiles)
+
+__all__ = (
+    "GistHistory",
+    "GistHistoryPropChangeStatus",
+    "GistSimplePropForkOf",
+    "GistSimplePropForkOfPropFiles",
+)

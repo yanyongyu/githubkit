@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,26 +16,19 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ProjectsProjectIdPatchBody(GitHubModel):
-    """ProjectsProjectIdPatchBody"""
+class ProjectsColumnsCardsCardIdMovesPostBody(GitHubModel):
+    """ProjectsColumnsCardsCardIdMovesPostBody"""
 
-    name: Missing[str] = Field(default=UNSET, description="Name of the project")
-    body: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Body of the project"
+    position: str = Field(
+        pattern="^(?:top|bottom|after:\\d+)$",
+        description="The position of the card in a column. Can be one of: `top`, `bottom`, or `after:<card_id>` to place after the specified card.",
     )
-    state: Missing[str] = Field(
-        default=UNSET, description="State of the project; either 'open' or 'closed'"
-    )
-    organization_permission: Missing[Literal["read", "write", "admin", "none"]] = Field(
+    column_id: Missing[int] = Field(
         default=UNSET,
-        description="The baseline permission that all organization members have on this project",
-    )
-    private: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether or not this project can be seen by everyone.",
+        description="The unique identifier of the column the card should be moved to",
     )
 
 
-model_rebuild(ProjectsProjectIdPatchBody)
+model_rebuild(ProjectsColumnsCardsCardIdMovesPostBody)
 
-__all__ = ("ProjectsProjectIdPatchBody",)
+__all__ = ("ProjectsColumnsCardsCardIdMovesPostBody",)

@@ -9,17 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class DependabotPublicKeyType(TypedDict):
-    """DependabotPublicKey
+class RepositoryRuleOneof18Type(TypedDict):
+    """max_file_size
 
-    The public key used for setting Dependabot Secrets.
+    Prevent commits that exceed a specified file size limit from being pushed to the
+    commit.
     """
 
-    key_id: str
-    key: str
+    type: Literal["max_file_size"]
+    parameters: NotRequired[RepositoryRuleOneof18PropParametersType]
 
 
-__all__ = ("DependabotPublicKeyType",)
+class RepositoryRuleOneof18PropParametersType(TypedDict):
+    """RepositoryRuleOneof18PropParameters"""
+
+    max_file_size: int
+
+
+__all__ = (
+    "RepositoryRuleOneof18PropParametersType",
+    "RepositoryRuleOneof18Type",
+)

@@ -12,92 +12,119 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0002 import SimpleUserType
-from .group_0430 import EnterpriseWebhooksType
-from .group_0431 import SimpleInstallationType
-from .group_0432 import OrganizationSimpleWebhooksType
-from .group_0433 import RepositoryWebhooksType
 
+class WebhookForkPropForkeeAllof1Type(TypedDict):
+    """WebhookForkPropForkeeAllof1"""
 
-class WebhookInstallationTargetRenamedType(TypedDict):
-    """WebhookInstallationTargetRenamed"""
-
-    account: WebhookInstallationTargetRenamedPropAccountType
-    action: Literal["renamed"]
-    changes: WebhookInstallationTargetRenamedPropChangesType
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: SimpleInstallationType
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: NotRequired[RepositoryWebhooksType]
-    sender: NotRequired[SimpleUserType]
-    target_type: str
-
-
-class WebhookInstallationTargetRenamedPropAccountType(TypedDict):
-    """WebhookInstallationTargetRenamedPropAccount"""
-
-    archived_at: NotRequired[Union[str, None]]
-    avatar_url: str
+    allow_forking: NotRequired[bool]
+    archive_url: NotRequired[str]
+    archived: NotRequired[bool]
+    assignees_url: NotRequired[str]
+    blobs_url: NotRequired[str]
+    branches_url: NotRequired[str]
+    clone_url: NotRequired[str]
+    collaborators_url: NotRequired[str]
+    comments_url: NotRequired[str]
+    commits_url: NotRequired[str]
+    compare_url: NotRequired[str]
+    contents_url: NotRequired[str]
+    contributors_url: NotRequired[str]
     created_at: NotRequired[str]
-    description: NotRequired[None]
+    default_branch: NotRequired[str]
+    deployments_url: NotRequired[str]
+    description: NotRequired[Union[str, None]]
+    disabled: NotRequired[bool]
+    downloads_url: NotRequired[str]
     events_url: NotRequired[str]
-    followers: NotRequired[int]
+    fork: NotRequired[Literal[True]]
+    forks: NotRequired[int]
+    forks_count: NotRequired[int]
+    forks_url: NotRequired[str]
+    full_name: NotRequired[str]
+    git_commits_url: NotRequired[str]
+    git_refs_url: NotRequired[str]
+    git_tags_url: NotRequired[str]
+    git_url: NotRequired[str]
+    has_downloads: NotRequired[bool]
+    has_issues: NotRequired[bool]
+    has_pages: NotRequired[bool]
+    has_projects: NotRequired[bool]
+    has_wiki: NotRequired[bool]
+    homepage: NotRequired[Union[str, None]]
+    hooks_url: NotRequired[str]
+    html_url: NotRequired[str]
+    id: NotRequired[int]
+    is_template: NotRequired[bool]
+    issue_comment_url: NotRequired[str]
+    issue_events_url: NotRequired[str]
+    issues_url: NotRequired[str]
+    keys_url: NotRequired[str]
+    labels_url: NotRequired[str]
+    language: NotRequired[None]
+    languages_url: NotRequired[str]
+    license_: NotRequired[Union[WebhookForkPropForkeeAllof1PropLicenseType, None]]
+    merges_url: NotRequired[str]
+    milestones_url: NotRequired[str]
+    mirror_url: NotRequired[None]
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    notifications_url: NotRequired[str]
+    open_issues: NotRequired[int]
+    open_issues_count: NotRequired[int]
+    owner: NotRequired[WebhookForkPropForkeeAllof1PropOwnerType]
+    private: NotRequired[bool]
+    public: NotRequired[bool]
+    pulls_url: NotRequired[str]
+    pushed_at: NotRequired[str]
+    releases_url: NotRequired[str]
+    size: NotRequired[int]
+    ssh_url: NotRequired[str]
+    stargazers_count: NotRequired[int]
+    stargazers_url: NotRequired[str]
+    statuses_url: NotRequired[str]
+    subscribers_url: NotRequired[str]
+    subscription_url: NotRequired[str]
+    svn_url: NotRequired[str]
+    tags_url: NotRequired[str]
+    teams_url: NotRequired[str]
+    topics: NotRequired[list[Union[str, None]]]
+    trees_url: NotRequired[str]
+    updated_at: NotRequired[str]
+    url: NotRequired[str]
+    visibility: NotRequired[str]
+    watchers: NotRequired[int]
+    watchers_count: NotRequired[int]
+
+
+class WebhookForkPropForkeeAllof1PropLicenseType(TypedDict):
+    """WebhookForkPropForkeeAllof1PropLicense"""
+
+
+class WebhookForkPropForkeeAllof1PropOwnerType(TypedDict):
+    """WebhookForkPropForkeeAllof1PropOwner"""
+
+    avatar_url: NotRequired[str]
+    events_url: NotRequired[str]
     followers_url: NotRequired[str]
-    following: NotRequired[int]
     following_url: NotRequired[str]
     gists_url: NotRequired[str]
     gravatar_id: NotRequired[str]
-    has_organization_projects: NotRequired[bool]
-    has_repository_projects: NotRequired[bool]
-    hooks_url: NotRequired[str]
-    html_url: str
-    id: int
-    is_verified: NotRequired[bool]
-    issues_url: NotRequired[str]
+    html_url: NotRequired[str]
+    id: NotRequired[int]
     login: NotRequired[str]
-    members_url: NotRequired[str]
-    name: NotRequired[str]
-    node_id: str
+    node_id: NotRequired[str]
     organizations_url: NotRequired[str]
-    public_gists: NotRequired[int]
-    public_members_url: NotRequired[str]
-    public_repos: NotRequired[int]
     received_events_url: NotRequired[str]
     repos_url: NotRequired[str]
     site_admin: NotRequired[bool]
-    slug: NotRequired[str]
     starred_url: NotRequired[str]
     subscriptions_url: NotRequired[str]
     type: NotRequired[str]
-    updated_at: NotRequired[str]
     url: NotRequired[str]
-    website_url: NotRequired[None]
-    user_view_type: NotRequired[str]
-
-
-class WebhookInstallationTargetRenamedPropChangesType(TypedDict):
-    """WebhookInstallationTargetRenamedPropChanges"""
-
-    login: NotRequired[WebhookInstallationTargetRenamedPropChangesPropLoginType]
-    slug: NotRequired[WebhookInstallationTargetRenamedPropChangesPropSlugType]
-
-
-class WebhookInstallationTargetRenamedPropChangesPropLoginType(TypedDict):
-    """WebhookInstallationTargetRenamedPropChangesPropLogin"""
-
-    from_: str
-
-
-class WebhookInstallationTargetRenamedPropChangesPropSlugType(TypedDict):
-    """WebhookInstallationTargetRenamedPropChangesPropSlug"""
-
-    from_: str
 
 
 __all__ = (
-    "WebhookInstallationTargetRenamedPropAccountType",
-    "WebhookInstallationTargetRenamedPropChangesPropLoginType",
-    "WebhookInstallationTargetRenamedPropChangesPropSlugType",
-    "WebhookInstallationTargetRenamedPropChangesType",
-    "WebhookInstallationTargetRenamedType",
+    "WebhookForkPropForkeeAllof1PropLicenseType",
+    "WebhookForkPropForkeeAllof1PropOwnerType",
+    "WebhookForkPropForkeeAllof1Type",
 )

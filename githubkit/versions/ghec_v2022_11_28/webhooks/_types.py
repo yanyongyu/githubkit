@@ -161,6 +161,8 @@ from .secret_scanning_alert_location import Event as SecretScanningAlertLocation
 from .secret_scanning_alert_location import (
     action_types as secret_scanning_alert_location_action_types,
 )
+from .secret_scanning_scan import Event as SecretScanningScanEvent
+from .secret_scanning_scan import action_types as secret_scanning_scan_action_types
 from .security_advisory import Event as SecurityAdvisoryEvent
 from .security_advisory import action_types as security_advisory_action_types
 from .security_and_analysis import Event as SecurityAndAnalysisEvent
@@ -250,6 +252,7 @@ WebhookEvent = Union[
     RepositoryVulnerabilityAlertEvent,
     SecretScanningAlertEvent,
     SecretScanningAlertLocationEvent,
+    SecretScanningScanEvent,
     SecurityAdvisoryEvent,
     SecurityAndAnalysisEvent,
     SponsorshipEvent,
@@ -328,6 +331,7 @@ webhook_action_types = {
     "repository_vulnerability_alert": repository_vulnerability_alert_action_types,
     "secret_scanning_alert": secret_scanning_alert_action_types,
     "secret_scanning_alert_location": secret_scanning_alert_location_action_types,
+    "secret_scanning_scan": secret_scanning_scan_action_types,
     "security_advisory": security_advisory_action_types,
     "security_and_analysis": security_and_analysis_action_types,
     "sponsorship": sponsorship_action_types,
@@ -406,6 +410,7 @@ webhook_event_types = {
     "repository_vulnerability_alert": RepositoryVulnerabilityAlertEvent,
     "secret_scanning_alert": SecretScanningAlertEvent,
     "secret_scanning_alert_location": SecretScanningAlertLocationEvent,
+    "secret_scanning_scan": SecretScanningScanEvent,
     "security_advisory": SecurityAdvisoryEvent,
     "security_and_analysis": SecurityAndAnalysisEvent,
     "sponsorship": SponsorshipEvent,

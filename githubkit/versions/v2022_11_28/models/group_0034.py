@@ -9,52 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0033 import DependabotAlertPackage
+from .group_0002 import SimpleUser
 
 
-class DependabotAlertSecurityVulnerability(GitHubModel):
-    """DependabotAlertSecurityVulnerability
+class Milestone(GitHubModel):
+    """Milestone
 
-    Details pertaining to one vulnerable version range for the advisory.
+    A collection of related issues and pull requests.
     """
 
-    package: DependabotAlertPackage = Field(
-        description="Details for the vulnerable package."
+    url: str = Field()
+    html_url: str = Field()
+    labels_url: str = Field()
+    id: int = Field()
+    node_id: str = Field()
+    number: int = Field(description="The number of the milestone.")
+    state: Literal["open", "closed"] = Field(
+        default="open", description="The state of the milestone."
     )
-    severity: Literal["low", "medium", "high", "critical"] = Field(
-        description="The severity of the vulnerability."
-    )
-    vulnerable_version_range: str = Field(
-        description="Conditions that identify vulnerable versions of this vulnerability's package."
-    )
-    first_patched_version: Union[
-        DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion, None
-    ] = Field(
-        description="Details pertaining to the package version that patches this vulnerability."
-    )
+    title: str = Field(description="The title of the milestone.")
+    description: Union[str, None] = Field()
+    creator: Union[None, SimpleUser] = Field()
+    open_issues: int = Field()
+    closed_issues: int = Field()
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+    closed_at: Union[datetime, None] = Field()
+    due_on: Union[datetime, None] = Field()
 
 
-class DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion(GitHubModel):
-    """DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion
+model_rebuild(Milestone)
 
-    Details pertaining to the package version that patches this vulnerability.
-    """
-
-    identifier: str = Field(
-        description="The package version that patches this vulnerability."
-    )
-
-
-model_rebuild(DependabotAlertSecurityVulnerability)
-model_rebuild(DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion)
-
-__all__ = (
-    "DependabotAlertSecurityVulnerability",
-    "DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion",
-)
+__all__ = ("Milestone",)

@@ -690,7 +690,7 @@ class ReposClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         name: str,
-        target: Missing[Literal["branch", "tag", "push"]] = UNSET,
+        target: Missing[Literal["branch", "tag", "push", "repository"]] = UNSET,
         enforcement: Literal["disabled", "active", "evaluate"],
         bypass_actors: Missing[list[RepositoryRulesetBypassActorType]] = UNSET,
         conditions: Missing[
@@ -783,7 +783,7 @@ class ReposClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         name: str,
-        target: Missing[Literal["branch", "tag", "push"]] = UNSET,
+        target: Missing[Literal["branch", "tag", "push", "repository"]] = UNSET,
         enforcement: Literal["disabled", "active", "evaluate"],
         bypass_actors: Missing[list[RepositoryRulesetBypassActorType]] = UNSET,
         conditions: Missing[
@@ -1068,7 +1068,7 @@ class ReposClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         name: Missing[str] = UNSET,
-        target: Missing[Literal["branch", "tag", "push"]] = UNSET,
+        target: Missing[Literal["branch", "tag", "push", "repository"]] = UNSET,
         enforcement: Missing[Literal["disabled", "active", "evaluate"]] = UNSET,
         bypass_actors: Missing[list[RepositoryRulesetBypassActorType]] = UNSET,
         conditions: Missing[
@@ -1168,7 +1168,7 @@ class ReposClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         name: Missing[str] = UNSET,
-        target: Missing[Literal["branch", "tag", "push"]] = UNSET,
+        target: Missing[Literal["branch", "tag", "push", "repository"]] = UNSET,
         enforcement: Missing[Literal["disabled", "active", "evaluate"]] = UNSET,
         bypass_actors: Missing[list[RepositoryRulesetBypassActorType]] = UNSET,
         conditions: Missing[

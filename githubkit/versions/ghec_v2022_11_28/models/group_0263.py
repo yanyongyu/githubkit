@@ -12,30 +12,26 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class BranchShort(GitHubModel):
-    """Branch Short
+class CodeScanningDefaultSetupUpdateResponse(GitHubModel):
+    """CodeScanningDefaultSetupUpdateResponse
 
-    Branch Short
+    You can use `run_url` to track the status of the run. This includes a property
+    status and conclusion.
+    You should not rely on this always being an actions workflow run object.
     """
 
-    name: str = Field()
-    commit: BranchShortPropCommit = Field()
-    protected: bool = Field()
+    run_id: Missing[int] = Field(
+        default=UNSET, description="ID of the corresponding run."
+    )
+    run_url: Missing[str] = Field(
+        default=UNSET, description="URL of the corresponding run."
+    )
 
 
-class BranchShortPropCommit(GitHubModel):
-    """BranchShortPropCommit"""
+model_rebuild(CodeScanningDefaultSetupUpdateResponse)
 
-    sha: str = Field()
-    url: str = Field()
-
-
-model_rebuild(BranchShort)
-model_rebuild(BranchShortPropCommit)
-
-__all__ = (
-    "BranchShort",
-    "BranchShortPropCommit",
-)
+__all__ = ("CodeScanningDefaultSetupUpdateResponse",)

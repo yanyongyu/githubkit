@@ -9,47 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0092 import MinimalRepository
 
+class RepositoryRulePullRequestPropParameters(GitHubModel):
+    """RepositoryRulePullRequestPropParameters"""
 
-class Thread(GitHubModel):
-    """Thread
-
-    Thread
-    """
-
-    id: str = Field()
-    repository: MinimalRepository = Field(
-        title="Minimal Repository", description="Minimal Repository"
+    allowed_merge_methods: Missing[list[str]] = Field(
+        default=UNSET,
+        description="When merging pull requests, you can allow any combination of merge commits, squashing, or rebasing. At least one option must be enabled.",
     )
-    subject: ThreadPropSubject = Field()
-    reason: str = Field()
-    unread: bool = Field()
-    updated_at: str = Field()
-    last_read_at: Union[str, None] = Field()
-    url: str = Field()
-    subscription_url: str = Field()
+    dismiss_stale_reviews_on_push: bool = Field(
+        description="New, reviewable commits pushed will dismiss previous pull request review approvals."
+    )
+    require_code_owner_review: bool = Field(
+        description="Require an approving review in pull requests that modify files that have a designated code owner."
+    )
+    require_last_push_approval: bool = Field(
+        description="Whether the most recent reviewable push must be approved by someone other than the person who pushed it."
+    )
+    required_approving_review_count: int = Field(
+        le=10.0,
+        description="The number of approving reviews that are required before a pull request can be merged.",
+    )
+    required_review_thread_resolution: bool = Field(
+        description="All conversations on code must be resolved before a pull request can be merged."
+    )
 
 
-class ThreadPropSubject(GitHubModel):
-    """ThreadPropSubject"""
+model_rebuild(RepositoryRulePullRequestPropParameters)
 
-    title: str = Field()
-    url: str = Field()
-    latest_comment_url: str = Field()
-    type: str = Field()
-
-
-model_rebuild(Thread)
-model_rebuild(ThreadPropSubject)
-
-__all__ = (
-    "Thread",
-    "ThreadPropSubject",
-)
+__all__ = ("RepositoryRulePullRequestPropParameters",)

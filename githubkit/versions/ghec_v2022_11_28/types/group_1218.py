@@ -30,6 +30,7 @@ class UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsT
 
     bundle: NotRequired[SigstoreBundle0Type]
     repository_id: NotRequired[int]
+    bundle_url: NotRequired[str]
 
 
 class SigstoreBundle0Type(TypedDict):

@@ -9,18 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class CodeScanningDefaultSetupOptionsType(TypedDict):
-    """CodeScanningDefaultSetupOptions
+class CodespacesPublicKeyType(TypedDict):
+    """CodespacesPublicKey
 
-    Feature options for code scanning default setup
+    The public key used for setting Codespaces secrets.
     """
 
-    runner_type: NotRequired[Literal["standard", "labeled", "not_set"]]
-    runner_label: NotRequired[Union[str, None]]
+    key_id: str
+    key: str
+    id: NotRequired[int]
+    url: NotRequired[str]
+    title: NotRequired[str]
+    created_at: NotRequired[str]
 
 
-__all__ = ("CodeScanningDefaultSetupOptionsType",)
+__all__ = ("CodespacesPublicKeyType",)

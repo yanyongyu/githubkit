@@ -9,34 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0088 import RepositoryRuleMergeQueuePropParameters
 
 
-class MarketplaceListingPlan(GitHubModel):
-    """Marketplace Listing Plan
+class RepositoryRuleMergeQueue(GitHubModel):
+    """merge_queue
 
-    Marketplace Listing Plan
+    Merges must be performed via a merge queue.
     """
 
-    url: str = Field()
-    accounts_url: str = Field()
-    id: int = Field()
-    number: int = Field()
-    name: str = Field()
-    description: str = Field()
-    monthly_price_in_cents: int = Field()
-    yearly_price_in_cents: int = Field()
-    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"] = Field()
-    has_free_trial: bool = Field()
-    unit_name: Union[str, None] = Field()
-    state: str = Field()
-    bullets: list[str] = Field()
+    type: Literal["merge_queue"] = Field()
+    parameters: Missing[RepositoryRuleMergeQueuePropParameters] = Field(default=UNSET)
 
 
-model_rebuild(MarketplaceListingPlan)
+model_rebuild(RepositoryRuleMergeQueue)
 
-__all__ = ("MarketplaceListingPlan",)
+__all__ = ("RepositoryRuleMergeQueue",)

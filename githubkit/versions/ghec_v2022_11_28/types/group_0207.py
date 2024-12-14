@@ -9,16 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ActionsRepositoryPermissionsType(TypedDict):
-    """ActionsRepositoryPermissions"""
+class RateLimitType(TypedDict):
+    """Rate Limit"""
 
-    enabled: bool
-    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
-    selected_actions_url: NotRequired[str]
+    limit: int
+    remaining: int
+    reset: int
+    used: int
 
 
-__all__ = ("ActionsRepositoryPermissionsType",)
+__all__ = ("RateLimitType",)

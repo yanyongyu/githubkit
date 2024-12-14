@@ -9,27 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class UserNameResponseType(TypedDict):
-    """UserNameResponse"""
+class ContentTrafficType(TypedDict):
+    """Content Traffic
 
-    formatted: NotRequired[str]
-    family_name: NotRequired[str]
-    given_name: NotRequired[str]
-    middle_name: NotRequired[str]
+    Content Traffic
+    """
 
-
-class UserEmailsResponseItemsType(TypedDict):
-    """UserEmailsResponseItems"""
-
-    value: str
-    type: NotRequired[str]
-    primary: NotRequired[bool]
+    path: str
+    title: str
+    count: int
+    uniques: int
 
 
-__all__ = (
-    "UserEmailsResponseItemsType",
-    "UserNameResponseType",
-)
+__all__ = ("ContentTrafficType",)

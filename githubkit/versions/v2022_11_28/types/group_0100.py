@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0028 import TeamSimpleType
+from .group_0081 import TeamSimpleType
 
 
 class TeamRoleAssignmentType(TypedDict):

@@ -15,15 +15,16 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class EnterprisesEnterpriseCodeScanningAlertsGetResponse503(GitHubModel):
-    """EnterprisesEnterpriseCodeScanningAlertsGetResponse503"""
-
-    code: Missing[str] = Field(default=UNSET)
-    message: Missing[str] = Field(default=UNSET)
-    documentation_url: Missing[str] = Field(default=UNSET)
+from .group_0036 import Runner
 
 
-model_rebuild(EnterprisesEnterpriseCodeScanningAlertsGetResponse503)
+class EnterprisesEnterpriseActionsRunnersGetResponse200(GitHubModel):
+    """EnterprisesEnterpriseActionsRunnersGetResponse200"""
 
-__all__ = ("EnterprisesEnterpriseCodeScanningAlertsGetResponse503",)
+    total_count: Missing[float] = Field(default=UNSET)
+    runners: Missing[list[Runner]] = Field(default=UNSET)
+
+
+model_rebuild(EnterprisesEnterpriseActionsRunnersGetResponse200)
+
+__all__ = ("EnterprisesEnterpriseActionsRunnersGetResponse200",)

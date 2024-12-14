@@ -9,21 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class ActionsWorkflowAccessToRepository(GitHubModel):
-    """ActionsWorkflowAccessToRepository"""
-
-    access_level: Literal["none", "user", "organization", "enterprise"] = Field(
-        description="Defines the level of access that workflows outside of the repository have to actions and reusable workflows within the\nrepository.\n\n`none` means the access is only possible from workflows in this repository. `user` level access allows sharing across user owned private repositories only. `organization` level access allows sharing across the organization. `enterprise` level access allows sharing across the enterprise."
-    )
+from .group_0207 import RateLimit
+from .group_0209 import RateLimitOverviewPropResources
 
 
-model_rebuild(ActionsWorkflowAccessToRepository)
+class RateLimitOverview(GitHubModel):
+    """Rate Limit Overview
 
-__all__ = ("ActionsWorkflowAccessToRepository",)
+    Rate Limit Overview
+    """
+
+    resources: RateLimitOverviewPropResources = Field()
+    rate: RateLimit = Field(title="Rate Limit")
+
+
+model_rebuild(RateLimitOverview)
+
+__all__ = ("RateLimitOverview",)

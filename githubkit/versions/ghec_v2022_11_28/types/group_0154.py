@@ -12,17 +12,28 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0155 import RepositoryRuleUpdatePropParametersType
+from .group_0051 import SimpleRepositoryType
 
 
-class RepositoryRuleUpdateType(TypedDict):
-    """update
+class CodeSecurityConfigurationRepositoriesType(TypedDict):
+    """CodeSecurityConfigurationRepositories
 
-    Only allow users with bypass permission to update matching refs.
+    Repositories associated with a code security configuration and attachment status
     """
 
-    type: Literal["update"]
-    parameters: NotRequired[RepositoryRuleUpdatePropParametersType]
+    status: NotRequired[
+        Literal[
+            "attached",
+            "attaching",
+            "detached",
+            "removed",
+            "enforced",
+            "failed",
+            "updating",
+            "removed_by_enterprise",
+        ]
+    ]
+    repository: NotRequired[SimpleRepositoryType]
 
 
-__all__ = ("RepositoryRuleUpdateType",)
+__all__ = ("CodeSecurityConfigurationRepositoriesType",)

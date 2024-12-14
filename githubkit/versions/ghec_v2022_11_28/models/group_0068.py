@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,92 +18,30 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ActionsBillingUsage(GitHubModel):
-    """ActionsBillingUsage"""
+class RepositoryRulesetBypassActor(GitHubModel):
+    """Repository Ruleset Bypass Actor
 
-    total_minutes_used: int = Field(
-        description="The sum of the free and paid GitHub Actions minutes used."
-    )
-    total_paid_minutes_used: int = Field(
-        description="The total paid GitHub Actions minutes used."
-    )
-    included_minutes: int = Field(
-        description="The amount of free GitHub Actions minutes available."
-    )
-    minutes_used_breakdown: ActionsBillingUsagePropMinutesUsedBreakdown = Field()
+    An actor that can bypass rules in a ruleset
+    """
 
-
-class ActionsBillingUsagePropMinutesUsedBreakdown(GitHubModel):
-    """ActionsBillingUsagePropMinutesUsedBreakdown"""
-
-    ubuntu: Missing[int] = Field(
+    actor_id: Missing[Union[int, None]] = Field(
         default=UNSET,
-        alias="UBUNTU",
-        description="Total minutes used on Ubuntu runner machines.",
+        description="The ID of the actor that can bypass a ruleset. If `actor_type` is `OrganizationAdmin`, this should be `1`. If `actor_type` is `DeployKey`, this should be null. If `actor_type` is `EnterpriseOwner`, `actor_id` is ignored. `OrganizationAdmin` and `EnterpriseOwner` are not applicable for personal repositories.",
     )
-    macos: Missing[int] = Field(
+    actor_type: Literal[
+        "Integration",
+        "OrganizationAdmin",
+        "RepositoryRole",
+        "Team",
+        "DeployKey",
+        "EnterpriseOwner",
+    ] = Field(description="The type of actor that can bypass a ruleset")
+    bypass_mode: Missing[Literal["always", "pull_request"]] = Field(
         default=UNSET,
-        alias="MACOS",
-        description="Total minutes used on macOS runner machines.",
-    )
-    windows: Missing[int] = Field(
-        default=UNSET,
-        alias="WINDOWS",
-        description="Total minutes used on Windows runner machines.",
-    )
-    ubuntu_4_core: Missing[int] = Field(
-        default=UNSET,
-        description="Total minutes used on Ubuntu 4 core runner machines.",
-    )
-    ubuntu_8_core: Missing[int] = Field(
-        default=UNSET,
-        description="Total minutes used on Ubuntu 8 core runner machines.",
-    )
-    ubuntu_16_core: Missing[int] = Field(
-        default=UNSET,
-        description="Total minutes used on Ubuntu 16 core runner machines.",
-    )
-    ubuntu_32_core: Missing[int] = Field(
-        default=UNSET,
-        description="Total minutes used on Ubuntu 32 core runner machines.",
-    )
-    ubuntu_64_core: Missing[int] = Field(
-        default=UNSET,
-        description="Total minutes used on Ubuntu 64 core runner machines.",
-    )
-    windows_4_core: Missing[int] = Field(
-        default=UNSET,
-        description="Total minutes used on Windows 4 core runner machines.",
-    )
-    windows_8_core: Missing[int] = Field(
-        default=UNSET,
-        description="Total minutes used on Windows 8 core runner machines.",
-    )
-    windows_16_core: Missing[int] = Field(
-        default=UNSET,
-        description="Total minutes used on Windows 16 core runner machines.",
-    )
-    windows_32_core: Missing[int] = Field(
-        default=UNSET,
-        description="Total minutes used on Windows 32 core runner machines.",
-    )
-    windows_64_core: Missing[int] = Field(
-        default=UNSET,
-        description="Total minutes used on Windows 64 core runner machines.",
-    )
-    macos_12_core: Missing[int] = Field(
-        default=UNSET,
-        description="Total minutes used on macOS 12 core runner machines.",
-    )
-    total: Missing[int] = Field(
-        default=UNSET, description="Total minutes used on all runner machines."
+        description="When the specified actor can bypass the ruleset. `pull_request` means that an actor can only bypass rules on pull requests. `pull_request` is not applicable for the `DeployKey` actor type. Also, `pull_request` is only applicable to branch rulesets.",
     )
 
 
-model_rebuild(ActionsBillingUsage)
-model_rebuild(ActionsBillingUsagePropMinutesUsedBreakdown)
+model_rebuild(RepositoryRulesetBypassActor)
 
-__all__ = (
-    "ActionsBillingUsage",
-    "ActionsBillingUsagePropMinutesUsedBreakdown",
-)
+__all__ = ("RepositoryRulesetBypassActor",)

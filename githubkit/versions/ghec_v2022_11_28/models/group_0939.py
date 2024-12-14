@@ -9,13 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from pydantic import Field
+
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class OrgsOrgOutsideCollaboratorsUsernamePutResponse202(GitHubModel):
-    """OrgsOrgOutsideCollaboratorsUsernamePutResponse202"""
+from .group_0143 import MinimalRepository
 
 
-model_rebuild(OrgsOrgOutsideCollaboratorsUsernamePutResponse202)
+class OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200(GitHubModel):
+    """OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200"""
 
-__all__ = ("OrgsOrgOutsideCollaboratorsUsernamePutResponse202",)
+    total_count: int = Field()
+    repositories: list[MinimalRepository] = Field()
+
+
+model_rebuild(OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200)
+
+__all__ = ("OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200",)

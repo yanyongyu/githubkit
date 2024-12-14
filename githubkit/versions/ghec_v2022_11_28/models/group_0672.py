@@ -9,69 +9,177 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0002 import SimpleUser
-from .group_0430 import EnterpriseWebhooks
-from .group_0431 import SimpleInstallation
-from .group_0432 import OrganizationSimpleWebhooks
-from .group_0433 import RepositoryWebhooks
-from .group_0463 import WebhooksProjectCard
+from .group_0666 import WebhookRubygemsMetadata
 
 
-class WebhookProjectCardConverted(GitHubModel):
-    """project_card converted event"""
+class WebhookPackageUpdatedPropPackagePropPackageVersion(GitHubModel):
+    """WebhookPackageUpdatedPropPackagePropPackageVersion"""
 
-    action: Literal["converted"] = Field()
-    changes: WebhookProjectCardConvertedPropChanges = Field()
-    enterprise: Missing[EnterpriseWebhooks] = Field(
-        default=UNSET,
-        title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."',
+    author: Union[
+        WebhookPackageUpdatedPropPackagePropPackageVersionPropAuthor, None
+    ] = Field(title="User")
+    body: str = Field()
+    body_html: str = Field()
+    created_at: str = Field()
+    description: str = Field()
+    docker_metadata: Missing[
+        list[WebhookPackageUpdatedPropPackagePropPackageVersionPropDockerMetadataItems]
+    ] = Field(default=UNSET)
+    draft: Missing[bool] = Field(default=UNSET)
+    html_url: str = Field()
+    id: int = Field()
+    installation_command: str = Field()
+    manifest: Missing[str] = Field(default=UNSET)
+    metadata: list[
+        WebhookPackageUpdatedPropPackagePropPackageVersionPropMetadataItems
+    ] = Field()
+    name: str = Field()
+    package_files: list[
+        WebhookPackageUpdatedPropPackagePropPackageVersionPropPackageFilesItems
+    ] = Field()
+    package_url: Missing[str] = Field(default=UNSET)
+    prerelease: Missing[bool] = Field(default=UNSET)
+    release: Missing[WebhookPackageUpdatedPropPackagePropPackageVersionPropRelease] = (
+        Field(default=UNSET)
     )
-    installation: Missing[SimpleInstallation] = Field(
-        default=UNSET,
-        title="Simple Installation",
-        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
-    )
-    organization: Missing[OrganizationSimpleWebhooks] = Field(
-        default=UNSET,
-        title="Organization Simple",
-        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
-    )
-    project_card: WebhooksProjectCard = Field(title="Project Card")
-    repository: Missing[RepositoryWebhooks] = Field(
-        default=UNSET,
-        title="Repository",
-        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
-    )
-    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    rubygems_metadata: Missing[list[WebhookRubygemsMetadata]] = Field(default=UNSET)
+    source_url: Missing[str] = Field(default=UNSET)
+    summary: str = Field()
+    tag_name: Missing[str] = Field(default=UNSET)
+    target_commitish: str = Field()
+    target_oid: str = Field()
+    updated_at: str = Field()
+    version: str = Field()
 
 
-class WebhookProjectCardConvertedPropChanges(GitHubModel):
-    """WebhookProjectCardConvertedPropChanges"""
+class WebhookPackageUpdatedPropPackagePropPackageVersionPropAuthor(GitHubModel):
+    """User"""
 
-    note: WebhookProjectCardConvertedPropChangesPropNote = Field()
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
 
 
-class WebhookProjectCardConvertedPropChangesPropNote(GitHubModel):
-    """WebhookProjectCardConvertedPropChangesPropNote"""
+class WebhookPackageUpdatedPropPackagePropPackageVersionPropDockerMetadataItems(
+    GitHubModel
+):
+    """WebhookPackageUpdatedPropPackagePropPackageVersionPropDockerMetadataItems"""
 
-    from_: str = Field(alias="from")
+    tags: Missing[list[str]] = Field(default=UNSET)
 
 
-model_rebuild(WebhookProjectCardConverted)
-model_rebuild(WebhookProjectCardConvertedPropChanges)
-model_rebuild(WebhookProjectCardConvertedPropChangesPropNote)
+class WebhookPackageUpdatedPropPackagePropPackageVersionPropMetadataItems(
+    ExtraGitHubModel
+):
+    """WebhookPackageUpdatedPropPackagePropPackageVersionPropMetadataItems"""
+
+
+class WebhookPackageUpdatedPropPackagePropPackageVersionPropPackageFilesItems(
+    GitHubModel
+):
+    """WebhookPackageUpdatedPropPackagePropPackageVersionPropPackageFilesItems"""
+
+    content_type: str = Field()
+    created_at: str = Field()
+    download_url: str = Field()
+    id: int = Field()
+    md5: Union[str, None] = Field()
+    name: str = Field()
+    sha1: Union[str, None] = Field()
+    sha256: str = Field()
+    size: int = Field()
+    state: str = Field()
+    updated_at: str = Field()
+
+
+class WebhookPackageUpdatedPropPackagePropPackageVersionPropRelease(GitHubModel):
+    """WebhookPackageUpdatedPropPackagePropPackageVersionPropRelease"""
+
+    author: Union[
+        WebhookPackageUpdatedPropPackagePropPackageVersionPropReleasePropAuthor, None
+    ] = Field(title="User")
+    created_at: str = Field()
+    draft: bool = Field()
+    html_url: str = Field()
+    id: int = Field()
+    name: str = Field()
+    prerelease: bool = Field()
+    published_at: str = Field()
+    tag_name: str = Field()
+    target_commitish: str = Field()
+    url: str = Field()
+
+
+class WebhookPackageUpdatedPropPackagePropPackageVersionPropReleasePropAuthor(
+    GitHubModel
+):
+    """User"""
+
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(WebhookPackageUpdatedPropPackagePropPackageVersion)
+model_rebuild(WebhookPackageUpdatedPropPackagePropPackageVersionPropAuthor)
+model_rebuild(WebhookPackageUpdatedPropPackagePropPackageVersionPropDockerMetadataItems)
+model_rebuild(WebhookPackageUpdatedPropPackagePropPackageVersionPropMetadataItems)
+model_rebuild(WebhookPackageUpdatedPropPackagePropPackageVersionPropPackageFilesItems)
+model_rebuild(WebhookPackageUpdatedPropPackagePropPackageVersionPropRelease)
+model_rebuild(WebhookPackageUpdatedPropPackagePropPackageVersionPropReleasePropAuthor)
 
 __all__ = (
-    "WebhookProjectCardConverted",
-    "WebhookProjectCardConvertedPropChanges",
-    "WebhookProjectCardConvertedPropChangesPropNote",
+    "WebhookPackageUpdatedPropPackagePropPackageVersion",
+    "WebhookPackageUpdatedPropPackagePropPackageVersionPropAuthor",
+    "WebhookPackageUpdatedPropPackagePropPackageVersionPropDockerMetadataItems",
+    "WebhookPackageUpdatedPropPackagePropPackageVersionPropMetadataItems",
+    "WebhookPackageUpdatedPropPackagePropPackageVersionPropPackageFilesItems",
+    "WebhookPackageUpdatedPropPackagePropPackageVersionPropRelease",
+    "WebhookPackageUpdatedPropPackagePropPackageVersionPropReleasePropAuthor",
 )

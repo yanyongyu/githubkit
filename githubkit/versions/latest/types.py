@@ -566,6 +566,9 @@ if TYPE_CHECKING:
         CustomDeploymentRuleAppType as CustomDeploymentRuleAppType,
     )
     from githubkit.versions.v2022_11_28.types import (
+        CustomPropertySetPayloadType as CustomPropertySetPayloadType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         CustomPropertyType as CustomPropertyType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -698,9 +701,6 @@ if TYPE_CHECKING:
         EmojisGetResponse200Type as EmojisGetResponse200Type,
     )
     from githubkit.versions.v2022_11_28.types import EmptyObjectType as EmptyObjectType
-    from githubkit.versions.v2022_11_28.types import (
-        EnterprisesEnterpriseCopilotBillingSeatsGetResponse200Type as EnterprisesEnterpriseCopilotBillingSeatsGetResponse200Type,
-    )
     from githubkit.versions.v2022_11_28.types import (
         EnterprisesEnterpriseSecretScanningAlertsGetResponse503Type as EnterprisesEnterpriseSecretScanningAlertsGetResponse503Type,
     )
@@ -1424,9 +1424,6 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.types import (
         OrgsOrgProjectsPostBodyType as OrgsOrgProjectsPostBodyType,
-    )
-    from githubkit.versions.v2022_11_28.types import (
-        OrgsOrgPropertiesSchemaCustomPropertyNamePutBodyType as OrgsOrgPropertiesSchemaCustomPropertyNamePutBodyType,
     )
     from githubkit.versions.v2022_11_28.types import (
         OrgsOrgPropertiesSchemaPatchBodyType as OrgsOrgPropertiesSchemaPatchBodyType,
@@ -8836,6 +8833,9 @@ if TYPE_CHECKING:
         WebhookSecretScanningAlertValidatedType as WebhookSecretScanningAlertValidatedType,
     )
     from githubkit.versions.v2022_11_28.types import (
+        WebhookSecretScanningScanCompletedType as WebhookSecretScanningScanCompletedType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         WebhookSecurityAdvisoryPublishedType as WebhookSecurityAdvisoryPublishedType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -9797,28 +9797,6 @@ else:
             "SimpleClassroomAssignmentType",
             "SimpleClassroomType",
             "ClassroomAssignmentGradeType",
-            "OrganizationSimpleType",
-            "TeamSimpleType",
-            "TeamType",
-            "TeamPropPermissionsType",
-            "CopilotSeatDetailsType",
-            "EnterpriseTeamType",
-            "CopilotUsageMetricsDayType",
-            "CopilotDotcomChatType",
-            "CopilotDotcomChatPropModelsItemsType",
-            "CopilotIdeChatType",
-            "CopilotIdeChatPropEditorsItemsType",
-            "CopilotIdeChatPropEditorsItemsPropModelsItemsType",
-            "CopilotDotcomPullRequestsType",
-            "CopilotDotcomPullRequestsPropRepositoriesItemsType",
-            "CopilotDotcomPullRequestsPropRepositoriesItemsPropModelsItemsType",
-            "CopilotIdeCodeCompletionsType",
-            "CopilotIdeCodeCompletionsPropLanguagesItemsType",
-            "CopilotIdeCodeCompletionsPropEditorsItemsType",
-            "CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItemsType",
-            "CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItemsPropLanguagesItemsType",
-            "CopilotUsageMetricsType",
-            "CopilotUsageMetricsPropBreakdownItemsType",
             "DependabotAlertPackageType",
             "DependabotAlertSecurityVulnerabilityType",
             "DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionType",
@@ -9884,6 +9862,7 @@ else:
             "ThreadType",
             "ThreadPropSubjectType",
             "ThreadSubscriptionType",
+            "OrganizationSimpleType",
             "BillingUsageReportType",
             "BillingUsageReportPropUsageItemsItemsType",
             "OrganizationFullType",
@@ -9921,6 +9900,28 @@ else:
             "CodespacesPublicKeyType",
             "CopilotOrganizationDetailsType",
             "CopilotSeatBreakdownType",
+            "TeamSimpleType",
+            "TeamType",
+            "TeamPropPermissionsType",
+            "CopilotSeatDetailsType",
+            "EnterpriseTeamType",
+            "OrgsOrgCopilotBillingSeatsGetResponse200Type",
+            "CopilotUsageMetricsDayType",
+            "CopilotDotcomChatType",
+            "CopilotDotcomChatPropModelsItemsType",
+            "CopilotIdeChatType",
+            "CopilotIdeChatPropEditorsItemsType",
+            "CopilotIdeChatPropEditorsItemsPropModelsItemsType",
+            "CopilotDotcomPullRequestsType",
+            "CopilotDotcomPullRequestsPropRepositoriesItemsType",
+            "CopilotDotcomPullRequestsPropRepositoriesItemsPropModelsItemsType",
+            "CopilotIdeCodeCompletionsType",
+            "CopilotIdeCodeCompletionsPropLanguagesItemsType",
+            "CopilotIdeCodeCompletionsPropEditorsItemsType",
+            "CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItemsType",
+            "CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItemsPropLanguagesItemsType",
+            "CopilotUsageMetricsType",
+            "CopilotUsageMetricsPropBreakdownItemsType",
             "DependabotPublicKeyType",
             "PackageType",
             "OrganizationInvitationType",
@@ -9957,6 +9958,7 @@ else:
             "OrganizationProgrammaticAccessGrantPropPermissionsPropOtherType",
             "ProjectType",
             "CustomPropertyType",
+            "CustomPropertySetPayloadType",
             "CustomPropertyValueType",
             "OrgRepoCustomPropertyValuesType",
             "CodeOfConductSimpleType",
@@ -12458,6 +12460,7 @@ else:
             "WebhookSecretScanningAlertReopenedType",
             "WebhookSecretScanningAlertResolvedType",
             "WebhookSecretScanningAlertValidatedType",
+            "WebhookSecretScanningScanCompletedType",
             "WebhookSecurityAdvisoryPublishedType",
             "WebhookSecurityAdvisoryUpdatedType",
             "WebhookSecurityAdvisoryWithdrawnType",
@@ -12626,7 +12629,6 @@ else:
             "ApplicationsClientIdTokenPatchBodyType",
             "ApplicationsClientIdTokenScopedPostBodyType",
             "EmojisGetResponse200Type",
-            "EnterprisesEnterpriseCopilotBillingSeatsGetResponse200Type",
             "EnterprisesEnterpriseSecretScanningAlertsGetResponse503Type",
             "GistsPostBodyType",
             "GistsPostBodyPropFilesType",
@@ -12700,7 +12702,6 @@ else:
             "OrgsOrgCodespacesSecretsSecretNamePutBodyType",
             "OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200Type",
             "OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBodyType",
-            "OrgsOrgCopilotBillingSeatsGetResponse200Type",
             "OrgsOrgCopilotBillingSelectedTeamsPostBodyType",
             "OrgsOrgCopilotBillingSelectedTeamsPostResponse201Type",
             "OrgsOrgCopilotBillingSelectedTeamsDeleteBodyType",
@@ -12734,7 +12735,6 @@ else:
             "OrgsOrgPersonalAccessTokensPatIdPostBodyType",
             "OrgsOrgProjectsPostBodyType",
             "OrgsOrgPropertiesSchemaPatchBodyType",
-            "OrgsOrgPropertiesSchemaCustomPropertyNamePutBodyType",
             "OrgsOrgPropertiesValuesPatchBodyType",
             "OrgsOrgReposPostBodyType",
             "OrgsOrgReposPostBodyPropCustomPropertiesType",

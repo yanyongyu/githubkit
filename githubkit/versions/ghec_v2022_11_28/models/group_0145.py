@@ -9,6 +9,9 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,23 +19,21 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName(GitHubModel):
-    """RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName"""
+class ThreadSubscription(GitHubModel):
+    """Thread Subscription
 
-    include: Missing[list[str]] = Field(
-        default=UNSET,
-        description="Array of repository names or patterns to include. One of these patterns must match for the condition to pass. Also accepts `~ALL` to include all repositories.",
-    )
-    exclude: Missing[list[str]] = Field(
-        default=UNSET,
-        description="Array of repository names or patterns to exclude. The condition will not pass if any of these patterns match.",
-    )
-    protected: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether renaming of target repositories is prevented.",
-    )
+    Thread Subscription
+    """
+
+    subscribed: bool = Field()
+    ignored: bool = Field()
+    reason: Union[str, None] = Field()
+    created_at: Union[datetime, None] = Field()
+    url: str = Field()
+    thread_url: Missing[str] = Field(default=UNSET)
+    repository_url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName)
+model_rebuild(ThreadSubscription)
 
-__all__ = ("RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName",)
+__all__ = ("ThreadSubscription",)

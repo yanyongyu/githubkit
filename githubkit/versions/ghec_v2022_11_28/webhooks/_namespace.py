@@ -86,6 +86,7 @@ if TYPE_CHECKING:
     from .repository_vulnerability_alert import RepositoryVulnerabilityAlertEvent
     from .secret_scanning_alert import SecretScanningAlertEvent
     from .secret_scanning_alert_location import SecretScanningAlertLocationEvent
+    from .secret_scanning_scan import SecretScanningScanEvent
     from .security_advisory import SecurityAdvisoryEvent
     from .security_and_analysis import SecurityAndAnalysisEvent
     from .sponsorship import SponsorshipEvent
@@ -164,6 +165,7 @@ EventNameType: TypeAlias = Literal[
     "repository_vulnerability_alert",
     "secret_scanning_alert",
     "secret_scanning_alert_location",
+    "secret_scanning_scan",
     "security_advisory",
     "security_and_analysis",
     "sponsorship",
@@ -241,6 +243,7 @@ VALID_EVENT_NAMES: set[EventNameType] = {
     "repository_vulnerability_alert",
     "secret_scanning_alert",
     "secret_scanning_alert_location",
+    "secret_scanning_scan",
     "security_advisory",
     "security_and_analysis",
     "sponsorship",
@@ -567,6 +570,11 @@ class WebhookNamespace:
     def parse(
         name: Literal["secret_scanning_alert_location"], payload: Union[str, bytes]
     ) -> "SecretScanningAlertLocationEvent": ...
+    @overload
+    @staticmethod
+    def parse(
+        name: Literal["secret_scanning_scan"], payload: Union[str, bytes]
+    ) -> "SecretScanningScanEvent": ...
     @overload
     @staticmethod
     def parse(
@@ -967,6 +975,11 @@ class WebhookNamespace:
     def parse_obj(
         name: Literal["secret_scanning_alert_location"], payload: dict[str, Any]
     ) -> "SecretScanningAlertLocationEvent": ...
+    @overload
+    @staticmethod
+    def parse_obj(
+        name: Literal["secret_scanning_scan"], payload: dict[str, Any]
+    ) -> "SecretScanningScanEvent": ...
     @overload
     @staticmethod
     def parse_obj(

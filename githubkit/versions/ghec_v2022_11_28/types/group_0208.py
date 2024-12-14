@@ -9,14 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import TypedDict
 
-
-class ActionsWorkflowAccessToRepositoryType(TypedDict):
-    """ActionsWorkflowAccessToRepository"""
-
-    access_level: Literal["none", "user", "organization", "enterprise"]
+from .group_0207 import RateLimitType
+from .group_0209 import RateLimitOverviewPropResourcesType
 
 
-__all__ = ("ActionsWorkflowAccessToRepositoryType",)
+class RateLimitOverviewType(TypedDict):
+    """Rate Limit Overview
+
+    Rate Limit Overview
+    """
+
+    resources: RateLimitOverviewPropResourcesType
+    rate: RateLimitType
+
+
+__all__ = ("RateLimitOverviewType",)

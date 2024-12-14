@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
@@ -17,21 +17,29 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0167 import RepositoryRuleCommitMessagePatternPropParameters
+from .group_0002 import SimpleUser
 
 
-class RepositoryRuleCommitMessagePattern(GitHubModel):
-    """commit_message_pattern
+class OrganizationInvitation(GitHubModel):
+    """Organization Invitation
 
-    Parameters to be used for the commit_message_pattern rule
+    Organization Invitation
     """
 
-    type: Literal["commit_message_pattern"] = Field()
-    parameters: Missing[RepositoryRuleCommitMessagePatternPropParameters] = Field(
-        default=UNSET
-    )
+    id: int = Field()
+    login: Union[str, None] = Field()
+    email: Union[str, None] = Field()
+    role: str = Field()
+    created_at: str = Field()
+    failed_at: Missing[Union[str, None]] = Field(default=UNSET)
+    failed_reason: Missing[Union[str, None]] = Field(default=UNSET)
+    inviter: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    team_count: int = Field()
+    node_id: str = Field()
+    invitation_teams_url: str = Field()
+    invitation_source: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(RepositoryRuleCommitMessagePattern)
+model_rebuild(OrganizationInvitation)
 
-__all__ = ("RepositoryRuleCommitMessagePattern",)
+__all__ = ("OrganizationInvitation",)

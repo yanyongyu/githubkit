@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,22 +16,20 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class CodeScanningDefaultSetupOptions(GitHubModel):
-    """CodeScanningDefaultSetupOptions
+class CodespacesPublicKey(GitHubModel):
+    """CodespacesPublicKey
 
-    Feature options for code scanning default setup
+    The public key used for setting Codespaces secrets.
     """
 
-    runner_type: Missing[Literal["standard", "labeled", "not_set"]] = Field(
-        default=UNSET,
-        description="Whether to use labeled runners or standard GitHub runners.",
-    )
-    runner_label: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The label of the runner to use for code scanning default setup when runner_type is 'labeled'.",
-    )
+    key_id: str = Field(description="The identifier for the key.")
+    key: str = Field(description="The Base64 encoded public key.")
+    id: Missing[int] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    title: Missing[str] = Field(default=UNSET)
+    created_at: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(CodeScanningDefaultSetupOptions)
+model_rebuild(CodespacesPublicKey)
 
-__all__ = ("CodeScanningDefaultSetupOptions",)
+__all__ = ("CodespacesPublicKey",)

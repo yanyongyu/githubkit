@@ -12,15 +12,14 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class UserSocialAccountsPostBodyType(TypedDict):
-    """UserSocialAccountsPostBody
+class UserEmailsPostBodyOneof0Type(TypedDict):
+    """UserEmailsPostBodyOneof0
 
     Examples:
-        {'account_urls': ['https://www.linkedin.com/company/github/',
-    'https://twitter.com/github']}
+        {'emails': ['octocat@github.com', 'mona@github.com']}
     """
 
-    account_urls: list[str]
+    emails: list[str]
 
 
-__all__ = ("UserSocialAccountsPostBodyType",)
+__all__ = ("UserEmailsPostBodyOneof0Type",)

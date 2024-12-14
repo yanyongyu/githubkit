@@ -17,35 +17,22 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0051 import SimpleRepository
 
+class RepositoryRuleBranchNamePatternPropParameters(GitHubModel):
+    """RepositoryRuleBranchNamePatternPropParameters"""
 
-class CodeSecurityConfigurationRepositories(GitHubModel):
-    """CodeSecurityConfigurationRepositories
-
-    Repositories associated with a code security configuration and attachment status
-    """
-
-    status: Missing[
-        Literal[
-            "attached",
-            "attaching",
-            "detached",
-            "removed",
-            "enforced",
-            "failed",
-            "updating",
-            "removed_by_enterprise",
-        ]
-    ] = Field(
-        default=UNSET,
-        description="The attachment status of the code security configuration on the repository.",
+    name: Missing[str] = Field(
+        default=UNSET, description="How this rule will appear to users."
     )
-    repository: Missing[SimpleRepository] = Field(
-        default=UNSET, title="Simple Repository", description="A GitHub repository."
+    negate: Missing[bool] = Field(
+        default=UNSET, description="If true, the rule will fail if the pattern matches."
     )
+    operator: Literal["starts_with", "ends_with", "contains", "regex"] = Field(
+        description="The operator to use for matching."
+    )
+    pattern: str = Field(description="The pattern to match with.")
 
 
-model_rebuild(CodeSecurityConfigurationRepositories)
+model_rebuild(RepositoryRuleBranchNamePatternPropParameters)
 
-__all__ = ("CodeSecurityConfigurationRepositories",)
+__all__ = ("RepositoryRuleBranchNamePatternPropParameters",)

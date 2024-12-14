@@ -9,15 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import TypedDict
 
 
-class MetadataType(TypedDict):
-    """metadata
+class ContentSymlinkType(TypedDict):
+    """Symlink Content
 
-    User-defined metadata to store domain-specific information limited to 8 keys
-    with scalar values.
+    An object describing a symlink
     """
 
+    type: Literal["symlink"]
+    target: str
+    size: int
+    name: str
+    path: str
+    sha: str
+    url: str
+    git_url: Union[str, None]
+    html_url: Union[str, None]
+    download_url: Union[str, None]
+    links: ContentSymlinkPropLinksType
 
-__all__ = ("MetadataType",)
+
+class ContentSymlinkPropLinksType(TypedDict):
+    """ContentSymlinkPropLinks"""
+
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
+
+
+__all__ = (
+    "ContentSymlinkPropLinksType",
+    "ContentSymlinkType",
+)

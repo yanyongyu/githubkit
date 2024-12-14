@@ -9,20 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from datetime import datetime
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0169 import RepositoryRuleCommitAuthorEmailPatternPropParametersType
 
+class OrgHookType(TypedDict):
+    """Org Hook
 
-class RepositoryRuleCommitAuthorEmailPatternType(TypedDict):
-    """commit_author_email_pattern
-
-    Parameters to be used for the commit_author_email_pattern rule
+    Org Hook
     """
 
-    type: Literal["commit_author_email_pattern"]
-    parameters: NotRequired[RepositoryRuleCommitAuthorEmailPatternPropParametersType]
+    id: int
+    url: str
+    ping_url: str
+    deliveries_url: NotRequired[str]
+    name: str
+    events: list[str]
+    active: bool
+    config: OrgHookPropConfigType
+    updated_at: datetime
+    created_at: datetime
+    type: str
 
 
-__all__ = ("RepositoryRuleCommitAuthorEmailPatternType",)
+class OrgHookPropConfigType(TypedDict):
+    """OrgHookPropConfig"""
+
+    url: NotRequired[str]
+    insecure_ssl: NotRequired[str]
+    content_type: NotRequired[str]
+    secret: NotRequired[str]
+
+
+__all__ = (
+    "OrgHookPropConfigType",
+    "OrgHookType",
+)

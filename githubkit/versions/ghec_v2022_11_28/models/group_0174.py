@@ -9,29 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0175 import RepositoryRuleTagNamePatternPropParameters
 
 
-class RepositoryRuleTagNamePattern(GitHubModel):
-    """tag_name_pattern
+class InteractionLimitResponse(GitHubModel):
+    """Interaction Limits
 
-    Parameters to be used for the tag_name_pattern rule
+    Interaction limit settings.
     """
 
-    type: Literal["tag_name_pattern"] = Field()
-    parameters: Missing[RepositoryRuleTagNamePatternPropParameters] = Field(
-        default=UNSET
+    limit: Literal["existing_users", "contributors_only", "collaborators_only"] = Field(
+        description="The type of GitHub user that can comment, open issues, or create pull requests while the interaction limit is in effect."
     )
+    origin: str = Field()
+    expires_at: datetime = Field()
 
 
-model_rebuild(RepositoryRuleTagNamePattern)
+model_rebuild(InteractionLimitResponse)
 
-__all__ = ("RepositoryRuleTagNamePattern",)
+__all__ = ("InteractionLimitResponse",)

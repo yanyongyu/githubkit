@@ -9,33 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrganizationSimple(GitHubModel):
-    """Organization Simple
+class DependabotAlertPackage(GitHubModel):
+    """DependabotAlertPackage
 
-    A GitHub organization.
+    Details for the vulnerable package.
     """
 
-    login: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    url: str = Field()
-    repos_url: str = Field()
-    events_url: str = Field()
-    hooks_url: str = Field()
-    issues_url: str = Field()
-    members_url: str = Field()
-    public_members_url: str = Field()
-    avatar_url: str = Field()
-    description: Union[str, None] = Field()
+    ecosystem: str = Field(
+        description="The package's language or package management ecosystem."
+    )
+    name: str = Field(description="The unique package name within its ecosystem.")
 
 
-model_rebuild(OrganizationSimple)
+model_rebuild(DependabotAlertPackage)
 
-__all__ = ("OrganizationSimple",)
+__all__ = ("DependabotAlertPackage",)

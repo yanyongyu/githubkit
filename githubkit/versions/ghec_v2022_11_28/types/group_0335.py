@@ -9,14 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from datetime import datetime
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0002 import SimpleUserType
+from .group_0336 import TimelineCrossReferencedEventPropSourceType
 
 
-class LanguageType(TypedDict):
-    """Language
+class TimelineCrossReferencedEventType(TypedDict):
+    """Timeline Cross Referenced Event
 
-    Language
+    Timeline Cross Referenced Event
     """
 
+    event: Literal["cross-referenced"]
+    actor: NotRequired[SimpleUserType]
+    created_at: datetime
+    updated_at: datetime
+    source: TimelineCrossReferencedEventPropSourceType
 
-__all__ = ("LanguageType",)
+
+__all__ = ("TimelineCrossReferencedEventType",)

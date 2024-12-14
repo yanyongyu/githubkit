@@ -9,35 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0002 import SimpleUserType
+from .group_0085 import RepositoryRuleUpdatePropParametersType
 
 
-class GistCommitType(TypedDict):
-    """Gist Commit
+class RepositoryRuleUpdateType(TypedDict):
+    """update
 
-    Gist Commit
+    Only allow users with bypass permission to update matching refs.
     """
 
-    url: str
-    version: str
-    user: Union[None, SimpleUserType]
-    change_status: GistCommitPropChangeStatusType
-    committed_at: datetime
+    type: Literal["update"]
+    parameters: NotRequired[RepositoryRuleUpdatePropParametersType]
 
 
-class GistCommitPropChangeStatusType(TypedDict):
-    """GistCommitPropChangeStatus"""
-
-    total: NotRequired[int]
-    additions: NotRequired[int]
-    deletions: NotRequired[int]
-
-
-__all__ = (
-    "GistCommitPropChangeStatusType",
-    "GistCommitType",
-)
+__all__ = ("RepositoryRuleUpdateType",)

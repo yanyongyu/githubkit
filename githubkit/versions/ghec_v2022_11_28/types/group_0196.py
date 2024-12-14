@@ -9,24 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class ProjectColumnType(TypedDict):
-    """Project Column
+class GroupMappingType(TypedDict):
+    """GroupMapping
 
-    Project columns contain cards of work.
+    External Groups to be mapped to a team for membership
     """
 
-    url: str
-    project_url: str
-    cards_url: str
-    id: int
-    node_id: str
-    name: str
-    created_at: datetime
-    updated_at: datetime
+    groups: NotRequired[list[GroupMappingPropGroupsItemsType]]
 
 
-__all__ = ("ProjectColumnType",)
+class GroupMappingPropGroupsItemsType(TypedDict):
+    """GroupMappingPropGroupsItems"""
+
+    group_id: str
+    group_name: str
+    group_description: str
+    status: NotRequired[str]
+    synced_at: NotRequired[Union[str, None]]
+
+
+__all__ = (
+    "GroupMappingPropGroupsItemsType",
+    "GroupMappingType",
+)

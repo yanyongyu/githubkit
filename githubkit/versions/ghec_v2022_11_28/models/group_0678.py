@@ -9,61 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class WebhookProjectCardMovedPropProjectCardAllof1(GitHubModel):
-    """WebhookProjectCardMovedPropProjectCardAllof1"""
-
-    after_id: Union[int, None] = Field()
-    archived: Missing[bool] = Field(default=UNSET)
-    column_id: Missing[int] = Field(default=UNSET)
-    column_url: Missing[str] = Field(default=UNSET)
-    created_at: Missing[str] = Field(default=UNSET)
-    creator: Missing[
-        Union[WebhookProjectCardMovedPropProjectCardAllof1PropCreator, None]
-    ] = Field(default=UNSET)
-    id: Missing[int] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    note: Missing[Union[str, None]] = Field(default=UNSET)
-    project_url: Missing[str] = Field(default=UNSET)
-    updated_at: Missing[str] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
+from .group_0002 import SimpleUser
+from .group_0441 import OrganizationSimpleWebhooks
+from .group_0442 import RepositoryWebhooks
+from .group_0679 import WebhookPingPropHook
 
 
-class WebhookProjectCardMovedPropProjectCardAllof1PropCreator(GitHubModel):
-    """WebhookProjectCardMovedPropProjectCardAllof1PropCreator"""
+class WebhookPing(GitHubModel):
+    """WebhookPing"""
 
-    avatar_url: Missing[str] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: Missing[int] = Field(default=UNSET)
-    login: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[str] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
+    hook: Missing[WebhookPingPropHook] = Field(
+        default=UNSET, title="Webhook", description="The webhook that is being pinged"
+    )
+    hook_id: Missing[int] = Field(
+        default=UNSET, description="The ID of the webhook that triggered the ping."
+    )
+    organization: Missing[OrganizationSimpleWebhooks] = Field(
+        default=UNSET,
+        title="Organization Simple",
+        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
+    )
+    repository: Missing[RepositoryWebhooks] = Field(
+        default=UNSET,
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    )
+    sender: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
+    )
+    zen: Missing[str] = Field(default=UNSET, description="Random string of GitHub zen.")
 
 
-model_rebuild(WebhookProjectCardMovedPropProjectCardAllof1)
-model_rebuild(WebhookProjectCardMovedPropProjectCardAllof1PropCreator)
+model_rebuild(WebhookPing)
 
-__all__ = (
-    "WebhookProjectCardMovedPropProjectCardAllof1",
-    "WebhookProjectCardMovedPropProjectCardAllof1PropCreator",
-)
+__all__ = ("WebhookPing",)

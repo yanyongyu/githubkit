@@ -9,40 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
-from .group_0002 import SimpleUser
+from .group_0219 import SimpleCommit
 
 
-class ProjectsV2Item(GitHubModel):
-    """Projects v2 Item
+class MergeGroup(GitHubModel):
+    """Merge Group
 
-    An item belonging to a project
+    A group of pull requests that the merge queue has grouped together to be merged.
     """
 
-    id: float = Field()
-    node_id: Missing[str] = Field(default=UNSET)
-    project_node_id: Missing[str] = Field(default=UNSET)
-    content_node_id: str = Field()
-    content_type: Literal["Issue", "PullRequest", "DraftIssue"] = Field(
-        title="Projects v2 Item Content Type",
-        description="The type of content tracked in a project item",
+    head_sha: str = Field(description="The SHA of the merge group.")
+    head_ref: str = Field(description="The full ref of the merge group.")
+    base_sha: str = Field(description="The SHA of the merge group's parent commit.")
+    base_ref: str = Field(
+        description="The full ref of the branch the merge group will be merged into."
     )
-    creator: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
-    )
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    archived_at: Union[datetime, None] = Field()
+    head_commit: SimpleCommit = Field(title="Simple Commit", description="A commit.")
 
 
-model_rebuild(ProjectsV2Item)
+model_rebuild(MergeGroup)
 
-__all__ = ("ProjectsV2Item",)
+__all__ = ("MergeGroup",)

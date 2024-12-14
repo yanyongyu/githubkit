@@ -9,27 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class InteractionLimitResponse(GitHubModel):
-    """Interaction Limits
+class CombinedBillingUsage(GitHubModel):
+    """CombinedBillingUsage"""
 
-    Interaction limit settings.
-    """
-
-    limit: Literal["existing_users", "contributors_only", "collaborators_only"] = Field(
-        description="The type of GitHub user that can comment, open issues, or create pull requests while the interaction limit is in effect."
+    days_left_in_billing_cycle: int = Field(
+        description="Numbers of days left in billing cycle."
     )
-    origin: str = Field()
-    expires_at: datetime = Field()
+    estimated_paid_storage_for_month: int = Field(
+        description="Estimated storage space (GB) used in billing cycle."
+    )
+    estimated_storage_for_month: int = Field(
+        description="Estimated sum of free and paid storage space (GB) used in billing cycle."
+    )
 
 
-model_rebuild(InteractionLimitResponse)
+model_rebuild(CombinedBillingUsage)
 
-__all__ = ("InteractionLimitResponse",)
+__all__ = ("CombinedBillingUsage",)

@@ -9,145 +9,130 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from datetime import datetime
+from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 from .group_0002 import SimpleUser
+from .group_0008 import Integration
+from .group_0019 import Repository
+from .group_0034 import Milestone
+from .group_0035 import ReactionRollup
 
 
-class SimpleRepository(GitHubModel):
-    """Simple Repository
+class Issue(GitHubModel):
+    """Issue
 
-    A GitHub repository.
+    Issues are a great way to keep track of tasks, enhancements, and bugs for your
+    projects.
     """
 
-    id: int = Field(description="A unique identifier of the repository.")
-    node_id: str = Field(description="The GraphQL identifier of the repository.")
-    name: str = Field(description="The name of the repository.")
-    full_name: str = Field(
-        description="The full, globally unique, name of the repository."
+    id: int = Field()
+    node_id: str = Field()
+    url: str = Field(description="URL for the issue")
+    repository_url: str = Field()
+    labels_url: str = Field()
+    comments_url: str = Field()
+    events_url: str = Field()
+    html_url: str = Field()
+    number: int = Field(
+        description="Number uniquely identifying the issue within its repository"
     )
-    owner: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    private: bool = Field(description="Whether the repository is private.")
-    html_url: str = Field(description="The URL to view the repository on GitHub.com.")
-    description: Union[str, None] = Field(description="The repository description.")
-    fork: bool = Field(description="Whether the repository is a fork.")
-    url: str = Field(
-        description="The URL to get more information about the repository from the GitHub API."
+    state: str = Field(description="State of the issue; either 'open' or 'closed'")
+    state_reason: Missing[
+        Union[None, Literal["completed", "reopened", "not_planned"]]
+    ] = Field(default=UNSET, description="The reason for the current state")
+    title: str = Field(description="Title of the issue")
+    body: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Contents of the issue"
     )
-    archive_url: str = Field(
-        description="A template for the API URL to download the repository as an archive."
+    user: Union[None, SimpleUser] = Field()
+    labels: list[Union[str, IssuePropLabelsItemsOneof1]] = Field(
+        description="Labels to associate with this issue; pass one or more label names to replace the set of labels on this issue; send an empty array to clear all labels from the issue; note that the labels are silently dropped for users without push access to the repository"
     )
-    assignees_url: str = Field(
-        description="A template for the API URL to list the available assignees for issues in the repository."
+    assignee: Union[None, SimpleUser] = Field()
+    assignees: Missing[Union[list[SimpleUser], None]] = Field(default=UNSET)
+    milestone: Union[None, Milestone] = Field()
+    locked: bool = Field()
+    active_lock_reason: Missing[Union[str, None]] = Field(default=UNSET)
+    comments: int = Field()
+    pull_request: Missing[IssuePropPullRequest] = Field(default=UNSET)
+    closed_at: Union[datetime, None] = Field()
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+    draft: Missing[bool] = Field(default=UNSET)
+    closed_by: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
+    body_html: Missing[Union[str, None]] = Field(default=UNSET)
+    body_text: Missing[Union[str, None]] = Field(default=UNSET)
+    timeline_url: Missing[str] = Field(default=UNSET)
+    repository: Missing[Repository] = Field(
+        default=UNSET, title="Repository", description="A repository on GitHub."
     )
-    blobs_url: str = Field(
-        description="A template for the API URL to create or retrieve a raw Git blob in the repository."
+    performed_via_github_app: Missing[Union[None, Integration, None]] = Field(
+        default=UNSET
     )
-    branches_url: str = Field(
-        description="A template for the API URL to get information about branches in the repository."
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ] = Field(
+        title="author_association",
+        description="How the author is associated with the repository.",
     )
-    collaborators_url: str = Field(
-        description="A template for the API URL to get information about collaborators of the repository."
-    )
-    comments_url: str = Field(
-        description="A template for the API URL to get information about comments on the repository."
-    )
-    commits_url: str = Field(
-        description="A template for the API URL to get information about commits on the repository."
-    )
-    compare_url: str = Field(
-        description="A template for the API URL to compare two commits or refs."
-    )
-    contents_url: str = Field(
-        description="A template for the API URL to get the contents of the repository."
-    )
-    contributors_url: str = Field(
-        description="A template for the API URL to list the contributors to the repository."
-    )
-    deployments_url: str = Field(
-        description="The API URL to list the deployments of the repository."
-    )
-    downloads_url: str = Field(
-        description="The API URL to list the downloads on the repository."
-    )
-    events_url: str = Field(
-        description="The API URL to list the events of the repository."
-    )
-    forks_url: str = Field(
-        description="The API URL to list the forks of the repository."
-    )
-    git_commits_url: str = Field(
-        description="A template for the API URL to get information about Git commits of the repository."
-    )
-    git_refs_url: str = Field(
-        description="A template for the API URL to get information about Git refs of the repository."
-    )
-    git_tags_url: str = Field(
-        description="A template for the API URL to get information about Git tags of the repository."
-    )
-    issue_comment_url: str = Field(
-        description="A template for the API URL to get information about issue comments on the repository."
-    )
-    issue_events_url: str = Field(
-        description="A template for the API URL to get information about issue events on the repository."
-    )
-    issues_url: str = Field(
-        description="A template for the API URL to get information about issues on the repository."
-    )
-    keys_url: str = Field(
-        description="A template for the API URL to get information about deploy keys on the repository."
-    )
-    labels_url: str = Field(
-        description="A template for the API URL to get information about labels of the repository."
-    )
-    languages_url: str = Field(
-        description="The API URL to get information about the languages of the repository."
-    )
-    merges_url: str = Field(
-        description="The API URL to merge branches in the repository."
-    )
-    milestones_url: str = Field(
-        description="A template for the API URL to get information about milestones of the repository."
-    )
-    notifications_url: str = Field(
-        description="A template for the API URL to get information about notifications on the repository."
-    )
-    pulls_url: str = Field(
-        description="A template for the API URL to get information about pull requests on the repository."
-    )
-    releases_url: str = Field(
-        description="A template for the API URL to get information about releases on the repository."
-    )
-    stargazers_url: str = Field(
-        description="The API URL to list the stargazers on the repository."
-    )
-    statuses_url: str = Field(
-        description="A template for the API URL to get information about statuses of a commit."
-    )
-    subscribers_url: str = Field(
-        description="The API URL to list the subscribers on the repository."
-    )
-    subscription_url: str = Field(
-        description="The API URL to subscribe to notifications for this repository."
-    )
-    tags_url: str = Field(
-        description="The API URL to get information about tags on the repository."
-    )
-    teams_url: str = Field(
-        description="The API URL to list the teams on the repository."
-    )
-    trees_url: str = Field(
-        description="A template for the API URL to create or retrieve a raw Git tree of the repository."
-    )
-    hooks_url: str = Field(
-        description="The API URL to list the hooks on the repository."
+    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
+    sub_issues_summary: Missing[SubIssuesSummary] = Field(
+        default=UNSET, title="Sub-issues Summary"
     )
 
 
-model_rebuild(SimpleRepository)
+class SubIssuesSummary(GitHubModel):
+    """Sub-issues Summary"""
 
-__all__ = ("SimpleRepository",)
+    total: int = Field()
+    completed: int = Field()
+    percent_completed: int = Field()
+
+
+class IssuePropLabelsItemsOneof1(GitHubModel):
+    """IssuePropLabelsItemsOneof1"""
+
+    id: Missing[int] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    description: Missing[Union[str, None]] = Field(default=UNSET)
+    color: Missing[Union[str, None]] = Field(default=UNSET)
+    default: Missing[bool] = Field(default=UNSET)
+
+
+class IssuePropPullRequest(GitHubModel):
+    """IssuePropPullRequest"""
+
+    merged_at: Missing[Union[datetime, None]] = Field(default=UNSET)
+    diff_url: Union[str, None] = Field()
+    html_url: Union[str, None] = Field()
+    patch_url: Union[str, None] = Field()
+    url: Union[str, None] = Field()
+
+
+model_rebuild(Issue)
+model_rebuild(SubIssuesSummary)
+model_rebuild(IssuePropLabelsItemsOneof1)
+model_rebuild(IssuePropPullRequest)
+
+__all__ = (
+    "Issue",
+    "IssuePropLabelsItemsOneof1",
+    "IssuePropPullRequest",
+    "SubIssuesSummary",
+)

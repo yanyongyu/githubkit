@@ -9,64 +9,105 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
+from datetime import datetime
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 from .group_0002 import SimpleUserType
+from .group_0008 import IntegrationType
+from .group_0019 import RepositoryType
+from .group_0034 import MilestoneType
+from .group_0035 import ReactionRollupType
 
 
-class SimpleRepositoryType(TypedDict):
-    """Simple Repository
+class IssueType(TypedDict):
+    """Issue
 
-    A GitHub repository.
+    Issues are a great way to keep track of tasks, enhancements, and bugs for your
+    projects.
     """
 
     id: int
     node_id: str
-    name: str
-    full_name: str
-    owner: SimpleUserType
-    private: bool
-    html_url: str
-    description: Union[str, None]
-    fork: bool
     url: str
-    archive_url: str
-    assignees_url: str
-    blobs_url: str
-    branches_url: str
-    collaborators_url: str
-    comments_url: str
-    commits_url: str
-    compare_url: str
-    contents_url: str
-    contributors_url: str
-    deployments_url: str
-    downloads_url: str
-    events_url: str
-    forks_url: str
-    git_commits_url: str
-    git_refs_url: str
-    git_tags_url: str
-    issue_comment_url: str
-    issue_events_url: str
-    issues_url: str
-    keys_url: str
+    repository_url: str
     labels_url: str
-    languages_url: str
-    merges_url: str
-    milestones_url: str
-    notifications_url: str
-    pulls_url: str
-    releases_url: str
-    stargazers_url: str
-    statuses_url: str
-    subscribers_url: str
-    subscription_url: str
-    tags_url: str
-    teams_url: str
-    trees_url: str
-    hooks_url: str
+    comments_url: str
+    events_url: str
+    html_url: str
+    number: int
+    state: str
+    state_reason: NotRequired[
+        Union[None, Literal["completed", "reopened", "not_planned"]]
+    ]
+    title: str
+    body: NotRequired[Union[str, None]]
+    user: Union[None, SimpleUserType]
+    labels: list[Union[str, IssuePropLabelsItemsOneof1Type]]
+    assignee: Union[None, SimpleUserType]
+    assignees: NotRequired[Union[list[SimpleUserType], None]]
+    milestone: Union[None, MilestoneType]
+    locked: bool
+    active_lock_reason: NotRequired[Union[str, None]]
+    comments: int
+    pull_request: NotRequired[IssuePropPullRequestType]
+    closed_at: Union[datetime, None]
+    created_at: datetime
+    updated_at: datetime
+    draft: NotRequired[bool]
+    closed_by: NotRequired[Union[None, SimpleUserType]]
+    body_html: NotRequired[Union[str, None]]
+    body_text: NotRequired[Union[str, None]]
+    timeline_url: NotRequired[str]
+    repository: NotRequired[RepositoryType]
+    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    reactions: NotRequired[ReactionRollupType]
+    sub_issues_summary: NotRequired[SubIssuesSummaryType]
 
 
-__all__ = ("SimpleRepositoryType",)
+class SubIssuesSummaryType(TypedDict):
+    """Sub-issues Summary"""
+
+    total: int
+    completed: int
+    percent_completed: int
+
+
+class IssuePropLabelsItemsOneof1Type(TypedDict):
+    """IssuePropLabelsItemsOneof1"""
+
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    url: NotRequired[str]
+    name: NotRequired[str]
+    description: NotRequired[Union[str, None]]
+    color: NotRequired[Union[str, None]]
+    default: NotRequired[bool]
+
+
+class IssuePropPullRequestType(TypedDict):
+    """IssuePropPullRequest"""
+
+    merged_at: NotRequired[Union[datetime, None]]
+    diff_url: Union[str, None]
+    html_url: Union[str, None]
+    patch_url: Union[str, None]
+    url: Union[str, None]
+
+
+__all__ = (
+    "IssuePropLabelsItemsOneof1Type",
+    "IssuePropPullRequestType",
+    "IssueType",
+    "SubIssuesSummaryType",
+)

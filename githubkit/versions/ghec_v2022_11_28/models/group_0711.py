@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from datetime import date
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,108 +19,95 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0002 import SimpleUser
-from .group_0430 import EnterpriseWebhooks
-from .group_0431 import SimpleInstallation
-from .group_0432 import OrganizationSimpleWebhooks
-from .group_0433 import RepositoryWebhooks
-from .group_0470 import PullRequestWebhook
+from .group_0440 import SimpleInstallation
+from .group_0441 import OrganizationSimpleWebhooks
+from .group_0478 import ProjectsV2StatusUpdate
 
 
-class WebhookPullRequestEdited(GitHubModel):
-    """pull_request edited event"""
+class WebhookProjectsV2StatusUpdateEdited(GitHubModel):
+    """Projects v2 Status Update Edited Event"""
 
     action: Literal["edited"] = Field()
-    changes: WebhookPullRequestEditedPropChanges = Field(
-        description="The changes to the comment if the action was `edited`."
-    )
-    enterprise: Missing[EnterpriseWebhooks] = Field(
-        default=UNSET,
-        title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."',
+    changes: Missing[WebhookProjectsV2StatusUpdateEditedPropChanges] = Field(
+        default=UNSET
     )
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    number: int = Field(description="The pull request number.")
-    organization: Missing[OrganizationSimpleWebhooks] = Field(
-        default=UNSET,
+    organization: OrganizationSimpleWebhooks = Field(
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    pull_request: PullRequestWebhook = Field()
-    repository: RepositoryWebhooks = Field(
-        title="Repository",
-        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    projects_v2_status_update: ProjectsV2StatusUpdate = Field(
+        title="Projects v2 Status Update",
+        description="An status update belonging to a project",
     )
-    sender: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
+    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+
+
+class WebhookProjectsV2StatusUpdateEditedPropChanges(GitHubModel):
+    """WebhookProjectsV2StatusUpdateEditedPropChanges"""
+
+    body: Missing[WebhookProjectsV2StatusUpdateEditedPropChangesPropBody] = Field(
+        default=UNSET
     )
-
-
-class WebhookPullRequestEditedPropChanges(GitHubModel):
-    """WebhookPullRequestEditedPropChanges
-
-    The changes to the comment if the action was `edited`.
-    """
-
-    base: Missing[WebhookPullRequestEditedPropChangesPropBase] = Field(default=UNSET)
-    body: Missing[WebhookPullRequestEditedPropChangesPropBody] = Field(default=UNSET)
-    title: Missing[WebhookPullRequestEditedPropChangesPropTitle] = Field(default=UNSET)
-
-
-class WebhookPullRequestEditedPropChangesPropBody(GitHubModel):
-    """WebhookPullRequestEditedPropChangesPropBody"""
-
-    from_: str = Field(
-        alias="from",
-        description="The previous version of the body if the action was `edited`.",
+    status: Missing[WebhookProjectsV2StatusUpdateEditedPropChangesPropStatus] = Field(
+        default=UNSET
     )
-
-
-class WebhookPullRequestEditedPropChangesPropTitle(GitHubModel):
-    """WebhookPullRequestEditedPropChangesPropTitle"""
-
-    from_: str = Field(
-        alias="from",
-        description="The previous version of the title if the action was `edited`.",
+    start_date: Missing[WebhookProjectsV2StatusUpdateEditedPropChangesPropStartDate] = (
+        Field(default=UNSET)
     )
+    target_date: Missing[
+        WebhookProjectsV2StatusUpdateEditedPropChangesPropTargetDate
+    ] = Field(default=UNSET)
 
 
-class WebhookPullRequestEditedPropChangesPropBase(GitHubModel):
-    """WebhookPullRequestEditedPropChangesPropBase"""
+class WebhookProjectsV2StatusUpdateEditedPropChangesPropBody(GitHubModel):
+    """WebhookProjectsV2StatusUpdateEditedPropChangesPropBody"""
 
-    ref: WebhookPullRequestEditedPropChangesPropBasePropRef = Field()
-    sha: WebhookPullRequestEditedPropChangesPropBasePropSha = Field()
-
-
-class WebhookPullRequestEditedPropChangesPropBasePropRef(GitHubModel):
-    """WebhookPullRequestEditedPropChangesPropBasePropRef"""
-
-    from_: str = Field(alias="from")
+    from_: Missing[Union[str, None]] = Field(default=UNSET, alias="from")
+    to: Missing[Union[str, None]] = Field(default=UNSET)
 
 
-class WebhookPullRequestEditedPropChangesPropBasePropSha(GitHubModel):
-    """WebhookPullRequestEditedPropChangesPropBasePropSha"""
+class WebhookProjectsV2StatusUpdateEditedPropChangesPropStatus(GitHubModel):
+    """WebhookProjectsV2StatusUpdateEditedPropChangesPropStatus"""
 
-    from_: str = Field(alias="from")
+    from_: Missing[
+        Union[None, Literal["INACTIVE", "ON_TRACK", "AT_RISK", "OFF_TRACK", "COMPLETE"]]
+    ] = Field(default=UNSET, alias="from")
+    to: Missing[
+        Union[None, Literal["INACTIVE", "ON_TRACK", "AT_RISK", "OFF_TRACK", "COMPLETE"]]
+    ] = Field(default=UNSET)
 
 
-model_rebuild(WebhookPullRequestEdited)
-model_rebuild(WebhookPullRequestEditedPropChanges)
-model_rebuild(WebhookPullRequestEditedPropChangesPropBody)
-model_rebuild(WebhookPullRequestEditedPropChangesPropTitle)
-model_rebuild(WebhookPullRequestEditedPropChangesPropBase)
-model_rebuild(WebhookPullRequestEditedPropChangesPropBasePropRef)
-model_rebuild(WebhookPullRequestEditedPropChangesPropBasePropSha)
+class WebhookProjectsV2StatusUpdateEditedPropChangesPropStartDate(GitHubModel):
+    """WebhookProjectsV2StatusUpdateEditedPropChangesPropStartDate"""
+
+    from_: Missing[Union[date, None]] = Field(default=UNSET, alias="from")
+    to: Missing[Union[date, None]] = Field(default=UNSET)
+
+
+class WebhookProjectsV2StatusUpdateEditedPropChangesPropTargetDate(GitHubModel):
+    """WebhookProjectsV2StatusUpdateEditedPropChangesPropTargetDate"""
+
+    from_: Missing[Union[date, None]] = Field(default=UNSET, alias="from")
+    to: Missing[Union[date, None]] = Field(default=UNSET)
+
+
+model_rebuild(WebhookProjectsV2StatusUpdateEdited)
+model_rebuild(WebhookProjectsV2StatusUpdateEditedPropChanges)
+model_rebuild(WebhookProjectsV2StatusUpdateEditedPropChangesPropBody)
+model_rebuild(WebhookProjectsV2StatusUpdateEditedPropChangesPropStatus)
+model_rebuild(WebhookProjectsV2StatusUpdateEditedPropChangesPropStartDate)
+model_rebuild(WebhookProjectsV2StatusUpdateEditedPropChangesPropTargetDate)
 
 __all__ = (
-    "WebhookPullRequestEdited",
-    "WebhookPullRequestEditedPropChanges",
-    "WebhookPullRequestEditedPropChangesPropBase",
-    "WebhookPullRequestEditedPropChangesPropBasePropRef",
-    "WebhookPullRequestEditedPropChangesPropBasePropSha",
-    "WebhookPullRequestEditedPropChangesPropBody",
-    "WebhookPullRequestEditedPropChangesPropTitle",
+    "WebhookProjectsV2StatusUpdateEdited",
+    "WebhookProjectsV2StatusUpdateEditedPropChanges",
+    "WebhookProjectsV2StatusUpdateEditedPropChangesPropBody",
+    "WebhookProjectsV2StatusUpdateEditedPropChangesPropStartDate",
+    "WebhookProjectsV2StatusUpdateEditedPropChangesPropStatus",
+    "WebhookProjectsV2StatusUpdateEditedPropChangesPropTargetDate",
 )

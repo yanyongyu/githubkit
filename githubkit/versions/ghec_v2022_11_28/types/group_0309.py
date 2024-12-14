@@ -10,113 +10,80 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0002 import SimpleUserType
-from .group_0008 import IntegrationType
-from .group_0056 import TeamType
-from .group_0076 import IssueType
 
+class GitCommitType(TypedDict):
+    """Git Commit
 
-class IssueEventType(TypedDict):
-    """Issue Event
-
-    Issue Event
+    Low-level Git commit operations within a repository
     """
 
-    id: int
+    sha: str
     node_id: str
     url: str
-    actor: Union[None, SimpleUserType]
-    event: str
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: datetime
-    issue: NotRequired[Union[None, IssueType]]
-    label: NotRequired[IssueEventLabelType]
-    assignee: NotRequired[Union[None, SimpleUserType]]
-    assigner: NotRequired[Union[None, SimpleUserType]]
-    review_requester: NotRequired[Union[None, SimpleUserType]]
-    requested_reviewer: NotRequired[Union[None, SimpleUserType]]
-    requested_team: NotRequired[TeamType]
-    dismissed_review: NotRequired[IssueEventDismissedReviewType]
-    milestone: NotRequired[IssueEventMilestoneType]
-    project_card: NotRequired[IssueEventProjectCardType]
-    rename: NotRequired[IssueEventRenameType]
-    author_association: NotRequired[
-        Literal[
-            "COLLABORATOR",
-            "CONTRIBUTOR",
-            "FIRST_TIMER",
-            "FIRST_TIME_CONTRIBUTOR",
-            "MANNEQUIN",
-            "MEMBER",
-            "NONE",
-            "OWNER",
-        ]
-    ]
-    lock_reason: NotRequired[Union[str, None]]
-    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
+    author: GitCommitPropAuthorType
+    committer: GitCommitPropCommitterType
+    message: str
+    tree: GitCommitPropTreeType
+    parents: list[GitCommitPropParentsItemsType]
+    verification: GitCommitPropVerificationType
+    html_url: str
 
 
-class IssueEventLabelType(TypedDict):
-    """Issue Event Label
+class GitCommitPropAuthorType(TypedDict):
+    """GitCommitPropAuthor
 
-    Issue Event Label
+    Identifying information for the git-user
     """
 
-    name: Union[str, None]
-    color: Union[str, None]
+    date: datetime
+    email: str
+    name: str
 
 
-class IssueEventDismissedReviewType(TypedDict):
-    """Issue Event Dismissed Review"""
+class GitCommitPropCommitterType(TypedDict):
+    """GitCommitPropCommitter
 
-    state: str
-    review_id: int
-    dismissal_message: Union[str, None]
-    dismissal_commit_id: NotRequired[Union[str, None]]
-
-
-class IssueEventMilestoneType(TypedDict):
-    """Issue Event Milestone
-
-    Issue Event Milestone
+    Identifying information for the git-user
     """
 
-    title: str
+    date: datetime
+    email: str
+    name: str
 
 
-class IssueEventProjectCardType(TypedDict):
-    """Issue Event Project Card
+class GitCommitPropTreeType(TypedDict):
+    """GitCommitPropTree"""
 
-    Issue Event Project Card
-    """
-
+    sha: str
     url: str
-    id: int
-    project_url: str
-    project_id: int
-    column_name: str
-    previous_column_name: NotRequired[str]
 
 
-class IssueEventRenameType(TypedDict):
-    """Issue Event Rename
+class GitCommitPropParentsItemsType(TypedDict):
+    """GitCommitPropParentsItems"""
 
-    Issue Event Rename
-    """
+    sha: str
+    url: str
+    html_url: str
 
-    from_: str
-    to: str
+
+class GitCommitPropVerificationType(TypedDict):
+    """GitCommitPropVerification"""
+
+    verified: bool
+    reason: str
+    signature: Union[str, None]
+    payload: Union[str, None]
+    verified_at: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "IssueEventDismissedReviewType",
-    "IssueEventLabelType",
-    "IssueEventMilestoneType",
-    "IssueEventProjectCardType",
-    "IssueEventRenameType",
-    "IssueEventType",
+    "GitCommitPropAuthorType",
+    "GitCommitPropCommitterType",
+    "GitCommitPropParentsItemsType",
+    "GitCommitPropTreeType",
+    "GitCommitPropVerificationType",
+    "GitCommitType",
 )

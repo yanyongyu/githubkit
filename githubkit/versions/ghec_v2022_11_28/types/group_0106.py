@@ -12,18 +12,14 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class CodespacesPublicKeyType(TypedDict):
-    """CodespacesPublicKey
+class RepositoryRuleParamsRestrictedCommitsType(TypedDict):
+    """RestrictedCommits
 
-    The public key used for setting Codespaces secrets.
+    Restricted commit
     """
 
-    key_id: str
-    key: str
-    id: NotRequired[int]
-    url: NotRequired[str]
-    title: NotRequired[str]
-    created_at: NotRequired[str]
+    oid: str
+    reason: NotRequired[str]
 
 
-__all__ = ("CodespacesPublicKeyType",)
+__all__ = ("RepositoryRuleParamsRestrictedCommitsType",)

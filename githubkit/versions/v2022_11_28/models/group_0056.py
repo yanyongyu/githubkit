@@ -16,70 +16,48 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ApiOverview(GitHubModel):
-    """Api Overview
+class BillingUsageReport(GitHubModel):
+    """BillingUsageReport"""
 
-    Api Overview
-    """
-
-    verifiable_password_authentication: bool = Field()
-    ssh_key_fingerprints: Missing[ApiOverviewPropSshKeyFingerprints] = Field(
-        default=UNSET
-    )
-    ssh_keys: Missing[list[str]] = Field(default=UNSET)
-    hooks: Missing[list[str]] = Field(default=UNSET)
-    github_enterprise_importer: Missing[list[str]] = Field(default=UNSET)
-    web: Missing[list[str]] = Field(default=UNSET)
-    api: Missing[list[str]] = Field(default=UNSET)
-    git: Missing[list[str]] = Field(default=UNSET)
-    packages: Missing[list[str]] = Field(default=UNSET)
-    pages: Missing[list[str]] = Field(default=UNSET)
-    importer: Missing[list[str]] = Field(default=UNSET)
-    actions: Missing[list[str]] = Field(default=UNSET)
-    actions_macos: Missing[list[str]] = Field(default=UNSET)
-    codespaces: Missing[list[str]] = Field(default=UNSET)
-    dependabot: Missing[list[str]] = Field(default=UNSET)
-    copilot: Missing[list[str]] = Field(default=UNSET)
-    domains: Missing[ApiOverviewPropDomains] = Field(default=UNSET)
-
-
-class ApiOverviewPropSshKeyFingerprints(GitHubModel):
-    """ApiOverviewPropSshKeyFingerprints"""
-
-    sha256_rsa: Missing[str] = Field(default=UNSET, alias="SHA256_RSA")
-    sha256_dsa: Missing[str] = Field(default=UNSET, alias="SHA256_DSA")
-    sha256_ecdsa: Missing[str] = Field(default=UNSET, alias="SHA256_ECDSA")
-    sha256_ed25519: Missing[str] = Field(default=UNSET, alias="SHA256_ED25519")
-
-
-class ApiOverviewPropDomains(GitHubModel):
-    """ApiOverviewPropDomains"""
-
-    website: Missing[list[str]] = Field(default=UNSET)
-    codespaces: Missing[list[str]] = Field(default=UNSET)
-    copilot: Missing[list[str]] = Field(default=UNSET)
-    packages: Missing[list[str]] = Field(default=UNSET)
-    actions: Missing[list[str]] = Field(default=UNSET)
-    artifact_attestations: Missing[ApiOverviewPropDomainsPropArtifactAttestations] = (
-        Field(default=UNSET)
+    usage_items: Missing[list[BillingUsageReportPropUsageItemsItems]] = Field(
+        default=UNSET, alias="usageItems"
     )
 
 
-class ApiOverviewPropDomainsPropArtifactAttestations(GitHubModel):
-    """ApiOverviewPropDomainsPropArtifactAttestations"""
+class BillingUsageReportPropUsageItemsItems(GitHubModel):
+    """BillingUsageReportPropUsageItemsItems"""
 
-    trust_domain: Missing[str] = Field(default=UNSET)
-    services: Missing[list[str]] = Field(default=UNSET)
+    date: str = Field(description="Date of the usage line item.")
+    product: str = Field(description="Product name.")
+    sku: str = Field(description="SKU name.")
+    quantity: int = Field(description="Quantity of the usage line item.")
+    unit_type: str = Field(
+        alias="unitType", description="Unit type of the usage line item."
+    )
+    price_per_unit: float = Field(
+        alias="pricePerUnit", description="Price per unit of the usage line item."
+    )
+    gross_amount: float = Field(
+        alias="grossAmount", description="Gross amount of the usage line item."
+    )
+    discount_amount: float = Field(
+        alias="discountAmount", description="Discount amount of the usage line item."
+    )
+    net_amount: float = Field(
+        alias="netAmount", description="Net amount of the usage line item."
+    )
+    organization_name: str = Field(
+        alias="organizationName", description="Name of the organization."
+    )
+    repository_name: Missing[str] = Field(
+        default=UNSET, alias="repositoryName", description="Name of the repository."
+    )
 
 
-model_rebuild(ApiOverview)
-model_rebuild(ApiOverviewPropSshKeyFingerprints)
-model_rebuild(ApiOverviewPropDomains)
-model_rebuild(ApiOverviewPropDomainsPropArtifactAttestations)
+model_rebuild(BillingUsageReport)
+model_rebuild(BillingUsageReportPropUsageItemsItems)
 
 __all__ = (
-    "ApiOverview",
-    "ApiOverviewPropDomains",
-    "ApiOverviewPropDomainsPropArtifactAttestations",
-    "ApiOverviewPropSshKeyFingerprints",
+    "BillingUsageReport",
+    "BillingUsageReportPropUsageItemsItems",
 )

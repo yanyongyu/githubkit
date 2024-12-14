@@ -9,24 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0095 import RepositoryRuleRequiredStatusChecksPropParametersType
 
-class ThreadSubscriptionType(TypedDict):
-    """Thread Subscription
 
-    Thread Subscription
+class RepositoryRuleRequiredStatusChecksType(TypedDict):
+    """required_status_checks
+
+    Choose which status checks must pass before the ref is updated. When enabled,
+    commits must first be pushed to another ref where the checks pass.
     """
 
-    subscribed: bool
-    ignored: bool
-    reason: Union[str, None]
-    created_at: Union[datetime, None]
-    url: str
-    thread_url: NotRequired[str]
-    repository_url: NotRequired[str]
+    type: Literal["required_status_checks"]
+    parameters: NotRequired[RepositoryRuleRequiredStatusChecksPropParametersType]
 
 
-__all__ = ("ThreadSubscriptionType",)
+__all__ = ("RepositoryRuleRequiredStatusChecksType",)

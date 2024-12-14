@@ -9,56 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Any, Union
+from typing import Union
 
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0002 import SimpleUser
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class BaseGist(GitHubModel):
-    """Base Gist
+class License(GitHubModel):
+    """License
 
-    Base Gist
+    License
     """
 
-    url: str = Field()
-    forks_url: str = Field()
-    commits_url: str = Field()
-    id: str = Field()
+    key: str = Field()
+    name: str = Field()
+    spdx_id: Union[str, None] = Field()
+    url: Union[str, None] = Field()
     node_id: str = Field()
-    git_pull_url: str = Field()
-    git_push_url: str = Field()
     html_url: str = Field()
-    files: BaseGistPropFiles = Field()
-    public: bool = Field()
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    description: Union[str, None] = Field()
-    comments: int = Field()
-    user: Union[None, SimpleUser] = Field()
-    comments_url: str = Field()
-    owner: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
-    )
-    truncated: Missing[bool] = Field(default=UNSET)
-    forks: Missing[list[Any]] = Field(default=UNSET)
-    history: Missing[list[Any]] = Field(default=UNSET)
+    description: str = Field()
+    implementation: str = Field()
+    permissions: list[str] = Field()
+    conditions: list[str] = Field()
+    limitations: list[str] = Field()
+    body: str = Field()
+    featured: bool = Field()
 
 
-class BaseGistPropFiles(ExtraGitHubModel):
-    """BaseGistPropFiles"""
+model_rebuild(License)
 
-
-model_rebuild(BaseGist)
-model_rebuild(BaseGistPropFiles)
-
-__all__ = (
-    "BaseGist",
-    "BaseGistPropFiles",
-)
+__all__ = ("License",)

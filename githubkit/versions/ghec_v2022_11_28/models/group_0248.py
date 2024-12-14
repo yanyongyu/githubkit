@@ -18,61 +18,74 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0002 import SimpleUser
-from .group_0051 import SimpleRepository
-from .group_0249 import CodeScanningVariantAnalysisPropScannedRepositoriesItems
-from .group_0250 import CodeScanningVariantAnalysisPropSkippedRepositories
+from .group_0008 import Integration
+from .group_0143 import MinimalRepository
+from .group_0218 import PullRequestMinimal
+from .group_0219 import SimpleCommit
 
 
-class CodeScanningVariantAnalysis(GitHubModel):
-    """Variant Analysis
+class CheckSuite(GitHubModel):
+    """CheckSuite
 
-    A run of a CodeQL query against one or more repositories.
+    A suite of checks performed on the code of a given code change
     """
 
-    id: int = Field(description="The ID of the variant analysis.")
-    controller_repo: SimpleRepository = Field(
-        title="Simple Repository", description="A GitHub repository."
+    id: int = Field()
+    node_id: str = Field()
+    head_branch: Union[str, None] = Field()
+    head_sha: str = Field(
+        description="The SHA of the head commit that is being checked."
     )
-    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    query_language: Literal[
-        "cpp", "csharp", "go", "java", "javascript", "python", "ruby", "swift"
-    ] = Field(description="The language targeted by the CodeQL query")
-    query_pack_url: str = Field(description="The download url for the query pack.")
-    created_at: Missing[datetime] = Field(
-        default=UNSET,
-        description="The date and time at which the variant analysis was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.",
-    )
-    updated_at: Missing[datetime] = Field(
-        default=UNSET,
-        description="The date and time at which the variant analysis was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.",
-    )
-    completed_at: Missing[Union[datetime, None]] = Field(
-        default=UNSET,
-        description="The date and time at which the variant analysis was completed, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ. Will be null if the variant analysis has not yet completed or this information is not available.",
-    )
-    status: Literal["in_progress", "succeeded", "failed", "cancelled"] = Field()
-    actions_workflow_run_id: Missing[int] = Field(
-        default=UNSET,
-        description="The GitHub Actions workflow run used to execute this variant analysis. This is only available if the workflow run has started.",
-    )
-    failure_reason: Missing[
-        Literal["no_repos_queried", "actions_workflow_run_failed", "internal_error"]
+    status: Union[
+        None,
+        Literal[
+            "queued", "in_progress", "completed", "waiting", "requested", "pending"
+        ],
     ] = Field(
-        default=UNSET,
-        description="The reason for a failure of the variant analysis. This is only available if the variant analysis has failed.",
+        description="The phase of the lifecycle that the check suite is currently in. Statuses of waiting, requested, and pending are reserved for GitHub Actions check suites."
     )
-    scanned_repositories: Missing[
-        list[CodeScanningVariantAnalysisPropScannedRepositoriesItems]
-    ] = Field(default=UNSET)
-    skipped_repositories: Missing[
-        CodeScanningVariantAnalysisPropSkippedRepositories
-    ] = Field(
-        default=UNSET,
-        description="Information about repositories that were skipped from processing. This information is only available to the user that initiated the variant analysis.",
+    conclusion: Union[
+        None,
+        Literal[
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "skipped",
+            "timed_out",
+            "action_required",
+            "startup_failure",
+            "stale",
+        ],
+    ] = Field()
+    url: Union[str, None] = Field()
+    before: Union[str, None] = Field()
+    after: Union[str, None] = Field()
+    pull_requests: Union[list[PullRequestMinimal], None] = Field()
+    app: Union[None, Integration, None] = Field()
+    repository: MinimalRepository = Field(
+        title="Minimal Repository", description="Minimal Repository"
     )
+    created_at: Union[datetime, None] = Field()
+    updated_at: Union[datetime, None] = Field()
+    head_commit: SimpleCommit = Field(title="Simple Commit", description="A commit.")
+    latest_check_runs_count: int = Field()
+    check_runs_url: str = Field()
+    rerequestable: Missing[bool] = Field(default=UNSET)
+    runs_rerequestable: Missing[bool] = Field(default=UNSET)
 
 
-model_rebuild(CodeScanningVariantAnalysis)
+class ReposOwnerRepoCommitsRefCheckSuitesGetResponse200(GitHubModel):
+    """ReposOwnerRepoCommitsRefCheckSuitesGetResponse200"""
 
-__all__ = ("CodeScanningVariantAnalysis",)
+    total_count: int = Field()
+    check_suites: list[CheckSuite] = Field()
+
+
+model_rebuild(CheckSuite)
+model_rebuild(ReposOwnerRepoCommitsRefCheckSuitesGetResponse200)
+
+__all__ = (
+    "CheckSuite",
+    "ReposOwnerRepoCommitsRefCheckSuitesGetResponse200",
+)

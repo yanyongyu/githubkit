@@ -17,161 +17,134 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0224 import BranchRestrictionPolicy
-from .group_0234 import ProtectedBranchPropRequiredPullRequestReviews
 
+class BranchRestrictionPolicy(GitHubModel):
+    """Branch Restriction Policy
 
-class ProtectedBranch(GitHubModel):
-    """Protected Branch
-
-    Branch protections protect branches
+    Branch Restriction Policy
     """
 
     url: str = Field()
-    required_status_checks: Missing[StatusCheckPolicy] = Field(
-        default=UNSET, title="Status Check Policy", description="Status Check Policy"
-    )
-    required_pull_request_reviews: Missing[
-        ProtectedBranchPropRequiredPullRequestReviews
-    ] = Field(default=UNSET)
-    required_signatures: Missing[ProtectedBranchPropRequiredSignatures] = Field(
+    users_url: str = Field()
+    teams_url: str = Field()
+    apps_url: str = Field()
+    users: list[BranchRestrictionPolicyPropUsersItems] = Field()
+    teams: list[BranchRestrictionPolicyPropTeamsItems] = Field()
+    apps: list[BranchRestrictionPolicyPropAppsItems] = Field()
+
+
+class BranchRestrictionPolicyPropUsersItems(GitHubModel):
+    """BranchRestrictionPolicyPropUsersItems"""
+
+    login: Missing[str] = Field(default=UNSET)
+    id: Missing[int] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    avatar_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    type: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
+
+
+class BranchRestrictionPolicyPropTeamsItems(GitHubModel):
+    """BranchRestrictionPolicyPropTeamsItems"""
+
+    id: Missing[int] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    slug: Missing[str] = Field(default=UNSET)
+    description: Missing[Union[str, None]] = Field(default=UNSET)
+    privacy: Missing[str] = Field(default=UNSET)
+    notification_setting: Missing[str] = Field(default=UNSET)
+    permission: Missing[str] = Field(default=UNSET)
+    members_url: Missing[str] = Field(default=UNSET)
+    repositories_url: Missing[str] = Field(default=UNSET)
+    parent: Missing[Union[str, None]] = Field(default=UNSET)
+
+
+class BranchRestrictionPolicyPropAppsItems(GitHubModel):
+    """BranchRestrictionPolicyPropAppsItems"""
+
+    id: Missing[int] = Field(default=UNSET)
+    slug: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    owner: Missing[BranchRestrictionPolicyPropAppsItemsPropOwner] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    client_id: Missing[str] = Field(default=UNSET)
+    description: Missing[str] = Field(default=UNSET)
+    external_url: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    created_at: Missing[str] = Field(default=UNSET)
+    updated_at: Missing[str] = Field(default=UNSET)
+    permissions: Missing[BranchRestrictionPolicyPropAppsItemsPropPermissions] = Field(
         default=UNSET
     )
-    enforce_admins: Missing[ProtectedBranchPropEnforceAdmins] = Field(default=UNSET)
-    required_linear_history: Missing[ProtectedBranchPropRequiredLinearHistory] = Field(
-        default=UNSET
-    )
-    allow_force_pushes: Missing[ProtectedBranchPropAllowForcePushes] = Field(
-        default=UNSET
-    )
-    allow_deletions: Missing[ProtectedBranchPropAllowDeletions] = Field(default=UNSET)
-    restrictions: Missing[BranchRestrictionPolicy] = Field(
-        default=UNSET,
-        title="Branch Restriction Policy",
-        description="Branch Restriction Policy",
-    )
-    required_conversation_resolution: Missing[
-        ProtectedBranchPropRequiredConversationResolution
-    ] = Field(default=UNSET)
-    block_creations: Missing[ProtectedBranchPropBlockCreations] = Field(default=UNSET)
-    lock_branch: Missing[ProtectedBranchPropLockBranch] = Field(
-        default=UNSET,
-        description="Whether to set the branch as read-only. If this is true, users will not be able to push to the branch.",
-    )
-    allow_fork_syncing: Missing[ProtectedBranchPropAllowForkSyncing] = Field(
-        default=UNSET,
-        description="Whether users can pull changes from upstream when the branch is locked. Set to `true` to allow fork syncing. Set to `false` to prevent fork syncing.",
-    )
+    events: Missing[list[str]] = Field(default=UNSET)
 
 
-class ProtectedBranchPropRequiredSignatures(GitHubModel):
-    """ProtectedBranchPropRequiredSignatures"""
+class BranchRestrictionPolicyPropAppsItemsPropOwner(GitHubModel):
+    """BranchRestrictionPolicyPropAppsItemsPropOwner"""
 
-    url: str = Field()
-    enabled: bool = Field()
-
-
-class ProtectedBranchPropEnforceAdmins(GitHubModel):
-    """ProtectedBranchPropEnforceAdmins"""
-
-    url: str = Field()
-    enabled: bool = Field()
-
-
-class ProtectedBranchPropRequiredLinearHistory(GitHubModel):
-    """ProtectedBranchPropRequiredLinearHistory"""
-
-    enabled: bool = Field()
-
-
-class ProtectedBranchPropAllowForcePushes(GitHubModel):
-    """ProtectedBranchPropAllowForcePushes"""
-
-    enabled: bool = Field()
-
-
-class ProtectedBranchPropAllowDeletions(GitHubModel):
-    """ProtectedBranchPropAllowDeletions"""
-
-    enabled: bool = Field()
+    login: Missing[str] = Field(default=UNSET)
+    id: Missing[int] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    hooks_url: Missing[str] = Field(default=UNSET)
+    issues_url: Missing[str] = Field(default=UNSET)
+    members_url: Missing[str] = Field(default=UNSET)
+    public_members_url: Missing[str] = Field(default=UNSET)
+    avatar_url: Missing[str] = Field(default=UNSET)
+    description: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    type: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
 
 
-class ProtectedBranchPropRequiredConversationResolution(GitHubModel):
-    """ProtectedBranchPropRequiredConversationResolution"""
+class BranchRestrictionPolicyPropAppsItemsPropPermissions(GitHubModel):
+    """BranchRestrictionPolicyPropAppsItemsPropPermissions"""
 
-    enabled: Missing[bool] = Field(default=UNSET)
-
-
-class ProtectedBranchPropBlockCreations(GitHubModel):
-    """ProtectedBranchPropBlockCreations"""
-
-    enabled: bool = Field()
+    metadata: Missing[str] = Field(default=UNSET)
+    contents: Missing[str] = Field(default=UNSET)
+    issues: Missing[str] = Field(default=UNSET)
+    single_file: Missing[str] = Field(default=UNSET)
 
 
-class ProtectedBranchPropLockBranch(GitHubModel):
-    """ProtectedBranchPropLockBranch
-
-    Whether to set the branch as read-only. If this is true, users will not be able
-    to push to the branch.
-    """
-
-    enabled: Missing[bool] = Field(default=UNSET)
-
-
-class ProtectedBranchPropAllowForkSyncing(GitHubModel):
-    """ProtectedBranchPropAllowForkSyncing
-
-    Whether users can pull changes from upstream when the branch is locked. Set to
-    `true` to allow fork syncing. Set to `false` to prevent fork syncing.
-    """
-
-    enabled: Missing[bool] = Field(default=UNSET)
-
-
-class StatusCheckPolicy(GitHubModel):
-    """Status Check Policy
-
-    Status Check Policy
-    """
-
-    url: str = Field()
-    strict: bool = Field()
-    contexts: list[str] = Field()
-    checks: list[StatusCheckPolicyPropChecksItems] = Field()
-    contexts_url: str = Field()
-
-
-class StatusCheckPolicyPropChecksItems(GitHubModel):
-    """StatusCheckPolicyPropChecksItems"""
-
-    context: str = Field()
-    app_id: Union[int, None] = Field()
-
-
-model_rebuild(ProtectedBranch)
-model_rebuild(ProtectedBranchPropRequiredSignatures)
-model_rebuild(ProtectedBranchPropEnforceAdmins)
-model_rebuild(ProtectedBranchPropRequiredLinearHistory)
-model_rebuild(ProtectedBranchPropAllowForcePushes)
-model_rebuild(ProtectedBranchPropAllowDeletions)
-model_rebuild(ProtectedBranchPropRequiredConversationResolution)
-model_rebuild(ProtectedBranchPropBlockCreations)
-model_rebuild(ProtectedBranchPropLockBranch)
-model_rebuild(ProtectedBranchPropAllowForkSyncing)
-model_rebuild(StatusCheckPolicy)
-model_rebuild(StatusCheckPolicyPropChecksItems)
+model_rebuild(BranchRestrictionPolicy)
+model_rebuild(BranchRestrictionPolicyPropUsersItems)
+model_rebuild(BranchRestrictionPolicyPropTeamsItems)
+model_rebuild(BranchRestrictionPolicyPropAppsItems)
+model_rebuild(BranchRestrictionPolicyPropAppsItemsPropOwner)
+model_rebuild(BranchRestrictionPolicyPropAppsItemsPropPermissions)
 
 __all__ = (
-    "ProtectedBranch",
-    "ProtectedBranchPropAllowDeletions",
-    "ProtectedBranchPropAllowForcePushes",
-    "ProtectedBranchPropAllowForkSyncing",
-    "ProtectedBranchPropBlockCreations",
-    "ProtectedBranchPropEnforceAdmins",
-    "ProtectedBranchPropLockBranch",
-    "ProtectedBranchPropRequiredConversationResolution",
-    "ProtectedBranchPropRequiredLinearHistory",
-    "ProtectedBranchPropRequiredSignatures",
-    "StatusCheckPolicy",
-    "StatusCheckPolicyPropChecksItems",
+    "BranchRestrictionPolicy",
+    "BranchRestrictionPolicyPropAppsItems",
+    "BranchRestrictionPolicyPropAppsItemsPropOwner",
+    "BranchRestrictionPolicyPropAppsItemsPropPermissions",
+    "BranchRestrictionPolicyPropTeamsItems",
+    "BranchRestrictionPolicyPropUsersItems",
 )

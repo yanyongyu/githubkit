@@ -158,6 +158,12 @@ if TYPE_CHECKING:
         DeploymentProtectionRuleType,
         DeploymentStatusType,
         DeploymentType,
+        EnterpriseRulesetConditionsOneof0Type,
+        EnterpriseRulesetConditionsOneof1Type,
+        EnterpriseRulesetConditionsOneof2Type,
+        EnterpriseRulesetConditionsOneof3Type,
+        EnterprisesEnterpriseRulesetsPostBodyType,
+        EnterprisesEnterpriseRulesetsRulesetIdPutBodyType,
         EnvironmentType,
         FileCommitType,
         FullRepositoryType,
@@ -345,6 +351,510 @@ class ReposClient:
         raise RuntimeError(
             "GitHub client has already been collected. "
             "Do not use this client after the client has been collected."
+        )
+
+    @overload
+    def create_enterprise_ruleset(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[dict[str, str]] = None,
+        data: EnterprisesEnterpriseRulesetsPostBodyType,
+    ) -> Response[RepositoryRuleset, RepositoryRulesetType]: ...
+
+    @overload
+    def create_enterprise_ruleset(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[dict[str, str]] = None,
+        name: str,
+        target: Missing[Literal["branch", "tag", "push", "repository"]] = UNSET,
+        enforcement: Literal["disabled", "active", "evaluate"],
+        bypass_actors: Missing[list[RepositoryRulesetBypassActorType]] = UNSET,
+        conditions: Missing[
+            Union[
+                EnterpriseRulesetConditionsOneof0Type,
+                EnterpriseRulesetConditionsOneof1Type,
+                EnterpriseRulesetConditionsOneof2Type,
+                EnterpriseRulesetConditionsOneof3Type,
+            ]
+        ] = UNSET,
+        rules: Missing[
+            list[
+                Union[
+                    RepositoryRuleCreationType,
+                    RepositoryRuleUpdateType,
+                    RepositoryRuleDeletionType,
+                    RepositoryRuleRequiredLinearHistoryType,
+                    RepositoryRuleMergeQueueType,
+                    RepositoryRuleRequiredDeploymentsType,
+                    RepositoryRuleRequiredSignaturesType,
+                    RepositoryRulePullRequestType,
+                    RepositoryRuleRequiredStatusChecksType,
+                    RepositoryRuleNonFastForwardType,
+                    RepositoryRuleCommitMessagePatternType,
+                    RepositoryRuleCommitAuthorEmailPatternType,
+                    RepositoryRuleCommitterEmailPatternType,
+                    RepositoryRuleBranchNamePatternType,
+                    RepositoryRuleTagNamePatternType,
+                    RepositoryRuleOneof15Type,
+                    RepositoryRuleOneof16Type,
+                    RepositoryRuleOneof17Type,
+                    RepositoryRuleOneof18Type,
+                    RepositoryRuleWorkflowsType,
+                    RepositoryRuleCodeScanningType,
+                ]
+            ]
+        ] = UNSET,
+    ) -> Response[RepositoryRuleset, RepositoryRulesetType]: ...
+
+    def create_enterprise_ruleset(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[dict[str, str]] = None,
+        data: Missing[EnterprisesEnterpriseRulesetsPostBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[RepositoryRuleset, RepositoryRulesetType]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/rules#create-an-enterprise-repository-ruleset"""
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseRulesetsPostBody,
+            RepositoryRuleset,
+        )
+
+        url = f"/enterprises/{enterprise}/rulesets"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(EnterprisesEnterpriseRulesetsPostBody, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=RepositoryRuleset,
+            error_models={
+                "404": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    @overload
+    async def async_create_enterprise_ruleset(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[dict[str, str]] = None,
+        data: EnterprisesEnterpriseRulesetsPostBodyType,
+    ) -> Response[RepositoryRuleset, RepositoryRulesetType]: ...
+
+    @overload
+    async def async_create_enterprise_ruleset(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[dict[str, str]] = None,
+        name: str,
+        target: Missing[Literal["branch", "tag", "push", "repository"]] = UNSET,
+        enforcement: Literal["disabled", "active", "evaluate"],
+        bypass_actors: Missing[list[RepositoryRulesetBypassActorType]] = UNSET,
+        conditions: Missing[
+            Union[
+                EnterpriseRulesetConditionsOneof0Type,
+                EnterpriseRulesetConditionsOneof1Type,
+                EnterpriseRulesetConditionsOneof2Type,
+                EnterpriseRulesetConditionsOneof3Type,
+            ]
+        ] = UNSET,
+        rules: Missing[
+            list[
+                Union[
+                    RepositoryRuleCreationType,
+                    RepositoryRuleUpdateType,
+                    RepositoryRuleDeletionType,
+                    RepositoryRuleRequiredLinearHistoryType,
+                    RepositoryRuleMergeQueueType,
+                    RepositoryRuleRequiredDeploymentsType,
+                    RepositoryRuleRequiredSignaturesType,
+                    RepositoryRulePullRequestType,
+                    RepositoryRuleRequiredStatusChecksType,
+                    RepositoryRuleNonFastForwardType,
+                    RepositoryRuleCommitMessagePatternType,
+                    RepositoryRuleCommitAuthorEmailPatternType,
+                    RepositoryRuleCommitterEmailPatternType,
+                    RepositoryRuleBranchNamePatternType,
+                    RepositoryRuleTagNamePatternType,
+                    RepositoryRuleOneof15Type,
+                    RepositoryRuleOneof16Type,
+                    RepositoryRuleOneof17Type,
+                    RepositoryRuleOneof18Type,
+                    RepositoryRuleWorkflowsType,
+                    RepositoryRuleCodeScanningType,
+                ]
+            ]
+        ] = UNSET,
+    ) -> Response[RepositoryRuleset, RepositoryRulesetType]: ...
+
+    async def async_create_enterprise_ruleset(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[dict[str, str]] = None,
+        data: Missing[EnterprisesEnterpriseRulesetsPostBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[RepositoryRuleset, RepositoryRulesetType]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/rules#create-an-enterprise-repository-ruleset"""
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseRulesetsPostBody,
+            RepositoryRuleset,
+        )
+
+        url = f"/enterprises/{enterprise}/rulesets"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(EnterprisesEnterpriseRulesetsPostBody, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=RepositoryRuleset,
+            error_models={
+                "404": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    def get_enterprise_ruleset(
+        self,
+        enterprise: str,
+        ruleset_id: int,
+        *,
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[RepositoryRuleset, RepositoryRulesetType]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/rules#get-an-enterprise-repository-ruleset"""
+
+        from ..models import BasicError, RepositoryRuleset
+
+        url = f"/enterprises/{enterprise}/rulesets/{ruleset_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=RepositoryRuleset,
+            error_models={
+                "404": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    async def async_get_enterprise_ruleset(
+        self,
+        enterprise: str,
+        ruleset_id: int,
+        *,
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[RepositoryRuleset, RepositoryRulesetType]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/rules#get-an-enterprise-repository-ruleset"""
+
+        from ..models import BasicError, RepositoryRuleset
+
+        url = f"/enterprises/{enterprise}/rulesets/{ruleset_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=RepositoryRuleset,
+            error_models={
+                "404": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    @overload
+    def update_enterprise_ruleset(
+        self,
+        enterprise: str,
+        ruleset_id: int,
+        *,
+        headers: Optional[dict[str, str]] = None,
+        data: Missing[EnterprisesEnterpriseRulesetsRulesetIdPutBodyType] = UNSET,
+    ) -> Response[RepositoryRuleset, RepositoryRulesetType]: ...
+
+    @overload
+    def update_enterprise_ruleset(
+        self,
+        enterprise: str,
+        ruleset_id: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[dict[str, str]] = None,
+        name: Missing[str] = UNSET,
+        target: Missing[Literal["branch", "tag", "push", "repository"]] = UNSET,
+        enforcement: Missing[Literal["disabled", "active", "evaluate"]] = UNSET,
+        bypass_actors: Missing[list[RepositoryRulesetBypassActorType]] = UNSET,
+        conditions: Missing[
+            Union[
+                EnterpriseRulesetConditionsOneof0Type,
+                EnterpriseRulesetConditionsOneof1Type,
+                EnterpriseRulesetConditionsOneof2Type,
+                EnterpriseRulesetConditionsOneof3Type,
+            ]
+        ] = UNSET,
+        rules: Missing[
+            list[
+                Union[
+                    RepositoryRuleCreationType,
+                    RepositoryRuleUpdateType,
+                    RepositoryRuleDeletionType,
+                    RepositoryRuleRequiredLinearHistoryType,
+                    RepositoryRuleMergeQueueType,
+                    RepositoryRuleRequiredDeploymentsType,
+                    RepositoryRuleRequiredSignaturesType,
+                    RepositoryRulePullRequestType,
+                    RepositoryRuleRequiredStatusChecksType,
+                    RepositoryRuleNonFastForwardType,
+                    RepositoryRuleCommitMessagePatternType,
+                    RepositoryRuleCommitAuthorEmailPatternType,
+                    RepositoryRuleCommitterEmailPatternType,
+                    RepositoryRuleBranchNamePatternType,
+                    RepositoryRuleTagNamePatternType,
+                    RepositoryRuleOneof15Type,
+                    RepositoryRuleOneof16Type,
+                    RepositoryRuleOneof17Type,
+                    RepositoryRuleOneof18Type,
+                    RepositoryRuleWorkflowsType,
+                    RepositoryRuleCodeScanningType,
+                ]
+            ]
+        ] = UNSET,
+    ) -> Response[RepositoryRuleset, RepositoryRulesetType]: ...
+
+    def update_enterprise_ruleset(
+        self,
+        enterprise: str,
+        ruleset_id: int,
+        *,
+        headers: Optional[dict[str, str]] = None,
+        data: Missing[EnterprisesEnterpriseRulesetsRulesetIdPutBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[RepositoryRuleset, RepositoryRulesetType]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/rules#update-an-enterprise-repository-ruleset"""
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseRulesetsRulesetIdPutBody,
+            RepositoryRuleset,
+        )
+
+        url = f"/enterprises/{enterprise}/rulesets/{ruleset_id}"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseRulesetsRulesetIdPutBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=RepositoryRuleset,
+            error_models={
+                "404": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    @overload
+    async def async_update_enterprise_ruleset(
+        self,
+        enterprise: str,
+        ruleset_id: int,
+        *,
+        headers: Optional[dict[str, str]] = None,
+        data: Missing[EnterprisesEnterpriseRulesetsRulesetIdPutBodyType] = UNSET,
+    ) -> Response[RepositoryRuleset, RepositoryRulesetType]: ...
+
+    @overload
+    async def async_update_enterprise_ruleset(
+        self,
+        enterprise: str,
+        ruleset_id: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[dict[str, str]] = None,
+        name: Missing[str] = UNSET,
+        target: Missing[Literal["branch", "tag", "push", "repository"]] = UNSET,
+        enforcement: Missing[Literal["disabled", "active", "evaluate"]] = UNSET,
+        bypass_actors: Missing[list[RepositoryRulesetBypassActorType]] = UNSET,
+        conditions: Missing[
+            Union[
+                EnterpriseRulesetConditionsOneof0Type,
+                EnterpriseRulesetConditionsOneof1Type,
+                EnterpriseRulesetConditionsOneof2Type,
+                EnterpriseRulesetConditionsOneof3Type,
+            ]
+        ] = UNSET,
+        rules: Missing[
+            list[
+                Union[
+                    RepositoryRuleCreationType,
+                    RepositoryRuleUpdateType,
+                    RepositoryRuleDeletionType,
+                    RepositoryRuleRequiredLinearHistoryType,
+                    RepositoryRuleMergeQueueType,
+                    RepositoryRuleRequiredDeploymentsType,
+                    RepositoryRuleRequiredSignaturesType,
+                    RepositoryRulePullRequestType,
+                    RepositoryRuleRequiredStatusChecksType,
+                    RepositoryRuleNonFastForwardType,
+                    RepositoryRuleCommitMessagePatternType,
+                    RepositoryRuleCommitAuthorEmailPatternType,
+                    RepositoryRuleCommitterEmailPatternType,
+                    RepositoryRuleBranchNamePatternType,
+                    RepositoryRuleTagNamePatternType,
+                    RepositoryRuleOneof15Type,
+                    RepositoryRuleOneof16Type,
+                    RepositoryRuleOneof17Type,
+                    RepositoryRuleOneof18Type,
+                    RepositoryRuleWorkflowsType,
+                    RepositoryRuleCodeScanningType,
+                ]
+            ]
+        ] = UNSET,
+    ) -> Response[RepositoryRuleset, RepositoryRulesetType]: ...
+
+    async def async_update_enterprise_ruleset(
+        self,
+        enterprise: str,
+        ruleset_id: int,
+        *,
+        headers: Optional[dict[str, str]] = None,
+        data: Missing[EnterprisesEnterpriseRulesetsRulesetIdPutBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[RepositoryRuleset, RepositoryRulesetType]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/rules#update-an-enterprise-repository-ruleset"""
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseRulesetsRulesetIdPutBody,
+            RepositoryRuleset,
+        )
+
+        url = f"/enterprises/{enterprise}/rulesets/{ruleset_id}"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseRulesetsRulesetIdPutBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=RepositoryRuleset,
+            error_models={
+                "404": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    def delete_enterprise_ruleset(
+        self,
+        enterprise: str,
+        ruleset_id: int,
+        *,
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/rules#delete-an-enterprise-repository-ruleset"""
+
+        from ..models import BasicError
+
+        url = f"/enterprises/{enterprise}/rulesets/{ruleset_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            error_models={
+                "404": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    async def async_delete_enterprise_ruleset(
+        self,
+        enterprise: str,
+        ruleset_id: int,
+        *,
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/rules#delete-an-enterprise-repository-ruleset"""
+
+        from ..models import BasicError
+
+        url = f"/enterprises/{enterprise}/rulesets/{ruleset_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            error_models={
+                "404": BasicError,
+                "500": BasicError,
+            },
         )
 
     def list_for_org(
@@ -690,7 +1200,7 @@ class ReposClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         name: str,
-        target: Missing[Literal["branch", "tag", "push"]] = UNSET,
+        target: Missing[Literal["branch", "tag", "push", "repository"]] = UNSET,
         enforcement: Literal["disabled", "active", "evaluate"],
         bypass_actors: Missing[list[RepositoryRulesetBypassActorType]] = UNSET,
         conditions: Missing[
@@ -783,7 +1293,7 @@ class ReposClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         name: str,
-        target: Missing[Literal["branch", "tag", "push"]] = UNSET,
+        target: Missing[Literal["branch", "tag", "push", "repository"]] = UNSET,
         enforcement: Literal["disabled", "active", "evaluate"],
         bypass_actors: Missing[list[RepositoryRulesetBypassActorType]] = UNSET,
         conditions: Missing[
@@ -1068,7 +1578,7 @@ class ReposClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         name: Missing[str] = UNSET,
-        target: Missing[Literal["branch", "tag", "push"]] = UNSET,
+        target: Missing[Literal["branch", "tag", "push", "repository"]] = UNSET,
         enforcement: Missing[Literal["disabled", "active", "evaluate"]] = UNSET,
         bypass_actors: Missing[list[RepositoryRulesetBypassActorType]] = UNSET,
         conditions: Missing[
@@ -1168,7 +1678,7 @@ class ReposClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         name: Missing[str] = UNSET,
-        target: Missing[Literal["branch", "tag", "push"]] = UNSET,
+        target: Missing[Literal["branch", "tag", "push", "repository"]] = UNSET,
         enforcement: Missing[Literal["disabled", "active", "evaluate"]] = UNSET,
         bypass_actors: Missing[list[RepositoryRulesetBypassActorType]] = UNSET,
         conditions: Missing[

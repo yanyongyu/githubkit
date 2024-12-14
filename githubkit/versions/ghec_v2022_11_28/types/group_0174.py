@@ -9,20 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Literal
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0175 import RepositoryRuleTagNamePatternPropParametersType
+from typing_extensions import TypedDict
 
 
-class RepositoryRuleTagNamePatternType(TypedDict):
-    """tag_name_pattern
+class InteractionLimitResponseType(TypedDict):
+    """Interaction Limits
 
-    Parameters to be used for the tag_name_pattern rule
+    Interaction limit settings.
     """
 
-    type: Literal["tag_name_pattern"]
-    parameters: NotRequired[RepositoryRuleTagNamePatternPropParametersType]
+    limit: Literal["existing_users", "contributors_only", "collaborators_only"]
+    origin: str
+    expires_at: datetime
 
 
-__all__ = ("RepositoryRuleTagNamePatternType",)
+__all__ = ("InteractionLimitResponseType",)

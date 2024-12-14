@@ -12,40 +12,19 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0223 import (
-    ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances,
-    ProtectedBranchPullRequestReviewPropDismissalRestrictions,
-)
 
 
-class ProtectedBranchPullRequestReview(GitHubModel):
-    """Protected Branch Pull Request Review
+class ReviewCustomGatesCommentRequired(GitHubModel):
+    """ReviewCustomGatesCommentRequired"""
 
-    Protected Branch Pull Request Review
-    """
-
-    url: Missing[str] = Field(default=UNSET)
-    dismissal_restrictions: Missing[
-        ProtectedBranchPullRequestReviewPropDismissalRestrictions
-    ] = Field(default=UNSET)
-    bypass_pull_request_allowances: Missing[
-        ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances
-    ] = Field(
-        default=UNSET,
-        description="Allow specific users, teams, or apps to bypass pull request requirements.",
+    environment_name: str = Field(
+        description="The name of the environment to approve or reject."
     )
-    dismiss_stale_reviews: bool = Field()
-    require_code_owner_reviews: bool = Field()
-    required_approving_review_count: Missing[int] = Field(le=6.0, default=UNSET)
-    require_last_push_approval: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether the most recent push must be approved by someone other than the person who pushed it.",
+    comment: str = Field(
+        description="Comment associated with the pending deployment protection rule. **Required when state is not provided.**"
     )
 
 
-model_rebuild(ProtectedBranchPullRequestReview)
+model_rebuild(ReviewCustomGatesCommentRequired)
 
-__all__ = ("ProtectedBranchPullRequestReview",)
+__all__ = ("ReviewCustomGatesCommentRequired",)

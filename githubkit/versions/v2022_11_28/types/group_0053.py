@@ -9,29 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import TypedDict
 
+from .group_0052 import MinimalRepositoryType
 
-class MarketplaceListingPlanType(TypedDict):
-    """Marketplace Listing Plan
 
-    Marketplace Listing Plan
+class ThreadType(TypedDict):
+    """Thread
+
+    Thread
     """
 
+    id: str
+    repository: MinimalRepositoryType
+    subject: ThreadPropSubjectType
+    reason: str
+    unread: bool
+    updated_at: str
+    last_read_at: Union[str, None]
     url: str
-    accounts_url: str
-    id: int
-    number: int
-    name: str
-    description: str
-    monthly_price_in_cents: int
-    yearly_price_in_cents: int
-    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
-    has_free_trial: bool
-    unit_name: Union[str, None]
-    state: str
-    bullets: list[str]
+    subscription_url: str
 
 
-__all__ = ("MarketplaceListingPlanType",)
+class ThreadPropSubjectType(TypedDict):
+    """ThreadPropSubject"""
+
+    title: str
+    url: str
+    latest_comment_url: str
+    type: str
+
+
+__all__ = (
+    "ThreadPropSubjectType",
+    "ThreadType",
+)

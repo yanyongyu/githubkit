@@ -141,6 +141,12 @@ class RestNamespace:
         return DependabotClient(self._github)
 
     @cached_property
+    def repos(self) -> "ReposClient":
+        from .repos import ReposClient
+
+        return ReposClient(self._github)
+
+    @cached_property
     def secret_scanning(self) -> "SecretScanningClient":
         from .secret_scanning import SecretScanningClient
 
@@ -241,12 +247,6 @@ class RestNamespace:
         from .projects import ProjectsClient
 
         return ProjectsClient(self._github)
-
-    @cached_property
-    def repos(self) -> "ReposClient":
-        from .repos import ReposClient
-
-        return ReposClient(self._github)
 
     @cached_property
     def reactions(self) -> "ReactionsClient":

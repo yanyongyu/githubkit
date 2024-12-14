@@ -12,18 +12,25 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0074 import RepositoryRulesetConditionsPropRefName
+from .group_0076 import (
+    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty,
+)
 
 
-class RepositoryFineGrainedPermission(GitHubModel):
-    """Repository Fine-Grained Permission
+class OrgRulesetConditionsOneof2(GitHubModel):
+    """repository_property_and_ref_name
 
-    A fine-grained permission that protects repository resources.
+    Conditions to target repositories by property and refs by name
     """
 
-    name: str = Field()
-    description: str = Field()
+    ref_name: Missing[RepositoryRulesetConditionsPropRefName] = Field(default=UNSET)
+    repository_property: RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty = Field()
 
 
-model_rebuild(RepositoryFineGrainedPermission)
+model_rebuild(OrgRulesetConditionsOneof2)
 
-__all__ = ("RepositoryFineGrainedPermission",)
+__all__ = ("OrgRulesetConditionsOneof2",)

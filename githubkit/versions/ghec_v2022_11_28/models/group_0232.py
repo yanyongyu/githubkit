@@ -9,45 +9,60 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0225 import BranchProtection
-from .group_0230 import Commit
+from .group_0002 import SimpleUser
+from .group_0008 import Integration
+from .group_0056 import Team
 
 
-class BranchWithProtection(GitHubModel):
-    """Branch With Protection
+class ProtectedBranchPullRequestReviewPropDismissalRestrictions(GitHubModel):
+    """ProtectedBranchPullRequestReviewPropDismissalRestrictions"""
 
-    Branch With Protection
+    users: Missing[list[SimpleUser]] = Field(
+        default=UNSET, description="The list of users with review dismissal access."
+    )
+    teams: Missing[list[Team]] = Field(
+        default=UNSET, description="The list of teams with review dismissal access."
+    )
+    apps: Missing[list[Union[Integration, None]]] = Field(
+        default=UNSET, description="The list of apps with review dismissal access."
+    )
+    url: Missing[str] = Field(default=UNSET)
+    users_url: Missing[str] = Field(default=UNSET)
+    teams_url: Missing[str] = Field(default=UNSET)
+
+
+class ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances(GitHubModel):
+    """ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances
+
+    Allow specific users, teams, or apps to bypass pull request requirements.
     """
 
-    name: str = Field()
-    commit: Commit = Field(title="Commit", description="Commit")
-    links: BranchWithProtectionPropLinks = Field(alias="_links")
-    protected: bool = Field()
-    protection: BranchProtection = Field(
-        title="Branch Protection", description="Branch Protection"
+    users: Missing[list[SimpleUser]] = Field(
+        default=UNSET,
+        description="The list of users allowed to bypass pull request requirements.",
     )
-    protection_url: str = Field()
-    pattern: Missing[str] = Field(default=UNSET)
-    required_approving_review_count: Missing[int] = Field(default=UNSET)
+    teams: Missing[list[Team]] = Field(
+        default=UNSET,
+        description="The list of teams allowed to bypass pull request requirements.",
+    )
+    apps: Missing[list[Union[Integration, None]]] = Field(
+        default=UNSET,
+        description="The list of apps allowed to bypass pull request requirements.",
+    )
 
 
-class BranchWithProtectionPropLinks(GitHubModel):
-    """BranchWithProtectionPropLinks"""
-
-    html: str = Field()
-    self_: str = Field(alias="self")
-
-
-model_rebuild(BranchWithProtection)
-model_rebuild(BranchWithProtectionPropLinks)
+model_rebuild(ProtectedBranchPullRequestReviewPropDismissalRestrictions)
+model_rebuild(ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances)
 
 __all__ = (
-    "BranchWithProtection",
-    "BranchWithProtectionPropLinks",
+    "ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances",
+    "ProtectedBranchPullRequestReviewPropDismissalRestrictions",
 )

@@ -18,43 +18,93 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0087 import MarketplaceListingPlan
+from .group_0417 import SearchResultTextMatchesItems
 
 
-class UserMarketplacePurchase(GitHubModel):
-    """User Marketplace Purchase
+class TopicSearchResultItem(GitHubModel):
+    """Topic Search Result Item
 
-    User Marketplace Purchase
+    Topic Search Result Item
     """
 
-    billing_cycle: str = Field()
-    next_billing_date: Union[datetime, None] = Field()
-    unit_count: Union[int, None] = Field()
-    on_free_trial: bool = Field()
-    free_trial_ends_on: Union[datetime, None] = Field()
-    updated_at: Union[datetime, None] = Field()
-    account: MarketplaceAccount = Field(title="Marketplace Account")
-    plan: MarketplaceListingPlan = Field(
-        title="Marketplace Listing Plan", description="Marketplace Listing Plan"
+    name: str = Field()
+    display_name: Union[str, None] = Field()
+    short_description: Union[str, None] = Field()
+    description: Union[str, None] = Field()
+    created_by: Union[str, None] = Field()
+    released: Union[str, None] = Field()
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+    featured: bool = Field()
+    curated: bool = Field()
+    score: float = Field()
+    repository_count: Missing[Union[int, None]] = Field(default=UNSET)
+    logo_url: Missing[Union[str, None]] = Field(default=UNSET)
+    text_matches: Missing[list[SearchResultTextMatchesItems]] = Field(
+        default=UNSET, title="Search Result Text Matches"
+    )
+    related: Missing[Union[list[TopicSearchResultItemPropRelatedItems], None]] = Field(
+        default=UNSET
+    )
+    aliases: Missing[Union[list[TopicSearchResultItemPropAliasesItems], None]] = Field(
+        default=UNSET
     )
 
 
-class MarketplaceAccount(GitHubModel):
-    """Marketplace Account"""
+class TopicSearchResultItemPropRelatedItems(GitHubModel):
+    """TopicSearchResultItemPropRelatedItems"""
 
-    url: str = Field()
-    id: int = Field()
-    type: str = Field()
-    node_id: Missing[str] = Field(default=UNSET)
-    login: str = Field()
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    organization_billing_email: Missing[Union[str, None]] = Field(default=UNSET)
+    topic_relation: Missing[TopicSearchResultItemPropRelatedItemsPropTopicRelation] = (
+        Field(default=UNSET)
+    )
 
 
-model_rebuild(UserMarketplacePurchase)
-model_rebuild(MarketplaceAccount)
+class TopicSearchResultItemPropRelatedItemsPropTopicRelation(GitHubModel):
+    """TopicSearchResultItemPropRelatedItemsPropTopicRelation"""
+
+    id: Missing[int] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    topic_id: Missing[int] = Field(default=UNSET)
+    relation_type: Missing[str] = Field(default=UNSET)
+
+
+class TopicSearchResultItemPropAliasesItems(GitHubModel):
+    """TopicSearchResultItemPropAliasesItems"""
+
+    topic_relation: Missing[TopicSearchResultItemPropAliasesItemsPropTopicRelation] = (
+        Field(default=UNSET)
+    )
+
+
+class TopicSearchResultItemPropAliasesItemsPropTopicRelation(GitHubModel):
+    """TopicSearchResultItemPropAliasesItemsPropTopicRelation"""
+
+    id: Missing[int] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    topic_id: Missing[int] = Field(default=UNSET)
+    relation_type: Missing[str] = Field(default=UNSET)
+
+
+class SearchTopicsGetResponse200(GitHubModel):
+    """SearchTopicsGetResponse200"""
+
+    total_count: int = Field()
+    incomplete_results: bool = Field()
+    items: list[TopicSearchResultItem] = Field()
+
+
+model_rebuild(TopicSearchResultItem)
+model_rebuild(TopicSearchResultItemPropRelatedItems)
+model_rebuild(TopicSearchResultItemPropRelatedItemsPropTopicRelation)
+model_rebuild(TopicSearchResultItemPropAliasesItems)
+model_rebuild(TopicSearchResultItemPropAliasesItemsPropTopicRelation)
+model_rebuild(SearchTopicsGetResponse200)
 
 __all__ = (
-    "MarketplaceAccount",
-    "UserMarketplacePurchase",
+    "SearchTopicsGetResponse200",
+    "TopicSearchResultItem",
+    "TopicSearchResultItemPropAliasesItems",
+    "TopicSearchResultItemPropAliasesItemsPropTopicRelation",
+    "TopicSearchResultItemPropRelatedItems",
+    "TopicSearchResultItemPropRelatedItemsPropTopicRelation",
 )

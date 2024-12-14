@@ -9,63 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0009 import WebhookConfig
 
-class ReposOwnerRepoIssuesIssueNumberPatchBody(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberPatchBody"""
 
-    title: Missing[Union[str, int, None]] = Field(
-        default=UNSET, description="The title of the issue."
-    )
-    body: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The contents of the issue."
-    )
-    assignee: Missing[Union[str, None]] = Field(
+class ReposOwnerRepoHooksHookIdPatchBody(GitHubModel):
+    """ReposOwnerRepoHooksHookIdPatchBody"""
+
+    config: Missing[WebhookConfig] = Field(
         default=UNSET,
-        description="Username to assign to this issue. **This field is closing down.**",
+        title="Webhook Configuration",
+        description="Configuration object of the webhook",
     )
-    state: Missing[Literal["open", "closed"]] = Field(
-        default=UNSET, description="The open or closed state of the issue."
-    )
-    state_reason: Missing[
-        Union[None, Literal["completed", "not_planned", "reopened"]]
-    ] = Field(
+    events: Missing[list[str]] = Field(
         default=UNSET,
-        description="The reason for the state change. Ignored unless `state` is changed.",
+        description="Determines what [events](https://docs.github.com/enterprise-cloud@latest//webhooks/event-payloads) the hook is triggered for. This replaces the entire array of events.",
     )
-    milestone: Missing[Union[str, int, None]] = Field(default=UNSET)
-    labels: Missing[
-        list[Union[str, ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1]]
-    ] = Field(
+    add_events: Missing[list[str]] = Field(
         default=UNSET,
-        description="Labels to associate with this issue. Pass one or more labels to _replace_ the set of labels on this issue. Send an empty array (`[]`) to clear all labels from the issue. Only users with push access can set labels for issues. Without push access to the repository, label changes are silently dropped.",
+        description="Determines a list of events to be added to the list of events that the Hook triggers for.",
     )
-    assignees: Missing[list[str]] = Field(
+    remove_events: Missing[list[str]] = Field(
         default=UNSET,
-        description="Usernames to assign to this issue. Pass one or more user logins to _replace_ the set of assignees on this issue. Send an empty array (`[]`) to clear all assignees from the issue. Only users with push access can set assignees for new issues. Without push access to the repository, assignee changes are silently dropped.",
+        description="Determines a list of events to be removed from the list of events that the Hook triggers for.",
+    )
+    active: Missing[bool] = Field(
+        default=UNSET,
+        description="Determines if notifications are sent when the webhook is triggered. Set to `true` to send notifications.",
     )
 
 
-class ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1"""
+model_rebuild(ReposOwnerRepoHooksHookIdPatchBody)
 
-    id: Missing[int] = Field(default=UNSET)
-    name: Missing[str] = Field(default=UNSET)
-    description: Missing[Union[str, None]] = Field(default=UNSET)
-    color: Missing[Union[str, None]] = Field(default=UNSET)
-
-
-model_rebuild(ReposOwnerRepoIssuesIssueNumberPatchBody)
-model_rebuild(ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1)
-
-__all__ = (
-    "ReposOwnerRepoIssuesIssueNumberPatchBody",
-    "ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1",
-)
+__all__ = ("ReposOwnerRepoHooksHookIdPatchBody",)

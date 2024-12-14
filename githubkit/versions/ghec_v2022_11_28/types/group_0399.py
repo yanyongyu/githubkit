@@ -9,26 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0398 import TrafficType
 
 
-class PatchSchemaType(TypedDict):
-    """PatchSchema"""
+class CloneTrafficType(TypedDict):
+    """Clone Traffic
 
-    operations: list[PatchSchemaPropOperationsItemsType]
-    schemas: list[Literal["urn:ietf:params:scim:api:messages:2.0:PatchOp"]]
+    Clone Traffic
+    """
 
-
-class PatchSchemaPropOperationsItemsType(TypedDict):
-    """PatchSchemaPropOperationsItems"""
-
-    op: Literal["add", "replace", "remove"]
-    path: NotRequired[str]
-    value: NotRequired[str]
+    count: int
+    uniques: int
+    clones: list[TrafficType]
 
 
-__all__ = (
-    "PatchSchemaPropOperationsItemsType",
-    "PatchSchemaType",
-)
+__all__ = ("CloneTrafficType",)

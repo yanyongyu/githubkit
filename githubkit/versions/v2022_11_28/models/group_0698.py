@@ -18,17 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0002 import SimpleUser
-from .group_0388 import EnterpriseWebhooks
-from .group_0389 import SimpleInstallation
-from .group_0390 import OrganizationSimpleWebhooks
-from .group_0391 import RepositoryWebhooks
-from .group_0431 import WebhooksRelease
+from .group_0389 import EnterpriseWebhooks
+from .group_0390 import SimpleInstallation
+from .group_0391 import OrganizationSimpleWebhooks
+from .group_0392 import RepositoryWebhooks
+from .group_0433 import WebhooksRelease1
 
 
-class WebhookReleaseReleased(GitHubModel):
-    """release released event"""
+class WebhookReleasePublished(GitHubModel):
+    """release published event"""
 
-    action: Literal["released"] = Field()
+    action: Literal["published"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -44,7 +44,7 @@ class WebhookReleaseReleased(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    release: WebhooksRelease = Field(
+    release: WebhooksRelease1 = Field(
         title="Release",
         description="The [release](https://docs.github.com/rest/releases/releases/#get-a-release) object.",
     )
@@ -57,6 +57,6 @@ class WebhookReleaseReleased(GitHubModel):
     )
 
 
-model_rebuild(WebhookReleaseReleased)
+model_rebuild(WebhookReleasePublished)
 
-__all__ = ("WebhookReleaseReleased",)
+__all__ = ("WebhookReleasePublished",)

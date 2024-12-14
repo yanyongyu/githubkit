@@ -9,29 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class LicenseType(TypedDict):
-    """License
+class RepositoryRuleRequiredLinearHistoryType(TypedDict):
+    """required_linear_history
 
-    License
+    Prevent merge commits from being pushed to matching refs.
     """
 
-    key: str
-    name: str
-    spdx_id: Union[str, None]
-    url: Union[str, None]
-    node_id: str
-    html_url: str
-    description: str
-    implementation: str
-    permissions: list[str]
-    conditions: list[str]
-    limitations: list[str]
-    body: str
-    featured: bool
+    type: Literal["required_linear_history"]
 
 
-__all__ = ("LicenseType",)
+class RepositoryRuleOneof16Type(TypedDict):
+    """max_file_path_length
+
+    Prevent commits that include file paths that exceed a specified character limit
+    from being pushed to the commit graph.
+    """
+
+    type: Literal["max_file_path_length"]
+    parameters: NotRequired[RepositoryRuleOneof16PropParametersType]
+
+
+class RepositoryRuleOneof16PropParametersType(TypedDict):
+    """RepositoryRuleOneof16PropParameters"""
+
+    max_file_path_length: int
+
+
+__all__ = (
+    "RepositoryRuleOneof16PropParametersType",
+    "RepositoryRuleOneof16Type",
+    "RepositoryRuleRequiredLinearHistoryType",
+)

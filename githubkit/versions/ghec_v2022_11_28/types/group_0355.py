@@ -9,17 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import TypedDict
 
-
-class ReleaseNotesContentType(TypedDict):
-    """Generated Release Notes Content
-
-    Generated name and body describing a release
-    """
-
-    name: str
-    body: str
+from .group_0002 import SimpleUserType
+from .group_0019 import RepositoryType
 
 
-__all__ = ("ReleaseNotesContentType",)
+class PullRequestPropHeadType(TypedDict):
+    """PullRequestPropHead"""
+
+    label: Union[str, None]
+    ref: str
+    repo: RepositoryType
+    sha: str
+    user: SimpleUserType
+
+
+class PullRequestPropBaseType(TypedDict):
+    """PullRequestPropBase"""
+
+    label: str
+    ref: str
+    repo: RepositoryType
+    sha: str
+    user: SimpleUserType
+
+
+__all__ = (
+    "PullRequestPropBaseType",
+    "PullRequestPropHeadType",
+)

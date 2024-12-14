@@ -9,23 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class ReleaseNotesContent(GitHubModel):
-    """Generated Release Notes Content
-
-    Generated name and body describing a release
-    """
-
-    name: str = Field(description="The generated name of the release")
-    body: str = Field(
-        description="The generated body describing the contents of the release supporting markdown formatting"
-    )
+from .group_0002 import SimpleUser
+from .group_0019 import Repository
 
 
-model_rebuild(ReleaseNotesContent)
+class PullRequestPropHead(GitHubModel):
+    """PullRequestPropHead"""
 
-__all__ = ("ReleaseNotesContent",)
+    label: Union[str, None] = Field()
+    ref: str = Field()
+    repo: Repository = Field(title="Repository", description="A repository on GitHub.")
+    sha: str = Field()
+    user: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+
+
+class PullRequestPropBase(GitHubModel):
+    """PullRequestPropBase"""
+
+    label: str = Field()
+    ref: str = Field()
+    repo: Repository = Field(title="Repository", description="A repository on GitHub.")
+    sha: str = Field()
+    user: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+
+
+model_rebuild(PullRequestPropHead)
+model_rebuild(PullRequestPropBase)
+
+__all__ = (
+    "PullRequestPropBase",
+    "PullRequestPropHead",
+)

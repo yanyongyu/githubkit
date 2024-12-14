@@ -18,7 +18,7 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0002 import SimpleUser
-from .group_0027 import OrganizationSimple
+from .group_0055 import OrganizationSimple
 
 
 class OrgMembership(GitHubModel):

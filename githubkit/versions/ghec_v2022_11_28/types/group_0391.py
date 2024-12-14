@@ -12,16 +12,15 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class ContentTrafficType(TypedDict):
-    """Content Traffic
+class CommitActivityType(TypedDict):
+    """Commit Activity
 
-    Content Traffic
+    Commit Activity
     """
 
-    path: str
-    title: str
-    count: int
-    uniques: int
+    days: list[int]
+    total: int
+    week: int
 
 
-__all__ = ("ContentTrafficType",)
+__all__ = ("CommitActivityType",)

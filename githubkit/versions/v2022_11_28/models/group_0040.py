@@ -10,41 +10,55 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Literal, Union
+from typing import Any, Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 from .group_0002 import SimpleUser
 
 
-class Milestone(GitHubModel):
-    """Milestone
+class BaseGist(GitHubModel):
+    """Base Gist
 
-    A collection of related issues and pull requests.
+    Base Gist
     """
 
     url: str = Field()
-    html_url: str = Field()
-    labels_url: str = Field()
-    id: int = Field()
+    forks_url: str = Field()
+    commits_url: str = Field()
+    id: str = Field()
     node_id: str = Field()
-    number: int = Field(description="The number of the milestone.")
-    state: Literal["open", "closed"] = Field(
-        default="open", description="The state of the milestone."
-    )
-    title: str = Field(description="The title of the milestone.")
-    description: Union[str, None] = Field()
-    creator: Union[None, SimpleUser] = Field()
-    open_issues: int = Field()
-    closed_issues: int = Field()
+    git_pull_url: str = Field()
+    git_push_url: str = Field()
+    html_url: str = Field()
+    files: BaseGistPropFiles = Field()
+    public: bool = Field()
     created_at: datetime = Field()
     updated_at: datetime = Field()
-    closed_at: Union[datetime, None] = Field()
-    due_on: Union[datetime, None] = Field()
+    description: Union[str, None] = Field()
+    comments: int = Field()
+    user: Union[None, SimpleUser] = Field()
+    comments_url: str = Field()
+    owner: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
+    )
+    truncated: Missing[bool] = Field(default=UNSET)
+    forks: Missing[list[Any]] = Field(default=UNSET)
+    history: Missing[list[Any]] = Field(default=UNSET)
 
 
-model_rebuild(Milestone)
+class BaseGistPropFiles(ExtraGitHubModel):
+    """BaseGistPropFiles"""
 
-__all__ = ("Milestone",)
+
+model_rebuild(BaseGist)
+model_rebuild(BaseGistPropFiles)
+
+__all__ = (
+    "BaseGist",
+    "BaseGistPropFiles",
+)

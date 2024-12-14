@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
@@ -18,21 +18,25 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class RepositoryRuleCommitAuthorEmailPatternPropParameters(GitHubModel):
-    """RepositoryRuleCommitAuthorEmailPatternPropParameters"""
+class ApiInsightsRouteStatsItems(GitHubModel):
+    """ApiInsightsRouteStatsItems"""
 
-    name: Missing[str] = Field(
-        default=UNSET, description="How this rule will appear to users."
+    http_method: Missing[str] = Field(default=UNSET, description="The HTTP method")
+    api_route: Missing[str] = Field(
+        default=UNSET, description="The API path's route template"
     )
-    negate: Missing[bool] = Field(
-        default=UNSET, description="If true, the rule will fail if the pattern matches."
+    total_request_count: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of requests within the queried time period",
     )
-    operator: Literal["starts_with", "ends_with", "contains", "regex"] = Field(
-        description="The operator to use for matching."
+    rate_limited_request_count: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of requests that were rate limited within the queried time period",
     )
-    pattern: str = Field(description="The pattern to match with.")
+    last_rate_limited_timestamp: Missing[Union[str, None]] = Field(default=UNSET)
+    last_request_timestamp: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(RepositoryRuleCommitAuthorEmailPatternPropParameters)
+model_rebuild(ApiInsightsRouteStatsItems)
 
-__all__ = ("RepositoryRuleCommitAuthorEmailPatternPropParameters",)
+__all__ = ("ApiInsightsRouteStatsItems",)

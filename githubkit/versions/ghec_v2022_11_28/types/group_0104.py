@@ -9,23 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0105 import RepositoryRuleTagNamePatternPropParametersType
 
 
-class CodespaceMachineType(TypedDict):
-    """Codespace machine
+class RepositoryRuleTagNamePatternType(TypedDict):
+    """tag_name_pattern
 
-    A description of the machine powering a codespace.
+    Parameters to be used for the tag_name_pattern rule
     """
 
-    name: str
-    display_name: str
-    operating_system: str
-    storage_in_bytes: int
-    memory_in_bytes: int
-    cpus: int
-    prebuild_availability: Union[None, Literal["none", "ready", "in_progress"]]
+    type: Literal["tag_name_pattern"]
+    parameters: NotRequired[RepositoryRuleTagNamePatternPropParametersType]
 
 
-__all__ = ("CodespaceMachineType",)
+__all__ = ("RepositoryRuleTagNamePatternType",)

@@ -9,21 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0133 import RepositoryRulePullRequestPropParametersType
+from typing_extensions import TypedDict
 
 
-class RepositoryRulePullRequestType(TypedDict):
-    """pull_request
+class RepositoryRuleParamsRequiredReviewerConfigurationType(TypedDict):
+    """RequiredReviewerConfiguration
 
-    Require all commits be made to a non-target branch and submitted via a pull
-    request before they can be merged.
+    A reviewing team, and file patterns describing which files they must approve
+    changes to.
     """
 
-    type: Literal["pull_request"]
-    parameters: NotRequired[RepositoryRulePullRequestPropParametersType]
+    file_patterns: list[str]
+    minimum_approvals: int
+    reviewer_id: str
 
 
-__all__ = ("RepositoryRulePullRequestType",)
+__all__ = ("RepositoryRuleParamsRequiredReviewerConfigurationType",)

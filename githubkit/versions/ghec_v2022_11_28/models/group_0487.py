@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Literal, Union
 
 from pydantic import Field
@@ -18,208 +19,92 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0002 import SimpleUser
-from .group_0430 import EnterpriseWebhooks
-from .group_0431 import SimpleInstallation
-from .group_0432 import OrganizationSimpleWebhooks
-from .group_0433 import RepositoryWebhooks
-from .group_0434 import WebhooksRule
 
 
-class WebhookBranchProtectionRuleEdited(GitHubModel):
-    """branch protection rule edited event"""
+class SecretScanningAlertWebhook(GitHubModel):
+    """SecretScanningAlertWebhook"""
 
-    action: Literal["edited"] = Field()
-    changes: Missing[WebhookBranchProtectionRuleEditedPropChanges] = Field(
+    number: Missing[int] = Field(
+        default=UNSET, description="The security alert number."
+    )
+    created_at: Missing[datetime] = Field(
         default=UNSET,
-        description="If the action was `edited`, the changes to the rule.",
+        description="The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
     )
-    enterprise: Missing[EnterpriseWebhooks] = Field(
+    updated_at: Missing[Union[None, datetime]] = Field(default=UNSET)
+    url: Missing[str] = Field(
+        default=UNSET, description="The REST API URL of the alert resource."
+    )
+    html_url: Missing[str] = Field(
+        default=UNSET, description="The GitHub URL of the alert resource."
+    )
+    locations_url: Missing[str] = Field(
         default=UNSET,
-        title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."',
+        description="The REST API URL of the code locations for this alert.",
     )
-    installation: Missing[SimpleInstallation] = Field(
+    resolution: Missing[
+        Union[
+            None,
+            Literal[
+                "false_positive",
+                "wont_fix",
+                "revoked",
+                "used_in_tests",
+                "pattern_deleted",
+                "pattern_edited",
+            ],
+        ]
+    ] = Field(default=UNSET, description="The reason for resolving the alert.")
+    resolved_at: Missing[Union[datetime, None]] = Field(
         default=UNSET,
-        title="Simple Installation",
-        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
+        description="The time that the alert was resolved in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
     )
-    organization: Missing[OrganizationSimpleWebhooks] = Field(
+    resolved_by: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
+    resolution_comment: Missing[Union[str, None]] = Field(
+        default=UNSET, description="An optional comment to resolve an alert."
+    )
+    secret_type: Missing[str] = Field(
+        default=UNSET, description="The type of secret that secret scanning detected."
+    )
+    secret_type_display_name: Missing[str] = Field(
         default=UNSET,
-        title="Organization Simple",
-        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
+        description='User-friendly name for the detected secret, matching the `secret_type`.\nFor a list of built-in patterns, see "[Supported secret scanning patterns](https://docs.github.com/enterprise-cloud@latest//code-security/secret-scanning/introduction/supported-secret-scanning-patterns#supported-secrets)."',
     )
-    repository: RepositoryWebhooks = Field(
-        title="Repository",
-        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    validity: Missing[Literal["active", "inactive", "unknown"]] = Field(
+        default=UNSET, description="The token status as of the latest validity check."
     )
-    rule: WebhooksRule = Field(
-        title="branch protection rule",
-        description="The branch protection rule. Includes a `name` and all the [branch protection settings](https://docs.github.com/enterprise-cloud@latest//github/administering-a-repository/defining-the-mergeability-of-pull-requests/about-protected-branches#about-branch-protection-settings) applied to branches that match the name. Binary settings are boolean. Multi-level configurations are one of `off`, `non_admins`, or `everyone`. Actor and build lists are arrays of strings.",
+    push_protection_bypassed: Missing[Union[bool, None]] = Field(
+        default=UNSET,
+        description="Whether push protection was bypassed for the detected secret.",
     )
-    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    push_protection_bypassed_by: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
+    push_protection_bypassed_at: Missing[Union[datetime, None]] = Field(
+        default=UNSET,
+        description="The time that push protection was bypassed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+    )
+    push_protection_bypass_request_reviewer: Missing[Union[None, SimpleUser]] = Field(
+        default=UNSET
+    )
+    push_protection_bypass_request_reviewer_comment: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="An optional comment when reviewing a push protection bypass.",
+    )
+    push_protection_bypass_request_comment: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="An optional comment when requesting a push protection bypass.",
+    )
+    push_protection_bypass_request_html_url: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The URL to a push protection bypass request."
+    )
+    publicly_leaked: Missing[Union[bool, None]] = Field(
+        default=UNSET, description="Whether the detected secret was publicly leaked."
+    )
+    multi_repo: Missing[Union[bool, None]] = Field(
+        default=UNSET,
+        description="Whether the detected secret was found in multiple repositories in the same organization or business.",
+    )
 
 
-class WebhookBranchProtectionRuleEditedPropChanges(GitHubModel):
-    """WebhookBranchProtectionRuleEditedPropChanges
+model_rebuild(SecretScanningAlertWebhook)
 
-    If the action was `edited`, the changes to the rule.
-    """
-
-    admin_enforced: Missing[
-        WebhookBranchProtectionRuleEditedPropChangesPropAdminEnforced
-    ] = Field(default=UNSET)
-    authorized_actor_names: Missing[
-        WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorNames
-    ] = Field(default=UNSET)
-    authorized_actors_only: Missing[
-        WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorsOnly
-    ] = Field(default=UNSET)
-    authorized_dismissal_actors_only: Missing[
-        WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedDismissalActorsOnly
-    ] = Field(default=UNSET)
-    linear_history_requirement_enforcement_level: Missing[
-        WebhookBranchProtectionRuleEditedPropChangesPropLinearHistoryRequirementEnforcementLevel
-    ] = Field(default=UNSET)
-    lock_branch_enforcement_level: Missing[
-        WebhookBranchProtectionRuleEditedPropChangesPropLockBranchEnforcementLevel
-    ] = Field(default=UNSET)
-    lock_allows_fork_sync: Missing[
-        WebhookBranchProtectionRuleEditedPropChangesPropLockAllowsForkSync
-    ] = Field(default=UNSET)
-    pull_request_reviews_enforcement_level: Missing[
-        WebhookBranchProtectionRuleEditedPropChangesPropPullRequestReviewsEnforcementLevel
-    ] = Field(default=UNSET)
-    require_last_push_approval: Missing[
-        WebhookBranchProtectionRuleEditedPropChangesPropRequireLastPushApproval
-    ] = Field(default=UNSET)
-    required_status_checks: Missing[
-        WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecks
-    ] = Field(default=UNSET)
-    required_status_checks_enforcement_level: Missing[
-        WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementLevel
-    ] = Field(default=UNSET)
-
-
-class WebhookBranchProtectionRuleEditedPropChangesPropAdminEnforced(GitHubModel):
-    """WebhookBranchProtectionRuleEditedPropChangesPropAdminEnforced"""
-
-    from_: Union[bool, None] = Field(alias="from")
-
-
-class WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorNames(GitHubModel):
-    """WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorNames"""
-
-    from_: list[str] = Field(alias="from")
-
-
-class WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorsOnly(GitHubModel):
-    """WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorsOnly"""
-
-    from_: Union[bool, None] = Field(alias="from")
-
-
-class WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedDismissalActorsOnly(
-    GitHubModel
-):
-    """WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedDismissalActorsOnly"""
-
-    from_: Union[bool, None] = Field(alias="from")
-
-
-class WebhookBranchProtectionRuleEditedPropChangesPropLinearHistoryRequirementEnforcementLevel(
-    GitHubModel
-):
-    """WebhookBranchProtectionRuleEditedPropChangesPropLinearHistoryRequirementEnforcem
-    entLevel
-    """
-
-    from_: Literal["off", "non_admins", "everyone"] = Field(alias="from")
-
-
-class WebhookBranchProtectionRuleEditedPropChangesPropLockBranchEnforcementLevel(
-    GitHubModel
-):
-    """WebhookBranchProtectionRuleEditedPropChangesPropLockBranchEnforcementLevel"""
-
-    from_: Literal["off", "non_admins", "everyone"] = Field(alias="from")
-
-
-class WebhookBranchProtectionRuleEditedPropChangesPropLockAllowsForkSync(GitHubModel):
-    """WebhookBranchProtectionRuleEditedPropChangesPropLockAllowsForkSync"""
-
-    from_: Union[bool, None] = Field(alias="from")
-
-
-class WebhookBranchProtectionRuleEditedPropChangesPropPullRequestReviewsEnforcementLevel(
-    GitHubModel
-):
-    """WebhookBranchProtectionRuleEditedPropChangesPropPullRequestReviewsEnforcementLev
-    el
-    """
-
-    from_: Literal["off", "non_admins", "everyone"] = Field(alias="from")
-
-
-class WebhookBranchProtectionRuleEditedPropChangesPropRequireLastPushApproval(
-    GitHubModel
-):
-    """WebhookBranchProtectionRuleEditedPropChangesPropRequireLastPushApproval"""
-
-    from_: Union[bool, None] = Field(alias="from")
-
-
-class WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecks(GitHubModel):
-    """WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecks"""
-
-    from_: list[str] = Field(alias="from")
-
-
-class WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementLevel(
-    GitHubModel
-):
-    """WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementL
-    evel
-    """
-
-    from_: Literal["off", "non_admins", "everyone"] = Field(alias="from")
-
-
-model_rebuild(WebhookBranchProtectionRuleEdited)
-model_rebuild(WebhookBranchProtectionRuleEditedPropChanges)
-model_rebuild(WebhookBranchProtectionRuleEditedPropChangesPropAdminEnforced)
-model_rebuild(WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorNames)
-model_rebuild(WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorsOnly)
-model_rebuild(
-    WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedDismissalActorsOnly
-)
-model_rebuild(
-    WebhookBranchProtectionRuleEditedPropChangesPropLinearHistoryRequirementEnforcementLevel
-)
-model_rebuild(
-    WebhookBranchProtectionRuleEditedPropChangesPropLockBranchEnforcementLevel
-)
-model_rebuild(WebhookBranchProtectionRuleEditedPropChangesPropLockAllowsForkSync)
-model_rebuild(
-    WebhookBranchProtectionRuleEditedPropChangesPropPullRequestReviewsEnforcementLevel
-)
-model_rebuild(WebhookBranchProtectionRuleEditedPropChangesPropRequireLastPushApproval)
-model_rebuild(WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecks)
-model_rebuild(
-    WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementLevel
-)
-
-__all__ = (
-    "WebhookBranchProtectionRuleEdited",
-    "WebhookBranchProtectionRuleEditedPropChanges",
-    "WebhookBranchProtectionRuleEditedPropChangesPropAdminEnforced",
-    "WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorNames",
-    "WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorsOnly",
-    "WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedDismissalActorsOnly",
-    "WebhookBranchProtectionRuleEditedPropChangesPropLinearHistoryRequirementEnforcementLevel",
-    "WebhookBranchProtectionRuleEditedPropChangesPropLockAllowsForkSync",
-    "WebhookBranchProtectionRuleEditedPropChangesPropLockBranchEnforcementLevel",
-    "WebhookBranchProtectionRuleEditedPropChangesPropPullRequestReviewsEnforcementLevel",
-    "WebhookBranchProtectionRuleEditedPropChangesPropRequireLastPushApproval",
-    "WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecks",
-    "WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementLevel",
-)
+__all__ = ("SecretScanningAlertWebhook",)

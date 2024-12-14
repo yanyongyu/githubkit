@@ -12,14 +12,10 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class GitignoreTemplateType(TypedDict):
-    """Gitignore Template
+class RepositoryRuleUpdatePropParametersType(TypedDict):
+    """RepositoryRuleUpdatePropParameters"""
 
-    Gitignore Template
-    """
-
-    name: str
-    source: str
+    update_allows_fetch_and_merge: bool
 
 
-__all__ = ("GitignoreTemplateType",)
+__all__ = ("RepositoryRuleUpdatePropParametersType",)

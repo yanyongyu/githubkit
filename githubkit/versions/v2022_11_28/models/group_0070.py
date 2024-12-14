@@ -9,32 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0069 import RunnerLabel
 
+class CodeScanningAnalysisTool(GitHubModel):
+    """CodeScanningAnalysisTool"""
 
-class Runner(GitHubModel):
-    """Self hosted runners
-
-    A self hosted runner
-    """
-
-    id: int = Field(description="The id of the runner.")
-    runner_group_id: Missing[int] = Field(
-        default=UNSET, description="The id of the runner group."
+    name: Missing[str] = Field(
+        default=UNSET,
+        description="The name of the tool used to generate the code scanning analysis.",
     )
-    name: str = Field(description="The name of the runner.")
-    os: str = Field(description="The Operating System of the runner.")
-    status: str = Field(description="The status of the runner.")
-    busy: bool = Field()
-    labels: list[RunnerLabel] = Field()
+    version: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The version of the tool used to generate the code scanning analysis.",
+    )
+    guid: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The GUID of the tool used to generate the code scanning analysis, if provided in the uploaded SARIF data.",
+    )
 
 
-model_rebuild(Runner)
+model_rebuild(CodeScanningAnalysisTool)
 
-__all__ = ("Runner",)
+__all__ = ("CodeScanningAnalysisTool",)

@@ -9,29 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from datetime import datetime
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ReviewCustomGatesStateRequired(GitHubModel):
-    """ReviewCustomGatesStateRequired"""
+class ActionsSecret(GitHubModel):
+    """Actions Secret
 
-    environment_name: str = Field(
-        description="The name of the environment to approve or reject."
-    )
-    state: Literal["approved", "rejected"] = Field(
-        description="Whether to approve or reject deployment to the specified environments."
-    )
-    comment: Missing[str] = Field(
-        default=UNSET, description="Optional comment to include with the review."
-    )
+    Set secrets for GitHub Actions.
+    """
+
+    name: str = Field(description="The name of the secret.")
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
 
 
-model_rebuild(ReviewCustomGatesStateRequired)
+model_rebuild(ActionsSecret)
 
-__all__ = ("ReviewCustomGatesStateRequired",)
+__all__ = ("ActionsSecret",)

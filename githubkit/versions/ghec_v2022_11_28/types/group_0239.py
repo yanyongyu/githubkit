@@ -9,69 +9,59 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0008 import IntegrationType
-from .group_0092 import MinimalRepositoryType
-from .group_0209 import PullRequestMinimalType
-from .group_0210 import SimpleCommitType
+from .group_0002 import SimpleUserType
+from .group_0238 import DiffEntryType
+from .group_0240 import CommitPropCommitType
 
 
-class CheckSuiteType(TypedDict):
-    """CheckSuite
+class CommitType(TypedDict):
+    """Commit
 
-    A suite of checks performed on the code of a given code change
+    Commit
     """
 
-    id: int
+    url: str
+    sha: str
     node_id: str
-    head_branch: Union[str, None]
-    head_sha: str
-    status: Union[
-        None,
-        Literal[
-            "queued", "in_progress", "completed", "waiting", "requested", "pending"
-        ],
-    ]
-    conclusion: Union[
-        None,
-        Literal[
-            "success",
-            "failure",
-            "neutral",
-            "cancelled",
-            "skipped",
-            "timed_out",
-            "action_required",
-            "startup_failure",
-            "stale",
-        ],
-    ]
-    url: Union[str, None]
-    before: Union[str, None]
-    after: Union[str, None]
-    pull_requests: Union[list[PullRequestMinimalType], None]
-    app: Union[None, IntegrationType, None]
-    repository: MinimalRepositoryType
-    created_at: Union[datetime, None]
-    updated_at: Union[datetime, None]
-    head_commit: SimpleCommitType
-    latest_check_runs_count: int
-    check_runs_url: str
-    rerequestable: NotRequired[bool]
-    runs_rerequestable: NotRequired[bool]
+    html_url: str
+    comments_url: str
+    commit: CommitPropCommitType
+    author: Union[SimpleUserType, EmptyObjectType, None]
+    committer: Union[SimpleUserType, EmptyObjectType, None]
+    parents: list[CommitPropParentsItemsType]
+    stats: NotRequired[CommitPropStatsType]
+    files: NotRequired[list[DiffEntryType]]
 
 
-class ReposOwnerRepoCommitsRefCheckSuitesGetResponse200Type(TypedDict):
-    """ReposOwnerRepoCommitsRefCheckSuitesGetResponse200"""
+class EmptyObjectType(TypedDict):
+    """Empty Object
 
-    total_count: int
-    check_suites: list[CheckSuiteType]
+    An object without any properties.
+    """
+
+
+class CommitPropParentsItemsType(TypedDict):
+    """CommitPropParentsItems"""
+
+    sha: str
+    url: str
+    html_url: NotRequired[str]
+
+
+class CommitPropStatsType(TypedDict):
+    """CommitPropStats"""
+
+    additions: NotRequired[int]
+    deletions: NotRequired[int]
+    total: NotRequired[int]
 
 
 __all__ = (
-    "CheckSuiteType",
-    "ReposOwnerRepoCommitsRefCheckSuitesGetResponse200Type",
+    "CommitPropParentsItemsType",
+    "CommitPropStatsType",
+    "CommitType",
+    "EmptyObjectType",
 )

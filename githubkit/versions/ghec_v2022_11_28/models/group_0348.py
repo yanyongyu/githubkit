@@ -9,22 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0002 import SimpleUser
 
-class PullRequestMergeResult(GitHubModel):
-    """Pull Request Merge Result
 
-    Pull Request Merge Result
+class PageBuild(GitHubModel):
+    """Page Build
+
+    Page Build
     """
 
-    sha: str = Field()
-    merged: bool = Field()
-    message: str = Field()
+    url: str = Field()
+    status: str = Field()
+    error: PageBuildPropError = Field()
+    pusher: Union[None, SimpleUser] = Field()
+    commit: str = Field()
+    duration: int = Field()
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
 
 
-model_rebuild(PullRequestMergeResult)
+class PageBuildPropError(GitHubModel):
+    """PageBuildPropError"""
 
-__all__ = ("PullRequestMergeResult",)
+    message: Union[str, None] = Field()
+
+
+model_rebuild(PageBuild)
+model_rebuild(PageBuildPropError)
+
+__all__ = (
+    "PageBuild",
+    "PageBuildPropError",
+)

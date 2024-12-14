@@ -9,60 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 from .group_0002 import SimpleUser
 from .group_0008 import Integration
-from .group_0075 import ReactionRollup
 
 
-class TimelineCommentEvent(GitHubModel):
-    """Timeline Comment Event
+class RenamedIssueEvent(GitHubModel):
+    """Renamed Issue Event
 
-    Timeline Comment Event
+    Renamed Issue Event
     """
 
-    event: Literal["commented"] = Field()
-    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    id: int = Field(description="Unique identifier of the issue comment")
+    id: int = Field()
     node_id: str = Field()
-    url: str = Field(description="URL for the issue comment")
-    body: Missing[str] = Field(
-        default=UNSET, description="Contents of the issue comment"
-    )
-    body_text: Missing[str] = Field(default=UNSET)
-    body_html: Missing[str] = Field(default=UNSET)
-    html_url: str = Field()
-    user: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    issue_url: str = Field()
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ] = Field(
-        title="author_association",
-        description="How the author is associated with the repository.",
-    )
-    performed_via_github_app: Missing[Union[None, Integration, None]] = Field(
-        default=UNSET
-    )
-    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
+    url: str = Field()
+    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    event: Literal["renamed"] = Field()
+    commit_id: Union[str, None] = Field()
+    commit_url: Union[str, None] = Field()
+    created_at: str = Field()
+    performed_via_github_app: Union[None, Integration, None] = Field()
+    rename: RenamedIssueEventPropRename = Field()
 
 
-model_rebuild(TimelineCommentEvent)
+class RenamedIssueEventPropRename(GitHubModel):
+    """RenamedIssueEventPropRename"""
 
-__all__ = ("TimelineCommentEvent",)
+    from_: str = Field(alias="from")
+    to: str = Field()
+
+
+model_rebuild(RenamedIssueEvent)
+model_rebuild(RenamedIssueEventPropRename)
+
+__all__ = (
+    "RenamedIssueEvent",
+    "RenamedIssueEventPropRename",
+)

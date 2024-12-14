@@ -13,32 +13,34 @@ from datetime import datetime
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0019 import RepositoryType
+from .group_0002 import SimpleUserType
+from .group_0030 import SimpleRepositoryType
+from .group_0069 import CodeScanningAlertRuleSummaryType
+from .group_0070 import CodeScanningAnalysisToolType
+from .group_0071 import CodeScanningAlertInstanceType
 
 
-class AuthenticationTokenType(TypedDict):
-    """Authentication Token
+class CodeScanningOrganizationAlertItemsType(TypedDict):
+    """CodeScanningOrganizationAlertItems"""
 
-    Authentication Token
-    """
+    number: int
+    created_at: datetime
+    updated_at: NotRequired[datetime]
+    url: str
+    html_url: str
+    instances_url: str
+    state: Union[None, Literal["open", "dismissed", "fixed"]]
+    fixed_at: NotRequired[Union[datetime, None]]
+    dismissed_by: Union[None, SimpleUserType]
+    dismissed_at: Union[datetime, None]
+    dismissed_reason: Union[
+        None, Literal["false positive", "won't fix", "used in tests"]
+    ]
+    dismissed_comment: NotRequired[Union[str, None]]
+    rule: CodeScanningAlertRuleSummaryType
+    tool: CodeScanningAnalysisToolType
+    most_recent_instance: CodeScanningAlertInstanceType
+    repository: SimpleRepositoryType
 
-    token: str
-    expires_at: datetime
-    permissions: NotRequired[AuthenticationTokenPropPermissionsType]
-    repositories: NotRequired[list[RepositoryType]]
-    single_file: NotRequired[Union[str, None]]
-    repository_selection: NotRequired[Literal["all", "selected"]]
 
-
-class AuthenticationTokenPropPermissionsType(TypedDict):
-    """AuthenticationTokenPropPermissions
-
-    Examples:
-        {'issues': 'read', 'deployments': 'write'}
-    """
-
-
-__all__ = (
-    "AuthenticationTokenPropPermissionsType",
-    "AuthenticationTokenType",
-)
+__all__ = ("CodeScanningOrganizationAlertItemsType",)

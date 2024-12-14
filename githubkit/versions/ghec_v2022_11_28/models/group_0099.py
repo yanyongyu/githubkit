@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,20 +18,21 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ActionsPublicKey(GitHubModel):
-    """ActionsPublicKey
+class RepositoryRuleCommitAuthorEmailPatternPropParameters(GitHubModel):
+    """RepositoryRuleCommitAuthorEmailPatternPropParameters"""
 
-    The public key used for setting Actions Secrets.
-    """
+    name: Missing[str] = Field(
+        default=UNSET, description="How this rule will appear to users."
+    )
+    negate: Missing[bool] = Field(
+        default=UNSET, description="If true, the rule will fail if the pattern matches."
+    )
+    operator: Literal["starts_with", "ends_with", "contains", "regex"] = Field(
+        description="The operator to use for matching."
+    )
+    pattern: str = Field(description="The pattern to match with.")
 
-    key_id: str = Field(description="The identifier for the key.")
-    key: str = Field(description="The Base64 encoded public key.")
-    id: Missing[int] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-    title: Missing[str] = Field(default=UNSET)
-    created_at: Missing[str] = Field(default=UNSET)
 
+model_rebuild(RepositoryRuleCommitAuthorEmailPatternPropParameters)
 
-model_rebuild(ActionsPublicKey)
-
-__all__ = ("ActionsPublicKey",)
+__all__ = ("RepositoryRuleCommitAuthorEmailPatternPropParameters",)

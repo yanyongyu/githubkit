@@ -19,59 +19,48 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0002 import SimpleUser
+from .group_0008 import Integration
+from .group_0126 import ReactionRollup
 
 
-class OrganizationRole(GitHubModel):
-    """Organization Role
+class IssueComment(GitHubModel):
+    """Issue Comment
 
-    Organization roles
+    Comments provide a way for people to collaborate on an issue.
     """
 
-    id: int = Field(description="The unique identifier of the role.")
-    name: str = Field(description="The name of the role.")
-    description: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="A short description about who this role is for or what permissions it grants.",
+    id: int = Field(description="Unique identifier of the issue comment")
+    node_id: str = Field()
+    url: str = Field(description="URL for the issue comment")
+    body: Missing[str] = Field(
+        default=UNSET, description="Contents of the issue comment"
     )
-    base_role: Missing[
-        Union[None, Literal["read", "triage", "write", "maintain", "admin"]]
+    body_text: Missing[str] = Field(default=UNSET)
+    body_html: Missing[str] = Field(default=UNSET)
+    html_url: str = Field()
+    user: Union[None, SimpleUser] = Field()
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+    issue_url: str = Field()
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
     ] = Field(
-        default=UNSET,
-        description="The system role from which this role inherits permissions.",
+        title="author_association",
+        description="How the author is associated with the repository.",
     )
-    source: Missing[
-        Union[None, Literal["Organization", "Enterprise", "Predefined"]]
-    ] = Field(
-        default=UNSET,
-        description='Source answers the question, "where did this role come from?"',
+    performed_via_github_app: Missing[Union[None, Integration, None]] = Field(
+        default=UNSET
     )
-    permissions: list[str] = Field(
-        description="A list of permissions included in this role."
-    )
-    organization: Union[None, SimpleUser] = Field()
-    created_at: datetime = Field(description="The date and time the role was created.")
-    updated_at: datetime = Field(
-        description="The date and time the role was last updated."
-    )
+    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
 
 
-class OrgsOrgOrganizationRolesGetResponse200(GitHubModel):
-    """OrgsOrgOrganizationRolesGetResponse200"""
+model_rebuild(IssueComment)
 
-    total_count: Missing[int] = Field(
-        default=UNSET,
-        description="The total number of organization roles available to the organization.",
-    )
-    roles: Missing[list[OrganizationRole]] = Field(
-        default=UNSET,
-        description="The list of organization roles available to the organization.",
-    )
-
-
-model_rebuild(OrganizationRole)
-model_rebuild(OrgsOrgOrganizationRolesGetResponse200)
-
-__all__ = (
-    "OrganizationRole",
-    "OrgsOrgOrganizationRolesGetResponse200",
-)
+__all__ = ("IssueComment",)

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
@@ -17,35 +17,37 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0036 import SimpleRepository
 
+class TeamSimple(GitHubModel):
+    """Team Simple
 
-class CodeSecurityConfigurationRepositories(GitHubModel):
-    """CodeSecurityConfigurationRepositories
-
-    Repositories associated with a code security configuration and attachment status
+    Groups of organization members that gives permissions on specified repositories.
     """
 
-    status: Missing[
-        Literal[
-            "attached",
-            "attaching",
-            "detached",
-            "removed",
-            "enforced",
-            "failed",
-            "updating",
-            "removed_by_enterprise",
-        ]
-    ] = Field(
+    id: int = Field(description="Unique identifier of the team")
+    node_id: str = Field()
+    url: str = Field(description="URL for the team")
+    members_url: str = Field()
+    name: str = Field(description="Name of the team")
+    description: Union[str, None] = Field(description="Description of the team")
+    permission: str = Field(
+        description="Permission that the team will have for its repositories"
+    )
+    privacy: Missing[str] = Field(
+        default=UNSET, description="The level of privacy this team should have"
+    )
+    notification_setting: Missing[str] = Field(
+        default=UNSET, description="The notification setting the team has set"
+    )
+    html_url: str = Field()
+    repositories_url: str = Field()
+    slug: str = Field()
+    ldap_dn: Missing[str] = Field(
         default=UNSET,
-        description="The attachment status of the code security configuration on the repository.",
-    )
-    repository: Missing[SimpleRepository] = Field(
-        default=UNSET, title="Simple Repository", description="A GitHub repository."
+        description="Distinguished Name (DN) that team maps to within LDAP environment",
     )
 
 
-model_rebuild(CodeSecurityConfigurationRepositories)
+model_rebuild(TeamSimple)
 
-__all__ = ("CodeSecurityConfigurationRepositories",)
+__all__ = ("TeamSimple",)

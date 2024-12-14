@@ -18,21 +18,23 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class RepositoryRuleTagNamePatternPropParameters(GitHubModel):
-    """RepositoryRuleTagNamePatternPropParameters"""
+class InteractionLimit(GitHubModel):
+    """Interaction Restrictions
 
-    name: Missing[str] = Field(
-        default=UNSET, description="How this rule will appear to users."
+    Limit interactions to a specific type of user for a specified duration
+    """
+
+    limit: Literal["existing_users", "contributors_only", "collaborators_only"] = Field(
+        description="The type of GitHub user that can comment, open issues, or create pull requests while the interaction limit is in effect."
     )
-    negate: Missing[bool] = Field(
-        default=UNSET, description="If true, the rule will fail if the pattern matches."
+    expiry: Missing[
+        Literal["one_day", "three_days", "one_week", "one_month", "six_months"]
+    ] = Field(
+        default=UNSET,
+        description="The duration of the interaction restriction. Default: `one_day`.",
     )
-    operator: Literal["starts_with", "ends_with", "contains", "regex"] = Field(
-        description="The operator to use for matching."
-    )
-    pattern: str = Field(description="The pattern to match with.")
 
 
-model_rebuild(RepositoryRuleTagNamePatternPropParameters)
+model_rebuild(InteractionLimit)
 
-__all__ = ("RepositoryRuleTagNamePatternPropParameters",)
+__all__ = ("InteractionLimit",)

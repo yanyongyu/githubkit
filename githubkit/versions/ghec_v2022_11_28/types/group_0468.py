@@ -9,28 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0002 import SimpleUserType
+from .group_0219 import SimpleCommitType
 
 
-class ProjectsV2ItemType(TypedDict):
-    """Projects v2 Item
+class MergeGroupType(TypedDict):
+    """Merge Group
 
-    An item belonging to a project
+    A group of pull requests that the merge queue has grouped together to be merged.
     """
 
-    id: float
-    node_id: NotRequired[str]
-    project_node_id: NotRequired[str]
-    content_node_id: str
-    content_type: Literal["Issue", "PullRequest", "DraftIssue"]
-    creator: NotRequired[SimpleUserType]
-    created_at: datetime
-    updated_at: datetime
-    archived_at: Union[datetime, None]
+    head_sha: str
+    head_ref: str
+    base_sha: str
+    base_ref: str
+    head_commit: SimpleCommitType
 
 
-__all__ = ("ProjectsV2ItemType",)
+__all__ = ("MergeGroupType",)

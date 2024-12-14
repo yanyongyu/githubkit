@@ -77,6 +77,7 @@ if TYPE_CHECKING:
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
         AuditLogEventType,
         CredentialAuthorizationType,
+        CustomPropertySetPayloadType,
         CustomPropertyType,
         CustomPropertyValueType,
         HookDeliveryItemType,
@@ -116,7 +117,6 @@ if TYPE_CHECKING:
         OrgsOrgPersonalAccessTokenRequestsPostBodyType,
         OrgsOrgPersonalAccessTokensPatIdPostBodyType,
         OrgsOrgPersonalAccessTokensPostBodyType,
-        OrgsOrgPropertiesSchemaCustomPropertyNamePutBodyType,
         OrgsOrgPropertiesSchemaPatchBodyType,
         OrgsOrgPropertiesValuesPatchBodyType,
         OrgsOrgSecurityProductEnablementPostBodyType,
@@ -6711,7 +6711,7 @@ class OrgsClient:
         custom_property_name: str,
         *,
         headers: Optional[dict[str, str]] = None,
-        data: OrgsOrgPropertiesSchemaCustomPropertyNamePutBodyType,
+        data: CustomPropertySetPayloadType,
     ) -> Response[CustomProperty, CustomPropertyType]: ...
 
     @overload
@@ -6735,16 +6735,12 @@ class OrgsClient:
         custom_property_name: str,
         *,
         headers: Optional[dict[str, str]] = None,
-        data: Missing[OrgsOrgPropertiesSchemaCustomPropertyNamePutBodyType] = UNSET,
+        data: Missing[CustomPropertySetPayloadType] = UNSET,
         **kwargs,
     ) -> Response[CustomProperty, CustomPropertyType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-properties#create-or-update-a-custom-property-for-an-organization"""
 
-        from ..models import (
-            BasicError,
-            CustomProperty,
-            OrgsOrgPropertiesSchemaCustomPropertyNamePutBody,
-        )
+        from ..models import BasicError, CustomProperty, CustomPropertySetPayload
 
         url = f"/orgs/{org}/properties/schema/{custom_property_name}"
 
@@ -6756,9 +6752,7 @@ class OrgsClient:
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_validate_body:
-            json = type_validate_python(
-                OrgsOrgPropertiesSchemaCustomPropertyNamePutBody, json
-            )
+            json = type_validate_python(CustomPropertySetPayload, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -6780,7 +6774,7 @@ class OrgsClient:
         custom_property_name: str,
         *,
         headers: Optional[dict[str, str]] = None,
-        data: OrgsOrgPropertiesSchemaCustomPropertyNamePutBodyType,
+        data: CustomPropertySetPayloadType,
     ) -> Response[CustomProperty, CustomPropertyType]: ...
 
     @overload
@@ -6804,16 +6798,12 @@ class OrgsClient:
         custom_property_name: str,
         *,
         headers: Optional[dict[str, str]] = None,
-        data: Missing[OrgsOrgPropertiesSchemaCustomPropertyNamePutBodyType] = UNSET,
+        data: Missing[CustomPropertySetPayloadType] = UNSET,
         **kwargs,
     ) -> Response[CustomProperty, CustomPropertyType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-properties#create-or-update-a-custom-property-for-an-organization"""
 
-        from ..models import (
-            BasicError,
-            CustomProperty,
-            OrgsOrgPropertiesSchemaCustomPropertyNamePutBody,
-        )
+        from ..models import BasicError, CustomProperty, CustomPropertySetPayload
 
         url = f"/orgs/{org}/properties/schema/{custom_property_name}"
 
@@ -6825,9 +6815,7 @@ class OrgsClient:
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_validate_body:
-            json = type_validate_python(
-                OrgsOrgPropertiesSchemaCustomPropertyNamePutBody, json
-            )
+            json = type_validate_python(CustomPropertySetPayload, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(

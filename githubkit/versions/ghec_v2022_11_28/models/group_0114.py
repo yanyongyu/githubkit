@@ -15,31 +15,22 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0072 import (
+    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName,
+)
+from .group_0074 import RepositoryRulesetConditionsPropRefName
 
-class ExternalGroups(GitHubModel):
-    """ExternalGroups
 
-    A list of external groups available to be connected to a team
+class OrgRulesetConditionsOneof0(GitHubModel):
+    """repository_name_and_ref_name
+
+    Conditions to target repositories by name and refs by name
     """
 
-    groups: Missing[list[ExternalGroupsPropGroupsItems]] = Field(
-        default=UNSET,
-        description="An array of external groups available to be mapped to a team",
-    )
+    ref_name: Missing[RepositoryRulesetConditionsPropRefName] = Field(default=UNSET)
+    repository_name: RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName = Field()
 
 
-class ExternalGroupsPropGroupsItems(GitHubModel):
-    """ExternalGroupsPropGroupsItems"""
+model_rebuild(OrgRulesetConditionsOneof0)
 
-    group_id: int = Field(description="The internal ID of the group")
-    group_name: str = Field(description="The display name of the group")
-    updated_at: str = Field(description="The time of the last update for this group")
-
-
-model_rebuild(ExternalGroups)
-model_rebuild(ExternalGroupsPropGroupsItems)
-
-__all__ = (
-    "ExternalGroups",
-    "ExternalGroupsPropGroupsItems",
-)
+__all__ = ("OrgRulesetConditionsOneof0",)

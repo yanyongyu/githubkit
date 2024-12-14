@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -17,89 +17,41 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0111 import RepositoryRulesetBypassActor
-from .group_0120 import OrgRulesetConditionsOneof0
-from .group_0121 import OrgRulesetConditionsOneof1
-from .group_0122 import OrgRulesetConditionsOneof2
-from .group_0123 import (
-    RepositoryRuleCreation,
-    RepositoryRuleDeletion,
-    RepositoryRuleNonFastForward,
-    RepositoryRuleOneof15,
-    RepositoryRuleOneof17,
-    RepositoryRuleRequiredSignatures,
-)
-from .group_0124 import RepositoryRuleUpdate
-from .group_0126 import RepositoryRuleOneof16, RepositoryRuleRequiredLinearHistory
-from .group_0127 import RepositoryRuleMergeQueue
-from .group_0129 import RepositoryRuleRequiredDeployments
-from .group_0132 import RepositoryRulePullRequest
-from .group_0134 import RepositoryRuleRequiredStatusChecks
-from .group_0136 import RepositoryRuleCommitMessagePattern
-from .group_0138 import RepositoryRuleCommitAuthorEmailPattern
-from .group_0140 import RepositoryRuleCommitterEmailPattern
-from .group_0142 import RepositoryRuleBranchNamePattern
-from .group_0144 import RepositoryRuleTagNamePattern
-from .group_0147 import RepositoryRuleWorkflows
-from .group_0149 import RepositoryRuleCodeScanning
-from .group_0151 import RepositoryRuleOneof18
 
+class OrgsOrgTeamsPostBody(GitHubModel):
+    """OrgsOrgTeamsPostBody"""
 
-class OrgsOrgRulesetsRulesetIdPutBody(GitHubModel):
-    """OrgsOrgRulesetsRulesetIdPutBody"""
-
-    name: Missing[str] = Field(default=UNSET, description="The name of the ruleset.")
-    target: Missing[Literal["branch", "tag", "push"]] = Field(
-        default=UNSET, description="The target of the ruleset"
+    name: str = Field(description="The name of the team.")
+    description: Missing[str] = Field(
+        default=UNSET, description="The description of the team."
     )
-    enforcement: Missing[Literal["disabled", "active", "evaluate"]] = Field(
+    maintainers: Missing[list[str]] = Field(
         default=UNSET,
-        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise).",
+        description="List GitHub IDs for organization members who will become team maintainers.",
     )
-    bypass_actors: Missing[list[RepositoryRulesetBypassActor]] = Field(
+    repo_names: Missing[list[str]] = Field(
         default=UNSET,
-        description="The actors that can bypass the rules in this ruleset",
+        description='The full name (e.g., "organization-name/repository-name") of repositories to add the team to.',
     )
-    conditions: Missing[
-        Union[
-            OrgRulesetConditionsOneof0,
-            OrgRulesetConditionsOneof1,
-            OrgRulesetConditionsOneof2,
-        ]
+    privacy: Missing[Literal["secret", "closed"]] = Field(
+        default=UNSET,
+        description="The level of privacy this team should have. The options are:  \n**For a non-nested team:**  \n * `secret` - only visible to organization owners and members of this team.  \n * `closed` - visible to all members of this organization.  \nDefault: `secret`  \n**For a parent or child team:**  \n * `closed` - visible to all members of this organization.  \nDefault for child team: `closed`",
+    )
+    notification_setting: Missing[
+        Literal["notifications_enabled", "notifications_disabled"]
     ] = Field(
         default=UNSET,
-        title="Organization ruleset conditions",
-        description="Conditions for an organization ruleset.\nThe branch and tag rulesets conditions object should contain both `repository_name` and `ref_name` properties, or both `repository_id` and `ref_name` properties, or both `repository_property` and `ref_name` properties.\nThe push rulesets conditions object does not require the `ref_name` property.",
+        description="The notification setting the team has chosen. The options are:  \n * `notifications_enabled` - team members receive notifications when the team is @mentioned.  \n * `notifications_disabled` - no one receives notifications.  \nDefault: `notifications_enabled`",
     )
-    rules: Missing[
-        list[
-            Union[
-                RepositoryRuleCreation,
-                RepositoryRuleUpdate,
-                RepositoryRuleDeletion,
-                RepositoryRuleRequiredLinearHistory,
-                RepositoryRuleMergeQueue,
-                RepositoryRuleRequiredDeployments,
-                RepositoryRuleRequiredSignatures,
-                RepositoryRulePullRequest,
-                RepositoryRuleRequiredStatusChecks,
-                RepositoryRuleNonFastForward,
-                RepositoryRuleCommitMessagePattern,
-                RepositoryRuleCommitAuthorEmailPattern,
-                RepositoryRuleCommitterEmailPattern,
-                RepositoryRuleBranchNamePattern,
-                RepositoryRuleTagNamePattern,
-                RepositoryRuleOneof15,
-                RepositoryRuleOneof16,
-                RepositoryRuleOneof17,
-                RepositoryRuleOneof18,
-                RepositoryRuleWorkflows,
-                RepositoryRuleCodeScanning,
-            ]
-        ]
-    ] = Field(default=UNSET, description="An array of rules within the ruleset.")
+    permission: Missing[Literal["pull", "push"]] = Field(
+        default=UNSET,
+        description="**Closing down notice**. The permission that new repositories will be added to the team with when none is specified.",
+    )
+    parent_team_id: Missing[int] = Field(
+        default=UNSET, description="The ID of a team to set as the parent team."
+    )
 
 
-model_rebuild(OrgsOrgRulesetsRulesetIdPutBody)
+model_rebuild(OrgsOrgTeamsPostBody)
 
-__all__ = ("OrgsOrgRulesetsRulesetIdPutBody",)
+__all__ = ("OrgsOrgTeamsPostBody",)

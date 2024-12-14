@@ -9,140 +9,63 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0002 import SimpleUserType
 
+class WebhooksMilestoneType(TypedDict):
+    """Milestone
 
-class PersonalAccessTokenRequestType(TypedDict):
-    """Personal Access Token Request
-
-    Details of a Personal Access Token Request.
+    A collection of related issues and pull requests.
     """
 
+    closed_at: Union[datetime, None]
+    closed_issues: int
+    created_at: datetime
+    creator: Union[WebhooksMilestonePropCreatorType, None]
+    description: Union[str, None]
+    due_on: Union[datetime, None]
+    html_url: str
     id: int
-    owner: SimpleUserType
-    permissions_added: PersonalAccessTokenRequestPropPermissionsAddedType
-    permissions_upgraded: PersonalAccessTokenRequestPropPermissionsUpgradedType
-    permissions_result: PersonalAccessTokenRequestPropPermissionsResultType
-    repository_selection: Literal["none", "all", "subset"]
-    repository_count: Union[int, None]
-    repositories: Union[list[PersonalAccessTokenRequestPropRepositoriesItemsType], None]
-    created_at: str
-    token_id: int
-    token_name: str
-    token_expired: bool
-    token_expires_at: Union[str, None]
-    token_last_used_at: Union[str, None]
-
-
-class PersonalAccessTokenRequestPropRepositoriesItemsType(TypedDict):
-    """PersonalAccessTokenRequestPropRepositoriesItems"""
-
-    full_name: str
-    id: int
-    name: str
+    labels_url: str
     node_id: str
-    private: bool
+    number: int
+    open_issues: int
+    state: Literal["open", "closed"]
+    title: str
+    updated_at: datetime
+    url: str
 
 
-class PersonalAccessTokenRequestPropPermissionsAddedType(TypedDict):
-    """PersonalAccessTokenRequestPropPermissionsAdded
+class WebhooksMilestonePropCreatorType(TypedDict):
+    """User"""
 
-    New requested permissions, categorized by type of permission.
-    """
-
-    organization: NotRequired[
-        PersonalAccessTokenRequestPropPermissionsAddedPropOrganizationType
-    ]
-    repository: NotRequired[
-        PersonalAccessTokenRequestPropPermissionsAddedPropRepositoryType
-    ]
-    other: NotRequired[PersonalAccessTokenRequestPropPermissionsAddedPropOtherType]
-
-
-class PersonalAccessTokenRequestPropPermissionsAddedPropOrganizationType(TypedDict):
-    """PersonalAccessTokenRequestPropPermissionsAddedPropOrganization"""
-
-
-class PersonalAccessTokenRequestPropPermissionsAddedPropRepositoryType(TypedDict):
-    """PersonalAccessTokenRequestPropPermissionsAddedPropRepository"""
-
-
-class PersonalAccessTokenRequestPropPermissionsAddedPropOtherType(TypedDict):
-    """PersonalAccessTokenRequestPropPermissionsAddedPropOther"""
-
-
-class PersonalAccessTokenRequestPropPermissionsUpgradedType(TypedDict):
-    """PersonalAccessTokenRequestPropPermissionsUpgraded
-
-    Requested permissions that elevate access for a previously approved request for
-    access, categorized by type of permission.
-    """
-
-    organization: NotRequired[
-        PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganizationType
-    ]
-    repository: NotRequired[
-        PersonalAccessTokenRequestPropPermissionsUpgradedPropRepositoryType
-    ]
-    other: NotRequired[PersonalAccessTokenRequestPropPermissionsUpgradedPropOtherType]
-
-
-class PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganizationType(TypedDict):
-    """PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganization"""
-
-
-class PersonalAccessTokenRequestPropPermissionsUpgradedPropRepositoryType(TypedDict):
-    """PersonalAccessTokenRequestPropPermissionsUpgradedPropRepository"""
-
-
-class PersonalAccessTokenRequestPropPermissionsUpgradedPropOtherType(TypedDict):
-    """PersonalAccessTokenRequestPropPermissionsUpgradedPropOther"""
-
-
-class PersonalAccessTokenRequestPropPermissionsResultType(TypedDict):
-    """PersonalAccessTokenRequestPropPermissionsResult
-
-    Permissions requested, categorized by type of permission. This field
-    incorporates `permissions_added` and `permissions_upgraded`.
-    """
-
-    organization: NotRequired[
-        PersonalAccessTokenRequestPropPermissionsResultPropOrganizationType
-    ]
-    repository: NotRequired[
-        PersonalAccessTokenRequestPropPermissionsResultPropRepositoryType
-    ]
-    other: NotRequired[PersonalAccessTokenRequestPropPermissionsResultPropOtherType]
-
-
-class PersonalAccessTokenRequestPropPermissionsResultPropOrganizationType(TypedDict):
-    """PersonalAccessTokenRequestPropPermissionsResultPropOrganization"""
-
-
-class PersonalAccessTokenRequestPropPermissionsResultPropRepositoryType(TypedDict):
-    """PersonalAccessTokenRequestPropPermissionsResultPropRepository"""
-
-
-class PersonalAccessTokenRequestPropPermissionsResultPropOtherType(TypedDict):
-    """PersonalAccessTokenRequestPropPermissionsResultPropOther"""
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
 __all__ = (
-    "PersonalAccessTokenRequestPropPermissionsAddedPropOrganizationType",
-    "PersonalAccessTokenRequestPropPermissionsAddedPropOtherType",
-    "PersonalAccessTokenRequestPropPermissionsAddedPropRepositoryType",
-    "PersonalAccessTokenRequestPropPermissionsAddedType",
-    "PersonalAccessTokenRequestPropPermissionsResultPropOrganizationType",
-    "PersonalAccessTokenRequestPropPermissionsResultPropOtherType",
-    "PersonalAccessTokenRequestPropPermissionsResultPropRepositoryType",
-    "PersonalAccessTokenRequestPropPermissionsResultType",
-    "PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganizationType",
-    "PersonalAccessTokenRequestPropPermissionsUpgradedPropOtherType",
-    "PersonalAccessTokenRequestPropPermissionsUpgradedPropRepositoryType",
-    "PersonalAccessTokenRequestPropPermissionsUpgradedType",
-    "PersonalAccessTokenRequestPropRepositoriesItemsType",
-    "PersonalAccessTokenRequestType",
+    "WebhooksMilestonePropCreatorType",
+    "WebhooksMilestoneType",
 )

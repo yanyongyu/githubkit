@@ -11,13 +11,20 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-
-class PackagesBillingUsageType(TypedDict):
-    """PackagesBillingUsage"""
-
-    total_gigabytes_bandwidth_used: int
-    total_paid_gigabytes_bandwidth_used: int
-    included_gigabytes_bandwidth: int
+from .group_0072 import (
+    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType,
+)
 
 
-__all__ = ("PackagesBillingUsageType",)
+class RepositoryRulesetConditionsRepositoryNameTargetType(TypedDict):
+    """Repository ruleset conditions for repository names
+
+    Parameters for a repository name condition
+    """
+
+    repository_name: (
+        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType
+    )
+
+
+__all__ = ("RepositoryRulesetConditionsRepositoryNameTargetType",)

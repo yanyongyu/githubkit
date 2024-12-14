@@ -9,138 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0222 import ProtectedBranchPullRequestReviewType
-from .group_0224 import BranchRestrictionPolicyType
+from .group_0002 import SimpleUserType
+from .group_0008 import IntegrationType
 
 
-class BranchProtectionType(TypedDict):
-    """Branch Protection
+class DeploymentType(TypedDict):
+    """Deployment
 
-    Branch Protection
-    """
-
-    url: NotRequired[str]
-    enabled: NotRequired[bool]
-    required_status_checks: NotRequired[ProtectedBranchRequiredStatusCheckType]
-    enforce_admins: NotRequired[ProtectedBranchAdminEnforcedType]
-    required_pull_request_reviews: NotRequired[ProtectedBranchPullRequestReviewType]
-    restrictions: NotRequired[BranchRestrictionPolicyType]
-    required_linear_history: NotRequired[BranchProtectionPropRequiredLinearHistoryType]
-    allow_force_pushes: NotRequired[BranchProtectionPropAllowForcePushesType]
-    allow_deletions: NotRequired[BranchProtectionPropAllowDeletionsType]
-    block_creations: NotRequired[BranchProtectionPropBlockCreationsType]
-    required_conversation_resolution: NotRequired[
-        BranchProtectionPropRequiredConversationResolutionType
-    ]
-    name: NotRequired[str]
-    protection_url: NotRequired[str]
-    required_signatures: NotRequired[BranchProtectionPropRequiredSignaturesType]
-    lock_branch: NotRequired[BranchProtectionPropLockBranchType]
-    allow_fork_syncing: NotRequired[BranchProtectionPropAllowForkSyncingType]
-
-
-class ProtectedBranchAdminEnforcedType(TypedDict):
-    """Protected Branch Admin Enforced
-
-    Protected Branch Admin Enforced
+    A request for a specific ref(branch,sha,tag) to be deployed
     """
 
     url: str
-    enabled: bool
+    id: int
+    node_id: str
+    sha: str
+    ref: str
+    task: str
+    payload: Union[DeploymentPropPayloadOneof0Type, str]
+    original_environment: NotRequired[str]
+    environment: str
+    description: Union[str, None]
+    creator: Union[None, SimpleUserType]
+    created_at: datetime
+    updated_at: datetime
+    statuses_url: str
+    repository_url: str
+    transient_environment: NotRequired[bool]
+    production_environment: NotRequired[bool]
+    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
 
 
-class BranchProtectionPropRequiredLinearHistoryType(TypedDict):
-    """BranchProtectionPropRequiredLinearHistory"""
-
-    enabled: NotRequired[bool]
-
-
-class BranchProtectionPropAllowForcePushesType(TypedDict):
-    """BranchProtectionPropAllowForcePushes"""
-
-    enabled: NotRequired[bool]
-
-
-class BranchProtectionPropAllowDeletionsType(TypedDict):
-    """BranchProtectionPropAllowDeletions"""
-
-    enabled: NotRequired[bool]
-
-
-class BranchProtectionPropBlockCreationsType(TypedDict):
-    """BranchProtectionPropBlockCreations"""
-
-    enabled: NotRequired[bool]
-
-
-class BranchProtectionPropRequiredConversationResolutionType(TypedDict):
-    """BranchProtectionPropRequiredConversationResolution"""
-
-    enabled: NotRequired[bool]
-
-
-class BranchProtectionPropRequiredSignaturesType(TypedDict):
-    """BranchProtectionPropRequiredSignatures"""
-
-    url: str
-    enabled: bool
-
-
-class BranchProtectionPropLockBranchType(TypedDict):
-    """BranchProtectionPropLockBranch
-
-    Whether to set the branch as read-only. If this is true, users will not be able
-    to push to the branch.
-    """
-
-    enabled: NotRequired[bool]
-
-
-class BranchProtectionPropAllowForkSyncingType(TypedDict):
-    """BranchProtectionPropAllowForkSyncing
-
-    Whether users can pull changes from upstream when the branch is locked. Set to
-    `true` to allow fork syncing. Set to `false` to prevent fork syncing.
-    """
-
-    enabled: NotRequired[bool]
-
-
-class ProtectedBranchRequiredStatusCheckType(TypedDict):
-    """Protected Branch Required Status Check
-
-    Protected Branch Required Status Check
-    """
-
-    url: NotRequired[str]
-    enforcement_level: NotRequired[str]
-    contexts: list[str]
-    checks: list[ProtectedBranchRequiredStatusCheckPropChecksItemsType]
-    contexts_url: NotRequired[str]
-    strict: NotRequired[bool]
-
-
-class ProtectedBranchRequiredStatusCheckPropChecksItemsType(TypedDict):
-    """ProtectedBranchRequiredStatusCheckPropChecksItems"""
-
-    context: str
-    app_id: Union[int, None]
+class DeploymentPropPayloadOneof0Type(TypedDict):
+    """DeploymentPropPayloadOneof0"""
 
 
 __all__ = (
-    "BranchProtectionPropAllowDeletionsType",
-    "BranchProtectionPropAllowForcePushesType",
-    "BranchProtectionPropAllowForkSyncingType",
-    "BranchProtectionPropBlockCreationsType",
-    "BranchProtectionPropLockBranchType",
-    "BranchProtectionPropRequiredConversationResolutionType",
-    "BranchProtectionPropRequiredLinearHistoryType",
-    "BranchProtectionPropRequiredSignaturesType",
-    "BranchProtectionType",
-    "ProtectedBranchAdminEnforcedType",
-    "ProtectedBranchRequiredStatusCheckPropChecksItemsType",
-    "ProtectedBranchRequiredStatusCheckType",
+    "DeploymentPropPayloadOneof0Type",
+    "DeploymentType",
 )

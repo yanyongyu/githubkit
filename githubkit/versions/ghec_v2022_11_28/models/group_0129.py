@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from datetime import datetime
+from typing import Union
 
 from pydantic import Field
 
@@ -17,24 +18,86 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0127 import Issue
+from .group_0128 import IssueComment
 
-class OrganizationCustomOrganizationRoleCreateSchema(GitHubModel):
-    """OrganizationCustomOrganizationRoleCreateSchema"""
 
-    name: str = Field(description="The name of the custom role.")
-    description: Missing[str] = Field(
+class EventPropPayload(GitHubModel):
+    """EventPropPayload"""
+
+    action: Missing[str] = Field(default=UNSET)
+    issue: Missing[Issue] = Field(
         default=UNSET,
-        description="A short description about the intended usage of this role or what permissions it grants.",
+        title="Issue",
+        description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
     )
-    permissions: list[str] = Field(
-        description="A list of additional permissions included in this role."
-    )
-    base_role: Missing[Literal["read", "triage", "write", "maintain", "admin"]] = Field(
+    comment: Missing[IssueComment] = Field(
         default=UNSET,
-        description="The system role from which this role can inherit permissions.",
+        title="Issue Comment",
+        description="Comments provide a way for people to collaborate on an issue.",
     )
+    pages: Missing[list[EventPropPayloadPropPagesItems]] = Field(default=UNSET)
 
 
-model_rebuild(OrganizationCustomOrganizationRoleCreateSchema)
+class EventPropPayloadPropPagesItems(GitHubModel):
+    """EventPropPayloadPropPagesItems"""
 
-__all__ = ("OrganizationCustomOrganizationRoleCreateSchema",)
+    page_name: Missing[str] = Field(default=UNSET)
+    title: Missing[str] = Field(default=UNSET)
+    summary: Missing[Union[str, None]] = Field(default=UNSET)
+    action: Missing[str] = Field(default=UNSET)
+    sha: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+
+
+class Event(GitHubModel):
+    """Event
+
+    Event
+    """
+
+    id: str = Field()
+    type: Union[str, None] = Field()
+    actor: Actor = Field(title="Actor", description="Actor")
+    repo: EventPropRepo = Field()
+    org: Missing[Actor] = Field(default=UNSET, title="Actor", description="Actor")
+    payload: EventPropPayload = Field()
+    public: bool = Field()
+    created_at: Union[datetime, None] = Field()
+
+
+class Actor(GitHubModel):
+    """Actor
+
+    Actor
+    """
+
+    id: int = Field()
+    login: str = Field()
+    display_login: Missing[str] = Field(default=UNSET)
+    gravatar_id: Union[str, None] = Field()
+    url: str = Field()
+    avatar_url: str = Field()
+
+
+class EventPropRepo(GitHubModel):
+    """EventPropRepo"""
+
+    id: int = Field()
+    name: str = Field()
+    url: str = Field()
+
+
+model_rebuild(EventPropPayload)
+model_rebuild(EventPropPayloadPropPagesItems)
+model_rebuild(Event)
+model_rebuild(Actor)
+model_rebuild(EventPropRepo)
+
+__all__ = (
+    "Actor",
+    "Event",
+    "EventPropPayload",
+    "EventPropPayloadPropPagesItems",
+    "EventPropRepo",
+)

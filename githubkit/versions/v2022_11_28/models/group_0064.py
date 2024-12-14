@@ -9,22 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class OidcCustomSub(GitHubModel):
-    """Actions OIDC Subject customization
+class RunnerLabel(GitHubModel):
+    """Self hosted runner label
 
-    Actions OIDC Subject customization
+    A label for a self hosted runner
     """
 
-    include_claim_keys: list[str] = Field(
-        description="Array of unique strings. Each claim key can only contain alphanumeric characters and underscores."
+    id: Missing[int] = Field(
+        default=UNSET, description="Unique identifier of the label."
+    )
+    name: str = Field(description="Name of the label.")
+    type: Missing[Literal["read-only", "custom"]] = Field(
+        default=UNSET,
+        description="The type of label. Read-only labels are applied automatically when the runner is configured.",
     )
 
 
-model_rebuild(OidcCustomSub)
+model_rebuild(RunnerLabel)
 
-__all__ = ("OidcCustomSub",)
+__all__ = ("RunnerLabel",)

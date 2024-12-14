@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,22 +17,22 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0095 import RepositoryRuleRequiredStatusChecksPropParameters
 
-class ThreadSubscription(GitHubModel):
-    """Thread Subscription
 
-    Thread Subscription
+class RepositoryRuleRequiredStatusChecks(GitHubModel):
+    """required_status_checks
+
+    Choose which status checks must pass before the ref is updated. When enabled,
+    commits must first be pushed to another ref where the checks pass.
     """
 
-    subscribed: bool = Field()
-    ignored: bool = Field()
-    reason: Union[str, None] = Field()
-    created_at: Union[datetime, None] = Field()
-    url: str = Field()
-    thread_url: Missing[str] = Field(default=UNSET)
-    repository_url: Missing[str] = Field(default=UNSET)
+    type: Literal["required_status_checks"] = Field()
+    parameters: Missing[RepositoryRuleRequiredStatusChecksPropParameters] = Field(
+        default=UNSET
+    )
 
 
-model_rebuild(ThreadSubscription)
+model_rebuild(RepositoryRuleRequiredStatusChecks)
 
-__all__ = ("ThreadSubscription",)
+__all__ = ("RepositoryRuleRequiredStatusChecks",)

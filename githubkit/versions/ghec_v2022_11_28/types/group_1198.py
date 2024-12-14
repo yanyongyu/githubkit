@@ -11,9 +11,14 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-
-class UserInteractionLimitsGetResponse200Anyof1Type(TypedDict):
-    """UserInteractionLimitsGetResponse200Anyof1"""
+from .group_0143 import MinimalRepositoryType
 
 
-__all__ = ("UserInteractionLimitsGetResponse200Anyof1Type",)
+class UserCodespacesSecretsSecretNameRepositoriesGetResponse200Type(TypedDict):
+    """UserCodespacesSecretsSecretNameRepositoriesGetResponse200"""
+
+    total_count: int
+    repositories: list[MinimalRepositoryType]
+
+
+__all__ = ("UserCodespacesSecretsSecretNameRepositoriesGetResponse200Type",)

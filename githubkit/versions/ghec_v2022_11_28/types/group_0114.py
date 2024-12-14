@@ -11,25 +11,22 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0072 import (
+    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType,
+)
+from .group_0074 import RepositoryRulesetConditionsPropRefNameType
 
-class ExternalGroupsType(TypedDict):
-    """ExternalGroups
 
-    A list of external groups available to be connected to a team
+class OrgRulesetConditionsOneof0Type(TypedDict):
+    """repository_name_and_ref_name
+
+    Conditions to target repositories by name and refs by name
     """
 
-    groups: NotRequired[list[ExternalGroupsPropGroupsItemsType]]
+    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
+    repository_name: (
+        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType
+    )
 
 
-class ExternalGroupsPropGroupsItemsType(TypedDict):
-    """ExternalGroupsPropGroupsItems"""
-
-    group_id: int
-    group_name: str
-    updated_at: str
-
-
-__all__ = (
-    "ExternalGroupsPropGroupsItemsType",
-    "ExternalGroupsType",
-)
+__all__ = ("OrgRulesetConditionsOneof0Type",)

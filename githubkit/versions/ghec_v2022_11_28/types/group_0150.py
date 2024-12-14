@@ -11,22 +11,19 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0143 import RepositoryRulesetConditionsPropRefNameType
-from .group_0145 import (
-    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType,
-)
 
+class ActionsPublicKeyType(TypedDict):
+    """ActionsPublicKey
 
-class OrgRulesetConditionsOneof0Type(TypedDict):
-    """repository_name_and_ref_name
-
-    Conditions to target repositories by name and refs by name
+    The public key used for setting Actions Secrets.
     """
 
-    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
-    repository_name: (
-        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType
-    )
+    key_id: str
+    key: str
+    id: NotRequired[int]
+    url: NotRequired[str]
+    title: NotRequired[str]
+    created_at: NotRequired[str]
 
 
-__all__ = ("OrgRulesetConditionsOneof0Type",)
+__all__ = ("ActionsPublicKeyType",)

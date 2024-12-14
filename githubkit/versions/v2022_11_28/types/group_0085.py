@@ -9,43 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from datetime import date
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class CopilotOrganizationDetailsType(TypedDict):
-    """Copilot Organization Details
+class CopilotUsageMetricsType(TypedDict):
+    """Copilot Usage Metrics
 
-    Information about the seat breakdown and policies set for an organization with a
-    Copilot Business or Copilot Enterprise subscription.
+    Summary of Copilot usage.
     """
 
-    seat_breakdown: CopilotSeatBreakdownType
-    public_code_suggestions: Literal["allow", "block", "unconfigured", "unknown"]
-    ide_chat: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
-    platform_chat: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
-    cli: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
-    seat_management_setting: Literal[
-        "assign_all", "assign_selected", "disabled", "unconfigured"
-    ]
-    plan_type: NotRequired[Literal["business", "enterprise", "unknown"]]
+    day: date
+    total_suggestions_count: NotRequired[int]
+    total_acceptances_count: NotRequired[int]
+    total_lines_suggested: NotRequired[int]
+    total_lines_accepted: NotRequired[int]
+    total_active_users: NotRequired[int]
+    total_chat_acceptances: NotRequired[int]
+    total_chat_turns: NotRequired[int]
+    total_active_chat_users: NotRequired[int]
+    breakdown: Union[list[CopilotUsageMetricsPropBreakdownItemsType], None]
 
 
-class CopilotSeatBreakdownType(TypedDict):
-    """Copilot Business Seat Breakdown
+class CopilotUsageMetricsPropBreakdownItemsType(TypedDict):
+    """CopilotUsageMetricsPropBreakdownItems
 
-    The breakdown of Copilot Business seats for the organization.
+    Breakdown of Copilot usage by editor for this language
     """
 
-    total: NotRequired[int]
-    added_this_cycle: NotRequired[int]
-    pending_cancellation: NotRequired[int]
-    pending_invitation: NotRequired[int]
-    active_this_cycle: NotRequired[int]
-    inactive_this_cycle: NotRequired[int]
+    language: NotRequired[str]
+    editor: NotRequired[str]
+    suggestions_count: NotRequired[int]
+    acceptances_count: NotRequired[int]
+    lines_suggested: NotRequired[int]
+    lines_accepted: NotRequired[int]
+    active_users: NotRequired[int]
 
 
 __all__ = (
-    "CopilotOrganizationDetailsType",
-    "CopilotSeatBreakdownType",
+    "CopilotUsageMetricsPropBreakdownItemsType",
+    "CopilotUsageMetricsType",
 )

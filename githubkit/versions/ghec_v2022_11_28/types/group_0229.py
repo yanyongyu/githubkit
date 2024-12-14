@@ -9,29 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class DiffEntryType(TypedDict):
-    """Diff Entry
+class AutolinkType(TypedDict):
+    """Autolink reference
 
-    Diff Entry
+    An autolink reference.
     """
 
-    sha: str
-    filename: str
-    status: Literal[
-        "added", "removed", "modified", "renamed", "copied", "changed", "unchanged"
-    ]
-    additions: int
-    deletions: int
-    changes: int
-    blob_url: Union[str, None]
-    raw_url: Union[str, None]
-    contents_url: str
-    patch: NotRequired[str]
-    previous_filename: NotRequired[str]
+    id: int
+    key_prefix: str
+    url_template: str
+    is_alphanumeric: bool
 
 
-__all__ = ("DiffEntryType",)
+__all__ = ("AutolinkType",)

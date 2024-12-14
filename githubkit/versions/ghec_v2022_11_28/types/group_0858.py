@@ -11,13 +11,14 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0066 import CustomPropertyType
+from .group_0035 import RunnerLabelType
 
 
-class EnterprisesEnterprisePropertiesSchemaPatchBodyType(TypedDict):
-    """EnterprisesEnterprisePropertiesSchemaPatchBody"""
+class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type(TypedDict):
+    """EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200"""
 
-    properties: list[CustomPropertyType]
+    total_count: int
+    labels: list[RunnerLabelType]
 
 
-__all__ = ("EnterprisesEnterprisePropertiesSchemaPatchBodyType",)
+__all__ = ("EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type",)

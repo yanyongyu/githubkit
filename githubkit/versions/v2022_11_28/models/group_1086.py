@@ -14,14 +14,14 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoTagsProtectionPostBody(GitHubModel):
-    """ReposOwnerRepoTagsProtectionPostBody"""
+class ReposOwnerRepoTopicsPutBody(GitHubModel):
+    """ReposOwnerRepoTopicsPutBody"""
 
-    pattern: str = Field(
-        description="An optional glob pattern to match against when enforcing tag protection."
+    names: list[str] = Field(
+        description="An array of topics to add to the repository. Pass one or more topics to _replace_ the set of existing topics. Send an empty array (`[]`) to clear all topics from the repository. **Note:** Topic `names` cannot contain uppercase letters."
     )
 
 
-model_rebuild(ReposOwnerRepoTagsProtectionPostBody)
+model_rebuild(ReposOwnerRepoTopicsPutBody)
 
-__all__ = ("ReposOwnerRepoTagsProtectionPostBody",)
+__all__ = ("ReposOwnerRepoTopicsPutBody",)

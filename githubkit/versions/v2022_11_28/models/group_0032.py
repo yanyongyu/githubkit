@@ -9,102 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import date
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0027 import DependabotAlertPackage
 
-class CopilotUsageMetrics(GitHubModel):
-    """Copilot Usage Metrics
 
-    Summary of Copilot usage.
+class DependabotAlertWithRepositoryPropDependency(GitHubModel):
+    """DependabotAlertWithRepositoryPropDependency
+
+    Details for the vulnerable dependency.
     """
 
-    day: date = Field(
-        description="The date for which the usage metrics are reported, in `YYYY-MM-DD` format."
+    package: Missing[DependabotAlertPackage] = Field(
+        default=UNSET, description="Details for the vulnerable package."
     )
-    total_suggestions_count: Missing[int] = Field(
+    manifest_path: Missing[str] = Field(
         default=UNSET,
-        description="The total number of Copilot code completion suggestions shown to users.",
+        description="The full path to the dependency manifest file, relative to the root of the repository.",
     )
-    total_acceptances_count: Missing[int] = Field(
-        default=UNSET,
-        description="The total number of Copilot code completion suggestions accepted by users.",
-    )
-    total_lines_suggested: Missing[int] = Field(
-        default=UNSET,
-        description="The total number of lines of code completions suggested by Copilot.",
-    )
-    total_lines_accepted: Missing[int] = Field(
-        default=UNSET,
-        description="The total number of lines of code completions accepted by users.",
-    )
-    total_active_users: Missing[int] = Field(
-        default=UNSET,
-        description="The total number of users who were shown Copilot code completion suggestions during the day specified.",
-    )
-    total_chat_acceptances: Missing[int] = Field(
-        default=UNSET,
-        description="The total instances of users who accepted code suggested by Copilot Chat in the IDE (panel and inline).",
-    )
-    total_chat_turns: Missing[int] = Field(
-        default=UNSET,
-        description="The total number of chat turns (prompt and response pairs) sent between users and Copilot Chat in the IDE.",
-    )
-    total_active_chat_users: Missing[int] = Field(
-        default=UNSET,
-        description="The total number of users who interacted with Copilot Chat in the IDE during the day specified.",
-    )
-    breakdown: Union[list[CopilotUsageMetricsPropBreakdownItems], None] = Field(
-        description="Breakdown of Copilot code completions usage by language and editor"
+    scope: Missing[Union[None, Literal["development", "runtime"]]] = Field(
+        default=UNSET, description="The execution scope of the vulnerable dependency."
     )
 
 
-class CopilotUsageMetricsPropBreakdownItems(ExtraGitHubModel):
-    """CopilotUsageMetricsPropBreakdownItems
+model_rebuild(DependabotAlertWithRepositoryPropDependency)
 
-    Breakdown of Copilot usage by editor for this language
-    """
-
-    language: Missing[str] = Field(
-        default=UNSET,
-        description="The language in which Copilot suggestions were shown to users in the specified editor.",
-    )
-    editor: Missing[str] = Field(
-        default=UNSET,
-        description="The editor in which Copilot suggestions were shown to users for the specified language.",
-    )
-    suggestions_count: Missing[int] = Field(
-        default=UNSET,
-        description="The number of Copilot suggestions shown to users in the editor specified during the day specified.",
-    )
-    acceptances_count: Missing[int] = Field(
-        default=UNSET,
-        description="The number of Copilot suggestions accepted by users in the editor specified during the day specified.",
-    )
-    lines_suggested: Missing[int] = Field(
-        default=UNSET,
-        description="The number of lines of code suggested by Copilot in the editor specified during the day specified.",
-    )
-    lines_accepted: Missing[int] = Field(
-        default=UNSET,
-        description="The number of lines of code accepted by users in the editor specified during the day specified.",
-    )
-    active_users: Missing[int] = Field(
-        default=UNSET,
-        description="The number of users who were shown Copilot completion suggestions in the editor specified during the day specified.",
-    )
-
-
-model_rebuild(CopilotUsageMetrics)
-model_rebuild(CopilotUsageMetricsPropBreakdownItems)
-
-__all__ = (
-    "CopilotUsageMetrics",
-    "CopilotUsageMetricsPropBreakdownItems",
-)
+__all__ = ("DependabotAlertWithRepositoryPropDependency",)

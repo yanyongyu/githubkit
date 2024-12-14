@@ -12,58 +12,70 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0068 import RepositoryRulesetBypassActorType
+from .group_0073 import RepositoryRulesetConditionsType
+from .group_0083 import (
+    RepositoryRuleCreationType,
+    RepositoryRuleDeletionType,
+    RepositoryRuleNonFastForwardType,
+    RepositoryRuleOneof15Type,
+    RepositoryRuleOneof17Type,
+    RepositoryRuleRequiredSignaturesType,
+)
+from .group_0084 import RepositoryRuleUpdateType
+from .group_0086 import (
+    RepositoryRuleOneof16Type,
+    RepositoryRuleRequiredLinearHistoryType,
+)
+from .group_0087 import RepositoryRuleMergeQueueType
+from .group_0089 import RepositoryRuleRequiredDeploymentsType
+from .group_0092 import RepositoryRulePullRequestType
+from .group_0094 import RepositoryRuleRequiredStatusChecksType
+from .group_0096 import RepositoryRuleCommitMessagePatternType
+from .group_0098 import RepositoryRuleCommitAuthorEmailPatternType
+from .group_0100 import RepositoryRuleCommitterEmailPatternType
+from .group_0102 import RepositoryRuleBranchNamePatternType
+from .group_0104 import RepositoryRuleTagNamePatternType
+from .group_0107 import RepositoryRuleWorkflowsType
+from .group_0109 import RepositoryRuleCodeScanningType
+from .group_0111 import RepositoryRuleOneof18Type
 
-class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyType(TypedDict):
-    """ScimV2OrganizationsOrgUsersScimUserIdPatchBody"""
 
-    schemas: NotRequired[list[str]]
-    operations: list[
-        ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsType
-    ]
+class ReposOwnerRepoRulesetsRulesetIdPutBodyType(TypedDict):
+    """ReposOwnerRepoRulesetsRulesetIdPutBody"""
 
-
-class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsType(TypedDict):
-    """ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItems"""
-
-    op: Literal["add", "remove", "replace"]
-    path: NotRequired[str]
-    value: NotRequired[
-        Union[
-            ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0Type,
-            list[
-                ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1ItemsType
-            ],
-            str,
+    name: NotRequired[str]
+    target: NotRequired[Literal["branch", "tag", "push"]]
+    enforcement: NotRequired[Literal["disabled", "active", "evaluate"]]
+    bypass_actors: NotRequired[list[RepositoryRulesetBypassActorType]]
+    conditions: NotRequired[RepositoryRulesetConditionsType]
+    rules: NotRequired[
+        list[
+            Union[
+                RepositoryRuleCreationType,
+                RepositoryRuleUpdateType,
+                RepositoryRuleDeletionType,
+                RepositoryRuleRequiredLinearHistoryType,
+                RepositoryRuleMergeQueueType,
+                RepositoryRuleRequiredDeploymentsType,
+                RepositoryRuleRequiredSignaturesType,
+                RepositoryRulePullRequestType,
+                RepositoryRuleRequiredStatusChecksType,
+                RepositoryRuleNonFastForwardType,
+                RepositoryRuleCommitMessagePatternType,
+                RepositoryRuleCommitAuthorEmailPatternType,
+                RepositoryRuleCommitterEmailPatternType,
+                RepositoryRuleBranchNamePatternType,
+                RepositoryRuleTagNamePatternType,
+                RepositoryRuleOneof15Type,
+                RepositoryRuleOneof16Type,
+                RepositoryRuleOneof17Type,
+                RepositoryRuleOneof18Type,
+                RepositoryRuleWorkflowsType,
+                RepositoryRuleCodeScanningType,
+            ]
         ]
     ]
 
 
-class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0Type(
-    TypedDict
-):
-    """ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0"""
-
-    active: NotRequired[Union[bool, None]]
-    user_name: NotRequired[Union[str, None]]
-    external_id: NotRequired[Union[str, None]]
-    given_name: NotRequired[Union[str, None]]
-    family_name: NotRequired[Union[str, None]]
-
-
-class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1ItemsType(
-    TypedDict
-):
-    """ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1
-    Items
-    """
-
-    value: NotRequired[str]
-    primary: NotRequired[bool]
-
-
-__all__ = (
-    "ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0Type",
-    "ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1ItemsType",
-    "ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsType",
-    "ScimV2OrganizationsOrgUsersScimUserIdPatchBodyType",
-)
+__all__ = ("ReposOwnerRepoRulesetsRulesetIdPutBodyType",)

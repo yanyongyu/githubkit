@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,34 +17,19 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0002 import SimpleUser
+from .group_0085 import RepositoryRuleUpdatePropParameters
 
 
-class GistCommit(GitHubModel):
-    """Gist Commit
+class RepositoryRuleUpdate(GitHubModel):
+    """update
 
-    Gist Commit
+    Only allow users with bypass permission to update matching refs.
     """
 
-    url: str = Field()
-    version: str = Field()
-    user: Union[None, SimpleUser] = Field()
-    change_status: GistCommitPropChangeStatus = Field()
-    committed_at: datetime = Field()
+    type: Literal["update"] = Field()
+    parameters: Missing[RepositoryRuleUpdatePropParameters] = Field(default=UNSET)
 
 
-class GistCommitPropChangeStatus(GitHubModel):
-    """GistCommitPropChangeStatus"""
+model_rebuild(RepositoryRuleUpdate)
 
-    total: Missing[int] = Field(default=UNSET)
-    additions: Missing[int] = Field(default=UNSET)
-    deletions: Missing[int] = Field(default=UNSET)
-
-
-model_rebuild(GistCommit)
-model_rebuild(GistCommitPropChangeStatus)
-
-__all__ = (
-    "GistCommit",
-    "GistCommitPropChangeStatus",
-)
+__all__ = ("RepositoryRuleUpdate",)

@@ -11,20 +11,14 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0149 import (
-    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType,
-)
 
+class OidcCustomSubType(TypedDict):
+    """Actions OIDC Subject customization
 
-class RepositoryRulesetConditionsRepositoryPropertyTargetType(TypedDict):
-    """Repository ruleset conditions for repository properties
-
-    Parameters for a repository property condition
+    Actions OIDC Subject customization
     """
 
-    repository_property: (
-        RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType
-    )
+    include_claim_keys: list[str]
 
 
-__all__ = ("RepositoryRulesetConditionsRepositoryPropertyTargetType",)
+__all__ = ("OidcCustomSubType",)

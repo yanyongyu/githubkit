@@ -9,28 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0002 import SimpleUser
 
-class OidcCustomSubRepo(GitHubModel):
-    """Actions OIDC subject customization for a repository
 
-    Actions OIDC subject customization for a repository
+class ProjectCard(GitHubModel):
+    """Project Card
+
+    Project cards represent a scope of work.
     """
 
-    use_default: bool = Field(
-        description="Whether to use the default template or not. If `true`, the `include_claim_keys` field is ignored."
+    url: str = Field()
+    id: int = Field(description="The project card's ID")
+    node_id: str = Field()
+    note: Union[str, None] = Field()
+    creator: Union[None, SimpleUser] = Field()
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+    archived: Missing[bool] = Field(
+        default=UNSET, description="Whether or not the card is archived"
     )
-    include_claim_keys: Missing[list[str]] = Field(
-        default=UNSET,
-        description="Array of unique strings. Each claim key can only contain alphanumeric characters and underscores.",
-    )
+    column_name: Missing[str] = Field(default=UNSET)
+    project_id: Missing[str] = Field(default=UNSET)
+    column_url: str = Field()
+    content_url: Missing[str] = Field(default=UNSET)
+    project_url: str = Field()
 
 
-model_rebuild(OidcCustomSubRepo)
+model_rebuild(ProjectCard)
 
-__all__ = ("OidcCustomSubRepo",)
+__all__ = ("ProjectCard",)

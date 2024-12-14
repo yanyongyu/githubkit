@@ -9,47 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0058 import MinimalRepository
 
+class OidcCustomSub(GitHubModel):
+    """Actions OIDC Subject customization
 
-class Thread(GitHubModel):
-    """Thread
-
-    Thread
+    Actions OIDC Subject customization
     """
 
-    id: str = Field()
-    repository: MinimalRepository = Field(
-        title="Minimal Repository", description="Minimal Repository"
+    include_claim_keys: list[str] = Field(
+        description="Array of unique strings. Each claim key can only contain alphanumeric characters and underscores."
     )
-    subject: ThreadPropSubject = Field()
-    reason: str = Field()
-    unread: bool = Field()
-    updated_at: str = Field()
-    last_read_at: Union[str, None] = Field()
-    url: str = Field()
-    subscription_url: str = Field()
 
 
-class ThreadPropSubject(GitHubModel):
-    """ThreadPropSubject"""
+model_rebuild(OidcCustomSub)
 
-    title: str = Field()
-    url: str = Field()
-    latest_comment_url: str = Field()
-    type: str = Field()
-
-
-model_rebuild(Thread)
-model_rebuild(ThreadPropSubject)
-
-__all__ = (
-    "Thread",
-    "ThreadPropSubject",
-)
+__all__ = ("OidcCustomSub",)

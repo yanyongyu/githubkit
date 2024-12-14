@@ -12,25 +12,24 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class RepositoryRuleRequiredStatusChecksPropParametersType(TypedDict):
-    """RepositoryRuleRequiredStatusChecksPropParameters"""
+class ExternalGroupsType(TypedDict):
+    """ExternalGroups
 
-    do_not_enforce_on_create: NotRequired[bool]
-    required_status_checks: list[RepositoryRuleParamsStatusCheckConfigurationType]
-    strict_required_status_checks_policy: bool
-
-
-class RepositoryRuleParamsStatusCheckConfigurationType(TypedDict):
-    """StatusCheckConfiguration
-
-    Required status check
+    A list of external groups available to be connected to a team
     """
 
-    context: str
-    integration_id: NotRequired[int]
+    groups: NotRequired[list[ExternalGroupsPropGroupsItemsType]]
+
+
+class ExternalGroupsPropGroupsItemsType(TypedDict):
+    """ExternalGroupsPropGroupsItems"""
+
+    group_id: int
+    group_name: str
+    updated_at: str
 
 
 __all__ = (
-    "RepositoryRuleParamsStatusCheckConfigurationType",
-    "RepositoryRuleRequiredStatusChecksPropParametersType",
+    "ExternalGroupsPropGroupsItemsType",
+    "ExternalGroupsType",
 )

@@ -9,39 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0398 import Traffic
 
 
-class PatchSchema(GitHubModel):
-    """PatchSchema"""
+class CloneTraffic(GitHubModel):
+    """Clone Traffic
 
-    operations: list[PatchSchemaPropOperationsItems] = Field(
-        alias="Operations", description="patch operations list"
-    )
-    schemas: list[Literal["urn:ietf:params:scim:api:messages:2.0:PatchOp"]] = Field()
+    Clone Traffic
+    """
 
-
-class PatchSchemaPropOperationsItems(GitHubModel):
-    """PatchSchemaPropOperationsItems"""
-
-    op: Literal["add", "replace", "remove"] = Field()
-    path: Missing[str] = Field(default=UNSET)
-    value: Missing[str] = Field(
-        default=UNSET,
-        description="Corresponding 'value' of that field specified by 'path'",
-    )
+    count: int = Field()
+    uniques: int = Field()
+    clones: list[Traffic] = Field()
 
 
-model_rebuild(PatchSchema)
-model_rebuild(PatchSchemaPropOperationsItems)
+model_rebuild(CloneTraffic)
 
-__all__ = (
-    "PatchSchema",
-    "PatchSchemaPropOperationsItems",
-)
+__all__ = ("CloneTraffic",)

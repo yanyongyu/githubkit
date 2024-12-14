@@ -9,17 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+from typing import Union
 from typing_extensions import TypedDict
 
-
-class ActionsVariableType(TypedDict):
-    """Actions Variable"""
-
-    name: str
-    value: str
-    created_at: datetime
-    updated_at: datetime
+from .group_0002 import SimpleUserType
 
 
-__all__ = ("ActionsVariableType",)
+class ProjectCollaboratorPermissionType(TypedDict):
+    """Project Collaborator Permission
+
+    Project Collaborator Permission
+    """
+
+    permission: str
+    user: Union[None, SimpleUserType]
+
+
+__all__ = ("ProjectCollaboratorPermissionType",)

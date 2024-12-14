@@ -18,31 +18,28 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class RepositoryRuleOneof18(GitHubModel):
-    """max_file_size
+class OrganizationCustomOrganizationRoleUpdateSchema(GitHubModel):
+    """OrganizationCustomOrganizationRoleUpdateSchema"""
 
-    Prevent commits that exceed a specified file size limit from being pushed to the
-    commit.
-    """
-
-    type: Literal["max_file_size"] = Field()
-    parameters: Missing[RepositoryRuleOneof18PropParameters] = Field(default=UNSET)
-
-
-class RepositoryRuleOneof18PropParameters(GitHubModel):
-    """RepositoryRuleOneof18PropParameters"""
-
-    max_file_size: int = Field(
-        le=100.0,
-        ge=1.0,
-        description="The maximum file size allowed in megabytes. This limit does not apply to Git Large File Storage (Git LFS).",
+    name: Missing[str] = Field(
+        default=UNSET, description="The name of the custom role."
+    )
+    description: Missing[str] = Field(
+        default=UNSET,
+        description="A short description about the intended use of this role or the permissions it grants.",
+    )
+    permissions: Missing[list[str]] = Field(
+        default=UNSET,
+        description="A list of additional permissions included in this role.",
+    )
+    base_role: Missing[
+        Literal["none", "read", "triage", "write", "maintain", "admin"]
+    ] = Field(
+        default=UNSET,
+        description="The system role from which this role can inherit permissions.",
     )
 
 
-model_rebuild(RepositoryRuleOneof18)
-model_rebuild(RepositoryRuleOneof18PropParameters)
+model_rebuild(OrganizationCustomOrganizationRoleUpdateSchema)
 
-__all__ = (
-    "RepositoryRuleOneof18",
-    "RepositoryRuleOneof18PropParameters",
-)
+__all__ = ("OrganizationCustomOrganizationRoleUpdateSchema",)
