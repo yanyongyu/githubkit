@@ -42,6 +42,33 @@ class Response(Generic[MT, JT]):
         )
 
     @property
+    def is_informational(self) -> bool:
+        return self._response.is_informational
+
+    @property
+    def is_success(self) -> bool:
+        return self._response.is_success
+
+    @property
+    def is_redirect(self) -> bool:
+        return self._response.is_redirect
+
+    @property
+    def is_client_error(self) -> bool:
+        return self._response.is_client_error
+
+    @property
+    def is_server_error(self) -> bool:
+        return self._response.is_server_error
+
+    @property
+    def is_error(self) -> bool:
+        return self._response.is_error
+
+    def raise_for_status(self) -> None:
+        self._response.raise_for_status()
+
+    @property
     def headers(self) -> httpx.Headers:
         return self._response.headers
 
