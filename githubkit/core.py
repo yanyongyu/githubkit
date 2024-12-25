@@ -478,6 +478,11 @@ class GitHubCore(Generic[A]):
         response_model: Union[type[T], UnsetType] = UNSET,
         error_models: Optional[dict[str, type]] = None,
     ) -> Union[Response[T], Response[Any]]:
+        """Send a request.
+
+        Response will be checked and the request will be retried if necessary.
+        """
+
         retry_count: int = 0
         while True:
             try:
@@ -555,6 +560,11 @@ class GitHubCore(Generic[A]):
         response_model: Union[type[T], UnsetType] = UNSET,
         error_models: Optional[dict[str, type]] = None,
     ) -> Union[Response[T], Response[Any]]:
+        """Asynchronously send a request.
+
+        Response will be checked and the request will be retried if necessary.
+        """
+
         retry_count: int = 0
         while True:
             try:

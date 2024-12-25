@@ -17,6 +17,8 @@ R = Union[
 
 
 class Paginator(Generic[RT]):
+    """Paginate through the responses of the rest api request."""
+
     @overload
     def __init__(
         self: "Paginator[RTS]",

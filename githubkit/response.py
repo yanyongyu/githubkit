@@ -10,6 +10,8 @@ JT = TypeVar("JT", default=Any)
 
 
 class Response(Generic[MT, JT]):
+    """A wrapper around httpx.Response that provides data model validation."""
+
     def __init__(self, response: httpx.Response, data_model: type[MT]):
         self._response = response
         self._data_model = data_model

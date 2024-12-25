@@ -33,6 +33,8 @@ class BaseThrottler(abc.ABC):
 
 
 class LocalThrottler(BaseThrottler):
+    """Simple local throttler."""
+
     def __init__(self, max_concurrency: int) -> None:
         self.max_concurrency = max_concurrency
         self._semaphore: Optional[threading.Semaphore] = None

@@ -7,6 +7,8 @@ from .typing import RetryOption as RetryOption
 
 
 class RetryRateLimit:
+    """Retry decision function for rate limit exceeded."""
+
     __slots__ = ("max_retry",)
 
     def __init__(self, max_retry: int = 1) -> None:
@@ -30,6 +32,8 @@ RETRY_RATE_LIMIT = RetryRateLimit()
 
 
 class RetryServerError:
+    """Retry decision function for server error."""
+
     __slots__ = ("max_retry",)
 
     def __init__(self, max_retry: int = 3) -> None:
@@ -57,6 +61,8 @@ RETRY_SERVER_ERROR = RetryServerError()
 
 
 class RetryChainDecision:
+    """Chain multiple retry decision functions."""
+
     __slots__ = ("decision_funcs",)
 
     def __init__(self, *decision_funcs: RetryDecisionFunc) -> None:
