@@ -8,7 +8,7 @@
   "customizations": {
     "vscode": {
       "settings": {
-        "python.analysis.diagnosticMode": "workspace",
+        "python.analysis.diagnosticMode": "openFilesOnly",
         "[python]": {
           "editor.defaultFormatter": "charliermarsh.ruff",
           "editor.codeActionsOnSave": {
