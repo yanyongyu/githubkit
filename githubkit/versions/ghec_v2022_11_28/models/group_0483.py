@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+from datetime import date, datetime
 from typing import Literal, Union
 
 from pydantic import Field
@@ -18,94 +18,33 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0002 import SimpleUser
 
-class WebhooksReview(GitHubModel):
-    """WebhooksReview
 
-    The review that was affected.
+class ProjectsV2StatusUpdate(GitHubModel):
+    """Projects v2 Status Update
+
+    An status update belonging to a project
     """
 
-    links: WebhooksReviewPropLinks = Field(alias="_links")
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ] = Field(
-        title="AuthorAssociation",
-        description="How the author is associated with the repository.",
-    )
-    body: Union[str, None] = Field(description="The text of the review.")
-    commit_id: str = Field(description="A commit SHA for the review.")
-    html_url: str = Field()
-    id: int = Field(description="Unique identifier of the review")
+    id: float = Field()
     node_id: str = Field()
-    pull_request_url: str = Field()
-    state: str = Field()
-    submitted_at: Union[datetime, None] = Field()
-    user: Union[WebhooksReviewPropUser, None] = Field(title="User")
+    project_node_id: Missing[str] = Field(default=UNSET)
+    creator: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
+    )
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+    status: Missing[
+        Union[None, Literal["INACTIVE", "ON_TRACK", "AT_RISK", "OFF_TRACK", "COMPLETE"]]
+    ] = Field(default=UNSET)
+    start_date: Missing[date] = Field(default=UNSET)
+    target_date: Missing[date] = Field(default=UNSET)
+    body: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Body of the status update"
+    )
 
 
-class WebhooksReviewPropUser(GitHubModel):
-    """User"""
+model_rebuild(ProjectsV2StatusUpdate)
 
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field()
-    login: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
-
-
-class WebhooksReviewPropLinks(GitHubModel):
-    """WebhooksReviewPropLinks"""
-
-    html: WebhooksReviewPropLinksPropHtml = Field(title="Link")
-    pull_request: WebhooksReviewPropLinksPropPullRequest = Field(title="Link")
-
-
-class WebhooksReviewPropLinksPropHtml(GitHubModel):
-    """Link"""
-
-    href: str = Field()
-
-
-class WebhooksReviewPropLinksPropPullRequest(GitHubModel):
-    """Link"""
-
-    href: str = Field()
-
-
-model_rebuild(WebhooksReview)
-model_rebuild(WebhooksReviewPropUser)
-model_rebuild(WebhooksReviewPropLinks)
-model_rebuild(WebhooksReviewPropLinksPropHtml)
-model_rebuild(WebhooksReviewPropLinksPropPullRequest)
-
-__all__ = (
-    "WebhooksReview",
-    "WebhooksReviewPropLinks",
-    "WebhooksReviewPropLinksPropHtml",
-    "WebhooksReviewPropLinksPropPullRequest",
-    "WebhooksReviewPropUser",
-)
+__all__ = ("ProjectsV2StatusUpdate",)

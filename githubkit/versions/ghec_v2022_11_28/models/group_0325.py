@@ -19,35 +19,35 @@ from .group_0002 import SimpleUser
 from .group_0008 import Integration
 
 
-class RenamedIssueEvent(GitHubModel):
-    """Renamed Issue Event
+class UnlabeledIssueEvent(GitHubModel):
+    """Unlabeled Issue Event
 
-    Renamed Issue Event
+    Unlabeled Issue Event
     """
 
     id: int = Field()
     node_id: str = Field()
     url: str = Field()
     actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: Literal["renamed"] = Field()
+    event: Literal["unlabeled"] = Field()
     commit_id: Union[str, None] = Field()
     commit_url: Union[str, None] = Field()
     created_at: str = Field()
     performed_via_github_app: Union[None, Integration, None] = Field()
-    rename: RenamedIssueEventPropRename = Field()
+    label: UnlabeledIssueEventPropLabel = Field()
 
 
-class RenamedIssueEventPropRename(GitHubModel):
-    """RenamedIssueEventPropRename"""
+class UnlabeledIssueEventPropLabel(GitHubModel):
+    """UnlabeledIssueEventPropLabel"""
 
-    from_: str = Field(alias="from")
-    to: str = Field()
+    name: str = Field()
+    color: str = Field()
 
 
-model_rebuild(RenamedIssueEvent)
-model_rebuild(RenamedIssueEventPropRename)
+model_rebuild(UnlabeledIssueEvent)
+model_rebuild(UnlabeledIssueEventPropLabel)
 
 __all__ = (
-    "RenamedIssueEvent",
-    "RenamedIssueEventPropRename",
+    "UnlabeledIssueEvent",
+    "UnlabeledIssueEventPropLabel",
 )

@@ -9,15 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class UserProjectsPostBodyType(TypedDict):
-    """UserProjectsPostBody"""
+class UserCodespacesSecretsSecretNameRepositoriesPutBodyType(TypedDict):
+    """UserCodespacesSecretsSecretNameRepositoriesPutBody"""
 
-    name: str
-    body: NotRequired[Union[str, None]]
+    selected_repository_ids: list[int]
 
 
-__all__ = ("UserProjectsPostBodyType",)
+__all__ = ("UserCodespacesSecretsSecretNameRepositoriesPutBodyType",)

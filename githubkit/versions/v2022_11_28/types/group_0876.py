@@ -12,78 +12,13 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0112 import RepositoryRulesetBypassActorType
-from .group_0121 import OrgRulesetConditionsOneof0Type
-from .group_0122 import OrgRulesetConditionsOneof1Type
-from .group_0123 import OrgRulesetConditionsOneof2Type
-from .group_0124 import (
-    RepositoryRuleCreationType,
-    RepositoryRuleDeletionType,
-    RepositoryRuleNonFastForwardType,
-    RepositoryRuleOneof15Type,
-    RepositoryRuleOneof17Type,
-    RepositoryRuleRequiredSignaturesType,
-)
-from .group_0125 import RepositoryRuleUpdateType
-from .group_0127 import (
-    RepositoryRuleOneof16Type,
-    RepositoryRuleRequiredLinearHistoryType,
-)
-from .group_0128 import RepositoryRuleMergeQueueType
-from .group_0130 import RepositoryRuleRequiredDeploymentsType
-from .group_0133 import RepositoryRulePullRequestType
-from .group_0135 import RepositoryRuleRequiredStatusChecksType
-from .group_0137 import RepositoryRuleCommitMessagePatternType
-from .group_0139 import RepositoryRuleCommitAuthorEmailPatternType
-from .group_0141 import RepositoryRuleCommitterEmailPatternType
-from .group_0143 import RepositoryRuleBranchNamePatternType
-from .group_0145 import RepositoryRuleTagNamePatternType
-from .group_0148 import RepositoryRuleWorkflowsType
-from .group_0150 import RepositoryRuleCodeScanningType
-from .group_0152 import RepositoryRuleOneof18Type
+
+class OrgsOrgPersonalAccessTokenRequestsPostBodyType(TypedDict):
+    """OrgsOrgPersonalAccessTokenRequestsPostBody"""
+
+    pat_request_ids: NotRequired[list[int]]
+    action: Literal["approve", "deny"]
+    reason: NotRequired[Union[str, None]]
 
 
-class OrgsOrgRulesetsRulesetIdPutBodyType(TypedDict):
-    """OrgsOrgRulesetsRulesetIdPutBody"""
-
-    name: NotRequired[str]
-    target: NotRequired[Literal["branch", "tag", "push", "repository"]]
-    enforcement: NotRequired[Literal["disabled", "active", "evaluate"]]
-    bypass_actors: NotRequired[list[RepositoryRulesetBypassActorType]]
-    conditions: NotRequired[
-        Union[
-            OrgRulesetConditionsOneof0Type,
-            OrgRulesetConditionsOneof1Type,
-            OrgRulesetConditionsOneof2Type,
-        ]
-    ]
-    rules: NotRequired[
-        list[
-            Union[
-                RepositoryRuleCreationType,
-                RepositoryRuleUpdateType,
-                RepositoryRuleDeletionType,
-                RepositoryRuleRequiredLinearHistoryType,
-                RepositoryRuleMergeQueueType,
-                RepositoryRuleRequiredDeploymentsType,
-                RepositoryRuleRequiredSignaturesType,
-                RepositoryRulePullRequestType,
-                RepositoryRuleRequiredStatusChecksType,
-                RepositoryRuleNonFastForwardType,
-                RepositoryRuleCommitMessagePatternType,
-                RepositoryRuleCommitAuthorEmailPatternType,
-                RepositoryRuleCommitterEmailPatternType,
-                RepositoryRuleBranchNamePatternType,
-                RepositoryRuleTagNamePatternType,
-                RepositoryRuleOneof15Type,
-                RepositoryRuleOneof16Type,
-                RepositoryRuleOneof17Type,
-                RepositoryRuleOneof18Type,
-                RepositoryRuleWorkflowsType,
-                RepositoryRuleCodeScanningType,
-            ]
-        ]
-    ]
-
-
-__all__ = ("OrgsOrgRulesetsRulesetIdPutBodyType",)
+__all__ = ("OrgsOrgPersonalAccessTokenRequestsPostBodyType",)

@@ -9,65 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Union
+from typing_extensions import TypedDict
 
 from .group_0002 import SimpleUserType
+from .group_0019 import RepositoryType
 
 
-class PullRequestReviewType(TypedDict):
-    """Pull Request Review
+class PullRequestPropHeadType(TypedDict):
+    """PullRequestPropHead"""
 
-    Pull Request Reviews are reviews on pull requests.
-    """
-
-    id: int
-    node_id: str
-    user: Union[None, SimpleUserType]
-    body: str
-    state: str
-    html_url: str
-    pull_request_url: str
-    links: PullRequestReviewPropLinksType
-    submitted_at: NotRequired[datetime]
-    commit_id: Union[str, None]
-    body_html: NotRequired[str]
-    body_text: NotRequired[str]
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
+    label: Union[str, None]
+    ref: str
+    repo: RepositoryType
+    sha: str
+    user: SimpleUserType
 
 
-class PullRequestReviewPropLinksType(TypedDict):
-    """PullRequestReviewPropLinks"""
+class PullRequestPropBaseType(TypedDict):
+    """PullRequestPropBase"""
 
-    html: PullRequestReviewPropLinksPropHtmlType
-    pull_request: PullRequestReviewPropLinksPropPullRequestType
-
-
-class PullRequestReviewPropLinksPropHtmlType(TypedDict):
-    """PullRequestReviewPropLinksPropHtml"""
-
-    href: str
-
-
-class PullRequestReviewPropLinksPropPullRequestType(TypedDict):
-    """PullRequestReviewPropLinksPropPullRequest"""
-
-    href: str
+    label: str
+    ref: str
+    repo: RepositoryType
+    sha: str
+    user: SimpleUserType
 
 
 __all__ = (
-    "PullRequestReviewPropLinksPropHtmlType",
-    "PullRequestReviewPropLinksPropPullRequestType",
-    "PullRequestReviewPropLinksType",
-    "PullRequestReviewType",
+    "PullRequestPropBaseType",
+    "PullRequestPropHeadType",
 )

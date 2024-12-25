@@ -9,23 +9,110 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from datetime import datetime
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterpriseSecurityAnalysisSettingsType(TypedDict):
-    """Enterprise Security Analysis Settings"""
+class CodeSecurityConfigurationType(TypedDict):
+    """CodeSecurityConfiguration
 
-    advanced_security_enabled_for_new_repositories: bool
-    advanced_security_enabled_for_new_user_namespace_repositories: NotRequired[bool]
-    dependabot_alerts_enabled_for_new_repositories: bool
-    secret_scanning_enabled_for_new_repositories: bool
-    secret_scanning_push_protection_enabled_for_new_repositories: bool
-    secret_scanning_push_protection_custom_link: NotRequired[Union[str, None]]
-    secret_scanning_non_provider_patterns_enabled_for_new_repositories: NotRequired[
-        bool
+    A code security configuration
+    """
+
+    id: NotRequired[int]
+    name: NotRequired[str]
+    target_type: NotRequired[Literal["global", "organization", "enterprise"]]
+    description: NotRequired[str]
+    advanced_security: NotRequired[Literal["enabled", "disabled"]]
+    dependency_graph: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    dependency_graph_autosubmit_action: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
     ]
-    secret_scanning_validity_checks_enabled: NotRequired[bool]
+    dependency_graph_autosubmit_action_options: NotRequired[
+        CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptionsType
+    ]
+    dependabot_alerts: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    dependabot_security_updates: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    code_scanning_default_setup: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    code_scanning_default_setup_options: NotRequired[
+        Union[CodeSecurityConfigurationPropCodeScanningDefaultSetupOptionsType, None]
+    ]
+    secret_scanning: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    secret_scanning_push_protection: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    secret_scanning_delegated_bypass: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    secret_scanning_delegated_bypass_options: NotRequired[
+        CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsType
+    ]
+    secret_scanning_validity_checks: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    secret_scanning_non_provider_patterns: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    private_vulnerability_reporting: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    enforcement: NotRequired[Literal["enforced", "unenforced"]]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    created_at: NotRequired[datetime]
+    updated_at: NotRequired[datetime]
 
 
-__all__ = ("EnterpriseSecurityAnalysisSettingsType",)
+class CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptionsType(
+    TypedDict
+):
+    """CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptions
+
+    Feature options for Automatic dependency submission
+    """
+
+    labeled_runners: NotRequired[bool]
+
+
+class CodeSecurityConfigurationPropCodeScanningDefaultSetupOptionsType(TypedDict):
+    """CodeSecurityConfigurationPropCodeScanningDefaultSetupOptions
+
+    Feature options for code scanning default setup
+    """
+
+    runner_type: NotRequired[Union[None, Literal["standard", "labeled", "not_set"]]]
+    runner_label: NotRequired[Union[str, None]]
+
+
+class CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsType(TypedDict):
+    """CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptions
+
+    Feature options for secret scanning delegated bypass
+    """
+
+    reviewers: NotRequired[
+        list[
+            CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropReviewersItemsType
+        ]
+    ]
+
+
+class CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropReviewersItemsType(
+    TypedDict
+):
+    """CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropReviewersIt
+    ems
+    """
+
+    reviewer_id: int
+    reviewer_type: Literal["TEAM", "ROLE"]
+
+
+__all__ = (
+    "CodeSecurityConfigurationPropCodeScanningDefaultSetupOptionsType",
+    "CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptionsType",
+    "CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropReviewersItemsType",
+    "CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsType",
+    "CodeSecurityConfigurationType",
+)

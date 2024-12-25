@@ -9,20 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0002 import SimpleUserType
 
-class TagProtectionType(TypedDict):
-    """Tag protection
 
-    Tag protection
+class ContributorActivityType(TypedDict):
+    """Contributor Activity
+
+    Contributor Activity
     """
 
-    id: NotRequired[int]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
-    enabled: NotRequired[bool]
-    pattern: str
+    author: Union[None, SimpleUserType]
+    total: int
+    weeks: list[ContributorActivityPropWeeksItemsType]
 
 
-__all__ = ("TagProtectionType",)
+class ContributorActivityPropWeeksItemsType(TypedDict):
+    """ContributorActivityPropWeeksItems"""
+
+    w: NotRequired[int]
+    a: NotRequired[int]
+    d: NotRequired[int]
+    c: NotRequired[int]
+
+
+__all__ = (
+    "ContributorActivityPropWeeksItemsType",
+    "ContributorActivityType",
+)

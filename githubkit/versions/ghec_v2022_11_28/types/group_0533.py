@@ -13,23 +13,23 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0002 import SimpleUserType
-from .group_0439 import EnterpriseWebhooksType
-from .group_0440 import SimpleInstallationType
-from .group_0441 import OrganizationSimpleWebhooksType
-from .group_0442 import RepositoryWebhooksType
-from .group_0448 import WebhooksDeployKeyType
+from .group_0295 import DependabotAlertType
+from .group_0444 import EnterpriseWebhooksType
+from .group_0445 import SimpleInstallationType
+from .group_0446 import OrganizationSimpleWebhooksType
+from .group_0447 import RepositoryWebhooksType
 
 
-class WebhookDeployKeyCreatedType(TypedDict):
-    """deploy_key created event"""
+class WebhookDependabotAlertCreatedType(TypedDict):
+    """Dependabot alert created event"""
 
     action: Literal["created"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
+    alert: DependabotAlertType
     installation: NotRequired[SimpleInstallationType]
-    key: WebhooksDeployKeyType
     organization: NotRequired[OrganizationSimpleWebhooksType]
+    enterprise: NotRequired[EnterpriseWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-__all__ = ("WebhookDeployKeyCreatedType",)
+__all__ = ("WebhookDependabotAlertCreatedType",)

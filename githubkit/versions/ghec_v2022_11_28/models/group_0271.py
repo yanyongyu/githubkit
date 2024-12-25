@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,60 +17,35 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0002 import SimpleUser
-from .group_0126 import ReactionRollup
+from .group_0053 import CodeSecurityConfiguration
 
 
-class CommitComment(GitHubModel):
-    """Commit Comment
+class CodeSecurityConfigurationForRepository(GitHubModel):
+    """CodeSecurityConfigurationForRepository
 
-    Commit Comment
+    Code security configuration associated with a repository and attachment status
     """
 
-    html_url: str = Field()
-    url: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    body: str = Field()
-    path: Union[str, None] = Field()
-    position: Union[int, None] = Field()
-    line: Union[int, None] = Field()
-    commit_id: str = Field()
-    user: Union[None, SimpleUser] = Field()
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
+    status: Missing[
+        Literal[
+            "attached",
+            "attaching",
+            "detached",
+            "removed",
+            "enforced",
+            "failed",
+            "updating",
+            "removed_by_enterprise",
+        ]
     ] = Field(
-        title="author_association",
-        description="How the author is associated with the repository.",
+        default=UNSET,
+        description="The attachment status of the code security configuration on the repository.",
     )
-    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
+    configuration: Missing[CodeSecurityConfiguration] = Field(
+        default=UNSET, description="A code security configuration"
+    )
 
 
-class TimelineCommitCommentedEvent(GitHubModel):
-    """Timeline Commit Commented Event
+model_rebuild(CodeSecurityConfigurationForRepository)
 
-    Timeline Commit Commented Event
-    """
-
-    event: Missing[Literal["commit_commented"]] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    commit_id: Missing[str] = Field(default=UNSET)
-    comments: Missing[list[CommitComment]] = Field(default=UNSET)
-
-
-model_rebuild(CommitComment)
-model_rebuild(TimelineCommitCommentedEvent)
-
-__all__ = (
-    "CommitComment",
-    "TimelineCommitCommentedEvent",
-)
+__all__ = ("CodeSecurityConfigurationForRepository",)

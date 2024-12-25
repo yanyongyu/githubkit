@@ -76,6 +76,9 @@ if TYPE_CHECKING:
         ApiInsightsUserStatsItemsType as ApiInsightsUserStatsItemsType,
     )
     from githubkit.versions.v2022_11_28.types import (
+        ApiOverviewPropDomainsPropActionsInboundType as ApiOverviewPropDomainsPropActionsInboundType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         ApiOverviewPropDomainsPropArtifactAttestationsType as ApiOverviewPropDomainsPropArtifactAttestationsType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -289,6 +292,15 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.types import (
         CodeScanningAnalysisType as CodeScanningAnalysisType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        CodeScanningAutofixCommitsResponseType as CodeScanningAutofixCommitsResponseType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        CodeScanningAutofixCommitsType as CodeScanningAutofixCommitsType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        CodeScanningAutofixType as CodeScanningAutofixType,
     )
     from githubkit.versions.v2022_11_28.types import (
         CodeScanningCodeqlDatabaseType as CodeScanningCodeqlDatabaseType,
@@ -701,6 +713,27 @@ if TYPE_CHECKING:
         EmojisGetResponse200Type as EmojisGetResponse200Type,
     )
     from githubkit.versions.v2022_11_28.types import EmptyObjectType as EmptyObjectType
+    from githubkit.versions.v2022_11_28.types import (
+        EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBodyType as EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBodyType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType as EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200Type as EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200Type,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptionsType as EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptionsType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyType as EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptionsType as EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptionsType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyType as EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyType,
+    )
     from githubkit.versions.v2022_11_28.types import (
         EnterprisesEnterpriseSecretScanningAlertsGetResponse503Type as EnterprisesEnterpriseSecretScanningAlertsGetResponse503Type,
     )
@@ -1156,6 +1189,12 @@ if TYPE_CHECKING:
         OrgMembershipType as OrgMembershipType,
     )
     from githubkit.versions.v2022_11_28.types import (
+        OrgPrivateRegistryConfigurationType as OrgPrivateRegistryConfigurationType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        OrgPrivateRegistryConfigurationWithSelectedRepositoriesType as OrgPrivateRegistryConfigurationWithSelectedRepositoriesType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         OrgRepoCustomPropertyValuesType as OrgRepoCustomPropertyValuesType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -1421,6 +1460,18 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.types import (
         OrgsOrgPersonalAccessTokensPostBodyType as OrgsOrgPersonalAccessTokensPostBodyType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        OrgsOrgPrivateRegistriesGetResponse200Type as OrgsOrgPrivateRegistriesGetResponse200Type,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        OrgsOrgPrivateRegistriesPostBodyType as OrgsOrgPrivateRegistriesPostBodyType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        OrgsOrgPrivateRegistriesPublicKeyGetResponse200Type as OrgsOrgPrivateRegistriesPublicKeyGetResponse200Type,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        OrgsOrgPrivateRegistriesSecretNamePatchBodyType as OrgsOrgPrivateRegistriesSecretNamePatchBodyType,
     )
     from githubkit.versions.v2022_11_28.types import (
         OrgsOrgProjectsPostBodyType as OrgsOrgProjectsPostBodyType,
@@ -9797,6 +9848,15 @@ else:
             "SimpleClassroomAssignmentType",
             "SimpleClassroomType",
             "ClassroomAssignmentGradeType",
+            "CodeSecurityConfigurationType",
+            "CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptionsType",
+            "CodeSecurityConfigurationPropCodeScanningDefaultSetupOptionsType",
+            "CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsType",
+            "CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropReviewersItemsType",
+            "CodeScanningDefaultSetupOptionsType",
+            "CodeSecurityDefaultConfigurationsItemsType",
+            "SimpleRepositoryType",
+            "CodeSecurityConfigurationRepositoriesType",
             "DependabotAlertPackageType",
             "DependabotAlertSecurityVulnerabilityType",
             "DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionType",
@@ -9805,7 +9865,6 @@ else:
             "DependabotAlertSecurityAdvisoryPropCwesItemsType",
             "DependabotAlertSecurityAdvisoryPropIdentifiersItemsType",
             "DependabotAlertSecurityAdvisoryPropReferencesItemsType",
-            "SimpleRepositoryType",
             "DependabotAlertWithRepositoryType",
             "DependabotAlertWithRepositoryPropDependencyType",
             "OrganizationSecretScanningAlertType",
@@ -9847,6 +9906,7 @@ else:
             "ApiOverviewType",
             "ApiOverviewPropSshKeyFingerprintsType",
             "ApiOverviewPropDomainsType",
+            "ApiOverviewPropDomainsPropActionsInboundType",
             "ApiOverviewPropDomainsPropArtifactAttestationsType",
             "SecurityAndAnalysisType",
             "SecurityAndAnalysisPropAdvancedSecurityType",
@@ -9885,14 +9945,6 @@ else:
             "CodeScanningAlertLocationType",
             "CodeScanningAlertInstancePropMessageType",
             "CodeScanningOrganizationAlertItemsType",
-            "CodeSecurityConfigurationType",
-            "CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptionsType",
-            "CodeSecurityConfigurationPropCodeScanningDefaultSetupOptionsType",
-            "CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsType",
-            "CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropReviewersItemsType",
-            "CodeScanningDefaultSetupOptionsType",
-            "CodeSecurityDefaultConfigurationsItemsType",
-            "CodeSecurityConfigurationRepositoriesType",
             "CodespaceMachineType",
             "CodespaceType",
             "CodespacePropGitStatusType",
@@ -9956,6 +10008,7 @@ else:
             "OrganizationProgrammaticAccessGrantPropPermissionsPropOrganizationType",
             "OrganizationProgrammaticAccessGrantPropPermissionsPropRepositoryType",
             "OrganizationProgrammaticAccessGrantPropPermissionsPropOtherType",
+            "OrgPrivateRegistryConfigurationWithSelectedRepositoriesType",
             "ProjectType",
             "CustomPropertyType",
             "CustomPropertySetPayloadType",
@@ -10166,6 +10219,9 @@ else:
             "CodeScanningAlertItemsType",
             "CodeScanningAlertType",
             "CodeScanningAlertRuleType",
+            "CodeScanningAutofixType",
+            "CodeScanningAutofixCommitsType",
+            "CodeScanningAutofixCommitsResponseType",
             "CodeScanningAnalysisType",
             "CodeScanningAnalysisDeletionType",
             "CodeScanningCodeqlDatabaseType",
@@ -12629,6 +12685,13 @@ else:
             "ApplicationsClientIdTokenPatchBodyType",
             "ApplicationsClientIdTokenScopedPostBodyType",
             "EmojisGetResponse200Type",
+            "EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyType",
+            "EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptionsType",
+            "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyType",
+            "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptionsType",
+            "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBodyType",
+            "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType",
+            "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200Type",
             "EnterprisesEnterpriseSecretScanningAlertsGetResponse503Type",
             "GistsPostBodyType",
             "GistsPostBodyPropFilesType",
@@ -12733,6 +12796,11 @@ else:
             "OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBodyType",
             "OrgsOrgPersonalAccessTokensPostBodyType",
             "OrgsOrgPersonalAccessTokensPatIdPostBodyType",
+            "OrgsOrgPrivateRegistriesGetResponse200Type",
+            "OrgPrivateRegistryConfigurationType",
+            "OrgsOrgPrivateRegistriesPostBodyType",
+            "OrgsOrgPrivateRegistriesPublicKeyGetResponse200Type",
+            "OrgsOrgPrivateRegistriesSecretNamePatchBodyType",
             "OrgsOrgProjectsPostBodyType",
             "OrgsOrgPropertiesSchemaPatchBodyType",
             "OrgsOrgPropertiesValuesPatchBodyType",

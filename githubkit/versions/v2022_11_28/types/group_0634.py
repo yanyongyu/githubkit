@@ -9,44 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0002 import SimpleUserType
-from .group_0389 import EnterpriseWebhooksType
-from .group_0390 import SimpleInstallationType
-from .group_0391 import OrganizationSimpleWebhooksType
-from .group_0392 import RepositoryWebhooksType
-from .group_0422 import WebhooksProjectColumnType
+
+class WebhookProjectCardMovedPropProjectCardAllof1Type(TypedDict):
+    """WebhookProjectCardMovedPropProjectCardAllof1"""
+
+    after_id: Union[int, None]
+    archived: NotRequired[bool]
+    column_id: NotRequired[int]
+    column_url: NotRequired[str]
+    created_at: NotRequired[str]
+    creator: NotRequired[
+        Union[WebhookProjectCardMovedPropProjectCardAllof1PropCreatorType, None]
+    ]
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    note: NotRequired[Union[str, None]]
+    project_url: NotRequired[str]
+    updated_at: NotRequired[str]
+    url: NotRequired[str]
 
 
-class WebhookProjectColumnEditedType(TypedDict):
-    """project_column edited event"""
+class WebhookProjectCardMovedPropProjectCardAllof1PropCreatorType(TypedDict):
+    """WebhookProjectCardMovedPropProjectCardAllof1PropCreator"""
 
-    action: Literal["edited"]
-    changes: WebhookProjectColumnEditedPropChangesType
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    project_column: WebhooksProjectColumnType
-    repository: NotRequired[RepositoryWebhooksType]
-    sender: NotRequired[SimpleUserType]
-
-
-class WebhookProjectColumnEditedPropChangesType(TypedDict):
-    """WebhookProjectColumnEditedPropChanges"""
-
-    name: NotRequired[WebhookProjectColumnEditedPropChangesPropNameType]
-
-
-class WebhookProjectColumnEditedPropChangesPropNameType(TypedDict):
-    """WebhookProjectColumnEditedPropChangesPropName"""
-
-    from_: str
+    avatar_url: NotRequired[str]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: NotRequired[int]
+    login: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[str]
+    url: NotRequired[str]
 
 
 __all__ = (
-    "WebhookProjectColumnEditedPropChangesPropNameType",
-    "WebhookProjectColumnEditedPropChangesType",
-    "WebhookProjectColumnEditedType",
+    "WebhookProjectCardMovedPropProjectCardAllof1PropCreatorType",
+    "WebhookProjectCardMovedPropProjectCardAllof1Type",
 )

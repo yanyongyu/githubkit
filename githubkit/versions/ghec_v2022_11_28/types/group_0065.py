@@ -9,38 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal, Union
+from typing_extensions import TypedDict
+
+from .group_0064 import DependabotAlertPackageType
 
 
-class GetLicenseSyncStatusType(TypedDict):
-    """License Sync Status
+class DependabotAlertSecurityVulnerabilityType(TypedDict):
+    """DependabotAlertSecurityVulnerability
 
-    Information about the status of a license sync job for an enterprise.
+    Details pertaining to one vulnerable version range for the advisory.
     """
 
-    server_instances: NotRequired[
-        list[GetLicenseSyncStatusPropServerInstancesItemsType]
+    package: DependabotAlertPackageType
+    severity: Literal["low", "medium", "high", "critical"]
+    vulnerable_version_range: str
+    first_patched_version: Union[
+        DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionType, None
     ]
 
 
-class GetLicenseSyncStatusPropServerInstancesItemsType(TypedDict):
-    """GetLicenseSyncStatusPropServerInstancesItems"""
+class DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionType(TypedDict):
+    """DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion
 
-    server_id: NotRequired[str]
-    hostname: NotRequired[str]
-    last_sync: NotRequired[GetLicenseSyncStatusPropServerInstancesItemsPropLastSyncType]
+    Details pertaining to the package version that patches this vulnerability.
+    """
 
-
-class GetLicenseSyncStatusPropServerInstancesItemsPropLastSyncType(TypedDict):
-    """GetLicenseSyncStatusPropServerInstancesItemsPropLastSync"""
-
-    date: NotRequired[str]
-    status: NotRequired[str]
-    error: NotRequired[str]
+    identifier: str
 
 
 __all__ = (
-    "GetLicenseSyncStatusPropServerInstancesItemsPropLastSyncType",
-    "GetLicenseSyncStatusPropServerInstancesItemsType",
-    "GetLicenseSyncStatusType",
+    "DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionType",
+    "DependabotAlertSecurityVulnerabilityType",
 )

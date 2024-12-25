@@ -9,45 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0002 import SimpleUser
-from .group_0008 import Integration
 
+class PorterAuthor(GitHubModel):
+    """Porter Author
 
-class UnlabeledIssueEvent(GitHubModel):
-    """Unlabeled Issue Event
-
-    Unlabeled Issue Event
+    Porter Author
     """
 
     id: int = Field()
-    node_id: str = Field()
-    url: str = Field()
-    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: Literal["unlabeled"] = Field()
-    commit_id: Union[str, None] = Field()
-    commit_url: Union[str, None] = Field()
-    created_at: str = Field()
-    performed_via_github_app: Union[None, Integration, None] = Field()
-    label: UnlabeledIssueEventPropLabel = Field()
-
-
-class UnlabeledIssueEventPropLabel(GitHubModel):
-    """UnlabeledIssueEventPropLabel"""
-
+    remote_id: str = Field()
+    remote_name: str = Field()
+    email: str = Field()
     name: str = Field()
-    color: str = Field()
+    url: str = Field()
+    import_url: str = Field()
 
 
-model_rebuild(UnlabeledIssueEvent)
-model_rebuild(UnlabeledIssueEventPropLabel)
+model_rebuild(PorterAuthor)
 
-__all__ = (
-    "UnlabeledIssueEvent",
-    "UnlabeledIssueEventPropLabel",
-)
+__all__ = ("PorterAuthor",)

@@ -13,33 +13,39 @@ from datetime import datetime
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0002 import SimpleUserType
+from .group_0030 import SimpleRepositoryType
+from .group_0226 import CodeScanningVariantAnalysisPropScannedRepositoriesItemsType
+from .group_0227 import CodeScanningVariantAnalysisPropSkippedRepositoriesType
 
-class CodeScanningDefaultSetupType(TypedDict):
-    """CodeScanningDefaultSetup
 
-    Configuration for code scanning default setup.
+class CodeScanningVariantAnalysisType(TypedDict):
+    """Variant Analysis
+
+    A run of a CodeQL query against one or more repositories.
     """
 
-    state: NotRequired[Literal["configured", "not-configured"]]
-    languages: NotRequired[
-        list[
-            Literal[
-                "c-cpp",
-                "csharp",
-                "go",
-                "java-kotlin",
-                "javascript-typescript",
-                "javascript",
-                "python",
-                "ruby",
-                "typescript",
-                "swift",
-            ]
-        ]
+    id: int
+    controller_repo: SimpleRepositoryType
+    actor: SimpleUserType
+    query_language: Literal[
+        "cpp", "csharp", "go", "java", "javascript", "python", "ruby", "swift"
     ]
-    query_suite: NotRequired[Literal["default", "extended"]]
-    updated_at: NotRequired[Union[datetime, None]]
-    schedule: NotRequired[Union[None, Literal["weekly"]]]
+    query_pack_url: str
+    created_at: NotRequired[datetime]
+    updated_at: NotRequired[datetime]
+    completed_at: NotRequired[Union[datetime, None]]
+    status: Literal["in_progress", "succeeded", "failed", "cancelled"]
+    actions_workflow_run_id: NotRequired[int]
+    failure_reason: NotRequired[
+        Literal["no_repos_queried", "actions_workflow_run_failed", "internal_error"]
+    ]
+    scanned_repositories: NotRequired[
+        list[CodeScanningVariantAnalysisPropScannedRepositoriesItemsType]
+    ]
+    skipped_repositories: NotRequired[
+        CodeScanningVariantAnalysisPropSkippedRepositoriesType
+    ]
 
 
-__all__ = ("CodeScanningDefaultSetupType",)
+__all__ = ("CodeScanningVariantAnalysisType",)

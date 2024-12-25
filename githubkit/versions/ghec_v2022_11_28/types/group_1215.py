@@ -11,16 +11,14 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-
-class UserSocialAccountsPostBodyType(TypedDict):
-    """UserSocialAccountsPostBody
-
-    Examples:
-        {'account_urls': ['https://www.linkedin.com/company/github/',
-    'https://twitter.com/github']}
-    """
-
-    account_urls: list[str]
+from .group_0156 import CodespaceMachineType
 
 
-__all__ = ("UserSocialAccountsPostBodyType",)
+class UserCodespacesCodespaceNameMachinesGetResponse200Type(TypedDict):
+    """UserCodespacesCodespaceNameMachinesGetResponse200"""
+
+    total_count: int
+    machines: list[CodespaceMachineType]
+
+
+__all__ = ("UserCodespacesCodespaceNameMachinesGetResponse200Type",)

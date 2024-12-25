@@ -11,37 +11,20 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-
-class ActionsBillingUsageType(TypedDict):
-    """ActionsBillingUsage"""
-
-    total_minutes_used: int
-    total_paid_minutes_used: int
-    included_minutes: int
-    minutes_used_breakdown: ActionsBillingUsagePropMinutesUsedBreakdownType
-
-
-class ActionsBillingUsagePropMinutesUsedBreakdownType(TypedDict):
-    """ActionsBillingUsagePropMinutesUsedBreakdown"""
-
-    ubuntu: NotRequired[int]
-    macos: NotRequired[int]
-    windows: NotRequired[int]
-    ubuntu_4_core: NotRequired[int]
-    ubuntu_8_core: NotRequired[int]
-    ubuntu_16_core: NotRequired[int]
-    ubuntu_32_core: NotRequired[int]
-    ubuntu_64_core: NotRequired[int]
-    windows_4_core: NotRequired[int]
-    windows_8_core: NotRequired[int]
-    windows_16_core: NotRequired[int]
-    windows_32_core: NotRequired[int]
-    windows_64_core: NotRequired[int]
-    macos_12_core: NotRequired[int]
-    total: NotRequired[int]
-
-
-__all__ = (
-    "ActionsBillingUsagePropMinutesUsedBreakdownType",
-    "ActionsBillingUsageType",
+from .group_0078 import RepositoryRulesetConditionsPropRefNameType
+from .group_0117 import (
+    RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType,
 )
+
+
+class OrgRulesetConditionsOneof1Type(TypedDict):
+    """repository_id_and_ref_name
+
+    Conditions to target repositories by id and refs by name
+    """
+
+    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
+    repository_id: RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType
+
+
+__all__ = ("OrgRulesetConditionsOneof1Type",)

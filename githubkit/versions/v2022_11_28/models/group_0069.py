@@ -9,52 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class CodeScanningAlertRuleSummary(GitHubModel):
-    """CodeScanningAlertRuleSummary"""
-
-    id: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="A unique identifier for the rule used to detect the alert.",
-    )
-    name: Missing[str] = Field(
-        default=UNSET, description="The name of the rule used to detect the alert."
-    )
-    severity: Missing[Union[None, Literal["none", "note", "warning", "error"]]] = Field(
-        default=UNSET, description="The severity of the alert."
-    )
-    security_severity_level: Missing[
-        Union[None, Literal["low", "medium", "high", "critical"]]
-    ] = Field(default=UNSET, description="The security severity of the alert.")
-    description: Missing[str] = Field(
-        default=UNSET,
-        description="A short description of the rule used to detect the alert.",
-    )
-    full_description: Missing[str] = Field(
-        default=UNSET, description="A description of the rule used to detect the alert."
-    )
-    tags: Missing[Union[list[str], None]] = Field(
-        default=UNSET, description="A set of tags applicable for the rule."
-    )
-    help_: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        alias="help",
-        description="Detailed documentation for the rule as GitHub Flavored Markdown.",
-    )
-    help_uri: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="A link to the documentation for the rule used to detect the alert.",
-    )
+from .group_0068 import RunnerLabel
 
 
-model_rebuild(CodeScanningAlertRuleSummary)
+class Runner(GitHubModel):
+    """Self hosted runners
 
-__all__ = ("CodeScanningAlertRuleSummary",)
+    A self hosted runner
+    """
+
+    id: int = Field(description="The id of the runner.")
+    runner_group_id: Missing[int] = Field(
+        default=UNSET, description="The id of the runner group."
+    )
+    name: str = Field(description="The name of the runner.")
+    os: str = Field(description="The Operating System of the runner.")
+    status: str = Field(description="The status of the runner.")
+    busy: bool = Field()
+    labels: list[RunnerLabel] = Field()
+
+
+model_rebuild(Runner)
+
+__all__ = ("Runner",)

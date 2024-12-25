@@ -15,26 +15,16 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0074 import RepositoryRulesetConditionsPropRefName
-from .group_0076 import (
-    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty,
-)
-from .group_0078 import (
-    EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationId,
-)
+
+class EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationId(GitHubModel):
+    """EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationId"""
+
+    organization_ids: Missing[list[int]] = Field(
+        default=UNSET,
+        description="The organization IDs that the ruleset applies to. One of these IDs must match for the condition to pass.",
+    )
 
 
-class EnterpriseRulesetConditionsOneof3(GitHubModel):
-    """organization_id_and_repository_property
+model_rebuild(EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationId)
 
-    Conditions to target organization by id and repositories by property
-    """
-
-    organization_id: EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationId = Field()
-    repository_property: RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty = Field()
-    ref_name: Missing[RepositoryRulesetConditionsPropRefName] = Field(default=UNSET)
-
-
-model_rebuild(EnterpriseRulesetConditionsOneof3)
-
-__all__ = ("EnterpriseRulesetConditionsOneof3",)
+__all__ = ("EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationId",)

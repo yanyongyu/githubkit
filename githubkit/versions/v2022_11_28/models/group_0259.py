@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -17,36 +17,27 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0258 import Metadata
+from .group_0032 import DependabotAlertPackage
 
 
-class Dependency(GitHubModel):
-    """Dependency"""
+class DependabotAlertPropDependency(GitHubModel):
+    """DependabotAlertPropDependency
 
-    package_url: Missing[str] = Field(
-        pattern="^pkg",
-        default=UNSET,
-        description="Package-url (PURL) of dependency. See https://github.com/package-url/purl-spec for more details.",
+    Details for the vulnerable dependency.
+    """
+
+    package: Missing[DependabotAlertPackage] = Field(
+        default=UNSET, description="Details for the vulnerable package."
     )
-    metadata: Missing[Metadata] = Field(
+    manifest_path: Missing[str] = Field(
         default=UNSET,
-        title="metadata",
-        description="User-defined metadata to store domain-specific information limited to 8 keys with scalar values.",
+        description="The full path to the dependency manifest file, relative to the root of the repository.",
     )
-    relationship: Missing[Literal["direct", "indirect"]] = Field(
-        default=UNSET,
-        description="A notation of whether a dependency is requested directly by this manifest or is a dependency of another dependency.",
-    )
-    scope: Missing[Literal["runtime", "development"]] = Field(
-        default=UNSET,
-        description="A notation of whether the dependency is required for the primary build artifact (runtime) or is only used for development. Future versions of this specification may allow for more granular scopes.",
-    )
-    dependencies: Missing[list[str]] = Field(
-        default=UNSET,
-        description="Array of package-url (PURLs) of direct child dependencies.",
+    scope: Missing[Union[None, Literal["development", "runtime"]]] = Field(
+        default=UNSET, description="The execution scope of the vulnerable dependency."
     )
 
 
-model_rebuild(Dependency)
+model_rebuild(DependabotAlertPropDependency)
 
-__all__ = ("Dependency",)
+__all__ = ("DependabotAlertPropDependency",)

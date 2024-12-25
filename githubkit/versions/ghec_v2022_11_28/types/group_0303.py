@@ -9,15 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from datetime import datetime
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class DeploymentBranchPolicyNamePatternWithTypeType(TypedDict):
-    """Deployment branch and tag policy name pattern"""
-
-    name: str
-    type: NotRequired[Literal["branch", "tag"]]
+from .group_0002 import SimpleUserType
+from .group_0008 import IntegrationType
 
 
-__all__ = ("DeploymentBranchPolicyNamePatternWithTypeType",)
+class DeploymentStatusType(TypedDict):
+    """Deployment Status
+
+    The status of a deployment.
+    """
+
+    url: str
+    id: int
+    node_id: str
+    state: Literal[
+        "error", "failure", "inactive", "pending", "success", "queued", "in_progress"
+    ]
+    creator: Union[None, SimpleUserType]
+    description: str
+    environment: NotRequired[str]
+    target_url: str
+    created_at: datetime
+    updated_at: datetime
+    deployment_url: str
+    repository_url: str
+    environment_url: NotRequired[str]
+    log_url: NotRequired[str]
+    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
+
+
+__all__ = ("DeploymentStatusType",)

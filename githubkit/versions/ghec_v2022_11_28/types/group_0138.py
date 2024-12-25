@@ -9,29 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Literal, Union
 from typing_extensions import TypedDict
 
+from .group_0002 import SimpleUserType
 
-class MarketplaceListingPlanType(TypedDict):
-    """Marketplace Listing Plan
 
-    Marketplace Listing Plan
+class GistCommentType(TypedDict):
+    """Gist Comment
+
+    A comment made to a gist.
     """
 
-    url: str
-    accounts_url: str
     id: int
-    number: int
-    name: str
-    description: str
-    monthly_price_in_cents: int
-    yearly_price_in_cents: int
-    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
-    has_free_trial: bool
-    unit_name: Union[str, None]
-    state: str
-    bullets: list[str]
+    node_id: str
+    url: str
+    body: str
+    user: Union[None, SimpleUserType]
+    created_at: datetime
+    updated_at: datetime
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
 
 
-__all__ = ("MarketplaceListingPlanType",)
+__all__ = ("GistCommentType",)

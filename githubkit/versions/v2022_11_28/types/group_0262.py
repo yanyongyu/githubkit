@@ -9,37 +9,15 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0002 import SimpleUserType
-from .group_0008 import IntegrationType
+from typing_extensions import TypedDict
 
 
-class DeploymentStatusType(TypedDict):
-    """Deployment Status
+class MetadataType(TypedDict):
+    """metadata
 
-    The status of a deployment.
+    User-defined metadata to store domain-specific information limited to 8 keys
+    with scalar values.
     """
 
-    url: str
-    id: int
-    node_id: str
-    state: Literal[
-        "error", "failure", "inactive", "pending", "success", "queued", "in_progress"
-    ]
-    creator: Union[None, SimpleUserType]
-    description: str
-    environment: NotRequired[str]
-    target_url: str
-    created_at: datetime
-    updated_at: datetime
-    deployment_url: str
-    repository_url: str
-    environment_url: NotRequired[str]
-    log_url: NotRequired[str]
-    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
 
-
-__all__ = ("DeploymentStatusType",)
+__all__ = ("MetadataType",)

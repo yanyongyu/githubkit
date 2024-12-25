@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
@@ -18,14 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ProjectsProjectIdCollaboratorsUsernamePutBody(GitHubModel):
-    """ProjectsProjectIdCollaboratorsUsernamePutBody"""
+class ProjectsColumnsCardsCardIdPatchBody(GitHubModel):
+    """ProjectsColumnsCardsCardIdPatchBody"""
 
-    permission: Missing[Literal["read", "write", "admin"]] = Field(
-        default=UNSET, description="The permission to grant the collaborator."
+    note: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The project card's note"
+    )
+    archived: Missing[bool] = Field(
+        default=UNSET, description="Whether or not the card is archived"
     )
 
 
-model_rebuild(ProjectsProjectIdCollaboratorsUsernamePutBody)
+model_rebuild(ProjectsColumnsCardsCardIdPatchBody)
 
-__all__ = ("ProjectsProjectIdCollaboratorsUsernamePutBody",)
+__all__ = ("ProjectsColumnsCardsCardIdPatchBody",)

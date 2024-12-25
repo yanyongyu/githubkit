@@ -18,17 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoIssuesIssueNumberLockPutBody(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberLockPutBody"""
+class ReposOwnerRepoInvitationsInvitationIdPatchBody(GitHubModel):
+    """ReposOwnerRepoInvitationsInvitationIdPatchBody"""
 
-    lock_reason: Missing[Literal["off-topic", "too heated", "resolved", "spam"]] = (
+    permissions: Missing[Literal["read", "write", "maintain", "triage", "admin"]] = (
         Field(
             default=UNSET,
-            description="The reason for locking the issue or pull request conversation. Lock will fail if you don't use one of these reasons:  \n * `off-topic`  \n * `too heated`  \n * `resolved`  \n * `spam`",
+            description="The permissions that the associated user will have on the repository. Valid values are `read`, `write`, `maintain`, `triage`, and `admin`.",
         )
     )
 
 
-model_rebuild(ReposOwnerRepoIssuesIssueNumberLockPutBody)
+model_rebuild(ReposOwnerRepoInvitationsInvitationIdPatchBody)
 
-__all__ = ("ReposOwnerRepoIssuesIssueNumberLockPutBody",)
+__all__ = ("ReposOwnerRepoInvitationsInvitationIdPatchBody",)

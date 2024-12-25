@@ -13,15 +13,13 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class RunnerLabelType(TypedDict):
-    """Self hosted runner label
+class ActionsOrganizationPermissionsType(TypedDict):
+    """ActionsOrganizationPermissions"""
 
-    A label for a self hosted runner
-    """
-
-    id: NotRequired[int]
-    name: str
-    type: NotRequired[Literal["read-only", "custom"]]
+    enabled_repositories: Literal["all", "none", "selected"]
+    selected_repositories_url: NotRequired[str]
+    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
+    selected_actions_url: NotRequired[str]
 
 
-__all__ = ("RunnerLabelType",)
+__all__ = ("ActionsOrganizationPermissionsType",)

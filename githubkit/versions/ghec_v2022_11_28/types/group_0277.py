@@ -11,20 +11,26 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0273 import LinkType
+
+class BranchShortType(TypedDict):
+    """Branch Short
+
+    Branch Short
+    """
+
+    name: str
+    commit: BranchShortPropCommitType
+    protected: bool
 
 
-class PullRequestSimplePropLinksType(TypedDict):
-    """PullRequestSimplePropLinks"""
+class BranchShortPropCommitType(TypedDict):
+    """BranchShortPropCommit"""
 
-    comments: LinkType
-    commits: LinkType
-    statuses: LinkType
-    html: LinkType
-    issue: LinkType
-    review_comments: LinkType
-    review_comment: LinkType
-    self_: LinkType
+    sha: str
+    url: str
 
 
-__all__ = ("PullRequestSimplePropLinksType",)
+__all__ = (
+    "BranchShortPropCommitType",
+    "BranchShortType",
+)

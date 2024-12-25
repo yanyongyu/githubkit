@@ -11,14 +11,14 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0017 import InstallationType
+from .group_0157 import CodespaceType
 
 
-class UserInstallationsGetResponse200Type(TypedDict):
-    """UserInstallationsGetResponse200"""
+class UserCodespacesGetResponse200Type(TypedDict):
+    """UserCodespacesGetResponse200"""
 
     total_count: int
-    installations: list[InstallationType]
+    codespaces: list[CodespaceType]
 
 
-__all__ = ("UserInstallationsGetResponse200Type",)
+__all__ = ("UserCodespacesGetResponse200Type",)

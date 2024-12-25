@@ -14,16 +14,16 @@ from typing_extensions import NotRequired, TypedDict
 
 from .group_0002 import SimpleUserType
 from .group_0017 import InstallationType
-from .group_0389 import EnterpriseWebhooksType
-from .group_0391 import OrganizationSimpleWebhooksType
-from .group_0392 import RepositoryWebhooksType
-from .group_0405 import WebhooksRepositoriesItemsType
+from .group_0393 import EnterpriseWebhooksType
+from .group_0395 import OrganizationSimpleWebhooksType
+from .group_0396 import RepositoryWebhooksType
+from .group_0409 import WebhooksRepositoriesItemsType
 
 
-class WebhookInstallationSuspendType(TypedDict):
-    """installation suspend event"""
+class WebhookInstallationDeletedType(TypedDict):
+    """installation deleted event"""
 
-    action: Literal["suspend"]
+    action: Literal["deleted"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: InstallationType
     organization: NotRequired[OrganizationSimpleWebhooksType]
@@ -33,4 +33,4 @@ class WebhookInstallationSuspendType(TypedDict):
     sender: SimpleUserType
 
 
-__all__ = ("WebhookInstallationSuspendType",)
+__all__ = ("WebhookInstallationDeletedType",)

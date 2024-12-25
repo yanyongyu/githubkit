@@ -13,38 +13,21 @@ from datetime import datetime
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0138 import MarketplaceListingPlanType
 
+class CodespaceExportDetailsType(TypedDict):
+    """Fetches information about an export of a codespace.
 
-class UserMarketplacePurchaseType(TypedDict):
-    """User Marketplace Purchase
-
-    User Marketplace Purchase
+    An export of a codespace. Also, latest export details for a codespace can be
+    fetched with id = latest
     """
 
-    billing_cycle: str
-    next_billing_date: Union[datetime, None]
-    unit_count: Union[int, None]
-    on_free_trial: bool
-    free_trial_ends_on: Union[datetime, None]
-    updated_at: Union[datetime, None]
-    account: MarketplaceAccountType
-    plan: MarketplaceListingPlanType
+    state: NotRequired[Union[str, None]]
+    completed_at: NotRequired[Union[datetime, None]]
+    branch: NotRequired[Union[str, None]]
+    sha: NotRequired[Union[str, None]]
+    id: NotRequired[str]
+    export_url: NotRequired[str]
+    html_url: NotRequired[Union[str, None]]
 
 
-class MarketplaceAccountType(TypedDict):
-    """Marketplace Account"""
-
-    url: str
-    id: int
-    type: str
-    node_id: NotRequired[str]
-    login: str
-    email: NotRequired[Union[str, None]]
-    organization_billing_email: NotRequired[Union[str, None]]
-
-
-__all__ = (
-    "MarketplaceAccountType",
-    "UserMarketplacePurchaseType",
-)
+__all__ = ("CodespaceExportDetailsType",)

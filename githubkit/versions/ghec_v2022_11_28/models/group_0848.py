@@ -15,43 +15,38 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class EnterprisesEnterpriseActionsRunnerGroupsGetResponse200(GitHubModel):
-    """EnterprisesEnterpriseActionsRunnerGroupsGetResponse200"""
-
-    total_count: float = Field()
-    runner_groups: list[RunnerGroupsEnterprise] = Field()
+from .group_0016 import AppPermissions
 
 
-class RunnerGroupsEnterprise(GitHubModel):
-    """RunnerGroupsEnterprise"""
+class ApplicationsClientIdTokenScopedPostBody(GitHubModel):
+    """ApplicationsClientIdTokenScopedPostBody"""
 
-    id: float = Field()
-    name: str = Field()
-    visibility: str = Field()
-    default: bool = Field()
-    selected_organizations_url: Missing[str] = Field(default=UNSET)
-    runners_url: str = Field()
-    hosted_runners_url: Missing[str] = Field(default=UNSET)
-    allows_public_repositories: bool = Field()
-    workflow_restrictions_read_only: Missing[bool] = Field(
-        default=UNSET,
-        description="If `true`, the `restricted_to_workflows` and `selected_workflows` fields cannot be modified.",
+    access_token: str = Field(
+        description="The access token used to authenticate to the GitHub API."
     )
-    restricted_to_workflows: Missing[bool] = Field(
+    target: Missing[str] = Field(
         default=UNSET,
-        description="If `true`, the runner group will be restricted to running only the workflows specified in the `selected_workflows` array.",
+        description="The name of the user or organization to scope the user access token to. **Required** unless `target_id` is specified.",
     )
-    selected_workflows: Missing[list[str]] = Field(
+    target_id: Missing[int] = Field(
         default=UNSET,
-        description="List of workflows the runner group should be allowed to run. This setting will be ignored unless `restricted_to_workflows` is set to `true`.",
+        description="The ID of the user or organization to scope the user access token to. **Required** unless `target` is specified.",
+    )
+    repositories: Missing[list[str]] = Field(
+        default=UNSET,
+        description="The list of repository names to scope the user access token to. `repositories` may not be specified if `repository_ids` is specified.",
+    )
+    repository_ids: Missing[list[int]] = Field(
+        default=UNSET,
+        description="The list of repository IDs to scope the user access token to. `repository_ids` may not be specified if `repositories` is specified.",
+    )
+    permissions: Missing[AppPermissions] = Field(
+        default=UNSET,
+        title="App Permissions",
+        description="The permissions granted to the user access token.",
     )
 
 
-model_rebuild(EnterprisesEnterpriseActionsRunnerGroupsGetResponse200)
-model_rebuild(RunnerGroupsEnterprise)
+model_rebuild(ApplicationsClientIdTokenScopedPostBody)
 
-__all__ = (
-    "EnterprisesEnterpriseActionsRunnerGroupsGetResponse200",
-    "RunnerGroupsEnterprise",
-)
+__all__ = ("ApplicationsClientIdTokenScopedPostBody",)

@@ -9,31 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0051 import SimpleRepositoryType
 
+class ActionsPublicKeyType(TypedDict):
+    """ActionsPublicKey
 
-class CodeSecurityConfigurationRepositoriesType(TypedDict):
-    """CodeSecurityConfigurationRepositories
-
-    Repositories associated with a code security configuration and attachment status
+    The public key used for setting Actions Secrets.
     """
 
-    status: NotRequired[
-        Literal[
-            "attached",
-            "attaching",
-            "detached",
-            "removed",
-            "enforced",
-            "failed",
-            "updating",
-            "removed_by_enterprise",
-        ]
-    ]
-    repository: NotRequired[SimpleRepositoryType]
+    key_id: str
+    key: str
+    id: NotRequired[int]
+    url: NotRequired[str]
+    title: NotRequired[str]
+    created_at: NotRequired[str]
 
 
-__all__ = ("CodeSecurityConfigurationRepositoriesType",)
+__all__ = ("ActionsPublicKeyType",)

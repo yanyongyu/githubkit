@@ -14,27 +14,29 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0002 import SimpleUserType
+from .group_0008 import IntegrationType
+from .group_0039 import ReactionRollupType
 
 
-class TimelineReviewedEventType(TypedDict):
-    """Timeline Reviewed Event
+class TimelineCommentEventType(TypedDict):
+    """Timeline Comment Event
 
-    Timeline Reviewed Event
+    Timeline Comment Event
     """
 
-    event: Literal["reviewed"]
+    event: Literal["commented"]
+    actor: SimpleUserType
     id: int
     node_id: str
-    user: SimpleUserType
-    body: Union[str, None]
-    state: str
+    url: str
+    body: NotRequired[str]
+    body_text: NotRequired[str]
+    body_html: NotRequired[str]
     html_url: str
-    pull_request_url: str
-    links: TimelineReviewedEventPropLinksType
-    submitted_at: NotRequired[datetime]
-    commit_id: str
-    body_html: NotRequired[Union[str, None]]
-    body_text: NotRequired[Union[str, None]]
+    user: SimpleUserType
+    created_at: datetime
+    updated_at: datetime
+    issue_url: str
     author_association: Literal[
         "COLLABORATOR",
         "CONTRIBUTOR",
@@ -45,30 +47,8 @@ class TimelineReviewedEventType(TypedDict):
         "NONE",
         "OWNER",
     ]
+    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
+    reactions: NotRequired[ReactionRollupType]
 
 
-class TimelineReviewedEventPropLinksType(TypedDict):
-    """TimelineReviewedEventPropLinks"""
-
-    html: TimelineReviewedEventPropLinksPropHtmlType
-    pull_request: TimelineReviewedEventPropLinksPropPullRequestType
-
-
-class TimelineReviewedEventPropLinksPropHtmlType(TypedDict):
-    """TimelineReviewedEventPropLinksPropHtml"""
-
-    href: str
-
-
-class TimelineReviewedEventPropLinksPropPullRequestType(TypedDict):
-    """TimelineReviewedEventPropLinksPropPullRequest"""
-
-    href: str
-
-
-__all__ = (
-    "TimelineReviewedEventPropLinksPropHtmlType",
-    "TimelineReviewedEventPropLinksPropPullRequestType",
-    "TimelineReviewedEventPropLinksType",
-    "TimelineReviewedEventType",
-)
+__all__ = ("TimelineCommentEventType",)

@@ -9,32 +9,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
 from typing_extensions import TypedDict
 
-from .group_0002 import SimpleUserType
 
+class PullRequestMergeResultType(TypedDict):
+    """Pull Request Merge Result
 
-class ReleaseAssetType(TypedDict):
-    """Release Asset
-
-    Data related to a release.
+    Pull Request Merge Result
     """
 
-    url: str
-    browser_download_url: str
-    id: int
-    node_id: str
-    name: str
-    label: Union[str, None]
-    state: Literal["uploaded", "open"]
-    content_type: str
-    size: int
-    download_count: int
-    created_at: datetime
-    updated_at: datetime
-    uploader: Union[None, SimpleUserType]
+    sha: str
+    merged: bool
+    message: str
 
 
-__all__ = ("ReleaseAssetType",)
+__all__ = ("PullRequestMergeResultType",)

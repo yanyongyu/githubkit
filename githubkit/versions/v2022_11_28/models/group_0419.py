@@ -13,192 +13,67 @@ from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0002 import SimpleUser
 
+class WebhooksTeam(GitHubModel):
+    """Team
 
-class PersonalAccessTokenRequest(GitHubModel):
-    """Personal Access Token Request
-
-    Details of a Personal Access Token Request.
+    Groups of organization members that gives permissions on specified repositories.
     """
 
-    id: int = Field(
-        description="Unique identifier of the request for access via fine-grained personal access token. Used as the `pat_request_id` parameter in the list and review API calls."
+    deleted: Missing[bool] = Field(default=UNSET)
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Description of the team"
     )
-    owner: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    permissions_added: PersonalAccessTokenRequestPropPermissionsAdded = Field(
-        description="New requested permissions, categorized by type of permission."
+    html_url: Missing[str] = Field(default=UNSET)
+    id: int = Field(description="Unique identifier of the team")
+    members_url: Missing[str] = Field(default=UNSET)
+    name: str = Field(description="Name of the team")
+    node_id: Missing[str] = Field(default=UNSET)
+    parent: Missing[Union[WebhooksTeamPropParent, None]] = Field(default=UNSET)
+    permission: Missing[str] = Field(
+        default=UNSET,
+        description="Permission that the team will have for its repositories",
     )
-    permissions_upgraded: PersonalAccessTokenRequestPropPermissionsUpgraded = Field(
-        description="Requested permissions that elevate access for a previously approved request for access, categorized by type of permission."
+    privacy: Missing[Literal["open", "closed", "secret"]] = Field(default=UNSET)
+    notification_setting: Missing[
+        Literal["notifications_enabled", "notifications_disabled"]
+    ] = Field(default=UNSET)
+    repositories_url: Missing[str] = Field(default=UNSET)
+    slug: Missing[str] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET, description="URL for the team")
+
+
+class WebhooksTeamPropParent(GitHubModel):
+    """WebhooksTeamPropParent"""
+
+    description: Union[str, None] = Field(description="Description of the team")
+    html_url: str = Field()
+    id: int = Field(description="Unique identifier of the team")
+    members_url: str = Field()
+    name: str = Field(description="Name of the team")
+    node_id: str = Field()
+    permission: str = Field(
+        description="Permission that the team will have for its repositories"
     )
-    permissions_result: PersonalAccessTokenRequestPropPermissionsResult = Field(
-        description="Permissions requested, categorized by type of permission. This field incorporates `permissions_added` and `permissions_upgraded`."
-    )
-    repository_selection: Literal["none", "all", "subset"] = Field(
-        description="Type of repository selection requested."
-    )
-    repository_count: Union[int, None] = Field(
-        description="The number of repositories the token is requesting access to. This field is only populated when `repository_selection` is `subset`."
-    )
-    repositories: Union[list[PersonalAccessTokenRequestPropRepositoriesItems], None] = (
+    privacy: Literal["open", "closed", "secret"] = Field()
+    notification_setting: Literal["notifications_enabled", "notifications_disabled"] = (
         Field(
-            description="An array of repository objects the token is requesting access to. This field is only populated when `repository_selection` is `subset`."
+            description="Whether team members will receive notifications when their team is @mentioned"
         )
     )
-    created_at: str = Field(
-        description="Date and time when the request for access was created."
-    )
-    token_id: int = Field(
-        description="Unique identifier of the user's token. This field can also be found in audit log events and the organization's settings for their PAT grants."
-    )
-    token_name: str = Field(
-        description="The name given to the user's token. This field can also be found in an organization's settings page for Active Tokens."
-    )
-    token_expired: bool = Field(
-        description="Whether the associated fine-grained personal access token has expired."
-    )
-    token_expires_at: Union[str, None] = Field(
-        description="Date and time when the associated fine-grained personal access token expires."
-    )
-    token_last_used_at: Union[str, None] = Field(
-        description="Date and time when the associated fine-grained personal access token was last used for authentication."
-    )
+    repositories_url: str = Field()
+    slug: str = Field()
+    url: str = Field(description="URL for the team")
 
 
-class PersonalAccessTokenRequestPropRepositoriesItems(GitHubModel):
-    """PersonalAccessTokenRequestPropRepositoriesItems"""
-
-    full_name: str = Field()
-    id: int = Field(description="Unique identifier of the repository")
-    name: str = Field(description="The name of the repository.")
-    node_id: str = Field()
-    private: bool = Field(description="Whether the repository is private or public.")
-
-
-class PersonalAccessTokenRequestPropPermissionsAdded(GitHubModel):
-    """PersonalAccessTokenRequestPropPermissionsAdded
-
-    New requested permissions, categorized by type of permission.
-    """
-
-    organization: Missing[
-        PersonalAccessTokenRequestPropPermissionsAddedPropOrganization
-    ] = Field(default=UNSET)
-    repository: Missing[
-        PersonalAccessTokenRequestPropPermissionsAddedPropRepository
-    ] = Field(default=UNSET)
-    other: Missing[PersonalAccessTokenRequestPropPermissionsAddedPropOther] = Field(
-        default=UNSET
-    )
-
-
-class PersonalAccessTokenRequestPropPermissionsAddedPropOrganization(ExtraGitHubModel):
-    """PersonalAccessTokenRequestPropPermissionsAddedPropOrganization"""
-
-
-class PersonalAccessTokenRequestPropPermissionsAddedPropRepository(ExtraGitHubModel):
-    """PersonalAccessTokenRequestPropPermissionsAddedPropRepository"""
-
-
-class PersonalAccessTokenRequestPropPermissionsAddedPropOther(ExtraGitHubModel):
-    """PersonalAccessTokenRequestPropPermissionsAddedPropOther"""
-
-
-class PersonalAccessTokenRequestPropPermissionsUpgraded(GitHubModel):
-    """PersonalAccessTokenRequestPropPermissionsUpgraded
-
-    Requested permissions that elevate access for a previously approved request for
-    access, categorized by type of permission.
-    """
-
-    organization: Missing[
-        PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganization
-    ] = Field(default=UNSET)
-    repository: Missing[
-        PersonalAccessTokenRequestPropPermissionsUpgradedPropRepository
-    ] = Field(default=UNSET)
-    other: Missing[PersonalAccessTokenRequestPropPermissionsUpgradedPropOther] = Field(
-        default=UNSET
-    )
-
-
-class PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganization(
-    ExtraGitHubModel
-):
-    """PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganization"""
-
-
-class PersonalAccessTokenRequestPropPermissionsUpgradedPropRepository(ExtraGitHubModel):
-    """PersonalAccessTokenRequestPropPermissionsUpgradedPropRepository"""
-
-
-class PersonalAccessTokenRequestPropPermissionsUpgradedPropOther(ExtraGitHubModel):
-    """PersonalAccessTokenRequestPropPermissionsUpgradedPropOther"""
-
-
-class PersonalAccessTokenRequestPropPermissionsResult(GitHubModel):
-    """PersonalAccessTokenRequestPropPermissionsResult
-
-    Permissions requested, categorized by type of permission. This field
-    incorporates `permissions_added` and `permissions_upgraded`.
-    """
-
-    organization: Missing[
-        PersonalAccessTokenRequestPropPermissionsResultPropOrganization
-    ] = Field(default=UNSET)
-    repository: Missing[
-        PersonalAccessTokenRequestPropPermissionsResultPropRepository
-    ] = Field(default=UNSET)
-    other: Missing[PersonalAccessTokenRequestPropPermissionsResultPropOther] = Field(
-        default=UNSET
-    )
-
-
-class PersonalAccessTokenRequestPropPermissionsResultPropOrganization(ExtraGitHubModel):
-    """PersonalAccessTokenRequestPropPermissionsResultPropOrganization"""
-
-
-class PersonalAccessTokenRequestPropPermissionsResultPropRepository(ExtraGitHubModel):
-    """PersonalAccessTokenRequestPropPermissionsResultPropRepository"""
-
-
-class PersonalAccessTokenRequestPropPermissionsResultPropOther(ExtraGitHubModel):
-    """PersonalAccessTokenRequestPropPermissionsResultPropOther"""
-
-
-model_rebuild(PersonalAccessTokenRequest)
-model_rebuild(PersonalAccessTokenRequestPropRepositoriesItems)
-model_rebuild(PersonalAccessTokenRequestPropPermissionsAdded)
-model_rebuild(PersonalAccessTokenRequestPropPermissionsAddedPropOrganization)
-model_rebuild(PersonalAccessTokenRequestPropPermissionsAddedPropRepository)
-model_rebuild(PersonalAccessTokenRequestPropPermissionsAddedPropOther)
-model_rebuild(PersonalAccessTokenRequestPropPermissionsUpgraded)
-model_rebuild(PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganization)
-model_rebuild(PersonalAccessTokenRequestPropPermissionsUpgradedPropRepository)
-model_rebuild(PersonalAccessTokenRequestPropPermissionsUpgradedPropOther)
-model_rebuild(PersonalAccessTokenRequestPropPermissionsResult)
-model_rebuild(PersonalAccessTokenRequestPropPermissionsResultPropOrganization)
-model_rebuild(PersonalAccessTokenRequestPropPermissionsResultPropRepository)
-model_rebuild(PersonalAccessTokenRequestPropPermissionsResultPropOther)
+model_rebuild(WebhooksTeam)
+model_rebuild(WebhooksTeamPropParent)
 
 __all__ = (
-    "PersonalAccessTokenRequest",
-    "PersonalAccessTokenRequestPropPermissionsAdded",
-    "PersonalAccessTokenRequestPropPermissionsAddedPropOrganization",
-    "PersonalAccessTokenRequestPropPermissionsAddedPropOther",
-    "PersonalAccessTokenRequestPropPermissionsAddedPropRepository",
-    "PersonalAccessTokenRequestPropPermissionsResult",
-    "PersonalAccessTokenRequestPropPermissionsResultPropOrganization",
-    "PersonalAccessTokenRequestPropPermissionsResultPropOther",
-    "PersonalAccessTokenRequestPropPermissionsResultPropRepository",
-    "PersonalAccessTokenRequestPropPermissionsUpgraded",
-    "PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganization",
-    "PersonalAccessTokenRequestPropPermissionsUpgradedPropOther",
-    "PersonalAccessTokenRequestPropPermissionsUpgradedPropRepository",
-    "PersonalAccessTokenRequestPropRepositoriesItems",
+    "WebhooksTeam",
+    "WebhooksTeamPropParent",
 )

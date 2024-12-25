@@ -9,30 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0273 import CustomDeploymentRuleAppType
 
 
-class GitRefType(TypedDict):
-    """Git Reference
+class DeploymentProtectionRuleType(TypedDict):
+    """Deployment protection rule
 
-    Git references within a repository
+    Deployment protection rule
     """
 
-    ref: str
+    id: int
     node_id: str
-    url: str
-    object_: GitRefPropObjectType
+    enabled: bool
+    app: CustomDeploymentRuleAppType
 
 
-class GitRefPropObjectType(TypedDict):
-    """GitRefPropObject"""
+class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200Type(
+    TypedDict
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200
 
-    type: str
-    sha: str
-    url: str
+    Examples:
+        {'$ref': '#/components/examples/deployment-protection-rules'}
+    """
+
+    total_count: NotRequired[int]
+    custom_deployment_protection_rules: NotRequired[list[DeploymentProtectionRuleType]]
 
 
 __all__ = (
-    "GitRefPropObjectType",
-    "GitRefType",
+    "DeploymentProtectionRuleType",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200Type",
 )

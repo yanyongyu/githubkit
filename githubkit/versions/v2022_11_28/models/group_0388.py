@@ -14,16 +14,16 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class KeySimple(GitHubModel):
-    """Key Simple
+class SocialAccount(GitHubModel):
+    """Social account
 
-    Key Simple
+    Social media account
     """
 
-    id: int = Field()
-    key: str = Field()
+    provider: str = Field()
+    url: str = Field()
 
 
-model_rebuild(KeySimple)
+model_rebuild(SocialAccount)
 
-__all__ = ("KeySimple",)
+__all__ = ("SocialAccount",)

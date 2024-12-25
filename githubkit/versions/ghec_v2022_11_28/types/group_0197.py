@@ -13,107 +13,138 @@ from datetime import datetime
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0055 import TeamSimpleType
+from .group_0001 import CvssSeveritiesType
+from .group_0002 import SimpleUserType
+from .group_0060 import TeamType
+from .group_0196 import RepositoryAdvisoryCreditType
 
 
-class TeamFullType(TypedDict):
-    """Full Team
+class RepositoryAdvisoryType(TypedDict):
+    """RepositoryAdvisory
 
-    Groups of organization members that gives permissions on specified repositories.
+    A repository security advisory.
     """
 
-    id: int
-    node_id: str
+    ghsa_id: str
+    cve_id: Union[str, None]
     url: str
     html_url: str
-    name: str
-    slug: str
+    summary: str
     description: Union[str, None]
-    privacy: NotRequired[Literal["closed", "secret"]]
-    notification_setting: NotRequired[
-        Literal["notifications_enabled", "notifications_disabled"]
+    severity: Union[None, Literal["critical", "high", "medium", "low"]]
+    author: None
+    publisher: None
+    identifiers: list[RepositoryAdvisoryPropIdentifiersItemsType]
+    state: Literal["published", "closed", "withdrawn", "draft", "triage"]
+    created_at: Union[datetime, None]
+    updated_at: Union[datetime, None]
+    published_at: Union[datetime, None]
+    closed_at: Union[datetime, None]
+    withdrawn_at: Union[datetime, None]
+    submission: Union[RepositoryAdvisoryPropSubmissionType, None]
+    vulnerabilities: Union[list[RepositoryAdvisoryVulnerabilityType], None]
+    cvss: Union[RepositoryAdvisoryPropCvssType, None]
+    cvss_severities: NotRequired[Union[CvssSeveritiesType, None]]
+    cwes: Union[list[RepositoryAdvisoryPropCwesItemsType], None]
+    cwe_ids: Union[list[str], None]
+    credits_: Union[list[RepositoryAdvisoryPropCreditsItemsType], None]
+    credits_detailed: Union[list[RepositoryAdvisoryCreditType], None]
+    collaborating_users: Union[list[SimpleUserType], None]
+    collaborating_teams: Union[list[TeamType], None]
+    private_fork: None
+
+
+class RepositoryAdvisoryPropIdentifiersItemsType(TypedDict):
+    """RepositoryAdvisoryPropIdentifiersItems"""
+
+    type: Literal["CVE", "GHSA"]
+    value: str
+
+
+class RepositoryAdvisoryPropSubmissionType(TypedDict):
+    """RepositoryAdvisoryPropSubmission"""
+
+    accepted: bool
+
+
+class RepositoryAdvisoryPropCvssType(TypedDict):
+    """RepositoryAdvisoryPropCvss"""
+
+    vector_string: Union[str, None]
+    score: Union[float, None]
+
+
+class RepositoryAdvisoryPropCwesItemsType(TypedDict):
+    """RepositoryAdvisoryPropCwesItems"""
+
+    cwe_id: str
+    name: str
+
+
+class RepositoryAdvisoryPropCreditsItemsType(TypedDict):
+    """RepositoryAdvisoryPropCreditsItems"""
+
+    login: NotRequired[str]
+    type: NotRequired[
+        Literal[
+            "analyst",
+            "finder",
+            "reporter",
+            "coordinator",
+            "remediation_developer",
+            "remediation_reviewer",
+            "remediation_verifier",
+            "tool",
+            "sponsor",
+            "other",
+        ]
     ]
-    permission: str
-    members_url: str
-    repositories_url: str
-    parent: NotRequired[Union[None, TeamSimpleType]]
-    members_count: int
-    repos_count: int
-    created_at: datetime
-    updated_at: datetime
-    organization: TeamOrganizationType
-    ldap_dn: NotRequired[str]
 
 
-class TeamOrganizationType(TypedDict):
-    """Team Organization
+class RepositoryAdvisoryVulnerabilityType(TypedDict):
+    """RepositoryAdvisoryVulnerability
 
-    Team Organization
+    A product affected by the vulnerability detailed in a repository security
+    advisory.
     """
 
-    login: str
-    id: int
-    node_id: str
-    url: str
-    repos_url: str
-    events_url: str
-    hooks_url: str
-    issues_url: str
-    members_url: str
-    public_members_url: str
-    avatar_url: str
-    description: Union[str, None]
-    name: NotRequired[Union[str, None]]
-    company: NotRequired[Union[str, None]]
-    blog: NotRequired[Union[str, None]]
-    location: NotRequired[Union[str, None]]
-    email: NotRequired[Union[str, None]]
-    twitter_username: NotRequired[Union[str, None]]
-    is_verified: NotRequired[bool]
-    has_organization_projects: bool
-    has_repository_projects: bool
-    public_repos: int
-    public_gists: int
-    followers: int
-    following: int
-    html_url: str
-    created_at: datetime
-    type: str
-    total_private_repos: NotRequired[int]
-    owned_private_repos: NotRequired[int]
-    private_gists: NotRequired[Union[int, None]]
-    disk_usage: NotRequired[Union[int, None]]
-    collaborators: NotRequired[Union[int, None]]
-    billing_email: NotRequired[Union[str, None]]
-    plan: NotRequired[TeamOrganizationPropPlanType]
-    default_repository_permission: NotRequired[Union[str, None]]
-    members_can_create_repositories: NotRequired[Union[bool, None]]
-    two_factor_requirement_enabled: NotRequired[Union[bool, None]]
-    members_allowed_repository_creation_type: NotRequired[str]
-    members_can_create_public_repositories: NotRequired[bool]
-    members_can_create_private_repositories: NotRequired[bool]
-    members_can_create_internal_repositories: NotRequired[bool]
-    members_can_create_pages: NotRequired[bool]
-    members_can_create_public_pages: NotRequired[bool]
-    members_can_create_private_pages: NotRequired[bool]
-    members_can_fork_private_repositories: NotRequired[Union[bool, None]]
-    web_commit_signoff_required: NotRequired[bool]
-    updated_at: datetime
-    archived_at: Union[datetime, None]
+    package: Union[RepositoryAdvisoryVulnerabilityPropPackageType, None]
+    vulnerable_version_range: Union[str, None]
+    patched_versions: Union[str, None]
+    vulnerable_functions: Union[list[str], None]
 
 
-class TeamOrganizationPropPlanType(TypedDict):
-    """TeamOrganizationPropPlan"""
+class RepositoryAdvisoryVulnerabilityPropPackageType(TypedDict):
+    """RepositoryAdvisoryVulnerabilityPropPackage
 
-    name: str
-    space: int
-    private_repos: int
-    filled_seats: NotRequired[int]
-    seats: NotRequired[int]
+    The name of the package affected by the vulnerability.
+    """
+
+    ecosystem: Literal[
+        "rubygems",
+        "npm",
+        "pip",
+        "maven",
+        "nuget",
+        "composer",
+        "go",
+        "rust",
+        "erlang",
+        "actions",
+        "pub",
+        "other",
+        "swift",
+    ]
+    name: Union[str, None]
 
 
 __all__ = (
-    "TeamFullType",
-    "TeamOrganizationPropPlanType",
-    "TeamOrganizationType",
+    "RepositoryAdvisoryPropCreditsItemsType",
+    "RepositoryAdvisoryPropCvssType",
+    "RepositoryAdvisoryPropCwesItemsType",
+    "RepositoryAdvisoryPropIdentifiersItemsType",
+    "RepositoryAdvisoryPropSubmissionType",
+    "RepositoryAdvisoryType",
+    "RepositoryAdvisoryVulnerabilityPropPackageType",
+    "RepositoryAdvisoryVulnerabilityType",
 )

@@ -32,6 +32,7 @@ if TYPE_CHECKING:
         CodeSecurityConfigurationForRepository,
         CodeSecurityConfigurationRepositories,
         CodeSecurityDefaultConfigurationsItems,
+        EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200,
         OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200,
     )
     from ..types import (
@@ -41,6 +42,13 @@ if TYPE_CHECKING:
         CodeSecurityConfigurationRepositoriesType,
         CodeSecurityConfigurationType,
         CodeSecurityDefaultConfigurationsItemsType,
+        EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBodyType,
+        EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType,
+        EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200Type,
+        EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptionsType,
+        EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyType,
+        EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptionsType,
+        EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyType,
         OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBodyType,
         OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType,
         OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200Type,
@@ -67,6 +75,1038 @@ class CodeSecurityClient:
         raise RuntimeError(
             "GitHub client has already been collected. "
             "Do not use this client after the client has been collected."
+        )
+
+    def get_configurations_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        per_page: Missing[int] = UNSET,
+        before: Missing[str] = UNSET,
+        after: Missing[str] = UNSET,
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[CodeSecurityConfiguration], list[CodeSecurityConfigurationType]]:
+        """See also: https://docs.github.com/rest/code-security/configurations#get-code-security-configurations-for-an-enterprise"""
+
+        from ..models import BasicError, CodeSecurityConfiguration
+
+        url = f"/enterprises/{enterprise}/code-security/configurations"
+
+        params = {
+            "per_page": per_page,
+            "before": before,
+            "after": after,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=list[CodeSecurityConfiguration],
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_get_configurations_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        per_page: Missing[int] = UNSET,
+        before: Missing[str] = UNSET,
+        after: Missing[str] = UNSET,
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[CodeSecurityConfiguration], list[CodeSecurityConfigurationType]]:
+        """See also: https://docs.github.com/rest/code-security/configurations#get-code-security-configurations-for-an-enterprise"""
+
+        from ..models import BasicError, CodeSecurityConfiguration
+
+        url = f"/enterprises/{enterprise}/code-security/configurations"
+
+        params = {
+            "per_page": per_page,
+            "before": before,
+            "after": after,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=list[CodeSecurityConfiguration],
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def create_configuration_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[dict[str, str]] = None,
+        data: EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyType,
+    ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]: ...
+
+    @overload
+    def create_configuration_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[dict[str, str]] = None,
+        name: str,
+        description: str,
+        advanced_security: Missing[Literal["enabled", "disabled"]] = UNSET,
+        dependency_graph: Missing[Literal["enabled", "disabled", "not_set"]] = UNSET,
+        dependency_graph_autosubmit_action: Missing[
+            Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
+        dependency_graph_autosubmit_action_options: Missing[
+            EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptionsType
+        ] = UNSET,
+        dependabot_alerts: Missing[Literal["enabled", "disabled", "not_set"]] = UNSET,
+        dependabot_security_updates: Missing[
+            Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
+        code_scanning_default_setup: Missing[
+            Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
+        code_scanning_default_setup_options: Missing[
+            Union[CodeScanningDefaultSetupOptionsType, None]
+        ] = UNSET,
+        secret_scanning: Missing[Literal["enabled", "disabled", "not_set"]] = UNSET,
+        secret_scanning_push_protection: Missing[
+            Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
+        secret_scanning_validity_checks: Missing[
+            Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
+        secret_scanning_non_provider_patterns: Missing[
+            Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
+        private_vulnerability_reporting: Missing[
+            Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
+        enforcement: Missing[Literal["enforced", "unenforced"]] = UNSET,
+    ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]: ...
+
+    def create_configuration_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[dict[str, str]] = None,
+        data: Missing[
+            EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]:
+        """See also: https://docs.github.com/rest/code-security/configurations#create-a-code-security-configuration-for-an-enterprise"""
+
+        from ..models import (
+            BasicError,
+            CodeSecurityConfiguration,
+            EnterprisesEnterpriseCodeSecurityConfigurationsPostBody,
+        )
+
+        url = f"/enterprises/{enterprise}/code-security/configurations"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseCodeSecurityConfigurationsPostBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=CodeSecurityConfiguration,
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    async def async_create_configuration_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[dict[str, str]] = None,
+        data: EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyType,
+    ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]: ...
+
+    @overload
+    async def async_create_configuration_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[dict[str, str]] = None,
+        name: str,
+        description: str,
+        advanced_security: Missing[Literal["enabled", "disabled"]] = UNSET,
+        dependency_graph: Missing[Literal["enabled", "disabled", "not_set"]] = UNSET,
+        dependency_graph_autosubmit_action: Missing[
+            Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
+        dependency_graph_autosubmit_action_options: Missing[
+            EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptionsType
+        ] = UNSET,
+        dependabot_alerts: Missing[Literal["enabled", "disabled", "not_set"]] = UNSET,
+        dependabot_security_updates: Missing[
+            Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
+        code_scanning_default_setup: Missing[
+            Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
+        code_scanning_default_setup_options: Missing[
+            Union[CodeScanningDefaultSetupOptionsType, None]
+        ] = UNSET,
+        secret_scanning: Missing[Literal["enabled", "disabled", "not_set"]] = UNSET,
+        secret_scanning_push_protection: Missing[
+            Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
+        secret_scanning_validity_checks: Missing[
+            Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
+        secret_scanning_non_provider_patterns: Missing[
+            Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
+        private_vulnerability_reporting: Missing[
+            Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
+        enforcement: Missing[Literal["enforced", "unenforced"]] = UNSET,
+    ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]: ...
+
+    async def async_create_configuration_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[dict[str, str]] = None,
+        data: Missing[
+            EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]:
+        """See also: https://docs.github.com/rest/code-security/configurations#create-a-code-security-configuration-for-an-enterprise"""
+
+        from ..models import (
+            BasicError,
+            CodeSecurityConfiguration,
+            EnterprisesEnterpriseCodeSecurityConfigurationsPostBody,
+        )
+
+        url = f"/enterprises/{enterprise}/code-security/configurations"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseCodeSecurityConfigurationsPostBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=CodeSecurityConfiguration,
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    def get_default_configurations_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[
+        list[CodeSecurityDefaultConfigurationsItems],
+        list[CodeSecurityDefaultConfigurationsItemsType],
+    ]:
+        """See also: https://docs.github.com/rest/code-security/configurations#get-default-code-security-configurations-for-an-enterprise"""
+
+        from ..models import CodeSecurityDefaultConfigurationsItems
+
+        url = f"/enterprises/{enterprise}/code-security/configurations/defaults"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=list[CodeSecurityDefaultConfigurationsItems],
+        )
+
+    async def async_get_default_configurations_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[
+        list[CodeSecurityDefaultConfigurationsItems],
+        list[CodeSecurityDefaultConfigurationsItemsType],
+    ]:
+        """See also: https://docs.github.com/rest/code-security/configurations#get-default-code-security-configurations-for-an-enterprise"""
+
+        from ..models import CodeSecurityDefaultConfigurationsItems
+
+        url = f"/enterprises/{enterprise}/code-security/configurations/defaults"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=list[CodeSecurityDefaultConfigurationsItems],
+        )
+
+    def get_single_configuration_for_enterprise(
+        self,
+        enterprise: str,
+        configuration_id: int,
+        *,
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]:
+        """See also: https://docs.github.com/rest/code-security/configurations#retrieve-a-code-security-configuration-of-an-enterprise"""
+
+        from ..models import BasicError, CodeSecurityConfiguration
+
+        url = (
+            f"/enterprises/{enterprise}/code-security/configurations/{configuration_id}"
+        )
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=CodeSecurityConfiguration,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_get_single_configuration_for_enterprise(
+        self,
+        enterprise: str,
+        configuration_id: int,
+        *,
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]:
+        """See also: https://docs.github.com/rest/code-security/configurations#retrieve-a-code-security-configuration-of-an-enterprise"""
+
+        from ..models import BasicError, CodeSecurityConfiguration
+
+        url = (
+            f"/enterprises/{enterprise}/code-security/configurations/{configuration_id}"
+        )
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=CodeSecurityConfiguration,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    def delete_configuration_for_enterprise(
+        self,
+        enterprise: str,
+        configuration_id: int,
+        *,
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response:
+        """See also: https://docs.github.com/rest/code-security/configurations#delete-a-code-security-configuration-for-an-enterprise"""
+
+        from ..models import BasicError
+
+        url = (
+            f"/enterprises/{enterprise}/code-security/configurations/{configuration_id}"
+        )
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "409": BasicError,
+            },
+        )
+
+    async def async_delete_configuration_for_enterprise(
+        self,
+        enterprise: str,
+        configuration_id: int,
+        *,
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response:
+        """See also: https://docs.github.com/rest/code-security/configurations#delete-a-code-security-configuration-for-an-enterprise"""
+
+        from ..models import BasicError
+
+        url = (
+            f"/enterprises/{enterprise}/code-security/configurations/{configuration_id}"
+        )
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "409": BasicError,
+            },
+        )
+
+    @overload
+    def update_enterprise_configuration(
+        self,
+        enterprise: str,
+        configuration_id: int,
+        *,
+        headers: Optional[dict[str, str]] = None,
+        data: EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyType,
+    ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]: ...
+
+    @overload
+    def update_enterprise_configuration(
+        self,
+        enterprise: str,
+        configuration_id: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[dict[str, str]] = None,
+        name: Missing[str] = UNSET,
+        description: Missing[str] = UNSET,
+        advanced_security: Missing[Literal["enabled", "disabled"]] = UNSET,
+        dependency_graph: Missing[Literal["enabled", "disabled", "not_set"]] = UNSET,
+        dependency_graph_autosubmit_action: Missing[
+            Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
+        dependency_graph_autosubmit_action_options: Missing[
+            EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptionsType
+        ] = UNSET,
+        dependabot_alerts: Missing[Literal["enabled", "disabled", "not_set"]] = UNSET,
+        dependabot_security_updates: Missing[
+            Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
+        code_scanning_default_setup: Missing[
+            Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
+        code_scanning_default_setup_options: Missing[
+            Union[CodeScanningDefaultSetupOptionsType, None]
+        ] = UNSET,
+        secret_scanning: Missing[Literal["enabled", "disabled", "not_set"]] = UNSET,
+        secret_scanning_push_protection: Missing[
+            Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
+        secret_scanning_validity_checks: Missing[
+            Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
+        secret_scanning_non_provider_patterns: Missing[
+            Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
+        private_vulnerability_reporting: Missing[
+            Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
+        enforcement: Missing[Literal["enforced", "unenforced"]] = UNSET,
+    ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]: ...
+
+    def update_enterprise_configuration(
+        self,
+        enterprise: str,
+        configuration_id: int,
+        *,
+        headers: Optional[dict[str, str]] = None,
+        data: Missing[
+            EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]:
+        """See also: https://docs.github.com/rest/code-security/configurations#update-a-custom-code-security-configuration-for-an-enterprise"""
+
+        from ..models import (
+            BasicError,
+            CodeSecurityConfiguration,
+            EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBody,
+        )
+
+        url = (
+            f"/enterprises/{enterprise}/code-security/configurations/{configuration_id}"
+        )
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBody,
+                json,
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=CodeSecurityConfiguration,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "409": BasicError,
+            },
+        )
+
+    @overload
+    async def async_update_enterprise_configuration(
+        self,
+        enterprise: str,
+        configuration_id: int,
+        *,
+        headers: Optional[dict[str, str]] = None,
+        data: EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyType,
+    ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]: ...
+
+    @overload
+    async def async_update_enterprise_configuration(
+        self,
+        enterprise: str,
+        configuration_id: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[dict[str, str]] = None,
+        name: Missing[str] = UNSET,
+        description: Missing[str] = UNSET,
+        advanced_security: Missing[Literal["enabled", "disabled"]] = UNSET,
+        dependency_graph: Missing[Literal["enabled", "disabled", "not_set"]] = UNSET,
+        dependency_graph_autosubmit_action: Missing[
+            Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
+        dependency_graph_autosubmit_action_options: Missing[
+            EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptionsType
+        ] = UNSET,
+        dependabot_alerts: Missing[Literal["enabled", "disabled", "not_set"]] = UNSET,
+        dependabot_security_updates: Missing[
+            Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
+        code_scanning_default_setup: Missing[
+            Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
+        code_scanning_default_setup_options: Missing[
+            Union[CodeScanningDefaultSetupOptionsType, None]
+        ] = UNSET,
+        secret_scanning: Missing[Literal["enabled", "disabled", "not_set"]] = UNSET,
+        secret_scanning_push_protection: Missing[
+            Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
+        secret_scanning_validity_checks: Missing[
+            Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
+        secret_scanning_non_provider_patterns: Missing[
+            Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
+        private_vulnerability_reporting: Missing[
+            Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
+        enforcement: Missing[Literal["enforced", "unenforced"]] = UNSET,
+    ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]: ...
+
+    async def async_update_enterprise_configuration(
+        self,
+        enterprise: str,
+        configuration_id: int,
+        *,
+        headers: Optional[dict[str, str]] = None,
+        data: Missing[
+            EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]:
+        """See also: https://docs.github.com/rest/code-security/configurations#update-a-custom-code-security-configuration-for-an-enterprise"""
+
+        from ..models import (
+            BasicError,
+            CodeSecurityConfiguration,
+            EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBody,
+        )
+
+        url = (
+            f"/enterprises/{enterprise}/code-security/configurations/{configuration_id}"
+        )
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBody,
+                json,
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=CodeSecurityConfiguration,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "409": BasicError,
+            },
+        )
+
+    @overload
+    def attach_enterprise_configuration(
+        self,
+        enterprise: str,
+        configuration_id: int,
+        *,
+        headers: Optional[dict[str, str]] = None,
+        data: EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBodyType,
+    ) -> Response[
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+    ]: ...
+
+    @overload
+    def attach_enterprise_configuration(
+        self,
+        enterprise: str,
+        configuration_id: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[dict[str, str]] = None,
+        scope: Literal["all", "all_without_configurations"],
+    ) -> Response[
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+    ]: ...
+
+    def attach_enterprise_configuration(
+        self,
+        enterprise: str,
+        configuration_id: int,
+        *,
+        headers: Optional[dict[str, str]] = None,
+        data: Missing[
+            EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+    ]:
+        """See also: https://docs.github.com/rest/code-security/configurations#attach-an-enterprise-configuration-to-repositories"""
+
+        from ..models import (
+            AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
+            BasicError,
+            EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBody,
+        )
+
+        url = f"/enterprises/{enterprise}/code-security/configurations/{configuration_id}/attach"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBody,
+                json,
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "409": BasicError,
+            },
+        )
+
+    @overload
+    async def async_attach_enterprise_configuration(
+        self,
+        enterprise: str,
+        configuration_id: int,
+        *,
+        headers: Optional[dict[str, str]] = None,
+        data: EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBodyType,
+    ) -> Response[
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+    ]: ...
+
+    @overload
+    async def async_attach_enterprise_configuration(
+        self,
+        enterprise: str,
+        configuration_id: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[dict[str, str]] = None,
+        scope: Literal["all", "all_without_configurations"],
+    ) -> Response[
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+    ]: ...
+
+    async def async_attach_enterprise_configuration(
+        self,
+        enterprise: str,
+        configuration_id: int,
+        *,
+        headers: Optional[dict[str, str]] = None,
+        data: Missing[
+            EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+    ]:
+        """See also: https://docs.github.com/rest/code-security/configurations#attach-an-enterprise-configuration-to-repositories"""
+
+        from ..models import (
+            AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
+            BasicError,
+            EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBody,
+        )
+
+        url = f"/enterprises/{enterprise}/code-security/configurations/{configuration_id}/attach"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBody,
+                json,
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "409": BasicError,
+            },
+        )
+
+    @overload
+    def set_configuration_as_default_for_enterprise(
+        self,
+        enterprise: str,
+        configuration_id: int,
+        *,
+        headers: Optional[dict[str, str]] = None,
+        data: EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType,
+    ) -> Response[
+        EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200,
+        EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200Type,
+    ]: ...
+
+    @overload
+    def set_configuration_as_default_for_enterprise(
+        self,
+        enterprise: str,
+        configuration_id: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[dict[str, str]] = None,
+        default_for_new_repos: Missing[
+            Literal["all", "none", "private_and_internal", "public"]
+        ] = UNSET,
+    ) -> Response[
+        EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200,
+        EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200Type,
+    ]: ...
+
+    def set_configuration_as_default_for_enterprise(
+        self,
+        enterprise: str,
+        configuration_id: int,
+        *,
+        headers: Optional[dict[str, str]] = None,
+        data: Missing[
+            EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[
+        EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200,
+        EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200Type,
+    ]:
+        """See also: https://docs.github.com/rest/code-security/configurations#set-a-code-security-configuration-as-a-default-for-an-enterprise"""
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBody,
+            EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200,
+        )
+
+        url = f"/enterprises/{enterprise}/code-security/configurations/{configuration_id}/defaults"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBody,
+                json,
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    async def async_set_configuration_as_default_for_enterprise(
+        self,
+        enterprise: str,
+        configuration_id: int,
+        *,
+        headers: Optional[dict[str, str]] = None,
+        data: EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType,
+    ) -> Response[
+        EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200,
+        EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200Type,
+    ]: ...
+
+    @overload
+    async def async_set_configuration_as_default_for_enterprise(
+        self,
+        enterprise: str,
+        configuration_id: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[dict[str, str]] = None,
+        default_for_new_repos: Missing[
+            Literal["all", "none", "private_and_internal", "public"]
+        ] = UNSET,
+    ) -> Response[
+        EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200,
+        EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200Type,
+    ]: ...
+
+    async def async_set_configuration_as_default_for_enterprise(
+        self,
+        enterprise: str,
+        configuration_id: int,
+        *,
+        headers: Optional[dict[str, str]] = None,
+        data: Missing[
+            EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[
+        EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200,
+        EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200Type,
+    ]:
+        """See also: https://docs.github.com/rest/code-security/configurations#set-a-code-security-configuration-as-a-default-for-an-enterprise"""
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBody,
+            EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200,
+        )
+
+        url = f"/enterprises/{enterprise}/code-security/configurations/{configuration_id}/defaults"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBody,
+                json,
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    def get_repositories_for_enterprise_configuration(
+        self,
+        enterprise: str,
+        configuration_id: int,
+        *,
+        per_page: Missing[int] = UNSET,
+        before: Missing[str] = UNSET,
+        after: Missing[str] = UNSET,
+        status: Missing[str] = UNSET,
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[
+        list[CodeSecurityConfigurationRepositories],
+        list[CodeSecurityConfigurationRepositoriesType],
+    ]:
+        """See also: https://docs.github.com/rest/code-security/configurations#get-repositories-associated-with-an-enterprise-code-security-configuration"""
+
+        from ..models import BasicError, CodeSecurityConfigurationRepositories
+
+        url = f"/enterprises/{enterprise}/code-security/configurations/{configuration_id}/repositories"
+
+        params = {
+            "per_page": per_page,
+            "before": before,
+            "after": after,
+            "status": status,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=list[CodeSecurityConfigurationRepositories],
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_get_repositories_for_enterprise_configuration(
+        self,
+        enterprise: str,
+        configuration_id: int,
+        *,
+        per_page: Missing[int] = UNSET,
+        before: Missing[str] = UNSET,
+        after: Missing[str] = UNSET,
+        status: Missing[str] = UNSET,
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[
+        list[CodeSecurityConfigurationRepositories],
+        list[CodeSecurityConfigurationRepositoriesType],
+    ]:
+        """See also: https://docs.github.com/rest/code-security/configurations#get-repositories-associated-with-an-enterprise-code-security-configuration"""
+
+        from ..models import BasicError, CodeSecurityConfigurationRepositories
+
+        url = f"/enterprises/{enterprise}/code-security/configurations/{configuration_id}/repositories"
+
+        params = {
+            "per_page": per_page,
+            "before": before,
+            "after": after,
+            "status": status,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=list[CodeSecurityConfigurationRepositories],
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
         )
 
     def get_configurations_for_org(

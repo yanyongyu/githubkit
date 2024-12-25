@@ -79,6 +79,7 @@ if TYPE_CHECKING:
         ProtectedBranchAdminEnforced,
         ProtectedBranchPullRequestReview,
         PullRequestSimple,
+        PushRuleBypassRequest,
         ReferrerTraffic,
         Release,
         ReleaseAsset,
@@ -192,6 +193,7 @@ if TYPE_CHECKING:
         ProtectedBranchPullRequestReviewType,
         ProtectedBranchType,
         PullRequestSimpleType,
+        PushRuleBypassRequestType,
         ReferrerTrafficType,
         ReleaseAssetType,
         ReleaseNotesContentType,
@@ -6362,6 +6364,152 @@ class ReposClient:
                 "403": BasicError,
                 "404": BasicError,
                 "422": ValidationError,
+            },
+        )
+
+    def list_repo_push_bypass_requests(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        reviewer: Missing[str] = UNSET,
+        requester: Missing[str] = UNSET,
+        time_period: Missing[Literal["hour", "day", "week", "month"]] = UNSET,
+        request_status: Missing[
+            Literal["completed", "cancelled", "expired", "denied", "open", "all"]
+        ] = UNSET,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[PushRuleBypassRequest], list[PushRuleBypassRequestType]]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/bypass-requests#list-repository-push-rule-bypass-requests"""
+
+        from ..models import BasicError, PushRuleBypassRequest
+
+        url = f"/repos/{owner}/{repo}/bypass-requests/push-rules"
+
+        params = {
+            "reviewer": reviewer,
+            "requester": requester,
+            "time_period": time_period,
+            "request_status": request_status,
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=list[PushRuleBypassRequest],
+            error_models={
+                "404": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    async def async_list_repo_push_bypass_requests(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        reviewer: Missing[str] = UNSET,
+        requester: Missing[str] = UNSET,
+        time_period: Missing[Literal["hour", "day", "week", "month"]] = UNSET,
+        request_status: Missing[
+            Literal["completed", "cancelled", "expired", "denied", "open", "all"]
+        ] = UNSET,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[PushRuleBypassRequest], list[PushRuleBypassRequestType]]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/bypass-requests#list-repository-push-rule-bypass-requests"""
+
+        from ..models import BasicError, PushRuleBypassRequest
+
+        url = f"/repos/{owner}/{repo}/bypass-requests/push-rules"
+
+        params = {
+            "reviewer": reviewer,
+            "requester": requester,
+            "time_period": time_period,
+            "request_status": request_status,
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=list[PushRuleBypassRequest],
+            error_models={
+                "404": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    def get_repo_push_bypass_request(
+        self,
+        owner: str,
+        repo: str,
+        bypass_request_number: int,
+        *,
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[PushRuleBypassRequest, PushRuleBypassRequestType]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/bypass-requests#get-a-repository-push-bypass-request"""
+
+        from ..models import BasicError, PushRuleBypassRequest
+
+        url = (
+            f"/repos/{owner}/{repo}/bypass-requests/push-rules/{bypass_request_number}"
+        )
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=PushRuleBypassRequest,
+            error_models={
+                "404": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    async def async_get_repo_push_bypass_request(
+        self,
+        owner: str,
+        repo: str,
+        bypass_request_number: int,
+        *,
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[PushRuleBypassRequest, PushRuleBypassRequestType]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/bypass-requests#get-a-repository-push-bypass-request"""
+
+        from ..models import BasicError, PushRuleBypassRequest
+
+        url = (
+            f"/repos/{owner}/{repo}/bypass-requests/push-rules/{bypass_request_number}"
+        )
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=PushRuleBypassRequest,
+            error_models={
+                "404": BasicError,
+                "500": BasicError,
             },
         )
 

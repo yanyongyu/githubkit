@@ -14,17 +14,15 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReferrerTraffic(GitHubModel):
-    """Referrer Traffic
+class Topic(GitHubModel):
+    """Topic
 
-    Referrer Traffic
+    A topic aggregates entities that are related to a subject.
     """
 
-    referrer: str = Field()
-    count: int = Field()
-    uniques: int = Field()
+    names: list[str] = Field()
 
 
-model_rebuild(ReferrerTraffic)
+model_rebuild(Topic)
 
-__all__ = ("ReferrerTraffic",)
+__all__ = ("Topic",)

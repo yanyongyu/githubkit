@@ -18,19 +18,21 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0002 import SimpleUser
-from .group_0440 import SimpleInstallation
-from .group_0441 import OrganizationSimpleWebhooks
-from .group_0442 import RepositoryWebhooks
-from .group_0447 import CheckRunWithSimpleCheckSuite
+from .group_0444 import EnterpriseWebhooks
+from .group_0445 import SimpleInstallation
+from .group_0446 import OrganizationSimpleWebhooks
+from .group_0447 import RepositoryWebhooks
+from .group_0450 import ExemptionRequest
 
 
-class WebhookCheckRunCompleted(GitHubModel):
-    """Check Run Completed Event"""
+class WebhookExemptionRequestCancelled(GitHubModel):
+    """Exemption request cancellation event"""
 
-    action: Literal["completed"] = Field()
-    check_run: CheckRunWithSimpleCheckSuite = Field(
-        title="CheckRun",
-        description="A check performed on the code of a given code change",
+    action: Literal["cancelled"] = Field()
+    enterprise: Missing[EnterpriseWebhooks] = Field(
+        default=UNSET,
+        title="Enterprise",
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."',
     )
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
@@ -42,13 +44,18 @@ class WebhookCheckRunCompleted(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repository: RepositoryWebhooks = Field(
+    repository: Missing[RepositoryWebhooks] = Field(
+        default=UNSET,
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    )
+    exemption_request: ExemptionRequest = Field(
+        title="Exemption Request",
+        description="A request from a user to be exempted from a set of rules.",
     )
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookCheckRunCompleted)
+model_rebuild(WebhookExemptionRequestCancelled)
 
-__all__ = ("WebhookCheckRunCompleted",)
+__all__ = ("WebhookExemptionRequestCancelled",)

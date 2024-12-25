@@ -9,45 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import date
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class CopilotUsageMetricsType(TypedDict):
-    """Copilot Usage Metrics
+class TeamSimpleType(TypedDict):
+    """Team Simple
 
-    Summary of Copilot usage.
+    Groups of organization members that gives permissions on specified repositories.
     """
 
-    day: date
-    total_suggestions_count: NotRequired[int]
-    total_acceptances_count: NotRequired[int]
-    total_lines_suggested: NotRequired[int]
-    total_lines_accepted: NotRequired[int]
-    total_active_users: NotRequired[int]
-    total_chat_acceptances: NotRequired[int]
-    total_chat_turns: NotRequired[int]
-    total_active_chat_users: NotRequired[int]
-    breakdown: Union[list[CopilotUsageMetricsPropBreakdownItemsType], None]
+    id: int
+    node_id: str
+    url: str
+    members_url: str
+    name: str
+    description: Union[str, None]
+    permission: str
+    privacy: NotRequired[str]
+    notification_setting: NotRequired[str]
+    html_url: str
+    repositories_url: str
+    slug: str
+    ldap_dn: NotRequired[str]
 
 
-class CopilotUsageMetricsPropBreakdownItemsType(TypedDict):
-    """CopilotUsageMetricsPropBreakdownItems
-
-    Breakdown of Copilot usage by editor for this language
-    """
-
-    language: NotRequired[str]
-    editor: NotRequired[str]
-    suggestions_count: NotRequired[int]
-    acceptances_count: NotRequired[int]
-    lines_suggested: NotRequired[int]
-    lines_accepted: NotRequired[int]
-    active_users: NotRequired[int]
-
-
-__all__ = (
-    "CopilotUsageMetricsPropBreakdownItemsType",
-    "CopilotUsageMetricsType",
-)
+__all__ = ("TeamSimpleType",)

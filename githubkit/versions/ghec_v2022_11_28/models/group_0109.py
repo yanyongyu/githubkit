@@ -17,21 +17,22 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0110 import RepositoryRuleCodeScanningPropParameters
+
+class RepositoryRuleTagNamePatternPropParameters(GitHubModel):
+    """RepositoryRuleTagNamePatternPropParameters"""
+
+    name: Missing[str] = Field(
+        default=UNSET, description="How this rule will appear to users."
+    )
+    negate: Missing[bool] = Field(
+        default=UNSET, description="If true, the rule will fail if the pattern matches."
+    )
+    operator: Literal["starts_with", "ends_with", "contains", "regex"] = Field(
+        description="The operator to use for matching."
+    )
+    pattern: str = Field(description="The pattern to match with.")
 
 
-class RepositoryRuleCodeScanning(GitHubModel):
-    """code_scanning
+model_rebuild(RepositoryRuleTagNamePatternPropParameters)
 
-    Choose which tools must provide code scanning results before the reference is
-    updated. When configured, code scanning must be enabled and have results for
-    both the commit and the reference being updated.
-    """
-
-    type: Literal["code_scanning"] = Field()
-    parameters: Missing[RepositoryRuleCodeScanningPropParameters] = Field(default=UNSET)
-
-
-model_rebuild(RepositoryRuleCodeScanning)
-
-__all__ = ("RepositoryRuleCodeScanning",)
+__all__ = ("RepositoryRuleTagNamePatternPropParameters",)

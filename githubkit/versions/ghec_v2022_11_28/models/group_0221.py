@@ -10,57 +10,57 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0002 import SimpleUser
 
 
-class EnvironmentApprovals(GitHubModel):
-    """Environment Approval
+class SimpleCommit(GitHubModel):
+    """Simple Commit
 
-    An entry in the reviews log for environment deployments
+    A commit.
     """
 
-    environments: list[EnvironmentApprovalsPropEnvironmentsItems] = Field(
-        description="The list of environments that were approved or rejected"
+    id: str = Field(description="SHA for the commit")
+    tree_id: str = Field(description="SHA for the commit's tree")
+    message: str = Field(description="Message describing the purpose of the commit")
+    timestamp: datetime = Field(description="Timestamp of the commit")
+    author: Union[SimpleCommitPropAuthor, None] = Field(
+        description="Information about the Git author"
     )
-    state: Literal["approved", "rejected", "pending"] = Field(
-        description="Whether deployment to the environment(s) was approved or rejected or pending (with comments)"
-    )
-    user: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    comment: str = Field(description="The comment submitted with the deployment review")
-
-
-class EnvironmentApprovalsPropEnvironmentsItems(GitHubModel):
-    """EnvironmentApprovalsPropEnvironmentsItems"""
-
-    id: Missing[int] = Field(default=UNSET, description="The id of the environment.")
-    node_id: Missing[str] = Field(default=UNSET)
-    name: Missing[str] = Field(
-        default=UNSET, description="The name of the environment."
-    )
-    url: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    created_at: Missing[datetime] = Field(
-        default=UNSET,
-        description="The time that the environment was created, in ISO 8601 format.",
-    )
-    updated_at: Missing[datetime] = Field(
-        default=UNSET,
-        description="The time that the environment was last updated, in ISO 8601 format.",
+    committer: Union[SimpleCommitPropCommitter, None] = Field(
+        description="Information about the Git committer"
     )
 
 
-model_rebuild(EnvironmentApprovals)
-model_rebuild(EnvironmentApprovalsPropEnvironmentsItems)
+class SimpleCommitPropAuthor(GitHubModel):
+    """SimpleCommitPropAuthor
+
+    Information about the Git author
+    """
+
+    name: str = Field(description="Name of the commit's author")
+    email: str = Field(description="Git email address of the commit's author")
+
+
+class SimpleCommitPropCommitter(GitHubModel):
+    """SimpleCommitPropCommitter
+
+    Information about the Git committer
+    """
+
+    name: str = Field(description="Name of the commit's committer")
+    email: str = Field(description="Git email address of the commit's committer")
+
+
+model_rebuild(SimpleCommit)
+model_rebuild(SimpleCommitPropAuthor)
+model_rebuild(SimpleCommitPropCommitter)
 
 __all__ = (
-    "EnvironmentApprovals",
-    "EnvironmentApprovalsPropEnvironmentsItems",
+    "SimpleCommit",
+    "SimpleCommitPropAuthor",
+    "SimpleCommitPropCommitter",
 )

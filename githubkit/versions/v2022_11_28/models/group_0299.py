@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -19,24 +18,44 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0002 import SimpleUser
-from .group_0300 import TimelineCrossReferencedEventPropSource
+from .group_0008 import Integration
 
 
-class TimelineCrossReferencedEvent(GitHubModel):
-    """Timeline Cross Referenced Event
+class MovedColumnInProjectIssueEvent(GitHubModel):
+    """Moved Column in Project Issue Event
 
-    Timeline Cross Referenced Event
+    Moved Column in Project Issue Event
     """
 
-    event: Literal["cross-referenced"] = Field()
-    actor: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
+    id: int = Field()
+    node_id: str = Field()
+    url: str = Field()
+    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    event: Literal["moved_columns_in_project"] = Field()
+    commit_id: Union[str, None] = Field()
+    commit_url: Union[str, None] = Field()
+    created_at: str = Field()
+    performed_via_github_app: Union[None, Integration, None] = Field()
+    project_card: Missing[MovedColumnInProjectIssueEventPropProjectCard] = Field(
+        default=UNSET
     )
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    source: TimelineCrossReferencedEventPropSource = Field()
 
 
-model_rebuild(TimelineCrossReferencedEvent)
+class MovedColumnInProjectIssueEventPropProjectCard(GitHubModel):
+    """MovedColumnInProjectIssueEventPropProjectCard"""
 
-__all__ = ("TimelineCrossReferencedEvent",)
+    id: int = Field()
+    url: str = Field()
+    project_id: int = Field()
+    project_url: str = Field()
+    column_name: str = Field()
+    previous_column_name: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(MovedColumnInProjectIssueEvent)
+model_rebuild(MovedColumnInProjectIssueEventPropProjectCard)
+
+__all__ = (
+    "MovedColumnInProjectIssueEvent",
+    "MovedColumnInProjectIssueEventPropProjectCard",
+)

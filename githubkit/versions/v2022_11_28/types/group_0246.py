@@ -9,64 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0056 import MinimalRepositoryType
 
-class ContentTreeType(TypedDict):
-    """Content Tree
 
-    Content Tree
+class CombinedCommitStatusType(TypedDict):
+    """Combined Commit Status
+
+    Combined Commit Status
     """
 
-    type: str
-    size: int
-    name: str
-    path: str
+    state: str
+    statuses: list[SimpleCommitStatusType]
     sha: str
-    content: NotRequired[str]
+    total_count: int
+    repository: MinimalRepositoryType
+    commit_url: str
     url: str
-    git_url: Union[str, None]
-    html_url: Union[str, None]
-    download_url: Union[str, None]
-    entries: NotRequired[list[ContentTreePropEntriesItemsType]]
-    links: ContentTreePropLinksType
 
 
-class ContentTreePropLinksType(TypedDict):
-    """ContentTreePropLinks"""
+class SimpleCommitStatusType(TypedDict):
+    """Simple Commit Status"""
 
-    git: Union[str, None]
-    html: Union[str, None]
-    self_: str
-
-
-class ContentTreePropEntriesItemsType(TypedDict):
-    """ContentTreePropEntriesItems"""
-
-    type: str
-    size: int
-    name: str
-    path: str
-    sha: str
+    description: Union[str, None]
+    id: int
+    node_id: str
+    state: str
+    context: str
+    target_url: Union[str, None]
+    required: NotRequired[Union[bool, None]]
+    avatar_url: Union[str, None]
     url: str
-    git_url: Union[str, None]
-    html_url: Union[str, None]
-    download_url: Union[str, None]
-    links: ContentTreePropEntriesItemsPropLinksType
-
-
-class ContentTreePropEntriesItemsPropLinksType(TypedDict):
-    """ContentTreePropEntriesItemsPropLinks"""
-
-    git: Union[str, None]
-    html: Union[str, None]
-    self_: str
+    created_at: datetime
+    updated_at: datetime
 
 
 __all__ = (
-    "ContentTreePropEntriesItemsPropLinksType",
-    "ContentTreePropEntriesItemsType",
-    "ContentTreePropLinksType",
-    "ContentTreeType",
+    "CombinedCommitStatusType",
+    "SimpleCommitStatusType",
 )

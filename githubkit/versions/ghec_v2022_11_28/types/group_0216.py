@@ -9,16 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from datetime import datetime
+from typing_extensions import TypedDict
 
 
-class ActionsRepositoryPermissionsType(TypedDict):
-    """ActionsRepositoryPermissions"""
+class ActionsSecretType(TypedDict):
+    """Actions Secret
 
-    enabled: bool
-    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
-    selected_actions_url: NotRequired[str]
+    Set secrets for GitHub Actions.
+    """
+
+    name: str
+    created_at: datetime
+    updated_at: datetime
 
 
-__all__ = ("ActionsRepositoryPermissionsType",)
+__all__ = ("ActionsSecretType",)

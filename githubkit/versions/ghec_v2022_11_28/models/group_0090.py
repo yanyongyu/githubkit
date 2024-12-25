@@ -9,19 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class RepositoryRuleRequiredDeploymentsPropParameters(GitHubModel):
-    """RepositoryRuleRequiredDeploymentsPropParameters"""
+class RepositoryRuleRequiredLinearHistory(GitHubModel):
+    """required_linear_history
 
-    required_deployment_environments: list[str] = Field(
-        description="The environments that must be successfully deployed to before branches can be merged."
+    Prevent merge commits from being pushed to matching refs.
+    """
+
+    type: Literal["required_linear_history"] = Field()
+
+
+class RepositoryRuleOneof16(GitHubModel):
+    """max_file_path_length
+
+    Prevent commits that include file paths that exceed a specified character limit
+    from being pushed to the commit graph.
+    """
+
+    type: Literal["max_file_path_length"] = Field()
+    parameters: Missing[RepositoryRuleOneof16PropParameters] = Field(default=UNSET)
+
+
+class RepositoryRuleOneof16PropParameters(GitHubModel):
+    """RepositoryRuleOneof16PropParameters"""
+
+    max_file_path_length: int = Field(
+        le=256.0,
+        ge=1.0,
+        description="The maximum amount of characters allowed in file paths",
     )
 
 
-model_rebuild(RepositoryRuleRequiredDeploymentsPropParameters)
+model_rebuild(RepositoryRuleRequiredLinearHistory)
+model_rebuild(RepositoryRuleOneof16)
+model_rebuild(RepositoryRuleOneof16PropParameters)
 
-__all__ = ("RepositoryRuleRequiredDeploymentsPropParameters",)
+__all__ = (
+    "RepositoryRuleOneof16",
+    "RepositoryRuleOneof16PropParameters",
+    "RepositoryRuleRequiredLinearHistory",
+)

@@ -14,15 +14,17 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class Link(GitHubModel):
-    """Link
+class CodespacesPermissionsCheckForDevcontainer(GitHubModel):
+    """Codespaces Permissions Check
 
-    Hypermedia Link
+    Permission check result for a given devcontainer config.
     """
 
-    href: str = Field()
+    accepted: bool = Field(
+        description="Whether the user has accepted the permissions defined by the devcontainer config"
+    )
 
 
-model_rebuild(Link)
+model_rebuild(CodespacesPermissionsCheckForDevcontainer)
 
-__all__ = ("Link",)
+__all__ = ("CodespacesPermissionsCheckForDevcontainer",)

@@ -12,15 +12,12 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class DeploymentBranchPolicySettingsType(TypedDict):
-    """DeploymentBranchPolicySettings
+class MetadataType(TypedDict):
+    """metadata
 
-    The type of deployment branch policy for this environment. To allow all branches
-    to deploy, set to `null`.
+    User-defined metadata to store domain-specific information limited to 8 keys
+    with scalar values.
     """
 
-    protected_branches: bool
-    custom_branch_policies: bool
 
-
-__all__ = ("DeploymentBranchPolicySettingsType",)
+__all__ = ("MetadataType",)

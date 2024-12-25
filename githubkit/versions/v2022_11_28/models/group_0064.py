@@ -18,22 +18,26 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class RunnerLabel(GitHubModel):
-    """Self hosted runner label
+class ActionsOrganizationPermissions(GitHubModel):
+    """ActionsOrganizationPermissions"""
 
-    A label for a self hosted runner
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET, description="Unique identifier of the label."
+    enabled_repositories: Literal["all", "none", "selected"] = Field(
+        description="The policy that controls the repositories in the organization that are allowed to run GitHub Actions."
     )
-    name: str = Field(description="Name of the label.")
-    type: Missing[Literal["read-only", "custom"]] = Field(
+    selected_repositories_url: Missing[str] = Field(
         default=UNSET,
-        description="The type of label. Read-only labels are applied automatically when the runner is configured.",
+        description="The API URL to use to get or set the selected repositories that are allowed to run GitHub Actions, when `enabled_repositories` is set to `selected`.",
+    )
+    allowed_actions: Missing[Literal["all", "local_only", "selected"]] = Field(
+        default=UNSET,
+        description="The permissions policy that controls the actions and reusable workflows that are allowed to run.",
+    )
+    selected_actions_url: Missing[str] = Field(
+        default=UNSET,
+        description="The API URL to use to get or set the actions and reusable workflows that are allowed to run, when `allowed_actions` is set to `selected`.",
     )
 
 
-model_rebuild(RunnerLabel)
+model_rebuild(ActionsOrganizationPermissions)
 
-__all__ = ("RunnerLabel",)
+__all__ = ("ActionsOrganizationPermissions",)

@@ -9,68 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0263 import DeploymentBranchPolicySettingsType
-from .group_0265 import EnvironmentPropProtectionRulesItemsAnyof1Type
+from .group_0262 import MetadataType
 
 
-class EnvironmentType(TypedDict):
-    """Environment
+class ManifestType(TypedDict):
+    """Manifest"""
 
-    Details of a deployment environment
-    """
-
-    id: int
-    node_id: str
     name: str
-    url: str
-    html_url: str
-    created_at: datetime
-    updated_at: datetime
-    protection_rules: NotRequired[
-        list[
-            Union[
-                EnvironmentPropProtectionRulesItemsAnyof0Type,
-                EnvironmentPropProtectionRulesItemsAnyof1Type,
-                EnvironmentPropProtectionRulesItemsAnyof2Type,
-            ]
-        ]
-    ]
-    deployment_branch_policy: NotRequired[
-        Union[DeploymentBranchPolicySettingsType, None]
-    ]
+    file: NotRequired[ManifestPropFileType]
+    metadata: NotRequired[MetadataType]
+    resolved: NotRequired[ManifestPropResolvedType]
 
 
-class EnvironmentPropProtectionRulesItemsAnyof0Type(TypedDict):
-    """EnvironmentPropProtectionRulesItemsAnyof0"""
+class ManifestPropFileType(TypedDict):
+    """ManifestPropFile"""
 
-    id: int
-    node_id: str
-    type: str
-    wait_timer: NotRequired[int]
+    source_location: NotRequired[str]
 
 
-class EnvironmentPropProtectionRulesItemsAnyof2Type(TypedDict):
-    """EnvironmentPropProtectionRulesItemsAnyof2"""
+class ManifestPropResolvedType(TypedDict):
+    """ManifestPropResolved
 
-    id: int
-    node_id: str
-    type: str
-
-
-class ReposOwnerRepoEnvironmentsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoEnvironmentsGetResponse200"""
-
-    total_count: NotRequired[int]
-    environments: NotRequired[list[EnvironmentType]]
+    A collection of resolved package dependencies.
+    """
 
 
 __all__ = (
-    "EnvironmentPropProtectionRulesItemsAnyof0Type",
-    "EnvironmentPropProtectionRulesItemsAnyof2Type",
-    "EnvironmentType",
-    "ReposOwnerRepoEnvironmentsGetResponse200Type",
+    "ManifestPropFileType",
+    "ManifestPropResolvedType",
+    "ManifestType",
 )

@@ -12,137 +12,45 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0002 import SimpleUserType
+
+class WebhooksPreviousMarketplacePurchaseType(TypedDict):
+    """Marketplace Purchase"""
+
+    account: WebhooksPreviousMarketplacePurchasePropAccountType
+    billing_cycle: str
+    free_trial_ends_on: None
+    next_billing_date: NotRequired[Union[str, None]]
+    on_free_trial: bool
+    plan: WebhooksPreviousMarketplacePurchasePropPlanType
+    unit_count: int
 
 
-class PersonalAccessTokenRequestType(TypedDict):
-    """Personal Access Token Request
-
-    Details of a Personal Access Token Request.
-    """
+class WebhooksPreviousMarketplacePurchasePropAccountType(TypedDict):
+    """WebhooksPreviousMarketplacePurchasePropAccount"""
 
     id: int
-    owner: SimpleUserType
-    permissions_added: PersonalAccessTokenRequestPropPermissionsAddedType
-    permissions_upgraded: PersonalAccessTokenRequestPropPermissionsUpgradedType
-    permissions_result: PersonalAccessTokenRequestPropPermissionsResultType
-    repository_selection: Literal["none", "all", "subset"]
-    repository_count: Union[int, None]
-    repositories: Union[list[PersonalAccessTokenRequestPropRepositoriesItemsType], None]
-    created_at: str
-    token_id: int
-    token_name: str
-    token_expired: bool
-    token_expires_at: Union[str, None]
-    token_last_used_at: Union[str, None]
-
-
-class PersonalAccessTokenRequestPropRepositoriesItemsType(TypedDict):
-    """PersonalAccessTokenRequestPropRepositoriesItems"""
-
-    full_name: str
-    id: int
-    name: str
+    login: str
     node_id: str
-    private: bool
+    organization_billing_email: Union[str, None]
+    type: str
 
 
-class PersonalAccessTokenRequestPropPermissionsAddedType(TypedDict):
-    """PersonalAccessTokenRequestPropPermissionsAdded
+class WebhooksPreviousMarketplacePurchasePropPlanType(TypedDict):
+    """WebhooksPreviousMarketplacePurchasePropPlan"""
 
-    New requested permissions, categorized by type of permission.
-    """
-
-    organization: NotRequired[
-        PersonalAccessTokenRequestPropPermissionsAddedPropOrganizationType
-    ]
-    repository: NotRequired[
-        PersonalAccessTokenRequestPropPermissionsAddedPropRepositoryType
-    ]
-    other: NotRequired[PersonalAccessTokenRequestPropPermissionsAddedPropOtherType]
-
-
-class PersonalAccessTokenRequestPropPermissionsAddedPropOrganizationType(TypedDict):
-    """PersonalAccessTokenRequestPropPermissionsAddedPropOrganization"""
-
-
-class PersonalAccessTokenRequestPropPermissionsAddedPropRepositoryType(TypedDict):
-    """PersonalAccessTokenRequestPropPermissionsAddedPropRepository"""
-
-
-class PersonalAccessTokenRequestPropPermissionsAddedPropOtherType(TypedDict):
-    """PersonalAccessTokenRequestPropPermissionsAddedPropOther"""
-
-
-class PersonalAccessTokenRequestPropPermissionsUpgradedType(TypedDict):
-    """PersonalAccessTokenRequestPropPermissionsUpgraded
-
-    Requested permissions that elevate access for a previously approved request for
-    access, categorized by type of permission.
-    """
-
-    organization: NotRequired[
-        PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganizationType
-    ]
-    repository: NotRequired[
-        PersonalAccessTokenRequestPropPermissionsUpgradedPropRepositoryType
-    ]
-    other: NotRequired[PersonalAccessTokenRequestPropPermissionsUpgradedPropOtherType]
-
-
-class PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganizationType(TypedDict):
-    """PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganization"""
-
-
-class PersonalAccessTokenRequestPropPermissionsUpgradedPropRepositoryType(TypedDict):
-    """PersonalAccessTokenRequestPropPermissionsUpgradedPropRepository"""
-
-
-class PersonalAccessTokenRequestPropPermissionsUpgradedPropOtherType(TypedDict):
-    """PersonalAccessTokenRequestPropPermissionsUpgradedPropOther"""
-
-
-class PersonalAccessTokenRequestPropPermissionsResultType(TypedDict):
-    """PersonalAccessTokenRequestPropPermissionsResult
-
-    Permissions requested, categorized by type of permission. This field
-    incorporates `permissions_added` and `permissions_upgraded`.
-    """
-
-    organization: NotRequired[
-        PersonalAccessTokenRequestPropPermissionsResultPropOrganizationType
-    ]
-    repository: NotRequired[
-        PersonalAccessTokenRequestPropPermissionsResultPropRepositoryType
-    ]
-    other: NotRequired[PersonalAccessTokenRequestPropPermissionsResultPropOtherType]
-
-
-class PersonalAccessTokenRequestPropPermissionsResultPropOrganizationType(TypedDict):
-    """PersonalAccessTokenRequestPropPermissionsResultPropOrganization"""
-
-
-class PersonalAccessTokenRequestPropPermissionsResultPropRepositoryType(TypedDict):
-    """PersonalAccessTokenRequestPropPermissionsResultPropRepository"""
-
-
-class PersonalAccessTokenRequestPropPermissionsResultPropOtherType(TypedDict):
-    """PersonalAccessTokenRequestPropPermissionsResultPropOther"""
+    bullets: list[str]
+    description: str
+    has_free_trial: bool
+    id: int
+    monthly_price_in_cents: int
+    name: str
+    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
+    unit_name: Union[str, None]
+    yearly_price_in_cents: int
 
 
 __all__ = (
-    "PersonalAccessTokenRequestPropPermissionsAddedPropOrganizationType",
-    "PersonalAccessTokenRequestPropPermissionsAddedPropOtherType",
-    "PersonalAccessTokenRequestPropPermissionsAddedPropRepositoryType",
-    "PersonalAccessTokenRequestPropPermissionsAddedType",
-    "PersonalAccessTokenRequestPropPermissionsResultPropOrganizationType",
-    "PersonalAccessTokenRequestPropPermissionsResultPropOtherType",
-    "PersonalAccessTokenRequestPropPermissionsResultPropRepositoryType",
-    "PersonalAccessTokenRequestPropPermissionsResultType",
-    "PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganizationType",
-    "PersonalAccessTokenRequestPropPermissionsUpgradedPropOtherType",
-    "PersonalAccessTokenRequestPropPermissionsUpgradedPropRepositoryType",
-    "PersonalAccessTokenRequestPropPermissionsUpgradedType",
-    "PersonalAccessTokenRequestPropRepositoriesItemsType",
-    "PersonalAccessTokenRequestType",
+    "WebhooksPreviousMarketplacePurchasePropAccountType",
+    "WebhooksPreviousMarketplacePurchasePropPlanType",
+    "WebhooksPreviousMarketplacePurchaseType",
 )

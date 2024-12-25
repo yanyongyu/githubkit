@@ -18,28 +18,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBody(GitHubModel):
-    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBody"""
+class EnterprisesEnterpriseActionsPermissionsPutBody(GitHubModel):
+    """EnterprisesEnterpriseActionsPermissionsPutBody"""
 
-    name: Missing[str] = Field(default=UNSET, description="Name of the runner group.")
-    visibility: Missing[Literal["selected", "all"]] = Field(
-        default=UNSET,
-        description="Visibility of a runner group. You can select all organizations or select individual organizations.",
+    enabled_organizations: Literal["all", "none", "selected"] = Field(
+        description="The policy that controls the organizations in the enterprise that are allowed to run GitHub Actions."
     )
-    allows_public_repositories: Missing[bool] = Field(
+    allowed_actions: Missing[Literal["all", "local_only", "selected"]] = Field(
         default=UNSET,
-        description="Whether the runner group can be used by `public` repositories.",
-    )
-    restricted_to_workflows: Missing[bool] = Field(
-        default=UNSET,
-        description="If `true`, the runner group will be restricted to running only the workflows specified in the `selected_workflows` array.",
-    )
-    selected_workflows: Missing[list[str]] = Field(
-        default=UNSET,
-        description="List of workflows the runner group should be allowed to run. This setting will be ignored unless `restricted_to_workflows` is set to `true`.",
+        description="The permissions policy that controls the actions and reusable workflows that are allowed to run.",
     )
 
 
-model_rebuild(EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBody)
+model_rebuild(EnterprisesEnterpriseActionsPermissionsPutBody)
 
-__all__ = ("EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBody",)
+__all__ = ("EnterprisesEnterpriseActionsPermissionsPutBody",)

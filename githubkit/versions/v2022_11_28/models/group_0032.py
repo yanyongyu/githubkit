@@ -9,35 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0027 import DependabotAlertPackage
 
 
-class DependabotAlertWithRepositoryPropDependency(GitHubModel):
-    """DependabotAlertWithRepositoryPropDependency
+class DependabotAlertPackage(GitHubModel):
+    """DependabotAlertPackage
 
-    Details for the vulnerable dependency.
+    Details for the vulnerable package.
     """
 
-    package: Missing[DependabotAlertPackage] = Field(
-        default=UNSET, description="Details for the vulnerable package."
+    ecosystem: str = Field(
+        description="The package's language or package management ecosystem."
     )
-    manifest_path: Missing[str] = Field(
-        default=UNSET,
-        description="The full path to the dependency manifest file, relative to the root of the repository.",
-    )
-    scope: Missing[Union[None, Literal["development", "runtime"]]] = Field(
-        default=UNSET, description="The execution scope of the vulnerable dependency."
-    )
+    name: str = Field(description="The unique package name within its ecosystem.")
 
 
-model_rebuild(DependabotAlertWithRepositoryPropDependency)
+model_rebuild(DependabotAlertPackage)
 
-__all__ = ("DependabotAlertWithRepositoryPropDependency",)
+__all__ = ("DependabotAlertPackage",)

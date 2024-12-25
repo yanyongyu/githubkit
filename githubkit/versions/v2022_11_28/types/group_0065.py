@@ -11,22 +11,13 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0064 import RunnerLabelType
+
+class SelectedActionsType(TypedDict):
+    """SelectedActions"""
+
+    github_owned_allowed: NotRequired[bool]
+    verified_allowed: NotRequired[bool]
+    patterns_allowed: NotRequired[list[str]]
 
 
-class RunnerType(TypedDict):
-    """Self hosted runners
-
-    A self hosted runner
-    """
-
-    id: int
-    runner_group_id: NotRequired[int]
-    name: str
-    os: str
-    status: str
-    busy: bool
-    labels: list[RunnerLabelType]
-
-
-__all__ = ("RunnerType",)
+__all__ = ("SelectedActionsType",)

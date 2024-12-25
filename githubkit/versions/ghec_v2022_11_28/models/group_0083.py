@@ -9,105 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class RepositoryRuleCreation(GitHubModel):
-    """creation
-
-    Only allow users with bypass permission to create matching refs.
-    """
-
-    type: Literal["creation"] = Field()
-
-
-class RepositoryRuleDeletion(GitHubModel):
-    """deletion
-
-    Only allow users with bypass permissions to delete matching refs.
-    """
-
-    type: Literal["deletion"] = Field()
-
-
-class RepositoryRuleRequiredSignatures(GitHubModel):
-    """required_signatures
-
-    Commits pushed to matching refs must have verified signatures.
-    """
-
-    type: Literal["required_signatures"] = Field()
-
-
-class RepositoryRuleNonFastForward(GitHubModel):
-    """non_fast_forward
-
-    Prevent users with push access from force pushing to refs.
-    """
-
-    type: Literal["non_fast_forward"] = Field()
-
-
-class RepositoryRuleOneof15(GitHubModel):
-    """file_path_restriction
-
-    Prevent commits that include changes in specified file paths from being pushed
-    to the commit graph.
-    """
-
-    type: Literal["file_path_restriction"] = Field()
-    parameters: Missing[RepositoryRuleOneof15PropParameters] = Field(default=UNSET)
-
-
-class RepositoryRuleOneof15PropParameters(GitHubModel):
-    """RepositoryRuleOneof15PropParameters"""
-
-    restricted_file_paths: list[str] = Field(
-        description="The file paths that are restricted from being pushed to the commit graph."
-    )
-
-
-class RepositoryRuleOneof17(GitHubModel):
-    """file_extension_restriction
-
-    Prevent commits that include files with specified file extensions from being
-    pushed to the commit graph.
-    """
-
-    type: Literal["file_extension_restriction"] = Field()
-    parameters: Missing[RepositoryRuleOneof17PropParameters] = Field(default=UNSET)
-
-
-class RepositoryRuleOneof17PropParameters(GitHubModel):
-    """RepositoryRuleOneof17PropParameters"""
-
-    restricted_file_extensions: list[str] = Field(
-        description="The file extensions that are restricted from being pushed to the commit graph."
-    )
-
-
-model_rebuild(RepositoryRuleCreation)
-model_rebuild(RepositoryRuleDeletion)
-model_rebuild(RepositoryRuleRequiredSignatures)
-model_rebuild(RepositoryRuleNonFastForward)
-model_rebuild(RepositoryRuleOneof15)
-model_rebuild(RepositoryRuleOneof15PropParameters)
-model_rebuild(RepositoryRuleOneof17)
-model_rebuild(RepositoryRuleOneof17PropParameters)
-
-__all__ = (
-    "RepositoryRuleCreation",
-    "RepositoryRuleDeletion",
-    "RepositoryRuleNonFastForward",
-    "RepositoryRuleOneof15",
-    "RepositoryRuleOneof15PropParameters",
-    "RepositoryRuleOneof17",
-    "RepositoryRuleOneof17PropParameters",
-    "RepositoryRuleRequiredSignatures",
+from .group_0074 import (
+    EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName,
 )
+from .group_0076 import (
+    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName,
+)
+from .group_0078 import RepositoryRulesetConditionsPropRefName
+
+
+class EnterpriseRulesetConditionsOneof0(GitHubModel):
+    """organization_name_and_repository_name
+
+    Conditions to target organizations by name and all repositories
+    """
+
+    organization_name: EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName = Field()
+    repository_name: RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName = Field()
+    ref_name: Missing[RepositoryRulesetConditionsPropRefName] = Field(default=UNSET)
+
+
+model_rebuild(EnterpriseRulesetConditionsOneof0)
+
+__all__ = ("EnterpriseRulesetConditionsOneof0",)

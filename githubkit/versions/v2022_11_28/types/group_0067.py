@@ -9,36 +9,15 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0019 import RepositoryType
+
+class ActionsSetDefaultWorkflowPermissionsType(TypedDict):
+    """ActionsSetDefaultWorkflowPermissions"""
+
+    default_workflow_permissions: NotRequired[Literal["read", "write"]]
+    can_approve_pull_request_reviews: NotRequired[bool]
 
 
-class AuthenticationTokenType(TypedDict):
-    """Authentication Token
-
-    Authentication Token
-    """
-
-    token: str
-    expires_at: datetime
-    permissions: NotRequired[AuthenticationTokenPropPermissionsType]
-    repositories: NotRequired[list[RepositoryType]]
-    single_file: NotRequired[Union[str, None]]
-    repository_selection: NotRequired[Literal["all", "selected"]]
-
-
-class AuthenticationTokenPropPermissionsType(TypedDict):
-    """AuthenticationTokenPropPermissions
-
-    Examples:
-        {'issues': 'read', 'deployments': 'write'}
-    """
-
-
-__all__ = (
-    "AuthenticationTokenPropPermissionsType",
-    "AuthenticationTokenType",
-)
+__all__ = ("ActionsSetDefaultWorkflowPermissionsType",)

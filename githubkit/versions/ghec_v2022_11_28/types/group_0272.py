@@ -9,28 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class BranchShortType(TypedDict):
-    """Branch Short
+class CodeownersErrorsType(TypedDict):
+    """CODEOWNERS errors
 
-    Branch Short
+    A list of errors found in a repo's CODEOWNERS file
     """
 
-    name: str
-    commit: BranchShortPropCommitType
-    protected: bool
+    errors: list[CodeownersErrorsPropErrorsItemsType]
 
 
-class BranchShortPropCommitType(TypedDict):
-    """BranchShortPropCommit"""
+class CodeownersErrorsPropErrorsItemsType(TypedDict):
+    """CodeownersErrorsPropErrorsItems"""
 
-    sha: str
-    url: str
+    line: int
+    column: int
+    source: NotRequired[str]
+    kind: str
+    suggestion: NotRequired[Union[str, None]]
+    message: str
+    path: str
 
 
 __all__ = (
-    "BranchShortPropCommitType",
-    "BranchShortType",
+    "CodeownersErrorsPropErrorsItemsType",
+    "CodeownersErrorsType",
 )

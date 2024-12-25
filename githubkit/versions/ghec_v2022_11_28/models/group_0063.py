@@ -9,74 +9,102 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Annotated, Literal, Union
+from datetime import date
+from typing import Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0002 import SimpleUser
-from .group_0051 import SimpleRepository
-from .group_0061 import DependabotAlertSecurityVulnerability
-from .group_0062 import DependabotAlertSecurityAdvisory
-from .group_0064 import DependabotAlertWithRepositoryPropDependency
 
+class CopilotUsageMetrics(GitHubModel):
+    """Copilot Usage Metrics
 
-class DependabotAlertWithRepository(GitHubModel):
-    """DependabotAlertWithRepository
-
-    A Dependabot alert.
+    Summary of Copilot usage.
     """
 
-    number: int = Field(description="The security alert number.")
-    state: Literal["auto_dismissed", "dismissed", "fixed", "open"] = Field(
-        description="The state of the Dependabot alert."
+    day: date = Field(
+        description="The date for which the usage metrics are reported, in `YYYY-MM-DD` format."
     )
-    dependency: DependabotAlertWithRepositoryPropDependency = Field(
-        description="Details for the vulnerable dependency."
-    )
-    security_advisory: DependabotAlertSecurityAdvisory = Field(
-        description="Details for the GitHub Security Advisory."
-    )
-    security_vulnerability: DependabotAlertSecurityVulnerability = Field(
-        description="Details pertaining to one vulnerable version range for the advisory."
-    )
-    url: str = Field(description="The REST API URL of the alert resource.")
-    html_url: str = Field(description="The GitHub URL of the alert resource.")
-    created_at: datetime = Field(
-        description="The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
-    )
-    updated_at: datetime = Field(
-        description="The time that the alert was last updated in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
-    )
-    dismissed_at: Union[datetime, None] = Field(
-        description="The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
-    )
-    dismissed_by: Union[None, SimpleUser] = Field()
-    dismissed_reason: Union[
-        None,
-        Literal[
-            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
-        ],
-    ] = Field(description="The reason that the alert was dismissed.")
-    dismissed_comment: Union[Annotated[str, Field(max_length=280)], None] = Field(
-        description="An optional comment associated with the alert's dismissal."
-    )
-    fixed_at: Union[datetime, None] = Field(
-        description="The time that the alert was no longer detected and was considered fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
-    )
-    auto_dismissed_at: Missing[Union[datetime, None]] = Field(
+    total_suggestions_count: Missing[int] = Field(
         default=UNSET,
-        description="The time that the alert was auto-dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        description="The total number of Copilot code completion suggestions shown to users.",
     )
-    repository: SimpleRepository = Field(
-        title="Simple Repository", description="A GitHub repository."
+    total_acceptances_count: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of Copilot code completion suggestions accepted by users.",
+    )
+    total_lines_suggested: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of lines of code completions suggested by Copilot.",
+    )
+    total_lines_accepted: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of lines of code completions accepted by users.",
+    )
+    total_active_users: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of users who were shown Copilot code completion suggestions during the day specified.",
+    )
+    total_chat_acceptances: Missing[int] = Field(
+        default=UNSET,
+        description="The total instances of users who accepted code suggested by Copilot Chat in the IDE (panel and inline).",
+    )
+    total_chat_turns: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of chat turns (prompt and response pairs) sent between users and Copilot Chat in the IDE.",
+    )
+    total_active_chat_users: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of users who interacted with Copilot Chat in the IDE during the day specified.",
+    )
+    breakdown: Union[list[CopilotUsageMetricsPropBreakdownItems], None] = Field(
+        description="Breakdown of Copilot code completions usage by language and editor"
     )
 
 
-model_rebuild(DependabotAlertWithRepository)
+class CopilotUsageMetricsPropBreakdownItems(ExtraGitHubModel):
+    """CopilotUsageMetricsPropBreakdownItems
 
-__all__ = ("DependabotAlertWithRepository",)
+    Breakdown of Copilot usage by editor for this language
+    """
+
+    language: Missing[str] = Field(
+        default=UNSET,
+        description="The language in which Copilot suggestions were shown to users in the specified editor.",
+    )
+    editor: Missing[str] = Field(
+        default=UNSET,
+        description="The editor in which Copilot suggestions were shown to users for the specified language.",
+    )
+    suggestions_count: Missing[int] = Field(
+        default=UNSET,
+        description="The number of Copilot suggestions shown to users in the editor specified during the day specified.",
+    )
+    acceptances_count: Missing[int] = Field(
+        default=UNSET,
+        description="The number of Copilot suggestions accepted by users in the editor specified during the day specified.",
+    )
+    lines_suggested: Missing[int] = Field(
+        default=UNSET,
+        description="The number of lines of code suggested by Copilot in the editor specified during the day specified.",
+    )
+    lines_accepted: Missing[int] = Field(
+        default=UNSET,
+        description="The number of lines of code accepted by users in the editor specified during the day specified.",
+    )
+    active_users: Missing[int] = Field(
+        default=UNSET,
+        description="The number of users who were shown Copilot completion suggestions in the editor specified during the day specified.",
+    )
+
+
+model_rebuild(CopilotUsageMetrics)
+model_rebuild(CopilotUsageMetricsPropBreakdownItems)
+
+__all__ = (
+    "CopilotUsageMetrics",
+    "CopilotUsageMetricsPropBreakdownItems",
+)

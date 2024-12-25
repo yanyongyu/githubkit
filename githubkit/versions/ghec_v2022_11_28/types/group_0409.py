@@ -9,27 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class UserNameResponseType(TypedDict):
-    """UserNameResponse"""
+class MetaType(TypedDict):
+    """Meta
 
-    formatted: NotRequired[str]
-    family_name: NotRequired[str]
-    given_name: NotRequired[str]
-    middle_name: NotRequired[str]
+    The metadata associated with the creation/updates to the user.
+    """
 
-
-class UserEmailsResponseItemsType(TypedDict):
-    """UserEmailsResponseItems"""
-
-    value: str
-    type: NotRequired[str]
-    primary: NotRequired[bool]
+    resource_type: Literal["User", "Group"]
+    created: NotRequired[str]
+    last_modified: NotRequired[str]
+    location: NotRequired[str]
 
 
-__all__ = (
-    "UserEmailsResponseItemsType",
-    "UserNameResponseType",
-)
+__all__ = ("MetaType",)

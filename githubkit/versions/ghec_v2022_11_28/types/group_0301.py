@@ -11,19 +11,33 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0302 import EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType
+from .group_0299 import MetadataType
 
 
-class EnvironmentPropProtectionRulesItemsAnyof1Type(TypedDict):
-    """EnvironmentPropProtectionRulesItemsAnyof1"""
+class ManifestType(TypedDict):
+    """Manifest"""
 
-    id: int
-    node_id: str
-    prevent_self_review: NotRequired[bool]
-    type: str
-    reviewers: NotRequired[
-        list[EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType]
-    ]
+    name: str
+    file: NotRequired[ManifestPropFileType]
+    metadata: NotRequired[MetadataType]
+    resolved: NotRequired[ManifestPropResolvedType]
 
 
-__all__ = ("EnvironmentPropProtectionRulesItemsAnyof1Type",)
+class ManifestPropFileType(TypedDict):
+    """ManifestPropFile"""
+
+    source_location: NotRequired[str]
+
+
+class ManifestPropResolvedType(TypedDict):
+    """ManifestPropResolved
+
+    A collection of resolved package dependencies.
+    """
+
+
+__all__ = (
+    "ManifestPropFileType",
+    "ManifestPropResolvedType",
+    "ManifestType",
+)

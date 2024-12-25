@@ -12,10 +12,11 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoIssuesCommentsCommentIdPatchBodyType(TypedDict):
-    """ReposOwnerRepoIssuesCommentsCommentIdPatchBody"""
+class ReposOwnerRepoGitRefsPostBodyType(TypedDict):
+    """ReposOwnerRepoGitRefsPostBody"""
 
-    body: str
+    ref: str
+    sha: str
 
 
-__all__ = ("ReposOwnerRepoIssuesCommentsCommentIdPatchBodyType",)
+__all__ = ("ReposOwnerRepoGitRefsPostBodyType",)

@@ -10,51 +10,31 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Literal
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksRuleType(TypedDict):
-    """branch protection rule
+class EnterpriseWebhooksType(TypedDict):
+    """Enterprise
 
-    The branch protection rule. Includes a `name` and all the [branch protection
-    settings](https://docs.github.com/github/administering-a-repository/defining-
-    the-mergeability-of-pull-requests/about-protected-branches#about-branch-
-    protection-settings) applied to branches that match the name. Binary settings
-    are boolean. Multi-level configurations are one of `off`, `non_admins`, or
-    `everyone`. Actor and build lists are arrays of strings.
+    An enterprise on GitHub. Webhook payloads contain the `enterprise` property when
+    the webhook is configured
+    on an enterprise account or an organization that's part of an enterprise
+    account. For more information,
+    see "[About enterprise accounts](https://docs.github.com/admin/overview/about-
+    enterprise-accounts)."
     """
 
-    admin_enforced: bool
-    allow_deletions_enforcement_level: Literal["off", "non_admins", "everyone"]
-    allow_force_pushes_enforcement_level: Literal["off", "non_admins", "everyone"]
-    authorized_actor_names: list[str]
-    authorized_actors_only: bool
-    authorized_dismissal_actors_only: bool
-    create_protected: NotRequired[bool]
-    created_at: datetime
-    dismiss_stale_reviews_on_push: bool
+    description: NotRequired[Union[str, None]]
+    html_url: str
+    website_url: NotRequired[Union[str, None]]
     id: int
-    ignore_approvals_from_contributors: bool
-    linear_history_requirement_enforcement_level: Literal[
-        "off", "non_admins", "everyone"
-    ]
-    lock_branch_enforcement_level: Literal["off", "non_admins", "everyone"]
-    lock_allows_fork_sync: NotRequired[bool]
-    merge_queue_enforcement_level: Literal["off", "non_admins", "everyone"]
+    node_id: str
     name: str
-    pull_request_reviews_enforcement_level: Literal["off", "non_admins", "everyone"]
-    repository_id: int
-    require_code_owner_review: bool
-    require_last_push_approval: NotRequired[bool]
-    required_approving_review_count: int
-    required_conversation_resolution_level: Literal["off", "non_admins", "everyone"]
-    required_deployments_enforcement_level: Literal["off", "non_admins", "everyone"]
-    required_status_checks: list[str]
-    required_status_checks_enforcement_level: Literal["off", "non_admins", "everyone"]
-    signature_requirement_enforcement_level: Literal["off", "non_admins", "everyone"]
-    strict_required_status_checks_policy: bool
-    updated_at: datetime
+    slug: str
+    created_at: Union[datetime, None]
+    updated_at: Union[datetime, None]
+    avatar_url: str
 
 
-__all__ = ("WebhooksRuleType",)
+__all__ = ("EnterpriseWebhooksType",)

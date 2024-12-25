@@ -12,19 +12,17 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0078 import Codespace
 
 
-class UserGpgKeysPostBody(GitHubModel):
-    """UserGpgKeysPostBody"""
+class UserCodespacesGetResponse200(GitHubModel):
+    """UserCodespacesGetResponse200"""
 
-    name: Missing[str] = Field(
-        default=UNSET, description="A descriptive name for the new key."
-    )
-    armored_public_key: str = Field(description="A GPG key in ASCII-armored format.")
+    total_count: int = Field()
+    codespaces: list[Codespace] = Field()
 
 
-model_rebuild(UserGpgKeysPostBody)
+model_rebuild(UserCodespacesGetResponse200)
 
-__all__ = ("UserGpgKeysPostBody",)
+__all__ = ("UserCodespacesGetResponse200",)

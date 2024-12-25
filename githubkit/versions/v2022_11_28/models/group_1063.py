@@ -9,20 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class ReposOwnerRepoPullsPullNumberMergePutResponse405(GitHubModel):
-    """ReposOwnerRepoPullsPullNumberMergePutResponse405"""
-
-    message: Missing[str] = Field(default=UNSET)
-    documentation_url: Missing[str] = Field(default=UNSET)
+from .group_1061 import ReposOwnerRepoPagesPostBodyPropSource
 
 
-model_rebuild(ReposOwnerRepoPullsPullNumberMergePutResponse405)
+class ReposOwnerRepoPagesPostBodyAnyof1(GitHubModel):
+    """ReposOwnerRepoPagesPostBodyAnyof1"""
 
-__all__ = ("ReposOwnerRepoPullsPullNumberMergePutResponse405",)
+    build_type: Literal["legacy", "workflow"] = Field(
+        description='The process in which the Page will be built. Possible values are `"legacy"` and `"workflow"`.'
+    )
+    source: Missing[ReposOwnerRepoPagesPostBodyPropSource] = Field(
+        default=UNSET,
+        description="The source branch and directory used to publish your Pages site.",
+    )
+
+
+model_rebuild(ReposOwnerRepoPagesPostBodyAnyof1)
+
+__all__ = ("ReposOwnerRepoPagesPostBodyAnyof1",)

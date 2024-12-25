@@ -9,18 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class CodeScanningDefaultSetupOptionsType(TypedDict):
-    """CodeScanningDefaultSetupOptions
+class OidcCustomSubType(TypedDict):
+    """Actions OIDC Subject customization
 
-    Feature options for code scanning default setup
+    Actions OIDC Subject customization
     """
 
-    runner_type: NotRequired[Literal["standard", "labeled", "not_set"]]
-    runner_label: NotRequired[Union[str, None]]
+    include_claim_keys: list[str]
 
 
-__all__ = ("CodeScanningDefaultSetupOptionsType",)
+__all__ = ("OidcCustomSubType",)

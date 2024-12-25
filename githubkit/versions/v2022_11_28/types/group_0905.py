@@ -9,14 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ProjectsProjectIdCollaboratorsUsernamePutBodyType(TypedDict):
-    """ProjectsProjectIdCollaboratorsUsernamePutBody"""
+class ProjectsColumnsCardsCardIdMovesPostBodyType(TypedDict):
+    """ProjectsColumnsCardsCardIdMovesPostBody"""
 
-    permission: NotRequired[Literal["read", "write", "admin"]]
+    position: str
+    column_id: NotRequired[int]
 
 
-__all__ = ("ProjectsProjectIdCollaboratorsUsernamePutBodyType",)
+__all__ = ("ProjectsColumnsCardsCardIdMovesPostBodyType",)

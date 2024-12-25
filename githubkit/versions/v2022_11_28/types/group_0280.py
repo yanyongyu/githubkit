@@ -9,22 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class PorterAuthorType(TypedDict):
-    """Porter Author
+class GitTreeType(TypedDict):
+    """Git Tree
 
-    Porter Author
+    The hierarchy between files in a Git repository.
     """
 
-    id: int
-    remote_id: str
-    remote_name: str
-    email: str
-    name: str
+    sha: str
     url: str
-    import_url: str
+    truncated: bool
+    tree: list[GitTreePropTreeItemsType]
 
 
-__all__ = ("PorterAuthorType",)
+class GitTreePropTreeItemsType(TypedDict):
+    """GitTreePropTreeItems"""
+
+    path: NotRequired[str]
+    mode: NotRequired[str]
+    type: NotRequired[str]
+    sha: NotRequired[str]
+    size: NotRequired[int]
+    url: NotRequired[str]
+
+
+__all__ = (
+    "GitTreePropTreeItemsType",
+    "GitTreeType",
+)

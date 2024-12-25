@@ -58,6 +58,7 @@ if TYPE_CHECKING:
         OrgsOrgInstallationsGetResponse200,
         OrgsOrgOrganizationRolesGetResponse200,
         OrgsOrgOutsideCollaboratorsUsernamePutResponse202,
+        PushRuleBypassRequest,
         RepositoryFineGrainedPermission,
         SimpleUser,
         Team,
@@ -120,6 +121,7 @@ if TYPE_CHECKING:
         OrgsOrgPropertiesSchemaPatchBodyType,
         OrgsOrgPropertiesValuesPatchBodyType,
         OrgsOrgSecurityProductEnablementPostBodyType,
+        PushRuleBypassRequestType,
         RepositoryFineGrainedPermissionType,
         SimpleUserType,
         TeamRoleAssignmentType,
@@ -1078,6 +1080,96 @@ class OrgsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+        )
+
+    def list_push_bypass_requests(
+        self,
+        org: str,
+        *,
+        repository_name: Missing[str] = UNSET,
+        reviewer: Missing[str] = UNSET,
+        requester: Missing[str] = UNSET,
+        time_period: Missing[Literal["hour", "day", "week", "month"]] = UNSET,
+        request_status: Missing[
+            Literal["completed", "cancelled", "expired", "denied", "open", "all"]
+        ] = UNSET,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[PushRuleBypassRequest], list[PushRuleBypassRequestType]]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/bypass-requests#list-push-rule-bypass-requests-within-an-organization"""
+
+        from ..models import BasicError, PushRuleBypassRequest
+
+        url = f"/orgs/{org}/bypass-requests/push-rules"
+
+        params = {
+            "repository_name": repository_name,
+            "reviewer": reviewer,
+            "requester": requester,
+            "time_period": time_period,
+            "request_status": request_status,
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=list[PushRuleBypassRequest],
+            error_models={
+                "404": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    async def async_list_push_bypass_requests(
+        self,
+        org: str,
+        *,
+        repository_name: Missing[str] = UNSET,
+        reviewer: Missing[str] = UNSET,
+        requester: Missing[str] = UNSET,
+        time_period: Missing[Literal["hour", "day", "week", "month"]] = UNSET,
+        request_status: Missing[
+            Literal["completed", "cancelled", "expired", "denied", "open", "all"]
+        ] = UNSET,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[PushRuleBypassRequest], list[PushRuleBypassRequestType]]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/bypass-requests#list-push-rule-bypass-requests-within-an-organization"""
+
+        from ..models import BasicError, PushRuleBypassRequest
+
+        url = f"/orgs/{org}/bypass-requests/push-rules"
+
+        params = {
+            "repository_name": repository_name,
+            "reviewer": reviewer,
+            "requester": requester,
+            "time_period": time_period,
+            "request_status": request_status,
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=list[PushRuleBypassRequest],
+            error_models={
+                "404": BasicError,
+                "500": BasicError,
+            },
         )
 
     def list_saml_sso_authorizations(

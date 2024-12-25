@@ -9,16 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import TypedDict
 
 
-class OidcCustomSubType(TypedDict):
-    """Actions OIDC Subject customization
+class OrganizationSimpleType(TypedDict):
+    """Organization Simple
 
-    Actions OIDC Subject customization
+    A GitHub organization.
     """
 
-    include_claim_keys: list[str]
+    login: str
+    id: int
+    node_id: str
+    url: str
+    repos_url: str
+    events_url: str
+    hooks_url: str
+    issues_url: str
+    members_url: str
+    public_members_url: str
+    avatar_url: str
+    description: Union[str, None]
 
 
-__all__ = ("OidcCustomSubType",)
+__all__ = ("OrganizationSimpleType",)

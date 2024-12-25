@@ -9,63 +9,87 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class CredentialAuthorization(GitHubModel):
-    """Credential Authorization
+class CopilotOrganizationDetails(ExtraGitHubModel):
+    """Copilot Organization Details
 
-    Credential Authorization
+    Information about the seat breakdown and policies set for an organization with a
+    Copilot Business or Copilot Enterprise subscription.
     """
 
-    login: str = Field(description="User login that owns the underlying credential.")
-    credential_id: int = Field(
-        description="Unique identifier for the authorization of the credential. Use this to revoke authorization of the underlying token or key."
+    seat_breakdown: CopilotSeatBreakdown = Field(
+        title="Copilot Business Seat Breakdown",
+        description="The breakdown of Copilot Business seats for the organization.",
     )
-    credential_type: str = Field(
-        description="Human-readable description of the credential type."
+    public_code_suggestions: Literal["allow", "block", "unconfigured", "unknown"] = (
+        Field(
+            description="The organization policy for allowing or disallowing Copilot to make suggestions that match public code."
+        )
     )
-    token_last_eight: Missing[str] = Field(
+    ide_chat: Missing[Literal["enabled", "disabled", "unconfigured"]] = Field(
         default=UNSET,
-        description="Last eight characters of the credential. Only included in responses with credential_type of personal access token.",
+        description="The organization policy for allowing or disallowing organization members to use Copilot Chat within their editor.",
     )
-    credential_authorized_at: datetime = Field(
-        description="Date when the credential was authorized for use."
-    )
-    scopes: Missing[list[str]] = Field(
-        default=UNSET, description="List of oauth scopes the token has been granted."
-    )
-    fingerprint: Missing[str] = Field(
+    platform_chat: Missing[Literal["enabled", "disabled", "unconfigured"]] = Field(
         default=UNSET,
-        description="Unique string to distinguish the credential. Only included in responses with credential_type of SSH Key.",
+        description="The organization policy for allowing or disallowing organization members to use Copilot features within github.com.",
     )
-    credential_accessed_at: Union[datetime, None] = Field(
-        description="Date when the credential was last accessed. May be null if it was never accessed"
-    )
-    authorized_credential_id: Union[int, None] = Field(
-        description="The ID of the underlying token that was authorized by the user. This will remain unchanged across authorizations of the token."
-    )
-    authorized_credential_title: Missing[Union[str, None]] = Field(
+    cli: Missing[Literal["enabled", "disabled", "unconfigured"]] = Field(
         default=UNSET,
-        description="The title given to the ssh key. This will only be present when the credential is an ssh key.",
+        description="The organization policy for allowing or disallowing organization members to use Copilot within their CLI.",
     )
-    authorized_credential_note: Missing[Union[str, None]] = Field(
+    seat_management_setting: Literal[
+        "assign_all", "assign_selected", "disabled", "unconfigured"
+    ] = Field(description="The mode of assigning new seats.")
+    plan_type: Missing[Literal["business", "enterprise", "unknown"]] = Field(
         default=UNSET,
-        description="The note given to the token. This will only be present when the credential is a token.",
-    )
-    authorized_credential_expires_at: Missing[Union[datetime, None]] = Field(
-        default=UNSET,
-        description="The expiry for the token. This will only be present when the credential is a token.",
+        description="The Copilot plan of the organization, or the parent enterprise, when applicable.",
     )
 
 
-model_rebuild(CredentialAuthorization)
+class CopilotSeatBreakdown(GitHubModel):
+    """Copilot Business Seat Breakdown
 
-__all__ = ("CredentialAuthorization",)
+    The breakdown of Copilot Business seats for the organization.
+    """
+
+    total: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of seats being billed for the organization as of the current billing cycle.",
+    )
+    added_this_cycle: Missing[int] = Field(
+        default=UNSET, description="Seats added during the current billing cycle."
+    )
+    pending_cancellation: Missing[int] = Field(
+        default=UNSET,
+        description="The number of seats that are pending cancellation at the end of the current billing cycle.",
+    )
+    pending_invitation: Missing[int] = Field(
+        default=UNSET,
+        description="The number of seats that have been assigned to users that have not yet accepted an invitation to this organization.",
+    )
+    active_this_cycle: Missing[int] = Field(
+        default=UNSET,
+        description="The number of seats that have used Copilot during the current billing cycle.",
+    )
+    inactive_this_cycle: Missing[int] = Field(
+        default=UNSET,
+        description="The number of seats that have not used Copilot during the current billing cycle.",
+    )
+
+
+model_rebuild(CopilotOrganizationDetails)
+model_rebuild(CopilotSeatBreakdown)
+
+__all__ = (
+    "CopilotOrganizationDetails",
+    "CopilotSeatBreakdown",
+)

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,47 +18,63 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0002 import SimpleUser
-from .group_0389 import EnterpriseWebhooks
-from .group_0390 import SimpleInstallation
-from .group_0391 import OrganizationSimpleWebhooks
-from .group_0392 import RepositoryWebhooks
-from .group_0519 import WebhookIssueCommentCreatedPropComment
-from .group_0520 import WebhookIssueCommentCreatedPropIssue
+from .group_0017 import Installation
+from .group_0393 import EnterpriseWebhooks
+from .group_0395 import OrganizationSimpleWebhooks
+from .group_0396 import RepositoryWebhooks
+from .group_0404 import WebhooksUser
+from .group_0410 import WebhooksRepositoriesAddedItems
 
 
-class WebhookIssueCommentCreated(GitHubModel):
-    """issue_comment created event"""
+class WebhookInstallationRepositoriesRemoved(GitHubModel):
+    """installation_repositories removed event"""
 
-    action: Literal["created"] = Field()
-    comment: WebhookIssueCommentCreatedPropComment = Field(
-        title="issue comment",
-        description="The [comment](https://docs.github.com/rest/issues/comments#get-an-issue-comment) itself.",
-    )
+    action: Literal["removed"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
         description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."',
     )
-    installation: Missing[SimpleInstallation] = Field(
-        default=UNSET,
-        title="Simple Installation",
-        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
-    )
-    issue: WebhookIssueCommentCreatedPropIssue = Field(
-        description="The [issue](https://docs.github.com/rest/issues/issues#get-an-issue) the comment belongs to."
-    )
+    installation: Installation = Field(title="Installation", description="Installation")
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repository: RepositoryWebhooks = Field(
+    repositories_added: list[WebhooksRepositoriesAddedItems] = Field(
+        description="An array of repository objects, which were added to the installation."
+    )
+    repositories_removed: list[
+        WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItems
+    ] = Field(
+        description="An array of repository objects, which were removed from the installation."
+    )
+    repository: Missing[RepositoryWebhooks] = Field(
+        default=UNSET,
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
+    repository_selection: Literal["all", "selected"] = Field(
+        description="Describe whether all repositories have been selected or there's a selection involved"
+    )
+    requester: Union[WebhooksUser, None] = Field(title="User")
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookIssueCommentCreated)
+class WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItems(GitHubModel):
+    """WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItems"""
 
-__all__ = ("WebhookIssueCommentCreated",)
+    full_name: str = Field()
+    id: int = Field(description="Unique identifier of the repository")
+    name: str = Field(description="The name of the repository.")
+    node_id: str = Field()
+    private: bool = Field(description="Whether the repository is private or public.")
+
+
+model_rebuild(WebhookInstallationRepositoriesRemoved)
+model_rebuild(WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItems)
+
+__all__ = (
+    "WebhookInstallationRepositoriesRemoved",
+    "WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItems",
+)

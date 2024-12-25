@@ -10,33 +10,19 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Union
-from typing_extensions import TypedDict
-
-from .group_0002 import SimpleUserType
-from .group_0019 import RepositoryType
+from typing_extensions import NotRequired, TypedDict
 
 
-class PullRequestPropHeadType(TypedDict):
-    """PullRequestPropHead"""
+class PageDeploymentType(TypedDict):
+    """GitHub Pages
 
-    label: Union[str, None]
-    ref: str
-    repo: RepositoryType
-    sha: str
-    user: SimpleUserType
+    The GitHub Pages deployment status.
+    """
 
-
-class PullRequestPropBaseType(TypedDict):
-    """PullRequestPropBase"""
-
-    label: str
-    ref: str
-    repo: RepositoryType
-    sha: str
-    user: SimpleUserType
+    id: Union[int, str]
+    status_url: str
+    page_url: str
+    preview_url: NotRequired[str]
 
 
-__all__ = (
-    "PullRequestPropBaseType",
-    "PullRequestPropHeadType",
-)
+__all__ = ("PageDeploymentType",)

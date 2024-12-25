@@ -9,26 +9,74 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+from typing import Annotated, Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0002 import SimpleUser
+from .group_0030 import SimpleRepository
+from .group_0033 import DependabotAlertSecurityVulnerability
+from .group_0034 import DependabotAlertSecurityAdvisory
+from .group_0036 import DependabotAlertWithRepositoryPropDependency
 
 
-class ReactionRollup(GitHubModel):
-    """Reaction Rollup"""
+class DependabotAlertWithRepository(GitHubModel):
+    """DependabotAlertWithRepository
 
-    url: str = Field()
-    total_count: int = Field()
-    plus_one: int = Field(alias="+1")
-    minus_one: int = Field(alias="-1")
-    laugh: int = Field()
-    confused: int = Field()
-    heart: int = Field()
-    hooray: int = Field()
-    eyes: int = Field()
-    rocket: int = Field()
+    A Dependabot alert.
+    """
+
+    number: int = Field(description="The security alert number.")
+    state: Literal["auto_dismissed", "dismissed", "fixed", "open"] = Field(
+        description="The state of the Dependabot alert."
+    )
+    dependency: DependabotAlertWithRepositoryPropDependency = Field(
+        description="Details for the vulnerable dependency."
+    )
+    security_advisory: DependabotAlertSecurityAdvisory = Field(
+        description="Details for the GitHub Security Advisory."
+    )
+    security_vulnerability: DependabotAlertSecurityVulnerability = Field(
+        description="Details pertaining to one vulnerable version range for the advisory."
+    )
+    url: str = Field(description="The REST API URL of the alert resource.")
+    html_url: str = Field(description="The GitHub URL of the alert resource.")
+    created_at: datetime = Field(
+        description="The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
+    )
+    updated_at: datetime = Field(
+        description="The time that the alert was last updated in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
+    )
+    dismissed_at: Union[datetime, None] = Field(
+        description="The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
+    )
+    dismissed_by: Union[None, SimpleUser] = Field()
+    dismissed_reason: Union[
+        None,
+        Literal[
+            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
+        ],
+    ] = Field(description="The reason that the alert was dismissed.")
+    dismissed_comment: Union[Annotated[str, Field(max_length=280)], None] = Field(
+        description="An optional comment associated with the alert's dismissal."
+    )
+    fixed_at: Union[datetime, None] = Field(
+        description="The time that the alert was no longer detected and was considered fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
+    )
+    auto_dismissed_at: Missing[Union[datetime, None]] = Field(
+        default=UNSET,
+        description="The time that the alert was auto-dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+    )
+    repository: SimpleRepository = Field(
+        title="Simple Repository", description="A GitHub repository."
+    )
 
 
-model_rebuild(ReactionRollup)
+model_rebuild(DependabotAlertWithRepository)
 
-__all__ = ("ReactionRollup",)
+__all__ = ("DependabotAlertWithRepository",)

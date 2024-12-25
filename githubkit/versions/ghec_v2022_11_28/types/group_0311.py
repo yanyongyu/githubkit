@@ -11,43 +11,35 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0237 import VerificationType
+from .group_0310 import CustomDeploymentRuleAppType
 
 
-class GitTagType(TypedDict):
-    """Git Tag
+class DeploymentProtectionRuleType(TypedDict):
+    """Deployment protection rule
 
-    Metadata for a Git tag
+    Deployment protection rule
     """
 
+    id: int
     node_id: str
-    tag: str
-    sha: str
-    url: str
-    message: str
-    tagger: GitTagPropTaggerType
-    object_: GitTagPropObjectType
-    verification: NotRequired[VerificationType]
+    enabled: bool
+    app: CustomDeploymentRuleAppType
 
 
-class GitTagPropTaggerType(TypedDict):
-    """GitTagPropTagger"""
+class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200Type(
+    TypedDict
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200
 
-    date: str
-    email: str
-    name: str
+    Examples:
+        {'$ref': '#/components/examples/deployment-protection-rules'}
+    """
 
-
-class GitTagPropObjectType(TypedDict):
-    """GitTagPropObject"""
-
-    sha: str
-    type: str
-    url: str
+    total_count: NotRequired[int]
+    custom_deployment_protection_rules: NotRequired[list[DeploymentProtectionRuleType]]
 
 
 __all__ = (
-    "GitTagPropObjectType",
-    "GitTagPropTaggerType",
-    "GitTagType",
+    "DeploymentProtectionRuleType",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200Type",
 )

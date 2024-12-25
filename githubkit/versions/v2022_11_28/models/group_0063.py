@@ -9,28 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ActionsSetDefaultWorkflowPermissions(GitHubModel):
-    """ActionsSetDefaultWorkflowPermissions"""
+class OidcCustomSub(GitHubModel):
+    """Actions OIDC Subject customization
 
-    default_workflow_permissions: Missing[Literal["read", "write"]] = Field(
-        default=UNSET,
-        description="The default workflow permissions granted to the GITHUB_TOKEN when running workflows.",
-    )
-    can_approve_pull_request_reviews: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether GitHub Actions can approve pull requests. Enabling this can be a security risk.",
+    Actions OIDC Subject customization
+    """
+
+    include_claim_keys: list[str] = Field(
+        description="Array of unique strings. Each claim key can only contain alphanumeric characters and underscores."
     )
 
 
-model_rebuild(ActionsSetDefaultWorkflowPermissions)
+model_rebuild(OidcCustomSub)
 
-__all__ = ("ActionsSetDefaultWorkflowPermissions",)
+__all__ = ("OidcCustomSub",)

@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Literal, Union
 
 from pydantic import Field
@@ -18,18 +19,48 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0002 import SimpleUser
-from .group_0082 import Team
+from .group_0008 import Integration
 
 
-class EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems(GitHubModel):
-    """EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems"""
+class DeploymentStatus(GitHubModel):
+    """Deployment Status
 
-    type: Missing[Literal["User", "Team"]] = Field(
-        default=UNSET, description="The type of reviewer."
+    The status of a deployment.
+    """
+
+    url: str = Field()
+    id: int = Field()
+    node_id: str = Field()
+    state: Literal[
+        "error", "failure", "inactive", "pending", "success", "queued", "in_progress"
+    ] = Field(description="The state of the status.")
+    creator: Union[None, SimpleUser] = Field()
+    description: str = Field(
+        max_length=140, default="", description="A short description of the status."
     )
-    reviewer: Missing[Union[SimpleUser, Team]] = Field(default=UNSET)
+    environment: Missing[str] = Field(
+        default=UNSET,
+        description="The environment of the deployment that the status is for.",
+    )
+    target_url: str = Field(
+        default="",
+        description="Closing down notice: the URL to associate with this status.",
+    )
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+    deployment_url: str = Field()
+    repository_url: str = Field()
+    environment_url: Missing[str] = Field(
+        default=UNSET, description="The URL for accessing your environment."
+    )
+    log_url: Missing[str] = Field(
+        default=UNSET, description="The URL to associate with this status."
+    )
+    performed_via_github_app: Missing[Union[None, Integration, None]] = Field(
+        default=UNSET
+    )
 
 
-model_rebuild(EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems)
+model_rebuild(DeploymentStatus)
 
-__all__ = ("EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems",)
+__all__ = ("DeploymentStatus",)

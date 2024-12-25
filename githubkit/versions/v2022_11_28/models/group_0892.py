@@ -16,19 +16,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ProjectsColumnsCardsCardIdMovesPostBody(GitHubModel):
-    """ProjectsColumnsCardsCardIdMovesPostBody"""
+class OrgsOrgTeamsTeamSlugDiscussionsPostBody(GitHubModel):
+    """OrgsOrgTeamsTeamSlugDiscussionsPostBody"""
 
-    position: str = Field(
-        pattern="^(?:top|bottom|after:\\d+)$",
-        description="The position of the card in a column. Can be one of: `top`, `bottom`, or `after:<card_id>` to place after the specified card.",
-    )
-    column_id: Missing[int] = Field(
+    title: str = Field(description="The discussion post's title.")
+    body: str = Field(description="The discussion post's body text.")
+    private: Missing[bool] = Field(
         default=UNSET,
-        description="The unique identifier of the column the card should be moved to",
+        description="Private posts are only visible to team members, organization owners, and team maintainers. Public posts are visible to all members of the organization. Set to `true` to create a private post.",
     )
 
 
-model_rebuild(ProjectsColumnsCardsCardIdMovesPostBody)
+model_rebuild(OrgsOrgTeamsTeamSlugDiscussionsPostBody)
 
-__all__ = ("ProjectsColumnsCardsCardIdMovesPostBody",)
+__all__ = ("OrgsOrgTeamsTeamSlugDiscussionsPostBody",)

@@ -76,6 +76,9 @@ if TYPE_CHECKING:
         ApiOverviewPropDomains as ApiOverviewPropDomains,
     )
     from githubkit.versions.v2022_11_28.models import (
+        ApiOverviewPropDomainsPropActionsInbound as ApiOverviewPropDomainsPropActionsInbound,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         ApiOverviewPropDomainsPropArtifactAttestations as ApiOverviewPropDomainsPropArtifactAttestations,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -275,6 +278,15 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         CodeScanningAnalysisTool as CodeScanningAnalysisTool,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        CodeScanningAutofix as CodeScanningAutofix,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        CodeScanningAutofixCommits as CodeScanningAutofixCommits,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        CodeScanningAutofixCommitsResponse as CodeScanningAutofixCommitsResponse,
     )
     from githubkit.versions.v2022_11_28.models import (
         CodeScanningCodeqlDatabase as CodeScanningCodeqlDatabase,
@@ -668,6 +680,27 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import EmptyObject as EmptyObject
     from githubkit.versions.v2022_11_28.models import Enterprise as Enterprise
+    from githubkit.versions.v2022_11_28.models import (
+        EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBody as EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBody,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBody as EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBody,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200 as EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBody as EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBody,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptions as EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptions,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        EnterprisesEnterpriseCodeSecurityConfigurationsPostBody as EnterprisesEnterpriseCodeSecurityConfigurationsPostBody,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptions as EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptions,
+    )
     from githubkit.versions.v2022_11_28.models import (
         EnterprisesEnterpriseSecretScanningAlertsGetResponse503 as EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
     )
@@ -1088,6 +1121,12 @@ if TYPE_CHECKING:
         OrgMembershipPropPermissions as OrgMembershipPropPermissions,
     )
     from githubkit.versions.v2022_11_28.models import (
+        OrgPrivateRegistryConfiguration as OrgPrivateRegistryConfiguration,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        OrgPrivateRegistryConfigurationWithSelectedRepositories as OrgPrivateRegistryConfigurationWithSelectedRepositories,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         OrgRepoCustomPropertyValues as OrgRepoCustomPropertyValues,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -1353,6 +1392,18 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         OrgsOrgPersonalAccessTokensPostBody as OrgsOrgPersonalAccessTokensPostBody,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        OrgsOrgPrivateRegistriesGetResponse200 as OrgsOrgPrivateRegistriesGetResponse200,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        OrgsOrgPrivateRegistriesPostBody as OrgsOrgPrivateRegistriesPostBody,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        OrgsOrgPrivateRegistriesPublicKeyGetResponse200 as OrgsOrgPrivateRegistriesPublicKeyGetResponse200,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        OrgsOrgPrivateRegistriesSecretNamePatchBody as OrgsOrgPrivateRegistriesSecretNamePatchBody,
     )
     from githubkit.versions.v2022_11_28.models import (
         OrgsOrgProjectsPostBody as OrgsOrgProjectsPostBody,
@@ -9623,6 +9674,15 @@ else:
             "SimpleClassroomAssignment",
             "SimpleClassroom",
             "ClassroomAssignmentGrade",
+            "CodeSecurityConfiguration",
+            "CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptions",
+            "CodeSecurityConfigurationPropCodeScanningDefaultSetupOptions",
+            "CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptions",
+            "CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropReviewersItems",
+            "CodeScanningDefaultSetupOptions",
+            "CodeSecurityDefaultConfigurationsItems",
+            "SimpleRepository",
+            "CodeSecurityConfigurationRepositories",
             "DependabotAlertPackage",
             "DependabotAlertSecurityVulnerability",
             "DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion",
@@ -9631,7 +9691,6 @@ else:
             "DependabotAlertSecurityAdvisoryPropCwesItems",
             "DependabotAlertSecurityAdvisoryPropIdentifiersItems",
             "DependabotAlertSecurityAdvisoryPropReferencesItems",
-            "SimpleRepository",
             "DependabotAlertWithRepository",
             "DependabotAlertWithRepositoryPropDependency",
             "OrganizationSecretScanningAlert",
@@ -9673,6 +9732,7 @@ else:
             "ApiOverview",
             "ApiOverviewPropSshKeyFingerprints",
             "ApiOverviewPropDomains",
+            "ApiOverviewPropDomainsPropActionsInbound",
             "ApiOverviewPropDomainsPropArtifactAttestations",
             "SecurityAndAnalysis",
             "SecurityAndAnalysisPropAdvancedSecurity",
@@ -9711,14 +9771,6 @@ else:
             "CodeScanningAlertLocation",
             "CodeScanningAlertInstancePropMessage",
             "CodeScanningOrganizationAlertItems",
-            "CodeSecurityConfiguration",
-            "CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptions",
-            "CodeSecurityConfigurationPropCodeScanningDefaultSetupOptions",
-            "CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptions",
-            "CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropReviewersItems",
-            "CodeScanningDefaultSetupOptions",
-            "CodeSecurityDefaultConfigurationsItems",
-            "CodeSecurityConfigurationRepositories",
             "CodespaceMachine",
             "Codespace",
             "CodespacePropGitStatus",
@@ -9782,6 +9834,7 @@ else:
             "OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization",
             "OrganizationProgrammaticAccessGrantPropPermissionsPropRepository",
             "OrganizationProgrammaticAccessGrantPropPermissionsPropOther",
+            "OrgPrivateRegistryConfigurationWithSelectedRepositories",
             "Project",
             "CustomProperty",
             "CustomPropertySetPayload",
@@ -9992,6 +10045,9 @@ else:
             "CodeScanningAlertItems",
             "CodeScanningAlert",
             "CodeScanningAlertRule",
+            "CodeScanningAutofix",
+            "CodeScanningAutofixCommits",
+            "CodeScanningAutofixCommitsResponse",
             "CodeScanningAnalysis",
             "CodeScanningAnalysisDeletion",
             "CodeScanningCodeqlDatabase",
@@ -12455,6 +12511,13 @@ else:
             "ApplicationsClientIdTokenPatchBody",
             "ApplicationsClientIdTokenScopedPostBody",
             "EmojisGetResponse200",
+            "EnterprisesEnterpriseCodeSecurityConfigurationsPostBody",
+            "EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptions",
+            "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBody",
+            "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptions",
+            "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBody",
+            "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBody",
+            "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200",
             "EnterprisesEnterpriseSecretScanningAlertsGetResponse503",
             "GistsPostBody",
             "GistsPostBodyPropFiles",
@@ -12559,6 +12622,11 @@ else:
             "OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody",
             "OrgsOrgPersonalAccessTokensPostBody",
             "OrgsOrgPersonalAccessTokensPatIdPostBody",
+            "OrgsOrgPrivateRegistriesGetResponse200",
+            "OrgPrivateRegistryConfiguration",
+            "OrgsOrgPrivateRegistriesPostBody",
+            "OrgsOrgPrivateRegistriesPublicKeyGetResponse200",
+            "OrgsOrgPrivateRegistriesSecretNamePatchBody",
             "OrgsOrgProjectsPostBody",
             "OrgsOrgPropertiesSchemaPatchBody",
             "OrgsOrgPropertiesValuesPatchBody",

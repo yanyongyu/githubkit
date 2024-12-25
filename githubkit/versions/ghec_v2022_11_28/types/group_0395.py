@@ -9,30 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+from typing import Union
 from typing_extensions import TypedDict
 
+from .group_0002 import SimpleUserType
 
-class TagType(TypedDict):
-    """Tag
 
-    Tag
+class StargazerType(TypedDict):
+    """Stargazer
+
+    Stargazer
     """
 
-    name: str
-    commit: TagPropCommitType
-    zipball_url: str
-    tarball_url: str
-    node_id: str
+    starred_at: datetime
+    user: Union[None, SimpleUserType]
 
 
-class TagPropCommitType(TypedDict):
-    """TagPropCommit"""
-
-    sha: str
-    url: str
-
-
-__all__ = (
-    "TagPropCommitType",
-    "TagType",
-)
+__all__ = ("StargazerType",)

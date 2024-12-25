@@ -9,35 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from datetime import datetime
+from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
-from .group_0085 import RepositoryRuleUpdatePropParameters
+from .group_0002 import SimpleUser
 
 
-class RepositoryRuleDetailedOneof1(GitHubModel):
-    """RepositoryRuleDetailedOneof1"""
+class ReleaseAsset(GitHubModel):
+    """Release Asset
 
-    type: Literal["update"] = Field()
-    parameters: Missing[RepositoryRuleUpdatePropParameters] = Field(default=UNSET)
-    ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
-        default=UNSET,
-        description="The type of source for the ruleset that includes this rule.",
+    Data related to a release.
+    """
+
+    url: str = Field()
+    browser_download_url: str = Field()
+    id: int = Field()
+    node_id: str = Field()
+    name: str = Field(description="The file name of the asset.")
+    label: Union[str, None] = Field()
+    state: Literal["uploaded", "open"] = Field(
+        description="State of the release asset."
     )
-    ruleset_source: Missing[str] = Field(
-        default=UNSET,
-        description="The name of the source of the ruleset that includes this rule.",
-    )
-    ruleset_id: Missing[int] = Field(
-        default=UNSET, description="The ID of the ruleset that includes this rule."
-    )
+    content_type: str = Field()
+    size: int = Field()
+    download_count: int = Field()
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+    uploader: Union[None, SimpleUser] = Field()
 
 
-model_rebuild(RepositoryRuleDetailedOneof1)
+model_rebuild(ReleaseAsset)
 
-__all__ = ("RepositoryRuleDetailedOneof1",)
+__all__ = ("ReleaseAsset",)

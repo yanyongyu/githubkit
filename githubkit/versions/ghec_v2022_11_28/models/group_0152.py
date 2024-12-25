@@ -9,31 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class CodeScanningDefaultSetupOptions(GitHubModel):
-    """CodeScanningDefaultSetupOptions
+class OidcCustomSub(GitHubModel):
+    """Actions OIDC Subject customization
 
-    Feature options for code scanning default setup
+    Actions OIDC Subject customization
     """
 
-    runner_type: Missing[Literal["standard", "labeled", "not_set"]] = Field(
-        default=UNSET,
-        description="Whether to use labeled runners or standard GitHub runners.",
-    )
-    runner_label: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The label of the runner to use for code scanning default setup when runner_type is 'labeled'.",
+    include_claim_keys: list[str] = Field(
+        description="Array of unique strings. Each claim key can only contain alphanumeric characters and underscores."
     )
 
 
-model_rebuild(CodeScanningDefaultSetupOptions)
+model_rebuild(OidcCustomSub)
 
-__all__ = ("CodeScanningDefaultSetupOptions",)
+__all__ = ("OidcCustomSub",)

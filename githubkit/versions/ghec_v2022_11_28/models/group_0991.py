@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,26 +18,15 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ProjectsProjectIdPatchBody(GitHubModel):
-    """ProjectsProjectIdPatchBody"""
+class OrgsOrgSecurityProductEnablementPostBody(GitHubModel):
+    """OrgsOrgSecurityProductEnablementPostBody"""
 
-    name: Missing[str] = Field(default=UNSET, description="Name of the project")
-    body: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Body of the project"
-    )
-    state: Missing[str] = Field(
-        default=UNSET, description="State of the project; either 'open' or 'closed'"
-    )
-    organization_permission: Missing[Literal["read", "write", "admin", "none"]] = Field(
+    query_suite: Missing[Literal["default", "extended"]] = Field(
         default=UNSET,
-        description="The baseline permission that all organization members have on this project",
-    )
-    private: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether or not this project can be seen by everyone.",
+        description="CodeQL query suite to be used. If you specify the `query_suite` parameter, the default setup will be configured with this query suite only on all repositories that didn't have default setup already configured. It will not change the query suite on repositories that already have default setup configured.\nIf you don't specify any `query_suite` in your request, the preferred query suite of the organization will be applied.",
     )
 
 
-model_rebuild(ProjectsProjectIdPatchBody)
+model_rebuild(OrgsOrgSecurityProductEnablementPostBody)
 
-__all__ = ("ProjectsProjectIdPatchBody",)
+__all__ = ("OrgsOrgSecurityProductEnablementPostBody",)

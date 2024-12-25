@@ -9,38 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0002 import SimpleUser
-from .group_0008 import Integration
 
+class PorterAuthor(GitHubModel):
+    """Porter Author
 
-class AssignedIssueEvent(GitHubModel):
-    """Assigned Issue Event
-
-    Assigned Issue Event
+    Porter Author
     """
 
     id: int = Field()
-    node_id: str = Field()
+    remote_id: str = Field()
+    remote_name: str = Field()
+    email: str = Field()
+    name: str = Field()
     url: str = Field()
-    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: str = Field()
-    commit_id: Union[str, None] = Field()
-    commit_url: Union[str, None] = Field()
-    created_at: str = Field()
-    performed_via_github_app: Union[Integration, None] = Field(
-        title="GitHub app",
-        description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
-    )
-    assignee: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    assigner: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    import_url: str = Field()
 
 
-model_rebuild(AssignedIssueEvent)
+model_rebuild(PorterAuthor)
 
-__all__ = ("AssignedIssueEvent",)
+__all__ = ("PorterAuthor",)

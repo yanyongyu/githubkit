@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -19,17 +18,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0002 import SimpleUser
-from .group_0389 import EnterpriseWebhooks
-from .group_0390 import SimpleInstallation
-from .group_0391 import OrganizationSimpleWebhooks
-from .group_0392 import RepositoryWebhooks
+from .group_0393 import EnterpriseWebhooks
+from .group_0394 import SimpleInstallation
+from .group_0395 import OrganizationSimpleWebhooks
+from .group_0396 import RepositoryWebhooks
+from .group_0424 import WebhooksProjectCard
 
 
-class WebhookProjectCardMoved(GitHubModel):
-    """project_card moved event"""
+class WebhookProjectCardConverted(GitHubModel):
+    """project_card converted event"""
 
-    action: Literal["moved"] = Field()
-    changes: Missing[WebhookProjectCardMovedPropChanges] = Field(default=UNSET)
+    action: Literal["converted"] = Field()
+    changes: WebhookProjectCardConvertedPropChanges = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -45,7 +45,7 @@ class WebhookProjectCardMoved(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    project_card: WebhookProjectCardMovedPropProjectCard = Field()
+    project_card: WebhooksProjectCard = Field(title="Project Card")
     repository: Missing[RepositoryWebhooks] = Field(
         default=UNSET,
         title="Repository",
@@ -54,75 +54,24 @@ class WebhookProjectCardMoved(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-class WebhookProjectCardMovedPropChanges(GitHubModel):
-    """WebhookProjectCardMovedPropChanges"""
+class WebhookProjectCardConvertedPropChanges(GitHubModel):
+    """WebhookProjectCardConvertedPropChanges"""
 
-    column_id: WebhookProjectCardMovedPropChangesPropColumnId = Field()
-
-
-class WebhookProjectCardMovedPropChangesPropColumnId(GitHubModel):
-    """WebhookProjectCardMovedPropChangesPropColumnId"""
-
-    from_: int = Field(alias="from")
+    note: WebhookProjectCardConvertedPropChangesPropNote = Field()
 
 
-class WebhookProjectCardMovedPropProjectCard(GitHubModel):
-    """WebhookProjectCardMovedPropProjectCard"""
+class WebhookProjectCardConvertedPropChangesPropNote(GitHubModel):
+    """WebhookProjectCardConvertedPropChangesPropNote"""
 
-    after_id: Union[Union[int, None], None] = Field()
-    archived: bool = Field(description="Whether or not the card is archived")
-    column_id: int = Field()
-    column_url: str = Field()
-    content_url: Missing[str] = Field(default=UNSET)
-    created_at: datetime = Field()
-    creator: Union[WebhookProjectCardMovedPropProjectCardMergedCreator, None] = Field()
-    id: int = Field(description="The project card's ID")
-    node_id: str = Field()
-    note: Union[Union[str, None], None] = Field()
-    project_url: str = Field()
-    updated_at: datetime = Field()
-    url: str = Field()
+    from_: str = Field(alias="from")
 
 
-class WebhookProjectCardMovedPropProjectCardMergedCreator(GitHubModel):
-    """WebhookProjectCardMovedPropProjectCardMergedCreator"""
-
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field()
-    login: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization", "Mannequin"]] = Field(
-        default=UNSET
-    )
-    url: Missing[str] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(WebhookProjectCardMoved)
-model_rebuild(WebhookProjectCardMovedPropChanges)
-model_rebuild(WebhookProjectCardMovedPropChangesPropColumnId)
-model_rebuild(WebhookProjectCardMovedPropProjectCard)
-model_rebuild(WebhookProjectCardMovedPropProjectCardMergedCreator)
+model_rebuild(WebhookProjectCardConverted)
+model_rebuild(WebhookProjectCardConvertedPropChanges)
+model_rebuild(WebhookProjectCardConvertedPropChangesPropNote)
 
 __all__ = (
-    "WebhookProjectCardMoved",
-    "WebhookProjectCardMovedPropChanges",
-    "WebhookProjectCardMovedPropChangesPropColumnId",
-    "WebhookProjectCardMovedPropProjectCard",
-    "WebhookProjectCardMovedPropProjectCardMergedCreator",
+    "WebhookProjectCardConverted",
+    "WebhookProjectCardConvertedPropChanges",
+    "WebhookProjectCardConvertedPropChangesPropNote",
 )

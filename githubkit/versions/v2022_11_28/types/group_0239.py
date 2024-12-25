@@ -14,52 +14,27 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0002 import SimpleUserType
-from .group_0034 import MilestoneType
-from .group_0082 import TeamType
-from .group_0238 import AutoMergeType
-from .group_0240 import PullRequestSimplePropBaseType, PullRequestSimplePropHeadType
-from .group_0241 import PullRequestSimplePropLinksType
+from .group_0039 import ReactionRollupType
 
 
-class PullRequestSimpleType(TypedDict):
-    """Pull Request Simple
+class CommitCommentType(TypedDict):
+    """Commit Comment
 
-    Pull Request Simple
+    Commit Comment
     """
 
+    html_url: str
     url: str
     id: int
     node_id: str
-    html_url: str
-    diff_url: str
-    patch_url: str
-    issue_url: str
-    commits_url: str
-    review_comments_url: str
-    review_comment_url: str
-    comments_url: str
-    statuses_url: str
-    number: int
-    state: str
-    locked: bool
-    title: str
+    body: str
+    path: Union[str, None]
+    position: Union[int, None]
+    line: Union[int, None]
+    commit_id: str
     user: Union[None, SimpleUserType]
-    body: Union[str, None]
-    labels: list[PullRequestSimplePropLabelsItemsType]
-    milestone: Union[None, MilestoneType]
-    active_lock_reason: NotRequired[Union[str, None]]
     created_at: datetime
     updated_at: datetime
-    closed_at: Union[datetime, None]
-    merged_at: Union[datetime, None]
-    merge_commit_sha: Union[str, None]
-    assignee: Union[None, SimpleUserType]
-    assignees: NotRequired[Union[list[SimpleUserType], None]]
-    requested_reviewers: NotRequired[Union[list[SimpleUserType], None]]
-    requested_teams: NotRequired[Union[list[TeamType], None]]
-    head: PullRequestSimplePropHeadType
-    base: PullRequestSimplePropBaseType
-    links: PullRequestSimplePropLinksType
     author_association: Literal[
         "COLLABORATOR",
         "CONTRIBUTOR",
@@ -70,23 +45,22 @@ class PullRequestSimpleType(TypedDict):
         "NONE",
         "OWNER",
     ]
-    auto_merge: Union[AutoMergeType, None]
-    draft: NotRequired[bool]
+    reactions: NotRequired[ReactionRollupType]
 
 
-class PullRequestSimplePropLabelsItemsType(TypedDict):
-    """PullRequestSimplePropLabelsItems"""
+class TimelineCommitCommentedEventType(TypedDict):
+    """Timeline Commit Commented Event
 
-    id: int
-    node_id: str
-    url: str
-    name: str
-    description: Union[str, None]
-    color: str
-    default: bool
+    Timeline Commit Commented Event
+    """
+
+    event: NotRequired[Literal["commit_commented"]]
+    node_id: NotRequired[str]
+    commit_id: NotRequired[str]
+    comments: NotRequired[list[CommitCommentType]]
 
 
 __all__ = (
-    "PullRequestSimplePropLabelsItemsType",
-    "PullRequestSimpleType",
+    "CommitCommentType",
+    "TimelineCommitCommentedEventType",
 )

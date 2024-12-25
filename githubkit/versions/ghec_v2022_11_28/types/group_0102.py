@@ -12,17 +12,17 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0103 import RepositoryRuleBranchNamePatternPropParametersType
+from .group_0103 import RepositoryRuleCommitAuthorEmailPatternPropParametersType
 
 
-class RepositoryRuleBranchNamePatternType(TypedDict):
-    """branch_name_pattern
+class RepositoryRuleCommitAuthorEmailPatternType(TypedDict):
+    """commit_author_email_pattern
 
-    Parameters to be used for the branch_name_pattern rule
+    Parameters to be used for the commit_author_email_pattern rule
     """
 
-    type: Literal["branch_name_pattern"]
-    parameters: NotRequired[RepositoryRuleBranchNamePatternPropParametersType]
+    type: Literal["commit_author_email_pattern"]
+    parameters: NotRequired[RepositoryRuleCommitAuthorEmailPatternPropParametersType]
 
 
-__all__ = ("RepositoryRuleBranchNamePatternType",)
+__all__ = ("RepositoryRuleCommitAuthorEmailPatternType",)

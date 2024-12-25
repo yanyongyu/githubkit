@@ -9,42 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0002 import SimpleUser
 
+class GetAllCostCenters(GitHubModel):
+    """GetAllCostCenters"""
 
-class Milestone(GitHubModel):
-    """Milestone
-
-    A collection of related issues and pull requests.
-    """
-
-    url: str = Field()
-    html_url: str = Field()
-    labels_url: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    number: int = Field(description="The number of the milestone.")
-    state: Literal["open", "closed"] = Field(
-        default="open", description="The state of the milestone."
+    cost_centers: Missing[list[GetAllCostCentersPropCostCentersItems]] = Field(
+        default=UNSET, alias="costCenters"
     )
-    title: str = Field(description="The title of the milestone.")
-    description: Union[str, None] = Field()
-    creator: Union[None, SimpleUser] = Field()
-    open_issues: int = Field()
-    closed_issues: int = Field()
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    closed_at: Union[datetime, None] = Field()
-    due_on: Union[datetime, None] = Field()
 
 
-model_rebuild(Milestone)
+class GetAllCostCentersPropCostCentersItems(GitHubModel):
+    """GetAllCostCentersPropCostCentersItems"""
 
-__all__ = ("Milestone",)
+    id: str = Field(description="ID of the cost center.")
+    name: str = Field(description="Name of the cost center.")
+    resources: list[GetAllCostCentersPropCostCentersItemsPropResourcesItems] = Field()
+
+
+class GetAllCostCentersPropCostCentersItemsPropResourcesItems(GitHubModel):
+    """GetAllCostCentersPropCostCentersItemsPropResourcesItems"""
+
+    type: str = Field(description="Type of the resource.")
+    name: str = Field(description="Name of the resource.")
+
+
+model_rebuild(GetAllCostCenters)
+model_rebuild(GetAllCostCentersPropCostCentersItems)
+model_rebuild(GetAllCostCentersPropCostCentersItemsPropResourcesItems)
+
+__all__ = (
+    "GetAllCostCenters",
+    "GetAllCostCentersPropCostCentersItems",
+    "GetAllCostCentersPropCostCentersItemsPropResourcesItems",
+)

@@ -9,34 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import TypedDict
 
-from .group_0002 import SimpleUserType
-from .group_0019 import RepositoryType
+
+class BranchShortType(TypedDict):
+    """Branch Short
+
+    Branch Short
+    """
+
+    name: str
+    commit: BranchShortPropCommitType
+    protected: bool
 
 
-class PullRequestSimplePropHeadType(TypedDict):
-    """PullRequestSimplePropHead"""
+class BranchShortPropCommitType(TypedDict):
+    """BranchShortPropCommit"""
 
-    label: Union[str, None]
-    ref: str
-    repo: Union[None, RepositoryType]
     sha: str
-    user: Union[None, SimpleUserType]
-
-
-class PullRequestSimplePropBaseType(TypedDict):
-    """PullRequestSimplePropBase"""
-
-    label: str
-    ref: str
-    repo: RepositoryType
-    sha: str
-    user: Union[None, SimpleUserType]
+    url: str
 
 
 __all__ = (
-    "PullRequestSimplePropBaseType",
-    "PullRequestSimplePropHeadType",
+    "BranchShortPropCommitType",
+    "BranchShortType",
 )

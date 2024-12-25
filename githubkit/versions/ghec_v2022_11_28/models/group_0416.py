@@ -9,149 +9,47 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Any, Literal, Union
+from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0414 import UserEmailsResponseItems, UserNameResponse
+from .group_0415 import UserRoleItems
 
-class ScimUserList(GitHubModel):
-    """SCIM User List
 
-    SCIM User List
-    """
+class UserResponse(GitHubModel):
+    """UserResponse"""
 
-    schemas: list[str] = Field(
-        min_length=1 if PYDANTIC_V2 else None, description="SCIM schema used."
+    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:User"]] = Field(
+        description="The URIs that are used to indicate the namespaces of the SCIM schemas."
     )
-    total_results: int = Field(alias="totalResults")
-    items_per_page: int = Field(alias="itemsPerPage")
-    start_index: int = Field(alias="startIndex")
-    resources: list[ScimUser] = Field(alias="Resources")
-
-
-class ScimUser(GitHubModel):
-    """SCIM /Users
-
-    SCIM /Users provisioning endpoints
-    """
-
-    schemas: list[str] = Field(
-        min_length=1 if PYDANTIC_V2 else None, description="SCIM schema used."
-    )
-    id: str = Field(description="Unique identifier of an external identity")
     external_id: Missing[Union[str, None]] = Field(
-        default=UNSET, alias="externalId", description="The ID of the User."
-    )
-    user_name: Missing[Union[str, None]] = Field(
         default=UNSET,
-        alias="userName",
-        description="Configured by the admin. Could be an email, login, or username",
+        alias="externalId",
+        description="A unique identifier for the resource as defined by the provisioning client.",
     )
+    active: bool = Field(description="Whether the user active in the IdP.")
+    user_name: Missing[str] = Field(
+        default=UNSET, alias="userName", description="The username for the user."
+    )
+    name: Missing[UserNameResponse] = Field(default=UNSET)
     display_name: Missing[Union[str, None]] = Field(
         default=UNSET,
         alias="displayName",
-        description="The name of the user, suitable for display to end-users",
+        description="A human-readable name for the user.",
     )
-    name: Missing[ScimUserPropName] = Field(default=UNSET)
-    emails: list[ScimUserPropEmailsItems] = Field(description="user emails")
-    active: bool = Field(description="The active status of the User.")
-    meta: ScimUserPropMeta = Field()
-    organization_id: Missing[int] = Field(
-        default=UNSET, description="The ID of the organization."
+    emails: list[UserEmailsResponseItems] = Field(
+        description="The emails for the user."
     )
-    operations: Missing[list[ScimUserPropOperationsItems]] = Field(
-        min_length=1 if PYDANTIC_V2 else None,
-        default=UNSET,
-        description="Set of operations to be performed",
+    roles: Missing[list[UserRoleItems]] = Field(
+        default=UNSET, description="The roles assigned to the user."
     )
-    groups: Missing[list[ScimUserPropGroupsItems]] = Field(
-        default=UNSET, description="associated groups"
-    )
-    roles: Missing[list[ScimUserPropRolesItems]] = Field(default=UNSET)
 
 
-class ScimUserPropName(GitHubModel):
-    """ScimUserPropName
+model_rebuild(UserResponse)
 
-    Examples:
-        {'givenName': 'Jane', 'familyName': 'User'}
-    """
-
-    given_name: Missing[Union[str, None]] = Field(default=UNSET, alias="givenName")
-    family_name: Missing[Union[str, None]] = Field(default=UNSET, alias="familyName")
-    formatted: Missing[Union[str, None]] = Field(default=UNSET)
-
-
-class ScimUserPropEmailsItems(GitHubModel):
-    """ScimUserPropEmailsItems"""
-
-    value: str = Field()
-    primary: Missing[bool] = Field(default=UNSET)
-    type: Missing[str] = Field(default=UNSET)
-
-
-class ScimUserPropMeta(GitHubModel):
-    """ScimUserPropMeta"""
-
-    resource_type: Missing[str] = Field(default=UNSET, alias="resourceType")
-    created: Missing[datetime] = Field(default=UNSET)
-    last_modified: Missing[datetime] = Field(default=UNSET, alias="lastModified")
-    location: Missing[str] = Field(default=UNSET)
-
-
-class ScimUserPropGroupsItems(GitHubModel):
-    """ScimUserPropGroupsItems"""
-
-    value: Missing[str] = Field(default=UNSET)
-    display: Missing[str] = Field(default=UNSET)
-
-
-class ScimUserPropRolesItems(GitHubModel):
-    """ScimUserPropRolesItems"""
-
-    value: Missing[str] = Field(default=UNSET)
-    primary: Missing[bool] = Field(default=UNSET)
-    type: Missing[str] = Field(default=UNSET)
-    display: Missing[str] = Field(default=UNSET)
-
-
-class ScimUserPropOperationsItems(GitHubModel):
-    """ScimUserPropOperationsItems"""
-
-    op: Literal["add", "remove", "replace"] = Field()
-    path: Missing[str] = Field(default=UNSET)
-    value: Missing[
-        Union[str, ScimUserPropOperationsItemsPropValueOneof1, list[Any]]
-    ] = Field(default=UNSET)
-
-
-class ScimUserPropOperationsItemsPropValueOneof1(GitHubModel):
-    """ScimUserPropOperationsItemsPropValueOneof1"""
-
-
-model_rebuild(ScimUserList)
-model_rebuild(ScimUser)
-model_rebuild(ScimUserPropName)
-model_rebuild(ScimUserPropEmailsItems)
-model_rebuild(ScimUserPropMeta)
-model_rebuild(ScimUserPropGroupsItems)
-model_rebuild(ScimUserPropRolesItems)
-model_rebuild(ScimUserPropOperationsItems)
-model_rebuild(ScimUserPropOperationsItemsPropValueOneof1)
-
-__all__ = (
-    "ScimUser",
-    "ScimUserList",
-    "ScimUserPropEmailsItems",
-    "ScimUserPropGroupsItems",
-    "ScimUserPropMeta",
-    "ScimUserPropName",
-    "ScimUserPropOperationsItems",
-    "ScimUserPropOperationsItemsPropValueOneof1",
-    "ScimUserPropRolesItems",
-)
+__all__ = ("UserResponse",)

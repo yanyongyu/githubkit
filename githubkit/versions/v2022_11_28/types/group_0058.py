@@ -9,14 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from datetime import datetime
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class ActionsCacheUsageOrgEnterpriseType(TypedDict):
-    """ActionsCacheUsageOrgEnterprise"""
+class ThreadSubscriptionType(TypedDict):
+    """Thread Subscription
 
-    total_active_caches_count: int
-    total_active_caches_size_in_bytes: int
+    Thread Subscription
+    """
+
+    subscribed: bool
+    ignored: bool
+    reason: Union[str, None]
+    created_at: Union[datetime, None]
+    url: str
+    thread_url: NotRequired[str]
+    repository_url: NotRequired[str]
 
 
-__all__ = ("ActionsCacheUsageOrgEnterpriseType",)
+__all__ = ("ThreadSubscriptionType",)

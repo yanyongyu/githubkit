@@ -9,49 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0018 import LicenseSimpleType
-from .group_0110 import CodeOfConductSimpleType
-
-
-class CommunityProfilePropFilesType(TypedDict):
-    """CommunityProfilePropFiles"""
-
-    code_of_conduct: Union[None, CodeOfConductSimpleType]
-    code_of_conduct_file: Union[None, CommunityHealthFileType]
-    license_: Union[None, LicenseSimpleType]
-    contributing: Union[None, CommunityHealthFileType]
-    readme: Union[None, CommunityHealthFileType]
-    issue_template: Union[None, CommunityHealthFileType]
-    pull_request_template: Union[None, CommunityHealthFileType]
+from .group_0002 import SimpleUserType
+from .group_0019 import RepositoryType
 
 
-class CommunityHealthFileType(TypedDict):
-    """Community Health File"""
+class PullRequestSimplePropHeadType(TypedDict):
+    """PullRequestSimplePropHead"""
 
-    url: str
-    html_url: str
+    label: Union[str, None]
+    ref: str
+    repo: Union[None, RepositoryType]
+    sha: str
+    user: Union[None, SimpleUserType]
 
 
-class CommunityProfileType(TypedDict):
-    """Community Profile
+class PullRequestSimplePropBaseType(TypedDict):
+    """PullRequestSimplePropBase"""
 
-    Community Profile
-    """
-
-    health_percentage: int
-    description: Union[str, None]
-    documentation: Union[str, None]
-    files: CommunityProfilePropFilesType
-    updated_at: Union[datetime, None]
-    content_reports_enabled: NotRequired[bool]
+    label: str
+    ref: str
+    repo: RepositoryType
+    sha: str
+    user: Union[None, SimpleUserType]
 
 
 __all__ = (
-    "CommunityHealthFileType",
-    "CommunityProfilePropFilesType",
-    "CommunityProfileType",
+    "PullRequestSimplePropBaseType",
+    "PullRequestSimplePropHeadType",
 )

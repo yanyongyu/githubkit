@@ -14,28 +14,43 @@ from typing import Union
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0018 import LicenseSimple
 
 
-class PageDeployment(GitHubModel):
-    """GitHub Pages
+class LicenseContent(GitHubModel):
+    """License Content
 
-    The GitHub Pages deployment status.
+    License Content
     """
 
-    id: Union[int, str] = Field(
-        description="The ID of the GitHub Pages deployment. This is the Git SHA of the deployed commit."
-    )
-    status_url: str = Field(
-        description="The URI to monitor GitHub Pages deployment status."
-    )
-    page_url: str = Field(description="The URI to the deployed GitHub Pages.")
-    preview_url: Missing[str] = Field(
-        default=UNSET, description="The URI to the deployed GitHub Pages preview."
-    )
+    name: str = Field()
+    path: str = Field()
+    sha: str = Field()
+    size: int = Field()
+    url: str = Field()
+    html_url: Union[str, None] = Field()
+    git_url: Union[str, None] = Field()
+    download_url: Union[str, None] = Field()
+    type: str = Field()
+    content: str = Field()
+    encoding: str = Field()
+    links: LicenseContentPropLinks = Field(alias="_links")
+    license_: Union[None, LicenseSimple] = Field(alias="license")
 
 
-model_rebuild(PageDeployment)
+class LicenseContentPropLinks(GitHubModel):
+    """LicenseContentPropLinks"""
 
-__all__ = ("PageDeployment",)
+    git: Union[str, None] = Field()
+    html: Union[str, None] = Field()
+    self_: str = Field(alias="self")
+
+
+model_rebuild(LicenseContent)
+model_rebuild(LicenseContentPropLinks)
+
+__all__ = (
+    "LicenseContent",
+    "LicenseContentPropLinks",
+)

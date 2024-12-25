@@ -9,28 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from datetime import datetime
+from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0002 import SimpleUser
 
-class TeamMembership(GitHubModel):
-    """Team Membership
 
-    Team Membership
+class Reaction(GitHubModel):
+    """Reaction
+
+    Reactions to conversations provide a way to help people express their feelings
+    more simply and effectively.
     """
 
-    url: str = Field()
-    role: Literal["member", "maintainer"] = Field(
-        default="member", description="The role of the user in the team."
-    )
-    state: Literal["active", "pending"] = Field(
-        description="The state of the user's membership in the team."
-    )
+    id: int = Field()
+    node_id: str = Field()
+    user: Union[None, SimpleUser] = Field()
+    content: Literal[
+        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
+    ] = Field(description="The reaction to use")
+    created_at: datetime = Field()
 
 
-model_rebuild(TeamMembership)
+model_rebuild(Reaction)
 
-__all__ = ("TeamMembership",)
+__all__ = ("Reaction",)

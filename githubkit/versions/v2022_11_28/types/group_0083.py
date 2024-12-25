@@ -14,7 +14,7 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0002 import SimpleUserType
-from .group_0055 import OrganizationSimpleType
+from .group_0059 import OrganizationSimpleType
 from .group_0082 import TeamType
 
 

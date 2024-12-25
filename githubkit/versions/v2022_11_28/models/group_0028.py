@@ -14,47 +14,26 @@ from typing import Literal, Union
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0027 import DependabotAlertPackage
 
+class CodeScanningDefaultSetupOptions(GitHubModel):
+    """CodeScanningDefaultSetupOptions
 
-class DependabotAlertSecurityVulnerability(GitHubModel):
-    """DependabotAlertSecurityVulnerability
-
-    Details pertaining to one vulnerable version range for the advisory.
+    Feature options for code scanning default setup
     """
 
-    package: DependabotAlertPackage = Field(
-        description="Details for the vulnerable package."
+    runner_type: Missing[Literal["standard", "labeled", "not_set"]] = Field(
+        default=UNSET,
+        description="Whether to use labeled runners or standard GitHub runners.",
     )
-    severity: Literal["low", "medium", "high", "critical"] = Field(
-        description="The severity of the vulnerability."
-    )
-    vulnerable_version_range: str = Field(
-        description="Conditions that identify vulnerable versions of this vulnerability's package."
-    )
-    first_patched_version: Union[
-        DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion, None
-    ] = Field(
-        description="Details pertaining to the package version that patches this vulnerability."
+    runner_label: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The label of the runner to use for code scanning default setup when runner_type is 'labeled'.",
     )
 
 
-class DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion(GitHubModel):
-    """DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion
+model_rebuild(CodeScanningDefaultSetupOptions)
 
-    Details pertaining to the package version that patches this vulnerability.
-    """
-
-    identifier: str = Field(
-        description="The package version that patches this vulnerability."
-    )
-
-
-model_rebuild(DependabotAlertSecurityVulnerability)
-model_rebuild(DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion)
-
-__all__ = (
-    "DependabotAlertSecurityVulnerability",
-    "DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion",
-)
+__all__ = ("CodeScanningDefaultSetupOptions",)

@@ -14,45 +14,17 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 from .group_0002 import SimpleUser
-from .group_0017 import Installation
-from .group_0389 import EnterpriseWebhooks
-from .group_0391 import OrganizationSimpleWebhooks
-from .group_0392 import RepositoryWebhooks
-from .group_0405 import WebhooksRepositoriesItems
 
 
-class WebhookInstallationNewPermissionsAccepted(GitHubModel):
-    """installation new_permissions_accepted event"""
+class WebhookGithubAppAuthorizationRevoked(GitHubModel):
+    """github_app_authorization revoked event"""
 
-    action: Literal["new_permissions_accepted"] = Field()
-    enterprise: Missing[EnterpriseWebhooks] = Field(
-        default=UNSET,
-        title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."',
-    )
-    installation: Installation = Field(title="Installation", description="Installation")
-    organization: Missing[OrganizationSimpleWebhooks] = Field(
-        default=UNSET,
-        title="Organization Simple",
-        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
-    )
-    repositories: Missing[list[WebhooksRepositoriesItems]] = Field(
-        default=UNSET,
-        description="An array of repository objects that the installation can access.",
-    )
-    repository: Missing[RepositoryWebhooks] = Field(
-        default=UNSET,
-        title="Repository",
-        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
-    )
-    requester: Missing[None] = Field(default=UNSET)
+    action: Literal["revoked"] = Field()
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookInstallationNewPermissionsAccepted)
+model_rebuild(WebhookGithubAppAuthorizationRevoked)
 
-__all__ = ("WebhookInstallationNewPermissionsAccepted",)
+__all__ = ("WebhookGithubAppAuthorizationRevoked",)

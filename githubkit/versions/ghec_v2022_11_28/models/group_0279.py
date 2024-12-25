@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,25 +18,24 @@ from githubkit.compat import GitHubModel, model_rebuild
 from .group_0002 import SimpleUser
 
 
-class Status(GitHubModel):
-    """Status
+class AutoMerge(GitHubModel):
+    """Auto merge
 
-    The status of a commit.
+    The status of auto merging a pull request.
     """
 
-    url: str = Field()
-    avatar_url: Union[str, None] = Field()
-    id: int = Field()
-    node_id: str = Field()
-    state: str = Field()
-    description: Union[str, None] = Field()
-    target_url: Union[str, None] = Field()
-    context: str = Field()
-    created_at: str = Field()
-    updated_at: str = Field()
-    creator: Union[None, SimpleUser] = Field()
+    enabled_by: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    merge_method: Literal["merge", "squash", "rebase"] = Field(
+        description="The merge method to use."
+    )
+    commit_title: Union[str, None] = Field(
+        description="Title for the merge commit message."
+    )
+    commit_message: Union[str, None] = Field(
+        description="Commit message for the merge commit."
+    )
 
 
-model_rebuild(Status)
+model_rebuild(AutoMerge)
 
-__all__ = ("Status",)
+__all__ = ("AutoMerge",)

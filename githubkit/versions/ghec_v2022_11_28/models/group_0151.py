@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -19,185 +19,130 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class CodeSecurityConfiguration(GitHubModel):
-    """CodeSecurityConfiguration
+class OrganizationFull(GitHubModel):
+    """Organization Full
 
-    A code security configuration
+    Prevents users in the organization from using insecure methods of two-factor
+    authentication to fulfill a two-factor requirement.
+    Removes non-compliant outside collaborators from the organization and its
+    repositories.
+
+    GitHub currently defines SMS as an insecure method of two-factor authentication.
+
+    If your users are managed by the enterprise this policy will not affect them.
+    The first admin account of the enterprise will still be affected.
     """
 
-    id: Missing[int] = Field(
-        default=UNSET, description="The ID of the code security configuration"
-    )
-    name: Missing[str] = Field(
+    login: str = Field()
+    id: int = Field()
+    node_id: str = Field()
+    url: str = Field()
+    repos_url: str = Field()
+    events_url: str = Field()
+    hooks_url: str = Field()
+    issues_url: str = Field()
+    members_url: str = Field()
+    public_members_url: str = Field()
+    avatar_url: str = Field()
+    description: Union[str, None] = Field()
+    name: Missing[Union[str, None]] = Field(default=UNSET)
+    company: Missing[Union[str, None]] = Field(default=UNSET)
+    blog: Missing[Union[str, None]] = Field(default=UNSET)
+    location: Missing[Union[str, None]] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    twitter_username: Missing[Union[str, None]] = Field(default=UNSET)
+    is_verified: Missing[bool] = Field(default=UNSET)
+    has_organization_projects: bool = Field()
+    has_repository_projects: bool = Field()
+    public_repos: int = Field()
+    public_gists: int = Field()
+    followers: int = Field()
+    following: int = Field()
+    html_url: str = Field()
+    type: str = Field()
+    total_private_repos: Missing[int] = Field(default=UNSET)
+    owned_private_repos: Missing[int] = Field(default=UNSET)
+    private_gists: Missing[Union[int, None]] = Field(default=UNSET)
+    disk_usage: Missing[Union[int, None]] = Field(default=UNSET)
+    collaborators: Missing[Union[int, None]] = Field(
         default=UNSET,
-        description="The name of the code security configuration. Must be unique within the organization.",
+        description="The number of collaborators on private repositories.\n\nThis field may be null if the number of private repositories is over 50,000.",
     )
-    target_type: Missing[Literal["global", "organization", "enterprise"]] = Field(
-        default=UNSET, description="The type of the code security configuration."
+    billing_email: Missing[Union[str, None]] = Field(default=UNSET)
+    plan: Missing[OrganizationFullPropPlan] = Field(default=UNSET)
+    default_repository_permission: Missing[Union[str, None]] = Field(default=UNSET)
+    members_can_create_repositories: Missing[Union[bool, None]] = Field(default=UNSET)
+    two_factor_requirement_enabled: Missing[Union[bool, None]] = Field(default=UNSET)
+    members_allowed_repository_creation_type: Missing[str] = Field(default=UNSET)
+    members_can_create_public_repositories: Missing[bool] = Field(default=UNSET)
+    members_can_create_private_repositories: Missing[bool] = Field(default=UNSET)
+    members_can_create_internal_repositories: Missing[bool] = Field(default=UNSET)
+    members_can_create_pages: Missing[bool] = Field(default=UNSET)
+    members_can_create_public_pages: Missing[bool] = Field(default=UNSET)
+    members_can_create_private_pages: Missing[bool] = Field(default=UNSET)
+    members_can_fork_private_repositories: Missing[Union[bool, None]] = Field(
+        default=UNSET
     )
-    description: Missing[str] = Field(
-        default=UNSET, description="A description of the code security configuration"
-    )
-    advanced_security: Missing[Literal["enabled", "disabled"]] = Field(
-        default=UNSET, description="The enablement status of GitHub Advanced Security"
-    )
-    dependency_graph: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
-        default=UNSET, description="The enablement status of Dependency Graph"
-    )
-    dependency_graph_autosubmit_action: Missing[
-        Literal["enabled", "disabled", "not_set"]
-    ] = Field(
+    web_commit_signoff_required: Missing[bool] = Field(default=UNSET)
+    advanced_security_enabled_for_new_repositories: Missing[bool] = Field(
         default=UNSET,
-        description="The enablement status of Automatic dependency submission",
+        description="**Endpoint closing down notice.** Please use [code security configurations](https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations) instead.\n\nWhether GitHub Advanced Security is enabled for new repositories and repositories transferred to this organization.\n\nThis field is only visible to organization owners or members of a team with the security manager role.",
     )
-    dependency_graph_autosubmit_action_options: Missing[
-        CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptions
-    ] = Field(
-        default=UNSET, description="Feature options for Automatic dependency submission"
-    )
-    dependabot_alerts: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
-        default=UNSET, description="The enablement status of Dependabot alerts"
-    )
-    dependabot_security_updates: Missing[Literal["enabled", "disabled", "not_set"]] = (
-        Field(
-            default=UNSET,
-            description="The enablement status of Dependabot security updates",
-        )
-    )
-    code_scanning_default_setup: Missing[Literal["enabled", "disabled", "not_set"]] = (
-        Field(
-            default=UNSET,
-            description="The enablement status of code scanning default setup",
-        )
-    )
-    code_scanning_default_setup_options: Missing[
-        Union[CodeSecurityConfigurationPropCodeScanningDefaultSetupOptions, None]
-    ] = Field(
-        default=UNSET, description="Feature options for code scanning default setup"
-    )
-    secret_scanning: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
-        default=UNSET, description="The enablement status of secret scanning"
-    )
-    secret_scanning_push_protection: Missing[
-        Literal["enabled", "disabled", "not_set"]
-    ] = Field(
+    dependabot_alerts_enabled_for_new_repositories: Missing[bool] = Field(
         default=UNSET,
-        description="The enablement status of secret scanning push protection",
+        description="**Endpoint closing down notice.** Please use [code security configurations](https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations) instead.\n\nWhether Dependabot alerts are automatically enabled for new repositories and repositories transferred to this organization.\n\nThis field is only visible to organization owners or members of a team with the security manager role.",
     )
-    secret_scanning_delegated_bypass: Missing[
-        Literal["enabled", "disabled", "not_set"]
-    ] = Field(
+    dependabot_security_updates_enabled_for_new_repositories: Missing[bool] = Field(
         default=UNSET,
-        description="The enablement status of secret scanning delegated bypass",
+        description="**Endpoint closing down notice.** Please use [code security configurations](https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations) instead.\n\nWhether Dependabot security updates are automatically enabled for new repositories and repositories transferred to this organization.\n\nThis field is only visible to organization owners or members of a team with the security manager role.",
     )
-    secret_scanning_delegated_bypass_options: Missing[
-        CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptions
-    ] = Field(
+    dependency_graph_enabled_for_new_repositories: Missing[bool] = Field(
         default=UNSET,
-        description="Feature options for secret scanning delegated bypass",
+        description="**Endpoint closing down notice.** Please use [code security configurations](https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations) instead.\n\nWhether dependency graph is automatically enabled for new repositories and repositories transferred to this organization.\n\nThis field is only visible to organization owners or members of a team with the security manager role.",
     )
-    secret_scanning_validity_checks: Missing[
-        Literal["enabled", "disabled", "not_set"]
-    ] = Field(
+    secret_scanning_enabled_for_new_repositories: Missing[bool] = Field(
         default=UNSET,
-        description="The enablement status of secret scanning validity checks",
+        description="**Endpoint closing down notice.** Please use [code security configurations](https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations) instead.\n\nWhether secret scanning is automatically enabled for new repositories and repositories transferred to this organization.\n\nThis field is only visible to organization owners or members of a team with the security manager role.",
     )
-    secret_scanning_non_provider_patterns: Missing[
-        Literal["enabled", "disabled", "not_set"]
-    ] = Field(
+    secret_scanning_push_protection_enabled_for_new_repositories: Missing[bool] = Field(
         default=UNSET,
-        description="The enablement status of secret scanning non-provider patterns",
+        description="**Endpoint closing down notice.** Please use [code security configurations](https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations) instead.\n\nWhether secret scanning push protection is automatically enabled for new repositories and repositories transferred to this organization.\n\nThis field is only visible to organization owners or members of a team with the security manager role.",
     )
-    private_vulnerability_reporting: Missing[
-        Literal["enabled", "disabled", "not_set"]
-    ] = Field(
+    secret_scanning_push_protection_custom_link_enabled: Missing[bool] = Field(
         default=UNSET,
-        description="The enablement status of private vulnerability reporting",
+        description="Whether a custom link is shown to contributors who are blocked from pushing a secret by push protection.",
     )
-    enforcement: Missing[Literal["enforced", "unenforced"]] = Field(
-        default=UNSET, description="The enforcement status for a security configuration"
-    )
-    url: Missing[str] = Field(default=UNSET, description="The URL of the configuration")
-    html_url: Missing[str] = Field(
-        default=UNSET, description="The URL of the configuration"
-    )
-    created_at: Missing[datetime] = Field(default=UNSET)
-    updated_at: Missing[datetime] = Field(default=UNSET)
-
-
-class CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptions(GitHubModel):
-    """CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptions
-
-    Feature options for Automatic dependency submission
-    """
-
-    labeled_runners: Missing[bool] = Field(
+    secret_scanning_push_protection_custom_link: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="Whether to use runners labeled with 'dependency-submission' or standard GitHub runners.",
+        description="An optional URL string to display to contributors who are blocked from pushing a secret.",
     )
-
-
-class CodeSecurityConfigurationPropCodeScanningDefaultSetupOptions(GitHubModel):
-    """CodeSecurityConfigurationPropCodeScanningDefaultSetupOptions
-
-    Feature options for code scanning default setup
-    """
-
-    runner_type: Missing[Union[None, Literal["standard", "labeled", "not_set"]]] = (
-        Field(
-            default=UNSET,
-            description="Whether to use labeled runners or standard GitHub runners.",
-        )
-    )
-    runner_label: Missing[Union[str, None]] = Field(
+    secret_scanning_validity_checks_enabled: Missing[bool] = Field(
         default=UNSET,
-        description="The label of the runner to use for code scanning when runner_type is 'labeled'.",
+        description="**Endpoint closing down notice.** Please use [code security configurations](https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations) instead.\n\nWhether secret scanning automatic validity checks on supported partner tokens is enabled for all repositories under this organization.",
     )
-
-
-class CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptions(GitHubModel):
-    """CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptions
-
-    Feature options for secret scanning delegated bypass
-    """
-
-    reviewers: Missing[
-        list[
-            CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropReviewersItems
-        ]
-    ] = Field(
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+    archived_at: Union[datetime, None] = Field()
+    deploy_keys_enabled_for_repositories: Missing[bool] = Field(
         default=UNSET,
-        description="The bypass reviewers for secret scanning delegated bypass",
+        description="Controls whether or not deploy keys may be added and used for repositories in the organization.",
     )
 
 
-class CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropReviewersItems(
-    GitHubModel
-):
-    """CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropReviewersIt
-    ems
-    """
+class OrganizationFullPropPlan(GitHubModel):
+    """OrganizationFullPropPlan"""
 
-    reviewer_id: int = Field(
-        description="The ID of the team or role selected as a bypass reviewer"
-    )
-    reviewer_type: Literal["TEAM", "ROLE"] = Field(
-        description="The type of the bypass reviewer"
-    )
+    name: str = Field()
+    space: int = Field()
+    private_repos: int = Field()
+    filled_seats: Missing[int] = Field(default=UNSET)
+    seats: Missing[int] = Field(default=UNSET)
 
 
-model_rebuild(CodeSecurityConfiguration)
-model_rebuild(CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptions)
-model_rebuild(CodeSecurityConfigurationPropCodeScanningDefaultSetupOptions)
-model_rebuild(CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptions)
-model_rebuild(
-    CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropReviewersItems
-)
+model_rebuild(OrganizationFull)
+model_rebuild(OrganizationFullPropPlan)
 
 __all__ = (
-    "CodeSecurityConfiguration",
-    "CodeSecurityConfigurationPropCodeScanningDefaultSetupOptions",
-    "CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptions",
-    "CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptions",
-    "CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropReviewersItems",
+    "OrganizationFull",
+    "OrganizationFullPropPlan",
 )

@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,23 +16,23 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class CodeScanningAnalysisTool(GitHubModel):
-    """CodeScanningAnalysisTool"""
+class RunnerApplication(GitHubModel):
+    """Runner Application
 
-    name: Missing[str] = Field(
+    Runner Application
+    """
+
+    os: str = Field()
+    architecture: str = Field()
+    download_url: str = Field()
+    filename: str = Field()
+    temp_download_token: Missing[str] = Field(
         default=UNSET,
-        description="The name of the tool used to generate the code scanning analysis.",
+        description="A short lived bearer token used to download the runner, if needed.",
     )
-    version: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The version of the tool used to generate the code scanning analysis.",
-    )
-    guid: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The GUID of the tool used to generate the code scanning analysis, if provided in the uploaded SARIF data.",
-    )
+    sha256_checksum: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(CodeScanningAnalysisTool)
+model_rebuild(RunnerApplication)
 
-__all__ = ("CodeScanningAnalysisTool",)
+__all__ = ("RunnerApplication",)

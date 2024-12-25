@@ -12,32 +12,20 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ProjectsColumnsCardsCardIdMovesPostResponse503(GitHubModel):
-    """ProjectsColumnsCardsCardIdMovesPostResponse503"""
+class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBody(
+    GitHubModel
+):
+    """OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBody"""
 
-    code: Missing[str] = Field(default=UNSET)
-    message: Missing[str] = Field(default=UNSET)
-    documentation_url: Missing[str] = Field(default=UNSET)
-    errors: Missing[
-        list[ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItems]
-    ] = Field(default=UNSET)
+    body: str = Field(description="The discussion comment's body text.")
 
 
-class ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItems(GitHubModel):
-    """ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItems"""
-
-    code: Missing[str] = Field(default=UNSET)
-    message: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(ProjectsColumnsCardsCardIdMovesPostResponse503)
-model_rebuild(ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItems)
+model_rebuild(
+    OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBody
+)
 
 __all__ = (
-    "ProjectsColumnsCardsCardIdMovesPostResponse503",
-    "ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItems",
+    "OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBody",
 )

@@ -12,44 +12,26 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class RepositoryRuleRequiredStatusChecksPropParameters(GitHubModel):
-    """RepositoryRuleRequiredStatusChecksPropParameters"""
+class RepositoryRuleParamsRequiredReviewerConfiguration(GitHubModel):
+    """RequiredReviewerConfiguration
 
-    do_not_enforce_on_create: Missing[bool] = Field(
-        default=UNSET,
-        description="Allow repositories and branches to be created if a check would otherwise prohibit it.",
-    )
-    required_status_checks: list[RepositoryRuleParamsStatusCheckConfiguration] = Field(
-        description="Status checks that are required."
-    )
-    strict_required_status_checks_policy: bool = Field(
-        description="Whether pull requests targeting a matching branch must be tested with the latest code. This setting will not take effect unless at least one status check is enabled."
-    )
-
-
-class RepositoryRuleParamsStatusCheckConfiguration(GitHubModel):
-    """StatusCheckConfiguration
-
-    Required status check
+    A reviewing team, and file patterns describing which files they must approve
+    changes to.
     """
 
-    context: str = Field(
-        description="The status check context name that must be present on the commit."
+    file_patterns: list[str] = Field(
+        description="Array of file patterns. Pull requests which change matching files must be approved by the specified team. File patterns use the same syntax as `.gitignore` files."
     )
-    integration_id: Missing[int] = Field(
-        default=UNSET,
-        description="The optional integration ID that this status check must originate from.",
+    minimum_approvals: int = Field(
+        description="Minimum number of approvals required from the specified team. If set to zero, the team will be added to the pull request but approval is optional."
+    )
+    reviewer_id: str = Field(
+        description="Node ID of the team which must review changes to matching files."
     )
 
 
-model_rebuild(RepositoryRuleRequiredStatusChecksPropParameters)
-model_rebuild(RepositoryRuleParamsStatusCheckConfiguration)
+model_rebuild(RepositoryRuleParamsRequiredReviewerConfiguration)
 
-__all__ = (
-    "RepositoryRuleParamsStatusCheckConfiguration",
-    "RepositoryRuleRequiredStatusChecksPropParameters",
-)
+__all__ = ("RepositoryRuleParamsRequiredReviewerConfiguration",)

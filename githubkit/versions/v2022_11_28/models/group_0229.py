@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Literal, Union
 
 from pydantic import Field
@@ -18,23 +19,44 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class CodeScanningSarifsStatus(GitHubModel):
-    """CodeScanningSarifsStatus"""
+class CodeScanningDefaultSetup(GitHubModel):
+    """CodeScanningDefaultSetup
 
-    processing_status: Missing[Literal["pending", "complete", "failed"]] = Field(
+    Configuration for code scanning default setup.
+    """
+
+    state: Missing[Literal["configured", "not-configured"]] = Field(
         default=UNSET,
-        description="`pending` files have not yet been processed, while `complete` means results from the SARIF have been stored. `failed` files have either not been processed at all, or could only be partially processed.",
+        description="Code scanning default setup has been configured or not.",
     )
-    analyses_url: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The REST API URL for getting the analyses associated with the upload.",
+    languages: Missing[
+        list[
+            Literal[
+                "actions",
+                "c-cpp",
+                "csharp",
+                "go",
+                "java-kotlin",
+                "javascript-typescript",
+                "javascript",
+                "python",
+                "ruby",
+                "typescript",
+                "swift",
+            ]
+        ]
+    ] = Field(default=UNSET, description="Languages to be analyzed.")
+    query_suite: Missing[Literal["default", "extended"]] = Field(
+        default=UNSET, description="CodeQL query suite to be used."
     )
-    errors: Missing[Union[list[str], None]] = Field(
-        default=UNSET,
-        description="Any errors that ocurred during processing of the delivery.",
+    updated_at: Missing[Union[datetime, None]] = Field(
+        default=UNSET, description="Timestamp of latest configuration update."
+    )
+    schedule: Missing[Union[None, Literal["weekly"]]] = Field(
+        default=UNSET, description="The frequency of the periodic analysis."
     )
 
 
-model_rebuild(CodeScanningSarifsStatus)
+model_rebuild(CodeScanningDefaultSetup)
 
-__all__ = ("CodeScanningSarifsStatus",)
+__all__ = ("CodeScanningDefaultSetup",)

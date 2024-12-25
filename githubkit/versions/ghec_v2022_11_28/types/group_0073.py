@@ -9,18 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0074 import RepositoryRulesetConditionsPropRefNameType
+from .group_0074 import (
+    EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameType,
+)
 
 
-class RepositoryRulesetConditionsType(TypedDict):
-    """Repository ruleset conditions for ref names
+class EnterpriseRulesetConditionsOrganizationNameTargetType(TypedDict):
+    """Repository ruleset conditions for organization names
 
-    Parameters for a repository ruleset ref name condition
+    Parameters for an organization name condition
     """
 
-    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
+    organization_name: (
+        EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameType
+    )
 
 
-__all__ = ("RepositoryRulesetConditionsType",)
+__all__ = ("EnterpriseRulesetConditionsOrganizationNameTargetType",)

@@ -9,29 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0092 import RepositoryRuleMergeQueuePropParameters
 
 
-class RepositoryRuleParamsRequiredReviewerConfiguration(GitHubModel):
-    """RequiredReviewerConfiguration
+class RepositoryRuleMergeQueue(GitHubModel):
+    """merge_queue
 
-    A reviewing team, and file patterns describing which files they must approve
-    changes to.
+    Merges must be performed via a merge queue.
     """
 
-    file_patterns: list[str] = Field(
-        description="Array of file patterns. Pull requests which change matching files must be approved by the specified team. File patterns use the same syntax as `.gitignore` files."
-    )
-    minimum_approvals: int = Field(
-        description="Minimum number of approvals required from the specified team. If set to zero, the team will be added to the pull request but approval is optional."
-    )
-    reviewer_id: str = Field(
-        description="Node ID of the team which must review changes to matching files."
-    )
+    type: Literal["merge_queue"] = Field()
+    parameters: Missing[RepositoryRuleMergeQueuePropParameters] = Field(default=UNSET)
 
 
-model_rebuild(RepositoryRuleParamsRequiredReviewerConfiguration)
+model_rebuild(RepositoryRuleMergeQueue)
 
-__all__ = ("RepositoryRuleParamsRequiredReviewerConfiguration",)
+__all__ = ("RepositoryRuleMergeQueue",)

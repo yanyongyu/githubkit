@@ -40,6 +40,7 @@ if TYPE_CHECKING:
     from .oidc import OidcClient
     from .orgs import OrgsClient
     from .packages import PackagesClient
+    from .private_registries import PrivateRegistriesClient
     from .projects import ProjectsClient
     from .pulls import PullsClient
     from .rate_limit import RateLimitClient
@@ -100,6 +101,12 @@ class RestNamespace:
         from .emojis import EmojisClient
 
         return EmojisClient(self._github)
+
+    @cached_property
+    def code_security(self) -> "CodeSecurityClient":
+        from .code_security import CodeSecurityClient
+
+        return CodeSecurityClient(self._github)
 
     @cached_property
     def dependabot(self) -> "DependabotClient":
@@ -180,12 +187,6 @@ class RestNamespace:
         return CodeScanningClient(self._github)
 
     @cached_property
-    def code_security(self) -> "CodeSecurityClient":
-        from .code_security import CodeSecurityClient
-
-        return CodeSecurityClient(self._github)
-
-    @cached_property
     def codespaces(self) -> "CodespacesClient":
         from .codespaces import CodespacesClient
 
@@ -214,6 +215,12 @@ class RestNamespace:
         from .migrations import MigrationsClient
 
         return MigrationsClient(self._github)
+
+    @cached_property
+    def private_registries(self) -> "PrivateRegistriesClient":
+        from .private_registries import PrivateRegistriesClient
+
+        return PrivateRegistriesClient(self._github)
 
     @cached_property
     def projects(self) -> "ProjectsClient":

@@ -9,17 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0392 import RepositoryWebhooksType
-from .group_0402 import DiscussionType
-
-
-class WebhookDiscussionTransferredPropChangesType(TypedDict):
-    """WebhookDiscussionTransferredPropChanges"""
-
-    new_discussion: DiscussionType
-    new_repository: RepositoryWebhooksType
+from .group_0002 import SimpleUserType
+from .group_0393 import EnterpriseWebhooksType
+from .group_0394 import SimpleInstallationType
+from .group_0395 import OrganizationSimpleWebhooksType
+from .group_0396 import RepositoryWebhooksType
+from .group_0406 import DiscussionType
 
 
-__all__ = ("WebhookDiscussionTransferredPropChangesType",)
+class WebhookDiscussionLockedType(TypedDict):
+    """discussion locked event"""
+
+    action: Literal["locked"]
+    discussion: DiscussionType
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
+
+
+__all__ = ("WebhookDiscussionLockedType",)

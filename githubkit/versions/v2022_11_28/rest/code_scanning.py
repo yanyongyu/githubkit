@@ -33,6 +33,8 @@ if TYPE_CHECKING:
         CodeScanningAlertItems,
         CodeScanningAnalysis,
         CodeScanningAnalysisDeletion,
+        CodeScanningAutofix,
+        CodeScanningAutofixCommitsResponse,
         CodeScanningCodeqlDatabase,
         CodeScanningDefaultSetup,
         CodeScanningOrganizationAlertItems,
@@ -48,6 +50,9 @@ if TYPE_CHECKING:
         CodeScanningAlertType,
         CodeScanningAnalysisDeletionType,
         CodeScanningAnalysisType,
+        CodeScanningAutofixCommitsResponseType,
+        CodeScanningAutofixCommitsType,
+        CodeScanningAutofixType,
         CodeScanningCodeqlDatabaseType,
         CodeScanningDefaultSetupType,
         CodeScanningDefaultSetupUpdateType,
@@ -524,6 +529,298 @@ class CodeScanningClient:
             headers=exclude_unset(headers),
             response_model=CodeScanningAlert,
             error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            },
+        )
+
+    def get_autofix(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+        *,
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[CodeScanningAutofix, CodeScanningAutofixType]:
+        """See also: https://docs.github.com/rest/code-scanning/code-scanning#get-the-status-of-an-autofix-for-a-code-scanning-alert"""
+
+        from ..models import (
+            BasicError,
+            CodeScanningAutofix,
+            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+        )
+
+        url = f"/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}/autofix"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=CodeScanningAutofix,
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            },
+        )
+
+    async def async_get_autofix(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+        *,
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[CodeScanningAutofix, CodeScanningAutofixType]:
+        """See also: https://docs.github.com/rest/code-scanning/code-scanning#get-the-status-of-an-autofix-for-a-code-scanning-alert"""
+
+        from ..models import (
+            BasicError,
+            CodeScanningAutofix,
+            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+        )
+
+        url = f"/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}/autofix"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=CodeScanningAutofix,
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            },
+        )
+
+    def create_autofix(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+        *,
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[CodeScanningAutofix, CodeScanningAutofixType]:
+        """See also: https://docs.github.com/rest/code-scanning/code-scanning#create-an-autofix-for-a-code-scanning-alert"""
+
+        from ..models import (
+            BasicError,
+            CodeScanningAutofix,
+            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+        )
+
+        url = f"/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}/autofix"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "POST",
+            url,
+            headers=exclude_unset(headers),
+            response_model=CodeScanningAutofix,
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            },
+        )
+
+    async def async_create_autofix(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+        *,
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[CodeScanningAutofix, CodeScanningAutofixType]:
+        """See also: https://docs.github.com/rest/code-scanning/code-scanning#create-an-autofix-for-a-code-scanning-alert"""
+
+        from ..models import (
+            BasicError,
+            CodeScanningAutofix,
+            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+        )
+
+        url = f"/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}/autofix"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            headers=exclude_unset(headers),
+            response_model=CodeScanningAutofix,
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            },
+        )
+
+    @overload
+    def commit_autofix(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+        *,
+        headers: Optional[dict[str, str]] = None,
+        data: Missing[Union[CodeScanningAutofixCommitsType, None]] = UNSET,
+    ) -> Response[
+        CodeScanningAutofixCommitsResponse, CodeScanningAutofixCommitsResponseType
+    ]: ...
+
+    @overload
+    def commit_autofix(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[dict[str, str]] = None,
+        target_ref: Missing[str] = UNSET,
+        message: Missing[str] = UNSET,
+    ) -> Response[
+        CodeScanningAutofixCommitsResponse, CodeScanningAutofixCommitsResponseType
+    ]: ...
+
+    def commit_autofix(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+        *,
+        headers: Optional[dict[str, str]] = None,
+        data: Missing[Union[CodeScanningAutofixCommitsType, None]] = UNSET,
+        **kwargs,
+    ) -> Response[
+        CodeScanningAutofixCommitsResponse, CodeScanningAutofixCommitsResponseType
+    ]:
+        """See also: https://docs.github.com/rest/code-scanning/code-scanning#commit-an-autofix-for-a-code-scanning-alert"""
+
+        from typing import Union
+
+        from ..models import (
+            BasicError,
+            CodeScanningAutofixCommits,
+            CodeScanningAutofixCommitsResponse,
+            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+        )
+
+        url = (
+            f"/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}/autofix/commits"
+        )
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(Union[CodeScanningAutofixCommits, None], json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=CodeScanningAutofixCommitsResponse,
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            },
+        )
+
+    @overload
+    async def async_commit_autofix(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+        *,
+        headers: Optional[dict[str, str]] = None,
+        data: Missing[Union[CodeScanningAutofixCommitsType, None]] = UNSET,
+    ) -> Response[
+        CodeScanningAutofixCommitsResponse, CodeScanningAutofixCommitsResponseType
+    ]: ...
+
+    @overload
+    async def async_commit_autofix(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[dict[str, str]] = None,
+        target_ref: Missing[str] = UNSET,
+        message: Missing[str] = UNSET,
+    ) -> Response[
+        CodeScanningAutofixCommitsResponse, CodeScanningAutofixCommitsResponseType
+    ]: ...
+
+    async def async_commit_autofix(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+        *,
+        headers: Optional[dict[str, str]] = None,
+        data: Missing[Union[CodeScanningAutofixCommitsType, None]] = UNSET,
+        **kwargs,
+    ) -> Response[
+        CodeScanningAutofixCommitsResponse, CodeScanningAutofixCommitsResponseType
+    ]:
+        """See also: https://docs.github.com/rest/code-scanning/code-scanning#commit-an-autofix-for-a-code-scanning-alert"""
+
+        from typing import Union
+
+        from ..models import (
+            BasicError,
+            CodeScanningAutofixCommits,
+            CodeScanningAutofixCommitsResponse,
+            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+        )
+
+        url = (
+            f"/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}/autofix/commits"
+        )
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(Union[CodeScanningAutofixCommits, None], json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=CodeScanningAutofixCommitsResponse,
+            error_models={
+                "400": BasicError,
                 "403": BasicError,
                 "404": BasicError,
                 "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
@@ -1527,6 +1824,7 @@ class CodeScanningClient:
         languages: Missing[
             list[
                 Literal[
+                    "actions",
                     "c-cpp",
                     "csharp",
                     "go",
@@ -1610,6 +1908,7 @@ class CodeScanningClient:
         languages: Missing[
             list[
                 Literal[
+                    "actions",
                     "c-cpp",
                     "csharp",
                     "go",

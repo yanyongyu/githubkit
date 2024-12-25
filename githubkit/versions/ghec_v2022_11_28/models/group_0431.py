@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Any, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -19,70 +19,70 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class GpgKey(GitHubModel):
-    """GPG Key
+class PrivateUser(GitHubModel):
+    """Private User
 
-    A unique encryption key
+    Private User
     """
 
+    login: str = Field()
     id: int = Field()
-    name: Missing[Union[str, None]] = Field(default=UNSET)
-    primary_key_id: Union[int, None] = Field()
-    key_id: str = Field()
-    public_key: str = Field()
-    emails: list[GpgKeyPropEmailsItems] = Field()
-    subkeys: list[GpgKeyPropSubkeysItems] = Field()
-    can_sign: bool = Field()
-    can_encrypt_comms: bool = Field()
-    can_encrypt_storage: bool = Field()
-    can_certify: bool = Field()
+    user_view_type: Missing[str] = Field(default=UNSET)
+    node_id: str = Field()
+    avatar_url: str = Field()
+    gravatar_id: Union[str, None] = Field()
+    url: str = Field()
+    html_url: str = Field()
+    followers_url: str = Field()
+    following_url: str = Field()
+    gists_url: str = Field()
+    starred_url: str = Field()
+    subscriptions_url: str = Field()
+    organizations_url: str = Field()
+    repos_url: str = Field()
+    events_url: str = Field()
+    received_events_url: str = Field()
+    type: str = Field()
+    site_admin: bool = Field()
+    name: Union[str, None] = Field()
+    company: Union[str, None] = Field()
+    blog: Union[str, None] = Field()
+    location: Union[str, None] = Field()
+    email: Union[str, None] = Field()
+    notification_email: Missing[Union[str, None]] = Field(default=UNSET)
+    hireable: Union[bool, None] = Field()
+    bio: Union[str, None] = Field()
+    twitter_username: Missing[Union[str, None]] = Field(default=UNSET)
+    public_repos: int = Field()
+    public_gists: int = Field()
+    followers: int = Field()
+    following: int = Field()
     created_at: datetime = Field()
-    expires_at: Union[datetime, None] = Field()
-    revoked: bool = Field()
-    raw_key: Union[str, None] = Field()
+    updated_at: datetime = Field()
+    private_gists: int = Field()
+    total_private_repos: int = Field()
+    owned_private_repos: int = Field()
+    disk_usage: int = Field()
+    collaborators: int = Field()
+    two_factor_authentication: bool = Field()
+    plan: Missing[PrivateUserPropPlan] = Field(default=UNSET)
+    business_plus: Missing[bool] = Field(default=UNSET)
+    ldap_dn: Missing[str] = Field(default=UNSET)
 
 
-class GpgKeyPropEmailsItems(GitHubModel):
-    """GpgKeyPropEmailsItems"""
+class PrivateUserPropPlan(GitHubModel):
+    """PrivateUserPropPlan"""
 
-    email: Missing[str] = Field(default=UNSET)
-    verified: Missing[bool] = Field(default=UNSET)
-
-
-class GpgKeyPropSubkeysItems(GitHubModel):
-    """GpgKeyPropSubkeysItems"""
-
-    id: Missing[int] = Field(default=UNSET)
-    primary_key_id: Missing[int] = Field(default=UNSET)
-    key_id: Missing[str] = Field(default=UNSET)
-    public_key: Missing[str] = Field(default=UNSET)
-    emails: Missing[list[GpgKeyPropSubkeysItemsPropEmailsItems]] = Field(default=UNSET)
-    subkeys: Missing[list[Any]] = Field(default=UNSET)
-    can_sign: Missing[bool] = Field(default=UNSET)
-    can_encrypt_comms: Missing[bool] = Field(default=UNSET)
-    can_encrypt_storage: Missing[bool] = Field(default=UNSET)
-    can_certify: Missing[bool] = Field(default=UNSET)
-    created_at: Missing[str] = Field(default=UNSET)
-    expires_at: Missing[Union[str, None]] = Field(default=UNSET)
-    raw_key: Missing[Union[str, None]] = Field(default=UNSET)
-    revoked: Missing[bool] = Field(default=UNSET)
+    collaborators: int = Field()
+    name: str = Field()
+    space: int = Field()
+    private_repos: int = Field()
 
 
-class GpgKeyPropSubkeysItemsPropEmailsItems(GitHubModel):
-    """GpgKeyPropSubkeysItemsPropEmailsItems"""
-
-    email: Missing[str] = Field(default=UNSET)
-    verified: Missing[bool] = Field(default=UNSET)
-
-
-model_rebuild(GpgKey)
-model_rebuild(GpgKeyPropEmailsItems)
-model_rebuild(GpgKeyPropSubkeysItems)
-model_rebuild(GpgKeyPropSubkeysItemsPropEmailsItems)
+model_rebuild(PrivateUser)
+model_rebuild(PrivateUserPropPlan)
 
 __all__ = (
-    "GpgKey",
-    "GpgKeyPropEmailsItems",
-    "GpgKeyPropSubkeysItems",
-    "GpgKeyPropSubkeysItemsPropEmailsItems",
+    "PrivateUser",
+    "PrivateUserPropPlan",
 )
