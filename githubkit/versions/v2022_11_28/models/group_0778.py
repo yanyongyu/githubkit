@@ -413,8 +413,8 @@ class WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItems(GitHubMode
     head: WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropHead = (
         Field()
     )
-    id: float = Field()
-    number: float = Field()
+    id: int = Field()
+    number: int = Field()
     url: str = Field()
 
 

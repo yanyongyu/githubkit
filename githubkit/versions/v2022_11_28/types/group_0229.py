@@ -38,6 +38,8 @@ class CodeScanningDefaultSetupType(TypedDict):
             ]
         ]
     ]
+    runner_type: NotRequired[Union[None, Literal["standard", "labeled"]]]
+    runner_label: NotRequired[Union[str, None]]
     query_suite: NotRequired[Literal["default", "extended"]]
     updated_at: NotRequired[Union[datetime, None]]
     schedule: NotRequired[Union[None, Literal["weekly"]]]
