@@ -368,8 +368,8 @@ class WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsType(TypedD
 
     base: WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropBaseType
     head: WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropHeadType
-    id: float
-    number: float
+    id: int
+    number: int
     url: str
 
 

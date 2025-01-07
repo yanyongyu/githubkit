@@ -46,6 +46,13 @@ class CodeScanningDefaultSetup(GitHubModel):
             ]
         ]
     ] = Field(default=UNSET, description="Languages to be analyzed.")
+    runner_type: Missing[Union[None, Literal["standard", "labeled"]]] = Field(
+        default=UNSET, description="Runner type to be used."
+    )
+    runner_label: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="Runner label to be used if the runner type is labeled.",
+    )
     query_suite: Missing[Literal["default", "extended"]] = Field(
         default=UNSET, description="CodeQL query suite to be used."
     )
