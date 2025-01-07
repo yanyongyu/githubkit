@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from collections.abc import Mapping
 from typing import TYPE_CHECKING, Optional
 from weakref import ref
 
@@ -46,7 +47,7 @@ class ServerStatisticsClient:
         *,
         date_start: Missing[str] = UNSET,
         date_end: Missing[str] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[ServerStatisticsItems], list[ServerStatisticsItemsType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/admin-stats#get-github-enterprise-server-statistics"""
 
@@ -75,7 +76,7 @@ class ServerStatisticsClient:
         *,
         date_start: Missing[str] = UNSET,
         date_end: Missing[str] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[ServerStatisticsItems], list[ServerStatisticsItemsType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/admin-stats#get-github-enterprise-server-statistics"""
 

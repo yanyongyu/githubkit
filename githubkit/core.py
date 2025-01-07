@@ -1,4 +1,4 @@
-from collections.abc import AsyncGenerator, Generator
+from collections.abc import AsyncGenerator, Generator, Mapping, Sequence
 from contextlib import asynccontextmanager, contextmanager
 from contextvars import ContextVar
 from datetime import datetime, timedelta, timezone
@@ -77,7 +77,7 @@ class GitHubCore(Generic[A]):
         *,
         base_url: Optional[Union[str, httpx.URL]] = None,
         accept_format: Optional[str] = None,
-        previews: Optional[list[str]] = None,
+        previews: Optional[Sequence[str]] = None,
         user_agent: Optional[str] = None,
         follow_redirects: bool = True,
         timeout: Optional[Union[float, httpx.Timeout]] = None,
@@ -96,7 +96,7 @@ class GitHubCore(Generic[A]):
         *,
         base_url: Optional[Union[str, httpx.URL]] = None,
         accept_format: Optional[str] = None,
-        previews: Optional[list[str]] = None,
+        previews: Optional[Sequence[str]] = None,
         user_agent: Optional[str] = None,
         follow_redirects: bool = True,
         timeout: Optional[Union[float, httpx.Timeout]] = None,
@@ -115,7 +115,7 @@ class GitHubCore(Generic[A]):
         *,
         base_url: Optional[Union[str, httpx.URL]] = None,
         accept_format: Optional[str] = None,
-        previews: Optional[list[str]] = None,
+        previews: Optional[Sequence[str]] = None,
         user_agent: Optional[str] = None,
         follow_redirects: bool = True,
         timeout: Optional[Union[float, httpx.Timeout]] = None,
@@ -133,7 +133,7 @@ class GitHubCore(Generic[A]):
         config: Optional[Config] = None,
         base_url: Optional[Union[str, httpx.URL]] = None,
         accept_format: Optional[str] = None,
-        previews: Optional[list[str]] = None,
+        previews: Optional[Sequence[str]] = None,
         user_agent: Optional[str] = None,
         follow_redirects: bool = True,
         timeout: Optional[Union[float, httpx.Timeout]] = None,
@@ -338,7 +338,7 @@ class GitHubCore(Generic[A]):
         self,
         response: httpx.Response,
         response_model: type[T],
-        error_models: Optional[dict[str, type]] = None,
+        error_models: Optional[Mapping[str, type]] = None,
     ) -> Response[T]: ...
 
     @overload
@@ -346,14 +346,14 @@ class GitHubCore(Generic[A]):
         self,
         response: httpx.Response,
         response_model: UnsetType = UNSET,
-        error_models: Optional[dict[str, type]] = None,
+        error_models: Optional[Mapping[str, type]] = None,
     ) -> Response[Any]: ...
 
     def _check(
         self,
         response: httpx.Response,
         response_model: Union[type[T], UnsetType] = UNSET,
-        error_models: Optional[dict[str, type]] = None,
+        error_models: Optional[Mapping[str, type]] = None,
     ) -> Union[Response[T], Response[Any]]:
         if response.is_error:
             error_models = error_models or {}
@@ -443,7 +443,7 @@ class GitHubCore(Generic[A]):
         headers: Optional[HeaderTypes] = None,
         cookies: Optional[CookieTypes] = None,
         response_model: type[T],
-        error_models: Optional[dict[str, type]] = None,
+        error_models: Optional[Mapping[str, type]] = None,
     ) -> Response[T]: ...
 
     @overload
@@ -460,7 +460,7 @@ class GitHubCore(Generic[A]):
         headers: Optional[HeaderTypes] = None,
         cookies: Optional[CookieTypes] = None,
         response_model: UnsetType = UNSET,
-        error_models: Optional[dict[str, type]] = None,
+        error_models: Optional[Mapping[str, type]] = None,
     ) -> Response[Any]: ...
 
     def request(
@@ -476,7 +476,7 @@ class GitHubCore(Generic[A]):
         headers: Optional[HeaderTypes] = None,
         cookies: Optional[CookieTypes] = None,
         response_model: Union[type[T], UnsetType] = UNSET,
-        error_models: Optional[dict[str, type]] = None,
+        error_models: Optional[Mapping[str, type]] = None,
     ) -> Union[Response[T], Response[Any]]:
         """Send a request.
 
@@ -525,7 +525,7 @@ class GitHubCore(Generic[A]):
         headers: Optional[HeaderTypes] = None,
         cookies: Optional[CookieTypes] = None,
         response_model: type[T],
-        error_models: Optional[dict[str, type]] = None,
+        error_models: Optional[Mapping[str, type]] = None,
     ) -> Response[T]: ...
 
     @overload
@@ -542,7 +542,7 @@ class GitHubCore(Generic[A]):
         headers: Optional[HeaderTypes] = None,
         cookies: Optional[CookieTypes] = None,
         response_model: UnsetType = UNSET,
-        error_models: Optional[dict[str, type]] = None,
+        error_models: Optional[Mapping[str, type]] = None,
     ) -> Response[Any]: ...
 
     async def arequest(
@@ -558,7 +558,7 @@ class GitHubCore(Generic[A]):
         headers: Optional[HeaderTypes] = None,
         cookies: Optional[CookieTypes] = None,
         response_model: Union[type[T], UnsetType] = UNSET,
-        error_models: Optional[dict[str, type]] = None,
+        error_models: Optional[Mapping[str, type]] = None,
     ) -> Union[Response[T], Response[Any]]:
         """Asynchronously send a request.
 

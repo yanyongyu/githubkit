@@ -1,3 +1,4 @@
+from collections.abc import Sequence
 from dataclasses import dataclass, fields
 from typing import Any, Optional, Union
 from typing_extensions import Self
@@ -42,7 +43,7 @@ def build_base_url(base_url: Optional[Union[str, httpx.URL]]) -> httpx.URL:
 
 
 def build_accept(
-    accept_format: Optional[str] = None, previews: Optional[list[str]] = None
+    accept_format: Optional[str] = None, previews: Optional[Sequence[str]] = None
 ) -> str:
     if accept_format:
         accept_format = (
@@ -99,7 +100,7 @@ def get_config(
     *,
     base_url: Optional[Union[str, httpx.URL]] = None,
     accept_format: Optional[str] = None,
-    previews: Optional[list[str]] = None,
+    previews: Optional[Sequence[str]] = None,
     user_agent: Optional[str] = None,
     follow_redirects: bool = True,
     timeout: Optional[Union[float, httpx.Timeout]] = None,

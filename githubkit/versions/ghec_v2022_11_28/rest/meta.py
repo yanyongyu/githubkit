@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from collections.abc import Mapping
 from typing import TYPE_CHECKING, Optional
 from weakref import ref
 
@@ -45,7 +46,7 @@ class MetaClient:
     def root(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Root, RootType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/meta/meta#github-api-root"""
 
@@ -65,7 +66,7 @@ class MetaClient:
     async def async_root(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Root, RootType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/meta/meta#github-api-root"""
 
@@ -85,7 +86,7 @@ class MetaClient:
     def get(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ApiOverview, ApiOverviewType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/meta/meta#get-apiname-meta-information"""
 
@@ -105,7 +106,7 @@ class MetaClient:
     async def async_get(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ApiOverview, ApiOverviewType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/meta/meta#get-apiname-meta-information"""
 
@@ -126,7 +127,7 @@ class MetaClient:
         self,
         *,
         s: Missing[str] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[str, str]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/meta/meta#get-octocat"""
 
@@ -150,7 +151,7 @@ class MetaClient:
         self,
         *,
         s: Missing[str] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[str, str]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/meta/meta#get-octocat"""
 
@@ -173,7 +174,7 @@ class MetaClient:
     def get_all_versions(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[date], list[date]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/meta/meta#get-all-api-versions"""
 
@@ -198,7 +199,7 @@ class MetaClient:
     async def async_get_all_versions(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[date], list[date]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/meta/meta#get-all-api-versions"""
 
@@ -223,7 +224,7 @@ class MetaClient:
     def get_zen(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[str, str]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/meta/meta#get-the-zen-of-github"""
 
@@ -241,7 +242,7 @@ class MetaClient:
     async def async_get_zen(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[str, str]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/meta/meta#get-the-zen-of-github"""
 

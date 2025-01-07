@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from collections.abc import Mapping
 from typing import TYPE_CHECKING, Optional, overload
 from weakref import ref
 
@@ -71,7 +72,7 @@ class CopilotClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CopilotOrganizationDetails, CopilotOrganizationDetailsType]:
         """See also: https://docs.github.com/rest/copilot/copilot-user-management#get-copilot-seat-information-and-settings-for-an-organization"""
 
@@ -98,7 +99,7 @@ class CopilotClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CopilotOrganizationDetails, CopilotOrganizationDetailsType]:
         """See also: https://docs.github.com/rest/copilot/copilot-user-management#get-copilot-seat-information-and-settings-for-an-organization"""
 
@@ -127,7 +128,7 @@ class CopilotClient:
         *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         OrgsOrgCopilotBillingSeatsGetResponse200,
         OrgsOrgCopilotBillingSeatsGetResponse200Type,
@@ -165,7 +166,7 @@ class CopilotClient:
         *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         OrgsOrgCopilotBillingSeatsGetResponse200,
         OrgsOrgCopilotBillingSeatsGetResponse200Type,
@@ -202,7 +203,7 @@ class CopilotClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgCopilotBillingSelectedTeamsPostBodyType,
     ) -> Response[
         OrgsOrgCopilotBillingSelectedTeamsPostResponse201,
@@ -215,7 +216,7 @@ class CopilotClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         selected_teams: list[str],
     ) -> Response[
         OrgsOrgCopilotBillingSelectedTeamsPostResponse201,
@@ -226,7 +227,7 @@ class CopilotClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgCopilotBillingSelectedTeamsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[
@@ -275,7 +276,7 @@ class CopilotClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgCopilotBillingSelectedTeamsPostBodyType,
     ) -> Response[
         OrgsOrgCopilotBillingSelectedTeamsPostResponse201,
@@ -288,7 +289,7 @@ class CopilotClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         selected_teams: list[str],
     ) -> Response[
         OrgsOrgCopilotBillingSelectedTeamsPostResponse201,
@@ -299,7 +300,7 @@ class CopilotClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgCopilotBillingSelectedTeamsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[
@@ -348,7 +349,7 @@ class CopilotClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgCopilotBillingSelectedTeamsDeleteBodyType,
     ) -> Response[
         OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200,
@@ -361,7 +362,7 @@ class CopilotClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         selected_teams: list[str],
     ) -> Response[
         OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200,
@@ -372,7 +373,7 @@ class CopilotClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgCopilotBillingSelectedTeamsDeleteBodyType] = UNSET,
         **kwargs,
     ) -> Response[
@@ -421,7 +422,7 @@ class CopilotClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgCopilotBillingSelectedTeamsDeleteBodyType,
     ) -> Response[
         OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200,
@@ -434,7 +435,7 @@ class CopilotClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         selected_teams: list[str],
     ) -> Response[
         OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200,
@@ -445,7 +446,7 @@ class CopilotClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgCopilotBillingSelectedTeamsDeleteBodyType] = UNSET,
         **kwargs,
     ) -> Response[
@@ -494,7 +495,7 @@ class CopilotClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgCopilotBillingSelectedUsersPostBodyType,
     ) -> Response[
         OrgsOrgCopilotBillingSelectedUsersPostResponse201,
@@ -507,7 +508,7 @@ class CopilotClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         selected_usernames: list[str],
     ) -> Response[
         OrgsOrgCopilotBillingSelectedUsersPostResponse201,
@@ -518,7 +519,7 @@ class CopilotClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgCopilotBillingSelectedUsersPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[
@@ -567,7 +568,7 @@ class CopilotClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgCopilotBillingSelectedUsersPostBodyType,
     ) -> Response[
         OrgsOrgCopilotBillingSelectedUsersPostResponse201,
@@ -580,7 +581,7 @@ class CopilotClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         selected_usernames: list[str],
     ) -> Response[
         OrgsOrgCopilotBillingSelectedUsersPostResponse201,
@@ -591,7 +592,7 @@ class CopilotClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgCopilotBillingSelectedUsersPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[
@@ -640,7 +641,7 @@ class CopilotClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgCopilotBillingSelectedUsersDeleteBodyType,
     ) -> Response[
         OrgsOrgCopilotBillingSelectedUsersDeleteResponse200,
@@ -653,7 +654,7 @@ class CopilotClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         selected_usernames: list[str],
     ) -> Response[
         OrgsOrgCopilotBillingSelectedUsersDeleteResponse200,
@@ -664,7 +665,7 @@ class CopilotClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgCopilotBillingSelectedUsersDeleteBodyType] = UNSET,
         **kwargs,
     ) -> Response[
@@ -713,7 +714,7 @@ class CopilotClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgCopilotBillingSelectedUsersDeleteBodyType,
     ) -> Response[
         OrgsOrgCopilotBillingSelectedUsersDeleteResponse200,
@@ -726,7 +727,7 @@ class CopilotClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         selected_usernames: list[str],
     ) -> Response[
         OrgsOrgCopilotBillingSelectedUsersDeleteResponse200,
@@ -737,7 +738,7 @@ class CopilotClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgCopilotBillingSelectedUsersDeleteBodyType] = UNSET,
         **kwargs,
     ) -> Response[
@@ -789,7 +790,7 @@ class CopilotClient:
         until: Missing[str] = UNSET,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[CopilotUsageMetricsDay], list[CopilotUsageMetricsDayType]]:
         """See also: https://docs.github.com/rest/copilot/copilot-metrics#get-copilot-metrics-for-an-organization"""
 
@@ -828,7 +829,7 @@ class CopilotClient:
         until: Missing[str] = UNSET,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[CopilotUsageMetricsDay], list[CopilotUsageMetricsDayType]]:
         """See also: https://docs.github.com/rest/copilot/copilot-metrics#get-copilot-metrics-for-an-organization"""
 
@@ -867,7 +868,7 @@ class CopilotClient:
         until: Missing[str] = UNSET,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[CopilotUsageMetrics], list[CopilotUsageMetricsType]]:
         """See also: https://docs.github.com/rest/copilot/copilot-usage#get-a-summary-of-copilot-usage-for-organization-members"""
 
@@ -906,7 +907,7 @@ class CopilotClient:
         until: Missing[str] = UNSET,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[CopilotUsageMetrics], list[CopilotUsageMetricsType]]:
         """See also: https://docs.github.com/rest/copilot/copilot-usage#get-a-summary-of-copilot-usage-for-organization-members"""
 
@@ -942,7 +943,7 @@ class CopilotClient:
         org: str,
         username: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CopilotSeatDetails, CopilotSeatDetailsType]:
         """See also: https://docs.github.com/rest/copilot/copilot-user-management#get-copilot-seat-assignment-details-for-a-user"""
 
@@ -970,7 +971,7 @@ class CopilotClient:
         org: str,
         username: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CopilotSeatDetails, CopilotSeatDetailsType]:
         """See also: https://docs.github.com/rest/copilot/copilot-user-management#get-copilot-seat-assignment-details-for-a-user"""
 
@@ -1002,7 +1003,7 @@ class CopilotClient:
         until: Missing[str] = UNSET,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[CopilotUsageMetricsDay], list[CopilotUsageMetricsDayType]]:
         """See also: https://docs.github.com/rest/copilot/copilot-metrics#get-copilot-metrics-for-a-team"""
 
@@ -1042,7 +1043,7 @@ class CopilotClient:
         until: Missing[str] = UNSET,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[CopilotUsageMetricsDay], list[CopilotUsageMetricsDayType]]:
         """See also: https://docs.github.com/rest/copilot/copilot-metrics#get-copilot-metrics-for-a-team"""
 
@@ -1082,7 +1083,7 @@ class CopilotClient:
         until: Missing[str] = UNSET,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[CopilotUsageMetrics], list[CopilotUsageMetricsType]]:
         """See also: https://docs.github.com/rest/copilot/copilot-usage#get-a-summary-of-copilot-usage-for-a-team"""
 
@@ -1122,7 +1123,7 @@ class CopilotClient:
         until: Missing[str] = UNSET,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[CopilotUsageMetrics], list[CopilotUsageMetricsType]]:
         """See also: https://docs.github.com/rest/copilot/copilot-usage#get-a-summary-of-copilot-usage-for-a-team"""
 

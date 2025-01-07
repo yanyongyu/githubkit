@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from collections.abc import Mapping
 from typing import TYPE_CHECKING, Literal, Optional, overload
 from weakref import ref
 
@@ -60,7 +61,7 @@ class InteractionsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         Union[InteractionLimitResponse, OrgsOrgInteractionLimitsGetResponse200Anyof1],
         Union[
@@ -94,7 +95,7 @@ class InteractionsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         Union[InteractionLimitResponse, OrgsOrgInteractionLimitsGetResponse200Anyof1],
         Union[
@@ -129,7 +130,7 @@ class InteractionsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: InteractionLimitType,
     ) -> Response[InteractionLimitResponse, InteractionLimitResponseType]: ...
 
@@ -139,7 +140,7 @@ class InteractionsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         limit: Literal["existing_users", "contributors_only", "collaborators_only"],
         expiry: Missing[
             Literal["one_day", "three_days", "one_week", "one_month", "six_months"]
@@ -150,7 +151,7 @@ class InteractionsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[InteractionLimitType] = UNSET,
         **kwargs,
     ) -> Response[InteractionLimitResponse, InteractionLimitResponseType]:
@@ -187,7 +188,7 @@ class InteractionsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: InteractionLimitType,
     ) -> Response[InteractionLimitResponse, InteractionLimitResponseType]: ...
 
@@ -197,7 +198,7 @@ class InteractionsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         limit: Literal["existing_users", "contributors_only", "collaborators_only"],
         expiry: Missing[
             Literal["one_day", "three_days", "one_week", "one_month", "six_months"]
@@ -208,7 +209,7 @@ class InteractionsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[InteractionLimitType] = UNSET,
         **kwargs,
     ) -> Response[InteractionLimitResponse, InteractionLimitResponseType]:
@@ -244,7 +245,7 @@ class InteractionsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/interactions/orgs#remove-interaction-restrictions-for-an-organization"""
 
@@ -262,7 +263,7 @@ class InteractionsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/interactions/orgs#remove-interaction-restrictions-for-an-organization"""
 
@@ -281,7 +282,7 @@ class InteractionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         Union[
             InteractionLimitResponse,
@@ -320,7 +321,7 @@ class InteractionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         Union[
             InteractionLimitResponse,
@@ -360,7 +361,7 @@ class InteractionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: InteractionLimitType,
     ) -> Response[InteractionLimitResponse, InteractionLimitResponseType]: ...
 
@@ -371,7 +372,7 @@ class InteractionsClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         limit: Literal["existing_users", "contributors_only", "collaborators_only"],
         expiry: Missing[
             Literal["one_day", "three_days", "one_week", "one_month", "six_months"]
@@ -383,7 +384,7 @@ class InteractionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[InteractionLimitType] = UNSET,
         **kwargs,
     ) -> Response[InteractionLimitResponse, InteractionLimitResponseType]:
@@ -419,7 +420,7 @@ class InteractionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: InteractionLimitType,
     ) -> Response[InteractionLimitResponse, InteractionLimitResponseType]: ...
 
@@ -430,7 +431,7 @@ class InteractionsClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         limit: Literal["existing_users", "contributors_only", "collaborators_only"],
         expiry: Missing[
             Literal["one_day", "three_days", "one_week", "one_month", "six_months"]
@@ -442,7 +443,7 @@ class InteractionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[InteractionLimitType] = UNSET,
         **kwargs,
     ) -> Response[InteractionLimitResponse, InteractionLimitResponseType]:
@@ -477,7 +478,7 @@ class InteractionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/interactions/repos#remove-interaction-restrictions-for-a-repository"""
 
@@ -497,7 +498,7 @@ class InteractionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/interactions/repos#remove-interaction-restrictions-for-a-repository"""
 
@@ -515,7 +516,7 @@ class InteractionsClient:
     def get_restrictions_for_authenticated_user(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         Union[InteractionLimitResponse, UserInteractionLimitsGetResponse200Anyof1],
         Union[
@@ -547,7 +548,7 @@ class InteractionsClient:
     async def async_get_restrictions_for_authenticated_user(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         Union[InteractionLimitResponse, UserInteractionLimitsGetResponse200Anyof1],
         Union[
@@ -578,7 +579,7 @@ class InteractionsClient:
 
     @overload
     def set_restrictions_for_authenticated_user(
-        self, *, headers: Optional[dict[str, str]] = None, data: InteractionLimitType
+        self, *, headers: Optional[Mapping[str, str]] = None, data: InteractionLimitType
     ) -> Response[InteractionLimitResponse, InteractionLimitResponseType]: ...
 
     @overload
@@ -586,7 +587,7 @@ class InteractionsClient:
         self,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         limit: Literal["existing_users", "contributors_only", "collaborators_only"],
         expiry: Missing[
             Literal["one_day", "three_days", "one_week", "one_month", "six_months"]
@@ -596,7 +597,7 @@ class InteractionsClient:
     def set_restrictions_for_authenticated_user(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[InteractionLimitType] = UNSET,
         **kwargs,
     ) -> Response[InteractionLimitResponse, InteractionLimitResponseType]:
@@ -630,7 +631,7 @@ class InteractionsClient:
 
     @overload
     async def async_set_restrictions_for_authenticated_user(
-        self, *, headers: Optional[dict[str, str]] = None, data: InteractionLimitType
+        self, *, headers: Optional[Mapping[str, str]] = None, data: InteractionLimitType
     ) -> Response[InteractionLimitResponse, InteractionLimitResponseType]: ...
 
     @overload
@@ -638,7 +639,7 @@ class InteractionsClient:
         self,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         limit: Literal["existing_users", "contributors_only", "collaborators_only"],
         expiry: Missing[
             Literal["one_day", "three_days", "one_week", "one_month", "six_months"]
@@ -648,7 +649,7 @@ class InteractionsClient:
     async def async_set_restrictions_for_authenticated_user(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[InteractionLimitType] = UNSET,
         **kwargs,
     ) -> Response[InteractionLimitResponse, InteractionLimitResponseType]:
@@ -683,7 +684,7 @@ class InteractionsClient:
     def remove_restrictions_for_authenticated_user(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/interactions/user#remove-interaction-restrictions-from-your-public-repositories"""
 
@@ -700,7 +701,7 @@ class InteractionsClient:
     async def async_remove_restrictions_for_authenticated_user(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/interactions/user#remove-interaction-restrictions-from-your-public-repositories"""
 

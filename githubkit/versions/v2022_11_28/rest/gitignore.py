@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from collections.abc import Mapping
 from typing import TYPE_CHECKING, Optional
 from weakref import ref
 
@@ -40,7 +41,7 @@ class GitignoreClient:
     def get_all_templates(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[str], list[str]]:
         """See also: https://docs.github.com/rest/gitignore/gitignore#get-all-gitignore-templates"""
 
@@ -58,7 +59,7 @@ class GitignoreClient:
     async def async_get_all_templates(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[str], list[str]]:
         """See also: https://docs.github.com/rest/gitignore/gitignore#get-all-gitignore-templates"""
 
@@ -77,7 +78,7 @@ class GitignoreClient:
         self,
         name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[GitignoreTemplate, GitignoreTemplateType]:
         """See also: https://docs.github.com/rest/gitignore/gitignore#get-a-gitignore-template"""
 
@@ -98,7 +99,7 @@ class GitignoreClient:
         self,
         name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[GitignoreTemplate, GitignoreTemplateType]:
         """See also: https://docs.github.com/rest/gitignore/gitignore#get-a-gitignore-template"""
 

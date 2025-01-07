@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from collections.abc import Mapping
 from typing import TYPE_CHECKING, Literal, Optional, overload
 from weakref import ref
 
@@ -85,7 +86,7 @@ class DependabotClient:
         first: Missing[int] = UNSET,
         last: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         list[DependabotAlertWithRepository], list[DependabotAlertWithRepositoryType]
     ]:
@@ -145,7 +146,7 @@ class DependabotClient:
         first: Missing[int] = UNSET,
         last: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         list[DependabotAlertWithRepository], list[DependabotAlertWithRepositoryType]
     ]:
@@ -205,7 +206,7 @@ class DependabotClient:
         first: Missing[int] = UNSET,
         last: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         list[DependabotAlertWithRepository], list[DependabotAlertWithRepositoryType]
     ]:
@@ -266,7 +267,7 @@ class DependabotClient:
         first: Missing[int] = UNSET,
         last: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         list[DependabotAlertWithRepository], list[DependabotAlertWithRepositoryType]
     ]:
@@ -317,7 +318,7 @@ class DependabotClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         OrgsOrgDependabotSecretsGetResponse200,
         OrgsOrgDependabotSecretsGetResponse200Type,
@@ -349,7 +350,7 @@ class DependabotClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         OrgsOrgDependabotSecretsGetResponse200,
         OrgsOrgDependabotSecretsGetResponse200Type,
@@ -379,7 +380,7 @@ class DependabotClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[DependabotPublicKey, DependabotPublicKeyType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/secrets#get-an-organization-public-key"""
 
@@ -400,7 +401,7 @@ class DependabotClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[DependabotPublicKey, DependabotPublicKeyType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/secrets#get-an-organization-public-key"""
 
@@ -422,7 +423,7 @@ class DependabotClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[OrganizationDependabotSecret, OrganizationDependabotSecretType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/secrets#get-an-organization-secret"""
 
@@ -444,7 +445,7 @@ class DependabotClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[OrganizationDependabotSecret, OrganizationDependabotSecretType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/secrets#get-an-organization-secret"""
 
@@ -467,7 +468,7 @@ class DependabotClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgDependabotSecretsSecretNamePutBodyType,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
 
@@ -478,7 +479,7 @@ class DependabotClient:
         secret_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         encrypted_value: Missing[str] = UNSET,
         key_id: Missing[str] = UNSET,
         visibility: Literal["all", "private", "selected"],
@@ -490,7 +491,7 @@ class DependabotClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgDependabotSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject, EmptyObjectType]:
@@ -525,7 +526,7 @@ class DependabotClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgDependabotSecretsSecretNamePutBodyType,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
 
@@ -536,7 +537,7 @@ class DependabotClient:
         secret_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         encrypted_value: Missing[str] = UNSET,
         key_id: Missing[str] = UNSET,
         visibility: Literal["all", "private", "selected"],
@@ -548,7 +549,7 @@ class DependabotClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgDependabotSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject, EmptyObjectType]:
@@ -582,7 +583,7 @@ class DependabotClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/secrets#delete-an-organization-secret"""
 
@@ -601,7 +602,7 @@ class DependabotClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/secrets#delete-an-organization-secret"""
 
@@ -622,7 +623,7 @@ class DependabotClient:
         *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200,
         OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200Type,
@@ -657,7 +658,7 @@ class DependabotClient:
         *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200,
         OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200Type,
@@ -691,7 +692,7 @@ class DependabotClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgDependabotSecretsSecretNameRepositoriesPutBodyType,
     ) -> Response: ...
 
@@ -702,7 +703,7 @@ class DependabotClient:
         secret_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         selected_repository_ids: list[int],
     ) -> Response: ...
 
@@ -711,7 +712,7 @@ class DependabotClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             OrgsOrgDependabotSecretsSecretNameRepositoriesPutBodyType
         ] = UNSET,
@@ -749,7 +750,7 @@ class DependabotClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgDependabotSecretsSecretNameRepositoriesPutBodyType,
     ) -> Response: ...
 
@@ -760,7 +761,7 @@ class DependabotClient:
         secret_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         selected_repository_ids: list[int],
     ) -> Response: ...
 
@@ -769,7 +770,7 @@ class DependabotClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             OrgsOrgDependabotSecretsSecretNameRepositoriesPutBodyType
         ] = UNSET,
@@ -807,7 +808,7 @@ class DependabotClient:
         secret_name: str,
         repository_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/secrets#add-selected-repository-to-an-organization-secret"""
 
@@ -830,7 +831,7 @@ class DependabotClient:
         secret_name: str,
         repository_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/secrets#add-selected-repository-to-an-organization-secret"""
 
@@ -853,7 +854,7 @@ class DependabotClient:
         secret_name: str,
         repository_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/secrets#remove-selected-repository-from-an-organization-secret"""
 
@@ -876,7 +877,7 @@ class DependabotClient:
         secret_name: str,
         repository_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/secrets#remove-selected-repository-from-an-organization-secret"""
 
@@ -912,7 +913,7 @@ class DependabotClient:
         after: Missing[str] = UNSET,
         first: Missing[int] = UNSET,
         last: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[DependabotAlert], list[DependabotAlertType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/alerts#list-dependabot-alerts-for-a-repository"""
 
@@ -972,7 +973,7 @@ class DependabotClient:
         after: Missing[str] = UNSET,
         first: Missing[int] = UNSET,
         last: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[DependabotAlert], list[DependabotAlertType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/alerts#list-dependabot-alerts-for-a-repository"""
 
@@ -1019,7 +1020,7 @@ class DependabotClient:
         repo: str,
         alert_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[DependabotAlert, DependabotAlertType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/alerts#get-a-dependabot-alert"""
 
@@ -1046,7 +1047,7 @@ class DependabotClient:
         repo: str,
         alert_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[DependabotAlert, DependabotAlertType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/alerts#get-a-dependabot-alert"""
 
@@ -1074,7 +1075,7 @@ class DependabotClient:
         repo: str,
         alert_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyType,
     ) -> Response[DependabotAlert, DependabotAlertType]: ...
 
@@ -1086,7 +1087,7 @@ class DependabotClient:
         alert_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         state: Literal["dismissed", "open"],
         dismissed_reason: Missing[
             Literal[
@@ -1106,7 +1107,7 @@ class DependabotClient:
         repo: str,
         alert_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[DependabotAlert, DependabotAlertType]:
@@ -1156,7 +1157,7 @@ class DependabotClient:
         repo: str,
         alert_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyType,
     ) -> Response[DependabotAlert, DependabotAlertType]: ...
 
@@ -1168,7 +1169,7 @@ class DependabotClient:
         alert_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         state: Literal["dismissed", "open"],
         dismissed_reason: Missing[
             Literal[
@@ -1188,7 +1189,7 @@ class DependabotClient:
         repo: str,
         alert_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[DependabotAlert, DependabotAlertType]:
@@ -1238,7 +1239,7 @@ class DependabotClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoDependabotSecretsGetResponse200,
         ReposOwnerRepoDependabotSecretsGetResponse200Type,
@@ -1271,7 +1272,7 @@ class DependabotClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoDependabotSecretsGetResponse200,
         ReposOwnerRepoDependabotSecretsGetResponse200Type,
@@ -1302,7 +1303,7 @@ class DependabotClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[DependabotPublicKey, DependabotPublicKeyType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/secrets#get-a-repository-public-key"""
 
@@ -1324,7 +1325,7 @@ class DependabotClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[DependabotPublicKey, DependabotPublicKeyType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/secrets#get-a-repository-public-key"""
 
@@ -1347,7 +1348,7 @@ class DependabotClient:
         repo: str,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[DependabotSecret, DependabotSecretType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/secrets#get-a-repository-secret"""
 
@@ -1370,7 +1371,7 @@ class DependabotClient:
         repo: str,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[DependabotSecret, DependabotSecretType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/secrets#get-a-repository-secret"""
 
@@ -1394,7 +1395,7 @@ class DependabotClient:
         repo: str,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoDependabotSecretsSecretNamePutBodyType,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
 
@@ -1406,7 +1407,7 @@ class DependabotClient:
         secret_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         encrypted_value: Missing[str] = UNSET,
         key_id: Missing[str] = UNSET,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
@@ -1417,7 +1418,7 @@ class DependabotClient:
         repo: str,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoDependabotSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject, EmptyObjectType]:
@@ -1458,7 +1459,7 @@ class DependabotClient:
         repo: str,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoDependabotSecretsSecretNamePutBodyType,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
 
@@ -1470,7 +1471,7 @@ class DependabotClient:
         secret_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         encrypted_value: Missing[str] = UNSET,
         key_id: Missing[str] = UNSET,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
@@ -1481,7 +1482,7 @@ class DependabotClient:
         repo: str,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoDependabotSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject, EmptyObjectType]:
@@ -1521,7 +1522,7 @@ class DependabotClient:
         repo: str,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/secrets#delete-a-repository-secret"""
 
@@ -1541,7 +1542,7 @@ class DependabotClient:
         repo: str,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/secrets#delete-a-repository-secret"""
 

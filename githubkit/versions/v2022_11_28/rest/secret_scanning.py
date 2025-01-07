@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from collections.abc import Mapping
 from typing import TYPE_CHECKING, Literal, Optional, overload
 from weakref import ref
 
@@ -74,7 +75,7 @@ class SecretScanningClient:
         validity: Missing[str] = UNSET,
         is_publicly_leaked: Missing[bool] = UNSET,
         is_multi_repo: Missing[bool] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         list[OrganizationSecretScanningAlert], list[OrganizationSecretScanningAlertType]
     ]:
@@ -131,7 +132,7 @@ class SecretScanningClient:
         validity: Missing[str] = UNSET,
         is_publicly_leaked: Missing[bool] = UNSET,
         is_multi_repo: Missing[bool] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         list[OrganizationSecretScanningAlert], list[OrganizationSecretScanningAlertType]
     ]:
@@ -189,7 +190,7 @@ class SecretScanningClient:
         validity: Missing[str] = UNSET,
         is_publicly_leaked: Missing[bool] = UNSET,
         is_multi_repo: Missing[bool] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         list[OrganizationSecretScanningAlert], list[OrganizationSecretScanningAlertType]
     ]:
@@ -248,7 +249,7 @@ class SecretScanningClient:
         validity: Missing[str] = UNSET,
         is_publicly_leaked: Missing[bool] = UNSET,
         is_multi_repo: Missing[bool] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         list[OrganizationSecretScanningAlert], list[OrganizationSecretScanningAlertType]
     ]:
@@ -308,7 +309,7 @@ class SecretScanningClient:
         validity: Missing[str] = UNSET,
         is_publicly_leaked: Missing[bool] = UNSET,
         is_multi_repo: Missing[bool] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[SecretScanningAlert], list[SecretScanningAlertType]]:
         """See also: https://docs.github.com/rest/secret-scanning/secret-scanning#list-secret-scanning-alerts-for-a-repository"""
 
@@ -364,7 +365,7 @@ class SecretScanningClient:
         validity: Missing[str] = UNSET,
         is_publicly_leaked: Missing[bool] = UNSET,
         is_multi_repo: Missing[bool] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[SecretScanningAlert], list[SecretScanningAlertType]]:
         """See also: https://docs.github.com/rest/secret-scanning/secret-scanning#list-secret-scanning-alerts-for-a-repository"""
 
@@ -409,7 +410,7 @@ class SecretScanningClient:
         repo: str,
         alert_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[SecretScanningAlert, SecretScanningAlertType]:
         """See also: https://docs.github.com/rest/secret-scanning/secret-scanning#get-a-secret-scanning-alert"""
 
@@ -438,7 +439,7 @@ class SecretScanningClient:
         repo: str,
         alert_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[SecretScanningAlert, SecretScanningAlertType]:
         """See also: https://docs.github.com/rest/secret-scanning/secret-scanning#get-a-secret-scanning-alert"""
 
@@ -468,7 +469,7 @@ class SecretScanningClient:
         repo: str,
         alert_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyType,
     ) -> Response[SecretScanningAlert, SecretScanningAlertType]: ...
 
@@ -480,7 +481,7 @@ class SecretScanningClient:
         alert_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         state: Literal["open", "resolved"],
         resolution: Missing[
             Union[
@@ -496,7 +497,7 @@ class SecretScanningClient:
         repo: str,
         alert_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyType
         ] = UNSET,
@@ -543,7 +544,7 @@ class SecretScanningClient:
         repo: str,
         alert_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyType,
     ) -> Response[SecretScanningAlert, SecretScanningAlertType]: ...
 
@@ -555,7 +556,7 @@ class SecretScanningClient:
         alert_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         state: Literal["open", "resolved"],
         resolution: Missing[
             Union[
@@ -571,7 +572,7 @@ class SecretScanningClient:
         repo: str,
         alert_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyType
         ] = UNSET,
@@ -619,7 +620,7 @@ class SecretScanningClient:
         *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[SecretScanningLocation], list[SecretScanningLocationType]]:
         """See also: https://docs.github.com/rest/secret-scanning/secret-scanning#list-locations-for-a-secret-scanning-alert"""
 
@@ -656,7 +657,7 @@ class SecretScanningClient:
         *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[SecretScanningLocation], list[SecretScanningLocationType]]:
         """See also: https://docs.github.com/rest/secret-scanning/secret-scanning#list-locations-for-a-secret-scanning-alert"""
 
@@ -691,7 +692,7 @@ class SecretScanningClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyType,
     ) -> Response[
         SecretScanningPushProtectionBypass, SecretScanningPushProtectionBypassType
@@ -704,7 +705,7 @@ class SecretScanningClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         reason: Literal["false_positive", "used_in_tests", "will_fix_later"],
         placeholder_id: str,
     ) -> Response[
@@ -716,7 +717,7 @@ class SecretScanningClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyType
         ] = UNSET,
@@ -764,7 +765,7 @@ class SecretScanningClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyType,
     ) -> Response[
         SecretScanningPushProtectionBypass, SecretScanningPushProtectionBypassType
@@ -777,7 +778,7 @@ class SecretScanningClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         reason: Literal["false_positive", "used_in_tests", "will_fix_later"],
         placeholder_id: str,
     ) -> Response[
@@ -789,7 +790,7 @@ class SecretScanningClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyType
         ] = UNSET,
@@ -836,7 +837,7 @@ class SecretScanningClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[SecretScanningScanHistory, SecretScanningScanHistoryType]:
         """See also: https://docs.github.com/rest/secret-scanning/secret-scanning#get-secret-scanning-scan-history-for-a-repository"""
 
@@ -864,7 +865,7 @@ class SecretScanningClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[SecretScanningScanHistory, SecretScanningScanHistoryType]:
         """See also: https://docs.github.com/rest/secret-scanning/secret-scanning#get-secret-scanning-scan-history-for-a-repository"""
 

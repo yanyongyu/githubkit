@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from collections.abc import Mapping
 from typing import TYPE_CHECKING, Literal, Optional, overload
 from weakref import ref
 
@@ -81,7 +82,7 @@ class ActivityClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Event], list[EventType]]:
         """See also: https://docs.github.com/rest/activity/events#list-public-events"""
 
@@ -117,7 +118,7 @@ class ActivityClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Event], list[EventType]]:
         """See also: https://docs.github.com/rest/activity/events#list-public-events"""
 
@@ -151,7 +152,7 @@ class ActivityClient:
     def get_feeds(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Feed, FeedType]:
         """See also: https://docs.github.com/rest/activity/feeds#get-feeds"""
 
@@ -171,7 +172,7 @@ class ActivityClient:
     async def async_get_feeds(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Feed, FeedType]:
         """See also: https://docs.github.com/rest/activity/feeds#get-feeds"""
 
@@ -195,7 +196,7 @@ class ActivityClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Event], list[EventType]]:
         """See also: https://docs.github.com/rest/activity/events#list-public-events-for-a-network-of-repositories"""
 
@@ -229,7 +230,7 @@ class ActivityClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Event], list[EventType]]:
         """See also: https://docs.github.com/rest/activity/events#list-public-events-for-a-network-of-repositories"""
 
@@ -265,7 +266,7 @@ class ActivityClient:
         before: Missing[datetime] = UNSET,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Thread], list[ThreadType]]:
         """See also: https://docs.github.com/rest/activity/notifications#list-notifications-for-the-authenticated-user"""
 
@@ -306,7 +307,7 @@ class ActivityClient:
         before: Missing[datetime] = UNSET,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Thread], list[ThreadType]]:
         """See also: https://docs.github.com/rest/activity/notifications#list-notifications-for-the-authenticated-user"""
 
@@ -342,7 +343,7 @@ class ActivityClient:
     def mark_notifications_as_read(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[NotificationsPutBodyType] = UNSET,
     ) -> Response[NotificationsPutResponse202, NotificationsPutResponse202Type]: ...
 
@@ -351,7 +352,7 @@ class ActivityClient:
         self,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         last_read_at: Missing[datetime] = UNSET,
         read: Missing[bool] = UNSET,
     ) -> Response[NotificationsPutResponse202, NotificationsPutResponse202Type]: ...
@@ -359,7 +360,7 @@ class ActivityClient:
     def mark_notifications_as_read(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[NotificationsPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[NotificationsPutResponse202, NotificationsPutResponse202Type]:
@@ -400,7 +401,7 @@ class ActivityClient:
     async def async_mark_notifications_as_read(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[NotificationsPutBodyType] = UNSET,
     ) -> Response[NotificationsPutResponse202, NotificationsPutResponse202Type]: ...
 
@@ -409,7 +410,7 @@ class ActivityClient:
         self,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         last_read_at: Missing[datetime] = UNSET,
         read: Missing[bool] = UNSET,
     ) -> Response[NotificationsPutResponse202, NotificationsPutResponse202Type]: ...
@@ -417,7 +418,7 @@ class ActivityClient:
     async def async_mark_notifications_as_read(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[NotificationsPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[NotificationsPutResponse202, NotificationsPutResponse202Type]:
@@ -458,7 +459,7 @@ class ActivityClient:
         self,
         thread_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Thread, ThreadType]:
         """See also: https://docs.github.com/rest/activity/notifications#get-a-thread"""
 
@@ -483,7 +484,7 @@ class ActivityClient:
         self,
         thread_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Thread, ThreadType]:
         """See also: https://docs.github.com/rest/activity/notifications#get-a-thread"""
 
@@ -508,7 +509,7 @@ class ActivityClient:
         self,
         thread_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/activity/notifications#mark-a-thread-as-done"""
 
@@ -526,7 +527,7 @@ class ActivityClient:
         self,
         thread_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/activity/notifications#mark-a-thread-as-done"""
 
@@ -544,7 +545,7 @@ class ActivityClient:
         self,
         thread_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/activity/notifications#mark-a-thread-as-read"""
 
@@ -567,7 +568,7 @@ class ActivityClient:
         self,
         thread_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/activity/notifications#mark-a-thread-as-read"""
 
@@ -590,7 +591,7 @@ class ActivityClient:
         self,
         thread_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ThreadSubscription, ThreadSubscriptionType]:
         """See also: https://docs.github.com/rest/activity/notifications#get-a-thread-subscription-for-the-authenticated-user"""
 
@@ -615,7 +616,7 @@ class ActivityClient:
         self,
         thread_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ThreadSubscription, ThreadSubscriptionType]:
         """See also: https://docs.github.com/rest/activity/notifications#get-a-thread-subscription-for-the-authenticated-user"""
 
@@ -641,7 +642,7 @@ class ActivityClient:
         self,
         thread_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[NotificationsThreadsThreadIdSubscriptionPutBodyType] = UNSET,
     ) -> Response[ThreadSubscription, ThreadSubscriptionType]: ...
 
@@ -651,7 +652,7 @@ class ActivityClient:
         thread_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         ignored: Missing[bool] = UNSET,
     ) -> Response[ThreadSubscription, ThreadSubscriptionType]: ...
 
@@ -659,7 +660,7 @@ class ActivityClient:
         self,
         thread_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[NotificationsThreadsThreadIdSubscriptionPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[ThreadSubscription, ThreadSubscriptionType]:
@@ -703,7 +704,7 @@ class ActivityClient:
         self,
         thread_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[NotificationsThreadsThreadIdSubscriptionPutBodyType] = UNSET,
     ) -> Response[ThreadSubscription, ThreadSubscriptionType]: ...
 
@@ -713,7 +714,7 @@ class ActivityClient:
         thread_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         ignored: Missing[bool] = UNSET,
     ) -> Response[ThreadSubscription, ThreadSubscriptionType]: ...
 
@@ -721,7 +722,7 @@ class ActivityClient:
         self,
         thread_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[NotificationsThreadsThreadIdSubscriptionPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[ThreadSubscription, ThreadSubscriptionType]:
@@ -764,7 +765,7 @@ class ActivityClient:
         self,
         thread_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/activity/notifications#delete-a-thread-subscription"""
 
@@ -788,7 +789,7 @@ class ActivityClient:
         self,
         thread_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/activity/notifications#delete-a-thread-subscription"""
 
@@ -814,7 +815,7 @@ class ActivityClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Event], list[EventType]]:
         """See also: https://docs.github.com/rest/activity/events#list-public-organization-events"""
 
@@ -843,7 +844,7 @@ class ActivityClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Event], list[EventType]]:
         """See also: https://docs.github.com/rest/activity/events#list-public-organization-events"""
 
@@ -873,7 +874,7 @@ class ActivityClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Event], list[EventType]]:
         """See also: https://docs.github.com/rest/activity/events#list-repository-events"""
 
@@ -903,7 +904,7 @@ class ActivityClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Event], list[EventType]]:
         """See also: https://docs.github.com/rest/activity/events#list-repository-events"""
 
@@ -937,7 +938,7 @@ class ActivityClient:
         before: Missing[datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Thread], list[ThreadType]]:
         """See also: https://docs.github.com/rest/activity/notifications#list-repository-notifications-for-the-authenticated-user"""
 
@@ -975,7 +976,7 @@ class ActivityClient:
         before: Missing[datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Thread], list[ThreadType]]:
         """See also: https://docs.github.com/rest/activity/notifications#list-repository-notifications-for-the-authenticated-user"""
 
@@ -1008,7 +1009,7 @@ class ActivityClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoNotificationsPutBodyType] = UNSET,
     ) -> Response[
         ReposOwnerRepoNotificationsPutResponse202,
@@ -1022,7 +1023,7 @@ class ActivityClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         last_read_at: Missing[datetime] = UNSET,
     ) -> Response[
         ReposOwnerRepoNotificationsPutResponse202,
@@ -1034,7 +1035,7 @@ class ActivityClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoNotificationsPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[
@@ -1075,7 +1076,7 @@ class ActivityClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoNotificationsPutBodyType] = UNSET,
     ) -> Response[
         ReposOwnerRepoNotificationsPutResponse202,
@@ -1089,7 +1090,7 @@ class ActivityClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         last_read_at: Missing[datetime] = UNSET,
     ) -> Response[
         ReposOwnerRepoNotificationsPutResponse202,
@@ -1101,7 +1102,7 @@ class ActivityClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoNotificationsPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[
@@ -1143,7 +1144,7 @@ class ActivityClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         Union[list[SimpleUser], list[Stargazer]],
         Union[list[SimpleUserType], list[StargazerType]],
@@ -1181,7 +1182,7 @@ class ActivityClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         Union[list[SimpleUser], list[Stargazer]],
         Union[list[SimpleUserType], list[StargazerType]],
@@ -1219,7 +1220,7 @@ class ActivityClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """See also: https://docs.github.com/rest/activity/watching#list-watchers"""
 
@@ -1249,7 +1250,7 @@ class ActivityClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """See also: https://docs.github.com/rest/activity/watching#list-watchers"""
 
@@ -1277,7 +1278,7 @@ class ActivityClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[RepositorySubscription, RepositorySubscriptionType]:
         """See also: https://docs.github.com/rest/activity/watching#get-a-repository-subscription"""
 
@@ -1302,7 +1303,7 @@ class ActivityClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[RepositorySubscription, RepositorySubscriptionType]:
         """See also: https://docs.github.com/rest/activity/watching#get-a-repository-subscription"""
 
@@ -1328,7 +1329,7 @@ class ActivityClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoSubscriptionPutBodyType] = UNSET,
     ) -> Response[RepositorySubscription, RepositorySubscriptionType]: ...
 
@@ -1339,7 +1340,7 @@ class ActivityClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         subscribed: Missing[bool] = UNSET,
         ignored: Missing[bool] = UNSET,
     ) -> Response[RepositorySubscription, RepositorySubscriptionType]: ...
@@ -1349,7 +1350,7 @@ class ActivityClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoSubscriptionPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[RepositorySubscription, RepositorySubscriptionType]:
@@ -1384,7 +1385,7 @@ class ActivityClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoSubscriptionPutBodyType] = UNSET,
     ) -> Response[RepositorySubscription, RepositorySubscriptionType]: ...
 
@@ -1395,7 +1396,7 @@ class ActivityClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         subscribed: Missing[bool] = UNSET,
         ignored: Missing[bool] = UNSET,
     ) -> Response[RepositorySubscription, RepositorySubscriptionType]: ...
@@ -1405,7 +1406,7 @@ class ActivityClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoSubscriptionPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[RepositorySubscription, RepositorySubscriptionType]:
@@ -1439,7 +1440,7 @@ class ActivityClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/activity/watching#delete-a-repository-subscription"""
 
@@ -1458,7 +1459,7 @@ class ActivityClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/activity/watching#delete-a-repository-subscription"""
 
@@ -1479,7 +1480,7 @@ class ActivityClient:
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Repository], list[RepositoryType]]:
         """See also: https://docs.github.com/rest/activity/starring#list-repositories-starred-by-the-authenticated-user"""
 
@@ -1515,7 +1516,7 @@ class ActivityClient:
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Repository], list[RepositoryType]]:
         """See also: https://docs.github.com/rest/activity/starring#list-repositories-starred-by-the-authenticated-user"""
 
@@ -1549,7 +1550,7 @@ class ActivityClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/activity/starring#check-if-a-repository-is-starred-by-the-authenticated-user"""
 
@@ -1575,7 +1576,7 @@ class ActivityClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/activity/starring#check-if-a-repository-is-starred-by-the-authenticated-user"""
 
@@ -1601,7 +1602,7 @@ class ActivityClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/activity/starring#star-a-repository-for-the-authenticated-user"""
 
@@ -1627,7 +1628,7 @@ class ActivityClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/activity/starring#star-a-repository-for-the-authenticated-user"""
 
@@ -1653,7 +1654,7 @@ class ActivityClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/activity/starring#unstar-a-repository-for-the-authenticated-user"""
 
@@ -1679,7 +1680,7 @@ class ActivityClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/activity/starring#unstar-a-repository-for-the-authenticated-user"""
 
@@ -1705,7 +1706,7 @@ class ActivityClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
         """See also: https://docs.github.com/rest/activity/watching#list-repositories-watched-by-the-authenticated-user"""
 
@@ -1737,7 +1738,7 @@ class ActivityClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
         """See also: https://docs.github.com/rest/activity/watching#list-repositories-watched-by-the-authenticated-user"""
 
@@ -1770,7 +1771,7 @@ class ActivityClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Event], list[EventType]]:
         """See also: https://docs.github.com/rest/activity/events#list-events-for-the-authenticated-user"""
 
@@ -1799,7 +1800,7 @@ class ActivityClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Event], list[EventType]]:
         """See also: https://docs.github.com/rest/activity/events#list-events-for-the-authenticated-user"""
 
@@ -1829,7 +1830,7 @@ class ActivityClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Event], list[EventType]]:
         """See also: https://docs.github.com/rest/activity/events#list-organization-events-for-the-authenticated-user"""
 
@@ -1859,7 +1860,7 @@ class ActivityClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Event], list[EventType]]:
         """See also: https://docs.github.com/rest/activity/events#list-organization-events-for-the-authenticated-user"""
 
@@ -1888,7 +1889,7 @@ class ActivityClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Event], list[EventType]]:
         """See also: https://docs.github.com/rest/activity/events#list-public-events-for-a-user"""
 
@@ -1917,7 +1918,7 @@ class ActivityClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Event], list[EventType]]:
         """See also: https://docs.github.com/rest/activity/events#list-public-events-for-a-user"""
 
@@ -1946,7 +1947,7 @@ class ActivityClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Event], list[EventType]]:
         """See also: https://docs.github.com/rest/activity/events#list-events-received-by-the-authenticated-user"""
 
@@ -1975,7 +1976,7 @@ class ActivityClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Event], list[EventType]]:
         """See also: https://docs.github.com/rest/activity/events#list-events-received-by-the-authenticated-user"""
 
@@ -2004,7 +2005,7 @@ class ActivityClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Event], list[EventType]]:
         """See also: https://docs.github.com/rest/activity/events#list-public-events-received-by-a-user"""
 
@@ -2033,7 +2034,7 @@ class ActivityClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Event], list[EventType]]:
         """See also: https://docs.github.com/rest/activity/events#list-public-events-received-by-a-user"""
 
@@ -2064,7 +2065,7 @@ class ActivityClient:
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         Union[list[StarredRepository], list[Repository]],
         Union[list[StarredRepositoryType], list[RepositoryType]],
@@ -2102,7 +2103,7 @@ class ActivityClient:
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         Union[list[StarredRepository], list[Repository]],
         Union[list[StarredRepositoryType], list[RepositoryType]],
@@ -2138,7 +2139,7 @@ class ActivityClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
         """See also: https://docs.github.com/rest/activity/watching#list-repositories-watched-by-a-user"""
 
@@ -2167,7 +2168,7 @@ class ActivityClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
         """See also: https://docs.github.com/rest/activity/watching#list-repositories-watched-by-a-user"""
 

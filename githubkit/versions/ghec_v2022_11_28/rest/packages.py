@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from collections.abc import Mapping
 from typing import TYPE_CHECKING, Literal, Optional
 from weakref import ref
 
@@ -46,7 +47,7 @@ class PackagesClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Package], list[PackageType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#get-list-of-conflicting-packages-during-docker-migration-for-organization"""
 
@@ -71,7 +72,7 @@ class PackagesClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Package], list[PackageType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#get-list-of-conflicting-packages-during-docker-migration-for-organization"""
 
@@ -102,7 +103,7 @@ class PackagesClient:
         visibility: Missing[Literal["public", "private", "internal"]] = UNSET,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Package], list[PackageType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#list-packages-for-an-organization"""
 
@@ -141,7 +142,7 @@ class PackagesClient:
         visibility: Missing[Literal["public", "private", "internal"]] = UNSET,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Package], list[PackageType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#list-packages-for-an-organization"""
 
@@ -178,7 +179,7 @@ class PackagesClient:
         package_name: str,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Package, PackageType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#get-a-package-for-an-organization"""
 
@@ -203,7 +204,7 @@ class PackagesClient:
         package_name: str,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Package, PackageType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#get-a-package-for-an-organization"""
 
@@ -228,7 +229,7 @@ class PackagesClient:
         package_name: str,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#delete-a-package-for-an-organization"""
 
@@ -257,7 +258,7 @@ class PackagesClient:
         package_name: str,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#delete-a-package-for-an-organization"""
 
@@ -287,7 +288,7 @@ class PackagesClient:
         org: str,
         *,
         token: Missing[str] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#restore-a-package-for-an-organization"""
 
@@ -322,7 +323,7 @@ class PackagesClient:
         org: str,
         *,
         token: Missing[str] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#restore-a-package-for-an-organization"""
 
@@ -359,7 +360,7 @@ class PackagesClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         state: Missing[Literal["active", "deleted"]] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[PackageVersion], list[PackageVersionType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#list-package-versions-for-a-package-owned-by-an-organization"""
 
@@ -399,7 +400,7 @@ class PackagesClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         state: Missing[Literal["active", "deleted"]] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[PackageVersion], list[PackageVersionType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#list-package-versions-for-a-package-owned-by-an-organization"""
 
@@ -437,7 +438,7 @@ class PackagesClient:
         org: str,
         package_version_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[PackageVersion, PackageVersionType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#get-a-package-version-for-an-organization"""
 
@@ -463,7 +464,7 @@ class PackagesClient:
         org: str,
         package_version_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[PackageVersion, PackageVersionType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#get-a-package-version-for-an-organization"""
 
@@ -489,7 +490,7 @@ class PackagesClient:
         org: str,
         package_version_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#delete-package-version-for-an-organization"""
 
@@ -519,7 +520,7 @@ class PackagesClient:
         org: str,
         package_version_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#delete-package-version-for-an-organization"""
 
@@ -549,7 +550,7 @@ class PackagesClient:
         org: str,
         package_version_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#restore-package-version-for-an-organization"""
 
@@ -579,7 +580,7 @@ class PackagesClient:
         org: str,
         package_version_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#restore-package-version-for-an-organization"""
 
@@ -603,7 +604,7 @@ class PackagesClient:
     def list_docker_migration_conflicting_packages_for_authenticated_user(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Package], list[PackageType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#get-list-of-conflicting-packages-during-docker-migration-for-authenticated-user"""
 
@@ -623,7 +624,7 @@ class PackagesClient:
     async def async_list_docker_migration_conflicting_packages_for_authenticated_user(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Package], list[PackageType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#get-list-of-conflicting-packages-during-docker-migration-for-authenticated-user"""
 
@@ -649,7 +650,7 @@ class PackagesClient:
         visibility: Missing[Literal["public", "private", "internal"]] = UNSET,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Package], list[PackageType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#list-packages-for-the-authenticated-users-namespace"""
 
@@ -684,7 +685,7 @@ class PackagesClient:
         visibility: Missing[Literal["public", "private", "internal"]] = UNSET,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Package], list[PackageType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#list-packages-for-the-authenticated-users-namespace"""
 
@@ -717,7 +718,7 @@ class PackagesClient:
         ],
         package_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Package, PackageType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#get-a-package-for-the-authenticated-user"""
 
@@ -741,7 +742,7 @@ class PackagesClient:
         ],
         package_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Package, PackageType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#get-a-package-for-the-authenticated-user"""
 
@@ -765,7 +766,7 @@ class PackagesClient:
         ],
         package_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#delete-a-package-for-the-authenticated-user"""
 
@@ -793,7 +794,7 @@ class PackagesClient:
         ],
         package_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#delete-a-package-for-the-authenticated-user"""
 
@@ -822,7 +823,7 @@ class PackagesClient:
         package_name: str,
         *,
         token: Missing[str] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#restore-a-package-for-the-authenticated-user"""
 
@@ -856,7 +857,7 @@ class PackagesClient:
         package_name: str,
         *,
         token: Missing[str] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#restore-a-package-for-the-authenticated-user"""
 
@@ -892,7 +893,7 @@ class PackagesClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         state: Missing[Literal["active", "deleted"]] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[PackageVersion], list[PackageVersionType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#list-package-versions-for-a-package-owned-by-the-authenticated-user"""
 
@@ -931,7 +932,7 @@ class PackagesClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         state: Missing[Literal["active", "deleted"]] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[PackageVersion], list[PackageVersionType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#list-package-versions-for-a-package-owned-by-the-authenticated-user"""
 
@@ -968,7 +969,7 @@ class PackagesClient:
         package_name: str,
         package_version_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[PackageVersion, PackageVersionType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#get-a-package-version-for-the-authenticated-user"""
 
@@ -993,7 +994,7 @@ class PackagesClient:
         package_name: str,
         package_version_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[PackageVersion, PackageVersionType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#get-a-package-version-for-the-authenticated-user"""
 
@@ -1018,7 +1019,7 @@ class PackagesClient:
         package_name: str,
         package_version_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#delete-a-package-version-for-the-authenticated-user"""
 
@@ -1047,7 +1048,7 @@ class PackagesClient:
         package_name: str,
         package_version_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#delete-a-package-version-for-the-authenticated-user"""
 
@@ -1076,7 +1077,7 @@ class PackagesClient:
         package_name: str,
         package_version_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#restore-a-package-version-for-the-authenticated-user"""
 
@@ -1105,7 +1106,7 @@ class PackagesClient:
         package_name: str,
         package_version_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#restore-a-package-version-for-the-authenticated-user"""
 
@@ -1130,7 +1131,7 @@ class PackagesClient:
         self,
         username: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Package], list[PackageType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#get-list-of-conflicting-packages-during-docker-migration-for-user"""
 
@@ -1155,7 +1156,7 @@ class PackagesClient:
         self,
         username: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Package], list[PackageType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#get-list-of-conflicting-packages-during-docker-migration-for-user"""
 
@@ -1186,7 +1187,7 @@ class PackagesClient:
         visibility: Missing[Literal["public", "private", "internal"]] = UNSET,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Package], list[PackageType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#list-packages-for-a-user"""
 
@@ -1225,7 +1226,7 @@ class PackagesClient:
         visibility: Missing[Literal["public", "private", "internal"]] = UNSET,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Package], list[PackageType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#list-packages-for-a-user"""
 
@@ -1262,7 +1263,7 @@ class PackagesClient:
         package_name: str,
         username: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Package, PackageType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#get-a-package-for-a-user"""
 
@@ -1287,7 +1288,7 @@ class PackagesClient:
         package_name: str,
         username: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Package, PackageType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#get-a-package-for-a-user"""
 
@@ -1312,7 +1313,7 @@ class PackagesClient:
         package_name: str,
         username: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#delete-a-package-for-a-user"""
 
@@ -1341,7 +1342,7 @@ class PackagesClient:
         package_name: str,
         username: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#delete-a-package-for-a-user"""
 
@@ -1371,7 +1372,7 @@ class PackagesClient:
         username: str,
         *,
         token: Missing[str] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#restore-a-package-for-a-user"""
 
@@ -1406,7 +1407,7 @@ class PackagesClient:
         username: str,
         *,
         token: Missing[str] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#restore-a-package-for-a-user"""
 
@@ -1440,7 +1441,7 @@ class PackagesClient:
         package_name: str,
         username: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[PackageVersion], list[PackageVersionType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#list-package-versions-for-a-package-owned-by-a-user"""
 
@@ -1470,7 +1471,7 @@ class PackagesClient:
         package_name: str,
         username: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[PackageVersion], list[PackageVersionType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#list-package-versions-for-a-package-owned-by-a-user"""
 
@@ -1501,7 +1502,7 @@ class PackagesClient:
         package_version_id: int,
         username: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[PackageVersion, PackageVersionType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#get-a-package-version-for-a-user"""
 
@@ -1527,7 +1528,7 @@ class PackagesClient:
         package_version_id: int,
         username: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[PackageVersion, PackageVersionType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#get-a-package-version-for-a-user"""
 
@@ -1553,7 +1554,7 @@ class PackagesClient:
         username: str,
         package_version_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#delete-package-version-for-a-user"""
 
@@ -1583,7 +1584,7 @@ class PackagesClient:
         username: str,
         package_version_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#delete-package-version-for-a-user"""
 
@@ -1613,7 +1614,7 @@ class PackagesClient:
         username: str,
         package_version_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#restore-package-version-for-a-user"""
 
@@ -1643,7 +1644,7 @@ class PackagesClient:
         username: str,
         package_version_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/packages/packages#restore-package-version-for-a-user"""
 

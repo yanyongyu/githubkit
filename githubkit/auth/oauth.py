@@ -1,4 +1,4 @@
-from collections.abc import AsyncGenerator, Coroutine, Generator
+from collections.abc import AsyncGenerator, Coroutine, Generator, Sequence
 from dataclasses import dataclass, field
 from datetime import datetime, timedelta, timezone
 from time import sleep
@@ -29,7 +29,7 @@ if TYPE_CHECKING:
 
 
 def create_device_code(
-    github: "GitHubCore", client_id: str, scopes: Optional[list[str]] = None
+    github: "GitHubCore", client_id: str, scopes: Optional[Sequence[str]] = None
 ) -> Generator[httpx.Request, httpx.Response, dict[str, Any]]:
     """Create a device code for OAuth."""
     base_url = get_oauth_base_url(github.config.base_url)
@@ -567,7 +567,10 @@ class OAuthAppAuthStrategy(BaseAuthStrategy):
         self, code: str, redirect_uri: Optional[str] = None
     ) -> "OAuthWebAuthStrategy":
         return OAuthWebAuthStrategy(
-            self.client_id, self.client_secret, code, redirect_uri
+            client_id=self.client_id,
+            client_secret=self.client_secret,
+            code=code,
+            redirect_uri=redirect_uri,
         )
 
     def get_auth_flow(self, github: "GitHubCore") -> httpx.Auth:

@@ -1,3 +1,4 @@
+from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, Optional, TypedDict
 from typing_extensions import Self
 from weakref import ref
@@ -30,13 +31,13 @@ class Paginator:
         self,
         graphql: "GraphQLNamespace",
         query: str,
-        variables: Optional[dict[str, Any]] = None,
+        variables: Optional[Mapping[str, Any]] = None,
     ) -> None:
         self._graphql_ref = ref(graphql)
         self.query = query
 
         self._has_next_page: bool = True
-        self._current_variables = variables.copy() if variables is not None else {}
+        self._current_variables = dict(variables) if variables is not None else {}
 
     @property
     def _graphql(self) -> "GraphQLNamespace":

@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from collections.abc import Mapping
 from typing import TYPE_CHECKING, Literal, Optional, overload
 from weakref import ref
 
@@ -104,7 +105,7 @@ class SecurityAdvisoriesClient:
         sort: Missing[
             Literal["updated", "published", "epss_percentage", "epss_percentile"]
         ] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[GlobalAdvisory], list[GlobalAdvisoryType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/security-advisories/global-advisories#list-global-security-advisories"""
 
@@ -188,7 +189,7 @@ class SecurityAdvisoriesClient:
         sort: Missing[
             Literal["updated", "published", "epss_percentage", "epss_percentile"]
         ] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[GlobalAdvisory], list[GlobalAdvisoryType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/security-advisories/global-advisories#list-global-security-advisories"""
 
@@ -235,7 +236,7 @@ class SecurityAdvisoriesClient:
         self,
         ghsa_id: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[GlobalAdvisory, GlobalAdvisoryType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/security-advisories/global-advisories#get-a-global-security-advisory"""
 
@@ -259,7 +260,7 @@ class SecurityAdvisoriesClient:
         self,
         ghsa_id: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[GlobalAdvisory, GlobalAdvisoryType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/security-advisories/global-advisories#get-a-global-security-advisory"""
 
@@ -289,7 +290,7 @@ class SecurityAdvisoriesClient:
         after: Missing[str] = UNSET,
         per_page: Missing[int] = UNSET,
         state: Missing[Literal["triage", "draft", "published", "closed"]] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[RepositoryAdvisory], list[RepositoryAdvisoryType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/security-advisories/repository-advisories#list-repository-security-advisories-for-an-organization"""
 
@@ -330,7 +331,7 @@ class SecurityAdvisoriesClient:
         after: Missing[str] = UNSET,
         per_page: Missing[int] = UNSET,
         state: Missing[Literal["triage", "draft", "published", "closed"]] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[RepositoryAdvisory], list[RepositoryAdvisoryType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/security-advisories/repository-advisories#list-repository-security-advisories-for-an-organization"""
 
@@ -372,7 +373,7 @@ class SecurityAdvisoriesClient:
         after: Missing[str] = UNSET,
         per_page: Missing[int] = UNSET,
         state: Missing[Literal["triage", "draft", "published", "closed"]] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[RepositoryAdvisory], list[RepositoryAdvisoryType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/security-advisories/repository-advisories#list-repository-security-advisories"""
 
@@ -414,7 +415,7 @@ class SecurityAdvisoriesClient:
         after: Missing[str] = UNSET,
         per_page: Missing[int] = UNSET,
         state: Missing[Literal["triage", "draft", "published", "closed"]] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[RepositoryAdvisory], list[RepositoryAdvisoryType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/security-advisories/repository-advisories#list-repository-security-advisories"""
 
@@ -451,7 +452,7 @@ class SecurityAdvisoriesClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: RepositoryAdvisoryCreateType,
     ) -> Response[RepositoryAdvisory, RepositoryAdvisoryType]: ...
 
@@ -462,7 +463,7 @@ class SecurityAdvisoriesClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         summary: str,
         description: str,
         cve_id: Missing[Union[str, None]] = UNSET,
@@ -483,7 +484,7 @@ class SecurityAdvisoriesClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[RepositoryAdvisoryCreateType] = UNSET,
         **kwargs,
     ) -> Response[RepositoryAdvisory, RepositoryAdvisoryType]:
@@ -528,7 +529,7 @@ class SecurityAdvisoriesClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: RepositoryAdvisoryCreateType,
     ) -> Response[RepositoryAdvisory, RepositoryAdvisoryType]: ...
 
@@ -539,7 +540,7 @@ class SecurityAdvisoriesClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         summary: str,
         description: str,
         cve_id: Missing[Union[str, None]] = UNSET,
@@ -560,7 +561,7 @@ class SecurityAdvisoriesClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[RepositoryAdvisoryCreateType] = UNSET,
         **kwargs,
     ) -> Response[RepositoryAdvisory, RepositoryAdvisoryType]:
@@ -605,7 +606,7 @@ class SecurityAdvisoriesClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: PrivateVulnerabilityReportCreateType,
     ) -> Response[RepositoryAdvisory, RepositoryAdvisoryType]: ...
 
@@ -616,7 +617,7 @@ class SecurityAdvisoriesClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         summary: str,
         description: str,
         vulnerabilities: Missing[
@@ -637,7 +638,7 @@ class SecurityAdvisoriesClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[PrivateVulnerabilityReportCreateType] = UNSET,
         **kwargs,
     ) -> Response[RepositoryAdvisory, RepositoryAdvisoryType]:
@@ -682,7 +683,7 @@ class SecurityAdvisoriesClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: PrivateVulnerabilityReportCreateType,
     ) -> Response[RepositoryAdvisory, RepositoryAdvisoryType]: ...
 
@@ -693,7 +694,7 @@ class SecurityAdvisoriesClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         summary: str,
         description: str,
         vulnerabilities: Missing[
@@ -714,7 +715,7 @@ class SecurityAdvisoriesClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[PrivateVulnerabilityReportCreateType] = UNSET,
         **kwargs,
     ) -> Response[RepositoryAdvisory, RepositoryAdvisoryType]:
@@ -759,7 +760,7 @@ class SecurityAdvisoriesClient:
         repo: str,
         ghsa_id: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[RepositoryAdvisory, RepositoryAdvisoryType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/security-advisories/repository-advisories#get-a-repository-security-advisory"""
 
@@ -786,7 +787,7 @@ class SecurityAdvisoriesClient:
         repo: str,
         ghsa_id: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[RepositoryAdvisory, RepositoryAdvisoryType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/security-advisories/repository-advisories#get-a-repository-security-advisory"""
 
@@ -814,7 +815,7 @@ class SecurityAdvisoriesClient:
         repo: str,
         ghsa_id: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: RepositoryAdvisoryUpdateType,
     ) -> Response[RepositoryAdvisory, RepositoryAdvisoryType]: ...
 
@@ -826,7 +827,7 @@ class SecurityAdvisoriesClient:
         ghsa_id: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         summary: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
         cve_id: Missing[Union[str, None]] = UNSET,
@@ -852,7 +853,7 @@ class SecurityAdvisoriesClient:
         repo: str,
         ghsa_id: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[RepositoryAdvisoryUpdateType] = UNSET,
         **kwargs,
     ) -> Response[RepositoryAdvisory, RepositoryAdvisoryType]:
@@ -898,7 +899,7 @@ class SecurityAdvisoriesClient:
         repo: str,
         ghsa_id: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: RepositoryAdvisoryUpdateType,
     ) -> Response[RepositoryAdvisory, RepositoryAdvisoryType]: ...
 
@@ -910,7 +911,7 @@ class SecurityAdvisoriesClient:
         ghsa_id: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         summary: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
         cve_id: Missing[Union[str, None]] = UNSET,
@@ -936,7 +937,7 @@ class SecurityAdvisoriesClient:
         repo: str,
         ghsa_id: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[RepositoryAdvisoryUpdateType] = UNSET,
         **kwargs,
     ) -> Response[RepositoryAdvisory, RepositoryAdvisoryType]:
@@ -981,7 +982,7 @@ class SecurityAdvisoriesClient:
         repo: str,
         ghsa_id: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
@@ -1017,7 +1018,7 @@ class SecurityAdvisoriesClient:
         repo: str,
         ghsa_id: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
@@ -1053,7 +1054,7 @@ class SecurityAdvisoriesClient:
         repo: str,
         ghsa_id: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[FullRepository, FullRepositoryType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/security-advisories/repository-advisories#create-a-temporary-private-fork"""
 
@@ -1082,7 +1083,7 @@ class SecurityAdvisoriesClient:
         repo: str,
         ghsa_id: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[FullRepository, FullRepositoryType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/security-advisories/repository-advisories#create-a-temporary-private-fork"""
 

@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from collections.abc import Mapping
 from typing import TYPE_CHECKING, Optional
 from weakref import ref
 
@@ -46,7 +47,7 @@ class LicensesClient:
         featured: Missing[bool] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[LicenseSimple], list[LicenseSimpleType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/licenses/licenses#get-all-commonly-used-licenses"""
 
@@ -76,7 +77,7 @@ class LicensesClient:
         featured: Missing[bool] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[LicenseSimple], list[LicenseSimpleType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/licenses/licenses#get-all-commonly-used-licenses"""
 
@@ -104,7 +105,7 @@ class LicensesClient:
         self,
         license_: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[License, LicenseType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/licenses/licenses#get-a-license"""
 
@@ -129,7 +130,7 @@ class LicensesClient:
         self,
         license_: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[License, LicenseType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/licenses/licenses#get-a-license"""
 
@@ -156,7 +157,7 @@ class LicensesClient:
         repo: str,
         *,
         ref: Missing[str] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[LicenseContent, LicenseContentType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/licenses/licenses#get-the-license-for-a-repository"""
 
@@ -187,7 +188,7 @@ class LicensesClient:
         repo: str,
         *,
         ref: Missing[str] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[LicenseContent, LicenseContentType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/licenses/licenses#get-the-license-for-a-repository"""
 

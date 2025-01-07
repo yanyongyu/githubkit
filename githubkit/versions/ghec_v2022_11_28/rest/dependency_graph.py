@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from collections.abc import Mapping
 from typing import TYPE_CHECKING, Optional, overload
 from weakref import ref
 
@@ -65,7 +66,7 @@ class DependencyGraphClient:
         basehead: str,
         *,
         name: Missing[str] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[DependencyGraphDiffItems], list[DependencyGraphDiffItemsType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/dependency-graph/dependency-review#get-a-diff-of-the-dependencies-between-commits"""
 
@@ -98,7 +99,7 @@ class DependencyGraphClient:
         basehead: str,
         *,
         name: Missing[str] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[DependencyGraphDiffItems], list[DependencyGraphDiffItemsType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/dependency-graph/dependency-review#get-a-diff-of-the-dependencies-between-commits"""
 
@@ -129,7 +130,7 @@ class DependencyGraphClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[DependencyGraphSpdxSbom, DependencyGraphSpdxSbomType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/dependency-graph/sboms#export-a-software-bill-of-materials-sbom-for-a-repository"""
 
@@ -155,7 +156,7 @@ class DependencyGraphClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[DependencyGraphSpdxSbom, DependencyGraphSpdxSbomType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/dependency-graph/sboms#export-a-software-bill-of-materials-sbom-for-a-repository"""
 
@@ -182,7 +183,7 @@ class DependencyGraphClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: SnapshotType,
     ) -> Response[
         ReposOwnerRepoDependencyGraphSnapshotsPostResponse201,
@@ -196,7 +197,7 @@ class DependencyGraphClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         version: int,
         job: SnapshotPropJobType,
         sha: str,
@@ -215,7 +216,7 @@ class DependencyGraphClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[SnapshotType] = UNSET,
         **kwargs,
     ) -> Response[
@@ -256,7 +257,7 @@ class DependencyGraphClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: SnapshotType,
     ) -> Response[
         ReposOwnerRepoDependencyGraphSnapshotsPostResponse201,
@@ -270,7 +271,7 @@ class DependencyGraphClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         version: int,
         job: SnapshotPropJobType,
         sha: str,
@@ -289,7 +290,7 @@ class DependencyGraphClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[SnapshotType] = UNSET,
         **kwargs,
     ) -> Response[

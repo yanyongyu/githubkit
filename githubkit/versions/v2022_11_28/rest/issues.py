@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from collections.abc import Mapping
 from typing import TYPE_CHECKING, Annotated, Literal, Optional, overload
 from weakref import ref
 
@@ -149,7 +150,7 @@ class IssuesClient:
         pulls: Missing[bool] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Issue], list[IssueType]]:
         """See also: https://docs.github.com/rest/issues/issues#list-issues-assigned-to-the-authenticated-user"""
 
@@ -203,7 +204,7 @@ class IssuesClient:
         pulls: Missing[bool] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Issue], list[IssueType]]:
         """See also: https://docs.github.com/rest/issues/issues#list-issues-assigned-to-the-authenticated-user"""
 
@@ -254,7 +255,7 @@ class IssuesClient:
         since: Missing[datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Issue], list[IssueType]]:
         """See also: https://docs.github.com/rest/issues/issues#list-organization-issues-assigned-to-the-authenticated-user"""
 
@@ -300,7 +301,7 @@ class IssuesClient:
         since: Missing[datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Issue], list[IssueType]]:
         """See also: https://docs.github.com/rest/issues/issues#list-organization-issues-assigned-to-the-authenticated-user"""
 
@@ -339,7 +340,7 @@ class IssuesClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """See also: https://docs.github.com/rest/issues/assignees#list-assignees"""
 
@@ -372,7 +373,7 @@ class IssuesClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """See also: https://docs.github.com/rest/issues/assignees#list-assignees"""
 
@@ -404,7 +405,7 @@ class IssuesClient:
         repo: str,
         assignee: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/issues/assignees#check-if-a-user-can-be-assigned"""
 
@@ -429,7 +430,7 @@ class IssuesClient:
         repo: str,
         assignee: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/issues/assignees#check-if-a-user-can-be-assigned"""
 
@@ -464,7 +465,7 @@ class IssuesClient:
         since: Missing[datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Issue], list[IssueType]]:
         """See also: https://docs.github.com/rest/issues/issues#list-repository-issues"""
 
@@ -516,7 +517,7 @@ class IssuesClient:
         since: Missing[datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Issue], list[IssueType]]:
         """See also: https://docs.github.com/rest/issues/issues#list-repository-issues"""
 
@@ -558,7 +559,7 @@ class IssuesClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoIssuesPostBodyType,
     ) -> Response[Issue, IssueType]: ...
 
@@ -569,7 +570,7 @@ class IssuesClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         title: Union[str, int],
         body: Missing[str] = UNSET,
         assignee: Missing[Union[str, None]] = UNSET,
@@ -585,7 +586,7 @@ class IssuesClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Issue, IssueType]:
@@ -634,7 +635,7 @@ class IssuesClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoIssuesPostBodyType,
     ) -> Response[Issue, IssueType]: ...
 
@@ -645,7 +646,7 @@ class IssuesClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         title: Union[str, int],
         body: Missing[str] = UNSET,
         assignee: Missing[Union[str, None]] = UNSET,
@@ -661,7 +662,7 @@ class IssuesClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Issue, IssueType]:
@@ -714,7 +715,7 @@ class IssuesClient:
         since: Missing[datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[IssueComment], list[IssueCommentType]]:
         """See also: https://docs.github.com/rest/issues/comments#list-issue-comments-for-a-repository"""
 
@@ -754,7 +755,7 @@ class IssuesClient:
         since: Missing[datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[IssueComment], list[IssueCommentType]]:
         """See also: https://docs.github.com/rest/issues/comments#list-issue-comments-for-a-repository"""
 
@@ -790,7 +791,7 @@ class IssuesClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[IssueComment, IssueCommentType]:
         """See also: https://docs.github.com/rest/issues/comments#get-an-issue-comment"""
 
@@ -816,7 +817,7 @@ class IssuesClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[IssueComment, IssueCommentType]:
         """See also: https://docs.github.com/rest/issues/comments#get-an-issue-comment"""
 
@@ -842,7 +843,7 @@ class IssuesClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/issues/comments#delete-an-issue-comment"""
 
@@ -862,7 +863,7 @@ class IssuesClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/issues/comments#delete-an-issue-comment"""
 
@@ -883,7 +884,7 @@ class IssuesClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoIssuesCommentsCommentIdPatchBodyType,
     ) -> Response[IssueComment, IssueCommentType]: ...
 
@@ -895,7 +896,7 @@ class IssuesClient:
         comment_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         body: str,
     ) -> Response[IssueComment, IssueCommentType]: ...
 
@@ -905,7 +906,7 @@ class IssuesClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesCommentsCommentIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[IssueComment, IssueCommentType]:
@@ -950,7 +951,7 @@ class IssuesClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoIssuesCommentsCommentIdPatchBodyType,
     ) -> Response[IssueComment, IssueCommentType]: ...
 
@@ -962,7 +963,7 @@ class IssuesClient:
         comment_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         body: str,
     ) -> Response[IssueComment, IssueCommentType]: ...
 
@@ -972,7 +973,7 @@ class IssuesClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesCommentsCommentIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[IssueComment, IssueCommentType]:
@@ -1017,7 +1018,7 @@ class IssuesClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[IssueEvent], list[IssueEventType]]:
         """See also: https://docs.github.com/rest/issues/events#list-issue-events-for-a-repository"""
 
@@ -1050,7 +1051,7 @@ class IssuesClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[IssueEvent], list[IssueEventType]]:
         """See also: https://docs.github.com/rest/issues/events#list-issue-events-for-a-repository"""
 
@@ -1082,7 +1083,7 @@ class IssuesClient:
         repo: str,
         event_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[IssueEvent, IssueEventType]:
         """See also: https://docs.github.com/rest/issues/events#get-an-issue-event"""
 
@@ -1110,7 +1111,7 @@ class IssuesClient:
         repo: str,
         event_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[IssueEvent, IssueEventType]:
         """See also: https://docs.github.com/rest/issues/events#get-an-issue-event"""
 
@@ -1138,7 +1139,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Issue, IssueType]:
         """See also: https://docs.github.com/rest/issues/issues#get-an-issue"""
 
@@ -1165,7 +1166,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Issue, IssueType]:
         """See also: https://docs.github.com/rest/issues/issues#get-an-issue"""
 
@@ -1193,7 +1194,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesIssueNumberPatchBodyType] = UNSET,
     ) -> Response[Issue, IssueType]: ...
 
@@ -1205,7 +1206,7 @@ class IssuesClient:
         issue_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         title: Missing[Union[str, int, None]] = UNSET,
         body: Missing[Union[str, None]] = UNSET,
         assignee: Missing[Union[str, None]] = UNSET,
@@ -1231,7 +1232,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesIssueNumberPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Issue, IssueType]:
@@ -1280,7 +1281,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesIssueNumberPatchBodyType] = UNSET,
     ) -> Response[Issue, IssueType]: ...
 
@@ -1292,7 +1293,7 @@ class IssuesClient:
         issue_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         title: Missing[Union[str, int, None]] = UNSET,
         body: Missing[Union[str, None]] = UNSET,
         assignee: Missing[Union[str, None]] = UNSET,
@@ -1318,7 +1319,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesIssueNumberPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Issue, IssueType]:
@@ -1367,7 +1368,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType] = UNSET,
     ) -> Response[Issue, IssueType]: ...
 
@@ -1379,7 +1380,7 @@ class IssuesClient:
         issue_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         assignees: Missing[list[str]] = UNSET,
     ) -> Response[Issue, IssueType]: ...
 
@@ -1389,7 +1390,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Issue, IssueType]:
@@ -1427,7 +1428,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType] = UNSET,
     ) -> Response[Issue, IssueType]: ...
 
@@ -1439,7 +1440,7 @@ class IssuesClient:
         issue_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         assignees: Missing[list[str]] = UNSET,
     ) -> Response[Issue, IssueType]: ...
 
@@ -1449,7 +1450,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Issue, IssueType]:
@@ -1487,7 +1488,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyType] = UNSET,
     ) -> Response[Issue, IssueType]: ...
 
@@ -1499,7 +1500,7 @@ class IssuesClient:
         issue_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         assignees: Missing[list[str]] = UNSET,
     ) -> Response[Issue, IssueType]: ...
 
@@ -1509,7 +1510,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyType] = UNSET,
         **kwargs,
     ) -> Response[Issue, IssueType]:
@@ -1547,7 +1548,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyType] = UNSET,
     ) -> Response[Issue, IssueType]: ...
 
@@ -1559,7 +1560,7 @@ class IssuesClient:
         issue_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         assignees: Missing[list[str]] = UNSET,
     ) -> Response[Issue, IssueType]: ...
 
@@ -1569,7 +1570,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyType] = UNSET,
         **kwargs,
     ) -> Response[Issue, IssueType]:
@@ -1607,7 +1608,7 @@ class IssuesClient:
         issue_number: int,
         assignee: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/issues/assignees#check-if-a-user-can-be-assigned-to-a-issue"""
 
@@ -1633,7 +1634,7 @@ class IssuesClient:
         issue_number: int,
         assignee: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/issues/assignees#check-if-a-user-can-be-assigned-to-a-issue"""
 
@@ -1661,7 +1662,7 @@ class IssuesClient:
         since: Missing[datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[IssueComment], list[IssueCommentType]]:
         """See also: https://docs.github.com/rest/issues/comments#list-issue-comments"""
 
@@ -1698,7 +1699,7 @@ class IssuesClient:
         since: Missing[datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[IssueComment], list[IssueCommentType]]:
         """See also: https://docs.github.com/rest/issues/comments#list-issue-comments"""
 
@@ -1733,7 +1734,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoIssuesIssueNumberCommentsPostBodyType,
     ) -> Response[IssueComment, IssueCommentType]: ...
 
@@ -1745,7 +1746,7 @@ class IssuesClient:
         issue_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         body: str,
     ) -> Response[IssueComment, IssueCommentType]: ...
 
@@ -1755,7 +1756,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesIssueNumberCommentsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[IssueComment, IssueCommentType]:
@@ -1804,7 +1805,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoIssuesIssueNumberCommentsPostBodyType,
     ) -> Response[IssueComment, IssueCommentType]: ...
 
@@ -1816,7 +1817,7 @@ class IssuesClient:
         issue_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         body: str,
     ) -> Response[IssueComment, IssueCommentType]: ...
 
@@ -1826,7 +1827,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesIssueNumberCommentsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[IssueComment, IssueCommentType]:
@@ -1876,7 +1877,7 @@ class IssuesClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         list[
             Union[
@@ -1986,7 +1987,7 @@ class IssuesClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         list[
             Union[
@@ -2096,7 +2097,7 @@ class IssuesClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Label], list[LabelType]]:
         """See also: https://docs.github.com/rest/issues/labels#list-labels-for-an-issue"""
 
@@ -2131,7 +2132,7 @@ class IssuesClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Label], list[LabelType]]:
         """See also: https://docs.github.com/rest/issues/labels#list-labels-for-an-issue"""
 
@@ -2165,7 +2166,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0Type,
@@ -2185,7 +2186,7 @@ class IssuesClient:
         issue_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         labels: Missing[list[str]] = UNSET,
     ) -> Response[list[Label], list[LabelType]]: ...
 
@@ -2197,7 +2198,7 @@ class IssuesClient:
         issue_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         labels: Missing[
             list[ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsType]
         ] = UNSET,
@@ -2209,7 +2210,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0Type,
@@ -2281,7 +2282,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0Type,
@@ -2301,7 +2302,7 @@ class IssuesClient:
         issue_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         labels: Missing[list[str]] = UNSET,
     ) -> Response[list[Label], list[LabelType]]: ...
 
@@ -2313,7 +2314,7 @@ class IssuesClient:
         issue_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         labels: Missing[
             list[ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsType]
         ] = UNSET,
@@ -2325,7 +2326,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0Type,
@@ -2397,7 +2398,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0Type,
@@ -2417,7 +2418,7 @@ class IssuesClient:
         issue_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         labels: Missing[list[str]] = UNSET,
     ) -> Response[list[Label], list[LabelType]]: ...
 
@@ -2429,7 +2430,7 @@ class IssuesClient:
         issue_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         labels: Missing[
             list[ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItemsType]
         ] = UNSET,
@@ -2441,7 +2442,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0Type,
@@ -2513,7 +2514,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0Type,
@@ -2533,7 +2534,7 @@ class IssuesClient:
         issue_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         labels: Missing[list[str]] = UNSET,
     ) -> Response[list[Label], list[LabelType]]: ...
 
@@ -2545,7 +2546,7 @@ class IssuesClient:
         issue_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         labels: Missing[
             list[ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItemsType]
         ] = UNSET,
@@ -2557,7 +2558,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0Type,
@@ -2628,7 +2629,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/issues/labels#remove-all-labels-from-an-issue"""
 
@@ -2654,7 +2655,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/issues/labels#remove-all-labels-from-an-issue"""
 
@@ -2681,7 +2682,7 @@ class IssuesClient:
         issue_number: int,
         name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Label], list[LabelType]]:
         """See also: https://docs.github.com/rest/issues/labels#remove-a-label-from-an-issue"""
 
@@ -2709,7 +2710,7 @@ class IssuesClient:
         issue_number: int,
         name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Label], list[LabelType]]:
         """See also: https://docs.github.com/rest/issues/labels#remove-a-label-from-an-issue"""
 
@@ -2737,7 +2738,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             Union[ReposOwnerRepoIssuesIssueNumberLockPutBodyType, None]
         ] = UNSET,
@@ -2751,7 +2752,7 @@ class IssuesClient:
         issue_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         lock_reason: Missing[
             Literal["off-topic", "too heated", "resolved", "spam"]
         ] = UNSET,
@@ -2763,7 +2764,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             Union[ReposOwnerRepoIssuesIssueNumberLockPutBodyType, None]
         ] = UNSET,
@@ -2814,7 +2815,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             Union[ReposOwnerRepoIssuesIssueNumberLockPutBodyType, None]
         ] = UNSET,
@@ -2828,7 +2829,7 @@ class IssuesClient:
         issue_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         lock_reason: Missing[
             Literal["off-topic", "too heated", "resolved", "spam"]
         ] = UNSET,
@@ -2840,7 +2841,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             Union[ReposOwnerRepoIssuesIssueNumberLockPutBodyType, None]
         ] = UNSET,
@@ -2890,7 +2891,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/issues/issues#unlock-an-issue"""
 
@@ -2916,7 +2917,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/issues/issues#unlock-an-issue"""
 
@@ -2943,7 +2944,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBodyType,
     ) -> Response[Issue, IssueType]: ...
 
@@ -2955,7 +2956,7 @@ class IssuesClient:
         issue_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         sub_issue_id: int,
     ) -> Response[Issue, IssueType]: ...
 
@@ -2965,7 +2966,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBodyType] = UNSET,
         **kwargs,
     ) -> Response[Issue, IssueType]:
@@ -3011,7 +3012,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBodyType,
     ) -> Response[Issue, IssueType]: ...
 
@@ -3023,7 +3024,7 @@ class IssuesClient:
         issue_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         sub_issue_id: int,
     ) -> Response[Issue, IssueType]: ...
 
@@ -3033,7 +3034,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBodyType] = UNSET,
         **kwargs,
     ) -> Response[Issue, IssueType]:
@@ -3080,7 +3081,7 @@ class IssuesClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Issue], list[IssueType]]:
         """See also: https://docs.github.com/rest/issues/sub-issues#list-sub-issues"""
 
@@ -3115,7 +3116,7 @@ class IssuesClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Issue], list[IssueType]]:
         """See also: https://docs.github.com/rest/issues/sub-issues#list-sub-issues"""
 
@@ -3149,7 +3150,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoIssuesIssueNumberSubIssuesPostBodyType,
     ) -> Response[Issue, IssueType]: ...
 
@@ -3161,7 +3162,7 @@ class IssuesClient:
         issue_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         sub_issue_id: int,
         replace_parent: Missing[bool] = UNSET,
     ) -> Response[Issue, IssueType]: ...
@@ -3172,7 +3173,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesIssueNumberSubIssuesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Issue, IssueType]:
@@ -3221,7 +3222,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoIssuesIssueNumberSubIssuesPostBodyType,
     ) -> Response[Issue, IssueType]: ...
 
@@ -3233,7 +3234,7 @@ class IssuesClient:
         issue_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         sub_issue_id: int,
         replace_parent: Missing[bool] = UNSET,
     ) -> Response[Issue, IssueType]: ...
@@ -3244,7 +3245,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesIssueNumberSubIssuesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Issue, IssueType]:
@@ -3293,7 +3294,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBodyType,
     ) -> Response[Issue, IssueType]: ...
 
@@ -3305,7 +3306,7 @@ class IssuesClient:
         issue_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         sub_issue_id: int,
         after_id: Missing[int] = UNSET,
         before_id: Missing[int] = UNSET,
@@ -3317,7 +3318,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBodyType
         ] = UNSET,
@@ -3369,7 +3370,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBodyType,
     ) -> Response[Issue, IssueType]: ...
 
@@ -3381,7 +3382,7 @@ class IssuesClient:
         issue_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         sub_issue_id: int,
         after_id: Missing[int] = UNSET,
         before_id: Missing[int] = UNSET,
@@ -3393,7 +3394,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBodyType
         ] = UNSET,
@@ -3446,7 +3447,7 @@ class IssuesClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         list[
             Union[
@@ -3585,7 +3586,7 @@ class IssuesClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         list[
             Union[
@@ -3723,7 +3724,7 @@ class IssuesClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Label], list[LabelType]]:
         """See also: https://docs.github.com/rest/issues/labels#list-labels-for-a-repository"""
 
@@ -3756,7 +3757,7 @@ class IssuesClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Label], list[LabelType]]:
         """See also: https://docs.github.com/rest/issues/labels#list-labels-for-a-repository"""
 
@@ -3788,7 +3789,7 @@ class IssuesClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoLabelsPostBodyType,
     ) -> Response[Label, LabelType]: ...
 
@@ -3799,7 +3800,7 @@ class IssuesClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         name: str,
         color: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
@@ -3810,7 +3811,7 @@ class IssuesClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoLabelsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Label, LabelType]:
@@ -3854,7 +3855,7 @@ class IssuesClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoLabelsPostBodyType,
     ) -> Response[Label, LabelType]: ...
 
@@ -3865,7 +3866,7 @@ class IssuesClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         name: str,
         color: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
@@ -3876,7 +3877,7 @@ class IssuesClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoLabelsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Label, LabelType]:
@@ -3920,7 +3921,7 @@ class IssuesClient:
         repo: str,
         name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Label, LabelType]:
         """See also: https://docs.github.com/rest/issues/labels#get-a-label"""
 
@@ -3946,7 +3947,7 @@ class IssuesClient:
         repo: str,
         name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Label, LabelType]:
         """See also: https://docs.github.com/rest/issues/labels#get-a-label"""
 
@@ -3972,7 +3973,7 @@ class IssuesClient:
         repo: str,
         name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/issues/labels#delete-a-label"""
 
@@ -3992,7 +3993,7 @@ class IssuesClient:
         repo: str,
         name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/issues/labels#delete-a-label"""
 
@@ -4013,7 +4014,7 @@ class IssuesClient:
         repo: str,
         name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoLabelsNamePatchBodyType] = UNSET,
     ) -> Response[Label, LabelType]: ...
 
@@ -4025,7 +4026,7 @@ class IssuesClient:
         name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         new_name: Missing[str] = UNSET,
         color: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
@@ -4037,7 +4038,7 @@ class IssuesClient:
         repo: str,
         name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoLabelsNamePatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Label, LabelType]:
@@ -4073,7 +4074,7 @@ class IssuesClient:
         repo: str,
         name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoLabelsNamePatchBodyType] = UNSET,
     ) -> Response[Label, LabelType]: ...
 
@@ -4085,7 +4086,7 @@ class IssuesClient:
         name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         new_name: Missing[str] = UNSET,
         color: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
@@ -4097,7 +4098,7 @@ class IssuesClient:
         repo: str,
         name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoLabelsNamePatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Label, LabelType]:
@@ -4136,7 +4137,7 @@ class IssuesClient:
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Milestone], list[MilestoneType]]:
         """See also: https://docs.github.com/rest/issues/milestones#list-milestones"""
 
@@ -4175,7 +4176,7 @@ class IssuesClient:
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Milestone], list[MilestoneType]]:
         """See also: https://docs.github.com/rest/issues/milestones#list-milestones"""
 
@@ -4210,7 +4211,7 @@ class IssuesClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoMilestonesPostBodyType,
     ) -> Response[Milestone, MilestoneType]: ...
 
@@ -4221,7 +4222,7 @@ class IssuesClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         title: str,
         state: Missing[Literal["open", "closed"]] = UNSET,
         description: Missing[str] = UNSET,
@@ -4233,7 +4234,7 @@ class IssuesClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoMilestonesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Milestone, MilestoneType]:
@@ -4277,7 +4278,7 @@ class IssuesClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoMilestonesPostBodyType,
     ) -> Response[Milestone, MilestoneType]: ...
 
@@ -4288,7 +4289,7 @@ class IssuesClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         title: str,
         state: Missing[Literal["open", "closed"]] = UNSET,
         description: Missing[str] = UNSET,
@@ -4300,7 +4301,7 @@ class IssuesClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoMilestonesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Milestone, MilestoneType]:
@@ -4344,7 +4345,7 @@ class IssuesClient:
         repo: str,
         milestone_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Milestone, MilestoneType]:
         """See also: https://docs.github.com/rest/issues/milestones#get-a-milestone"""
 
@@ -4370,7 +4371,7 @@ class IssuesClient:
         repo: str,
         milestone_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Milestone, MilestoneType]:
         """See also: https://docs.github.com/rest/issues/milestones#get-a-milestone"""
 
@@ -4396,7 +4397,7 @@ class IssuesClient:
         repo: str,
         milestone_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/issues/milestones#delete-a-milestone"""
 
@@ -4421,7 +4422,7 @@ class IssuesClient:
         repo: str,
         milestone_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/issues/milestones#delete-a-milestone"""
 
@@ -4447,7 +4448,7 @@ class IssuesClient:
         repo: str,
         milestone_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoMilestonesMilestoneNumberPatchBodyType] = UNSET,
     ) -> Response[Milestone, MilestoneType]: ...
 
@@ -4459,7 +4460,7 @@ class IssuesClient:
         milestone_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         title: Missing[str] = UNSET,
         state: Missing[Literal["open", "closed"]] = UNSET,
         description: Missing[str] = UNSET,
@@ -4472,7 +4473,7 @@ class IssuesClient:
         repo: str,
         milestone_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoMilestonesMilestoneNumberPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Milestone, MilestoneType]:
@@ -4510,7 +4511,7 @@ class IssuesClient:
         repo: str,
         milestone_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoMilestonesMilestoneNumberPatchBodyType] = UNSET,
     ) -> Response[Milestone, MilestoneType]: ...
 
@@ -4522,7 +4523,7 @@ class IssuesClient:
         milestone_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         title: Missing[str] = UNSET,
         state: Missing[Literal["open", "closed"]] = UNSET,
         description: Missing[str] = UNSET,
@@ -4535,7 +4536,7 @@ class IssuesClient:
         repo: str,
         milestone_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoMilestonesMilestoneNumberPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Milestone, MilestoneType]:
@@ -4574,7 +4575,7 @@ class IssuesClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Label], list[LabelType]]:
         """See also: https://docs.github.com/rest/issues/labels#list-labels-for-issues-in-a-milestone"""
 
@@ -4605,7 +4606,7 @@ class IssuesClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Label], list[LabelType]]:
         """See also: https://docs.github.com/rest/issues/labels#list-labels-for-issues-in-a-milestone"""
 
@@ -4641,7 +4642,7 @@ class IssuesClient:
         since: Missing[datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Issue], list[IssueType]]:
         """See also: https://docs.github.com/rest/issues/issues#list-user-account-issues-assigned-to-the-authenticated-user"""
 
@@ -4686,7 +4687,7 @@ class IssuesClient:
         since: Missing[datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Issue], list[IssueType]]:
         """See also: https://docs.github.com/rest/issues/issues#list-user-account-issues-assigned-to-the-authenticated-user"""
 

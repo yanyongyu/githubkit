@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from collections.abc import Mapping
 from typing import TYPE_CHECKING, Optional, overload
 from weakref import ref
 
@@ -67,7 +68,7 @@ class BillingClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ActionsBillingUsage, ActionsBillingUsageType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#get-github-actions-billing-for-an-enterprise"""
 
@@ -88,7 +89,7 @@ class BillingClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ActionsBillingUsage, ActionsBillingUsageType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#get-github-actions-billing-for-an-enterprise"""
 
@@ -111,7 +112,7 @@ class BillingClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         AdvancedSecurityActiveCommitters, AdvancedSecurityActiveCommittersType
     ]:
@@ -142,7 +143,7 @@ class BillingClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         AdvancedSecurityActiveCommitters, AdvancedSecurityActiveCommittersType
     ]:
@@ -171,7 +172,7 @@ class BillingClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[GetAllCostCenters, GetAllCostCentersType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#get-all-cost-centers-for-an-enterprise"""
 
@@ -202,7 +203,7 @@ class BillingClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[GetAllCostCenters, GetAllCostCentersType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#get-all-cost-centers-for-an-enterprise"""
 
@@ -235,7 +236,7 @@ class BillingClient:
         enterprise: str,
         cost_center_id: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBodyType,
     ) -> Response[
         EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200,
@@ -249,7 +250,7 @@ class BillingClient:
         cost_center_id: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         users: list[str],
     ) -> Response[
         EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200,
@@ -261,7 +262,7 @@ class BillingClient:
         enterprise: str,
         cost_center_id: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBodyType
         ] = UNSET,
@@ -316,7 +317,7 @@ class BillingClient:
         enterprise: str,
         cost_center_id: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBodyType,
     ) -> Response[
         EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200,
@@ -330,7 +331,7 @@ class BillingClient:
         cost_center_id: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         users: list[str],
     ) -> Response[
         EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200,
@@ -342,7 +343,7 @@ class BillingClient:
         enterprise: str,
         cost_center_id: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBodyType
         ] = UNSET,
@@ -397,7 +398,7 @@ class BillingClient:
         enterprise: str,
         cost_center_id: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBodyType,
     ) -> Response[
         EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200,
@@ -411,7 +412,7 @@ class BillingClient:
         cost_center_id: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         users: list[str],
     ) -> Response[
         EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200,
@@ -423,7 +424,7 @@ class BillingClient:
         enterprise: str,
         cost_center_id: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBodyType
         ] = UNSET,
@@ -477,7 +478,7 @@ class BillingClient:
         enterprise: str,
         cost_center_id: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBodyType,
     ) -> Response[
         EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200,
@@ -491,7 +492,7 @@ class BillingClient:
         cost_center_id: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         users: list[str],
     ) -> Response[
         EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200,
@@ -503,7 +504,7 @@ class BillingClient:
         enterprise: str,
         cost_center_id: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBodyType
         ] = UNSET,
@@ -555,7 +556,7 @@ class BillingClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[PackagesBillingUsage, PackagesBillingUsageType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#get-github-packages-billing-for-an-enterprise"""
 
@@ -576,7 +577,7 @@ class BillingClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[PackagesBillingUsage, PackagesBillingUsageType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#get-github-packages-billing-for-an-enterprise"""
 
@@ -597,7 +598,7 @@ class BillingClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CombinedBillingUsage, CombinedBillingUsageType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#get-shared-storage-billing-for-an-enterprise"""
 
@@ -618,7 +619,7 @@ class BillingClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CombinedBillingUsage, CombinedBillingUsageType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#get-shared-storage-billing-for-an-enterprise"""
 
@@ -644,7 +645,7 @@ class BillingClient:
         day: Missing[int] = UNSET,
         hour: Missing[int] = UNSET,
         cost_center_id: Missing[str] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[BillingUsageReport, BillingUsageReportType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#get-billing-usage-report-for-an-enterprise"""
 
@@ -689,7 +690,7 @@ class BillingClient:
         day: Missing[int] = UNSET,
         hour: Missing[int] = UNSET,
         cost_center_id: Missing[str] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[BillingUsageReport, BillingUsageReportType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#get-billing-usage-report-for-an-enterprise"""
 
@@ -733,7 +734,7 @@ class BillingClient:
         month: Missing[int] = UNSET,
         day: Missing[int] = UNSET,
         hour: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[BillingUsageReport, BillingUsageReportType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/enhanced-billing#get-billing-usage-report-for-an-organization"""
 
@@ -776,7 +777,7 @@ class BillingClient:
         month: Missing[int] = UNSET,
         day: Missing[int] = UNSET,
         hour: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[BillingUsageReport, BillingUsageReportType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/enhanced-billing#get-billing-usage-report-for-an-organization"""
 
@@ -815,7 +816,7 @@ class BillingClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ActionsBillingUsage, ActionsBillingUsageType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/billing#get-github-actions-billing-for-an-organization"""
 
@@ -836,7 +837,7 @@ class BillingClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ActionsBillingUsage, ActionsBillingUsageType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/billing#get-github-actions-billing-for-an-organization"""
 
@@ -859,7 +860,7 @@ class BillingClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         AdvancedSecurityActiveCommitters, AdvancedSecurityActiveCommittersType
     ]:
@@ -890,7 +891,7 @@ class BillingClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         AdvancedSecurityActiveCommitters, AdvancedSecurityActiveCommittersType
     ]:
@@ -919,7 +920,7 @@ class BillingClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[PackagesBillingUsage, PackagesBillingUsageType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/billing#get-github-packages-billing-for-an-organization"""
 
@@ -940,7 +941,7 @@ class BillingClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[PackagesBillingUsage, PackagesBillingUsageType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/billing#get-github-packages-billing-for-an-organization"""
 
@@ -961,7 +962,7 @@ class BillingClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CombinedBillingUsage, CombinedBillingUsageType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/billing#get-shared-storage-billing-for-an-organization"""
 
@@ -982,7 +983,7 @@ class BillingClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CombinedBillingUsage, CombinedBillingUsageType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/billing#get-shared-storage-billing-for-an-organization"""
 
@@ -1003,7 +1004,7 @@ class BillingClient:
         self,
         username: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ActionsBillingUsage, ActionsBillingUsageType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/billing#get-github-actions-billing-for-a-user"""
 
@@ -1024,7 +1025,7 @@ class BillingClient:
         self,
         username: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ActionsBillingUsage, ActionsBillingUsageType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/billing#get-github-actions-billing-for-a-user"""
 
@@ -1045,7 +1046,7 @@ class BillingClient:
         self,
         username: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[PackagesBillingUsage, PackagesBillingUsageType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/billing#get-github-packages-billing-for-a-user"""
 
@@ -1066,7 +1067,7 @@ class BillingClient:
         self,
         username: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[PackagesBillingUsage, PackagesBillingUsageType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/billing#get-github-packages-billing-for-a-user"""
 
@@ -1087,7 +1088,7 @@ class BillingClient:
         self,
         username: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CombinedBillingUsage, CombinedBillingUsageType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/billing#get-shared-storage-billing-for-a-user"""
 
@@ -1108,7 +1109,7 @@ class BillingClient:
         self,
         username: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CombinedBillingUsage, CombinedBillingUsageType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/billing#get-shared-storage-billing-for-a-user"""
 

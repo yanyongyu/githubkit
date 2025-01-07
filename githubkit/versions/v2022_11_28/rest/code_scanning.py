@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from collections.abc import Mapping
 from typing import TYPE_CHECKING, Literal, Optional, overload
 from weakref import ref
 
@@ -101,7 +102,7 @@ class CodeScanningClient:
         severity: Missing[
             Literal["critical", "high", "medium", "low", "warning", "note", "error"]
         ] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         list[CodeScanningOrganizationAlertItems],
         list[CodeScanningOrganizationAlertItemsType],
@@ -159,7 +160,7 @@ class CodeScanningClient:
         severity: Missing[
             Literal["critical", "high", "medium", "low", "warning", "note", "error"]
         ] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         list[CodeScanningOrganizationAlertItems],
         list[CodeScanningOrganizationAlertItemsType],
@@ -220,7 +221,7 @@ class CodeScanningClient:
         severity: Missing[
             Literal["critical", "high", "medium", "low", "warning", "note", "error"]
         ] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[CodeScanningAlertItems], list[CodeScanningAlertItemsType]]:
         """See also: https://docs.github.com/rest/code-scanning/code-scanning#list-code-scanning-alerts-for-a-repository"""
 
@@ -281,7 +282,7 @@ class CodeScanningClient:
         severity: Missing[
             Literal["critical", "high", "medium", "low", "warning", "note", "error"]
         ] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[CodeScanningAlertItems], list[CodeScanningAlertItemsType]]:
         """See also: https://docs.github.com/rest/code-scanning/code-scanning#list-code-scanning-alerts-for-a-repository"""
 
@@ -329,7 +330,7 @@ class CodeScanningClient:
         repo: str,
         alert_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CodeScanningAlert, CodeScanningAlertType]:
         """See also: https://docs.github.com/rest/code-scanning/code-scanning#get-a-code-scanning-alert"""
 
@@ -361,7 +362,7 @@ class CodeScanningClient:
         repo: str,
         alert_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CodeScanningAlert, CodeScanningAlertType]:
         """See also: https://docs.github.com/rest/code-scanning/code-scanning#get-a-code-scanning-alert"""
 
@@ -394,7 +395,7 @@ class CodeScanningClient:
         repo: str,
         alert_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyType,
     ) -> Response[CodeScanningAlert, CodeScanningAlertType]: ...
 
@@ -406,7 +407,7 @@ class CodeScanningClient:
         alert_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         state: Literal["open", "dismissed"],
         dismissed_reason: Missing[
             Union[None, Literal["false positive", "won't fix", "used in tests"]]
@@ -420,7 +421,7 @@ class CodeScanningClient:
         repo: str,
         alert_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[CodeScanningAlert, CodeScanningAlertType]:
@@ -468,7 +469,7 @@ class CodeScanningClient:
         repo: str,
         alert_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyType,
     ) -> Response[CodeScanningAlert, CodeScanningAlertType]: ...
 
@@ -480,7 +481,7 @@ class CodeScanningClient:
         alert_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         state: Literal["open", "dismissed"],
         dismissed_reason: Missing[
             Union[None, Literal["false positive", "won't fix", "used in tests"]]
@@ -494,7 +495,7 @@ class CodeScanningClient:
         repo: str,
         alert_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[CodeScanningAlert, CodeScanningAlertType]:
@@ -541,7 +542,7 @@ class CodeScanningClient:
         repo: str,
         alert_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CodeScanningAutofix, CodeScanningAutofixType]:
         """See also: https://docs.github.com/rest/code-scanning/code-scanning#get-the-status-of-an-autofix-for-a-code-scanning-alert"""
 
@@ -574,7 +575,7 @@ class CodeScanningClient:
         repo: str,
         alert_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CodeScanningAutofix, CodeScanningAutofixType]:
         """See also: https://docs.github.com/rest/code-scanning/code-scanning#get-the-status-of-an-autofix-for-a-code-scanning-alert"""
 
@@ -607,7 +608,7 @@ class CodeScanningClient:
         repo: str,
         alert_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CodeScanningAutofix, CodeScanningAutofixType]:
         """See also: https://docs.github.com/rest/code-scanning/code-scanning#create-an-autofix-for-a-code-scanning-alert"""
 
@@ -640,7 +641,7 @@ class CodeScanningClient:
         repo: str,
         alert_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CodeScanningAutofix, CodeScanningAutofixType]:
         """See also: https://docs.github.com/rest/code-scanning/code-scanning#create-an-autofix-for-a-code-scanning-alert"""
 
@@ -674,7 +675,7 @@ class CodeScanningClient:
         repo: str,
         alert_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[Union[CodeScanningAutofixCommitsType, None]] = UNSET,
     ) -> Response[
         CodeScanningAutofixCommitsResponse, CodeScanningAutofixCommitsResponseType
@@ -688,7 +689,7 @@ class CodeScanningClient:
         alert_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         target_ref: Missing[str] = UNSET,
         message: Missing[str] = UNSET,
     ) -> Response[
@@ -701,7 +702,7 @@ class CodeScanningClient:
         repo: str,
         alert_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[Union[CodeScanningAutofixCommitsType, None]] = UNSET,
         **kwargs,
     ) -> Response[
@@ -754,7 +755,7 @@ class CodeScanningClient:
         repo: str,
         alert_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[Union[CodeScanningAutofixCommitsType, None]] = UNSET,
     ) -> Response[
         CodeScanningAutofixCommitsResponse, CodeScanningAutofixCommitsResponseType
@@ -768,7 +769,7 @@ class CodeScanningClient:
         alert_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         target_ref: Missing[str] = UNSET,
         message: Missing[str] = UNSET,
     ) -> Response[
@@ -781,7 +782,7 @@ class CodeScanningClient:
         repo: str,
         alert_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[Union[CodeScanningAutofixCommitsType, None]] = UNSET,
         **kwargs,
     ) -> Response[
@@ -837,7 +838,7 @@ class CodeScanningClient:
         per_page: Missing[int] = UNSET,
         ref: Missing[str] = UNSET,
         pr: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[CodeScanningAlertInstance], list[CodeScanningAlertInstanceType]]:
         """See also: https://docs.github.com/rest/code-scanning/code-scanning#list-instances-of-a-code-scanning-alert"""
 
@@ -881,7 +882,7 @@ class CodeScanningClient:
         per_page: Missing[int] = UNSET,
         ref: Missing[str] = UNSET,
         pr: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[CodeScanningAlertInstance], list[CodeScanningAlertInstanceType]]:
         """See also: https://docs.github.com/rest/code-scanning/code-scanning#list-instances-of-a-code-scanning-alert"""
 
@@ -929,7 +930,7 @@ class CodeScanningClient:
         sarif_id: Missing[str] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         sort: Missing[Literal["created"]] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[CodeScanningAnalysis], list[CodeScanningAnalysisType]]:
         """See also: https://docs.github.com/rest/code-scanning/code-scanning#list-code-scanning-analyses-for-a-repository"""
 
@@ -982,7 +983,7 @@ class CodeScanningClient:
         sarif_id: Missing[str] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         sort: Missing[Literal["created"]] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[CodeScanningAnalysis], list[CodeScanningAnalysisType]]:
         """See also: https://docs.github.com/rest/code-scanning/code-scanning#list-code-scanning-analyses-for-a-repository"""
 
@@ -1027,7 +1028,7 @@ class CodeScanningClient:
         repo: str,
         analysis_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CodeScanningAnalysis, CodeScanningAnalysisType]:
         """See also: https://docs.github.com/rest/code-scanning/code-scanning#get-a-code-scanning-analysis-for-a-repository"""
 
@@ -1059,7 +1060,7 @@ class CodeScanningClient:
         repo: str,
         analysis_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CodeScanningAnalysis, CodeScanningAnalysisType]:
         """See also: https://docs.github.com/rest/code-scanning/code-scanning#get-a-code-scanning-analysis-for-a-repository"""
 
@@ -1092,7 +1093,7 @@ class CodeScanningClient:
         analysis_id: int,
         *,
         confirm_delete: Missing[Union[str, None]] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CodeScanningAnalysisDeletion, CodeScanningAnalysisDeletionType]:
         """See also: https://docs.github.com/rest/code-scanning/code-scanning#delete-a-code-scanning-analysis-from-a-repository"""
 
@@ -1131,7 +1132,7 @@ class CodeScanningClient:
         analysis_id: int,
         *,
         confirm_delete: Missing[Union[str, None]] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CodeScanningAnalysisDeletion, CodeScanningAnalysisDeletionType]:
         """See also: https://docs.github.com/rest/code-scanning/code-scanning#delete-a-code-scanning-analysis-from-a-repository"""
 
@@ -1168,7 +1169,7 @@ class CodeScanningClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         list[CodeScanningCodeqlDatabase], list[CodeScanningCodeqlDatabaseType]
     ]:
@@ -1201,7 +1202,7 @@ class CodeScanningClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         list[CodeScanningCodeqlDatabase], list[CodeScanningCodeqlDatabaseType]
     ]:
@@ -1235,7 +1236,7 @@ class CodeScanningClient:
         repo: str,
         language: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CodeScanningCodeqlDatabase, CodeScanningCodeqlDatabaseType]:
         """See also: https://docs.github.com/rest/code-scanning/code-scanning#get-a-codeql-database-for-a-repository"""
 
@@ -1267,7 +1268,7 @@ class CodeScanningClient:
         repo: str,
         language: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CodeScanningCodeqlDatabase, CodeScanningCodeqlDatabaseType]:
         """See also: https://docs.github.com/rest/code-scanning/code-scanning#get-a-codeql-database-for-a-repository"""
 
@@ -1299,7 +1300,7 @@ class CodeScanningClient:
         repo: str,
         language: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/code-scanning/code-scanning#delete-a-codeql-database"""
 
@@ -1329,7 +1330,7 @@ class CodeScanningClient:
         repo: str,
         language: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/code-scanning/code-scanning#delete-a-codeql-database"""
 
@@ -1359,7 +1360,7 @@ class CodeScanningClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Union[
             ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0Type,
             ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1Type,
@@ -1374,7 +1375,7 @@ class CodeScanningClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         language: Literal[
             "cpp", "csharp", "go", "java", "javascript", "python", "ruby", "swift"
         ],
@@ -1391,7 +1392,7 @@ class CodeScanningClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         language: Literal[
             "cpp", "csharp", "go", "java", "javascript", "python", "ruby", "swift"
         ],
@@ -1408,7 +1409,7 @@ class CodeScanningClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         language: Literal[
             "cpp", "csharp", "go", "java", "javascript", "python", "ruby", "swift"
         ],
@@ -1423,7 +1424,7 @@ class CodeScanningClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0Type,
@@ -1485,7 +1486,7 @@ class CodeScanningClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Union[
             ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0Type,
             ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1Type,
@@ -1500,7 +1501,7 @@ class CodeScanningClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         language: Literal[
             "cpp", "csharp", "go", "java", "javascript", "python", "ruby", "swift"
         ],
@@ -1517,7 +1518,7 @@ class CodeScanningClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         language: Literal[
             "cpp", "csharp", "go", "java", "javascript", "python", "ruby", "swift"
         ],
@@ -1534,7 +1535,7 @@ class CodeScanningClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         language: Literal[
             "cpp", "csharp", "go", "java", "javascript", "python", "ruby", "swift"
         ],
@@ -1549,7 +1550,7 @@ class CodeScanningClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0Type,
@@ -1611,7 +1612,7 @@ class CodeScanningClient:
         repo: str,
         codeql_variant_analysis_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CodeScanningVariantAnalysis, CodeScanningVariantAnalysisType]:
         """See also: https://docs.github.com/rest/code-scanning/code-scanning#get-the-summary-of-a-codeql-variant-analysis"""
 
@@ -1642,7 +1643,7 @@ class CodeScanningClient:
         repo: str,
         codeql_variant_analysis_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CodeScanningVariantAnalysis, CodeScanningVariantAnalysisType]:
         """See also: https://docs.github.com/rest/code-scanning/code-scanning#get-the-summary-of-a-codeql-variant-analysis"""
 
@@ -1675,7 +1676,7 @@ class CodeScanningClient:
         repo_owner: str,
         repo_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         CodeScanningVariantAnalysisRepoTask, CodeScanningVariantAnalysisRepoTaskType
     ]:
@@ -1710,7 +1711,7 @@ class CodeScanningClient:
         repo_owner: str,
         repo_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         CodeScanningVariantAnalysisRepoTask, CodeScanningVariantAnalysisRepoTaskType
     ]:
@@ -1742,7 +1743,7 @@ class CodeScanningClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CodeScanningDefaultSetup, CodeScanningDefaultSetupType]:
         """See also: https://docs.github.com/rest/code-scanning/code-scanning#get-a-code-scanning-default-setup-configuration"""
 
@@ -1773,7 +1774,7 @@ class CodeScanningClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CodeScanningDefaultSetup, CodeScanningDefaultSetupType]:
         """See also: https://docs.github.com/rest/code-scanning/code-scanning#get-a-code-scanning-default-setup-configuration"""
 
@@ -1805,7 +1806,7 @@ class CodeScanningClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: CodeScanningDefaultSetupUpdateType,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
 
@@ -1816,7 +1817,7 @@ class CodeScanningClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         state: Missing[Literal["configured", "not-configured"]] = UNSET,
         runner_type: Missing[Literal["standard", "labeled"]] = UNSET,
         runner_label: Missing[Union[str, None]] = UNSET,
@@ -1843,7 +1844,7 @@ class CodeScanningClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[CodeScanningDefaultSetupUpdateType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject, EmptyObjectType]:
@@ -1889,7 +1890,7 @@ class CodeScanningClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: CodeScanningDefaultSetupUpdateType,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
 
@@ -1900,7 +1901,7 @@ class CodeScanningClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         state: Missing[Literal["configured", "not-configured"]] = UNSET,
         runner_type: Missing[Literal["standard", "labeled"]] = UNSET,
         runner_label: Missing[Union[str, None]] = UNSET,
@@ -1927,7 +1928,7 @@ class CodeScanningClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[CodeScanningDefaultSetupUpdateType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject, EmptyObjectType]:
@@ -1973,7 +1974,7 @@ class CodeScanningClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoCodeScanningSarifsPostBodyType,
     ) -> Response[CodeScanningSarifsReceipt, CodeScanningSarifsReceiptType]: ...
 
@@ -1984,7 +1985,7 @@ class CodeScanningClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         commit_sha: str,
         ref: str,
         sarif: str,
@@ -1999,7 +2000,7 @@ class CodeScanningClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoCodeScanningSarifsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[CodeScanningSarifsReceipt, CodeScanningSarifsReceiptType]:
@@ -2044,7 +2045,7 @@ class CodeScanningClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoCodeScanningSarifsPostBodyType,
     ) -> Response[CodeScanningSarifsReceipt, CodeScanningSarifsReceiptType]: ...
 
@@ -2055,7 +2056,7 @@ class CodeScanningClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         commit_sha: str,
         ref: str,
         sarif: str,
@@ -2070,7 +2071,7 @@ class CodeScanningClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoCodeScanningSarifsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[CodeScanningSarifsReceipt, CodeScanningSarifsReceiptType]:
@@ -2115,7 +2116,7 @@ class CodeScanningClient:
         repo: str,
         sarif_id: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CodeScanningSarifsStatus, CodeScanningSarifsStatusType]:
         """See also: https://docs.github.com/rest/code-scanning/code-scanning#get-information-about-a-sarif-upload"""
 
@@ -2146,7 +2147,7 @@ class CodeScanningClient:
         repo: str,
         sarif_id: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CodeScanningSarifsStatus, CodeScanningSarifsStatusType]:
         """See also: https://docs.github.com/rest/code-scanning/code-scanning#get-information-about-a-sarif-upload"""
 

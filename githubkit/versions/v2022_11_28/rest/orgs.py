@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from collections.abc import Mapping
 from typing import TYPE_CHECKING, Literal, Optional, overload
 from weakref import ref
 
@@ -130,7 +131,7 @@ class OrgsClient:
         *,
         since: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[OrganizationSimple], list[OrganizationSimpleType]]:
         """See also: https://docs.github.com/rest/orgs/orgs#list-organizations"""
 
@@ -158,7 +159,7 @@ class OrgsClient:
         *,
         since: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[OrganizationSimple], list[OrganizationSimpleType]]:
         """See also: https://docs.github.com/rest/orgs/orgs#list-organizations"""
 
@@ -185,7 +186,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[OrganizationFull, OrganizationFullType]:
         """See also: https://docs.github.com/rest/orgs/orgs#get-an-organization"""
 
@@ -209,7 +210,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[OrganizationFull, OrganizationFullType]:
         """See also: https://docs.github.com/rest/orgs/orgs#get-an-organization"""
 
@@ -233,7 +234,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
@@ -264,7 +265,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
@@ -296,7 +297,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgPatchBodyType] = UNSET,
     ) -> Response[OrganizationFull, OrganizationFullType]: ...
 
@@ -306,7 +307,7 @@ class OrgsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         billing_email: Missing[str] = UNSET,
         company: Missing[str] = UNSET,
         email: Missing[str] = UNSET,
@@ -349,7 +350,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[OrganizationFull, OrganizationFullType]:
@@ -395,7 +396,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgPatchBodyType] = UNSET,
     ) -> Response[OrganizationFull, OrganizationFullType]: ...
 
@@ -405,7 +406,7 @@ class OrgsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         billing_email: Missing[str] = UNSET,
         company: Missing[str] = UNSET,
         email: Missing[str] = UNSET,
@@ -448,7 +449,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[OrganizationFull, OrganizationFullType]:
@@ -497,7 +498,7 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         OrgsOrgAttestationsSubjectDigestGetResponse200,
         OrgsOrgAttestationsSubjectDigestGetResponse200Type,
@@ -532,7 +533,7 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         OrgsOrgAttestationsSubjectDigestGetResponse200,
         OrgsOrgAttestationsSubjectDigestGetResponse200Type,
@@ -565,7 +566,7 @@ class OrgsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """See also: https://docs.github.com/rest/orgs/blocking#list-users-blocked-by-an-organization"""
 
@@ -594,7 +595,7 @@ class OrgsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """See also: https://docs.github.com/rest/orgs/blocking#list-users-blocked-by-an-organization"""
 
@@ -622,7 +623,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/orgs/blocking#check-if-a-user-is-blocked-by-an-organization"""
 
@@ -646,7 +647,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/orgs/blocking#check-if-a-user-is-blocked-by-an-organization"""
 
@@ -670,7 +671,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/orgs/blocking#block-a-user-from-an-organization"""
 
@@ -694,7 +695,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/orgs/blocking#block-a-user-from-an-organization"""
 
@@ -718,7 +719,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/orgs/blocking#unblock-a-user-from-an-organization"""
 
@@ -737,7 +738,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/orgs/blocking#unblock-a-user-from-an-organization"""
 
@@ -757,7 +758,7 @@ class OrgsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[OrganizationInvitation], list[OrganizationInvitationType]]:
         """See also: https://docs.github.com/rest/orgs/members#list-failed-organization-invitations"""
 
@@ -789,7 +790,7 @@ class OrgsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[OrganizationInvitation], list[OrganizationInvitationType]]:
         """See also: https://docs.github.com/rest/orgs/members#list-failed-organization-invitations"""
 
@@ -821,7 +822,7 @@ class OrgsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[OrgHook], list[OrgHookType]]:
         """See also: https://docs.github.com/rest/orgs/webhooks#list-organization-webhooks"""
 
@@ -853,7 +854,7 @@ class OrgsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[OrgHook], list[OrgHookType]]:
         """See also: https://docs.github.com/rest/orgs/webhooks#list-organization-webhooks"""
 
@@ -884,7 +885,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgHooksPostBodyType,
     ) -> Response[OrgHook, OrgHookType]: ...
 
@@ -894,7 +895,7 @@ class OrgsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         name: str,
         config: OrgsOrgHooksPostBodyPropConfigType,
         events: Missing[list[str]] = UNSET,
@@ -905,7 +906,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgHooksPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[OrgHook, OrgHookType]:
@@ -943,7 +944,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgHooksPostBodyType,
     ) -> Response[OrgHook, OrgHookType]: ...
 
@@ -953,7 +954,7 @@ class OrgsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         name: str,
         config: OrgsOrgHooksPostBodyPropConfigType,
         events: Missing[list[str]] = UNSET,
@@ -964,7 +965,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgHooksPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[OrgHook, OrgHookType]:
@@ -1002,7 +1003,7 @@ class OrgsClient:
         org: str,
         hook_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[OrgHook, OrgHookType]:
         """See also: https://docs.github.com/rest/orgs/webhooks#get-an-organization-webhook"""
 
@@ -1027,7 +1028,7 @@ class OrgsClient:
         org: str,
         hook_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[OrgHook, OrgHookType]:
         """See also: https://docs.github.com/rest/orgs/webhooks#get-an-organization-webhook"""
 
@@ -1052,7 +1053,7 @@ class OrgsClient:
         org: str,
         hook_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/orgs/webhooks#delete-an-organization-webhook"""
 
@@ -1076,7 +1077,7 @@ class OrgsClient:
         org: str,
         hook_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/orgs/webhooks#delete-an-organization-webhook"""
 
@@ -1101,7 +1102,7 @@ class OrgsClient:
         org: str,
         hook_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgHooksHookIdPatchBodyType] = UNSET,
     ) -> Response[OrgHook, OrgHookType]: ...
 
@@ -1112,7 +1113,7 @@ class OrgsClient:
         hook_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         config: Missing[OrgsOrgHooksHookIdPatchBodyPropConfigType] = UNSET,
         events: Missing[list[str]] = UNSET,
         active: Missing[bool] = UNSET,
@@ -1124,7 +1125,7 @@ class OrgsClient:
         org: str,
         hook_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgHooksHookIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[OrgHook, OrgHookType]:
@@ -1168,7 +1169,7 @@ class OrgsClient:
         org: str,
         hook_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgHooksHookIdPatchBodyType] = UNSET,
     ) -> Response[OrgHook, OrgHookType]: ...
 
@@ -1179,7 +1180,7 @@ class OrgsClient:
         hook_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         config: Missing[OrgsOrgHooksHookIdPatchBodyPropConfigType] = UNSET,
         events: Missing[list[str]] = UNSET,
         active: Missing[bool] = UNSET,
@@ -1191,7 +1192,7 @@ class OrgsClient:
         org: str,
         hook_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgHooksHookIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[OrgHook, OrgHookType]:
@@ -1234,7 +1235,7 @@ class OrgsClient:
         org: str,
         hook_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[WebhookConfig, WebhookConfigType]:
         """See also: https://docs.github.com/rest/orgs/webhooks#get-a-webhook-configuration-for-an-organization"""
 
@@ -1256,7 +1257,7 @@ class OrgsClient:
         org: str,
         hook_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[WebhookConfig, WebhookConfigType]:
         """See also: https://docs.github.com/rest/orgs/webhooks#get-a-webhook-configuration-for-an-organization"""
 
@@ -1279,7 +1280,7 @@ class OrgsClient:
         org: str,
         hook_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgHooksHookIdConfigPatchBodyType] = UNSET,
     ) -> Response[WebhookConfig, WebhookConfigType]: ...
 
@@ -1290,7 +1291,7 @@ class OrgsClient:
         hook_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         url: Missing[str] = UNSET,
         content_type: Missing[str] = UNSET,
         secret: Missing[str] = UNSET,
@@ -1302,7 +1303,7 @@ class OrgsClient:
         org: str,
         hook_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgHooksHookIdConfigPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[WebhookConfig, WebhookConfigType]:
@@ -1337,7 +1338,7 @@ class OrgsClient:
         org: str,
         hook_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgHooksHookIdConfigPatchBodyType] = UNSET,
     ) -> Response[WebhookConfig, WebhookConfigType]: ...
 
@@ -1348,7 +1349,7 @@ class OrgsClient:
         hook_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         url: Missing[str] = UNSET,
         content_type: Missing[str] = UNSET,
         secret: Missing[str] = UNSET,
@@ -1360,7 +1361,7 @@ class OrgsClient:
         org: str,
         hook_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgHooksHookIdConfigPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[WebhookConfig, WebhookConfigType]:
@@ -1396,7 +1397,7 @@ class OrgsClient:
         *,
         per_page: Missing[int] = UNSET,
         cursor: Missing[str] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[HookDeliveryItem], list[HookDeliveryItemType]]:
         """See also: https://docs.github.com/rest/orgs/webhooks#list-deliveries-for-an-organization-webhook"""
 
@@ -1430,7 +1431,7 @@ class OrgsClient:
         *,
         per_page: Missing[int] = UNSET,
         cursor: Missing[str] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[HookDeliveryItem], list[HookDeliveryItemType]]:
         """See also: https://docs.github.com/rest/orgs/webhooks#list-deliveries-for-an-organization-webhook"""
 
@@ -1463,7 +1464,7 @@ class OrgsClient:
         hook_id: int,
         delivery_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[HookDelivery, HookDeliveryType]:
         """See also: https://docs.github.com/rest/orgs/webhooks#get-a-webhook-delivery-for-an-organization-webhook"""
 
@@ -1490,7 +1491,7 @@ class OrgsClient:
         hook_id: int,
         delivery_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[HookDelivery, HookDeliveryType]:
         """See also: https://docs.github.com/rest/orgs/webhooks#get-a-webhook-delivery-for-an-organization-webhook"""
 
@@ -1517,7 +1518,7 @@ class OrgsClient:
         hook_id: int,
         delivery_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
@@ -1551,7 +1552,7 @@ class OrgsClient:
         hook_id: int,
         delivery_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
@@ -1584,7 +1585,7 @@ class OrgsClient:
         org: str,
         hook_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/orgs/webhooks#ping-an-organization-webhook"""
 
@@ -1608,7 +1609,7 @@ class OrgsClient:
         org: str,
         hook_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/orgs/webhooks#ping-an-organization-webhook"""
 
@@ -1657,7 +1658,7 @@ class OrgsClient:
             ]
         ] = UNSET,
         api_route_substring: Missing[str] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         list[ApiInsightsRouteStatsItems], list[ApiInsightsRouteStatsItemsType]
     ]:
@@ -1717,7 +1718,7 @@ class OrgsClient:
             ]
         ] = UNSET,
         api_route_substring: Missing[str] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         list[ApiInsightsRouteStatsItems], list[ApiInsightsRouteStatsItemsType]
     ]:
@@ -1768,7 +1769,7 @@ class OrgsClient:
             ]
         ] = UNSET,
         subject_name_substring: Missing[str] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         list[ApiInsightsSubjectStatsItems], list[ApiInsightsSubjectStatsItemsType]
     ]:
@@ -1819,7 +1820,7 @@ class OrgsClient:
             ]
         ] = UNSET,
         subject_name_substring: Missing[str] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         list[ApiInsightsSubjectStatsItems], list[ApiInsightsSubjectStatsItemsType]
     ]:
@@ -1855,7 +1856,7 @@ class OrgsClient:
         *,
         min_timestamp: str,
         max_timestamp: Missing[str] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ApiInsightsSummaryStats, ApiInsightsSummaryStatsType]:
         """See also: https://docs.github.com/rest/orgs/api-insights#get-summary-stats"""
 
@@ -1884,7 +1885,7 @@ class OrgsClient:
         *,
         min_timestamp: str,
         max_timestamp: Missing[str] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ApiInsightsSummaryStats, ApiInsightsSummaryStatsType]:
         """See also: https://docs.github.com/rest/orgs/api-insights#get-summary-stats"""
 
@@ -1914,7 +1915,7 @@ class OrgsClient:
         *,
         min_timestamp: str,
         max_timestamp: Missing[str] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ApiInsightsSummaryStats, ApiInsightsSummaryStatsType]:
         """See also: https://docs.github.com/rest/orgs/api-insights#get-summary-stats-by-user"""
 
@@ -1944,7 +1945,7 @@ class OrgsClient:
         *,
         min_timestamp: str,
         max_timestamp: Missing[str] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ApiInsightsSummaryStats, ApiInsightsSummaryStatsType]:
         """See also: https://docs.github.com/rest/orgs/api-insights#get-summary-stats-by-user"""
 
@@ -1981,7 +1982,7 @@ class OrgsClient:
         *,
         min_timestamp: str,
         max_timestamp: Missing[str] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ApiInsightsSummaryStats, ApiInsightsSummaryStatsType]:
         """See also: https://docs.github.com/rest/orgs/api-insights#get-summary-stats-by-actor"""
 
@@ -2018,7 +2019,7 @@ class OrgsClient:
         *,
         min_timestamp: str,
         max_timestamp: Missing[str] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ApiInsightsSummaryStats, ApiInsightsSummaryStatsType]:
         """See also: https://docs.github.com/rest/orgs/api-insights#get-summary-stats-by-actor"""
 
@@ -2048,7 +2049,7 @@ class OrgsClient:
         min_timestamp: str,
         max_timestamp: Missing[str] = UNSET,
         timestamp_increment: str,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[ApiInsightsTimeStatsItems], list[ApiInsightsTimeStatsItemsType]]:
         """See also: https://docs.github.com/rest/orgs/api-insights#get-time-stats"""
 
@@ -2079,7 +2080,7 @@ class OrgsClient:
         min_timestamp: str,
         max_timestamp: Missing[str] = UNSET,
         timestamp_increment: str,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[ApiInsightsTimeStatsItems], list[ApiInsightsTimeStatsItemsType]]:
         """See also: https://docs.github.com/rest/orgs/api-insights#get-time-stats"""
 
@@ -2111,7 +2112,7 @@ class OrgsClient:
         min_timestamp: str,
         max_timestamp: Missing[str] = UNSET,
         timestamp_increment: str,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[ApiInsightsTimeStatsItems], list[ApiInsightsTimeStatsItemsType]]:
         """See also: https://docs.github.com/rest/orgs/api-insights#get-time-stats-by-user"""
 
@@ -2143,7 +2144,7 @@ class OrgsClient:
         min_timestamp: str,
         max_timestamp: Missing[str] = UNSET,
         timestamp_increment: str,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[ApiInsightsTimeStatsItems], list[ApiInsightsTimeStatsItemsType]]:
         """See also: https://docs.github.com/rest/orgs/api-insights#get-time-stats-by-user"""
 
@@ -2182,7 +2183,7 @@ class OrgsClient:
         min_timestamp: str,
         max_timestamp: Missing[str] = UNSET,
         timestamp_increment: str,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[ApiInsightsTimeStatsItems], list[ApiInsightsTimeStatsItemsType]]:
         """See also: https://docs.github.com/rest/orgs/api-insights#get-time-stats-by-actor"""
 
@@ -2221,7 +2222,7 @@ class OrgsClient:
         min_timestamp: str,
         max_timestamp: Missing[str] = UNSET,
         timestamp_increment: str,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[ApiInsightsTimeStatsItems], list[ApiInsightsTimeStatsItemsType]]:
         """See also: https://docs.github.com/rest/orgs/api-insights#get-time-stats-by-actor"""
 
@@ -2267,7 +2268,7 @@ class OrgsClient:
             ]
         ] = UNSET,
         actor_name_substring: Missing[str] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[ApiInsightsUserStatsItems], list[ApiInsightsUserStatsItemsType]]:
         """See also: https://docs.github.com/rest/orgs/api-insights#get-user-stats"""
 
@@ -2317,7 +2318,7 @@ class OrgsClient:
             ]
         ] = UNSET,
         actor_name_substring: Missing[str] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[ApiInsightsUserStatsItems], list[ApiInsightsUserStatsItemsType]]:
         """See also: https://docs.github.com/rest/orgs/api-insights#get-user-stats"""
 
@@ -2351,7 +2352,7 @@ class OrgsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         OrgsOrgInstallationsGetResponse200, OrgsOrgInstallationsGetResponse200Type
     ]:
@@ -2382,7 +2383,7 @@ class OrgsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         OrgsOrgInstallationsGetResponse200, OrgsOrgInstallationsGetResponse200Type
     ]:
@@ -2419,7 +2420,7 @@ class OrgsClient:
             ]
         ] = UNSET,
         invitation_source: Missing[Literal["all", "member", "scim"]] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[OrganizationInvitation], list[OrganizationInvitationType]]:
         """See also: https://docs.github.com/rest/orgs/members#list-pending-organization-invitations"""
 
@@ -2459,7 +2460,7 @@ class OrgsClient:
             ]
         ] = UNSET,
         invitation_source: Missing[Literal["all", "member", "scim"]] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[OrganizationInvitation], list[OrganizationInvitationType]]:
         """See also: https://docs.github.com/rest/orgs/members#list-pending-organization-invitations"""
 
@@ -2492,7 +2493,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgInvitationsPostBodyType] = UNSET,
     ) -> Response[OrganizationInvitation, OrganizationInvitationType]: ...
 
@@ -2502,7 +2503,7 @@ class OrgsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         invitee_id: Missing[int] = UNSET,
         email: Missing[str] = UNSET,
         role: Missing[
@@ -2515,7 +2516,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgInvitationsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[OrganizationInvitation, OrganizationInvitationType]:
@@ -2558,7 +2559,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgInvitationsPostBodyType] = UNSET,
     ) -> Response[OrganizationInvitation, OrganizationInvitationType]: ...
 
@@ -2568,7 +2569,7 @@ class OrgsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         invitee_id: Missing[int] = UNSET,
         email: Missing[str] = UNSET,
         role: Missing[
@@ -2581,7 +2582,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgInvitationsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[OrganizationInvitation, OrganizationInvitationType]:
@@ -2624,7 +2625,7 @@ class OrgsClient:
         org: str,
         invitation_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/orgs/members#cancel-an-organization-invitation"""
 
@@ -2649,7 +2650,7 @@ class OrgsClient:
         org: str,
         invitation_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/orgs/members#cancel-an-organization-invitation"""
 
@@ -2676,7 +2677,7 @@ class OrgsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Team], list[TeamType]]:
         """See also: https://docs.github.com/rest/orgs/members#list-organization-invitation-teams"""
 
@@ -2709,7 +2710,7 @@ class OrgsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Team], list[TeamType]]:
         """See also: https://docs.github.com/rest/orgs/members#list-organization-invitation-teams"""
 
@@ -2743,7 +2744,7 @@ class OrgsClient:
         role: Missing[Literal["all", "admin", "member"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """See also: https://docs.github.com/rest/orgs/members#list-organization-members"""
 
@@ -2779,7 +2780,7 @@ class OrgsClient:
         role: Missing[Literal["all", "admin", "member"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """See also: https://docs.github.com/rest/orgs/members#list-organization-members"""
 
@@ -2812,7 +2813,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/orgs/members#check-organization-membership-for-a-user"""
 
@@ -2832,7 +2833,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/orgs/members#check-organization-membership-for-a-user"""
 
@@ -2852,7 +2853,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/orgs/members#remove-an-organization-member"""
 
@@ -2876,7 +2877,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/orgs/members#remove-an-organization-member"""
 
@@ -2900,7 +2901,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[OrgMembership, OrgMembershipType]:
         """See also: https://docs.github.com/rest/orgs/members#get-organization-membership-for-a-user"""
 
@@ -2926,7 +2927,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[OrgMembership, OrgMembershipType]:
         """See also: https://docs.github.com/rest/orgs/members#get-organization-membership-for-a-user"""
 
@@ -2953,7 +2954,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgMembershipsUsernamePutBodyType] = UNSET,
     ) -> Response[OrgMembership, OrgMembershipType]: ...
 
@@ -2964,7 +2965,7 @@ class OrgsClient:
         username: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         role: Missing[Literal["admin", "member"]] = UNSET,
     ) -> Response[OrgMembership, OrgMembershipType]: ...
 
@@ -2973,7 +2974,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgMembershipsUsernamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[OrgMembership, OrgMembershipType]:
@@ -3017,7 +3018,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgMembershipsUsernamePutBodyType] = UNSET,
     ) -> Response[OrgMembership, OrgMembershipType]: ...
 
@@ -3028,7 +3029,7 @@ class OrgsClient:
         username: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         role: Missing[Literal["admin", "member"]] = UNSET,
     ) -> Response[OrgMembership, OrgMembershipType]: ...
 
@@ -3037,7 +3038,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgMembershipsUsernamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[OrgMembership, OrgMembershipType]:
@@ -3080,7 +3081,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/orgs/members#remove-organization-membership-for-a-user"""
 
@@ -3105,7 +3106,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/orgs/members#remove-organization-membership-for-a-user"""
 
@@ -3129,7 +3130,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         OrgsOrgOrganizationRolesGetResponse200,
         OrgsOrgOrganizationRolesGetResponse200Type,
@@ -3161,7 +3162,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         OrgsOrgOrganizationRolesGetResponse200,
         OrgsOrgOrganizationRolesGetResponse200Type,
@@ -3194,7 +3195,7 @@ class OrgsClient:
         org: str,
         team_slug: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/orgs/organization-roles#remove-all-organization-roles-for-a-team"""
 
@@ -3213,7 +3214,7 @@ class OrgsClient:
         org: str,
         team_slug: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/orgs/organization-roles#remove-all-organization-roles-for-a-team"""
 
@@ -3233,7 +3234,7 @@ class OrgsClient:
         team_slug: str,
         role_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/orgs/organization-roles#assign-an-organization-role-to-a-team"""
 
@@ -3254,7 +3255,7 @@ class OrgsClient:
         team_slug: str,
         role_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/orgs/organization-roles#assign-an-organization-role-to-a-team"""
 
@@ -3275,7 +3276,7 @@ class OrgsClient:
         team_slug: str,
         role_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/orgs/organization-roles#remove-an-organization-role-from-a-team"""
 
@@ -3295,7 +3296,7 @@ class OrgsClient:
         team_slug: str,
         role_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/orgs/organization-roles#remove-an-organization-role-from-a-team"""
 
@@ -3314,7 +3315,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/orgs/organization-roles#remove-all-organization-roles-for-a-user"""
 
@@ -3333,7 +3334,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/orgs/organization-roles#remove-all-organization-roles-for-a-user"""
 
@@ -3353,7 +3354,7 @@ class OrgsClient:
         username: str,
         role_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/orgs/organization-roles#assign-an-organization-role-to-a-user"""
 
@@ -3374,7 +3375,7 @@ class OrgsClient:
         username: str,
         role_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/orgs/organization-roles#assign-an-organization-role-to-a-user"""
 
@@ -3395,7 +3396,7 @@ class OrgsClient:
         username: str,
         role_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/orgs/organization-roles#remove-an-organization-role-from-a-user"""
 
@@ -3415,7 +3416,7 @@ class OrgsClient:
         username: str,
         role_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/orgs/organization-roles#remove-an-organization-role-from-a-user"""
 
@@ -3434,7 +3435,7 @@ class OrgsClient:
         org: str,
         role_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[OrganizationRole, OrganizationRoleType]:
         """See also: https://docs.github.com/rest/orgs/organization-roles#get-an-organization-role"""
 
@@ -3460,7 +3461,7 @@ class OrgsClient:
         org: str,
         role_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[OrganizationRole, OrganizationRoleType]:
         """See also: https://docs.github.com/rest/orgs/organization-roles#get-an-organization-role"""
 
@@ -3488,7 +3489,7 @@ class OrgsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[TeamRoleAssignment], list[TeamRoleAssignmentType]]:
         """See also: https://docs.github.com/rest/orgs/organization-roles#list-teams-that-are-assigned-to-an-organization-role"""
 
@@ -3519,7 +3520,7 @@ class OrgsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[TeamRoleAssignment], list[TeamRoleAssignmentType]]:
         """See also: https://docs.github.com/rest/orgs/organization-roles#list-teams-that-are-assigned-to-an-organization-role"""
 
@@ -3550,7 +3551,7 @@ class OrgsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[UserRoleAssignment], list[UserRoleAssignmentType]]:
         """See also: https://docs.github.com/rest/orgs/organization-roles#list-users-that-are-assigned-to-an-organization-role"""
 
@@ -3581,7 +3582,7 @@ class OrgsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[UserRoleAssignment], list[UserRoleAssignmentType]]:
         """See also: https://docs.github.com/rest/orgs/organization-roles#list-users-that-are-assigned-to-an-organization-role"""
 
@@ -3612,7 +3613,7 @@ class OrgsClient:
         filter_: Missing[Literal["2fa_disabled", "all"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """See also: https://docs.github.com/rest/orgs/outside-collaborators#list-outside-collaborators-for-an-organization"""
 
@@ -3643,7 +3644,7 @@ class OrgsClient:
         filter_: Missing[Literal["2fa_disabled", "all"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """See also: https://docs.github.com/rest/orgs/outside-collaborators#list-outside-collaborators-for-an-organization"""
 
@@ -3673,7 +3674,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgOutsideCollaboratorsUsernamePutBodyType] = UNSET,
     ) -> Response[
         OrgsOrgOutsideCollaboratorsUsernamePutResponse202,
@@ -3687,7 +3688,7 @@ class OrgsClient:
         username: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         async_: Missing[bool] = UNSET,
     ) -> Response[
         OrgsOrgOutsideCollaboratorsUsernamePutResponse202,
@@ -3699,7 +3700,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgOutsideCollaboratorsUsernamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[
@@ -3746,7 +3747,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgOutsideCollaboratorsUsernamePutBodyType] = UNSET,
     ) -> Response[
         OrgsOrgOutsideCollaboratorsUsernamePutResponse202,
@@ -3760,7 +3761,7 @@ class OrgsClient:
         username: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         async_: Missing[bool] = UNSET,
     ) -> Response[
         OrgsOrgOutsideCollaboratorsUsernamePutResponse202,
@@ -3772,7 +3773,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgOutsideCollaboratorsUsernamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[
@@ -3818,7 +3819,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/orgs/outside-collaborators#remove-outside-collaborator-from-an-organization"""
 
@@ -3842,7 +3843,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/orgs/outside-collaborators#remove-outside-collaborator-from-an-organization"""
 
@@ -3874,7 +3875,7 @@ class OrgsClient:
         permission: Missing[str] = UNSET,
         last_used_before: Missing[datetime] = UNSET,
         last_used_after: Missing[datetime] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         list[OrganizationProgrammaticAccessGrantRequest],
         list[OrganizationProgrammaticAccessGrantRequestType],
@@ -3930,7 +3931,7 @@ class OrgsClient:
         permission: Missing[str] = UNSET,
         last_used_before: Missing[datetime] = UNSET,
         last_used_after: Missing[datetime] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         list[OrganizationProgrammaticAccessGrantRequest],
         list[OrganizationProgrammaticAccessGrantRequestType],
@@ -3978,7 +3979,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgPersonalAccessTokenRequestsPostBodyType,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
@@ -3991,7 +3992,7 @@ class OrgsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         pat_request_ids: Missing[list[int]] = UNSET,
         action: Literal["approve", "deny"],
         reason: Missing[Union[str, None]] = UNSET,
@@ -4004,7 +4005,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgPersonalAccessTokenRequestsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[
@@ -4054,7 +4055,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgPersonalAccessTokenRequestsPostBodyType,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
@@ -4067,7 +4068,7 @@ class OrgsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         pat_request_ids: Missing[list[int]] = UNSET,
         action: Literal["approve", "deny"],
         reason: Missing[Union[str, None]] = UNSET,
@@ -4080,7 +4081,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgPersonalAccessTokenRequestsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[
@@ -4131,7 +4132,7 @@ class OrgsClient:
         org: str,
         pat_request_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBodyType,
     ) -> Response: ...
 
@@ -4142,7 +4143,7 @@ class OrgsClient:
         pat_request_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         action: Literal["approve", "deny"],
         reason: Missing[Union[str, None]] = UNSET,
     ) -> Response: ...
@@ -4152,7 +4153,7 @@ class OrgsClient:
         org: str,
         pat_request_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBodyType
         ] = UNSET,
@@ -4200,7 +4201,7 @@ class OrgsClient:
         org: str,
         pat_request_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBodyType,
     ) -> Response: ...
 
@@ -4211,7 +4212,7 @@ class OrgsClient:
         pat_request_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         action: Literal["approve", "deny"],
         reason: Missing[Union[str, None]] = UNSET,
     ) -> Response: ...
@@ -4221,7 +4222,7 @@ class OrgsClient:
         org: str,
         pat_request_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBodyType
         ] = UNSET,
@@ -4270,7 +4271,7 @@ class OrgsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
         """See also: https://docs.github.com/rest/orgs/personal-access-tokens#list-repositories-requested-to-be-accessed-by-a-fine-grained-personal-access-token"""
 
@@ -4307,7 +4308,7 @@ class OrgsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
         """See also: https://docs.github.com/rest/orgs/personal-access-tokens#list-repositories-requested-to-be-accessed-by-a-fine-grained-personal-access-token"""
 
@@ -4350,7 +4351,7 @@ class OrgsClient:
         permission: Missing[str] = UNSET,
         last_used_before: Missing[datetime] = UNSET,
         last_used_after: Missing[datetime] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         list[OrganizationProgrammaticAccessGrant],
         list[OrganizationProgrammaticAccessGrantType],
@@ -4406,7 +4407,7 @@ class OrgsClient:
         permission: Missing[str] = UNSET,
         last_used_before: Missing[datetime] = UNSET,
         last_used_after: Missing[datetime] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         list[OrganizationProgrammaticAccessGrant],
         list[OrganizationProgrammaticAccessGrantType],
@@ -4454,7 +4455,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgPersonalAccessTokensPostBodyType,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
@@ -4467,7 +4468,7 @@ class OrgsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         action: Literal["revoke"],
         pat_ids: list[int],
     ) -> Response[
@@ -4479,7 +4480,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgPersonalAccessTokensPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[
@@ -4527,7 +4528,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgPersonalAccessTokensPostBodyType,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
@@ -4540,7 +4541,7 @@ class OrgsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         action: Literal["revoke"],
         pat_ids: list[int],
     ) -> Response[
@@ -4552,7 +4553,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgPersonalAccessTokensPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[
@@ -4601,7 +4602,7 @@ class OrgsClient:
         org: str,
         pat_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgPersonalAccessTokensPatIdPostBodyType,
     ) -> Response: ...
 
@@ -4612,7 +4613,7 @@ class OrgsClient:
         pat_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         action: Literal["revoke"],
     ) -> Response: ...
 
@@ -4621,7 +4622,7 @@ class OrgsClient:
         org: str,
         pat_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgPersonalAccessTokensPatIdPostBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -4665,7 +4666,7 @@ class OrgsClient:
         org: str,
         pat_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgPersonalAccessTokensPatIdPostBodyType,
     ) -> Response: ...
 
@@ -4676,7 +4677,7 @@ class OrgsClient:
         pat_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         action: Literal["revoke"],
     ) -> Response: ...
 
@@ -4685,7 +4686,7 @@ class OrgsClient:
         org: str,
         pat_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgPersonalAccessTokensPatIdPostBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -4730,7 +4731,7 @@ class OrgsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
         """See also: https://docs.github.com/rest/orgs/personal-access-tokens#list-repositories-a-fine-grained-personal-access-token-has-access-to"""
 
@@ -4765,7 +4766,7 @@ class OrgsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
         """See also: https://docs.github.com/rest/orgs/personal-access-tokens#list-repositories-a-fine-grained-personal-access-token-has-access-to"""
 
@@ -4797,7 +4798,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[CustomProperty], list[CustomPropertyType]]:
         """See also: https://docs.github.com/rest/orgs/custom-properties#get-all-custom-properties-for-an-organization"""
 
@@ -4822,7 +4823,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[CustomProperty], list[CustomPropertyType]]:
         """See also: https://docs.github.com/rest/orgs/custom-properties#get-all-custom-properties-for-an-organization"""
 
@@ -4848,7 +4849,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgPropertiesSchemaPatchBodyType,
     ) -> Response[list[CustomProperty], list[CustomPropertyType]]: ...
 
@@ -4858,7 +4859,7 @@ class OrgsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         properties: list[CustomPropertyType],
     ) -> Response[list[CustomProperty], list[CustomPropertyType]]: ...
 
@@ -4866,7 +4867,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgPropertiesSchemaPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[list[CustomProperty], list[CustomPropertyType]]:
@@ -4908,7 +4909,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgPropertiesSchemaPatchBodyType,
     ) -> Response[list[CustomProperty], list[CustomPropertyType]]: ...
 
@@ -4918,7 +4919,7 @@ class OrgsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         properties: list[CustomPropertyType],
     ) -> Response[list[CustomProperty], list[CustomPropertyType]]: ...
 
@@ -4926,7 +4927,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgPropertiesSchemaPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[list[CustomProperty], list[CustomPropertyType]]:
@@ -4968,7 +4969,7 @@ class OrgsClient:
         org: str,
         custom_property_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CustomProperty, CustomPropertyType]:
         """See also: https://docs.github.com/rest/orgs/custom-properties#get-a-custom-property-for-an-organization"""
 
@@ -4994,7 +4995,7 @@ class OrgsClient:
         org: str,
         custom_property_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CustomProperty, CustomPropertyType]:
         """See also: https://docs.github.com/rest/orgs/custom-properties#get-a-custom-property-for-an-organization"""
 
@@ -5021,7 +5022,7 @@ class OrgsClient:
         org: str,
         custom_property_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: CustomPropertySetPayloadType,
     ) -> Response[CustomProperty, CustomPropertyType]: ...
 
@@ -5032,7 +5033,7 @@ class OrgsClient:
         custom_property_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         value_type: Literal["string", "single_select", "multi_select", "true_false"],
         required: Missing[bool] = UNSET,
         default_value: Missing[Union[str, list[str], None]] = UNSET,
@@ -5045,7 +5046,7 @@ class OrgsClient:
         org: str,
         custom_property_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[CustomPropertySetPayloadType] = UNSET,
         **kwargs,
     ) -> Response[CustomProperty, CustomPropertyType]:
@@ -5084,7 +5085,7 @@ class OrgsClient:
         org: str,
         custom_property_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: CustomPropertySetPayloadType,
     ) -> Response[CustomProperty, CustomPropertyType]: ...
 
@@ -5095,7 +5096,7 @@ class OrgsClient:
         custom_property_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         value_type: Literal["string", "single_select", "multi_select", "true_false"],
         required: Missing[bool] = UNSET,
         default_value: Missing[Union[str, list[str], None]] = UNSET,
@@ -5108,7 +5109,7 @@ class OrgsClient:
         org: str,
         custom_property_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[CustomPropertySetPayloadType] = UNSET,
         **kwargs,
     ) -> Response[CustomProperty, CustomPropertyType]:
@@ -5146,7 +5147,7 @@ class OrgsClient:
         org: str,
         custom_property_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/orgs/custom-properties#remove-a-custom-property-for-an-organization"""
 
@@ -5171,7 +5172,7 @@ class OrgsClient:
         org: str,
         custom_property_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/orgs/custom-properties#remove-a-custom-property-for-an-organization"""
 
@@ -5198,7 +5199,7 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         repository_query: Missing[str] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         list[OrgRepoCustomPropertyValues], list[OrgRepoCustomPropertyValuesType]
     ]:
@@ -5235,7 +5236,7 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         repository_query: Missing[str] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         list[OrgRepoCustomPropertyValues], list[OrgRepoCustomPropertyValuesType]
     ]:
@@ -5270,7 +5271,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgPropertiesValuesPatchBodyType,
     ) -> Response: ...
 
@@ -5280,7 +5281,7 @@ class OrgsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         repository_names: list[str],
         properties: list[CustomPropertyValueType],
     ) -> Response: ...
@@ -5289,7 +5290,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgPropertiesValuesPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -5331,7 +5332,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgPropertiesValuesPatchBodyType,
     ) -> Response: ...
 
@@ -5341,7 +5342,7 @@ class OrgsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         repository_names: list[str],
         properties: list[CustomPropertyValueType],
     ) -> Response: ...
@@ -5350,7 +5351,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgPropertiesValuesPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -5393,7 +5394,7 @@ class OrgsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """See also: https://docs.github.com/rest/orgs/members#list-public-organization-members"""
 
@@ -5422,7 +5423,7 @@ class OrgsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """See also: https://docs.github.com/rest/orgs/members#list-public-organization-members"""
 
@@ -5450,7 +5451,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/orgs/members#check-public-organization-membership-for-a-user"""
 
@@ -5470,7 +5471,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/orgs/members#check-public-organization-membership-for-a-user"""
 
@@ -5490,7 +5491,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/orgs/members#set-public-organization-membership-for-the-authenticated-user"""
 
@@ -5514,7 +5515,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/orgs/members#set-public-organization-membership-for-the-authenticated-user"""
 
@@ -5538,7 +5539,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/orgs/members#remove-public-organization-membership-for-the-authenticated-user"""
 
@@ -5557,7 +5558,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/orgs/members#remove-public-organization-membership-for-the-authenticated-user"""
 
@@ -5575,7 +5576,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[TeamSimple], list[TeamSimpleType]]:
         """See also: https://docs.github.com/rest/orgs/security-managers#list-security-manager-teams"""
 
@@ -5596,7 +5597,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[TeamSimple], list[TeamSimpleType]]:
         """See also: https://docs.github.com/rest/orgs/security-managers#list-security-manager-teams"""
 
@@ -5618,7 +5619,7 @@ class OrgsClient:
         org: str,
         team_slug: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/orgs/security-managers#add-a-security-manager-team"""
 
@@ -5637,7 +5638,7 @@ class OrgsClient:
         org: str,
         team_slug: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/orgs/security-managers#add-a-security-manager-team"""
 
@@ -5656,7 +5657,7 @@ class OrgsClient:
         org: str,
         team_slug: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/orgs/security-managers#remove-a-security-manager-team"""
 
@@ -5675,7 +5676,7 @@ class OrgsClient:
         org: str,
         team_slug: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/orgs/security-managers#remove-a-security-manager-team"""
 
@@ -5704,7 +5705,7 @@ class OrgsClient:
         ],
         enablement: Literal["enable_all", "disable_all"],
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgSecurityProductEnablementPostBodyType] = UNSET,
     ) -> Response: ...
 
@@ -5724,7 +5725,7 @@ class OrgsClient:
         enablement: Literal["enable_all", "disable_all"],
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         query_suite: Missing[Literal["default", "extended"]] = UNSET,
     ) -> Response: ...
 
@@ -5742,7 +5743,7 @@ class OrgsClient:
         ],
         enablement: Literal["enable_all", "disable_all"],
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgSecurityProductEnablementPostBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -5786,7 +5787,7 @@ class OrgsClient:
         ],
         enablement: Literal["enable_all", "disable_all"],
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgSecurityProductEnablementPostBodyType] = UNSET,
     ) -> Response: ...
 
@@ -5806,7 +5807,7 @@ class OrgsClient:
         enablement: Literal["enable_all", "disable_all"],
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         query_suite: Missing[Literal["default", "extended"]] = UNSET,
     ) -> Response: ...
 
@@ -5824,7 +5825,7 @@ class OrgsClient:
         ],
         enablement: Literal["enable_all", "disable_all"],
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgSecurityProductEnablementPostBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -5859,7 +5860,7 @@ class OrgsClient:
         state: Missing[Literal["active", "pending"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[OrgMembership], list[OrgMembershipType]]:
         """See also: https://docs.github.com/rest/orgs/members#list-organization-memberships-for-the-authenticated-user"""
 
@@ -5894,7 +5895,7 @@ class OrgsClient:
         state: Missing[Literal["active", "pending"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[OrgMembership], list[OrgMembershipType]]:
         """See also: https://docs.github.com/rest/orgs/members#list-organization-memberships-for-the-authenticated-user"""
 
@@ -5927,7 +5928,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[OrgMembership, OrgMembershipType]:
         """See also: https://docs.github.com/rest/orgs/members#get-an-organization-membership-for-the-authenticated-user"""
 
@@ -5952,7 +5953,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[OrgMembership, OrgMembershipType]:
         """See also: https://docs.github.com/rest/orgs/members#get-an-organization-membership-for-the-authenticated-user"""
 
@@ -5978,7 +5979,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: UserMembershipsOrgsOrgPatchBodyType,
     ) -> Response[OrgMembership, OrgMembershipType]: ...
 
@@ -5988,7 +5989,7 @@ class OrgsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         state: Literal["active"],
     ) -> Response[OrgMembership, OrgMembershipType]: ...
 
@@ -5996,7 +5997,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[UserMembershipsOrgsOrgPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[OrgMembership, OrgMembershipType]:
@@ -6040,7 +6041,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: UserMembershipsOrgsOrgPatchBodyType,
     ) -> Response[OrgMembership, OrgMembershipType]: ...
 
@@ -6050,7 +6051,7 @@ class OrgsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         state: Literal["active"],
     ) -> Response[OrgMembership, OrgMembershipType]: ...
 
@@ -6058,7 +6059,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[UserMembershipsOrgsOrgPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[OrgMembership, OrgMembershipType]:
@@ -6102,7 +6103,7 @@ class OrgsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[OrganizationSimple], list[OrganizationSimpleType]]:
         """See also: https://docs.github.com/rest/orgs/orgs#list-organizations-for-the-authenticated-user"""
 
@@ -6134,7 +6135,7 @@ class OrgsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[OrganizationSimple], list[OrganizationSimpleType]]:
         """See also: https://docs.github.com/rest/orgs/orgs#list-organizations-for-the-authenticated-user"""
 
@@ -6167,7 +6168,7 @@ class OrgsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[OrganizationSimple], list[OrganizationSimpleType]]:
         """See also: https://docs.github.com/rest/orgs/orgs#list-organizations-for-a-user"""
 
@@ -6196,7 +6197,7 @@ class OrgsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[OrganizationSimple], list[OrganizationSimpleType]]:
         """See also: https://docs.github.com/rest/orgs/orgs#list-organizations-for-a-user"""
 

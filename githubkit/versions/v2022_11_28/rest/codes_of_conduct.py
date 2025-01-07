@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from collections.abc import Mapping
 from typing import TYPE_CHECKING, Optional
 from weakref import ref
 
@@ -40,7 +41,7 @@ class CodesOfConductClient:
     def get_all_codes_of_conduct(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[CodeOfConduct], list[CodeOfConductType]]:
         """See also: https://docs.github.com/rest/codes-of-conduct/codes-of-conduct#get-all-codes-of-conduct"""
 
@@ -60,7 +61,7 @@ class CodesOfConductClient:
     async def async_get_all_codes_of_conduct(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[CodeOfConduct], list[CodeOfConductType]]:
         """See also: https://docs.github.com/rest/codes-of-conduct/codes-of-conduct#get-all-codes-of-conduct"""
 
@@ -81,7 +82,7 @@ class CodesOfConductClient:
         self,
         key: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CodeOfConduct, CodeOfConductType]:
         """See also: https://docs.github.com/rest/codes-of-conduct/codes-of-conduct#get-a-code-of-conduct"""
 
@@ -105,7 +106,7 @@ class CodesOfConductClient:
         self,
         key: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CodeOfConduct, CodeOfConductType]:
         """See also: https://docs.github.com/rest/codes-of-conduct/codes-of-conduct#get-a-code-of-conduct"""
 

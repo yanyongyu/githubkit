@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from collections.abc import Mapping
 from typing import TYPE_CHECKING, Literal, Optional, overload
 from weakref import ref
 
@@ -68,7 +69,7 @@ class GitClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoGitBlobsPostBodyType,
     ) -> Response[ShortBlob, ShortBlobType]: ...
 
@@ -79,7 +80,7 @@ class GitClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         content: str,
         encoding: Missing[str] = UNSET,
     ) -> Response[ShortBlob, ShortBlobType]: ...
@@ -89,7 +90,7 @@ class GitClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoGitBlobsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[ShortBlob, ShortBlobType]:
@@ -138,7 +139,7 @@ class GitClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoGitBlobsPostBodyType,
     ) -> Response[ShortBlob, ShortBlobType]: ...
 
@@ -149,7 +150,7 @@ class GitClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         content: str,
         encoding: Missing[str] = UNSET,
     ) -> Response[ShortBlob, ShortBlobType]: ...
@@ -159,7 +160,7 @@ class GitClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoGitBlobsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[ShortBlob, ShortBlobType]:
@@ -208,7 +209,7 @@ class GitClient:
         repo: str,
         file_sha: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Blob, BlobType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/git/blobs#get-a-blob"""
 
@@ -237,7 +238,7 @@ class GitClient:
         repo: str,
         file_sha: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Blob, BlobType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/git/blobs#get-a-blob"""
 
@@ -266,7 +267,7 @@ class GitClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoGitCommitsPostBodyType,
     ) -> Response[GitCommit, GitCommitType]: ...
 
@@ -277,7 +278,7 @@ class GitClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         message: str,
         tree: str,
         parents: Missing[list[str]] = UNSET,
@@ -291,7 +292,7 @@ class GitClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoGitCommitsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[GitCommit, GitCommitType]:
@@ -336,7 +337,7 @@ class GitClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoGitCommitsPostBodyType,
     ) -> Response[GitCommit, GitCommitType]: ...
 
@@ -347,7 +348,7 @@ class GitClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         message: str,
         tree: str,
         parents: Missing[list[str]] = UNSET,
@@ -361,7 +362,7 @@ class GitClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoGitCommitsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[GitCommit, GitCommitType]:
@@ -406,7 +407,7 @@ class GitClient:
         repo: str,
         commit_sha: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[GitCommit, GitCommitType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/git/commits#get-a-commit-object"""
 
@@ -433,7 +434,7 @@ class GitClient:
         repo: str,
         commit_sha: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[GitCommit, GitCommitType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/git/commits#get-a-commit-object"""
 
@@ -460,7 +461,7 @@ class GitClient:
         repo: str,
         ref: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[GitRef], list[GitRefType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/git/refs#list-matching-references"""
 
@@ -486,7 +487,7 @@ class GitClient:
         repo: str,
         ref: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[GitRef], list[GitRefType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/git/refs#list-matching-references"""
 
@@ -512,7 +513,7 @@ class GitClient:
         repo: str,
         ref: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[GitRef, GitRefType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/git/refs#get-a-reference"""
 
@@ -539,7 +540,7 @@ class GitClient:
         repo: str,
         ref: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[GitRef, GitRefType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/git/refs#get-a-reference"""
 
@@ -566,7 +567,7 @@ class GitClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoGitRefsPostBodyType,
     ) -> Response[GitRef, GitRefType]: ...
 
@@ -577,7 +578,7 @@ class GitClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         ref: str,
         sha: str,
     ) -> Response[GitRef, GitRefType]: ...
@@ -587,7 +588,7 @@ class GitClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoGitRefsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[GitRef, GitRefType]:
@@ -631,7 +632,7 @@ class GitClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoGitRefsPostBodyType,
     ) -> Response[GitRef, GitRefType]: ...
 
@@ -642,7 +643,7 @@ class GitClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         ref: str,
         sha: str,
     ) -> Response[GitRef, GitRefType]: ...
@@ -652,7 +653,7 @@ class GitClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoGitRefsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[GitRef, GitRefType]:
@@ -696,7 +697,7 @@ class GitClient:
         repo: str,
         ref: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/git/refs#delete-a-reference"""
 
@@ -722,7 +723,7 @@ class GitClient:
         repo: str,
         ref: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/git/refs#delete-a-reference"""
 
@@ -749,7 +750,7 @@ class GitClient:
         repo: str,
         ref: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoGitRefsRefPatchBodyType,
     ) -> Response[GitRef, GitRefType]: ...
 
@@ -761,7 +762,7 @@ class GitClient:
         ref: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         sha: str,
         force: Missing[bool] = UNSET,
     ) -> Response[GitRef, GitRefType]: ...
@@ -772,7 +773,7 @@ class GitClient:
         repo: str,
         ref: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoGitRefsRefPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[GitRef, GitRefType]:
@@ -817,7 +818,7 @@ class GitClient:
         repo: str,
         ref: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoGitRefsRefPatchBodyType,
     ) -> Response[GitRef, GitRefType]: ...
 
@@ -829,7 +830,7 @@ class GitClient:
         ref: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         sha: str,
         force: Missing[bool] = UNSET,
     ) -> Response[GitRef, GitRefType]: ...
@@ -840,7 +841,7 @@ class GitClient:
         repo: str,
         ref: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoGitRefsRefPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[GitRef, GitRefType]:
@@ -884,7 +885,7 @@ class GitClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoGitTagsPostBodyType,
     ) -> Response[GitTag, GitTagType]: ...
 
@@ -895,7 +896,7 @@ class GitClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         tag: str,
         message: str,
         object_: str,
@@ -908,7 +909,7 @@ class GitClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoGitTagsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[GitTag, GitTagType]:
@@ -952,7 +953,7 @@ class GitClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoGitTagsPostBodyType,
     ) -> Response[GitTag, GitTagType]: ...
 
@@ -963,7 +964,7 @@ class GitClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         tag: str,
         message: str,
         object_: str,
@@ -976,7 +977,7 @@ class GitClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoGitTagsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[GitTag, GitTagType]:
@@ -1020,7 +1021,7 @@ class GitClient:
         repo: str,
         tag_sha: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[GitTag, GitTagType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/git/tags#get-a-tag"""
 
@@ -1047,7 +1048,7 @@ class GitClient:
         repo: str,
         tag_sha: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[GitTag, GitTagType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/git/tags#get-a-tag"""
 
@@ -1074,7 +1075,7 @@ class GitClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoGitTreesPostBodyType,
     ) -> Response[GitTree, GitTreeType]: ...
 
@@ -1085,7 +1086,7 @@ class GitClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         tree: list[ReposOwnerRepoGitTreesPostBodyPropTreeItemsType],
         base_tree: Missing[str] = UNSET,
     ) -> Response[GitTree, GitTreeType]: ...
@@ -1095,7 +1096,7 @@ class GitClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoGitTreesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[GitTree, GitTreeType]:
@@ -1141,7 +1142,7 @@ class GitClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoGitTreesPostBodyType,
     ) -> Response[GitTree, GitTreeType]: ...
 
@@ -1152,7 +1153,7 @@ class GitClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         tree: list[ReposOwnerRepoGitTreesPostBodyPropTreeItemsType],
         base_tree: Missing[str] = UNSET,
     ) -> Response[GitTree, GitTreeType]: ...
@@ -1162,7 +1163,7 @@ class GitClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoGitTreesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[GitTree, GitTreeType]:
@@ -1209,7 +1210,7 @@ class GitClient:
         tree_sha: str,
         *,
         recursive: Missing[str] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[GitTree, GitTreeType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/git/trees#get-a-tree"""
 
@@ -1243,7 +1244,7 @@ class GitClient:
         tree_sha: str,
         *,
         recursive: Missing[str] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[GitTree, GitTreeType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/git/trees#get-a-tree"""
 

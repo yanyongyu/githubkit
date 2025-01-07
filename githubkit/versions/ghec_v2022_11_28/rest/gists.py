@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from collections.abc import Mapping
 from typing import TYPE_CHECKING, Literal, Optional, overload
 from weakref import ref
 
@@ -63,7 +64,7 @@ class GistsClient:
         since: Missing[datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[BaseGist], list[BaseGistType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/gists#list-gists-for-the-authenticated-user"""
 
@@ -96,7 +97,7 @@ class GistsClient:
         since: Missing[datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[BaseGist], list[BaseGistType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/gists#list-gists-for-the-authenticated-user"""
 
@@ -125,7 +126,7 @@ class GistsClient:
 
     @overload
     def create(
-        self, *, headers: Optional[dict[str, str]] = None, data: GistsPostBodyType
+        self, *, headers: Optional[Mapping[str, str]] = None, data: GistsPostBodyType
     ) -> Response[GistSimple, GistSimpleType]: ...
 
     @overload
@@ -133,7 +134,7 @@ class GistsClient:
         self,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         description: Missing[str] = UNSET,
         files: GistsPostBodyPropFilesType,
         public: Missing[Union[bool, Literal["true", "false"]]] = UNSET,
@@ -142,7 +143,7 @@ class GistsClient:
     def create(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[GistsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[GistSimple, GistSimpleType]:
@@ -178,7 +179,7 @@ class GistsClient:
 
     @overload
     async def async_create(
-        self, *, headers: Optional[dict[str, str]] = None, data: GistsPostBodyType
+        self, *, headers: Optional[Mapping[str, str]] = None, data: GistsPostBodyType
     ) -> Response[GistSimple, GistSimpleType]: ...
 
     @overload
@@ -186,7 +187,7 @@ class GistsClient:
         self,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         description: Missing[str] = UNSET,
         files: GistsPostBodyPropFilesType,
         public: Missing[Union[bool, Literal["true", "false"]]] = UNSET,
@@ -195,7 +196,7 @@ class GistsClient:
     async def async_create(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[GistsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[GistSimple, GistSimpleType]:
@@ -235,7 +236,7 @@ class GistsClient:
         since: Missing[datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[BaseGist], list[BaseGistType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/gists#list-public-gists"""
 
@@ -269,7 +270,7 @@ class GistsClient:
         since: Missing[datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[BaseGist], list[BaseGistType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/gists#list-public-gists"""
 
@@ -303,7 +304,7 @@ class GistsClient:
         since: Missing[datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[BaseGist], list[BaseGistType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/gists#list-starred-gists"""
 
@@ -337,7 +338,7 @@ class GistsClient:
         since: Missing[datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[BaseGist], list[BaseGistType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/gists#list-starred-gists"""
 
@@ -369,7 +370,7 @@ class GistsClient:
         self,
         gist_id: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[GistSimple, GistSimpleType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/gists#get-a-gist"""
 
@@ -394,7 +395,7 @@ class GistsClient:
         self,
         gist_id: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[GistSimple, GistSimpleType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/gists#get-a-gist"""
 
@@ -419,7 +420,7 @@ class GistsClient:
         self,
         gist_id: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/gists#delete-a-gist"""
 
@@ -443,7 +444,7 @@ class GistsClient:
         self,
         gist_id: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/gists#delete-a-gist"""
 
@@ -468,7 +469,7 @@ class GistsClient:
         self,
         gist_id: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Union[GistsGistIdPatchBodyType, None],
     ) -> Response[GistSimple, GistSimpleType]: ...
 
@@ -478,7 +479,7 @@ class GistsClient:
         gist_id: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         description: Missing[str] = UNSET,
         files: Missing[GistsGistIdPatchBodyPropFilesType] = UNSET,
     ) -> Response[GistSimple, GistSimpleType]: ...
@@ -487,7 +488,7 @@ class GistsClient:
         self,
         gist_id: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[Union[GistsGistIdPatchBodyType, None]] = UNSET,
         **kwargs,
     ) -> Response[GistSimple, GistSimpleType]:
@@ -532,7 +533,7 @@ class GistsClient:
         self,
         gist_id: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Union[GistsGistIdPatchBodyType, None],
     ) -> Response[GistSimple, GistSimpleType]: ...
 
@@ -542,7 +543,7 @@ class GistsClient:
         gist_id: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         description: Missing[str] = UNSET,
         files: Missing[GistsGistIdPatchBodyPropFilesType] = UNSET,
     ) -> Response[GistSimple, GistSimpleType]: ...
@@ -551,7 +552,7 @@ class GistsClient:
         self,
         gist_id: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[Union[GistsGistIdPatchBodyType, None]] = UNSET,
         **kwargs,
     ) -> Response[GistSimple, GistSimpleType]:
@@ -597,7 +598,7 @@ class GistsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[GistComment], list[GistCommentType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/comments#list-gist-comments"""
 
@@ -630,7 +631,7 @@ class GistsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[GistComment], list[GistCommentType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/comments#list-gist-comments"""
 
@@ -662,7 +663,7 @@ class GistsClient:
         self,
         gist_id: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: GistsGistIdCommentsPostBodyType,
     ) -> Response[GistComment, GistCommentType]: ...
 
@@ -672,7 +673,7 @@ class GistsClient:
         gist_id: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         body: str,
     ) -> Response[GistComment, GistCommentType]: ...
 
@@ -680,7 +681,7 @@ class GistsClient:
         self,
         gist_id: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[GistsGistIdCommentsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[GistComment, GistCommentType]:
@@ -718,7 +719,7 @@ class GistsClient:
         self,
         gist_id: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: GistsGistIdCommentsPostBodyType,
     ) -> Response[GistComment, GistCommentType]: ...
 
@@ -728,7 +729,7 @@ class GistsClient:
         gist_id: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         body: str,
     ) -> Response[GistComment, GistCommentType]: ...
 
@@ -736,7 +737,7 @@ class GistsClient:
         self,
         gist_id: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[GistsGistIdCommentsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[GistComment, GistCommentType]:
@@ -774,7 +775,7 @@ class GistsClient:
         gist_id: str,
         comment_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[GistComment, GistCommentType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/comments#get-a-gist-comment"""
 
@@ -800,7 +801,7 @@ class GistsClient:
         gist_id: str,
         comment_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[GistComment, GistCommentType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/comments#get-a-gist-comment"""
 
@@ -826,7 +827,7 @@ class GistsClient:
         gist_id: str,
         comment_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/comments#delete-a-gist-comment"""
 
@@ -851,7 +852,7 @@ class GistsClient:
         gist_id: str,
         comment_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/comments#delete-a-gist-comment"""
 
@@ -877,7 +878,7 @@ class GistsClient:
         gist_id: str,
         comment_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: GistsGistIdCommentsCommentIdPatchBodyType,
     ) -> Response[GistComment, GistCommentType]: ...
 
@@ -888,7 +889,7 @@ class GistsClient:
         comment_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         body: str,
     ) -> Response[GistComment, GistCommentType]: ...
 
@@ -897,7 +898,7 @@ class GistsClient:
         gist_id: str,
         comment_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[GistsGistIdCommentsCommentIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[GistComment, GistCommentType]:
@@ -939,7 +940,7 @@ class GistsClient:
         gist_id: str,
         comment_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: GistsGistIdCommentsCommentIdPatchBodyType,
     ) -> Response[GistComment, GistCommentType]: ...
 
@@ -950,7 +951,7 @@ class GistsClient:
         comment_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         body: str,
     ) -> Response[GistComment, GistCommentType]: ...
 
@@ -959,7 +960,7 @@ class GistsClient:
         gist_id: str,
         comment_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[GistsGistIdCommentsCommentIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[GistComment, GistCommentType]:
@@ -1001,7 +1002,7 @@ class GistsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[GistCommit], list[GistCommitType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/gists#list-gist-commits"""
 
@@ -1034,7 +1035,7 @@ class GistsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[GistCommit], list[GistCommitType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/gists#list-gist-commits"""
 
@@ -1067,7 +1068,7 @@ class GistsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[GistSimple], list[GistSimpleType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/gists#list-gist-forks"""
 
@@ -1100,7 +1101,7 @@ class GistsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[GistSimple], list[GistSimpleType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/gists#list-gist-forks"""
 
@@ -1131,7 +1132,7 @@ class GistsClient:
         self,
         gist_id: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[BaseGist, BaseGistType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/gists#fork-a-gist"""
 
@@ -1157,7 +1158,7 @@ class GistsClient:
         self,
         gist_id: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[BaseGist, BaseGistType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/gists#fork-a-gist"""
 
@@ -1183,7 +1184,7 @@ class GistsClient:
         self,
         gist_id: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/gists#check-if-a-gist-is-starred"""
 
@@ -1207,7 +1208,7 @@ class GistsClient:
         self,
         gist_id: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/gists#check-if-a-gist-is-starred"""
 
@@ -1231,7 +1232,7 @@ class GistsClient:
         self,
         gist_id: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/gists#star-a-gist"""
 
@@ -1255,7 +1256,7 @@ class GistsClient:
         self,
         gist_id: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/gists#star-a-gist"""
 
@@ -1279,7 +1280,7 @@ class GistsClient:
         self,
         gist_id: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/gists#unstar-a-gist"""
 
@@ -1303,7 +1304,7 @@ class GistsClient:
         self,
         gist_id: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/gists#unstar-a-gist"""
 
@@ -1328,7 +1329,7 @@ class GistsClient:
         gist_id: str,
         sha: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[GistSimple, GistSimpleType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/gists#get-a-gist-revision"""
 
@@ -1355,7 +1356,7 @@ class GistsClient:
         gist_id: str,
         sha: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[GistSimple, GistSimpleType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/gists#get-a-gist-revision"""
 
@@ -1384,7 +1385,7 @@ class GistsClient:
         since: Missing[datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[BaseGist], list[BaseGistType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/gists#list-gists-for-a-user"""
 
@@ -1418,7 +1419,7 @@ class GistsClient:
         since: Missing[datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[BaseGist], list[BaseGistType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/gists#list-gists-for-a-user"""
 

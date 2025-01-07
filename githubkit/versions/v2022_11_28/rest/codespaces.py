@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from collections.abc import Mapping
 from typing import TYPE_CHECKING, Literal, Optional, overload
 from weakref import ref
 
@@ -116,7 +117,7 @@ class CodespacesClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[OrgsOrgCodespacesGetResponse200, OrgsOrgCodespacesGetResponse200Type]:
         """See also: https://docs.github.com/rest/codespaces/organizations#list-codespaces-for-the-organization"""
 
@@ -151,7 +152,7 @@ class CodespacesClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[OrgsOrgCodespacesGetResponse200, OrgsOrgCodespacesGetResponse200Type]:
         """See also: https://docs.github.com/rest/codespaces/organizations#list-codespaces-for-the-organization"""
 
@@ -185,7 +186,7 @@ class CodespacesClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgCodespacesAccessPutBodyType,
     ) -> Response: ...
 
@@ -195,7 +196,7 @@ class CodespacesClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         visibility: Literal[
             "disabled",
             "selected_members",
@@ -209,7 +210,7 @@ class CodespacesClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgCodespacesAccessPutBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -247,7 +248,7 @@ class CodespacesClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgCodespacesAccessPutBodyType,
     ) -> Response: ...
 
@@ -257,7 +258,7 @@ class CodespacesClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         visibility: Literal[
             "disabled",
             "selected_members",
@@ -271,7 +272,7 @@ class CodespacesClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgCodespacesAccessPutBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -309,7 +310,7 @@ class CodespacesClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgCodespacesAccessSelectedUsersPostBodyType,
     ) -> Response: ...
 
@@ -319,7 +320,7 @@ class CodespacesClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         selected_usernames: list[str],
     ) -> Response: ...
 
@@ -327,7 +328,7 @@ class CodespacesClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgCodespacesAccessSelectedUsersPostBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -371,7 +372,7 @@ class CodespacesClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgCodespacesAccessSelectedUsersPostBodyType,
     ) -> Response: ...
 
@@ -381,7 +382,7 @@ class CodespacesClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         selected_usernames: list[str],
     ) -> Response: ...
 
@@ -389,7 +390,7 @@ class CodespacesClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgCodespacesAccessSelectedUsersPostBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -433,7 +434,7 @@ class CodespacesClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgCodespacesAccessSelectedUsersDeleteBodyType,
     ) -> Response: ...
 
@@ -443,7 +444,7 @@ class CodespacesClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         selected_usernames: list[str],
     ) -> Response: ...
 
@@ -451,7 +452,7 @@ class CodespacesClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgCodespacesAccessSelectedUsersDeleteBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -495,7 +496,7 @@ class CodespacesClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgCodespacesAccessSelectedUsersDeleteBodyType,
     ) -> Response: ...
 
@@ -505,7 +506,7 @@ class CodespacesClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         selected_usernames: list[str],
     ) -> Response: ...
 
@@ -513,7 +514,7 @@ class CodespacesClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgCodespacesAccessSelectedUsersDeleteBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -558,7 +559,7 @@ class CodespacesClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         OrgsOrgCodespacesSecretsGetResponse200,
         OrgsOrgCodespacesSecretsGetResponse200Type,
@@ -590,7 +591,7 @@ class CodespacesClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         OrgsOrgCodespacesSecretsGetResponse200,
         OrgsOrgCodespacesSecretsGetResponse200Type,
@@ -620,7 +621,7 @@ class CodespacesClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CodespacesPublicKey, CodespacesPublicKeyType]:
         """See also: https://docs.github.com/rest/codespaces/organization-secrets#get-an-organization-public-key"""
 
@@ -641,7 +642,7 @@ class CodespacesClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CodespacesPublicKey, CodespacesPublicKeyType]:
         """See also: https://docs.github.com/rest/codespaces/organization-secrets#get-an-organization-public-key"""
 
@@ -663,7 +664,7 @@ class CodespacesClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CodespacesOrgSecret, CodespacesOrgSecretType]:
         """See also: https://docs.github.com/rest/codespaces/organization-secrets#get-an-organization-secret"""
 
@@ -685,7 +686,7 @@ class CodespacesClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CodespacesOrgSecret, CodespacesOrgSecretType]:
         """See also: https://docs.github.com/rest/codespaces/organization-secrets#get-an-organization-secret"""
 
@@ -708,7 +709,7 @@ class CodespacesClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgCodespacesSecretsSecretNamePutBodyType,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
 
@@ -719,7 +720,7 @@ class CodespacesClient:
         secret_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         encrypted_value: Missing[str] = UNSET,
         key_id: Missing[str] = UNSET,
         visibility: Literal["all", "private", "selected"],
@@ -731,7 +732,7 @@ class CodespacesClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgCodespacesSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject, EmptyObjectType]:
@@ -775,7 +776,7 @@ class CodespacesClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgCodespacesSecretsSecretNamePutBodyType,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
 
@@ -786,7 +787,7 @@ class CodespacesClient:
         secret_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         encrypted_value: Missing[str] = UNSET,
         key_id: Missing[str] = UNSET,
         visibility: Literal["all", "private", "selected"],
@@ -798,7 +799,7 @@ class CodespacesClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgCodespacesSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject, EmptyObjectType]:
@@ -841,7 +842,7 @@ class CodespacesClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/codespaces/organization-secrets#delete-an-organization-secret"""
 
@@ -865,7 +866,7 @@ class CodespacesClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/codespaces/organization-secrets#delete-an-organization-secret"""
 
@@ -891,7 +892,7 @@ class CodespacesClient:
         *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200,
         OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200Type,
@@ -930,7 +931,7 @@ class CodespacesClient:
         *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200,
         OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200Type,
@@ -968,7 +969,7 @@ class CodespacesClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBodyType,
     ) -> Response: ...
 
@@ -979,7 +980,7 @@ class CodespacesClient:
         secret_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         selected_repository_ids: list[int],
     ) -> Response: ...
 
@@ -988,7 +989,7 @@ class CodespacesClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBodyType
         ] = UNSET,
@@ -1032,7 +1033,7 @@ class CodespacesClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBodyType,
     ) -> Response: ...
 
@@ -1043,7 +1044,7 @@ class CodespacesClient:
         secret_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         selected_repository_ids: list[int],
     ) -> Response: ...
 
@@ -1052,7 +1053,7 @@ class CodespacesClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBodyType
         ] = UNSET,
@@ -1096,7 +1097,7 @@ class CodespacesClient:
         secret_name: str,
         repository_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/codespaces/organization-secrets#add-selected-repository-to-an-organization-secret"""
 
@@ -1124,7 +1125,7 @@ class CodespacesClient:
         secret_name: str,
         repository_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/codespaces/organization-secrets#add-selected-repository-to-an-organization-secret"""
 
@@ -1152,7 +1153,7 @@ class CodespacesClient:
         secret_name: str,
         repository_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/codespaces/organization-secrets#remove-selected-repository-from-an-organization-secret"""
 
@@ -1180,7 +1181,7 @@ class CodespacesClient:
         secret_name: str,
         repository_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/codespaces/organization-secrets#remove-selected-repository-from-an-organization-secret"""
 
@@ -1209,7 +1210,7 @@ class CodespacesClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         OrgsOrgMembersUsernameCodespacesGetResponse200,
         OrgsOrgMembersUsernameCodespacesGetResponse200Type,
@@ -1248,7 +1249,7 @@ class CodespacesClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         OrgsOrgMembersUsernameCodespacesGetResponse200,
         OrgsOrgMembersUsernameCodespacesGetResponse200Type,
@@ -1286,7 +1287,7 @@ class CodespacesClient:
         username: str,
         codespace_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
@@ -1321,7 +1322,7 @@ class CodespacesClient:
         username: str,
         codespace_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
@@ -1356,7 +1357,7 @@ class CodespacesClient:
         username: str,
         codespace_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Codespace, CodespaceType]:
         """See also: https://docs.github.com/rest/codespaces/organizations#stop-a-codespace-for-an-organization-user"""
 
@@ -1385,7 +1386,7 @@ class CodespacesClient:
         username: str,
         codespace_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Codespace, CodespaceType]:
         """See also: https://docs.github.com/rest/codespaces/organizations#stop-a-codespace-for-an-organization-user"""
 
@@ -1415,7 +1416,7 @@ class CodespacesClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoCodespacesGetResponse200,
         ReposOwnerRepoCodespacesGetResponse200Type,
@@ -1454,7 +1455,7 @@ class CodespacesClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoCodespacesGetResponse200,
         ReposOwnerRepoCodespacesGetResponse200Type,
@@ -1492,7 +1493,7 @@ class CodespacesClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Union[ReposOwnerRepoCodespacesPostBodyType, None],
     ) -> Response[Codespace, CodespaceType]: ...
 
@@ -1503,7 +1504,7 @@ class CodespacesClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         ref: Missing[str] = UNSET,
         location: Missing[str] = UNSET,
         geo: Missing[
@@ -1524,7 +1525,7 @@ class CodespacesClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[Union[ReposOwnerRepoCodespacesPostBodyType, None]] = UNSET,
         **kwargs,
     ) -> Response[Codespace, CodespaceType]:
@@ -1575,7 +1576,7 @@ class CodespacesClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Union[ReposOwnerRepoCodespacesPostBodyType, None],
     ) -> Response[Codespace, CodespaceType]: ...
 
@@ -1586,7 +1587,7 @@ class CodespacesClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         ref: Missing[str] = UNSET,
         location: Missing[str] = UNSET,
         geo: Missing[
@@ -1607,7 +1608,7 @@ class CodespacesClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[Union[ReposOwnerRepoCodespacesPostBodyType, None]] = UNSET,
         **kwargs,
     ) -> Response[Codespace, CodespaceType]:
@@ -1659,7 +1660,7 @@ class CodespacesClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoCodespacesDevcontainersGetResponse200,
         ReposOwnerRepoCodespacesDevcontainersGetResponse200Type,
@@ -1702,7 +1703,7 @@ class CodespacesClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoCodespacesDevcontainersGetResponse200,
         ReposOwnerRepoCodespacesDevcontainersGetResponse200Type,
@@ -1746,7 +1747,7 @@ class CodespacesClient:
         location: Missing[str] = UNSET,
         client_ip: Missing[str] = UNSET,
         ref: Missing[str] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoCodespacesMachinesGetResponse200,
         ReposOwnerRepoCodespacesMachinesGetResponse200Type,
@@ -1787,7 +1788,7 @@ class CodespacesClient:
         location: Missing[str] = UNSET,
         client_ip: Missing[str] = UNSET,
         ref: Missing[str] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoCodespacesMachinesGetResponse200,
         ReposOwnerRepoCodespacesMachinesGetResponse200Type,
@@ -1827,7 +1828,7 @@ class CodespacesClient:
         *,
         ref: Missing[str] = UNSET,
         client_ip: Missing[str] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoCodespacesNewGetResponse200,
         ReposOwnerRepoCodespacesNewGetResponse200Type,
@@ -1865,7 +1866,7 @@ class CodespacesClient:
         *,
         ref: Missing[str] = UNSET,
         client_ip: Missing[str] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoCodespacesNewGetResponse200,
         ReposOwnerRepoCodespacesNewGetResponse200Type,
@@ -1903,7 +1904,7 @@ class CodespacesClient:
         *,
         ref: str,
         devcontainer_path: str,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         CodespacesPermissionsCheckForDevcontainer,
         CodespacesPermissionsCheckForDevcontainerType,
@@ -1948,7 +1949,7 @@ class CodespacesClient:
         *,
         ref: str,
         devcontainer_path: str,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         CodespacesPermissionsCheckForDevcontainer,
         CodespacesPermissionsCheckForDevcontainerType,
@@ -1993,7 +1994,7 @@ class CodespacesClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoCodespacesSecretsGetResponse200,
         ReposOwnerRepoCodespacesSecretsGetResponse200Type,
@@ -2026,7 +2027,7 @@ class CodespacesClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoCodespacesSecretsGetResponse200,
         ReposOwnerRepoCodespacesSecretsGetResponse200Type,
@@ -2057,7 +2058,7 @@ class CodespacesClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CodespacesPublicKey, CodespacesPublicKeyType]:
         """See also: https://docs.github.com/rest/codespaces/repository-secrets#get-a-repository-public-key"""
 
@@ -2079,7 +2080,7 @@ class CodespacesClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CodespacesPublicKey, CodespacesPublicKeyType]:
         """See also: https://docs.github.com/rest/codespaces/repository-secrets#get-a-repository-public-key"""
 
@@ -2102,7 +2103,7 @@ class CodespacesClient:
         repo: str,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[RepoCodespacesSecret, RepoCodespacesSecretType]:
         """See also: https://docs.github.com/rest/codespaces/repository-secrets#get-a-repository-secret"""
 
@@ -2125,7 +2126,7 @@ class CodespacesClient:
         repo: str,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[RepoCodespacesSecret, RepoCodespacesSecretType]:
         """See also: https://docs.github.com/rest/codespaces/repository-secrets#get-a-repository-secret"""
 
@@ -2149,7 +2150,7 @@ class CodespacesClient:
         repo: str,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoCodespacesSecretsSecretNamePutBodyType,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
 
@@ -2161,7 +2162,7 @@ class CodespacesClient:
         secret_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         encrypted_value: Missing[str] = UNSET,
         key_id: Missing[str] = UNSET,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
@@ -2172,7 +2173,7 @@ class CodespacesClient:
         repo: str,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoCodespacesSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject, EmptyObjectType]:
@@ -2213,7 +2214,7 @@ class CodespacesClient:
         repo: str,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoCodespacesSecretsSecretNamePutBodyType,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
 
@@ -2225,7 +2226,7 @@ class CodespacesClient:
         secret_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         encrypted_value: Missing[str] = UNSET,
         key_id: Missing[str] = UNSET,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
@@ -2236,7 +2237,7 @@ class CodespacesClient:
         repo: str,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoCodespacesSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject, EmptyObjectType]:
@@ -2276,7 +2277,7 @@ class CodespacesClient:
         repo: str,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/codespaces/repository-secrets#delete-a-repository-secret"""
 
@@ -2296,7 +2297,7 @@ class CodespacesClient:
         repo: str,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/codespaces/repository-secrets#delete-a-repository-secret"""
 
@@ -2317,7 +2318,7 @@ class CodespacesClient:
         repo: str,
         pull_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Union[ReposOwnerRepoPullsPullNumberCodespacesPostBodyType, None],
     ) -> Response[Codespace, CodespaceType]: ...
 
@@ -2329,7 +2330,7 @@ class CodespacesClient:
         pull_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         location: Missing[str] = UNSET,
         geo: Missing[
             Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]
@@ -2350,7 +2351,7 @@ class CodespacesClient:
         repo: str,
         pull_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             Union[ReposOwnerRepoPullsPullNumberCodespacesPostBodyType, None]
         ] = UNSET,
@@ -2403,7 +2404,7 @@ class CodespacesClient:
         repo: str,
         pull_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Union[ReposOwnerRepoPullsPullNumberCodespacesPostBodyType, None],
     ) -> Response[Codespace, CodespaceType]: ...
 
@@ -2415,7 +2416,7 @@ class CodespacesClient:
         pull_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         location: Missing[str] = UNSET,
         geo: Missing[
             Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]
@@ -2436,7 +2437,7 @@ class CodespacesClient:
         repo: str,
         pull_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             Union[ReposOwnerRepoPullsPullNumberCodespacesPostBodyType, None]
         ] = UNSET,
@@ -2488,7 +2489,7 @@ class CodespacesClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         repository_id: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[UserCodespacesGetResponse200, UserCodespacesGetResponse200Type]:
         """See also: https://docs.github.com/rest/codespaces/codespaces#list-codespaces-for-the-authenticated-user"""
 
@@ -2524,7 +2525,7 @@ class CodespacesClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         repository_id: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[UserCodespacesGetResponse200, UserCodespacesGetResponse200Type]:
         """See also: https://docs.github.com/rest/codespaces/codespaces#list-codespaces-for-the-authenticated-user"""
 
@@ -2558,7 +2559,7 @@ class CodespacesClient:
     def create_for_authenticated_user(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Union[UserCodespacesPostBodyOneof0Type, UserCodespacesPostBodyOneof1Type],
     ) -> Response[Codespace, CodespaceType]: ...
 
@@ -2567,7 +2568,7 @@ class CodespacesClient:
         self,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         repository_id: int,
         ref: Missing[str] = UNSET,
         location: Missing[str] = UNSET,
@@ -2589,7 +2590,7 @@ class CodespacesClient:
         self,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         pull_request: UserCodespacesPostBodyOneof1PropPullRequestType,
         location: Missing[str] = UNSET,
         geo: Missing[
@@ -2604,7 +2605,7 @@ class CodespacesClient:
     def create_for_authenticated_user(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             Union[UserCodespacesPostBodyOneof0Type, UserCodespacesPostBodyOneof1Type]
         ] = UNSET,
@@ -2655,7 +2656,7 @@ class CodespacesClient:
     async def async_create_for_authenticated_user(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Union[UserCodespacesPostBodyOneof0Type, UserCodespacesPostBodyOneof1Type],
     ) -> Response[Codespace, CodespaceType]: ...
 
@@ -2664,7 +2665,7 @@ class CodespacesClient:
         self,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         repository_id: int,
         ref: Missing[str] = UNSET,
         location: Missing[str] = UNSET,
@@ -2686,7 +2687,7 @@ class CodespacesClient:
         self,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         pull_request: UserCodespacesPostBodyOneof1PropPullRequestType,
         location: Missing[str] = UNSET,
         geo: Missing[
@@ -2701,7 +2702,7 @@ class CodespacesClient:
     async def async_create_for_authenticated_user(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             Union[UserCodespacesPostBodyOneof0Type, UserCodespacesPostBodyOneof1Type]
         ] = UNSET,
@@ -2753,7 +2754,7 @@ class CodespacesClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         UserCodespacesSecretsGetResponse200, UserCodespacesSecretsGetResponse200Type
     ]:
@@ -2783,7 +2784,7 @@ class CodespacesClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         UserCodespacesSecretsGetResponse200, UserCodespacesSecretsGetResponse200Type
     ]:
@@ -2811,7 +2812,7 @@ class CodespacesClient:
     def get_public_key_for_authenticated_user(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CodespacesUserPublicKey, CodespacesUserPublicKeyType]:
         """See also: https://docs.github.com/rest/codespaces/secrets#get-public-key-for-the-authenticated-user"""
 
@@ -2831,7 +2832,7 @@ class CodespacesClient:
     async def async_get_public_key_for_authenticated_user(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CodespacesUserPublicKey, CodespacesUserPublicKeyType]:
         """See also: https://docs.github.com/rest/codespaces/secrets#get-public-key-for-the-authenticated-user"""
 
@@ -2852,7 +2853,7 @@ class CodespacesClient:
         self,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CodespacesSecret, CodespacesSecretType]:
         """See also: https://docs.github.com/rest/codespaces/secrets#get-a-secret-for-the-authenticated-user"""
 
@@ -2873,7 +2874,7 @@ class CodespacesClient:
         self,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CodespacesSecret, CodespacesSecretType]:
         """See also: https://docs.github.com/rest/codespaces/secrets#get-a-secret-for-the-authenticated-user"""
 
@@ -2895,7 +2896,7 @@ class CodespacesClient:
         self,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: UserCodespacesSecretsSecretNamePutBodyType,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
 
@@ -2905,7 +2906,7 @@ class CodespacesClient:
         secret_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         encrypted_value: Missing[str] = UNSET,
         key_id: str,
         selected_repository_ids: Missing[list[Union[int, str]]] = UNSET,
@@ -2915,7 +2916,7 @@ class CodespacesClient:
         self,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[UserCodespacesSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject, EmptyObjectType]:
@@ -2958,7 +2959,7 @@ class CodespacesClient:
         self,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: UserCodespacesSecretsSecretNamePutBodyType,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
 
@@ -2968,7 +2969,7 @@ class CodespacesClient:
         secret_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         encrypted_value: Missing[str] = UNSET,
         key_id: str,
         selected_repository_ids: Missing[list[Union[int, str]]] = UNSET,
@@ -2978,7 +2979,7 @@ class CodespacesClient:
         self,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[UserCodespacesSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject, EmptyObjectType]:
@@ -3020,7 +3021,7 @@ class CodespacesClient:
         self,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/codespaces/secrets#delete-a-secret-for-the-authenticated-user"""
 
@@ -3038,7 +3039,7 @@ class CodespacesClient:
         self,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/codespaces/secrets#delete-a-secret-for-the-authenticated-user"""
 
@@ -3056,7 +3057,7 @@ class CodespacesClient:
         self,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         UserCodespacesSecretsSecretNameRepositoriesGetResponse200,
         UserCodespacesSecretsSecretNameRepositoriesGetResponse200Type,
@@ -3089,7 +3090,7 @@ class CodespacesClient:
         self,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         UserCodespacesSecretsSecretNameRepositoriesGetResponse200,
         UserCodespacesSecretsSecretNameRepositoriesGetResponse200Type,
@@ -3123,7 +3124,7 @@ class CodespacesClient:
         self,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: UserCodespacesSecretsSecretNameRepositoriesPutBodyType,
     ) -> Response: ...
 
@@ -3133,7 +3134,7 @@ class CodespacesClient:
         secret_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         selected_repository_ids: list[int],
     ) -> Response: ...
 
@@ -3141,7 +3142,7 @@ class CodespacesClient:
         self,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[UserCodespacesSecretsSecretNameRepositoriesPutBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -3185,7 +3186,7 @@ class CodespacesClient:
         self,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: UserCodespacesSecretsSecretNameRepositoriesPutBodyType,
     ) -> Response: ...
 
@@ -3195,7 +3196,7 @@ class CodespacesClient:
         secret_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         selected_repository_ids: list[int],
     ) -> Response: ...
 
@@ -3203,7 +3204,7 @@ class CodespacesClient:
         self,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[UserCodespacesSecretsSecretNameRepositoriesPutBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -3247,7 +3248,7 @@ class CodespacesClient:
         secret_name: str,
         repository_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/codespaces/secrets#add-a-selected-repository-to-a-user-secret"""
 
@@ -3274,7 +3275,7 @@ class CodespacesClient:
         secret_name: str,
         repository_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/codespaces/secrets#add-a-selected-repository-to-a-user-secret"""
 
@@ -3301,7 +3302,7 @@ class CodespacesClient:
         secret_name: str,
         repository_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/codespaces/secrets#remove-a-selected-repository-from-a-user-secret"""
 
@@ -3328,7 +3329,7 @@ class CodespacesClient:
         secret_name: str,
         repository_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/codespaces/secrets#remove-a-selected-repository-from-a-user-secret"""
 
@@ -3354,7 +3355,7 @@ class CodespacesClient:
         self,
         codespace_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Codespace, CodespaceType]:
         """See also: https://docs.github.com/rest/codespaces/codespaces#get-a-codespace-for-the-authenticated-user"""
 
@@ -3381,7 +3382,7 @@ class CodespacesClient:
         self,
         codespace_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Codespace, CodespaceType]:
         """See also: https://docs.github.com/rest/codespaces/codespaces#get-a-codespace-for-the-authenticated-user"""
 
@@ -3408,7 +3409,7 @@ class CodespacesClient:
         self,
         codespace_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
@@ -3441,7 +3442,7 @@ class CodespacesClient:
         self,
         codespace_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
@@ -3475,7 +3476,7 @@ class CodespacesClient:
         self,
         codespace_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[UserCodespacesCodespaceNamePatchBodyType] = UNSET,
     ) -> Response[Codespace, CodespaceType]: ...
 
@@ -3485,7 +3486,7 @@ class CodespacesClient:
         codespace_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         machine: Missing[str] = UNSET,
         display_name: Missing[str] = UNSET,
         recent_folders: Missing[list[str]] = UNSET,
@@ -3495,7 +3496,7 @@ class CodespacesClient:
         self,
         codespace_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[UserCodespacesCodespaceNamePatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Codespace, CodespaceType]:
@@ -3534,7 +3535,7 @@ class CodespacesClient:
         self,
         codespace_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[UserCodespacesCodespaceNamePatchBodyType] = UNSET,
     ) -> Response[Codespace, CodespaceType]: ...
 
@@ -3544,7 +3545,7 @@ class CodespacesClient:
         codespace_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         machine: Missing[str] = UNSET,
         display_name: Missing[str] = UNSET,
         recent_folders: Missing[list[str]] = UNSET,
@@ -3554,7 +3555,7 @@ class CodespacesClient:
         self,
         codespace_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[UserCodespacesCodespaceNamePatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Codespace, CodespaceType]:
@@ -3592,7 +3593,7 @@ class CodespacesClient:
         self,
         codespace_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CodespaceExportDetails, CodespaceExportDetailsType]:
         """See also: https://docs.github.com/rest/codespaces/codespaces#export-a-codespace-for-the-authenticated-user"""
 
@@ -3620,7 +3621,7 @@ class CodespacesClient:
         self,
         codespace_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CodespaceExportDetails, CodespaceExportDetailsType]:
         """See also: https://docs.github.com/rest/codespaces/codespaces#export-a-codespace-for-the-authenticated-user"""
 
@@ -3649,7 +3650,7 @@ class CodespacesClient:
         codespace_name: str,
         export_id: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CodespaceExportDetails, CodespaceExportDetailsType]:
         """See also: https://docs.github.com/rest/codespaces/codespaces#get-details-about-a-codespace-export"""
 
@@ -3674,7 +3675,7 @@ class CodespacesClient:
         codespace_name: str,
         export_id: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CodespaceExportDetails, CodespaceExportDetailsType]:
         """See also: https://docs.github.com/rest/codespaces/codespaces#get-details-about-a-codespace-export"""
 
@@ -3698,7 +3699,7 @@ class CodespacesClient:
         self,
         codespace_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         UserCodespacesCodespaceNameMachinesGetResponse200,
         UserCodespacesCodespaceNameMachinesGetResponse200Type,
@@ -3731,7 +3732,7 @@ class CodespacesClient:
         self,
         codespace_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         UserCodespacesCodespaceNameMachinesGetResponse200,
         UserCodespacesCodespaceNameMachinesGetResponse200Type,
@@ -3765,7 +3766,7 @@ class CodespacesClient:
         self,
         codespace_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: UserCodespacesCodespaceNamePublishPostBodyType,
     ) -> Response[CodespaceWithFullRepository, CodespaceWithFullRepositoryType]: ...
 
@@ -3775,7 +3776,7 @@ class CodespacesClient:
         codespace_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         name: Missing[str] = UNSET,
         private: Missing[bool] = UNSET,
     ) -> Response[CodespaceWithFullRepository, CodespaceWithFullRepositoryType]: ...
@@ -3784,7 +3785,7 @@ class CodespacesClient:
         self,
         codespace_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[UserCodespacesCodespaceNamePublishPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[CodespaceWithFullRepository, CodespaceWithFullRepositoryType]:
@@ -3831,7 +3832,7 @@ class CodespacesClient:
         self,
         codespace_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: UserCodespacesCodespaceNamePublishPostBodyType,
     ) -> Response[CodespaceWithFullRepository, CodespaceWithFullRepositoryType]: ...
 
@@ -3841,7 +3842,7 @@ class CodespacesClient:
         codespace_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         name: Missing[str] = UNSET,
         private: Missing[bool] = UNSET,
     ) -> Response[CodespaceWithFullRepository, CodespaceWithFullRepositoryType]: ...
@@ -3850,7 +3851,7 @@ class CodespacesClient:
         self,
         codespace_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[UserCodespacesCodespaceNamePublishPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[CodespaceWithFullRepository, CodespaceWithFullRepositoryType]:
@@ -3896,7 +3897,7 @@ class CodespacesClient:
         self,
         codespace_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Codespace, CodespaceType]:
         """See also: https://docs.github.com/rest/codespaces/codespaces#start-a-codespace-for-the-authenticated-user"""
 
@@ -3926,7 +3927,7 @@ class CodespacesClient:
         self,
         codespace_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Codespace, CodespaceType]:
         """See also: https://docs.github.com/rest/codespaces/codespaces#start-a-codespace-for-the-authenticated-user"""
 
@@ -3956,7 +3957,7 @@ class CodespacesClient:
         self,
         codespace_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Codespace, CodespaceType]:
         """See also: https://docs.github.com/rest/codespaces/codespaces#stop-a-codespace-for-the-authenticated-user"""
 
@@ -3983,7 +3984,7 @@ class CodespacesClient:
         self,
         codespace_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Codespace, CodespaceType]:
         """See also: https://docs.github.com/rest/codespaces/codespaces#stop-a-codespace-for-the-authenticated-user"""
 
