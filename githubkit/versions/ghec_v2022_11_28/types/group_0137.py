@@ -40,6 +40,7 @@ class GistSimpleType(TypedDict):
     updated_at: NotRequired[str]
     description: NotRequired[Union[str, None]]
     comments: NotRequired[int]
+    comments_enabled: NotRequired[bool]
     user: NotRequired[Union[str, None]]
     comments_url: NotRequired[str]
     owner: NotRequired[SimpleUserType]

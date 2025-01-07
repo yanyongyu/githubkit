@@ -47,6 +47,7 @@ class GistSimple(GitHubModel):
     updated_at: Missing[str] = Field(default=UNSET)
     description: Missing[Union[str, None]] = Field(default=UNSET)
     comments: Missing[int] = Field(default=UNSET)
+    comments_enabled: Missing[bool] = Field(default=UNSET)
     user: Missing[Union[str, None]] = Field(default=UNSET)
     comments_url: Missing[str] = Field(default=UNSET)
     owner: Missing[SimpleUser] = Field(

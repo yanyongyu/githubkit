@@ -472,7 +472,7 @@ source = "https://raw.githubusercontent.com/github/rest-api-description/main/des
   "null",
 ] }
 
-# webhook workflow run workflow-run-*.workflow_run.pull_requests.number and .id should be integers
+# webhook workflow run pull_requests items id and number should be integers
 # https://github.com/github/rest-api-description/issues/4408
 "/components/schemas/webhook-workflow-run-completed/properties/workflow_run/properties/pull_requests/items/properties/id" = { type = "integer" }
 "/components/schemas/webhook-workflow-run-completed/properties/workflow_run/properties/pull_requests/items/properties/number" = { type = "integer" }

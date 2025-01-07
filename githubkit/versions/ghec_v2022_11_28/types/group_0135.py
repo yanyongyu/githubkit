@@ -36,6 +36,7 @@ class BaseGistType(TypedDict):
     updated_at: datetime
     description: Union[str, None]
     comments: int
+    comments_enabled: NotRequired[bool]
     user: Union[None, SimpleUserType]
     comments_url: str
     owner: NotRequired[SimpleUserType]

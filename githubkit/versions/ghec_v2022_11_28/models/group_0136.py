@@ -62,6 +62,7 @@ class GistSimplePropForkOf(GitHubModel):
     updated_at: datetime = Field()
     description: Union[str, None] = Field()
     comments: int = Field()
+    comments_enabled: Missing[bool] = Field(default=UNSET)
     user: Union[None, SimpleUser] = Field()
     comments_url: str = Field()
     owner: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
