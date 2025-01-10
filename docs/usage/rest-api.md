@@ -212,9 +212,11 @@ As shown above, the response data is parsed and validated by accessing the `resp
 ```python hl_lines="5"
 from typing import Any
 from githubkit import Response
+from githubkit.versions.latest.models import FullRepository
+from githubkit.versions.latest.types import FullRepositoryType
 
-resp: Response[FullRepository] = github.rest.repos.get("owner", "repo")
-repo: dict[str, Any] = resp.json()
+resp: Response[FullRepository, FullRepositoryType] = github.rest.repos.get("owner", "repo")
+repo: FullRepositoryType = resp.json()
 ```
 
 === "Pydantic v1"

@@ -187,7 +187,7 @@ from githubkit import GitHub, OAuthDeviceAuthStrategy
 # the data dict is the generation response from the github server.
 # see the link above for more fields in the response.
 def callback(data: dict):
-  print(data["user_code"])
+    print(data["user_code"])
 
 github = GitHub(
     OAuthDeviceAuthStrategy(

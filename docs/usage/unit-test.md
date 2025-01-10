@@ -34,7 +34,7 @@ If you are using githubkit in your business logic, you may want to mock the gith
         **kwargs: Any,  # (2)!
     ) -> Response[Any]:
         if method == "GET" and url == "/repos/owner/repo":  # (3)!
-            return Response[T](
+            return Response(
                 httpx.Response(status_code=200, json=FAKE_RESPONSE),
                 Any if response_model is UNSET else response_model,
             )
@@ -86,7 +86,7 @@ If you are using githubkit in your business logic, you may want to mock the gith
         **kwargs: Any,  # (2)!
     ) -> Response[Any]:
         if method == "GET" and url == "/repos/owner/repo":  # (3)!
-            return Response[T](
+            return Response(
                 httpx.Response(status_code=200, json=FAKE_RESPONSE),
                 Any if response_model is UNSET else response_model,
             )
