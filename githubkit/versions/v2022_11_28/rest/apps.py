@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from collections.abc import Mapping
 from typing import TYPE_CHECKING, Literal, Optional, overload
 from weakref import ref
 
@@ -91,7 +92,7 @@ class AppsClient:
     def get_authenticated(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Union[Integration, None], Union[IntegrationType, None]]:
         """See also: https://docs.github.com/rest/apps/apps#get-the-authenticated-app"""
 
@@ -113,7 +114,7 @@ class AppsClient:
     async def async_get_authenticated(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Union[Integration, None], Union[IntegrationType, None]]:
         """See also: https://docs.github.com/rest/apps/apps#get-the-authenticated-app"""
 
@@ -136,7 +137,7 @@ class AppsClient:
         self,
         code: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         AppManifestsCodeConversionsPostResponse201,
         AppManifestsCodeConversionsPostResponse201Type,
@@ -168,7 +169,7 @@ class AppsClient:
         self,
         code: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         AppManifestsCodeConversionsPostResponse201,
         AppManifestsCodeConversionsPostResponse201Type,
@@ -199,7 +200,7 @@ class AppsClient:
     def get_webhook_config_for_app(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[WebhookConfig, WebhookConfigType]:
         """See also: https://docs.github.com/rest/apps/webhooks#get-a-webhook-configuration-for-an-app"""
 
@@ -219,7 +220,7 @@ class AppsClient:
     async def async_get_webhook_config_for_app(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[WebhookConfig, WebhookConfigType]:
         """See also: https://docs.github.com/rest/apps/webhooks#get-a-webhook-configuration-for-an-app"""
 
@@ -240,7 +241,7 @@ class AppsClient:
     def update_webhook_config_for_app(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: AppHookConfigPatchBodyType,
     ) -> Response[WebhookConfig, WebhookConfigType]: ...
 
@@ -249,7 +250,7 @@ class AppsClient:
         self,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         url: Missing[str] = UNSET,
         content_type: Missing[str] = UNSET,
         secret: Missing[str] = UNSET,
@@ -259,7 +260,7 @@ class AppsClient:
     def update_webhook_config_for_app(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[AppHookConfigPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[WebhookConfig, WebhookConfigType]:
@@ -292,7 +293,7 @@ class AppsClient:
     async def async_update_webhook_config_for_app(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: AppHookConfigPatchBodyType,
     ) -> Response[WebhookConfig, WebhookConfigType]: ...
 
@@ -301,7 +302,7 @@ class AppsClient:
         self,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         url: Missing[str] = UNSET,
         content_type: Missing[str] = UNSET,
         secret: Missing[str] = UNSET,
@@ -311,7 +312,7 @@ class AppsClient:
     async def async_update_webhook_config_for_app(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[AppHookConfigPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[WebhookConfig, WebhookConfigType]:
@@ -345,7 +346,7 @@ class AppsClient:
         *,
         per_page: Missing[int] = UNSET,
         cursor: Missing[str] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[HookDeliveryItem], list[HookDeliveryItemType]]:
         """See also: https://docs.github.com/rest/apps/webhooks#list-deliveries-for-an-app-webhook"""
 
@@ -377,7 +378,7 @@ class AppsClient:
         *,
         per_page: Missing[int] = UNSET,
         cursor: Missing[str] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[HookDeliveryItem], list[HookDeliveryItemType]]:
         """See also: https://docs.github.com/rest/apps/webhooks#list-deliveries-for-an-app-webhook"""
 
@@ -408,7 +409,7 @@ class AppsClient:
         self,
         delivery_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[HookDelivery, HookDeliveryType]:
         """See also: https://docs.github.com/rest/apps/webhooks#get-a-delivery-for-an-app-webhook"""
 
@@ -433,7 +434,7 @@ class AppsClient:
         self,
         delivery_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[HookDelivery, HookDeliveryType]:
         """See also: https://docs.github.com/rest/apps/webhooks#get-a-delivery-for-an-app-webhook"""
 
@@ -458,7 +459,7 @@ class AppsClient:
         self,
         delivery_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
@@ -490,7 +491,7 @@ class AppsClient:
         self,
         delivery_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
@@ -523,7 +524,7 @@ class AppsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         list[IntegrationInstallationRequest], list[IntegrationInstallationRequestType]
     ]:
@@ -556,7 +557,7 @@ class AppsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         list[IntegrationInstallationRequest], list[IntegrationInstallationRequestType]
     ]:
@@ -591,7 +592,7 @@ class AppsClient:
         page: Missing[int] = UNSET,
         since: Missing[datetime] = UNSET,
         outdated: Missing[str] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Installation], list[InstallationType]]:
         """See also: https://docs.github.com/rest/apps/apps#list-installations-for-the-authenticated-app"""
 
@@ -623,7 +624,7 @@ class AppsClient:
         page: Missing[int] = UNSET,
         since: Missing[datetime] = UNSET,
         outdated: Missing[str] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Installation], list[InstallationType]]:
         """See also: https://docs.github.com/rest/apps/apps#list-installations-for-the-authenticated-app"""
 
@@ -652,7 +653,7 @@ class AppsClient:
         self,
         installation_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Installation, InstallationType]:
         """See also: https://docs.github.com/rest/apps/apps#get-an-installation-for-the-authenticated-app"""
 
@@ -676,7 +677,7 @@ class AppsClient:
         self,
         installation_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Installation, InstallationType]:
         """See also: https://docs.github.com/rest/apps/apps#get-an-installation-for-the-authenticated-app"""
 
@@ -700,7 +701,7 @@ class AppsClient:
         self,
         installation_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/apps/apps#delete-an-installation-for-the-authenticated-app"""
 
@@ -723,7 +724,7 @@ class AppsClient:
         self,
         installation_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/apps/apps#delete-an-installation-for-the-authenticated-app"""
 
@@ -747,7 +748,7 @@ class AppsClient:
         self,
         installation_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[AppInstallationsInstallationIdAccessTokensPostBodyType] = UNSET,
     ) -> Response[InstallationToken, InstallationTokenType]: ...
 
@@ -757,7 +758,7 @@ class AppsClient:
         installation_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         repositories: Missing[list[str]] = UNSET,
         repository_ids: Missing[list[int]] = UNSET,
         permissions: Missing[AppPermissionsType] = UNSET,
@@ -767,7 +768,7 @@ class AppsClient:
         self,
         installation_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[AppInstallationsInstallationIdAccessTokensPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[InstallationToken, InstallationTokenType]:
@@ -814,7 +815,7 @@ class AppsClient:
         self,
         installation_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[AppInstallationsInstallationIdAccessTokensPostBodyType] = UNSET,
     ) -> Response[InstallationToken, InstallationTokenType]: ...
 
@@ -824,7 +825,7 @@ class AppsClient:
         installation_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         repositories: Missing[list[str]] = UNSET,
         repository_ids: Missing[list[int]] = UNSET,
         permissions: Missing[AppPermissionsType] = UNSET,
@@ -834,7 +835,7 @@ class AppsClient:
         self,
         installation_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[AppInstallationsInstallationIdAccessTokensPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[InstallationToken, InstallationTokenType]:
@@ -880,7 +881,7 @@ class AppsClient:
         self,
         installation_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/apps/apps#suspend-an-app-installation"""
 
@@ -903,7 +904,7 @@ class AppsClient:
         self,
         installation_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/apps/apps#suspend-an-app-installation"""
 
@@ -926,7 +927,7 @@ class AppsClient:
         self,
         installation_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/apps/apps#unsuspend-an-app-installation"""
 
@@ -949,7 +950,7 @@ class AppsClient:
         self,
         installation_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/apps/apps#unsuspend-an-app-installation"""
 
@@ -973,7 +974,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ApplicationsClientIdGrantDeleteBodyType,
     ) -> Response: ...
 
@@ -983,7 +984,7 @@ class AppsClient:
         client_id: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         access_token: str,
     ) -> Response: ...
 
@@ -991,7 +992,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ApplicationsClientIdGrantDeleteBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -1027,7 +1028,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ApplicationsClientIdGrantDeleteBodyType,
     ) -> Response: ...
 
@@ -1037,7 +1038,7 @@ class AppsClient:
         client_id: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         access_token: str,
     ) -> Response: ...
 
@@ -1045,7 +1046,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ApplicationsClientIdGrantDeleteBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -1081,7 +1082,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ApplicationsClientIdTokenPostBodyType,
     ) -> Response[Authorization, AuthorizationType]: ...
 
@@ -1091,7 +1092,7 @@ class AppsClient:
         client_id: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         access_token: str,
     ) -> Response[Authorization, AuthorizationType]: ...
 
@@ -1099,7 +1100,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ApplicationsClientIdTokenPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Authorization, AuthorizationType]:
@@ -1142,7 +1143,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ApplicationsClientIdTokenPostBodyType,
     ) -> Response[Authorization, AuthorizationType]: ...
 
@@ -1152,7 +1153,7 @@ class AppsClient:
         client_id: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         access_token: str,
     ) -> Response[Authorization, AuthorizationType]: ...
 
@@ -1160,7 +1161,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ApplicationsClientIdTokenPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Authorization, AuthorizationType]:
@@ -1203,7 +1204,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ApplicationsClientIdTokenDeleteBodyType,
     ) -> Response: ...
 
@@ -1213,7 +1214,7 @@ class AppsClient:
         client_id: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         access_token: str,
     ) -> Response: ...
 
@@ -1221,7 +1222,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ApplicationsClientIdTokenDeleteBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -1257,7 +1258,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ApplicationsClientIdTokenDeleteBodyType,
     ) -> Response: ...
 
@@ -1267,7 +1268,7 @@ class AppsClient:
         client_id: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         access_token: str,
     ) -> Response: ...
 
@@ -1275,7 +1276,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ApplicationsClientIdTokenDeleteBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -1311,7 +1312,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ApplicationsClientIdTokenPatchBodyType,
     ) -> Response[Authorization, AuthorizationType]: ...
 
@@ -1321,7 +1322,7 @@ class AppsClient:
         client_id: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         access_token: str,
     ) -> Response[Authorization, AuthorizationType]: ...
 
@@ -1329,7 +1330,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ApplicationsClientIdTokenPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Authorization, AuthorizationType]:
@@ -1370,7 +1371,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ApplicationsClientIdTokenPatchBodyType,
     ) -> Response[Authorization, AuthorizationType]: ...
 
@@ -1380,7 +1381,7 @@ class AppsClient:
         client_id: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         access_token: str,
     ) -> Response[Authorization, AuthorizationType]: ...
 
@@ -1388,7 +1389,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ApplicationsClientIdTokenPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Authorization, AuthorizationType]:
@@ -1429,7 +1430,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ApplicationsClientIdTokenScopedPostBodyType,
     ) -> Response[Authorization, AuthorizationType]: ...
 
@@ -1439,7 +1440,7 @@ class AppsClient:
         client_id: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         access_token: str,
         target: Missing[str] = UNSET,
         target_id: Missing[int] = UNSET,
@@ -1452,7 +1453,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ApplicationsClientIdTokenScopedPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Authorization, AuthorizationType]:
@@ -1497,7 +1498,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ApplicationsClientIdTokenScopedPostBodyType,
     ) -> Response[Authorization, AuthorizationType]: ...
 
@@ -1507,7 +1508,7 @@ class AppsClient:
         client_id: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         access_token: str,
         target: Missing[str] = UNSET,
         target_id: Missing[int] = UNSET,
@@ -1520,7 +1521,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ApplicationsClientIdTokenScopedPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Authorization, AuthorizationType]:
@@ -1564,7 +1565,7 @@ class AppsClient:
         self,
         app_slug: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Union[Integration, None], Union[IntegrationType, None]]:
         """See also: https://docs.github.com/rest/apps/apps#get-an-app"""
 
@@ -1591,7 +1592,7 @@ class AppsClient:
         self,
         app_slug: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Union[Integration, None], Union[IntegrationType, None]]:
         """See also: https://docs.github.com/rest/apps/apps#get-an-app"""
 
@@ -1619,7 +1620,7 @@ class AppsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         InstallationRepositoriesGetResponse200,
         InstallationRepositoriesGetResponse200Type,
@@ -1654,7 +1655,7 @@ class AppsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         InstallationRepositoriesGetResponse200,
         InstallationRepositoriesGetResponse200Type,
@@ -1687,7 +1688,7 @@ class AppsClient:
     def revoke_installation_access_token(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/apps/installations#revoke-an-installation-access-token"""
 
@@ -1704,7 +1705,7 @@ class AppsClient:
     async def async_revoke_installation_access_token(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/apps/installations#revoke-an-installation-access-token"""
 
@@ -1722,7 +1723,7 @@ class AppsClient:
         self,
         account_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[MarketplacePurchase, MarketplacePurchaseType]:
         """See also: https://docs.github.com/rest/apps/marketplace#get-a-subscription-plan-for-an-account"""
 
@@ -1747,7 +1748,7 @@ class AppsClient:
         self,
         account_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[MarketplacePurchase, MarketplacePurchaseType]:
         """See also: https://docs.github.com/rest/apps/marketplace#get-a-subscription-plan-for-an-account"""
 
@@ -1773,7 +1774,7 @@ class AppsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[MarketplaceListingPlan], list[MarketplaceListingPlanType]]:
         """See also: https://docs.github.com/rest/apps/marketplace#list-plans"""
 
@@ -1805,7 +1806,7 @@ class AppsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[MarketplaceListingPlan], list[MarketplaceListingPlanType]]:
         """See also: https://docs.github.com/rest/apps/marketplace#list-plans"""
 
@@ -1840,7 +1841,7 @@ class AppsClient:
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[MarketplacePurchase], list[MarketplacePurchaseType]]:
         """See also: https://docs.github.com/rest/apps/marketplace#list-accounts-for-a-plan"""
 
@@ -1878,7 +1879,7 @@ class AppsClient:
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[MarketplacePurchase], list[MarketplacePurchaseType]]:
         """See also: https://docs.github.com/rest/apps/marketplace#list-accounts-for-a-plan"""
 
@@ -1912,7 +1913,7 @@ class AppsClient:
         self,
         account_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[MarketplacePurchase, MarketplacePurchaseType]:
         """See also: https://docs.github.com/rest/apps/marketplace#get-a-subscription-plan-for-an-account-stubbed"""
 
@@ -1936,7 +1937,7 @@ class AppsClient:
         self,
         account_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[MarketplacePurchase, MarketplacePurchaseType]:
         """See also: https://docs.github.com/rest/apps/marketplace#get-a-subscription-plan-for-an-account-stubbed"""
 
@@ -1961,7 +1962,7 @@ class AppsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[MarketplaceListingPlan], list[MarketplaceListingPlanType]]:
         """See also: https://docs.github.com/rest/apps/marketplace#list-plans-stubbed"""
 
@@ -1992,7 +1993,7 @@ class AppsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[MarketplaceListingPlan], list[MarketplaceListingPlanType]]:
         """See also: https://docs.github.com/rest/apps/marketplace#list-plans-stubbed"""
 
@@ -2026,7 +2027,7 @@ class AppsClient:
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[MarketplacePurchase], list[MarketplacePurchaseType]]:
         """See also: https://docs.github.com/rest/apps/marketplace#list-accounts-for-a-plan-stubbed"""
 
@@ -2062,7 +2063,7 @@ class AppsClient:
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[MarketplacePurchase], list[MarketplacePurchaseType]]:
         """See also: https://docs.github.com/rest/apps/marketplace#list-accounts-for-a-plan-stubbed"""
 
@@ -2094,7 +2095,7 @@ class AppsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Installation, InstallationType]:
         """See also: https://docs.github.com/rest/apps/apps#get-an-organization-installation-for-the-authenticated-app"""
 
@@ -2115,7 +2116,7 @@ class AppsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Installation, InstallationType]:
         """See also: https://docs.github.com/rest/apps/apps#get-an-organization-installation-for-the-authenticated-app"""
 
@@ -2137,7 +2138,7 @@ class AppsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Installation, InstallationType]:
         """See also: https://docs.github.com/rest/apps/apps#get-a-repository-installation-for-the-authenticated-app"""
 
@@ -2162,7 +2163,7 @@ class AppsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Installation, InstallationType]:
         """See also: https://docs.github.com/rest/apps/apps#get-a-repository-installation-for-the-authenticated-app"""
 
@@ -2187,7 +2188,7 @@ class AppsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[UserInstallationsGetResponse200, UserInstallationsGetResponse200Type]:
         """See also: https://docs.github.com/rest/apps/installations#list-app-installations-accessible-to-the-user-access-token"""
 
@@ -2219,7 +2220,7 @@ class AppsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[UserInstallationsGetResponse200, UserInstallationsGetResponse200Type]:
         """See also: https://docs.github.com/rest/apps/installations#list-app-installations-accessible-to-the-user-access-token"""
 
@@ -2252,7 +2253,7 @@ class AppsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         UserInstallationsInstallationIdRepositoriesGetResponse200,
         UserInstallationsInstallationIdRepositoriesGetResponse200Type,
@@ -2291,7 +2292,7 @@ class AppsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         UserInstallationsInstallationIdRepositoriesGetResponse200,
         UserInstallationsInstallationIdRepositoriesGetResponse200Type,
@@ -2329,7 +2330,7 @@ class AppsClient:
         installation_id: int,
         repository_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/apps/installations#add-a-repository-to-an-app-installation"""
 
@@ -2354,7 +2355,7 @@ class AppsClient:
         installation_id: int,
         repository_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/apps/installations#add-a-repository-to-an-app-installation"""
 
@@ -2379,7 +2380,7 @@ class AppsClient:
         installation_id: int,
         repository_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/apps/installations#remove-a-repository-from-an-app-installation"""
 
@@ -2404,7 +2405,7 @@ class AppsClient:
         installation_id: int,
         repository_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/apps/installations#remove-a-repository-from-an-app-installation"""
 
@@ -2429,7 +2430,7 @@ class AppsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[UserMarketplacePurchase], list[UserMarketplacePurchaseType]]:
         """See also: https://docs.github.com/rest/apps/marketplace#list-subscriptions-for-the-authenticated-user"""
 
@@ -2461,7 +2462,7 @@ class AppsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[UserMarketplacePurchase], list[UserMarketplacePurchaseType]]:
         """See also: https://docs.github.com/rest/apps/marketplace#list-subscriptions-for-the-authenticated-user"""
 
@@ -2493,7 +2494,7 @@ class AppsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[UserMarketplacePurchase], list[UserMarketplacePurchaseType]]:
         """See also: https://docs.github.com/rest/apps/marketplace#list-subscriptions-for-the-authenticated-user-stubbed"""
 
@@ -2524,7 +2525,7 @@ class AppsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[UserMarketplacePurchase], list[UserMarketplacePurchaseType]]:
         """See also: https://docs.github.com/rest/apps/marketplace#list-subscriptions-for-the-authenticated-user-stubbed"""
 
@@ -2554,7 +2555,7 @@ class AppsClient:
         self,
         username: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Installation, InstallationType]:
         """See also: https://docs.github.com/rest/apps/apps#get-a-user-installation-for-the-authenticated-app"""
 
@@ -2575,7 +2576,7 @@ class AppsClient:
         self,
         username: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Installation, InstallationType]:
         """See also: https://docs.github.com/rest/apps/apps#get-a-user-installation-for-the-authenticated-app"""
 

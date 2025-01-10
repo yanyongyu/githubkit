@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from collections.abc import Mapping
 from typing import TYPE_CHECKING, Literal, Optional, overload
 from weakref import ref
 
@@ -70,7 +71,7 @@ class MigrationsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         exclude: Missing[list[Literal["repositories"]]] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Migration], list[MigrationType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/orgs#list-organization-migrations"""
 
@@ -101,7 +102,7 @@ class MigrationsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         exclude: Missing[list[Literal["repositories"]]] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Migration], list[MigrationType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/orgs#list-organization-migrations"""
 
@@ -130,7 +131,7 @@ class MigrationsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgMigrationsPostBodyType,
     ) -> Response[Migration, MigrationType]: ...
 
@@ -140,7 +141,7 @@ class MigrationsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         repositories: list[str],
         lock_repositories: Missing[bool] = UNSET,
         exclude_metadata: Missing[bool] = UNSET,
@@ -156,7 +157,7 @@ class MigrationsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgMigrationsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Migration, MigrationType]:
@@ -199,7 +200,7 @@ class MigrationsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgMigrationsPostBodyType,
     ) -> Response[Migration, MigrationType]: ...
 
@@ -209,7 +210,7 @@ class MigrationsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         repositories: list[str],
         lock_repositories: Missing[bool] = UNSET,
         exclude_metadata: Missing[bool] = UNSET,
@@ -225,7 +226,7 @@ class MigrationsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgMigrationsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Migration, MigrationType]:
@@ -269,7 +270,7 @@ class MigrationsClient:
         migration_id: int,
         *,
         exclude: Missing[list[Literal["repositories"]]] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Migration, MigrationType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/orgs#get-an-organization-migration-status"""
 
@@ -300,7 +301,7 @@ class MigrationsClient:
         migration_id: int,
         *,
         exclude: Missing[list[Literal["repositories"]]] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Migration, MigrationType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/orgs#get-an-organization-migration-status"""
 
@@ -330,7 +331,7 @@ class MigrationsClient:
         org: str,
         migration_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/orgs#download-an-organization-migration-archive"""
 
@@ -354,7 +355,7 @@ class MigrationsClient:
         org: str,
         migration_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/orgs#download-an-organization-migration-archive"""
 
@@ -378,7 +379,7 @@ class MigrationsClient:
         org: str,
         migration_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/orgs#delete-an-organization-migration-archive"""
 
@@ -402,7 +403,7 @@ class MigrationsClient:
         org: str,
         migration_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/orgs#delete-an-organization-migration-archive"""
 
@@ -427,7 +428,7 @@ class MigrationsClient:
         migration_id: int,
         repo_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/orgs#unlock-an-organization-repository"""
 
@@ -452,7 +453,7 @@ class MigrationsClient:
         migration_id: int,
         repo_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/orgs#unlock-an-organization-repository"""
 
@@ -478,7 +479,7 @@ class MigrationsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/orgs#list-repositories-in-an-organization-migration"""
 
@@ -511,7 +512,7 @@ class MigrationsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/orgs#list-repositories-in-an-organization-migration"""
 
@@ -542,7 +543,7 @@ class MigrationsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Import, ImportType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/source-imports#get-an-import-status"""
 
@@ -568,7 +569,7 @@ class MigrationsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Import, ImportType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/source-imports#get-an-import-status"""
 
@@ -595,7 +596,7 @@ class MigrationsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoImportPutBodyType,
     ) -> Response[Import, ImportType]: ...
 
@@ -606,7 +607,7 @@ class MigrationsClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         vcs_url: str,
         vcs: Missing[Literal["subversion", "git", "mercurial", "tfvc"]] = UNSET,
         vcs_username: Missing[str] = UNSET,
@@ -619,7 +620,7 @@ class MigrationsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoImportPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[Import, ImportType]:
@@ -664,7 +665,7 @@ class MigrationsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoImportPutBodyType,
     ) -> Response[Import, ImportType]: ...
 
@@ -675,7 +676,7 @@ class MigrationsClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         vcs_url: str,
         vcs: Missing[Literal["subversion", "git", "mercurial", "tfvc"]] = UNSET,
         vcs_username: Missing[str] = UNSET,
@@ -688,7 +689,7 @@ class MigrationsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoImportPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[Import, ImportType]:
@@ -732,7 +733,7 @@ class MigrationsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/source-imports#cancel-an-import"""
 
@@ -756,7 +757,7 @@ class MigrationsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/source-imports#cancel-an-import"""
 
@@ -781,7 +782,7 @@ class MigrationsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[Union[ReposOwnerRepoImportPatchBodyType, None]] = UNSET,
     ) -> Response[Import, ImportType]: ...
 
@@ -792,7 +793,7 @@ class MigrationsClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         vcs_username: Missing[str] = UNSET,
         vcs_password: Missing[str] = UNSET,
         vcs: Missing[Literal["subversion", "tfvc", "git", "mercurial"]] = UNSET,
@@ -804,7 +805,7 @@ class MigrationsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[Union[ReposOwnerRepoImportPatchBodyType, None]] = UNSET,
         **kwargs,
     ) -> Response[Import, ImportType]:
@@ -846,7 +847,7 @@ class MigrationsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[Union[ReposOwnerRepoImportPatchBodyType, None]] = UNSET,
     ) -> Response[Import, ImportType]: ...
 
@@ -857,7 +858,7 @@ class MigrationsClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         vcs_username: Missing[str] = UNSET,
         vcs_password: Missing[str] = UNSET,
         vcs: Missing[Literal["subversion", "tfvc", "git", "mercurial"]] = UNSET,
@@ -869,7 +870,7 @@ class MigrationsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[Union[ReposOwnerRepoImportPatchBodyType, None]] = UNSET,
         **kwargs,
     ) -> Response[Import, ImportType]:
@@ -911,7 +912,7 @@ class MigrationsClient:
         repo: str,
         *,
         since: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[PorterAuthor], list[PorterAuthorType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/source-imports#get-commit-authors"""
 
@@ -943,7 +944,7 @@ class MigrationsClient:
         repo: str,
         *,
         since: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[PorterAuthor], list[PorterAuthorType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/source-imports#get-commit-authors"""
 
@@ -976,7 +977,7 @@ class MigrationsClient:
         repo: str,
         author_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoImportAuthorsAuthorIdPatchBodyType] = UNSET,
     ) -> Response[PorterAuthor, PorterAuthorType]: ...
 
@@ -988,7 +989,7 @@ class MigrationsClient:
         author_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         email: Missing[str] = UNSET,
         name: Missing[str] = UNSET,
     ) -> Response[PorterAuthor, PorterAuthorType]: ...
@@ -999,7 +1000,7 @@ class MigrationsClient:
         repo: str,
         author_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoImportAuthorsAuthorIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[PorterAuthor, PorterAuthorType]:
@@ -1047,7 +1048,7 @@ class MigrationsClient:
         repo: str,
         author_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoImportAuthorsAuthorIdPatchBodyType] = UNSET,
     ) -> Response[PorterAuthor, PorterAuthorType]: ...
 
@@ -1059,7 +1060,7 @@ class MigrationsClient:
         author_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         email: Missing[str] = UNSET,
         name: Missing[str] = UNSET,
     ) -> Response[PorterAuthor, PorterAuthorType]: ...
@@ -1070,7 +1071,7 @@ class MigrationsClient:
         repo: str,
         author_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoImportAuthorsAuthorIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[PorterAuthor, PorterAuthorType]:
@@ -1116,7 +1117,7 @@ class MigrationsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[PorterLargeFile], list[PorterLargeFileType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/source-imports#get-large-files"""
 
@@ -1141,7 +1142,7 @@ class MigrationsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[PorterLargeFile], list[PorterLargeFileType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/source-imports#get-large-files"""
 
@@ -1167,7 +1168,7 @@ class MigrationsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoImportLfsPatchBodyType,
     ) -> Response[Import, ImportType]: ...
 
@@ -1178,7 +1179,7 @@ class MigrationsClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         use_lfs: Literal["opt_in", "opt_out"],
     ) -> Response[Import, ImportType]: ...
 
@@ -1187,7 +1188,7 @@ class MigrationsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoImportLfsPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Import, ImportType]:
@@ -1231,7 +1232,7 @@ class MigrationsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoImportLfsPatchBodyType,
     ) -> Response[Import, ImportType]: ...
 
@@ -1242,7 +1243,7 @@ class MigrationsClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         use_lfs: Literal["opt_in", "opt_out"],
     ) -> Response[Import, ImportType]: ...
 
@@ -1251,7 +1252,7 @@ class MigrationsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoImportLfsPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Import, ImportType]:
@@ -1294,7 +1295,7 @@ class MigrationsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Migration], list[MigrationType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/users#list-user-migrations"""
 
@@ -1326,7 +1327,7 @@ class MigrationsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Migration], list[MigrationType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/users#list-user-migrations"""
 
@@ -1357,7 +1358,7 @@ class MigrationsClient:
     def start_for_authenticated_user(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: UserMigrationsPostBodyType,
     ) -> Response[Migration, MigrationType]: ...
 
@@ -1366,7 +1367,7 @@ class MigrationsClient:
         self,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         lock_repositories: Missing[bool] = UNSET,
         exclude_metadata: Missing[bool] = UNSET,
         exclude_git_data: Missing[bool] = UNSET,
@@ -1381,7 +1382,7 @@ class MigrationsClient:
     def start_for_authenticated_user(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[UserMigrationsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Migration, MigrationType]:
@@ -1424,7 +1425,7 @@ class MigrationsClient:
     async def async_start_for_authenticated_user(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: UserMigrationsPostBodyType,
     ) -> Response[Migration, MigrationType]: ...
 
@@ -1433,7 +1434,7 @@ class MigrationsClient:
         self,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         lock_repositories: Missing[bool] = UNSET,
         exclude_metadata: Missing[bool] = UNSET,
         exclude_git_data: Missing[bool] = UNSET,
@@ -1448,7 +1449,7 @@ class MigrationsClient:
     async def async_start_for_authenticated_user(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[UserMigrationsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Migration, MigrationType]:
@@ -1492,7 +1493,7 @@ class MigrationsClient:
         migration_id: int,
         *,
         exclude: Missing[list[str]] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Migration, MigrationType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/users#get-a-user-migration-status"""
 
@@ -1524,7 +1525,7 @@ class MigrationsClient:
         migration_id: int,
         *,
         exclude: Missing[list[str]] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Migration, MigrationType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/users#get-a-user-migration-status"""
 
@@ -1555,7 +1556,7 @@ class MigrationsClient:
         self,
         migration_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/users#download-a-user-migration-archive"""
 
@@ -1579,7 +1580,7 @@ class MigrationsClient:
         self,
         migration_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/users#download-a-user-migration-archive"""
 
@@ -1603,7 +1604,7 @@ class MigrationsClient:
         self,
         migration_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/users#delete-a-user-migration-archive"""
 
@@ -1628,7 +1629,7 @@ class MigrationsClient:
         self,
         migration_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/users#delete-a-user-migration-archive"""
 
@@ -1654,7 +1655,7 @@ class MigrationsClient:
         migration_id: int,
         repo_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/users#unlock-a-user-repository"""
 
@@ -1680,7 +1681,7 @@ class MigrationsClient:
         migration_id: int,
         repo_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/users#unlock-a-user-repository"""
 
@@ -1707,7 +1708,7 @@ class MigrationsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/users#list-repositories-for-a-user-migration"""
 
@@ -1739,7 +1740,7 @@ class MigrationsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/users#list-repositories-for-a-user-migration"""
 

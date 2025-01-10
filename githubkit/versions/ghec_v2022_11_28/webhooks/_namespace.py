@@ -7,6 +7,7 @@ bash ./scripts/run-codegen.sh
 See https://github.com/github/rest-api-description for more information.
 """
 
+from collections.abc import Mapping
 import hmac
 import importlib
 import json
@@ -653,7 +654,7 @@ class WebhookNamespace:
         return type_validate_json(Event, payload)
 
     @staticmethod
-    def parse_obj_without_name(payload: dict[str, Any]) -> "WebhookEvent":
+    def parse_obj_without_name(payload: Mapping[str, Any]) -> "WebhookEvent":
         """Parse the webhook payload dict without event name.
 
         Note:
@@ -663,7 +664,7 @@ class WebhookNamespace:
             the result may not be the correct type as expected.
 
         Args:
-            payload (dict[str, Any]): webhook payload dict.
+            payload (Mapping[str, Any]): webhook payload dict.
         """
 
         from ._types import WebhookEvent
@@ -673,385 +674,391 @@ class WebhookNamespace:
     @overload
     @staticmethod
     def parse_obj(
-        name: Literal["branch_protection_configuration"], payload: dict[str, Any]
+        name: Literal["branch_protection_configuration"], payload: Mapping[str, Any]
     ) -> "BranchProtectionConfigurationEvent": ...
     @overload
     @staticmethod
     def parse_obj(
-        name: Literal["branch_protection_rule"], payload: dict[str, Any]
+        name: Literal["branch_protection_rule"], payload: Mapping[str, Any]
     ) -> "BranchProtectionRuleEvent": ...
     @overload
     @staticmethod
     def parse_obj(
-        name: Literal["exemption_request_push_ruleset"], payload: dict[str, Any]
+        name: Literal["exemption_request_push_ruleset"], payload: Mapping[str, Any]
     ) -> "ExemptionRequestPushRulesetEvent": ...
     @overload
     @staticmethod
     def parse_obj(
-        name: Literal["exemption_request_secret_scanning"], payload: dict[str, Any]
+        name: Literal["exemption_request_secret_scanning"], payload: Mapping[str, Any]
     ) -> "ExemptionRequestSecretScanningEvent": ...
     @overload
     @staticmethod
     def parse_obj(
-        name: Literal["check_run"], payload: dict[str, Any]
+        name: Literal["check_run"], payload: Mapping[str, Any]
     ) -> "CheckRunEvent": ...
     @overload
     @staticmethod
     def parse_obj(
-        name: Literal["check_suite"], payload: dict[str, Any]
+        name: Literal["check_suite"], payload: Mapping[str, Any]
     ) -> "CheckSuiteEvent": ...
     @overload
     @staticmethod
     def parse_obj(
-        name: Literal["code_scanning_alert"], payload: dict[str, Any]
+        name: Literal["code_scanning_alert"], payload: Mapping[str, Any]
     ) -> "CodeScanningAlertEvent": ...
     @overload
     @staticmethod
     def parse_obj(
-        name: Literal["commit_comment"], payload: dict[str, Any]
+        name: Literal["commit_comment"], payload: Mapping[str, Any]
     ) -> "CommitCommentEvent": ...
     @overload
     @staticmethod
     def parse_obj(
-        name: Literal["create"], payload: dict[str, Any]
+        name: Literal["create"], payload: Mapping[str, Any]
     ) -> "CreateEvent": ...
     @overload
     @staticmethod
     def parse_obj(
-        name: Literal["custom_property"], payload: dict[str, Any]
+        name: Literal["custom_property"], payload: Mapping[str, Any]
     ) -> "CustomPropertyEvent": ...
     @overload
     @staticmethod
     def parse_obj(
-        name: Literal["custom_property_values"], payload: dict[str, Any]
+        name: Literal["custom_property_values"], payload: Mapping[str, Any]
     ) -> "CustomPropertyValuesEvent": ...
     @overload
     @staticmethod
     def parse_obj(
-        name: Literal["delete"], payload: dict[str, Any]
+        name: Literal["delete"], payload: Mapping[str, Any]
     ) -> "DeleteEvent": ...
     @overload
     @staticmethod
     def parse_obj(
-        name: Literal["dependabot_alert"], payload: dict[str, Any]
+        name: Literal["dependabot_alert"], payload: Mapping[str, Any]
     ) -> "DependabotAlertEvent": ...
     @overload
     @staticmethod
     def parse_obj(
-        name: Literal["deploy_key"], payload: dict[str, Any]
+        name: Literal["deploy_key"], payload: Mapping[str, Any]
     ) -> "DeployKeyEvent": ...
     @overload
     @staticmethod
     def parse_obj(
-        name: Literal["deployment"], payload: dict[str, Any]
+        name: Literal["deployment"], payload: Mapping[str, Any]
     ) -> "DeploymentEvent": ...
     @overload
     @staticmethod
     def parse_obj(
-        name: Literal["deployment_protection_rule"], payload: dict[str, Any]
+        name: Literal["deployment_protection_rule"], payload: Mapping[str, Any]
     ) -> "DeploymentProtectionRuleEvent": ...
     @overload
     @staticmethod
     def parse_obj(
-        name: Literal["deployment_review"], payload: dict[str, Any]
+        name: Literal["deployment_review"], payload: Mapping[str, Any]
     ) -> "DeploymentReviewEvent": ...
     @overload
     @staticmethod
     def parse_obj(
-        name: Literal["deployment_status"], payload: dict[str, Any]
+        name: Literal["deployment_status"], payload: Mapping[str, Any]
     ) -> "DeploymentStatusEvent": ...
     @overload
     @staticmethod
     def parse_obj(
-        name: Literal["discussion"], payload: dict[str, Any]
+        name: Literal["discussion"], payload: Mapping[str, Any]
     ) -> "DiscussionEvent": ...
     @overload
     @staticmethod
     def parse_obj(
-        name: Literal["discussion_comment"], payload: dict[str, Any]
+        name: Literal["discussion_comment"], payload: Mapping[str, Any]
     ) -> "DiscussionCommentEvent": ...
     @overload
     @staticmethod
-    def parse_obj(name: Literal["fork"], payload: dict[str, Any]) -> "ForkEvent": ...
+    def parse_obj(name: Literal["fork"], payload: Mapping[str, Any]) -> "ForkEvent": ...
     @overload
     @staticmethod
     def parse_obj(
-        name: Literal["github_app_authorization"], payload: dict[str, Any]
+        name: Literal["github_app_authorization"], payload: Mapping[str, Any]
     ) -> "GithubAppAuthorizationEvent": ...
     @overload
     @staticmethod
     def parse_obj(
-        name: Literal["gollum"], payload: dict[str, Any]
+        name: Literal["gollum"], payload: Mapping[str, Any]
     ) -> "GollumEvent": ...
     @overload
     @staticmethod
     def parse_obj(
-        name: Literal["installation"], payload: dict[str, Any]
+        name: Literal["installation"], payload: Mapping[str, Any]
     ) -> "InstallationEvent": ...
     @overload
     @staticmethod
     def parse_obj(
-        name: Literal["installation_repositories"], payload: dict[str, Any]
+        name: Literal["installation_repositories"], payload: Mapping[str, Any]
     ) -> "InstallationRepositoriesEvent": ...
     @overload
     @staticmethod
     def parse_obj(
-        name: Literal["installation_target"], payload: dict[str, Any]
+        name: Literal["installation_target"], payload: Mapping[str, Any]
     ) -> "InstallationTargetEvent": ...
     @overload
     @staticmethod
     def parse_obj(
-        name: Literal["issue_comment"], payload: dict[str, Any]
+        name: Literal["issue_comment"], payload: Mapping[str, Any]
     ) -> "IssueCommentEvent": ...
     @overload
     @staticmethod
     def parse_obj(
-        name: Literal["issues"], payload: dict[str, Any]
+        name: Literal["issues"], payload: Mapping[str, Any]
     ) -> "IssuesEvent": ...
     @overload
     @staticmethod
-    def parse_obj(name: Literal["label"], payload: dict[str, Any]) -> "LabelEvent": ...
+    def parse_obj(
+        name: Literal["label"], payload: Mapping[str, Any]
+    ) -> "LabelEvent": ...
     @overload
     @staticmethod
     def parse_obj(
-        name: Literal["marketplace_purchase"], payload: dict[str, Any]
+        name: Literal["marketplace_purchase"], payload: Mapping[str, Any]
     ) -> "MarketplacePurchaseEvent": ...
     @overload
     @staticmethod
     def parse_obj(
-        name: Literal["member"], payload: dict[str, Any]
+        name: Literal["member"], payload: Mapping[str, Any]
     ) -> "MemberEvent": ...
     @overload
     @staticmethod
     def parse_obj(
-        name: Literal["membership"], payload: dict[str, Any]
+        name: Literal["membership"], payload: Mapping[str, Any]
     ) -> "MembershipEvent": ...
     @overload
     @staticmethod
     def parse_obj(
-        name: Literal["merge_group"], payload: dict[str, Any]
+        name: Literal["merge_group"], payload: Mapping[str, Any]
     ) -> "MergeGroupEvent": ...
     @overload
     @staticmethod
-    def parse_obj(name: Literal["meta"], payload: dict[str, Any]) -> "MetaEvent": ...
+    def parse_obj(name: Literal["meta"], payload: Mapping[str, Any]) -> "MetaEvent": ...
     @overload
     @staticmethod
     def parse_obj(
-        name: Literal["milestone"], payload: dict[str, Any]
+        name: Literal["milestone"], payload: Mapping[str, Any]
     ) -> "MilestoneEvent": ...
     @overload
     @staticmethod
     def parse_obj(
-        name: Literal["org_block"], payload: dict[str, Any]
+        name: Literal["org_block"], payload: Mapping[str, Any]
     ) -> "OrgBlockEvent": ...
     @overload
     @staticmethod
     def parse_obj(
-        name: Literal["organization"], payload: dict[str, Any]
+        name: Literal["organization"], payload: Mapping[str, Any]
     ) -> "OrganizationEvent": ...
     @overload
     @staticmethod
     def parse_obj(
-        name: Literal["package"], payload: dict[str, Any]
+        name: Literal["package"], payload: Mapping[str, Any]
     ) -> "PackageEvent": ...
     @overload
     @staticmethod
     def parse_obj(
-        name: Literal["page_build"], payload: dict[str, Any]
+        name: Literal["page_build"], payload: Mapping[str, Any]
     ) -> "PageBuildEvent": ...
     @overload
     @staticmethod
     def parse_obj(
-        name: Literal["personal_access_token_request"], payload: dict[str, Any]
+        name: Literal["personal_access_token_request"], payload: Mapping[str, Any]
     ) -> "PersonalAccessTokenRequestEvent": ...
     @overload
     @staticmethod
-    def parse_obj(name: Literal["ping"], payload: dict[str, Any]) -> "PingEvent": ...
+    def parse_obj(name: Literal["ping"], payload: Mapping[str, Any]) -> "PingEvent": ...
     @overload
     @staticmethod
     def parse_obj(
-        name: Literal["project_card"], payload: dict[str, Any]
+        name: Literal["project_card"], payload: Mapping[str, Any]
     ) -> "ProjectCardEvent": ...
     @overload
     @staticmethod
     def parse_obj(
-        name: Literal["project"], payload: dict[str, Any]
+        name: Literal["project"], payload: Mapping[str, Any]
     ) -> "ProjectEvent": ...
     @overload
     @staticmethod
     def parse_obj(
-        name: Literal["project_column"], payload: dict[str, Any]
+        name: Literal["project_column"], payload: Mapping[str, Any]
     ) -> "ProjectColumnEvent": ...
     @overload
     @staticmethod
     def parse_obj(
-        name: Literal["projects_v2"], payload: dict[str, Any]
+        name: Literal["projects_v2"], payload: Mapping[str, Any]
     ) -> "ProjectsV2Event": ...
     @overload
     @staticmethod
     def parse_obj(
-        name: Literal["projects_v2_item"], payload: dict[str, Any]
+        name: Literal["projects_v2_item"], payload: Mapping[str, Any]
     ) -> "ProjectsV2ItemEvent": ...
     @overload
     @staticmethod
     def parse_obj(
-        name: Literal["projects_v2_status_update"], payload: dict[str, Any]
+        name: Literal["projects_v2_status_update"], payload: Mapping[str, Any]
     ) -> "ProjectsV2StatusUpdateEvent": ...
     @overload
     @staticmethod
     def parse_obj(
-        name: Literal["public"], payload: dict[str, Any]
+        name: Literal["public"], payload: Mapping[str, Any]
     ) -> "PublicEvent": ...
     @overload
     @staticmethod
     def parse_obj(
-        name: Literal["pull_request"], payload: dict[str, Any]
+        name: Literal["pull_request"], payload: Mapping[str, Any]
     ) -> "PullRequestEvent": ...
     @overload
     @staticmethod
     def parse_obj(
-        name: Literal["pull_request_review_comment"], payload: dict[str, Any]
+        name: Literal["pull_request_review_comment"], payload: Mapping[str, Any]
     ) -> "PullRequestReviewCommentEvent": ...
     @overload
     @staticmethod
     def parse_obj(
-        name: Literal["pull_request_review"], payload: dict[str, Any]
+        name: Literal["pull_request_review"], payload: Mapping[str, Any]
     ) -> "PullRequestReviewEvent": ...
     @overload
     @staticmethod
     def parse_obj(
-        name: Literal["pull_request_review_thread"], payload: dict[str, Any]
+        name: Literal["pull_request_review_thread"], payload: Mapping[str, Any]
     ) -> "PullRequestReviewThreadEvent": ...
     @overload
     @staticmethod
-    def parse_obj(name: Literal["push"], payload: dict[str, Any]) -> "PushEvent": ...
+    def parse_obj(name: Literal["push"], payload: Mapping[str, Any]) -> "PushEvent": ...
     @overload
     @staticmethod
     def parse_obj(
-        name: Literal["registry_package"], payload: dict[str, Any]
+        name: Literal["registry_package"], payload: Mapping[str, Any]
     ) -> "RegistryPackageEvent": ...
     @overload
     @staticmethod
     def parse_obj(
-        name: Literal["release"], payload: dict[str, Any]
+        name: Literal["release"], payload: Mapping[str, Any]
     ) -> "ReleaseEvent": ...
     @overload
     @staticmethod
     def parse_obj(
-        name: Literal["repository_advisory"], payload: dict[str, Any]
+        name: Literal["repository_advisory"], payload: Mapping[str, Any]
     ) -> "RepositoryAdvisoryEvent": ...
     @overload
     @staticmethod
     def parse_obj(
-        name: Literal["repository"], payload: dict[str, Any]
+        name: Literal["repository"], payload: Mapping[str, Any]
     ) -> "RepositoryEvent": ...
     @overload
     @staticmethod
     def parse_obj(
-        name: Literal["repository_dispatch"], payload: dict[str, Any]
+        name: Literal["repository_dispatch"], payload: Mapping[str, Any]
     ) -> "RepositoryDispatchEvent": ...
     @overload
     @staticmethod
     def parse_obj(
-        name: Literal["repository_import"], payload: dict[str, Any]
+        name: Literal["repository_import"], payload: Mapping[str, Any]
     ) -> "RepositoryImportEvent": ...
     @overload
     @staticmethod
     def parse_obj(
-        name: Literal["repository_ruleset"], payload: dict[str, Any]
+        name: Literal["repository_ruleset"], payload: Mapping[str, Any]
     ) -> "RepositoryRulesetEvent": ...
     @overload
     @staticmethod
     def parse_obj(
-        name: Literal["repository_vulnerability_alert"], payload: dict[str, Any]
+        name: Literal["repository_vulnerability_alert"], payload: Mapping[str, Any]
     ) -> "RepositoryVulnerabilityAlertEvent": ...
     @overload
     @staticmethod
     def parse_obj(
-        name: Literal["secret_scanning_alert"], payload: dict[str, Any]
+        name: Literal["secret_scanning_alert"], payload: Mapping[str, Any]
     ) -> "SecretScanningAlertEvent": ...
     @overload
     @staticmethod
     def parse_obj(
-        name: Literal["secret_scanning_alert_location"], payload: dict[str, Any]
+        name: Literal["secret_scanning_alert_location"], payload: Mapping[str, Any]
     ) -> "SecretScanningAlertLocationEvent": ...
     @overload
     @staticmethod
     def parse_obj(
-        name: Literal["secret_scanning_scan"], payload: dict[str, Any]
+        name: Literal["secret_scanning_scan"], payload: Mapping[str, Any]
     ) -> "SecretScanningScanEvent": ...
     @overload
     @staticmethod
     def parse_obj(
-        name: Literal["security_advisory"], payload: dict[str, Any]
+        name: Literal["security_advisory"], payload: Mapping[str, Any]
     ) -> "SecurityAdvisoryEvent": ...
     @overload
     @staticmethod
     def parse_obj(
-        name: Literal["security_and_analysis"], payload: dict[str, Any]
+        name: Literal["security_and_analysis"], payload: Mapping[str, Any]
     ) -> "SecurityAndAnalysisEvent": ...
     @overload
     @staticmethod
     def parse_obj(
-        name: Literal["sponsorship"], payload: dict[str, Any]
+        name: Literal["sponsorship"], payload: Mapping[str, Any]
     ) -> "SponsorshipEvent": ...
     @overload
     @staticmethod
-    def parse_obj(name: Literal["star"], payload: dict[str, Any]) -> "StarEvent": ...
+    def parse_obj(name: Literal["star"], payload: Mapping[str, Any]) -> "StarEvent": ...
     @overload
     @staticmethod
     def parse_obj(
-        name: Literal["status"], payload: dict[str, Any]
+        name: Literal["status"], payload: Mapping[str, Any]
     ) -> "StatusEvent": ...
     @overload
     @staticmethod
     def parse_obj(
-        name: Literal["sub_issues"], payload: dict[str, Any]
+        name: Literal["sub_issues"], payload: Mapping[str, Any]
     ) -> "SubIssuesEvent": ...
     @overload
     @staticmethod
     def parse_obj(
-        name: Literal["team_add"], payload: dict[str, Any]
+        name: Literal["team_add"], payload: Mapping[str, Any]
     ) -> "TeamAddEvent": ...
     @overload
     @staticmethod
-    def parse_obj(name: Literal["team"], payload: dict[str, Any]) -> "TeamEvent": ...
-    @overload
-    @staticmethod
-    def parse_obj(name: Literal["watch"], payload: dict[str, Any]) -> "WatchEvent": ...
+    def parse_obj(name: Literal["team"], payload: Mapping[str, Any]) -> "TeamEvent": ...
     @overload
     @staticmethod
     def parse_obj(
-        name: Literal["workflow_dispatch"], payload: dict[str, Any]
+        name: Literal["watch"], payload: Mapping[str, Any]
+    ) -> "WatchEvent": ...
+    @overload
+    @staticmethod
+    def parse_obj(
+        name: Literal["workflow_dispatch"], payload: Mapping[str, Any]
     ) -> "WorkflowDispatchEvent": ...
     @overload
     @staticmethod
     def parse_obj(
-        name: Literal["workflow_job"], payload: dict[str, Any]
+        name: Literal["workflow_job"], payload: Mapping[str, Any]
     ) -> "WorkflowJobEvent": ...
     @overload
     @staticmethod
     def parse_obj(
-        name: Literal["workflow_run"], payload: dict[str, Any]
+        name: Literal["workflow_run"], payload: Mapping[str, Any]
     ) -> "WorkflowRunEvent": ...
 
     @overload
     @staticmethod
-    def parse_obj(name: EventNameType, payload: dict[str, Any]) -> "WebhookEvent": ...
+    def parse_obj(
+        name: EventNameType, payload: Mapping[str, Any]
+    ) -> "WebhookEvent": ...
 
     @overload
     @staticmethod
-    def parse_obj(name: str, payload: dict[str, Any]) -> "WebhookEvent": ...
+    def parse_obj(name: str, payload: Mapping[str, Any]) -> "WebhookEvent": ...
 
     @staticmethod
     def parse_obj(
-        name: Union[EventNameType, str], payload: dict[str, Any]
+        name: Union[EventNameType, str], payload: Mapping[str, Any]
     ) -> "WebhookEvent":
         """Parse the webhook payload dict with event name.
 
         Args:
             name (EventNameType): event name.
-            payload (dict[str, Any]): webhook payload dict.
+            payload (Mapping[str, Any]): webhook payload dict.
         """
 
         if name not in VALID_EVENT_NAMES:

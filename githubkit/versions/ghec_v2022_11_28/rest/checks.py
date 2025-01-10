@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from collections.abc import Mapping
 from typing import TYPE_CHECKING, Literal, Optional, overload
 from weakref import ref
 
@@ -81,7 +82,7 @@ class ChecksClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Union[
             ReposOwnerRepoCheckRunsPostBodyOneof0Type,
             ReposOwnerRepoCheckRunsPostBodyOneof1Type,
@@ -95,7 +96,7 @@ class ChecksClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         name: str,
         head_sha: str,
         details_url: Missing[str] = UNSET,
@@ -126,7 +127,7 @@ class ChecksClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         name: str,
         head_sha: str,
         details_url: Missing[str] = UNSET,
@@ -159,7 +160,7 @@ class ChecksClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoCheckRunsPostBodyOneof0Type,
@@ -211,7 +212,7 @@ class ChecksClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Union[
             ReposOwnerRepoCheckRunsPostBodyOneof0Type,
             ReposOwnerRepoCheckRunsPostBodyOneof1Type,
@@ -225,7 +226,7 @@ class ChecksClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         name: str,
         head_sha: str,
         details_url: Missing[str] = UNSET,
@@ -256,7 +257,7 @@ class ChecksClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         name: str,
         head_sha: str,
         details_url: Missing[str] = UNSET,
@@ -289,7 +290,7 @@ class ChecksClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoCheckRunsPostBodyOneof0Type,
@@ -341,7 +342,7 @@ class ChecksClient:
         repo: str,
         check_run_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CheckRun, CheckRunType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/checks/runs#get-a-check-run"""
 
@@ -364,7 +365,7 @@ class ChecksClient:
         repo: str,
         check_run_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CheckRun, CheckRunType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/checks/runs#get-a-check-run"""
 
@@ -388,7 +389,7 @@ class ChecksClient:
         repo: str,
         check_run_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Union[
             ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0Type,
             ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1Type,
@@ -403,7 +404,7 @@ class ChecksClient:
         check_run_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         name: Missing[str] = UNSET,
         details_url: Missing[str] = UNSET,
         external_id: Missing[str] = UNSET,
@@ -436,7 +437,7 @@ class ChecksClient:
         check_run_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         name: Missing[str] = UNSET,
         details_url: Missing[str] = UNSET,
         external_id: Missing[str] = UNSET,
@@ -469,7 +470,7 @@ class ChecksClient:
         repo: str,
         check_run_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0Type,
@@ -522,7 +523,7 @@ class ChecksClient:
         repo: str,
         check_run_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Union[
             ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0Type,
             ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1Type,
@@ -537,7 +538,7 @@ class ChecksClient:
         check_run_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         name: Missing[str] = UNSET,
         details_url: Missing[str] = UNSET,
         external_id: Missing[str] = UNSET,
@@ -570,7 +571,7 @@ class ChecksClient:
         check_run_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         name: Missing[str] = UNSET,
         details_url: Missing[str] = UNSET,
         external_id: Missing[str] = UNSET,
@@ -603,7 +604,7 @@ class ChecksClient:
         repo: str,
         check_run_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0Type,
@@ -657,7 +658,7 @@ class ChecksClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[CheckAnnotation], list[CheckAnnotationType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/checks/runs#list-check-run-annotations"""
 
@@ -688,7 +689,7 @@ class ChecksClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[CheckAnnotation], list[CheckAnnotationType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/checks/runs#list-check-run-annotations"""
 
@@ -717,7 +718,7 @@ class ChecksClient:
         repo: str,
         check_run_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[EmptyObject, EmptyObjectType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/checks/runs#rerequest-a-check-run"""
 
@@ -745,7 +746,7 @@ class ChecksClient:
         repo: str,
         check_run_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[EmptyObject, EmptyObjectType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/checks/runs#rerequest-a-check-run"""
 
@@ -773,7 +774,7 @@ class ChecksClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoCheckSuitesPostBodyType,
     ) -> Response[CheckSuite, CheckSuiteType]: ...
 
@@ -784,7 +785,7 @@ class ChecksClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         head_sha: str,
     ) -> Response[CheckSuite, CheckSuiteType]: ...
 
@@ -793,7 +794,7 @@ class ChecksClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoCheckSuitesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[CheckSuite, CheckSuiteType]:
@@ -828,7 +829,7 @@ class ChecksClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoCheckSuitesPostBodyType,
     ) -> Response[CheckSuite, CheckSuiteType]: ...
 
@@ -839,7 +840,7 @@ class ChecksClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         head_sha: str,
     ) -> Response[CheckSuite, CheckSuiteType]: ...
 
@@ -848,7 +849,7 @@ class ChecksClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoCheckSuitesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[CheckSuite, CheckSuiteType]:
@@ -883,7 +884,7 @@ class ChecksClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoCheckSuitesPreferencesPatchBodyType,
     ) -> Response[CheckSuitePreference, CheckSuitePreferenceType]: ...
 
@@ -894,7 +895,7 @@ class ChecksClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         auto_trigger_checks: Missing[
             list[
                 ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsType
@@ -907,7 +908,7 @@ class ChecksClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoCheckSuitesPreferencesPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[CheckSuitePreference, CheckSuitePreferenceType]:
@@ -947,7 +948,7 @@ class ChecksClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoCheckSuitesPreferencesPatchBodyType,
     ) -> Response[CheckSuitePreference, CheckSuitePreferenceType]: ...
 
@@ -958,7 +959,7 @@ class ChecksClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         auto_trigger_checks: Missing[
             list[
                 ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsType
@@ -971,7 +972,7 @@ class ChecksClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoCheckSuitesPreferencesPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[CheckSuitePreference, CheckSuitePreferenceType]:
@@ -1011,7 +1012,7 @@ class ChecksClient:
         repo: str,
         check_suite_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CheckSuite, CheckSuiteType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/checks/suites#get-a-check-suite"""
 
@@ -1034,7 +1035,7 @@ class ChecksClient:
         repo: str,
         check_suite_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CheckSuite, CheckSuiteType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/checks/suites#get-a-check-suite"""
 
@@ -1062,7 +1063,7 @@ class ChecksClient:
         filter_: Missing[Literal["latest", "all"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200,
         ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200Type,
@@ -1104,7 +1105,7 @@ class ChecksClient:
         filter_: Missing[Literal["latest", "all"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200,
         ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200Type,
@@ -1141,7 +1142,7 @@ class ChecksClient:
         repo: str,
         check_suite_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[EmptyObject, EmptyObjectType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/checks/suites#rerequest-a-check-suite"""
 
@@ -1164,7 +1165,7 @@ class ChecksClient:
         repo: str,
         check_suite_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[EmptyObject, EmptyObjectType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/checks/suites#rerequest-a-check-suite"""
 
@@ -1193,7 +1194,7 @@ class ChecksClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         app_id: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoCommitsRefCheckRunsGetResponse200,
         ReposOwnerRepoCommitsRefCheckRunsGetResponse200Type,
@@ -1235,7 +1236,7 @@ class ChecksClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         app_id: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoCommitsRefCheckRunsGetResponse200,
         ReposOwnerRepoCommitsRefCheckRunsGetResponse200Type,
@@ -1275,7 +1276,7 @@ class ChecksClient:
         check_name: Missing[str] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoCommitsRefCheckSuitesGetResponse200,
         ReposOwnerRepoCommitsRefCheckSuitesGetResponse200Type,
@@ -1313,7 +1314,7 @@ class ChecksClient:
         check_name: Missing[str] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoCommitsRefCheckSuitesGetResponse200,
         ReposOwnerRepoCommitsRefCheckSuitesGetResponse200Type,

@@ -1,4 +1,4 @@
-from collections.abc import Hashable
+from collections.abc import Hashable, Mapping, Sequence
 from datetime import timedelta
 from typing import (
     IO,
@@ -27,8 +27,8 @@ URLTypes: TypeAlias = Union[httpx.URL, str]
 PrimitiveData: TypeAlias = Optional[Union[str, int, float, bool]]
 QueryParamTypes: TypeAlias = Union[
     httpx.QueryParams,
-    dict[str, Union[PrimitiveData, list[PrimitiveData]]],
-    list[tuple[str, PrimitiveData]],
+    Mapping[str, Union[PrimitiveData, Sequence[PrimitiveData]]],
+    Sequence[tuple[str, PrimitiveData]],
     tuple[tuple[str, PrimitiveData], ...],
     str,
     bytes,
@@ -36,10 +36,10 @@ QueryParamTypes: TypeAlias = Union[
 
 HeaderTypes: TypeAlias = Union[
     httpx.Headers,
-    dict[str, str],
-    dict[bytes, bytes],
-    list[tuple[str, str]],
-    list[tuple[bytes, bytes]],
+    Mapping[str, str],
+    Mapping[bytes, bytes],
+    Sequence[tuple[str, str]],
+    Sequence[tuple[bytes, bytes]],
 ]
 
 CookieTypes: TypeAlias = Union[httpx.Cookies, dict[str, str], list[tuple[str, str]]]
@@ -55,7 +55,9 @@ FileTypes: TypeAlias = Union[
     # (filename, file (or bytes), content_type)
     tuple[Optional[str], FileContent, Optional[str]],
 ]
-RequestFiles: TypeAlias = Union[dict[str, FileTypes], list[tuple[str, FileTypes]]]
+RequestFiles: TypeAlias = Union[
+    Mapping[str, FileTypes], Sequence[tuple[str, FileTypes]]
+]
 
 if PYDANTIC_V2:  # pragma: pydantic-v2
     from pydantic import AfterValidator

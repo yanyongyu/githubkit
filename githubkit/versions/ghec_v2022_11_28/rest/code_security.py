@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from collections.abc import Mapping
 from typing import TYPE_CHECKING, Literal, Optional, overload
 from weakref import ref
 
@@ -84,7 +85,7 @@ class CodeSecurityClient:
         per_page: Missing[int] = UNSET,
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[CodeSecurityConfiguration], list[CodeSecurityConfigurationType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations#get-code-security-configurations-for-an-enterprise"""
 
@@ -119,7 +120,7 @@ class CodeSecurityClient:
         per_page: Missing[int] = UNSET,
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[CodeSecurityConfiguration], list[CodeSecurityConfigurationType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations#get-code-security-configurations-for-an-enterprise"""
 
@@ -152,7 +153,7 @@ class CodeSecurityClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyType,
     ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]: ...
 
@@ -162,7 +163,7 @@ class CodeSecurityClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         name: str,
         description: str,
         advanced_security: Missing[Literal["enabled", "disabled"]] = UNSET,
@@ -203,7 +204,7 @@ class CodeSecurityClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyType
         ] = UNSET,
@@ -250,7 +251,7 @@ class CodeSecurityClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyType,
     ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]: ...
 
@@ -260,7 +261,7 @@ class CodeSecurityClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         name: str,
         description: str,
         advanced_security: Missing[Literal["enabled", "disabled"]] = UNSET,
@@ -301,7 +302,7 @@ class CodeSecurityClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyType
         ] = UNSET,
@@ -347,7 +348,7 @@ class CodeSecurityClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         list[CodeSecurityDefaultConfigurationsItems],
         list[CodeSecurityDefaultConfigurationsItemsType],
@@ -371,7 +372,7 @@ class CodeSecurityClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         list[CodeSecurityDefaultConfigurationsItems],
         list[CodeSecurityDefaultConfigurationsItemsType],
@@ -396,7 +397,7 @@ class CodeSecurityClient:
         enterprise: str,
         configuration_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations#retrieve-a-code-security-configuration-of-an-enterprise"""
 
@@ -424,7 +425,7 @@ class CodeSecurityClient:
         enterprise: str,
         configuration_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations#retrieve-a-code-security-configuration-of-an-enterprise"""
 
@@ -452,7 +453,7 @@ class CodeSecurityClient:
         enterprise: str,
         configuration_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations#delete-a-code-security-configuration-for-an-enterprise"""
 
@@ -481,7 +482,7 @@ class CodeSecurityClient:
         enterprise: str,
         configuration_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations#delete-a-code-security-configuration-for-an-enterprise"""
 
@@ -511,7 +512,7 @@ class CodeSecurityClient:
         enterprise: str,
         configuration_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyType,
     ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]: ...
 
@@ -522,7 +523,7 @@ class CodeSecurityClient:
         configuration_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         name: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
         advanced_security: Missing[Literal["enabled", "disabled"]] = UNSET,
@@ -564,7 +565,7 @@ class CodeSecurityClient:
         enterprise: str,
         configuration_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyType
         ] = UNSET,
@@ -615,7 +616,7 @@ class CodeSecurityClient:
         enterprise: str,
         configuration_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyType,
     ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]: ...
 
@@ -626,7 +627,7 @@ class CodeSecurityClient:
         configuration_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         name: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
         advanced_security: Missing[Literal["enabled", "disabled"]] = UNSET,
@@ -668,7 +669,7 @@ class CodeSecurityClient:
         enterprise: str,
         configuration_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyType
         ] = UNSET,
@@ -719,7 +720,7 @@ class CodeSecurityClient:
         enterprise: str,
         configuration_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBodyType,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
@@ -733,7 +734,7 @@ class CodeSecurityClient:
         configuration_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         scope: Literal["all", "all_without_configurations"],
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
@@ -745,7 +746,7 @@ class CodeSecurityClient:
         enterprise: str,
         configuration_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBodyType
         ] = UNSET,
@@ -797,7 +798,7 @@ class CodeSecurityClient:
         enterprise: str,
         configuration_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBodyType,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
@@ -811,7 +812,7 @@ class CodeSecurityClient:
         configuration_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         scope: Literal["all", "all_without_configurations"],
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
@@ -823,7 +824,7 @@ class CodeSecurityClient:
         enterprise: str,
         configuration_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBodyType
         ] = UNSET,
@@ -875,7 +876,7 @@ class CodeSecurityClient:
         enterprise: str,
         configuration_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType,
     ) -> Response[
         EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200,
@@ -889,7 +890,7 @@ class CodeSecurityClient:
         configuration_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         default_for_new_repos: Missing[
             Literal["all", "none", "private_and_internal", "public"]
         ] = UNSET,
@@ -903,7 +904,7 @@ class CodeSecurityClient:
         enterprise: str,
         configuration_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType
         ] = UNSET,
@@ -954,7 +955,7 @@ class CodeSecurityClient:
         enterprise: str,
         configuration_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType,
     ) -> Response[
         EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200,
@@ -968,7 +969,7 @@ class CodeSecurityClient:
         configuration_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         default_for_new_repos: Missing[
             Literal["all", "none", "private_and_internal", "public"]
         ] = UNSET,
@@ -982,7 +983,7 @@ class CodeSecurityClient:
         enterprise: str,
         configuration_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType
         ] = UNSET,
@@ -1036,7 +1037,7 @@ class CodeSecurityClient:
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
         status: Missing[str] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         list[CodeSecurityConfigurationRepositories],
         list[CodeSecurityConfigurationRepositoriesType],
@@ -1077,7 +1078,7 @@ class CodeSecurityClient:
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
         status: Missing[str] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         list[CodeSecurityConfigurationRepositories],
         list[CodeSecurityConfigurationRepositoriesType],
@@ -1117,7 +1118,7 @@ class CodeSecurityClient:
         per_page: Missing[int] = UNSET,
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[CodeSecurityConfiguration], list[CodeSecurityConfigurationType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations#get-code-security-configurations-for-an-organization"""
 
@@ -1154,7 +1155,7 @@ class CodeSecurityClient:
         per_page: Missing[int] = UNSET,
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[CodeSecurityConfiguration], list[CodeSecurityConfigurationType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations#get-code-security-configurations-for-an-organization"""
 
@@ -1188,7 +1189,7 @@ class CodeSecurityClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgCodeSecurityConfigurationsPostBodyType,
     ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]: ...
 
@@ -1198,7 +1199,7 @@ class CodeSecurityClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         name: str,
         description: str,
         advanced_security: Missing[Literal["enabled", "disabled"]] = UNSET,
@@ -1245,7 +1246,7 @@ class CodeSecurityClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgCodeSecurityConfigurationsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]:
@@ -1282,7 +1283,7 @@ class CodeSecurityClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgCodeSecurityConfigurationsPostBodyType,
     ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]: ...
 
@@ -1292,7 +1293,7 @@ class CodeSecurityClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         name: str,
         description: str,
         advanced_security: Missing[Literal["enabled", "disabled"]] = UNSET,
@@ -1339,7 +1340,7 @@ class CodeSecurityClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgCodeSecurityConfigurationsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]:
@@ -1375,7 +1376,7 @@ class CodeSecurityClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         list[CodeSecurityDefaultConfigurationsItems],
         list[CodeSecurityDefaultConfigurationsItemsType],
@@ -1403,7 +1404,7 @@ class CodeSecurityClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         list[CodeSecurityDefaultConfigurationsItems],
         list[CodeSecurityDefaultConfigurationsItemsType],
@@ -1432,7 +1433,7 @@ class CodeSecurityClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgCodeSecurityConfigurationsDetachDeleteBodyType,
     ) -> Response: ...
 
@@ -1442,7 +1443,7 @@ class CodeSecurityClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         selected_repository_ids: Missing[list[int]] = UNSET,
     ) -> Response: ...
 
@@ -1450,7 +1451,7 @@ class CodeSecurityClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgCodeSecurityConfigurationsDetachDeleteBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -1494,7 +1495,7 @@ class CodeSecurityClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgCodeSecurityConfigurationsDetachDeleteBodyType,
     ) -> Response: ...
 
@@ -1504,7 +1505,7 @@ class CodeSecurityClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         selected_repository_ids: Missing[list[int]] = UNSET,
     ) -> Response: ...
 
@@ -1512,7 +1513,7 @@ class CodeSecurityClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgCodeSecurityConfigurationsDetachDeleteBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -1556,7 +1557,7 @@ class CodeSecurityClient:
         org: str,
         configuration_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations#get-a-code-security-configuration"""
 
@@ -1582,7 +1583,7 @@ class CodeSecurityClient:
         org: str,
         configuration_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations#get-a-code-security-configuration"""
 
@@ -1608,7 +1609,7 @@ class CodeSecurityClient:
         org: str,
         configuration_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations#delete-a-code-security-configuration"""
 
@@ -1635,7 +1636,7 @@ class CodeSecurityClient:
         org: str,
         configuration_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations#delete-a-code-security-configuration"""
 
@@ -1663,7 +1664,7 @@ class CodeSecurityClient:
         org: str,
         configuration_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyType,
     ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]: ...
 
@@ -1674,7 +1675,7 @@ class CodeSecurityClient:
         configuration_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         name: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
         advanced_security: Missing[Literal["enabled", "disabled"]] = UNSET,
@@ -1722,7 +1723,7 @@ class CodeSecurityClient:
         org: str,
         configuration_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyType
         ] = UNSET,
@@ -1764,7 +1765,7 @@ class CodeSecurityClient:
         org: str,
         configuration_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyType,
     ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]: ...
 
@@ -1775,7 +1776,7 @@ class CodeSecurityClient:
         configuration_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         name: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
         advanced_security: Missing[Literal["enabled", "disabled"]] = UNSET,
@@ -1823,7 +1824,7 @@ class CodeSecurityClient:
         org: str,
         configuration_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyType
         ] = UNSET,
@@ -1865,7 +1866,7 @@ class CodeSecurityClient:
         org: str,
         configuration_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBodyType,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
@@ -1879,7 +1880,7 @@ class CodeSecurityClient:
         configuration_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         scope: Literal[
             "all",
             "all_without_configurations",
@@ -1898,7 +1899,7 @@ class CodeSecurityClient:
         org: str,
         configuration_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBodyType
         ] = UNSET,
@@ -1943,7 +1944,7 @@ class CodeSecurityClient:
         org: str,
         configuration_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBodyType,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
@@ -1957,7 +1958,7 @@ class CodeSecurityClient:
         configuration_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         scope: Literal[
             "all",
             "all_without_configurations",
@@ -1976,7 +1977,7 @@ class CodeSecurityClient:
         org: str,
         configuration_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBodyType
         ] = UNSET,
@@ -2021,7 +2022,7 @@ class CodeSecurityClient:
         org: str,
         configuration_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType,
     ) -> Response[
         OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200,
@@ -2035,7 +2036,7 @@ class CodeSecurityClient:
         configuration_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         default_for_new_repos: Missing[
             Literal["all", "none", "private_and_internal", "public"]
         ] = UNSET,
@@ -2049,7 +2050,7 @@ class CodeSecurityClient:
         org: str,
         configuration_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType
         ] = UNSET,
@@ -2099,7 +2100,7 @@ class CodeSecurityClient:
         org: str,
         configuration_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType,
     ) -> Response[
         OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200,
@@ -2113,7 +2114,7 @@ class CodeSecurityClient:
         configuration_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         default_for_new_repos: Missing[
             Literal["all", "none", "private_and_internal", "public"]
         ] = UNSET,
@@ -2127,7 +2128,7 @@ class CodeSecurityClient:
         org: str,
         configuration_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType
         ] = UNSET,
@@ -2180,7 +2181,7 @@ class CodeSecurityClient:
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
         status: Missing[str] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         list[CodeSecurityConfigurationRepositories],
         list[CodeSecurityConfigurationRepositoriesType],
@@ -2223,7 +2224,7 @@ class CodeSecurityClient:
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
         status: Missing[str] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         list[CodeSecurityConfigurationRepositories],
         list[CodeSecurityConfigurationRepositoriesType],
@@ -2262,7 +2263,7 @@ class CodeSecurityClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         CodeSecurityConfigurationForRepository,
         CodeSecurityConfigurationForRepositoryType,
@@ -2291,7 +2292,7 @@ class CodeSecurityClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         CodeSecurityConfigurationForRepository,
         CodeSecurityConfigurationForRepositoryType,

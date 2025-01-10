@@ -1,4 +1,4 @@
-from collections.abc import AsyncGenerator, Generator
+from collections.abc import AsyncGenerator, Generator, Sequence
 from dataclasses import dataclass
 from datetime import datetime, timedelta, timezone
 from typing import TYPE_CHECKING, ClassVar, Optional, Union
@@ -35,8 +35,8 @@ class AppAuth(httpx.Auth):
     client_id: Optional[str] = None
     client_secret: Optional[str] = None
     installation_id: Union[Unset, int] = UNSET
-    repositories: Union[Unset, list[str]] = UNSET
-    repository_ids: Union[Unset, list[int]] = UNSET
+    repositories: Union[Unset, Sequence[str]] = UNSET
+    repository_ids: Union[Unset, Sequence[int]] = UNSET
     permissions: Union[Unset, "AppPermissionsType"] = UNSET
 
     JWT_CACHE_KEY: ClassVar[LiteralString] = "githubkit:auth:app:{issuer}:jwt"
@@ -277,8 +277,8 @@ class AppAuthStrategy(BaseAuthStrategy):
     def as_installation(
         self,
         installation_id: int,
-        repositories: Union[Unset, list[str]] = UNSET,
-        repository_ids: Union[Unset, list[int]] = UNSET,
+        repositories: Union[Unset, Sequence[str]] = UNSET,
+        repository_ids: Union[Unset, Sequence[int]] = UNSET,
         permissions: Union[Unset, "AppPermissionsType"] = UNSET,
     ) -> "AppInstallationAuthStrategy":
         return AppInstallationAuthStrategy(
@@ -318,8 +318,8 @@ class AppInstallationAuthStrategy(BaseAuthStrategy):
     installation_id: int
     client_id: Optional[str] = None
     client_secret: Optional[str] = None
-    repositories: Union[Unset, list[str]] = UNSET
-    repository_ids: Union[Unset, list[int]] = UNSET
+    repositories: Union[Unset, Sequence[str]] = UNSET
+    repository_ids: Union[Unset, Sequence[int]] = UNSET
     permissions: Union[Unset, "AppPermissionsType"] = UNSET
 
     def __post_init__(self):

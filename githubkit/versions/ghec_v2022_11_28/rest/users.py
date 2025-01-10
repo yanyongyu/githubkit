@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from collections.abc import Mapping
 from typing import TYPE_CHECKING, Annotated, Literal, Optional, overload
 from weakref import ref
 
@@ -81,7 +82,7 @@ class UsersClient:
     def get_authenticated(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         Union[PrivateUser, PublicUser], Union[PrivateUserType, PublicUserType]
     ]:
@@ -109,7 +110,7 @@ class UsersClient:
     async def async_get_authenticated(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         Union[PrivateUser, PublicUser], Union[PrivateUserType, PublicUserType]
     ]:
@@ -138,7 +139,7 @@ class UsersClient:
     def update_authenticated(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[UserPatchBodyType] = UNSET,
     ) -> Response[PrivateUser, PrivateUserType]: ...
 
@@ -147,7 +148,7 @@ class UsersClient:
         self,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         name: Missing[str] = UNSET,
         email: Missing[str] = UNSET,
         blog: Missing[str] = UNSET,
@@ -161,7 +162,7 @@ class UsersClient:
     def update_authenticated(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[UserPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[PrivateUser, PrivateUserType]:
@@ -200,7 +201,7 @@ class UsersClient:
     async def async_update_authenticated(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[UserPatchBodyType] = UNSET,
     ) -> Response[PrivateUser, PrivateUserType]: ...
 
@@ -209,7 +210,7 @@ class UsersClient:
         self,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         name: Missing[str] = UNSET,
         email: Missing[str] = UNSET,
         blog: Missing[str] = UNSET,
@@ -223,7 +224,7 @@ class UsersClient:
     async def async_update_authenticated(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[UserPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[PrivateUser, PrivateUserType]:
@@ -263,7 +264,7 @@ class UsersClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/blocking#list-users-blocked-by-the-authenticated-user"""
 
@@ -296,7 +297,7 @@ class UsersClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/blocking#list-users-blocked-by-the-authenticated-user"""
 
@@ -328,7 +329,7 @@ class UsersClient:
         self,
         username: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/blocking#check-if-a-user-is-blocked-by-the-authenticated-user"""
 
@@ -353,7 +354,7 @@ class UsersClient:
         self,
         username: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/blocking#check-if-a-user-is-blocked-by-the-authenticated-user"""
 
@@ -378,7 +379,7 @@ class UsersClient:
         self,
         username: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/blocking#block-a-user"""
 
@@ -404,7 +405,7 @@ class UsersClient:
         self,
         username: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/blocking#block-a-user"""
 
@@ -430,7 +431,7 @@ class UsersClient:
         self,
         username: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/blocking#unblock-a-user"""
 
@@ -455,7 +456,7 @@ class UsersClient:
         self,
         username: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/blocking#unblock-a-user"""
 
@@ -480,7 +481,7 @@ class UsersClient:
     def set_primary_email_visibility_for_authenticated_user(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: UserEmailVisibilityPatchBodyType,
     ) -> Response[list[Email], list[EmailType]]: ...
 
@@ -489,14 +490,14 @@ class UsersClient:
         self,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         visibility: Literal["public", "private"],
     ) -> Response[list[Email], list[EmailType]]: ...
 
     def set_primary_email_visibility_for_authenticated_user(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[UserEmailVisibilityPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[list[Email], list[EmailType]]:
@@ -540,7 +541,7 @@ class UsersClient:
     async def async_set_primary_email_visibility_for_authenticated_user(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: UserEmailVisibilityPatchBodyType,
     ) -> Response[list[Email], list[EmailType]]: ...
 
@@ -549,14 +550,14 @@ class UsersClient:
         self,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         visibility: Literal["public", "private"],
     ) -> Response[list[Email], list[EmailType]]: ...
 
     async def async_set_primary_email_visibility_for_authenticated_user(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[UserEmailVisibilityPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[list[Email], list[EmailType]]:
@@ -601,7 +602,7 @@ class UsersClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Email], list[EmailType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/emails#list-email-addresses-for-the-authenticated-user"""
 
@@ -634,7 +635,7 @@ class UsersClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Email], list[EmailType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/emails#list-email-addresses-for-the-authenticated-user"""
 
@@ -666,7 +667,7 @@ class UsersClient:
     def add_email_for_authenticated_user(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[Union[UserEmailsPostBodyOneof0Type, list[str], str]] = UNSET,
     ) -> Response[list[Email], list[EmailType]]: ...
 
@@ -675,14 +676,14 @@ class UsersClient:
         self,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         emails: list[str],
     ) -> Response[list[Email], list[EmailType]]: ...
 
     def add_email_for_authenticated_user(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[Union[UserEmailsPostBodyOneof0Type, list[str], str]] = UNSET,
         **kwargs,
     ) -> Response[list[Email], list[EmailType]]:
@@ -737,7 +738,7 @@ class UsersClient:
     async def async_add_email_for_authenticated_user(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[Union[UserEmailsPostBodyOneof0Type, list[str], str]] = UNSET,
     ) -> Response[list[Email], list[EmailType]]: ...
 
@@ -746,14 +747,14 @@ class UsersClient:
         self,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         emails: list[str],
     ) -> Response[list[Email], list[EmailType]]: ...
 
     async def async_add_email_for_authenticated_user(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[Union[UserEmailsPostBodyOneof0Type, list[str], str]] = UNSET,
         **kwargs,
     ) -> Response[list[Email], list[EmailType]]:
@@ -808,7 +809,7 @@ class UsersClient:
     def delete_email_for_authenticated_user(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[Union[UserEmailsDeleteBodyOneof0Type, list[str], str]] = UNSET,
     ) -> Response: ...
 
@@ -817,14 +818,14 @@ class UsersClient:
         self,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         emails: list[str],
     ) -> Response: ...
 
     def delete_email_for_authenticated_user(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[Union[UserEmailsDeleteBodyOneof0Type, list[str], str]] = UNSET,
         **kwargs,
     ) -> Response:
@@ -873,7 +874,7 @@ class UsersClient:
     async def async_delete_email_for_authenticated_user(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[Union[UserEmailsDeleteBodyOneof0Type, list[str], str]] = UNSET,
     ) -> Response: ...
 
@@ -882,14 +883,14 @@ class UsersClient:
         self,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         emails: list[str],
     ) -> Response: ...
 
     async def async_delete_email_for_authenticated_user(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[Union[UserEmailsDeleteBodyOneof0Type, list[str], str]] = UNSET,
         **kwargs,
     ) -> Response:
@@ -939,7 +940,7 @@ class UsersClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/followers#list-followers-of-the-authenticated-user"""
 
@@ -971,7 +972,7 @@ class UsersClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/followers#list-followers-of-the-authenticated-user"""
 
@@ -1003,7 +1004,7 @@ class UsersClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/followers#list-the-people-the-authenticated-user-follows"""
 
@@ -1035,7 +1036,7 @@ class UsersClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/followers#list-the-people-the-authenticated-user-follows"""
 
@@ -1066,7 +1067,7 @@ class UsersClient:
         self,
         username: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/followers#check-if-a-person-is-followed-by-the-authenticated-user"""
 
@@ -1091,7 +1092,7 @@ class UsersClient:
         self,
         username: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/followers#check-if-a-person-is-followed-by-the-authenticated-user"""
 
@@ -1116,7 +1117,7 @@ class UsersClient:
         self,
         username: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/followers#follow-a-user"""
 
@@ -1142,7 +1143,7 @@ class UsersClient:
         self,
         username: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/followers#follow-a-user"""
 
@@ -1168,7 +1169,7 @@ class UsersClient:
         self,
         username: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/followers#unfollow-a-user"""
 
@@ -1193,7 +1194,7 @@ class UsersClient:
         self,
         username: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/followers#unfollow-a-user"""
 
@@ -1219,7 +1220,7 @@ class UsersClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[GpgKey], list[GpgKeyType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/gpg-keys#list-gpg-keys-for-the-authenticated-user"""
 
@@ -1252,7 +1253,7 @@ class UsersClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[GpgKey], list[GpgKeyType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/gpg-keys#list-gpg-keys-for-the-authenticated-user"""
 
@@ -1282,7 +1283,10 @@ class UsersClient:
 
     @overload
     def create_gpg_key_for_authenticated_user(
-        self, *, headers: Optional[dict[str, str]] = None, data: UserGpgKeysPostBodyType
+        self,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        data: UserGpgKeysPostBodyType,
     ) -> Response[GpgKey, GpgKeyType]: ...
 
     @overload
@@ -1290,7 +1294,7 @@ class UsersClient:
         self,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         name: Missing[str] = UNSET,
         armored_public_key: str,
     ) -> Response[GpgKey, GpgKeyType]: ...
@@ -1298,7 +1302,7 @@ class UsersClient:
     def create_gpg_key_for_authenticated_user(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[UserGpgKeysPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[GpgKey, GpgKeyType]:
@@ -1335,7 +1339,10 @@ class UsersClient:
 
     @overload
     async def async_create_gpg_key_for_authenticated_user(
-        self, *, headers: Optional[dict[str, str]] = None, data: UserGpgKeysPostBodyType
+        self,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        data: UserGpgKeysPostBodyType,
     ) -> Response[GpgKey, GpgKeyType]: ...
 
     @overload
@@ -1343,7 +1350,7 @@ class UsersClient:
         self,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         name: Missing[str] = UNSET,
         armored_public_key: str,
     ) -> Response[GpgKey, GpgKeyType]: ...
@@ -1351,7 +1358,7 @@ class UsersClient:
     async def async_create_gpg_key_for_authenticated_user(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[UserGpgKeysPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[GpgKey, GpgKeyType]:
@@ -1390,7 +1397,7 @@ class UsersClient:
         self,
         gpg_key_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[GpgKey, GpgKeyType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/gpg-keys#get-a-gpg-key-for-the-authenticated-user"""
 
@@ -1416,7 +1423,7 @@ class UsersClient:
         self,
         gpg_key_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[GpgKey, GpgKeyType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/gpg-keys#get-a-gpg-key-for-the-authenticated-user"""
 
@@ -1442,7 +1449,7 @@ class UsersClient:
         self,
         gpg_key_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/gpg-keys#delete-a-gpg-key-for-the-authenticated-user"""
 
@@ -1468,7 +1475,7 @@ class UsersClient:
         self,
         gpg_key_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/gpg-keys#delete-a-gpg-key-for-the-authenticated-user"""
 
@@ -1495,7 +1502,7 @@ class UsersClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Key], list[KeyType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/keys#list-public-ssh-keys-for-the-authenticated-user"""
 
@@ -1528,7 +1535,7 @@ class UsersClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Key], list[KeyType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/keys#list-public-ssh-keys-for-the-authenticated-user"""
 
@@ -1558,7 +1565,7 @@ class UsersClient:
 
     @overload
     def create_public_ssh_key_for_authenticated_user(
-        self, *, headers: Optional[dict[str, str]] = None, data: UserKeysPostBodyType
+        self, *, headers: Optional[Mapping[str, str]] = None, data: UserKeysPostBodyType
     ) -> Response[Key, KeyType]: ...
 
     @overload
@@ -1566,7 +1573,7 @@ class UsersClient:
         self,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         title: Missing[str] = UNSET,
         key: str,
     ) -> Response[Key, KeyType]: ...
@@ -1574,7 +1581,7 @@ class UsersClient:
     def create_public_ssh_key_for_authenticated_user(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[UserKeysPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Key, KeyType]:
@@ -1611,7 +1618,7 @@ class UsersClient:
 
     @overload
     async def async_create_public_ssh_key_for_authenticated_user(
-        self, *, headers: Optional[dict[str, str]] = None, data: UserKeysPostBodyType
+        self, *, headers: Optional[Mapping[str, str]] = None, data: UserKeysPostBodyType
     ) -> Response[Key, KeyType]: ...
 
     @overload
@@ -1619,7 +1626,7 @@ class UsersClient:
         self,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         title: Missing[str] = UNSET,
         key: str,
     ) -> Response[Key, KeyType]: ...
@@ -1627,7 +1634,7 @@ class UsersClient:
     async def async_create_public_ssh_key_for_authenticated_user(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[UserKeysPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Key, KeyType]:
@@ -1666,7 +1673,7 @@ class UsersClient:
         self,
         key_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Key, KeyType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/keys#get-a-public-ssh-key-for-the-authenticated-user"""
 
@@ -1692,7 +1699,7 @@ class UsersClient:
         self,
         key_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Key, KeyType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/keys#get-a-public-ssh-key-for-the-authenticated-user"""
 
@@ -1718,7 +1725,7 @@ class UsersClient:
         self,
         key_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/keys#delete-a-public-ssh-key-for-the-authenticated-user"""
 
@@ -1743,7 +1750,7 @@ class UsersClient:
         self,
         key_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/keys#delete-a-public-ssh-key-for-the-authenticated-user"""
 
@@ -1769,7 +1776,7 @@ class UsersClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Email], list[EmailType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/emails#list-public-email-addresses-for-the-authenticated-user"""
 
@@ -1802,7 +1809,7 @@ class UsersClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Email], list[EmailType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/emails#list-public-email-addresses-for-the-authenticated-user"""
 
@@ -1835,7 +1842,7 @@ class UsersClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[SocialAccount], list[SocialAccountType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/social-accounts#list-social-accounts-for-the-authenticated-user"""
 
@@ -1868,7 +1875,7 @@ class UsersClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[SocialAccount], list[SocialAccountType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/social-accounts#list-social-accounts-for-the-authenticated-user"""
 
@@ -1900,7 +1907,7 @@ class UsersClient:
     def add_social_account_for_authenticated_user(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: UserSocialAccountsPostBodyType,
     ) -> Response[list[SocialAccount], list[SocialAccountType]]: ...
 
@@ -1909,14 +1916,14 @@ class UsersClient:
         self,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         account_urls: list[str],
     ) -> Response[list[SocialAccount], list[SocialAccountType]]: ...
 
     def add_social_account_for_authenticated_user(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[UserSocialAccountsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[list[SocialAccount], list[SocialAccountType]]:
@@ -1960,7 +1967,7 @@ class UsersClient:
     async def async_add_social_account_for_authenticated_user(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: UserSocialAccountsPostBodyType,
     ) -> Response[list[SocialAccount], list[SocialAccountType]]: ...
 
@@ -1969,14 +1976,14 @@ class UsersClient:
         self,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         account_urls: list[str],
     ) -> Response[list[SocialAccount], list[SocialAccountType]]: ...
 
     async def async_add_social_account_for_authenticated_user(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[UserSocialAccountsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[list[SocialAccount], list[SocialAccountType]]:
@@ -2020,7 +2027,7 @@ class UsersClient:
     def delete_social_account_for_authenticated_user(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: UserSocialAccountsDeleteBodyType,
     ) -> Response: ...
 
@@ -2029,14 +2036,14 @@ class UsersClient:
         self,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         account_urls: list[str],
     ) -> Response: ...
 
     def delete_social_account_for_authenticated_user(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[UserSocialAccountsDeleteBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -2074,7 +2081,7 @@ class UsersClient:
     async def async_delete_social_account_for_authenticated_user(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: UserSocialAccountsDeleteBodyType,
     ) -> Response: ...
 
@@ -2083,14 +2090,14 @@ class UsersClient:
         self,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         account_urls: list[str],
     ) -> Response: ...
 
     async def async_delete_social_account_for_authenticated_user(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[UserSocialAccountsDeleteBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -2129,7 +2136,7 @@ class UsersClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[SshSigningKey], list[SshSigningKeyType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/ssh-signing-keys#list-ssh-signing-keys-for-the-authenticated-user"""
 
@@ -2162,7 +2169,7 @@ class UsersClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[SshSigningKey], list[SshSigningKeyType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/ssh-signing-keys#list-ssh-signing-keys-for-the-authenticated-user"""
 
@@ -2194,7 +2201,7 @@ class UsersClient:
     def create_ssh_signing_key_for_authenticated_user(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: UserSshSigningKeysPostBodyType,
     ) -> Response[SshSigningKey, SshSigningKeyType]: ...
 
@@ -2203,7 +2210,7 @@ class UsersClient:
         self,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         title: Missing[str] = UNSET,
         key: str,
     ) -> Response[SshSigningKey, SshSigningKeyType]: ...
@@ -2211,7 +2218,7 @@ class UsersClient:
     def create_ssh_signing_key_for_authenticated_user(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[UserSshSigningKeysPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[SshSigningKey, SshSigningKeyType]:
@@ -2255,7 +2262,7 @@ class UsersClient:
     async def async_create_ssh_signing_key_for_authenticated_user(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: UserSshSigningKeysPostBodyType,
     ) -> Response[SshSigningKey, SshSigningKeyType]: ...
 
@@ -2264,7 +2271,7 @@ class UsersClient:
         self,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         title: Missing[str] = UNSET,
         key: str,
     ) -> Response[SshSigningKey, SshSigningKeyType]: ...
@@ -2272,7 +2279,7 @@ class UsersClient:
     async def async_create_ssh_signing_key_for_authenticated_user(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[UserSshSigningKeysPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[SshSigningKey, SshSigningKeyType]:
@@ -2316,7 +2323,7 @@ class UsersClient:
         self,
         ssh_signing_key_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[SshSigningKey, SshSigningKeyType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/ssh-signing-keys#get-an-ssh-signing-key-for-the-authenticated-user"""
 
@@ -2342,7 +2349,7 @@ class UsersClient:
         self,
         ssh_signing_key_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[SshSigningKey, SshSigningKeyType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/ssh-signing-keys#get-an-ssh-signing-key-for-the-authenticated-user"""
 
@@ -2368,7 +2375,7 @@ class UsersClient:
         self,
         ssh_signing_key_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/ssh-signing-keys#delete-an-ssh-signing-key-for-the-authenticated-user"""
 
@@ -2393,7 +2400,7 @@ class UsersClient:
         self,
         ssh_signing_key_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/ssh-signing-keys#delete-an-ssh-signing-key-for-the-authenticated-user"""
 
@@ -2418,7 +2425,7 @@ class UsersClient:
         self,
         account_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         Union[PrivateUser, PublicUser], Union[PrivateUserType, PublicUserType]
     ]:
@@ -2446,7 +2453,7 @@ class UsersClient:
         self,
         account_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         Union[PrivateUser, PublicUser], Union[PrivateUserType, PublicUserType]
     ]:
@@ -2475,7 +2482,7 @@ class UsersClient:
         *,
         since: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/users#list-users"""
 
@@ -2503,7 +2510,7 @@ class UsersClient:
         *,
         since: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/users#list-users"""
 
@@ -2530,7 +2537,7 @@ class UsersClient:
         self,
         username: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         Union[PrivateUser, PublicUser], Union[PrivateUserType, PublicUserType]
     ]:
@@ -2558,7 +2565,7 @@ class UsersClient:
         self,
         username: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         Union[PrivateUser, PublicUser], Union[PrivateUserType, PublicUserType]
     ]:
@@ -2590,7 +2597,7 @@ class UsersClient:
         per_page: Missing[int] = UNSET,
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         UsersUsernameAttestationsSubjectDigestGetResponse200,
         UsersUsernameAttestationsSubjectDigestGetResponse200Type,
@@ -2631,7 +2638,7 @@ class UsersClient:
         per_page: Missing[int] = UNSET,
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         UsersUsernameAttestationsSubjectDigestGetResponse200,
         UsersUsernameAttestationsSubjectDigestGetResponse200Type,
@@ -2670,7 +2677,7 @@ class UsersClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/followers#list-followers-of-a-user"""
 
@@ -2699,7 +2706,7 @@ class UsersClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/followers#list-followers-of-a-user"""
 
@@ -2728,7 +2735,7 @@ class UsersClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/followers#list-the-people-a-user-follows"""
 
@@ -2757,7 +2764,7 @@ class UsersClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/followers#list-the-people-a-user-follows"""
 
@@ -2785,7 +2792,7 @@ class UsersClient:
         username: str,
         target_user: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/followers#check-if-a-user-follows-another-user"""
 
@@ -2805,7 +2812,7 @@ class UsersClient:
         username: str,
         target_user: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/followers#check-if-a-user-follows-another-user"""
 
@@ -2826,7 +2833,7 @@ class UsersClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[GpgKey], list[GpgKeyType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/gpg-keys#list-gpg-keys-for-a-user"""
 
@@ -2855,7 +2862,7 @@ class UsersClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[GpgKey], list[GpgKeyType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/gpg-keys#list-gpg-keys-for-a-user"""
 
@@ -2886,7 +2893,7 @@ class UsersClient:
             Literal["organization", "repository", "issue", "pull_request"]
         ] = UNSET,
         subject_id: Missing[str] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Hovercard, HovercardType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/users#get-contextual-information-for-a-user"""
 
@@ -2921,7 +2928,7 @@ class UsersClient:
             Literal["organization", "repository", "issue", "pull_request"]
         ] = UNSET,
         subject_id: Missing[str] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Hovercard, HovercardType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/users#get-contextual-information-for-a-user"""
 
@@ -2954,7 +2961,7 @@ class UsersClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[KeySimple], list[KeySimpleType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/keys#list-public-keys-for-a-user"""
 
@@ -2983,7 +2990,7 @@ class UsersClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[KeySimple], list[KeySimpleType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/keys#list-public-keys-for-a-user"""
 
@@ -3012,7 +3019,7 @@ class UsersClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[SocialAccount], list[SocialAccountType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/social-accounts#list-social-accounts-for-a-user"""
 
@@ -3041,7 +3048,7 @@ class UsersClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[SocialAccount], list[SocialAccountType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/social-accounts#list-social-accounts-for-a-user"""
 
@@ -3070,7 +3077,7 @@ class UsersClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[SshSigningKey], list[SshSigningKeyType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/ssh-signing-keys#list-ssh-signing-keys-for-a-user"""
 
@@ -3099,7 +3106,7 @@ class UsersClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[SshSigningKey], list[SshSigningKeyType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/ssh-signing-keys#list-ssh-signing-keys-for-a-user"""
 

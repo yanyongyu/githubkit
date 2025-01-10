@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from collections.abc import Mapping
 from typing import TYPE_CHECKING, Literal, Optional, overload
 from weakref import ref
 
@@ -358,7 +359,7 @@ class ReposClient:
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
         """See also: https://docs.github.com/rest/repos/repos#list-organization-repositories"""
 
@@ -395,7 +396,7 @@ class ReposClient:
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
         """See also: https://docs.github.com/rest/repos/repos#list-organization-repositories"""
 
@@ -426,7 +427,7 @@ class ReposClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgReposPostBodyType,
     ) -> Response[FullRepository, FullRepositoryType]: ...
 
@@ -436,7 +437,7 @@ class ReposClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         name: str,
         description: Missing[str] = UNSET,
         homepage: Missing[str] = UNSET,
@@ -474,7 +475,7 @@ class ReposClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgReposPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[FullRepository, FullRepositoryType]:
@@ -517,7 +518,7 @@ class ReposClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgReposPostBodyType,
     ) -> Response[FullRepository, FullRepositoryType]: ...
 
@@ -527,7 +528,7 @@ class ReposClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         name: str,
         description: Missing[str] = UNSET,
         homepage: Missing[str] = UNSET,
@@ -565,7 +566,7 @@ class ReposClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgReposPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[FullRepository, FullRepositoryType]:
@@ -610,7 +611,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         targets: Missing[str] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[RepositoryRuleset], list[RepositoryRulesetType]]:
         """See also: https://docs.github.com/rest/orgs/rules#get-all-organization-repository-rulesets"""
 
@@ -645,7 +646,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         targets: Missing[str] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[RepositoryRuleset], list[RepositoryRulesetType]]:
         """See also: https://docs.github.com/rest/orgs/rules#get-all-organization-repository-rulesets"""
 
@@ -678,7 +679,7 @@ class ReposClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgRulesetsPostBodyType,
     ) -> Response[RepositoryRuleset, RepositoryRulesetType]: ...
 
@@ -688,7 +689,7 @@ class ReposClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         name: str,
         target: Missing[Literal["branch", "tag", "push", "repository"]] = UNSET,
         enforcement: Literal["disabled", "active", "evaluate"],
@@ -733,7 +734,7 @@ class ReposClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgRulesetsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[RepositoryRuleset, RepositoryRulesetType]:
@@ -771,7 +772,7 @@ class ReposClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgRulesetsPostBodyType,
     ) -> Response[RepositoryRuleset, RepositoryRulesetType]: ...
 
@@ -781,7 +782,7 @@ class ReposClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         name: str,
         target: Missing[Literal["branch", "tag", "push", "repository"]] = UNSET,
         enforcement: Literal["disabled", "active", "evaluate"],
@@ -826,7 +827,7 @@ class ReposClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgRulesetsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[RepositoryRuleset, RepositoryRulesetType]:
@@ -870,7 +871,7 @@ class ReposClient:
         rule_suite_result: Missing[Literal["pass", "fail", "bypass", "all"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[RuleSuitesItems], list[RuleSuitesItemsType]]:
         """See also: https://docs.github.com/rest/orgs/rule-suites#list-organization-rule-suites"""
 
@@ -913,7 +914,7 @@ class ReposClient:
         rule_suite_result: Missing[Literal["pass", "fail", "bypass", "all"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[RuleSuitesItems], list[RuleSuitesItemsType]]:
         """See also: https://docs.github.com/rest/orgs/rule-suites#list-organization-rule-suites"""
 
@@ -950,7 +951,7 @@ class ReposClient:
         org: str,
         rule_suite_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[RuleSuite, RuleSuiteType]:
         """See also: https://docs.github.com/rest/orgs/rule-suites#get-an-organization-rule-suite"""
 
@@ -976,7 +977,7 @@ class ReposClient:
         org: str,
         rule_suite_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[RuleSuite, RuleSuiteType]:
         """See also: https://docs.github.com/rest/orgs/rule-suites#get-an-organization-rule-suite"""
 
@@ -1002,7 +1003,7 @@ class ReposClient:
         org: str,
         ruleset_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[RepositoryRuleset, RepositoryRulesetType]:
         """See also: https://docs.github.com/rest/orgs/rules#get-an-organization-repository-ruleset"""
 
@@ -1028,7 +1029,7 @@ class ReposClient:
         org: str,
         ruleset_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[RepositoryRuleset, RepositoryRulesetType]:
         """See also: https://docs.github.com/rest/orgs/rules#get-an-organization-repository-ruleset"""
 
@@ -1055,7 +1056,7 @@ class ReposClient:
         org: str,
         ruleset_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgRulesetsRulesetIdPutBodyType] = UNSET,
     ) -> Response[RepositoryRuleset, RepositoryRulesetType]: ...
 
@@ -1066,7 +1067,7 @@ class ReposClient:
         ruleset_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         name: Missing[str] = UNSET,
         target: Missing[Literal["branch", "tag", "push", "repository"]] = UNSET,
         enforcement: Missing[Literal["disabled", "active", "evaluate"]] = UNSET,
@@ -1112,7 +1113,7 @@ class ReposClient:
         org: str,
         ruleset_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgRulesetsRulesetIdPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[RepositoryRuleset, RepositoryRulesetType]:
@@ -1155,7 +1156,7 @@ class ReposClient:
         org: str,
         ruleset_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgRulesetsRulesetIdPutBodyType] = UNSET,
     ) -> Response[RepositoryRuleset, RepositoryRulesetType]: ...
 
@@ -1166,7 +1167,7 @@ class ReposClient:
         ruleset_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         name: Missing[str] = UNSET,
         target: Missing[Literal["branch", "tag", "push", "repository"]] = UNSET,
         enforcement: Missing[Literal["disabled", "active", "evaluate"]] = UNSET,
@@ -1212,7 +1213,7 @@ class ReposClient:
         org: str,
         ruleset_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgRulesetsRulesetIdPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[RepositoryRuleset, RepositoryRulesetType]:
@@ -1254,7 +1255,7 @@ class ReposClient:
         org: str,
         ruleset_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/orgs/rules#delete-an-organization-repository-ruleset"""
 
@@ -1279,7 +1280,7 @@ class ReposClient:
         org: str,
         ruleset_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/orgs/rules#delete-an-organization-repository-ruleset"""
 
@@ -1304,7 +1305,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[FullRepository, FullRepositoryType]:
         """See also: https://docs.github.com/rest/repos/repos#get-a-repository"""
 
@@ -1330,7 +1331,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[FullRepository, FullRepositoryType]:
         """See also: https://docs.github.com/rest/repos/repos#get-a-repository"""
 
@@ -1356,7 +1357,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/repos/repos#delete-a-repository"""
 
@@ -1381,7 +1382,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/repos/repos#delete-a-repository"""
 
@@ -1407,7 +1408,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoPatchBodyType] = UNSET,
     ) -> Response[FullRepository, FullRepositoryType]: ...
 
@@ -1418,7 +1419,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         name: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
         homepage: Missing[str] = UNSET,
@@ -1457,7 +1458,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[FullRepository, FullRepositoryType]:
@@ -1502,7 +1503,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoPatchBodyType] = UNSET,
     ) -> Response[FullRepository, FullRepositoryType]: ...
 
@@ -1513,7 +1514,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         name: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
         homepage: Missing[str] = UNSET,
@@ -1552,7 +1553,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[FullRepository, FullRepositoryType]:
@@ -1615,7 +1616,7 @@ class ReposClient:
                 "merge_queue_merge",
             ]
         ] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Activity], list[ActivityType]]:
         """See also: https://docs.github.com/rest/repos/repos#list-repository-activities"""
 
@@ -1671,7 +1672,7 @@ class ReposClient:
                 "merge_queue_merge",
             ]
         ] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Activity], list[ActivityType]]:
         """See also: https://docs.github.com/rest/repos/repos#list-repository-activities"""
 
@@ -1709,7 +1710,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoAttestationsPostBodyType,
     ) -> Response[
         ReposOwnerRepoAttestationsPostResponse201,
@@ -1723,7 +1724,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         bundle: ReposOwnerRepoAttestationsPostBodyPropBundleType,
     ) -> Response[
         ReposOwnerRepoAttestationsPostResponse201,
@@ -1735,7 +1736,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoAttestationsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[
@@ -1782,7 +1783,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoAttestationsPostBodyType,
     ) -> Response[
         ReposOwnerRepoAttestationsPostResponse201,
@@ -1796,7 +1797,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         bundle: ReposOwnerRepoAttestationsPostBodyPropBundleType,
     ) -> Response[
         ReposOwnerRepoAttestationsPostResponse201,
@@ -1808,7 +1809,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoAttestationsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[
@@ -1858,7 +1859,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoAttestationsSubjectDigestGetResponse200,
         ReposOwnerRepoAttestationsSubjectDigestGetResponse200Type,
@@ -1894,7 +1895,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoAttestationsSubjectDigestGetResponse200,
         ReposOwnerRepoAttestationsSubjectDigestGetResponse200Type,
@@ -1926,7 +1927,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Autolink], list[AutolinkType]]:
         """See also: https://docs.github.com/rest/repos/autolinks#get-all-autolinks-of-a-repository"""
 
@@ -1948,7 +1949,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Autolink], list[AutolinkType]]:
         """See also: https://docs.github.com/rest/repos/autolinks#get-all-autolinks-of-a-repository"""
 
@@ -1971,7 +1972,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoAutolinksPostBodyType,
     ) -> Response[Autolink, AutolinkType]: ...
 
@@ -1982,7 +1983,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         key_prefix: str,
         url_template: str,
         is_alphanumeric: Missing[bool] = UNSET,
@@ -1993,7 +1994,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoAutolinksPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Autolink, AutolinkType]:
@@ -2031,7 +2032,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoAutolinksPostBodyType,
     ) -> Response[Autolink, AutolinkType]: ...
 
@@ -2042,7 +2043,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         key_prefix: str,
         url_template: str,
         is_alphanumeric: Missing[bool] = UNSET,
@@ -2053,7 +2054,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoAutolinksPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Autolink, AutolinkType]:
@@ -2091,7 +2092,7 @@ class ReposClient:
         repo: str,
         autolink_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Autolink, AutolinkType]:
         """See also: https://docs.github.com/rest/repos/autolinks#get-an-autolink-reference-of-a-repository"""
 
@@ -2117,7 +2118,7 @@ class ReposClient:
         repo: str,
         autolink_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Autolink, AutolinkType]:
         """See also: https://docs.github.com/rest/repos/autolinks#get-an-autolink-reference-of-a-repository"""
 
@@ -2143,7 +2144,7 @@ class ReposClient:
         repo: str,
         autolink_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/repos/autolinks#delete-an-autolink-reference-from-a-repository"""
 
@@ -2168,7 +2169,7 @@ class ReposClient:
         repo: str,
         autolink_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/repos/autolinks#delete-an-autolink-reference-from-a-repository"""
 
@@ -2192,7 +2193,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CheckAutomatedSecurityFixes, CheckAutomatedSecurityFixesType]:
         """See also: https://docs.github.com/rest/repos/repos#check-if-automated-security-fixes-are-enabled-for-a-repository"""
 
@@ -2215,7 +2216,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CheckAutomatedSecurityFixes, CheckAutomatedSecurityFixesType]:
         """See also: https://docs.github.com/rest/repos/repos#check-if-automated-security-fixes-are-enabled-for-a-repository"""
 
@@ -2238,7 +2239,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/repos/repos#enable-automated-security-fixes"""
 
@@ -2257,7 +2258,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/repos/repos#enable-automated-security-fixes"""
 
@@ -2276,7 +2277,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/repos/repos#disable-automated-security-fixes"""
 
@@ -2295,7 +2296,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/repos/repos#disable-automated-security-fixes"""
 
@@ -2317,7 +2318,7 @@ class ReposClient:
         protected: Missing[bool] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[ShortBranch], list[ShortBranchType]]:
         """See also: https://docs.github.com/rest/branches/branches#list-branches"""
 
@@ -2352,7 +2353,7 @@ class ReposClient:
         protected: Missing[bool] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[ShortBranch], list[ShortBranchType]]:
         """See also: https://docs.github.com/rest/branches/branches#list-branches"""
 
@@ -2385,7 +2386,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[BranchWithProtection, BranchWithProtectionType]:
         """See also: https://docs.github.com/rest/branches/branches#get-a-branch"""
 
@@ -2411,7 +2412,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[BranchWithProtection, BranchWithProtectionType]:
         """See also: https://docs.github.com/rest/branches/branches#get-a-branch"""
 
@@ -2437,7 +2438,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[BranchProtection, BranchProtectionType]:
         """See also: https://docs.github.com/rest/branches/branch-protection#get-branch-protection"""
 
@@ -2463,7 +2464,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[BranchProtection, BranchProtectionType]:
         """See also: https://docs.github.com/rest/branches/branch-protection#get-branch-protection"""
 
@@ -2490,7 +2491,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoBranchesBranchProtectionPutBodyType,
     ) -> Response[ProtectedBranch, ProtectedBranchType]: ...
 
@@ -2502,7 +2503,7 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         required_status_checks: Union[
             ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksType,
             None,
@@ -2530,7 +2531,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoBranchesBranchProtectionPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[ProtectedBranch, ProtectedBranchType]:
@@ -2578,7 +2579,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoBranchesBranchProtectionPutBodyType,
     ) -> Response[ProtectedBranch, ProtectedBranchType]: ...
 
@@ -2590,7 +2591,7 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         required_status_checks: Union[
             ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksType,
             None,
@@ -2618,7 +2619,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoBranchesBranchProtectionPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[ProtectedBranch, ProtectedBranchType]:
@@ -2665,7 +2666,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/branches/branch-protection#delete-branch-protection"""
 
@@ -2690,7 +2691,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/branches/branch-protection#delete-branch-protection"""
 
@@ -2715,7 +2716,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ProtectedBranchAdminEnforced, ProtectedBranchAdminEnforcedType]:
         """See also: https://docs.github.com/rest/branches/branch-protection#get-admin-branch-protection"""
 
@@ -2738,7 +2739,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ProtectedBranchAdminEnforced, ProtectedBranchAdminEnforcedType]:
         """See also: https://docs.github.com/rest/branches/branch-protection#get-admin-branch-protection"""
 
@@ -2761,7 +2762,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ProtectedBranchAdminEnforced, ProtectedBranchAdminEnforcedType]:
         """See also: https://docs.github.com/rest/branches/branch-protection#set-admin-branch-protection"""
 
@@ -2784,7 +2785,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ProtectedBranchAdminEnforced, ProtectedBranchAdminEnforcedType]:
         """See also: https://docs.github.com/rest/branches/branch-protection#set-admin-branch-protection"""
 
@@ -2807,7 +2808,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/branches/branch-protection#delete-admin-branch-protection"""
 
@@ -2832,7 +2833,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/branches/branch-protection#delete-admin-branch-protection"""
 
@@ -2857,7 +2858,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         ProtectedBranchPullRequestReview, ProtectedBranchPullRequestReviewType
     ]:
@@ -2882,7 +2883,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         ProtectedBranchPullRequestReview, ProtectedBranchPullRequestReviewType
     ]:
@@ -2907,7 +2908,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/branches/branch-protection#delete-pull-request-review-protection"""
 
@@ -2932,7 +2933,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/branches/branch-protection#delete-pull-request-review-protection"""
 
@@ -2958,7 +2959,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyType
         ] = UNSET,
@@ -2974,7 +2975,7 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         dismissal_restrictions: Missing[
             ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictionsType
         ] = UNSET,
@@ -2995,7 +2996,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyType
         ] = UNSET,
@@ -3045,7 +3046,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyType
         ] = UNSET,
@@ -3061,7 +3062,7 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         dismissal_restrictions: Missing[
             ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictionsType
         ] = UNSET,
@@ -3082,7 +3083,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyType
         ] = UNSET,
@@ -3131,7 +3132,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ProtectedBranchAdminEnforced, ProtectedBranchAdminEnforcedType]:
         """See also: https://docs.github.com/rest/branches/branch-protection#get-commit-signature-protection"""
 
@@ -3157,7 +3158,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ProtectedBranchAdminEnforced, ProtectedBranchAdminEnforcedType]:
         """See also: https://docs.github.com/rest/branches/branch-protection#get-commit-signature-protection"""
 
@@ -3183,7 +3184,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ProtectedBranchAdminEnforced, ProtectedBranchAdminEnforcedType]:
         """See also: https://docs.github.com/rest/branches/branch-protection#create-commit-signature-protection"""
 
@@ -3209,7 +3210,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ProtectedBranchAdminEnforced, ProtectedBranchAdminEnforcedType]:
         """See also: https://docs.github.com/rest/branches/branch-protection#create-commit-signature-protection"""
 
@@ -3235,7 +3236,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/branches/branch-protection#delete-commit-signature-protection"""
 
@@ -3260,7 +3261,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/branches/branch-protection#delete-commit-signature-protection"""
 
@@ -3285,7 +3286,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[StatusCheckPolicy, StatusCheckPolicyType]:
         """See also: https://docs.github.com/rest/branches/branch-protection#get-status-checks-protection"""
 
@@ -3313,7 +3314,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[StatusCheckPolicy, StatusCheckPolicyType]:
         """See also: https://docs.github.com/rest/branches/branch-protection#get-status-checks-protection"""
 
@@ -3341,7 +3342,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/branches/branch-protection#remove-status-check-protection"""
 
@@ -3363,7 +3364,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/branches/branch-protection#remove-status-check-protection"""
 
@@ -3386,7 +3387,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyType
         ] = UNSET,
@@ -3400,7 +3401,7 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         strict: Missing[bool] = UNSET,
         contexts: Missing[list[str]] = UNSET,
         checks: Missing[
@@ -3416,7 +3417,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyType
         ] = UNSET,
@@ -3468,7 +3469,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyType
         ] = UNSET,
@@ -3482,7 +3483,7 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         strict: Missing[bool] = UNSET,
         contexts: Missing[list[str]] = UNSET,
         checks: Missing[
@@ -3498,7 +3499,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyType
         ] = UNSET,
@@ -3549,7 +3550,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[str], list[str]]:
         """See also: https://docs.github.com/rest/branches/branch-protection#get-all-status-check-contexts"""
 
@@ -3575,7 +3576,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[str], list[str]]:
         """See also: https://docs.github.com/rest/branches/branch-protection#get-all-status-check-contexts"""
 
@@ -3602,7 +3603,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0Type,
@@ -3619,7 +3620,7 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         contexts: list[str],
     ) -> Response[list[str], list[str]]: ...
 
@@ -3629,7 +3630,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0Type,
@@ -3686,7 +3687,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0Type,
@@ -3703,7 +3704,7 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         contexts: list[str],
     ) -> Response[list[str], list[str]]: ...
 
@@ -3713,7 +3714,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0Type,
@@ -3770,7 +3771,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0Type,
@@ -3787,7 +3788,7 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         contexts: list[str],
     ) -> Response[list[str], list[str]]: ...
 
@@ -3797,7 +3798,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0Type,
@@ -3855,7 +3856,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0Type,
@@ -3872,7 +3873,7 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         contexts: list[str],
     ) -> Response[list[str], list[str]]: ...
 
@@ -3882,7 +3883,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0Type,
@@ -3940,7 +3941,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0Type,
@@ -3957,7 +3958,7 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         contexts: list[str],
     ) -> Response[list[str], list[str]]: ...
 
@@ -3967,7 +3968,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0Type,
@@ -4024,7 +4025,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0Type,
@@ -4041,7 +4042,7 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         contexts: list[str],
     ) -> Response[list[str], list[str]]: ...
 
@@ -4051,7 +4052,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0Type,
@@ -4107,7 +4108,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[BranchRestrictionPolicy, BranchRestrictionPolicyType]:
         """See also: https://docs.github.com/rest/branches/branch-protection#get-access-restrictions"""
 
@@ -4133,7 +4134,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[BranchRestrictionPolicy, BranchRestrictionPolicyType]:
         """See also: https://docs.github.com/rest/branches/branch-protection#get-access-restrictions"""
 
@@ -4159,7 +4160,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/branches/branch-protection#delete-access-restrictions"""
 
@@ -4179,7 +4180,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/branches/branch-protection#delete-access-restrictions"""
 
@@ -4199,7 +4200,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Union[Integration, None]], list[Union[IntegrationType, None]]]:
         """See also: https://docs.github.com/rest/branches/branch-protection#get-apps-with-access-to-the-protected-branch"""
 
@@ -4227,7 +4228,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Union[Integration, None]], list[Union[IntegrationType, None]]]:
         """See also: https://docs.github.com/rest/branches/branch-protection#get-apps-with-access-to-the-protected-branch"""
 
@@ -4256,7 +4257,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyType,
     ) -> Response[
         list[Union[Integration, None]], list[Union[IntegrationType, None]]
@@ -4270,7 +4271,7 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         apps: list[str],
     ) -> Response[
         list[Union[Integration, None]], list[Union[IntegrationType, None]]
@@ -4282,7 +4283,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyType
         ] = UNSET,
@@ -4331,7 +4332,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyType,
     ) -> Response[
         list[Union[Integration, None]], list[Union[IntegrationType, None]]
@@ -4345,7 +4346,7 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         apps: list[str],
     ) -> Response[
         list[Union[Integration, None]], list[Union[IntegrationType, None]]
@@ -4357,7 +4358,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyType
         ] = UNSET,
@@ -4406,7 +4407,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyType,
     ) -> Response[
         list[Union[Integration, None]], list[Union[IntegrationType, None]]
@@ -4420,7 +4421,7 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         apps: list[str],
     ) -> Response[
         list[Union[Integration, None]], list[Union[IntegrationType, None]]
@@ -4432,7 +4433,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyType
         ] = UNSET,
@@ -4481,7 +4482,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyType,
     ) -> Response[
         list[Union[Integration, None]], list[Union[IntegrationType, None]]
@@ -4495,7 +4496,7 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         apps: list[str],
     ) -> Response[
         list[Union[Integration, None]], list[Union[IntegrationType, None]]
@@ -4507,7 +4508,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyType
         ] = UNSET,
@@ -4556,7 +4557,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyType,
     ) -> Response[
         list[Union[Integration, None]], list[Union[IntegrationType, None]]
@@ -4570,7 +4571,7 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         apps: list[str],
     ) -> Response[
         list[Union[Integration, None]], list[Union[IntegrationType, None]]
@@ -4582,7 +4583,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyType
         ] = UNSET,
@@ -4631,7 +4632,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyType,
     ) -> Response[
         list[Union[Integration, None]], list[Union[IntegrationType, None]]
@@ -4645,7 +4646,7 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         apps: list[str],
     ) -> Response[
         list[Union[Integration, None]], list[Union[IntegrationType, None]]
@@ -4657,7 +4658,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyType
         ] = UNSET,
@@ -4705,7 +4706,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Team], list[TeamType]]:
         """See also: https://docs.github.com/rest/branches/branch-protection#get-teams-with-access-to-the-protected-branch"""
 
@@ -4731,7 +4732,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Team], list[TeamType]]:
         """See also: https://docs.github.com/rest/branches/branch-protection#get-teams-with-access-to-the-protected-branch"""
 
@@ -4758,7 +4759,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0Type,
@@ -4775,7 +4776,7 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         teams: list[str],
     ) -> Response[list[Team], list[TeamType]]: ...
 
@@ -4785,7 +4786,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0Type,
@@ -4841,7 +4842,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0Type,
@@ -4858,7 +4859,7 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         teams: list[str],
     ) -> Response[list[Team], list[TeamType]]: ...
 
@@ -4868,7 +4869,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0Type,
@@ -4924,7 +4925,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0Type,
@@ -4941,7 +4942,7 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         teams: list[str],
     ) -> Response[list[Team], list[TeamType]]: ...
 
@@ -4951,7 +4952,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0Type,
@@ -5007,7 +5008,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0Type,
@@ -5024,7 +5025,7 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         teams: list[str],
     ) -> Response[list[Team], list[TeamType]]: ...
 
@@ -5034,7 +5035,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0Type,
@@ -5090,7 +5091,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0Type,
@@ -5107,7 +5108,7 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         teams: list[str],
     ) -> Response[list[Team], list[TeamType]]: ...
 
@@ -5117,7 +5118,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0Type,
@@ -5173,7 +5174,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0Type,
@@ -5190,7 +5191,7 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         teams: list[str],
     ) -> Response[list[Team], list[TeamType]]: ...
 
@@ -5200,7 +5201,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0Type,
@@ -5255,7 +5256,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """See also: https://docs.github.com/rest/branches/branch-protection#get-users-with-access-to-the-protected-branch"""
 
@@ -5281,7 +5282,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """See also: https://docs.github.com/rest/branches/branch-protection#get-users-with-access-to-the-protected-branch"""
 
@@ -5308,7 +5309,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyType,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]: ...
 
@@ -5320,7 +5321,7 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         users: list[str],
     ) -> Response[list[SimpleUser], list[SimpleUserType]]: ...
 
@@ -5330,7 +5331,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyType
         ] = UNSET,
@@ -5377,7 +5378,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyType,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]: ...
 
@@ -5389,7 +5390,7 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         users: list[str],
     ) -> Response[list[SimpleUser], list[SimpleUserType]]: ...
 
@@ -5399,7 +5400,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyType
         ] = UNSET,
@@ -5446,7 +5447,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyType,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]: ...
 
@@ -5458,7 +5459,7 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         users: list[str],
     ) -> Response[list[SimpleUser], list[SimpleUserType]]: ...
 
@@ -5468,7 +5469,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyType
         ] = UNSET,
@@ -5515,7 +5516,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyType,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]: ...
 
@@ -5527,7 +5528,7 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         users: list[str],
     ) -> Response[list[SimpleUser], list[SimpleUserType]]: ...
 
@@ -5537,7 +5538,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyType
         ] = UNSET,
@@ -5584,7 +5585,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyType,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]: ...
 
@@ -5596,7 +5597,7 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         users: list[str],
     ) -> Response[list[SimpleUser], list[SimpleUserType]]: ...
 
@@ -5606,7 +5607,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyType
         ] = UNSET,
@@ -5653,7 +5654,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyType,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]: ...
 
@@ -5665,7 +5666,7 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         users: list[str],
     ) -> Response[list[SimpleUser], list[SimpleUserType]]: ...
 
@@ -5675,7 +5676,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyType
         ] = UNSET,
@@ -5722,7 +5723,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoBranchesBranchRenamePostBodyType,
     ) -> Response[BranchWithProtection, BranchWithProtectionType]: ...
 
@@ -5734,7 +5735,7 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         new_name: str,
     ) -> Response[BranchWithProtection, BranchWithProtectionType]: ...
 
@@ -5744,7 +5745,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoBranchesBranchRenamePostBodyType] = UNSET,
         **kwargs,
     ) -> Response[BranchWithProtection, BranchWithProtectionType]:
@@ -5792,7 +5793,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoBranchesBranchRenamePostBodyType,
     ) -> Response[BranchWithProtection, BranchWithProtectionType]: ...
 
@@ -5804,7 +5805,7 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         new_name: str,
     ) -> Response[BranchWithProtection, BranchWithProtectionType]: ...
 
@@ -5814,7 +5815,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoBranchesBranchRenamePostBodyType] = UNSET,
         **kwargs,
     ) -> Response[BranchWithProtection, BranchWithProtectionType]:
@@ -5861,7 +5862,7 @@ class ReposClient:
         repo: str,
         *,
         ref: Missing[str] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CodeownersErrors, CodeownersErrorsType]:
         """See also: https://docs.github.com/rest/repos/repos#list-codeowners-errors"""
 
@@ -5890,7 +5891,7 @@ class ReposClient:
         repo: str,
         *,
         ref: Missing[str] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CodeownersErrors, CodeownersErrorsType]:
         """See also: https://docs.github.com/rest/repos/repos#list-codeowners-errors"""
 
@@ -5924,7 +5925,7 @@ class ReposClient:
         ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Collaborator], list[CollaboratorType]]:
         """See also: https://docs.github.com/rest/collaborators/collaborators#list-repository-collaborators"""
 
@@ -5963,7 +5964,7 @@ class ReposClient:
         ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Collaborator], list[CollaboratorType]]:
         """See also: https://docs.github.com/rest/collaborators/collaborators#list-repository-collaborators"""
 
@@ -5997,7 +5998,7 @@ class ReposClient:
         repo: str,
         username: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/collaborators/collaborators#check-if-a-user-is-a-repository-collaborator"""
 
@@ -6018,7 +6019,7 @@ class ReposClient:
         repo: str,
         username: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/collaborators/collaborators#check-if-a-user-is-a-repository-collaborator"""
 
@@ -6040,7 +6041,7 @@ class ReposClient:
         repo: str,
         username: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoCollaboratorsUsernamePutBodyType] = UNSET,
     ) -> Response[RepositoryInvitation, RepositoryInvitationType]: ...
 
@@ -6052,7 +6053,7 @@ class ReposClient:
         username: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         permission: Missing[str] = UNSET,
     ) -> Response[RepositoryInvitation, RepositoryInvitationType]: ...
 
@@ -6062,7 +6063,7 @@ class ReposClient:
         repo: str,
         username: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoCollaboratorsUsernamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[RepositoryInvitation, RepositoryInvitationType]:
@@ -6109,7 +6110,7 @@ class ReposClient:
         repo: str,
         username: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoCollaboratorsUsernamePutBodyType] = UNSET,
     ) -> Response[RepositoryInvitation, RepositoryInvitationType]: ...
 
@@ -6121,7 +6122,7 @@ class ReposClient:
         username: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         permission: Missing[str] = UNSET,
     ) -> Response[RepositoryInvitation, RepositoryInvitationType]: ...
 
@@ -6131,7 +6132,7 @@ class ReposClient:
         repo: str,
         username: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoCollaboratorsUsernamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[RepositoryInvitation, RepositoryInvitationType]:
@@ -6177,7 +6178,7 @@ class ReposClient:
         repo: str,
         username: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/collaborators/collaborators#remove-a-repository-collaborator"""
 
@@ -6203,7 +6204,7 @@ class ReposClient:
         repo: str,
         username: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/collaborators/collaborators#remove-a-repository-collaborator"""
 
@@ -6229,7 +6230,7 @@ class ReposClient:
         repo: str,
         username: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         RepositoryCollaboratorPermission, RepositoryCollaboratorPermissionType
     ]:
@@ -6257,7 +6258,7 @@ class ReposClient:
         repo: str,
         username: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         RepositoryCollaboratorPermission, RepositoryCollaboratorPermissionType
     ]:
@@ -6286,7 +6287,7 @@ class ReposClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[CommitComment], list[CommitCommentType]]:
         """See also: https://docs.github.com/rest/commits/comments#list-commit-comments-for-a-repository"""
 
@@ -6316,7 +6317,7 @@ class ReposClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[CommitComment], list[CommitCommentType]]:
         """See also: https://docs.github.com/rest/commits/comments#list-commit-comments-for-a-repository"""
 
@@ -6345,7 +6346,7 @@ class ReposClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CommitComment, CommitCommentType]:
         """See also: https://docs.github.com/rest/commits/comments#get-a-commit-comment"""
 
@@ -6371,7 +6372,7 @@ class ReposClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CommitComment, CommitCommentType]:
         """See also: https://docs.github.com/rest/commits/comments#get-a-commit-comment"""
 
@@ -6397,7 +6398,7 @@ class ReposClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/commits/comments#delete-a-commit-comment"""
 
@@ -6422,7 +6423,7 @@ class ReposClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/commits/comments#delete-a-commit-comment"""
 
@@ -6448,7 +6449,7 @@ class ReposClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoCommentsCommentIdPatchBodyType,
     ) -> Response[CommitComment, CommitCommentType]: ...
 
@@ -6460,7 +6461,7 @@ class ReposClient:
         comment_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         body: str,
     ) -> Response[CommitComment, CommitCommentType]: ...
 
@@ -6470,7 +6471,7 @@ class ReposClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoCommentsCommentIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[CommitComment, CommitCommentType]:
@@ -6513,7 +6514,7 @@ class ReposClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoCommentsCommentIdPatchBodyType,
     ) -> Response[CommitComment, CommitCommentType]: ...
 
@@ -6525,7 +6526,7 @@ class ReposClient:
         comment_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         body: str,
     ) -> Response[CommitComment, CommitCommentType]: ...
 
@@ -6535,7 +6536,7 @@ class ReposClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoCommentsCommentIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[CommitComment, CommitCommentType]:
@@ -6584,7 +6585,7 @@ class ReposClient:
         until: Missing[datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Commit], list[CommitType]]:
         """See also: https://docs.github.com/rest/commits/commits#list-commits"""
 
@@ -6632,7 +6633,7 @@ class ReposClient:
         until: Missing[datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Commit], list[CommitType]]:
         """See also: https://docs.github.com/rest/commits/commits#list-commits"""
 
@@ -6673,7 +6674,7 @@ class ReposClient:
         repo: str,
         commit_sha: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[BranchShort], list[BranchShortType]]:
         """See also: https://docs.github.com/rest/commits/commits#list-branches-for-head-commit"""
 
@@ -6700,7 +6701,7 @@ class ReposClient:
         repo: str,
         commit_sha: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[BranchShort], list[BranchShortType]]:
         """See also: https://docs.github.com/rest/commits/commits#list-branches-for-head-commit"""
 
@@ -6729,7 +6730,7 @@ class ReposClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[CommitComment], list[CommitCommentType]]:
         """See also: https://docs.github.com/rest/commits/comments#list-commit-comments"""
 
@@ -6760,7 +6761,7 @@ class ReposClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[CommitComment], list[CommitCommentType]]:
         """See also: https://docs.github.com/rest/commits/comments#list-commit-comments"""
 
@@ -6790,7 +6791,7 @@ class ReposClient:
         repo: str,
         commit_sha: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoCommitsCommitShaCommentsPostBodyType,
     ) -> Response[CommitComment, CommitCommentType]: ...
 
@@ -6802,7 +6803,7 @@ class ReposClient:
         commit_sha: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         body: str,
         path: Missing[str] = UNSET,
         position: Missing[int] = UNSET,
@@ -6815,7 +6816,7 @@ class ReposClient:
         repo: str,
         commit_sha: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoCommitsCommitShaCommentsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[CommitComment, CommitCommentType]:
@@ -6862,7 +6863,7 @@ class ReposClient:
         repo: str,
         commit_sha: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoCommitsCommitShaCommentsPostBodyType,
     ) -> Response[CommitComment, CommitCommentType]: ...
 
@@ -6874,7 +6875,7 @@ class ReposClient:
         commit_sha: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         body: str,
         path: Missing[str] = UNSET,
         position: Missing[int] = UNSET,
@@ -6887,7 +6888,7 @@ class ReposClient:
         repo: str,
         commit_sha: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoCommitsCommitShaCommentsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[CommitComment, CommitCommentType]:
@@ -6935,7 +6936,7 @@ class ReposClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[PullRequestSimple], list[PullRequestSimpleType]]:
         """See also: https://docs.github.com/rest/commits/commits#list-pull-requests-associated-with-a-commit"""
 
@@ -6969,7 +6970,7 @@ class ReposClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[PullRequestSimple], list[PullRequestSimpleType]]:
         """See also: https://docs.github.com/rest/commits/commits#list-pull-requests-associated-with-a-commit"""
 
@@ -7003,7 +7004,7 @@ class ReposClient:
         *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Commit, CommitType]:
         """See also: https://docs.github.com/rest/commits/commits#get-a-commit"""
 
@@ -7046,7 +7047,7 @@ class ReposClient:
         *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Commit, CommitType]:
         """See also: https://docs.github.com/rest/commits/commits#get-a-commit"""
 
@@ -7089,7 +7090,7 @@ class ReposClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CombinedCommitStatus, CombinedCommitStatusType]:
         """See also: https://docs.github.com/rest/commits/statuses#get-the-combined-status-for-a-specific-reference"""
 
@@ -7123,7 +7124,7 @@ class ReposClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CombinedCommitStatus, CombinedCommitStatusType]:
         """See also: https://docs.github.com/rest/commits/statuses#get-the-combined-status-for-a-specific-reference"""
 
@@ -7157,7 +7158,7 @@ class ReposClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Status], list[StatusType]]:
         """See also: https://docs.github.com/rest/commits/statuses#list-commit-statuses-for-a-reference"""
 
@@ -7188,7 +7189,7 @@ class ReposClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Status], list[StatusType]]:
         """See also: https://docs.github.com/rest/commits/statuses#list-commit-statuses-for-a-reference"""
 
@@ -7216,7 +7217,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CommunityProfile, CommunityProfileType]:
         """See also: https://docs.github.com/rest/metrics/community#get-community-profile-metrics"""
 
@@ -7238,7 +7239,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CommunityProfile, CommunityProfileType]:
         """See also: https://docs.github.com/rest/metrics/community#get-community-profile-metrics"""
 
@@ -7263,7 +7264,7 @@ class ReposClient:
         *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CommitComparison, CommitComparisonType]:
         """See also: https://docs.github.com/rest/commits/commits#compare-two-commits"""
 
@@ -7303,7 +7304,7 @@ class ReposClient:
         *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CommitComparison, CommitComparisonType]:
         """See also: https://docs.github.com/rest/commits/commits#compare-two-commits"""
 
@@ -7342,7 +7343,7 @@ class ReposClient:
         path: str,
         *,
         ref: Missing[str] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         Union[
             list[ContentDirectoryItems], ContentFile, ContentSymlink, ContentSubmodule
@@ -7398,7 +7399,7 @@ class ReposClient:
         path: str,
         *,
         ref: Missing[str] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         Union[
             list[ContentDirectoryItems], ContentFile, ContentSymlink, ContentSubmodule
@@ -7454,7 +7455,7 @@ class ReposClient:
         repo: str,
         path: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoContentsPathPutBodyType,
     ) -> Response[FileCommit, FileCommitType]: ...
 
@@ -7466,7 +7467,7 @@ class ReposClient:
         path: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         message: str,
         content: str,
         sha: Missing[str] = UNSET,
@@ -7481,7 +7482,7 @@ class ReposClient:
         repo: str,
         path: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoContentsPathPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[FileCommit, FileCommitType]:
@@ -7530,7 +7531,7 @@ class ReposClient:
         repo: str,
         path: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoContentsPathPutBodyType,
     ) -> Response[FileCommit, FileCommitType]: ...
 
@@ -7542,7 +7543,7 @@ class ReposClient:
         path: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         message: str,
         content: str,
         sha: Missing[str] = UNSET,
@@ -7557,7 +7558,7 @@ class ReposClient:
         repo: str,
         path: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoContentsPathPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[FileCommit, FileCommitType]:
@@ -7606,7 +7607,7 @@ class ReposClient:
         repo: str,
         path: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoContentsPathDeleteBodyType,
     ) -> Response[FileCommit, FileCommitType]: ...
 
@@ -7618,7 +7619,7 @@ class ReposClient:
         path: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         message: str,
         sha: str,
         branch: Missing[str] = UNSET,
@@ -7634,7 +7635,7 @@ class ReposClient:
         repo: str,
         path: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoContentsPathDeleteBodyType] = UNSET,
         **kwargs,
     ) -> Response[FileCommit, FileCommitType]:
@@ -7682,7 +7683,7 @@ class ReposClient:
         repo: str,
         path: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoContentsPathDeleteBodyType,
     ) -> Response[FileCommit, FileCommitType]: ...
 
@@ -7694,7 +7695,7 @@ class ReposClient:
         path: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         message: str,
         sha: str,
         branch: Missing[str] = UNSET,
@@ -7710,7 +7711,7 @@ class ReposClient:
         repo: str,
         path: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoContentsPathDeleteBodyType] = UNSET,
         **kwargs,
     ) -> Response[FileCommit, FileCommitType]:
@@ -7759,7 +7760,7 @@ class ReposClient:
         anon: Missing[str] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Contributor], list[ContributorType]]:
         """See also: https://docs.github.com/rest/repos/repos#list-repository-contributors"""
 
@@ -7795,7 +7796,7 @@ class ReposClient:
         anon: Missing[str] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Contributor], list[ContributorType]]:
         """See also: https://docs.github.com/rest/repos/repos#list-repository-contributors"""
 
@@ -7834,7 +7835,7 @@ class ReposClient:
         environment: Missing[Union[str, None]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Deployment], list[DeploymentType]]:
         """See also: https://docs.github.com/rest/deployments/deployments#list-deployments"""
 
@@ -7872,7 +7873,7 @@ class ReposClient:
         environment: Missing[Union[str, None]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Deployment], list[DeploymentType]]:
         """See also: https://docs.github.com/rest/deployments/deployments#list-deployments"""
 
@@ -7905,7 +7906,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoDeploymentsPostBodyType,
     ) -> Response[Deployment, DeploymentType]: ...
 
@@ -7916,7 +7917,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         ref: str,
         task: Missing[str] = UNSET,
         auto_merge: Missing[bool] = UNSET,
@@ -7935,7 +7936,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoDeploymentsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Deployment, DeploymentType]:
@@ -7977,7 +7978,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoDeploymentsPostBodyType,
     ) -> Response[Deployment, DeploymentType]: ...
 
@@ -7988,7 +7989,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         ref: str,
         task: Missing[str] = UNSET,
         auto_merge: Missing[bool] = UNSET,
@@ -8007,7 +8008,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoDeploymentsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Deployment, DeploymentType]:
@@ -8049,7 +8050,7 @@ class ReposClient:
         repo: str,
         deployment_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Deployment, DeploymentType]:
         """See also: https://docs.github.com/rest/deployments/deployments#get-a-deployment"""
 
@@ -8075,7 +8076,7 @@ class ReposClient:
         repo: str,
         deployment_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Deployment, DeploymentType]:
         """See also: https://docs.github.com/rest/deployments/deployments#get-a-deployment"""
 
@@ -8101,7 +8102,7 @@ class ReposClient:
         repo: str,
         deployment_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/deployments/deployments#delete-a-deployment"""
 
@@ -8127,7 +8128,7 @@ class ReposClient:
         repo: str,
         deployment_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/deployments/deployments#delete-a-deployment"""
 
@@ -8155,7 +8156,7 @@ class ReposClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[DeploymentStatus], list[DeploymentStatusType]]:
         """See also: https://docs.github.com/rest/deployments/statuses#list-deployment-statuses"""
 
@@ -8189,7 +8190,7 @@ class ReposClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[DeploymentStatus], list[DeploymentStatusType]]:
         """See also: https://docs.github.com/rest/deployments/statuses#list-deployment-statuses"""
 
@@ -8222,7 +8223,7 @@ class ReposClient:
         repo: str,
         deployment_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyType,
     ) -> Response[DeploymentStatus, DeploymentStatusType]: ...
 
@@ -8234,7 +8235,7 @@ class ReposClient:
         deployment_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         state: Literal[
             "error",
             "failure",
@@ -8258,7 +8259,7 @@ class ReposClient:
         repo: str,
         deployment_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyType
         ] = UNSET,
@@ -8305,7 +8306,7 @@ class ReposClient:
         repo: str,
         deployment_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyType,
     ) -> Response[DeploymentStatus, DeploymentStatusType]: ...
 
@@ -8317,7 +8318,7 @@ class ReposClient:
         deployment_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         state: Literal[
             "error",
             "failure",
@@ -8341,7 +8342,7 @@ class ReposClient:
         repo: str,
         deployment_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyType
         ] = UNSET,
@@ -8388,7 +8389,7 @@ class ReposClient:
         deployment_id: int,
         status_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[DeploymentStatus, DeploymentStatusType]:
         """See also: https://docs.github.com/rest/deployments/statuses#get-a-deployment-status"""
 
@@ -8415,7 +8416,7 @@ class ReposClient:
         deployment_id: int,
         status_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[DeploymentStatus, DeploymentStatusType]:
         """See also: https://docs.github.com/rest/deployments/statuses#get-a-deployment-status"""
 
@@ -8441,7 +8442,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoDispatchesPostBodyType,
     ) -> Response: ...
 
@@ -8452,7 +8453,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         event_type: str,
         client_payload: Missing[
             ReposOwnerRepoDispatchesPostBodyPropClientPayloadType
@@ -8464,7 +8465,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoDispatchesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -8506,7 +8507,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoDispatchesPostBodyType,
     ) -> Response: ...
 
@@ -8517,7 +8518,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         event_type: str,
         client_payload: Missing[
             ReposOwnerRepoDispatchesPostBodyPropClientPayloadType
@@ -8529,7 +8530,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoDispatchesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -8572,7 +8573,7 @@ class ReposClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoEnvironmentsGetResponse200,
         ReposOwnerRepoEnvironmentsGetResponse200Type,
@@ -8605,7 +8606,7 @@ class ReposClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoEnvironmentsGetResponse200,
         ReposOwnerRepoEnvironmentsGetResponse200Type,
@@ -8637,7 +8638,7 @@ class ReposClient:
         repo: str,
         environment_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Environment, EnvironmentType]:
         """See also: https://docs.github.com/rest/deployments/environments#get-an-environment"""
 
@@ -8660,7 +8661,7 @@ class ReposClient:
         repo: str,
         environment_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Environment, EnvironmentType]:
         """See also: https://docs.github.com/rest/deployments/environments#get-an-environment"""
 
@@ -8684,7 +8685,7 @@ class ReposClient:
         repo: str,
         environment_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             Union[ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyType, None]
         ] = UNSET,
@@ -8698,7 +8699,7 @@ class ReposClient:
         environment_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         wait_timer: Missing[int] = UNSET,
         prevent_self_review: Missing[bool] = UNSET,
         reviewers: Missing[
@@ -8720,7 +8721,7 @@ class ReposClient:
         repo: str,
         environment_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             Union[ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyType, None]
         ] = UNSET,
@@ -8769,7 +8770,7 @@ class ReposClient:
         repo: str,
         environment_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             Union[ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyType, None]
         ] = UNSET,
@@ -8783,7 +8784,7 @@ class ReposClient:
         environment_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         wait_timer: Missing[int] = UNSET,
         prevent_self_review: Missing[bool] = UNSET,
         reviewers: Missing[
@@ -8805,7 +8806,7 @@ class ReposClient:
         repo: str,
         environment_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             Union[ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyType, None]
         ] = UNSET,
@@ -8853,7 +8854,7 @@ class ReposClient:
         repo: str,
         environment_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/deployments/environments#delete-an-environment"""
 
@@ -8873,7 +8874,7 @@ class ReposClient:
         repo: str,
         environment_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/deployments/environments#delete-an-environment"""
 
@@ -8895,7 +8896,7 @@ class ReposClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200,
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200Type,
@@ -8931,7 +8932,7 @@ class ReposClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200,
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200Type,
@@ -8966,7 +8967,7 @@ class ReposClient:
         repo: str,
         environment_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: DeploymentBranchPolicyNamePatternWithTypeType,
     ) -> Response[DeploymentBranchPolicy, DeploymentBranchPolicyType]: ...
 
@@ -8978,7 +8979,7 @@ class ReposClient:
         environment_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         name: str,
         type: Missing[Literal["branch", "tag"]] = UNSET,
     ) -> Response[DeploymentBranchPolicy, DeploymentBranchPolicyType]: ...
@@ -8989,7 +8990,7 @@ class ReposClient:
         repo: str,
         environment_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[DeploymentBranchPolicyNamePatternWithTypeType] = UNSET,
         **kwargs,
     ) -> Response[DeploymentBranchPolicy, DeploymentBranchPolicyType]:
@@ -9029,7 +9030,7 @@ class ReposClient:
         repo: str,
         environment_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: DeploymentBranchPolicyNamePatternWithTypeType,
     ) -> Response[DeploymentBranchPolicy, DeploymentBranchPolicyType]: ...
 
@@ -9041,7 +9042,7 @@ class ReposClient:
         environment_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         name: str,
         type: Missing[Literal["branch", "tag"]] = UNSET,
     ) -> Response[DeploymentBranchPolicy, DeploymentBranchPolicyType]: ...
@@ -9052,7 +9053,7 @@ class ReposClient:
         repo: str,
         environment_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[DeploymentBranchPolicyNamePatternWithTypeType] = UNSET,
         **kwargs,
     ) -> Response[DeploymentBranchPolicy, DeploymentBranchPolicyType]:
@@ -9092,7 +9093,7 @@ class ReposClient:
         environment_name: str,
         branch_policy_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[DeploymentBranchPolicy, DeploymentBranchPolicyType]:
         """See also: https://docs.github.com/rest/deployments/branch-policies#get-a-deployment-branch-policy"""
 
@@ -9116,7 +9117,7 @@ class ReposClient:
         environment_name: str,
         branch_policy_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[DeploymentBranchPolicy, DeploymentBranchPolicyType]:
         """See also: https://docs.github.com/rest/deployments/branch-policies#get-a-deployment-branch-policy"""
 
@@ -9141,7 +9142,7 @@ class ReposClient:
         environment_name: str,
         branch_policy_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: DeploymentBranchPolicyNamePatternType,
     ) -> Response[DeploymentBranchPolicy, DeploymentBranchPolicyType]: ...
 
@@ -9154,7 +9155,7 @@ class ReposClient:
         branch_policy_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         name: str,
     ) -> Response[DeploymentBranchPolicy, DeploymentBranchPolicyType]: ...
 
@@ -9165,7 +9166,7 @@ class ReposClient:
         environment_name: str,
         branch_policy_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[DeploymentBranchPolicyNamePatternType] = UNSET,
         **kwargs,
     ) -> Response[DeploymentBranchPolicy, DeploymentBranchPolicyType]:
@@ -9202,7 +9203,7 @@ class ReposClient:
         environment_name: str,
         branch_policy_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: DeploymentBranchPolicyNamePatternType,
     ) -> Response[DeploymentBranchPolicy, DeploymentBranchPolicyType]: ...
 
@@ -9215,7 +9216,7 @@ class ReposClient:
         branch_policy_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         name: str,
     ) -> Response[DeploymentBranchPolicy, DeploymentBranchPolicyType]: ...
 
@@ -9226,7 +9227,7 @@ class ReposClient:
         environment_name: str,
         branch_policy_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[DeploymentBranchPolicyNamePatternType] = UNSET,
         **kwargs,
     ) -> Response[DeploymentBranchPolicy, DeploymentBranchPolicyType]:
@@ -9262,7 +9263,7 @@ class ReposClient:
         environment_name: str,
         branch_policy_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/deployments/branch-policies#delete-a-deployment-branch-policy"""
 
@@ -9283,7 +9284,7 @@ class ReposClient:
         environment_name: str,
         branch_policy_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/deployments/branch-policies#delete-a-deployment-branch-policy"""
 
@@ -9303,7 +9304,7 @@ class ReposClient:
         repo: str,
         owner: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200,
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200Type,
@@ -9331,7 +9332,7 @@ class ReposClient:
         repo: str,
         owner: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200,
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200Type,
@@ -9360,7 +9361,7 @@ class ReposClient:
         repo: str,
         owner: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBodyType,
     ) -> Response[DeploymentProtectionRule, DeploymentProtectionRuleType]: ...
 
@@ -9372,7 +9373,7 @@ class ReposClient:
         owner: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         integration_id: Missing[int] = UNSET,
     ) -> Response[DeploymentProtectionRule, DeploymentProtectionRuleType]: ...
 
@@ -9382,7 +9383,7 @@ class ReposClient:
         repo: str,
         owner: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBodyType
         ] = UNSET,
@@ -9426,7 +9427,7 @@ class ReposClient:
         repo: str,
         owner: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBodyType,
     ) -> Response[DeploymentProtectionRule, DeploymentProtectionRuleType]: ...
 
@@ -9438,7 +9439,7 @@ class ReposClient:
         owner: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         integration_id: Missing[int] = UNSET,
     ) -> Response[DeploymentProtectionRule, DeploymentProtectionRuleType]: ...
 
@@ -9448,7 +9449,7 @@ class ReposClient:
         repo: str,
         owner: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBodyType
         ] = UNSET,
@@ -9493,7 +9494,7 @@ class ReposClient:
         *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200,
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200Type,
@@ -9529,7 +9530,7 @@ class ReposClient:
         *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200,
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200Type,
@@ -9564,7 +9565,7 @@ class ReposClient:
         environment_name: str,
         protection_rule_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[DeploymentProtectionRule, DeploymentProtectionRuleType]:
         """See also: https://docs.github.com/rest/deployments/protection-rules#get-a-custom-deployment-protection-rule"""
 
@@ -9588,7 +9589,7 @@ class ReposClient:
         environment_name: str,
         protection_rule_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[DeploymentProtectionRule, DeploymentProtectionRuleType]:
         """See also: https://docs.github.com/rest/deployments/protection-rules#get-a-custom-deployment-protection-rule"""
 
@@ -9612,7 +9613,7 @@ class ReposClient:
         owner: str,
         protection_rule_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/deployments/protection-rules#disable-a-custom-protection-rule-for-an-environment"""
 
@@ -9633,7 +9634,7 @@ class ReposClient:
         owner: str,
         protection_rule_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/deployments/protection-rules#disable-a-custom-protection-rule-for-an-environment"""
 
@@ -9655,7 +9656,7 @@ class ReposClient:
         sort: Missing[Literal["newest", "oldest", "stargazers", "watchers"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
         """See also: https://docs.github.com/rest/repos/forks#list-forks"""
 
@@ -9690,7 +9691,7 @@ class ReposClient:
         sort: Missing[Literal["newest", "oldest", "stargazers", "watchers"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
         """See also: https://docs.github.com/rest/repos/forks#list-forks"""
 
@@ -9723,7 +9724,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[Union[ReposOwnerRepoForksPostBodyType, None]] = UNSET,
     ) -> Response[FullRepository, FullRepositoryType]: ...
 
@@ -9734,7 +9735,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         organization: Missing[str] = UNSET,
         name: Missing[str] = UNSET,
         default_branch_only: Missing[bool] = UNSET,
@@ -9745,7 +9746,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[Union[ReposOwnerRepoForksPostBodyType, None]] = UNSET,
         **kwargs,
     ) -> Response[FullRepository, FullRepositoryType]:
@@ -9793,7 +9794,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[Union[ReposOwnerRepoForksPostBodyType, None]] = UNSET,
     ) -> Response[FullRepository, FullRepositoryType]: ...
 
@@ -9804,7 +9805,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         organization: Missing[str] = UNSET,
         name: Missing[str] = UNSET,
         default_branch_only: Missing[bool] = UNSET,
@@ -9815,7 +9816,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[Union[ReposOwnerRepoForksPostBodyType, None]] = UNSET,
         **kwargs,
     ) -> Response[FullRepository, FullRepositoryType]:
@@ -9864,7 +9865,7 @@ class ReposClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Hook], list[HookType]]:
         """See also: https://docs.github.com/rest/repos/webhooks#list-repository-webhooks"""
 
@@ -9897,7 +9898,7 @@ class ReposClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Hook], list[HookType]]:
         """See also: https://docs.github.com/rest/repos/webhooks#list-repository-webhooks"""
 
@@ -9929,7 +9930,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[Union[ReposOwnerRepoHooksPostBodyType, None]] = UNSET,
     ) -> Response[Hook, HookType]: ...
 
@@ -9940,7 +9941,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         name: Missing[str] = UNSET,
         config: Missing[ReposOwnerRepoHooksPostBodyPropConfigType] = UNSET,
         events: Missing[list[str]] = UNSET,
@@ -9952,7 +9953,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[Union[ReposOwnerRepoHooksPostBodyType, None]] = UNSET,
         **kwargs,
     ) -> Response[Hook, HookType]:
@@ -9999,7 +10000,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[Union[ReposOwnerRepoHooksPostBodyType, None]] = UNSET,
     ) -> Response[Hook, HookType]: ...
 
@@ -10010,7 +10011,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         name: Missing[str] = UNSET,
         config: Missing[ReposOwnerRepoHooksPostBodyPropConfigType] = UNSET,
         events: Missing[list[str]] = UNSET,
@@ -10022,7 +10023,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[Union[ReposOwnerRepoHooksPostBodyType, None]] = UNSET,
         **kwargs,
     ) -> Response[Hook, HookType]:
@@ -10069,7 +10070,7 @@ class ReposClient:
         repo: str,
         hook_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Hook, HookType]:
         """See also: https://docs.github.com/rest/repos/webhooks#get-a-repository-webhook"""
 
@@ -10095,7 +10096,7 @@ class ReposClient:
         repo: str,
         hook_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Hook, HookType]:
         """See also: https://docs.github.com/rest/repos/webhooks#get-a-repository-webhook"""
 
@@ -10121,7 +10122,7 @@ class ReposClient:
         repo: str,
         hook_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/repos/webhooks#delete-a-repository-webhook"""
 
@@ -10146,7 +10147,7 @@ class ReposClient:
         repo: str,
         hook_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/repos/webhooks#delete-a-repository-webhook"""
 
@@ -10172,7 +10173,7 @@ class ReposClient:
         repo: str,
         hook_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoHooksHookIdPatchBodyType,
     ) -> Response[Hook, HookType]: ...
 
@@ -10184,7 +10185,7 @@ class ReposClient:
         hook_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         config: Missing[WebhookConfigType] = UNSET,
         events: Missing[list[str]] = UNSET,
         add_events: Missing[list[str]] = UNSET,
@@ -10198,7 +10199,7 @@ class ReposClient:
         repo: str,
         hook_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoHooksHookIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Hook, HookType]:
@@ -10243,7 +10244,7 @@ class ReposClient:
         repo: str,
         hook_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoHooksHookIdPatchBodyType,
     ) -> Response[Hook, HookType]: ...
 
@@ -10255,7 +10256,7 @@ class ReposClient:
         hook_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         config: Missing[WebhookConfigType] = UNSET,
         events: Missing[list[str]] = UNSET,
         add_events: Missing[list[str]] = UNSET,
@@ -10269,7 +10270,7 @@ class ReposClient:
         repo: str,
         hook_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoHooksHookIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Hook, HookType]:
@@ -10313,7 +10314,7 @@ class ReposClient:
         repo: str,
         hook_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[WebhookConfig, WebhookConfigType]:
         """See also: https://docs.github.com/rest/repos/webhooks#get-a-webhook-configuration-for-a-repository"""
 
@@ -10336,7 +10337,7 @@ class ReposClient:
         repo: str,
         hook_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[WebhookConfig, WebhookConfigType]:
         """See also: https://docs.github.com/rest/repos/webhooks#get-a-webhook-configuration-for-a-repository"""
 
@@ -10360,7 +10361,7 @@ class ReposClient:
         repo: str,
         hook_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoHooksHookIdConfigPatchBodyType] = UNSET,
     ) -> Response[WebhookConfig, WebhookConfigType]: ...
 
@@ -10372,7 +10373,7 @@ class ReposClient:
         hook_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         url: Missing[str] = UNSET,
         content_type: Missing[str] = UNSET,
         secret: Missing[str] = UNSET,
@@ -10385,7 +10386,7 @@ class ReposClient:
         repo: str,
         hook_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoHooksHookIdConfigPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[WebhookConfig, WebhookConfigType]:
@@ -10421,7 +10422,7 @@ class ReposClient:
         repo: str,
         hook_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoHooksHookIdConfigPatchBodyType] = UNSET,
     ) -> Response[WebhookConfig, WebhookConfigType]: ...
 
@@ -10433,7 +10434,7 @@ class ReposClient:
         hook_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         url: Missing[str] = UNSET,
         content_type: Missing[str] = UNSET,
         secret: Missing[str] = UNSET,
@@ -10446,7 +10447,7 @@ class ReposClient:
         repo: str,
         hook_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoHooksHookIdConfigPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[WebhookConfig, WebhookConfigType]:
@@ -10483,7 +10484,7 @@ class ReposClient:
         *,
         per_page: Missing[int] = UNSET,
         cursor: Missing[str] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[HookDeliveryItem], list[HookDeliveryItemType]]:
         """See also: https://docs.github.com/rest/repos/webhooks#list-deliveries-for-a-repository-webhook"""
 
@@ -10518,7 +10519,7 @@ class ReposClient:
         *,
         per_page: Missing[int] = UNSET,
         cursor: Missing[str] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[HookDeliveryItem], list[HookDeliveryItemType]]:
         """See also: https://docs.github.com/rest/repos/webhooks#list-deliveries-for-a-repository-webhook"""
 
@@ -10552,7 +10553,7 @@ class ReposClient:
         hook_id: int,
         delivery_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[HookDelivery, HookDeliveryType]:
         """See also: https://docs.github.com/rest/repos/webhooks#get-a-delivery-for-a-repository-webhook"""
 
@@ -10580,7 +10581,7 @@ class ReposClient:
         hook_id: int,
         delivery_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[HookDelivery, HookDeliveryType]:
         """See also: https://docs.github.com/rest/repos/webhooks#get-a-delivery-for-a-repository-webhook"""
 
@@ -10608,7 +10609,7 @@ class ReposClient:
         hook_id: int,
         delivery_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
@@ -10643,7 +10644,7 @@ class ReposClient:
         hook_id: int,
         delivery_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
@@ -10677,7 +10678,7 @@ class ReposClient:
         repo: str,
         hook_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/repos/webhooks#ping-a-repository-webhook"""
 
@@ -10702,7 +10703,7 @@ class ReposClient:
         repo: str,
         hook_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/repos/webhooks#ping-a-repository-webhook"""
 
@@ -10727,7 +10728,7 @@ class ReposClient:
         repo: str,
         hook_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/repos/webhooks#test-the-push-repository-webhook"""
 
@@ -10752,7 +10753,7 @@ class ReposClient:
         repo: str,
         hook_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/repos/webhooks#test-the-push-repository-webhook"""
 
@@ -10778,7 +10779,7 @@ class ReposClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[RepositoryInvitation], list[RepositoryInvitationType]]:
         """See also: https://docs.github.com/rest/collaborators/invitations#list-repository-invitations"""
 
@@ -10808,7 +10809,7 @@ class ReposClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[RepositoryInvitation], list[RepositoryInvitationType]]:
         """See also: https://docs.github.com/rest/collaborators/invitations#list-repository-invitations"""
 
@@ -10837,7 +10838,7 @@ class ReposClient:
         repo: str,
         invitation_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/collaborators/invitations#delete-a-repository-invitation"""
 
@@ -10857,7 +10858,7 @@ class ReposClient:
         repo: str,
         invitation_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/collaborators/invitations#delete-a-repository-invitation"""
 
@@ -10878,7 +10879,7 @@ class ReposClient:
         repo: str,
         invitation_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoInvitationsInvitationIdPatchBodyType] = UNSET,
     ) -> Response[RepositoryInvitation, RepositoryInvitationType]: ...
 
@@ -10890,7 +10891,7 @@ class ReposClient:
         invitation_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         permissions: Missing[
             Literal["read", "write", "maintain", "triage", "admin"]
         ] = UNSET,
@@ -10902,7 +10903,7 @@ class ReposClient:
         repo: str,
         invitation_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoInvitationsInvitationIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[RepositoryInvitation, RepositoryInvitationType]:
@@ -10943,7 +10944,7 @@ class ReposClient:
         repo: str,
         invitation_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoInvitationsInvitationIdPatchBodyType] = UNSET,
     ) -> Response[RepositoryInvitation, RepositoryInvitationType]: ...
 
@@ -10955,7 +10956,7 @@ class ReposClient:
         invitation_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         permissions: Missing[
             Literal["read", "write", "maintain", "triage", "admin"]
         ] = UNSET,
@@ -10967,7 +10968,7 @@ class ReposClient:
         repo: str,
         invitation_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoInvitationsInvitationIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[RepositoryInvitation, RepositoryInvitationType]:
@@ -11008,7 +11009,7 @@ class ReposClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[DeployKey], list[DeployKeyType]]:
         """See also: https://docs.github.com/rest/deploy-keys/deploy-keys#list-deploy-keys"""
 
@@ -11038,7 +11039,7 @@ class ReposClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[DeployKey], list[DeployKeyType]]:
         """See also: https://docs.github.com/rest/deploy-keys/deploy-keys#list-deploy-keys"""
 
@@ -11067,7 +11068,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoKeysPostBodyType,
     ) -> Response[DeployKey, DeployKeyType]: ...
 
@@ -11078,7 +11079,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         title: Missing[str] = UNSET,
         key: str,
         read_only: Missing[bool] = UNSET,
@@ -11089,7 +11090,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoKeysPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[DeployKey, DeployKeyType]:
@@ -11127,7 +11128,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoKeysPostBodyType,
     ) -> Response[DeployKey, DeployKeyType]: ...
 
@@ -11138,7 +11139,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         title: Missing[str] = UNSET,
         key: str,
         read_only: Missing[bool] = UNSET,
@@ -11149,7 +11150,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoKeysPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[DeployKey, DeployKeyType]:
@@ -11187,7 +11188,7 @@ class ReposClient:
         repo: str,
         key_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[DeployKey, DeployKeyType]:
         """See also: https://docs.github.com/rest/deploy-keys/deploy-keys#get-a-deploy-key"""
 
@@ -11213,7 +11214,7 @@ class ReposClient:
         repo: str,
         key_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[DeployKey, DeployKeyType]:
         """See also: https://docs.github.com/rest/deploy-keys/deploy-keys#get-a-deploy-key"""
 
@@ -11239,7 +11240,7 @@ class ReposClient:
         repo: str,
         key_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/deploy-keys/deploy-keys#delete-a-deploy-key"""
 
@@ -11259,7 +11260,7 @@ class ReposClient:
         repo: str,
         key_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/deploy-keys/deploy-keys#delete-a-deploy-key"""
 
@@ -11278,7 +11279,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Language, LanguageType]:
         """See also: https://docs.github.com/rest/repos/repos#list-repository-languages"""
 
@@ -11300,7 +11301,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Language, LanguageType]:
         """See also: https://docs.github.com/rest/repos/repos#list-repository-languages"""
 
@@ -11323,7 +11324,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoMergeUpstreamPostBodyType,
     ) -> Response[MergedUpstream, MergedUpstreamType]: ...
 
@@ -11334,7 +11335,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         branch: str,
     ) -> Response[MergedUpstream, MergedUpstreamType]: ...
 
@@ -11343,7 +11344,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoMergeUpstreamPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[MergedUpstream, MergedUpstreamType]:
@@ -11379,7 +11380,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoMergeUpstreamPostBodyType,
     ) -> Response[MergedUpstream, MergedUpstreamType]: ...
 
@@ -11390,7 +11391,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         branch: str,
     ) -> Response[MergedUpstream, MergedUpstreamType]: ...
 
@@ -11399,7 +11400,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoMergeUpstreamPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[MergedUpstream, MergedUpstreamType]:
@@ -11435,7 +11436,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoMergesPostBodyType,
     ) -> Response[Commit, CommitType]: ...
 
@@ -11446,7 +11447,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         base: str,
         head: str,
         commit_message: Missing[str] = UNSET,
@@ -11457,7 +11458,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoMergesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Commit, CommitType]:
@@ -11501,7 +11502,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoMergesPostBodyType,
     ) -> Response[Commit, CommitType]: ...
 
@@ -11512,7 +11513,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         base: str,
         head: str,
         commit_message: Missing[str] = UNSET,
@@ -11523,7 +11524,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoMergesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Commit, CommitType]:
@@ -11566,7 +11567,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Page, PageType]:
         """See also: https://docs.github.com/rest/pages/pages#get-a-apiname-pages-site"""
 
@@ -11591,7 +11592,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Page, PageType]:
         """See also: https://docs.github.com/rest/pages/pages#get-a-apiname-pages-site"""
 
@@ -11617,7 +11618,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Union[
             ReposOwnerRepoPagesPutBodyAnyof0Type,
             ReposOwnerRepoPagesPutBodyAnyof1Type,
@@ -11634,7 +11635,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         cname: Missing[Union[str, None]] = UNSET,
         https_enforced: Missing[bool] = UNSET,
         build_type: Literal["legacy", "workflow"],
@@ -11653,7 +11654,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         cname: Missing[Union[str, None]] = UNSET,
         https_enforced: Missing[bool] = UNSET,
         build_type: Missing[Literal["legacy", "workflow"]] = UNSET,
@@ -11670,7 +11671,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         cname: Union[str, None],
         https_enforced: Missing[bool] = UNSET,
         build_type: Missing[Literal["legacy", "workflow"]] = UNSET,
@@ -11689,7 +11690,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         cname: Missing[Union[str, None]] = UNSET,
         https_enforced: Missing[bool] = UNSET,
         build_type: Missing[Literal["legacy", "workflow"]] = UNSET,
@@ -11708,7 +11709,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         cname: Missing[Union[str, None]] = UNSET,
         https_enforced: bool,
         build_type: Missing[Literal["legacy", "workflow"]] = UNSET,
@@ -11725,7 +11726,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoPagesPutBodyAnyof0Type,
@@ -11791,7 +11792,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Union[
             ReposOwnerRepoPagesPutBodyAnyof0Type,
             ReposOwnerRepoPagesPutBodyAnyof1Type,
@@ -11808,7 +11809,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         cname: Missing[Union[str, None]] = UNSET,
         https_enforced: Missing[bool] = UNSET,
         build_type: Literal["legacy", "workflow"],
@@ -11827,7 +11828,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         cname: Missing[Union[str, None]] = UNSET,
         https_enforced: Missing[bool] = UNSET,
         build_type: Missing[Literal["legacy", "workflow"]] = UNSET,
@@ -11844,7 +11845,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         cname: Union[str, None],
         https_enforced: Missing[bool] = UNSET,
         build_type: Missing[Literal["legacy", "workflow"]] = UNSET,
@@ -11863,7 +11864,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         cname: Missing[Union[str, None]] = UNSET,
         https_enforced: Missing[bool] = UNSET,
         build_type: Missing[Literal["legacy", "workflow"]] = UNSET,
@@ -11882,7 +11883,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         cname: Missing[Union[str, None]] = UNSET,
         https_enforced: bool,
         build_type: Missing[Literal["legacy", "workflow"]] = UNSET,
@@ -11899,7 +11900,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoPagesPutBodyAnyof0Type,
@@ -11965,7 +11966,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Union[
             ReposOwnerRepoPagesPostBodyAnyof0Type,
             None,
@@ -11981,7 +11982,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         build_type: Missing[Literal["legacy", "workflow"]] = UNSET,
         source: ReposOwnerRepoPagesPostBodyPropSourceType,
     ) -> Response[Page, PageType]: ...
@@ -11993,7 +11994,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         build_type: Literal["legacy", "workflow"],
         source: Missing[ReposOwnerRepoPagesPostBodyPropSourceType] = UNSET,
     ) -> Response[Page, PageType]: ...
@@ -12003,7 +12004,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoPagesPostBodyAnyof0Type,
@@ -12065,7 +12066,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Union[
             ReposOwnerRepoPagesPostBodyAnyof0Type,
             None,
@@ -12081,7 +12082,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         build_type: Missing[Literal["legacy", "workflow"]] = UNSET,
         source: ReposOwnerRepoPagesPostBodyPropSourceType,
     ) -> Response[Page, PageType]: ...
@@ -12093,7 +12094,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         build_type: Literal["legacy", "workflow"],
         source: Missing[ReposOwnerRepoPagesPostBodyPropSourceType] = UNSET,
     ) -> Response[Page, PageType]: ...
@@ -12103,7 +12104,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoPagesPostBodyAnyof0Type,
@@ -12164,7 +12165,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/pages/pages#delete-a-apiname-pages-site"""
 
@@ -12190,7 +12191,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/pages/pages#delete-a-apiname-pages-site"""
 
@@ -12218,7 +12219,7 @@ class ReposClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[PageBuild], list[PageBuildType]]:
         """See also: https://docs.github.com/rest/pages/pages#list-apiname-pages-builds"""
 
@@ -12248,7 +12249,7 @@ class ReposClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[PageBuild], list[PageBuildType]]:
         """See also: https://docs.github.com/rest/pages/pages#list-apiname-pages-builds"""
 
@@ -12276,7 +12277,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[PageBuildStatus, PageBuildStatusType]:
         """See also: https://docs.github.com/rest/pages/pages#request-a-apiname-pages-build"""
 
@@ -12298,7 +12299,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[PageBuildStatus, PageBuildStatusType]:
         """See also: https://docs.github.com/rest/pages/pages#request-a-apiname-pages-build"""
 
@@ -12320,7 +12321,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[PageBuild, PageBuildType]:
         """See also: https://docs.github.com/rest/pages/pages#get-latest-pages-build"""
 
@@ -12342,7 +12343,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[PageBuild, PageBuildType]:
         """See also: https://docs.github.com/rest/pages/pages#get-latest-pages-build"""
 
@@ -12365,7 +12366,7 @@ class ReposClient:
         repo: str,
         build_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[PageBuild, PageBuildType]:
         """See also: https://docs.github.com/rest/pages/pages#get-apiname-pages-build"""
 
@@ -12388,7 +12389,7 @@ class ReposClient:
         repo: str,
         build_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[PageBuild, PageBuildType]:
         """See also: https://docs.github.com/rest/pages/pages#get-apiname-pages-build"""
 
@@ -12411,7 +12412,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoPagesDeploymentsPostBodyType,
     ) -> Response[PageDeployment, PageDeploymentType]: ...
 
@@ -12422,7 +12423,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         artifact_id: Missing[float] = UNSET,
         artifact_url: Missing[str] = UNSET,
         environment: Missing[str] = UNSET,
@@ -12435,7 +12436,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoPagesDeploymentsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[PageDeployment, PageDeploymentType]:
@@ -12480,7 +12481,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoPagesDeploymentsPostBodyType,
     ) -> Response[PageDeployment, PageDeploymentType]: ...
 
@@ -12491,7 +12492,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         artifact_id: Missing[float] = UNSET,
         artifact_url: Missing[str] = UNSET,
         environment: Missing[str] = UNSET,
@@ -12504,7 +12505,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoPagesDeploymentsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[PageDeployment, PageDeploymentType]:
@@ -12549,7 +12550,7 @@ class ReposClient:
         repo: str,
         pages_deployment_id: Union[int, str],
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[PagesDeploymentStatus, PagesDeploymentStatusType]:
         """See also: https://docs.github.com/rest/pages/pages#get-the-status-of-a-github-pages-deployment"""
 
@@ -12575,7 +12576,7 @@ class ReposClient:
         repo: str,
         pages_deployment_id: Union[int, str],
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[PagesDeploymentStatus, PagesDeploymentStatusType]:
         """See also: https://docs.github.com/rest/pages/pages#get-the-status-of-a-github-pages-deployment"""
 
@@ -12601,7 +12602,7 @@ class ReposClient:
         repo: str,
         pages_deployment_id: Union[int, str],
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/pages/pages#cancel-a-github-pages-deployment"""
 
@@ -12626,7 +12627,7 @@ class ReposClient:
         repo: str,
         pages_deployment_id: Union[int, str],
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/pages/pages#cancel-a-github-pages-deployment"""
 
@@ -12650,7 +12651,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[PagesHealthCheck, PagesHealthCheckType]:
         """See also: https://docs.github.com/rest/pages/pages#get-a-dns-health-check-for-github-pages"""
 
@@ -12675,7 +12676,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[PagesHealthCheck, PagesHealthCheckType]:
         """See also: https://docs.github.com/rest/pages/pages#get-a-dns-health-check-for-github-pages"""
 
@@ -12700,7 +12701,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200,
         ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200Type,
@@ -12731,7 +12732,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200,
         ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200Type,
@@ -12762,7 +12763,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/repos/repos#enable-private-vulnerability-reporting-for-a-repository"""
 
@@ -12786,7 +12787,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/repos/repos#enable-private-vulnerability-reporting-for-a-repository"""
 
@@ -12810,7 +12811,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/repos/repos#disable-private-vulnerability-reporting-for-a-repository"""
 
@@ -12834,7 +12835,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/repos/repos#disable-private-vulnerability-reporting-for-a-repository"""
 
@@ -12858,7 +12859,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[CustomPropertyValue], list[CustomPropertyValueType]]:
         """See also: https://docs.github.com/rest/repos/custom-properties#get-all-custom-property-values-for-a-repository"""
 
@@ -12884,7 +12885,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[CustomPropertyValue], list[CustomPropertyValueType]]:
         """See also: https://docs.github.com/rest/repos/custom-properties#get-all-custom-property-values-for-a-repository"""
 
@@ -12911,7 +12912,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoPropertiesValuesPatchBodyType,
     ) -> Response: ...
 
@@ -12922,7 +12923,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         properties: list[CustomPropertyValueType],
     ) -> Response: ...
 
@@ -12931,7 +12932,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoPropertiesValuesPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -12974,7 +12975,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoPropertiesValuesPatchBodyType,
     ) -> Response: ...
 
@@ -12985,7 +12986,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         properties: list[CustomPropertyValueType],
     ) -> Response: ...
 
@@ -12994,7 +12995,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoPropertiesValuesPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -13037,7 +13038,7 @@ class ReposClient:
         repo: str,
         *,
         ref: Missing[str] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ContentFile, ContentFileType]:
         """See also: https://docs.github.com/rest/repos/contents#get-a-repository-readme"""
 
@@ -13069,7 +13070,7 @@ class ReposClient:
         repo: str,
         *,
         ref: Missing[str] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ContentFile, ContentFileType]:
         """See also: https://docs.github.com/rest/repos/contents#get-a-repository-readme"""
 
@@ -13102,7 +13103,7 @@ class ReposClient:
         dir_: str,
         *,
         ref: Missing[str] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ContentFile, ContentFileType]:
         """See also: https://docs.github.com/rest/repos/contents#get-a-repository-readme-for-a-directory"""
 
@@ -13135,7 +13136,7 @@ class ReposClient:
         dir_: str,
         *,
         ref: Missing[str] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ContentFile, ContentFileType]:
         """See also: https://docs.github.com/rest/repos/contents#get-a-repository-readme-for-a-directory"""
 
@@ -13168,7 +13169,7 @@ class ReposClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Release], list[ReleaseType]]:
         """See also: https://docs.github.com/rest/releases/releases#list-releases"""
 
@@ -13201,7 +13202,7 @@ class ReposClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Release], list[ReleaseType]]:
         """See also: https://docs.github.com/rest/releases/releases#list-releases"""
 
@@ -13233,7 +13234,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoReleasesPostBodyType,
     ) -> Response[Release, ReleaseType]: ...
 
@@ -13244,7 +13245,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         tag_name: str,
         target_commitish: Missing[str] = UNSET,
         name: Missing[str] = UNSET,
@@ -13261,7 +13262,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoReleasesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Release, ReleaseType]:
@@ -13305,7 +13306,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoReleasesPostBodyType,
     ) -> Response[Release, ReleaseType]: ...
 
@@ -13316,7 +13317,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         tag_name: str,
         target_commitish: Missing[str] = UNSET,
         name: Missing[str] = UNSET,
@@ -13333,7 +13334,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoReleasesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Release, ReleaseType]:
@@ -13377,7 +13378,7 @@ class ReposClient:
         repo: str,
         asset_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ReleaseAsset, ReleaseAssetType]:
         """See also: https://docs.github.com/rest/releases/assets#get-a-release-asset"""
 
@@ -13403,7 +13404,7 @@ class ReposClient:
         repo: str,
         asset_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ReleaseAsset, ReleaseAssetType]:
         """See also: https://docs.github.com/rest/releases/assets#get-a-release-asset"""
 
@@ -13429,7 +13430,7 @@ class ReposClient:
         repo: str,
         asset_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/releases/assets#delete-a-release-asset"""
 
@@ -13449,7 +13450,7 @@ class ReposClient:
         repo: str,
         asset_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/releases/assets#delete-a-release-asset"""
 
@@ -13470,7 +13471,7 @@ class ReposClient:
         repo: str,
         asset_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoReleasesAssetsAssetIdPatchBodyType] = UNSET,
     ) -> Response[ReleaseAsset, ReleaseAssetType]: ...
 
@@ -13482,7 +13483,7 @@ class ReposClient:
         asset_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         name: Missing[str] = UNSET,
         label: Missing[str] = UNSET,
         state: Missing[str] = UNSET,
@@ -13494,7 +13495,7 @@ class ReposClient:
         repo: str,
         asset_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoReleasesAssetsAssetIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[ReleaseAsset, ReleaseAssetType]:
@@ -13532,7 +13533,7 @@ class ReposClient:
         repo: str,
         asset_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoReleasesAssetsAssetIdPatchBodyType] = UNSET,
     ) -> Response[ReleaseAsset, ReleaseAssetType]: ...
 
@@ -13544,7 +13545,7 @@ class ReposClient:
         asset_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         name: Missing[str] = UNSET,
         label: Missing[str] = UNSET,
         state: Missing[str] = UNSET,
@@ -13556,7 +13557,7 @@ class ReposClient:
         repo: str,
         asset_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoReleasesAssetsAssetIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[ReleaseAsset, ReleaseAssetType]:
@@ -13593,7 +13594,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoReleasesGenerateNotesPostBodyType,
     ) -> Response[ReleaseNotesContent, ReleaseNotesContentType]: ...
 
@@ -13604,7 +13605,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         tag_name: str,
         target_commitish: Missing[str] = UNSET,
         previous_tag_name: Missing[str] = UNSET,
@@ -13616,7 +13617,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoReleasesGenerateNotesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[ReleaseNotesContent, ReleaseNotesContentType]:
@@ -13660,7 +13661,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoReleasesGenerateNotesPostBodyType,
     ) -> Response[ReleaseNotesContent, ReleaseNotesContentType]: ...
 
@@ -13671,7 +13672,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         tag_name: str,
         target_commitish: Missing[str] = UNSET,
         previous_tag_name: Missing[str] = UNSET,
@@ -13683,7 +13684,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoReleasesGenerateNotesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[ReleaseNotesContent, ReleaseNotesContentType]:
@@ -13726,7 +13727,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Release, ReleaseType]:
         """See also: https://docs.github.com/rest/releases/releases#get-the-latest-release"""
 
@@ -13748,7 +13749,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Release, ReleaseType]:
         """See also: https://docs.github.com/rest/releases/releases#get-the-latest-release"""
 
@@ -13771,7 +13772,7 @@ class ReposClient:
         repo: str,
         tag: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Release, ReleaseType]:
         """See also: https://docs.github.com/rest/releases/releases#get-a-release-by-tag-name"""
 
@@ -13797,7 +13798,7 @@ class ReposClient:
         repo: str,
         tag: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Release, ReleaseType]:
         """See also: https://docs.github.com/rest/releases/releases#get-a-release-by-tag-name"""
 
@@ -13823,7 +13824,7 @@ class ReposClient:
         repo: str,
         release_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Release, ReleaseType]:
         """See also: https://docs.github.com/rest/releases/releases#get-a-release"""
 
@@ -13847,7 +13848,7 @@ class ReposClient:
         repo: str,
         release_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Release, ReleaseType]:
         """See also: https://docs.github.com/rest/releases/releases#get-a-release"""
 
@@ -13871,7 +13872,7 @@ class ReposClient:
         repo: str,
         release_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/releases/releases#delete-a-release"""
 
@@ -13891,7 +13892,7 @@ class ReposClient:
         repo: str,
         release_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/releases/releases#delete-a-release"""
 
@@ -13912,7 +13913,7 @@ class ReposClient:
         repo: str,
         release_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoReleasesReleaseIdPatchBodyType] = UNSET,
     ) -> Response[Release, ReleaseType]: ...
 
@@ -13924,7 +13925,7 @@ class ReposClient:
         release_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         tag_name: Missing[str] = UNSET,
         target_commitish: Missing[str] = UNSET,
         name: Missing[str] = UNSET,
@@ -13941,7 +13942,7 @@ class ReposClient:
         repo: str,
         release_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoReleasesReleaseIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Release, ReleaseType]:
@@ -13984,7 +13985,7 @@ class ReposClient:
         repo: str,
         release_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoReleasesReleaseIdPatchBodyType] = UNSET,
     ) -> Response[Release, ReleaseType]: ...
 
@@ -13996,7 +13997,7 @@ class ReposClient:
         release_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         tag_name: Missing[str] = UNSET,
         target_commitish: Missing[str] = UNSET,
         name: Missing[str] = UNSET,
@@ -14013,7 +14014,7 @@ class ReposClient:
         repo: str,
         release_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoReleasesReleaseIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Release, ReleaseType]:
@@ -14057,7 +14058,7 @@ class ReposClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[ReleaseAsset], list[ReleaseAssetType]]:
         """See also: https://docs.github.com/rest/releases/assets#list-release-assets"""
 
@@ -14088,7 +14089,7 @@ class ReposClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[ReleaseAsset], list[ReleaseAssetType]]:
         """See also: https://docs.github.com/rest/releases/assets#list-release-assets"""
 
@@ -14119,7 +14120,7 @@ class ReposClient:
         *,
         name: str,
         label: Missing[str] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: FileTypes,
     ) -> Response[ReleaseAsset, ReleaseAssetType]:
         """See also: https://docs.github.com/rest/releases/assets#upload-a-release-asset"""
@@ -14159,7 +14160,7 @@ class ReposClient:
         *,
         name: str,
         label: Missing[str] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: FileTypes,
     ) -> Response[ReleaseAsset, ReleaseAssetType]:
         """See also: https://docs.github.com/rest/releases/assets#upload-a-release-asset"""
@@ -14199,7 +14200,7 @@ class ReposClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         list[
             Union[
@@ -14313,7 +14314,7 @@ class ReposClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         list[
             Union[
@@ -14428,7 +14429,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         includes_parents: Missing[bool] = UNSET,
         targets: Missing[str] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[RepositoryRuleset], list[RepositoryRulesetType]]:
         """See also: https://docs.github.com/rest/repos/rules#get-all-repository-rulesets"""
 
@@ -14466,7 +14467,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         includes_parents: Missing[bool] = UNSET,
         targets: Missing[str] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[RepositoryRuleset], list[RepositoryRulesetType]]:
         """See also: https://docs.github.com/rest/repos/rules#get-all-repository-rulesets"""
 
@@ -14501,7 +14502,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoRulesetsPostBodyType,
     ) -> Response[RepositoryRuleset, RepositoryRulesetType]: ...
 
@@ -14512,7 +14513,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         name: str,
         target: Missing[Literal["branch", "tag", "push"]] = UNSET,
         enforcement: Literal["disabled", "active", "evaluate"],
@@ -14552,7 +14553,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoRulesetsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[RepositoryRuleset, RepositoryRulesetType]:
@@ -14595,7 +14596,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoRulesetsPostBodyType,
     ) -> Response[RepositoryRuleset, RepositoryRulesetType]: ...
 
@@ -14606,7 +14607,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         name: str,
         target: Missing[Literal["branch", "tag", "push"]] = UNSET,
         enforcement: Literal["disabled", "active", "evaluate"],
@@ -14646,7 +14647,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoRulesetsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[RepositoryRuleset, RepositoryRulesetType]:
@@ -14694,7 +14695,7 @@ class ReposClient:
         rule_suite_result: Missing[Literal["pass", "fail", "bypass", "all"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[RuleSuitesItems], list[RuleSuitesItemsType]]:
         """See also: https://docs.github.com/rest/repos/rule-suites#list-repository-rule-suites"""
 
@@ -14736,7 +14737,7 @@ class ReposClient:
         rule_suite_result: Missing[Literal["pass", "fail", "bypass", "all"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[RuleSuitesItems], list[RuleSuitesItemsType]]:
         """See also: https://docs.github.com/rest/repos/rule-suites#list-repository-rule-suites"""
 
@@ -14773,7 +14774,7 @@ class ReposClient:
         repo: str,
         rule_suite_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[RuleSuite, RuleSuiteType]:
         """See also: https://docs.github.com/rest/repos/rule-suites#get-a-repository-rule-suite"""
 
@@ -14800,7 +14801,7 @@ class ReposClient:
         repo: str,
         rule_suite_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[RuleSuite, RuleSuiteType]:
         """See also: https://docs.github.com/rest/repos/rule-suites#get-a-repository-rule-suite"""
 
@@ -14828,7 +14829,7 @@ class ReposClient:
         ruleset_id: int,
         *,
         includes_parents: Missing[bool] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[RepositoryRuleset, RepositoryRulesetType]:
         """See also: https://docs.github.com/rest/repos/rules#get-a-repository-ruleset"""
 
@@ -14861,7 +14862,7 @@ class ReposClient:
         ruleset_id: int,
         *,
         includes_parents: Missing[bool] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[RepositoryRuleset, RepositoryRulesetType]:
         """See also: https://docs.github.com/rest/repos/rules#get-a-repository-ruleset"""
 
@@ -14894,7 +14895,7 @@ class ReposClient:
         repo: str,
         ruleset_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoRulesetsRulesetIdPutBodyType] = UNSET,
     ) -> Response[RepositoryRuleset, RepositoryRulesetType]: ...
 
@@ -14906,7 +14907,7 @@ class ReposClient:
         ruleset_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         name: Missing[str] = UNSET,
         target: Missing[Literal["branch", "tag", "push"]] = UNSET,
         enforcement: Missing[Literal["disabled", "active", "evaluate"]] = UNSET,
@@ -14947,7 +14948,7 @@ class ReposClient:
         repo: str,
         ruleset_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoRulesetsRulesetIdPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[RepositoryRuleset, RepositoryRulesetType]:
@@ -14991,7 +14992,7 @@ class ReposClient:
         repo: str,
         ruleset_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoRulesetsRulesetIdPutBodyType] = UNSET,
     ) -> Response[RepositoryRuleset, RepositoryRulesetType]: ...
 
@@ -15003,7 +15004,7 @@ class ReposClient:
         ruleset_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         name: Missing[str] = UNSET,
         target: Missing[Literal["branch", "tag", "push"]] = UNSET,
         enforcement: Missing[Literal["disabled", "active", "evaluate"]] = UNSET,
@@ -15044,7 +15045,7 @@ class ReposClient:
         repo: str,
         ruleset_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoRulesetsRulesetIdPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[RepositoryRuleset, RepositoryRulesetType]:
@@ -15087,7 +15088,7 @@ class ReposClient:
         repo: str,
         ruleset_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/repos/rules#delete-a-repository-ruleset"""
 
@@ -15113,7 +15114,7 @@ class ReposClient:
         repo: str,
         ruleset_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/repos/rules#delete-a-repository-ruleset"""
 
@@ -15138,7 +15139,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[list[int]], list[list[int]]]:
         """See also: https://docs.github.com/rest/metrics/statistics#get-the-weekly-commit-activity"""
 
@@ -15159,7 +15160,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[list[int]], list[list[int]]]:
         """See also: https://docs.github.com/rest/metrics/statistics#get-the-weekly-commit-activity"""
 
@@ -15180,7 +15181,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[CommitActivity], list[CommitActivityType]]:
         """See also: https://docs.github.com/rest/metrics/statistics#get-the-last-year-of-commit-activity"""
 
@@ -15202,7 +15203,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[CommitActivity], list[CommitActivityType]]:
         """See also: https://docs.github.com/rest/metrics/statistics#get-the-last-year-of-commit-activity"""
 
@@ -15224,7 +15225,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[ContributorActivity], list[ContributorActivityType]]:
         """See also: https://docs.github.com/rest/metrics/statistics#get-all-contributor-commit-activity"""
 
@@ -15246,7 +15247,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[ContributorActivity], list[ContributorActivityType]]:
         """See also: https://docs.github.com/rest/metrics/statistics#get-all-contributor-commit-activity"""
 
@@ -15268,7 +15269,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ParticipationStats, ParticipationStatsType]:
         """See also: https://docs.github.com/rest/metrics/statistics#get-the-weekly-commit-count"""
 
@@ -15293,7 +15294,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ParticipationStats, ParticipationStatsType]:
         """See also: https://docs.github.com/rest/metrics/statistics#get-the-weekly-commit-count"""
 
@@ -15318,7 +15319,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[list[int]], list[list[int]]]:
         """See also: https://docs.github.com/rest/metrics/statistics#get-the-hourly-commit-count-for-each-day"""
 
@@ -15338,7 +15339,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[list[int]], list[list[int]]]:
         """See also: https://docs.github.com/rest/metrics/statistics#get-the-hourly-commit-count-for-each-day"""
 
@@ -15360,7 +15361,7 @@ class ReposClient:
         repo: str,
         sha: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoStatusesShaPostBodyType,
     ) -> Response[Status, StatusType]: ...
 
@@ -15372,7 +15373,7 @@ class ReposClient:
         sha: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         state: Literal["error", "failure", "pending", "success"],
         target_url: Missing[Union[str, None]] = UNSET,
         description: Missing[Union[str, None]] = UNSET,
@@ -15385,7 +15386,7 @@ class ReposClient:
         repo: str,
         sha: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoStatusesShaPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Status, StatusType]:
@@ -15421,7 +15422,7 @@ class ReposClient:
         repo: str,
         sha: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoStatusesShaPostBodyType,
     ) -> Response[Status, StatusType]: ...
 
@@ -15433,7 +15434,7 @@ class ReposClient:
         sha: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         state: Literal["error", "failure", "pending", "success"],
         target_url: Missing[Union[str, None]] = UNSET,
         description: Missing[Union[str, None]] = UNSET,
@@ -15446,7 +15447,7 @@ class ReposClient:
         repo: str,
         sha: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoStatusesShaPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Status, StatusType]:
@@ -15482,7 +15483,7 @@ class ReposClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Tag], list[TagType]]:
         """See also: https://docs.github.com/rest/repos/repos#list-repository-tags"""
 
@@ -15512,7 +15513,7 @@ class ReposClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Tag], list[TagType]]:
         """See also: https://docs.github.com/rest/repos/repos#list-repository-tags"""
 
@@ -15540,7 +15541,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[TagProtection], list[TagProtectionType]]:
         """See also: https://docs.github.com/rest/repos/tags#closing-down---list-tag-protection-states-for-a-repository"""
 
@@ -15566,7 +15567,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[TagProtection], list[TagProtectionType]]:
         """See also: https://docs.github.com/rest/repos/tags#closing-down---list-tag-protection-states-for-a-repository"""
 
@@ -15593,7 +15594,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoTagsProtectionPostBodyType,
     ) -> Response[TagProtection, TagProtectionType]: ...
 
@@ -15604,7 +15605,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         pattern: str,
     ) -> Response[TagProtection, TagProtectionType]: ...
 
@@ -15613,7 +15614,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoTagsProtectionPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[TagProtection, TagProtectionType]:
@@ -15656,7 +15657,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoTagsProtectionPostBodyType,
     ) -> Response[TagProtection, TagProtectionType]: ...
 
@@ -15667,7 +15668,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         pattern: str,
     ) -> Response[TagProtection, TagProtectionType]: ...
 
@@ -15676,7 +15677,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoTagsProtectionPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[TagProtection, TagProtectionType]:
@@ -15719,7 +15720,7 @@ class ReposClient:
         repo: str,
         tag_protection_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/repos/tags#closing-down---delete-a-tag-protection-state-for-a-repository"""
 
@@ -15745,7 +15746,7 @@ class ReposClient:
         repo: str,
         tag_protection_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/repos/tags#closing-down---delete-a-tag-protection-state-for-a-repository"""
 
@@ -15771,7 +15772,7 @@ class ReposClient:
         repo: str,
         ref: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/repos/contents#download-a-repository-archive-tar"""
 
@@ -15791,7 +15792,7 @@ class ReposClient:
         repo: str,
         ref: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/repos/contents#download-a-repository-archive-tar"""
 
@@ -15812,7 +15813,7 @@ class ReposClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Team], list[TeamType]]:
         """See also: https://docs.github.com/rest/repos/repos#list-repository-teams"""
 
@@ -15845,7 +15846,7 @@ class ReposClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Team], list[TeamType]]:
         """See also: https://docs.github.com/rest/repos/repos#list-repository-teams"""
 
@@ -15878,7 +15879,7 @@ class ReposClient:
         *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Topic, TopicType]:
         """See also: https://docs.github.com/rest/repos/repos#get-all-repository-topics"""
 
@@ -15911,7 +15912,7 @@ class ReposClient:
         *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Topic, TopicType]:
         """See also: https://docs.github.com/rest/repos/repos#get-all-repository-topics"""
 
@@ -15943,7 +15944,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoTopicsPutBodyType,
     ) -> Response[Topic, TopicType]: ...
 
@@ -15954,7 +15955,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         names: list[str],
     ) -> Response[Topic, TopicType]: ...
 
@@ -15963,7 +15964,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoTopicsPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[Topic, TopicType]:
@@ -16007,7 +16008,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoTopicsPutBodyType,
     ) -> Response[Topic, TopicType]: ...
 
@@ -16018,7 +16019,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         names: list[str],
     ) -> Response[Topic, TopicType]: ...
 
@@ -16027,7 +16028,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoTopicsPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[Topic, TopicType]:
@@ -16071,7 +16072,7 @@ class ReposClient:
         repo: str,
         *,
         per: Missing[Literal["day", "week"]] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CloneTraffic, CloneTrafficType]:
         """See also: https://docs.github.com/rest/metrics/traffic#get-repository-clones"""
 
@@ -16102,7 +16103,7 @@ class ReposClient:
         repo: str,
         *,
         per: Missing[Literal["day", "week"]] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CloneTraffic, CloneTrafficType]:
         """See also: https://docs.github.com/rest/metrics/traffic#get-repository-clones"""
 
@@ -16132,7 +16133,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[ContentTraffic], list[ContentTrafficType]]:
         """See also: https://docs.github.com/rest/metrics/traffic#get-top-referral-paths"""
 
@@ -16157,7 +16158,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[ContentTraffic], list[ContentTrafficType]]:
         """See also: https://docs.github.com/rest/metrics/traffic#get-top-referral-paths"""
 
@@ -16182,7 +16183,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[ReferrerTraffic], list[ReferrerTrafficType]]:
         """See also: https://docs.github.com/rest/metrics/traffic#get-top-referral-sources"""
 
@@ -16207,7 +16208,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[ReferrerTraffic], list[ReferrerTrafficType]]:
         """See also: https://docs.github.com/rest/metrics/traffic#get-top-referral-sources"""
 
@@ -16233,7 +16234,7 @@ class ReposClient:
         repo: str,
         *,
         per: Missing[Literal["day", "week"]] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ViewTraffic, ViewTrafficType]:
         """See also: https://docs.github.com/rest/metrics/traffic#get-page-views"""
 
@@ -16264,7 +16265,7 @@ class ReposClient:
         repo: str,
         *,
         per: Missing[Literal["day", "week"]] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ViewTraffic, ViewTrafficType]:
         """See also: https://docs.github.com/rest/metrics/traffic#get-page-views"""
 
@@ -16295,7 +16296,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoTransferPostBodyType,
     ) -> Response[MinimalRepository, MinimalRepositoryType]: ...
 
@@ -16306,7 +16307,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         new_owner: str,
         new_name: Missing[str] = UNSET,
         team_ids: Missing[list[int]] = UNSET,
@@ -16317,7 +16318,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoTransferPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[MinimalRepository, MinimalRepositoryType]:
@@ -16352,7 +16353,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoTransferPostBodyType,
     ) -> Response[MinimalRepository, MinimalRepositoryType]: ...
 
@@ -16363,7 +16364,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         new_owner: str,
         new_name: Missing[str] = UNSET,
         team_ids: Missing[list[int]] = UNSET,
@@ -16374,7 +16375,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoTransferPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[MinimalRepository, MinimalRepositoryType]:
@@ -16408,7 +16409,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/repos/repos#check-if-vulnerability-alerts-are-enabled-for-a-repository"""
 
@@ -16428,7 +16429,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/repos/repos#check-if-vulnerability-alerts-are-enabled-for-a-repository"""
 
@@ -16448,7 +16449,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/repos/repos#enable-vulnerability-alerts"""
 
@@ -16467,7 +16468,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/repos/repos#enable-vulnerability-alerts"""
 
@@ -16486,7 +16487,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/repos/repos#disable-vulnerability-alerts"""
 
@@ -16505,7 +16506,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/repos/repos#disable-vulnerability-alerts"""
 
@@ -16525,7 +16526,7 @@ class ReposClient:
         repo: str,
         ref: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/repos/contents#download-a-repository-archive-zip"""
 
@@ -16545,7 +16546,7 @@ class ReposClient:
         repo: str,
         ref: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/repos/contents#download-a-repository-archive-zip"""
 
@@ -16565,7 +16566,7 @@ class ReposClient:
         template_owner: str,
         template_repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposTemplateOwnerTemplateRepoGeneratePostBodyType,
     ) -> Response[FullRepository, FullRepositoryType]: ...
 
@@ -16576,7 +16577,7 @@ class ReposClient:
         template_repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         owner: Missing[str] = UNSET,
         name: str,
         description: Missing[str] = UNSET,
@@ -16589,7 +16590,7 @@ class ReposClient:
         template_owner: str,
         template_repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposTemplateOwnerTemplateRepoGeneratePostBodyType] = UNSET,
         **kwargs,
     ) -> Response[FullRepository, FullRepositoryType]:
@@ -16629,7 +16630,7 @@ class ReposClient:
         template_owner: str,
         template_repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposTemplateOwnerTemplateRepoGeneratePostBodyType,
     ) -> Response[FullRepository, FullRepositoryType]: ...
 
@@ -16640,7 +16641,7 @@ class ReposClient:
         template_repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         owner: Missing[str] = UNSET,
         name: str,
         description: Missing[str] = UNSET,
@@ -16653,7 +16654,7 @@ class ReposClient:
         template_owner: str,
         template_repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposTemplateOwnerTemplateRepoGeneratePostBodyType] = UNSET,
         **kwargs,
     ) -> Response[FullRepository, FullRepositoryType]:
@@ -16691,7 +16692,7 @@ class ReposClient:
         self,
         *,
         since: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
         """See also: https://docs.github.com/rest/repos/repos#list-public-repositories"""
 
@@ -16720,7 +16721,7 @@ class ReposClient:
         self,
         *,
         since: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
         """See also: https://docs.github.com/rest/repos/repos#list-public-repositories"""
 
@@ -16757,7 +16758,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         since: Missing[datetime] = UNSET,
         before: Missing[datetime] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Repository], list[RepositoryType]]:
         """See also: https://docs.github.com/rest/repos/repos#list-repositories-for-the-authenticated-user"""
 
@@ -16804,7 +16805,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         since: Missing[datetime] = UNSET,
         before: Missing[datetime] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Repository], list[RepositoryType]]:
         """See also: https://docs.github.com/rest/repos/repos#list-repositories-for-the-authenticated-user"""
 
@@ -16841,7 +16842,10 @@ class ReposClient:
 
     @overload
     def create_for_authenticated_user(
-        self, *, headers: Optional[dict[str, str]] = None, data: UserReposPostBodyType
+        self,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        data: UserReposPostBodyType,
     ) -> Response[FullRepository, FullRepositoryType]: ...
 
     @overload
@@ -16849,7 +16853,7 @@ class ReposClient:
         self,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         name: str,
         description: Missing[str] = UNSET,
         homepage: Missing[str] = UNSET,
@@ -16882,7 +16886,7 @@ class ReposClient:
     def create_for_authenticated_user(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[UserReposPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[FullRepository, FullRepositoryType]:
@@ -16925,7 +16929,10 @@ class ReposClient:
 
     @overload
     async def async_create_for_authenticated_user(
-        self, *, headers: Optional[dict[str, str]] = None, data: UserReposPostBodyType
+        self,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        data: UserReposPostBodyType,
     ) -> Response[FullRepository, FullRepositoryType]: ...
 
     @overload
@@ -16933,7 +16940,7 @@ class ReposClient:
         self,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         name: str,
         description: Missing[str] = UNSET,
         homepage: Missing[str] = UNSET,
@@ -16966,7 +16973,7 @@ class ReposClient:
     async def async_create_for_authenticated_user(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[UserReposPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[FullRepository, FullRepositoryType]:
@@ -17012,7 +17019,7 @@ class ReposClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[RepositoryInvitation], list[RepositoryInvitationType]]:
         """See also: https://docs.github.com/rest/collaborators/invitations#list-repository-invitations-for-the-authenticated-user"""
 
@@ -17045,7 +17052,7 @@ class ReposClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[RepositoryInvitation], list[RepositoryInvitationType]]:
         """See also: https://docs.github.com/rest/collaborators/invitations#list-repository-invitations-for-the-authenticated-user"""
 
@@ -17077,7 +17084,7 @@ class ReposClient:
         self,
         invitation_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/collaborators/invitations#decline-a-repository-invitation"""
 
@@ -17102,7 +17109,7 @@ class ReposClient:
         self,
         invitation_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/collaborators/invitations#decline-a-repository-invitation"""
 
@@ -17127,7 +17134,7 @@ class ReposClient:
         self,
         invitation_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/collaborators/invitations#accept-a-repository-invitation"""
 
@@ -17152,7 +17159,7 @@ class ReposClient:
         self,
         invitation_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/collaborators/invitations#accept-a-repository-invitation"""
 
@@ -17182,7 +17189,7 @@ class ReposClient:
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
         """See also: https://docs.github.com/rest/repos/repos#list-repositories-for-a-user"""
 
@@ -17217,7 +17224,7 @@ class ReposClient:
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
         """See also: https://docs.github.com/rest/repos/repos#list-repositories-for-a-user"""
 

@@ -5,6 +5,7 @@
 import hmac
 import json
 import importlib
+from collections.abc import Mapping
 from typing_extensions import TypeAlias
 from typing import TYPE_CHECKING, Any, Union, Literal, overload
 
@@ -81,7 +82,7 @@ class WebhookNamespace:
         return type_validate_json(Event, payload)
 
     @staticmethod
-    def parse_obj_without_name(payload: dict[str, Any]) -> "WebhookEvent":
+    def parse_obj_without_name(payload: Mapping[str, Any]) -> "WebhookEvent":
         """Parse the webhook payload dict without event name.
 
         Note:
@@ -91,7 +92,7 @@ class WebhookNamespace:
             the result may not be the correct type as expected.
 
         Args:
-            payload (dict[str, Any]): webhook payload dict.
+            payload (Mapping[str, Any]): webhook payload dict.
         """
 
         from ._types import WebhookEvent
@@ -101,27 +102,27 @@ class WebhookNamespace:
     {% for name in event_names %}
     @overload
     @staticmethod
-    def parse_obj(name: Literal["{{ name }}"], payload: dict[str, Any]) -> "{{ pascal_case(name) }}Event":
+    def parse_obj(name: Literal["{{ name }}"], payload: Mapping[str, Any]) -> "{{ pascal_case(name) }}Event":
         ...
     {% endfor %}
 
     @overload
     @staticmethod
-    def parse_obj(name: EventNameType, payload: dict[str, Any]) -> "WebhookEvent":
+    def parse_obj(name: EventNameType, payload: Mapping[str, Any]) -> "WebhookEvent":
         ...
 
     @overload
     @staticmethod
-    def parse_obj(name: str, payload: dict[str, Any]) -> "WebhookEvent":
+    def parse_obj(name: str, payload: Mapping[str, Any]) -> "WebhookEvent":
         ...
 
     @staticmethod
-    def parse_obj(name: Union[EventNameType, str], payload: dict[str, Any]) -> "WebhookEvent":
+    def parse_obj(name: Union[EventNameType, str], payload: Mapping[str, Any]) -> "WebhookEvent":
         """Parse the webhook payload dict with event name.
 
         Args:
             name (EventNameType): event name.
-            payload (dict[str, Any]): webhook payload dict.
+            payload (Mapping[str, Any]): webhook payload dict.
         """
 
         if name not in VALID_EVENT_NAMES:

@@ -36,7 +36,7 @@
 {{ query_params(endpoint) }}
 {{ header_params(endpoint) }}
 {{ cookie_params(endpoint) }}
-headers: Optional[dict[str, str]] = None,
+headers: Optional[Mapping[str, str]] = None,
 {{ endpoint.request_body.get_raw_definition() }}
 {% endmacro %}
 
@@ -47,7 +47,7 @@ headers: Optional[dict[str, str]] = None,
 {{ header_params(endpoint) }}
 {{ cookie_params(endpoint) }}
 data: UnsetType = UNSET,
-headers: Optional[dict[str, str]] = None,
+headers: Optional[Mapping[str, str]] = None,
 {{ body_params(model, endpoint.param_names) }}
 {% endmacro %}
 
@@ -57,7 +57,7 @@ headers: Optional[dict[str, str]] = None,
 {{ query_params(endpoint) }}
 {{ header_params(endpoint) }}
 {{ cookie_params(endpoint) }}
-headers: Optional[dict[str, str]] = None,
+headers: Optional[Mapping[str, str]] = None,
 {%- if endpoint.request_body %}
 {{ endpoint.request_body.get_endpoint_definition() }},
 {%- if endpoint.request_body.allowed_models %}

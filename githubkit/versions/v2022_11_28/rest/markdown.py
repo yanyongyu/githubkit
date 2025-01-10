@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from collections.abc import Mapping
 from typing import TYPE_CHECKING, Literal, Optional, overload
 from weakref import ref
 
@@ -46,7 +47,7 @@ class MarkdownClient:
 
     @overload
     def render(
-        self, *, headers: Optional[dict[str, str]] = None, data: MarkdownPostBodyType
+        self, *, headers: Optional[Mapping[str, str]] = None, data: MarkdownPostBodyType
     ) -> Response[str, str]: ...
 
     @overload
@@ -54,7 +55,7 @@ class MarkdownClient:
         self,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         text: str,
         mode: Missing[Literal["markdown", "gfm"]] = UNSET,
         context: Missing[str] = UNSET,
@@ -63,7 +64,7 @@ class MarkdownClient:
     def render(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[MarkdownPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[str, str]:
@@ -94,7 +95,7 @@ class MarkdownClient:
 
     @overload
     async def async_render(
-        self, *, headers: Optional[dict[str, str]] = None, data: MarkdownPostBodyType
+        self, *, headers: Optional[Mapping[str, str]] = None, data: MarkdownPostBodyType
     ) -> Response[str, str]: ...
 
     @overload
@@ -102,7 +103,7 @@ class MarkdownClient:
         self,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         text: str,
         mode: Missing[Literal["markdown", "gfm"]] = UNSET,
         context: Missing[str] = UNSET,
@@ -111,7 +112,7 @@ class MarkdownClient:
     async def async_render(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[MarkdownPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[str, str]:
@@ -143,7 +144,7 @@ class MarkdownClient:
     def render_raw(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: str,
     ) -> Response[str, str]:
         """See also: https://docs.github.com/rest/markdown/markdown#render-a-markdown-document-in-raw-mode"""
@@ -169,7 +170,7 @@ class MarkdownClient:
     async def async_render_raw(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: str,
     ) -> Response[str, str]:
         """See also: https://docs.github.com/rest/markdown/markdown#render-a-markdown-document-in-raw-mode"""

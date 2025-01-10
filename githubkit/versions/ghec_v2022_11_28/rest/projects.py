@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from collections.abc import Mapping
 from typing import TYPE_CHECKING, Literal, Optional, overload
 from weakref import ref
 
@@ -80,7 +81,7 @@ class ProjectsClient:
         state: Missing[Literal["open", "closed", "all"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Project], list[ProjectType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/projects#list-organization-projects"""
 
@@ -114,7 +115,7 @@ class ProjectsClient:
         state: Missing[Literal["open", "closed", "all"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Project], list[ProjectType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/projects#list-organization-projects"""
 
@@ -146,7 +147,7 @@ class ProjectsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgProjectsPostBodyType,
     ) -> Response[Project, ProjectType]: ...
 
@@ -156,7 +157,7 @@ class ProjectsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         name: str,
         body: Missing[str] = UNSET,
     ) -> Response[Project, ProjectType]: ...
@@ -165,7 +166,7 @@ class ProjectsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgProjectsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Project, ProjectType]:
@@ -211,7 +212,7 @@ class ProjectsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgProjectsPostBodyType,
     ) -> Response[Project, ProjectType]: ...
 
@@ -221,7 +222,7 @@ class ProjectsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         name: str,
         body: Missing[str] = UNSET,
     ) -> Response[Project, ProjectType]: ...
@@ -230,7 +231,7 @@ class ProjectsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgProjectsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Project, ProjectType]:
@@ -275,7 +276,7 @@ class ProjectsClient:
         self,
         card_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ProjectCard, ProjectCardType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/cards#get-a-project-card"""
 
@@ -301,7 +302,7 @@ class ProjectsClient:
         self,
         card_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ProjectCard, ProjectCardType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/cards#get-a-project-card"""
 
@@ -327,7 +328,7 @@ class ProjectsClient:
         self,
         card_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/cards#delete-a-project-card"""
 
@@ -352,7 +353,7 @@ class ProjectsClient:
         self,
         card_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/cards#delete-a-project-card"""
 
@@ -378,7 +379,7 @@ class ProjectsClient:
         self,
         card_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ProjectsColumnsCardsCardIdPatchBodyType] = UNSET,
     ) -> Response[ProjectCard, ProjectCardType]: ...
 
@@ -388,7 +389,7 @@ class ProjectsClient:
         card_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         note: Missing[Union[str, None]] = UNSET,
         archived: Missing[bool] = UNSET,
     ) -> Response[ProjectCard, ProjectCardType]: ...
@@ -397,7 +398,7 @@ class ProjectsClient:
         self,
         card_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ProjectsColumnsCardsCardIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[ProjectCard, ProjectCardType]:
@@ -442,7 +443,7 @@ class ProjectsClient:
         self,
         card_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ProjectsColumnsCardsCardIdPatchBodyType] = UNSET,
     ) -> Response[ProjectCard, ProjectCardType]: ...
 
@@ -452,7 +453,7 @@ class ProjectsClient:
         card_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         note: Missing[Union[str, None]] = UNSET,
         archived: Missing[bool] = UNSET,
     ) -> Response[ProjectCard, ProjectCardType]: ...
@@ -461,7 +462,7 @@ class ProjectsClient:
         self,
         card_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ProjectsColumnsCardsCardIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[ProjectCard, ProjectCardType]:
@@ -506,7 +507,7 @@ class ProjectsClient:
         self,
         card_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ProjectsColumnsCardsCardIdMovesPostBodyType,
     ) -> Response[
         ProjectsColumnsCardsCardIdMovesPostResponse201,
@@ -519,7 +520,7 @@ class ProjectsClient:
         card_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         position: str,
         column_id: Missing[int] = UNSET,
     ) -> Response[
@@ -531,7 +532,7 @@ class ProjectsClient:
         self,
         card_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ProjectsColumnsCardsCardIdMovesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[
@@ -581,7 +582,7 @@ class ProjectsClient:
         self,
         card_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ProjectsColumnsCardsCardIdMovesPostBodyType,
     ) -> Response[
         ProjectsColumnsCardsCardIdMovesPostResponse201,
@@ -594,7 +595,7 @@ class ProjectsClient:
         card_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         position: str,
         column_id: Missing[int] = UNSET,
     ) -> Response[
@@ -606,7 +607,7 @@ class ProjectsClient:
         self,
         card_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ProjectsColumnsCardsCardIdMovesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[
@@ -655,7 +656,7 @@ class ProjectsClient:
         self,
         column_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ProjectColumn, ProjectColumnType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/columns#get-a-project-column"""
 
@@ -681,7 +682,7 @@ class ProjectsClient:
         self,
         column_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ProjectColumn, ProjectColumnType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/columns#get-a-project-column"""
 
@@ -707,7 +708,7 @@ class ProjectsClient:
         self,
         column_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/columns#delete-a-project-column"""
 
@@ -731,7 +732,7 @@ class ProjectsClient:
         self,
         column_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/columns#delete-a-project-column"""
 
@@ -756,7 +757,7 @@ class ProjectsClient:
         self,
         column_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ProjectsColumnsColumnIdPatchBodyType,
     ) -> Response[ProjectColumn, ProjectColumnType]: ...
 
@@ -766,7 +767,7 @@ class ProjectsClient:
         column_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         name: str,
     ) -> Response[ProjectColumn, ProjectColumnType]: ...
 
@@ -774,7 +775,7 @@ class ProjectsClient:
         self,
         column_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ProjectsColumnsColumnIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[ProjectColumn, ProjectColumnType]:
@@ -812,7 +813,7 @@ class ProjectsClient:
         self,
         column_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ProjectsColumnsColumnIdPatchBodyType,
     ) -> Response[ProjectColumn, ProjectColumnType]: ...
 
@@ -822,7 +823,7 @@ class ProjectsClient:
         column_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         name: str,
     ) -> Response[ProjectColumn, ProjectColumnType]: ...
 
@@ -830,7 +831,7 @@ class ProjectsClient:
         self,
         column_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ProjectsColumnsColumnIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[ProjectColumn, ProjectColumnType]:
@@ -870,7 +871,7 @@ class ProjectsClient:
         archived_state: Missing[Literal["all", "archived", "not_archived"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[ProjectCard], list[ProjectCardType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/cards#list-project-cards"""
 
@@ -905,7 +906,7 @@ class ProjectsClient:
         archived_state: Missing[Literal["all", "archived", "not_archived"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[ProjectCard], list[ProjectCardType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/cards#list-project-cards"""
 
@@ -938,7 +939,7 @@ class ProjectsClient:
         self,
         column_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Union[
             ProjectsColumnsColumnIdCardsPostBodyOneof0Type,
             ProjectsColumnsColumnIdCardsPostBodyOneof1Type,
@@ -951,7 +952,7 @@ class ProjectsClient:
         column_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         note: Union[str, None],
     ) -> Response[ProjectCard, ProjectCardType]: ...
 
@@ -961,7 +962,7 @@ class ProjectsClient:
         column_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         content_id: int,
         content_type: str,
     ) -> Response[ProjectCard, ProjectCardType]: ...
@@ -970,7 +971,7 @@ class ProjectsClient:
         self,
         column_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             Union[
                 ProjectsColumnsColumnIdCardsPostBodyOneof0Type,
@@ -1031,7 +1032,7 @@ class ProjectsClient:
         self,
         column_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Union[
             ProjectsColumnsColumnIdCardsPostBodyOneof0Type,
             ProjectsColumnsColumnIdCardsPostBodyOneof1Type,
@@ -1044,7 +1045,7 @@ class ProjectsClient:
         column_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         note: Union[str, None],
     ) -> Response[ProjectCard, ProjectCardType]: ...
 
@@ -1054,7 +1055,7 @@ class ProjectsClient:
         column_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         content_id: int,
         content_type: str,
     ) -> Response[ProjectCard, ProjectCardType]: ...
@@ -1063,7 +1064,7 @@ class ProjectsClient:
         self,
         column_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             Union[
                 ProjectsColumnsColumnIdCardsPostBodyOneof0Type,
@@ -1124,7 +1125,7 @@ class ProjectsClient:
         self,
         column_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ProjectsColumnsColumnIdMovesPostBodyType,
     ) -> Response[
         ProjectsColumnsColumnIdMovesPostResponse201,
@@ -1137,7 +1138,7 @@ class ProjectsClient:
         column_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         position: str,
     ) -> Response[
         ProjectsColumnsColumnIdMovesPostResponse201,
@@ -1148,7 +1149,7 @@ class ProjectsClient:
         self,
         column_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ProjectsColumnsColumnIdMovesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[
@@ -1195,7 +1196,7 @@ class ProjectsClient:
         self,
         column_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ProjectsColumnsColumnIdMovesPostBodyType,
     ) -> Response[
         ProjectsColumnsColumnIdMovesPostResponse201,
@@ -1208,7 +1209,7 @@ class ProjectsClient:
         column_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         position: str,
     ) -> Response[
         ProjectsColumnsColumnIdMovesPostResponse201,
@@ -1219,7 +1220,7 @@ class ProjectsClient:
         self,
         column_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ProjectsColumnsColumnIdMovesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[
@@ -1265,7 +1266,7 @@ class ProjectsClient:
         self,
         project_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Project, ProjectType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/projects#get-a-project"""
 
@@ -1290,7 +1291,7 @@ class ProjectsClient:
         self,
         project_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Project, ProjectType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/projects#get-a-project"""
 
@@ -1315,7 +1316,7 @@ class ProjectsClient:
         self,
         project_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/projects#delete-a-project"""
 
@@ -1341,7 +1342,7 @@ class ProjectsClient:
         self,
         project_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/projects#delete-a-project"""
 
@@ -1368,7 +1369,7 @@ class ProjectsClient:
         self,
         project_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ProjectsProjectIdPatchBodyType] = UNSET,
     ) -> Response[Project, ProjectType]: ...
 
@@ -1378,7 +1379,7 @@ class ProjectsClient:
         project_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         name: Missing[str] = UNSET,
         body: Missing[Union[str, None]] = UNSET,
         state: Missing[str] = UNSET,
@@ -1392,7 +1393,7 @@ class ProjectsClient:
         self,
         project_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ProjectsProjectIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Project, ProjectType]:
@@ -1438,7 +1439,7 @@ class ProjectsClient:
         self,
         project_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ProjectsProjectIdPatchBodyType] = UNSET,
     ) -> Response[Project, ProjectType]: ...
 
@@ -1448,7 +1449,7 @@ class ProjectsClient:
         project_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         name: Missing[str] = UNSET,
         body: Missing[Union[str, None]] = UNSET,
         state: Missing[str] = UNSET,
@@ -1462,7 +1463,7 @@ class ProjectsClient:
         self,
         project_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ProjectsProjectIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Project, ProjectType]:
@@ -1510,7 +1511,7 @@ class ProjectsClient:
         affiliation: Missing[Literal["outside", "direct", "all"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/collaborators#list-project-collaborators"""
 
@@ -1547,7 +1548,7 @@ class ProjectsClient:
         affiliation: Missing[Literal["outside", "direct", "all"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/collaborators#list-project-collaborators"""
 
@@ -1583,7 +1584,7 @@ class ProjectsClient:
         project_id: int,
         username: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             Union[ProjectsProjectIdCollaboratorsUsernamePutBodyType, None]
         ] = UNSET,
@@ -1596,7 +1597,7 @@ class ProjectsClient:
         username: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         permission: Missing[Literal["read", "write", "admin"]] = UNSET,
     ) -> Response: ...
 
@@ -1605,7 +1606,7 @@ class ProjectsClient:
         project_id: int,
         username: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             Union[ProjectsProjectIdCollaboratorsUsernamePutBodyType, None]
         ] = UNSET,
@@ -1655,7 +1656,7 @@ class ProjectsClient:
         project_id: int,
         username: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             Union[ProjectsProjectIdCollaboratorsUsernamePutBodyType, None]
         ] = UNSET,
@@ -1668,7 +1669,7 @@ class ProjectsClient:
         username: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         permission: Missing[Literal["read", "write", "admin"]] = UNSET,
     ) -> Response: ...
 
@@ -1677,7 +1678,7 @@ class ProjectsClient:
         project_id: int,
         username: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             Union[ProjectsProjectIdCollaboratorsUsernamePutBodyType, None]
         ] = UNSET,
@@ -1726,7 +1727,7 @@ class ProjectsClient:
         project_id: int,
         username: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/collaborators#remove-user-as-a-collaborator"""
 
@@ -1753,7 +1754,7 @@ class ProjectsClient:
         project_id: int,
         username: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/collaborators#remove-user-as-a-collaborator"""
 
@@ -1780,7 +1781,7 @@ class ProjectsClient:
         project_id: int,
         username: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ProjectCollaboratorPermission, ProjectCollaboratorPermissionType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/collaborators#get-project-permission-for-a-user"""
 
@@ -1808,7 +1809,7 @@ class ProjectsClient:
         project_id: int,
         username: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ProjectCollaboratorPermission, ProjectCollaboratorPermissionType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/collaborators#get-project-permission-for-a-user"""
 
@@ -1837,7 +1838,7 @@ class ProjectsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[ProjectColumn], list[ProjectColumnType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/columns#list-project-columns"""
 
@@ -1870,7 +1871,7 @@ class ProjectsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[ProjectColumn], list[ProjectColumnType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/columns#list-project-columns"""
 
@@ -1902,7 +1903,7 @@ class ProjectsClient:
         self,
         project_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ProjectsProjectIdColumnsPostBodyType,
     ) -> Response[ProjectColumn, ProjectColumnType]: ...
 
@@ -1912,7 +1913,7 @@ class ProjectsClient:
         project_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         name: str,
     ) -> Response[ProjectColumn, ProjectColumnType]: ...
 
@@ -1920,7 +1921,7 @@ class ProjectsClient:
         self,
         project_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ProjectsProjectIdColumnsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[ProjectColumn, ProjectColumnType]:
@@ -1964,7 +1965,7 @@ class ProjectsClient:
         self,
         project_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ProjectsProjectIdColumnsPostBodyType,
     ) -> Response[ProjectColumn, ProjectColumnType]: ...
 
@@ -1974,7 +1975,7 @@ class ProjectsClient:
         project_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         name: str,
     ) -> Response[ProjectColumn, ProjectColumnType]: ...
 
@@ -1982,7 +1983,7 @@ class ProjectsClient:
         self,
         project_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ProjectsProjectIdColumnsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[ProjectColumn, ProjectColumnType]:
@@ -2029,7 +2030,7 @@ class ProjectsClient:
         state: Missing[Literal["open", "closed", "all"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Project], list[ProjectType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/projects#list-repository-projects"""
 
@@ -2068,7 +2069,7 @@ class ProjectsClient:
         state: Missing[Literal["open", "closed", "all"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Project], list[ProjectType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/projects#list-repository-projects"""
 
@@ -2105,7 +2106,7 @@ class ProjectsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoProjectsPostBodyType,
     ) -> Response[Project, ProjectType]: ...
 
@@ -2116,7 +2117,7 @@ class ProjectsClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         name: str,
         body: Missing[str] = UNSET,
     ) -> Response[Project, ProjectType]: ...
@@ -2126,7 +2127,7 @@ class ProjectsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoProjectsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Project, ProjectType]:
@@ -2173,7 +2174,7 @@ class ProjectsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoProjectsPostBodyType,
     ) -> Response[Project, ProjectType]: ...
 
@@ -2184,7 +2185,7 @@ class ProjectsClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         name: str,
         body: Missing[str] = UNSET,
     ) -> Response[Project, ProjectType]: ...
@@ -2194,7 +2195,7 @@ class ProjectsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoProjectsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Project, ProjectType]:
@@ -2239,7 +2240,7 @@ class ProjectsClient:
     def create_for_authenticated_user(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: UserProjectsPostBodyType,
     ) -> Response[Project, ProjectType]: ...
 
@@ -2248,7 +2249,7 @@ class ProjectsClient:
         self,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         name: str,
         body: Missing[Union[str, None]] = UNSET,
     ) -> Response[Project, ProjectType]: ...
@@ -2256,7 +2257,7 @@ class ProjectsClient:
     def create_for_authenticated_user(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[UserProjectsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Project, ProjectType]:
@@ -2299,7 +2300,7 @@ class ProjectsClient:
     async def async_create_for_authenticated_user(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: UserProjectsPostBodyType,
     ) -> Response[Project, ProjectType]: ...
 
@@ -2308,7 +2309,7 @@ class ProjectsClient:
         self,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         name: str,
         body: Missing[Union[str, None]] = UNSET,
     ) -> Response[Project, ProjectType]: ...
@@ -2316,7 +2317,7 @@ class ProjectsClient:
     async def async_create_for_authenticated_user(
         self,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[UserProjectsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Project, ProjectType]:
@@ -2362,7 +2363,7 @@ class ProjectsClient:
         state: Missing[Literal["open", "closed", "all"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Project], list[ProjectType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/projects#list-user-projects"""
 
@@ -2396,7 +2397,7 @@ class ProjectsClient:
         state: Missing[Literal["open", "closed", "all"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Project], list[ProjectType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/projects#list-user-projects"""
 

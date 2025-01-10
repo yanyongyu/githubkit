@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from collections.abc import Mapping
 from typing import TYPE_CHECKING, Literal, Optional, overload
 from weakref import ref
 
@@ -195,7 +196,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ActionsCacheUsageOrgEnterprise, ActionsCacheUsageOrgEnterpriseType]:
         """See also: https://docs.github.com/rest/actions/cache#get-github-actions-cache-usage-for-an-organization"""
 
@@ -216,7 +217,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ActionsCacheUsageOrgEnterprise, ActionsCacheUsageOrgEnterpriseType]:
         """See also: https://docs.github.com/rest/actions/cache#get-github-actions-cache-usage-for-an-organization"""
 
@@ -239,7 +240,7 @@ class ActionsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         OrgsOrgActionsCacheUsageByRepositoryGetResponse200,
         OrgsOrgActionsCacheUsageByRepositoryGetResponse200Type,
@@ -271,7 +272,7 @@ class ActionsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         OrgsOrgActionsCacheUsageByRepositoryGetResponse200,
         OrgsOrgActionsCacheUsageByRepositoryGetResponse200Type,
@@ -301,7 +302,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ActionsOrganizationPermissions, ActionsOrganizationPermissionsType]:
         """See also: https://docs.github.com/rest/actions/permissions#get-github-actions-permissions-for-an-organization"""
 
@@ -322,7 +323,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ActionsOrganizationPermissions, ActionsOrganizationPermissionsType]:
         """See also: https://docs.github.com/rest/actions/permissions#get-github-actions-permissions-for-an-organization"""
 
@@ -344,7 +345,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgActionsPermissionsPutBodyType,
     ) -> Response: ...
 
@@ -354,7 +355,7 @@ class ActionsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         enabled_repositories: Literal["all", "none", "selected"],
         allowed_actions: Missing[Literal["all", "local_only", "selected"]] = UNSET,
     ) -> Response: ...
@@ -363,7 +364,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgActionsPermissionsPutBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -396,7 +397,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgActionsPermissionsPutBodyType,
     ) -> Response: ...
 
@@ -406,7 +407,7 @@ class ActionsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         enabled_repositories: Literal["all", "none", "selected"],
         allowed_actions: Missing[Literal["all", "local_only", "selected"]] = UNSET,
     ) -> Response: ...
@@ -415,7 +416,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgActionsPermissionsPutBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -449,7 +450,7 @@ class ActionsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         OrgsOrgActionsPermissionsRepositoriesGetResponse200,
         OrgsOrgActionsPermissionsRepositoriesGetResponse200Type,
@@ -481,7 +482,7 @@ class ActionsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         OrgsOrgActionsPermissionsRepositoriesGetResponse200,
         OrgsOrgActionsPermissionsRepositoriesGetResponse200Type,
@@ -512,7 +513,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgActionsPermissionsRepositoriesPutBodyType,
     ) -> Response: ...
 
@@ -522,7 +523,7 @@ class ActionsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         selected_repository_ids: list[int],
     ) -> Response: ...
 
@@ -530,7 +531,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgActionsPermissionsRepositoriesPutBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -565,7 +566,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgActionsPermissionsRepositoriesPutBodyType,
     ) -> Response: ...
 
@@ -575,7 +576,7 @@ class ActionsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         selected_repository_ids: list[int],
     ) -> Response: ...
 
@@ -583,7 +584,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgActionsPermissionsRepositoriesPutBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -618,7 +619,7 @@ class ActionsClient:
         org: str,
         repository_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/actions/permissions#enable-a-selected-repository-for-github-actions-in-an-organization"""
 
@@ -637,7 +638,7 @@ class ActionsClient:
         org: str,
         repository_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/actions/permissions#enable-a-selected-repository-for-github-actions-in-an-organization"""
 
@@ -656,7 +657,7 @@ class ActionsClient:
         org: str,
         repository_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/actions/permissions#disable-a-selected-repository-for-github-actions-in-an-organization"""
 
@@ -675,7 +676,7 @@ class ActionsClient:
         org: str,
         repository_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/actions/permissions#disable-a-selected-repository-for-github-actions-in-an-organization"""
 
@@ -693,7 +694,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[SelectedActions, SelectedActionsType]:
         """See also: https://docs.github.com/rest/actions/permissions#get-allowed-actions-and-reusable-workflows-for-an-organization"""
 
@@ -714,7 +715,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[SelectedActions, SelectedActionsType]:
         """See also: https://docs.github.com/rest/actions/permissions#get-allowed-actions-and-reusable-workflows-for-an-organization"""
 
@@ -736,7 +737,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[SelectedActionsType] = UNSET,
     ) -> Response: ...
 
@@ -746,7 +747,7 @@ class ActionsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         github_owned_allowed: Missing[bool] = UNSET,
         verified_allowed: Missing[bool] = UNSET,
         patterns_allowed: Missing[list[str]] = UNSET,
@@ -756,7 +757,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[SelectedActionsType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -789,7 +790,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[SelectedActionsType] = UNSET,
     ) -> Response: ...
 
@@ -799,7 +800,7 @@ class ActionsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         github_owned_allowed: Missing[bool] = UNSET,
         verified_allowed: Missing[bool] = UNSET,
         patterns_allowed: Missing[list[str]] = UNSET,
@@ -809,7 +810,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[SelectedActionsType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -841,7 +842,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         ActionsGetDefaultWorkflowPermissions, ActionsGetDefaultWorkflowPermissionsType
     ]:
@@ -864,7 +865,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         ActionsGetDefaultWorkflowPermissions, ActionsGetDefaultWorkflowPermissionsType
     ]:
@@ -888,7 +889,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ActionsSetDefaultWorkflowPermissionsType] = UNSET,
     ) -> Response: ...
 
@@ -898,7 +899,7 @@ class ActionsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         default_workflow_permissions: Missing[Literal["read", "write"]] = UNSET,
         can_approve_pull_request_reviews: Missing[bool] = UNSET,
     ) -> Response: ...
@@ -907,7 +908,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ActionsSetDefaultWorkflowPermissionsType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -940,7 +941,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ActionsSetDefaultWorkflowPermissionsType] = UNSET,
     ) -> Response: ...
 
@@ -950,7 +951,7 @@ class ActionsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         default_workflow_permissions: Missing[Literal["read", "write"]] = UNSET,
         can_approve_pull_request_reviews: Missing[bool] = UNSET,
     ) -> Response: ...
@@ -959,7 +960,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ActionsSetDefaultWorkflowPermissionsType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -994,7 +995,7 @@ class ActionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         visible_to_repository: Missing[str] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         OrgsOrgActionsRunnerGroupsGetResponse200,
         OrgsOrgActionsRunnerGroupsGetResponse200Type,
@@ -1028,7 +1029,7 @@ class ActionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         visible_to_repository: Missing[str] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         OrgsOrgActionsRunnerGroupsGetResponse200,
         OrgsOrgActionsRunnerGroupsGetResponse200Type,
@@ -1060,7 +1061,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgActionsRunnerGroupsPostBodyType,
     ) -> Response[RunnerGroupsOrg, RunnerGroupsOrgType]: ...
 
@@ -1070,7 +1071,7 @@ class ActionsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         name: str,
         visibility: Missing[Literal["selected", "all", "private"]] = UNSET,
         selected_repository_ids: Missing[list[int]] = UNSET,
@@ -1084,7 +1085,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgActionsRunnerGroupsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[RunnerGroupsOrg, RunnerGroupsOrgType]:
@@ -1118,7 +1119,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgActionsRunnerGroupsPostBodyType,
     ) -> Response[RunnerGroupsOrg, RunnerGroupsOrgType]: ...
 
@@ -1128,7 +1129,7 @@ class ActionsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         name: str,
         visibility: Missing[Literal["selected", "all", "private"]] = UNSET,
         selected_repository_ids: Missing[list[int]] = UNSET,
@@ -1142,7 +1143,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgActionsRunnerGroupsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[RunnerGroupsOrg, RunnerGroupsOrgType]:
@@ -1176,7 +1177,7 @@ class ActionsClient:
         org: str,
         runner_group_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[RunnerGroupsOrg, RunnerGroupsOrgType]:
         """See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#get-a-self-hosted-runner-group-for-an-organization"""
 
@@ -1198,7 +1199,7 @@ class ActionsClient:
         org: str,
         runner_group_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[RunnerGroupsOrg, RunnerGroupsOrgType]:
         """See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#get-a-self-hosted-runner-group-for-an-organization"""
 
@@ -1220,7 +1221,7 @@ class ActionsClient:
         org: str,
         runner_group_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#delete-a-self-hosted-runner-group-from-an-organization"""
 
@@ -1239,7 +1240,7 @@ class ActionsClient:
         org: str,
         runner_group_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#delete-a-self-hosted-runner-group-from-an-organization"""
 
@@ -1259,7 +1260,7 @@ class ActionsClient:
         org: str,
         runner_group_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBodyType,
     ) -> Response[RunnerGroupsOrg, RunnerGroupsOrgType]: ...
 
@@ -1270,7 +1271,7 @@ class ActionsClient:
         runner_group_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         name: str,
         visibility: Missing[Literal["selected", "all", "private"]] = UNSET,
         allows_public_repositories: Missing[bool] = UNSET,
@@ -1283,7 +1284,7 @@ class ActionsClient:
         org: str,
         runner_group_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[RunnerGroupsOrg, RunnerGroupsOrgType]:
@@ -1323,7 +1324,7 @@ class ActionsClient:
         org: str,
         runner_group_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBodyType,
     ) -> Response[RunnerGroupsOrg, RunnerGroupsOrgType]: ...
 
@@ -1334,7 +1335,7 @@ class ActionsClient:
         runner_group_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         name: str,
         visibility: Missing[Literal["selected", "all", "private"]] = UNSET,
         allows_public_repositories: Missing[bool] = UNSET,
@@ -1347,7 +1348,7 @@ class ActionsClient:
         org: str,
         runner_group_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[RunnerGroupsOrg, RunnerGroupsOrgType]:
@@ -1388,7 +1389,7 @@ class ActionsClient:
         *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200,
         OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200Type,
@@ -1423,7 +1424,7 @@ class ActionsClient:
         *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200,
         OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200Type,
@@ -1457,7 +1458,7 @@ class ActionsClient:
         org: str,
         runner_group_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBodyType,
     ) -> Response: ...
 
@@ -1468,7 +1469,7 @@ class ActionsClient:
         runner_group_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         selected_repository_ids: list[int],
     ) -> Response: ...
 
@@ -1477,7 +1478,7 @@ class ActionsClient:
         org: str,
         runner_group_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBodyType
         ] = UNSET,
@@ -1515,7 +1516,7 @@ class ActionsClient:
         org: str,
         runner_group_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBodyType,
     ) -> Response: ...
 
@@ -1526,7 +1527,7 @@ class ActionsClient:
         runner_group_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         selected_repository_ids: list[int],
     ) -> Response: ...
 
@@ -1535,7 +1536,7 @@ class ActionsClient:
         org: str,
         runner_group_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBodyType
         ] = UNSET,
@@ -1573,7 +1574,7 @@ class ActionsClient:
         runner_group_id: int,
         repository_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#add-repository-access-to-a-self-hosted-runner-group-in-an-organization"""
 
@@ -1593,7 +1594,7 @@ class ActionsClient:
         runner_group_id: int,
         repository_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#add-repository-access-to-a-self-hosted-runner-group-in-an-organization"""
 
@@ -1613,7 +1614,7 @@ class ActionsClient:
         runner_group_id: int,
         repository_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#remove-repository-access-to-a-self-hosted-runner-group-in-an-organization"""
 
@@ -1633,7 +1634,7 @@ class ActionsClient:
         runner_group_id: int,
         repository_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#remove-repository-access-to-a-self-hosted-runner-group-in-an-organization"""
 
@@ -1654,7 +1655,7 @@ class ActionsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200,
         OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200Type,
@@ -1689,7 +1690,7 @@ class ActionsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200,
         OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200Type,
@@ -1723,7 +1724,7 @@ class ActionsClient:
         org: str,
         runner_group_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBodyType,
     ) -> Response: ...
 
@@ -1734,7 +1735,7 @@ class ActionsClient:
         runner_group_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         runners: list[int],
     ) -> Response: ...
 
@@ -1743,7 +1744,7 @@ class ActionsClient:
         org: str,
         runner_group_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBodyType
         ] = UNSET,
@@ -1781,7 +1782,7 @@ class ActionsClient:
         org: str,
         runner_group_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBodyType,
     ) -> Response: ...
 
@@ -1792,7 +1793,7 @@ class ActionsClient:
         runner_group_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         runners: list[int],
     ) -> Response: ...
 
@@ -1801,7 +1802,7 @@ class ActionsClient:
         org: str,
         runner_group_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBodyType
         ] = UNSET,
@@ -1839,7 +1840,7 @@ class ActionsClient:
         runner_group_id: int,
         runner_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#add-a-self-hosted-runner-to-a-group-for-an-organization"""
 
@@ -1859,7 +1860,7 @@ class ActionsClient:
         runner_group_id: int,
         runner_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#add-a-self-hosted-runner-to-a-group-for-an-organization"""
 
@@ -1879,7 +1880,7 @@ class ActionsClient:
         runner_group_id: int,
         runner_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#remove-a-self-hosted-runner-from-a-group-for-an-organization"""
 
@@ -1899,7 +1900,7 @@ class ActionsClient:
         runner_group_id: int,
         runner_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#remove-a-self-hosted-runner-from-a-group-for-an-organization"""
 
@@ -1920,7 +1921,7 @@ class ActionsClient:
         name: Missing[str] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         OrgsOrgActionsRunnersGetResponse200, OrgsOrgActionsRunnersGetResponse200Type
     ]:
@@ -1953,7 +1954,7 @@ class ActionsClient:
         name: Missing[str] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         OrgsOrgActionsRunnersGetResponse200, OrgsOrgActionsRunnersGetResponse200Type
     ]:
@@ -1983,7 +1984,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[RunnerApplication], list[RunnerApplicationType]]:
         """See also: https://docs.github.com/rest/actions/self-hosted-runners#list-runner-applications-for-an-organization"""
 
@@ -2004,7 +2005,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[RunnerApplication], list[RunnerApplicationType]]:
         """See also: https://docs.github.com/rest/actions/self-hosted-runners#list-runner-applications-for-an-organization"""
 
@@ -2026,7 +2027,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgActionsRunnersGenerateJitconfigPostBodyType,
     ) -> Response[
         OrgsOrgActionsRunnersGenerateJitconfigPostResponse201,
@@ -2039,7 +2040,7 @@ class ActionsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         name: str,
         runner_group_id: int,
         labels: list[str],
@@ -2053,7 +2054,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgActionsRunnersGenerateJitconfigPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[
@@ -2101,7 +2102,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgActionsRunnersGenerateJitconfigPostBodyType,
     ) -> Response[
         OrgsOrgActionsRunnersGenerateJitconfigPostResponse201,
@@ -2114,7 +2115,7 @@ class ActionsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         name: str,
         runner_group_id: int,
         labels: list[str],
@@ -2128,7 +2129,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgActionsRunnersGenerateJitconfigPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[
@@ -2175,7 +2176,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[AuthenticationToken, AuthenticationTokenType]:
         """See also: https://docs.github.com/rest/actions/self-hosted-runners#create-a-registration-token-for-an-organization"""
 
@@ -2196,7 +2197,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[AuthenticationToken, AuthenticationTokenType]:
         """See also: https://docs.github.com/rest/actions/self-hosted-runners#create-a-registration-token-for-an-organization"""
 
@@ -2217,7 +2218,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[AuthenticationToken, AuthenticationTokenType]:
         """See also: https://docs.github.com/rest/actions/self-hosted-runners#create-a-remove-token-for-an-organization"""
 
@@ -2238,7 +2239,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[AuthenticationToken, AuthenticationTokenType]:
         """See also: https://docs.github.com/rest/actions/self-hosted-runners#create-a-remove-token-for-an-organization"""
 
@@ -2260,7 +2261,7 @@ class ActionsClient:
         org: str,
         runner_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Runner, RunnerType]:
         """See also: https://docs.github.com/rest/actions/self-hosted-runners#get-a-self-hosted-runner-for-an-organization"""
 
@@ -2282,7 +2283,7 @@ class ActionsClient:
         org: str,
         runner_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Runner, RunnerType]:
         """See also: https://docs.github.com/rest/actions/self-hosted-runners#get-a-self-hosted-runner-for-an-organization"""
 
@@ -2304,7 +2305,7 @@ class ActionsClient:
         org: str,
         runner_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/actions/self-hosted-runners#delete-a-self-hosted-runner-from-an-organization"""
 
@@ -2323,7 +2324,7 @@ class ActionsClient:
         org: str,
         runner_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/actions/self-hosted-runners#delete-a-self-hosted-runner-from-an-organization"""
 
@@ -2342,7 +2343,7 @@ class ActionsClient:
         org: str,
         runner_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200Type,
@@ -2373,7 +2374,7 @@ class ActionsClient:
         org: str,
         runner_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200Type,
@@ -2405,7 +2406,7 @@ class ActionsClient:
         org: str,
         runner_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgActionsRunnersRunnerIdLabelsPutBodyType,
     ) -> Response[
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
@@ -2419,7 +2420,7 @@ class ActionsClient:
         runner_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         labels: list[str],
     ) -> Response[
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
@@ -2431,7 +2432,7 @@ class ActionsClient:
         org: str,
         runner_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgActionsRunnersRunnerIdLabelsPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[
@@ -2480,7 +2481,7 @@ class ActionsClient:
         org: str,
         runner_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgActionsRunnersRunnerIdLabelsPutBodyType,
     ) -> Response[
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
@@ -2494,7 +2495,7 @@ class ActionsClient:
         runner_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         labels: list[str],
     ) -> Response[
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
@@ -2506,7 +2507,7 @@ class ActionsClient:
         org: str,
         runner_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgActionsRunnersRunnerIdLabelsPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[
@@ -2555,7 +2556,7 @@ class ActionsClient:
         org: str,
         runner_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgActionsRunnersRunnerIdLabelsPostBodyType,
     ) -> Response[
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
@@ -2569,7 +2570,7 @@ class ActionsClient:
         runner_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         labels: list[str],
     ) -> Response[
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
@@ -2581,7 +2582,7 @@ class ActionsClient:
         org: str,
         runner_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgActionsRunnersRunnerIdLabelsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[
@@ -2630,7 +2631,7 @@ class ActionsClient:
         org: str,
         runner_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgActionsRunnersRunnerIdLabelsPostBodyType,
     ) -> Response[
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
@@ -2644,7 +2645,7 @@ class ActionsClient:
         runner_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         labels: list[str],
     ) -> Response[
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
@@ -2656,7 +2657,7 @@ class ActionsClient:
         org: str,
         runner_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgActionsRunnersRunnerIdLabelsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[
@@ -2704,7 +2705,7 @@ class ActionsClient:
         org: str,
         runner_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200,
         OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200Type,
@@ -2735,7 +2736,7 @@ class ActionsClient:
         org: str,
         runner_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200,
         OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200Type,
@@ -2767,7 +2768,7 @@ class ActionsClient:
         runner_id: int,
         name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200Type,
@@ -2801,7 +2802,7 @@ class ActionsClient:
         runner_id: int,
         name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200Type,
@@ -2835,7 +2836,7 @@ class ActionsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         OrgsOrgActionsSecretsGetResponse200, OrgsOrgActionsSecretsGetResponse200Type
     ]:
@@ -2866,7 +2867,7 @@ class ActionsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         OrgsOrgActionsSecretsGetResponse200, OrgsOrgActionsSecretsGetResponse200Type
     ]:
@@ -2895,7 +2896,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ActionsPublicKey, ActionsPublicKeyType]:
         """See also: https://docs.github.com/rest/actions/secrets#get-an-organization-public-key"""
 
@@ -2916,7 +2917,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ActionsPublicKey, ActionsPublicKeyType]:
         """See also: https://docs.github.com/rest/actions/secrets#get-an-organization-public-key"""
 
@@ -2938,7 +2939,7 @@ class ActionsClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[OrganizationActionsSecret, OrganizationActionsSecretType]:
         """See also: https://docs.github.com/rest/actions/secrets#get-an-organization-secret"""
 
@@ -2960,7 +2961,7 @@ class ActionsClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[OrganizationActionsSecret, OrganizationActionsSecretType]:
         """See also: https://docs.github.com/rest/actions/secrets#get-an-organization-secret"""
 
@@ -2983,7 +2984,7 @@ class ActionsClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgActionsSecretsSecretNamePutBodyType,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
 
@@ -2994,7 +2995,7 @@ class ActionsClient:
         secret_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         encrypted_value: Missing[str] = UNSET,
         key_id: Missing[str] = UNSET,
         visibility: Literal["all", "private", "selected"],
@@ -3006,7 +3007,7 @@ class ActionsClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgActionsSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject, EmptyObjectType]:
@@ -3041,7 +3042,7 @@ class ActionsClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgActionsSecretsSecretNamePutBodyType,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
 
@@ -3052,7 +3053,7 @@ class ActionsClient:
         secret_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         encrypted_value: Missing[str] = UNSET,
         key_id: Missing[str] = UNSET,
         visibility: Literal["all", "private", "selected"],
@@ -3064,7 +3065,7 @@ class ActionsClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgActionsSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject, EmptyObjectType]:
@@ -3098,7 +3099,7 @@ class ActionsClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/actions/secrets#delete-an-organization-secret"""
 
@@ -3117,7 +3118,7 @@ class ActionsClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/actions/secrets#delete-an-organization-secret"""
 
@@ -3138,7 +3139,7 @@ class ActionsClient:
         *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200,
         OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200Type,
@@ -3171,7 +3172,7 @@ class ActionsClient:
         *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200,
         OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200Type,
@@ -3203,7 +3204,7 @@ class ActionsClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgActionsSecretsSecretNameRepositoriesPutBodyType,
     ) -> Response: ...
 
@@ -3214,7 +3215,7 @@ class ActionsClient:
         secret_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         selected_repository_ids: list[int],
     ) -> Response: ...
 
@@ -3223,7 +3224,7 @@ class ActionsClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgActionsSecretsSecretNameRepositoriesPutBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -3259,7 +3260,7 @@ class ActionsClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgActionsSecretsSecretNameRepositoriesPutBodyType,
     ) -> Response: ...
 
@@ -3270,7 +3271,7 @@ class ActionsClient:
         secret_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         selected_repository_ids: list[int],
     ) -> Response: ...
 
@@ -3279,7 +3280,7 @@ class ActionsClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgActionsSecretsSecretNameRepositoriesPutBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -3315,7 +3316,7 @@ class ActionsClient:
         secret_name: str,
         repository_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/actions/secrets#add-selected-repository-to-an-organization-secret"""
 
@@ -3336,7 +3337,7 @@ class ActionsClient:
         secret_name: str,
         repository_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/actions/secrets#add-selected-repository-to-an-organization-secret"""
 
@@ -3357,7 +3358,7 @@ class ActionsClient:
         secret_name: str,
         repository_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/actions/secrets#remove-selected-repository-from-an-organization-secret"""
 
@@ -3378,7 +3379,7 @@ class ActionsClient:
         secret_name: str,
         repository_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/actions/secrets#remove-selected-repository-from-an-organization-secret"""
 
@@ -3399,7 +3400,7 @@ class ActionsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         OrgsOrgActionsVariablesGetResponse200, OrgsOrgActionsVariablesGetResponse200Type
     ]:
@@ -3430,7 +3431,7 @@ class ActionsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         OrgsOrgActionsVariablesGetResponse200, OrgsOrgActionsVariablesGetResponse200Type
     ]:
@@ -3460,7 +3461,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgActionsVariablesPostBodyType,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
 
@@ -3470,7 +3471,7 @@ class ActionsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         name: str,
         value: str,
         visibility: Literal["all", "private", "selected"],
@@ -3481,7 +3482,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgActionsVariablesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject, EmptyObjectType]:
@@ -3515,7 +3516,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgActionsVariablesPostBodyType,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
 
@@ -3525,7 +3526,7 @@ class ActionsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         name: str,
         value: str,
         visibility: Literal["all", "private", "selected"],
@@ -3536,7 +3537,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgActionsVariablesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject, EmptyObjectType]:
@@ -3570,7 +3571,7 @@ class ActionsClient:
         org: str,
         name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[OrganizationActionsVariable, OrganizationActionsVariableType]:
         """See also: https://docs.github.com/rest/actions/variables#get-an-organization-variable"""
 
@@ -3592,7 +3593,7 @@ class ActionsClient:
         org: str,
         name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[OrganizationActionsVariable, OrganizationActionsVariableType]:
         """See also: https://docs.github.com/rest/actions/variables#get-an-organization-variable"""
 
@@ -3614,7 +3615,7 @@ class ActionsClient:
         org: str,
         name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/actions/variables#delete-an-organization-variable"""
 
@@ -3633,7 +3634,7 @@ class ActionsClient:
         org: str,
         name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/actions/variables#delete-an-organization-variable"""
 
@@ -3653,7 +3654,7 @@ class ActionsClient:
         org: str,
         name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgActionsVariablesNamePatchBodyType,
     ) -> Response: ...
 
@@ -3664,7 +3665,7 @@ class ActionsClient:
         name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         value: Missing[str] = UNSET,
         visibility: Missing[Literal["all", "private", "selected"]] = UNSET,
         selected_repository_ids: Missing[list[int]] = UNSET,
@@ -3675,7 +3676,7 @@ class ActionsClient:
         org: str,
         name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgActionsVariablesNamePatchBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -3709,7 +3710,7 @@ class ActionsClient:
         org: str,
         name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgActionsVariablesNamePatchBodyType,
     ) -> Response: ...
 
@@ -3720,7 +3721,7 @@ class ActionsClient:
         name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         value: Missing[str] = UNSET,
         visibility: Missing[Literal["all", "private", "selected"]] = UNSET,
         selected_repository_ids: Missing[list[int]] = UNSET,
@@ -3731,7 +3732,7 @@ class ActionsClient:
         org: str,
         name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgActionsVariablesNamePatchBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -3766,7 +3767,7 @@ class ActionsClient:
         *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         OrgsOrgActionsVariablesNameRepositoriesGetResponse200,
         OrgsOrgActionsVariablesNameRepositoriesGetResponse200Type,
@@ -3800,7 +3801,7 @@ class ActionsClient:
         *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         OrgsOrgActionsVariablesNameRepositoriesGetResponse200,
         OrgsOrgActionsVariablesNameRepositoriesGetResponse200Type,
@@ -3833,7 +3834,7 @@ class ActionsClient:
         org: str,
         name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgActionsVariablesNameRepositoriesPutBodyType,
     ) -> Response: ...
 
@@ -3844,7 +3845,7 @@ class ActionsClient:
         name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         selected_repository_ids: list[int],
     ) -> Response: ...
 
@@ -3853,7 +3854,7 @@ class ActionsClient:
         org: str,
         name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgActionsVariablesNameRepositoriesPutBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -3890,7 +3891,7 @@ class ActionsClient:
         org: str,
         name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgActionsVariablesNameRepositoriesPutBodyType,
     ) -> Response: ...
 
@@ -3901,7 +3902,7 @@ class ActionsClient:
         name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         selected_repository_ids: list[int],
     ) -> Response: ...
 
@@ -3910,7 +3911,7 @@ class ActionsClient:
         org: str,
         name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgActionsVariablesNameRepositoriesPutBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -3947,7 +3948,7 @@ class ActionsClient:
         name: str,
         repository_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/actions/variables#add-selected-repository-to-an-organization-variable"""
 
@@ -3968,7 +3969,7 @@ class ActionsClient:
         name: str,
         repository_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/actions/variables#add-selected-repository-to-an-organization-variable"""
 
@@ -3989,7 +3990,7 @@ class ActionsClient:
         name: str,
         repository_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/actions/variables#remove-selected-repository-from-an-organization-variable"""
 
@@ -4010,7 +4011,7 @@ class ActionsClient:
         name: str,
         repository_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/actions/variables#remove-selected-repository-from-an-organization-variable"""
 
@@ -4033,7 +4034,7 @@ class ActionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         name: Missing[str] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoActionsArtifactsGetResponse200,
         ReposOwnerRepoActionsArtifactsGetResponse200Type,
@@ -4068,7 +4069,7 @@ class ActionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         name: Missing[str] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoActionsArtifactsGetResponse200,
         ReposOwnerRepoActionsArtifactsGetResponse200Type,
@@ -4101,7 +4102,7 @@ class ActionsClient:
         repo: str,
         artifact_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Artifact, ArtifactType]:
         """See also: https://docs.github.com/rest/actions/artifacts#get-an-artifact"""
 
@@ -4124,7 +4125,7 @@ class ActionsClient:
         repo: str,
         artifact_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Artifact, ArtifactType]:
         """See also: https://docs.github.com/rest/actions/artifacts#get-an-artifact"""
 
@@ -4147,7 +4148,7 @@ class ActionsClient:
         repo: str,
         artifact_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/actions/artifacts#delete-an-artifact"""
 
@@ -4167,7 +4168,7 @@ class ActionsClient:
         repo: str,
         artifact_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/actions/artifacts#delete-an-artifact"""
 
@@ -4188,7 +4189,7 @@ class ActionsClient:
         artifact_id: int,
         archive_format: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/actions/artifacts#download-an-artifact"""
 
@@ -4214,7 +4215,7 @@ class ActionsClient:
         artifact_id: int,
         archive_format: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/actions/artifacts#download-an-artifact"""
 
@@ -4238,7 +4239,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ActionsCacheUsageByRepository, ActionsCacheUsageByRepositoryType]:
         """See also: https://docs.github.com/rest/actions/cache#get-github-actions-cache-usage-for-a-repository"""
 
@@ -4260,7 +4261,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ActionsCacheUsageByRepository, ActionsCacheUsageByRepositoryType]:
         """See also: https://docs.github.com/rest/actions/cache#get-github-actions-cache-usage-for-a-repository"""
 
@@ -4290,7 +4291,7 @@ class ActionsClient:
             Literal["created_at", "last_accessed_at", "size_in_bytes"]
         ] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ActionsCacheList, ActionsCacheListType]:
         """See also: https://docs.github.com/rest/actions/cache#list-github-actions-caches-for-a-repository"""
 
@@ -4330,7 +4331,7 @@ class ActionsClient:
             Literal["created_at", "last_accessed_at", "size_in_bytes"]
         ] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ActionsCacheList, ActionsCacheListType]:
         """See also: https://docs.github.com/rest/actions/cache#list-github-actions-caches-for-a-repository"""
 
@@ -4364,7 +4365,7 @@ class ActionsClient:
         *,
         key: str,
         ref: Missing[str] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ActionsCacheList, ActionsCacheListType]:
         """See also: https://docs.github.com/rest/actions/cache#delete-github-actions-caches-for-a-repository-using-a-cache-key"""
 
@@ -4394,7 +4395,7 @@ class ActionsClient:
         *,
         key: str,
         ref: Missing[str] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ActionsCacheList, ActionsCacheListType]:
         """See also: https://docs.github.com/rest/actions/cache#delete-github-actions-caches-for-a-repository-using-a-cache-key"""
 
@@ -4423,7 +4424,7 @@ class ActionsClient:
         repo: str,
         cache_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/actions/cache#delete-a-github-actions-cache-for-a-repository-using-a-cache-id"""
 
@@ -4443,7 +4444,7 @@ class ActionsClient:
         repo: str,
         cache_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/actions/cache#delete-a-github-actions-cache-for-a-repository-using-a-cache-id"""
 
@@ -4463,7 +4464,7 @@ class ActionsClient:
         repo: str,
         job_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Job, JobType]:
         """See also: https://docs.github.com/rest/actions/workflow-jobs#get-a-job-for-a-workflow-run"""
 
@@ -4486,7 +4487,7 @@ class ActionsClient:
         repo: str,
         job_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Job, JobType]:
         """See also: https://docs.github.com/rest/actions/workflow-jobs#get-a-job-for-a-workflow-run"""
 
@@ -4509,7 +4510,7 @@ class ActionsClient:
         repo: str,
         job_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/actions/workflow-jobs#download-job-logs-for-a-workflow-run"""
 
@@ -4529,7 +4530,7 @@ class ActionsClient:
         repo: str,
         job_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/actions/workflow-jobs#download-job-logs-for-a-workflow-run"""
 
@@ -4550,7 +4551,7 @@ class ActionsClient:
         repo: str,
         job_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             Union[ReposOwnerRepoActionsJobsJobIdRerunPostBodyType, None]
         ] = UNSET,
@@ -4564,7 +4565,7 @@ class ActionsClient:
         job_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         enable_debug_logging: Missing[bool] = UNSET,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
 
@@ -4574,7 +4575,7 @@ class ActionsClient:
         repo: str,
         job_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             Union[ReposOwnerRepoActionsJobsJobIdRerunPostBodyType, None]
         ] = UNSET,
@@ -4623,7 +4624,7 @@ class ActionsClient:
         repo: str,
         job_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             Union[ReposOwnerRepoActionsJobsJobIdRerunPostBodyType, None]
         ] = UNSET,
@@ -4637,7 +4638,7 @@ class ActionsClient:
         job_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         enable_debug_logging: Missing[bool] = UNSET,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
 
@@ -4647,7 +4648,7 @@ class ActionsClient:
         repo: str,
         job_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             Union[ReposOwnerRepoActionsJobsJobIdRerunPostBodyType, None]
         ] = UNSET,
@@ -4694,7 +4695,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[OidcCustomSubRepo, OidcCustomSubRepoType]:
         """See also: https://docs.github.com/rest/actions/oidc#get-the-customization-template-for-an-oidc-subject-claim-for-a-repository"""
 
@@ -4720,7 +4721,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[OidcCustomSubRepo, OidcCustomSubRepoType]:
         """See also: https://docs.github.com/rest/actions/oidc#get-the-customization-template-for-an-oidc-subject-claim-for-a-repository"""
 
@@ -4747,7 +4748,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoActionsOidcCustomizationSubPutBodyType,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
 
@@ -4758,7 +4759,7 @@ class ActionsClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         use_default: bool,
         include_claim_keys: Missing[list[str]] = UNSET,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
@@ -4768,7 +4769,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoActionsOidcCustomizationSubPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject, EmptyObjectType]:
@@ -4815,7 +4816,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoActionsOidcCustomizationSubPutBodyType,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
 
@@ -4826,7 +4827,7 @@ class ActionsClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         use_default: bool,
         include_claim_keys: Missing[list[str]] = UNSET,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
@@ -4836,7 +4837,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoActionsOidcCustomizationSubPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject, EmptyObjectType]:
@@ -4884,7 +4885,7 @@ class ActionsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoActionsOrganizationSecretsGetResponse200,
         ReposOwnerRepoActionsOrganizationSecretsGetResponse200Type,
@@ -4917,7 +4918,7 @@ class ActionsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoActionsOrganizationSecretsGetResponse200,
         ReposOwnerRepoActionsOrganizationSecretsGetResponse200Type,
@@ -4950,7 +4951,7 @@ class ActionsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoActionsOrganizationVariablesGetResponse200,
         ReposOwnerRepoActionsOrganizationVariablesGetResponse200Type,
@@ -4983,7 +4984,7 @@ class ActionsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoActionsOrganizationVariablesGetResponse200,
         ReposOwnerRepoActionsOrganizationVariablesGetResponse200Type,
@@ -5014,7 +5015,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ActionsRepositoryPermissions, ActionsRepositoryPermissionsType]:
         """See also: https://docs.github.com/rest/actions/permissions#get-github-actions-permissions-for-a-repository"""
 
@@ -5036,7 +5037,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ActionsRepositoryPermissions, ActionsRepositoryPermissionsType]:
         """See also: https://docs.github.com/rest/actions/permissions#get-github-actions-permissions-for-a-repository"""
 
@@ -5059,7 +5060,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoActionsPermissionsPutBodyType,
     ) -> Response: ...
 
@@ -5070,7 +5071,7 @@ class ActionsClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         enabled: bool,
         allowed_actions: Missing[Literal["all", "local_only", "selected"]] = UNSET,
     ) -> Response: ...
@@ -5080,7 +5081,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoActionsPermissionsPutBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -5114,7 +5115,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoActionsPermissionsPutBodyType,
     ) -> Response: ...
 
@@ -5125,7 +5126,7 @@ class ActionsClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         enabled: bool,
         allowed_actions: Missing[Literal["all", "local_only", "selected"]] = UNSET,
     ) -> Response: ...
@@ -5135,7 +5136,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoActionsPermissionsPutBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -5168,7 +5169,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         ActionsWorkflowAccessToRepository, ActionsWorkflowAccessToRepositoryType
     ]:
@@ -5192,7 +5193,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         ActionsWorkflowAccessToRepository, ActionsWorkflowAccessToRepositoryType
     ]:
@@ -5217,7 +5218,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ActionsWorkflowAccessToRepositoryType,
     ) -> Response: ...
 
@@ -5228,7 +5229,7 @@ class ActionsClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         access_level: Literal["none", "user", "organization"],
     ) -> Response: ...
 
@@ -5237,7 +5238,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ActionsWorkflowAccessToRepositoryType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -5271,7 +5272,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ActionsWorkflowAccessToRepositoryType,
     ) -> Response: ...
 
@@ -5282,7 +5283,7 @@ class ActionsClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         access_level: Literal["none", "user", "organization"],
     ) -> Response: ...
 
@@ -5291,7 +5292,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ActionsWorkflowAccessToRepositoryType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -5324,7 +5325,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[SelectedActions, SelectedActionsType]:
         """See also: https://docs.github.com/rest/actions/permissions#get-allowed-actions-and-reusable-workflows-for-a-repository"""
 
@@ -5346,7 +5347,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[SelectedActions, SelectedActionsType]:
         """See also: https://docs.github.com/rest/actions/permissions#get-allowed-actions-and-reusable-workflows-for-a-repository"""
 
@@ -5369,7 +5370,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[SelectedActionsType] = UNSET,
     ) -> Response: ...
 
@@ -5380,7 +5381,7 @@ class ActionsClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         github_owned_allowed: Missing[bool] = UNSET,
         verified_allowed: Missing[bool] = UNSET,
         patterns_allowed: Missing[list[str]] = UNSET,
@@ -5391,7 +5392,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[SelectedActionsType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -5425,7 +5426,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[SelectedActionsType] = UNSET,
     ) -> Response: ...
 
@@ -5436,7 +5437,7 @@ class ActionsClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         github_owned_allowed: Missing[bool] = UNSET,
         verified_allowed: Missing[bool] = UNSET,
         patterns_allowed: Missing[list[str]] = UNSET,
@@ -5447,7 +5448,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[SelectedActionsType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -5480,7 +5481,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         ActionsGetDefaultWorkflowPermissions, ActionsGetDefaultWorkflowPermissionsType
     ]:
@@ -5504,7 +5505,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         ActionsGetDefaultWorkflowPermissions, ActionsGetDefaultWorkflowPermissionsType
     ]:
@@ -5529,7 +5530,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ActionsSetDefaultWorkflowPermissionsType,
     ) -> Response: ...
 
@@ -5540,7 +5541,7 @@ class ActionsClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         default_workflow_permissions: Missing[Literal["read", "write"]] = UNSET,
         can_approve_pull_request_reviews: Missing[bool] = UNSET,
     ) -> Response: ...
@@ -5550,7 +5551,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ActionsSetDefaultWorkflowPermissionsType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -5585,7 +5586,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ActionsSetDefaultWorkflowPermissionsType,
     ) -> Response: ...
 
@@ -5596,7 +5597,7 @@ class ActionsClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         default_workflow_permissions: Missing[Literal["read", "write"]] = UNSET,
         can_approve_pull_request_reviews: Missing[bool] = UNSET,
     ) -> Response: ...
@@ -5606,7 +5607,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ActionsSetDefaultWorkflowPermissionsType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -5643,7 +5644,7 @@ class ActionsClient:
         name: Missing[str] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoActionsRunnersGetResponse200,
         ReposOwnerRepoActionsRunnersGetResponse200Type,
@@ -5678,7 +5679,7 @@ class ActionsClient:
         name: Missing[str] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoActionsRunnersGetResponse200,
         ReposOwnerRepoActionsRunnersGetResponse200Type,
@@ -5710,7 +5711,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[RunnerApplication], list[RunnerApplicationType]]:
         """See also: https://docs.github.com/rest/actions/self-hosted-runners#list-runner-applications-for-a-repository"""
 
@@ -5732,7 +5733,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[RunnerApplication], list[RunnerApplicationType]]:
         """See also: https://docs.github.com/rest/actions/self-hosted-runners#list-runner-applications-for-a-repository"""
 
@@ -5755,7 +5756,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoActionsRunnersGenerateJitconfigPostBodyType,
     ) -> Response[
         OrgsOrgActionsRunnersGenerateJitconfigPostResponse201,
@@ -5769,7 +5770,7 @@ class ActionsClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         name: str,
         runner_group_id: int,
         labels: list[str],
@@ -5784,7 +5785,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             ReposOwnerRepoActionsRunnersGenerateJitconfigPostBodyType
         ] = UNSET,
@@ -5835,7 +5836,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoActionsRunnersGenerateJitconfigPostBodyType,
     ) -> Response[
         OrgsOrgActionsRunnersGenerateJitconfigPostResponse201,
@@ -5849,7 +5850,7 @@ class ActionsClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         name: str,
         runner_group_id: int,
         labels: list[str],
@@ -5864,7 +5865,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             ReposOwnerRepoActionsRunnersGenerateJitconfigPostBodyType
         ] = UNSET,
@@ -5914,7 +5915,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[AuthenticationToken, AuthenticationTokenType]:
         """See also: https://docs.github.com/rest/actions/self-hosted-runners#create-a-registration-token-for-a-repository"""
 
@@ -5936,7 +5937,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[AuthenticationToken, AuthenticationTokenType]:
         """See also: https://docs.github.com/rest/actions/self-hosted-runners#create-a-registration-token-for-a-repository"""
 
@@ -5958,7 +5959,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[AuthenticationToken, AuthenticationTokenType]:
         """See also: https://docs.github.com/rest/actions/self-hosted-runners#create-a-remove-token-for-a-repository"""
 
@@ -5980,7 +5981,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[AuthenticationToken, AuthenticationTokenType]:
         """See also: https://docs.github.com/rest/actions/self-hosted-runners#create-a-remove-token-for-a-repository"""
 
@@ -6003,7 +6004,7 @@ class ActionsClient:
         repo: str,
         runner_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Runner, RunnerType]:
         """See also: https://docs.github.com/rest/actions/self-hosted-runners#get-a-self-hosted-runner-for-a-repository"""
 
@@ -6026,7 +6027,7 @@ class ActionsClient:
         repo: str,
         runner_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Runner, RunnerType]:
         """See also: https://docs.github.com/rest/actions/self-hosted-runners#get-a-self-hosted-runner-for-a-repository"""
 
@@ -6049,7 +6050,7 @@ class ActionsClient:
         repo: str,
         runner_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/actions/self-hosted-runners#delete-a-self-hosted-runner-from-a-repository"""
 
@@ -6069,7 +6070,7 @@ class ActionsClient:
         repo: str,
         runner_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/actions/self-hosted-runners#delete-a-self-hosted-runner-from-a-repository"""
 
@@ -6089,7 +6090,7 @@ class ActionsClient:
         repo: str,
         runner_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200Type,
@@ -6121,7 +6122,7 @@ class ActionsClient:
         repo: str,
         runner_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200Type,
@@ -6154,7 +6155,7 @@ class ActionsClient:
         repo: str,
         runner_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBodyType,
     ) -> Response[
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
@@ -6169,7 +6170,7 @@ class ActionsClient:
         runner_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         labels: list[str],
     ) -> Response[
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
@@ -6182,7 +6183,7 @@ class ActionsClient:
         repo: str,
         runner_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[
@@ -6232,7 +6233,7 @@ class ActionsClient:
         repo: str,
         runner_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBodyType,
     ) -> Response[
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
@@ -6247,7 +6248,7 @@ class ActionsClient:
         runner_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         labels: list[str],
     ) -> Response[
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
@@ -6260,7 +6261,7 @@ class ActionsClient:
         repo: str,
         runner_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[
@@ -6310,7 +6311,7 @@ class ActionsClient:
         repo: str,
         runner_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBodyType,
     ) -> Response[
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
@@ -6325,7 +6326,7 @@ class ActionsClient:
         runner_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         labels: list[str],
     ) -> Response[
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
@@ -6338,7 +6339,7 @@ class ActionsClient:
         repo: str,
         runner_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[
@@ -6388,7 +6389,7 @@ class ActionsClient:
         repo: str,
         runner_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBodyType,
     ) -> Response[
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
@@ -6403,7 +6404,7 @@ class ActionsClient:
         runner_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         labels: list[str],
     ) -> Response[
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
@@ -6416,7 +6417,7 @@ class ActionsClient:
         repo: str,
         runner_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[
@@ -6465,7 +6466,7 @@ class ActionsClient:
         repo: str,
         runner_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200,
         OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200Type,
@@ -6497,7 +6498,7 @@ class ActionsClient:
         repo: str,
         runner_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200,
         OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200Type,
@@ -6530,7 +6531,7 @@ class ActionsClient:
         runner_id: int,
         name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200Type,
@@ -6565,7 +6566,7 @@ class ActionsClient:
         runner_id: int,
         name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200Type,
@@ -6625,7 +6626,7 @@ class ActionsClient:
         exclude_pull_requests: Missing[bool] = UNSET,
         check_suite_id: Missing[int] = UNSET,
         head_sha: Missing[str] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoActionsRunsGetResponse200,
         ReposOwnerRepoActionsRunsGetResponse200Type,
@@ -6691,7 +6692,7 @@ class ActionsClient:
         exclude_pull_requests: Missing[bool] = UNSET,
         check_suite_id: Missing[int] = UNSET,
         head_sha: Missing[str] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoActionsRunsGetResponse200,
         ReposOwnerRepoActionsRunsGetResponse200Type,
@@ -6732,7 +6733,7 @@ class ActionsClient:
         run_id: int,
         *,
         exclude_pull_requests: Missing[bool] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[WorkflowRun, WorkflowRunType]:
         """See also: https://docs.github.com/rest/actions/workflow-runs#get-a-workflow-run"""
 
@@ -6761,7 +6762,7 @@ class ActionsClient:
         run_id: int,
         *,
         exclude_pull_requests: Missing[bool] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[WorkflowRun, WorkflowRunType]:
         """See also: https://docs.github.com/rest/actions/workflow-runs#get-a-workflow-run"""
 
@@ -6789,7 +6790,7 @@ class ActionsClient:
         repo: str,
         run_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/actions/workflow-runs#delete-a-workflow-run"""
 
@@ -6809,7 +6810,7 @@ class ActionsClient:
         repo: str,
         run_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/actions/workflow-runs#delete-a-workflow-run"""
 
@@ -6829,7 +6830,7 @@ class ActionsClient:
         repo: str,
         run_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[EnvironmentApprovals], list[EnvironmentApprovalsType]]:
         """See also: https://docs.github.com/rest/actions/workflow-runs#get-the-review-history-for-a-workflow-run"""
 
@@ -6852,7 +6853,7 @@ class ActionsClient:
         repo: str,
         run_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[EnvironmentApprovals], list[EnvironmentApprovalsType]]:
         """See also: https://docs.github.com/rest/actions/workflow-runs#get-the-review-history-for-a-workflow-run"""
 
@@ -6875,7 +6876,7 @@ class ActionsClient:
         repo: str,
         run_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[EmptyObject, EmptyObjectType]:
         """See also: https://docs.github.com/rest/actions/workflow-runs#approve-a-workflow-run-for-a-fork-pull-request"""
 
@@ -6902,7 +6903,7 @@ class ActionsClient:
         repo: str,
         run_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[EmptyObject, EmptyObjectType]:
         """See also: https://docs.github.com/rest/actions/workflow-runs#approve-a-workflow-run-for-a-fork-pull-request"""
 
@@ -6932,7 +6933,7 @@ class ActionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         name: Missing[str] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200,
         ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200Type,
@@ -6968,7 +6969,7 @@ class ActionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         name: Missing[str] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200,
         ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200Type,
@@ -7003,7 +7004,7 @@ class ActionsClient:
         attempt_number: int,
         *,
         exclude_pull_requests: Missing[bool] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[WorkflowRun, WorkflowRunType]:
         """See also: https://docs.github.com/rest/actions/workflow-runs#get-a-workflow-run-attempt"""
 
@@ -7033,7 +7034,7 @@ class ActionsClient:
         attempt_number: int,
         *,
         exclude_pull_requests: Missing[bool] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[WorkflowRun, WorkflowRunType]:
         """See also: https://docs.github.com/rest/actions/workflow-runs#get-a-workflow-run-attempt"""
 
@@ -7064,7 +7065,7 @@ class ActionsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200,
         ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200Type,
@@ -7105,7 +7106,7 @@ class ActionsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200,
         ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200Type,
@@ -7144,7 +7145,7 @@ class ActionsClient:
         run_id: int,
         attempt_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/actions/workflow-runs#download-workflow-run-attempt-logs"""
 
@@ -7165,7 +7166,7 @@ class ActionsClient:
         run_id: int,
         attempt_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/actions/workflow-runs#download-workflow-run-attempt-logs"""
 
@@ -7185,7 +7186,7 @@ class ActionsClient:
         repo: str,
         run_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[EmptyObject, EmptyObjectType]:
         """See also: https://docs.github.com/rest/actions/workflow-runs#cancel-a-workflow-run"""
 
@@ -7211,7 +7212,7 @@ class ActionsClient:
         repo: str,
         run_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[EmptyObject, EmptyObjectType]:
         """See also: https://docs.github.com/rest/actions/workflow-runs#cancel-a-workflow-run"""
 
@@ -7238,7 +7239,7 @@ class ActionsClient:
         repo: str,
         run_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Union[
             ReviewCustomGatesCommentRequiredType, ReviewCustomGatesStateRequiredType
         ],
@@ -7252,7 +7253,7 @@ class ActionsClient:
         run_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         environment_name: str,
         comment: str,
     ) -> Response: ...
@@ -7265,7 +7266,7 @@ class ActionsClient:
         run_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         environment_name: str,
         state: Literal["approved", "rejected"],
         comment: Missing[str] = UNSET,
@@ -7277,7 +7278,7 @@ class ActionsClient:
         repo: str,
         run_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             Union[
                 ReviewCustomGatesCommentRequiredType, ReviewCustomGatesStateRequiredType
@@ -7324,7 +7325,7 @@ class ActionsClient:
         repo: str,
         run_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Union[
             ReviewCustomGatesCommentRequiredType, ReviewCustomGatesStateRequiredType
         ],
@@ -7338,7 +7339,7 @@ class ActionsClient:
         run_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         environment_name: str,
         comment: str,
     ) -> Response: ...
@@ -7351,7 +7352,7 @@ class ActionsClient:
         run_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         environment_name: str,
         state: Literal["approved", "rejected"],
         comment: Missing[str] = UNSET,
@@ -7363,7 +7364,7 @@ class ActionsClient:
         repo: str,
         run_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             Union[
                 ReviewCustomGatesCommentRequiredType, ReviewCustomGatesStateRequiredType
@@ -7409,7 +7410,7 @@ class ActionsClient:
         repo: str,
         run_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[EmptyObject, EmptyObjectType]:
         """See also: https://docs.github.com/rest/actions/workflow-runs#force-cancel-a-workflow-run"""
 
@@ -7435,7 +7436,7 @@ class ActionsClient:
         repo: str,
         run_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[EmptyObject, EmptyObjectType]:
         """See also: https://docs.github.com/rest/actions/workflow-runs#force-cancel-a-workflow-run"""
 
@@ -7464,7 +7465,7 @@ class ActionsClient:
         filter_: Missing[Literal["latest", "all"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoActionsRunsRunIdJobsGetResponse200,
         ReposOwnerRepoActionsRunsRunIdJobsGetResponse200Type,
@@ -7500,7 +7501,7 @@ class ActionsClient:
         filter_: Missing[Literal["latest", "all"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoActionsRunsRunIdJobsGetResponse200,
         ReposOwnerRepoActionsRunsRunIdJobsGetResponse200Type,
@@ -7533,7 +7534,7 @@ class ActionsClient:
         repo: str,
         run_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/actions/workflow-runs#download-workflow-run-logs"""
 
@@ -7553,7 +7554,7 @@ class ActionsClient:
         repo: str,
         run_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/actions/workflow-runs#download-workflow-run-logs"""
 
@@ -7573,7 +7574,7 @@ class ActionsClient:
         repo: str,
         run_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/actions/workflow-runs#delete-workflow-run-logs"""
 
@@ -7599,7 +7600,7 @@ class ActionsClient:
         repo: str,
         run_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/actions/workflow-runs#delete-workflow-run-logs"""
 
@@ -7625,7 +7626,7 @@ class ActionsClient:
         repo: str,
         run_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[PendingDeployment], list[PendingDeploymentType]]:
         """See also: https://docs.github.com/rest/actions/workflow-runs#get-pending-deployments-for-a-workflow-run"""
 
@@ -7648,7 +7649,7 @@ class ActionsClient:
         repo: str,
         run_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[PendingDeployment], list[PendingDeploymentType]]:
         """See also: https://docs.github.com/rest/actions/workflow-runs#get-pending-deployments-for-a-workflow-run"""
 
@@ -7672,7 +7673,7 @@ class ActionsClient:
         repo: str,
         run_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBodyType,
     ) -> Response[list[Deployment], list[DeploymentType]]: ...
 
@@ -7684,7 +7685,7 @@ class ActionsClient:
         run_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         environment_ids: list[int],
         state: Literal["approved", "rejected"],
         comment: str,
@@ -7696,7 +7697,7 @@ class ActionsClient:
         repo: str,
         run_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBodyType
         ] = UNSET,
@@ -7739,7 +7740,7 @@ class ActionsClient:
         repo: str,
         run_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBodyType,
     ) -> Response[list[Deployment], list[DeploymentType]]: ...
 
@@ -7751,7 +7752,7 @@ class ActionsClient:
         run_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         environment_ids: list[int],
         state: Literal["approved", "rejected"],
         comment: str,
@@ -7763,7 +7764,7 @@ class ActionsClient:
         repo: str,
         run_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBodyType
         ] = UNSET,
@@ -7806,7 +7807,7 @@ class ActionsClient:
         repo: str,
         run_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             Union[ReposOwnerRepoActionsRunsRunIdRerunPostBodyType, None]
         ] = UNSET,
@@ -7820,7 +7821,7 @@ class ActionsClient:
         run_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         enable_debug_logging: Missing[bool] = UNSET,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
 
@@ -7830,7 +7831,7 @@ class ActionsClient:
         repo: str,
         run_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             Union[ReposOwnerRepoActionsRunsRunIdRerunPostBodyType, None]
         ] = UNSET,
@@ -7872,7 +7873,7 @@ class ActionsClient:
         repo: str,
         run_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             Union[ReposOwnerRepoActionsRunsRunIdRerunPostBodyType, None]
         ] = UNSET,
@@ -7886,7 +7887,7 @@ class ActionsClient:
         run_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         enable_debug_logging: Missing[bool] = UNSET,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
 
@@ -7896,7 +7897,7 @@ class ActionsClient:
         repo: str,
         run_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             Union[ReposOwnerRepoActionsRunsRunIdRerunPostBodyType, None]
         ] = UNSET,
@@ -7938,7 +7939,7 @@ class ActionsClient:
         repo: str,
         run_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             Union[ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBodyType, None]
         ] = UNSET,
@@ -7952,7 +7953,7 @@ class ActionsClient:
         run_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         enable_debug_logging: Missing[bool] = UNSET,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
 
@@ -7962,7 +7963,7 @@ class ActionsClient:
         repo: str,
         run_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             Union[ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBodyType, None]
         ] = UNSET,
@@ -8007,7 +8008,7 @@ class ActionsClient:
         repo: str,
         run_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             Union[ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBodyType, None]
         ] = UNSET,
@@ -8021,7 +8022,7 @@ class ActionsClient:
         run_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         enable_debug_logging: Missing[bool] = UNSET,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
 
@@ -8031,7 +8032,7 @@ class ActionsClient:
         repo: str,
         run_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             Union[ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBodyType, None]
         ] = UNSET,
@@ -8075,7 +8076,7 @@ class ActionsClient:
         repo: str,
         run_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[WorkflowRunUsage, WorkflowRunUsageType]:
         """See also: https://docs.github.com/rest/actions/workflow-runs#get-workflow-run-usage"""
 
@@ -8098,7 +8099,7 @@ class ActionsClient:
         repo: str,
         run_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[WorkflowRunUsage, WorkflowRunUsageType]:
         """See also: https://docs.github.com/rest/actions/workflow-runs#get-workflow-run-usage"""
 
@@ -8122,7 +8123,7 @@ class ActionsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoActionsSecretsGetResponse200,
         ReposOwnerRepoActionsSecretsGetResponse200Type,
@@ -8155,7 +8156,7 @@ class ActionsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoActionsSecretsGetResponse200,
         ReposOwnerRepoActionsSecretsGetResponse200Type,
@@ -8186,7 +8187,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ActionsPublicKey, ActionsPublicKeyType]:
         """See also: https://docs.github.com/rest/actions/secrets#get-a-repository-public-key"""
 
@@ -8208,7 +8209,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ActionsPublicKey, ActionsPublicKeyType]:
         """See also: https://docs.github.com/rest/actions/secrets#get-a-repository-public-key"""
 
@@ -8231,7 +8232,7 @@ class ActionsClient:
         repo: str,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ActionsSecret, ActionsSecretType]:
         """See also: https://docs.github.com/rest/actions/secrets#get-a-repository-secret"""
 
@@ -8254,7 +8255,7 @@ class ActionsClient:
         repo: str,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ActionsSecret, ActionsSecretType]:
         """See also: https://docs.github.com/rest/actions/secrets#get-a-repository-secret"""
 
@@ -8278,7 +8279,7 @@ class ActionsClient:
         repo: str,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoActionsSecretsSecretNamePutBodyType,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
 
@@ -8290,7 +8291,7 @@ class ActionsClient:
         secret_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         encrypted_value: Missing[str] = UNSET,
         key_id: Missing[str] = UNSET,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
@@ -8301,7 +8302,7 @@ class ActionsClient:
         repo: str,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoActionsSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject, EmptyObjectType]:
@@ -8339,7 +8340,7 @@ class ActionsClient:
         repo: str,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoActionsSecretsSecretNamePutBodyType,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
 
@@ -8351,7 +8352,7 @@ class ActionsClient:
         secret_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         encrypted_value: Missing[str] = UNSET,
         key_id: Missing[str] = UNSET,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
@@ -8362,7 +8363,7 @@ class ActionsClient:
         repo: str,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoActionsSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject, EmptyObjectType]:
@@ -8399,7 +8400,7 @@ class ActionsClient:
         repo: str,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/actions/secrets#delete-a-repository-secret"""
 
@@ -8419,7 +8420,7 @@ class ActionsClient:
         repo: str,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/actions/secrets#delete-a-repository-secret"""
 
@@ -8440,7 +8441,7 @@ class ActionsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoActionsVariablesGetResponse200,
         ReposOwnerRepoActionsVariablesGetResponse200Type,
@@ -8473,7 +8474,7 @@ class ActionsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoActionsVariablesGetResponse200,
         ReposOwnerRepoActionsVariablesGetResponse200Type,
@@ -8505,7 +8506,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoActionsVariablesPostBodyType,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
 
@@ -8516,7 +8517,7 @@ class ActionsClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         name: str,
         value: str,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
@@ -8526,7 +8527,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoActionsVariablesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject, EmptyObjectType]:
@@ -8561,7 +8562,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoActionsVariablesPostBodyType,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
 
@@ -8572,7 +8573,7 @@ class ActionsClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         name: str,
         value: str,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
@@ -8582,7 +8583,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoActionsVariablesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject, EmptyObjectType]:
@@ -8617,7 +8618,7 @@ class ActionsClient:
         repo: str,
         name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ActionsVariable, ActionsVariableType]:
         """See also: https://docs.github.com/rest/actions/variables#get-a-repository-variable"""
 
@@ -8640,7 +8641,7 @@ class ActionsClient:
         repo: str,
         name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ActionsVariable, ActionsVariableType]:
         """See also: https://docs.github.com/rest/actions/variables#get-a-repository-variable"""
 
@@ -8663,7 +8664,7 @@ class ActionsClient:
         repo: str,
         name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/actions/variables#delete-a-repository-variable"""
 
@@ -8683,7 +8684,7 @@ class ActionsClient:
         repo: str,
         name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/actions/variables#delete-a-repository-variable"""
 
@@ -8704,7 +8705,7 @@ class ActionsClient:
         repo: str,
         name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoActionsVariablesNamePatchBodyType,
     ) -> Response: ...
 
@@ -8716,7 +8717,7 @@ class ActionsClient:
         name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         value: Missing[str] = UNSET,
     ) -> Response: ...
 
@@ -8726,7 +8727,7 @@ class ActionsClient:
         repo: str,
         name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoActionsVariablesNamePatchBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -8763,7 +8764,7 @@ class ActionsClient:
         repo: str,
         name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoActionsVariablesNamePatchBodyType,
     ) -> Response: ...
 
@@ -8775,7 +8776,7 @@ class ActionsClient:
         name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         value: Missing[str] = UNSET,
     ) -> Response: ...
 
@@ -8785,7 +8786,7 @@ class ActionsClient:
         repo: str,
         name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoActionsVariablesNamePatchBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -8822,7 +8823,7 @@ class ActionsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoActionsWorkflowsGetResponse200,
         ReposOwnerRepoActionsWorkflowsGetResponse200Type,
@@ -8855,7 +8856,7 @@ class ActionsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoActionsWorkflowsGetResponse200,
         ReposOwnerRepoActionsWorkflowsGetResponse200Type,
@@ -8887,7 +8888,7 @@ class ActionsClient:
         repo: str,
         workflow_id: Union[int, str],
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Workflow, WorkflowType]:
         """See also: https://docs.github.com/rest/actions/workflows#get-a-workflow"""
 
@@ -8910,7 +8911,7 @@ class ActionsClient:
         repo: str,
         workflow_id: Union[int, str],
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Workflow, WorkflowType]:
         """See also: https://docs.github.com/rest/actions/workflows#get-a-workflow"""
 
@@ -8933,7 +8934,7 @@ class ActionsClient:
         repo: str,
         workflow_id: Union[int, str],
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/actions/workflows#disable-a-workflow"""
 
@@ -8953,7 +8954,7 @@ class ActionsClient:
         repo: str,
         workflow_id: Union[int, str],
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/actions/workflows#disable-a-workflow"""
 
@@ -8974,7 +8975,7 @@ class ActionsClient:
         repo: str,
         workflow_id: Union[int, str],
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyType,
     ) -> Response: ...
 
@@ -8986,7 +8987,7 @@ class ActionsClient:
         workflow_id: Union[int, str],
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         ref: str,
         inputs: Missing[
             ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsType
@@ -8999,7 +9000,7 @@ class ActionsClient:
         repo: str,
         workflow_id: Union[int, str],
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyType
         ] = UNSET,
@@ -9038,7 +9039,7 @@ class ActionsClient:
         repo: str,
         workflow_id: Union[int, str],
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyType,
     ) -> Response: ...
 
@@ -9050,7 +9051,7 @@ class ActionsClient:
         workflow_id: Union[int, str],
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         ref: str,
         inputs: Missing[
             ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsType
@@ -9063,7 +9064,7 @@ class ActionsClient:
         repo: str,
         workflow_id: Union[int, str],
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyType
         ] = UNSET,
@@ -9101,7 +9102,7 @@ class ActionsClient:
         repo: str,
         workflow_id: Union[int, str],
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/actions/workflows#enable-a-workflow"""
 
@@ -9121,7 +9122,7 @@ class ActionsClient:
         repo: str,
         workflow_id: Union[int, str],
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/actions/workflows#enable-a-workflow"""
 
@@ -9168,7 +9169,7 @@ class ActionsClient:
         exclude_pull_requests: Missing[bool] = UNSET,
         check_suite_id: Missing[int] = UNSET,
         head_sha: Missing[str] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200,
         ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200Type,
@@ -9235,7 +9236,7 @@ class ActionsClient:
         exclude_pull_requests: Missing[bool] = UNSET,
         check_suite_id: Missing[int] = UNSET,
         head_sha: Missing[str] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200,
         ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200Type,
@@ -9275,7 +9276,7 @@ class ActionsClient:
         repo: str,
         workflow_id: Union[int, str],
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[WorkflowUsage, WorkflowUsageType]:
         """See also: https://docs.github.com/rest/actions/workflows#get-workflow-usage"""
 
@@ -9298,7 +9299,7 @@ class ActionsClient:
         repo: str,
         workflow_id: Union[int, str],
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[WorkflowUsage, WorkflowUsageType]:
         """See also: https://docs.github.com/rest/actions/workflows#get-workflow-usage"""
 
@@ -9323,7 +9324,7 @@ class ActionsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200,
         ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200Type,
@@ -9359,7 +9360,7 @@ class ActionsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200,
         ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200Type,
@@ -9393,7 +9394,7 @@ class ActionsClient:
         repo: str,
         environment_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ActionsPublicKey, ActionsPublicKeyType]:
         """See also: https://docs.github.com/rest/actions/secrets#get-an-environment-public-key"""
 
@@ -9418,7 +9419,7 @@ class ActionsClient:
         repo: str,
         environment_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ActionsPublicKey, ActionsPublicKeyType]:
         """See also: https://docs.github.com/rest/actions/secrets#get-an-environment-public-key"""
 
@@ -9444,7 +9445,7 @@ class ActionsClient:
         environment_name: str,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ActionsSecret, ActionsSecretType]:
         """See also: https://docs.github.com/rest/actions/secrets#get-an-environment-secret"""
 
@@ -9468,7 +9469,7 @@ class ActionsClient:
         environment_name: str,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ActionsSecret, ActionsSecretType]:
         """See also: https://docs.github.com/rest/actions/secrets#get-an-environment-secret"""
 
@@ -9493,7 +9494,7 @@ class ActionsClient:
         environment_name: str,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBodyType,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
 
@@ -9506,7 +9507,7 @@ class ActionsClient:
         secret_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         encrypted_value: str,
         key_id: str,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
@@ -9518,7 +9519,7 @@ class ActionsClient:
         environment_name: str,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBodyType
         ] = UNSET,
@@ -9562,7 +9563,7 @@ class ActionsClient:
         environment_name: str,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBodyType,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
 
@@ -9575,7 +9576,7 @@ class ActionsClient:
         secret_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         encrypted_value: str,
         key_id: str,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
@@ -9587,7 +9588,7 @@ class ActionsClient:
         environment_name: str,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBodyType
         ] = UNSET,
@@ -9630,7 +9631,7 @@ class ActionsClient:
         environment_name: str,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/actions/secrets#delete-an-environment-secret"""
 
@@ -9651,7 +9652,7 @@ class ActionsClient:
         environment_name: str,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/actions/secrets#delete-an-environment-secret"""
 
@@ -9673,7 +9674,7 @@ class ActionsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200,
         ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200Type,
@@ -9709,7 +9710,7 @@ class ActionsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200,
         ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200Type,
@@ -9744,7 +9745,7 @@ class ActionsClient:
         repo: str,
         environment_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBodyType,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
 
@@ -9756,7 +9757,7 @@ class ActionsClient:
         environment_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         name: str,
         value: str,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
@@ -9767,7 +9768,7 @@ class ActionsClient:
         repo: str,
         environment_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBodyType
         ] = UNSET,
@@ -9810,7 +9811,7 @@ class ActionsClient:
         repo: str,
         environment_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBodyType,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
 
@@ -9822,7 +9823,7 @@ class ActionsClient:
         environment_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         name: str,
         value: str,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
@@ -9833,7 +9834,7 @@ class ActionsClient:
         repo: str,
         environment_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBodyType
         ] = UNSET,
@@ -9876,7 +9877,7 @@ class ActionsClient:
         environment_name: str,
         name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ActionsVariable, ActionsVariableType]:
         """See also: https://docs.github.com/rest/actions/variables#get-an-environment-variable"""
 
@@ -9900,7 +9901,7 @@ class ActionsClient:
         environment_name: str,
         name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ActionsVariable, ActionsVariableType]:
         """See also: https://docs.github.com/rest/actions/variables#get-an-environment-variable"""
 
@@ -9924,7 +9925,7 @@ class ActionsClient:
         name: str,
         environment_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/actions/variables#delete-an-environment-variable"""
 
@@ -9945,7 +9946,7 @@ class ActionsClient:
         name: str,
         environment_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/actions/variables#delete-an-environment-variable"""
 
@@ -9967,7 +9968,7 @@ class ActionsClient:
         name: str,
         environment_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBodyType,
     ) -> Response: ...
 
@@ -9980,7 +9981,7 @@ class ActionsClient:
         environment_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         value: Missing[str] = UNSET,
     ) -> Response: ...
 
@@ -9991,7 +9992,7 @@ class ActionsClient:
         name: str,
         environment_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBodyType
         ] = UNSET,
@@ -10033,7 +10034,7 @@ class ActionsClient:
         name: str,
         environment_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBodyType,
     ) -> Response: ...
 
@@ -10046,7 +10047,7 @@ class ActionsClient:
         environment_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         value: Missing[str] = UNSET,
     ) -> Response: ...
 
@@ -10057,7 +10058,7 @@ class ActionsClient:
         name: str,
         environment_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBodyType
         ] = UNSET,

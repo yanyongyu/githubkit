@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from collections.abc import Mapping
 from typing import TYPE_CHECKING, Optional, overload
 from weakref import ref
 
@@ -45,7 +46,7 @@ class OidcClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[OidcCustomSub, OidcCustomSubType]:
         """See also: https://docs.github.com/rest/actions/oidc#get-the-customization-template-for-an-oidc-subject-claim-for-an-organization"""
 
@@ -66,7 +67,7 @@ class OidcClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[OidcCustomSub, OidcCustomSubType]:
         """See also: https://docs.github.com/rest/actions/oidc#get-the-customization-template-for-an-oidc-subject-claim-for-an-organization"""
 
@@ -88,7 +89,7 @@ class OidcClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OidcCustomSubType,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
 
@@ -98,7 +99,7 @@ class OidcClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         include_claim_keys: list[str],
     ) -> Response[EmptyObject, EmptyObjectType]: ...
 
@@ -106,7 +107,7 @@ class OidcClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OidcCustomSubType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject, EmptyObjectType]:
@@ -144,7 +145,7 @@ class OidcClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OidcCustomSubType,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
 
@@ -154,7 +155,7 @@ class OidcClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         include_claim_keys: list[str],
     ) -> Response[EmptyObject, EmptyObjectType]: ...
 
@@ -162,7 +163,7 @@ class OidcClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OidcCustomSubType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject, EmptyObjectType]:

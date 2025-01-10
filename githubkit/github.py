@@ -1,4 +1,4 @@
-from collections.abc import Awaitable
+from collections.abc import Awaitable, Sequence
 from functools import cached_property
 from typing import TYPE_CHECKING, Any, Callable, Optional, TypeVar, Union, overload
 from typing_extensions import ParamSpec
@@ -70,7 +70,7 @@ class GitHub(GitHubCore[A]):
             *,
             base_url: Optional[Union[str, httpx.URL]] = None,
             accept_format: Optional[str] = None,
-            previews: Optional[list[str]] = None,
+            previews: Optional[Sequence[str]] = None,
             user_agent: Optional[str] = None,
             follow_redirects: bool = True,
             timeout: Optional[Union[float, httpx.Timeout]] = None,
@@ -89,7 +89,7 @@ class GitHub(GitHubCore[A]):
             *,
             base_url: Optional[Union[str, httpx.URL]] = None,
             accept_format: Optional[str] = None,
-            previews: Optional[list[str]] = None,
+            previews: Optional[Sequence[str]] = None,
             user_agent: Optional[str] = None,
             follow_redirects: bool = True,
             timeout: Optional[Union[float, httpx.Timeout]] = None,
@@ -108,7 +108,7 @@ class GitHub(GitHubCore[A]):
             *,
             base_url: Optional[Union[str, httpx.URL]] = None,
             accept_format: Optional[str] = None,
-            previews: Optional[list[str]] = None,
+            previews: Optional[Sequence[str]] = None,
             user_agent: Optional[str] = None,
             follow_redirects: bool = True,
             timeout: Optional[Union[float, httpx.Timeout]] = None,

@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from collections.abc import Mapping
 from typing import TYPE_CHECKING, Optional
 from weakref import ref
 
@@ -58,7 +59,7 @@ class ClassroomClient:
         self,
         assignment_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ClassroomAssignment, ClassroomAssignmentType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/classroom/classroom#get-an-assignment"""
 
@@ -82,7 +83,7 @@ class ClassroomClient:
         self,
         assignment_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ClassroomAssignment, ClassroomAssignmentType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/classroom/classroom#get-an-assignment"""
 
@@ -108,7 +109,7 @@ class ClassroomClient:
         *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         list[ClassroomAcceptedAssignment], list[ClassroomAcceptedAssignmentType]
     ]:
@@ -139,7 +140,7 @@ class ClassroomClient:
         *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         list[ClassroomAcceptedAssignment], list[ClassroomAcceptedAssignmentType]
     ]:
@@ -168,7 +169,7 @@ class ClassroomClient:
         self,
         assignment_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[ClassroomAssignmentGrade], list[ClassroomAssignmentGradeType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/classroom/classroom#get-assignment-grades"""
 
@@ -192,7 +193,7 @@ class ClassroomClient:
         self,
         assignment_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[ClassroomAssignmentGrade], list[ClassroomAssignmentGradeType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/classroom/classroom#get-assignment-grades"""
 
@@ -217,7 +218,7 @@ class ClassroomClient:
         *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[SimpleClassroom], list[SimpleClassroomType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/classroom/classroom#list-classrooms"""
 
@@ -245,7 +246,7 @@ class ClassroomClient:
         *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[SimpleClassroom], list[SimpleClassroomType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/classroom/classroom#list-classrooms"""
 
@@ -272,7 +273,7 @@ class ClassroomClient:
         self,
         classroom_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Classroom, ClassroomType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/classroom/classroom#get-a-classroom"""
 
@@ -296,7 +297,7 @@ class ClassroomClient:
         self,
         classroom_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Classroom, ClassroomType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/classroom/classroom#get-a-classroom"""
 
@@ -322,7 +323,7 @@ class ClassroomClient:
         *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[SimpleClassroomAssignment], list[SimpleClassroomAssignmentType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/classroom/classroom#list-assignments-for-a-classroom"""
 
@@ -351,7 +352,7 @@ class ClassroomClient:
         *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[SimpleClassroomAssignment], list[SimpleClassroomAssignmentType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/classroom/classroom#list-assignments-for-a-classroom"""
 

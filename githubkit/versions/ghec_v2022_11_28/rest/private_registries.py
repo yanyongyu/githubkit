@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from collections.abc import Mapping
 from typing import TYPE_CHECKING, Literal, Optional, overload
 from weakref import ref
 
@@ -63,7 +64,7 @@ class PrivateRegistriesClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         OrgsOrgPrivateRegistriesGetResponse200,
         OrgsOrgPrivateRegistriesGetResponse200Type,
@@ -99,7 +100,7 @@ class PrivateRegistriesClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         OrgsOrgPrivateRegistriesGetResponse200,
         OrgsOrgPrivateRegistriesGetResponse200Type,
@@ -134,7 +135,7 @@ class PrivateRegistriesClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgPrivateRegistriesPostBodyType,
     ) -> Response[
         OrgPrivateRegistryConfigurationWithSelectedRepositories,
@@ -147,7 +148,7 @@ class PrivateRegistriesClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         registry_type: Literal["maven_repository"],
         username: Missing[Union[str, None]] = UNSET,
         encrypted_value: str,
@@ -163,7 +164,7 @@ class PrivateRegistriesClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgPrivateRegistriesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[
@@ -209,7 +210,7 @@ class PrivateRegistriesClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgPrivateRegistriesPostBodyType,
     ) -> Response[
         OrgPrivateRegistryConfigurationWithSelectedRepositories,
@@ -222,7 +223,7 @@ class PrivateRegistriesClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         registry_type: Literal["maven_repository"],
         username: Missing[Union[str, None]] = UNSET,
         encrypted_value: str,
@@ -238,7 +239,7 @@ class PrivateRegistriesClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgPrivateRegistriesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[
@@ -283,7 +284,7 @@ class PrivateRegistriesClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         OrgsOrgPrivateRegistriesPublicKeyGetResponse200,
         OrgsOrgPrivateRegistriesPublicKeyGetResponse200Type,
@@ -310,7 +311,7 @@ class PrivateRegistriesClient:
         self,
         org: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         OrgsOrgPrivateRegistriesPublicKeyGetResponse200,
         OrgsOrgPrivateRegistriesPublicKeyGetResponse200Type,
@@ -338,7 +339,7 @@ class PrivateRegistriesClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[OrgPrivateRegistryConfiguration, OrgPrivateRegistryConfigurationType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/private-registries/organization-configurations#get-a-private-registry-for-an-organization"""
 
@@ -363,7 +364,7 @@ class PrivateRegistriesClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[OrgPrivateRegistryConfiguration, OrgPrivateRegistryConfigurationType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/private-registries/organization-configurations#get-a-private-registry-for-an-organization"""
 
@@ -388,7 +389,7 @@ class PrivateRegistriesClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/private-registries/organization-configurations#delete-a-private-registry-for-an-organization"""
 
@@ -413,7 +414,7 @@ class PrivateRegistriesClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/private-registries/organization-configurations#delete-a-private-registry-for-an-organization"""
 
@@ -439,7 +440,7 @@ class PrivateRegistriesClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgPrivateRegistriesSecretNamePatchBodyType,
     ) -> Response: ...
 
@@ -450,7 +451,7 @@ class PrivateRegistriesClient:
         secret_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         registry_type: Missing[Literal["maven_repository"]] = UNSET,
         username: Missing[Union[str, None]] = UNSET,
         encrypted_value: Missing[str] = UNSET,
@@ -464,7 +465,7 @@ class PrivateRegistriesClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgPrivateRegistriesSecretNamePatchBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -508,7 +509,7 @@ class PrivateRegistriesClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgPrivateRegistriesSecretNamePatchBodyType,
     ) -> Response: ...
 
@@ -519,7 +520,7 @@ class PrivateRegistriesClient:
         secret_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         registry_type: Missing[Literal["maven_repository"]] = UNSET,
         username: Missing[Union[str, None]] = UNSET,
         encrypted_value: Missing[str] = UNSET,
@@ -533,7 +534,7 @@ class PrivateRegistriesClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[OrgsOrgPrivateRegistriesSecretNamePatchBodyType] = UNSET,
         **kwargs,
     ) -> Response:

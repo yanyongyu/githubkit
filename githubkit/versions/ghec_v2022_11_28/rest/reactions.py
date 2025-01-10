@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from collections.abc import Mapping
 from typing import TYPE_CHECKING, Literal, Optional, overload
 from weakref import ref
 
@@ -70,7 +71,7 @@ class ReactionsClient:
         ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Reaction], list[ReactionType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#list-reactions-for-a-team-discussion-comment"""
 
@@ -108,7 +109,7 @@ class ReactionsClient:
         ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Reaction], list[ReactionType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#list-reactions-for-a-team-discussion-comment"""
 
@@ -140,7 +141,7 @@ class ReactionsClient:
         discussion_number: int,
         comment_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType,
     ) -> Response[Reaction, ReactionType]: ...
 
@@ -153,7 +154,7 @@ class ReactionsClient:
         comment_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
@@ -166,7 +167,7 @@ class ReactionsClient:
         discussion_number: int,
         comment_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType
         ] = UNSET,
@@ -211,7 +212,7 @@ class ReactionsClient:
         discussion_number: int,
         comment_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType,
     ) -> Response[Reaction, ReactionType]: ...
 
@@ -224,7 +225,7 @@ class ReactionsClient:
         comment_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
@@ -237,7 +238,7 @@ class ReactionsClient:
         discussion_number: int,
         comment_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType
         ] = UNSET,
@@ -282,7 +283,7 @@ class ReactionsClient:
         comment_number: int,
         reaction_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#delete-team-discussion-comment-reaction"""
 
@@ -304,7 +305,7 @@ class ReactionsClient:
         comment_number: int,
         reaction_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#delete-team-discussion-comment-reaction"""
 
@@ -331,7 +332,7 @@ class ReactionsClient:
         ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Reaction], list[ReactionType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#list-reactions-for-a-team-discussion"""
 
@@ -368,7 +369,7 @@ class ReactionsClient:
         ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Reaction], list[ReactionType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#list-reactions-for-a-team-discussion"""
 
@@ -399,7 +400,7 @@ class ReactionsClient:
         team_slug: str,
         discussion_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBodyType,
     ) -> Response[Reaction, ReactionType]: ...
 
@@ -411,7 +412,7 @@ class ReactionsClient:
         discussion_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
@@ -423,7 +424,7 @@ class ReactionsClient:
         team_slug: str,
         discussion_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBodyType
         ] = UNSET,
@@ -466,7 +467,7 @@ class ReactionsClient:
         team_slug: str,
         discussion_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBodyType,
     ) -> Response[Reaction, ReactionType]: ...
 
@@ -478,7 +479,7 @@ class ReactionsClient:
         discussion_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
@@ -490,7 +491,7 @@ class ReactionsClient:
         team_slug: str,
         discussion_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBodyType
         ] = UNSET,
@@ -533,7 +534,7 @@ class ReactionsClient:
         discussion_number: int,
         reaction_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#delete-team-discussion-reaction"""
 
@@ -554,7 +555,7 @@ class ReactionsClient:
         discussion_number: int,
         reaction_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#delete-team-discussion-reaction"""
 
@@ -581,7 +582,7 @@ class ReactionsClient:
         ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Reaction], list[ReactionType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#list-reactions-for-a-commit-comment"""
 
@@ -621,7 +622,7 @@ class ReactionsClient:
         ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Reaction], list[ReactionType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#list-reactions-for-a-commit-comment"""
 
@@ -655,7 +656,7 @@ class ReactionsClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoCommentsCommentIdReactionsPostBodyType,
     ) -> Response[Reaction, ReactionType]: ...
 
@@ -667,7 +668,7 @@ class ReactionsClient:
         comment_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
@@ -679,7 +680,7 @@ class ReactionsClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoCommentsCommentIdReactionsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Reaction, ReactionType]:
@@ -724,7 +725,7 @@ class ReactionsClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoCommentsCommentIdReactionsPostBodyType,
     ) -> Response[Reaction, ReactionType]: ...
 
@@ -736,7 +737,7 @@ class ReactionsClient:
         comment_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
@@ -748,7 +749,7 @@ class ReactionsClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoCommentsCommentIdReactionsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Reaction, ReactionType]:
@@ -793,7 +794,7 @@ class ReactionsClient:
         comment_id: int,
         reaction_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#delete-a-commit-comment-reaction"""
 
@@ -814,7 +815,7 @@ class ReactionsClient:
         comment_id: int,
         reaction_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#delete-a-commit-comment-reaction"""
 
@@ -841,7 +842,7 @@ class ReactionsClient:
         ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Reaction], list[ReactionType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#list-reactions-for-an-issue-comment"""
 
@@ -881,7 +882,7 @@ class ReactionsClient:
         ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Reaction], list[ReactionType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#list-reactions-for-an-issue-comment"""
 
@@ -915,7 +916,7 @@ class ReactionsClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBodyType,
     ) -> Response[Reaction, ReactionType]: ...
 
@@ -927,7 +928,7 @@ class ReactionsClient:
         comment_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
@@ -939,7 +940,7 @@ class ReactionsClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBodyType
         ] = UNSET,
@@ -986,7 +987,7 @@ class ReactionsClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBodyType,
     ) -> Response[Reaction, ReactionType]: ...
 
@@ -998,7 +999,7 @@ class ReactionsClient:
         comment_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
@@ -1010,7 +1011,7 @@ class ReactionsClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBodyType
         ] = UNSET,
@@ -1057,7 +1058,7 @@ class ReactionsClient:
         comment_id: int,
         reaction_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#delete-an-issue-comment-reaction"""
 
@@ -1078,7 +1079,7 @@ class ReactionsClient:
         comment_id: int,
         reaction_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#delete-an-issue-comment-reaction"""
 
@@ -1105,7 +1106,7 @@ class ReactionsClient:
         ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Reaction], list[ReactionType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#list-reactions-for-an-issue"""
 
@@ -1146,7 +1147,7 @@ class ReactionsClient:
         ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Reaction], list[ReactionType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#list-reactions-for-an-issue"""
 
@@ -1181,7 +1182,7 @@ class ReactionsClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoIssuesIssueNumberReactionsPostBodyType,
     ) -> Response[Reaction, ReactionType]: ...
 
@@ -1193,7 +1194,7 @@ class ReactionsClient:
         issue_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
@@ -1205,7 +1206,7 @@ class ReactionsClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesIssueNumberReactionsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Reaction, ReactionType]:
@@ -1250,7 +1251,7 @@ class ReactionsClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoIssuesIssueNumberReactionsPostBodyType,
     ) -> Response[Reaction, ReactionType]: ...
 
@@ -1262,7 +1263,7 @@ class ReactionsClient:
         issue_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
@@ -1274,7 +1275,7 @@ class ReactionsClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesIssueNumberReactionsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Reaction, ReactionType]:
@@ -1319,7 +1320,7 @@ class ReactionsClient:
         issue_number: int,
         reaction_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#delete-an-issue-reaction"""
 
@@ -1340,7 +1341,7 @@ class ReactionsClient:
         issue_number: int,
         reaction_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#delete-an-issue-reaction"""
 
@@ -1367,7 +1368,7 @@ class ReactionsClient:
         ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Reaction], list[ReactionType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#list-reactions-for-a-pull-request-review-comment"""
 
@@ -1407,7 +1408,7 @@ class ReactionsClient:
         ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Reaction], list[ReactionType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#list-reactions-for-a-pull-request-review-comment"""
 
@@ -1441,7 +1442,7 @@ class ReactionsClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoPullsCommentsCommentIdReactionsPostBodyType,
     ) -> Response[Reaction, ReactionType]: ...
 
@@ -1453,7 +1454,7 @@ class ReactionsClient:
         comment_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
@@ -1465,7 +1466,7 @@ class ReactionsClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             ReposOwnerRepoPullsCommentsCommentIdReactionsPostBodyType
         ] = UNSET,
@@ -1512,7 +1513,7 @@ class ReactionsClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoPullsCommentsCommentIdReactionsPostBodyType,
     ) -> Response[Reaction, ReactionType]: ...
 
@@ -1524,7 +1525,7 @@ class ReactionsClient:
         comment_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
@@ -1536,7 +1537,7 @@ class ReactionsClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             ReposOwnerRepoPullsCommentsCommentIdReactionsPostBodyType
         ] = UNSET,
@@ -1583,7 +1584,7 @@ class ReactionsClient:
         comment_id: int,
         reaction_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#delete-a-pull-request-comment-reaction"""
 
@@ -1606,7 +1607,7 @@ class ReactionsClient:
         comment_id: int,
         reaction_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#delete-a-pull-request-comment-reaction"""
 
@@ -1633,7 +1634,7 @@ class ReactionsClient:
         ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Reaction], list[ReactionType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#list-reactions-for-a-release"""
 
@@ -1671,7 +1672,7 @@ class ReactionsClient:
         ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Reaction], list[ReactionType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#list-reactions-for-a-release"""
 
@@ -1705,7 +1706,7 @@ class ReactionsClient:
         repo: str,
         release_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoReleasesReleaseIdReactionsPostBodyType,
     ) -> Response[Reaction, ReactionType]: ...
 
@@ -1717,7 +1718,7 @@ class ReactionsClient:
         release_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         content: Literal["+1", "laugh", "heart", "hooray", "rocket", "eyes"],
     ) -> Response[Reaction, ReactionType]: ...
 
@@ -1727,7 +1728,7 @@ class ReactionsClient:
         repo: str,
         release_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoReleasesReleaseIdReactionsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Reaction, ReactionType]:
@@ -1772,7 +1773,7 @@ class ReactionsClient:
         repo: str,
         release_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoReleasesReleaseIdReactionsPostBodyType,
     ) -> Response[Reaction, ReactionType]: ...
 
@@ -1784,7 +1785,7 @@ class ReactionsClient:
         release_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         content: Literal["+1", "laugh", "heart", "hooray", "rocket", "eyes"],
     ) -> Response[Reaction, ReactionType]: ...
 
@@ -1794,7 +1795,7 @@ class ReactionsClient:
         repo: str,
         release_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoReleasesReleaseIdReactionsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Reaction, ReactionType]:
@@ -1839,7 +1840,7 @@ class ReactionsClient:
         release_id: int,
         reaction_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#delete-a-release-reaction"""
 
@@ -1860,7 +1861,7 @@ class ReactionsClient:
         release_id: int,
         reaction_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#delete-a-release-reaction"""
 
@@ -1887,7 +1888,7 @@ class ReactionsClient:
         ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Reaction], list[ReactionType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#list-reactions-for-a-team-discussion-comment-legacy"""
 
@@ -1924,7 +1925,7 @@ class ReactionsClient:
         ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Reaction], list[ReactionType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#list-reactions-for-a-team-discussion-comment-legacy"""
 
@@ -1955,7 +1956,7 @@ class ReactionsClient:
         discussion_number: int,
         comment_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType,
     ) -> Response[Reaction, ReactionType]: ...
 
@@ -1967,7 +1968,7 @@ class ReactionsClient:
         comment_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
@@ -1979,7 +1980,7 @@ class ReactionsClient:
         discussion_number: int,
         comment_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType
         ] = UNSET,
@@ -2023,7 +2024,7 @@ class ReactionsClient:
         discussion_number: int,
         comment_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType,
     ) -> Response[Reaction, ReactionType]: ...
 
@@ -2035,7 +2036,7 @@ class ReactionsClient:
         comment_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
@@ -2047,7 +2048,7 @@ class ReactionsClient:
         discussion_number: int,
         comment_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType
         ] = UNSET,
@@ -2096,7 +2097,7 @@ class ReactionsClient:
         ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Reaction], list[ReactionType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#list-reactions-for-a-team-discussion-legacy"""
 
@@ -2132,7 +2133,7 @@ class ReactionsClient:
         ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Reaction], list[ReactionType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#list-reactions-for-a-team-discussion-legacy"""
 
@@ -2162,7 +2163,7 @@ class ReactionsClient:
         team_id: int,
         discussion_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBodyType,
     ) -> Response[Reaction, ReactionType]: ...
 
@@ -2173,7 +2174,7 @@ class ReactionsClient:
         discussion_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
@@ -2184,7 +2185,7 @@ class ReactionsClient:
         team_id: int,
         discussion_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBodyType
         ] = UNSET,
@@ -2226,7 +2227,7 @@ class ReactionsClient:
         team_id: int,
         discussion_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBodyType,
     ) -> Response[Reaction, ReactionType]: ...
 
@@ -2237,7 +2238,7 @@ class ReactionsClient:
         discussion_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
@@ -2248,7 +2249,7 @@ class ReactionsClient:
         team_id: int,
         discussion_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBodyType
         ] = UNSET,

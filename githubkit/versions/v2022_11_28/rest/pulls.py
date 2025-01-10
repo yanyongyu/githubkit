@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from collections.abc import Mapping
 from typing import TYPE_CHECKING, Literal, Optional, overload
 from weakref import ref
 
@@ -97,7 +98,7 @@ class PullsClient:
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[PullRequestSimple], list[PullRequestSimpleType]]:
         """See also: https://docs.github.com/rest/pulls/pulls#list-pull-requests"""
 
@@ -142,7 +143,7 @@ class PullsClient:
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[PullRequestSimple], list[PullRequestSimpleType]]:
         """See also: https://docs.github.com/rest/pulls/pulls#list-pull-requests"""
 
@@ -179,7 +180,7 @@ class PullsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoPullsPostBodyType,
     ) -> Response[PullRequest, PullRequestType]: ...
 
@@ -190,7 +191,7 @@ class PullsClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         title: Missing[str] = UNSET,
         head: str,
         head_repo: Missing[str] = UNSET,
@@ -206,7 +207,7 @@ class PullsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoPullsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[PullRequest, PullRequestType]:
@@ -250,7 +251,7 @@ class PullsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoPullsPostBodyType,
     ) -> Response[PullRequest, PullRequestType]: ...
 
@@ -261,7 +262,7 @@ class PullsClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         title: Missing[str] = UNSET,
         head: str,
         head_repo: Missing[str] = UNSET,
@@ -277,7 +278,7 @@ class PullsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoPullsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[PullRequest, PullRequestType]:
@@ -325,7 +326,7 @@ class PullsClient:
         since: Missing[datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[PullRequestReviewComment], list[PullRequestReviewCommentType]]:
         """See also: https://docs.github.com/rest/pulls/comments#list-review-comments-in-a-repository"""
 
@@ -361,7 +362,7 @@ class PullsClient:
         since: Missing[datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[PullRequestReviewComment], list[PullRequestReviewCommentType]]:
         """See also: https://docs.github.com/rest/pulls/comments#list-review-comments-in-a-repository"""
 
@@ -393,7 +394,7 @@ class PullsClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[PullRequestReviewComment, PullRequestReviewCommentType]:
         """See also: https://docs.github.com/rest/pulls/comments#get-a-review-comment-for-a-pull-request"""
 
@@ -419,7 +420,7 @@ class PullsClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[PullRequestReviewComment, PullRequestReviewCommentType]:
         """See also: https://docs.github.com/rest/pulls/comments#get-a-review-comment-for-a-pull-request"""
 
@@ -445,7 +446,7 @@ class PullsClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/pulls/comments#delete-a-review-comment-for-a-pull-request"""
 
@@ -470,7 +471,7 @@ class PullsClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/pulls/comments#delete-a-review-comment-for-a-pull-request"""
 
@@ -496,7 +497,7 @@ class PullsClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoPullsCommentsCommentIdPatchBodyType,
     ) -> Response[PullRequestReviewComment, PullRequestReviewCommentType]: ...
 
@@ -508,7 +509,7 @@ class PullsClient:
         comment_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         body: str,
     ) -> Response[PullRequestReviewComment, PullRequestReviewCommentType]: ...
 
@@ -518,7 +519,7 @@ class PullsClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoPullsCommentsCommentIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[PullRequestReviewComment, PullRequestReviewCommentType]:
@@ -559,7 +560,7 @@ class PullsClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoPullsCommentsCommentIdPatchBodyType,
     ) -> Response[PullRequestReviewComment, PullRequestReviewCommentType]: ...
 
@@ -571,7 +572,7 @@ class PullsClient:
         comment_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         body: str,
     ) -> Response[PullRequestReviewComment, PullRequestReviewCommentType]: ...
 
@@ -581,7 +582,7 @@ class PullsClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoPullsCommentsCommentIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[PullRequestReviewComment, PullRequestReviewCommentType]:
@@ -621,7 +622,7 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[PullRequest, PullRequestType]:
         """See also: https://docs.github.com/rest/pulls/pulls#get-a-pull-request"""
 
@@ -654,7 +655,7 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[PullRequest, PullRequestType]:
         """See also: https://docs.github.com/rest/pulls/pulls#get-a-pull-request"""
 
@@ -688,7 +689,7 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoPullsPullNumberPatchBodyType] = UNSET,
     ) -> Response[PullRequest, PullRequestType]: ...
 
@@ -700,7 +701,7 @@ class PullsClient:
         pull_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         title: Missing[str] = UNSET,
         body: Missing[str] = UNSET,
         state: Missing[Literal["open", "closed"]] = UNSET,
@@ -714,7 +715,7 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoPullsPullNumberPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[PullRequest, PullRequestType]:
@@ -759,7 +760,7 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoPullsPullNumberPatchBodyType] = UNSET,
     ) -> Response[PullRequest, PullRequestType]: ...
 
@@ -771,7 +772,7 @@ class PullsClient:
         pull_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         title: Missing[str] = UNSET,
         body: Missing[str] = UNSET,
         state: Missing[Literal["open", "closed"]] = UNSET,
@@ -785,7 +786,7 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoPullsPullNumberPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[PullRequest, PullRequestType]:
@@ -834,7 +835,7 @@ class PullsClient:
         since: Missing[datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[PullRequestReviewComment], list[PullRequestReviewCommentType]]:
         """See also: https://docs.github.com/rest/pulls/comments#list-review-comments-on-a-pull-request"""
 
@@ -871,7 +872,7 @@ class PullsClient:
         since: Missing[datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[PullRequestReviewComment], list[PullRequestReviewCommentType]]:
         """See also: https://docs.github.com/rest/pulls/comments#list-review-comments-on-a-pull-request"""
 
@@ -904,7 +905,7 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoPullsPullNumberCommentsPostBodyType,
     ) -> Response[PullRequestReviewComment, PullRequestReviewCommentType]: ...
 
@@ -916,7 +917,7 @@ class PullsClient:
         pull_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         body: str,
         commit_id: str,
         path: str,
@@ -935,7 +936,7 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoPullsPullNumberCommentsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[PullRequestReviewComment, PullRequestReviewCommentType]:
@@ -982,7 +983,7 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoPullsPullNumberCommentsPostBodyType,
     ) -> Response[PullRequestReviewComment, PullRequestReviewCommentType]: ...
 
@@ -994,7 +995,7 @@ class PullsClient:
         pull_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         body: str,
         commit_id: str,
         path: str,
@@ -1013,7 +1014,7 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoPullsPullNumberCommentsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[PullRequestReviewComment, PullRequestReviewCommentType]:
@@ -1061,7 +1062,7 @@ class PullsClient:
         pull_number: int,
         comment_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBodyType,
     ) -> Response[PullRequestReviewComment, PullRequestReviewCommentType]: ...
 
@@ -1074,7 +1075,7 @@ class PullsClient:
         comment_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         body: str,
     ) -> Response[PullRequestReviewComment, PullRequestReviewCommentType]: ...
 
@@ -1085,7 +1086,7 @@ class PullsClient:
         pull_number: int,
         comment_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBodyType
         ] = UNSET,
@@ -1133,7 +1134,7 @@ class PullsClient:
         pull_number: int,
         comment_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBodyType,
     ) -> Response[PullRequestReviewComment, PullRequestReviewCommentType]: ...
 
@@ -1146,7 +1147,7 @@ class PullsClient:
         comment_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         body: str,
     ) -> Response[PullRequestReviewComment, PullRequestReviewCommentType]: ...
 
@@ -1157,7 +1158,7 @@ class PullsClient:
         pull_number: int,
         comment_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBodyType
         ] = UNSET,
@@ -1205,7 +1206,7 @@ class PullsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Commit], list[CommitType]]:
         """See also: https://docs.github.com/rest/pulls/pulls#list-commits-on-a-pull-request"""
 
@@ -1236,7 +1237,7 @@ class PullsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Commit], list[CommitType]]:
         """See also: https://docs.github.com/rest/pulls/pulls#list-commits-on-a-pull-request"""
 
@@ -1267,7 +1268,7 @@ class PullsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[DiffEntry], list[DiffEntryType]]:
         """See also: https://docs.github.com/rest/pulls/pulls#list-pull-requests-files"""
 
@@ -1308,7 +1309,7 @@ class PullsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[DiffEntry], list[DiffEntryType]]:
         """See also: https://docs.github.com/rest/pulls/pulls#list-pull-requests-files"""
 
@@ -1347,7 +1348,7 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/pulls/pulls#check-if-a-pull-request-has-been-merged"""
 
@@ -1368,7 +1369,7 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/pulls/pulls#check-if-a-pull-request-has-been-merged"""
 
@@ -1390,7 +1391,7 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             Union[ReposOwnerRepoPullsPullNumberMergePutBodyType, None]
         ] = UNSET,
@@ -1404,7 +1405,7 @@ class PullsClient:
         pull_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         commit_title: Missing[str] = UNSET,
         commit_message: Missing[str] = UNSET,
         sha: Missing[str] = UNSET,
@@ -1417,7 +1418,7 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             Union[ReposOwnerRepoPullsPullNumberMergePutBodyType, None]
         ] = UNSET,
@@ -1473,7 +1474,7 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             Union[ReposOwnerRepoPullsPullNumberMergePutBodyType, None]
         ] = UNSET,
@@ -1487,7 +1488,7 @@ class PullsClient:
         pull_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         commit_title: Missing[str] = UNSET,
         commit_message: Missing[str] = UNSET,
         sha: Missing[str] = UNSET,
@@ -1500,7 +1501,7 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             Union[ReposOwnerRepoPullsPullNumberMergePutBodyType, None]
         ] = UNSET,
@@ -1555,7 +1556,7 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[PullRequestReviewRequest, PullRequestReviewRequestType]:
         """See also: https://docs.github.com/rest/pulls/review-requests#get-all-requested-reviewers-for-a-pull-request"""
 
@@ -1578,7 +1579,7 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[PullRequestReviewRequest, PullRequestReviewRequestType]:
         """See also: https://docs.github.com/rest/pulls/review-requests#get-all-requested-reviewers-for-a-pull-request"""
 
@@ -1602,7 +1603,7 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0Type,
@@ -1619,7 +1620,7 @@ class PullsClient:
         pull_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         reviewers: list[str],
         team_reviewers: Missing[list[str]] = UNSET,
     ) -> Response[PullRequestSimple, PullRequestSimpleType]: ...
@@ -1632,7 +1633,7 @@ class PullsClient:
         pull_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         reviewers: Missing[list[str]] = UNSET,
         team_reviewers: list[str],
     ) -> Response[PullRequestSimple, PullRequestSimpleType]: ...
@@ -1643,7 +1644,7 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0Type,
@@ -1700,7 +1701,7 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0Type,
@@ -1717,7 +1718,7 @@ class PullsClient:
         pull_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         reviewers: list[str],
         team_reviewers: Missing[list[str]] = UNSET,
     ) -> Response[PullRequestSimple, PullRequestSimpleType]: ...
@@ -1730,7 +1731,7 @@ class PullsClient:
         pull_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         reviewers: Missing[list[str]] = UNSET,
         team_reviewers: list[str],
     ) -> Response[PullRequestSimple, PullRequestSimpleType]: ...
@@ -1741,7 +1742,7 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0Type,
@@ -1798,7 +1799,7 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBodyType,
     ) -> Response[PullRequestSimple, PullRequestSimpleType]: ...
 
@@ -1810,7 +1811,7 @@ class PullsClient:
         pull_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         reviewers: list[str],
         team_reviewers: Missing[list[str]] = UNSET,
     ) -> Response[PullRequestSimple, PullRequestSimpleType]: ...
@@ -1821,7 +1822,7 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBodyType
         ] = UNSET,
@@ -1868,7 +1869,7 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBodyType,
     ) -> Response[PullRequestSimple, PullRequestSimpleType]: ...
 
@@ -1880,7 +1881,7 @@ class PullsClient:
         pull_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         reviewers: list[str],
         team_reviewers: Missing[list[str]] = UNSET,
     ) -> Response[PullRequestSimple, PullRequestSimpleType]: ...
@@ -1891,7 +1892,7 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBodyType
         ] = UNSET,
@@ -1939,7 +1940,7 @@ class PullsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[PullRequestReview], list[PullRequestReviewType]]:
         """See also: https://docs.github.com/rest/pulls/reviews#list-reviews-for-a-pull-request"""
 
@@ -1970,7 +1971,7 @@ class PullsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[PullRequestReview], list[PullRequestReviewType]]:
         """See also: https://docs.github.com/rest/pulls/reviews#list-reviews-for-a-pull-request"""
 
@@ -2000,7 +2001,7 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoPullsPullNumberReviewsPostBodyType] = UNSET,
     ) -> Response[PullRequestReview, PullRequestReviewType]: ...
 
@@ -2012,7 +2013,7 @@ class PullsClient:
         pull_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         commit_id: Missing[str] = UNSET,
         body: Missing[str] = UNSET,
         event: Missing[Literal["APPROVE", "REQUEST_CHANGES", "COMMENT"]] = UNSET,
@@ -2027,7 +2028,7 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoPullsPullNumberReviewsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[PullRequestReview, PullRequestReviewType]:
@@ -2074,7 +2075,7 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoPullsPullNumberReviewsPostBodyType] = UNSET,
     ) -> Response[PullRequestReview, PullRequestReviewType]: ...
 
@@ -2086,7 +2087,7 @@ class PullsClient:
         pull_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         commit_id: Missing[str] = UNSET,
         body: Missing[str] = UNSET,
         event: Missing[Literal["APPROVE", "REQUEST_CHANGES", "COMMENT"]] = UNSET,
@@ -2101,7 +2102,7 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoPullsPullNumberReviewsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[PullRequestReview, PullRequestReviewType]:
@@ -2148,7 +2149,7 @@ class PullsClient:
         pull_number: int,
         review_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[PullRequestReview, PullRequestReviewType]:
         """See also: https://docs.github.com/rest/pulls/reviews#get-a-review-for-a-pull-request"""
 
@@ -2175,7 +2176,7 @@ class PullsClient:
         pull_number: int,
         review_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[PullRequestReview, PullRequestReviewType]:
         """See also: https://docs.github.com/rest/pulls/reviews#get-a-review-for-a-pull-request"""
 
@@ -2203,7 +2204,7 @@ class PullsClient:
         pull_number: int,
         review_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBodyType,
     ) -> Response[PullRequestReview, PullRequestReviewType]: ...
 
@@ -2216,7 +2217,7 @@ class PullsClient:
         review_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         body: str,
     ) -> Response[PullRequestReview, PullRequestReviewType]: ...
 
@@ -2227,7 +2228,7 @@ class PullsClient:
         pull_number: int,
         review_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[PullRequestReview, PullRequestReviewType]:
@@ -2273,7 +2274,7 @@ class PullsClient:
         pull_number: int,
         review_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBodyType,
     ) -> Response[PullRequestReview, PullRequestReviewType]: ...
 
@@ -2286,7 +2287,7 @@ class PullsClient:
         review_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         body: str,
     ) -> Response[PullRequestReview, PullRequestReviewType]: ...
 
@@ -2297,7 +2298,7 @@ class PullsClient:
         pull_number: int,
         review_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[PullRequestReview, PullRequestReviewType]:
@@ -2342,7 +2343,7 @@ class PullsClient:
         pull_number: int,
         review_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[PullRequestReview, PullRequestReviewType]:
         """See also: https://docs.github.com/rest/pulls/reviews#delete-a-pending-review-for-a-pull-request"""
 
@@ -2370,7 +2371,7 @@ class PullsClient:
         pull_number: int,
         review_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[PullRequestReview, PullRequestReviewType]:
         """See also: https://docs.github.com/rest/pulls/reviews#delete-a-pending-review-for-a-pull-request"""
 
@@ -2400,7 +2401,7 @@ class PullsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[ReviewComment], list[ReviewCommentType]]:
         """See also: https://docs.github.com/rest/pulls/reviews#list-comments-for-a-pull-request-review"""
 
@@ -2435,7 +2436,7 @@ class PullsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[ReviewComment], list[ReviewCommentType]]:
         """See also: https://docs.github.com/rest/pulls/reviews#list-comments-for-a-pull-request-review"""
 
@@ -2469,7 +2470,7 @@ class PullsClient:
         pull_number: int,
         review_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyType,
     ) -> Response[PullRequestReview, PullRequestReviewType]: ...
 
@@ -2482,7 +2483,7 @@ class PullsClient:
         review_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         message: str,
         event: Missing[Literal["DISMISS"]] = UNSET,
     ) -> Response[PullRequestReview, PullRequestReviewType]: ...
@@ -2494,7 +2495,7 @@ class PullsClient:
         pull_number: int,
         review_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyType
         ] = UNSET,
@@ -2546,7 +2547,7 @@ class PullsClient:
         pull_number: int,
         review_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyType,
     ) -> Response[PullRequestReview, PullRequestReviewType]: ...
 
@@ -2559,7 +2560,7 @@ class PullsClient:
         review_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         message: str,
         event: Missing[Literal["DISMISS"]] = UNSET,
     ) -> Response[PullRequestReview, PullRequestReviewType]: ...
@@ -2571,7 +2572,7 @@ class PullsClient:
         pull_number: int,
         review_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyType
         ] = UNSET,
@@ -2623,7 +2624,7 @@ class PullsClient:
         pull_number: int,
         review_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyType,
     ) -> Response[PullRequestReview, PullRequestReviewType]: ...
 
@@ -2636,7 +2637,7 @@ class PullsClient:
         review_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         body: Missing[str] = UNSET,
         event: Literal["APPROVE", "REQUEST_CHANGES", "COMMENT"],
     ) -> Response[PullRequestReview, PullRequestReviewType]: ...
@@ -2648,7 +2649,7 @@ class PullsClient:
         pull_number: int,
         review_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyType
         ] = UNSET,
@@ -2699,7 +2700,7 @@ class PullsClient:
         pull_number: int,
         review_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyType,
     ) -> Response[PullRequestReview, PullRequestReviewType]: ...
 
@@ -2712,7 +2713,7 @@ class PullsClient:
         review_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         body: Missing[str] = UNSET,
         event: Literal["APPROVE", "REQUEST_CHANGES", "COMMENT"],
     ) -> Response[PullRequestReview, PullRequestReviewType]: ...
@@ -2724,7 +2725,7 @@ class PullsClient:
         pull_number: int,
         review_id: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyType
         ] = UNSET,
@@ -2774,7 +2775,7 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             Union[ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyType, None]
         ] = UNSET,
@@ -2791,7 +2792,7 @@ class PullsClient:
         pull_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         expected_head_sha: Missing[str] = UNSET,
     ) -> Response[
         ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202,
@@ -2804,7 +2805,7 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             Union[ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyType, None]
         ] = UNSET,
@@ -2858,7 +2859,7 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             Union[ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyType, None]
         ] = UNSET,
@@ -2875,7 +2876,7 @@ class PullsClient:
         pull_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         expected_head_sha: Missing[str] = UNSET,
     ) -> Response[
         ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202,
@@ -2888,7 +2889,7 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
-        headers: Optional[dict[str, str]] = None,
+        headers: Optional[Mapping[str, str]] = None,
         data: Missing[
             Union[ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyType, None]
         ] = UNSET,
