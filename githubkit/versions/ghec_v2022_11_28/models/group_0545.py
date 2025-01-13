@@ -14,7 +14,7 @@ from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
@@ -167,7 +167,7 @@ class WebhookDeploymentStatusCreatedPropDeploymentPropCreator(GitHubModel):
     user_view_type: Missing[str] = Field(default=UNSET)
 
 
-class WebhookDeploymentStatusCreatedPropDeploymentPropPayloadOneof1(GitHubModel):
+class WebhookDeploymentStatusCreatedPropDeploymentPropPayloadOneof1(ExtraGitHubModel):
     """WebhookDeploymentStatusCreatedPropDeploymentPropPayloadOneof1"""
 
 

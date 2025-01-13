@@ -3750,7 +3750,7 @@ if TYPE_CHECKING:
         WebhookDeploymentCreatedPropDeploymentPropCreator as WebhookDeploymentCreatedPropDeploymentPropCreator,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookDeploymentCreatedPropDeploymentPropPayloadOneof0 as WebhookDeploymentCreatedPropDeploymentPropPayloadOneof0,
+        WebhookDeploymentCreatedPropDeploymentPropPayloadOneof1 as WebhookDeploymentCreatedPropDeploymentPropPayloadOneof1,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubApp as WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubApp,
@@ -10673,7 +10673,7 @@ else:
             "WebhookDeploymentCreated",
             "WebhookDeploymentCreatedPropDeployment",
             "WebhookDeploymentCreatedPropDeploymentPropCreator",
-            "WebhookDeploymentCreatedPropDeploymentPropPayloadOneof0",
+            "WebhookDeploymentCreatedPropDeploymentPropPayloadOneof1",
             "WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubApp",
             "WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubAppPropOwner",
             "WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubAppPropPermissions",

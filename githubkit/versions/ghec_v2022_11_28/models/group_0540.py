@@ -14,7 +14,7 @@ from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
@@ -76,7 +76,7 @@ class WebhookDeploymentCreatedPropDeployment(GitHubModel):
     id: int = Field()
     node_id: str = Field()
     original_environment: str = Field()
-    payload: Union[WebhookDeploymentCreatedPropDeploymentPropPayloadOneof0, str] = (
+    payload: Union[str, WebhookDeploymentCreatedPropDeploymentPropPayloadOneof1] = (
         Field()
     )
     performed_via_github_app: Missing[
@@ -124,8 +124,8 @@ class WebhookDeploymentCreatedPropDeploymentPropCreator(GitHubModel):
     user_view_type: Missing[str] = Field(default=UNSET)
 
 
-class WebhookDeploymentCreatedPropDeploymentPropPayloadOneof0(GitHubModel):
-    """WebhookDeploymentCreatedPropDeploymentPropPayloadOneof0"""
+class WebhookDeploymentCreatedPropDeploymentPropPayloadOneof1(ExtraGitHubModel):
+    """WebhookDeploymentCreatedPropDeploymentPropPayloadOneof1"""
 
 
 class WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubApp(GitHubModel):
@@ -572,7 +572,7 @@ class WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropHeadPropRe
 model_rebuild(WebhookDeploymentCreated)
 model_rebuild(WebhookDeploymentCreatedPropDeployment)
 model_rebuild(WebhookDeploymentCreatedPropDeploymentPropCreator)
-model_rebuild(WebhookDeploymentCreatedPropDeploymentPropPayloadOneof0)
+model_rebuild(WebhookDeploymentCreatedPropDeploymentPropPayloadOneof1)
 model_rebuild(WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubApp)
 model_rebuild(WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubAppPropOwner)
 model_rebuild(
@@ -600,7 +600,7 @@ __all__ = (
     "WebhookDeploymentCreated",
     "WebhookDeploymentCreatedPropDeployment",
     "WebhookDeploymentCreatedPropDeploymentPropCreator",
-    "WebhookDeploymentCreatedPropDeploymentPropPayloadOneof0",
+    "WebhookDeploymentCreatedPropDeploymentPropPayloadOneof1",
     "WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubApp",
     "WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubAppPropOwner",
     "WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubAppPropPermissions",
