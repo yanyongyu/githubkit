@@ -43,7 +43,9 @@ class WebhookCodeScanningAlertReopenedByUserPropAlertType(TypedDict):
     created_at: datetime
     dismissed_at: None
     dismissed_by: None
+    dismissed_comment: NotRequired[Union[str, None]]
     dismissed_reason: None
+    fixed_at: NotRequired[None]
     html_url: str
     most_recent_instance: NotRequired[
         Union[
@@ -53,7 +55,7 @@ class WebhookCodeScanningAlertReopenedByUserPropAlertType(TypedDict):
     ]
     number: int
     rule: WebhookCodeScanningAlertReopenedByUserPropAlertPropRuleType
-    state: Literal["open", "fixed"]
+    state: Union[None, Literal["open", "fixed"]]
     tool: WebhookCodeScanningAlertReopenedByUserPropAlertPropToolType
     url: str
 

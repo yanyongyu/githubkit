@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Literal, Union
+from typing import Annotated, Literal, Union
 
 from pydantic import Field
 
@@ -75,9 +75,19 @@ class WebhookCodeScanningAlertFixedPropAlert(GitHubModel):
     dismissed_by: Union[WebhookCodeScanningAlertFixedPropAlertPropDismissedBy, None] = (
         Field(title="User")
     )
+    dismissed_comment: Missing[Union[Annotated[str, Field(max_length=280)], None]] = (
+        Field(
+            default=UNSET,
+            description="The dismissal comment associated with the dismissal of the alert.",
+        )
+    )
     dismissed_reason: Union[
         None, Literal["false positive", "won't fix", "used in tests"]
     ] = Field(description="The reason for dismissing or closing the alert.")
+    fixed_at: Missing[None] = Field(
+        default=UNSET,
+        description="The time that the alert was fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+    )
     html_url: str = Field(description="The GitHub URL of the alert resource.")
     instances_url: Missing[str] = Field(default=UNSET)
     most_recent_instance: Missing[
@@ -85,7 +95,9 @@ class WebhookCodeScanningAlertFixedPropAlert(GitHubModel):
     ] = Field(default=UNSET, title="Alert Instance")
     number: int = Field(description="The code scanning alert number.")
     rule: WebhookCodeScanningAlertFixedPropAlertPropRule = Field()
-    state: Literal["fixed"] = Field(description="State of a code scanning alert.")
+    state: Union[None, Literal["fixed"]] = Field(
+        description="State of a code scanning alert. Events for alerts found outside the default branch will return a `null` value until they are dismissed or fixed."
+    )
     tool: WebhookCodeScanningAlertFixedPropAlertPropTool = Field()
     url: str = Field()
 

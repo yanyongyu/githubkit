@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Literal, Union
+from typing import Annotated, Literal, Union
 
 from pydantic import Field
 
@@ -75,9 +75,19 @@ class WebhookCodeScanningAlertClosedByUserPropAlert(GitHubModel):
     dismissed_by: Union[
         WebhookCodeScanningAlertClosedByUserPropAlertPropDismissedBy, None
     ] = Field(title="User")
+    dismissed_comment: Missing[Union[Annotated[str, Field(max_length=280)], None]] = (
+        Field(
+            default=UNSET,
+            description="The dismissal comment associated with the dismissal of the alert.",
+        )
+    )
     dismissed_reason: Union[
         None, Literal["false positive", "won't fix", "used in tests"]
     ] = Field(description="The reason for dismissing or closing the alert.")
+    fixed_at: Missing[None] = Field(
+        default=UNSET,
+        description="The time that the alert was fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+    )
     html_url: str = Field(description="The GitHub URL of the alert resource.")
     most_recent_instance: Missing[
         Union[WebhookCodeScanningAlertClosedByUserPropAlertPropMostRecentInstance, None]

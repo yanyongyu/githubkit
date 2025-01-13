@@ -45,9 +45,11 @@ class WebhookCodeScanningAlertClosedByUserPropAlertType(TypedDict):
     dismissed_by: Union[
         WebhookCodeScanningAlertClosedByUserPropAlertPropDismissedByType, None
     ]
+    dismissed_comment: NotRequired[Union[str, None]]
     dismissed_reason: Union[
         None, Literal["false positive", "won't fix", "used in tests"]
     ]
+    fixed_at: NotRequired[None]
     html_url: str
     most_recent_instance: NotRequired[
         Union[
