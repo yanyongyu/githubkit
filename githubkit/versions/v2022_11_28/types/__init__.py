@@ -2326,7 +2326,7 @@ if TYPE_CHECKING:
         WebhookDeploymentCreatedPropDeploymentPropCreatorType as WebhookDeploymentCreatedPropDeploymentPropCreatorType,
     )
     from .group_0482 import (
-        WebhookDeploymentCreatedPropDeploymentPropPayloadOneof0Type as WebhookDeploymentCreatedPropDeploymentPropPayloadOneof0Type,
+        WebhookDeploymentCreatedPropDeploymentPropPayloadOneof1Type as WebhookDeploymentCreatedPropDeploymentPropPayloadOneof1Type,
     )
     from .group_0482 import (
         WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubAppPropOwnerType as WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubAppPropOwnerType,
@@ -10375,7 +10375,7 @@ else:
             "WebhookDeploymentCreatedType",
             "WebhookDeploymentCreatedPropDeploymentType",
             "WebhookDeploymentCreatedPropDeploymentPropCreatorType",
-            "WebhookDeploymentCreatedPropDeploymentPropPayloadOneof0Type",
+            "WebhookDeploymentCreatedPropDeploymentPropPayloadOneof1Type",
             "WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubAppType",
             "WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubAppPropOwnerType",
             "WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubAppPropPermissionsType",

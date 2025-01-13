@@ -429,6 +429,16 @@ source = "https://raw.githubusercontent.com/github/rest-api-description/main/des
 "/components/schemas/webhook-issues-unlocked/properties/issue/properties/performed_via_github_app/properties/events/items" = { enum = "<unset>" }
 "/components/schemas/webhook-meta-deleted/properties/hook/properties/events/items" = { enum = "<unset>" }
 
+# webhook deployment payload object can contain additional properties
+"/components/schemas/webhook-deployment-status-created/properties/deployment/properties/payload" = { oneOf = [
+  { type = "string" },
+  { type = "object", additionalProperties = true },
+] }
+"/components/schemas/webhook-deployment-created/properties/deployment/properties/payload" = { oneOf = [
+  { type = "string" },
+  { type = "object", additionalProperties = true },
+] }
+
 # webhook deployment protection rule action is required
 "/components/schemas/webhook-deployment-protection-rule-requested" = { required = [
   "action",

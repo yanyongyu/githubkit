@@ -2060,7 +2060,7 @@ if TYPE_CHECKING:
         WebhookDeploymentCreatedPropDeploymentPropCreator as WebhookDeploymentCreatedPropDeploymentPropCreator,
     )
     from .group_0482 import (
-        WebhookDeploymentCreatedPropDeploymentPropPayloadOneof0 as WebhookDeploymentCreatedPropDeploymentPropPayloadOneof0,
+        WebhookDeploymentCreatedPropDeploymentPropPayloadOneof1 as WebhookDeploymentCreatedPropDeploymentPropPayloadOneof1,
     )
     from .group_0482 import (
         WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubApp as WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubApp,
@@ -9909,7 +9909,7 @@ else:
             "WebhookDeploymentCreated",
             "WebhookDeploymentCreatedPropDeployment",
             "WebhookDeploymentCreatedPropDeploymentPropCreator",
-            "WebhookDeploymentCreatedPropDeploymentPropPayloadOneof0",
+            "WebhookDeploymentCreatedPropDeploymentPropPayloadOneof1",
             "WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubApp",
             "WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubAppPropOwner",
             "WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubAppPropPermissions",

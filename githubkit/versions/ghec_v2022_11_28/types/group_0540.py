@@ -49,7 +49,7 @@ class WebhookDeploymentCreatedPropDeploymentType(TypedDict):
     id: int
     node_id: str
     original_environment: str
-    payload: Union[WebhookDeploymentCreatedPropDeploymentPropPayloadOneof0Type, str]
+    payload: Union[str, WebhookDeploymentCreatedPropDeploymentPropPayloadOneof1Type]
     performed_via_github_app: NotRequired[
         Union[WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubAppType, None]
     ]
@@ -91,8 +91,8 @@ class WebhookDeploymentCreatedPropDeploymentPropCreatorType(TypedDict):
     user_view_type: NotRequired[str]
 
 
-class WebhookDeploymentCreatedPropDeploymentPropPayloadOneof0Type(TypedDict):
-    """WebhookDeploymentCreatedPropDeploymentPropPayloadOneof0"""
+class WebhookDeploymentCreatedPropDeploymentPropPayloadOneof1Type(TypedDict):
+    """WebhookDeploymentCreatedPropDeploymentPropPayloadOneof1"""
 
 
 class WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubAppType(TypedDict):
@@ -535,7 +535,7 @@ class WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropHeadPropRe
 
 __all__ = (
     "WebhookDeploymentCreatedPropDeploymentPropCreatorType",
-    "WebhookDeploymentCreatedPropDeploymentPropPayloadOneof0Type",
+    "WebhookDeploymentCreatedPropDeploymentPropPayloadOneof1Type",
     "WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubAppPropOwnerType",
     "WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubAppPropPermissionsType",
     "WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubAppType",
