@@ -9,8 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Any, Literal, Union
+from typing_extensions import NotRequired, TypeAlias, TypedDict
 
 
 class GistsPostBodyType(TypedDict):
@@ -21,14 +21,14 @@ class GistsPostBodyType(TypedDict):
     public: NotRequired[Union[bool, Literal["true", "false"]]]
 
 
-class GistsPostBodyPropFilesType(TypedDict):
-    """GistsPostBodyPropFiles
+GistsPostBodyPropFilesType: TypeAlias = dict[str, Any]
+"""GistsPostBodyPropFiles
 
-    Names and content for the files that make up the gist
+Names and content for the files that make up the gist
 
-    Examples:
-        {'hello.rb': {'content': 'puts "Hello, World!"'}}
-    """
+Examples:
+    {'hello.rb': {'content': 'puts "Hello, World!"'}}
+"""
 
 
 __all__ = (

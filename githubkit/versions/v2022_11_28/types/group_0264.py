@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Any
+from typing_extensions import NotRequired, TypeAlias, TypedDict
 
 from .group_0262 import MetadataType
 
@@ -29,11 +30,11 @@ class ManifestPropFileType(TypedDict):
     source_location: NotRequired[str]
 
 
-class ManifestPropResolvedType(TypedDict):
-    """ManifestPropResolved
+ManifestPropResolvedType: TypeAlias = dict[str, Any]
+"""ManifestPropResolved
 
-    A collection of resolved package dependencies.
-    """
+A collection of resolved package dependencies.
+"""
 
 
 __all__ = (

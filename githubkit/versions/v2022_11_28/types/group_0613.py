@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Any
+from typing_extensions import NotRequired, TypeAlias, TypedDict
 
 
 class WebhookRubygemsMetadataType(TypedDict):
@@ -33,12 +34,14 @@ class WebhookRubygemsMetadataPropVersionInfoType(TypedDict):
     version: NotRequired[str]
 
 
-class WebhookRubygemsMetadataPropMetadataType(TypedDict):
-    """WebhookRubygemsMetadataPropMetadata"""
+WebhookRubygemsMetadataPropMetadataType: TypeAlias = dict[str, Any]
+"""WebhookRubygemsMetadataPropMetadata
+"""
 
 
-class WebhookRubygemsMetadataPropDependenciesItemsType(TypedDict):
-    """WebhookRubygemsMetadataPropDependenciesItems"""
+WebhookRubygemsMetadataPropDependenciesItemsType: TypeAlias = dict[str, Any]
+"""WebhookRubygemsMetadataPropDependenciesItems
+"""
 
 
 __all__ = (

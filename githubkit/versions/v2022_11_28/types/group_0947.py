@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Any
+from typing_extensions import NotRequired, TypeAlias, TypedDict
 
 
 class ReposOwnerRepoAttestationsPostBodyType(TypedDict):
@@ -36,14 +37,18 @@ class ReposOwnerRepoAttestationsPostBodyPropBundleType(TypedDict):
     ]
 
 
-class ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterialType(
-    TypedDict
-):
-    """ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterial"""
+ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterialType: TypeAlias = (
+    dict[str, Any]
+)
+"""ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterial
+"""
 
 
-class ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelopeType(TypedDict):
-    """ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelope"""
+ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelopeType: TypeAlias = dict[
+    str, Any
+]
+"""ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelope
+"""
 
 
 __all__ = (

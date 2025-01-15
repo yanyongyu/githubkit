@@ -10,8 +10,8 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Any, Literal, Union
+from typing_extensions import NotRequired, TypeAlias, TypedDict
 
 from .group_0002 import SimpleUserType
 from .group_0444 import EnterpriseWebhooksType
@@ -132,13 +132,13 @@ class WebhookTeamDeletedPropRepositoryType(TypedDict):
     watchers_count: int
 
 
-class WebhookTeamDeletedPropRepositoryPropCustomPropertiesType(TypedDict):
-    """WebhookTeamDeletedPropRepositoryPropCustomProperties
+WebhookTeamDeletedPropRepositoryPropCustomPropertiesType: TypeAlias = dict[str, Any]
+"""WebhookTeamDeletedPropRepositoryPropCustomProperties
 
-    The custom properties that were defined for the repository. The keys are the
-    custom property names, and the values are the corresponding custom property
-    values.
-    """
+The custom properties that were defined for the repository. The keys are the
+custom property names, and the values are the corresponding custom property
+values.
+"""
 
 
 class WebhookTeamDeletedPropRepositoryPropLicenseType(TypedDict):

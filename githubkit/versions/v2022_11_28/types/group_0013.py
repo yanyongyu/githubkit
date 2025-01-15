@@ -10,8 +10,8 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Any, Union
+from typing_extensions import NotRequired, TypeAlias, TypedDict
 
 
 class HookDeliveryType(TypedDict):
@@ -44,18 +44,18 @@ class HookDeliveryPropRequestType(TypedDict):
     payload: Union[HookDeliveryPropRequestPropPayloadType, None]
 
 
-class HookDeliveryPropRequestPropHeadersType(TypedDict):
-    """HookDeliveryPropRequestPropHeaders
+HookDeliveryPropRequestPropHeadersType: TypeAlias = dict[str, Any]
+"""HookDeliveryPropRequestPropHeaders
 
-    The request headers sent with the webhook delivery.
-    """
+The request headers sent with the webhook delivery.
+"""
 
 
-class HookDeliveryPropRequestPropPayloadType(TypedDict):
-    """HookDeliveryPropRequestPropPayload
+HookDeliveryPropRequestPropPayloadType: TypeAlias = dict[str, Any]
+"""HookDeliveryPropRequestPropPayload
 
-    The webhook payload.
-    """
+The webhook payload.
+"""
 
 
 class HookDeliveryPropResponseType(TypedDict):
@@ -65,11 +65,11 @@ class HookDeliveryPropResponseType(TypedDict):
     payload: Union[str, None]
 
 
-class HookDeliveryPropResponsePropHeadersType(TypedDict):
-    """HookDeliveryPropResponsePropHeaders
+HookDeliveryPropResponsePropHeadersType: TypeAlias = dict[str, Any]
+"""HookDeliveryPropResponsePropHeaders
 
-    The response headers received when the delivery was made.
-    """
+The response headers received when the delivery was made.
+"""
 
 
 __all__ = (

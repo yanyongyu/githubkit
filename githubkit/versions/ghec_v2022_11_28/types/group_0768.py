@@ -9,8 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Any, Union
+from typing_extensions import NotRequired, TypeAlias, TypedDict
 
 from .group_0002 import SimpleUserType
 from .group_0444 import EnterpriseWebhooksType
@@ -32,12 +32,12 @@ class WebhookRepositoryDispatchSampleType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookRepositoryDispatchSamplePropClientPayloadType(TypedDict):
-    """WebhookRepositoryDispatchSamplePropClientPayload
+WebhookRepositoryDispatchSamplePropClientPayloadType: TypeAlias = dict[str, Any]
+"""WebhookRepositoryDispatchSamplePropClientPayload
 
-    The `client_payload` that was specified in the `POST
-    /repos/{owner}/{repo}/dispatches` request body.
-    """
+The `client_payload` that was specified in the `POST
+/repos/{owner}/{repo}/dispatches` request body.
+"""
 
 
 __all__ = (
