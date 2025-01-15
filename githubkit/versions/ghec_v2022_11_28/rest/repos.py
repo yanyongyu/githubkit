@@ -2707,7 +2707,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CheckAutomatedSecurityFixes, CheckAutomatedSecurityFixesType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#check-if-automated-security-fixes-are-enabled-for-a-repository"""
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#check-if-dependabot-security-updates-are-enabled-for-a-repository"""
 
         from ..models import CheckAutomatedSecurityFixes
 
@@ -2730,7 +2730,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CheckAutomatedSecurityFixes, CheckAutomatedSecurityFixesType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#check-if-automated-security-fixes-are-enabled-for-a-repository"""
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#check-if-dependabot-security-updates-are-enabled-for-a-repository"""
 
         from ..models import CheckAutomatedSecurityFixes
 
@@ -2753,7 +2753,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#enable-automated-security-fixes"""
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#enable-dependabot-security-updates"""
 
         url = f"/repos/{owner}/{repo}/automated-security-fixes"
 
@@ -2772,7 +2772,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#enable-automated-security-fixes"""
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#enable-dependabot-security-updates"""
 
         url = f"/repos/{owner}/{repo}/automated-security-fixes"
 
@@ -2791,7 +2791,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#disable-automated-security-fixes"""
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#disable-dependabot-security-updates"""
 
         url = f"/repos/{owner}/{repo}/automated-security-fixes"
 
@@ -2810,7 +2810,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#disable-automated-security-fixes"""
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#disable-dependabot-security-updates"""
 
         url = f"/repos/{owner}/{repo}/automated-security-fixes"
 

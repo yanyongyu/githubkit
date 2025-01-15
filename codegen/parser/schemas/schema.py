@@ -570,6 +570,9 @@ class ModelSchema(SchemaData):
         imports = {"from typing_extensions import TypedDict"}
         for prop in self.properties:
             imports.update(prop.get_type_imports())
+        if self.allow_extra:
+            imports.add("from typing import Any")
+            imports.add("from typing_extensions import TypeAlias")
         return imports
 
     @override

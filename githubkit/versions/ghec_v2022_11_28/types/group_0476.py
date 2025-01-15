@@ -9,8 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Any, Literal, Union
+from typing_extensions import NotRequired, TypeAlias, TypedDict
 
 from .group_0002 import SimpleUserType
 
@@ -62,16 +62,23 @@ class PersonalAccessTokenRequestPropPermissionsAddedType(TypedDict):
     other: NotRequired[PersonalAccessTokenRequestPropPermissionsAddedPropOtherType]
 
 
-class PersonalAccessTokenRequestPropPermissionsAddedPropOrganizationType(TypedDict):
-    """PersonalAccessTokenRequestPropPermissionsAddedPropOrganization"""
+PersonalAccessTokenRequestPropPermissionsAddedPropOrganizationType: TypeAlias = dict[
+    str, Any
+]
+"""PersonalAccessTokenRequestPropPermissionsAddedPropOrganization
+"""
 
 
-class PersonalAccessTokenRequestPropPermissionsAddedPropRepositoryType(TypedDict):
-    """PersonalAccessTokenRequestPropPermissionsAddedPropRepository"""
+PersonalAccessTokenRequestPropPermissionsAddedPropRepositoryType: TypeAlias = dict[
+    str, Any
+]
+"""PersonalAccessTokenRequestPropPermissionsAddedPropRepository
+"""
 
 
-class PersonalAccessTokenRequestPropPermissionsAddedPropOtherType(TypedDict):
-    """PersonalAccessTokenRequestPropPermissionsAddedPropOther"""
+PersonalAccessTokenRequestPropPermissionsAddedPropOtherType: TypeAlias = dict[str, Any]
+"""PersonalAccessTokenRequestPropPermissionsAddedPropOther
+"""
 
 
 class PersonalAccessTokenRequestPropPermissionsUpgradedType(TypedDict):
@@ -90,16 +97,25 @@ class PersonalAccessTokenRequestPropPermissionsUpgradedType(TypedDict):
     other: NotRequired[PersonalAccessTokenRequestPropPermissionsUpgradedPropOtherType]
 
 
-class PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganizationType(TypedDict):
-    """PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganization"""
+PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganizationType: TypeAlias = dict[
+    str, Any
+]
+"""PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganization
+"""
 
 
-class PersonalAccessTokenRequestPropPermissionsUpgradedPropRepositoryType(TypedDict):
-    """PersonalAccessTokenRequestPropPermissionsUpgradedPropRepository"""
+PersonalAccessTokenRequestPropPermissionsUpgradedPropRepositoryType: TypeAlias = dict[
+    str, Any
+]
+"""PersonalAccessTokenRequestPropPermissionsUpgradedPropRepository
+"""
 
 
-class PersonalAccessTokenRequestPropPermissionsUpgradedPropOtherType(TypedDict):
-    """PersonalAccessTokenRequestPropPermissionsUpgradedPropOther"""
+PersonalAccessTokenRequestPropPermissionsUpgradedPropOtherType: TypeAlias = dict[
+    str, Any
+]
+"""PersonalAccessTokenRequestPropPermissionsUpgradedPropOther
+"""
 
 
 class PersonalAccessTokenRequestPropPermissionsResultType(TypedDict):
@@ -118,16 +134,23 @@ class PersonalAccessTokenRequestPropPermissionsResultType(TypedDict):
     other: NotRequired[PersonalAccessTokenRequestPropPermissionsResultPropOtherType]
 
 
-class PersonalAccessTokenRequestPropPermissionsResultPropOrganizationType(TypedDict):
-    """PersonalAccessTokenRequestPropPermissionsResultPropOrganization"""
+PersonalAccessTokenRequestPropPermissionsResultPropOrganizationType: TypeAlias = dict[
+    str, Any
+]
+"""PersonalAccessTokenRequestPropPermissionsResultPropOrganization
+"""
 
 
-class PersonalAccessTokenRequestPropPermissionsResultPropRepositoryType(TypedDict):
-    """PersonalAccessTokenRequestPropPermissionsResultPropRepository"""
+PersonalAccessTokenRequestPropPermissionsResultPropRepositoryType: TypeAlias = dict[
+    str, Any
+]
+"""PersonalAccessTokenRequestPropPermissionsResultPropRepository
+"""
 
 
-class PersonalAccessTokenRequestPropPermissionsResultPropOtherType(TypedDict):
-    """PersonalAccessTokenRequestPropPermissionsResultPropOther"""
+PersonalAccessTokenRequestPropPermissionsResultPropOtherType: TypeAlias = dict[str, Any]
+"""PersonalAccessTokenRequestPropPermissionsResultPropOther
+"""
 
 
 __all__ = (

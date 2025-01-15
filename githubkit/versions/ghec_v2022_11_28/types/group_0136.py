@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from datetime import datetime
 from typing import Any, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import NotRequired, TypeAlias, TypedDict
 
 from .group_0002 import SimpleUserType
 
@@ -66,8 +66,9 @@ class GistSimplePropForkOfType(TypedDict):
     history: NotRequired[list[Any]]
 
 
-class GistSimplePropForkOfPropFilesType(TypedDict):
-    """GistSimplePropForkOfPropFiles"""
+GistSimplePropForkOfPropFilesType: TypeAlias = dict[str, Any]
+"""GistSimplePropForkOfPropFiles
+"""
 
 
 __all__ = (

@@ -19,12 +19,20 @@ from .{{ group_name(group.get_dependency_by_model(model), groups) }} import {{ m
 {# model #}
 {% for model in group.models %}
 
+{# if model has no property and allows extra properties #}
+{# we treat it as arbitrary dict #}
+{# TODO: PEP728 TypedDict with extra items #}
+{% if not model.properties and model.allow_extra %}
+{{ model.class_name }}Type: TypeAlias = dict[str, Any]
+{{ build_model_docstring(model) }}
+{% else %}
 class {{ model.class_name }}Type(TypedDict):
     {{ build_model_docstring(model) | indent(4) }}
 
     {% for prop in model.properties %}
     {{ prop.get_type_defination() }}
     {% endfor %}
+{% endif %}
 
 {% endfor %}
 

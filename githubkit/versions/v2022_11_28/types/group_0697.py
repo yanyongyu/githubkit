@@ -9,8 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Any, Union
+from typing_extensions import NotRequired, TypeAlias, TypedDict
 
 from .group_0613 import WebhookRubygemsMetadataType
 
@@ -95,12 +95,12 @@ class WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropDock
     tags: NotRequired[list[str]]
 
 
-class WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropMetadataItemsType(
-    TypedDict
-):
-    """WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropMetadataIt
-    ems
-    """
+WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropMetadataItemsType: TypeAlias = dict[
+    str, Any
+]
+"""WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropMetadataIt
+ems
+"""
 
 
 class WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropPackageFilesItemsType(

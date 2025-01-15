@@ -15,16 +15,16 @@ from githubkit.compat import GitHubModel, model_rebuild
 
 
 class CheckAutomatedSecurityFixes(GitHubModel):
-    """Check Automated Security Fixes
+    """Check Dependabot security updates
 
-    Check Automated Security Fixes
+    Check Dependabot security updates
     """
 
     enabled: bool = Field(
-        description="Whether automated security fixes are enabled for the repository."
+        description="Whether Dependabot security updates are enabled for the repository."
     )
     paused: bool = Field(
-        description="Whether automated security fixes are paused for the repository."
+        description="Whether Dependabot security updates are paused for the repository."
     )
 
 

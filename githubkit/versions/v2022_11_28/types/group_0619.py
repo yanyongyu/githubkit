@@ -9,8 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Any, Literal, Union
+from typing_extensions import NotRequired, TypeAlias, TypedDict
 
 from .group_0613 import WebhookRubygemsMetadataType
 
@@ -92,10 +92,11 @@ class WebhookPackageUpdatedPropPackagePropPackageVersionPropDockerMetadataItemsT
     tags: NotRequired[list[str]]
 
 
-class WebhookPackageUpdatedPropPackagePropPackageVersionPropMetadataItemsType(
-    TypedDict
-):
-    """WebhookPackageUpdatedPropPackagePropPackageVersionPropMetadataItems"""
+WebhookPackageUpdatedPropPackagePropPackageVersionPropMetadataItemsType: TypeAlias = (
+    dict[str, Any]
+)
+"""WebhookPackageUpdatedPropPackagePropPackageVersionPropMetadataItems
+"""
 
 
 class WebhookPackageUpdatedPropPackagePropPackageVersionPropPackageFilesItemsType(

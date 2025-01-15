@@ -9,8 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing import Any, Literal
+from typing_extensions import NotRequired, TypeAlias, TypedDict
 
 
 class OrgsOrgReposPostBodyType(TypedDict):
@@ -45,12 +45,12 @@ class OrgsOrgReposPostBodyType(TypedDict):
     custom_properties: NotRequired[OrgsOrgReposPostBodyPropCustomPropertiesType]
 
 
-class OrgsOrgReposPostBodyPropCustomPropertiesType(TypedDict):
-    """OrgsOrgReposPostBodyPropCustomProperties
+OrgsOrgReposPostBodyPropCustomPropertiesType: TypeAlias = dict[str, Any]
+"""OrgsOrgReposPostBodyPropCustomProperties
 
-    The custom properties for the new repository. The keys are the custom property
-    names, and the values are the corresponding custom property values.
-    """
+The custom properties for the new repository. The keys are the custom property
+names, and the values are the corresponding custom property values.
+"""
 
 
 __all__ = (

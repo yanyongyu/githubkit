@@ -13,9 +13,9 @@ from typing_extensions import TypedDict
 
 
 class CheckAutomatedSecurityFixesType(TypedDict):
-    """Check Automated Security Fixes
+    """Check Dependabot security updates
 
-    Check Automated Security Fixes
+    Check Dependabot security updates
     """
 
     enabled: bool

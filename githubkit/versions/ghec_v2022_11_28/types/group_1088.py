@@ -9,8 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Any, Union
+from typing_extensions import NotRequired, TypeAlias, TypedDict
 
 
 class ReposOwnerRepoDeploymentsPostBodyType(TypedDict):
@@ -29,8 +29,9 @@ class ReposOwnerRepoDeploymentsPostBodyType(TypedDict):
     production_environment: NotRequired[bool]
 
 
-class ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0Type(TypedDict):
-    """ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0"""
+ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0Type: TypeAlias = dict[str, Any]
+"""ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0
+"""
 
 
 __all__ = (
