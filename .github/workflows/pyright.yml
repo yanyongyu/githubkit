@@ -16,8 +16,8 @@ on:
       - "**/poetry.lock"
 
 jobs:
-  pyright:
-    name: Pyright Lint
+  lint-githubkit:
+    name: GitHubKit Lint
     runs-on: ubuntu-latest
     concurrency:
       group: pyright-${{ github.ref }}-${{ matrix.env }}
@@ -41,6 +41,27 @@ jobs:
           if [ "${{ matrix.env }}" = "pydantic-v1" ]; then
             sed -i 's/PYDANTIC_V2 = true/PYDANTIC_V2 = false/g' ./pyproject.toml
           fi
+        shell: bash
+
+      - name: Run Pyright
+        uses: jakebailey/pyright-action@v2
+        with:
+          pylance-version: latest-release
+
+  lint-codegen:
+    name: Codegen Lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python environment
+        uses: ./.github/actions/setup-python
+        with:
+          env-dir: .
+
+      - run: |
+          echo "$(poetry env info --path)/bin" >> $GITHUB_PATH
         shell: bash
 
       - name: Run Pyright
