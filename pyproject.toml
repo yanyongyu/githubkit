@@ -137,6 +137,8 @@ pythonVersion = "3.9"
 pythonPlatform = "All"
 defineConstant = { PYDANTIC_V2 = true }
 
+exclude = ["codegen/**"]
+
 [tool.codegen]
 output_dir = "githubkit/versions/"
 legacy_rest_models = "githubkit/rest/__init__.py"
