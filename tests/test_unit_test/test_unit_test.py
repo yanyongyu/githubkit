@@ -34,7 +34,7 @@ def mock_request(
     if method == "GET" and url == "/repos/owner/repo":
         return Response[T](
             httpx.Response(status_code=200, json=FAKE_RESPONSE),
-            Any if response_model is UNSET else response_model,
+            Any if response_model is UNSET else response_model,  # type: ignore
         )
     raise RuntimeError(f"Unexpected request: {method} {url}")
 
