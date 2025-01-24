@@ -9,6 +9,7 @@ packages = [{ include = "githubkit-test.py" }]
 [tool.poetry.dependencies]
 python = "^3.9"
 anyio = "*"
+redis = "^5.2.0"
 pytest = "^8.1.0"
 pytest-cov = "^6.0.0"
 pytest-xdist = "^3.5.0"
