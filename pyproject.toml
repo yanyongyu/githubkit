@@ -133,7 +133,7 @@ reportPrivateImportUsage = false
 reportShadowedImports = false
 disableBytesTypePromotions = true
 
-pythonVersion = "3.10"
+pythonVersion = "3.9"
 pythonPlatform = "All"
 defineConstant = { PYDANTIC_V2 = true }
 
