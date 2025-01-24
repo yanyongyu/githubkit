@@ -28,7 +28,7 @@ PrimitiveData: TypeAlias = Optional[Union[str, int, float, bool]]
 QueryParamTypes: TypeAlias = Union[
     httpx.QueryParams,
     Mapping[str, Union[PrimitiveData, Sequence[PrimitiveData]]],
-    Sequence[tuple[str, PrimitiveData]],
+    list[tuple[str, PrimitiveData]],
     tuple[tuple[str, PrimitiveData], ...],
     str,
     bytes,
