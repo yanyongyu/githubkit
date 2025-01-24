@@ -9,10 +9,11 @@ on:
       - "envs/**"
       - "githubkit/**"
       - "tests/**"
+      - "codegen/**"
       - ".github/actions/setup-python/**"
       - ".github/workflows/pyright.yml"
-      - "pyproject.toml"
-      - "poetry.lock"
+      - "**/pyproject.toml"
+      - "**/poetry.lock"
 
 jobs:
   pyright:
