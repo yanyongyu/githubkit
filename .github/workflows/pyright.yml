@@ -44,3 +44,5 @@ jobs:
 
       - name: Run Pyright
         uses: jakebailey/pyright-action@v2
+        with:
+          pylance-version: latest-release

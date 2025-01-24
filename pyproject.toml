@@ -133,14 +133,9 @@ reportPrivateImportUsage = false
 reportShadowedImports = false
 disableBytesTypePromotions = true
 
+pythonVersion = "3.10"
 pythonPlatform = "All"
 defineConstant = { PYDANTIC_V2 = true }
-executionEnvironments = [
-  { root = "./codegen", pythonVersion = "3.10" },
-  { root = "./", pythonVersion = "3.9", extraPaths = [
-    "./",
-  ] },
-]
 
 [tool.codegen]
 output_dir = "githubkit/versions/"
