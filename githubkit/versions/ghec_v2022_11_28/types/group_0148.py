@@ -12,36 +12,26 @@ from __future__ import annotations
 from typing import Union
 from typing_extensions import TypedDict
 
-from .group_0147 import MinimalRepositoryType
 
+class LicenseType(TypedDict):
+    """License
 
-class ThreadType(TypedDict):
-    """Thread
-
-    Thread
+    License
     """
 
-    id: str
-    repository: MinimalRepositoryType
-    subject: ThreadPropSubjectType
-    reason: str
-    unread: bool
-    updated_at: str
-    last_read_at: Union[str, None]
-    url: str
-    subscription_url: str
+    key: str
+    name: str
+    spdx_id: Union[str, None]
+    url: Union[str, None]
+    node_id: str
+    html_url: str
+    description: str
+    implementation: str
+    permissions: list[str]
+    conditions: list[str]
+    limitations: list[str]
+    body: str
+    featured: bool
 
 
-class ThreadPropSubjectType(TypedDict):
-    """ThreadPropSubject"""
-
-    title: str
-    url: str
-    latest_comment_url: str
-    type: str
-
-
-__all__ = (
-    "ThreadPropSubjectType",
-    "ThreadType",
-)
+__all__ = ("LicenseType",)

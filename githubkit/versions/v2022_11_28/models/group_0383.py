@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -18,155 +18,139 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0002 import SimpleUser
-from .group_0077 import CodespaceMachine
-from .group_0112 import FullRepository
+from .group_0003 import SimpleUser
+from .group_0019 import LicenseSimple
+from .group_0377 import SearchResultTextMatchesItems
 
 
-class CodespaceWithFullRepository(GitHubModel):
-    """Codespace
+class RepoSearchResultItem(GitHubModel):
+    """Repo Search Result Item
 
-    A codespace.
+    Repo Search Result Item
     """
 
     id: int = Field()
-    name: str = Field(description="Automatically generated name of this codespace.")
-    display_name: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Display name for this codespace."
-    )
-    environment_id: Union[str, None] = Field(
-        description="UUID identifying this codespace's environment."
-    )
-    owner: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    billable_owner: SimpleUser = Field(
-        title="Simple User", description="A GitHub user."
-    )
-    repository: FullRepository = Field(
-        title="Full Repository", description="Full Repository"
-    )
-    machine: Union[None, CodespaceMachine] = Field()
-    devcontainer_path: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="Path to devcontainer.json from repo root used to create Codespace.",
-    )
-    prebuild: Union[bool, None] = Field(
-        description="Whether the codespace was created from a prebuild."
-    )
+    node_id: str = Field()
+    name: str = Field()
+    full_name: str = Field()
+    owner: Union[None, SimpleUser] = Field()
+    private: bool = Field()
+    html_url: str = Field()
+    description: Union[str, None] = Field()
+    fork: bool = Field()
+    url: str = Field()
     created_at: datetime = Field()
     updated_at: datetime = Field()
-    last_used_at: datetime = Field(
-        description="Last known time this codespace was started."
+    pushed_at: datetime = Field()
+    homepage: Union[str, None] = Field()
+    size: int = Field()
+    stargazers_count: int = Field()
+    watchers_count: int = Field()
+    language: Union[str, None] = Field()
+    forks_count: int = Field()
+    open_issues_count: int = Field()
+    master_branch: Missing[str] = Field(default=UNSET)
+    default_branch: str = Field()
+    score: float = Field()
+    forks_url: str = Field()
+    keys_url: str = Field()
+    collaborators_url: str = Field()
+    teams_url: str = Field()
+    hooks_url: str = Field()
+    issue_events_url: str = Field()
+    events_url: str = Field()
+    assignees_url: str = Field()
+    branches_url: str = Field()
+    tags_url: str = Field()
+    blobs_url: str = Field()
+    git_tags_url: str = Field()
+    git_refs_url: str = Field()
+    trees_url: str = Field()
+    statuses_url: str = Field()
+    languages_url: str = Field()
+    stargazers_url: str = Field()
+    contributors_url: str = Field()
+    subscribers_url: str = Field()
+    subscription_url: str = Field()
+    commits_url: str = Field()
+    git_commits_url: str = Field()
+    comments_url: str = Field()
+    issue_comment_url: str = Field()
+    contents_url: str = Field()
+    compare_url: str = Field()
+    merges_url: str = Field()
+    archive_url: str = Field()
+    downloads_url: str = Field()
+    issues_url: str = Field()
+    pulls_url: str = Field()
+    milestones_url: str = Field()
+    notifications_url: str = Field()
+    labels_url: str = Field()
+    releases_url: str = Field()
+    deployments_url: str = Field()
+    git_url: str = Field()
+    ssh_url: str = Field()
+    clone_url: str = Field()
+    svn_url: str = Field()
+    forks: int = Field()
+    open_issues: int = Field()
+    watchers: int = Field()
+    topics: Missing[list[str]] = Field(default=UNSET)
+    mirror_url: Union[str, None] = Field()
+    has_issues: bool = Field()
+    has_projects: bool = Field()
+    has_pages: bool = Field()
+    has_wiki: bool = Field()
+    has_downloads: bool = Field()
+    has_discussions: Missing[bool] = Field(default=UNSET)
+    archived: bool = Field()
+    disabled: bool = Field(
+        description="Returns whether or not this repository disabled."
     )
-    state: Literal[
-        "Unknown",
-        "Created",
-        "Queued",
-        "Provisioning",
-        "Available",
-        "Awaiting",
-        "Unavailable",
-        "Deleted",
-        "Moved",
-        "Shutdown",
-        "Archived",
-        "Starting",
-        "ShuttingDown",
-        "Failed",
-        "Exporting",
-        "Updating",
-        "Rebuilding",
-    ] = Field(description="State of this codespace.")
-    url: str = Field(description="API URL for this codespace.")
-    git_status: CodespaceWithFullRepositoryPropGitStatus = Field(
-        description="Details about the codespace's git repository."
-    )
-    location: Literal["EastUs", "SouthEastAsia", "WestEurope", "WestUs2"] = Field(
-        description="The initally assigned location of a new codespace."
-    )
-    idle_timeout_minutes: Union[int, None] = Field(
-        description="The number of minutes of inactivity after which this codespace will be automatically stopped."
-    )
-    web_url: str = Field(description="URL to access this codespace on the web.")
-    machines_url: str = Field(
-        description="API URL to access available alternate machine types for this codespace."
-    )
-    start_url: str = Field(description="API URL to start this codespace.")
-    stop_url: str = Field(description="API URL to stop this codespace.")
-    publish_url: Missing[Union[str, None]] = Field(
+    visibility: Missing[str] = Field(
         default=UNSET,
-        description="API URL to publish this codespace to a new repository.",
+        description="The repository visibility: public, private, or internal.",
     )
-    pulls_url: Union[str, None] = Field(
-        description="API URL for the Pull Request associated with this codespace, if any."
+    license_: Union[None, LicenseSimple] = Field(alias="license")
+    permissions: Missing[RepoSearchResultItemPropPermissions] = Field(default=UNSET)
+    text_matches: Missing[list[SearchResultTextMatchesItems]] = Field(
+        default=UNSET, title="Search Result Text Matches"
     )
-    recent_folders: list[str] = Field()
-    runtime_constraints: Missing[CodespaceWithFullRepositoryPropRuntimeConstraints] = (
-        Field(default=UNSET)
-    )
-    pending_operation: Missing[Union[bool, None]] = Field(
-        default=UNSET,
-        description="Whether or not a codespace has a pending async operation. This would mean that the codespace is temporarily unavailable. The only thing that you can do with a codespace in this state is delete it.",
-    )
-    pending_operation_disabled_reason: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="Text to show user when codespace is disabled by a pending operation",
-    )
-    idle_timeout_notice: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="Text to show user when codespace idle timeout minutes has been overriden by an organization policy",
-    )
-    retention_period_minutes: Missing[Union[int, None]] = Field(
-        default=UNSET,
-        description="Duration in minutes after codespace has gone idle in which it will be deleted. Must be integer minutes between 0 and 43200 (30 days).",
-    )
-    retention_expires_at: Missing[Union[datetime, None]] = Field(
-        default=UNSET,
-        description='When a codespace will be auto-deleted based on the "retention_period_minutes" and "last_used_at"',
-    )
+    temp_clone_token: Missing[Union[str, None]] = Field(default=UNSET)
+    allow_merge_commit: Missing[bool] = Field(default=UNSET)
+    allow_squash_merge: Missing[bool] = Field(default=UNSET)
+    allow_rebase_merge: Missing[bool] = Field(default=UNSET)
+    allow_auto_merge: Missing[bool] = Field(default=UNSET)
+    delete_branch_on_merge: Missing[bool] = Field(default=UNSET)
+    allow_forking: Missing[bool] = Field(default=UNSET)
+    is_template: Missing[bool] = Field(default=UNSET)
+    web_commit_signoff_required: Missing[bool] = Field(default=UNSET)
 
 
-class CodespaceWithFullRepositoryPropGitStatus(GitHubModel):
-    """CodespaceWithFullRepositoryPropGitStatus
+class RepoSearchResultItemPropPermissions(GitHubModel):
+    """RepoSearchResultItemPropPermissions"""
 
-    Details about the codespace's git repository.
-    """
-
-    ahead: Missing[int] = Field(
-        default=UNSET,
-        description="The number of commits the local repository is ahead of the remote.",
-    )
-    behind: Missing[int] = Field(
-        default=UNSET,
-        description="The number of commits the local repository is behind the remote.",
-    )
-    has_unpushed_changes: Missing[bool] = Field(
-        default=UNSET, description="Whether the local repository has unpushed changes."
-    )
-    has_uncommitted_changes: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether the local repository has uncommitted changes.",
-    )
-    ref: Missing[str] = Field(
-        default=UNSET,
-        description="The current branch (or SHA if in detached HEAD state) of the local repository.",
-    )
+    admin: bool = Field()
+    maintain: Missing[bool] = Field(default=UNSET)
+    push: bool = Field()
+    triage: Missing[bool] = Field(default=UNSET)
+    pull: bool = Field()
 
 
-class CodespaceWithFullRepositoryPropRuntimeConstraints(GitHubModel):
-    """CodespaceWithFullRepositoryPropRuntimeConstraints"""
+class SearchRepositoriesGetResponse200(GitHubModel):
+    """SearchRepositoriesGetResponse200"""
 
-    allowed_port_privacy_settings: Missing[Union[list[str], None]] = Field(
-        default=UNSET,
-        description="The privacy settings a user can select from when forwarding a port.",
-    )
+    total_count: int = Field()
+    incomplete_results: bool = Field()
+    items: list[RepoSearchResultItem] = Field()
 
 
-model_rebuild(CodespaceWithFullRepository)
-model_rebuild(CodespaceWithFullRepositoryPropGitStatus)
-model_rebuild(CodespaceWithFullRepositoryPropRuntimeConstraints)
+model_rebuild(RepoSearchResultItem)
+model_rebuild(RepoSearchResultItemPropPermissions)
+model_rebuild(SearchRepositoriesGetResponse200)
 
 __all__ = (
-    "CodespaceWithFullRepository",
-    "CodespaceWithFullRepositoryPropGitStatus",
-    "CodespaceWithFullRepositoryPropRuntimeConstraints",
+    "RepoSearchResultItem",
+    "RepoSearchResultItemPropPermissions",
+    "SearchRepositoriesGetResponse200",
 )

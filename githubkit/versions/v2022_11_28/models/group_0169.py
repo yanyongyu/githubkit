@@ -18,32 +18,43 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0002 import SimpleUser
+from .group_0003 import SimpleUser
+from .group_0040 import ReactionRollup
 
 
-class ProjectCard(GitHubModel):
-    """Project Card
+class TeamDiscussion(GitHubModel):
+    """Team Discussion
 
-    Project cards represent a scope of work.
+    A team discussion is a persistent record of a free-form conversation within a
+    team.
     """
 
-    url: str = Field()
-    id: int = Field(description="The project card's ID")
-    node_id: str = Field()
-    note: Union[str, None] = Field()
-    creator: Union[None, SimpleUser] = Field()
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    archived: Missing[bool] = Field(
-        default=UNSET, description="Whether or not the card is archived"
+    author: Union[None, SimpleUser] = Field()
+    body: str = Field(description="The main text of the discussion.")
+    body_html: str = Field()
+    body_version: str = Field(
+        description="The current version of the body content. If provided, this update operation will be rejected if the given version does not match the latest version on the server."
     )
-    column_name: Missing[str] = Field(default=UNSET)
-    project_id: Missing[str] = Field(default=UNSET)
-    column_url: str = Field()
-    content_url: Missing[str] = Field(default=UNSET)
-    project_url: str = Field()
+    comments_count: int = Field()
+    comments_url: str = Field()
+    created_at: datetime = Field()
+    last_edited_at: Union[datetime, None] = Field()
+    html_url: str = Field()
+    node_id: str = Field()
+    number: int = Field(description="The unique sequence number of a team discussion.")
+    pinned: bool = Field(
+        description="Whether or not this discussion should be pinned for easy retrieval."
+    )
+    private: bool = Field(
+        description="Whether or not this discussion should be restricted to team members and organization owners."
+    )
+    team_url: str = Field()
+    title: str = Field(description="The title of the discussion.")
+    updated_at: datetime = Field()
+    url: str = Field()
+    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
 
 
-model_rebuild(ProjectCard)
+model_rebuild(TeamDiscussion)
 
-__all__ = ("ProjectCard",)
+__all__ = ("TeamDiscussion",)

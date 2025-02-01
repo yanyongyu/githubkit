@@ -9,16 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict
 
 
-class RateLimitType(TypedDict):
-    """Rate Limit"""
+class TeamMembershipType(TypedDict):
+    """Team Membership
 
-    limit: int
-    remaining: int
-    reset: int
-    used: int
+    Team Membership
+    """
+
+    url: str
+    role: Literal["member", "maintainer"]
+    state: Literal["active", "pending"]
 
 
-__all__ = ("RateLimitType",)
+__all__ = ("TeamMembershipType",)

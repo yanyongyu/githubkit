@@ -13,80 +13,26 @@ from datetime import datetime
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0002 import SimpleUserType
-from .group_0038 import MilestoneType
-from .group_0082 import TeamType
-from .group_0242 import AutoMergeType
-from .group_0244 import PullRequestSimplePropBaseType, PullRequestSimplePropHeadType
-from .group_0245 import PullRequestSimplePropLinksType
+from .group_0003 import SimpleUserType
+from .group_0057 import MinimalRepositoryType
 
 
-class PullRequestSimpleType(TypedDict):
-    """Pull Request Simple
+class RepositoryInvitationType(TypedDict):
+    """Repository Invitation
 
-    Pull Request Simple
+    Repository invitations let you manage who you collaborate with.
     """
 
-    url: str
     id: int
-    node_id: str
-    html_url: str
-    diff_url: str
-    patch_url: str
-    issue_url: str
-    commits_url: str
-    review_comments_url: str
-    review_comment_url: str
-    comments_url: str
-    statuses_url: str
-    number: int
-    state: str
-    locked: bool
-    title: str
-    user: Union[None, SimpleUserType]
-    body: Union[str, None]
-    labels: list[PullRequestSimplePropLabelsItemsType]
-    milestone: Union[None, MilestoneType]
-    active_lock_reason: NotRequired[Union[str, None]]
+    repository: MinimalRepositoryType
+    invitee: Union[None, SimpleUserType]
+    inviter: Union[None, SimpleUserType]
+    permissions: Literal["read", "write", "admin", "triage", "maintain"]
     created_at: datetime
-    updated_at: datetime
-    closed_at: Union[datetime, None]
-    merged_at: Union[datetime, None]
-    merge_commit_sha: Union[str, None]
-    assignee: Union[None, SimpleUserType]
-    assignees: NotRequired[Union[list[SimpleUserType], None]]
-    requested_reviewers: NotRequired[Union[list[SimpleUserType], None]]
-    requested_teams: NotRequired[Union[list[TeamType], None]]
-    head: PullRequestSimplePropHeadType
-    base: PullRequestSimplePropBaseType
-    links: PullRequestSimplePropLinksType
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    auto_merge: Union[AutoMergeType, None]
-    draft: NotRequired[bool]
-
-
-class PullRequestSimplePropLabelsItemsType(TypedDict):
-    """PullRequestSimplePropLabelsItems"""
-
-    id: int
-    node_id: str
+    expired: NotRequired[bool]
     url: str
-    name: str
-    description: Union[str, None]
-    color: str
-    default: bool
+    html_url: str
+    node_id: str
 
 
-__all__ = (
-    "PullRequestSimplePropLabelsItemsType",
-    "PullRequestSimpleType",
-)
+__all__ = ("RepositoryInvitationType",)

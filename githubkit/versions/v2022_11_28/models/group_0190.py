@@ -14,58 +14,53 @@ from typing import Union
 
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0002 import SimpleUser
-from .group_0008 import Integration
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class Deployment(GitHubModel):
-    """Deployment
+class SimpleCommit(GitHubModel):
+    """Simple Commit
 
-    A request for a specific ref(branch,sha,tag) to be deployed
+    A commit.
     """
 
-    url: str = Field()
-    id: int = Field(description="Unique identifier of the deployment")
-    node_id: str = Field()
-    sha: str = Field()
-    ref: str = Field(
-        description="The ref to deploy. This can be a branch, tag, or sha."
+    id: str = Field(description="SHA for the commit")
+    tree_id: str = Field(description="SHA for the commit's tree")
+    message: str = Field(description="Message describing the purpose of the commit")
+    timestamp: datetime = Field(description="Timestamp of the commit")
+    author: Union[SimpleCommitPropAuthor, None] = Field(
+        description="Information about the Git author"
     )
-    task: str = Field(description="Parameter to specify a task to execute")
-    payload: Union[DeploymentPropPayloadOneof0, str] = Field()
-    original_environment: Missing[str] = Field(default=UNSET)
-    environment: str = Field(description="Name for the target deployment environment.")
-    description: Union[str, None] = Field()
-    creator: Union[None, SimpleUser] = Field()
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    statuses_url: str = Field()
-    repository_url: str = Field()
-    transient_environment: Missing[bool] = Field(
-        default=UNSET,
-        description="Specifies if the given environment is will no longer exist at some point in the future. Default: false.",
-    )
-    production_environment: Missing[bool] = Field(
-        default=UNSET,
-        description="Specifies if the given environment is one that end-users directly interact with. Default: false.",
-    )
-    performed_via_github_app: Missing[Union[None, Integration, None]] = Field(
-        default=UNSET
+    committer: Union[SimpleCommitPropCommitter, None] = Field(
+        description="Information about the Git committer"
     )
 
 
-class DeploymentPropPayloadOneof0(ExtraGitHubModel):
-    """DeploymentPropPayloadOneof0"""
+class SimpleCommitPropAuthor(GitHubModel):
+    """SimpleCommitPropAuthor
+
+    Information about the Git author
+    """
+
+    name: str = Field(description="Name of the commit's author")
+    email: str = Field(description="Git email address of the commit's author")
 
 
-model_rebuild(Deployment)
-model_rebuild(DeploymentPropPayloadOneof0)
+class SimpleCommitPropCommitter(GitHubModel):
+    """SimpleCommitPropCommitter
+
+    Information about the Git committer
+    """
+
+    name: str = Field(description="Name of the commit's committer")
+    email: str = Field(description="Git email address of the commit's committer")
+
+
+model_rebuild(SimpleCommit)
+model_rebuild(SimpleCommitPropAuthor)
+model_rebuild(SimpleCommitPropCommitter)
 
 __all__ = (
-    "Deployment",
-    "DeploymentPropPayloadOneof0",
+    "SimpleCommit",
+    "SimpleCommitPropAuthor",
+    "SimpleCommitPropCommitter",
 )

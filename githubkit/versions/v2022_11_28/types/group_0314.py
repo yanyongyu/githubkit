@@ -9,19 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal, Union
+from typing_extensions import TypedDict
+
+from .group_0003 import SimpleUserType
+from .group_0010 import IntegrationType
 
 
-class MergedUpstreamType(TypedDict):
-    """Merged upstream
+class TimelineAssignedIssueEventType(TypedDict):
+    """Timeline Assigned Issue Event
 
-    Results of a successful merge upstream request
+    Timeline Assigned Issue Event
     """
 
-    message: NotRequired[str]
-    merge_type: NotRequired[Literal["merge", "fast-forward", "none"]]
-    base_branch: NotRequired[str]
+    id: int
+    node_id: str
+    url: str
+    actor: SimpleUserType
+    event: Literal["assigned"]
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
+    created_at: str
+    performed_via_github_app: Union[None, IntegrationType, None]
+    assignee: SimpleUserType
 
 
-__all__ = ("MergedUpstreamType",)
+__all__ = ("TimelineAssignedIssueEventType",)

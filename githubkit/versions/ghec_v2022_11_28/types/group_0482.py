@@ -9,28 +9,52 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0002 import SimpleUserType
 
+class WebhooksMembershipType(TypedDict):
+    """Membership
 
-class ProjectsV2ItemType(TypedDict):
-    """Projects v2 Item
-
-    An item belonging to a project
+    The membership between the user and the organization. Not present when the
+    action is `member_invited`.
     """
 
-    id: float
+    organization_url: str
+    role: str
+    state: str
+    url: str
+    user: Union[WebhooksMembershipPropUserType, None]
+
+
+class WebhooksMembershipPropUserType(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
     node_id: NotRequired[str]
-    project_node_id: NotRequired[str]
-    content_node_id: str
-    content_type: Literal["Issue", "PullRequest", "DraftIssue"]
-    creator: NotRequired[SimpleUserType]
-    created_at: datetime
-    updated_at: datetime
-    archived_at: Union[datetime, None]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
-__all__ = ("ProjectsV2ItemType",)
+__all__ = (
+    "WebhooksMembershipPropUserType",
+    "WebhooksMembershipType",
+)

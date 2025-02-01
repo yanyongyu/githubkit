@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union
 
 from pydantic import Field
@@ -18,66 +17,59 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0371 import SearchResultTextMatchesItems
+from .group_0003 import SimpleUser
+from .group_0057 import MinimalRepository
+from .group_0207 import GitUser
+from .group_0377 import SearchResultTextMatchesItems
+from .group_0380 import CommitSearchResultItemPropCommit
 
 
-class UserSearchResultItem(GitHubModel):
-    """User Search Result Item
+class CommitSearchResultItem(GitHubModel):
+    """Commit Search Result Item
 
-    User Search Result Item
+    Commit Search Result Item
     """
 
-    login: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    avatar_url: str = Field()
-    gravatar_id: Union[str, None] = Field()
     url: str = Field()
+    sha: str = Field()
     html_url: str = Field()
-    followers_url: str = Field()
-    subscriptions_url: str = Field()
-    organizations_url: str = Field()
-    repos_url: str = Field()
-    received_events_url: str = Field()
-    type: str = Field()
+    comments_url: str = Field()
+    commit: CommitSearchResultItemPropCommit = Field()
+    author: Union[None, SimpleUser] = Field()
+    committer: Union[None, GitUser] = Field()
+    parents: list[CommitSearchResultItemPropParentsItems] = Field()
+    repository: MinimalRepository = Field(
+        title="Minimal Repository", description="Minimal Repository"
+    )
     score: float = Field()
-    following_url: str = Field()
-    gists_url: str = Field()
-    starred_url: str = Field()
-    events_url: str = Field()
-    public_repos: Missing[int] = Field(default=UNSET)
-    public_gists: Missing[int] = Field(default=UNSET)
-    followers: Missing[int] = Field(default=UNSET)
-    following: Missing[int] = Field(default=UNSET)
-    created_at: Missing[datetime] = Field(default=UNSET)
-    updated_at: Missing[datetime] = Field(default=UNSET)
-    name: Missing[Union[str, None]] = Field(default=UNSET)
-    bio: Missing[Union[str, None]] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    location: Missing[Union[str, None]] = Field(default=UNSET)
-    site_admin: bool = Field()
-    hireable: Missing[Union[bool, None]] = Field(default=UNSET)
+    node_id: str = Field()
     text_matches: Missing[list[SearchResultTextMatchesItems]] = Field(
         default=UNSET, title="Search Result Text Matches"
     )
-    blog: Missing[Union[str, None]] = Field(default=UNSET)
-    company: Missing[Union[str, None]] = Field(default=UNSET)
-    suspended_at: Missing[Union[datetime, None]] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
 
 
-class SearchUsersGetResponse200(GitHubModel):
-    """SearchUsersGetResponse200"""
+class CommitSearchResultItemPropParentsItems(GitHubModel):
+    """CommitSearchResultItemPropParentsItems"""
+
+    url: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    sha: Missing[str] = Field(default=UNSET)
+
+
+class SearchCommitsGetResponse200(GitHubModel):
+    """SearchCommitsGetResponse200"""
 
     total_count: int = Field()
     incomplete_results: bool = Field()
-    items: list[UserSearchResultItem] = Field()
+    items: list[CommitSearchResultItem] = Field()
 
 
-model_rebuild(UserSearchResultItem)
-model_rebuild(SearchUsersGetResponse200)
+model_rebuild(CommitSearchResultItem)
+model_rebuild(CommitSearchResultItemPropParentsItems)
+model_rebuild(SearchCommitsGetResponse200)
 
 __all__ = (
-    "SearchUsersGetResponse200",
-    "UserSearchResultItem",
+    "CommitSearchResultItem",
+    "CommitSearchResultItemPropParentsItems",
+    "SearchCommitsGetResponse200",
 )

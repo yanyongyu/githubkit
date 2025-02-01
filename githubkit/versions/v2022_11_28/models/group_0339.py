@@ -17,16 +17,14 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0132 import RepositoryRuleRequiredDeploymentsPropParameters
 
+class RepositoryRuleRulesetInfo(GitHubModel):
+    """repository ruleset data for rule
 
-class RepositoryRuleDetailedOneof5(GitHubModel):
-    """RepositoryRuleDetailedOneof5"""
+    User-defined metadata to store domain-specific information limited to 8 keys
+    with scalar values.
+    """
 
-    type: Literal["required_deployments"] = Field()
-    parameters: Missing[RepositoryRuleRequiredDeploymentsPropParameters] = Field(
-        default=UNSET
-    )
     ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
         default=UNSET,
         description="The type of source for the ruleset that includes this rule.",
@@ -40,6 +38,6 @@ class RepositoryRuleDetailedOneof5(GitHubModel):
     )
 
 
-model_rebuild(RepositoryRuleDetailedOneof5)
+model_rebuild(RepositoryRuleRulesetInfo)
 
-__all__ = ("RepositoryRuleDetailedOneof5",)
+__all__ = ("RepositoryRuleRulesetInfo",)

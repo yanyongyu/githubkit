@@ -9,40 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0002 import SimpleUser
-from .group_0019 import Repository
+
+class PageBuildStatus(GitHubModel):
+    """Page Build Status
+
+    Page Build Status
+    """
+
+    url: str = Field()
+    status: str = Field()
 
 
-class PullRequestPropHead(GitHubModel):
-    """PullRequestPropHead"""
+model_rebuild(PageBuildStatus)
 
-    label: Union[str, None] = Field()
-    ref: str = Field()
-    repo: Repository = Field(title="Repository", description="A repository on GitHub.")
-    sha: str = Field()
-    user: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-
-
-class PullRequestPropBase(GitHubModel):
-    """PullRequestPropBase"""
-
-    label: str = Field()
-    ref: str = Field()
-    repo: Repository = Field(title="Repository", description="A repository on GitHub.")
-    sha: str = Field()
-    user: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-
-
-model_rebuild(PullRequestPropHead)
-model_rebuild(PullRequestPropBase)
-
-__all__ = (
-    "PullRequestPropBase",
-    "PullRequestPropHead",
-)
+__all__ = ("PageBuildStatus",)

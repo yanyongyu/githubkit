@@ -15,36 +15,22 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class GetAllCostCenters(GitHubModel):
-    """GetAllCostCenters"""
-
-    cost_centers: Missing[list[GetAllCostCentersPropCostCentersItems]] = Field(
-        default=UNSET, alias="costCenters"
-    )
-
-
-class GetAllCostCentersPropCostCentersItems(GitHubModel):
-    """GetAllCostCentersPropCostCentersItems"""
-
-    id: str = Field(description="ID of the cost center.")
-    name: str = Field(description="Name of the cost center.")
-    resources: list[GetAllCostCentersPropCostCentersItemsPropResourcesItems] = Field()
-
-
-class GetAllCostCentersPropCostCentersItemsPropResourcesItems(GitHubModel):
-    """GetAllCostCentersPropCostCentersItemsPropResourcesItems"""
-
-    type: str = Field(description="Type of the resource.")
-    name: str = Field(description="Name of the resource.")
-
-
-model_rebuild(GetAllCostCenters)
-model_rebuild(GetAllCostCentersPropCostCentersItems)
-model_rebuild(GetAllCostCentersPropCostCentersItemsPropResourcesItems)
-
-__all__ = (
-    "GetAllCostCenters",
-    "GetAllCostCentersPropCostCentersItems",
-    "GetAllCostCentersPropCostCentersItemsPropResourcesItems",
+from .group_0083 import (
+    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName,
 )
+from .group_0085 import RepositoryRulesetConditionsPropRefName
+
+
+class OrgRulesetConditionsOneof0(GitHubModel):
+    """repository_name_and_ref_name
+
+    Conditions to target repositories by name and refs by name
+    """
+
+    ref_name: Missing[RepositoryRulesetConditionsPropRefName] = Field(default=UNSET)
+    repository_name: RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName = Field()
+
+
+model_rebuild(OrgRulesetConditionsOneof0)
+
+__all__ = ("OrgRulesetConditionsOneof0",)

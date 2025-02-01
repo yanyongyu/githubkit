@@ -9,34 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
 from typing_extensions import TypedDict
 
-from .group_0002 import SimpleUserType
+
+class ReviewCustomGatesCommentRequiredType(TypedDict):
+    """ReviewCustomGatesCommentRequired"""
+
+    environment_name: str
+    comment: str
 
 
-class ActivityType(TypedDict):
-    """Activity
-
-    Activity
-    """
-
-    id: int
-    node_id: str
-    before: str
-    after: str
-    ref: str
-    timestamp: datetime
-    activity_type: Literal[
-        "push",
-        "force_push",
-        "branch_deletion",
-        "branch_creation",
-        "pr_merge",
-        "merge_queue_merge",
-    ]
-    actor: Union[None, SimpleUserType]
-
-
-__all__ = ("ActivityType",)
+__all__ = ("ReviewCustomGatesCommentRequiredType",)

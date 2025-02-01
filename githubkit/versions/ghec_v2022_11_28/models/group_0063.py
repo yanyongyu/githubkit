@@ -9,102 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import date
 from typing import Union
 
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class CopilotUsageMetrics(GitHubModel):
-    """Copilot Usage Metrics
+class GetConsumedLicenses(GitHubModel):
+    """Enterprise Consumed Licenses
 
-    Summary of Copilot usage.
+    A breakdown of the licenses consumed by an enterprise.
     """
 
-    day: date = Field(
-        description="The date for which the usage metrics are reported, in `YYYY-MM-DD` format."
-    )
-    total_suggestions_count: Missing[int] = Field(
-        default=UNSET,
-        description="The total number of Copilot code completion suggestions shown to users.",
-    )
-    total_acceptances_count: Missing[int] = Field(
-        default=UNSET,
-        description="The total number of Copilot code completion suggestions accepted by users.",
-    )
-    total_lines_suggested: Missing[int] = Field(
-        default=UNSET,
-        description="The total number of lines of code completions suggested by Copilot.",
-    )
-    total_lines_accepted: Missing[int] = Field(
-        default=UNSET,
-        description="The total number of lines of code completions accepted by users.",
-    )
-    total_active_users: Missing[int] = Field(
-        default=UNSET,
-        description="The total number of users who were shown Copilot code completion suggestions during the day specified.",
-    )
-    total_chat_acceptances: Missing[int] = Field(
-        default=UNSET,
-        description="The total instances of users who accepted code suggested by Copilot Chat in the IDE (panel and inline).",
-    )
-    total_chat_turns: Missing[int] = Field(
-        default=UNSET,
-        description="The total number of chat turns (prompt and response pairs) sent between users and Copilot Chat in the IDE.",
-    )
-    total_active_chat_users: Missing[int] = Field(
-        default=UNSET,
-        description="The total number of users who interacted with Copilot Chat in the IDE during the day specified.",
-    )
-    breakdown: Union[list[CopilotUsageMetricsPropBreakdownItems], None] = Field(
-        description="Breakdown of Copilot code completions usage by language and editor"
-    )
+    total_seats_consumed: Missing[int] = Field(default=UNSET)
+    total_seats_purchased: Missing[int] = Field(default=UNSET)
+    users: Missing[list[GetConsumedLicensesPropUsersItems]] = Field(default=UNSET)
 
 
-class CopilotUsageMetricsPropBreakdownItems(ExtraGitHubModel):
-    """CopilotUsageMetricsPropBreakdownItems
+class GetConsumedLicensesPropUsersItems(GitHubModel):
+    """GetConsumedLicensesPropUsersItems"""
 
-    Breakdown of Copilot usage by editor for this language
-    """
-
-    language: Missing[str] = Field(
-        default=UNSET,
-        description="The language in which Copilot suggestions were shown to users in the specified editor.",
+    github_com_login: Missing[str] = Field(default=UNSET)
+    github_com_name: Missing[Union[str, None]] = Field(default=UNSET)
+    enterprise_server_user_ids: Missing[list[str]] = Field(default=UNSET)
+    github_com_user: Missing[bool] = Field(default=UNSET)
+    enterprise_server_user: Missing[Union[bool, None]] = Field(default=UNSET)
+    visual_studio_subscription_user: Missing[bool] = Field(default=UNSET)
+    license_type: Missing[str] = Field(default=UNSET)
+    github_com_profile: Missing[Union[str, None]] = Field(default=UNSET)
+    github_com_member_roles: Missing[list[str]] = Field(default=UNSET)
+    github_com_enterprise_roles: Missing[list[str]] = Field(
+        default=UNSET, description="All enterprise roles for a user."
     )
-    editor: Missing[str] = Field(
-        default=UNSET,
-        description="The editor in which Copilot suggestions were shown to users for the specified language.",
-    )
-    suggestions_count: Missing[int] = Field(
-        default=UNSET,
-        description="The number of Copilot suggestions shown to users in the editor specified during the day specified.",
-    )
-    acceptances_count: Missing[int] = Field(
-        default=UNSET,
-        description="The number of Copilot suggestions accepted by users in the editor specified during the day specified.",
-    )
-    lines_suggested: Missing[int] = Field(
-        default=UNSET,
-        description="The number of lines of code suggested by Copilot in the editor specified during the day specified.",
-    )
-    lines_accepted: Missing[int] = Field(
-        default=UNSET,
-        description="The number of lines of code accepted by users in the editor specified during the day specified.",
-    )
-    active_users: Missing[int] = Field(
-        default=UNSET,
-        description="The number of users who were shown Copilot completion suggestions in the editor specified during the day specified.",
-    )
+    github_com_verified_domain_emails: Missing[list[str]] = Field(default=UNSET)
+    github_com_saml_name_id: Missing[Union[str, None]] = Field(default=UNSET)
+    github_com_orgs_with_pending_invites: Missing[list[str]] = Field(default=UNSET)
+    github_com_two_factor_auth: Missing[Union[bool, None]] = Field(default=UNSET)
+    enterprise_server_emails: Missing[list[str]] = Field(default=UNSET)
+    visual_studio_license_status: Missing[Union[str, None]] = Field(default=UNSET)
+    visual_studio_subscription_email: Missing[Union[str, None]] = Field(default=UNSET)
+    total_user_accounts: Missing[int] = Field(default=UNSET)
 
 
-model_rebuild(CopilotUsageMetrics)
-model_rebuild(CopilotUsageMetricsPropBreakdownItems)
+model_rebuild(GetConsumedLicenses)
+model_rebuild(GetConsumedLicensesPropUsersItems)
 
 __all__ = (
-    "CopilotUsageMetrics",
-    "CopilotUsageMetricsPropBreakdownItems",
+    "GetConsumedLicenses",
+    "GetConsumedLicensesPropUsersItems",
 )

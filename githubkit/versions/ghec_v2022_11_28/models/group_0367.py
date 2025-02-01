@@ -9,39 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0002 import SimpleUser
+from .group_0003 import SimpleUser
+from .group_0020 import Repository
 
 
-class ReleaseAsset(GitHubModel):
-    """Release Asset
+class PullRequestPropHead(GitHubModel):
+    """PullRequestPropHead"""
 
-    Data related to a release.
-    """
-
-    url: str = Field()
-    browser_download_url: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    name: str = Field(description="The file name of the asset.")
     label: Union[str, None] = Field()
-    state: Literal["uploaded", "open"] = Field(
-        description="State of the release asset."
-    )
-    content_type: str = Field()
-    size: int = Field()
-    download_count: int = Field()
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    uploader: Union[None, SimpleUser] = Field()
+    ref: str = Field()
+    repo: Repository = Field(title="Repository", description="A repository on GitHub.")
+    sha: str = Field()
+    user: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(ReleaseAsset)
+class PullRequestPropBase(GitHubModel):
+    """PullRequestPropBase"""
 
-__all__ = ("ReleaseAsset",)
+    label: str = Field()
+    ref: str = Field()
+    repo: Repository = Field(title="Repository", description="A repository on GitHub.")
+    sha: str = Field()
+    user: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+
+
+model_rebuild(PullRequestPropHead)
+model_rebuild(PullRequestPropBase)
+
+__all__ = (
+    "PullRequestPropBase",
+    "PullRequestPropHead",
+)

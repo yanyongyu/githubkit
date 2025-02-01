@@ -9,37 +9,68 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0273 import CustomDeploymentRuleAppType
+from .group_0273 import DeploymentBranchPolicySettingsType
+from .group_0275 import EnvironmentPropProtectionRulesItemsAnyof1Type
 
 
-class DeploymentProtectionRuleType(TypedDict):
-    """Deployment protection rule
+class EnvironmentType(TypedDict):
+    """Environment
 
-    Deployment protection rule
+    Details of a deployment environment
     """
 
     id: int
     node_id: str
-    enabled: bool
-    app: CustomDeploymentRuleAppType
+    name: str
+    url: str
+    html_url: str
+    created_at: datetime
+    updated_at: datetime
+    protection_rules: NotRequired[
+        list[
+            Union[
+                EnvironmentPropProtectionRulesItemsAnyof0Type,
+                EnvironmentPropProtectionRulesItemsAnyof1Type,
+                EnvironmentPropProtectionRulesItemsAnyof2Type,
+            ]
+        ]
+    ]
+    deployment_branch_policy: NotRequired[
+        Union[DeploymentBranchPolicySettingsType, None]
+    ]
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200Type(
-    TypedDict
-):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200
+class EnvironmentPropProtectionRulesItemsAnyof0Type(TypedDict):
+    """EnvironmentPropProtectionRulesItemsAnyof0"""
 
-    Examples:
-        {'$ref': '#/components/examples/deployment-protection-rules'}
-    """
+    id: int
+    node_id: str
+    type: str
+    wait_timer: NotRequired[int]
+
+
+class EnvironmentPropProtectionRulesItemsAnyof2Type(TypedDict):
+    """EnvironmentPropProtectionRulesItemsAnyof2"""
+
+    id: int
+    node_id: str
+    type: str
+
+
+class ReposOwnerRepoEnvironmentsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoEnvironmentsGetResponse200"""
 
     total_count: NotRequired[int]
-    custom_deployment_protection_rules: NotRequired[list[DeploymentProtectionRuleType]]
+    environments: NotRequired[list[EnvironmentType]]
 
 
 __all__ = (
-    "DeploymentProtectionRuleType",
-    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200Type",
+    "EnvironmentPropProtectionRulesItemsAnyof0Type",
+    "EnvironmentPropProtectionRulesItemsAnyof2Type",
+    "EnvironmentType",
+    "ReposOwnerRepoEnvironmentsGetResponse200Type",
 )

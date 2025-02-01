@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
@@ -18,23 +18,20 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrganizationCustomOrganizationRoleCreateSchema(GitHubModel):
-    """OrganizationCustomOrganizationRoleCreateSchema"""
+class ApiInsightsUserStatsItems(GitHubModel):
+    """ApiInsightsUserStatsItems"""
 
-    name: str = Field(description="The name of the custom role.")
-    description: Missing[str] = Field(
-        default=UNSET,
-        description="A short description about the intended usage of this role or what permissions it grants.",
-    )
-    permissions: list[str] = Field(
-        description="A list of additional permissions included in this role."
-    )
-    base_role: Missing[Literal["read", "triage", "write", "maintain", "admin"]] = Field(
-        default=UNSET,
-        description="The system role from which this role can inherit permissions.",
-    )
+    actor_type: Missing[str] = Field(default=UNSET)
+    actor_name: Missing[str] = Field(default=UNSET)
+    actor_id: Missing[int] = Field(default=UNSET)
+    integration_id: Missing[Union[int, None]] = Field(default=UNSET)
+    oauth_application_id: Missing[Union[int, None]] = Field(default=UNSET)
+    total_request_count: Missing[int] = Field(default=UNSET)
+    rate_limited_request_count: Missing[int] = Field(default=UNSET)
+    last_rate_limited_timestamp: Missing[Union[str, None]] = Field(default=UNSET)
+    last_request_timestamp: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(OrganizationCustomOrganizationRoleCreateSchema)
+model_rebuild(ApiInsightsUserStatsItems)
 
-__all__ = ("OrganizationCustomOrganizationRoleCreateSchema",)
+__all__ = ("ApiInsightsUserStatsItems",)

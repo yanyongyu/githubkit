@@ -9,38 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0371 import SearchResultTextMatchesItemsType
+from .group_0372 import TrafficType
 
 
-class LabelSearchResultItemType(TypedDict):
-    """Label Search Result Item
+class ViewTrafficType(TypedDict):
+    """View Traffic
 
-    Label Search Result Item
+    View Traffic
     """
 
-    id: int
-    node_id: str
-    url: str
-    name: str
-    color: str
-    default: bool
-    description: Union[str, None]
-    score: float
-    text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
+    count: int
+    uniques: int
+    views: list[TrafficType]
 
 
-class SearchLabelsGetResponse200Type(TypedDict):
-    """SearchLabelsGetResponse200"""
-
-    total_count: int
-    incomplete_results: bool
-    items: list[LabelSearchResultItemType]
-
-
-__all__ = (
-    "LabelSearchResultItemType",
-    "SearchLabelsGetResponse200Type",
-)
+__all__ = ("ViewTrafficType",)

@@ -9,31 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class GetAuditLogStreamConfig(GitHubModel):
-    """Get an audit log streaming configuration
+class AuditLogStreamKey(GitHubModel):
+    """stream-key
 
-    Get an audit log streaming configuration for an enterprise.
+    Audit Log Streaming Public Key
     """
 
-    id: int = Field()
-    stream_type: str = Field()
-    stream_details: str = Field()
-    enabled: bool = Field()
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    paused_at: Missing[Union[datetime, None]] = Field(default=UNSET)
+    key_id: str = Field()
+    key: str = Field()
 
 
-model_rebuild(GetAuditLogStreamConfig)
+model_rebuild(AuditLogStreamKey)
 
-__all__ = ("GetAuditLogStreamConfig",)
+__all__ = ("AuditLogStreamKey",)

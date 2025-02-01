@@ -32,6 +32,24 @@ if TYPE_CHECKING:
         ActionsGetDefaultWorkflowPermissionsType as ActionsGetDefaultWorkflowPermissionsType,
     )
     from githubkit.versions.v2022_11_28.types import (
+        ActionsHostedRunnerImageType as ActionsHostedRunnerImageType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        ActionsHostedRunnerLimitsPropPublicIpsType as ActionsHostedRunnerLimitsPropPublicIpsType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        ActionsHostedRunnerLimitsType as ActionsHostedRunnerLimitsType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        ActionsHostedRunnerMachineSpecType as ActionsHostedRunnerMachineSpecType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        ActionsHostedRunnerPoolImageType as ActionsHostedRunnerPoolImageType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        ActionsHostedRunnerType as ActionsHostedRunnerType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         ActionsOrganizationPermissionsType as ActionsOrganizationPermissionsType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -905,9 +923,6 @@ if TYPE_CHECKING:
         GlobalAdvisoryPropCwesItemsType as GlobalAdvisoryPropCwesItemsType,
     )
     from githubkit.versions.v2022_11_28.types import (
-        GlobalAdvisoryPropEpssType as GlobalAdvisoryPropEpssType,
-    )
-    from githubkit.versions.v2022_11_28.types import (
         GlobalAdvisoryPropIdentifiersItemsType as GlobalAdvisoryPropIdentifiersItemsType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -1104,6 +1119,12 @@ if TYPE_CHECKING:
         MovedColumnInProjectIssueEventType as MovedColumnInProjectIssueEventType,
     )
     from githubkit.versions.v2022_11_28.types import (
+        NetworkConfigurationType as NetworkConfigurationType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        NetworkSettingsType as NetworkSettingsType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         NotificationsPutBodyType as NotificationsPutBodyType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -1210,6 +1231,30 @@ if TYPE_CHECKING:
         OrgsOrgActionsCacheUsageByRepositoryGetResponse200Type as OrgsOrgActionsCacheUsageByRepositoryGetResponse200Type,
     )
     from githubkit.versions.v2022_11_28.types import (
+        OrgsOrgActionsHostedRunnersGetResponse200Type as OrgsOrgActionsHostedRunnersGetResponse200Type,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBodyType as OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBodyType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200Type as OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200Type,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200Type as OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200Type,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        OrgsOrgActionsHostedRunnersMachineSizesGetResponse200Type as OrgsOrgActionsHostedRunnersMachineSizesGetResponse200Type,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        OrgsOrgActionsHostedRunnersPlatformsGetResponse200Type as OrgsOrgActionsHostedRunnersPlatformsGetResponse200Type,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        OrgsOrgActionsHostedRunnersPostBodyPropImageType as OrgsOrgActionsHostedRunnersPostBodyPropImageType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        OrgsOrgActionsHostedRunnersPostBodyType as OrgsOrgActionsHostedRunnersPostBodyType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         OrgsOrgActionsPermissionsPutBodyType as OrgsOrgActionsPermissionsPutBodyType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -1223,6 +1268,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.types import (
         OrgsOrgActionsRunnerGroupsPostBodyType as OrgsOrgActionsRunnerGroupsPostBodyType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200Type as OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200Type,
     )
     from githubkit.versions.v2022_11_28.types import (
         OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBodyType as OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBodyType,
@@ -1496,6 +1544,15 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.types import (
         OrgsOrgSecurityProductEnablementPostBodyType as OrgsOrgSecurityProductEnablementPostBodyType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        OrgsOrgSettingsNetworkConfigurationsGetResponse200Type as OrgsOrgSettingsNetworkConfigurationsGetResponse200Type,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBodyType as OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBodyType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        OrgsOrgSettingsNetworkConfigurationsPostBodyType as OrgsOrgSettingsNetworkConfigurationsPostBodyType,
     )
     from githubkit.versions.v2022_11_28.types import (
         OrgsOrgTeamsPostBodyType as OrgsOrgTeamsPostBodyType,
@@ -1789,6 +1846,7 @@ if TYPE_CHECKING:
     from githubkit.versions.v2022_11_28.types import (
         ProtectedBranchType as ProtectedBranchType,
     )
+    from githubkit.versions.v2022_11_28.types import PublicIpType as PublicIpType
     from githubkit.versions.v2022_11_28.types import (
         PublicUserPropPlanType as PublicUserPropPlanType,
     )
@@ -3074,6 +3132,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.types import (
         SecretScanningScanType as SecretScanningScanType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        SecurityAdvisoryEpssType as SecurityAdvisoryEpssType,
     )
     from githubkit.versions.v2022_11_28.types import (
         SecurityAndAnalysisPropAdvancedSecurityType as SecurityAndAnalysisPropAdvancedSecurityType,
@@ -9804,17 +9865,18 @@ else:
             "CvssSeveritiesType",
             "CvssSeveritiesPropCvssV3Type",
             "CvssSeveritiesPropCvssV4Type",
+            "SecurityAdvisoryEpssType",
             "SimpleUserType",
             "GlobalAdvisoryType",
             "GlobalAdvisoryPropIdentifiersItemsType",
             "GlobalAdvisoryPropCvssType",
             "GlobalAdvisoryPropCwesItemsType",
-            "GlobalAdvisoryPropEpssType",
             "VulnerabilityType",
             "VulnerabilityPropPackageType",
             "GlobalAdvisoryPropCreditsItemsType",
             "BasicErrorType",
             "ValidationErrorSimpleType",
+            "EnterpriseType",
             "IntegrationPropPermissionsType",
             "IntegrationType",
             "WebhookConfigType",
@@ -9828,7 +9890,6 @@ else:
             "HookDeliveryPropRequestPropPayloadType",
             "HookDeliveryPropResponseType",
             "HookDeliveryPropResponsePropHeadersType",
-            "EnterpriseType",
             "IntegrationInstallationRequestType",
             "AppPermissionsType",
             "InstallationType",
@@ -9928,6 +9989,13 @@ else:
             "OrganizationFullType",
             "OrganizationFullPropPlanType",
             "ActionsCacheUsageOrgEnterpriseType",
+            "ActionsHostedRunnerMachineSpecType",
+            "ActionsHostedRunnerType",
+            "ActionsHostedRunnerPoolImageType",
+            "PublicIpType",
+            "ActionsHostedRunnerImageType",
+            "ActionsHostedRunnerLimitsType",
+            "ActionsHostedRunnerLimitsPropPublicIpsType",
             "OidcCustomSubType",
             "ActionsOrganizationPermissionsType",
             "SelectedActionsType",
@@ -10094,6 +10162,7 @@ else:
             "ActionsBillingUsagePropMinutesUsedBreakdownType",
             "PackagesBillingUsageType",
             "CombinedBillingUsageType",
+            "NetworkSettingsType",
             "TeamFullType",
             "TeamOrganizationType",
             "TeamOrganizationPropPlanType",
@@ -12710,6 +12779,14 @@ else:
             "OrgsOrgPatchBodyType",
             "OrgsOrgActionsCacheUsageByRepositoryGetResponse200Type",
             "ActionsCacheUsageByRepositoryType",
+            "OrgsOrgActionsHostedRunnersGetResponse200Type",
+            "OrgsOrgActionsHostedRunnersPostBodyType",
+            "OrgsOrgActionsHostedRunnersPostBodyPropImageType",
+            "OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200Type",
+            "OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200Type",
+            "OrgsOrgActionsHostedRunnersMachineSizesGetResponse200Type",
+            "OrgsOrgActionsHostedRunnersPlatformsGetResponse200Type",
+            "OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBodyType",
             "OrgsOrgActionsPermissionsPutBodyType",
             "OrgsOrgActionsPermissionsRepositoriesGetResponse200Type",
             "OrgsOrgActionsPermissionsRepositoriesPutBodyType",
@@ -12717,6 +12794,7 @@ else:
             "RunnerGroupsOrgType",
             "OrgsOrgActionsRunnerGroupsPostBodyType",
             "OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBodyType",
+            "OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200Type",
             "OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200Type",
             "OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBodyType",
             "OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200Type",
@@ -12808,6 +12886,10 @@ else:
             "OrgsOrgReposPostBodyPropCustomPropertiesType",
             "OrgsOrgRulesetsPostBodyType",
             "OrgsOrgRulesetsRulesetIdPutBodyType",
+            "OrgsOrgSettingsNetworkConfigurationsGetResponse200Type",
+            "NetworkConfigurationType",
+            "OrgsOrgSettingsNetworkConfigurationsPostBodyType",
+            "OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBodyType",
             "OrgsOrgTeamsPostBodyType",
             "OrgsOrgTeamsTeamSlugPatchBodyType",
             "OrgsOrgTeamsTeamSlugDiscussionsPostBodyType",

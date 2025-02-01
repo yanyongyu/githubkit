@@ -9,6 +9,9 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,14 +19,36 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ProjectsColumnsCardsCardIdDeleteResponse403(GitHubModel):
-    """ProjectsColumnsCardsCardIdDeleteResponse403"""
+class OrgsOrgPrivateRegistriesGetResponse200(GitHubModel):
+    """OrgsOrgPrivateRegistriesGetResponse200"""
 
-    message: Missing[str] = Field(default=UNSET)
-    documentation_url: Missing[str] = Field(default=UNSET)
-    errors: Missing[list[str]] = Field(default=UNSET)
+    total_count: int = Field()
+    configurations: list[OrgPrivateRegistryConfiguration] = Field()
 
 
-model_rebuild(ProjectsColumnsCardsCardIdDeleteResponse403)
+class OrgPrivateRegistryConfiguration(GitHubModel):
+    """Organization private registry
 
-__all__ = ("ProjectsColumnsCardsCardIdDeleteResponse403",)
+    Private registry configuration for an organization
+    """
+
+    name: str = Field(description="The name of the private registry configuration.")
+    registry_type: Literal["maven_repository"] = Field(description="The registry type.")
+    username: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The username to use when authenticating with the private registry.",
+    )
+    visibility: Literal["all", "private", "selected"] = Field(
+        description="Which type of organization repositories have access to the private registry."
+    )
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+
+
+model_rebuild(OrgsOrgPrivateRegistriesGetResponse200)
+model_rebuild(OrgPrivateRegistryConfiguration)
+
+__all__ = (
+    "OrgPrivateRegistryConfiguration",
+    "OrgsOrgPrivateRegistriesGetResponse200",
+)

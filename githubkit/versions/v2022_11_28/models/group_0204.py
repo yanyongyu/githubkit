@@ -17,61 +17,134 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0002 import SimpleUser
-from .group_0203 import DiffEntry
-from .group_0205 import CommitPropCommit
 
+class BranchRestrictionPolicy(GitHubModel):
+    """Branch Restriction Policy
 
-class Commit(GitHubModel):
-    """Commit
-
-    Commit
+    Branch Restriction Policy
     """
 
     url: str = Field()
-    sha: str = Field()
-    node_id: str = Field()
-    html_url: str = Field()
-    comments_url: str = Field()
-    commit: CommitPropCommit = Field()
-    author: Union[SimpleUser, EmptyObject, None] = Field()
-    committer: Union[SimpleUser, EmptyObject, None] = Field()
-    parents: list[CommitPropParentsItems] = Field()
-    stats: Missing[CommitPropStats] = Field(default=UNSET)
-    files: Missing[list[DiffEntry]] = Field(default=UNSET)
+    users_url: str = Field()
+    teams_url: str = Field()
+    apps_url: str = Field()
+    users: list[BranchRestrictionPolicyPropUsersItems] = Field()
+    teams: list[BranchRestrictionPolicyPropTeamsItems] = Field()
+    apps: list[BranchRestrictionPolicyPropAppsItems] = Field()
 
 
-class EmptyObject(GitHubModel):
-    """Empty Object
+class BranchRestrictionPolicyPropUsersItems(GitHubModel):
+    """BranchRestrictionPolicyPropUsersItems"""
 
-    An object without any properties.
-    """
-
-
-class CommitPropParentsItems(GitHubModel):
-    """CommitPropParentsItems"""
-
-    sha: str = Field()
-    url: str = Field()
+    login: Missing[str] = Field(default=UNSET)
+    id: Missing[int] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    avatar_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
     html_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    type: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
 
 
-class CommitPropStats(GitHubModel):
-    """CommitPropStats"""
+class BranchRestrictionPolicyPropTeamsItems(GitHubModel):
+    """BranchRestrictionPolicyPropTeamsItems"""
 
-    additions: Missing[int] = Field(default=UNSET)
-    deletions: Missing[int] = Field(default=UNSET)
-    total: Missing[int] = Field(default=UNSET)
+    id: Missing[int] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    slug: Missing[str] = Field(default=UNSET)
+    description: Missing[Union[str, None]] = Field(default=UNSET)
+    privacy: Missing[str] = Field(default=UNSET)
+    notification_setting: Missing[str] = Field(default=UNSET)
+    permission: Missing[str] = Field(default=UNSET)
+    members_url: Missing[str] = Field(default=UNSET)
+    repositories_url: Missing[str] = Field(default=UNSET)
+    parent: Missing[Union[str, None]] = Field(default=UNSET)
 
 
-model_rebuild(Commit)
-model_rebuild(EmptyObject)
-model_rebuild(CommitPropParentsItems)
-model_rebuild(CommitPropStats)
+class BranchRestrictionPolicyPropAppsItems(GitHubModel):
+    """BranchRestrictionPolicyPropAppsItems"""
+
+    id: Missing[int] = Field(default=UNSET)
+    slug: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    owner: Missing[BranchRestrictionPolicyPropAppsItemsPropOwner] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    client_id: Missing[str] = Field(default=UNSET)
+    description: Missing[str] = Field(default=UNSET)
+    external_url: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    created_at: Missing[str] = Field(default=UNSET)
+    updated_at: Missing[str] = Field(default=UNSET)
+    permissions: Missing[BranchRestrictionPolicyPropAppsItemsPropPermissions] = Field(
+        default=UNSET
+    )
+    events: Missing[list[str]] = Field(default=UNSET)
+
+
+class BranchRestrictionPolicyPropAppsItemsPropOwner(GitHubModel):
+    """BranchRestrictionPolicyPropAppsItemsPropOwner"""
+
+    login: Missing[str] = Field(default=UNSET)
+    id: Missing[int] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    hooks_url: Missing[str] = Field(default=UNSET)
+    issues_url: Missing[str] = Field(default=UNSET)
+    members_url: Missing[str] = Field(default=UNSET)
+    public_members_url: Missing[str] = Field(default=UNSET)
+    avatar_url: Missing[str] = Field(default=UNSET)
+    description: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    type: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
+
+
+class BranchRestrictionPolicyPropAppsItemsPropPermissions(GitHubModel):
+    """BranchRestrictionPolicyPropAppsItemsPropPermissions"""
+
+    metadata: Missing[str] = Field(default=UNSET)
+    contents: Missing[str] = Field(default=UNSET)
+    issues: Missing[str] = Field(default=UNSET)
+    single_file: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(BranchRestrictionPolicy)
+model_rebuild(BranchRestrictionPolicyPropUsersItems)
+model_rebuild(BranchRestrictionPolicyPropTeamsItems)
+model_rebuild(BranchRestrictionPolicyPropAppsItems)
+model_rebuild(BranchRestrictionPolicyPropAppsItemsPropOwner)
+model_rebuild(BranchRestrictionPolicyPropAppsItemsPropPermissions)
 
 __all__ = (
-    "Commit",
-    "CommitPropParentsItems",
-    "CommitPropStats",
-    "EmptyObject",
+    "BranchRestrictionPolicy",
+    "BranchRestrictionPolicyPropAppsItems",
+    "BranchRestrictionPolicyPropAppsItemsPropOwner",
+    "BranchRestrictionPolicyPropAppsItemsPropPermissions",
+    "BranchRestrictionPolicyPropTeamsItems",
+    "BranchRestrictionPolicyPropUsersItems",
 )

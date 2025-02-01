@@ -12,38 +12,24 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0199 import BranchProtection
 
 
-class ShortBranch(GitHubModel):
-    """Short Branch
+class Autolink(GitHubModel):
+    """Autolink reference
 
-    Short Branch
+    An autolink reference.
     """
 
-    name: str = Field()
-    commit: ShortBranchPropCommit = Field()
-    protected: bool = Field()
-    protection: Missing[BranchProtection] = Field(
-        default=UNSET, title="Branch Protection", description="Branch Protection"
+    id: int = Field()
+    key_prefix: str = Field(description="The prefix of a key that is linkified.")
+    url_template: str = Field(
+        description="A template for the target URL that is generated if a key was found."
     )
-    protection_url: Missing[str] = Field(default=UNSET)
+    is_alphanumeric: bool = Field(
+        description="Whether this autolink reference matches alphanumeric characters. If false, this autolink reference only matches numeric characters."
+    )
 
 
-class ShortBranchPropCommit(GitHubModel):
-    """ShortBranchPropCommit"""
+model_rebuild(Autolink)
 
-    sha: str = Field()
-    url: str = Field()
-
-
-model_rebuild(ShortBranch)
-model_rebuild(ShortBranchPropCommit)
-
-__all__ = (
-    "ShortBranch",
-    "ShortBranchPropCommit",
-)
+__all__ = ("Autolink",)

@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,31 +18,42 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class RepositoryRulePullRequestPropParameters(GitHubModel):
-    """RepositoryRulePullRequestPropParameters"""
+class RepositoryRuleRequiredLinearHistory(GitHubModel):
+    """required_linear_history
 
-    allowed_merge_methods: Missing[list[str]] = Field(
-        default=UNSET,
-        description="When merging pull requests, you can allow any combination of merge commits, squashing, or rebasing. At least one option must be enabled.",
-    )
-    dismiss_stale_reviews_on_push: bool = Field(
-        description="New, reviewable commits pushed will dismiss previous pull request review approvals."
-    )
-    require_code_owner_review: bool = Field(
-        description="Require an approving review in pull requests that modify files that have a designated code owner."
-    )
-    require_last_push_approval: bool = Field(
-        description="Whether the most recent reviewable push must be approved by someone other than the person who pushed it."
-    )
-    required_approving_review_count: int = Field(
-        le=10.0,
-        description="The number of approving reviews that are required before a pull request can be merged.",
-    )
-    required_review_thread_resolution: bool = Field(
-        description="All conversations on code must be resolved before a pull request can be merged."
-    )
+    Prevent merge commits from being pushed to matching refs.
+    """
+
+    type: Literal["required_linear_history"] = Field()
 
 
-model_rebuild(RepositoryRulePullRequestPropParameters)
+class RepositoryRuleOneof16(GitHubModel):
+    """max_file_path_length
 
-__all__ = ("RepositoryRulePullRequestPropParameters",)
+    Prevent commits that include file paths that exceed a specified character limit
+    from being pushed to the commit graph.
+    """
+
+    type: Literal["max_file_path_length"] = Field()
+    parameters: Missing[RepositoryRuleOneof16PropParameters] = Field(default=UNSET)
+
+
+class RepositoryRuleOneof16PropParameters(GitHubModel):
+    """RepositoryRuleOneof16PropParameters"""
+
+    max_file_path_length: int = Field(
+        le=256.0,
+        ge=1.0,
+        description="The maximum amount of characters allowed in file paths",
+    )
+
+
+model_rebuild(RepositoryRuleRequiredLinearHistory)
+model_rebuild(RepositoryRuleOneof16)
+model_rebuild(RepositoryRuleOneof16PropParameters)
+
+__all__ = (
+    "RepositoryRuleOneof16",
+    "RepositoryRuleOneof16PropParameters",
+    "RepositoryRuleRequiredLinearHistory",
+)

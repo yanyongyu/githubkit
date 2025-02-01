@@ -9,29 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class RepositoryRuleParamsRequiredReviewerConfiguration(GitHubModel):
-    """RequiredReviewerConfiguration
+class RepositoryRuleRequiredLinearHistory(GitHubModel):
+    """required_linear_history
 
-    A reviewing team, and file patterns describing which files they must approve
-    changes to.
+    Prevent merge commits from being pushed to matching refs.
     """
 
-    file_patterns: list[str] = Field(
-        description="Array of file patterns. Pull requests which change matching files must be approved by the specified team. File patterns use the same syntax as `.gitignore` files."
-    )
-    minimum_approvals: int = Field(
-        description="Minimum number of approvals required from the specified team. If set to zero, the team will be added to the pull request but approval is optional."
-    )
-    reviewer_id: str = Field(
-        description="Node ID of the team which must review changes to matching files."
+    type: Literal["required_linear_history"] = Field()
+
+
+class RepositoryRuleOneof16(GitHubModel):
+    """max_file_path_length
+
+    Prevent commits that include file paths that exceed a specified character limit
+    from being pushed to the commit graph.
+    """
+
+    type: Literal["max_file_path_length"] = Field()
+    parameters: Missing[RepositoryRuleOneof16PropParameters] = Field(default=UNSET)
+
+
+class RepositoryRuleOneof16PropParameters(GitHubModel):
+    """RepositoryRuleOneof16PropParameters"""
+
+    max_file_path_length: int = Field(
+        le=256.0,
+        ge=1.0,
+        description="The maximum amount of characters allowed in file paths",
     )
 
 
-model_rebuild(RepositoryRuleParamsRequiredReviewerConfiguration)
+model_rebuild(RepositoryRuleRequiredLinearHistory)
+model_rebuild(RepositoryRuleOneof16)
+model_rebuild(RepositoryRuleOneof16PropParameters)
 
-__all__ = ("RepositoryRuleParamsRequiredReviewerConfiguration",)
+__all__ = (
+    "RepositoryRuleOneof16",
+    "RepositoryRuleOneof16PropParameters",
+    "RepositoryRuleRequiredLinearHistory",
+)

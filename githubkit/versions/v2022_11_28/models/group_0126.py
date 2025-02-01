@@ -17,19 +17,42 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0127 import RepositoryRuleUpdatePropParameters
+
+class RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty(
+    GitHubModel
+):
+    """RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty"""
+
+    include: Missing[list[RepositoryRulesetConditionsRepositoryPropertySpec]] = Field(
+        default=UNSET,
+        description="The repository properties and values to include. All of these properties must match for the condition to pass.",
+    )
+    exclude: Missing[list[RepositoryRulesetConditionsRepositoryPropertySpec]] = Field(
+        default=UNSET,
+        description="The repository properties and values to exclude. The condition will not pass if any of these properties match.",
+    )
 
 
-class RepositoryRuleUpdate(GitHubModel):
-    """update
+class RepositoryRulesetConditionsRepositoryPropertySpec(GitHubModel):
+    """Repository ruleset property targeting definition
 
-    Only allow users with bypass permission to update matching refs.
+    Parameters for a targeting a repository property
     """
 
-    type: Literal["update"] = Field()
-    parameters: Missing[RepositoryRuleUpdatePropParameters] = Field(default=UNSET)
+    name: str = Field(description="The name of the repository property to target")
+    property_values: list[str] = Field(
+        description="The values to match for the repository property"
+    )
+    source: Missing[Literal["custom", "system"]] = Field(
+        default=UNSET,
+        description="The source of the repository property. Defaults to 'custom' if not specified.",
+    )
 
 
-model_rebuild(RepositoryRuleUpdate)
+model_rebuild(RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty)
+model_rebuild(RepositoryRulesetConditionsRepositoryPropertySpec)
 
-__all__ = ("RepositoryRuleUpdate",)
+__all__ = (
+    "RepositoryRulesetConditionsRepositoryPropertySpec",
+    "RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty",
+)

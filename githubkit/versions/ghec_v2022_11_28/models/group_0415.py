@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,28 +18,46 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UserRoleItems(GitHubModel):
-    """UserRoleItems"""
+class GroupResponse(GitHubModel):
+    """GroupResponse"""
 
-    display: Missing[str] = Field(default=UNSET)
-    type: Missing[str] = Field(default=UNSET)
-    value: Literal[
-        "user",
-        "27d9891d-2c17-4f45-a262-781a0e55c80a",
-        "guest_collaborator",
-        "1ebc4a02-e56c-43a6-92a5-02ee09b90824",
-        "enterprise_owner",
-        "981df190-8801-4618-a08a-d91f6206c954",
-        "ba4987ab-a1c3-412a-b58c-360fc407cb10",
-        "billing_manager",
-        "0e338b8c-cc7f-498a-928d-ea3470d7e7e3",
-        "e6be2762-e4ad-4108-b72d-1bbe884a0f91",
-    ] = Field(description="The role value representing a user role in GitHub.")
-    primary: Missing[bool] = Field(
-        default=UNSET, description="Is the role a primary role for the user."
+    schemas: list[
+        Literal[
+            "urn:ietf:params:scim:schemas:core:2.0:Group",
+            "urn:ietf:params:scim:api:messages:2.0:ListResponse",
+        ]
+    ] = Field(
+        description="The URIs that are used to indicate the namespaces of the SCIM schemas."
+    )
+    external_id: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        alias="externalId",
+        description="A unique identifier for the resource as defined by the provisioning client.",
+    )
+    display_name: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        alias="displayName",
+        description="A human-readable name for a security group.",
+    )
+    members: Missing[list[GroupResponsePropMembersItems]] = Field(
+        default=UNSET, description="The group members."
     )
 
 
-model_rebuild(UserRoleItems)
+class GroupResponsePropMembersItems(GitHubModel):
+    """GroupResponsePropMembersItems"""
 
-__all__ = ("UserRoleItems",)
+    value: str = Field(description="The local unique identifier for the member")
+    ref: str = Field(alias="$ref")
+    display: Missing[str] = Field(
+        default=UNSET, description="The display name associated with the member"
+    )
+
+
+model_rebuild(GroupResponse)
+model_rebuild(GroupResponsePropMembersItems)
+
+__all__ = (
+    "GroupResponse",
+    "GroupResponsePropMembersItems",
+)

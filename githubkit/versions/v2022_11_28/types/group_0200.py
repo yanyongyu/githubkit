@@ -9,32 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0199 import BranchProtectionType
+from typing_extensions import TypedDict
 
 
-class ShortBranchType(TypedDict):
-    """Short Branch
+class AutolinkType(TypedDict):
+    """Autolink reference
 
-    Short Branch
+    An autolink reference.
     """
 
-    name: str
-    commit: ShortBranchPropCommitType
-    protected: bool
-    protection: NotRequired[BranchProtectionType]
-    protection_url: NotRequired[str]
+    id: int
+    key_prefix: str
+    url_template: str
+    is_alphanumeric: bool
 
 
-class ShortBranchPropCommitType(TypedDict):
-    """ShortBranchPropCommit"""
-
-    sha: str
-    url: str
-
-
-__all__ = (
-    "ShortBranchPropCommitType",
-    "ShortBranchType",
-)
+__all__ = ("AutolinkType",)

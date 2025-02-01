@@ -11,11 +11,14 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-
-class ProjectsColumnsColumnIdPatchBodyType(TypedDict):
-    """ProjectsColumnsColumnIdPatchBody"""
-
-    name: str
+from .group_0197 import CustomPropertyValueType
 
 
-__all__ = ("ProjectsColumnsColumnIdPatchBodyType",)
+class OrgsOrgPropertiesValuesPatchBodyType(TypedDict):
+    """OrgsOrgPropertiesValuesPatchBody"""
+
+    repository_names: list[str]
+    properties: list[CustomPropertyValueType]
+
+
+__all__ = ("OrgsOrgPropertiesValuesPatchBodyType",)

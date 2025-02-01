@@ -12,92 +12,36 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0002 import SimpleUserType
-from .group_0444 import EnterpriseWebhooksType
-from .group_0445 import SimpleInstallationType
-from .group_0446 import OrganizationSimpleWebhooksType
-from .group_0447 import RepositoryWebhooksType
+from .group_0003 import SimpleUserType
+from .group_0451 import EnterpriseWebhooksType
+from .group_0452 import SimpleInstallationType
+from .group_0453 import OrganizationSimpleWebhooksType
+from .group_0454 import RepositoryWebhooksType
 
 
-class WebhookInstallationTargetRenamedType(TypedDict):
-    """WebhookInstallationTargetRenamed"""
+class WebhookGollumType(TypedDict):
+    """gollum event"""
 
-    account: WebhookInstallationTargetRenamedPropAccountType
-    action: Literal["renamed"]
-    changes: WebhookInstallationTargetRenamedPropChangesType
     enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: SimpleInstallationType
+    installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: NotRequired[RepositoryWebhooksType]
-    sender: NotRequired[SimpleUserType]
-    target_type: str
+    pages: list[WebhookGollumPropPagesItemsType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
 
 
-class WebhookInstallationTargetRenamedPropAccountType(TypedDict):
-    """WebhookInstallationTargetRenamedPropAccount"""
+class WebhookGollumPropPagesItemsType(TypedDict):
+    """WebhookGollumPropPagesItems"""
 
-    archived_at: NotRequired[Union[str, None]]
-    avatar_url: str
-    created_at: NotRequired[str]
-    description: NotRequired[None]
-    events_url: NotRequired[str]
-    followers: NotRequired[int]
-    followers_url: NotRequired[str]
-    following: NotRequired[int]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    has_organization_projects: NotRequired[bool]
-    has_repository_projects: NotRequired[bool]
-    hooks_url: NotRequired[str]
+    action: Literal["created", "edited"]
     html_url: str
-    id: int
-    is_verified: NotRequired[bool]
-    issues_url: NotRequired[str]
-    login: NotRequired[str]
-    members_url: NotRequired[str]
-    name: NotRequired[str]
-    node_id: str
-    organizations_url: NotRequired[str]
-    public_gists: NotRequired[int]
-    public_members_url: NotRequired[str]
-    public_repos: NotRequired[int]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    slug: NotRequired[str]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[str]
-    updated_at: NotRequired[str]
-    url: NotRequired[str]
-    website_url: NotRequired[None]
-    user_view_type: NotRequired[str]
-
-
-class WebhookInstallationTargetRenamedPropChangesType(TypedDict):
-    """WebhookInstallationTargetRenamedPropChanges"""
-
-    login: NotRequired[WebhookInstallationTargetRenamedPropChangesPropLoginType]
-    slug: NotRequired[WebhookInstallationTargetRenamedPropChangesPropSlugType]
-
-
-class WebhookInstallationTargetRenamedPropChangesPropLoginType(TypedDict):
-    """WebhookInstallationTargetRenamedPropChangesPropLogin"""
-
-    from_: str
-
-
-class WebhookInstallationTargetRenamedPropChangesPropSlugType(TypedDict):
-    """WebhookInstallationTargetRenamedPropChangesPropSlug"""
-
-    from_: str
+    page_name: str
+    sha: str
+    summary: Union[str, None]
+    title: str
 
 
 __all__ = (
-    "WebhookInstallationTargetRenamedPropAccountType",
-    "WebhookInstallationTargetRenamedPropChangesPropLoginType",
-    "WebhookInstallationTargetRenamedPropChangesPropSlugType",
-    "WebhookInstallationTargetRenamedPropChangesType",
-    "WebhookInstallationTargetRenamedType",
+    "WebhookGollumPropPagesItemsType",
+    "WebhookGollumType",
 )

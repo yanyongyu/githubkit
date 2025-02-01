@@ -9,24 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgPrivateRegistryConfigurationWithSelectedRepositoriesType(TypedDict):
-    """Organization private registry
-
-    Private registry configuration for an organization
-    """
+class OrganizationCustomOrganizationRoleCreateSchemaType(TypedDict):
+    """OrganizationCustomOrganizationRoleCreateSchema"""
 
     name: str
-    registry_type: Literal["maven_repository"]
-    username: NotRequired[str]
-    visibility: Literal["all", "private", "selected"]
-    selected_repository_ids: NotRequired[list[int]]
-    created_at: datetime
-    updated_at: datetime
+    description: NotRequired[str]
+    permissions: list[str]
+    base_role: NotRequired[Literal["read", "triage", "write", "maintain", "admin"]]
 
 
-__all__ = ("OrgPrivateRegistryConfigurationWithSelectedRepositoriesType",)
+__all__ = ("OrganizationCustomOrganizationRoleCreateSchemaType",)

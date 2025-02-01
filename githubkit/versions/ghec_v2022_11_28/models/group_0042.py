@@ -12,18 +12,27 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class AuditLogStreamKey(GitHubModel):
-    """stream-key
+class RunnerApplication(GitHubModel):
+    """Runner Application
 
-    Audit Log Streaming Public Key
+    Runner Application
     """
 
-    key_id: str = Field()
-    key: str = Field()
+    os: str = Field()
+    architecture: str = Field()
+    download_url: str = Field()
+    filename: str = Field()
+    temp_download_token: Missing[str] = Field(
+        default=UNSET,
+        description="A short lived bearer token used to download the runner, if needed.",
+    )
+    sha256_checksum: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(AuditLogStreamKey)
+model_rebuild(RunnerApplication)
 
-__all__ = ("AuditLogStreamKey",)
+__all__ = ("RunnerApplication",)

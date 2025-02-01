@@ -9,27 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class Autolink(GitHubModel):
-    """Autolink reference
+class ReviewCustomGatesStateRequired(GitHubModel):
+    """ReviewCustomGatesStateRequired"""
 
-    An autolink reference.
-    """
-
-    id: int = Field()
-    key_prefix: str = Field(description="The prefix of a key that is linkified.")
-    url_template: str = Field(
-        description="A template for the target URL that is generated if a key was found."
+    environment_name: str = Field(
+        description="The name of the environment to approve or reject."
     )
-    is_alphanumeric: bool = Field(
-        description="Whether this autolink reference matches alphanumeric characters. If false, this autolink reference only matches numeric characters."
+    state: Literal["approved", "rejected"] = Field(
+        description="Whether to approve or reject deployment to the specified environments."
+    )
+    comment: Missing[str] = Field(
+        default=UNSET, description="Optional comment to include with the review."
     )
 
 
-model_rebuild(Autolink)
+model_rebuild(ReviewCustomGatesStateRequired)
 
-__all__ = ("Autolink",)
+__all__ = ("ReviewCustomGatesStateRequired",)

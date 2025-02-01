@@ -15,17 +15,19 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0019 import Repository
+from .group_0066 import CopilotSeatDetails
 
 
-class InstallationRepositoriesGetResponse200(GitHubModel):
-    """InstallationRepositoriesGetResponse200"""
+class EnterprisesEnterpriseCopilotBillingSeatsGetResponse200(GitHubModel):
+    """EnterprisesEnterpriseCopilotBillingSeatsGetResponse200"""
 
-    total_count: int = Field()
-    repositories: list[Repository] = Field()
-    repository_selection: Missing[str] = Field(default=UNSET)
+    total_seats: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of Copilot seats the enterprise is being billed for. Users with access through multiple organizations or enterprise teams are only counted once.",
+    )
+    seats: Missing[list[CopilotSeatDetails]] = Field(default=UNSET)
 
 
-model_rebuild(InstallationRepositoriesGetResponse200)
+model_rebuild(EnterprisesEnterpriseCopilotBillingSeatsGetResponse200)
 
-__all__ = ("InstallationRepositoriesGetResponse200",)
+__all__ = ("EnterprisesEnterpriseCopilotBillingSeatsGetResponse200",)

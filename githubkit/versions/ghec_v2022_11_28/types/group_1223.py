@@ -9,11 +9,15 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class UserInteractionLimitsGetResponse200Anyof1Type(TypedDict):
-    """UserInteractionLimitsGetResponse200Anyof1"""
+class TeamsTeamIdDiscussionsPostBodyType(TypedDict):
+    """TeamsTeamIdDiscussionsPostBody"""
+
+    title: str
+    body: str
+    private: NotRequired[bool]
 
 
-__all__ = ("UserInteractionLimitsGetResponse200Anyof1Type",)
+__all__ = ("TeamsTeamIdDiscussionsPostBodyType",)

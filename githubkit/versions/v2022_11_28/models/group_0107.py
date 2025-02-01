@@ -9,58 +9,71 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Annotated, Literal, Union
+from datetime import datetime
+from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class CustomProperty(GitHubModel):
-    """Organization Custom Property
+class PackageVersion(GitHubModel):
+    """Package Version
 
-    Custom property defined on an organization
+    A version of a software package
     """
 
-    property_name: str = Field(description="The name of the property")
-    url: Missing[str] = Field(
-        default=UNSET,
-        description="The URL that can be used to fetch, update, or delete info about this property via the API.",
+    id: int = Field(description="Unique identifier of the package version.")
+    name: str = Field(description="The name of the package version.")
+    url: str = Field()
+    package_html_url: str = Field()
+    html_url: Missing[str] = Field(default=UNSET)
+    license_: Missing[str] = Field(default=UNSET, alias="license")
+    description: Missing[str] = Field(default=UNSET)
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+    deleted_at: Missing[datetime] = Field(default=UNSET)
+    metadata: Missing[PackageVersionPropMetadata] = Field(
+        default=UNSET, title="Package Version Metadata"
     )
-    source_type: Missing[Literal["organization", "enterprise"]] = Field(
-        default=UNSET, description="The source type of the property"
-    )
-    value_type: Literal["string", "single_select", "multi_select", "true_false"] = (
-        Field(description="The type of the value for the property")
-    )
-    required: Missing[bool] = Field(
-        default=UNSET, description="Whether the property is required."
-    )
-    default_value: Missing[Union[str, list[str], None]] = Field(
-        default=UNSET, description="Default value of the property"
-    )
-    description: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Short description of the property"
-    )
-    allowed_values: Missing[
-        Union[
-            Annotated[
-                list[Annotated[str, Field(max_length=75)]],
-                Field(max_length=200 if PYDANTIC_V2 else None),
-            ],
-            None,
-        ]
-    ] = Field(
-        default=UNSET,
-        description="An ordered list of the allowed values of the property.\nThe property can have up to 200 allowed values.",
-    )
-    values_editable_by: Missing[
-        Union[None, Literal["org_actors", "org_and_repo_actors"]]
-    ] = Field(default=UNSET, description="Who can edit the values of the property")
 
 
-model_rebuild(CustomProperty)
+class PackageVersionPropMetadata(GitHubModel):
+    """Package Version Metadata"""
 
-__all__ = ("CustomProperty",)
+    package_type: Literal[
+        "npm", "maven", "rubygems", "docker", "nuget", "container"
+    ] = Field()
+    container: Missing[PackageVersionPropMetadataPropContainer] = Field(
+        default=UNSET, title="Container Metadata"
+    )
+    docker: Missing[PackageVersionPropMetadataPropDocker] = Field(
+        default=UNSET, title="Docker Metadata"
+    )
+
+
+class PackageVersionPropMetadataPropContainer(GitHubModel):
+    """Container Metadata"""
+
+    tags: list[str] = Field()
+
+
+class PackageVersionPropMetadataPropDocker(GitHubModel):
+    """Docker Metadata"""
+
+    tag: Missing[list[str]] = Field(default=UNSET)
+
+
+model_rebuild(PackageVersion)
+model_rebuild(PackageVersionPropMetadata)
+model_rebuild(PackageVersionPropMetadataPropContainer)
+model_rebuild(PackageVersionPropMetadataPropDocker)
+
+__all__ = (
+    "PackageVersion",
+    "PackageVersionPropMetadata",
+    "PackageVersionPropMetadataPropContainer",
+    "PackageVersionPropMetadataPropDocker",
+)

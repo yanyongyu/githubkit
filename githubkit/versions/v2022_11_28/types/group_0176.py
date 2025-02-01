@@ -10,32 +10,23 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ActionsCacheListType(TypedDict):
-    """Repository actions caches
+class ProjectColumnType(TypedDict):
+    """Project Column
 
-    Repository actions caches
+    Project columns contain cards of work.
     """
 
-    total_count: int
-    actions_caches: list[ActionsCacheListPropActionsCachesItemsType]
+    url: str
+    project_url: str
+    cards_url: str
+    id: int
+    node_id: str
+    name: str
+    created_at: datetime
+    updated_at: datetime
 
 
-class ActionsCacheListPropActionsCachesItemsType(TypedDict):
-    """ActionsCacheListPropActionsCachesItems"""
-
-    id: NotRequired[int]
-    ref: NotRequired[str]
-    key: NotRequired[str]
-    version: NotRequired[str]
-    last_accessed_at: NotRequired[datetime]
-    created_at: NotRequired[datetime]
-    size_in_bytes: NotRequired[int]
-
-
-__all__ = (
-    "ActionsCacheListPropActionsCachesItemsType",
-    "ActionsCacheListType",
-)
+__all__ = ("ProjectColumnType",)

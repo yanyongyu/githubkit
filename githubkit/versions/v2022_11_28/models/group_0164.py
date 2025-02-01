@@ -9,44 +9,99 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0002 import SimpleUser
-from .group_0039 import ReactionRollup
 
+class ActionsBillingUsage(GitHubModel):
+    """ActionsBillingUsage"""
 
-class TeamDiscussionComment(GitHubModel):
-    """Team Discussion Comment
-
-    A reply to a discussion within a team.
-    """
-
-    author: Union[None, SimpleUser] = Field()
-    body: str = Field(description="The main text of the comment.")
-    body_html: str = Field()
-    body_version: str = Field(
-        description="The current version of the body content. If provided, this update operation will be rejected if the given version does not match the latest version on the server."
+    total_minutes_used: int = Field(
+        description="The sum of the free and paid GitHub Actions minutes used."
     )
-    created_at: datetime = Field()
-    last_edited_at: Union[datetime, None] = Field()
-    discussion_url: str = Field()
-    html_url: str = Field()
-    node_id: str = Field()
-    number: int = Field(
-        description="The unique sequence number of a team discussion comment."
+    total_paid_minutes_used: int = Field(
+        description="The total paid GitHub Actions minutes used."
     )
-    updated_at: datetime = Field()
-    url: str = Field()
-    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
+    included_minutes: int = Field(
+        description="The amount of free GitHub Actions minutes available."
+    )
+    minutes_used_breakdown: ActionsBillingUsagePropMinutesUsedBreakdown = Field()
 
 
-model_rebuild(TeamDiscussionComment)
+class ActionsBillingUsagePropMinutesUsedBreakdown(GitHubModel):
+    """ActionsBillingUsagePropMinutesUsedBreakdown"""
 
-__all__ = ("TeamDiscussionComment",)
+    ubuntu: Missing[int] = Field(
+        default=UNSET,
+        alias="UBUNTU",
+        description="Total minutes used on Ubuntu runner machines.",
+    )
+    macos: Missing[int] = Field(
+        default=UNSET,
+        alias="MACOS",
+        description="Total minutes used on macOS runner machines.",
+    )
+    windows: Missing[int] = Field(
+        default=UNSET,
+        alias="WINDOWS",
+        description="Total minutes used on Windows runner machines.",
+    )
+    ubuntu_4_core: Missing[int] = Field(
+        default=UNSET,
+        description="Total minutes used on Ubuntu 4 core runner machines.",
+    )
+    ubuntu_8_core: Missing[int] = Field(
+        default=UNSET,
+        description="Total minutes used on Ubuntu 8 core runner machines.",
+    )
+    ubuntu_16_core: Missing[int] = Field(
+        default=UNSET,
+        description="Total minutes used on Ubuntu 16 core runner machines.",
+    )
+    ubuntu_32_core: Missing[int] = Field(
+        default=UNSET,
+        description="Total minutes used on Ubuntu 32 core runner machines.",
+    )
+    ubuntu_64_core: Missing[int] = Field(
+        default=UNSET,
+        description="Total minutes used on Ubuntu 64 core runner machines.",
+    )
+    windows_4_core: Missing[int] = Field(
+        default=UNSET,
+        description="Total minutes used on Windows 4 core runner machines.",
+    )
+    windows_8_core: Missing[int] = Field(
+        default=UNSET,
+        description="Total minutes used on Windows 8 core runner machines.",
+    )
+    windows_16_core: Missing[int] = Field(
+        default=UNSET,
+        description="Total minutes used on Windows 16 core runner machines.",
+    )
+    windows_32_core: Missing[int] = Field(
+        default=UNSET,
+        description="Total minutes used on Windows 32 core runner machines.",
+    )
+    windows_64_core: Missing[int] = Field(
+        default=UNSET,
+        description="Total minutes used on Windows 64 core runner machines.",
+    )
+    macos_12_core: Missing[int] = Field(
+        default=UNSET,
+        description="Total minutes used on macOS 12 core runner machines.",
+    )
+    total: Missing[int] = Field(
+        default=UNSET, description="Total minutes used on all runner machines."
+    )
+
+
+model_rebuild(ActionsBillingUsage)
+model_rebuild(ActionsBillingUsagePropMinutesUsedBreakdown)
+
+__all__ = (
+    "ActionsBillingUsage",
+    "ActionsBillingUsagePropMinutesUsedBreakdown",
+)

@@ -9,34 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import TypedDict
 
-from .group_0002 import SimpleUserType
-from .group_0019 import RepositoryType
+
+class PageBuildStatusType(TypedDict):
+    """Page Build Status
+
+    Page Build Status
+    """
+
+    url: str
+    status: str
 
 
-class PullRequestPropHeadType(TypedDict):
-    """PullRequestPropHead"""
-
-    label: Union[str, None]
-    ref: str
-    repo: RepositoryType
-    sha: str
-    user: SimpleUserType
-
-
-class PullRequestPropBaseType(TypedDict):
-    """PullRequestPropBase"""
-
-    label: str
-    ref: str
-    repo: RepositoryType
-    sha: str
-    user: SimpleUserType
-
-
-__all__ = (
-    "PullRequestPropBaseType",
-    "PullRequestPropHeadType",
-)
+__all__ = ("PageBuildStatusType",)

@@ -16,21 +16,41 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName(
-    GitHubModel
-):
-    """EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName"""
+class GetLicenseSyncStatus(GitHubModel):
+    """License Sync Status
 
-    include: Missing[list[str]] = Field(
-        default=UNSET,
-        description="Array of organization names or patterns to include. One of these patterns must match for the condition to pass. Also accepts `~ALL` to include all organizations and ~EMUS to target all enterprise managed user accounts.",
-    )
-    exclude: Missing[list[str]] = Field(
-        default=UNSET,
-        description="Array of organization names or patterns to exclude. The condition will not pass if any of these patterns match.",
+    Information about the status of a license sync job for an enterprise.
+    """
+
+    server_instances: Missing[list[GetLicenseSyncStatusPropServerInstancesItems]] = (
+        Field(default=UNSET)
     )
 
 
-model_rebuild(EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName)
+class GetLicenseSyncStatusPropServerInstancesItems(GitHubModel):
+    """GetLicenseSyncStatusPropServerInstancesItems"""
 
-__all__ = ("EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName",)
+    server_id: Missing[str] = Field(default=UNSET)
+    hostname: Missing[str] = Field(default=UNSET)
+    last_sync: Missing[GetLicenseSyncStatusPropServerInstancesItemsPropLastSync] = (
+        Field(default=UNSET)
+    )
+
+
+class GetLicenseSyncStatusPropServerInstancesItemsPropLastSync(GitHubModel):
+    """GetLicenseSyncStatusPropServerInstancesItemsPropLastSync"""
+
+    date: Missing[str] = Field(default=UNSET)
+    status: Missing[str] = Field(default=UNSET)
+    error: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(GetLicenseSyncStatus)
+model_rebuild(GetLicenseSyncStatusPropServerInstancesItems)
+model_rebuild(GetLicenseSyncStatusPropServerInstancesItemsPropLastSync)
+
+__all__ = (
+    "GetLicenseSyncStatus",
+    "GetLicenseSyncStatusPropServerInstancesItems",
+    "GetLicenseSyncStatusPropServerInstancesItemsPropLastSync",
+)

@@ -9,53 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import date, datetime
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0002 import SimpleUserType
-from .group_0031 import OrganizationSimpleType
-from .group_0060 import TeamType
+from .group_0056 import SimpleRepositoryType
 
 
-class CopilotSeatDetailsType(TypedDict):
-    """Copilot Business Seat Detail
+class CodeSecurityConfigurationRepositoriesType(TypedDict):
+    """CodeSecurityConfigurationRepositories
 
-    Information about a Copilot Business seat assignment for a user, team, or
-    organization.
+    Repositories associated with a code security configuration and attachment status
     """
 
-    assignee: SimpleUserType
-    organization: NotRequired[Union[None, OrganizationSimpleType]]
-    assigning_team: NotRequired[Union[TeamType, EnterpriseTeamType, None]]
-    pending_cancellation_date: NotRequired[Union[date, None]]
-    last_activity_at: NotRequired[Union[datetime, None]]
-    last_activity_editor: NotRequired[Union[str, None]]
-    created_at: datetime
-    updated_at: NotRequired[datetime]
-    plan_type: NotRequired[Literal["business", "enterprise", "unknown"]]
+    status: NotRequired[
+        Literal[
+            "attached",
+            "attaching",
+            "detached",
+            "removed",
+            "enforced",
+            "failed",
+            "updating",
+            "removed_by_enterprise",
+        ]
+    ]
+    repository: NotRequired[SimpleRepositoryType]
 
 
-class EnterpriseTeamType(TypedDict):
-    """Enterprise Team
-
-    Group of enterprise owners and/or members
-    """
-
-    id: int
-    name: str
-    slug: str
-    url: str
-    sync_to_organizations: str
-    group_id: NotRequired[Union[str, None]]
-    group_name: NotRequired[Union[str, None]]
-    html_url: str
-    members_url: str
-    created_at: datetime
-    updated_at: datetime
-
-
-__all__ = (
-    "CopilotSeatDetailsType",
-    "EnterpriseTeamType",
-)
+__all__ = ("CodeSecurityConfigurationRepositoriesType",)

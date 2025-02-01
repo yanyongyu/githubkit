@@ -17,18 +17,18 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0002 import SimpleUser
-from .group_0444 import EnterpriseWebhooks
-from .group_0445 import SimpleInstallation
-from .group_0446 import OrganizationSimpleWebhooks
-from .group_0447 import RepositoryWebhooks
-from .group_0494 import WebhooksSponsorship
+from .group_0003 import SimpleUser
+from .group_0451 import EnterpriseWebhooks
+from .group_0452 import SimpleInstallation
+from .group_0453 import OrganizationSimpleWebhooks
+from .group_0454 import RepositoryWebhooks
+from .group_0500 import WebhooksSecurityAdvisory
 
 
-class WebhookSponsorshipCancelled(GitHubModel):
-    """sponsorship cancelled event"""
+class WebhookSecurityAdvisoryPublished(GitHubModel):
+    """security_advisory published event"""
 
-    action: Literal["cancelled"] = Field()
+    action: Literal["published"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -49,10 +49,14 @@ class WebhookSponsorshipCancelled(GitHubModel):
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    sponsorship: WebhooksSponsorship = Field()
+    security_advisory: WebhooksSecurityAdvisory = Field(
+        description="The details of the security advisory, including summary, description, and severity."
+    )
+    sender: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
+    )
 
 
-model_rebuild(WebhookSponsorshipCancelled)
+model_rebuild(WebhookSecurityAdvisoryPublished)
 
-__all__ = ("WebhookSponsorshipCancelled",)
+__all__ = ("WebhookSecurityAdvisoryPublished",)

@@ -9,20 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+from typing import Union
 from typing_extensions import TypedDict
 
-from .group_0019 import RepositoryType
 
+class EmailType(TypedDict):
+    """Email
 
-class StarredRepositoryType(TypedDict):
-    """Starred Repository
-
-    Starred Repository
+    Email
     """
 
-    starred_at: datetime
-    repo: RepositoryType
+    email: str
+    primary: bool
+    verified: bool
+    visibility: Union[str, None]
 
 
-__all__ = ("StarredRepositoryType",)
+__all__ = ("EmailType",)

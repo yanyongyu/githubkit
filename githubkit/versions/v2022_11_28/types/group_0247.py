@@ -9,29 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import TypedDict
 
-from .group_0002 import SimpleUserType
 
+class LinkType(TypedDict):
+    """Link
 
-class StatusType(TypedDict):
-    """Status
-
-    The status of a commit.
+    Hypermedia Link
     """
 
-    url: str
-    avatar_url: Union[str, None]
-    id: int
-    node_id: str
-    state: str
-    description: Union[str, None]
-    target_url: Union[str, None]
-    context: str
-    created_at: str
-    updated_at: str
-    creator: Union[None, SimpleUserType]
+    href: str
 
 
-__all__ = ("StatusType",)
+__all__ = ("LinkType",)

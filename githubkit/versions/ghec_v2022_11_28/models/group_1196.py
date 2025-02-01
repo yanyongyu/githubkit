@@ -16,17 +16,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class TeamsTeamIdDiscussionsDiscussionNumberPatchBody(GitHubModel):
-    """TeamsTeamIdDiscussionsDiscussionNumberPatchBody"""
+class ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1(GitHubModel):
+    """ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1"""
 
-    title: Missing[str] = Field(
-        default=UNSET, description="The discussion post's title."
+    reviewers: Missing[list[str]] = Field(
+        default=UNSET, description="An array of user `login`s that will be requested."
     )
-    body: Missing[str] = Field(
-        default=UNSET, description="The discussion post's body text."
+    team_reviewers: list[str] = Field(
+        description="An array of team `slug`s that will be requested."
     )
 
 
-model_rebuild(TeamsTeamIdDiscussionsDiscussionNumberPatchBody)
+model_rebuild(ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1)
 
-__all__ = ("TeamsTeamIdDiscussionsDiscussionNumberPatchBody",)
+__all__ = ("ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1",)

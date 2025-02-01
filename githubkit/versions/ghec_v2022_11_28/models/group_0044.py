@@ -9,79 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from datetime import datetime
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class AzureBlobConfig(GitHubModel):
-    """AzureBlobConfig
+class AnnouncementBanner(GitHubModel):
+    """Announcement Banner
 
-    Azure Blob Config for audit log streaming configuration.
+    Announcement at either the repository, organization, or enterprise level
     """
 
-    key_id: str = Field(
-        description="Key ID obtained from the audit log stream key endpoint used to encrypt secrets."
+    announcement: Union[str, None] = Field(
+        description='The announcement text in GitHub Flavored Markdown. For more information about GitHub Flavored Markdown, see "[Basic writing and formatting syntax](https://docs.github.com/enterprise-cloud@latest//github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)."'
     )
-    encrypted_sas_url: str = Field()
-
-
-class AzureHubConfig(GitHubModel):
-    """AzureHubConfig
-
-    Azure Event Hubs Config for audit log streaming configuration.
-    """
-
-    name: str = Field(description="Instance name of Azure Event Hubs")
-    encrypted_connstring: str = Field(
-        description="Encrypted Connection String for Azure Event Hubs"
+    expires_at: Union[datetime, None] = Field(
+        description="The time at which the announcement expires. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`. To set an announcement that never expires, omit this parameter, set it to `null`, or set it to an empty string."
     )
-    key_id: str = Field(
-        description="Key ID obtained from the audit log stream key endpoint used to encrypt secrets."
+    user_dismissible: Union[bool, None] = Field(
+        default=False,
+        description="Whether an announcement can be dismissed by the user.",
     )
 
 
-class AmazonS3AccessKeysConfig(GitHubModel):
-    """AmazonS3AccessKeysConfig
+model_rebuild(AnnouncementBanner)
 
-    Amazon S3 Access Keys Config for audit log streaming configuration.
-    """
-
-    bucket: str = Field(description="Amazon S3 Bucket Name.")
-    region: str = Field(description="Amazon S3 Bucket Name.")
-    key_id: str = Field(
-        description="Key ID obtained from the audit log stream key endpoint used to encrypt secrets."
-    )
-    authentication_type: Literal["access_keys"] = Field(
-        description="Authentication Type for Amazon S3."
-    )
-    encrypted_secret_key: str = Field(description="Encrypted AWS Secret Key.")
-    encrypted_access_key_id: str = Field(description="Encrypted AWS Access Key ID.")
-
-
-class GoogleCloudConfig(GitHubModel):
-    """GoogleCloudConfig
-
-    Google Cloud Config for audit log streaming configuration.
-    """
-
-    bucket: str = Field(description="Google Cloud Bucket Name")
-    key_id: str = Field(
-        description="Key ID obtained from the audit log stream key endpoint used to encrypt secrets."
-    )
-    encrypted_json_credentials: str = Field()
-
-
-model_rebuild(AzureBlobConfig)
-model_rebuild(AzureHubConfig)
-model_rebuild(AmazonS3AccessKeysConfig)
-model_rebuild(GoogleCloudConfig)
-
-__all__ = (
-    "AmazonS3AccessKeysConfig",
-    "AzureBlobConfig",
-    "AzureHubConfig",
-    "GoogleCloudConfig",
-)
+__all__ = ("AnnouncementBanner",)

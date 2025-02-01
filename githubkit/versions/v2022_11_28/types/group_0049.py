@@ -9,17 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from datetime import datetime
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0003 import SimpleUserType
 
 
-class GitignoreTemplateType(TypedDict):
-    """Gitignore Template
+class GistCommitType(TypedDict):
+    """Gist Commit
 
-    Gitignore Template
+    Gist Commit
     """
 
-    name: str
-    source: str
+    url: str
+    version: str
+    user: Union[None, SimpleUserType]
+    change_status: GistCommitPropChangeStatusType
+    committed_at: datetime
 
 
-__all__ = ("GitignoreTemplateType",)
+class GistCommitPropChangeStatusType(TypedDict):
+    """GistCommitPropChangeStatus"""
+
+    total: NotRequired[int]
+    additions: NotRequired[int]
+    deletions: NotRequired[int]
+
+
+__all__ = (
+    "GistCommitPropChangeStatusType",
+    "GistCommitType",
+)

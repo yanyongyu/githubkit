@@ -9,32 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal, Union
+from typing_extensions import TypedDict
 
-from .group_0240 import DiffEntryType
-from .group_0241 import CommitType
+from .group_0003 import SimpleUserType
 
 
-class CommitComparisonType(TypedDict):
-    """Commit Comparison
+class AutoMergeType(TypedDict):
+    """Auto merge
 
-    Commit Comparison
+    The status of auto merging a pull request.
     """
 
-    url: str
-    html_url: str
-    permalink_url: str
-    diff_url: str
-    patch_url: str
-    base_commit: CommitType
-    merge_base_commit: CommitType
-    status: Literal["diverged", "ahead", "behind", "identical"]
-    ahead_by: int
-    behind_by: int
-    total_commits: int
-    commits: list[CommitType]
-    files: NotRequired[list[DiffEntryType]]
+    enabled_by: SimpleUserType
+    merge_method: Literal["merge", "squash", "rebase"]
+    commit_title: Union[str, None]
+    commit_message: Union[str, None]
 
 
-__all__ = ("CommitComparisonType",)
+__all__ = ("AutoMergeType",)

@@ -9,13 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from pydantic import Field
+
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class UserInteractionLimitsGetResponse200Anyof1(GitHubModel):
-    """UserInteractionLimitsGetResponse200Anyof1"""
+class TeamsTeamIdDiscussionsPostBody(GitHubModel):
+    """TeamsTeamIdDiscussionsPostBody"""
+
+    title: str = Field(description="The discussion post's title.")
+    body: str = Field(description="The discussion post's body text.")
+    private: Missing[bool] = Field(
+        default=UNSET,
+        description="Private posts are only visible to team members, organization owners, and team maintainers. Public posts are visible to all members of the organization. Set to `true` to create a private post.",
+    )
 
 
-model_rebuild(UserInteractionLimitsGetResponse200Anyof1)
+model_rebuild(TeamsTeamIdDiscussionsPostBody)
 
-__all__ = ("UserInteractionLimitsGetResponse200Anyof1",)
+__all__ = ("TeamsTeamIdDiscussionsPostBody",)

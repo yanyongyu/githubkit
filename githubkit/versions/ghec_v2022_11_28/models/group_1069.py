@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,41 +16,97 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoCodeScanningSarifsPostBody(GitHubModel):
-    """ReposOwnerRepoCodeScanningSarifsPostBody"""
+class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody(
+    GitHubModel
+):
+    """ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody"""
 
-    commit_sha: str = Field(
-        min_length=40,
-        max_length=40,
-        pattern="^[0-9a-fA-F]+$",
-        description="The SHA of the commit to which the analysis you are uploading relates.",
-    )
-    ref: str = Field(
-        pattern="^refs/(heads|tags|pull)/.*$",
-        description="The full Git reference, formatted as `refs/heads/<branch name>`,\n`refs/tags/<tag>`, `refs/pull/<number>/merge`, or `refs/pull/<number>/head`.",
-    )
-    sarif: str = Field(
-        description='A Base64 string representing the SARIF file to upload. You must first compress your SARIF file using [`gzip`](http://www.gnu.org/software/gzip/manual/gzip.html) and then translate the contents of the file into a Base64 encoding string. For more information, see "[SARIF support for code scanning](https://docs.github.com/enterprise-cloud@latest//code-security/secure-coding/sarif-support-for-code-scanning)."'
-    )
-    checkout_uri: Missing[str] = Field(
+    dismissal_restrictions: Missing[
+        ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictions
+    ] = Field(
         default=UNSET,
-        description="The base directory used in the analysis, as it appears in the SARIF file.\nThis property is used to convert file paths from absolute to relative, so that alerts can be mapped to their correct location in the repository.",
+        description="Specify which users, teams, and apps can dismiss pull request reviews. Pass an empty `dismissal_restrictions` object to disable. User and team `dismissal_restrictions` are only available for organization-owned repositories. Omit this parameter for personal repositories.",
     )
-    started_at: Missing[datetime] = Field(
+    dismiss_stale_reviews: Missing[bool] = Field(
         default=UNSET,
-        description="The time that the analysis run began. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        description="Set to `true` if you want to automatically dismiss approving reviews when someone pushes a new commit.",
     )
-    tool_name: Missing[str] = Field(
+    require_code_owner_reviews: Missing[bool] = Field(
         default=UNSET,
-        description='The name of the tool used to generate the code scanning analysis. If this parameter is not used, the tool name defaults to "API". If the uploaded SARIF contains a tool GUID, this will be available for filtering using the `tool_guid` parameter of operations such as `GET /repos/{owner}/{repo}/code-scanning/alerts`.',
+        description="Blocks merging pull requests until [code owners](https://docs.github.com/enterprise-cloud@latest//articles/about-code-owners/) have reviewed.",
     )
-    validate_: Missing[bool] = Field(
+    required_approving_review_count: Missing[int] = Field(
         default=UNSET,
-        alias="validate",
-        description="Whether the SARIF file will be validated according to the code scanning specifications.\nThis parameter is intended to help integrators ensure that the uploaded SARIF files are correctly rendered by code scanning.",
+        description="Specifies the number of reviewers required to approve pull requests. Use a number between 1 and 6 or 0 to not require reviewers.",
+    )
+    require_last_push_approval: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether the most recent push must be approved by someone other than the person who pushed it. Default: `false`",
+    )
+    bypass_pull_request_allowances: Missing[
+        ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowances
+    ] = Field(
+        default=UNSET,
+        description="Allow specific users, teams, or apps to bypass pull request requirements.",
     )
 
 
-model_rebuild(ReposOwnerRepoCodeScanningSarifsPostBody)
+class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictions(
+    GitHubModel
+):
+    """ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDis
+    missalRestrictions
 
-__all__ = ("ReposOwnerRepoCodeScanningSarifsPostBody",)
+    Specify which users, teams, and apps can dismiss pull request reviews. Pass an
+    empty `dismissal_restrictions` object to disable. User and team
+    `dismissal_restrictions` are only available for organization-owned repositories.
+    Omit this parameter for personal repositories.
+    """
+
+    users: Missing[list[str]] = Field(
+        default=UNSET, description="The list of user `login`s with dismissal access"
+    )
+    teams: Missing[list[str]] = Field(
+        default=UNSET, description="The list of team `slug`s with dismissal access"
+    )
+    apps: Missing[list[str]] = Field(
+        default=UNSET, description="The list of app `slug`s with dismissal access"
+    )
+
+
+class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowances(
+    GitHubModel
+):
+    """ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropByp
+    assPullRequestAllowances
+
+    Allow specific users, teams, or apps to bypass pull request requirements.
+    """
+
+    users: Missing[list[str]] = Field(
+        default=UNSET,
+        description="The list of user `login`s allowed to bypass pull request requirements.",
+    )
+    teams: Missing[list[str]] = Field(
+        default=UNSET,
+        description="The list of team `slug`s allowed to bypass pull request requirements.",
+    )
+    apps: Missing[list[str]] = Field(
+        default=UNSET,
+        description="The list of app `slug`s allowed to bypass pull request requirements.",
+    )
+
+
+model_rebuild(ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody)
+model_rebuild(
+    ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictions
+)
+model_rebuild(
+    ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowances
+)
+
+__all__ = (
+    "ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody",
+    "ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowances",
+    "ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictions",
+)

@@ -9,36 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0241 import (
+    ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances,
+    ProtectedBranchPullRequestReviewPropDismissalRestrictions,
+)
 
-class DiffEntry(GitHubModel):
-    """Diff Entry
 
-    Diff Entry
+class ProtectedBranchPullRequestReview(GitHubModel):
+    """Protected Branch Pull Request Review
+
+    Protected Branch Pull Request Review
     """
 
-    sha: str = Field()
-    filename: str = Field()
-    status: Literal[
-        "added", "removed", "modified", "renamed", "copied", "changed", "unchanged"
-    ] = Field()
-    additions: int = Field()
-    deletions: int = Field()
-    changes: int = Field()
-    blob_url: Union[str, None] = Field()
-    raw_url: Union[str, None] = Field()
-    contents_url: str = Field()
-    patch: Missing[str] = Field(default=UNSET)
-    previous_filename: Missing[str] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    dismissal_restrictions: Missing[
+        ProtectedBranchPullRequestReviewPropDismissalRestrictions
+    ] = Field(default=UNSET)
+    bypass_pull_request_allowances: Missing[
+        ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances
+    ] = Field(
+        default=UNSET,
+        description="Allow specific users, teams, or apps to bypass pull request requirements.",
+    )
+    dismiss_stale_reviews: bool = Field()
+    require_code_owner_reviews: bool = Field()
+    required_approving_review_count: Missing[int] = Field(le=6.0, default=UNSET)
+    require_last_push_approval: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether the most recent push must be approved by someone other than the person who pushed it.",
+    )
 
 
-model_rebuild(DiffEntry)
+model_rebuild(ProtectedBranchPullRequestReview)
 
-__all__ = ("DiffEntry",)
+__all__ = ("ProtectedBranchPullRequestReview",)

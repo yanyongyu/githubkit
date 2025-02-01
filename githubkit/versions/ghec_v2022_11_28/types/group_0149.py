@@ -9,24 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal, Union
+from typing_extensions import TypedDict
 
 
-class ThreadSubscriptionType(TypedDict):
-    """Thread Subscription
+class MarketplaceListingPlanType(TypedDict):
+    """Marketplace Listing Plan
 
-    Thread Subscription
+    Marketplace Listing Plan
     """
 
-    subscribed: bool
-    ignored: bool
-    reason: Union[str, None]
-    created_at: Union[datetime, None]
     url: str
-    thread_url: NotRequired[str]
-    repository_url: NotRequired[str]
+    accounts_url: str
+    id: int
+    number: int
+    name: str
+    description: str
+    monthly_price_in_cents: int
+    yearly_price_in_cents: int
+    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
+    has_free_trial: bool
+    unit_name: Union[str, None]
+    state: str
+    bullets: list[str]
 
 
-__all__ = ("ThreadSubscriptionType",)
+__all__ = ("MarketplaceListingPlanType",)

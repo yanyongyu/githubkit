@@ -9,16 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0223 import CodeScanningVariantAnalysisRepositoryType
+from typing_extensions import NotRequired, TypedDict
 
 
-class CodeScanningVariantAnalysisSkippedRepoGroupType(TypedDict):
-    """CodeScanningVariantAnalysisSkippedRepoGroup"""
+class CodeScanningAutofixCommitsType(TypedDict):
+    """CodeScanningAutofixCommits
 
-    repository_count: int
-    repositories: list[CodeScanningVariantAnalysisRepositoryType]
+    Commit an autofix for a code scanning alert
+    """
+
+    target_ref: NotRequired[str]
+    message: NotRequired[str]
 
 
-__all__ = ("CodeScanningVariantAnalysisSkippedRepoGroupType",)
+__all__ = ("CodeScanningAutofixCommitsType",)

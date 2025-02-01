@@ -12,18 +12,17 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0135 import RepositoryRulePullRequestPropParametersType
+from .group_0135 import RepositoryRuleMergeQueuePropParametersType
 
 
-class RepositoryRulePullRequestType(TypedDict):
-    """pull_request
+class RepositoryRuleMergeQueueType(TypedDict):
+    """merge_queue
 
-    Require all commits be made to a non-target branch and submitted via a pull
-    request before they can be merged.
+    Merges must be performed via a merge queue.
     """
 
-    type: Literal["pull_request"]
-    parameters: NotRequired[RepositoryRulePullRequestPropParametersType]
+    type: Literal["merge_queue"]
+    parameters: NotRequired[RepositoryRuleMergeQueuePropParametersType]
 
 
-__all__ = ("RepositoryRulePullRequestType",)
+__all__ = ("RepositoryRuleMergeQueueType",)

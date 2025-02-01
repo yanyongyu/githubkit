@@ -9,53 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType
+from .group_0060 import OrganizationSimpleType
 
-class PackageVersionType(TypedDict):
-    """Package Version
 
-    A version of a software package
+class OrgMembershipType(TypedDict):
+    """Org Membership
+
+    Org Membership
     """
 
-    id: int
-    name: str
     url: str
-    package_html_url: str
-    html_url: NotRequired[str]
-    license_: NotRequired[str]
-    description: NotRequired[str]
-    created_at: datetime
-    updated_at: datetime
-    deleted_at: NotRequired[datetime]
-    metadata: NotRequired[PackageVersionPropMetadataType]
+    state: Literal["active", "pending"]
+    role: Literal["admin", "member", "billing_manager"]
+    organization_url: str
+    organization: OrganizationSimpleType
+    user: Union[None, SimpleUserType]
+    permissions: NotRequired[OrgMembershipPropPermissionsType]
 
 
-class PackageVersionPropMetadataType(TypedDict):
-    """Package Version Metadata"""
+class OrgMembershipPropPermissionsType(TypedDict):
+    """OrgMembershipPropPermissions"""
 
-    package_type: Literal["npm", "maven", "rubygems", "docker", "nuget", "container"]
-    container: NotRequired[PackageVersionPropMetadataPropContainerType]
-    docker: NotRequired[PackageVersionPropMetadataPropDockerType]
-
-
-class PackageVersionPropMetadataPropContainerType(TypedDict):
-    """Container Metadata"""
-
-    tags: list[str]
-
-
-class PackageVersionPropMetadataPropDockerType(TypedDict):
-    """Docker Metadata"""
-
-    tag: NotRequired[list[str]]
+    can_create_repository: bool
 
 
 __all__ = (
-    "PackageVersionPropMetadataPropContainerType",
-    "PackageVersionPropMetadataPropDockerType",
-    "PackageVersionPropMetadataType",
-    "PackageVersionType",
+    "OrgMembershipPropPermissionsType",
+    "OrgMembershipType",
 )

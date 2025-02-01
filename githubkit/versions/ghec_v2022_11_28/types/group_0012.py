@@ -9,33 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ValidationErrorType(TypedDict):
-    """Validation Error
+class HookDeliveryItemType(TypedDict):
+    """Simple webhook delivery
 
-    Validation Error
+    Delivery made by a webhook, without request and response information.
     """
 
-    message: str
-    documentation_url: str
-    errors: NotRequired[list[ValidationErrorPropErrorsItemsType]]
+    id: int
+    guid: str
+    delivered_at: datetime
+    redelivery: bool
+    duration: float
+    status: str
+    status_code: int
+    event: str
+    action: Union[str, None]
+    installation_id: Union[int, None]
+    repository_id: Union[int, None]
+    throttled_at: NotRequired[Union[datetime, None]]
 
 
-class ValidationErrorPropErrorsItemsType(TypedDict):
-    """ValidationErrorPropErrorsItems"""
-
-    resource: NotRequired[str]
-    field: NotRequired[str]
-    message: NotRequired[str]
-    code: str
-    index: NotRequired[int]
-    value: NotRequired[Union[str, None, int, None, list[str], None]]
-
-
-__all__ = (
-    "ValidationErrorPropErrorsItemsType",
-    "ValidationErrorType",
-)
+__all__ = ("HookDeliveryItemType",)

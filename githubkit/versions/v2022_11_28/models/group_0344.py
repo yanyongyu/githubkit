@@ -17,16 +17,14 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0139 import RepositoryRuleCommitMessagePatternPropParameters
+from .group_0135 import RepositoryRuleMergeQueuePropParameters
 
 
-class RepositoryRuleDetailedOneof10(GitHubModel):
-    """RepositoryRuleDetailedOneof10"""
+class RepositoryRuleDetailedOneof4(GitHubModel):
+    """RepositoryRuleDetailedOneof4"""
 
-    type: Literal["commit_message_pattern"] = Field()
-    parameters: Missing[RepositoryRuleCommitMessagePatternPropParameters] = Field(
-        default=UNSET
-    )
+    type: Literal["merge_queue"] = Field()
+    parameters: Missing[RepositoryRuleMergeQueuePropParameters] = Field(default=UNSET)
     ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
         default=UNSET,
         description="The type of source for the ruleset that includes this rule.",
@@ -40,6 +38,6 @@ class RepositoryRuleDetailedOneof10(GitHubModel):
     )
 
 
-model_rebuild(RepositoryRuleDetailedOneof10)
+model_rebuild(RepositoryRuleDetailedOneof4)
 
-__all__ = ("RepositoryRuleDetailedOneof10",)
+__all__ = ("RepositoryRuleDetailedOneof4",)

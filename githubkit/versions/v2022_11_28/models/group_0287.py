@@ -9,45 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0002 import SimpleUser
-from .group_0008 import Integration
+
+class HookResponse(GitHubModel):
+    """Hook Response"""
+
+    code: Union[int, None] = Field()
+    status: Union[str, None] = Field()
+    message: Union[str, None] = Field()
 
 
-class LabeledIssueEvent(GitHubModel):
-    """Labeled Issue Event
+model_rebuild(HookResponse)
 
-    Labeled Issue Event
-    """
-
-    id: int = Field()
-    node_id: str = Field()
-    url: str = Field()
-    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: Literal["labeled"] = Field()
-    commit_id: Union[str, None] = Field()
-    commit_url: Union[str, None] = Field()
-    created_at: str = Field()
-    performed_via_github_app: Union[None, Integration, None] = Field()
-    label: LabeledIssueEventPropLabel = Field()
-
-
-class LabeledIssueEventPropLabel(GitHubModel):
-    """LabeledIssueEventPropLabel"""
-
-    name: str = Field()
-    color: str = Field()
-
-
-model_rebuild(LabeledIssueEvent)
-model_rebuild(LabeledIssueEventPropLabel)
-
-__all__ = (
-    "LabeledIssueEvent",
-    "LabeledIssueEventPropLabel",
-)
+__all__ = ("HookResponse",)

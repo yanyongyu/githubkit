@@ -14,37 +14,25 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class RepositoryRuleCodeScanningPropParameters(GitHubModel):
-    """RepositoryRuleCodeScanningPropParameters"""
+class RepositoryRuleBranchNamePatternPropParameters(GitHubModel):
+    """RepositoryRuleBranchNamePatternPropParameters"""
 
-    code_scanning_tools: list[RepositoryRuleParamsCodeScanningTool] = Field(
-        description="Tools that must provide code scanning results for this rule to pass."
+    name: Missing[str] = Field(
+        default=UNSET, description="How this rule will appear to users."
     )
-
-
-class RepositoryRuleParamsCodeScanningTool(GitHubModel):
-    """CodeScanningTool
-
-    A tool that must provide code scanning results for this rule to pass.
-    """
-
-    alerts_threshold: Literal["none", "errors", "errors_and_warnings", "all"] = Field(
-        description='The severity level at which code scanning results that raise alerts block a reference update. For more information on alert severity levels, see "[About code scanning alerts](https://docs.github.com/enterprise-cloud@latest//code-security/code-scanning/managing-code-scanning-alerts/about-code-scanning-alerts#about-alert-severity-and-security-severity-levels)."'
+    negate: Missing[bool] = Field(
+        default=UNSET, description="If true, the rule will fail if the pattern matches."
     )
-    security_alerts_threshold: Literal[
-        "none", "critical", "high_or_higher", "medium_or_higher", "all"
-    ] = Field(
-        description='The severity level at which code scanning results that raise security alerts block a reference update. For more information on security severity levels, see "[About code scanning alerts](https://docs.github.com/enterprise-cloud@latest//code-security/code-scanning/managing-code-scanning-alerts/about-code-scanning-alerts#about-alert-severity-and-security-severity-levels)."'
+    operator: Literal["starts_with", "ends_with", "contains", "regex"] = Field(
+        description="The operator to use for matching."
     )
-    tool: str = Field(description="The name of a code scanning tool")
+    pattern: str = Field(description="The pattern to match with.")
 
 
-model_rebuild(RepositoryRuleCodeScanningPropParameters)
-model_rebuild(RepositoryRuleParamsCodeScanningTool)
+model_rebuild(RepositoryRuleBranchNamePatternPropParameters)
 
-__all__ = (
-    "RepositoryRuleCodeScanningPropParameters",
-    "RepositoryRuleParamsCodeScanningTool",
-)
+__all__ = ("RepositoryRuleBranchNamePatternPropParameters",)

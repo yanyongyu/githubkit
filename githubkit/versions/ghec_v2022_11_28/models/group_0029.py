@@ -12,19 +12,19 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ActionsOidcCustomIssuerPolicyForEnterprise(GitHubModel):
-    """ActionsOidcCustomIssuerPolicyForEnterprise"""
+class ActionsCacheUsageOrgEnterprise(GitHubModel):
+    """ActionsCacheUsageOrgEnterprise"""
 
-    include_enterprise_slug: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether the enterprise customer requested a custom issuer URL.",
+    total_active_caches_count: int = Field(
+        description="The count of active caches across all repositories of an enterprise or an organization."
+    )
+    total_active_caches_size_in_bytes: int = Field(
+        description="The total size in bytes of all active cache items across all repositories of an enterprise or an organization."
     )
 
 
-model_rebuild(ActionsOidcCustomIssuerPolicyForEnterprise)
+model_rebuild(ActionsCacheUsageOrgEnterprise)
 
-__all__ = ("ActionsOidcCustomIssuerPolicyForEnterprise",)
+__all__ = ("ActionsCacheUsageOrgEnterprise",)

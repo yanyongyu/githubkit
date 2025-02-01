@@ -9,18 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class GitUserType(TypedDict):
-    """Git User
+class CheckAutomatedSecurityFixesType(TypedDict):
+    """Check Dependabot security updates
 
-    Metaproperties for Git author/committer information.
+    Check Dependabot security updates
     """
 
-    name: NotRequired[str]
-    email: NotRequired[str]
-    date: NotRequired[str]
+    enabled: bool
+    paused: bool
 
 
-__all__ = ("GitUserType",)
+__all__ = ("CheckAutomatedSecurityFixesType",)

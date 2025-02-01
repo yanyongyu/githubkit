@@ -12,45 +12,20 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class GetLicenseSyncStatus(GitHubModel):
-    """License Sync Status
+class DependabotAlertPackage(GitHubModel):
+    """DependabotAlertPackage
 
-    Information about the status of a license sync job for an enterprise.
+    Details for the vulnerable package.
     """
 
-    server_instances: Missing[list[GetLicenseSyncStatusPropServerInstancesItems]] = (
-        Field(default=UNSET)
+    ecosystem: str = Field(
+        description="The package's language or package management ecosystem."
     )
+    name: str = Field(description="The unique package name within its ecosystem.")
 
 
-class GetLicenseSyncStatusPropServerInstancesItems(GitHubModel):
-    """GetLicenseSyncStatusPropServerInstancesItems"""
+model_rebuild(DependabotAlertPackage)
 
-    server_id: Missing[str] = Field(default=UNSET)
-    hostname: Missing[str] = Field(default=UNSET)
-    last_sync: Missing[GetLicenseSyncStatusPropServerInstancesItemsPropLastSync] = (
-        Field(default=UNSET)
-    )
-
-
-class GetLicenseSyncStatusPropServerInstancesItemsPropLastSync(GitHubModel):
-    """GetLicenseSyncStatusPropServerInstancesItemsPropLastSync"""
-
-    date: Missing[str] = Field(default=UNSET)
-    status: Missing[str] = Field(default=UNSET)
-    error: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(GetLicenseSyncStatus)
-model_rebuild(GetLicenseSyncStatusPropServerInstancesItems)
-model_rebuild(GetLicenseSyncStatusPropServerInstancesItemsPropLastSync)
-
-__all__ = (
-    "GetLicenseSyncStatus",
-    "GetLicenseSyncStatusPropServerInstancesItems",
-    "GetLicenseSyncStatusPropServerInstancesItemsPropLastSync",
-)
+__all__ = ("DependabotAlertPackage",)

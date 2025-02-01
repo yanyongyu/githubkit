@@ -12,19 +12,27 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class PorterAuthorType(TypedDict):
-    """Porter Author
+class GitRefType(TypedDict):
+    """Git Reference
 
-    Porter Author
+    Git references within a repository
     """
 
-    id: int
-    remote_id: str
-    remote_name: str
-    email: str
-    name: str
+    ref: str
+    node_id: str
     url: str
-    import_url: str
+    object_: GitRefPropObjectType
 
 
-__all__ = ("PorterAuthorType",)
+class GitRefPropObjectType(TypedDict):
+    """GitRefPropObject"""
+
+    type: str
+    sha: str
+    url: str
+
+
+__all__ = (
+    "GitRefPropObjectType",
+    "GitRefType",
+)

@@ -13,28 +13,38 @@ from datetime import datetime
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0052 import MarketplaceListingPlanType
 
-class EnterpriseWebhooksType(TypedDict):
-    """Enterprise
 
-    An enterprise on GitHub. Webhook payloads contain the `enterprise` property when
-    the webhook is configured
-    on an enterprise account or an organization that's part of an enterprise
-    account. For more information,
-    see "[About enterprise accounts](https://docs.github.com/admin/overview/about-
-    enterprise-accounts)."
+class UserMarketplacePurchaseType(TypedDict):
+    """User Marketplace Purchase
+
+    User Marketplace Purchase
     """
 
-    description: NotRequired[Union[str, None]]
-    html_url: str
-    website_url: NotRequired[Union[str, None]]
-    id: int
-    node_id: str
-    name: str
-    slug: str
-    created_at: Union[datetime, None]
+    billing_cycle: str
+    next_billing_date: Union[datetime, None]
+    unit_count: Union[int, None]
+    on_free_trial: bool
+    free_trial_ends_on: Union[datetime, None]
     updated_at: Union[datetime, None]
-    avatar_url: str
+    account: MarketplaceAccountType
+    plan: MarketplaceListingPlanType
 
 
-__all__ = ("EnterpriseWebhooksType",)
+class MarketplaceAccountType(TypedDict):
+    """Marketplace Account"""
+
+    url: str
+    id: int
+    type: str
+    node_id: NotRequired[str]
+    login: str
+    email: NotRequired[Union[str, None]]
+    organization_billing_email: NotRequired[Union[str, None]]
+
+
+__all__ = (
+    "MarketplaceAccountType",
+    "UserMarketplacePurchaseType",
+)

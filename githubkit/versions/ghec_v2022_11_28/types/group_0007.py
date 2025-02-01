@@ -12,20 +12,15 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class IntegrationPropPermissionsType(TypedDict):
-    """IntegrationPropPermissions
+class ValidationErrorSimpleType(TypedDict):
+    """Validation Error Simple
 
-    The set of permissions for the GitHub app
-
-    Examples:
-        {'issues': 'read', 'deployments': 'write'}
+    Validation Error Simple
     """
 
-    issues: NotRequired[str]
-    checks: NotRequired[str]
-    metadata: NotRequired[str]
-    contents: NotRequired[str]
-    deployments: NotRequired[str]
+    message: str
+    documentation_url: str
+    errors: NotRequired[list[str]]
 
 
-__all__ = ("IntegrationPropPermissionsType",)
+__all__ = ("ValidationErrorSimpleType",)

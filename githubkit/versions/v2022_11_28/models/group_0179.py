@@ -9,24 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0178 import RateLimit
+from .group_0180 import RateLimitOverviewPropResources
 
-class ActionsSecret(GitHubModel):
-    """Actions Secret
 
-    Set secrets for GitHub Actions.
+class RateLimitOverview(GitHubModel):
+    """Rate Limit Overview
+
+    Rate Limit Overview
     """
 
-    name: str = Field(description="The name of the secret.")
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
+    resources: RateLimitOverviewPropResources = Field()
+    rate: RateLimit = Field(title="Rate Limit")
 
 
-model_rebuild(ActionsSecret)
+model_rebuild(RateLimitOverview)
 
-__all__ = ("ActionsSecret",)
+__all__ = ("RateLimitOverview",)

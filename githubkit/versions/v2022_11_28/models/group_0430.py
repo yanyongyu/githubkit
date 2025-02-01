@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import date, datetime
+from datetime import datetime
 from typing import Literal, Union
 
 from pydantic import Field
@@ -18,33 +18,56 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0002 import SimpleUser
 
+class WebhooksProjectCard(GitHubModel):
+    """Project Card"""
 
-class ProjectsV2StatusUpdate(GitHubModel):
-    """Projects v2 Status Update
-
-    An status update belonging to a project
-    """
-
-    id: float = Field()
-    node_id: str = Field()
-    project_node_id: Missing[str] = Field(default=UNSET)
-    creator: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
-    )
+    after_id: Missing[Union[int, None]] = Field(default=UNSET)
+    archived: bool = Field(description="Whether or not the card is archived")
+    column_id: int = Field()
+    column_url: str = Field()
+    content_url: Missing[str] = Field(default=UNSET)
     created_at: datetime = Field()
+    creator: Union[WebhooksProjectCardPropCreator, None] = Field(title="User")
+    id: int = Field(description="The project card's ID")
+    node_id: str = Field()
+    note: Union[str, None] = Field()
+    project_url: str = Field()
     updated_at: datetime = Field()
-    status: Missing[
-        Union[None, Literal["INACTIVE", "ON_TRACK", "AT_RISK", "OFF_TRACK", "COMPLETE"]]
-    ] = Field(default=UNSET)
-    start_date: Missing[date] = Field(default=UNSET)
-    target_date: Missing[date] = Field(default=UNSET)
-    body: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Body of the status update"
-    )
+    url: str = Field()
 
 
-model_rebuild(ProjectsV2StatusUpdate)
+class WebhooksProjectCardPropCreator(GitHubModel):
+    """User"""
 
-__all__ = ("ProjectsV2StatusUpdate",)
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(WebhooksProjectCard)
+model_rebuild(WebhooksProjectCardPropCreator)
+
+__all__ = (
+    "WebhooksProjectCard",
+    "WebhooksProjectCardPropCreator",
+)

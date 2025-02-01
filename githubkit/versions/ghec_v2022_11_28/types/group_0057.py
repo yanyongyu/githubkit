@@ -9,23 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from datetime import datetime
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType
+from .group_0053 import CodeScanningAlertRuleSummaryType
+from .group_0054 import CodeScanningAnalysisToolType
+from .group_0055 import CodeScanningAlertInstanceType
+from .group_0056 import SimpleRepositoryType
 
-class EnterpriseSecurityAnalysisSettingsType(TypedDict):
-    """Enterprise Security Analysis Settings"""
 
-    advanced_security_enabled_for_new_repositories: bool
-    advanced_security_enabled_for_new_user_namespace_repositories: NotRequired[bool]
-    dependabot_alerts_enabled_for_new_repositories: bool
-    secret_scanning_enabled_for_new_repositories: bool
-    secret_scanning_push_protection_enabled_for_new_repositories: bool
-    secret_scanning_push_protection_custom_link: NotRequired[Union[str, None]]
-    secret_scanning_non_provider_patterns_enabled_for_new_repositories: NotRequired[
-        bool
+class CodeScanningOrganizationAlertItemsType(TypedDict):
+    """CodeScanningOrganizationAlertItems"""
+
+    number: int
+    created_at: datetime
+    updated_at: NotRequired[datetime]
+    url: str
+    html_url: str
+    instances_url: str
+    state: Union[None, Literal["open", "dismissed", "fixed"]]
+    fixed_at: NotRequired[Union[datetime, None]]
+    dismissed_by: Union[None, SimpleUserType]
+    dismissed_at: Union[datetime, None]
+    dismissed_reason: Union[
+        None, Literal["false positive", "won't fix", "used in tests"]
     ]
-    secret_scanning_validity_checks_enabled: NotRequired[bool]
+    dismissed_comment: NotRequired[Union[str, None]]
+    rule: CodeScanningAlertRuleSummaryType
+    tool: CodeScanningAnalysisToolType
+    most_recent_instance: CodeScanningAlertInstanceType
+    repository: SimpleRepositoryType
 
 
-__all__ = ("EnterpriseSecurityAnalysisSettingsType",)
+__all__ = ("CodeScanningOrganizationAlertItemsType",)

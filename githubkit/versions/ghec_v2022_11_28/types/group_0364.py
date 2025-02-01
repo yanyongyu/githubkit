@@ -9,65 +9,88 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0002 import SimpleUserType
 
+class PagesHealthCheckType(TypedDict):
+    """Pages Health Check Status
 
-class PullRequestReviewType(TypedDict):
-    """Pull Request Review
-
-    Pull Request Reviews are reviews on pull requests.
+    Pages Health Check Status
     """
 
-    id: int
-    node_id: str
-    user: Union[None, SimpleUserType]
-    body: str
-    state: str
-    html_url: str
-    pull_request_url: str
-    links: PullRequestReviewPropLinksType
-    submitted_at: NotRequired[datetime]
-    commit_id: Union[str, None]
-    body_html: NotRequired[str]
-    body_text: NotRequired[str]
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
+    domain: NotRequired[PagesHealthCheckPropDomainType]
+    alt_domain: NotRequired[Union[PagesHealthCheckPropAltDomainType, None]]
 
 
-class PullRequestReviewPropLinksType(TypedDict):
-    """PullRequestReviewPropLinks"""
+class PagesHealthCheckPropDomainType(TypedDict):
+    """PagesHealthCheckPropDomain"""
 
-    html: PullRequestReviewPropLinksPropHtmlType
-    pull_request: PullRequestReviewPropLinksPropPullRequestType
+    host: NotRequired[str]
+    uri: NotRequired[str]
+    nameservers: NotRequired[str]
+    dns_resolves: NotRequired[bool]
+    is_proxied: NotRequired[Union[bool, None]]
+    is_cloudflare_ip: NotRequired[Union[bool, None]]
+    is_fastly_ip: NotRequired[Union[bool, None]]
+    is_old_ip_address: NotRequired[Union[bool, None]]
+    is_a_record: NotRequired[Union[bool, None]]
+    has_cname_record: NotRequired[Union[bool, None]]
+    has_mx_records_present: NotRequired[Union[bool, None]]
+    is_valid_domain: NotRequired[bool]
+    is_apex_domain: NotRequired[bool]
+    should_be_a_record: NotRequired[Union[bool, None]]
+    is_cname_to_github_user_domain: NotRequired[Union[bool, None]]
+    is_cname_to_pages_dot_github_dot_com: NotRequired[Union[bool, None]]
+    is_cname_to_fastly: NotRequired[Union[bool, None]]
+    is_pointed_to_github_pages_ip: NotRequired[Union[bool, None]]
+    is_non_github_pages_ip_present: NotRequired[Union[bool, None]]
+    is_pages_domain: NotRequired[bool]
+    is_served_by_pages: NotRequired[Union[bool, None]]
+    is_valid: NotRequired[bool]
+    reason: NotRequired[Union[str, None]]
+    responds_to_https: NotRequired[bool]
+    enforces_https: NotRequired[bool]
+    https_error: NotRequired[Union[str, None]]
+    is_https_eligible: NotRequired[Union[bool, None]]
+    caa_error: NotRequired[Union[str, None]]
 
 
-class PullRequestReviewPropLinksPropHtmlType(TypedDict):
-    """PullRequestReviewPropLinksPropHtml"""
+class PagesHealthCheckPropAltDomainType(TypedDict):
+    """PagesHealthCheckPropAltDomain"""
 
-    href: str
-
-
-class PullRequestReviewPropLinksPropPullRequestType(TypedDict):
-    """PullRequestReviewPropLinksPropPullRequest"""
-
-    href: str
+    host: NotRequired[str]
+    uri: NotRequired[str]
+    nameservers: NotRequired[str]
+    dns_resolves: NotRequired[bool]
+    is_proxied: NotRequired[Union[bool, None]]
+    is_cloudflare_ip: NotRequired[Union[bool, None]]
+    is_fastly_ip: NotRequired[Union[bool, None]]
+    is_old_ip_address: NotRequired[Union[bool, None]]
+    is_a_record: NotRequired[Union[bool, None]]
+    has_cname_record: NotRequired[Union[bool, None]]
+    has_mx_records_present: NotRequired[Union[bool, None]]
+    is_valid_domain: NotRequired[bool]
+    is_apex_domain: NotRequired[bool]
+    should_be_a_record: NotRequired[Union[bool, None]]
+    is_cname_to_github_user_domain: NotRequired[Union[bool, None]]
+    is_cname_to_pages_dot_github_dot_com: NotRequired[Union[bool, None]]
+    is_cname_to_fastly: NotRequired[Union[bool, None]]
+    is_pointed_to_github_pages_ip: NotRequired[Union[bool, None]]
+    is_non_github_pages_ip_present: NotRequired[Union[bool, None]]
+    is_pages_domain: NotRequired[bool]
+    is_served_by_pages: NotRequired[Union[bool, None]]
+    is_valid: NotRequired[bool]
+    reason: NotRequired[Union[str, None]]
+    responds_to_https: NotRequired[bool]
+    enforces_https: NotRequired[bool]
+    https_error: NotRequired[Union[str, None]]
+    is_https_eligible: NotRequired[Union[bool, None]]
+    caa_error: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "PullRequestReviewPropLinksPropHtmlType",
-    "PullRequestReviewPropLinksPropPullRequestType",
-    "PullRequestReviewPropLinksType",
-    "PullRequestReviewType",
+    "PagesHealthCheckPropAltDomainType",
+    "PagesHealthCheckPropDomainType",
+    "PagesHealthCheckType",
 )

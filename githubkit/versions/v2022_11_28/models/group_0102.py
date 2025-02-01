@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,62 +17,41 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
+from .group_0060 import OrganizationSimple
 
-class PackageVersion(GitHubModel):
-    """Package Version
 
-    A version of a software package
+class OrgMembership(GitHubModel):
+    """Org Membership
+
+    Org Membership
     """
 
-    id: int = Field(description="Unique identifier of the package version.")
-    name: str = Field(description="The name of the package version.")
     url: str = Field()
-    package_html_url: str = Field()
-    html_url: Missing[str] = Field(default=UNSET)
-    license_: Missing[str] = Field(default=UNSET, alias="license")
-    description: Missing[str] = Field(default=UNSET)
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    deleted_at: Missing[datetime] = Field(default=UNSET)
-    metadata: Missing[PackageVersionPropMetadata] = Field(
-        default=UNSET, title="Package Version Metadata"
+    state: Literal["active", "pending"] = Field(
+        description="The state of the member in the organization. The `pending` state indicates the user has not yet accepted an invitation."
     )
-
-
-class PackageVersionPropMetadata(GitHubModel):
-    """Package Version Metadata"""
-
-    package_type: Literal[
-        "npm", "maven", "rubygems", "docker", "nuget", "container"
-    ] = Field()
-    container: Missing[PackageVersionPropMetadataPropContainer] = Field(
-        default=UNSET, title="Container Metadata"
+    role: Literal["admin", "member", "billing_manager"] = Field(
+        description="The user's membership type in the organization."
     )
-    docker: Missing[PackageVersionPropMetadataPropDocker] = Field(
-        default=UNSET, title="Docker Metadata"
+    organization_url: str = Field()
+    organization: OrganizationSimple = Field(
+        title="Organization Simple", description="A GitHub organization."
     )
+    user: Union[None, SimpleUser] = Field()
+    permissions: Missing[OrgMembershipPropPermissions] = Field(default=UNSET)
 
 
-class PackageVersionPropMetadataPropContainer(GitHubModel):
-    """Container Metadata"""
+class OrgMembershipPropPermissions(GitHubModel):
+    """OrgMembershipPropPermissions"""
 
-    tags: list[str] = Field()
-
-
-class PackageVersionPropMetadataPropDocker(GitHubModel):
-    """Docker Metadata"""
-
-    tag: Missing[list[str]] = Field(default=UNSET)
+    can_create_repository: bool = Field()
 
 
-model_rebuild(PackageVersion)
-model_rebuild(PackageVersionPropMetadata)
-model_rebuild(PackageVersionPropMetadataPropContainer)
-model_rebuild(PackageVersionPropMetadataPropDocker)
+model_rebuild(OrgMembership)
+model_rebuild(OrgMembershipPropPermissions)
 
 __all__ = (
-    "PackageVersion",
-    "PackageVersionPropMetadata",
-    "PackageVersionPropMetadataPropContainer",
-    "PackageVersionPropMetadataPropDocker",
+    "OrgMembership",
+    "OrgMembershipPropPermissions",
 )

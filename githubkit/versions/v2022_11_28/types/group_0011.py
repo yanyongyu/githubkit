@@ -13,18 +13,16 @@ from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ScimErrorType(TypedDict):
-    """Scim Error
+class WebhookConfigType(TypedDict):
+    """Webhook Configuration
 
-    Scim Error
+    Configuration object of the webhook
     """
 
-    message: NotRequired[Union[str, None]]
-    documentation_url: NotRequired[Union[str, None]]
-    detail: NotRequired[Union[str, None]]
-    status: NotRequired[int]
-    scim_type: NotRequired[Union[str, None]]
-    schemas: NotRequired[list[str]]
+    url: NotRequired[str]
+    content_type: NotRequired[str]
+    secret: NotRequired[str]
+    insecure_ssl: NotRequired[Union[str, float]]
 
 
-__all__ = ("ScimErrorType",)
+__all__ = ("WebhookConfigType",)

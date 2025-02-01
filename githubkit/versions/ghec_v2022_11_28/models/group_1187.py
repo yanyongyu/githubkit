@@ -9,19 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoTagsProtectionPostBody(GitHubModel):
-    """ReposOwnerRepoTagsProtectionPostBody"""
+class ReposOwnerRepoPullsCommentsCommentIdReactionsPostBody(GitHubModel):
+    """ReposOwnerRepoPullsCommentsCommentIdReactionsPostBody"""
 
-    pattern: str = Field(
-        description="An optional glob pattern to match against when enforcing tag protection."
+    content: Literal[
+        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
+    ] = Field(
+        description="The [reaction type](https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#about-reactions) to add to the pull request review comment."
     )
 
 
-model_rebuild(ReposOwnerRepoTagsProtectionPostBody)
+model_rebuild(ReposOwnerRepoPullsCommentsCommentIdReactionsPostBody)
 
-__all__ = ("ReposOwnerRepoTagsProtectionPostBody",)
+__all__ = ("ReposOwnerRepoPullsCommentsCommentIdReactionsPostBody",)

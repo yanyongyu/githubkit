@@ -9,21 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from datetime import date
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0064 import DependabotAlertPackageType
 
+class CopilotUsageMetricsType(TypedDict):
+    """Copilot Usage Metrics
 
-class DependabotAlertWithRepositoryPropDependencyType(TypedDict):
-    """DependabotAlertWithRepositoryPropDependency
-
-    Details for the vulnerable dependency.
+    Summary of Copilot usage.
     """
 
-    package: NotRequired[DependabotAlertPackageType]
-    manifest_path: NotRequired[str]
-    scope: NotRequired[Union[None, Literal["development", "runtime"]]]
+    day: date
+    total_suggestions_count: NotRequired[int]
+    total_acceptances_count: NotRequired[int]
+    total_lines_suggested: NotRequired[int]
+    total_lines_accepted: NotRequired[int]
+    total_active_users: NotRequired[int]
+    total_chat_acceptances: NotRequired[int]
+    total_chat_turns: NotRequired[int]
+    total_active_chat_users: NotRequired[int]
+    breakdown: Union[list[CopilotUsageMetricsPropBreakdownItemsType], None]
 
 
-__all__ = ("DependabotAlertWithRepositoryPropDependencyType",)
+class CopilotUsageMetricsPropBreakdownItemsType(TypedDict):
+    """CopilotUsageMetricsPropBreakdownItems
+
+    Breakdown of Copilot usage by editor for this language
+    """
+
+    language: NotRequired[str]
+    editor: NotRequired[str]
+    suggestions_count: NotRequired[int]
+    acceptances_count: NotRequired[int]
+    lines_suggested: NotRequired[int]
+    lines_accepted: NotRequired[int]
+    active_users: NotRequired[int]
+
+
+__all__ = (
+    "CopilotUsageMetricsPropBreakdownItemsType",
+    "CopilotUsageMetricsType",
+)

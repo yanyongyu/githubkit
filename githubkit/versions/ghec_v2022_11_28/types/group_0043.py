@@ -10,20 +10,35 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class GetAuditLogStreamConfigsItemsType(TypedDict):
-    """GetAuditLogStreamConfigsItems"""
-
-    id: NotRequired[int]
-    stream_type: NotRequired[str]
-    stream_details: NotRequired[str]
-    enabled: NotRequired[bool]
-    created_at: NotRequired[datetime]
-    updated_at: NotRequired[datetime]
-    paused_at: NotRequired[Union[datetime, None]]
+from .group_0020 import RepositoryType
 
 
-__all__ = ("GetAuditLogStreamConfigsItemsType",)
+class AuthenticationTokenType(TypedDict):
+    """Authentication Token
+
+    Authentication Token
+    """
+
+    token: str
+    expires_at: datetime
+    permissions: NotRequired[AuthenticationTokenPropPermissionsType]
+    repositories: NotRequired[list[RepositoryType]]
+    single_file: NotRequired[Union[str, None]]
+    repository_selection: NotRequired[Literal["all", "selected"]]
+
+
+class AuthenticationTokenPropPermissionsType(TypedDict):
+    """AuthenticationTokenPropPermissions
+
+    Examples:
+        {'issues': 'read', 'deployments': 'write'}
+    """
+
+
+__all__ = (
+    "AuthenticationTokenPropPermissionsType",
+    "AuthenticationTokenType",
+)

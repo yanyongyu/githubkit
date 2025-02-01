@@ -9,38 +9,132 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0967 import (
-    ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType,
-    ReposOwnerRepoCheckRunsPostBodyPropOutputType,
-)
 
+class ReposOwnerRepoBranchesBranchProtectionPutBodyType(TypedDict):
+    """ReposOwnerRepoBranchesBranchProtectionPutBody"""
 
-class ReposOwnerRepoCheckRunsPostBodyOneof0Type(TypedDict):
-    """ReposOwnerRepoCheckRunsPostBodyOneof0"""
-
-    name: str
-    head_sha: str
-    details_url: NotRequired[str]
-    external_id: NotRequired[str]
-    status: Literal["completed"]
-    started_at: NotRequired[datetime]
-    conclusion: Literal[
-        "action_required",
-        "cancelled",
-        "failure",
-        "neutral",
-        "success",
-        "skipped",
-        "stale",
-        "timed_out",
+    required_status_checks: Union[
+        ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksType, None
     ]
-    completed_at: NotRequired[datetime]
-    output: NotRequired[ReposOwnerRepoCheckRunsPostBodyPropOutputType]
-    actions: NotRequired[list[ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType]]
+    enforce_admins: Union[bool, None]
+    required_pull_request_reviews: Union[
+        ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsType,
+        None,
+    ]
+    restrictions: Union[
+        ReposOwnerRepoBranchesBranchProtectionPutBodyPropRestrictionsType, None
+    ]
+    required_linear_history: NotRequired[bool]
+    allow_force_pushes: NotRequired[Union[bool, None]]
+    allow_deletions: NotRequired[bool]
+    block_creations: NotRequired[bool]
+    required_conversation_resolution: NotRequired[bool]
+    lock_branch: NotRequired[bool]
+    allow_fork_syncing: NotRequired[bool]
 
 
-__all__ = ("ReposOwnerRepoCheckRunsPostBodyOneof0Type",)
+class ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksType(
+    TypedDict
+):
+    """ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecks
+
+    Require status checks to pass before merging. Set to `null` to disable.
+    """
+
+    strict: bool
+    contexts: list[str]
+    checks: NotRequired[
+        list[
+            ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksPropChecksItemsType
+        ]
+    ]
+
+
+class ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksPropChecksItemsType(
+    TypedDict
+):
+    """ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksPropChecksI
+    tems
+    """
+
+    context: str
+    app_id: NotRequired[int]
+
+
+class ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsType(
+    TypedDict
+):
+    """ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviews
+
+    Require at least one approving review on a pull request, before merging. Set to
+    `null` to disable.
+    """
+
+    dismissal_restrictions: NotRequired[
+        ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropDismissalRestrictionsType
+    ]
+    dismiss_stale_reviews: NotRequired[bool]
+    require_code_owner_reviews: NotRequired[bool]
+    required_approving_review_count: NotRequired[int]
+    require_last_push_approval: NotRequired[bool]
+    bypass_pull_request_allowances: NotRequired[
+        ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesType
+    ]
+
+
+class ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropDismissalRestrictionsType(
+    TypedDict
+):
+    """ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropD
+    ismissalRestrictions
+
+    Specify which users, teams, and apps can dismiss pull request reviews. Pass an
+    empty `dismissal_restrictions` object to disable. User and team
+    `dismissal_restrictions` are only available for organization-owned repositories.
+    Omit this parameter for personal repositories.
+    """
+
+    users: NotRequired[list[str]]
+    teams: NotRequired[list[str]]
+    apps: NotRequired[list[str]]
+
+
+class ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesType(
+    TypedDict
+):
+    """ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropB
+    ypassPullRequestAllowances
+
+    Allow specific users, teams, or apps to bypass pull request requirements.
+    """
+
+    users: NotRequired[list[str]]
+    teams: NotRequired[list[str]]
+    apps: NotRequired[list[str]]
+
+
+class ReposOwnerRepoBranchesBranchProtectionPutBodyPropRestrictionsType(TypedDict):
+    """ReposOwnerRepoBranchesBranchProtectionPutBodyPropRestrictions
+
+    Restrict who can push to the protected branch. User, app, and team
+    `restrictions` are only available for organization-owned repositories. Set to
+    `null` to disable.
+    """
+
+    users: list[str]
+    teams: list[str]
+    apps: NotRequired[list[str]]
+
+
+__all__ = (
+    "ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesType",
+    "ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropDismissalRestrictionsType",
+    "ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsType",
+    "ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksPropChecksItemsType",
+    "ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksType",
+    "ReposOwnerRepoBranchesBranchProtectionPutBodyPropRestrictionsType",
+    "ReposOwnerRepoBranchesBranchProtectionPutBodyType",
+)

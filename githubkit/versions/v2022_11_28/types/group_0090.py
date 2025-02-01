@@ -9,19 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import date
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ApiInsightsRouteStatsItemsType(TypedDict):
-    """ApiInsightsRouteStatsItems"""
+class CopilotUsageMetricsType(TypedDict):
+    """Copilot Usage Metrics
 
-    http_method: NotRequired[str]
-    api_route: NotRequired[str]
-    total_request_count: NotRequired[int]
-    rate_limited_request_count: NotRequired[int]
-    last_rate_limited_timestamp: NotRequired[Union[str, None]]
-    last_request_timestamp: NotRequired[str]
+    Summary of Copilot usage.
+    """
+
+    day: date
+    total_suggestions_count: NotRequired[int]
+    total_acceptances_count: NotRequired[int]
+    total_lines_suggested: NotRequired[int]
+    total_lines_accepted: NotRequired[int]
+    total_active_users: NotRequired[int]
+    total_chat_acceptances: NotRequired[int]
+    total_chat_turns: NotRequired[int]
+    total_active_chat_users: NotRequired[int]
+    breakdown: Union[list[CopilotUsageMetricsPropBreakdownItemsType], None]
 
 
-__all__ = ("ApiInsightsRouteStatsItemsType",)
+class CopilotUsageMetricsPropBreakdownItemsType(TypedDict):
+    """CopilotUsageMetricsPropBreakdownItems
+
+    Breakdown of Copilot usage by editor for this language
+    """
+
+    language: NotRequired[str]
+    editor: NotRequired[str]
+    suggestions_count: NotRequired[int]
+    acceptances_count: NotRequired[int]
+    lines_suggested: NotRequired[int]
+    lines_accepted: NotRequired[int]
+    active_users: NotRequired[int]
+
+
+__all__ = (
+    "CopilotUsageMetricsPropBreakdownItemsType",
+    "CopilotUsageMetricsType",
+)

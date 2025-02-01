@@ -9,41 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0044 import (
-    AmazonS3AccessKeysConfigType,
-    AzureBlobConfigType,
-    AzureHubConfigType,
-    GoogleCloudConfigType,
+
+class EnterprisesEnterpriseActionsRunnerGroupsGetResponse200Type(TypedDict):
+    """EnterprisesEnterpriseActionsRunnerGroupsGetResponse200"""
+
+    total_count: float
+    runner_groups: list[RunnerGroupsEnterpriseType]
+
+
+class RunnerGroupsEnterpriseType(TypedDict):
+    """RunnerGroupsEnterprise"""
+
+    id: float
+    name: str
+    visibility: str
+    default: bool
+    selected_organizations_url: NotRequired[str]
+    runners_url: str
+    hosted_runners_url: NotRequired[str]
+    network_configuration_id: NotRequired[str]
+    allows_public_repositories: bool
+    workflow_restrictions_read_only: NotRequired[bool]
+    restricted_to_workflows: NotRequired[bool]
+    selected_workflows: NotRequired[list[str]]
+
+
+__all__ = (
+    "EnterprisesEnterpriseActionsRunnerGroupsGetResponse200Type",
+    "RunnerGroupsEnterpriseType",
 )
-from .group_0045 import AmazonS3OidcConfigType, SplunkConfigType
-from .group_0046 import DatadogConfigType
-
-
-class EnterprisesEnterpriseAuditLogStreamsPostBodyType(TypedDict):
-    """EnterprisesEnterpriseAuditLogStreamsPostBody"""
-
-    enabled: bool
-    stream_type: Literal[
-        "Azure Blob Storage",
-        "Azure Event Hubs",
-        "Amazon S3",
-        "Splunk",
-        "HTTPS Event Collector",
-        "Google Cloud Storage",
-        "Datadog",
-    ]
-    vendor_specific: Union[
-        AzureBlobConfigType,
-        AzureHubConfigType,
-        AmazonS3OidcConfigType,
-        AmazonS3AccessKeysConfigType,
-        SplunkConfigType,
-        GoogleCloudConfigType,
-        DatadogConfigType,
-    ]
-
-
-__all__ = ("EnterprisesEnterpriseAuditLogStreamsPostBodyType",)

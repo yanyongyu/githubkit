@@ -9,35 +9,48 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0019 import LicenseSimple
 
 
-class PagesDeploymentStatus(GitHubModel):
-    """GitHub Pages deployment status"""
+class LicenseContent(GitHubModel):
+    """License Content
 
-    status: Missing[
-        Literal[
-            "deployment_in_progress",
-            "syncing_files",
-            "finished_file_sync",
-            "updating_pages",
-            "purging_cdn",
-            "deployment_cancelled",
-            "deployment_failed",
-            "deployment_content_failed",
-            "deployment_attempt_error",
-            "deployment_lost",
-            "succeed",
-        ]
-    ] = Field(default=UNSET, description="The current status of the deployment.")
+    License Content
+    """
+
+    name: str = Field()
+    path: str = Field()
+    sha: str = Field()
+    size: int = Field()
+    url: str = Field()
+    html_url: Union[str, None] = Field()
+    git_url: Union[str, None] = Field()
+    download_url: Union[str, None] = Field()
+    type: str = Field()
+    content: str = Field()
+    encoding: str = Field()
+    links: LicenseContentPropLinks = Field(alias="_links")
+    license_: Union[None, LicenseSimple] = Field(alias="license")
 
 
-model_rebuild(PagesDeploymentStatus)
+class LicenseContentPropLinks(GitHubModel):
+    """LicenseContentPropLinks"""
 
-__all__ = ("PagesDeploymentStatus",)
+    git: Union[str, None] = Field()
+    html: Union[str, None] = Field()
+    self_: str = Field(alias="self")
+
+
+model_rebuild(LicenseContent)
+model_rebuild(LicenseContentPropLinks)
+
+__all__ = (
+    "LicenseContent",
+    "LicenseContentPropLinks",
+)

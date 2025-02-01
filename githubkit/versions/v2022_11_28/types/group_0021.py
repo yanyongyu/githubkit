@@ -9,23 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0002 import SimpleUserType
-from .group_0016 import AppPermissionsType
+from .group_0017 import AppPermissionsType
+from .group_0020 import RepositoryType
 
 
-class ScopedInstallationType(TypedDict):
-    """Scoped Installation"""
+class InstallationTokenType(TypedDict):
+    """Installation Token
 
-    permissions: AppPermissionsType
-    repository_selection: Literal["all", "selected"]
-    single_file_name: Union[str, None]
+    Authentication token for a GitHub App installed on a user or org.
+    """
+
+    token: str
+    expires_at: str
+    permissions: NotRequired[AppPermissionsType]
+    repository_selection: NotRequired[Literal["all", "selected"]]
+    repositories: NotRequired[list[RepositoryType]]
+    single_file: NotRequired[str]
     has_multiple_single_files: NotRequired[bool]
     single_file_paths: NotRequired[list[str]]
-    repositories_url: str
-    account: SimpleUserType
 
 
-__all__ = ("ScopedInstallationType",)
+__all__ = ("InstallationTokenType",)

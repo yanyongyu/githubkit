@@ -18,34 +18,43 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0052 import MarketplaceListingPlan
 
-class EnterpriseWebhooks(GitHubModel):
-    """Enterprise
 
-    An enterprise on GitHub. Webhook payloads contain the `enterprise` property when
-    the webhook is configured
-    on an enterprise account or an organization that's part of an enterprise
-    account. For more information,
-    see "[About enterprise accounts](https://docs.github.com/admin/overview/about-
-    enterprise-accounts)."
+class UserMarketplacePurchase(GitHubModel):
+    """User Marketplace Purchase
+
+    User Marketplace Purchase
     """
 
-    description: Missing[Union[str, None]] = Field(
-        default=UNSET, description="A short description of the enterprise."
-    )
-    html_url: str = Field()
-    website_url: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The enterprise's website URL."
-    )
-    id: int = Field(description="Unique identifier of the enterprise")
-    node_id: str = Field()
-    name: str = Field(description="The name of the enterprise.")
-    slug: str = Field(description="The slug url identifier for the enterprise.")
-    created_at: Union[datetime, None] = Field()
+    billing_cycle: str = Field()
+    next_billing_date: Union[datetime, None] = Field()
+    unit_count: Union[int, None] = Field()
+    on_free_trial: bool = Field()
+    free_trial_ends_on: Union[datetime, None] = Field()
     updated_at: Union[datetime, None] = Field()
-    avatar_url: str = Field()
+    account: MarketplaceAccount = Field(title="Marketplace Account")
+    plan: MarketplaceListingPlan = Field(
+        title="Marketplace Listing Plan", description="Marketplace Listing Plan"
+    )
 
 
-model_rebuild(EnterpriseWebhooks)
+class MarketplaceAccount(GitHubModel):
+    """Marketplace Account"""
 
-__all__ = ("EnterpriseWebhooks",)
+    url: str = Field()
+    id: int = Field()
+    type: str = Field()
+    node_id: Missing[str] = Field(default=UNSET)
+    login: str = Field()
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    organization_billing_email: Missing[Union[str, None]] = Field(default=UNSET)
+
+
+model_rebuild(UserMarketplacePurchase)
+model_rebuild(MarketplaceAccount)
+
+__all__ = (
+    "MarketplaceAccount",
+    "UserMarketplacePurchase",
+)

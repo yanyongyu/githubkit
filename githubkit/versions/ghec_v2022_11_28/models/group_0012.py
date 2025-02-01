@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Union
 
 from pydantic import Field
@@ -18,32 +19,42 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ValidationError(GitHubModel):
-    """Validation Error
+class HookDeliveryItem(GitHubModel):
+    """Simple webhook delivery
 
-    Validation Error
+    Delivery made by a webhook, without request and response information.
     """
 
-    message: str = Field()
-    documentation_url: str = Field()
-    errors: Missing[list[ValidationErrorPropErrorsItems]] = Field(default=UNSET)
+    id: int = Field(description="Unique identifier of the webhook delivery.")
+    guid: str = Field(
+        description="Unique identifier for the event (shared with all deliveries for all webhooks that subscribe to this event)."
+    )
+    delivered_at: datetime = Field(
+        description="Time when the webhook delivery occurred."
+    )
+    redelivery: bool = Field(
+        description="Whether the webhook delivery is a redelivery."
+    )
+    duration: float = Field(description="Time spent delivering.")
+    status: str = Field(
+        description="Describes the response returned after attempting the delivery."
+    )
+    status_code: int = Field(description="Status code received when delivery was made.")
+    event: str = Field(description="The event that triggered the delivery.")
+    action: Union[str, None] = Field(
+        description="The type of activity for the event that triggered the delivery."
+    )
+    installation_id: Union[int, None] = Field(
+        description="The id of the GitHub App installation associated with this event."
+    )
+    repository_id: Union[int, None] = Field(
+        description="The id of the repository associated with this event."
+    )
+    throttled_at: Missing[Union[datetime, None]] = Field(
+        default=UNSET, description="Time when the webhook delivery was throttled."
+    )
 
 
-class ValidationErrorPropErrorsItems(GitHubModel):
-    """ValidationErrorPropErrorsItems"""
+model_rebuild(HookDeliveryItem)
 
-    resource: Missing[str] = Field(default=UNSET)
-    field: Missing[str] = Field(default=UNSET)
-    message: Missing[str] = Field(default=UNSET)
-    code: str = Field()
-    index: Missing[int] = Field(default=UNSET)
-    value: Missing[Union[str, None, int, None, list[str], None]] = Field(default=UNSET)
-
-
-model_rebuild(ValidationError)
-model_rebuild(ValidationErrorPropErrorsItems)
-
-__all__ = (
-    "ValidationError",
-    "ValidationErrorPropErrorsItems",
-)
+__all__ = ("HookDeliveryItem",)

@@ -9,41 +9,68 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0002 import SimpleUserType
-from .group_0014 import EnterpriseType
-from .group_0016 import AppPermissionsType
 
+class AppPermissionsType(TypedDict):
+    """App Permissions
 
-class InstallationType(TypedDict):
-    """Installation
+    The permissions granted to the user access token.
 
-    Installation
+    Examples:
+        {'contents': 'read', 'issues': 'read', 'deployments': 'write', 'single_file':
+    'read'}
     """
 
-    id: int
-    account: Union[SimpleUserType, EnterpriseType, None]
-    repository_selection: Literal["all", "selected"]
-    access_tokens_url: str
-    repositories_url: str
-    html_url: str
-    app_id: int
-    target_id: int
-    target_type: str
-    permissions: AppPermissionsType
-    events: list[str]
-    created_at: datetime
-    updated_at: datetime
-    single_file_name: Union[str, None]
-    has_multiple_single_files: NotRequired[bool]
-    single_file_paths: NotRequired[list[str]]
-    app_slug: str
-    suspended_by: Union[None, SimpleUserType]
-    suspended_at: Union[datetime, None]
-    contact_email: NotRequired[Union[str, None]]
+    actions: NotRequired[Literal["read", "write"]]
+    administration: NotRequired[Literal["read", "write"]]
+    checks: NotRequired[Literal["read", "write"]]
+    codespaces: NotRequired[Literal["read", "write"]]
+    contents: NotRequired[Literal["read", "write"]]
+    dependabot_secrets: NotRequired[Literal["read", "write"]]
+    deployments: NotRequired[Literal["read", "write"]]
+    environments: NotRequired[Literal["read", "write"]]
+    issues: NotRequired[Literal["read", "write"]]
+    metadata: NotRequired[Literal["read", "write"]]
+    packages: NotRequired[Literal["read", "write"]]
+    pages: NotRequired[Literal["read", "write"]]
+    pull_requests: NotRequired[Literal["read", "write"]]
+    repository_custom_properties: NotRequired[Literal["read", "write"]]
+    repository_hooks: NotRequired[Literal["read", "write"]]
+    repository_projects: NotRequired[Literal["read", "write", "admin"]]
+    secret_scanning_alerts: NotRequired[Literal["read", "write"]]
+    secrets: NotRequired[Literal["read", "write"]]
+    security_events: NotRequired[Literal["read", "write"]]
+    single_file: NotRequired[Literal["read", "write"]]
+    statuses: NotRequired[Literal["read", "write"]]
+    vulnerability_alerts: NotRequired[Literal["read", "write"]]
+    workflows: NotRequired[Literal["write"]]
+    members: NotRequired[Literal["read", "write"]]
+    organization_administration: NotRequired[Literal["read", "write"]]
+    organization_custom_roles: NotRequired[Literal["read", "write"]]
+    organization_custom_org_roles: NotRequired[Literal["read", "write"]]
+    organization_custom_properties: NotRequired[Literal["read", "write", "admin"]]
+    organization_copilot_seat_management: NotRequired[Literal["write"]]
+    organization_announcement_banners: NotRequired[Literal["read", "write"]]
+    organization_events: NotRequired[Literal["read"]]
+    organization_hooks: NotRequired[Literal["read", "write"]]
+    organization_personal_access_tokens: NotRequired[Literal["read", "write"]]
+    organization_personal_access_token_requests: NotRequired[Literal["read", "write"]]
+    organization_plan: NotRequired[Literal["read"]]
+    organization_projects: NotRequired[Literal["read", "write", "admin"]]
+    organization_packages: NotRequired[Literal["read", "write"]]
+    organization_secrets: NotRequired[Literal["read", "write"]]
+    organization_self_hosted_runners: NotRequired[Literal["read", "write"]]
+    organization_user_blocking: NotRequired[Literal["read", "write"]]
+    team_discussions: NotRequired[Literal["read", "write"]]
+    email_addresses: NotRequired[Literal["read", "write"]]
+    followers: NotRequired[Literal["read", "write"]]
+    git_ssh_keys: NotRequired[Literal["read", "write"]]
+    gpg_keys: NotRequired[Literal["read", "write"]]
+    interaction_limits: NotRequired[Literal["read", "write"]]
+    profile: NotRequired[Literal["write"]]
+    starring: NotRequired[Literal["read", "write"]]
 
 
-__all__ = ("InstallationType",)
+__all__ = ("AppPermissionsType",)

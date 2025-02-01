@@ -9,15 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing import Any
+from typing_extensions import NotRequired, TypeAlias, TypedDict
+
+from .group_0306 import MetadataType
 
 
-class DeploymentBranchPolicyNamePatternWithTypeType(TypedDict):
-    """Deployment branch and tag policy name pattern"""
+class ManifestType(TypedDict):
+    """Manifest"""
 
     name: str
-    type: NotRequired[Literal["branch", "tag"]]
+    file: NotRequired[ManifestPropFileType]
+    metadata: NotRequired[MetadataType]
+    resolved: NotRequired[ManifestPropResolvedType]
 
 
-__all__ = ("DeploymentBranchPolicyNamePatternWithTypeType",)
+class ManifestPropFileType(TypedDict):
+    """ManifestPropFile"""
+
+    source_location: NotRequired[str]
+
+
+ManifestPropResolvedType: TypeAlias = dict[str, Any]
+"""ManifestPropResolved
+
+A collection of resolved package dependencies.
+"""
+
+
+__all__ = (
+    "ManifestPropFileType",
+    "ManifestPropResolvedType",
+    "ManifestType",
+)

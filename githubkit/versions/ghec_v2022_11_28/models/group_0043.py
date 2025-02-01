@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,19 +18,40 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class GetAuditLogStreamConfigsItems(GitHubModel):
-    """GetAuditLogStreamConfigsItems"""
-
-    id: Missing[int] = Field(default=UNSET)
-    stream_type: Missing[str] = Field(default=UNSET)
-    stream_details: Missing[str] = Field(default=UNSET)
-    enabled: Missing[bool] = Field(default=UNSET)
-    created_at: Missing[datetime] = Field(default=UNSET)
-    updated_at: Missing[datetime] = Field(default=UNSET)
-    paused_at: Missing[Union[datetime, None]] = Field(default=UNSET)
+from .group_0020 import Repository
 
 
-model_rebuild(GetAuditLogStreamConfigsItems)
+class AuthenticationToken(GitHubModel):
+    """Authentication Token
 
-__all__ = ("GetAuditLogStreamConfigsItems",)
+    Authentication Token
+    """
+
+    token: str = Field(description="The token used for authentication")
+    expires_at: datetime = Field(description="The time this token expires")
+    permissions: Missing[AuthenticationTokenPropPermissions] = Field(default=UNSET)
+    repositories: Missing[list[Repository]] = Field(
+        default=UNSET, description="The repositories this token has access to"
+    )
+    single_file: Missing[Union[str, None]] = Field(default=UNSET)
+    repository_selection: Missing[Literal["all", "selected"]] = Field(
+        default=UNSET,
+        description="Describe whether all repositories have been selected or there's a selection involved",
+    )
+
+
+class AuthenticationTokenPropPermissions(GitHubModel):
+    """AuthenticationTokenPropPermissions
+
+    Examples:
+        {'issues': 'read', 'deployments': 'write'}
+    """
+
+
+model_rebuild(AuthenticationToken)
+model_rebuild(AuthenticationTokenPropPermissions)
+
+__all__ = (
+    "AuthenticationToken",
+    "AuthenticationTokenPropPermissions",
+)

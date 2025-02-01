@@ -18,40 +18,32 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
 
-class Artifact(GitHubModel):
-    """Artifact
 
-    An artifact
+class ProjectCard(GitHubModel):
+    """Project Card
+
+    Project cards represent a scope of work.
     """
 
-    id: int = Field()
-    node_id: str = Field()
-    name: str = Field(description="The name of the artifact.")
-    size_in_bytes: int = Field(description="The size in bytes of the artifact.")
     url: str = Field()
-    archive_download_url: str = Field()
-    expired: bool = Field(description="Whether or not the artifact has expired.")
-    created_at: Union[datetime, None] = Field()
-    expires_at: Union[datetime, None] = Field()
-    updated_at: Union[datetime, None] = Field()
-    workflow_run: Missing[Union[ArtifactPropWorkflowRun, None]] = Field(default=UNSET)
+    id: int = Field(description="The project card's ID")
+    node_id: str = Field()
+    note: Union[str, None] = Field()
+    creator: Union[None, SimpleUser] = Field()
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+    archived: Missing[bool] = Field(
+        default=UNSET, description="Whether or not the card is archived"
+    )
+    column_name: Missing[str] = Field(default=UNSET)
+    project_id: Missing[str] = Field(default=UNSET)
+    column_url: str = Field()
+    content_url: Missing[str] = Field(default=UNSET)
+    project_url: str = Field()
 
 
-class ArtifactPropWorkflowRun(GitHubModel):
-    """ArtifactPropWorkflowRun"""
+model_rebuild(ProjectCard)
 
-    id: Missing[int] = Field(default=UNSET)
-    repository_id: Missing[int] = Field(default=UNSET)
-    head_repository_id: Missing[int] = Field(default=UNSET)
-    head_branch: Missing[str] = Field(default=UNSET)
-    head_sha: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(Artifact)
-model_rebuild(ArtifactPropWorkflowRun)
-
-__all__ = (
-    "Artifact",
-    "ArtifactPropWorkflowRun",
-)
+__all__ = ("ProjectCard",)

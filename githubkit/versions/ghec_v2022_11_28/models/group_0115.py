@@ -17,32 +17,21 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0116 import RepositoryRuleTagNamePatternPropParameters
 
-class RepositoryRuleOneof18(GitHubModel):
-    """max_file_size
 
-    Prevent commits that exceed a specified file size limit from being pushed to the
-    commit.
+class RepositoryRuleTagNamePattern(GitHubModel):
+    """tag_name_pattern
+
+    Parameters to be used for the tag_name_pattern rule
     """
 
-    type: Literal["max_file_size"] = Field()
-    parameters: Missing[RepositoryRuleOneof18PropParameters] = Field(default=UNSET)
-
-
-class RepositoryRuleOneof18PropParameters(GitHubModel):
-    """RepositoryRuleOneof18PropParameters"""
-
-    max_file_size: int = Field(
-        le=100.0,
-        ge=1.0,
-        description="The maximum file size allowed in megabytes. This limit does not apply to Git Large File Storage (Git LFS).",
+    type: Literal["tag_name_pattern"] = Field()
+    parameters: Missing[RepositoryRuleTagNamePatternPropParameters] = Field(
+        default=UNSET
     )
 
 
-model_rebuild(RepositoryRuleOneof18)
-model_rebuild(RepositoryRuleOneof18PropParameters)
+model_rebuild(RepositoryRuleTagNamePattern)
 
-__all__ = (
-    "RepositoryRuleOneof18",
-    "RepositoryRuleOneof18PropParameters",
-)
+__all__ = ("RepositoryRuleTagNamePattern",)

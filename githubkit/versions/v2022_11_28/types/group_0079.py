@@ -9,21 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class CodespacesPublicKeyType(TypedDict):
-    """CodespacesPublicKey
+class CodeScanningAnalysisToolType(TypedDict):
+    """CodeScanningAnalysisTool"""
 
-    The public key used for setting Codespaces secrets.
-    """
-
-    key_id: str
-    key: str
-    id: NotRequired[int]
-    url: NotRequired[str]
-    title: NotRequired[str]
-    created_at: NotRequired[str]
+    name: NotRequired[str]
+    version: NotRequired[Union[str, None]]
+    guid: NotRequired[Union[str, None]]
 
 
-__all__ = ("CodespacesPublicKeyType",)
+__all__ = ("CodeScanningAnalysisToolType",)

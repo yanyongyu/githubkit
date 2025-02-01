@@ -9,22 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from pydantic import Field
-
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0214 import Job
+
+class ProjectsColumnsCardsCardIdMovesPostResponse201(GitHubModel):
+    """ProjectsColumnsCardsCardIdMovesPostResponse201"""
 
 
-class ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200(
-    GitHubModel
-):
-    """ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200"""
+model_rebuild(ProjectsColumnsCardsCardIdMovesPostResponse201)
 
-    total_count: int = Field()
-    jobs: list[Job] = Field()
-
-
-model_rebuild(ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200)
-
-__all__ = ("ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200",)
+__all__ = ("ProjectsColumnsCardsCardIdMovesPostResponse201",)

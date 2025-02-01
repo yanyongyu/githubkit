@@ -11,16 +11,14 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-
-class UserSocialAccountsPostBodyType(TypedDict):
-    """UserSocialAccountsPostBody
-
-    Examples:
-        {'account_urls': ['https://www.linkedin.com/company/github/',
-    'https://twitter.com/github']}
-    """
-
-    account_urls: list[str]
+from .group_0057 import MinimalRepositoryType
 
 
-__all__ = ("UserSocialAccountsPostBodyType",)
+class UserCodespacesSecretsSecretNameRepositoriesGetResponse200Type(TypedDict):
+    """UserCodespacesSecretsSecretNameRepositoriesGetResponse200"""
+
+    total_count: int
+    repositories: list[MinimalRepositoryType]
+
+
+__all__ = ("UserCodespacesSecretsSecretNameRepositoriesGetResponse200Type",)

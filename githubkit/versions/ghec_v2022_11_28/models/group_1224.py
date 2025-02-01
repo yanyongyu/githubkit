@@ -16,18 +16,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UserKeysPostBody(GitHubModel):
-    """UserKeysPostBody"""
+class TeamsTeamIdDiscussionsDiscussionNumberPatchBody(GitHubModel):
+    """TeamsTeamIdDiscussionsDiscussionNumberPatchBody"""
 
     title: Missing[str] = Field(
-        default=UNSET, description="A descriptive name for the new key."
+        default=UNSET, description="The discussion post's title."
     )
-    key: str = Field(
-        pattern="^ssh-(rsa|dss|ed25519) |^ecdsa-sha2-nistp(256|384|521) ",
-        description="The public SSH key to add to your GitHub account.",
+    body: Missing[str] = Field(
+        default=UNSET, description="The discussion post's body text."
     )
 
 
-model_rebuild(UserKeysPostBody)
+model_rebuild(TeamsTeamIdDiscussionsDiscussionNumberPatchBody)
 
-__all__ = ("UserKeysPostBody",)
+__all__ = ("TeamsTeamIdDiscussionsDiscussionNumberPatchBody",)

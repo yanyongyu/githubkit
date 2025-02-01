@@ -9,17 +9,76 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from datetime import datetime
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0138 import IssueType
+from .group_0139 import IssueCommentType
 
 
-class GitignoreTemplateType(TypedDict):
-    """Gitignore Template
+class EventPropPayloadType(TypedDict):
+    """EventPropPayload"""
 
-    Gitignore Template
+    action: NotRequired[str]
+    issue: NotRequired[IssueType]
+    comment: NotRequired[IssueCommentType]
+    pages: NotRequired[list[EventPropPayloadPropPagesItemsType]]
+
+
+class EventPropPayloadPropPagesItemsType(TypedDict):
+    """EventPropPayloadPropPagesItems"""
+
+    page_name: NotRequired[str]
+    title: NotRequired[str]
+    summary: NotRequired[Union[str, None]]
+    action: NotRequired[str]
+    sha: NotRequired[str]
+    html_url: NotRequired[str]
+
+
+class EventType(TypedDict):
+    """Event
+
+    Event
     """
 
+    id: str
+    type: Union[str, None]
+    actor: ActorType
+    repo: EventPropRepoType
+    org: NotRequired[ActorType]
+    payload: EventPropPayloadType
+    public: bool
+    created_at: Union[datetime, None]
+
+
+class ActorType(TypedDict):
+    """Actor
+
+    Actor
+    """
+
+    id: int
+    login: str
+    display_login: NotRequired[str]
+    gravatar_id: Union[str, None]
+    url: str
+    avatar_url: str
+
+
+class EventPropRepoType(TypedDict):
+    """EventPropRepo"""
+
+    id: int
     name: str
-    source: str
+    url: str
 
 
-__all__ = ("GitignoreTemplateType",)
+__all__ = (
+    "ActorType",
+    "EventPropPayloadPropPagesItemsType",
+    "EventPropPayloadType",
+    "EventPropRepoType",
+    "EventType",
+)

@@ -12,37 +12,18 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ExternalGroupType(TypedDict):
-    """ExternalGroup
+class CodespacesPublicKeyType(TypedDict):
+    """CodespacesPublicKey
 
-    Information about an external group's usage and its members
+    The public key used for setting Codespaces secrets.
     """
 
-    group_id: int
-    group_name: str
-    updated_at: NotRequired[str]
-    teams: list[ExternalGroupPropTeamsItemsType]
-    members: list[ExternalGroupPropMembersItemsType]
+    key_id: str
+    key: str
+    id: NotRequired[int]
+    url: NotRequired[str]
+    title: NotRequired[str]
+    created_at: NotRequired[str]
 
 
-class ExternalGroupPropTeamsItemsType(TypedDict):
-    """ExternalGroupPropTeamsItems"""
-
-    team_id: int
-    team_name: str
-
-
-class ExternalGroupPropMembersItemsType(TypedDict):
-    """ExternalGroupPropMembersItems"""
-
-    member_id: int
-    member_login: str
-    member_name: str
-    member_email: str
-
-
-__all__ = (
-    "ExternalGroupPropMembersItemsType",
-    "ExternalGroupPropTeamsItemsType",
-    "ExternalGroupType",
-)
+__all__ = ("CodespacesPublicKeyType",)

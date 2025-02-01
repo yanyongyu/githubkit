@@ -9,39 +9,47 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from datetime import datetime
+from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0002 import SimpleUser
+from .group_0003 import SimpleUser
 
 
-class RepositoryAdvisoryCredit(GitHubModel):
-    """RepositoryAdvisoryCredit
+class Project(GitHubModel):
+    """Project
 
-    A credit given to a user for a repository security advisory.
+    Projects are a way to organize columns and cards of work.
     """
 
-    user: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    type: Literal[
-        "analyst",
-        "finder",
-        "reporter",
-        "coordinator",
-        "remediation_developer",
-        "remediation_reviewer",
-        "remediation_verifier",
-        "tool",
-        "sponsor",
-        "other",
-    ] = Field(description="The type of credit the user is receiving.")
-    state: Literal["accepted", "declined", "pending"] = Field(
-        description="The state of the user's acceptance of the credit."
+    owner_url: str = Field()
+    url: str = Field()
+    html_url: str = Field()
+    columns_url: str = Field()
+    id: int = Field()
+    node_id: str = Field()
+    name: str = Field(description="Name of the project")
+    body: Union[str, None] = Field(description="Body of the project")
+    number: int = Field()
+    state: str = Field(description="State of the project; either 'open' or 'closed'")
+    creator: Union[None, SimpleUser] = Field()
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+    organization_permission: Missing[Literal["read", "write", "admin", "none"]] = Field(
+        default=UNSET,
+        description="The baseline permission that all organization members have on this project. Only present if owner is an organization.",
+    )
+    private: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether or not this project can be seen by everyone. Only present if owner is an organization.",
     )
 
 
-model_rebuild(RepositoryAdvisoryCredit)
+model_rebuild(Project)
 
-__all__ = ("RepositoryAdvisoryCredit",)
+__all__ = ("Project",)

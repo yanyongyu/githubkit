@@ -9,23 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import TypedDict
+from datetime import datetime
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class CodespaceMachineType(TypedDict):
-    """Codespace machine
+class ThreadSubscriptionType(TypedDict):
+    """Thread Subscription
 
-    A description of the machine powering a codespace.
+    Thread Subscription
     """
 
-    name: str
-    display_name: str
-    operating_system: str
-    storage_in_bytes: int
-    memory_in_bytes: int
-    cpus: int
-    prebuild_availability: Union[None, Literal["none", "ready", "in_progress"]]
+    subscribed: bool
+    ignored: bool
+    reason: Union[str, None]
+    created_at: Union[datetime, None]
+    url: str
+    thread_url: NotRequired[str]
+    repository_url: NotRequired[str]
 
 
-__all__ = ("CodespaceMachineType",)
+__all__ = ("ThreadSubscriptionType",)

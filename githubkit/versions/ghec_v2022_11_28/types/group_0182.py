@@ -9,19 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class OrganizationCustomOrganizationRoleUpdateSchemaType(TypedDict):
-    """OrganizationCustomOrganizationRoleUpdateSchema"""
+class InteractionLimitResponseType(TypedDict):
+    """Interaction Limits
 
-    name: NotRequired[str]
-    description: NotRequired[str]
-    permissions: NotRequired[list[str]]
-    base_role: NotRequired[
-        Literal["none", "read", "triage", "write", "maintain", "admin"]
-    ]
+    Interaction limit settings.
+    """
+
+    limit: Literal["existing_users", "contributors_only", "collaborators_only"]
+    origin: str
+    expires_at: datetime
 
 
-__all__ = ("OrganizationCustomOrganizationRoleUpdateSchemaType",)
+__all__ = ("InteractionLimitResponseType",)

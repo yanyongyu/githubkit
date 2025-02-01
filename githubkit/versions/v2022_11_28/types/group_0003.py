@@ -9,116 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0001 import CvssSeveritiesType
-from .group_0004 import GlobalAdvisoryPropCreditsItemsType
 
+class SimpleUserType(TypedDict):
+    """Simple User
 
-class GlobalAdvisoryType(TypedDict):
-    """GlobalAdvisory
-
-    A GitHub Security Advisory.
+    A GitHub user.
     """
 
-    ghsa_id: str
-    cve_id: Union[str, None]
+    name: NotRequired[Union[str, None]]
+    email: NotRequired[Union[str, None]]
+    login: str
+    id: int
+    node_id: str
+    avatar_url: str
+    gravatar_id: Union[str, None]
     url: str
     html_url: str
-    repository_advisory_url: Union[str, None]
-    summary: str
-    description: Union[str, None]
-    type: Literal["reviewed", "unreviewed", "malware"]
-    severity: Literal["critical", "high", "medium", "low", "unknown"]
-    source_code_location: Union[str, None]
-    identifiers: Union[list[GlobalAdvisoryPropIdentifiersItemsType], None]
-    references: Union[list[str], None]
-    published_at: datetime
-    updated_at: datetime
-    github_reviewed_at: Union[datetime, None]
-    nvd_published_at: Union[datetime, None]
-    withdrawn_at: Union[datetime, None]
-    vulnerabilities: Union[list[VulnerabilityType], None]
-    cvss: Union[GlobalAdvisoryPropCvssType, None]
-    cvss_severities: NotRequired[Union[CvssSeveritiesType, None]]
-    cwes: Union[list[GlobalAdvisoryPropCwesItemsType], None]
-    epss: NotRequired[Union[GlobalAdvisoryPropEpssType, None]]
-    credits_: Union[list[GlobalAdvisoryPropCreditsItemsType], None]
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    starred_at: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
-class GlobalAdvisoryPropIdentifiersItemsType(TypedDict):
-    """GlobalAdvisoryPropIdentifiersItems"""
-
-    type: Literal["CVE", "GHSA"]
-    value: str
-
-
-class GlobalAdvisoryPropCvssType(TypedDict):
-    """GlobalAdvisoryPropCvss"""
-
-    vector_string: Union[str, None]
-    score: Union[float, None]
-
-
-class GlobalAdvisoryPropCwesItemsType(TypedDict):
-    """GlobalAdvisoryPropCwesItems"""
-
-    cwe_id: str
-    name: str
-
-
-class GlobalAdvisoryPropEpssType(TypedDict):
-    """GlobalAdvisoryPropEpss"""
-
-    percentage: NotRequired[float]
-    percentile: NotRequired[float]
-
-
-class VulnerabilityType(TypedDict):
-    """Vulnerability
-
-    A vulnerability describing the product and its affected versions within a GitHub
-    Security Advisory.
-    """
-
-    package: Union[VulnerabilityPropPackageType, None]
-    vulnerable_version_range: Union[str, None]
-    first_patched_version: Union[str, None]
-    vulnerable_functions: Union[list[str], None]
-
-
-class VulnerabilityPropPackageType(TypedDict):
-    """VulnerabilityPropPackage
-
-    The name of the package affected by the vulnerability.
-    """
-
-    ecosystem: Literal[
-        "rubygems",
-        "npm",
-        "pip",
-        "maven",
-        "nuget",
-        "composer",
-        "go",
-        "rust",
-        "erlang",
-        "actions",
-        "pub",
-        "other",
-        "swift",
-    ]
-    name: Union[str, None]
-
-
-__all__ = (
-    "GlobalAdvisoryPropCvssType",
-    "GlobalAdvisoryPropCwesItemsType",
-    "GlobalAdvisoryPropEpssType",
-    "GlobalAdvisoryPropIdentifiersItemsType",
-    "GlobalAdvisoryType",
-    "VulnerabilityPropPackageType",
-    "VulnerabilityType",
-)
+__all__ = ("SimpleUserType",)

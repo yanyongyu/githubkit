@@ -12,16 +12,15 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class CustomDeploymentRuleAppType(TypedDict):
-    """Custom deployment protection rule app
+class DeploymentBranchPolicySettingsType(TypedDict):
+    """DeploymentBranchPolicySettings
 
-    A GitHub App that is providing a custom deployment protection rule.
+    The type of deployment branch policy for this environment. To allow all branches
+    to deploy, set to `null`.
     """
 
-    id: int
-    slug: str
-    integration_url: str
-    node_id: str
+    protected_branches: bool
+    custom_branch_policies: bool
 
 
-__all__ = ("CustomDeploymentRuleAppType",)
+__all__ = ("DeploymentBranchPolicySettingsType",)

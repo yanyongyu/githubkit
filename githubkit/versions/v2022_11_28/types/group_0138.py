@@ -9,20 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0139 import RepositoryRuleCommitMessagePatternPropParametersType
+from typing_extensions import TypedDict
 
 
-class RepositoryRuleCommitMessagePatternType(TypedDict):
-    """commit_message_pattern
+class RepositoryRuleParamsRequiredReviewerConfigurationType(TypedDict):
+    """RequiredReviewerConfiguration
 
-    Parameters to be used for the commit_message_pattern rule
+    A reviewing team, and file patterns describing which files they must approve
+    changes to.
     """
 
-    type: Literal["commit_message_pattern"]
-    parameters: NotRequired[RepositoryRuleCommitMessagePatternPropParametersType]
+    file_patterns: list[str]
+    minimum_approvals: int
+    reviewer_id: str
 
 
-__all__ = ("RepositoryRuleCommitMessagePatternType",)
+__all__ = ("RepositoryRuleParamsRequiredReviewerConfigurationType",)

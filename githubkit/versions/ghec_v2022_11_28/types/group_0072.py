@@ -9,26 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType
+from .group_0056 import SimpleRepositoryType
+from .group_0070 import DependabotAlertSecurityVulnerabilityType
+from .group_0071 import DependabotAlertSecurityAdvisoryType
+from .group_0073 import DependabotAlertWithRepositoryPropDependencyType
 
-class RepositoryRulesetBypassActorType(TypedDict):
-    """Repository Ruleset Bypass Actor
 
-    An actor that can bypass rules in a ruleset
+class DependabotAlertWithRepositoryType(TypedDict):
+    """DependabotAlertWithRepository
+
+    A Dependabot alert.
     """
 
-    actor_id: NotRequired[Union[int, None]]
-    actor_type: Literal[
-        "Integration",
-        "OrganizationAdmin",
-        "RepositoryRole",
-        "Team",
-        "DeployKey",
-        "EnterpriseOwner",
+    number: int
+    state: Literal["auto_dismissed", "dismissed", "fixed", "open"]
+    dependency: DependabotAlertWithRepositoryPropDependencyType
+    security_advisory: DependabotAlertSecurityAdvisoryType
+    security_vulnerability: DependabotAlertSecurityVulnerabilityType
+    url: str
+    html_url: str
+    created_at: datetime
+    updated_at: datetime
+    dismissed_at: Union[datetime, None]
+    dismissed_by: Union[None, SimpleUserType]
+    dismissed_reason: Union[
+        None,
+        Literal[
+            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
+        ],
     ]
-    bypass_mode: NotRequired[Literal["always", "pull_request"]]
+    dismissed_comment: Union[str, None]
+    fixed_at: Union[datetime, None]
+    auto_dismissed_at: NotRequired[Union[datetime, None]]
+    repository: SimpleRepositoryType
 
 
-__all__ = ("RepositoryRulesetBypassActorType",)
+__all__ = ("DependabotAlertWithRepositoryType",)

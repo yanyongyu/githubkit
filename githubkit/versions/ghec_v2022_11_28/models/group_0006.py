@@ -16,17 +16,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ValidationErrorSimple(GitHubModel):
-    """Validation Error Simple
+class BasicError(GitHubModel):
+    """Basic Error
 
-    Validation Error Simple
+    Basic Error
     """
 
-    message: str = Field()
-    documentation_url: str = Field()
-    errors: Missing[list[str]] = Field(default=UNSET)
+    message: Missing[str] = Field(default=UNSET)
+    documentation_url: Missing[str] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    status: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(ValidationErrorSimple)
+model_rebuild(BasicError)
 
-__all__ = ("ValidationErrorSimple",)
+__all__ = ("BasicError",)

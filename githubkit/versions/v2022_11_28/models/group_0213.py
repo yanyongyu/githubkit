@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -18,74 +17,161 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0008 import Integration
-from .group_0056 import MinimalRepository
-from .group_0183 import PullRequestMinimal
-from .group_0184 import SimpleCommit
+from .group_0204 import BranchRestrictionPolicy
+from .group_0214 import ProtectedBranchPropRequiredPullRequestReviews
 
 
-class CheckSuite(GitHubModel):
-    """CheckSuite
+class ProtectedBranch(GitHubModel):
+    """Protected Branch
 
-    A suite of checks performed on the code of a given code change
+    Branch protections protect branches
     """
 
-    id: int = Field()
-    node_id: str = Field()
-    head_branch: Union[str, None] = Field()
-    head_sha: str = Field(
-        description="The SHA of the head commit that is being checked."
+    url: str = Field()
+    required_status_checks: Missing[StatusCheckPolicy] = Field(
+        default=UNSET, title="Status Check Policy", description="Status Check Policy"
     )
-    status: Union[
-        None,
-        Literal[
-            "queued", "in_progress", "completed", "waiting", "requested", "pending"
-        ],
-    ] = Field(
-        description="The phase of the lifecycle that the check suite is currently in. Statuses of waiting, requested, and pending are reserved for GitHub Actions check suites."
+    required_pull_request_reviews: Missing[
+        ProtectedBranchPropRequiredPullRequestReviews
+    ] = Field(default=UNSET)
+    required_signatures: Missing[ProtectedBranchPropRequiredSignatures] = Field(
+        default=UNSET
     )
-    conclusion: Union[
-        None,
-        Literal[
-            "success",
-            "failure",
-            "neutral",
-            "cancelled",
-            "skipped",
-            "timed_out",
-            "action_required",
-            "startup_failure",
-            "stale",
-        ],
-    ] = Field()
-    url: Union[str, None] = Field()
-    before: Union[str, None] = Field()
-    after: Union[str, None] = Field()
-    pull_requests: Union[list[PullRequestMinimal], None] = Field()
-    app: Union[None, Integration, None] = Field()
-    repository: MinimalRepository = Field(
-        title="Minimal Repository", description="Minimal Repository"
+    enforce_admins: Missing[ProtectedBranchPropEnforceAdmins] = Field(default=UNSET)
+    required_linear_history: Missing[ProtectedBranchPropRequiredLinearHistory] = Field(
+        default=UNSET
     )
-    created_at: Union[datetime, None] = Field()
-    updated_at: Union[datetime, None] = Field()
-    head_commit: SimpleCommit = Field(title="Simple Commit", description="A commit.")
-    latest_check_runs_count: int = Field()
-    check_runs_url: str = Field()
-    rerequestable: Missing[bool] = Field(default=UNSET)
-    runs_rerequestable: Missing[bool] = Field(default=UNSET)
+    allow_force_pushes: Missing[ProtectedBranchPropAllowForcePushes] = Field(
+        default=UNSET
+    )
+    allow_deletions: Missing[ProtectedBranchPropAllowDeletions] = Field(default=UNSET)
+    restrictions: Missing[BranchRestrictionPolicy] = Field(
+        default=UNSET,
+        title="Branch Restriction Policy",
+        description="Branch Restriction Policy",
+    )
+    required_conversation_resolution: Missing[
+        ProtectedBranchPropRequiredConversationResolution
+    ] = Field(default=UNSET)
+    block_creations: Missing[ProtectedBranchPropBlockCreations] = Field(default=UNSET)
+    lock_branch: Missing[ProtectedBranchPropLockBranch] = Field(
+        default=UNSET,
+        description="Whether to set the branch as read-only. If this is true, users will not be able to push to the branch.",
+    )
+    allow_fork_syncing: Missing[ProtectedBranchPropAllowForkSyncing] = Field(
+        default=UNSET,
+        description="Whether users can pull changes from upstream when the branch is locked. Set to `true` to allow fork syncing. Set to `false` to prevent fork syncing.",
+    )
 
 
-class ReposOwnerRepoCommitsRefCheckSuitesGetResponse200(GitHubModel):
-    """ReposOwnerRepoCommitsRefCheckSuitesGetResponse200"""
+class ProtectedBranchPropRequiredSignatures(GitHubModel):
+    """ProtectedBranchPropRequiredSignatures"""
 
-    total_count: int = Field()
-    check_suites: list[CheckSuite] = Field()
+    url: str = Field()
+    enabled: bool = Field()
 
 
-model_rebuild(CheckSuite)
-model_rebuild(ReposOwnerRepoCommitsRefCheckSuitesGetResponse200)
+class ProtectedBranchPropEnforceAdmins(GitHubModel):
+    """ProtectedBranchPropEnforceAdmins"""
+
+    url: str = Field()
+    enabled: bool = Field()
+
+
+class ProtectedBranchPropRequiredLinearHistory(GitHubModel):
+    """ProtectedBranchPropRequiredLinearHistory"""
+
+    enabled: bool = Field()
+
+
+class ProtectedBranchPropAllowForcePushes(GitHubModel):
+    """ProtectedBranchPropAllowForcePushes"""
+
+    enabled: bool = Field()
+
+
+class ProtectedBranchPropAllowDeletions(GitHubModel):
+    """ProtectedBranchPropAllowDeletions"""
+
+    enabled: bool = Field()
+
+
+class ProtectedBranchPropRequiredConversationResolution(GitHubModel):
+    """ProtectedBranchPropRequiredConversationResolution"""
+
+    enabled: Missing[bool] = Field(default=UNSET)
+
+
+class ProtectedBranchPropBlockCreations(GitHubModel):
+    """ProtectedBranchPropBlockCreations"""
+
+    enabled: bool = Field()
+
+
+class ProtectedBranchPropLockBranch(GitHubModel):
+    """ProtectedBranchPropLockBranch
+
+    Whether to set the branch as read-only. If this is true, users will not be able
+    to push to the branch.
+    """
+
+    enabled: Missing[bool] = Field(default=UNSET)
+
+
+class ProtectedBranchPropAllowForkSyncing(GitHubModel):
+    """ProtectedBranchPropAllowForkSyncing
+
+    Whether users can pull changes from upstream when the branch is locked. Set to
+    `true` to allow fork syncing. Set to `false` to prevent fork syncing.
+    """
+
+    enabled: Missing[bool] = Field(default=UNSET)
+
+
+class StatusCheckPolicy(GitHubModel):
+    """Status Check Policy
+
+    Status Check Policy
+    """
+
+    url: str = Field()
+    strict: bool = Field()
+    contexts: list[str] = Field()
+    checks: list[StatusCheckPolicyPropChecksItems] = Field()
+    contexts_url: str = Field()
+
+
+class StatusCheckPolicyPropChecksItems(GitHubModel):
+    """StatusCheckPolicyPropChecksItems"""
+
+    context: str = Field()
+    app_id: Union[int, None] = Field()
+
+
+model_rebuild(ProtectedBranch)
+model_rebuild(ProtectedBranchPropRequiredSignatures)
+model_rebuild(ProtectedBranchPropEnforceAdmins)
+model_rebuild(ProtectedBranchPropRequiredLinearHistory)
+model_rebuild(ProtectedBranchPropAllowForcePushes)
+model_rebuild(ProtectedBranchPropAllowDeletions)
+model_rebuild(ProtectedBranchPropRequiredConversationResolution)
+model_rebuild(ProtectedBranchPropBlockCreations)
+model_rebuild(ProtectedBranchPropLockBranch)
+model_rebuild(ProtectedBranchPropAllowForkSyncing)
+model_rebuild(StatusCheckPolicy)
+model_rebuild(StatusCheckPolicyPropChecksItems)
 
 __all__ = (
-    "CheckSuite",
-    "ReposOwnerRepoCommitsRefCheckSuitesGetResponse200",
+    "ProtectedBranch",
+    "ProtectedBranchPropAllowDeletions",
+    "ProtectedBranchPropAllowForcePushes",
+    "ProtectedBranchPropAllowForkSyncing",
+    "ProtectedBranchPropBlockCreations",
+    "ProtectedBranchPropEnforceAdmins",
+    "ProtectedBranchPropLockBranch",
+    "ProtectedBranchPropRequiredConversationResolution",
+    "ProtectedBranchPropRequiredLinearHistory",
+    "ProtectedBranchPropRequiredSignatures",
+    "StatusCheckPolicy",
+    "StatusCheckPolicyPropChecksItems",
 )

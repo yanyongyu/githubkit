@@ -11,18 +11,28 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0403 import TrafficType
 
+class TagType(TypedDict):
+    """Tag
 
-class ViewTrafficType(TypedDict):
-    """View Traffic
-
-    View Traffic
+    Tag
     """
 
-    count: int
-    uniques: int
-    views: list[TrafficType]
+    name: str
+    commit: TagPropCommitType
+    zipball_url: str
+    tarball_url: str
+    node_id: str
 
 
-__all__ = ("ViewTrafficType",)
+class TagPropCommitType(TypedDict):
+    """TagPropCommit"""
+
+    sha: str
+    url: str
+
+
+__all__ = (
+    "TagPropCommitType",
+    "TagType",
+)

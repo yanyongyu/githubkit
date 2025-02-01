@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -18,22 +18,23 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class CodeScanningDefaultSetupOptions(GitHubModel):
-    """CodeScanningDefaultSetupOptions
+class CodeScanningAnalysisTool(GitHubModel):
+    """CodeScanningAnalysisTool"""
 
-    Feature options for code scanning default setup
-    """
-
-    runner_type: Missing[Literal["standard", "labeled", "not_set"]] = Field(
+    name: Missing[str] = Field(
         default=UNSET,
-        description="Whether to use labeled runners or standard GitHub runners.",
+        description="The name of the tool used to generate the code scanning analysis.",
     )
-    runner_label: Missing[Union[str, None]] = Field(
+    version: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="The label of the runner to use for code scanning default setup when runner_type is 'labeled'.",
+        description="The version of the tool used to generate the code scanning analysis.",
+    )
+    guid: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The GUID of the tool used to generate the code scanning analysis, if provided in the uploaded SARIF data.",
     )
 
 
-model_rebuild(CodeScanningDefaultSetupOptions)
+model_rebuild(CodeScanningAnalysisTool)
 
-__all__ = ("CodeScanningDefaultSetupOptions",)
+__all__ = ("CodeScanningAnalysisTool",)

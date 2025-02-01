@@ -17,22 +17,20 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class RepositoryRuleCommitMessagePatternPropParameters(GitHubModel):
-    """RepositoryRuleCommitMessagePatternPropParameters"""
-
-    name: Missing[str] = Field(
-        default=UNSET, description="How this rule will appear to users."
-    )
-    negate: Missing[bool] = Field(
-        default=UNSET, description="If true, the rule will fail if the pattern matches."
-    )
-    operator: Literal["starts_with", "ends_with", "contains", "regex"] = Field(
-        description="The operator to use for matching."
-    )
-    pattern: str = Field(description="The pattern to match with.")
+from .group_0140 import RepositoryRulePullRequestPropParameters
 
 
-model_rebuild(RepositoryRuleCommitMessagePatternPropParameters)
+class RepositoryRulePullRequest(GitHubModel):
+    """pull_request
 
-__all__ = ("RepositoryRuleCommitMessagePatternPropParameters",)
+    Require all commits be made to a non-target branch and submitted via a pull
+    request before they can be merged.
+    """
+
+    type: Literal["pull_request"] = Field()
+    parameters: Missing[RepositoryRulePullRequestPropParameters] = Field(default=UNSET)
+
+
+model_rebuild(RepositoryRulePullRequest)
+
+__all__ = ("RepositoryRulePullRequest",)

@@ -9,24 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0076 import (
-    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType,
-)
-from .group_0078 import RepositoryRulesetConditionsPropRefNameType
+from .group_0119 import RepositoryRuleWorkflowsPropParametersType
 
 
-class OrgRulesetConditionsOneof0Type(TypedDict):
-    """repository_name_and_ref_name
+class RepositoryRuleWorkflowsType(TypedDict):
+    """workflows
 
-    Conditions to target repositories by name and refs by name
+    Require all changes made to a targeted branch to pass the specified workflows
+    before they can be merged.
     """
 
-    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
-    repository_name: (
-        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType
-    )
+    type: Literal["workflows"]
+    parameters: NotRequired[RepositoryRuleWorkflowsPropParametersType]
 
 
-__all__ = ("OrgRulesetConditionsOneof0Type",)
+__all__ = ("RepositoryRuleWorkflowsType",)

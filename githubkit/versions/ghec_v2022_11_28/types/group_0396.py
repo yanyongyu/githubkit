@@ -9,18 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from datetime import datetime
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class CommitActivityType(TypedDict):
-    """Commit Activity
+class SecretScanningPushProtectionBypassType(TypedDict):
+    """SecretScanningPushProtectionBypass"""
 
-    Commit Activity
-    """
-
-    days: list[int]
-    total: int
-    week: int
+    reason: NotRequired[Literal["false_positive", "used_in_tests", "will_fix_later"]]
+    expire_at: NotRequired[Union[datetime, None]]
+    token_type: NotRequired[str]
 
 
-__all__ = ("CommitActivityType",)
+__all__ = ("SecretScanningPushProtectionBypassType",)

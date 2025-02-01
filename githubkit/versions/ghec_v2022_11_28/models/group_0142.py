@@ -9,34 +9,57 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from datetime import datetime
+from typing import Any, Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0003 import SimpleUser
 
 
-class MarketplaceListingPlan(GitHubModel):
-    """Marketplace Listing Plan
+class BaseGist(GitHubModel):
+    """Base Gist
 
-    Marketplace Listing Plan
+    Base Gist
     """
 
     url: str = Field()
-    accounts_url: str = Field()
-    id: int = Field()
-    number: int = Field()
-    name: str = Field()
-    description: str = Field()
-    monthly_price_in_cents: int = Field()
-    yearly_price_in_cents: int = Field()
-    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"] = Field()
-    has_free_trial: bool = Field()
-    unit_name: Union[str, None] = Field()
-    state: str = Field()
-    bullets: list[str] = Field()
+    forks_url: str = Field()
+    commits_url: str = Field()
+    id: str = Field()
+    node_id: str = Field()
+    git_pull_url: str = Field()
+    git_push_url: str = Field()
+    html_url: str = Field()
+    files: BaseGistPropFiles = Field()
+    public: bool = Field()
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+    description: Union[str, None] = Field()
+    comments: int = Field()
+    comments_enabled: Missing[bool] = Field(default=UNSET)
+    user: Union[None, SimpleUser] = Field()
+    comments_url: str = Field()
+    owner: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
+    )
+    truncated: Missing[bool] = Field(default=UNSET)
+    forks: Missing[list[Any]] = Field(default=UNSET)
+    history: Missing[list[Any]] = Field(default=UNSET)
 
 
-model_rebuild(MarketplaceListingPlan)
+class BaseGistPropFiles(ExtraGitHubModel):
+    """BaseGistPropFiles"""
 
-__all__ = ("MarketplaceListingPlan",)
+
+model_rebuild(BaseGist)
+model_rebuild(BaseGistPropFiles)
+
+__all__ = (
+    "BaseGist",
+    "BaseGistPropFiles",
+)

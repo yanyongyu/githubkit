@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,46 +17,213 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0002 import SimpleUser
-from .group_0014 import Enterprise
-from .group_0016 import AppPermissions
 
+class AppPermissions(GitHubModel):
+    """App Permissions
 
-class Installation(GitHubModel):
-    """Installation
+    The permissions granted to the user access token.
 
-    Installation
+    Examples:
+        {'contents': 'read', 'issues': 'read', 'deployments': 'write', 'single_file':
+    'read'}
     """
 
-    id: int = Field(description="The ID of the installation.")
-    account: Union[SimpleUser, Enterprise, None] = Field()
-    repository_selection: Literal["all", "selected"] = Field(
-        description="Describe whether all repositories have been selected or there's a selection involved"
+    actions: Missing[Literal["read", "write"]] = Field(
+        default=UNSET,
+        description="The level of permission to grant the access token for GitHub Actions workflows, workflow runs, and artifacts.",
     )
-    access_tokens_url: str = Field()
-    repositories_url: str = Field()
-    html_url: str = Field()
-    app_id: int = Field()
-    target_id: int = Field(
-        description="The ID of the user or organization this token is being scoped to."
+    administration: Missing[Literal["read", "write"]] = Field(
+        default=UNSET,
+        description="The level of permission to grant the access token for repository creation, deletion, settings, teams, and collaborators creation.",
     )
-    target_type: str = Field()
-    permissions: AppPermissions = Field(
-        title="App Permissions",
-        description="The permissions granted to the user access token.",
+    checks: Missing[Literal["read", "write"]] = Field(
+        default=UNSET,
+        description="The level of permission to grant the access token for checks on code.",
     )
-    events: list[str] = Field()
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    single_file_name: Union[str, None] = Field()
-    has_multiple_single_files: Missing[bool] = Field(default=UNSET)
-    single_file_paths: Missing[list[str]] = Field(default=UNSET)
-    app_slug: str = Field()
-    suspended_by: Union[None, SimpleUser] = Field()
-    suspended_at: Union[datetime, None] = Field()
-    contact_email: Missing[Union[str, None]] = Field(default=UNSET)
+    codespaces: Missing[Literal["read", "write"]] = Field(
+        default=UNSET,
+        description="The level of permission to grant the access token to create, edit, delete, and list Codespaces.",
+    )
+    contents: Missing[Literal["read", "write"]] = Field(
+        default=UNSET,
+        description="The level of permission to grant the access token for repository contents, commits, branches, downloads, releases, and merges.",
+    )
+    dependabot_secrets: Missing[Literal["read", "write"]] = Field(
+        default=UNSET,
+        description="The leve of permission to grant the access token to manage Dependabot secrets.",
+    )
+    deployments: Missing[Literal["read", "write"]] = Field(
+        default=UNSET,
+        description="The level of permission to grant the access token for deployments and deployment statuses.",
+    )
+    environments: Missing[Literal["read", "write"]] = Field(
+        default=UNSET,
+        description="The level of permission to grant the access token for managing repository environments.",
+    )
+    issues: Missing[Literal["read", "write"]] = Field(
+        default=UNSET,
+        description="The level of permission to grant the access token for issues and related comments, assignees, labels, and milestones.",
+    )
+    metadata: Missing[Literal["read", "write"]] = Field(
+        default=UNSET,
+        description="The level of permission to grant the access token to search repositories, list collaborators, and access repository metadata.",
+    )
+    packages: Missing[Literal["read", "write"]] = Field(
+        default=UNSET,
+        description="The level of permission to grant the access token for packages published to GitHub Packages.",
+    )
+    pages: Missing[Literal["read", "write"]] = Field(
+        default=UNSET,
+        description="The level of permission to grant the access token to retrieve Pages statuses, configuration, and builds, as well as create new builds.",
+    )
+    pull_requests: Missing[Literal["read", "write"]] = Field(
+        default=UNSET,
+        description="The level of permission to grant the access token for pull requests and related comments, assignees, labels, milestones, and merges.",
+    )
+    repository_custom_properties: Missing[Literal["read", "write"]] = Field(
+        default=UNSET,
+        description="The level of permission to grant the access token to view and edit custom properties for a repository, when allowed by the property.",
+    )
+    repository_hooks: Missing[Literal["read", "write"]] = Field(
+        default=UNSET,
+        description="The level of permission to grant the access token to manage the post-receive hooks for a repository.",
+    )
+    repository_projects: Missing[Literal["read", "write", "admin"]] = Field(
+        default=UNSET,
+        description="The level of permission to grant the access token to manage repository projects, columns, and cards.",
+    )
+    secret_scanning_alerts: Missing[Literal["read", "write"]] = Field(
+        default=UNSET,
+        description="The level of permission to grant the access token to view and manage secret scanning alerts.",
+    )
+    secrets: Missing[Literal["read", "write"]] = Field(
+        default=UNSET,
+        description="The level of permission to grant the access token to manage repository secrets.",
+    )
+    security_events: Missing[Literal["read", "write"]] = Field(
+        default=UNSET,
+        description="The level of permission to grant the access token to view and manage security events like code scanning alerts.",
+    )
+    single_file: Missing[Literal["read", "write"]] = Field(
+        default=UNSET,
+        description="The level of permission to grant the access token to manage just a single file.",
+    )
+    statuses: Missing[Literal["read", "write"]] = Field(
+        default=UNSET,
+        description="The level of permission to grant the access token for commit statuses.",
+    )
+    vulnerability_alerts: Missing[Literal["read", "write"]] = Field(
+        default=UNSET,
+        description="The level of permission to grant the access token to manage Dependabot alerts.",
+    )
+    workflows: Missing[Literal["write"]] = Field(
+        default=UNSET,
+        description="The level of permission to grant the access token to update GitHub Actions workflow files.",
+    )
+    members: Missing[Literal["read", "write"]] = Field(
+        default=UNSET,
+        description="The level of permission to grant the access token for organization teams and members.",
+    )
+    organization_administration: Missing[Literal["read", "write"]] = Field(
+        default=UNSET,
+        description="The level of permission to grant the access token to manage access to an organization.",
+    )
+    organization_custom_roles: Missing[Literal["read", "write"]] = Field(
+        default=UNSET,
+        description="The level of permission to grant the access token for custom repository roles management.",
+    )
+    organization_custom_org_roles: Missing[Literal["read", "write"]] = Field(
+        default=UNSET,
+        description="The level of permission to grant the access token for custom organization roles management.",
+    )
+    organization_custom_properties: Missing[Literal["read", "write", "admin"]] = Field(
+        default=UNSET,
+        description="The level of permission to grant the access token for custom property management.",
+    )
+    organization_copilot_seat_management: Missing[Literal["write"]] = Field(
+        default=UNSET,
+        description="The level of permission to grant the access token for managing access to GitHub Copilot for members of an organization with a Copilot Business subscription. This property is in public preview and is subject to change.",
+    )
+    organization_announcement_banners: Missing[Literal["read", "write"]] = Field(
+        default=UNSET,
+        description="The level of permission to grant the access token to view and manage announcement banners for an organization.",
+    )
+    organization_events: Missing[Literal["read"]] = Field(
+        default=UNSET,
+        description="The level of permission to grant the access token to view events triggered by an activity in an organization.",
+    )
+    organization_hooks: Missing[Literal["read", "write"]] = Field(
+        default=UNSET,
+        description="The level of permission to grant the access token to manage the post-receive hooks for an organization.",
+    )
+    organization_personal_access_tokens: Missing[Literal["read", "write"]] = Field(
+        default=UNSET,
+        description="The level of permission to grant the access token for viewing and managing fine-grained personal access token requests to an organization.",
+    )
+    organization_personal_access_token_requests: Missing[Literal["read", "write"]] = (
+        Field(
+            default=UNSET,
+            description="The level of permission to grant the access token for viewing and managing fine-grained personal access tokens that have been approved by an organization.",
+        )
+    )
+    organization_plan: Missing[Literal["read"]] = Field(
+        default=UNSET,
+        description="The level of permission to grant the access token for viewing an organization's plan.",
+    )
+    organization_projects: Missing[Literal["read", "write", "admin"]] = Field(
+        default=UNSET,
+        description="The level of permission to grant the access token to manage organization projects and projects public preview (where available).",
+    )
+    organization_packages: Missing[Literal["read", "write"]] = Field(
+        default=UNSET,
+        description="The level of permission to grant the access token for organization packages published to GitHub Packages.",
+    )
+    organization_secrets: Missing[Literal["read", "write"]] = Field(
+        default=UNSET,
+        description="The level of permission to grant the access token to manage organization secrets.",
+    )
+    organization_self_hosted_runners: Missing[Literal["read", "write"]] = Field(
+        default=UNSET,
+        description="The level of permission to grant the access token to view and manage GitHub Actions self-hosted runners available to an organization.",
+    )
+    organization_user_blocking: Missing[Literal["read", "write"]] = Field(
+        default=UNSET,
+        description="The level of permission to grant the access token to view and manage users blocked by the organization.",
+    )
+    team_discussions: Missing[Literal["read", "write"]] = Field(
+        default=UNSET,
+        description="The level of permission to grant the access token to manage team discussions and related comments.",
+    )
+    email_addresses: Missing[Literal["read", "write"]] = Field(
+        default=UNSET,
+        description="The level of permission to grant the access token to manage the email addresses belonging to a user.",
+    )
+    followers: Missing[Literal["read", "write"]] = Field(
+        default=UNSET,
+        description="The level of permission to grant the access token to manage the followers belonging to a user.",
+    )
+    git_ssh_keys: Missing[Literal["read", "write"]] = Field(
+        default=UNSET,
+        description="The level of permission to grant the access token to manage git SSH keys.",
+    )
+    gpg_keys: Missing[Literal["read", "write"]] = Field(
+        default=UNSET,
+        description="The level of permission to grant the access token to view and manage GPG keys belonging to a user.",
+    )
+    interaction_limits: Missing[Literal["read", "write"]] = Field(
+        default=UNSET,
+        description="The level of permission to grant the access token to view and manage interaction limits on a repository.",
+    )
+    profile: Missing[Literal["write"]] = Field(
+        default=UNSET,
+        description="The level of permission to grant the access token to manage the profile settings belonging to a user.",
+    )
+    starring: Missing[Literal["read", "write"]] = Field(
+        default=UNSET,
+        description="The level of permission to grant the access token to list and manage repositories a user is starring.",
+    )
 
 
-model_rebuild(Installation)
+model_rebuild(AppPermissions)
 
-__all__ = ("Installation",)
+__all__ = ("AppPermissions",)

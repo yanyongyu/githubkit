@@ -15,42 +15,31 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0056 import MinimalRepository
+from .group_0215 import (
+    ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances,
+    ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions,
+)
 
 
-class CheckSuitePreference(GitHubModel):
-    """Check Suite Preference
+class ProtectedBranchPropRequiredPullRequestReviews(GitHubModel):
+    """ProtectedBranchPropRequiredPullRequestReviews"""
 
-    Check suite configuration preferences for a repository.
-    """
-
-    preferences: CheckSuitePreferencePropPreferences = Field()
-    repository: MinimalRepository = Field(
-        title="Minimal Repository", description="Minimal Repository"
+    url: str = Field()
+    dismiss_stale_reviews: Missing[bool] = Field(default=UNSET)
+    require_code_owner_reviews: Missing[bool] = Field(default=UNSET)
+    required_approving_review_count: Missing[int] = Field(default=UNSET)
+    require_last_push_approval: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether the most recent push must be approved by someone other than the person who pushed it.",
     )
-
-
-class CheckSuitePreferencePropPreferences(GitHubModel):
-    """CheckSuitePreferencePropPreferences"""
-
-    auto_trigger_checks: Missing[
-        list[CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems]
+    dismissal_restrictions: Missing[
+        ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions
+    ] = Field(default=UNSET)
+    bypass_pull_request_allowances: Missing[
+        ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances
     ] = Field(default=UNSET)
 
 
-class CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems(GitHubModel):
-    """CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems"""
+model_rebuild(ProtectedBranchPropRequiredPullRequestReviews)
 
-    app_id: int = Field()
-    setting: bool = Field()
-
-
-model_rebuild(CheckSuitePreference)
-model_rebuild(CheckSuitePreferencePropPreferences)
-model_rebuild(CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems)
-
-__all__ = (
-    "CheckSuitePreference",
-    "CheckSuitePreferencePropPreferences",
-    "CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems",
-)
+__all__ = ("ProtectedBranchPropRequiredPullRequestReviews",)

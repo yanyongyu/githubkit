@@ -17,20 +17,19 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0135 import RepositoryRulePullRequestPropParameters
+from .group_0135 import RepositoryRuleMergeQueuePropParameters
 
 
-class RepositoryRulePullRequest(GitHubModel):
-    """pull_request
+class RepositoryRuleMergeQueue(GitHubModel):
+    """merge_queue
 
-    Require all commits be made to a non-target branch and submitted via a pull
-    request before they can be merged.
+    Merges must be performed via a merge queue.
     """
 
-    type: Literal["pull_request"] = Field()
-    parameters: Missing[RepositoryRulePullRequestPropParameters] = Field(default=UNSET)
+    type: Literal["merge_queue"] = Field()
+    parameters: Missing[RepositoryRuleMergeQueuePropParameters] = Field(default=UNSET)
 
 
-model_rebuild(RepositoryRulePullRequest)
+model_rebuild(RepositoryRuleMergeQueue)
 
-__all__ = ("RepositoryRulePullRequest",)
+__all__ = ("RepositoryRuleMergeQueue",)

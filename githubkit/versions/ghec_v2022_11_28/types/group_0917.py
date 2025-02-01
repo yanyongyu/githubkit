@@ -9,33 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgActionsVariablesGetResponse200Type(TypedDict):
-    """OrgsOrgActionsVariablesGetResponse200"""
-
-    total_count: int
-    variables: list[OrganizationActionsVariableType]
-
-
-class OrganizationActionsVariableType(TypedDict):
-    """Actions Variable for an Organization
-
-    Organization variable for GitHub Actions.
-    """
+class OrgsOrgActionsHostedRunnersPostBodyType(TypedDict):
+    """OrgsOrgActionsHostedRunnersPostBody"""
 
     name: str
-    value: str
-    created_at: datetime
-    updated_at: datetime
-    visibility: Literal["all", "private", "selected"]
-    selected_repositories_url: NotRequired[str]
+    image: OrgsOrgActionsHostedRunnersPostBodyPropImageType
+    size: str
+    runner_group_id: int
+    maximum_runners: NotRequired[int]
+    enable_static_ip: NotRequired[bool]
+
+
+class OrgsOrgActionsHostedRunnersPostBodyPropImageType(TypedDict):
+    """OrgsOrgActionsHostedRunnersPostBodyPropImage
+
+    The image of runner. To list all available images, use `GET /actions/hosted-
+    runners/images/github-owned` or `GET /actions/hosted-runners/images/partner`.
+    """
+
+    id: NotRequired[str]
+    source: NotRequired[Literal["github", "partner", "custom"]]
+    version: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "OrganizationActionsVariableType",
-    "OrgsOrgActionsVariablesGetResponse200Type",
+    "OrgsOrgActionsHostedRunnersPostBodyPropImageType",
+    "OrgsOrgActionsHostedRunnersPostBodyType",
 )

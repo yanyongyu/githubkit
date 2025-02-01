@@ -9,33 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0002 import SimpleUserType
-from .group_0039 import ReactionRollupType
+
+class ActionsBillingUsageType(TypedDict):
+    """ActionsBillingUsage"""
+
+    total_minutes_used: int
+    total_paid_minutes_used: int
+    included_minutes: int
+    minutes_used_breakdown: ActionsBillingUsagePropMinutesUsedBreakdownType
 
 
-class TeamDiscussionCommentType(TypedDict):
-    """Team Discussion Comment
+class ActionsBillingUsagePropMinutesUsedBreakdownType(TypedDict):
+    """ActionsBillingUsagePropMinutesUsedBreakdown"""
 
-    A reply to a discussion within a team.
-    """
+    ubuntu: NotRequired[int]
+    macos: NotRequired[int]
+    windows: NotRequired[int]
+    ubuntu_4_core: NotRequired[int]
+    ubuntu_8_core: NotRequired[int]
+    ubuntu_16_core: NotRequired[int]
+    ubuntu_32_core: NotRequired[int]
+    ubuntu_64_core: NotRequired[int]
+    windows_4_core: NotRequired[int]
+    windows_8_core: NotRequired[int]
+    windows_16_core: NotRequired[int]
+    windows_32_core: NotRequired[int]
+    windows_64_core: NotRequired[int]
+    macos_12_core: NotRequired[int]
+    total: NotRequired[int]
 
-    author: Union[None, SimpleUserType]
-    body: str
-    body_html: str
-    body_version: str
-    created_at: datetime
-    last_edited_at: Union[datetime, None]
-    discussion_url: str
-    html_url: str
-    node_id: str
-    number: int
-    updated_at: datetime
-    url: str
-    reactions: NotRequired[ReactionRollupType]
 
-
-__all__ = ("TeamDiscussionCommentType",)
+__all__ = (
+    "ActionsBillingUsagePropMinutesUsedBreakdownType",
+    "ActionsBillingUsageType",
+)

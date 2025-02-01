@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+from datetime import date, datetime
 from typing import Literal, Union
 
 from pydantic import Field
@@ -18,97 +18,83 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0002 import SimpleUser
-from .group_0038 import Milestone
-from .group_0081 import TeamSimple
-from .group_0242 import AutoMerge
-from .group_0322 import PullRequestPropLabelsItems
-from .group_0323 import PullRequestPropBase, PullRequestPropHead
-from .group_0324 import PullRequestPropLinks
 
+class Page(GitHubModel):
+    """GitHub Pages
 
-class PullRequest(GitHubModel):
-    """Pull Request
-
-    Pull requests let you tell others about changes you've pushed to a repository on
-    GitHub. Once a pull request is sent, interested parties can review the set of
-    changes, discuss potential modifications, and even push follow-up commits if
-    necessary.
+    The configuration for GitHub Pages for a repository.
     """
 
-    url: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    html_url: str = Field()
-    diff_url: str = Field()
-    patch_url: str = Field()
-    issue_url: str = Field()
-    commits_url: str = Field()
-    review_comments_url: str = Field()
-    review_comment_url: str = Field()
-    comments_url: str = Field()
-    statuses_url: str = Field()
-    number: int = Field(
-        description="Number uniquely identifying the pull request within its repository."
+    url: str = Field(description="The API address for accessing this Page resource.")
+    status: Union[None, Literal["built", "building", "errored"]] = Field(
+        description="The status of the most recent build of the Page."
     )
-    state: Literal["open", "closed"] = Field(
-        description="State of this Pull Request. Either `open` or `closed`."
-    )
-    locked: bool = Field()
-    title: str = Field(description="The title of the pull request.")
-    user: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    body: Union[str, None] = Field()
-    labels: list[PullRequestPropLabelsItems] = Field()
-    milestone: Union[None, Milestone] = Field()
-    active_lock_reason: Missing[Union[str, None]] = Field(default=UNSET)
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    closed_at: Union[datetime, None] = Field()
-    merged_at: Union[datetime, None] = Field()
-    merge_commit_sha: Union[str, None] = Field()
-    assignee: Union[None, SimpleUser] = Field()
-    assignees: Missing[Union[list[SimpleUser], None]] = Field(default=UNSET)
-    requested_reviewers: Missing[Union[list[SimpleUser], None]] = Field(default=UNSET)
-    requested_teams: Missing[Union[list[TeamSimple], None]] = Field(default=UNSET)
-    head: PullRequestPropHead = Field()
-    base: PullRequestPropBase = Field()
-    links: PullRequestPropLinks = Field(alias="_links")
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ] = Field(
-        title="author_association",
-        description="How the author is associated with the repository.",
-    )
-    auto_merge: Union[AutoMerge, None] = Field(
-        title="Auto merge", description="The status of auto merging a pull request."
-    )
-    draft: Missing[bool] = Field(
+    cname: Union[str, None] = Field(description="The Pages site's custom domain")
+    protected_domain_state: Missing[
+        Union[None, Literal["pending", "verified", "unverified"]]
+    ] = Field(default=UNSET, description="The state if the domain is verified")
+    pending_domain_unverified_at: Missing[Union[datetime, None]] = Field(
         default=UNSET,
-        description="Indicates whether or not the pull request is a draft.",
+        description="The timestamp when a pending domain becomes unverified.",
     )
-    merged: bool = Field()
-    mergeable: Union[bool, None] = Field()
-    rebaseable: Missing[Union[bool, None]] = Field(default=UNSET)
-    mergeable_state: str = Field()
-    merged_by: Union[None, SimpleUser] = Field()
-    comments: int = Field()
-    review_comments: int = Field()
-    maintainer_can_modify: bool = Field(
-        description="Indicates whether maintainers can modify the pull request."
+    custom_404: bool = Field(
+        default=False, description="Whether the Page has a custom 404 page."
     )
-    commits: int = Field()
-    additions: int = Field()
-    deletions: int = Field()
-    changed_files: int = Field()
+    html_url: Missing[str] = Field(
+        default=UNSET, description="The web address the Page can be accessed from."
+    )
+    build_type: Missing[Union[None, Literal["legacy", "workflow"]]] = Field(
+        default=UNSET, description="The process in which the Page will be built."
+    )
+    source: Missing[PagesSourceHash] = Field(default=UNSET, title="Pages Source Hash")
+    public: bool = Field(
+        description="Whether the GitHub Pages site is publicly visible. If set to `true`, the site is accessible to anyone on the internet. If set to `false`, the site will only be accessible to users who have at least `read` access to the repository that published the site."
+    )
+    https_certificate: Missing[PagesHttpsCertificate] = Field(
+        default=UNSET, title="Pages Https Certificate"
+    )
+    https_enforced: Missing[bool] = Field(
+        default=UNSET, description="Whether https is enabled on the domain"
+    )
 
 
-model_rebuild(PullRequest)
+class PagesSourceHash(GitHubModel):
+    """Pages Source Hash"""
 
-__all__ = ("PullRequest",)
+    branch: str = Field()
+    path: str = Field()
+
+
+class PagesHttpsCertificate(GitHubModel):
+    """Pages Https Certificate"""
+
+    state: Literal[
+        "new",
+        "authorization_created",
+        "authorization_pending",
+        "authorized",
+        "authorization_revoked",
+        "issued",
+        "uploaded",
+        "approved",
+        "errored",
+        "bad_authz",
+        "destroy_pending",
+        "dns_changed",
+    ] = Field()
+    description: str = Field()
+    domains: list[str] = Field(
+        description="Array of the domain set and its alternate name (if it is configured)"
+    )
+    expires_at: Missing[date] = Field(default=UNSET)
+
+
+model_rebuild(Page)
+model_rebuild(PagesSourceHash)
+model_rebuild(PagesHttpsCertificate)
+
+__all__ = (
+    "Page",
+    "PagesHttpsCertificate",
+    "PagesSourceHash",
+)

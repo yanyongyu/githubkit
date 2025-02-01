@@ -9,15 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import TypedDict
 
 
-class ActionsGetDefaultWorkflowPermissionsType(TypedDict):
-    """ActionsGetDefaultWorkflowPermissions"""
+class ActionsHostedRunnerLimitsType(TypedDict):
+    """ActionsHostedRunnerLimits"""
 
-    default_workflow_permissions: Literal["read", "write"]
-    can_approve_pull_request_reviews: bool
+    public_ips: ActionsHostedRunnerLimitsPropPublicIpsType
 
 
-__all__ = ("ActionsGetDefaultWorkflowPermissionsType",)
+class ActionsHostedRunnerLimitsPropPublicIpsType(TypedDict):
+    """Static public IP Limits for GitHub-hosted Hosted Runners.
+
+    Provides details of static public IP limits for GitHub-hosted Hosted Runners
+    """
+
+    maximum: int
+    current_usage: int
+
+
+__all__ = (
+    "ActionsHostedRunnerLimitsPropPublicIpsType",
+    "ActionsHostedRunnerLimitsType",
+)

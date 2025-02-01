@@ -9,31 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0002 import SimpleUserType
-from .group_0056 import MinimalRepositoryType
+from .group_0086 import TeamSimpleType
 
 
-class PackageType(TypedDict):
-    """Package
+class TeamType(TypedDict):
+    """Team
 
-    A software package
+    Groups of organization members that gives permissions on specified repositories.
     """
 
     id: int
+    node_id: str
     name: str
-    package_type: Literal["npm", "maven", "rubygems", "docker", "nuget", "container"]
+    slug: str
+    description: Union[str, None]
+    privacy: NotRequired[str]
+    notification_setting: NotRequired[str]
+    permission: str
+    permissions: NotRequired[TeamPropPermissionsType]
     url: str
     html_url: str
-    version_count: int
-    visibility: Literal["private", "public"]
-    owner: NotRequired[Union[None, SimpleUserType]]
-    repository: NotRequired[Union[None, MinimalRepositoryType]]
-    created_at: datetime
-    updated_at: datetime
+    members_url: str
+    repositories_url: str
+    parent: Union[None, TeamSimpleType]
 
 
-__all__ = ("PackageType",)
+class TeamPropPermissionsType(TypedDict):
+    """TeamPropPermissions"""
+
+    pull: bool
+    triage: bool
+    push: bool
+    maintain: bool
+    admin: bool
+
+
+__all__ = (
+    "TeamPropPermissionsType",
+    "TeamType",
+)

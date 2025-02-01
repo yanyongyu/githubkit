@@ -9,17 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class AuditLogStreamKeyType(TypedDict):
-    """stream-key
+class RunnerApplicationType(TypedDict):
+    """Runner Application
 
-    Audit Log Streaming Public Key
+    Runner Application
     """
 
-    key_id: str
-    key: str
+    os: str
+    architecture: str
+    download_url: str
+    filename: str
+    temp_download_token: NotRequired[str]
+    sha256_checksum: NotRequired[str]
 
 
-__all__ = ("AuditLogStreamKeyType",)
+__all__ = ("RunnerApplicationType",)

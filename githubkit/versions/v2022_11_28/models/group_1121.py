@@ -16,21 +16,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UserCodespacesCodespaceNamePatchBody(GitHubModel):
-    """UserCodespacesCodespaceNamePatchBody"""
+class TeamsTeamIdDiscussionsDiscussionNumberPatchBody(GitHubModel):
+    """TeamsTeamIdDiscussionsDiscussionNumberPatchBody"""
 
-    machine: Missing[str] = Field(
-        default=UNSET, description="A valid machine to transition this codespace to."
+    title: Missing[str] = Field(
+        default=UNSET, description="The discussion post's title."
     )
-    display_name: Missing[str] = Field(
-        default=UNSET, description="Display name for this codespace"
-    )
-    recent_folders: Missing[list[str]] = Field(
-        default=UNSET,
-        description="Recently opened folders inside the codespace. It is currently used by the clients to determine the folder path to load the codespace in.",
+    body: Missing[str] = Field(
+        default=UNSET, description="The discussion post's body text."
     )
 
 
-model_rebuild(UserCodespacesCodespaceNamePatchBody)
+model_rebuild(TeamsTeamIdDiscussionsDiscussionNumberPatchBody)
 
-__all__ = ("UserCodespacesCodespaceNamePatchBody",)
+__all__ = ("TeamsTeamIdDiscussionsDiscussionNumberPatchBody",)

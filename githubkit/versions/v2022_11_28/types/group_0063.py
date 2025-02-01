@@ -12,13 +12,11 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class OidcCustomSubType(TypedDict):
-    """Actions OIDC Subject customization
+class ActionsCacheUsageOrgEnterpriseType(TypedDict):
+    """ActionsCacheUsageOrgEnterprise"""
 
-    Actions OIDC Subject customization
-    """
-
-    include_claim_keys: list[str]
+    total_active_caches_count: int
+    total_active_caches_size_in_bytes: int
 
 
-__all__ = ("OidcCustomSubType",)
+__all__ = ("ActionsCacheUsageOrgEnterpriseType",)

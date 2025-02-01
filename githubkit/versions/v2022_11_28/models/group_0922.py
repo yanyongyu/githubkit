@@ -12,17 +12,23 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0175 import Artifact
-
-
-class ReposOwnerRepoActionsArtifactsGetResponse200(GitHubModel):
-    """ReposOwnerRepoActionsArtifactsGetResponse200"""
-
-    total_count: int = Field()
-    artifacts: list[Artifact] = Field()
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-model_rebuild(ReposOwnerRepoActionsArtifactsGetResponse200)
+class ProjectsColumnsCardsCardIdMovesPostBody(GitHubModel):
+    """ProjectsColumnsCardsCardIdMovesPostBody"""
 
-__all__ = ("ReposOwnerRepoActionsArtifactsGetResponse200",)
+    position: str = Field(
+        pattern="^(?:top|bottom|after:\\d+)$",
+        description="The position of the card in a column. Can be one of: `top`, `bottom`, or `after:<card_id>` to place after the specified card.",
+    )
+    column_id: Missing[int] = Field(
+        default=UNSET,
+        description="The unique identifier of the column the card should be moved to",
+    )
+
+
+model_rebuild(ProjectsColumnsCardsCardIdMovesPostBody)
+
+__all__ = ("ProjectsColumnsCardsCardIdMovesPostBody",)

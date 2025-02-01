@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from datetime import datetime
+from typing import Union
 
 from pydantic import Field
 
@@ -17,100 +18,34 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class SecurityAndAnalysis(GitHubModel):
-    """SecurityAndAnalysis"""
-
-    advanced_security: Missing[SecurityAndAnalysisPropAdvancedSecurity] = Field(
-        default=UNSET
-    )
-    dependabot_security_updates: Missing[
-        SecurityAndAnalysisPropDependabotSecurityUpdates
-    ] = Field(
-        default=UNSET,
-        description="Enable or disable Dependabot security updates for the repository.",
-    )
-    secret_scanning: Missing[SecurityAndAnalysisPropSecretScanning] = Field(
-        default=UNSET
-    )
-    secret_scanning_push_protection: Missing[
-        SecurityAndAnalysisPropSecretScanningPushProtection
-    ] = Field(default=UNSET)
-    secret_scanning_non_provider_patterns: Missing[
-        SecurityAndAnalysisPropSecretScanningNonProviderPatterns
-    ] = Field(default=UNSET)
-    secret_scanning_ai_detection: Missing[
-        SecurityAndAnalysisPropSecretScanningAiDetection
-    ] = Field(default=UNSET)
-    secret_scanning_validity_checks: Missing[
-        SecurityAndAnalysisPropSecretScanningValidityChecks
-    ] = Field(default=UNSET)
+from .group_0003 import SimpleUser
 
 
-class SecurityAndAnalysisPropAdvancedSecurity(GitHubModel):
-    """SecurityAndAnalysisPropAdvancedSecurity"""
+class GistCommit(GitHubModel):
+    """Gist Commit
 
-    status: Missing[Literal["enabled", "disabled"]] = Field(default=UNSET)
-
-
-class SecurityAndAnalysisPropDependabotSecurityUpdates(GitHubModel):
-    """SecurityAndAnalysisPropDependabotSecurityUpdates
-
-    Enable or disable Dependabot security updates for the repository.
+    Gist Commit
     """
 
-    status: Missing[Literal["enabled", "disabled"]] = Field(
-        default=UNSET,
-        description="The enablement status of Dependabot security updates for the repository.",
-    )
+    url: str = Field()
+    version: str = Field()
+    user: Union[None, SimpleUser] = Field()
+    change_status: GistCommitPropChangeStatus = Field()
+    committed_at: datetime = Field()
 
 
-class SecurityAndAnalysisPropSecretScanning(GitHubModel):
-    """SecurityAndAnalysisPropSecretScanning"""
+class GistCommitPropChangeStatus(GitHubModel):
+    """GistCommitPropChangeStatus"""
 
-    status: Missing[Literal["enabled", "disabled"]] = Field(default=UNSET)
-
-
-class SecurityAndAnalysisPropSecretScanningPushProtection(GitHubModel):
-    """SecurityAndAnalysisPropSecretScanningPushProtection"""
-
-    status: Missing[Literal["enabled", "disabled"]] = Field(default=UNSET)
+    total: Missing[int] = Field(default=UNSET)
+    additions: Missing[int] = Field(default=UNSET)
+    deletions: Missing[int] = Field(default=UNSET)
 
 
-class SecurityAndAnalysisPropSecretScanningNonProviderPatterns(GitHubModel):
-    """SecurityAndAnalysisPropSecretScanningNonProviderPatterns"""
-
-    status: Missing[Literal["enabled", "disabled"]] = Field(default=UNSET)
-
-
-class SecurityAndAnalysisPropSecretScanningAiDetection(GitHubModel):
-    """SecurityAndAnalysisPropSecretScanningAiDetection"""
-
-    status: Missing[Literal["enabled", "disabled"]] = Field(default=UNSET)
-
-
-class SecurityAndAnalysisPropSecretScanningValidityChecks(GitHubModel):
-    """SecurityAndAnalysisPropSecretScanningValidityChecks"""
-
-    status: Missing[Literal["enabled", "disabled"]] = Field(default=UNSET)
-
-
-model_rebuild(SecurityAndAnalysis)
-model_rebuild(SecurityAndAnalysisPropAdvancedSecurity)
-model_rebuild(SecurityAndAnalysisPropDependabotSecurityUpdates)
-model_rebuild(SecurityAndAnalysisPropSecretScanning)
-model_rebuild(SecurityAndAnalysisPropSecretScanningPushProtection)
-model_rebuild(SecurityAndAnalysisPropSecretScanningNonProviderPatterns)
-model_rebuild(SecurityAndAnalysisPropSecretScanningAiDetection)
-model_rebuild(SecurityAndAnalysisPropSecretScanningValidityChecks)
+model_rebuild(GistCommit)
+model_rebuild(GistCommitPropChangeStatus)
 
 __all__ = (
-    "SecurityAndAnalysis",
-    "SecurityAndAnalysisPropAdvancedSecurity",
-    "SecurityAndAnalysisPropDependabotSecurityUpdates",
-    "SecurityAndAnalysisPropSecretScanning",
-    "SecurityAndAnalysisPropSecretScanningAiDetection",
-    "SecurityAndAnalysisPropSecretScanningNonProviderPatterns",
-    "SecurityAndAnalysisPropSecretScanningPushProtection",
-    "SecurityAndAnalysisPropSecretScanningValidityChecks",
+    "GistCommit",
+    "GistCommitPropChangeStatus",
 )

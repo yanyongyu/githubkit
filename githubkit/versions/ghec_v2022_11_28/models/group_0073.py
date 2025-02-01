@@ -9,24 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0074 import (
-    EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName,
-)
+from .group_0069 import DependabotAlertPackage
 
 
-class EnterpriseRulesetConditionsOrganizationNameTarget(GitHubModel):
-    """Repository ruleset conditions for organization names
+class DependabotAlertWithRepositoryPropDependency(GitHubModel):
+    """DependabotAlertWithRepositoryPropDependency
 
-    Parameters for an organization name condition
+    Details for the vulnerable dependency.
     """
 
-    organization_name: EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName = Field()
+    package: Missing[DependabotAlertPackage] = Field(
+        default=UNSET, description="Details for the vulnerable package."
+    )
+    manifest_path: Missing[str] = Field(
+        default=UNSET,
+        description="The full path to the dependency manifest file, relative to the root of the repository.",
+    )
+    scope: Missing[Union[None, Literal["development", "runtime"]]] = Field(
+        default=UNSET, description="The execution scope of the vulnerable dependency."
+    )
 
 
-model_rebuild(EnterpriseRulesetConditionsOrganizationNameTarget)
+model_rebuild(DependabotAlertWithRepositoryPropDependency)
 
-__all__ = ("EnterpriseRulesetConditionsOrganizationNameTarget",)
+__all__ = ("DependabotAlertWithRepositoryPropDependency",)

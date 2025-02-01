@@ -9,25 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0003 import SimpleUser
 
 
-class BasicError(GitHubModel):
-    """Basic Error
+class GlobalAdvisoryPropCreditsItems(GitHubModel):
+    """GlobalAdvisoryPropCreditsItems"""
 
-    Basic Error
-    """
+    user: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    type: Literal[
+        "analyst",
+        "finder",
+        "reporter",
+        "coordinator",
+        "remediation_developer",
+        "remediation_reviewer",
+        "remediation_verifier",
+        "tool",
+        "sponsor",
+        "other",
+    ] = Field(description="The type of credit the user is receiving.")
 
-    message: Missing[str] = Field(default=UNSET)
-    documentation_url: Missing[str] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-    status: Missing[str] = Field(default=UNSET)
 
+model_rebuild(GlobalAdvisoryPropCreditsItems)
 
-model_rebuild(BasicError)
-
-__all__ = ("BasicError",)
+__all__ = ("GlobalAdvisoryPropCreditsItems",)

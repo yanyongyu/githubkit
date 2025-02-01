@@ -9,51 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from datetime import datetime
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class AmazonS3OidcConfig(GitHubModel):
-    """AmazonS3OIDCConfig
+class Announcement(GitHubModel):
+    """Enterprise Announcement
 
-    Amazon S3 OIDC Config for audit log streaming configuration.
+    Enterprise global announcement
     """
 
-    bucket: str = Field(description="Amazon S3 Bucket Name.")
-    region: str = Field(description="AWS S3 Bucket Region.")
-    key_id: str = Field(
-        description="Key ID obtained from the audit log stream key endpoint used to encrypt secrets."
+    announcement: Union[str, None] = Field(
+        description='The announcement text in GitHub Flavored Markdown. For more information about GitHub Flavored Markdown, see "[Basic writing and formatting syntax](https://docs.github.com/enterprise-cloud@latest//github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)."'
     )
-    authentication_type: Literal["oidc"] = Field(
-        description="Authentication Type for Amazon S3."
-    )
-    arn_role: str = Field()
-
-
-class SplunkConfig(GitHubModel):
-    """SplunkConfig
-
-    Splunk Config for Audit Log Stream Configuration
-    """
-
-    domain: str = Field(description="Domain of Splunk instance.")
-    port: int = Field(description="The port number for connecting to Splunk.")
-    key_id: str = Field(
-        description="Key ID obtained from the audit log stream key endpoint used to encrypt secrets."
-    )
-    encrypted_token: str = Field(description="Encrypted Token.")
-    ssl_verify: bool = Field(
-        description="SSL verification helps ensure your events are sent to your Splunk endpoint securely."
+    expires_at: Missing[Union[datetime, None]] = Field(
+        default=UNSET,
+        description="The time at which the announcement expires. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`. To set an announcement that never expires, omit this parameter, set it to `null`, or set it to an empty string.",
     )
 
 
-model_rebuild(AmazonS3OidcConfig)
-model_rebuild(SplunkConfig)
+model_rebuild(Announcement)
 
-__all__ = (
-    "AmazonS3OidcConfig",
-    "SplunkConfig",
-)
+__all__ = ("Announcement",)

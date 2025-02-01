@@ -9,52 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0064 import DependabotAlertPackage
+from .group_0064 import TeamSimple
 
 
-class DependabotAlertSecurityVulnerability(GitHubModel):
-    """DependabotAlertSecurityVulnerability
+class Team(GitHubModel):
+    """Team
 
-    Details pertaining to one vulnerable version range for the advisory.
+    Groups of organization members that gives permissions on specified repositories.
     """
 
-    package: DependabotAlertPackage = Field(
-        description="Details for the vulnerable package."
-    )
-    severity: Literal["low", "medium", "high", "critical"] = Field(
-        description="The severity of the vulnerability."
-    )
-    vulnerable_version_range: str = Field(
-        description="Conditions that identify vulnerable versions of this vulnerability's package."
-    )
-    first_patched_version: Union[
-        DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion, None
-    ] = Field(
-        description="Details pertaining to the package version that patches this vulnerability."
-    )
+    id: int = Field()
+    node_id: str = Field()
+    name: str = Field()
+    slug: str = Field()
+    description: Union[str, None] = Field()
+    privacy: Missing[str] = Field(default=UNSET)
+    notification_setting: Missing[str] = Field(default=UNSET)
+    permission: str = Field()
+    permissions: Missing[TeamPropPermissions] = Field(default=UNSET)
+    url: str = Field()
+    html_url: str = Field()
+    members_url: str = Field()
+    repositories_url: str = Field()
+    parent: Union[None, TeamSimple] = Field()
 
 
-class DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion(GitHubModel):
-    """DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion
+class TeamPropPermissions(GitHubModel):
+    """TeamPropPermissions"""
 
-    Details pertaining to the package version that patches this vulnerability.
-    """
+    pull: bool = Field()
+    triage: bool = Field()
+    push: bool = Field()
+    maintain: bool = Field()
+    admin: bool = Field()
 
-    identifier: str = Field(
-        description="The package version that patches this vulnerability."
-    )
 
-
-model_rebuild(DependabotAlertSecurityVulnerability)
-model_rebuild(DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion)
+model_rebuild(Team)
+model_rebuild(TeamPropPermissions)
 
 __all__ = (
-    "DependabotAlertSecurityVulnerability",
-    "DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion",
+    "Team",
+    "TeamPropPermissions",
 )

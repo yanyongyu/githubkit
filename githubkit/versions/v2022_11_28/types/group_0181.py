@@ -9,16 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from datetime import datetime
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ActionsRepositoryPermissionsType(TypedDict):
-    """ActionsRepositoryPermissions"""
+class ArtifactType(TypedDict):
+    """Artifact
 
-    enabled: bool
-    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
-    selected_actions_url: NotRequired[str]
+    An artifact
+    """
+
+    id: int
+    node_id: str
+    name: str
+    size_in_bytes: int
+    url: str
+    archive_download_url: str
+    expired: bool
+    created_at: Union[datetime, None]
+    expires_at: Union[datetime, None]
+    updated_at: Union[datetime, None]
+    workflow_run: NotRequired[Union[ArtifactPropWorkflowRunType, None]]
 
 
-__all__ = ("ActionsRepositoryPermissionsType",)
+class ArtifactPropWorkflowRunType(TypedDict):
+    """ArtifactPropWorkflowRun"""
+
+    id: NotRequired[int]
+    repository_id: NotRequired[int]
+    head_repository_id: NotRequired[int]
+    head_branch: NotRequired[str]
+    head_sha: NotRequired[str]
+
+
+__all__ = (
+    "ArtifactPropWorkflowRunType",
+    "ArtifactType",
+)

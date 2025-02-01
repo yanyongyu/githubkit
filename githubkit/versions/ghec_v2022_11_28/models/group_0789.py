@@ -17,24 +17,28 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0002 import SimpleUser
-from .group_0445 import SimpleInstallation
-from .group_0446 import OrganizationSimpleWebhooks
-from .group_0447 import RepositoryWebhooks
-from .group_0492 import SecretScanningAlertWebhook
+from .group_0003 import SimpleUser
+from .group_0451 import EnterpriseWebhooks
+from .group_0452 import SimpleInstallation
+from .group_0453 import OrganizationSimpleWebhooks
+from .group_0454 import RepositoryWebhooks
 
 
-class WebhookSecretScanningAlertLocationCreated(GitHubModel):
-    """Secret Scanning Alert Location Created Event"""
+class WebhookRepositoryTransferred(GitHubModel):
+    """repository transferred event"""
 
-    action: Literal["created"] = Field()
-    alert: SecretScanningAlertWebhook = Field()
+    action: Literal["transferred"] = Field()
+    changes: WebhookRepositoryTransferredPropChanges = Field()
+    enterprise: Missing[EnterpriseWebhooks] = Field(
+        default=UNSET,
+        title="Enterprise",
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."',
+    )
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    location: SecretScanningLocation = Field()
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
         title="Organization Simple",
@@ -47,267 +51,90 @@ class WebhookSecretScanningAlertLocationCreated(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-class SecretScanningLocation(GitHubModel):
-    """SecretScanningLocation"""
+class WebhookRepositoryTransferredPropChanges(GitHubModel):
+    """WebhookRepositoryTransferredPropChanges"""
 
-    type: Missing[
-        Literal[
-            "commit",
-            "wiki_commit",
-            "issue_title",
-            "issue_body",
-            "issue_comment",
-            "discussion_title",
-            "discussion_body",
-            "discussion_comment",
-            "pull_request_title",
-            "pull_request_body",
-            "pull_request_comment",
-            "pull_request_review",
-            "pull_request_review_comment",
-        ]
-    ] = Field(
-        default=UNSET,
-        description="The location type. Because secrets may be found in different types of resources (ie. code, comments, issues, pull requests, discussions), this field identifies the type of resource where the secret was found.",
-    )
-    details: Missing[
-        Union[
-            SecretScanningLocationCommit,
-            SecretScanningLocationWikiCommit,
-            SecretScanningLocationIssueTitle,
-            SecretScanningLocationIssueBody,
-            SecretScanningLocationIssueComment,
-            SecretScanningLocationDiscussionTitle,
-            SecretScanningLocationDiscussionBody,
-            SecretScanningLocationDiscussionComment,
-            SecretScanningLocationPullRequestTitle,
-            SecretScanningLocationPullRequestBody,
-            SecretScanningLocationPullRequestComment,
-            SecretScanningLocationPullRequestReview,
-            SecretScanningLocationPullRequestReviewComment,
-        ]
-    ] = Field(default=UNSET)
+    owner: WebhookRepositoryTransferredPropChangesPropOwner = Field()
 
 
-class SecretScanningLocationCommit(GitHubModel):
-    """SecretScanningLocationCommit
+class WebhookRepositoryTransferredPropChangesPropOwner(GitHubModel):
+    """WebhookRepositoryTransferredPropChangesPropOwner"""
 
-    Represents a 'commit' secret scanning location type. This location type shows
-    that a secret was detected inside a commit to a repository.
-    """
-
-    path: str = Field(description="The file path in the repository")
-    start_line: float = Field(
-        description="Line number at which the secret starts in the file"
-    )
-    end_line: float = Field(
-        description="Line number at which the secret ends in the file"
-    )
-    start_column: float = Field(
-        description="The column at which the secret starts within the start line when the file is interpreted as 8BIT ASCII"
-    )
-    end_column: float = Field(
-        description="The column at which the secret ends within the end line when the file is interpreted as 8BIT ASCII"
-    )
-    blob_sha: str = Field(description="SHA-1 hash ID of the associated blob")
-    blob_url: str = Field(description="The API URL to get the associated blob resource")
-    commit_sha: str = Field(description="SHA-1 hash ID of the associated commit")
-    commit_url: str = Field(
-        description="The API URL to get the associated commit resource"
+    from_: WebhookRepositoryTransferredPropChangesPropOwnerPropFrom = Field(
+        alias="from"
     )
 
 
-class SecretScanningLocationWikiCommit(GitHubModel):
-    """SecretScanningLocationWikiCommit
+class WebhookRepositoryTransferredPropChangesPropOwnerPropFrom(GitHubModel):
+    """WebhookRepositoryTransferredPropChangesPropOwnerPropFrom"""
 
-    Represents a 'wiki_commit' secret scanning location type. This location type
-    shows that a secret was detected inside a commit to a repository wiki.
-    """
-
-    path: str = Field(description="The file path of the wiki page")
-    start_line: float = Field(
-        description="Line number at which the secret starts in the file"
-    )
-    end_line: float = Field(
-        description="Line number at which the secret ends in the file"
-    )
-    start_column: float = Field(
-        description="The column at which the secret starts within the start line when the file is interpreted as 8-bit ASCII."
-    )
-    end_column: float = Field(
-        description="The column at which the secret ends within the end line when the file is interpreted as 8-bit ASCII."
-    )
-    blob_sha: str = Field(description="SHA-1 hash ID of the associated blob")
-    page_url: str = Field(description="The GitHub URL to get the associated wiki page")
-    commit_sha: str = Field(description="SHA-1 hash ID of the associated commit")
-    commit_url: str = Field(
-        description="The GitHub URL to get the associated wiki commit"
-    )
+    organization: Missing[
+        WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropOrganization
+    ] = Field(default=UNSET, title="Organization")
+    user: Missing[
+        Union[WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropUser, None]
+    ] = Field(default=UNSET, title="User")
 
 
-class SecretScanningLocationIssueTitle(GitHubModel):
-    """SecretScanningLocationIssueTitle
+class WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropOrganization(
+    GitHubModel
+):
+    """Organization"""
 
-    Represents an 'issue_title' secret scanning location type. This location type
-    shows that a secret was detected in the title of an issue.
-    """
-
-    issue_title_url: str = Field(
-        description="The API URL to get the issue where the secret was detected."
-    )
-
-
-class SecretScanningLocationIssueBody(GitHubModel):
-    """SecretScanningLocationIssueBody
-
-    Represents an 'issue_body' secret scanning location type. This location type
-    shows that a secret was detected in the body of an issue.
-    """
-
-    issue_body_url: str = Field(
-        description="The API URL to get the issue where the secret was detected."
-    )
+    avatar_url: str = Field()
+    description: Union[str, None] = Field()
+    events_url: str = Field()
+    hooks_url: str = Field()
+    html_url: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    issues_url: str = Field()
+    login: str = Field()
+    members_url: str = Field()
+    node_id: str = Field()
+    public_members_url: str = Field()
+    repos_url: str = Field()
+    url: str = Field()
 
 
-class SecretScanningLocationIssueComment(GitHubModel):
-    """SecretScanningLocationIssueComment
+class WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropUser(GitHubModel):
+    """User"""
 
-    Represents an 'issue_comment' secret scanning location type. This location type
-    shows that a secret was detected in a comment on an issue.
-    """
-
-    issue_comment_url: str = Field(
-        description="The API URL to get the issue comment where the secret was detected."
-    )
-
-
-class SecretScanningLocationDiscussionTitle(GitHubModel):
-    """SecretScanningLocationDiscussionTitle
-
-    Represents a 'discussion_title' secret scanning location type. This location
-    type shows that a secret was detected in the title of a discussion.
-    """
-
-    discussion_title_url: str = Field(
-        description="The URL to the discussion where the secret was detected."
-    )
-
-
-class SecretScanningLocationDiscussionBody(GitHubModel):
-    """SecretScanningLocationDiscussionBody
-
-    Represents a 'discussion_body' secret scanning location type. This location type
-    shows that a secret was detected in the body of a discussion.
-    """
-
-    discussion_body_url: str = Field(
-        description="The URL to the discussion where the secret was detected."
-    )
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
 
 
-class SecretScanningLocationDiscussionComment(GitHubModel):
-    """SecretScanningLocationDiscussionComment
-
-    Represents a 'discussion_comment' secret scanning location type. This location
-    type shows that a secret was detected in a comment on a discussion.
-    """
-
-    discussion_comment_url: str = Field(
-        description="The API URL to get the discussion comment where the secret was detected."
-    )
-
-
-class SecretScanningLocationPullRequestTitle(GitHubModel):
-    """SecretScanningLocationPullRequestTitle
-
-    Represents a 'pull_request_title' secret scanning location type. This location
-    type shows that a secret was detected in the title of a pull request.
-    """
-
-    pull_request_title_url: str = Field(
-        description="The API URL to get the pull request where the secret was detected."
-    )
-
-
-class SecretScanningLocationPullRequestBody(GitHubModel):
-    """SecretScanningLocationPullRequestBody
-
-    Represents a 'pull_request_body' secret scanning location type. This location
-    type shows that a secret was detected in the body of a pull request.
-    """
-
-    pull_request_body_url: str = Field(
-        description="The API URL to get the pull request where the secret was detected."
-    )
-
-
-class SecretScanningLocationPullRequestComment(GitHubModel):
-    """SecretScanningLocationPullRequestComment
-
-    Represents a 'pull_request_comment' secret scanning location type. This location
-    type shows that a secret was detected in a comment on a pull request.
-    """
-
-    pull_request_comment_url: str = Field(
-        description="The API URL to get the pull request comment where the secret was detected."
-    )
-
-
-class SecretScanningLocationPullRequestReview(GitHubModel):
-    """SecretScanningLocationPullRequestReview
-
-    Represents a 'pull_request_review' secret scanning location type. This location
-    type shows that a secret was detected in a review on a pull request.
-    """
-
-    pull_request_review_url: str = Field(
-        description="The API URL to get the pull request review where the secret was detected."
-    )
-
-
-class SecretScanningLocationPullRequestReviewComment(GitHubModel):
-    """SecretScanningLocationPullRequestReviewComment
-
-    Represents a 'pull_request_review_comment' secret scanning location type. This
-    location type shows that a secret was detected in a review comment on a pull
-    request.
-    """
-
-    pull_request_review_comment_url: str = Field(
-        description="The API URL to get the pull request review comment where the secret was detected."
-    )
-
-
-model_rebuild(WebhookSecretScanningAlertLocationCreated)
-model_rebuild(SecretScanningLocation)
-model_rebuild(SecretScanningLocationCommit)
-model_rebuild(SecretScanningLocationWikiCommit)
-model_rebuild(SecretScanningLocationIssueTitle)
-model_rebuild(SecretScanningLocationIssueBody)
-model_rebuild(SecretScanningLocationIssueComment)
-model_rebuild(SecretScanningLocationDiscussionTitle)
-model_rebuild(SecretScanningLocationDiscussionBody)
-model_rebuild(SecretScanningLocationDiscussionComment)
-model_rebuild(SecretScanningLocationPullRequestTitle)
-model_rebuild(SecretScanningLocationPullRequestBody)
-model_rebuild(SecretScanningLocationPullRequestComment)
-model_rebuild(SecretScanningLocationPullRequestReview)
-model_rebuild(SecretScanningLocationPullRequestReviewComment)
+model_rebuild(WebhookRepositoryTransferred)
+model_rebuild(WebhookRepositoryTransferredPropChanges)
+model_rebuild(WebhookRepositoryTransferredPropChangesPropOwner)
+model_rebuild(WebhookRepositoryTransferredPropChangesPropOwnerPropFrom)
+model_rebuild(WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropOrganization)
+model_rebuild(WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropUser)
 
 __all__ = (
-    "SecretScanningLocation",
-    "SecretScanningLocationCommit",
-    "SecretScanningLocationDiscussionBody",
-    "SecretScanningLocationDiscussionComment",
-    "SecretScanningLocationDiscussionTitle",
-    "SecretScanningLocationIssueBody",
-    "SecretScanningLocationIssueComment",
-    "SecretScanningLocationIssueTitle",
-    "SecretScanningLocationPullRequestBody",
-    "SecretScanningLocationPullRequestComment",
-    "SecretScanningLocationPullRequestReview",
-    "SecretScanningLocationPullRequestReviewComment",
-    "SecretScanningLocationPullRequestTitle",
-    "SecretScanningLocationWikiCommit",
-    "WebhookSecretScanningAlertLocationCreated",
+    "WebhookRepositoryTransferred",
+    "WebhookRepositoryTransferredPropChanges",
+    "WebhookRepositoryTransferredPropChangesPropOwner",
+    "WebhookRepositoryTransferredPropChangesPropOwnerPropFrom",
+    "WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropOrganization",
+    "WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropUser",
 )

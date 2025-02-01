@@ -9,19 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
+
+from .group_0003 import SimpleUserType
 
 
-class BasicErrorType(TypedDict):
-    """Basic Error
+class GlobalAdvisoryPropCreditsItemsType(TypedDict):
+    """GlobalAdvisoryPropCreditsItems"""
 
-    Basic Error
-    """
+    user: SimpleUserType
+    type: Literal[
+        "analyst",
+        "finder",
+        "reporter",
+        "coordinator",
+        "remediation_developer",
+        "remediation_reviewer",
+        "remediation_verifier",
+        "tool",
+        "sponsor",
+        "other",
+    ]
 
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
-    url: NotRequired[str]
-    status: NotRequired[str]
 
-
-__all__ = ("BasicErrorType",)
+__all__ = ("GlobalAdvisoryPropCreditsItemsType",)

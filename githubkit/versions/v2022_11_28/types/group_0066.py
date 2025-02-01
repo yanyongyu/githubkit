@@ -13,11 +13,17 @@ from typing import Literal
 from typing_extensions import TypedDict
 
 
-class ActionsGetDefaultWorkflowPermissionsType(TypedDict):
-    """ActionsGetDefaultWorkflowPermissions"""
+class ActionsHostedRunnerImageType(TypedDict):
+    """GitHub-hosted runner image details.
 
-    default_workflow_permissions: Literal["read", "write"]
-    can_approve_pull_request_reviews: bool
+    Provides details of a hosted runner image
+    """
+
+    id: str
+    platform: str
+    size_gb: int
+    display_name: str
+    source: Literal["github", "partner", "custom"]
 
 
-__all__ = ("ActionsGetDefaultWorkflowPermissionsType",)
+__all__ = ("ActionsHostedRunnerImageType",)

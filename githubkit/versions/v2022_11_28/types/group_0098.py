@@ -9,38 +9,15 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0002 import SimpleUserType
-from .group_0019 import RepositoryType
+
+class ApiInsightsTimeStatsItemsType(TypedDict):
+    """ApiInsightsTimeStatsItems"""
+
+    timestamp: NotRequired[str]
+    total_request_count: NotRequired[int]
+    rate_limited_request_count: NotRequired[int]
 
 
-class MigrationType(TypedDict):
-    """Migration
-
-    A migration.
-    """
-
-    id: int
-    owner: Union[None, SimpleUserType]
-    guid: str
-    state: str
-    lock_repositories: bool
-    exclude_metadata: bool
-    exclude_git_data: bool
-    exclude_attachments: bool
-    exclude_releases: bool
-    exclude_owner_projects: bool
-    org_metadata_only: bool
-    repositories: list[RepositoryType]
-    url: str
-    created_at: datetime
-    updated_at: datetime
-    node_id: str
-    archive_url: NotRequired[str]
-    exclude: NotRequired[list[str]]
-
-
-__all__ = ("MigrationType",)
+__all__ = ("ApiInsightsTimeStatsItemsType",)

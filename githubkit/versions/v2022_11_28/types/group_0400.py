@@ -9,27 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class WebhooksDeployKeyType(TypedDict):
-    """WebhooksDeployKey
+class SimpleInstallationType(TypedDict):
+    """Simple Installation
 
-    The [`deploy key`](https://docs.github.com/rest/deploy-keys/deploy-keys#get-a-
-    deploy-key) resource.
+    The GitHub App installation. Webhook payloads contain the `installation`
+    property when the event is configured
+    for and sent to a GitHub App. For more information,
+    see "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-
+    github-apps/registering-a-github-app/using-webhooks-with-github-apps)."
     """
 
-    added_by: NotRequired[Union[str, None]]
-    created_at: str
     id: int
-    key: str
-    last_used: NotRequired[Union[str, None]]
-    read_only: bool
-    title: str
-    url: str
-    verified: bool
-    enabled: NotRequired[bool]
+    node_id: str
 
 
-__all__ = ("WebhooksDeployKeyType",)
+__all__ = ("SimpleInstallationType",)

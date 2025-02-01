@@ -17,18 +17,18 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0002 import SimpleUser
-from .group_0038 import Milestone
-from .group_0393 import EnterpriseWebhooks
-from .group_0395 import OrganizationSimpleWebhooks
-from .group_0396 import RepositoryWebhooks
-from .group_0433 import WebhooksPullRequest5
+from .group_0003 import SimpleUser
+from .group_0039 import Milestone
+from .group_0399 import EnterpriseWebhooks
+from .group_0401 import OrganizationSimpleWebhooks
+from .group_0402 import RepositoryWebhooks
+from .group_0439 import WebhooksPullRequest5
 
 
-class WebhookPullRequestMilestoned(GitHubModel):
-    """pull_request milestoned event"""
+class WebhookPullRequestDemilestoned(GitHubModel):
+    """pull_request demilestoned event"""
 
-    action: Literal["milestoned"] = Field()
+    action: Literal["demilestoned"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -55,6 +55,6 @@ class WebhookPullRequestMilestoned(GitHubModel):
     )
 
 
-model_rebuild(WebhookPullRequestMilestoned)
+model_rebuild(WebhookPullRequestDemilestoned)
 
-__all__ = ("WebhookPullRequestMilestoned",)
+__all__ = ("WebhookPullRequestDemilestoned",)

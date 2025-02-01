@@ -31,6 +31,7 @@ if TYPE_CHECKING:
     from .gists import GistsClient
     from .git import GitClient
     from .gitignore import GitignoreClient
+    from .hosted_compute import HostedComputeClient
     from .interactions import InteractionsClient
     from .issues import IssuesClient
     from .licenses import LicensesClient
@@ -233,6 +234,12 @@ class RestNamespace:
         from .repos import ReposClient
 
         return ReposClient(self._github)
+
+    @cached_property
+    def hosted_compute(self) -> "HostedComputeClient":
+        from .hosted_compute import HostedComputeClient
+
+        return HostedComputeClient(self._github)
 
     @cached_property
     def teams(self) -> "TeamsClient":

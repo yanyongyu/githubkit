@@ -9,20 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from datetime import datetime
+from typing import Union
+from typing_extensions import TypedDict
+
+from .group_0003 import SimpleUserType
 
 
-class TagProtectionType(TypedDict):
-    """Tag protection
+class StargazerType(TypedDict):
+    """Stargazer
 
-    Tag protection
+    Stargazer
     """
 
-    id: NotRequired[int]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
-    enabled: NotRequired[bool]
-    pattern: str
+    starred_at: datetime
+    user: Union[None, SimpleUserType]
 
 
-__all__ = ("TagProtectionType",)
+__all__ = ("StargazerType",)

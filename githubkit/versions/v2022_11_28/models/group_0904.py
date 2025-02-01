@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from datetime import datetime
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,17 +19,38 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ProjectsColumnsCardsCardIdPatchBody(GitHubModel):
-    """ProjectsColumnsCardsCardIdPatchBody"""
+class OrgsOrgSettingsNetworkConfigurationsGetResponse200(GitHubModel):
+    """OrgsOrgSettingsNetworkConfigurationsGetResponse200"""
 
-    note: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The project card's note"
+    total_count: int = Field()
+    network_configurations: list[NetworkConfiguration] = Field()
+
+
+class NetworkConfiguration(GitHubModel):
+    """Hosted compute network configuration
+
+    A hosted compute network configuration.
+    """
+
+    id: str = Field(description="The unique identifier of the network configuration.")
+    name: str = Field(description="The name of the network configuration.")
+    compute_service: Missing[Literal["none", "actions", "codespaces"]] = Field(
+        default=UNSET,
+        description="The hosted compute service the network configuration supports.",
     )
-    archived: Missing[bool] = Field(
-        default=UNSET, description="Whether or not the card is archived"
+    network_settings_ids: Missing[list[str]] = Field(
+        default=UNSET,
+        description="The unique identifier of each network settings in the configuration.",
+    )
+    created_on: Union[datetime, None] = Field(
+        description="The time at which the network configuration was created, in ISO 8601 format."
     )
 
 
-model_rebuild(ProjectsColumnsCardsCardIdPatchBody)
+model_rebuild(OrgsOrgSettingsNetworkConfigurationsGetResponse200)
+model_rebuild(NetworkConfiguration)
 
-__all__ = ("ProjectsColumnsCardsCardIdPatchBody",)
+__all__ = (
+    "NetworkConfiguration",
+    "OrgsOrgSettingsNetworkConfigurationsGetResponse200",
+)

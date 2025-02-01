@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Literal, Union
 
 from pydantic import Field
@@ -18,16 +17,16 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0002 import SimpleUser
-from .group_0393 import EnterpriseWebhooks
-from .group_0394 import SimpleInstallation
-from .group_0395 import OrganizationSimpleWebhooks
-from .group_0396 import RepositoryWebhooks
-from .group_0401 import WebhooksWorkflow
+from .group_0003 import SimpleUser
+from .group_0196 import Deployment
+from .group_0399 import EnterpriseWebhooks
+from .group_0400 import SimpleInstallation
+from .group_0401 import OrganizationSimpleWebhooks
+from .group_0402 import RepositoryWebhooks
 
 
-class WebhookWorkflowRunInProgress(GitHubModel):
-    """workflow_run in_progress event"""
+class WebhookWorkflowJobInProgress(GitHubModel):
+    """workflow_job in_progress event"""
 
     action: Literal["in_progress"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
@@ -50,445 +49,79 @@ class WebhookWorkflowRunInProgress(GitHubModel):
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    workflow: Union[WebhooksWorkflow, None] = Field(title="Workflow")
-    workflow_run: WebhookWorkflowRunInProgressPropWorkflowRun = Field(
-        title="Workflow Run"
+    workflow_job: WebhookWorkflowJobInProgressPropWorkflowJob = Field()
+    deployment: Missing[Deployment] = Field(
+        default=UNSET,
+        title="Deployment",
+        description="A request for a specific ref(branch,sha,tag) to be deployed",
     )
 
 
-class WebhookWorkflowRunInProgressPropWorkflowRun(GitHubModel):
-    """Workflow Run"""
+class WebhookWorkflowJobInProgressPropWorkflowJob(GitHubModel):
+    """WebhookWorkflowJobInProgressPropWorkflowJob"""
 
-    actor: Union[WebhookWorkflowRunInProgressPropWorkflowRunPropActor, None] = Field(
-        title="User"
+    check_run_url: str = Field()
+    completed_at: Union[Union[str, None], None] = Field()
+    conclusion: Union[Literal["success", "failure", "cancelled", "neutral"], None] = (
+        Field()
     )
-    artifacts_url: str = Field()
-    cancel_url: str = Field()
-    check_suite_id: int = Field()
-    check_suite_node_id: str = Field()
-    check_suite_url: str = Field()
-    conclusion: Union[
-        None,
-        Literal[
-            "action_required",
-            "cancelled",
-            "failure",
-            "neutral",
-            "skipped",
-            "stale",
-            "success",
-            "timed_out",
-        ],
-    ] = Field()
-    created_at: datetime = Field()
-    event: str = Field()
-    head_branch: Union[str, None] = Field()
-    head_commit: WebhookWorkflowRunInProgressPropWorkflowRunPropHeadCommit = Field(
-        title="SimpleCommit"
-    )
-    head_repository: WebhookWorkflowRunInProgressPropWorkflowRunPropHeadRepository = (
-        Field(title="Repository Lite")
-    )
+    created_at: str = Field(description="The time that the job created.")
     head_sha: str = Field()
     html_url: str = Field()
     id: int = Field()
-    jobs_url: str = Field()
-    logs_url: str = Field()
-    name: Union[str, None] = Field()
-    node_id: str = Field()
-    path: str = Field()
-    previous_attempt_url: Union[str, None] = Field()
-    pull_requests: list[
-        Union[WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItems, None]
-    ] = Field()
-    referenced_workflows: Missing[
-        Union[
-            list[
-                WebhookWorkflowRunInProgressPropWorkflowRunPropReferencedWorkflowsItems
-            ],
-            None,
-        ]
-    ] = Field(default=UNSET)
-    repository: WebhookWorkflowRunInProgressPropWorkflowRunPropRepository = Field(
-        title="Repository Lite"
+    labels: list[str] = Field(
+        description='Custom labels for the job. Specified by the [`"runs-on"` attribute](https://docs.github.com/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on) in the workflow YAML.'
     )
-    rerun_url: str = Field()
+    name: str = Field()
+    node_id: str = Field()
     run_attempt: int = Field()
-    run_number: int = Field()
-    run_started_at: datetime = Field()
-    status: Literal["requested", "in_progress", "completed", "queued", "pending"] = (
-        Field()
+    run_id: int = Field()
+    run_url: str = Field()
+    runner_group_id: Union[Union[int, None], None] = Field(
+        description="The ID of the runner group that is running this job. This will be `null` as long as `workflow_job[status]` is `queued`."
     )
-    triggering_actor: Union[
-        WebhookWorkflowRunInProgressPropWorkflowRunPropTriggeringActor, None
-    ] = Field(title="User")
-    updated_at: datetime = Field()
-    url: str = Field()
-    workflow_id: int = Field()
-    workflow_url: str = Field()
-
-
-class WebhookWorkflowRunInProgressPropWorkflowRunPropActor(GitHubModel):
-    """User"""
-
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field()
-    login: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-
-
-class WebhookWorkflowRunInProgressPropWorkflowRunPropReferencedWorkflowsItems(
-    GitHubModel
-):
-    """WebhookWorkflowRunInProgressPropWorkflowRunPropReferencedWorkflowsItems"""
-
-    path: str = Field()
-    ref: Missing[str] = Field(default=UNSET)
-    sha: str = Field()
-
-
-class WebhookWorkflowRunInProgressPropWorkflowRunPropTriggeringActor(GitHubModel):
-    """User"""
-
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field()
-    login: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-
-
-class WebhookWorkflowRunInProgressPropWorkflowRunPropHeadCommit(GitHubModel):
-    """SimpleCommit"""
-
-    author: WebhookWorkflowRunInProgressPropWorkflowRunPropHeadCommitPropAuthor = Field(
-        title="Committer",
-        description="Metaproperties for Git author/committer information.",
+    runner_group_name: Union[Union[str, None], None] = Field(
+        description="The name of the runner group that is running this job. This will be `null` as long as `workflow_job[status]` is `queued`."
     )
-    committer: WebhookWorkflowRunInProgressPropWorkflowRunPropHeadCommitPropCommitter = Field(
-        title="Committer",
-        description="Metaproperties for Git author/committer information.",
+    runner_id: Union[Union[int, None], None] = Field(
+        description="The ID of the runner that is running this job. This will be `null` as long as `workflow_job[status]` is `queued`."
     )
-    id: str = Field()
-    message: str = Field()
-    timestamp: str = Field()
-    tree_id: str = Field()
-
-
-class WebhookWorkflowRunInProgressPropWorkflowRunPropHeadCommitPropAuthor(GitHubModel):
-    """Committer
-
-    Metaproperties for Git author/committer information.
-    """
-
-    date: Missing[datetime] = Field(default=UNSET)
-    email: Union[str, None] = Field()
-    name: str = Field(description="The git author's name.")
-    username: Missing[str] = Field(default=UNSET)
-
-
-class WebhookWorkflowRunInProgressPropWorkflowRunPropHeadCommitPropCommitter(
-    GitHubModel
-):
-    """Committer
-
-    Metaproperties for Git author/committer information.
-    """
-
-    date: Missing[datetime] = Field(default=UNSET)
-    email: Union[str, None] = Field()
-    name: str = Field(description="The git author's name.")
-    username: Missing[str] = Field(default=UNSET)
-
-
-class WebhookWorkflowRunInProgressPropWorkflowRunPropHeadRepository(GitHubModel):
-    """Repository Lite"""
-
-    archive_url: str = Field()
-    assignees_url: str = Field()
-    blobs_url: str = Field()
-    branches_url: str = Field()
-    collaborators_url: str = Field()
-    comments_url: str = Field()
-    commits_url: str = Field()
-    compare_url: str = Field()
-    contents_url: str = Field()
-    contributors_url: str = Field()
-    deployments_url: str = Field()
-    description: Union[str, None] = Field()
-    downloads_url: str = Field()
-    events_url: str = Field()
-    fork: bool = Field()
-    forks_url: str = Field()
-    full_name: str = Field()
-    git_commits_url: str = Field()
-    git_refs_url: str = Field()
-    git_tags_url: str = Field()
-    hooks_url: str = Field()
-    html_url: str = Field()
-    id: int = Field(description="Unique identifier of the repository")
-    issue_comment_url: str = Field()
-    issue_events_url: str = Field()
-    issues_url: str = Field()
-    keys_url: str = Field()
-    labels_url: str = Field()
-    languages_url: str = Field()
-    merges_url: str = Field()
-    milestones_url: str = Field()
-    name: Union[str, None] = Field(description="The name of the repository.")
-    node_id: str = Field()
-    notifications_url: str = Field()
-    owner: Union[
-        WebhookWorkflowRunInProgressPropWorkflowRunPropHeadRepositoryPropOwner, None
-    ] = Field(title="User")
-    private: bool = Field(description="Whether the repository is private or public.")
-    pulls_url: str = Field()
-    releases_url: str = Field()
-    stargazers_url: str = Field()
-    statuses_url: str = Field()
-    subscribers_url: str = Field()
-    subscription_url: str = Field()
-    tags_url: str = Field()
-    teams_url: str = Field()
-    trees_url: str = Field()
+    runner_name: Union[Union[str, None], None] = Field(
+        description="The name of the runner that is running this job. This will be `null` as long as `workflow_job[status]` is `queued`."
+    )
+    started_at: str = Field()
+    status: Literal["queued", "in_progress", "completed"] = Field(
+        description="The current status of the job. Can be `queued`, `in_progress`, or `completed`."
+    )
+    head_branch: Union[Union[str, None], None] = Field(
+        description="The name of the current branch."
+    )
+    workflow_name: Union[Union[str, None], None] = Field(
+        description="The name of the workflow."
+    )
+    steps: list[WebhookWorkflowJobInProgressPropWorkflowJobMergedSteps] = Field()
     url: str = Field()
 
 
-class WebhookWorkflowRunInProgressPropWorkflowRunPropHeadRepositoryPropOwner(
-    GitHubModel
-):
-    """User"""
+class WebhookWorkflowJobInProgressPropWorkflowJobMergedSteps(GitHubModel):
+    """WebhookWorkflowJobInProgressPropWorkflowJobMergedSteps"""
 
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field()
-    login: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-
-
-class WebhookWorkflowRunInProgressPropWorkflowRunPropRepository(GitHubModel):
-    """Repository Lite"""
-
-    archive_url: str = Field()
-    assignees_url: str = Field()
-    blobs_url: str = Field()
-    branches_url: str = Field()
-    collaborators_url: str = Field()
-    comments_url: str = Field()
-    commits_url: str = Field()
-    compare_url: str = Field()
-    contents_url: str = Field()
-    contributors_url: str = Field()
-    deployments_url: str = Field()
-    description: Union[str, None] = Field()
-    downloads_url: str = Field()
-    events_url: str = Field()
-    fork: bool = Field()
-    forks_url: str = Field()
-    full_name: str = Field()
-    git_commits_url: str = Field()
-    git_refs_url: str = Field()
-    git_tags_url: str = Field()
-    hooks_url: str = Field()
-    html_url: str = Field()
-    id: int = Field(description="Unique identifier of the repository")
-    issue_comment_url: str = Field()
-    issue_events_url: str = Field()
-    issues_url: str = Field()
-    keys_url: str = Field()
-    labels_url: str = Field()
-    languages_url: str = Field()
-    merges_url: str = Field()
-    milestones_url: str = Field()
-    name: str = Field(description="The name of the repository.")
-    node_id: str = Field()
-    notifications_url: str = Field()
-    owner: Union[
-        WebhookWorkflowRunInProgressPropWorkflowRunPropRepositoryPropOwner, None
-    ] = Field(title="User")
-    private: bool = Field(description="Whether the repository is private or public.")
-    pulls_url: str = Field()
-    releases_url: str = Field()
-    stargazers_url: str = Field()
-    statuses_url: str = Field()
-    subscribers_url: str = Field()
-    subscription_url: str = Field()
-    tags_url: str = Field()
-    teams_url: str = Field()
-    trees_url: str = Field()
-    url: str = Field()
-
-
-class WebhookWorkflowRunInProgressPropWorkflowRunPropRepositoryPropOwner(GitHubModel):
-    """User"""
-
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field()
-    login: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-
-
-class WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItems(GitHubModel):
-    """WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItems"""
-
-    base: WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItemsPropBase = (
+    completed_at: Union[Union[str, None], None] = Field()
+    conclusion: Union[Literal["failure", "skipped", "success", "cancelled"], None] = (
         Field()
     )
-    head: WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItemsPropHead = (
-        Field()
-    )
-    id: int = Field()
+    name: str = Field()
     number: int = Field()
-    url: str = Field()
+    started_at: Union[Union[str, None], None] = Field()
+    status: Literal["in_progress", "completed", "queued", "pending"] = Field()
 
 
-class WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItemsPropBase(
-    GitHubModel
-):
-    """WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItemsPropBase"""
-
-    ref: str = Field()
-    repo: WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItemsPropBasePropRepo = Field(
-        title="Repo Ref"
-    )
-    sha: str = Field()
-
-
-class WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItemsPropBasePropRepo(
-    GitHubModel
-):
-    """Repo Ref"""
-
-    id: int = Field()
-    name: str = Field()
-    url: str = Field()
-
-
-class WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItemsPropHead(
-    GitHubModel
-):
-    """WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItemsPropHead"""
-
-    ref: str = Field()
-    repo: WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo = Field(
-        title="Repo Ref"
-    )
-    sha: str = Field()
-
-
-class WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo(
-    GitHubModel
-):
-    """Repo Ref"""
-
-    id: int = Field()
-    name: str = Field()
-    url: str = Field()
-
-
-model_rebuild(WebhookWorkflowRunInProgress)
-model_rebuild(WebhookWorkflowRunInProgressPropWorkflowRun)
-model_rebuild(WebhookWorkflowRunInProgressPropWorkflowRunPropActor)
-model_rebuild(WebhookWorkflowRunInProgressPropWorkflowRunPropReferencedWorkflowsItems)
-model_rebuild(WebhookWorkflowRunInProgressPropWorkflowRunPropTriggeringActor)
-model_rebuild(WebhookWorkflowRunInProgressPropWorkflowRunPropHeadCommit)
-model_rebuild(WebhookWorkflowRunInProgressPropWorkflowRunPropHeadCommitPropAuthor)
-model_rebuild(WebhookWorkflowRunInProgressPropWorkflowRunPropHeadCommitPropCommitter)
-model_rebuild(WebhookWorkflowRunInProgressPropWorkflowRunPropHeadRepository)
-model_rebuild(WebhookWorkflowRunInProgressPropWorkflowRunPropHeadRepositoryPropOwner)
-model_rebuild(WebhookWorkflowRunInProgressPropWorkflowRunPropRepository)
-model_rebuild(WebhookWorkflowRunInProgressPropWorkflowRunPropRepositoryPropOwner)
-model_rebuild(WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItems)
-model_rebuild(WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItemsPropBase)
-model_rebuild(
-    WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItemsPropBasePropRepo
-)
-model_rebuild(WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItemsPropHead)
-model_rebuild(
-    WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo
-)
+model_rebuild(WebhookWorkflowJobInProgress)
+model_rebuild(WebhookWorkflowJobInProgressPropWorkflowJob)
+model_rebuild(WebhookWorkflowJobInProgressPropWorkflowJobMergedSteps)
 
 __all__ = (
-    "WebhookWorkflowRunInProgress",
-    "WebhookWorkflowRunInProgressPropWorkflowRun",
-    "WebhookWorkflowRunInProgressPropWorkflowRunPropActor",
-    "WebhookWorkflowRunInProgressPropWorkflowRunPropHeadCommit",
-    "WebhookWorkflowRunInProgressPropWorkflowRunPropHeadCommitPropAuthor",
-    "WebhookWorkflowRunInProgressPropWorkflowRunPropHeadCommitPropCommitter",
-    "WebhookWorkflowRunInProgressPropWorkflowRunPropHeadRepository",
-    "WebhookWorkflowRunInProgressPropWorkflowRunPropHeadRepositoryPropOwner",
-    "WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItems",
-    "WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItemsPropBase",
-    "WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItemsPropBasePropRepo",
-    "WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItemsPropHead",
-    "WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo",
-    "WebhookWorkflowRunInProgressPropWorkflowRunPropReferencedWorkflowsItems",
-    "WebhookWorkflowRunInProgressPropWorkflowRunPropRepository",
-    "WebhookWorkflowRunInProgressPropWorkflowRunPropRepositoryPropOwner",
-    "WebhookWorkflowRunInProgressPropWorkflowRunPropTriggeringActor",
+    "WebhookWorkflowJobInProgress",
+    "WebhookWorkflowJobInProgressPropWorkflowJob",
+    "WebhookWorkflowJobInProgressPropWorkflowJobMergedSteps",
 )

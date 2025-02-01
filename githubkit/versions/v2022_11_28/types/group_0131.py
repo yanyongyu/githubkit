@@ -12,18 +12,17 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0132 import RepositoryRuleRequiredDeploymentsPropParametersType
+from .group_0132 import RepositoryRuleUpdatePropParametersType
 
 
-class RepositoryRuleRequiredDeploymentsType(TypedDict):
-    """required_deployments
+class RepositoryRuleUpdateType(TypedDict):
+    """update
 
-    Choose which environments must be successfully deployed to before refs can be
-    pushed into a ref that matches this rule.
+    Only allow users with bypass permission to update matching refs.
     """
 
-    type: Literal["required_deployments"]
-    parameters: NotRequired[RepositoryRuleRequiredDeploymentsPropParametersType]
+    type: Literal["update"]
+    parameters: NotRequired[RepositoryRuleUpdatePropParametersType]
 
 
-__all__ = ("RepositoryRuleRequiredDeploymentsType",)
+__all__ = ("RepositoryRuleUpdateType",)

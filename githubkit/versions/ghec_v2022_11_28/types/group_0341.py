@@ -9,16 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal, Union
+from typing_extensions import TypedDict
 
-from .group_0131 import IssueType
-
-
-class TimelineCrossReferencedEventPropSourceType(TypedDict):
-    """TimelineCrossReferencedEventPropSource"""
-
-    type: NotRequired[str]
-    issue: NotRequired[IssueType]
+from .group_0003 import SimpleUserType
+from .group_0010 import IntegrationType
 
 
-__all__ = ("TimelineCrossReferencedEventPropSourceType",)
+class LockedIssueEventType(TypedDict):
+    """Locked Issue Event
+
+    Locked Issue Event
+    """
+
+    id: int
+    node_id: str
+    url: str
+    actor: SimpleUserType
+    event: Literal["locked"]
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
+    created_at: str
+    performed_via_github_app: Union[None, IntegrationType, None]
+    lock_reason: Union[str, None]
+
+
+__all__ = ("LockedIssueEventType",)

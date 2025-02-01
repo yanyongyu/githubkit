@@ -9,14 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing_extensions import TypedDict
 
 
-class ReviewCustomGatesCommentRequiredType(TypedDict):
-    """ReviewCustomGatesCommentRequired"""
+class ActionsVariableType(TypedDict):
+    """Actions Variable"""
 
-    environment_name: str
-    comment: str
+    name: str
+    value: str
+    created_at: datetime
+    updated_at: datetime
 
 
-__all__ = ("ReviewCustomGatesCommentRequiredType",)
+__all__ = ("ActionsVariableType",)

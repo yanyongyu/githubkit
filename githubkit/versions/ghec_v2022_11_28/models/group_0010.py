@@ -18,43 +18,46 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
+from .group_0008 import Enterprise
+from .group_0009 import IntegrationPropPermissions
 
-class HookDeliveryItem(GitHubModel):
-    """Simple webhook delivery
 
-    Delivery made by a webhook, without request and response information.
+class Integration(GitHubModel):
+    """GitHub app
+
+    GitHub apps are a new way to extend GitHub. They can be installed directly on
+    organizations and user accounts and granted access to specific repositories.
+    They come with granular permissions and built-in webhooks. GitHub apps are first
+    class actors within GitHub.
     """
 
-    id: int = Field(description="Unique identifier of the webhook delivery.")
-    guid: str = Field(
-        description="Unique identifier for the event (shared with all deliveries for all webhooks that subscribe to this event)."
+    id: int = Field(description="Unique identifier of the GitHub app")
+    slug: Missing[str] = Field(
+        default=UNSET, description="The slug name of the GitHub app"
     )
-    delivered_at: datetime = Field(
-        description="Time when the webhook delivery occurred."
+    node_id: str = Field()
+    client_id: Missing[str] = Field(default=UNSET)
+    owner: Union[SimpleUser, Enterprise] = Field()
+    name: str = Field(description="The name of the GitHub app")
+    description: Union[str, None] = Field()
+    external_url: str = Field()
+    html_url: str = Field()
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+    permissions: IntegrationPropPermissions = Field(
+        description="The set of permissions for the GitHub app"
     )
-    redelivery: bool = Field(
-        description="Whether the webhook delivery is a redelivery."
+    events: list[str] = Field(description="The list of events for the GitHub app")
+    installations_count: Missing[int] = Field(
+        default=UNSET,
+        description="The number of installations associated with the GitHub app",
     )
-    duration: float = Field(description="Time spent delivering.")
-    status: str = Field(
-        description="Describes the response returned after attempting the delivery."
-    )
-    status_code: int = Field(description="Status code received when delivery was made.")
-    event: str = Field(description="The event that triggered the delivery.")
-    action: Union[str, None] = Field(
-        description="The type of activity for the event that triggered the delivery."
-    )
-    installation_id: Union[int, None] = Field(
-        description="The id of the GitHub App installation associated with this event."
-    )
-    repository_id: Union[int, None] = Field(
-        description="The id of the repository associated with this event."
-    )
-    throttled_at: Missing[Union[datetime, None]] = Field(
-        default=UNSET, description="Time when the webhook delivery was throttled."
-    )
+    client_secret: Missing[str] = Field(default=UNSET)
+    webhook_secret: Missing[Union[str, None]] = Field(default=UNSET)
+    pem: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(HookDeliveryItem)
+model_rebuild(Integration)
 
-__all__ = ("HookDeliveryItem",)
+__all__ = ("Integration",)

@@ -9,17 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Union
+from typing_extensions import TypedDict
+
+from .group_0003 import SimpleUserType
 
 
-class OidcCustomSubRepoType(TypedDict):
-    """Actions OIDC subject customization for a repository
+class ProjectCollaboratorPermissionType(TypedDict):
+    """Project Collaborator Permission
 
-    Actions OIDC subject customization for a repository
+    Project Collaborator Permission
     """
 
-    use_default: bool
-    include_claim_keys: NotRequired[list[str]]
+    permission: str
+    user: Union[None, SimpleUserType]
 
 
-__all__ = ("OidcCustomSubRepoType",)
+__all__ = ("ProjectCollaboratorPermissionType",)

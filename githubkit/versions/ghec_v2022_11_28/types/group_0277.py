@@ -9,28 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class BranchShortType(TypedDict):
-    """Branch Short
+class CodeScanningSarifsStatusType(TypedDict):
+    """CodeScanningSarifsStatus"""
 
-    Branch Short
-    """
-
-    name: str
-    commit: BranchShortPropCommitType
-    protected: bool
+    processing_status: NotRequired[Literal["pending", "complete", "failed"]]
+    analyses_url: NotRequired[Union[str, None]]
+    errors: NotRequired[Union[list[str], None]]
 
 
-class BranchShortPropCommitType(TypedDict):
-    """BranchShortPropCommit"""
-
-    sha: str
-    url: str
-
-
-__all__ = (
-    "BranchShortPropCommitType",
-    "BranchShortType",
-)
+__all__ = ("CodeScanningSarifsStatusType",)

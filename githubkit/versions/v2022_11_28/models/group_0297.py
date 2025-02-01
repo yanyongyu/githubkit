@@ -15,28 +15,38 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0002 import SimpleUser
-from .group_0008 import Integration
+from .group_0003 import SimpleUser
+from .group_0010 import Integration
 
 
-class LockedIssueEvent(GitHubModel):
-    """Locked Issue Event
+class MilestonedIssueEvent(GitHubModel):
+    """Milestoned Issue Event
 
-    Locked Issue Event
+    Milestoned Issue Event
     """
 
     id: int = Field()
     node_id: str = Field()
     url: str = Field()
     actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: Literal["locked"] = Field()
+    event: Literal["milestoned"] = Field()
     commit_id: Union[str, None] = Field()
     commit_url: Union[str, None] = Field()
     created_at: str = Field()
     performed_via_github_app: Union[None, Integration, None] = Field()
-    lock_reason: Union[str, None] = Field()
+    milestone: MilestonedIssueEventPropMilestone = Field()
 
 
-model_rebuild(LockedIssueEvent)
+class MilestonedIssueEventPropMilestone(GitHubModel):
+    """MilestonedIssueEventPropMilestone"""
 
-__all__ = ("LockedIssueEvent",)
+    title: str = Field()
+
+
+model_rebuild(MilestonedIssueEvent)
+model_rebuild(MilestonedIssueEventPropMilestone)
+
+__all__ = (
+    "MilestonedIssueEvent",
+    "MilestonedIssueEventPropMilestone",
+)

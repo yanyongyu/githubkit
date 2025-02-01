@@ -32,6 +32,8 @@ if TYPE_CHECKING:
         ActionsCacheUsageByRepository,
         ActionsCacheUsageOrgEnterprise,
         ActionsGetDefaultWorkflowPermissions,
+        ActionsHostedRunner,
+        ActionsHostedRunnerLimits,
         ActionsOrganizationPermissions,
         ActionsPublicKey,
         ActionsRepositoryPermissions,
@@ -42,6 +44,11 @@ if TYPE_CHECKING:
         AuthenticationToken,
         Deployment,
         EmptyObject,
+        EnterprisesEnterpriseActionsHostedRunnersGetResponse200,
+        EnterprisesEnterpriseActionsHostedRunnersImagesGithubOwnedGetResponse200,
+        EnterprisesEnterpriseActionsHostedRunnersImagesPartnerGetResponse200,
+        EnterprisesEnterpriseActionsHostedRunnersMachineSizesGetResponse200,
+        EnterprisesEnterpriseActionsHostedRunnersPlatformsGetResponse200,
         EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201,
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200,
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
@@ -51,8 +58,14 @@ if TYPE_CHECKING:
         OrganizationActionsSecret,
         OrganizationActionsVariable,
         OrgsOrgActionsCacheUsageByRepositoryGetResponse200,
+        OrgsOrgActionsHostedRunnersGetResponse200,
+        OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200,
+        OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200,
+        OrgsOrgActionsHostedRunnersMachineSizesGetResponse200,
+        OrgsOrgActionsHostedRunnersPlatformsGetResponse200,
         OrgsOrgActionsPermissionsRepositoriesGetResponse200,
         OrgsOrgActionsRunnerGroupsGetResponse200,
+        OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200,
         OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200,
         OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200,
         OrgsOrgActionsRunnersGetResponse200,
@@ -89,6 +102,8 @@ if TYPE_CHECKING:
         ActionsCacheUsageByRepositoryType,
         ActionsCacheUsageOrgEnterpriseType,
         ActionsGetDefaultWorkflowPermissionsType,
+        ActionsHostedRunnerLimitsType,
+        ActionsHostedRunnerType,
         ActionsOidcCustomIssuerPolicyForEnterpriseType,
         ActionsOrganizationPermissionsType,
         ActionsPublicKeyType,
@@ -101,6 +116,14 @@ if TYPE_CHECKING:
         AuthenticationTokenType,
         DeploymentType,
         EmptyObjectType,
+        EnterprisesEnterpriseActionsHostedRunnersGetResponse200Type,
+        EnterprisesEnterpriseActionsHostedRunnersHostedRunnerIdPatchBodyType,
+        EnterprisesEnterpriseActionsHostedRunnersImagesGithubOwnedGetResponse200Type,
+        EnterprisesEnterpriseActionsHostedRunnersImagesPartnerGetResponse200Type,
+        EnterprisesEnterpriseActionsHostedRunnersMachineSizesGetResponse200Type,
+        EnterprisesEnterpriseActionsHostedRunnersPlatformsGetResponse200Type,
+        EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImageType,
+        EnterprisesEnterpriseActionsHostedRunnersPostBodyType,
         EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostBodyType,
         EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201Type,
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200Type,
@@ -111,11 +134,20 @@ if TYPE_CHECKING:
         OrganizationActionsSecretType,
         OrganizationActionsVariableType,
         OrgsOrgActionsCacheUsageByRepositoryGetResponse200Type,
+        OrgsOrgActionsHostedRunnersGetResponse200Type,
+        OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBodyType,
+        OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200Type,
+        OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200Type,
+        OrgsOrgActionsHostedRunnersMachineSizesGetResponse200Type,
+        OrgsOrgActionsHostedRunnersPlatformsGetResponse200Type,
+        OrgsOrgActionsHostedRunnersPostBodyPropImageType,
+        OrgsOrgActionsHostedRunnersPostBodyType,
         OrgsOrgActionsPermissionsPutBodyType,
         OrgsOrgActionsPermissionsRepositoriesGetResponse200Type,
         OrgsOrgActionsPermissionsRepositoriesPutBodyType,
         OrgsOrgActionsRunnerGroupsGetResponse200Type,
         OrgsOrgActionsRunnerGroupsPostBodyType,
+        OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200Type,
         OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBodyType,
         OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200Type,
         OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBodyType,
@@ -234,6 +266,664 @@ class ActionsClient:
             url,
             headers=exclude_unset(headers),
             response_model=ActionsCacheUsageOrgEnterprise,
+        )
+
+    def list_hosted_runners_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+    ) -> Response[
+        EnterprisesEnterpriseActionsHostedRunnersGetResponse200,
+        EnterprisesEnterpriseActionsHostedRunnersGetResponse200Type,
+    ]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#list-github-hosted-runners-for-an-enterprise"""
+
+        from ..models import EnterprisesEnterpriseActionsHostedRunnersGetResponse200
+
+        url = f"/enterprises/{enterprise}/actions/hosted-runners"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=EnterprisesEnterpriseActionsHostedRunnersGetResponse200,
+        )
+
+    async def async_list_hosted_runners_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+    ) -> Response[
+        EnterprisesEnterpriseActionsHostedRunnersGetResponse200,
+        EnterprisesEnterpriseActionsHostedRunnersGetResponse200Type,
+    ]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#list-github-hosted-runners-for-an-enterprise"""
+
+        from ..models import EnterprisesEnterpriseActionsHostedRunnersGetResponse200
+
+        url = f"/enterprises/{enterprise}/actions/hosted-runners"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=EnterprisesEnterpriseActionsHostedRunnersGetResponse200,
+        )
+
+    @overload
+    def create_hosted_runner_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        data: EnterprisesEnterpriseActionsHostedRunnersPostBodyType,
+    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]: ...
+
+    @overload
+    def create_hosted_runner_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        name: str,
+        image: EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImageType,
+        size: str,
+        runner_group_id: int,
+        maximum_runners: Missing[int] = UNSET,
+        enable_static_ip: Missing[bool] = UNSET,
+    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]: ...
+
+    def create_hosted_runner_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        data: Missing[EnterprisesEnterpriseActionsHostedRunnersPostBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#create-a-github-hosted-runner-for-an-enterprise"""
+
+        from ..models import (
+            ActionsHostedRunner,
+            EnterprisesEnterpriseActionsHostedRunnersPostBody,
+        )
+
+        url = f"/enterprises/{enterprise}/actions/hosted-runners"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseActionsHostedRunnersPostBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=ActionsHostedRunner,
+        )
+
+    @overload
+    async def async_create_hosted_runner_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        data: EnterprisesEnterpriseActionsHostedRunnersPostBodyType,
+    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]: ...
+
+    @overload
+    async def async_create_hosted_runner_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        name: str,
+        image: EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImageType,
+        size: str,
+        runner_group_id: int,
+        maximum_runners: Missing[int] = UNSET,
+        enable_static_ip: Missing[bool] = UNSET,
+    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]: ...
+
+    async def async_create_hosted_runner_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        data: Missing[EnterprisesEnterpriseActionsHostedRunnersPostBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#create-a-github-hosted-runner-for-an-enterprise"""
+
+        from ..models import (
+            ActionsHostedRunner,
+            EnterprisesEnterpriseActionsHostedRunnersPostBody,
+        )
+
+        url = f"/enterprises/{enterprise}/actions/hosted-runners"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseActionsHostedRunnersPostBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=ActionsHostedRunner,
+        )
+
+    def get_hosted_runners_github_owned_images_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+    ) -> Response[
+        EnterprisesEnterpriseActionsHostedRunnersImagesGithubOwnedGetResponse200,
+        EnterprisesEnterpriseActionsHostedRunnersImagesGithubOwnedGetResponse200Type,
+    ]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#get-github-owned-images-for-github-hosted-runners-in-an-enterprise"""
+
+        from ..models import (
+            EnterprisesEnterpriseActionsHostedRunnersImagesGithubOwnedGetResponse200,
+        )
+
+        url = f"/enterprises/{enterprise}/actions/hosted-runners/images/github-owned"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=EnterprisesEnterpriseActionsHostedRunnersImagesGithubOwnedGetResponse200,
+        )
+
+    async def async_get_hosted_runners_github_owned_images_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+    ) -> Response[
+        EnterprisesEnterpriseActionsHostedRunnersImagesGithubOwnedGetResponse200,
+        EnterprisesEnterpriseActionsHostedRunnersImagesGithubOwnedGetResponse200Type,
+    ]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#get-github-owned-images-for-github-hosted-runners-in-an-enterprise"""
+
+        from ..models import (
+            EnterprisesEnterpriseActionsHostedRunnersImagesGithubOwnedGetResponse200,
+        )
+
+        url = f"/enterprises/{enterprise}/actions/hosted-runners/images/github-owned"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=EnterprisesEnterpriseActionsHostedRunnersImagesGithubOwnedGetResponse200,
+        )
+
+    def get_hosted_runners_partner_images_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+    ) -> Response[
+        EnterprisesEnterpriseActionsHostedRunnersImagesPartnerGetResponse200,
+        EnterprisesEnterpriseActionsHostedRunnersImagesPartnerGetResponse200Type,
+    ]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#get-partner-images-for-github-hosted-runners-in-an-enterprise"""
+
+        from ..models import (
+            EnterprisesEnterpriseActionsHostedRunnersImagesPartnerGetResponse200,
+        )
+
+        url = f"/enterprises/{enterprise}/actions/hosted-runners/images/partner"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=EnterprisesEnterpriseActionsHostedRunnersImagesPartnerGetResponse200,
+        )
+
+    async def async_get_hosted_runners_partner_images_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+    ) -> Response[
+        EnterprisesEnterpriseActionsHostedRunnersImagesPartnerGetResponse200,
+        EnterprisesEnterpriseActionsHostedRunnersImagesPartnerGetResponse200Type,
+    ]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#get-partner-images-for-github-hosted-runners-in-an-enterprise"""
+
+        from ..models import (
+            EnterprisesEnterpriseActionsHostedRunnersImagesPartnerGetResponse200,
+        )
+
+        url = f"/enterprises/{enterprise}/actions/hosted-runners/images/partner"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=EnterprisesEnterpriseActionsHostedRunnersImagesPartnerGetResponse200,
+        )
+
+    def get_hosted_runners_limits_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+    ) -> Response[ActionsHostedRunnerLimits, ActionsHostedRunnerLimitsType]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#get-limits-on-github-hosted-runners-for-an-enterprise"""
+
+        from ..models import ActionsHostedRunnerLimits
+
+        url = f"/enterprises/{enterprise}/actions/hosted-runners/limits"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=ActionsHostedRunnerLimits,
+        )
+
+    async def async_get_hosted_runners_limits_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+    ) -> Response[ActionsHostedRunnerLimits, ActionsHostedRunnerLimitsType]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#get-limits-on-github-hosted-runners-for-an-enterprise"""
+
+        from ..models import ActionsHostedRunnerLimits
+
+        url = f"/enterprises/{enterprise}/actions/hosted-runners/limits"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=ActionsHostedRunnerLimits,
+        )
+
+    def get_hosted_runners_machine_specs_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+    ) -> Response[
+        EnterprisesEnterpriseActionsHostedRunnersMachineSizesGetResponse200,
+        EnterprisesEnterpriseActionsHostedRunnersMachineSizesGetResponse200Type,
+    ]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#get-github-hosted-runners-machine-specs-for-an-enterprise"""
+
+        from ..models import (
+            EnterprisesEnterpriseActionsHostedRunnersMachineSizesGetResponse200,
+        )
+
+        url = f"/enterprises/{enterprise}/actions/hosted-runners/machine-sizes"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=EnterprisesEnterpriseActionsHostedRunnersMachineSizesGetResponse200,
+        )
+
+    async def async_get_hosted_runners_machine_specs_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+    ) -> Response[
+        EnterprisesEnterpriseActionsHostedRunnersMachineSizesGetResponse200,
+        EnterprisesEnterpriseActionsHostedRunnersMachineSizesGetResponse200Type,
+    ]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#get-github-hosted-runners-machine-specs-for-an-enterprise"""
+
+        from ..models import (
+            EnterprisesEnterpriseActionsHostedRunnersMachineSizesGetResponse200,
+        )
+
+        url = f"/enterprises/{enterprise}/actions/hosted-runners/machine-sizes"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=EnterprisesEnterpriseActionsHostedRunnersMachineSizesGetResponse200,
+        )
+
+    def get_hosted_runners_platforms_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+    ) -> Response[
+        EnterprisesEnterpriseActionsHostedRunnersPlatformsGetResponse200,
+        EnterprisesEnterpriseActionsHostedRunnersPlatformsGetResponse200Type,
+    ]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#get-platforms-for-github-hosted-runners-in-an-enterprise"""
+
+        from ..models import (
+            EnterprisesEnterpriseActionsHostedRunnersPlatformsGetResponse200,
+        )
+
+        url = f"/enterprises/{enterprise}/actions/hosted-runners/platforms"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=EnterprisesEnterpriseActionsHostedRunnersPlatformsGetResponse200,
+        )
+
+    async def async_get_hosted_runners_platforms_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+    ) -> Response[
+        EnterprisesEnterpriseActionsHostedRunnersPlatformsGetResponse200,
+        EnterprisesEnterpriseActionsHostedRunnersPlatformsGetResponse200Type,
+    ]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#get-platforms-for-github-hosted-runners-in-an-enterprise"""
+
+        from ..models import (
+            EnterprisesEnterpriseActionsHostedRunnersPlatformsGetResponse200,
+        )
+
+        url = f"/enterprises/{enterprise}/actions/hosted-runners/platforms"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=EnterprisesEnterpriseActionsHostedRunnersPlatformsGetResponse200,
+        )
+
+    def get_hosted_runner_for_enterprise(
+        self,
+        enterprise: str,
+        hosted_runner_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#get-a-github-hosted-runner-for-an-enterprise"""
+
+        from ..models import ActionsHostedRunner
+
+        url = f"/enterprises/{enterprise}/actions/hosted-runners/{hosted_runner_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=ActionsHostedRunner,
+        )
+
+    async def async_get_hosted_runner_for_enterprise(
+        self,
+        enterprise: str,
+        hosted_runner_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#get-a-github-hosted-runner-for-an-enterprise"""
+
+        from ..models import ActionsHostedRunner
+
+        url = f"/enterprises/{enterprise}/actions/hosted-runners/{hosted_runner_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=ActionsHostedRunner,
+        )
+
+    def delete_hosted_runner_for_enterprise(
+        self,
+        enterprise: str,
+        hosted_runner_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#delete-a-github-hosted-runner-for-an-enterprise"""
+
+        from ..models import ActionsHostedRunner
+
+        url = f"/enterprises/{enterprise}/actions/hosted-runners/{hosted_runner_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            response_model=ActionsHostedRunner,
+        )
+
+    async def async_delete_hosted_runner_for_enterprise(
+        self,
+        enterprise: str,
+        hosted_runner_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#delete-a-github-hosted-runner-for-an-enterprise"""
+
+        from ..models import ActionsHostedRunner
+
+        url = f"/enterprises/{enterprise}/actions/hosted-runners/{hosted_runner_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            response_model=ActionsHostedRunner,
+        )
+
+    @overload
+    def update_hosted_runner_for_enterprise(
+        self,
+        enterprise: str,
+        hosted_runner_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        data: EnterprisesEnterpriseActionsHostedRunnersHostedRunnerIdPatchBodyType,
+    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]: ...
+
+    @overload
+    def update_hosted_runner_for_enterprise(
+        self,
+        enterprise: str,
+        hosted_runner_id: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        name: Missing[str] = UNSET,
+        runner_group_id: Missing[int] = UNSET,
+        maximum_runners: Missing[int] = UNSET,
+        enable_static_ip: Missing[bool] = UNSET,
+        image_version: Missing[Union[str, None]] = UNSET,
+    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]: ...
+
+    def update_hosted_runner_for_enterprise(
+        self,
+        enterprise: str,
+        hosted_runner_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        data: Missing[
+            EnterprisesEnterpriseActionsHostedRunnersHostedRunnerIdPatchBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#update-a-github-hosted-runner-for-an-enterprise"""
+
+        from ..models import (
+            ActionsHostedRunner,
+            EnterprisesEnterpriseActionsHostedRunnersHostedRunnerIdPatchBody,
+        )
+
+        url = f"/enterprises/{enterprise}/actions/hosted-runners/{hosted_runner_id}"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseActionsHostedRunnersHostedRunnerIdPatchBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=ActionsHostedRunner,
+        )
+
+    @overload
+    async def async_update_hosted_runner_for_enterprise(
+        self,
+        enterprise: str,
+        hosted_runner_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        data: EnterprisesEnterpriseActionsHostedRunnersHostedRunnerIdPatchBodyType,
+    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]: ...
+
+    @overload
+    async def async_update_hosted_runner_for_enterprise(
+        self,
+        enterprise: str,
+        hosted_runner_id: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        name: Missing[str] = UNSET,
+        runner_group_id: Missing[int] = UNSET,
+        maximum_runners: Missing[int] = UNSET,
+        enable_static_ip: Missing[bool] = UNSET,
+        image_version: Missing[Union[str, None]] = UNSET,
+    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]: ...
+
+    async def async_update_hosted_runner_for_enterprise(
+        self,
+        enterprise: str,
+        hosted_runner_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        data: Missing[
+            EnterprisesEnterpriseActionsHostedRunnersHostedRunnerIdPatchBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#update-a-github-hosted-runner-for-an-enterprise"""
+
+        from ..models import (
+            ActionsHostedRunner,
+            EnterprisesEnterpriseActionsHostedRunnersHostedRunnerIdPatchBody,
+        )
+
+        url = f"/enterprises/{enterprise}/actions/hosted-runners/{hosted_runner_id}"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseActionsHostedRunnersHostedRunnerIdPatchBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=ActionsHostedRunner,
         )
 
     @overload
@@ -750,6 +1440,634 @@ class ActionsClient:
             params=exclude_unset(params),
             headers=exclude_unset(headers),
             response_model=OrgsOrgActionsCacheUsageByRepositoryGetResponse200,
+        )
+
+    def list_hosted_runners_for_org(
+        self,
+        org: str,
+        *,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+    ) -> Response[
+        OrgsOrgActionsHostedRunnersGetResponse200,
+        OrgsOrgActionsHostedRunnersGetResponse200Type,
+    ]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#list-github-hosted-runners-for-an-organization"""
+
+        from ..models import OrgsOrgActionsHostedRunnersGetResponse200
+
+        url = f"/orgs/{org}/actions/hosted-runners"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=OrgsOrgActionsHostedRunnersGetResponse200,
+        )
+
+    async def async_list_hosted_runners_for_org(
+        self,
+        org: str,
+        *,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+    ) -> Response[
+        OrgsOrgActionsHostedRunnersGetResponse200,
+        OrgsOrgActionsHostedRunnersGetResponse200Type,
+    ]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#list-github-hosted-runners-for-an-organization"""
+
+        from ..models import OrgsOrgActionsHostedRunnersGetResponse200
+
+        url = f"/orgs/{org}/actions/hosted-runners"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=OrgsOrgActionsHostedRunnersGetResponse200,
+        )
+
+    @overload
+    def create_hosted_runner_for_org(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        data: OrgsOrgActionsHostedRunnersPostBodyType,
+    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]: ...
+
+    @overload
+    def create_hosted_runner_for_org(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        name: str,
+        image: OrgsOrgActionsHostedRunnersPostBodyPropImageType,
+        size: str,
+        runner_group_id: int,
+        maximum_runners: Missing[int] = UNSET,
+        enable_static_ip: Missing[bool] = UNSET,
+    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]: ...
+
+    def create_hosted_runner_for_org(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        data: Missing[OrgsOrgActionsHostedRunnersPostBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#create-a-github-hosted-runner-for-an-organization"""
+
+        from ..models import ActionsHostedRunner, OrgsOrgActionsHostedRunnersPostBody
+
+        url = f"/orgs/{org}/actions/hosted-runners"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(OrgsOrgActionsHostedRunnersPostBody, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=ActionsHostedRunner,
+        )
+
+    @overload
+    async def async_create_hosted_runner_for_org(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        data: OrgsOrgActionsHostedRunnersPostBodyType,
+    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]: ...
+
+    @overload
+    async def async_create_hosted_runner_for_org(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        name: str,
+        image: OrgsOrgActionsHostedRunnersPostBodyPropImageType,
+        size: str,
+        runner_group_id: int,
+        maximum_runners: Missing[int] = UNSET,
+        enable_static_ip: Missing[bool] = UNSET,
+    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]: ...
+
+    async def async_create_hosted_runner_for_org(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        data: Missing[OrgsOrgActionsHostedRunnersPostBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#create-a-github-hosted-runner-for-an-organization"""
+
+        from ..models import ActionsHostedRunner, OrgsOrgActionsHostedRunnersPostBody
+
+        url = f"/orgs/{org}/actions/hosted-runners"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(OrgsOrgActionsHostedRunnersPostBody, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=ActionsHostedRunner,
+        )
+
+    def get_hosted_runners_github_owned_images_for_org(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+    ) -> Response[
+        OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200,
+        OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200Type,
+    ]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#get-github-owned-images-for-github-hosted-runners-in-an-organization"""
+
+        from ..models import OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200
+
+        url = f"/orgs/{org}/actions/hosted-runners/images/github-owned"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200,
+        )
+
+    async def async_get_hosted_runners_github_owned_images_for_org(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+    ) -> Response[
+        OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200,
+        OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200Type,
+    ]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#get-github-owned-images-for-github-hosted-runners-in-an-organization"""
+
+        from ..models import OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200
+
+        url = f"/orgs/{org}/actions/hosted-runners/images/github-owned"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200,
+        )
+
+    def get_hosted_runners_partner_images_for_org(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+    ) -> Response[
+        OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200,
+        OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200Type,
+    ]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#get-partner-images-for-github-hosted-runners-in-an-organization"""
+
+        from ..models import OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200
+
+        url = f"/orgs/{org}/actions/hosted-runners/images/partner"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200,
+        )
+
+    async def async_get_hosted_runners_partner_images_for_org(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+    ) -> Response[
+        OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200,
+        OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200Type,
+    ]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#get-partner-images-for-github-hosted-runners-in-an-organization"""
+
+        from ..models import OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200
+
+        url = f"/orgs/{org}/actions/hosted-runners/images/partner"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200,
+        )
+
+    def get_hosted_runners_limits_for_org(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+    ) -> Response[ActionsHostedRunnerLimits, ActionsHostedRunnerLimitsType]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#get-limits-on-github-hosted-runners-for-an-organization"""
+
+        from ..models import ActionsHostedRunnerLimits
+
+        url = f"/orgs/{org}/actions/hosted-runners/limits"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=ActionsHostedRunnerLimits,
+        )
+
+    async def async_get_hosted_runners_limits_for_org(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+    ) -> Response[ActionsHostedRunnerLimits, ActionsHostedRunnerLimitsType]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#get-limits-on-github-hosted-runners-for-an-organization"""
+
+        from ..models import ActionsHostedRunnerLimits
+
+        url = f"/orgs/{org}/actions/hosted-runners/limits"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=ActionsHostedRunnerLimits,
+        )
+
+    def get_hosted_runners_machine_specs_for_org(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+    ) -> Response[
+        OrgsOrgActionsHostedRunnersMachineSizesGetResponse200,
+        OrgsOrgActionsHostedRunnersMachineSizesGetResponse200Type,
+    ]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#get-github-hosted-runners-machine-specs-for-an-organization"""
+
+        from ..models import OrgsOrgActionsHostedRunnersMachineSizesGetResponse200
+
+        url = f"/orgs/{org}/actions/hosted-runners/machine-sizes"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=OrgsOrgActionsHostedRunnersMachineSizesGetResponse200,
+        )
+
+    async def async_get_hosted_runners_machine_specs_for_org(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+    ) -> Response[
+        OrgsOrgActionsHostedRunnersMachineSizesGetResponse200,
+        OrgsOrgActionsHostedRunnersMachineSizesGetResponse200Type,
+    ]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#get-github-hosted-runners-machine-specs-for-an-organization"""
+
+        from ..models import OrgsOrgActionsHostedRunnersMachineSizesGetResponse200
+
+        url = f"/orgs/{org}/actions/hosted-runners/machine-sizes"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=OrgsOrgActionsHostedRunnersMachineSizesGetResponse200,
+        )
+
+    def get_hosted_runners_platforms_for_org(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+    ) -> Response[
+        OrgsOrgActionsHostedRunnersPlatformsGetResponse200,
+        OrgsOrgActionsHostedRunnersPlatformsGetResponse200Type,
+    ]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#get-platforms-for-github-hosted-runners-in-an-organization"""
+
+        from ..models import OrgsOrgActionsHostedRunnersPlatformsGetResponse200
+
+        url = f"/orgs/{org}/actions/hosted-runners/platforms"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=OrgsOrgActionsHostedRunnersPlatformsGetResponse200,
+        )
+
+    async def async_get_hosted_runners_platforms_for_org(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+    ) -> Response[
+        OrgsOrgActionsHostedRunnersPlatformsGetResponse200,
+        OrgsOrgActionsHostedRunnersPlatformsGetResponse200Type,
+    ]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#get-platforms-for-github-hosted-runners-in-an-organization"""
+
+        from ..models import OrgsOrgActionsHostedRunnersPlatformsGetResponse200
+
+        url = f"/orgs/{org}/actions/hosted-runners/platforms"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=OrgsOrgActionsHostedRunnersPlatformsGetResponse200,
+        )
+
+    def get_hosted_runner_for_org(
+        self,
+        org: str,
+        hosted_runner_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#get-a-github-hosted-runner-for-an-organization"""
+
+        from ..models import ActionsHostedRunner
+
+        url = f"/orgs/{org}/actions/hosted-runners/{hosted_runner_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=ActionsHostedRunner,
+        )
+
+    async def async_get_hosted_runner_for_org(
+        self,
+        org: str,
+        hosted_runner_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#get-a-github-hosted-runner-for-an-organization"""
+
+        from ..models import ActionsHostedRunner
+
+        url = f"/orgs/{org}/actions/hosted-runners/{hosted_runner_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=ActionsHostedRunner,
+        )
+
+    def delete_hosted_runner_for_org(
+        self,
+        org: str,
+        hosted_runner_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#delete-a-github-hosted-runner-for-an-organization"""
+
+        from ..models import ActionsHostedRunner
+
+        url = f"/orgs/{org}/actions/hosted-runners/{hosted_runner_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            response_model=ActionsHostedRunner,
+        )
+
+    async def async_delete_hosted_runner_for_org(
+        self,
+        org: str,
+        hosted_runner_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#delete-a-github-hosted-runner-for-an-organization"""
+
+        from ..models import ActionsHostedRunner
+
+        url = f"/orgs/{org}/actions/hosted-runners/{hosted_runner_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            response_model=ActionsHostedRunner,
+        )
+
+    @overload
+    def update_hosted_runner_for_org(
+        self,
+        org: str,
+        hosted_runner_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        data: OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBodyType,
+    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]: ...
+
+    @overload
+    def update_hosted_runner_for_org(
+        self,
+        org: str,
+        hosted_runner_id: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        name: Missing[str] = UNSET,
+        runner_group_id: Missing[int] = UNSET,
+        maximum_runners: Missing[int] = UNSET,
+        enable_static_ip: Missing[bool] = UNSET,
+        image_version: Missing[Union[str, None]] = UNSET,
+    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]: ...
+
+    def update_hosted_runner_for_org(
+        self,
+        org: str,
+        hosted_runner_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        data: Missing[OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#update-a-github-hosted-runner-for-an-organization"""
+
+        from ..models import (
+            ActionsHostedRunner,
+            OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBody,
+        )
+
+        url = f"/orgs/{org}/actions/hosted-runners/{hosted_runner_id}"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=ActionsHostedRunner,
+        )
+
+    @overload
+    async def async_update_hosted_runner_for_org(
+        self,
+        org: str,
+        hosted_runner_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        data: OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBodyType,
+    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]: ...
+
+    @overload
+    async def async_update_hosted_runner_for_org(
+        self,
+        org: str,
+        hosted_runner_id: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        name: Missing[str] = UNSET,
+        runner_group_id: Missing[int] = UNSET,
+        maximum_runners: Missing[int] = UNSET,
+        enable_static_ip: Missing[bool] = UNSET,
+        image_version: Missing[Union[str, None]] = UNSET,
+    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]: ...
+
+    async def async_update_hosted_runner_for_org(
+        self,
+        org: str,
+        hosted_runner_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        data: Missing[OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/hosted-runners#update-a-github-hosted-runner-for-an-organization"""
+
+        from ..models import (
+            ActionsHostedRunner,
+            OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBody,
+        )
+
+        url = f"/orgs/{org}/actions/hosted-runners/{hosted_runner_id}"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=ActionsHostedRunner,
         )
 
     def get_github_actions_permissions_organization(
@@ -1535,6 +2853,7 @@ class ActionsClient:
         allows_public_repositories: Missing[bool] = UNSET,
         restricted_to_workflows: Missing[bool] = UNSET,
         selected_workflows: Missing[list[str]] = UNSET,
+        network_configuration_id: Missing[str] = UNSET,
     ) -> Response[RunnerGroupsOrg, RunnerGroupsOrgType]: ...
 
     def create_self_hosted_runner_group_for_org(
@@ -1593,6 +2912,7 @@ class ActionsClient:
         allows_public_repositories: Missing[bool] = UNSET,
         restricted_to_workflows: Missing[bool] = UNSET,
         selected_workflows: Missing[list[str]] = UNSET,
+        network_configuration_id: Missing[str] = UNSET,
     ) -> Response[RunnerGroupsOrg, RunnerGroupsOrgType]: ...
 
     async def async_create_self_hosted_runner_group_for_org(
@@ -1733,6 +3053,7 @@ class ActionsClient:
         allows_public_repositories: Missing[bool] = UNSET,
         restricted_to_workflows: Missing[bool] = UNSET,
         selected_workflows: Missing[list[str]] = UNSET,
+        network_configuration_id: Missing[Union[str, None]] = UNSET,
     ) -> Response[RunnerGroupsOrg, RunnerGroupsOrgType]: ...
 
     def update_self_hosted_runner_group_for_org(
@@ -1797,6 +3118,7 @@ class ActionsClient:
         allows_public_repositories: Missing[bool] = UNSET,
         restricted_to_workflows: Missing[bool] = UNSET,
         selected_workflows: Missing[list[str]] = UNSET,
+        network_configuration_id: Missing[Union[str, None]] = UNSET,
     ) -> Response[RunnerGroupsOrg, RunnerGroupsOrgType]: ...
 
     async def async_update_self_hosted_runner_group_for_org(
@@ -1836,6 +3158,76 @@ class ActionsClient:
             json=exclude_unset(json),
             headers=exclude_unset(headers),
             response_model=RunnerGroupsOrg,
+        )
+
+    def list_github_hosted_runners_in_group_for_org(
+        self,
+        org: str,
+        runner_group_id: int,
+        *,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+    ) -> Response[
+        OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200,
+        OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200Type,
+    ]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#list-github-hosted-runners-in-a-group-for-an-organization"""
+
+        from ..models import (
+            OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200,
+        )
+
+        url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}/hosted-runners"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200,
+        )
+
+    async def async_list_github_hosted_runners_in_group_for_org(
+        self,
+        org: str,
+        runner_group_id: int,
+        *,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+    ) -> Response[
+        OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200,
+        OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200Type,
+    ]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#list-github-hosted-runners-in-a-group-for-an-organization"""
+
+        from ..models import (
+            OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200,
+        )
+
+        url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}/hosted-runners"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200,
         )
 
     def list_repo_access_to_self_hosted_runner_group_in_org(
@@ -3452,8 +4844,8 @@ class ActionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
-        encrypted_value: Missing[str] = UNSET,
-        key_id: Missing[str] = UNSET,
+        encrypted_value: str,
+        key_id: str,
         visibility: Literal["all", "private", "selected"],
         selected_repository_ids: Missing[list[int]] = UNSET,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
@@ -3510,8 +4902,8 @@ class ActionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
-        encrypted_value: Missing[str] = UNSET,
-        key_id: Missing[str] = UNSET,
+        encrypted_value: str,
+        key_id: str,
         visibility: Literal["all", "private", "selected"],
         selected_repository_ids: Missing[list[int]] = UNSET,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
@@ -8748,8 +10140,8 @@ class ActionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
-        encrypted_value: Missing[str] = UNSET,
-        key_id: Missing[str] = UNSET,
+        encrypted_value: str,
+        key_id: str,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
 
     def create_or_update_repo_secret(
@@ -8809,8 +10201,8 @@ class ActionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
-        encrypted_value: Missing[str] = UNSET,
-        key_id: Missing[str] = UNSET,
+        encrypted_value: str,
+        key_id: str,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
 
     async def async_create_or_update_repo_secret(

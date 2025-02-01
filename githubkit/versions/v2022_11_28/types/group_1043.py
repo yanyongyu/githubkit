@@ -12,10 +12,8 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBodyType(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBody"""
-
-    sub_issue_id: int
+class ReposOwnerRepoInteractionLimitsGetResponse200Anyof1Type(TypedDict):
+    """ReposOwnerRepoInteractionLimitsGetResponse200Anyof1"""
 
 
-__all__ = ("ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBodyType",)
+__all__ = ("ReposOwnerRepoInteractionLimitsGetResponse200Anyof1Type",)

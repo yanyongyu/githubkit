@@ -9,26 +9,82 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0024 import SimpleClassroomRepositoryType
 
-class ClassroomAssignmentGradeType(TypedDict):
-    """Classroom Assignment Grade
 
-    Grade for a student or groups GitHub Classroom assignment
+class ClassroomAcceptedAssignmentType(TypedDict):
+    """Classroom Accepted Assignment
+
+    A GitHub Classroom accepted assignment
     """
 
-    assignment_name: str
-    assignment_url: str
-    starter_code_url: str
-    github_username: str
-    roster_identifier: str
-    student_repository_name: str
-    student_repository_url: str
-    submission_timestamp: str
-    points_awarded: int
-    points_available: int
-    group_name: NotRequired[str]
+    id: int
+    submitted: bool
+    passing: bool
+    commit_count: int
+    grade: str
+    students: list[SimpleClassroomUserType]
+    repository: SimpleClassroomRepositoryType
+    assignment: SimpleClassroomAssignmentType
 
 
-__all__ = ("ClassroomAssignmentGradeType",)
+class SimpleClassroomUserType(TypedDict):
+    """Simple Classroom User
+
+    A GitHub user simplified for Classroom.
+    """
+
+    id: int
+    login: str
+    avatar_url: str
+    html_url: str
+
+
+class SimpleClassroomAssignmentType(TypedDict):
+    """Simple Classroom Assignment
+
+    A GitHub Classroom assignment
+    """
+
+    id: int
+    public_repo: bool
+    title: str
+    type: Literal["individual", "group"]
+    invite_link: str
+    invitations_enabled: bool
+    slug: str
+    students_are_repo_admins: bool
+    feedback_pull_requests_enabled: bool
+    max_teams: NotRequired[Union[int, None]]
+    max_members: NotRequired[Union[int, None]]
+    editor: Union[str, None]
+    accepted: int
+    submitted: NotRequired[int]
+    passing: int
+    language: Union[str, None]
+    deadline: Union[datetime, None]
+    classroom: SimpleClassroomType
+
+
+class SimpleClassroomType(TypedDict):
+    """Simple Classroom
+
+    A GitHub Classroom classroom
+    """
+
+    id: int
+    name: str
+    archived: bool
+    url: str
+
+
+__all__ = (
+    "ClassroomAcceptedAssignmentType",
+    "SimpleClassroomAssignmentType",
+    "SimpleClassroomType",
+    "SimpleClassroomUserType",
+)

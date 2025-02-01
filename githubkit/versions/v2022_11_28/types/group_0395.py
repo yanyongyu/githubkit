@@ -9,31 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from datetime import datetime
 from typing_extensions import TypedDict
 
 
-class OrganizationSimpleWebhooksType(TypedDict):
-    """Organization Simple
+class SshSigningKeyType(TypedDict):
+    """SSH Signing Key
 
-    A GitHub organization. Webhook payloads contain the `organization` property when
-    the webhook is configured for an
-    organization, or when the event occurs from activity in a repository owned by an
-    organization.
+    A public SSH key used to sign Git commits
     """
 
-    login: str
+    key: str
     id: int
-    node_id: str
-    url: str
-    repos_url: str
-    events_url: str
-    hooks_url: str
-    issues_url: str
-    members_url: str
-    public_members_url: str
-    avatar_url: str
-    description: Union[str, None]
+    title: str
+    created_at: datetime
 
 
-__all__ = ("OrganizationSimpleWebhooksType",)
+__all__ = ("SshSigningKeyType",)

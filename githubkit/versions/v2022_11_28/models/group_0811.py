@@ -18,18 +18,19 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgActionsPermissionsPutBody(GitHubModel):
-    """OrgsOrgActionsPermissionsPutBody"""
+class MarkdownPostBody(GitHubModel):
+    """MarkdownPostBody"""
 
-    enabled_repositories: Literal["all", "none", "selected"] = Field(
-        description="The policy that controls the repositories in the organization that are allowed to run GitHub Actions."
+    text: str = Field(description="The Markdown text to render in HTML.")
+    mode: Missing[Literal["markdown", "gfm"]] = Field(
+        default=UNSET, description="The rendering mode."
     )
-    allowed_actions: Missing[Literal["all", "local_only", "selected"]] = Field(
+    context: Missing[str] = Field(
         default=UNSET,
-        description="The permissions policy that controls the actions and reusable workflows that are allowed to run.",
+        description="The repository context to use when creating references in `gfm` mode.  For example, setting `context` to `octo-org/octo-repo` will change the text `#42` into an HTML link to issue 42 in the `octo-org/octo-repo` repository.",
     )
 
 
-model_rebuild(OrgsOrgActionsPermissionsPutBody)
+model_rebuild(MarkdownPostBody)
 
-__all__ = ("OrgsOrgActionsPermissionsPutBody",)
+__all__ = ("MarkdownPostBody",)

@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union
 
 from pydantic import Field
@@ -18,71 +17,59 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
+from .group_0154 import MinimalRepository
+from .group_0245 import GitUser
+from .group_0429 import SearchResultTextMatchesItems
+from .group_0432 import CommitSearchResultItemPropCommit
 
-class PrivateUser(GitHubModel):
-    """Private User
 
-    Private User
+class CommitSearchResultItem(GitHubModel):
+    """Commit Search Result Item
+
+    Commit Search Result Item
     """
 
-    login: str = Field()
-    id: int = Field()
-    user_view_type: Missing[str] = Field(default=UNSET)
-    node_id: str = Field()
-    avatar_url: str = Field()
-    gravatar_id: Union[str, None] = Field()
     url: str = Field()
+    sha: str = Field()
     html_url: str = Field()
-    followers_url: str = Field()
-    following_url: str = Field()
-    gists_url: str = Field()
-    starred_url: str = Field()
-    subscriptions_url: str = Field()
-    organizations_url: str = Field()
-    repos_url: str = Field()
-    events_url: str = Field()
-    received_events_url: str = Field()
-    type: str = Field()
-    site_admin: bool = Field()
-    name: Union[str, None] = Field()
-    company: Union[str, None] = Field()
-    blog: Union[str, None] = Field()
-    location: Union[str, None] = Field()
-    email: Union[str, None] = Field()
-    notification_email: Missing[Union[str, None]] = Field(default=UNSET)
-    hireable: Union[bool, None] = Field()
-    bio: Union[str, None] = Field()
-    twitter_username: Missing[Union[str, None]] = Field(default=UNSET)
-    public_repos: int = Field()
-    public_gists: int = Field()
-    followers: int = Field()
-    following: int = Field()
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    private_gists: int = Field()
-    total_private_repos: int = Field()
-    owned_private_repos: int = Field()
-    disk_usage: int = Field()
-    collaborators: int = Field()
-    two_factor_authentication: bool = Field()
-    plan: Missing[PrivateUserPropPlan] = Field(default=UNSET)
-    business_plus: Missing[bool] = Field(default=UNSET)
-    ldap_dn: Missing[str] = Field(default=UNSET)
+    comments_url: str = Field()
+    commit: CommitSearchResultItemPropCommit = Field()
+    author: Union[None, SimpleUser] = Field()
+    committer: Union[None, GitUser] = Field()
+    parents: list[CommitSearchResultItemPropParentsItems] = Field()
+    repository: MinimalRepository = Field(
+        title="Minimal Repository", description="Minimal Repository"
+    )
+    score: float = Field()
+    node_id: str = Field()
+    text_matches: Missing[list[SearchResultTextMatchesItems]] = Field(
+        default=UNSET, title="Search Result Text Matches"
+    )
 
 
-class PrivateUserPropPlan(GitHubModel):
-    """PrivateUserPropPlan"""
+class CommitSearchResultItemPropParentsItems(GitHubModel):
+    """CommitSearchResultItemPropParentsItems"""
 
-    collaborators: int = Field()
-    name: str = Field()
-    space: int = Field()
-    private_repos: int = Field()
+    url: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    sha: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(PrivateUser)
-model_rebuild(PrivateUserPropPlan)
+class SearchCommitsGetResponse200(GitHubModel):
+    """SearchCommitsGetResponse200"""
+
+    total_count: int = Field()
+    incomplete_results: bool = Field()
+    items: list[CommitSearchResultItem] = Field()
+
+
+model_rebuild(CommitSearchResultItem)
+model_rebuild(CommitSearchResultItemPropParentsItems)
+model_rebuild(SearchCommitsGetResponse200)
 
 __all__ = (
-    "PrivateUser",
-    "PrivateUserPropPlan",
+    "CommitSearchResultItem",
+    "CommitSearchResultItemPropParentsItems",
+    "SearchCommitsGetResponse200",
 )

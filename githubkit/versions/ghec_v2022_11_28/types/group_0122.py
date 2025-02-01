@@ -9,44 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0002 import SimpleUserType
-from .group_0051 import SimpleRepositoryType
+
+class RepositoryRuleOneof18Type(TypedDict):
+    """max_file_size
+
+    Prevent commits that exceed a specified file size limit from being pushed to the
+    commit.
+    """
+
+    type: Literal["max_file_size"]
+    parameters: NotRequired[RepositoryRuleOneof18PropParametersType]
 
 
-class OrganizationSecretScanningAlertType(TypedDict):
-    """OrganizationSecretScanningAlert"""
+class RepositoryRuleOneof18PropParametersType(TypedDict):
+    """RepositoryRuleOneof18PropParameters"""
 
-    number: NotRequired[int]
-    created_at: NotRequired[datetime]
-    updated_at: NotRequired[Union[None, datetime]]
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    locations_url: NotRequired[str]
-    state: NotRequired[Literal["open", "resolved"]]
-    resolution: NotRequired[
-        Union[None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]]
-    ]
-    resolved_at: NotRequired[Union[datetime, None]]
-    resolved_by: NotRequired[Union[None, SimpleUserType]]
-    secret_type: NotRequired[str]
-    secret_type_display_name: NotRequired[str]
-    secret: NotRequired[str]
-    repository: NotRequired[SimpleRepositoryType]
-    push_protection_bypassed: NotRequired[Union[bool, None]]
-    push_protection_bypassed_by: NotRequired[Union[None, SimpleUserType]]
-    push_protection_bypassed_at: NotRequired[Union[datetime, None]]
-    push_protection_bypass_request_reviewer: NotRequired[Union[None, SimpleUserType]]
-    push_protection_bypass_request_reviewer_comment: NotRequired[Union[str, None]]
-    push_protection_bypass_request_comment: NotRequired[Union[str, None]]
-    push_protection_bypass_request_html_url: NotRequired[Union[str, None]]
-    resolution_comment: NotRequired[Union[str, None]]
-    validity: NotRequired[Literal["active", "inactive", "unknown"]]
-    publicly_leaked: NotRequired[Union[bool, None]]
-    multi_repo: NotRequired[Union[bool, None]]
+    max_file_size: int
 
 
-__all__ = ("OrganizationSecretScanningAlertType",)
+__all__ = (
+    "RepositoryRuleOneof18PropParametersType",
+    "RepositoryRuleOneof18Type",
+)

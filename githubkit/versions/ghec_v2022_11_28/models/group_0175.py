@@ -9,27 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class InteractionLimitResponse(GitHubModel):
-    """Interaction Limits
+class RepositoryFineGrainedPermission(GitHubModel):
+    """Repository Fine-Grained Permission
 
-    Interaction limit settings.
+    A fine-grained permission that protects repository resources.
     """
 
-    limit: Literal["existing_users", "contributors_only", "collaborators_only"] = Field(
-        description="The type of GitHub user that can comment, open issues, or create pull requests while the interaction limit is in effect."
-    )
-    origin: str = Field()
-    expires_at: datetime = Field()
+    name: str = Field()
+    description: str = Field()
 
 
-model_rebuild(InteractionLimitResponse)
+model_rebuild(RepositoryFineGrainedPermission)
 
-__all__ = ("InteractionLimitResponse",)
+__all__ = ("RepositoryFineGrainedPermission",)

@@ -9,58 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class SimpleCommit(GitHubModel):
-    """Simple Commit
+class OidcCustomSubRepo(GitHubModel):
+    """Actions OIDC subject customization for a repository
 
-    A commit.
+    Actions OIDC subject customization for a repository
     """
 
-    id: str = Field(description="SHA for the commit")
-    tree_id: str = Field(description="SHA for the commit's tree")
-    message: str = Field(description="Message describing the purpose of the commit")
-    timestamp: datetime = Field(description="Timestamp of the commit")
-    author: Union[SimpleCommitPropAuthor, None] = Field(
-        description="Information about the Git author"
+    use_default: bool = Field(
+        description="Whether to use the default template or not. If `true`, the `include_claim_keys` field is ignored."
     )
-    committer: Union[SimpleCommitPropCommitter, None] = Field(
-        description="Information about the Git committer"
+    include_claim_keys: Missing[list[str]] = Field(
+        default=UNSET,
+        description="Array of unique strings. Each claim key can only contain alphanumeric characters and underscores.",
     )
 
 
-class SimpleCommitPropAuthor(GitHubModel):
-    """SimpleCommitPropAuthor
+model_rebuild(OidcCustomSubRepo)
 
-    Information about the Git author
-    """
-
-    name: str = Field(description="Name of the commit's author")
-    email: str = Field(description="Git email address of the commit's author")
-
-
-class SimpleCommitPropCommitter(GitHubModel):
-    """SimpleCommitPropCommitter
-
-    Information about the Git committer
-    """
-
-    name: str = Field(description="Name of the commit's committer")
-    email: str = Field(description="Git email address of the commit's committer")
-
-
-model_rebuild(SimpleCommit)
-model_rebuild(SimpleCommitPropAuthor)
-model_rebuild(SimpleCommitPropCommitter)
-
-__all__ = (
-    "SimpleCommit",
-    "SimpleCommitPropAuthor",
-    "SimpleCommitPropCommitter",
-)
+__all__ = ("OidcCustomSubRepo",)

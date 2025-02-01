@@ -9,15 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class SelectedActionsType(TypedDict):
-    """SelectedActions"""
+class ActionsHostedRunnerImageType(TypedDict):
+    """GitHub-hosted runner image details.
 
-    github_owned_allowed: NotRequired[bool]
-    verified_allowed: NotRequired[bool]
-    patterns_allowed: NotRequired[list[str]]
+    Provides details of a hosted runner image
+    """
+
+    id: str
+    platform: str
+    size_gb: int
+    display_name: str
+    source: Literal["github", "partner", "custom"]
 
 
-__all__ = ("SelectedActionsType",)
+__all__ = ("ActionsHostedRunnerImageType",)

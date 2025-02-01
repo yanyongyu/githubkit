@@ -13,36 +13,23 @@ from datetime import datetime
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0002 import SimpleUserType
-from .group_0007 import IntegrationPropPermissionsType
 
+class EnterpriseType(TypedDict):
+    """Enterprise
 
-class IntegrationType(TypedDict):
-    """GitHub app
-
-    GitHub apps are a new way to extend GitHub. They can be installed directly on
-    organizations and user accounts and granted access to specific repositories.
-    They come with granular permissions and built-in webhooks. GitHub apps are first
-    class actors within GitHub.
+    An enterprise on GitHub.
     """
 
-    id: int
-    slug: NotRequired[str]
-    node_id: str
-    client_id: NotRequired[str]
-    owner: Union[None, SimpleUserType]
-    name: str
-    description: Union[str, None]
-    external_url: str
+    description: NotRequired[Union[str, None]]
     html_url: str
-    created_at: datetime
-    updated_at: datetime
-    permissions: IntegrationPropPermissionsType
-    events: list[str]
-    installations_count: NotRequired[int]
-    client_secret: NotRequired[str]
-    webhook_secret: NotRequired[Union[str, None]]
-    pem: NotRequired[str]
+    website_url: NotRequired[Union[str, None]]
+    id: int
+    node_id: str
+    name: str
+    slug: str
+    created_at: Union[datetime, None]
+    updated_at: Union[datetime, None]
+    avatar_url: str
 
 
-__all__ = ("IntegrationType",)
+__all__ = ("EnterpriseType",)

@@ -9,60 +9,63 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0002 import SimpleUser
-from .group_0008 import Integration
-from .group_0060 import Team
+from .group_0003 import SimpleUser
+from .group_0010 import Integration
 
 
-class ProtectedBranchPullRequestReviewPropDismissalRestrictions(GitHubModel):
-    """ProtectedBranchPullRequestReviewPropDismissalRestrictions"""
+class Deployment(GitHubModel):
+    """Deployment
 
-    users: Missing[list[SimpleUser]] = Field(
-        default=UNSET, description="The list of users with review dismissal access."
-    )
-    teams: Missing[list[Team]] = Field(
-        default=UNSET, description="The list of teams with review dismissal access."
-    )
-    apps: Missing[list[Union[Integration, None]]] = Field(
-        default=UNSET, description="The list of apps with review dismissal access."
-    )
-    url: Missing[str] = Field(default=UNSET)
-    users_url: Missing[str] = Field(default=UNSET)
-    teams_url: Missing[str] = Field(default=UNSET)
-
-
-class ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances(GitHubModel):
-    """ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances
-
-    Allow specific users, teams, or apps to bypass pull request requirements.
+    A request for a specific ref(branch,sha,tag) to be deployed
     """
 
-    users: Missing[list[SimpleUser]] = Field(
-        default=UNSET,
-        description="The list of users allowed to bypass pull request requirements.",
+    url: str = Field()
+    id: int = Field(description="Unique identifier of the deployment")
+    node_id: str = Field()
+    sha: str = Field()
+    ref: str = Field(
+        description="The ref to deploy. This can be a branch, tag, or sha."
     )
-    teams: Missing[list[Team]] = Field(
+    task: str = Field(description="Parameter to specify a task to execute")
+    payload: Union[DeploymentPropPayloadOneof0, str] = Field()
+    original_environment: Missing[str] = Field(default=UNSET)
+    environment: str = Field(description="Name for the target deployment environment.")
+    description: Union[str, None] = Field()
+    creator: Union[None, SimpleUser] = Field()
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+    statuses_url: str = Field()
+    repository_url: str = Field()
+    transient_environment: Missing[bool] = Field(
         default=UNSET,
-        description="The list of teams allowed to bypass pull request requirements.",
+        description="Specifies if the given environment is will no longer exist at some point in the future. Default: false.",
     )
-    apps: Missing[list[Union[Integration, None]]] = Field(
+    production_environment: Missing[bool] = Field(
         default=UNSET,
-        description="The list of apps allowed to bypass pull request requirements.",
+        description="Specifies if the given environment is one that end-users directly interact with. Default: false.",
+    )
+    performed_via_github_app: Missing[Union[None, Integration, None]] = Field(
+        default=UNSET
     )
 
 
-model_rebuild(ProtectedBranchPullRequestReviewPropDismissalRestrictions)
-model_rebuild(ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances)
+class DeploymentPropPayloadOneof0(ExtraGitHubModel):
+    """DeploymentPropPayloadOneof0"""
+
+
+model_rebuild(Deployment)
+model_rebuild(DeploymentPropPayloadOneof0)
 
 __all__ = (
-    "ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances",
-    "ProtectedBranchPullRequestReviewPropDismissalRestrictions",
+    "Deployment",
+    "DeploymentPropPayloadOneof0",
 )

@@ -9,16 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class CodeScanningAnalysisToolType(TypedDict):
-    """CodeScanningAnalysisTool"""
-
-    name: NotRequired[str]
-    version: NotRequired[Union[str, None]]
-    guid: NotRequired[Union[str, None]]
+from .group_0073 import RunnerLabelType
 
 
-__all__ = ("CodeScanningAnalysisToolType",)
+class RunnerType(TypedDict):
+    """Self hosted runners
+
+    A self hosted runner
+    """
+
+    id: int
+    runner_group_id: NotRequired[int]
+    name: str
+    os: str
+    status: str
+    busy: bool
+    labels: list[RunnerLabelType]
+
+
+__all__ = ("RunnerType",)

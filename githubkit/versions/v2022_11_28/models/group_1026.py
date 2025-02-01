@@ -9,13 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from pydantic import Field
+
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class ReposOwnerRepoInteractionLimitsGetResponse200Anyof1(GitHubModel):
-    """ReposOwnerRepoInteractionLimitsGetResponse200Anyof1"""
+from .group_0186 import ActionsVariable
 
 
-model_rebuild(ReposOwnerRepoInteractionLimitsGetResponse200Anyof1)
+class ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200(GitHubModel):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200"""
 
-__all__ = ("ReposOwnerRepoInteractionLimitsGetResponse200Anyof1",)
+    total_count: int = Field()
+    variables: list[ActionsVariable] = Field()
+
+
+model_rebuild(ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200)
+
+__all__ = ("ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200",)

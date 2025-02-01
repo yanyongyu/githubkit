@@ -9,15 +9,12 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Any
+from typing_extensions import TypeAlias
+
+EmojisGetResponse200Type: TypeAlias = dict[str, Any]
+"""EmojisGetResponse200
+"""
 
 
-class EnterprisesEnterpriseSecretScanningAlertsGetResponse503Type(TypedDict):
-    """EnterprisesEnterpriseSecretScanningAlertsGetResponse503"""
-
-    code: NotRequired[str]
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
-
-
-__all__ = ("EnterprisesEnterpriseSecretScanningAlertsGetResponse503Type",)
+__all__ = ("EmojisGetResponse200Type",)

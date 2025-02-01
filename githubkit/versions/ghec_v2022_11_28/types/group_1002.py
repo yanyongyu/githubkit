@@ -11,11 +11,14 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-
-class ProjectsColumnsColumnIdMovesPostBodyType(TypedDict):
-    """ProjectsColumnsColumnIdMovesPostBody"""
-
-    position: str
+from .group_0075 import NetworkConfigurationType
 
 
-__all__ = ("ProjectsColumnsColumnIdMovesPostBodyType",)
+class OrgsOrgSettingsNetworkConfigurationsGetResponse200Type(TypedDict):
+    """OrgsOrgSettingsNetworkConfigurationsGetResponse200"""
+
+    total_count: int
+    network_configurations: list[NetworkConfigurationType]
+
+
+__all__ = ("OrgsOrgSettingsNetworkConfigurationsGetResponse200Type",)

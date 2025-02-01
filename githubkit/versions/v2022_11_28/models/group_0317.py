@@ -9,21 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class PageBuildStatus(GitHubModel):
-    """Page Build Status
+class DeployKey(GitHubModel):
+    """Deploy Key
 
-    Page Build Status
+    An SSH key granting access to a single repository.
     """
 
+    id: int = Field()
+    key: str = Field()
     url: str = Field()
-    status: str = Field()
+    title: str = Field()
+    verified: bool = Field()
+    created_at: str = Field()
+    read_only: bool = Field()
+    added_by: Missing[Union[str, None]] = Field(default=UNSET)
+    last_used: Missing[Union[str, None]] = Field(default=UNSET)
+    enabled: Missing[bool] = Field(default=UNSET)
 
 
-model_rebuild(PageBuildStatus)
+model_rebuild(DeployKey)
 
-__all__ = ("PageBuildStatus",)
+__all__ = ("DeployKey",)

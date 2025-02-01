@@ -43,10 +43,13 @@ if TYPE_CHECKING:
         EnterprisesEnterpriseActionsRunnersGetResponse200,
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200,
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
+        EnterprisesEnterpriseNetworkConfigurationsGetResponse200,
         GetAuditLogStreamConfig,
         GetAuditLogStreamConfigsItems,
         GetConsumedLicenses,
         GetLicenseSyncStatus,
+        NetworkConfiguration,
+        NetworkSettings,
         Runner,
         RunnerApplication,
         RunnerGroupsEnterprise,
@@ -89,6 +92,9 @@ if TYPE_CHECKING:
         EnterprisesEnterpriseAuditLogStreamsPostBodyType,
         EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyType,
         EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBodyType,
+        EnterprisesEnterpriseNetworkConfigurationsGetResponse200Type,
+        EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBodyType,
+        EnterprisesEnterpriseNetworkConfigurationsPostBodyType,
         EnterprisesEnterprisePropertiesSchemaPatchBodyType,
         GetAuditLogStreamConfigsItemsType,
         GetAuditLogStreamConfigType,
@@ -97,6 +103,8 @@ if TYPE_CHECKING:
         GoogleCloudConfigType,
         GroupPropMembersItemsType,
         GroupType,
+        NetworkConfigurationType,
+        NetworkSettingsType,
         PatchSchemaPropOperationsItemsType,
         PatchSchemaType,
         RunnerApplicationType,
@@ -773,6 +781,7 @@ class EnterpriseAdminClient:
         allows_public_repositories: Missing[bool] = UNSET,
         restricted_to_workflows: Missing[bool] = UNSET,
         selected_workflows: Missing[list[str]] = UNSET,
+        network_configuration_id: Missing[str] = UNSET,
     ) -> Response[RunnerGroupsEnterprise, RunnerGroupsEnterpriseType]: ...
 
     def create_self_hosted_runner_group_for_enterprise(
@@ -836,6 +845,7 @@ class EnterpriseAdminClient:
         allows_public_repositories: Missing[bool] = UNSET,
         restricted_to_workflows: Missing[bool] = UNSET,
         selected_workflows: Missing[list[str]] = UNSET,
+        network_configuration_id: Missing[str] = UNSET,
     ) -> Response[RunnerGroupsEnterprise, RunnerGroupsEnterpriseType]: ...
 
     async def async_create_self_hosted_runner_group_for_enterprise(
@@ -983,6 +993,7 @@ class EnterpriseAdminClient:
         allows_public_repositories: Missing[bool] = UNSET,
         restricted_to_workflows: Missing[bool] = UNSET,
         selected_workflows: Missing[list[str]] = UNSET,
+        network_configuration_id: Missing[Union[str, None]] = UNSET,
     ) -> Response[RunnerGroupsEnterprise, RunnerGroupsEnterpriseType]: ...
 
     def update_self_hosted_runner_group_for_enterprise(
@@ -1051,6 +1062,7 @@ class EnterpriseAdminClient:
         allows_public_repositories: Missing[bool] = UNSET,
         restricted_to_workflows: Missing[bool] = UNSET,
         selected_workflows: Missing[list[str]] = UNSET,
+        network_configuration_id: Missing[Union[str, None]] = UNSET,
     ) -> Response[RunnerGroupsEnterprise, RunnerGroupsEnterpriseType]: ...
 
     async def async_update_self_hosted_runner_group_for_enterprise(
@@ -3468,6 +3480,444 @@ class EnterpriseAdminClient:
             url,
             headers=exclude_unset(headers),
             response_model=GetLicenseSyncStatus,
+        )
+
+    def list_network_configurations_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+    ) -> Response[
+        EnterprisesEnterpriseNetworkConfigurationsGetResponse200,
+        EnterprisesEnterpriseNetworkConfigurationsGetResponse200Type,
+    ]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/network-configurations#list-hosted-compute-network-configurations-for-an-enterprise"""
+
+        from ..models import EnterprisesEnterpriseNetworkConfigurationsGetResponse200
+
+        url = f"/enterprises/{enterprise}/network-configurations"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=EnterprisesEnterpriseNetworkConfigurationsGetResponse200,
+        )
+
+    async def async_list_network_configurations_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+    ) -> Response[
+        EnterprisesEnterpriseNetworkConfigurationsGetResponse200,
+        EnterprisesEnterpriseNetworkConfigurationsGetResponse200Type,
+    ]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/network-configurations#list-hosted-compute-network-configurations-for-an-enterprise"""
+
+        from ..models import EnterprisesEnterpriseNetworkConfigurationsGetResponse200
+
+        url = f"/enterprises/{enterprise}/network-configurations"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=EnterprisesEnterpriseNetworkConfigurationsGetResponse200,
+        )
+
+    @overload
+    def create_network_configuration_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        data: EnterprisesEnterpriseNetworkConfigurationsPostBodyType,
+    ) -> Response[NetworkConfiguration, NetworkConfigurationType]: ...
+
+    @overload
+    def create_network_configuration_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        name: str,
+        compute_service: Missing[Literal["none", "actions"]] = UNSET,
+        network_settings_ids: list[str],
+    ) -> Response[NetworkConfiguration, NetworkConfigurationType]: ...
+
+    def create_network_configuration_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        data: Missing[EnterprisesEnterpriseNetworkConfigurationsPostBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[NetworkConfiguration, NetworkConfigurationType]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/network-configurations#create-a-hosted-compute-network-configuration-for-an-enterprise"""
+
+        from ..models import (
+            EnterprisesEnterpriseNetworkConfigurationsPostBody,
+            NetworkConfiguration,
+        )
+
+        url = f"/enterprises/{enterprise}/network-configurations"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseNetworkConfigurationsPostBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=NetworkConfiguration,
+        )
+
+    @overload
+    async def async_create_network_configuration_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        data: EnterprisesEnterpriseNetworkConfigurationsPostBodyType,
+    ) -> Response[NetworkConfiguration, NetworkConfigurationType]: ...
+
+    @overload
+    async def async_create_network_configuration_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        name: str,
+        compute_service: Missing[Literal["none", "actions"]] = UNSET,
+        network_settings_ids: list[str],
+    ) -> Response[NetworkConfiguration, NetworkConfigurationType]: ...
+
+    async def async_create_network_configuration_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        data: Missing[EnterprisesEnterpriseNetworkConfigurationsPostBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[NetworkConfiguration, NetworkConfigurationType]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/network-configurations#create-a-hosted-compute-network-configuration-for-an-enterprise"""
+
+        from ..models import (
+            EnterprisesEnterpriseNetworkConfigurationsPostBody,
+            NetworkConfiguration,
+        )
+
+        url = f"/enterprises/{enterprise}/network-configurations"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseNetworkConfigurationsPostBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=NetworkConfiguration,
+        )
+
+    def get_network_configuration_for_enterprise(
+        self,
+        enterprise: str,
+        network_configuration_id: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+    ) -> Response[NetworkConfiguration, NetworkConfigurationType]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/network-configurations#get-a-hosted-compute-network-configuration-for-an-enterprise"""
+
+        from ..models import NetworkConfiguration
+
+        url = f"/enterprises/{enterprise}/network-configurations/{network_configuration_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=NetworkConfiguration,
+        )
+
+    async def async_get_network_configuration_for_enterprise(
+        self,
+        enterprise: str,
+        network_configuration_id: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+    ) -> Response[NetworkConfiguration, NetworkConfigurationType]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/network-configurations#get-a-hosted-compute-network-configuration-for-an-enterprise"""
+
+        from ..models import NetworkConfiguration
+
+        url = f"/enterprises/{enterprise}/network-configurations/{network_configuration_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=NetworkConfiguration,
+        )
+
+    def delete_network_configuration_from_enterprise(
+        self,
+        enterprise: str,
+        network_configuration_id: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+    ) -> Response:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/network-configurations#delete-a-hosted-compute-network-configuration-from-an-enterprise"""
+
+        url = f"/enterprises/{enterprise}/network-configurations/{network_configuration_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+        )
+
+    async def async_delete_network_configuration_from_enterprise(
+        self,
+        enterprise: str,
+        network_configuration_id: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+    ) -> Response:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/network-configurations#delete-a-hosted-compute-network-configuration-from-an-enterprise"""
+
+        url = f"/enterprises/{enterprise}/network-configurations/{network_configuration_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+        )
+
+    @overload
+    def update_network_configuration_for_enterprise(
+        self,
+        enterprise: str,
+        network_configuration_id: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        data: EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBodyType,
+    ) -> Response[NetworkConfiguration, NetworkConfigurationType]: ...
+
+    @overload
+    def update_network_configuration_for_enterprise(
+        self,
+        enterprise: str,
+        network_configuration_id: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        name: Missing[str] = UNSET,
+        compute_service: Missing[Literal["none", "actions"]] = UNSET,
+        network_settings_ids: Missing[list[str]] = UNSET,
+    ) -> Response[NetworkConfiguration, NetworkConfigurationType]: ...
+
+    def update_network_configuration_for_enterprise(
+        self,
+        enterprise: str,
+        network_configuration_id: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        data: Missing[
+            EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[NetworkConfiguration, NetworkConfigurationType]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/network-configurations#update-a-hosted-compute-network-configuration-for-an-enterprise"""
+
+        from ..models import (
+            EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBody,
+            NetworkConfiguration,
+        )
+
+        url = f"/enterprises/{enterprise}/network-configurations/{network_configuration_id}"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBody,
+                json,
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=NetworkConfiguration,
+        )
+
+    @overload
+    async def async_update_network_configuration_for_enterprise(
+        self,
+        enterprise: str,
+        network_configuration_id: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        data: EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBodyType,
+    ) -> Response[NetworkConfiguration, NetworkConfigurationType]: ...
+
+    @overload
+    async def async_update_network_configuration_for_enterprise(
+        self,
+        enterprise: str,
+        network_configuration_id: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        name: Missing[str] = UNSET,
+        compute_service: Missing[Literal["none", "actions"]] = UNSET,
+        network_settings_ids: Missing[list[str]] = UNSET,
+    ) -> Response[NetworkConfiguration, NetworkConfigurationType]: ...
+
+    async def async_update_network_configuration_for_enterprise(
+        self,
+        enterprise: str,
+        network_configuration_id: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        data: Missing[
+            EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[NetworkConfiguration, NetworkConfigurationType]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/network-configurations#update-a-hosted-compute-network-configuration-for-an-enterprise"""
+
+        from ..models import (
+            EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBody,
+            NetworkConfiguration,
+        )
+
+        url = f"/enterprises/{enterprise}/network-configurations/{network_configuration_id}"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBody,
+                json,
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=NetworkConfiguration,
+        )
+
+    def get_network_settings_for_enterprise(
+        self,
+        enterprise: str,
+        network_settings_id: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+    ) -> Response[NetworkSettings, NetworkSettingsType]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/network-configurations#get-a-hosted-compute-network-settings-resource-for-an-enterprise"""
+
+        from ..models import NetworkSettings
+
+        url = f"/enterprises/{enterprise}/network-settings/{network_settings_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=NetworkSettings,
+        )
+
+    async def async_get_network_settings_for_enterprise(
+        self,
+        enterprise: str,
+        network_settings_id: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+    ) -> Response[NetworkSettings, NetworkSettingsType]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/network-configurations#get-a-hosted-compute-network-settings-resource-for-an-enterprise"""
+
+        from ..models import NetworkSettings
+
+        url = f"/enterprises/{enterprise}/network-settings/{network_settings_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=NetworkSettings,
         )
 
     def get_enterprise_custom_properties(

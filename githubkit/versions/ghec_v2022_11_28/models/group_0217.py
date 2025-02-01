@@ -9,26 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class ActionsVariable(GitHubModel):
-    """Actions Variable"""
-
-    name: str = Field(description="The name of the variable.")
-    value: str = Field(description="The value of the variable.")
-    created_at: datetime = Field(
-        description="The date and time at which the variable was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
-    )
-    updated_at: datetime = Field(
-        description="The date and time at which the variable was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
-    )
+from .group_0216 import RateLimit
+from .group_0218 import RateLimitOverviewPropResources
 
 
-model_rebuild(ActionsVariable)
+class RateLimitOverview(GitHubModel):
+    """Rate Limit Overview
 
-__all__ = ("ActionsVariable",)
+    Rate Limit Overview
+    """
+
+    resources: RateLimitOverviewPropResources = Field()
+    rate: RateLimit = Field(title="Rate Limit")
+
+
+model_rebuild(RateLimitOverview)
+
+__all__ = ("RateLimitOverview",)

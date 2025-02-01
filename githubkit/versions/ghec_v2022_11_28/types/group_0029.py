@@ -9,13 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ActionsOidcCustomIssuerPolicyForEnterpriseType(TypedDict):
-    """ActionsOidcCustomIssuerPolicyForEnterprise"""
+class ActionsCacheUsageOrgEnterpriseType(TypedDict):
+    """ActionsCacheUsageOrgEnterprise"""
 
-    include_enterprise_slug: NotRequired[bool]
+    total_active_caches_count: int
+    total_active_caches_size_in_bytes: int
 
 
-__all__ = ("ActionsOidcCustomIssuerPolicyForEnterpriseType",)
+__all__ = ("ActionsCacheUsageOrgEnterpriseType",)

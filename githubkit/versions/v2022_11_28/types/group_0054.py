@@ -9,75 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class ApiOverviewType(TypedDict):
-    """Api Overview
-
-    Api Overview
-    """
-
-    verifiable_password_authentication: bool
-    ssh_key_fingerprints: NotRequired[ApiOverviewPropSshKeyFingerprintsType]
-    ssh_keys: NotRequired[list[str]]
-    hooks: NotRequired[list[str]]
-    github_enterprise_importer: NotRequired[list[str]]
-    web: NotRequired[list[str]]
-    api: NotRequired[list[str]]
-    git: NotRequired[list[str]]
-    packages: NotRequired[list[str]]
-    pages: NotRequired[list[str]]
-    importer: NotRequired[list[str]]
-    actions: NotRequired[list[str]]
-    actions_macos: NotRequired[list[str]]
-    codespaces: NotRequired[list[str]]
-    dependabot: NotRequired[list[str]]
-    copilot: NotRequired[list[str]]
-    domains: NotRequired[ApiOverviewPropDomainsType]
+from .group_0052 import MarketplaceListingPlanType
 
 
-class ApiOverviewPropSshKeyFingerprintsType(TypedDict):
-    """ApiOverviewPropSshKeyFingerprints"""
+class MarketplacePurchasePropMarketplacePendingChangeType(TypedDict):
+    """MarketplacePurchasePropMarketplacePendingChange"""
 
-    sha256_rsa: NotRequired[str]
-    sha256_dsa: NotRequired[str]
-    sha256_ecdsa: NotRequired[str]
-    sha256_ed25519: NotRequired[str]
-
-
-class ApiOverviewPropDomainsType(TypedDict):
-    """ApiOverviewPropDomains"""
-
-    website: NotRequired[list[str]]
-    codespaces: NotRequired[list[str]]
-    copilot: NotRequired[list[str]]
-    packages: NotRequired[list[str]]
-    actions: NotRequired[list[str]]
-    actions_inbound: NotRequired[ApiOverviewPropDomainsPropActionsInboundType]
-    artifact_attestations: NotRequired[
-        ApiOverviewPropDomainsPropArtifactAttestationsType
-    ]
+    is_installed: NotRequired[bool]
+    effective_date: NotRequired[str]
+    unit_count: NotRequired[Union[int, None]]
+    id: NotRequired[int]
+    plan: NotRequired[MarketplaceListingPlanType]
 
 
-class ApiOverviewPropDomainsPropActionsInboundType(TypedDict):
-    """ApiOverviewPropDomainsPropActionsInbound"""
+class MarketplacePurchasePropMarketplacePurchaseType(TypedDict):
+    """MarketplacePurchasePropMarketplacePurchase"""
 
-    full_domains: NotRequired[list[str]]
-    wildcard_domains: NotRequired[list[str]]
-
-
-class ApiOverviewPropDomainsPropArtifactAttestationsType(TypedDict):
-    """ApiOverviewPropDomainsPropArtifactAttestations"""
-
-    trust_domain: NotRequired[str]
-    services: NotRequired[list[str]]
+    billing_cycle: NotRequired[str]
+    next_billing_date: NotRequired[Union[str, None]]
+    is_installed: NotRequired[bool]
+    unit_count: NotRequired[Union[int, None]]
+    on_free_trial: NotRequired[bool]
+    free_trial_ends_on: NotRequired[Union[str, None]]
+    updated_at: NotRequired[str]
+    plan: NotRequired[MarketplaceListingPlanType]
 
 
 __all__ = (
-    "ApiOverviewPropDomainsPropActionsInboundType",
-    "ApiOverviewPropDomainsPropArtifactAttestationsType",
-    "ApiOverviewPropDomainsType",
-    "ApiOverviewPropSshKeyFingerprintsType",
-    "ApiOverviewType",
+    "MarketplacePurchasePropMarketplacePendingChangeType",
+    "MarketplacePurchasePropMarketplacePurchaseType",
 )

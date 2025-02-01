@@ -9,59 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0002 import SimpleUser
-from .group_0039 import ReactionRollup
-from .group_0330 import ReleaseAsset
 
 
-class Release(GitHubModel):
-    """Release
+class PullRequestMergeResult(GitHubModel):
+    """Pull Request Merge Result
 
-    A release.
+    Pull Request Merge Result
     """
 
-    url: str = Field()
-    html_url: str = Field()
-    assets_url: str = Field()
-    upload_url: str = Field()
-    tarball_url: Union[str, None] = Field()
-    zipball_url: Union[str, None] = Field()
-    id: int = Field()
-    node_id: str = Field()
-    tag_name: str = Field(description="The name of the tag.")
-    target_commitish: str = Field(
-        description="Specifies the commitish value that determines where the Git tag is created from."
-    )
-    name: Union[str, None] = Field()
-    body: Missing[Union[str, None]] = Field(default=UNSET)
-    draft: bool = Field(
-        description="true to create a draft (unpublished) release, false to create a published one."
-    )
-    prerelease: bool = Field(
-        description="Whether to identify the release as a prerelease or a full release."
-    )
-    created_at: datetime = Field()
-    published_at: Union[datetime, None] = Field()
-    author: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    assets: list[ReleaseAsset] = Field()
-    body_html: Missing[Union[str, None]] = Field(default=UNSET)
-    body_text: Missing[Union[str, None]] = Field(default=UNSET)
-    mentions_count: Missing[int] = Field(default=UNSET)
-    discussion_url: Missing[str] = Field(
-        default=UNSET, description="The URL of the release discussion."
-    )
-    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
+    sha: str = Field()
+    merged: bool = Field()
+    message: str = Field()
 
 
-model_rebuild(Release)
+model_rebuild(PullRequestMergeResult)
 
-__all__ = ("Release",)
+__all__ = ("PullRequestMergeResult",)

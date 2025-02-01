@@ -9,43 +9,48 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class CopilotOrganizationDetailsType(TypedDict):
-    """Copilot Organization Details
+class CodeScanningAlertInstanceType(TypedDict):
+    """CodeScanningAlertInstance"""
 
-    Information about the seat breakdown and policies set for an organization with a
-    Copilot Business or Copilot Enterprise subscription.
-    """
-
-    seat_breakdown: CopilotSeatBreakdownType
-    public_code_suggestions: Literal["allow", "block", "unconfigured", "unknown"]
-    ide_chat: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
-    platform_chat: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
-    cli: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
-    seat_management_setting: Literal[
-        "assign_all", "assign_selected", "disabled", "unconfigured"
+    ref: NotRequired[str]
+    analysis_key: NotRequired[str]
+    environment: NotRequired[str]
+    category: NotRequired[str]
+    state: NotRequired[Union[None, Literal["open", "dismissed", "fixed"]]]
+    commit_sha: NotRequired[str]
+    message: NotRequired[CodeScanningAlertInstancePropMessageType]
+    location: NotRequired[CodeScanningAlertLocationType]
+    html_url: NotRequired[str]
+    classifications: NotRequired[
+        list[Union[None, Literal["source", "generated", "test", "library"]]]
     ]
-    plan_type: NotRequired[Literal["business", "enterprise", "unknown"]]
 
 
-class CopilotSeatBreakdownType(TypedDict):
-    """Copilot Business Seat Breakdown
+class CodeScanningAlertLocationType(TypedDict):
+    """CodeScanningAlertLocation
 
-    The breakdown of Copilot Business seats for the organization.
+    Describe a region within a file for the alert.
     """
 
-    total: NotRequired[int]
-    added_this_cycle: NotRequired[int]
-    pending_cancellation: NotRequired[int]
-    pending_invitation: NotRequired[int]
-    active_this_cycle: NotRequired[int]
-    inactive_this_cycle: NotRequired[int]
+    path: NotRequired[str]
+    start_line: NotRequired[int]
+    end_line: NotRequired[int]
+    start_column: NotRequired[int]
+    end_column: NotRequired[int]
+
+
+class CodeScanningAlertInstancePropMessageType(TypedDict):
+    """CodeScanningAlertInstancePropMessage"""
+
+    text: NotRequired[str]
 
 
 __all__ = (
-    "CopilotOrganizationDetailsType",
-    "CopilotSeatBreakdownType",
+    "CodeScanningAlertInstancePropMessageType",
+    "CodeScanningAlertInstanceType",
+    "CodeScanningAlertLocationType",
 )

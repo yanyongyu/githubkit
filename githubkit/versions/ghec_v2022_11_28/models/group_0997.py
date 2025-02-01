@@ -11,33 +11,21 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+
+from .group_0077 import CustomProperty
 
 
-class ProjectsColumnsCardsCardIdMovesPostResponse503(GitHubModel):
-    """ProjectsColumnsCardsCardIdMovesPostResponse503"""
+class OrgsOrgPropertiesSchemaPatchBody(GitHubModel):
+    """OrgsOrgPropertiesSchemaPatchBody"""
 
-    code: Missing[str] = Field(default=UNSET)
-    message: Missing[str] = Field(default=UNSET)
-    documentation_url: Missing[str] = Field(default=UNSET)
-    errors: Missing[
-        list[ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItems]
-    ] = Field(default=UNSET)
-
-
-class ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItems(GitHubModel):
-    """ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItems"""
-
-    code: Missing[str] = Field(default=UNSET)
-    message: Missing[str] = Field(default=UNSET)
+    properties: list[CustomProperty] = Field(
+        max_length=100 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        description="The array of custom properties to create or update.",
+    )
 
 
-model_rebuild(ProjectsColumnsCardsCardIdMovesPostResponse503)
-model_rebuild(ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItems)
+model_rebuild(OrgsOrgPropertiesSchemaPatchBody)
 
-__all__ = (
-    "ProjectsColumnsCardsCardIdMovesPostResponse503",
-    "ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItems",
-)
+__all__ = ("OrgsOrgPropertiesSchemaPatchBody",)

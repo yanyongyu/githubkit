@@ -14,16 +14,19 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class WebhooksRepositoriesAddedItems(GitHubModel):
-    """WebhooksRepositoriesAddedItems"""
+class WebhooksWorkflowJobRun(GitHubModel):
+    """WebhooksWorkflowJobRun"""
 
-    full_name: str = Field()
-    id: int = Field(description="Unique identifier of the repository")
-    name: str = Field(description="The name of the repository.")
-    node_id: str = Field()
-    private: bool = Field(description="Whether the repository is private or public.")
+    conclusion: None = Field()
+    created_at: str = Field()
+    environment: str = Field()
+    html_url: str = Field()
+    id: int = Field()
+    name: None = Field()
+    status: str = Field()
+    updated_at: str = Field()
 
 
-model_rebuild(WebhooksRepositoriesAddedItems)
+model_rebuild(WebhooksWorkflowJobRun)
 
-__all__ = ("WebhooksRepositoriesAddedItems",)
+__all__ = ("WebhooksWorkflowJobRun",)

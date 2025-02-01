@@ -9,33 +9,47 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0002 import SimpleUserType
+
+class SecretScanningScanHistoryType(TypedDict):
+    """SecretScanningScanHistory"""
+
+    incremental_scans: NotRequired[list[SecretScanningScanType]]
+    pattern_update_scans: NotRequired[list[SecretScanningScanType]]
+    backfill_scans: NotRequired[list[SecretScanningScanType]]
+    custom_pattern_backfill_scans: NotRequired[
+        list[SecretScanningScanHistoryPropCustomPatternBackfillScansItemsType]
+    ]
 
 
-class ContributorActivityType(TypedDict):
-    """Contributor Activity
+class SecretScanningScanType(TypedDict):
+    """SecretScanningScan
 
-    Contributor Activity
+    Information on a single scan performed by secret scanning on the repository
     """
 
-    author: Union[None, SimpleUserType]
-    total: int
-    weeks: list[ContributorActivityPropWeeksItemsType]
+    type: NotRequired[str]
+    status: NotRequired[str]
+    completed_at: NotRequired[Union[datetime, None]]
+    started_at: NotRequired[Union[datetime, None]]
 
 
-class ContributorActivityPropWeeksItemsType(TypedDict):
-    """ContributorActivityPropWeeksItems"""
+class SecretScanningScanHistoryPropCustomPatternBackfillScansItemsType(TypedDict):
+    """SecretScanningScanHistoryPropCustomPatternBackfillScansItems"""
 
-    w: NotRequired[int]
-    a: NotRequired[int]
-    d: NotRequired[int]
-    c: NotRequired[int]
+    type: NotRequired[str]
+    status: NotRequired[str]
+    completed_at: NotRequired[Union[datetime, None]]
+    started_at: NotRequired[Union[datetime, None]]
+    pattern_name: NotRequired[str]
+    pattern_scope: NotRequired[str]
 
 
 __all__ = (
-    "ContributorActivityPropWeeksItemsType",
-    "ContributorActivityType",
+    "SecretScanningScanHistoryPropCustomPatternBackfillScansItemsType",
+    "SecretScanningScanHistoryType",
+    "SecretScanningScanType",
 )

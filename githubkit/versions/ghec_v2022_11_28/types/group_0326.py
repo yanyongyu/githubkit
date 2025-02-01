@@ -9,30 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
+from datetime import datetime
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0002 import SimpleUserType
-from .group_0008 import IntegrationType
+from .group_0011 import WebhookConfigType
+from .group_0325 import HookResponseType
 
 
-class AssignedIssueEventType(TypedDict):
-    """Assigned Issue Event
+class HookType(TypedDict):
+    """Webhook
 
-    Assigned Issue Event
+    Webhooks for repositories.
     """
 
+    type: str
     id: int
-    node_id: str
+    name: str
+    active: bool
+    events: list[str]
+    config: WebhookConfigType
+    updated_at: datetime
+    created_at: datetime
     url: str
-    actor: SimpleUserType
-    event: str
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[IntegrationType, None]
-    assignee: SimpleUserType
-    assigner: SimpleUserType
+    test_url: str
+    ping_url: str
+    deliveries_url: NotRequired[str]
+    last_response: HookResponseType
 
 
-__all__ = ("AssignedIssueEventType",)
+__all__ = ("HookType",)

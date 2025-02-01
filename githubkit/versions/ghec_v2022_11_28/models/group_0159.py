@@ -9,87 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class CopilotOrganizationDetails(ExtraGitHubModel):
-    """Copilot Organization Details
+class OidcCustomSub(GitHubModel):
+    """Actions OIDC Subject customization
 
-    Information about the seat breakdown and policies set for an organization with a
-    Copilot Business or Copilot Enterprise subscription.
+    Actions OIDC Subject customization
     """
 
-    seat_breakdown: CopilotSeatBreakdown = Field(
-        title="Copilot Business Seat Breakdown",
-        description="The breakdown of Copilot Business seats for the organization.",
-    )
-    public_code_suggestions: Literal["allow", "block", "unconfigured", "unknown"] = (
-        Field(
-            description="The organization policy for allowing or disallowing Copilot to make suggestions that match public code."
-        )
-    )
-    ide_chat: Missing[Literal["enabled", "disabled", "unconfigured"]] = Field(
-        default=UNSET,
-        description="The organization policy for allowing or disallowing organization members to use Copilot Chat within their editor.",
-    )
-    platform_chat: Missing[Literal["enabled", "disabled", "unconfigured"]] = Field(
-        default=UNSET,
-        description="The organization policy for allowing or disallowing organization members to use Copilot features within github.com.",
-    )
-    cli: Missing[Literal["enabled", "disabled", "unconfigured"]] = Field(
-        default=UNSET,
-        description="The organization policy for allowing or disallowing organization members to use Copilot within their CLI.",
-    )
-    seat_management_setting: Literal[
-        "assign_all", "assign_selected", "disabled", "unconfigured"
-    ] = Field(description="The mode of assigning new seats.")
-    plan_type: Missing[Literal["business", "enterprise", "unknown"]] = Field(
-        default=UNSET,
-        description="The Copilot plan of the organization, or the parent enterprise, when applicable.",
+    include_claim_keys: list[str] = Field(
+        description="Array of unique strings. Each claim key can only contain alphanumeric characters and underscores."
     )
 
 
-class CopilotSeatBreakdown(GitHubModel):
-    """Copilot Business Seat Breakdown
+model_rebuild(OidcCustomSub)
 
-    The breakdown of Copilot Business seats for the organization.
-    """
-
-    total: Missing[int] = Field(
-        default=UNSET,
-        description="The total number of seats being billed for the organization as of the current billing cycle.",
-    )
-    added_this_cycle: Missing[int] = Field(
-        default=UNSET, description="Seats added during the current billing cycle."
-    )
-    pending_cancellation: Missing[int] = Field(
-        default=UNSET,
-        description="The number of seats that are pending cancellation at the end of the current billing cycle.",
-    )
-    pending_invitation: Missing[int] = Field(
-        default=UNSET,
-        description="The number of seats that have been assigned to users that have not yet accepted an invitation to this organization.",
-    )
-    active_this_cycle: Missing[int] = Field(
-        default=UNSET,
-        description="The number of seats that have used Copilot during the current billing cycle.",
-    )
-    inactive_this_cycle: Missing[int] = Field(
-        default=UNSET,
-        description="The number of seats that have not used Copilot during the current billing cycle.",
-    )
-
-
-model_rebuild(CopilotOrganizationDetails)
-model_rebuild(CopilotSeatBreakdown)
-
-__all__ = (
-    "CopilotOrganizationDetails",
-    "CopilotSeatBreakdown",
-)
+__all__ = ("OidcCustomSub",)

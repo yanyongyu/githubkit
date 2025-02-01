@@ -11,27 +11,22 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class IntegrationPropPermissions(ExtraGitHubModel):
-    """IntegrationPropPermissions
+class ValidationErrorSimple(GitHubModel):
+    """Validation Error Simple
 
-    The set of permissions for the GitHub app
-
-    Examples:
-        {'issues': 'read', 'deployments': 'write'}
+    Validation Error Simple
     """
 
-    issues: Missing[str] = Field(default=UNSET)
-    checks: Missing[str] = Field(default=UNSET)
-    metadata: Missing[str] = Field(default=UNSET)
-    contents: Missing[str] = Field(default=UNSET)
-    deployments: Missing[str] = Field(default=UNSET)
+    message: str = Field()
+    documentation_url: str = Field()
+    errors: Missing[list[str]] = Field(default=UNSET)
 
 
-model_rebuild(IntegrationPropPermissions)
+model_rebuild(ValidationErrorSimple)
 
-__all__ = ("IntegrationPropPermissions",)
+__all__ = ("ValidationErrorSimple",)

@@ -9,30 +9,61 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from datetime import date, datetime
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0002 import SimpleUserType
+from .group_0003 import SimpleUserType
+from .group_0060 import OrganizationSimpleType
+from .group_0087 import TeamType
 
 
-class OrganizationInvitationType(TypedDict):
-    """Organization Invitation
+class CopilotSeatDetailsType(TypedDict):
+    """Copilot Business Seat Detail
 
-    Organization Invitation
+    Information about a Copilot Business seat assignment for a user, team, or
+    organization.
+    """
+
+    assignee: SimpleUserType
+    organization: NotRequired[Union[None, OrganizationSimpleType]]
+    assigning_team: NotRequired[Union[TeamType, EnterpriseTeamType, None]]
+    pending_cancellation_date: NotRequired[Union[date, None]]
+    last_activity_at: NotRequired[Union[datetime, None]]
+    last_activity_editor: NotRequired[Union[str, None]]
+    created_at: datetime
+    updated_at: NotRequired[datetime]
+    plan_type: NotRequired[Literal["business", "enterprise", "unknown"]]
+
+
+class EnterpriseTeamType(TypedDict):
+    """Enterprise Team
+
+    Group of enterprise owners and/or members
     """
 
     id: int
-    login: Union[str, None]
-    email: Union[str, None]
-    role: str
-    created_at: str
-    failed_at: NotRequired[Union[str, None]]
-    failed_reason: NotRequired[Union[str, None]]
-    inviter: SimpleUserType
-    team_count: int
-    node_id: str
-    invitation_teams_url: str
-    invitation_source: NotRequired[str]
+    name: str
+    slug: str
+    url: str
+    sync_to_organizations: str
+    group_id: NotRequired[Union[str, None]]
+    group_name: NotRequired[Union[str, None]]
+    html_url: str
+    members_url: str
+    created_at: datetime
+    updated_at: datetime
 
 
-__all__ = ("OrganizationInvitationType",)
+class OrgsOrgCopilotBillingSeatsGetResponse200Type(TypedDict):
+    """OrgsOrgCopilotBillingSeatsGetResponse200"""
+
+    total_seats: NotRequired[int]
+    seats: NotRequired[list[CopilotSeatDetailsType]]
+
+
+__all__ = (
+    "CopilotSeatDetailsType",
+    "EnterpriseTeamType",
+    "OrgsOrgCopilotBillingSeatsGetResponse200Type",
+)

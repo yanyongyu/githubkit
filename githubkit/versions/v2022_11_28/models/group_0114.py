@@ -9,24 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0115 import RepositoryRulesetConditionsPropRefName
 
 
-class RepositoryRulesetConditions(GitHubModel):
-    """Repository ruleset conditions for ref names
+class CustomPropertyValue(GitHubModel):
+    """Custom Property Value
 
-    Parameters for a repository ruleset ref name condition
+    Custom property name and associated value
     """
 
-    ref_name: Missing[RepositoryRulesetConditionsPropRefName] = Field(default=UNSET)
+    property_name: str = Field(description="The name of the property")
+    value: Union[str, list[str], None] = Field(
+        description="The value assigned to the property"
+    )
 
 
-model_rebuild(RepositoryRulesetConditions)
+model_rebuild(CustomPropertyValue)
 
-__all__ = ("RepositoryRulesetConditions",)
+__all__ = ("CustomPropertyValue",)

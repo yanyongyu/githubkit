@@ -9,13 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Union
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBodyType(TypedDict):
-    """ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBody"""
+class ProjectsColumnsColumnIdCardsPostBodyOneof0Type(TypedDict):
+    """ProjectsColumnsColumnIdCardsPostBodyOneof0"""
 
-    enable_debug_logging: NotRequired[bool]
+    note: Union[str, None]
 
 
-__all__ = ("ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBodyType",)
+__all__ = ("ProjectsColumnsColumnIdCardsPostBodyOneof0Type",)

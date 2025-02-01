@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,38 +17,29 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0002 import SimpleUser
 
+class OrganizationCustomOrganizationRoleUpdateSchema(GitHubModel):
+    """OrganizationCustomOrganizationRoleUpdateSchema"""
 
-class Project(GitHubModel):
-    """Project
-
-    Projects are a way to organize columns and cards of work.
-    """
-
-    owner_url: str = Field()
-    url: str = Field()
-    html_url: str = Field()
-    columns_url: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    name: str = Field(description="Name of the project")
-    body: Union[str, None] = Field(description="Body of the project")
-    number: int = Field()
-    state: str = Field(description="State of the project; either 'open' or 'closed'")
-    creator: Union[None, SimpleUser] = Field()
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    organization_permission: Missing[Literal["read", "write", "admin", "none"]] = Field(
-        default=UNSET,
-        description="The baseline permission that all organization members have on this project. Only present if owner is an organization.",
+    name: Missing[str] = Field(
+        default=UNSET, description="The name of the custom role."
     )
-    private: Missing[bool] = Field(
+    description: Missing[str] = Field(
         default=UNSET,
-        description="Whether or not this project can be seen by everyone. Only present if owner is an organization.",
+        description="A short description about the intended use of this role or the permissions it grants.",
+    )
+    permissions: Missing[list[str]] = Field(
+        default=UNSET,
+        description="A list of additional permissions included in this role.",
+    )
+    base_role: Missing[
+        Literal["none", "read", "triage", "write", "maintain", "admin"]
+    ] = Field(
+        default=UNSET,
+        description="The system role from which this role can inherit permissions.",
     )
 
 
-model_rebuild(Project)
+model_rebuild(OrganizationCustomOrganizationRoleUpdateSchema)
 
-__all__ = ("Project",)
+__all__ = ("OrganizationCustomOrganizationRoleUpdateSchema",)

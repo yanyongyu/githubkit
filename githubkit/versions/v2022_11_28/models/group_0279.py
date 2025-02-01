@@ -12,50 +12,28 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0202 import Verification
 
 
-class GitTag(GitHubModel):
-    """Git Tag
+class CustomDeploymentRuleApp(GitHubModel):
+    """Custom deployment protection rule app
 
-    Metadata for a Git tag
+    A GitHub App that is providing a custom deployment protection rule.
     """
 
-    node_id: str = Field()
-    tag: str = Field(description="Name of the tag")
-    sha: str = Field()
-    url: str = Field(description="URL for the tag")
-    message: str = Field(description="Message describing the purpose of the tag")
-    tagger: GitTagPropTagger = Field()
-    object_: GitTagPropObject = Field(alias="object")
-    verification: Missing[Verification] = Field(default=UNSET, title="Verification")
+    id: int = Field(
+        description="The unique identifier of the deployment protection rule integration."
+    )
+    slug: str = Field(
+        description="The slugified name of the deployment protection rule integration."
+    )
+    integration_url: str = Field(
+        description="The URL for the endpoint to get details about the app."
+    )
+    node_id: str = Field(
+        description="The node ID for the deployment protection rule integration."
+    )
 
 
-class GitTagPropTagger(GitHubModel):
-    """GitTagPropTagger"""
+model_rebuild(CustomDeploymentRuleApp)
 
-    date: str = Field()
-    email: str = Field()
-    name: str = Field()
-
-
-class GitTagPropObject(GitHubModel):
-    """GitTagPropObject"""
-
-    sha: str = Field()
-    type: str = Field()
-    url: str = Field()
-
-
-model_rebuild(GitTag)
-model_rebuild(GitTagPropTagger)
-model_rebuild(GitTagPropObject)
-
-__all__ = (
-    "GitTag",
-    "GitTagPropObject",
-    "GitTagPropTagger",
-)
+__all__ = ("CustomDeploymentRuleApp",)

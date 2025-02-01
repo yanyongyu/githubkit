@@ -9,32 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class AnnouncementBanner(GitHubModel):
-    """Announcement Banner
+class ActionsSetDefaultWorkflowPermissions(GitHubModel):
+    """ActionsSetDefaultWorkflowPermissions"""
 
-    Announcement at either the repository, organization, or enterprise level
-    """
-
-    announcement: Union[str, None] = Field(
-        description='The announcement text in GitHub Flavored Markdown. For more information about GitHub Flavored Markdown, see "[Basic writing and formatting syntax](https://docs.github.com/enterprise-cloud@latest//github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)."'
+    default_workflow_permissions: Missing[Literal["read", "write"]] = Field(
+        default=UNSET,
+        description="The default workflow permissions granted to the GITHUB_TOKEN when running workflows.",
     )
-    expires_at: Union[datetime, None] = Field(
-        description="The time at which the announcement expires. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`. To set an announcement that never expires, omit this parameter, set it to `null`, or set it to an empty string."
-    )
-    user_dismissible: Union[bool, None] = Field(
-        default=False,
-        description="Whether an announcement can be dismissed by the user.",
+    can_approve_pull_request_reviews: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether GitHub Actions can approve pull requests. Enabling this can be a security risk.",
     )
 
 
-model_rebuild(AnnouncementBanner)
+model_rebuild(ActionsSetDefaultWorkflowPermissions)
 
-__all__ = ("AnnouncementBanner",)
+__all__ = ("ActionsSetDefaultWorkflowPermissions",)

@@ -15,33 +15,36 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0002 import SimpleUser
 
+class RepositoryRuleCodeScanningPropParameters(GitHubModel):
+    """RepositoryRuleCodeScanningPropParameters"""
 
-class RepositoryAdvisoryCredit(GitHubModel):
-    """RepositoryAdvisoryCredit
-
-    A credit given to a user for a repository security advisory.
-    """
-
-    user: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    type: Literal[
-        "analyst",
-        "finder",
-        "reporter",
-        "coordinator",
-        "remediation_developer",
-        "remediation_reviewer",
-        "remediation_verifier",
-        "tool",
-        "sponsor",
-        "other",
-    ] = Field(description="The type of credit the user is receiving.")
-    state: Literal["accepted", "declined", "pending"] = Field(
-        description="The state of the user's acceptance of the credit."
+    code_scanning_tools: list[RepositoryRuleParamsCodeScanningTool] = Field(
+        description="Tools that must provide code scanning results for this rule to pass."
     )
 
 
-model_rebuild(RepositoryAdvisoryCredit)
+class RepositoryRuleParamsCodeScanningTool(GitHubModel):
+    """CodeScanningTool
 
-__all__ = ("RepositoryAdvisoryCredit",)
+    A tool that must provide code scanning results for this rule to pass.
+    """
+
+    alerts_threshold: Literal["none", "errors", "errors_and_warnings", "all"] = Field(
+        description='The severity level at which code scanning results that raise alerts block a reference update. For more information on alert severity levels, see "[About code scanning alerts](https://docs.github.com/code-security/code-scanning/managing-code-scanning-alerts/about-code-scanning-alerts#about-alert-severity-and-security-severity-levels)."'
+    )
+    security_alerts_threshold: Literal[
+        "none", "critical", "high_or_higher", "medium_or_higher", "all"
+    ] = Field(
+        description='The severity level at which code scanning results that raise security alerts block a reference update. For more information on security severity levels, see "[About code scanning alerts](https://docs.github.com/code-security/code-scanning/managing-code-scanning-alerts/about-code-scanning-alerts#about-alert-severity-and-security-severity-levels)."'
+    )
+    tool: str = Field(description="The name of a code scanning tool")
+
+
+model_rebuild(RepositoryRuleCodeScanningPropParameters)
+model_rebuild(RepositoryRuleParamsCodeScanningTool)
+
+__all__ = (
+    "RepositoryRuleCodeScanningPropParameters",
+    "RepositoryRuleParamsCodeScanningTool",
+)

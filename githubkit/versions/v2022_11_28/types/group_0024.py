@@ -9,69 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
 from typing_extensions import TypedDict
 
-from .group_0023 import SimpleClassroomRepositoryType
 
+class SimpleClassroomRepositoryType(TypedDict):
+    """Simple Classroom Repository
 
-class ClassroomAssignmentType(TypedDict):
-    """Classroom Assignment
-
-    A GitHub Classroom assignment
+    A GitHub repository view for Classroom
     """
 
     id: int
-    public_repo: bool
-    title: str
-    type: Literal["individual", "group"]
-    invite_link: str
-    invitations_enabled: bool
-    slug: str
-    students_are_repo_admins: bool
-    feedback_pull_requests_enabled: bool
-    max_teams: Union[int, None]
-    max_members: Union[int, None]
-    editor: str
-    accepted: int
-    submitted: int
-    passing: int
-    language: str
-    deadline: Union[datetime, None]
-    starter_code_repository: SimpleClassroomRepositoryType
-    classroom: ClassroomType
-
-
-class ClassroomType(TypedDict):
-    """Classroom
-
-    A GitHub Classroom classroom
-    """
-
-    id: int
-    name: str
-    archived: bool
-    organization: SimpleClassroomOrganizationType
-    url: str
-
-
-class SimpleClassroomOrganizationType(TypedDict):
-    """Organization Simple for Classroom
-
-    A GitHub organization.
-    """
-
-    id: int
-    login: str
-    node_id: str
+    full_name: str
     html_url: str
-    name: Union[str, None]
-    avatar_url: str
+    node_id: str
+    private: bool
+    default_branch: str
 
 
-__all__ = (
-    "ClassroomAssignmentType",
-    "ClassroomType",
-    "SimpleClassroomOrganizationType",
-)
+__all__ = ("SimpleClassroomRepositoryType",)

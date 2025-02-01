@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -19,38 +18,26 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoActionsWorkflowsGetResponse200(GitHubModel):
-    """ReposOwnerRepoActionsWorkflowsGetResponse200"""
+class ProjectsProjectIdPatchBody(GitHubModel):
+    """ProjectsProjectIdPatchBody"""
 
-    total_count: int = Field()
-    workflows: list[Workflow] = Field()
-
-
-class Workflow(GitHubModel):
-    """Workflow
-
-    A GitHub Actions workflow
-    """
-
-    id: int = Field()
-    node_id: str = Field()
-    name: str = Field()
-    path: str = Field()
-    state: Literal[
-        "active", "deleted", "disabled_fork", "disabled_inactivity", "disabled_manually"
-    ] = Field()
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    url: str = Field()
-    html_url: str = Field()
-    badge_url: str = Field()
-    deleted_at: Missing[datetime] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET, description="Name of the project")
+    body: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Body of the project"
+    )
+    state: Missing[str] = Field(
+        default=UNSET, description="State of the project; either 'open' or 'closed'"
+    )
+    organization_permission: Missing[Literal["read", "write", "admin", "none"]] = Field(
+        default=UNSET,
+        description="The baseline permission that all organization members have on this project",
+    )
+    private: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether or not this project can be seen by everyone.",
+    )
 
 
-model_rebuild(ReposOwnerRepoActionsWorkflowsGetResponse200)
-model_rebuild(Workflow)
+model_rebuild(ProjectsProjectIdPatchBody)
 
-__all__ = (
-    "ReposOwnerRepoActionsWorkflowsGetResponse200",
-    "Workflow",
-)
+__all__ = ("ProjectsProjectIdPatchBody",)

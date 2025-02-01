@@ -9,16 +9,59 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class CodeScanningAnalysisToolType(TypedDict):
-    """CodeScanningAnalysisTool"""
+class AzureBlobConfigType(TypedDict):
+    """AzureBlobConfig
 
-    name: NotRequired[str]
-    version: NotRequired[Union[str, None]]
-    guid: NotRequired[Union[str, None]]
+    Azure Blob Config for audit log streaming configuration.
+    """
+
+    key_id: str
+    encrypted_sas_url: str
 
 
-__all__ = ("CodeScanningAnalysisToolType",)
+class AzureHubConfigType(TypedDict):
+    """AzureHubConfig
+
+    Azure Event Hubs Config for audit log streaming configuration.
+    """
+
+    name: str
+    encrypted_connstring: str
+    key_id: str
+
+
+class AmazonS3AccessKeysConfigType(TypedDict):
+    """AmazonS3AccessKeysConfig
+
+    Amazon S3 Access Keys Config for audit log streaming configuration.
+    """
+
+    bucket: str
+    region: str
+    key_id: str
+    authentication_type: Literal["access_keys"]
+    encrypted_secret_key: str
+    encrypted_access_key_id: str
+
+
+class GoogleCloudConfigType(TypedDict):
+    """GoogleCloudConfig
+
+    Google Cloud Config for audit log streaming configuration.
+    """
+
+    bucket: str
+    key_id: str
+    encrypted_json_credentials: str
+
+
+__all__ = (
+    "AmazonS3AccessKeysConfigType",
+    "AzureBlobConfigType",
+    "AzureHubConfigType",
+    "GoogleCloudConfigType",
+)

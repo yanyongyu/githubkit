@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from datetime import datetime
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -17,21 +18,46 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
+from .group_0008 import Enterprise
+from .group_0017 import AppPermissions
 
-class LicenseSimple(GitHubModel):
-    """License Simple
 
-    License Simple
+class Installation(GitHubModel):
+    """Installation
+
+    Installation
     """
 
-    key: str = Field()
-    name: str = Field()
-    url: Union[str, None] = Field()
-    spdx_id: Union[str, None] = Field()
-    node_id: str = Field()
-    html_url: Missing[str] = Field(default=UNSET)
+    id: int = Field(description="The ID of the installation.")
+    account: Union[SimpleUser, Enterprise, None] = Field()
+    repository_selection: Literal["all", "selected"] = Field(
+        description="Describe whether all repositories have been selected or there's a selection involved"
+    )
+    access_tokens_url: str = Field()
+    repositories_url: str = Field()
+    html_url: str = Field()
+    app_id: int = Field()
+    target_id: int = Field(
+        description="The ID of the user or organization this token is being scoped to."
+    )
+    target_type: str = Field()
+    permissions: AppPermissions = Field(
+        title="App Permissions",
+        description="The permissions granted to the user access token.",
+    )
+    events: list[str] = Field()
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+    single_file_name: Union[str, None] = Field()
+    has_multiple_single_files: Missing[bool] = Field(default=UNSET)
+    single_file_paths: Missing[list[str]] = Field(default=UNSET)
+    app_slug: str = Field()
+    suspended_by: Union[None, SimpleUser] = Field()
+    suspended_at: Union[datetime, None] = Field()
+    contact_email: Missing[Union[str, None]] = Field(default=UNSET)
 
 
-model_rebuild(LicenseSimple)
+model_rebuild(Installation)
 
-__all__ = ("LicenseSimple",)
+__all__ = ("Installation",)

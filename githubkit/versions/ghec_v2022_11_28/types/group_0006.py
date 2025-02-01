@@ -12,15 +12,16 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ValidationErrorSimpleType(TypedDict):
-    """Validation Error Simple
+class BasicErrorType(TypedDict):
+    """Basic Error
 
-    Validation Error Simple
+    Basic Error
     """
 
-    message: str
-    documentation_url: str
-    errors: NotRequired[list[str]]
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
+    url: NotRequired[str]
+    status: NotRequired[str]
 
 
-__all__ = ("ValidationErrorSimpleType",)
+__all__ = ("BasicErrorType",)

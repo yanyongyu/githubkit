@@ -13,83 +13,27 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class RepositoryRuleCreationType(TypedDict):
-    """creation
+class RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType(
+    TypedDict
+):
+    """RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty"""
 
-    Only allow users with bypass permission to create matching refs.
+    include: NotRequired[list[RepositoryRulesetConditionsRepositoryPropertySpecType]]
+    exclude: NotRequired[list[RepositoryRulesetConditionsRepositoryPropertySpecType]]
+
+
+class RepositoryRulesetConditionsRepositoryPropertySpecType(TypedDict):
+    """Repository ruleset property targeting definition
+
+    Parameters for a targeting a repository property
     """
 
-    type: Literal["creation"]
-
-
-class RepositoryRuleDeletionType(TypedDict):
-    """deletion
-
-    Only allow users with bypass permissions to delete matching refs.
-    """
-
-    type: Literal["deletion"]
-
-
-class RepositoryRuleRequiredSignaturesType(TypedDict):
-    """required_signatures
-
-    Commits pushed to matching refs must have verified signatures.
-    """
-
-    type: Literal["required_signatures"]
-
-
-class RepositoryRuleNonFastForwardType(TypedDict):
-    """non_fast_forward
-
-    Prevent users with push access from force pushing to refs.
-    """
-
-    type: Literal["non_fast_forward"]
-
-
-class RepositoryRuleOneof15Type(TypedDict):
-    """file_path_restriction
-
-    Prevent commits that include changes in specified file paths from being pushed
-    to the commit graph.
-    """
-
-    type: Literal["file_path_restriction"]
-    parameters: NotRequired[RepositoryRuleOneof15PropParametersType]
-
-
-class RepositoryRuleOneof15PropParametersType(TypedDict):
-    """RepositoryRuleOneof15PropParameters"""
-
-    restricted_file_paths: list[str]
-
-
-class RepositoryRuleOneof17Type(TypedDict):
-    """file_extension_restriction
-
-    Prevent commits that include files with specified file extensions from being
-    pushed to the commit graph.
-    """
-
-    type: Literal["file_extension_restriction"]
-    parameters: NotRequired[RepositoryRuleOneof17PropParametersType]
-
-
-class RepositoryRuleOneof17PropParametersType(TypedDict):
-    """RepositoryRuleOneof17PropParameters"""
-
-    restricted_file_extensions: list[str]
+    name: str
+    property_values: list[str]
+    source: NotRequired[Literal["custom", "system"]]
 
 
 __all__ = (
-    "RepositoryRuleCreationType",
-    "RepositoryRuleDeletionType",
-    "RepositoryRuleNonFastForwardType",
-    "RepositoryRuleOneof15PropParametersType",
-    "RepositoryRuleOneof15Type",
-    "RepositoryRuleOneof17PropParametersType",
-    "RepositoryRuleOneof17Type",
-    "RepositoryRuleRequiredSignaturesType",
+    "RepositoryRulesetConditionsRepositoryPropertySpecType",
+    "RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType",
 )

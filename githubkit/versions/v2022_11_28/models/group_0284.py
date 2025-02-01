@@ -14,21 +14,30 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class PorterAuthor(GitHubModel):
-    """Porter Author
+class GitRef(GitHubModel):
+    """Git Reference
 
-    Porter Author
+    Git references within a repository
     """
 
-    id: int = Field()
-    remote_id: str = Field()
-    remote_name: str = Field()
-    email: str = Field()
-    name: str = Field()
+    ref: str = Field()
+    node_id: str = Field()
     url: str = Field()
-    import_url: str = Field()
+    object_: GitRefPropObject = Field(alias="object")
 
 
-model_rebuild(PorterAuthor)
+class GitRefPropObject(GitHubModel):
+    """GitRefPropObject"""
 
-__all__ = ("PorterAuthor",)
+    type: str = Field()
+    sha: str = Field(min_length=40, max_length=40, description="SHA for the reference")
+    url: str = Field()
+
+
+model_rebuild(GitRef)
+model_rebuild(GitRefPropObject)
+
+__all__ = (
+    "GitRef",
+    "GitRefPropObject",
+)

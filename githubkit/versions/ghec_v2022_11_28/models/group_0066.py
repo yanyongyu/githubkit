@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+from datetime import date, datetime
 from typing import Literal, Union
 
 from pydantic import Field
@@ -18,109 +18,72 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0001 import CvssSeverities
-from .group_0065 import DependabotAlertSecurityVulnerability
+from .group_0003 import SimpleUser
+from .group_0036 import OrganizationSimple
+from .group_0065 import Team
 
 
-class DependabotAlertSecurityAdvisory(GitHubModel):
-    """DependabotAlertSecurityAdvisory
+class CopilotSeatDetails(GitHubModel):
+    """Copilot Business Seat Detail
 
-    Details for the GitHub Security Advisory.
+    Information about a Copilot Business seat assignment for a user, team, or
+    organization.
     """
 
-    ghsa_id: str = Field(
-        description="The unique GitHub Security Advisory ID assigned to the advisory."
+    assignee: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    organization: Missing[Union[None, OrganizationSimple]] = Field(default=UNSET)
+    assigning_team: Missing[Union[Team, EnterpriseTeam, None]] = Field(
+        default=UNSET,
+        description="The team through which the assignee is granted access to GitHub Copilot, if applicable.",
     )
-    cve_id: Union[str, None] = Field(
-        description="The unique CVE ID assigned to the advisory."
+    pending_cancellation_date: Missing[Union[date, None]] = Field(
+        default=UNSET,
+        description="The pending cancellation date for the seat, in `YYYY-MM-DD` format. This will be null unless the assignee's Copilot access has been canceled during the current billing cycle. If the seat has been cancelled, this corresponds to the start of the organization's next billing cycle.",
     )
-    summary: str = Field(
-        max_length=1024, description="A short, plain text summary of the advisory."
+    last_activity_at: Missing[Union[datetime, None]] = Field(
+        default=UNSET,
+        description="Timestamp of user's last GitHub Copilot activity, in ISO 8601 format.",
     )
-    description: str = Field(
-        description="A long-form Markdown-supported description of the advisory."
+    last_activity_editor: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="Last editor that was used by the user for a GitHub Copilot completion.",
     )
-    vulnerabilities: list[DependabotAlertSecurityVulnerability] = Field(
-        description="Vulnerable version range information for the advisory."
+    created_at: datetime = Field(
+        description="Timestamp of when the assignee was last granted access to GitHub Copilot, in ISO 8601 format."
     )
-    severity: Literal["low", "medium", "high", "critical"] = Field(
-        description="The severity of the advisory."
+    updated_at: Missing[datetime] = Field(
+        default=UNSET,
+        description="**Closing down notice:** This field is no longer relevant and is closing down. Use the `created_at` field to determine when the assignee was last granted access to GitHub Copilot. Timestamp of when the assignee's GitHub Copilot access was last updated, in ISO 8601 format.",
     )
-    cvss: DependabotAlertSecurityAdvisoryPropCvss = Field(
-        description="Details for the advisory pertaining to the Common Vulnerability Scoring System."
-    )
-    cvss_severities: Missing[Union[CvssSeverities, None]] = Field(default=UNSET)
-    cwes: list[DependabotAlertSecurityAdvisoryPropCwesItems] = Field(
-        description="Details for the advisory pertaining to Common Weakness Enumeration."
-    )
-    identifiers: list[DependabotAlertSecurityAdvisoryPropIdentifiersItems] = Field(
-        description="Values that identify this advisory among security information sources."
-    )
-    references: list[DependabotAlertSecurityAdvisoryPropReferencesItems] = Field(
-        description="Links to additional advisory information."
-    )
-    published_at: datetime = Field(
-        description="The time that the advisory was published in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
-    )
-    updated_at: datetime = Field(
-        description="The time that the advisory was last modified in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
-    )
-    withdrawn_at: Union[datetime, None] = Field(
-        description="The time that the advisory was withdrawn in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
+    plan_type: Missing[Literal["business", "enterprise", "unknown"]] = Field(
+        default=UNSET,
+        description="The Copilot plan of the organization, or the parent enterprise, when applicable.",
     )
 
 
-class DependabotAlertSecurityAdvisoryPropCvss(GitHubModel):
-    """DependabotAlertSecurityAdvisoryPropCvss
+class EnterpriseTeam(GitHubModel):
+    """Enterprise Team
 
-    Details for the advisory pertaining to the Common Vulnerability Scoring System.
+    Group of enterprise owners and/or members
     """
 
-    score: float = Field(le=10.0, description="The overall CVSS score of the advisory.")
-    vector_string: Union[str, None] = Field(
-        description="The full CVSS vector string for the advisory."
-    )
+    id: int = Field()
+    name: str = Field()
+    slug: str = Field()
+    url: str = Field()
+    sync_to_organizations: str = Field()
+    group_id: Missing[Union[str, None]] = Field(default=UNSET)
+    group_name: Missing[Union[str, None]] = Field(default=UNSET)
+    html_url: str = Field()
+    members_url: str = Field()
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
 
 
-class DependabotAlertSecurityAdvisoryPropCwesItems(GitHubModel):
-    """DependabotAlertSecurityAdvisoryPropCwesItems
-
-    A CWE weakness assigned to the advisory.
-    """
-
-    cwe_id: str = Field(description="The unique CWE ID.")
-    name: str = Field(description="The short, plain text name of the CWE.")
-
-
-class DependabotAlertSecurityAdvisoryPropIdentifiersItems(GitHubModel):
-    """DependabotAlertSecurityAdvisoryPropIdentifiersItems
-
-    An advisory identifier.
-    """
-
-    type: Literal["CVE", "GHSA"] = Field(description="The type of advisory identifier.")
-    value: str = Field(description="The value of the advisory identifer.")
-
-
-class DependabotAlertSecurityAdvisoryPropReferencesItems(GitHubModel):
-    """DependabotAlertSecurityAdvisoryPropReferencesItems
-
-    A link to additional advisory information.
-    """
-
-    url: str = Field(description="The URL of the reference.")
-
-
-model_rebuild(DependabotAlertSecurityAdvisory)
-model_rebuild(DependabotAlertSecurityAdvisoryPropCvss)
-model_rebuild(DependabotAlertSecurityAdvisoryPropCwesItems)
-model_rebuild(DependabotAlertSecurityAdvisoryPropIdentifiersItems)
-model_rebuild(DependabotAlertSecurityAdvisoryPropReferencesItems)
+model_rebuild(CopilotSeatDetails)
+model_rebuild(EnterpriseTeam)
 
 __all__ = (
-    "DependabotAlertSecurityAdvisory",
-    "DependabotAlertSecurityAdvisoryPropCvss",
-    "DependabotAlertSecurityAdvisoryPropCwesItems",
-    "DependabotAlertSecurityAdvisoryPropIdentifiersItems",
-    "DependabotAlertSecurityAdvisoryPropReferencesItems",
+    "CopilotSeatDetails",
+    "EnterpriseTeam",
 )

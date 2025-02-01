@@ -9,74 +9,75 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class SecurityAndAnalysisType(TypedDict):
-    """SecurityAndAnalysis"""
+class ApiOverviewType(TypedDict):
+    """Api Overview
 
-    advanced_security: NotRequired[SecurityAndAnalysisPropAdvancedSecurityType]
-    dependabot_security_updates: NotRequired[
-        SecurityAndAnalysisPropDependabotSecurityUpdatesType
-    ]
-    secret_scanning: NotRequired[SecurityAndAnalysisPropSecretScanningType]
-    secret_scanning_push_protection: NotRequired[
-        SecurityAndAnalysisPropSecretScanningPushProtectionType
-    ]
-    secret_scanning_non_provider_patterns: NotRequired[
-        SecurityAndAnalysisPropSecretScanningNonProviderPatternsType
-    ]
-    secret_scanning_ai_detection: NotRequired[
-        SecurityAndAnalysisPropSecretScanningAiDetectionType
-    ]
-
-
-class SecurityAndAnalysisPropAdvancedSecurityType(TypedDict):
-    """SecurityAndAnalysisPropAdvancedSecurity"""
-
-    status: NotRequired[Literal["enabled", "disabled"]]
-
-
-class SecurityAndAnalysisPropDependabotSecurityUpdatesType(TypedDict):
-    """SecurityAndAnalysisPropDependabotSecurityUpdates
-
-    Enable or disable Dependabot security updates for the repository.
+    Api Overview
     """
 
-    status: NotRequired[Literal["enabled", "disabled"]]
+    verifiable_password_authentication: bool
+    ssh_key_fingerprints: NotRequired[ApiOverviewPropSshKeyFingerprintsType]
+    ssh_keys: NotRequired[list[str]]
+    hooks: NotRequired[list[str]]
+    github_enterprise_importer: NotRequired[list[str]]
+    web: NotRequired[list[str]]
+    api: NotRequired[list[str]]
+    git: NotRequired[list[str]]
+    packages: NotRequired[list[str]]
+    pages: NotRequired[list[str]]
+    importer: NotRequired[list[str]]
+    actions: NotRequired[list[str]]
+    actions_macos: NotRequired[list[str]]
+    codespaces: NotRequired[list[str]]
+    dependabot: NotRequired[list[str]]
+    copilot: NotRequired[list[str]]
+    domains: NotRequired[ApiOverviewPropDomainsType]
 
 
-class SecurityAndAnalysisPropSecretScanningType(TypedDict):
-    """SecurityAndAnalysisPropSecretScanning"""
+class ApiOverviewPropSshKeyFingerprintsType(TypedDict):
+    """ApiOverviewPropSshKeyFingerprints"""
 
-    status: NotRequired[Literal["enabled", "disabled"]]
-
-
-class SecurityAndAnalysisPropSecretScanningPushProtectionType(TypedDict):
-    """SecurityAndAnalysisPropSecretScanningPushProtection"""
-
-    status: NotRequired[Literal["enabled", "disabled"]]
+    sha256_rsa: NotRequired[str]
+    sha256_dsa: NotRequired[str]
+    sha256_ecdsa: NotRequired[str]
+    sha256_ed25519: NotRequired[str]
 
 
-class SecurityAndAnalysisPropSecretScanningNonProviderPatternsType(TypedDict):
-    """SecurityAndAnalysisPropSecretScanningNonProviderPatterns"""
+class ApiOverviewPropDomainsType(TypedDict):
+    """ApiOverviewPropDomains"""
 
-    status: NotRequired[Literal["enabled", "disabled"]]
+    website: NotRequired[list[str]]
+    codespaces: NotRequired[list[str]]
+    copilot: NotRequired[list[str]]
+    packages: NotRequired[list[str]]
+    actions: NotRequired[list[str]]
+    actions_inbound: NotRequired[ApiOverviewPropDomainsPropActionsInboundType]
+    artifact_attestations: NotRequired[
+        ApiOverviewPropDomainsPropArtifactAttestationsType
+    ]
 
 
-class SecurityAndAnalysisPropSecretScanningAiDetectionType(TypedDict):
-    """SecurityAndAnalysisPropSecretScanningAiDetection"""
+class ApiOverviewPropDomainsPropActionsInboundType(TypedDict):
+    """ApiOverviewPropDomainsPropActionsInbound"""
 
-    status: NotRequired[Literal["enabled", "disabled"]]
+    full_domains: NotRequired[list[str]]
+    wildcard_domains: NotRequired[list[str]]
+
+
+class ApiOverviewPropDomainsPropArtifactAttestationsType(TypedDict):
+    """ApiOverviewPropDomainsPropArtifactAttestations"""
+
+    trust_domain: NotRequired[str]
+    services: NotRequired[list[str]]
 
 
 __all__ = (
-    "SecurityAndAnalysisPropAdvancedSecurityType",
-    "SecurityAndAnalysisPropDependabotSecurityUpdatesType",
-    "SecurityAndAnalysisPropSecretScanningAiDetectionType",
-    "SecurityAndAnalysisPropSecretScanningNonProviderPatternsType",
-    "SecurityAndAnalysisPropSecretScanningPushProtectionType",
-    "SecurityAndAnalysisPropSecretScanningType",
-    "SecurityAndAnalysisType",
+    "ApiOverviewPropDomainsPropActionsInboundType",
+    "ApiOverviewPropDomainsPropArtifactAttestationsType",
+    "ApiOverviewPropDomainsType",
+    "ApiOverviewPropSshKeyFingerprintsType",
+    "ApiOverviewType",
 )

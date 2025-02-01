@@ -16,15 +16,16 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId(GitHubModel):
-    """RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId"""
+class RepositoryRuleParamsRestrictedCommits(GitHubModel):
+    """RestrictedCommits
 
-    repository_ids: Missing[list[int]] = Field(
-        default=UNSET,
-        description="The repository IDs that the ruleset applies to. One of these IDs must match for the condition to pass.",
-    )
+    Restricted commit
+    """
+
+    oid: str = Field(description="Full or abbreviated commit hash to reject")
+    reason: Missing[str] = Field(default=UNSET, description="Reason for restriction")
 
 
-model_rebuild(RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId)
+model_rebuild(RepositoryRuleParamsRestrictedCommits)
 
-__all__ = ("RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId",)
+__all__ = ("RepositoryRuleParamsRestrictedCommits",)

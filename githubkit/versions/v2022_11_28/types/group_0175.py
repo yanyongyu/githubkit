@@ -13,37 +13,28 @@ from datetime import datetime
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType
 
-class ArtifactType(TypedDict):
-    """Artifact
 
-    An artifact
+class ProjectCardType(TypedDict):
+    """Project Card
+
+    Project cards represent a scope of work.
     """
 
+    url: str
     id: int
     node_id: str
-    name: str
-    size_in_bytes: int
-    url: str
-    archive_download_url: str
-    expired: bool
-    created_at: Union[datetime, None]
-    expires_at: Union[datetime, None]
-    updated_at: Union[datetime, None]
-    workflow_run: NotRequired[Union[ArtifactPropWorkflowRunType, None]]
+    note: Union[str, None]
+    creator: Union[None, SimpleUserType]
+    created_at: datetime
+    updated_at: datetime
+    archived: NotRequired[bool]
+    column_name: NotRequired[str]
+    project_id: NotRequired[str]
+    column_url: str
+    content_url: NotRequired[str]
+    project_url: str
 
 
-class ArtifactPropWorkflowRunType(TypedDict):
-    """ArtifactPropWorkflowRun"""
-
-    id: NotRequired[int]
-    repository_id: NotRequired[int]
-    head_repository_id: NotRequired[int]
-    head_branch: NotRequired[str]
-    head_sha: NotRequired[str]
-
-
-__all__ = (
-    "ArtifactPropWorkflowRunType",
-    "ArtifactType",
-)
+__all__ = ("ProjectCardType",)

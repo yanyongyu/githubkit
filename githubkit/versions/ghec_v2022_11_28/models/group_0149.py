@@ -9,31 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ThreadSubscription(GitHubModel):
-    """Thread Subscription
+class MarketplaceListingPlan(GitHubModel):
+    """Marketplace Listing Plan
 
-    Thread Subscription
+    Marketplace Listing Plan
     """
 
-    subscribed: bool = Field()
-    ignored: bool = Field()
-    reason: Union[str, None] = Field()
-    created_at: Union[datetime, None] = Field()
     url: str = Field()
-    thread_url: Missing[str] = Field(default=UNSET)
-    repository_url: Missing[str] = Field(default=UNSET)
+    accounts_url: str = Field()
+    id: int = Field()
+    number: int = Field()
+    name: str = Field()
+    description: str = Field()
+    monthly_price_in_cents: int = Field()
+    yearly_price_in_cents: int = Field()
+    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"] = Field()
+    has_free_trial: bool = Field()
+    unit_name: Union[str, None] = Field()
+    state: str = Field()
+    bullets: list[str] = Field()
 
 
-model_rebuild(ThreadSubscription)
+model_rebuild(MarketplaceListingPlan)
 
-__all__ = ("ThreadSubscription",)
+__all__ = ("MarketplaceListingPlan",)

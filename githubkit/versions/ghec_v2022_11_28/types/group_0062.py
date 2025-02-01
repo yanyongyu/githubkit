@@ -9,192 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import date
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class CopilotUsageMetricsDayType(TypedDict):
-    """Copilot Usage Metrics
+class EnterpriseSecurityAnalysisSettingsType(TypedDict):
+    """Enterprise Security Analysis Settings"""
 
-    Copilot usage metrics for a given day.
-    """
-
-    date: date
-    total_active_users: NotRequired[int]
-    total_engaged_users: NotRequired[int]
-    copilot_ide_code_completions: NotRequired[
-        Union[CopilotIdeCodeCompletionsType, None]
+    advanced_security_enabled_for_new_repositories: bool
+    advanced_security_enabled_for_new_user_namespace_repositories: NotRequired[bool]
+    dependabot_alerts_enabled_for_new_repositories: bool
+    secret_scanning_enabled_for_new_repositories: bool
+    secret_scanning_push_protection_enabled_for_new_repositories: bool
+    secret_scanning_push_protection_custom_link: NotRequired[Union[str, None]]
+    secret_scanning_non_provider_patterns_enabled_for_new_repositories: NotRequired[
+        bool
     ]
-    copilot_ide_chat: NotRequired[Union[CopilotIdeChatType, None]]
-    copilot_dotcom_chat: NotRequired[Union[CopilotDotcomChatType, None]]
-    copilot_dotcom_pull_requests: NotRequired[
-        Union[CopilotDotcomPullRequestsType, None]
-    ]
+    secret_scanning_validity_checks_enabled: NotRequired[bool]
 
 
-class CopilotDotcomChatType(TypedDict):
-    """CopilotDotcomChat
-
-    Usage metrics for Copilot Chat in github.com
-    """
-
-    total_engaged_users: NotRequired[int]
-    models: NotRequired[list[CopilotDotcomChatPropModelsItemsType]]
-
-
-class CopilotDotcomChatPropModelsItemsType(TypedDict):
-    """CopilotDotcomChatPropModelsItems"""
-
-    name: NotRequired[str]
-    is_custom_model: NotRequired[bool]
-    custom_model_training_date: NotRequired[Union[str, None]]
-    total_engaged_users: NotRequired[int]
-    total_chats: NotRequired[int]
-
-
-class CopilotIdeChatType(TypedDict):
-    """CopilotIdeChat
-
-    Usage metrics for Copilot Chat in the IDE.
-    """
-
-    total_engaged_users: NotRequired[int]
-    editors: NotRequired[list[CopilotIdeChatPropEditorsItemsType]]
-
-
-class CopilotIdeChatPropEditorsItemsType(TypedDict):
-    """CopilotIdeChatPropEditorsItems
-
-    Copilot Chat metrics, for active editors.
-    """
-
-    name: NotRequired[str]
-    total_engaged_users: NotRequired[int]
-    models: NotRequired[list[CopilotIdeChatPropEditorsItemsPropModelsItemsType]]
-
-
-class CopilotIdeChatPropEditorsItemsPropModelsItemsType(TypedDict):
-    """CopilotIdeChatPropEditorsItemsPropModelsItems"""
-
-    name: NotRequired[str]
-    is_custom_model: NotRequired[bool]
-    custom_model_training_date: NotRequired[Union[str, None]]
-    total_engaged_users: NotRequired[int]
-    total_chats: NotRequired[int]
-    total_chat_insertion_events: NotRequired[int]
-    total_chat_copy_events: NotRequired[int]
-
-
-class CopilotDotcomPullRequestsType(TypedDict):
-    """CopilotDotcomPullRequests
-
-    Usage metrics for Copilot for pull requests.
-    """
-
-    total_engaged_users: NotRequired[int]
-    repositories: NotRequired[list[CopilotDotcomPullRequestsPropRepositoriesItemsType]]
-
-
-class CopilotDotcomPullRequestsPropRepositoriesItemsType(TypedDict):
-    """CopilotDotcomPullRequestsPropRepositoriesItems"""
-
-    name: NotRequired[str]
-    total_engaged_users: NotRequired[int]
-    models: NotRequired[
-        list[CopilotDotcomPullRequestsPropRepositoriesItemsPropModelsItemsType]
-    ]
-
-
-class CopilotDotcomPullRequestsPropRepositoriesItemsPropModelsItemsType(TypedDict):
-    """CopilotDotcomPullRequestsPropRepositoriesItemsPropModelsItems"""
-
-    name: NotRequired[str]
-    is_custom_model: NotRequired[bool]
-    custom_model_training_date: NotRequired[Union[str, None]]
-    total_pr_summaries_created: NotRequired[int]
-    total_engaged_users: NotRequired[int]
-
-
-class CopilotIdeCodeCompletionsType(TypedDict):
-    """CopilotIdeCodeCompletions
-
-    Usage metrics for Copilot editor code completions in the IDE.
-    """
-
-    total_engaged_users: NotRequired[int]
-    languages: NotRequired[list[CopilotIdeCodeCompletionsPropLanguagesItemsType]]
-    editors: NotRequired[list[CopilotIdeCodeCompletionsPropEditorsItemsType]]
-
-
-class CopilotIdeCodeCompletionsPropLanguagesItemsType(TypedDict):
-    """CopilotIdeCodeCompletionsPropLanguagesItems
-
-    Usage metrics for a given language for the given editor for Copilot code
-    completions.
-    """
-
-    name: NotRequired[str]
-    total_engaged_users: NotRequired[int]
-
-
-class CopilotIdeCodeCompletionsPropEditorsItemsType(TypedDict):
-    """CopilotIdeCodeCompletionsPropEditorsItems
-
-    Copilot code completion metrics for active editors.
-    """
-
-    name: NotRequired[str]
-    total_engaged_users: NotRequired[int]
-    models: NotRequired[
-        list[CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItemsType]
-    ]
-
-
-class CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItemsType(TypedDict):
-    """CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItems"""
-
-    name: NotRequired[str]
-    is_custom_model: NotRequired[bool]
-    custom_model_training_date: NotRequired[Union[str, None]]
-    total_engaged_users: NotRequired[int]
-    languages: NotRequired[
-        list[
-            CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItemsPropLanguagesItemsType
-        ]
-    ]
-
-
-class CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItemsPropLanguagesItemsType(
-    TypedDict
-):
-    """CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItemsPropLanguagesItems
-
-    Usage metrics for a given language for the given editor for Copilot code
-    completions.
-    """
-
-    name: NotRequired[str]
-    total_engaged_users: NotRequired[int]
-    total_code_suggestions: NotRequired[int]
-    total_code_acceptances: NotRequired[int]
-    total_code_lines_suggested: NotRequired[int]
-    total_code_lines_accepted: NotRequired[int]
-
-
-__all__ = (
-    "CopilotDotcomChatPropModelsItemsType",
-    "CopilotDotcomChatType",
-    "CopilotDotcomPullRequestsPropRepositoriesItemsPropModelsItemsType",
-    "CopilotDotcomPullRequestsPropRepositoriesItemsType",
-    "CopilotDotcomPullRequestsType",
-    "CopilotIdeChatPropEditorsItemsPropModelsItemsType",
-    "CopilotIdeChatPropEditorsItemsType",
-    "CopilotIdeChatType",
-    "CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItemsPropLanguagesItemsType",
-    "CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItemsType",
-    "CopilotIdeCodeCompletionsPropEditorsItemsType",
-    "CopilotIdeCodeCompletionsPropLanguagesItemsType",
-    "CopilotIdeCodeCompletionsType",
-    "CopilotUsageMetricsDayType",
-)
+__all__ = ("EnterpriseSecurityAnalysisSettingsType",)

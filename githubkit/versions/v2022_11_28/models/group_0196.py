@@ -9,43 +9,63 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+from typing import Union
+
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0197 import (
-    ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances,
-    ProtectedBranchPullRequestReviewPropDismissalRestrictions,
-)
+from .group_0003 import SimpleUser
+from .group_0010 import Integration
 
 
-class ProtectedBranchPullRequestReview(GitHubModel):
-    """Protected Branch Pull Request Review
+class Deployment(GitHubModel):
+    """Deployment
 
-    Protected Branch Pull Request Review
+    A request for a specific ref(branch,sha,tag) to be deployed
     """
 
-    url: Missing[str] = Field(default=UNSET)
-    dismissal_restrictions: Missing[
-        ProtectedBranchPullRequestReviewPropDismissalRestrictions
-    ] = Field(default=UNSET)
-    bypass_pull_request_allowances: Missing[
-        ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances
-    ] = Field(
-        default=UNSET,
-        description="Allow specific users, teams, or apps to bypass pull request requirements.",
+    url: str = Field()
+    id: int = Field(description="Unique identifier of the deployment")
+    node_id: str = Field()
+    sha: str = Field()
+    ref: str = Field(
+        description="The ref to deploy. This can be a branch, tag, or sha."
     )
-    dismiss_stale_reviews: bool = Field()
-    require_code_owner_reviews: bool = Field()
-    required_approving_review_count: Missing[int] = Field(le=6.0, default=UNSET)
-    require_last_push_approval: Missing[bool] = Field(
+    task: str = Field(description="Parameter to specify a task to execute")
+    payload: Union[DeploymentPropPayloadOneof0, str] = Field()
+    original_environment: Missing[str] = Field(default=UNSET)
+    environment: str = Field(description="Name for the target deployment environment.")
+    description: Union[str, None] = Field()
+    creator: Union[None, SimpleUser] = Field()
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+    statuses_url: str = Field()
+    repository_url: str = Field()
+    transient_environment: Missing[bool] = Field(
         default=UNSET,
-        description="Whether the most recent push must be approved by someone other than the person who pushed it.",
+        description="Specifies if the given environment is will no longer exist at some point in the future. Default: false.",
+    )
+    production_environment: Missing[bool] = Field(
+        default=UNSET,
+        description="Specifies if the given environment is one that end-users directly interact with. Default: false.",
+    )
+    performed_via_github_app: Missing[Union[None, Integration, None]] = Field(
+        default=UNSET
     )
 
 
-model_rebuild(ProtectedBranchPullRequestReview)
+class DeploymentPropPayloadOneof0(ExtraGitHubModel):
+    """DeploymentPropPayloadOneof0"""
 
-__all__ = ("ProtectedBranchPullRequestReview",)
+
+model_rebuild(Deployment)
+model_rebuild(DeploymentPropPayloadOneof0)
+
+__all__ = (
+    "Deployment",
+    "DeploymentPropPayloadOneof0",
+)

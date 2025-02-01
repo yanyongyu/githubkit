@@ -9,27 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ExternalGroupsType(TypedDict):
-    """ExternalGroups
+class CopilotOrganizationDetailsType(TypedDict):
+    """Copilot Organization Details
 
-    A list of external groups available to be connected to a team
+    Information about the seat breakdown and policies set for an organization with a
+    Copilot Business or Copilot Enterprise subscription.
     """
 
-    groups: NotRequired[list[ExternalGroupsPropGroupsItemsType]]
+    seat_breakdown: CopilotSeatBreakdownType
+    public_code_suggestions: Literal["allow", "block", "unconfigured", "unknown"]
+    ide_chat: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
+    platform_chat: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
+    cli: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
+    seat_management_setting: Literal[
+        "assign_all", "assign_selected", "disabled", "unconfigured"
+    ]
+    plan_type: NotRequired[Literal["business", "enterprise", "unknown"]]
 
 
-class ExternalGroupsPropGroupsItemsType(TypedDict):
-    """ExternalGroupsPropGroupsItems"""
+class CopilotSeatBreakdownType(TypedDict):
+    """Copilot Business Seat Breakdown
 
-    group_id: int
-    group_name: str
-    updated_at: str
+    The breakdown of Copilot Business seats for the organization.
+    """
+
+    total: NotRequired[int]
+    added_this_cycle: NotRequired[int]
+    pending_cancellation: NotRequired[int]
+    pending_invitation: NotRequired[int]
+    active_this_cycle: NotRequired[int]
+    inactive_this_cycle: NotRequired[int]
 
 
 __all__ = (
-    "ExternalGroupsPropGroupsItemsType",
-    "ExternalGroupsType",
+    "CopilotOrganizationDetailsType",
+    "CopilotSeatBreakdownType",
 )

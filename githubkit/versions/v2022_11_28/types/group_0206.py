@@ -11,34 +11,30 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0199 import BranchProtectionType
-from .group_0204 import CommitType
+from .group_0205 import BranchProtectionType
 
 
-class BranchWithProtectionType(TypedDict):
-    """Branch With Protection
+class ShortBranchType(TypedDict):
+    """Short Branch
 
-    Branch With Protection
+    Short Branch
     """
 
     name: str
-    commit: CommitType
-    links: BranchWithProtectionPropLinksType
+    commit: ShortBranchPropCommitType
     protected: bool
-    protection: BranchProtectionType
-    protection_url: str
-    pattern: NotRequired[str]
-    required_approving_review_count: NotRequired[int]
+    protection: NotRequired[BranchProtectionType]
+    protection_url: NotRequired[str]
 
 
-class BranchWithProtectionPropLinksType(TypedDict):
-    """BranchWithProtectionPropLinks"""
+class ShortBranchPropCommitType(TypedDict):
+    """ShortBranchPropCommit"""
 
-    html: str
-    self_: str
+    sha: str
+    url: str
 
 
 __all__ = (
-    "BranchWithProtectionPropLinksType",
-    "BranchWithProtectionType",
+    "ShortBranchPropCommitType",
+    "ShortBranchType",
 )
