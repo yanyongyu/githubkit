@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0069 import DependabotAlertPackageType
+from .group_0070 import DependabotAlertPackageType
 
 
 class DependabotAlertPropDependencyType(TypedDict):

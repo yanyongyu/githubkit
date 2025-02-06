@@ -50,6 +50,7 @@ if TYPE_CHECKING:
         GetLicenseSyncStatus,
         NetworkConfiguration,
         NetworkSettings,
+        PushRuleBypassRequest,
         Runner,
         RunnerApplication,
         RunnerGroupsEnterprise,
@@ -107,6 +108,7 @@ if TYPE_CHECKING:
         NetworkSettingsType,
         PatchSchemaPropOperationsItemsType,
         PatchSchemaType,
+        PushRuleBypassRequestType,
         RunnerApplicationType,
         RunnerGroupsEnterpriseType,
         RunnerType,
@@ -3182,6 +3184,96 @@ class EnterpriseAdminClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+        )
+
+    def list_push_bypass_requests(
+        self,
+        enterprise: str,
+        *,
+        organization_name: Missing[str] = UNSET,
+        reviewer: Missing[str] = UNSET,
+        requester: Missing[str] = UNSET,
+        time_period: Missing[Literal["hour", "day", "week", "month"]] = UNSET,
+        request_status: Missing[
+            Literal["completed", "cancelled", "expired", "denied", "open", "all"]
+        ] = UNSET,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+    ) -> Response[list[PushRuleBypassRequest], list[PushRuleBypassRequestType]]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/bypass-requests#list-push-rule-bypass-requests-within-an-enterprise"""
+
+        from ..models import BasicError, PushRuleBypassRequest
+
+        url = f"/enterprises/{enterprise}/bypass-requests/push-rules"
+
+        params = {
+            "organization_name": organization_name,
+            "reviewer": reviewer,
+            "requester": requester,
+            "time_period": time_period,
+            "request_status": request_status,
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=list[PushRuleBypassRequest],
+            error_models={
+                "404": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    async def async_list_push_bypass_requests(
+        self,
+        enterprise: str,
+        *,
+        organization_name: Missing[str] = UNSET,
+        reviewer: Missing[str] = UNSET,
+        requester: Missing[str] = UNSET,
+        time_period: Missing[Literal["hour", "day", "week", "month"]] = UNSET,
+        request_status: Missing[
+            Literal["completed", "cancelled", "expired", "denied", "open", "all"]
+        ] = UNSET,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+    ) -> Response[list[PushRuleBypassRequest], list[PushRuleBypassRequestType]]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/bypass-requests#list-push-rule-bypass-requests-within-an-enterprise"""
+
+        from ..models import BasicError, PushRuleBypassRequest
+
+        url = f"/enterprises/{enterprise}/bypass-requests/push-rules"
+
+        params = {
+            "organization_name": organization_name,
+            "reviewer": reviewer,
+            "requester": requester,
+            "time_period": time_period,
+            "request_status": request_status,
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=list[PushRuleBypassRequest],
+            error_models={
+                "404": BasicError,
+                "500": BasicError,
+            },
         )
 
     def get_security_analysis_settings_for_enterprise(

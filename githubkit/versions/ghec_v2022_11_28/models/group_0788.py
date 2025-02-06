@@ -17,7 +17,7 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0094 import (
+from .group_0095 import (
     RepositoryRuleCreation,
     RepositoryRuleDeletion,
     RepositoryRuleNonFastForward,
@@ -25,20 +25,20 @@ from .group_0094 import (
     RepositoryRuleOneof17,
     RepositoryRuleRequiredSignatures,
 )
-from .group_0095 import RepositoryRuleUpdate
-from .group_0097 import RepositoryRuleOneof16, RepositoryRuleRequiredLinearHistory
-from .group_0098 import RepositoryRuleMergeQueue
-from .group_0100 import RepositoryRuleRequiredDeployments
-from .group_0103 import RepositoryRulePullRequest
-from .group_0105 import RepositoryRuleRequiredStatusChecks
-from .group_0107 import RepositoryRuleCommitMessagePattern
-from .group_0109 import RepositoryRuleCommitAuthorEmailPattern
-from .group_0111 import RepositoryRuleCommitterEmailPattern
-from .group_0113 import RepositoryRuleBranchNamePattern
-from .group_0115 import RepositoryRuleTagNamePattern
-from .group_0118 import RepositoryRuleWorkflows
-from .group_0120 import RepositoryRuleCodeScanning
-from .group_0122 import RepositoryRuleOneof18
+from .group_0096 import RepositoryRuleUpdate
+from .group_0098 import RepositoryRuleOneof16, RepositoryRuleRequiredLinearHistory
+from .group_0099 import RepositoryRuleMergeQueue
+from .group_0101 import RepositoryRuleRequiredDeployments
+from .group_0104 import RepositoryRulePullRequest
+from .group_0106 import RepositoryRuleRequiredStatusChecks
+from .group_0108 import RepositoryRuleCommitMessagePattern
+from .group_0110 import RepositoryRuleCommitAuthorEmailPattern
+from .group_0112 import RepositoryRuleCommitterEmailPattern
+from .group_0114 import RepositoryRuleBranchNamePattern
+from .group_0116 import RepositoryRuleTagNamePattern
+from .group_0119 import RepositoryRuleWorkflows
+from .group_0121 import RepositoryRuleCodeScanning
+from .group_0123 import RepositoryRuleOneof18
 
 
 class WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItems(GitHubModel):

@@ -14,7 +14,7 @@ from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0137 import ReactionRollupType
+from .group_0138 import ReactionRollupType
 
 
 class TeamDiscussionCommentType(TypedDict):

@@ -17,7 +17,7 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0059 import CodeScanningDefaultSetupOptions
+from .group_0060 import CodeScanningDefaultSetupOptions
 
 
 class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBody(

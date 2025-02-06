@@ -15,7 +15,7 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0084 import RepositoryRulesetConditions
+from .group_0085 import RepositoryRulesetConditions
 from .group_0786 import (
     WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItems,
 )

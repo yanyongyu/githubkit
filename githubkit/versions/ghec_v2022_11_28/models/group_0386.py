@@ -17,7 +17,7 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0106 import RepositoryRuleRequiredStatusChecksPropParameters
+from .group_0107 import RepositoryRuleRequiredStatusChecksPropParameters
 
 
 class RepositoryRuleDetailedOneof8(GitHubModel):

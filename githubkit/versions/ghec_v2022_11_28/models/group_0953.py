@@ -17,7 +17,7 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0058 import CodeSecurityConfiguration
+from .group_0059 import CodeSecurityConfiguration
 
 
 class OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200(

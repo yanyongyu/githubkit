@@ -202,467 +202,467 @@ if TYPE_CHECKING:
     from .group_0051 import DatadogConfigType as DatadogConfigType
     from .group_0052 import GetAuditLogStreamConfigType as GetAuditLogStreamConfigType
     from .group_0053 import (
-        CodeScanningAlertRuleSummaryType as CodeScanningAlertRuleSummaryType,
-    )
-    from .group_0054 import CodeScanningAnalysisToolType as CodeScanningAnalysisToolType
-    from .group_0055 import (
-        CodeScanningAlertInstancePropMessageType as CodeScanningAlertInstancePropMessageType,
-    )
-    from .group_0055 import (
-        CodeScanningAlertInstanceType as CodeScanningAlertInstanceType,
-    )
-    from .group_0055 import (
-        CodeScanningAlertLocationType as CodeScanningAlertLocationType,
-    )
-    from .group_0056 import SimpleRepositoryType as SimpleRepositoryType
-    from .group_0057 import (
-        CodeScanningOrganizationAlertItemsType as CodeScanningOrganizationAlertItemsType,
-    )
-    from .group_0058 import (
-        CodeSecurityConfigurationPropCodeScanningDefaultSetupOptionsType as CodeSecurityConfigurationPropCodeScanningDefaultSetupOptionsType,
-    )
-    from .group_0058 import (
-        CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptionsType as CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptionsType,
-    )
-    from .group_0058 import (
-        CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropReviewersItemsType as CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropReviewersItemsType,
-    )
-    from .group_0058 import (
-        CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsType as CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsType,
-    )
-    from .group_0058 import (
-        CodeSecurityConfigurationType as CodeSecurityConfigurationType,
-    )
-    from .group_0059 import (
-        CodeScanningDefaultSetupOptionsType as CodeScanningDefaultSetupOptionsType,
-    )
-    from .group_0060 import (
-        CodeSecurityDefaultConfigurationsItemsType as CodeSecurityDefaultConfigurationsItemsType,
-    )
-    from .group_0061 import (
-        CodeSecurityConfigurationRepositoriesType as CodeSecurityConfigurationRepositoriesType,
-    )
-    from .group_0062 import (
-        EnterpriseSecurityAnalysisSettingsType as EnterpriseSecurityAnalysisSettingsType,
-    )
-    from .group_0063 import (
-        GetConsumedLicensesPropUsersItemsType as GetConsumedLicensesPropUsersItemsType,
-    )
-    from .group_0063 import GetConsumedLicensesType as GetConsumedLicensesType
-    from .group_0064 import TeamSimpleType as TeamSimpleType
-    from .group_0065 import TeamPropPermissionsType as TeamPropPermissionsType
-    from .group_0065 import TeamType as TeamType
-    from .group_0066 import CopilotSeatDetailsType as CopilotSeatDetailsType
-    from .group_0066 import EnterpriseTeamType as EnterpriseTeamType
-    from .group_0067 import (
-        CopilotDotcomChatPropModelsItemsType as CopilotDotcomChatPropModelsItemsType,
-    )
-    from .group_0067 import CopilotDotcomChatType as CopilotDotcomChatType
-    from .group_0067 import (
-        CopilotDotcomPullRequestsPropRepositoriesItemsPropModelsItemsType as CopilotDotcomPullRequestsPropRepositoriesItemsPropModelsItemsType,
-    )
-    from .group_0067 import (
-        CopilotDotcomPullRequestsPropRepositoriesItemsType as CopilotDotcomPullRequestsPropRepositoriesItemsType,
-    )
-    from .group_0067 import (
-        CopilotDotcomPullRequestsType as CopilotDotcomPullRequestsType,
-    )
-    from .group_0067 import (
-        CopilotIdeChatPropEditorsItemsPropModelsItemsType as CopilotIdeChatPropEditorsItemsPropModelsItemsType,
-    )
-    from .group_0067 import (
-        CopilotIdeChatPropEditorsItemsType as CopilotIdeChatPropEditorsItemsType,
-    )
-    from .group_0067 import CopilotIdeChatType as CopilotIdeChatType
-    from .group_0067 import (
-        CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItemsPropLanguagesItemsType as CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItemsPropLanguagesItemsType,
-    )
-    from .group_0067 import (
-        CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItemsType as CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItemsType,
-    )
-    from .group_0067 import (
-        CopilotIdeCodeCompletionsPropEditorsItemsType as CopilotIdeCodeCompletionsPropEditorsItemsType,
-    )
-    from .group_0067 import (
-        CopilotIdeCodeCompletionsPropLanguagesItemsType as CopilotIdeCodeCompletionsPropLanguagesItemsType,
-    )
-    from .group_0067 import (
-        CopilotIdeCodeCompletionsType as CopilotIdeCodeCompletionsType,
-    )
-    from .group_0067 import CopilotUsageMetricsDayType as CopilotUsageMetricsDayType
-    from .group_0068 import (
-        CopilotUsageMetricsPropBreakdownItemsType as CopilotUsageMetricsPropBreakdownItemsType,
-    )
-    from .group_0068 import CopilotUsageMetricsType as CopilotUsageMetricsType
-    from .group_0069 import DependabotAlertPackageType as DependabotAlertPackageType
-    from .group_0070 import (
-        DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionType as DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionType,
-    )
-    from .group_0070 import (
-        DependabotAlertSecurityVulnerabilityType as DependabotAlertSecurityVulnerabilityType,
-    )
-    from .group_0071 import (
-        DependabotAlertSecurityAdvisoryPropCvssType as DependabotAlertSecurityAdvisoryPropCvssType,
-    )
-    from .group_0071 import (
-        DependabotAlertSecurityAdvisoryPropCwesItemsType as DependabotAlertSecurityAdvisoryPropCwesItemsType,
-    )
-    from .group_0071 import (
-        DependabotAlertSecurityAdvisoryPropIdentifiersItemsType as DependabotAlertSecurityAdvisoryPropIdentifiersItemsType,
-    )
-    from .group_0071 import (
-        DependabotAlertSecurityAdvisoryPropReferencesItemsType as DependabotAlertSecurityAdvisoryPropReferencesItemsType,
-    )
-    from .group_0071 import (
-        DependabotAlertSecurityAdvisoryType as DependabotAlertSecurityAdvisoryType,
-    )
-    from .group_0072 import (
-        DependabotAlertWithRepositoryType as DependabotAlertWithRepositoryType,
-    )
-    from .group_0073 import (
-        DependabotAlertWithRepositoryPropDependencyType as DependabotAlertWithRepositoryPropDependencyType,
-    )
-    from .group_0074 import (
-        GetLicenseSyncStatusPropServerInstancesItemsPropLastSyncType as GetLicenseSyncStatusPropServerInstancesItemsPropLastSyncType,
-    )
-    from .group_0074 import (
-        GetLicenseSyncStatusPropServerInstancesItemsType as GetLicenseSyncStatusPropServerInstancesItemsType,
-    )
-    from .group_0074 import GetLicenseSyncStatusType as GetLicenseSyncStatusType
-    from .group_0075 import NetworkConfigurationType as NetworkConfigurationType
-    from .group_0076 import NetworkSettingsType as NetworkSettingsType
-    from .group_0077 import CustomPropertyType as CustomPropertyType
-    from .group_0078 import CustomPropertySetPayloadType as CustomPropertySetPayloadType
-    from .group_0079 import (
-        RepositoryRulesetBypassActorType as RepositoryRulesetBypassActorType,
-    )
-    from .group_0080 import (
-        EnterpriseRulesetConditionsOrganizationNameTargetType as EnterpriseRulesetConditionsOrganizationNameTargetType,
-    )
-    from .group_0081 import (
-        EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameType as EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameType,
-    )
-    from .group_0082 import (
-        RepositoryRulesetConditionsRepositoryNameTargetType as RepositoryRulesetConditionsRepositoryNameTargetType,
-    )
-    from .group_0083 import (
-        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType as RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType,
-    )
-    from .group_0084 import (
-        RepositoryRulesetConditionsType as RepositoryRulesetConditionsType,
-    )
-    from .group_0085 import (
-        RepositoryRulesetConditionsPropRefNameType as RepositoryRulesetConditionsPropRefNameType,
-    )
-    from .group_0086 import (
-        RepositoryRulesetConditionsRepositoryPropertyTargetType as RepositoryRulesetConditionsRepositoryPropertyTargetType,
-    )
-    from .group_0087 import (
-        RepositoryRulesetConditionsRepositoryPropertySpecType as RepositoryRulesetConditionsRepositoryPropertySpecType,
-    )
-    from .group_0087 import (
-        RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType as RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType,
-    )
-    from .group_0088 import (
-        EnterpriseRulesetConditionsOrganizationIdTargetType as EnterpriseRulesetConditionsOrganizationIdTargetType,
-    )
-    from .group_0089 import (
-        EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdType as EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdType,
-    )
-    from .group_0090 import (
-        EnterpriseRulesetConditionsOneof0Type as EnterpriseRulesetConditionsOneof0Type,
-    )
-    from .group_0091 import (
-        EnterpriseRulesetConditionsOneof1Type as EnterpriseRulesetConditionsOneof1Type,
-    )
-    from .group_0092 import (
-        EnterpriseRulesetConditionsOneof2Type as EnterpriseRulesetConditionsOneof2Type,
-    )
-    from .group_0093 import (
-        EnterpriseRulesetConditionsOneof3Type as EnterpriseRulesetConditionsOneof3Type,
-    )
-    from .group_0094 import RepositoryRuleCreationType as RepositoryRuleCreationType
-    from .group_0094 import RepositoryRuleDeletionType as RepositoryRuleDeletionType
-    from .group_0094 import (
-        RepositoryRuleNonFastForwardType as RepositoryRuleNonFastForwardType,
-    )
-    from .group_0094 import (
-        RepositoryRuleOneof15PropParametersType as RepositoryRuleOneof15PropParametersType,
-    )
-    from .group_0094 import RepositoryRuleOneof15Type as RepositoryRuleOneof15Type
-    from .group_0094 import (
-        RepositoryRuleOneof17PropParametersType as RepositoryRuleOneof17PropParametersType,
-    )
-    from .group_0094 import RepositoryRuleOneof17Type as RepositoryRuleOneof17Type
-    from .group_0094 import (
-        RepositoryRuleRequiredSignaturesType as RepositoryRuleRequiredSignaturesType,
-    )
-    from .group_0095 import RepositoryRuleUpdateType as RepositoryRuleUpdateType
-    from .group_0096 import (
-        RepositoryRuleUpdatePropParametersType as RepositoryRuleUpdatePropParametersType,
-    )
-    from .group_0097 import (
-        RepositoryRuleOneof16PropParametersType as RepositoryRuleOneof16PropParametersType,
-    )
-    from .group_0097 import RepositoryRuleOneof16Type as RepositoryRuleOneof16Type
-    from .group_0097 import (
-        RepositoryRuleRequiredLinearHistoryType as RepositoryRuleRequiredLinearHistoryType,
-    )
-    from .group_0098 import RepositoryRuleMergeQueueType as RepositoryRuleMergeQueueType
-    from .group_0099 import (
-        RepositoryRuleMergeQueuePropParametersType as RepositoryRuleMergeQueuePropParametersType,
-    )
-    from .group_0100 import (
-        RepositoryRuleRequiredDeploymentsType as RepositoryRuleRequiredDeploymentsType,
-    )
-    from .group_0101 import (
-        RepositoryRuleRequiredDeploymentsPropParametersType as RepositoryRuleRequiredDeploymentsPropParametersType,
-    )
-    from .group_0102 import (
-        RepositoryRuleParamsRequiredReviewerConfigurationType as RepositoryRuleParamsRequiredReviewerConfigurationType,
-    )
-    from .group_0103 import (
-        RepositoryRulePullRequestType as RepositoryRulePullRequestType,
-    )
-    from .group_0104 import (
-        RepositoryRulePullRequestPropParametersType as RepositoryRulePullRequestPropParametersType,
-    )
-    from .group_0105 import (
-        RepositoryRuleRequiredStatusChecksType as RepositoryRuleRequiredStatusChecksType,
-    )
-    from .group_0106 import (
-        RepositoryRuleParamsStatusCheckConfigurationType as RepositoryRuleParamsStatusCheckConfigurationType,
-    )
-    from .group_0106 import (
-        RepositoryRuleRequiredStatusChecksPropParametersType as RepositoryRuleRequiredStatusChecksPropParametersType,
-    )
-    from .group_0107 import (
-        RepositoryRuleCommitMessagePatternType as RepositoryRuleCommitMessagePatternType,
-    )
-    from .group_0108 import (
-        RepositoryRuleCommitMessagePatternPropParametersType as RepositoryRuleCommitMessagePatternPropParametersType,
-    )
-    from .group_0109 import (
-        RepositoryRuleCommitAuthorEmailPatternType as RepositoryRuleCommitAuthorEmailPatternType,
-    )
-    from .group_0110 import (
-        RepositoryRuleCommitAuthorEmailPatternPropParametersType as RepositoryRuleCommitAuthorEmailPatternPropParametersType,
-    )
-    from .group_0111 import (
-        RepositoryRuleCommitterEmailPatternType as RepositoryRuleCommitterEmailPatternType,
-    )
-    from .group_0112 import (
-        RepositoryRuleCommitterEmailPatternPropParametersType as RepositoryRuleCommitterEmailPatternPropParametersType,
-    )
-    from .group_0113 import (
-        RepositoryRuleBranchNamePatternType as RepositoryRuleBranchNamePatternType,
-    )
-    from .group_0114 import (
-        RepositoryRuleBranchNamePatternPropParametersType as RepositoryRuleBranchNamePatternPropParametersType,
-    )
-    from .group_0115 import (
-        RepositoryRuleTagNamePatternType as RepositoryRuleTagNamePatternType,
-    )
-    from .group_0116 import (
-        RepositoryRuleTagNamePatternPropParametersType as RepositoryRuleTagNamePatternPropParametersType,
-    )
-    from .group_0117 import (
-        RepositoryRuleParamsRestrictedCommitsType as RepositoryRuleParamsRestrictedCommitsType,
-    )
-    from .group_0118 import RepositoryRuleWorkflowsType as RepositoryRuleWorkflowsType
-    from .group_0119 import (
-        RepositoryRuleParamsWorkflowFileReferenceType as RepositoryRuleParamsWorkflowFileReferenceType,
-    )
-    from .group_0119 import (
-        RepositoryRuleWorkflowsPropParametersType as RepositoryRuleWorkflowsPropParametersType,
-    )
-    from .group_0120 import (
-        RepositoryRuleCodeScanningType as RepositoryRuleCodeScanningType,
-    )
-    from .group_0121 import (
-        RepositoryRuleCodeScanningPropParametersType as RepositoryRuleCodeScanningPropParametersType,
-    )
-    from .group_0121 import (
-        RepositoryRuleParamsCodeScanningToolType as RepositoryRuleParamsCodeScanningToolType,
-    )
-    from .group_0122 import (
-        RepositoryRuleOneof18PropParametersType as RepositoryRuleOneof18PropParametersType,
-    )
-    from .group_0122 import RepositoryRuleOneof18Type as RepositoryRuleOneof18Type
-    from .group_0123 import (
-        RepositoryRulesetConditionsRepositoryIdTargetType as RepositoryRulesetConditionsRepositoryIdTargetType,
-    )
-    from .group_0124 import (
-        RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType as RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType,
-    )
-    from .group_0125 import (
-        OrgRulesetConditionsOneof0Type as OrgRulesetConditionsOneof0Type,
-    )
-    from .group_0126 import (
-        OrgRulesetConditionsOneof1Type as OrgRulesetConditionsOneof1Type,
-    )
-    from .group_0127 import (
-        OrgRulesetConditionsOneof2Type as OrgRulesetConditionsOneof2Type,
-    )
-    from .group_0128 import (
-        RepositoryRulesetPropLinksPropHtmlType as RepositoryRulesetPropLinksPropHtmlType,
-    )
-    from .group_0128 import (
-        RepositoryRulesetPropLinksPropSelfType as RepositoryRulesetPropLinksPropSelfType,
-    )
-    from .group_0128 import (
-        RepositoryRulesetPropLinksType as RepositoryRulesetPropLinksType,
-    )
-    from .group_0128 import RepositoryRulesetType as RepositoryRulesetType
-    from .group_0129 import (
-        OrganizationSecretScanningAlertType as OrganizationSecretScanningAlertType,
-    )
-    from .group_0130 import (
-        ActionsBillingUsagePropMinutesUsedBreakdownType as ActionsBillingUsagePropMinutesUsedBreakdownType,
-    )
-    from .group_0130 import ActionsBillingUsageType as ActionsBillingUsageType
-    from .group_0131 import (
-        AdvancedSecurityActiveCommittersRepositoryType as AdvancedSecurityActiveCommittersRepositoryType,
-    )
-    from .group_0131 import (
-        AdvancedSecurityActiveCommittersType as AdvancedSecurityActiveCommittersType,
-    )
-    from .group_0131 import (
-        AdvancedSecurityActiveCommittersUserType as AdvancedSecurityActiveCommittersUserType,
-    )
-    from .group_0132 import (
-        GetAllCostCentersPropCostCentersItemsPropResourcesItemsType as GetAllCostCentersPropCostCentersItemsPropResourcesItemsType,
-    )
-    from .group_0132 import (
-        GetAllCostCentersPropCostCentersItemsType as GetAllCostCentersPropCostCentersItemsType,
-    )
-    from .group_0132 import GetAllCostCentersType as GetAllCostCentersType
-    from .group_0133 import PackagesBillingUsageType as PackagesBillingUsageType
-    from .group_0134 import CombinedBillingUsageType as CombinedBillingUsageType
-    from .group_0135 import (
-        BillingUsageReportPropUsageItemsItemsType as BillingUsageReportPropUsageItemsItemsType,
-    )
-    from .group_0135 import BillingUsageReportType as BillingUsageReportType
-    from .group_0136 import MilestoneType as MilestoneType
-    from .group_0137 import ReactionRollupType as ReactionRollupType
-    from .group_0138 import (
-        IssuePropLabelsItemsOneof1Type as IssuePropLabelsItemsOneof1Type,
-    )
-    from .group_0138 import IssuePropPullRequestType as IssuePropPullRequestType
-    from .group_0138 import IssueType as IssueType
-    from .group_0138 import SubIssuesSummaryType as SubIssuesSummaryType
-    from .group_0139 import IssueCommentType as IssueCommentType
-    from .group_0140 import ActorType as ActorType
-    from .group_0140 import (
-        EventPropPayloadPropPagesItemsType as EventPropPayloadPropPagesItemsType,
-    )
-    from .group_0140 import EventPropPayloadType as EventPropPayloadType
-    from .group_0140 import EventPropRepoType as EventPropRepoType
-    from .group_0140 import EventType as EventType
-    from .group_0141 import FeedPropLinksType as FeedPropLinksType
-    from .group_0141 import FeedType as FeedType
-    from .group_0141 import LinkWithTypeType as LinkWithTypeType
-    from .group_0142 import BaseGistPropFilesType as BaseGistPropFilesType
-    from .group_0142 import BaseGistType as BaseGistType
-    from .group_0143 import (
-        GistHistoryPropChangeStatusType as GistHistoryPropChangeStatusType,
-    )
-    from .group_0143 import GistHistoryType as GistHistoryType
-    from .group_0143 import (
-        GistSimplePropForkOfPropFilesType as GistSimplePropForkOfPropFilesType,
-    )
-    from .group_0143 import GistSimplePropForkOfType as GistSimplePropForkOfType
-    from .group_0144 import GistSimplePropFilesType as GistSimplePropFilesType
-    from .group_0144 import GistSimplePropForksItemsType as GistSimplePropForksItemsType
-    from .group_0144 import GistSimpleType as GistSimpleType
-    from .group_0144 import PublicUserPropPlanType as PublicUserPropPlanType
-    from .group_0144 import PublicUserType as PublicUserType
-    from .group_0145 import GistCommentType as GistCommentType
-    from .group_0146 import (
-        GistCommitPropChangeStatusType as GistCommitPropChangeStatusType,
-    )
-    from .group_0146 import GistCommitType as GistCommitType
-    from .group_0147 import GitignoreTemplateType as GitignoreTemplateType
-    from .group_0148 import LicenseType as LicenseType
-    from .group_0149 import MarketplaceListingPlanType as MarketplaceListingPlanType
-    from .group_0150 import MarketplacePurchaseType as MarketplacePurchaseType
-    from .group_0151 import (
-        MarketplacePurchasePropMarketplacePendingChangeType as MarketplacePurchasePropMarketplacePendingChangeType,
-    )
-    from .group_0151 import (
-        MarketplacePurchasePropMarketplacePurchaseType as MarketplacePurchasePropMarketplacePurchaseType,
-    )
-    from .group_0152 import (
-        ApiOverviewPropDomainsPropActionsInboundType as ApiOverviewPropDomainsPropActionsInboundType,
-    )
-    from .group_0152 import (
-        ApiOverviewPropDomainsPropArtifactAttestationsType as ApiOverviewPropDomainsPropArtifactAttestationsType,
-    )
-    from .group_0152 import ApiOverviewPropDomainsType as ApiOverviewPropDomainsType
-    from .group_0152 import (
-        ApiOverviewPropSshKeyFingerprintsType as ApiOverviewPropSshKeyFingerprintsType,
-    )
-    from .group_0152 import ApiOverviewType as ApiOverviewType
-    from .group_0153 import (
-        SecurityAndAnalysisPropAdvancedSecurityType as SecurityAndAnalysisPropAdvancedSecurityType,
-    )
-    from .group_0153 import (
-        SecurityAndAnalysisPropDependabotSecurityUpdatesType as SecurityAndAnalysisPropDependabotSecurityUpdatesType,
-    )
-    from .group_0153 import (
-        SecurityAndAnalysisPropSecretScanningAiDetectionType as SecurityAndAnalysisPropSecretScanningAiDetectionType,
-    )
-    from .group_0153 import (
-        SecurityAndAnalysisPropSecretScanningNonProviderPatternsType as SecurityAndAnalysisPropSecretScanningNonProviderPatternsType,
-    )
-    from .group_0153 import (
-        SecurityAndAnalysisPropSecretScanningPushProtectionType as SecurityAndAnalysisPropSecretScanningPushProtectionType,
-    )
-    from .group_0153 import (
-        SecurityAndAnalysisPropSecretScanningType as SecurityAndAnalysisPropSecretScanningType,
-    )
-    from .group_0153 import (
-        SecurityAndAnalysisPropSecretScanningValidityChecksType as SecurityAndAnalysisPropSecretScanningValidityChecksType,
-    )
-    from .group_0153 import SecurityAndAnalysisType as SecurityAndAnalysisType
-    from .group_0154 import CodeOfConductType as CodeOfConductType
-    from .group_0154 import (
-        MinimalRepositoryPropLicenseType as MinimalRepositoryPropLicenseType,
-    )
-    from .group_0154 import (
-        MinimalRepositoryPropPermissionsType as MinimalRepositoryPropPermissionsType,
-    )
-    from .group_0154 import MinimalRepositoryType as MinimalRepositoryType
-    from .group_0155 import ThreadPropSubjectType as ThreadPropSubjectType
-    from .group_0155 import ThreadType as ThreadType
-    from .group_0156 import ThreadSubscriptionType as ThreadSubscriptionType
-    from .group_0157 import (
-        OrganizationCustomRepositoryRoleType as OrganizationCustomRepositoryRoleType,
-    )
-    from .group_0158 import OrganizationFullPropPlanType as OrganizationFullPropPlanType
-    from .group_0158 import OrganizationFullType as OrganizationFullType
-    from .group_0159 import OidcCustomSubType as OidcCustomSubType
-    from .group_0160 import (
-        ActionsOrganizationPermissionsType as ActionsOrganizationPermissionsType,
-    )
-    from .group_0161 import ActionsPublicKeyType as ActionsPublicKeyType
-    from .group_0162 import (
         BypassResponsePropReviewerType as BypassResponsePropReviewerType,
     )
-    from .group_0162 import BypassResponseType as BypassResponseType
-    from .group_0162 import (
+    from .group_0053 import BypassResponseType as BypassResponseType
+    from .group_0053 import (
         PushRuleBypassRequestPropDataItemsType as PushRuleBypassRequestPropDataItemsType,
     )
-    from .group_0162 import (
+    from .group_0053 import (
         PushRuleBypassRequestPropOrganizationType as PushRuleBypassRequestPropOrganizationType,
     )
-    from .group_0162 import (
+    from .group_0053 import (
         PushRuleBypassRequestPropRepositoryType as PushRuleBypassRequestPropRepositoryType,
     )
-    from .group_0162 import (
+    from .group_0053 import (
         PushRuleBypassRequestPropRequesterType as PushRuleBypassRequestPropRequesterType,
     )
-    from .group_0162 import PushRuleBypassRequestType as PushRuleBypassRequestType
+    from .group_0053 import PushRuleBypassRequestType as PushRuleBypassRequestType
+    from .group_0054 import (
+        CodeScanningAlertRuleSummaryType as CodeScanningAlertRuleSummaryType,
+    )
+    from .group_0055 import CodeScanningAnalysisToolType as CodeScanningAnalysisToolType
+    from .group_0056 import (
+        CodeScanningAlertInstancePropMessageType as CodeScanningAlertInstancePropMessageType,
+    )
+    from .group_0056 import (
+        CodeScanningAlertInstanceType as CodeScanningAlertInstanceType,
+    )
+    from .group_0056 import (
+        CodeScanningAlertLocationType as CodeScanningAlertLocationType,
+    )
+    from .group_0057 import SimpleRepositoryType as SimpleRepositoryType
+    from .group_0058 import (
+        CodeScanningOrganizationAlertItemsType as CodeScanningOrganizationAlertItemsType,
+    )
+    from .group_0059 import (
+        CodeSecurityConfigurationPropCodeScanningDefaultSetupOptionsType as CodeSecurityConfigurationPropCodeScanningDefaultSetupOptionsType,
+    )
+    from .group_0059 import (
+        CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptionsType as CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptionsType,
+    )
+    from .group_0059 import (
+        CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropReviewersItemsType as CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropReviewersItemsType,
+    )
+    from .group_0059 import (
+        CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsType as CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsType,
+    )
+    from .group_0059 import (
+        CodeSecurityConfigurationType as CodeSecurityConfigurationType,
+    )
+    from .group_0060 import (
+        CodeScanningDefaultSetupOptionsType as CodeScanningDefaultSetupOptionsType,
+    )
+    from .group_0061 import (
+        CodeSecurityDefaultConfigurationsItemsType as CodeSecurityDefaultConfigurationsItemsType,
+    )
+    from .group_0062 import (
+        CodeSecurityConfigurationRepositoriesType as CodeSecurityConfigurationRepositoriesType,
+    )
+    from .group_0063 import (
+        EnterpriseSecurityAnalysisSettingsType as EnterpriseSecurityAnalysisSettingsType,
+    )
+    from .group_0064 import (
+        GetConsumedLicensesPropUsersItemsType as GetConsumedLicensesPropUsersItemsType,
+    )
+    from .group_0064 import GetConsumedLicensesType as GetConsumedLicensesType
+    from .group_0065 import TeamSimpleType as TeamSimpleType
+    from .group_0066 import TeamPropPermissionsType as TeamPropPermissionsType
+    from .group_0066 import TeamType as TeamType
+    from .group_0067 import CopilotSeatDetailsType as CopilotSeatDetailsType
+    from .group_0067 import EnterpriseTeamType as EnterpriseTeamType
+    from .group_0068 import (
+        CopilotDotcomChatPropModelsItemsType as CopilotDotcomChatPropModelsItemsType,
+    )
+    from .group_0068 import CopilotDotcomChatType as CopilotDotcomChatType
+    from .group_0068 import (
+        CopilotDotcomPullRequestsPropRepositoriesItemsPropModelsItemsType as CopilotDotcomPullRequestsPropRepositoriesItemsPropModelsItemsType,
+    )
+    from .group_0068 import (
+        CopilotDotcomPullRequestsPropRepositoriesItemsType as CopilotDotcomPullRequestsPropRepositoriesItemsType,
+    )
+    from .group_0068 import (
+        CopilotDotcomPullRequestsType as CopilotDotcomPullRequestsType,
+    )
+    from .group_0068 import (
+        CopilotIdeChatPropEditorsItemsPropModelsItemsType as CopilotIdeChatPropEditorsItemsPropModelsItemsType,
+    )
+    from .group_0068 import (
+        CopilotIdeChatPropEditorsItemsType as CopilotIdeChatPropEditorsItemsType,
+    )
+    from .group_0068 import CopilotIdeChatType as CopilotIdeChatType
+    from .group_0068 import (
+        CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItemsPropLanguagesItemsType as CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItemsPropLanguagesItemsType,
+    )
+    from .group_0068 import (
+        CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItemsType as CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItemsType,
+    )
+    from .group_0068 import (
+        CopilotIdeCodeCompletionsPropEditorsItemsType as CopilotIdeCodeCompletionsPropEditorsItemsType,
+    )
+    from .group_0068 import (
+        CopilotIdeCodeCompletionsPropLanguagesItemsType as CopilotIdeCodeCompletionsPropLanguagesItemsType,
+    )
+    from .group_0068 import (
+        CopilotIdeCodeCompletionsType as CopilotIdeCodeCompletionsType,
+    )
+    from .group_0068 import CopilotUsageMetricsDayType as CopilotUsageMetricsDayType
+    from .group_0069 import (
+        CopilotUsageMetricsPropBreakdownItemsType as CopilotUsageMetricsPropBreakdownItemsType,
+    )
+    from .group_0069 import CopilotUsageMetricsType as CopilotUsageMetricsType
+    from .group_0070 import DependabotAlertPackageType as DependabotAlertPackageType
+    from .group_0071 import (
+        DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionType as DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionType,
+    )
+    from .group_0071 import (
+        DependabotAlertSecurityVulnerabilityType as DependabotAlertSecurityVulnerabilityType,
+    )
+    from .group_0072 import (
+        DependabotAlertSecurityAdvisoryPropCvssType as DependabotAlertSecurityAdvisoryPropCvssType,
+    )
+    from .group_0072 import (
+        DependabotAlertSecurityAdvisoryPropCwesItemsType as DependabotAlertSecurityAdvisoryPropCwesItemsType,
+    )
+    from .group_0072 import (
+        DependabotAlertSecurityAdvisoryPropIdentifiersItemsType as DependabotAlertSecurityAdvisoryPropIdentifiersItemsType,
+    )
+    from .group_0072 import (
+        DependabotAlertSecurityAdvisoryPropReferencesItemsType as DependabotAlertSecurityAdvisoryPropReferencesItemsType,
+    )
+    from .group_0072 import (
+        DependabotAlertSecurityAdvisoryType as DependabotAlertSecurityAdvisoryType,
+    )
+    from .group_0073 import (
+        DependabotAlertWithRepositoryType as DependabotAlertWithRepositoryType,
+    )
+    from .group_0074 import (
+        DependabotAlertWithRepositoryPropDependencyType as DependabotAlertWithRepositoryPropDependencyType,
+    )
+    from .group_0075 import (
+        GetLicenseSyncStatusPropServerInstancesItemsPropLastSyncType as GetLicenseSyncStatusPropServerInstancesItemsPropLastSyncType,
+    )
+    from .group_0075 import (
+        GetLicenseSyncStatusPropServerInstancesItemsType as GetLicenseSyncStatusPropServerInstancesItemsType,
+    )
+    from .group_0075 import GetLicenseSyncStatusType as GetLicenseSyncStatusType
+    from .group_0076 import NetworkConfigurationType as NetworkConfigurationType
+    from .group_0077 import NetworkSettingsType as NetworkSettingsType
+    from .group_0078 import CustomPropertyType as CustomPropertyType
+    from .group_0079 import CustomPropertySetPayloadType as CustomPropertySetPayloadType
+    from .group_0080 import (
+        RepositoryRulesetBypassActorType as RepositoryRulesetBypassActorType,
+    )
+    from .group_0081 import (
+        EnterpriseRulesetConditionsOrganizationNameTargetType as EnterpriseRulesetConditionsOrganizationNameTargetType,
+    )
+    from .group_0082 import (
+        EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameType as EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameType,
+    )
+    from .group_0083 import (
+        RepositoryRulesetConditionsRepositoryNameTargetType as RepositoryRulesetConditionsRepositoryNameTargetType,
+    )
+    from .group_0084 import (
+        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType as RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType,
+    )
+    from .group_0085 import (
+        RepositoryRulesetConditionsType as RepositoryRulesetConditionsType,
+    )
+    from .group_0086 import (
+        RepositoryRulesetConditionsPropRefNameType as RepositoryRulesetConditionsPropRefNameType,
+    )
+    from .group_0087 import (
+        RepositoryRulesetConditionsRepositoryPropertyTargetType as RepositoryRulesetConditionsRepositoryPropertyTargetType,
+    )
+    from .group_0088 import (
+        RepositoryRulesetConditionsRepositoryPropertySpecType as RepositoryRulesetConditionsRepositoryPropertySpecType,
+    )
+    from .group_0088 import (
+        RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType as RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType,
+    )
+    from .group_0089 import (
+        EnterpriseRulesetConditionsOrganizationIdTargetType as EnterpriseRulesetConditionsOrganizationIdTargetType,
+    )
+    from .group_0090 import (
+        EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdType as EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdType,
+    )
+    from .group_0091 import (
+        EnterpriseRulesetConditionsOneof0Type as EnterpriseRulesetConditionsOneof0Type,
+    )
+    from .group_0092 import (
+        EnterpriseRulesetConditionsOneof1Type as EnterpriseRulesetConditionsOneof1Type,
+    )
+    from .group_0093 import (
+        EnterpriseRulesetConditionsOneof2Type as EnterpriseRulesetConditionsOneof2Type,
+    )
+    from .group_0094 import (
+        EnterpriseRulesetConditionsOneof3Type as EnterpriseRulesetConditionsOneof3Type,
+    )
+    from .group_0095 import RepositoryRuleCreationType as RepositoryRuleCreationType
+    from .group_0095 import RepositoryRuleDeletionType as RepositoryRuleDeletionType
+    from .group_0095 import (
+        RepositoryRuleNonFastForwardType as RepositoryRuleNonFastForwardType,
+    )
+    from .group_0095 import (
+        RepositoryRuleOneof15PropParametersType as RepositoryRuleOneof15PropParametersType,
+    )
+    from .group_0095 import RepositoryRuleOneof15Type as RepositoryRuleOneof15Type
+    from .group_0095 import (
+        RepositoryRuleOneof17PropParametersType as RepositoryRuleOneof17PropParametersType,
+    )
+    from .group_0095 import RepositoryRuleOneof17Type as RepositoryRuleOneof17Type
+    from .group_0095 import (
+        RepositoryRuleRequiredSignaturesType as RepositoryRuleRequiredSignaturesType,
+    )
+    from .group_0096 import RepositoryRuleUpdateType as RepositoryRuleUpdateType
+    from .group_0097 import (
+        RepositoryRuleUpdatePropParametersType as RepositoryRuleUpdatePropParametersType,
+    )
+    from .group_0098 import (
+        RepositoryRuleOneof16PropParametersType as RepositoryRuleOneof16PropParametersType,
+    )
+    from .group_0098 import RepositoryRuleOneof16Type as RepositoryRuleOneof16Type
+    from .group_0098 import (
+        RepositoryRuleRequiredLinearHistoryType as RepositoryRuleRequiredLinearHistoryType,
+    )
+    from .group_0099 import RepositoryRuleMergeQueueType as RepositoryRuleMergeQueueType
+    from .group_0100 import (
+        RepositoryRuleMergeQueuePropParametersType as RepositoryRuleMergeQueuePropParametersType,
+    )
+    from .group_0101 import (
+        RepositoryRuleRequiredDeploymentsType as RepositoryRuleRequiredDeploymentsType,
+    )
+    from .group_0102 import (
+        RepositoryRuleRequiredDeploymentsPropParametersType as RepositoryRuleRequiredDeploymentsPropParametersType,
+    )
+    from .group_0103 import (
+        RepositoryRuleParamsRequiredReviewerConfigurationType as RepositoryRuleParamsRequiredReviewerConfigurationType,
+    )
+    from .group_0104 import (
+        RepositoryRulePullRequestType as RepositoryRulePullRequestType,
+    )
+    from .group_0105 import (
+        RepositoryRulePullRequestPropParametersType as RepositoryRulePullRequestPropParametersType,
+    )
+    from .group_0106 import (
+        RepositoryRuleRequiredStatusChecksType as RepositoryRuleRequiredStatusChecksType,
+    )
+    from .group_0107 import (
+        RepositoryRuleParamsStatusCheckConfigurationType as RepositoryRuleParamsStatusCheckConfigurationType,
+    )
+    from .group_0107 import (
+        RepositoryRuleRequiredStatusChecksPropParametersType as RepositoryRuleRequiredStatusChecksPropParametersType,
+    )
+    from .group_0108 import (
+        RepositoryRuleCommitMessagePatternType as RepositoryRuleCommitMessagePatternType,
+    )
+    from .group_0109 import (
+        RepositoryRuleCommitMessagePatternPropParametersType as RepositoryRuleCommitMessagePatternPropParametersType,
+    )
+    from .group_0110 import (
+        RepositoryRuleCommitAuthorEmailPatternType as RepositoryRuleCommitAuthorEmailPatternType,
+    )
+    from .group_0111 import (
+        RepositoryRuleCommitAuthorEmailPatternPropParametersType as RepositoryRuleCommitAuthorEmailPatternPropParametersType,
+    )
+    from .group_0112 import (
+        RepositoryRuleCommitterEmailPatternType as RepositoryRuleCommitterEmailPatternType,
+    )
+    from .group_0113 import (
+        RepositoryRuleCommitterEmailPatternPropParametersType as RepositoryRuleCommitterEmailPatternPropParametersType,
+    )
+    from .group_0114 import (
+        RepositoryRuleBranchNamePatternType as RepositoryRuleBranchNamePatternType,
+    )
+    from .group_0115 import (
+        RepositoryRuleBranchNamePatternPropParametersType as RepositoryRuleBranchNamePatternPropParametersType,
+    )
+    from .group_0116 import (
+        RepositoryRuleTagNamePatternType as RepositoryRuleTagNamePatternType,
+    )
+    from .group_0117 import (
+        RepositoryRuleTagNamePatternPropParametersType as RepositoryRuleTagNamePatternPropParametersType,
+    )
+    from .group_0118 import (
+        RepositoryRuleParamsRestrictedCommitsType as RepositoryRuleParamsRestrictedCommitsType,
+    )
+    from .group_0119 import RepositoryRuleWorkflowsType as RepositoryRuleWorkflowsType
+    from .group_0120 import (
+        RepositoryRuleParamsWorkflowFileReferenceType as RepositoryRuleParamsWorkflowFileReferenceType,
+    )
+    from .group_0120 import (
+        RepositoryRuleWorkflowsPropParametersType as RepositoryRuleWorkflowsPropParametersType,
+    )
+    from .group_0121 import (
+        RepositoryRuleCodeScanningType as RepositoryRuleCodeScanningType,
+    )
+    from .group_0122 import (
+        RepositoryRuleCodeScanningPropParametersType as RepositoryRuleCodeScanningPropParametersType,
+    )
+    from .group_0122 import (
+        RepositoryRuleParamsCodeScanningToolType as RepositoryRuleParamsCodeScanningToolType,
+    )
+    from .group_0123 import (
+        RepositoryRuleOneof18PropParametersType as RepositoryRuleOneof18PropParametersType,
+    )
+    from .group_0123 import RepositoryRuleOneof18Type as RepositoryRuleOneof18Type
+    from .group_0124 import (
+        RepositoryRulesetConditionsRepositoryIdTargetType as RepositoryRulesetConditionsRepositoryIdTargetType,
+    )
+    from .group_0125 import (
+        RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType as RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType,
+    )
+    from .group_0126 import (
+        OrgRulesetConditionsOneof0Type as OrgRulesetConditionsOneof0Type,
+    )
+    from .group_0127 import (
+        OrgRulesetConditionsOneof1Type as OrgRulesetConditionsOneof1Type,
+    )
+    from .group_0128 import (
+        OrgRulesetConditionsOneof2Type as OrgRulesetConditionsOneof2Type,
+    )
+    from .group_0129 import (
+        RepositoryRulesetPropLinksPropHtmlType as RepositoryRulesetPropLinksPropHtmlType,
+    )
+    from .group_0129 import (
+        RepositoryRulesetPropLinksPropSelfType as RepositoryRulesetPropLinksPropSelfType,
+    )
+    from .group_0129 import (
+        RepositoryRulesetPropLinksType as RepositoryRulesetPropLinksType,
+    )
+    from .group_0129 import RepositoryRulesetType as RepositoryRulesetType
+    from .group_0130 import (
+        OrganizationSecretScanningAlertType as OrganizationSecretScanningAlertType,
+    )
+    from .group_0131 import (
+        ActionsBillingUsagePropMinutesUsedBreakdownType as ActionsBillingUsagePropMinutesUsedBreakdownType,
+    )
+    from .group_0131 import ActionsBillingUsageType as ActionsBillingUsageType
+    from .group_0132 import (
+        AdvancedSecurityActiveCommittersRepositoryType as AdvancedSecurityActiveCommittersRepositoryType,
+    )
+    from .group_0132 import (
+        AdvancedSecurityActiveCommittersType as AdvancedSecurityActiveCommittersType,
+    )
+    from .group_0132 import (
+        AdvancedSecurityActiveCommittersUserType as AdvancedSecurityActiveCommittersUserType,
+    )
+    from .group_0133 import (
+        GetAllCostCentersPropCostCentersItemsPropResourcesItemsType as GetAllCostCentersPropCostCentersItemsPropResourcesItemsType,
+    )
+    from .group_0133 import (
+        GetAllCostCentersPropCostCentersItemsType as GetAllCostCentersPropCostCentersItemsType,
+    )
+    from .group_0133 import GetAllCostCentersType as GetAllCostCentersType
+    from .group_0134 import PackagesBillingUsageType as PackagesBillingUsageType
+    from .group_0135 import CombinedBillingUsageType as CombinedBillingUsageType
+    from .group_0136 import (
+        BillingUsageReportPropUsageItemsItemsType as BillingUsageReportPropUsageItemsItemsType,
+    )
+    from .group_0136 import BillingUsageReportType as BillingUsageReportType
+    from .group_0137 import MilestoneType as MilestoneType
+    from .group_0138 import ReactionRollupType as ReactionRollupType
+    from .group_0139 import (
+        IssuePropLabelsItemsOneof1Type as IssuePropLabelsItemsOneof1Type,
+    )
+    from .group_0139 import IssuePropPullRequestType as IssuePropPullRequestType
+    from .group_0139 import IssueType as IssueType
+    from .group_0139 import SubIssuesSummaryType as SubIssuesSummaryType
+    from .group_0140 import IssueCommentType as IssueCommentType
+    from .group_0141 import ActorType as ActorType
+    from .group_0141 import (
+        EventPropPayloadPropPagesItemsType as EventPropPayloadPropPagesItemsType,
+    )
+    from .group_0141 import EventPropPayloadType as EventPropPayloadType
+    from .group_0141 import EventPropRepoType as EventPropRepoType
+    from .group_0141 import EventType as EventType
+    from .group_0142 import FeedPropLinksType as FeedPropLinksType
+    from .group_0142 import FeedType as FeedType
+    from .group_0142 import LinkWithTypeType as LinkWithTypeType
+    from .group_0143 import BaseGistPropFilesType as BaseGistPropFilesType
+    from .group_0143 import BaseGistType as BaseGistType
+    from .group_0144 import (
+        GistHistoryPropChangeStatusType as GistHistoryPropChangeStatusType,
+    )
+    from .group_0144 import GistHistoryType as GistHistoryType
+    from .group_0144 import (
+        GistSimplePropForkOfPropFilesType as GistSimplePropForkOfPropFilesType,
+    )
+    from .group_0144 import GistSimplePropForkOfType as GistSimplePropForkOfType
+    from .group_0145 import GistSimplePropFilesType as GistSimplePropFilesType
+    from .group_0145 import GistSimplePropForksItemsType as GistSimplePropForksItemsType
+    from .group_0145 import GistSimpleType as GistSimpleType
+    from .group_0145 import PublicUserPropPlanType as PublicUserPropPlanType
+    from .group_0145 import PublicUserType as PublicUserType
+    from .group_0146 import GistCommentType as GistCommentType
+    from .group_0147 import (
+        GistCommitPropChangeStatusType as GistCommitPropChangeStatusType,
+    )
+    from .group_0147 import GistCommitType as GistCommitType
+    from .group_0148 import GitignoreTemplateType as GitignoreTemplateType
+    from .group_0149 import LicenseType as LicenseType
+    from .group_0150 import MarketplaceListingPlanType as MarketplaceListingPlanType
+    from .group_0151 import MarketplacePurchaseType as MarketplacePurchaseType
+    from .group_0152 import (
+        MarketplacePurchasePropMarketplacePendingChangeType as MarketplacePurchasePropMarketplacePendingChangeType,
+    )
+    from .group_0152 import (
+        MarketplacePurchasePropMarketplacePurchaseType as MarketplacePurchasePropMarketplacePurchaseType,
+    )
+    from .group_0153 import (
+        ApiOverviewPropDomainsPropActionsInboundType as ApiOverviewPropDomainsPropActionsInboundType,
+    )
+    from .group_0153 import (
+        ApiOverviewPropDomainsPropArtifactAttestationsType as ApiOverviewPropDomainsPropArtifactAttestationsType,
+    )
+    from .group_0153 import ApiOverviewPropDomainsType as ApiOverviewPropDomainsType
+    from .group_0153 import (
+        ApiOverviewPropSshKeyFingerprintsType as ApiOverviewPropSshKeyFingerprintsType,
+    )
+    from .group_0153 import ApiOverviewType as ApiOverviewType
+    from .group_0154 import (
+        SecurityAndAnalysisPropAdvancedSecurityType as SecurityAndAnalysisPropAdvancedSecurityType,
+    )
+    from .group_0154 import (
+        SecurityAndAnalysisPropDependabotSecurityUpdatesType as SecurityAndAnalysisPropDependabotSecurityUpdatesType,
+    )
+    from .group_0154 import (
+        SecurityAndAnalysisPropSecretScanningAiDetectionType as SecurityAndAnalysisPropSecretScanningAiDetectionType,
+    )
+    from .group_0154 import (
+        SecurityAndAnalysisPropSecretScanningNonProviderPatternsType as SecurityAndAnalysisPropSecretScanningNonProviderPatternsType,
+    )
+    from .group_0154 import (
+        SecurityAndAnalysisPropSecretScanningPushProtectionType as SecurityAndAnalysisPropSecretScanningPushProtectionType,
+    )
+    from .group_0154 import (
+        SecurityAndAnalysisPropSecretScanningType as SecurityAndAnalysisPropSecretScanningType,
+    )
+    from .group_0154 import (
+        SecurityAndAnalysisPropSecretScanningValidityChecksType as SecurityAndAnalysisPropSecretScanningValidityChecksType,
+    )
+    from .group_0154 import SecurityAndAnalysisType as SecurityAndAnalysisType
+    from .group_0155 import CodeOfConductType as CodeOfConductType
+    from .group_0155 import (
+        MinimalRepositoryPropLicenseType as MinimalRepositoryPropLicenseType,
+    )
+    from .group_0155 import (
+        MinimalRepositoryPropPermissionsType as MinimalRepositoryPropPermissionsType,
+    )
+    from .group_0155 import MinimalRepositoryType as MinimalRepositoryType
+    from .group_0156 import ThreadPropSubjectType as ThreadPropSubjectType
+    from .group_0156 import ThreadType as ThreadType
+    from .group_0157 import ThreadSubscriptionType as ThreadSubscriptionType
+    from .group_0158 import (
+        OrganizationCustomRepositoryRoleType as OrganizationCustomRepositoryRoleType,
+    )
+    from .group_0159 import OrganizationFullPropPlanType as OrganizationFullPropPlanType
+    from .group_0159 import OrganizationFullType as OrganizationFullType
+    from .group_0160 import OidcCustomSubType as OidcCustomSubType
+    from .group_0161 import (
+        ActionsOrganizationPermissionsType as ActionsOrganizationPermissionsType,
+    )
+    from .group_0162 import ActionsPublicKeyType as ActionsPublicKeyType
     from .group_0163 import CodespaceMachineType as CodespaceMachineType
     from .group_0164 import CodespacePropGitStatusType as CodespacePropGitStatusType
     from .group_0164 import (
@@ -9575,40 +9575,49 @@ else:
         ),
         ".group_0051": ("DatadogConfigType",),
         ".group_0052": ("GetAuditLogStreamConfigType",),
-        ".group_0053": ("CodeScanningAlertRuleSummaryType",),
-        ".group_0054": ("CodeScanningAnalysisToolType",),
-        ".group_0055": (
+        ".group_0053": (
+            "PushRuleBypassRequestType",
+            "PushRuleBypassRequestPropRepositoryType",
+            "PushRuleBypassRequestPropOrganizationType",
+            "PushRuleBypassRequestPropRequesterType",
+            "PushRuleBypassRequestPropDataItemsType",
+            "BypassResponseType",
+            "BypassResponsePropReviewerType",
+        ),
+        ".group_0054": ("CodeScanningAlertRuleSummaryType",),
+        ".group_0055": ("CodeScanningAnalysisToolType",),
+        ".group_0056": (
             "CodeScanningAlertInstanceType",
             "CodeScanningAlertLocationType",
             "CodeScanningAlertInstancePropMessageType",
         ),
-        ".group_0056": ("SimpleRepositoryType",),
-        ".group_0057": ("CodeScanningOrganizationAlertItemsType",),
-        ".group_0058": (
+        ".group_0057": ("SimpleRepositoryType",),
+        ".group_0058": ("CodeScanningOrganizationAlertItemsType",),
+        ".group_0059": (
             "CodeSecurityConfigurationType",
             "CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptionsType",
             "CodeSecurityConfigurationPropCodeScanningDefaultSetupOptionsType",
             "CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsType",
             "CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropReviewersItemsType",
         ),
-        ".group_0059": ("CodeScanningDefaultSetupOptionsType",),
-        ".group_0060": ("CodeSecurityDefaultConfigurationsItemsType",),
-        ".group_0061": ("CodeSecurityConfigurationRepositoriesType",),
-        ".group_0062": ("EnterpriseSecurityAnalysisSettingsType",),
-        ".group_0063": (
+        ".group_0060": ("CodeScanningDefaultSetupOptionsType",),
+        ".group_0061": ("CodeSecurityDefaultConfigurationsItemsType",),
+        ".group_0062": ("CodeSecurityConfigurationRepositoriesType",),
+        ".group_0063": ("EnterpriseSecurityAnalysisSettingsType",),
+        ".group_0064": (
             "GetConsumedLicensesType",
             "GetConsumedLicensesPropUsersItemsType",
         ),
-        ".group_0064": ("TeamSimpleType",),
-        ".group_0065": (
+        ".group_0065": ("TeamSimpleType",),
+        ".group_0066": (
             "TeamType",
             "TeamPropPermissionsType",
         ),
-        ".group_0066": (
+        ".group_0067": (
             "CopilotSeatDetailsType",
             "EnterpriseTeamType",
         ),
-        ".group_0067": (
+        ".group_0068": (
             "CopilotUsageMetricsDayType",
             "CopilotDotcomChatType",
             "CopilotDotcomChatPropModelsItemsType",
@@ -9624,58 +9633,58 @@ else:
             "CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItemsType",
             "CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItemsPropLanguagesItemsType",
         ),
-        ".group_0068": (
+        ".group_0069": (
             "CopilotUsageMetricsType",
             "CopilotUsageMetricsPropBreakdownItemsType",
         ),
-        ".group_0069": ("DependabotAlertPackageType",),
-        ".group_0070": (
+        ".group_0070": ("DependabotAlertPackageType",),
+        ".group_0071": (
             "DependabotAlertSecurityVulnerabilityType",
             "DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionType",
         ),
-        ".group_0071": (
+        ".group_0072": (
             "DependabotAlertSecurityAdvisoryType",
             "DependabotAlertSecurityAdvisoryPropCvssType",
             "DependabotAlertSecurityAdvisoryPropCwesItemsType",
             "DependabotAlertSecurityAdvisoryPropIdentifiersItemsType",
             "DependabotAlertSecurityAdvisoryPropReferencesItemsType",
         ),
-        ".group_0072": ("DependabotAlertWithRepositoryType",),
-        ".group_0073": ("DependabotAlertWithRepositoryPropDependencyType",),
-        ".group_0074": (
+        ".group_0073": ("DependabotAlertWithRepositoryType",),
+        ".group_0074": ("DependabotAlertWithRepositoryPropDependencyType",),
+        ".group_0075": (
             "GetLicenseSyncStatusType",
             "GetLicenseSyncStatusPropServerInstancesItemsType",
             "GetLicenseSyncStatusPropServerInstancesItemsPropLastSyncType",
         ),
-        ".group_0075": ("NetworkConfigurationType",),
-        ".group_0076": ("NetworkSettingsType",),
-        ".group_0077": ("CustomPropertyType",),
-        ".group_0078": ("CustomPropertySetPayloadType",),
-        ".group_0079": ("RepositoryRulesetBypassActorType",),
-        ".group_0080": ("EnterpriseRulesetConditionsOrganizationNameTargetType",),
-        ".group_0081": (
+        ".group_0076": ("NetworkConfigurationType",),
+        ".group_0077": ("NetworkSettingsType",),
+        ".group_0078": ("CustomPropertyType",),
+        ".group_0079": ("CustomPropertySetPayloadType",),
+        ".group_0080": ("RepositoryRulesetBypassActorType",),
+        ".group_0081": ("EnterpriseRulesetConditionsOrganizationNameTargetType",),
+        ".group_0082": (
             "EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameType",
         ),
-        ".group_0082": ("RepositoryRulesetConditionsRepositoryNameTargetType",),
-        ".group_0083": (
+        ".group_0083": ("RepositoryRulesetConditionsRepositoryNameTargetType",),
+        ".group_0084": (
             "RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType",
         ),
-        ".group_0084": ("RepositoryRulesetConditionsType",),
-        ".group_0085": ("RepositoryRulesetConditionsPropRefNameType",),
-        ".group_0086": ("RepositoryRulesetConditionsRepositoryPropertyTargetType",),
-        ".group_0087": (
+        ".group_0085": ("RepositoryRulesetConditionsType",),
+        ".group_0086": ("RepositoryRulesetConditionsPropRefNameType",),
+        ".group_0087": ("RepositoryRulesetConditionsRepositoryPropertyTargetType",),
+        ".group_0088": (
             "RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType",
             "RepositoryRulesetConditionsRepositoryPropertySpecType",
         ),
-        ".group_0088": ("EnterpriseRulesetConditionsOrganizationIdTargetType",),
-        ".group_0089": (
+        ".group_0089": ("EnterpriseRulesetConditionsOrganizationIdTargetType",),
+        ".group_0090": (
             "EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdType",
         ),
-        ".group_0090": ("EnterpriseRulesetConditionsOneof0Type",),
-        ".group_0091": ("EnterpriseRulesetConditionsOneof1Type",),
-        ".group_0092": ("EnterpriseRulesetConditionsOneof2Type",),
-        ".group_0093": ("EnterpriseRulesetConditionsOneof3Type",),
-        ".group_0094": (
+        ".group_0091": ("EnterpriseRulesetConditionsOneof0Type",),
+        ".group_0092": ("EnterpriseRulesetConditionsOneof1Type",),
+        ".group_0093": ("EnterpriseRulesetConditionsOneof2Type",),
+        ".group_0094": ("EnterpriseRulesetConditionsOneof3Type",),
+        ".group_0095": (
             "RepositoryRuleCreationType",
             "RepositoryRuleDeletionType",
             "RepositoryRuleRequiredSignaturesType",
@@ -9685,143 +9694,143 @@ else:
             "RepositoryRuleOneof17Type",
             "RepositoryRuleOneof17PropParametersType",
         ),
-        ".group_0095": ("RepositoryRuleUpdateType",),
-        ".group_0096": ("RepositoryRuleUpdatePropParametersType",),
-        ".group_0097": (
+        ".group_0096": ("RepositoryRuleUpdateType",),
+        ".group_0097": ("RepositoryRuleUpdatePropParametersType",),
+        ".group_0098": (
             "RepositoryRuleRequiredLinearHistoryType",
             "RepositoryRuleOneof16Type",
             "RepositoryRuleOneof16PropParametersType",
         ),
-        ".group_0098": ("RepositoryRuleMergeQueueType",),
-        ".group_0099": ("RepositoryRuleMergeQueuePropParametersType",),
-        ".group_0100": ("RepositoryRuleRequiredDeploymentsType",),
-        ".group_0101": ("RepositoryRuleRequiredDeploymentsPropParametersType",),
-        ".group_0102": ("RepositoryRuleParamsRequiredReviewerConfigurationType",),
-        ".group_0103": ("RepositoryRulePullRequestType",),
-        ".group_0104": ("RepositoryRulePullRequestPropParametersType",),
-        ".group_0105": ("RepositoryRuleRequiredStatusChecksType",),
-        ".group_0106": (
+        ".group_0099": ("RepositoryRuleMergeQueueType",),
+        ".group_0100": ("RepositoryRuleMergeQueuePropParametersType",),
+        ".group_0101": ("RepositoryRuleRequiredDeploymentsType",),
+        ".group_0102": ("RepositoryRuleRequiredDeploymentsPropParametersType",),
+        ".group_0103": ("RepositoryRuleParamsRequiredReviewerConfigurationType",),
+        ".group_0104": ("RepositoryRulePullRequestType",),
+        ".group_0105": ("RepositoryRulePullRequestPropParametersType",),
+        ".group_0106": ("RepositoryRuleRequiredStatusChecksType",),
+        ".group_0107": (
             "RepositoryRuleRequiredStatusChecksPropParametersType",
             "RepositoryRuleParamsStatusCheckConfigurationType",
         ),
-        ".group_0107": ("RepositoryRuleCommitMessagePatternType",),
-        ".group_0108": ("RepositoryRuleCommitMessagePatternPropParametersType",),
-        ".group_0109": ("RepositoryRuleCommitAuthorEmailPatternType",),
-        ".group_0110": ("RepositoryRuleCommitAuthorEmailPatternPropParametersType",),
-        ".group_0111": ("RepositoryRuleCommitterEmailPatternType",),
-        ".group_0112": ("RepositoryRuleCommitterEmailPatternPropParametersType",),
-        ".group_0113": ("RepositoryRuleBranchNamePatternType",),
-        ".group_0114": ("RepositoryRuleBranchNamePatternPropParametersType",),
-        ".group_0115": ("RepositoryRuleTagNamePatternType",),
-        ".group_0116": ("RepositoryRuleTagNamePatternPropParametersType",),
-        ".group_0117": ("RepositoryRuleParamsRestrictedCommitsType",),
-        ".group_0118": ("RepositoryRuleWorkflowsType",),
-        ".group_0119": (
+        ".group_0108": ("RepositoryRuleCommitMessagePatternType",),
+        ".group_0109": ("RepositoryRuleCommitMessagePatternPropParametersType",),
+        ".group_0110": ("RepositoryRuleCommitAuthorEmailPatternType",),
+        ".group_0111": ("RepositoryRuleCommitAuthorEmailPatternPropParametersType",),
+        ".group_0112": ("RepositoryRuleCommitterEmailPatternType",),
+        ".group_0113": ("RepositoryRuleCommitterEmailPatternPropParametersType",),
+        ".group_0114": ("RepositoryRuleBranchNamePatternType",),
+        ".group_0115": ("RepositoryRuleBranchNamePatternPropParametersType",),
+        ".group_0116": ("RepositoryRuleTagNamePatternType",),
+        ".group_0117": ("RepositoryRuleTagNamePatternPropParametersType",),
+        ".group_0118": ("RepositoryRuleParamsRestrictedCommitsType",),
+        ".group_0119": ("RepositoryRuleWorkflowsType",),
+        ".group_0120": (
             "RepositoryRuleWorkflowsPropParametersType",
             "RepositoryRuleParamsWorkflowFileReferenceType",
         ),
-        ".group_0120": ("RepositoryRuleCodeScanningType",),
-        ".group_0121": (
+        ".group_0121": ("RepositoryRuleCodeScanningType",),
+        ".group_0122": (
             "RepositoryRuleCodeScanningPropParametersType",
             "RepositoryRuleParamsCodeScanningToolType",
         ),
-        ".group_0122": (
+        ".group_0123": (
             "RepositoryRuleOneof18Type",
             "RepositoryRuleOneof18PropParametersType",
         ),
-        ".group_0123": ("RepositoryRulesetConditionsRepositoryIdTargetType",),
-        ".group_0124": (
+        ".group_0124": ("RepositoryRulesetConditionsRepositoryIdTargetType",),
+        ".group_0125": (
             "RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType",
         ),
-        ".group_0125": ("OrgRulesetConditionsOneof0Type",),
-        ".group_0126": ("OrgRulesetConditionsOneof1Type",),
-        ".group_0127": ("OrgRulesetConditionsOneof2Type",),
-        ".group_0128": (
+        ".group_0126": ("OrgRulesetConditionsOneof0Type",),
+        ".group_0127": ("OrgRulesetConditionsOneof1Type",),
+        ".group_0128": ("OrgRulesetConditionsOneof2Type",),
+        ".group_0129": (
             "RepositoryRulesetType",
             "RepositoryRulesetPropLinksType",
             "RepositoryRulesetPropLinksPropSelfType",
             "RepositoryRulesetPropLinksPropHtmlType",
         ),
-        ".group_0129": ("OrganizationSecretScanningAlertType",),
-        ".group_0130": (
+        ".group_0130": ("OrganizationSecretScanningAlertType",),
+        ".group_0131": (
             "ActionsBillingUsageType",
             "ActionsBillingUsagePropMinutesUsedBreakdownType",
         ),
-        ".group_0131": (
+        ".group_0132": (
             "AdvancedSecurityActiveCommittersType",
             "AdvancedSecurityActiveCommittersRepositoryType",
             "AdvancedSecurityActiveCommittersUserType",
         ),
-        ".group_0132": (
+        ".group_0133": (
             "GetAllCostCentersType",
             "GetAllCostCentersPropCostCentersItemsType",
             "GetAllCostCentersPropCostCentersItemsPropResourcesItemsType",
         ),
-        ".group_0133": ("PackagesBillingUsageType",),
-        ".group_0134": ("CombinedBillingUsageType",),
-        ".group_0135": (
+        ".group_0134": ("PackagesBillingUsageType",),
+        ".group_0135": ("CombinedBillingUsageType",),
+        ".group_0136": (
             "BillingUsageReportType",
             "BillingUsageReportPropUsageItemsItemsType",
         ),
-        ".group_0136": ("MilestoneType",),
-        ".group_0137": ("ReactionRollupType",),
-        ".group_0138": (
+        ".group_0137": ("MilestoneType",),
+        ".group_0138": ("ReactionRollupType",),
+        ".group_0139": (
             "IssueType",
             "SubIssuesSummaryType",
             "IssuePropLabelsItemsOneof1Type",
             "IssuePropPullRequestType",
         ),
-        ".group_0139": ("IssueCommentType",),
-        ".group_0140": (
+        ".group_0140": ("IssueCommentType",),
+        ".group_0141": (
             "EventPropPayloadType",
             "EventPropPayloadPropPagesItemsType",
             "EventType",
             "ActorType",
             "EventPropRepoType",
         ),
-        ".group_0141": (
+        ".group_0142": (
             "FeedType",
             "FeedPropLinksType",
             "LinkWithTypeType",
         ),
-        ".group_0142": (
+        ".group_0143": (
             "BaseGistType",
             "BaseGistPropFilesType",
         ),
-        ".group_0143": (
+        ".group_0144": (
             "GistHistoryType",
             "GistHistoryPropChangeStatusType",
             "GistSimplePropForkOfType",
             "GistSimplePropForkOfPropFilesType",
         ),
-        ".group_0144": (
+        ".group_0145": (
             "GistSimpleType",
             "GistSimplePropFilesType",
             "GistSimplePropForksItemsType",
             "PublicUserType",
             "PublicUserPropPlanType",
         ),
-        ".group_0145": ("GistCommentType",),
-        ".group_0146": (
+        ".group_0146": ("GistCommentType",),
+        ".group_0147": (
             "GistCommitType",
             "GistCommitPropChangeStatusType",
         ),
-        ".group_0147": ("GitignoreTemplateType",),
-        ".group_0148": ("LicenseType",),
-        ".group_0149": ("MarketplaceListingPlanType",),
-        ".group_0150": ("MarketplacePurchaseType",),
-        ".group_0151": (
+        ".group_0148": ("GitignoreTemplateType",),
+        ".group_0149": ("LicenseType",),
+        ".group_0150": ("MarketplaceListingPlanType",),
+        ".group_0151": ("MarketplacePurchaseType",),
+        ".group_0152": (
             "MarketplacePurchasePropMarketplacePendingChangeType",
             "MarketplacePurchasePropMarketplacePurchaseType",
         ),
-        ".group_0152": (
+        ".group_0153": (
             "ApiOverviewType",
             "ApiOverviewPropSshKeyFingerprintsType",
             "ApiOverviewPropDomainsType",
             "ApiOverviewPropDomainsPropActionsInboundType",
             "ApiOverviewPropDomainsPropArtifactAttestationsType",
         ),
-        ".group_0153": (
+        ".group_0154": (
             "SecurityAndAnalysisType",
             "SecurityAndAnalysisPropAdvancedSecurityType",
             "SecurityAndAnalysisPropDependabotSecurityUpdatesType",
@@ -9831,34 +9840,25 @@ else:
             "SecurityAndAnalysisPropSecretScanningAiDetectionType",
             "SecurityAndAnalysisPropSecretScanningValidityChecksType",
         ),
-        ".group_0154": (
+        ".group_0155": (
             "MinimalRepositoryType",
             "CodeOfConductType",
             "MinimalRepositoryPropPermissionsType",
             "MinimalRepositoryPropLicenseType",
         ),
-        ".group_0155": (
+        ".group_0156": (
             "ThreadType",
             "ThreadPropSubjectType",
         ),
-        ".group_0156": ("ThreadSubscriptionType",),
-        ".group_0157": ("OrganizationCustomRepositoryRoleType",),
-        ".group_0158": (
+        ".group_0157": ("ThreadSubscriptionType",),
+        ".group_0158": ("OrganizationCustomRepositoryRoleType",),
+        ".group_0159": (
             "OrganizationFullType",
             "OrganizationFullPropPlanType",
         ),
-        ".group_0159": ("OidcCustomSubType",),
-        ".group_0160": ("ActionsOrganizationPermissionsType",),
-        ".group_0161": ("ActionsPublicKeyType",),
-        ".group_0162": (
-            "PushRuleBypassRequestType",
-            "PushRuleBypassRequestPropRepositoryType",
-            "PushRuleBypassRequestPropOrganizationType",
-            "PushRuleBypassRequestPropRequesterType",
-            "PushRuleBypassRequestPropDataItemsType",
-            "BypassResponseType",
-            "BypassResponsePropReviewerType",
-        ),
+        ".group_0160": ("OidcCustomSubType",),
+        ".group_0161": ("ActionsOrganizationPermissionsType",),
+        ".group_0162": ("ActionsPublicKeyType",),
         ".group_0163": ("CodespaceMachineType",),
         ".group_0164": (
             "CodespaceType",

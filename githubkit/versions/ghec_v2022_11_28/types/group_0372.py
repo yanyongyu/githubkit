@@ -14,7 +14,7 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0137 import ReactionRollupType
+from .group_0138 import ReactionRollupType
 from .group_0373 import ReviewCommentPropLinksType
 
 

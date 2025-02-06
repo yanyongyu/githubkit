@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,99 +16,82 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class SecurityAndAnalysis(GitHubModel):
-    """SecurityAndAnalysis"""
+class ApiOverview(GitHubModel):
+    """Api Overview
 
-    advanced_security: Missing[SecurityAndAnalysisPropAdvancedSecurity] = Field(
-        default=UNSET
-    )
-    dependabot_security_updates: Missing[
-        SecurityAndAnalysisPropDependabotSecurityUpdates
-    ] = Field(
-        default=UNSET,
-        description="Enable or disable Dependabot security updates for the repository.",
-    )
-    secret_scanning: Missing[SecurityAndAnalysisPropSecretScanning] = Field(
-        default=UNSET
-    )
-    secret_scanning_push_protection: Missing[
-        SecurityAndAnalysisPropSecretScanningPushProtection
-    ] = Field(default=UNSET)
-    secret_scanning_non_provider_patterns: Missing[
-        SecurityAndAnalysisPropSecretScanningNonProviderPatterns
-    ] = Field(default=UNSET)
-    secret_scanning_ai_detection: Missing[
-        SecurityAndAnalysisPropSecretScanningAiDetection
-    ] = Field(default=UNSET)
-    secret_scanning_validity_checks: Missing[
-        SecurityAndAnalysisPropSecretScanningValidityChecks
-    ] = Field(default=UNSET)
-
-
-class SecurityAndAnalysisPropAdvancedSecurity(GitHubModel):
-    """SecurityAndAnalysisPropAdvancedSecurity"""
-
-    status: Missing[Literal["enabled", "disabled"]] = Field(default=UNSET)
-
-
-class SecurityAndAnalysisPropDependabotSecurityUpdates(GitHubModel):
-    """SecurityAndAnalysisPropDependabotSecurityUpdates
-
-    Enable or disable Dependabot security updates for the repository.
+    Api Overview
     """
 
-    status: Missing[Literal["enabled", "disabled"]] = Field(
-        default=UNSET,
-        description="The enablement status of Dependabot security updates for the repository.",
+    verifiable_password_authentication: bool = Field()
+    ssh_key_fingerprints: Missing[ApiOverviewPropSshKeyFingerprints] = Field(
+        default=UNSET
+    )
+    ssh_keys: Missing[list[str]] = Field(default=UNSET)
+    hooks: Missing[list[str]] = Field(default=UNSET)
+    github_enterprise_importer: Missing[list[str]] = Field(default=UNSET)
+    web: Missing[list[str]] = Field(default=UNSET)
+    api: Missing[list[str]] = Field(default=UNSET)
+    git: Missing[list[str]] = Field(default=UNSET)
+    packages: Missing[list[str]] = Field(default=UNSET)
+    pages: Missing[list[str]] = Field(default=UNSET)
+    importer: Missing[list[str]] = Field(default=UNSET)
+    actions: Missing[list[str]] = Field(default=UNSET)
+    actions_macos: Missing[list[str]] = Field(default=UNSET)
+    codespaces: Missing[list[str]] = Field(default=UNSET)
+    dependabot: Missing[list[str]] = Field(default=UNSET)
+    copilot: Missing[list[str]] = Field(default=UNSET)
+    domains: Missing[ApiOverviewPropDomains] = Field(default=UNSET)
+
+
+class ApiOverviewPropSshKeyFingerprints(GitHubModel):
+    """ApiOverviewPropSshKeyFingerprints"""
+
+    sha256_rsa: Missing[str] = Field(default=UNSET, alias="SHA256_RSA")
+    sha256_dsa: Missing[str] = Field(default=UNSET, alias="SHA256_DSA")
+    sha256_ecdsa: Missing[str] = Field(default=UNSET, alias="SHA256_ECDSA")
+    sha256_ed25519: Missing[str] = Field(default=UNSET, alias="SHA256_ED25519")
+
+
+class ApiOverviewPropDomains(GitHubModel):
+    """ApiOverviewPropDomains"""
+
+    website: Missing[list[str]] = Field(default=UNSET)
+    codespaces: Missing[list[str]] = Field(default=UNSET)
+    copilot: Missing[list[str]] = Field(default=UNSET)
+    packages: Missing[list[str]] = Field(default=UNSET)
+    actions: Missing[list[str]] = Field(default=UNSET)
+    actions_inbound: Missing[ApiOverviewPropDomainsPropActionsInbound] = Field(
+        default=UNSET
+    )
+    artifact_attestations: Missing[ApiOverviewPropDomainsPropArtifactAttestations] = (
+        Field(default=UNSET)
     )
 
 
-class SecurityAndAnalysisPropSecretScanning(GitHubModel):
-    """SecurityAndAnalysisPropSecretScanning"""
+class ApiOverviewPropDomainsPropActionsInbound(GitHubModel):
+    """ApiOverviewPropDomainsPropActionsInbound"""
 
-    status: Missing[Literal["enabled", "disabled"]] = Field(default=UNSET)
-
-
-class SecurityAndAnalysisPropSecretScanningPushProtection(GitHubModel):
-    """SecurityAndAnalysisPropSecretScanningPushProtection"""
-
-    status: Missing[Literal["enabled", "disabled"]] = Field(default=UNSET)
+    full_domains: Missing[list[str]] = Field(default=UNSET)
+    wildcard_domains: Missing[list[str]] = Field(default=UNSET)
 
 
-class SecurityAndAnalysisPropSecretScanningNonProviderPatterns(GitHubModel):
-    """SecurityAndAnalysisPropSecretScanningNonProviderPatterns"""
+class ApiOverviewPropDomainsPropArtifactAttestations(GitHubModel):
+    """ApiOverviewPropDomainsPropArtifactAttestations"""
 
-    status: Missing[Literal["enabled", "disabled"]] = Field(default=UNSET)
-
-
-class SecurityAndAnalysisPropSecretScanningAiDetection(GitHubModel):
-    """SecurityAndAnalysisPropSecretScanningAiDetection"""
-
-    status: Missing[Literal["enabled", "disabled"]] = Field(default=UNSET)
+    trust_domain: Missing[str] = Field(default=UNSET)
+    services: Missing[list[str]] = Field(default=UNSET)
 
 
-class SecurityAndAnalysisPropSecretScanningValidityChecks(GitHubModel):
-    """SecurityAndAnalysisPropSecretScanningValidityChecks"""
-
-    status: Missing[Literal["enabled", "disabled"]] = Field(default=UNSET)
-
-
-model_rebuild(SecurityAndAnalysis)
-model_rebuild(SecurityAndAnalysisPropAdvancedSecurity)
-model_rebuild(SecurityAndAnalysisPropDependabotSecurityUpdates)
-model_rebuild(SecurityAndAnalysisPropSecretScanning)
-model_rebuild(SecurityAndAnalysisPropSecretScanningPushProtection)
-model_rebuild(SecurityAndAnalysisPropSecretScanningNonProviderPatterns)
-model_rebuild(SecurityAndAnalysisPropSecretScanningAiDetection)
-model_rebuild(SecurityAndAnalysisPropSecretScanningValidityChecks)
+model_rebuild(ApiOverview)
+model_rebuild(ApiOverviewPropSshKeyFingerprints)
+model_rebuild(ApiOverviewPropDomains)
+model_rebuild(ApiOverviewPropDomainsPropActionsInbound)
+model_rebuild(ApiOverviewPropDomainsPropArtifactAttestations)
 
 __all__ = (
-    "SecurityAndAnalysis",
-    "SecurityAndAnalysisPropAdvancedSecurity",
-    "SecurityAndAnalysisPropDependabotSecurityUpdates",
-    "SecurityAndAnalysisPropSecretScanning",
-    "SecurityAndAnalysisPropSecretScanningAiDetection",
-    "SecurityAndAnalysisPropSecretScanningNonProviderPatterns",
-    "SecurityAndAnalysisPropSecretScanningPushProtection",
-    "SecurityAndAnalysisPropSecretScanningValidityChecks",
+    "ApiOverview",
+    "ApiOverviewPropDomains",
+    "ApiOverviewPropDomainsPropActionsInbound",
+    "ApiOverviewPropDomainsPropArtifactAttestations",
+    "ApiOverviewPropSshKeyFingerprints",
 )

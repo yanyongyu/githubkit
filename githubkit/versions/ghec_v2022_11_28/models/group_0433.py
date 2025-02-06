@@ -21,8 +21,8 @@ from githubkit.utils import UNSET
 from .group_0003 import SimpleUser
 from .group_0010 import Integration
 from .group_0020 import Repository
-from .group_0136 import Milestone
-from .group_0137 import ReactionRollup
+from .group_0137 import Milestone
+from .group_0138 import ReactionRollup
 from .group_0429 import SearchResultTextMatchesItems
 
 

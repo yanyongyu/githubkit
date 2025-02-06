@@ -33,6 +33,7 @@ class Runner(GitHubModel):
     status: str = Field(description="The status of the runner.")
     busy: bool = Field()
     labels: list[RunnerLabel] = Field()
+    ephemeral: Missing[bool] = Field(default=UNSET)
 
 
 model_rebuild(Runner)

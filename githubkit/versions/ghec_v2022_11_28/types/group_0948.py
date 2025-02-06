@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0059 import CodeScanningDefaultSetupOptionsType
+from .group_0060 import CodeScanningDefaultSetupOptionsType
 
 
 class OrgsOrgCodeSecurityConfigurationsPostBodyType(TypedDict):

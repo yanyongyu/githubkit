@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0075 import NetworkConfigurationType
+from .group_0076 import NetworkConfigurationType
 
 
 class OrgsOrgSettingsNetworkConfigurationsGetResponse200Type(TypedDict):

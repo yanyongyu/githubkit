@@ -19,7 +19,7 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0154 import MinimalRepository
+from .group_0155 import MinimalRepository
 
 
 class RepositoryInvitation(GitHubModel):

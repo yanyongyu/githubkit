@@ -21,31 +21,10 @@ from githubkit.utils import UNSET
 from .group_0003 import SimpleUser
 
 
-class GistHistory(GitHubModel):
-    """Gist History
+class BaseGist(GitHubModel):
+    """Base Gist
 
-    Gist History
-    """
-
-    user: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
-    version: Missing[str] = Field(default=UNSET)
-    committed_at: Missing[datetime] = Field(default=UNSET)
-    change_status: Missing[GistHistoryPropChangeStatus] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-
-
-class GistHistoryPropChangeStatus(GitHubModel):
-    """GistHistoryPropChangeStatus"""
-
-    total: Missing[int] = Field(default=UNSET)
-    additions: Missing[int] = Field(default=UNSET)
-    deletions: Missing[int] = Field(default=UNSET)
-
-
-class GistSimplePropForkOf(GitHubModel):
-    """Gist
-
-    Gist
+    Base Gist
     """
 
     url: str = Field()
@@ -56,7 +35,7 @@ class GistSimplePropForkOf(GitHubModel):
     git_pull_url: str = Field()
     git_push_url: str = Field()
     html_url: str = Field()
-    files: GistSimplePropForkOfPropFiles = Field()
+    files: BaseGistPropFiles = Field()
     public: bool = Field()
     created_at: datetime = Field()
     updated_at: datetime = Field()
@@ -65,24 +44,22 @@ class GistSimplePropForkOf(GitHubModel):
     comments_enabled: Missing[bool] = Field(default=UNSET)
     user: Union[None, SimpleUser] = Field()
     comments_url: str = Field()
-    owner: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
+    owner: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
+    )
     truncated: Missing[bool] = Field(default=UNSET)
     forks: Missing[list[Any]] = Field(default=UNSET)
     history: Missing[list[Any]] = Field(default=UNSET)
 
 
-class GistSimplePropForkOfPropFiles(ExtraGitHubModel):
-    """GistSimplePropForkOfPropFiles"""
+class BaseGistPropFiles(ExtraGitHubModel):
+    """BaseGistPropFiles"""
 
 
-model_rebuild(GistHistory)
-model_rebuild(GistHistoryPropChangeStatus)
-model_rebuild(GistSimplePropForkOf)
-model_rebuild(GistSimplePropForkOfPropFiles)
+model_rebuild(BaseGist)
+model_rebuild(BaseGistPropFiles)
 
 __all__ = (
-    "GistHistory",
-    "GistHistoryPropChangeStatus",
-    "GistSimplePropForkOf",
-    "GistSimplePropForkOfPropFiles",
+    "BaseGist",
+    "BaseGistPropFiles",
 )

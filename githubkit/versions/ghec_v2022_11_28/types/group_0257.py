@@ -14,7 +14,7 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0010 import IntegrationType
-from .group_0154 import MinimalRepositoryType
+from .group_0155 import MinimalRepositoryType
 from .group_0227 import PullRequestMinimalType
 from .group_0228 import SimpleCommitType
 

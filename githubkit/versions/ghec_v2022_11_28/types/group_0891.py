@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0066 import CopilotSeatDetailsType
+from .group_0067 import CopilotSeatDetailsType
 
 
 class EnterprisesEnterpriseCopilotBillingSeatsGetResponse200Type(TypedDict):

@@ -12,28 +12,14 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0056 import SimpleRepositoryType
+from .group_0059 import CodeSecurityConfigurationType
 
 
-class CodeSecurityConfigurationRepositoriesType(TypedDict):
-    """CodeSecurityConfigurationRepositories
+class CodeSecurityDefaultConfigurationsItemsType(TypedDict):
+    """CodeSecurityDefaultConfigurationsItems"""
 
-    Repositories associated with a code security configuration and attachment status
-    """
-
-    status: NotRequired[
-        Literal[
-            "attached",
-            "attaching",
-            "detached",
-            "removed",
-            "enforced",
-            "failed",
-            "updating",
-            "removed_by_enterprise",
-        ]
-    ]
-    repository: NotRequired[SimpleRepositoryType]
+    default_for_new_repos: NotRequired[Literal["public", "private_and_internal", "all"]]
+    configuration: NotRequired[CodeSecurityConfigurationType]
 
 
-__all__ = ("CodeSecurityConfigurationRepositoriesType",)
+__all__ = ("CodeSecurityDefaultConfigurationsItemsType",)

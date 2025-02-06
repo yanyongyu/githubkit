@@ -14,7 +14,7 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0065 import TeamType
+from .group_0066 import TeamType
 
 
 class PendingDeploymentPropReviewersItemsType(TypedDict):

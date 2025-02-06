@@ -2815,6 +2815,7 @@ class ActionsClient:
             error_models={
                 "404": BasicError,
                 "422": ValidationErrorSimple,
+                "409": BasicError,
             },
         )
 
@@ -2890,6 +2891,7 @@ class ActionsClient:
             error_models={
                 "404": BasicError,
                 "422": ValidationErrorSimple,
+                "409": BasicError,
             },
         )
 
@@ -6548,6 +6550,7 @@ class ActionsClient:
             error_models={
                 "404": BasicError,
                 "422": ValidationErrorSimple,
+                "409": BasicError,
             },
         )
 
@@ -6628,6 +6631,7 @@ class ActionsClient:
             error_models={
                 "404": BasicError,
                 "422": ValidationErrorSimple,
+                "409": BasicError,
             },
         )
 

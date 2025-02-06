@@ -27,6 +27,7 @@ class RunnerType(TypedDict):
     status: str
     busy: bool
     labels: list[RunnerLabelType]
+    ephemeral: NotRequired[bool]
 
 
 __all__ = ("RunnerType",)

@@ -17,7 +17,7 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0064 import TeamSimple
+from .group_0065 import TeamSimple
 
 
 class TeamRoleAssignment(GitHubModel):

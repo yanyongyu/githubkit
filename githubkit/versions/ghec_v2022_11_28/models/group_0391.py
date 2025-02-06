@@ -17,7 +17,7 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0114 import RepositoryRuleBranchNamePatternPropParameters
+from .group_0115 import RepositoryRuleBranchNamePatternPropParameters
 
 
 class RepositoryRuleDetailedOneof13(GitHubModel):

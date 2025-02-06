@@ -14,7 +14,7 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0056 import SimpleRepositoryType
+from .group_0057 import SimpleRepositoryType
 from .group_0270 import CodeScanningVariantAnalysisPropScannedRepositoriesItemsType
 from .group_0271 import CodeScanningVariantAnalysisPropSkippedRepositoriesType
 

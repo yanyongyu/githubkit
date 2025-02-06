@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0099 import RepositoryRuleMergeQueuePropParametersType
+from .group_0100 import RepositoryRuleMergeQueuePropParametersType
 
 
 class RepositoryRuleDetailedOneof4Type(TypedDict):

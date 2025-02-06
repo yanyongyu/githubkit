@@ -16,8 +16,8 @@ from typing_extensions import NotRequired, TypedDict
 from .group_0003 import SimpleUserType
 from .group_0010 import IntegrationType
 from .group_0020 import RepositoryType
-from .group_0136 import MilestoneType
-from .group_0137 import ReactionRollupType
+from .group_0137 import MilestoneType
+from .group_0138 import ReactionRollupType
 from .group_0429 import SearchResultTextMatchesItemsType
 
 

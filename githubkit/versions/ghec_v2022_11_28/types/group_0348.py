@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0138 import IssueType
+from .group_0139 import IssueType
 
 
 class TimelineCrossReferencedEventPropSourceType(TypedDict):

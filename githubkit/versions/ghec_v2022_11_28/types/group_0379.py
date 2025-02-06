@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0096 import RepositoryRuleUpdatePropParametersType
+from .group_0097 import RepositoryRuleUpdatePropParametersType
 
 
 class RepositoryRuleDetailedOneof1Type(TypedDict):

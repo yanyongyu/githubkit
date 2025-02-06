@@ -14,8 +14,8 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0070 import DependabotAlertSecurityVulnerabilityType
-from .group_0071 import DependabotAlertSecurityAdvisoryType
+from .group_0071 import DependabotAlertSecurityVulnerabilityType
+from .group_0072 import DependabotAlertSecurityAdvisoryType
 from .group_0303 import DependabotAlertPropDependencyType
 
 

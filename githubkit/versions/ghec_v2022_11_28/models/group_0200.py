@@ -21,7 +21,7 @@ from githubkit.utils import UNSET
 from .group_0003 import SimpleUser
 from .group_0019 import LicenseSimple
 from .group_0020 import Repository
-from .group_0153 import SecurityAndAnalysis
+from .group_0154 import SecurityAndAnalysis
 from .group_0199 import CodeOfConductSimple
 
 

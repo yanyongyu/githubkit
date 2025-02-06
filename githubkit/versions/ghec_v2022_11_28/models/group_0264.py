@@ -17,7 +17,7 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0054 import CodeScanningAnalysisTool
+from .group_0055 import CodeScanningAnalysisTool
 
 
 class CodeScanningAnalysis(GitHubModel):

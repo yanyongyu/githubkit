@@ -18,7 +18,7 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0065 import Team
+from .group_0066 import Team
 
 
 class EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems(GitHubModel):

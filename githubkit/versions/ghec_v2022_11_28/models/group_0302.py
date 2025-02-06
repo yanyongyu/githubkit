@@ -19,8 +19,8 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0070 import DependabotAlertSecurityVulnerability
-from .group_0071 import DependabotAlertSecurityAdvisory
+from .group_0071 import DependabotAlertSecurityVulnerability
+from .group_0072 import DependabotAlertSecurityAdvisory
 from .group_0303 import DependabotAlertPropDependency
 
 

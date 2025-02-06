@@ -13,7 +13,7 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0075 import NetworkConfiguration
+from .group_0076 import NetworkConfiguration
 
 
 class EnterprisesEnterpriseNetworkConfigurationsGetResponse200(GitHubModel):

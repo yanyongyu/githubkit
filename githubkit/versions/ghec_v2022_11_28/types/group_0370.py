@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0065 import TeamType
+from .group_0066 import TeamType
 
 
 class PullRequestReviewRequestType(TypedDict):

@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0058 import CodeSecurityConfigurationType
+from .group_0059 import CodeSecurityConfigurationType
 
 
 class CodeSecurityConfigurationForRepositoryType(TypedDict):

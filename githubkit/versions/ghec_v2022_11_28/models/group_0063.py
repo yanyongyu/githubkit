@@ -18,46 +18,43 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class GetConsumedLicenses(GitHubModel):
-    """Enterprise Consumed Licenses
+class EnterpriseSecurityAnalysisSettings(GitHubModel):
+    """Enterprise Security Analysis Settings"""
 
-    A breakdown of the licenses consumed by an enterprise.
-    """
-
-    total_seats_consumed: Missing[int] = Field(default=UNSET)
-    total_seats_purchased: Missing[int] = Field(default=UNSET)
-    users: Missing[list[GetConsumedLicensesPropUsersItems]] = Field(default=UNSET)
-
-
-class GetConsumedLicensesPropUsersItems(GitHubModel):
-    """GetConsumedLicensesPropUsersItems"""
-
-    github_com_login: Missing[str] = Field(default=UNSET)
-    github_com_name: Missing[Union[str, None]] = Field(default=UNSET)
-    enterprise_server_user_ids: Missing[list[str]] = Field(default=UNSET)
-    github_com_user: Missing[bool] = Field(default=UNSET)
-    enterprise_server_user: Missing[Union[bool, None]] = Field(default=UNSET)
-    visual_studio_subscription_user: Missing[bool] = Field(default=UNSET)
-    license_type: Missing[str] = Field(default=UNSET)
-    github_com_profile: Missing[Union[str, None]] = Field(default=UNSET)
-    github_com_member_roles: Missing[list[str]] = Field(default=UNSET)
-    github_com_enterprise_roles: Missing[list[str]] = Field(
-        default=UNSET, description="All enterprise roles for a user."
+    advanced_security_enabled_for_new_repositories: bool = Field(
+        description="Whether GitHub advanced security is automatically enabled for new repositories and repositories transferred to\nthis enterprise."
     )
-    github_com_verified_domain_emails: Missing[list[str]] = Field(default=UNSET)
-    github_com_saml_name_id: Missing[Union[str, None]] = Field(default=UNSET)
-    github_com_orgs_with_pending_invites: Missing[list[str]] = Field(default=UNSET)
-    github_com_two_factor_auth: Missing[Union[bool, None]] = Field(default=UNSET)
-    enterprise_server_emails: Missing[list[str]] = Field(default=UNSET)
-    visual_studio_license_status: Missing[Union[str, None]] = Field(default=UNSET)
-    visual_studio_subscription_email: Missing[Union[str, None]] = Field(default=UNSET)
-    total_user_accounts: Missing[int] = Field(default=UNSET)
+    advanced_security_enabled_for_new_user_namespace_repositories: Missing[bool] = (
+        Field(
+            default=UNSET,
+            description="Whether GitHub Advanced Security is automatically enabled for new user namespace repositories.",
+        )
+    )
+    dependabot_alerts_enabled_for_new_repositories: bool = Field(
+        description="Whether Dependabot alerts are automatically enabled for new repositories and repositories transferred to this\nenterprise."
+    )
+    secret_scanning_enabled_for_new_repositories: bool = Field(
+        description="Whether secret scanning is automatically enabled for new repositories and repositories transferred to this\nenterprise."
+    )
+    secret_scanning_push_protection_enabled_for_new_repositories: bool = Field(
+        description="Whether secret scanning push protection is automatically enabled for new repositories and repositories\ntransferred to this enterprise."
+    )
+    secret_scanning_push_protection_custom_link: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="An optional URL string to display to contributors who are blocked from pushing a secret.",
+    )
+    secret_scanning_non_provider_patterns_enabled_for_new_repositories: Missing[
+        bool
+    ] = Field(
+        default=UNSET,
+        description="Whether secret scanning of non-provider patterns is enabled for new repositories under this enterprise.",
+    )
+    secret_scanning_validity_checks_enabled: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether secret scanning automatic validity checks on supported partner tokens is enabled for all repositories under this enterprise.",
+    )
 
 
-model_rebuild(GetConsumedLicenses)
-model_rebuild(GetConsumedLicensesPropUsersItems)
+model_rebuild(EnterpriseSecurityAnalysisSettings)
 
-__all__ = (
-    "GetConsumedLicenses",
-    "GetConsumedLicensesPropUsersItems",
-)
+__all__ = ("EnterpriseSecurityAnalysisSettings",)
