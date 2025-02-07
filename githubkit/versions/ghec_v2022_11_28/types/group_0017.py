@@ -51,7 +51,7 @@ class AppPermissionsType(TypedDict):
     organization_custom_roles: NotRequired[Literal["read", "write"]]
     organization_custom_org_roles: NotRequired[Literal["read", "write"]]
     organization_custom_properties: NotRequired[Literal["read", "write", "admin"]]
-    organization_copilot_seat_management: NotRequired[Literal["write"]]
+    organization_copilot_seat_management: NotRequired[Literal["write", "read"]]
     organization_announcement_banners: NotRequired[Literal["read", "write"]]
     organization_events: NotRequired[Literal["read"]]
     organization_hooks: NotRequired[Literal["read", "write"]]

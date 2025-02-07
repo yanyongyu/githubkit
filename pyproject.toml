@@ -356,6 +356,12 @@ source = "https://raw.githubusercontent.com/github/rest-api-description/main/des
 #   { "$ref" = "#/components/schemas/organization" },
 # ] }
 
+# https://github.com/yanyongyu/githubkit/issues/189
+# app installation permissions missing "read"
+"/components/schemas/app-permissions/properties/organization_copilot_seat_management/enum" = { "<add>" = [
+  "read",
+] }
+
 # date-time search syntax should be string
 # https://docs.github.com/search-github/getting-started-with-searching-on-github/understanding-the-search-syntax#query-for-dates
 "/components/parameters/created/schema" = { format = "<unset>" }

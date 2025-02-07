@@ -140,7 +140,7 @@ class AppPermissions(GitHubModel):
         default=UNSET,
         description="The level of permission to grant the access token for custom property management.",
     )
-    organization_copilot_seat_management: Missing[Literal["write"]] = Field(
+    organization_copilot_seat_management: Missing[Literal["write", "read"]] = Field(
         default=UNSET,
         description="The level of permission to grant the access token for managing access to GitHub Copilot for members of an organization with a Copilot Business subscription. This property is in public preview and is subject to change.",
     )
