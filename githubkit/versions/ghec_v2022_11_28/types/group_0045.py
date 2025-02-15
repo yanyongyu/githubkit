@@ -22,6 +22,7 @@ class AnnouncementType(TypedDict):
 
     announcement: Union[str, None]
     expires_at: NotRequired[Union[datetime, None]]
+    user_dismissible: NotRequired[Union[bool, None]]
 
 
 __all__ = ("AnnouncementType",)

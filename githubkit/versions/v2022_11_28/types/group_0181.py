@@ -10,40 +10,23 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ArtifactType(TypedDict):
-    """Artifact
+class ProjectColumnType(TypedDict):
+    """Project Column
 
-    An artifact
+    Project columns contain cards of work.
     """
 
+    url: str
+    project_url: str
+    cards_url: str
     id: int
     node_id: str
     name: str
-    size_in_bytes: int
-    url: str
-    archive_download_url: str
-    expired: bool
-    created_at: Union[datetime, None]
-    expires_at: Union[datetime, None]
-    updated_at: Union[datetime, None]
-    workflow_run: NotRequired[Union[ArtifactPropWorkflowRunType, None]]
+    created_at: datetime
+    updated_at: datetime
 
 
-class ArtifactPropWorkflowRunType(TypedDict):
-    """ArtifactPropWorkflowRun"""
-
-    id: NotRequired[int]
-    repository_id: NotRequired[int]
-    head_repository_id: NotRequired[int]
-    head_branch: NotRequired[str]
-    head_sha: NotRequired[str]
-
-
-__all__ = (
-    "ArtifactPropWorkflowRunType",
-    "ArtifactType",
-)
+__all__ = ("ProjectColumnType",)

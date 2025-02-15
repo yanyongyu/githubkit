@@ -10,7 +10,6 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,61 +17,49 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0031 import SimpleRepository
-from .group_0232 import CodeScanningVariantAnalysisPropScannedRepositoriesItems
-from .group_0233 import CodeScanningVariantAnalysisPropSkippedRepositories
+from .group_0079 import CodeScanningAnalysisTool
 
 
-class CodeScanningVariantAnalysis(GitHubModel):
-    """Variant Analysis
+class CodeScanningAnalysis(GitHubModel):
+    """CodeScanningAnalysis"""
 
-    A run of a CodeQL query against one or more repositories.
-    """
-
-    id: int = Field(description="The ID of the variant analysis.")
-    controller_repo: SimpleRepository = Field(
-        title="Simple Repository", description="A GitHub repository."
+    ref: str = Field(
+        description="The Git reference, formatted as `refs/pull/<number>/merge`, `refs/pull/<number>/head`,\n`refs/heads/<branch name>` or simply `<branch name>`."
     )
-    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    query_language: Literal[
-        "cpp", "csharp", "go", "java", "javascript", "python", "ruby", "swift"
-    ] = Field(description="The language targeted by the CodeQL query")
-    query_pack_url: str = Field(description="The download url for the query pack.")
-    created_at: Missing[datetime] = Field(
+    commit_sha: str = Field(
+        min_length=40,
+        max_length=40,
+        pattern="^[0-9a-fA-F]+$",
+        description="The SHA of the commit to which the analysis you are uploading relates.",
+    )
+    analysis_key: str = Field(
+        description="Identifies the configuration under which the analysis was executed. For example, in GitHub Actions this includes the workflow filename and job name."
+    )
+    environment: str = Field(
+        description="Identifies the variable values associated with the environment in which this analysis was performed."
+    )
+    category: Missing[str] = Field(
         default=UNSET,
-        description="The date and time at which the variant analysis was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.",
+        description="Identifies the configuration under which the analysis was executed. Used to distinguish between multiple analyses for the same tool and commit, but performed on different languages or different parts of the code.",
     )
-    updated_at: Missing[datetime] = Field(
-        default=UNSET,
-        description="The date and time at which the variant analysis was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.",
+    error: str = Field()
+    created_at: datetime = Field(
+        description="The time that the analysis was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
     )
-    completed_at: Missing[Union[datetime, None]] = Field(
-        default=UNSET,
-        description="The date and time at which the variant analysis was completed, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ. Will be null if the variant analysis has not yet completed or this information is not available.",
+    results_count: int = Field(
+        description="The total number of results in the analysis."
     )
-    status: Literal["in_progress", "succeeded", "failed", "cancelled"] = Field()
-    actions_workflow_run_id: Missing[int] = Field(
-        default=UNSET,
-        description="The GitHub Actions workflow run used to execute this variant analysis. This is only available if the workflow run has started.",
+    rules_count: int = Field(
+        description="The total number of rules used in the analysis."
     )
-    failure_reason: Missing[
-        Literal["no_repos_queried", "actions_workflow_run_failed", "internal_error"]
-    ] = Field(
-        default=UNSET,
-        description="The reason for a failure of the variant analysis. This is only available if the variant analysis has failed.",
-    )
-    scanned_repositories: Missing[
-        list[CodeScanningVariantAnalysisPropScannedRepositoriesItems]
-    ] = Field(default=UNSET)
-    skipped_repositories: Missing[
-        CodeScanningVariantAnalysisPropSkippedRepositories
-    ] = Field(
-        default=UNSET,
-        description="Information about repositories that were skipped from processing. This information is only available to the user that initiated the variant analysis.",
-    )
+    id: int = Field(description="Unique identifier for this analysis.")
+    url: str = Field(description="The REST API URL of the analysis resource.")
+    sarif_id: str = Field(description="An identifier for the upload.")
+    tool: CodeScanningAnalysisTool = Field()
+    deletable: bool = Field()
+    warning: str = Field(description="Warning generated when processing the analysis")
 
 
-model_rebuild(CodeScanningVariantAnalysis)
+model_rebuild(CodeScanningAnalysis)
 
-__all__ = ("CodeScanningVariantAnalysis",)
+__all__ = ("CodeScanningAnalysis",)

@@ -108,6 +108,10 @@ class OrganizationSecretScanningAlert(GitHubModel):
         default=UNSET,
         description="Whether the detected secret was found in multiple repositories in the same organization or enterprise.",
     )
+    is_base64_encoded: Missing[Union[bool, None]] = Field(
+        default=UNSET,
+        description="A boolean value representing whether or not alert is base64 encoded",
+    )
 
 
 model_rebuild(OrganizationSecretScanningAlert)

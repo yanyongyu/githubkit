@@ -550,7 +550,7 @@ if TYPE_CHECKING:
         CopilotOrganizationDetails as CopilotOrganizationDetails,
     )
     from githubkit.versions.v2022_11_28.models import (
-        CopilotSeatBreakdown as CopilotSeatBreakdown,
+        CopilotOrganizationSeatBreakdown as CopilotOrganizationSeatBreakdown,
     )
     from githubkit.versions.v2022_11_28.models import (
         CopilotSeatDetails as CopilotSeatDetails,
@@ -2925,6 +2925,19 @@ if TYPE_CHECKING:
         ReviewRequestRemovedIssueEvent as ReviewRequestRemovedIssueEvent,
     )
     from githubkit.versions.v2022_11_28.models import Root as Root
+    from githubkit.versions.v2022_11_28.models import RulesetVersion as RulesetVersion
+    from githubkit.versions.v2022_11_28.models import (
+        RulesetVersionPropActor as RulesetVersionPropActor,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        RulesetVersionWithState as RulesetVersionWithState,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        RulesetVersionWithStateAllof1 as RulesetVersionWithStateAllof1,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        RulesetVersionWithStateAllof1PropState as RulesetVersionWithStateAllof1PropState,
+    )
     from githubkit.versions.v2022_11_28.models import RuleSuite as RuleSuite
     from githubkit.versions.v2022_11_28.models import (
         RuleSuitePropRuleEvaluationsItems as RuleSuitePropRuleEvaluationsItems,
@@ -3633,6 +3646,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookCodeScanningAlertClosedByUserPropAlert as WebhookCodeScanningAlertClosedByUserPropAlert,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookCodeScanningAlertClosedByUserPropAlertPropDismissalApprovedBy as WebhookCodeScanningAlertClosedByUserPropAlertPropDismissalApprovedBy,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookCodeScanningAlertClosedByUserPropAlertPropDismissedBy as WebhookCodeScanningAlertClosedByUserPropAlertPropDismissedBy,
@@ -9843,7 +9859,7 @@ else:
             "CodespacePropRuntimeConstraints",
             "CodespacesPublicKey",
             "CopilotOrganizationDetails",
-            "CopilotSeatBreakdown",
+            "CopilotOrganizationSeatBreakdown",
             "TeamSimple",
             "Team",
             "TeamPropPermissions",
@@ -9973,6 +9989,11 @@ else:
             "RuleSuite",
             "RuleSuitePropRuleEvaluationsItems",
             "RuleSuitePropRuleEvaluationsItemsPropRuleSource",
+            "RulesetVersion",
+            "RulesetVersionPropActor",
+            "RulesetVersionWithState",
+            "RulesetVersionWithStateAllof1",
+            "RulesetVersionWithStateAllof1PropState",
             "RepositoryAdvisoryCredit",
             "RepositoryAdvisory",
             "RepositoryAdvisoryPropIdentifiersItems",
@@ -10687,6 +10708,7 @@ else:
             "WebhookCodeScanningAlertClosedByUserPropAlertPropMostRecentInstancePropMessage",
             "WebhookCodeScanningAlertClosedByUserPropAlertPropRule",
             "WebhookCodeScanningAlertClosedByUserPropAlertPropTool",
+            "WebhookCodeScanningAlertClosedByUserPropAlertPropDismissalApprovedBy",
             "WebhookCodeScanningAlertCreated",
             "WebhookCodeScanningAlertCreatedPropAlert",
             "WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstance",

@@ -18,54 +18,40 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0196 import Deployment
-from .group_0327 import PullRequest
-from .group_0400 import SimpleInstallation
-from .group_0401 import OrganizationSimpleWebhooks
-from .group_0402 import RepositoryWebhooks
+from .group_0269 import DependabotAlert
+from .group_0404 import EnterpriseWebhooks
+from .group_0405 import SimpleInstallation
+from .group_0406 import OrganizationSimpleWebhooks
+from .group_0407 import RepositoryWebhooks
 
 
-class WebhookDeploymentProtectionRuleRequested(GitHubModel):
-    """deployment protection rule requested event"""
+class WebhookDependabotAlertReintroduced(GitHubModel):
+    """Dependabot alert reintroduced event"""
 
-    action: Literal["requested"] = Field()
-    environment: Missing[str] = Field(
+    action: Literal["reintroduced"] = Field()
+    alert: DependabotAlert = Field(description="A Dependabot alert.")
+    installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
-        description="The name of the environment that has the deployment protection rule.",
-    )
-    event: Missing[str] = Field(
-        default=UNSET,
-        description="The event that triggered the deployment protection rule.",
-    )
-    deployment_callback_url: Missing[str] = Field(
-        default=UNSET, description="The URL to review the deployment protection rule."
-    )
-    deployment: Missing[Deployment] = Field(
-        default=UNSET,
-        title="Deployment",
-        description="A request for a specific ref(branch,sha,tag) to be deployed",
-    )
-    pull_requests: Missing[list[PullRequest]] = Field(default=UNSET)
-    repository: Missing[RepositoryWebhooks] = Field(
-        default=UNSET,
-        title="Repository",
-        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+        title="Simple Installation",
+        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    installation: Missing[SimpleInstallation] = Field(
+    enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
-        title="Simple Installation",
-        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
+        title="Enterprise",
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."',
     )
-    sender: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
+    repository: RepositoryWebhooks = Field(
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
+    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookDeploymentProtectionRuleRequested)
+model_rebuild(WebhookDependabotAlertReintroduced)
 
-__all__ = ("WebhookDeploymentProtectionRuleRequested",)
+__all__ = ("WebhookDependabotAlertReintroduced",)

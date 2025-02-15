@@ -12,25 +12,21 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0221 import RateLimit
+from .group_0223 import RateLimitOverviewPropResources
 
 
-class OidcCustomSubRepo(GitHubModel):
-    """Actions OIDC subject customization for a repository
+class RateLimitOverview(GitHubModel):
+    """Rate Limit Overview
 
-    Actions OIDC subject customization for a repository
+    Rate Limit Overview
     """
 
-    use_default: bool = Field(
-        description="Whether to use the default template or not. If `true`, the `include_claim_keys` field is ignored."
-    )
-    include_claim_keys: Missing[list[str]] = Field(
-        default=UNSET,
-        description="Array of unique strings. Each claim key can only contain alphanumeric characters and underscores.",
-    )
+    resources: RateLimitOverviewPropResources = Field()
+    rate: RateLimit = Field(title="Rate Limit")
 
 
-model_rebuild(OidcCustomSubRepo)
+model_rebuild(RateLimitOverview)
 
-__all__ = ("OidcCustomSubRepo",)
+__all__ = ("RateLimitOverview",)

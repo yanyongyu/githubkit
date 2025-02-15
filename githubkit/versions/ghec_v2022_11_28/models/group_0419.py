@@ -9,42 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class Group(GitHubModel):
-    """Group"""
-
-    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:Group"]] = Field(
-        description="The URIs that are used to indicate the namespaces of the SCIM schemas."
-    )
-    external_id: str = Field(
-        alias="externalId",
-        description="A unique identifier for the resource as defined by the provisioning client.",
-    )
-    display_name: str = Field(
-        alias="displayName", description="A human-readable name for a security group."
-    )
-    members: list[GroupPropMembersItems] = Field(description="The group members.")
+from .group_0415 import Traffic
 
 
-class GroupPropMembersItems(GitHubModel):
-    """GroupPropMembersItems"""
+class ViewTraffic(GitHubModel):
+    """View Traffic
 
-    value: str = Field(description="The local unique identifier for the member")
-    display_name: str = Field(
-        alias="displayName", description="The display name associated with the member"
-    )
+    View Traffic
+    """
+
+    count: int = Field()
+    uniques: int = Field()
+    views: list[Traffic] = Field()
 
 
-model_rebuild(Group)
-model_rebuild(GroupPropMembersItems)
+model_rebuild(ViewTraffic)
 
-__all__ = (
-    "Group",
-    "GroupPropMembersItems",
-)
+__all__ = ("ViewTraffic",)

@@ -10,134 +10,148 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Literal, Union
+from typing import Any, Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0010 import Integration
-from .group_0020 import Repository
-from .group_0137 import Milestone
-from .group_0138 import ReactionRollup
-from .group_0429 import SearchResultTextMatchesItems
 
+class ScimUserList(GitHubModel):
+    """SCIM User List
 
-class IssueSearchResultItem(GitHubModel):
-    """Issue Search Result Item
-
-    Issue Search Result Item
+    SCIM User List
     """
 
-    url: str = Field()
-    repository_url: str = Field()
-    labels_url: str = Field()
-    comments_url: str = Field()
-    events_url: str = Field()
-    html_url: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    number: int = Field()
-    title: str = Field()
-    locked: bool = Field()
-    active_lock_reason: Missing[Union[str, None]] = Field(default=UNSET)
-    assignees: Missing[Union[list[SimpleUser], None]] = Field(default=UNSET)
-    user: Union[None, SimpleUser] = Field()
-    labels: list[IssueSearchResultItemPropLabelsItems] = Field()
-    sub_issues_summary: Missing[IssueSearchResultItemPropSubIssuesSummary] = Field(
-        default=UNSET, title="Sub-issues Summary"
+    schemas: list[str] = Field(
+        min_length=1 if PYDANTIC_V2 else None, description="SCIM schema used."
     )
-    state: str = Field()
-    state_reason: Missing[Union[str, None]] = Field(default=UNSET)
-    assignee: Union[None, SimpleUser] = Field()
-    milestone: Union[None, Milestone] = Field()
-    comments: int = Field()
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    closed_at: Union[datetime, None] = Field()
-    text_matches: Missing[list[SearchResultTextMatchesItems]] = Field(
-        default=UNSET, title="Search Result Text Matches"
+    total_results: int = Field(alias="totalResults")
+    items_per_page: int = Field(alias="itemsPerPage")
+    start_index: int = Field(alias="startIndex")
+    resources: list[ScimUser] = Field(alias="Resources")
+
+
+class ScimUser(GitHubModel):
+    """SCIM /Users
+
+    SCIM /Users provisioning endpoints
+    """
+
+    schemas: list[str] = Field(
+        min_length=1 if PYDANTIC_V2 else None, description="SCIM schema used."
     )
-    pull_request: Missing[IssueSearchResultItemPropPullRequest] = Field(default=UNSET)
-    body: Missing[str] = Field(default=UNSET)
-    score: float = Field()
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ] = Field(
-        title="author_association",
-        description="How the author is associated with the repository.",
+    id: str = Field(description="Unique identifier of an external identity")
+    external_id: Missing[Union[str, None]] = Field(
+        default=UNSET, alias="externalId", description="The ID of the User."
     )
-    draft: Missing[bool] = Field(default=UNSET)
-    repository: Missing[Repository] = Field(
-        default=UNSET, title="Repository", description="A repository on GitHub."
+    user_name: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        alias="userName",
+        description="Configured by the admin. Could be an email, login, or username",
     )
-    body_html: Missing[str] = Field(default=UNSET)
-    body_text: Missing[str] = Field(default=UNSET)
-    timeline_url: Missing[str] = Field(default=UNSET)
-    performed_via_github_app: Missing[Union[None, Integration, None]] = Field(
-        default=UNSET
+    display_name: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        alias="displayName",
+        description="The name of the user, suitable for display to end-users",
     )
-    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
+    name: Missing[ScimUserPropName] = Field(default=UNSET)
+    emails: list[ScimUserPropEmailsItems] = Field(description="user emails")
+    active: bool = Field(description="The active status of the User.")
+    meta: ScimUserPropMeta = Field()
+    organization_id: Missing[int] = Field(
+        default=UNSET, description="The ID of the organization."
+    )
+    operations: Missing[list[ScimUserPropOperationsItems]] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="Set of operations to be performed",
+    )
+    groups: Missing[list[ScimUserPropGroupsItems]] = Field(
+        default=UNSET, description="associated groups"
+    )
+    roles: Missing[list[ScimUserPropRolesItems]] = Field(default=UNSET)
 
 
-class IssueSearchResultItemPropLabelsItems(GitHubModel):
-    """IssueSearchResultItemPropLabelsItems"""
+class ScimUserPropName(GitHubModel):
+    """ScimUserPropName
 
-    id: Missing[int] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-    name: Missing[str] = Field(default=UNSET)
-    color: Missing[str] = Field(default=UNSET)
-    default: Missing[bool] = Field(default=UNSET)
-    description: Missing[Union[str, None]] = Field(default=UNSET)
+    Examples:
+        {'givenName': 'Jane', 'familyName': 'User'}
+    """
 
-
-class IssueSearchResultItemPropSubIssuesSummary(GitHubModel):
-    """Sub-issues Summary"""
-
-    total: int = Field()
-    completed: int = Field()
-    percent_completed: int = Field()
+    given_name: Missing[Union[str, None]] = Field(default=UNSET, alias="givenName")
+    family_name: Missing[Union[str, None]] = Field(default=UNSET, alias="familyName")
+    formatted: Missing[Union[str, None]] = Field(default=UNSET)
 
 
-class IssueSearchResultItemPropPullRequest(GitHubModel):
-    """IssueSearchResultItemPropPullRequest"""
+class ScimUserPropEmailsItems(GitHubModel):
+    """ScimUserPropEmailsItems"""
 
-    merged_at: Missing[Union[datetime, None]] = Field(default=UNSET)
-    diff_url: Union[str, None] = Field()
-    html_url: Union[str, None] = Field()
-    patch_url: Union[str, None] = Field()
-    url: Union[str, None] = Field()
+    value: str = Field()
+    primary: Missing[bool] = Field(default=UNSET)
+    type: Missing[str] = Field(default=UNSET)
 
 
-class SearchIssuesGetResponse200(GitHubModel):
-    """SearchIssuesGetResponse200"""
+class ScimUserPropMeta(GitHubModel):
+    """ScimUserPropMeta"""
 
-    total_count: int = Field()
-    incomplete_results: bool = Field()
-    items: list[IssueSearchResultItem] = Field()
+    resource_type: Missing[str] = Field(default=UNSET, alias="resourceType")
+    created: Missing[datetime] = Field(default=UNSET)
+    last_modified: Missing[datetime] = Field(default=UNSET, alias="lastModified")
+    location: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(IssueSearchResultItem)
-model_rebuild(IssueSearchResultItemPropLabelsItems)
-model_rebuild(IssueSearchResultItemPropSubIssuesSummary)
-model_rebuild(IssueSearchResultItemPropPullRequest)
-model_rebuild(SearchIssuesGetResponse200)
+class ScimUserPropGroupsItems(GitHubModel):
+    """ScimUserPropGroupsItems"""
+
+    value: Missing[str] = Field(default=UNSET)
+    display: Missing[str] = Field(default=UNSET)
+
+
+class ScimUserPropRolesItems(GitHubModel):
+    """ScimUserPropRolesItems"""
+
+    value: Missing[str] = Field(default=UNSET)
+    primary: Missing[bool] = Field(default=UNSET)
+    type: Missing[str] = Field(default=UNSET)
+    display: Missing[str] = Field(default=UNSET)
+
+
+class ScimUserPropOperationsItems(GitHubModel):
+    """ScimUserPropOperationsItems"""
+
+    op: Literal["add", "remove", "replace"] = Field()
+    path: Missing[str] = Field(default=UNSET)
+    value: Missing[
+        Union[str, ScimUserPropOperationsItemsPropValueOneof1, list[Any]]
+    ] = Field(default=UNSET)
+
+
+class ScimUserPropOperationsItemsPropValueOneof1(GitHubModel):
+    """ScimUserPropOperationsItemsPropValueOneof1"""
+
+
+model_rebuild(ScimUserList)
+model_rebuild(ScimUser)
+model_rebuild(ScimUserPropName)
+model_rebuild(ScimUserPropEmailsItems)
+model_rebuild(ScimUserPropMeta)
+model_rebuild(ScimUserPropGroupsItems)
+model_rebuild(ScimUserPropRolesItems)
+model_rebuild(ScimUserPropOperationsItems)
+model_rebuild(ScimUserPropOperationsItemsPropValueOneof1)
 
 __all__ = (
-    "IssueSearchResultItem",
-    "IssueSearchResultItemPropLabelsItems",
-    "IssueSearchResultItemPropPullRequest",
-    "IssueSearchResultItemPropSubIssuesSummary",
-    "SearchIssuesGetResponse200",
+    "ScimUser",
+    "ScimUserList",
+    "ScimUserPropEmailsItems",
+    "ScimUserPropGroupsItems",
+    "ScimUserPropMeta",
+    "ScimUserPropName",
+    "ScimUserPropOperationsItems",
+    "ScimUserPropOperationsItemsPropValueOneof1",
+    "ScimUserPropRolesItems",
 )

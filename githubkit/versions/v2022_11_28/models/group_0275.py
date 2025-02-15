@@ -11,31 +11,50 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0276 import EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems
+from .group_0273 import Metadata
 
 
-class EnvironmentPropProtectionRulesItemsAnyof1(GitHubModel):
-    """EnvironmentPropProtectionRulesItemsAnyof1"""
+class Manifest(GitHubModel):
+    """Manifest"""
 
-    id: int = Field()
-    node_id: str = Field()
-    prevent_self_review: Missing[bool] = Field(
+    name: str = Field(description="The name of the manifest.")
+    file: Missing[ManifestPropFile] = Field(default=UNSET)
+    metadata: Missing[Metadata] = Field(
         default=UNSET,
-        description="Whether deployments to this environment can be approved by the user who created the deployment.",
+        title="metadata",
+        description="User-defined metadata to store domain-specific information limited to 8 keys with scalar values.",
     )
-    type: str = Field()
-    reviewers: Missing[
-        list[EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems]
-    ] = Field(
-        default=UNSET,
-        description="The people or teams that may approve jobs that reference the environment. You can list up to six users or teams as reviewers. The reviewers must have at least read access to the repository. Only one of the required reviewers needs to approve the job for it to proceed.",
+    resolved: Missing[ManifestPropResolved] = Field(
+        default=UNSET, description="A collection of resolved package dependencies."
     )
 
 
-model_rebuild(EnvironmentPropProtectionRulesItemsAnyof1)
+class ManifestPropFile(GitHubModel):
+    """ManifestPropFile"""
 
-__all__ = ("EnvironmentPropProtectionRulesItemsAnyof1",)
+    source_location: Missing[str] = Field(
+        default=UNSET,
+        description="The path of the manifest file relative to the root of the Git repository.",
+    )
+
+
+class ManifestPropResolved(ExtraGitHubModel):
+    """ManifestPropResolved
+
+    A collection of resolved package dependencies.
+    """
+
+
+model_rebuild(Manifest)
+model_rebuild(ManifestPropFile)
+model_rebuild(ManifestPropResolved)
+
+__all__ = (
+    "Manifest",
+    "ManifestPropFile",
+    "ManifestPropResolved",
+)

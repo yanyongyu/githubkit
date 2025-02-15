@@ -12,18 +12,24 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class DependabotPublicKey(GitHubModel):
-    """DependabotPublicKey
+class CodespacesPublicKey(GitHubModel):
+    """CodespacesPublicKey
 
-    The public key used for setting Dependabot Secrets.
+    The public key used for setting Codespaces secrets.
     """
 
     key_id: str = Field(description="The identifier for the key.")
     key: str = Field(description="The Base64 encoded public key.")
+    id: Missing[int] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    title: Missing[str] = Field(default=UNSET)
+    created_at: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(DependabotPublicKey)
+model_rebuild(CodespacesPublicKey)
 
-__all__ = ("DependabotPublicKey",)
+__all__ = ("CodespacesPublicKey",)

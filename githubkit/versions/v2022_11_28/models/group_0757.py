@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,14 +18,15 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0399 import EnterpriseWebhooks
-from .group_0400 import SimpleInstallation
-from .group_0401 import OrganizationSimpleWebhooks
-from .group_0402 import RepositoryWebhooks
+from .group_0404 import EnterpriseWebhooks
+from .group_0405 import SimpleInstallation
+from .group_0406 import OrganizationSimpleWebhooks
+from .group_0407 import RepositoryWebhooks
+from .group_0452 import WebhooksSponsorship
 
 
-class WebhookStarCreated(GitHubModel):
-    """star created event"""
+class WebhookSponsorshipCreated(GitHubModel):
+    """sponsorship created event"""
 
     action: Literal["created"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
@@ -43,16 +44,15 @@ class WebhookStarCreated(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repository: RepositoryWebhooks = Field(
+    repository: Missing[RepositoryWebhooks] = Field(
+        default=UNSET,
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    starred_at: Union[str, None] = Field(
-        description="The time the star was created. This is a timestamp in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`. Will be `null` for the `deleted` action."
-    )
+    sponsorship: WebhooksSponsorship = Field()
 
 
-model_rebuild(WebhookStarCreated)
+model_rebuild(WebhookSponsorshipCreated)
 
-__all__ = ("WebhookStarCreated",)
+__all__ = ("WebhookSponsorshipCreated",)

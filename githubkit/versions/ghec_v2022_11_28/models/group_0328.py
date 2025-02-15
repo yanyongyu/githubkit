@@ -12,23 +12,50 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0251 import Verification
 
 
-class PorterAuthor(GitHubModel):
-    """Porter Author
+class GitTag(GitHubModel):
+    """Git Tag
 
-    Porter Author
+    Metadata for a Git tag
     """
 
-    id: int = Field()
-    remote_id: str = Field()
-    remote_name: str = Field()
+    node_id: str = Field()
+    tag: str = Field(description="Name of the tag")
+    sha: str = Field()
+    url: str = Field(description="URL for the tag")
+    message: str = Field(description="Message describing the purpose of the tag")
+    tagger: GitTagPropTagger = Field()
+    object_: GitTagPropObject = Field(alias="object")
+    verification: Missing[Verification] = Field(default=UNSET, title="Verification")
+
+
+class GitTagPropTagger(GitHubModel):
+    """GitTagPropTagger"""
+
+    date: str = Field()
     email: str = Field()
     name: str = Field()
+
+
+class GitTagPropObject(GitHubModel):
+    """GitTagPropObject"""
+
+    sha: str = Field()
+    type: str = Field()
     url: str = Field()
-    import_url: str = Field()
 
 
-model_rebuild(PorterAuthor)
+model_rebuild(GitTag)
+model_rebuild(GitTagPropTagger)
+model_rebuild(GitTagPropObject)
 
-__all__ = ("PorterAuthor",)
+__all__ = (
+    "GitTag",
+    "GitTagPropObject",
+    "GitTagPropTagger",
+)

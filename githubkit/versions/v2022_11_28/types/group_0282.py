@@ -9,23 +9,15 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class BlobType(TypedDict):
-    """Blob
+class DeploymentBranchPolicyNamePatternWithTypeType(TypedDict):
+    """Deployment branch and tag policy name pattern"""
 
-    Blob
-    """
-
-    content: str
-    encoding: str
-    url: str
-    sha: str
-    size: Union[int, None]
-    node_id: str
-    highlighted_content: NotRequired[str]
+    name: str
+    type: NotRequired[Literal["branch", "tag"]]
 
 
-__all__ = ("BlobType",)
+__all__ = ("DeploymentBranchPolicyNamePatternWithTypeType",)

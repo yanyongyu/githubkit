@@ -11,18 +11,21 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
-from .group_0076 import NetworkConfiguration
-
-
-class OrgsOrgSettingsNetworkConfigurationsGetResponse200(GitHubModel):
-    """OrgsOrgSettingsNetworkConfigurationsGetResponse200"""
-
-    total_count: int = Field()
-    network_configurations: list[NetworkConfiguration] = Field()
+from .group_0078 import CustomProperty
 
 
-model_rebuild(OrgsOrgSettingsNetworkConfigurationsGetResponse200)
+class OrgsOrgPropertiesSchemaPatchBody(GitHubModel):
+    """OrgsOrgPropertiesSchemaPatchBody"""
 
-__all__ = ("OrgsOrgSettingsNetworkConfigurationsGetResponse200",)
+    properties: list[CustomProperty] = Field(
+        max_length=100 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        description="The array of custom properties to create or update.",
+    )
+
+
+model_rebuild(OrgsOrgPropertiesSchemaPatchBody)
+
+__all__ = ("OrgsOrgPropertiesSchemaPatchBody",)

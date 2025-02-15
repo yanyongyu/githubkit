@@ -113,6 +113,8 @@ if TYPE_CHECKING:
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200,
         ReposOwnerRepoEnvironmentsGetResponse200,
         ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200,
+        RulesetVersion,
+        RulesetVersionWithState,
         RuleSuite,
         RuleSuitesItems,
         ShortBranch,
@@ -325,6 +327,8 @@ if TYPE_CHECKING:
         ReposOwnerRepoTopicsPutBodyType,
         ReposOwnerRepoTransferPostBodyType,
         ReposTemplateOwnerTemplateRepoGeneratePostBodyType,
+        RulesetVersionType,
+        RulesetVersionWithStateType,
         RuleSuitesItemsType,
         RuleSuiteType,
         ShortBranchType,
@@ -15886,6 +15890,132 @@ class ReposClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            error_models={
+                "404": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    def get_repo_ruleset_history(
+        self,
+        owner: str,
+        repo: str,
+        ruleset_id: int,
+        *,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+    ) -> Response[list[RulesetVersion], list[RulesetVersionType]]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/rules#get-repository-ruleset-history"""
+
+        from ..models import BasicError, RulesetVersion
+
+        url = f"/repos/{owner}/{repo}/rulesets/{ruleset_id}/history"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=list[RulesetVersion],
+            error_models={
+                "404": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    async def async_get_repo_ruleset_history(
+        self,
+        owner: str,
+        repo: str,
+        ruleset_id: int,
+        *,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+    ) -> Response[list[RulesetVersion], list[RulesetVersionType]]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/rules#get-repository-ruleset-history"""
+
+        from ..models import BasicError, RulesetVersion
+
+        url = f"/repos/{owner}/{repo}/rulesets/{ruleset_id}/history"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=list[RulesetVersion],
+            error_models={
+                "404": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    def get_repo_ruleset_version(
+        self,
+        owner: str,
+        repo: str,
+        ruleset_id: int,
+        version_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+    ) -> Response[RulesetVersionWithState, RulesetVersionWithStateType]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/rules#get-repository-ruleset-version"""
+
+        from ..models import BasicError, RulesetVersionWithState
+
+        url = f"/repos/{owner}/{repo}/rulesets/{ruleset_id}/history/{version_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=RulesetVersionWithState,
+            error_models={
+                "404": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    async def async_get_repo_ruleset_version(
+        self,
+        owner: str,
+        repo: str,
+        ruleset_id: int,
+        version_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+    ) -> Response[RulesetVersionWithState, RulesetVersionWithStateType]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/rules#get-repository-ruleset-version"""
+
+        from ..models import BasicError, RulesetVersionWithState
+
+        url = f"/repos/{owner}/{repo}/rulesets/{ruleset_id}/history/{version_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=RulesetVersionWithState,
             error_models={
                 "404": BasicError,
                 "500": BasicError,

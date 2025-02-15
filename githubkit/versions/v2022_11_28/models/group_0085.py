@@ -25,38 +25,36 @@ class CopilotOrganizationDetails(ExtraGitHubModel):
     Copilot Business or Copilot Enterprise subscription.
     """
 
-    seat_breakdown: CopilotSeatBreakdown = Field(
-        title="Copilot Business Seat Breakdown",
+    seat_breakdown: CopilotOrganizationSeatBreakdown = Field(
+        title="Copilot Seat Breakdown",
         description="The breakdown of Copilot Business seats for the organization.",
     )
-    public_code_suggestions: Literal["allow", "block", "unconfigured", "unknown"] = (
-        Field(
-            description="The organization policy for allowing or disallowing Copilot to make suggestions that match public code."
-        )
+    public_code_suggestions: Literal["allow", "block", "unconfigured"] = Field(
+        description="The organization policy for allowing or blocking suggestions matching public code (duplication detection filter)."
     )
     ide_chat: Missing[Literal["enabled", "disabled", "unconfigured"]] = Field(
         default=UNSET,
-        description="The organization policy for allowing or disallowing organization members to use Copilot Chat within their editor.",
+        description="The organization policy for allowing or disallowing Copilot Chat in the IDE.",
     )
     platform_chat: Missing[Literal["enabled", "disabled", "unconfigured"]] = Field(
         default=UNSET,
-        description="The organization policy for allowing or disallowing organization members to use Copilot features within github.com.",
+        description="The organization policy for allowing or disallowing Copilot features on GitHub.com.",
     )
     cli: Missing[Literal["enabled", "disabled", "unconfigured"]] = Field(
         default=UNSET,
-        description="The organization policy for allowing or disallowing organization members to use Copilot within their CLI.",
+        description="The organization policy for allowing or disallowing Copilot in the CLI.",
     )
     seat_management_setting: Literal[
         "assign_all", "assign_selected", "disabled", "unconfigured"
     ] = Field(description="The mode of assigning new seats.")
-    plan_type: Missing[Literal["business", "enterprise", "unknown"]] = Field(
+    plan_type: Missing[Literal["business", "enterprise"]] = Field(
         default=UNSET,
         description="The Copilot plan of the organization, or the parent enterprise, when applicable.",
     )
 
 
-class CopilotSeatBreakdown(GitHubModel):
-    """Copilot Business Seat Breakdown
+class CopilotOrganizationSeatBreakdown(GitHubModel):
+    """Copilot Seat Breakdown
 
     The breakdown of Copilot Business seats for the organization.
     """
@@ -74,7 +72,7 @@ class CopilotSeatBreakdown(GitHubModel):
     )
     pending_invitation: Missing[int] = Field(
         default=UNSET,
-        description="The number of seats that have been assigned to users that have not yet accepted an invitation to this organization.",
+        description="The number of users who have been invited to receive a Copilot seat through this organization.",
     )
     active_this_cycle: Missing[int] = Field(
         default=UNSET,
@@ -87,9 +85,9 @@ class CopilotSeatBreakdown(GitHubModel):
 
 
 model_rebuild(CopilotOrganizationDetails)
-model_rebuild(CopilotSeatBreakdown)
+model_rebuild(CopilotOrganizationSeatBreakdown)
 
 __all__ = (
     "CopilotOrganizationDetails",
-    "CopilotSeatBreakdown",
+    "CopilotOrganizationSeatBreakdown",
 )

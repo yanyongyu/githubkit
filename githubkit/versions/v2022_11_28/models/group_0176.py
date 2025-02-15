@@ -10,28 +10,31 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
+from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0003 import SimpleUser
 
-class ProjectColumn(GitHubModel):
-    """Project Column
 
-    Project columns contain cards of work.
+class Reaction(GitHubModel):
+    """Reaction
+
+    Reactions to conversations provide a way to help people express their feelings
+    more simply and effectively.
     """
 
-    url: str = Field()
-    project_url: str = Field()
-    cards_url: str = Field()
-    id: int = Field(description="The unique identifier of the project column")
+    id: int = Field()
     node_id: str = Field()
-    name: str = Field(description="Name of the project column")
+    user: Union[None, SimpleUser] = Field()
+    content: Literal[
+        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
+    ] = Field(description="The reaction to use")
     created_at: datetime = Field()
-    updated_at: datetime = Field()
 
 
-model_rebuild(ProjectColumn)
+model_rebuild(Reaction)
 
-__all__ = ("ProjectColumn",)
+__all__ = ("Reaction",)

@@ -9,28 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class DatadogConfig(GitHubModel):
-    """DatadogConfig
+class GoogleCloudConfig(GitHubModel):
+    """GoogleCloudConfig
 
-    Datadog Config for audit log streaming configuration.
+    Google Cloud Config for audit log streaming configuration.
     """
 
-    encrypted_token: str = Field(description="Encrypted Splunk token.")
-    site: Literal["US", "US3", "US5", "EU1", "US1-FED", "AP1"] = Field(
-        description="Datadog Site to use."
-    )
+    bucket: str = Field(description="Google Cloud Bucket Name")
     key_id: str = Field(
         description="Key ID obtained from the audit log stream key endpoint used to encrypt secrets."
     )
+    encrypted_json_credentials: str = Field()
 
 
-model_rebuild(DatadogConfig)
+model_rebuild(GoogleCloudConfig)
 
-__all__ = ("DatadogConfig",)
+__all__ = ("GoogleCloudConfig",)

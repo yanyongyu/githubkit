@@ -61,6 +61,8 @@ if TYPE_CHECKING:
         OrgsOrgOutsideCollaboratorsUsernamePutResponse202,
         PushRuleBypassRequest,
         RepositoryFineGrainedPermission,
+        RulesetVersion,
+        RulesetVersionWithState,
         SimpleUser,
         Team,
         TeamRoleAssignment,
@@ -124,6 +126,8 @@ if TYPE_CHECKING:
         OrgsOrgSecurityProductEnablementPostBodyType,
         PushRuleBypassRequestType,
         RepositoryFineGrainedPermissionType,
+        RulesetVersionType,
+        RulesetVersionWithStateType,
         SimpleUserType,
         TeamRoleAssignmentType,
         TeamSimpleType,
@@ -659,6 +663,7 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         announcement: Union[str, None],
         expires_at: Missing[Union[datetime, None]] = UNSET,
+        user_dismissible: Missing[Union[bool, None]] = UNSET,
     ) -> Response[AnnouncementBanner, AnnouncementBannerType]: ...
 
     def set_announcement_banner_for_org(
@@ -712,6 +717,7 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         announcement: Union[str, None],
         expires_at: Missing[Union[datetime, None]] = UNSET,
+        user_dismissible: Missing[Union[bool, None]] = UNSET,
     ) -> Response[AnnouncementBanner, AnnouncementBannerType]: ...
 
     async def async_set_announcement_banner_for_org(
@@ -7397,6 +7403,128 @@ class OrgsClient:
             url,
             headers=exclude_unset(headers),
             response_model=list[RepositoryFineGrainedPermission],
+        )
+
+    def get_org_ruleset_history(
+        self,
+        org: str,
+        ruleset_id: int,
+        *,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+    ) -> Response[list[RulesetVersion], list[RulesetVersionType]]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/rules#get-organization-ruleset-history"""
+
+        from ..models import BasicError, RulesetVersion
+
+        url = f"/orgs/{org}/rulesets/{ruleset_id}/history"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=list[RulesetVersion],
+            error_models={
+                "404": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    async def async_get_org_ruleset_history(
+        self,
+        org: str,
+        ruleset_id: int,
+        *,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+    ) -> Response[list[RulesetVersion], list[RulesetVersionType]]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/rules#get-organization-ruleset-history"""
+
+        from ..models import BasicError, RulesetVersion
+
+        url = f"/orgs/{org}/rulesets/{ruleset_id}/history"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=list[RulesetVersion],
+            error_models={
+                "404": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    def get_org_ruleset_version(
+        self,
+        org: str,
+        ruleset_id: int,
+        version_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+    ) -> Response[RulesetVersionWithState, RulesetVersionWithStateType]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/rules#get-organization-ruleset-version"""
+
+        from ..models import BasicError, RulesetVersionWithState
+
+        url = f"/orgs/{org}/rulesets/{ruleset_id}/history/{version_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=RulesetVersionWithState,
+            error_models={
+                "404": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    async def async_get_org_ruleset_version(
+        self,
+        org: str,
+        ruleset_id: int,
+        version_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+    ) -> Response[RulesetVersionWithState, RulesetVersionWithStateType]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/rules#get-organization-ruleset-version"""
+
+        from ..models import BasicError, RulesetVersionWithState
+
+        url = f"/orgs/{org}/rulesets/{ruleset_id}/history/{version_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=RulesetVersionWithState,
+            error_models={
+                "404": BasicError,
+                "500": BasicError,
+            },
         )
 
     def list_security_manager_teams(

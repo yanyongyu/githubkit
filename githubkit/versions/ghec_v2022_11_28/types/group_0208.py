@@ -9,33 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0138 import ReactionRollupType
 
 
-class TeamDiscussionCommentType(TypedDict):
-    """Team Discussion Comment
+class RepositoryAdvisoryCreditType(TypedDict):
+    """RepositoryAdvisoryCredit
 
-    A reply to a discussion within a team.
+    A credit given to a user for a repository security advisory.
     """
 
-    author: Union[None, SimpleUserType]
-    body: str
-    body_html: str
-    body_version: str
-    created_at: datetime
-    last_edited_at: Union[datetime, None]
-    discussion_url: str
-    html_url: str
-    node_id: str
-    number: int
-    updated_at: datetime
-    url: str
-    reactions: NotRequired[ReactionRollupType]
+    user: SimpleUserType
+    type: Literal[
+        "analyst",
+        "finder",
+        "reporter",
+        "coordinator",
+        "remediation_developer",
+        "remediation_reviewer",
+        "remediation_verifier",
+        "tool",
+        "sponsor",
+        "other",
+    ]
+    state: Literal["accepted", "declined", "pending"]
 
 
-__all__ = ("TeamDiscussionCommentType",)
+__all__ = ("RepositoryAdvisoryCreditType",)

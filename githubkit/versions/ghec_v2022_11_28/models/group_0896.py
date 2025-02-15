@@ -9,98 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0080 import RepositoryRulesetBypassActor
-from .group_0091 import EnterpriseRulesetConditionsOneof0
-from .group_0092 import EnterpriseRulesetConditionsOneof1
-from .group_0093 import EnterpriseRulesetConditionsOneof2
-from .group_0094 import EnterpriseRulesetConditionsOneof3
-from .group_0095 import (
-    RepositoryRuleCreation,
-    RepositoryRuleDeletion,
-    RepositoryRuleNonFastForward,
-    RepositoryRuleOneof15,
-    RepositoryRuleOneof17,
-    RepositoryRuleRequiredSignatures,
-)
-from .group_0096 import RepositoryRuleUpdate
-from .group_0098 import RepositoryRuleOneof16, RepositoryRuleRequiredLinearHistory
-from .group_0099 import RepositoryRuleMergeQueue
-from .group_0101 import RepositoryRuleRequiredDeployments
-from .group_0104 import RepositoryRulePullRequest
-from .group_0106 import RepositoryRuleRequiredStatusChecks
-from .group_0108 import RepositoryRuleCommitMessagePattern
-from .group_0110 import RepositoryRuleCommitAuthorEmailPattern
-from .group_0112 import RepositoryRuleCommitterEmailPattern
-from .group_0114 import RepositoryRuleBranchNamePattern
-from .group_0116 import RepositoryRuleTagNamePattern
-from .group_0119 import RepositoryRuleWorkflows
-from .group_0121 import RepositoryRuleCodeScanning
-from .group_0123 import RepositoryRuleOneof18
+from .group_0067 import CopilotSeatDetails
 
 
-class EnterprisesEnterpriseRulesetsPostBody(GitHubModel):
-    """EnterprisesEnterpriseRulesetsPostBody"""
+class EnterprisesEnterpriseCopilotBillingSeatsGetResponse200(GitHubModel):
+    """EnterprisesEnterpriseCopilotBillingSeatsGetResponse200"""
 
-    name: str = Field(description="The name of the ruleset.")
-    target: Missing[Literal["branch", "tag", "push", "repository"]] = Field(
-        default=UNSET, description="The target of the ruleset"
-    )
-    enforcement: Literal["disabled", "active", "evaluate"] = Field(
-        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page. `evaluate` is not available for the `repository` target."
-    )
-    bypass_actors: Missing[list[RepositoryRulesetBypassActor]] = Field(
+    total_seats: Missing[int] = Field(
         default=UNSET,
-        description="The actors that can bypass the rules in this ruleset",
+        description="The total number of Copilot seats the enterprise is being billed for. Users with access through multiple organizations or enterprise teams are only counted once.",
     )
-    conditions: Missing[
-        Union[
-            EnterpriseRulesetConditionsOneof0,
-            EnterpriseRulesetConditionsOneof1,
-            EnterpriseRulesetConditionsOneof2,
-            EnterpriseRulesetConditionsOneof3,
-        ]
-    ] = Field(
-        default=UNSET,
-        title="Enterprise ruleset conditions",
-        description="Conditions for an enterprise ruleset. The conditions object should contain either the `organization_id` or `organization_name` property and the `repository_name` or `repository_property` property. For branch and tag rulesets, the conditions object should also contain the `ref_name` property.",
-    )
-    rules: Missing[
-        list[
-            Union[
-                RepositoryRuleCreation,
-                RepositoryRuleUpdate,
-                RepositoryRuleDeletion,
-                RepositoryRuleRequiredLinearHistory,
-                RepositoryRuleMergeQueue,
-                RepositoryRuleRequiredDeployments,
-                RepositoryRuleRequiredSignatures,
-                RepositoryRulePullRequest,
-                RepositoryRuleRequiredStatusChecks,
-                RepositoryRuleNonFastForward,
-                RepositoryRuleCommitMessagePattern,
-                RepositoryRuleCommitAuthorEmailPattern,
-                RepositoryRuleCommitterEmailPattern,
-                RepositoryRuleBranchNamePattern,
-                RepositoryRuleTagNamePattern,
-                RepositoryRuleOneof15,
-                RepositoryRuleOneof16,
-                RepositoryRuleOneof17,
-                RepositoryRuleOneof18,
-                RepositoryRuleWorkflows,
-                RepositoryRuleCodeScanning,
-            ]
-        ]
-    ] = Field(default=UNSET, description="An array of rules within the ruleset.")
+    seats: Missing[list[CopilotSeatDetails]] = Field(default=UNSET)
 
 
-model_rebuild(EnterprisesEnterpriseRulesetsPostBody)
+model_rebuild(EnterprisesEnterpriseCopilotBillingSeatsGetResponse200)
 
-__all__ = ("EnterprisesEnterpriseRulesetsPostBody",)
+__all__ = ("EnterprisesEnterpriseCopilotBillingSeatsGetResponse200",)

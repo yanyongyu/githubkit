@@ -9,19 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class TeamMembershipType(TypedDict):
-    """Team Membership
+class NetworkSettingsType(TypedDict):
+    """Hosted compute network settings resource
 
-    Team Membership
+    A hosted compute network settings resource.
     """
 
-    url: str
-    role: Literal["member", "maintainer"]
-    state: Literal["active", "pending"]
+    id: str
+    network_configuration_id: NotRequired[str]
+    name: str
+    subnet_id: str
+    region: str
 
 
-__all__ = ("TeamMembershipType",)
+__all__ = ("NetworkSettingsType",)

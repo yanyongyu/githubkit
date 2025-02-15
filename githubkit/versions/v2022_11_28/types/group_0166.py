@@ -12,12 +12,11 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class CombinedBillingUsageType(TypedDict):
-    """CombinedBillingUsage"""
+class RulesetVersionWithStateAllof1PropStateType(TypedDict):
+    """RulesetVersionWithStateAllof1PropState
 
-    days_left_in_billing_cycle: int
-    estimated_paid_storage_for_month: int
-    estimated_storage_for_month: int
+    The state of the ruleset version
+    """
 
 
-__all__ = ("CombinedBillingUsageType",)
+__all__ = ("RulesetVersionWithStateAllof1PropStateType",)

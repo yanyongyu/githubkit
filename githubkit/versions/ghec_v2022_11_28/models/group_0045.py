@@ -32,6 +32,10 @@ class Announcement(GitHubModel):
         default=UNSET,
         description="The time at which the announcement expires. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`. To set an announcement that never expires, omit this parameter, set it to `null`, or set it to an empty string.",
     )
+    user_dismissible: Missing[Union[bool, None]] = Field(
+        default=UNSET,
+        description="Whether an announcement can be dismissed by the user.",
+    )
 
 
 model_rebuild(Announcement)

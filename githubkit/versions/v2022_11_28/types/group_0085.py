@@ -20,19 +20,19 @@ class CopilotOrganizationDetailsType(TypedDict):
     Copilot Business or Copilot Enterprise subscription.
     """
 
-    seat_breakdown: CopilotSeatBreakdownType
-    public_code_suggestions: Literal["allow", "block", "unconfigured", "unknown"]
+    seat_breakdown: CopilotOrganizationSeatBreakdownType
+    public_code_suggestions: Literal["allow", "block", "unconfigured"]
     ide_chat: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
     platform_chat: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
     cli: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
     seat_management_setting: Literal[
         "assign_all", "assign_selected", "disabled", "unconfigured"
     ]
-    plan_type: NotRequired[Literal["business", "enterprise", "unknown"]]
+    plan_type: NotRequired[Literal["business", "enterprise"]]
 
 
-class CopilotSeatBreakdownType(TypedDict):
-    """Copilot Business Seat Breakdown
+class CopilotOrganizationSeatBreakdownType(TypedDict):
+    """Copilot Seat Breakdown
 
     The breakdown of Copilot Business seats for the organization.
     """
@@ -47,5 +47,5 @@ class CopilotSeatBreakdownType(TypedDict):
 
 __all__ = (
     "CopilotOrganizationDetailsType",
-    "CopilotSeatBreakdownType",
+    "CopilotOrganizationSeatBreakdownType",
 )

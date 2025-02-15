@@ -9,19 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, model_rebuild
 
 
-class ApplicationsClientIdTokenPostBody(GitHubModel):
-    """ApplicationsClientIdTokenPostBody"""
+class AppManifestsCodeConversionsPostResponse201Allof1(ExtraGitHubModel):
+    """AppManifestsCodeConversionsPostResponse201Allof1"""
 
-    access_token: str = Field(
-        description="The access_token of the OAuth or GitHub application."
-    )
+    client_id: str = Field()
+    client_secret: str = Field()
+    webhook_secret: Union[str, None] = Field()
+    pem: str = Field()
 
 
-model_rebuild(ApplicationsClientIdTokenPostBody)
+model_rebuild(AppManifestsCodeConversionsPostResponse201Allof1)
 
-__all__ = ("ApplicationsClientIdTokenPostBody",)
+__all__ = ("AppManifestsCodeConversionsPostResponse201Allof1",)

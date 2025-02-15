@@ -9,95 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0139 import Issue
-from .group_0140 import IssueComment
 
+class BillingUsageReport(GitHubModel):
+    """BillingUsageReport"""
 
-class EventPropPayload(GitHubModel):
-    """EventPropPayload"""
-
-    action: Missing[str] = Field(default=UNSET)
-    issue: Missing[Issue] = Field(
-        default=UNSET,
-        title="Issue",
-        description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
+    usage_items: Missing[list[BillingUsageReportPropUsageItemsItems]] = Field(
+        default=UNSET, alias="usageItems"
     )
-    comment: Missing[IssueComment] = Field(
-        default=UNSET,
-        title="Issue Comment",
-        description="Comments provide a way for people to collaborate on an issue.",
+
+
+class BillingUsageReportPropUsageItemsItems(GitHubModel):
+    """BillingUsageReportPropUsageItemsItems"""
+
+    date: str = Field(description="Date of the usage line item.")
+    product: str = Field(description="Product name.")
+    sku: str = Field(description="SKU name.")
+    quantity: int = Field(description="Quantity of the usage line item.")
+    unit_type: str = Field(
+        alias="unitType", description="Unit type of the usage line item."
     )
-    pages: Missing[list[EventPropPayloadPropPagesItems]] = Field(default=UNSET)
+    price_per_unit: float = Field(
+        alias="pricePerUnit", description="Price per unit of the usage line item."
+    )
+    gross_amount: float = Field(
+        alias="grossAmount", description="Gross amount of the usage line item."
+    )
+    discount_amount: float = Field(
+        alias="discountAmount", description="Discount amount of the usage line item."
+    )
+    net_amount: float = Field(
+        alias="netAmount", description="Net amount of the usage line item."
+    )
+    organization_name: str = Field(
+        alias="organizationName", description="Name of the organization."
+    )
+    repository_name: Missing[str] = Field(
+        default=UNSET, alias="repositoryName", description="Name of the repository."
+    )
 
 
-class EventPropPayloadPropPagesItems(GitHubModel):
-    """EventPropPayloadPropPagesItems"""
-
-    page_name: Missing[str] = Field(default=UNSET)
-    title: Missing[str] = Field(default=UNSET)
-    summary: Missing[Union[str, None]] = Field(default=UNSET)
-    action: Missing[str] = Field(default=UNSET)
-    sha: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-
-
-class Event(GitHubModel):
-    """Event
-
-    Event
-    """
-
-    id: str = Field()
-    type: Union[str, None] = Field()
-    actor: Actor = Field(title="Actor", description="Actor")
-    repo: EventPropRepo = Field()
-    org: Missing[Actor] = Field(default=UNSET, title="Actor", description="Actor")
-    payload: EventPropPayload = Field()
-    public: bool = Field()
-    created_at: Union[datetime, None] = Field()
-
-
-class Actor(GitHubModel):
-    """Actor
-
-    Actor
-    """
-
-    id: int = Field()
-    login: str = Field()
-    display_login: Missing[str] = Field(default=UNSET)
-    gravatar_id: Union[str, None] = Field()
-    url: str = Field()
-    avatar_url: str = Field()
-
-
-class EventPropRepo(GitHubModel):
-    """EventPropRepo"""
-
-    id: int = Field()
-    name: str = Field()
-    url: str = Field()
-
-
-model_rebuild(EventPropPayload)
-model_rebuild(EventPropPayloadPropPagesItems)
-model_rebuild(Event)
-model_rebuild(Actor)
-model_rebuild(EventPropRepo)
+model_rebuild(BillingUsageReport)
+model_rebuild(BillingUsageReportPropUsageItemsItems)
 
 __all__ = (
-    "Actor",
-    "Event",
-    "EventPropPayload",
-    "EventPropPayloadPropPagesItems",
-    "EventPropRepo",
+    "BillingUsageReport",
+    "BillingUsageReportPropUsageItemsItems",
 )

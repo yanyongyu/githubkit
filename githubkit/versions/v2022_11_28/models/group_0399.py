@@ -9,43 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class EnterpriseWebhooks(GitHubModel):
-    """Enterprise
+class SocialAccount(GitHubModel):
+    """Social account
 
-    An enterprise on GitHub. Webhook payloads contain the `enterprise` property when
-    the webhook is configured
-    on an enterprise account or an organization that's part of an enterprise
-    account. For more information,
-    see "[About enterprise accounts](https://docs.github.com/admin/overview/about-
-    enterprise-accounts)."
+    Social media account
     """
 
-    description: Missing[Union[str, None]] = Field(
-        default=UNSET, description="A short description of the enterprise."
-    )
-    html_url: str = Field()
-    website_url: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The enterprise's website URL."
-    )
-    id: int = Field(description="Unique identifier of the enterprise")
-    node_id: str = Field()
-    name: str = Field(description="The name of the enterprise.")
-    slug: str = Field(description="The slug url identifier for the enterprise.")
-    created_at: Union[datetime, None] = Field()
-    updated_at: Union[datetime, None] = Field()
-    avatar_url: str = Field()
+    provider: str = Field()
+    url: str = Field()
 
 
-model_rebuild(EnterpriseWebhooks)
+model_rebuild(SocialAccount)
 
-__all__ = ("EnterpriseWebhooks",)
+__all__ = ("SocialAccount",)

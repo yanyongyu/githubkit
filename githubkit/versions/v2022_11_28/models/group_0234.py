@@ -9,54 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from datetime import datetime
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0031 import SimpleRepository
 
 
-class CodeScanningVariantAnalysisRepoTask(GitHubModel):
-    """CodeScanningVariantAnalysisRepoTask"""
+class CodeScanningVariantAnalysisRepository(GitHubModel):
+    """Repository Identifier
 
-    repository: SimpleRepository = Field(
-        title="Simple Repository", description="A GitHub repository."
+    Repository Identifier
+    """
+
+    id: int = Field(description="A unique identifier of the repository.")
+    name: str = Field(description="The name of the repository.")
+    full_name: str = Field(
+        description="The full, globally unique, name of the repository."
     )
-    analysis_status: Literal[
-        "pending", "in_progress", "succeeded", "failed", "canceled", "timed_out"
-    ] = Field(
-        description="The new status of the CodeQL variant analysis repository task."
-    )
-    artifact_size_in_bytes: Missing[int] = Field(
-        default=UNSET,
-        description="The size of the artifact. This is only available for successful analyses.",
-    )
-    result_count: Missing[int] = Field(
-        default=UNSET,
-        description="The number of results in the case of a successful analysis. This is only available for successful analyses.",
-    )
-    failure_message: Missing[str] = Field(
-        default=UNSET,
-        description="The reason of the failure of this repo task. This is only available if the repository task has failed.",
-    )
-    database_commit_sha: Missing[str] = Field(
-        default=UNSET,
-        description="The SHA of the commit the CodeQL database was built against. This is only available for successful analyses.",
-    )
-    source_location_prefix: Missing[str] = Field(
-        default=UNSET,
-        description="The source location prefix to use. This is only available for successful analyses.",
-    )
-    artifact_url: Missing[str] = Field(
-        default=UNSET,
-        description="The URL of the artifact. This is only available for successful analyses.",
-    )
+    private: bool = Field(description="Whether the repository is private.")
+    stargazers_count: int = Field()
+    updated_at: Union[datetime, None] = Field()
 
 
-model_rebuild(CodeScanningVariantAnalysisRepoTask)
+model_rebuild(CodeScanningVariantAnalysisRepository)
 
-__all__ = ("CodeScanningVariantAnalysisRepoTask",)
+__all__ = ("CodeScanningVariantAnalysisRepository",)

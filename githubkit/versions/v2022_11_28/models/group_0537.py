@@ -9,19 +9,75 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class WebhookIssueCommentCreatedPropIssueAllof0PropSubIssuesSummary(GitHubModel):
-    """Sub-issues Summary"""
+class WebhookIssueCommentCreatedPropIssueAllof0PropAssignee(GitHubModel):
+    """User"""
 
-    total: int = Field()
-    completed: int = Field()
-    percent_completed: int = Field()
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization", "Mannequin"]] = Field(
+        default=UNSET
+    )
+    url: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhookIssueCommentCreatedPropIssueAllof0PropSubIssuesSummary)
+class WebhookIssueCommentCreatedPropIssueAllof0PropLabelsItems(GitHubModel):
+    """Label"""
 
-__all__ = ("WebhookIssueCommentCreatedPropIssueAllof0PropSubIssuesSummary",)
+    color: str = Field(
+        description="6-character hex code, without the leading #, identifying the color"
+    )
+    default: bool = Field()
+    description: Union[str, None] = Field()
+    id: int = Field()
+    name: str = Field(description="The name of the label.")
+    node_id: str = Field()
+    url: str = Field(description="URL for the label")
+
+
+class WebhookIssueCommentCreatedPropIssueAllof0PropPullRequest(GitHubModel):
+    """WebhookIssueCommentCreatedPropIssueAllof0PropPullRequest"""
+
+    diff_url: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    merged_at: Missing[Union[datetime, None]] = Field(default=UNSET)
+    patch_url: Missing[str] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(WebhookIssueCommentCreatedPropIssueAllof0PropAssignee)
+model_rebuild(WebhookIssueCommentCreatedPropIssueAllof0PropLabelsItems)
+model_rebuild(WebhookIssueCommentCreatedPropIssueAllof0PropPullRequest)
+
+__all__ = (
+    "WebhookIssueCommentCreatedPropIssueAllof0PropAssignee",
+    "WebhookIssueCommentCreatedPropIssueAllof0PropLabelsItems",
+    "WebhookIssueCommentCreatedPropIssueAllof0PropPullRequest",
+)

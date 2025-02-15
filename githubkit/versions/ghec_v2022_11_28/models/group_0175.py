@@ -14,16 +14,16 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class RepositoryFineGrainedPermission(GitHubModel):
-    """Repository Fine-Grained Permission
+class DependabotPublicKey(GitHubModel):
+    """DependabotPublicKey
 
-    A fine-grained permission that protects repository resources.
+    The public key used for setting Dependabot Secrets.
     """
 
-    name: str = Field()
-    description: str = Field()
+    key_id: str = Field(description="The identifier for the key.")
+    key: str = Field(description="The Base64 encoded public key.")
 
 
-model_rebuild(RepositoryFineGrainedPermission)
+model_rebuild(DependabotPublicKey)
 
-__all__ = ("RepositoryFineGrainedPermission",)
+__all__ = ("DependabotPublicKey",)

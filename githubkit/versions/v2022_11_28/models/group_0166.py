@@ -9,25 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from pydantic import Field
-
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class CombinedBillingUsage(GitHubModel):
-    """CombinedBillingUsage"""
+class RulesetVersionWithStateAllof1PropState(GitHubModel):
+    """RulesetVersionWithStateAllof1PropState
 
-    days_left_in_billing_cycle: int = Field(
-        description="Numbers of days left in billing cycle."
-    )
-    estimated_paid_storage_for_month: int = Field(
-        description="Estimated storage space (GB) used in billing cycle."
-    )
-    estimated_storage_for_month: int = Field(
-        description="Estimated sum of free and paid storage space (GB) used in billing cycle."
-    )
+    The state of the ruleset version
+    """
 
 
-model_rebuild(CombinedBillingUsage)
+model_rebuild(RulesetVersionWithStateAllof1PropState)
 
-__all__ = ("CombinedBillingUsage",)
+__all__ = ("RulesetVersionWithStateAllof1PropState",)

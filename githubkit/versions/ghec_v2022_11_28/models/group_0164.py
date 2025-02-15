@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -18,157 +18,131 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0155 import MinimalRepository
-from .group_0163 import CodespaceMachine
 
+class OrganizationFull(GitHubModel):
+    """Organization Full
 
-class Codespace(GitHubModel):
-    """Codespace
+    Prevents users in the organization from using insecure methods of two-factor
+    authentication to fulfill a two-factor requirement.
+    Removes non-compliant outside collaborators from the organization and its
+    repositories.
 
-    A codespace.
+    GitHub currently defines SMS as an insecure method of two-factor authentication.
+
+    If your users are managed by the enterprise this policy will not affect them.
+    The first admin account of the enterprise will still be affected.
     """
 
+    login: str = Field()
     id: int = Field()
-    name: str = Field(description="Automatically generated name of this codespace.")
-    display_name: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Display name for this codespace."
-    )
-    environment_id: Union[str, None] = Field(
-        description="UUID identifying this codespace's environment."
-    )
-    owner: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    billable_owner: SimpleUser = Field(
-        title="Simple User", description="A GitHub user."
-    )
-    repository: MinimalRepository = Field(
-        title="Minimal Repository", description="Minimal Repository"
-    )
-    machine: Union[None, CodespaceMachine] = Field()
-    devcontainer_path: Missing[Union[str, None]] = Field(
+    node_id: str = Field()
+    url: str = Field()
+    repos_url: str = Field()
+    events_url: str = Field()
+    hooks_url: str = Field()
+    issues_url: str = Field()
+    members_url: str = Field()
+    public_members_url: str = Field()
+    avatar_url: str = Field()
+    description: Union[str, None] = Field()
+    name: Missing[Union[str, None]] = Field(default=UNSET)
+    company: Missing[Union[str, None]] = Field(default=UNSET)
+    blog: Missing[Union[str, None]] = Field(default=UNSET)
+    location: Missing[Union[str, None]] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    twitter_username: Missing[Union[str, None]] = Field(default=UNSET)
+    is_verified: Missing[bool] = Field(default=UNSET)
+    has_organization_projects: bool = Field()
+    has_repository_projects: bool = Field()
+    public_repos: int = Field()
+    public_gists: int = Field()
+    followers: int = Field()
+    following: int = Field()
+    html_url: str = Field()
+    type: str = Field()
+    total_private_repos: Missing[int] = Field(default=UNSET)
+    owned_private_repos: Missing[int] = Field(default=UNSET)
+    private_gists: Missing[Union[int, None]] = Field(default=UNSET)
+    disk_usage: Missing[Union[int, None]] = Field(default=UNSET)
+    collaborators: Missing[Union[int, None]] = Field(
         default=UNSET,
-        description="Path to devcontainer.json from repo root used to create Codespace.",
+        description="The number of collaborators on private repositories.\n\nThis field may be null if the number of private repositories is over 50,000.",
     )
-    prebuild: Union[bool, None] = Field(
-        description="Whether the codespace was created from a prebuild."
+    billing_email: Missing[Union[str, None]] = Field(default=UNSET)
+    plan: Missing[OrganizationFullPropPlan] = Field(default=UNSET)
+    default_repository_permission: Missing[Union[str, None]] = Field(default=UNSET)
+    members_can_create_repositories: Missing[Union[bool, None]] = Field(default=UNSET)
+    two_factor_requirement_enabled: Missing[Union[bool, None]] = Field(default=UNSET)
+    members_allowed_repository_creation_type: Missing[str] = Field(default=UNSET)
+    members_can_create_public_repositories: Missing[bool] = Field(default=UNSET)
+    members_can_create_private_repositories: Missing[bool] = Field(default=UNSET)
+    members_can_create_internal_repositories: Missing[bool] = Field(default=UNSET)
+    members_can_create_pages: Missing[bool] = Field(default=UNSET)
+    members_can_create_public_pages: Missing[bool] = Field(default=UNSET)
+    members_can_create_private_pages: Missing[bool] = Field(default=UNSET)
+    members_can_fork_private_repositories: Missing[Union[bool, None]] = Field(
+        default=UNSET
+    )
+    web_commit_signoff_required: Missing[bool] = Field(default=UNSET)
+    advanced_security_enabled_for_new_repositories: Missing[bool] = Field(
+        default=UNSET,
+        description="**Endpoint closing down notice.** Please use [code security configurations](https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations) instead.\n\nWhether GitHub Advanced Security is enabled for new repositories and repositories transferred to this organization.\n\nThis field is only visible to organization owners or members of a team with the security manager role.",
+    )
+    dependabot_alerts_enabled_for_new_repositories: Missing[bool] = Field(
+        default=UNSET,
+        description="**Endpoint closing down notice.** Please use [code security configurations](https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations) instead.\n\nWhether Dependabot alerts are automatically enabled for new repositories and repositories transferred to this organization.\n\nThis field is only visible to organization owners or members of a team with the security manager role.",
+    )
+    dependabot_security_updates_enabled_for_new_repositories: Missing[bool] = Field(
+        default=UNSET,
+        description="**Endpoint closing down notice.** Please use [code security configurations](https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations) instead.\n\nWhether Dependabot security updates are automatically enabled for new repositories and repositories transferred to this organization.\n\nThis field is only visible to organization owners or members of a team with the security manager role.",
+    )
+    dependency_graph_enabled_for_new_repositories: Missing[bool] = Field(
+        default=UNSET,
+        description="**Endpoint closing down notice.** Please use [code security configurations](https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations) instead.\n\nWhether dependency graph is automatically enabled for new repositories and repositories transferred to this organization.\n\nThis field is only visible to organization owners or members of a team with the security manager role.",
+    )
+    secret_scanning_enabled_for_new_repositories: Missing[bool] = Field(
+        default=UNSET,
+        description="**Endpoint closing down notice.** Please use [code security configurations](https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations) instead.\n\nWhether secret scanning is automatically enabled for new repositories and repositories transferred to this organization.\n\nThis field is only visible to organization owners or members of a team with the security manager role.",
+    )
+    secret_scanning_push_protection_enabled_for_new_repositories: Missing[bool] = Field(
+        default=UNSET,
+        description="**Endpoint closing down notice.** Please use [code security configurations](https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations) instead.\n\nWhether secret scanning push protection is automatically enabled for new repositories and repositories transferred to this organization.\n\nThis field is only visible to organization owners or members of a team with the security manager role.",
+    )
+    secret_scanning_push_protection_custom_link_enabled: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether a custom link is shown to contributors who are blocked from pushing a secret by push protection.",
+    )
+    secret_scanning_push_protection_custom_link: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="An optional URL string to display to contributors who are blocked from pushing a secret.",
+    )
+    secret_scanning_validity_checks_enabled: Missing[bool] = Field(
+        default=UNSET,
+        description="**Endpoint closing down notice.** Please use [code security configurations](https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations) instead.\n\nWhether secret scanning automatic validity checks on supported partner tokens is enabled for all repositories under this organization.",
     )
     created_at: datetime = Field()
     updated_at: datetime = Field()
-    last_used_at: datetime = Field(
-        description="Last known time this codespace was started."
-    )
-    state: Literal[
-        "Unknown",
-        "Created",
-        "Queued",
-        "Provisioning",
-        "Available",
-        "Awaiting",
-        "Unavailable",
-        "Deleted",
-        "Moved",
-        "Shutdown",
-        "Archived",
-        "Starting",
-        "ShuttingDown",
-        "Failed",
-        "Exporting",
-        "Updating",
-        "Rebuilding",
-    ] = Field(description="State of this codespace.")
-    url: str = Field(description="API URL for this codespace.")
-    git_status: CodespacePropGitStatus = Field(
-        description="Details about the codespace's git repository."
-    )
-    location: Literal["EastUs", "SouthEastAsia", "WestEurope", "WestUs2"] = Field(
-        description="The initally assigned location of a new codespace."
-    )
-    idle_timeout_minutes: Union[int, None] = Field(
-        description="The number of minutes of inactivity after which this codespace will be automatically stopped."
-    )
-    web_url: str = Field(description="URL to access this codespace on the web.")
-    machines_url: str = Field(
-        description="API URL to access available alternate machine types for this codespace."
-    )
-    start_url: str = Field(description="API URL to start this codespace.")
-    stop_url: str = Field(description="API URL to stop this codespace.")
-    publish_url: Missing[Union[str, None]] = Field(
+    archived_at: Union[datetime, None] = Field()
+    deploy_keys_enabled_for_repositories: Missing[bool] = Field(
         default=UNSET,
-        description="API URL to publish this codespace to a new repository.",
-    )
-    pulls_url: Union[str, None] = Field(
-        description="API URL for the Pull Request associated with this codespace, if any."
-    )
-    recent_folders: list[str] = Field()
-    runtime_constraints: Missing[CodespacePropRuntimeConstraints] = Field(default=UNSET)
-    pending_operation: Missing[Union[bool, None]] = Field(
-        default=UNSET,
-        description="Whether or not a codespace has a pending async operation. This would mean that the codespace is temporarily unavailable. The only thing that you can do with a codespace in this state is delete it.",
-    )
-    pending_operation_disabled_reason: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="Text to show user when codespace is disabled by a pending operation",
-    )
-    idle_timeout_notice: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="Text to show user when codespace idle timeout minutes has been overriden by an organization policy",
-    )
-    retention_period_minutes: Missing[Union[int, None]] = Field(
-        default=UNSET,
-        description="Duration in minutes after codespace has gone idle in which it will be deleted. Must be integer minutes between 0 and 43200 (30 days).",
-    )
-    retention_expires_at: Missing[Union[datetime, None]] = Field(
-        default=UNSET,
-        description='When a codespace will be auto-deleted based on the "retention_period_minutes" and "last_used_at"',
-    )
-    last_known_stop_notice: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The text to display to a user when a codespace has been stopped for a potentially actionable reason.",
+        description="Controls whether or not deploy keys may be added and used for repositories in the organization.",
     )
 
 
-class CodespacePropGitStatus(GitHubModel):
-    """CodespacePropGitStatus
+class OrganizationFullPropPlan(GitHubModel):
+    """OrganizationFullPropPlan"""
 
-    Details about the codespace's git repository.
-    """
-
-    ahead: Missing[int] = Field(
-        default=UNSET,
-        description="The number of commits the local repository is ahead of the remote.",
-    )
-    behind: Missing[int] = Field(
-        default=UNSET,
-        description="The number of commits the local repository is behind the remote.",
-    )
-    has_unpushed_changes: Missing[bool] = Field(
-        default=UNSET, description="Whether the local repository has unpushed changes."
-    )
-    has_uncommitted_changes: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether the local repository has uncommitted changes.",
-    )
-    ref: Missing[str] = Field(
-        default=UNSET,
-        description="The current branch (or SHA if in detached HEAD state) of the local repository.",
-    )
+    name: str = Field()
+    space: int = Field()
+    private_repos: int = Field()
+    filled_seats: Missing[int] = Field(default=UNSET)
+    seats: Missing[int] = Field(default=UNSET)
 
 
-class CodespacePropRuntimeConstraints(GitHubModel):
-    """CodespacePropRuntimeConstraints"""
-
-    allowed_port_privacy_settings: Missing[Union[list[str], None]] = Field(
-        default=UNSET,
-        description="The privacy settings a user can select from when forwarding a port.",
-    )
-
-
-model_rebuild(Codespace)
-model_rebuild(CodespacePropGitStatus)
-model_rebuild(CodespacePropRuntimeConstraints)
+model_rebuild(OrganizationFull)
+model_rebuild(OrganizationFullPropPlan)
 
 __all__ = (
-    "Codespace",
-    "CodespacePropGitStatus",
-    "CodespacePropRuntimeConstraints",
+    "OrganizationFull",
+    "OrganizationFullPropPlan",
 )

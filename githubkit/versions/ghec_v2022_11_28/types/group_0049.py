@@ -48,20 +48,35 @@ class AmazonS3AccessKeysConfigType(TypedDict):
     encrypted_access_key_id: str
 
 
-class GoogleCloudConfigType(TypedDict):
-    """GoogleCloudConfig
+class HecConfigType(TypedDict):
+    """HecConfig
 
-    Google Cloud Config for audit log streaming configuration.
+    Hec Config for Audit Log Stream Configuration
     """
 
-    bucket: str
+    domain: str
+    port: int
     key_id: str
-    encrypted_json_credentials: str
+    encrypted_token: str
+    path: str
+    ssl_verify: bool
+
+
+class DatadogConfigType(TypedDict):
+    """DatadogConfig
+
+    Datadog Config for audit log streaming configuration.
+    """
+
+    encrypted_token: str
+    site: Literal["US", "US3", "US5", "EU1", "US1-FED", "AP1"]
+    key_id: str
 
 
 __all__ = (
     "AmazonS3AccessKeysConfigType",
     "AzureBlobConfigType",
     "AzureHubConfigType",
-    "GoogleCloudConfigType",
+    "DatadogConfigType",
+    "HecConfigType",
 )

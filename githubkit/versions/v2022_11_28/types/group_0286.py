@@ -9,33 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class GitTreeType(TypedDict):
-    """Git Tree
+class ShortBlobType(TypedDict):
+    """Short Blob
 
-    The hierarchy between files in a Git repository.
+    Short Blob
     """
 
-    sha: str
     url: str
-    truncated: bool
-    tree: list[GitTreePropTreeItemsType]
+    sha: str
 
 
-class GitTreePropTreeItemsType(TypedDict):
-    """GitTreePropTreeItems"""
-
-    path: NotRequired[str]
-    mode: NotRequired[str]
-    type: NotRequired[str]
-    sha: NotRequired[str]
-    size: NotRequired[int]
-    url: NotRequired[str]
-
-
-__all__ = (
-    "GitTreePropTreeItemsType",
-    "GitTreeType",
-)
+__all__ = ("ShortBlobType",)

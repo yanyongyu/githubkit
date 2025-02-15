@@ -9,32 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0252 import Link
 
 
-class RepositoryRuleDetailedOneof0(GitHubModel):
-    """RepositoryRuleDetailedOneof0"""
+class ReviewCommentPropLinks(GitHubModel):
+    """ReviewCommentPropLinks"""
 
-    type: Literal["creation"] = Field()
-    ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
-        default=UNSET,
-        description="The type of source for the ruleset that includes this rule.",
-    )
-    ruleset_source: Missing[str] = Field(
-        default=UNSET,
-        description="The name of the source of the ruleset that includes this rule.",
-    )
-    ruleset_id: Missing[int] = Field(
-        default=UNSET, description="The ID of the ruleset that includes this rule."
-    )
+    self_: Link = Field(alias="self", title="Link", description="Hypermedia Link")
+    html: Link = Field(title="Link", description="Hypermedia Link")
+    pull_request: Link = Field(title="Link", description="Hypermedia Link")
 
 
-model_rebuild(RepositoryRuleDetailedOneof0)
+model_rebuild(ReviewCommentPropLinks)
 
-__all__ = ("RepositoryRuleDetailedOneof0",)
+__all__ = ("ReviewCommentPropLinks",)

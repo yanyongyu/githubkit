@@ -9,18 +9,15 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Any
+from typing_extensions import TypeAlias
+
+MetadataType: TypeAlias = dict[str, Any]
+"""metadata
+
+User-defined metadata to store domain-specific information limited to 8 keys
+with scalar values.
+"""
 
 
-class DeploymentBranchPolicySettingsType(TypedDict):
-    """DeploymentBranchPolicySettings
-
-    The type of deployment branch policy for this environment. To allow all branches
-    to deploy, set to `null`.
-    """
-
-    protected_branches: bool
-    custom_branch_policies: bool
-
-
-__all__ = ("DeploymentBranchPolicySettingsType",)
+__all__ = ("MetadataType",)

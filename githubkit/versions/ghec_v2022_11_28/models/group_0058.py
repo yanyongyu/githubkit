@@ -69,6 +69,7 @@ class CodeScanningOrganizationAlertItems(GitHubModel):
     repository: SimpleRepository = Field(
         title="Simple Repository", description="A GitHub repository."
     )
+    dismissal_approved_by: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
 
 
 model_rebuild(CodeScanningOrganizationAlertItems)

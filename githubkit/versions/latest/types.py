@@ -578,7 +578,7 @@ if TYPE_CHECKING:
         CopilotOrganizationDetailsType as CopilotOrganizationDetailsType,
     )
     from githubkit.versions.v2022_11_28.types import (
-        CopilotSeatBreakdownType as CopilotSeatBreakdownType,
+        CopilotOrganizationSeatBreakdownType as CopilotOrganizationSeatBreakdownType,
     )
     from githubkit.versions.v2022_11_28.types import (
         CopilotSeatDetailsType as CopilotSeatDetailsType,
@@ -3022,6 +3022,21 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.types import RootType as RootType
     from githubkit.versions.v2022_11_28.types import (
+        RulesetVersionPropActorType as RulesetVersionPropActorType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        RulesetVersionType as RulesetVersionType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        RulesetVersionWithStateAllof1PropStateType as RulesetVersionWithStateAllof1PropStateType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        RulesetVersionWithStateAllof1Type as RulesetVersionWithStateAllof1Type,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        RulesetVersionWithStateType as RulesetVersionWithStateType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         RuleSuitePropRuleEvaluationsItemsPropRuleSourceType as RuleSuitePropRuleEvaluationsItemsPropRuleSourceType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -3759,6 +3774,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.types import (
         WebhookCodeScanningAlertAppearedInBranchType as WebhookCodeScanningAlertAppearedInBranchType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        WebhookCodeScanningAlertClosedByUserPropAlertPropDismissalApprovedByType as WebhookCodeScanningAlertClosedByUserPropAlertPropDismissalApprovedByType,
     )
     from githubkit.versions.v2022_11_28.types import (
         WebhookCodeScanningAlertClosedByUserPropAlertPropDismissedByType as WebhookCodeScanningAlertClosedByUserPropAlertPropDismissedByType,
@@ -10019,7 +10037,7 @@ else:
             "CodespacePropRuntimeConstraintsType",
             "CodespacesPublicKeyType",
             "CopilotOrganizationDetailsType",
-            "CopilotSeatBreakdownType",
+            "CopilotOrganizationSeatBreakdownType",
             "TeamSimpleType",
             "TeamType",
             "TeamPropPermissionsType",
@@ -10149,6 +10167,11 @@ else:
             "RuleSuiteType",
             "RuleSuitePropRuleEvaluationsItemsType",
             "RuleSuitePropRuleEvaluationsItemsPropRuleSourceType",
+            "RulesetVersionType",
+            "RulesetVersionPropActorType",
+            "RulesetVersionWithStateType",
+            "RulesetVersionWithStateAllof1Type",
+            "RulesetVersionWithStateAllof1PropStateType",
             "RepositoryAdvisoryCreditType",
             "RepositoryAdvisoryType",
             "RepositoryAdvisoryPropIdentifiersItemsType",
@@ -10863,6 +10886,7 @@ else:
             "WebhookCodeScanningAlertClosedByUserPropAlertPropMostRecentInstancePropMessageType",
             "WebhookCodeScanningAlertClosedByUserPropAlertPropRuleType",
             "WebhookCodeScanningAlertClosedByUserPropAlertPropToolType",
+            "WebhookCodeScanningAlertClosedByUserPropAlertPropDismissalApprovedByType",
             "WebhookCodeScanningAlertCreatedType",
             "WebhookCodeScanningAlertCreatedPropAlertType",
             "WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstanceType",

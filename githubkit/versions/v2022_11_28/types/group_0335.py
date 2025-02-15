@@ -11,15 +11,20 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0247 import LinkType
+from .group_0252 import LinkType
 
 
-class ReviewCommentPropLinksType(TypedDict):
-    """ReviewCommentPropLinks"""
+class PullRequestPropLinksType(TypedDict):
+    """PullRequestPropLinks"""
 
-    self_: LinkType
+    comments: LinkType
+    commits: LinkType
+    statuses: LinkType
     html: LinkType
-    pull_request: LinkType
+    issue: LinkType
+    review_comments: LinkType
+    review_comment: LinkType
+    self_: LinkType
 
 
-__all__ = ("ReviewCommentPropLinksType",)
+__all__ = ("PullRequestPropLinksType",)

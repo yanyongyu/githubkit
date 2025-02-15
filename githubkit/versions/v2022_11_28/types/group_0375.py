@@ -9,18 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReferrerTrafficType(TypedDict):
-    """Referrer Traffic
+class TagProtectionType(TypedDict):
+    """Tag protection
 
-    Referrer Traffic
+    Tag protection
     """
 
-    referrer: str
-    count: int
-    uniques: int
+    id: NotRequired[int]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
+    enabled: NotRequired[bool]
+    pattern: str
 
 
-__all__ = ("ReferrerTrafficType",)
+__all__ = ("TagProtectionType",)

@@ -12,38 +12,22 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0205 import BranchProtection
 
 
-class ShortBranch(GitHubModel):
-    """Short Branch
+class CheckAutomatedSecurityFixes(GitHubModel):
+    """Check Dependabot security updates
 
-    Short Branch
+    Check Dependabot security updates
     """
 
-    name: str = Field()
-    commit: ShortBranchPropCommit = Field()
-    protected: bool = Field()
-    protection: Missing[BranchProtection] = Field(
-        default=UNSET, title="Branch Protection", description="Branch Protection"
+    enabled: bool = Field(
+        description="Whether Dependabot security updates are enabled for the repository."
     )
-    protection_url: Missing[str] = Field(default=UNSET)
+    paused: bool = Field(
+        description="Whether Dependabot security updates are paused for the repository."
+    )
 
 
-class ShortBranchPropCommit(GitHubModel):
-    """ShortBranchPropCommit"""
+model_rebuild(CheckAutomatedSecurityFixes)
 
-    sha: str = Field()
-    url: str = Field()
-
-
-model_rebuild(ShortBranch)
-model_rebuild(ShortBranchPropCommit)
-
-__all__ = (
-    "ShortBranch",
-    "ShortBranchPropCommit",
-)
+__all__ = ("CheckAutomatedSecurityFixes",)

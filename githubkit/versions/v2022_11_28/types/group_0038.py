@@ -47,6 +47,7 @@ class OrganizationSecretScanningAlertType(TypedDict):
     validity: NotRequired[Literal["active", "inactive", "unknown"]]
     publicly_leaked: NotRequired[Union[bool, None]]
     multi_repo: NotRequired[Union[bool, None]]
+    is_base64_encoded: NotRequired[Union[bool, None]]
 
 
 __all__ = ("OrganizationSecretScanningAlertType",)

@@ -12,13 +12,13 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class LinkType(TypedDict):
-    """Link
+class CodespacesPermissionsCheckForDevcontainerType(TypedDict):
+    """Codespaces Permissions Check
 
-    Hypermedia Link
+    Permission check result for a given devcontainer config.
     """
 
-    href: str
+    accepted: bool
 
 
-__all__ = ("LinkType",)
+__all__ = ("CodespacesPermissionsCheckForDevcontainerType",)

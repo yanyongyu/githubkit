@@ -13,21 +13,17 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0166 import RulesetVersionWithStateAllof1PropState
 
-class PackagesBillingUsage(GitHubModel):
-    """PackagesBillingUsage"""
 
-    total_gigabytes_bandwidth_used: int = Field(
-        description="Sum of the free and paid storage space (GB) for GitHuub Packages."
-    )
-    total_paid_gigabytes_bandwidth_used: int = Field(
-        description="Total paid storage space (GB) for GitHuub Packages."
-    )
-    included_gigabytes_bandwidth: int = Field(
-        description="Free storage space (GB) for GitHub Packages."
+class RulesetVersionWithStateAllof1(GitHubModel):
+    """RulesetVersionWithStateAllof1"""
+
+    state: RulesetVersionWithStateAllof1PropState = Field(
+        description="The state of the ruleset version"
     )
 
 
-model_rebuild(PackagesBillingUsage)
+model_rebuild(RulesetVersionWithStateAllof1)
 
-__all__ = ("PackagesBillingUsage",)
+__all__ = ("RulesetVersionWithStateAllof1",)

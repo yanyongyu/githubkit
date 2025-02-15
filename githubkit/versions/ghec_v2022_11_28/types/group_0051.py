@@ -9,19 +9,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import TypedDict
 
 
-class DatadogConfigType(TypedDict):
-    """DatadogConfig
+class GoogleCloudConfigType(TypedDict):
+    """GoogleCloudConfig
 
-    Datadog Config for audit log streaming configuration.
+    Google Cloud Config for audit log streaming configuration.
     """
 
-    encrypted_token: str
-    site: Literal["US", "US3", "US5", "EU1", "US1-FED", "AP1"]
+    bucket: str
     key_id: str
+    encrypted_json_credentials: str
 
 
-__all__ = ("DatadogConfigType",)
+__all__ = ("GoogleCloudConfigType",)

@@ -16,48 +16,92 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class BillingUsageReport(GitHubModel):
-    """BillingUsageReport"""
+class ActionsBillingUsage(GitHubModel):
+    """ActionsBillingUsage"""
 
-    usage_items: Missing[list[BillingUsageReportPropUsageItemsItems]] = Field(
-        default=UNSET, alias="usageItems"
+    total_minutes_used: int = Field(
+        description="The sum of the free and paid GitHub Actions minutes used."
     )
-
-
-class BillingUsageReportPropUsageItemsItems(GitHubModel):
-    """BillingUsageReportPropUsageItemsItems"""
-
-    date: str = Field(description="Date of the usage line item.")
-    product: str = Field(description="Product name.")
-    sku: str = Field(description="SKU name.")
-    quantity: int = Field(description="Quantity of the usage line item.")
-    unit_type: str = Field(
-        alias="unitType", description="Unit type of the usage line item."
+    total_paid_minutes_used: int = Field(
+        description="The total paid GitHub Actions minutes used."
     )
-    price_per_unit: float = Field(
-        alias="pricePerUnit", description="Price per unit of the usage line item."
+    included_minutes: int = Field(
+        description="The amount of free GitHub Actions minutes available."
     )
-    gross_amount: float = Field(
-        alias="grossAmount", description="Gross amount of the usage line item."
-    )
-    discount_amount: float = Field(
-        alias="discountAmount", description="Discount amount of the usage line item."
-    )
-    net_amount: float = Field(
-        alias="netAmount", description="Net amount of the usage line item."
-    )
-    organization_name: str = Field(
-        alias="organizationName", description="Name of the organization."
-    )
-    repository_name: Missing[str] = Field(
-        default=UNSET, alias="repositoryName", description="Name of the repository."
-    )
+    minutes_used_breakdown: ActionsBillingUsagePropMinutesUsedBreakdown = Field()
 
 
-model_rebuild(BillingUsageReport)
-model_rebuild(BillingUsageReportPropUsageItemsItems)
+class ActionsBillingUsagePropMinutesUsedBreakdown(GitHubModel):
+    """ActionsBillingUsagePropMinutesUsedBreakdown"""
+
+    ubuntu: Missing[int] = Field(
+        default=UNSET,
+        alias="UBUNTU",
+        description="Total minutes used on Ubuntu runner machines.",
+    )
+    macos: Missing[int] = Field(
+        default=UNSET,
+        alias="MACOS",
+        description="Total minutes used on macOS runner machines.",
+    )
+    windows: Missing[int] = Field(
+        default=UNSET,
+        alias="WINDOWS",
+        description="Total minutes used on Windows runner machines.",
+    )
+    ubuntu_4_core: Missing[int] = Field(
+        default=UNSET,
+        description="Total minutes used on Ubuntu 4 core runner machines.",
+    )
+    ubuntu_8_core: Missing[int] = Field(
+        default=UNSET,
+        description="Total minutes used on Ubuntu 8 core runner machines.",
+    )
+    ubuntu_16_core: Missing[int] = Field(
+        default=UNSET,
+        description="Total minutes used on Ubuntu 16 core runner machines.",
+    )
+    ubuntu_32_core: Missing[int] = Field(
+        default=UNSET,
+        description="Total minutes used on Ubuntu 32 core runner machines.",
+    )
+    ubuntu_64_core: Missing[int] = Field(
+        default=UNSET,
+        description="Total minutes used on Ubuntu 64 core runner machines.",
+    )
+    windows_4_core: Missing[int] = Field(
+        default=UNSET,
+        description="Total minutes used on Windows 4 core runner machines.",
+    )
+    windows_8_core: Missing[int] = Field(
+        default=UNSET,
+        description="Total minutes used on Windows 8 core runner machines.",
+    )
+    windows_16_core: Missing[int] = Field(
+        default=UNSET,
+        description="Total minutes used on Windows 16 core runner machines.",
+    )
+    windows_32_core: Missing[int] = Field(
+        default=UNSET,
+        description="Total minutes used on Windows 32 core runner machines.",
+    )
+    windows_64_core: Missing[int] = Field(
+        default=UNSET,
+        description="Total minutes used on Windows 64 core runner machines.",
+    )
+    macos_12_core: Missing[int] = Field(
+        default=UNSET,
+        description="Total minutes used on macOS 12 core runner machines.",
+    )
+    total: Missing[int] = Field(
+        default=UNSET, description="Total minutes used on all runner machines."
+    )
+
+
+model_rebuild(ActionsBillingUsage)
+model_rebuild(ActionsBillingUsagePropMinutesUsedBreakdown)
 
 __all__ = (
-    "BillingUsageReport",
-    "BillingUsageReportPropUsageItemsItems",
+    "ActionsBillingUsage",
+    "ActionsBillingUsagePropMinutesUsedBreakdown",
 )

@@ -41,6 +41,7 @@ class CodeScanningOrganizationAlertItemsType(TypedDict):
     tool: CodeScanningAnalysisToolType
     most_recent_instance: CodeScanningAlertInstanceType
     repository: SimpleRepositoryType
+    dismissal_approved_by: NotRequired[Union[None, SimpleUserType]]
 
 
 __all__ = ("CodeScanningOrganizationAlertItemsType",)

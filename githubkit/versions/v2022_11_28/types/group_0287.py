@@ -10,15 +10,22 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class HookResponseType(TypedDict):
-    """Hook Response"""
+class BlobType(TypedDict):
+    """Blob
 
-    code: Union[int, None]
-    status: Union[str, None]
-    message: Union[str, None]
+    Blob
+    """
+
+    content: str
+    encoding: str
+    url: str
+    sha: str
+    size: Union[int, None]
+    node_id: str
+    highlighted_content: NotRequired[str]
 
 
-__all__ = ("HookResponseType",)
+__all__ = ("BlobType",)

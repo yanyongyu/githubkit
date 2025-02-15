@@ -10,93 +10,96 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0155 import MinimalRepositoryType
-from .group_0163 import CodespaceMachineType
 
+class OrganizationFullType(TypedDict):
+    """Organization Full
 
-class CodespaceType(TypedDict):
-    """Codespace
+    Prevents users in the organization from using insecure methods of two-factor
+    authentication to fulfill a two-factor requirement.
+    Removes non-compliant outside collaborators from the organization and its
+    repositories.
 
-    A codespace.
+    GitHub currently defines SMS as an insecure method of two-factor authentication.
+
+    If your users are managed by the enterprise this policy will not affect them.
+    The first admin account of the enterprise will still be affected.
     """
 
+    login: str
     id: int
-    name: str
-    display_name: NotRequired[Union[str, None]]
-    environment_id: Union[str, None]
-    owner: SimpleUserType
-    billable_owner: SimpleUserType
-    repository: MinimalRepositoryType
-    machine: Union[None, CodespaceMachineType]
-    devcontainer_path: NotRequired[Union[str, None]]
-    prebuild: Union[bool, None]
+    node_id: str
+    url: str
+    repos_url: str
+    events_url: str
+    hooks_url: str
+    issues_url: str
+    members_url: str
+    public_members_url: str
+    avatar_url: str
+    description: Union[str, None]
+    name: NotRequired[Union[str, None]]
+    company: NotRequired[Union[str, None]]
+    blog: NotRequired[Union[str, None]]
+    location: NotRequired[Union[str, None]]
+    email: NotRequired[Union[str, None]]
+    twitter_username: NotRequired[Union[str, None]]
+    is_verified: NotRequired[bool]
+    has_organization_projects: bool
+    has_repository_projects: bool
+    public_repos: int
+    public_gists: int
+    followers: int
+    following: int
+    html_url: str
+    type: str
+    total_private_repos: NotRequired[int]
+    owned_private_repos: NotRequired[int]
+    private_gists: NotRequired[Union[int, None]]
+    disk_usage: NotRequired[Union[int, None]]
+    collaborators: NotRequired[Union[int, None]]
+    billing_email: NotRequired[Union[str, None]]
+    plan: NotRequired[OrganizationFullPropPlanType]
+    default_repository_permission: NotRequired[Union[str, None]]
+    members_can_create_repositories: NotRequired[Union[bool, None]]
+    two_factor_requirement_enabled: NotRequired[Union[bool, None]]
+    members_allowed_repository_creation_type: NotRequired[str]
+    members_can_create_public_repositories: NotRequired[bool]
+    members_can_create_private_repositories: NotRequired[bool]
+    members_can_create_internal_repositories: NotRequired[bool]
+    members_can_create_pages: NotRequired[bool]
+    members_can_create_public_pages: NotRequired[bool]
+    members_can_create_private_pages: NotRequired[bool]
+    members_can_fork_private_repositories: NotRequired[Union[bool, None]]
+    web_commit_signoff_required: NotRequired[bool]
+    advanced_security_enabled_for_new_repositories: NotRequired[bool]
+    dependabot_alerts_enabled_for_new_repositories: NotRequired[bool]
+    dependabot_security_updates_enabled_for_new_repositories: NotRequired[bool]
+    dependency_graph_enabled_for_new_repositories: NotRequired[bool]
+    secret_scanning_enabled_for_new_repositories: NotRequired[bool]
+    secret_scanning_push_protection_enabled_for_new_repositories: NotRequired[bool]
+    secret_scanning_push_protection_custom_link_enabled: NotRequired[bool]
+    secret_scanning_push_protection_custom_link: NotRequired[Union[str, None]]
+    secret_scanning_validity_checks_enabled: NotRequired[bool]
     created_at: datetime
     updated_at: datetime
-    last_used_at: datetime
-    state: Literal[
-        "Unknown",
-        "Created",
-        "Queued",
-        "Provisioning",
-        "Available",
-        "Awaiting",
-        "Unavailable",
-        "Deleted",
-        "Moved",
-        "Shutdown",
-        "Archived",
-        "Starting",
-        "ShuttingDown",
-        "Failed",
-        "Exporting",
-        "Updating",
-        "Rebuilding",
-    ]
-    url: str
-    git_status: CodespacePropGitStatusType
-    location: Literal["EastUs", "SouthEastAsia", "WestEurope", "WestUs2"]
-    idle_timeout_minutes: Union[int, None]
-    web_url: str
-    machines_url: str
-    start_url: str
-    stop_url: str
-    publish_url: NotRequired[Union[str, None]]
-    pulls_url: Union[str, None]
-    recent_folders: list[str]
-    runtime_constraints: NotRequired[CodespacePropRuntimeConstraintsType]
-    pending_operation: NotRequired[Union[bool, None]]
-    pending_operation_disabled_reason: NotRequired[Union[str, None]]
-    idle_timeout_notice: NotRequired[Union[str, None]]
-    retention_period_minutes: NotRequired[Union[int, None]]
-    retention_expires_at: NotRequired[Union[datetime, None]]
-    last_known_stop_notice: NotRequired[Union[str, None]]
+    archived_at: Union[datetime, None]
+    deploy_keys_enabled_for_repositories: NotRequired[bool]
 
 
-class CodespacePropGitStatusType(TypedDict):
-    """CodespacePropGitStatus
+class OrganizationFullPropPlanType(TypedDict):
+    """OrganizationFullPropPlan"""
 
-    Details about the codespace's git repository.
-    """
-
-    ahead: NotRequired[int]
-    behind: NotRequired[int]
-    has_unpushed_changes: NotRequired[bool]
-    has_uncommitted_changes: NotRequired[bool]
-    ref: NotRequired[str]
-
-
-class CodespacePropRuntimeConstraintsType(TypedDict):
-    """CodespacePropRuntimeConstraints"""
-
-    allowed_port_privacy_settings: NotRequired[Union[list[str], None]]
+    name: str
+    space: int
+    private_repos: int
+    filled_seats: NotRequired[int]
+    seats: NotRequired[int]
 
 
 __all__ = (
-    "CodespacePropGitStatusType",
-    "CodespacePropRuntimeConstraintsType",
-    "CodespaceType",
+    "OrganizationFullPropPlanType",
+    "OrganizationFullType",
 )

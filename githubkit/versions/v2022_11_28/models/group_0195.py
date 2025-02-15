@@ -10,64 +10,57 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0003 import SimpleUser
-from .group_0087 import Team
 
 
-class PendingDeploymentPropReviewersItems(GitHubModel):
-    """PendingDeploymentPropReviewersItems"""
+class SimpleCommit(GitHubModel):
+    """Simple Commit
 
-    type: Missing[Literal["User", "Team"]] = Field(
-        default=UNSET, description="The type of reviewer."
-    )
-    reviewer: Missing[Union[SimpleUser, Team]] = Field(default=UNSET)
-
-
-class PendingDeployment(GitHubModel):
-    """Pending Deployment
-
-    Details of a deployment that is waiting for protection rules to pass
+    A commit.
     """
 
-    environment: PendingDeploymentPropEnvironment = Field()
-    wait_timer: int = Field(description="The set duration of the wait timer")
-    wait_timer_started_at: Union[datetime, None] = Field(
-        description="The time that the wait timer began."
+    id: str = Field(description="SHA for the commit")
+    tree_id: str = Field(description="SHA for the commit's tree")
+    message: str = Field(description="Message describing the purpose of the commit")
+    timestamp: datetime = Field(description="Timestamp of the commit")
+    author: Union[SimpleCommitPropAuthor, None] = Field(
+        description="Information about the Git author"
     )
-    current_user_can_approve: bool = Field(
-        description="Whether the currently authenticated user can approve the deployment"
-    )
-    reviewers: list[PendingDeploymentPropReviewersItems] = Field(
-        description="The people or teams that may approve jobs that reference the environment. You can list up to six users or teams as reviewers. The reviewers must have at least read access to the repository. Only one of the required reviewers needs to approve the job for it to proceed."
+    committer: Union[SimpleCommitPropCommitter, None] = Field(
+        description="Information about the Git committer"
     )
 
 
-class PendingDeploymentPropEnvironment(GitHubModel):
-    """PendingDeploymentPropEnvironment"""
+class SimpleCommitPropAuthor(GitHubModel):
+    """SimpleCommitPropAuthor
 
-    id: Missing[int] = Field(default=UNSET, description="The id of the environment.")
-    node_id: Missing[str] = Field(default=UNSET)
-    name: Missing[str] = Field(
-        default=UNSET, description="The name of the environment."
-    )
-    url: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
+    Information about the Git author
+    """
+
+    name: str = Field(description="Name of the commit's author")
+    email: str = Field(description="Git email address of the commit's author")
 
 
-model_rebuild(PendingDeploymentPropReviewersItems)
-model_rebuild(PendingDeployment)
-model_rebuild(PendingDeploymentPropEnvironment)
+class SimpleCommitPropCommitter(GitHubModel):
+    """SimpleCommitPropCommitter
+
+    Information about the Git committer
+    """
+
+    name: str = Field(description="Name of the commit's committer")
+    email: str = Field(description="Git email address of the commit's committer")
+
+
+model_rebuild(SimpleCommit)
+model_rebuild(SimpleCommitPropAuthor)
+model_rebuild(SimpleCommitPropCommitter)
 
 __all__ = (
-    "PendingDeployment",
-    "PendingDeploymentPropEnvironment",
-    "PendingDeploymentPropReviewersItems",
+    "SimpleCommit",
+    "SimpleCommitPropAuthor",
+    "SimpleCommitPropCommitter",
 )

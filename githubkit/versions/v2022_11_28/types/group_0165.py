@@ -11,13 +11,13 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-
-class PackagesBillingUsageType(TypedDict):
-    """PackagesBillingUsage"""
-
-    total_gigabytes_bandwidth_used: int
-    total_paid_gigabytes_bandwidth_used: int
-    included_gigabytes_bandwidth: int
+from .group_0166 import RulesetVersionWithStateAllof1PropStateType
 
 
-__all__ = ("PackagesBillingUsageType",)
+class RulesetVersionWithStateAllof1Type(TypedDict):
+    """RulesetVersionWithStateAllof1"""
+
+    state: RulesetVersionWithStateAllof1PropStateType
+
+
+__all__ = ("RulesetVersionWithStateAllof1Type",)

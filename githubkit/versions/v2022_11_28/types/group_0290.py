@@ -9,22 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0213 import VerificationType
 
 
-class PorterAuthorType(TypedDict):
-    """Porter Author
+class GitTagType(TypedDict):
+    """Git Tag
 
-    Porter Author
+    Metadata for a Git tag
     """
 
-    id: int
-    remote_id: str
-    remote_name: str
+    node_id: str
+    tag: str
+    sha: str
+    url: str
+    message: str
+    tagger: GitTagPropTaggerType
+    object_: GitTagPropObjectType
+    verification: NotRequired[VerificationType]
+
+
+class GitTagPropTaggerType(TypedDict):
+    """GitTagPropTagger"""
+
+    date: str
     email: str
     name: str
+
+
+class GitTagPropObjectType(TypedDict):
+    """GitTagPropObject"""
+
+    sha: str
+    type: str
     url: str
-    import_url: str
 
 
-__all__ = ("PorterAuthorType",)
+__all__ = (
+    "GitTagPropObjectType",
+    "GitTagPropTaggerType",
+    "GitTagType",
+)

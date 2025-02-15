@@ -9,21 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from pydantic import Field
-
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, model_rebuild
 
 
-class PageBuildStatus(GitHubModel):
-    """Page Build Status
+class Language(ExtraGitHubModel):
+    """Language
 
-    Page Build Status
+    Language
     """
 
-    url: str = Field()
-    status: str = Field()
 
+model_rebuild(Language)
 
-model_rebuild(PageBuildStatus)
-
-__all__ = ("PageBuildStatus",)
+__all__ = ("Language",)

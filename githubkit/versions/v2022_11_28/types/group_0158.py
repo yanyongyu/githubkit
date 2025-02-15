@@ -17,7 +17,7 @@ class RepositoryRuleOneof18Type(TypedDict):
     """max_file_size
 
     Prevent commits that exceed a specified file size limit from being pushed to the
-    commit.
+    commit graph.
     """
 
     type: Literal["max_file_size"]

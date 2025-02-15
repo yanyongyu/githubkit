@@ -9,25 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from pydantic import Field
-
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class PackagesBillingUsage(GitHubModel):
-    """PackagesBillingUsage"""
+class RulesetVersionWithStateAllof1PropState(GitHubModel):
+    """RulesetVersionWithStateAllof1PropState
 
-    total_gigabytes_bandwidth_used: int = Field(
-        description="Sum of the free and paid storage space (GB) for GitHuub Packages."
-    )
-    total_paid_gigabytes_bandwidth_used: int = Field(
-        description="Total paid storage space (GB) for GitHuub Packages."
-    )
-    included_gigabytes_bandwidth: int = Field(
-        description="Free storage space (GB) for GitHub Packages."
-    )
+    The state of the ruleset version
+    """
 
 
-model_rebuild(PackagesBillingUsage)
+model_rebuild(RulesetVersionWithStateAllof1PropState)
 
-__all__ = ("PackagesBillingUsage",)
+__all__ = ("RulesetVersionWithStateAllof1PropState",)

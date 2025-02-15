@@ -61,27 +61,49 @@ class AmazonS3AccessKeysConfig(GitHubModel):
     encrypted_access_key_id: str = Field(description="Encrypted AWS Access Key ID.")
 
 
-class GoogleCloudConfig(GitHubModel):
-    """GoogleCloudConfig
+class HecConfig(GitHubModel):
+    """HecConfig
 
-    Google Cloud Config for audit log streaming configuration.
+    Hec Config for Audit Log Stream Configuration
     """
 
-    bucket: str = Field(description="Google Cloud Bucket Name")
+    domain: str = Field(description="Domain of Hec instance.")
+    port: int = Field(description="The port number for connecting to HEC.")
     key_id: str = Field(
         description="Key ID obtained from the audit log stream key endpoint used to encrypt secrets."
     )
-    encrypted_json_credentials: str = Field()
+    encrypted_token: str = Field(description="Encrypted Token.")
+    path: str = Field(description="Path to send events to.")
+    ssl_verify: bool = Field(
+        description="SSL verification helps ensure your events are sent to your HEC endpoint securely."
+    )
+
+
+class DatadogConfig(GitHubModel):
+    """DatadogConfig
+
+    Datadog Config for audit log streaming configuration.
+    """
+
+    encrypted_token: str = Field(description="Encrypted Splunk token.")
+    site: Literal["US", "US3", "US5", "EU1", "US1-FED", "AP1"] = Field(
+        description="Datadog Site to use."
+    )
+    key_id: str = Field(
+        description="Key ID obtained from the audit log stream key endpoint used to encrypt secrets."
+    )
 
 
 model_rebuild(AzureBlobConfig)
 model_rebuild(AzureHubConfig)
 model_rebuild(AmazonS3AccessKeysConfig)
-model_rebuild(GoogleCloudConfig)
+model_rebuild(HecConfig)
+model_rebuild(DatadogConfig)
 
 __all__ = (
     "AmazonS3AccessKeysConfig",
     "AzureBlobConfig",
     "AzureHubConfig",
-    "GoogleCloudConfig",
+    "DatadogConfig",
+    "HecConfig",
 )

@@ -266,7 +266,9 @@ if TYPE_CHECKING:
     )
     from .group_0084 import CodespacesPublicKey as CodespacesPublicKey
     from .group_0085 import CopilotOrganizationDetails as CopilotOrganizationDetails
-    from .group_0085 import CopilotSeatBreakdown as CopilotSeatBreakdown
+    from .group_0085 import (
+        CopilotOrganizationSeatBreakdown as CopilotOrganizationSeatBreakdown,
+    )
     from .group_0086 import TeamSimple as TeamSimple
     from .group_0087 import Team as Team
     from .group_0087 import TeamPropPermissions as TeamPropPermissions
@@ -534,7994 +536,8006 @@ if TYPE_CHECKING:
     from .group_0161 import (
         RuleSuitePropRuleEvaluationsItemsPropRuleSource as RuleSuitePropRuleEvaluationsItemsPropRuleSource,
     )
-    from .group_0162 import RepositoryAdvisoryCredit as RepositoryAdvisoryCredit
-    from .group_0163 import RepositoryAdvisory as RepositoryAdvisory
-    from .group_0163 import (
+    from .group_0162 import RulesetVersion as RulesetVersion
+    from .group_0163 import RulesetVersionPropActor as RulesetVersionPropActor
+    from .group_0164 import RulesetVersionWithState as RulesetVersionWithState
+    from .group_0165 import (
+        RulesetVersionWithStateAllof1 as RulesetVersionWithStateAllof1,
+    )
+    from .group_0166 import (
+        RulesetVersionWithStateAllof1PropState as RulesetVersionWithStateAllof1PropState,
+    )
+    from .group_0167 import RepositoryAdvisoryCredit as RepositoryAdvisoryCredit
+    from .group_0168 import RepositoryAdvisory as RepositoryAdvisory
+    from .group_0168 import (
         RepositoryAdvisoryPropCreditsItems as RepositoryAdvisoryPropCreditsItems,
     )
-    from .group_0163 import RepositoryAdvisoryPropCvss as RepositoryAdvisoryPropCvss
-    from .group_0163 import (
+    from .group_0168 import RepositoryAdvisoryPropCvss as RepositoryAdvisoryPropCvss
+    from .group_0168 import (
         RepositoryAdvisoryPropCwesItems as RepositoryAdvisoryPropCwesItems,
     )
-    from .group_0163 import (
+    from .group_0168 import (
         RepositoryAdvisoryPropIdentifiersItems as RepositoryAdvisoryPropIdentifiersItems,
     )
-    from .group_0163 import (
+    from .group_0168 import (
         RepositoryAdvisoryPropSubmission as RepositoryAdvisoryPropSubmission,
     )
-    from .group_0163 import (
+    from .group_0168 import (
         RepositoryAdvisoryVulnerability as RepositoryAdvisoryVulnerability,
     )
-    from .group_0163 import (
+    from .group_0168 import (
         RepositoryAdvisoryVulnerabilityPropPackage as RepositoryAdvisoryVulnerabilityPropPackage,
     )
-    from .group_0164 import ActionsBillingUsage as ActionsBillingUsage
-    from .group_0164 import (
+    from .group_0169 import ActionsBillingUsage as ActionsBillingUsage
+    from .group_0169 import (
         ActionsBillingUsagePropMinutesUsedBreakdown as ActionsBillingUsagePropMinutesUsedBreakdown,
     )
-    from .group_0165 import PackagesBillingUsage as PackagesBillingUsage
-    from .group_0166 import CombinedBillingUsage as CombinedBillingUsage
-    from .group_0167 import NetworkSettings as NetworkSettings
-    from .group_0168 import TeamFull as TeamFull
-    from .group_0168 import TeamOrganization as TeamOrganization
-    from .group_0168 import TeamOrganizationPropPlan as TeamOrganizationPropPlan
-    from .group_0169 import TeamDiscussion as TeamDiscussion
-    from .group_0170 import TeamDiscussionComment as TeamDiscussionComment
-    from .group_0171 import Reaction as Reaction
-    from .group_0172 import TeamMembership as TeamMembership
-    from .group_0173 import TeamProject as TeamProject
-    from .group_0173 import TeamProjectPropPermissions as TeamProjectPropPermissions
-    from .group_0174 import TeamRepository as TeamRepository
-    from .group_0174 import (
+    from .group_0170 import PackagesBillingUsage as PackagesBillingUsage
+    from .group_0171 import CombinedBillingUsage as CombinedBillingUsage
+    from .group_0172 import NetworkSettings as NetworkSettings
+    from .group_0173 import TeamFull as TeamFull
+    from .group_0173 import TeamOrganization as TeamOrganization
+    from .group_0173 import TeamOrganizationPropPlan as TeamOrganizationPropPlan
+    from .group_0174 import TeamDiscussion as TeamDiscussion
+    from .group_0175 import TeamDiscussionComment as TeamDiscussionComment
+    from .group_0176 import Reaction as Reaction
+    from .group_0177 import TeamMembership as TeamMembership
+    from .group_0178 import TeamProject as TeamProject
+    from .group_0178 import TeamProjectPropPermissions as TeamProjectPropPermissions
+    from .group_0179 import TeamRepository as TeamRepository
+    from .group_0179 import (
         TeamRepositoryPropPermissions as TeamRepositoryPropPermissions,
     )
-    from .group_0175 import ProjectCard as ProjectCard
-    from .group_0176 import ProjectColumn as ProjectColumn
-    from .group_0177 import (
+    from .group_0180 import ProjectCard as ProjectCard
+    from .group_0181 import ProjectColumn as ProjectColumn
+    from .group_0182 import (
         ProjectCollaboratorPermission as ProjectCollaboratorPermission,
     )
-    from .group_0178 import RateLimit as RateLimit
-    from .group_0179 import RateLimitOverview as RateLimitOverview
-    from .group_0180 import (
+    from .group_0183 import RateLimit as RateLimit
+    from .group_0184 import RateLimitOverview as RateLimitOverview
+    from .group_0185 import (
         RateLimitOverviewPropResources as RateLimitOverviewPropResources,
     )
-    from .group_0181 import Artifact as Artifact
-    from .group_0181 import ArtifactPropWorkflowRun as ArtifactPropWorkflowRun
-    from .group_0182 import ActionsCacheList as ActionsCacheList
-    from .group_0182 import (
+    from .group_0186 import Artifact as Artifact
+    from .group_0186 import ArtifactPropWorkflowRun as ArtifactPropWorkflowRun
+    from .group_0187 import ActionsCacheList as ActionsCacheList
+    from .group_0187 import (
         ActionsCacheListPropActionsCachesItems as ActionsCacheListPropActionsCachesItems,
     )
-    from .group_0183 import Job as Job
-    from .group_0183 import JobPropStepsItems as JobPropStepsItems
-    from .group_0184 import OidcCustomSubRepo as OidcCustomSubRepo
-    from .group_0185 import ActionsSecret as ActionsSecret
-    from .group_0186 import ActionsVariable as ActionsVariable
-    from .group_0187 import ActionsRepositoryPermissions as ActionsRepositoryPermissions
-    from .group_0188 import (
+    from .group_0188 import Job as Job
+    from .group_0188 import JobPropStepsItems as JobPropStepsItems
+    from .group_0189 import OidcCustomSubRepo as OidcCustomSubRepo
+    from .group_0190 import ActionsSecret as ActionsSecret
+    from .group_0191 import ActionsVariable as ActionsVariable
+    from .group_0192 import ActionsRepositoryPermissions as ActionsRepositoryPermissions
+    from .group_0193 import (
         ActionsWorkflowAccessToRepository as ActionsWorkflowAccessToRepository,
     )
-    from .group_0189 import PullRequestMinimal as PullRequestMinimal
-    from .group_0189 import PullRequestMinimalPropBase as PullRequestMinimalPropBase
-    from .group_0189 import (
+    from .group_0194 import PullRequestMinimal as PullRequestMinimal
+    from .group_0194 import PullRequestMinimalPropBase as PullRequestMinimalPropBase
+    from .group_0194 import (
         PullRequestMinimalPropBasePropRepo as PullRequestMinimalPropBasePropRepo,
     )
-    from .group_0189 import PullRequestMinimalPropHead as PullRequestMinimalPropHead
-    from .group_0189 import (
+    from .group_0194 import PullRequestMinimalPropHead as PullRequestMinimalPropHead
+    from .group_0194 import (
         PullRequestMinimalPropHeadPropRepo as PullRequestMinimalPropHeadPropRepo,
     )
-    from .group_0190 import SimpleCommit as SimpleCommit
-    from .group_0190 import SimpleCommitPropAuthor as SimpleCommitPropAuthor
-    from .group_0190 import SimpleCommitPropCommitter as SimpleCommitPropCommitter
-    from .group_0191 import ReferencedWorkflow as ReferencedWorkflow
-    from .group_0191 import WorkflowRun as WorkflowRun
-    from .group_0192 import EnvironmentApprovals as EnvironmentApprovals
-    from .group_0192 import (
+    from .group_0195 import SimpleCommit as SimpleCommit
+    from .group_0195 import SimpleCommitPropAuthor as SimpleCommitPropAuthor
+    from .group_0195 import SimpleCommitPropCommitter as SimpleCommitPropCommitter
+    from .group_0196 import ReferencedWorkflow as ReferencedWorkflow
+    from .group_0196 import WorkflowRun as WorkflowRun
+    from .group_0197 import EnvironmentApprovals as EnvironmentApprovals
+    from .group_0197 import (
         EnvironmentApprovalsPropEnvironmentsItems as EnvironmentApprovalsPropEnvironmentsItems,
     )
-    from .group_0193 import (
+    from .group_0198 import (
         ReviewCustomGatesCommentRequired as ReviewCustomGatesCommentRequired,
     )
-    from .group_0194 import (
+    from .group_0199 import (
         ReviewCustomGatesStateRequired as ReviewCustomGatesStateRequired,
     )
-    from .group_0195 import PendingDeployment as PendingDeployment
-    from .group_0195 import (
+    from .group_0200 import PendingDeployment as PendingDeployment
+    from .group_0200 import (
         PendingDeploymentPropEnvironment as PendingDeploymentPropEnvironment,
     )
-    from .group_0195 import (
+    from .group_0200 import (
         PendingDeploymentPropReviewersItems as PendingDeploymentPropReviewersItems,
     )
-    from .group_0196 import Deployment as Deployment
-    from .group_0196 import DeploymentPropPayloadOneof0 as DeploymentPropPayloadOneof0
-    from .group_0197 import WorkflowRunUsage as WorkflowRunUsage
-    from .group_0197 import WorkflowRunUsagePropBillable as WorkflowRunUsagePropBillable
-    from .group_0197 import (
+    from .group_0201 import Deployment as Deployment
+    from .group_0201 import DeploymentPropPayloadOneof0 as DeploymentPropPayloadOneof0
+    from .group_0202 import WorkflowRunUsage as WorkflowRunUsage
+    from .group_0202 import WorkflowRunUsagePropBillable as WorkflowRunUsagePropBillable
+    from .group_0202 import (
         WorkflowRunUsagePropBillablePropMacos as WorkflowRunUsagePropBillablePropMacos,
     )
-    from .group_0197 import (
+    from .group_0202 import (
         WorkflowRunUsagePropBillablePropMacosPropJobRunsItems as WorkflowRunUsagePropBillablePropMacosPropJobRunsItems,
     )
-    from .group_0197 import (
+    from .group_0202 import (
         WorkflowRunUsagePropBillablePropUbuntu as WorkflowRunUsagePropBillablePropUbuntu,
     )
-    from .group_0197 import (
+    from .group_0202 import (
         WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItems as WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItems,
     )
-    from .group_0197 import (
+    from .group_0202 import (
         WorkflowRunUsagePropBillablePropWindows as WorkflowRunUsagePropBillablePropWindows,
     )
-    from .group_0197 import (
+    from .group_0202 import (
         WorkflowRunUsagePropBillablePropWindowsPropJobRunsItems as WorkflowRunUsagePropBillablePropWindowsPropJobRunsItems,
     )
-    from .group_0198 import WorkflowUsage as WorkflowUsage
-    from .group_0198 import WorkflowUsagePropBillable as WorkflowUsagePropBillable
-    from .group_0198 import (
+    from .group_0203 import WorkflowUsage as WorkflowUsage
+    from .group_0203 import WorkflowUsagePropBillable as WorkflowUsagePropBillable
+    from .group_0203 import (
         WorkflowUsagePropBillablePropMacos as WorkflowUsagePropBillablePropMacos,
     )
-    from .group_0198 import (
+    from .group_0203 import (
         WorkflowUsagePropBillablePropUbuntu as WorkflowUsagePropBillablePropUbuntu,
     )
-    from .group_0198 import (
+    from .group_0203 import (
         WorkflowUsagePropBillablePropWindows as WorkflowUsagePropBillablePropWindows,
     )
-    from .group_0199 import Activity as Activity
-    from .group_0200 import Autolink as Autolink
-    from .group_0201 import CheckAutomatedSecurityFixes as CheckAutomatedSecurityFixes
-    from .group_0202 import (
+    from .group_0204 import Activity as Activity
+    from .group_0205 import Autolink as Autolink
+    from .group_0206 import CheckAutomatedSecurityFixes as CheckAutomatedSecurityFixes
+    from .group_0207 import (
         ProtectedBranchPullRequestReview as ProtectedBranchPullRequestReview,
     )
-    from .group_0203 import (
+    from .group_0208 import (
         ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances as ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances,
     )
-    from .group_0203 import (
+    from .group_0208 import (
         ProtectedBranchPullRequestReviewPropDismissalRestrictions as ProtectedBranchPullRequestReviewPropDismissalRestrictions,
     )
-    from .group_0204 import BranchRestrictionPolicy as BranchRestrictionPolicy
-    from .group_0204 import (
+    from .group_0209 import BranchRestrictionPolicy as BranchRestrictionPolicy
+    from .group_0209 import (
         BranchRestrictionPolicyPropAppsItems as BranchRestrictionPolicyPropAppsItems,
     )
-    from .group_0204 import (
+    from .group_0209 import (
         BranchRestrictionPolicyPropAppsItemsPropOwner as BranchRestrictionPolicyPropAppsItemsPropOwner,
     )
-    from .group_0204 import (
+    from .group_0209 import (
         BranchRestrictionPolicyPropAppsItemsPropPermissions as BranchRestrictionPolicyPropAppsItemsPropPermissions,
     )
-    from .group_0204 import (
+    from .group_0209 import (
         BranchRestrictionPolicyPropTeamsItems as BranchRestrictionPolicyPropTeamsItems,
     )
-    from .group_0204 import (
+    from .group_0209 import (
         BranchRestrictionPolicyPropUsersItems as BranchRestrictionPolicyPropUsersItems,
     )
-    from .group_0205 import BranchProtection as BranchProtection
-    from .group_0205 import (
+    from .group_0210 import BranchProtection as BranchProtection
+    from .group_0210 import (
         BranchProtectionPropAllowDeletions as BranchProtectionPropAllowDeletions,
     )
-    from .group_0205 import (
+    from .group_0210 import (
         BranchProtectionPropAllowForcePushes as BranchProtectionPropAllowForcePushes,
     )
-    from .group_0205 import (
+    from .group_0210 import (
         BranchProtectionPropAllowForkSyncing as BranchProtectionPropAllowForkSyncing,
     )
-    from .group_0205 import (
+    from .group_0210 import (
         BranchProtectionPropBlockCreations as BranchProtectionPropBlockCreations,
     )
-    from .group_0205 import (
+    from .group_0210 import (
         BranchProtectionPropLockBranch as BranchProtectionPropLockBranch,
     )
-    from .group_0205 import (
+    from .group_0210 import (
         BranchProtectionPropRequiredConversationResolution as BranchProtectionPropRequiredConversationResolution,
     )
-    from .group_0205 import (
+    from .group_0210 import (
         BranchProtectionPropRequiredLinearHistory as BranchProtectionPropRequiredLinearHistory,
     )
-    from .group_0205 import (
+    from .group_0210 import (
         BranchProtectionPropRequiredSignatures as BranchProtectionPropRequiredSignatures,
     )
-    from .group_0205 import ProtectedBranchAdminEnforced as ProtectedBranchAdminEnforced
-    from .group_0205 import (
+    from .group_0210 import ProtectedBranchAdminEnforced as ProtectedBranchAdminEnforced
+    from .group_0210 import (
         ProtectedBranchRequiredStatusCheck as ProtectedBranchRequiredStatusCheck,
     )
-    from .group_0205 import (
+    from .group_0210 import (
         ProtectedBranchRequiredStatusCheckPropChecksItems as ProtectedBranchRequiredStatusCheckPropChecksItems,
     )
-    from .group_0206 import ShortBranch as ShortBranch
-    from .group_0206 import ShortBranchPropCommit as ShortBranchPropCommit
-    from .group_0207 import GitUser as GitUser
-    from .group_0208 import Verification as Verification
-    from .group_0209 import DiffEntry as DiffEntry
-    from .group_0210 import Commit as Commit
-    from .group_0210 import CommitPropParentsItems as CommitPropParentsItems
-    from .group_0210 import CommitPropStats as CommitPropStats
-    from .group_0210 import EmptyObject as EmptyObject
-    from .group_0211 import CommitPropCommit as CommitPropCommit
-    from .group_0211 import CommitPropCommitPropTree as CommitPropCommitPropTree
-    from .group_0212 import BranchWithProtection as BranchWithProtection
-    from .group_0212 import (
+    from .group_0211 import ShortBranch as ShortBranch
+    from .group_0211 import ShortBranchPropCommit as ShortBranchPropCommit
+    from .group_0212 import GitUser as GitUser
+    from .group_0213 import Verification as Verification
+    from .group_0214 import DiffEntry as DiffEntry
+    from .group_0215 import Commit as Commit
+    from .group_0215 import CommitPropParentsItems as CommitPropParentsItems
+    from .group_0215 import CommitPropStats as CommitPropStats
+    from .group_0215 import EmptyObject as EmptyObject
+    from .group_0216 import CommitPropCommit as CommitPropCommit
+    from .group_0216 import CommitPropCommitPropTree as CommitPropCommitPropTree
+    from .group_0217 import BranchWithProtection as BranchWithProtection
+    from .group_0217 import (
         BranchWithProtectionPropLinks as BranchWithProtectionPropLinks,
     )
-    from .group_0213 import ProtectedBranch as ProtectedBranch
-    from .group_0213 import (
+    from .group_0218 import ProtectedBranch as ProtectedBranch
+    from .group_0218 import (
         ProtectedBranchPropAllowDeletions as ProtectedBranchPropAllowDeletions,
     )
-    from .group_0213 import (
+    from .group_0218 import (
         ProtectedBranchPropAllowForcePushes as ProtectedBranchPropAllowForcePushes,
     )
-    from .group_0213 import (
+    from .group_0218 import (
         ProtectedBranchPropAllowForkSyncing as ProtectedBranchPropAllowForkSyncing,
     )
-    from .group_0213 import (
+    from .group_0218 import (
         ProtectedBranchPropBlockCreations as ProtectedBranchPropBlockCreations,
     )
-    from .group_0213 import (
+    from .group_0218 import (
         ProtectedBranchPropEnforceAdmins as ProtectedBranchPropEnforceAdmins,
     )
-    from .group_0213 import (
+    from .group_0218 import (
         ProtectedBranchPropLockBranch as ProtectedBranchPropLockBranch,
     )
-    from .group_0213 import (
+    from .group_0218 import (
         ProtectedBranchPropRequiredConversationResolution as ProtectedBranchPropRequiredConversationResolution,
     )
-    from .group_0213 import (
+    from .group_0218 import (
         ProtectedBranchPropRequiredLinearHistory as ProtectedBranchPropRequiredLinearHistory,
     )
-    from .group_0213 import (
+    from .group_0218 import (
         ProtectedBranchPropRequiredSignatures as ProtectedBranchPropRequiredSignatures,
     )
-    from .group_0213 import StatusCheckPolicy as StatusCheckPolicy
-    from .group_0213 import (
+    from .group_0218 import StatusCheckPolicy as StatusCheckPolicy
+    from .group_0218 import (
         StatusCheckPolicyPropChecksItems as StatusCheckPolicyPropChecksItems,
     )
-    from .group_0214 import (
+    from .group_0219 import (
         ProtectedBranchPropRequiredPullRequestReviews as ProtectedBranchPropRequiredPullRequestReviews,
     )
-    from .group_0215 import (
+    from .group_0220 import (
         ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances as ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances,
     )
-    from .group_0215 import (
+    from .group_0220 import (
         ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions as ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions,
     )
-    from .group_0216 import DeploymentSimple as DeploymentSimple
-    from .group_0217 import CheckRun as CheckRun
-    from .group_0217 import CheckRunPropCheckSuite as CheckRunPropCheckSuite
-    from .group_0217 import CheckRunPropOutput as CheckRunPropOutput
-    from .group_0218 import CheckAnnotation as CheckAnnotation
-    from .group_0219 import CheckSuite as CheckSuite
-    from .group_0219 import (
+    from .group_0221 import DeploymentSimple as DeploymentSimple
+    from .group_0222 import CheckRun as CheckRun
+    from .group_0222 import CheckRunPropCheckSuite as CheckRunPropCheckSuite
+    from .group_0222 import CheckRunPropOutput as CheckRunPropOutput
+    from .group_0223 import CheckAnnotation as CheckAnnotation
+    from .group_0224 import CheckSuite as CheckSuite
+    from .group_0224 import (
         ReposOwnerRepoCommitsRefCheckSuitesGetResponse200 as ReposOwnerRepoCommitsRefCheckSuitesGetResponse200,
     )
-    from .group_0220 import CheckSuitePreference as CheckSuitePreference
-    from .group_0220 import (
+    from .group_0225 import CheckSuitePreference as CheckSuitePreference
+    from .group_0225 import (
         CheckSuitePreferencePropPreferences as CheckSuitePreferencePropPreferences,
     )
-    from .group_0220 import (
+    from .group_0225 import (
         CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems as CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems,
     )
-    from .group_0221 import CodeScanningAlertItems as CodeScanningAlertItems
-    from .group_0222 import CodeScanningAlert as CodeScanningAlert
-    from .group_0222 import CodeScanningAlertRule as CodeScanningAlertRule
-    from .group_0223 import CodeScanningAutofix as CodeScanningAutofix
-    from .group_0224 import CodeScanningAutofixCommits as CodeScanningAutofixCommits
-    from .group_0225 import (
+    from .group_0226 import CodeScanningAlertItems as CodeScanningAlertItems
+    from .group_0227 import CodeScanningAlert as CodeScanningAlert
+    from .group_0227 import CodeScanningAlertRule as CodeScanningAlertRule
+    from .group_0228 import CodeScanningAutofix as CodeScanningAutofix
+    from .group_0229 import CodeScanningAutofixCommits as CodeScanningAutofixCommits
+    from .group_0230 import (
         CodeScanningAutofixCommitsResponse as CodeScanningAutofixCommitsResponse,
     )
-    from .group_0226 import CodeScanningAnalysis as CodeScanningAnalysis
-    from .group_0227 import CodeScanningAnalysisDeletion as CodeScanningAnalysisDeletion
-    from .group_0228 import CodeScanningCodeqlDatabase as CodeScanningCodeqlDatabase
-    from .group_0229 import (
+    from .group_0231 import CodeScanningAnalysis as CodeScanningAnalysis
+    from .group_0232 import CodeScanningAnalysisDeletion as CodeScanningAnalysisDeletion
+    from .group_0233 import CodeScanningCodeqlDatabase as CodeScanningCodeqlDatabase
+    from .group_0234 import (
         CodeScanningVariantAnalysisRepository as CodeScanningVariantAnalysisRepository,
     )
-    from .group_0230 import (
+    from .group_0235 import (
         CodeScanningVariantAnalysisSkippedRepoGroup as CodeScanningVariantAnalysisSkippedRepoGroup,
     )
-    from .group_0231 import CodeScanningVariantAnalysis as CodeScanningVariantAnalysis
-    from .group_0232 import (
+    from .group_0236 import CodeScanningVariantAnalysis as CodeScanningVariantAnalysis
+    from .group_0237 import (
         CodeScanningVariantAnalysisPropScannedRepositoriesItems as CodeScanningVariantAnalysisPropScannedRepositoriesItems,
     )
-    from .group_0233 import (
+    from .group_0238 import (
         CodeScanningVariantAnalysisPropSkippedRepositories as CodeScanningVariantAnalysisPropSkippedRepositories,
     )
-    from .group_0233 import (
+    from .group_0238 import (
         CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos as CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos,
     )
-    from .group_0234 import (
+    from .group_0239 import (
         CodeScanningVariantAnalysisRepoTask as CodeScanningVariantAnalysisRepoTask,
     )
-    from .group_0235 import CodeScanningDefaultSetup as CodeScanningDefaultSetup
-    from .group_0236 import (
+    from .group_0240 import CodeScanningDefaultSetup as CodeScanningDefaultSetup
+    from .group_0241 import (
         CodeScanningDefaultSetupUpdate as CodeScanningDefaultSetupUpdate,
     )
-    from .group_0237 import (
+    from .group_0242 import (
         CodeScanningDefaultSetupUpdateResponse as CodeScanningDefaultSetupUpdateResponse,
     )
-    from .group_0238 import CodeScanningSarifsReceipt as CodeScanningSarifsReceipt
-    from .group_0239 import CodeScanningSarifsStatus as CodeScanningSarifsStatus
-    from .group_0240 import (
+    from .group_0243 import CodeScanningSarifsReceipt as CodeScanningSarifsReceipt
+    from .group_0244 import CodeScanningSarifsStatus as CodeScanningSarifsStatus
+    from .group_0245 import (
         CodeSecurityConfigurationForRepository as CodeSecurityConfigurationForRepository,
     )
-    from .group_0241 import CodeownersErrors as CodeownersErrors
-    from .group_0241 import (
+    from .group_0246 import CodeownersErrors as CodeownersErrors
+    from .group_0246 import (
         CodeownersErrorsPropErrorsItems as CodeownersErrorsPropErrorsItems,
     )
-    from .group_0242 import (
+    from .group_0247 import (
         CodespacesPermissionsCheckForDevcontainer as CodespacesPermissionsCheckForDevcontainer,
     )
-    from .group_0243 import RepositoryInvitation as RepositoryInvitation
-    from .group_0244 import Collaborator as Collaborator
-    from .group_0244 import CollaboratorPropPermissions as CollaboratorPropPermissions
-    from .group_0244 import (
+    from .group_0248 import RepositoryInvitation as RepositoryInvitation
+    from .group_0249 import Collaborator as Collaborator
+    from .group_0249 import CollaboratorPropPermissions as CollaboratorPropPermissions
+    from .group_0249 import (
         RepositoryCollaboratorPermission as RepositoryCollaboratorPermission,
     )
-    from .group_0245 import CommitComment as CommitComment
-    from .group_0245 import TimelineCommitCommentedEvent as TimelineCommitCommentedEvent
-    from .group_0246 import BranchShort as BranchShort
-    from .group_0246 import BranchShortPropCommit as BranchShortPropCommit
-    from .group_0247 import Link as Link
-    from .group_0248 import AutoMerge as AutoMerge
-    from .group_0249 import PullRequestSimple as PullRequestSimple
-    from .group_0249 import (
+    from .group_0250 import CommitComment as CommitComment
+    from .group_0250 import TimelineCommitCommentedEvent as TimelineCommitCommentedEvent
+    from .group_0251 import BranchShort as BranchShort
+    from .group_0251 import BranchShortPropCommit as BranchShortPropCommit
+    from .group_0252 import Link as Link
+    from .group_0253 import AutoMerge as AutoMerge
+    from .group_0254 import PullRequestSimple as PullRequestSimple
+    from .group_0254 import (
         PullRequestSimplePropLabelsItems as PullRequestSimplePropLabelsItems,
     )
-    from .group_0250 import PullRequestSimplePropBase as PullRequestSimplePropBase
-    from .group_0250 import PullRequestSimplePropHead as PullRequestSimplePropHead
-    from .group_0251 import PullRequestSimplePropLinks as PullRequestSimplePropLinks
-    from .group_0252 import CombinedCommitStatus as CombinedCommitStatus
-    from .group_0252 import SimpleCommitStatus as SimpleCommitStatus
-    from .group_0253 import Status as Status
-    from .group_0254 import CommunityHealthFile as CommunityHealthFile
-    from .group_0254 import CommunityProfile as CommunityProfile
-    from .group_0254 import CommunityProfilePropFiles as CommunityProfilePropFiles
-    from .group_0255 import CommitComparison as CommitComparison
-    from .group_0256 import ContentTree as ContentTree
-    from .group_0256 import ContentTreePropEntriesItems as ContentTreePropEntriesItems
-    from .group_0256 import (
+    from .group_0255 import PullRequestSimplePropBase as PullRequestSimplePropBase
+    from .group_0255 import PullRequestSimplePropHead as PullRequestSimplePropHead
+    from .group_0256 import PullRequestSimplePropLinks as PullRequestSimplePropLinks
+    from .group_0257 import CombinedCommitStatus as CombinedCommitStatus
+    from .group_0257 import SimpleCommitStatus as SimpleCommitStatus
+    from .group_0258 import Status as Status
+    from .group_0259 import CommunityHealthFile as CommunityHealthFile
+    from .group_0259 import CommunityProfile as CommunityProfile
+    from .group_0259 import CommunityProfilePropFiles as CommunityProfilePropFiles
+    from .group_0260 import CommitComparison as CommitComparison
+    from .group_0261 import ContentTree as ContentTree
+    from .group_0261 import ContentTreePropEntriesItems as ContentTreePropEntriesItems
+    from .group_0261 import (
         ContentTreePropEntriesItemsPropLinks as ContentTreePropEntriesItemsPropLinks,
     )
-    from .group_0256 import ContentTreePropLinks as ContentTreePropLinks
-    from .group_0257 import ContentDirectoryItems as ContentDirectoryItems
-    from .group_0257 import (
+    from .group_0261 import ContentTreePropLinks as ContentTreePropLinks
+    from .group_0262 import ContentDirectoryItems as ContentDirectoryItems
+    from .group_0262 import (
         ContentDirectoryItemsPropLinks as ContentDirectoryItemsPropLinks,
     )
-    from .group_0258 import ContentFile as ContentFile
-    from .group_0258 import ContentFilePropLinks as ContentFilePropLinks
-    from .group_0259 import ContentSymlink as ContentSymlink
-    from .group_0259 import ContentSymlinkPropLinks as ContentSymlinkPropLinks
-    from .group_0260 import ContentSubmodule as ContentSubmodule
-    from .group_0260 import ContentSubmodulePropLinks as ContentSubmodulePropLinks
-    from .group_0261 import FileCommit as FileCommit
-    from .group_0261 import FileCommitPropCommit as FileCommitPropCommit
-    from .group_0261 import (
+    from .group_0263 import ContentFile as ContentFile
+    from .group_0263 import ContentFilePropLinks as ContentFilePropLinks
+    from .group_0264 import ContentSymlink as ContentSymlink
+    from .group_0264 import ContentSymlinkPropLinks as ContentSymlinkPropLinks
+    from .group_0265 import ContentSubmodule as ContentSubmodule
+    from .group_0265 import ContentSubmodulePropLinks as ContentSubmodulePropLinks
+    from .group_0266 import FileCommit as FileCommit
+    from .group_0266 import FileCommitPropCommit as FileCommitPropCommit
+    from .group_0266 import (
         FileCommitPropCommitPropAuthor as FileCommitPropCommitPropAuthor,
     )
-    from .group_0261 import (
+    from .group_0266 import (
         FileCommitPropCommitPropCommitter as FileCommitPropCommitPropCommitter,
     )
-    from .group_0261 import (
+    from .group_0266 import (
         FileCommitPropCommitPropParentsItems as FileCommitPropCommitPropParentsItems,
     )
-    from .group_0261 import FileCommitPropCommitPropTree as FileCommitPropCommitPropTree
-    from .group_0261 import (
+    from .group_0266 import FileCommitPropCommitPropTree as FileCommitPropCommitPropTree
+    from .group_0266 import (
         FileCommitPropCommitPropVerification as FileCommitPropCommitPropVerification,
     )
-    from .group_0261 import FileCommitPropContent as FileCommitPropContent
-    from .group_0261 import (
+    from .group_0266 import FileCommitPropContent as FileCommitPropContent
+    from .group_0266 import (
         FileCommitPropContentPropLinks as FileCommitPropContentPropLinks,
     )
-    from .group_0262 import RepositoryRuleViolationError as RepositoryRuleViolationError
-    from .group_0262 import (
+    from .group_0267 import RepositoryRuleViolationError as RepositoryRuleViolationError
+    from .group_0267 import (
         RepositoryRuleViolationErrorPropMetadata as RepositoryRuleViolationErrorPropMetadata,
     )
-    from .group_0262 import (
+    from .group_0267 import (
         RepositoryRuleViolationErrorPropMetadataPropSecretScanning as RepositoryRuleViolationErrorPropMetadataPropSecretScanning,
     )
-    from .group_0262 import (
+    from .group_0267 import (
         RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItems as RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItems,
     )
-    from .group_0263 import Contributor as Contributor
-    from .group_0264 import DependabotAlert as DependabotAlert
-    from .group_0265 import (
+    from .group_0268 import Contributor as Contributor
+    from .group_0269 import DependabotAlert as DependabotAlert
+    from .group_0270 import (
         DependabotAlertPropDependency as DependabotAlertPropDependency,
     )
-    from .group_0266 import DependencyGraphDiffItems as DependencyGraphDiffItems
-    from .group_0266 import (
+    from .group_0271 import DependencyGraphDiffItems as DependencyGraphDiffItems
+    from .group_0271 import (
         DependencyGraphDiffItemsPropVulnerabilitiesItems as DependencyGraphDiffItemsPropVulnerabilitiesItems,
     )
-    from .group_0267 import DependencyGraphSpdxSbom as DependencyGraphSpdxSbom
-    from .group_0267 import (
+    from .group_0272 import DependencyGraphSpdxSbom as DependencyGraphSpdxSbom
+    from .group_0272 import (
         DependencyGraphSpdxSbomPropSbom as DependencyGraphSpdxSbomPropSbom,
     )
-    from .group_0267 import (
+    from .group_0272 import (
         DependencyGraphSpdxSbomPropSbomPropCreationInfo as DependencyGraphSpdxSbomPropSbomPropCreationInfo,
     )
-    from .group_0267 import (
+    from .group_0272 import (
         DependencyGraphSpdxSbomPropSbomPropPackagesItems as DependencyGraphSpdxSbomPropSbomPropPackagesItems,
     )
-    from .group_0267 import (
+    from .group_0272 import (
         DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItems as DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItems,
     )
-    from .group_0267 import (
+    from .group_0272 import (
         DependencyGraphSpdxSbomPropSbomPropRelationshipsItems as DependencyGraphSpdxSbomPropSbomPropRelationshipsItems,
     )
-    from .group_0268 import Metadata as Metadata
-    from .group_0269 import Dependency as Dependency
-    from .group_0270 import Manifest as Manifest
-    from .group_0270 import ManifestPropFile as ManifestPropFile
-    from .group_0270 import ManifestPropResolved as ManifestPropResolved
-    from .group_0271 import Snapshot as Snapshot
-    from .group_0271 import SnapshotPropDetector as SnapshotPropDetector
-    from .group_0271 import SnapshotPropJob as SnapshotPropJob
-    from .group_0271 import SnapshotPropManifests as SnapshotPropManifests
-    from .group_0272 import DeploymentStatus as DeploymentStatus
-    from .group_0273 import (
+    from .group_0273 import Metadata as Metadata
+    from .group_0274 import Dependency as Dependency
+    from .group_0275 import Manifest as Manifest
+    from .group_0275 import ManifestPropFile as ManifestPropFile
+    from .group_0275 import ManifestPropResolved as ManifestPropResolved
+    from .group_0276 import Snapshot as Snapshot
+    from .group_0276 import SnapshotPropDetector as SnapshotPropDetector
+    from .group_0276 import SnapshotPropJob as SnapshotPropJob
+    from .group_0276 import SnapshotPropManifests as SnapshotPropManifests
+    from .group_0277 import DeploymentStatus as DeploymentStatus
+    from .group_0278 import (
         DeploymentBranchPolicySettings as DeploymentBranchPolicySettings,
     )
-    from .group_0274 import Environment as Environment
-    from .group_0274 import (
+    from .group_0279 import Environment as Environment
+    from .group_0279 import (
         EnvironmentPropProtectionRulesItemsAnyof0 as EnvironmentPropProtectionRulesItemsAnyof0,
     )
-    from .group_0274 import (
+    from .group_0279 import (
         EnvironmentPropProtectionRulesItemsAnyof2 as EnvironmentPropProtectionRulesItemsAnyof2,
     )
-    from .group_0274 import (
+    from .group_0279 import (
         ReposOwnerRepoEnvironmentsGetResponse200 as ReposOwnerRepoEnvironmentsGetResponse200,
     )
-    from .group_0275 import (
+    from .group_0280 import (
         EnvironmentPropProtectionRulesItemsAnyof1 as EnvironmentPropProtectionRulesItemsAnyof1,
     )
-    from .group_0276 import (
+    from .group_0281 import (
         EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems as EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems,
     )
-    from .group_0277 import (
+    from .group_0282 import (
         DeploymentBranchPolicyNamePatternWithType as DeploymentBranchPolicyNamePatternWithType,
     )
-    from .group_0278 import (
+    from .group_0283 import (
         DeploymentBranchPolicyNamePattern as DeploymentBranchPolicyNamePattern,
     )
-    from .group_0279 import CustomDeploymentRuleApp as CustomDeploymentRuleApp
-    from .group_0280 import DeploymentProtectionRule as DeploymentProtectionRule
-    from .group_0280 import (
+    from .group_0284 import CustomDeploymentRuleApp as CustomDeploymentRuleApp
+    from .group_0285 import DeploymentProtectionRule as DeploymentProtectionRule
+    from .group_0285 import (
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200 as ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200,
     )
-    from .group_0281 import ShortBlob as ShortBlob
-    from .group_0282 import Blob as Blob
-    from .group_0283 import GitCommit as GitCommit
-    from .group_0283 import GitCommitPropAuthor as GitCommitPropAuthor
-    from .group_0283 import GitCommitPropCommitter as GitCommitPropCommitter
-    from .group_0283 import GitCommitPropParentsItems as GitCommitPropParentsItems
-    from .group_0283 import GitCommitPropTree as GitCommitPropTree
-    from .group_0283 import GitCommitPropVerification as GitCommitPropVerification
-    from .group_0284 import GitRef as GitRef
-    from .group_0284 import GitRefPropObject as GitRefPropObject
-    from .group_0285 import GitTag as GitTag
-    from .group_0285 import GitTagPropObject as GitTagPropObject
-    from .group_0285 import GitTagPropTagger as GitTagPropTagger
-    from .group_0286 import GitTree as GitTree
-    from .group_0286 import GitTreePropTreeItems as GitTreePropTreeItems
-    from .group_0287 import HookResponse as HookResponse
-    from .group_0288 import Hook as Hook
-    from .group_0289 import Import as Import
-    from .group_0289 import (
+    from .group_0286 import ShortBlob as ShortBlob
+    from .group_0287 import Blob as Blob
+    from .group_0288 import GitCommit as GitCommit
+    from .group_0288 import GitCommitPropAuthor as GitCommitPropAuthor
+    from .group_0288 import GitCommitPropCommitter as GitCommitPropCommitter
+    from .group_0288 import GitCommitPropParentsItems as GitCommitPropParentsItems
+    from .group_0288 import GitCommitPropTree as GitCommitPropTree
+    from .group_0288 import GitCommitPropVerification as GitCommitPropVerification
+    from .group_0289 import GitRef as GitRef
+    from .group_0289 import GitRefPropObject as GitRefPropObject
+    from .group_0290 import GitTag as GitTag
+    from .group_0290 import GitTagPropObject as GitTagPropObject
+    from .group_0290 import GitTagPropTagger as GitTagPropTagger
+    from .group_0291 import GitTree as GitTree
+    from .group_0291 import GitTreePropTreeItems as GitTreePropTreeItems
+    from .group_0292 import HookResponse as HookResponse
+    from .group_0293 import Hook as Hook
+    from .group_0294 import Import as Import
+    from .group_0294 import (
         ImportPropProjectChoicesItems as ImportPropProjectChoicesItems,
     )
-    from .group_0290 import PorterAuthor as PorterAuthor
-    from .group_0291 import PorterLargeFile as PorterLargeFile
-    from .group_0292 import IssueEvent as IssueEvent
-    from .group_0292 import IssueEventDismissedReview as IssueEventDismissedReview
-    from .group_0292 import IssueEventLabel as IssueEventLabel
-    from .group_0292 import IssueEventMilestone as IssueEventMilestone
-    from .group_0292 import IssueEventProjectCard as IssueEventProjectCard
-    from .group_0292 import IssueEventRename as IssueEventRename
-    from .group_0293 import LabeledIssueEvent as LabeledIssueEvent
-    from .group_0293 import LabeledIssueEventPropLabel as LabeledIssueEventPropLabel
-    from .group_0294 import UnlabeledIssueEvent as UnlabeledIssueEvent
-    from .group_0294 import UnlabeledIssueEventPropLabel as UnlabeledIssueEventPropLabel
-    from .group_0295 import AssignedIssueEvent as AssignedIssueEvent
-    from .group_0296 import UnassignedIssueEvent as UnassignedIssueEvent
-    from .group_0297 import MilestonedIssueEvent as MilestonedIssueEvent
-    from .group_0297 import (
+    from .group_0295 import PorterAuthor as PorterAuthor
+    from .group_0296 import PorterLargeFile as PorterLargeFile
+    from .group_0297 import IssueEvent as IssueEvent
+    from .group_0297 import IssueEventDismissedReview as IssueEventDismissedReview
+    from .group_0297 import IssueEventLabel as IssueEventLabel
+    from .group_0297 import IssueEventMilestone as IssueEventMilestone
+    from .group_0297 import IssueEventProjectCard as IssueEventProjectCard
+    from .group_0297 import IssueEventRename as IssueEventRename
+    from .group_0298 import LabeledIssueEvent as LabeledIssueEvent
+    from .group_0298 import LabeledIssueEventPropLabel as LabeledIssueEventPropLabel
+    from .group_0299 import UnlabeledIssueEvent as UnlabeledIssueEvent
+    from .group_0299 import UnlabeledIssueEventPropLabel as UnlabeledIssueEventPropLabel
+    from .group_0300 import AssignedIssueEvent as AssignedIssueEvent
+    from .group_0301 import UnassignedIssueEvent as UnassignedIssueEvent
+    from .group_0302 import MilestonedIssueEvent as MilestonedIssueEvent
+    from .group_0302 import (
         MilestonedIssueEventPropMilestone as MilestonedIssueEventPropMilestone,
     )
-    from .group_0298 import DemilestonedIssueEvent as DemilestonedIssueEvent
-    from .group_0298 import (
+    from .group_0303 import DemilestonedIssueEvent as DemilestonedIssueEvent
+    from .group_0303 import (
         DemilestonedIssueEventPropMilestone as DemilestonedIssueEventPropMilestone,
     )
-    from .group_0299 import RenamedIssueEvent as RenamedIssueEvent
-    from .group_0299 import RenamedIssueEventPropRename as RenamedIssueEventPropRename
-    from .group_0300 import ReviewRequestedIssueEvent as ReviewRequestedIssueEvent
-    from .group_0301 import (
+    from .group_0304 import RenamedIssueEvent as RenamedIssueEvent
+    from .group_0304 import RenamedIssueEventPropRename as RenamedIssueEventPropRename
+    from .group_0305 import ReviewRequestedIssueEvent as ReviewRequestedIssueEvent
+    from .group_0306 import (
         ReviewRequestRemovedIssueEvent as ReviewRequestRemovedIssueEvent,
     )
-    from .group_0302 import ReviewDismissedIssueEvent as ReviewDismissedIssueEvent
-    from .group_0302 import (
+    from .group_0307 import ReviewDismissedIssueEvent as ReviewDismissedIssueEvent
+    from .group_0307 import (
         ReviewDismissedIssueEventPropDismissedReview as ReviewDismissedIssueEventPropDismissedReview,
     )
-    from .group_0303 import LockedIssueEvent as LockedIssueEvent
-    from .group_0304 import AddedToProjectIssueEvent as AddedToProjectIssueEvent
-    from .group_0304 import (
+    from .group_0308 import LockedIssueEvent as LockedIssueEvent
+    from .group_0309 import AddedToProjectIssueEvent as AddedToProjectIssueEvent
+    from .group_0309 import (
         AddedToProjectIssueEventPropProjectCard as AddedToProjectIssueEventPropProjectCard,
     )
-    from .group_0305 import (
+    from .group_0310 import (
         MovedColumnInProjectIssueEvent as MovedColumnInProjectIssueEvent,
     )
-    from .group_0305 import (
+    from .group_0310 import (
         MovedColumnInProjectIssueEventPropProjectCard as MovedColumnInProjectIssueEventPropProjectCard,
     )
-    from .group_0306 import RemovedFromProjectIssueEvent as RemovedFromProjectIssueEvent
-    from .group_0306 import (
+    from .group_0311 import RemovedFromProjectIssueEvent as RemovedFromProjectIssueEvent
+    from .group_0311 import (
         RemovedFromProjectIssueEventPropProjectCard as RemovedFromProjectIssueEventPropProjectCard,
     )
-    from .group_0307 import (
+    from .group_0312 import (
         ConvertedNoteToIssueIssueEvent as ConvertedNoteToIssueIssueEvent,
     )
-    from .group_0307 import (
+    from .group_0312 import (
         ConvertedNoteToIssueIssueEventPropProjectCard as ConvertedNoteToIssueIssueEventPropProjectCard,
     )
-    from .group_0308 import TimelineCommentEvent as TimelineCommentEvent
-    from .group_0309 import TimelineCrossReferencedEvent as TimelineCrossReferencedEvent
-    from .group_0310 import (
+    from .group_0313 import TimelineCommentEvent as TimelineCommentEvent
+    from .group_0314 import TimelineCrossReferencedEvent as TimelineCrossReferencedEvent
+    from .group_0315 import (
         TimelineCrossReferencedEventPropSource as TimelineCrossReferencedEventPropSource,
     )
-    from .group_0311 import TimelineCommittedEvent as TimelineCommittedEvent
-    from .group_0311 import (
+    from .group_0316 import TimelineCommittedEvent as TimelineCommittedEvent
+    from .group_0316 import (
         TimelineCommittedEventPropAuthor as TimelineCommittedEventPropAuthor,
     )
-    from .group_0311 import (
+    from .group_0316 import (
         TimelineCommittedEventPropCommitter as TimelineCommittedEventPropCommitter,
     )
-    from .group_0311 import (
+    from .group_0316 import (
         TimelineCommittedEventPropParentsItems as TimelineCommittedEventPropParentsItems,
     )
-    from .group_0311 import (
+    from .group_0316 import (
         TimelineCommittedEventPropTree as TimelineCommittedEventPropTree,
     )
-    from .group_0311 import (
+    from .group_0316 import (
         TimelineCommittedEventPropVerification as TimelineCommittedEventPropVerification,
     )
-    from .group_0312 import TimelineReviewedEvent as TimelineReviewedEvent
-    from .group_0312 import (
+    from .group_0317 import TimelineReviewedEvent as TimelineReviewedEvent
+    from .group_0317 import (
         TimelineReviewedEventPropLinks as TimelineReviewedEventPropLinks,
     )
-    from .group_0312 import (
+    from .group_0317 import (
         TimelineReviewedEventPropLinksPropHtml as TimelineReviewedEventPropLinksPropHtml,
     )
-    from .group_0312 import (
+    from .group_0317 import (
         TimelineReviewedEventPropLinksPropPullRequest as TimelineReviewedEventPropLinksPropPullRequest,
     )
-    from .group_0313 import PullRequestReviewComment as PullRequestReviewComment
-    from .group_0313 import (
+    from .group_0318 import PullRequestReviewComment as PullRequestReviewComment
+    from .group_0318 import (
         PullRequestReviewCommentPropLinks as PullRequestReviewCommentPropLinks,
     )
-    from .group_0313 import (
+    from .group_0318 import (
         PullRequestReviewCommentPropLinksPropHtml as PullRequestReviewCommentPropLinksPropHtml,
     )
-    from .group_0313 import (
+    from .group_0318 import (
         PullRequestReviewCommentPropLinksPropPullRequest as PullRequestReviewCommentPropLinksPropPullRequest,
     )
-    from .group_0313 import (
+    from .group_0318 import (
         PullRequestReviewCommentPropLinksPropSelf as PullRequestReviewCommentPropLinksPropSelf,
     )
-    from .group_0313 import TimelineLineCommentedEvent as TimelineLineCommentedEvent
-    from .group_0314 import TimelineAssignedIssueEvent as TimelineAssignedIssueEvent
-    from .group_0315 import TimelineUnassignedIssueEvent as TimelineUnassignedIssueEvent
-    from .group_0316 import StateChangeIssueEvent as StateChangeIssueEvent
-    from .group_0317 import DeployKey as DeployKey
-    from .group_0318 import Language as Language
-    from .group_0319 import LicenseContent as LicenseContent
-    from .group_0319 import LicenseContentPropLinks as LicenseContentPropLinks
-    from .group_0320 import MergedUpstream as MergedUpstream
-    from .group_0321 import Page as Page
-    from .group_0321 import PagesHttpsCertificate as PagesHttpsCertificate
-    from .group_0321 import PagesSourceHash as PagesSourceHash
-    from .group_0322 import PageBuild as PageBuild
-    from .group_0322 import PageBuildPropError as PageBuildPropError
-    from .group_0323 import PageBuildStatus as PageBuildStatus
-    from .group_0324 import PageDeployment as PageDeployment
-    from .group_0325 import PagesDeploymentStatus as PagesDeploymentStatus
-    from .group_0326 import PagesHealthCheck as PagesHealthCheck
-    from .group_0326 import (
+    from .group_0318 import TimelineLineCommentedEvent as TimelineLineCommentedEvent
+    from .group_0319 import TimelineAssignedIssueEvent as TimelineAssignedIssueEvent
+    from .group_0320 import TimelineUnassignedIssueEvent as TimelineUnassignedIssueEvent
+    from .group_0321 import StateChangeIssueEvent as StateChangeIssueEvent
+    from .group_0322 import DeployKey as DeployKey
+    from .group_0323 import Language as Language
+    from .group_0324 import LicenseContent as LicenseContent
+    from .group_0324 import LicenseContentPropLinks as LicenseContentPropLinks
+    from .group_0325 import MergedUpstream as MergedUpstream
+    from .group_0326 import Page as Page
+    from .group_0326 import PagesHttpsCertificate as PagesHttpsCertificate
+    from .group_0326 import PagesSourceHash as PagesSourceHash
+    from .group_0327 import PageBuild as PageBuild
+    from .group_0327 import PageBuildPropError as PageBuildPropError
+    from .group_0328 import PageBuildStatus as PageBuildStatus
+    from .group_0329 import PageDeployment as PageDeployment
+    from .group_0330 import PagesDeploymentStatus as PagesDeploymentStatus
+    from .group_0331 import PagesHealthCheck as PagesHealthCheck
+    from .group_0331 import (
         PagesHealthCheckPropAltDomain as PagesHealthCheckPropAltDomain,
     )
-    from .group_0326 import PagesHealthCheckPropDomain as PagesHealthCheckPropDomain
-    from .group_0327 import PullRequest as PullRequest
-    from .group_0328 import PullRequestPropLabelsItems as PullRequestPropLabelsItems
-    from .group_0329 import PullRequestPropBase as PullRequestPropBase
-    from .group_0329 import PullRequestPropHead as PullRequestPropHead
-    from .group_0330 import PullRequestPropLinks as PullRequestPropLinks
-    from .group_0331 import PullRequestMergeResult as PullRequestMergeResult
-    from .group_0332 import PullRequestReviewRequest as PullRequestReviewRequest
-    from .group_0333 import PullRequestReview as PullRequestReview
-    from .group_0333 import PullRequestReviewPropLinks as PullRequestReviewPropLinks
-    from .group_0333 import (
+    from .group_0331 import PagesHealthCheckPropDomain as PagesHealthCheckPropDomain
+    from .group_0332 import PullRequest as PullRequest
+    from .group_0333 import PullRequestPropLabelsItems as PullRequestPropLabelsItems
+    from .group_0334 import PullRequestPropBase as PullRequestPropBase
+    from .group_0334 import PullRequestPropHead as PullRequestPropHead
+    from .group_0335 import PullRequestPropLinks as PullRequestPropLinks
+    from .group_0336 import PullRequestMergeResult as PullRequestMergeResult
+    from .group_0337 import PullRequestReviewRequest as PullRequestReviewRequest
+    from .group_0338 import PullRequestReview as PullRequestReview
+    from .group_0338 import PullRequestReviewPropLinks as PullRequestReviewPropLinks
+    from .group_0338 import (
         PullRequestReviewPropLinksPropHtml as PullRequestReviewPropLinksPropHtml,
     )
-    from .group_0333 import (
+    from .group_0338 import (
         PullRequestReviewPropLinksPropPullRequest as PullRequestReviewPropLinksPropPullRequest,
     )
-    from .group_0334 import ReviewComment as ReviewComment
-    from .group_0335 import ReviewCommentPropLinks as ReviewCommentPropLinks
-    from .group_0336 import ReleaseAsset as ReleaseAsset
-    from .group_0337 import Release as Release
-    from .group_0338 import ReleaseNotesContent as ReleaseNotesContent
-    from .group_0339 import RepositoryRuleRulesetInfo as RepositoryRuleRulesetInfo
-    from .group_0340 import RepositoryRuleDetailedOneof0 as RepositoryRuleDetailedOneof0
-    from .group_0341 import RepositoryRuleDetailedOneof1 as RepositoryRuleDetailedOneof1
-    from .group_0342 import RepositoryRuleDetailedOneof2 as RepositoryRuleDetailedOneof2
-    from .group_0343 import RepositoryRuleDetailedOneof3 as RepositoryRuleDetailedOneof3
-    from .group_0344 import RepositoryRuleDetailedOneof4 as RepositoryRuleDetailedOneof4
-    from .group_0345 import RepositoryRuleDetailedOneof5 as RepositoryRuleDetailedOneof5
-    from .group_0346 import RepositoryRuleDetailedOneof6 as RepositoryRuleDetailedOneof6
-    from .group_0347 import RepositoryRuleDetailedOneof7 as RepositoryRuleDetailedOneof7
-    from .group_0348 import RepositoryRuleDetailedOneof8 as RepositoryRuleDetailedOneof8
-    from .group_0349 import RepositoryRuleDetailedOneof9 as RepositoryRuleDetailedOneof9
-    from .group_0350 import (
+    from .group_0339 import ReviewComment as ReviewComment
+    from .group_0340 import ReviewCommentPropLinks as ReviewCommentPropLinks
+    from .group_0341 import ReleaseAsset as ReleaseAsset
+    from .group_0342 import Release as Release
+    from .group_0343 import ReleaseNotesContent as ReleaseNotesContent
+    from .group_0344 import RepositoryRuleRulesetInfo as RepositoryRuleRulesetInfo
+    from .group_0345 import RepositoryRuleDetailedOneof0 as RepositoryRuleDetailedOneof0
+    from .group_0346 import RepositoryRuleDetailedOneof1 as RepositoryRuleDetailedOneof1
+    from .group_0347 import RepositoryRuleDetailedOneof2 as RepositoryRuleDetailedOneof2
+    from .group_0348 import RepositoryRuleDetailedOneof3 as RepositoryRuleDetailedOneof3
+    from .group_0349 import RepositoryRuleDetailedOneof4 as RepositoryRuleDetailedOneof4
+    from .group_0350 import RepositoryRuleDetailedOneof5 as RepositoryRuleDetailedOneof5
+    from .group_0351 import RepositoryRuleDetailedOneof6 as RepositoryRuleDetailedOneof6
+    from .group_0352 import RepositoryRuleDetailedOneof7 as RepositoryRuleDetailedOneof7
+    from .group_0353 import RepositoryRuleDetailedOneof8 as RepositoryRuleDetailedOneof8
+    from .group_0354 import RepositoryRuleDetailedOneof9 as RepositoryRuleDetailedOneof9
+    from .group_0355 import (
         RepositoryRuleDetailedOneof10 as RepositoryRuleDetailedOneof10,
     )
-    from .group_0351 import (
+    from .group_0356 import (
         RepositoryRuleDetailedOneof11 as RepositoryRuleDetailedOneof11,
     )
-    from .group_0352 import (
+    from .group_0357 import (
         RepositoryRuleDetailedOneof12 as RepositoryRuleDetailedOneof12,
     )
-    from .group_0353 import (
+    from .group_0358 import (
         RepositoryRuleDetailedOneof13 as RepositoryRuleDetailedOneof13,
     )
-    from .group_0354 import (
+    from .group_0359 import (
         RepositoryRuleDetailedOneof14 as RepositoryRuleDetailedOneof14,
     )
-    from .group_0355 import (
+    from .group_0360 import (
         RepositoryRuleDetailedOneof15 as RepositoryRuleDetailedOneof15,
     )
-    from .group_0356 import (
+    from .group_0361 import (
         RepositoryRuleDetailedOneof16 as RepositoryRuleDetailedOneof16,
     )
-    from .group_0357 import SecretScanningAlert as SecretScanningAlert
-    from .group_0358 import (
+    from .group_0362 import SecretScanningAlert as SecretScanningAlert
+    from .group_0363 import (
         SecretScanningPushProtectionBypass as SecretScanningPushProtectionBypass,
     )
-    from .group_0359 import SecretScanningScan as SecretScanningScan
-    from .group_0359 import SecretScanningScanHistory as SecretScanningScanHistory
-    from .group_0359 import (
+    from .group_0364 import SecretScanningScan as SecretScanningScan
+    from .group_0364 import SecretScanningScanHistory as SecretScanningScanHistory
+    from .group_0364 import (
         SecretScanningScanHistoryPropCustomPatternBackfillScansItems as SecretScanningScanHistoryPropCustomPatternBackfillScansItems,
     )
-    from .group_0360 import (
+    from .group_0365 import (
         SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1 as SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1,
     )
-    from .group_0361 import RepositoryAdvisoryCreate as RepositoryAdvisoryCreate
-    from .group_0361 import (
+    from .group_0366 import RepositoryAdvisoryCreate as RepositoryAdvisoryCreate
+    from .group_0366 import (
         RepositoryAdvisoryCreatePropCreditsItems as RepositoryAdvisoryCreatePropCreditsItems,
     )
-    from .group_0361 import (
+    from .group_0366 import (
         RepositoryAdvisoryCreatePropVulnerabilitiesItems as RepositoryAdvisoryCreatePropVulnerabilitiesItems,
     )
-    from .group_0361 import (
+    from .group_0366 import (
         RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackage as RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackage,
     )
-    from .group_0362 import (
+    from .group_0367 import (
         PrivateVulnerabilityReportCreate as PrivateVulnerabilityReportCreate,
     )
-    from .group_0362 import (
+    from .group_0367 import (
         PrivateVulnerabilityReportCreatePropVulnerabilitiesItems as PrivateVulnerabilityReportCreatePropVulnerabilitiesItems,
     )
-    from .group_0362 import (
+    from .group_0367 import (
         PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackage as PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackage,
     )
-    from .group_0363 import RepositoryAdvisoryUpdate as RepositoryAdvisoryUpdate
-    from .group_0363 import (
+    from .group_0368 import RepositoryAdvisoryUpdate as RepositoryAdvisoryUpdate
+    from .group_0368 import (
         RepositoryAdvisoryUpdatePropCreditsItems as RepositoryAdvisoryUpdatePropCreditsItems,
     )
-    from .group_0363 import (
+    from .group_0368 import (
         RepositoryAdvisoryUpdatePropVulnerabilitiesItems as RepositoryAdvisoryUpdatePropVulnerabilitiesItems,
     )
-    from .group_0363 import (
+    from .group_0368 import (
         RepositoryAdvisoryUpdatePropVulnerabilitiesItemsPropPackage as RepositoryAdvisoryUpdatePropVulnerabilitiesItemsPropPackage,
     )
-    from .group_0364 import Stargazer as Stargazer
-    from .group_0365 import CommitActivity as CommitActivity
-    from .group_0366 import ContributorActivity as ContributorActivity
-    from .group_0366 import (
+    from .group_0369 import Stargazer as Stargazer
+    from .group_0370 import CommitActivity as CommitActivity
+    from .group_0371 import ContributorActivity as ContributorActivity
+    from .group_0371 import (
         ContributorActivityPropWeeksItems as ContributorActivityPropWeeksItems,
     )
-    from .group_0367 import ParticipationStats as ParticipationStats
-    from .group_0368 import RepositorySubscription as RepositorySubscription
-    from .group_0369 import Tag as Tag
-    from .group_0369 import TagPropCommit as TagPropCommit
-    from .group_0370 import TagProtection as TagProtection
-    from .group_0371 import Topic as Topic
-    from .group_0372 import Traffic as Traffic
-    from .group_0373 import CloneTraffic as CloneTraffic
-    from .group_0374 import ContentTraffic as ContentTraffic
-    from .group_0375 import ReferrerTraffic as ReferrerTraffic
-    from .group_0376 import ViewTraffic as ViewTraffic
-    from .group_0377 import SearchResultTextMatchesItems as SearchResultTextMatchesItems
-    from .group_0377 import (
+    from .group_0372 import ParticipationStats as ParticipationStats
+    from .group_0373 import RepositorySubscription as RepositorySubscription
+    from .group_0374 import Tag as Tag
+    from .group_0374 import TagPropCommit as TagPropCommit
+    from .group_0375 import TagProtection as TagProtection
+    from .group_0376 import Topic as Topic
+    from .group_0377 import Traffic as Traffic
+    from .group_0378 import CloneTraffic as CloneTraffic
+    from .group_0379 import ContentTraffic as ContentTraffic
+    from .group_0380 import ReferrerTraffic as ReferrerTraffic
+    from .group_0381 import ViewTraffic as ViewTraffic
+    from .group_0382 import SearchResultTextMatchesItems as SearchResultTextMatchesItems
+    from .group_0382 import (
         SearchResultTextMatchesItemsPropMatchesItems as SearchResultTextMatchesItemsPropMatchesItems,
     )
-    from .group_0378 import CodeSearchResultItem as CodeSearchResultItem
-    from .group_0378 import SearchCodeGetResponse200 as SearchCodeGetResponse200
-    from .group_0379 import CommitSearchResultItem as CommitSearchResultItem
-    from .group_0379 import (
+    from .group_0383 import CodeSearchResultItem as CodeSearchResultItem
+    from .group_0383 import SearchCodeGetResponse200 as SearchCodeGetResponse200
+    from .group_0384 import CommitSearchResultItem as CommitSearchResultItem
+    from .group_0384 import (
         CommitSearchResultItemPropParentsItems as CommitSearchResultItemPropParentsItems,
     )
-    from .group_0379 import SearchCommitsGetResponse200 as SearchCommitsGetResponse200
-    from .group_0380 import (
+    from .group_0384 import SearchCommitsGetResponse200 as SearchCommitsGetResponse200
+    from .group_0385 import (
         CommitSearchResultItemPropCommit as CommitSearchResultItemPropCommit,
     )
-    from .group_0380 import (
+    from .group_0385 import (
         CommitSearchResultItemPropCommitPropAuthor as CommitSearchResultItemPropCommitPropAuthor,
     )
-    from .group_0380 import (
+    from .group_0385 import (
         CommitSearchResultItemPropCommitPropTree as CommitSearchResultItemPropCommitPropTree,
     )
-    from .group_0381 import IssueSearchResultItem as IssueSearchResultItem
-    from .group_0381 import (
+    from .group_0386 import IssueSearchResultItem as IssueSearchResultItem
+    from .group_0386 import (
         IssueSearchResultItemPropLabelsItems as IssueSearchResultItemPropLabelsItems,
     )
-    from .group_0381 import (
+    from .group_0386 import (
         IssueSearchResultItemPropPullRequest as IssueSearchResultItemPropPullRequest,
     )
-    from .group_0381 import (
+    from .group_0386 import (
         IssueSearchResultItemPropSubIssuesSummary as IssueSearchResultItemPropSubIssuesSummary,
     )
-    from .group_0381 import SearchIssuesGetResponse200 as SearchIssuesGetResponse200
-    from .group_0382 import LabelSearchResultItem as LabelSearchResultItem
-    from .group_0382 import SearchLabelsGetResponse200 as SearchLabelsGetResponse200
-    from .group_0383 import RepoSearchResultItem as RepoSearchResultItem
-    from .group_0383 import (
+    from .group_0386 import SearchIssuesGetResponse200 as SearchIssuesGetResponse200
+    from .group_0387 import LabelSearchResultItem as LabelSearchResultItem
+    from .group_0387 import SearchLabelsGetResponse200 as SearchLabelsGetResponse200
+    from .group_0388 import RepoSearchResultItem as RepoSearchResultItem
+    from .group_0388 import (
         RepoSearchResultItemPropPermissions as RepoSearchResultItemPropPermissions,
     )
-    from .group_0383 import (
+    from .group_0388 import (
         SearchRepositoriesGetResponse200 as SearchRepositoriesGetResponse200,
     )
-    from .group_0384 import SearchTopicsGetResponse200 as SearchTopicsGetResponse200
-    from .group_0384 import TopicSearchResultItem as TopicSearchResultItem
-    from .group_0384 import (
+    from .group_0389 import SearchTopicsGetResponse200 as SearchTopicsGetResponse200
+    from .group_0389 import TopicSearchResultItem as TopicSearchResultItem
+    from .group_0389 import (
         TopicSearchResultItemPropAliasesItems as TopicSearchResultItemPropAliasesItems,
     )
-    from .group_0384 import (
+    from .group_0389 import (
         TopicSearchResultItemPropAliasesItemsPropTopicRelation as TopicSearchResultItemPropAliasesItemsPropTopicRelation,
     )
-    from .group_0384 import (
+    from .group_0389 import (
         TopicSearchResultItemPropRelatedItems as TopicSearchResultItemPropRelatedItems,
     )
-    from .group_0384 import (
+    from .group_0389 import (
         TopicSearchResultItemPropRelatedItemsPropTopicRelation as TopicSearchResultItemPropRelatedItemsPropTopicRelation,
     )
-    from .group_0385 import SearchUsersGetResponse200 as SearchUsersGetResponse200
-    from .group_0385 import UserSearchResultItem as UserSearchResultItem
-    from .group_0386 import PrivateUser as PrivateUser
-    from .group_0386 import PrivateUserPropPlan as PrivateUserPropPlan
-    from .group_0387 import CodespacesUserPublicKey as CodespacesUserPublicKey
-    from .group_0388 import CodespaceExportDetails as CodespaceExportDetails
-    from .group_0389 import CodespaceWithFullRepository as CodespaceWithFullRepository
-    from .group_0389 import (
+    from .group_0390 import SearchUsersGetResponse200 as SearchUsersGetResponse200
+    from .group_0390 import UserSearchResultItem as UserSearchResultItem
+    from .group_0391 import PrivateUser as PrivateUser
+    from .group_0391 import PrivateUserPropPlan as PrivateUserPropPlan
+    from .group_0392 import CodespacesUserPublicKey as CodespacesUserPublicKey
+    from .group_0393 import CodespaceExportDetails as CodespaceExportDetails
+    from .group_0394 import CodespaceWithFullRepository as CodespaceWithFullRepository
+    from .group_0394 import (
         CodespaceWithFullRepositoryPropGitStatus as CodespaceWithFullRepositoryPropGitStatus,
     )
-    from .group_0389 import (
+    from .group_0394 import (
         CodespaceWithFullRepositoryPropRuntimeConstraints as CodespaceWithFullRepositoryPropRuntimeConstraints,
     )
-    from .group_0390 import Email as Email
-    from .group_0391 import GpgKey as GpgKey
-    from .group_0391 import GpgKeyPropEmailsItems as GpgKeyPropEmailsItems
-    from .group_0391 import GpgKeyPropSubkeysItems as GpgKeyPropSubkeysItems
-    from .group_0391 import (
+    from .group_0395 import Email as Email
+    from .group_0396 import GpgKey as GpgKey
+    from .group_0396 import GpgKeyPropEmailsItems as GpgKeyPropEmailsItems
+    from .group_0396 import GpgKeyPropSubkeysItems as GpgKeyPropSubkeysItems
+    from .group_0396 import (
         GpgKeyPropSubkeysItemsPropEmailsItems as GpgKeyPropSubkeysItemsPropEmailsItems,
     )
-    from .group_0392 import Key as Key
-    from .group_0393 import MarketplaceAccount as MarketplaceAccount
-    from .group_0393 import UserMarketplacePurchase as UserMarketplacePurchase
-    from .group_0394 import SocialAccount as SocialAccount
-    from .group_0395 import SshSigningKey as SshSigningKey
-    from .group_0396 import StarredRepository as StarredRepository
-    from .group_0397 import Hovercard as Hovercard
-    from .group_0397 import HovercardPropContextsItems as HovercardPropContextsItems
-    from .group_0398 import KeySimple as KeySimple
-    from .group_0399 import EnterpriseWebhooks as EnterpriseWebhooks
-    from .group_0400 import SimpleInstallation as SimpleInstallation
-    from .group_0401 import OrganizationSimpleWebhooks as OrganizationSimpleWebhooks
-    from .group_0402 import RepositoryWebhooks as RepositoryWebhooks
-    from .group_0402 import (
+    from .group_0397 import Key as Key
+    from .group_0398 import MarketplaceAccount as MarketplaceAccount
+    from .group_0398 import UserMarketplacePurchase as UserMarketplacePurchase
+    from .group_0399 import SocialAccount as SocialAccount
+    from .group_0400 import SshSigningKey as SshSigningKey
+    from .group_0401 import StarredRepository as StarredRepository
+    from .group_0402 import Hovercard as Hovercard
+    from .group_0402 import HovercardPropContextsItems as HovercardPropContextsItems
+    from .group_0403 import KeySimple as KeySimple
+    from .group_0404 import EnterpriseWebhooks as EnterpriseWebhooks
+    from .group_0405 import SimpleInstallation as SimpleInstallation
+    from .group_0406 import OrganizationSimpleWebhooks as OrganizationSimpleWebhooks
+    from .group_0407 import RepositoryWebhooks as RepositoryWebhooks
+    from .group_0407 import (
         RepositoryWebhooksPropCustomProperties as RepositoryWebhooksPropCustomProperties,
     )
-    from .group_0402 import (
+    from .group_0407 import (
         RepositoryWebhooksPropPermissions as RepositoryWebhooksPropPermissions,
     )
-    from .group_0402 import (
+    from .group_0407 import (
         RepositoryWebhooksPropTemplateRepository as RepositoryWebhooksPropTemplateRepository,
     )
-    from .group_0402 import (
+    from .group_0407 import (
         RepositoryWebhooksPropTemplateRepositoryPropOwner as RepositoryWebhooksPropTemplateRepositoryPropOwner,
     )
-    from .group_0402 import (
+    from .group_0407 import (
         RepositoryWebhooksPropTemplateRepositoryPropPermissions as RepositoryWebhooksPropTemplateRepositoryPropPermissions,
     )
-    from .group_0403 import WebhooksRule as WebhooksRule
-    from .group_0404 import SimpleCheckSuite as SimpleCheckSuite
-    from .group_0405 import CheckRunWithSimpleCheckSuite as CheckRunWithSimpleCheckSuite
-    from .group_0405 import (
+    from .group_0408 import WebhooksRule as WebhooksRule
+    from .group_0409 import SimpleCheckSuite as SimpleCheckSuite
+    from .group_0410 import CheckRunWithSimpleCheckSuite as CheckRunWithSimpleCheckSuite
+    from .group_0410 import (
         CheckRunWithSimpleCheckSuitePropOutput as CheckRunWithSimpleCheckSuitePropOutput,
     )
-    from .group_0406 import WebhooksDeployKey as WebhooksDeployKey
-    from .group_0407 import WebhooksWorkflow as WebhooksWorkflow
-    from .group_0408 import WebhooksApprover as WebhooksApprover
-    from .group_0408 import WebhooksReviewersItems as WebhooksReviewersItems
-    from .group_0408 import (
+    from .group_0411 import WebhooksDeployKey as WebhooksDeployKey
+    from .group_0412 import WebhooksWorkflow as WebhooksWorkflow
+    from .group_0413 import WebhooksApprover as WebhooksApprover
+    from .group_0413 import WebhooksReviewersItems as WebhooksReviewersItems
+    from .group_0413 import (
         WebhooksReviewersItemsPropReviewer as WebhooksReviewersItemsPropReviewer,
     )
-    from .group_0409 import WebhooksWorkflowJobRun as WebhooksWorkflowJobRun
-    from .group_0410 import WebhooksUser as WebhooksUser
-    from .group_0411 import WebhooksAnswer as WebhooksAnswer
-    from .group_0411 import WebhooksAnswerPropReactions as WebhooksAnswerPropReactions
-    from .group_0411 import WebhooksAnswerPropUser as WebhooksAnswerPropUser
-    from .group_0412 import Discussion as Discussion
-    from .group_0412 import DiscussionPropAnswerChosenBy as DiscussionPropAnswerChosenBy
-    from .group_0412 import DiscussionPropCategory as DiscussionPropCategory
-    from .group_0412 import DiscussionPropReactions as DiscussionPropReactions
-    from .group_0412 import DiscussionPropUser as DiscussionPropUser
-    from .group_0412 import Label as Label
-    from .group_0413 import WebhooksComment as WebhooksComment
-    from .group_0413 import WebhooksCommentPropReactions as WebhooksCommentPropReactions
-    from .group_0413 import WebhooksCommentPropUser as WebhooksCommentPropUser
-    from .group_0414 import WebhooksLabel as WebhooksLabel
-    from .group_0415 import WebhooksRepositoriesItems as WebhooksRepositoriesItems
-    from .group_0416 import (
+    from .group_0414 import WebhooksWorkflowJobRun as WebhooksWorkflowJobRun
+    from .group_0415 import WebhooksUser as WebhooksUser
+    from .group_0416 import WebhooksAnswer as WebhooksAnswer
+    from .group_0416 import WebhooksAnswerPropReactions as WebhooksAnswerPropReactions
+    from .group_0416 import WebhooksAnswerPropUser as WebhooksAnswerPropUser
+    from .group_0417 import Discussion as Discussion
+    from .group_0417 import DiscussionPropAnswerChosenBy as DiscussionPropAnswerChosenBy
+    from .group_0417 import DiscussionPropCategory as DiscussionPropCategory
+    from .group_0417 import DiscussionPropReactions as DiscussionPropReactions
+    from .group_0417 import DiscussionPropUser as DiscussionPropUser
+    from .group_0417 import Label as Label
+    from .group_0418 import WebhooksComment as WebhooksComment
+    from .group_0418 import WebhooksCommentPropReactions as WebhooksCommentPropReactions
+    from .group_0418 import WebhooksCommentPropUser as WebhooksCommentPropUser
+    from .group_0419 import WebhooksLabel as WebhooksLabel
+    from .group_0420 import WebhooksRepositoriesItems as WebhooksRepositoriesItems
+    from .group_0421 import (
         WebhooksRepositoriesAddedItems as WebhooksRepositoriesAddedItems,
     )
-    from .group_0417 import WebhooksIssueComment as WebhooksIssueComment
-    from .group_0417 import (
+    from .group_0422 import WebhooksIssueComment as WebhooksIssueComment
+    from .group_0422 import (
         WebhooksIssueCommentPropReactions as WebhooksIssueCommentPropReactions,
     )
-    from .group_0417 import WebhooksIssueCommentPropUser as WebhooksIssueCommentPropUser
-    from .group_0418 import WebhooksChanges as WebhooksChanges
-    from .group_0418 import WebhooksChangesPropBody as WebhooksChangesPropBody
-    from .group_0419 import WebhooksIssue as WebhooksIssue
-    from .group_0419 import WebhooksIssuePropAssignee as WebhooksIssuePropAssignee
-    from .group_0419 import (
+    from .group_0422 import WebhooksIssueCommentPropUser as WebhooksIssueCommentPropUser
+    from .group_0423 import WebhooksChanges as WebhooksChanges
+    from .group_0423 import WebhooksChangesPropBody as WebhooksChangesPropBody
+    from .group_0424 import WebhooksIssue as WebhooksIssue
+    from .group_0424 import WebhooksIssuePropAssignee as WebhooksIssuePropAssignee
+    from .group_0424 import (
         WebhooksIssuePropAssigneesItems as WebhooksIssuePropAssigneesItems,
     )
-    from .group_0419 import WebhooksIssuePropLabelsItems as WebhooksIssuePropLabelsItems
-    from .group_0419 import WebhooksIssuePropMilestone as WebhooksIssuePropMilestone
-    from .group_0419 import (
+    from .group_0424 import WebhooksIssuePropLabelsItems as WebhooksIssuePropLabelsItems
+    from .group_0424 import WebhooksIssuePropMilestone as WebhooksIssuePropMilestone
+    from .group_0424 import (
         WebhooksIssuePropMilestonePropCreator as WebhooksIssuePropMilestonePropCreator,
     )
-    from .group_0419 import (
+    from .group_0424 import (
         WebhooksIssuePropPerformedViaGithubApp as WebhooksIssuePropPerformedViaGithubApp,
     )
-    from .group_0419 import (
+    from .group_0424 import (
         WebhooksIssuePropPerformedViaGithubAppPropOwner as WebhooksIssuePropPerformedViaGithubAppPropOwner,
     )
-    from .group_0419 import (
+    from .group_0424 import (
         WebhooksIssuePropPerformedViaGithubAppPropPermissions as WebhooksIssuePropPerformedViaGithubAppPropPermissions,
     )
-    from .group_0419 import WebhooksIssuePropPullRequest as WebhooksIssuePropPullRequest
-    from .group_0419 import WebhooksIssuePropReactions as WebhooksIssuePropReactions
-    from .group_0419 import (
+    from .group_0424 import WebhooksIssuePropPullRequest as WebhooksIssuePropPullRequest
+    from .group_0424 import WebhooksIssuePropReactions as WebhooksIssuePropReactions
+    from .group_0424 import (
         WebhooksIssuePropSubIssuesSummary as WebhooksIssuePropSubIssuesSummary,
     )
-    from .group_0419 import WebhooksIssuePropUser as WebhooksIssuePropUser
-    from .group_0420 import WebhooksMilestone as WebhooksMilestone
-    from .group_0420 import WebhooksMilestonePropCreator as WebhooksMilestonePropCreator
-    from .group_0421 import WebhooksIssue2 as WebhooksIssue2
-    from .group_0421 import WebhooksIssue2PropAssignee as WebhooksIssue2PropAssignee
-    from .group_0421 import (
+    from .group_0424 import WebhooksIssuePropUser as WebhooksIssuePropUser
+    from .group_0425 import WebhooksMilestone as WebhooksMilestone
+    from .group_0425 import WebhooksMilestonePropCreator as WebhooksMilestonePropCreator
+    from .group_0426 import WebhooksIssue2 as WebhooksIssue2
+    from .group_0426 import WebhooksIssue2PropAssignee as WebhooksIssue2PropAssignee
+    from .group_0426 import (
         WebhooksIssue2PropAssigneesItems as WebhooksIssue2PropAssigneesItems,
     )
-    from .group_0421 import (
+    from .group_0426 import (
         WebhooksIssue2PropLabelsItems as WebhooksIssue2PropLabelsItems,
     )
-    from .group_0421 import WebhooksIssue2PropMilestone as WebhooksIssue2PropMilestone
-    from .group_0421 import (
+    from .group_0426 import WebhooksIssue2PropMilestone as WebhooksIssue2PropMilestone
+    from .group_0426 import (
         WebhooksIssue2PropMilestonePropCreator as WebhooksIssue2PropMilestonePropCreator,
     )
-    from .group_0421 import (
+    from .group_0426 import (
         WebhooksIssue2PropPerformedViaGithubApp as WebhooksIssue2PropPerformedViaGithubApp,
     )
-    from .group_0421 import (
+    from .group_0426 import (
         WebhooksIssue2PropPerformedViaGithubAppPropOwner as WebhooksIssue2PropPerformedViaGithubAppPropOwner,
     )
-    from .group_0421 import (
+    from .group_0426 import (
         WebhooksIssue2PropPerformedViaGithubAppPropPermissions as WebhooksIssue2PropPerformedViaGithubAppPropPermissions,
     )
-    from .group_0421 import (
+    from .group_0426 import (
         WebhooksIssue2PropPullRequest as WebhooksIssue2PropPullRequest,
     )
-    from .group_0421 import WebhooksIssue2PropReactions as WebhooksIssue2PropReactions
-    from .group_0421 import (
+    from .group_0426 import WebhooksIssue2PropReactions as WebhooksIssue2PropReactions
+    from .group_0426 import (
         WebhooksIssue2PropSubIssuesSummary as WebhooksIssue2PropSubIssuesSummary,
     )
-    from .group_0421 import WebhooksIssue2PropUser as WebhooksIssue2PropUser
-    from .group_0422 import WebhooksUserMannequin as WebhooksUserMannequin
-    from .group_0423 import WebhooksMarketplacePurchase as WebhooksMarketplacePurchase
-    from .group_0423 import (
+    from .group_0426 import WebhooksIssue2PropUser as WebhooksIssue2PropUser
+    from .group_0427 import WebhooksUserMannequin as WebhooksUserMannequin
+    from .group_0428 import WebhooksMarketplacePurchase as WebhooksMarketplacePurchase
+    from .group_0428 import (
         WebhooksMarketplacePurchasePropAccount as WebhooksMarketplacePurchasePropAccount,
     )
-    from .group_0423 import (
+    from .group_0428 import (
         WebhooksMarketplacePurchasePropPlan as WebhooksMarketplacePurchasePropPlan,
     )
-    from .group_0424 import (
+    from .group_0429 import (
         WebhooksPreviousMarketplacePurchase as WebhooksPreviousMarketplacePurchase,
     )
-    from .group_0424 import (
+    from .group_0429 import (
         WebhooksPreviousMarketplacePurchasePropAccount as WebhooksPreviousMarketplacePurchasePropAccount,
     )
-    from .group_0424 import (
+    from .group_0429 import (
         WebhooksPreviousMarketplacePurchasePropPlan as WebhooksPreviousMarketplacePurchasePropPlan,
     )
-    from .group_0425 import WebhooksTeam as WebhooksTeam
-    from .group_0425 import WebhooksTeamPropParent as WebhooksTeamPropParent
-    from .group_0426 import MergeGroup as MergeGroup
-    from .group_0427 import WebhooksMilestone3 as WebhooksMilestone3
-    from .group_0427 import (
+    from .group_0430 import WebhooksTeam as WebhooksTeam
+    from .group_0430 import WebhooksTeamPropParent as WebhooksTeamPropParent
+    from .group_0431 import MergeGroup as MergeGroup
+    from .group_0432 import WebhooksMilestone3 as WebhooksMilestone3
+    from .group_0432 import (
         WebhooksMilestone3PropCreator as WebhooksMilestone3PropCreator,
     )
-    from .group_0428 import WebhooksMembership as WebhooksMembership
-    from .group_0428 import WebhooksMembershipPropUser as WebhooksMembershipPropUser
-    from .group_0429 import PersonalAccessTokenRequest as PersonalAccessTokenRequest
-    from .group_0429 import (
+    from .group_0433 import WebhooksMembership as WebhooksMembership
+    from .group_0433 import WebhooksMembershipPropUser as WebhooksMembershipPropUser
+    from .group_0434 import PersonalAccessTokenRequest as PersonalAccessTokenRequest
+    from .group_0434 import (
         PersonalAccessTokenRequestPropPermissionsAdded as PersonalAccessTokenRequestPropPermissionsAdded,
     )
-    from .group_0429 import (
+    from .group_0434 import (
         PersonalAccessTokenRequestPropPermissionsAddedPropOrganization as PersonalAccessTokenRequestPropPermissionsAddedPropOrganization,
     )
-    from .group_0429 import (
+    from .group_0434 import (
         PersonalAccessTokenRequestPropPermissionsAddedPropOther as PersonalAccessTokenRequestPropPermissionsAddedPropOther,
     )
-    from .group_0429 import (
+    from .group_0434 import (
         PersonalAccessTokenRequestPropPermissionsAddedPropRepository as PersonalAccessTokenRequestPropPermissionsAddedPropRepository,
     )
-    from .group_0429 import (
+    from .group_0434 import (
         PersonalAccessTokenRequestPropPermissionsResult as PersonalAccessTokenRequestPropPermissionsResult,
     )
-    from .group_0429 import (
+    from .group_0434 import (
         PersonalAccessTokenRequestPropPermissionsResultPropOrganization as PersonalAccessTokenRequestPropPermissionsResultPropOrganization,
     )
-    from .group_0429 import (
+    from .group_0434 import (
         PersonalAccessTokenRequestPropPermissionsResultPropOther as PersonalAccessTokenRequestPropPermissionsResultPropOther,
     )
-    from .group_0429 import (
+    from .group_0434 import (
         PersonalAccessTokenRequestPropPermissionsResultPropRepository as PersonalAccessTokenRequestPropPermissionsResultPropRepository,
     )
-    from .group_0429 import (
+    from .group_0434 import (
         PersonalAccessTokenRequestPropPermissionsUpgraded as PersonalAccessTokenRequestPropPermissionsUpgraded,
     )
-    from .group_0429 import (
+    from .group_0434 import (
         PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganization as PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganization,
     )
-    from .group_0429 import (
+    from .group_0434 import (
         PersonalAccessTokenRequestPropPermissionsUpgradedPropOther as PersonalAccessTokenRequestPropPermissionsUpgradedPropOther,
     )
-    from .group_0429 import (
+    from .group_0434 import (
         PersonalAccessTokenRequestPropPermissionsUpgradedPropRepository as PersonalAccessTokenRequestPropPermissionsUpgradedPropRepository,
     )
-    from .group_0429 import (
+    from .group_0434 import (
         PersonalAccessTokenRequestPropRepositoriesItems as PersonalAccessTokenRequestPropRepositoriesItems,
     )
-    from .group_0430 import WebhooksProjectCard as WebhooksProjectCard
-    from .group_0430 import (
+    from .group_0435 import WebhooksProjectCard as WebhooksProjectCard
+    from .group_0435 import (
         WebhooksProjectCardPropCreator as WebhooksProjectCardPropCreator,
     )
-    from .group_0431 import WebhooksProject as WebhooksProject
-    from .group_0431 import WebhooksProjectPropCreator as WebhooksProjectPropCreator
-    from .group_0432 import WebhooksProjectColumn as WebhooksProjectColumn
-    from .group_0433 import ProjectsV2 as ProjectsV2
-    from .group_0434 import WebhooksProjectChanges as WebhooksProjectChanges
-    from .group_0434 import (
+    from .group_0436 import WebhooksProject as WebhooksProject
+    from .group_0436 import WebhooksProjectPropCreator as WebhooksProjectPropCreator
+    from .group_0437 import WebhooksProjectColumn as WebhooksProjectColumn
+    from .group_0438 import ProjectsV2 as ProjectsV2
+    from .group_0439 import WebhooksProjectChanges as WebhooksProjectChanges
+    from .group_0439 import (
         WebhooksProjectChangesPropArchivedAt as WebhooksProjectChangesPropArchivedAt,
     )
-    from .group_0435 import ProjectsV2Item as ProjectsV2Item
-    from .group_0436 import ProjectsV2StatusUpdate as ProjectsV2StatusUpdate
-    from .group_0437 import PullRequestWebhook as PullRequestWebhook
-    from .group_0438 import PullRequestWebhookAllof1 as PullRequestWebhookAllof1
-    from .group_0439 import WebhooksPullRequest5 as WebhooksPullRequest5
-    from .group_0439 import (
+    from .group_0440 import ProjectsV2Item as ProjectsV2Item
+    from .group_0441 import ProjectsV2StatusUpdate as ProjectsV2StatusUpdate
+    from .group_0442 import PullRequestWebhook as PullRequestWebhook
+    from .group_0443 import PullRequestWebhookAllof1 as PullRequestWebhookAllof1
+    from .group_0444 import WebhooksPullRequest5 as WebhooksPullRequest5
+    from .group_0444 import (
         WebhooksPullRequest5PropAssignee as WebhooksPullRequest5PropAssignee,
     )
-    from .group_0439 import (
+    from .group_0444 import (
         WebhooksPullRequest5PropAssigneesItems as WebhooksPullRequest5PropAssigneesItems,
     )
-    from .group_0439 import (
+    from .group_0444 import (
         WebhooksPullRequest5PropAutoMerge as WebhooksPullRequest5PropAutoMerge,
     )
-    from .group_0439 import (
+    from .group_0444 import (
         WebhooksPullRequest5PropAutoMergePropEnabledBy as WebhooksPullRequest5PropAutoMergePropEnabledBy,
     )
-    from .group_0439 import WebhooksPullRequest5PropBase as WebhooksPullRequest5PropBase
-    from .group_0439 import (
+    from .group_0444 import WebhooksPullRequest5PropBase as WebhooksPullRequest5PropBase
+    from .group_0444 import (
         WebhooksPullRequest5PropBasePropRepo as WebhooksPullRequest5PropBasePropRepo,
     )
-    from .group_0439 import (
+    from .group_0444 import (
         WebhooksPullRequest5PropBasePropRepoPropLicense as WebhooksPullRequest5PropBasePropRepoPropLicense,
     )
-    from .group_0439 import (
+    from .group_0444 import (
         WebhooksPullRequest5PropBasePropRepoPropOwner as WebhooksPullRequest5PropBasePropRepoPropOwner,
     )
-    from .group_0439 import (
+    from .group_0444 import (
         WebhooksPullRequest5PropBasePropRepoPropPermissions as WebhooksPullRequest5PropBasePropRepoPropPermissions,
     )
-    from .group_0439 import (
+    from .group_0444 import (
         WebhooksPullRequest5PropBasePropUser as WebhooksPullRequest5PropBasePropUser,
     )
-    from .group_0439 import WebhooksPullRequest5PropHead as WebhooksPullRequest5PropHead
-    from .group_0439 import (
+    from .group_0444 import WebhooksPullRequest5PropHead as WebhooksPullRequest5PropHead
+    from .group_0444 import (
         WebhooksPullRequest5PropHeadPropRepo as WebhooksPullRequest5PropHeadPropRepo,
     )
-    from .group_0439 import (
+    from .group_0444 import (
         WebhooksPullRequest5PropHeadPropRepoPropLicense as WebhooksPullRequest5PropHeadPropRepoPropLicense,
     )
-    from .group_0439 import (
+    from .group_0444 import (
         WebhooksPullRequest5PropHeadPropRepoPropOwner as WebhooksPullRequest5PropHeadPropRepoPropOwner,
     )
-    from .group_0439 import (
+    from .group_0444 import (
         WebhooksPullRequest5PropHeadPropRepoPropPermissions as WebhooksPullRequest5PropHeadPropRepoPropPermissions,
     )
-    from .group_0439 import (
+    from .group_0444 import (
         WebhooksPullRequest5PropHeadPropUser as WebhooksPullRequest5PropHeadPropUser,
     )
-    from .group_0439 import (
+    from .group_0444 import (
         WebhooksPullRequest5PropLabelsItems as WebhooksPullRequest5PropLabelsItems,
     )
-    from .group_0439 import (
+    from .group_0444 import (
         WebhooksPullRequest5PropLinks as WebhooksPullRequest5PropLinks,
     )
-    from .group_0439 import (
+    from .group_0444 import (
         WebhooksPullRequest5PropLinksPropComments as WebhooksPullRequest5PropLinksPropComments,
     )
-    from .group_0439 import (
+    from .group_0444 import (
         WebhooksPullRequest5PropLinksPropCommits as WebhooksPullRequest5PropLinksPropCommits,
     )
-    from .group_0439 import (
+    from .group_0444 import (
         WebhooksPullRequest5PropLinksPropHtml as WebhooksPullRequest5PropLinksPropHtml,
     )
-    from .group_0439 import (
+    from .group_0444 import (
         WebhooksPullRequest5PropLinksPropIssue as WebhooksPullRequest5PropLinksPropIssue,
     )
-    from .group_0439 import (
+    from .group_0444 import (
         WebhooksPullRequest5PropLinksPropReviewComment as WebhooksPullRequest5PropLinksPropReviewComment,
     )
-    from .group_0439 import (
+    from .group_0444 import (
         WebhooksPullRequest5PropLinksPropReviewComments as WebhooksPullRequest5PropLinksPropReviewComments,
     )
-    from .group_0439 import (
+    from .group_0444 import (
         WebhooksPullRequest5PropLinksPropSelf as WebhooksPullRequest5PropLinksPropSelf,
     )
-    from .group_0439 import (
+    from .group_0444 import (
         WebhooksPullRequest5PropLinksPropStatuses as WebhooksPullRequest5PropLinksPropStatuses,
     )
-    from .group_0439 import (
+    from .group_0444 import (
         WebhooksPullRequest5PropMergedBy as WebhooksPullRequest5PropMergedBy,
     )
-    from .group_0439 import (
+    from .group_0444 import (
         WebhooksPullRequest5PropMilestone as WebhooksPullRequest5PropMilestone,
     )
-    from .group_0439 import (
+    from .group_0444 import (
         WebhooksPullRequest5PropMilestonePropCreator as WebhooksPullRequest5PropMilestonePropCreator,
     )
-    from .group_0439 import (
+    from .group_0444 import (
         WebhooksPullRequest5PropRequestedReviewersItemsOneof0 as WebhooksPullRequest5PropRequestedReviewersItemsOneof0,
     )
-    from .group_0439 import (
+    from .group_0444 import (
         WebhooksPullRequest5PropRequestedReviewersItemsOneof1 as WebhooksPullRequest5PropRequestedReviewersItemsOneof1,
     )
-    from .group_0439 import (
+    from .group_0444 import (
         WebhooksPullRequest5PropRequestedReviewersItemsOneof1PropParent as WebhooksPullRequest5PropRequestedReviewersItemsOneof1PropParent,
     )
-    from .group_0439 import (
+    from .group_0444 import (
         WebhooksPullRequest5PropRequestedTeamsItems as WebhooksPullRequest5PropRequestedTeamsItems,
     )
-    from .group_0439 import (
+    from .group_0444 import (
         WebhooksPullRequest5PropRequestedTeamsItemsPropParent as WebhooksPullRequest5PropRequestedTeamsItemsPropParent,
     )
-    from .group_0439 import WebhooksPullRequest5PropUser as WebhooksPullRequest5PropUser
-    from .group_0440 import WebhooksReviewComment as WebhooksReviewComment
-    from .group_0440 import (
+    from .group_0444 import WebhooksPullRequest5PropUser as WebhooksPullRequest5PropUser
+    from .group_0445 import WebhooksReviewComment as WebhooksReviewComment
+    from .group_0445 import (
         WebhooksReviewCommentPropLinks as WebhooksReviewCommentPropLinks,
     )
-    from .group_0440 import (
+    from .group_0445 import (
         WebhooksReviewCommentPropLinksPropHtml as WebhooksReviewCommentPropLinksPropHtml,
     )
-    from .group_0440 import (
+    from .group_0445 import (
         WebhooksReviewCommentPropLinksPropPullRequest as WebhooksReviewCommentPropLinksPropPullRequest,
     )
-    from .group_0440 import (
+    from .group_0445 import (
         WebhooksReviewCommentPropLinksPropSelf as WebhooksReviewCommentPropLinksPropSelf,
     )
-    from .group_0440 import (
+    from .group_0445 import (
         WebhooksReviewCommentPropReactions as WebhooksReviewCommentPropReactions,
     )
-    from .group_0440 import (
+    from .group_0445 import (
         WebhooksReviewCommentPropUser as WebhooksReviewCommentPropUser,
     )
-    from .group_0441 import WebhooksReview as WebhooksReview
-    from .group_0441 import WebhooksReviewPropLinks as WebhooksReviewPropLinks
-    from .group_0441 import (
+    from .group_0446 import WebhooksReview as WebhooksReview
+    from .group_0446 import WebhooksReviewPropLinks as WebhooksReviewPropLinks
+    from .group_0446 import (
         WebhooksReviewPropLinksPropHtml as WebhooksReviewPropLinksPropHtml,
     )
-    from .group_0441 import (
+    from .group_0446 import (
         WebhooksReviewPropLinksPropPullRequest as WebhooksReviewPropLinksPropPullRequest,
     )
-    from .group_0441 import WebhooksReviewPropUser as WebhooksReviewPropUser
-    from .group_0442 import WebhooksRelease as WebhooksRelease
-    from .group_0442 import (
+    from .group_0446 import WebhooksReviewPropUser as WebhooksReviewPropUser
+    from .group_0447 import WebhooksRelease as WebhooksRelease
+    from .group_0447 import (
         WebhooksReleasePropAssetsItems as WebhooksReleasePropAssetsItems,
     )
-    from .group_0442 import (
+    from .group_0447 import (
         WebhooksReleasePropAssetsItemsPropUploader as WebhooksReleasePropAssetsItemsPropUploader,
     )
-    from .group_0442 import WebhooksReleasePropAuthor as WebhooksReleasePropAuthor
-    from .group_0442 import WebhooksReleasePropReactions as WebhooksReleasePropReactions
-    from .group_0443 import WebhooksRelease1 as WebhooksRelease1
-    from .group_0443 import (
+    from .group_0447 import WebhooksReleasePropAuthor as WebhooksReleasePropAuthor
+    from .group_0447 import WebhooksReleasePropReactions as WebhooksReleasePropReactions
+    from .group_0448 import WebhooksRelease1 as WebhooksRelease1
+    from .group_0448 import (
         WebhooksRelease1PropAssetsItems as WebhooksRelease1PropAssetsItems,
     )
-    from .group_0443 import (
+    from .group_0448 import (
         WebhooksRelease1PropAssetsItemsPropUploader as WebhooksRelease1PropAssetsItemsPropUploader,
     )
-    from .group_0443 import WebhooksRelease1PropAuthor as WebhooksRelease1PropAuthor
-    from .group_0443 import (
+    from .group_0448 import WebhooksRelease1PropAuthor as WebhooksRelease1PropAuthor
+    from .group_0448 import (
         WebhooksRelease1PropReactions as WebhooksRelease1PropReactions,
     )
-    from .group_0444 import WebhooksAlert as WebhooksAlert
-    from .group_0444 import WebhooksAlertPropDismisser as WebhooksAlertPropDismisser
-    from .group_0445 import SecretScanningAlertWebhook as SecretScanningAlertWebhook
-    from .group_0446 import WebhooksSecurityAdvisory as WebhooksSecurityAdvisory
-    from .group_0446 import (
+    from .group_0449 import WebhooksAlert as WebhooksAlert
+    from .group_0449 import WebhooksAlertPropDismisser as WebhooksAlertPropDismisser
+    from .group_0450 import SecretScanningAlertWebhook as SecretScanningAlertWebhook
+    from .group_0451 import WebhooksSecurityAdvisory as WebhooksSecurityAdvisory
+    from .group_0451 import (
         WebhooksSecurityAdvisoryPropCvss as WebhooksSecurityAdvisoryPropCvss,
     )
-    from .group_0446 import (
+    from .group_0451 import (
         WebhooksSecurityAdvisoryPropCwesItems as WebhooksSecurityAdvisoryPropCwesItems,
     )
-    from .group_0446 import (
+    from .group_0451 import (
         WebhooksSecurityAdvisoryPropIdentifiersItems as WebhooksSecurityAdvisoryPropIdentifiersItems,
     )
-    from .group_0446 import (
+    from .group_0451 import (
         WebhooksSecurityAdvisoryPropReferencesItems as WebhooksSecurityAdvisoryPropReferencesItems,
     )
-    from .group_0446 import (
+    from .group_0451 import (
         WebhooksSecurityAdvisoryPropVulnerabilitiesItems as WebhooksSecurityAdvisoryPropVulnerabilitiesItems,
     )
-    from .group_0446 import (
+    from .group_0451 import (
         WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion as WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion,
     )
-    from .group_0446 import (
+    from .group_0451 import (
         WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackage as WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackage,
     )
-    from .group_0447 import WebhooksSponsorship as WebhooksSponsorship
-    from .group_0447 import (
+    from .group_0452 import WebhooksSponsorship as WebhooksSponsorship
+    from .group_0452 import (
         WebhooksSponsorshipPropMaintainer as WebhooksSponsorshipPropMaintainer,
     )
-    from .group_0447 import (
+    from .group_0452 import (
         WebhooksSponsorshipPropSponsor as WebhooksSponsorshipPropSponsor,
     )
-    from .group_0447 import (
+    from .group_0452 import (
         WebhooksSponsorshipPropSponsorable as WebhooksSponsorshipPropSponsorable,
     )
-    from .group_0447 import WebhooksSponsorshipPropTier as WebhooksSponsorshipPropTier
-    from .group_0448 import WebhooksChanges8 as WebhooksChanges8
-    from .group_0448 import WebhooksChanges8PropTier as WebhooksChanges8PropTier
-    from .group_0448 import (
+    from .group_0452 import WebhooksSponsorshipPropTier as WebhooksSponsorshipPropTier
+    from .group_0453 import WebhooksChanges8 as WebhooksChanges8
+    from .group_0453 import WebhooksChanges8PropTier as WebhooksChanges8PropTier
+    from .group_0453 import (
         WebhooksChanges8PropTierPropFrom as WebhooksChanges8PropTierPropFrom,
     )
-    from .group_0449 import WebhooksTeam1 as WebhooksTeam1
-    from .group_0449 import WebhooksTeam1PropParent as WebhooksTeam1PropParent
-    from .group_0450 import (
+    from .group_0454 import WebhooksTeam1 as WebhooksTeam1
+    from .group_0454 import WebhooksTeam1PropParent as WebhooksTeam1PropParent
+    from .group_0455 import (
         WebhookBranchProtectionConfigurationDisabled as WebhookBranchProtectionConfigurationDisabled,
     )
-    from .group_0451 import (
+    from .group_0456 import (
         WebhookBranchProtectionConfigurationEnabled as WebhookBranchProtectionConfigurationEnabled,
     )
-    from .group_0452 import (
+    from .group_0457 import (
         WebhookBranchProtectionRuleCreated as WebhookBranchProtectionRuleCreated,
     )
-    from .group_0453 import (
+    from .group_0458 import (
         WebhookBranchProtectionRuleDeleted as WebhookBranchProtectionRuleDeleted,
     )
-    from .group_0454 import (
+    from .group_0459 import (
         WebhookBranchProtectionRuleEdited as WebhookBranchProtectionRuleEdited,
     )
-    from .group_0454 import (
+    from .group_0459 import (
         WebhookBranchProtectionRuleEditedPropChanges as WebhookBranchProtectionRuleEditedPropChanges,
     )
-    from .group_0454 import (
+    from .group_0459 import (
         WebhookBranchProtectionRuleEditedPropChangesPropAdminEnforced as WebhookBranchProtectionRuleEditedPropChangesPropAdminEnforced,
     )
-    from .group_0454 import (
+    from .group_0459 import (
         WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorNames as WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorNames,
     )
-    from .group_0454 import (
+    from .group_0459 import (
         WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorsOnly as WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorsOnly,
     )
-    from .group_0454 import (
+    from .group_0459 import (
         WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedDismissalActorsOnly as WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedDismissalActorsOnly,
     )
-    from .group_0454 import (
+    from .group_0459 import (
         WebhookBranchProtectionRuleEditedPropChangesPropLinearHistoryRequirementEnforcementLevel as WebhookBranchProtectionRuleEditedPropChangesPropLinearHistoryRequirementEnforcementLevel,
     )
-    from .group_0454 import (
+    from .group_0459 import (
         WebhookBranchProtectionRuleEditedPropChangesPropLockAllowsForkSync as WebhookBranchProtectionRuleEditedPropChangesPropLockAllowsForkSync,
     )
-    from .group_0454 import (
+    from .group_0459 import (
         WebhookBranchProtectionRuleEditedPropChangesPropLockBranchEnforcementLevel as WebhookBranchProtectionRuleEditedPropChangesPropLockBranchEnforcementLevel,
     )
-    from .group_0454 import (
+    from .group_0459 import (
         WebhookBranchProtectionRuleEditedPropChangesPropPullRequestReviewsEnforcementLevel as WebhookBranchProtectionRuleEditedPropChangesPropPullRequestReviewsEnforcementLevel,
     )
-    from .group_0454 import (
+    from .group_0459 import (
         WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecks as WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecks,
     )
-    from .group_0454 import (
+    from .group_0459 import (
         WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementLevel as WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementLevel,
     )
-    from .group_0454 import (
+    from .group_0459 import (
         WebhookBranchProtectionRuleEditedPropChangesPropRequireLastPushApproval as WebhookBranchProtectionRuleEditedPropChangesPropRequireLastPushApproval,
     )
-    from .group_0455 import WebhookCheckRunCompleted as WebhookCheckRunCompleted
-    from .group_0456 import (
+    from .group_0460 import WebhookCheckRunCompleted as WebhookCheckRunCompleted
+    from .group_0461 import (
         WebhookCheckRunCompletedFormEncoded as WebhookCheckRunCompletedFormEncoded,
     )
-    from .group_0457 import WebhookCheckRunCreated as WebhookCheckRunCreated
-    from .group_0458 import (
+    from .group_0462 import WebhookCheckRunCreated as WebhookCheckRunCreated
+    from .group_0463 import (
         WebhookCheckRunCreatedFormEncoded as WebhookCheckRunCreatedFormEncoded,
     )
-    from .group_0459 import (
+    from .group_0464 import (
         WebhookCheckRunRequestedAction as WebhookCheckRunRequestedAction,
     )
-    from .group_0459 import (
+    from .group_0464 import (
         WebhookCheckRunRequestedActionPropRequestedAction as WebhookCheckRunRequestedActionPropRequestedAction,
     )
-    from .group_0460 import (
+    from .group_0465 import (
         WebhookCheckRunRequestedActionFormEncoded as WebhookCheckRunRequestedActionFormEncoded,
     )
-    from .group_0461 import WebhookCheckRunRerequested as WebhookCheckRunRerequested
-    from .group_0462 import (
+    from .group_0466 import WebhookCheckRunRerequested as WebhookCheckRunRerequested
+    from .group_0467 import (
         WebhookCheckRunRerequestedFormEncoded as WebhookCheckRunRerequestedFormEncoded,
     )
-    from .group_0463 import WebhookCheckSuiteCompleted as WebhookCheckSuiteCompleted
-    from .group_0463 import (
+    from .group_0468 import WebhookCheckSuiteCompleted as WebhookCheckSuiteCompleted
+    from .group_0468 import (
         WebhookCheckSuiteCompletedPropCheckSuite as WebhookCheckSuiteCompletedPropCheckSuite,
     )
-    from .group_0463 import (
+    from .group_0468 import (
         WebhookCheckSuiteCompletedPropCheckSuitePropApp as WebhookCheckSuiteCompletedPropCheckSuitePropApp,
     )
-    from .group_0463 import (
+    from .group_0468 import (
         WebhookCheckSuiteCompletedPropCheckSuitePropAppPropOwner as WebhookCheckSuiteCompletedPropCheckSuitePropAppPropOwner,
     )
-    from .group_0463 import (
+    from .group_0468 import (
         WebhookCheckSuiteCompletedPropCheckSuitePropAppPropPermissions as WebhookCheckSuiteCompletedPropCheckSuitePropAppPropPermissions,
     )
-    from .group_0463 import (
+    from .group_0468 import (
         WebhookCheckSuiteCompletedPropCheckSuitePropHeadCommit as WebhookCheckSuiteCompletedPropCheckSuitePropHeadCommit,
     )
-    from .group_0463 import (
+    from .group_0468 import (
         WebhookCheckSuiteCompletedPropCheckSuitePropHeadCommitPropAuthor as WebhookCheckSuiteCompletedPropCheckSuitePropHeadCommitPropAuthor,
     )
-    from .group_0463 import (
+    from .group_0468 import (
         WebhookCheckSuiteCompletedPropCheckSuitePropHeadCommitPropCommitter as WebhookCheckSuiteCompletedPropCheckSuitePropHeadCommitPropCommitter,
     )
-    from .group_0463 import (
+    from .group_0468 import (
         WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItems as WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItems,
     )
-    from .group_0463 import (
+    from .group_0468 import (
         WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropBase as WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropBase,
     )
-    from .group_0463 import (
+    from .group_0468 import (
         WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropBasePropRepo as WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropBasePropRepo,
     )
-    from .group_0463 import (
+    from .group_0468 import (
         WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropHead as WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropHead,
     )
-    from .group_0463 import (
+    from .group_0468 import (
         WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropHeadPropRepo as WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropHeadPropRepo,
     )
-    from .group_0464 import WebhookCheckSuiteRequested as WebhookCheckSuiteRequested
-    from .group_0464 import (
+    from .group_0469 import WebhookCheckSuiteRequested as WebhookCheckSuiteRequested
+    from .group_0469 import (
         WebhookCheckSuiteRequestedPropCheckSuite as WebhookCheckSuiteRequestedPropCheckSuite,
     )
-    from .group_0464 import (
+    from .group_0469 import (
         WebhookCheckSuiteRequestedPropCheckSuitePropApp as WebhookCheckSuiteRequestedPropCheckSuitePropApp,
     )
-    from .group_0464 import (
+    from .group_0469 import (
         WebhookCheckSuiteRequestedPropCheckSuitePropAppPropOwner as WebhookCheckSuiteRequestedPropCheckSuitePropAppPropOwner,
     )
-    from .group_0464 import (
+    from .group_0469 import (
         WebhookCheckSuiteRequestedPropCheckSuitePropAppPropPermissions as WebhookCheckSuiteRequestedPropCheckSuitePropAppPropPermissions,
     )
-    from .group_0464 import (
+    from .group_0469 import (
         WebhookCheckSuiteRequestedPropCheckSuitePropHeadCommit as WebhookCheckSuiteRequestedPropCheckSuitePropHeadCommit,
     )
-    from .group_0464 import (
+    from .group_0469 import (
         WebhookCheckSuiteRequestedPropCheckSuitePropHeadCommitPropAuthor as WebhookCheckSuiteRequestedPropCheckSuitePropHeadCommitPropAuthor,
     )
-    from .group_0464 import (
+    from .group_0469 import (
         WebhookCheckSuiteRequestedPropCheckSuitePropHeadCommitPropCommitter as WebhookCheckSuiteRequestedPropCheckSuitePropHeadCommitPropCommitter,
     )
-    from .group_0464 import (
+    from .group_0469 import (
         WebhookCheckSuiteRequestedPropCheckSuitePropPullRequestsItems as WebhookCheckSuiteRequestedPropCheckSuitePropPullRequestsItems,
     )
-    from .group_0464 import (
+    from .group_0469 import (
         WebhookCheckSuiteRequestedPropCheckSuitePropPullRequestsItemsPropBase as WebhookCheckSuiteRequestedPropCheckSuitePropPullRequestsItemsPropBase,
     )
-    from .group_0464 import (
+    from .group_0469 import (
         WebhookCheckSuiteRequestedPropCheckSuitePropPullRequestsItemsPropBasePropRepo as WebhookCheckSuiteRequestedPropCheckSuitePropPullRequestsItemsPropBasePropRepo,
     )
-    from .group_0464 import (
+    from .group_0469 import (
         WebhookCheckSuiteRequestedPropCheckSuitePropPullRequestsItemsPropHead as WebhookCheckSuiteRequestedPropCheckSuitePropPullRequestsItemsPropHead,
     )
-    from .group_0464 import (
+    from .group_0469 import (
         WebhookCheckSuiteRequestedPropCheckSuitePropPullRequestsItemsPropHeadPropRepo as WebhookCheckSuiteRequestedPropCheckSuitePropPullRequestsItemsPropHeadPropRepo,
     )
-    from .group_0465 import WebhookCheckSuiteRerequested as WebhookCheckSuiteRerequested
-    from .group_0465 import (
+    from .group_0470 import WebhookCheckSuiteRerequested as WebhookCheckSuiteRerequested
+    from .group_0470 import (
         WebhookCheckSuiteRerequestedPropCheckSuite as WebhookCheckSuiteRerequestedPropCheckSuite,
     )
-    from .group_0465 import (
+    from .group_0470 import (
         WebhookCheckSuiteRerequestedPropCheckSuitePropApp as WebhookCheckSuiteRerequestedPropCheckSuitePropApp,
     )
-    from .group_0465 import (
+    from .group_0470 import (
         WebhookCheckSuiteRerequestedPropCheckSuitePropAppPropOwner as WebhookCheckSuiteRerequestedPropCheckSuitePropAppPropOwner,
     )
-    from .group_0465 import (
+    from .group_0470 import (
         WebhookCheckSuiteRerequestedPropCheckSuitePropAppPropPermissions as WebhookCheckSuiteRerequestedPropCheckSuitePropAppPropPermissions,
     )
-    from .group_0465 import (
+    from .group_0470 import (
         WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommit as WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommit,
     )
-    from .group_0465 import (
+    from .group_0470 import (
         WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommitPropAuthor as WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommitPropAuthor,
     )
-    from .group_0465 import (
+    from .group_0470 import (
         WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommitPropCommitter as WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommitPropCommitter,
     )
-    from .group_0465 import (
+    from .group_0470 import (
         WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItems as WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItems,
     )
-    from .group_0465 import (
+    from .group_0470 import (
         WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropBase as WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropBase,
     )
-    from .group_0465 import (
+    from .group_0470 import (
         WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropBasePropRepo as WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropBasePropRepo,
     )
-    from .group_0465 import (
+    from .group_0470 import (
         WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropHead as WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropHead,
     )
-    from .group_0465 import (
+    from .group_0470 import (
         WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropHeadPropRepo as WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropHeadPropRepo,
     )
-    from .group_0466 import (
+    from .group_0471 import (
         WebhookCodeScanningAlertAppearedInBranch as WebhookCodeScanningAlertAppearedInBranch,
     )
-    from .group_0466 import (
+    from .group_0471 import (
         WebhookCodeScanningAlertAppearedInBranchPropAlert as WebhookCodeScanningAlertAppearedInBranchPropAlert,
     )
-    from .group_0466 import (
+    from .group_0471 import (
         WebhookCodeScanningAlertAppearedInBranchPropAlertPropDismissedBy as WebhookCodeScanningAlertAppearedInBranchPropAlertPropDismissedBy,
     )
-    from .group_0466 import (
+    from .group_0471 import (
         WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstance as WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstance,
     )
-    from .group_0466 import (
+    from .group_0471 import (
         WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstancePropLocation as WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstancePropLocation,
     )
-    from .group_0466 import (
+    from .group_0471 import (
         WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstancePropMessage as WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstancePropMessage,
     )
-    from .group_0466 import (
+    from .group_0471 import (
         WebhookCodeScanningAlertAppearedInBranchPropAlertPropRule as WebhookCodeScanningAlertAppearedInBranchPropAlertPropRule,
     )
-    from .group_0466 import (
+    from .group_0471 import (
         WebhookCodeScanningAlertAppearedInBranchPropAlertPropTool as WebhookCodeScanningAlertAppearedInBranchPropAlertPropTool,
     )
-    from .group_0467 import (
+    from .group_0472 import (
         WebhookCodeScanningAlertClosedByUser as WebhookCodeScanningAlertClosedByUser,
     )
-    from .group_0467 import (
+    from .group_0472 import (
         WebhookCodeScanningAlertClosedByUserPropAlert as WebhookCodeScanningAlertClosedByUserPropAlert,
     )
-    from .group_0467 import (
+    from .group_0472 import (
+        WebhookCodeScanningAlertClosedByUserPropAlertPropDismissalApprovedBy as WebhookCodeScanningAlertClosedByUserPropAlertPropDismissalApprovedBy,
+    )
+    from .group_0472 import (
         WebhookCodeScanningAlertClosedByUserPropAlertPropDismissedBy as WebhookCodeScanningAlertClosedByUserPropAlertPropDismissedBy,
     )
-    from .group_0467 import (
+    from .group_0472 import (
         WebhookCodeScanningAlertClosedByUserPropAlertPropMostRecentInstance as WebhookCodeScanningAlertClosedByUserPropAlertPropMostRecentInstance,
     )
-    from .group_0467 import (
+    from .group_0472 import (
         WebhookCodeScanningAlertClosedByUserPropAlertPropMostRecentInstancePropLocation as WebhookCodeScanningAlertClosedByUserPropAlertPropMostRecentInstancePropLocation,
     )
-    from .group_0467 import (
+    from .group_0472 import (
         WebhookCodeScanningAlertClosedByUserPropAlertPropMostRecentInstancePropMessage as WebhookCodeScanningAlertClosedByUserPropAlertPropMostRecentInstancePropMessage,
     )
-    from .group_0467 import (
+    from .group_0472 import (
         WebhookCodeScanningAlertClosedByUserPropAlertPropRule as WebhookCodeScanningAlertClosedByUserPropAlertPropRule,
     )
-    from .group_0467 import (
+    from .group_0472 import (
         WebhookCodeScanningAlertClosedByUserPropAlertPropTool as WebhookCodeScanningAlertClosedByUserPropAlertPropTool,
     )
-    from .group_0468 import (
+    from .group_0473 import (
         WebhookCodeScanningAlertCreated as WebhookCodeScanningAlertCreated,
     )
-    from .group_0468 import (
+    from .group_0473 import (
         WebhookCodeScanningAlertCreatedPropAlert as WebhookCodeScanningAlertCreatedPropAlert,
     )
-    from .group_0468 import (
+    from .group_0473 import (
         WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstance as WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstance,
     )
-    from .group_0468 import (
+    from .group_0473 import (
         WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropLocation as WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropLocation,
     )
-    from .group_0468 import (
+    from .group_0473 import (
         WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropMessage as WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropMessage,
     )
-    from .group_0468 import (
+    from .group_0473 import (
         WebhookCodeScanningAlertCreatedPropAlertPropRule as WebhookCodeScanningAlertCreatedPropAlertPropRule,
     )
-    from .group_0468 import (
+    from .group_0473 import (
         WebhookCodeScanningAlertCreatedPropAlertPropTool as WebhookCodeScanningAlertCreatedPropAlertPropTool,
     )
-    from .group_0469 import (
+    from .group_0474 import (
         WebhookCodeScanningAlertFixed as WebhookCodeScanningAlertFixed,
     )
-    from .group_0469 import (
+    from .group_0474 import (
         WebhookCodeScanningAlertFixedPropAlert as WebhookCodeScanningAlertFixedPropAlert,
     )
-    from .group_0469 import (
+    from .group_0474 import (
         WebhookCodeScanningAlertFixedPropAlertPropDismissedBy as WebhookCodeScanningAlertFixedPropAlertPropDismissedBy,
     )
-    from .group_0469 import (
+    from .group_0474 import (
         WebhookCodeScanningAlertFixedPropAlertPropMostRecentInstance as WebhookCodeScanningAlertFixedPropAlertPropMostRecentInstance,
     )
-    from .group_0469 import (
+    from .group_0474 import (
         WebhookCodeScanningAlertFixedPropAlertPropMostRecentInstancePropLocation as WebhookCodeScanningAlertFixedPropAlertPropMostRecentInstancePropLocation,
     )
-    from .group_0469 import (
+    from .group_0474 import (
         WebhookCodeScanningAlertFixedPropAlertPropMostRecentInstancePropMessage as WebhookCodeScanningAlertFixedPropAlertPropMostRecentInstancePropMessage,
     )
-    from .group_0469 import (
+    from .group_0474 import (
         WebhookCodeScanningAlertFixedPropAlertPropRule as WebhookCodeScanningAlertFixedPropAlertPropRule,
     )
-    from .group_0469 import (
+    from .group_0474 import (
         WebhookCodeScanningAlertFixedPropAlertPropTool as WebhookCodeScanningAlertFixedPropAlertPropTool,
     )
-    from .group_0470 import (
+    from .group_0475 import (
         WebhookCodeScanningAlertReopened as WebhookCodeScanningAlertReopened,
     )
-    from .group_0470 import (
+    from .group_0475 import (
         WebhookCodeScanningAlertReopenedPropAlert as WebhookCodeScanningAlertReopenedPropAlert,
     )
-    from .group_0470 import (
+    from .group_0475 import (
         WebhookCodeScanningAlertReopenedPropAlertPropDismissedBy as WebhookCodeScanningAlertReopenedPropAlertPropDismissedBy,
     )
-    from .group_0470 import (
+    from .group_0475 import (
         WebhookCodeScanningAlertReopenedPropAlertPropMostRecentInstance as WebhookCodeScanningAlertReopenedPropAlertPropMostRecentInstance,
     )
-    from .group_0470 import (
+    from .group_0475 import (
         WebhookCodeScanningAlertReopenedPropAlertPropMostRecentInstancePropLocation as WebhookCodeScanningAlertReopenedPropAlertPropMostRecentInstancePropLocation,
     )
-    from .group_0470 import (
+    from .group_0475 import (
         WebhookCodeScanningAlertReopenedPropAlertPropMostRecentInstancePropMessage as WebhookCodeScanningAlertReopenedPropAlertPropMostRecentInstancePropMessage,
     )
-    from .group_0470 import (
+    from .group_0475 import (
         WebhookCodeScanningAlertReopenedPropAlertPropRule as WebhookCodeScanningAlertReopenedPropAlertPropRule,
     )
-    from .group_0470 import (
+    from .group_0475 import (
         WebhookCodeScanningAlertReopenedPropAlertPropTool as WebhookCodeScanningAlertReopenedPropAlertPropTool,
     )
-    from .group_0471 import (
+    from .group_0476 import (
         WebhookCodeScanningAlertReopenedByUser as WebhookCodeScanningAlertReopenedByUser,
     )
-    from .group_0471 import (
+    from .group_0476 import (
         WebhookCodeScanningAlertReopenedByUserPropAlert as WebhookCodeScanningAlertReopenedByUserPropAlert,
     )
-    from .group_0471 import (
+    from .group_0476 import (
         WebhookCodeScanningAlertReopenedByUserPropAlertPropMostRecentInstance as WebhookCodeScanningAlertReopenedByUserPropAlertPropMostRecentInstance,
     )
-    from .group_0471 import (
+    from .group_0476 import (
         WebhookCodeScanningAlertReopenedByUserPropAlertPropMostRecentInstancePropLocation as WebhookCodeScanningAlertReopenedByUserPropAlertPropMostRecentInstancePropLocation,
     )
-    from .group_0471 import (
+    from .group_0476 import (
         WebhookCodeScanningAlertReopenedByUserPropAlertPropMostRecentInstancePropMessage as WebhookCodeScanningAlertReopenedByUserPropAlertPropMostRecentInstancePropMessage,
     )
-    from .group_0471 import (
+    from .group_0476 import (
         WebhookCodeScanningAlertReopenedByUserPropAlertPropRule as WebhookCodeScanningAlertReopenedByUserPropAlertPropRule,
     )
-    from .group_0471 import (
+    from .group_0476 import (
         WebhookCodeScanningAlertReopenedByUserPropAlertPropTool as WebhookCodeScanningAlertReopenedByUserPropAlertPropTool,
     )
-    from .group_0472 import WebhookCommitCommentCreated as WebhookCommitCommentCreated
-    from .group_0472 import (
+    from .group_0477 import WebhookCommitCommentCreated as WebhookCommitCommentCreated
+    from .group_0477 import (
         WebhookCommitCommentCreatedPropComment as WebhookCommitCommentCreatedPropComment,
     )
-    from .group_0472 import (
+    from .group_0477 import (
         WebhookCommitCommentCreatedPropCommentPropReactions as WebhookCommitCommentCreatedPropCommentPropReactions,
     )
-    from .group_0472 import (
+    from .group_0477 import (
         WebhookCommitCommentCreatedPropCommentPropUser as WebhookCommitCommentCreatedPropCommentPropUser,
     )
-    from .group_0473 import WebhookCreate as WebhookCreate
-    from .group_0474 import WebhookCustomPropertyCreated as WebhookCustomPropertyCreated
-    from .group_0475 import WebhookCustomPropertyDeleted as WebhookCustomPropertyDeleted
-    from .group_0475 import (
+    from .group_0478 import WebhookCreate as WebhookCreate
+    from .group_0479 import WebhookCustomPropertyCreated as WebhookCustomPropertyCreated
+    from .group_0480 import WebhookCustomPropertyDeleted as WebhookCustomPropertyDeleted
+    from .group_0480 import (
         WebhookCustomPropertyDeletedPropDefinition as WebhookCustomPropertyDeletedPropDefinition,
     )
-    from .group_0476 import WebhookCustomPropertyUpdated as WebhookCustomPropertyUpdated
-    from .group_0477 import (
+    from .group_0481 import WebhookCustomPropertyUpdated as WebhookCustomPropertyUpdated
+    from .group_0482 import (
         WebhookCustomPropertyValuesUpdated as WebhookCustomPropertyValuesUpdated,
     )
-    from .group_0478 import WebhookDelete as WebhookDelete
-    from .group_0479 import (
+    from .group_0483 import WebhookDelete as WebhookDelete
+    from .group_0484 import (
         WebhookDependabotAlertAutoDismissed as WebhookDependabotAlertAutoDismissed,
     )
-    from .group_0480 import (
+    from .group_0485 import (
         WebhookDependabotAlertAutoReopened as WebhookDependabotAlertAutoReopened,
     )
-    from .group_0481 import (
+    from .group_0486 import (
         WebhookDependabotAlertCreated as WebhookDependabotAlertCreated,
     )
-    from .group_0482 import (
+    from .group_0487 import (
         WebhookDependabotAlertDismissed as WebhookDependabotAlertDismissed,
     )
-    from .group_0483 import WebhookDependabotAlertFixed as WebhookDependabotAlertFixed
-    from .group_0484 import (
+    from .group_0488 import WebhookDependabotAlertFixed as WebhookDependabotAlertFixed
+    from .group_0489 import (
         WebhookDependabotAlertReintroduced as WebhookDependabotAlertReintroduced,
     )
-    from .group_0485 import (
+    from .group_0490 import (
         WebhookDependabotAlertReopened as WebhookDependabotAlertReopened,
     )
-    from .group_0486 import WebhookDeployKeyCreated as WebhookDeployKeyCreated
-    from .group_0487 import WebhookDeployKeyDeleted as WebhookDeployKeyDeleted
-    from .group_0488 import WebhookDeploymentCreated as WebhookDeploymentCreated
-    from .group_0488 import (
+    from .group_0491 import WebhookDeployKeyCreated as WebhookDeployKeyCreated
+    from .group_0492 import WebhookDeployKeyDeleted as WebhookDeployKeyDeleted
+    from .group_0493 import WebhookDeploymentCreated as WebhookDeploymentCreated
+    from .group_0493 import (
         WebhookDeploymentCreatedPropDeployment as WebhookDeploymentCreatedPropDeployment,
     )
-    from .group_0488 import (
+    from .group_0493 import (
         WebhookDeploymentCreatedPropDeploymentPropCreator as WebhookDeploymentCreatedPropDeploymentPropCreator,
     )
-    from .group_0488 import (
+    from .group_0493 import (
         WebhookDeploymentCreatedPropDeploymentPropPayloadOneof1 as WebhookDeploymentCreatedPropDeploymentPropPayloadOneof1,
     )
-    from .group_0488 import (
+    from .group_0493 import (
         WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubApp as WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubApp,
     )
-    from .group_0488 import (
+    from .group_0493 import (
         WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubAppPropOwner as WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubAppPropOwner,
     )
-    from .group_0488 import (
+    from .group_0493 import (
         WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubAppPropPermissions as WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubAppPropPermissions,
     )
-    from .group_0488 import (
+    from .group_0493 import (
         WebhookDeploymentCreatedPropWorkflowRun as WebhookDeploymentCreatedPropWorkflowRun,
     )
-    from .group_0488 import (
+    from .group_0493 import (
         WebhookDeploymentCreatedPropWorkflowRunPropActor as WebhookDeploymentCreatedPropWorkflowRunPropActor,
     )
-    from .group_0488 import (
+    from .group_0493 import (
         WebhookDeploymentCreatedPropWorkflowRunPropHeadRepository as WebhookDeploymentCreatedPropWorkflowRunPropHeadRepository,
     )
-    from .group_0488 import (
+    from .group_0493 import (
         WebhookDeploymentCreatedPropWorkflowRunPropHeadRepositoryPropOwner as WebhookDeploymentCreatedPropWorkflowRunPropHeadRepositoryPropOwner,
     )
-    from .group_0488 import (
+    from .group_0493 import (
         WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItems as WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItems,
     )
-    from .group_0488 import (
+    from .group_0493 import (
         WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropBase as WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropBase,
     )
-    from .group_0488 import (
+    from .group_0493 import (
         WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropBasePropRepo as WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropBasePropRepo,
     )
-    from .group_0488 import (
+    from .group_0493 import (
         WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropHead as WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropHead,
     )
-    from .group_0488 import (
+    from .group_0493 import (
         WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo as WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo,
     )
-    from .group_0488 import (
+    from .group_0493 import (
         WebhookDeploymentCreatedPropWorkflowRunPropReferencedWorkflowsItems as WebhookDeploymentCreatedPropWorkflowRunPropReferencedWorkflowsItems,
     )
-    from .group_0488 import (
+    from .group_0493 import (
         WebhookDeploymentCreatedPropWorkflowRunPropRepository as WebhookDeploymentCreatedPropWorkflowRunPropRepository,
     )
-    from .group_0488 import (
+    from .group_0493 import (
         WebhookDeploymentCreatedPropWorkflowRunPropRepositoryPropOwner as WebhookDeploymentCreatedPropWorkflowRunPropRepositoryPropOwner,
     )
-    from .group_0488 import (
+    from .group_0493 import (
         WebhookDeploymentCreatedPropWorkflowRunPropTriggeringActor as WebhookDeploymentCreatedPropWorkflowRunPropTriggeringActor,
     )
-    from .group_0489 import (
+    from .group_0494 import (
         WebhookDeploymentProtectionRuleRequested as WebhookDeploymentProtectionRuleRequested,
     )
-    from .group_0490 import (
+    from .group_0495 import (
         WebhookDeploymentReviewApproved as WebhookDeploymentReviewApproved,
     )
-    from .group_0490 import (
+    from .group_0495 import (
         WebhookDeploymentReviewApprovedPropWorkflowJobRunsItems as WebhookDeploymentReviewApprovedPropWorkflowJobRunsItems,
     )
-    from .group_0490 import (
+    from .group_0495 import (
         WebhookDeploymentReviewApprovedPropWorkflowRun as WebhookDeploymentReviewApprovedPropWorkflowRun,
     )
-    from .group_0490 import (
+    from .group_0495 import (
         WebhookDeploymentReviewApprovedPropWorkflowRunPropActor as WebhookDeploymentReviewApprovedPropWorkflowRunPropActor,
     )
-    from .group_0490 import (
+    from .group_0495 import (
         WebhookDeploymentReviewApprovedPropWorkflowRunPropHeadCommit as WebhookDeploymentReviewApprovedPropWorkflowRunPropHeadCommit,
     )
-    from .group_0490 import (
+    from .group_0495 import (
         WebhookDeploymentReviewApprovedPropWorkflowRunPropHeadRepository as WebhookDeploymentReviewApprovedPropWorkflowRunPropHeadRepository,
     )
-    from .group_0490 import (
+    from .group_0495 import (
         WebhookDeploymentReviewApprovedPropWorkflowRunPropHeadRepositoryPropOwner as WebhookDeploymentReviewApprovedPropWorkflowRunPropHeadRepositoryPropOwner,
     )
-    from .group_0490 import (
+    from .group_0495 import (
         WebhookDeploymentReviewApprovedPropWorkflowRunPropPullRequestsItems as WebhookDeploymentReviewApprovedPropWorkflowRunPropPullRequestsItems,
     )
-    from .group_0490 import (
+    from .group_0495 import (
         WebhookDeploymentReviewApprovedPropWorkflowRunPropPullRequestsItemsPropBase as WebhookDeploymentReviewApprovedPropWorkflowRunPropPullRequestsItemsPropBase,
     )
-    from .group_0490 import (
+    from .group_0495 import (
         WebhookDeploymentReviewApprovedPropWorkflowRunPropPullRequestsItemsPropBasePropRepo as WebhookDeploymentReviewApprovedPropWorkflowRunPropPullRequestsItemsPropBasePropRepo,
     )
-    from .group_0490 import (
+    from .group_0495 import (
         WebhookDeploymentReviewApprovedPropWorkflowRunPropPullRequestsItemsPropHead as WebhookDeploymentReviewApprovedPropWorkflowRunPropPullRequestsItemsPropHead,
     )
-    from .group_0490 import (
+    from .group_0495 import (
         WebhookDeploymentReviewApprovedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo as WebhookDeploymentReviewApprovedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo,
     )
-    from .group_0490 import (
+    from .group_0495 import (
         WebhookDeploymentReviewApprovedPropWorkflowRunPropReferencedWorkflowsItems as WebhookDeploymentReviewApprovedPropWorkflowRunPropReferencedWorkflowsItems,
     )
-    from .group_0490 import (
+    from .group_0495 import (
         WebhookDeploymentReviewApprovedPropWorkflowRunPropRepository as WebhookDeploymentReviewApprovedPropWorkflowRunPropRepository,
     )
-    from .group_0490 import (
+    from .group_0495 import (
         WebhookDeploymentReviewApprovedPropWorkflowRunPropRepositoryPropOwner as WebhookDeploymentReviewApprovedPropWorkflowRunPropRepositoryPropOwner,
     )
-    from .group_0490 import (
+    from .group_0495 import (
         WebhookDeploymentReviewApprovedPropWorkflowRunPropTriggeringActor as WebhookDeploymentReviewApprovedPropWorkflowRunPropTriggeringActor,
     )
-    from .group_0491 import (
+    from .group_0496 import (
         WebhookDeploymentReviewRejected as WebhookDeploymentReviewRejected,
     )
-    from .group_0491 import (
+    from .group_0496 import (
         WebhookDeploymentReviewRejectedPropWorkflowJobRunsItems as WebhookDeploymentReviewRejectedPropWorkflowJobRunsItems,
     )
-    from .group_0491 import (
+    from .group_0496 import (
         WebhookDeploymentReviewRejectedPropWorkflowRun as WebhookDeploymentReviewRejectedPropWorkflowRun,
     )
-    from .group_0491 import (
+    from .group_0496 import (
         WebhookDeploymentReviewRejectedPropWorkflowRunPropActor as WebhookDeploymentReviewRejectedPropWorkflowRunPropActor,
     )
-    from .group_0491 import (
+    from .group_0496 import (
         WebhookDeploymentReviewRejectedPropWorkflowRunPropHeadCommit as WebhookDeploymentReviewRejectedPropWorkflowRunPropHeadCommit,
     )
-    from .group_0491 import (
+    from .group_0496 import (
         WebhookDeploymentReviewRejectedPropWorkflowRunPropHeadRepository as WebhookDeploymentReviewRejectedPropWorkflowRunPropHeadRepository,
     )
-    from .group_0491 import (
+    from .group_0496 import (
         WebhookDeploymentReviewRejectedPropWorkflowRunPropHeadRepositoryPropOwner as WebhookDeploymentReviewRejectedPropWorkflowRunPropHeadRepositoryPropOwner,
     )
-    from .group_0491 import (
+    from .group_0496 import (
         WebhookDeploymentReviewRejectedPropWorkflowRunPropPullRequestsItems as WebhookDeploymentReviewRejectedPropWorkflowRunPropPullRequestsItems,
     )
-    from .group_0491 import (
+    from .group_0496 import (
         WebhookDeploymentReviewRejectedPropWorkflowRunPropPullRequestsItemsPropBase as WebhookDeploymentReviewRejectedPropWorkflowRunPropPullRequestsItemsPropBase,
     )
-    from .group_0491 import (
+    from .group_0496 import (
         WebhookDeploymentReviewRejectedPropWorkflowRunPropPullRequestsItemsPropBasePropRepo as WebhookDeploymentReviewRejectedPropWorkflowRunPropPullRequestsItemsPropBasePropRepo,
     )
-    from .group_0491 import (
+    from .group_0496 import (
         WebhookDeploymentReviewRejectedPropWorkflowRunPropPullRequestsItemsPropHead as WebhookDeploymentReviewRejectedPropWorkflowRunPropPullRequestsItemsPropHead,
     )
-    from .group_0491 import (
+    from .group_0496 import (
         WebhookDeploymentReviewRejectedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo as WebhookDeploymentReviewRejectedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo,
     )
-    from .group_0491 import (
+    from .group_0496 import (
         WebhookDeploymentReviewRejectedPropWorkflowRunPropReferencedWorkflowsItems as WebhookDeploymentReviewRejectedPropWorkflowRunPropReferencedWorkflowsItems,
     )
-    from .group_0491 import (
+    from .group_0496 import (
         WebhookDeploymentReviewRejectedPropWorkflowRunPropRepository as WebhookDeploymentReviewRejectedPropWorkflowRunPropRepository,
     )
-    from .group_0491 import (
+    from .group_0496 import (
         WebhookDeploymentReviewRejectedPropWorkflowRunPropRepositoryPropOwner as WebhookDeploymentReviewRejectedPropWorkflowRunPropRepositoryPropOwner,
     )
-    from .group_0491 import (
+    from .group_0496 import (
         WebhookDeploymentReviewRejectedPropWorkflowRunPropTriggeringActor as WebhookDeploymentReviewRejectedPropWorkflowRunPropTriggeringActor,
     )
-    from .group_0492 import (
+    from .group_0497 import (
         WebhookDeploymentReviewRequested as WebhookDeploymentReviewRequested,
     )
-    from .group_0492 import (
+    from .group_0497 import (
         WebhookDeploymentReviewRequestedPropReviewersItems as WebhookDeploymentReviewRequestedPropReviewersItems,
     )
-    from .group_0492 import (
+    from .group_0497 import (
         WebhookDeploymentReviewRequestedPropReviewersItemsPropReviewer as WebhookDeploymentReviewRequestedPropReviewersItemsPropReviewer,
     )
-    from .group_0492 import (
+    from .group_0497 import (
         WebhookDeploymentReviewRequestedPropWorkflowJobRun as WebhookDeploymentReviewRequestedPropWorkflowJobRun,
     )
-    from .group_0492 import (
+    from .group_0497 import (
         WebhookDeploymentReviewRequestedPropWorkflowRun as WebhookDeploymentReviewRequestedPropWorkflowRun,
     )
-    from .group_0492 import (
+    from .group_0497 import (
         WebhookDeploymentReviewRequestedPropWorkflowRunPropActor as WebhookDeploymentReviewRequestedPropWorkflowRunPropActor,
     )
-    from .group_0492 import (
+    from .group_0497 import (
         WebhookDeploymentReviewRequestedPropWorkflowRunPropHeadCommit as WebhookDeploymentReviewRequestedPropWorkflowRunPropHeadCommit,
     )
-    from .group_0492 import (
+    from .group_0497 import (
         WebhookDeploymentReviewRequestedPropWorkflowRunPropHeadRepository as WebhookDeploymentReviewRequestedPropWorkflowRunPropHeadRepository,
     )
-    from .group_0492 import (
+    from .group_0497 import (
         WebhookDeploymentReviewRequestedPropWorkflowRunPropHeadRepositoryPropOwner as WebhookDeploymentReviewRequestedPropWorkflowRunPropHeadRepositoryPropOwner,
     )
-    from .group_0492 import (
+    from .group_0497 import (
         WebhookDeploymentReviewRequestedPropWorkflowRunPropPullRequestsItems as WebhookDeploymentReviewRequestedPropWorkflowRunPropPullRequestsItems,
     )
-    from .group_0492 import (
+    from .group_0497 import (
         WebhookDeploymentReviewRequestedPropWorkflowRunPropPullRequestsItemsPropBase as WebhookDeploymentReviewRequestedPropWorkflowRunPropPullRequestsItemsPropBase,
     )
-    from .group_0492 import (
+    from .group_0497 import (
         WebhookDeploymentReviewRequestedPropWorkflowRunPropPullRequestsItemsPropBasePropRepo as WebhookDeploymentReviewRequestedPropWorkflowRunPropPullRequestsItemsPropBasePropRepo,
     )
-    from .group_0492 import (
+    from .group_0497 import (
         WebhookDeploymentReviewRequestedPropWorkflowRunPropPullRequestsItemsPropHead as WebhookDeploymentReviewRequestedPropWorkflowRunPropPullRequestsItemsPropHead,
     )
-    from .group_0492 import (
+    from .group_0497 import (
         WebhookDeploymentReviewRequestedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo as WebhookDeploymentReviewRequestedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo,
     )
-    from .group_0492 import (
+    from .group_0497 import (
         WebhookDeploymentReviewRequestedPropWorkflowRunPropReferencedWorkflowsItems as WebhookDeploymentReviewRequestedPropWorkflowRunPropReferencedWorkflowsItems,
     )
-    from .group_0492 import (
+    from .group_0497 import (
         WebhookDeploymentReviewRequestedPropWorkflowRunPropRepository as WebhookDeploymentReviewRequestedPropWorkflowRunPropRepository,
     )
-    from .group_0492 import (
+    from .group_0497 import (
         WebhookDeploymentReviewRequestedPropWorkflowRunPropRepositoryPropOwner as WebhookDeploymentReviewRequestedPropWorkflowRunPropRepositoryPropOwner,
     )
-    from .group_0492 import (
+    from .group_0497 import (
         WebhookDeploymentReviewRequestedPropWorkflowRunPropTriggeringActor as WebhookDeploymentReviewRequestedPropWorkflowRunPropTriggeringActor,
     )
-    from .group_0493 import (
+    from .group_0498 import (
         WebhookDeploymentStatusCreated as WebhookDeploymentStatusCreated,
     )
-    from .group_0493 import (
+    from .group_0498 import (
         WebhookDeploymentStatusCreatedPropCheckRun as WebhookDeploymentStatusCreatedPropCheckRun,
     )
-    from .group_0493 import (
+    from .group_0498 import (
         WebhookDeploymentStatusCreatedPropDeployment as WebhookDeploymentStatusCreatedPropDeployment,
     )
-    from .group_0493 import (
+    from .group_0498 import (
         WebhookDeploymentStatusCreatedPropDeploymentPropCreator as WebhookDeploymentStatusCreatedPropDeploymentPropCreator,
     )
-    from .group_0493 import (
+    from .group_0498 import (
         WebhookDeploymentStatusCreatedPropDeploymentPropPayloadOneof1 as WebhookDeploymentStatusCreatedPropDeploymentPropPayloadOneof1,
     )
-    from .group_0493 import (
+    from .group_0498 import (
         WebhookDeploymentStatusCreatedPropDeploymentPropPerformedViaGithubApp as WebhookDeploymentStatusCreatedPropDeploymentPropPerformedViaGithubApp,
     )
-    from .group_0493 import (
+    from .group_0498 import (
         WebhookDeploymentStatusCreatedPropDeploymentPropPerformedViaGithubAppPropOwner as WebhookDeploymentStatusCreatedPropDeploymentPropPerformedViaGithubAppPropOwner,
     )
-    from .group_0493 import (
+    from .group_0498 import (
         WebhookDeploymentStatusCreatedPropDeploymentPropPerformedViaGithubAppPropPermissions as WebhookDeploymentStatusCreatedPropDeploymentPropPerformedViaGithubAppPropPermissions,
     )
-    from .group_0493 import (
+    from .group_0498 import (
         WebhookDeploymentStatusCreatedPropDeploymentStatus as WebhookDeploymentStatusCreatedPropDeploymentStatus,
     )
-    from .group_0493 import (
+    from .group_0498 import (
         WebhookDeploymentStatusCreatedPropDeploymentStatusPropCreator as WebhookDeploymentStatusCreatedPropDeploymentStatusPropCreator,
     )
-    from .group_0493 import (
+    from .group_0498 import (
         WebhookDeploymentStatusCreatedPropDeploymentStatusPropPerformedViaGithubApp as WebhookDeploymentStatusCreatedPropDeploymentStatusPropPerformedViaGithubApp,
     )
-    from .group_0493 import (
+    from .group_0498 import (
         WebhookDeploymentStatusCreatedPropDeploymentStatusPropPerformedViaGithubAppPropOwner as WebhookDeploymentStatusCreatedPropDeploymentStatusPropPerformedViaGithubAppPropOwner,
     )
-    from .group_0493 import (
+    from .group_0498 import (
         WebhookDeploymentStatusCreatedPropDeploymentStatusPropPerformedViaGithubAppPropPermissions as WebhookDeploymentStatusCreatedPropDeploymentStatusPropPerformedViaGithubAppPropPermissions,
     )
-    from .group_0493 import (
+    from .group_0498 import (
         WebhookDeploymentStatusCreatedPropWorkflowRun as WebhookDeploymentStatusCreatedPropWorkflowRun,
     )
-    from .group_0493 import (
+    from .group_0498 import (
         WebhookDeploymentStatusCreatedPropWorkflowRunPropActor as WebhookDeploymentStatusCreatedPropWorkflowRunPropActor,
     )
-    from .group_0493 import (
+    from .group_0498 import (
         WebhookDeploymentStatusCreatedPropWorkflowRunPropHeadRepository as WebhookDeploymentStatusCreatedPropWorkflowRunPropHeadRepository,
     )
-    from .group_0493 import (
+    from .group_0498 import (
         WebhookDeploymentStatusCreatedPropWorkflowRunPropHeadRepositoryPropOwner as WebhookDeploymentStatusCreatedPropWorkflowRunPropHeadRepositoryPropOwner,
     )
-    from .group_0493 import (
+    from .group_0498 import (
         WebhookDeploymentStatusCreatedPropWorkflowRunPropPullRequestsItems as WebhookDeploymentStatusCreatedPropWorkflowRunPropPullRequestsItems,
     )
-    from .group_0493 import (
+    from .group_0498 import (
         WebhookDeploymentStatusCreatedPropWorkflowRunPropPullRequestsItemsPropBase as WebhookDeploymentStatusCreatedPropWorkflowRunPropPullRequestsItemsPropBase,
     )
-    from .group_0493 import (
+    from .group_0498 import (
         WebhookDeploymentStatusCreatedPropWorkflowRunPropPullRequestsItemsPropBasePropRepo as WebhookDeploymentStatusCreatedPropWorkflowRunPropPullRequestsItemsPropBasePropRepo,
     )
-    from .group_0493 import (
+    from .group_0498 import (
         WebhookDeploymentStatusCreatedPropWorkflowRunPropPullRequestsItemsPropHead as WebhookDeploymentStatusCreatedPropWorkflowRunPropPullRequestsItemsPropHead,
     )
-    from .group_0493 import (
+    from .group_0498 import (
         WebhookDeploymentStatusCreatedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo as WebhookDeploymentStatusCreatedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo,
     )
-    from .group_0493 import (
+    from .group_0498 import (
         WebhookDeploymentStatusCreatedPropWorkflowRunPropReferencedWorkflowsItems as WebhookDeploymentStatusCreatedPropWorkflowRunPropReferencedWorkflowsItems,
     )
-    from .group_0493 import (
+    from .group_0498 import (
         WebhookDeploymentStatusCreatedPropWorkflowRunPropRepository as WebhookDeploymentStatusCreatedPropWorkflowRunPropRepository,
     )
-    from .group_0493 import (
+    from .group_0498 import (
         WebhookDeploymentStatusCreatedPropWorkflowRunPropRepositoryPropOwner as WebhookDeploymentStatusCreatedPropWorkflowRunPropRepositoryPropOwner,
     )
-    from .group_0493 import (
+    from .group_0498 import (
         WebhookDeploymentStatusCreatedPropWorkflowRunPropTriggeringActor as WebhookDeploymentStatusCreatedPropWorkflowRunPropTriggeringActor,
     )
-    from .group_0494 import WebhookDiscussionAnswered as WebhookDiscussionAnswered
-    from .group_0495 import (
+    from .group_0499 import WebhookDiscussionAnswered as WebhookDiscussionAnswered
+    from .group_0500 import (
         WebhookDiscussionCategoryChanged as WebhookDiscussionCategoryChanged,
     )
-    from .group_0495 import (
+    from .group_0500 import (
         WebhookDiscussionCategoryChangedPropChanges as WebhookDiscussionCategoryChangedPropChanges,
     )
-    from .group_0495 import (
+    from .group_0500 import (
         WebhookDiscussionCategoryChangedPropChangesPropCategory as WebhookDiscussionCategoryChangedPropChangesPropCategory,
     )
-    from .group_0495 import (
+    from .group_0500 import (
         WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFrom as WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFrom,
     )
-    from .group_0496 import WebhookDiscussionClosed as WebhookDiscussionClosed
-    from .group_0497 import (
+    from .group_0501 import WebhookDiscussionClosed as WebhookDiscussionClosed
+    from .group_0502 import (
         WebhookDiscussionCommentCreated as WebhookDiscussionCommentCreated,
     )
-    from .group_0498 import (
+    from .group_0503 import (
         WebhookDiscussionCommentDeleted as WebhookDiscussionCommentDeleted,
     )
-    from .group_0499 import (
+    from .group_0504 import (
         WebhookDiscussionCommentEdited as WebhookDiscussionCommentEdited,
     )
-    from .group_0499 import (
+    from .group_0504 import (
         WebhookDiscussionCommentEditedPropChanges as WebhookDiscussionCommentEditedPropChanges,
     )
-    from .group_0499 import (
+    from .group_0504 import (
         WebhookDiscussionCommentEditedPropChangesPropBody as WebhookDiscussionCommentEditedPropChangesPropBody,
     )
-    from .group_0500 import WebhookDiscussionCreated as WebhookDiscussionCreated
-    from .group_0501 import WebhookDiscussionDeleted as WebhookDiscussionDeleted
-    from .group_0502 import WebhookDiscussionEdited as WebhookDiscussionEdited
-    from .group_0502 import (
+    from .group_0505 import WebhookDiscussionCreated as WebhookDiscussionCreated
+    from .group_0506 import WebhookDiscussionDeleted as WebhookDiscussionDeleted
+    from .group_0507 import WebhookDiscussionEdited as WebhookDiscussionEdited
+    from .group_0507 import (
         WebhookDiscussionEditedPropChanges as WebhookDiscussionEditedPropChanges,
     )
-    from .group_0502 import (
+    from .group_0507 import (
         WebhookDiscussionEditedPropChangesPropBody as WebhookDiscussionEditedPropChangesPropBody,
     )
-    from .group_0502 import (
+    from .group_0507 import (
         WebhookDiscussionEditedPropChangesPropTitle as WebhookDiscussionEditedPropChangesPropTitle,
     )
-    from .group_0503 import WebhookDiscussionLabeled as WebhookDiscussionLabeled
-    from .group_0504 import WebhookDiscussionLocked as WebhookDiscussionLocked
-    from .group_0505 import WebhookDiscussionPinned as WebhookDiscussionPinned
-    from .group_0506 import WebhookDiscussionReopened as WebhookDiscussionReopened
-    from .group_0507 import WebhookDiscussionTransferred as WebhookDiscussionTransferred
-    from .group_0508 import (
+    from .group_0508 import WebhookDiscussionLabeled as WebhookDiscussionLabeled
+    from .group_0509 import WebhookDiscussionLocked as WebhookDiscussionLocked
+    from .group_0510 import WebhookDiscussionPinned as WebhookDiscussionPinned
+    from .group_0511 import WebhookDiscussionReopened as WebhookDiscussionReopened
+    from .group_0512 import WebhookDiscussionTransferred as WebhookDiscussionTransferred
+    from .group_0513 import (
         WebhookDiscussionTransferredPropChanges as WebhookDiscussionTransferredPropChanges,
     )
-    from .group_0509 import WebhookDiscussionUnanswered as WebhookDiscussionUnanswered
-    from .group_0510 import WebhookDiscussionUnlabeled as WebhookDiscussionUnlabeled
-    from .group_0511 import WebhookDiscussionUnlocked as WebhookDiscussionUnlocked
-    from .group_0512 import WebhookDiscussionUnpinned as WebhookDiscussionUnpinned
-    from .group_0513 import WebhookFork as WebhookFork
-    from .group_0514 import WebhookForkPropForkee as WebhookForkPropForkee
-    from .group_0514 import (
+    from .group_0514 import WebhookDiscussionUnanswered as WebhookDiscussionUnanswered
+    from .group_0515 import WebhookDiscussionUnlabeled as WebhookDiscussionUnlabeled
+    from .group_0516 import WebhookDiscussionUnlocked as WebhookDiscussionUnlocked
+    from .group_0517 import WebhookDiscussionUnpinned as WebhookDiscussionUnpinned
+    from .group_0518 import WebhookFork as WebhookFork
+    from .group_0519 import WebhookForkPropForkee as WebhookForkPropForkee
+    from .group_0519 import (
         WebhookForkPropForkeeMergedLicense as WebhookForkPropForkeeMergedLicense,
     )
-    from .group_0514 import (
+    from .group_0519 import (
         WebhookForkPropForkeeMergedOwner as WebhookForkPropForkeeMergedOwner,
     )
-    from .group_0515 import WebhookForkPropForkeeAllof0 as WebhookForkPropForkeeAllof0
-    from .group_0515 import (
+    from .group_0520 import WebhookForkPropForkeeAllof0 as WebhookForkPropForkeeAllof0
+    from .group_0520 import (
         WebhookForkPropForkeeAllof0PropLicense as WebhookForkPropForkeeAllof0PropLicense,
     )
-    from .group_0515 import (
+    from .group_0520 import (
         WebhookForkPropForkeeAllof0PropOwner as WebhookForkPropForkeeAllof0PropOwner,
     )
-    from .group_0516 import (
+    from .group_0521 import (
         WebhookForkPropForkeeAllof0PropPermissions as WebhookForkPropForkeeAllof0PropPermissions,
     )
-    from .group_0517 import WebhookForkPropForkeeAllof1 as WebhookForkPropForkeeAllof1
-    from .group_0517 import (
+    from .group_0522 import WebhookForkPropForkeeAllof1 as WebhookForkPropForkeeAllof1
+    from .group_0522 import (
         WebhookForkPropForkeeAllof1PropLicense as WebhookForkPropForkeeAllof1PropLicense,
     )
-    from .group_0517 import (
+    from .group_0522 import (
         WebhookForkPropForkeeAllof1PropOwner as WebhookForkPropForkeeAllof1PropOwner,
     )
-    from .group_0518 import (
+    from .group_0523 import (
         WebhookGithubAppAuthorizationRevoked as WebhookGithubAppAuthorizationRevoked,
     )
-    from .group_0519 import WebhookGollum as WebhookGollum
-    from .group_0519 import WebhookGollumPropPagesItems as WebhookGollumPropPagesItems
-    from .group_0520 import WebhookInstallationCreated as WebhookInstallationCreated
-    from .group_0521 import WebhookInstallationDeleted as WebhookInstallationDeleted
-    from .group_0522 import (
+    from .group_0524 import WebhookGollum as WebhookGollum
+    from .group_0524 import WebhookGollumPropPagesItems as WebhookGollumPropPagesItems
+    from .group_0525 import WebhookInstallationCreated as WebhookInstallationCreated
+    from .group_0526 import WebhookInstallationDeleted as WebhookInstallationDeleted
+    from .group_0527 import (
         WebhookInstallationNewPermissionsAccepted as WebhookInstallationNewPermissionsAccepted,
     )
-    from .group_0523 import (
+    from .group_0528 import (
         WebhookInstallationRepositoriesAdded as WebhookInstallationRepositoriesAdded,
     )
-    from .group_0523 import (
+    from .group_0528 import (
         WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItems as WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItems,
     )
-    from .group_0524 import (
+    from .group_0529 import (
         WebhookInstallationRepositoriesRemoved as WebhookInstallationRepositoriesRemoved,
     )
-    from .group_0524 import (
+    from .group_0529 import (
         WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItems as WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItems,
     )
-    from .group_0525 import WebhookInstallationSuspend as WebhookInstallationSuspend
-    from .group_0526 import (
+    from .group_0530 import WebhookInstallationSuspend as WebhookInstallationSuspend
+    from .group_0531 import (
         WebhookInstallationTargetRenamed as WebhookInstallationTargetRenamed,
     )
-    from .group_0526 import (
+    from .group_0531 import (
         WebhookInstallationTargetRenamedPropAccount as WebhookInstallationTargetRenamedPropAccount,
     )
-    from .group_0526 import (
+    from .group_0531 import (
         WebhookInstallationTargetRenamedPropChanges as WebhookInstallationTargetRenamedPropChanges,
     )
-    from .group_0526 import (
+    from .group_0531 import (
         WebhookInstallationTargetRenamedPropChangesPropLogin as WebhookInstallationTargetRenamedPropChangesPropLogin,
     )
-    from .group_0526 import (
+    from .group_0531 import (
         WebhookInstallationTargetRenamedPropChangesPropSlug as WebhookInstallationTargetRenamedPropChangesPropSlug,
     )
-    from .group_0527 import WebhookInstallationUnsuspend as WebhookInstallationUnsuspend
-    from .group_0528 import WebhookIssueCommentCreated as WebhookIssueCommentCreated
-    from .group_0529 import (
+    from .group_0532 import WebhookInstallationUnsuspend as WebhookInstallationUnsuspend
+    from .group_0533 import WebhookIssueCommentCreated as WebhookIssueCommentCreated
+    from .group_0534 import (
         WebhookIssueCommentCreatedPropComment as WebhookIssueCommentCreatedPropComment,
     )
-    from .group_0529 import (
+    from .group_0534 import (
         WebhookIssueCommentCreatedPropCommentPropReactions as WebhookIssueCommentCreatedPropCommentPropReactions,
     )
-    from .group_0529 import (
+    from .group_0534 import (
         WebhookIssueCommentCreatedPropCommentPropUser as WebhookIssueCommentCreatedPropCommentPropUser,
     )
-    from .group_0530 import (
+    from .group_0535 import (
         WebhookIssueCommentCreatedPropIssue as WebhookIssueCommentCreatedPropIssue,
     )
-    from .group_0530 import (
+    from .group_0535 import (
         WebhookIssueCommentCreatedPropIssueMergedAssignees as WebhookIssueCommentCreatedPropIssueMergedAssignees,
     )
-    from .group_0530 import (
+    from .group_0535 import (
         WebhookIssueCommentCreatedPropIssueMergedReactions as WebhookIssueCommentCreatedPropIssueMergedReactions,
     )
-    from .group_0530 import (
+    from .group_0535 import (
         WebhookIssueCommentCreatedPropIssueMergedUser as WebhookIssueCommentCreatedPropIssueMergedUser,
     )
-    from .group_0531 import (
+    from .group_0536 import (
         WebhookIssueCommentCreatedPropIssueAllof0 as WebhookIssueCommentCreatedPropIssueAllof0,
     )
-    from .group_0531 import (
+    from .group_0536 import (
         WebhookIssueCommentCreatedPropIssueAllof0PropAssigneesItems as WebhookIssueCommentCreatedPropIssueAllof0PropAssigneesItems,
     )
-    from .group_0531 import (
+    from .group_0536 import (
         WebhookIssueCommentCreatedPropIssueAllof0PropReactions as WebhookIssueCommentCreatedPropIssueAllof0PropReactions,
     )
-    from .group_0531 import (
+    from .group_0536 import (
         WebhookIssueCommentCreatedPropIssueAllof0PropUser as WebhookIssueCommentCreatedPropIssueAllof0PropUser,
     )
-    from .group_0532 import (
+    from .group_0537 import (
         WebhookIssueCommentCreatedPropIssueAllof0PropAssignee as WebhookIssueCommentCreatedPropIssueAllof0PropAssignee,
     )
-    from .group_0532 import (
+    from .group_0537 import (
         WebhookIssueCommentCreatedPropIssueAllof0PropLabelsItems as WebhookIssueCommentCreatedPropIssueAllof0PropLabelsItems,
     )
-    from .group_0532 import (
+    from .group_0537 import (
         WebhookIssueCommentCreatedPropIssueAllof0PropPullRequest as WebhookIssueCommentCreatedPropIssueAllof0PropPullRequest,
     )
-    from .group_0533 import (
+    from .group_0538 import (
         WebhookIssueCommentCreatedPropIssueAllof0PropMilestonePropCreator as WebhookIssueCommentCreatedPropIssueAllof0PropMilestonePropCreator,
     )
-    from .group_0534 import (
+    from .group_0539 import (
         WebhookIssueCommentCreatedPropIssueAllof0PropMilestone as WebhookIssueCommentCreatedPropIssueAllof0PropMilestone,
     )
-    from .group_0535 import (
+    from .group_0540 import (
         WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropOwner as WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropOwner,
     )
-    from .group_0535 import (
+    from .group_0540 import (
         WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropPermissions as WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropPermissions,
     )
-    from .group_0536 import (
+    from .group_0541 import (
         WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubApp as WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubApp,
     )
-    from .group_0537 import (
+    from .group_0542 import (
         WebhookIssueCommentCreatedPropIssueAllof0PropSubIssuesSummary as WebhookIssueCommentCreatedPropIssueAllof0PropSubIssuesSummary,
     )
-    from .group_0538 import (
+    from .group_0543 import (
         WebhookIssueCommentCreatedPropIssueAllof1 as WebhookIssueCommentCreatedPropIssueAllof1,
     )
-    from .group_0538 import (
+    from .group_0543 import (
         WebhookIssueCommentCreatedPropIssueAllof1PropAssignee as WebhookIssueCommentCreatedPropIssueAllof1PropAssignee,
     )
-    from .group_0538 import (
+    from .group_0543 import (
         WebhookIssueCommentCreatedPropIssueAllof1PropAssigneesItems as WebhookIssueCommentCreatedPropIssueAllof1PropAssigneesItems,
     )
-    from .group_0538 import (
+    from .group_0543 import (
         WebhookIssueCommentCreatedPropIssueAllof1PropLabelsItems as WebhookIssueCommentCreatedPropIssueAllof1PropLabelsItems,
     )
-    from .group_0538 import (
+    from .group_0543 import (
         WebhookIssueCommentCreatedPropIssueAllof1PropMilestone as WebhookIssueCommentCreatedPropIssueAllof1PropMilestone,
     )
-    from .group_0538 import (
+    from .group_0543 import (
         WebhookIssueCommentCreatedPropIssueAllof1PropPerformedViaGithubApp as WebhookIssueCommentCreatedPropIssueAllof1PropPerformedViaGithubApp,
     )
-    from .group_0538 import (
+    from .group_0543 import (
         WebhookIssueCommentCreatedPropIssueAllof1PropReactions as WebhookIssueCommentCreatedPropIssueAllof1PropReactions,
     )
-    from .group_0538 import (
+    from .group_0543 import (
         WebhookIssueCommentCreatedPropIssueAllof1PropUser as WebhookIssueCommentCreatedPropIssueAllof1PropUser,
     )
-    from .group_0539 import (
+    from .group_0544 import (
         WebhookIssueCommentCreatedPropIssueMergedMilestone as WebhookIssueCommentCreatedPropIssueMergedMilestone,
     )
-    from .group_0540 import (
+    from .group_0545 import (
         WebhookIssueCommentCreatedPropIssueMergedPerformedViaGithubApp as WebhookIssueCommentCreatedPropIssueMergedPerformedViaGithubApp,
     )
-    from .group_0541 import WebhookIssueCommentDeleted as WebhookIssueCommentDeleted
-    from .group_0542 import (
+    from .group_0546 import WebhookIssueCommentDeleted as WebhookIssueCommentDeleted
+    from .group_0547 import (
         WebhookIssueCommentDeletedPropIssue as WebhookIssueCommentDeletedPropIssue,
     )
-    from .group_0542 import (
+    from .group_0547 import (
         WebhookIssueCommentDeletedPropIssueMergedAssignees as WebhookIssueCommentDeletedPropIssueMergedAssignees,
     )
-    from .group_0542 import (
+    from .group_0547 import (
         WebhookIssueCommentDeletedPropIssueMergedReactions as WebhookIssueCommentDeletedPropIssueMergedReactions,
     )
-    from .group_0542 import (
+    from .group_0547 import (
         WebhookIssueCommentDeletedPropIssueMergedUser as WebhookIssueCommentDeletedPropIssueMergedUser,
     )
-    from .group_0543 import (
+    from .group_0548 import (
         WebhookIssueCommentDeletedPropIssueAllof0 as WebhookIssueCommentDeletedPropIssueAllof0,
     )
-    from .group_0543 import (
+    from .group_0548 import (
         WebhookIssueCommentDeletedPropIssueAllof0PropAssigneesItems as WebhookIssueCommentDeletedPropIssueAllof0PropAssigneesItems,
     )
-    from .group_0543 import (
+    from .group_0548 import (
         WebhookIssueCommentDeletedPropIssueAllof0PropReactions as WebhookIssueCommentDeletedPropIssueAllof0PropReactions,
     )
-    from .group_0543 import (
+    from .group_0548 import (
         WebhookIssueCommentDeletedPropIssueAllof0PropUser as WebhookIssueCommentDeletedPropIssueAllof0PropUser,
     )
-    from .group_0544 import (
+    from .group_0549 import (
         WebhookIssueCommentDeletedPropIssueAllof0PropAssignee as WebhookIssueCommentDeletedPropIssueAllof0PropAssignee,
     )
-    from .group_0544 import (
+    from .group_0549 import (
         WebhookIssueCommentDeletedPropIssueAllof0PropLabelsItems as WebhookIssueCommentDeletedPropIssueAllof0PropLabelsItems,
     )
-    from .group_0544 import (
+    from .group_0549 import (
         WebhookIssueCommentDeletedPropIssueAllof0PropPullRequest as WebhookIssueCommentDeletedPropIssueAllof0PropPullRequest,
     )
-    from .group_0545 import (
+    from .group_0550 import (
         WebhookIssueCommentDeletedPropIssueAllof0PropMilestonePropCreator as WebhookIssueCommentDeletedPropIssueAllof0PropMilestonePropCreator,
     )
-    from .group_0546 import (
+    from .group_0551 import (
         WebhookIssueCommentDeletedPropIssueAllof0PropMilestone as WebhookIssueCommentDeletedPropIssueAllof0PropMilestone,
     )
-    from .group_0547 import (
+    from .group_0552 import (
         WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropOwner as WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropOwner,
     )
-    from .group_0547 import (
+    from .group_0552 import (
         WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropPermissions as WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropPermissions,
     )
-    from .group_0548 import (
+    from .group_0553 import (
         WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubApp as WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubApp,
     )
-    from .group_0549 import (
+    from .group_0554 import (
         WebhookIssueCommentDeletedPropIssueAllof0PropSubIssuesSummary as WebhookIssueCommentDeletedPropIssueAllof0PropSubIssuesSummary,
     )
-    from .group_0550 import (
+    from .group_0555 import (
         WebhookIssueCommentDeletedPropIssueAllof1 as WebhookIssueCommentDeletedPropIssueAllof1,
     )
-    from .group_0550 import (
+    from .group_0555 import (
         WebhookIssueCommentDeletedPropIssueAllof1PropAssignee as WebhookIssueCommentDeletedPropIssueAllof1PropAssignee,
     )
-    from .group_0550 import (
+    from .group_0555 import (
         WebhookIssueCommentDeletedPropIssueAllof1PropAssigneesItems as WebhookIssueCommentDeletedPropIssueAllof1PropAssigneesItems,
     )
-    from .group_0550 import (
+    from .group_0555 import (
         WebhookIssueCommentDeletedPropIssueAllof1PropLabelsItems as WebhookIssueCommentDeletedPropIssueAllof1PropLabelsItems,
     )
-    from .group_0550 import (
+    from .group_0555 import (
         WebhookIssueCommentDeletedPropIssueAllof1PropMilestone as WebhookIssueCommentDeletedPropIssueAllof1PropMilestone,
     )
-    from .group_0550 import (
+    from .group_0555 import (
         WebhookIssueCommentDeletedPropIssueAllof1PropPerformedViaGithubApp as WebhookIssueCommentDeletedPropIssueAllof1PropPerformedViaGithubApp,
     )
-    from .group_0550 import (
+    from .group_0555 import (
         WebhookIssueCommentDeletedPropIssueAllof1PropReactions as WebhookIssueCommentDeletedPropIssueAllof1PropReactions,
     )
-    from .group_0550 import (
+    from .group_0555 import (
         WebhookIssueCommentDeletedPropIssueAllof1PropUser as WebhookIssueCommentDeletedPropIssueAllof1PropUser,
     )
-    from .group_0551 import (
+    from .group_0556 import (
         WebhookIssueCommentDeletedPropIssueMergedMilestone as WebhookIssueCommentDeletedPropIssueMergedMilestone,
     )
-    from .group_0552 import (
+    from .group_0557 import (
         WebhookIssueCommentDeletedPropIssueMergedPerformedViaGithubApp as WebhookIssueCommentDeletedPropIssueMergedPerformedViaGithubApp,
     )
-    from .group_0553 import WebhookIssueCommentEdited as WebhookIssueCommentEdited
-    from .group_0554 import (
+    from .group_0558 import WebhookIssueCommentEdited as WebhookIssueCommentEdited
+    from .group_0559 import (
         WebhookIssueCommentEditedPropIssue as WebhookIssueCommentEditedPropIssue,
     )
-    from .group_0554 import (
+    from .group_0559 import (
         WebhookIssueCommentEditedPropIssueMergedAssignees as WebhookIssueCommentEditedPropIssueMergedAssignees,
     )
-    from .group_0554 import (
+    from .group_0559 import (
         WebhookIssueCommentEditedPropIssueMergedReactions as WebhookIssueCommentEditedPropIssueMergedReactions,
     )
-    from .group_0554 import (
+    from .group_0559 import (
         WebhookIssueCommentEditedPropIssueMergedUser as WebhookIssueCommentEditedPropIssueMergedUser,
     )
-    from .group_0555 import (
+    from .group_0560 import (
         WebhookIssueCommentEditedPropIssueAllof0 as WebhookIssueCommentEditedPropIssueAllof0,
     )
-    from .group_0555 import (
+    from .group_0560 import (
         WebhookIssueCommentEditedPropIssueAllof0PropAssigneesItems as WebhookIssueCommentEditedPropIssueAllof0PropAssigneesItems,
     )
-    from .group_0555 import (
+    from .group_0560 import (
         WebhookIssueCommentEditedPropIssueAllof0PropReactions as WebhookIssueCommentEditedPropIssueAllof0PropReactions,
     )
-    from .group_0555 import (
+    from .group_0560 import (
         WebhookIssueCommentEditedPropIssueAllof0PropUser as WebhookIssueCommentEditedPropIssueAllof0PropUser,
     )
-    from .group_0556 import (
+    from .group_0561 import (
         WebhookIssueCommentEditedPropIssueAllof0PropAssignee as WebhookIssueCommentEditedPropIssueAllof0PropAssignee,
     )
-    from .group_0556 import (
+    from .group_0561 import (
         WebhookIssueCommentEditedPropIssueAllof0PropLabelsItems as WebhookIssueCommentEditedPropIssueAllof0PropLabelsItems,
     )
-    from .group_0556 import (
+    from .group_0561 import (
         WebhookIssueCommentEditedPropIssueAllof0PropPullRequest as WebhookIssueCommentEditedPropIssueAllof0PropPullRequest,
     )
-    from .group_0557 import (
+    from .group_0562 import (
         WebhookIssueCommentEditedPropIssueAllof0PropMilestonePropCreator as WebhookIssueCommentEditedPropIssueAllof0PropMilestonePropCreator,
     )
-    from .group_0558 import (
+    from .group_0563 import (
         WebhookIssueCommentEditedPropIssueAllof0PropMilestone as WebhookIssueCommentEditedPropIssueAllof0PropMilestone,
     )
-    from .group_0559 import (
+    from .group_0564 import (
         WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropOwner as WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropOwner,
     )
-    from .group_0559 import (
+    from .group_0564 import (
         WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropPermissions as WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropPermissions,
     )
-    from .group_0560 import (
+    from .group_0565 import (
         WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubApp as WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubApp,
     )
-    from .group_0561 import (
+    from .group_0566 import (
         WebhookIssueCommentEditedPropIssueAllof0PropSubIssuesSummary as WebhookIssueCommentEditedPropIssueAllof0PropSubIssuesSummary,
     )
-    from .group_0562 import (
+    from .group_0567 import (
         WebhookIssueCommentEditedPropIssueAllof1 as WebhookIssueCommentEditedPropIssueAllof1,
     )
-    from .group_0562 import (
+    from .group_0567 import (
         WebhookIssueCommentEditedPropIssueAllof1PropAssignee as WebhookIssueCommentEditedPropIssueAllof1PropAssignee,
     )
-    from .group_0562 import (
+    from .group_0567 import (
         WebhookIssueCommentEditedPropIssueAllof1PropAssigneesItems as WebhookIssueCommentEditedPropIssueAllof1PropAssigneesItems,
     )
-    from .group_0562 import (
+    from .group_0567 import (
         WebhookIssueCommentEditedPropIssueAllof1PropLabelsItems as WebhookIssueCommentEditedPropIssueAllof1PropLabelsItems,
     )
-    from .group_0562 import (
+    from .group_0567 import (
         WebhookIssueCommentEditedPropIssueAllof1PropMilestone as WebhookIssueCommentEditedPropIssueAllof1PropMilestone,
     )
-    from .group_0562 import (
+    from .group_0567 import (
         WebhookIssueCommentEditedPropIssueAllof1PropPerformedViaGithubApp as WebhookIssueCommentEditedPropIssueAllof1PropPerformedViaGithubApp,
     )
-    from .group_0562 import (
+    from .group_0567 import (
         WebhookIssueCommentEditedPropIssueAllof1PropReactions as WebhookIssueCommentEditedPropIssueAllof1PropReactions,
     )
-    from .group_0562 import (
+    from .group_0567 import (
         WebhookIssueCommentEditedPropIssueAllof1PropUser as WebhookIssueCommentEditedPropIssueAllof1PropUser,
     )
-    from .group_0563 import (
+    from .group_0568 import (
         WebhookIssueCommentEditedPropIssueMergedMilestone as WebhookIssueCommentEditedPropIssueMergedMilestone,
     )
-    from .group_0564 import (
+    from .group_0569 import (
         WebhookIssueCommentEditedPropIssueMergedPerformedViaGithubApp as WebhookIssueCommentEditedPropIssueMergedPerformedViaGithubApp,
     )
-    from .group_0565 import WebhookIssuesAssigned as WebhookIssuesAssigned
-    from .group_0566 import WebhookIssuesClosed as WebhookIssuesClosed
-    from .group_0567 import WebhookIssuesClosedPropIssue as WebhookIssuesClosedPropIssue
-    from .group_0567 import (
+    from .group_0570 import WebhookIssuesAssigned as WebhookIssuesAssigned
+    from .group_0571 import WebhookIssuesClosed as WebhookIssuesClosed
+    from .group_0572 import WebhookIssuesClosedPropIssue as WebhookIssuesClosedPropIssue
+    from .group_0572 import (
         WebhookIssuesClosedPropIssueMergedAssignee as WebhookIssuesClosedPropIssueMergedAssignee,
     )
-    from .group_0567 import (
+    from .group_0572 import (
         WebhookIssuesClosedPropIssueMergedAssignees as WebhookIssuesClosedPropIssueMergedAssignees,
     )
-    from .group_0567 import (
+    from .group_0572 import (
         WebhookIssuesClosedPropIssueMergedLabels as WebhookIssuesClosedPropIssueMergedLabels,
     )
-    from .group_0567 import (
+    from .group_0572 import (
         WebhookIssuesClosedPropIssueMergedReactions as WebhookIssuesClosedPropIssueMergedReactions,
     )
-    from .group_0567 import (
+    from .group_0572 import (
         WebhookIssuesClosedPropIssueMergedUser as WebhookIssuesClosedPropIssueMergedUser,
     )
-    from .group_0568 import (
+    from .group_0573 import (
         WebhookIssuesClosedPropIssueAllof0 as WebhookIssuesClosedPropIssueAllof0,
     )
-    from .group_0568 import (
+    from .group_0573 import (
         WebhookIssuesClosedPropIssueAllof0PropAssignee as WebhookIssuesClosedPropIssueAllof0PropAssignee,
     )
-    from .group_0568 import (
+    from .group_0573 import (
         WebhookIssuesClosedPropIssueAllof0PropAssigneesItems as WebhookIssuesClosedPropIssueAllof0PropAssigneesItems,
     )
-    from .group_0568 import (
+    from .group_0573 import (
         WebhookIssuesClosedPropIssueAllof0PropLabelsItems as WebhookIssuesClosedPropIssueAllof0PropLabelsItems,
     )
-    from .group_0568 import (
+    from .group_0573 import (
         WebhookIssuesClosedPropIssueAllof0PropReactions as WebhookIssuesClosedPropIssueAllof0PropReactions,
     )
-    from .group_0568 import (
+    from .group_0573 import (
         WebhookIssuesClosedPropIssueAllof0PropUser as WebhookIssuesClosedPropIssueAllof0PropUser,
     )
-    from .group_0569 import (
+    from .group_0574 import (
         WebhookIssuesClosedPropIssueAllof0PropMilestonePropCreator as WebhookIssuesClosedPropIssueAllof0PropMilestonePropCreator,
     )
-    from .group_0570 import (
+    from .group_0575 import (
         WebhookIssuesClosedPropIssueAllof0PropMilestone as WebhookIssuesClosedPropIssueAllof0PropMilestone,
     )
-    from .group_0571 import (
+    from .group_0576 import (
         WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropOwner as WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropOwner,
     )
-    from .group_0571 import (
+    from .group_0576 import (
         WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropPermissions as WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropPermissions,
     )
-    from .group_0572 import (
+    from .group_0577 import (
         WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubApp as WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubApp,
     )
-    from .group_0573 import (
+    from .group_0578 import (
         WebhookIssuesClosedPropIssueAllof0PropPullRequest as WebhookIssuesClosedPropIssueAllof0PropPullRequest,
     )
-    from .group_0573 import (
+    from .group_0578 import (
         WebhookIssuesClosedPropIssueAllof0PropSubIssuesSummary as WebhookIssuesClosedPropIssueAllof0PropSubIssuesSummary,
     )
-    from .group_0574 import (
+    from .group_0579 import (
         WebhookIssuesClosedPropIssueAllof1 as WebhookIssuesClosedPropIssueAllof1,
     )
-    from .group_0574 import (
+    from .group_0579 import (
         WebhookIssuesClosedPropIssueAllof1PropAssignee as WebhookIssuesClosedPropIssueAllof1PropAssignee,
     )
-    from .group_0574 import (
+    from .group_0579 import (
         WebhookIssuesClosedPropIssueAllof1PropAssigneesItems as WebhookIssuesClosedPropIssueAllof1PropAssigneesItems,
     )
-    from .group_0574 import (
+    from .group_0579 import (
         WebhookIssuesClosedPropIssueAllof1PropLabelsItems as WebhookIssuesClosedPropIssueAllof1PropLabelsItems,
     )
-    from .group_0574 import (
+    from .group_0579 import (
         WebhookIssuesClosedPropIssueAllof1PropMilestone as WebhookIssuesClosedPropIssueAllof1PropMilestone,
     )
-    from .group_0574 import (
+    from .group_0579 import (
         WebhookIssuesClosedPropIssueAllof1PropPerformedViaGithubApp as WebhookIssuesClosedPropIssueAllof1PropPerformedViaGithubApp,
     )
-    from .group_0574 import (
+    from .group_0579 import (
         WebhookIssuesClosedPropIssueAllof1PropReactions as WebhookIssuesClosedPropIssueAllof1PropReactions,
     )
-    from .group_0574 import (
+    from .group_0579 import (
         WebhookIssuesClosedPropIssueAllof1PropUser as WebhookIssuesClosedPropIssueAllof1PropUser,
     )
-    from .group_0575 import (
+    from .group_0580 import (
         WebhookIssuesClosedPropIssueMergedMilestone as WebhookIssuesClosedPropIssueMergedMilestone,
     )
-    from .group_0576 import (
+    from .group_0581 import (
         WebhookIssuesClosedPropIssueMergedPerformedViaGithubApp as WebhookIssuesClosedPropIssueMergedPerformedViaGithubApp,
     )
-    from .group_0577 import WebhookIssuesDeleted as WebhookIssuesDeleted
-    from .group_0577 import (
+    from .group_0582 import WebhookIssuesDeleted as WebhookIssuesDeleted
+    from .group_0582 import (
         WebhookIssuesDeletedPropIssue as WebhookIssuesDeletedPropIssue,
     )
-    from .group_0577 import (
+    from .group_0582 import (
         WebhookIssuesDeletedPropIssuePropAssignee as WebhookIssuesDeletedPropIssuePropAssignee,
     )
-    from .group_0577 import (
+    from .group_0582 import (
         WebhookIssuesDeletedPropIssuePropAssigneesItems as WebhookIssuesDeletedPropIssuePropAssigneesItems,
     )
-    from .group_0577 import (
+    from .group_0582 import (
         WebhookIssuesDeletedPropIssuePropLabelsItems as WebhookIssuesDeletedPropIssuePropLabelsItems,
     )
-    from .group_0577 import (
+    from .group_0582 import (
         WebhookIssuesDeletedPropIssuePropMilestone as WebhookIssuesDeletedPropIssuePropMilestone,
     )
-    from .group_0577 import (
+    from .group_0582 import (
         WebhookIssuesDeletedPropIssuePropMilestonePropCreator as WebhookIssuesDeletedPropIssuePropMilestonePropCreator,
     )
-    from .group_0577 import (
+    from .group_0582 import (
         WebhookIssuesDeletedPropIssuePropPerformedViaGithubApp as WebhookIssuesDeletedPropIssuePropPerformedViaGithubApp,
     )
-    from .group_0577 import (
+    from .group_0582 import (
         WebhookIssuesDeletedPropIssuePropPerformedViaGithubAppPropOwner as WebhookIssuesDeletedPropIssuePropPerformedViaGithubAppPropOwner,
     )
-    from .group_0577 import (
+    from .group_0582 import (
         WebhookIssuesDeletedPropIssuePropPerformedViaGithubAppPropPermissions as WebhookIssuesDeletedPropIssuePropPerformedViaGithubAppPropPermissions,
     )
-    from .group_0577 import (
+    from .group_0582 import (
         WebhookIssuesDeletedPropIssuePropPullRequest as WebhookIssuesDeletedPropIssuePropPullRequest,
     )
-    from .group_0577 import (
+    from .group_0582 import (
         WebhookIssuesDeletedPropIssuePropReactions as WebhookIssuesDeletedPropIssuePropReactions,
     )
-    from .group_0577 import (
+    from .group_0582 import (
         WebhookIssuesDeletedPropIssuePropSubIssuesSummary as WebhookIssuesDeletedPropIssuePropSubIssuesSummary,
     )
-    from .group_0577 import (
+    from .group_0582 import (
         WebhookIssuesDeletedPropIssuePropUser as WebhookIssuesDeletedPropIssuePropUser,
     )
-    from .group_0578 import WebhookIssuesDemilestoned as WebhookIssuesDemilestoned
-    from .group_0578 import (
+    from .group_0583 import WebhookIssuesDemilestoned as WebhookIssuesDemilestoned
+    from .group_0583 import (
         WebhookIssuesDemilestonedPropIssue as WebhookIssuesDemilestonedPropIssue,
     )
-    from .group_0578 import (
+    from .group_0583 import (
         WebhookIssuesDemilestonedPropIssuePropAssignee as WebhookIssuesDemilestonedPropIssuePropAssignee,
     )
-    from .group_0578 import (
+    from .group_0583 import (
         WebhookIssuesDemilestonedPropIssuePropAssigneesItems as WebhookIssuesDemilestonedPropIssuePropAssigneesItems,
     )
-    from .group_0578 import (
+    from .group_0583 import (
         WebhookIssuesDemilestonedPropIssuePropLabelsItems as WebhookIssuesDemilestonedPropIssuePropLabelsItems,
     )
-    from .group_0578 import (
+    from .group_0583 import (
         WebhookIssuesDemilestonedPropIssuePropMilestone as WebhookIssuesDemilestonedPropIssuePropMilestone,
     )
-    from .group_0578 import (
+    from .group_0583 import (
         WebhookIssuesDemilestonedPropIssuePropMilestonePropCreator as WebhookIssuesDemilestonedPropIssuePropMilestonePropCreator,
     )
-    from .group_0578 import (
+    from .group_0583 import (
         WebhookIssuesDemilestonedPropIssuePropPerformedViaGithubApp as WebhookIssuesDemilestonedPropIssuePropPerformedViaGithubApp,
     )
-    from .group_0578 import (
+    from .group_0583 import (
         WebhookIssuesDemilestonedPropIssuePropPerformedViaGithubAppPropOwner as WebhookIssuesDemilestonedPropIssuePropPerformedViaGithubAppPropOwner,
     )
-    from .group_0578 import (
+    from .group_0583 import (
         WebhookIssuesDemilestonedPropIssuePropPerformedViaGithubAppPropPermissions as WebhookIssuesDemilestonedPropIssuePropPerformedViaGithubAppPropPermissions,
     )
-    from .group_0578 import (
+    from .group_0583 import (
         WebhookIssuesDemilestonedPropIssuePropPullRequest as WebhookIssuesDemilestonedPropIssuePropPullRequest,
     )
-    from .group_0578 import (
+    from .group_0583 import (
         WebhookIssuesDemilestonedPropIssuePropReactions as WebhookIssuesDemilestonedPropIssuePropReactions,
     )
-    from .group_0578 import (
+    from .group_0583 import (
         WebhookIssuesDemilestonedPropIssuePropSubIssuesSummary as WebhookIssuesDemilestonedPropIssuePropSubIssuesSummary,
     )
-    from .group_0578 import (
+    from .group_0583 import (
         WebhookIssuesDemilestonedPropIssuePropUser as WebhookIssuesDemilestonedPropIssuePropUser,
     )
-    from .group_0579 import WebhookIssuesEdited as WebhookIssuesEdited
-    from .group_0579 import (
+    from .group_0584 import WebhookIssuesEdited as WebhookIssuesEdited
+    from .group_0584 import (
         WebhookIssuesEditedPropChanges as WebhookIssuesEditedPropChanges,
     )
-    from .group_0579 import (
+    from .group_0584 import (
         WebhookIssuesEditedPropChangesPropBody as WebhookIssuesEditedPropChangesPropBody,
     )
-    from .group_0579 import (
+    from .group_0584 import (
         WebhookIssuesEditedPropChangesPropTitle as WebhookIssuesEditedPropChangesPropTitle,
     )
-    from .group_0579 import WebhookIssuesEditedPropIssue as WebhookIssuesEditedPropIssue
-    from .group_0579 import (
+    from .group_0584 import WebhookIssuesEditedPropIssue as WebhookIssuesEditedPropIssue
+    from .group_0584 import (
         WebhookIssuesEditedPropIssuePropAssignee as WebhookIssuesEditedPropIssuePropAssignee,
     )
-    from .group_0579 import (
+    from .group_0584 import (
         WebhookIssuesEditedPropIssuePropAssigneesItems as WebhookIssuesEditedPropIssuePropAssigneesItems,
     )
-    from .group_0579 import (
+    from .group_0584 import (
         WebhookIssuesEditedPropIssuePropLabelsItems as WebhookIssuesEditedPropIssuePropLabelsItems,
     )
-    from .group_0579 import (
+    from .group_0584 import (
         WebhookIssuesEditedPropIssuePropMilestone as WebhookIssuesEditedPropIssuePropMilestone,
     )
-    from .group_0579 import (
+    from .group_0584 import (
         WebhookIssuesEditedPropIssuePropMilestonePropCreator as WebhookIssuesEditedPropIssuePropMilestonePropCreator,
     )
-    from .group_0579 import (
+    from .group_0584 import (
         WebhookIssuesEditedPropIssuePropPerformedViaGithubApp as WebhookIssuesEditedPropIssuePropPerformedViaGithubApp,
     )
-    from .group_0579 import (
+    from .group_0584 import (
         WebhookIssuesEditedPropIssuePropPerformedViaGithubAppPropOwner as WebhookIssuesEditedPropIssuePropPerformedViaGithubAppPropOwner,
     )
-    from .group_0579 import (
+    from .group_0584 import (
         WebhookIssuesEditedPropIssuePropPerformedViaGithubAppPropPermissions as WebhookIssuesEditedPropIssuePropPerformedViaGithubAppPropPermissions,
     )
-    from .group_0579 import (
+    from .group_0584 import (
         WebhookIssuesEditedPropIssuePropPullRequest as WebhookIssuesEditedPropIssuePropPullRequest,
     )
-    from .group_0579 import (
+    from .group_0584 import (
         WebhookIssuesEditedPropIssuePropReactions as WebhookIssuesEditedPropIssuePropReactions,
     )
-    from .group_0579 import (
+    from .group_0584 import (
         WebhookIssuesEditedPropIssuePropSubIssuesSummary as WebhookIssuesEditedPropIssuePropSubIssuesSummary,
     )
-    from .group_0579 import (
+    from .group_0584 import (
         WebhookIssuesEditedPropIssuePropUser as WebhookIssuesEditedPropIssuePropUser,
     )
-    from .group_0580 import WebhookIssuesLabeled as WebhookIssuesLabeled
-    from .group_0580 import (
+    from .group_0585 import WebhookIssuesLabeled as WebhookIssuesLabeled
+    from .group_0585 import (
         WebhookIssuesLabeledPropIssue as WebhookIssuesLabeledPropIssue,
     )
-    from .group_0580 import (
+    from .group_0585 import (
         WebhookIssuesLabeledPropIssuePropAssignee as WebhookIssuesLabeledPropIssuePropAssignee,
     )
-    from .group_0580 import (
+    from .group_0585 import (
         WebhookIssuesLabeledPropIssuePropAssigneesItems as WebhookIssuesLabeledPropIssuePropAssigneesItems,
     )
-    from .group_0580 import (
+    from .group_0585 import (
         WebhookIssuesLabeledPropIssuePropLabelsItems as WebhookIssuesLabeledPropIssuePropLabelsItems,
     )
-    from .group_0580 import (
+    from .group_0585 import (
         WebhookIssuesLabeledPropIssuePropMilestone as WebhookIssuesLabeledPropIssuePropMilestone,
     )
-    from .group_0580 import (
+    from .group_0585 import (
         WebhookIssuesLabeledPropIssuePropMilestonePropCreator as WebhookIssuesLabeledPropIssuePropMilestonePropCreator,
     )
-    from .group_0580 import (
+    from .group_0585 import (
         WebhookIssuesLabeledPropIssuePropPerformedViaGithubApp as WebhookIssuesLabeledPropIssuePropPerformedViaGithubApp,
     )
-    from .group_0580 import (
+    from .group_0585 import (
         WebhookIssuesLabeledPropIssuePropPerformedViaGithubAppPropOwner as WebhookIssuesLabeledPropIssuePropPerformedViaGithubAppPropOwner,
     )
-    from .group_0580 import (
+    from .group_0585 import (
         WebhookIssuesLabeledPropIssuePropPerformedViaGithubAppPropPermissions as WebhookIssuesLabeledPropIssuePropPerformedViaGithubAppPropPermissions,
     )
-    from .group_0580 import (
+    from .group_0585 import (
         WebhookIssuesLabeledPropIssuePropPullRequest as WebhookIssuesLabeledPropIssuePropPullRequest,
     )
-    from .group_0580 import (
+    from .group_0585 import (
         WebhookIssuesLabeledPropIssuePropReactions as WebhookIssuesLabeledPropIssuePropReactions,
     )
-    from .group_0580 import (
+    from .group_0585 import (
         WebhookIssuesLabeledPropIssuePropSubIssuesSummary as WebhookIssuesLabeledPropIssuePropSubIssuesSummary,
     )
-    from .group_0580 import (
+    from .group_0585 import (
         WebhookIssuesLabeledPropIssuePropUser as WebhookIssuesLabeledPropIssuePropUser,
     )
-    from .group_0581 import WebhookIssuesLocked as WebhookIssuesLocked
-    from .group_0581 import WebhookIssuesLockedPropIssue as WebhookIssuesLockedPropIssue
-    from .group_0581 import (
+    from .group_0586 import WebhookIssuesLocked as WebhookIssuesLocked
+    from .group_0586 import WebhookIssuesLockedPropIssue as WebhookIssuesLockedPropIssue
+    from .group_0586 import (
         WebhookIssuesLockedPropIssuePropAssignee as WebhookIssuesLockedPropIssuePropAssignee,
     )
-    from .group_0581 import (
+    from .group_0586 import (
         WebhookIssuesLockedPropIssuePropAssigneesItems as WebhookIssuesLockedPropIssuePropAssigneesItems,
     )
-    from .group_0581 import (
+    from .group_0586 import (
         WebhookIssuesLockedPropIssuePropLabelsItems as WebhookIssuesLockedPropIssuePropLabelsItems,
     )
-    from .group_0581 import (
+    from .group_0586 import (
         WebhookIssuesLockedPropIssuePropMilestone as WebhookIssuesLockedPropIssuePropMilestone,
     )
-    from .group_0581 import (
+    from .group_0586 import (
         WebhookIssuesLockedPropIssuePropMilestonePropCreator as WebhookIssuesLockedPropIssuePropMilestonePropCreator,
     )
-    from .group_0581 import (
+    from .group_0586 import (
         WebhookIssuesLockedPropIssuePropPerformedViaGithubApp as WebhookIssuesLockedPropIssuePropPerformedViaGithubApp,
     )
-    from .group_0581 import (
+    from .group_0586 import (
         WebhookIssuesLockedPropIssuePropPerformedViaGithubAppPropOwner as WebhookIssuesLockedPropIssuePropPerformedViaGithubAppPropOwner,
     )
-    from .group_0581 import (
+    from .group_0586 import (
         WebhookIssuesLockedPropIssuePropPerformedViaGithubAppPropPermissions as WebhookIssuesLockedPropIssuePropPerformedViaGithubAppPropPermissions,
     )
-    from .group_0581 import (
+    from .group_0586 import (
         WebhookIssuesLockedPropIssuePropPullRequest as WebhookIssuesLockedPropIssuePropPullRequest,
     )
-    from .group_0581 import (
+    from .group_0586 import (
         WebhookIssuesLockedPropIssuePropReactions as WebhookIssuesLockedPropIssuePropReactions,
     )
-    from .group_0581 import (
+    from .group_0586 import (
         WebhookIssuesLockedPropIssuePropSubIssuesSummary as WebhookIssuesLockedPropIssuePropSubIssuesSummary,
     )
-    from .group_0581 import (
+    from .group_0586 import (
         WebhookIssuesLockedPropIssuePropUser as WebhookIssuesLockedPropIssuePropUser,
     )
-    from .group_0582 import WebhookIssuesMilestoned as WebhookIssuesMilestoned
-    from .group_0582 import (
+    from .group_0587 import WebhookIssuesMilestoned as WebhookIssuesMilestoned
+    from .group_0587 import (
         WebhookIssuesMilestonedPropIssue as WebhookIssuesMilestonedPropIssue,
     )
-    from .group_0582 import (
+    from .group_0587 import (
         WebhookIssuesMilestonedPropIssuePropAssignee as WebhookIssuesMilestonedPropIssuePropAssignee,
     )
-    from .group_0582 import (
+    from .group_0587 import (
         WebhookIssuesMilestonedPropIssuePropAssigneesItems as WebhookIssuesMilestonedPropIssuePropAssigneesItems,
     )
-    from .group_0582 import (
+    from .group_0587 import (
         WebhookIssuesMilestonedPropIssuePropLabelsItems as WebhookIssuesMilestonedPropIssuePropLabelsItems,
     )
-    from .group_0582 import (
+    from .group_0587 import (
         WebhookIssuesMilestonedPropIssuePropMilestone as WebhookIssuesMilestonedPropIssuePropMilestone,
     )
-    from .group_0582 import (
+    from .group_0587 import (
         WebhookIssuesMilestonedPropIssuePropMilestonePropCreator as WebhookIssuesMilestonedPropIssuePropMilestonePropCreator,
     )
-    from .group_0582 import (
+    from .group_0587 import (
         WebhookIssuesMilestonedPropIssuePropPerformedViaGithubApp as WebhookIssuesMilestonedPropIssuePropPerformedViaGithubApp,
     )
-    from .group_0582 import (
+    from .group_0587 import (
         WebhookIssuesMilestonedPropIssuePropPerformedViaGithubAppPropOwner as WebhookIssuesMilestonedPropIssuePropPerformedViaGithubAppPropOwner,
     )
-    from .group_0582 import (
+    from .group_0587 import (
         WebhookIssuesMilestonedPropIssuePropPerformedViaGithubAppPropPermissions as WebhookIssuesMilestonedPropIssuePropPerformedViaGithubAppPropPermissions,
     )
-    from .group_0582 import (
+    from .group_0587 import (
         WebhookIssuesMilestonedPropIssuePropPullRequest as WebhookIssuesMilestonedPropIssuePropPullRequest,
     )
-    from .group_0582 import (
+    from .group_0587 import (
         WebhookIssuesMilestonedPropIssuePropReactions as WebhookIssuesMilestonedPropIssuePropReactions,
     )
-    from .group_0582 import (
+    from .group_0587 import (
         WebhookIssuesMilestonedPropIssuePropSubIssuesSummary as WebhookIssuesMilestonedPropIssuePropSubIssuesSummary,
     )
-    from .group_0582 import (
+    from .group_0587 import (
         WebhookIssuesMilestonedPropIssuePropUser as WebhookIssuesMilestonedPropIssuePropUser,
     )
-    from .group_0583 import WebhookIssuesOpened as WebhookIssuesOpened
-    from .group_0583 import (
+    from .group_0588 import WebhookIssuesOpened as WebhookIssuesOpened
+    from .group_0588 import (
         WebhookIssuesOpenedPropChanges as WebhookIssuesOpenedPropChanges,
     )
-    from .group_0583 import (
+    from .group_0588 import (
         WebhookIssuesOpenedPropChangesPropOldIssue as WebhookIssuesOpenedPropChangesPropOldIssue,
     )
-    from .group_0583 import (
+    from .group_0588 import (
         WebhookIssuesOpenedPropChangesPropOldIssuePropAssignee as WebhookIssuesOpenedPropChangesPropOldIssuePropAssignee,
     )
-    from .group_0583 import (
+    from .group_0588 import (
         WebhookIssuesOpenedPropChangesPropOldIssuePropAssigneesItems as WebhookIssuesOpenedPropChangesPropOldIssuePropAssigneesItems,
     )
-    from .group_0583 import (
+    from .group_0588 import (
         WebhookIssuesOpenedPropChangesPropOldIssuePropLabelsItems as WebhookIssuesOpenedPropChangesPropOldIssuePropLabelsItems,
     )
-    from .group_0583 import (
+    from .group_0588 import (
         WebhookIssuesOpenedPropChangesPropOldIssuePropMilestone as WebhookIssuesOpenedPropChangesPropOldIssuePropMilestone,
     )
-    from .group_0583 import (
+    from .group_0588 import (
         WebhookIssuesOpenedPropChangesPropOldIssuePropMilestonePropCreator as WebhookIssuesOpenedPropChangesPropOldIssuePropMilestonePropCreator,
     )
-    from .group_0583 import (
+    from .group_0588 import (
         WebhookIssuesOpenedPropChangesPropOldIssuePropPerformedViaGithubApp as WebhookIssuesOpenedPropChangesPropOldIssuePropPerformedViaGithubApp,
     )
-    from .group_0583 import (
+    from .group_0588 import (
         WebhookIssuesOpenedPropChangesPropOldIssuePropPerformedViaGithubAppPropOwner as WebhookIssuesOpenedPropChangesPropOldIssuePropPerformedViaGithubAppPropOwner,
     )
-    from .group_0583 import (
+    from .group_0588 import (
         WebhookIssuesOpenedPropChangesPropOldIssuePropPerformedViaGithubAppPropPermissions as WebhookIssuesOpenedPropChangesPropOldIssuePropPerformedViaGithubAppPropPermissions,
     )
-    from .group_0583 import (
+    from .group_0588 import (
         WebhookIssuesOpenedPropChangesPropOldIssuePropPullRequest as WebhookIssuesOpenedPropChangesPropOldIssuePropPullRequest,
     )
-    from .group_0583 import (
+    from .group_0588 import (
         WebhookIssuesOpenedPropChangesPropOldIssuePropReactions as WebhookIssuesOpenedPropChangesPropOldIssuePropReactions,
     )
-    from .group_0583 import (
+    from .group_0588 import (
         WebhookIssuesOpenedPropChangesPropOldIssuePropSubIssuesSummary as WebhookIssuesOpenedPropChangesPropOldIssuePropSubIssuesSummary,
     )
-    from .group_0583 import (
+    from .group_0588 import (
         WebhookIssuesOpenedPropChangesPropOldIssuePropUser as WebhookIssuesOpenedPropChangesPropOldIssuePropUser,
     )
-    from .group_0583 import (
+    from .group_0588 import (
         WebhookIssuesOpenedPropChangesPropOldRepository as WebhookIssuesOpenedPropChangesPropOldRepository,
     )
-    from .group_0583 import (
+    from .group_0588 import (
         WebhookIssuesOpenedPropChangesPropOldRepositoryPropCustomProperties as WebhookIssuesOpenedPropChangesPropOldRepositoryPropCustomProperties,
     )
-    from .group_0583 import (
+    from .group_0588 import (
         WebhookIssuesOpenedPropChangesPropOldRepositoryPropLicense as WebhookIssuesOpenedPropChangesPropOldRepositoryPropLicense,
     )
-    from .group_0583 import (
+    from .group_0588 import (
         WebhookIssuesOpenedPropChangesPropOldRepositoryPropOwner as WebhookIssuesOpenedPropChangesPropOldRepositoryPropOwner,
     )
-    from .group_0583 import (
+    from .group_0588 import (
         WebhookIssuesOpenedPropChangesPropOldRepositoryPropPermissions as WebhookIssuesOpenedPropChangesPropOldRepositoryPropPermissions,
     )
-    from .group_0583 import WebhookIssuesOpenedPropIssue as WebhookIssuesOpenedPropIssue
-    from .group_0583 import (
+    from .group_0588 import WebhookIssuesOpenedPropIssue as WebhookIssuesOpenedPropIssue
+    from .group_0588 import (
         WebhookIssuesOpenedPropIssuePropAssignee as WebhookIssuesOpenedPropIssuePropAssignee,
     )
-    from .group_0583 import (
+    from .group_0588 import (
         WebhookIssuesOpenedPropIssuePropAssigneesItems as WebhookIssuesOpenedPropIssuePropAssigneesItems,
     )
-    from .group_0583 import (
+    from .group_0588 import (
         WebhookIssuesOpenedPropIssuePropLabelsItems as WebhookIssuesOpenedPropIssuePropLabelsItems,
     )
-    from .group_0583 import (
+    from .group_0588 import (
         WebhookIssuesOpenedPropIssuePropMilestone as WebhookIssuesOpenedPropIssuePropMilestone,
     )
-    from .group_0583 import (
+    from .group_0588 import (
         WebhookIssuesOpenedPropIssuePropMilestonePropCreator as WebhookIssuesOpenedPropIssuePropMilestonePropCreator,
     )
-    from .group_0583 import (
+    from .group_0588 import (
         WebhookIssuesOpenedPropIssuePropPerformedViaGithubApp as WebhookIssuesOpenedPropIssuePropPerformedViaGithubApp,
     )
-    from .group_0583 import (
+    from .group_0588 import (
         WebhookIssuesOpenedPropIssuePropPerformedViaGithubAppPropOwner as WebhookIssuesOpenedPropIssuePropPerformedViaGithubAppPropOwner,
     )
-    from .group_0583 import (
+    from .group_0588 import (
         WebhookIssuesOpenedPropIssuePropPerformedViaGithubAppPropPermissions as WebhookIssuesOpenedPropIssuePropPerformedViaGithubAppPropPermissions,
     )
-    from .group_0583 import (
+    from .group_0588 import (
         WebhookIssuesOpenedPropIssuePropPullRequest as WebhookIssuesOpenedPropIssuePropPullRequest,
     )
-    from .group_0583 import (
+    from .group_0588 import (
         WebhookIssuesOpenedPropIssuePropReactions as WebhookIssuesOpenedPropIssuePropReactions,
     )
-    from .group_0583 import (
+    from .group_0588 import (
         WebhookIssuesOpenedPropIssuePropSubIssuesSummary as WebhookIssuesOpenedPropIssuePropSubIssuesSummary,
     )
-    from .group_0583 import (
+    from .group_0588 import (
         WebhookIssuesOpenedPropIssuePropUser as WebhookIssuesOpenedPropIssuePropUser,
     )
-    from .group_0584 import WebhookIssuesPinned as WebhookIssuesPinned
-    from .group_0585 import WebhookIssuesReopened as WebhookIssuesReopened
-    from .group_0585 import (
+    from .group_0589 import WebhookIssuesPinned as WebhookIssuesPinned
+    from .group_0590 import WebhookIssuesReopened as WebhookIssuesReopened
+    from .group_0590 import (
         WebhookIssuesReopenedPropIssue as WebhookIssuesReopenedPropIssue,
     )
-    from .group_0585 import (
+    from .group_0590 import (
         WebhookIssuesReopenedPropIssuePropAssignee as WebhookIssuesReopenedPropIssuePropAssignee,
     )
-    from .group_0585 import (
+    from .group_0590 import (
         WebhookIssuesReopenedPropIssuePropAssigneesItems as WebhookIssuesReopenedPropIssuePropAssigneesItems,
     )
-    from .group_0585 import (
+    from .group_0590 import (
         WebhookIssuesReopenedPropIssuePropLabelsItems as WebhookIssuesReopenedPropIssuePropLabelsItems,
     )
-    from .group_0585 import (
+    from .group_0590 import (
         WebhookIssuesReopenedPropIssuePropMilestone as WebhookIssuesReopenedPropIssuePropMilestone,
     )
-    from .group_0585 import (
+    from .group_0590 import (
         WebhookIssuesReopenedPropIssuePropMilestonePropCreator as WebhookIssuesReopenedPropIssuePropMilestonePropCreator,
     )
-    from .group_0585 import (
+    from .group_0590 import (
         WebhookIssuesReopenedPropIssuePropPerformedViaGithubApp as WebhookIssuesReopenedPropIssuePropPerformedViaGithubApp,
     )
-    from .group_0585 import (
+    from .group_0590 import (
         WebhookIssuesReopenedPropIssuePropPerformedViaGithubAppPropOwner as WebhookIssuesReopenedPropIssuePropPerformedViaGithubAppPropOwner,
     )
-    from .group_0585 import (
+    from .group_0590 import (
         WebhookIssuesReopenedPropIssuePropPerformedViaGithubAppPropPermissions as WebhookIssuesReopenedPropIssuePropPerformedViaGithubAppPropPermissions,
     )
-    from .group_0585 import (
+    from .group_0590 import (
         WebhookIssuesReopenedPropIssuePropPullRequest as WebhookIssuesReopenedPropIssuePropPullRequest,
     )
-    from .group_0585 import (
+    from .group_0590 import (
         WebhookIssuesReopenedPropIssuePropReactions as WebhookIssuesReopenedPropIssuePropReactions,
     )
-    from .group_0585 import (
+    from .group_0590 import (
         WebhookIssuesReopenedPropIssuePropSubIssuesSummary as WebhookIssuesReopenedPropIssuePropSubIssuesSummary,
     )
-    from .group_0585 import (
+    from .group_0590 import (
         WebhookIssuesReopenedPropIssuePropUser as WebhookIssuesReopenedPropIssuePropUser,
     )
-    from .group_0586 import WebhookIssuesTransferred as WebhookIssuesTransferred
-    from .group_0586 import (
+    from .group_0591 import WebhookIssuesTransferred as WebhookIssuesTransferred
+    from .group_0591 import (
         WebhookIssuesTransferredPropChanges as WebhookIssuesTransferredPropChanges,
     )
-    from .group_0586 import (
+    from .group_0591 import (
         WebhookIssuesTransferredPropChangesPropNewIssue as WebhookIssuesTransferredPropChangesPropNewIssue,
     )
-    from .group_0586 import (
+    from .group_0591 import (
         WebhookIssuesTransferredPropChangesPropNewIssuePropAssignee as WebhookIssuesTransferredPropChangesPropNewIssuePropAssignee,
     )
-    from .group_0586 import (
+    from .group_0591 import (
         WebhookIssuesTransferredPropChangesPropNewIssuePropAssigneesItems as WebhookIssuesTransferredPropChangesPropNewIssuePropAssigneesItems,
     )
-    from .group_0586 import (
+    from .group_0591 import (
         WebhookIssuesTransferredPropChangesPropNewIssuePropLabelsItems as WebhookIssuesTransferredPropChangesPropNewIssuePropLabelsItems,
     )
-    from .group_0586 import (
+    from .group_0591 import (
         WebhookIssuesTransferredPropChangesPropNewIssuePropMilestone as WebhookIssuesTransferredPropChangesPropNewIssuePropMilestone,
     )
-    from .group_0586 import (
+    from .group_0591 import (
         WebhookIssuesTransferredPropChangesPropNewIssuePropMilestonePropCreator as WebhookIssuesTransferredPropChangesPropNewIssuePropMilestonePropCreator,
     )
-    from .group_0586 import (
+    from .group_0591 import (
         WebhookIssuesTransferredPropChangesPropNewIssuePropPerformedViaGithubApp as WebhookIssuesTransferredPropChangesPropNewIssuePropPerformedViaGithubApp,
     )
-    from .group_0586 import (
+    from .group_0591 import (
         WebhookIssuesTransferredPropChangesPropNewIssuePropPerformedViaGithubAppPropOwner as WebhookIssuesTransferredPropChangesPropNewIssuePropPerformedViaGithubAppPropOwner,
     )
-    from .group_0586 import (
+    from .group_0591 import (
         WebhookIssuesTransferredPropChangesPropNewIssuePropPerformedViaGithubAppPropPermissions as WebhookIssuesTransferredPropChangesPropNewIssuePropPerformedViaGithubAppPropPermissions,
     )
-    from .group_0586 import (
+    from .group_0591 import (
         WebhookIssuesTransferredPropChangesPropNewIssuePropPullRequest as WebhookIssuesTransferredPropChangesPropNewIssuePropPullRequest,
     )
-    from .group_0586 import (
+    from .group_0591 import (
         WebhookIssuesTransferredPropChangesPropNewIssuePropReactions as WebhookIssuesTransferredPropChangesPropNewIssuePropReactions,
     )
-    from .group_0586 import (
+    from .group_0591 import (
         WebhookIssuesTransferredPropChangesPropNewIssuePropSubIssuesSummary as WebhookIssuesTransferredPropChangesPropNewIssuePropSubIssuesSummary,
     )
-    from .group_0586 import (
+    from .group_0591 import (
         WebhookIssuesTransferredPropChangesPropNewIssuePropUser as WebhookIssuesTransferredPropChangesPropNewIssuePropUser,
     )
-    from .group_0586 import (
+    from .group_0591 import (
         WebhookIssuesTransferredPropChangesPropNewRepository as WebhookIssuesTransferredPropChangesPropNewRepository,
     )
-    from .group_0586 import (
+    from .group_0591 import (
         WebhookIssuesTransferredPropChangesPropNewRepositoryPropCustomProperties as WebhookIssuesTransferredPropChangesPropNewRepositoryPropCustomProperties,
     )
-    from .group_0586 import (
+    from .group_0591 import (
         WebhookIssuesTransferredPropChangesPropNewRepositoryPropLicense as WebhookIssuesTransferredPropChangesPropNewRepositoryPropLicense,
     )
-    from .group_0586 import (
+    from .group_0591 import (
         WebhookIssuesTransferredPropChangesPropNewRepositoryPropOwner as WebhookIssuesTransferredPropChangesPropNewRepositoryPropOwner,
     )
-    from .group_0586 import (
+    from .group_0591 import (
         WebhookIssuesTransferredPropChangesPropNewRepositoryPropPermissions as WebhookIssuesTransferredPropChangesPropNewRepositoryPropPermissions,
     )
-    from .group_0587 import WebhookIssuesUnassigned as WebhookIssuesUnassigned
-    from .group_0588 import WebhookIssuesUnlabeled as WebhookIssuesUnlabeled
-    from .group_0589 import WebhookIssuesUnlocked as WebhookIssuesUnlocked
-    from .group_0589 import (
+    from .group_0592 import WebhookIssuesUnassigned as WebhookIssuesUnassigned
+    from .group_0593 import WebhookIssuesUnlabeled as WebhookIssuesUnlabeled
+    from .group_0594 import WebhookIssuesUnlocked as WebhookIssuesUnlocked
+    from .group_0594 import (
         WebhookIssuesUnlockedPropIssue as WebhookIssuesUnlockedPropIssue,
     )
-    from .group_0589 import (
+    from .group_0594 import (
         WebhookIssuesUnlockedPropIssuePropAssignee as WebhookIssuesUnlockedPropIssuePropAssignee,
     )
-    from .group_0589 import (
+    from .group_0594 import (
         WebhookIssuesUnlockedPropIssuePropAssigneesItems as WebhookIssuesUnlockedPropIssuePropAssigneesItems,
     )
-    from .group_0589 import (
+    from .group_0594 import (
         WebhookIssuesUnlockedPropIssuePropLabelsItems as WebhookIssuesUnlockedPropIssuePropLabelsItems,
     )
-    from .group_0589 import (
+    from .group_0594 import (
         WebhookIssuesUnlockedPropIssuePropMilestone as WebhookIssuesUnlockedPropIssuePropMilestone,
     )
-    from .group_0589 import (
+    from .group_0594 import (
         WebhookIssuesUnlockedPropIssuePropMilestonePropCreator as WebhookIssuesUnlockedPropIssuePropMilestonePropCreator,
     )
-    from .group_0589 import (
+    from .group_0594 import (
         WebhookIssuesUnlockedPropIssuePropPerformedViaGithubApp as WebhookIssuesUnlockedPropIssuePropPerformedViaGithubApp,
     )
-    from .group_0589 import (
+    from .group_0594 import (
         WebhookIssuesUnlockedPropIssuePropPerformedViaGithubAppPropOwner as WebhookIssuesUnlockedPropIssuePropPerformedViaGithubAppPropOwner,
     )
-    from .group_0589 import (
+    from .group_0594 import (
         WebhookIssuesUnlockedPropIssuePropPerformedViaGithubAppPropPermissions as WebhookIssuesUnlockedPropIssuePropPerformedViaGithubAppPropPermissions,
     )
-    from .group_0589 import (
+    from .group_0594 import (
         WebhookIssuesUnlockedPropIssuePropPullRequest as WebhookIssuesUnlockedPropIssuePropPullRequest,
     )
-    from .group_0589 import (
+    from .group_0594 import (
         WebhookIssuesUnlockedPropIssuePropReactions as WebhookIssuesUnlockedPropIssuePropReactions,
     )
-    from .group_0589 import (
+    from .group_0594 import (
         WebhookIssuesUnlockedPropIssuePropSubIssuesSummary as WebhookIssuesUnlockedPropIssuePropSubIssuesSummary,
     )
-    from .group_0589 import (
+    from .group_0594 import (
         WebhookIssuesUnlockedPropIssuePropUser as WebhookIssuesUnlockedPropIssuePropUser,
     )
-    from .group_0590 import WebhookIssuesUnpinned as WebhookIssuesUnpinned
-    from .group_0591 import WebhookLabelCreated as WebhookLabelCreated
-    from .group_0592 import WebhookLabelDeleted as WebhookLabelDeleted
-    from .group_0593 import WebhookLabelEdited as WebhookLabelEdited
-    from .group_0593 import (
+    from .group_0595 import WebhookIssuesUnpinned as WebhookIssuesUnpinned
+    from .group_0596 import WebhookLabelCreated as WebhookLabelCreated
+    from .group_0597 import WebhookLabelDeleted as WebhookLabelDeleted
+    from .group_0598 import WebhookLabelEdited as WebhookLabelEdited
+    from .group_0598 import (
         WebhookLabelEditedPropChanges as WebhookLabelEditedPropChanges,
     )
-    from .group_0593 import (
+    from .group_0598 import (
         WebhookLabelEditedPropChangesPropColor as WebhookLabelEditedPropChangesPropColor,
     )
-    from .group_0593 import (
+    from .group_0598 import (
         WebhookLabelEditedPropChangesPropDescription as WebhookLabelEditedPropChangesPropDescription,
     )
-    from .group_0593 import (
+    from .group_0598 import (
         WebhookLabelEditedPropChangesPropName as WebhookLabelEditedPropChangesPropName,
     )
-    from .group_0594 import (
+    from .group_0599 import (
         WebhookMarketplacePurchaseCancelled as WebhookMarketplacePurchaseCancelled,
     )
-    from .group_0595 import (
+    from .group_0600 import (
         WebhookMarketplacePurchaseChanged as WebhookMarketplacePurchaseChanged,
     )
-    from .group_0595 import (
+    from .group_0600 import (
         WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchase as WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchase,
     )
-    from .group_0595 import (
+    from .group_0600 import (
         WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropAccount as WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropAccount,
     )
-    from .group_0595 import (
+    from .group_0600 import (
         WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropPlan as WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropPlan,
     )
-    from .group_0596 import (
+    from .group_0601 import (
         WebhookMarketplacePurchasePendingChange as WebhookMarketplacePurchasePendingChange,
     )
-    from .group_0596 import (
+    from .group_0601 import (
         WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchase as WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchase,
     )
-    from .group_0596 import (
+    from .group_0601 import (
         WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropAccount as WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropAccount,
     )
-    from .group_0596 import (
+    from .group_0601 import (
         WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropPlan as WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropPlan,
     )
-    from .group_0597 import (
+    from .group_0602 import (
         WebhookMarketplacePurchasePendingChangeCancelled as WebhookMarketplacePurchasePendingChangeCancelled,
     )
-    from .group_0597 import (
+    from .group_0602 import (
         WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchase as WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchase,
     )
-    from .group_0597 import (
+    from .group_0602 import (
         WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropAccount as WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropAccount,
     )
-    from .group_0597 import (
+    from .group_0602 import (
         WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropPlan as WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropPlan,
     )
-    from .group_0598 import (
+    from .group_0603 import (
         WebhookMarketplacePurchasePurchased as WebhookMarketplacePurchasePurchased,
     )
-    from .group_0599 import WebhookMemberAdded as WebhookMemberAdded
-    from .group_0599 import (
+    from .group_0604 import WebhookMemberAdded as WebhookMemberAdded
+    from .group_0604 import (
         WebhookMemberAddedPropChanges as WebhookMemberAddedPropChanges,
     )
-    from .group_0599 import (
+    from .group_0604 import (
         WebhookMemberAddedPropChangesPropPermission as WebhookMemberAddedPropChangesPropPermission,
     )
-    from .group_0599 import (
+    from .group_0604 import (
         WebhookMemberAddedPropChangesPropRoleName as WebhookMemberAddedPropChangesPropRoleName,
     )
-    from .group_0600 import WebhookMemberEdited as WebhookMemberEdited
-    from .group_0600 import (
+    from .group_0605 import WebhookMemberEdited as WebhookMemberEdited
+    from .group_0605 import (
         WebhookMemberEditedPropChanges as WebhookMemberEditedPropChanges,
     )
-    from .group_0600 import (
+    from .group_0605 import (
         WebhookMemberEditedPropChangesPropOldPermission as WebhookMemberEditedPropChangesPropOldPermission,
     )
-    from .group_0600 import (
+    from .group_0605 import (
         WebhookMemberEditedPropChangesPropPermission as WebhookMemberEditedPropChangesPropPermission,
     )
-    from .group_0601 import WebhookMemberRemoved as WebhookMemberRemoved
-    from .group_0602 import WebhookMembershipAdded as WebhookMembershipAdded
-    from .group_0602 import (
+    from .group_0606 import WebhookMemberRemoved as WebhookMemberRemoved
+    from .group_0607 import WebhookMembershipAdded as WebhookMembershipAdded
+    from .group_0607 import (
         WebhookMembershipAddedPropSender as WebhookMembershipAddedPropSender,
     )
-    from .group_0603 import WebhookMembershipRemoved as WebhookMembershipRemoved
-    from .group_0603 import (
+    from .group_0608 import WebhookMembershipRemoved as WebhookMembershipRemoved
+    from .group_0608 import (
         WebhookMembershipRemovedPropSender as WebhookMembershipRemovedPropSender,
     )
-    from .group_0604 import (
+    from .group_0609 import (
         WebhookMergeGroupChecksRequested as WebhookMergeGroupChecksRequested,
     )
-    from .group_0605 import WebhookMergeGroupDestroyed as WebhookMergeGroupDestroyed
-    from .group_0606 import WebhookMetaDeleted as WebhookMetaDeleted
-    from .group_0606 import WebhookMetaDeletedPropHook as WebhookMetaDeletedPropHook
-    from .group_0606 import (
+    from .group_0610 import WebhookMergeGroupDestroyed as WebhookMergeGroupDestroyed
+    from .group_0611 import WebhookMetaDeleted as WebhookMetaDeleted
+    from .group_0611 import WebhookMetaDeletedPropHook as WebhookMetaDeletedPropHook
+    from .group_0611 import (
         WebhookMetaDeletedPropHookPropConfig as WebhookMetaDeletedPropHookPropConfig,
     )
-    from .group_0607 import WebhookMilestoneClosed as WebhookMilestoneClosed
-    from .group_0608 import WebhookMilestoneCreated as WebhookMilestoneCreated
-    from .group_0609 import WebhookMilestoneDeleted as WebhookMilestoneDeleted
-    from .group_0610 import WebhookMilestoneEdited as WebhookMilestoneEdited
-    from .group_0610 import (
+    from .group_0612 import WebhookMilestoneClosed as WebhookMilestoneClosed
+    from .group_0613 import WebhookMilestoneCreated as WebhookMilestoneCreated
+    from .group_0614 import WebhookMilestoneDeleted as WebhookMilestoneDeleted
+    from .group_0615 import WebhookMilestoneEdited as WebhookMilestoneEdited
+    from .group_0615 import (
         WebhookMilestoneEditedPropChanges as WebhookMilestoneEditedPropChanges,
     )
-    from .group_0610 import (
+    from .group_0615 import (
         WebhookMilestoneEditedPropChangesPropDescription as WebhookMilestoneEditedPropChangesPropDescription,
     )
-    from .group_0610 import (
+    from .group_0615 import (
         WebhookMilestoneEditedPropChangesPropDueOn as WebhookMilestoneEditedPropChangesPropDueOn,
     )
-    from .group_0610 import (
+    from .group_0615 import (
         WebhookMilestoneEditedPropChangesPropTitle as WebhookMilestoneEditedPropChangesPropTitle,
     )
-    from .group_0611 import WebhookMilestoneOpened as WebhookMilestoneOpened
-    from .group_0612 import WebhookOrgBlockBlocked as WebhookOrgBlockBlocked
-    from .group_0613 import WebhookOrgBlockUnblocked as WebhookOrgBlockUnblocked
-    from .group_0614 import WebhookOrganizationDeleted as WebhookOrganizationDeleted
-    from .group_0615 import (
+    from .group_0616 import WebhookMilestoneOpened as WebhookMilestoneOpened
+    from .group_0617 import WebhookOrgBlockBlocked as WebhookOrgBlockBlocked
+    from .group_0618 import WebhookOrgBlockUnblocked as WebhookOrgBlockUnblocked
+    from .group_0619 import WebhookOrganizationDeleted as WebhookOrganizationDeleted
+    from .group_0620 import (
         WebhookOrganizationMemberAdded as WebhookOrganizationMemberAdded,
     )
-    from .group_0616 import (
+    from .group_0621 import (
         WebhookOrganizationMemberInvited as WebhookOrganizationMemberInvited,
     )
-    from .group_0616 import (
+    from .group_0621 import (
         WebhookOrganizationMemberInvitedPropInvitation as WebhookOrganizationMemberInvitedPropInvitation,
     )
-    from .group_0616 import (
+    from .group_0621 import (
         WebhookOrganizationMemberInvitedPropInvitationPropInviter as WebhookOrganizationMemberInvitedPropInvitationPropInviter,
     )
-    from .group_0617 import (
+    from .group_0622 import (
         WebhookOrganizationMemberRemoved as WebhookOrganizationMemberRemoved,
     )
-    from .group_0618 import WebhookOrganizationRenamed as WebhookOrganizationRenamed
-    from .group_0618 import (
+    from .group_0623 import WebhookOrganizationRenamed as WebhookOrganizationRenamed
+    from .group_0623 import (
         WebhookOrganizationRenamedPropChanges as WebhookOrganizationRenamedPropChanges,
     )
-    from .group_0618 import (
+    from .group_0623 import (
         WebhookOrganizationRenamedPropChangesPropLogin as WebhookOrganizationRenamedPropChangesPropLogin,
     )
-    from .group_0619 import WebhookRubygemsMetadata as WebhookRubygemsMetadata
-    from .group_0619 import (
+    from .group_0624 import WebhookRubygemsMetadata as WebhookRubygemsMetadata
+    from .group_0624 import (
         WebhookRubygemsMetadataPropDependenciesItems as WebhookRubygemsMetadataPropDependenciesItems,
     )
-    from .group_0619 import (
+    from .group_0624 import (
         WebhookRubygemsMetadataPropMetadata as WebhookRubygemsMetadataPropMetadata,
     )
-    from .group_0619 import (
+    from .group_0624 import (
         WebhookRubygemsMetadataPropVersionInfo as WebhookRubygemsMetadataPropVersionInfo,
     )
-    from .group_0620 import WebhookPackagePublished as WebhookPackagePublished
-    from .group_0621 import (
+    from .group_0625 import WebhookPackagePublished as WebhookPackagePublished
+    from .group_0626 import (
         WebhookPackagePublishedPropPackage as WebhookPackagePublishedPropPackage,
     )
-    from .group_0621 import (
+    from .group_0626 import (
         WebhookPackagePublishedPropPackagePropOwner as WebhookPackagePublishedPropPackagePropOwner,
     )
-    from .group_0621 import (
+    from .group_0626 import (
         WebhookPackagePublishedPropPackagePropRegistry as WebhookPackagePublishedPropPackagePropRegistry,
     )
-    from .group_0622 import (
+    from .group_0627 import (
         WebhookPackagePublishedPropPackagePropPackageVersion as WebhookPackagePublishedPropPackagePropPackageVersion,
     )
-    from .group_0622 import (
+    from .group_0627 import (
         WebhookPackagePublishedPropPackagePropPackageVersionPropAuthor as WebhookPackagePublishedPropPackagePropPackageVersionPropAuthor,
     )
-    from .group_0622 import (
+    from .group_0627 import (
         WebhookPackagePublishedPropPackagePropPackageVersionPropBodyOneof1 as WebhookPackagePublishedPropPackagePropPackageVersionPropBodyOneof1,
     )
-    from .group_0622 import (
+    from .group_0627 import (
         WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadata as WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadata,
     )
-    from .group_0622 import (
+    from .group_0627 import (
         WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadataPropLabels as WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadataPropLabels,
     )
-    from .group_0622 import (
+    from .group_0627 import (
         WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadataPropManifest as WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadataPropManifest,
     )
-    from .group_0622 import (
+    from .group_0627 import (
         WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadataPropTag as WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadataPropTag,
     )
-    from .group_0622 import (
+    from .group_0627 import (
         WebhookPackagePublishedPropPackagePropPackageVersionPropDockerMetadataItems as WebhookPackagePublishedPropPackagePropPackageVersionPropDockerMetadataItems,
     )
-    from .group_0622 import (
+    from .group_0627 import (
         WebhookPackagePublishedPropPackagePropPackageVersionPropMetadataItems as WebhookPackagePublishedPropPackagePropPackageVersionPropMetadataItems,
     )
-    from .group_0622 import (
+    from .group_0627 import (
         WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadata as WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadata,
     )
-    from .group_0622 import (
+    from .group_0627 import (
         WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropAuthor as WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropAuthor,
     )
-    from .group_0622 import (
+    from .group_0627 import (
         WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropBin as WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropBin,
     )
-    from .group_0622 import (
+    from .group_0627 import (
         WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropBugs as WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropBugs,
     )
-    from .group_0622 import (
+    from .group_0627 import (
         WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropContributorsItems as WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropContributorsItems,
     )
-    from .group_0622 import (
+    from .group_0627 import (
         WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDependencies as WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDependencies,
     )
-    from .group_0622 import (
+    from .group_0627 import (
         WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDevDependencies as WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDevDependencies,
     )
-    from .group_0622 import (
+    from .group_0627 import (
         WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDirectories as WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDirectories,
     )
-    from .group_0622 import (
+    from .group_0627 import (
         WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDist as WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDist,
     )
-    from .group_0622 import (
+    from .group_0627 import (
         WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropEngines as WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropEngines,
     )
-    from .group_0622 import (
+    from .group_0627 import (
         WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropMaintainersItems as WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropMaintainersItems,
     )
-    from .group_0622 import (
+    from .group_0627 import (
         WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropMan as WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropMan,
     )
-    from .group_0622 import (
+    from .group_0627 import (
         WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropOptionalDependencies as WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropOptionalDependencies,
     )
-    from .group_0622 import (
+    from .group_0627 import (
         WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropPeerDependencies as WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropPeerDependencies,
     )
-    from .group_0622 import (
+    from .group_0627 import (
         WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropRepository as WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropRepository,
     )
-    from .group_0622 import (
+    from .group_0627 import (
         WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropScripts as WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropScripts,
     )
-    from .group_0622 import (
+    from .group_0627 import (
         WebhookPackagePublishedPropPackagePropPackageVersionPropNugetMetadataItems as WebhookPackagePublishedPropPackagePropPackageVersionPropNugetMetadataItems,
     )
-    from .group_0622 import (
+    from .group_0627 import (
         WebhookPackagePublishedPropPackagePropPackageVersionPropNugetMetadataItemsPropValueOneof3 as WebhookPackagePublishedPropPackagePropPackageVersionPropNugetMetadataItemsPropValueOneof3,
     )
-    from .group_0622 import (
+    from .group_0627 import (
         WebhookPackagePublishedPropPackagePropPackageVersionPropPackageFilesItems as WebhookPackagePublishedPropPackagePropPackageVersionPropPackageFilesItems,
     )
-    from .group_0622 import (
+    from .group_0627 import (
         WebhookPackagePublishedPropPackagePropPackageVersionPropRelease as WebhookPackagePublishedPropPackagePropPackageVersionPropRelease,
     )
-    from .group_0622 import (
+    from .group_0627 import (
         WebhookPackagePublishedPropPackagePropPackageVersionPropReleasePropAuthor as WebhookPackagePublishedPropPackagePropPackageVersionPropReleasePropAuthor,
     )
-    from .group_0623 import WebhookPackageUpdated as WebhookPackageUpdated
-    from .group_0624 import (
+    from .group_0628 import WebhookPackageUpdated as WebhookPackageUpdated
+    from .group_0629 import (
         WebhookPackageUpdatedPropPackage as WebhookPackageUpdatedPropPackage,
     )
-    from .group_0624 import (
+    from .group_0629 import (
         WebhookPackageUpdatedPropPackagePropOwner as WebhookPackageUpdatedPropPackagePropOwner,
     )
-    from .group_0624 import (
+    from .group_0629 import (
         WebhookPackageUpdatedPropPackagePropRegistry as WebhookPackageUpdatedPropPackagePropRegistry,
     )
-    from .group_0625 import (
+    from .group_0630 import (
         WebhookPackageUpdatedPropPackagePropPackageVersion as WebhookPackageUpdatedPropPackagePropPackageVersion,
     )
-    from .group_0625 import (
+    from .group_0630 import (
         WebhookPackageUpdatedPropPackagePropPackageVersionPropAuthor as WebhookPackageUpdatedPropPackagePropPackageVersionPropAuthor,
     )
-    from .group_0625 import (
+    from .group_0630 import (
         WebhookPackageUpdatedPropPackagePropPackageVersionPropDockerMetadataItems as WebhookPackageUpdatedPropPackagePropPackageVersionPropDockerMetadataItems,
     )
-    from .group_0625 import (
+    from .group_0630 import (
         WebhookPackageUpdatedPropPackagePropPackageVersionPropMetadataItems as WebhookPackageUpdatedPropPackagePropPackageVersionPropMetadataItems,
     )
-    from .group_0625 import (
+    from .group_0630 import (
         WebhookPackageUpdatedPropPackagePropPackageVersionPropPackageFilesItems as WebhookPackageUpdatedPropPackagePropPackageVersionPropPackageFilesItems,
     )
-    from .group_0625 import (
+    from .group_0630 import (
         WebhookPackageUpdatedPropPackagePropPackageVersionPropRelease as WebhookPackageUpdatedPropPackagePropPackageVersionPropRelease,
     )
-    from .group_0625 import (
+    from .group_0630 import (
         WebhookPackageUpdatedPropPackagePropPackageVersionPropReleasePropAuthor as WebhookPackageUpdatedPropPackagePropPackageVersionPropReleasePropAuthor,
     )
-    from .group_0626 import WebhookPageBuild as WebhookPageBuild
-    from .group_0626 import WebhookPageBuildPropBuild as WebhookPageBuildPropBuild
-    from .group_0626 import (
+    from .group_0631 import WebhookPageBuild as WebhookPageBuild
+    from .group_0631 import WebhookPageBuildPropBuild as WebhookPageBuildPropBuild
+    from .group_0631 import (
         WebhookPageBuildPropBuildPropError as WebhookPageBuildPropBuildPropError,
     )
-    from .group_0626 import (
+    from .group_0631 import (
         WebhookPageBuildPropBuildPropPusher as WebhookPageBuildPropBuildPropPusher,
     )
-    from .group_0627 import (
+    from .group_0632 import (
         WebhookPersonalAccessTokenRequestApproved as WebhookPersonalAccessTokenRequestApproved,
     )
-    from .group_0628 import (
+    from .group_0633 import (
         WebhookPersonalAccessTokenRequestCancelled as WebhookPersonalAccessTokenRequestCancelled,
     )
-    from .group_0629 import (
+    from .group_0634 import (
         WebhookPersonalAccessTokenRequestCreated as WebhookPersonalAccessTokenRequestCreated,
     )
-    from .group_0630 import (
+    from .group_0635 import (
         WebhookPersonalAccessTokenRequestDenied as WebhookPersonalAccessTokenRequestDenied,
     )
-    from .group_0631 import WebhookPing as WebhookPing
-    from .group_0632 import WebhookPingPropHook as WebhookPingPropHook
-    from .group_0632 import (
+    from .group_0636 import WebhookPing as WebhookPing
+    from .group_0637 import WebhookPingPropHook as WebhookPingPropHook
+    from .group_0637 import (
         WebhookPingPropHookPropConfig as WebhookPingPropHookPropConfig,
     )
-    from .group_0633 import WebhookPingFormEncoded as WebhookPingFormEncoded
-    from .group_0634 import WebhookProjectCardConverted as WebhookProjectCardConverted
-    from .group_0634 import (
+    from .group_0638 import WebhookPingFormEncoded as WebhookPingFormEncoded
+    from .group_0639 import WebhookProjectCardConverted as WebhookProjectCardConverted
+    from .group_0639 import (
         WebhookProjectCardConvertedPropChanges as WebhookProjectCardConvertedPropChanges,
     )
-    from .group_0634 import (
+    from .group_0639 import (
         WebhookProjectCardConvertedPropChangesPropNote as WebhookProjectCardConvertedPropChangesPropNote,
     )
-    from .group_0635 import WebhookProjectCardCreated as WebhookProjectCardCreated
-    from .group_0636 import WebhookProjectCardDeleted as WebhookProjectCardDeleted
-    from .group_0636 import (
+    from .group_0640 import WebhookProjectCardCreated as WebhookProjectCardCreated
+    from .group_0641 import WebhookProjectCardDeleted as WebhookProjectCardDeleted
+    from .group_0641 import (
         WebhookProjectCardDeletedPropProjectCard as WebhookProjectCardDeletedPropProjectCard,
     )
-    from .group_0636 import (
+    from .group_0641 import (
         WebhookProjectCardDeletedPropProjectCardPropCreator as WebhookProjectCardDeletedPropProjectCardPropCreator,
     )
-    from .group_0637 import WebhookProjectCardEdited as WebhookProjectCardEdited
-    from .group_0637 import (
+    from .group_0642 import WebhookProjectCardEdited as WebhookProjectCardEdited
+    from .group_0642 import (
         WebhookProjectCardEditedPropChanges as WebhookProjectCardEditedPropChanges,
     )
-    from .group_0637 import (
+    from .group_0642 import (
         WebhookProjectCardEditedPropChangesPropNote as WebhookProjectCardEditedPropChangesPropNote,
     )
-    from .group_0638 import WebhookProjectCardMoved as WebhookProjectCardMoved
-    from .group_0638 import (
+    from .group_0643 import WebhookProjectCardMoved as WebhookProjectCardMoved
+    from .group_0643 import (
         WebhookProjectCardMovedPropChanges as WebhookProjectCardMovedPropChanges,
     )
-    from .group_0638 import (
+    from .group_0643 import (
         WebhookProjectCardMovedPropChangesPropColumnId as WebhookProjectCardMovedPropChangesPropColumnId,
     )
-    from .group_0638 import (
+    from .group_0643 import (
         WebhookProjectCardMovedPropProjectCard as WebhookProjectCardMovedPropProjectCard,
     )
-    from .group_0638 import (
+    from .group_0643 import (
         WebhookProjectCardMovedPropProjectCardMergedCreator as WebhookProjectCardMovedPropProjectCardMergedCreator,
     )
-    from .group_0639 import (
+    from .group_0644 import (
         WebhookProjectCardMovedPropProjectCardAllof0 as WebhookProjectCardMovedPropProjectCardAllof0,
     )
-    from .group_0639 import (
+    from .group_0644 import (
         WebhookProjectCardMovedPropProjectCardAllof0PropCreator as WebhookProjectCardMovedPropProjectCardAllof0PropCreator,
     )
-    from .group_0640 import (
+    from .group_0645 import (
         WebhookProjectCardMovedPropProjectCardAllof1 as WebhookProjectCardMovedPropProjectCardAllof1,
     )
-    from .group_0640 import (
+    from .group_0645 import (
         WebhookProjectCardMovedPropProjectCardAllof1PropCreator as WebhookProjectCardMovedPropProjectCardAllof1PropCreator,
     )
-    from .group_0641 import WebhookProjectClosed as WebhookProjectClosed
-    from .group_0642 import WebhookProjectColumnCreated as WebhookProjectColumnCreated
-    from .group_0643 import WebhookProjectColumnDeleted as WebhookProjectColumnDeleted
-    from .group_0644 import WebhookProjectColumnEdited as WebhookProjectColumnEdited
-    from .group_0644 import (
+    from .group_0646 import WebhookProjectClosed as WebhookProjectClosed
+    from .group_0647 import WebhookProjectColumnCreated as WebhookProjectColumnCreated
+    from .group_0648 import WebhookProjectColumnDeleted as WebhookProjectColumnDeleted
+    from .group_0649 import WebhookProjectColumnEdited as WebhookProjectColumnEdited
+    from .group_0649 import (
         WebhookProjectColumnEditedPropChanges as WebhookProjectColumnEditedPropChanges,
     )
-    from .group_0644 import (
+    from .group_0649 import (
         WebhookProjectColumnEditedPropChangesPropName as WebhookProjectColumnEditedPropChangesPropName,
     )
-    from .group_0645 import WebhookProjectColumnMoved as WebhookProjectColumnMoved
-    from .group_0646 import WebhookProjectCreated as WebhookProjectCreated
-    from .group_0647 import WebhookProjectDeleted as WebhookProjectDeleted
-    from .group_0648 import WebhookProjectEdited as WebhookProjectEdited
-    from .group_0648 import (
+    from .group_0650 import WebhookProjectColumnMoved as WebhookProjectColumnMoved
+    from .group_0651 import WebhookProjectCreated as WebhookProjectCreated
+    from .group_0652 import WebhookProjectDeleted as WebhookProjectDeleted
+    from .group_0653 import WebhookProjectEdited as WebhookProjectEdited
+    from .group_0653 import (
         WebhookProjectEditedPropChanges as WebhookProjectEditedPropChanges,
     )
-    from .group_0648 import (
+    from .group_0653 import (
         WebhookProjectEditedPropChangesPropBody as WebhookProjectEditedPropChangesPropBody,
     )
-    from .group_0648 import (
+    from .group_0653 import (
         WebhookProjectEditedPropChangesPropName as WebhookProjectEditedPropChangesPropName,
     )
-    from .group_0649 import WebhookProjectReopened as WebhookProjectReopened
-    from .group_0650 import (
+    from .group_0654 import WebhookProjectReopened as WebhookProjectReopened
+    from .group_0655 import (
         WebhookProjectsV2ProjectClosed as WebhookProjectsV2ProjectClosed,
     )
-    from .group_0651 import (
+    from .group_0656 import (
         WebhookProjectsV2ProjectCreated as WebhookProjectsV2ProjectCreated,
     )
-    from .group_0652 import (
+    from .group_0657 import (
         WebhookProjectsV2ProjectDeleted as WebhookProjectsV2ProjectDeleted,
     )
-    from .group_0653 import (
+    from .group_0658 import (
         WebhookProjectsV2ProjectEdited as WebhookProjectsV2ProjectEdited,
     )
-    from .group_0653 import (
+    from .group_0658 import (
         WebhookProjectsV2ProjectEditedPropChanges as WebhookProjectsV2ProjectEditedPropChanges,
     )
-    from .group_0653 import (
+    from .group_0658 import (
         WebhookProjectsV2ProjectEditedPropChangesPropDescription as WebhookProjectsV2ProjectEditedPropChangesPropDescription,
     )
-    from .group_0653 import (
+    from .group_0658 import (
         WebhookProjectsV2ProjectEditedPropChangesPropPublic as WebhookProjectsV2ProjectEditedPropChangesPropPublic,
     )
-    from .group_0653 import (
+    from .group_0658 import (
         WebhookProjectsV2ProjectEditedPropChangesPropShortDescription as WebhookProjectsV2ProjectEditedPropChangesPropShortDescription,
     )
-    from .group_0653 import (
+    from .group_0658 import (
         WebhookProjectsV2ProjectEditedPropChangesPropTitle as WebhookProjectsV2ProjectEditedPropChangesPropTitle,
     )
-    from .group_0654 import (
+    from .group_0659 import (
         WebhookProjectsV2ItemArchived as WebhookProjectsV2ItemArchived,
     )
-    from .group_0655 import (
+    from .group_0660 import (
         WebhookProjectsV2ItemConverted as WebhookProjectsV2ItemConverted,
     )
-    from .group_0655 import (
+    from .group_0660 import (
         WebhookProjectsV2ItemConvertedPropChanges as WebhookProjectsV2ItemConvertedPropChanges,
     )
-    from .group_0655 import (
+    from .group_0660 import (
         WebhookProjectsV2ItemConvertedPropChangesPropContentType as WebhookProjectsV2ItemConvertedPropChangesPropContentType,
     )
-    from .group_0656 import WebhookProjectsV2ItemCreated as WebhookProjectsV2ItemCreated
-    from .group_0657 import WebhookProjectsV2ItemDeleted as WebhookProjectsV2ItemDeleted
-    from .group_0658 import ProjectsV2IterationSetting as ProjectsV2IterationSetting
-    from .group_0658 import ProjectsV2SingleSelectOption as ProjectsV2SingleSelectOption
-    from .group_0658 import WebhookProjectsV2ItemEdited as WebhookProjectsV2ItemEdited
-    from .group_0658 import (
+    from .group_0661 import WebhookProjectsV2ItemCreated as WebhookProjectsV2ItemCreated
+    from .group_0662 import WebhookProjectsV2ItemDeleted as WebhookProjectsV2ItemDeleted
+    from .group_0663 import ProjectsV2IterationSetting as ProjectsV2IterationSetting
+    from .group_0663 import ProjectsV2SingleSelectOption as ProjectsV2SingleSelectOption
+    from .group_0663 import WebhookProjectsV2ItemEdited as WebhookProjectsV2ItemEdited
+    from .group_0663 import (
         WebhookProjectsV2ItemEditedPropChangesOneof0 as WebhookProjectsV2ItemEditedPropChangesOneof0,
     )
-    from .group_0658 import (
+    from .group_0663 import (
         WebhookProjectsV2ItemEditedPropChangesOneof0PropFieldValue as WebhookProjectsV2ItemEditedPropChangesOneof0PropFieldValue,
     )
-    from .group_0658 import (
+    from .group_0663 import (
         WebhookProjectsV2ItemEditedPropChangesOneof1 as WebhookProjectsV2ItemEditedPropChangesOneof1,
     )
-    from .group_0658 import (
+    from .group_0663 import (
         WebhookProjectsV2ItemEditedPropChangesOneof1PropBody as WebhookProjectsV2ItemEditedPropChangesOneof1PropBody,
     )
-    from .group_0659 import (
+    from .group_0664 import (
         WebhookProjectsV2ItemReordered as WebhookProjectsV2ItemReordered,
     )
-    from .group_0659 import (
+    from .group_0664 import (
         WebhookProjectsV2ItemReorderedPropChanges as WebhookProjectsV2ItemReorderedPropChanges,
     )
-    from .group_0659 import (
+    from .group_0664 import (
         WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeId as WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeId,
     )
-    from .group_0660 import (
+    from .group_0665 import (
         WebhookProjectsV2ItemRestored as WebhookProjectsV2ItemRestored,
     )
-    from .group_0661 import (
+    from .group_0666 import (
         WebhookProjectsV2ProjectReopened as WebhookProjectsV2ProjectReopened,
     )
-    from .group_0662 import (
+    from .group_0667 import (
         WebhookProjectsV2StatusUpdateCreated as WebhookProjectsV2StatusUpdateCreated,
     )
-    from .group_0663 import (
+    from .group_0668 import (
         WebhookProjectsV2StatusUpdateDeleted as WebhookProjectsV2StatusUpdateDeleted,
     )
-    from .group_0664 import (
+    from .group_0669 import (
         WebhookProjectsV2StatusUpdateEdited as WebhookProjectsV2StatusUpdateEdited,
     )
-    from .group_0664 import (
+    from .group_0669 import (
         WebhookProjectsV2StatusUpdateEditedPropChanges as WebhookProjectsV2StatusUpdateEditedPropChanges,
     )
-    from .group_0664 import (
+    from .group_0669 import (
         WebhookProjectsV2StatusUpdateEditedPropChangesPropBody as WebhookProjectsV2StatusUpdateEditedPropChangesPropBody,
     )
-    from .group_0664 import (
+    from .group_0669 import (
         WebhookProjectsV2StatusUpdateEditedPropChangesPropStartDate as WebhookProjectsV2StatusUpdateEditedPropChangesPropStartDate,
     )
-    from .group_0664 import (
+    from .group_0669 import (
         WebhookProjectsV2StatusUpdateEditedPropChangesPropStatus as WebhookProjectsV2StatusUpdateEditedPropChangesPropStatus,
     )
-    from .group_0664 import (
+    from .group_0669 import (
         WebhookProjectsV2StatusUpdateEditedPropChangesPropTargetDate as WebhookProjectsV2StatusUpdateEditedPropChangesPropTargetDate,
     )
-    from .group_0665 import WebhookPublic as WebhookPublic
-    from .group_0666 import WebhookPullRequestAssigned as WebhookPullRequestAssigned
-    from .group_0666 import (
+    from .group_0670 import WebhookPublic as WebhookPublic
+    from .group_0671 import WebhookPullRequestAssigned as WebhookPullRequestAssigned
+    from .group_0671 import (
         WebhookPullRequestAssignedPropPullRequest as WebhookPullRequestAssignedPropPullRequest,
     )
-    from .group_0666 import (
+    from .group_0671 import (
         WebhookPullRequestAssignedPropPullRequestPropAssignee as WebhookPullRequestAssignedPropPullRequestPropAssignee,
     )
-    from .group_0666 import (
+    from .group_0671 import (
         WebhookPullRequestAssignedPropPullRequestPropAssigneesItems as WebhookPullRequestAssignedPropPullRequestPropAssigneesItems,
     )
-    from .group_0666 import (
+    from .group_0671 import (
         WebhookPullRequestAssignedPropPullRequestPropAutoMerge as WebhookPullRequestAssignedPropPullRequestPropAutoMerge,
     )
-    from .group_0666 import (
+    from .group_0671 import (
         WebhookPullRequestAssignedPropPullRequestPropAutoMergePropEnabledBy as WebhookPullRequestAssignedPropPullRequestPropAutoMergePropEnabledBy,
     )
-    from .group_0666 import (
+    from .group_0671 import (
         WebhookPullRequestAssignedPropPullRequestPropBase as WebhookPullRequestAssignedPropPullRequestPropBase,
     )
-    from .group_0666 import (
+    from .group_0671 import (
         WebhookPullRequestAssignedPropPullRequestPropBasePropRepo as WebhookPullRequestAssignedPropPullRequestPropBasePropRepo,
     )
-    from .group_0666 import (
+    from .group_0671 import (
         WebhookPullRequestAssignedPropPullRequestPropBasePropRepoPropLicense as WebhookPullRequestAssignedPropPullRequestPropBasePropRepoPropLicense,
     )
-    from .group_0666 import (
+    from .group_0671 import (
         WebhookPullRequestAssignedPropPullRequestPropBasePropRepoPropOwner as WebhookPullRequestAssignedPropPullRequestPropBasePropRepoPropOwner,
     )
-    from .group_0666 import (
+    from .group_0671 import (
         WebhookPullRequestAssignedPropPullRequestPropBasePropRepoPropPermissions as WebhookPullRequestAssignedPropPullRequestPropBasePropRepoPropPermissions,
     )
-    from .group_0666 import (
+    from .group_0671 import (
         WebhookPullRequestAssignedPropPullRequestPropBasePropUser as WebhookPullRequestAssignedPropPullRequestPropBasePropUser,
     )
-    from .group_0666 import (
+    from .group_0671 import (
         WebhookPullRequestAssignedPropPullRequestPropHead as WebhookPullRequestAssignedPropPullRequestPropHead,
     )
-    from .group_0666 import (
+    from .group_0671 import (
         WebhookPullRequestAssignedPropPullRequestPropHeadPropRepo as WebhookPullRequestAssignedPropPullRequestPropHeadPropRepo,
     )
-    from .group_0666 import (
+    from .group_0671 import (
         WebhookPullRequestAssignedPropPullRequestPropHeadPropRepoPropLicense as WebhookPullRequestAssignedPropPullRequestPropHeadPropRepoPropLicense,
     )
-    from .group_0666 import (
+    from .group_0671 import (
         WebhookPullRequestAssignedPropPullRequestPropHeadPropRepoPropOwner as WebhookPullRequestAssignedPropPullRequestPropHeadPropRepoPropOwner,
     )
-    from .group_0666 import (
+    from .group_0671 import (
         WebhookPullRequestAssignedPropPullRequestPropHeadPropRepoPropPermissions as WebhookPullRequestAssignedPropPullRequestPropHeadPropRepoPropPermissions,
     )
-    from .group_0666 import (
+    from .group_0671 import (
         WebhookPullRequestAssignedPropPullRequestPropHeadPropUser as WebhookPullRequestAssignedPropPullRequestPropHeadPropUser,
     )
-    from .group_0666 import (
+    from .group_0671 import (
         WebhookPullRequestAssignedPropPullRequestPropLabelsItems as WebhookPullRequestAssignedPropPullRequestPropLabelsItems,
     )
-    from .group_0666 import (
+    from .group_0671 import (
         WebhookPullRequestAssignedPropPullRequestPropLinks as WebhookPullRequestAssignedPropPullRequestPropLinks,
     )
-    from .group_0666 import (
+    from .group_0671 import (
         WebhookPullRequestAssignedPropPullRequestPropLinksPropComments as WebhookPullRequestAssignedPropPullRequestPropLinksPropComments,
     )
-    from .group_0666 import (
+    from .group_0671 import (
         WebhookPullRequestAssignedPropPullRequestPropLinksPropCommits as WebhookPullRequestAssignedPropPullRequestPropLinksPropCommits,
     )
-    from .group_0666 import (
+    from .group_0671 import (
         WebhookPullRequestAssignedPropPullRequestPropLinksPropHtml as WebhookPullRequestAssignedPropPullRequestPropLinksPropHtml,
     )
-    from .group_0666 import (
+    from .group_0671 import (
         WebhookPullRequestAssignedPropPullRequestPropLinksPropIssue as WebhookPullRequestAssignedPropPullRequestPropLinksPropIssue,
     )
-    from .group_0666 import (
+    from .group_0671 import (
         WebhookPullRequestAssignedPropPullRequestPropLinksPropReviewComment as WebhookPullRequestAssignedPropPullRequestPropLinksPropReviewComment,
     )
-    from .group_0666 import (
+    from .group_0671 import (
         WebhookPullRequestAssignedPropPullRequestPropLinksPropReviewComments as WebhookPullRequestAssignedPropPullRequestPropLinksPropReviewComments,
     )
-    from .group_0666 import (
+    from .group_0671 import (
         WebhookPullRequestAssignedPropPullRequestPropLinksPropSelf as WebhookPullRequestAssignedPropPullRequestPropLinksPropSelf,
     )
-    from .group_0666 import (
+    from .group_0671 import (
         WebhookPullRequestAssignedPropPullRequestPropLinksPropStatuses as WebhookPullRequestAssignedPropPullRequestPropLinksPropStatuses,
     )
-    from .group_0666 import (
+    from .group_0671 import (
         WebhookPullRequestAssignedPropPullRequestPropMergedBy as WebhookPullRequestAssignedPropPullRequestPropMergedBy,
     )
-    from .group_0666 import (
+    from .group_0671 import (
         WebhookPullRequestAssignedPropPullRequestPropMilestone as WebhookPullRequestAssignedPropPullRequestPropMilestone,
     )
-    from .group_0666 import (
+    from .group_0671 import (
         WebhookPullRequestAssignedPropPullRequestPropMilestonePropCreator as WebhookPullRequestAssignedPropPullRequestPropMilestonePropCreator,
     )
-    from .group_0666 import (
+    from .group_0671 import (
         WebhookPullRequestAssignedPropPullRequestPropRequestedReviewersItemsOneof0 as WebhookPullRequestAssignedPropPullRequestPropRequestedReviewersItemsOneof0,
     )
-    from .group_0666 import (
+    from .group_0671 import (
         WebhookPullRequestAssignedPropPullRequestPropRequestedReviewersItemsOneof1 as WebhookPullRequestAssignedPropPullRequestPropRequestedReviewersItemsOneof1,
     )
-    from .group_0666 import (
+    from .group_0671 import (
         WebhookPullRequestAssignedPropPullRequestPropRequestedReviewersItemsOneof1PropParent as WebhookPullRequestAssignedPropPullRequestPropRequestedReviewersItemsOneof1PropParent,
     )
-    from .group_0666 import (
+    from .group_0671 import (
         WebhookPullRequestAssignedPropPullRequestPropRequestedTeamsItems as WebhookPullRequestAssignedPropPullRequestPropRequestedTeamsItems,
     )
-    from .group_0666 import (
+    from .group_0671 import (
         WebhookPullRequestAssignedPropPullRequestPropRequestedTeamsItemsPropParent as WebhookPullRequestAssignedPropPullRequestPropRequestedTeamsItemsPropParent,
     )
-    from .group_0666 import (
+    from .group_0671 import (
         WebhookPullRequestAssignedPropPullRequestPropUser as WebhookPullRequestAssignedPropPullRequestPropUser,
     )
-    from .group_0667 import (
+    from .group_0672 import (
         WebhookPullRequestAutoMergeDisabled as WebhookPullRequestAutoMergeDisabled,
     )
-    from .group_0667 import (
+    from .group_0672 import (
         WebhookPullRequestAutoMergeDisabledPropPullRequest as WebhookPullRequestAutoMergeDisabledPropPullRequest,
     )
-    from .group_0667 import (
+    from .group_0672 import (
         WebhookPullRequestAutoMergeDisabledPropPullRequestPropAssignee as WebhookPullRequestAutoMergeDisabledPropPullRequestPropAssignee,
     )
-    from .group_0667 import (
+    from .group_0672 import (
         WebhookPullRequestAutoMergeDisabledPropPullRequestPropAssigneesItems as WebhookPullRequestAutoMergeDisabledPropPullRequestPropAssigneesItems,
     )
-    from .group_0667 import (
+    from .group_0672 import (
         WebhookPullRequestAutoMergeDisabledPropPullRequestPropAutoMerge as WebhookPullRequestAutoMergeDisabledPropPullRequestPropAutoMerge,
     )
-    from .group_0667 import (
+    from .group_0672 import (
         WebhookPullRequestAutoMergeDisabledPropPullRequestPropAutoMergePropEnabledBy as WebhookPullRequestAutoMergeDisabledPropPullRequestPropAutoMergePropEnabledBy,
     )
-    from .group_0667 import (
+    from .group_0672 import (
         WebhookPullRequestAutoMergeDisabledPropPullRequestPropBase as WebhookPullRequestAutoMergeDisabledPropPullRequestPropBase,
     )
-    from .group_0667 import (
+    from .group_0672 import (
         WebhookPullRequestAutoMergeDisabledPropPullRequestPropBasePropRepo as WebhookPullRequestAutoMergeDisabledPropPullRequestPropBasePropRepo,
     )
-    from .group_0667 import (
+    from .group_0672 import (
         WebhookPullRequestAutoMergeDisabledPropPullRequestPropBasePropRepoPropLicense as WebhookPullRequestAutoMergeDisabledPropPullRequestPropBasePropRepoPropLicense,
     )
-    from .group_0667 import (
+    from .group_0672 import (
         WebhookPullRequestAutoMergeDisabledPropPullRequestPropBasePropRepoPropOwner as WebhookPullRequestAutoMergeDisabledPropPullRequestPropBasePropRepoPropOwner,
     )
-    from .group_0667 import (
+    from .group_0672 import (
         WebhookPullRequestAutoMergeDisabledPropPullRequestPropBasePropRepoPropPermissions as WebhookPullRequestAutoMergeDisabledPropPullRequestPropBasePropRepoPropPermissions,
     )
-    from .group_0667 import (
+    from .group_0672 import (
         WebhookPullRequestAutoMergeDisabledPropPullRequestPropBasePropUser as WebhookPullRequestAutoMergeDisabledPropPullRequestPropBasePropUser,
     )
-    from .group_0667 import (
+    from .group_0672 import (
         WebhookPullRequestAutoMergeDisabledPropPullRequestPropHead as WebhookPullRequestAutoMergeDisabledPropPullRequestPropHead,
     )
-    from .group_0667 import (
+    from .group_0672 import (
         WebhookPullRequestAutoMergeDisabledPropPullRequestPropHeadPropRepo as WebhookPullRequestAutoMergeDisabledPropPullRequestPropHeadPropRepo,
     )
-    from .group_0667 import (
+    from .group_0672 import (
         WebhookPullRequestAutoMergeDisabledPropPullRequestPropHeadPropRepoPropLicense as WebhookPullRequestAutoMergeDisabledPropPullRequestPropHeadPropRepoPropLicense,
     )
-    from .group_0667 import (
+    from .group_0672 import (
         WebhookPullRequestAutoMergeDisabledPropPullRequestPropHeadPropRepoPropOwner as WebhookPullRequestAutoMergeDisabledPropPullRequestPropHeadPropRepoPropOwner,
     )
-    from .group_0667 import (
+    from .group_0672 import (
         WebhookPullRequestAutoMergeDisabledPropPullRequestPropHeadPropRepoPropPermissions as WebhookPullRequestAutoMergeDisabledPropPullRequestPropHeadPropRepoPropPermissions,
     )
-    from .group_0667 import (
+    from .group_0672 import (
         WebhookPullRequestAutoMergeDisabledPropPullRequestPropHeadPropUser as WebhookPullRequestAutoMergeDisabledPropPullRequestPropHeadPropUser,
     )
-    from .group_0667 import (
+    from .group_0672 import (
         WebhookPullRequestAutoMergeDisabledPropPullRequestPropLabelsItems as WebhookPullRequestAutoMergeDisabledPropPullRequestPropLabelsItems,
     )
-    from .group_0667 import (
+    from .group_0672 import (
         WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinks as WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinks,
     )
-    from .group_0667 import (
+    from .group_0672 import (
         WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropComments as WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropComments,
     )
-    from .group_0667 import (
+    from .group_0672 import (
         WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropCommits as WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropCommits,
     )
-    from .group_0667 import (
+    from .group_0672 import (
         WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropHtml as WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropHtml,
     )
-    from .group_0667 import (
+    from .group_0672 import (
         WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropIssue as WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropIssue,
     )
-    from .group_0667 import (
+    from .group_0672 import (
         WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropReviewComment as WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropReviewComment,
     )
-    from .group_0667 import (
+    from .group_0672 import (
         WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropReviewComments as WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropReviewComments,
     )
-    from .group_0667 import (
+    from .group_0672 import (
         WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropSelf as WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropSelf,
     )
-    from .group_0667 import (
+    from .group_0672 import (
         WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropStatuses as WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropStatuses,
     )
-    from .group_0667 import (
+    from .group_0672 import (
         WebhookPullRequestAutoMergeDisabledPropPullRequestPropMergedBy as WebhookPullRequestAutoMergeDisabledPropPullRequestPropMergedBy,
     )
-    from .group_0667 import (
+    from .group_0672 import (
         WebhookPullRequestAutoMergeDisabledPropPullRequestPropMilestone as WebhookPullRequestAutoMergeDisabledPropPullRequestPropMilestone,
     )
-    from .group_0667 import (
+    from .group_0672 import (
         WebhookPullRequestAutoMergeDisabledPropPullRequestPropMilestonePropCreator as WebhookPullRequestAutoMergeDisabledPropPullRequestPropMilestonePropCreator,
     )
-    from .group_0667 import (
+    from .group_0672 import (
         WebhookPullRequestAutoMergeDisabledPropPullRequestPropRequestedReviewersItemsOneof0 as WebhookPullRequestAutoMergeDisabledPropPullRequestPropRequestedReviewersItemsOneof0,
     )
-    from .group_0667 import (
+    from .group_0672 import (
         WebhookPullRequestAutoMergeDisabledPropPullRequestPropRequestedReviewersItemsOneof1 as WebhookPullRequestAutoMergeDisabledPropPullRequestPropRequestedReviewersItemsOneof1,
     )
-    from .group_0667 import (
+    from .group_0672 import (
         WebhookPullRequestAutoMergeDisabledPropPullRequestPropRequestedReviewersItemsOneof1PropParent as WebhookPullRequestAutoMergeDisabledPropPullRequestPropRequestedReviewersItemsOneof1PropParent,
     )
-    from .group_0667 import (
+    from .group_0672 import (
         WebhookPullRequestAutoMergeDisabledPropPullRequestPropRequestedTeamsItems as WebhookPullRequestAutoMergeDisabledPropPullRequestPropRequestedTeamsItems,
     )
-    from .group_0667 import (
+    from .group_0672 import (
         WebhookPullRequestAutoMergeDisabledPropPullRequestPropRequestedTeamsItemsPropParent as WebhookPullRequestAutoMergeDisabledPropPullRequestPropRequestedTeamsItemsPropParent,
     )
-    from .group_0667 import (
+    from .group_0672 import (
         WebhookPullRequestAutoMergeDisabledPropPullRequestPropUser as WebhookPullRequestAutoMergeDisabledPropPullRequestPropUser,
     )
-    from .group_0668 import (
+    from .group_0673 import (
         WebhookPullRequestAutoMergeEnabled as WebhookPullRequestAutoMergeEnabled,
     )
-    from .group_0668 import (
+    from .group_0673 import (
         WebhookPullRequestAutoMergeEnabledPropPullRequest as WebhookPullRequestAutoMergeEnabledPropPullRequest,
     )
-    from .group_0668 import (
+    from .group_0673 import (
         WebhookPullRequestAutoMergeEnabledPropPullRequestPropAssignee as WebhookPullRequestAutoMergeEnabledPropPullRequestPropAssignee,
     )
-    from .group_0668 import (
+    from .group_0673 import (
         WebhookPullRequestAutoMergeEnabledPropPullRequestPropAssigneesItems as WebhookPullRequestAutoMergeEnabledPropPullRequestPropAssigneesItems,
     )
-    from .group_0668 import (
+    from .group_0673 import (
         WebhookPullRequestAutoMergeEnabledPropPullRequestPropAutoMerge as WebhookPullRequestAutoMergeEnabledPropPullRequestPropAutoMerge,
     )
-    from .group_0668 import (
+    from .group_0673 import (
         WebhookPullRequestAutoMergeEnabledPropPullRequestPropAutoMergePropEnabledBy as WebhookPullRequestAutoMergeEnabledPropPullRequestPropAutoMergePropEnabledBy,
     )
-    from .group_0668 import (
+    from .group_0673 import (
         WebhookPullRequestAutoMergeEnabledPropPullRequestPropBase as WebhookPullRequestAutoMergeEnabledPropPullRequestPropBase,
     )
-    from .group_0668 import (
+    from .group_0673 import (
         WebhookPullRequestAutoMergeEnabledPropPullRequestPropBasePropRepo as WebhookPullRequestAutoMergeEnabledPropPullRequestPropBasePropRepo,
     )
-    from .group_0668 import (
+    from .group_0673 import (
         WebhookPullRequestAutoMergeEnabledPropPullRequestPropBasePropRepoPropLicense as WebhookPullRequestAutoMergeEnabledPropPullRequestPropBasePropRepoPropLicense,
     )
-    from .group_0668 import (
+    from .group_0673 import (
         WebhookPullRequestAutoMergeEnabledPropPullRequestPropBasePropRepoPropOwner as WebhookPullRequestAutoMergeEnabledPropPullRequestPropBasePropRepoPropOwner,
     )
-    from .group_0668 import (
+    from .group_0673 import (
         WebhookPullRequestAutoMergeEnabledPropPullRequestPropBasePropRepoPropPermissions as WebhookPullRequestAutoMergeEnabledPropPullRequestPropBasePropRepoPropPermissions,
     )
-    from .group_0668 import (
+    from .group_0673 import (
         WebhookPullRequestAutoMergeEnabledPropPullRequestPropBasePropUser as WebhookPullRequestAutoMergeEnabledPropPullRequestPropBasePropUser,
     )
-    from .group_0668 import (
+    from .group_0673 import (
         WebhookPullRequestAutoMergeEnabledPropPullRequestPropHead as WebhookPullRequestAutoMergeEnabledPropPullRequestPropHead,
     )
-    from .group_0668 import (
+    from .group_0673 import (
         WebhookPullRequestAutoMergeEnabledPropPullRequestPropHeadPropRepo as WebhookPullRequestAutoMergeEnabledPropPullRequestPropHeadPropRepo,
     )
-    from .group_0668 import (
+    from .group_0673 import (
         WebhookPullRequestAutoMergeEnabledPropPullRequestPropHeadPropRepoPropLicense as WebhookPullRequestAutoMergeEnabledPropPullRequestPropHeadPropRepoPropLicense,
     )
-    from .group_0668 import (
+    from .group_0673 import (
         WebhookPullRequestAutoMergeEnabledPropPullRequestPropHeadPropRepoPropOwner as WebhookPullRequestAutoMergeEnabledPropPullRequestPropHeadPropRepoPropOwner,
     )
-    from .group_0668 import (
+    from .group_0673 import (
         WebhookPullRequestAutoMergeEnabledPropPullRequestPropHeadPropRepoPropPermissions as WebhookPullRequestAutoMergeEnabledPropPullRequestPropHeadPropRepoPropPermissions,
     )
-    from .group_0668 import (
+    from .group_0673 import (
         WebhookPullRequestAutoMergeEnabledPropPullRequestPropHeadPropUser as WebhookPullRequestAutoMergeEnabledPropPullRequestPropHeadPropUser,
     )
-    from .group_0668 import (
+    from .group_0673 import (
         WebhookPullRequestAutoMergeEnabledPropPullRequestPropLabelsItems as WebhookPullRequestAutoMergeEnabledPropPullRequestPropLabelsItems,
     )
-    from .group_0668 import (
+    from .group_0673 import (
         WebhookPullRequestAutoMergeEnabledPropPullRequestPropLinks as WebhookPullRequestAutoMergeEnabledPropPullRequestPropLinks,
     )
-    from .group_0668 import (
+    from .group_0673 import (
         WebhookPullRequestAutoMergeEnabledPropPullRequestPropLinksPropComments as WebhookPullRequestAutoMergeEnabledPropPullRequestPropLinksPropComments,
     )
-    from .group_0668 import (
+    from .group_0673 import (
         WebhookPullRequestAutoMergeEnabledPropPullRequestPropLinksPropCommits as WebhookPullRequestAutoMergeEnabledPropPullRequestPropLinksPropCommits,
     )
-    from .group_0668 import (
+    from .group_0673 import (
         WebhookPullRequestAutoMergeEnabledPropPullRequestPropLinksPropHtml as WebhookPullRequestAutoMergeEnabledPropPullRequestPropLinksPropHtml,
     )
-    from .group_0668 import (
+    from .group_0673 import (
         WebhookPullRequestAutoMergeEnabledPropPullRequestPropLinksPropIssue as WebhookPullRequestAutoMergeEnabledPropPullRequestPropLinksPropIssue,
     )
-    from .group_0668 import (
+    from .group_0673 import (
         WebhookPullRequestAutoMergeEnabledPropPullRequestPropLinksPropReviewComment as WebhookPullRequestAutoMergeEnabledPropPullRequestPropLinksPropReviewComment,
     )
-    from .group_0668 import (
+    from .group_0673 import (
         WebhookPullRequestAutoMergeEnabledPropPullRequestPropLinksPropReviewComments as WebhookPullRequestAutoMergeEnabledPropPullRequestPropLinksPropReviewComments,
     )
-    from .group_0668 import (
+    from .group_0673 import (
         WebhookPullRequestAutoMergeEnabledPropPullRequestPropLinksPropSelf as WebhookPullRequestAutoMergeEnabledPropPullRequestPropLinksPropSelf,
     )
-    from .group_0668 import (
+    from .group_0673 import (
         WebhookPullRequestAutoMergeEnabledPropPullRequestPropLinksPropStatuses as WebhookPullRequestAutoMergeEnabledPropPullRequestPropLinksPropStatuses,
     )
-    from .group_0668 import (
+    from .group_0673 import (
         WebhookPullRequestAutoMergeEnabledPropPullRequestPropMergedBy as WebhookPullRequestAutoMergeEnabledPropPullRequestPropMergedBy,
     )
-    from .group_0668 import (
+    from .group_0673 import (
         WebhookPullRequestAutoMergeEnabledPropPullRequestPropMilestone as WebhookPullRequestAutoMergeEnabledPropPullRequestPropMilestone,
     )
-    from .group_0668 import (
+    from .group_0673 import (
         WebhookPullRequestAutoMergeEnabledPropPullRequestPropMilestonePropCreator as WebhookPullRequestAutoMergeEnabledPropPullRequestPropMilestonePropCreator,
     )
-    from .group_0668 import (
+    from .group_0673 import (
         WebhookPullRequestAutoMergeEnabledPropPullRequestPropRequestedReviewersItemsOneof0 as WebhookPullRequestAutoMergeEnabledPropPullRequestPropRequestedReviewersItemsOneof0,
     )
-    from .group_0668 import (
+    from .group_0673 import (
         WebhookPullRequestAutoMergeEnabledPropPullRequestPropRequestedReviewersItemsOneof1 as WebhookPullRequestAutoMergeEnabledPropPullRequestPropRequestedReviewersItemsOneof1,
     )
-    from .group_0668 import (
+    from .group_0673 import (
         WebhookPullRequestAutoMergeEnabledPropPullRequestPropRequestedReviewersItemsOneof1PropParent as WebhookPullRequestAutoMergeEnabledPropPullRequestPropRequestedReviewersItemsOneof1PropParent,
     )
-    from .group_0668 import (
+    from .group_0673 import (
         WebhookPullRequestAutoMergeEnabledPropPullRequestPropRequestedTeamsItems as WebhookPullRequestAutoMergeEnabledPropPullRequestPropRequestedTeamsItems,
     )
-    from .group_0668 import (
+    from .group_0673 import (
         WebhookPullRequestAutoMergeEnabledPropPullRequestPropRequestedTeamsItemsPropParent as WebhookPullRequestAutoMergeEnabledPropPullRequestPropRequestedTeamsItemsPropParent,
     )
-    from .group_0668 import (
+    from .group_0673 import (
         WebhookPullRequestAutoMergeEnabledPropPullRequestPropUser as WebhookPullRequestAutoMergeEnabledPropPullRequestPropUser,
     )
-    from .group_0669 import WebhookPullRequestClosed as WebhookPullRequestClosed
-    from .group_0670 import (
+    from .group_0674 import WebhookPullRequestClosed as WebhookPullRequestClosed
+    from .group_0675 import (
         WebhookPullRequestConvertedToDraft as WebhookPullRequestConvertedToDraft,
     )
-    from .group_0671 import (
+    from .group_0676 import (
         WebhookPullRequestDemilestoned as WebhookPullRequestDemilestoned,
     )
-    from .group_0672 import WebhookPullRequestDequeued as WebhookPullRequestDequeued
-    from .group_0672 import (
+    from .group_0677 import WebhookPullRequestDequeued as WebhookPullRequestDequeued
+    from .group_0677 import (
         WebhookPullRequestDequeuedPropPullRequest as WebhookPullRequestDequeuedPropPullRequest,
     )
-    from .group_0672 import (
+    from .group_0677 import (
         WebhookPullRequestDequeuedPropPullRequestPropAssignee as WebhookPullRequestDequeuedPropPullRequestPropAssignee,
     )
-    from .group_0672 import (
+    from .group_0677 import (
         WebhookPullRequestDequeuedPropPullRequestPropAssigneesItems as WebhookPullRequestDequeuedPropPullRequestPropAssigneesItems,
     )
-    from .group_0672 import (
+    from .group_0677 import (
         WebhookPullRequestDequeuedPropPullRequestPropAutoMerge as WebhookPullRequestDequeuedPropPullRequestPropAutoMerge,
     )
-    from .group_0672 import (
+    from .group_0677 import (
         WebhookPullRequestDequeuedPropPullRequestPropAutoMergePropEnabledBy as WebhookPullRequestDequeuedPropPullRequestPropAutoMergePropEnabledBy,
     )
-    from .group_0672 import (
+    from .group_0677 import (
         WebhookPullRequestDequeuedPropPullRequestPropBase as WebhookPullRequestDequeuedPropPullRequestPropBase,
     )
-    from .group_0672 import (
+    from .group_0677 import (
         WebhookPullRequestDequeuedPropPullRequestPropBasePropRepo as WebhookPullRequestDequeuedPropPullRequestPropBasePropRepo,
     )
-    from .group_0672 import (
+    from .group_0677 import (
         WebhookPullRequestDequeuedPropPullRequestPropBasePropRepoPropLicense as WebhookPullRequestDequeuedPropPullRequestPropBasePropRepoPropLicense,
     )
-    from .group_0672 import (
+    from .group_0677 import (
         WebhookPullRequestDequeuedPropPullRequestPropBasePropRepoPropOwner as WebhookPullRequestDequeuedPropPullRequestPropBasePropRepoPropOwner,
     )
-    from .group_0672 import (
+    from .group_0677 import (
         WebhookPullRequestDequeuedPropPullRequestPropBasePropRepoPropPermissions as WebhookPullRequestDequeuedPropPullRequestPropBasePropRepoPropPermissions,
     )
-    from .group_0672 import (
+    from .group_0677 import (
         WebhookPullRequestDequeuedPropPullRequestPropBasePropUser as WebhookPullRequestDequeuedPropPullRequestPropBasePropUser,
     )
-    from .group_0672 import (
+    from .group_0677 import (
         WebhookPullRequestDequeuedPropPullRequestPropHead as WebhookPullRequestDequeuedPropPullRequestPropHead,
     )
-    from .group_0672 import (
+    from .group_0677 import (
         WebhookPullRequestDequeuedPropPullRequestPropHeadPropRepo as WebhookPullRequestDequeuedPropPullRequestPropHeadPropRepo,
     )
-    from .group_0672 import (
+    from .group_0677 import (
         WebhookPullRequestDequeuedPropPullRequestPropHeadPropRepoPropLicense as WebhookPullRequestDequeuedPropPullRequestPropHeadPropRepoPropLicense,
     )
-    from .group_0672 import (
+    from .group_0677 import (
         WebhookPullRequestDequeuedPropPullRequestPropHeadPropRepoPropOwner as WebhookPullRequestDequeuedPropPullRequestPropHeadPropRepoPropOwner,
     )
-    from .group_0672 import (
+    from .group_0677 import (
         WebhookPullRequestDequeuedPropPullRequestPropHeadPropRepoPropPermissions as WebhookPullRequestDequeuedPropPullRequestPropHeadPropRepoPropPermissions,
     )
-    from .group_0672 import (
+    from .group_0677 import (
         WebhookPullRequestDequeuedPropPullRequestPropHeadPropUser as WebhookPullRequestDequeuedPropPullRequestPropHeadPropUser,
     )
-    from .group_0672 import (
+    from .group_0677 import (
         WebhookPullRequestDequeuedPropPullRequestPropLabelsItems as WebhookPullRequestDequeuedPropPullRequestPropLabelsItems,
     )
-    from .group_0672 import (
+    from .group_0677 import (
         WebhookPullRequestDequeuedPropPullRequestPropLinks as WebhookPullRequestDequeuedPropPullRequestPropLinks,
     )
-    from .group_0672 import (
+    from .group_0677 import (
         WebhookPullRequestDequeuedPropPullRequestPropLinksPropComments as WebhookPullRequestDequeuedPropPullRequestPropLinksPropComments,
     )
-    from .group_0672 import (
+    from .group_0677 import (
         WebhookPullRequestDequeuedPropPullRequestPropLinksPropCommits as WebhookPullRequestDequeuedPropPullRequestPropLinksPropCommits,
     )
-    from .group_0672 import (
+    from .group_0677 import (
         WebhookPullRequestDequeuedPropPullRequestPropLinksPropHtml as WebhookPullRequestDequeuedPropPullRequestPropLinksPropHtml,
     )
-    from .group_0672 import (
+    from .group_0677 import (
         WebhookPullRequestDequeuedPropPullRequestPropLinksPropIssue as WebhookPullRequestDequeuedPropPullRequestPropLinksPropIssue,
     )
-    from .group_0672 import (
+    from .group_0677 import (
         WebhookPullRequestDequeuedPropPullRequestPropLinksPropReviewComment as WebhookPullRequestDequeuedPropPullRequestPropLinksPropReviewComment,
     )
-    from .group_0672 import (
+    from .group_0677 import (
         WebhookPullRequestDequeuedPropPullRequestPropLinksPropReviewComments as WebhookPullRequestDequeuedPropPullRequestPropLinksPropReviewComments,
     )
-    from .group_0672 import (
+    from .group_0677 import (
         WebhookPullRequestDequeuedPropPullRequestPropLinksPropSelf as WebhookPullRequestDequeuedPropPullRequestPropLinksPropSelf,
     )
-    from .group_0672 import (
+    from .group_0677 import (
         WebhookPullRequestDequeuedPropPullRequestPropLinksPropStatuses as WebhookPullRequestDequeuedPropPullRequestPropLinksPropStatuses,
     )
-    from .group_0672 import (
+    from .group_0677 import (
         WebhookPullRequestDequeuedPropPullRequestPropMergedBy as WebhookPullRequestDequeuedPropPullRequestPropMergedBy,
     )
-    from .group_0672 import (
+    from .group_0677 import (
         WebhookPullRequestDequeuedPropPullRequestPropMilestone as WebhookPullRequestDequeuedPropPullRequestPropMilestone,
     )
-    from .group_0672 import (
+    from .group_0677 import (
         WebhookPullRequestDequeuedPropPullRequestPropMilestonePropCreator as WebhookPullRequestDequeuedPropPullRequestPropMilestonePropCreator,
     )
-    from .group_0672 import (
+    from .group_0677 import (
         WebhookPullRequestDequeuedPropPullRequestPropRequestedReviewersItemsOneof0 as WebhookPullRequestDequeuedPropPullRequestPropRequestedReviewersItemsOneof0,
     )
-    from .group_0672 import (
+    from .group_0677 import (
         WebhookPullRequestDequeuedPropPullRequestPropRequestedReviewersItemsOneof1 as WebhookPullRequestDequeuedPropPullRequestPropRequestedReviewersItemsOneof1,
     )
-    from .group_0672 import (
+    from .group_0677 import (
         WebhookPullRequestDequeuedPropPullRequestPropRequestedReviewersItemsOneof1PropParent as WebhookPullRequestDequeuedPropPullRequestPropRequestedReviewersItemsOneof1PropParent,
     )
-    from .group_0672 import (
+    from .group_0677 import (
         WebhookPullRequestDequeuedPropPullRequestPropRequestedTeamsItems as WebhookPullRequestDequeuedPropPullRequestPropRequestedTeamsItems,
     )
-    from .group_0672 import (
+    from .group_0677 import (
         WebhookPullRequestDequeuedPropPullRequestPropRequestedTeamsItemsPropParent as WebhookPullRequestDequeuedPropPullRequestPropRequestedTeamsItemsPropParent,
     )
-    from .group_0672 import (
+    from .group_0677 import (
         WebhookPullRequestDequeuedPropPullRequestPropUser as WebhookPullRequestDequeuedPropPullRequestPropUser,
     )
-    from .group_0673 import WebhookPullRequestEdited as WebhookPullRequestEdited
-    from .group_0673 import (
+    from .group_0678 import WebhookPullRequestEdited as WebhookPullRequestEdited
+    from .group_0678 import (
         WebhookPullRequestEditedPropChanges as WebhookPullRequestEditedPropChanges,
     )
-    from .group_0673 import (
+    from .group_0678 import (
         WebhookPullRequestEditedPropChangesPropBase as WebhookPullRequestEditedPropChangesPropBase,
     )
-    from .group_0673 import (
+    from .group_0678 import (
         WebhookPullRequestEditedPropChangesPropBasePropRef as WebhookPullRequestEditedPropChangesPropBasePropRef,
     )
-    from .group_0673 import (
+    from .group_0678 import (
         WebhookPullRequestEditedPropChangesPropBasePropSha as WebhookPullRequestEditedPropChangesPropBasePropSha,
     )
-    from .group_0673 import (
+    from .group_0678 import (
         WebhookPullRequestEditedPropChangesPropBody as WebhookPullRequestEditedPropChangesPropBody,
     )
-    from .group_0673 import (
+    from .group_0678 import (
         WebhookPullRequestEditedPropChangesPropTitle as WebhookPullRequestEditedPropChangesPropTitle,
     )
-    from .group_0674 import WebhookPullRequestEnqueued as WebhookPullRequestEnqueued
-    from .group_0674 import (
+    from .group_0679 import WebhookPullRequestEnqueued as WebhookPullRequestEnqueued
+    from .group_0679 import (
         WebhookPullRequestEnqueuedPropPullRequest as WebhookPullRequestEnqueuedPropPullRequest,
     )
-    from .group_0674 import (
+    from .group_0679 import (
         WebhookPullRequestEnqueuedPropPullRequestPropAssignee as WebhookPullRequestEnqueuedPropPullRequestPropAssignee,
     )
-    from .group_0674 import (
+    from .group_0679 import (
         WebhookPullRequestEnqueuedPropPullRequestPropAssigneesItems as WebhookPullRequestEnqueuedPropPullRequestPropAssigneesItems,
     )
-    from .group_0674 import (
+    from .group_0679 import (
         WebhookPullRequestEnqueuedPropPullRequestPropAutoMerge as WebhookPullRequestEnqueuedPropPullRequestPropAutoMerge,
     )
-    from .group_0674 import (
+    from .group_0679 import (
         WebhookPullRequestEnqueuedPropPullRequestPropAutoMergePropEnabledBy as WebhookPullRequestEnqueuedPropPullRequestPropAutoMergePropEnabledBy,
     )
-    from .group_0674 import (
+    from .group_0679 import (
         WebhookPullRequestEnqueuedPropPullRequestPropBase as WebhookPullRequestEnqueuedPropPullRequestPropBase,
     )
-    from .group_0674 import (
+    from .group_0679 import (
         WebhookPullRequestEnqueuedPropPullRequestPropBasePropRepo as WebhookPullRequestEnqueuedPropPullRequestPropBasePropRepo,
     )
-    from .group_0674 import (
+    from .group_0679 import (
         WebhookPullRequestEnqueuedPropPullRequestPropBasePropRepoPropLicense as WebhookPullRequestEnqueuedPropPullRequestPropBasePropRepoPropLicense,
     )
-    from .group_0674 import (
+    from .group_0679 import (
         WebhookPullRequestEnqueuedPropPullRequestPropBasePropRepoPropOwner as WebhookPullRequestEnqueuedPropPullRequestPropBasePropRepoPropOwner,
     )
-    from .group_0674 import (
+    from .group_0679 import (
         WebhookPullRequestEnqueuedPropPullRequestPropBasePropRepoPropPermissions as WebhookPullRequestEnqueuedPropPullRequestPropBasePropRepoPropPermissions,
     )
-    from .group_0674 import (
+    from .group_0679 import (
         WebhookPullRequestEnqueuedPropPullRequestPropBasePropUser as WebhookPullRequestEnqueuedPropPullRequestPropBasePropUser,
     )
-    from .group_0674 import (
+    from .group_0679 import (
         WebhookPullRequestEnqueuedPropPullRequestPropHead as WebhookPullRequestEnqueuedPropPullRequestPropHead,
     )
-    from .group_0674 import (
+    from .group_0679 import (
         WebhookPullRequestEnqueuedPropPullRequestPropHeadPropRepo as WebhookPullRequestEnqueuedPropPullRequestPropHeadPropRepo,
     )
-    from .group_0674 import (
+    from .group_0679 import (
         WebhookPullRequestEnqueuedPropPullRequestPropHeadPropRepoPropLicense as WebhookPullRequestEnqueuedPropPullRequestPropHeadPropRepoPropLicense,
     )
-    from .group_0674 import (
+    from .group_0679 import (
         WebhookPullRequestEnqueuedPropPullRequestPropHeadPropRepoPropOwner as WebhookPullRequestEnqueuedPropPullRequestPropHeadPropRepoPropOwner,
     )
-    from .group_0674 import (
+    from .group_0679 import (
         WebhookPullRequestEnqueuedPropPullRequestPropHeadPropRepoPropPermissions as WebhookPullRequestEnqueuedPropPullRequestPropHeadPropRepoPropPermissions,
     )
-    from .group_0674 import (
+    from .group_0679 import (
         WebhookPullRequestEnqueuedPropPullRequestPropHeadPropUser as WebhookPullRequestEnqueuedPropPullRequestPropHeadPropUser,
     )
-    from .group_0674 import (
+    from .group_0679 import (
         WebhookPullRequestEnqueuedPropPullRequestPropLabelsItems as WebhookPullRequestEnqueuedPropPullRequestPropLabelsItems,
     )
-    from .group_0674 import (
+    from .group_0679 import (
         WebhookPullRequestEnqueuedPropPullRequestPropLinks as WebhookPullRequestEnqueuedPropPullRequestPropLinks,
     )
-    from .group_0674 import (
+    from .group_0679 import (
         WebhookPullRequestEnqueuedPropPullRequestPropLinksPropComments as WebhookPullRequestEnqueuedPropPullRequestPropLinksPropComments,
     )
-    from .group_0674 import (
+    from .group_0679 import (
         WebhookPullRequestEnqueuedPropPullRequestPropLinksPropCommits as WebhookPullRequestEnqueuedPropPullRequestPropLinksPropCommits,
     )
-    from .group_0674 import (
+    from .group_0679 import (
         WebhookPullRequestEnqueuedPropPullRequestPropLinksPropHtml as WebhookPullRequestEnqueuedPropPullRequestPropLinksPropHtml,
     )
-    from .group_0674 import (
+    from .group_0679 import (
         WebhookPullRequestEnqueuedPropPullRequestPropLinksPropIssue as WebhookPullRequestEnqueuedPropPullRequestPropLinksPropIssue,
     )
-    from .group_0674 import (
+    from .group_0679 import (
         WebhookPullRequestEnqueuedPropPullRequestPropLinksPropReviewComment as WebhookPullRequestEnqueuedPropPullRequestPropLinksPropReviewComment,
     )
-    from .group_0674 import (
+    from .group_0679 import (
         WebhookPullRequestEnqueuedPropPullRequestPropLinksPropReviewComments as WebhookPullRequestEnqueuedPropPullRequestPropLinksPropReviewComments,
     )
-    from .group_0674 import (
+    from .group_0679 import (
         WebhookPullRequestEnqueuedPropPullRequestPropLinksPropSelf as WebhookPullRequestEnqueuedPropPullRequestPropLinksPropSelf,
     )
-    from .group_0674 import (
+    from .group_0679 import (
         WebhookPullRequestEnqueuedPropPullRequestPropLinksPropStatuses as WebhookPullRequestEnqueuedPropPullRequestPropLinksPropStatuses,
     )
-    from .group_0674 import (
+    from .group_0679 import (
         WebhookPullRequestEnqueuedPropPullRequestPropMergedBy as WebhookPullRequestEnqueuedPropPullRequestPropMergedBy,
     )
-    from .group_0674 import (
+    from .group_0679 import (
         WebhookPullRequestEnqueuedPropPullRequestPropMilestone as WebhookPullRequestEnqueuedPropPullRequestPropMilestone,
     )
-    from .group_0674 import (
+    from .group_0679 import (
         WebhookPullRequestEnqueuedPropPullRequestPropMilestonePropCreator as WebhookPullRequestEnqueuedPropPullRequestPropMilestonePropCreator,
     )
-    from .group_0674 import (
+    from .group_0679 import (
         WebhookPullRequestEnqueuedPropPullRequestPropRequestedReviewersItemsOneof0 as WebhookPullRequestEnqueuedPropPullRequestPropRequestedReviewersItemsOneof0,
     )
-    from .group_0674 import (
+    from .group_0679 import (
         WebhookPullRequestEnqueuedPropPullRequestPropRequestedReviewersItemsOneof1 as WebhookPullRequestEnqueuedPropPullRequestPropRequestedReviewersItemsOneof1,
     )
-    from .group_0674 import (
+    from .group_0679 import (
         WebhookPullRequestEnqueuedPropPullRequestPropRequestedReviewersItemsOneof1PropParent as WebhookPullRequestEnqueuedPropPullRequestPropRequestedReviewersItemsOneof1PropParent,
     )
-    from .group_0674 import (
+    from .group_0679 import (
         WebhookPullRequestEnqueuedPropPullRequestPropRequestedTeamsItems as WebhookPullRequestEnqueuedPropPullRequestPropRequestedTeamsItems,
     )
-    from .group_0674 import (
+    from .group_0679 import (
         WebhookPullRequestEnqueuedPropPullRequestPropRequestedTeamsItemsPropParent as WebhookPullRequestEnqueuedPropPullRequestPropRequestedTeamsItemsPropParent,
     )
-    from .group_0674 import (
+    from .group_0679 import (
         WebhookPullRequestEnqueuedPropPullRequestPropUser as WebhookPullRequestEnqueuedPropPullRequestPropUser,
     )
-    from .group_0675 import WebhookPullRequestLabeled as WebhookPullRequestLabeled
-    from .group_0675 import (
+    from .group_0680 import WebhookPullRequestLabeled as WebhookPullRequestLabeled
+    from .group_0680 import (
         WebhookPullRequestLabeledPropPullRequest as WebhookPullRequestLabeledPropPullRequest,
     )
-    from .group_0675 import (
+    from .group_0680 import (
         WebhookPullRequestLabeledPropPullRequestPropAssignee as WebhookPullRequestLabeledPropPullRequestPropAssignee,
     )
-    from .group_0675 import (
+    from .group_0680 import (
         WebhookPullRequestLabeledPropPullRequestPropAssigneesItems as WebhookPullRequestLabeledPropPullRequestPropAssigneesItems,
     )
-    from .group_0675 import (
+    from .group_0680 import (
         WebhookPullRequestLabeledPropPullRequestPropAutoMerge as WebhookPullRequestLabeledPropPullRequestPropAutoMerge,
     )
-    from .group_0675 import (
+    from .group_0680 import (
         WebhookPullRequestLabeledPropPullRequestPropAutoMergePropEnabledBy as WebhookPullRequestLabeledPropPullRequestPropAutoMergePropEnabledBy,
     )
-    from .group_0675 import (
+    from .group_0680 import (
         WebhookPullRequestLabeledPropPullRequestPropBase as WebhookPullRequestLabeledPropPullRequestPropBase,
     )
-    from .group_0675 import (
+    from .group_0680 import (
         WebhookPullRequestLabeledPropPullRequestPropBasePropRepo as WebhookPullRequestLabeledPropPullRequestPropBasePropRepo,
     )
-    from .group_0675 import (
+    from .group_0680 import (
         WebhookPullRequestLabeledPropPullRequestPropBasePropRepoPropLicense as WebhookPullRequestLabeledPropPullRequestPropBasePropRepoPropLicense,
     )
-    from .group_0675 import (
+    from .group_0680 import (
         WebhookPullRequestLabeledPropPullRequestPropBasePropRepoPropOwner as WebhookPullRequestLabeledPropPullRequestPropBasePropRepoPropOwner,
     )
-    from .group_0675 import (
+    from .group_0680 import (
         WebhookPullRequestLabeledPropPullRequestPropBasePropRepoPropPermissions as WebhookPullRequestLabeledPropPullRequestPropBasePropRepoPropPermissions,
     )
-    from .group_0675 import (
+    from .group_0680 import (
         WebhookPullRequestLabeledPropPullRequestPropBasePropUser as WebhookPullRequestLabeledPropPullRequestPropBasePropUser,
     )
-    from .group_0675 import (
+    from .group_0680 import (
         WebhookPullRequestLabeledPropPullRequestPropHead as WebhookPullRequestLabeledPropPullRequestPropHead,
     )
-    from .group_0675 import (
+    from .group_0680 import (
         WebhookPullRequestLabeledPropPullRequestPropHeadPropRepo as WebhookPullRequestLabeledPropPullRequestPropHeadPropRepo,
     )
-    from .group_0675 import (
+    from .group_0680 import (
         WebhookPullRequestLabeledPropPullRequestPropHeadPropRepoPropLicense as WebhookPullRequestLabeledPropPullRequestPropHeadPropRepoPropLicense,
     )
-    from .group_0675 import (
+    from .group_0680 import (
         WebhookPullRequestLabeledPropPullRequestPropHeadPropRepoPropOwner as WebhookPullRequestLabeledPropPullRequestPropHeadPropRepoPropOwner,
     )
-    from .group_0675 import (
+    from .group_0680 import (
         WebhookPullRequestLabeledPropPullRequestPropHeadPropRepoPropPermissions as WebhookPullRequestLabeledPropPullRequestPropHeadPropRepoPropPermissions,
     )
-    from .group_0675 import (
+    from .group_0680 import (
         WebhookPullRequestLabeledPropPullRequestPropHeadPropUser as WebhookPullRequestLabeledPropPullRequestPropHeadPropUser,
     )
-    from .group_0675 import (
+    from .group_0680 import (
         WebhookPullRequestLabeledPropPullRequestPropLabelsItems as WebhookPullRequestLabeledPropPullRequestPropLabelsItems,
     )
-    from .group_0675 import (
+    from .group_0680 import (
         WebhookPullRequestLabeledPropPullRequestPropLinks as WebhookPullRequestLabeledPropPullRequestPropLinks,
     )
-    from .group_0675 import (
+    from .group_0680 import (
         WebhookPullRequestLabeledPropPullRequestPropLinksPropComments as WebhookPullRequestLabeledPropPullRequestPropLinksPropComments,
     )
-    from .group_0675 import (
+    from .group_0680 import (
         WebhookPullRequestLabeledPropPullRequestPropLinksPropCommits as WebhookPullRequestLabeledPropPullRequestPropLinksPropCommits,
     )
-    from .group_0675 import (
+    from .group_0680 import (
         WebhookPullRequestLabeledPropPullRequestPropLinksPropHtml as WebhookPullRequestLabeledPropPullRequestPropLinksPropHtml,
     )
-    from .group_0675 import (
+    from .group_0680 import (
         WebhookPullRequestLabeledPropPullRequestPropLinksPropIssue as WebhookPullRequestLabeledPropPullRequestPropLinksPropIssue,
     )
-    from .group_0675 import (
+    from .group_0680 import (
         WebhookPullRequestLabeledPropPullRequestPropLinksPropReviewComment as WebhookPullRequestLabeledPropPullRequestPropLinksPropReviewComment,
     )
-    from .group_0675 import (
+    from .group_0680 import (
         WebhookPullRequestLabeledPropPullRequestPropLinksPropReviewComments as WebhookPullRequestLabeledPropPullRequestPropLinksPropReviewComments,
     )
-    from .group_0675 import (
+    from .group_0680 import (
         WebhookPullRequestLabeledPropPullRequestPropLinksPropSelf as WebhookPullRequestLabeledPropPullRequestPropLinksPropSelf,
     )
-    from .group_0675 import (
+    from .group_0680 import (
         WebhookPullRequestLabeledPropPullRequestPropLinksPropStatuses as WebhookPullRequestLabeledPropPullRequestPropLinksPropStatuses,
     )
-    from .group_0675 import (
+    from .group_0680 import (
         WebhookPullRequestLabeledPropPullRequestPropMergedBy as WebhookPullRequestLabeledPropPullRequestPropMergedBy,
     )
-    from .group_0675 import (
+    from .group_0680 import (
         WebhookPullRequestLabeledPropPullRequestPropMilestone as WebhookPullRequestLabeledPropPullRequestPropMilestone,
     )
-    from .group_0675 import (
+    from .group_0680 import (
         WebhookPullRequestLabeledPropPullRequestPropMilestonePropCreator as WebhookPullRequestLabeledPropPullRequestPropMilestonePropCreator,
     )
-    from .group_0675 import (
+    from .group_0680 import (
         WebhookPullRequestLabeledPropPullRequestPropRequestedReviewersItemsOneof0 as WebhookPullRequestLabeledPropPullRequestPropRequestedReviewersItemsOneof0,
     )
-    from .group_0675 import (
+    from .group_0680 import (
         WebhookPullRequestLabeledPropPullRequestPropRequestedReviewersItemsOneof1 as WebhookPullRequestLabeledPropPullRequestPropRequestedReviewersItemsOneof1,
     )
-    from .group_0675 import (
+    from .group_0680 import (
         WebhookPullRequestLabeledPropPullRequestPropRequestedReviewersItemsOneof1PropParent as WebhookPullRequestLabeledPropPullRequestPropRequestedReviewersItemsOneof1PropParent,
     )
-    from .group_0675 import (
+    from .group_0680 import (
         WebhookPullRequestLabeledPropPullRequestPropRequestedTeamsItems as WebhookPullRequestLabeledPropPullRequestPropRequestedTeamsItems,
     )
-    from .group_0675 import (
+    from .group_0680 import (
         WebhookPullRequestLabeledPropPullRequestPropRequestedTeamsItemsPropParent as WebhookPullRequestLabeledPropPullRequestPropRequestedTeamsItemsPropParent,
     )
-    from .group_0675 import (
+    from .group_0680 import (
         WebhookPullRequestLabeledPropPullRequestPropUser as WebhookPullRequestLabeledPropPullRequestPropUser,
     )
-    from .group_0676 import WebhookPullRequestLocked as WebhookPullRequestLocked
-    from .group_0676 import (
+    from .group_0681 import WebhookPullRequestLocked as WebhookPullRequestLocked
+    from .group_0681 import (
         WebhookPullRequestLockedPropPullRequest as WebhookPullRequestLockedPropPullRequest,
     )
-    from .group_0676 import (
+    from .group_0681 import (
         WebhookPullRequestLockedPropPullRequestPropAssignee as WebhookPullRequestLockedPropPullRequestPropAssignee,
     )
-    from .group_0676 import (
+    from .group_0681 import (
         WebhookPullRequestLockedPropPullRequestPropAssigneesItems as WebhookPullRequestLockedPropPullRequestPropAssigneesItems,
     )
-    from .group_0676 import (
+    from .group_0681 import (
         WebhookPullRequestLockedPropPullRequestPropAutoMerge as WebhookPullRequestLockedPropPullRequestPropAutoMerge,
     )
-    from .group_0676 import (
+    from .group_0681 import (
         WebhookPullRequestLockedPropPullRequestPropAutoMergePropEnabledBy as WebhookPullRequestLockedPropPullRequestPropAutoMergePropEnabledBy,
     )
-    from .group_0676 import (
+    from .group_0681 import (
         WebhookPullRequestLockedPropPullRequestPropBase as WebhookPullRequestLockedPropPullRequestPropBase,
     )
-    from .group_0676 import (
+    from .group_0681 import (
         WebhookPullRequestLockedPropPullRequestPropBasePropRepo as WebhookPullRequestLockedPropPullRequestPropBasePropRepo,
     )
-    from .group_0676 import (
+    from .group_0681 import (
         WebhookPullRequestLockedPropPullRequestPropBasePropRepoPropLicense as WebhookPullRequestLockedPropPullRequestPropBasePropRepoPropLicense,
     )
-    from .group_0676 import (
+    from .group_0681 import (
         WebhookPullRequestLockedPropPullRequestPropBasePropRepoPropOwner as WebhookPullRequestLockedPropPullRequestPropBasePropRepoPropOwner,
     )
-    from .group_0676 import (
+    from .group_0681 import (
         WebhookPullRequestLockedPropPullRequestPropBasePropRepoPropPermissions as WebhookPullRequestLockedPropPullRequestPropBasePropRepoPropPermissions,
     )
-    from .group_0676 import (
+    from .group_0681 import (
         WebhookPullRequestLockedPropPullRequestPropBasePropUser as WebhookPullRequestLockedPropPullRequestPropBasePropUser,
     )
-    from .group_0676 import (
+    from .group_0681 import (
         WebhookPullRequestLockedPropPullRequestPropHead as WebhookPullRequestLockedPropPullRequestPropHead,
     )
-    from .group_0676 import (
+    from .group_0681 import (
         WebhookPullRequestLockedPropPullRequestPropHeadPropRepo as WebhookPullRequestLockedPropPullRequestPropHeadPropRepo,
     )
-    from .group_0676 import (
+    from .group_0681 import (
         WebhookPullRequestLockedPropPullRequestPropHeadPropRepoPropLicense as WebhookPullRequestLockedPropPullRequestPropHeadPropRepoPropLicense,
     )
-    from .group_0676 import (
+    from .group_0681 import (
         WebhookPullRequestLockedPropPullRequestPropHeadPropRepoPropOwner as WebhookPullRequestLockedPropPullRequestPropHeadPropRepoPropOwner,
     )
-    from .group_0676 import (
+    from .group_0681 import (
         WebhookPullRequestLockedPropPullRequestPropHeadPropRepoPropPermissions as WebhookPullRequestLockedPropPullRequestPropHeadPropRepoPropPermissions,
     )
-    from .group_0676 import (
+    from .group_0681 import (
         WebhookPullRequestLockedPropPullRequestPropHeadPropUser as WebhookPullRequestLockedPropPullRequestPropHeadPropUser,
     )
-    from .group_0676 import (
+    from .group_0681 import (
         WebhookPullRequestLockedPropPullRequestPropLabelsItems as WebhookPullRequestLockedPropPullRequestPropLabelsItems,
     )
-    from .group_0676 import (
+    from .group_0681 import (
         WebhookPullRequestLockedPropPullRequestPropLinks as WebhookPullRequestLockedPropPullRequestPropLinks,
     )
-    from .group_0676 import (
+    from .group_0681 import (
         WebhookPullRequestLockedPropPullRequestPropLinksPropComments as WebhookPullRequestLockedPropPullRequestPropLinksPropComments,
     )
-    from .group_0676 import (
+    from .group_0681 import (
         WebhookPullRequestLockedPropPullRequestPropLinksPropCommits as WebhookPullRequestLockedPropPullRequestPropLinksPropCommits,
     )
-    from .group_0676 import (
+    from .group_0681 import (
         WebhookPullRequestLockedPropPullRequestPropLinksPropHtml as WebhookPullRequestLockedPropPullRequestPropLinksPropHtml,
     )
-    from .group_0676 import (
+    from .group_0681 import (
         WebhookPullRequestLockedPropPullRequestPropLinksPropIssue as WebhookPullRequestLockedPropPullRequestPropLinksPropIssue,
     )
-    from .group_0676 import (
+    from .group_0681 import (
         WebhookPullRequestLockedPropPullRequestPropLinksPropReviewComment as WebhookPullRequestLockedPropPullRequestPropLinksPropReviewComment,
     )
-    from .group_0676 import (
+    from .group_0681 import (
         WebhookPullRequestLockedPropPullRequestPropLinksPropReviewComments as WebhookPullRequestLockedPropPullRequestPropLinksPropReviewComments,
     )
-    from .group_0676 import (
+    from .group_0681 import (
         WebhookPullRequestLockedPropPullRequestPropLinksPropSelf as WebhookPullRequestLockedPropPullRequestPropLinksPropSelf,
     )
-    from .group_0676 import (
+    from .group_0681 import (
         WebhookPullRequestLockedPropPullRequestPropLinksPropStatuses as WebhookPullRequestLockedPropPullRequestPropLinksPropStatuses,
     )
-    from .group_0676 import (
+    from .group_0681 import (
         WebhookPullRequestLockedPropPullRequestPropMergedBy as WebhookPullRequestLockedPropPullRequestPropMergedBy,
     )
-    from .group_0676 import (
+    from .group_0681 import (
         WebhookPullRequestLockedPropPullRequestPropMilestone as WebhookPullRequestLockedPropPullRequestPropMilestone,
     )
-    from .group_0676 import (
+    from .group_0681 import (
         WebhookPullRequestLockedPropPullRequestPropMilestonePropCreator as WebhookPullRequestLockedPropPullRequestPropMilestonePropCreator,
     )
-    from .group_0676 import (
+    from .group_0681 import (
         WebhookPullRequestLockedPropPullRequestPropRequestedReviewersItemsOneof0 as WebhookPullRequestLockedPropPullRequestPropRequestedReviewersItemsOneof0,
     )
-    from .group_0676 import (
+    from .group_0681 import (
         WebhookPullRequestLockedPropPullRequestPropRequestedReviewersItemsOneof1 as WebhookPullRequestLockedPropPullRequestPropRequestedReviewersItemsOneof1,
     )
-    from .group_0676 import (
+    from .group_0681 import (
         WebhookPullRequestLockedPropPullRequestPropRequestedReviewersItemsOneof1PropParent as WebhookPullRequestLockedPropPullRequestPropRequestedReviewersItemsOneof1PropParent,
     )
-    from .group_0676 import (
+    from .group_0681 import (
         WebhookPullRequestLockedPropPullRequestPropRequestedTeamsItems as WebhookPullRequestLockedPropPullRequestPropRequestedTeamsItems,
     )
-    from .group_0676 import (
+    from .group_0681 import (
         WebhookPullRequestLockedPropPullRequestPropRequestedTeamsItemsPropParent as WebhookPullRequestLockedPropPullRequestPropRequestedTeamsItemsPropParent,
     )
-    from .group_0676 import (
+    from .group_0681 import (
         WebhookPullRequestLockedPropPullRequestPropUser as WebhookPullRequestLockedPropPullRequestPropUser,
     )
-    from .group_0677 import WebhookPullRequestMilestoned as WebhookPullRequestMilestoned
-    from .group_0678 import WebhookPullRequestOpened as WebhookPullRequestOpened
-    from .group_0679 import (
+    from .group_0682 import WebhookPullRequestMilestoned as WebhookPullRequestMilestoned
+    from .group_0683 import WebhookPullRequestOpened as WebhookPullRequestOpened
+    from .group_0684 import (
         WebhookPullRequestReadyForReview as WebhookPullRequestReadyForReview,
     )
-    from .group_0680 import WebhookPullRequestReopened as WebhookPullRequestReopened
-    from .group_0681 import (
+    from .group_0685 import WebhookPullRequestReopened as WebhookPullRequestReopened
+    from .group_0686 import (
         WebhookPullRequestReviewCommentCreated as WebhookPullRequestReviewCommentCreated,
     )
-    from .group_0681 import (
+    from .group_0686 import (
         WebhookPullRequestReviewCommentCreatedPropComment as WebhookPullRequestReviewCommentCreatedPropComment,
     )
-    from .group_0681 import (
+    from .group_0686 import (
         WebhookPullRequestReviewCommentCreatedPropCommentPropLinks as WebhookPullRequestReviewCommentCreatedPropCommentPropLinks,
     )
-    from .group_0681 import (
+    from .group_0686 import (
         WebhookPullRequestReviewCommentCreatedPropCommentPropLinksPropHtml as WebhookPullRequestReviewCommentCreatedPropCommentPropLinksPropHtml,
     )
-    from .group_0681 import (
+    from .group_0686 import (
         WebhookPullRequestReviewCommentCreatedPropCommentPropLinksPropPullRequest as WebhookPullRequestReviewCommentCreatedPropCommentPropLinksPropPullRequest,
     )
-    from .group_0681 import (
+    from .group_0686 import (
         WebhookPullRequestReviewCommentCreatedPropCommentPropLinksPropSelf as WebhookPullRequestReviewCommentCreatedPropCommentPropLinksPropSelf,
     )
-    from .group_0681 import (
+    from .group_0686 import (
         WebhookPullRequestReviewCommentCreatedPropCommentPropReactions as WebhookPullRequestReviewCommentCreatedPropCommentPropReactions,
     )
-    from .group_0681 import (
+    from .group_0686 import (
         WebhookPullRequestReviewCommentCreatedPropCommentPropUser as WebhookPullRequestReviewCommentCreatedPropCommentPropUser,
     )
-    from .group_0681 import (
+    from .group_0686 import (
         WebhookPullRequestReviewCommentCreatedPropPullRequest as WebhookPullRequestReviewCommentCreatedPropPullRequest,
     )
-    from .group_0681 import (
+    from .group_0686 import (
         WebhookPullRequestReviewCommentCreatedPropPullRequestPropAssignee as WebhookPullRequestReviewCommentCreatedPropPullRequestPropAssignee,
     )
-    from .group_0681 import (
+    from .group_0686 import (
         WebhookPullRequestReviewCommentCreatedPropPullRequestPropAssigneesItems as WebhookPullRequestReviewCommentCreatedPropPullRequestPropAssigneesItems,
     )
-    from .group_0681 import (
+    from .group_0686 import (
         WebhookPullRequestReviewCommentCreatedPropPullRequestPropAutoMerge as WebhookPullRequestReviewCommentCreatedPropPullRequestPropAutoMerge,
     )
-    from .group_0681 import (
+    from .group_0686 import (
         WebhookPullRequestReviewCommentCreatedPropPullRequestPropAutoMergePropEnabledBy as WebhookPullRequestReviewCommentCreatedPropPullRequestPropAutoMergePropEnabledBy,
     )
-    from .group_0681 import (
+    from .group_0686 import (
         WebhookPullRequestReviewCommentCreatedPropPullRequestPropBase as WebhookPullRequestReviewCommentCreatedPropPullRequestPropBase,
     )
-    from .group_0681 import (
+    from .group_0686 import (
         WebhookPullRequestReviewCommentCreatedPropPullRequestPropBasePropRepo as WebhookPullRequestReviewCommentCreatedPropPullRequestPropBasePropRepo,
     )
-    from .group_0681 import (
+    from .group_0686 import (
         WebhookPullRequestReviewCommentCreatedPropPullRequestPropBasePropRepoPropLicense as WebhookPullRequestReviewCommentCreatedPropPullRequestPropBasePropRepoPropLicense,
     )
-    from .group_0681 import (
+    from .group_0686 import (
         WebhookPullRequestReviewCommentCreatedPropPullRequestPropBasePropRepoPropOwner as WebhookPullRequestReviewCommentCreatedPropPullRequestPropBasePropRepoPropOwner,
     )
-    from .group_0681 import (
+    from .group_0686 import (
         WebhookPullRequestReviewCommentCreatedPropPullRequestPropBasePropRepoPropPermissions as WebhookPullRequestReviewCommentCreatedPropPullRequestPropBasePropRepoPropPermissions,
     )
-    from .group_0681 import (
+    from .group_0686 import (
         WebhookPullRequestReviewCommentCreatedPropPullRequestPropBasePropUser as WebhookPullRequestReviewCommentCreatedPropPullRequestPropBasePropUser,
     )
-    from .group_0681 import (
+    from .group_0686 import (
         WebhookPullRequestReviewCommentCreatedPropPullRequestPropHead as WebhookPullRequestReviewCommentCreatedPropPullRequestPropHead,
     )
-    from .group_0681 import (
+    from .group_0686 import (
         WebhookPullRequestReviewCommentCreatedPropPullRequestPropHeadPropRepo as WebhookPullRequestReviewCommentCreatedPropPullRequestPropHeadPropRepo,
     )
-    from .group_0681 import (
+    from .group_0686 import (
         WebhookPullRequestReviewCommentCreatedPropPullRequestPropHeadPropRepoPropLicense as WebhookPullRequestReviewCommentCreatedPropPullRequestPropHeadPropRepoPropLicense,
     )
-    from .group_0681 import (
+    from .group_0686 import (
         WebhookPullRequestReviewCommentCreatedPropPullRequestPropHeadPropRepoPropOwner as WebhookPullRequestReviewCommentCreatedPropPullRequestPropHeadPropRepoPropOwner,
     )
-    from .group_0681 import (
+    from .group_0686 import (
         WebhookPullRequestReviewCommentCreatedPropPullRequestPropHeadPropRepoPropPermissions as WebhookPullRequestReviewCommentCreatedPropPullRequestPropHeadPropRepoPropPermissions,
     )
-    from .group_0681 import (
+    from .group_0686 import (
         WebhookPullRequestReviewCommentCreatedPropPullRequestPropHeadPropUser as WebhookPullRequestReviewCommentCreatedPropPullRequestPropHeadPropUser,
     )
-    from .group_0681 import (
+    from .group_0686 import (
         WebhookPullRequestReviewCommentCreatedPropPullRequestPropLabelsItems as WebhookPullRequestReviewCommentCreatedPropPullRequestPropLabelsItems,
     )
-    from .group_0681 import (
+    from .group_0686 import (
         WebhookPullRequestReviewCommentCreatedPropPullRequestPropLinks as WebhookPullRequestReviewCommentCreatedPropPullRequestPropLinks,
     )
-    from .group_0681 import (
+    from .group_0686 import (
         WebhookPullRequestReviewCommentCreatedPropPullRequestPropLinksPropComments as WebhookPullRequestReviewCommentCreatedPropPullRequestPropLinksPropComments,
     )
-    from .group_0681 import (
+    from .group_0686 import (
         WebhookPullRequestReviewCommentCreatedPropPullRequestPropLinksPropCommits as WebhookPullRequestReviewCommentCreatedPropPullRequestPropLinksPropCommits,
     )
-    from .group_0681 import (
+    from .group_0686 import (
         WebhookPullRequestReviewCommentCreatedPropPullRequestPropLinksPropHtml as WebhookPullRequestReviewCommentCreatedPropPullRequestPropLinksPropHtml,
     )
-    from .group_0681 import (
+    from .group_0686 import (
         WebhookPullRequestReviewCommentCreatedPropPullRequestPropLinksPropIssue as WebhookPullRequestReviewCommentCreatedPropPullRequestPropLinksPropIssue,
     )
-    from .group_0681 import (
+    from .group_0686 import (
         WebhookPullRequestReviewCommentCreatedPropPullRequestPropLinksPropReviewComment as WebhookPullRequestReviewCommentCreatedPropPullRequestPropLinksPropReviewComment,
     )
-    from .group_0681 import (
+    from .group_0686 import (
         WebhookPullRequestReviewCommentCreatedPropPullRequestPropLinksPropReviewComments as WebhookPullRequestReviewCommentCreatedPropPullRequestPropLinksPropReviewComments,
     )
-    from .group_0681 import (
+    from .group_0686 import (
         WebhookPullRequestReviewCommentCreatedPropPullRequestPropLinksPropSelf as WebhookPullRequestReviewCommentCreatedPropPullRequestPropLinksPropSelf,
     )
-    from .group_0681 import (
+    from .group_0686 import (
         WebhookPullRequestReviewCommentCreatedPropPullRequestPropLinksPropStatuses as WebhookPullRequestReviewCommentCreatedPropPullRequestPropLinksPropStatuses,
     )
-    from .group_0681 import (
+    from .group_0686 import (
         WebhookPullRequestReviewCommentCreatedPropPullRequestPropMilestone as WebhookPullRequestReviewCommentCreatedPropPullRequestPropMilestone,
     )
-    from .group_0681 import (
+    from .group_0686 import (
         WebhookPullRequestReviewCommentCreatedPropPullRequestPropMilestonePropCreator as WebhookPullRequestReviewCommentCreatedPropPullRequestPropMilestonePropCreator,
     )
-    from .group_0681 import (
+    from .group_0686 import (
         WebhookPullRequestReviewCommentCreatedPropPullRequestPropRequestedReviewersItemsOneof0 as WebhookPullRequestReviewCommentCreatedPropPullRequestPropRequestedReviewersItemsOneof0,
     )
-    from .group_0681 import (
+    from .group_0686 import (
         WebhookPullRequestReviewCommentCreatedPropPullRequestPropRequestedReviewersItemsOneof1 as WebhookPullRequestReviewCommentCreatedPropPullRequestPropRequestedReviewersItemsOneof1,
     )
-    from .group_0681 import (
+    from .group_0686 import (
         WebhookPullRequestReviewCommentCreatedPropPullRequestPropRequestedReviewersItemsOneof1PropParent as WebhookPullRequestReviewCommentCreatedPropPullRequestPropRequestedReviewersItemsOneof1PropParent,
     )
-    from .group_0681 import (
+    from .group_0686 import (
         WebhookPullRequestReviewCommentCreatedPropPullRequestPropRequestedTeamsItems as WebhookPullRequestReviewCommentCreatedPropPullRequestPropRequestedTeamsItems,
     )
-    from .group_0681 import (
+    from .group_0686 import (
         WebhookPullRequestReviewCommentCreatedPropPullRequestPropRequestedTeamsItemsPropParent as WebhookPullRequestReviewCommentCreatedPropPullRequestPropRequestedTeamsItemsPropParent,
     )
-    from .group_0681 import (
+    from .group_0686 import (
         WebhookPullRequestReviewCommentCreatedPropPullRequestPropUser as WebhookPullRequestReviewCommentCreatedPropPullRequestPropUser,
     )
-    from .group_0682 import (
+    from .group_0687 import (
         WebhookPullRequestReviewCommentDeleted as WebhookPullRequestReviewCommentDeleted,
     )
-    from .group_0682 import (
+    from .group_0687 import (
         WebhookPullRequestReviewCommentDeletedPropPullRequest as WebhookPullRequestReviewCommentDeletedPropPullRequest,
     )
-    from .group_0682 import (
+    from .group_0687 import (
         WebhookPullRequestReviewCommentDeletedPropPullRequestPropAssignee as WebhookPullRequestReviewCommentDeletedPropPullRequestPropAssignee,
     )
-    from .group_0682 import (
+    from .group_0687 import (
         WebhookPullRequestReviewCommentDeletedPropPullRequestPropAssigneesItems as WebhookPullRequestReviewCommentDeletedPropPullRequestPropAssigneesItems,
     )
-    from .group_0682 import (
+    from .group_0687 import (
         WebhookPullRequestReviewCommentDeletedPropPullRequestPropAutoMerge as WebhookPullRequestReviewCommentDeletedPropPullRequestPropAutoMerge,
     )
-    from .group_0682 import (
+    from .group_0687 import (
         WebhookPullRequestReviewCommentDeletedPropPullRequestPropAutoMergePropEnabledBy as WebhookPullRequestReviewCommentDeletedPropPullRequestPropAutoMergePropEnabledBy,
     )
-    from .group_0682 import (
+    from .group_0687 import (
         WebhookPullRequestReviewCommentDeletedPropPullRequestPropBase as WebhookPullRequestReviewCommentDeletedPropPullRequestPropBase,
     )
-    from .group_0682 import (
+    from .group_0687 import (
         WebhookPullRequestReviewCommentDeletedPropPullRequestPropBasePropRepo as WebhookPullRequestReviewCommentDeletedPropPullRequestPropBasePropRepo,
     )
-    from .group_0682 import (
+    from .group_0687 import (
         WebhookPullRequestReviewCommentDeletedPropPullRequestPropBasePropRepoPropLicense as WebhookPullRequestReviewCommentDeletedPropPullRequestPropBasePropRepoPropLicense,
     )
-    from .group_0682 import (
+    from .group_0687 import (
         WebhookPullRequestReviewCommentDeletedPropPullRequestPropBasePropRepoPropOwner as WebhookPullRequestReviewCommentDeletedPropPullRequestPropBasePropRepoPropOwner,
     )
-    from .group_0682 import (
+    from .group_0687 import (
         WebhookPullRequestReviewCommentDeletedPropPullRequestPropBasePropRepoPropPermissions as WebhookPullRequestReviewCommentDeletedPropPullRequestPropBasePropRepoPropPermissions,
     )
-    from .group_0682 import (
+    from .group_0687 import (
         WebhookPullRequestReviewCommentDeletedPropPullRequestPropBasePropUser as WebhookPullRequestReviewCommentDeletedPropPullRequestPropBasePropUser,
     )
-    from .group_0682 import (
+    from .group_0687 import (
         WebhookPullRequestReviewCommentDeletedPropPullRequestPropHead as WebhookPullRequestReviewCommentDeletedPropPullRequestPropHead,
     )
-    from .group_0682 import (
+    from .group_0687 import (
         WebhookPullRequestReviewCommentDeletedPropPullRequestPropHeadPropRepo as WebhookPullRequestReviewCommentDeletedPropPullRequestPropHeadPropRepo,
     )
-    from .group_0682 import (
+    from .group_0687 import (
         WebhookPullRequestReviewCommentDeletedPropPullRequestPropHeadPropRepoPropLicense as WebhookPullRequestReviewCommentDeletedPropPullRequestPropHeadPropRepoPropLicense,
     )
-    from .group_0682 import (
+    from .group_0687 import (
         WebhookPullRequestReviewCommentDeletedPropPullRequestPropHeadPropRepoPropOwner as WebhookPullRequestReviewCommentDeletedPropPullRequestPropHeadPropRepoPropOwner,
     )
-    from .group_0682 import (
+    from .group_0687 import (
         WebhookPullRequestReviewCommentDeletedPropPullRequestPropHeadPropRepoPropPermissions as WebhookPullRequestReviewCommentDeletedPropPullRequestPropHeadPropRepoPropPermissions,
     )
-    from .group_0682 import (
+    from .group_0687 import (
         WebhookPullRequestReviewCommentDeletedPropPullRequestPropHeadPropUser as WebhookPullRequestReviewCommentDeletedPropPullRequestPropHeadPropUser,
     )
-    from .group_0682 import (
+    from .group_0687 import (
         WebhookPullRequestReviewCommentDeletedPropPullRequestPropLabelsItems as WebhookPullRequestReviewCommentDeletedPropPullRequestPropLabelsItems,
     )
-    from .group_0682 import (
+    from .group_0687 import (
         WebhookPullRequestReviewCommentDeletedPropPullRequestPropLinks as WebhookPullRequestReviewCommentDeletedPropPullRequestPropLinks,
     )
-    from .group_0682 import (
+    from .group_0687 import (
         WebhookPullRequestReviewCommentDeletedPropPullRequestPropLinksPropComments as WebhookPullRequestReviewCommentDeletedPropPullRequestPropLinksPropComments,
     )
-    from .group_0682 import (
+    from .group_0687 import (
         WebhookPullRequestReviewCommentDeletedPropPullRequestPropLinksPropCommits as WebhookPullRequestReviewCommentDeletedPropPullRequestPropLinksPropCommits,
     )
-    from .group_0682 import (
+    from .group_0687 import (
         WebhookPullRequestReviewCommentDeletedPropPullRequestPropLinksPropHtml as WebhookPullRequestReviewCommentDeletedPropPullRequestPropLinksPropHtml,
     )
-    from .group_0682 import (
+    from .group_0687 import (
         WebhookPullRequestReviewCommentDeletedPropPullRequestPropLinksPropIssue as WebhookPullRequestReviewCommentDeletedPropPullRequestPropLinksPropIssue,
     )
-    from .group_0682 import (
+    from .group_0687 import (
         WebhookPullRequestReviewCommentDeletedPropPullRequestPropLinksPropReviewComment as WebhookPullRequestReviewCommentDeletedPropPullRequestPropLinksPropReviewComment,
     )
-    from .group_0682 import (
+    from .group_0687 import (
         WebhookPullRequestReviewCommentDeletedPropPullRequestPropLinksPropReviewComments as WebhookPullRequestReviewCommentDeletedPropPullRequestPropLinksPropReviewComments,
     )
-    from .group_0682 import (
+    from .group_0687 import (
         WebhookPullRequestReviewCommentDeletedPropPullRequestPropLinksPropSelf as WebhookPullRequestReviewCommentDeletedPropPullRequestPropLinksPropSelf,
     )
-    from .group_0682 import (
+    from .group_0687 import (
         WebhookPullRequestReviewCommentDeletedPropPullRequestPropLinksPropStatuses as WebhookPullRequestReviewCommentDeletedPropPullRequestPropLinksPropStatuses,
     )
-    from .group_0682 import (
+    from .group_0687 import (
         WebhookPullRequestReviewCommentDeletedPropPullRequestPropMilestone as WebhookPullRequestReviewCommentDeletedPropPullRequestPropMilestone,
     )
-    from .group_0682 import (
+    from .group_0687 import (
         WebhookPullRequestReviewCommentDeletedPropPullRequestPropMilestonePropCreator as WebhookPullRequestReviewCommentDeletedPropPullRequestPropMilestonePropCreator,
     )
-    from .group_0682 import (
+    from .group_0687 import (
         WebhookPullRequestReviewCommentDeletedPropPullRequestPropRequestedReviewersItemsOneof0 as WebhookPullRequestReviewCommentDeletedPropPullRequestPropRequestedReviewersItemsOneof0,
     )
-    from .group_0682 import (
+    from .group_0687 import (
         WebhookPullRequestReviewCommentDeletedPropPullRequestPropRequestedReviewersItemsOneof1 as WebhookPullRequestReviewCommentDeletedPropPullRequestPropRequestedReviewersItemsOneof1,
     )
-    from .group_0682 import (
+    from .group_0687 import (
         WebhookPullRequestReviewCommentDeletedPropPullRequestPropRequestedReviewersItemsOneof1PropParent as WebhookPullRequestReviewCommentDeletedPropPullRequestPropRequestedReviewersItemsOneof1PropParent,
     )
-    from .group_0682 import (
+    from .group_0687 import (
         WebhookPullRequestReviewCommentDeletedPropPullRequestPropRequestedTeamsItems as WebhookPullRequestReviewCommentDeletedPropPullRequestPropRequestedTeamsItems,
     )
-    from .group_0682 import (
+    from .group_0687 import (
         WebhookPullRequestReviewCommentDeletedPropPullRequestPropRequestedTeamsItemsPropParent as WebhookPullRequestReviewCommentDeletedPropPullRequestPropRequestedTeamsItemsPropParent,
     )
-    from .group_0682 import (
+    from .group_0687 import (
         WebhookPullRequestReviewCommentDeletedPropPullRequestPropUser as WebhookPullRequestReviewCommentDeletedPropPullRequestPropUser,
     )
-    from .group_0683 import (
+    from .group_0688 import (
         WebhookPullRequestReviewCommentEdited as WebhookPullRequestReviewCommentEdited,
     )
-    from .group_0683 import (
+    from .group_0688 import (
         WebhookPullRequestReviewCommentEditedPropPullRequest as WebhookPullRequestReviewCommentEditedPropPullRequest,
     )
-    from .group_0683 import (
+    from .group_0688 import (
         WebhookPullRequestReviewCommentEditedPropPullRequestPropAssignee as WebhookPullRequestReviewCommentEditedPropPullRequestPropAssignee,
     )
-    from .group_0683 import (
+    from .group_0688 import (
         WebhookPullRequestReviewCommentEditedPropPullRequestPropAssigneesItems as WebhookPullRequestReviewCommentEditedPropPullRequestPropAssigneesItems,
     )
-    from .group_0683 import (
+    from .group_0688 import (
         WebhookPullRequestReviewCommentEditedPropPullRequestPropAutoMerge as WebhookPullRequestReviewCommentEditedPropPullRequestPropAutoMerge,
     )
-    from .group_0683 import (
+    from .group_0688 import (
         WebhookPullRequestReviewCommentEditedPropPullRequestPropAutoMergePropEnabledBy as WebhookPullRequestReviewCommentEditedPropPullRequestPropAutoMergePropEnabledBy,
     )
-    from .group_0683 import (
+    from .group_0688 import (
         WebhookPullRequestReviewCommentEditedPropPullRequestPropBase as WebhookPullRequestReviewCommentEditedPropPullRequestPropBase,
     )
-    from .group_0683 import (
+    from .group_0688 import (
         WebhookPullRequestReviewCommentEditedPropPullRequestPropBasePropRepo as WebhookPullRequestReviewCommentEditedPropPullRequestPropBasePropRepo,
     )
-    from .group_0683 import (
+    from .group_0688 import (
         WebhookPullRequestReviewCommentEditedPropPullRequestPropBasePropRepoPropLicense as WebhookPullRequestReviewCommentEditedPropPullRequestPropBasePropRepoPropLicense,
     )
-    from .group_0683 import (
+    from .group_0688 import (
         WebhookPullRequestReviewCommentEditedPropPullRequestPropBasePropRepoPropOwner as WebhookPullRequestReviewCommentEditedPropPullRequestPropBasePropRepoPropOwner,
     )
-    from .group_0683 import (
+    from .group_0688 import (
         WebhookPullRequestReviewCommentEditedPropPullRequestPropBasePropRepoPropPermissions as WebhookPullRequestReviewCommentEditedPropPullRequestPropBasePropRepoPropPermissions,
     )
-    from .group_0683 import (
+    from .group_0688 import (
         WebhookPullRequestReviewCommentEditedPropPullRequestPropBasePropUser as WebhookPullRequestReviewCommentEditedPropPullRequestPropBasePropUser,
     )
-    from .group_0683 import (
+    from .group_0688 import (
         WebhookPullRequestReviewCommentEditedPropPullRequestPropHead as WebhookPullRequestReviewCommentEditedPropPullRequestPropHead,
     )
-    from .group_0683 import (
+    from .group_0688 import (
         WebhookPullRequestReviewCommentEditedPropPullRequestPropHeadPropRepo as WebhookPullRequestReviewCommentEditedPropPullRequestPropHeadPropRepo,
     )
-    from .group_0683 import (
+    from .group_0688 import (
         WebhookPullRequestReviewCommentEditedPropPullRequestPropHeadPropRepoPropLicense as WebhookPullRequestReviewCommentEditedPropPullRequestPropHeadPropRepoPropLicense,
     )
-    from .group_0683 import (
+    from .group_0688 import (
         WebhookPullRequestReviewCommentEditedPropPullRequestPropHeadPropRepoPropOwner as WebhookPullRequestReviewCommentEditedPropPullRequestPropHeadPropRepoPropOwner,
     )
-    from .group_0683 import (
+    from .group_0688 import (
         WebhookPullRequestReviewCommentEditedPropPullRequestPropHeadPropRepoPropPermissions as WebhookPullRequestReviewCommentEditedPropPullRequestPropHeadPropRepoPropPermissions,
     )
-    from .group_0683 import (
+    from .group_0688 import (
         WebhookPullRequestReviewCommentEditedPropPullRequestPropHeadPropUser as WebhookPullRequestReviewCommentEditedPropPullRequestPropHeadPropUser,
     )
-    from .group_0683 import (
+    from .group_0688 import (
         WebhookPullRequestReviewCommentEditedPropPullRequestPropLabelsItems as WebhookPullRequestReviewCommentEditedPropPullRequestPropLabelsItems,
     )
-    from .group_0683 import (
+    from .group_0688 import (
         WebhookPullRequestReviewCommentEditedPropPullRequestPropLinks as WebhookPullRequestReviewCommentEditedPropPullRequestPropLinks,
     )
-    from .group_0683 import (
+    from .group_0688 import (
         WebhookPullRequestReviewCommentEditedPropPullRequestPropLinksPropComments as WebhookPullRequestReviewCommentEditedPropPullRequestPropLinksPropComments,
     )
-    from .group_0683 import (
+    from .group_0688 import (
         WebhookPullRequestReviewCommentEditedPropPullRequestPropLinksPropCommits as WebhookPullRequestReviewCommentEditedPropPullRequestPropLinksPropCommits,
     )
-    from .group_0683 import (
+    from .group_0688 import (
         WebhookPullRequestReviewCommentEditedPropPullRequestPropLinksPropHtml as WebhookPullRequestReviewCommentEditedPropPullRequestPropLinksPropHtml,
     )
-    from .group_0683 import (
+    from .group_0688 import (
         WebhookPullRequestReviewCommentEditedPropPullRequestPropLinksPropIssue as WebhookPullRequestReviewCommentEditedPropPullRequestPropLinksPropIssue,
     )
-    from .group_0683 import (
+    from .group_0688 import (
         WebhookPullRequestReviewCommentEditedPropPullRequestPropLinksPropReviewComment as WebhookPullRequestReviewCommentEditedPropPullRequestPropLinksPropReviewComment,
     )
-    from .group_0683 import (
+    from .group_0688 import (
         WebhookPullRequestReviewCommentEditedPropPullRequestPropLinksPropReviewComments as WebhookPullRequestReviewCommentEditedPropPullRequestPropLinksPropReviewComments,
     )
-    from .group_0683 import (
+    from .group_0688 import (
         WebhookPullRequestReviewCommentEditedPropPullRequestPropLinksPropSelf as WebhookPullRequestReviewCommentEditedPropPullRequestPropLinksPropSelf,
     )
-    from .group_0683 import (
+    from .group_0688 import (
         WebhookPullRequestReviewCommentEditedPropPullRequestPropLinksPropStatuses as WebhookPullRequestReviewCommentEditedPropPullRequestPropLinksPropStatuses,
     )
-    from .group_0683 import (
+    from .group_0688 import (
         WebhookPullRequestReviewCommentEditedPropPullRequestPropMilestone as WebhookPullRequestReviewCommentEditedPropPullRequestPropMilestone,
     )
-    from .group_0683 import (
+    from .group_0688 import (
         WebhookPullRequestReviewCommentEditedPropPullRequestPropMilestonePropCreator as WebhookPullRequestReviewCommentEditedPropPullRequestPropMilestonePropCreator,
     )
-    from .group_0683 import (
+    from .group_0688 import (
         WebhookPullRequestReviewCommentEditedPropPullRequestPropRequestedReviewersItemsOneof0 as WebhookPullRequestReviewCommentEditedPropPullRequestPropRequestedReviewersItemsOneof0,
     )
-    from .group_0683 import (
+    from .group_0688 import (
         WebhookPullRequestReviewCommentEditedPropPullRequestPropRequestedReviewersItemsOneof1 as WebhookPullRequestReviewCommentEditedPropPullRequestPropRequestedReviewersItemsOneof1,
     )
-    from .group_0683 import (
+    from .group_0688 import (
         WebhookPullRequestReviewCommentEditedPropPullRequestPropRequestedReviewersItemsOneof1PropParent as WebhookPullRequestReviewCommentEditedPropPullRequestPropRequestedReviewersItemsOneof1PropParent,
     )
-    from .group_0683 import (
+    from .group_0688 import (
         WebhookPullRequestReviewCommentEditedPropPullRequestPropRequestedTeamsItems as WebhookPullRequestReviewCommentEditedPropPullRequestPropRequestedTeamsItems,
     )
-    from .group_0683 import (
+    from .group_0688 import (
         WebhookPullRequestReviewCommentEditedPropPullRequestPropRequestedTeamsItemsPropParent as WebhookPullRequestReviewCommentEditedPropPullRequestPropRequestedTeamsItemsPropParent,
     )
-    from .group_0683 import (
+    from .group_0688 import (
         WebhookPullRequestReviewCommentEditedPropPullRequestPropUser as WebhookPullRequestReviewCommentEditedPropPullRequestPropUser,
     )
-    from .group_0684 import (
+    from .group_0689 import (
         WebhookPullRequestReviewDismissed as WebhookPullRequestReviewDismissed,
     )
-    from .group_0684 import (
+    from .group_0689 import (
         WebhookPullRequestReviewDismissedPropPullRequest as WebhookPullRequestReviewDismissedPropPullRequest,
     )
-    from .group_0684 import (
+    from .group_0689 import (
         WebhookPullRequestReviewDismissedPropPullRequestPropAssignee as WebhookPullRequestReviewDismissedPropPullRequestPropAssignee,
     )
-    from .group_0684 import (
+    from .group_0689 import (
         WebhookPullRequestReviewDismissedPropPullRequestPropAssigneesItems as WebhookPullRequestReviewDismissedPropPullRequestPropAssigneesItems,
     )
-    from .group_0684 import (
+    from .group_0689 import (
         WebhookPullRequestReviewDismissedPropPullRequestPropAutoMerge as WebhookPullRequestReviewDismissedPropPullRequestPropAutoMerge,
     )
-    from .group_0684 import (
+    from .group_0689 import (
         WebhookPullRequestReviewDismissedPropPullRequestPropAutoMergePropEnabledBy as WebhookPullRequestReviewDismissedPropPullRequestPropAutoMergePropEnabledBy,
     )
-    from .group_0684 import (
+    from .group_0689 import (
         WebhookPullRequestReviewDismissedPropPullRequestPropBase as WebhookPullRequestReviewDismissedPropPullRequestPropBase,
     )
-    from .group_0684 import (
+    from .group_0689 import (
         WebhookPullRequestReviewDismissedPropPullRequestPropBasePropRepo as WebhookPullRequestReviewDismissedPropPullRequestPropBasePropRepo,
     )
-    from .group_0684 import (
+    from .group_0689 import (
         WebhookPullRequestReviewDismissedPropPullRequestPropBasePropRepoPropLicense as WebhookPullRequestReviewDismissedPropPullRequestPropBasePropRepoPropLicense,
     )
-    from .group_0684 import (
+    from .group_0689 import (
         WebhookPullRequestReviewDismissedPropPullRequestPropBasePropRepoPropOwner as WebhookPullRequestReviewDismissedPropPullRequestPropBasePropRepoPropOwner,
     )
-    from .group_0684 import (
+    from .group_0689 import (
         WebhookPullRequestReviewDismissedPropPullRequestPropBasePropRepoPropPermissions as WebhookPullRequestReviewDismissedPropPullRequestPropBasePropRepoPropPermissions,
     )
-    from .group_0684 import (
+    from .group_0689 import (
         WebhookPullRequestReviewDismissedPropPullRequestPropBasePropUser as WebhookPullRequestReviewDismissedPropPullRequestPropBasePropUser,
     )
-    from .group_0684 import (
+    from .group_0689 import (
         WebhookPullRequestReviewDismissedPropPullRequestPropHead as WebhookPullRequestReviewDismissedPropPullRequestPropHead,
     )
-    from .group_0684 import (
+    from .group_0689 import (
         WebhookPullRequestReviewDismissedPropPullRequestPropHeadPropRepo as WebhookPullRequestReviewDismissedPropPullRequestPropHeadPropRepo,
     )
-    from .group_0684 import (
+    from .group_0689 import (
         WebhookPullRequestReviewDismissedPropPullRequestPropHeadPropRepoPropLicense as WebhookPullRequestReviewDismissedPropPullRequestPropHeadPropRepoPropLicense,
     )
-    from .group_0684 import (
+    from .group_0689 import (
         WebhookPullRequestReviewDismissedPropPullRequestPropHeadPropRepoPropOwner as WebhookPullRequestReviewDismissedPropPullRequestPropHeadPropRepoPropOwner,
     )
-    from .group_0684 import (
+    from .group_0689 import (
         WebhookPullRequestReviewDismissedPropPullRequestPropHeadPropRepoPropPermissions as WebhookPullRequestReviewDismissedPropPullRequestPropHeadPropRepoPropPermissions,
     )
-    from .group_0684 import (
+    from .group_0689 import (
         WebhookPullRequestReviewDismissedPropPullRequestPropHeadPropUser as WebhookPullRequestReviewDismissedPropPullRequestPropHeadPropUser,
     )
-    from .group_0684 import (
+    from .group_0689 import (
         WebhookPullRequestReviewDismissedPropPullRequestPropLabelsItems as WebhookPullRequestReviewDismissedPropPullRequestPropLabelsItems,
     )
-    from .group_0684 import (
+    from .group_0689 import (
         WebhookPullRequestReviewDismissedPropPullRequestPropLinks as WebhookPullRequestReviewDismissedPropPullRequestPropLinks,
     )
-    from .group_0684 import (
+    from .group_0689 import (
         WebhookPullRequestReviewDismissedPropPullRequestPropLinksPropComments as WebhookPullRequestReviewDismissedPropPullRequestPropLinksPropComments,
     )
-    from .group_0684 import (
+    from .group_0689 import (
         WebhookPullRequestReviewDismissedPropPullRequestPropLinksPropCommits as WebhookPullRequestReviewDismissedPropPullRequestPropLinksPropCommits,
     )
-    from .group_0684 import (
+    from .group_0689 import (
         WebhookPullRequestReviewDismissedPropPullRequestPropLinksPropHtml as WebhookPullRequestReviewDismissedPropPullRequestPropLinksPropHtml,
     )
-    from .group_0684 import (
+    from .group_0689 import (
         WebhookPullRequestReviewDismissedPropPullRequestPropLinksPropIssue as WebhookPullRequestReviewDismissedPropPullRequestPropLinksPropIssue,
     )
-    from .group_0684 import (
+    from .group_0689 import (
         WebhookPullRequestReviewDismissedPropPullRequestPropLinksPropReviewComment as WebhookPullRequestReviewDismissedPropPullRequestPropLinksPropReviewComment,
     )
-    from .group_0684 import (
+    from .group_0689 import (
         WebhookPullRequestReviewDismissedPropPullRequestPropLinksPropReviewComments as WebhookPullRequestReviewDismissedPropPullRequestPropLinksPropReviewComments,
     )
-    from .group_0684 import (
+    from .group_0689 import (
         WebhookPullRequestReviewDismissedPropPullRequestPropLinksPropSelf as WebhookPullRequestReviewDismissedPropPullRequestPropLinksPropSelf,
     )
-    from .group_0684 import (
+    from .group_0689 import (
         WebhookPullRequestReviewDismissedPropPullRequestPropLinksPropStatuses as WebhookPullRequestReviewDismissedPropPullRequestPropLinksPropStatuses,
     )
-    from .group_0684 import (
+    from .group_0689 import (
         WebhookPullRequestReviewDismissedPropPullRequestPropMilestone as WebhookPullRequestReviewDismissedPropPullRequestPropMilestone,
     )
-    from .group_0684 import (
+    from .group_0689 import (
         WebhookPullRequestReviewDismissedPropPullRequestPropMilestonePropCreator as WebhookPullRequestReviewDismissedPropPullRequestPropMilestonePropCreator,
     )
-    from .group_0684 import (
+    from .group_0689 import (
         WebhookPullRequestReviewDismissedPropPullRequestPropRequestedReviewersItemsOneof0 as WebhookPullRequestReviewDismissedPropPullRequestPropRequestedReviewersItemsOneof0,
     )
-    from .group_0684 import (
+    from .group_0689 import (
         WebhookPullRequestReviewDismissedPropPullRequestPropRequestedReviewersItemsOneof1 as WebhookPullRequestReviewDismissedPropPullRequestPropRequestedReviewersItemsOneof1,
     )
-    from .group_0684 import (
+    from .group_0689 import (
         WebhookPullRequestReviewDismissedPropPullRequestPropRequestedReviewersItemsOneof1PropParent as WebhookPullRequestReviewDismissedPropPullRequestPropRequestedReviewersItemsOneof1PropParent,
     )
-    from .group_0684 import (
+    from .group_0689 import (
         WebhookPullRequestReviewDismissedPropPullRequestPropRequestedTeamsItems as WebhookPullRequestReviewDismissedPropPullRequestPropRequestedTeamsItems,
     )
-    from .group_0684 import (
+    from .group_0689 import (
         WebhookPullRequestReviewDismissedPropPullRequestPropRequestedTeamsItemsPropParent as WebhookPullRequestReviewDismissedPropPullRequestPropRequestedTeamsItemsPropParent,
     )
-    from .group_0684 import (
+    from .group_0689 import (
         WebhookPullRequestReviewDismissedPropPullRequestPropUser as WebhookPullRequestReviewDismissedPropPullRequestPropUser,
     )
-    from .group_0684 import (
+    from .group_0689 import (
         WebhookPullRequestReviewDismissedPropReview as WebhookPullRequestReviewDismissedPropReview,
     )
-    from .group_0684 import (
+    from .group_0689 import (
         WebhookPullRequestReviewDismissedPropReviewPropLinks as WebhookPullRequestReviewDismissedPropReviewPropLinks,
     )
-    from .group_0684 import (
+    from .group_0689 import (
         WebhookPullRequestReviewDismissedPropReviewPropLinksPropHtml as WebhookPullRequestReviewDismissedPropReviewPropLinksPropHtml,
     )
-    from .group_0684 import (
+    from .group_0689 import (
         WebhookPullRequestReviewDismissedPropReviewPropLinksPropPullRequest as WebhookPullRequestReviewDismissedPropReviewPropLinksPropPullRequest,
     )
-    from .group_0684 import (
+    from .group_0689 import (
         WebhookPullRequestReviewDismissedPropReviewPropUser as WebhookPullRequestReviewDismissedPropReviewPropUser,
     )
-    from .group_0685 import (
+    from .group_0690 import (
         WebhookPullRequestReviewEdited as WebhookPullRequestReviewEdited,
     )
-    from .group_0685 import (
+    from .group_0690 import (
         WebhookPullRequestReviewEditedPropChanges as WebhookPullRequestReviewEditedPropChanges,
     )
-    from .group_0685 import (
+    from .group_0690 import (
         WebhookPullRequestReviewEditedPropChangesPropBody as WebhookPullRequestReviewEditedPropChangesPropBody,
     )
-    from .group_0685 import (
+    from .group_0690 import (
         WebhookPullRequestReviewEditedPropPullRequest as WebhookPullRequestReviewEditedPropPullRequest,
     )
-    from .group_0685 import (
+    from .group_0690 import (
         WebhookPullRequestReviewEditedPropPullRequestPropAssignee as WebhookPullRequestReviewEditedPropPullRequestPropAssignee,
     )
-    from .group_0685 import (
+    from .group_0690 import (
         WebhookPullRequestReviewEditedPropPullRequestPropAssigneesItems as WebhookPullRequestReviewEditedPropPullRequestPropAssigneesItems,
     )
-    from .group_0685 import (
+    from .group_0690 import (
         WebhookPullRequestReviewEditedPropPullRequestPropAutoMerge as WebhookPullRequestReviewEditedPropPullRequestPropAutoMerge,
     )
-    from .group_0685 import (
+    from .group_0690 import (
         WebhookPullRequestReviewEditedPropPullRequestPropAutoMergePropEnabledBy as WebhookPullRequestReviewEditedPropPullRequestPropAutoMergePropEnabledBy,
     )
-    from .group_0685 import (
+    from .group_0690 import (
         WebhookPullRequestReviewEditedPropPullRequestPropBase as WebhookPullRequestReviewEditedPropPullRequestPropBase,
     )
-    from .group_0685 import (
+    from .group_0690 import (
         WebhookPullRequestReviewEditedPropPullRequestPropBasePropRepo as WebhookPullRequestReviewEditedPropPullRequestPropBasePropRepo,
     )
-    from .group_0685 import (
+    from .group_0690 import (
         WebhookPullRequestReviewEditedPropPullRequestPropBasePropRepoPropLicense as WebhookPullRequestReviewEditedPropPullRequestPropBasePropRepoPropLicense,
     )
-    from .group_0685 import (
+    from .group_0690 import (
         WebhookPullRequestReviewEditedPropPullRequestPropBasePropRepoPropOwner as WebhookPullRequestReviewEditedPropPullRequestPropBasePropRepoPropOwner,
     )
-    from .group_0685 import (
+    from .group_0690 import (
         WebhookPullRequestReviewEditedPropPullRequestPropBasePropRepoPropPermissions as WebhookPullRequestReviewEditedPropPullRequestPropBasePropRepoPropPermissions,
     )
-    from .group_0685 import (
+    from .group_0690 import (
         WebhookPullRequestReviewEditedPropPullRequestPropBasePropUser as WebhookPullRequestReviewEditedPropPullRequestPropBasePropUser,
     )
-    from .group_0685 import (
+    from .group_0690 import (
         WebhookPullRequestReviewEditedPropPullRequestPropHead as WebhookPullRequestReviewEditedPropPullRequestPropHead,
     )
-    from .group_0685 import (
+    from .group_0690 import (
         WebhookPullRequestReviewEditedPropPullRequestPropHeadPropRepo as WebhookPullRequestReviewEditedPropPullRequestPropHeadPropRepo,
     )
-    from .group_0685 import (
+    from .group_0690 import (
         WebhookPullRequestReviewEditedPropPullRequestPropHeadPropRepoPropLicense as WebhookPullRequestReviewEditedPropPullRequestPropHeadPropRepoPropLicense,
     )
-    from .group_0685 import (
+    from .group_0690 import (
         WebhookPullRequestReviewEditedPropPullRequestPropHeadPropRepoPropOwner as WebhookPullRequestReviewEditedPropPullRequestPropHeadPropRepoPropOwner,
     )
-    from .group_0685 import (
+    from .group_0690 import (
         WebhookPullRequestReviewEditedPropPullRequestPropHeadPropRepoPropPermissions as WebhookPullRequestReviewEditedPropPullRequestPropHeadPropRepoPropPermissions,
     )
-    from .group_0685 import (
+    from .group_0690 import (
         WebhookPullRequestReviewEditedPropPullRequestPropHeadPropUser as WebhookPullRequestReviewEditedPropPullRequestPropHeadPropUser,
     )
-    from .group_0685 import (
+    from .group_0690 import (
         WebhookPullRequestReviewEditedPropPullRequestPropLabelsItems as WebhookPullRequestReviewEditedPropPullRequestPropLabelsItems,
     )
-    from .group_0685 import (
+    from .group_0690 import (
         WebhookPullRequestReviewEditedPropPullRequestPropLinks as WebhookPullRequestReviewEditedPropPullRequestPropLinks,
     )
-    from .group_0685 import (
+    from .group_0690 import (
         WebhookPullRequestReviewEditedPropPullRequestPropLinksPropComments as WebhookPullRequestReviewEditedPropPullRequestPropLinksPropComments,
     )
-    from .group_0685 import (
+    from .group_0690 import (
         WebhookPullRequestReviewEditedPropPullRequestPropLinksPropCommits as WebhookPullRequestReviewEditedPropPullRequestPropLinksPropCommits,
     )
-    from .group_0685 import (
+    from .group_0690 import (
         WebhookPullRequestReviewEditedPropPullRequestPropLinksPropHtml as WebhookPullRequestReviewEditedPropPullRequestPropLinksPropHtml,
     )
-    from .group_0685 import (
+    from .group_0690 import (
         WebhookPullRequestReviewEditedPropPullRequestPropLinksPropIssue as WebhookPullRequestReviewEditedPropPullRequestPropLinksPropIssue,
     )
-    from .group_0685 import (
+    from .group_0690 import (
         WebhookPullRequestReviewEditedPropPullRequestPropLinksPropReviewComment as WebhookPullRequestReviewEditedPropPullRequestPropLinksPropReviewComment,
     )
-    from .group_0685 import (
+    from .group_0690 import (
         WebhookPullRequestReviewEditedPropPullRequestPropLinksPropReviewComments as WebhookPullRequestReviewEditedPropPullRequestPropLinksPropReviewComments,
     )
-    from .group_0685 import (
+    from .group_0690 import (
         WebhookPullRequestReviewEditedPropPullRequestPropLinksPropSelf as WebhookPullRequestReviewEditedPropPullRequestPropLinksPropSelf,
     )
-    from .group_0685 import (
+    from .group_0690 import (
         WebhookPullRequestReviewEditedPropPullRequestPropLinksPropStatuses as WebhookPullRequestReviewEditedPropPullRequestPropLinksPropStatuses,
     )
-    from .group_0685 import (
+    from .group_0690 import (
         WebhookPullRequestReviewEditedPropPullRequestPropMilestone as WebhookPullRequestReviewEditedPropPullRequestPropMilestone,
     )
-    from .group_0685 import (
+    from .group_0690 import (
         WebhookPullRequestReviewEditedPropPullRequestPropMilestonePropCreator as WebhookPullRequestReviewEditedPropPullRequestPropMilestonePropCreator,
     )
-    from .group_0685 import (
+    from .group_0690 import (
         WebhookPullRequestReviewEditedPropPullRequestPropRequestedReviewersItemsOneof0 as WebhookPullRequestReviewEditedPropPullRequestPropRequestedReviewersItemsOneof0,
     )
-    from .group_0685 import (
+    from .group_0690 import (
         WebhookPullRequestReviewEditedPropPullRequestPropRequestedReviewersItemsOneof1 as WebhookPullRequestReviewEditedPropPullRequestPropRequestedReviewersItemsOneof1,
     )
-    from .group_0685 import (
+    from .group_0690 import (
         WebhookPullRequestReviewEditedPropPullRequestPropRequestedReviewersItemsOneof1PropParent as WebhookPullRequestReviewEditedPropPullRequestPropRequestedReviewersItemsOneof1PropParent,
     )
-    from .group_0685 import (
+    from .group_0690 import (
         WebhookPullRequestReviewEditedPropPullRequestPropRequestedTeamsItems as WebhookPullRequestReviewEditedPropPullRequestPropRequestedTeamsItems,
     )
-    from .group_0685 import (
+    from .group_0690 import (
         WebhookPullRequestReviewEditedPropPullRequestPropRequestedTeamsItemsPropParent as WebhookPullRequestReviewEditedPropPullRequestPropRequestedTeamsItemsPropParent,
     )
-    from .group_0685 import (
+    from .group_0690 import (
         WebhookPullRequestReviewEditedPropPullRequestPropUser as WebhookPullRequestReviewEditedPropPullRequestPropUser,
     )
-    from .group_0686 import (
+    from .group_0691 import (
         WebhookPullRequestReviewRequestRemovedOneof0 as WebhookPullRequestReviewRequestRemovedOneof0,
     )
-    from .group_0686 import (
+    from .group_0691 import (
         WebhookPullRequestReviewRequestRemovedOneof0PropPullRequest as WebhookPullRequestReviewRequestRemovedOneof0PropPullRequest,
     )
-    from .group_0686 import (
+    from .group_0691 import (
         WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropAssignee as WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropAssignee,
     )
-    from .group_0686 import (
+    from .group_0691 import (
         WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropAssigneesItems as WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropAssigneesItems,
     )
-    from .group_0686 import (
+    from .group_0691 import (
         WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropAutoMerge as WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropAutoMerge,
     )
-    from .group_0686 import (
+    from .group_0691 import (
         WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropAutoMergePropEnabledBy as WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropAutoMergePropEnabledBy,
     )
-    from .group_0686 import (
+    from .group_0691 import (
         WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropBase as WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropBase,
     )
-    from .group_0686 import (
+    from .group_0691 import (
         WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropBasePropRepo as WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropBasePropRepo,
     )
-    from .group_0686 import (
+    from .group_0691 import (
         WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropBasePropRepoPropLicense as WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropBasePropRepoPropLicense,
     )
-    from .group_0686 import (
+    from .group_0691 import (
         WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropBasePropRepoPropOwner as WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropBasePropRepoPropOwner,
     )
-    from .group_0686 import (
+    from .group_0691 import (
         WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropBasePropRepoPropPermissions as WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropBasePropRepoPropPermissions,
     )
-    from .group_0686 import (
+    from .group_0691 import (
         WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropBasePropUser as WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropBasePropUser,
     )
-    from .group_0686 import (
+    from .group_0691 import (
         WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropHead as WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropHead,
     )
-    from .group_0686 import (
+    from .group_0691 import (
         WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropHeadPropRepo as WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropHeadPropRepo,
     )
-    from .group_0686 import (
+    from .group_0691 import (
         WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropHeadPropRepoPropLicense as WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropHeadPropRepoPropLicense,
     )
-    from .group_0686 import (
+    from .group_0691 import (
         WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropHeadPropRepoPropOwner as WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropHeadPropRepoPropOwner,
     )
-    from .group_0686 import (
+    from .group_0691 import (
         WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropHeadPropRepoPropPermissions as WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropHeadPropRepoPropPermissions,
     )
-    from .group_0686 import (
+    from .group_0691 import (
         WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropHeadPropUser as WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropHeadPropUser,
     )
-    from .group_0686 import (
+    from .group_0691 import (
         WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropLabelsItems as WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropLabelsItems,
     )
-    from .group_0686 import (
+    from .group_0691 import (
         WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropLinks as WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropLinks,
     )
-    from .group_0686 import (
+    from .group_0691 import (
         WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropLinksPropComments as WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropLinksPropComments,
     )
-    from .group_0686 import (
+    from .group_0691 import (
         WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropLinksPropCommits as WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropLinksPropCommits,
     )
-    from .group_0686 import (
+    from .group_0691 import (
         WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropLinksPropHtml as WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropLinksPropHtml,
     )
-    from .group_0686 import (
+    from .group_0691 import (
         WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropLinksPropIssue as WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropLinksPropIssue,
     )
-    from .group_0686 import (
+    from .group_0691 import (
         WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropLinksPropReviewComment as WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropLinksPropReviewComment,
     )
-    from .group_0686 import (
+    from .group_0691 import (
         WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropLinksPropReviewComments as WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropLinksPropReviewComments,
     )
-    from .group_0686 import (
+    from .group_0691 import (
         WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropLinksPropSelf as WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropLinksPropSelf,
     )
-    from .group_0686 import (
+    from .group_0691 import (
         WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropLinksPropStatuses as WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropLinksPropStatuses,
     )
-    from .group_0686 import (
+    from .group_0691 import (
         WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropMergedBy as WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropMergedBy,
     )
-    from .group_0686 import (
+    from .group_0691 import (
         WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropMilestone as WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropMilestone,
     )
-    from .group_0686 import (
+    from .group_0691 import (
         WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropMilestonePropCreator as WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropMilestonePropCreator,
     )
-    from .group_0686 import (
+    from .group_0691 import (
         WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropRequestedReviewersItemsOneof0 as WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropRequestedReviewersItemsOneof0,
     )
-    from .group_0686 import (
+    from .group_0691 import (
         WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropRequestedReviewersItemsOneof1 as WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropRequestedReviewersItemsOneof1,
     )
-    from .group_0686 import (
+    from .group_0691 import (
         WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropRequestedReviewersItemsOneof1PropParent as WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropRequestedReviewersItemsOneof1PropParent,
     )
-    from .group_0686 import (
+    from .group_0691 import (
         WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropRequestedTeamsItems as WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropRequestedTeamsItems,
     )
-    from .group_0686 import (
+    from .group_0691 import (
         WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropRequestedTeamsItemsPropParent as WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropRequestedTeamsItemsPropParent,
     )
-    from .group_0686 import (
+    from .group_0691 import (
         WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropUser as WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropUser,
     )
-    from .group_0686 import (
+    from .group_0691 import (
         WebhookPullRequestReviewRequestRemovedOneof0PropRequestedReviewer as WebhookPullRequestReviewRequestRemovedOneof0PropRequestedReviewer,
     )
-    from .group_0687 import (
+    from .group_0692 import (
         WebhookPullRequestReviewRequestRemovedOneof1 as WebhookPullRequestReviewRequestRemovedOneof1,
     )
-    from .group_0687 import (
+    from .group_0692 import (
         WebhookPullRequestReviewRequestRemovedOneof1PropPullRequest as WebhookPullRequestReviewRequestRemovedOneof1PropPullRequest,
     )
-    from .group_0687 import (
+    from .group_0692 import (
         WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropAssignee as WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropAssignee,
     )
-    from .group_0687 import (
+    from .group_0692 import (
         WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropAssigneesItems as WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropAssigneesItems,
     )
-    from .group_0687 import (
+    from .group_0692 import (
         WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropAutoMerge as WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropAutoMerge,
     )
-    from .group_0687 import (
+    from .group_0692 import (
         WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropAutoMergePropEnabledBy as WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropAutoMergePropEnabledBy,
     )
-    from .group_0687 import (
+    from .group_0692 import (
         WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropBase as WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropBase,
     )
-    from .group_0687 import (
+    from .group_0692 import (
         WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropBasePropRepo as WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropBasePropRepo,
     )
-    from .group_0687 import (
+    from .group_0692 import (
         WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropBasePropRepoPropLicense as WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropBasePropRepoPropLicense,
     )
-    from .group_0687 import (
+    from .group_0692 import (
         WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropBasePropRepoPropOwner as WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropBasePropRepoPropOwner,
     )
-    from .group_0687 import (
+    from .group_0692 import (
         WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropBasePropRepoPropPermissions as WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropBasePropRepoPropPermissions,
     )
-    from .group_0687 import (
+    from .group_0692 import (
         WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropBasePropUser as WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropBasePropUser,
     )
-    from .group_0687 import (
+    from .group_0692 import (
         WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropHead as WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropHead,
     )
-    from .group_0687 import (
+    from .group_0692 import (
         WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropHeadPropRepo as WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropHeadPropRepo,
     )
-    from .group_0687 import (
+    from .group_0692 import (
         WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropHeadPropRepoPropLicense as WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropHeadPropRepoPropLicense,
     )
-    from .group_0687 import (
+    from .group_0692 import (
         WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropHeadPropRepoPropOwner as WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropHeadPropRepoPropOwner,
     )
-    from .group_0687 import (
+    from .group_0692 import (
         WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropHeadPropRepoPropPermissions as WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropHeadPropRepoPropPermissions,
     )
-    from .group_0687 import (
+    from .group_0692 import (
         WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropHeadPropUser as WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropHeadPropUser,
     )
-    from .group_0687 import (
+    from .group_0692 import (
         WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLabelsItems as WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLabelsItems,
     )
-    from .group_0687 import (
+    from .group_0692 import (
         WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinks as WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinks,
     )
-    from .group_0687 import (
+    from .group_0692 import (
         WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropComments as WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropComments,
     )
-    from .group_0687 import (
+    from .group_0692 import (
         WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropCommits as WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropCommits,
     )
-    from .group_0687 import (
+    from .group_0692 import (
         WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropHtml as WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropHtml,
     )
-    from .group_0687 import (
+    from .group_0692 import (
         WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropIssue as WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropIssue,
     )
-    from .group_0687 import (
+    from .group_0692 import (
         WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropReviewComment as WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropReviewComment,
     )
-    from .group_0687 import (
+    from .group_0692 import (
         WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropReviewComments as WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropReviewComments,
     )
-    from .group_0687 import (
+    from .group_0692 import (
         WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropSelf as WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropSelf,
     )
-    from .group_0687 import (
+    from .group_0692 import (
         WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropStatuses as WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropStatuses,
     )
-    from .group_0687 import (
+    from .group_0692 import (
         WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropMergedBy as WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropMergedBy,
     )
-    from .group_0687 import (
+    from .group_0692 import (
         WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropMilestone as WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropMilestone,
     )
-    from .group_0687 import (
+    from .group_0692 import (
         WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropMilestonePropCreator as WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropMilestonePropCreator,
     )
-    from .group_0687 import (
+    from .group_0692 import (
         WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropRequestedReviewersItemsOneof0 as WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropRequestedReviewersItemsOneof0,
     )
-    from .group_0687 import (
+    from .group_0692 import (
         WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropRequestedReviewersItemsOneof1 as WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropRequestedReviewersItemsOneof1,
     )
-    from .group_0687 import (
+    from .group_0692 import (
         WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropRequestedReviewersItemsOneof1PropParent as WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropRequestedReviewersItemsOneof1PropParent,
     )
-    from .group_0687 import (
+    from .group_0692 import (
         WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropRequestedTeamsItems as WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropRequestedTeamsItems,
     )
-    from .group_0687 import (
+    from .group_0692 import (
         WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropRequestedTeamsItemsPropParent as WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropRequestedTeamsItemsPropParent,
     )
-    from .group_0687 import (
+    from .group_0692 import (
         WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropUser as WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropUser,
     )
-    from .group_0687 import (
+    from .group_0692 import (
         WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeam as WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeam,
     )
-    from .group_0687 import (
+    from .group_0692 import (
         WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeamPropParent as WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeamPropParent,
     )
-    from .group_0688 import (
+    from .group_0693 import (
         WebhookPullRequestReviewRequestedOneof0 as WebhookPullRequestReviewRequestedOneof0,
     )
-    from .group_0688 import (
+    from .group_0693 import (
         WebhookPullRequestReviewRequestedOneof0PropPullRequest as WebhookPullRequestReviewRequestedOneof0PropPullRequest,
     )
-    from .group_0688 import (
+    from .group_0693 import (
         WebhookPullRequestReviewRequestedOneof0PropPullRequestPropAssignee as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropAssignee,
     )
-    from .group_0688 import (
+    from .group_0693 import (
         WebhookPullRequestReviewRequestedOneof0PropPullRequestPropAssigneesItems as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropAssigneesItems,
     )
-    from .group_0688 import (
+    from .group_0693 import (
         WebhookPullRequestReviewRequestedOneof0PropPullRequestPropAutoMerge as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropAutoMerge,
     )
-    from .group_0688 import (
+    from .group_0693 import (
         WebhookPullRequestReviewRequestedOneof0PropPullRequestPropAutoMergePropEnabledBy as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropAutoMergePropEnabledBy,
     )
-    from .group_0688 import (
+    from .group_0693 import (
         WebhookPullRequestReviewRequestedOneof0PropPullRequestPropBase as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropBase,
     )
-    from .group_0688 import (
+    from .group_0693 import (
         WebhookPullRequestReviewRequestedOneof0PropPullRequestPropBasePropRepo as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropBasePropRepo,
     )
-    from .group_0688 import (
+    from .group_0693 import (
         WebhookPullRequestReviewRequestedOneof0PropPullRequestPropBasePropRepoPropLicense as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropBasePropRepoPropLicense,
     )
-    from .group_0688 import (
+    from .group_0693 import (
         WebhookPullRequestReviewRequestedOneof0PropPullRequestPropBasePropRepoPropOwner as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropBasePropRepoPropOwner,
     )
-    from .group_0688 import (
+    from .group_0693 import (
         WebhookPullRequestReviewRequestedOneof0PropPullRequestPropBasePropRepoPropPermissions as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropBasePropRepoPropPermissions,
     )
-    from .group_0688 import (
+    from .group_0693 import (
         WebhookPullRequestReviewRequestedOneof0PropPullRequestPropBasePropUser as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropBasePropUser,
     )
-    from .group_0688 import (
+    from .group_0693 import (
         WebhookPullRequestReviewRequestedOneof0PropPullRequestPropHead as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropHead,
     )
-    from .group_0688 import (
+    from .group_0693 import (
         WebhookPullRequestReviewRequestedOneof0PropPullRequestPropHeadPropRepo as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropHeadPropRepo,
     )
-    from .group_0688 import (
+    from .group_0693 import (
         WebhookPullRequestReviewRequestedOneof0PropPullRequestPropHeadPropRepoPropLicense as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropHeadPropRepoPropLicense,
     )
-    from .group_0688 import (
+    from .group_0693 import (
         WebhookPullRequestReviewRequestedOneof0PropPullRequestPropHeadPropRepoPropOwner as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropHeadPropRepoPropOwner,
     )
-    from .group_0688 import (
+    from .group_0693 import (
         WebhookPullRequestReviewRequestedOneof0PropPullRequestPropHeadPropRepoPropPermissions as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropHeadPropRepoPropPermissions,
     )
-    from .group_0688 import (
+    from .group_0693 import (
         WebhookPullRequestReviewRequestedOneof0PropPullRequestPropHeadPropUser as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropHeadPropUser,
     )
-    from .group_0688 import (
+    from .group_0693 import (
         WebhookPullRequestReviewRequestedOneof0PropPullRequestPropLabelsItems as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropLabelsItems,
     )
-    from .group_0688 import (
+    from .group_0693 import (
         WebhookPullRequestReviewRequestedOneof0PropPullRequestPropLinks as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropLinks,
     )
-    from .group_0688 import (
+    from .group_0693 import (
         WebhookPullRequestReviewRequestedOneof0PropPullRequestPropLinksPropComments as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropLinksPropComments,
     )
-    from .group_0688 import (
+    from .group_0693 import (
         WebhookPullRequestReviewRequestedOneof0PropPullRequestPropLinksPropCommits as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropLinksPropCommits,
     )
-    from .group_0688 import (
+    from .group_0693 import (
         WebhookPullRequestReviewRequestedOneof0PropPullRequestPropLinksPropHtml as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropLinksPropHtml,
     )
-    from .group_0688 import (
+    from .group_0693 import (
         WebhookPullRequestReviewRequestedOneof0PropPullRequestPropLinksPropIssue as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropLinksPropIssue,
     )
-    from .group_0688 import (
+    from .group_0693 import (
         WebhookPullRequestReviewRequestedOneof0PropPullRequestPropLinksPropReviewComment as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropLinksPropReviewComment,
     )
-    from .group_0688 import (
+    from .group_0693 import (
         WebhookPullRequestReviewRequestedOneof0PropPullRequestPropLinksPropReviewComments as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropLinksPropReviewComments,
     )
-    from .group_0688 import (
+    from .group_0693 import (
         WebhookPullRequestReviewRequestedOneof0PropPullRequestPropLinksPropSelf as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropLinksPropSelf,
     )
-    from .group_0688 import (
+    from .group_0693 import (
         WebhookPullRequestReviewRequestedOneof0PropPullRequestPropLinksPropStatuses as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropLinksPropStatuses,
     )
-    from .group_0688 import (
+    from .group_0693 import (
         WebhookPullRequestReviewRequestedOneof0PropPullRequestPropMergedBy as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropMergedBy,
     )
-    from .group_0688 import (
+    from .group_0693 import (
         WebhookPullRequestReviewRequestedOneof0PropPullRequestPropMilestone as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropMilestone,
     )
-    from .group_0688 import (
+    from .group_0693 import (
         WebhookPullRequestReviewRequestedOneof0PropPullRequestPropMilestonePropCreator as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropMilestonePropCreator,
     )
-    from .group_0688 import (
+    from .group_0693 import (
         WebhookPullRequestReviewRequestedOneof0PropPullRequestPropRequestedReviewersItemsOneof0 as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropRequestedReviewersItemsOneof0,
     )
-    from .group_0688 import (
+    from .group_0693 import (
         WebhookPullRequestReviewRequestedOneof0PropPullRequestPropRequestedReviewersItemsOneof1 as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropRequestedReviewersItemsOneof1,
     )
-    from .group_0688 import (
+    from .group_0693 import (
         WebhookPullRequestReviewRequestedOneof0PropPullRequestPropRequestedReviewersItemsOneof1PropParent as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropRequestedReviewersItemsOneof1PropParent,
     )
-    from .group_0688 import (
+    from .group_0693 import (
         WebhookPullRequestReviewRequestedOneof0PropPullRequestPropRequestedTeamsItems as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropRequestedTeamsItems,
     )
-    from .group_0688 import (
+    from .group_0693 import (
         WebhookPullRequestReviewRequestedOneof0PropPullRequestPropRequestedTeamsItemsPropParent as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropRequestedTeamsItemsPropParent,
     )
-    from .group_0688 import (
+    from .group_0693 import (
         WebhookPullRequestReviewRequestedOneof0PropPullRequestPropUser as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropUser,
     )
-    from .group_0688 import (
+    from .group_0693 import (
         WebhookPullRequestReviewRequestedOneof0PropRequestedReviewer as WebhookPullRequestReviewRequestedOneof0PropRequestedReviewer,
     )
-    from .group_0689 import (
+    from .group_0694 import (
         WebhookPullRequestReviewRequestedOneof1 as WebhookPullRequestReviewRequestedOneof1,
     )
-    from .group_0689 import (
+    from .group_0694 import (
         WebhookPullRequestReviewRequestedOneof1PropPullRequest as WebhookPullRequestReviewRequestedOneof1PropPullRequest,
     )
-    from .group_0689 import (
+    from .group_0694 import (
         WebhookPullRequestReviewRequestedOneof1PropPullRequestPropAssignee as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropAssignee,
     )
-    from .group_0689 import (
+    from .group_0694 import (
         WebhookPullRequestReviewRequestedOneof1PropPullRequestPropAssigneesItems as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropAssigneesItems,
     )
-    from .group_0689 import (
+    from .group_0694 import (
         WebhookPullRequestReviewRequestedOneof1PropPullRequestPropAutoMerge as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropAutoMerge,
     )
-    from .group_0689 import (
+    from .group_0694 import (
         WebhookPullRequestReviewRequestedOneof1PropPullRequestPropAutoMergePropEnabledBy as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropAutoMergePropEnabledBy,
     )
-    from .group_0689 import (
+    from .group_0694 import (
         WebhookPullRequestReviewRequestedOneof1PropPullRequestPropBase as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropBase,
     )
-    from .group_0689 import (
+    from .group_0694 import (
         WebhookPullRequestReviewRequestedOneof1PropPullRequestPropBasePropRepo as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropBasePropRepo,
     )
-    from .group_0689 import (
+    from .group_0694 import (
         WebhookPullRequestReviewRequestedOneof1PropPullRequestPropBasePropRepoPropLicense as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropBasePropRepoPropLicense,
     )
-    from .group_0689 import (
+    from .group_0694 import (
         WebhookPullRequestReviewRequestedOneof1PropPullRequestPropBasePropRepoPropOwner as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropBasePropRepoPropOwner,
     )
-    from .group_0689 import (
+    from .group_0694 import (
         WebhookPullRequestReviewRequestedOneof1PropPullRequestPropBasePropRepoPropPermissions as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropBasePropRepoPropPermissions,
     )
-    from .group_0689 import (
+    from .group_0694 import (
         WebhookPullRequestReviewRequestedOneof1PropPullRequestPropBasePropUser as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropBasePropUser,
     )
-    from .group_0689 import (
+    from .group_0694 import (
         WebhookPullRequestReviewRequestedOneof1PropPullRequestPropHead as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropHead,
     )
-    from .group_0689 import (
+    from .group_0694 import (
         WebhookPullRequestReviewRequestedOneof1PropPullRequestPropHeadPropRepo as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropHeadPropRepo,
     )
-    from .group_0689 import (
+    from .group_0694 import (
         WebhookPullRequestReviewRequestedOneof1PropPullRequestPropHeadPropRepoPropLicense as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropHeadPropRepoPropLicense,
     )
-    from .group_0689 import (
+    from .group_0694 import (
         WebhookPullRequestReviewRequestedOneof1PropPullRequestPropHeadPropRepoPropOwner as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropHeadPropRepoPropOwner,
     )
-    from .group_0689 import (
+    from .group_0694 import (
         WebhookPullRequestReviewRequestedOneof1PropPullRequestPropHeadPropRepoPropPermissions as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropHeadPropRepoPropPermissions,
     )
-    from .group_0689 import (
+    from .group_0694 import (
         WebhookPullRequestReviewRequestedOneof1PropPullRequestPropHeadPropUser as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropHeadPropUser,
     )
-    from .group_0689 import (
+    from .group_0694 import (
         WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLabelsItems as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLabelsItems,
     )
-    from .group_0689 import (
+    from .group_0694 import (
         WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinks as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinks,
     )
-    from .group_0689 import (
+    from .group_0694 import (
         WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropComments as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropComments,
     )
-    from .group_0689 import (
+    from .group_0694 import (
         WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropCommits as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropCommits,
     )
-    from .group_0689 import (
+    from .group_0694 import (
         WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropHtml as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropHtml,
     )
-    from .group_0689 import (
+    from .group_0694 import (
         WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropIssue as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropIssue,
     )
-    from .group_0689 import (
+    from .group_0694 import (
         WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropReviewComment as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropReviewComment,
     )
-    from .group_0689 import (
+    from .group_0694 import (
         WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropReviewComments as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropReviewComments,
     )
-    from .group_0689 import (
+    from .group_0694 import (
         WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropSelf as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropSelf,
     )
-    from .group_0689 import (
+    from .group_0694 import (
         WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropStatuses as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropStatuses,
     )
-    from .group_0689 import (
+    from .group_0694 import (
         WebhookPullRequestReviewRequestedOneof1PropPullRequestPropMergedBy as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropMergedBy,
     )
-    from .group_0689 import (
+    from .group_0694 import (
         WebhookPullRequestReviewRequestedOneof1PropPullRequestPropMilestone as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropMilestone,
     )
-    from .group_0689 import (
+    from .group_0694 import (
         WebhookPullRequestReviewRequestedOneof1PropPullRequestPropMilestonePropCreator as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropMilestonePropCreator,
     )
-    from .group_0689 import (
+    from .group_0694 import (
         WebhookPullRequestReviewRequestedOneof1PropPullRequestPropRequestedReviewersItemsOneof0 as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropRequestedReviewersItemsOneof0,
     )
-    from .group_0689 import (
+    from .group_0694 import (
         WebhookPullRequestReviewRequestedOneof1PropPullRequestPropRequestedReviewersItemsOneof1 as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropRequestedReviewersItemsOneof1,
     )
-    from .group_0689 import (
+    from .group_0694 import (
         WebhookPullRequestReviewRequestedOneof1PropPullRequestPropRequestedReviewersItemsOneof1PropParent as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropRequestedReviewersItemsOneof1PropParent,
     )
-    from .group_0689 import (
+    from .group_0694 import (
         WebhookPullRequestReviewRequestedOneof1PropPullRequestPropRequestedTeamsItems as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropRequestedTeamsItems,
     )
-    from .group_0689 import (
+    from .group_0694 import (
         WebhookPullRequestReviewRequestedOneof1PropPullRequestPropRequestedTeamsItemsPropParent as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropRequestedTeamsItemsPropParent,
     )
-    from .group_0689 import (
+    from .group_0694 import (
         WebhookPullRequestReviewRequestedOneof1PropPullRequestPropUser as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropUser,
     )
-    from .group_0689 import (
+    from .group_0694 import (
         WebhookPullRequestReviewRequestedOneof1PropRequestedTeam as WebhookPullRequestReviewRequestedOneof1PropRequestedTeam,
     )
-    from .group_0689 import (
+    from .group_0694 import (
         WebhookPullRequestReviewRequestedOneof1PropRequestedTeamPropParent as WebhookPullRequestReviewRequestedOneof1PropRequestedTeamPropParent,
     )
-    from .group_0690 import (
+    from .group_0695 import (
         WebhookPullRequestReviewSubmitted as WebhookPullRequestReviewSubmitted,
     )
-    from .group_0690 import (
+    from .group_0695 import (
         WebhookPullRequestReviewSubmittedPropPullRequest as WebhookPullRequestReviewSubmittedPropPullRequest,
     )
-    from .group_0690 import (
+    from .group_0695 import (
         WebhookPullRequestReviewSubmittedPropPullRequestPropAssignee as WebhookPullRequestReviewSubmittedPropPullRequestPropAssignee,
     )
-    from .group_0690 import (
+    from .group_0695 import (
         WebhookPullRequestReviewSubmittedPropPullRequestPropAssigneesItems as WebhookPullRequestReviewSubmittedPropPullRequestPropAssigneesItems,
     )
-    from .group_0690 import (
+    from .group_0695 import (
         WebhookPullRequestReviewSubmittedPropPullRequestPropAutoMerge as WebhookPullRequestReviewSubmittedPropPullRequestPropAutoMerge,
     )
-    from .group_0690 import (
+    from .group_0695 import (
         WebhookPullRequestReviewSubmittedPropPullRequestPropAutoMergePropEnabledBy as WebhookPullRequestReviewSubmittedPropPullRequestPropAutoMergePropEnabledBy,
     )
-    from .group_0690 import (
+    from .group_0695 import (
         WebhookPullRequestReviewSubmittedPropPullRequestPropBase as WebhookPullRequestReviewSubmittedPropPullRequestPropBase,
     )
-    from .group_0690 import (
+    from .group_0695 import (
         WebhookPullRequestReviewSubmittedPropPullRequestPropBasePropRepo as WebhookPullRequestReviewSubmittedPropPullRequestPropBasePropRepo,
     )
-    from .group_0690 import (
+    from .group_0695 import (
         WebhookPullRequestReviewSubmittedPropPullRequestPropBasePropRepoPropLicense as WebhookPullRequestReviewSubmittedPropPullRequestPropBasePropRepoPropLicense,
     )
-    from .group_0690 import (
+    from .group_0695 import (
         WebhookPullRequestReviewSubmittedPropPullRequestPropBasePropRepoPropOwner as WebhookPullRequestReviewSubmittedPropPullRequestPropBasePropRepoPropOwner,
     )
-    from .group_0690 import (
+    from .group_0695 import (
         WebhookPullRequestReviewSubmittedPropPullRequestPropBasePropRepoPropPermissions as WebhookPullRequestReviewSubmittedPropPullRequestPropBasePropRepoPropPermissions,
     )
-    from .group_0690 import (
+    from .group_0695 import (
         WebhookPullRequestReviewSubmittedPropPullRequestPropBasePropUser as WebhookPullRequestReviewSubmittedPropPullRequestPropBasePropUser,
     )
-    from .group_0690 import (
+    from .group_0695 import (
         WebhookPullRequestReviewSubmittedPropPullRequestPropHead as WebhookPullRequestReviewSubmittedPropPullRequestPropHead,
     )
-    from .group_0690 import (
+    from .group_0695 import (
         WebhookPullRequestReviewSubmittedPropPullRequestPropHeadPropRepo as WebhookPullRequestReviewSubmittedPropPullRequestPropHeadPropRepo,
     )
-    from .group_0690 import (
+    from .group_0695 import (
         WebhookPullRequestReviewSubmittedPropPullRequestPropHeadPropRepoPropLicense as WebhookPullRequestReviewSubmittedPropPullRequestPropHeadPropRepoPropLicense,
     )
-    from .group_0690 import (
+    from .group_0695 import (
         WebhookPullRequestReviewSubmittedPropPullRequestPropHeadPropRepoPropOwner as WebhookPullRequestReviewSubmittedPropPullRequestPropHeadPropRepoPropOwner,
     )
-    from .group_0690 import (
+    from .group_0695 import (
         WebhookPullRequestReviewSubmittedPropPullRequestPropHeadPropRepoPropPermissions as WebhookPullRequestReviewSubmittedPropPullRequestPropHeadPropRepoPropPermissions,
     )
-    from .group_0690 import (
+    from .group_0695 import (
         WebhookPullRequestReviewSubmittedPropPullRequestPropHeadPropUser as WebhookPullRequestReviewSubmittedPropPullRequestPropHeadPropUser,
     )
-    from .group_0690 import (
+    from .group_0695 import (
         WebhookPullRequestReviewSubmittedPropPullRequestPropLabelsItems as WebhookPullRequestReviewSubmittedPropPullRequestPropLabelsItems,
     )
-    from .group_0690 import (
+    from .group_0695 import (
         WebhookPullRequestReviewSubmittedPropPullRequestPropLinks as WebhookPullRequestReviewSubmittedPropPullRequestPropLinks,
     )
-    from .group_0690 import (
+    from .group_0695 import (
         WebhookPullRequestReviewSubmittedPropPullRequestPropLinksPropComments as WebhookPullRequestReviewSubmittedPropPullRequestPropLinksPropComments,
     )
-    from .group_0690 import (
+    from .group_0695 import (
         WebhookPullRequestReviewSubmittedPropPullRequestPropLinksPropCommits as WebhookPullRequestReviewSubmittedPropPullRequestPropLinksPropCommits,
     )
-    from .group_0690 import (
+    from .group_0695 import (
         WebhookPullRequestReviewSubmittedPropPullRequestPropLinksPropHtml as WebhookPullRequestReviewSubmittedPropPullRequestPropLinksPropHtml,
     )
-    from .group_0690 import (
+    from .group_0695 import (
         WebhookPullRequestReviewSubmittedPropPullRequestPropLinksPropIssue as WebhookPullRequestReviewSubmittedPropPullRequestPropLinksPropIssue,
     )
-    from .group_0690 import (
+    from .group_0695 import (
         WebhookPullRequestReviewSubmittedPropPullRequestPropLinksPropReviewComment as WebhookPullRequestReviewSubmittedPropPullRequestPropLinksPropReviewComment,
     )
-    from .group_0690 import (
+    from .group_0695 import (
         WebhookPullRequestReviewSubmittedPropPullRequestPropLinksPropReviewComments as WebhookPullRequestReviewSubmittedPropPullRequestPropLinksPropReviewComments,
     )
-    from .group_0690 import (
+    from .group_0695 import (
         WebhookPullRequestReviewSubmittedPropPullRequestPropLinksPropSelf as WebhookPullRequestReviewSubmittedPropPullRequestPropLinksPropSelf,
     )
-    from .group_0690 import (
+    from .group_0695 import (
         WebhookPullRequestReviewSubmittedPropPullRequestPropLinksPropStatuses as WebhookPullRequestReviewSubmittedPropPullRequestPropLinksPropStatuses,
     )
-    from .group_0690 import (
+    from .group_0695 import (
         WebhookPullRequestReviewSubmittedPropPullRequestPropMilestone as WebhookPullRequestReviewSubmittedPropPullRequestPropMilestone,
     )
-    from .group_0690 import (
+    from .group_0695 import (
         WebhookPullRequestReviewSubmittedPropPullRequestPropMilestonePropCreator as WebhookPullRequestReviewSubmittedPropPullRequestPropMilestonePropCreator,
     )
-    from .group_0690 import (
+    from .group_0695 import (
         WebhookPullRequestReviewSubmittedPropPullRequestPropRequestedReviewersItemsOneof0 as WebhookPullRequestReviewSubmittedPropPullRequestPropRequestedReviewersItemsOneof0,
     )
-    from .group_0690 import (
+    from .group_0695 import (
         WebhookPullRequestReviewSubmittedPropPullRequestPropRequestedReviewersItemsOneof1 as WebhookPullRequestReviewSubmittedPropPullRequestPropRequestedReviewersItemsOneof1,
     )
-    from .group_0690 import (
+    from .group_0695 import (
         WebhookPullRequestReviewSubmittedPropPullRequestPropRequestedReviewersItemsOneof1PropParent as WebhookPullRequestReviewSubmittedPropPullRequestPropRequestedReviewersItemsOneof1PropParent,
     )
-    from .group_0690 import (
+    from .group_0695 import (
         WebhookPullRequestReviewSubmittedPropPullRequestPropRequestedTeamsItems as WebhookPullRequestReviewSubmittedPropPullRequestPropRequestedTeamsItems,
     )
-    from .group_0690 import (
+    from .group_0695 import (
         WebhookPullRequestReviewSubmittedPropPullRequestPropRequestedTeamsItemsPropParent as WebhookPullRequestReviewSubmittedPropPullRequestPropRequestedTeamsItemsPropParent,
     )
-    from .group_0690 import (
+    from .group_0695 import (
         WebhookPullRequestReviewSubmittedPropPullRequestPropUser as WebhookPullRequestReviewSubmittedPropPullRequestPropUser,
     )
-    from .group_0691 import (
+    from .group_0696 import (
         WebhookPullRequestReviewThreadResolved as WebhookPullRequestReviewThreadResolved,
     )
-    from .group_0691 import (
+    from .group_0696 import (
         WebhookPullRequestReviewThreadResolvedPropPullRequest as WebhookPullRequestReviewThreadResolvedPropPullRequest,
     )
-    from .group_0691 import (
+    from .group_0696 import (
         WebhookPullRequestReviewThreadResolvedPropPullRequestPropAssignee as WebhookPullRequestReviewThreadResolvedPropPullRequestPropAssignee,
     )
-    from .group_0691 import (
+    from .group_0696 import (
         WebhookPullRequestReviewThreadResolvedPropPullRequestPropAssigneesItems as WebhookPullRequestReviewThreadResolvedPropPullRequestPropAssigneesItems,
     )
-    from .group_0691 import (
+    from .group_0696 import (
         WebhookPullRequestReviewThreadResolvedPropPullRequestPropAutoMerge as WebhookPullRequestReviewThreadResolvedPropPullRequestPropAutoMerge,
     )
-    from .group_0691 import (
+    from .group_0696 import (
         WebhookPullRequestReviewThreadResolvedPropPullRequestPropAutoMergePropEnabledBy as WebhookPullRequestReviewThreadResolvedPropPullRequestPropAutoMergePropEnabledBy,
     )
-    from .group_0691 import (
+    from .group_0696 import (
         WebhookPullRequestReviewThreadResolvedPropPullRequestPropBase as WebhookPullRequestReviewThreadResolvedPropPullRequestPropBase,
     )
-    from .group_0691 import (
+    from .group_0696 import (
         WebhookPullRequestReviewThreadResolvedPropPullRequestPropBasePropRepo as WebhookPullRequestReviewThreadResolvedPropPullRequestPropBasePropRepo,
     )
-    from .group_0691 import (
+    from .group_0696 import (
         WebhookPullRequestReviewThreadResolvedPropPullRequestPropBasePropRepoPropLicense as WebhookPullRequestReviewThreadResolvedPropPullRequestPropBasePropRepoPropLicense,
     )
-    from .group_0691 import (
+    from .group_0696 import (
         WebhookPullRequestReviewThreadResolvedPropPullRequestPropBasePropRepoPropOwner as WebhookPullRequestReviewThreadResolvedPropPullRequestPropBasePropRepoPropOwner,
     )
-    from .group_0691 import (
+    from .group_0696 import (
         WebhookPullRequestReviewThreadResolvedPropPullRequestPropBasePropRepoPropPermissions as WebhookPullRequestReviewThreadResolvedPropPullRequestPropBasePropRepoPropPermissions,
     )
-    from .group_0691 import (
+    from .group_0696 import (
         WebhookPullRequestReviewThreadResolvedPropPullRequestPropBasePropUser as WebhookPullRequestReviewThreadResolvedPropPullRequestPropBasePropUser,
     )
-    from .group_0691 import (
+    from .group_0696 import (
         WebhookPullRequestReviewThreadResolvedPropPullRequestPropHead as WebhookPullRequestReviewThreadResolvedPropPullRequestPropHead,
     )
-    from .group_0691 import (
+    from .group_0696 import (
         WebhookPullRequestReviewThreadResolvedPropPullRequestPropHeadPropRepo as WebhookPullRequestReviewThreadResolvedPropPullRequestPropHeadPropRepo,
     )
-    from .group_0691 import (
+    from .group_0696 import (
         WebhookPullRequestReviewThreadResolvedPropPullRequestPropHeadPropRepoPropLicense as WebhookPullRequestReviewThreadResolvedPropPullRequestPropHeadPropRepoPropLicense,
     )
-    from .group_0691 import (
+    from .group_0696 import (
         WebhookPullRequestReviewThreadResolvedPropPullRequestPropHeadPropRepoPropOwner as WebhookPullRequestReviewThreadResolvedPropPullRequestPropHeadPropRepoPropOwner,
     )
-    from .group_0691 import (
+    from .group_0696 import (
         WebhookPullRequestReviewThreadResolvedPropPullRequestPropHeadPropRepoPropPermissions as WebhookPullRequestReviewThreadResolvedPropPullRequestPropHeadPropRepoPropPermissions,
     )
-    from .group_0691 import (
+    from .group_0696 import (
         WebhookPullRequestReviewThreadResolvedPropPullRequestPropHeadPropUser as WebhookPullRequestReviewThreadResolvedPropPullRequestPropHeadPropUser,
     )
-    from .group_0691 import (
+    from .group_0696 import (
         WebhookPullRequestReviewThreadResolvedPropPullRequestPropLabelsItems as WebhookPullRequestReviewThreadResolvedPropPullRequestPropLabelsItems,
     )
-    from .group_0691 import (
+    from .group_0696 import (
         WebhookPullRequestReviewThreadResolvedPropPullRequestPropLinks as WebhookPullRequestReviewThreadResolvedPropPullRequestPropLinks,
     )
-    from .group_0691 import (
+    from .group_0696 import (
         WebhookPullRequestReviewThreadResolvedPropPullRequestPropLinksPropComments as WebhookPullRequestReviewThreadResolvedPropPullRequestPropLinksPropComments,
     )
-    from .group_0691 import (
+    from .group_0696 import (
         WebhookPullRequestReviewThreadResolvedPropPullRequestPropLinksPropCommits as WebhookPullRequestReviewThreadResolvedPropPullRequestPropLinksPropCommits,
     )
-    from .group_0691 import (
+    from .group_0696 import (
         WebhookPullRequestReviewThreadResolvedPropPullRequestPropLinksPropHtml as WebhookPullRequestReviewThreadResolvedPropPullRequestPropLinksPropHtml,
     )
-    from .group_0691 import (
+    from .group_0696 import (
         WebhookPullRequestReviewThreadResolvedPropPullRequestPropLinksPropIssue as WebhookPullRequestReviewThreadResolvedPropPullRequestPropLinksPropIssue,
     )
-    from .group_0691 import (
+    from .group_0696 import (
         WebhookPullRequestReviewThreadResolvedPropPullRequestPropLinksPropReviewComment as WebhookPullRequestReviewThreadResolvedPropPullRequestPropLinksPropReviewComment,
     )
-    from .group_0691 import (
+    from .group_0696 import (
         WebhookPullRequestReviewThreadResolvedPropPullRequestPropLinksPropReviewComments as WebhookPullRequestReviewThreadResolvedPropPullRequestPropLinksPropReviewComments,
     )
-    from .group_0691 import (
+    from .group_0696 import (
         WebhookPullRequestReviewThreadResolvedPropPullRequestPropLinksPropSelf as WebhookPullRequestReviewThreadResolvedPropPullRequestPropLinksPropSelf,
     )
-    from .group_0691 import (
+    from .group_0696 import (
         WebhookPullRequestReviewThreadResolvedPropPullRequestPropLinksPropStatuses as WebhookPullRequestReviewThreadResolvedPropPullRequestPropLinksPropStatuses,
     )
-    from .group_0691 import (
+    from .group_0696 import (
         WebhookPullRequestReviewThreadResolvedPropPullRequestPropMilestone as WebhookPullRequestReviewThreadResolvedPropPullRequestPropMilestone,
     )
-    from .group_0691 import (
+    from .group_0696 import (
         WebhookPullRequestReviewThreadResolvedPropPullRequestPropMilestonePropCreator as WebhookPullRequestReviewThreadResolvedPropPullRequestPropMilestonePropCreator,
     )
-    from .group_0691 import (
+    from .group_0696 import (
         WebhookPullRequestReviewThreadResolvedPropPullRequestPropRequestedReviewersItemsOneof0 as WebhookPullRequestReviewThreadResolvedPropPullRequestPropRequestedReviewersItemsOneof0,
     )
-    from .group_0691 import (
+    from .group_0696 import (
         WebhookPullRequestReviewThreadResolvedPropPullRequestPropRequestedReviewersItemsOneof1 as WebhookPullRequestReviewThreadResolvedPropPullRequestPropRequestedReviewersItemsOneof1,
     )
-    from .group_0691 import (
+    from .group_0696 import (
         WebhookPullRequestReviewThreadResolvedPropPullRequestPropRequestedReviewersItemsOneof1PropParent as WebhookPullRequestReviewThreadResolvedPropPullRequestPropRequestedReviewersItemsOneof1PropParent,
     )
-    from .group_0691 import (
+    from .group_0696 import (
         WebhookPullRequestReviewThreadResolvedPropPullRequestPropRequestedTeamsItems as WebhookPullRequestReviewThreadResolvedPropPullRequestPropRequestedTeamsItems,
     )
-    from .group_0691 import (
+    from .group_0696 import (
         WebhookPullRequestReviewThreadResolvedPropPullRequestPropRequestedTeamsItemsPropParent as WebhookPullRequestReviewThreadResolvedPropPullRequestPropRequestedTeamsItemsPropParent,
     )
-    from .group_0691 import (
+    from .group_0696 import (
         WebhookPullRequestReviewThreadResolvedPropPullRequestPropUser as WebhookPullRequestReviewThreadResolvedPropPullRequestPropUser,
     )
-    from .group_0691 import (
+    from .group_0696 import (
         WebhookPullRequestReviewThreadResolvedPropThread as WebhookPullRequestReviewThreadResolvedPropThread,
     )
-    from .group_0691 import (
+    from .group_0696 import (
         WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItems as WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItems,
     )
-    from .group_0691 import (
+    from .group_0696 import (
         WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsPropLinks as WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsPropLinks,
     )
-    from .group_0691 import (
+    from .group_0696 import (
         WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsPropLinksPropHtml as WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsPropLinksPropHtml,
     )
-    from .group_0691 import (
+    from .group_0696 import (
         WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsPropLinksPropPullRequest as WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsPropLinksPropPullRequest,
     )
-    from .group_0691 import (
+    from .group_0696 import (
         WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsPropLinksPropSelf as WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsPropLinksPropSelf,
     )
-    from .group_0691 import (
+    from .group_0696 import (
         WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsPropReactions as WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsPropReactions,
     )
-    from .group_0691 import (
+    from .group_0696 import (
         WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsPropUser as WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsPropUser,
     )
-    from .group_0692 import (
+    from .group_0697 import (
         WebhookPullRequestReviewThreadUnresolved as WebhookPullRequestReviewThreadUnresolved,
     )
-    from .group_0692 import (
+    from .group_0697 import (
         WebhookPullRequestReviewThreadUnresolvedPropPullRequest as WebhookPullRequestReviewThreadUnresolvedPropPullRequest,
     )
-    from .group_0692 import (
+    from .group_0697 import (
         WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropAssignee as WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropAssignee,
     )
-    from .group_0692 import (
+    from .group_0697 import (
         WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropAssigneesItems as WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropAssigneesItems,
     )
-    from .group_0692 import (
+    from .group_0697 import (
         WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropAutoMerge as WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropAutoMerge,
     )
-    from .group_0692 import (
+    from .group_0697 import (
         WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropAutoMergePropEnabledBy as WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropAutoMergePropEnabledBy,
     )
-    from .group_0692 import (
+    from .group_0697 import (
         WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropBase as WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropBase,
     )
-    from .group_0692 import (
+    from .group_0697 import (
         WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropBasePropRepo as WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropBasePropRepo,
     )
-    from .group_0692 import (
+    from .group_0697 import (
         WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropBasePropRepoPropLicense as WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropBasePropRepoPropLicense,
     )
-    from .group_0692 import (
+    from .group_0697 import (
         WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropBasePropRepoPropOwner as WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropBasePropRepoPropOwner,
     )
-    from .group_0692 import (
+    from .group_0697 import (
         WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropBasePropRepoPropPermissions as WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropBasePropRepoPropPermissions,
     )
-    from .group_0692 import (
+    from .group_0697 import (
         WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropBasePropUser as WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropBasePropUser,
     )
-    from .group_0692 import (
+    from .group_0697 import (
         WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropHead as WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropHead,
     )
-    from .group_0692 import (
+    from .group_0697 import (
         WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropHeadPropRepo as WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropHeadPropRepo,
     )
-    from .group_0692 import (
+    from .group_0697 import (
         WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropHeadPropRepoPropLicense as WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropHeadPropRepoPropLicense,
     )
-    from .group_0692 import (
+    from .group_0697 import (
         WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropHeadPropRepoPropOwner as WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropHeadPropRepoPropOwner,
     )
-    from .group_0692 import (
+    from .group_0697 import (
         WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropHeadPropRepoPropPermissions as WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropHeadPropRepoPropPermissions,
     )
-    from .group_0692 import (
+    from .group_0697 import (
         WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropHeadPropUser as WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropHeadPropUser,
     )
-    from .group_0692 import (
+    from .group_0697 import (
         WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLabelsItems as WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLabelsItems,
     )
-    from .group_0692 import (
+    from .group_0697 import (
         WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinks as WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinks,
     )
-    from .group_0692 import (
+    from .group_0697 import (
         WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropComments as WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropComments,
     )
-    from .group_0692 import (
+    from .group_0697 import (
         WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropCommits as WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropCommits,
     )
-    from .group_0692 import (
+    from .group_0697 import (
         WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropHtml as WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropHtml,
     )
-    from .group_0692 import (
+    from .group_0697 import (
         WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropIssue as WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropIssue,
     )
-    from .group_0692 import (
+    from .group_0697 import (
         WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropReviewComment as WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropReviewComment,
     )
-    from .group_0692 import (
+    from .group_0697 import (
         WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropReviewComments as WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropReviewComments,
     )
-    from .group_0692 import (
+    from .group_0697 import (
         WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropSelf as WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropSelf,
     )
-    from .group_0692 import (
+    from .group_0697 import (
         WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropStatuses as WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropStatuses,
     )
-    from .group_0692 import (
+    from .group_0697 import (
         WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropMilestone as WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropMilestone,
     )
-    from .group_0692 import (
+    from .group_0697 import (
         WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropMilestonePropCreator as WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropMilestonePropCreator,
     )
-    from .group_0692 import (
+    from .group_0697 import (
         WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropRequestedReviewersItemsOneof0 as WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropRequestedReviewersItemsOneof0,
     )
-    from .group_0692 import (
+    from .group_0697 import (
         WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropRequestedReviewersItemsOneof1 as WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropRequestedReviewersItemsOneof1,
     )
-    from .group_0692 import (
+    from .group_0697 import (
         WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropRequestedReviewersItemsOneof1PropParent as WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropRequestedReviewersItemsOneof1PropParent,
     )
-    from .group_0692 import (
+    from .group_0697 import (
         WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropRequestedTeamsItems as WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropRequestedTeamsItems,
     )
-    from .group_0692 import (
+    from .group_0697 import (
         WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropRequestedTeamsItemsPropParent as WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropRequestedTeamsItemsPropParent,
     )
-    from .group_0692 import (
+    from .group_0697 import (
         WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropUser as WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropUser,
     )
-    from .group_0692 import (
+    from .group_0697 import (
         WebhookPullRequestReviewThreadUnresolvedPropThread as WebhookPullRequestReviewThreadUnresolvedPropThread,
     )
-    from .group_0692 import (
+    from .group_0697 import (
         WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItems as WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItems,
     )
-    from .group_0692 import (
+    from .group_0697 import (
         WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinks as WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinks,
     )
-    from .group_0692 import (
+    from .group_0697 import (
         WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropHtml as WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropHtml,
     )
-    from .group_0692 import (
+    from .group_0697 import (
         WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropPullRequest as WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropPullRequest,
     )
-    from .group_0692 import (
+    from .group_0697 import (
         WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropSelf as WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropSelf,
     )
-    from .group_0692 import (
+    from .group_0697 import (
         WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropReactions as WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropReactions,
     )
-    from .group_0692 import (
+    from .group_0697 import (
         WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropUser as WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropUser,
     )
-    from .group_0693 import (
+    from .group_0698 import (
         WebhookPullRequestSynchronize as WebhookPullRequestSynchronize,
     )
-    from .group_0693 import (
+    from .group_0698 import (
         WebhookPullRequestSynchronizePropPullRequest as WebhookPullRequestSynchronizePropPullRequest,
     )
-    from .group_0693 import (
+    from .group_0698 import (
         WebhookPullRequestSynchronizePropPullRequestPropAssignee as WebhookPullRequestSynchronizePropPullRequestPropAssignee,
     )
-    from .group_0693 import (
+    from .group_0698 import (
         WebhookPullRequestSynchronizePropPullRequestPropAssigneesItems as WebhookPullRequestSynchronizePropPullRequestPropAssigneesItems,
     )
-    from .group_0693 import (
+    from .group_0698 import (
         WebhookPullRequestSynchronizePropPullRequestPropAutoMerge as WebhookPullRequestSynchronizePropPullRequestPropAutoMerge,
     )
-    from .group_0693 import (
+    from .group_0698 import (
         WebhookPullRequestSynchronizePropPullRequestPropAutoMergePropEnabledBy as WebhookPullRequestSynchronizePropPullRequestPropAutoMergePropEnabledBy,
     )
-    from .group_0693 import (
+    from .group_0698 import (
         WebhookPullRequestSynchronizePropPullRequestPropBase as WebhookPullRequestSynchronizePropPullRequestPropBase,
     )
-    from .group_0693 import (
+    from .group_0698 import (
         WebhookPullRequestSynchronizePropPullRequestPropBasePropRepo as WebhookPullRequestSynchronizePropPullRequestPropBasePropRepo,
     )
-    from .group_0693 import (
+    from .group_0698 import (
         WebhookPullRequestSynchronizePropPullRequestPropBasePropRepoPropLicense as WebhookPullRequestSynchronizePropPullRequestPropBasePropRepoPropLicense,
     )
-    from .group_0693 import (
+    from .group_0698 import (
         WebhookPullRequestSynchronizePropPullRequestPropBasePropRepoPropOwner as WebhookPullRequestSynchronizePropPullRequestPropBasePropRepoPropOwner,
     )
-    from .group_0693 import (
+    from .group_0698 import (
         WebhookPullRequestSynchronizePropPullRequestPropBasePropRepoPropPermissions as WebhookPullRequestSynchronizePropPullRequestPropBasePropRepoPropPermissions,
     )
-    from .group_0693 import (
+    from .group_0698 import (
         WebhookPullRequestSynchronizePropPullRequestPropBasePropUser as WebhookPullRequestSynchronizePropPullRequestPropBasePropUser,
     )
-    from .group_0693 import (
+    from .group_0698 import (
         WebhookPullRequestSynchronizePropPullRequestPropHead as WebhookPullRequestSynchronizePropPullRequestPropHead,
     )
-    from .group_0693 import (
+    from .group_0698 import (
         WebhookPullRequestSynchronizePropPullRequestPropHeadPropRepo as WebhookPullRequestSynchronizePropPullRequestPropHeadPropRepo,
     )
-    from .group_0693 import (
+    from .group_0698 import (
         WebhookPullRequestSynchronizePropPullRequestPropHeadPropRepoPropLicense as WebhookPullRequestSynchronizePropPullRequestPropHeadPropRepoPropLicense,
     )
-    from .group_0693 import (
+    from .group_0698 import (
         WebhookPullRequestSynchronizePropPullRequestPropHeadPropRepoPropOwner as WebhookPullRequestSynchronizePropPullRequestPropHeadPropRepoPropOwner,
     )
-    from .group_0693 import (
+    from .group_0698 import (
         WebhookPullRequestSynchronizePropPullRequestPropHeadPropRepoPropPermissions as WebhookPullRequestSynchronizePropPullRequestPropHeadPropRepoPropPermissions,
     )
-    from .group_0693 import (
+    from .group_0698 import (
         WebhookPullRequestSynchronizePropPullRequestPropHeadPropUser as WebhookPullRequestSynchronizePropPullRequestPropHeadPropUser,
     )
-    from .group_0693 import (
+    from .group_0698 import (
         WebhookPullRequestSynchronizePropPullRequestPropLabelsItems as WebhookPullRequestSynchronizePropPullRequestPropLabelsItems,
     )
-    from .group_0693 import (
+    from .group_0698 import (
         WebhookPullRequestSynchronizePropPullRequestPropLinks as WebhookPullRequestSynchronizePropPullRequestPropLinks,
     )
-    from .group_0693 import (
+    from .group_0698 import (
         WebhookPullRequestSynchronizePropPullRequestPropLinksPropComments as WebhookPullRequestSynchronizePropPullRequestPropLinksPropComments,
     )
-    from .group_0693 import (
+    from .group_0698 import (
         WebhookPullRequestSynchronizePropPullRequestPropLinksPropCommits as WebhookPullRequestSynchronizePropPullRequestPropLinksPropCommits,
     )
-    from .group_0693 import (
+    from .group_0698 import (
         WebhookPullRequestSynchronizePropPullRequestPropLinksPropHtml as WebhookPullRequestSynchronizePropPullRequestPropLinksPropHtml,
     )
-    from .group_0693 import (
+    from .group_0698 import (
         WebhookPullRequestSynchronizePropPullRequestPropLinksPropIssue as WebhookPullRequestSynchronizePropPullRequestPropLinksPropIssue,
     )
-    from .group_0693 import (
+    from .group_0698 import (
         WebhookPullRequestSynchronizePropPullRequestPropLinksPropReviewComment as WebhookPullRequestSynchronizePropPullRequestPropLinksPropReviewComment,
     )
-    from .group_0693 import (
+    from .group_0698 import (
         WebhookPullRequestSynchronizePropPullRequestPropLinksPropReviewComments as WebhookPullRequestSynchronizePropPullRequestPropLinksPropReviewComments,
     )
-    from .group_0693 import (
+    from .group_0698 import (
         WebhookPullRequestSynchronizePropPullRequestPropLinksPropSelf as WebhookPullRequestSynchronizePropPullRequestPropLinksPropSelf,
     )
-    from .group_0693 import (
+    from .group_0698 import (
         WebhookPullRequestSynchronizePropPullRequestPropLinksPropStatuses as WebhookPullRequestSynchronizePropPullRequestPropLinksPropStatuses,
     )
-    from .group_0693 import (
+    from .group_0698 import (
         WebhookPullRequestSynchronizePropPullRequestPropMergedBy as WebhookPullRequestSynchronizePropPullRequestPropMergedBy,
     )
-    from .group_0693 import (
+    from .group_0698 import (
         WebhookPullRequestSynchronizePropPullRequestPropMilestone as WebhookPullRequestSynchronizePropPullRequestPropMilestone,
     )
-    from .group_0693 import (
+    from .group_0698 import (
         WebhookPullRequestSynchronizePropPullRequestPropMilestonePropCreator as WebhookPullRequestSynchronizePropPullRequestPropMilestonePropCreator,
     )
-    from .group_0693 import (
+    from .group_0698 import (
         WebhookPullRequestSynchronizePropPullRequestPropRequestedReviewersItemsOneof0 as WebhookPullRequestSynchronizePropPullRequestPropRequestedReviewersItemsOneof0,
     )
-    from .group_0693 import (
+    from .group_0698 import (
         WebhookPullRequestSynchronizePropPullRequestPropRequestedReviewersItemsOneof1 as WebhookPullRequestSynchronizePropPullRequestPropRequestedReviewersItemsOneof1,
     )
-    from .group_0693 import (
+    from .group_0698 import (
         WebhookPullRequestSynchronizePropPullRequestPropRequestedReviewersItemsOneof1PropParent as WebhookPullRequestSynchronizePropPullRequestPropRequestedReviewersItemsOneof1PropParent,
     )
-    from .group_0693 import (
+    from .group_0698 import (
         WebhookPullRequestSynchronizePropPullRequestPropRequestedTeamsItems as WebhookPullRequestSynchronizePropPullRequestPropRequestedTeamsItems,
     )
-    from .group_0693 import (
+    from .group_0698 import (
         WebhookPullRequestSynchronizePropPullRequestPropRequestedTeamsItemsPropParent as WebhookPullRequestSynchronizePropPullRequestPropRequestedTeamsItemsPropParent,
     )
-    from .group_0693 import (
+    from .group_0698 import (
         WebhookPullRequestSynchronizePropPullRequestPropUser as WebhookPullRequestSynchronizePropPullRequestPropUser,
     )
-    from .group_0694 import WebhookPullRequestUnassigned as WebhookPullRequestUnassigned
-    from .group_0694 import (
+    from .group_0699 import WebhookPullRequestUnassigned as WebhookPullRequestUnassigned
+    from .group_0699 import (
         WebhookPullRequestUnassignedPropPullRequest as WebhookPullRequestUnassignedPropPullRequest,
     )
-    from .group_0694 import (
+    from .group_0699 import (
         WebhookPullRequestUnassignedPropPullRequestPropAssignee as WebhookPullRequestUnassignedPropPullRequestPropAssignee,
     )
-    from .group_0694 import (
+    from .group_0699 import (
         WebhookPullRequestUnassignedPropPullRequestPropAssigneesItems as WebhookPullRequestUnassignedPropPullRequestPropAssigneesItems,
     )
-    from .group_0694 import (
+    from .group_0699 import (
         WebhookPullRequestUnassignedPropPullRequestPropAutoMerge as WebhookPullRequestUnassignedPropPullRequestPropAutoMerge,
     )
-    from .group_0694 import (
+    from .group_0699 import (
         WebhookPullRequestUnassignedPropPullRequestPropAutoMergePropEnabledBy as WebhookPullRequestUnassignedPropPullRequestPropAutoMergePropEnabledBy,
     )
-    from .group_0694 import (
+    from .group_0699 import (
         WebhookPullRequestUnassignedPropPullRequestPropBase as WebhookPullRequestUnassignedPropPullRequestPropBase,
     )
-    from .group_0694 import (
+    from .group_0699 import (
         WebhookPullRequestUnassignedPropPullRequestPropBasePropRepo as WebhookPullRequestUnassignedPropPullRequestPropBasePropRepo,
     )
-    from .group_0694 import (
+    from .group_0699 import (
         WebhookPullRequestUnassignedPropPullRequestPropBasePropRepoPropLicense as WebhookPullRequestUnassignedPropPullRequestPropBasePropRepoPropLicense,
     )
-    from .group_0694 import (
+    from .group_0699 import (
         WebhookPullRequestUnassignedPropPullRequestPropBasePropRepoPropOwner as WebhookPullRequestUnassignedPropPullRequestPropBasePropRepoPropOwner,
     )
-    from .group_0694 import (
+    from .group_0699 import (
         WebhookPullRequestUnassignedPropPullRequestPropBasePropRepoPropPermissions as WebhookPullRequestUnassignedPropPullRequestPropBasePropRepoPropPermissions,
     )
-    from .group_0694 import (
+    from .group_0699 import (
         WebhookPullRequestUnassignedPropPullRequestPropBasePropUser as WebhookPullRequestUnassignedPropPullRequestPropBasePropUser,
     )
-    from .group_0694 import (
+    from .group_0699 import (
         WebhookPullRequestUnassignedPropPullRequestPropHead as WebhookPullRequestUnassignedPropPullRequestPropHead,
     )
-    from .group_0694 import (
+    from .group_0699 import (
         WebhookPullRequestUnassignedPropPullRequestPropHeadPropRepo as WebhookPullRequestUnassignedPropPullRequestPropHeadPropRepo,
     )
-    from .group_0694 import (
+    from .group_0699 import (
         WebhookPullRequestUnassignedPropPullRequestPropHeadPropRepoPropLicense as WebhookPullRequestUnassignedPropPullRequestPropHeadPropRepoPropLicense,
     )
-    from .group_0694 import (
+    from .group_0699 import (
         WebhookPullRequestUnassignedPropPullRequestPropHeadPropRepoPropOwner as WebhookPullRequestUnassignedPropPullRequestPropHeadPropRepoPropOwner,
     )
-    from .group_0694 import (
+    from .group_0699 import (
         WebhookPullRequestUnassignedPropPullRequestPropHeadPropRepoPropPermissions as WebhookPullRequestUnassignedPropPullRequestPropHeadPropRepoPropPermissions,
     )
-    from .group_0694 import (
+    from .group_0699 import (
         WebhookPullRequestUnassignedPropPullRequestPropHeadPropUser as WebhookPullRequestUnassignedPropPullRequestPropHeadPropUser,
     )
-    from .group_0694 import (
+    from .group_0699 import (
         WebhookPullRequestUnassignedPropPullRequestPropLabelsItems as WebhookPullRequestUnassignedPropPullRequestPropLabelsItems,
     )
-    from .group_0694 import (
+    from .group_0699 import (
         WebhookPullRequestUnassignedPropPullRequestPropLinks as WebhookPullRequestUnassignedPropPullRequestPropLinks,
     )
-    from .group_0694 import (
+    from .group_0699 import (
         WebhookPullRequestUnassignedPropPullRequestPropLinksPropComments as WebhookPullRequestUnassignedPropPullRequestPropLinksPropComments,
     )
-    from .group_0694 import (
+    from .group_0699 import (
         WebhookPullRequestUnassignedPropPullRequestPropLinksPropCommits as WebhookPullRequestUnassignedPropPullRequestPropLinksPropCommits,
     )
-    from .group_0694 import (
+    from .group_0699 import (
         WebhookPullRequestUnassignedPropPullRequestPropLinksPropHtml as WebhookPullRequestUnassignedPropPullRequestPropLinksPropHtml,
     )
-    from .group_0694 import (
+    from .group_0699 import (
         WebhookPullRequestUnassignedPropPullRequestPropLinksPropIssue as WebhookPullRequestUnassignedPropPullRequestPropLinksPropIssue,
     )
-    from .group_0694 import (
+    from .group_0699 import (
         WebhookPullRequestUnassignedPropPullRequestPropLinksPropReviewComment as WebhookPullRequestUnassignedPropPullRequestPropLinksPropReviewComment,
     )
-    from .group_0694 import (
+    from .group_0699 import (
         WebhookPullRequestUnassignedPropPullRequestPropLinksPropReviewComments as WebhookPullRequestUnassignedPropPullRequestPropLinksPropReviewComments,
     )
-    from .group_0694 import (
+    from .group_0699 import (
         WebhookPullRequestUnassignedPropPullRequestPropLinksPropSelf as WebhookPullRequestUnassignedPropPullRequestPropLinksPropSelf,
     )
-    from .group_0694 import (
+    from .group_0699 import (
         WebhookPullRequestUnassignedPropPullRequestPropLinksPropStatuses as WebhookPullRequestUnassignedPropPullRequestPropLinksPropStatuses,
     )
-    from .group_0694 import (
+    from .group_0699 import (
         WebhookPullRequestUnassignedPropPullRequestPropMergedBy as WebhookPullRequestUnassignedPropPullRequestPropMergedBy,
     )
-    from .group_0694 import (
+    from .group_0699 import (
         WebhookPullRequestUnassignedPropPullRequestPropMilestone as WebhookPullRequestUnassignedPropPullRequestPropMilestone,
     )
-    from .group_0694 import (
+    from .group_0699 import (
         WebhookPullRequestUnassignedPropPullRequestPropMilestonePropCreator as WebhookPullRequestUnassignedPropPullRequestPropMilestonePropCreator,
     )
-    from .group_0694 import (
+    from .group_0699 import (
         WebhookPullRequestUnassignedPropPullRequestPropRequestedReviewersItemsOneof0 as WebhookPullRequestUnassignedPropPullRequestPropRequestedReviewersItemsOneof0,
     )
-    from .group_0694 import (
+    from .group_0699 import (
         WebhookPullRequestUnassignedPropPullRequestPropRequestedReviewersItemsOneof1 as WebhookPullRequestUnassignedPropPullRequestPropRequestedReviewersItemsOneof1,
     )
-    from .group_0694 import (
+    from .group_0699 import (
         WebhookPullRequestUnassignedPropPullRequestPropRequestedReviewersItemsOneof1PropParent as WebhookPullRequestUnassignedPropPullRequestPropRequestedReviewersItemsOneof1PropParent,
     )
-    from .group_0694 import (
+    from .group_0699 import (
         WebhookPullRequestUnassignedPropPullRequestPropRequestedTeamsItems as WebhookPullRequestUnassignedPropPullRequestPropRequestedTeamsItems,
     )
-    from .group_0694 import (
+    from .group_0699 import (
         WebhookPullRequestUnassignedPropPullRequestPropRequestedTeamsItemsPropParent as WebhookPullRequestUnassignedPropPullRequestPropRequestedTeamsItemsPropParent,
     )
-    from .group_0694 import (
+    from .group_0699 import (
         WebhookPullRequestUnassignedPropPullRequestPropUser as WebhookPullRequestUnassignedPropPullRequestPropUser,
     )
-    from .group_0695 import WebhookPullRequestUnlabeled as WebhookPullRequestUnlabeled
-    from .group_0695 import (
+    from .group_0700 import WebhookPullRequestUnlabeled as WebhookPullRequestUnlabeled
+    from .group_0700 import (
         WebhookPullRequestUnlabeledPropPullRequest as WebhookPullRequestUnlabeledPropPullRequest,
     )
-    from .group_0695 import (
+    from .group_0700 import (
         WebhookPullRequestUnlabeledPropPullRequestPropAssignee as WebhookPullRequestUnlabeledPropPullRequestPropAssignee,
     )
-    from .group_0695 import (
+    from .group_0700 import (
         WebhookPullRequestUnlabeledPropPullRequestPropAssigneesItems as WebhookPullRequestUnlabeledPropPullRequestPropAssigneesItems,
     )
-    from .group_0695 import (
+    from .group_0700 import (
         WebhookPullRequestUnlabeledPropPullRequestPropAutoMerge as WebhookPullRequestUnlabeledPropPullRequestPropAutoMerge,
     )
-    from .group_0695 import (
+    from .group_0700 import (
         WebhookPullRequestUnlabeledPropPullRequestPropAutoMergePropEnabledBy as WebhookPullRequestUnlabeledPropPullRequestPropAutoMergePropEnabledBy,
     )
-    from .group_0695 import (
+    from .group_0700 import (
         WebhookPullRequestUnlabeledPropPullRequestPropBase as WebhookPullRequestUnlabeledPropPullRequestPropBase,
     )
-    from .group_0695 import (
+    from .group_0700 import (
         WebhookPullRequestUnlabeledPropPullRequestPropBasePropRepo as WebhookPullRequestUnlabeledPropPullRequestPropBasePropRepo,
     )
-    from .group_0695 import (
+    from .group_0700 import (
         WebhookPullRequestUnlabeledPropPullRequestPropBasePropRepoPropLicense as WebhookPullRequestUnlabeledPropPullRequestPropBasePropRepoPropLicense,
     )
-    from .group_0695 import (
+    from .group_0700 import (
         WebhookPullRequestUnlabeledPropPullRequestPropBasePropRepoPropOwner as WebhookPullRequestUnlabeledPropPullRequestPropBasePropRepoPropOwner,
     )
-    from .group_0695 import (
+    from .group_0700 import (
         WebhookPullRequestUnlabeledPropPullRequestPropBasePropRepoPropPermissions as WebhookPullRequestUnlabeledPropPullRequestPropBasePropRepoPropPermissions,
     )
-    from .group_0695 import (
+    from .group_0700 import (
         WebhookPullRequestUnlabeledPropPullRequestPropBasePropUser as WebhookPullRequestUnlabeledPropPullRequestPropBasePropUser,
     )
-    from .group_0695 import (
+    from .group_0700 import (
         WebhookPullRequestUnlabeledPropPullRequestPropHead as WebhookPullRequestUnlabeledPropPullRequestPropHead,
     )
-    from .group_0695 import (
+    from .group_0700 import (
         WebhookPullRequestUnlabeledPropPullRequestPropHeadPropRepo as WebhookPullRequestUnlabeledPropPullRequestPropHeadPropRepo,
     )
-    from .group_0695 import (
+    from .group_0700 import (
         WebhookPullRequestUnlabeledPropPullRequestPropHeadPropRepoPropLicense as WebhookPullRequestUnlabeledPropPullRequestPropHeadPropRepoPropLicense,
     )
-    from .group_0695 import (
+    from .group_0700 import (
         WebhookPullRequestUnlabeledPropPullRequestPropHeadPropRepoPropOwner as WebhookPullRequestUnlabeledPropPullRequestPropHeadPropRepoPropOwner,
     )
-    from .group_0695 import (
+    from .group_0700 import (
         WebhookPullRequestUnlabeledPropPullRequestPropHeadPropRepoPropPermissions as WebhookPullRequestUnlabeledPropPullRequestPropHeadPropRepoPropPermissions,
     )
-    from .group_0695 import (
+    from .group_0700 import (
         WebhookPullRequestUnlabeledPropPullRequestPropHeadPropUser as WebhookPullRequestUnlabeledPropPullRequestPropHeadPropUser,
     )
-    from .group_0695 import (
+    from .group_0700 import (
         WebhookPullRequestUnlabeledPropPullRequestPropLabelsItems as WebhookPullRequestUnlabeledPropPullRequestPropLabelsItems,
     )
-    from .group_0695 import (
+    from .group_0700 import (
         WebhookPullRequestUnlabeledPropPullRequestPropLinks as WebhookPullRequestUnlabeledPropPullRequestPropLinks,
     )
-    from .group_0695 import (
+    from .group_0700 import (
         WebhookPullRequestUnlabeledPropPullRequestPropLinksPropComments as WebhookPullRequestUnlabeledPropPullRequestPropLinksPropComments,
     )
-    from .group_0695 import (
+    from .group_0700 import (
         WebhookPullRequestUnlabeledPropPullRequestPropLinksPropCommits as WebhookPullRequestUnlabeledPropPullRequestPropLinksPropCommits,
     )
-    from .group_0695 import (
+    from .group_0700 import (
         WebhookPullRequestUnlabeledPropPullRequestPropLinksPropHtml as WebhookPullRequestUnlabeledPropPullRequestPropLinksPropHtml,
     )
-    from .group_0695 import (
+    from .group_0700 import (
         WebhookPullRequestUnlabeledPropPullRequestPropLinksPropIssue as WebhookPullRequestUnlabeledPropPullRequestPropLinksPropIssue,
     )
-    from .group_0695 import (
+    from .group_0700 import (
         WebhookPullRequestUnlabeledPropPullRequestPropLinksPropReviewComment as WebhookPullRequestUnlabeledPropPullRequestPropLinksPropReviewComment,
     )
-    from .group_0695 import (
+    from .group_0700 import (
         WebhookPullRequestUnlabeledPropPullRequestPropLinksPropReviewComments as WebhookPullRequestUnlabeledPropPullRequestPropLinksPropReviewComments,
     )
-    from .group_0695 import (
+    from .group_0700 import (
         WebhookPullRequestUnlabeledPropPullRequestPropLinksPropSelf as WebhookPullRequestUnlabeledPropPullRequestPropLinksPropSelf,
     )
-    from .group_0695 import (
+    from .group_0700 import (
         WebhookPullRequestUnlabeledPropPullRequestPropLinksPropStatuses as WebhookPullRequestUnlabeledPropPullRequestPropLinksPropStatuses,
     )
-    from .group_0695 import (
+    from .group_0700 import (
         WebhookPullRequestUnlabeledPropPullRequestPropMergedBy as WebhookPullRequestUnlabeledPropPullRequestPropMergedBy,
     )
-    from .group_0695 import (
+    from .group_0700 import (
         WebhookPullRequestUnlabeledPropPullRequestPropMilestone as WebhookPullRequestUnlabeledPropPullRequestPropMilestone,
     )
-    from .group_0695 import (
+    from .group_0700 import (
         WebhookPullRequestUnlabeledPropPullRequestPropMilestonePropCreator as WebhookPullRequestUnlabeledPropPullRequestPropMilestonePropCreator,
     )
-    from .group_0695 import (
+    from .group_0700 import (
         WebhookPullRequestUnlabeledPropPullRequestPropRequestedReviewersItemsOneof0 as WebhookPullRequestUnlabeledPropPullRequestPropRequestedReviewersItemsOneof0,
     )
-    from .group_0695 import (
+    from .group_0700 import (
         WebhookPullRequestUnlabeledPropPullRequestPropRequestedReviewersItemsOneof1 as WebhookPullRequestUnlabeledPropPullRequestPropRequestedReviewersItemsOneof1,
     )
-    from .group_0695 import (
+    from .group_0700 import (
         WebhookPullRequestUnlabeledPropPullRequestPropRequestedReviewersItemsOneof1PropParent as WebhookPullRequestUnlabeledPropPullRequestPropRequestedReviewersItemsOneof1PropParent,
     )
-    from .group_0695 import (
+    from .group_0700 import (
         WebhookPullRequestUnlabeledPropPullRequestPropRequestedTeamsItems as WebhookPullRequestUnlabeledPropPullRequestPropRequestedTeamsItems,
     )
-    from .group_0695 import (
+    from .group_0700 import (
         WebhookPullRequestUnlabeledPropPullRequestPropRequestedTeamsItemsPropParent as WebhookPullRequestUnlabeledPropPullRequestPropRequestedTeamsItemsPropParent,
     )
-    from .group_0695 import (
+    from .group_0700 import (
         WebhookPullRequestUnlabeledPropPullRequestPropUser as WebhookPullRequestUnlabeledPropPullRequestPropUser,
     )
-    from .group_0696 import WebhookPullRequestUnlocked as WebhookPullRequestUnlocked
-    from .group_0696 import (
+    from .group_0701 import WebhookPullRequestUnlocked as WebhookPullRequestUnlocked
+    from .group_0701 import (
         WebhookPullRequestUnlockedPropPullRequest as WebhookPullRequestUnlockedPropPullRequest,
     )
-    from .group_0696 import (
+    from .group_0701 import (
         WebhookPullRequestUnlockedPropPullRequestPropAssignee as WebhookPullRequestUnlockedPropPullRequestPropAssignee,
     )
-    from .group_0696 import (
+    from .group_0701 import (
         WebhookPullRequestUnlockedPropPullRequestPropAssigneesItems as WebhookPullRequestUnlockedPropPullRequestPropAssigneesItems,
     )
-    from .group_0696 import (
+    from .group_0701 import (
         WebhookPullRequestUnlockedPropPullRequestPropAutoMerge as WebhookPullRequestUnlockedPropPullRequestPropAutoMerge,
     )
-    from .group_0696 import (
+    from .group_0701 import (
         WebhookPullRequestUnlockedPropPullRequestPropAutoMergePropEnabledBy as WebhookPullRequestUnlockedPropPullRequestPropAutoMergePropEnabledBy,
     )
-    from .group_0696 import (
+    from .group_0701 import (
         WebhookPullRequestUnlockedPropPullRequestPropBase as WebhookPullRequestUnlockedPropPullRequestPropBase,
     )
-    from .group_0696 import (
+    from .group_0701 import (
         WebhookPullRequestUnlockedPropPullRequestPropBasePropRepo as WebhookPullRequestUnlockedPropPullRequestPropBasePropRepo,
     )
-    from .group_0696 import (
+    from .group_0701 import (
         WebhookPullRequestUnlockedPropPullRequestPropBasePropRepoPropLicense as WebhookPullRequestUnlockedPropPullRequestPropBasePropRepoPropLicense,
     )
-    from .group_0696 import (
+    from .group_0701 import (
         WebhookPullRequestUnlockedPropPullRequestPropBasePropRepoPropOwner as WebhookPullRequestUnlockedPropPullRequestPropBasePropRepoPropOwner,
     )
-    from .group_0696 import (
+    from .group_0701 import (
         WebhookPullRequestUnlockedPropPullRequestPropBasePropRepoPropPermissions as WebhookPullRequestUnlockedPropPullRequestPropBasePropRepoPropPermissions,
     )
-    from .group_0696 import (
+    from .group_0701 import (
         WebhookPullRequestUnlockedPropPullRequestPropBasePropUser as WebhookPullRequestUnlockedPropPullRequestPropBasePropUser,
     )
-    from .group_0696 import (
+    from .group_0701 import (
         WebhookPullRequestUnlockedPropPullRequestPropHead as WebhookPullRequestUnlockedPropPullRequestPropHead,
     )
-    from .group_0696 import (
+    from .group_0701 import (
         WebhookPullRequestUnlockedPropPullRequestPropHeadPropRepo as WebhookPullRequestUnlockedPropPullRequestPropHeadPropRepo,
     )
-    from .group_0696 import (
+    from .group_0701 import (
         WebhookPullRequestUnlockedPropPullRequestPropHeadPropRepoPropLicense as WebhookPullRequestUnlockedPropPullRequestPropHeadPropRepoPropLicense,
     )
-    from .group_0696 import (
+    from .group_0701 import (
         WebhookPullRequestUnlockedPropPullRequestPropHeadPropRepoPropOwner as WebhookPullRequestUnlockedPropPullRequestPropHeadPropRepoPropOwner,
     )
-    from .group_0696 import (
+    from .group_0701 import (
         WebhookPullRequestUnlockedPropPullRequestPropHeadPropRepoPropPermissions as WebhookPullRequestUnlockedPropPullRequestPropHeadPropRepoPropPermissions,
     )
-    from .group_0696 import (
+    from .group_0701 import (
         WebhookPullRequestUnlockedPropPullRequestPropHeadPropUser as WebhookPullRequestUnlockedPropPullRequestPropHeadPropUser,
     )
-    from .group_0696 import (
+    from .group_0701 import (
         WebhookPullRequestUnlockedPropPullRequestPropLabelsItems as WebhookPullRequestUnlockedPropPullRequestPropLabelsItems,
     )
-    from .group_0696 import (
+    from .group_0701 import (
         WebhookPullRequestUnlockedPropPullRequestPropLinks as WebhookPullRequestUnlockedPropPullRequestPropLinks,
     )
-    from .group_0696 import (
+    from .group_0701 import (
         WebhookPullRequestUnlockedPropPullRequestPropLinksPropComments as WebhookPullRequestUnlockedPropPullRequestPropLinksPropComments,
     )
-    from .group_0696 import (
+    from .group_0701 import (
         WebhookPullRequestUnlockedPropPullRequestPropLinksPropCommits as WebhookPullRequestUnlockedPropPullRequestPropLinksPropCommits,
     )
-    from .group_0696 import (
+    from .group_0701 import (
         WebhookPullRequestUnlockedPropPullRequestPropLinksPropHtml as WebhookPullRequestUnlockedPropPullRequestPropLinksPropHtml,
     )
-    from .group_0696 import (
+    from .group_0701 import (
         WebhookPullRequestUnlockedPropPullRequestPropLinksPropIssue as WebhookPullRequestUnlockedPropPullRequestPropLinksPropIssue,
     )
-    from .group_0696 import (
+    from .group_0701 import (
         WebhookPullRequestUnlockedPropPullRequestPropLinksPropReviewComment as WebhookPullRequestUnlockedPropPullRequestPropLinksPropReviewComment,
     )
-    from .group_0696 import (
+    from .group_0701 import (
         WebhookPullRequestUnlockedPropPullRequestPropLinksPropReviewComments as WebhookPullRequestUnlockedPropPullRequestPropLinksPropReviewComments,
     )
-    from .group_0696 import (
+    from .group_0701 import (
         WebhookPullRequestUnlockedPropPullRequestPropLinksPropSelf as WebhookPullRequestUnlockedPropPullRequestPropLinksPropSelf,
     )
-    from .group_0696 import (
+    from .group_0701 import (
         WebhookPullRequestUnlockedPropPullRequestPropLinksPropStatuses as WebhookPullRequestUnlockedPropPullRequestPropLinksPropStatuses,
     )
-    from .group_0696 import (
+    from .group_0701 import (
         WebhookPullRequestUnlockedPropPullRequestPropMergedBy as WebhookPullRequestUnlockedPropPullRequestPropMergedBy,
     )
-    from .group_0696 import (
+    from .group_0701 import (
         WebhookPullRequestUnlockedPropPullRequestPropMilestone as WebhookPullRequestUnlockedPropPullRequestPropMilestone,
     )
-    from .group_0696 import (
+    from .group_0701 import (
         WebhookPullRequestUnlockedPropPullRequestPropMilestonePropCreator as WebhookPullRequestUnlockedPropPullRequestPropMilestonePropCreator,
     )
-    from .group_0696 import (
+    from .group_0701 import (
         WebhookPullRequestUnlockedPropPullRequestPropRequestedReviewersItemsOneof0 as WebhookPullRequestUnlockedPropPullRequestPropRequestedReviewersItemsOneof0,
     )
-    from .group_0696 import (
+    from .group_0701 import (
         WebhookPullRequestUnlockedPropPullRequestPropRequestedReviewersItemsOneof1 as WebhookPullRequestUnlockedPropPullRequestPropRequestedReviewersItemsOneof1,
     )
-    from .group_0696 import (
+    from .group_0701 import (
         WebhookPullRequestUnlockedPropPullRequestPropRequestedReviewersItemsOneof1PropParent as WebhookPullRequestUnlockedPropPullRequestPropRequestedReviewersItemsOneof1PropParent,
     )
-    from .group_0696 import (
+    from .group_0701 import (
         WebhookPullRequestUnlockedPropPullRequestPropRequestedTeamsItems as WebhookPullRequestUnlockedPropPullRequestPropRequestedTeamsItems,
     )
-    from .group_0696 import (
+    from .group_0701 import (
         WebhookPullRequestUnlockedPropPullRequestPropRequestedTeamsItemsPropParent as WebhookPullRequestUnlockedPropPullRequestPropRequestedTeamsItemsPropParent,
     )
-    from .group_0696 import (
+    from .group_0701 import (
         WebhookPullRequestUnlockedPropPullRequestPropUser as WebhookPullRequestUnlockedPropPullRequestPropUser,
     )
-    from .group_0697 import WebhookPush as WebhookPush
-    from .group_0697 import WebhookPushPropCommitsItems as WebhookPushPropCommitsItems
-    from .group_0697 import (
+    from .group_0702 import WebhookPush as WebhookPush
+    from .group_0702 import WebhookPushPropCommitsItems as WebhookPushPropCommitsItems
+    from .group_0702 import (
         WebhookPushPropCommitsItemsPropAuthor as WebhookPushPropCommitsItemsPropAuthor,
     )
-    from .group_0697 import (
+    from .group_0702 import (
         WebhookPushPropCommitsItemsPropCommitter as WebhookPushPropCommitsItemsPropCommitter,
     )
-    from .group_0697 import WebhookPushPropHeadCommit as WebhookPushPropHeadCommit
-    from .group_0697 import (
+    from .group_0702 import WebhookPushPropHeadCommit as WebhookPushPropHeadCommit
+    from .group_0702 import (
         WebhookPushPropHeadCommitPropAuthor as WebhookPushPropHeadCommitPropAuthor,
     )
-    from .group_0697 import (
+    from .group_0702 import (
         WebhookPushPropHeadCommitPropCommitter as WebhookPushPropHeadCommitPropCommitter,
     )
-    from .group_0697 import WebhookPushPropPusher as WebhookPushPropPusher
-    from .group_0697 import WebhookPushPropRepository as WebhookPushPropRepository
-    from .group_0697 import (
+    from .group_0702 import WebhookPushPropPusher as WebhookPushPropPusher
+    from .group_0702 import WebhookPushPropRepository as WebhookPushPropRepository
+    from .group_0702 import (
         WebhookPushPropRepositoryPropCustomProperties as WebhookPushPropRepositoryPropCustomProperties,
     )
-    from .group_0697 import (
+    from .group_0702 import (
         WebhookPushPropRepositoryPropLicense as WebhookPushPropRepositoryPropLicense,
     )
-    from .group_0697 import (
+    from .group_0702 import (
         WebhookPushPropRepositoryPropOwner as WebhookPushPropRepositoryPropOwner,
     )
-    from .group_0697 import (
+    from .group_0702 import (
         WebhookPushPropRepositoryPropPermissions as WebhookPushPropRepositoryPropPermissions,
     )
-    from .group_0698 import (
+    from .group_0703 import (
         WebhookRegistryPackagePublished as WebhookRegistryPackagePublished,
     )
-    from .group_0699 import (
+    from .group_0704 import (
         WebhookRegistryPackagePublishedPropRegistryPackage as WebhookRegistryPackagePublishedPropRegistryPackage,
     )
-    from .group_0699 import (
+    from .group_0704 import (
         WebhookRegistryPackagePublishedPropRegistryPackagePropOwner as WebhookRegistryPackagePublishedPropRegistryPackagePropOwner,
     )
-    from .group_0699 import (
+    from .group_0704 import (
         WebhookRegistryPackagePublishedPropRegistryPackagePropRegistry as WebhookRegistryPackagePublishedPropRegistryPackagePropRegistry,
     )
-    from .group_0700 import (
+    from .group_0705 import (
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersion as WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersion,
     )
-    from .group_0700 import (
+    from .group_0705 import (
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropAuthor as WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropAuthor,
     )
-    from .group_0700 import (
+    from .group_0705 import (
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropBodyOneof1 as WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropBodyOneof1,
     )
-    from .group_0700 import (
+    from .group_0705 import (
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropContainerMetadata as WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropContainerMetadata,
     )
-    from .group_0700 import (
+    from .group_0705 import (
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropContainerMetadataPropLabels as WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropContainerMetadataPropLabels,
     )
-    from .group_0700 import (
+    from .group_0705 import (
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropContainerMetadataPropManifest as WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropContainerMetadataPropManifest,
     )
-    from .group_0700 import (
+    from .group_0705 import (
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropContainerMetadataPropTag as WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropContainerMetadataPropTag,
     )
-    from .group_0700 import (
+    from .group_0705 import (
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropDockerMetadataItems as WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropDockerMetadataItems,
     )
-    from .group_0700 import (
+    from .group_0705 import (
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropMetadataItems as WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropMetadataItems,
     )
-    from .group_0700 import (
+    from .group_0705 import (
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadata as WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadata,
     )
-    from .group_0700 import (
+    from .group_0705 import (
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropAuthorOneof1 as WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropAuthorOneof1,
     )
-    from .group_0700 import (
+    from .group_0705 import (
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropBin as WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropBin,
     )
-    from .group_0700 import (
+    from .group_0705 import (
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropBugsOneof1 as WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropBugsOneof1,
     )
-    from .group_0700 import (
+    from .group_0705 import (
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropDependencies as WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropDependencies,
     )
-    from .group_0700 import (
+    from .group_0705 import (
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropDevDependencies as WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropDevDependencies,
     )
-    from .group_0700 import (
+    from .group_0705 import (
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropDirectoriesOneof1 as WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropDirectoriesOneof1,
     )
-    from .group_0700 import (
+    from .group_0705 import (
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropDistOneof1 as WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropDistOneof1,
     )
-    from .group_0700 import (
+    from .group_0705 import (
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropEngines as WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropEngines,
     )
-    from .group_0700 import (
+    from .group_0705 import (
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropMan as WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropMan,
     )
-    from .group_0700 import (
+    from .group_0705 import (
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropOptionalDependencies as WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropOptionalDependencies,
     )
-    from .group_0700 import (
+    from .group_0705 import (
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropPeerDependencies as WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropPeerDependencies,
     )
-    from .group_0700 import (
+    from .group_0705 import (
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropRepositoryOneof1 as WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropRepositoryOneof1,
     )
-    from .group_0700 import (
+    from .group_0705 import (
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropScripts as WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropScripts,
     )
-    from .group_0700 import (
+    from .group_0705 import (
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNugetMetadataItems as WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNugetMetadataItems,
     )
-    from .group_0700 import (
+    from .group_0705 import (
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNugetMetadataItemsPropIdOneof1 as WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNugetMetadataItemsPropIdOneof1,
     )
-    from .group_0700 import (
+    from .group_0705 import (
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNugetMetadataItemsPropValueOneof3 as WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNugetMetadataItemsPropValueOneof3,
     )
-    from .group_0700 import (
+    from .group_0705 import (
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropPackageFilesItems as WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropPackageFilesItems,
     )
-    from .group_0700 import (
+    from .group_0705 import (
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropRelease as WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropRelease,
     )
-    from .group_0700 import (
+    from .group_0705 import (
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropReleasePropAuthor as WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropReleasePropAuthor,
     )
-    from .group_0701 import (
+    from .group_0706 import (
         WebhookRegistryPackageUpdated as WebhookRegistryPackageUpdated,
     )
-    from .group_0702 import (
+    from .group_0707 import (
         WebhookRegistryPackageUpdatedPropRegistryPackage as WebhookRegistryPackageUpdatedPropRegistryPackage,
     )
-    from .group_0702 import (
+    from .group_0707 import (
         WebhookRegistryPackageUpdatedPropRegistryPackagePropOwner as WebhookRegistryPackageUpdatedPropRegistryPackagePropOwner,
     )
-    from .group_0702 import (
+    from .group_0707 import (
         WebhookRegistryPackageUpdatedPropRegistryPackagePropRegistry as WebhookRegistryPackageUpdatedPropRegistryPackagePropRegistry,
     )
-    from .group_0703 import (
+    from .group_0708 import (
         WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersion as WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersion,
     )
-    from .group_0703 import (
+    from .group_0708 import (
         WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropAuthor as WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropAuthor,
     )
-    from .group_0703 import (
+    from .group_0708 import (
         WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropDockerMetadataItems as WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropDockerMetadataItems,
     )
-    from .group_0703 import (
+    from .group_0708 import (
         WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropMetadataItems as WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropMetadataItems,
     )
-    from .group_0703 import (
+    from .group_0708 import (
         WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropPackageFilesItems as WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropPackageFilesItems,
     )
-    from .group_0703 import (
+    from .group_0708 import (
         WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropRelease as WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropRelease,
     )
-    from .group_0703 import (
+    from .group_0708 import (
         WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropReleasePropAuthor as WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropReleasePropAuthor,
     )
-    from .group_0704 import WebhookReleaseCreated as WebhookReleaseCreated
-    from .group_0705 import WebhookReleaseDeleted as WebhookReleaseDeleted
-    from .group_0706 import WebhookReleaseEdited as WebhookReleaseEdited
-    from .group_0706 import (
+    from .group_0709 import WebhookReleaseCreated as WebhookReleaseCreated
+    from .group_0710 import WebhookReleaseDeleted as WebhookReleaseDeleted
+    from .group_0711 import WebhookReleaseEdited as WebhookReleaseEdited
+    from .group_0711 import (
         WebhookReleaseEditedPropChanges as WebhookReleaseEditedPropChanges,
     )
-    from .group_0706 import (
+    from .group_0711 import (
         WebhookReleaseEditedPropChangesPropBody as WebhookReleaseEditedPropChangesPropBody,
     )
-    from .group_0706 import (
+    from .group_0711 import (
         WebhookReleaseEditedPropChangesPropMakeLatest as WebhookReleaseEditedPropChangesPropMakeLatest,
     )
-    from .group_0706 import (
+    from .group_0711 import (
         WebhookReleaseEditedPropChangesPropName as WebhookReleaseEditedPropChangesPropName,
     )
-    from .group_0707 import WebhookReleasePrereleased as WebhookReleasePrereleased
-    from .group_0707 import (
+    from .group_0712 import WebhookReleasePrereleased as WebhookReleasePrereleased
+    from .group_0712 import (
         WebhookReleasePrereleasedPropRelease as WebhookReleasePrereleasedPropRelease,
     )
-    from .group_0707 import (
+    from .group_0712 import (
         WebhookReleasePrereleasedPropReleasePropAssetsItems as WebhookReleasePrereleasedPropReleasePropAssetsItems,
     )
-    from .group_0707 import (
+    from .group_0712 import (
         WebhookReleasePrereleasedPropReleasePropAssetsItemsPropUploader as WebhookReleasePrereleasedPropReleasePropAssetsItemsPropUploader,
     )
-    from .group_0707 import (
+    from .group_0712 import (
         WebhookReleasePrereleasedPropReleasePropAuthor as WebhookReleasePrereleasedPropReleasePropAuthor,
     )
-    from .group_0707 import (
+    from .group_0712 import (
         WebhookReleasePrereleasedPropReleasePropReactions as WebhookReleasePrereleasedPropReleasePropReactions,
     )
-    from .group_0708 import WebhookReleasePublished as WebhookReleasePublished
-    from .group_0709 import WebhookReleaseReleased as WebhookReleaseReleased
-    from .group_0710 import WebhookReleaseUnpublished as WebhookReleaseUnpublished
-    from .group_0711 import (
+    from .group_0713 import WebhookReleasePublished as WebhookReleasePublished
+    from .group_0714 import WebhookReleaseReleased as WebhookReleaseReleased
+    from .group_0715 import WebhookReleaseUnpublished as WebhookReleaseUnpublished
+    from .group_0716 import (
         WebhookRepositoryAdvisoryPublished as WebhookRepositoryAdvisoryPublished,
     )
-    from .group_0712 import (
+    from .group_0717 import (
         WebhookRepositoryAdvisoryReported as WebhookRepositoryAdvisoryReported,
     )
-    from .group_0713 import WebhookRepositoryArchived as WebhookRepositoryArchived
-    from .group_0714 import WebhookRepositoryCreated as WebhookRepositoryCreated
-    from .group_0715 import WebhookRepositoryDeleted as WebhookRepositoryDeleted
-    from .group_0716 import (
+    from .group_0718 import WebhookRepositoryArchived as WebhookRepositoryArchived
+    from .group_0719 import WebhookRepositoryCreated as WebhookRepositoryCreated
+    from .group_0720 import WebhookRepositoryDeleted as WebhookRepositoryDeleted
+    from .group_0721 import (
         WebhookRepositoryDispatchSample as WebhookRepositoryDispatchSample,
     )
-    from .group_0716 import (
+    from .group_0721 import (
         WebhookRepositoryDispatchSamplePropClientPayload as WebhookRepositoryDispatchSamplePropClientPayload,
     )
-    from .group_0717 import WebhookRepositoryEdited as WebhookRepositoryEdited
-    from .group_0717 import (
+    from .group_0722 import WebhookRepositoryEdited as WebhookRepositoryEdited
+    from .group_0722 import (
         WebhookRepositoryEditedPropChanges as WebhookRepositoryEditedPropChanges,
     )
-    from .group_0717 import (
+    from .group_0722 import (
         WebhookRepositoryEditedPropChangesPropDefaultBranch as WebhookRepositoryEditedPropChangesPropDefaultBranch,
     )
-    from .group_0717 import (
+    from .group_0722 import (
         WebhookRepositoryEditedPropChangesPropDescription as WebhookRepositoryEditedPropChangesPropDescription,
     )
-    from .group_0717 import (
+    from .group_0722 import (
         WebhookRepositoryEditedPropChangesPropHomepage as WebhookRepositoryEditedPropChangesPropHomepage,
     )
-    from .group_0717 import (
+    from .group_0722 import (
         WebhookRepositoryEditedPropChangesPropTopics as WebhookRepositoryEditedPropChangesPropTopics,
     )
-    from .group_0718 import WebhookRepositoryImport as WebhookRepositoryImport
-    from .group_0719 import WebhookRepositoryPrivatized as WebhookRepositoryPrivatized
-    from .group_0720 import WebhookRepositoryPublicized as WebhookRepositoryPublicized
-    from .group_0721 import WebhookRepositoryRenamed as WebhookRepositoryRenamed
-    from .group_0721 import (
+    from .group_0723 import WebhookRepositoryImport as WebhookRepositoryImport
+    from .group_0724 import WebhookRepositoryPrivatized as WebhookRepositoryPrivatized
+    from .group_0725 import WebhookRepositoryPublicized as WebhookRepositoryPublicized
+    from .group_0726 import WebhookRepositoryRenamed as WebhookRepositoryRenamed
+    from .group_0726 import (
         WebhookRepositoryRenamedPropChanges as WebhookRepositoryRenamedPropChanges,
     )
-    from .group_0721 import (
+    from .group_0726 import (
         WebhookRepositoryRenamedPropChangesPropRepository as WebhookRepositoryRenamedPropChangesPropRepository,
     )
-    from .group_0721 import (
+    from .group_0726 import (
         WebhookRepositoryRenamedPropChangesPropRepositoryPropName as WebhookRepositoryRenamedPropChangesPropRepositoryPropName,
     )
-    from .group_0722 import (
+    from .group_0727 import (
         WebhookRepositoryRulesetCreated as WebhookRepositoryRulesetCreated,
     )
-    from .group_0723 import (
+    from .group_0728 import (
         WebhookRepositoryRulesetDeleted as WebhookRepositoryRulesetDeleted,
     )
-    from .group_0724 import (
+    from .group_0729 import (
         WebhookRepositoryRulesetEdited as WebhookRepositoryRulesetEdited,
     )
-    from .group_0725 import (
+    from .group_0730 import (
         WebhookRepositoryRulesetEditedPropChanges as WebhookRepositoryRulesetEditedPropChanges,
     )
-    from .group_0725 import (
+    from .group_0730 import (
         WebhookRepositoryRulesetEditedPropChangesPropEnforcement as WebhookRepositoryRulesetEditedPropChangesPropEnforcement,
     )
-    from .group_0725 import (
+    from .group_0730 import (
         WebhookRepositoryRulesetEditedPropChangesPropName as WebhookRepositoryRulesetEditedPropChangesPropName,
     )
-    from .group_0726 import (
+    from .group_0731 import (
         WebhookRepositoryRulesetEditedPropChangesPropConditions as WebhookRepositoryRulesetEditedPropChangesPropConditions,
     )
-    from .group_0727 import (
+    from .group_0732 import (
         WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItems as WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItems,
     )
-    from .group_0727 import (
+    from .group_0732 import (
         WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChanges as WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChanges,
     )
-    from .group_0727 import (
+    from .group_0732 import (
         WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropConditionType as WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropConditionType,
     )
-    from .group_0727 import (
+    from .group_0732 import (
         WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropExclude as WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropExclude,
     )
-    from .group_0727 import (
+    from .group_0732 import (
         WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropInclude as WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropInclude,
     )
-    from .group_0727 import (
+    from .group_0732 import (
         WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropTarget as WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropTarget,
     )
-    from .group_0728 import (
+    from .group_0733 import (
         WebhookRepositoryRulesetEditedPropChangesPropRules as WebhookRepositoryRulesetEditedPropChangesPropRules,
     )
-    from .group_0729 import (
+    from .group_0734 import (
         WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItems as WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItems,
     )
-    from .group_0729 import (
+    from .group_0734 import (
         WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChanges as WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChanges,
     )
-    from .group_0729 import (
+    from .group_0734 import (
         WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropConfiguration as WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropConfiguration,
     )
-    from .group_0729 import (
+    from .group_0734 import (
         WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropPattern as WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropPattern,
     )
-    from .group_0729 import (
+    from .group_0734 import (
         WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropRuleType as WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropRuleType,
     )
-    from .group_0730 import WebhookRepositoryTransferred as WebhookRepositoryTransferred
-    from .group_0730 import (
+    from .group_0735 import WebhookRepositoryTransferred as WebhookRepositoryTransferred
+    from .group_0735 import (
         WebhookRepositoryTransferredPropChanges as WebhookRepositoryTransferredPropChanges,
     )
-    from .group_0730 import (
+    from .group_0735 import (
         WebhookRepositoryTransferredPropChangesPropOwner as WebhookRepositoryTransferredPropChangesPropOwner,
     )
-    from .group_0730 import (
+    from .group_0735 import (
         WebhookRepositoryTransferredPropChangesPropOwnerPropFrom as WebhookRepositoryTransferredPropChangesPropOwnerPropFrom,
     )
-    from .group_0730 import (
+    from .group_0735 import (
         WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropOrganization as WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropOrganization,
     )
-    from .group_0730 import (
+    from .group_0735 import (
         WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropUser as WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropUser,
     )
-    from .group_0731 import WebhookRepositoryUnarchived as WebhookRepositoryUnarchived
-    from .group_0732 import (
+    from .group_0736 import WebhookRepositoryUnarchived as WebhookRepositoryUnarchived
+    from .group_0737 import (
         WebhookRepositoryVulnerabilityAlertCreate as WebhookRepositoryVulnerabilityAlertCreate,
     )
-    from .group_0733 import (
+    from .group_0738 import (
         WebhookRepositoryVulnerabilityAlertDismiss as WebhookRepositoryVulnerabilityAlertDismiss,
     )
-    from .group_0733 import (
+    from .group_0738 import (
         WebhookRepositoryVulnerabilityAlertDismissPropAlert as WebhookRepositoryVulnerabilityAlertDismissPropAlert,
     )
-    from .group_0733 import (
+    from .group_0738 import (
         WebhookRepositoryVulnerabilityAlertDismissPropAlertPropDismisser as WebhookRepositoryVulnerabilityAlertDismissPropAlertPropDismisser,
     )
-    from .group_0734 import (
+    from .group_0739 import (
         WebhookRepositoryVulnerabilityAlertReopen as WebhookRepositoryVulnerabilityAlertReopen,
     )
-    from .group_0735 import (
+    from .group_0740 import (
         WebhookRepositoryVulnerabilityAlertResolve as WebhookRepositoryVulnerabilityAlertResolve,
     )
-    from .group_0735 import (
+    from .group_0740 import (
         WebhookRepositoryVulnerabilityAlertResolvePropAlert as WebhookRepositoryVulnerabilityAlertResolvePropAlert,
     )
-    from .group_0735 import (
+    from .group_0740 import (
         WebhookRepositoryVulnerabilityAlertResolvePropAlertPropDismisser as WebhookRepositoryVulnerabilityAlertResolvePropAlertPropDismisser,
     )
-    from .group_0736 import (
+    from .group_0741 import (
         WebhookSecretScanningAlertCreated as WebhookSecretScanningAlertCreated,
     )
-    from .group_0737 import SecretScanningLocation as SecretScanningLocation
-    from .group_0737 import SecretScanningLocationCommit as SecretScanningLocationCommit
-    from .group_0737 import (
+    from .group_0742 import SecretScanningLocation as SecretScanningLocation
+    from .group_0742 import SecretScanningLocationCommit as SecretScanningLocationCommit
+    from .group_0742 import (
         SecretScanningLocationDiscussionBody as SecretScanningLocationDiscussionBody,
     )
-    from .group_0737 import (
+    from .group_0742 import (
         SecretScanningLocationDiscussionComment as SecretScanningLocationDiscussionComment,
     )
-    from .group_0737 import (
+    from .group_0742 import (
         SecretScanningLocationDiscussionTitle as SecretScanningLocationDiscussionTitle,
     )
-    from .group_0737 import (
+    from .group_0742 import (
         SecretScanningLocationIssueBody as SecretScanningLocationIssueBody,
     )
-    from .group_0737 import (
+    from .group_0742 import (
         SecretScanningLocationIssueComment as SecretScanningLocationIssueComment,
     )
-    from .group_0737 import (
+    from .group_0742 import (
         SecretScanningLocationIssueTitle as SecretScanningLocationIssueTitle,
     )
-    from .group_0737 import (
+    from .group_0742 import (
         SecretScanningLocationPullRequestBody as SecretScanningLocationPullRequestBody,
     )
-    from .group_0737 import (
+    from .group_0742 import (
         SecretScanningLocationPullRequestComment as SecretScanningLocationPullRequestComment,
     )
-    from .group_0737 import (
+    from .group_0742 import (
         SecretScanningLocationPullRequestReview as SecretScanningLocationPullRequestReview,
     )
-    from .group_0737 import (
+    from .group_0742 import (
         SecretScanningLocationPullRequestReviewComment as SecretScanningLocationPullRequestReviewComment,
     )
-    from .group_0737 import (
+    from .group_0742 import (
         SecretScanningLocationPullRequestTitle as SecretScanningLocationPullRequestTitle,
     )
-    from .group_0737 import (
+    from .group_0742 import (
         SecretScanningLocationWikiCommit as SecretScanningLocationWikiCommit,
     )
-    from .group_0737 import (
+    from .group_0742 import (
         WebhookSecretScanningAlertLocationCreated as WebhookSecretScanningAlertLocationCreated,
     )
-    from .group_0738 import (
+    from .group_0743 import (
         WebhookSecretScanningAlertLocationCreatedFormEncoded as WebhookSecretScanningAlertLocationCreatedFormEncoded,
     )
-    from .group_0739 import (
+    from .group_0744 import (
         WebhookSecretScanningAlertPubliclyLeaked as WebhookSecretScanningAlertPubliclyLeaked,
     )
-    from .group_0740 import (
+    from .group_0745 import (
         WebhookSecretScanningAlertReopened as WebhookSecretScanningAlertReopened,
     )
-    from .group_0741 import (
+    from .group_0746 import (
         WebhookSecretScanningAlertResolved as WebhookSecretScanningAlertResolved,
     )
-    from .group_0742 import (
+    from .group_0747 import (
         WebhookSecretScanningAlertValidated as WebhookSecretScanningAlertValidated,
     )
-    from .group_0743 import (
+    from .group_0748 import (
         WebhookSecretScanningScanCompleted as WebhookSecretScanningScanCompleted,
     )
-    from .group_0744 import (
+    from .group_0749 import (
         WebhookSecurityAdvisoryPublished as WebhookSecurityAdvisoryPublished,
     )
-    from .group_0745 import (
+    from .group_0750 import (
         WebhookSecurityAdvisoryUpdated as WebhookSecurityAdvisoryUpdated,
     )
-    from .group_0746 import (
+    from .group_0751 import (
         WebhookSecurityAdvisoryWithdrawn as WebhookSecurityAdvisoryWithdrawn,
     )
-    from .group_0747 import (
+    from .group_0752 import (
         WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisory as WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisory,
     )
-    from .group_0747 import (
+    from .group_0752 import (
         WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCvss as WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCvss,
     )
-    from .group_0747 import (
+    from .group_0752 import (
         WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCwesItems as WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCwesItems,
     )
-    from .group_0747 import (
+    from .group_0752 import (
         WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropIdentifiersItems as WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropIdentifiersItems,
     )
-    from .group_0747 import (
+    from .group_0752 import (
         WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropReferencesItems as WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropReferencesItems,
     )
-    from .group_0747 import (
+    from .group_0752 import (
         WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItems as WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItems,
     )
-    from .group_0747 import (
+    from .group_0752 import (
         WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion as WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion,
     )
-    from .group_0747 import (
+    from .group_0752 import (
         WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackage as WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackage,
     )
-    from .group_0748 import WebhookSecurityAndAnalysis as WebhookSecurityAndAnalysis
-    from .group_0749 import (
+    from .group_0753 import WebhookSecurityAndAnalysis as WebhookSecurityAndAnalysis
+    from .group_0754 import (
         WebhookSecurityAndAnalysisPropChanges as WebhookSecurityAndAnalysisPropChanges,
     )
-    from .group_0750 import (
+    from .group_0755 import (
         WebhookSecurityAndAnalysisPropChangesPropFrom as WebhookSecurityAndAnalysisPropChangesPropFrom,
     )
-    from .group_0751 import WebhookSponsorshipCancelled as WebhookSponsorshipCancelled
-    from .group_0752 import WebhookSponsorshipCreated as WebhookSponsorshipCreated
-    from .group_0753 import WebhookSponsorshipEdited as WebhookSponsorshipEdited
-    from .group_0753 import (
+    from .group_0756 import WebhookSponsorshipCancelled as WebhookSponsorshipCancelled
+    from .group_0757 import WebhookSponsorshipCreated as WebhookSponsorshipCreated
+    from .group_0758 import WebhookSponsorshipEdited as WebhookSponsorshipEdited
+    from .group_0758 import (
         WebhookSponsorshipEditedPropChanges as WebhookSponsorshipEditedPropChanges,
     )
-    from .group_0753 import (
+    from .group_0758 import (
         WebhookSponsorshipEditedPropChangesPropPrivacyLevel as WebhookSponsorshipEditedPropChangesPropPrivacyLevel,
     )
-    from .group_0754 import (
+    from .group_0759 import (
         WebhookSponsorshipPendingCancellation as WebhookSponsorshipPendingCancellation,
     )
-    from .group_0755 import (
+    from .group_0760 import (
         WebhookSponsorshipPendingTierChange as WebhookSponsorshipPendingTierChange,
     )
-    from .group_0756 import (
+    from .group_0761 import (
         WebhookSponsorshipTierChanged as WebhookSponsorshipTierChanged,
     )
-    from .group_0757 import WebhookStarCreated as WebhookStarCreated
-    from .group_0758 import WebhookStarDeleted as WebhookStarDeleted
-    from .group_0759 import WebhookStatus as WebhookStatus
-    from .group_0759 import (
+    from .group_0762 import WebhookStarCreated as WebhookStarCreated
+    from .group_0763 import WebhookStarDeleted as WebhookStarDeleted
+    from .group_0764 import WebhookStatus as WebhookStatus
+    from .group_0764 import (
         WebhookStatusPropBranchesItems as WebhookStatusPropBranchesItems,
     )
-    from .group_0759 import (
+    from .group_0764 import (
         WebhookStatusPropBranchesItemsPropCommit as WebhookStatusPropBranchesItemsPropCommit,
     )
-    from .group_0759 import WebhookStatusPropCommit as WebhookStatusPropCommit
-    from .group_0759 import (
+    from .group_0764 import WebhookStatusPropCommit as WebhookStatusPropCommit
+    from .group_0764 import (
         WebhookStatusPropCommitPropAuthor as WebhookStatusPropCommitPropAuthor,
     )
-    from .group_0759 import (
+    from .group_0764 import (
         WebhookStatusPropCommitPropCommit as WebhookStatusPropCommitPropCommit,
     )
-    from .group_0759 import (
+    from .group_0764 import (
         WebhookStatusPropCommitPropCommitPropAuthor as WebhookStatusPropCommitPropCommitPropAuthor,
     )
-    from .group_0759 import (
+    from .group_0764 import (
         WebhookStatusPropCommitPropCommitPropCommitter as WebhookStatusPropCommitPropCommitPropCommitter,
     )
-    from .group_0759 import (
+    from .group_0764 import (
         WebhookStatusPropCommitPropCommitPropTree as WebhookStatusPropCommitPropCommitPropTree,
     )
-    from .group_0759 import (
+    from .group_0764 import (
         WebhookStatusPropCommitPropCommitPropVerification as WebhookStatusPropCommitPropCommitPropVerification,
     )
-    from .group_0759 import (
+    from .group_0764 import (
         WebhookStatusPropCommitPropCommitter as WebhookStatusPropCommitPropCommitter,
     )
-    from .group_0759 import (
+    from .group_0764 import (
         WebhookStatusPropCommitPropParentsItems as WebhookStatusPropCommitPropParentsItems,
     )
-    from .group_0760 import (
+    from .group_0765 import (
         WebhookStatusPropCommitPropCommitPropAuthorAllof0 as WebhookStatusPropCommitPropCommitPropAuthorAllof0,
     )
-    from .group_0761 import (
+    from .group_0766 import (
         WebhookStatusPropCommitPropCommitPropAuthorAllof1 as WebhookStatusPropCommitPropCommitPropAuthorAllof1,
     )
-    from .group_0762 import (
+    from .group_0767 import (
         WebhookStatusPropCommitPropCommitPropCommitterAllof0 as WebhookStatusPropCommitPropCommitPropCommitterAllof0,
     )
-    from .group_0763 import (
+    from .group_0768 import (
         WebhookStatusPropCommitPropCommitPropCommitterAllof1 as WebhookStatusPropCommitPropCommitPropCommitterAllof1,
     )
-    from .group_0764 import (
+    from .group_0769 import (
         WebhookSubIssuesParentIssueAdded as WebhookSubIssuesParentIssueAdded,
     )
-    from .group_0765 import (
+    from .group_0770 import (
         WebhookSubIssuesParentIssueRemoved as WebhookSubIssuesParentIssueRemoved,
     )
-    from .group_0766 import (
+    from .group_0771 import (
         WebhookSubIssuesSubIssueAdded as WebhookSubIssuesSubIssueAdded,
     )
-    from .group_0767 import (
+    from .group_0772 import (
         WebhookSubIssuesSubIssueRemoved as WebhookSubIssuesSubIssueRemoved,
     )
-    from .group_0768 import WebhookTeamAdd as WebhookTeamAdd
-    from .group_0769 import WebhookTeamAddedToRepository as WebhookTeamAddedToRepository
-    from .group_0769 import (
+    from .group_0773 import WebhookTeamAdd as WebhookTeamAdd
+    from .group_0774 import WebhookTeamAddedToRepository as WebhookTeamAddedToRepository
+    from .group_0774 import (
         WebhookTeamAddedToRepositoryPropRepository as WebhookTeamAddedToRepositoryPropRepository,
     )
-    from .group_0769 import (
+    from .group_0774 import (
         WebhookTeamAddedToRepositoryPropRepositoryPropCustomProperties as WebhookTeamAddedToRepositoryPropRepositoryPropCustomProperties,
     )
-    from .group_0769 import (
+    from .group_0774 import (
         WebhookTeamAddedToRepositoryPropRepositoryPropLicense as WebhookTeamAddedToRepositoryPropRepositoryPropLicense,
     )
-    from .group_0769 import (
+    from .group_0774 import (
         WebhookTeamAddedToRepositoryPropRepositoryPropOwner as WebhookTeamAddedToRepositoryPropRepositoryPropOwner,
     )
-    from .group_0769 import (
+    from .group_0774 import (
         WebhookTeamAddedToRepositoryPropRepositoryPropPermissions as WebhookTeamAddedToRepositoryPropRepositoryPropPermissions,
     )
-    from .group_0770 import WebhookTeamCreated as WebhookTeamCreated
-    from .group_0770 import (
+    from .group_0775 import WebhookTeamCreated as WebhookTeamCreated
+    from .group_0775 import (
         WebhookTeamCreatedPropRepository as WebhookTeamCreatedPropRepository,
     )
-    from .group_0770 import (
+    from .group_0775 import (
         WebhookTeamCreatedPropRepositoryPropCustomProperties as WebhookTeamCreatedPropRepositoryPropCustomProperties,
     )
-    from .group_0770 import (
+    from .group_0775 import (
         WebhookTeamCreatedPropRepositoryPropLicense as WebhookTeamCreatedPropRepositoryPropLicense,
     )
-    from .group_0770 import (
+    from .group_0775 import (
         WebhookTeamCreatedPropRepositoryPropOwner as WebhookTeamCreatedPropRepositoryPropOwner,
     )
-    from .group_0770 import (
+    from .group_0775 import (
         WebhookTeamCreatedPropRepositoryPropPermissions as WebhookTeamCreatedPropRepositoryPropPermissions,
     )
-    from .group_0771 import WebhookTeamDeleted as WebhookTeamDeleted
-    from .group_0771 import (
+    from .group_0776 import WebhookTeamDeleted as WebhookTeamDeleted
+    from .group_0776 import (
         WebhookTeamDeletedPropRepository as WebhookTeamDeletedPropRepository,
     )
-    from .group_0771 import (
+    from .group_0776 import (
         WebhookTeamDeletedPropRepositoryPropCustomProperties as WebhookTeamDeletedPropRepositoryPropCustomProperties,
     )
-    from .group_0771 import (
+    from .group_0776 import (
         WebhookTeamDeletedPropRepositoryPropLicense as WebhookTeamDeletedPropRepositoryPropLicense,
     )
-    from .group_0771 import (
+    from .group_0776 import (
         WebhookTeamDeletedPropRepositoryPropOwner as WebhookTeamDeletedPropRepositoryPropOwner,
     )
-    from .group_0771 import (
+    from .group_0776 import (
         WebhookTeamDeletedPropRepositoryPropPermissions as WebhookTeamDeletedPropRepositoryPropPermissions,
     )
-    from .group_0772 import WebhookTeamEdited as WebhookTeamEdited
-    from .group_0772 import WebhookTeamEditedPropChanges as WebhookTeamEditedPropChanges
-    from .group_0772 import (
+    from .group_0777 import WebhookTeamEdited as WebhookTeamEdited
+    from .group_0777 import WebhookTeamEditedPropChanges as WebhookTeamEditedPropChanges
+    from .group_0777 import (
         WebhookTeamEditedPropChangesPropDescription as WebhookTeamEditedPropChangesPropDescription,
     )
-    from .group_0772 import (
+    from .group_0777 import (
         WebhookTeamEditedPropChangesPropName as WebhookTeamEditedPropChangesPropName,
     )
-    from .group_0772 import (
+    from .group_0777 import (
         WebhookTeamEditedPropChangesPropNotificationSetting as WebhookTeamEditedPropChangesPropNotificationSetting,
     )
-    from .group_0772 import (
+    from .group_0777 import (
         WebhookTeamEditedPropChangesPropPrivacy as WebhookTeamEditedPropChangesPropPrivacy,
     )
-    from .group_0772 import (
+    from .group_0777 import (
         WebhookTeamEditedPropChangesPropRepository as WebhookTeamEditedPropChangesPropRepository,
     )
-    from .group_0772 import (
+    from .group_0777 import (
         WebhookTeamEditedPropChangesPropRepositoryPropPermissions as WebhookTeamEditedPropChangesPropRepositoryPropPermissions,
     )
-    from .group_0772 import (
+    from .group_0777 import (
         WebhookTeamEditedPropChangesPropRepositoryPropPermissionsPropFrom as WebhookTeamEditedPropChangesPropRepositoryPropPermissionsPropFrom,
     )
-    from .group_0772 import (
+    from .group_0777 import (
         WebhookTeamEditedPropRepository as WebhookTeamEditedPropRepository,
     )
-    from .group_0772 import (
+    from .group_0777 import (
         WebhookTeamEditedPropRepositoryPropCustomProperties as WebhookTeamEditedPropRepositoryPropCustomProperties,
     )
-    from .group_0772 import (
+    from .group_0777 import (
         WebhookTeamEditedPropRepositoryPropLicense as WebhookTeamEditedPropRepositoryPropLicense,
     )
-    from .group_0772 import (
+    from .group_0777 import (
         WebhookTeamEditedPropRepositoryPropOwner as WebhookTeamEditedPropRepositoryPropOwner,
     )
-    from .group_0772 import (
+    from .group_0777 import (
         WebhookTeamEditedPropRepositoryPropPermissions as WebhookTeamEditedPropRepositoryPropPermissions,
     )
-    from .group_0773 import (
+    from .group_0778 import (
         WebhookTeamRemovedFromRepository as WebhookTeamRemovedFromRepository,
     )
-    from .group_0773 import (
+    from .group_0778 import (
         WebhookTeamRemovedFromRepositoryPropRepository as WebhookTeamRemovedFromRepositoryPropRepository,
     )
-    from .group_0773 import (
+    from .group_0778 import (
         WebhookTeamRemovedFromRepositoryPropRepositoryPropCustomProperties as WebhookTeamRemovedFromRepositoryPropRepositoryPropCustomProperties,
     )
-    from .group_0773 import (
+    from .group_0778 import (
         WebhookTeamRemovedFromRepositoryPropRepositoryPropLicense as WebhookTeamRemovedFromRepositoryPropRepositoryPropLicense,
     )
-    from .group_0773 import (
+    from .group_0778 import (
         WebhookTeamRemovedFromRepositoryPropRepositoryPropOwner as WebhookTeamRemovedFromRepositoryPropRepositoryPropOwner,
     )
-    from .group_0773 import (
+    from .group_0778 import (
         WebhookTeamRemovedFromRepositoryPropRepositoryPropPermissions as WebhookTeamRemovedFromRepositoryPropRepositoryPropPermissions,
     )
-    from .group_0774 import WebhookWatchStarted as WebhookWatchStarted
-    from .group_0775 import WebhookWorkflowDispatch as WebhookWorkflowDispatch
-    from .group_0775 import (
+    from .group_0779 import WebhookWatchStarted as WebhookWatchStarted
+    from .group_0780 import WebhookWorkflowDispatch as WebhookWorkflowDispatch
+    from .group_0780 import (
         WebhookWorkflowDispatchPropInputs as WebhookWorkflowDispatchPropInputs,
     )
-    from .group_0776 import WebhookWorkflowJobCompleted as WebhookWorkflowJobCompleted
-    from .group_0776 import (
+    from .group_0781 import WebhookWorkflowJobCompleted as WebhookWorkflowJobCompleted
+    from .group_0781 import (
         WebhookWorkflowJobCompletedPropWorkflowJob as WebhookWorkflowJobCompletedPropWorkflowJob,
     )
-    from .group_0776 import (
+    from .group_0781 import (
         WebhookWorkflowJobCompletedPropWorkflowJobMergedSteps as WebhookWorkflowJobCompletedPropWorkflowJobMergedSteps,
     )
-    from .group_0777 import (
+    from .group_0782 import (
         WebhookWorkflowJobCompletedPropWorkflowJobAllof0 as WebhookWorkflowJobCompletedPropWorkflowJobAllof0,
     )
-    from .group_0777 import (
+    from .group_0782 import (
         WebhookWorkflowJobCompletedPropWorkflowJobAllof0PropStepsItems as WebhookWorkflowJobCompletedPropWorkflowJobAllof0PropStepsItems,
     )
-    from .group_0778 import (
+    from .group_0783 import (
         WebhookWorkflowJobCompletedPropWorkflowJobAllof1 as WebhookWorkflowJobCompletedPropWorkflowJobAllof1,
     )
-    from .group_0778 import (
+    from .group_0783 import (
         WebhookWorkflowJobCompletedPropWorkflowJobAllof1PropStepsItems as WebhookWorkflowJobCompletedPropWorkflowJobAllof1PropStepsItems,
     )
-    from .group_0779 import WebhookWorkflowJobInProgress as WebhookWorkflowJobInProgress
-    from .group_0779 import (
+    from .group_0784 import WebhookWorkflowJobInProgress as WebhookWorkflowJobInProgress
+    from .group_0784 import (
         WebhookWorkflowJobInProgressPropWorkflowJob as WebhookWorkflowJobInProgressPropWorkflowJob,
     )
-    from .group_0779 import (
+    from .group_0784 import (
         WebhookWorkflowJobInProgressPropWorkflowJobMergedSteps as WebhookWorkflowJobInProgressPropWorkflowJobMergedSteps,
     )
-    from .group_0780 import (
+    from .group_0785 import (
         WebhookWorkflowJobInProgressPropWorkflowJobAllof0 as WebhookWorkflowJobInProgressPropWorkflowJobAllof0,
     )
-    from .group_0780 import (
+    from .group_0785 import (
         WebhookWorkflowJobInProgressPropWorkflowJobAllof0PropStepsItems as WebhookWorkflowJobInProgressPropWorkflowJobAllof0PropStepsItems,
     )
-    from .group_0781 import (
+    from .group_0786 import (
         WebhookWorkflowJobInProgressPropWorkflowJobAllof1 as WebhookWorkflowJobInProgressPropWorkflowJobAllof1,
     )
-    from .group_0781 import (
+    from .group_0786 import (
         WebhookWorkflowJobInProgressPropWorkflowJobAllof1PropStepsItems as WebhookWorkflowJobInProgressPropWorkflowJobAllof1PropStepsItems,
     )
-    from .group_0782 import WebhookWorkflowJobQueued as WebhookWorkflowJobQueued
-    from .group_0782 import (
+    from .group_0787 import WebhookWorkflowJobQueued as WebhookWorkflowJobQueued
+    from .group_0787 import (
         WebhookWorkflowJobQueuedPropWorkflowJob as WebhookWorkflowJobQueuedPropWorkflowJob,
     )
-    from .group_0782 import (
+    from .group_0787 import (
         WebhookWorkflowJobQueuedPropWorkflowJobPropStepsItems as WebhookWorkflowJobQueuedPropWorkflowJobPropStepsItems,
     )
-    from .group_0783 import WebhookWorkflowJobWaiting as WebhookWorkflowJobWaiting
-    from .group_0783 import (
+    from .group_0788 import WebhookWorkflowJobWaiting as WebhookWorkflowJobWaiting
+    from .group_0788 import (
         WebhookWorkflowJobWaitingPropWorkflowJob as WebhookWorkflowJobWaitingPropWorkflowJob,
     )
-    from .group_0783 import (
+    from .group_0788 import (
         WebhookWorkflowJobWaitingPropWorkflowJobPropStepsItems as WebhookWorkflowJobWaitingPropWorkflowJobPropStepsItems,
     )
-    from .group_0784 import WebhookWorkflowRunCompleted as WebhookWorkflowRunCompleted
-    from .group_0784 import (
+    from .group_0789 import WebhookWorkflowRunCompleted as WebhookWorkflowRunCompleted
+    from .group_0789 import (
         WebhookWorkflowRunCompletedPropWorkflowRun as WebhookWorkflowRunCompletedPropWorkflowRun,
     )
-    from .group_0784 import (
+    from .group_0789 import (
         WebhookWorkflowRunCompletedPropWorkflowRunPropActor as WebhookWorkflowRunCompletedPropWorkflowRunPropActor,
     )
-    from .group_0784 import (
+    from .group_0789 import (
         WebhookWorkflowRunCompletedPropWorkflowRunPropHeadCommit as WebhookWorkflowRunCompletedPropWorkflowRunPropHeadCommit,
     )
-    from .group_0784 import (
+    from .group_0789 import (
         WebhookWorkflowRunCompletedPropWorkflowRunPropHeadCommitPropAuthor as WebhookWorkflowRunCompletedPropWorkflowRunPropHeadCommitPropAuthor,
     )
-    from .group_0784 import (
+    from .group_0789 import (
         WebhookWorkflowRunCompletedPropWorkflowRunPropHeadCommitPropCommitter as WebhookWorkflowRunCompletedPropWorkflowRunPropHeadCommitPropCommitter,
     )
-    from .group_0784 import (
+    from .group_0789 import (
         WebhookWorkflowRunCompletedPropWorkflowRunPropHeadRepository as WebhookWorkflowRunCompletedPropWorkflowRunPropHeadRepository,
     )
-    from .group_0784 import (
+    from .group_0789 import (
         WebhookWorkflowRunCompletedPropWorkflowRunPropHeadRepositoryPropOwner as WebhookWorkflowRunCompletedPropWorkflowRunPropHeadRepositoryPropOwner,
     )
-    from .group_0784 import (
+    from .group_0789 import (
         WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItems as WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItems,
     )
-    from .group_0784 import (
+    from .group_0789 import (
         WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropBase as WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropBase,
     )
-    from .group_0784 import (
+    from .group_0789 import (
         WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropBasePropRepo as WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropBasePropRepo,
     )
-    from .group_0784 import (
+    from .group_0789 import (
         WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropHead as WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropHead,
     )
-    from .group_0784 import (
+    from .group_0789 import (
         WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo as WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo,
     )
-    from .group_0784 import (
+    from .group_0789 import (
         WebhookWorkflowRunCompletedPropWorkflowRunPropReferencedWorkflowsItems as WebhookWorkflowRunCompletedPropWorkflowRunPropReferencedWorkflowsItems,
     )
-    from .group_0784 import (
+    from .group_0789 import (
         WebhookWorkflowRunCompletedPropWorkflowRunPropRepository as WebhookWorkflowRunCompletedPropWorkflowRunPropRepository,
     )
-    from .group_0784 import (
+    from .group_0789 import (
         WebhookWorkflowRunCompletedPropWorkflowRunPropRepositoryPropOwner as WebhookWorkflowRunCompletedPropWorkflowRunPropRepositoryPropOwner,
     )
-    from .group_0784 import (
+    from .group_0789 import (
         WebhookWorkflowRunCompletedPropWorkflowRunPropTriggeringActor as WebhookWorkflowRunCompletedPropWorkflowRunPropTriggeringActor,
     )
-    from .group_0785 import WebhookWorkflowRunInProgress as WebhookWorkflowRunInProgress
-    from .group_0785 import (
+    from .group_0790 import WebhookWorkflowRunInProgress as WebhookWorkflowRunInProgress
+    from .group_0790 import (
         WebhookWorkflowRunInProgressPropWorkflowRun as WebhookWorkflowRunInProgressPropWorkflowRun,
     )
-    from .group_0785 import (
+    from .group_0790 import (
         WebhookWorkflowRunInProgressPropWorkflowRunPropActor as WebhookWorkflowRunInProgressPropWorkflowRunPropActor,
     )
-    from .group_0785 import (
+    from .group_0790 import (
         WebhookWorkflowRunInProgressPropWorkflowRunPropHeadCommit as WebhookWorkflowRunInProgressPropWorkflowRunPropHeadCommit,
     )
-    from .group_0785 import (
+    from .group_0790 import (
         WebhookWorkflowRunInProgressPropWorkflowRunPropHeadCommitPropAuthor as WebhookWorkflowRunInProgressPropWorkflowRunPropHeadCommitPropAuthor,
     )
-    from .group_0785 import (
+    from .group_0790 import (
         WebhookWorkflowRunInProgressPropWorkflowRunPropHeadCommitPropCommitter as WebhookWorkflowRunInProgressPropWorkflowRunPropHeadCommitPropCommitter,
     )
-    from .group_0785 import (
+    from .group_0790 import (
         WebhookWorkflowRunInProgressPropWorkflowRunPropHeadRepository as WebhookWorkflowRunInProgressPropWorkflowRunPropHeadRepository,
     )
-    from .group_0785 import (
+    from .group_0790 import (
         WebhookWorkflowRunInProgressPropWorkflowRunPropHeadRepositoryPropOwner as WebhookWorkflowRunInProgressPropWorkflowRunPropHeadRepositoryPropOwner,
     )
-    from .group_0785 import (
+    from .group_0790 import (
         WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItems as WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItems,
     )
-    from .group_0785 import (
+    from .group_0790 import (
         WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItemsPropBase as WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItemsPropBase,
     )
-    from .group_0785 import (
+    from .group_0790 import (
         WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItemsPropBasePropRepo as WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItemsPropBasePropRepo,
     )
-    from .group_0785 import (
+    from .group_0790 import (
         WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItemsPropHead as WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItemsPropHead,
     )
-    from .group_0785 import (
+    from .group_0790 import (
         WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo as WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo,
     )
-    from .group_0785 import (
+    from .group_0790 import (
         WebhookWorkflowRunInProgressPropWorkflowRunPropReferencedWorkflowsItems as WebhookWorkflowRunInProgressPropWorkflowRunPropReferencedWorkflowsItems,
     )
-    from .group_0785 import (
+    from .group_0790 import (
         WebhookWorkflowRunInProgressPropWorkflowRunPropRepository as WebhookWorkflowRunInProgressPropWorkflowRunPropRepository,
     )
-    from .group_0785 import (
+    from .group_0790 import (
         WebhookWorkflowRunInProgressPropWorkflowRunPropRepositoryPropOwner as WebhookWorkflowRunInProgressPropWorkflowRunPropRepositoryPropOwner,
     )
-    from .group_0785 import (
+    from .group_0790 import (
         WebhookWorkflowRunInProgressPropWorkflowRunPropTriggeringActor as WebhookWorkflowRunInProgressPropWorkflowRunPropTriggeringActor,
     )
-    from .group_0786 import WebhookWorkflowRunRequested as WebhookWorkflowRunRequested
-    from .group_0786 import (
+    from .group_0791 import WebhookWorkflowRunRequested as WebhookWorkflowRunRequested
+    from .group_0791 import (
         WebhookWorkflowRunRequestedPropWorkflowRun as WebhookWorkflowRunRequestedPropWorkflowRun,
     )
-    from .group_0786 import (
+    from .group_0791 import (
         WebhookWorkflowRunRequestedPropWorkflowRunPropActor as WebhookWorkflowRunRequestedPropWorkflowRunPropActor,
     )
-    from .group_0786 import (
+    from .group_0791 import (
         WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommit as WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommit,
     )
-    from .group_0786 import (
+    from .group_0791 import (
         WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommitPropAuthor as WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommitPropAuthor,
     )
-    from .group_0786 import (
+    from .group_0791 import (
         WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommitPropCommitter as WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommitPropCommitter,
     )
-    from .group_0786 import (
+    from .group_0791 import (
         WebhookWorkflowRunRequestedPropWorkflowRunPropHeadRepository as WebhookWorkflowRunRequestedPropWorkflowRunPropHeadRepository,
     )
-    from .group_0786 import (
+    from .group_0791 import (
         WebhookWorkflowRunRequestedPropWorkflowRunPropHeadRepositoryPropOwner as WebhookWorkflowRunRequestedPropWorkflowRunPropHeadRepositoryPropOwner,
     )
-    from .group_0786 import (
+    from .group_0791 import (
         WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItems as WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItems,
     )
-    from .group_0786 import (
+    from .group_0791 import (
         WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropBase as WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropBase,
     )
-    from .group_0786 import (
+    from .group_0791 import (
         WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropBasePropRepo as WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropBasePropRepo,
     )
-    from .group_0786 import (
+    from .group_0791 import (
         WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHead as WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHead,
     )
-    from .group_0786 import (
+    from .group_0791 import (
         WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo as WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo,
     )
-    from .group_0786 import (
+    from .group_0791 import (
         WebhookWorkflowRunRequestedPropWorkflowRunPropReferencedWorkflowsItems as WebhookWorkflowRunRequestedPropWorkflowRunPropReferencedWorkflowsItems,
     )
-    from .group_0786 import (
+    from .group_0791 import (
         WebhookWorkflowRunRequestedPropWorkflowRunPropRepository as WebhookWorkflowRunRequestedPropWorkflowRunPropRepository,
     )
-    from .group_0786 import (
+    from .group_0791 import (
         WebhookWorkflowRunRequestedPropWorkflowRunPropRepositoryPropOwner as WebhookWorkflowRunRequestedPropWorkflowRunPropRepositoryPropOwner,
     )
-    from .group_0786 import (
+    from .group_0791 import (
         WebhookWorkflowRunRequestedPropWorkflowRunPropTriggeringActor as WebhookWorkflowRunRequestedPropWorkflowRunPropTriggeringActor,
     )
-    from .group_0787 import (
+    from .group_0792 import (
         AppManifestsCodeConversionsPostResponse201 as AppManifestsCodeConversionsPostResponse201,
     )
-    from .group_0788 import (
+    from .group_0793 import (
         AppManifestsCodeConversionsPostResponse201Allof1 as AppManifestsCodeConversionsPostResponse201Allof1,
     )
-    from .group_0789 import AppHookConfigPatchBody as AppHookConfigPatchBody
-    from .group_0790 import (
+    from .group_0794 import AppHookConfigPatchBody as AppHookConfigPatchBody
+    from .group_0795 import (
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202 as AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
     )
-    from .group_0791 import (
+    from .group_0796 import (
         AppInstallationsInstallationIdAccessTokensPostBody as AppInstallationsInstallationIdAccessTokensPostBody,
     )
-    from .group_0792 import (
+    from .group_0797 import (
         ApplicationsClientIdGrantDeleteBody as ApplicationsClientIdGrantDeleteBody,
     )
-    from .group_0793 import (
+    from .group_0798 import (
         ApplicationsClientIdTokenPostBody as ApplicationsClientIdTokenPostBody,
     )
-    from .group_0794 import (
+    from .group_0799 import (
         ApplicationsClientIdTokenDeleteBody as ApplicationsClientIdTokenDeleteBody,
     )
-    from .group_0795 import (
+    from .group_0800 import (
         ApplicationsClientIdTokenPatchBody as ApplicationsClientIdTokenPatchBody,
     )
-    from .group_0796 import (
+    from .group_0801 import (
         ApplicationsClientIdTokenScopedPostBody as ApplicationsClientIdTokenScopedPostBody,
     )
-    from .group_0797 import EmojisGetResponse200 as EmojisGetResponse200
-    from .group_0798 import (
+    from .group_0802 import EmojisGetResponse200 as EmojisGetResponse200
+    from .group_0803 import (
         EnterprisesEnterpriseCodeSecurityConfigurationsPostBody as EnterprisesEnterpriseCodeSecurityConfigurationsPostBody,
     )
-    from .group_0798 import (
+    from .group_0803 import (
         EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptions as EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptions,
     )
-    from .group_0799 import (
+    from .group_0804 import (
         EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBody as EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBody,
     )
-    from .group_0799 import (
+    from .group_0804 import (
         EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptions as EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptions,
     )
-    from .group_0800 import (
+    from .group_0805 import (
         EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBody as EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBody,
     )
-    from .group_0801 import (
+    from .group_0806 import (
         EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBody as EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBody,
     )
-    from .group_0802 import (
+    from .group_0807 import (
         EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200 as EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200,
     )
-    from .group_0803 import (
+    from .group_0808 import (
         EnterprisesEnterpriseSecretScanningAlertsGetResponse503 as EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
     )
-    from .group_0804 import GistsPostBody as GistsPostBody
-    from .group_0804 import GistsPostBodyPropFiles as GistsPostBodyPropFiles
-    from .group_0805 import GistsGistIdGetResponse403 as GistsGistIdGetResponse403
-    from .group_0805 import (
+    from .group_0809 import GistsPostBody as GistsPostBody
+    from .group_0809 import GistsPostBodyPropFiles as GistsPostBodyPropFiles
+    from .group_0810 import GistsGistIdGetResponse403 as GistsGistIdGetResponse403
+    from .group_0810 import (
         GistsGistIdGetResponse403PropBlock as GistsGistIdGetResponse403PropBlock,
     )
-    from .group_0806 import GistsGistIdPatchBody as GistsGistIdPatchBody
-    from .group_0806 import (
+    from .group_0811 import GistsGistIdPatchBody as GistsGistIdPatchBody
+    from .group_0811 import (
         GistsGistIdPatchBodyPropFiles as GistsGistIdPatchBodyPropFiles,
     )
-    from .group_0807 import GistsGistIdCommentsPostBody as GistsGistIdCommentsPostBody
-    from .group_0808 import (
+    from .group_0812 import GistsGistIdCommentsPostBody as GistsGistIdCommentsPostBody
+    from .group_0813 import (
         GistsGistIdCommentsCommentIdPatchBody as GistsGistIdCommentsCommentIdPatchBody,
     )
-    from .group_0809 import (
+    from .group_0814 import (
         GistsGistIdStarGetResponse404 as GistsGistIdStarGetResponse404,
     )
-    from .group_0810 import (
+    from .group_0815 import (
         InstallationRepositoriesGetResponse200 as InstallationRepositoriesGetResponse200,
     )
-    from .group_0811 import MarkdownPostBody as MarkdownPostBody
-    from .group_0812 import NotificationsPutBody as NotificationsPutBody
-    from .group_0813 import NotificationsPutResponse202 as NotificationsPutResponse202
-    from .group_0814 import (
+    from .group_0816 import MarkdownPostBody as MarkdownPostBody
+    from .group_0817 import NotificationsPutBody as NotificationsPutBody
+    from .group_0818 import NotificationsPutResponse202 as NotificationsPutResponse202
+    from .group_0819 import (
         NotificationsThreadsThreadIdSubscriptionPutBody as NotificationsThreadsThreadIdSubscriptionPutBody,
     )
-    from .group_0815 import OrgsOrgPatchBody as OrgsOrgPatchBody
-    from .group_0816 import (
+    from .group_0820 import OrgsOrgPatchBody as OrgsOrgPatchBody
+    from .group_0821 import (
         ActionsCacheUsageByRepository as ActionsCacheUsageByRepository,
     )
-    from .group_0816 import (
+    from .group_0821 import (
         OrgsOrgActionsCacheUsageByRepositoryGetResponse200 as OrgsOrgActionsCacheUsageByRepositoryGetResponse200,
     )
-    from .group_0817 import (
+    from .group_0822 import (
         OrgsOrgActionsHostedRunnersGetResponse200 as OrgsOrgActionsHostedRunnersGetResponse200,
     )
-    from .group_0818 import (
+    from .group_0823 import (
         OrgsOrgActionsHostedRunnersPostBody as OrgsOrgActionsHostedRunnersPostBody,
     )
-    from .group_0818 import (
+    from .group_0823 import (
         OrgsOrgActionsHostedRunnersPostBodyPropImage as OrgsOrgActionsHostedRunnersPostBodyPropImage,
     )
-    from .group_0819 import (
+    from .group_0824 import (
         OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200 as OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200,
     )
-    from .group_0820 import (
+    from .group_0825 import (
         OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200 as OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200,
     )
-    from .group_0821 import (
+    from .group_0826 import (
         OrgsOrgActionsHostedRunnersMachineSizesGetResponse200 as OrgsOrgActionsHostedRunnersMachineSizesGetResponse200,
     )
-    from .group_0822 import (
+    from .group_0827 import (
         OrgsOrgActionsHostedRunnersPlatformsGetResponse200 as OrgsOrgActionsHostedRunnersPlatformsGetResponse200,
     )
-    from .group_0823 import (
+    from .group_0828 import (
         OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBody as OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBody,
     )
-    from .group_0824 import (
+    from .group_0829 import (
         OrgsOrgActionsPermissionsPutBody as OrgsOrgActionsPermissionsPutBody,
     )
-    from .group_0825 import (
+    from .group_0830 import (
         OrgsOrgActionsPermissionsRepositoriesGetResponse200 as OrgsOrgActionsPermissionsRepositoriesGetResponse200,
     )
-    from .group_0826 import (
+    from .group_0831 import (
         OrgsOrgActionsPermissionsRepositoriesPutBody as OrgsOrgActionsPermissionsRepositoriesPutBody,
     )
-    from .group_0827 import (
+    from .group_0832 import (
         OrgsOrgActionsRunnerGroupsGetResponse200 as OrgsOrgActionsRunnerGroupsGetResponse200,
     )
-    from .group_0827 import RunnerGroupsOrg as RunnerGroupsOrg
-    from .group_0828 import (
+    from .group_0832 import RunnerGroupsOrg as RunnerGroupsOrg
+    from .group_0833 import (
         OrgsOrgActionsRunnerGroupsPostBody as OrgsOrgActionsRunnerGroupsPostBody,
     )
-    from .group_0829 import (
+    from .group_0834 import (
         OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBody as OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBody,
     )
-    from .group_0830 import (
+    from .group_0835 import (
         OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200 as OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200,
     )
-    from .group_0831 import (
+    from .group_0836 import (
         OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200 as OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200,
     )
-    from .group_0832 import (
+    from .group_0837 import (
         OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBody as OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBody,
     )
-    from .group_0833 import (
+    from .group_0838 import (
         OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200 as OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200,
     )
-    from .group_0834 import (
+    from .group_0839 import (
         OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBody as OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBody,
     )
-    from .group_0835 import (
+    from .group_0840 import (
         OrgsOrgActionsRunnersGetResponse200 as OrgsOrgActionsRunnersGetResponse200,
     )
-    from .group_0836 import (
+    from .group_0841 import (
         OrgsOrgActionsRunnersGenerateJitconfigPostBody as OrgsOrgActionsRunnersGenerateJitconfigPostBody,
     )
-    from .group_0837 import (
+    from .group_0842 import (
         OrgsOrgActionsRunnersGenerateJitconfigPostResponse201 as OrgsOrgActionsRunnersGenerateJitconfigPostResponse201,
     )
-    from .group_0838 import (
+    from .group_0843 import (
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200 as OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
     )
-    from .group_0839 import (
+    from .group_0844 import (
         OrgsOrgActionsRunnersRunnerIdLabelsPutBody as OrgsOrgActionsRunnersRunnerIdLabelsPutBody,
     )
-    from .group_0840 import (
+    from .group_0845 import (
         OrgsOrgActionsRunnersRunnerIdLabelsPostBody as OrgsOrgActionsRunnersRunnerIdLabelsPostBody,
     )
-    from .group_0841 import (
+    from .group_0846 import (
         OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200 as OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200,
     )
-    from .group_0842 import OrganizationActionsSecret as OrganizationActionsSecret
-    from .group_0842 import (
+    from .group_0847 import OrganizationActionsSecret as OrganizationActionsSecret
+    from .group_0847 import (
         OrgsOrgActionsSecretsGetResponse200 as OrgsOrgActionsSecretsGetResponse200,
     )
-    from .group_0843 import (
+    from .group_0848 import (
         OrgsOrgActionsSecretsSecretNamePutBody as OrgsOrgActionsSecretsSecretNamePutBody,
     )
-    from .group_0844 import (
+    from .group_0849 import (
         OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200 as OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200,
     )
-    from .group_0845 import (
+    from .group_0850 import (
         OrgsOrgActionsSecretsSecretNameRepositoriesPutBody as OrgsOrgActionsSecretsSecretNameRepositoriesPutBody,
     )
-    from .group_0846 import OrganizationActionsVariable as OrganizationActionsVariable
-    from .group_0846 import (
+    from .group_0851 import OrganizationActionsVariable as OrganizationActionsVariable
+    from .group_0851 import (
         OrgsOrgActionsVariablesGetResponse200 as OrgsOrgActionsVariablesGetResponse200,
     )
-    from .group_0847 import (
+    from .group_0852 import (
         OrgsOrgActionsVariablesPostBody as OrgsOrgActionsVariablesPostBody,
     )
-    from .group_0848 import (
+    from .group_0853 import (
         OrgsOrgActionsVariablesNamePatchBody as OrgsOrgActionsVariablesNamePatchBody,
     )
-    from .group_0849 import (
+    from .group_0854 import (
         OrgsOrgActionsVariablesNameRepositoriesGetResponse200 as OrgsOrgActionsVariablesNameRepositoriesGetResponse200,
     )
-    from .group_0850 import (
+    from .group_0855 import (
         OrgsOrgActionsVariablesNameRepositoriesPutBody as OrgsOrgActionsVariablesNameRepositoriesPutBody,
     )
-    from .group_0851 import (
+    from .group_0856 import (
         OrgsOrgAttestationsSubjectDigestGetResponse200 as OrgsOrgAttestationsSubjectDigestGetResponse200,
     )
-    from .group_0851 import (
+    from .group_0856 import (
         OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems as OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems,
     )
-    from .group_0851 import (
+    from .group_0856 import (
         OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle as OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle,
     )
-    from .group_0851 import (
+    from .group_0856 import (
         OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelope as OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelope,
     )
-    from .group_0851 import (
+    from .group_0856 import (
         OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterial as OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterial,
     )
-    from .group_0852 import (
+    from .group_0857 import (
         OrgsOrgCodeSecurityConfigurationsPostBody as OrgsOrgCodeSecurityConfigurationsPostBody,
     )
-    from .group_0852 import (
+    from .group_0857 import (
         OrgsOrgCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptions as OrgsOrgCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptions,
     )
-    from .group_0852 import (
+    from .group_0857 import (
         OrgsOrgCodeSecurityConfigurationsPostBodyPropSecretScanningDelegatedBypassOptions as OrgsOrgCodeSecurityConfigurationsPostBodyPropSecretScanningDelegatedBypassOptions,
     )
-    from .group_0852 import (
+    from .group_0857 import (
         OrgsOrgCodeSecurityConfigurationsPostBodyPropSecretScanningDelegatedBypassOptionsPropReviewersItems as OrgsOrgCodeSecurityConfigurationsPostBodyPropSecretScanningDelegatedBypassOptionsPropReviewersItems,
     )
-    from .group_0853 import (
+    from .group_0858 import (
         OrgsOrgCodeSecurityConfigurationsDetachDeleteBody as OrgsOrgCodeSecurityConfigurationsDetachDeleteBody,
     )
-    from .group_0854 import (
+    from .group_0859 import (
         OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBody as OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBody,
     )
-    from .group_0854 import (
+    from .group_0859 import (
         OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptions as OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptions,
     )
-    from .group_0854 import (
+    from .group_0859 import (
         OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDelegatedBypassOptions as OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDelegatedBypassOptions,
     )
-    from .group_0854 import (
+    from .group_0859 import (
         OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDelegatedBypassOptionsPropReviewersItems as OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDelegatedBypassOptionsPropReviewersItems,
     )
-    from .group_0855 import (
+    from .group_0860 import (
         OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody as OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody,
     )
-    from .group_0856 import (
+    from .group_0861 import (
         OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBody as OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBody,
     )
-    from .group_0857 import (
+    from .group_0862 import (
         OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200 as OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200,
     )
-    from .group_0858 import (
+    from .group_0863 import (
         OrgsOrgCodespacesGetResponse200 as OrgsOrgCodespacesGetResponse200,
     )
-    from .group_0859 import (
+    from .group_0864 import (
         OrgsOrgCodespacesAccessPutBody as OrgsOrgCodespacesAccessPutBody,
     )
-    from .group_0860 import (
+    from .group_0865 import (
         OrgsOrgCodespacesAccessSelectedUsersPostBody as OrgsOrgCodespacesAccessSelectedUsersPostBody,
     )
-    from .group_0861 import (
+    from .group_0866 import (
         OrgsOrgCodespacesAccessSelectedUsersDeleteBody as OrgsOrgCodespacesAccessSelectedUsersDeleteBody,
     )
-    from .group_0862 import CodespacesOrgSecret as CodespacesOrgSecret
-    from .group_0862 import (
+    from .group_0867 import CodespacesOrgSecret as CodespacesOrgSecret
+    from .group_0867 import (
         OrgsOrgCodespacesSecretsGetResponse200 as OrgsOrgCodespacesSecretsGetResponse200,
     )
-    from .group_0863 import (
+    from .group_0868 import (
         OrgsOrgCodespacesSecretsSecretNamePutBody as OrgsOrgCodespacesSecretsSecretNamePutBody,
     )
-    from .group_0864 import (
+    from .group_0869 import (
         OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200 as OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200,
     )
-    from .group_0865 import (
+    from .group_0870 import (
         OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBody as OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBody,
     )
-    from .group_0866 import (
+    from .group_0871 import (
         OrgsOrgCopilotBillingSelectedTeamsPostBody as OrgsOrgCopilotBillingSelectedTeamsPostBody,
     )
-    from .group_0867 import (
+    from .group_0872 import (
         OrgsOrgCopilotBillingSelectedTeamsPostResponse201 as OrgsOrgCopilotBillingSelectedTeamsPostResponse201,
     )
-    from .group_0868 import (
+    from .group_0873 import (
         OrgsOrgCopilotBillingSelectedTeamsDeleteBody as OrgsOrgCopilotBillingSelectedTeamsDeleteBody,
     )
-    from .group_0869 import (
+    from .group_0874 import (
         OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200 as OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200,
     )
-    from .group_0870 import (
+    from .group_0875 import (
         OrgsOrgCopilotBillingSelectedUsersPostBody as OrgsOrgCopilotBillingSelectedUsersPostBody,
     )
-    from .group_0871 import (
+    from .group_0876 import (
         OrgsOrgCopilotBillingSelectedUsersPostResponse201 as OrgsOrgCopilotBillingSelectedUsersPostResponse201,
     )
-    from .group_0872 import (
+    from .group_0877 import (
         OrgsOrgCopilotBillingSelectedUsersDeleteBody as OrgsOrgCopilotBillingSelectedUsersDeleteBody,
     )
-    from .group_0873 import (
+    from .group_0878 import (
         OrgsOrgCopilotBillingSelectedUsersDeleteResponse200 as OrgsOrgCopilotBillingSelectedUsersDeleteResponse200,
     )
-    from .group_0874 import OrganizationDependabotSecret as OrganizationDependabotSecret
-    from .group_0874 import (
+    from .group_0879 import OrganizationDependabotSecret as OrganizationDependabotSecret
+    from .group_0879 import (
         OrgsOrgDependabotSecretsGetResponse200 as OrgsOrgDependabotSecretsGetResponse200,
     )
-    from .group_0875 import (
+    from .group_0880 import (
         OrgsOrgDependabotSecretsSecretNamePutBody as OrgsOrgDependabotSecretsSecretNamePutBody,
     )
-    from .group_0876 import (
+    from .group_0881 import (
         OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200 as OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200,
     )
-    from .group_0877 import (
+    from .group_0882 import (
         OrgsOrgDependabotSecretsSecretNameRepositoriesPutBody as OrgsOrgDependabotSecretsSecretNameRepositoriesPutBody,
     )
-    from .group_0878 import OrgsOrgHooksPostBody as OrgsOrgHooksPostBody
-    from .group_0878 import (
+    from .group_0883 import OrgsOrgHooksPostBody as OrgsOrgHooksPostBody
+    from .group_0883 import (
         OrgsOrgHooksPostBodyPropConfig as OrgsOrgHooksPostBodyPropConfig,
     )
-    from .group_0879 import OrgsOrgHooksHookIdPatchBody as OrgsOrgHooksHookIdPatchBody
-    from .group_0879 import (
+    from .group_0884 import OrgsOrgHooksHookIdPatchBody as OrgsOrgHooksHookIdPatchBody
+    from .group_0884 import (
         OrgsOrgHooksHookIdPatchBodyPropConfig as OrgsOrgHooksHookIdPatchBodyPropConfig,
     )
-    from .group_0880 import (
+    from .group_0885 import (
         OrgsOrgHooksHookIdConfigPatchBody as OrgsOrgHooksHookIdConfigPatchBody,
     )
-    from .group_0881 import (
+    from .group_0886 import (
         OrgsOrgInstallationsGetResponse200 as OrgsOrgInstallationsGetResponse200,
     )
-    from .group_0882 import (
+    from .group_0887 import (
         OrgsOrgInteractionLimitsGetResponse200Anyof1 as OrgsOrgInteractionLimitsGetResponse200Anyof1,
     )
-    from .group_0883 import OrgsOrgInvitationsPostBody as OrgsOrgInvitationsPostBody
-    from .group_0884 import (
+    from .group_0888 import OrgsOrgInvitationsPostBody as OrgsOrgInvitationsPostBody
+    from .group_0889 import (
         OrgsOrgMembersUsernameCodespacesGetResponse200 as OrgsOrgMembersUsernameCodespacesGetResponse200,
     )
-    from .group_0885 import (
+    from .group_0890 import (
         OrgsOrgMembershipsUsernamePutBody as OrgsOrgMembershipsUsernamePutBody,
     )
-    from .group_0886 import OrgsOrgMigrationsPostBody as OrgsOrgMigrationsPostBody
-    from .group_0887 import (
+    from .group_0891 import OrgsOrgMigrationsPostBody as OrgsOrgMigrationsPostBody
+    from .group_0892 import (
         OrgsOrgOutsideCollaboratorsUsernamePutBody as OrgsOrgOutsideCollaboratorsUsernamePutBody,
     )
-    from .group_0888 import (
+    from .group_0893 import (
         OrgsOrgOutsideCollaboratorsUsernamePutResponse202 as OrgsOrgOutsideCollaboratorsUsernamePutResponse202,
     )
-    from .group_0889 import (
+    from .group_0894 import (
         OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422 as OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422,
     )
-    from .group_0890 import (
+    from .group_0895 import (
         OrgsOrgPersonalAccessTokenRequestsPostBody as OrgsOrgPersonalAccessTokenRequestsPostBody,
     )
-    from .group_0891 import (
+    from .group_0896 import (
         OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody as OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody,
     )
-    from .group_0892 import (
+    from .group_0897 import (
         OrgsOrgPersonalAccessTokensPostBody as OrgsOrgPersonalAccessTokensPostBody,
     )
-    from .group_0893 import (
+    from .group_0898 import (
         OrgsOrgPersonalAccessTokensPatIdPostBody as OrgsOrgPersonalAccessTokensPatIdPostBody,
     )
-    from .group_0894 import (
+    from .group_0899 import (
         OrgPrivateRegistryConfiguration as OrgPrivateRegistryConfiguration,
     )
-    from .group_0894 import (
+    from .group_0899 import (
         OrgsOrgPrivateRegistriesGetResponse200 as OrgsOrgPrivateRegistriesGetResponse200,
     )
-    from .group_0895 import (
+    from .group_0900 import (
         OrgsOrgPrivateRegistriesPostBody as OrgsOrgPrivateRegistriesPostBody,
     )
-    from .group_0896 import (
+    from .group_0901 import (
         OrgsOrgPrivateRegistriesPublicKeyGetResponse200 as OrgsOrgPrivateRegistriesPublicKeyGetResponse200,
     )
-    from .group_0897 import (
+    from .group_0902 import (
         OrgsOrgPrivateRegistriesSecretNamePatchBody as OrgsOrgPrivateRegistriesSecretNamePatchBody,
     )
-    from .group_0898 import OrgsOrgProjectsPostBody as OrgsOrgProjectsPostBody
-    from .group_0899 import (
+    from .group_0903 import OrgsOrgProjectsPostBody as OrgsOrgProjectsPostBody
+    from .group_0904 import (
         OrgsOrgPropertiesSchemaPatchBody as OrgsOrgPropertiesSchemaPatchBody,
     )
-    from .group_0900 import (
+    from .group_0905 import (
         OrgsOrgPropertiesValuesPatchBody as OrgsOrgPropertiesValuesPatchBody,
     )
-    from .group_0901 import OrgsOrgReposPostBody as OrgsOrgReposPostBody
-    from .group_0901 import (
+    from .group_0906 import OrgsOrgReposPostBody as OrgsOrgReposPostBody
+    from .group_0906 import (
         OrgsOrgReposPostBodyPropCustomProperties as OrgsOrgReposPostBodyPropCustomProperties,
     )
-    from .group_0902 import OrgsOrgRulesetsPostBody as OrgsOrgRulesetsPostBody
-    from .group_0903 import (
+    from .group_0907 import OrgsOrgRulesetsPostBody as OrgsOrgRulesetsPostBody
+    from .group_0908 import (
         OrgsOrgRulesetsRulesetIdPutBody as OrgsOrgRulesetsRulesetIdPutBody,
     )
-    from .group_0904 import NetworkConfiguration as NetworkConfiguration
-    from .group_0904 import (
+    from .group_0909 import NetworkConfiguration as NetworkConfiguration
+    from .group_0909 import (
         OrgsOrgSettingsNetworkConfigurationsGetResponse200 as OrgsOrgSettingsNetworkConfigurationsGetResponse200,
     )
-    from .group_0905 import (
+    from .group_0910 import (
         OrgsOrgSettingsNetworkConfigurationsPostBody as OrgsOrgSettingsNetworkConfigurationsPostBody,
     )
-    from .group_0906 import (
+    from .group_0911 import (
         OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBody as OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBody,
     )
-    from .group_0907 import OrgsOrgTeamsPostBody as OrgsOrgTeamsPostBody
-    from .group_0908 import (
+    from .group_0912 import OrgsOrgTeamsPostBody as OrgsOrgTeamsPostBody
+    from .group_0913 import (
         OrgsOrgTeamsTeamSlugPatchBody as OrgsOrgTeamsTeamSlugPatchBody,
     )
-    from .group_0909 import (
+    from .group_0914 import (
         OrgsOrgTeamsTeamSlugDiscussionsPostBody as OrgsOrgTeamsTeamSlugDiscussionsPostBody,
     )
-    from .group_0910 import (
+    from .group_0915 import (
         OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody as OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody,
     )
-    from .group_0911 import (
+    from .group_0916 import (
         OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBody as OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBody,
     )
-    from .group_0912 import (
+    from .group_0917 import (
         OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBody as OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBody,
     )
-    from .group_0913 import (
+    from .group_0918 import (
         OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody as OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody,
     )
-    from .group_0914 import (
+    from .group_0919 import (
         OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBody as OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBody,
     )
-    from .group_0915 import (
+    from .group_0920 import (
         OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody as OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody,
     )
-    from .group_0916 import (
+    from .group_0921 import (
         OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody as OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody,
     )
-    from .group_0917 import (
+    from .group_0922 import (
         OrgsOrgTeamsTeamSlugProjectsProjectIdPutResponse403 as OrgsOrgTeamsTeamSlugProjectsProjectIdPutResponse403,
     )
-    from .group_0918 import (
+    from .group_0923 import (
         OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody as OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody,
     )
-    from .group_0919 import (
+    from .group_0924 import (
         OrgsOrgSecurityProductEnablementPostBody as OrgsOrgSecurityProductEnablementPostBody,
     )
-    from .group_0920 import (
+    from .group_0925 import (
         ProjectsColumnsCardsCardIdDeleteResponse403 as ProjectsColumnsCardsCardIdDeleteResponse403,
     )
-    from .group_0921 import (
+    from .group_0926 import (
         ProjectsColumnsCardsCardIdPatchBody as ProjectsColumnsCardsCardIdPatchBody,
     )
-    from .group_0922 import (
+    from .group_0927 import (
         ProjectsColumnsCardsCardIdMovesPostBody as ProjectsColumnsCardsCardIdMovesPostBody,
     )
-    from .group_0923 import (
+    from .group_0928 import (
         ProjectsColumnsCardsCardIdMovesPostResponse201 as ProjectsColumnsCardsCardIdMovesPostResponse201,
     )
-    from .group_0924 import (
+    from .group_0929 import (
         ProjectsColumnsCardsCardIdMovesPostResponse403 as ProjectsColumnsCardsCardIdMovesPostResponse403,
     )
-    from .group_0924 import (
+    from .group_0929 import (
         ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItems as ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItems,
     )
-    from .group_0925 import (
+    from .group_0930 import (
         ProjectsColumnsCardsCardIdMovesPostResponse503 as ProjectsColumnsCardsCardIdMovesPostResponse503,
     )
-    from .group_0925 import (
+    from .group_0930 import (
         ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItems as ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItems,
     )
-    from .group_0926 import (
+    from .group_0931 import (
         ProjectsColumnsColumnIdPatchBody as ProjectsColumnsColumnIdPatchBody,
     )
-    from .group_0927 import (
+    from .group_0932 import (
         ProjectsColumnsColumnIdCardsPostBodyOneof0 as ProjectsColumnsColumnIdCardsPostBodyOneof0,
     )
-    from .group_0928 import (
+    from .group_0933 import (
         ProjectsColumnsColumnIdCardsPostBodyOneof1 as ProjectsColumnsColumnIdCardsPostBodyOneof1,
     )
-    from .group_0929 import (
+    from .group_0934 import (
         ProjectsColumnsColumnIdCardsPostResponse503 as ProjectsColumnsColumnIdCardsPostResponse503,
     )
-    from .group_0929 import (
+    from .group_0934 import (
         ProjectsColumnsColumnIdCardsPostResponse503PropErrorsItems as ProjectsColumnsColumnIdCardsPostResponse503PropErrorsItems,
     )
-    from .group_0930 import (
+    from .group_0935 import (
         ProjectsColumnsColumnIdMovesPostBody as ProjectsColumnsColumnIdMovesPostBody,
     )
-    from .group_0931 import (
+    from .group_0936 import (
         ProjectsColumnsColumnIdMovesPostResponse201 as ProjectsColumnsColumnIdMovesPostResponse201,
     )
-    from .group_0932 import (
+    from .group_0937 import (
         ProjectsProjectIdDeleteResponse403 as ProjectsProjectIdDeleteResponse403,
     )
-    from .group_0933 import ProjectsProjectIdPatchBody as ProjectsProjectIdPatchBody
-    from .group_0934 import (
+    from .group_0938 import ProjectsProjectIdPatchBody as ProjectsProjectIdPatchBody
+    from .group_0939 import (
         ProjectsProjectIdPatchResponse403 as ProjectsProjectIdPatchResponse403,
     )
-    from .group_0935 import (
+    from .group_0940 import (
         ProjectsProjectIdCollaboratorsUsernamePutBody as ProjectsProjectIdCollaboratorsUsernamePutBody,
     )
-    from .group_0936 import (
+    from .group_0941 import (
         ProjectsProjectIdColumnsPostBody as ProjectsProjectIdColumnsPostBody,
     )
-    from .group_0937 import (
+    from .group_0942 import (
         ReposOwnerRepoDeleteResponse403 as ReposOwnerRepoDeleteResponse403,
     )
-    from .group_0938 import ReposOwnerRepoPatchBody as ReposOwnerRepoPatchBody
-    from .group_0938 import (
+    from .group_0943 import ReposOwnerRepoPatchBody as ReposOwnerRepoPatchBody
+    from .group_0943 import (
         ReposOwnerRepoPatchBodyPropSecurityAndAnalysis as ReposOwnerRepoPatchBodyPropSecurityAndAnalysis,
     )
-    from .group_0938 import (
+    from .group_0943 import (
         ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropAdvancedSecurity as ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropAdvancedSecurity,
     )
-    from .group_0938 import (
+    from .group_0943 import (
         ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanning as ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanning,
     )
-    from .group_0938 import (
+    from .group_0943 import (
         ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningAiDetection as ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningAiDetection,
     )
-    from .group_0938 import (
+    from .group_0943 import (
         ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningNonProviderPatterns as ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningNonProviderPatterns,
     )
-    from .group_0938 import (
+    from .group_0943 import (
         ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningPushProtection as ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningPushProtection,
     )
-    from .group_0939 import (
+    from .group_0944 import (
         ReposOwnerRepoActionsArtifactsGetResponse200 as ReposOwnerRepoActionsArtifactsGetResponse200,
     )
-    from .group_0940 import (
+    from .group_0945 import (
         ReposOwnerRepoActionsJobsJobIdRerunPostBody as ReposOwnerRepoActionsJobsJobIdRerunPostBody,
     )
-    from .group_0941 import (
+    from .group_0946 import (
         ReposOwnerRepoActionsOidcCustomizationSubPutBody as ReposOwnerRepoActionsOidcCustomizationSubPutBody,
     )
-    from .group_0942 import (
+    from .group_0947 import (
         ReposOwnerRepoActionsOrganizationSecretsGetResponse200 as ReposOwnerRepoActionsOrganizationSecretsGetResponse200,
     )
-    from .group_0943 import (
+    from .group_0948 import (
         ReposOwnerRepoActionsOrganizationVariablesGetResponse200 as ReposOwnerRepoActionsOrganizationVariablesGetResponse200,
     )
-    from .group_0944 import (
+    from .group_0949 import (
         ReposOwnerRepoActionsPermissionsPutBody as ReposOwnerRepoActionsPermissionsPutBody,
     )
-    from .group_0945 import (
+    from .group_0950 import (
         ReposOwnerRepoActionsRunnersGetResponse200 as ReposOwnerRepoActionsRunnersGetResponse200,
     )
-    from .group_0946 import (
+    from .group_0951 import (
         ReposOwnerRepoActionsRunnersGenerateJitconfigPostBody as ReposOwnerRepoActionsRunnersGenerateJitconfigPostBody,
     )
-    from .group_0947 import (
+    from .group_0952 import (
         ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody as ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody,
     )
-    from .group_0948 import (
+    from .group_0953 import (
         ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody as ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody,
     )
-    from .group_0949 import (
+    from .group_0954 import (
         ReposOwnerRepoActionsRunsGetResponse200 as ReposOwnerRepoActionsRunsGetResponse200,
     )
-    from .group_0950 import (
+    from .group_0955 import (
         ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200 as ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200,
     )
-    from .group_0951 import (
+    from .group_0956 import (
         ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200 as ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200,
     )
-    from .group_0952 import (
+    from .group_0957 import (
         ReposOwnerRepoActionsRunsRunIdJobsGetResponse200 as ReposOwnerRepoActionsRunsRunIdJobsGetResponse200,
     )
-    from .group_0953 import (
+    from .group_0958 import (
         ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody as ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody,
     )
-    from .group_0954 import (
+    from .group_0959 import (
         ReposOwnerRepoActionsRunsRunIdRerunPostBody as ReposOwnerRepoActionsRunsRunIdRerunPostBody,
     )
-    from .group_0955 import (
+    from .group_0960 import (
         ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBody as ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBody,
     )
-    from .group_0956 import (
+    from .group_0961 import (
         ReposOwnerRepoActionsSecretsGetResponse200 as ReposOwnerRepoActionsSecretsGetResponse200,
     )
-    from .group_0957 import (
+    from .group_0962 import (
         ReposOwnerRepoActionsSecretsSecretNamePutBody as ReposOwnerRepoActionsSecretsSecretNamePutBody,
     )
-    from .group_0958 import (
+    from .group_0963 import (
         ReposOwnerRepoActionsVariablesGetResponse200 as ReposOwnerRepoActionsVariablesGetResponse200,
     )
-    from .group_0959 import (
+    from .group_0964 import (
         ReposOwnerRepoActionsVariablesPostBody as ReposOwnerRepoActionsVariablesPostBody,
     )
-    from .group_0960 import (
+    from .group_0965 import (
         ReposOwnerRepoActionsVariablesNamePatchBody as ReposOwnerRepoActionsVariablesNamePatchBody,
     )
-    from .group_0961 import (
+    from .group_0966 import (
         ReposOwnerRepoActionsWorkflowsGetResponse200 as ReposOwnerRepoActionsWorkflowsGetResponse200,
     )
-    from .group_0961 import Workflow as Workflow
-    from .group_0962 import (
+    from .group_0966 import Workflow as Workflow
+    from .group_0967 import (
         ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody as ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody,
     )
-    from .group_0962 import (
+    from .group_0967 import (
         ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs as ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs,
     )
-    from .group_0963 import (
+    from .group_0968 import (
         ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200 as ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200,
     )
-    from .group_0964 import (
+    from .group_0969 import (
         ReposOwnerRepoAttestationsPostBody as ReposOwnerRepoAttestationsPostBody,
     )
-    from .group_0964 import (
+    from .group_0969 import (
         ReposOwnerRepoAttestationsPostBodyPropBundle as ReposOwnerRepoAttestationsPostBodyPropBundle,
     )
-    from .group_0964 import (
+    from .group_0969 import (
         ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelope as ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelope,
     )
-    from .group_0964 import (
+    from .group_0969 import (
         ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterial as ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterial,
     )
-    from .group_0965 import (
+    from .group_0970 import (
         ReposOwnerRepoAttestationsPostResponse201 as ReposOwnerRepoAttestationsPostResponse201,
     )
-    from .group_0966 import (
+    from .group_0971 import (
         ReposOwnerRepoAttestationsSubjectDigestGetResponse200 as ReposOwnerRepoAttestationsSubjectDigestGetResponse200,
     )
-    from .group_0966 import (
+    from .group_0971 import (
         ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItems as ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItems,
     )
-    from .group_0966 import (
+    from .group_0971 import (
         ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle as ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle,
     )
-    from .group_0966 import (
+    from .group_0971 import (
         ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelope as ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelope,
     )
-    from .group_0966 import (
+    from .group_0971 import (
         ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterial as ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterial,
     )
-    from .group_0967 import (
+    from .group_0972 import (
         ReposOwnerRepoAutolinksPostBody as ReposOwnerRepoAutolinksPostBody,
     )
-    from .group_0968 import (
+    from .group_0973 import (
         ReposOwnerRepoBranchesBranchProtectionPutBody as ReposOwnerRepoBranchesBranchProtectionPutBody,
     )
-    from .group_0968 import (
+    from .group_0973 import (
         ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviews as ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviews,
     )
-    from .group_0968 import (
+    from .group_0973 import (
         ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropBypassPullRequestAllowances as ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropBypassPullRequestAllowances,
     )
-    from .group_0968 import (
+    from .group_0973 import (
         ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropDismissalRestrictions as ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropDismissalRestrictions,
     )
-    from .group_0968 import (
+    from .group_0973 import (
         ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecks as ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecks,
     )
-    from .group_0968 import (
+    from .group_0973 import (
         ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksPropChecksItems as ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksPropChecksItems,
     )
-    from .group_0968 import (
+    from .group_0973 import (
         ReposOwnerRepoBranchesBranchProtectionPutBodyPropRestrictions as ReposOwnerRepoBranchesBranchProtectionPutBodyPropRestrictions,
     )
-    from .group_0969 import (
+    from .group_0974 import (
         ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody as ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody,
     )
-    from .group_0969 import (
+    from .group_0974 import (
         ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowances as ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowances,
     )
-    from .group_0969 import (
+    from .group_0974 import (
         ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictions as ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictions,
     )
-    from .group_0970 import (
+    from .group_0975 import (
         ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBody as ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBody,
     )
-    from .group_0970 import (
+    from .group_0975 import (
         ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItems as ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItems,
     )
-    from .group_0971 import (
+    from .group_0976 import (
         ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0 as ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0,
     )
-    from .group_0972 import (
+    from .group_0977 import (
         ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0 as ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0,
     )
-    from .group_0973 import (
+    from .group_0978 import (
         ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0 as ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0,
     )
-    from .group_0974 import (
+    from .group_0979 import (
         ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBody as ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBody,
     )
-    from .group_0975 import (
+    from .group_0980 import (
         ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBody as ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBody,
     )
-    from .group_0976 import (
+    from .group_0981 import (
         ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBody as ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBody,
     )
-    from .group_0977 import (
+    from .group_0982 import (
         ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0 as ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0,
     )
-    from .group_0978 import (
+    from .group_0983 import (
         ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0 as ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0,
     )
-    from .group_0979 import (
+    from .group_0984 import (
         ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0 as ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0,
     )
-    from .group_0980 import (
+    from .group_0985 import (
         ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBody as ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBody,
     )
-    from .group_0981 import (
+    from .group_0986 import (
         ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBody as ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBody,
     )
-    from .group_0982 import (
+    from .group_0987 import (
         ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBody as ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBody,
     )
-    from .group_0983 import (
+    from .group_0988 import (
         ReposOwnerRepoBranchesBranchRenamePostBody as ReposOwnerRepoBranchesBranchRenamePostBody,
     )
-    from .group_0984 import (
+    from .group_0989 import (
         ReposOwnerRepoCheckRunsPostBodyPropActionsItems as ReposOwnerRepoCheckRunsPostBodyPropActionsItems,
     )
-    from .group_0984 import (
+    from .group_0989 import (
         ReposOwnerRepoCheckRunsPostBodyPropOutput as ReposOwnerRepoCheckRunsPostBodyPropOutput,
     )
-    from .group_0984 import (
+    from .group_0989 import (
         ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItems as ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItems,
     )
-    from .group_0984 import (
+    from .group_0989 import (
         ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItems as ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItems,
     )
-    from .group_0985 import (
+    from .group_0990 import (
         ReposOwnerRepoCheckRunsPostBodyOneof0 as ReposOwnerRepoCheckRunsPostBodyOneof0,
     )
-    from .group_0986 import (
+    from .group_0991 import (
         ReposOwnerRepoCheckRunsPostBodyOneof1 as ReposOwnerRepoCheckRunsPostBodyOneof1,
     )
-    from .group_0987 import (
+    from .group_0992 import (
         ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItems as ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItems,
     )
-    from .group_0987 import (
+    from .group_0992 import (
         ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutput as ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutput,
     )
-    from .group_0987 import (
+    from .group_0992 import (
         ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropAnnotationsItems as ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropAnnotationsItems,
     )
-    from .group_0987 import (
+    from .group_0992 import (
         ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropImagesItems as ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropImagesItems,
     )
-    from .group_0988 import (
+    from .group_0993 import (
         ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0 as ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0,
     )
-    from .group_0989 import (
+    from .group_0994 import (
         ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1 as ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1,
     )
-    from .group_0990 import (
+    from .group_0995 import (
         ReposOwnerRepoCheckSuitesPostBody as ReposOwnerRepoCheckSuitesPostBody,
     )
-    from .group_0991 import (
+    from .group_0996 import (
         ReposOwnerRepoCheckSuitesPreferencesPatchBody as ReposOwnerRepoCheckSuitesPreferencesPatchBody,
     )
-    from .group_0991 import (
+    from .group_0996 import (
         ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems as ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems,
     )
-    from .group_0992 import (
+    from .group_0997 import (
         ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200 as ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200,
     )
-    from .group_0993 import (
+    from .group_0998 import (
         ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBody as ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBody,
     )
-    from .group_0994 import (
+    from .group_0999 import (
         ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0 as ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0,
     )
-    from .group_0995 import (
+    from .group_1000 import (
         ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1 as ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1,
     )
-    from .group_0996 import (
+    from .group_1001 import (
         ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2 as ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2,
     )
-    from .group_0997 import (
+    from .group_1002 import (
         ReposOwnerRepoCodeScanningSarifsPostBody as ReposOwnerRepoCodeScanningSarifsPostBody,
     )
-    from .group_0998 import (
+    from .group_1003 import (
         ReposOwnerRepoCodespacesGetResponse200 as ReposOwnerRepoCodespacesGetResponse200,
     )
-    from .group_0999 import (
+    from .group_1004 import (
         ReposOwnerRepoCodespacesPostBody as ReposOwnerRepoCodespacesPostBody,
     )
-    from .group_1000 import (
+    from .group_1005 import (
         ReposOwnerRepoCodespacesDevcontainersGetResponse200 as ReposOwnerRepoCodespacesDevcontainersGetResponse200,
     )
-    from .group_1000 import (
+    from .group_1005 import (
         ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems as ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems,
     )
-    from .group_1001 import (
+    from .group_1006 import (
         ReposOwnerRepoCodespacesMachinesGetResponse200 as ReposOwnerRepoCodespacesMachinesGetResponse200,
     )
-    from .group_1002 import (
+    from .group_1007 import (
         ReposOwnerRepoCodespacesNewGetResponse200 as ReposOwnerRepoCodespacesNewGetResponse200,
     )
-    from .group_1002 import (
+    from .group_1007 import (
         ReposOwnerRepoCodespacesNewGetResponse200PropDefaults as ReposOwnerRepoCodespacesNewGetResponse200PropDefaults,
     )
-    from .group_1003 import RepoCodespacesSecret as RepoCodespacesSecret
-    from .group_1003 import (
+    from .group_1008 import RepoCodespacesSecret as RepoCodespacesSecret
+    from .group_1008 import (
         ReposOwnerRepoCodespacesSecretsGetResponse200 as ReposOwnerRepoCodespacesSecretsGetResponse200,
     )
-    from .group_1004 import (
+    from .group_1009 import (
         ReposOwnerRepoCodespacesSecretsSecretNamePutBody as ReposOwnerRepoCodespacesSecretsSecretNamePutBody,
     )
-    from .group_1005 import (
+    from .group_1010 import (
         ReposOwnerRepoCollaboratorsUsernamePutBody as ReposOwnerRepoCollaboratorsUsernamePutBody,
     )
-    from .group_1006 import (
+    from .group_1011 import (
         ReposOwnerRepoCommentsCommentIdPatchBody as ReposOwnerRepoCommentsCommentIdPatchBody,
     )
-    from .group_1007 import (
+    from .group_1012 import (
         ReposOwnerRepoCommentsCommentIdReactionsPostBody as ReposOwnerRepoCommentsCommentIdReactionsPostBody,
     )
-    from .group_1008 import (
+    from .group_1013 import (
         ReposOwnerRepoCommitsCommitShaCommentsPostBody as ReposOwnerRepoCommitsCommitShaCommentsPostBody,
     )
-    from .group_1009 import (
+    from .group_1014 import (
         ReposOwnerRepoCommitsRefCheckRunsGetResponse200 as ReposOwnerRepoCommitsRefCheckRunsGetResponse200,
     )
-    from .group_1010 import (
+    from .group_1015 import (
         ReposOwnerRepoContentsPathPutBody as ReposOwnerRepoContentsPathPutBody,
     )
-    from .group_1010 import (
+    from .group_1015 import (
         ReposOwnerRepoContentsPathPutBodyPropAuthor as ReposOwnerRepoContentsPathPutBodyPropAuthor,
     )
-    from .group_1010 import (
+    from .group_1015 import (
         ReposOwnerRepoContentsPathPutBodyPropCommitter as ReposOwnerRepoContentsPathPutBodyPropCommitter,
     )
-    from .group_1011 import (
+    from .group_1016 import (
         ReposOwnerRepoContentsPathDeleteBody as ReposOwnerRepoContentsPathDeleteBody,
     )
-    from .group_1011 import (
+    from .group_1016 import (
         ReposOwnerRepoContentsPathDeleteBodyPropAuthor as ReposOwnerRepoContentsPathDeleteBodyPropAuthor,
     )
-    from .group_1011 import (
+    from .group_1016 import (
         ReposOwnerRepoContentsPathDeleteBodyPropCommitter as ReposOwnerRepoContentsPathDeleteBodyPropCommitter,
     )
-    from .group_1012 import (
+    from .group_1017 import (
         ReposOwnerRepoDependabotAlertsAlertNumberPatchBody as ReposOwnerRepoDependabotAlertsAlertNumberPatchBody,
     )
-    from .group_1013 import DependabotSecret as DependabotSecret
-    from .group_1013 import (
+    from .group_1018 import DependabotSecret as DependabotSecret
+    from .group_1018 import (
         ReposOwnerRepoDependabotSecretsGetResponse200 as ReposOwnerRepoDependabotSecretsGetResponse200,
     )
-    from .group_1014 import (
+    from .group_1019 import (
         ReposOwnerRepoDependabotSecretsSecretNamePutBody as ReposOwnerRepoDependabotSecretsSecretNamePutBody,
     )
-    from .group_1015 import (
+    from .group_1020 import (
         ReposOwnerRepoDependencyGraphSnapshotsPostResponse201 as ReposOwnerRepoDependencyGraphSnapshotsPostResponse201,
     )
-    from .group_1016 import (
+    from .group_1021 import (
         ReposOwnerRepoDeploymentsPostBody as ReposOwnerRepoDeploymentsPostBody,
     )
-    from .group_1016 import (
+    from .group_1021 import (
         ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0 as ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0,
     )
-    from .group_1017 import (
+    from .group_1022 import (
         ReposOwnerRepoDeploymentsPostResponse202 as ReposOwnerRepoDeploymentsPostResponse202,
     )
-    from .group_1018 import (
+    from .group_1023 import (
         ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody as ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody,
     )
-    from .group_1019 import (
+    from .group_1024 import (
         ReposOwnerRepoDispatchesPostBody as ReposOwnerRepoDispatchesPostBody,
     )
-    from .group_1019 import (
+    from .group_1024 import (
         ReposOwnerRepoDispatchesPostBodyPropClientPayload as ReposOwnerRepoDispatchesPostBodyPropClientPayload,
     )
-    from .group_1020 import (
+    from .group_1025 import (
         ReposOwnerRepoEnvironmentsEnvironmentNamePutBody as ReposOwnerRepoEnvironmentsEnvironmentNamePutBody,
     )
-    from .group_1020 import (
+    from .group_1025 import (
         ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems as ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems,
     )
-    from .group_1021 import DeploymentBranchPolicy as DeploymentBranchPolicy
-    from .group_1021 import (
+    from .group_1026 import DeploymentBranchPolicy as DeploymentBranchPolicy
+    from .group_1026 import (
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200 as ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200,
     )
-    from .group_1022 import (
+    from .group_1027 import (
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody as ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody,
     )
-    from .group_1023 import (
+    from .group_1028 import (
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200 as ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200,
     )
-    from .group_1024 import (
+    from .group_1029 import (
         ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200 as ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200,
     )
-    from .group_1025 import (
+    from .group_1030 import (
         ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBody as ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBody,
     )
-    from .group_1026 import (
+    from .group_1031 import (
         ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200 as ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200,
     )
-    from .group_1027 import (
+    from .group_1032 import (
         ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBody as ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBody,
     )
-    from .group_1028 import (
+    from .group_1033 import (
         ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBody as ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBody,
     )
-    from .group_1029 import ReposOwnerRepoForksPostBody as ReposOwnerRepoForksPostBody
-    from .group_1030 import (
+    from .group_1034 import ReposOwnerRepoForksPostBody as ReposOwnerRepoForksPostBody
+    from .group_1035 import (
         ReposOwnerRepoGitBlobsPostBody as ReposOwnerRepoGitBlobsPostBody,
     )
-    from .group_1031 import (
+    from .group_1036 import (
         ReposOwnerRepoGitCommitsPostBody as ReposOwnerRepoGitCommitsPostBody,
     )
-    from .group_1031 import (
+    from .group_1036 import (
         ReposOwnerRepoGitCommitsPostBodyPropAuthor as ReposOwnerRepoGitCommitsPostBodyPropAuthor,
     )
-    from .group_1031 import (
+    from .group_1036 import (
         ReposOwnerRepoGitCommitsPostBodyPropCommitter as ReposOwnerRepoGitCommitsPostBodyPropCommitter,
     )
-    from .group_1032 import (
+    from .group_1037 import (
         ReposOwnerRepoGitRefsPostBody as ReposOwnerRepoGitRefsPostBody,
     )
-    from .group_1033 import (
+    from .group_1038 import (
         ReposOwnerRepoGitRefsRefPatchBody as ReposOwnerRepoGitRefsRefPatchBody,
     )
-    from .group_1034 import (
+    from .group_1039 import (
         ReposOwnerRepoGitTagsPostBody as ReposOwnerRepoGitTagsPostBody,
     )
-    from .group_1034 import (
+    from .group_1039 import (
         ReposOwnerRepoGitTagsPostBodyPropTagger as ReposOwnerRepoGitTagsPostBodyPropTagger,
     )
-    from .group_1035 import (
+    from .group_1040 import (
         ReposOwnerRepoGitTreesPostBody as ReposOwnerRepoGitTreesPostBody,
     )
-    from .group_1035 import (
+    from .group_1040 import (
         ReposOwnerRepoGitTreesPostBodyPropTreeItems as ReposOwnerRepoGitTreesPostBodyPropTreeItems,
     )
-    from .group_1036 import ReposOwnerRepoHooksPostBody as ReposOwnerRepoHooksPostBody
-    from .group_1036 import (
+    from .group_1041 import ReposOwnerRepoHooksPostBody as ReposOwnerRepoHooksPostBody
+    from .group_1041 import (
         ReposOwnerRepoHooksPostBodyPropConfig as ReposOwnerRepoHooksPostBodyPropConfig,
     )
-    from .group_1037 import (
+    from .group_1042 import (
         ReposOwnerRepoHooksHookIdPatchBody as ReposOwnerRepoHooksHookIdPatchBody,
     )
-    from .group_1038 import (
+    from .group_1043 import (
         ReposOwnerRepoHooksHookIdConfigPatchBody as ReposOwnerRepoHooksHookIdConfigPatchBody,
     )
-    from .group_1039 import ReposOwnerRepoImportPutBody as ReposOwnerRepoImportPutBody
-    from .group_1040 import (
+    from .group_1044 import ReposOwnerRepoImportPutBody as ReposOwnerRepoImportPutBody
+    from .group_1045 import (
         ReposOwnerRepoImportPatchBody as ReposOwnerRepoImportPatchBody,
     )
-    from .group_1041 import (
+    from .group_1046 import (
         ReposOwnerRepoImportAuthorsAuthorIdPatchBody as ReposOwnerRepoImportAuthorsAuthorIdPatchBody,
     )
-    from .group_1042 import (
+    from .group_1047 import (
         ReposOwnerRepoImportLfsPatchBody as ReposOwnerRepoImportLfsPatchBody,
     )
-    from .group_1043 import (
+    from .group_1048 import (
         ReposOwnerRepoInteractionLimitsGetResponse200Anyof1 as ReposOwnerRepoInteractionLimitsGetResponse200Anyof1,
     )
-    from .group_1044 import (
+    from .group_1049 import (
         ReposOwnerRepoInvitationsInvitationIdPatchBody as ReposOwnerRepoInvitationsInvitationIdPatchBody,
     )
-    from .group_1045 import ReposOwnerRepoIssuesPostBody as ReposOwnerRepoIssuesPostBody
-    from .group_1045 import (
+    from .group_1050 import ReposOwnerRepoIssuesPostBody as ReposOwnerRepoIssuesPostBody
+    from .group_1050 import (
         ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1 as ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1,
     )
-    from .group_1046 import (
+    from .group_1051 import (
         ReposOwnerRepoIssuesCommentsCommentIdPatchBody as ReposOwnerRepoIssuesCommentsCommentIdPatchBody,
     )
-    from .group_1047 import (
+    from .group_1052 import (
         ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBody as ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBody,
     )
-    from .group_1048 import (
+    from .group_1053 import (
         ReposOwnerRepoIssuesIssueNumberPatchBody as ReposOwnerRepoIssuesIssueNumberPatchBody,
     )
-    from .group_1048 import (
+    from .group_1053 import (
         ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1 as ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1,
     )
-    from .group_1049 import (
+    from .group_1054 import (
         ReposOwnerRepoIssuesIssueNumberAssigneesPostBody as ReposOwnerRepoIssuesIssueNumberAssigneesPostBody,
     )
-    from .group_1050 import (
+    from .group_1055 import (
         ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBody as ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBody,
     )
-    from .group_1051 import (
+    from .group_1056 import (
         ReposOwnerRepoIssuesIssueNumberCommentsPostBody as ReposOwnerRepoIssuesIssueNumberCommentsPostBody,
     )
-    from .group_1052 import (
+    from .group_1057 import (
         ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0 as ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0,
     )
-    from .group_1053 import (
+    from .group_1058 import (
         ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2 as ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2,
     )
-    from .group_1053 import (
+    from .group_1058 import (
         ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems as ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems,
     )
-    from .group_1054 import (
+    from .group_1059 import (
         ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3Items as ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3Items,
     )
-    from .group_1055 import (
+    from .group_1060 import (
         ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0 as ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0,
     )
-    from .group_1056 import (
+    from .group_1061 import (
         ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2 as ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2,
     )
-    from .group_1056 import (
+    from .group_1061 import (
         ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItems as ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItems,
     )
-    from .group_1057 import (
+    from .group_1062 import (
         ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3Items as ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3Items,
     )
-    from .group_1058 import (
+    from .group_1063 import (
         ReposOwnerRepoIssuesIssueNumberLockPutBody as ReposOwnerRepoIssuesIssueNumberLockPutBody,
     )
-    from .group_1059 import (
+    from .group_1064 import (
         ReposOwnerRepoIssuesIssueNumberReactionsPostBody as ReposOwnerRepoIssuesIssueNumberReactionsPostBody,
     )
-    from .group_1060 import (
+    from .group_1065 import (
         ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBody as ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBody,
     )
-    from .group_1061 import (
+    from .group_1066 import (
         ReposOwnerRepoIssuesIssueNumberSubIssuesPostBody as ReposOwnerRepoIssuesIssueNumberSubIssuesPostBody,
     )
-    from .group_1062 import (
+    from .group_1067 import (
         ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBody as ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBody,
     )
-    from .group_1063 import ReposOwnerRepoKeysPostBody as ReposOwnerRepoKeysPostBody
-    from .group_1064 import ReposOwnerRepoLabelsPostBody as ReposOwnerRepoLabelsPostBody
-    from .group_1065 import (
+    from .group_1068 import ReposOwnerRepoKeysPostBody as ReposOwnerRepoKeysPostBody
+    from .group_1069 import ReposOwnerRepoLabelsPostBody as ReposOwnerRepoLabelsPostBody
+    from .group_1070 import (
         ReposOwnerRepoLabelsNamePatchBody as ReposOwnerRepoLabelsNamePatchBody,
     )
-    from .group_1066 import (
+    from .group_1071 import (
         ReposOwnerRepoMergeUpstreamPostBody as ReposOwnerRepoMergeUpstreamPostBody,
     )
-    from .group_1067 import ReposOwnerRepoMergesPostBody as ReposOwnerRepoMergesPostBody
-    from .group_1068 import (
+    from .group_1072 import ReposOwnerRepoMergesPostBody as ReposOwnerRepoMergesPostBody
+    from .group_1073 import (
         ReposOwnerRepoMilestonesPostBody as ReposOwnerRepoMilestonesPostBody,
     )
-    from .group_1069 import (
+    from .group_1074 import (
         ReposOwnerRepoMilestonesMilestoneNumberPatchBody as ReposOwnerRepoMilestonesMilestoneNumberPatchBody,
     )
-    from .group_1070 import (
+    from .group_1075 import (
         ReposOwnerRepoNotificationsPutBody as ReposOwnerRepoNotificationsPutBody,
     )
-    from .group_1071 import (
+    from .group_1076 import (
         ReposOwnerRepoNotificationsPutResponse202 as ReposOwnerRepoNotificationsPutResponse202,
     )
-    from .group_1072 import (
+    from .group_1077 import (
         ReposOwnerRepoPagesPutBodyPropSourceAnyof1 as ReposOwnerRepoPagesPutBodyPropSourceAnyof1,
     )
-    from .group_1073 import (
+    from .group_1078 import (
         ReposOwnerRepoPagesPutBodyAnyof0 as ReposOwnerRepoPagesPutBodyAnyof0,
     )
-    from .group_1074 import (
+    from .group_1079 import (
         ReposOwnerRepoPagesPutBodyAnyof1 as ReposOwnerRepoPagesPutBodyAnyof1,
     )
-    from .group_1075 import (
+    from .group_1080 import (
         ReposOwnerRepoPagesPutBodyAnyof2 as ReposOwnerRepoPagesPutBodyAnyof2,
     )
-    from .group_1076 import (
+    from .group_1081 import (
         ReposOwnerRepoPagesPutBodyAnyof3 as ReposOwnerRepoPagesPutBodyAnyof3,
     )
-    from .group_1077 import (
+    from .group_1082 import (
         ReposOwnerRepoPagesPutBodyAnyof4 as ReposOwnerRepoPagesPutBodyAnyof4,
     )
-    from .group_1078 import (
+    from .group_1083 import (
         ReposOwnerRepoPagesPostBodyPropSource as ReposOwnerRepoPagesPostBodyPropSource,
     )
-    from .group_1079 import (
+    from .group_1084 import (
         ReposOwnerRepoPagesPostBodyAnyof0 as ReposOwnerRepoPagesPostBodyAnyof0,
     )
-    from .group_1080 import (
+    from .group_1085 import (
         ReposOwnerRepoPagesPostBodyAnyof1 as ReposOwnerRepoPagesPostBodyAnyof1,
     )
-    from .group_1081 import (
+    from .group_1086 import (
         ReposOwnerRepoPagesDeploymentsPostBody as ReposOwnerRepoPagesDeploymentsPostBody,
     )
-    from .group_1082 import (
+    from .group_1087 import (
         ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200 as ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200,
     )
-    from .group_1083 import (
+    from .group_1088 import (
         ReposOwnerRepoProjectsPostBody as ReposOwnerRepoProjectsPostBody,
     )
-    from .group_1084 import (
+    from .group_1089 import (
         ReposOwnerRepoPropertiesValuesPatchBody as ReposOwnerRepoPropertiesValuesPatchBody,
     )
-    from .group_1085 import ReposOwnerRepoPullsPostBody as ReposOwnerRepoPullsPostBody
-    from .group_1086 import (
+    from .group_1090 import ReposOwnerRepoPullsPostBody as ReposOwnerRepoPullsPostBody
+    from .group_1091 import (
         ReposOwnerRepoPullsCommentsCommentIdPatchBody as ReposOwnerRepoPullsCommentsCommentIdPatchBody,
     )
-    from .group_1087 import (
+    from .group_1092 import (
         ReposOwnerRepoPullsCommentsCommentIdReactionsPostBody as ReposOwnerRepoPullsCommentsCommentIdReactionsPostBody,
     )
-    from .group_1088 import (
+    from .group_1093 import (
         ReposOwnerRepoPullsPullNumberPatchBody as ReposOwnerRepoPullsPullNumberPatchBody,
     )
-    from .group_1089 import (
+    from .group_1094 import (
         ReposOwnerRepoPullsPullNumberCodespacesPostBody as ReposOwnerRepoPullsPullNumberCodespacesPostBody,
     )
-    from .group_1090 import (
+    from .group_1095 import (
         ReposOwnerRepoPullsPullNumberCommentsPostBody as ReposOwnerRepoPullsPullNumberCommentsPostBody,
     )
-    from .group_1091 import (
+    from .group_1096 import (
         ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBody as ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBody,
     )
-    from .group_1092 import (
+    from .group_1097 import (
         ReposOwnerRepoPullsPullNumberMergePutBody as ReposOwnerRepoPullsPullNumberMergePutBody,
     )
-    from .group_1093 import (
+    from .group_1098 import (
         ReposOwnerRepoPullsPullNumberMergePutResponse405 as ReposOwnerRepoPullsPullNumberMergePutResponse405,
     )
-    from .group_1094 import (
+    from .group_1099 import (
         ReposOwnerRepoPullsPullNumberMergePutResponse409 as ReposOwnerRepoPullsPullNumberMergePutResponse409,
     )
-    from .group_1095 import (
+    from .group_1100 import (
         ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0 as ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0,
     )
-    from .group_1096 import (
+    from .group_1101 import (
         ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1 as ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1,
     )
-    from .group_1097 import (
+    from .group_1102 import (
         ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody as ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody,
     )
-    from .group_1098 import (
+    from .group_1103 import (
         ReposOwnerRepoPullsPullNumberReviewsPostBody as ReposOwnerRepoPullsPullNumberReviewsPostBody,
     )
-    from .group_1098 import (
+    from .group_1103 import (
         ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItems as ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItems,
     )
-    from .group_1099 import (
+    from .group_1104 import (
         ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBody as ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBody,
     )
-    from .group_1100 import (
+    from .group_1105 import (
         ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody as ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody,
     )
-    from .group_1101 import (
+    from .group_1106 import (
         ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody as ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody,
     )
-    from .group_1102 import (
+    from .group_1107 import (
         ReposOwnerRepoPullsPullNumberUpdateBranchPutBody as ReposOwnerRepoPullsPullNumberUpdateBranchPutBody,
     )
-    from .group_1103 import (
+    from .group_1108 import (
         ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202 as ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202,
     )
-    from .group_1104 import (
+    from .group_1109 import (
         ReposOwnerRepoReleasesPostBody as ReposOwnerRepoReleasesPostBody,
     )
-    from .group_1105 import (
+    from .group_1110 import (
         ReposOwnerRepoReleasesAssetsAssetIdPatchBody as ReposOwnerRepoReleasesAssetsAssetIdPatchBody,
     )
-    from .group_1106 import (
+    from .group_1111 import (
         ReposOwnerRepoReleasesGenerateNotesPostBody as ReposOwnerRepoReleasesGenerateNotesPostBody,
     )
-    from .group_1107 import (
+    from .group_1112 import (
         ReposOwnerRepoReleasesReleaseIdPatchBody as ReposOwnerRepoReleasesReleaseIdPatchBody,
     )
-    from .group_1108 import (
+    from .group_1113 import (
         ReposOwnerRepoReleasesReleaseIdReactionsPostBody as ReposOwnerRepoReleasesReleaseIdReactionsPostBody,
     )
-    from .group_1109 import (
+    from .group_1114 import (
         ReposOwnerRepoRulesetsPostBody as ReposOwnerRepoRulesetsPostBody,
     )
-    from .group_1110 import (
+    from .group_1115 import (
         ReposOwnerRepoRulesetsRulesetIdPutBody as ReposOwnerRepoRulesetsRulesetIdPutBody,
     )
-    from .group_1111 import (
+    from .group_1116 import (
         ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBody as ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBody,
     )
-    from .group_1112 import (
+    from .group_1117 import (
         ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody as ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody,
     )
-    from .group_1113 import (
+    from .group_1118 import (
         ReposOwnerRepoStatusesShaPostBody as ReposOwnerRepoStatusesShaPostBody,
     )
-    from .group_1114 import (
+    from .group_1119 import (
         ReposOwnerRepoSubscriptionPutBody as ReposOwnerRepoSubscriptionPutBody,
     )
-    from .group_1115 import (
+    from .group_1120 import (
         ReposOwnerRepoTagsProtectionPostBody as ReposOwnerRepoTagsProtectionPostBody,
     )
-    from .group_1116 import ReposOwnerRepoTopicsPutBody as ReposOwnerRepoTopicsPutBody
-    from .group_1117 import (
+    from .group_1121 import ReposOwnerRepoTopicsPutBody as ReposOwnerRepoTopicsPutBody
+    from .group_1122 import (
         ReposOwnerRepoTransferPostBody as ReposOwnerRepoTransferPostBody,
     )
-    from .group_1118 import (
+    from .group_1123 import (
         ReposTemplateOwnerTemplateRepoGeneratePostBody as ReposTemplateOwnerTemplateRepoGeneratePostBody,
     )
-    from .group_1119 import TeamsTeamIdPatchBody as TeamsTeamIdPatchBody
-    from .group_1120 import (
+    from .group_1124 import TeamsTeamIdPatchBody as TeamsTeamIdPatchBody
+    from .group_1125 import (
         TeamsTeamIdDiscussionsPostBody as TeamsTeamIdDiscussionsPostBody,
     )
-    from .group_1121 import (
+    from .group_1126 import (
         TeamsTeamIdDiscussionsDiscussionNumberPatchBody as TeamsTeamIdDiscussionsDiscussionNumberPatchBody,
     )
-    from .group_1122 import (
+    from .group_1127 import (
         TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBody as TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBody,
     )
-    from .group_1123 import (
+    from .group_1128 import (
         TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBody as TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBody,
     )
-    from .group_1124 import (
+    from .group_1129 import (
         TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody as TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody,
     )
-    from .group_1125 import (
+    from .group_1130 import (
         TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBody as TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBody,
     )
-    from .group_1126 import (
+    from .group_1131 import (
         TeamsTeamIdMembershipsUsernamePutBody as TeamsTeamIdMembershipsUsernamePutBody,
     )
-    from .group_1127 import (
+    from .group_1132 import (
         TeamsTeamIdProjectsProjectIdPutBody as TeamsTeamIdProjectsProjectIdPutBody,
     )
-    from .group_1128 import (
+    from .group_1133 import (
         TeamsTeamIdProjectsProjectIdPutResponse403 as TeamsTeamIdProjectsProjectIdPutResponse403,
     )
-    from .group_1129 import (
+    from .group_1134 import (
         TeamsTeamIdReposOwnerRepoPutBody as TeamsTeamIdReposOwnerRepoPutBody,
     )
-    from .group_1130 import UserPatchBody as UserPatchBody
-    from .group_1131 import UserCodespacesGetResponse200 as UserCodespacesGetResponse200
-    from .group_1132 import UserCodespacesPostBodyOneof0 as UserCodespacesPostBodyOneof0
-    from .group_1133 import UserCodespacesPostBodyOneof1 as UserCodespacesPostBodyOneof1
-    from .group_1133 import (
+    from .group_1135 import UserPatchBody as UserPatchBody
+    from .group_1136 import UserCodespacesGetResponse200 as UserCodespacesGetResponse200
+    from .group_1137 import UserCodespacesPostBodyOneof0 as UserCodespacesPostBodyOneof0
+    from .group_1138 import UserCodespacesPostBodyOneof1 as UserCodespacesPostBodyOneof1
+    from .group_1138 import (
         UserCodespacesPostBodyOneof1PropPullRequest as UserCodespacesPostBodyOneof1PropPullRequest,
     )
-    from .group_1134 import CodespacesSecret as CodespacesSecret
-    from .group_1134 import (
+    from .group_1139 import CodespacesSecret as CodespacesSecret
+    from .group_1139 import (
         UserCodespacesSecretsGetResponse200 as UserCodespacesSecretsGetResponse200,
     )
-    from .group_1135 import (
+    from .group_1140 import (
         UserCodespacesSecretsSecretNamePutBody as UserCodespacesSecretsSecretNamePutBody,
     )
-    from .group_1136 import (
+    from .group_1141 import (
         UserCodespacesSecretsSecretNameRepositoriesGetResponse200 as UserCodespacesSecretsSecretNameRepositoriesGetResponse200,
     )
-    from .group_1137 import (
+    from .group_1142 import (
         UserCodespacesSecretsSecretNameRepositoriesPutBody as UserCodespacesSecretsSecretNameRepositoriesPutBody,
     )
-    from .group_1138 import (
+    from .group_1143 import (
         UserCodespacesCodespaceNamePatchBody as UserCodespacesCodespaceNamePatchBody,
     )
-    from .group_1139 import (
+    from .group_1144 import (
         UserCodespacesCodespaceNameMachinesGetResponse200 as UserCodespacesCodespaceNameMachinesGetResponse200,
     )
-    from .group_1140 import (
+    from .group_1145 import (
         UserCodespacesCodespaceNamePublishPostBody as UserCodespacesCodespaceNamePublishPostBody,
     )
-    from .group_1141 import UserEmailVisibilityPatchBody as UserEmailVisibilityPatchBody
-    from .group_1142 import UserEmailsPostBodyOneof0 as UserEmailsPostBodyOneof0
-    from .group_1143 import UserEmailsDeleteBodyOneof0 as UserEmailsDeleteBodyOneof0
-    from .group_1144 import UserGpgKeysPostBody as UserGpgKeysPostBody
-    from .group_1145 import (
+    from .group_1146 import UserEmailVisibilityPatchBody as UserEmailVisibilityPatchBody
+    from .group_1147 import UserEmailsPostBodyOneof0 as UserEmailsPostBodyOneof0
+    from .group_1148 import UserEmailsDeleteBodyOneof0 as UserEmailsDeleteBodyOneof0
+    from .group_1149 import UserGpgKeysPostBody as UserGpgKeysPostBody
+    from .group_1150 import (
         UserInstallationsGetResponse200 as UserInstallationsGetResponse200,
     )
-    from .group_1146 import (
+    from .group_1151 import (
         UserInstallationsInstallationIdRepositoriesGetResponse200 as UserInstallationsInstallationIdRepositoriesGetResponse200,
     )
-    from .group_1147 import (
+    from .group_1152 import (
         UserInteractionLimitsGetResponse200Anyof1 as UserInteractionLimitsGetResponse200Anyof1,
     )
-    from .group_1148 import UserKeysPostBody as UserKeysPostBody
-    from .group_1149 import (
+    from .group_1153 import UserKeysPostBody as UserKeysPostBody
+    from .group_1154 import (
         UserMembershipsOrgsOrgPatchBody as UserMembershipsOrgsOrgPatchBody,
     )
-    from .group_1150 import UserMigrationsPostBody as UserMigrationsPostBody
-    from .group_1151 import UserProjectsPostBody as UserProjectsPostBody
-    from .group_1152 import UserReposPostBody as UserReposPostBody
-    from .group_1153 import UserSocialAccountsPostBody as UserSocialAccountsPostBody
-    from .group_1154 import UserSocialAccountsDeleteBody as UserSocialAccountsDeleteBody
-    from .group_1155 import UserSshSigningKeysPostBody as UserSshSigningKeysPostBody
-    from .group_1156 import SigstoreBundle0 as SigstoreBundle0
-    from .group_1156 import (
+    from .group_1155 import UserMigrationsPostBody as UserMigrationsPostBody
+    from .group_1156 import UserProjectsPostBody as UserProjectsPostBody
+    from .group_1157 import UserReposPostBody as UserReposPostBody
+    from .group_1158 import UserSocialAccountsPostBody as UserSocialAccountsPostBody
+    from .group_1159 import UserSocialAccountsDeleteBody as UserSocialAccountsDeleteBody
+    from .group_1160 import UserSshSigningKeysPostBody as UserSshSigningKeysPostBody
+    from .group_1161 import SigstoreBundle0 as SigstoreBundle0
+    from .group_1161 import (
         SigstoreBundle0PropDsseEnvelope as SigstoreBundle0PropDsseEnvelope,
     )
-    from .group_1156 import (
+    from .group_1161 import (
         SigstoreBundle0PropDsseEnvelopePropSignaturesItems as SigstoreBundle0PropDsseEnvelopePropSignaturesItems,
     )
-    from .group_1156 import (
+    from .group_1161 import (
         SigstoreBundle0PropVerificationMaterial as SigstoreBundle0PropVerificationMaterial,
     )
-    from .group_1156 import (
+    from .group_1161 import (
         SigstoreBundle0PropVerificationMaterialPropTlogEntriesItems as SigstoreBundle0PropVerificationMaterialPropTlogEntriesItems,
     )
-    from .group_1156 import (
+    from .group_1161 import (
         SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropInclusionPromise as SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropInclusionPromise,
     )
-    from .group_1156 import (
+    from .group_1161 import (
         SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropKindVersion as SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropKindVersion,
     )
-    from .group_1156 import (
+    from .group_1161 import (
         SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropLogId as SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropLogId,
     )
-    from .group_1156 import (
+    from .group_1161 import (
         SigstoreBundle0PropVerificationMaterialPropX509CertificateChain as SigstoreBundle0PropVerificationMaterialPropX509CertificateChain,
     )
-    from .group_1156 import (
+    from .group_1161 import (
         SigstoreBundle0PropVerificationMaterialPropX509CertificateChainPropCertificatesItems as SigstoreBundle0PropVerificationMaterialPropX509CertificateChainPropCertificatesItems,
     )
-    from .group_1156 import (
+    from .group_1161 import (
         UsersUsernameAttestationsSubjectDigestGetResponse200 as UsersUsernameAttestationsSubjectDigestGetResponse200,
     )
-    from .group_1156 import (
+    from .group_1161 import (
         UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems as UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems,
     )
 else:
@@ -8745,7 +8759,7 @@ else:
         ".group_0084": ("CodespacesPublicKey",),
         ".group_0085": (
             "CopilotOrganizationDetails",
-            "CopilotSeatBreakdown",
+            "CopilotOrganizationSeatBreakdown",
         ),
         ".group_0086": ("TeamSimple",),
         ".group_0087": (
@@ -8922,8 +8936,13 @@ else:
             "RuleSuitePropRuleEvaluationsItems",
             "RuleSuitePropRuleEvaluationsItemsPropRuleSource",
         ),
-        ".group_0162": ("RepositoryAdvisoryCredit",),
-        ".group_0163": (
+        ".group_0162": ("RulesetVersion",),
+        ".group_0163": ("RulesetVersionPropActor",),
+        ".group_0164": ("RulesetVersionWithState",),
+        ".group_0165": ("RulesetVersionWithStateAllof1",),
+        ".group_0166": ("RulesetVersionWithStateAllof1PropState",),
+        ".group_0167": ("RepositoryAdvisoryCredit",),
+        ".group_0168": (
             "RepositoryAdvisory",
             "RepositoryAdvisoryPropIdentifiersItems",
             "RepositoryAdvisoryPropSubmission",
@@ -8933,85 +8952,85 @@ else:
             "RepositoryAdvisoryVulnerability",
             "RepositoryAdvisoryVulnerabilityPropPackage",
         ),
-        ".group_0164": (
+        ".group_0169": (
             "ActionsBillingUsage",
             "ActionsBillingUsagePropMinutesUsedBreakdown",
         ),
-        ".group_0165": ("PackagesBillingUsage",),
-        ".group_0166": ("CombinedBillingUsage",),
-        ".group_0167": ("NetworkSettings",),
-        ".group_0168": (
+        ".group_0170": ("PackagesBillingUsage",),
+        ".group_0171": ("CombinedBillingUsage",),
+        ".group_0172": ("NetworkSettings",),
+        ".group_0173": (
             "TeamFull",
             "TeamOrganization",
             "TeamOrganizationPropPlan",
         ),
-        ".group_0169": ("TeamDiscussion",),
-        ".group_0170": ("TeamDiscussionComment",),
-        ".group_0171": ("Reaction",),
-        ".group_0172": ("TeamMembership",),
-        ".group_0173": (
+        ".group_0174": ("TeamDiscussion",),
+        ".group_0175": ("TeamDiscussionComment",),
+        ".group_0176": ("Reaction",),
+        ".group_0177": ("TeamMembership",),
+        ".group_0178": (
             "TeamProject",
             "TeamProjectPropPermissions",
         ),
-        ".group_0174": (
+        ".group_0179": (
             "TeamRepository",
             "TeamRepositoryPropPermissions",
         ),
-        ".group_0175": ("ProjectCard",),
-        ".group_0176": ("ProjectColumn",),
-        ".group_0177": ("ProjectCollaboratorPermission",),
-        ".group_0178": ("RateLimit",),
-        ".group_0179": ("RateLimitOverview",),
-        ".group_0180": ("RateLimitOverviewPropResources",),
-        ".group_0181": (
+        ".group_0180": ("ProjectCard",),
+        ".group_0181": ("ProjectColumn",),
+        ".group_0182": ("ProjectCollaboratorPermission",),
+        ".group_0183": ("RateLimit",),
+        ".group_0184": ("RateLimitOverview",),
+        ".group_0185": ("RateLimitOverviewPropResources",),
+        ".group_0186": (
             "Artifact",
             "ArtifactPropWorkflowRun",
         ),
-        ".group_0182": (
+        ".group_0187": (
             "ActionsCacheList",
             "ActionsCacheListPropActionsCachesItems",
         ),
-        ".group_0183": (
+        ".group_0188": (
             "Job",
             "JobPropStepsItems",
         ),
-        ".group_0184": ("OidcCustomSubRepo",),
-        ".group_0185": ("ActionsSecret",),
-        ".group_0186": ("ActionsVariable",),
-        ".group_0187": ("ActionsRepositoryPermissions",),
-        ".group_0188": ("ActionsWorkflowAccessToRepository",),
-        ".group_0189": (
+        ".group_0189": ("OidcCustomSubRepo",),
+        ".group_0190": ("ActionsSecret",),
+        ".group_0191": ("ActionsVariable",),
+        ".group_0192": ("ActionsRepositoryPermissions",),
+        ".group_0193": ("ActionsWorkflowAccessToRepository",),
+        ".group_0194": (
             "PullRequestMinimal",
             "PullRequestMinimalPropHead",
             "PullRequestMinimalPropHeadPropRepo",
             "PullRequestMinimalPropBase",
             "PullRequestMinimalPropBasePropRepo",
         ),
-        ".group_0190": (
+        ".group_0195": (
             "SimpleCommit",
             "SimpleCommitPropAuthor",
             "SimpleCommitPropCommitter",
         ),
-        ".group_0191": (
+        ".group_0196": (
             "WorkflowRun",
             "ReferencedWorkflow",
         ),
-        ".group_0192": (
+        ".group_0197": (
             "EnvironmentApprovals",
             "EnvironmentApprovalsPropEnvironmentsItems",
         ),
-        ".group_0193": ("ReviewCustomGatesCommentRequired",),
-        ".group_0194": ("ReviewCustomGatesStateRequired",),
-        ".group_0195": (
+        ".group_0198": ("ReviewCustomGatesCommentRequired",),
+        ".group_0199": ("ReviewCustomGatesStateRequired",),
+        ".group_0200": (
             "PendingDeploymentPropReviewersItems",
             "PendingDeployment",
             "PendingDeploymentPropEnvironment",
         ),
-        ".group_0196": (
+        ".group_0201": (
             "Deployment",
             "DeploymentPropPayloadOneof0",
         ),
-        ".group_0197": (
+        ".group_0202": (
             "WorkflowRunUsage",
             "WorkflowRunUsagePropBillable",
             "WorkflowRunUsagePropBillablePropUbuntu",
@@ -9021,22 +9040,22 @@ else:
             "WorkflowRunUsagePropBillablePropWindows",
             "WorkflowRunUsagePropBillablePropWindowsPropJobRunsItems",
         ),
-        ".group_0198": (
+        ".group_0203": (
             "WorkflowUsage",
             "WorkflowUsagePropBillable",
             "WorkflowUsagePropBillablePropUbuntu",
             "WorkflowUsagePropBillablePropMacos",
             "WorkflowUsagePropBillablePropWindows",
         ),
-        ".group_0199": ("Activity",),
-        ".group_0200": ("Autolink",),
-        ".group_0201": ("CheckAutomatedSecurityFixes",),
-        ".group_0202": ("ProtectedBranchPullRequestReview",),
-        ".group_0203": (
+        ".group_0204": ("Activity",),
+        ".group_0205": ("Autolink",),
+        ".group_0206": ("CheckAutomatedSecurityFixes",),
+        ".group_0207": ("ProtectedBranchPullRequestReview",),
+        ".group_0208": (
             "ProtectedBranchPullRequestReviewPropDismissalRestrictions",
             "ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances",
         ),
-        ".group_0204": (
+        ".group_0209": (
             "BranchRestrictionPolicy",
             "BranchRestrictionPolicyPropUsersItems",
             "BranchRestrictionPolicyPropTeamsItems",
@@ -9044,7 +9063,7 @@ else:
             "BranchRestrictionPolicyPropAppsItemsPropOwner",
             "BranchRestrictionPolicyPropAppsItemsPropPermissions",
         ),
-        ".group_0205": (
+        ".group_0210": (
             "BranchProtection",
             "ProtectedBranchAdminEnforced",
             "BranchProtectionPropRequiredLinearHistory",
@@ -9058,28 +9077,28 @@ else:
             "ProtectedBranchRequiredStatusCheck",
             "ProtectedBranchRequiredStatusCheckPropChecksItems",
         ),
-        ".group_0206": (
+        ".group_0211": (
             "ShortBranch",
             "ShortBranchPropCommit",
         ),
-        ".group_0207": ("GitUser",),
-        ".group_0208": ("Verification",),
-        ".group_0209": ("DiffEntry",),
-        ".group_0210": (
+        ".group_0212": ("GitUser",),
+        ".group_0213": ("Verification",),
+        ".group_0214": ("DiffEntry",),
+        ".group_0215": (
             "Commit",
             "EmptyObject",
             "CommitPropParentsItems",
             "CommitPropStats",
         ),
-        ".group_0211": (
+        ".group_0216": (
             "CommitPropCommit",
             "CommitPropCommitPropTree",
         ),
-        ".group_0212": (
+        ".group_0217": (
             "BranchWithProtection",
             "BranchWithProtectionPropLinks",
         ),
-        ".group_0213": (
+        ".group_0218": (
             "ProtectedBranch",
             "ProtectedBranchPropRequiredSignatures",
             "ProtectedBranchPropEnforceAdmins",
@@ -9093,117 +9112,117 @@ else:
             "StatusCheckPolicy",
             "StatusCheckPolicyPropChecksItems",
         ),
-        ".group_0214": ("ProtectedBranchPropRequiredPullRequestReviews",),
-        ".group_0215": (
+        ".group_0219": ("ProtectedBranchPropRequiredPullRequestReviews",),
+        ".group_0220": (
             "ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions",
             "ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances",
         ),
-        ".group_0216": ("DeploymentSimple",),
-        ".group_0217": (
+        ".group_0221": ("DeploymentSimple",),
+        ".group_0222": (
             "CheckRun",
             "CheckRunPropOutput",
             "CheckRunPropCheckSuite",
         ),
-        ".group_0218": ("CheckAnnotation",),
-        ".group_0219": (
+        ".group_0223": ("CheckAnnotation",),
+        ".group_0224": (
             "CheckSuite",
             "ReposOwnerRepoCommitsRefCheckSuitesGetResponse200",
         ),
-        ".group_0220": (
+        ".group_0225": (
             "CheckSuitePreference",
             "CheckSuitePreferencePropPreferences",
             "CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems",
         ),
-        ".group_0221": ("CodeScanningAlertItems",),
-        ".group_0222": (
+        ".group_0226": ("CodeScanningAlertItems",),
+        ".group_0227": (
             "CodeScanningAlert",
             "CodeScanningAlertRule",
         ),
-        ".group_0223": ("CodeScanningAutofix",),
-        ".group_0224": ("CodeScanningAutofixCommits",),
-        ".group_0225": ("CodeScanningAutofixCommitsResponse",),
-        ".group_0226": ("CodeScanningAnalysis",),
-        ".group_0227": ("CodeScanningAnalysisDeletion",),
-        ".group_0228": ("CodeScanningCodeqlDatabase",),
-        ".group_0229": ("CodeScanningVariantAnalysisRepository",),
-        ".group_0230": ("CodeScanningVariantAnalysisSkippedRepoGroup",),
-        ".group_0231": ("CodeScanningVariantAnalysis",),
-        ".group_0232": ("CodeScanningVariantAnalysisPropScannedRepositoriesItems",),
-        ".group_0233": (
+        ".group_0228": ("CodeScanningAutofix",),
+        ".group_0229": ("CodeScanningAutofixCommits",),
+        ".group_0230": ("CodeScanningAutofixCommitsResponse",),
+        ".group_0231": ("CodeScanningAnalysis",),
+        ".group_0232": ("CodeScanningAnalysisDeletion",),
+        ".group_0233": ("CodeScanningCodeqlDatabase",),
+        ".group_0234": ("CodeScanningVariantAnalysisRepository",),
+        ".group_0235": ("CodeScanningVariantAnalysisSkippedRepoGroup",),
+        ".group_0236": ("CodeScanningVariantAnalysis",),
+        ".group_0237": ("CodeScanningVariantAnalysisPropScannedRepositoriesItems",),
+        ".group_0238": (
             "CodeScanningVariantAnalysisPropSkippedRepositories",
             "CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos",
         ),
-        ".group_0234": ("CodeScanningVariantAnalysisRepoTask",),
-        ".group_0235": ("CodeScanningDefaultSetup",),
-        ".group_0236": ("CodeScanningDefaultSetupUpdate",),
-        ".group_0237": ("CodeScanningDefaultSetupUpdateResponse",),
-        ".group_0238": ("CodeScanningSarifsReceipt",),
-        ".group_0239": ("CodeScanningSarifsStatus",),
-        ".group_0240": ("CodeSecurityConfigurationForRepository",),
-        ".group_0241": (
+        ".group_0239": ("CodeScanningVariantAnalysisRepoTask",),
+        ".group_0240": ("CodeScanningDefaultSetup",),
+        ".group_0241": ("CodeScanningDefaultSetupUpdate",),
+        ".group_0242": ("CodeScanningDefaultSetupUpdateResponse",),
+        ".group_0243": ("CodeScanningSarifsReceipt",),
+        ".group_0244": ("CodeScanningSarifsStatus",),
+        ".group_0245": ("CodeSecurityConfigurationForRepository",),
+        ".group_0246": (
             "CodeownersErrors",
             "CodeownersErrorsPropErrorsItems",
         ),
-        ".group_0242": ("CodespacesPermissionsCheckForDevcontainer",),
-        ".group_0243": ("RepositoryInvitation",),
-        ".group_0244": (
+        ".group_0247": ("CodespacesPermissionsCheckForDevcontainer",),
+        ".group_0248": ("RepositoryInvitation",),
+        ".group_0249": (
             "RepositoryCollaboratorPermission",
             "Collaborator",
             "CollaboratorPropPermissions",
         ),
-        ".group_0245": (
+        ".group_0250": (
             "CommitComment",
             "TimelineCommitCommentedEvent",
         ),
-        ".group_0246": (
+        ".group_0251": (
             "BranchShort",
             "BranchShortPropCommit",
         ),
-        ".group_0247": ("Link",),
-        ".group_0248": ("AutoMerge",),
-        ".group_0249": (
+        ".group_0252": ("Link",),
+        ".group_0253": ("AutoMerge",),
+        ".group_0254": (
             "PullRequestSimple",
             "PullRequestSimplePropLabelsItems",
         ),
-        ".group_0250": (
+        ".group_0255": (
             "PullRequestSimplePropHead",
             "PullRequestSimplePropBase",
         ),
-        ".group_0251": ("PullRequestSimplePropLinks",),
-        ".group_0252": (
+        ".group_0256": ("PullRequestSimplePropLinks",),
+        ".group_0257": (
             "CombinedCommitStatus",
             "SimpleCommitStatus",
         ),
-        ".group_0253": ("Status",),
-        ".group_0254": (
+        ".group_0258": ("Status",),
+        ".group_0259": (
             "CommunityProfilePropFiles",
             "CommunityHealthFile",
             "CommunityProfile",
         ),
-        ".group_0255": ("CommitComparison",),
-        ".group_0256": (
+        ".group_0260": ("CommitComparison",),
+        ".group_0261": (
             "ContentTree",
             "ContentTreePropLinks",
             "ContentTreePropEntriesItems",
             "ContentTreePropEntriesItemsPropLinks",
         ),
-        ".group_0257": (
+        ".group_0262": (
             "ContentDirectoryItems",
             "ContentDirectoryItemsPropLinks",
         ),
-        ".group_0258": (
+        ".group_0263": (
             "ContentFile",
             "ContentFilePropLinks",
         ),
-        ".group_0259": (
+        ".group_0264": (
             "ContentSymlink",
             "ContentSymlinkPropLinks",
         ),
-        ".group_0260": (
+        ".group_0265": (
             "ContentSubmodule",
             "ContentSubmodulePropLinks",
         ),
-        ".group_0261": (
+        ".group_0266": (
             "FileCommit",
             "FileCommitPropContent",
             "FileCommitPropContentPropLinks",
@@ -9214,20 +9233,20 @@ else:
             "FileCommitPropCommitPropParentsItems",
             "FileCommitPropCommitPropVerification",
         ),
-        ".group_0262": (
+        ".group_0267": (
             "RepositoryRuleViolationError",
             "RepositoryRuleViolationErrorPropMetadata",
             "RepositoryRuleViolationErrorPropMetadataPropSecretScanning",
             "RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItems",
         ),
-        ".group_0263": ("Contributor",),
-        ".group_0264": ("DependabotAlert",),
-        ".group_0265": ("DependabotAlertPropDependency",),
-        ".group_0266": (
+        ".group_0268": ("Contributor",),
+        ".group_0269": ("DependabotAlert",),
+        ".group_0270": ("DependabotAlertPropDependency",),
+        ".group_0271": (
             "DependencyGraphDiffItems",
             "DependencyGraphDiffItemsPropVulnerabilitiesItems",
         ),
-        ".group_0267": (
+        ".group_0272": (
             "DependencyGraphSpdxSbom",
             "DependencyGraphSpdxSbomPropSbom",
             "DependencyGraphSpdxSbomPropSbomPropCreationInfo",
@@ -9235,39 +9254,39 @@ else:
             "DependencyGraphSpdxSbomPropSbomPropPackagesItems",
             "DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItems",
         ),
-        ".group_0268": ("Metadata",),
-        ".group_0269": ("Dependency",),
-        ".group_0270": (
+        ".group_0273": ("Metadata",),
+        ".group_0274": ("Dependency",),
+        ".group_0275": (
             "Manifest",
             "ManifestPropFile",
             "ManifestPropResolved",
         ),
-        ".group_0271": (
+        ".group_0276": (
             "Snapshot",
             "SnapshotPropJob",
             "SnapshotPropDetector",
             "SnapshotPropManifests",
         ),
-        ".group_0272": ("DeploymentStatus",),
-        ".group_0273": ("DeploymentBranchPolicySettings",),
-        ".group_0274": (
+        ".group_0277": ("DeploymentStatus",),
+        ".group_0278": ("DeploymentBranchPolicySettings",),
+        ".group_0279": (
             "Environment",
             "EnvironmentPropProtectionRulesItemsAnyof0",
             "EnvironmentPropProtectionRulesItemsAnyof2",
             "ReposOwnerRepoEnvironmentsGetResponse200",
         ),
-        ".group_0275": ("EnvironmentPropProtectionRulesItemsAnyof1",),
-        ".group_0276": ("EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems",),
-        ".group_0277": ("DeploymentBranchPolicyNamePatternWithType",),
-        ".group_0278": ("DeploymentBranchPolicyNamePattern",),
-        ".group_0279": ("CustomDeploymentRuleApp",),
-        ".group_0280": (
+        ".group_0280": ("EnvironmentPropProtectionRulesItemsAnyof1",),
+        ".group_0281": ("EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems",),
+        ".group_0282": ("DeploymentBranchPolicyNamePatternWithType",),
+        ".group_0283": ("DeploymentBranchPolicyNamePattern",),
+        ".group_0284": ("CustomDeploymentRuleApp",),
+        ".group_0285": (
             "DeploymentProtectionRule",
             "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200",
         ),
-        ".group_0281": ("ShortBlob",),
-        ".group_0282": ("Blob",),
-        ".group_0283": (
+        ".group_0286": ("ShortBlob",),
+        ".group_0287": ("Blob",),
+        ".group_0288": (
             "GitCommit",
             "GitCommitPropAuthor",
             "GitCommitPropCommitter",
@@ -9275,28 +9294,28 @@ else:
             "GitCommitPropParentsItems",
             "GitCommitPropVerification",
         ),
-        ".group_0284": (
+        ".group_0289": (
             "GitRef",
             "GitRefPropObject",
         ),
-        ".group_0285": (
+        ".group_0290": (
             "GitTag",
             "GitTagPropTagger",
             "GitTagPropObject",
         ),
-        ".group_0286": (
+        ".group_0291": (
             "GitTree",
             "GitTreePropTreeItems",
         ),
-        ".group_0287": ("HookResponse",),
-        ".group_0288": ("Hook",),
-        ".group_0289": (
+        ".group_0292": ("HookResponse",),
+        ".group_0293": ("Hook",),
+        ".group_0294": (
             "Import",
             "ImportPropProjectChoicesItems",
         ),
-        ".group_0290": ("PorterAuthor",),
-        ".group_0291": ("PorterLargeFile",),
-        ".group_0292": (
+        ".group_0295": ("PorterAuthor",),
+        ".group_0296": ("PorterLargeFile",),
+        ".group_0297": (
             "IssueEvent",
             "IssueEventLabel",
             "IssueEventDismissedReview",
@@ -9304,55 +9323,55 @@ else:
             "IssueEventProjectCard",
             "IssueEventRename",
         ),
-        ".group_0293": (
+        ".group_0298": (
             "LabeledIssueEvent",
             "LabeledIssueEventPropLabel",
         ),
-        ".group_0294": (
+        ".group_0299": (
             "UnlabeledIssueEvent",
             "UnlabeledIssueEventPropLabel",
         ),
-        ".group_0295": ("AssignedIssueEvent",),
-        ".group_0296": ("UnassignedIssueEvent",),
-        ".group_0297": (
+        ".group_0300": ("AssignedIssueEvent",),
+        ".group_0301": ("UnassignedIssueEvent",),
+        ".group_0302": (
             "MilestonedIssueEvent",
             "MilestonedIssueEventPropMilestone",
         ),
-        ".group_0298": (
+        ".group_0303": (
             "DemilestonedIssueEvent",
             "DemilestonedIssueEventPropMilestone",
         ),
-        ".group_0299": (
+        ".group_0304": (
             "RenamedIssueEvent",
             "RenamedIssueEventPropRename",
         ),
-        ".group_0300": ("ReviewRequestedIssueEvent",),
-        ".group_0301": ("ReviewRequestRemovedIssueEvent",),
-        ".group_0302": (
+        ".group_0305": ("ReviewRequestedIssueEvent",),
+        ".group_0306": ("ReviewRequestRemovedIssueEvent",),
+        ".group_0307": (
             "ReviewDismissedIssueEvent",
             "ReviewDismissedIssueEventPropDismissedReview",
         ),
-        ".group_0303": ("LockedIssueEvent",),
-        ".group_0304": (
+        ".group_0308": ("LockedIssueEvent",),
+        ".group_0309": (
             "AddedToProjectIssueEvent",
             "AddedToProjectIssueEventPropProjectCard",
         ),
-        ".group_0305": (
+        ".group_0310": (
             "MovedColumnInProjectIssueEvent",
             "MovedColumnInProjectIssueEventPropProjectCard",
         ),
-        ".group_0306": (
+        ".group_0311": (
             "RemovedFromProjectIssueEvent",
             "RemovedFromProjectIssueEventPropProjectCard",
         ),
-        ".group_0307": (
+        ".group_0312": (
             "ConvertedNoteToIssueIssueEvent",
             "ConvertedNoteToIssueIssueEventPropProjectCard",
         ),
-        ".group_0308": ("TimelineCommentEvent",),
-        ".group_0309": ("TimelineCrossReferencedEvent",),
-        ".group_0310": ("TimelineCrossReferencedEventPropSource",),
-        ".group_0311": (
+        ".group_0313": ("TimelineCommentEvent",),
+        ".group_0314": ("TimelineCrossReferencedEvent",),
+        ".group_0315": ("TimelineCrossReferencedEventPropSource",),
+        ".group_0316": (
             "TimelineCommittedEvent",
             "TimelineCommittedEventPropAuthor",
             "TimelineCommittedEventPropCommitter",
@@ -9360,13 +9379,13 @@ else:
             "TimelineCommittedEventPropParentsItems",
             "TimelineCommittedEventPropVerification",
         ),
-        ".group_0312": (
+        ".group_0317": (
             "TimelineReviewedEvent",
             "TimelineReviewedEventPropLinks",
             "TimelineReviewedEventPropLinksPropHtml",
             "TimelineReviewedEventPropLinksPropPullRequest",
         ),
-        ".group_0313": (
+        ".group_0318": (
             "PullRequestReviewComment",
             "PullRequestReviewCommentPropLinks",
             "PullRequestReviewCommentPropLinksPropSelf",
@@ -9374,152 +9393,152 @@ else:
             "PullRequestReviewCommentPropLinksPropPullRequest",
             "TimelineLineCommentedEvent",
         ),
-        ".group_0314": ("TimelineAssignedIssueEvent",),
-        ".group_0315": ("TimelineUnassignedIssueEvent",),
-        ".group_0316": ("StateChangeIssueEvent",),
-        ".group_0317": ("DeployKey",),
-        ".group_0318": ("Language",),
-        ".group_0319": (
+        ".group_0319": ("TimelineAssignedIssueEvent",),
+        ".group_0320": ("TimelineUnassignedIssueEvent",),
+        ".group_0321": ("StateChangeIssueEvent",),
+        ".group_0322": ("DeployKey",),
+        ".group_0323": ("Language",),
+        ".group_0324": (
             "LicenseContent",
             "LicenseContentPropLinks",
         ),
-        ".group_0320": ("MergedUpstream",),
-        ".group_0321": (
+        ".group_0325": ("MergedUpstream",),
+        ".group_0326": (
             "Page",
             "PagesSourceHash",
             "PagesHttpsCertificate",
         ),
-        ".group_0322": (
+        ".group_0327": (
             "PageBuild",
             "PageBuildPropError",
         ),
-        ".group_0323": ("PageBuildStatus",),
-        ".group_0324": ("PageDeployment",),
-        ".group_0325": ("PagesDeploymentStatus",),
-        ".group_0326": (
+        ".group_0328": ("PageBuildStatus",),
+        ".group_0329": ("PageDeployment",),
+        ".group_0330": ("PagesDeploymentStatus",),
+        ".group_0331": (
             "PagesHealthCheck",
             "PagesHealthCheckPropDomain",
             "PagesHealthCheckPropAltDomain",
         ),
-        ".group_0327": ("PullRequest",),
-        ".group_0328": ("PullRequestPropLabelsItems",),
-        ".group_0329": (
+        ".group_0332": ("PullRequest",),
+        ".group_0333": ("PullRequestPropLabelsItems",),
+        ".group_0334": (
             "PullRequestPropHead",
             "PullRequestPropBase",
         ),
-        ".group_0330": ("PullRequestPropLinks",),
-        ".group_0331": ("PullRequestMergeResult",),
-        ".group_0332": ("PullRequestReviewRequest",),
-        ".group_0333": (
+        ".group_0335": ("PullRequestPropLinks",),
+        ".group_0336": ("PullRequestMergeResult",),
+        ".group_0337": ("PullRequestReviewRequest",),
+        ".group_0338": (
             "PullRequestReview",
             "PullRequestReviewPropLinks",
             "PullRequestReviewPropLinksPropHtml",
             "PullRequestReviewPropLinksPropPullRequest",
         ),
-        ".group_0334": ("ReviewComment",),
-        ".group_0335": ("ReviewCommentPropLinks",),
-        ".group_0336": ("ReleaseAsset",),
-        ".group_0337": ("Release",),
-        ".group_0338": ("ReleaseNotesContent",),
-        ".group_0339": ("RepositoryRuleRulesetInfo",),
-        ".group_0340": ("RepositoryRuleDetailedOneof0",),
-        ".group_0341": ("RepositoryRuleDetailedOneof1",),
-        ".group_0342": ("RepositoryRuleDetailedOneof2",),
-        ".group_0343": ("RepositoryRuleDetailedOneof3",),
-        ".group_0344": ("RepositoryRuleDetailedOneof4",),
-        ".group_0345": ("RepositoryRuleDetailedOneof5",),
-        ".group_0346": ("RepositoryRuleDetailedOneof6",),
-        ".group_0347": ("RepositoryRuleDetailedOneof7",),
-        ".group_0348": ("RepositoryRuleDetailedOneof8",),
-        ".group_0349": ("RepositoryRuleDetailedOneof9",),
-        ".group_0350": ("RepositoryRuleDetailedOneof10",),
-        ".group_0351": ("RepositoryRuleDetailedOneof11",),
-        ".group_0352": ("RepositoryRuleDetailedOneof12",),
-        ".group_0353": ("RepositoryRuleDetailedOneof13",),
-        ".group_0354": ("RepositoryRuleDetailedOneof14",),
-        ".group_0355": ("RepositoryRuleDetailedOneof15",),
-        ".group_0356": ("RepositoryRuleDetailedOneof16",),
-        ".group_0357": ("SecretScanningAlert",),
-        ".group_0358": ("SecretScanningPushProtectionBypass",),
-        ".group_0359": (
+        ".group_0339": ("ReviewComment",),
+        ".group_0340": ("ReviewCommentPropLinks",),
+        ".group_0341": ("ReleaseAsset",),
+        ".group_0342": ("Release",),
+        ".group_0343": ("ReleaseNotesContent",),
+        ".group_0344": ("RepositoryRuleRulesetInfo",),
+        ".group_0345": ("RepositoryRuleDetailedOneof0",),
+        ".group_0346": ("RepositoryRuleDetailedOneof1",),
+        ".group_0347": ("RepositoryRuleDetailedOneof2",),
+        ".group_0348": ("RepositoryRuleDetailedOneof3",),
+        ".group_0349": ("RepositoryRuleDetailedOneof4",),
+        ".group_0350": ("RepositoryRuleDetailedOneof5",),
+        ".group_0351": ("RepositoryRuleDetailedOneof6",),
+        ".group_0352": ("RepositoryRuleDetailedOneof7",),
+        ".group_0353": ("RepositoryRuleDetailedOneof8",),
+        ".group_0354": ("RepositoryRuleDetailedOneof9",),
+        ".group_0355": ("RepositoryRuleDetailedOneof10",),
+        ".group_0356": ("RepositoryRuleDetailedOneof11",),
+        ".group_0357": ("RepositoryRuleDetailedOneof12",),
+        ".group_0358": ("RepositoryRuleDetailedOneof13",),
+        ".group_0359": ("RepositoryRuleDetailedOneof14",),
+        ".group_0360": ("RepositoryRuleDetailedOneof15",),
+        ".group_0361": ("RepositoryRuleDetailedOneof16",),
+        ".group_0362": ("SecretScanningAlert",),
+        ".group_0363": ("SecretScanningPushProtectionBypass",),
+        ".group_0364": (
             "SecretScanningScanHistory",
             "SecretScanningScan",
             "SecretScanningScanHistoryPropCustomPatternBackfillScansItems",
         ),
-        ".group_0360": (
+        ".group_0365": (
             "SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1",
         ),
-        ".group_0361": (
+        ".group_0366": (
             "RepositoryAdvisoryCreate",
             "RepositoryAdvisoryCreatePropCreditsItems",
             "RepositoryAdvisoryCreatePropVulnerabilitiesItems",
             "RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackage",
         ),
-        ".group_0362": (
+        ".group_0367": (
             "PrivateVulnerabilityReportCreate",
             "PrivateVulnerabilityReportCreatePropVulnerabilitiesItems",
             "PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackage",
         ),
-        ".group_0363": (
+        ".group_0368": (
             "RepositoryAdvisoryUpdate",
             "RepositoryAdvisoryUpdatePropCreditsItems",
             "RepositoryAdvisoryUpdatePropVulnerabilitiesItems",
             "RepositoryAdvisoryUpdatePropVulnerabilitiesItemsPropPackage",
         ),
-        ".group_0364": ("Stargazer",),
-        ".group_0365": ("CommitActivity",),
-        ".group_0366": (
+        ".group_0369": ("Stargazer",),
+        ".group_0370": ("CommitActivity",),
+        ".group_0371": (
             "ContributorActivity",
             "ContributorActivityPropWeeksItems",
         ),
-        ".group_0367": ("ParticipationStats",),
-        ".group_0368": ("RepositorySubscription",),
-        ".group_0369": (
+        ".group_0372": ("ParticipationStats",),
+        ".group_0373": ("RepositorySubscription",),
+        ".group_0374": (
             "Tag",
             "TagPropCommit",
         ),
-        ".group_0370": ("TagProtection",),
-        ".group_0371": ("Topic",),
-        ".group_0372": ("Traffic",),
-        ".group_0373": ("CloneTraffic",),
-        ".group_0374": ("ContentTraffic",),
-        ".group_0375": ("ReferrerTraffic",),
-        ".group_0376": ("ViewTraffic",),
-        ".group_0377": (
+        ".group_0375": ("TagProtection",),
+        ".group_0376": ("Topic",),
+        ".group_0377": ("Traffic",),
+        ".group_0378": ("CloneTraffic",),
+        ".group_0379": ("ContentTraffic",),
+        ".group_0380": ("ReferrerTraffic",),
+        ".group_0381": ("ViewTraffic",),
+        ".group_0382": (
             "SearchResultTextMatchesItems",
             "SearchResultTextMatchesItemsPropMatchesItems",
         ),
-        ".group_0378": (
+        ".group_0383": (
             "CodeSearchResultItem",
             "SearchCodeGetResponse200",
         ),
-        ".group_0379": (
+        ".group_0384": (
             "CommitSearchResultItem",
             "CommitSearchResultItemPropParentsItems",
             "SearchCommitsGetResponse200",
         ),
-        ".group_0380": (
+        ".group_0385": (
             "CommitSearchResultItemPropCommit",
             "CommitSearchResultItemPropCommitPropAuthor",
             "CommitSearchResultItemPropCommitPropTree",
         ),
-        ".group_0381": (
+        ".group_0386": (
             "IssueSearchResultItem",
             "IssueSearchResultItemPropLabelsItems",
             "IssueSearchResultItemPropSubIssuesSummary",
             "IssueSearchResultItemPropPullRequest",
             "SearchIssuesGetResponse200",
         ),
-        ".group_0382": (
+        ".group_0387": (
             "LabelSearchResultItem",
             "SearchLabelsGetResponse200",
         ),
-        ".group_0383": (
+        ".group_0388": (
             "RepoSearchResultItem",
             "RepoSearchResultItemPropPermissions",
             "SearchRepositoriesGetResponse200",
         ),
-        ".group_0384": (
+        ".group_0389": (
             "TopicSearchResultItem",
             "TopicSearchResultItemPropRelatedItems",
             "TopicSearchResultItemPropRelatedItemsPropTopicRelation",
@@ -9527,45 +9546,45 @@ else:
             "TopicSearchResultItemPropAliasesItemsPropTopicRelation",
             "SearchTopicsGetResponse200",
         ),
-        ".group_0385": (
+        ".group_0390": (
             "UserSearchResultItem",
             "SearchUsersGetResponse200",
         ),
-        ".group_0386": (
+        ".group_0391": (
             "PrivateUser",
             "PrivateUserPropPlan",
         ),
-        ".group_0387": ("CodespacesUserPublicKey",),
-        ".group_0388": ("CodespaceExportDetails",),
-        ".group_0389": (
+        ".group_0392": ("CodespacesUserPublicKey",),
+        ".group_0393": ("CodespaceExportDetails",),
+        ".group_0394": (
             "CodespaceWithFullRepository",
             "CodespaceWithFullRepositoryPropGitStatus",
             "CodespaceWithFullRepositoryPropRuntimeConstraints",
         ),
-        ".group_0390": ("Email",),
-        ".group_0391": (
+        ".group_0395": ("Email",),
+        ".group_0396": (
             "GpgKey",
             "GpgKeyPropEmailsItems",
             "GpgKeyPropSubkeysItems",
             "GpgKeyPropSubkeysItemsPropEmailsItems",
         ),
-        ".group_0392": ("Key",),
-        ".group_0393": (
+        ".group_0397": ("Key",),
+        ".group_0398": (
             "UserMarketplacePurchase",
             "MarketplaceAccount",
         ),
-        ".group_0394": ("SocialAccount",),
-        ".group_0395": ("SshSigningKey",),
-        ".group_0396": ("StarredRepository",),
-        ".group_0397": (
+        ".group_0399": ("SocialAccount",),
+        ".group_0400": ("SshSigningKey",),
+        ".group_0401": ("StarredRepository",),
+        ".group_0402": (
             "Hovercard",
             "HovercardPropContextsItems",
         ),
-        ".group_0398": ("KeySimple",),
-        ".group_0399": ("EnterpriseWebhooks",),
-        ".group_0400": ("SimpleInstallation",),
-        ".group_0401": ("OrganizationSimpleWebhooks",),
-        ".group_0402": (
+        ".group_0403": ("KeySimple",),
+        ".group_0404": ("EnterpriseWebhooks",),
+        ".group_0405": ("SimpleInstallation",),
+        ".group_0406": ("OrganizationSimpleWebhooks",),
+        ".group_0407": (
             "RepositoryWebhooks",
             "RepositoryWebhooksPropPermissions",
             "RepositoryWebhooksPropCustomProperties",
@@ -9573,27 +9592,27 @@ else:
             "RepositoryWebhooksPropTemplateRepositoryPropOwner",
             "RepositoryWebhooksPropTemplateRepositoryPropPermissions",
         ),
-        ".group_0403": ("WebhooksRule",),
-        ".group_0404": ("SimpleCheckSuite",),
-        ".group_0405": (
+        ".group_0408": ("WebhooksRule",),
+        ".group_0409": ("SimpleCheckSuite",),
+        ".group_0410": (
             "CheckRunWithSimpleCheckSuite",
             "CheckRunWithSimpleCheckSuitePropOutput",
         ),
-        ".group_0406": ("WebhooksDeployKey",),
-        ".group_0407": ("WebhooksWorkflow",),
-        ".group_0408": (
+        ".group_0411": ("WebhooksDeployKey",),
+        ".group_0412": ("WebhooksWorkflow",),
+        ".group_0413": (
             "WebhooksApprover",
             "WebhooksReviewersItems",
             "WebhooksReviewersItemsPropReviewer",
         ),
-        ".group_0409": ("WebhooksWorkflowJobRun",),
-        ".group_0410": ("WebhooksUser",),
-        ".group_0411": (
+        ".group_0414": ("WebhooksWorkflowJobRun",),
+        ".group_0415": ("WebhooksUser",),
+        ".group_0416": (
             "WebhooksAnswer",
             "WebhooksAnswerPropReactions",
             "WebhooksAnswerPropUser",
         ),
-        ".group_0412": (
+        ".group_0417": (
             "Discussion",
             "Label",
             "DiscussionPropAnswerChosenBy",
@@ -9601,24 +9620,24 @@ else:
             "DiscussionPropReactions",
             "DiscussionPropUser",
         ),
-        ".group_0413": (
+        ".group_0418": (
             "WebhooksComment",
             "WebhooksCommentPropReactions",
             "WebhooksCommentPropUser",
         ),
-        ".group_0414": ("WebhooksLabel",),
-        ".group_0415": ("WebhooksRepositoriesItems",),
-        ".group_0416": ("WebhooksRepositoriesAddedItems",),
-        ".group_0417": (
+        ".group_0419": ("WebhooksLabel",),
+        ".group_0420": ("WebhooksRepositoriesItems",),
+        ".group_0421": ("WebhooksRepositoriesAddedItems",),
+        ".group_0422": (
             "WebhooksIssueComment",
             "WebhooksIssueCommentPropReactions",
             "WebhooksIssueCommentPropUser",
         ),
-        ".group_0418": (
+        ".group_0423": (
             "WebhooksChanges",
             "WebhooksChangesPropBody",
         ),
-        ".group_0419": (
+        ".group_0424": (
             "WebhooksIssue",
             "WebhooksIssuePropAssignee",
             "WebhooksIssuePropAssigneesItems",
@@ -9633,11 +9652,11 @@ else:
             "WebhooksIssuePropSubIssuesSummary",
             "WebhooksIssuePropUser",
         ),
-        ".group_0420": (
+        ".group_0425": (
             "WebhooksMilestone",
             "WebhooksMilestonePropCreator",
         ),
-        ".group_0421": (
+        ".group_0426": (
             "WebhooksIssue2",
             "WebhooksIssue2PropAssignee",
             "WebhooksIssue2PropAssigneesItems",
@@ -9652,31 +9671,31 @@ else:
             "WebhooksIssue2PropSubIssuesSummary",
             "WebhooksIssue2PropUser",
         ),
-        ".group_0422": ("WebhooksUserMannequin",),
-        ".group_0423": (
+        ".group_0427": ("WebhooksUserMannequin",),
+        ".group_0428": (
             "WebhooksMarketplacePurchase",
             "WebhooksMarketplacePurchasePropAccount",
             "WebhooksMarketplacePurchasePropPlan",
         ),
-        ".group_0424": (
+        ".group_0429": (
             "WebhooksPreviousMarketplacePurchase",
             "WebhooksPreviousMarketplacePurchasePropAccount",
             "WebhooksPreviousMarketplacePurchasePropPlan",
         ),
-        ".group_0425": (
+        ".group_0430": (
             "WebhooksTeam",
             "WebhooksTeamPropParent",
         ),
-        ".group_0426": ("MergeGroup",),
-        ".group_0427": (
+        ".group_0431": ("MergeGroup",),
+        ".group_0432": (
             "WebhooksMilestone3",
             "WebhooksMilestone3PropCreator",
         ),
-        ".group_0428": (
+        ".group_0433": (
             "WebhooksMembership",
             "WebhooksMembershipPropUser",
         ),
-        ".group_0429": (
+        ".group_0434": (
             "PersonalAccessTokenRequest",
             "PersonalAccessTokenRequestPropRepositoriesItems",
             "PersonalAccessTokenRequestPropPermissionsAdded",
@@ -9692,25 +9711,25 @@ else:
             "PersonalAccessTokenRequestPropPermissionsResultPropRepository",
             "PersonalAccessTokenRequestPropPermissionsResultPropOther",
         ),
-        ".group_0430": (
+        ".group_0435": (
             "WebhooksProjectCard",
             "WebhooksProjectCardPropCreator",
         ),
-        ".group_0431": (
+        ".group_0436": (
             "WebhooksProject",
             "WebhooksProjectPropCreator",
         ),
-        ".group_0432": ("WebhooksProjectColumn",),
-        ".group_0433": ("ProjectsV2",),
-        ".group_0434": (
+        ".group_0437": ("WebhooksProjectColumn",),
+        ".group_0438": ("ProjectsV2",),
+        ".group_0439": (
             "WebhooksProjectChanges",
             "WebhooksProjectChangesPropArchivedAt",
         ),
-        ".group_0435": ("ProjectsV2Item",),
-        ".group_0436": ("ProjectsV2StatusUpdate",),
-        ".group_0437": ("PullRequestWebhook",),
-        ".group_0438": ("PullRequestWebhookAllof1",),
-        ".group_0439": (
+        ".group_0440": ("ProjectsV2Item",),
+        ".group_0441": ("ProjectsV2StatusUpdate",),
+        ".group_0442": ("PullRequestWebhook",),
+        ".group_0443": ("PullRequestWebhookAllof1",),
+        ".group_0444": (
             "WebhooksPullRequest5",
             "WebhooksPullRequest5PropAssignee",
             "WebhooksPullRequest5PropAssigneesItems",
@@ -9748,7 +9767,7 @@ else:
             "WebhooksPullRequest5PropRequestedTeamsItems",
             "WebhooksPullRequest5PropRequestedTeamsItemsPropParent",
         ),
-        ".group_0440": (
+        ".group_0445": (
             "WebhooksReviewComment",
             "WebhooksReviewCommentPropReactions",
             "WebhooksReviewCommentPropUser",
@@ -9757,33 +9776,33 @@ else:
             "WebhooksReviewCommentPropLinksPropPullRequest",
             "WebhooksReviewCommentPropLinksPropSelf",
         ),
-        ".group_0441": (
+        ".group_0446": (
             "WebhooksReview",
             "WebhooksReviewPropUser",
             "WebhooksReviewPropLinks",
             "WebhooksReviewPropLinksPropHtml",
             "WebhooksReviewPropLinksPropPullRequest",
         ),
-        ".group_0442": (
+        ".group_0447": (
             "WebhooksRelease",
             "WebhooksReleasePropAuthor",
             "WebhooksReleasePropReactions",
             "WebhooksReleasePropAssetsItems",
             "WebhooksReleasePropAssetsItemsPropUploader",
         ),
-        ".group_0443": (
+        ".group_0448": (
             "WebhooksRelease1",
             "WebhooksRelease1PropAssetsItems",
             "WebhooksRelease1PropAssetsItemsPropUploader",
             "WebhooksRelease1PropAuthor",
             "WebhooksRelease1PropReactions",
         ),
-        ".group_0444": (
+        ".group_0449": (
             "WebhooksAlert",
             "WebhooksAlertPropDismisser",
         ),
-        ".group_0445": ("SecretScanningAlertWebhook",),
-        ".group_0446": (
+        ".group_0450": ("SecretScanningAlertWebhook",),
+        ".group_0451": (
             "WebhooksSecurityAdvisory",
             "WebhooksSecurityAdvisoryPropCvss",
             "WebhooksSecurityAdvisoryPropCwesItems",
@@ -9793,27 +9812,27 @@ else:
             "WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion",
             "WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackage",
         ),
-        ".group_0447": (
+        ".group_0452": (
             "WebhooksSponsorship",
             "WebhooksSponsorshipPropMaintainer",
             "WebhooksSponsorshipPropSponsor",
             "WebhooksSponsorshipPropSponsorable",
             "WebhooksSponsorshipPropTier",
         ),
-        ".group_0448": (
+        ".group_0453": (
             "WebhooksChanges8",
             "WebhooksChanges8PropTier",
             "WebhooksChanges8PropTierPropFrom",
         ),
-        ".group_0449": (
+        ".group_0454": (
             "WebhooksTeam1",
             "WebhooksTeam1PropParent",
         ),
-        ".group_0450": ("WebhookBranchProtectionConfigurationDisabled",),
-        ".group_0451": ("WebhookBranchProtectionConfigurationEnabled",),
-        ".group_0452": ("WebhookBranchProtectionRuleCreated",),
-        ".group_0453": ("WebhookBranchProtectionRuleDeleted",),
-        ".group_0454": (
+        ".group_0455": ("WebhookBranchProtectionConfigurationDisabled",),
+        ".group_0456": ("WebhookBranchProtectionConfigurationEnabled",),
+        ".group_0457": ("WebhookBranchProtectionRuleCreated",),
+        ".group_0458": ("WebhookBranchProtectionRuleDeleted",),
+        ".group_0459": (
             "WebhookBranchProtectionRuleEdited",
             "WebhookBranchProtectionRuleEditedPropChanges",
             "WebhookBranchProtectionRuleEditedPropChangesPropAdminEnforced",
@@ -9828,18 +9847,18 @@ else:
             "WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecks",
             "WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementLevel",
         ),
-        ".group_0455": ("WebhookCheckRunCompleted",),
-        ".group_0456": ("WebhookCheckRunCompletedFormEncoded",),
-        ".group_0457": ("WebhookCheckRunCreated",),
-        ".group_0458": ("WebhookCheckRunCreatedFormEncoded",),
-        ".group_0459": (
+        ".group_0460": ("WebhookCheckRunCompleted",),
+        ".group_0461": ("WebhookCheckRunCompletedFormEncoded",),
+        ".group_0462": ("WebhookCheckRunCreated",),
+        ".group_0463": ("WebhookCheckRunCreatedFormEncoded",),
+        ".group_0464": (
             "WebhookCheckRunRequestedAction",
             "WebhookCheckRunRequestedActionPropRequestedAction",
         ),
-        ".group_0460": ("WebhookCheckRunRequestedActionFormEncoded",),
-        ".group_0461": ("WebhookCheckRunRerequested",),
-        ".group_0462": ("WebhookCheckRunRerequestedFormEncoded",),
-        ".group_0463": (
+        ".group_0465": ("WebhookCheckRunRequestedActionFormEncoded",),
+        ".group_0466": ("WebhookCheckRunRerequested",),
+        ".group_0467": ("WebhookCheckRunRerequestedFormEncoded",),
+        ".group_0468": (
             "WebhookCheckSuiteCompleted",
             "WebhookCheckSuiteCompletedPropCheckSuite",
             "WebhookCheckSuiteCompletedPropCheckSuitePropApp",
@@ -9854,7 +9873,7 @@ else:
             "WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropHead",
             "WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropHeadPropRepo",
         ),
-        ".group_0464": (
+        ".group_0469": (
             "WebhookCheckSuiteRequested",
             "WebhookCheckSuiteRequestedPropCheckSuite",
             "WebhookCheckSuiteRequestedPropCheckSuitePropApp",
@@ -9869,7 +9888,7 @@ else:
             "WebhookCheckSuiteRequestedPropCheckSuitePropPullRequestsItemsPropHead",
             "WebhookCheckSuiteRequestedPropCheckSuitePropPullRequestsItemsPropHeadPropRepo",
         ),
-        ".group_0465": (
+        ".group_0470": (
             "WebhookCheckSuiteRerequested",
             "WebhookCheckSuiteRerequestedPropCheckSuite",
             "WebhookCheckSuiteRerequestedPropCheckSuitePropApp",
@@ -9884,7 +9903,7 @@ else:
             "WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropHead",
             "WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropHeadPropRepo",
         ),
-        ".group_0466": (
+        ".group_0471": (
             "WebhookCodeScanningAlertAppearedInBranch",
             "WebhookCodeScanningAlertAppearedInBranchPropAlert",
             "WebhookCodeScanningAlertAppearedInBranchPropAlertPropDismissedBy",
@@ -9894,7 +9913,7 @@ else:
             "WebhookCodeScanningAlertAppearedInBranchPropAlertPropRule",
             "WebhookCodeScanningAlertAppearedInBranchPropAlertPropTool",
         ),
-        ".group_0467": (
+        ".group_0472": (
             "WebhookCodeScanningAlertClosedByUser",
             "WebhookCodeScanningAlertClosedByUserPropAlert",
             "WebhookCodeScanningAlertClosedByUserPropAlertPropDismissedBy",
@@ -9903,8 +9922,9 @@ else:
             "WebhookCodeScanningAlertClosedByUserPropAlertPropMostRecentInstancePropMessage",
             "WebhookCodeScanningAlertClosedByUserPropAlertPropRule",
             "WebhookCodeScanningAlertClosedByUserPropAlertPropTool",
+            "WebhookCodeScanningAlertClosedByUserPropAlertPropDismissalApprovedBy",
         ),
-        ".group_0468": (
+        ".group_0473": (
             "WebhookCodeScanningAlertCreated",
             "WebhookCodeScanningAlertCreatedPropAlert",
             "WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstance",
@@ -9913,7 +9933,7 @@ else:
             "WebhookCodeScanningAlertCreatedPropAlertPropRule",
             "WebhookCodeScanningAlertCreatedPropAlertPropTool",
         ),
-        ".group_0469": (
+        ".group_0474": (
             "WebhookCodeScanningAlertFixed",
             "WebhookCodeScanningAlertFixedPropAlert",
             "WebhookCodeScanningAlertFixedPropAlertPropDismissedBy",
@@ -9923,7 +9943,7 @@ else:
             "WebhookCodeScanningAlertFixedPropAlertPropRule",
             "WebhookCodeScanningAlertFixedPropAlertPropTool",
         ),
-        ".group_0470": (
+        ".group_0475": (
             "WebhookCodeScanningAlertReopened",
             "WebhookCodeScanningAlertReopenedPropAlert",
             "WebhookCodeScanningAlertReopenedPropAlertPropDismissedBy",
@@ -9933,7 +9953,7 @@ else:
             "WebhookCodeScanningAlertReopenedPropAlertPropRule",
             "WebhookCodeScanningAlertReopenedPropAlertPropTool",
         ),
-        ".group_0471": (
+        ".group_0476": (
             "WebhookCodeScanningAlertReopenedByUser",
             "WebhookCodeScanningAlertReopenedByUserPropAlert",
             "WebhookCodeScanningAlertReopenedByUserPropAlertPropMostRecentInstance",
@@ -9942,31 +9962,31 @@ else:
             "WebhookCodeScanningAlertReopenedByUserPropAlertPropRule",
             "WebhookCodeScanningAlertReopenedByUserPropAlertPropTool",
         ),
-        ".group_0472": (
+        ".group_0477": (
             "WebhookCommitCommentCreated",
             "WebhookCommitCommentCreatedPropComment",
             "WebhookCommitCommentCreatedPropCommentPropReactions",
             "WebhookCommitCommentCreatedPropCommentPropUser",
         ),
-        ".group_0473": ("WebhookCreate",),
-        ".group_0474": ("WebhookCustomPropertyCreated",),
-        ".group_0475": (
+        ".group_0478": ("WebhookCreate",),
+        ".group_0479": ("WebhookCustomPropertyCreated",),
+        ".group_0480": (
             "WebhookCustomPropertyDeleted",
             "WebhookCustomPropertyDeletedPropDefinition",
         ),
-        ".group_0476": ("WebhookCustomPropertyUpdated",),
-        ".group_0477": ("WebhookCustomPropertyValuesUpdated",),
-        ".group_0478": ("WebhookDelete",),
-        ".group_0479": ("WebhookDependabotAlertAutoDismissed",),
-        ".group_0480": ("WebhookDependabotAlertAutoReopened",),
-        ".group_0481": ("WebhookDependabotAlertCreated",),
-        ".group_0482": ("WebhookDependabotAlertDismissed",),
-        ".group_0483": ("WebhookDependabotAlertFixed",),
-        ".group_0484": ("WebhookDependabotAlertReintroduced",),
-        ".group_0485": ("WebhookDependabotAlertReopened",),
-        ".group_0486": ("WebhookDeployKeyCreated",),
-        ".group_0487": ("WebhookDeployKeyDeleted",),
-        ".group_0488": (
+        ".group_0481": ("WebhookCustomPropertyUpdated",),
+        ".group_0482": ("WebhookCustomPropertyValuesUpdated",),
+        ".group_0483": ("WebhookDelete",),
+        ".group_0484": ("WebhookDependabotAlertAutoDismissed",),
+        ".group_0485": ("WebhookDependabotAlertAutoReopened",),
+        ".group_0486": ("WebhookDependabotAlertCreated",),
+        ".group_0487": ("WebhookDependabotAlertDismissed",),
+        ".group_0488": ("WebhookDependabotAlertFixed",),
+        ".group_0489": ("WebhookDependabotAlertReintroduced",),
+        ".group_0490": ("WebhookDependabotAlertReopened",),
+        ".group_0491": ("WebhookDeployKeyCreated",),
+        ".group_0492": ("WebhookDeployKeyDeleted",),
+        ".group_0493": (
             "WebhookDeploymentCreated",
             "WebhookDeploymentCreatedPropDeployment",
             "WebhookDeploymentCreatedPropDeploymentPropCreator",
@@ -9988,8 +10008,8 @@ else:
             "WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropHead",
             "WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo",
         ),
-        ".group_0489": ("WebhookDeploymentProtectionRuleRequested",),
-        ".group_0490": (
+        ".group_0494": ("WebhookDeploymentProtectionRuleRequested",),
+        ".group_0495": (
             "WebhookDeploymentReviewApproved",
             "WebhookDeploymentReviewApprovedPropWorkflowJobRunsItems",
             "WebhookDeploymentReviewApprovedPropWorkflowRun",
@@ -10007,7 +10027,7 @@ else:
             "WebhookDeploymentReviewApprovedPropWorkflowRunPropPullRequestsItemsPropHead",
             "WebhookDeploymentReviewApprovedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo",
         ),
-        ".group_0491": (
+        ".group_0496": (
             "WebhookDeploymentReviewRejected",
             "WebhookDeploymentReviewRejectedPropWorkflowJobRunsItems",
             "WebhookDeploymentReviewRejectedPropWorkflowRun",
@@ -10025,7 +10045,7 @@ else:
             "WebhookDeploymentReviewRejectedPropWorkflowRunPropPullRequestsItemsPropHead",
             "WebhookDeploymentReviewRejectedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo",
         ),
-        ".group_0492": (
+        ".group_0497": (
             "WebhookDeploymentReviewRequested",
             "WebhookDeploymentReviewRequestedPropWorkflowJobRun",
             "WebhookDeploymentReviewRequestedPropReviewersItems",
@@ -10045,7 +10065,7 @@ else:
             "WebhookDeploymentReviewRequestedPropWorkflowRunPropPullRequestsItemsPropHead",
             "WebhookDeploymentReviewRequestedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo",
         ),
-        ".group_0493": (
+        ".group_0498": (
             "WebhookDeploymentStatusCreated",
             "WebhookDeploymentStatusCreatedPropCheckRun",
             "WebhookDeploymentStatusCreatedPropDeployment",
@@ -10073,119 +10093,119 @@ else:
             "WebhookDeploymentStatusCreatedPropWorkflowRunPropPullRequestsItemsPropHead",
             "WebhookDeploymentStatusCreatedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo",
         ),
-        ".group_0494": ("WebhookDiscussionAnswered",),
-        ".group_0495": (
+        ".group_0499": ("WebhookDiscussionAnswered",),
+        ".group_0500": (
             "WebhookDiscussionCategoryChanged",
             "WebhookDiscussionCategoryChangedPropChanges",
             "WebhookDiscussionCategoryChangedPropChangesPropCategory",
             "WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFrom",
         ),
-        ".group_0496": ("WebhookDiscussionClosed",),
-        ".group_0497": ("WebhookDiscussionCommentCreated",),
-        ".group_0498": ("WebhookDiscussionCommentDeleted",),
-        ".group_0499": (
+        ".group_0501": ("WebhookDiscussionClosed",),
+        ".group_0502": ("WebhookDiscussionCommentCreated",),
+        ".group_0503": ("WebhookDiscussionCommentDeleted",),
+        ".group_0504": (
             "WebhookDiscussionCommentEdited",
             "WebhookDiscussionCommentEditedPropChanges",
             "WebhookDiscussionCommentEditedPropChangesPropBody",
         ),
-        ".group_0500": ("WebhookDiscussionCreated",),
-        ".group_0501": ("WebhookDiscussionDeleted",),
-        ".group_0502": (
+        ".group_0505": ("WebhookDiscussionCreated",),
+        ".group_0506": ("WebhookDiscussionDeleted",),
+        ".group_0507": (
             "WebhookDiscussionEdited",
             "WebhookDiscussionEditedPropChanges",
             "WebhookDiscussionEditedPropChangesPropBody",
             "WebhookDiscussionEditedPropChangesPropTitle",
         ),
-        ".group_0503": ("WebhookDiscussionLabeled",),
-        ".group_0504": ("WebhookDiscussionLocked",),
-        ".group_0505": ("WebhookDiscussionPinned",),
-        ".group_0506": ("WebhookDiscussionReopened",),
-        ".group_0507": ("WebhookDiscussionTransferred",),
-        ".group_0508": ("WebhookDiscussionTransferredPropChanges",),
-        ".group_0509": ("WebhookDiscussionUnanswered",),
-        ".group_0510": ("WebhookDiscussionUnlabeled",),
-        ".group_0511": ("WebhookDiscussionUnlocked",),
-        ".group_0512": ("WebhookDiscussionUnpinned",),
-        ".group_0513": ("WebhookFork",),
-        ".group_0514": (
+        ".group_0508": ("WebhookDiscussionLabeled",),
+        ".group_0509": ("WebhookDiscussionLocked",),
+        ".group_0510": ("WebhookDiscussionPinned",),
+        ".group_0511": ("WebhookDiscussionReopened",),
+        ".group_0512": ("WebhookDiscussionTransferred",),
+        ".group_0513": ("WebhookDiscussionTransferredPropChanges",),
+        ".group_0514": ("WebhookDiscussionUnanswered",),
+        ".group_0515": ("WebhookDiscussionUnlabeled",),
+        ".group_0516": ("WebhookDiscussionUnlocked",),
+        ".group_0517": ("WebhookDiscussionUnpinned",),
+        ".group_0518": ("WebhookFork",),
+        ".group_0519": (
             "WebhookForkPropForkee",
             "WebhookForkPropForkeeMergedLicense",
             "WebhookForkPropForkeeMergedOwner",
         ),
-        ".group_0515": (
+        ".group_0520": (
             "WebhookForkPropForkeeAllof0",
             "WebhookForkPropForkeeAllof0PropLicense",
             "WebhookForkPropForkeeAllof0PropOwner",
         ),
-        ".group_0516": ("WebhookForkPropForkeeAllof0PropPermissions",),
-        ".group_0517": (
+        ".group_0521": ("WebhookForkPropForkeeAllof0PropPermissions",),
+        ".group_0522": (
             "WebhookForkPropForkeeAllof1",
             "WebhookForkPropForkeeAllof1PropLicense",
             "WebhookForkPropForkeeAllof1PropOwner",
         ),
-        ".group_0518": ("WebhookGithubAppAuthorizationRevoked",),
-        ".group_0519": (
+        ".group_0523": ("WebhookGithubAppAuthorizationRevoked",),
+        ".group_0524": (
             "WebhookGollum",
             "WebhookGollumPropPagesItems",
         ),
-        ".group_0520": ("WebhookInstallationCreated",),
-        ".group_0521": ("WebhookInstallationDeleted",),
-        ".group_0522": ("WebhookInstallationNewPermissionsAccepted",),
-        ".group_0523": (
+        ".group_0525": ("WebhookInstallationCreated",),
+        ".group_0526": ("WebhookInstallationDeleted",),
+        ".group_0527": ("WebhookInstallationNewPermissionsAccepted",),
+        ".group_0528": (
             "WebhookInstallationRepositoriesAdded",
             "WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItems",
         ),
-        ".group_0524": (
+        ".group_0529": (
             "WebhookInstallationRepositoriesRemoved",
             "WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItems",
         ),
-        ".group_0525": ("WebhookInstallationSuspend",),
-        ".group_0526": (
+        ".group_0530": ("WebhookInstallationSuspend",),
+        ".group_0531": (
             "WebhookInstallationTargetRenamed",
             "WebhookInstallationTargetRenamedPropAccount",
             "WebhookInstallationTargetRenamedPropChanges",
             "WebhookInstallationTargetRenamedPropChangesPropLogin",
             "WebhookInstallationTargetRenamedPropChangesPropSlug",
         ),
-        ".group_0527": ("WebhookInstallationUnsuspend",),
-        ".group_0528": ("WebhookIssueCommentCreated",),
-        ".group_0529": (
+        ".group_0532": ("WebhookInstallationUnsuspend",),
+        ".group_0533": ("WebhookIssueCommentCreated",),
+        ".group_0534": (
             "WebhookIssueCommentCreatedPropComment",
             "WebhookIssueCommentCreatedPropCommentPropReactions",
             "WebhookIssueCommentCreatedPropCommentPropUser",
         ),
-        ".group_0530": (
+        ".group_0535": (
             "WebhookIssueCommentCreatedPropIssue",
             "WebhookIssueCommentCreatedPropIssueMergedAssignees",
             "WebhookIssueCommentCreatedPropIssueMergedReactions",
             "WebhookIssueCommentCreatedPropIssueMergedUser",
         ),
-        ".group_0531": (
+        ".group_0536": (
             "WebhookIssueCommentCreatedPropIssueAllof0",
             "WebhookIssueCommentCreatedPropIssueAllof0PropAssigneesItems",
             "WebhookIssueCommentCreatedPropIssueAllof0PropReactions",
             "WebhookIssueCommentCreatedPropIssueAllof0PropUser",
         ),
-        ".group_0532": (
+        ".group_0537": (
             "WebhookIssueCommentCreatedPropIssueAllof0PropAssignee",
             "WebhookIssueCommentCreatedPropIssueAllof0PropLabelsItems",
             "WebhookIssueCommentCreatedPropIssueAllof0PropPullRequest",
         ),
-        ".group_0533": (
+        ".group_0538": (
             "WebhookIssueCommentCreatedPropIssueAllof0PropMilestonePropCreator",
         ),
-        ".group_0534": ("WebhookIssueCommentCreatedPropIssueAllof0PropMilestone",),
-        ".group_0535": (
+        ".group_0539": ("WebhookIssueCommentCreatedPropIssueAllof0PropMilestone",),
+        ".group_0540": (
             "WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropOwner",
             "WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropPermissions",
         ),
-        ".group_0536": (
+        ".group_0541": (
             "WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubApp",
         ),
-        ".group_0537": (
+        ".group_0542": (
             "WebhookIssueCommentCreatedPropIssueAllof0PropSubIssuesSummary",
         ),
-        ".group_0538": (
+        ".group_0543": (
             "WebhookIssueCommentCreatedPropIssueAllof1",
             "WebhookIssueCommentCreatedPropIssueAllof1PropAssignee",
             "WebhookIssueCommentCreatedPropIssueAllof1PropAssigneesItems",
@@ -10195,43 +10215,43 @@ else:
             "WebhookIssueCommentCreatedPropIssueAllof1PropReactions",
             "WebhookIssueCommentCreatedPropIssueAllof1PropUser",
         ),
-        ".group_0539": ("WebhookIssueCommentCreatedPropIssueMergedMilestone",),
-        ".group_0540": (
+        ".group_0544": ("WebhookIssueCommentCreatedPropIssueMergedMilestone",),
+        ".group_0545": (
             "WebhookIssueCommentCreatedPropIssueMergedPerformedViaGithubApp",
         ),
-        ".group_0541": ("WebhookIssueCommentDeleted",),
-        ".group_0542": (
+        ".group_0546": ("WebhookIssueCommentDeleted",),
+        ".group_0547": (
             "WebhookIssueCommentDeletedPropIssue",
             "WebhookIssueCommentDeletedPropIssueMergedAssignees",
             "WebhookIssueCommentDeletedPropIssueMergedReactions",
             "WebhookIssueCommentDeletedPropIssueMergedUser",
         ),
-        ".group_0543": (
+        ".group_0548": (
             "WebhookIssueCommentDeletedPropIssueAllof0",
             "WebhookIssueCommentDeletedPropIssueAllof0PropAssigneesItems",
             "WebhookIssueCommentDeletedPropIssueAllof0PropReactions",
             "WebhookIssueCommentDeletedPropIssueAllof0PropUser",
         ),
-        ".group_0544": (
+        ".group_0549": (
             "WebhookIssueCommentDeletedPropIssueAllof0PropAssignee",
             "WebhookIssueCommentDeletedPropIssueAllof0PropLabelsItems",
             "WebhookIssueCommentDeletedPropIssueAllof0PropPullRequest",
         ),
-        ".group_0545": (
+        ".group_0550": (
             "WebhookIssueCommentDeletedPropIssueAllof0PropMilestonePropCreator",
         ),
-        ".group_0546": ("WebhookIssueCommentDeletedPropIssueAllof0PropMilestone",),
-        ".group_0547": (
+        ".group_0551": ("WebhookIssueCommentDeletedPropIssueAllof0PropMilestone",),
+        ".group_0552": (
             "WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropOwner",
             "WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropPermissions",
         ),
-        ".group_0548": (
+        ".group_0553": (
             "WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubApp",
         ),
-        ".group_0549": (
+        ".group_0554": (
             "WebhookIssueCommentDeletedPropIssueAllof0PropSubIssuesSummary",
         ),
-        ".group_0550": (
+        ".group_0555": (
             "WebhookIssueCommentDeletedPropIssueAllof1",
             "WebhookIssueCommentDeletedPropIssueAllof1PropAssignee",
             "WebhookIssueCommentDeletedPropIssueAllof1PropAssigneesItems",
@@ -10241,43 +10261,43 @@ else:
             "WebhookIssueCommentDeletedPropIssueAllof1PropReactions",
             "WebhookIssueCommentDeletedPropIssueAllof1PropUser",
         ),
-        ".group_0551": ("WebhookIssueCommentDeletedPropIssueMergedMilestone",),
-        ".group_0552": (
+        ".group_0556": ("WebhookIssueCommentDeletedPropIssueMergedMilestone",),
+        ".group_0557": (
             "WebhookIssueCommentDeletedPropIssueMergedPerformedViaGithubApp",
         ),
-        ".group_0553": ("WebhookIssueCommentEdited",),
-        ".group_0554": (
+        ".group_0558": ("WebhookIssueCommentEdited",),
+        ".group_0559": (
             "WebhookIssueCommentEditedPropIssue",
             "WebhookIssueCommentEditedPropIssueMergedAssignees",
             "WebhookIssueCommentEditedPropIssueMergedReactions",
             "WebhookIssueCommentEditedPropIssueMergedUser",
         ),
-        ".group_0555": (
+        ".group_0560": (
             "WebhookIssueCommentEditedPropIssueAllof0",
             "WebhookIssueCommentEditedPropIssueAllof0PropAssigneesItems",
             "WebhookIssueCommentEditedPropIssueAllof0PropReactions",
             "WebhookIssueCommentEditedPropIssueAllof0PropUser",
         ),
-        ".group_0556": (
+        ".group_0561": (
             "WebhookIssueCommentEditedPropIssueAllof0PropAssignee",
             "WebhookIssueCommentEditedPropIssueAllof0PropLabelsItems",
             "WebhookIssueCommentEditedPropIssueAllof0PropPullRequest",
         ),
-        ".group_0557": (
+        ".group_0562": (
             "WebhookIssueCommentEditedPropIssueAllof0PropMilestonePropCreator",
         ),
-        ".group_0558": ("WebhookIssueCommentEditedPropIssueAllof0PropMilestone",),
-        ".group_0559": (
+        ".group_0563": ("WebhookIssueCommentEditedPropIssueAllof0PropMilestone",),
+        ".group_0564": (
             "WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropOwner",
             "WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropPermissions",
         ),
-        ".group_0560": (
+        ".group_0565": (
             "WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubApp",
         ),
-        ".group_0561": (
+        ".group_0566": (
             "WebhookIssueCommentEditedPropIssueAllof0PropSubIssuesSummary",
         ),
-        ".group_0562": (
+        ".group_0567": (
             "WebhookIssueCommentEditedPropIssueAllof1",
             "WebhookIssueCommentEditedPropIssueAllof1PropAssignee",
             "WebhookIssueCommentEditedPropIssueAllof1PropAssigneesItems",
@@ -10287,13 +10307,13 @@ else:
             "WebhookIssueCommentEditedPropIssueAllof1PropReactions",
             "WebhookIssueCommentEditedPropIssueAllof1PropUser",
         ),
-        ".group_0563": ("WebhookIssueCommentEditedPropIssueMergedMilestone",),
-        ".group_0564": (
+        ".group_0568": ("WebhookIssueCommentEditedPropIssueMergedMilestone",),
+        ".group_0569": (
             "WebhookIssueCommentEditedPropIssueMergedPerformedViaGithubApp",
         ),
-        ".group_0565": ("WebhookIssuesAssigned",),
-        ".group_0566": ("WebhookIssuesClosed",),
-        ".group_0567": (
+        ".group_0570": ("WebhookIssuesAssigned",),
+        ".group_0571": ("WebhookIssuesClosed",),
+        ".group_0572": (
             "WebhookIssuesClosedPropIssue",
             "WebhookIssuesClosedPropIssueMergedAssignee",
             "WebhookIssuesClosedPropIssueMergedAssignees",
@@ -10301,7 +10321,7 @@ else:
             "WebhookIssuesClosedPropIssueMergedReactions",
             "WebhookIssuesClosedPropIssueMergedUser",
         ),
-        ".group_0568": (
+        ".group_0573": (
             "WebhookIssuesClosedPropIssueAllof0",
             "WebhookIssuesClosedPropIssueAllof0PropAssignee",
             "WebhookIssuesClosedPropIssueAllof0PropAssigneesItems",
@@ -10309,18 +10329,18 @@ else:
             "WebhookIssuesClosedPropIssueAllof0PropReactions",
             "WebhookIssuesClosedPropIssueAllof0PropUser",
         ),
-        ".group_0569": ("WebhookIssuesClosedPropIssueAllof0PropMilestonePropCreator",),
-        ".group_0570": ("WebhookIssuesClosedPropIssueAllof0PropMilestone",),
-        ".group_0571": (
+        ".group_0574": ("WebhookIssuesClosedPropIssueAllof0PropMilestonePropCreator",),
+        ".group_0575": ("WebhookIssuesClosedPropIssueAllof0PropMilestone",),
+        ".group_0576": (
             "WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropOwner",
             "WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropPermissions",
         ),
-        ".group_0572": ("WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubApp",),
-        ".group_0573": (
+        ".group_0577": ("WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubApp",),
+        ".group_0578": (
             "WebhookIssuesClosedPropIssueAllof0PropPullRequest",
             "WebhookIssuesClosedPropIssueAllof0PropSubIssuesSummary",
         ),
-        ".group_0574": (
+        ".group_0579": (
             "WebhookIssuesClosedPropIssueAllof1",
             "WebhookIssuesClosedPropIssueAllof1PropAssignee",
             "WebhookIssuesClosedPropIssueAllof1PropAssigneesItems",
@@ -10330,9 +10350,9 @@ else:
             "WebhookIssuesClosedPropIssueAllof1PropReactions",
             "WebhookIssuesClosedPropIssueAllof1PropUser",
         ),
-        ".group_0575": ("WebhookIssuesClosedPropIssueMergedMilestone",),
-        ".group_0576": ("WebhookIssuesClosedPropIssueMergedPerformedViaGithubApp",),
-        ".group_0577": (
+        ".group_0580": ("WebhookIssuesClosedPropIssueMergedMilestone",),
+        ".group_0581": ("WebhookIssuesClosedPropIssueMergedPerformedViaGithubApp",),
+        ".group_0582": (
             "WebhookIssuesDeleted",
             "WebhookIssuesDeletedPropIssue",
             "WebhookIssuesDeletedPropIssuePropAssignee",
@@ -10348,7 +10368,7 @@ else:
             "WebhookIssuesDeletedPropIssuePropSubIssuesSummary",
             "WebhookIssuesDeletedPropIssuePropUser",
         ),
-        ".group_0578": (
+        ".group_0583": (
             "WebhookIssuesDemilestoned",
             "WebhookIssuesDemilestonedPropIssue",
             "WebhookIssuesDemilestonedPropIssuePropAssignee",
@@ -10364,7 +10384,7 @@ else:
             "WebhookIssuesDemilestonedPropIssuePropSubIssuesSummary",
             "WebhookIssuesDemilestonedPropIssuePropUser",
         ),
-        ".group_0579": (
+        ".group_0584": (
             "WebhookIssuesEdited",
             "WebhookIssuesEditedPropChanges",
             "WebhookIssuesEditedPropChangesPropBody",
@@ -10383,7 +10403,7 @@ else:
             "WebhookIssuesEditedPropIssuePropSubIssuesSummary",
             "WebhookIssuesEditedPropIssuePropUser",
         ),
-        ".group_0580": (
+        ".group_0585": (
             "WebhookIssuesLabeled",
             "WebhookIssuesLabeledPropIssue",
             "WebhookIssuesLabeledPropIssuePropAssignee",
@@ -10399,7 +10419,7 @@ else:
             "WebhookIssuesLabeledPropIssuePropSubIssuesSummary",
             "WebhookIssuesLabeledPropIssuePropUser",
         ),
-        ".group_0581": (
+        ".group_0586": (
             "WebhookIssuesLocked",
             "WebhookIssuesLockedPropIssue",
             "WebhookIssuesLockedPropIssuePropAssignee",
@@ -10415,7 +10435,7 @@ else:
             "WebhookIssuesLockedPropIssuePropSubIssuesSummary",
             "WebhookIssuesLockedPropIssuePropUser",
         ),
-        ".group_0582": (
+        ".group_0587": (
             "WebhookIssuesMilestoned",
             "WebhookIssuesMilestonedPropIssue",
             "WebhookIssuesMilestonedPropIssuePropAssignee",
@@ -10431,7 +10451,7 @@ else:
             "WebhookIssuesMilestonedPropIssuePropSubIssuesSummary",
             "WebhookIssuesMilestonedPropIssuePropUser",
         ),
-        ".group_0583": (
+        ".group_0588": (
             "WebhookIssuesOpened",
             "WebhookIssuesOpenedPropIssue",
             "WebhookIssuesOpenedPropIssuePropAssignee",
@@ -10466,8 +10486,8 @@ else:
             "WebhookIssuesOpenedPropChangesPropOldRepositoryPropOwner",
             "WebhookIssuesOpenedPropChangesPropOldRepositoryPropPermissions",
         ),
-        ".group_0584": ("WebhookIssuesPinned",),
-        ".group_0585": (
+        ".group_0589": ("WebhookIssuesPinned",),
+        ".group_0590": (
             "WebhookIssuesReopened",
             "WebhookIssuesReopenedPropIssue",
             "WebhookIssuesReopenedPropIssuePropAssignee",
@@ -10483,7 +10503,7 @@ else:
             "WebhookIssuesReopenedPropIssuePropSubIssuesSummary",
             "WebhookIssuesReopenedPropIssuePropUser",
         ),
-        ".group_0586": (
+        ".group_0591": (
             "WebhookIssuesTransferred",
             "WebhookIssuesTransferredPropChanges",
             "WebhookIssuesTransferredPropChangesPropNewIssue",
@@ -10505,9 +10525,9 @@ else:
             "WebhookIssuesTransferredPropChangesPropNewRepositoryPropOwner",
             "WebhookIssuesTransferredPropChangesPropNewRepositoryPropPermissions",
         ),
-        ".group_0587": ("WebhookIssuesUnassigned",),
-        ".group_0588": ("WebhookIssuesUnlabeled",),
-        ".group_0589": (
+        ".group_0592": ("WebhookIssuesUnassigned",),
+        ".group_0593": ("WebhookIssuesUnlabeled",),
+        ".group_0594": (
             "WebhookIssuesUnlocked",
             "WebhookIssuesUnlockedPropIssue",
             "WebhookIssuesUnlockedPropIssuePropAssignee",
@@ -10523,103 +10543,103 @@ else:
             "WebhookIssuesUnlockedPropIssuePropSubIssuesSummary",
             "WebhookIssuesUnlockedPropIssuePropUser",
         ),
-        ".group_0590": ("WebhookIssuesUnpinned",),
-        ".group_0591": ("WebhookLabelCreated",),
-        ".group_0592": ("WebhookLabelDeleted",),
-        ".group_0593": (
+        ".group_0595": ("WebhookIssuesUnpinned",),
+        ".group_0596": ("WebhookLabelCreated",),
+        ".group_0597": ("WebhookLabelDeleted",),
+        ".group_0598": (
             "WebhookLabelEdited",
             "WebhookLabelEditedPropChanges",
             "WebhookLabelEditedPropChangesPropColor",
             "WebhookLabelEditedPropChangesPropDescription",
             "WebhookLabelEditedPropChangesPropName",
         ),
-        ".group_0594": ("WebhookMarketplacePurchaseCancelled",),
-        ".group_0595": (
+        ".group_0599": ("WebhookMarketplacePurchaseCancelled",),
+        ".group_0600": (
             "WebhookMarketplacePurchaseChanged",
             "WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchase",
             "WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropAccount",
             "WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropPlan",
         ),
-        ".group_0596": (
+        ".group_0601": (
             "WebhookMarketplacePurchasePendingChange",
             "WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchase",
             "WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropAccount",
             "WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropPlan",
         ),
-        ".group_0597": (
+        ".group_0602": (
             "WebhookMarketplacePurchasePendingChangeCancelled",
             "WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchase",
             "WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropAccount",
             "WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropPlan",
         ),
-        ".group_0598": ("WebhookMarketplacePurchasePurchased",),
-        ".group_0599": (
+        ".group_0603": ("WebhookMarketplacePurchasePurchased",),
+        ".group_0604": (
             "WebhookMemberAdded",
             "WebhookMemberAddedPropChanges",
             "WebhookMemberAddedPropChangesPropPermission",
             "WebhookMemberAddedPropChangesPropRoleName",
         ),
-        ".group_0600": (
+        ".group_0605": (
             "WebhookMemberEdited",
             "WebhookMemberEditedPropChanges",
             "WebhookMemberEditedPropChangesPropOldPermission",
             "WebhookMemberEditedPropChangesPropPermission",
         ),
-        ".group_0601": ("WebhookMemberRemoved",),
-        ".group_0602": (
+        ".group_0606": ("WebhookMemberRemoved",),
+        ".group_0607": (
             "WebhookMembershipAdded",
             "WebhookMembershipAddedPropSender",
         ),
-        ".group_0603": (
+        ".group_0608": (
             "WebhookMembershipRemoved",
             "WebhookMembershipRemovedPropSender",
         ),
-        ".group_0604": ("WebhookMergeGroupChecksRequested",),
-        ".group_0605": ("WebhookMergeGroupDestroyed",),
-        ".group_0606": (
+        ".group_0609": ("WebhookMergeGroupChecksRequested",),
+        ".group_0610": ("WebhookMergeGroupDestroyed",),
+        ".group_0611": (
             "WebhookMetaDeleted",
             "WebhookMetaDeletedPropHook",
             "WebhookMetaDeletedPropHookPropConfig",
         ),
-        ".group_0607": ("WebhookMilestoneClosed",),
-        ".group_0608": ("WebhookMilestoneCreated",),
-        ".group_0609": ("WebhookMilestoneDeleted",),
-        ".group_0610": (
+        ".group_0612": ("WebhookMilestoneClosed",),
+        ".group_0613": ("WebhookMilestoneCreated",),
+        ".group_0614": ("WebhookMilestoneDeleted",),
+        ".group_0615": (
             "WebhookMilestoneEdited",
             "WebhookMilestoneEditedPropChanges",
             "WebhookMilestoneEditedPropChangesPropDescription",
             "WebhookMilestoneEditedPropChangesPropDueOn",
             "WebhookMilestoneEditedPropChangesPropTitle",
         ),
-        ".group_0611": ("WebhookMilestoneOpened",),
-        ".group_0612": ("WebhookOrgBlockBlocked",),
-        ".group_0613": ("WebhookOrgBlockUnblocked",),
-        ".group_0614": ("WebhookOrganizationDeleted",),
-        ".group_0615": ("WebhookOrganizationMemberAdded",),
-        ".group_0616": (
+        ".group_0616": ("WebhookMilestoneOpened",),
+        ".group_0617": ("WebhookOrgBlockBlocked",),
+        ".group_0618": ("WebhookOrgBlockUnblocked",),
+        ".group_0619": ("WebhookOrganizationDeleted",),
+        ".group_0620": ("WebhookOrganizationMemberAdded",),
+        ".group_0621": (
             "WebhookOrganizationMemberInvited",
             "WebhookOrganizationMemberInvitedPropInvitation",
             "WebhookOrganizationMemberInvitedPropInvitationPropInviter",
         ),
-        ".group_0617": ("WebhookOrganizationMemberRemoved",),
-        ".group_0618": (
+        ".group_0622": ("WebhookOrganizationMemberRemoved",),
+        ".group_0623": (
             "WebhookOrganizationRenamed",
             "WebhookOrganizationRenamedPropChanges",
             "WebhookOrganizationRenamedPropChangesPropLogin",
         ),
-        ".group_0619": (
+        ".group_0624": (
             "WebhookRubygemsMetadata",
             "WebhookRubygemsMetadataPropVersionInfo",
             "WebhookRubygemsMetadataPropMetadata",
             "WebhookRubygemsMetadataPropDependenciesItems",
         ),
-        ".group_0620": ("WebhookPackagePublished",),
-        ".group_0621": (
+        ".group_0625": ("WebhookPackagePublished",),
+        ".group_0626": (
             "WebhookPackagePublishedPropPackage",
             "WebhookPackagePublishedPropPackagePropOwner",
             "WebhookPackagePublishedPropPackagePropRegistry",
         ),
-        ".group_0622": (
+        ".group_0627": (
             "WebhookPackagePublishedPropPackagePropPackageVersion",
             "WebhookPackagePublishedPropPackagePropPackageVersionPropAuthor",
             "WebhookPackagePublishedPropPackagePropPackageVersionPropBodyOneof1",
@@ -10651,13 +10671,13 @@ else:
             "WebhookPackagePublishedPropPackagePropPackageVersionPropRelease",
             "WebhookPackagePublishedPropPackagePropPackageVersionPropReleasePropAuthor",
         ),
-        ".group_0623": ("WebhookPackageUpdated",),
-        ".group_0624": (
+        ".group_0628": ("WebhookPackageUpdated",),
+        ".group_0629": (
             "WebhookPackageUpdatedPropPackage",
             "WebhookPackageUpdatedPropPackagePropOwner",
             "WebhookPackageUpdatedPropPackagePropRegistry",
         ),
-        ".group_0625": (
+        ".group_0630": (
             "WebhookPackageUpdatedPropPackagePropPackageVersion",
             "WebhookPackageUpdatedPropPackagePropPackageVersionPropAuthor",
             "WebhookPackageUpdatedPropPackagePropPackageVersionPropDockerMetadataItems",
@@ -10666,75 +10686,75 @@ else:
             "WebhookPackageUpdatedPropPackagePropPackageVersionPropRelease",
             "WebhookPackageUpdatedPropPackagePropPackageVersionPropReleasePropAuthor",
         ),
-        ".group_0626": (
+        ".group_0631": (
             "WebhookPageBuild",
             "WebhookPageBuildPropBuild",
             "WebhookPageBuildPropBuildPropError",
             "WebhookPageBuildPropBuildPropPusher",
         ),
-        ".group_0627": ("WebhookPersonalAccessTokenRequestApproved",),
-        ".group_0628": ("WebhookPersonalAccessTokenRequestCancelled",),
-        ".group_0629": ("WebhookPersonalAccessTokenRequestCreated",),
-        ".group_0630": ("WebhookPersonalAccessTokenRequestDenied",),
-        ".group_0631": ("WebhookPing",),
-        ".group_0632": (
+        ".group_0632": ("WebhookPersonalAccessTokenRequestApproved",),
+        ".group_0633": ("WebhookPersonalAccessTokenRequestCancelled",),
+        ".group_0634": ("WebhookPersonalAccessTokenRequestCreated",),
+        ".group_0635": ("WebhookPersonalAccessTokenRequestDenied",),
+        ".group_0636": ("WebhookPing",),
+        ".group_0637": (
             "WebhookPingPropHook",
             "WebhookPingPropHookPropConfig",
         ),
-        ".group_0633": ("WebhookPingFormEncoded",),
-        ".group_0634": (
+        ".group_0638": ("WebhookPingFormEncoded",),
+        ".group_0639": (
             "WebhookProjectCardConverted",
             "WebhookProjectCardConvertedPropChanges",
             "WebhookProjectCardConvertedPropChangesPropNote",
         ),
-        ".group_0635": ("WebhookProjectCardCreated",),
-        ".group_0636": (
+        ".group_0640": ("WebhookProjectCardCreated",),
+        ".group_0641": (
             "WebhookProjectCardDeleted",
             "WebhookProjectCardDeletedPropProjectCard",
             "WebhookProjectCardDeletedPropProjectCardPropCreator",
         ),
-        ".group_0637": (
+        ".group_0642": (
             "WebhookProjectCardEdited",
             "WebhookProjectCardEditedPropChanges",
             "WebhookProjectCardEditedPropChangesPropNote",
         ),
-        ".group_0638": (
+        ".group_0643": (
             "WebhookProjectCardMoved",
             "WebhookProjectCardMovedPropChanges",
             "WebhookProjectCardMovedPropChangesPropColumnId",
             "WebhookProjectCardMovedPropProjectCard",
             "WebhookProjectCardMovedPropProjectCardMergedCreator",
         ),
-        ".group_0639": (
+        ".group_0644": (
             "WebhookProjectCardMovedPropProjectCardAllof0",
             "WebhookProjectCardMovedPropProjectCardAllof0PropCreator",
         ),
-        ".group_0640": (
+        ".group_0645": (
             "WebhookProjectCardMovedPropProjectCardAllof1",
             "WebhookProjectCardMovedPropProjectCardAllof1PropCreator",
         ),
-        ".group_0641": ("WebhookProjectClosed",),
-        ".group_0642": ("WebhookProjectColumnCreated",),
-        ".group_0643": ("WebhookProjectColumnDeleted",),
-        ".group_0644": (
+        ".group_0646": ("WebhookProjectClosed",),
+        ".group_0647": ("WebhookProjectColumnCreated",),
+        ".group_0648": ("WebhookProjectColumnDeleted",),
+        ".group_0649": (
             "WebhookProjectColumnEdited",
             "WebhookProjectColumnEditedPropChanges",
             "WebhookProjectColumnEditedPropChangesPropName",
         ),
-        ".group_0645": ("WebhookProjectColumnMoved",),
-        ".group_0646": ("WebhookProjectCreated",),
-        ".group_0647": ("WebhookProjectDeleted",),
-        ".group_0648": (
+        ".group_0650": ("WebhookProjectColumnMoved",),
+        ".group_0651": ("WebhookProjectCreated",),
+        ".group_0652": ("WebhookProjectDeleted",),
+        ".group_0653": (
             "WebhookProjectEdited",
             "WebhookProjectEditedPropChanges",
             "WebhookProjectEditedPropChangesPropBody",
             "WebhookProjectEditedPropChangesPropName",
         ),
-        ".group_0649": ("WebhookProjectReopened",),
-        ".group_0650": ("WebhookProjectsV2ProjectClosed",),
-        ".group_0651": ("WebhookProjectsV2ProjectCreated",),
-        ".group_0652": ("WebhookProjectsV2ProjectDeleted",),
-        ".group_0653": (
+        ".group_0654": ("WebhookProjectReopened",),
+        ".group_0655": ("WebhookProjectsV2ProjectClosed",),
+        ".group_0656": ("WebhookProjectsV2ProjectCreated",),
+        ".group_0657": ("WebhookProjectsV2ProjectDeleted",),
+        ".group_0658": (
             "WebhookProjectsV2ProjectEdited",
             "WebhookProjectsV2ProjectEditedPropChanges",
             "WebhookProjectsV2ProjectEditedPropChangesPropDescription",
@@ -10742,15 +10762,15 @@ else:
             "WebhookProjectsV2ProjectEditedPropChangesPropShortDescription",
             "WebhookProjectsV2ProjectEditedPropChangesPropTitle",
         ),
-        ".group_0654": ("WebhookProjectsV2ItemArchived",),
-        ".group_0655": (
+        ".group_0659": ("WebhookProjectsV2ItemArchived",),
+        ".group_0660": (
             "WebhookProjectsV2ItemConverted",
             "WebhookProjectsV2ItemConvertedPropChanges",
             "WebhookProjectsV2ItemConvertedPropChangesPropContentType",
         ),
-        ".group_0656": ("WebhookProjectsV2ItemCreated",),
-        ".group_0657": ("WebhookProjectsV2ItemDeleted",),
-        ".group_0658": (
+        ".group_0661": ("WebhookProjectsV2ItemCreated",),
+        ".group_0662": ("WebhookProjectsV2ItemDeleted",),
+        ".group_0663": (
             "WebhookProjectsV2ItemEdited",
             "WebhookProjectsV2ItemEditedPropChangesOneof0",
             "WebhookProjectsV2ItemEditedPropChangesOneof0PropFieldValue",
@@ -10759,16 +10779,16 @@ else:
             "WebhookProjectsV2ItemEditedPropChangesOneof1",
             "WebhookProjectsV2ItemEditedPropChangesOneof1PropBody",
         ),
-        ".group_0659": (
+        ".group_0664": (
             "WebhookProjectsV2ItemReordered",
             "WebhookProjectsV2ItemReorderedPropChanges",
             "WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeId",
         ),
-        ".group_0660": ("WebhookProjectsV2ItemRestored",),
-        ".group_0661": ("WebhookProjectsV2ProjectReopened",),
-        ".group_0662": ("WebhookProjectsV2StatusUpdateCreated",),
-        ".group_0663": ("WebhookProjectsV2StatusUpdateDeleted",),
-        ".group_0664": (
+        ".group_0665": ("WebhookProjectsV2ItemRestored",),
+        ".group_0666": ("WebhookProjectsV2ProjectReopened",),
+        ".group_0667": ("WebhookProjectsV2StatusUpdateCreated",),
+        ".group_0668": ("WebhookProjectsV2StatusUpdateDeleted",),
+        ".group_0669": (
             "WebhookProjectsV2StatusUpdateEdited",
             "WebhookProjectsV2StatusUpdateEditedPropChanges",
             "WebhookProjectsV2StatusUpdateEditedPropChangesPropBody",
@@ -10776,8 +10796,8 @@ else:
             "WebhookProjectsV2StatusUpdateEditedPropChangesPropStartDate",
             "WebhookProjectsV2StatusUpdateEditedPropChangesPropTargetDate",
         ),
-        ".group_0665": ("WebhookPublic",),
-        ".group_0666": (
+        ".group_0670": ("WebhookPublic",),
+        ".group_0671": (
             "WebhookPullRequestAssigned",
             "WebhookPullRequestAssignedPropPullRequest",
             "WebhookPullRequestAssignedPropPullRequestPropAssignee",
@@ -10816,7 +10836,7 @@ else:
             "WebhookPullRequestAssignedPropPullRequestPropRequestedTeamsItems",
             "WebhookPullRequestAssignedPropPullRequestPropRequestedTeamsItemsPropParent",
         ),
-        ".group_0667": (
+        ".group_0672": (
             "WebhookPullRequestAutoMergeDisabled",
             "WebhookPullRequestAutoMergeDisabledPropPullRequest",
             "WebhookPullRequestAutoMergeDisabledPropPullRequestPropAssignee",
@@ -10855,7 +10875,7 @@ else:
             "WebhookPullRequestAutoMergeDisabledPropPullRequestPropRequestedTeamsItems",
             "WebhookPullRequestAutoMergeDisabledPropPullRequestPropRequestedTeamsItemsPropParent",
         ),
-        ".group_0668": (
+        ".group_0673": (
             "WebhookPullRequestAutoMergeEnabled",
             "WebhookPullRequestAutoMergeEnabledPropPullRequest",
             "WebhookPullRequestAutoMergeEnabledPropPullRequestPropAssignee",
@@ -10894,10 +10914,10 @@ else:
             "WebhookPullRequestAutoMergeEnabledPropPullRequestPropRequestedTeamsItems",
             "WebhookPullRequestAutoMergeEnabledPropPullRequestPropRequestedTeamsItemsPropParent",
         ),
-        ".group_0669": ("WebhookPullRequestClosed",),
-        ".group_0670": ("WebhookPullRequestConvertedToDraft",),
-        ".group_0671": ("WebhookPullRequestDemilestoned",),
-        ".group_0672": (
+        ".group_0674": ("WebhookPullRequestClosed",),
+        ".group_0675": ("WebhookPullRequestConvertedToDraft",),
+        ".group_0676": ("WebhookPullRequestDemilestoned",),
+        ".group_0677": (
             "WebhookPullRequestDequeued",
             "WebhookPullRequestDequeuedPropPullRequest",
             "WebhookPullRequestDequeuedPropPullRequestPropAssignee",
@@ -10936,7 +10956,7 @@ else:
             "WebhookPullRequestDequeuedPropPullRequestPropRequestedTeamsItems",
             "WebhookPullRequestDequeuedPropPullRequestPropRequestedTeamsItemsPropParent",
         ),
-        ".group_0673": (
+        ".group_0678": (
             "WebhookPullRequestEdited",
             "WebhookPullRequestEditedPropChanges",
             "WebhookPullRequestEditedPropChangesPropBody",
@@ -10945,7 +10965,7 @@ else:
             "WebhookPullRequestEditedPropChangesPropBasePropRef",
             "WebhookPullRequestEditedPropChangesPropBasePropSha",
         ),
-        ".group_0674": (
+        ".group_0679": (
             "WebhookPullRequestEnqueued",
             "WebhookPullRequestEnqueuedPropPullRequest",
             "WebhookPullRequestEnqueuedPropPullRequestPropAssignee",
@@ -10984,7 +11004,7 @@ else:
             "WebhookPullRequestEnqueuedPropPullRequestPropRequestedTeamsItems",
             "WebhookPullRequestEnqueuedPropPullRequestPropRequestedTeamsItemsPropParent",
         ),
-        ".group_0675": (
+        ".group_0680": (
             "WebhookPullRequestLabeled",
             "WebhookPullRequestLabeledPropPullRequest",
             "WebhookPullRequestLabeledPropPullRequestPropAssignee",
@@ -11023,7 +11043,7 @@ else:
             "WebhookPullRequestLabeledPropPullRequestPropRequestedTeamsItems",
             "WebhookPullRequestLabeledPropPullRequestPropRequestedTeamsItemsPropParent",
         ),
-        ".group_0676": (
+        ".group_0681": (
             "WebhookPullRequestLocked",
             "WebhookPullRequestLockedPropPullRequest",
             "WebhookPullRequestLockedPropPullRequestPropAssignee",
@@ -11062,11 +11082,11 @@ else:
             "WebhookPullRequestLockedPropPullRequestPropRequestedTeamsItems",
             "WebhookPullRequestLockedPropPullRequestPropRequestedTeamsItemsPropParent",
         ),
-        ".group_0677": ("WebhookPullRequestMilestoned",),
-        ".group_0678": ("WebhookPullRequestOpened",),
-        ".group_0679": ("WebhookPullRequestReadyForReview",),
-        ".group_0680": ("WebhookPullRequestReopened",),
-        ".group_0681": (
+        ".group_0682": ("WebhookPullRequestMilestoned",),
+        ".group_0683": ("WebhookPullRequestOpened",),
+        ".group_0684": ("WebhookPullRequestReadyForReview",),
+        ".group_0685": ("WebhookPullRequestReopened",),
+        ".group_0686": (
             "WebhookPullRequestReviewCommentCreated",
             "WebhookPullRequestReviewCommentCreatedPropComment",
             "WebhookPullRequestReviewCommentCreatedPropCommentPropReactions",
@@ -11111,7 +11131,7 @@ else:
             "WebhookPullRequestReviewCommentCreatedPropPullRequestPropRequestedTeamsItems",
             "WebhookPullRequestReviewCommentCreatedPropPullRequestPropRequestedTeamsItemsPropParent",
         ),
-        ".group_0682": (
+        ".group_0687": (
             "WebhookPullRequestReviewCommentDeleted",
             "WebhookPullRequestReviewCommentDeletedPropPullRequest",
             "WebhookPullRequestReviewCommentDeletedPropPullRequestPropAssignee",
@@ -11149,7 +11169,7 @@ else:
             "WebhookPullRequestReviewCommentDeletedPropPullRequestPropRequestedTeamsItems",
             "WebhookPullRequestReviewCommentDeletedPropPullRequestPropRequestedTeamsItemsPropParent",
         ),
-        ".group_0683": (
+        ".group_0688": (
             "WebhookPullRequestReviewCommentEdited",
             "WebhookPullRequestReviewCommentEditedPropPullRequest",
             "WebhookPullRequestReviewCommentEditedPropPullRequestPropAssignee",
@@ -11187,7 +11207,7 @@ else:
             "WebhookPullRequestReviewCommentEditedPropPullRequestPropRequestedTeamsItems",
             "WebhookPullRequestReviewCommentEditedPropPullRequestPropRequestedTeamsItemsPropParent",
         ),
-        ".group_0684": (
+        ".group_0689": (
             "WebhookPullRequestReviewDismissed",
             "WebhookPullRequestReviewDismissedPropReview",
             "WebhookPullRequestReviewDismissedPropReviewPropUser",
@@ -11230,7 +11250,7 @@ else:
             "WebhookPullRequestReviewDismissedPropPullRequestPropRequestedTeamsItems",
             "WebhookPullRequestReviewDismissedPropPullRequestPropRequestedTeamsItemsPropParent",
         ),
-        ".group_0685": (
+        ".group_0690": (
             "WebhookPullRequestReviewEdited",
             "WebhookPullRequestReviewEditedPropChanges",
             "WebhookPullRequestReviewEditedPropChangesPropBody",
@@ -11270,7 +11290,7 @@ else:
             "WebhookPullRequestReviewEditedPropPullRequestPropRequestedTeamsItems",
             "WebhookPullRequestReviewEditedPropPullRequestPropRequestedTeamsItemsPropParent",
         ),
-        ".group_0686": (
+        ".group_0691": (
             "WebhookPullRequestReviewRequestRemovedOneof0",
             "WebhookPullRequestReviewRequestRemovedOneof0PropRequestedReviewer",
             "WebhookPullRequestReviewRequestRemovedOneof0PropPullRequest",
@@ -11310,7 +11330,7 @@ else:
             "WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropRequestedTeamsItems",
             "WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropRequestedTeamsItemsPropParent",
         ),
-        ".group_0687": (
+        ".group_0692": (
             "WebhookPullRequestReviewRequestRemovedOneof1",
             "WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeam",
             "WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeamPropParent",
@@ -11351,7 +11371,7 @@ else:
             "WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropRequestedTeamsItems",
             "WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropRequestedTeamsItemsPropParent",
         ),
-        ".group_0688": (
+        ".group_0693": (
             "WebhookPullRequestReviewRequestedOneof0",
             "WebhookPullRequestReviewRequestedOneof0PropRequestedReviewer",
             "WebhookPullRequestReviewRequestedOneof0PropPullRequest",
@@ -11391,7 +11411,7 @@ else:
             "WebhookPullRequestReviewRequestedOneof0PropPullRequestPropRequestedTeamsItems",
             "WebhookPullRequestReviewRequestedOneof0PropPullRequestPropRequestedTeamsItemsPropParent",
         ),
-        ".group_0689": (
+        ".group_0694": (
             "WebhookPullRequestReviewRequestedOneof1",
             "WebhookPullRequestReviewRequestedOneof1PropRequestedTeam",
             "WebhookPullRequestReviewRequestedOneof1PropRequestedTeamPropParent",
@@ -11432,7 +11452,7 @@ else:
             "WebhookPullRequestReviewRequestedOneof1PropPullRequestPropRequestedTeamsItems",
             "WebhookPullRequestReviewRequestedOneof1PropPullRequestPropRequestedTeamsItemsPropParent",
         ),
-        ".group_0690": (
+        ".group_0695": (
             "WebhookPullRequestReviewSubmitted",
             "WebhookPullRequestReviewSubmittedPropPullRequest",
             "WebhookPullRequestReviewSubmittedPropPullRequestPropAssignee",
@@ -11470,7 +11490,7 @@ else:
             "WebhookPullRequestReviewSubmittedPropPullRequestPropRequestedTeamsItems",
             "WebhookPullRequestReviewSubmittedPropPullRequestPropRequestedTeamsItemsPropParent",
         ),
-        ".group_0691": (
+        ".group_0696": (
             "WebhookPullRequestReviewThreadResolved",
             "WebhookPullRequestReviewThreadResolvedPropPullRequest",
             "WebhookPullRequestReviewThreadResolvedPropPullRequestPropAssignee",
@@ -11516,7 +11536,7 @@ else:
             "WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsPropLinksPropPullRequest",
             "WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsPropLinksPropSelf",
         ),
-        ".group_0692": (
+        ".group_0697": (
             "WebhookPullRequestReviewThreadUnresolved",
             "WebhookPullRequestReviewThreadUnresolvedPropPullRequest",
             "WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropAssignee",
@@ -11562,7 +11582,7 @@ else:
             "WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropPullRequest",
             "WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropSelf",
         ),
-        ".group_0693": (
+        ".group_0698": (
             "WebhookPullRequestSynchronize",
             "WebhookPullRequestSynchronizePropPullRequest",
             "WebhookPullRequestSynchronizePropPullRequestPropAssignee",
@@ -11601,7 +11621,7 @@ else:
             "WebhookPullRequestSynchronizePropPullRequestPropRequestedTeamsItems",
             "WebhookPullRequestSynchronizePropPullRequestPropRequestedTeamsItemsPropParent",
         ),
-        ".group_0694": (
+        ".group_0699": (
             "WebhookPullRequestUnassigned",
             "WebhookPullRequestUnassignedPropPullRequest",
             "WebhookPullRequestUnassignedPropPullRequestPropAssignee",
@@ -11640,7 +11660,7 @@ else:
             "WebhookPullRequestUnassignedPropPullRequestPropRequestedTeamsItems",
             "WebhookPullRequestUnassignedPropPullRequestPropRequestedTeamsItemsPropParent",
         ),
-        ".group_0695": (
+        ".group_0700": (
             "WebhookPullRequestUnlabeled",
             "WebhookPullRequestUnlabeledPropPullRequest",
             "WebhookPullRequestUnlabeledPropPullRequestPropAssignee",
@@ -11679,7 +11699,7 @@ else:
             "WebhookPullRequestUnlabeledPropPullRequestPropRequestedTeamsItems",
             "WebhookPullRequestUnlabeledPropPullRequestPropRequestedTeamsItemsPropParent",
         ),
-        ".group_0696": (
+        ".group_0701": (
             "WebhookPullRequestUnlocked",
             "WebhookPullRequestUnlockedPropPullRequest",
             "WebhookPullRequestUnlockedPropPullRequestPropAssignee",
@@ -11718,7 +11738,7 @@ else:
             "WebhookPullRequestUnlockedPropPullRequestPropRequestedTeamsItems",
             "WebhookPullRequestUnlockedPropPullRequestPropRequestedTeamsItemsPropParent",
         ),
-        ".group_0697": (
+        ".group_0702": (
             "WebhookPush",
             "WebhookPushPropHeadCommit",
             "WebhookPushPropHeadCommitPropAuthor",
@@ -11733,13 +11753,13 @@ else:
             "WebhookPushPropRepositoryPropOwner",
             "WebhookPushPropRepositoryPropPermissions",
         ),
-        ".group_0698": ("WebhookRegistryPackagePublished",),
-        ".group_0699": (
+        ".group_0703": ("WebhookRegistryPackagePublished",),
+        ".group_0704": (
             "WebhookRegistryPackagePublishedPropRegistryPackage",
             "WebhookRegistryPackagePublishedPropRegistryPackagePropOwner",
             "WebhookRegistryPackagePublishedPropRegistryPackagePropRegistry",
         ),
-        ".group_0700": (
+        ".group_0705": (
             "WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersion",
             "WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropAuthor",
             "WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropBodyOneof1",
@@ -11770,13 +11790,13 @@ else:
             "WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropRelease",
             "WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropReleasePropAuthor",
         ),
-        ".group_0701": ("WebhookRegistryPackageUpdated",),
-        ".group_0702": (
+        ".group_0706": ("WebhookRegistryPackageUpdated",),
+        ".group_0707": (
             "WebhookRegistryPackageUpdatedPropRegistryPackage",
             "WebhookRegistryPackageUpdatedPropRegistryPackagePropOwner",
             "WebhookRegistryPackageUpdatedPropRegistryPackagePropRegistry",
         ),
-        ".group_0703": (
+        ".group_0708": (
             "WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersion",
             "WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropAuthor",
             "WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropDockerMetadataItems",
@@ -11785,16 +11805,16 @@ else:
             "WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropRelease",
             "WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropReleasePropAuthor",
         ),
-        ".group_0704": ("WebhookReleaseCreated",),
-        ".group_0705": ("WebhookReleaseDeleted",),
-        ".group_0706": (
+        ".group_0709": ("WebhookReleaseCreated",),
+        ".group_0710": ("WebhookReleaseDeleted",),
+        ".group_0711": (
             "WebhookReleaseEdited",
             "WebhookReleaseEditedPropChanges",
             "WebhookReleaseEditedPropChangesPropBody",
             "WebhookReleaseEditedPropChangesPropName",
             "WebhookReleaseEditedPropChangesPropMakeLatest",
         ),
-        ".group_0707": (
+        ".group_0712": (
             "WebhookReleasePrereleased",
             "WebhookReleasePrereleasedPropRelease",
             "WebhookReleasePrereleasedPropReleasePropAssetsItems",
@@ -11802,19 +11822,19 @@ else:
             "WebhookReleasePrereleasedPropReleasePropAuthor",
             "WebhookReleasePrereleasedPropReleasePropReactions",
         ),
-        ".group_0708": ("WebhookReleasePublished",),
-        ".group_0709": ("WebhookReleaseReleased",),
-        ".group_0710": ("WebhookReleaseUnpublished",),
-        ".group_0711": ("WebhookRepositoryAdvisoryPublished",),
-        ".group_0712": ("WebhookRepositoryAdvisoryReported",),
-        ".group_0713": ("WebhookRepositoryArchived",),
-        ".group_0714": ("WebhookRepositoryCreated",),
-        ".group_0715": ("WebhookRepositoryDeleted",),
-        ".group_0716": (
+        ".group_0713": ("WebhookReleasePublished",),
+        ".group_0714": ("WebhookReleaseReleased",),
+        ".group_0715": ("WebhookReleaseUnpublished",),
+        ".group_0716": ("WebhookRepositoryAdvisoryPublished",),
+        ".group_0717": ("WebhookRepositoryAdvisoryReported",),
+        ".group_0718": ("WebhookRepositoryArchived",),
+        ".group_0719": ("WebhookRepositoryCreated",),
+        ".group_0720": ("WebhookRepositoryDeleted",),
+        ".group_0721": (
             "WebhookRepositoryDispatchSample",
             "WebhookRepositoryDispatchSamplePropClientPayload",
         ),
-        ".group_0717": (
+        ".group_0722": (
             "WebhookRepositoryEdited",
             "WebhookRepositoryEditedPropChanges",
             "WebhookRepositoryEditedPropChangesPropDefaultBranch",
@@ -11822,25 +11842,25 @@ else:
             "WebhookRepositoryEditedPropChangesPropHomepage",
             "WebhookRepositoryEditedPropChangesPropTopics",
         ),
-        ".group_0718": ("WebhookRepositoryImport",),
-        ".group_0719": ("WebhookRepositoryPrivatized",),
-        ".group_0720": ("WebhookRepositoryPublicized",),
-        ".group_0721": (
+        ".group_0723": ("WebhookRepositoryImport",),
+        ".group_0724": ("WebhookRepositoryPrivatized",),
+        ".group_0725": ("WebhookRepositoryPublicized",),
+        ".group_0726": (
             "WebhookRepositoryRenamed",
             "WebhookRepositoryRenamedPropChanges",
             "WebhookRepositoryRenamedPropChangesPropRepository",
             "WebhookRepositoryRenamedPropChangesPropRepositoryPropName",
         ),
-        ".group_0722": ("WebhookRepositoryRulesetCreated",),
-        ".group_0723": ("WebhookRepositoryRulesetDeleted",),
-        ".group_0724": ("WebhookRepositoryRulesetEdited",),
-        ".group_0725": (
+        ".group_0727": ("WebhookRepositoryRulesetCreated",),
+        ".group_0728": ("WebhookRepositoryRulesetDeleted",),
+        ".group_0729": ("WebhookRepositoryRulesetEdited",),
+        ".group_0730": (
             "WebhookRepositoryRulesetEditedPropChanges",
             "WebhookRepositoryRulesetEditedPropChangesPropName",
             "WebhookRepositoryRulesetEditedPropChangesPropEnforcement",
         ),
-        ".group_0726": ("WebhookRepositoryRulesetEditedPropChangesPropConditions",),
-        ".group_0727": (
+        ".group_0731": ("WebhookRepositoryRulesetEditedPropChangesPropConditions",),
+        ".group_0732": (
             "WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItems",
             "WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChanges",
             "WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropConditionType",
@@ -11848,15 +11868,15 @@ else:
             "WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropInclude",
             "WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropExclude",
         ),
-        ".group_0728": ("WebhookRepositoryRulesetEditedPropChangesPropRules",),
-        ".group_0729": (
+        ".group_0733": ("WebhookRepositoryRulesetEditedPropChangesPropRules",),
+        ".group_0734": (
             "WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItems",
             "WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChanges",
             "WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropConfiguration",
             "WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropRuleType",
             "WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropPattern",
         ),
-        ".group_0730": (
+        ".group_0735": (
             "WebhookRepositoryTransferred",
             "WebhookRepositoryTransferredPropChanges",
             "WebhookRepositoryTransferredPropChangesPropOwner",
@@ -11864,21 +11884,21 @@ else:
             "WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropOrganization",
             "WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropUser",
         ),
-        ".group_0731": ("WebhookRepositoryUnarchived",),
-        ".group_0732": ("WebhookRepositoryVulnerabilityAlertCreate",),
-        ".group_0733": (
+        ".group_0736": ("WebhookRepositoryUnarchived",),
+        ".group_0737": ("WebhookRepositoryVulnerabilityAlertCreate",),
+        ".group_0738": (
             "WebhookRepositoryVulnerabilityAlertDismiss",
             "WebhookRepositoryVulnerabilityAlertDismissPropAlert",
             "WebhookRepositoryVulnerabilityAlertDismissPropAlertPropDismisser",
         ),
-        ".group_0734": ("WebhookRepositoryVulnerabilityAlertReopen",),
-        ".group_0735": (
+        ".group_0739": ("WebhookRepositoryVulnerabilityAlertReopen",),
+        ".group_0740": (
             "WebhookRepositoryVulnerabilityAlertResolve",
             "WebhookRepositoryVulnerabilityAlertResolvePropAlert",
             "WebhookRepositoryVulnerabilityAlertResolvePropAlertPropDismisser",
         ),
-        ".group_0736": ("WebhookSecretScanningAlertCreated",),
-        ".group_0737": (
+        ".group_0741": ("WebhookSecretScanningAlertCreated",),
+        ".group_0742": (
             "WebhookSecretScanningAlertLocationCreated",
             "SecretScanningLocation",
             "SecretScanningLocationCommit",
@@ -11895,16 +11915,16 @@ else:
             "SecretScanningLocationPullRequestReview",
             "SecretScanningLocationPullRequestReviewComment",
         ),
-        ".group_0738": ("WebhookSecretScanningAlertLocationCreatedFormEncoded",),
-        ".group_0739": ("WebhookSecretScanningAlertPubliclyLeaked",),
-        ".group_0740": ("WebhookSecretScanningAlertReopened",),
-        ".group_0741": ("WebhookSecretScanningAlertResolved",),
-        ".group_0742": ("WebhookSecretScanningAlertValidated",),
-        ".group_0743": ("WebhookSecretScanningScanCompleted",),
-        ".group_0744": ("WebhookSecurityAdvisoryPublished",),
-        ".group_0745": ("WebhookSecurityAdvisoryUpdated",),
-        ".group_0746": ("WebhookSecurityAdvisoryWithdrawn",),
-        ".group_0747": (
+        ".group_0743": ("WebhookSecretScanningAlertLocationCreatedFormEncoded",),
+        ".group_0744": ("WebhookSecretScanningAlertPubliclyLeaked",),
+        ".group_0745": ("WebhookSecretScanningAlertReopened",),
+        ".group_0746": ("WebhookSecretScanningAlertResolved",),
+        ".group_0747": ("WebhookSecretScanningAlertValidated",),
+        ".group_0748": ("WebhookSecretScanningScanCompleted",),
+        ".group_0749": ("WebhookSecurityAdvisoryPublished",),
+        ".group_0750": ("WebhookSecurityAdvisoryUpdated",),
+        ".group_0751": ("WebhookSecurityAdvisoryWithdrawn",),
+        ".group_0752": (
             "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisory",
             "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCvss",
             "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCwesItems",
@@ -11914,22 +11934,22 @@ else:
             "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion",
             "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackage",
         ),
-        ".group_0748": ("WebhookSecurityAndAnalysis",),
-        ".group_0749": ("WebhookSecurityAndAnalysisPropChanges",),
-        ".group_0750": ("WebhookSecurityAndAnalysisPropChangesPropFrom",),
-        ".group_0751": ("WebhookSponsorshipCancelled",),
-        ".group_0752": ("WebhookSponsorshipCreated",),
-        ".group_0753": (
+        ".group_0753": ("WebhookSecurityAndAnalysis",),
+        ".group_0754": ("WebhookSecurityAndAnalysisPropChanges",),
+        ".group_0755": ("WebhookSecurityAndAnalysisPropChangesPropFrom",),
+        ".group_0756": ("WebhookSponsorshipCancelled",),
+        ".group_0757": ("WebhookSponsorshipCreated",),
+        ".group_0758": (
             "WebhookSponsorshipEdited",
             "WebhookSponsorshipEditedPropChanges",
             "WebhookSponsorshipEditedPropChangesPropPrivacyLevel",
         ),
-        ".group_0754": ("WebhookSponsorshipPendingCancellation",),
-        ".group_0755": ("WebhookSponsorshipPendingTierChange",),
-        ".group_0756": ("WebhookSponsorshipTierChanged",),
-        ".group_0757": ("WebhookStarCreated",),
-        ".group_0758": ("WebhookStarDeleted",),
-        ".group_0759": (
+        ".group_0759": ("WebhookSponsorshipPendingCancellation",),
+        ".group_0760": ("WebhookSponsorshipPendingTierChange",),
+        ".group_0761": ("WebhookSponsorshipTierChanged",),
+        ".group_0762": ("WebhookStarCreated",),
+        ".group_0763": ("WebhookStarDeleted",),
+        ".group_0764": (
             "WebhookStatus",
             "WebhookStatusPropBranchesItems",
             "WebhookStatusPropBranchesItemsPropCommit",
@@ -11943,16 +11963,16 @@ else:
             "WebhookStatusPropCommitPropCommitPropTree",
             "WebhookStatusPropCommitPropCommitPropVerification",
         ),
-        ".group_0760": ("WebhookStatusPropCommitPropCommitPropAuthorAllof0",),
-        ".group_0761": ("WebhookStatusPropCommitPropCommitPropAuthorAllof1",),
-        ".group_0762": ("WebhookStatusPropCommitPropCommitPropCommitterAllof0",),
-        ".group_0763": ("WebhookStatusPropCommitPropCommitPropCommitterAllof1",),
-        ".group_0764": ("WebhookSubIssuesParentIssueAdded",),
-        ".group_0765": ("WebhookSubIssuesParentIssueRemoved",),
-        ".group_0766": ("WebhookSubIssuesSubIssueAdded",),
-        ".group_0767": ("WebhookSubIssuesSubIssueRemoved",),
-        ".group_0768": ("WebhookTeamAdd",),
-        ".group_0769": (
+        ".group_0765": ("WebhookStatusPropCommitPropCommitPropAuthorAllof0",),
+        ".group_0766": ("WebhookStatusPropCommitPropCommitPropAuthorAllof1",),
+        ".group_0767": ("WebhookStatusPropCommitPropCommitPropCommitterAllof0",),
+        ".group_0768": ("WebhookStatusPropCommitPropCommitPropCommitterAllof1",),
+        ".group_0769": ("WebhookSubIssuesParentIssueAdded",),
+        ".group_0770": ("WebhookSubIssuesParentIssueRemoved",),
+        ".group_0771": ("WebhookSubIssuesSubIssueAdded",),
+        ".group_0772": ("WebhookSubIssuesSubIssueRemoved",),
+        ".group_0773": ("WebhookTeamAdd",),
+        ".group_0774": (
             "WebhookTeamAddedToRepository",
             "WebhookTeamAddedToRepositoryPropRepository",
             "WebhookTeamAddedToRepositoryPropRepositoryPropCustomProperties",
@@ -11960,7 +11980,7 @@ else:
             "WebhookTeamAddedToRepositoryPropRepositoryPropOwner",
             "WebhookTeamAddedToRepositoryPropRepositoryPropPermissions",
         ),
-        ".group_0770": (
+        ".group_0775": (
             "WebhookTeamCreated",
             "WebhookTeamCreatedPropRepository",
             "WebhookTeamCreatedPropRepositoryPropCustomProperties",
@@ -11968,7 +11988,7 @@ else:
             "WebhookTeamCreatedPropRepositoryPropOwner",
             "WebhookTeamCreatedPropRepositoryPropPermissions",
         ),
-        ".group_0771": (
+        ".group_0776": (
             "WebhookTeamDeleted",
             "WebhookTeamDeletedPropRepository",
             "WebhookTeamDeletedPropRepositoryPropCustomProperties",
@@ -11976,7 +11996,7 @@ else:
             "WebhookTeamDeletedPropRepositoryPropOwner",
             "WebhookTeamDeletedPropRepositoryPropPermissions",
         ),
-        ".group_0772": (
+        ".group_0777": (
             "WebhookTeamEdited",
             "WebhookTeamEditedPropRepository",
             "WebhookTeamEditedPropRepositoryPropCustomProperties",
@@ -11992,7 +12012,7 @@ else:
             "WebhookTeamEditedPropChangesPropRepositoryPropPermissions",
             "WebhookTeamEditedPropChangesPropRepositoryPropPermissionsPropFrom",
         ),
-        ".group_0773": (
+        ".group_0778": (
             "WebhookTeamRemovedFromRepository",
             "WebhookTeamRemovedFromRepositoryPropRepository",
             "WebhookTeamRemovedFromRepositoryPropRepositoryPropCustomProperties",
@@ -12000,48 +12020,48 @@ else:
             "WebhookTeamRemovedFromRepositoryPropRepositoryPropOwner",
             "WebhookTeamRemovedFromRepositoryPropRepositoryPropPermissions",
         ),
-        ".group_0774": ("WebhookWatchStarted",),
-        ".group_0775": (
+        ".group_0779": ("WebhookWatchStarted",),
+        ".group_0780": (
             "WebhookWorkflowDispatch",
             "WebhookWorkflowDispatchPropInputs",
         ),
-        ".group_0776": (
+        ".group_0781": (
             "WebhookWorkflowJobCompleted",
             "WebhookWorkflowJobCompletedPropWorkflowJob",
             "WebhookWorkflowJobCompletedPropWorkflowJobMergedSteps",
         ),
-        ".group_0777": (
+        ".group_0782": (
             "WebhookWorkflowJobCompletedPropWorkflowJobAllof0",
             "WebhookWorkflowJobCompletedPropWorkflowJobAllof0PropStepsItems",
         ),
-        ".group_0778": (
+        ".group_0783": (
             "WebhookWorkflowJobCompletedPropWorkflowJobAllof1",
             "WebhookWorkflowJobCompletedPropWorkflowJobAllof1PropStepsItems",
         ),
-        ".group_0779": (
+        ".group_0784": (
             "WebhookWorkflowJobInProgress",
             "WebhookWorkflowJobInProgressPropWorkflowJob",
             "WebhookWorkflowJobInProgressPropWorkflowJobMergedSteps",
         ),
-        ".group_0780": (
+        ".group_0785": (
             "WebhookWorkflowJobInProgressPropWorkflowJobAllof0",
             "WebhookWorkflowJobInProgressPropWorkflowJobAllof0PropStepsItems",
         ),
-        ".group_0781": (
+        ".group_0786": (
             "WebhookWorkflowJobInProgressPropWorkflowJobAllof1",
             "WebhookWorkflowJobInProgressPropWorkflowJobAllof1PropStepsItems",
         ),
-        ".group_0782": (
+        ".group_0787": (
             "WebhookWorkflowJobQueued",
             "WebhookWorkflowJobQueuedPropWorkflowJob",
             "WebhookWorkflowJobQueuedPropWorkflowJobPropStepsItems",
         ),
-        ".group_0783": (
+        ".group_0788": (
             "WebhookWorkflowJobWaiting",
             "WebhookWorkflowJobWaitingPropWorkflowJob",
             "WebhookWorkflowJobWaitingPropWorkflowJobPropStepsItems",
         ),
-        ".group_0784": (
+        ".group_0789": (
             "WebhookWorkflowRunCompleted",
             "WebhookWorkflowRunCompletedPropWorkflowRun",
             "WebhookWorkflowRunCompletedPropWorkflowRunPropActor",
@@ -12060,7 +12080,7 @@ else:
             "WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropHead",
             "WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo",
         ),
-        ".group_0785": (
+        ".group_0790": (
             "WebhookWorkflowRunInProgress",
             "WebhookWorkflowRunInProgressPropWorkflowRun",
             "WebhookWorkflowRunInProgressPropWorkflowRunPropActor",
@@ -12079,7 +12099,7 @@ else:
             "WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItemsPropHead",
             "WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo",
         ),
-        ".group_0786": (
+        ".group_0791": (
             "WebhookWorkflowRunRequested",
             "WebhookWorkflowRunRequestedPropWorkflowRun",
             "WebhookWorkflowRunRequestedPropWorkflowRunPropActor",
@@ -12098,266 +12118,266 @@ else:
             "WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHead",
             "WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo",
         ),
-        ".group_0787": ("AppManifestsCodeConversionsPostResponse201",),
-        ".group_0788": ("AppManifestsCodeConversionsPostResponse201Allof1",),
-        ".group_0789": ("AppHookConfigPatchBody",),
-        ".group_0790": ("AppHookDeliveriesDeliveryIdAttemptsPostResponse202",),
-        ".group_0791": ("AppInstallationsInstallationIdAccessTokensPostBody",),
-        ".group_0792": ("ApplicationsClientIdGrantDeleteBody",),
-        ".group_0793": ("ApplicationsClientIdTokenPostBody",),
-        ".group_0794": ("ApplicationsClientIdTokenDeleteBody",),
-        ".group_0795": ("ApplicationsClientIdTokenPatchBody",),
-        ".group_0796": ("ApplicationsClientIdTokenScopedPostBody",),
-        ".group_0797": ("EmojisGetResponse200",),
-        ".group_0798": (
+        ".group_0792": ("AppManifestsCodeConversionsPostResponse201",),
+        ".group_0793": ("AppManifestsCodeConversionsPostResponse201Allof1",),
+        ".group_0794": ("AppHookConfigPatchBody",),
+        ".group_0795": ("AppHookDeliveriesDeliveryIdAttemptsPostResponse202",),
+        ".group_0796": ("AppInstallationsInstallationIdAccessTokensPostBody",),
+        ".group_0797": ("ApplicationsClientIdGrantDeleteBody",),
+        ".group_0798": ("ApplicationsClientIdTokenPostBody",),
+        ".group_0799": ("ApplicationsClientIdTokenDeleteBody",),
+        ".group_0800": ("ApplicationsClientIdTokenPatchBody",),
+        ".group_0801": ("ApplicationsClientIdTokenScopedPostBody",),
+        ".group_0802": ("EmojisGetResponse200",),
+        ".group_0803": (
             "EnterprisesEnterpriseCodeSecurityConfigurationsPostBody",
             "EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptions",
         ),
-        ".group_0799": (
+        ".group_0804": (
             "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBody",
             "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptions",
         ),
-        ".group_0800": (
+        ".group_0805": (
             "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBody",
         ),
-        ".group_0801": (
+        ".group_0806": (
             "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBody",
         ),
-        ".group_0802": (
+        ".group_0807": (
             "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200",
         ),
-        ".group_0803": ("EnterprisesEnterpriseSecretScanningAlertsGetResponse503",),
-        ".group_0804": (
+        ".group_0808": ("EnterprisesEnterpriseSecretScanningAlertsGetResponse503",),
+        ".group_0809": (
             "GistsPostBody",
             "GistsPostBodyPropFiles",
         ),
-        ".group_0805": (
+        ".group_0810": (
             "GistsGistIdGetResponse403",
             "GistsGistIdGetResponse403PropBlock",
         ),
-        ".group_0806": (
+        ".group_0811": (
             "GistsGistIdPatchBody",
             "GistsGistIdPatchBodyPropFiles",
         ),
-        ".group_0807": ("GistsGistIdCommentsPostBody",),
-        ".group_0808": ("GistsGistIdCommentsCommentIdPatchBody",),
-        ".group_0809": ("GistsGistIdStarGetResponse404",),
-        ".group_0810": ("InstallationRepositoriesGetResponse200",),
-        ".group_0811": ("MarkdownPostBody",),
-        ".group_0812": ("NotificationsPutBody",),
-        ".group_0813": ("NotificationsPutResponse202",),
-        ".group_0814": ("NotificationsThreadsThreadIdSubscriptionPutBody",),
-        ".group_0815": ("OrgsOrgPatchBody",),
-        ".group_0816": (
+        ".group_0812": ("GistsGistIdCommentsPostBody",),
+        ".group_0813": ("GistsGistIdCommentsCommentIdPatchBody",),
+        ".group_0814": ("GistsGistIdStarGetResponse404",),
+        ".group_0815": ("InstallationRepositoriesGetResponse200",),
+        ".group_0816": ("MarkdownPostBody",),
+        ".group_0817": ("NotificationsPutBody",),
+        ".group_0818": ("NotificationsPutResponse202",),
+        ".group_0819": ("NotificationsThreadsThreadIdSubscriptionPutBody",),
+        ".group_0820": ("OrgsOrgPatchBody",),
+        ".group_0821": (
             "OrgsOrgActionsCacheUsageByRepositoryGetResponse200",
             "ActionsCacheUsageByRepository",
         ),
-        ".group_0817": ("OrgsOrgActionsHostedRunnersGetResponse200",),
-        ".group_0818": (
+        ".group_0822": ("OrgsOrgActionsHostedRunnersGetResponse200",),
+        ".group_0823": (
             "OrgsOrgActionsHostedRunnersPostBody",
             "OrgsOrgActionsHostedRunnersPostBodyPropImage",
         ),
-        ".group_0819": ("OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200",),
-        ".group_0820": ("OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200",),
-        ".group_0821": ("OrgsOrgActionsHostedRunnersMachineSizesGetResponse200",),
-        ".group_0822": ("OrgsOrgActionsHostedRunnersPlatformsGetResponse200",),
-        ".group_0823": ("OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBody",),
-        ".group_0824": ("OrgsOrgActionsPermissionsPutBody",),
-        ".group_0825": ("OrgsOrgActionsPermissionsRepositoriesGetResponse200",),
-        ".group_0826": ("OrgsOrgActionsPermissionsRepositoriesPutBody",),
-        ".group_0827": (
+        ".group_0824": ("OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200",),
+        ".group_0825": ("OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200",),
+        ".group_0826": ("OrgsOrgActionsHostedRunnersMachineSizesGetResponse200",),
+        ".group_0827": ("OrgsOrgActionsHostedRunnersPlatformsGetResponse200",),
+        ".group_0828": ("OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBody",),
+        ".group_0829": ("OrgsOrgActionsPermissionsPutBody",),
+        ".group_0830": ("OrgsOrgActionsPermissionsRepositoriesGetResponse200",),
+        ".group_0831": ("OrgsOrgActionsPermissionsRepositoriesPutBody",),
+        ".group_0832": (
             "OrgsOrgActionsRunnerGroupsGetResponse200",
             "RunnerGroupsOrg",
         ),
-        ".group_0828": ("OrgsOrgActionsRunnerGroupsPostBody",),
-        ".group_0829": ("OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBody",),
-        ".group_0830": (
+        ".group_0833": ("OrgsOrgActionsRunnerGroupsPostBody",),
+        ".group_0834": ("OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBody",),
+        ".group_0835": (
             "OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200",
         ),
-        ".group_0831": (
+        ".group_0836": (
             "OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200",
         ),
-        ".group_0832": ("OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBody",),
-        ".group_0833": (
+        ".group_0837": ("OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBody",),
+        ".group_0838": (
             "OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200",
         ),
-        ".group_0834": ("OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBody",),
-        ".group_0835": ("OrgsOrgActionsRunnersGetResponse200",),
-        ".group_0836": ("OrgsOrgActionsRunnersGenerateJitconfigPostBody",),
-        ".group_0837": ("OrgsOrgActionsRunnersGenerateJitconfigPostResponse201",),
-        ".group_0838": ("OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200",),
-        ".group_0839": ("OrgsOrgActionsRunnersRunnerIdLabelsPutBody",),
-        ".group_0840": ("OrgsOrgActionsRunnersRunnerIdLabelsPostBody",),
-        ".group_0841": ("OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200",),
-        ".group_0842": (
+        ".group_0839": ("OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBody",),
+        ".group_0840": ("OrgsOrgActionsRunnersGetResponse200",),
+        ".group_0841": ("OrgsOrgActionsRunnersGenerateJitconfigPostBody",),
+        ".group_0842": ("OrgsOrgActionsRunnersGenerateJitconfigPostResponse201",),
+        ".group_0843": ("OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200",),
+        ".group_0844": ("OrgsOrgActionsRunnersRunnerIdLabelsPutBody",),
+        ".group_0845": ("OrgsOrgActionsRunnersRunnerIdLabelsPostBody",),
+        ".group_0846": ("OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200",),
+        ".group_0847": (
             "OrgsOrgActionsSecretsGetResponse200",
             "OrganizationActionsSecret",
         ),
-        ".group_0843": ("OrgsOrgActionsSecretsSecretNamePutBody",),
-        ".group_0844": ("OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200",),
-        ".group_0845": ("OrgsOrgActionsSecretsSecretNameRepositoriesPutBody",),
-        ".group_0846": (
+        ".group_0848": ("OrgsOrgActionsSecretsSecretNamePutBody",),
+        ".group_0849": ("OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200",),
+        ".group_0850": ("OrgsOrgActionsSecretsSecretNameRepositoriesPutBody",),
+        ".group_0851": (
             "OrgsOrgActionsVariablesGetResponse200",
             "OrganizationActionsVariable",
         ),
-        ".group_0847": ("OrgsOrgActionsVariablesPostBody",),
-        ".group_0848": ("OrgsOrgActionsVariablesNamePatchBody",),
-        ".group_0849": ("OrgsOrgActionsVariablesNameRepositoriesGetResponse200",),
-        ".group_0850": ("OrgsOrgActionsVariablesNameRepositoriesPutBody",),
-        ".group_0851": (
+        ".group_0852": ("OrgsOrgActionsVariablesPostBody",),
+        ".group_0853": ("OrgsOrgActionsVariablesNamePatchBody",),
+        ".group_0854": ("OrgsOrgActionsVariablesNameRepositoriesGetResponse200",),
+        ".group_0855": ("OrgsOrgActionsVariablesNameRepositoriesPutBody",),
+        ".group_0856": (
             "OrgsOrgAttestationsSubjectDigestGetResponse200",
             "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems",
             "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle",
             "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterial",
             "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelope",
         ),
-        ".group_0852": (
+        ".group_0857": (
             "OrgsOrgCodeSecurityConfigurationsPostBody",
             "OrgsOrgCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptions",
             "OrgsOrgCodeSecurityConfigurationsPostBodyPropSecretScanningDelegatedBypassOptions",
             "OrgsOrgCodeSecurityConfigurationsPostBodyPropSecretScanningDelegatedBypassOptionsPropReviewersItems",
         ),
-        ".group_0853": ("OrgsOrgCodeSecurityConfigurationsDetachDeleteBody",),
-        ".group_0854": (
+        ".group_0858": ("OrgsOrgCodeSecurityConfigurationsDetachDeleteBody",),
+        ".group_0859": (
             "OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBody",
             "OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptions",
             "OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDelegatedBypassOptions",
             "OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDelegatedBypassOptionsPropReviewersItems",
         ),
-        ".group_0855": (
+        ".group_0860": (
             "OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody",
         ),
-        ".group_0856": (
+        ".group_0861": (
             "OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBody",
         ),
-        ".group_0857": (
+        ".group_0862": (
             "OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200",
         ),
-        ".group_0858": ("OrgsOrgCodespacesGetResponse200",),
-        ".group_0859": ("OrgsOrgCodespacesAccessPutBody",),
-        ".group_0860": ("OrgsOrgCodespacesAccessSelectedUsersPostBody",),
-        ".group_0861": ("OrgsOrgCodespacesAccessSelectedUsersDeleteBody",),
-        ".group_0862": (
+        ".group_0863": ("OrgsOrgCodespacesGetResponse200",),
+        ".group_0864": ("OrgsOrgCodespacesAccessPutBody",),
+        ".group_0865": ("OrgsOrgCodespacesAccessSelectedUsersPostBody",),
+        ".group_0866": ("OrgsOrgCodespacesAccessSelectedUsersDeleteBody",),
+        ".group_0867": (
             "OrgsOrgCodespacesSecretsGetResponse200",
             "CodespacesOrgSecret",
         ),
-        ".group_0863": ("OrgsOrgCodespacesSecretsSecretNamePutBody",),
-        ".group_0864": (
+        ".group_0868": ("OrgsOrgCodespacesSecretsSecretNamePutBody",),
+        ".group_0869": (
             "OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200",
         ),
-        ".group_0865": ("OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBody",),
-        ".group_0866": ("OrgsOrgCopilotBillingSelectedTeamsPostBody",),
-        ".group_0867": ("OrgsOrgCopilotBillingSelectedTeamsPostResponse201",),
-        ".group_0868": ("OrgsOrgCopilotBillingSelectedTeamsDeleteBody",),
-        ".group_0869": ("OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200",),
-        ".group_0870": ("OrgsOrgCopilotBillingSelectedUsersPostBody",),
-        ".group_0871": ("OrgsOrgCopilotBillingSelectedUsersPostResponse201",),
-        ".group_0872": ("OrgsOrgCopilotBillingSelectedUsersDeleteBody",),
-        ".group_0873": ("OrgsOrgCopilotBillingSelectedUsersDeleteResponse200",),
-        ".group_0874": (
+        ".group_0870": ("OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBody",),
+        ".group_0871": ("OrgsOrgCopilotBillingSelectedTeamsPostBody",),
+        ".group_0872": ("OrgsOrgCopilotBillingSelectedTeamsPostResponse201",),
+        ".group_0873": ("OrgsOrgCopilotBillingSelectedTeamsDeleteBody",),
+        ".group_0874": ("OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200",),
+        ".group_0875": ("OrgsOrgCopilotBillingSelectedUsersPostBody",),
+        ".group_0876": ("OrgsOrgCopilotBillingSelectedUsersPostResponse201",),
+        ".group_0877": ("OrgsOrgCopilotBillingSelectedUsersDeleteBody",),
+        ".group_0878": ("OrgsOrgCopilotBillingSelectedUsersDeleteResponse200",),
+        ".group_0879": (
             "OrgsOrgDependabotSecretsGetResponse200",
             "OrganizationDependabotSecret",
         ),
-        ".group_0875": ("OrgsOrgDependabotSecretsSecretNamePutBody",),
-        ".group_0876": (
+        ".group_0880": ("OrgsOrgDependabotSecretsSecretNamePutBody",),
+        ".group_0881": (
             "OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200",
         ),
-        ".group_0877": ("OrgsOrgDependabotSecretsSecretNameRepositoriesPutBody",),
-        ".group_0878": (
+        ".group_0882": ("OrgsOrgDependabotSecretsSecretNameRepositoriesPutBody",),
+        ".group_0883": (
             "OrgsOrgHooksPostBody",
             "OrgsOrgHooksPostBodyPropConfig",
         ),
-        ".group_0879": (
+        ".group_0884": (
             "OrgsOrgHooksHookIdPatchBody",
             "OrgsOrgHooksHookIdPatchBodyPropConfig",
         ),
-        ".group_0880": ("OrgsOrgHooksHookIdConfigPatchBody",),
-        ".group_0881": ("OrgsOrgInstallationsGetResponse200",),
-        ".group_0882": ("OrgsOrgInteractionLimitsGetResponse200Anyof1",),
-        ".group_0883": ("OrgsOrgInvitationsPostBody",),
-        ".group_0884": ("OrgsOrgMembersUsernameCodespacesGetResponse200",),
-        ".group_0885": ("OrgsOrgMembershipsUsernamePutBody",),
-        ".group_0886": ("OrgsOrgMigrationsPostBody",),
-        ".group_0887": ("OrgsOrgOutsideCollaboratorsUsernamePutBody",),
-        ".group_0888": ("OrgsOrgOutsideCollaboratorsUsernamePutResponse202",),
-        ".group_0889": ("OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422",),
-        ".group_0890": ("OrgsOrgPersonalAccessTokenRequestsPostBody",),
-        ".group_0891": ("OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody",),
-        ".group_0892": ("OrgsOrgPersonalAccessTokensPostBody",),
-        ".group_0893": ("OrgsOrgPersonalAccessTokensPatIdPostBody",),
-        ".group_0894": (
+        ".group_0885": ("OrgsOrgHooksHookIdConfigPatchBody",),
+        ".group_0886": ("OrgsOrgInstallationsGetResponse200",),
+        ".group_0887": ("OrgsOrgInteractionLimitsGetResponse200Anyof1",),
+        ".group_0888": ("OrgsOrgInvitationsPostBody",),
+        ".group_0889": ("OrgsOrgMembersUsernameCodespacesGetResponse200",),
+        ".group_0890": ("OrgsOrgMembershipsUsernamePutBody",),
+        ".group_0891": ("OrgsOrgMigrationsPostBody",),
+        ".group_0892": ("OrgsOrgOutsideCollaboratorsUsernamePutBody",),
+        ".group_0893": ("OrgsOrgOutsideCollaboratorsUsernamePutResponse202",),
+        ".group_0894": ("OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422",),
+        ".group_0895": ("OrgsOrgPersonalAccessTokenRequestsPostBody",),
+        ".group_0896": ("OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody",),
+        ".group_0897": ("OrgsOrgPersonalAccessTokensPostBody",),
+        ".group_0898": ("OrgsOrgPersonalAccessTokensPatIdPostBody",),
+        ".group_0899": (
             "OrgsOrgPrivateRegistriesGetResponse200",
             "OrgPrivateRegistryConfiguration",
         ),
-        ".group_0895": ("OrgsOrgPrivateRegistriesPostBody",),
-        ".group_0896": ("OrgsOrgPrivateRegistriesPublicKeyGetResponse200",),
-        ".group_0897": ("OrgsOrgPrivateRegistriesSecretNamePatchBody",),
-        ".group_0898": ("OrgsOrgProjectsPostBody",),
-        ".group_0899": ("OrgsOrgPropertiesSchemaPatchBody",),
-        ".group_0900": ("OrgsOrgPropertiesValuesPatchBody",),
-        ".group_0901": (
+        ".group_0900": ("OrgsOrgPrivateRegistriesPostBody",),
+        ".group_0901": ("OrgsOrgPrivateRegistriesPublicKeyGetResponse200",),
+        ".group_0902": ("OrgsOrgPrivateRegistriesSecretNamePatchBody",),
+        ".group_0903": ("OrgsOrgProjectsPostBody",),
+        ".group_0904": ("OrgsOrgPropertiesSchemaPatchBody",),
+        ".group_0905": ("OrgsOrgPropertiesValuesPatchBody",),
+        ".group_0906": (
             "OrgsOrgReposPostBody",
             "OrgsOrgReposPostBodyPropCustomProperties",
         ),
-        ".group_0902": ("OrgsOrgRulesetsPostBody",),
-        ".group_0903": ("OrgsOrgRulesetsRulesetIdPutBody",),
-        ".group_0904": (
+        ".group_0907": ("OrgsOrgRulesetsPostBody",),
+        ".group_0908": ("OrgsOrgRulesetsRulesetIdPutBody",),
+        ".group_0909": (
             "OrgsOrgSettingsNetworkConfigurationsGetResponse200",
             "NetworkConfiguration",
         ),
-        ".group_0905": ("OrgsOrgSettingsNetworkConfigurationsPostBody",),
-        ".group_0906": (
+        ".group_0910": ("OrgsOrgSettingsNetworkConfigurationsPostBody",),
+        ".group_0911": (
             "OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBody",
         ),
-        ".group_0907": ("OrgsOrgTeamsPostBody",),
-        ".group_0908": ("OrgsOrgTeamsTeamSlugPatchBody",),
-        ".group_0909": ("OrgsOrgTeamsTeamSlugDiscussionsPostBody",),
-        ".group_0910": ("OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody",),
-        ".group_0911": (
+        ".group_0912": ("OrgsOrgTeamsPostBody",),
+        ".group_0913": ("OrgsOrgTeamsTeamSlugPatchBody",),
+        ".group_0914": ("OrgsOrgTeamsTeamSlugDiscussionsPostBody",),
+        ".group_0915": ("OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody",),
+        ".group_0916": (
             "OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBody",
         ),
-        ".group_0912": (
+        ".group_0917": (
             "OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBody",
         ),
-        ".group_0913": (
+        ".group_0918": (
             "OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody",
         ),
-        ".group_0914": (
+        ".group_0919": (
             "OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBody",
         ),
-        ".group_0915": ("OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody",),
-        ".group_0916": ("OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody",),
-        ".group_0917": ("OrgsOrgTeamsTeamSlugProjectsProjectIdPutResponse403",),
-        ".group_0918": ("OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody",),
-        ".group_0919": ("OrgsOrgSecurityProductEnablementPostBody",),
-        ".group_0920": ("ProjectsColumnsCardsCardIdDeleteResponse403",),
-        ".group_0921": ("ProjectsColumnsCardsCardIdPatchBody",),
-        ".group_0922": ("ProjectsColumnsCardsCardIdMovesPostBody",),
-        ".group_0923": ("ProjectsColumnsCardsCardIdMovesPostResponse201",),
-        ".group_0924": (
+        ".group_0920": ("OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody",),
+        ".group_0921": ("OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody",),
+        ".group_0922": ("OrgsOrgTeamsTeamSlugProjectsProjectIdPutResponse403",),
+        ".group_0923": ("OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody",),
+        ".group_0924": ("OrgsOrgSecurityProductEnablementPostBody",),
+        ".group_0925": ("ProjectsColumnsCardsCardIdDeleteResponse403",),
+        ".group_0926": ("ProjectsColumnsCardsCardIdPatchBody",),
+        ".group_0927": ("ProjectsColumnsCardsCardIdMovesPostBody",),
+        ".group_0928": ("ProjectsColumnsCardsCardIdMovesPostResponse201",),
+        ".group_0929": (
             "ProjectsColumnsCardsCardIdMovesPostResponse403",
             "ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItems",
         ),
-        ".group_0925": (
+        ".group_0930": (
             "ProjectsColumnsCardsCardIdMovesPostResponse503",
             "ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItems",
         ),
-        ".group_0926": ("ProjectsColumnsColumnIdPatchBody",),
-        ".group_0927": ("ProjectsColumnsColumnIdCardsPostBodyOneof0",),
-        ".group_0928": ("ProjectsColumnsColumnIdCardsPostBodyOneof1",),
-        ".group_0929": (
+        ".group_0931": ("ProjectsColumnsColumnIdPatchBody",),
+        ".group_0932": ("ProjectsColumnsColumnIdCardsPostBodyOneof0",),
+        ".group_0933": ("ProjectsColumnsColumnIdCardsPostBodyOneof1",),
+        ".group_0934": (
             "ProjectsColumnsColumnIdCardsPostResponse503",
             "ProjectsColumnsColumnIdCardsPostResponse503PropErrorsItems",
         ),
-        ".group_0930": ("ProjectsColumnsColumnIdMovesPostBody",),
-        ".group_0931": ("ProjectsColumnsColumnIdMovesPostResponse201",),
-        ".group_0932": ("ProjectsProjectIdDeleteResponse403",),
-        ".group_0933": ("ProjectsProjectIdPatchBody",),
-        ".group_0934": ("ProjectsProjectIdPatchResponse403",),
-        ".group_0935": ("ProjectsProjectIdCollaboratorsUsernamePutBody",),
-        ".group_0936": ("ProjectsProjectIdColumnsPostBody",),
-        ".group_0937": ("ReposOwnerRepoDeleteResponse403",),
-        ".group_0938": (
+        ".group_0935": ("ProjectsColumnsColumnIdMovesPostBody",),
+        ".group_0936": ("ProjectsColumnsColumnIdMovesPostResponse201",),
+        ".group_0937": ("ProjectsProjectIdDeleteResponse403",),
+        ".group_0938": ("ProjectsProjectIdPatchBody",),
+        ".group_0939": ("ProjectsProjectIdPatchResponse403",),
+        ".group_0940": ("ProjectsProjectIdCollaboratorsUsernamePutBody",),
+        ".group_0941": ("ProjectsProjectIdColumnsPostBody",),
+        ".group_0942": ("ReposOwnerRepoDeleteResponse403",),
+        ".group_0943": (
             "ReposOwnerRepoPatchBody",
             "ReposOwnerRepoPatchBodyPropSecurityAndAnalysis",
             "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropAdvancedSecurity",
@@ -12366,55 +12386,55 @@ else:
             "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningAiDetection",
             "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningNonProviderPatterns",
         ),
-        ".group_0939": ("ReposOwnerRepoActionsArtifactsGetResponse200",),
-        ".group_0940": ("ReposOwnerRepoActionsJobsJobIdRerunPostBody",),
-        ".group_0941": ("ReposOwnerRepoActionsOidcCustomizationSubPutBody",),
-        ".group_0942": ("ReposOwnerRepoActionsOrganizationSecretsGetResponse200",),
-        ".group_0943": ("ReposOwnerRepoActionsOrganizationVariablesGetResponse200",),
-        ".group_0944": ("ReposOwnerRepoActionsPermissionsPutBody",),
-        ".group_0945": ("ReposOwnerRepoActionsRunnersGetResponse200",),
-        ".group_0946": ("ReposOwnerRepoActionsRunnersGenerateJitconfigPostBody",),
-        ".group_0947": ("ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody",),
-        ".group_0948": ("ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody",),
-        ".group_0949": ("ReposOwnerRepoActionsRunsGetResponse200",),
-        ".group_0950": ("ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200",),
-        ".group_0951": (
+        ".group_0944": ("ReposOwnerRepoActionsArtifactsGetResponse200",),
+        ".group_0945": ("ReposOwnerRepoActionsJobsJobIdRerunPostBody",),
+        ".group_0946": ("ReposOwnerRepoActionsOidcCustomizationSubPutBody",),
+        ".group_0947": ("ReposOwnerRepoActionsOrganizationSecretsGetResponse200",),
+        ".group_0948": ("ReposOwnerRepoActionsOrganizationVariablesGetResponse200",),
+        ".group_0949": ("ReposOwnerRepoActionsPermissionsPutBody",),
+        ".group_0950": ("ReposOwnerRepoActionsRunnersGetResponse200",),
+        ".group_0951": ("ReposOwnerRepoActionsRunnersGenerateJitconfigPostBody",),
+        ".group_0952": ("ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody",),
+        ".group_0953": ("ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody",),
+        ".group_0954": ("ReposOwnerRepoActionsRunsGetResponse200",),
+        ".group_0955": ("ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200",),
+        ".group_0956": (
             "ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200",
         ),
-        ".group_0952": ("ReposOwnerRepoActionsRunsRunIdJobsGetResponse200",),
-        ".group_0953": ("ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody",),
-        ".group_0954": ("ReposOwnerRepoActionsRunsRunIdRerunPostBody",),
-        ".group_0955": ("ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBody",),
-        ".group_0956": ("ReposOwnerRepoActionsSecretsGetResponse200",),
-        ".group_0957": ("ReposOwnerRepoActionsSecretsSecretNamePutBody",),
-        ".group_0958": ("ReposOwnerRepoActionsVariablesGetResponse200",),
-        ".group_0959": ("ReposOwnerRepoActionsVariablesPostBody",),
-        ".group_0960": ("ReposOwnerRepoActionsVariablesNamePatchBody",),
-        ".group_0961": (
+        ".group_0957": ("ReposOwnerRepoActionsRunsRunIdJobsGetResponse200",),
+        ".group_0958": ("ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody",),
+        ".group_0959": ("ReposOwnerRepoActionsRunsRunIdRerunPostBody",),
+        ".group_0960": ("ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBody",),
+        ".group_0961": ("ReposOwnerRepoActionsSecretsGetResponse200",),
+        ".group_0962": ("ReposOwnerRepoActionsSecretsSecretNamePutBody",),
+        ".group_0963": ("ReposOwnerRepoActionsVariablesGetResponse200",),
+        ".group_0964": ("ReposOwnerRepoActionsVariablesPostBody",),
+        ".group_0965": ("ReposOwnerRepoActionsVariablesNamePatchBody",),
+        ".group_0966": (
             "ReposOwnerRepoActionsWorkflowsGetResponse200",
             "Workflow",
         ),
-        ".group_0962": (
+        ".group_0967": (
             "ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody",
             "ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs",
         ),
-        ".group_0963": ("ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200",),
-        ".group_0964": (
+        ".group_0968": ("ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200",),
+        ".group_0969": (
             "ReposOwnerRepoAttestationsPostBody",
             "ReposOwnerRepoAttestationsPostBodyPropBundle",
             "ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterial",
             "ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelope",
         ),
-        ".group_0965": ("ReposOwnerRepoAttestationsPostResponse201",),
-        ".group_0966": (
+        ".group_0970": ("ReposOwnerRepoAttestationsPostResponse201",),
+        ".group_0971": (
             "ReposOwnerRepoAttestationsSubjectDigestGetResponse200",
             "ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItems",
             "ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle",
             "ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterial",
             "ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelope",
         ),
-        ".group_0967": ("ReposOwnerRepoAutolinksPostBody",),
-        ".group_0968": (
+        ".group_0972": ("ReposOwnerRepoAutolinksPostBody",),
+        ".group_0973": (
             "ReposOwnerRepoBranchesBranchProtectionPutBody",
             "ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecks",
             "ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksPropChecksItems",
@@ -12423,336 +12443,336 @@ else:
             "ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropBypassPullRequestAllowances",
             "ReposOwnerRepoBranchesBranchProtectionPutBodyPropRestrictions",
         ),
-        ".group_0969": (
+        ".group_0974": (
             "ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody",
             "ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictions",
             "ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowances",
         ),
-        ".group_0970": (
+        ".group_0975": (
             "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBody",
             "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItems",
         ),
-        ".group_0971": (
+        ".group_0976": (
             "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0",
         ),
-        ".group_0972": (
+        ".group_0977": (
             "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0",
         ),
-        ".group_0973": (
+        ".group_0978": (
             "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0",
         ),
-        ".group_0974": (
+        ".group_0979": (
             "ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBody",
         ),
-        ".group_0975": (
+        ".group_0980": (
             "ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBody",
         ),
-        ".group_0976": (
+        ".group_0981": (
             "ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBody",
         ),
-        ".group_0977": (
+        ".group_0982": (
             "ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0",
         ),
-        ".group_0978": (
+        ".group_0983": (
             "ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0",
         ),
-        ".group_0979": (
+        ".group_0984": (
             "ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0",
         ),
-        ".group_0980": (
+        ".group_0985": (
             "ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBody",
         ),
-        ".group_0981": (
+        ".group_0986": (
             "ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBody",
         ),
-        ".group_0982": (
+        ".group_0987": (
             "ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBody",
         ),
-        ".group_0983": ("ReposOwnerRepoBranchesBranchRenamePostBody",),
-        ".group_0984": (
+        ".group_0988": ("ReposOwnerRepoBranchesBranchRenamePostBody",),
+        ".group_0989": (
             "ReposOwnerRepoCheckRunsPostBodyPropOutput",
             "ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItems",
             "ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItems",
             "ReposOwnerRepoCheckRunsPostBodyPropActionsItems",
         ),
-        ".group_0985": ("ReposOwnerRepoCheckRunsPostBodyOneof0",),
-        ".group_0986": ("ReposOwnerRepoCheckRunsPostBodyOneof1",),
-        ".group_0987": (
+        ".group_0990": ("ReposOwnerRepoCheckRunsPostBodyOneof0",),
+        ".group_0991": ("ReposOwnerRepoCheckRunsPostBodyOneof1",),
+        ".group_0992": (
             "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutput",
             "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropAnnotationsItems",
             "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropImagesItems",
             "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItems",
         ),
-        ".group_0988": ("ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0",),
-        ".group_0989": ("ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1",),
-        ".group_0990": ("ReposOwnerRepoCheckSuitesPostBody",),
-        ".group_0991": (
+        ".group_0993": ("ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0",),
+        ".group_0994": ("ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1",),
+        ".group_0995": ("ReposOwnerRepoCheckSuitesPostBody",),
+        ".group_0996": (
             "ReposOwnerRepoCheckSuitesPreferencesPatchBody",
             "ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems",
         ),
-        ".group_0992": (
+        ".group_0997": (
             "ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200",
         ),
-        ".group_0993": ("ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBody",),
-        ".group_0994": (
+        ".group_0998": ("ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBody",),
+        ".group_0999": (
             "ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0",
         ),
-        ".group_0995": (
+        ".group_1000": (
             "ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1",
         ),
-        ".group_0996": (
+        ".group_1001": (
             "ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2",
         ),
-        ".group_0997": ("ReposOwnerRepoCodeScanningSarifsPostBody",),
-        ".group_0998": ("ReposOwnerRepoCodespacesGetResponse200",),
-        ".group_0999": ("ReposOwnerRepoCodespacesPostBody",),
-        ".group_1000": (
+        ".group_1002": ("ReposOwnerRepoCodeScanningSarifsPostBody",),
+        ".group_1003": ("ReposOwnerRepoCodespacesGetResponse200",),
+        ".group_1004": ("ReposOwnerRepoCodespacesPostBody",),
+        ".group_1005": (
             "ReposOwnerRepoCodespacesDevcontainersGetResponse200",
             "ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems",
         ),
-        ".group_1001": ("ReposOwnerRepoCodespacesMachinesGetResponse200",),
-        ".group_1002": (
+        ".group_1006": ("ReposOwnerRepoCodespacesMachinesGetResponse200",),
+        ".group_1007": (
             "ReposOwnerRepoCodespacesNewGetResponse200",
             "ReposOwnerRepoCodespacesNewGetResponse200PropDefaults",
         ),
-        ".group_1003": (
+        ".group_1008": (
             "ReposOwnerRepoCodespacesSecretsGetResponse200",
             "RepoCodespacesSecret",
         ),
-        ".group_1004": ("ReposOwnerRepoCodespacesSecretsSecretNamePutBody",),
-        ".group_1005": ("ReposOwnerRepoCollaboratorsUsernamePutBody",),
-        ".group_1006": ("ReposOwnerRepoCommentsCommentIdPatchBody",),
-        ".group_1007": ("ReposOwnerRepoCommentsCommentIdReactionsPostBody",),
-        ".group_1008": ("ReposOwnerRepoCommitsCommitShaCommentsPostBody",),
-        ".group_1009": ("ReposOwnerRepoCommitsRefCheckRunsGetResponse200",),
-        ".group_1010": (
+        ".group_1009": ("ReposOwnerRepoCodespacesSecretsSecretNamePutBody",),
+        ".group_1010": ("ReposOwnerRepoCollaboratorsUsernamePutBody",),
+        ".group_1011": ("ReposOwnerRepoCommentsCommentIdPatchBody",),
+        ".group_1012": ("ReposOwnerRepoCommentsCommentIdReactionsPostBody",),
+        ".group_1013": ("ReposOwnerRepoCommitsCommitShaCommentsPostBody",),
+        ".group_1014": ("ReposOwnerRepoCommitsRefCheckRunsGetResponse200",),
+        ".group_1015": (
             "ReposOwnerRepoContentsPathPutBody",
             "ReposOwnerRepoContentsPathPutBodyPropCommitter",
             "ReposOwnerRepoContentsPathPutBodyPropAuthor",
         ),
-        ".group_1011": (
+        ".group_1016": (
             "ReposOwnerRepoContentsPathDeleteBody",
             "ReposOwnerRepoContentsPathDeleteBodyPropCommitter",
             "ReposOwnerRepoContentsPathDeleteBodyPropAuthor",
         ),
-        ".group_1012": ("ReposOwnerRepoDependabotAlertsAlertNumberPatchBody",),
-        ".group_1013": (
+        ".group_1017": ("ReposOwnerRepoDependabotAlertsAlertNumberPatchBody",),
+        ".group_1018": (
             "ReposOwnerRepoDependabotSecretsGetResponse200",
             "DependabotSecret",
         ),
-        ".group_1014": ("ReposOwnerRepoDependabotSecretsSecretNamePutBody",),
-        ".group_1015": ("ReposOwnerRepoDependencyGraphSnapshotsPostResponse201",),
-        ".group_1016": (
+        ".group_1019": ("ReposOwnerRepoDependabotSecretsSecretNamePutBody",),
+        ".group_1020": ("ReposOwnerRepoDependencyGraphSnapshotsPostResponse201",),
+        ".group_1021": (
             "ReposOwnerRepoDeploymentsPostBody",
             "ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0",
         ),
-        ".group_1017": ("ReposOwnerRepoDeploymentsPostResponse202",),
-        ".group_1018": ("ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody",),
-        ".group_1019": (
+        ".group_1022": ("ReposOwnerRepoDeploymentsPostResponse202",),
+        ".group_1023": ("ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody",),
+        ".group_1024": (
             "ReposOwnerRepoDispatchesPostBody",
             "ReposOwnerRepoDispatchesPostBodyPropClientPayload",
         ),
-        ".group_1020": (
+        ".group_1025": (
             "ReposOwnerRepoEnvironmentsEnvironmentNamePutBody",
             "ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems",
         ),
-        ".group_1021": (
+        ".group_1026": (
             "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200",
             "DeploymentBranchPolicy",
         ),
-        ".group_1022": (
+        ".group_1027": (
             "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody",
         ),
-        ".group_1023": (
+        ".group_1028": (
             "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200",
         ),
-        ".group_1024": (
+        ".group_1029": (
             "ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200",
         ),
-        ".group_1025": (
+        ".group_1030": (
             "ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBody",
         ),
-        ".group_1026": (
+        ".group_1031": (
             "ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200",
         ),
-        ".group_1027": ("ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBody",),
-        ".group_1028": (
+        ".group_1032": ("ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBody",),
+        ".group_1033": (
             "ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBody",
         ),
-        ".group_1029": ("ReposOwnerRepoForksPostBody",),
-        ".group_1030": ("ReposOwnerRepoGitBlobsPostBody",),
-        ".group_1031": (
+        ".group_1034": ("ReposOwnerRepoForksPostBody",),
+        ".group_1035": ("ReposOwnerRepoGitBlobsPostBody",),
+        ".group_1036": (
             "ReposOwnerRepoGitCommitsPostBody",
             "ReposOwnerRepoGitCommitsPostBodyPropAuthor",
             "ReposOwnerRepoGitCommitsPostBodyPropCommitter",
         ),
-        ".group_1032": ("ReposOwnerRepoGitRefsPostBody",),
-        ".group_1033": ("ReposOwnerRepoGitRefsRefPatchBody",),
-        ".group_1034": (
+        ".group_1037": ("ReposOwnerRepoGitRefsPostBody",),
+        ".group_1038": ("ReposOwnerRepoGitRefsRefPatchBody",),
+        ".group_1039": (
             "ReposOwnerRepoGitTagsPostBody",
             "ReposOwnerRepoGitTagsPostBodyPropTagger",
         ),
-        ".group_1035": (
+        ".group_1040": (
             "ReposOwnerRepoGitTreesPostBody",
             "ReposOwnerRepoGitTreesPostBodyPropTreeItems",
         ),
-        ".group_1036": (
+        ".group_1041": (
             "ReposOwnerRepoHooksPostBody",
             "ReposOwnerRepoHooksPostBodyPropConfig",
         ),
-        ".group_1037": ("ReposOwnerRepoHooksHookIdPatchBody",),
-        ".group_1038": ("ReposOwnerRepoHooksHookIdConfigPatchBody",),
-        ".group_1039": ("ReposOwnerRepoImportPutBody",),
-        ".group_1040": ("ReposOwnerRepoImportPatchBody",),
-        ".group_1041": ("ReposOwnerRepoImportAuthorsAuthorIdPatchBody",),
-        ".group_1042": ("ReposOwnerRepoImportLfsPatchBody",),
-        ".group_1043": ("ReposOwnerRepoInteractionLimitsGetResponse200Anyof1",),
-        ".group_1044": ("ReposOwnerRepoInvitationsInvitationIdPatchBody",),
-        ".group_1045": (
+        ".group_1042": ("ReposOwnerRepoHooksHookIdPatchBody",),
+        ".group_1043": ("ReposOwnerRepoHooksHookIdConfigPatchBody",),
+        ".group_1044": ("ReposOwnerRepoImportPutBody",),
+        ".group_1045": ("ReposOwnerRepoImportPatchBody",),
+        ".group_1046": ("ReposOwnerRepoImportAuthorsAuthorIdPatchBody",),
+        ".group_1047": ("ReposOwnerRepoImportLfsPatchBody",),
+        ".group_1048": ("ReposOwnerRepoInteractionLimitsGetResponse200Anyof1",),
+        ".group_1049": ("ReposOwnerRepoInvitationsInvitationIdPatchBody",),
+        ".group_1050": (
             "ReposOwnerRepoIssuesPostBody",
             "ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1",
         ),
-        ".group_1046": ("ReposOwnerRepoIssuesCommentsCommentIdPatchBody",),
-        ".group_1047": ("ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBody",),
-        ".group_1048": (
+        ".group_1051": ("ReposOwnerRepoIssuesCommentsCommentIdPatchBody",),
+        ".group_1052": ("ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBody",),
+        ".group_1053": (
             "ReposOwnerRepoIssuesIssueNumberPatchBody",
             "ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1",
         ),
-        ".group_1049": ("ReposOwnerRepoIssuesIssueNumberAssigneesPostBody",),
-        ".group_1050": ("ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBody",),
-        ".group_1051": ("ReposOwnerRepoIssuesIssueNumberCommentsPostBody",),
-        ".group_1052": ("ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0",),
-        ".group_1053": (
+        ".group_1054": ("ReposOwnerRepoIssuesIssueNumberAssigneesPostBody",),
+        ".group_1055": ("ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBody",),
+        ".group_1056": ("ReposOwnerRepoIssuesIssueNumberCommentsPostBody",),
+        ".group_1057": ("ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0",),
+        ".group_1058": (
             "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2",
             "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems",
         ),
-        ".group_1054": ("ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3Items",),
-        ".group_1055": ("ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0",),
-        ".group_1056": (
+        ".group_1059": ("ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3Items",),
+        ".group_1060": ("ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0",),
+        ".group_1061": (
             "ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2",
             "ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItems",
         ),
-        ".group_1057": ("ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3Items",),
-        ".group_1058": ("ReposOwnerRepoIssuesIssueNumberLockPutBody",),
-        ".group_1059": ("ReposOwnerRepoIssuesIssueNumberReactionsPostBody",),
-        ".group_1060": ("ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBody",),
-        ".group_1061": ("ReposOwnerRepoIssuesIssueNumberSubIssuesPostBody",),
-        ".group_1062": ("ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBody",),
-        ".group_1063": ("ReposOwnerRepoKeysPostBody",),
-        ".group_1064": ("ReposOwnerRepoLabelsPostBody",),
-        ".group_1065": ("ReposOwnerRepoLabelsNamePatchBody",),
-        ".group_1066": ("ReposOwnerRepoMergeUpstreamPostBody",),
-        ".group_1067": ("ReposOwnerRepoMergesPostBody",),
-        ".group_1068": ("ReposOwnerRepoMilestonesPostBody",),
-        ".group_1069": ("ReposOwnerRepoMilestonesMilestoneNumberPatchBody",),
-        ".group_1070": ("ReposOwnerRepoNotificationsPutBody",),
-        ".group_1071": ("ReposOwnerRepoNotificationsPutResponse202",),
-        ".group_1072": ("ReposOwnerRepoPagesPutBodyPropSourceAnyof1",),
-        ".group_1073": ("ReposOwnerRepoPagesPutBodyAnyof0",),
-        ".group_1074": ("ReposOwnerRepoPagesPutBodyAnyof1",),
-        ".group_1075": ("ReposOwnerRepoPagesPutBodyAnyof2",),
-        ".group_1076": ("ReposOwnerRepoPagesPutBodyAnyof3",),
-        ".group_1077": ("ReposOwnerRepoPagesPutBodyAnyof4",),
-        ".group_1078": ("ReposOwnerRepoPagesPostBodyPropSource",),
-        ".group_1079": ("ReposOwnerRepoPagesPostBodyAnyof0",),
-        ".group_1080": ("ReposOwnerRepoPagesPostBodyAnyof1",),
-        ".group_1081": ("ReposOwnerRepoPagesDeploymentsPostBody",),
-        ".group_1082": ("ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200",),
-        ".group_1083": ("ReposOwnerRepoProjectsPostBody",),
-        ".group_1084": ("ReposOwnerRepoPropertiesValuesPatchBody",),
-        ".group_1085": ("ReposOwnerRepoPullsPostBody",),
-        ".group_1086": ("ReposOwnerRepoPullsCommentsCommentIdPatchBody",),
-        ".group_1087": ("ReposOwnerRepoPullsCommentsCommentIdReactionsPostBody",),
-        ".group_1088": ("ReposOwnerRepoPullsPullNumberPatchBody",),
-        ".group_1089": ("ReposOwnerRepoPullsPullNumberCodespacesPostBody",),
-        ".group_1090": ("ReposOwnerRepoPullsPullNumberCommentsPostBody",),
-        ".group_1091": (
+        ".group_1062": ("ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3Items",),
+        ".group_1063": ("ReposOwnerRepoIssuesIssueNumberLockPutBody",),
+        ".group_1064": ("ReposOwnerRepoIssuesIssueNumberReactionsPostBody",),
+        ".group_1065": ("ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBody",),
+        ".group_1066": ("ReposOwnerRepoIssuesIssueNumberSubIssuesPostBody",),
+        ".group_1067": ("ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBody",),
+        ".group_1068": ("ReposOwnerRepoKeysPostBody",),
+        ".group_1069": ("ReposOwnerRepoLabelsPostBody",),
+        ".group_1070": ("ReposOwnerRepoLabelsNamePatchBody",),
+        ".group_1071": ("ReposOwnerRepoMergeUpstreamPostBody",),
+        ".group_1072": ("ReposOwnerRepoMergesPostBody",),
+        ".group_1073": ("ReposOwnerRepoMilestonesPostBody",),
+        ".group_1074": ("ReposOwnerRepoMilestonesMilestoneNumberPatchBody",),
+        ".group_1075": ("ReposOwnerRepoNotificationsPutBody",),
+        ".group_1076": ("ReposOwnerRepoNotificationsPutResponse202",),
+        ".group_1077": ("ReposOwnerRepoPagesPutBodyPropSourceAnyof1",),
+        ".group_1078": ("ReposOwnerRepoPagesPutBodyAnyof0",),
+        ".group_1079": ("ReposOwnerRepoPagesPutBodyAnyof1",),
+        ".group_1080": ("ReposOwnerRepoPagesPutBodyAnyof2",),
+        ".group_1081": ("ReposOwnerRepoPagesPutBodyAnyof3",),
+        ".group_1082": ("ReposOwnerRepoPagesPutBodyAnyof4",),
+        ".group_1083": ("ReposOwnerRepoPagesPostBodyPropSource",),
+        ".group_1084": ("ReposOwnerRepoPagesPostBodyAnyof0",),
+        ".group_1085": ("ReposOwnerRepoPagesPostBodyAnyof1",),
+        ".group_1086": ("ReposOwnerRepoPagesDeploymentsPostBody",),
+        ".group_1087": ("ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200",),
+        ".group_1088": ("ReposOwnerRepoProjectsPostBody",),
+        ".group_1089": ("ReposOwnerRepoPropertiesValuesPatchBody",),
+        ".group_1090": ("ReposOwnerRepoPullsPostBody",),
+        ".group_1091": ("ReposOwnerRepoPullsCommentsCommentIdPatchBody",),
+        ".group_1092": ("ReposOwnerRepoPullsCommentsCommentIdReactionsPostBody",),
+        ".group_1093": ("ReposOwnerRepoPullsPullNumberPatchBody",),
+        ".group_1094": ("ReposOwnerRepoPullsPullNumberCodespacesPostBody",),
+        ".group_1095": ("ReposOwnerRepoPullsPullNumberCommentsPostBody",),
+        ".group_1096": (
             "ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBody",
         ),
-        ".group_1092": ("ReposOwnerRepoPullsPullNumberMergePutBody",),
-        ".group_1093": ("ReposOwnerRepoPullsPullNumberMergePutResponse405",),
-        ".group_1094": ("ReposOwnerRepoPullsPullNumberMergePutResponse409",),
-        ".group_1095": (
+        ".group_1097": ("ReposOwnerRepoPullsPullNumberMergePutBody",),
+        ".group_1098": ("ReposOwnerRepoPullsPullNumberMergePutResponse405",),
+        ".group_1099": ("ReposOwnerRepoPullsPullNumberMergePutResponse409",),
+        ".group_1100": (
             "ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0",
         ),
-        ".group_1096": (
+        ".group_1101": (
             "ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1",
         ),
-        ".group_1097": ("ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody",),
-        ".group_1098": (
+        ".group_1102": ("ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody",),
+        ".group_1103": (
             "ReposOwnerRepoPullsPullNumberReviewsPostBody",
             "ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItems",
         ),
-        ".group_1099": ("ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBody",),
-        ".group_1100": (
+        ".group_1104": ("ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBody",),
+        ".group_1105": (
             "ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody",
         ),
-        ".group_1101": ("ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody",),
-        ".group_1102": ("ReposOwnerRepoPullsPullNumberUpdateBranchPutBody",),
-        ".group_1103": ("ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202",),
-        ".group_1104": ("ReposOwnerRepoReleasesPostBody",),
-        ".group_1105": ("ReposOwnerRepoReleasesAssetsAssetIdPatchBody",),
-        ".group_1106": ("ReposOwnerRepoReleasesGenerateNotesPostBody",),
-        ".group_1107": ("ReposOwnerRepoReleasesReleaseIdPatchBody",),
-        ".group_1108": ("ReposOwnerRepoReleasesReleaseIdReactionsPostBody",),
-        ".group_1109": ("ReposOwnerRepoRulesetsPostBody",),
-        ".group_1110": ("ReposOwnerRepoRulesetsRulesetIdPutBody",),
-        ".group_1111": ("ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBody",),
-        ".group_1112": ("ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody",),
-        ".group_1113": ("ReposOwnerRepoStatusesShaPostBody",),
-        ".group_1114": ("ReposOwnerRepoSubscriptionPutBody",),
-        ".group_1115": ("ReposOwnerRepoTagsProtectionPostBody",),
-        ".group_1116": ("ReposOwnerRepoTopicsPutBody",),
-        ".group_1117": ("ReposOwnerRepoTransferPostBody",),
-        ".group_1118": ("ReposTemplateOwnerTemplateRepoGeneratePostBody",),
-        ".group_1119": ("TeamsTeamIdPatchBody",),
-        ".group_1120": ("TeamsTeamIdDiscussionsPostBody",),
-        ".group_1121": ("TeamsTeamIdDiscussionsDiscussionNumberPatchBody",),
-        ".group_1122": ("TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBody",),
-        ".group_1123": (
+        ".group_1106": ("ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody",),
+        ".group_1107": ("ReposOwnerRepoPullsPullNumberUpdateBranchPutBody",),
+        ".group_1108": ("ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202",),
+        ".group_1109": ("ReposOwnerRepoReleasesPostBody",),
+        ".group_1110": ("ReposOwnerRepoReleasesAssetsAssetIdPatchBody",),
+        ".group_1111": ("ReposOwnerRepoReleasesGenerateNotesPostBody",),
+        ".group_1112": ("ReposOwnerRepoReleasesReleaseIdPatchBody",),
+        ".group_1113": ("ReposOwnerRepoReleasesReleaseIdReactionsPostBody",),
+        ".group_1114": ("ReposOwnerRepoRulesetsPostBody",),
+        ".group_1115": ("ReposOwnerRepoRulesetsRulesetIdPutBody",),
+        ".group_1116": ("ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBody",),
+        ".group_1117": ("ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody",),
+        ".group_1118": ("ReposOwnerRepoStatusesShaPostBody",),
+        ".group_1119": ("ReposOwnerRepoSubscriptionPutBody",),
+        ".group_1120": ("ReposOwnerRepoTagsProtectionPostBody",),
+        ".group_1121": ("ReposOwnerRepoTopicsPutBody",),
+        ".group_1122": ("ReposOwnerRepoTransferPostBody",),
+        ".group_1123": ("ReposTemplateOwnerTemplateRepoGeneratePostBody",),
+        ".group_1124": ("TeamsTeamIdPatchBody",),
+        ".group_1125": ("TeamsTeamIdDiscussionsPostBody",),
+        ".group_1126": ("TeamsTeamIdDiscussionsDiscussionNumberPatchBody",),
+        ".group_1127": ("TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBody",),
+        ".group_1128": (
             "TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBody",
         ),
-        ".group_1124": (
+        ".group_1129": (
             "TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody",
         ),
-        ".group_1125": ("TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBody",),
-        ".group_1126": ("TeamsTeamIdMembershipsUsernamePutBody",),
-        ".group_1127": ("TeamsTeamIdProjectsProjectIdPutBody",),
-        ".group_1128": ("TeamsTeamIdProjectsProjectIdPutResponse403",),
-        ".group_1129": ("TeamsTeamIdReposOwnerRepoPutBody",),
-        ".group_1130": ("UserPatchBody",),
-        ".group_1131": ("UserCodespacesGetResponse200",),
-        ".group_1132": ("UserCodespacesPostBodyOneof0",),
-        ".group_1133": (
+        ".group_1130": ("TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBody",),
+        ".group_1131": ("TeamsTeamIdMembershipsUsernamePutBody",),
+        ".group_1132": ("TeamsTeamIdProjectsProjectIdPutBody",),
+        ".group_1133": ("TeamsTeamIdProjectsProjectIdPutResponse403",),
+        ".group_1134": ("TeamsTeamIdReposOwnerRepoPutBody",),
+        ".group_1135": ("UserPatchBody",),
+        ".group_1136": ("UserCodespacesGetResponse200",),
+        ".group_1137": ("UserCodespacesPostBodyOneof0",),
+        ".group_1138": (
             "UserCodespacesPostBodyOneof1",
             "UserCodespacesPostBodyOneof1PropPullRequest",
         ),
-        ".group_1134": (
+        ".group_1139": (
             "UserCodespacesSecretsGetResponse200",
             "CodespacesSecret",
         ),
-        ".group_1135": ("UserCodespacesSecretsSecretNamePutBody",),
-        ".group_1136": ("UserCodespacesSecretsSecretNameRepositoriesGetResponse200",),
-        ".group_1137": ("UserCodespacesSecretsSecretNameRepositoriesPutBody",),
-        ".group_1138": ("UserCodespacesCodespaceNamePatchBody",),
-        ".group_1139": ("UserCodespacesCodespaceNameMachinesGetResponse200",),
-        ".group_1140": ("UserCodespacesCodespaceNamePublishPostBody",),
-        ".group_1141": ("UserEmailVisibilityPatchBody",),
-        ".group_1142": ("UserEmailsPostBodyOneof0",),
-        ".group_1143": ("UserEmailsDeleteBodyOneof0",),
-        ".group_1144": ("UserGpgKeysPostBody",),
-        ".group_1145": ("UserInstallationsGetResponse200",),
-        ".group_1146": ("UserInstallationsInstallationIdRepositoriesGetResponse200",),
-        ".group_1147": ("UserInteractionLimitsGetResponse200Anyof1",),
-        ".group_1148": ("UserKeysPostBody",),
-        ".group_1149": ("UserMembershipsOrgsOrgPatchBody",),
-        ".group_1150": ("UserMigrationsPostBody",),
-        ".group_1151": ("UserProjectsPostBody",),
-        ".group_1152": ("UserReposPostBody",),
-        ".group_1153": ("UserSocialAccountsPostBody",),
-        ".group_1154": ("UserSocialAccountsDeleteBody",),
-        ".group_1155": ("UserSshSigningKeysPostBody",),
-        ".group_1156": (
+        ".group_1140": ("UserCodespacesSecretsSecretNamePutBody",),
+        ".group_1141": ("UserCodespacesSecretsSecretNameRepositoriesGetResponse200",),
+        ".group_1142": ("UserCodespacesSecretsSecretNameRepositoriesPutBody",),
+        ".group_1143": ("UserCodespacesCodespaceNamePatchBody",),
+        ".group_1144": ("UserCodespacesCodespaceNameMachinesGetResponse200",),
+        ".group_1145": ("UserCodespacesCodespaceNamePublishPostBody",),
+        ".group_1146": ("UserEmailVisibilityPatchBody",),
+        ".group_1147": ("UserEmailsPostBodyOneof0",),
+        ".group_1148": ("UserEmailsDeleteBodyOneof0",),
+        ".group_1149": ("UserGpgKeysPostBody",),
+        ".group_1150": ("UserInstallationsGetResponse200",),
+        ".group_1151": ("UserInstallationsInstallationIdRepositoriesGetResponse200",),
+        ".group_1152": ("UserInteractionLimitsGetResponse200Anyof1",),
+        ".group_1153": ("UserKeysPostBody",),
+        ".group_1154": ("UserMembershipsOrgsOrgPatchBody",),
+        ".group_1155": ("UserMigrationsPostBody",),
+        ".group_1156": ("UserProjectsPostBody",),
+        ".group_1157": ("UserReposPostBody",),
+        ".group_1158": ("UserSocialAccountsPostBody",),
+        ".group_1159": ("UserSocialAccountsDeleteBody",),
+        ".group_1160": ("UserSshSigningKeysPostBody",),
+        ".group_1161": (
             "UsersUsernameAttestationsSubjectDigestGetResponse200",
             "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems",
             "SigstoreBundle0",

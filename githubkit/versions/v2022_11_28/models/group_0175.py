@@ -19,31 +19,34 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
+from .group_0040 import ReactionRollup
 
 
-class ProjectCard(GitHubModel):
-    """Project Card
+class TeamDiscussionComment(GitHubModel):
+    """Team Discussion Comment
 
-    Project cards represent a scope of work.
+    A reply to a discussion within a team.
     """
 
-    url: str = Field()
-    id: int = Field(description="The project card's ID")
-    node_id: str = Field()
-    note: Union[str, None] = Field()
-    creator: Union[None, SimpleUser] = Field()
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    archived: Missing[bool] = Field(
-        default=UNSET, description="Whether or not the card is archived"
+    author: Union[None, SimpleUser] = Field()
+    body: str = Field(description="The main text of the comment.")
+    body_html: str = Field()
+    body_version: str = Field(
+        description="The current version of the body content. If provided, this update operation will be rejected if the given version does not match the latest version on the server."
     )
-    column_name: Missing[str] = Field(default=UNSET)
-    project_id: Missing[str] = Field(default=UNSET)
-    column_url: str = Field()
-    content_url: Missing[str] = Field(default=UNSET)
-    project_url: str = Field()
+    created_at: datetime = Field()
+    last_edited_at: Union[datetime, None] = Field()
+    discussion_url: str = Field()
+    html_url: str = Field()
+    node_id: str = Field()
+    number: int = Field(
+        description="The unique sequence number of a team discussion comment."
+    )
+    updated_at: datetime = Field()
+    url: str = Field()
+    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
 
 
-model_rebuild(ProjectCard)
+model_rebuild(TeamDiscussionComment)
 
-__all__ = ("ProjectCard",)
+__all__ = ("TeamDiscussionComment",)
