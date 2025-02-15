@@ -45,7 +45,7 @@ class Issue(GitHubModel):
     )
     state: str = Field(description="State of the issue; either 'open' or 'closed'")
     state_reason: Missing[
-        Union[None, Literal["completed", "reopened", "not_planned"]]
+        Union[None, Literal["completed", "reopened", "not_planned", "duplicate"]]
     ] = Field(default=UNSET, description="The reason for the current state")
     title: str = Field(description="Title of the issue")
     body: Missing[Union[str, None]] = Field(

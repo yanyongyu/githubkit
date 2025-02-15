@@ -217,6 +217,11 @@ source = "https://raw.githubusercontent.com/github/rest-api-description/main/des
   "null",
 ] }
 
+# https://github.com/github/rest-api-description/issues/4492
+# https://github.com/yanyongyu/githubkit/issues/188
+"/components/schemas/issue/properties/state_reason/enum" = { "<add>" = [
+  "duplicate",
+] }
 
 # https://github.com/github/rest-api-description/issues/1811
 # https://github.com/yanyongyu/githubkit/issues/64

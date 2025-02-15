@@ -38,7 +38,7 @@ class IssueType(TypedDict):
     number: int
     state: str
     state_reason: NotRequired[
-        Union[None, Literal["completed", "reopened", "not_planned"]]
+        Union[None, Literal["completed", "reopened", "not_planned", "duplicate"]]
     ]
     title: str
     body: NotRequired[Union[str, None]]
