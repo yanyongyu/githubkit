@@ -13,17 +13,17 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0456 import EnterpriseWebhooksType
-from .group_0457 import SimpleInstallationType
-from .group_0458 import OrganizationSimpleWebhooksType
-from .group_0459 import RepositoryWebhooksType
-from .group_0479 import WebhooksMilestoneType
+from .group_0458 import EnterpriseWebhooksType
+from .group_0459 import SimpleInstallationType
+from .group_0460 import OrganizationSimpleWebhooksType
+from .group_0461 import RepositoryWebhooksType
+from .group_0481 import WebhooksMilestoneType
 
 
-class WebhookMilestoneDeletedType(TypedDict):
-    """milestone deleted event"""
+class WebhookMilestoneClosedType(TypedDict):
+    """milestone closed event"""
 
-    action: Literal["deleted"]
+    action: Literal["closed"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     milestone: WebhooksMilestoneType
@@ -32,4 +32,4 @@ class WebhookMilestoneDeletedType(TypedDict):
     sender: SimpleUserType
 
 
-__all__ = ("WebhookMilestoneDeletedType",)
+__all__ = ("WebhookMilestoneClosedType",)

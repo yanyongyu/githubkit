@@ -9,144 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class UsersUsernameAttestationsSubjectDigestGetResponse200Type(TypedDict):
-    """UsersUsernameAttestationsSubjectDigestGetResponse200"""
+class UserReposPostBodyType(TypedDict):
+    """UserReposPostBody"""
 
-    attestations: NotRequired[
-        list[
-            UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsType
-        ]
+    name: str
+    description: NotRequired[str]
+    homepage: NotRequired[str]
+    private: NotRequired[bool]
+    has_issues: NotRequired[bool]
+    has_projects: NotRequired[bool]
+    has_wiki: NotRequired[bool]
+    has_discussions: NotRequired[bool]
+    team_id: NotRequired[int]
+    auto_init: NotRequired[bool]
+    gitignore_template: NotRequired[str]
+    license_template: NotRequired[str]
+    allow_squash_merge: NotRequired[bool]
+    allow_merge_commit: NotRequired[bool]
+    allow_rebase_merge: NotRequired[bool]
+    allow_auto_merge: NotRequired[bool]
+    delete_branch_on_merge: NotRequired[bool]
+    squash_merge_commit_title: NotRequired[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]]
+    squash_merge_commit_message: NotRequired[
+        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
     ]
+    merge_commit_title: NotRequired[Literal["PR_TITLE", "MERGE_MESSAGE"]]
+    merge_commit_message: NotRequired[Literal["PR_BODY", "PR_TITLE", "BLANK"]]
+    has_downloads: NotRequired[bool]
+    is_template: NotRequired[bool]
 
 
-class UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsType(
-    TypedDict
-):
-    """UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems"""
-
-    bundle: NotRequired[SigstoreBundle0Type]
-    repository_id: NotRequired[int]
-    bundle_url: NotRequired[str]
-
-
-class SigstoreBundle0Type(TypedDict):
-    """Sigstore Bundle v0.1
-
-    Sigstore Bundle v0.1
-    """
-
-    media_type: NotRequired[str]
-    verification_material: NotRequired[SigstoreBundle0PropVerificationMaterialType]
-    dsse_envelope: NotRequired[SigstoreBundle0PropDsseEnvelopeType]
-
-
-class SigstoreBundle0PropDsseEnvelopeType(TypedDict):
-    """SigstoreBundle0PropDsseEnvelope"""
-
-    payload: NotRequired[str]
-    payload_type: NotRequired[str]
-    signatures: NotRequired[
-        list[SigstoreBundle0PropDsseEnvelopePropSignaturesItemsType]
-    ]
-
-
-class SigstoreBundle0PropDsseEnvelopePropSignaturesItemsType(TypedDict):
-    """SigstoreBundle0PropDsseEnvelopePropSignaturesItems"""
-
-    sig: NotRequired[str]
-    keyid: NotRequired[str]
-
-
-class SigstoreBundle0PropVerificationMaterialType(TypedDict):
-    """SigstoreBundle0PropVerificationMaterial"""
-
-    x_509_certificate_chain: NotRequired[
-        SigstoreBundle0PropVerificationMaterialPropX509CertificateChainType
-    ]
-    tlog_entries: NotRequired[
-        list[SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsType]
-    ]
-    timestamp_verification_data: NotRequired[Union[str, None]]
-
-
-class SigstoreBundle0PropVerificationMaterialPropX509CertificateChainType(TypedDict):
-    """SigstoreBundle0PropVerificationMaterialPropX509CertificateChain"""
-
-    certificates: NotRequired[
-        list[
-            SigstoreBundle0PropVerificationMaterialPropX509CertificateChainPropCertificatesItemsType
-        ]
-    ]
-
-
-class SigstoreBundle0PropVerificationMaterialPropX509CertificateChainPropCertificatesItemsType(
-    TypedDict
-):
-    """SigstoreBundle0PropVerificationMaterialPropX509CertificateChainPropCertificatesI
-    tems
-    """
-
-    raw_bytes: NotRequired[str]
-
-
-class SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsType(TypedDict):
-    """SigstoreBundle0PropVerificationMaterialPropTlogEntriesItems"""
-
-    log_index: NotRequired[str]
-    log_id: NotRequired[
-        SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropLogIdType
-    ]
-    kind_version: NotRequired[
-        SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropKindVersionType
-    ]
-    integrated_time: NotRequired[str]
-    inclusion_promise: NotRequired[
-        SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropInclusionPromiseType
-    ]
-    inclusion_proof: NotRequired[Union[str, None]]
-    canonicalized_body: NotRequired[str]
-
-
-class SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropLogIdType(
-    TypedDict
-):
-    """SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropLogId"""
-
-    key_id: NotRequired[str]
-
-
-class SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropKindVersionType(
-    TypedDict
-):
-    """SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropKindVersion"""
-
-    kind: NotRequired[str]
-    version: NotRequired[str]
-
-
-class SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropInclusionPromiseType(
-    TypedDict
-):
-    """SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropInclusionPromise"""
-
-    signed_entry_timestamp: NotRequired[str]
-
-
-__all__ = (
-    "SigstoreBundle0PropDsseEnvelopePropSignaturesItemsType",
-    "SigstoreBundle0PropDsseEnvelopeType",
-    "SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropInclusionPromiseType",
-    "SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropKindVersionType",
-    "SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropLogIdType",
-    "SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsType",
-    "SigstoreBundle0PropVerificationMaterialPropX509CertificateChainPropCertificatesItemsType",
-    "SigstoreBundle0PropVerificationMaterialPropX509CertificateChainType",
-    "SigstoreBundle0PropVerificationMaterialType",
-    "SigstoreBundle0Type",
-    "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsType",
-    "UsersUsernameAttestationsSubjectDigestGetResponse200Type",
-)
+__all__ = ("UserReposPostBodyType",)

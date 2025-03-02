@@ -10,22 +10,66 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0010 import IntegrationType
+from .group_0234 import PullRequestMinimalType
+from .group_0261 import DeploymentSimpleType
+from .group_0465 import SimpleCheckSuiteType
 
 
-class WebhooksWorkflowType(TypedDict):
-    """Workflow"""
+class CheckRunWithSimpleCheckSuiteType(TypedDict):
+    """CheckRun
 
-    badge_url: str
-    created_at: datetime
+    A check performed on the code of a given code change
+    """
+
+    app: Union[None, IntegrationType, None]
+    check_suite: SimpleCheckSuiteType
+    completed_at: Union[datetime, None]
+    conclusion: Union[
+        None,
+        Literal[
+            "waiting",
+            "pending",
+            "startup_failure",
+            "stale",
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "skipped",
+            "timed_out",
+            "action_required",
+        ],
+    ]
+    deployment: NotRequired[DeploymentSimpleType]
+    details_url: str
+    external_id: str
+    head_sha: str
     html_url: str
     id: int
     name: str
     node_id: str
-    path: str
-    state: str
-    updated_at: datetime
+    output: CheckRunWithSimpleCheckSuitePropOutputType
+    pull_requests: list[PullRequestMinimalType]
+    started_at: datetime
+    status: Literal["queued", "in_progress", "completed", "pending"]
     url: str
 
 
-__all__ = ("WebhooksWorkflowType",)
+class CheckRunWithSimpleCheckSuitePropOutputType(TypedDict):
+    """CheckRunWithSimpleCheckSuitePropOutput"""
+
+    annotations_count: int
+    annotations_url: str
+    summary: Union[str, None]
+    text: Union[str, None]
+    title: Union[str, None]
+
+
+__all__ = (
+    "CheckRunWithSimpleCheckSuitePropOutputType",
+    "CheckRunWithSimpleCheckSuiteType",
+)

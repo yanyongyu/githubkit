@@ -10,35 +10,14 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Any
-from typing_extensions import NotRequired, TypeAlias, TypedDict
+from typing_extensions import TypeAlias
 
-from .group_0311 import MetadataType
+MetadataType: TypeAlias = dict[str, Any]
+"""metadata
 
-
-class ManifestType(TypedDict):
-    """Manifest"""
-
-    name: str
-    file: NotRequired[ManifestPropFileType]
-    metadata: NotRequired[MetadataType]
-    resolved: NotRequired[ManifestPropResolvedType]
-
-
-class ManifestPropFileType(TypedDict):
-    """ManifestPropFile"""
-
-    source_location: NotRequired[str]
-
-
-ManifestPropResolvedType: TypeAlias = dict[str, Any]
-"""ManifestPropResolved
-
-A collection of resolved package dependencies.
+User-defined metadata to store domain-specific information limited to 8 keys
+with scalar values.
 """
 
 
-__all__ = (
-    "ManifestPropFileType",
-    "ManifestPropResolvedType",
-    "ManifestType",
-)
+__all__ = ("MetadataType",)

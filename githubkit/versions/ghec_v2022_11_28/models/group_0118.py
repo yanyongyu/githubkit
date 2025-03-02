@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,16 +18,21 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class RepositoryRuleParamsRestrictedCommits(GitHubModel):
-    """RestrictedCommits
+class RepositoryRuleTagNamePatternPropParameters(GitHubModel):
+    """RepositoryRuleTagNamePatternPropParameters"""
 
-    Restricted commit
-    """
+    name: Missing[str] = Field(
+        default=UNSET, description="How this rule will appear to users."
+    )
+    negate: Missing[bool] = Field(
+        default=UNSET, description="If true, the rule will fail if the pattern matches."
+    )
+    operator: Literal["starts_with", "ends_with", "contains", "regex"] = Field(
+        description="The operator to use for matching."
+    )
+    pattern: str = Field(description="The pattern to match with.")
 
-    oid: str = Field(description="Full or abbreviated commit hash to reject")
-    reason: Missing[str] = Field(default=UNSET, description="Reason for restriction")
 
+model_rebuild(RepositoryRuleTagNamePatternPropParameters)
 
-model_rebuild(RepositoryRuleParamsRestrictedCommits)
-
-__all__ = ("RepositoryRuleParamsRestrictedCommits",)
+__all__ = ("RepositoryRuleTagNamePatternPropParameters",)

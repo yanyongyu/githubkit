@@ -2168,6 +2168,9 @@ if TYPE_CHECKING:
         RepositoryRuleParamsRestrictedCommitsType as RepositoryRuleParamsRestrictedCommitsType,
     )
     from githubkit.versions.v2022_11_28.types import (
+        RepositoryRuleParamsReviewerType as RepositoryRuleParamsReviewerType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         RepositoryRuleParamsStatusCheckConfigurationType as RepositoryRuleParamsStatusCheckConfigurationType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -3181,36 +3184,6 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.types import ShortBranchType as ShortBranchType
     from githubkit.versions.v2022_11_28.types import (
-        SigstoreBundle0PropDsseEnvelopePropSignaturesItemsType as SigstoreBundle0PropDsseEnvelopePropSignaturesItemsType,
-    )
-    from githubkit.versions.v2022_11_28.types import (
-        SigstoreBundle0PropDsseEnvelopeType as SigstoreBundle0PropDsseEnvelopeType,
-    )
-    from githubkit.versions.v2022_11_28.types import (
-        SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropInclusionPromiseType as SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropInclusionPromiseType,
-    )
-    from githubkit.versions.v2022_11_28.types import (
-        SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropKindVersionType as SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropKindVersionType,
-    )
-    from githubkit.versions.v2022_11_28.types import (
-        SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropLogIdType as SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropLogIdType,
-    )
-    from githubkit.versions.v2022_11_28.types import (
-        SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsType as SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsType,
-    )
-    from githubkit.versions.v2022_11_28.types import (
-        SigstoreBundle0PropVerificationMaterialPropX509CertificateChainPropCertificatesItemsType as SigstoreBundle0PropVerificationMaterialPropX509CertificateChainPropCertificatesItemsType,
-    )
-    from githubkit.versions.v2022_11_28.types import (
-        SigstoreBundle0PropVerificationMaterialPropX509CertificateChainType as SigstoreBundle0PropVerificationMaterialPropX509CertificateChainType,
-    )
-    from githubkit.versions.v2022_11_28.types import (
-        SigstoreBundle0PropVerificationMaterialType as SigstoreBundle0PropVerificationMaterialType,
-    )
-    from githubkit.versions.v2022_11_28.types import (
-        SigstoreBundle0Type as SigstoreBundle0Type,
-    )
-    from githubkit.versions.v2022_11_28.types import (
         SimpleCheckSuiteType as SimpleCheckSuiteType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -3530,6 +3503,15 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.types import (
         UserSshSigningKeysPostBodyType as UserSshSigningKeysPostBodyType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelopeType as UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelopeType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterialType as UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterialType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundleType as UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundleType,
     )
     from githubkit.versions.v2022_11_28.types import (
         UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsType as UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsType,
@@ -10135,6 +10117,7 @@ else:
             "RepositoryRuleRequiredDeploymentsType",
             "RepositoryRuleRequiredDeploymentsPropParametersType",
             "RepositoryRuleParamsRequiredReviewerConfigurationType",
+            "RepositoryRuleParamsReviewerType",
             "RepositoryRulePullRequestType",
             "RepositoryRulePullRequestPropParametersType",
             "RepositoryRuleRequiredStatusChecksType",
@@ -13223,15 +13206,8 @@ else:
             "UserSshSigningKeysPostBodyType",
             "UsersUsernameAttestationsSubjectDigestGetResponse200Type",
             "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsType",
-            "SigstoreBundle0Type",
-            "SigstoreBundle0PropDsseEnvelopeType",
-            "SigstoreBundle0PropDsseEnvelopePropSignaturesItemsType",
-            "SigstoreBundle0PropVerificationMaterialType",
-            "SigstoreBundle0PropVerificationMaterialPropX509CertificateChainType",
-            "SigstoreBundle0PropVerificationMaterialPropX509CertificateChainPropCertificatesItemsType",
-            "SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsType",
-            "SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropLogIdType",
-            "SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropKindVersionType",
-            "SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropInclusionPromiseType",
+            "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundleType",
+            "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterialType",
+            "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelopeType",
         )
     }

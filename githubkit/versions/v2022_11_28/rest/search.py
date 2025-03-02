@@ -237,6 +237,7 @@ class SearchClient:
         order: Missing[Literal["desc", "asc"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
+        advanced_search: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[SearchIssuesGetResponse200, SearchIssuesGetResponse200Type]:
         """See also: https://docs.github.com/rest/search/search#search-issues-and-pull-requests"""
@@ -256,6 +257,7 @@ class SearchClient:
             "order": order,
             "per_page": per_page,
             "page": page,
+            "advanced_search": advanced_search,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -295,6 +297,7 @@ class SearchClient:
         order: Missing[Literal["desc", "asc"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
+        advanced_search: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[SearchIssuesGetResponse200, SearchIssuesGetResponse200Type]:
         """See also: https://docs.github.com/rest/search/search#search-issues-and-pull-requests"""
@@ -314,6 +317,7 @@ class SearchClient:
             "order": order,
             "per_page": per_page,
             "page": page,
+            "advanced_search": advanced_search,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}

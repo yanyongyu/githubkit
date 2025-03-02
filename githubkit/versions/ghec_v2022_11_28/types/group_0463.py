@@ -13,48 +13,19 @@ from datetime import datetime
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0010 import IntegrationType
-from .group_0160 import MinimalRepositoryType
-from .group_0232 import PullRequestMinimalType
 
+class ExemptionResponseType(TypedDict):
+    """Exemption response
 
-class SimpleCheckSuiteType(TypedDict):
-    """SimpleCheckSuite
-
-    A suite of checks performed on the code of a given code change
+    A response to an exemption request by a delegated bypasser.
     """
 
-    after: NotRequired[Union[str, None]]
-    app: NotRequired[Union[IntegrationType, None]]
-    before: NotRequired[Union[str, None]]
-    conclusion: NotRequired[
-        Union[
-            None,
-            Literal[
-                "success",
-                "failure",
-                "neutral",
-                "cancelled",
-                "skipped",
-                "timed_out",
-                "action_required",
-                "stale",
-                "startup_failure",
-            ],
-        ]
-    ]
-    created_at: NotRequired[datetime]
-    head_branch: NotRequired[Union[str, None]]
-    head_sha: NotRequired[str]
     id: NotRequired[int]
-    node_id: NotRequired[str]
-    pull_requests: NotRequired[list[PullRequestMinimalType]]
-    repository: NotRequired[MinimalRepositoryType]
-    status: NotRequired[
-        Literal["queued", "in_progress", "completed", "pending", "waiting"]
-    ]
-    updated_at: NotRequired[datetime]
-    url: NotRequired[str]
+    reviewer_id: NotRequired[int]
+    reviewer_login: NotRequired[str]
+    status: NotRequired[Literal["approved", "rejected", "dismissed"]]
+    reviewer_comment: NotRequired[Union[str, None]]
+    created_at: NotRequired[datetime]
 
 
-__all__ = ("SimpleCheckSuiteType",)
+__all__ = ("ExemptionResponseType",)

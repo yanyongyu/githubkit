@@ -50,6 +50,9 @@ class OrgsOrgCodeSecurityConfigurationsPostBodyType(TypedDict):
     secret_scanning_non_provider_patterns: NotRequired[
         Literal["enabled", "disabled", "not_set"]
     ]
+    secret_scanning_delegated_alert_dismissal: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
     private_vulnerability_reporting: NotRequired[
         Literal["enabled", "disabled", "not_set"]
     ]

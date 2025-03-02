@@ -761,6 +761,7 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
+        predicate_type: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         OrgsOrgAttestationsSubjectDigestGetResponse200,
@@ -776,6 +777,7 @@ class OrgsClient:
             "per_page": per_page,
             "before": before,
             "after": after,
+            "predicate_type": predicate_type,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -796,6 +798,7 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
+        predicate_type: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         OrgsOrgAttestationsSubjectDigestGetResponse200,
@@ -811,6 +814,7 @@ class OrgsClient:
             "per_page": per_page,
             "before": before,
             "after": after,
+            "predicate_type": predicate_type,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}

@@ -524,6 +524,9 @@ if TYPE_CHECKING:
     from .group_0138 import (
         RepositoryRuleParamsRequiredReviewerConfigurationType as RepositoryRuleParamsRequiredReviewerConfigurationType,
     )
+    from .group_0138 import (
+        RepositoryRuleParamsReviewerType as RepositoryRuleParamsReviewerType,
+    )
     from .group_0139 import (
         RepositoryRulePullRequestType as RepositoryRulePullRequestType,
     )
@@ -8973,33 +8976,14 @@ if TYPE_CHECKING:
         UserSshSigningKeysPostBodyType as UserSshSigningKeysPostBodyType,
     )
     from .group_1161 import (
-        SigstoreBundle0PropDsseEnvelopePropSignaturesItemsType as SigstoreBundle0PropDsseEnvelopePropSignaturesItemsType,
+        UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelopeType as UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelopeType,
     )
     from .group_1161 import (
-        SigstoreBundle0PropDsseEnvelopeType as SigstoreBundle0PropDsseEnvelopeType,
+        UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterialType as UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterialType,
     )
     from .group_1161 import (
-        SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropInclusionPromiseType as SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropInclusionPromiseType,
+        UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundleType as UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundleType,
     )
-    from .group_1161 import (
-        SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropKindVersionType as SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropKindVersionType,
-    )
-    from .group_1161 import (
-        SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropLogIdType as SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropLogIdType,
-    )
-    from .group_1161 import (
-        SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsType as SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsType,
-    )
-    from .group_1161 import (
-        SigstoreBundle0PropVerificationMaterialPropX509CertificateChainPropCertificatesItemsType as SigstoreBundle0PropVerificationMaterialPropX509CertificateChainPropCertificatesItemsType,
-    )
-    from .group_1161 import (
-        SigstoreBundle0PropVerificationMaterialPropX509CertificateChainType as SigstoreBundle0PropVerificationMaterialPropX509CertificateChainType,
-    )
-    from .group_1161 import (
-        SigstoreBundle0PropVerificationMaterialType as SigstoreBundle0PropVerificationMaterialType,
-    )
-    from .group_1161 import SigstoreBundle0Type as SigstoreBundle0Type
     from .group_1161 import (
         UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsType as UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsType,
     )
@@ -9359,7 +9343,10 @@ else:
         ".group_0135": ("RepositoryRuleMergeQueuePropParametersType",),
         ".group_0136": ("RepositoryRuleRequiredDeploymentsType",),
         ".group_0137": ("RepositoryRuleRequiredDeploymentsPropParametersType",),
-        ".group_0138": ("RepositoryRuleParamsRequiredReviewerConfigurationType",),
+        ".group_0138": (
+            "RepositoryRuleParamsRequiredReviewerConfigurationType",
+            "RepositoryRuleParamsReviewerType",
+        ),
         ".group_0139": ("RepositoryRulePullRequestType",),
         ".group_0140": ("RepositoryRulePullRequestPropParametersType",),
         ".group_0141": ("RepositoryRuleRequiredStatusChecksType",),
@@ -13281,15 +13268,8 @@ else:
         ".group_1161": (
             "UsersUsernameAttestationsSubjectDigestGetResponse200Type",
             "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsType",
-            "SigstoreBundle0Type",
-            "SigstoreBundle0PropDsseEnvelopeType",
-            "SigstoreBundle0PropDsseEnvelopePropSignaturesItemsType",
-            "SigstoreBundle0PropVerificationMaterialType",
-            "SigstoreBundle0PropVerificationMaterialPropX509CertificateChainType",
-            "SigstoreBundle0PropVerificationMaterialPropX509CertificateChainPropCertificatesItemsType",
-            "SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsType",
-            "SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropLogIdType",
-            "SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropKindVersionType",
-            "SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropInclusionPromiseType",
+            "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundleType",
+            "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterialType",
+            "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelopeType",
         ),
     }

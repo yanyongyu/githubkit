@@ -108,6 +108,12 @@ class CodeSecurityConfiguration(GitHubModel):
         default=UNSET,
         description="The enablement status of secret scanning non-provider patterns",
     )
+    secret_scanning_delegated_alert_dismissal: Missing[
+        Literal["enabled", "disabled", "not_set"]
+    ] = Field(
+        default=UNSET,
+        description="The enablement status of secret scanning delegated alert dismissal",
+    )
     private_vulnerability_reporting: Missing[
         Literal["enabled", "disabled", "not_set"]
     ] = Field(

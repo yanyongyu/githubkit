@@ -14,115 +14,66 @@ from typing import Any, Union
 from typing_extensions import NotRequired, TypeAlias, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0149 import GistHistoryType, GistSimplePropForkOfType
 
 
-class GistSimpleType(TypedDict):
-    """Gist Simple
+class GistHistoryType(TypedDict):
+    """Gist History
 
-    Gist Simple
+    Gist History
     """
 
-    forks: NotRequired[Union[list[GistSimplePropForksItemsType], None]]
-    history: NotRequired[Union[list[GistHistoryType], None]]
-    fork_of: NotRequired[Union[GistSimplePropForkOfType, None]]
+    user: NotRequired[Union[None, SimpleUserType]]
+    version: NotRequired[str]
+    committed_at: NotRequired[datetime]
+    change_status: NotRequired[GistHistoryPropChangeStatusType]
     url: NotRequired[str]
-    forks_url: NotRequired[str]
-    commits_url: NotRequired[str]
-    id: NotRequired[str]
-    node_id: NotRequired[str]
-    git_pull_url: NotRequired[str]
-    git_push_url: NotRequired[str]
-    html_url: NotRequired[str]
-    files: NotRequired[GistSimplePropFilesType]
-    public: NotRequired[bool]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
-    description: NotRequired[Union[str, None]]
-    comments: NotRequired[int]
+
+
+class GistHistoryPropChangeStatusType(TypedDict):
+    """GistHistoryPropChangeStatus"""
+
+    total: NotRequired[int]
+    additions: NotRequired[int]
+    deletions: NotRequired[int]
+
+
+class GistSimplePropForkOfType(TypedDict):
+    """Gist
+
+    Gist
+    """
+
+    url: str
+    forks_url: str
+    commits_url: str
+    id: str
+    node_id: str
+    git_pull_url: str
+    git_push_url: str
+    html_url: str
+    files: GistSimplePropForkOfPropFilesType
+    public: bool
+    created_at: datetime
+    updated_at: datetime
+    description: Union[str, None]
+    comments: int
     comments_enabled: NotRequired[bool]
-    user: NotRequired[Union[str, None]]
-    comments_url: NotRequired[str]
-    owner: NotRequired[SimpleUserType]
+    user: Union[None, SimpleUserType]
+    comments_url: str
+    owner: NotRequired[Union[None, SimpleUserType]]
     truncated: NotRequired[bool]
+    forks: NotRequired[list[Any]]
+    history: NotRequired[list[Any]]
 
 
-GistSimplePropFilesType: TypeAlias = dict[str, Any]
-"""GistSimplePropFiles
+GistSimplePropForkOfPropFilesType: TypeAlias = dict[str, Any]
+"""GistSimplePropForkOfPropFiles
 """
 
 
-class GistSimplePropForksItemsType(TypedDict):
-    """GistSimplePropForksItems"""
-
-    id: NotRequired[str]
-    url: NotRequired[str]
-    user: NotRequired[PublicUserType]
-    created_at: NotRequired[datetime]
-    updated_at: NotRequired[datetime]
-
-
-class PublicUserType(TypedDict):
-    """Public User
-
-    Public User
-    """
-
-    login: str
-    id: int
-    user_view_type: NotRequired[str]
-    node_id: str
-    avatar_url: str
-    gravatar_id: Union[str, None]
-    url: str
-    html_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    starred_url: str
-    subscriptions_url: str
-    organizations_url: str
-    repos_url: str
-    events_url: str
-    received_events_url: str
-    type: str
-    site_admin: bool
-    name: Union[str, None]
-    company: Union[str, None]
-    blog: Union[str, None]
-    location: Union[str, None]
-    email: Union[str, None]
-    notification_email: NotRequired[Union[str, None]]
-    hireable: Union[bool, None]
-    bio: Union[str, None]
-    twitter_username: NotRequired[Union[str, None]]
-    public_repos: int
-    public_gists: int
-    followers: int
-    following: int
-    created_at: datetime
-    updated_at: datetime
-    plan: NotRequired[PublicUserPropPlanType]
-    private_gists: NotRequired[int]
-    total_private_repos: NotRequired[int]
-    owned_private_repos: NotRequired[int]
-    disk_usage: NotRequired[int]
-    collaborators: NotRequired[int]
-
-
-class PublicUserPropPlanType(TypedDict):
-    """PublicUserPropPlan"""
-
-    collaborators: int
-    name: str
-    space: int
-    private_repos: int
-
-
 __all__ = (
-    "GistSimplePropFilesType",
-    "GistSimplePropForksItemsType",
-    "GistSimpleType",
-    "PublicUserPropPlanType",
-    "PublicUserType",
+    "GistHistoryPropChangeStatusType",
+    "GistHistoryType",
+    "GistSimplePropForkOfPropFilesType",
+    "GistSimplePropForkOfType",
 )

@@ -9,20 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0125 import (
-    RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType,
-)
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class RepositoryRulesetConditionsRepositoryIdTargetType(TypedDict):
-    """Repository ruleset conditions for repository IDs
+class RepositoryRuleOneof18Type(TypedDict):
+    """max_file_size
 
-    Parameters for a repository ID condition
+    Prevent commits that exceed a specified file size limit from being pushed to the
+    commit graph.
     """
 
-    repository_id: RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType
+    type: Literal["max_file_size"]
+    parameters: NotRequired[RepositoryRuleOneof18PropParametersType]
 
 
-__all__ = ("RepositoryRulesetConditionsRepositoryIdTargetType",)
+class RepositoryRuleOneof18PropParametersType(TypedDict):
+    """RepositoryRuleOneof18PropParameters"""
+
+    max_file_size: int
+
+
+__all__ = (
+    "RepositoryRuleOneof18PropParametersType",
+    "RepositoryRuleOneof18Type",
+)

@@ -13,23 +13,21 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0456 import EnterpriseWebhooksType
-from .group_0457 import SimpleInstallationType
-from .group_0458 import OrganizationSimpleWebhooksType
-from .group_0459 import RepositoryWebhooksType
-from .group_0460 import WebhooksRuleType
+from .group_0458 import EnterpriseWebhooksType
+from .group_0459 import SimpleInstallationType
+from .group_0460 import OrganizationSimpleWebhooksType
+from .group_0461 import RepositoryWebhooksType
 
 
-class WebhookBranchProtectionRuleDeletedType(TypedDict):
-    """branch protection rule deleted event"""
+class WebhookBranchProtectionConfigurationEnabledType(TypedDict):
+    """branch protection configuration enabled event"""
 
-    action: Literal["deleted"]
+    action: Literal["enabled"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
-    rule: WebhooksRuleType
     sender: SimpleUserType
 
 
-__all__ = ("WebhookBranchProtectionRuleDeletedType",)
+__all__ = ("WebhookBranchProtectionConfigurationEnabledType",)

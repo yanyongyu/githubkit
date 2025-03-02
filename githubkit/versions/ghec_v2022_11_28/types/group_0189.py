@@ -9,35 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0003 import SimpleUserType
-from .group_0036 import OrganizationSimpleType
+from datetime import datetime
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class OrgMembershipType(TypedDict):
-    """Org Membership
+class InteractionLimitResponseType(TypedDict):
+    """Interaction Limits
 
-    Org Membership
+    Interaction limit settings.
     """
 
-    url: str
-    state: Literal["active", "pending"]
-    role: Literal["admin", "member", "billing_manager"]
-    organization_url: str
-    organization: OrganizationSimpleType
-    user: Union[None, SimpleUserType]
-    permissions: NotRequired[OrgMembershipPropPermissionsType]
+    limit: Literal["existing_users", "contributors_only", "collaborators_only"]
+    origin: str
+    expires_at: datetime
 
 
-class OrgMembershipPropPermissionsType(TypedDict):
-    """OrgMembershipPropPermissions"""
-
-    can_create_repository: bool
-
-
-__all__ = (
-    "OrgMembershipPropPermissionsType",
-    "OrgMembershipType",
-)
+__all__ = ("InteractionLimitResponseType",)

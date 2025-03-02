@@ -2075,6 +2075,9 @@ if TYPE_CHECKING:
         RepositoryRuleParamsRestrictedCommits as RepositoryRuleParamsRestrictedCommits,
     )
     from githubkit.versions.v2022_11_28.models import (
+        RepositoryRuleParamsReviewer as RepositoryRuleParamsReviewer,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         RepositoryRuleParamsStatusCheckConfiguration as RepositoryRuleParamsStatusCheckConfiguration,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -3076,34 +3079,6 @@ if TYPE_CHECKING:
     from githubkit.versions.v2022_11_28.models import (
         ShortBranchPropCommit as ShortBranchPropCommit,
     )
-    from githubkit.versions.v2022_11_28.models import SigstoreBundle0 as SigstoreBundle0
-    from githubkit.versions.v2022_11_28.models import (
-        SigstoreBundle0PropDsseEnvelope as SigstoreBundle0PropDsseEnvelope,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        SigstoreBundle0PropDsseEnvelopePropSignaturesItems as SigstoreBundle0PropDsseEnvelopePropSignaturesItems,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        SigstoreBundle0PropVerificationMaterial as SigstoreBundle0PropVerificationMaterial,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        SigstoreBundle0PropVerificationMaterialPropTlogEntriesItems as SigstoreBundle0PropVerificationMaterialPropTlogEntriesItems,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropInclusionPromise as SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropInclusionPromise,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropKindVersion as SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropKindVersion,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropLogId as SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropLogId,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        SigstoreBundle0PropVerificationMaterialPropX509CertificateChain as SigstoreBundle0PropVerificationMaterialPropX509CertificateChain,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        SigstoreBundle0PropVerificationMaterialPropX509CertificateChainPropCertificatesItems as SigstoreBundle0PropVerificationMaterialPropX509CertificateChainPropCertificatesItems,
-    )
     from githubkit.versions.v2022_11_28.models import (
         SimpleCheckSuite as SimpleCheckSuite,
     )
@@ -3408,6 +3383,15 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems as UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle as UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelope as UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelope,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterial as UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterial,
     )
     from githubkit.versions.v2022_11_28.models import ValidationError as ValidationError
     from githubkit.versions.v2022_11_28.models import (
@@ -9957,6 +9941,7 @@ else:
             "RepositoryRuleRequiredDeployments",
             "RepositoryRuleRequiredDeploymentsPropParameters",
             "RepositoryRuleParamsRequiredReviewerConfiguration",
+            "RepositoryRuleParamsReviewer",
             "RepositoryRulePullRequest",
             "RepositoryRulePullRequestPropParameters",
             "RepositoryRuleRequiredStatusChecks",
@@ -13045,15 +13030,8 @@ else:
             "UserSshSigningKeysPostBody",
             "UsersUsernameAttestationsSubjectDigestGetResponse200",
             "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems",
-            "SigstoreBundle0",
-            "SigstoreBundle0PropDsseEnvelope",
-            "SigstoreBundle0PropDsseEnvelopePropSignaturesItems",
-            "SigstoreBundle0PropVerificationMaterial",
-            "SigstoreBundle0PropVerificationMaterialPropX509CertificateChain",
-            "SigstoreBundle0PropVerificationMaterialPropX509CertificateChainPropCertificatesItems",
-            "SigstoreBundle0PropVerificationMaterialPropTlogEntriesItems",
-            "SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropLogId",
-            "SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropKindVersion",
-            "SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropInclusionPromise",
+            "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle",
+            "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterial",
+            "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelope",
         )
     }

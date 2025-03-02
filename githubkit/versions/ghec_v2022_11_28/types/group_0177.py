@@ -9,40 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ExternalGroupType(TypedDict):
-    """ExternalGroup
+class DependabotPublicKeyType(TypedDict):
+    """DependabotPublicKey
 
-    Information about an external group's usage and its members
+    The public key used for setting Dependabot Secrets.
     """
 
-    group_id: int
-    group_name: str
-    updated_at: NotRequired[str]
-    teams: list[ExternalGroupPropTeamsItemsType]
-    members: list[ExternalGroupPropMembersItemsType]
+    key_id: str
+    key: str
 
 
-class ExternalGroupPropTeamsItemsType(TypedDict):
-    """ExternalGroupPropTeamsItems"""
-
-    team_id: int
-    team_name: str
-
-
-class ExternalGroupPropMembersItemsType(TypedDict):
-    """ExternalGroupPropMembersItems"""
-
-    member_id: int
-    member_login: str
-    member_name: str
-    member_email: str
-
-
-__all__ = (
-    "ExternalGroupPropMembersItemsType",
-    "ExternalGroupPropTeamsItemsType",
-    "ExternalGroupType",
-)
+__all__ = ("DependabotPublicKeyType",)

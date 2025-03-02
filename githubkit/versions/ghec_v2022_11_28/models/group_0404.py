@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from datetime import datetime
+from typing import Union
 
 from pydantic import Field
 
@@ -18,119 +19,69 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class RepositoryAdvisoryCreate(GitHubModel):
-    """RepositoryAdvisoryCreate"""
+class SecretScanningScanHistory(GitHubModel):
+    """SecretScanningScanHistory"""
 
-    summary: str = Field(
-        max_length=1024, description="A short summary of the advisory."
-    )
-    description: str = Field(
-        max_length=65535,
-        description="A detailed description of what the advisory impacts.",
-    )
-    cve_id: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The Common Vulnerabilities and Exposures (CVE) ID."
-    )
-    vulnerabilities: list[RepositoryAdvisoryCreatePropVulnerabilitiesItems] = Field(
-        description="A product affected by the vulnerability detailed in a repository security advisory."
-    )
-    cwe_ids: Missing[Union[list[str], None]] = Field(
-        default=UNSET, description="A list of Common Weakness Enumeration (CWE) IDs."
-    )
-    credits_: Missing[Union[list[RepositoryAdvisoryCreatePropCreditsItems], None]] = (
-        Field(
-            default=UNSET,
-            alias="credits",
-            description="A list of users receiving credit for their participation in the security advisory.",
-        )
-    )
-    severity: Missing[Union[None, Literal["critical", "high", "medium", "low"]]] = (
-        Field(
-            default=UNSET,
-            description="The severity of the advisory. You must choose between setting this field or `cvss_vector_string`.",
-        )
-    )
-    cvss_vector_string: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The CVSS vector that calculates the severity of the advisory. You must choose between setting this field or `severity`.",
-    )
-    start_private_fork: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether to create a temporary private fork of the repository to collaborate on a fix.",
-    )
+    incremental_scans: Missing[list[SecretScanningScan]] = Field(default=UNSET)
+    pattern_update_scans: Missing[list[SecretScanningScan]] = Field(default=UNSET)
+    backfill_scans: Missing[list[SecretScanningScan]] = Field(default=UNSET)
+    custom_pattern_backfill_scans: Missing[
+        list[SecretScanningScanHistoryPropCustomPatternBackfillScansItems]
+    ] = Field(default=UNSET)
 
 
-class RepositoryAdvisoryCreatePropCreditsItems(GitHubModel):
-    """RepositoryAdvisoryCreatePropCreditsItems"""
+class SecretScanningScan(GitHubModel):
+    """SecretScanningScan
 
-    login: str = Field(description="The username of the user credited.")
-    type: Literal[
-        "analyst",
-        "finder",
-        "reporter",
-        "coordinator",
-        "remediation_developer",
-        "remediation_reviewer",
-        "remediation_verifier",
-        "tool",
-        "sponsor",
-        "other",
-    ] = Field(description="The type of credit the user is receiving.")
-
-
-class RepositoryAdvisoryCreatePropVulnerabilitiesItems(GitHubModel):
-    """RepositoryAdvisoryCreatePropVulnerabilitiesItems"""
-
-    package: RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackage = Field(
-        description="The name of the package affected by the vulnerability."
-    )
-    vulnerable_version_range: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The range of the package versions affected by the vulnerability.",
-    )
-    patched_versions: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The package version(s) that resolve the vulnerability.",
-    )
-    vulnerable_functions: Missing[Union[list[str], None]] = Field(
-        default=UNSET, description="The functions in the package that are affected."
-    )
-
-
-class RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackage(GitHubModel):
-    """RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackage
-
-    The name of the package affected by the vulnerability.
+    Information on a single scan performed by secret scanning on the repository
     """
 
-    ecosystem: Literal[
-        "rubygems",
-        "npm",
-        "pip",
-        "maven",
-        "nuget",
-        "composer",
-        "go",
-        "rust",
-        "erlang",
-        "actions",
-        "pub",
-        "other",
-        "swift",
-    ] = Field(description="The package's language or package management ecosystem.")
-    name: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The unique package name within its ecosystem."
+    type: Missing[str] = Field(default=UNSET, description="The type of scan")
+    status: Missing[str] = Field(
+        default=UNSET,
+        description='The state of the scan. Either "completed", "running", or "pending"',
+    )
+    completed_at: Missing[Union[datetime, None]] = Field(
+        default=UNSET,
+        description="The time that the scan was completed. Empty if the scan is running",
+    )
+    started_at: Missing[Union[datetime, None]] = Field(
+        default=UNSET,
+        description="The time that the scan was started. Empty if the scan is pending",
     )
 
 
-model_rebuild(RepositoryAdvisoryCreate)
-model_rebuild(RepositoryAdvisoryCreatePropCreditsItems)
-model_rebuild(RepositoryAdvisoryCreatePropVulnerabilitiesItems)
-model_rebuild(RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackage)
+class SecretScanningScanHistoryPropCustomPatternBackfillScansItems(GitHubModel):
+    """SecretScanningScanHistoryPropCustomPatternBackfillScansItems"""
+
+    type: Missing[str] = Field(default=UNSET, description="The type of scan")
+    status: Missing[str] = Field(
+        default=UNSET,
+        description='The state of the scan. Either "completed", "running", or "pending"',
+    )
+    completed_at: Missing[Union[datetime, None]] = Field(
+        default=UNSET,
+        description="The time that the scan was completed. Empty if the scan is running",
+    )
+    started_at: Missing[Union[datetime, None]] = Field(
+        default=UNSET,
+        description="The time that the scan was started. Empty if the scan is pending",
+    )
+    pattern_name: Missing[str] = Field(
+        default=UNSET, description="Name of the custom pattern for custom pattern scans"
+    )
+    pattern_scope: Missing[str] = Field(
+        default=UNSET,
+        description='Level at which the custom pattern is defined, one of "repository", "organization", or "enterprise"',
+    )
+
+
+model_rebuild(SecretScanningScanHistory)
+model_rebuild(SecretScanningScan)
+model_rebuild(SecretScanningScanHistoryPropCustomPatternBackfillScansItems)
 
 __all__ = (
-    "RepositoryAdvisoryCreate",
-    "RepositoryAdvisoryCreatePropCreditsItems",
-    "RepositoryAdvisoryCreatePropVulnerabilitiesItems",
-    "RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackage",
+    "SecretScanningScan",
+    "SecretScanningScanHistory",
+    "SecretScanningScanHistoryPropCustomPatternBackfillScansItems",
 )

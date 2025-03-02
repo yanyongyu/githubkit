@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,167 +18,93 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UsersUsernameAttestationsSubjectDigestGetResponse200(GitHubModel):
-    """UsersUsernameAttestationsSubjectDigestGetResponse200"""
+class UserReposPostBody(GitHubModel):
+    """UserReposPostBody"""
 
-    attestations: Missing[
-        list[UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems]
-    ] = Field(default=UNSET)
-
-
-class UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems(
-    GitHubModel
-):
-    """UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems"""
-
-    bundle: Missing[SigstoreBundle0] = Field(
-        default=UNSET, title="Sigstore Bundle v0.1", description="Sigstore Bundle v0.1"
+    name: str = Field(description="The name of the repository.")
+    description: Missing[str] = Field(
+        default=UNSET, description="A short description of the repository."
     )
-    repository_id: Missing[int] = Field(default=UNSET)
-    bundle_url: Missing[str] = Field(default=UNSET)
-
-
-class SigstoreBundle0(GitHubModel):
-    """Sigstore Bundle v0.1
-
-    Sigstore Bundle v0.1
-    """
-
-    media_type: Missing[str] = Field(default=UNSET, alias="mediaType")
-    verification_material: Missing[SigstoreBundle0PropVerificationMaterial] = Field(
-        default=UNSET, alias="verificationMaterial"
+    homepage: Missing[str] = Field(
+        default=UNSET, description="A URL with more information about the repository."
     )
-    dsse_envelope: Missing[SigstoreBundle0PropDsseEnvelope] = Field(
-        default=UNSET, alias="dsseEnvelope"
+    private: Missing[bool] = Field(
+        default=UNSET, description="Whether the repository is private."
     )
-
-
-class SigstoreBundle0PropDsseEnvelope(GitHubModel):
-    """SigstoreBundle0PropDsseEnvelope"""
-
-    payload: Missing[str] = Field(default=UNSET)
-    payload_type: Missing[str] = Field(default=UNSET, alias="payloadType")
-    signatures: Missing[list[SigstoreBundle0PropDsseEnvelopePropSignaturesItems]] = (
-        Field(default=UNSET)
+    has_issues: Missing[bool] = Field(
+        default=UNSET, description="Whether issues are enabled."
     )
-
-
-class SigstoreBundle0PropDsseEnvelopePropSignaturesItems(GitHubModel):
-    """SigstoreBundle0PropDsseEnvelopePropSignaturesItems"""
-
-    sig: Missing[str] = Field(default=UNSET)
-    keyid: Missing[str] = Field(default=UNSET)
-
-
-class SigstoreBundle0PropVerificationMaterial(GitHubModel):
-    """SigstoreBundle0PropVerificationMaterial"""
-
-    x_509_certificate_chain: Missing[
-        SigstoreBundle0PropVerificationMaterialPropX509CertificateChain
-    ] = Field(default=UNSET, alias="x509CertificateChain")
-    tlog_entries: Missing[
-        list[SigstoreBundle0PropVerificationMaterialPropTlogEntriesItems]
-    ] = Field(default=UNSET, alias="tlogEntries")
-    timestamp_verification_data: Missing[Union[str, None]] = Field(
-        default=UNSET, alias="timestampVerificationData"
+    has_projects: Missing[bool] = Field(
+        default=UNSET, description="Whether projects are enabled."
     )
-
-
-class SigstoreBundle0PropVerificationMaterialPropX509CertificateChain(GitHubModel):
-    """SigstoreBundle0PropVerificationMaterialPropX509CertificateChain"""
-
-    certificates: Missing[
-        list[
-            SigstoreBundle0PropVerificationMaterialPropX509CertificateChainPropCertificatesItems
-        ]
-    ] = Field(default=UNSET)
-
-
-class SigstoreBundle0PropVerificationMaterialPropX509CertificateChainPropCertificatesItems(
-    GitHubModel
-):
-    """SigstoreBundle0PropVerificationMaterialPropX509CertificateChainPropCertificatesI
-    tems
-    """
-
-    raw_bytes: Missing[str] = Field(default=UNSET, alias="rawBytes")
-
-
-class SigstoreBundle0PropVerificationMaterialPropTlogEntriesItems(GitHubModel):
-    """SigstoreBundle0PropVerificationMaterialPropTlogEntriesItems"""
-
-    log_index: Missing[str] = Field(default=UNSET, alias="logIndex")
-    log_id: Missing[
-        SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropLogId
-    ] = Field(default=UNSET, alias="logId")
-    kind_version: Missing[
-        SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropKindVersion
-    ] = Field(default=UNSET, alias="kindVersion")
-    integrated_time: Missing[str] = Field(default=UNSET, alias="integratedTime")
-    inclusion_promise: Missing[
-        SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropInclusionPromise
-    ] = Field(default=UNSET, alias="inclusionPromise")
-    inclusion_proof: Missing[Union[str, None]] = Field(
-        default=UNSET, alias="inclusionProof"
+    has_wiki: Missing[bool] = Field(
+        default=UNSET, description="Whether the wiki is enabled."
     )
-    canonicalized_body: Missing[str] = Field(default=UNSET, alias="canonicalizedBody")
-
-
-class SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropLogId(GitHubModel):
-    """SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropLogId"""
-
-    key_id: Missing[str] = Field(default=UNSET, alias="keyId")
-
-
-class SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropKindVersion(
-    GitHubModel
-):
-    """SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropKindVersion"""
-
-    kind: Missing[str] = Field(default=UNSET)
-    version: Missing[str] = Field(default=UNSET)
-
-
-class SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropInclusionPromise(
-    GitHubModel
-):
-    """SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropInclusionPromise"""
-
-    signed_entry_timestamp: Missing[str] = Field(
-        default=UNSET, alias="signedEntryTimestamp"
+    has_discussions: Missing[bool] = Field(
+        default=UNSET, description="Whether discussions are enabled."
+    )
+    team_id: Missing[int] = Field(
+        default=UNSET,
+        description="The id of the team that will be granted access to this repository. This is only valid when creating a repository in an organization.",
+    )
+    auto_init: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether the repository is initialized with a minimal README.",
+    )
+    gitignore_template: Missing[str] = Field(
+        default=UNSET,
+        description="The desired language or platform to apply to the .gitignore.",
+    )
+    license_template: Missing[str] = Field(
+        default=UNSET,
+        description="The license keyword of the open source license for this repository.",
+    )
+    allow_squash_merge: Missing[bool] = Field(
+        default=UNSET, description="Whether to allow squash merges for pull requests."
+    )
+    allow_merge_commit: Missing[bool] = Field(
+        default=UNSET, description="Whether to allow merge commits for pull requests."
+    )
+    allow_rebase_merge: Missing[bool] = Field(
+        default=UNSET, description="Whether to allow rebase merges for pull requests."
+    )
+    allow_auto_merge: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether to allow Auto-merge to be used on pull requests.",
+    )
+    delete_branch_on_merge: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether to delete head branches when pull requests are merged",
+    )
+    squash_merge_commit_title: Missing[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]] = (
+        Field(
+            default=UNSET,
+            description="Required when using `squash_merge_commit_message`.\n\nThe default value for a squash merge commit title:\n\n- `PR_TITLE` - default to the pull request's title.\n- `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).",
+        )
+    )
+    squash_merge_commit_message: Missing[
+        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
+    ] = Field(
+        default=UNSET,
+        description="The default value for a squash merge commit message:\n\n- `PR_BODY` - default to the pull request's body.\n- `COMMIT_MESSAGES` - default to the branch's commit messages.\n- `BLANK` - default to a blank commit message.",
+    )
+    merge_commit_title: Missing[Literal["PR_TITLE", "MERGE_MESSAGE"]] = Field(
+        default=UNSET,
+        description="Required when using `merge_commit_message`.\n\nThe default value for a merge commit title.\n\n- `PR_TITLE` - default to the pull request's title.\n- `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).",
+    )
+    merge_commit_message: Missing[Literal["PR_BODY", "PR_TITLE", "BLANK"]] = Field(
+        default=UNSET,
+        description="The default value for a merge commit message.\n\n- `PR_TITLE` - default to the pull request's title.\n- `PR_BODY` - default to the pull request's body.\n- `BLANK` - default to a blank commit message.",
+    )
+    has_downloads: Missing[bool] = Field(
+        default=UNSET, description="Whether downloads are enabled."
+    )
+    is_template: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether this repository acts as a template that can be used to generate new repositories.",
     )
 
 
-model_rebuild(UsersUsernameAttestationsSubjectDigestGetResponse200)
-model_rebuild(UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems)
-model_rebuild(SigstoreBundle0)
-model_rebuild(SigstoreBundle0PropDsseEnvelope)
-model_rebuild(SigstoreBundle0PropDsseEnvelopePropSignaturesItems)
-model_rebuild(SigstoreBundle0PropVerificationMaterial)
-model_rebuild(SigstoreBundle0PropVerificationMaterialPropX509CertificateChain)
-model_rebuild(
-    SigstoreBundle0PropVerificationMaterialPropX509CertificateChainPropCertificatesItems
-)
-model_rebuild(SigstoreBundle0PropVerificationMaterialPropTlogEntriesItems)
-model_rebuild(SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropLogId)
-model_rebuild(
-    SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropKindVersion
-)
-model_rebuild(
-    SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropInclusionPromise
-)
+model_rebuild(UserReposPostBody)
 
-__all__ = (
-    "SigstoreBundle0",
-    "SigstoreBundle0PropDsseEnvelope",
-    "SigstoreBundle0PropDsseEnvelopePropSignaturesItems",
-    "SigstoreBundle0PropVerificationMaterial",
-    "SigstoreBundle0PropVerificationMaterialPropTlogEntriesItems",
-    "SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropInclusionPromise",
-    "SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropKindVersion",
-    "SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropLogId",
-    "SigstoreBundle0PropVerificationMaterialPropX509CertificateChain",
-    "SigstoreBundle0PropVerificationMaterialPropX509CertificateChainPropCertificatesItems",
-    "UsersUsernameAttestationsSubjectDigestGetResponse200",
-    "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems",
-)
+__all__ = ("UserReposPostBody",)

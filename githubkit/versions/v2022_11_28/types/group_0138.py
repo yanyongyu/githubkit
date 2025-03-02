@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
 class RepositoryRuleParamsRequiredReviewerConfigurationType(TypedDict):
@@ -21,7 +22,20 @@ class RepositoryRuleParamsRequiredReviewerConfigurationType(TypedDict):
 
     file_patterns: list[str]
     minimum_approvals: int
-    reviewer_id: str
+    reviewer: NotRequired[RepositoryRuleParamsReviewerType]
 
 
-__all__ = ("RepositoryRuleParamsRequiredReviewerConfigurationType",)
+class RepositoryRuleParamsReviewerType(TypedDict):
+    """Reviewer
+
+    A required reviewing team
+    """
+
+    id: int
+    type: Literal["Team"]
+
+
+__all__ = (
+    "RepositoryRuleParamsRequiredReviewerConfigurationType",
+    "RepositoryRuleParamsReviewerType",
+)

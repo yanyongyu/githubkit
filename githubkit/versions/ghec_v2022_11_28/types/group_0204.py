@@ -13,16 +13,14 @@ from typing import Union
 from typing_extensions import TypedDict
 
 
-class CodeOfConductSimpleType(TypedDict):
-    """Code Of Conduct Simple
+class CustomPropertyValueType(TypedDict):
+    """Custom Property Value
 
-    Code of Conduct Simple
+    Custom property name and associated value
     """
 
-    url: str
-    key: str
-    name: str
-    html_url: Union[str, None]
+    property_name: str
+    value: Union[str, list[str], None]
 
 
-__all__ = ("CodeOfConductSimpleType",)
+__all__ = ("CustomPropertyValueType",)

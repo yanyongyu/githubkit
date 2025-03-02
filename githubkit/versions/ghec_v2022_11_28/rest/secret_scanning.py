@@ -29,16 +29,21 @@ if TYPE_CHECKING:
 
     from ..models import (
         OrganizationSecretScanningAlert,
+        ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200,
         SecretScanningAlert,
+        SecretScanningBypassRequest,
         SecretScanningLocation,
         SecretScanningPushProtectionBypass,
         SecretScanningScanHistory,
     )
     from ..types import (
         OrganizationSecretScanningAlertType,
+        ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchBodyType,
+        ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200Type,
         ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyType,
         ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyType,
         SecretScanningAlertType,
+        SecretScanningBypassRequestType,
         SecretScanningLocationType,
         SecretScanningPushProtectionBypassType,
         SecretScanningScanHistoryType,
@@ -174,6 +179,100 @@ class SecretScanningClient:
             },
         )
 
+    def list_org_bypass_requests(
+        self,
+        org: str,
+        *,
+        repository_name: Missing[str] = UNSET,
+        reviewer: Missing[str] = UNSET,
+        requester: Missing[str] = UNSET,
+        time_period: Missing[Literal["hour", "day", "week", "month"]] = UNSET,
+        request_status: Missing[
+            Literal["completed", "cancelled", "expired", "denied", "open", "all"]
+        ] = UNSET,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+    ) -> Response[
+        list[SecretScanningBypassRequest], list[SecretScanningBypassRequestType]
+    ]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/delegated-bypass#list-bypass-requests-for-secret-scanning-for-an-org"""
+
+        from ..models import BasicError, SecretScanningBypassRequest
+
+        url = f"/orgs/{org}/bypass-requests/secret-scanning"
+
+        params = {
+            "repository_name": repository_name,
+            "reviewer": reviewer,
+            "requester": requester,
+            "time_period": time_period,
+            "request_status": request_status,
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=list[SecretScanningBypassRequest],
+            error_models={
+                "404": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    async def async_list_org_bypass_requests(
+        self,
+        org: str,
+        *,
+        repository_name: Missing[str] = UNSET,
+        reviewer: Missing[str] = UNSET,
+        requester: Missing[str] = UNSET,
+        time_period: Missing[Literal["hour", "day", "week", "month"]] = UNSET,
+        request_status: Missing[
+            Literal["completed", "cancelled", "expired", "denied", "open", "all"]
+        ] = UNSET,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+    ) -> Response[
+        list[SecretScanningBypassRequest], list[SecretScanningBypassRequestType]
+    ]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/delegated-bypass#list-bypass-requests-for-secret-scanning-for-an-org"""
+
+        from ..models import BasicError, SecretScanningBypassRequest
+
+        url = f"/orgs/{org}/bypass-requests/secret-scanning"
+
+        params = {
+            "repository_name": repository_name,
+            "reviewer": reviewer,
+            "requester": requester,
+            "time_period": time_period,
+            "request_status": request_status,
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=list[SecretScanningBypassRequest],
+            error_models={
+                "404": BasicError,
+                "500": BasicError,
+            },
+        )
+
     def list_alerts_for_org(
         self,
         org: str,
@@ -289,6 +388,380 @@ class SecretScanningClient:
             error_models={
                 "404": BasicError,
                 "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
+    def list_repo_bypass_requests(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        reviewer: Missing[str] = UNSET,
+        requester: Missing[str] = UNSET,
+        time_period: Missing[Literal["hour", "day", "week", "month"]] = UNSET,
+        request_status: Missing[
+            Literal["completed", "cancelled", "expired", "denied", "open", "all"]
+        ] = UNSET,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+    ) -> Response[
+        list[SecretScanningBypassRequest], list[SecretScanningBypassRequestType]
+    ]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/delegated-bypass#list-bypass-requests-for-secret-scanning-for-a-repository"""
+
+        from ..models import BasicError, SecretScanningBypassRequest
+
+        url = f"/repos/{owner}/{repo}/bypass-requests/secret-scanning"
+
+        params = {
+            "reviewer": reviewer,
+            "requester": requester,
+            "time_period": time_period,
+            "request_status": request_status,
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=list[SecretScanningBypassRequest],
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    async def async_list_repo_bypass_requests(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        reviewer: Missing[str] = UNSET,
+        requester: Missing[str] = UNSET,
+        time_period: Missing[Literal["hour", "day", "week", "month"]] = UNSET,
+        request_status: Missing[
+            Literal["completed", "cancelled", "expired", "denied", "open", "all"]
+        ] = UNSET,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+    ) -> Response[
+        list[SecretScanningBypassRequest], list[SecretScanningBypassRequestType]
+    ]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/delegated-bypass#list-bypass-requests-for-secret-scanning-for-a-repository"""
+
+        from ..models import BasicError, SecretScanningBypassRequest
+
+        url = f"/repos/{owner}/{repo}/bypass-requests/secret-scanning"
+
+        params = {
+            "reviewer": reviewer,
+            "requester": requester,
+            "time_period": time_period,
+            "request_status": request_status,
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=list[SecretScanningBypassRequest],
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    def get_bypass_request(
+        self,
+        owner: str,
+        repo: str,
+        bypass_request_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+    ) -> Response[SecretScanningBypassRequest, SecretScanningBypassRequestType]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/delegated-bypass#get-a-bypass-request-for-secret-scanning"""
+
+        from ..models import BasicError, SecretScanningBypassRequest
+
+        url = f"/repos/{owner}/{repo}/bypass-requests/secret-scanning/{bypass_request_number}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=SecretScanningBypassRequest,
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    async def async_get_bypass_request(
+        self,
+        owner: str,
+        repo: str,
+        bypass_request_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+    ) -> Response[SecretScanningBypassRequest, SecretScanningBypassRequestType]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/delegated-bypass#get-a-bypass-request-for-secret-scanning"""
+
+        from ..models import BasicError, SecretScanningBypassRequest
+
+        url = f"/repos/{owner}/{repo}/bypass-requests/secret-scanning/{bypass_request_number}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=SecretScanningBypassRequest,
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    @overload
+    def review_bypass_request(
+        self,
+        owner: str,
+        repo: str,
+        bypass_request_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        data: ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchBodyType,
+    ) -> Response[
+        ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200,
+        ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200Type,
+    ]: ...
+
+    @overload
+    def review_bypass_request(
+        self,
+        owner: str,
+        repo: str,
+        bypass_request_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        status: Literal["approve", "reject"],
+        message: str,
+    ) -> Response[
+        ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200,
+        ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200Type,
+    ]: ...
+
+    def review_bypass_request(
+        self,
+        owner: str,
+        repo: str,
+        bypass_request_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        data: Missing[
+            ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[
+        ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200,
+        ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200Type,
+    ]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/delegated-bypass#review-a-bypass-request-for-secret-scanning"""
+
+        from ..models import (
+            BasicError,
+            ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchBody,
+            ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200,
+            ValidationError,
+        )
+
+        url = f"/repos/{owner}/{repo}/bypass-requests/secret-scanning/{bypass_request_number}"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchBody,
+                json,
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200,
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+                "422": ValidationError,
+                "500": BasicError,
+            },
+        )
+
+    @overload
+    async def async_review_bypass_request(
+        self,
+        owner: str,
+        repo: str,
+        bypass_request_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        data: ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchBodyType,
+    ) -> Response[
+        ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200,
+        ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200Type,
+    ]: ...
+
+    @overload
+    async def async_review_bypass_request(
+        self,
+        owner: str,
+        repo: str,
+        bypass_request_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        status: Literal["approve", "reject"],
+        message: str,
+    ) -> Response[
+        ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200,
+        ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200Type,
+    ]: ...
+
+    async def async_review_bypass_request(
+        self,
+        owner: str,
+        repo: str,
+        bypass_request_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        data: Missing[
+            ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[
+        ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200,
+        ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200Type,
+    ]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/delegated-bypass#review-a-bypass-request-for-secret-scanning"""
+
+        from ..models import (
+            BasicError,
+            ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchBody,
+            ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200,
+            ValidationError,
+        )
+
+        url = f"/repos/{owner}/{repo}/bypass-requests/secret-scanning/{bypass_request_number}"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchBody,
+                json,
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200,
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+                "422": ValidationError,
+                "500": BasicError,
+            },
+        )
+
+    def dismiss_bypass_response(
+        self,
+        owner: str,
+        repo: str,
+        bypass_response_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+    ) -> Response:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/delegated-bypass#dismiss-a-response-on-a-bypass-request-for-secret-scanning"""
+
+        from ..models import BasicError, ValidationError
+
+        url = f"/repos/{owner}/{repo}/bypass-responses/secret-scanning/{bypass_response_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+                "422": ValidationError,
+                "500": BasicError,
+            },
+        )
+
+    async def async_dismiss_bypass_response(
+        self,
+        owner: str,
+        repo: str,
+        bypass_response_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+    ) -> Response:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/delegated-bypass#dismiss-a-response-on-a-bypass-request-for-secret-scanning"""
+
+        from ..models import BasicError, ValidationError
+
+        url = f"/repos/{owner}/{repo}/bypass-responses/secret-scanning/{bypass_response_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+                "422": ValidationError,
+                "500": BasicError,
             },
         )
 

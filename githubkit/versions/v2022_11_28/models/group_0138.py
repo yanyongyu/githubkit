@@ -9,9 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
 class RepositoryRuleParamsRequiredReviewerConfiguration(GitHubModel):
@@ -27,11 +31,27 @@ class RepositoryRuleParamsRequiredReviewerConfiguration(GitHubModel):
     minimum_approvals: int = Field(
         description="Minimum number of approvals required from the specified team. If set to zero, the team will be added to the pull request but approval is optional."
     )
-    reviewer_id: str = Field(
-        description="Node ID of the team which must review changes to matching files."
+    reviewer: Missing[RepositoryRuleParamsReviewer] = Field(
+        default=UNSET, title="Reviewer", description="A required reviewing team"
     )
 
 
-model_rebuild(RepositoryRuleParamsRequiredReviewerConfiguration)
+class RepositoryRuleParamsReviewer(GitHubModel):
+    """Reviewer
 
-__all__ = ("RepositoryRuleParamsRequiredReviewerConfiguration",)
+    A required reviewing team
+    """
+
+    id: int = Field(
+        description="ID of the reviewer which must review changes to matching files."
+    )
+    type: Literal["Team"] = Field(description="The type of the reviewer")
+
+
+model_rebuild(RepositoryRuleParamsRequiredReviewerConfiguration)
+model_rebuild(RepositoryRuleParamsReviewer)
+
+__all__ = (
+    "RepositoryRuleParamsRequiredReviewerConfiguration",
+    "RepositoryRuleParamsReviewer",
+)

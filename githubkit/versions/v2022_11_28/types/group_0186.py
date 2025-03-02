@@ -30,6 +30,7 @@ class ArtifactType(TypedDict):
     created_at: Union[datetime, None]
     expires_at: Union[datetime, None]
     updated_at: Union[datetime, None]
+    digest: NotRequired[Union[str, None]]
     workflow_run: NotRequired[Union[ArtifactPropWorkflowRunType, None]]
 
 

@@ -9,48 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0071 import DependabotAlertPackage
 
-class GetLicenseSyncStatus(GitHubModel):
-    """License Sync Status
 
-    Information about the status of a license sync job for an enterprise.
+class DependabotAlertWithRepositoryPropDependency(GitHubModel):
+    """DependabotAlertWithRepositoryPropDependency
+
+    Details for the vulnerable dependency.
     """
 
-    server_instances: Missing[list[GetLicenseSyncStatusPropServerInstancesItems]] = (
-        Field(default=UNSET)
+    package: Missing[DependabotAlertPackage] = Field(
+        default=UNSET, description="Details for the vulnerable package."
+    )
+    manifest_path: Missing[str] = Field(
+        default=UNSET,
+        description="The full path to the dependency manifest file, relative to the root of the repository.",
+    )
+    scope: Missing[Union[None, Literal["development", "runtime"]]] = Field(
+        default=UNSET, description="The execution scope of the vulnerable dependency."
     )
 
 
-class GetLicenseSyncStatusPropServerInstancesItems(GitHubModel):
-    """GetLicenseSyncStatusPropServerInstancesItems"""
+model_rebuild(DependabotAlertWithRepositoryPropDependency)
 
-    server_id: Missing[str] = Field(default=UNSET)
-    hostname: Missing[str] = Field(default=UNSET)
-    last_sync: Missing[GetLicenseSyncStatusPropServerInstancesItemsPropLastSync] = (
-        Field(default=UNSET)
-    )
-
-
-class GetLicenseSyncStatusPropServerInstancesItemsPropLastSync(GitHubModel):
-    """GetLicenseSyncStatusPropServerInstancesItemsPropLastSync"""
-
-    date: Missing[str] = Field(default=UNSET)
-    status: Missing[str] = Field(default=UNSET)
-    error: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(GetLicenseSyncStatus)
-model_rebuild(GetLicenseSyncStatusPropServerInstancesItems)
-model_rebuild(GetLicenseSyncStatusPropServerInstancesItemsPropLastSync)
-
-__all__ = (
-    "GetLicenseSyncStatus",
-    "GetLicenseSyncStatusPropServerInstancesItems",
-    "GetLicenseSyncStatusPropServerInstancesItemsPropLastSync",
-)
+__all__ = ("DependabotAlertWithRepositoryPropDependency",)

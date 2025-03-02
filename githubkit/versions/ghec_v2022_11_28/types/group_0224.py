@@ -9,41 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0223 import RateLimitType
+from .group_0225 import RateLimitOverviewPropResourcesType
 
 
-class ArtifactType(TypedDict):
-    """Artifact
+class RateLimitOverviewType(TypedDict):
+    """Rate Limit Overview
 
-    An artifact
+    Rate Limit Overview
     """
 
-    id: int
-    node_id: str
-    name: str
-    size_in_bytes: int
-    url: str
-    archive_download_url: str
-    expired: bool
-    created_at: Union[datetime, None]
-    expires_at: Union[datetime, None]
-    updated_at: Union[datetime, None]
-    workflow_run: NotRequired[Union[ArtifactPropWorkflowRunType, None]]
+    resources: RateLimitOverviewPropResourcesType
+    rate: RateLimitType
 
 
-class ArtifactPropWorkflowRunType(TypedDict):
-    """ArtifactPropWorkflowRun"""
-
-    id: NotRequired[int]
-    repository_id: NotRequired[int]
-    head_repository_id: NotRequired[int]
-    head_branch: NotRequired[str]
-    head_sha: NotRequired[str]
-
-
-__all__ = (
-    "ArtifactPropWorkflowRunType",
-    "ArtifactType",
-)
+__all__ = ("RateLimitOverviewType",)

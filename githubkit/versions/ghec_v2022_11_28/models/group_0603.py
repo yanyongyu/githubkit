@@ -9,41 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0597 import (
-    WebhookIssueCommentCreatedPropIssueAllof0PropMilestonePropCreator,
-)
+
+class WebhookIssueCommentCreatedPropIssueAllof0PropSubIssuesSummary(GitHubModel):
+    """Sub-issues Summary"""
+
+    total: int = Field()
+    completed: int = Field()
+    percent_completed: int = Field()
 
 
-class WebhookIssueCommentCreatedPropIssueMergedMilestone(GitHubModel):
-    """WebhookIssueCommentCreatedPropIssueMergedMilestone"""
+model_rebuild(WebhookIssueCommentCreatedPropIssueAllof0PropSubIssuesSummary)
 
-    closed_at: Union[datetime, None] = Field()
-    closed_issues: int = Field()
-    created_at: datetime = Field()
-    creator: Union[
-        WebhookIssueCommentCreatedPropIssueAllof0PropMilestonePropCreator, None
-    ] = Field(title="User")
-    description: Union[str, None] = Field()
-    due_on: Union[datetime, None] = Field()
-    html_url: str = Field()
-    id: int = Field()
-    labels_url: str = Field()
-    node_id: str = Field()
-    number: int = Field(description="The number of the milestone.")
-    open_issues: int = Field()
-    state: Literal["open", "closed"] = Field(description="The state of the milestone.")
-    title: str = Field(description="The title of the milestone.")
-    updated_at: datetime = Field()
-    url: str = Field()
-
-
-model_rebuild(WebhookIssueCommentCreatedPropIssueMergedMilestone)
-
-__all__ = ("WebhookIssueCommentCreatedPropIssueMergedMilestone",)
+__all__ = ("WebhookIssueCommentCreatedPropIssueAllof0PropSubIssuesSummary",)

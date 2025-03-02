@@ -18,157 +18,143 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0160 import MinimalRepository
-from .group_0168 import CodespaceMachine
+from .group_0053 import BypassResponse
 
 
-class Codespace(GitHubModel):
-    """Codespace
+class SecretScanningBypassRequest(GitHubModel):
+    """Secret scanning bypass request
 
-    A codespace.
+    A bypass request made by a user asking to be exempted from push protection in
+    this repository.
     """
 
-    id: int = Field()
-    name: str = Field(description="Automatically generated name of this codespace.")
-    display_name: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Display name for this codespace."
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the bypass request."
     )
-    environment_id: Union[str, None] = Field(
-        description="UUID identifying this codespace's environment."
-    )
-    owner: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    billable_owner: SimpleUser = Field(
-        title="Simple User", description="A GitHub user."
-    )
-    repository: MinimalRepository = Field(
-        title="Minimal Repository", description="Minimal Repository"
-    )
-    machine: Union[None, CodespaceMachine] = Field()
-    devcontainer_path: Missing[Union[str, None]] = Field(
+    number: Missing[int] = Field(
         default=UNSET,
-        description="Path to devcontainer.json from repo root used to create Codespace.",
+        description="The number uniquely identifying the bypass request within its repository.",
     )
-    prebuild: Union[bool, None] = Field(
-        description="Whether the codespace was created from a prebuild."
+    repository: Missing[SecretScanningBypassRequestPropRepository] = Field(
+        default=UNSET, description="The repository the bypass request is for."
     )
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    last_used_at: datetime = Field(
-        description="Last known time this codespace was started."
-    )
-    state: Literal[
-        "Unknown",
-        "Created",
-        "Queued",
-        "Provisioning",
-        "Available",
-        "Awaiting",
-        "Unavailable",
-        "Deleted",
-        "Moved",
-        "Shutdown",
-        "Archived",
-        "Starting",
-        "ShuttingDown",
-        "Failed",
-        "Exporting",
-        "Updating",
-        "Rebuilding",
-    ] = Field(description="State of this codespace.")
-    url: str = Field(description="API URL for this codespace.")
-    git_status: CodespacePropGitStatus = Field(
-        description="Details about the codespace's git repository."
-    )
-    location: Literal["EastUs", "SouthEastAsia", "WestEurope", "WestUs2"] = Field(
-        description="The initally assigned location of a new codespace."
-    )
-    idle_timeout_minutes: Union[int, None] = Field(
-        description="The number of minutes of inactivity after which this codespace will be automatically stopped."
-    )
-    web_url: str = Field(description="URL to access this codespace on the web.")
-    machines_url: str = Field(
-        description="API URL to access available alternate machine types for this codespace."
-    )
-    start_url: str = Field(description="API URL to start this codespace.")
-    stop_url: str = Field(description="API URL to stop this codespace.")
-    publish_url: Missing[Union[str, None]] = Field(
+    organization: Missing[SecretScanningBypassRequestPropOrganization] = Field(
         default=UNSET,
-        description="API URL to publish this codespace to a new repository.",
+        description="The organization associated with the repository the bypass request is for.",
     )
-    pulls_url: Union[str, None] = Field(
-        description="API URL for the Pull Request associated with this codespace, if any."
+    requester: Missing[SecretScanningBypassRequestPropRequester] = Field(
+        default=UNSET, description="The user who requested the bypass."
     )
-    recent_folders: list[str] = Field()
-    runtime_constraints: Missing[CodespacePropRuntimeConstraints] = Field(default=UNSET)
-    pending_operation: Missing[Union[bool, None]] = Field(
+    request_type: Missing[str] = Field(
+        default=UNSET, description="The type of request."
+    )
+    data: Missing[Union[list[SecretScanningBypassRequestPropDataItems], None]] = Field(
         default=UNSET,
-        description="Whether or not a codespace has a pending async operation. This would mean that the codespace is temporarily unavailable. The only thing that you can do with a codespace in this state is delete it.",
+        description="Data describing the push rules that are being requested to be bypassed.",
     )
-    pending_operation_disabled_reason: Missing[Union[str, None]] = Field(
+    resource_identifier: Missing[str] = Field(
         default=UNSET,
-        description="Text to show user when codespace is disabled by a pending operation",
+        description="The unique identifier for the request type of the bypass request. For example, a commit SHA.",
     )
-    idle_timeout_notice: Missing[Union[str, None]] = Field(
+    status: Missing[
+        Literal[
+            "pending", "denied", "approved", "cancelled", "completed", "expired", "open"
+        ]
+    ] = Field(default=UNSET, description="The status of the bypass request.")
+    requester_comment: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="Text to show user when codespace idle timeout minutes has been overriden by an organization policy",
+        description="The comment the requester provided when creating the bypass request.",
     )
-    retention_period_minutes: Missing[Union[int, None]] = Field(
-        default=UNSET,
-        description="Duration in minutes after codespace has gone idle in which it will be deleted. Must be integer minutes between 0 and 43200 (30 days).",
+    expires_at: Missing[datetime] = Field(
+        default=UNSET, description="The date and time the bypass request will expire."
     )
-    retention_expires_at: Missing[Union[datetime, None]] = Field(
-        default=UNSET,
-        description='When a codespace will be auto-deleted based on the "retention_period_minutes" and "last_used_at"',
+    created_at: Missing[datetime] = Field(
+        default=UNSET, description="The date and time the bypass request was created."
     )
-    last_known_stop_notice: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The text to display to a user when a codespace has been stopped for a potentially actionable reason.",
+    responses: Missing[Union[list[BypassResponse], None]] = Field(
+        default=UNSET, description="The responses to the bypass request."
+    )
+    url: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(
+        default=UNSET, description="The URL to view the bypass request in a browser."
     )
 
 
-class CodespacePropGitStatus(GitHubModel):
-    """CodespacePropGitStatus
+class SecretScanningBypassRequestPropRepository(GitHubModel):
+    """SecretScanningBypassRequestPropRepository
 
-    Details about the codespace's git repository.
+    The repository the bypass request is for.
     """
 
-    ahead: Missing[int] = Field(
-        default=UNSET,
-        description="The number of commits the local repository is ahead of the remote.",
+    id: Missing[int] = Field(
+        default=UNSET, description="The ID of the repository the bypass request is for."
     )
-    behind: Missing[int] = Field(
+    name: Missing[str] = Field(
         default=UNSET,
-        description="The number of commits the local repository is behind the remote.",
+        description="The name of the repository the bypass request is for.",
     )
-    has_unpushed_changes: Missing[bool] = Field(
-        default=UNSET, description="Whether the local repository has unpushed changes."
-    )
-    has_uncommitted_changes: Missing[bool] = Field(
+    full_name: Missing[str] = Field(
         default=UNSET,
-        description="Whether the local repository has uncommitted changes.",
-    )
-    ref: Missing[str] = Field(
-        default=UNSET,
-        description="The current branch (or SHA if in detached HEAD state) of the local repository.",
+        description="The full name of the repository the bypass request is for.",
     )
 
 
-class CodespacePropRuntimeConstraints(GitHubModel):
-    """CodespacePropRuntimeConstraints"""
+class SecretScanningBypassRequestPropOrganization(GitHubModel):
+    """SecretScanningBypassRequestPropOrganization
 
-    allowed_port_privacy_settings: Missing[Union[list[str], None]] = Field(
-        default=UNSET,
-        description="The privacy settings a user can select from when forwarding a port.",
+    The organization associated with the repository the bypass request is for.
+    """
+
+    id: Missing[int] = Field(default=UNSET, description="The ID of the organization.")
+    name: Missing[str] = Field(
+        default=UNSET, description="The name of the organization."
     )
 
 
-model_rebuild(Codespace)
-model_rebuild(CodespacePropGitStatus)
-model_rebuild(CodespacePropRuntimeConstraints)
+class SecretScanningBypassRequestPropRequester(GitHubModel):
+    """SecretScanningBypassRequestPropRequester
+
+    The user who requested the bypass.
+    """
+
+    actor_id: Missing[int] = Field(
+        default=UNSET, description="The ID of the GitHub user who requested the bypass."
+    )
+    actor_name: Missing[str] = Field(
+        default=UNSET,
+        description="The name of the GitHub user who requested the bypass.",
+    )
+
+
+class SecretScanningBypassRequestPropDataItems(GitHubModel):
+    """SecretScanningBypassRequestPropDataItems"""
+
+    secret_type: Missing[str] = Field(
+        default=UNSET, description="The type of secret that secret scanning detected."
+    )
+    bypass_reason: Missing[Literal["used_in_tests", "false_positive", "fix_later"]] = (
+        Field(default=UNSET, description="The reason the bypass was requested.")
+    )
+    path: Missing[str] = Field(
+        default=UNSET,
+        description="The path in the repo where the secret was located during the request.",
+    )
+    branch: Missing[str] = Field(
+        default=UNSET,
+        description="The branch in the repo where the secret was located during the request.",
+    )
+
+
+model_rebuild(SecretScanningBypassRequest)
+model_rebuild(SecretScanningBypassRequestPropRepository)
+model_rebuild(SecretScanningBypassRequestPropOrganization)
+model_rebuild(SecretScanningBypassRequestPropRequester)
+model_rebuild(SecretScanningBypassRequestPropDataItems)
 
 __all__ = (
-    "Codespace",
-    "CodespacePropGitStatus",
-    "CodespacePropRuntimeConstraints",
+    "SecretScanningBypassRequest",
+    "SecretScanningBypassRequestPropDataItems",
+    "SecretScanningBypassRequestPropOrganization",
+    "SecretScanningBypassRequestPropRepository",
+    "SecretScanningBypassRequestPropRequester",
 )

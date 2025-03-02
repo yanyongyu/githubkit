@@ -458,6 +458,7 @@ if TYPE_CHECKING:
     from .group_0138 import (
         RepositoryRuleParamsRequiredReviewerConfiguration as RepositoryRuleParamsRequiredReviewerConfiguration,
     )
+    from .group_0138 import RepositoryRuleParamsReviewer as RepositoryRuleParamsReviewer
     from .group_0139 import RepositoryRulePullRequest as RepositoryRulePullRequest
     from .group_0140 import (
         RepositoryRulePullRequestPropParameters as RepositoryRulePullRequestPropParameters,
@@ -8504,39 +8505,20 @@ if TYPE_CHECKING:
     from .group_1158 import UserSocialAccountsPostBody as UserSocialAccountsPostBody
     from .group_1159 import UserSocialAccountsDeleteBody as UserSocialAccountsDeleteBody
     from .group_1160 import UserSshSigningKeysPostBody as UserSshSigningKeysPostBody
-    from .group_1161 import SigstoreBundle0 as SigstoreBundle0
-    from .group_1161 import (
-        SigstoreBundle0PropDsseEnvelope as SigstoreBundle0PropDsseEnvelope,
-    )
-    from .group_1161 import (
-        SigstoreBundle0PropDsseEnvelopePropSignaturesItems as SigstoreBundle0PropDsseEnvelopePropSignaturesItems,
-    )
-    from .group_1161 import (
-        SigstoreBundle0PropVerificationMaterial as SigstoreBundle0PropVerificationMaterial,
-    )
-    from .group_1161 import (
-        SigstoreBundle0PropVerificationMaterialPropTlogEntriesItems as SigstoreBundle0PropVerificationMaterialPropTlogEntriesItems,
-    )
-    from .group_1161 import (
-        SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropInclusionPromise as SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropInclusionPromise,
-    )
-    from .group_1161 import (
-        SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropKindVersion as SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropKindVersion,
-    )
-    from .group_1161 import (
-        SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropLogId as SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropLogId,
-    )
-    from .group_1161 import (
-        SigstoreBundle0PropVerificationMaterialPropX509CertificateChain as SigstoreBundle0PropVerificationMaterialPropX509CertificateChain,
-    )
-    from .group_1161 import (
-        SigstoreBundle0PropVerificationMaterialPropX509CertificateChainPropCertificatesItems as SigstoreBundle0PropVerificationMaterialPropX509CertificateChainPropCertificatesItems,
-    )
     from .group_1161 import (
         UsersUsernameAttestationsSubjectDigestGetResponse200 as UsersUsernameAttestationsSubjectDigestGetResponse200,
     )
     from .group_1161 import (
         UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems as UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems,
+    )
+    from .group_1161 import (
+        UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle as UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle,
+    )
+    from .group_1161 import (
+        UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelope as UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelope,
+    )
+    from .group_1161 import (
+        UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterial as UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterial,
     )
 else:
     __lazy_vars__ = {
@@ -8891,7 +8873,10 @@ else:
         ".group_0135": ("RepositoryRuleMergeQueuePropParameters",),
         ".group_0136": ("RepositoryRuleRequiredDeployments",),
         ".group_0137": ("RepositoryRuleRequiredDeploymentsPropParameters",),
-        ".group_0138": ("RepositoryRuleParamsRequiredReviewerConfiguration",),
+        ".group_0138": (
+            "RepositoryRuleParamsRequiredReviewerConfiguration",
+            "RepositoryRuleParamsReviewer",
+        ),
         ".group_0139": ("RepositoryRulePullRequest",),
         ".group_0140": ("RepositoryRulePullRequestPropParameters",),
         ".group_0141": ("RepositoryRuleRequiredStatusChecks",),
@@ -12775,15 +12760,8 @@ else:
         ".group_1161": (
             "UsersUsernameAttestationsSubjectDigestGetResponse200",
             "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems",
-            "SigstoreBundle0",
-            "SigstoreBundle0PropDsseEnvelope",
-            "SigstoreBundle0PropDsseEnvelopePropSignaturesItems",
-            "SigstoreBundle0PropVerificationMaterial",
-            "SigstoreBundle0PropVerificationMaterialPropX509CertificateChain",
-            "SigstoreBundle0PropVerificationMaterialPropX509CertificateChainPropCertificatesItems",
-            "SigstoreBundle0PropVerificationMaterialPropTlogEntriesItems",
-            "SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropLogId",
-            "SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropKindVersion",
-            "SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropInclusionPromise",
+            "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle",
+            "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterial",
+            "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelope",
         ),
     }

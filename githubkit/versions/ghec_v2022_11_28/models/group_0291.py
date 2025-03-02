@@ -9,33 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0003 import SimpleUser
 
+class BranchShort(GitHubModel):
+    """Branch Short
 
-class AutoMerge(GitHubModel):
-    """Auto merge
-
-    The status of auto merging a pull request.
+    Branch Short
     """
 
-    enabled_by: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    merge_method: Literal["merge", "squash", "rebase"] = Field(
-        description="The merge method to use."
-    )
-    commit_title: Union[str, None] = Field(
-        description="Title for the merge commit message."
-    )
-    commit_message: Union[str, None] = Field(
-        description="Commit message for the merge commit."
-    )
+    name: str = Field()
+    commit: BranchShortPropCommit = Field()
+    protected: bool = Field()
 
 
-model_rebuild(AutoMerge)
+class BranchShortPropCommit(GitHubModel):
+    """BranchShortPropCommit"""
 
-__all__ = ("AutoMerge",)
+    sha: str = Field()
+    url: str = Field()
+
+
+model_rebuild(BranchShort)
+model_rebuild(BranchShortPropCommit)
+
+__all__ = (
+    "BranchShort",
+    "BranchShortPropCommit",
+)

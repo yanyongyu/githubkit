@@ -21,7 +21,7 @@ class RepositoryRulePullRequestPropParameters(GitHubModel):
 
     allowed_merge_methods: Missing[list[str]] = Field(
         default=UNSET,
-        description="When merging pull requests, you can allow any combination of merge commits, squashing, or rebasing. At least one option must be enabled.",
+        description="Array of allowed merge methods. Allowed values include `merge`, `squash`, and `rebase`. At least one option must be enabled.",
     )
     dismiss_stale_reviews_on_push: bool = Field(
         description="New, reviewable commits pushed will dismiss previous pull request review approvals."

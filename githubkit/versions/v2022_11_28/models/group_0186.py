@@ -35,6 +35,10 @@ class Artifact(GitHubModel):
     created_at: Union[datetime, None] = Field()
     expires_at: Union[datetime, None] = Field()
     updated_at: Union[datetime, None] = Field()
+    digest: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The SHA256 digest of the artifact. This field will only be populated on artifacts uploaded with upload-artifact v4 or newer. For older versions, this field will be null.",
+    )
     workflow_run: Missing[Union[ArtifactPropWorkflowRun, None]] = Field(default=UNSET)
 
 

@@ -4197,6 +4197,60 @@ class EnterpriseAdminClient:
             },
         )
 
+    def promote_custom_property_to_enterprise(
+        self,
+        enterprise: str,
+        org: str,
+        custom_property_name: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+    ) -> Response[CustomProperty, CustomPropertyType]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties#promote-a-custom-property-to-an-enterprise"""
+
+        from ..models import BasicError, CustomProperty
+
+        url = f"/enterprises/{enterprise}/properties/schema/organizations/{org}/{custom_property_name}/promote"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "PUT",
+            url,
+            headers=exclude_unset(headers),
+            response_model=CustomProperty,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_promote_custom_property_to_enterprise(
+        self,
+        enterprise: str,
+        org: str,
+        custom_property_name: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+    ) -> Response[CustomProperty, CustomPropertyType]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties#promote-a-custom-property-to-an-enterprise"""
+
+        from ..models import BasicError, CustomProperty
+
+        url = f"/enterprises/{enterprise}/properties/schema/organizations/{org}/{custom_property_name}/promote"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            headers=exclude_unset(headers),
+            response_model=CustomProperty,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
     def get_enterprise_custom_property(
         self,
         enterprise: str,
