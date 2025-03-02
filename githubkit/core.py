@@ -220,6 +220,7 @@ class GitHubCore(Generic[A]):
             transport = hishel.CacheTransport(
                 httpx.HTTPTransport(),
                 storage=self.config.cache_strategy.get_hishel_storage(),
+                controller=self.config.cache_strategy.get_hishel_controller(),
             )
         else:
             transport = httpx.HTTPTransport()
@@ -244,6 +245,7 @@ class GitHubCore(Generic[A]):
             transport = hishel.AsyncCacheTransport(
                 httpx.AsyncHTTPTransport(),
                 storage=self.config.cache_strategy.get_async_hishel_storage(),
+                controller=self.config.cache_strategy.get_hishel_controller(),
             )
         else:
             transport = httpx.AsyncHTTPTransport()

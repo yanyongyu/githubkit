@@ -99,10 +99,12 @@ Available built-in cache strategies:
 
       github = GitHub(
           cache_strategy=RedisCacheStrategy(
-              client=Redis(host="localhost", port=6379)
+              client=Redis(host="localhost", port=6379), prefix="githubkit:"
           )
       )
       ```
+
+      The `prefix` option is used to set the key prefix in Redis. You should add a `:` at the end of the prefix if you want to use namespace like key format. Both `githubkit` and `hishel` will use the prefix to store the cache data.
 
       Note that using this sync only cache strategy will cause the `GitHub` instance to be sync only.
 
@@ -115,10 +117,12 @@ Available built-in cache strategies:
 
       github = GitHub(
           cache_strategy=AsyncRedisCacheStrategy(
-              client=Redis(host="localhost", port=6379)
+              client=Redis(host="localhost", port=6379), prefix="githubkit:"
           )
       )
       ```
+
+      The `prefix` option is used to set the key prefix in Redis. You should add a `:` at the end of the prefix if you want to use namespace like key format. Both `githubkit` and `hishel` will use the prefix to store the cache data.
 
       Note that using this async only cache strategy will cause the `GitHub` instance to be async only.
 
