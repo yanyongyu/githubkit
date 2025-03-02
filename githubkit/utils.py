@@ -1,7 +1,9 @@
 from enum import Enum
 import inspect
-from typing import Any, Generic, Literal, TypeVar, final
+from typing import Any, Generic, Literal, Optional, TypeVar, final
 
+from hishel._utils import generate_key
+import httpcore
 from pydantic import BaseModel
 
 from .compat import PYDANTIC_V2, custom_validation, type_validate_python
@@ -97,3 +99,9 @@ class TaggedUnion(Generic[T]):
                     ),
                 ),
             )
+
+
+def hishel_key_generator_with_prefix(
+    request: httpcore.Request, body: Optional[bytes], prefix: str = ""
+) -> str:
+    return prefix + generate_key(request, b"" if body is None else body)
