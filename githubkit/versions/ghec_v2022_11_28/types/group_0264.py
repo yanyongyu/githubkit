@@ -19,7 +19,7 @@ class DiffEntryType(TypedDict):
     Diff Entry
     """
 
-    sha: str
+    sha: Union[str, None]
     filename: str
     status: Literal[
         "added", "removed", "modified", "renamed", "copied", "changed", "unchanged"

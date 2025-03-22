@@ -24,7 +24,7 @@ class DiffEntry(GitHubModel):
     Diff Entry
     """
 
-    sha: str = Field()
+    sha: Union[str, None] = Field()
     filename: str = Field()
     status: Literal[
         "added", "removed", "modified", "renamed", "copied", "changed", "unchanged"
