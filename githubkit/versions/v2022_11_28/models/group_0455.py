@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from datetime import date, datetime
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,38 +19,32 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0404 import EnterpriseWebhooks
-from .group_0405 import SimpleInstallation
-from .group_0406 import OrganizationSimpleWebhooks
-from .group_0407 import RepositoryWebhooks
 
 
-class WebhookBranchProtectionConfigurationDisabled(GitHubModel):
-    """branch protection configuration disabled event"""
+class ProjectsV2StatusUpdate(GitHubModel):
+    """Projects v2 Status Update
 
-    action: Literal["disabled"] = Field()
-    enterprise: Missing[EnterpriseWebhooks] = Field(
-        default=UNSET,
-        title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."',
+    An status update belonging to a project
+    """
+
+    id: float = Field()
+    node_id: str = Field()
+    project_node_id: Missing[str] = Field(default=UNSET)
+    creator: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
     )
-    installation: Missing[SimpleInstallation] = Field(
-        default=UNSET,
-        title="Simple Installation",
-        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+    status: Missing[
+        Union[None, Literal["INACTIVE", "ON_TRACK", "AT_RISK", "OFF_TRACK", "COMPLETE"]]
+    ] = Field(default=UNSET)
+    start_date: Missing[date] = Field(default=UNSET)
+    target_date: Missing[date] = Field(default=UNSET)
+    body: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Body of the status update"
     )
-    organization: Missing[OrganizationSimpleWebhooks] = Field(
-        default=UNSET,
-        title="Organization Simple",
-        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
-    )
-    repository: RepositoryWebhooks = Field(
-        title="Repository",
-        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
-    )
-    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookBranchProtectionConfigurationDisabled)
+model_rebuild(ProjectsV2StatusUpdate)
 
-__all__ = ("WebhookBranchProtectionConfigurationDisabled",)
+__all__ = ("ProjectsV2StatusUpdate",)

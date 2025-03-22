@@ -9,20 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from datetime import datetime
+from typing_extensions import TypedDict
+
+from .group_0173 import RulesetVersionPropActorType
 
 
-class NetworkSettingsType(TypedDict):
-    """Hosted compute network settings resource
+class RulesetVersionType(TypedDict):
+    """Ruleset version
 
-    A hosted compute network settings resource.
+    The historical version of a ruleset
     """
 
-    id: str
-    network_configuration_id: NotRequired[str]
-    name: str
-    subnet_id: str
-    region: str
+    version_id: int
+    actor: RulesetVersionPropActorType
+    updated_at: datetime
 
 
-__all__ = ("NetworkSettingsType",)
+__all__ = ("RulesetVersionType",)

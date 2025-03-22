@@ -36,6 +36,12 @@ class DependabotAlertWithRepositoryPropDependency(GitHubModel):
     scope: Missing[Union[None, Literal["development", "runtime"]]] = Field(
         default=UNSET, description="The execution scope of the vulnerable dependency."
     )
+    relationship: Missing[Union[None, Literal["unknown", "direct", "transitive"]]] = (
+        Field(
+            default=UNSET,
+            description='The vulnerable dependency\'s relationship to your project.\n\n> [!NOTE]\n> We are rolling out support for dependency relationship across ecosystems. This value will be "unknown" for all dependencies in unsupported ecosystems.\n',
+        )
+    )
 
 
 model_rebuild(DependabotAlertWithRepositoryPropDependency)

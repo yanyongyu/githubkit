@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,25 +18,26 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ApiInsightsRouteStatsItems(GitHubModel):
-    """ApiInsightsRouteStatsItems"""
+class OrganizationCustomRepositoryRoleUpdateSchema(GitHubModel):
+    """OrganizationCustomRepositoryRoleUpdateSchema"""
 
-    http_method: Missing[str] = Field(default=UNSET, description="The HTTP method")
-    api_route: Missing[str] = Field(
-        default=UNSET, description="The API path's route template"
+    name: Missing[str] = Field(
+        default=UNSET, description="The name of the custom role."
     )
-    total_request_count: Missing[int] = Field(
+    description: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="The total number of requests within the queried time period",
+        description="A short description about who this role is for or what permissions it grants.",
     )
-    rate_limited_request_count: Missing[int] = Field(
+    base_role: Missing[Literal["read", "triage", "write", "maintain"]] = Field(
         default=UNSET,
-        description="The total number of requests that were rate limited within the queried time period",
+        description="The system role from which this role inherits permissions.",
     )
-    last_rate_limited_timestamp: Missing[Union[str, None]] = Field(default=UNSET)
-    last_request_timestamp: Missing[str] = Field(default=UNSET)
+    permissions: Missing[list[str]] = Field(
+        default=UNSET,
+        description="A list of additional permissions included in this role.",
+    )
 
 
-model_rebuild(ApiInsightsRouteStatsItems)
+model_rebuild(OrganizationCustomRepositoryRoleUpdateSchema)
 
-__all__ = ("ApiInsightsRouteStatsItems",)
+__all__ = ("OrganizationCustomRepositoryRoleUpdateSchema",)

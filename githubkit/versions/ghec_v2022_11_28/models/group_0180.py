@@ -16,30 +16,20 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ExternalGroups(GitHubModel):
-    """ExternalGroups
+class CodespacesPublicKey(GitHubModel):
+    """CodespacesPublicKey
 
-    A list of external groups available to be connected to a team
+    The public key used for setting Codespaces secrets.
     """
 
-    groups: Missing[list[ExternalGroupsPropGroupsItems]] = Field(
-        default=UNSET,
-        description="An array of external groups available to be mapped to a team",
-    )
+    key_id: str = Field(description="The identifier for the key.")
+    key: str = Field(description="The Base64 encoded public key.")
+    id: Missing[int] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    title: Missing[str] = Field(default=UNSET)
+    created_at: Missing[str] = Field(default=UNSET)
 
 
-class ExternalGroupsPropGroupsItems(GitHubModel):
-    """ExternalGroupsPropGroupsItems"""
+model_rebuild(CodespacesPublicKey)
 
-    group_id: int = Field(description="The internal ID of the group")
-    group_name: str = Field(description="The display name of the group")
-    updated_at: str = Field(description="The time of the last update for this group")
-
-
-model_rebuild(ExternalGroups)
-model_rebuild(ExternalGroupsPropGroupsItems)
-
-__all__ = (
-    "ExternalGroups",
-    "ExternalGroupsPropGroupsItems",
-)
+__all__ = ("CodespacesPublicKey",)

@@ -9,38 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import TypedDict
 
+from .group_0003 import SimpleUserType
+from .group_0020 import RepositoryType
 
-class ContentSubmoduleType(TypedDict):
-    """Submodule Content
 
-    An object describing a submodule
-    """
+class PullRequestSimplePropHeadType(TypedDict):
+    """PullRequestSimplePropHead"""
 
-    type: Literal["submodule"]
-    submodule_git_url: str
-    size: int
-    name: str
-    path: str
+    label: Union[str, None]
+    ref: str
+    repo: Union[None, RepositoryType]
     sha: str
-    url: str
-    git_url: Union[str, None]
-    html_url: Union[str, None]
-    download_url: Union[str, None]
-    links: ContentSubmodulePropLinksType
+    user: Union[None, SimpleUserType]
 
 
-class ContentSubmodulePropLinksType(TypedDict):
-    """ContentSubmodulePropLinks"""
+class PullRequestSimplePropBaseType(TypedDict):
+    """PullRequestSimplePropBase"""
 
-    git: Union[str, None]
-    html: Union[str, None]
-    self_: str
+    label: str
+    ref: str
+    repo: RepositoryType
+    sha: str
+    user: Union[None, SimpleUserType]
 
 
 __all__ = (
-    "ContentSubmodulePropLinksType",
-    "ContentSubmoduleType",
+    "PullRequestSimplePropBaseType",
+    "PullRequestSimplePropHeadType",
 )

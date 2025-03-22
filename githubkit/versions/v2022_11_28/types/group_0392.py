@@ -11,15 +11,18 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
+from .group_0391 import TrafficType
 
-class CodespacesUserPublicKeyType(TypedDict):
-    """CodespacesUserPublicKey
 
-    The public key used for setting user Codespaces' Secrets.
+class CloneTrafficType(TypedDict):
+    """Clone Traffic
+
+    Clone Traffic
     """
 
-    key_id: str
-    key: str
+    count: int
+    uniques: int
+    clones: list[TrafficType]
 
 
-__all__ = ("CodespacesUserPublicKeyType",)
+__all__ = ("CloneTrafficType",)

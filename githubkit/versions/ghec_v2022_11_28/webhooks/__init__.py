@@ -82,6 +82,18 @@ if TYPE_CHECKING:
     from .discussion_comment import (
         discussion_comment_action_types as discussion_comment_action_types,
     )
+    from .dismissal_request_code_scanning import (
+        DismissalRequestCodeScanningEvent as DismissalRequestCodeScanningEvent,
+    )
+    from .dismissal_request_code_scanning import (
+        dismissal_request_code_scanning_action_types as dismissal_request_code_scanning_action_types,
+    )
+    from .dismissal_request_secret_scanning import (
+        DismissalRequestSecretScanningEvent as DismissalRequestSecretScanningEvent,
+    )
+    from .dismissal_request_secret_scanning import (
+        dismissal_request_secret_scanning_action_types as dismissal_request_secret_scanning_action_types,
+    )
     from .exemption_request_push_ruleset import (
         ExemptionRequestPushRulesetEvent as ExemptionRequestPushRulesetEvent,
     )
@@ -325,6 +337,14 @@ else:
         ".discussion_comment": (
             "DiscussionCommentEvent",
             "discussion_comment_action_types",
+        ),
+        ".dismissal_request_code_scanning": (
+            "DismissalRequestCodeScanningEvent",
+            "dismissal_request_code_scanning_action_types",
+        ),
+        ".dismissal_request_secret_scanning": (
+            "DismissalRequestSecretScanningEvent",
+            "dismissal_request_secret_scanning_action_types",
         ),
         ".fork": ("ForkEvent", "fork_action_types"),
         ".github_app_authorization": (

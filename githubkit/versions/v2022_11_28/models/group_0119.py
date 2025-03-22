@@ -9,24 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0120 import RepositoryRulesetConditionsPropRefName
 
 
-class RepositoryRulesetConditions(GitHubModel):
-    """Repository ruleset conditions for ref names
+class CodeOfConductSimple(GitHubModel):
+    """Code Of Conduct Simple
 
-    Parameters for a repository ruleset ref name condition
+    Code of Conduct Simple
     """
 
-    ref_name: Missing[RepositoryRulesetConditionsPropRefName] = Field(default=UNSET)
+    url: str = Field()
+    key: str = Field()
+    name: str = Field()
+    html_url: Union[str, None] = Field()
 
 
-model_rebuild(RepositoryRulesetConditions)
+model_rebuild(CodeOfConductSimple)
 
-__all__ = ("RepositoryRulesetConditions",)
+__all__ = ("CodeOfConductSimple",)

@@ -12,19 +12,51 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class WebhookCheckRunRerequestedFormEncoded(GitHubModel):
-    """Check Run Re-Requested Event
+class WebhooksChanges8(GitHubModel):
+    """WebhooksChanges8"""
 
-    The check_run.rerequested webhook encoded with URL encoding
-    """
+    tier: WebhooksChanges8PropTier = Field()
 
-    payload: str = Field(
-        description="A URL-encoded string of the check_run.rerequested JSON payload. The decoded payload is a JSON object."
+
+class WebhooksChanges8PropTier(GitHubModel):
+    """WebhooksChanges8PropTier"""
+
+    from_: WebhooksChanges8PropTierPropFrom = Field(
+        alias="from",
+        title="Sponsorship Tier",
+        description="The `tier_changed` and `pending_tier_change` will include the original tier before the change or pending change. For more information, see the pending tier change payload.",
     )
 
 
-model_rebuild(WebhookCheckRunRerequestedFormEncoded)
+class WebhooksChanges8PropTierPropFrom(GitHubModel):
+    """Sponsorship Tier
 
-__all__ = ("WebhookCheckRunRerequestedFormEncoded",)
+    The `tier_changed` and `pending_tier_change` will include the original tier
+    before the change or pending change. For more information, see the pending tier
+    change payload.
+    """
+
+    created_at: str = Field()
+    description: str = Field()
+    is_custom_ammount: Missing[bool] = Field(default=UNSET)
+    is_custom_amount: Missing[bool] = Field(default=UNSET)
+    is_one_time: bool = Field()
+    monthly_price_in_cents: int = Field()
+    monthly_price_in_dollars: int = Field()
+    name: str = Field()
+    node_id: str = Field()
+
+
+model_rebuild(WebhooksChanges8)
+model_rebuild(WebhooksChanges8PropTier)
+model_rebuild(WebhooksChanges8PropTierPropFrom)
+
+__all__ = (
+    "WebhooksChanges8",
+    "WebhooksChanges8PropTier",
+    "WebhooksChanges8PropTierPropFrom",
+)

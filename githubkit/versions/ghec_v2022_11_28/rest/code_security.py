@@ -184,6 +184,9 @@ class CodeSecurityClient:
         code_scanning_default_setup_options: Missing[
             Union[CodeScanningDefaultSetupOptionsType, None]
         ] = UNSET,
+        code_scanning_delegated_alert_dismissal: Missing[
+            Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
         secret_scanning: Missing[Literal["enabled", "disabled", "not_set"]] = UNSET,
         secret_scanning_push_protection: Missing[
             Literal["enabled", "disabled", "not_set"]
@@ -192,6 +195,12 @@ class CodeSecurityClient:
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
         secret_scanning_non_provider_patterns: Missing[
+            Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
+        secret_scanning_generic_secrets: Missing[
+            Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
+        secret_scanning_delegated_alert_dismissal: Missing[
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
         private_vulnerability_reporting: Missing[
@@ -282,6 +291,9 @@ class CodeSecurityClient:
         code_scanning_default_setup_options: Missing[
             Union[CodeScanningDefaultSetupOptionsType, None]
         ] = UNSET,
+        code_scanning_delegated_alert_dismissal: Missing[
+            Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
         secret_scanning: Missing[Literal["enabled", "disabled", "not_set"]] = UNSET,
         secret_scanning_push_protection: Missing[
             Literal["enabled", "disabled", "not_set"]
@@ -290,6 +302,12 @@ class CodeSecurityClient:
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
         secret_scanning_non_provider_patterns: Missing[
+            Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
+        secret_scanning_generic_secrets: Missing[
+            Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
+        secret_scanning_delegated_alert_dismissal: Missing[
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
         private_vulnerability_reporting: Missing[
@@ -544,6 +562,9 @@ class CodeSecurityClient:
         code_scanning_default_setup_options: Missing[
             Union[CodeScanningDefaultSetupOptionsType, None]
         ] = UNSET,
+        code_scanning_delegated_alert_dismissal: Missing[
+            Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
         secret_scanning: Missing[Literal["enabled", "disabled", "not_set"]] = UNSET,
         secret_scanning_push_protection: Missing[
             Literal["enabled", "disabled", "not_set"]
@@ -552,6 +573,12 @@ class CodeSecurityClient:
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
         secret_scanning_non_provider_patterns: Missing[
+            Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
+        secret_scanning_generic_secrets: Missing[
+            Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
+        secret_scanning_delegated_alert_dismissal: Missing[
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
         private_vulnerability_reporting: Missing[
@@ -648,6 +675,9 @@ class CodeSecurityClient:
         code_scanning_default_setup_options: Missing[
             Union[CodeScanningDefaultSetupOptionsType, None]
         ] = UNSET,
+        code_scanning_delegated_alert_dismissal: Missing[
+            Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
         secret_scanning: Missing[Literal["enabled", "disabled", "not_set"]] = UNSET,
         secret_scanning_push_protection: Missing[
             Literal["enabled", "disabled", "not_set"]
@@ -656,6 +686,12 @@ class CodeSecurityClient:
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
         secret_scanning_non_provider_patterns: Missing[
+            Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
+        secret_scanning_generic_secrets: Missing[
+            Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
+        secret_scanning_delegated_alert_dismissal: Missing[
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
         private_vulnerability_reporting: Missing[
@@ -1220,6 +1256,9 @@ class CodeSecurityClient:
         code_scanning_default_setup_options: Missing[
             Union[CodeScanningDefaultSetupOptionsType, None]
         ] = UNSET,
+        code_scanning_delegated_alert_dismissal: Missing[
+            Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
         secret_scanning: Missing[Literal["enabled", "disabled", "not_set"]] = UNSET,
         secret_scanning_push_protection: Missing[
             Literal["enabled", "disabled", "not_set"]
@@ -1234,6 +1273,9 @@ class CodeSecurityClient:
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
         secret_scanning_non_provider_patterns: Missing[
+            Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
+        secret_scanning_generic_secrets: Missing[
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
         secret_scanning_delegated_alert_dismissal: Missing[
@@ -1317,6 +1359,9 @@ class CodeSecurityClient:
         code_scanning_default_setup_options: Missing[
             Union[CodeScanningDefaultSetupOptionsType, None]
         ] = UNSET,
+        code_scanning_delegated_alert_dismissal: Missing[
+            Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
         secret_scanning: Missing[Literal["enabled", "disabled", "not_set"]] = UNSET,
         secret_scanning_push_protection: Missing[
             Literal["enabled", "disabled", "not_set"]
@@ -1331,6 +1376,9 @@ class CodeSecurityClient:
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
         secret_scanning_non_provider_patterns: Missing[
+            Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
+        secret_scanning_generic_secrets: Missing[
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
         secret_scanning_delegated_alert_dismissal: Missing[
@@ -1702,6 +1750,9 @@ class CodeSecurityClient:
         code_scanning_default_setup_options: Missing[
             Union[CodeScanningDefaultSetupOptionsType, None]
         ] = UNSET,
+        code_scanning_delegated_alert_dismissal: Missing[
+            Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
         secret_scanning: Missing[Literal["enabled", "disabled", "not_set"]] = UNSET,
         secret_scanning_push_protection: Missing[
             Literal["enabled", "disabled", "not_set"]
@@ -1716,6 +1767,9 @@ class CodeSecurityClient:
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
         secret_scanning_non_provider_patterns: Missing[
+            Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
+        secret_scanning_generic_secrets: Missing[
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
         secret_scanning_delegated_alert_dismissal: Missing[
@@ -1806,6 +1860,9 @@ class CodeSecurityClient:
         code_scanning_default_setup_options: Missing[
             Union[CodeScanningDefaultSetupOptionsType, None]
         ] = UNSET,
+        code_scanning_delegated_alert_dismissal: Missing[
+            Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
         secret_scanning: Missing[Literal["enabled", "disabled", "not_set"]] = UNSET,
         secret_scanning_push_protection: Missing[
             Literal["enabled", "disabled", "not_set"]
@@ -1820,6 +1877,9 @@ class CodeSecurityClient:
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
         secret_scanning_non_provider_patterns: Missing[
+            Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
+        secret_scanning_generic_secrets: Missing[
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
         secret_scanning_delegated_alert_dismissal: Missing[

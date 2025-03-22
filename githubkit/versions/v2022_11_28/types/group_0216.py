@@ -9,33 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0212 import GitUserType
-from .group_0213 import VerificationType
+from typing_extensions import TypedDict
 
 
-class CommitPropCommitType(TypedDict):
-    """CommitPropCommit"""
+class CheckAutomatedSecurityFixesType(TypedDict):
+    """Check Dependabot security updates
 
-    url: str
-    author: Union[None, GitUserType]
-    committer: Union[None, GitUserType]
-    message: str
-    comment_count: int
-    tree: CommitPropCommitPropTreeType
-    verification: NotRequired[VerificationType]
+    Check Dependabot security updates
+    """
+
+    enabled: bool
+    paused: bool
 
 
-class CommitPropCommitPropTreeType(TypedDict):
-    """CommitPropCommitPropTree"""
-
-    sha: str
-    url: str
-
-
-__all__ = (
-    "CommitPropCommitPropTreeType",
-    "CommitPropCommitType",
-)
+__all__ = ("CheckAutomatedSecurityFixesType",)

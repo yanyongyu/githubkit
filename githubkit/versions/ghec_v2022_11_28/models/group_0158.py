@@ -9,52 +9,80 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from datetime import datetime
+from typing import Any, Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0156 import MarketplaceListingPlan
+from .group_0003 import SimpleUser
 
 
-class MarketplacePurchasePropMarketplacePendingChange(GitHubModel):
-    """MarketplacePurchasePropMarketplacePendingChange"""
+class GistHistory(GitHubModel):
+    """Gist History
 
-    is_installed: Missing[bool] = Field(default=UNSET)
-    effective_date: Missing[str] = Field(default=UNSET)
-    unit_count: Missing[Union[int, None]] = Field(default=UNSET)
-    id: Missing[int] = Field(default=UNSET)
-    plan: Missing[MarketplaceListingPlan] = Field(
-        default=UNSET,
-        title="Marketplace Listing Plan",
-        description="Marketplace Listing Plan",
-    )
+    Gist History
+    """
 
-
-class MarketplacePurchasePropMarketplacePurchase(GitHubModel):
-    """MarketplacePurchasePropMarketplacePurchase"""
-
-    billing_cycle: Missing[str] = Field(default=UNSET)
-    next_billing_date: Missing[Union[str, None]] = Field(default=UNSET)
-    is_installed: Missing[bool] = Field(default=UNSET)
-    unit_count: Missing[Union[int, None]] = Field(default=UNSET)
-    on_free_trial: Missing[bool] = Field(default=UNSET)
-    free_trial_ends_on: Missing[Union[str, None]] = Field(default=UNSET)
-    updated_at: Missing[str] = Field(default=UNSET)
-    plan: Missing[MarketplaceListingPlan] = Field(
-        default=UNSET,
-        title="Marketplace Listing Plan",
-        description="Marketplace Listing Plan",
-    )
+    user: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
+    version: Missing[str] = Field(default=UNSET)
+    committed_at: Missing[datetime] = Field(default=UNSET)
+    change_status: Missing[GistHistoryPropChangeStatus] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(MarketplacePurchasePropMarketplacePendingChange)
-model_rebuild(MarketplacePurchasePropMarketplacePurchase)
+class GistHistoryPropChangeStatus(GitHubModel):
+    """GistHistoryPropChangeStatus"""
+
+    total: Missing[int] = Field(default=UNSET)
+    additions: Missing[int] = Field(default=UNSET)
+    deletions: Missing[int] = Field(default=UNSET)
+
+
+class GistSimplePropForkOf(GitHubModel):
+    """Gist
+
+    Gist
+    """
+
+    url: str = Field()
+    forks_url: str = Field()
+    commits_url: str = Field()
+    id: str = Field()
+    node_id: str = Field()
+    git_pull_url: str = Field()
+    git_push_url: str = Field()
+    html_url: str = Field()
+    files: GistSimplePropForkOfPropFiles = Field()
+    public: bool = Field()
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+    description: Union[str, None] = Field()
+    comments: int = Field()
+    comments_enabled: Missing[bool] = Field(default=UNSET)
+    user: Union[None, SimpleUser] = Field()
+    comments_url: str = Field()
+    owner: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
+    truncated: Missing[bool] = Field(default=UNSET)
+    forks: Missing[list[Any]] = Field(default=UNSET)
+    history: Missing[list[Any]] = Field(default=UNSET)
+
+
+class GistSimplePropForkOfPropFiles(ExtraGitHubModel):
+    """GistSimplePropForkOfPropFiles"""
+
+
+model_rebuild(GistHistory)
+model_rebuild(GistHistoryPropChangeStatus)
+model_rebuild(GistSimplePropForkOf)
+model_rebuild(GistSimplePropForkOfPropFiles)
 
 __all__ = (
-    "MarketplacePurchasePropMarketplacePendingChange",
-    "MarketplacePurchasePropMarketplacePurchase",
+    "GistHistory",
+    "GistHistoryPropChangeStatus",
+    "GistSimplePropForkOf",
+    "GistSimplePropForkOfPropFiles",
 )

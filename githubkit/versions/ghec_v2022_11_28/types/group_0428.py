@@ -9,27 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class UserNameResponseType(TypedDict):
-    """UserNameResponse"""
+class TagType(TypedDict):
+    """Tag
 
-    formatted: NotRequired[str]
-    family_name: NotRequired[str]
-    given_name: NotRequired[str]
-    middle_name: NotRequired[str]
+    Tag
+    """
+
+    name: str
+    commit: TagPropCommitType
+    zipball_url: str
+    tarball_url: str
+    node_id: str
 
 
-class UserEmailsResponseItemsType(TypedDict):
-    """UserEmailsResponseItems"""
+class TagPropCommitType(TypedDict):
+    """TagPropCommit"""
 
-    value: str
-    type: NotRequired[str]
-    primary: NotRequired[bool]
+    sha: str
+    url: str
 
 
 __all__ = (
-    "UserEmailsResponseItemsType",
-    "UserNameResponseType",
+    "TagPropCommitType",
+    "TagType",
 )

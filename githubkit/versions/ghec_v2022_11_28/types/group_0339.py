@@ -9,39 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0010 import IntegrationType
 
+class GitRefType(TypedDict):
+    """Git Reference
 
-class UnlabeledIssueEventType(TypedDict):
-    """Unlabeled Issue Event
-
-    Unlabeled Issue Event
+    Git references within a repository
     """
 
-    id: int
+    ref: str
     node_id: str
     url: str
-    actor: SimpleUserType
-    event: Literal["unlabeled"]
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationType, None]
-    label: UnlabeledIssueEventPropLabelType
+    object_: GitRefPropObjectType
 
 
-class UnlabeledIssueEventPropLabelType(TypedDict):
-    """UnlabeledIssueEventPropLabel"""
+class GitRefPropObjectType(TypedDict):
+    """GitRefPropObject"""
 
-    name: str
-    color: str
+    type: str
+    sha: str
+    url: str
 
 
 __all__ = (
-    "UnlabeledIssueEventPropLabelType",
-    "UnlabeledIssueEventType",
+    "GitRefPropObjectType",
+    "GitRefType",
 )

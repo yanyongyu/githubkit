@@ -50,7 +50,7 @@ class AppPermissions(GitHubModel):
     )
     dependabot_secrets: Missing[Literal["read", "write"]] = Field(
         default=UNSET,
-        description="The leve of permission to grant the access token to manage Dependabot secrets.",
+        description="The level of permission to grant the access token to manage Dependabot secrets.",
     )
     deployments: Missing[Literal["read", "write"]] = Field(
         default=UNSET,

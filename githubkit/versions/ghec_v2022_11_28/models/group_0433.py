@@ -12,18 +12,20 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ScimEnterpriseUserResponseAllof1PropGroupsItems(GitHubModel):
-    """ScimEnterpriseUserResponseAllof1PropGroupsItems"""
+class ContentTraffic(GitHubModel):
+    """Content Traffic
 
-    value: Missing[str] = Field(default=UNSET)
-    ref: Missing[str] = Field(default=UNSET, alias="$ref")
-    display: Missing[str] = Field(default=UNSET)
+    Content Traffic
+    """
+
+    path: str = Field()
+    title: str = Field()
+    count: int = Field()
+    uniques: int = Field()
 
 
-model_rebuild(ScimEnterpriseUserResponseAllof1PropGroupsItems)
+model_rebuild(ContentTraffic)
 
-__all__ = ("ScimEnterpriseUserResponseAllof1PropGroupsItems",)
+__all__ = ("ContentTraffic",)

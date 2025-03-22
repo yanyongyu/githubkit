@@ -75,6 +75,12 @@ class CodeSecurityConfiguration(GitHubModel):
     ] = Field(
         default=UNSET, description="Feature options for code scanning default setup"
     )
+    code_scanning_delegated_alert_dismissal: Missing[
+        Literal["enabled", "disabled", "not_set"]
+    ] = Field(
+        default=UNSET,
+        description="The enablement status of code scanning delegated alert dismissal",
+    )
     secret_scanning: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
         default=UNSET, description="The enablement status of secret scanning"
     )
@@ -107,6 +113,11 @@ class CodeSecurityConfiguration(GitHubModel):
     ] = Field(
         default=UNSET,
         description="The enablement status of secret scanning non-provider patterns",
+    )
+    secret_scanning_generic_secrets: Missing[
+        Literal["enabled", "disabled", "not_set"]
+    ] = Field(
+        default=UNSET, description="The enablement status of Copilot secret scanning"
     )
     secret_scanning_delegated_alert_dismissal: Missing[
         Literal["enabled", "disabled", "not_set"]

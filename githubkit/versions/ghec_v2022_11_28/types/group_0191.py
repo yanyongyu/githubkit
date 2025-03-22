@@ -9,35 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from datetime import datetime
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0036 import OrganizationSimpleType
 
+class OrgHookType(TypedDict):
+    """Org Hook
 
-class OrgMembershipType(TypedDict):
-    """Org Membership
-
-    Org Membership
+    Org Hook
     """
 
+    id: int
     url: str
-    state: Literal["active", "pending"]
-    role: Literal["admin", "member", "billing_manager"]
-    organization_url: str
-    organization: OrganizationSimpleType
-    user: Union[None, SimpleUserType]
-    permissions: NotRequired[OrgMembershipPropPermissionsType]
+    ping_url: str
+    deliveries_url: NotRequired[str]
+    name: str
+    events: list[str]
+    active: bool
+    config: OrgHookPropConfigType
+    updated_at: datetime
+    created_at: datetime
+    type: str
 
 
-class OrgMembershipPropPermissionsType(TypedDict):
-    """OrgMembershipPropPermissions"""
+class OrgHookPropConfigType(TypedDict):
+    """OrgHookPropConfig"""
 
-    can_create_repository: bool
+    url: NotRequired[str]
+    insecure_ssl: NotRequired[str]
+    content_type: NotRequired[str]
+    secret: NotRequired[str]
 
 
 __all__ = (
-    "OrgMembershipPropPermissionsType",
-    "OrgMembershipType",
+    "OrgHookPropConfigType",
+    "OrgHookType",
 )

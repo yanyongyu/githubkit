@@ -11,19 +11,23 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0074 import RunnerLabelType
 
-class RunnerApplicationType(TypedDict):
-    """Runner Application
 
-    Runner Application
+class RunnerType(TypedDict):
+    """Self hosted runners
+
+    A self hosted runner
     """
 
+    id: int
+    runner_group_id: NotRequired[int]
+    name: str
     os: str
-    architecture: str
-    download_url: str
-    filename: str
-    temp_download_token: NotRequired[str]
-    sha256_checksum: NotRequired[str]
+    status: str
+    busy: bool
+    labels: list[RunnerLabelType]
+    ephemeral: NotRequired[bool]
 
 
-__all__ = ("RunnerApplicationType",)
+__all__ = ("RunnerType",)

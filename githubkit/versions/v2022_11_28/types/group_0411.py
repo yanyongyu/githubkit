@@ -9,27 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from datetime import datetime
+from typing_extensions import TypedDict
 
 
-class WebhooksDeployKeyType(TypedDict):
-    """WebhooksDeployKey
+class KeyType(TypedDict):
+    """Key
 
-    The [`deploy key`](https://docs.github.com/rest/deploy-keys/deploy-keys#get-a-
-    deploy-key) resource.
+    Key
     """
 
-    added_by: NotRequired[Union[str, None]]
-    created_at: str
-    id: int
     key: str
-    last_used: NotRequired[Union[str, None]]
-    read_only: bool
-    title: str
+    id: int
     url: str
+    title: str
+    created_at: datetime
     verified: bool
-    enabled: NotRequired[bool]
+    read_only: bool
 
 
-__all__ = ("WebhooksDeployKeyType",)
+__all__ = ("KeyType",)

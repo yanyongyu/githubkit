@@ -9,19 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class ContentTrafficType(TypedDict):
-    """Content Traffic
+class SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1Type(TypedDict):
+    """SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1"""
 
-    Content Traffic
-    """
-
-    path: str
-    title: str
-    count: int
-    uniques: int
+    pattern_name: NotRequired[str]
+    pattern_scope: NotRequired[str]
 
 
-__all__ = ("ContentTrafficType",)
+__all__ = ("SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1Type",)

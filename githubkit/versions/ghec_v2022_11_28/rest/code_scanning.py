@@ -521,6 +521,7 @@ class CodeScanningClient:
             Union[None, Literal["false positive", "won't fix", "used in tests"]]
         ] = UNSET,
         dismissed_comment: Missing[Union[str, None]] = UNSET,
+        create_request: Missing[bool] = UNSET,
     ) -> Response[CodeScanningAlert, CodeScanningAlertType]: ...
 
     def update_alert(
@@ -564,6 +565,7 @@ class CodeScanningClient:
             headers=exclude_unset(headers),
             response_model=CodeScanningAlert,
             error_models={
+                "400": BasicError,
                 "403": BasicError,
                 "404": BasicError,
                 "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
@@ -595,6 +597,7 @@ class CodeScanningClient:
             Union[None, Literal["false positive", "won't fix", "used in tests"]]
         ] = UNSET,
         dismissed_comment: Missing[Union[str, None]] = UNSET,
+        create_request: Missing[bool] = UNSET,
     ) -> Response[CodeScanningAlert, CodeScanningAlertType]: ...
 
     async def async_update_alert(
@@ -638,6 +641,7 @@ class CodeScanningClient:
             headers=exclude_unset(headers),
             response_model=CodeScanningAlert,
             error_models={
+                "400": BasicError,
                 "403": BasicError,
                 "404": BasicError,
                 "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,

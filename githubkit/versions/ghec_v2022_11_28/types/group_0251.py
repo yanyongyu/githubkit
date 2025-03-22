@@ -9,32 +9,46 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from datetime import datetime
+from typing import Any, Union
+from typing_extensions import NotRequired, TypeAlias, TypedDict
 
-from .group_0250 import BranchProtectionType
+from .group_0003 import SimpleUserType
+from .group_0010 import IntegrationType
 
 
-class ShortBranchType(TypedDict):
-    """Short Branch
+class DeploymentType(TypedDict):
+    """Deployment
 
-    Short Branch
+    A request for a specific ref(branch,sha,tag) to be deployed
     """
 
-    name: str
-    commit: ShortBranchPropCommitType
-    protected: bool
-    protection: NotRequired[BranchProtectionType]
-    protection_url: NotRequired[str]
-
-
-class ShortBranchPropCommitType(TypedDict):
-    """ShortBranchPropCommit"""
-
-    sha: str
     url: str
+    id: int
+    node_id: str
+    sha: str
+    ref: str
+    task: str
+    payload: Union[DeploymentPropPayloadOneof0Type, str]
+    original_environment: NotRequired[str]
+    environment: str
+    description: Union[str, None]
+    creator: Union[None, SimpleUserType]
+    created_at: datetime
+    updated_at: datetime
+    statuses_url: str
+    repository_url: str
+    transient_environment: NotRequired[bool]
+    production_environment: NotRequired[bool]
+    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
+
+
+DeploymentPropPayloadOneof0Type: TypeAlias = dict[str, Any]
+"""DeploymentPropPayloadOneof0
+"""
 
 
 __all__ = (
-    "ShortBranchPropCommitType",
-    "ShortBranchType",
+    "DeploymentPropPayloadOneof0Type",
+    "DeploymentType",
 )

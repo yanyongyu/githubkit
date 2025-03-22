@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Union
+from typing import Annotated, Literal, Union
 
 from pydantic import Field
 
@@ -18,84 +18,61 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0278 import DeploymentBranchPolicySettings
-from .group_0280 import EnvironmentPropProtectionRulesItemsAnyof1
+from .group_0003 import SimpleUser
+from .group_0034 import DependabotAlertSecurityVulnerability
+from .group_0035 import DependabotAlertSecurityAdvisory
+from .group_0280 import DependabotAlertPropDependency
 
 
-class Environment(GitHubModel):
-    """Environment
+class DependabotAlert(GitHubModel):
+    """DependabotAlert
 
-    Details of a deployment environment
+    A Dependabot alert.
     """
 
-    id: int = Field(description="The id of the environment.")
-    node_id: str = Field()
-    name: str = Field(description="The name of the environment.")
-    url: str = Field()
-    html_url: str = Field()
+    number: int = Field(description="The security alert number.")
+    state: Literal["auto_dismissed", "dismissed", "fixed", "open"] = Field(
+        description="The state of the Dependabot alert."
+    )
+    dependency: DependabotAlertPropDependency = Field(
+        description="Details for the vulnerable dependency."
+    )
+    security_advisory: DependabotAlertSecurityAdvisory = Field(
+        description="Details for the GitHub Security Advisory."
+    )
+    security_vulnerability: DependabotAlertSecurityVulnerability = Field(
+        description="Details pertaining to one vulnerable version range for the advisory."
+    )
+    url: str = Field(description="The REST API URL of the alert resource.")
+    html_url: str = Field(description="The GitHub URL of the alert resource.")
     created_at: datetime = Field(
-        description="The time that the environment was created, in ISO 8601 format."
+        description="The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
     )
     updated_at: datetime = Field(
-        description="The time that the environment was last updated, in ISO 8601 format."
+        description="The time that the alert was last updated in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
     )
-    protection_rules: Missing[
-        list[
-            Union[
-                EnvironmentPropProtectionRulesItemsAnyof0,
-                EnvironmentPropProtectionRulesItemsAnyof1,
-                EnvironmentPropProtectionRulesItemsAnyof2,
-            ]
-        ]
-    ] = Field(
+    dismissed_at: Union[datetime, None] = Field(
+        description="The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
+    )
+    dismissed_by: Union[None, SimpleUser] = Field()
+    dismissed_reason: Union[
+        None,
+        Literal[
+            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
+        ],
+    ] = Field(description="The reason that the alert was dismissed.")
+    dismissed_comment: Union[Annotated[str, Field(max_length=280)], None] = Field(
+        description="An optional comment associated with the alert's dismissal."
+    )
+    fixed_at: Union[datetime, None] = Field(
+        description="The time that the alert was no longer detected and was considered fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
+    )
+    auto_dismissed_at: Missing[Union[datetime, None]] = Field(
         default=UNSET,
-        description="Built-in deployment protection rules for the environment.",
-    )
-    deployment_branch_policy: Missing[Union[DeploymentBranchPolicySettings, None]] = (
-        Field(
-            default=UNSET,
-            description="The type of deployment branch policy for this environment. To allow all branches to deploy, set to `null`.",
-        )
+        description="The time that the alert was auto-dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
     )
 
 
-class EnvironmentPropProtectionRulesItemsAnyof0(GitHubModel):
-    """EnvironmentPropProtectionRulesItemsAnyof0"""
+model_rebuild(DependabotAlert)
 
-    id: int = Field()
-    node_id: str = Field()
-    type: str = Field()
-    wait_timer: Missing[int] = Field(
-        default=UNSET,
-        description="The amount of time to delay a job after the job is initially triggered. The time (in minutes) must be an integer between 0 and 43,200 (30 days).",
-    )
-
-
-class EnvironmentPropProtectionRulesItemsAnyof2(GitHubModel):
-    """EnvironmentPropProtectionRulesItemsAnyof2"""
-
-    id: int = Field()
-    node_id: str = Field()
-    type: str = Field()
-
-
-class ReposOwnerRepoEnvironmentsGetResponse200(GitHubModel):
-    """ReposOwnerRepoEnvironmentsGetResponse200"""
-
-    total_count: Missing[int] = Field(
-        default=UNSET, description="The number of environments in this repository"
-    )
-    environments: Missing[list[Environment]] = Field(default=UNSET)
-
-
-model_rebuild(Environment)
-model_rebuild(EnvironmentPropProtectionRulesItemsAnyof0)
-model_rebuild(EnvironmentPropProtectionRulesItemsAnyof2)
-model_rebuild(ReposOwnerRepoEnvironmentsGetResponse200)
-
-__all__ = (
-    "Environment",
-    "EnvironmentPropProtectionRulesItemsAnyof0",
-    "EnvironmentPropProtectionRulesItemsAnyof2",
-    "ReposOwnerRepoEnvironmentsGetResponse200",
-)
+__all__ = ("DependabotAlert",)

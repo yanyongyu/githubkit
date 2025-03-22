@@ -9,28 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0087 import RepositoryRulesetConditionsPropRefName
-from .group_0126 import RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId
+from .group_0129 import RepositoryRuleWorkflowsPropParameters
 
 
-class OrgRulesetConditionsOneof1(GitHubModel):
-    """repository_id_and_ref_name
+class RepositoryRuleWorkflows(GitHubModel):
+    """workflows
 
-    Conditions to target repositories by id and refs by name
+    Require all changes made to a targeted branch to pass the specified workflows
+    before they can be merged.
     """
 
-    ref_name: Missing[RepositoryRulesetConditionsPropRefName] = Field(default=UNSET)
-    repository_id: RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId = (
-        Field()
-    )
+    type: Literal["workflows"] = Field()
+    parameters: Missing[RepositoryRuleWorkflowsPropParameters] = Field(default=UNSET)
 
 
-model_rebuild(OrgRulesetConditionsOneof1)
+model_rebuild(RepositoryRuleWorkflows)
 
-__all__ = ("OrgRulesetConditionsOneof1",)
+__all__ = ("RepositoryRuleWorkflows",)

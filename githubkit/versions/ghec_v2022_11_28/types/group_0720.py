@@ -13,21 +13,21 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0459 import SimpleInstallationType
-from .group_0460 import OrganizationSimpleWebhooksType
-from .group_0495 import WebhooksProjectChangesType
-from .group_0496 import ProjectsV2ItemType
+from .group_0472 import EnterpriseWebhooksType
+from .group_0473 import SimpleInstallationType
+from .group_0474 import OrganizationSimpleWebhooksType
+from .group_0504 import PersonalAccessTokenRequestType
 
 
-class WebhookProjectsV2ItemArchivedType(TypedDict):
-    """Projects v2 Item Archived Event"""
+class WebhookPersonalAccessTokenRequestCreatedType(TypedDict):
+    """personal_access_token_request created event"""
 
-    action: Literal["archived"]
-    changes: WebhooksProjectChangesType
-    installation: NotRequired[SimpleInstallationType]
+    action: Literal["created"]
+    personal_access_token_request: PersonalAccessTokenRequestType
+    enterprise: NotRequired[EnterpriseWebhooksType]
     organization: OrganizationSimpleWebhooksType
-    projects_v2_item: ProjectsV2ItemType
     sender: SimpleUserType
+    installation: NotRequired[SimpleInstallationType]
 
 
-__all__ = ("WebhookProjectsV2ItemArchivedType",)
+__all__ = ("WebhookPersonalAccessTokenRequestCreatedType",)

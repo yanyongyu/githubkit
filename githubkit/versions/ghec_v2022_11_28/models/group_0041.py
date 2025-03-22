@@ -24,9 +24,9 @@ class Runner(GitHubModel):
     A self hosted runner
     """
 
-    id: int = Field(description="The id of the runner.")
+    id: int = Field(description="The ID of the runner.")
     runner_group_id: Missing[int] = Field(
-        default=UNSET, description="The id of the runner group."
+        default=UNSET, description="The ID of the runner group."
     )
     name: str = Field(description="The name of the runner.")
     os: str = Field(description="The Operating System of the runner.")

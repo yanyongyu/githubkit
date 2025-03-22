@@ -15,22 +15,31 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0230 import (
+    ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances,
+    ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions,
+)
 
-class CodeScanningAutofixCommits(GitHubModel):
-    """CodeScanningAutofixCommits
 
-    Commit an autofix for a code scanning alert
-    """
+class ProtectedBranchPropRequiredPullRequestReviews(GitHubModel):
+    """ProtectedBranchPropRequiredPullRequestReviews"""
 
-    target_ref: Missing[str] = Field(
+    url: str = Field()
+    dismiss_stale_reviews: Missing[bool] = Field(default=UNSET)
+    require_code_owner_reviews: Missing[bool] = Field(default=UNSET)
+    required_approving_review_count: Missing[int] = Field(default=UNSET)
+    require_last_push_approval: Missing[bool] = Field(
         default=UNSET,
-        description='The Git reference of target branch for the commit. Branch needs to already exist.  For more information, see "[Git References](https://git-scm.com/book/en/v2/Git-Internals-Git-References)" in the Git documentation.',
+        description="Whether the most recent push must be approved by someone other than the person who pushed it.",
     )
-    message: Missing[str] = Field(
-        default=UNSET, description="Commit message to be used."
-    )
+    dismissal_restrictions: Missing[
+        ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions
+    ] = Field(default=UNSET)
+    bypass_pull_request_allowances: Missing[
+        ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances
+    ] = Field(default=UNSET)
 
 
-model_rebuild(CodeScanningAutofixCommits)
+model_rebuild(ProtectedBranchPropRequiredPullRequestReviews)
 
-__all__ = ("CodeScanningAutofixCommits",)
+__all__ = ("ProtectedBranchPropRequiredPullRequestReviews",)

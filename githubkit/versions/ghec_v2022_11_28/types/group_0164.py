@@ -9,27 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0003 import SimpleUserType
+from typing_extensions import TypedDict
 
 
-class OrganizationCustomRepositoryRoleType(TypedDict):
-    """Organization Custom Repository Role
+class MarketplaceListingPlanType(TypedDict):
+    """Marketplace Listing Plan
 
-    Custom repository roles created by organization owners
+    Marketplace Listing Plan
     """
 
+    url: str
+    accounts_url: str
     id: int
+    number: int
     name: str
-    description: NotRequired[Union[str, None]]
-    base_role: Literal["read", "triage", "write", "maintain"]
-    permissions: list[str]
-    organization: SimpleUserType
-    created_at: datetime
-    updated_at: datetime
+    description: str
+    monthly_price_in_cents: int
+    yearly_price_in_cents: int
+    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
+    has_free_trial: bool
+    unit_name: Union[str, None]
+    state: str
+    bullets: list[str]
 
 
-__all__ = ("OrganizationCustomRepositoryRoleType",)
+__all__ = ("MarketplaceListingPlanType",)

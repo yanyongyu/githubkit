@@ -10,22 +10,43 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0058 import MinimalRepositoryType
+from .group_0396 import SearchResultTextMatchesItemsType
 
 
-class KeyType(TypedDict):
-    """Key
+class CodeSearchResultItemType(TypedDict):
+    """Code Search Result Item
 
-    Key
+    Code Search Result Item
     """
 
-    key: str
-    id: int
+    name: str
+    path: str
+    sha: str
     url: str
-    title: str
-    created_at: datetime
-    verified: bool
-    read_only: bool
+    git_url: str
+    html_url: str
+    repository: MinimalRepositoryType
+    score: float
+    file_size: NotRequired[int]
+    language: NotRequired[Union[str, None]]
+    last_modified_at: NotRequired[datetime]
+    line_numbers: NotRequired[list[str]]
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
 
 
-__all__ = ("KeyType",)
+class SearchCodeGetResponse200Type(TypedDict):
+    """SearchCodeGetResponse200"""
+
+    total_count: int
+    incomplete_results: bool
+    items: list[CodeSearchResultItemType]
+
+
+__all__ = (
+    "CodeSearchResultItemType",
+    "SearchCodeGetResponse200Type",
+)

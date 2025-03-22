@@ -9,9 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -19,20 +16,25 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class WebhooksProjectColumn(GitHubModel):
-    """Project Column"""
+class WebhooksChanges(GitHubModel):
+    """WebhooksChanges
 
-    after_id: Missing[Union[int, None]] = Field(default=UNSET)
-    cards_url: str = Field()
-    created_at: datetime = Field()
-    id: int = Field(description="The unique identifier of the project column")
-    name: str = Field(description="Name of the project column")
-    node_id: str = Field()
-    project_url: str = Field()
-    updated_at: datetime = Field()
-    url: str = Field()
+    The changes to the comment.
+    """
+
+    body: Missing[WebhooksChangesPropBody] = Field(default=UNSET)
 
 
-model_rebuild(WebhooksProjectColumn)
+class WebhooksChangesPropBody(GitHubModel):
+    """WebhooksChangesPropBody"""
 
-__all__ = ("WebhooksProjectColumn",)
+    from_: str = Field(alias="from", description="The previous version of the body.")
+
+
+model_rebuild(WebhooksChanges)
+model_rebuild(WebhooksChangesPropBody)
+
+__all__ = (
+    "WebhooksChanges",
+    "WebhooksChangesPropBody",
+)

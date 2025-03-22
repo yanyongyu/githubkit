@@ -38,6 +38,9 @@ class CodeSecurityConfigurationType(TypedDict):
     code_scanning_default_setup_options: NotRequired[
         Union[CodeSecurityConfigurationPropCodeScanningDefaultSetupOptionsType, None]
     ]
+    code_scanning_delegated_alert_dismissal: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
     secret_scanning: NotRequired[Literal["enabled", "disabled", "not_set"]]
     secret_scanning_push_protection: NotRequired[
         Literal["enabled", "disabled", "not_set"]
@@ -52,6 +55,9 @@ class CodeSecurityConfigurationType(TypedDict):
         Literal["enabled", "disabled", "not_set"]
     ]
     secret_scanning_non_provider_patterns: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    secret_scanning_generic_secrets: NotRequired[
         Literal["enabled", "disabled", "not_set"]
     ]
     secret_scanning_delegated_alert_dismissal: NotRequired[

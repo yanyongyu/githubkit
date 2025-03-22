@@ -16,24 +16,16 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class CheckAnnotation(GitHubModel):
-    """Check Annotation
+class Verification(GitHubModel):
+    """Verification"""
 
-    Check Annotation
-    """
-
-    path: str = Field()
-    start_line: int = Field()
-    end_line: int = Field()
-    start_column: Union[int, None] = Field()
-    end_column: Union[int, None] = Field()
-    annotation_level: Union[str, None] = Field()
-    title: Union[str, None] = Field()
-    message: Union[str, None] = Field()
-    raw_details: Union[str, None] = Field()
-    blob_href: str = Field()
+    verified: bool = Field()
+    reason: str = Field()
+    payload: Union[str, None] = Field()
+    signature: Union[str, None] = Field()
+    verified_at: Union[str, None] = Field()
 
 
-model_rebuild(CheckAnnotation)
+model_rebuild(Verification)
 
-__all__ = ("CheckAnnotation",)
+__all__ = ("Verification",)

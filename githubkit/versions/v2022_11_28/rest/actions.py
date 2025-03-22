@@ -839,7 +839,6 @@ class ActionsClient:
         runner_group_id: Missing[int] = UNSET,
         maximum_runners: Missing[int] = UNSET,
         enable_static_ip: Missing[bool] = UNSET,
-        image_version: Missing[Union[str, None]] = UNSET,
     ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]: ...
 
     def update_hosted_runner_for_org(
@@ -903,7 +902,6 @@ class ActionsClient:
         runner_group_id: Missing[int] = UNSET,
         maximum_runners: Missing[int] = UNSET,
         enable_static_ip: Missing[bool] = UNSET,
-        image_version: Missing[Union[str, None]] = UNSET,
     ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]: ...
 
     async def async_update_hosted_runner_for_org(

@@ -9,55 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class WebhooksMarketplacePurchase(GitHubModel):
-    """Marketplace Purchase"""
+class WebhooksWorkflowJobRun(GitHubModel):
+    """WebhooksWorkflowJobRun"""
 
-    account: WebhooksMarketplacePurchasePropAccount = Field()
-    billing_cycle: str = Field()
-    free_trial_ends_on: Union[str, None] = Field()
-    next_billing_date: Union[str, None] = Field()
-    on_free_trial: bool = Field()
-    plan: WebhooksMarketplacePurchasePropPlan = Field()
-    unit_count: int = Field()
-
-
-class WebhooksMarketplacePurchasePropAccount(GitHubModel):
-    """WebhooksMarketplacePurchasePropAccount"""
-
+    conclusion: None = Field()
+    created_at: str = Field()
+    environment: str = Field()
+    html_url: str = Field()
     id: int = Field()
-    login: str = Field()
-    node_id: str = Field()
-    organization_billing_email: Union[str, None] = Field()
-    type: str = Field()
+    name: None = Field()
+    status: str = Field()
+    updated_at: str = Field()
 
 
-class WebhooksMarketplacePurchasePropPlan(GitHubModel):
-    """WebhooksMarketplacePurchasePropPlan"""
+model_rebuild(WebhooksWorkflowJobRun)
 
-    bullets: list[Union[str, None]] = Field()
-    description: str = Field()
-    has_free_trial: bool = Field()
-    id: int = Field()
-    monthly_price_in_cents: int = Field()
-    name: str = Field()
-    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"] = Field()
-    unit_name: Union[str, None] = Field()
-    yearly_price_in_cents: int = Field()
-
-
-model_rebuild(WebhooksMarketplacePurchase)
-model_rebuild(WebhooksMarketplacePurchasePropAccount)
-model_rebuild(WebhooksMarketplacePurchasePropPlan)
-
-__all__ = (
-    "WebhooksMarketplacePurchase",
-    "WebhooksMarketplacePurchasePropAccount",
-    "WebhooksMarketplacePurchasePropPlan",
-)
+__all__ = ("WebhooksWorkflowJobRun",)

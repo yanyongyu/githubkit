@@ -9,34 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0355 import TimelineCrossReferencedEventPropSource
+from .group_0010 import Integration
 
 
-class TimelineCrossReferencedEvent(GitHubModel):
-    """Timeline Cross Referenced Event
+class RenamedIssueEvent(GitHubModel):
+    """Renamed Issue Event
 
-    Timeline Cross Referenced Event
+    Renamed Issue Event
     """
 
-    event: Literal["cross-referenced"] = Field()
-    actor: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
-    )
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    source: TimelineCrossReferencedEventPropSource = Field()
+    id: int = Field()
+    node_id: str = Field()
+    url: str = Field()
+    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    event: Literal["renamed"] = Field()
+    commit_id: Union[str, None] = Field()
+    commit_url: Union[str, None] = Field()
+    created_at: str = Field()
+    performed_via_github_app: Union[None, Integration, None] = Field()
+    rename: RenamedIssueEventPropRename = Field()
 
 
-model_rebuild(TimelineCrossReferencedEvent)
+class RenamedIssueEventPropRename(GitHubModel):
+    """RenamedIssueEventPropRename"""
 
-__all__ = ("TimelineCrossReferencedEvent",)
+    from_: str = Field(alias="from")
+    to: str = Field()
+
+
+model_rebuild(RenamedIssueEvent)
+model_rebuild(RenamedIssueEventPropRename)
+
+__all__ = (
+    "RenamedIssueEvent",
+    "RenamedIssueEventPropRename",
+)

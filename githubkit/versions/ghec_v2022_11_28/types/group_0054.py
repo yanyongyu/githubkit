@@ -50,9 +50,9 @@ class PushRuleBypassRequestPropRepositoryType(TypedDict):
     The repository the bypass request is for.
     """
 
-    id: NotRequired[int]
-    name: NotRequired[str]
-    full_name: NotRequired[str]
+    id: NotRequired[Union[int, None]]
+    name: NotRequired[Union[str, None]]
+    full_name: NotRequired[Union[str, None]]
 
 
 class PushRuleBypassRequestPropOrganizationType(TypedDict):
@@ -61,8 +61,8 @@ class PushRuleBypassRequestPropOrganizationType(TypedDict):
     The organization associated with the repository the bypass request is for.
     """
 
-    id: NotRequired[int]
-    name: NotRequired[str]
+    id: NotRequired[Union[int, None]]
+    name: NotRequired[Union[str, None]]
 
 
 class PushRuleBypassRequestPropRequesterType(TypedDict):

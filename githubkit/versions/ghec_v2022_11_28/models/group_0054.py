@@ -86,14 +86,14 @@ class PushRuleBypassRequestPropRepository(GitHubModel):
     The repository the bypass request is for.
     """
 
-    id: Missing[int] = Field(
+    id: Missing[Union[int, None]] = Field(
         default=UNSET, description="The ID of the repository the bypass request is for."
     )
-    name: Missing[str] = Field(
+    name: Missing[Union[str, None]] = Field(
         default=UNSET,
         description="The name of the repository the bypass request is for.",
     )
-    full_name: Missing[str] = Field(
+    full_name: Missing[Union[str, None]] = Field(
         default=UNSET,
         description="The full name of the repository the bypass request is for.",
     )
@@ -105,8 +105,10 @@ class PushRuleBypassRequestPropOrganization(GitHubModel):
     The organization associated with the repository the bypass request is for.
     """
 
-    id: Missing[int] = Field(default=UNSET, description="The ID of the organization.")
-    name: Missing[str] = Field(
+    id: Missing[Union[int, None]] = Field(
+        default=UNSET, description="The ID of the organization."
+    )
+    name: Missing[Union[str, None]] = Field(
         default=UNSET, description="The name of the organization."
     )
 

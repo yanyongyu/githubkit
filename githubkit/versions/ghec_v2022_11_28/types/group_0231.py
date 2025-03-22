@@ -13,13 +13,20 @@ from datetime import datetime
 from typing_extensions import TypedDict
 
 
-class ActionsVariableType(TypedDict):
-    """Actions Variable"""
+class ProjectColumnType(TypedDict):
+    """Project Column
 
+    Project columns contain cards of work.
+    """
+
+    url: str
+    project_url: str
+    cards_url: str
+    id: int
+    node_id: str
     name: str
-    value: str
     created_at: datetime
     updated_at: datetime
 
 
-__all__ = ("ActionsVariableType",)
+__all__ = ("ProjectColumnType",)

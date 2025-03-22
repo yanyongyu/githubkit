@@ -9,20 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0020 import RepositoryType
+from .group_0450 import SearchResultTextMatchesItemsType
 
 
-class StarredRepositoryType(TypedDict):
-    """Starred Repository
+class LabelSearchResultItemType(TypedDict):
+    """Label Search Result Item
 
-    Starred Repository
+    Label Search Result Item
     """
 
-    starred_at: datetime
-    repo: RepositoryType
+    id: int
+    node_id: str
+    url: str
+    name: str
+    color: str
+    default: bool
+    description: Union[str, None]
+    score: float
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
 
 
-__all__ = ("StarredRepositoryType",)
+class SearchLabelsGetResponse200Type(TypedDict):
+    """SearchLabelsGetResponse200"""
+
+    total_count: int
+    incomplete_results: bool
+    items: list[LabelSearchResultItemType]
+
+
+__all__ = (
+    "LabelSearchResultItemType",
+    "SearchLabelsGetResponse200Type",
+)

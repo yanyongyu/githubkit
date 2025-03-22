@@ -9,20 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
+from typing import Any
+from typing_extensions import TypeAlias
+
+LanguageType: TypeAlias = dict[str, Any]
+"""Language
+
+Language
+"""
 
 
-class PullRequestPropLabelsItemsType(TypedDict):
-    """PullRequestPropLabelsItems"""
-
-    id: int
-    node_id: str
-    url: str
-    name: str
-    description: Union[str, None]
-    color: str
-    default: bool
-
-
-__all__ = ("PullRequestPropLabelsItemsType",)
+__all__ = ("LanguageType",)

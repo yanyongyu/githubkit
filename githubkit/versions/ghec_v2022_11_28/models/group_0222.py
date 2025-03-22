@@ -14,20 +14,39 @@ from typing import Union
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
 
+class GroupMapping(GitHubModel):
+    """GroupMapping
 
-class ProjectCollaboratorPermission(GitHubModel):
-    """Project Collaborator Permission
-
-    Project Collaborator Permission
+    External Groups to be mapped to a team for membership
     """
 
-    permission: str = Field()
-    user: Union[None, SimpleUser] = Field()
+    groups: Missing[list[GroupMappingPropGroupsItems]] = Field(
+        default=UNSET, description="Array of groups to be mapped to this team"
+    )
 
 
-model_rebuild(ProjectCollaboratorPermission)
+class GroupMappingPropGroupsItems(GitHubModel):
+    """GroupMappingPropGroupsItems"""
 
-__all__ = ("ProjectCollaboratorPermission",)
+    group_id: str = Field(description="The ID of the group")
+    group_name: str = Field(description="The name of the group")
+    group_description: str = Field(description="a description of the group")
+    status: Missing[str] = Field(
+        default=UNSET, description="synchronization status for this group mapping"
+    )
+    synced_at: Missing[Union[str, None]] = Field(
+        default=UNSET, description="the time of the last sync for this group-mapping"
+    )
+
+
+model_rebuild(GroupMapping)
+model_rebuild(GroupMappingPropGroupsItems)
+
+__all__ = (
+    "GroupMapping",
+    "GroupMappingPropGroupsItems",
+)

@@ -12,16 +12,14 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class PorterLargeFileType(TypedDict):
-    """Porter Large File
+class ShortBlobType(TypedDict):
+    """Short Blob
 
-    Porter Large File
+    Short Blob
     """
 
-    ref_name: str
-    path: str
-    oid: str
-    size: int
+    url: str
+    sha: str
 
 
-__all__ = ("PorterLargeFileType",)
+__all__ = ("ShortBlobType",)

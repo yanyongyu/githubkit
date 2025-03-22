@@ -13,31 +13,17 @@ from datetime import datetime
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0008 import EnterpriseType
-from .group_0009 import IntegrationPropPermissionsType
 
+class WebhookStatusPropCommitPropCommitPropCommitterAllof0Type(TypedDict):
+    """Committer
 
-class AppManifestsCodeConversionsPostResponse201Type(TypedDict):
-    """AppManifestsCodeConversionsPostResponse201"""
+    Metaproperties for Git author/committer information.
+    """
 
-    id: int
-    slug: NotRequired[str]
-    node_id: str
-    client_id: str
-    owner: Union[SimpleUserType, EnterpriseType]
+    date: NotRequired[datetime]
+    email: Union[str, None]
     name: str
-    description: Union[str, None]
-    external_url: str
-    html_url: str
-    created_at: datetime
-    updated_at: datetime
-    permissions: IntegrationPropPermissionsType
-    events: list[str]
-    installations_count: NotRequired[int]
-    client_secret: str
-    webhook_secret: Union[Union[str, None], None]
-    pem: str
+    username: NotRequired[str]
 
 
-__all__ = ("AppManifestsCodeConversionsPostResponse201Type",)
+__all__ = ("WebhookStatusPropCommitPropCommitPropCommitterAllof0Type",)

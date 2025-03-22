@@ -9,24 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0428 import UserEmailsResponseItemsType, UserNameResponseType
-from .group_0429 import UserRoleItemsType
+from typing_extensions import TypedDict
 
 
-class UserResponseType(TypedDict):
-    """UserResponse"""
+class TopicType(TypedDict):
+    """Topic
 
-    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:User"]]
-    external_id: NotRequired[Union[str, None]]
-    active: bool
-    user_name: NotRequired[str]
-    name: NotRequired[UserNameResponseType]
-    display_name: NotRequired[Union[str, None]]
-    emails: list[UserEmailsResponseItemsType]
-    roles: NotRequired[list[UserRoleItemsType]]
+    A topic aggregates entities that are related to a subject.
+    """
+
+    names: list[str]
 
 
-__all__ = ("UserResponseType",)
+__all__ = ("TopicType",)

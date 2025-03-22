@@ -9,25 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0391 import Traffic
 
-class Email(GitHubModel):
-    """Email
 
-    Email
+class ViewTraffic(GitHubModel):
+    """View Traffic
+
+    View Traffic
     """
 
-    email: str = Field()
-    primary: bool = Field()
-    verified: bool = Field()
-    visibility: Union[str, None] = Field()
+    count: int = Field()
+    uniques: int = Field()
+    views: list[Traffic] = Field()
 
 
-model_rebuild(Email)
+model_rebuild(ViewTraffic)
 
-__all__ = ("Email",)
+__all__ = ("ViewTraffic",)

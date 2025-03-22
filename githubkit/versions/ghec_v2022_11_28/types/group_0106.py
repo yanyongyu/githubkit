@@ -9,13 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
 class RepositoryRulePullRequestPropParametersType(TypedDict):
     """RepositoryRulePullRequestPropParameters"""
 
-    allowed_merge_methods: NotRequired[list[str]]
+    allowed_merge_methods: NotRequired[list[Literal["merge", "squash", "rebase"]]]
     dismiss_stale_reviews_on_push: bool
     require_code_owner_review: bool
     require_last_push_approval: bool

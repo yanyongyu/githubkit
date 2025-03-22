@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -18,143 +18,155 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0053 import BypassResponse
+from .group_0003 import SimpleUser
+from .group_0168 import SecurityAndAnalysis
 
 
-class SecretScanningBypassRequest(GitHubModel):
-    """Secret scanning bypass request
+class MinimalRepository(GitHubModel):
+    """Minimal Repository
 
-    A bypass request made by a user asking to be exempted from push protection in
-    this repository.
+    Minimal Repository
     """
 
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the bypass request."
-    )
-    number: Missing[int] = Field(
+    id: int = Field()
+    node_id: str = Field()
+    name: str = Field()
+    full_name: str = Field()
+    owner: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    private: bool = Field()
+    html_url: str = Field()
+    description: Union[str, None] = Field()
+    fork: bool = Field()
+    url: str = Field()
+    archive_url: str = Field()
+    assignees_url: str = Field()
+    blobs_url: str = Field()
+    branches_url: str = Field()
+    collaborators_url: str = Field()
+    comments_url: str = Field()
+    commits_url: str = Field()
+    compare_url: str = Field()
+    contents_url: str = Field()
+    contributors_url: str = Field()
+    deployments_url: str = Field()
+    downloads_url: str = Field()
+    events_url: str = Field()
+    forks_url: str = Field()
+    git_commits_url: str = Field()
+    git_refs_url: str = Field()
+    git_tags_url: str = Field()
+    git_url: Missing[str] = Field(default=UNSET)
+    issue_comment_url: str = Field()
+    issue_events_url: str = Field()
+    issues_url: str = Field()
+    keys_url: str = Field()
+    labels_url: str = Field()
+    languages_url: str = Field()
+    merges_url: str = Field()
+    milestones_url: str = Field()
+    notifications_url: str = Field()
+    pulls_url: str = Field()
+    releases_url: str = Field()
+    ssh_url: Missing[str] = Field(default=UNSET)
+    stargazers_url: str = Field()
+    statuses_url: str = Field()
+    subscribers_url: str = Field()
+    subscription_url: str = Field()
+    tags_url: str = Field()
+    teams_url: str = Field()
+    trees_url: str = Field()
+    clone_url: Missing[str] = Field(default=UNSET)
+    mirror_url: Missing[Union[str, None]] = Field(default=UNSET)
+    hooks_url: str = Field()
+    svn_url: Missing[str] = Field(default=UNSET)
+    homepage: Missing[Union[str, None]] = Field(default=UNSET)
+    language: Missing[Union[str, None]] = Field(default=UNSET)
+    forks_count: Missing[int] = Field(default=UNSET)
+    stargazers_count: Missing[int] = Field(default=UNSET)
+    watchers_count: Missing[int] = Field(default=UNSET)
+    size: Missing[int] = Field(
         default=UNSET,
-        description="The number uniquely identifying the bypass request within its repository.",
+        description="The size of the repository, in kilobytes. Size is calculated hourly. When a repository is initially created, the size is 0.",
     )
-    repository: Missing[SecretScanningBypassRequestPropRepository] = Field(
-        default=UNSET, description="The repository the bypass request is for."
+    default_branch: Missing[str] = Field(default=UNSET)
+    open_issues_count: Missing[int] = Field(default=UNSET)
+    is_template: Missing[bool] = Field(default=UNSET)
+    topics: Missing[list[str]] = Field(default=UNSET)
+    has_issues: Missing[bool] = Field(default=UNSET)
+    has_projects: Missing[bool] = Field(default=UNSET)
+    has_wiki: Missing[bool] = Field(default=UNSET)
+    has_pages: Missing[bool] = Field(default=UNSET)
+    has_downloads: Missing[bool] = Field(default=UNSET)
+    has_discussions: Missing[bool] = Field(default=UNSET)
+    archived: Missing[bool] = Field(default=UNSET)
+    disabled: Missing[bool] = Field(default=UNSET)
+    visibility: Missing[str] = Field(default=UNSET)
+    pushed_at: Missing[Union[datetime, None]] = Field(default=UNSET)
+    created_at: Missing[Union[datetime, None]] = Field(default=UNSET)
+    updated_at: Missing[Union[datetime, None]] = Field(default=UNSET)
+    permissions: Missing[MinimalRepositoryPropPermissions] = Field(default=UNSET)
+    role_name: Missing[str] = Field(default=UNSET)
+    temp_clone_token: Missing[Union[str, None]] = Field(default=UNSET)
+    delete_branch_on_merge: Missing[bool] = Field(default=UNSET)
+    subscribers_count: Missing[int] = Field(default=UNSET)
+    network_count: Missing[int] = Field(default=UNSET)
+    code_of_conduct: Missing[CodeOfConduct] = Field(
+        default=UNSET, title="Code Of Conduct", description="Code Of Conduct"
     )
-    organization: Missing[SecretScanningBypassRequestPropOrganization] = Field(
-        default=UNSET,
-        description="The organization associated with the repository the bypass request is for.",
+    license_: Missing[Union[MinimalRepositoryPropLicense, None]] = Field(
+        default=UNSET, alias="license"
     )
-    requester: Missing[SecretScanningBypassRequestPropRequester] = Field(
-        default=UNSET, description="The user who requested the bypass."
+    forks: Missing[int] = Field(default=UNSET)
+    open_issues: Missing[int] = Field(default=UNSET)
+    watchers: Missing[int] = Field(default=UNSET)
+    allow_forking: Missing[bool] = Field(default=UNSET)
+    web_commit_signoff_required: Missing[bool] = Field(default=UNSET)
+    security_and_analysis: Missing[Union[SecurityAndAnalysis, None]] = Field(
+        default=UNSET
     )
-    request_type: Missing[str] = Field(
-        default=UNSET, description="The type of request."
-    )
-    data: Missing[Union[list[SecretScanningBypassRequestPropDataItems], None]] = Field(
-        default=UNSET,
-        description="Data describing the push rules that are being requested to be bypassed.",
-    )
-    resource_identifier: Missing[str] = Field(
-        default=UNSET,
-        description="The unique identifier for the request type of the bypass request. For example, a commit SHA.",
-    )
-    status: Missing[
-        Literal[
-            "pending", "denied", "approved", "cancelled", "completed", "expired", "open"
-        ]
-    ] = Field(default=UNSET, description="The status of the bypass request.")
-    requester_comment: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The comment the requester provided when creating the bypass request.",
-    )
-    expires_at: Missing[datetime] = Field(
-        default=UNSET, description="The date and time the bypass request will expire."
-    )
-    created_at: Missing[datetime] = Field(
-        default=UNSET, description="The date and time the bypass request was created."
-    )
-    responses: Missing[Union[list[BypassResponse], None]] = Field(
-        default=UNSET, description="The responses to the bypass request."
-    )
+
+
+class CodeOfConduct(GitHubModel):
+    """Code Of Conduct
+
+    Code Of Conduct
+    """
+
+    key: str = Field()
+    name: str = Field()
+    url: str = Field()
+    body: Missing[str] = Field(default=UNSET)
+    html_url: Union[str, None] = Field()
+
+
+class MinimalRepositoryPropPermissions(GitHubModel):
+    """MinimalRepositoryPropPermissions"""
+
+    admin: Missing[bool] = Field(default=UNSET)
+    maintain: Missing[bool] = Field(default=UNSET)
+    push: Missing[bool] = Field(default=UNSET)
+    triage: Missing[bool] = Field(default=UNSET)
+    pull: Missing[bool] = Field(default=UNSET)
+
+
+class MinimalRepositoryPropLicense(GitHubModel):
+    """MinimalRepositoryPropLicense"""
+
+    key: Missing[str] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    spdx_id: Missing[str] = Field(default=UNSET)
     url: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(
-        default=UNSET, description="The URL to view the bypass request in a browser."
-    )
+    node_id: Missing[str] = Field(default=UNSET)
 
 
-class SecretScanningBypassRequestPropRepository(GitHubModel):
-    """SecretScanningBypassRequestPropRepository
-
-    The repository the bypass request is for.
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The ID of the repository the bypass request is for."
-    )
-    name: Missing[str] = Field(
-        default=UNSET,
-        description="The name of the repository the bypass request is for.",
-    )
-    full_name: Missing[str] = Field(
-        default=UNSET,
-        description="The full name of the repository the bypass request is for.",
-    )
-
-
-class SecretScanningBypassRequestPropOrganization(GitHubModel):
-    """SecretScanningBypassRequestPropOrganization
-
-    The organization associated with the repository the bypass request is for.
-    """
-
-    id: Missing[int] = Field(default=UNSET, description="The ID of the organization.")
-    name: Missing[str] = Field(
-        default=UNSET, description="The name of the organization."
-    )
-
-
-class SecretScanningBypassRequestPropRequester(GitHubModel):
-    """SecretScanningBypassRequestPropRequester
-
-    The user who requested the bypass.
-    """
-
-    actor_id: Missing[int] = Field(
-        default=UNSET, description="The ID of the GitHub user who requested the bypass."
-    )
-    actor_name: Missing[str] = Field(
-        default=UNSET,
-        description="The name of the GitHub user who requested the bypass.",
-    )
-
-
-class SecretScanningBypassRequestPropDataItems(GitHubModel):
-    """SecretScanningBypassRequestPropDataItems"""
-
-    secret_type: Missing[str] = Field(
-        default=UNSET, description="The type of secret that secret scanning detected."
-    )
-    bypass_reason: Missing[Literal["used_in_tests", "false_positive", "fix_later"]] = (
-        Field(default=UNSET, description="The reason the bypass was requested.")
-    )
-    path: Missing[str] = Field(
-        default=UNSET,
-        description="The path in the repo where the secret was located during the request.",
-    )
-    branch: Missing[str] = Field(
-        default=UNSET,
-        description="The branch in the repo where the secret was located during the request.",
-    )
-
-
-model_rebuild(SecretScanningBypassRequest)
-model_rebuild(SecretScanningBypassRequestPropRepository)
-model_rebuild(SecretScanningBypassRequestPropOrganization)
-model_rebuild(SecretScanningBypassRequestPropRequester)
-model_rebuild(SecretScanningBypassRequestPropDataItems)
+model_rebuild(MinimalRepository)
+model_rebuild(CodeOfConduct)
+model_rebuild(MinimalRepositoryPropPermissions)
+model_rebuild(MinimalRepositoryPropLicense)
 
 __all__ = (
-    "SecretScanningBypassRequest",
-    "SecretScanningBypassRequestPropDataItems",
-    "SecretScanningBypassRequestPropOrganization",
-    "SecretScanningBypassRequestPropRepository",
-    "SecretScanningBypassRequestPropRequester",
+    "CodeOfConduct",
+    "MinimalRepository",
+    "MinimalRepositoryPropLicense",
+    "MinimalRepositoryPropPermissions",
 )

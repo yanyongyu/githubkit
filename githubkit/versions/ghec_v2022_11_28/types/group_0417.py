@@ -10,15 +10,16 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class TrafficType(TypedDict):
-    """Traffic"""
+class SecretScanningPushProtectionBypassType(TypedDict):
+    """SecretScanningPushProtectionBypass"""
 
-    timestamp: datetime
-    uniques: int
-    count: int
+    reason: NotRequired[Literal["false_positive", "used_in_tests", "will_fix_later"]]
+    expire_at: NotRequired[Union[datetime, None]]
+    token_type: NotRequired[str]
 
 
-__all__ = ("TrafficType",)
+__all__ = ("SecretScanningPushProtectionBypassType",)

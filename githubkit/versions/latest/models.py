@@ -975,6 +975,7 @@ if TYPE_CHECKING:
     from githubkit.versions.v2022_11_28.models import (
         IssueSearchResultItemPropSubIssuesSummary as IssueSearchResultItemPropSubIssuesSummary,
     )
+    from githubkit.versions.v2022_11_28.models import IssueType as IssueType
     from githubkit.versions.v2022_11_28.models import Job as Job
     from githubkit.versions.v2022_11_28.models import (
         JobPropStepsItems as JobPropStepsItems,
@@ -1078,6 +1079,9 @@ if TYPE_CHECKING:
         OrganizationActionsVariable as OrganizationActionsVariable,
     )
     from githubkit.versions.v2022_11_28.models import (
+        OrganizationCreateIssueType as OrganizationCreateIssueType,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         OrganizationDependabotSecret as OrganizationDependabotSecret,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -1130,6 +1134,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         OrganizationSimpleWebhooks as OrganizationSimpleWebhooks,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        OrganizationUpdateIssueType as OrganizationUpdateIssueType,
     )
     from githubkit.versions.v2022_11_28.models import OrgHook as OrgHook
     from githubkit.versions.v2022_11_28.models import (
@@ -2033,6 +2040,42 @@ if TYPE_CHECKING:
         RepositoryRuleDetailedOneof16 as RepositoryRuleDetailedOneof16,
     )
     from githubkit.versions.v2022_11_28.models import (
+        RepositoryRuleDetailedOneof17 as RepositoryRuleDetailedOneof17,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        RepositoryRuleDetailedOneof18 as RepositoryRuleDetailedOneof18,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        RepositoryRuleDetailedOneof19 as RepositoryRuleDetailedOneof19,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        RepositoryRuleDetailedOneof20 as RepositoryRuleDetailedOneof20,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        RepositoryRuleFileExtensionRestriction as RepositoryRuleFileExtensionRestriction,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        RepositoryRuleFileExtensionRestrictionPropParameters as RepositoryRuleFileExtensionRestrictionPropParameters,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        RepositoryRuleFilePathRestriction as RepositoryRuleFilePathRestriction,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        RepositoryRuleFilePathRestrictionPropParameters as RepositoryRuleFilePathRestrictionPropParameters,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        RepositoryRuleMaxFilePathLength as RepositoryRuleMaxFilePathLength,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        RepositoryRuleMaxFilePathLengthPropParameters as RepositoryRuleMaxFilePathLengthPropParameters,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        RepositoryRuleMaxFileSize as RepositoryRuleMaxFileSize,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        RepositoryRuleMaxFileSizePropParameters as RepositoryRuleMaxFileSizePropParameters,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         RepositoryRuleMergeQueue as RepositoryRuleMergeQueue,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -2040,30 +2083,6 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         RepositoryRuleNonFastForward as RepositoryRuleNonFastForward,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        RepositoryRuleOneof15 as RepositoryRuleOneof15,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        RepositoryRuleOneof15PropParameters as RepositoryRuleOneof15PropParameters,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        RepositoryRuleOneof16 as RepositoryRuleOneof16,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        RepositoryRuleOneof16PropParameters as RepositoryRuleOneof16PropParameters,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        RepositoryRuleOneof17 as RepositoryRuleOneof17,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        RepositoryRuleOneof17PropParameters as RepositoryRuleOneof17PropParameters,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        RepositoryRuleOneof18 as RepositoryRuleOneof18,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        RepositoryRuleOneof18PropParameters as RepositoryRuleOneof18PropParameters,
     )
     from githubkit.versions.v2022_11_28.models import (
         RepositoryRuleParamsCodeScanningTool as RepositoryRuleParamsCodeScanningTool,
@@ -8536,6 +8555,9 @@ if TYPE_CHECKING:
         WebhookReleaseEditedPropChangesPropName as WebhookReleaseEditedPropChangesPropName,
     )
     from githubkit.versions.v2022_11_28.models import (
+        WebhookReleaseEditedPropChangesPropTagName as WebhookReleaseEditedPropChangesPropTagName,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         WebhookReleasePrereleased as WebhookReleasePrereleased,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -9754,6 +9776,7 @@ else:
             "DependabotAlertWithRepositoryPropDependency",
             "OrganizationSecretScanningAlert",
             "Milestone",
+            "IssueType",
             "ReactionRollup",
             "Issue",
             "SubIssuesSummary",
@@ -9878,6 +9901,8 @@ else:
             "ApiInsightsUserStatsItems",
             "InteractionLimitResponse",
             "InteractionLimit",
+            "OrganizationCreateIssueType",
+            "OrganizationUpdateIssueType",
             "OrgMembership",
             "OrgMembershipPropPermissions",
             "Migration",
@@ -9927,15 +9952,9 @@ else:
             "RepositoryRuleDeletion",
             "RepositoryRuleRequiredSignatures",
             "RepositoryRuleNonFastForward",
-            "RepositoryRuleOneof15",
-            "RepositoryRuleOneof15PropParameters",
-            "RepositoryRuleOneof17",
-            "RepositoryRuleOneof17PropParameters",
             "RepositoryRuleUpdate",
             "RepositoryRuleUpdatePropParameters",
             "RepositoryRuleRequiredLinearHistory",
-            "RepositoryRuleOneof16",
-            "RepositoryRuleOneof16PropParameters",
             "RepositoryRuleMergeQueue",
             "RepositoryRuleMergeQueuePropParameters",
             "RepositoryRuleRequiredDeployments",
@@ -9957,6 +9976,14 @@ else:
             "RepositoryRuleBranchNamePatternPropParameters",
             "RepositoryRuleTagNamePattern",
             "RepositoryRuleTagNamePatternPropParameters",
+            "RepositoryRuleFilePathRestriction",
+            "RepositoryRuleFilePathRestrictionPropParameters",
+            "RepositoryRuleMaxFilePathLength",
+            "RepositoryRuleMaxFilePathLengthPropParameters",
+            "RepositoryRuleFileExtensionRestriction",
+            "RepositoryRuleFileExtensionRestrictionPropParameters",
+            "RepositoryRuleMaxFileSize",
+            "RepositoryRuleMaxFileSizePropParameters",
             "RepositoryRuleParamsRestrictedCommits",
             "RepositoryRuleWorkflows",
             "RepositoryRuleWorkflowsPropParameters",
@@ -9964,8 +9991,6 @@ else:
             "RepositoryRuleCodeScanning",
             "RepositoryRuleCodeScanningPropParameters",
             "RepositoryRuleParamsCodeScanningTool",
-            "RepositoryRuleOneof18",
-            "RepositoryRuleOneof18PropParameters",
             "RepositoryRuleset",
             "RepositoryRulesetPropLinks",
             "RepositoryRulesetPropLinksPropSelf",
@@ -10344,6 +10369,10 @@ else:
             "RepositoryRuleDetailedOneof14",
             "RepositoryRuleDetailedOneof15",
             "RepositoryRuleDetailedOneof16",
+            "RepositoryRuleDetailedOneof17",
+            "RepositoryRuleDetailedOneof18",
+            "RepositoryRuleDetailedOneof19",
+            "RepositoryRuleDetailedOneof20",
             "SecretScanningAlert",
             "SecretScanningPushProtectionBypass",
             "SecretScanningScanHistory",
@@ -11102,19 +11131,6 @@ else:
             "WebhookIssuesMilestonedPropIssuePropSubIssuesSummary",
             "WebhookIssuesMilestonedPropIssuePropUser",
             "WebhookIssuesOpened",
-            "WebhookIssuesOpenedPropIssue",
-            "WebhookIssuesOpenedPropIssuePropAssignee",
-            "WebhookIssuesOpenedPropIssuePropAssigneesItems",
-            "WebhookIssuesOpenedPropIssuePropLabelsItems",
-            "WebhookIssuesOpenedPropIssuePropMilestone",
-            "WebhookIssuesOpenedPropIssuePropMilestonePropCreator",
-            "WebhookIssuesOpenedPropIssuePropPerformedViaGithubApp",
-            "WebhookIssuesOpenedPropIssuePropPerformedViaGithubAppPropOwner",
-            "WebhookIssuesOpenedPropIssuePropPerformedViaGithubAppPropPermissions",
-            "WebhookIssuesOpenedPropIssuePropPullRequest",
-            "WebhookIssuesOpenedPropIssuePropReactions",
-            "WebhookIssuesOpenedPropIssuePropSubIssuesSummary",
-            "WebhookIssuesOpenedPropIssuePropUser",
             "WebhookIssuesOpenedPropChanges",
             "WebhookIssuesOpenedPropChangesPropOldIssue",
             "WebhookIssuesOpenedPropChangesPropOldIssuePropAssignee",
@@ -11134,6 +11150,19 @@ else:
             "WebhookIssuesOpenedPropChangesPropOldRepositoryPropLicense",
             "WebhookIssuesOpenedPropChangesPropOldRepositoryPropOwner",
             "WebhookIssuesOpenedPropChangesPropOldRepositoryPropPermissions",
+            "WebhookIssuesOpenedPropIssue",
+            "WebhookIssuesOpenedPropIssuePropAssignee",
+            "WebhookIssuesOpenedPropIssuePropAssigneesItems",
+            "WebhookIssuesOpenedPropIssuePropLabelsItems",
+            "WebhookIssuesOpenedPropIssuePropMilestone",
+            "WebhookIssuesOpenedPropIssuePropMilestonePropCreator",
+            "WebhookIssuesOpenedPropIssuePropPerformedViaGithubApp",
+            "WebhookIssuesOpenedPropIssuePropPerformedViaGithubAppPropOwner",
+            "WebhookIssuesOpenedPropIssuePropPerformedViaGithubAppPropPermissions",
+            "WebhookIssuesOpenedPropIssuePropPullRequest",
+            "WebhookIssuesOpenedPropIssuePropReactions",
+            "WebhookIssuesOpenedPropIssuePropSubIssuesSummary",
+            "WebhookIssuesOpenedPropIssuePropUser",
             "WebhookIssuesPinned",
             "WebhookIssuesReopened",
             "WebhookIssuesReopenedPropIssue",
@@ -11151,6 +11180,11 @@ else:
             "WebhookIssuesReopenedPropIssuePropUser",
             "WebhookIssuesTransferred",
             "WebhookIssuesTransferredPropChanges",
+            "WebhookIssuesTransferredPropChangesPropNewRepository",
+            "WebhookIssuesTransferredPropChangesPropNewRepositoryPropCustomProperties",
+            "WebhookIssuesTransferredPropChangesPropNewRepositoryPropLicense",
+            "WebhookIssuesTransferredPropChangesPropNewRepositoryPropOwner",
+            "WebhookIssuesTransferredPropChangesPropNewRepositoryPropPermissions",
             "WebhookIssuesTransferredPropChangesPropNewIssue",
             "WebhookIssuesTransferredPropChangesPropNewIssuePropAssignee",
             "WebhookIssuesTransferredPropChangesPropNewIssuePropAssigneesItems",
@@ -11164,11 +11198,6 @@ else:
             "WebhookIssuesTransferredPropChangesPropNewIssuePropReactions",
             "WebhookIssuesTransferredPropChangesPropNewIssuePropSubIssuesSummary",
             "WebhookIssuesTransferredPropChangesPropNewIssuePropUser",
-            "WebhookIssuesTransferredPropChangesPropNewRepository",
-            "WebhookIssuesTransferredPropChangesPropNewRepositoryPropCustomProperties",
-            "WebhookIssuesTransferredPropChangesPropNewRepositoryPropLicense",
-            "WebhookIssuesTransferredPropChangesPropNewRepositoryPropOwner",
-            "WebhookIssuesTransferredPropChangesPropNewRepositoryPropPermissions",
             "WebhookIssuesUnassigned",
             "WebhookIssuesUnlabeled",
             "WebhookIssuesUnlocked",
@@ -12331,6 +12360,7 @@ else:
             "WebhookReleaseEditedPropChanges",
             "WebhookReleaseEditedPropChangesPropBody",
             "WebhookReleaseEditedPropChangesPropName",
+            "WebhookReleaseEditedPropChangesPropTagName",
             "WebhookReleaseEditedPropChangesPropMakeLatest",
             "WebhookReleasePrereleased",
             "WebhookReleasePrereleasedPropRelease",

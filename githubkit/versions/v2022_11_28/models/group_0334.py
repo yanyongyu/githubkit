@@ -15,34 +15,42 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0003 import SimpleUser
-from .group_0020 import Repository
+from .group_0019 import LicenseSimple
 
 
-class PullRequestPropHead(GitHubModel):
-    """PullRequestPropHead"""
+class LicenseContent(GitHubModel):
+    """License Content
 
-    label: Union[str, None] = Field()
-    ref: str = Field()
-    repo: Repository = Field(title="Repository", description="A repository on GitHub.")
+    License Content
+    """
+
+    name: str = Field()
+    path: str = Field()
     sha: str = Field()
-    user: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    size: int = Field()
+    url: str = Field()
+    html_url: Union[str, None] = Field()
+    git_url: Union[str, None] = Field()
+    download_url: Union[str, None] = Field()
+    type: str = Field()
+    content: str = Field()
+    encoding: str = Field()
+    links: LicenseContentPropLinks = Field(alias="_links")
+    license_: Union[None, LicenseSimple] = Field(alias="license")
 
 
-class PullRequestPropBase(GitHubModel):
-    """PullRequestPropBase"""
+class LicenseContentPropLinks(GitHubModel):
+    """LicenseContentPropLinks"""
 
-    label: str = Field()
-    ref: str = Field()
-    repo: Repository = Field(title="Repository", description="A repository on GitHub.")
-    sha: str = Field()
-    user: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    git: Union[str, None] = Field()
+    html: Union[str, None] = Field()
+    self_: str = Field(alias="self")
 
 
-model_rebuild(PullRequestPropHead)
-model_rebuild(PullRequestPropBase)
+model_rebuild(LicenseContent)
+model_rebuild(LicenseContentPropLinks)
 
 __all__ = (
-    "PullRequestPropBase",
-    "PullRequestPropHead",
+    "LicenseContent",
+    "LicenseContentPropLinks",
 )

@@ -12,25 +12,18 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0159 import RepositoryRuleMaxFilePathLengthPropParametersType
 
-class RepositoryRuleOneof18Type(TypedDict):
-    """max_file_size
 
-    Prevent commits that exceed a specified file size limit from being pushed to the
-    commit graph.
+class RepositoryRuleMaxFilePathLengthType(TypedDict):
+    """max_file_path_length
+
+    Prevent commits that include file paths that exceed the specified character
+    limit from being pushed to the commit graph.
     """
 
-    type: Literal["max_file_size"]
-    parameters: NotRequired[RepositoryRuleOneof18PropParametersType]
+    type: Literal["max_file_path_length"]
+    parameters: NotRequired[RepositoryRuleMaxFilePathLengthPropParametersType]
 
 
-class RepositoryRuleOneof18PropParametersType(TypedDict):
-    """RepositoryRuleOneof18PropParameters"""
-
-    max_file_size: int
-
-
-__all__ = (
-    "RepositoryRuleOneof18PropParametersType",
-    "RepositoryRuleOneof18Type",
-)
+__all__ = ("RepositoryRuleMaxFilePathLengthType",)

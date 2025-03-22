@@ -73,7 +73,6 @@ class ActionsHostedRunnerPoolImage(GitHubModel):
     source: Literal["github", "partner", "custom"] = Field(
         description="The image provider."
     )
-    version: str = Field(description="The image version of the hosted runner pool.")
 
 
 class PublicIp(GitHubModel):

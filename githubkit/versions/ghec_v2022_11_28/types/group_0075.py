@@ -24,6 +24,7 @@ class DependabotAlertWithRepositoryPropDependencyType(TypedDict):
     package: NotRequired[DependabotAlertPackageType]
     manifest_path: NotRequired[str]
     scope: NotRequired[Union[None, Literal["development", "runtime"]]]
+    relationship: NotRequired[Union[None, Literal["unknown", "direct", "transitive"]]]
 
 
 __all__ = ("DependabotAlertWithRepositoryPropDependencyType",)

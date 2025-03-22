@@ -9,14 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from datetime import datetime
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgSecurityProductEnablementPostBodyType(TypedDict):
-    """OrgsOrgSecurityProductEnablementPostBody"""
+class OrgsOrgPrivateRegistriesGetResponse200Type(TypedDict):
+    """OrgsOrgPrivateRegistriesGetResponse200"""
 
-    query_suite: NotRequired[Literal["default", "extended"]]
+    total_count: int
+    configurations: list[OrgPrivateRegistryConfigurationType]
 
 
-__all__ = ("OrgsOrgSecurityProductEnablementPostBodyType",)
+class OrgPrivateRegistryConfigurationType(TypedDict):
+    """Organization private registry
+
+    Private registry configuration for an organization
+    """
+
+    name: str
+    registry_type: Literal["maven_repository"]
+    username: NotRequired[Union[str, None]]
+    visibility: Literal["all", "private", "selected"]
+    created_at: datetime
+    updated_at: datetime
+
+
+__all__ = (
+    "OrgPrivateRegistryConfigurationType",
+    "OrgsOrgPrivateRegistriesGetResponse200Type",
+)

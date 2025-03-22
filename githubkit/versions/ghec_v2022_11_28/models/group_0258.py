@@ -17,161 +17,52 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0249 import BranchRestrictionPolicy
-from .group_0259 import ProtectedBranchPropRequiredPullRequestReviews
+from .group_0003 import SimpleUser
+from .group_0010 import Integration
+from .group_0067 import Team
 
 
-class ProtectedBranch(GitHubModel):
-    """Protected Branch
+class ProtectedBranchPullRequestReviewPropDismissalRestrictions(GitHubModel):
+    """ProtectedBranchPullRequestReviewPropDismissalRestrictions"""
 
-    Branch protections protect branches
+    users: Missing[list[SimpleUser]] = Field(
+        default=UNSET, description="The list of users with review dismissal access."
+    )
+    teams: Missing[list[Team]] = Field(
+        default=UNSET, description="The list of teams with review dismissal access."
+    )
+    apps: Missing[list[Union[Integration, None]]] = Field(
+        default=UNSET, description="The list of apps with review dismissal access."
+    )
+    url: Missing[str] = Field(default=UNSET)
+    users_url: Missing[str] = Field(default=UNSET)
+    teams_url: Missing[str] = Field(default=UNSET)
+
+
+class ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances(GitHubModel):
+    """ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances
+
+    Allow specific users, teams, or apps to bypass pull request requirements.
     """
 
-    url: str = Field()
-    required_status_checks: Missing[StatusCheckPolicy] = Field(
-        default=UNSET, title="Status Check Policy", description="Status Check Policy"
-    )
-    required_pull_request_reviews: Missing[
-        ProtectedBranchPropRequiredPullRequestReviews
-    ] = Field(default=UNSET)
-    required_signatures: Missing[ProtectedBranchPropRequiredSignatures] = Field(
-        default=UNSET
-    )
-    enforce_admins: Missing[ProtectedBranchPropEnforceAdmins] = Field(default=UNSET)
-    required_linear_history: Missing[ProtectedBranchPropRequiredLinearHistory] = Field(
-        default=UNSET
-    )
-    allow_force_pushes: Missing[ProtectedBranchPropAllowForcePushes] = Field(
-        default=UNSET
-    )
-    allow_deletions: Missing[ProtectedBranchPropAllowDeletions] = Field(default=UNSET)
-    restrictions: Missing[BranchRestrictionPolicy] = Field(
+    users: Missing[list[SimpleUser]] = Field(
         default=UNSET,
-        title="Branch Restriction Policy",
-        description="Branch Restriction Policy",
+        description="The list of users allowed to bypass pull request requirements.",
     )
-    required_conversation_resolution: Missing[
-        ProtectedBranchPropRequiredConversationResolution
-    ] = Field(default=UNSET)
-    block_creations: Missing[ProtectedBranchPropBlockCreations] = Field(default=UNSET)
-    lock_branch: Missing[ProtectedBranchPropLockBranch] = Field(
+    teams: Missing[list[Team]] = Field(
         default=UNSET,
-        description="Whether to set the branch as read-only. If this is true, users will not be able to push to the branch.",
+        description="The list of teams allowed to bypass pull request requirements.",
     )
-    allow_fork_syncing: Missing[ProtectedBranchPropAllowForkSyncing] = Field(
+    apps: Missing[list[Union[Integration, None]]] = Field(
         default=UNSET,
-        description="Whether users can pull changes from upstream when the branch is locked. Set to `true` to allow fork syncing. Set to `false` to prevent fork syncing.",
+        description="The list of apps allowed to bypass pull request requirements.",
     )
 
 
-class ProtectedBranchPropRequiredSignatures(GitHubModel):
-    """ProtectedBranchPropRequiredSignatures"""
-
-    url: str = Field()
-    enabled: bool = Field()
-
-
-class ProtectedBranchPropEnforceAdmins(GitHubModel):
-    """ProtectedBranchPropEnforceAdmins"""
-
-    url: str = Field()
-    enabled: bool = Field()
-
-
-class ProtectedBranchPropRequiredLinearHistory(GitHubModel):
-    """ProtectedBranchPropRequiredLinearHistory"""
-
-    enabled: bool = Field()
-
-
-class ProtectedBranchPropAllowForcePushes(GitHubModel):
-    """ProtectedBranchPropAllowForcePushes"""
-
-    enabled: bool = Field()
-
-
-class ProtectedBranchPropAllowDeletions(GitHubModel):
-    """ProtectedBranchPropAllowDeletions"""
-
-    enabled: bool = Field()
-
-
-class ProtectedBranchPropRequiredConversationResolution(GitHubModel):
-    """ProtectedBranchPropRequiredConversationResolution"""
-
-    enabled: Missing[bool] = Field(default=UNSET)
-
-
-class ProtectedBranchPropBlockCreations(GitHubModel):
-    """ProtectedBranchPropBlockCreations"""
-
-    enabled: bool = Field()
-
-
-class ProtectedBranchPropLockBranch(GitHubModel):
-    """ProtectedBranchPropLockBranch
-
-    Whether to set the branch as read-only. If this is true, users will not be able
-    to push to the branch.
-    """
-
-    enabled: Missing[bool] = Field(default=UNSET)
-
-
-class ProtectedBranchPropAllowForkSyncing(GitHubModel):
-    """ProtectedBranchPropAllowForkSyncing
-
-    Whether users can pull changes from upstream when the branch is locked. Set to
-    `true` to allow fork syncing. Set to `false` to prevent fork syncing.
-    """
-
-    enabled: Missing[bool] = Field(default=UNSET)
-
-
-class StatusCheckPolicy(GitHubModel):
-    """Status Check Policy
-
-    Status Check Policy
-    """
-
-    url: str = Field()
-    strict: bool = Field()
-    contexts: list[str] = Field()
-    checks: list[StatusCheckPolicyPropChecksItems] = Field()
-    contexts_url: str = Field()
-
-
-class StatusCheckPolicyPropChecksItems(GitHubModel):
-    """StatusCheckPolicyPropChecksItems"""
-
-    context: str = Field()
-    app_id: Union[int, None] = Field()
-
-
-model_rebuild(ProtectedBranch)
-model_rebuild(ProtectedBranchPropRequiredSignatures)
-model_rebuild(ProtectedBranchPropEnforceAdmins)
-model_rebuild(ProtectedBranchPropRequiredLinearHistory)
-model_rebuild(ProtectedBranchPropAllowForcePushes)
-model_rebuild(ProtectedBranchPropAllowDeletions)
-model_rebuild(ProtectedBranchPropRequiredConversationResolution)
-model_rebuild(ProtectedBranchPropBlockCreations)
-model_rebuild(ProtectedBranchPropLockBranch)
-model_rebuild(ProtectedBranchPropAllowForkSyncing)
-model_rebuild(StatusCheckPolicy)
-model_rebuild(StatusCheckPolicyPropChecksItems)
+model_rebuild(ProtectedBranchPullRequestReviewPropDismissalRestrictions)
+model_rebuild(ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances)
 
 __all__ = (
-    "ProtectedBranch",
-    "ProtectedBranchPropAllowDeletions",
-    "ProtectedBranchPropAllowForcePushes",
-    "ProtectedBranchPropAllowForkSyncing",
-    "ProtectedBranchPropBlockCreations",
-    "ProtectedBranchPropEnforceAdmins",
-    "ProtectedBranchPropLockBranch",
-    "ProtectedBranchPropRequiredConversationResolution",
-    "ProtectedBranchPropRequiredLinearHistory",
-    "ProtectedBranchPropRequiredSignatures",
-    "StatusCheckPolicy",
-    "StatusCheckPolicyPropChecksItems",
+    "ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances",
+    "ProtectedBranchPullRequestReviewPropDismissalRestrictions",
 )

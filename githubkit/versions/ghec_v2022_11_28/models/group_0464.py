@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Literal, Union
+from typing import Any, Union
 
 from pydantic import Field
 
@@ -18,172 +18,71 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0463 import ExemptionResponse
 
+class GpgKey(GitHubModel):
+    """GPG Key
 
-class ExemptionRequest(GitHubModel):
-    """Exemption Request
-
-    A request from a user to be exempted from a set of rules.
+    A unique encryption key
     """
 
-    id: Missing[int] = Field(
-        default=UNSET, description="The ID of the exemption request."
-    )
-    number: Missing[int] = Field(
-        default=UNSET,
-        description="The number uniquely identifying the exemption request within it's repository.",
-    )
-    repository_id: Missing[int] = Field(
-        default=UNSET,
-        description="The ID of the repository the exemption request is for.",
-    )
-    requester_id: Missing[int] = Field(
-        default=UNSET, description="The ID of the user who requested the exemption."
-    )
-    requester_login: Missing[str] = Field(
-        default=UNSET, description="The login of the user who requested the exemption."
-    )
-    request_type: Missing[Literal["push_ruleset_bypass", "secret_scanning"]] = Field(
-        default=UNSET, description="The type of request."
-    )
-    exemption_request_data: Missing[
-        Union[ExemptionRequestPushRulesetBypass, ExemptionRequestSecretScanning]
-    ] = Field(default=UNSET)
-    resource_identifier: Missing[str] = Field(
-        default=UNSET,
-        description="The unique identifier for the request type of the exemption request. For example, a commit SHA.",
-    )
-    status: Missing[Literal["pending", "rejected", "cancelled", "completed"]] = Field(
-        default=UNSET, description="The status of the exemption request."
-    )
-    requester_comment: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The comment the requester provided when creating the exemption request.",
-    )
-    metadata: Missing[Union[ExemptionRequestSecretScanningMetadata, None]] = Field(
-        default=UNSET, description="Metadata about the exemption request."
-    )
-    expires_at: Missing[datetime] = Field(
-        default=UNSET,
-        description="The date and time the exemption request will expire.",
-    )
-    created_at: Missing[datetime] = Field(
-        default=UNSET,
-        description="The date and time the exemption request was created.",
-    )
-    responses: Missing[Union[list[ExemptionResponse], None]] = Field(
-        default=UNSET, description="The responses to the exemption request."
-    )
-    html_url: Missing[str] = Field(
-        default=UNSET, description="The URL to view the exemption request in a browser."
-    )
+    id: int = Field()
+    name: Missing[Union[str, None]] = Field(default=UNSET)
+    primary_key_id: Union[int, None] = Field()
+    key_id: str = Field()
+    public_key: str = Field()
+    emails: list[GpgKeyPropEmailsItems] = Field()
+    subkeys: list[GpgKeyPropSubkeysItems] = Field()
+    can_sign: bool = Field()
+    can_encrypt_comms: bool = Field()
+    can_encrypt_storage: bool = Field()
+    can_certify: bool = Field()
+    created_at: datetime = Field()
+    expires_at: Union[datetime, None] = Field()
+    revoked: bool = Field()
+    raw_key: Union[str, None] = Field()
 
 
-class ExemptionRequestSecretScanningMetadata(GitHubModel):
-    """Secret Scanning Push Protection Exemption Request Metadata
+class GpgKeyPropEmailsItems(GitHubModel):
+    """GpgKeyPropEmailsItems"""
 
-    Metadata for a secret scanning push protection exemption request.
-    """
-
-    label: Missing[str] = Field(
-        default=UNSET, description="The label for the secret type"
-    )
-    reason: Missing[Literal["fixed_later", "false_positive", "tests"]] = Field(
-        default=UNSET, description="The reason for the exemption request"
-    )
+    email: Missing[str] = Field(default=UNSET)
+    verified: Missing[bool] = Field(default=UNSET)
 
 
-class ExemptionRequestPushRulesetBypass(GitHubModel):
-    """Push ruleset bypass exemption request data
+class GpgKeyPropSubkeysItems(GitHubModel):
+    """GpgKeyPropSubkeysItems"""
 
-    Push rules that are being requested to be bypassed.
-    """
-
-    type: Missing[Literal["push_ruleset_bypass"]] = Field(
-        default=UNSET, description="The type of request"
-    )
-    data: Missing[list[ExemptionRequestPushRulesetBypassPropDataItems]] = Field(
-        default=UNSET,
-        description="The data pertaining to the push rules that are being requested to be bypassed.",
-    )
-
-
-class ExemptionRequestPushRulesetBypassPropDataItems(GitHubModel):
-    """ExemptionRequestPushRulesetBypassPropDataItems"""
-
-    ruleset_id: Missing[int] = Field(
-        default=UNSET,
-        description="The ID of the ruleset for the rules that were violated",
-    )
-    ruleset_name: Missing[str] = Field(
-        default=UNSET,
-        description="The name of the ruleset for the rules that were violated",
-    )
-    total_violations: Missing[int] = Field(
-        default=UNSET, description="The number of violations"
-    )
-    rule_type: Missing[str] = Field(
-        default=UNSET, description="The type of rule that was violated"
-    )
+    id: Missing[int] = Field(default=UNSET)
+    primary_key_id: Missing[int] = Field(default=UNSET)
+    key_id: Missing[str] = Field(default=UNSET)
+    public_key: Missing[str] = Field(default=UNSET)
+    emails: Missing[list[GpgKeyPropSubkeysItemsPropEmailsItems]] = Field(default=UNSET)
+    subkeys: Missing[list[Any]] = Field(default=UNSET)
+    can_sign: Missing[bool] = Field(default=UNSET)
+    can_encrypt_comms: Missing[bool] = Field(default=UNSET)
+    can_encrypt_storage: Missing[bool] = Field(default=UNSET)
+    can_certify: Missing[bool] = Field(default=UNSET)
+    created_at: Missing[str] = Field(default=UNSET)
+    expires_at: Missing[Union[str, None]] = Field(default=UNSET)
+    raw_key: Missing[Union[str, None]] = Field(default=UNSET)
+    revoked: Missing[bool] = Field(default=UNSET)
 
 
-class ExemptionRequestSecretScanning(GitHubModel):
-    """Secret scanning push protection exemption request data
+class GpgKeyPropSubkeysItemsPropEmailsItems(GitHubModel):
+    """GpgKeyPropSubkeysItemsPropEmailsItems"""
 
-    Secret scanning push protections that are being requested to be bypassed.
-    """
-
-    type: Missing[Literal["secret_scanning"]] = Field(
-        default=UNSET, description="The type of request"
-    )
-    data: Missing[list[ExemptionRequestSecretScanningPropDataItems]] = Field(
-        default=UNSET,
-        description="The data pertaining to the secret scanning push protections that are being requested to be bypassed.",
-    )
+    email: Missing[str] = Field(default=UNSET)
+    verified: Missing[bool] = Field(default=UNSET)
 
 
-class ExemptionRequestSecretScanningPropDataItems(GitHubModel):
-    """ExemptionRequestSecretScanningPropDataItems"""
-
-    secret_type: Missing[str] = Field(
-        default=UNSET, description="The type of secret that was detected"
-    )
-    locations: Missing[
-        list[ExemptionRequestSecretScanningPropDataItemsPropLocationsItems]
-    ] = Field(
-        default=UNSET, description="The location data of the secret that was detected"
-    )
-
-
-class ExemptionRequestSecretScanningPropDataItemsPropLocationsItems(GitHubModel):
-    """ExemptionRequestSecretScanningPropDataItemsPropLocationsItems"""
-
-    commit: Missing[str] = Field(
-        default=UNSET, description="The commit SHA where the secret was detected"
-    )
-    branch: Missing[str] = Field(
-        default=UNSET, description="The branch where the secret was detected"
-    )
-    path: Missing[str] = Field(
-        default=UNSET, description="The path of the file where the secret was detected"
-    )
-
-
-model_rebuild(ExemptionRequest)
-model_rebuild(ExemptionRequestSecretScanningMetadata)
-model_rebuild(ExemptionRequestPushRulesetBypass)
-model_rebuild(ExemptionRequestPushRulesetBypassPropDataItems)
-model_rebuild(ExemptionRequestSecretScanning)
-model_rebuild(ExemptionRequestSecretScanningPropDataItems)
-model_rebuild(ExemptionRequestSecretScanningPropDataItemsPropLocationsItems)
+model_rebuild(GpgKey)
+model_rebuild(GpgKeyPropEmailsItems)
+model_rebuild(GpgKeyPropSubkeysItems)
+model_rebuild(GpgKeyPropSubkeysItemsPropEmailsItems)
 
 __all__ = (
-    "ExemptionRequest",
-    "ExemptionRequestPushRulesetBypass",
-    "ExemptionRequestPushRulesetBypassPropDataItems",
-    "ExemptionRequestSecretScanning",
-    "ExemptionRequestSecretScanningMetadata",
-    "ExemptionRequestSecretScanningPropDataItems",
-    "ExemptionRequestSecretScanningPropDataItemsPropLocationsItems",
+    "GpgKey",
+    "GpgKeyPropEmailsItems",
+    "GpgKeyPropSubkeysItems",
+    "GpgKeyPropSubkeysItemsPropEmailsItems",
 )

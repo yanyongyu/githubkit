@@ -9,75 +9,120 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from datetime import datetime
+from typing import Any, Union
+from typing_extensions import NotRequired, TypeAlias, TypedDict
+
+from .group_0003 import SimpleUserType
+from .group_0158 import GistHistoryType, GistSimplePropForkOfType
 
 
-class ApiOverviewType(TypedDict):
-    """Api Overview
+class GistSimpleType(TypedDict):
+    """Gist Simple
 
-    Api Overview
+    Gist Simple
     """
 
-    verifiable_password_authentication: bool
-    ssh_key_fingerprints: NotRequired[ApiOverviewPropSshKeyFingerprintsType]
-    ssh_keys: NotRequired[list[str]]
-    hooks: NotRequired[list[str]]
-    github_enterprise_importer: NotRequired[list[str]]
-    web: NotRequired[list[str]]
-    api: NotRequired[list[str]]
-    git: NotRequired[list[str]]
-    packages: NotRequired[list[str]]
-    pages: NotRequired[list[str]]
-    importer: NotRequired[list[str]]
-    actions: NotRequired[list[str]]
-    actions_macos: NotRequired[list[str]]
-    codespaces: NotRequired[list[str]]
-    dependabot: NotRequired[list[str]]
-    copilot: NotRequired[list[str]]
-    domains: NotRequired[ApiOverviewPropDomainsType]
+    forks: NotRequired[Union[list[GistSimplePropForksItemsType], None]]
+    history: NotRequired[Union[list[GistHistoryType], None]]
+    fork_of: NotRequired[Union[GistSimplePropForkOfType, None]]
+    url: NotRequired[str]
+    forks_url: NotRequired[str]
+    commits_url: NotRequired[str]
+    id: NotRequired[str]
+    node_id: NotRequired[str]
+    git_pull_url: NotRequired[str]
+    git_push_url: NotRequired[str]
+    html_url: NotRequired[str]
+    files: NotRequired[GistSimplePropFilesType]
+    public: NotRequired[bool]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
+    description: NotRequired[Union[str, None]]
+    comments: NotRequired[int]
+    comments_enabled: NotRequired[bool]
+    user: NotRequired[Union[str, None]]
+    comments_url: NotRequired[str]
+    owner: NotRequired[SimpleUserType]
+    truncated: NotRequired[bool]
 
 
-class ApiOverviewPropSshKeyFingerprintsType(TypedDict):
-    """ApiOverviewPropSshKeyFingerprints"""
-
-    sha256_rsa: NotRequired[str]
-    sha256_dsa: NotRequired[str]
-    sha256_ecdsa: NotRequired[str]
-    sha256_ed25519: NotRequired[str]
+GistSimplePropFilesType: TypeAlias = dict[str, Any]
+"""GistSimplePropFiles
+"""
 
 
-class ApiOverviewPropDomainsType(TypedDict):
-    """ApiOverviewPropDomains"""
+class GistSimplePropForksItemsType(TypedDict):
+    """GistSimplePropForksItems"""
 
-    website: NotRequired[list[str]]
-    codespaces: NotRequired[list[str]]
-    copilot: NotRequired[list[str]]
-    packages: NotRequired[list[str]]
-    actions: NotRequired[list[str]]
-    actions_inbound: NotRequired[ApiOverviewPropDomainsPropActionsInboundType]
-    artifact_attestations: NotRequired[
-        ApiOverviewPropDomainsPropArtifactAttestationsType
-    ]
+    id: NotRequired[str]
+    url: NotRequired[str]
+    user: NotRequired[PublicUserType]
+    created_at: NotRequired[datetime]
+    updated_at: NotRequired[datetime]
 
 
-class ApiOverviewPropDomainsPropActionsInboundType(TypedDict):
-    """ApiOverviewPropDomainsPropActionsInbound"""
+class PublicUserType(TypedDict):
+    """Public User
 
-    full_domains: NotRequired[list[str]]
-    wildcard_domains: NotRequired[list[str]]
+    Public User
+    """
+
+    login: str
+    id: int
+    user_view_type: NotRequired[str]
+    node_id: str
+    avatar_url: str
+    gravatar_id: Union[str, None]
+    url: str
+    html_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    name: Union[str, None]
+    company: Union[str, None]
+    blog: Union[str, None]
+    location: Union[str, None]
+    email: Union[str, None]
+    notification_email: NotRequired[Union[str, None]]
+    hireable: Union[bool, None]
+    bio: Union[str, None]
+    twitter_username: NotRequired[Union[str, None]]
+    public_repos: int
+    public_gists: int
+    followers: int
+    following: int
+    created_at: datetime
+    updated_at: datetime
+    plan: NotRequired[PublicUserPropPlanType]
+    private_gists: NotRequired[int]
+    total_private_repos: NotRequired[int]
+    owned_private_repos: NotRequired[int]
+    disk_usage: NotRequired[int]
+    collaborators: NotRequired[int]
 
 
-class ApiOverviewPropDomainsPropArtifactAttestationsType(TypedDict):
-    """ApiOverviewPropDomainsPropArtifactAttestations"""
+class PublicUserPropPlanType(TypedDict):
+    """PublicUserPropPlan"""
 
-    trust_domain: NotRequired[str]
-    services: NotRequired[list[str]]
+    collaborators: int
+    name: str
+    space: int
+    private_repos: int
 
 
 __all__ = (
-    "ApiOverviewPropDomainsPropActionsInboundType",
-    "ApiOverviewPropDomainsPropArtifactAttestationsType",
-    "ApiOverviewPropDomainsType",
-    "ApiOverviewPropSshKeyFingerprintsType",
-    "ApiOverviewType",
+    "GistSimplePropFilesType",
+    "GistSimplePropForksItemsType",
+    "GistSimpleType",
+    "PublicUserPropPlanType",
+    "PublicUserType",
 )

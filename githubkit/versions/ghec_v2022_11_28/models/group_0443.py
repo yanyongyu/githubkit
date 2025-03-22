@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,93 +17,29 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0436 import SearchResultTextMatchesItems
 
+class UserRoleItems(GitHubModel):
+    """UserRoleItems"""
 
-class TopicSearchResultItem(GitHubModel):
-    """Topic Search Result Item
-
-    Topic Search Result Item
-    """
-
-    name: str = Field()
-    display_name: Union[str, None] = Field()
-    short_description: Union[str, None] = Field()
-    description: Union[str, None] = Field()
-    created_by: Union[str, None] = Field()
-    released: Union[str, None] = Field()
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    featured: bool = Field()
-    curated: bool = Field()
-    score: float = Field()
-    repository_count: Missing[Union[int, None]] = Field(default=UNSET)
-    logo_url: Missing[Union[str, None]] = Field(default=UNSET)
-    text_matches: Missing[list[SearchResultTextMatchesItems]] = Field(
-        default=UNSET, title="Search Result Text Matches"
-    )
-    related: Missing[Union[list[TopicSearchResultItemPropRelatedItems], None]] = Field(
-        default=UNSET
-    )
-    aliases: Missing[Union[list[TopicSearchResultItemPropAliasesItems], None]] = Field(
-        default=UNSET
+    display: Missing[str] = Field(default=UNSET)
+    type: Missing[str] = Field(default=UNSET)
+    value: Literal[
+        "user",
+        "27d9891d-2c17-4f45-a262-781a0e55c80a",
+        "guest_collaborator",
+        "1ebc4a02-e56c-43a6-92a5-02ee09b90824",
+        "enterprise_owner",
+        "981df190-8801-4618-a08a-d91f6206c954",
+        "ba4987ab-a1c3-412a-b58c-360fc407cb10",
+        "billing_manager",
+        "0e338b8c-cc7f-498a-928d-ea3470d7e7e3",
+        "e6be2762-e4ad-4108-b72d-1bbe884a0f91",
+    ] = Field(description="The role value representing a user role in GitHub.")
+    primary: Missing[bool] = Field(
+        default=UNSET, description="Is the role a primary role for the user."
     )
 
 
-class TopicSearchResultItemPropRelatedItems(GitHubModel):
-    """TopicSearchResultItemPropRelatedItems"""
+model_rebuild(UserRoleItems)
 
-    topic_relation: Missing[TopicSearchResultItemPropRelatedItemsPropTopicRelation] = (
-        Field(default=UNSET)
-    )
-
-
-class TopicSearchResultItemPropRelatedItemsPropTopicRelation(GitHubModel):
-    """TopicSearchResultItemPropRelatedItemsPropTopicRelation"""
-
-    id: Missing[int] = Field(default=UNSET)
-    name: Missing[str] = Field(default=UNSET)
-    topic_id: Missing[int] = Field(default=UNSET)
-    relation_type: Missing[str] = Field(default=UNSET)
-
-
-class TopicSearchResultItemPropAliasesItems(GitHubModel):
-    """TopicSearchResultItemPropAliasesItems"""
-
-    topic_relation: Missing[TopicSearchResultItemPropAliasesItemsPropTopicRelation] = (
-        Field(default=UNSET)
-    )
-
-
-class TopicSearchResultItemPropAliasesItemsPropTopicRelation(GitHubModel):
-    """TopicSearchResultItemPropAliasesItemsPropTopicRelation"""
-
-    id: Missing[int] = Field(default=UNSET)
-    name: Missing[str] = Field(default=UNSET)
-    topic_id: Missing[int] = Field(default=UNSET)
-    relation_type: Missing[str] = Field(default=UNSET)
-
-
-class SearchTopicsGetResponse200(GitHubModel):
-    """SearchTopicsGetResponse200"""
-
-    total_count: int = Field()
-    incomplete_results: bool = Field()
-    items: list[TopicSearchResultItem] = Field()
-
-
-model_rebuild(TopicSearchResultItem)
-model_rebuild(TopicSearchResultItemPropRelatedItems)
-model_rebuild(TopicSearchResultItemPropRelatedItemsPropTopicRelation)
-model_rebuild(TopicSearchResultItemPropAliasesItems)
-model_rebuild(TopicSearchResultItemPropAliasesItemsPropTopicRelation)
-model_rebuild(SearchTopicsGetResponse200)
-
-__all__ = (
-    "SearchTopicsGetResponse200",
-    "TopicSearchResultItem",
-    "TopicSearchResultItemPropAliasesItems",
-    "TopicSearchResultItemPropAliasesItemsPropTopicRelation",
-    "TopicSearchResultItemPropRelatedItems",
-    "TopicSearchResultItemPropRelatedItemsPropTopicRelation",
-)
+__all__ = ("UserRoleItems",)

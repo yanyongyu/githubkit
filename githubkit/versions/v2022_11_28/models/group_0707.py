@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -17,64 +17,44 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0708 import (
-    WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersion,
-)
+from .group_0003 import SimpleUser
+from .group_0039 import Milestone
+from .group_0418 import EnterpriseWebhooks
+from .group_0420 import OrganizationSimpleWebhooks
+from .group_0421 import RepositoryWebhooks
+from .group_0458 import WebhooksPullRequest5
 
 
-class WebhookRegistryPackageUpdatedPropRegistryPackage(GitHubModel):
-    """WebhookRegistryPackageUpdatedPropRegistryPackage"""
+class WebhookPullRequestMilestoned(GitHubModel):
+    """pull_request milestoned event"""
 
-    created_at: str = Field()
-    description: None = Field()
-    ecosystem: str = Field()
-    html_url: str = Field()
-    id: int = Field()
-    name: str = Field()
-    namespace: str = Field()
-    owner: WebhookRegistryPackageUpdatedPropRegistryPackagePropOwner = Field()
-    package_type: str = Field()
-    package_version: WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersion = Field()
-    registry: Union[
-        WebhookRegistryPackageUpdatedPropRegistryPackagePropRegistry, None
-    ] = Field()
-    updated_at: str = Field()
-
-
-class WebhookRegistryPackageUpdatedPropRegistryPackagePropOwner(GitHubModel):
-    """WebhookRegistryPackageUpdatedPropRegistryPackagePropOwner"""
-
-    avatar_url: str = Field()
-    events_url: str = Field()
-    followers_url: str = Field()
-    following_url: str = Field()
-    gists_url: str = Field()
-    gravatar_id: str = Field()
-    html_url: str = Field()
-    id: int = Field()
-    login: str = Field()
-    node_id: str = Field()
-    organizations_url: str = Field()
-    received_events_url: str = Field()
-    repos_url: str = Field()
-    site_admin: bool = Field()
-    starred_url: str = Field()
-    subscriptions_url: str = Field()
-    type: str = Field()
-    url: str = Field()
-    user_view_type: Missing[str] = Field(default=UNSET)
+    action: Literal["milestoned"] = Field()
+    enterprise: Missing[EnterpriseWebhooks] = Field(
+        default=UNSET,
+        title="Enterprise",
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."',
+    )
+    milestone: Missing[Milestone] = Field(
+        default=UNSET,
+        title="Milestone",
+        description="A collection of related issues and pull requests.",
+    )
+    number: int = Field(description="The pull request number.")
+    organization: Missing[OrganizationSimpleWebhooks] = Field(
+        default=UNSET,
+        title="Organization Simple",
+        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
+    )
+    pull_request: WebhooksPullRequest5 = Field(title="Pull Request")
+    repository: RepositoryWebhooks = Field(
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    )
+    sender: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
+    )
 
 
-class WebhookRegistryPackageUpdatedPropRegistryPackagePropRegistry(GitHubModel):
-    """WebhookRegistryPackageUpdatedPropRegistryPackagePropRegistry"""
+model_rebuild(WebhookPullRequestMilestoned)
 
-
-model_rebuild(WebhookRegistryPackageUpdatedPropRegistryPackage)
-model_rebuild(WebhookRegistryPackageUpdatedPropRegistryPackagePropOwner)
-model_rebuild(WebhookRegistryPackageUpdatedPropRegistryPackagePropRegistry)
-
-__all__ = (
-    "WebhookRegistryPackageUpdatedPropRegistryPackage",
-    "WebhookRegistryPackageUpdatedPropRegistryPackagePropOwner",
-    "WebhookRegistryPackageUpdatedPropRegistryPackagePropRegistry",
-)
+__all__ = ("WebhookPullRequestMilestoned",)

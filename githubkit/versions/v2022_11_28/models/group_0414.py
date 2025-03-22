@@ -9,24 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class WebhooksWorkflowJobRun(GitHubModel):
-    """WebhooksWorkflowJobRun"""
+class SshSigningKey(GitHubModel):
+    """SSH Signing Key
 
-    conclusion: None = Field()
-    created_at: str = Field()
-    environment: str = Field()
-    html_url: str = Field()
+    A public SSH key used to sign Git commits
+    """
+
+    key: str = Field()
     id: int = Field()
-    name: None = Field()
-    status: str = Field()
-    updated_at: str = Field()
+    title: str = Field()
+    created_at: datetime = Field()
 
 
-model_rebuild(WebhooksWorkflowJobRun)
+model_rebuild(SshSigningKey)
 
-__all__ = ("WebhooksWorkflowJobRun",)
+__all__ = ("SshSigningKey",)

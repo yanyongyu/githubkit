@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from datetime import datetime
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -17,27 +18,77 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0101 import RepositoryRuleMergeQueuePropParameters
+from .group_0003 import SimpleUser
+from .group_0152 import ReactionRollup
+from .group_0390 import ReviewCommentPropLinks
 
 
-class RepositoryRuleDetailedOneof4(GitHubModel):
-    """RepositoryRuleDetailedOneof4"""
+class ReviewComment(GitHubModel):
+    """Legacy Review Comment
 
-    type: Literal["merge_queue"] = Field()
-    parameters: Missing[RepositoryRuleMergeQueuePropParameters] = Field(default=UNSET)
-    ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
+    Legacy Review Comment
+    """
+
+    url: str = Field()
+    pull_request_review_id: Union[int, None] = Field()
+    id: int = Field()
+    node_id: str = Field()
+    diff_hunk: str = Field()
+    path: str = Field()
+    position: Union[int, None] = Field()
+    original_position: int = Field()
+    commit_id: str = Field()
+    original_commit_id: str = Field()
+    in_reply_to_id: Missing[int] = Field(default=UNSET)
+    user: Union[None, SimpleUser] = Field()
+    body: str = Field()
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+    html_url: str = Field()
+    pull_request_url: str = Field()
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ] = Field(
+        title="author_association",
+        description="How the author is associated with the repository.",
+    )
+    links: ReviewCommentPropLinks = Field(alias="_links")
+    body_text: Missing[str] = Field(default=UNSET)
+    body_html: Missing[str] = Field(default=UNSET)
+    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
+    side: Missing[Literal["LEFT", "RIGHT"]] = Field(
         default=UNSET,
-        description="The type of source for the ruleset that includes this rule.",
+        description="The side of the first line of the range for a multi-line comment.",
     )
-    ruleset_source: Missing[str] = Field(
+    start_side: Missing[Union[None, Literal["LEFT", "RIGHT"]]] = Field(
         default=UNSET,
-        description="The name of the source of the ruleset that includes this rule.",
+        description="The side of the first line of the range for a multi-line comment.",
     )
-    ruleset_id: Missing[int] = Field(
-        default=UNSET, description="The ID of the ruleset that includes this rule."
+    line: Missing[int] = Field(
+        default=UNSET,
+        description="The line of the blob to which the comment applies. The last line of the range for a multi-line comment",
+    )
+    original_line: Missing[int] = Field(
+        default=UNSET,
+        description="The original line of the blob to which the comment applies. The last line of the range for a multi-line comment",
+    )
+    start_line: Missing[Union[int, None]] = Field(
+        default=UNSET,
+        description="The first line of the range for a multi-line comment.",
+    )
+    original_start_line: Missing[Union[int, None]] = Field(
+        default=UNSET,
+        description="The original first line of the range for a multi-line comment.",
     )
 
 
-model_rebuild(RepositoryRuleDetailedOneof4)
+model_rebuild(ReviewComment)
 
-__all__ = ("RepositoryRuleDetailedOneof4",)
+__all__ = ("ReviewComment",)

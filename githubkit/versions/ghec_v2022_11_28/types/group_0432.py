@@ -9,18 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0423 import MetaType
-from .group_0433 import ScimEnterpriseUserResponseAllof1PropGroupsItemsType
-
-
-class ScimEnterpriseUserResponseAllof1Type(TypedDict):
-    """ScimEnterpriseUserResponseAllof1"""
-
-    id: str
-    groups: NotRequired[list[ScimEnterpriseUserResponseAllof1PropGroupsItemsType]]
-    meta: MetaType
+from .group_0431 import TrafficType
 
 
-__all__ = ("ScimEnterpriseUserResponseAllof1Type",)
+class CloneTrafficType(TypedDict):
+    """Clone Traffic
+
+    Clone Traffic
+    """
+
+    count: int
+    uniques: int
+    clones: list[TrafficType]
+
+
+__all__ = ("CloneTrafficType",)

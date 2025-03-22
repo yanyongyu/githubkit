@@ -10,37 +10,48 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class RepositoryRuleRequiredLinearHistoryType(TypedDict):
-    """required_linear_history
+class RepositoryRuleCreationType(TypedDict):
+    """creation
 
-    Prevent merge commits from being pushed to matching refs.
+    Only allow users with bypass permission to create matching refs.
     """
 
-    type: Literal["required_linear_history"]
+    type: Literal["creation"]
 
 
-class RepositoryRuleOneof16Type(TypedDict):
-    """max_file_path_length
+class RepositoryRuleDeletionType(TypedDict):
+    """deletion
 
-    Prevent commits that include file paths that exceed a specified character limit
-    from being pushed to the commit graph.
+    Only allow users with bypass permissions to delete matching refs.
     """
 
-    type: Literal["max_file_path_length"]
-    parameters: NotRequired[RepositoryRuleOneof16PropParametersType]
+    type: Literal["deletion"]
 
 
-class RepositoryRuleOneof16PropParametersType(TypedDict):
-    """RepositoryRuleOneof16PropParameters"""
+class RepositoryRuleRequiredSignaturesType(TypedDict):
+    """required_signatures
 
-    max_file_path_length: int
+    Commits pushed to matching refs must have verified signatures.
+    """
+
+    type: Literal["required_signatures"]
+
+
+class RepositoryRuleNonFastForwardType(TypedDict):
+    """non_fast_forward
+
+    Prevent users with push access from force pushing to refs.
+    """
+
+    type: Literal["non_fast_forward"]
 
 
 __all__ = (
-    "RepositoryRuleOneof16PropParametersType",
-    "RepositoryRuleOneof16Type",
-    "RepositoryRuleRequiredLinearHistoryType",
+    "RepositoryRuleCreationType",
+    "RepositoryRuleDeletionType",
+    "RepositoryRuleNonFastForwardType",
+    "RepositoryRuleRequiredSignaturesType",
 )

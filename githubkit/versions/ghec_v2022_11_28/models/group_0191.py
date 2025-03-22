@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from datetime import datetime
 
 from pydantic import Field
 
@@ -17,41 +17,39 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0036 import OrganizationSimple
 
+class OrgHook(GitHubModel):
+    """Org Hook
 
-class OrgMembership(GitHubModel):
-    """Org Membership
-
-    Org Membership
+    Org Hook
     """
 
+    id: int = Field()
     url: str = Field()
-    state: Literal["active", "pending"] = Field(
-        description="The state of the member in the organization. The `pending` state indicates the user has not yet accepted an invitation."
-    )
-    role: Literal["admin", "member", "billing_manager"] = Field(
-        description="The user's membership type in the organization."
-    )
-    organization_url: str = Field()
-    organization: OrganizationSimple = Field(
-        title="Organization Simple", description="A GitHub organization."
-    )
-    user: Union[None, SimpleUser] = Field()
-    permissions: Missing[OrgMembershipPropPermissions] = Field(default=UNSET)
+    ping_url: str = Field()
+    deliveries_url: Missing[str] = Field(default=UNSET)
+    name: str = Field()
+    events: list[str] = Field()
+    active: bool = Field()
+    config: OrgHookPropConfig = Field()
+    updated_at: datetime = Field()
+    created_at: datetime = Field()
+    type: str = Field()
 
 
-class OrgMembershipPropPermissions(GitHubModel):
-    """OrgMembershipPropPermissions"""
+class OrgHookPropConfig(GitHubModel):
+    """OrgHookPropConfig"""
 
-    can_create_repository: bool = Field()
+    url: Missing[str] = Field(default=UNSET)
+    insecure_ssl: Missing[str] = Field(default=UNSET)
+    content_type: Missing[str] = Field(default=UNSET)
+    secret: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(OrgMembership)
-model_rebuild(OrgMembershipPropPermissions)
+model_rebuild(OrgHook)
+model_rebuild(OrgHookPropConfig)
 
 __all__ = (
-    "OrgMembership",
-    "OrgMembershipPropPermissions",
+    "OrgHook",
+    "OrgHookPropConfig",
 )

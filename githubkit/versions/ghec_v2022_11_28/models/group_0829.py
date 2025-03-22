@@ -12,18 +12,16 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class WebhookStatusPropCommitPropCommitPropCommitterAllof1(GitHubModel):
-    """WebhookStatusPropCommitPropCommitPropCommitterAllof1"""
+class WebhookSecretScanningAlertLocationCreatedFormEncoded(GitHubModel):
+    """Secret Scanning Alert Location Created Event"""
 
-    date: str = Field()
-    email: Missing[str] = Field(default=UNSET)
-    name: Missing[str] = Field(default=UNSET)
+    payload: str = Field(
+        description="A URL-encoded string of the secret_scanning_alert_location.created JSON payload. The decoded payload is a JSON object."
+    )
 
 
-model_rebuild(WebhookStatusPropCommitPropCommitPropCommitterAllof1)
+model_rebuild(WebhookSecretScanningAlertLocationCreatedFormEncoded)
 
-__all__ = ("WebhookStatusPropCommitPropCommitPropCommitterAllof1",)
+__all__ = ("WebhookSecretScanningAlertLocationCreatedFormEncoded",)

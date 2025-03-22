@@ -10,19 +10,29 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Union
-from typing_extensions import TypedDict
-
-from .group_0003 import SimpleUserType
+from typing_extensions import NotRequired, TypedDict
 
 
-class ProjectCollaboratorPermissionType(TypedDict):
-    """Project Collaborator Permission
+class GroupMappingType(TypedDict):
+    """GroupMapping
 
-    Project Collaborator Permission
+    External Groups to be mapped to a team for membership
     """
 
-    permission: str
-    user: Union[None, SimpleUserType]
+    groups: NotRequired[list[GroupMappingPropGroupsItemsType]]
 
 
-__all__ = ("ProjectCollaboratorPermissionType",)
+class GroupMappingPropGroupsItemsType(TypedDict):
+    """GroupMappingPropGroupsItems"""
+
+    group_id: str
+    group_name: str
+    group_description: str
+    status: NotRequired[str]
+    synced_at: NotRequired[Union[str, None]]
+
+
+__all__ = (
+    "GroupMappingPropGroupsItemsType",
+    "GroupMappingType",
+)

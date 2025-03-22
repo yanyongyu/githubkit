@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
 class RepositoryRuleRequiredLinearHistoryType(TypedDict):
@@ -22,25 +22,4 @@ class RepositoryRuleRequiredLinearHistoryType(TypedDict):
     type: Literal["required_linear_history"]
 
 
-class RepositoryRuleOneof16Type(TypedDict):
-    """max_file_path_length
-
-    Prevent commits that include file paths that exceed a specified character limit
-    from being pushed to the commit graph.
-    """
-
-    type: Literal["max_file_path_length"]
-    parameters: NotRequired[RepositoryRuleOneof16PropParametersType]
-
-
-class RepositoryRuleOneof16PropParametersType(TypedDict):
-    """RepositoryRuleOneof16PropParameters"""
-
-    max_file_path_length: int
-
-
-__all__ = (
-    "RepositoryRuleOneof16PropParametersType",
-    "RepositoryRuleOneof16Type",
-    "RepositoryRuleRequiredLinearHistoryType",
-)
+__all__ = ("RepositoryRuleRequiredLinearHistoryType",)

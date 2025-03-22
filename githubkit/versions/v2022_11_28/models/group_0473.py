@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Annotated, Literal, Union
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -19,21 +18,20 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0404 import EnterpriseWebhooks
-from .group_0405 import SimpleInstallation
-from .group_0406 import OrganizationSimpleWebhooks
-from .group_0407 import RepositoryWebhooks
+from .group_0418 import EnterpriseWebhooks
+from .group_0419 import SimpleInstallation
+from .group_0420 import OrganizationSimpleWebhooks
+from .group_0421 import RepositoryWebhooks
+from .group_0422 import WebhooksRule
 
 
-class WebhookCodeScanningAlertCreated(GitHubModel):
-    """code_scanning_alert created event"""
+class WebhookBranchProtectionRuleEdited(GitHubModel):
+    """branch protection rule edited event"""
 
-    action: Literal["created"] = Field()
-    alert: WebhookCodeScanningAlertCreatedPropAlert = Field(
-        description="The code scanning alert involved in the event."
-    )
-    commit_oid: str = Field(
-        description="The commit SHA of the code scanning alert. When the action is `reopened_by_user` or `closed_by_user`, the event was triggered by the `sender` and this value will be empty."
+    action: Literal["edited"] = Field()
+    changes: Missing[WebhookBranchProtectionRuleEditedPropChanges] = Field(
+        default=UNSET,
+        description="If the action was `edited`, the changes to the rule.",
     )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
@@ -50,157 +48,178 @@ class WebhookCodeScanningAlertCreated(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    ref: str = Field(
-        description="The Git reference of the code scanning alert. When the action is `reopened_by_user` or `closed_by_user`, the event was triggered by the `sender` and this value will be empty."
-    )
     repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
+    rule: WebhooksRule = Field(
+        title="branch protection rule",
+        description="The branch protection rule. Includes a `name` and all the [branch protection settings](https://docs.github.com/github/administering-a-repository/defining-the-mergeability-of-pull-requests/about-protected-branches#about-branch-protection-settings) applied to branches that match the name. Binary settings are boolean. Multi-level configurations are one of `off`, `non_admins`, or `everyone`. Actor and build lists are arrays of strings.",
+    )
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-class WebhookCodeScanningAlertCreatedPropAlert(GitHubModel):
-    """WebhookCodeScanningAlertCreatedPropAlert
+class WebhookBranchProtectionRuleEditedPropChanges(GitHubModel):
+    """WebhookBranchProtectionRuleEditedPropChanges
 
-    The code scanning alert involved in the event.
+    If the action was `edited`, the changes to the rule.
     """
 
-    created_at: Union[datetime, None] = Field(
-        description="The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ.`"
-    )
-    dismissed_at: None = Field(
-        description="The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
-    )
-    dismissed_by: None = Field()
-    dismissed_comment: Missing[Union[Annotated[str, Field(max_length=280)], None]] = (
-        Field(
-            default=UNSET,
-            description="The dismissal comment associated with the dismissal of the alert.",
-        )
-    )
-    dismissed_reason: None = Field(
-        description="The reason for dismissing or closing the alert. Can be one of: `false positive`, `won't fix`, and `used in tests`."
-    )
-    fixed_at: Missing[None] = Field(
-        default=UNSET,
-        description="The time that the alert was fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
-    )
-    html_url: str = Field(description="The GitHub URL of the alert resource.")
-    instances_url: Missing[str] = Field(default=UNSET)
-    most_recent_instance: Missing[
-        Union[WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstance, None]
-    ] = Field(default=UNSET, title="Alert Instance")
-    number: int = Field(description="The code scanning alert number.")
-    rule: WebhookCodeScanningAlertCreatedPropAlertPropRule = Field()
-    state: Union[None, Literal["open", "dismissed"]] = Field(
-        description="State of a code scanning alert. Events for alerts found outside the default branch will return a `null` value until they are dismissed or fixed."
-    )
-    tool: Union[WebhookCodeScanningAlertCreatedPropAlertPropTool, None] = Field()
-    updated_at: Missing[Union[str, None]] = Field(default=UNSET)
-    url: str = Field()
-    dismissal_approved_by: Missing[None] = Field(default=UNSET)
-
-
-class WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstance(GitHubModel):
-    """Alert Instance"""
-
-    analysis_key: str = Field(
-        description="Identifies the configuration under which the analysis was executed. For example, in GitHub Actions this includes the workflow filename and job name."
-    )
-    category: Missing[str] = Field(
-        default=UNSET,
-        description="Identifies the configuration under which the analysis was executed.",
-    )
-    classifications: Missing[list[str]] = Field(default=UNSET)
-    commit_sha: Missing[str] = Field(default=UNSET)
-    environment: str = Field(
-        description="Identifies the variable values associated with the environment in which the analysis that generated this alert instance was performed, such as the language that was analyzed."
-    )
-    location: Missing[
-        WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropLocation
+    admin_enforced: Missing[
+        WebhookBranchProtectionRuleEditedPropChangesPropAdminEnforced
     ] = Field(default=UNSET)
-    message: Missing[
-        WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropMessage
+    authorized_actor_names: Missing[
+        WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorNames
     ] = Field(default=UNSET)
-    ref: str = Field(
-        description="The full Git reference, formatted as `refs/heads/<branch name>`."
-    )
-    state: Literal["open", "dismissed", "fixed"] = Field(
-        description="State of a code scanning alert."
-    )
+    authorized_actors_only: Missing[
+        WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorsOnly
+    ] = Field(default=UNSET)
+    authorized_dismissal_actors_only: Missing[
+        WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedDismissalActorsOnly
+    ] = Field(default=UNSET)
+    linear_history_requirement_enforcement_level: Missing[
+        WebhookBranchProtectionRuleEditedPropChangesPropLinearHistoryRequirementEnforcementLevel
+    ] = Field(default=UNSET)
+    lock_branch_enforcement_level: Missing[
+        WebhookBranchProtectionRuleEditedPropChangesPropLockBranchEnforcementLevel
+    ] = Field(default=UNSET)
+    lock_allows_fork_sync: Missing[
+        WebhookBranchProtectionRuleEditedPropChangesPropLockAllowsForkSync
+    ] = Field(default=UNSET)
+    pull_request_reviews_enforcement_level: Missing[
+        WebhookBranchProtectionRuleEditedPropChangesPropPullRequestReviewsEnforcementLevel
+    ] = Field(default=UNSET)
+    require_last_push_approval: Missing[
+        WebhookBranchProtectionRuleEditedPropChangesPropRequireLastPushApproval
+    ] = Field(default=UNSET)
+    required_status_checks: Missing[
+        WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecks
+    ] = Field(default=UNSET)
+    required_status_checks_enforcement_level: Missing[
+        WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementLevel
+    ] = Field(default=UNSET)
 
 
-class WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropLocation(
+class WebhookBranchProtectionRuleEditedPropChangesPropAdminEnforced(GitHubModel):
+    """WebhookBranchProtectionRuleEditedPropChangesPropAdminEnforced"""
+
+    from_: Union[bool, None] = Field(alias="from")
+
+
+class WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorNames(GitHubModel):
+    """WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorNames"""
+
+    from_: list[str] = Field(alias="from")
+
+
+class WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorsOnly(GitHubModel):
+    """WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorsOnly"""
+
+    from_: Union[bool, None] = Field(alias="from")
+
+
+class WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedDismissalActorsOnly(
     GitHubModel
 ):
-    """WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropLocation"""
+    """WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedDismissalActorsOnly"""
 
-    end_column: Missing[int] = Field(default=UNSET)
-    end_line: Missing[int] = Field(default=UNSET)
-    path: Missing[str] = Field(default=UNSET)
-    start_column: Missing[int] = Field(default=UNSET)
-    start_line: Missing[int] = Field(default=UNSET)
+    from_: Union[bool, None] = Field(alias="from")
 
 
-class WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropMessage(
+class WebhookBranchProtectionRuleEditedPropChangesPropLinearHistoryRequirementEnforcementLevel(
     GitHubModel
 ):
-    """WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropMessage"""
+    """WebhookBranchProtectionRuleEditedPropChangesPropLinearHistoryRequirementEnforcem
+    entLevel
+    """
 
-    text: Missing[str] = Field(default=UNSET)
-
-
-class WebhookCodeScanningAlertCreatedPropAlertPropRule(GitHubModel):
-    """WebhookCodeScanningAlertCreatedPropAlertPropRule"""
-
-    description: str = Field(
-        description="A short description of the rule used to detect the alert."
-    )
-    full_description: Missing[str] = Field(default=UNSET)
-    help_: Missing[Union[str, None]] = Field(default=UNSET, alias="help")
-    help_uri: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="A link to the documentation for the rule used to detect the alert.",
-    )
-    id: str = Field(
-        description="A unique identifier for the rule used to detect the alert."
-    )
-    name: Missing[str] = Field(default=UNSET)
-    severity: Union[None, Literal["none", "note", "warning", "error"]] = Field(
-        description="The severity of the alert."
-    )
-    tags: Missing[Union[list[str], None]] = Field(default=UNSET)
+    from_: Literal["off", "non_admins", "everyone"] = Field(alias="from")
 
 
-class WebhookCodeScanningAlertCreatedPropAlertPropTool(GitHubModel):
-    """WebhookCodeScanningAlertCreatedPropAlertPropTool"""
+class WebhookBranchProtectionRuleEditedPropChangesPropLockBranchEnforcementLevel(
+    GitHubModel
+):
+    """WebhookBranchProtectionRuleEditedPropChangesPropLockBranchEnforcementLevel"""
 
-    guid: Missing[Union[str, None]] = Field(default=UNSET)
-    name: str = Field(
-        description="The name of the tool used to generate the code scanning analysis alert."
-    )
-    version: Union[str, None] = Field(
-        description="The version of the tool used to detect the alert."
-    )
+    from_: Literal["off", "non_admins", "everyone"] = Field(alias="from")
 
 
-model_rebuild(WebhookCodeScanningAlertCreated)
-model_rebuild(WebhookCodeScanningAlertCreatedPropAlert)
-model_rebuild(WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstance)
+class WebhookBranchProtectionRuleEditedPropChangesPropLockAllowsForkSync(GitHubModel):
+    """WebhookBranchProtectionRuleEditedPropChangesPropLockAllowsForkSync"""
+
+    from_: Union[bool, None] = Field(alias="from")
+
+
+class WebhookBranchProtectionRuleEditedPropChangesPropPullRequestReviewsEnforcementLevel(
+    GitHubModel
+):
+    """WebhookBranchProtectionRuleEditedPropChangesPropPullRequestReviewsEnforcementLev
+    el
+    """
+
+    from_: Literal["off", "non_admins", "everyone"] = Field(alias="from")
+
+
+class WebhookBranchProtectionRuleEditedPropChangesPropRequireLastPushApproval(
+    GitHubModel
+):
+    """WebhookBranchProtectionRuleEditedPropChangesPropRequireLastPushApproval"""
+
+    from_: Union[bool, None] = Field(alias="from")
+
+
+class WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecks(GitHubModel):
+    """WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecks"""
+
+    from_: list[str] = Field(alias="from")
+
+
+class WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementLevel(
+    GitHubModel
+):
+    """WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementL
+    evel
+    """
+
+    from_: Literal["off", "non_admins", "everyone"] = Field(alias="from")
+
+
+model_rebuild(WebhookBranchProtectionRuleEdited)
+model_rebuild(WebhookBranchProtectionRuleEditedPropChanges)
+model_rebuild(WebhookBranchProtectionRuleEditedPropChangesPropAdminEnforced)
+model_rebuild(WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorNames)
+model_rebuild(WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorsOnly)
 model_rebuild(
-    WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropLocation
+    WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedDismissalActorsOnly
 )
-model_rebuild(WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropMessage)
-model_rebuild(WebhookCodeScanningAlertCreatedPropAlertPropRule)
-model_rebuild(WebhookCodeScanningAlertCreatedPropAlertPropTool)
+model_rebuild(
+    WebhookBranchProtectionRuleEditedPropChangesPropLinearHistoryRequirementEnforcementLevel
+)
+model_rebuild(
+    WebhookBranchProtectionRuleEditedPropChangesPropLockBranchEnforcementLevel
+)
+model_rebuild(WebhookBranchProtectionRuleEditedPropChangesPropLockAllowsForkSync)
+model_rebuild(
+    WebhookBranchProtectionRuleEditedPropChangesPropPullRequestReviewsEnforcementLevel
+)
+model_rebuild(WebhookBranchProtectionRuleEditedPropChangesPropRequireLastPushApproval)
+model_rebuild(WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecks)
+model_rebuild(
+    WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementLevel
+)
 
 __all__ = (
-    "WebhookCodeScanningAlertCreated",
-    "WebhookCodeScanningAlertCreatedPropAlert",
-    "WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstance",
-    "WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropLocation",
-    "WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropMessage",
-    "WebhookCodeScanningAlertCreatedPropAlertPropRule",
-    "WebhookCodeScanningAlertCreatedPropAlertPropTool",
+    "WebhookBranchProtectionRuleEdited",
+    "WebhookBranchProtectionRuleEditedPropChanges",
+    "WebhookBranchProtectionRuleEditedPropChangesPropAdminEnforced",
+    "WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorNames",
+    "WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorsOnly",
+    "WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedDismissalActorsOnly",
+    "WebhookBranchProtectionRuleEditedPropChangesPropLinearHistoryRequirementEnforcementLevel",
+    "WebhookBranchProtectionRuleEditedPropChangesPropLockAllowsForkSync",
+    "WebhookBranchProtectionRuleEditedPropChangesPropLockBranchEnforcementLevel",
+    "WebhookBranchProtectionRuleEditedPropChangesPropPullRequestReviewsEnforcementLevel",
+    "WebhookBranchProtectionRuleEditedPropChangesPropRequireLastPushApproval",
+    "WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecks",
+    "WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementLevel",
 )

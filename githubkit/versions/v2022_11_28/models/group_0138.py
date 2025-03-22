@@ -14,44 +14,40 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class RepositoryRuleParamsRequiredReviewerConfiguration(GitHubModel):
-    """RequiredReviewerConfiguration
+class RepositoryRuleMergeQueuePropParameters(GitHubModel):
+    """RepositoryRuleMergeQueuePropParameters"""
 
-    A reviewing team, and file patterns describing which files they must approve
-    changes to.
-    """
-
-    file_patterns: list[str] = Field(
-        description="Array of file patterns. Pull requests which change matching files must be approved by the specified team. File patterns use the same syntax as `.gitignore` files."
+    check_response_timeout_minutes: int = Field(
+        le=360.0,
+        ge=1.0,
+        description="Maximum time for a required status check to report a conclusion. After this much time has elapsed, checks that have not reported a conclusion will be assumed to have failed",
     )
-    minimum_approvals: int = Field(
-        description="Minimum number of approvals required from the specified team. If set to zero, the team will be added to the pull request but approval is optional."
+    grouping_strategy: Literal["ALLGREEN", "HEADGREEN"] = Field(
+        description="When set to ALLGREEN, the merge commit created by merge queue for each PR in the group must pass all required checks to merge. When set to HEADGREEN, only the commit at the head of the merge group, i.e. the commit containing changes from all of the PRs in the group, must pass its required checks to merge."
     )
-    reviewer: Missing[RepositoryRuleParamsReviewer] = Field(
-        default=UNSET, title="Reviewer", description="A required reviewing team"
+    max_entries_to_build: int = Field(
+        le=100.0,
+        description="Limit the number of queued pull requests requesting checks and workflow runs at the same time.",
+    )
+    max_entries_to_merge: int = Field(
+        le=100.0,
+        description="The maximum number of PRs that will be merged together in a group.",
+    )
+    merge_method: Literal["MERGE", "SQUASH", "REBASE"] = Field(
+        description="Method to use when merging changes from queued pull requests."
+    )
+    min_entries_to_merge: int = Field(
+        le=100.0,
+        description="The minimum number of PRs that will be merged together in a group.",
+    )
+    min_entries_to_merge_wait_minutes: int = Field(
+        le=360.0,
+        description="The time merge queue should wait after the first PR is added to the queue for the minimum group size to be met. After this time has elapsed, the minimum group size will be ignored and a smaller group will be merged.",
     )
 
 
-class RepositoryRuleParamsReviewer(GitHubModel):
-    """Reviewer
+model_rebuild(RepositoryRuleMergeQueuePropParameters)
 
-    A required reviewing team
-    """
-
-    id: int = Field(
-        description="ID of the reviewer which must review changes to matching files."
-    )
-    type: Literal["Team"] = Field(description="The type of the reviewer")
-
-
-model_rebuild(RepositoryRuleParamsRequiredReviewerConfiguration)
-model_rebuild(RepositoryRuleParamsReviewer)
-
-__all__ = (
-    "RepositoryRuleParamsRequiredReviewerConfiguration",
-    "RepositoryRuleParamsReviewer",
-)
+__all__ = ("RepositoryRuleMergeQueuePropParameters",)

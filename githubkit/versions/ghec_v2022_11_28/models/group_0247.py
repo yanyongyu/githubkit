@@ -9,43 +9,58 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0248 import (
-    ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances,
-    ProtectedBranchPullRequestReviewPropDismissalRestrictions,
-)
+from .group_0003 import SimpleUser
 
 
-class ProtectedBranchPullRequestReview(GitHubModel):
-    """Protected Branch Pull Request Review
+class EnvironmentApprovals(GitHubModel):
+    """Environment Approval
 
-    Protected Branch Pull Request Review
+    An entry in the reviews log for environment deployments
     """
 
+    environments: list[EnvironmentApprovalsPropEnvironmentsItems] = Field(
+        description="The list of environments that were approved or rejected"
+    )
+    state: Literal["approved", "rejected", "pending"] = Field(
+        description="Whether deployment to the environment(s) was approved or rejected or pending (with comments)"
+    )
+    user: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    comment: str = Field(description="The comment submitted with the deployment review")
+
+
+class EnvironmentApprovalsPropEnvironmentsItems(GitHubModel):
+    """EnvironmentApprovalsPropEnvironmentsItems"""
+
+    id: Missing[int] = Field(default=UNSET, description="The id of the environment.")
+    node_id: Missing[str] = Field(default=UNSET)
+    name: Missing[str] = Field(
+        default=UNSET, description="The name of the environment."
+    )
     url: Missing[str] = Field(default=UNSET)
-    dismissal_restrictions: Missing[
-        ProtectedBranchPullRequestReviewPropDismissalRestrictions
-    ] = Field(default=UNSET)
-    bypass_pull_request_allowances: Missing[
-        ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances
-    ] = Field(
+    html_url: Missing[str] = Field(default=UNSET)
+    created_at: Missing[datetime] = Field(
         default=UNSET,
-        description="Allow specific users, teams, or apps to bypass pull request requirements.",
+        description="The time that the environment was created, in ISO 8601 format.",
     )
-    dismiss_stale_reviews: bool = Field()
-    require_code_owner_reviews: bool = Field()
-    required_approving_review_count: Missing[int] = Field(le=6.0, default=UNSET)
-    require_last_push_approval: Missing[bool] = Field(
+    updated_at: Missing[datetime] = Field(
         default=UNSET,
-        description="Whether the most recent push must be approved by someone other than the person who pushed it.",
+        description="The time that the environment was last updated, in ISO 8601 format.",
     )
 
 
-model_rebuild(ProtectedBranchPullRequestReview)
+model_rebuild(EnvironmentApprovals)
+model_rebuild(EnvironmentApprovalsPropEnvironmentsItems)
 
-__all__ = ("ProtectedBranchPullRequestReview",)
+__all__ = (
+    "EnvironmentApprovals",
+    "EnvironmentApprovalsPropEnvironmentsItems",
+)

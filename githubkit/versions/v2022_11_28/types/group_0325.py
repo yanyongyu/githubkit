@@ -9,19 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class MergedUpstreamType(TypedDict):
-    """Merged upstream
-
-    Results of a successful merge upstream request
-    """
-
-    message: NotRequired[str]
-    merge_type: NotRequired[Literal["merge", "fast-forward", "none"]]
-    base_branch: NotRequired[str]
+from .group_0042 import IssueType
 
 
-__all__ = ("MergedUpstreamType",)
+class TimelineCrossReferencedEventPropSourceType(TypedDict):
+    """TimelineCrossReferencedEventPropSource"""
+
+    type: NotRequired[str]
+    issue: NotRequired[IssueType]
+
+
+__all__ = ("TimelineCrossReferencedEventPropSourceType",)

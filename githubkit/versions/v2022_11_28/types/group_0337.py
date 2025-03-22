@@ -9,20 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+from typing import Union
 from typing_extensions import TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0087 import TeamType
 
 
-class PullRequestReviewRequestType(TypedDict):
-    """Pull Request Review Request
+class PageBuildType(TypedDict):
+    """Page Build
 
-    Pull Request Review Request
+    Page Build
     """
 
-    users: list[SimpleUserType]
-    teams: list[TeamType]
+    url: str
+    status: str
+    error: PageBuildPropErrorType
+    pusher: Union[None, SimpleUserType]
+    commit: str
+    duration: int
+    created_at: datetime
+    updated_at: datetime
 
 
-__all__ = ("PullRequestReviewRequestType",)
+class PageBuildPropErrorType(TypedDict):
+    """PageBuildPropError"""
+
+    message: Union[str, None]
+
+
+__all__ = (
+    "PageBuildPropErrorType",
+    "PageBuildType",
+)

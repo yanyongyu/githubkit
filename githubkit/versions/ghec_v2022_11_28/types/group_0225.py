@@ -9,25 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0223 import RateLimitType
+from .group_0003 import SimpleUserType
+from .group_0152 import ReactionRollupType
 
 
-class RateLimitOverviewPropResourcesType(TypedDict):
-    """RateLimitOverviewPropResources"""
+class TeamDiscussionCommentType(TypedDict):
+    """Team Discussion Comment
 
-    core: RateLimitType
-    graphql: NotRequired[RateLimitType]
-    search: RateLimitType
-    code_search: NotRequired[RateLimitType]
-    source_import: NotRequired[RateLimitType]
-    integration_manifest: NotRequired[RateLimitType]
-    code_scanning_upload: NotRequired[RateLimitType]
-    actions_runner_registration: NotRequired[RateLimitType]
-    scim: NotRequired[RateLimitType]
-    dependency_snapshots: NotRequired[RateLimitType]
-    code_scanning_autofix: NotRequired[RateLimitType]
+    A reply to a discussion within a team.
+    """
+
+    author: Union[None, SimpleUserType]
+    body: str
+    body_html: str
+    body_version: str
+    created_at: datetime
+    last_edited_at: Union[datetime, None]
+    discussion_url: str
+    html_url: str
+    node_id: str
+    number: int
+    updated_at: datetime
+    url: str
+    reactions: NotRequired[ReactionRollupType]
 
 
-__all__ = ("RateLimitOverviewPropResourcesType",)
+__all__ = ("TeamDiscussionCommentType",)

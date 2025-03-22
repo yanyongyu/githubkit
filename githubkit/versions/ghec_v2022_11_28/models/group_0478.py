@@ -18,95 +18,276 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0010 import Integration
+from .group_0477 import ExemptionResponse
 
 
-class WebhooksIssueComment(GitHubModel):
-    """issue comment
+class ExemptionRequest(GitHubModel):
+    """Exemption Request
 
-    The [comment](https://docs.github.com/enterprise-
-    cloud@latest//rest/issues/comments#get-an-issue-comment) itself.
+    A request from a user to be exempted from a set of rules.
     """
 
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
+    id: Missing[int] = Field(
+        default=UNSET, description="The ID of the exemption request."
+    )
+    number: Missing[Union[int, None]] = Field(
+        default=UNSET,
+        description="The number uniquely identifying the exemption request within it's repository.",
+    )
+    repository_id: Missing[int] = Field(
+        default=UNSET,
+        description="The ID of the repository the exemption request is for.",
+    )
+    requester_id: Missing[int] = Field(
+        default=UNSET, description="The ID of the user who requested the exemption."
+    )
+    requester_login: Missing[str] = Field(
+        default=UNSET, description="The login of the user who requested the exemption."
+    )
+    request_type: Missing[
+        Literal[
+            "push_ruleset_bypass",
+            "secret_scanning",
+            "secret_scanning_closure",
+            "code_scanning_alert_dismissal",
+        ]
+    ] = Field(default=UNSET, description="The type of request.")
+    exemption_request_data: Missing[
+        Union[
+            ExemptionRequestPushRulesetBypass,
+            ExemptionRequestSecretScanning,
+            DismissalRequestSecretScanning,
+            DismissalRequestCodeScanning,
+        ]
+    ] = Field(default=UNSET)
+    resource_identifier: Missing[str] = Field(
+        default=UNSET,
+        description="The unique identifier for the request type of the exemption request. For example, a commit SHA.",
+    )
+    status: Missing[Literal["pending", "rejected", "cancelled", "completed"]] = Field(
+        default=UNSET, description="The status of the exemption request."
+    )
+    requester_comment: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The comment the requester provided when creating the exemption request.",
+    )
+    metadata: Missing[
+        Union[
+            ExemptionRequestSecretScanningMetadata,
+            DismissalRequestSecretScanningMetadata,
+            DismissalRequestCodeScanningMetadata,
+            None,
+        ]
+    ] = Field(default=UNSET, description="Metadata about the exemption request.")
+    expires_at: Missing[datetime] = Field(
+        default=UNSET,
+        description="The date and time the exemption request will expire.",
+    )
+    created_at: Missing[datetime] = Field(
+        default=UNSET,
+        description="The date and time the exemption request was created.",
+    )
+    responses: Missing[Union[list[ExemptionResponse], None]] = Field(
+        default=UNSET, description="The responses to the exemption request."
+    )
+    html_url: Missing[str] = Field(
+        default=UNSET, description="The URL to view the exemption request in a browser."
+    )
+
+
+class ExemptionRequestSecretScanningMetadata(GitHubModel):
+    """Secret Scanning Push Protection Exemption Request Metadata
+
+    Metadata for a secret scanning push protection exemption request.
+    """
+
+    label: Missing[str] = Field(
+        default=UNSET, description="The label for the secret type"
+    )
+    reason: Missing[Literal["fixed_later", "false_positive", "tests"]] = Field(
+        default=UNSET, description="The reason for the exemption request"
+    )
+
+
+class DismissalRequestSecretScanningMetadata(GitHubModel):
+    """Secret scanning alert dismissal request metadata
+
+    Metadata for a secret scanning alert dismissal request.
+    """
+
+    alert_title: Missing[str] = Field(
+        default=UNSET, description="The title of the secret alert"
+    )
+    reason: Missing[Literal["fixed_later", "false_positive", "tests", "revoked"]] = (
+        Field(default=UNSET, description="The reason for the dismissal request")
+    )
+
+
+class DismissalRequestCodeScanningMetadata(GitHubModel):
+    """Code scanning alert dismissal request metadata
+
+    Metadata for a code scanning alert dismissal request.
+    """
+
+    alert_title: Missing[str] = Field(
+        default=UNSET, description="The title of the code scanning alert"
+    )
+    reason: Missing[Literal["false positive", "won't fix", "used in tests"]] = Field(
+        default=UNSET, description="The reason for the dismissal request"
+    )
+
+
+class ExemptionRequestPushRulesetBypass(GitHubModel):
+    """Push ruleset bypass exemption request data
+
+    Push rules that are being requested to be bypassed.
+    """
+
+    type: Missing[Literal["push_ruleset_bypass"]] = Field(
+        default=UNSET, description="The type of request"
+    )
+    data: Missing[list[ExemptionRequestPushRulesetBypassPropDataItems]] = Field(
+        default=UNSET,
+        description="The data pertaining to the push rules that are being requested to be bypassed.",
+    )
+
+
+class ExemptionRequestPushRulesetBypassPropDataItems(GitHubModel):
+    """ExemptionRequestPushRulesetBypassPropDataItems"""
+
+    ruleset_id: Missing[int] = Field(
+        default=UNSET,
+        description="The ID of the ruleset for the rules that were violated",
+    )
+    ruleset_name: Missing[str] = Field(
+        default=UNSET,
+        description="The name of the ruleset for the rules that were violated",
+    )
+    total_violations: Missing[int] = Field(
+        default=UNSET, description="The number of violations"
+    )
+    rule_type: Missing[str] = Field(
+        default=UNSET, description="The type of rule that was violated"
+    )
+
+
+class DismissalRequestSecretScanning(GitHubModel):
+    """Secret scanning alert dismissal request data
+
+    Secret scanning alerts that have dismissal requests.
+    """
+
+    type: Missing[Literal["secret_scanning_closure"]] = Field(
+        default=UNSET, description="The type of request"
+    )
+    data: Missing[list[DismissalRequestSecretScanningPropDataItems]] = Field(
+        default=UNSET,
+        description="The data related to the secret scanning alerts that have dismissal requests.",
+    )
+
+
+class DismissalRequestSecretScanningPropDataItems(GitHubModel):
+    """DismissalRequestSecretScanningPropDataItems"""
+
+    secret_type: Missing[str] = Field(
+        default=UNSET, description="The type of secret that was detected"
+    )
+    alert_number: Missing[str] = Field(
+        default=UNSET, description="The number of the alert that was detected"
+    )
+
+
+class DismissalRequestCodeScanning(GitHubModel):
+    """Code scanning alert dismissal request data
+
+    Code scanning alerts that have dismissal requests.
+    """
+
+    type: Missing[Literal["code_scanning_alert_dismissal"]] = Field(
+        default=UNSET, description="The type of request"
+    )
+    data: Missing[list[DismissalRequestCodeScanningPropDataItems]] = Field(
+        default=UNSET,
+        description="The data related to the code scanning alerts that have dismissal requests.",
+    )
+
+
+class DismissalRequestCodeScanningPropDataItems(GitHubModel):
+    """DismissalRequestCodeScanningPropDataItems"""
+
+    alert_number: Missing[str] = Field(
+        default=UNSET, description="The number of the alert to be dismissed"
+    )
+
+
+class ExemptionRequestSecretScanning(GitHubModel):
+    """Secret scanning push protection exemption request data
+
+    Secret scanning push protections that are being requested to be bypassed.
+    """
+
+    type: Missing[Literal["secret_scanning"]] = Field(
+        default=UNSET, description="The type of request"
+    )
+    data: Missing[list[ExemptionRequestSecretScanningPropDataItems]] = Field(
+        default=UNSET,
+        description="The data pertaining to the secret scanning push protections that are being requested to be bypassed.",
+    )
+
+
+class ExemptionRequestSecretScanningPropDataItems(GitHubModel):
+    """ExemptionRequestSecretScanningPropDataItems"""
+
+    secret_type: Missing[str] = Field(
+        default=UNSET, description="The type of secret that was detected"
+    )
+    locations: Missing[
+        list[ExemptionRequestSecretScanningPropDataItemsPropLocationsItems]
     ] = Field(
-        title="AuthorAssociation",
-        description="How the author is associated with the repository.",
+        default=UNSET, description="The location data of the secret that was detected"
     )
-    body: str = Field(description="Contents of the issue comment")
-    created_at: datetime = Field()
-    html_url: str = Field()
-    id: int = Field(description="Unique identifier of the issue comment")
-    issue_url: str = Field()
-    node_id: str = Field()
-    performed_via_github_app: Union[Integration, None] = Field(
-        title="GitHub app",
-        description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
+
+
+class ExemptionRequestSecretScanningPropDataItemsPropLocationsItems(GitHubModel):
+    """ExemptionRequestSecretScanningPropDataItemsPropLocationsItems"""
+
+    commit: Missing[str] = Field(
+        default=UNSET, description="The commit SHA where the secret was detected"
     )
-    reactions: WebhooksIssueCommentPropReactions = Field(title="Reactions")
-    updated_at: datetime = Field()
-    url: str = Field(description="URL for the issue comment")
-    user: Union[WebhooksIssueCommentPropUser, None] = Field(title="User")
-
-
-class WebhooksIssueCommentPropReactions(GitHubModel):
-    """Reactions"""
-
-    plus_one: int = Field(alias="+1")
-    minus_one: int = Field(alias="-1")
-    confused: int = Field()
-    eyes: int = Field()
-    heart: int = Field()
-    hooray: int = Field()
-    laugh: int = Field()
-    rocket: int = Field()
-    total_count: int = Field()
-    url: str = Field()
-
-
-class WebhooksIssueCommentPropUser(GitHubModel):
-    """User"""
-
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field()
-    login: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization", "Mannequin"]] = Field(
-        default=UNSET
+    branch: Missing[str] = Field(
+        default=UNSET, description="The branch where the secret was detected"
     )
-    url: Missing[str] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
+    path: Missing[str] = Field(
+        default=UNSET, description="The path of the file where the secret was detected"
+    )
 
 
-model_rebuild(WebhooksIssueComment)
-model_rebuild(WebhooksIssueCommentPropReactions)
-model_rebuild(WebhooksIssueCommentPropUser)
+model_rebuild(ExemptionRequest)
+model_rebuild(ExemptionRequestSecretScanningMetadata)
+model_rebuild(DismissalRequestSecretScanningMetadata)
+model_rebuild(DismissalRequestCodeScanningMetadata)
+model_rebuild(ExemptionRequestPushRulesetBypass)
+model_rebuild(ExemptionRequestPushRulesetBypassPropDataItems)
+model_rebuild(DismissalRequestSecretScanning)
+model_rebuild(DismissalRequestSecretScanningPropDataItems)
+model_rebuild(DismissalRequestCodeScanning)
+model_rebuild(DismissalRequestCodeScanningPropDataItems)
+model_rebuild(ExemptionRequestSecretScanning)
+model_rebuild(ExemptionRequestSecretScanningPropDataItems)
+model_rebuild(ExemptionRequestSecretScanningPropDataItemsPropLocationsItems)
 
 __all__ = (
-    "WebhooksIssueComment",
-    "WebhooksIssueCommentPropReactions",
-    "WebhooksIssueCommentPropUser",
+    "DismissalRequestCodeScanning",
+    "DismissalRequestCodeScanningMetadata",
+    "DismissalRequestCodeScanningPropDataItems",
+    "DismissalRequestSecretScanning",
+    "DismissalRequestSecretScanningMetadata",
+    "DismissalRequestSecretScanningPropDataItems",
+    "ExemptionRequest",
+    "ExemptionRequestPushRulesetBypass",
+    "ExemptionRequestPushRulesetBypassPropDataItems",
+    "ExemptionRequestSecretScanning",
+    "ExemptionRequestSecretScanningMetadata",
+    "ExemptionRequestSecretScanningPropDataItems",
+    "ExemptionRequestSecretScanningPropDataItemsPropLocationsItems",
 )

@@ -1031,6 +1031,7 @@ if TYPE_CHECKING:
         IssueSearchResultItemType as IssueSearchResultItemType,
     )
     from githubkit.versions.v2022_11_28.types import IssueType as IssueType
+    from githubkit.versions.v2022_11_28.types import IssueTypeType as IssueTypeType
     from githubkit.versions.v2022_11_28.types import (
         JobPropStepsItemsType as JobPropStepsItemsType,
     )
@@ -1146,6 +1147,9 @@ if TYPE_CHECKING:
         OrganizationActionsVariableType as OrganizationActionsVariableType,
     )
     from githubkit.versions.v2022_11_28.types import (
+        OrganizationCreateIssueTypeType as OrganizationCreateIssueTypeType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         OrganizationDependabotSecretType as OrganizationDependabotSecretType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -1198,6 +1202,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.types import (
         OrganizationSimpleWebhooksType as OrganizationSimpleWebhooksType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        OrganizationUpdateIssueTypeType as OrganizationUpdateIssueTypeType,
     )
     from githubkit.versions.v2022_11_28.types import (
         OrgHookPropConfigType as OrgHookPropConfigType,
@@ -2126,6 +2133,42 @@ if TYPE_CHECKING:
         RepositoryRuleDetailedOneof16Type as RepositoryRuleDetailedOneof16Type,
     )
     from githubkit.versions.v2022_11_28.types import (
+        RepositoryRuleDetailedOneof17Type as RepositoryRuleDetailedOneof17Type,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        RepositoryRuleDetailedOneof18Type as RepositoryRuleDetailedOneof18Type,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        RepositoryRuleDetailedOneof19Type as RepositoryRuleDetailedOneof19Type,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        RepositoryRuleDetailedOneof20Type as RepositoryRuleDetailedOneof20Type,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        RepositoryRuleFileExtensionRestrictionPropParametersType as RepositoryRuleFileExtensionRestrictionPropParametersType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        RepositoryRuleFileExtensionRestrictionType as RepositoryRuleFileExtensionRestrictionType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        RepositoryRuleFilePathRestrictionPropParametersType as RepositoryRuleFilePathRestrictionPropParametersType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        RepositoryRuleFilePathRestrictionType as RepositoryRuleFilePathRestrictionType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        RepositoryRuleMaxFilePathLengthPropParametersType as RepositoryRuleMaxFilePathLengthPropParametersType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        RepositoryRuleMaxFilePathLengthType as RepositoryRuleMaxFilePathLengthType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        RepositoryRuleMaxFileSizePropParametersType as RepositoryRuleMaxFileSizePropParametersType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        RepositoryRuleMaxFileSizeType as RepositoryRuleMaxFileSizeType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         RepositoryRuleMergeQueuePropParametersType as RepositoryRuleMergeQueuePropParametersType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -2133,30 +2176,6 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.types import (
         RepositoryRuleNonFastForwardType as RepositoryRuleNonFastForwardType,
-    )
-    from githubkit.versions.v2022_11_28.types import (
-        RepositoryRuleOneof15PropParametersType as RepositoryRuleOneof15PropParametersType,
-    )
-    from githubkit.versions.v2022_11_28.types import (
-        RepositoryRuleOneof15Type as RepositoryRuleOneof15Type,
-    )
-    from githubkit.versions.v2022_11_28.types import (
-        RepositoryRuleOneof16PropParametersType as RepositoryRuleOneof16PropParametersType,
-    )
-    from githubkit.versions.v2022_11_28.types import (
-        RepositoryRuleOneof16Type as RepositoryRuleOneof16Type,
-    )
-    from githubkit.versions.v2022_11_28.types import (
-        RepositoryRuleOneof17PropParametersType as RepositoryRuleOneof17PropParametersType,
-    )
-    from githubkit.versions.v2022_11_28.types import (
-        RepositoryRuleOneof17Type as RepositoryRuleOneof17Type,
-    )
-    from githubkit.versions.v2022_11_28.types import (
-        RepositoryRuleOneof18PropParametersType as RepositoryRuleOneof18PropParametersType,
-    )
-    from githubkit.versions.v2022_11_28.types import (
-        RepositoryRuleOneof18Type as RepositoryRuleOneof18Type,
     )
     from githubkit.versions.v2022_11_28.types import (
         RepositoryRuleParamsCodeScanningToolType as RepositoryRuleParamsCodeScanningToolType,
@@ -8672,6 +8691,9 @@ if TYPE_CHECKING:
         WebhookReleaseEditedPropChangesPropNameType as WebhookReleaseEditedPropChangesPropNameType,
     )
     from githubkit.versions.v2022_11_28.types import (
+        WebhookReleaseEditedPropChangesPropTagNameType as WebhookReleaseEditedPropChangesPropTagNameType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         WebhookReleaseEditedPropChangesType as WebhookReleaseEditedPropChangesType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -9930,6 +9952,7 @@ else:
             "DependabotAlertWithRepositoryPropDependencyType",
             "OrganizationSecretScanningAlertType",
             "MilestoneType",
+            "IssueTypeType",
             "ReactionRollupType",
             "IssueType",
             "SubIssuesSummaryType",
@@ -10054,6 +10077,8 @@ else:
             "ApiInsightsUserStatsItemsType",
             "InteractionLimitResponseType",
             "InteractionLimitType",
+            "OrganizationCreateIssueTypeType",
+            "OrganizationUpdateIssueTypeType",
             "OrgMembershipType",
             "OrgMembershipPropPermissionsType",
             "MigrationType",
@@ -10103,15 +10128,9 @@ else:
             "RepositoryRuleDeletionType",
             "RepositoryRuleRequiredSignaturesType",
             "RepositoryRuleNonFastForwardType",
-            "RepositoryRuleOneof15Type",
-            "RepositoryRuleOneof15PropParametersType",
-            "RepositoryRuleOneof17Type",
-            "RepositoryRuleOneof17PropParametersType",
             "RepositoryRuleUpdateType",
             "RepositoryRuleUpdatePropParametersType",
             "RepositoryRuleRequiredLinearHistoryType",
-            "RepositoryRuleOneof16Type",
-            "RepositoryRuleOneof16PropParametersType",
             "RepositoryRuleMergeQueueType",
             "RepositoryRuleMergeQueuePropParametersType",
             "RepositoryRuleRequiredDeploymentsType",
@@ -10133,6 +10152,14 @@ else:
             "RepositoryRuleBranchNamePatternPropParametersType",
             "RepositoryRuleTagNamePatternType",
             "RepositoryRuleTagNamePatternPropParametersType",
+            "RepositoryRuleFilePathRestrictionType",
+            "RepositoryRuleFilePathRestrictionPropParametersType",
+            "RepositoryRuleMaxFilePathLengthType",
+            "RepositoryRuleMaxFilePathLengthPropParametersType",
+            "RepositoryRuleFileExtensionRestrictionType",
+            "RepositoryRuleFileExtensionRestrictionPropParametersType",
+            "RepositoryRuleMaxFileSizeType",
+            "RepositoryRuleMaxFileSizePropParametersType",
             "RepositoryRuleParamsRestrictedCommitsType",
             "RepositoryRuleWorkflowsType",
             "RepositoryRuleWorkflowsPropParametersType",
@@ -10140,8 +10167,6 @@ else:
             "RepositoryRuleCodeScanningType",
             "RepositoryRuleCodeScanningPropParametersType",
             "RepositoryRuleParamsCodeScanningToolType",
-            "RepositoryRuleOneof18Type",
-            "RepositoryRuleOneof18PropParametersType",
             "RepositoryRulesetType",
             "RepositoryRulesetPropLinksType",
             "RepositoryRulesetPropLinksPropSelfType",
@@ -10520,6 +10545,10 @@ else:
             "RepositoryRuleDetailedOneof14Type",
             "RepositoryRuleDetailedOneof15Type",
             "RepositoryRuleDetailedOneof16Type",
+            "RepositoryRuleDetailedOneof17Type",
+            "RepositoryRuleDetailedOneof18Type",
+            "RepositoryRuleDetailedOneof19Type",
+            "RepositoryRuleDetailedOneof20Type",
             "SecretScanningAlertType",
             "SecretScanningPushProtectionBypassType",
             "SecretScanningScanHistoryType",
@@ -11278,19 +11307,6 @@ else:
             "WebhookIssuesMilestonedPropIssuePropSubIssuesSummaryType",
             "WebhookIssuesMilestonedPropIssuePropUserType",
             "WebhookIssuesOpenedType",
-            "WebhookIssuesOpenedPropIssueType",
-            "WebhookIssuesOpenedPropIssuePropAssigneeType",
-            "WebhookIssuesOpenedPropIssuePropAssigneesItemsType",
-            "WebhookIssuesOpenedPropIssuePropLabelsItemsType",
-            "WebhookIssuesOpenedPropIssuePropMilestoneType",
-            "WebhookIssuesOpenedPropIssuePropMilestonePropCreatorType",
-            "WebhookIssuesOpenedPropIssuePropPerformedViaGithubAppType",
-            "WebhookIssuesOpenedPropIssuePropPerformedViaGithubAppPropOwnerType",
-            "WebhookIssuesOpenedPropIssuePropPerformedViaGithubAppPropPermissionsType",
-            "WebhookIssuesOpenedPropIssuePropPullRequestType",
-            "WebhookIssuesOpenedPropIssuePropReactionsType",
-            "WebhookIssuesOpenedPropIssuePropSubIssuesSummaryType",
-            "WebhookIssuesOpenedPropIssuePropUserType",
             "WebhookIssuesOpenedPropChangesType",
             "WebhookIssuesOpenedPropChangesPropOldIssueType",
             "WebhookIssuesOpenedPropChangesPropOldIssuePropAssigneeType",
@@ -11310,6 +11326,19 @@ else:
             "WebhookIssuesOpenedPropChangesPropOldRepositoryPropLicenseType",
             "WebhookIssuesOpenedPropChangesPropOldRepositoryPropOwnerType",
             "WebhookIssuesOpenedPropChangesPropOldRepositoryPropPermissionsType",
+            "WebhookIssuesOpenedPropIssueType",
+            "WebhookIssuesOpenedPropIssuePropAssigneeType",
+            "WebhookIssuesOpenedPropIssuePropAssigneesItemsType",
+            "WebhookIssuesOpenedPropIssuePropLabelsItemsType",
+            "WebhookIssuesOpenedPropIssuePropMilestoneType",
+            "WebhookIssuesOpenedPropIssuePropMilestonePropCreatorType",
+            "WebhookIssuesOpenedPropIssuePropPerformedViaGithubAppType",
+            "WebhookIssuesOpenedPropIssuePropPerformedViaGithubAppPropOwnerType",
+            "WebhookIssuesOpenedPropIssuePropPerformedViaGithubAppPropPermissionsType",
+            "WebhookIssuesOpenedPropIssuePropPullRequestType",
+            "WebhookIssuesOpenedPropIssuePropReactionsType",
+            "WebhookIssuesOpenedPropIssuePropSubIssuesSummaryType",
+            "WebhookIssuesOpenedPropIssuePropUserType",
             "WebhookIssuesPinnedType",
             "WebhookIssuesReopenedType",
             "WebhookIssuesReopenedPropIssueType",
@@ -11327,6 +11356,11 @@ else:
             "WebhookIssuesReopenedPropIssuePropUserType",
             "WebhookIssuesTransferredType",
             "WebhookIssuesTransferredPropChangesType",
+            "WebhookIssuesTransferredPropChangesPropNewRepositoryType",
+            "WebhookIssuesTransferredPropChangesPropNewRepositoryPropCustomPropertiesType",
+            "WebhookIssuesTransferredPropChangesPropNewRepositoryPropLicenseType",
+            "WebhookIssuesTransferredPropChangesPropNewRepositoryPropOwnerType",
+            "WebhookIssuesTransferredPropChangesPropNewRepositoryPropPermissionsType",
             "WebhookIssuesTransferredPropChangesPropNewIssueType",
             "WebhookIssuesTransferredPropChangesPropNewIssuePropAssigneeType",
             "WebhookIssuesTransferredPropChangesPropNewIssuePropAssigneesItemsType",
@@ -11340,11 +11374,6 @@ else:
             "WebhookIssuesTransferredPropChangesPropNewIssuePropReactionsType",
             "WebhookIssuesTransferredPropChangesPropNewIssuePropSubIssuesSummaryType",
             "WebhookIssuesTransferredPropChangesPropNewIssuePropUserType",
-            "WebhookIssuesTransferredPropChangesPropNewRepositoryType",
-            "WebhookIssuesTransferredPropChangesPropNewRepositoryPropCustomPropertiesType",
-            "WebhookIssuesTransferredPropChangesPropNewRepositoryPropLicenseType",
-            "WebhookIssuesTransferredPropChangesPropNewRepositoryPropOwnerType",
-            "WebhookIssuesTransferredPropChangesPropNewRepositoryPropPermissionsType",
             "WebhookIssuesUnassignedType",
             "WebhookIssuesUnlabeledType",
             "WebhookIssuesUnlockedType",
@@ -12507,6 +12536,7 @@ else:
             "WebhookReleaseEditedPropChangesType",
             "WebhookReleaseEditedPropChangesPropBodyType",
             "WebhookReleaseEditedPropChangesPropNameType",
+            "WebhookReleaseEditedPropChangesPropTagNameType",
             "WebhookReleaseEditedPropChangesPropMakeLatestType",
             "WebhookReleasePrereleasedType",
             "WebhookReleasePrereleasedPropReleaseType",

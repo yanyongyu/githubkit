@@ -9,20 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing_extensions import TypedDict
 
 
-class WebhooksWorkflowJobRunType(TypedDict):
-    """WebhooksWorkflowJobRun"""
+class SshSigningKeyType(TypedDict):
+    """SSH Signing Key
 
-    conclusion: None
-    created_at: str
-    environment: str
-    html_url: str
+    A public SSH key used to sign Git commits
+    """
+
+    key: str
     id: int
-    name: None
-    status: str
-    updated_at: str
+    title: str
+    created_at: datetime
 
 
-__all__ = ("WebhooksWorkflowJobRunType",)
+__all__ = ("SshSigningKeyType",)

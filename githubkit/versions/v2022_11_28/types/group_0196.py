@@ -13,68 +13,38 @@ from datetime import datetime
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0057 import MinimalRepositoryType
-from .group_0194 import PullRequestMinimalType
-from .group_0195 import SimpleCommitType
 
+class ArtifactType(TypedDict):
+    """Artifact
 
-class WorkflowRunType(TypedDict):
-    """Workflow Run
-
-    An invocation of a workflow
+    An artifact
     """
 
     id: int
-    name: NotRequired[Union[str, None]]
     node_id: str
-    check_suite_id: NotRequired[int]
-    check_suite_node_id: NotRequired[str]
-    head_branch: Union[str, None]
-    head_sha: str
-    path: str
-    run_number: int
-    run_attempt: NotRequired[int]
-    referenced_workflows: NotRequired[Union[list[ReferencedWorkflowType], None]]
-    event: str
-    status: Union[str, None]
-    conclusion: Union[str, None]
-    workflow_id: int
+    name: str
+    size_in_bytes: int
     url: str
-    html_url: str
-    pull_requests: Union[list[PullRequestMinimalType], None]
-    created_at: datetime
-    updated_at: datetime
-    actor: NotRequired[SimpleUserType]
-    triggering_actor: NotRequired[SimpleUserType]
-    run_started_at: NotRequired[datetime]
-    jobs_url: str
-    logs_url: str
-    check_suite_url: str
-    artifacts_url: str
-    cancel_url: str
-    rerun_url: str
-    previous_attempt_url: NotRequired[Union[str, None]]
-    workflow_url: str
-    head_commit: Union[None, SimpleCommitType]
-    repository: MinimalRepositoryType
-    head_repository: MinimalRepositoryType
+    archive_download_url: str
+    expired: bool
+    created_at: Union[datetime, None]
+    expires_at: Union[datetime, None]
+    updated_at: Union[datetime, None]
+    digest: NotRequired[Union[str, None]]
+    workflow_run: NotRequired[Union[ArtifactPropWorkflowRunType, None]]
+
+
+class ArtifactPropWorkflowRunType(TypedDict):
+    """ArtifactPropWorkflowRun"""
+
+    id: NotRequired[int]
+    repository_id: NotRequired[int]
     head_repository_id: NotRequired[int]
-    display_title: str
-
-
-class ReferencedWorkflowType(TypedDict):
-    """Referenced workflow
-
-    A workflow referenced/reused by the initial caller workflow
-    """
-
-    path: str
-    sha: str
-    ref: NotRequired[str]
+    head_branch: NotRequired[str]
+    head_sha: NotRequired[str]
 
 
 __all__ = (
-    "ReferencedWorkflowType",
-    "WorkflowRunType",
+    "ArtifactPropWorkflowRunType",
+    "ArtifactType",
 )

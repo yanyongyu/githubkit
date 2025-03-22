@@ -9,31 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0003 import SimpleUser
 
 
-class ActionsRepositoryPermissions(GitHubModel):
-    """ActionsRepositoryPermissions"""
+class ProjectCollaboratorPermission(GitHubModel):
+    """Project Collaborator Permission
 
-    enabled: bool = Field(
-        description="Whether GitHub Actions is enabled on the repository."
-    )
-    allowed_actions: Missing[Literal["all", "local_only", "selected"]] = Field(
-        default=UNSET,
-        description="The permissions policy that controls the actions and reusable workflows that are allowed to run.",
-    )
-    selected_actions_url: Missing[str] = Field(
-        default=UNSET,
-        description="The API URL to use to get or set the actions and reusable workflows that are allowed to run, when `allowed_actions` is set to `selected`.",
-    )
+    Project Collaborator Permission
+    """
+
+    permission: str = Field()
+    user: Union[None, SimpleUser] = Field()
 
 
-model_rebuild(ActionsRepositoryPermissions)
+model_rebuild(ProjectCollaboratorPermission)
 
-__all__ = ("ActionsRepositoryPermissions",)
+__all__ = ("ProjectCollaboratorPermission",)

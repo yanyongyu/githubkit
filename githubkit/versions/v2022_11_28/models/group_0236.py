@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Literal, Union
+from typing import Annotated, Literal, Union
 
 from pydantic import Field
 
@@ -19,60 +19,55 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0031 import SimpleRepository
-from .group_0237 import CodeScanningVariantAnalysisPropScannedRepositoriesItems
-from .group_0238 import CodeScanningVariantAnalysisPropSkippedRepositories
+from .group_0079 import CodeScanningAlertRuleSummary
+from .group_0080 import CodeScanningAnalysisTool
+from .group_0081 import CodeScanningAlertInstance
 
 
-class CodeScanningVariantAnalysis(GitHubModel):
-    """Variant Analysis
+class CodeScanningAlertItems(GitHubModel):
+    """CodeScanningAlertItems"""
 
-    A run of a CodeQL query against one or more repositories.
-    """
-
-    id: int = Field(description="The ID of the variant analysis.")
-    controller_repo: SimpleRepository = Field(
-        title="Simple Repository", description="A GitHub repository."
-    )
-    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    query_language: Literal[
-        "cpp", "csharp", "go", "java", "javascript", "python", "ruby", "swift"
-    ] = Field(description="The language targeted by the CodeQL query")
-    query_pack_url: str = Field(description="The download url for the query pack.")
-    created_at: Missing[datetime] = Field(
-        default=UNSET,
-        description="The date and time at which the variant analysis was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.",
+    number: int = Field(description="The security alert number.")
+    created_at: datetime = Field(
+        description="The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
     )
     updated_at: Missing[datetime] = Field(
         default=UNSET,
-        description="The date and time at which the variant analysis was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.",
+        description="The time that the alert was last updated in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
     )
-    completed_at: Missing[Union[datetime, None]] = Field(
+    url: str = Field(description="The REST API URL of the alert resource.")
+    html_url: str = Field(description="The GitHub URL of the alert resource.")
+    instances_url: str = Field(
+        description="The REST API URL for fetching the list of instances for an alert."
+    )
+    state: Union[None, Literal["open", "dismissed", "fixed"]] = Field(
+        description="State of a code scanning alert."
+    )
+    fixed_at: Missing[Union[datetime, None]] = Field(
         default=UNSET,
-        description="The date and time at which the variant analysis was completed, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ. Will be null if the variant analysis has not yet completed or this information is not available.",
+        description="The time that the alert was no longer detected and was considered fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
     )
-    status: Literal["in_progress", "succeeded", "failed", "cancelled"] = Field()
-    actions_workflow_run_id: Missing[int] = Field(
-        default=UNSET,
-        description="The GitHub Actions workflow run used to execute this variant analysis. This is only available if the workflow run has started.",
+    dismissed_by: Union[None, SimpleUser] = Field()
+    dismissed_at: Union[datetime, None] = Field(
+        description="The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
     )
-    failure_reason: Missing[
-        Literal["no_repos_queried", "actions_workflow_run_failed", "internal_error"]
+    dismissed_reason: Union[
+        None, Literal["false positive", "won't fix", "used in tests"]
     ] = Field(
-        default=UNSET,
-        description="The reason for a failure of the variant analysis. This is only available if the variant analysis has failed.",
+        description="**Required when the state is dismissed.** The reason for dismissing or closing the alert."
     )
-    scanned_repositories: Missing[
-        list[CodeScanningVariantAnalysisPropScannedRepositoriesItems]
-    ] = Field(default=UNSET)
-    skipped_repositories: Missing[
-        CodeScanningVariantAnalysisPropSkippedRepositories
-    ] = Field(
-        default=UNSET,
-        description="Information about repositories that were skipped from processing. This information is only available to the user that initiated the variant analysis.",
+    dismissed_comment: Missing[Union[Annotated[str, Field(max_length=280)], None]] = (
+        Field(
+            default=UNSET,
+            description="The dismissal comment associated with the dismissal of the alert.",
+        )
     )
+    rule: CodeScanningAlertRuleSummary = Field()
+    tool: CodeScanningAnalysisTool = Field()
+    most_recent_instance: CodeScanningAlertInstance = Field()
+    dismissal_approved_by: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
 
 
-model_rebuild(CodeScanningVariantAnalysis)
+model_rebuild(CodeScanningAlertItems)
 
-__all__ = ("CodeScanningVariantAnalysis",)
+__all__ = ("CodeScanningAlertItems",)

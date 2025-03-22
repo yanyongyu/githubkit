@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,17 +18,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0404 import EnterpriseWebhooks
-from .group_0405 import SimpleInstallation
-from .group_0406 import OrganizationSimpleWebhooks
-from .group_0407 import RepositoryWebhooks
-from .group_0437 import WebhooksProjectColumn
+from .group_0418 import EnterpriseWebhooks
+from .group_0419 import SimpleInstallation
+from .group_0420 import OrganizationSimpleWebhooks
+from .group_0421 import RepositoryWebhooks
+from .group_0447 import WebhooksMembership
 
 
-class WebhookProjectColumnDeleted(GitHubModel):
-    """project_column deleted event"""
+class WebhookOrganizationRenamed(GitHubModel):
+    """organization renamed event"""
 
-    action: Literal["deleted"] = Field()
+    action: Literal["renamed"] = Field()
+    changes: Missing[WebhookOrganizationRenamedPropChanges] = Field(default=UNSET)
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -39,18 +40,43 @@ class WebhookProjectColumnDeleted(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    organization: Missing[OrganizationSimpleWebhooks] = Field(
+    membership: Missing[WebhooksMembership] = Field(
         default=UNSET,
+        title="Membership",
+        description="The membership between the user and the organization. Not present when the action is `member_invited`.",
+    )
+    organization: OrganizationSimpleWebhooks = Field(
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    project_column: WebhooksProjectColumn = Field(title="Project Column")
-    repository: Missing[Union[None, RepositoryWebhooks]] = Field(default=UNSET)
-    sender: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
+    repository: Missing[RepositoryWebhooks] = Field(
+        default=UNSET,
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    )
+    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+
+
+class WebhookOrganizationRenamedPropChanges(GitHubModel):
+    """WebhookOrganizationRenamedPropChanges"""
+
+    login: Missing[WebhookOrganizationRenamedPropChangesPropLogin] = Field(
+        default=UNSET
     )
 
 
-model_rebuild(WebhookProjectColumnDeleted)
+class WebhookOrganizationRenamedPropChangesPropLogin(GitHubModel):
+    """WebhookOrganizationRenamedPropChangesPropLogin"""
 
-__all__ = ("WebhookProjectColumnDeleted",)
+    from_: Missing[str] = Field(default=UNSET, alias="from")
+
+
+model_rebuild(WebhookOrganizationRenamed)
+model_rebuild(WebhookOrganizationRenamedPropChanges)
+model_rebuild(WebhookOrganizationRenamedPropChangesPropLogin)
+
+__all__ = (
+    "WebhookOrganizationRenamed",
+    "WebhookOrganizationRenamedPropChanges",
+    "WebhookOrganizationRenamedPropChangesPropLogin",
+)

@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -19,7 +21,7 @@ from githubkit.utils import UNSET
 class RepositoryRulePullRequestPropParameters(GitHubModel):
     """RepositoryRulePullRequestPropParameters"""
 
-    allowed_merge_methods: Missing[list[str]] = Field(
+    allowed_merge_methods: Missing[list[Literal["merge", "squash", "rebase"]]] = Field(
         default=UNSET,
         description="Array of allowed merge methods. Allowed values include `merge`, `squash`, and `rebase`. At least one option must be enabled.",
     )

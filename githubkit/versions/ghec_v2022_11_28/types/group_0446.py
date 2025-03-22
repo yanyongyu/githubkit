@@ -9,17 +9,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0437 import MetaType
+from .group_0447 import ScimEnterpriseUserResponseAllof1PropGroupsItemsType
 
 
-class CodespacesUserPublicKeyType(TypedDict):
-    """CodespacesUserPublicKey
+class ScimEnterpriseUserResponseAllof1Type(TypedDict):
+    """ScimEnterpriseUserResponseAllof1"""
 
-    The public key used for setting user Codespaces' Secrets.
-    """
-
-    key_id: str
-    key: str
+    id: str
+    groups: NotRequired[list[ScimEnterpriseUserResponseAllof1PropGroupsItemsType]]
+    meta: MetaType
 
 
-__all__ = ("CodespacesUserPublicKeyType",)
+__all__ = ("ScimEnterpriseUserResponseAllof1Type",)

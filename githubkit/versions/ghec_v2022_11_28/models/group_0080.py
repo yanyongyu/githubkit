@@ -48,6 +48,9 @@ class CustomPropertySetPayload(GitHubModel):
         default=UNSET,
         description="An ordered list of the allowed values of the property.\nThe property can have up to 200 allowed values.",
     )
+    values_editable_by: Missing[
+        Union[None, Literal["org_actors", "org_and_repo_actors"]]
+    ] = Field(default=UNSET, description="Who can edit the values of the property")
 
 
 model_rebuild(CustomPropertySetPayload)

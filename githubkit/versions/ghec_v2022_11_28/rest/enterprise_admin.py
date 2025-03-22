@@ -4326,6 +4326,9 @@ class EnterpriseAdminClient:
         default_value: Missing[Union[str, list[str], None]] = UNSET,
         description: Missing[Union[str, None]] = UNSET,
         allowed_values: Missing[Union[list[str], None]] = UNSET,
+        values_editable_by: Missing[
+            Union[None, Literal["org_actors", "org_and_repo_actors"]]
+        ] = UNSET,
     ) -> Response[CustomProperty, CustomPropertyType]: ...
 
     def create_or_update_enterprise_custom_property(
@@ -4389,6 +4392,9 @@ class EnterpriseAdminClient:
         default_value: Missing[Union[str, list[str], None]] = UNSET,
         description: Missing[Union[str, None]] = UNSET,
         allowed_values: Missing[Union[list[str], None]] = UNSET,
+        values_editable_by: Missing[
+            Union[None, Literal["org_actors", "org_and_repo_actors"]]
+        ] = UNSET,
     ) -> Response[CustomProperty, CustomPropertyType]: ...
 
     async def async_create_or_update_enterprise_custom_property(

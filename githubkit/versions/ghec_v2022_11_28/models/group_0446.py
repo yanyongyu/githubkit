@@ -12,18 +12,26 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0437 import Meta
+from .group_0447 import ScimEnterpriseUserResponseAllof1PropGroupsItems
 
 
-class CodespacesUserPublicKey(GitHubModel):
-    """CodespacesUserPublicKey
+class ScimEnterpriseUserResponseAllof1(GitHubModel):
+    """ScimEnterpriseUserResponseAllof1"""
 
-    The public key used for setting user Codespaces' Secrets.
-    """
+    id: str = Field(description="The internally generated id for the user object.")
+    groups: Missing[list[ScimEnterpriseUserResponseAllof1PropGroupsItems]] = Field(
+        default=UNSET,
+        description="Provisioned SCIM groups that the user is a member of.",
+    )
+    meta: Meta = Field(
+        description="The metadata associated with the creation/updates to the user."
+    )
 
-    key_id: str = Field(description="The identifier for the key.")
-    key: str = Field(description="The Base64 encoded public key.")
 
+model_rebuild(ScimEnterpriseUserResponseAllof1)
 
-model_rebuild(CodespacesUserPublicKey)
-
-__all__ = ("CodespacesUserPublicKey",)
+__all__ = ("ScimEnterpriseUserResponseAllof1",)

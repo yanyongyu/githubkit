@@ -49,6 +49,16 @@ from .discussion import Event as DiscussionEvent
 from .discussion import action_types as discussion_action_types
 from .discussion_comment import Event as DiscussionCommentEvent
 from .discussion_comment import action_types as discussion_comment_action_types
+from .dismissal_request_code_scanning import Event as DismissalRequestCodeScanningEvent
+from .dismissal_request_code_scanning import (
+    action_types as dismissal_request_code_scanning_action_types,
+)
+from .dismissal_request_secret_scanning import (
+    Event as DismissalRequestSecretScanningEvent,
+)
+from .dismissal_request_secret_scanning import (
+    action_types as dismissal_request_secret_scanning_action_types,
+)
 from .exemption_request_push_ruleset import Event as ExemptionRequestPushRulesetEvent
 from .exemption_request_push_ruleset import (
     action_types as exemption_request_push_ruleset_action_types,
@@ -209,6 +219,8 @@ WebhookEvent = Union[
     DeploymentStatusEvent,
     DiscussionEvent,
     DiscussionCommentEvent,
+    DismissalRequestCodeScanningEvent,
+    DismissalRequestSecretScanningEvent,
     ForkEvent,
     GithubAppAuthorizationEvent,
     GollumEvent,
@@ -288,6 +300,8 @@ webhook_action_types = {
     "deployment_status": deployment_status_action_types,
     "discussion": discussion_action_types,
     "discussion_comment": discussion_comment_action_types,
+    "dismissal_request_code_scanning": dismissal_request_code_scanning_action_types,
+    "dismissal_request_secret_scanning": dismissal_request_secret_scanning_action_types,
     "fork": fork_action_types,
     "github_app_authorization": github_app_authorization_action_types,
     "gollum": gollum_action_types,
@@ -367,6 +381,8 @@ webhook_event_types = {
     "deployment_status": DeploymentStatusEvent,
     "discussion": DiscussionEvent,
     "discussion_comment": DiscussionCommentEvent,
+    "dismissal_request_code_scanning": DismissalRequestCodeScanningEvent,
+    "dismissal_request_secret_scanning": DismissalRequestSecretScanningEvent,
     "fork": ForkEvent,
     "github_app_authorization": GithubAppAuthorizationEvent,
     "gollum": GollumEvent,

@@ -12,17 +12,21 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0018 import Installation
-
-
-class UserInstallationsGetResponse200(GitHubModel):
-    """UserInstallationsGetResponse200"""
-
-    total_count: int = Field()
-    installations: list[Installation] = Field()
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-model_rebuild(UserInstallationsGetResponse200)
+class TeamsTeamIdDiscussionsDiscussionNumberPatchBody(GitHubModel):
+    """TeamsTeamIdDiscussionsDiscussionNumberPatchBody"""
 
-__all__ = ("UserInstallationsGetResponse200",)
+    title: Missing[str] = Field(
+        default=UNSET, description="The discussion post's title."
+    )
+    body: Missing[str] = Field(
+        default=UNSET, description="The discussion post's body text."
+    )
+
+
+model_rebuild(TeamsTeamIdDiscussionsDiscussionNumberPatchBody)
+
+__all__ = ("TeamsTeamIdDiscussionsDiscussionNumberPatchBody",)

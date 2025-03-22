@@ -9,44 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0003 import SimpleUser
 
+class ReactionRollup(GitHubModel):
+    """Reaction Rollup"""
 
-class GistComment(GitHubModel):
-    """Gist Comment
-
-    A comment made to a gist.
-    """
-
-    id: int = Field()
-    node_id: str = Field()
     url: str = Field()
-    body: str = Field(max_length=65535, description="The comment text.")
-    user: Union[None, SimpleUser] = Field()
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ] = Field(
-        title="author_association",
-        description="How the author is associated with the repository.",
-    )
+    total_count: int = Field()
+    plus_one: int = Field(alias="+1")
+    minus_one: int = Field(alias="-1")
+    laugh: int = Field()
+    confused: int = Field()
+    heart: int = Field()
+    hooray: int = Field()
+    eyes: int = Field()
+    rocket: int = Field()
 
 
-model_rebuild(GistComment)
+model_rebuild(ReactionRollup)
 
-__all__ = ("GistComment",)
+__all__ = ("ReactionRollup",)

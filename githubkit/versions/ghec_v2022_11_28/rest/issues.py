@@ -250,6 +250,7 @@ class IssuesClient:
         ] = UNSET,
         state: Missing[Literal["open", "closed", "all"]] = UNSET,
         labels: Missing[str] = UNSET,
+        type: Missing[str] = UNSET,
         sort: Missing[Literal["created", "updated", "comments"]] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         since: Missing[datetime] = UNSET,
@@ -267,6 +268,7 @@ class IssuesClient:
             "filter": filter_,
             "state": state,
             "labels": labels,
+            "type": type,
             "sort": sort,
             "direction": direction,
             "since": since,
@@ -296,6 +298,7 @@ class IssuesClient:
         ] = UNSET,
         state: Missing[Literal["open", "closed", "all"]] = UNSET,
         labels: Missing[str] = UNSET,
+        type: Missing[str] = UNSET,
         sort: Missing[Literal["created", "updated", "comments"]] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         since: Missing[datetime] = UNSET,
@@ -313,6 +316,7 @@ class IssuesClient:
             "filter": filter_,
             "state": state,
             "labels": labels,
+            "type": type,
             "sort": sort,
             "direction": direction,
             "since": since,
@@ -457,6 +461,7 @@ class IssuesClient:
         milestone: Missing[str] = UNSET,
         state: Missing[Literal["open", "closed", "all"]] = UNSET,
         assignee: Missing[str] = UNSET,
+        type: Missing[str] = UNSET,
         creator: Missing[str] = UNSET,
         mentioned: Missing[str] = UNSET,
         labels: Missing[str] = UNSET,
@@ -477,6 +482,7 @@ class IssuesClient:
             "milestone": milestone,
             "state": state,
             "assignee": assignee,
+            "type": type,
             "creator": creator,
             "mentioned": mentioned,
             "labels": labels,
@@ -509,6 +515,7 @@ class IssuesClient:
         milestone: Missing[str] = UNSET,
         state: Missing[Literal["open", "closed", "all"]] = UNSET,
         assignee: Missing[str] = UNSET,
+        type: Missing[str] = UNSET,
         creator: Missing[str] = UNSET,
         mentioned: Missing[str] = UNSET,
         labels: Missing[str] = UNSET,
@@ -529,6 +536,7 @@ class IssuesClient:
             "milestone": milestone,
             "state": state,
             "assignee": assignee,
+            "type": type,
             "creator": creator,
             "mentioned": mentioned,
             "labels": labels,
@@ -579,6 +587,7 @@ class IssuesClient:
             list[Union[str, ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1Type]]
         ] = UNSET,
         assignees: Missing[list[str]] = UNSET,
+        type: Missing[Union[str, None]] = UNSET,
     ) -> Response[Issue, IssueType]: ...
 
     def create(
@@ -655,6 +664,7 @@ class IssuesClient:
             list[Union[str, ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1Type]]
         ] = UNSET,
         assignees: Missing[list[str]] = UNSET,
+        type: Missing[Union[str, None]] = UNSET,
     ) -> Response[Issue, IssueType]: ...
 
     async def async_create(
@@ -1224,6 +1234,7 @@ class IssuesClient:
             ]
         ] = UNSET,
         assignees: Missing[list[str]] = UNSET,
+        type: Missing[Union[str, None]] = UNSET,
     ) -> Response[Issue, IssueType]: ...
 
     def update(
@@ -1311,6 +1322,7 @@ class IssuesClient:
             ]
         ] = UNSET,
         assignees: Missing[list[str]] = UNSET,
+        type: Missing[Union[str, None]] = UNSET,
     ) -> Response[Issue, IssueType]: ...
 
     async def async_update(

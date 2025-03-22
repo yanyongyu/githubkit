@@ -9,41 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0252 import GitUser
-from .group_0253 import Verification
 
 
-class CommitPropCommit(GitHubModel):
-    """CommitPropCommit"""
+class CheckAutomatedSecurityFixes(GitHubModel):
+    """Check Dependabot security updates
 
-    url: str = Field()
-    author: Union[None, GitUser] = Field()
-    committer: Union[None, GitUser] = Field()
-    message: str = Field()
-    comment_count: int = Field()
-    tree: CommitPropCommitPropTree = Field()
-    verification: Missing[Verification] = Field(default=UNSET, title="Verification")
+    Check Dependabot security updates
+    """
 
-
-class CommitPropCommitPropTree(GitHubModel):
-    """CommitPropCommitPropTree"""
-
-    sha: str = Field()
-    url: str = Field()
+    enabled: bool = Field(
+        description="Whether Dependabot security updates are enabled for the repository."
+    )
+    paused: bool = Field(
+        description="Whether Dependabot security updates are paused for the repository."
+    )
 
 
-model_rebuild(CommitPropCommit)
-model_rebuild(CommitPropCommitPropTree)
+model_rebuild(CheckAutomatedSecurityFixes)
 
-__all__ = (
-    "CommitPropCommit",
-    "CommitPropCommitPropTree",
-)
+__all__ = ("CheckAutomatedSecurityFixes",)

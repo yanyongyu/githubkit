@@ -9,20 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from datetime import datetime
+from typing import Union
+from typing_extensions import TypedDict
+
+from .group_0003 import SimpleUserType
 
 
-class MetaType(TypedDict):
-    """Meta
+class StargazerType(TypedDict):
+    """Stargazer
 
-    The metadata associated with the creation/updates to the user.
+    Stargazer
     """
 
-    resource_type: Literal["User", "Group"]
-    created: NotRequired[str]
-    last_modified: NotRequired[str]
-    location: NotRequired[str]
+    starred_at: datetime
+    user: Union[None, SimpleUserType]
 
 
-__all__ = ("MetaType",)
+__all__ = ("StargazerType",)

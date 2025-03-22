@@ -9,20 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import TypedDict
 
+from .group_0391 import TrafficType
 
-class EmailType(TypedDict):
-    """Email
 
-    Email
+class ViewTrafficType(TypedDict):
+    """View Traffic
+
+    View Traffic
     """
 
-    email: str
-    primary: bool
-    verified: bool
-    visibility: Union[str, None]
+    count: int
+    uniques: int
+    views: list[TrafficType]
 
 
-__all__ = ("EmailType",)
+__all__ = ("ViewTrafficType",)

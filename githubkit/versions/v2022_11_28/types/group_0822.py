@@ -11,14 +11,11 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0065 import ActionsHostedRunnerType
+
+class ApplicationsClientIdGrantDeleteBodyType(TypedDict):
+    """ApplicationsClientIdGrantDeleteBody"""
+
+    access_token: str
 
 
-class OrgsOrgActionsHostedRunnersGetResponse200Type(TypedDict):
-    """OrgsOrgActionsHostedRunnersGetResponse200"""
-
-    total_count: int
-    runners: list[ActionsHostedRunnerType]
-
-
-__all__ = ("OrgsOrgActionsHostedRunnersGetResponse200Type",)
+__all__ = ("ApplicationsClientIdGrantDeleteBodyType",)

@@ -9,38 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0382 import SearchResultTextMatchesItemsType
+from typing_extensions import TypedDict
 
 
-class LabelSearchResultItemType(TypedDict):
-    """Label Search Result Item
+class RepositorySubscriptionType(TypedDict):
+    """Repository Invitation
 
-    Label Search Result Item
+    Repository invitations let you manage who you collaborate with.
     """
 
-    id: int
-    node_id: str
+    subscribed: bool
+    ignored: bool
+    reason: Union[str, None]
+    created_at: datetime
     url: str
-    name: str
-    color: str
-    default: bool
-    description: Union[str, None]
-    score: float
-    text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
+    repository_url: str
 
 
-class SearchLabelsGetResponse200Type(TypedDict):
-    """SearchLabelsGetResponse200"""
-
-    total_count: int
-    incomplete_results: bool
-    items: list[LabelSearchResultItemType]
-
-
-__all__ = (
-    "LabelSearchResultItemType",
-    "SearchLabelsGetResponse200Type",
-)
+__all__ = ("RepositorySubscriptionType",)

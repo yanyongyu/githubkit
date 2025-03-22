@@ -11,43 +11,19 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0213 import VerificationType
+from .group_0291 import EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType
 
 
-class GitTagType(TypedDict):
-    """Git Tag
+class EnvironmentPropProtectionRulesItemsAnyof1Type(TypedDict):
+    """EnvironmentPropProtectionRulesItemsAnyof1"""
 
-    Metadata for a Git tag
-    """
-
+    id: int
     node_id: str
-    tag: str
-    sha: str
-    url: str
-    message: str
-    tagger: GitTagPropTaggerType
-    object_: GitTagPropObjectType
-    verification: NotRequired[VerificationType]
-
-
-class GitTagPropTaggerType(TypedDict):
-    """GitTagPropTagger"""
-
-    date: str
-    email: str
-    name: str
-
-
-class GitTagPropObjectType(TypedDict):
-    """GitTagPropObject"""
-
-    sha: str
+    prevent_self_review: NotRequired[bool]
     type: str
-    url: str
+    reviewers: NotRequired[
+        list[EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType]
+    ]
 
 
-__all__ = (
-    "GitTagPropObjectType",
-    "GitTagPropTaggerType",
-    "GitTagType",
-)
+__all__ = ("EnvironmentPropProtectionRulesItemsAnyof1Type",)

@@ -12,18 +12,25 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0135 import RulesetVersionWithStateAllof1PropState
-
-
-class RulesetVersionWithStateAllof1(GitHubModel):
-    """RulesetVersionWithStateAllof1"""
-
-    state: RulesetVersionWithStateAllof1PropState = Field(
-        description="The state of the ruleset version"
-    )
+from .group_0085 import (
+    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName,
+)
+from .group_0087 import RepositoryRulesetConditionsPropRefName
 
 
-model_rebuild(RulesetVersionWithStateAllof1)
+class OrgRulesetConditionsOneof0(GitHubModel):
+    """repository_name_and_ref_name
 
-__all__ = ("RulesetVersionWithStateAllof1",)
+    Conditions to target repositories by name and refs by name
+    """
+
+    ref_name: Missing[RepositoryRulesetConditionsPropRefName] = Field(default=UNSET)
+    repository_name: RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName = Field()
+
+
+model_rebuild(OrgRulesetConditionsOneof0)
+
+__all__ = ("OrgRulesetConditionsOneof0",)

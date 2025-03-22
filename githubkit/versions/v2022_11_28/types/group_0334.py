@@ -12,31 +12,39 @@ from __future__ import annotations
 from typing import Union
 from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0020 import RepositoryType
+from .group_0019 import LicenseSimpleType
 
 
-class PullRequestPropHeadType(TypedDict):
-    """PullRequestPropHead"""
+class LicenseContentType(TypedDict):
+    """License Content
 
-    label: Union[str, None]
-    ref: str
-    repo: RepositoryType
+    License Content
+    """
+
+    name: str
+    path: str
     sha: str
-    user: SimpleUserType
+    size: int
+    url: str
+    html_url: Union[str, None]
+    git_url: Union[str, None]
+    download_url: Union[str, None]
+    type: str
+    content: str
+    encoding: str
+    links: LicenseContentPropLinksType
+    license_: Union[None, LicenseSimpleType]
 
 
-class PullRequestPropBaseType(TypedDict):
-    """PullRequestPropBase"""
+class LicenseContentPropLinksType(TypedDict):
+    """LicenseContentPropLinks"""
 
-    label: str
-    ref: str
-    repo: RepositoryType
-    sha: str
-    user: SimpleUserType
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
 
 
 __all__ = (
-    "PullRequestPropBaseType",
-    "PullRequestPropHeadType",
+    "LicenseContentPropLinksType",
+    "LicenseContentType",
 )

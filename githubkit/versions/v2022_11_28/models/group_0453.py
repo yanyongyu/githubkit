@@ -9,6 +9,9 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,47 +19,23 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class WebhooksChanges8(GitHubModel):
-    """WebhooksChanges8"""
+class WebhooksProjectChanges(GitHubModel):
+    """WebhooksProjectChanges"""
 
-    tier: WebhooksChanges8PropTier = Field()
-
-
-class WebhooksChanges8PropTier(GitHubModel):
-    """WebhooksChanges8PropTier"""
-
-    from_: WebhooksChanges8PropTierPropFrom = Field(
-        alias="from",
-        title="Sponsorship Tier",
-        description="The `tier_changed` and `pending_tier_change` will include the original tier before the change or pending change. For more information, see the pending tier change payload.",
-    )
+    archived_at: Missing[WebhooksProjectChangesPropArchivedAt] = Field(default=UNSET)
 
 
-class WebhooksChanges8PropTierPropFrom(GitHubModel):
-    """Sponsorship Tier
+class WebhooksProjectChangesPropArchivedAt(GitHubModel):
+    """WebhooksProjectChangesPropArchivedAt"""
 
-    The `tier_changed` and `pending_tier_change` will include the original tier
-    before the change or pending change. For more information, see the pending tier
-    change payload.
-    """
-
-    created_at: str = Field()
-    description: str = Field()
-    is_custom_ammount: Missing[bool] = Field(default=UNSET)
-    is_custom_amount: Missing[bool] = Field(default=UNSET)
-    is_one_time: bool = Field()
-    monthly_price_in_cents: int = Field()
-    monthly_price_in_dollars: int = Field()
-    name: str = Field()
-    node_id: str = Field()
+    from_: Missing[Union[datetime, None]] = Field(default=UNSET, alias="from")
+    to: Missing[Union[datetime, None]] = Field(default=UNSET)
 
 
-model_rebuild(WebhooksChanges8)
-model_rebuild(WebhooksChanges8PropTier)
-model_rebuild(WebhooksChanges8PropTierPropFrom)
+model_rebuild(WebhooksProjectChanges)
+model_rebuild(WebhooksProjectChangesPropArchivedAt)
 
 __all__ = (
-    "WebhooksChanges8",
-    "WebhooksChanges8PropTier",
-    "WebhooksChanges8PropTierPropFrom",
+    "WebhooksProjectChanges",
+    "WebhooksProjectChangesPropArchivedAt",
 )

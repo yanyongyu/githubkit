@@ -9,47 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0011 import WebhookConfig
-from .group_0332 import HookResponse
 
 
-class Hook(GitHubModel):
-    """Webhook
+class DeploymentBranchPolicyNamePattern(GitHubModel):
+    """Deployment branch policy name pattern"""
 
-    Webhooks for repositories.
-    """
-
-    type: str = Field()
-    id: int = Field(description="Unique identifier of the webhook.")
     name: str = Field(
-        description="The name of a valid service, use 'web' for a webhook."
+        description="The name pattern that branches must match in order to deploy to the environment.\n\nWildcard characters will not match `/`. For example, to match branches that begin with `release/` and contain an additional single slash, use `release/*/*`.\nFor more information about pattern matching syntax, see the [Ruby File.fnmatch documentation](https://ruby-doc.org/core-2.5.1/File.html#method-c-fnmatch)."
     )
-    active: bool = Field(
-        description="Determines whether the hook is actually triggered on pushes."
-    )
-    events: list[str] = Field(
-        description="Determines what events the hook is triggered for. Default: ['push']."
-    )
-    config: WebhookConfig = Field(
-        title="Webhook Configuration", description="Configuration object of the webhook"
-    )
-    updated_at: datetime = Field()
-    created_at: datetime = Field()
-    url: str = Field()
-    test_url: str = Field()
-    ping_url: str = Field()
-    deliveries_url: Missing[str] = Field(default=UNSET)
-    last_response: HookResponse = Field(title="Hook Response")
 
 
-model_rebuild(Hook)
+model_rebuild(DeploymentBranchPolicyNamePattern)
 
-__all__ = ("Hook",)
+__all__ = ("DeploymentBranchPolicyNamePattern",)

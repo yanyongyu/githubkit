@@ -9,67 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ImportType(TypedDict):
-    """Import
+class CustomDeploymentRuleAppType(TypedDict):
+    """Custom deployment protection rule app
 
-    A repository import from an external source.
+    A GitHub App that is providing a custom deployment protection rule.
     """
 
-    vcs: Union[str, None]
-    use_lfs: NotRequired[bool]
-    vcs_url: str
-    svc_root: NotRequired[str]
-    tfvc_project: NotRequired[str]
-    status: Literal[
-        "auth",
-        "error",
-        "none",
-        "detecting",
-        "choose",
-        "auth_failed",
-        "importing",
-        "mapping",
-        "waiting_to_push",
-        "pushing",
-        "complete",
-        "setup",
-        "unknown",
-        "detection_found_multiple",
-        "detection_found_nothing",
-        "detection_needs_auth",
-    ]
-    status_text: NotRequired[Union[str, None]]
-    failed_step: NotRequired[Union[str, None]]
-    error_message: NotRequired[Union[str, None]]
-    import_percent: NotRequired[Union[int, None]]
-    commit_count: NotRequired[Union[int, None]]
-    push_percent: NotRequired[Union[int, None]]
-    has_large_files: NotRequired[bool]
-    large_files_size: NotRequired[int]
-    large_files_count: NotRequired[int]
-    project_choices: NotRequired[list[ImportPropProjectChoicesItemsType]]
-    message: NotRequired[str]
-    authors_count: NotRequired[Union[int, None]]
-    url: str
-    html_url: str
-    authors_url: str
-    repository_url: str
-    svn_root: NotRequired[str]
+    id: int
+    slug: str
+    integration_url: str
+    node_id: str
 
 
-class ImportPropProjectChoicesItemsType(TypedDict):
-    """ImportPropProjectChoicesItems"""
-
-    vcs: NotRequired[str]
-    tfvc_project: NotRequired[str]
-    human_name: NotRequired[str]
-
-
-__all__ = (
-    "ImportPropProjectChoicesItemsType",
-    "ImportType",
-)
+__all__ = ("CustomDeploymentRuleAppType",)

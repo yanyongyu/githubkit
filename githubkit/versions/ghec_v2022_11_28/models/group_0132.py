@@ -12,20 +12,21 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0133 import RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId
 
 
-class RulesetVersionPropActor(GitHubModel):
-    """RulesetVersionPropActor
+class RepositoryRulesetConditionsRepositoryIdTarget(GitHubModel):
+    """Repository ruleset conditions for repository IDs
 
-    The actor who updated the ruleset
+    Parameters for a repository ID condition
     """
 
-    id: Missing[int] = Field(default=UNSET)
-    type: Missing[str] = Field(default=UNSET)
+    repository_id: RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId = (
+        Field()
+    )
 
 
-model_rebuild(RulesetVersionPropActor)
+model_rebuild(RepositoryRulesetConditionsRepositoryIdTarget)
 
-__all__ = ("RulesetVersionPropActor",)
+__all__ = ("RepositoryRulesetConditionsRepositoryIdTarget",)

@@ -12,17 +12,17 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0135 import RepositoryRuleMergeQueuePropParametersType
+from .group_0135 import RepositoryRuleUpdatePropParametersType
 
 
-class RepositoryRuleMergeQueueType(TypedDict):
-    """merge_queue
+class RepositoryRuleUpdateType(TypedDict):
+    """update
 
-    Merges must be performed via a merge queue.
+    Only allow users with bypass permission to update matching refs.
     """
 
-    type: Literal["merge_queue"]
-    parameters: NotRequired[RepositoryRuleMergeQueuePropParametersType]
+    type: Literal["update"]
+    parameters: NotRequired[RepositoryRuleUpdatePropParametersType]
 
 
-__all__ = ("RepositoryRuleMergeQueueType",)
+__all__ = ("RepositoryRuleUpdateType",)

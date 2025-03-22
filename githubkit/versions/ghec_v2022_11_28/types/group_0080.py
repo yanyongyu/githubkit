@@ -24,6 +24,9 @@ class CustomPropertySetPayloadType(TypedDict):
     default_value: NotRequired[Union[str, list[str], None]]
     description: NotRequired[Union[str, None]]
     allowed_values: NotRequired[Union[list[str], None]]
+    values_editable_by: NotRequired[
+        Union[None, Literal["org_actors", "org_and_repo_actors"]]
+    ]
 
 
 __all__ = ("CustomPropertySetPayloadType",)

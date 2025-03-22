@@ -9,33 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0223 import RateLimit
+from .group_0003 import SimpleUser
+from .group_0152 import ReactionRollup
 
 
-class RateLimitOverviewPropResources(GitHubModel):
-    """RateLimitOverviewPropResources"""
+class TeamDiscussionComment(GitHubModel):
+    """Team Discussion Comment
 
-    core: RateLimit = Field(title="Rate Limit")
-    graphql: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
-    search: RateLimit = Field(title="Rate Limit")
-    code_search: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
-    source_import: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
-    integration_manifest: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
-    code_scanning_upload: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
-    actions_runner_registration: Missing[RateLimit] = Field(
-        default=UNSET, title="Rate Limit"
+    A reply to a discussion within a team.
+    """
+
+    author: Union[None, SimpleUser] = Field()
+    body: str = Field(description="The main text of the comment.")
+    body_html: str = Field()
+    body_version: str = Field(
+        description="The current version of the body content. If provided, this update operation will be rejected if the given version does not match the latest version on the server."
     )
-    scim: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
-    dependency_snapshots: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
-    code_scanning_autofix: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
+    created_at: datetime = Field()
+    last_edited_at: Union[datetime, None] = Field()
+    discussion_url: str = Field()
+    html_url: str = Field()
+    node_id: str = Field()
+    number: int = Field(
+        description="The unique sequence number of a team discussion comment."
+    )
+    updated_at: datetime = Field()
+    url: str = Field()
+    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
 
 
-model_rebuild(RateLimitOverviewPropResources)
+model_rebuild(TeamDiscussionComment)
 
-__all__ = ("RateLimitOverviewPropResources",)
+__all__ = ("TeamDiscussionComment",)

@@ -45,7 +45,6 @@ class ActionsHostedRunnerPoolImageType(TypedDict):
     size_gb: int
     display_name: str
     source: Literal["github", "partner", "custom"]
-    version: str
 
 
 class PublicIpType(TypedDict):

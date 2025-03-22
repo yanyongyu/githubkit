@@ -9,29 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ProjectColumn(GitHubModel):
-    """Project Column
+class CombinedBillingUsage(GitHubModel):
+    """CombinedBillingUsage"""
 
-    Project columns contain cards of work.
-    """
-
-    url: str = Field()
-    project_url: str = Field()
-    cards_url: str = Field()
-    id: int = Field(description="The unique identifier of the project column")
-    node_id: str = Field()
-    name: str = Field(description="Name of the project column")
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
+    days_left_in_billing_cycle: int = Field(
+        description="Numbers of days left in billing cycle."
+    )
+    estimated_paid_storage_for_month: int = Field(
+        description="Estimated storage space (GB) used in billing cycle."
+    )
+    estimated_storage_for_month: int = Field(
+        description="Estimated sum of free and paid storage space (GB) used in billing cycle."
+    )
 
 
-model_rebuild(ProjectColumn)
+model_rebuild(CombinedBillingUsage)
 
-__all__ = ("ProjectColumn",)
+__all__ = ("CombinedBillingUsage",)

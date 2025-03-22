@@ -14,46 +14,52 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class RepositoryRuleRequiredLinearHistory(GitHubModel):
-    """required_linear_history
+class RepositoryRuleCreation(GitHubModel):
+    """creation
 
-    Prevent merge commits from being pushed to matching refs.
+    Only allow users with bypass permission to create matching refs.
     """
 
-    type: Literal["required_linear_history"] = Field()
+    type: Literal["creation"] = Field()
 
 
-class RepositoryRuleOneof16(GitHubModel):
-    """max_file_path_length
+class RepositoryRuleDeletion(GitHubModel):
+    """deletion
 
-    Prevent commits that include file paths that exceed a specified character limit
-    from being pushed to the commit graph.
+    Only allow users with bypass permissions to delete matching refs.
     """
 
-    type: Literal["max_file_path_length"] = Field()
-    parameters: Missing[RepositoryRuleOneof16PropParameters] = Field(default=UNSET)
+    type: Literal["deletion"] = Field()
 
 
-class RepositoryRuleOneof16PropParameters(GitHubModel):
-    """RepositoryRuleOneof16PropParameters"""
+class RepositoryRuleRequiredSignatures(GitHubModel):
+    """required_signatures
 
-    max_file_path_length: int = Field(
-        le=256.0,
-        ge=1.0,
-        description="The maximum amount of characters allowed in file paths",
-    )
+    Commits pushed to matching refs must have verified signatures.
+    """
+
+    type: Literal["required_signatures"] = Field()
 
 
-model_rebuild(RepositoryRuleRequiredLinearHistory)
-model_rebuild(RepositoryRuleOneof16)
-model_rebuild(RepositoryRuleOneof16PropParameters)
+class RepositoryRuleNonFastForward(GitHubModel):
+    """non_fast_forward
+
+    Prevent users with push access from force pushing to refs.
+    """
+
+    type: Literal["non_fast_forward"] = Field()
+
+
+model_rebuild(RepositoryRuleCreation)
+model_rebuild(RepositoryRuleDeletion)
+model_rebuild(RepositoryRuleRequiredSignatures)
+model_rebuild(RepositoryRuleNonFastForward)
 
 __all__ = (
-    "RepositoryRuleOneof16",
-    "RepositoryRuleOneof16PropParameters",
-    "RepositoryRuleRequiredLinearHistory",
+    "RepositoryRuleCreation",
+    "RepositoryRuleDeletion",
+    "RepositoryRuleNonFastForward",
+    "RepositoryRuleRequiredSignatures",
 )

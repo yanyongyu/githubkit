@@ -13,22 +13,14 @@ from typing import Union
 from typing_extensions import TypedDict
 
 
-class CheckAnnotationType(TypedDict):
-    """Check Annotation
+class VerificationType(TypedDict):
+    """Verification"""
 
-    Check Annotation
-    """
-
-    path: str
-    start_line: int
-    end_line: int
-    start_column: Union[int, None]
-    end_column: Union[int, None]
-    annotation_level: Union[str, None]
-    title: Union[str, None]
-    message: Union[str, None]
-    raw_details: Union[str, None]
-    blob_href: str
+    verified: bool
+    reason: str
+    payload: Union[str, None]
+    signature: Union[str, None]
+    verified_at: Union[str, None]
 
 
-__all__ = ("CheckAnnotationType",)
+__all__ = ("VerificationType",)

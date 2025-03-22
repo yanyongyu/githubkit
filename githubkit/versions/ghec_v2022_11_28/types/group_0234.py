@@ -11,53 +11,18 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-
-class PullRequestMinimalType(TypedDict):
-    """Pull Request Minimal"""
-
-    id: int
-    number: int
-    url: str
-    head: PullRequestMinimalPropHeadType
-    base: PullRequestMinimalPropBaseType
+from .group_0233 import RateLimitType
+from .group_0235 import RateLimitOverviewPropResourcesType
 
 
-class PullRequestMinimalPropHeadType(TypedDict):
-    """PullRequestMinimalPropHead"""
+class RateLimitOverviewType(TypedDict):
+    """Rate Limit Overview
 
-    ref: str
-    sha: str
-    repo: PullRequestMinimalPropHeadPropRepoType
+    Rate Limit Overview
+    """
 
-
-class PullRequestMinimalPropHeadPropRepoType(TypedDict):
-    """PullRequestMinimalPropHeadPropRepo"""
-
-    id: int
-    url: str
-    name: str
+    resources: RateLimitOverviewPropResourcesType
+    rate: RateLimitType
 
 
-class PullRequestMinimalPropBaseType(TypedDict):
-    """PullRequestMinimalPropBase"""
-
-    ref: str
-    sha: str
-    repo: PullRequestMinimalPropBasePropRepoType
-
-
-class PullRequestMinimalPropBasePropRepoType(TypedDict):
-    """PullRequestMinimalPropBasePropRepo"""
-
-    id: int
-    url: str
-    name: str
-
-
-__all__ = (
-    "PullRequestMinimalPropBasePropRepoType",
-    "PullRequestMinimalPropBaseType",
-    "PullRequestMinimalPropHeadPropRepoType",
-    "PullRequestMinimalPropHeadType",
-    "PullRequestMinimalType",
-)
+__all__ = ("RateLimitOverviewType",)

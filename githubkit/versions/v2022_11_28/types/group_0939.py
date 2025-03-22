@@ -12,12 +12,12 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ProjectsProjectIdPatchResponse403Type(TypedDict):
-    """ProjectsProjectIdPatchResponse403"""
+class OrgsOrgTeamsTeamSlugDiscussionsPostBodyType(TypedDict):
+    """OrgsOrgTeamsTeamSlugDiscussionsPostBody"""
 
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
-    errors: NotRequired[list[str]]
+    title: str
+    body: str
+    private: NotRequired[bool]
 
 
-__all__ = ("ProjectsProjectIdPatchResponse403Type",)
+__all__ = ("OrgsOrgTeamsTeamSlugDiscussionsPostBodyType",)

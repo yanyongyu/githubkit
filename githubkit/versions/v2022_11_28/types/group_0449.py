@@ -14,32 +14,25 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksAlertType(TypedDict):
-    """Repository Vulnerability Alert Alert
+class WebhooksProjectCardType(TypedDict):
+    """Project Card"""
 
-    The security alert of the vulnerable dependency.
-    """
-
-    affected_package_name: str
-    affected_range: str
-    created_at: str
-    dismiss_reason: NotRequired[str]
-    dismissed_at: NotRequired[str]
-    dismisser: NotRequired[Union[WebhooksAlertPropDismisserType, None]]
-    external_identifier: str
-    external_reference: Union[str, None]
-    fix_reason: NotRequired[str]
-    fixed_at: NotRequired[datetime]
-    fixed_in: NotRequired[str]
-    ghsa_id: str
+    after_id: NotRequired[Union[int, None]]
+    archived: bool
+    column_id: int
+    column_url: str
+    content_url: NotRequired[str]
+    created_at: datetime
+    creator: Union[WebhooksProjectCardPropCreatorType, None]
     id: int
     node_id: str
-    number: int
-    severity: str
-    state: Literal["open"]
+    note: Union[str, None]
+    project_url: str
+    updated_at: datetime
+    url: str
 
 
-class WebhooksAlertPropDismisserType(TypedDict):
+class WebhooksProjectCardPropCreatorType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -63,9 +56,10 @@ class WebhooksAlertPropDismisserType(TypedDict):
     subscriptions_url: NotRequired[str]
     type: NotRequired[Literal["Bot", "User", "Organization"]]
     url: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
 __all__ = (
-    "WebhooksAlertPropDismisserType",
-    "WebhooksAlertType",
+    "WebhooksProjectCardPropCreatorType",
+    "WebhooksProjectCardType",
 )

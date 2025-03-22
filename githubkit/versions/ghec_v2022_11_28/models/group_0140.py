@@ -9,25 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0139 import RulesetVersionPropActor
+from .group_0142 import RulesetVersionWithStateAllof1PropState
 
-class PackagesBillingUsage(GitHubModel):
-    """PackagesBillingUsage"""
 
-    total_gigabytes_bandwidth_used: int = Field(
-        description="Sum of the free and paid storage space (GB) for GitHuub Packages."
+class RulesetVersionWithState(GitHubModel):
+    """RulesetVersionWithState"""
+
+    version_id: int = Field(description="The ID of the previous version of the ruleset")
+    actor: RulesetVersionPropActor = Field(
+        description="The actor who updated the ruleset"
     )
-    total_paid_gigabytes_bandwidth_used: int = Field(
-        description="Total paid storage space (GB) for GitHuub Packages."
-    )
-    included_gigabytes_bandwidth: int = Field(
-        description="Free storage space (GB) for GitHub Packages."
+    updated_at: datetime = Field()
+    state: RulesetVersionWithStateAllof1PropState = Field(
+        description="The state of the ruleset version"
     )
 
 
-model_rebuild(PackagesBillingUsage)
+model_rebuild(RulesetVersionWithState)
 
-__all__ = ("PackagesBillingUsage",)
+__all__ = ("RulesetVersionWithState",)

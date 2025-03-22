@@ -38,6 +38,7 @@ if TYPE_CHECKING:
         CustomProperty,
         HookDelivery,
         HookDeliveryItem,
+        IssueType,
         MinimalRepository,
         OrganizationFull,
         OrganizationInvitation,
@@ -73,13 +74,16 @@ if TYPE_CHECKING:
         CustomPropertyValueType,
         HookDeliveryItemType,
         HookDeliveryType,
+        IssueTypeType,
         MinimalRepositoryType,
+        OrganizationCreateIssueTypeType,
         OrganizationFullType,
         OrganizationInvitationType,
         OrganizationProgrammaticAccessGrantRequestType,
         OrganizationProgrammaticAccessGrantType,
         OrganizationRoleType,
         OrganizationSimpleType,
+        OrganizationUpdateIssueTypeType,
         OrgHookType,
         OrgMembershipType,
         OrgRepoCustomPropertyValuesType,
@@ -2744,6 +2748,410 @@ class OrgsClient:
             },
         )
 
+    def list_issue_types(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+    ) -> Response[list[Union[IssueType, None]], list[Union[IssueTypeType, None]]]:
+        """See also: https://docs.github.com/rest/orgs/issue-types#list-issue-types-for-an-organization"""
+
+        from typing import Union
+
+        from ..models import BasicError, IssueType
+
+        url = f"/orgs/{org}/issue-types"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=list[Union[IssueType, None]],
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    async def async_list_issue_types(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+    ) -> Response[list[Union[IssueType, None]], list[Union[IssueTypeType, None]]]:
+        """See also: https://docs.github.com/rest/orgs/issue-types#list-issue-types-for-an-organization"""
+
+        from typing import Union
+
+        from ..models import BasicError, IssueType
+
+        url = f"/orgs/{org}/issue-types"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=list[Union[IssueType, None]],
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def create_issue_type(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        data: OrganizationCreateIssueTypeType,
+    ) -> Response[Union[IssueType, None], Union[IssueTypeType, None]]: ...
+
+    @overload
+    def create_issue_type(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        name: str,
+        is_enabled: bool,
+        is_private: Missing[bool] = UNSET,
+        description: Missing[Union[str, None]] = UNSET,
+        color: Missing[
+            Union[
+                None,
+                Literal[
+                    "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+                ],
+            ]
+        ] = UNSET,
+    ) -> Response[Union[IssueType, None], Union[IssueTypeType, None]]: ...
+
+    def create_issue_type(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        data: Missing[OrganizationCreateIssueTypeType] = UNSET,
+        **kwargs,
+    ) -> Response[Union[IssueType, None], Union[IssueTypeType, None]]:
+        """See also: https://docs.github.com/rest/orgs/issue-types#create-issue-type-for-an-organization"""
+
+        from typing import Union
+
+        from ..models import (
+            BasicError,
+            IssueType,
+            OrganizationCreateIssueType,
+            ValidationErrorSimple,
+        )
+
+        url = f"/orgs/{org}/issue-types"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(OrganizationCreateIssueType, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=Union[IssueType, None],
+            error_models={
+                "404": BasicError,
+                "422": ValidationErrorSimple,
+            },
+        )
+
+    @overload
+    async def async_create_issue_type(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        data: OrganizationCreateIssueTypeType,
+    ) -> Response[Union[IssueType, None], Union[IssueTypeType, None]]: ...
+
+    @overload
+    async def async_create_issue_type(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        name: str,
+        is_enabled: bool,
+        is_private: Missing[bool] = UNSET,
+        description: Missing[Union[str, None]] = UNSET,
+        color: Missing[
+            Union[
+                None,
+                Literal[
+                    "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+                ],
+            ]
+        ] = UNSET,
+    ) -> Response[Union[IssueType, None], Union[IssueTypeType, None]]: ...
+
+    async def async_create_issue_type(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        data: Missing[OrganizationCreateIssueTypeType] = UNSET,
+        **kwargs,
+    ) -> Response[Union[IssueType, None], Union[IssueTypeType, None]]:
+        """See also: https://docs.github.com/rest/orgs/issue-types#create-issue-type-for-an-organization"""
+
+        from typing import Union
+
+        from ..models import (
+            BasicError,
+            IssueType,
+            OrganizationCreateIssueType,
+            ValidationErrorSimple,
+        )
+
+        url = f"/orgs/{org}/issue-types"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(OrganizationCreateIssueType, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=Union[IssueType, None],
+            error_models={
+                "404": BasicError,
+                "422": ValidationErrorSimple,
+            },
+        )
+
+    @overload
+    def update_issue_type(
+        self,
+        org: str,
+        issue_type_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        data: OrganizationUpdateIssueTypeType,
+    ) -> Response[Union[IssueType, None], Union[IssueTypeType, None]]: ...
+
+    @overload
+    def update_issue_type(
+        self,
+        org: str,
+        issue_type_id: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        name: str,
+        is_enabled: bool,
+        is_private: Missing[bool] = UNSET,
+        description: Missing[Union[str, None]] = UNSET,
+        color: Missing[
+            Union[
+                None,
+                Literal[
+                    "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+                ],
+            ]
+        ] = UNSET,
+    ) -> Response[Union[IssueType, None], Union[IssueTypeType, None]]: ...
+
+    def update_issue_type(
+        self,
+        org: str,
+        issue_type_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        data: Missing[OrganizationUpdateIssueTypeType] = UNSET,
+        **kwargs,
+    ) -> Response[Union[IssueType, None], Union[IssueTypeType, None]]:
+        """See also: https://docs.github.com/rest/orgs/issue-types#update-issue-type-for-an-organization"""
+
+        from typing import Union
+
+        from ..models import (
+            BasicError,
+            IssueType,
+            OrganizationUpdateIssueType,
+            ValidationErrorSimple,
+        )
+
+        url = f"/orgs/{org}/issue-types/{issue_type_id}"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(OrganizationUpdateIssueType, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=Union[IssueType, None],
+            error_models={
+                "404": BasicError,
+                "422": ValidationErrorSimple,
+            },
+        )
+
+    @overload
+    async def async_update_issue_type(
+        self,
+        org: str,
+        issue_type_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        data: OrganizationUpdateIssueTypeType,
+    ) -> Response[Union[IssueType, None], Union[IssueTypeType, None]]: ...
+
+    @overload
+    async def async_update_issue_type(
+        self,
+        org: str,
+        issue_type_id: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        name: str,
+        is_enabled: bool,
+        is_private: Missing[bool] = UNSET,
+        description: Missing[Union[str, None]] = UNSET,
+        color: Missing[
+            Union[
+                None,
+                Literal[
+                    "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+                ],
+            ]
+        ] = UNSET,
+    ) -> Response[Union[IssueType, None], Union[IssueTypeType, None]]: ...
+
+    async def async_update_issue_type(
+        self,
+        org: str,
+        issue_type_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        data: Missing[OrganizationUpdateIssueTypeType] = UNSET,
+        **kwargs,
+    ) -> Response[Union[IssueType, None], Union[IssueTypeType, None]]:
+        """See also: https://docs.github.com/rest/orgs/issue-types#update-issue-type-for-an-organization"""
+
+        from typing import Union
+
+        from ..models import (
+            BasicError,
+            IssueType,
+            OrganizationUpdateIssueType,
+            ValidationErrorSimple,
+        )
+
+        url = f"/orgs/{org}/issue-types/{issue_type_id}"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(OrganizationUpdateIssueType, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=Union[IssueType, None],
+            error_models={
+                "404": BasicError,
+                "422": ValidationErrorSimple,
+            },
+        )
+
+    def delete_issue_type(
+        self,
+        org: str,
+        issue_type_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+    ) -> Response:
+        """See also: https://docs.github.com/rest/orgs/issue-types#delete-issue-type-for-an-organization"""
+
+        from ..models import BasicError, ValidationErrorSimple
+
+        url = f"/orgs/{org}/issue-types/{issue_type_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            error_models={
+                "422": ValidationErrorSimple,
+                "404": BasicError,
+            },
+        )
+
+    async def async_delete_issue_type(
+        self,
+        org: str,
+        issue_type_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+    ) -> Response:
+        """See also: https://docs.github.com/rest/orgs/issue-types#delete-issue-type-for-an-organization"""
+
+        from ..models import BasicError, ValidationErrorSimple
+
+        url = f"/orgs/{org}/issue-types/{issue_type_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            error_models={
+                "422": ValidationErrorSimple,
+                "404": BasicError,
+            },
+        )
+
     def list_members(
         self,
         org: str,
@@ -3883,6 +4291,7 @@ class OrgsClient:
         permission: Missing[str] = UNSET,
         last_used_before: Missing[datetime] = UNSET,
         last_used_after: Missing[datetime] = UNSET,
+        token_id: Missing[list[str]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         list[OrganizationProgrammaticAccessGrantRequest],
@@ -3908,6 +4317,7 @@ class OrgsClient:
             "permission": permission,
             "last_used_before": last_used_before,
             "last_used_after": last_used_after,
+            "token_id": token_id,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -3939,6 +4349,7 @@ class OrgsClient:
         permission: Missing[str] = UNSET,
         last_used_before: Missing[datetime] = UNSET,
         last_used_after: Missing[datetime] = UNSET,
+        token_id: Missing[list[str]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         list[OrganizationProgrammaticAccessGrantRequest],
@@ -3964,6 +4375,7 @@ class OrgsClient:
             "permission": permission,
             "last_used_before": last_used_before,
             "last_used_after": last_used_after,
+            "token_id": token_id,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -4359,6 +4771,7 @@ class OrgsClient:
         permission: Missing[str] = UNSET,
         last_used_before: Missing[datetime] = UNSET,
         last_used_after: Missing[datetime] = UNSET,
+        token_id: Missing[list[str]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         list[OrganizationProgrammaticAccessGrant],
@@ -4384,6 +4797,7 @@ class OrgsClient:
             "permission": permission,
             "last_used_before": last_used_before,
             "last_used_after": last_used_after,
+            "token_id": token_id,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -4415,6 +4829,7 @@ class OrgsClient:
         permission: Missing[str] = UNSET,
         last_used_before: Missing[datetime] = UNSET,
         last_used_after: Missing[datetime] = UNSET,
+        token_id: Missing[list[str]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         list[OrganizationProgrammaticAccessGrant],
@@ -4440,6 +4855,7 @@ class OrgsClient:
             "permission": permission,
             "last_used_before": last_used_before,
             "last_used_after": last_used_after,
+            "token_id": token_id,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -5047,6 +5463,9 @@ class OrgsClient:
         default_value: Missing[Union[str, list[str], None]] = UNSET,
         description: Missing[Union[str, None]] = UNSET,
         allowed_values: Missing[Union[list[str], None]] = UNSET,
+        values_editable_by: Missing[
+            Union[None, Literal["org_actors", "org_and_repo_actors"]]
+        ] = UNSET,
     ) -> Response[CustomProperty, CustomPropertyType]: ...
 
     def create_or_update_custom_property(
@@ -5110,6 +5529,9 @@ class OrgsClient:
         default_value: Missing[Union[str, list[str], None]] = UNSET,
         description: Missing[Union[str, None]] = UNSET,
         allowed_values: Missing[Union[list[str], None]] = UNSET,
+        values_editable_by: Missing[
+            Union[None, Literal["org_actors", "org_and_repo_actors"]]
+        ] = UNSET,
     ) -> Response[CustomProperty, CustomPropertyType]: ...
 
     async def async_create_or_update_custom_property(

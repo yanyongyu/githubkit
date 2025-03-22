@@ -42,6 +42,8 @@ if TYPE_CHECKING:
     from .deployment_status import DeploymentStatusEvent
     from .discussion import DiscussionEvent
     from .discussion_comment import DiscussionCommentEvent
+    from .dismissal_request_code_scanning import DismissalRequestCodeScanningEvent
+    from .dismissal_request_secret_scanning import DismissalRequestSecretScanningEvent
     from .exemption_request_push_ruleset import ExemptionRequestPushRulesetEvent
     from .exemption_request_secret_scanning import ExemptionRequestSecretScanningEvent
     from .fork import ForkEvent
@@ -123,6 +125,8 @@ EventNameType: TypeAlias = Literal[
     "deployment_status",
     "discussion",
     "discussion_comment",
+    "dismissal_request_code_scanning",
+    "dismissal_request_secret_scanning",
     "fork",
     "github_app_authorization",
     "gollum",
@@ -201,6 +205,8 @@ VALID_EVENT_NAMES: set[EventNameType] = {
     "deployment_status",
     "discussion",
     "discussion_comment",
+    "dismissal_request_code_scanning",
+    "dismissal_request_secret_scanning",
     "fork",
     "github_app_authorization",
     "gollum",
@@ -374,6 +380,16 @@ class WebhookNamespace:
     def parse(
         name: Literal["discussion_comment"], payload: Union[str, bytes]
     ) -> "DiscussionCommentEvent": ...
+    @overload
+    @staticmethod
+    def parse(
+        name: Literal["dismissal_request_code_scanning"], payload: Union[str, bytes]
+    ) -> "DismissalRequestCodeScanningEvent": ...
+    @overload
+    @staticmethod
+    def parse(
+        name: Literal["dismissal_request_secret_scanning"], payload: Union[str, bytes]
+    ) -> "DismissalRequestSecretScanningEvent": ...
     @overload
     @staticmethod
     def parse(name: Literal["fork"], payload: Union[str, bytes]) -> "ForkEvent": ...
@@ -771,6 +787,16 @@ class WebhookNamespace:
     def parse_obj(
         name: Literal["discussion_comment"], payload: Mapping[str, Any]
     ) -> "DiscussionCommentEvent": ...
+    @overload
+    @staticmethod
+    def parse_obj(
+        name: Literal["dismissal_request_code_scanning"], payload: Mapping[str, Any]
+    ) -> "DismissalRequestCodeScanningEvent": ...
+    @overload
+    @staticmethod
+    def parse_obj(
+        name: Literal["dismissal_request_secret_scanning"], payload: Mapping[str, Any]
+    ) -> "DismissalRequestSecretScanningEvent": ...
     @overload
     @staticmethod
     def parse_obj(name: Literal["fork"], payload: Mapping[str, Any]) -> "ForkEvent": ...

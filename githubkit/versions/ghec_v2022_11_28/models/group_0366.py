@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import date, datetime
+from datetime import datetime
 from typing import Literal, Union
 
 from pydantic import Field
@@ -19,82 +19,88 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class Page(GitHubModel):
-    """GitHub Pages
+class TimelineCommittedEvent(GitHubModel):
+    """Timeline Committed Event
 
-    The configuration for GitHub Pages for a repository.
+    Timeline Committed Event
     """
 
-    url: str = Field(description="The API address for accessing this Page resource.")
-    status: Union[None, Literal["built", "building", "errored"]] = Field(
-        description="The status of the most recent build of the Page."
+    event: Missing[Literal["committed"]] = Field(default=UNSET)
+    sha: str = Field(description="SHA for the commit")
+    node_id: str = Field()
+    url: str = Field()
+    author: TimelineCommittedEventPropAuthor = Field(
+        description="Identifying information for the git-user"
     )
-    cname: Union[str, None] = Field(description="The Pages site's custom domain")
-    protected_domain_state: Missing[
-        Union[None, Literal["pending", "verified", "unverified"]]
-    ] = Field(default=UNSET, description="The state if the domain is verified")
-    pending_domain_unverified_at: Missing[Union[datetime, None]] = Field(
-        default=UNSET,
-        description="The timestamp when a pending domain becomes unverified.",
+    committer: TimelineCommittedEventPropCommitter = Field(
+        description="Identifying information for the git-user"
     )
-    custom_404: bool = Field(
-        default=False, description="Whether the Page has a custom 404 page."
-    )
-    html_url: Missing[str] = Field(
-        default=UNSET, description="The web address the Page can be accessed from."
-    )
-    build_type: Missing[Union[None, Literal["legacy", "workflow"]]] = Field(
-        default=UNSET, description="The process in which the Page will be built."
-    )
-    source: Missing[PagesSourceHash] = Field(default=UNSET, title="Pages Source Hash")
-    public: bool = Field(
-        description="Whether the GitHub Pages site is publicly visible. If set to `true`, the site is accessible to anyone on the internet. If set to `false`, the site will only be accessible to users who have at least `read` access to the repository that published the site."
-    )
-    https_certificate: Missing[PagesHttpsCertificate] = Field(
-        default=UNSET, title="Pages Https Certificate"
-    )
-    https_enforced: Missing[bool] = Field(
-        default=UNSET, description="Whether https is enabled on the domain"
-    )
+    message: str = Field(description="Message describing the purpose of the commit")
+    tree: TimelineCommittedEventPropTree = Field()
+    parents: list[TimelineCommittedEventPropParentsItems] = Field()
+    verification: TimelineCommittedEventPropVerification = Field()
+    html_url: str = Field()
 
 
-class PagesSourceHash(GitHubModel):
-    """Pages Source Hash"""
+class TimelineCommittedEventPropAuthor(GitHubModel):
+    """TimelineCommittedEventPropAuthor
 
-    branch: str = Field()
-    path: str = Field()
+    Identifying information for the git-user
+    """
 
-
-class PagesHttpsCertificate(GitHubModel):
-    """Pages Https Certificate"""
-
-    state: Literal[
-        "new",
-        "authorization_created",
-        "authorization_pending",
-        "authorized",
-        "authorization_revoked",
-        "issued",
-        "uploaded",
-        "approved",
-        "errored",
-        "bad_authz",
-        "destroy_pending",
-        "dns_changed",
-    ] = Field()
-    description: str = Field()
-    domains: list[str] = Field(
-        description="Array of the domain set and its alternate name (if it is configured)"
-    )
-    expires_at: Missing[date] = Field(default=UNSET)
+    date: datetime = Field(description="Timestamp of the commit")
+    email: str = Field(description="Git email address of the user")
+    name: str = Field(description="Name of the git user")
 
 
-model_rebuild(Page)
-model_rebuild(PagesSourceHash)
-model_rebuild(PagesHttpsCertificate)
+class TimelineCommittedEventPropCommitter(GitHubModel):
+    """TimelineCommittedEventPropCommitter
+
+    Identifying information for the git-user
+    """
+
+    date: datetime = Field(description="Timestamp of the commit")
+    email: str = Field(description="Git email address of the user")
+    name: str = Field(description="Name of the git user")
+
+
+class TimelineCommittedEventPropTree(GitHubModel):
+    """TimelineCommittedEventPropTree"""
+
+    sha: str = Field(description="SHA for the commit")
+    url: str = Field()
+
+
+class TimelineCommittedEventPropParentsItems(GitHubModel):
+    """TimelineCommittedEventPropParentsItems"""
+
+    sha: str = Field(description="SHA for the commit")
+    url: str = Field()
+    html_url: str = Field()
+
+
+class TimelineCommittedEventPropVerification(GitHubModel):
+    """TimelineCommittedEventPropVerification"""
+
+    verified: bool = Field()
+    reason: str = Field()
+    signature: Union[str, None] = Field()
+    payload: Union[str, None] = Field()
+    verified_at: Union[str, None] = Field()
+
+
+model_rebuild(TimelineCommittedEvent)
+model_rebuild(TimelineCommittedEventPropAuthor)
+model_rebuild(TimelineCommittedEventPropCommitter)
+model_rebuild(TimelineCommittedEventPropTree)
+model_rebuild(TimelineCommittedEventPropParentsItems)
+model_rebuild(TimelineCommittedEventPropVerification)
 
 __all__ = (
-    "Page",
-    "PagesHttpsCertificate",
-    "PagesSourceHash",
+    "TimelineCommittedEvent",
+    "TimelineCommittedEventPropAuthor",
+    "TimelineCommittedEventPropCommitter",
+    "TimelineCommittedEventPropParentsItems",
+    "TimelineCommittedEventPropTree",
+    "TimelineCommittedEventPropVerification",
 )

@@ -9,34 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0010 import IntegrationType
+from .group_0260 import BranchProtectionType
 
 
-class DeploymentSimpleType(TypedDict):
-    """Deployment
+class ShortBranchType(TypedDict):
+    """Short Branch
 
-    A deployment created as the result of an Actions check run from a workflow that
-    references an environment
+    Short Branch
     """
 
+    name: str
+    commit: ShortBranchPropCommitType
+    protected: bool
+    protection: NotRequired[BranchProtectionType]
+    protection_url: NotRequired[str]
+
+
+class ShortBranchPropCommitType(TypedDict):
+    """ShortBranchPropCommit"""
+
+    sha: str
     url: str
-    id: int
-    node_id: str
-    task: str
-    original_environment: NotRequired[str]
-    environment: str
-    description: Union[str, None]
-    created_at: datetime
-    updated_at: datetime
-    statuses_url: str
-    repository_url: str
-    transient_environment: NotRequired[bool]
-    production_environment: NotRequired[bool]
-    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
 
 
-__all__ = ("DeploymentSimpleType",)
+__all__ = (
+    "ShortBranchPropCommitType",
+    "ShortBranchType",
+)

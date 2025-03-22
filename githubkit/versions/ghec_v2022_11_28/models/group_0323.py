@@ -9,19 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from pydantic import Field
-
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, model_rebuild
 
 
-class DeploymentBranchPolicyNamePattern(GitHubModel):
-    """Deployment branch policy name pattern"""
+class Metadata(ExtraGitHubModel):
+    """metadata
 
-    name: str = Field(
-        description="The name pattern that branches must match in order to deploy to the environment.\n\nWildcard characters will not match `/`. For example, to match branches that begin with `release/` and contain an additional single slash, use `release/*/*`.\nFor more information about pattern matching syntax, see the [Ruby File.fnmatch documentation](https://ruby-doc.org/core-2.5.1/File.html#method-c-fnmatch)."
-    )
+    User-defined metadata to store domain-specific information limited to 8 keys
+    with scalar values.
+    """
 
 
-model_rebuild(DeploymentBranchPolicyNamePattern)
+model_rebuild(Metadata)
 
-__all__ = ("DeploymentBranchPolicyNamePattern",)
+__all__ = ("Metadata",)

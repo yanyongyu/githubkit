@@ -9,26 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType
+from .group_0010 import IntegrationType
 
-class DeployKeyType(TypedDict):
-    """Deploy Key
 
-    An SSH key granting access to a single repository.
+class ConvertedNoteToIssueIssueEventType(TypedDict):
+    """Converted Note to Issue Issue Event
+
+    Converted Note to Issue Issue Event
     """
 
     id: int
-    key: str
+    node_id: str
     url: str
-    title: str
-    verified: bool
+    actor: SimpleUserType
+    event: Literal["converted_note_to_issue"]
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
     created_at: str
-    read_only: bool
-    added_by: NotRequired[Union[str, None]]
-    last_used: NotRequired[Union[str, None]]
-    enabled: NotRequired[bool]
+    performed_via_github_app: Union[IntegrationType, None]
+    project_card: NotRequired[ConvertedNoteToIssueIssueEventPropProjectCardType]
 
 
-__all__ = ("DeployKeyType",)
+class ConvertedNoteToIssueIssueEventPropProjectCardType(TypedDict):
+    """ConvertedNoteToIssueIssueEventPropProjectCard"""
+
+    id: int
+    url: str
+    project_id: int
+    project_url: str
+    column_name: str
+    previous_column_name: NotRequired[str]
+
+
+__all__ = (
+    "ConvertedNoteToIssueIssueEventPropProjectCardType",
+    "ConvertedNoteToIssueIssueEventType",
+)

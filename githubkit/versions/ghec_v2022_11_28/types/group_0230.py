@@ -10,18 +10,31 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0003 import SimpleUserType
 
 
-class ActionsSecretType(TypedDict):
-    """Actions Secret
+class ProjectCardType(TypedDict):
+    """Project Card
 
-    Set secrets for GitHub Actions.
+    Project cards represent a scope of work.
     """
 
-    name: str
+    url: str
+    id: int
+    node_id: str
+    note: Union[str, None]
+    creator: Union[None, SimpleUserType]
     created_at: datetime
     updated_at: datetime
+    archived: NotRequired[bool]
+    column_name: NotRequired[str]
+    project_id: NotRequired[str]
+    column_url: str
+    content_url: NotRequired[str]
+    project_url: str
 
 
-__all__ = ("ActionsSecretType",)
+__all__ = ("ProjectCardType",)

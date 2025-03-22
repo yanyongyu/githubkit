@@ -9,30 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
-
-from .group_0003 import SimpleUserType
-from .group_0010 import IntegrationType
+from typing_extensions import NotRequired, TypedDict
 
 
-class UnassignedIssueEventType(TypedDict):
-    """Unassigned Issue Event
+class GitTreeType(TypedDict):
+    """Git Tree
 
-    Unassigned Issue Event
+    The hierarchy between files in a Git repository.
     """
 
-    id: int
-    node_id: str
+    sha: str
     url: str
-    actor: SimpleUserType
-    event: str
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationType, None]
-    assignee: SimpleUserType
-    assigner: SimpleUserType
+    truncated: bool
+    tree: list[GitTreePropTreeItemsType]
 
 
-__all__ = ("UnassignedIssueEventType",)
+class GitTreePropTreeItemsType(TypedDict):
+    """GitTreePropTreeItems"""
+
+    path: NotRequired[str]
+    mode: NotRequired[str]
+    type: NotRequired[str]
+    sha: NotRequired[str]
+    size: NotRequired[int]
+    url: NotRequired[str]
+
+
+__all__ = (
+    "GitTreePropTreeItemsType",
+    "GitTreeType",
+)

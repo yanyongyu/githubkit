@@ -11,42 +11,19 @@ from __future__ import annotations
 
 from datetime import datetime
 from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0057 import MinimalRepositoryType
-from .group_0382 import SearchResultTextMatchesItemsType
+from .group_0003 import SimpleUserType
 
 
-class CodeSearchResultItemType(TypedDict):
-    """Code Search Result Item
+class StargazerType(TypedDict):
+    """Stargazer
 
-    Code Search Result Item
+    Stargazer
     """
 
-    name: str
-    path: str
-    sha: str
-    url: str
-    git_url: str
-    html_url: str
-    repository: MinimalRepositoryType
-    score: float
-    file_size: NotRequired[int]
-    language: NotRequired[Union[str, None]]
-    last_modified_at: NotRequired[datetime]
-    line_numbers: NotRequired[list[str]]
-    text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
+    starred_at: datetime
+    user: Union[None, SimpleUserType]
 
 
-class SearchCodeGetResponse200Type(TypedDict):
-    """SearchCodeGetResponse200"""
-
-    total_count: int
-    incomplete_results: bool
-    items: list[CodeSearchResultItemType]
-
-
-__all__ = (
-    "CodeSearchResultItemType",
-    "SearchCodeGetResponse200Type",
-)
+__all__ = ("StargazerType",)
