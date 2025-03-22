@@ -353,6 +353,10 @@ source = "https://raw.githubusercontent.com/github/rest-api-description/main/des
   "string",
   "null",
 ] }
+# https://github.com/yanyongyu/githubkit/issues/196
+# https://github.com/github/rest-api-description/issues/4652
+# sha may be null when the file only changes permissions
+"/components/schemas/diff-entry/properties/sha" = { type = ["string", "null"] }
 
 # [FIXED] copilot-seat-details/assignee is not valid
 # "/components/schemas/copilot-seat-details/properties/assignee" = { enum = "<unset>", oneOf = [
