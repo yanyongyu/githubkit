@@ -9,16 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import TypedDict
 
+from .group_0003 import SimpleUserType
 
-class LinkType(TypedDict):
-    """Link
 
-    Hypermedia Link
+class AutoMergeType(TypedDict):
+    """Auto merge
+
+    The status of auto merging a pull request.
     """
 
-    href: str
+    enabled_by: SimpleUserType
+    merge_method: Literal["merge", "squash", "rebase"]
+    commit_title: Union[str, None]
+    commit_message: Union[str, None]
 
 
-__all__ = ("LinkType",)
+__all__ = ("AutoMergeType",)

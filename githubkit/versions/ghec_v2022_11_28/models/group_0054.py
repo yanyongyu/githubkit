@@ -58,7 +58,14 @@ class PushRuleBypassRequest(GitHubModel):
     )
     status: Missing[
         Literal[
-            "pending", "denied", "approved", "cancelled", "completed", "expired", "open"
+            "pending",
+            "denied",
+            "approved",
+            "cancelled",
+            "completed",
+            "expired",
+            "deleted",
+            "open",
         ]
     ] = Field(default=UNSET, description="The status of the bypass request.")
     requester_comment: Missing[Union[str, None]] = Field(

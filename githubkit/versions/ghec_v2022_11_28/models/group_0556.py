@@ -18,10 +18,10 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0079 import CustomProperty
-from .group_0472 import EnterpriseWebhooks
-from .group_0473 import SimpleInstallation
-from .group_0474 import OrganizationSimpleWebhooks
+from .group_0078 import CustomProperty
+from .group_0471 import EnterpriseWebhooks
+from .group_0472 import SimpleInstallation
+from .group_0473 import OrganizationSimpleWebhooks
 
 
 class WebhookCustomPropertyUpdated(GitHubModel):

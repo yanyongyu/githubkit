@@ -12,21 +12,19 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0091 import (
-    EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationId,
-)
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class EnterpriseRulesetConditionsOrganizationIdTarget(GitHubModel):
-    """Repository ruleset conditions for organization IDs
+class EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationId(GitHubModel):
+    """EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationId"""
 
-    Parameters for an organization ID condition
-    """
+    organization_ids: Missing[list[int]] = Field(
+        default=UNSET,
+        description="The organization IDs that the ruleset applies to. One of these IDs must match for the condition to pass.",
+    )
 
-    organization_id: EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationId = Field()
 
+model_rebuild(EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationId)
 
-model_rebuild(EnterpriseRulesetConditionsOrganizationIdTarget)
-
-__all__ = ("EnterpriseRulesetConditionsOrganizationIdTarget",)
+__all__ = ("EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationId",)

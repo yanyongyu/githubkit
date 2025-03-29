@@ -9,15 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class CombinedBillingUsageType(TypedDict):
-    """CombinedBillingUsage"""
+class BillingUsageReportType(TypedDict):
+    """BillingUsageReport"""
 
-    days_left_in_billing_cycle: int
-    estimated_paid_storage_for_month: int
-    estimated_storage_for_month: int
+    usage_items: NotRequired[list[BillingUsageReportPropUsageItemsItemsType]]
 
 
-__all__ = ("CombinedBillingUsageType",)
+class BillingUsageReportPropUsageItemsItemsType(TypedDict):
+    """BillingUsageReportPropUsageItemsItems"""
+
+    date: str
+    product: str
+    sku: str
+    quantity: int
+    unit_type: str
+    price_per_unit: float
+    gross_amount: float
+    discount_amount: float
+    net_amount: float
+    organization_name: str
+    repository_name: NotRequired[str]
+
+
+__all__ = (
+    "BillingUsageReportPropUsageItemsItemsType",
+    "BillingUsageReportType",
+)

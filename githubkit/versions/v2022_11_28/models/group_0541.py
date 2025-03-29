@@ -19,10 +19,10 @@ from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
 from .group_0018 import Installation
-from .group_0418 import EnterpriseWebhooks
-from .group_0420 import OrganizationSimpleWebhooks
-from .group_0421 import RepositoryWebhooks
-from .group_0434 import WebhooksRepositoriesItems
+from .group_0417 import EnterpriseWebhooks
+from .group_0419 import OrganizationSimpleWebhooks
+from .group_0420 import RepositoryWebhooks
+from .group_0433 import WebhooksRepositoriesItems
 
 
 class WebhookInstallationNewPermissionsAccepted(GitHubModel):

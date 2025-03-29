@@ -9,14 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any
-from typing_extensions import TypeAlias
+from typing import Union
+from typing_extensions import TypedDict
 
-LanguageType: TypeAlias = dict[str, Any]
-"""Language
-
-Language
-"""
+from .group_0019 import LicenseSimpleType
 
 
-__all__ = ("LanguageType",)
+class LicenseContentType(TypedDict):
+    """License Content
+
+    License Content
+    """
+
+    name: str
+    path: str
+    sha: str
+    size: int
+    url: str
+    html_url: Union[str, None]
+    git_url: Union[str, None]
+    download_url: Union[str, None]
+    type: str
+    content: str
+    encoding: str
+    links: LicenseContentPropLinksType
+    license_: Union[None, LicenseSimpleType]
+
+
+class LicenseContentPropLinksType(TypedDict):
+    """LicenseContentPropLinks"""
+
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
+
+
+__all__ = (
+    "LicenseContentPropLinksType",
+    "LicenseContentType",
+)

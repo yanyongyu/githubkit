@@ -14,12 +14,12 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0418 import EnterpriseWebhooksType
-from .group_0419 import SimpleInstallationType
-from .group_0420 import OrganizationSimpleWebhooksType
-from .group_0421 import RepositoryWebhooksType
-from .group_0427 import WebhooksApproverType, WebhooksReviewersItemsType
-from .group_0428 import WebhooksWorkflowJobRunType
+from .group_0417 import EnterpriseWebhooksType
+from .group_0418 import SimpleInstallationType
+from .group_0419 import OrganizationSimpleWebhooksType
+from .group_0420 import RepositoryWebhooksType
+from .group_0426 import WebhooksApproverType, WebhooksReviewersItemsType
+from .group_0427 import WebhooksWorkflowJobRunType
 
 
 class WebhookDeploymentReviewApprovedType(TypedDict):

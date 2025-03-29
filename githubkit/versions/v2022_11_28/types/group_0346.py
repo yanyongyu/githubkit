@@ -11,16 +11,18 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
+from .group_0003 import SimpleUserType
+from .group_0088 import TeamType
 
-class PullRequestMergeResultType(TypedDict):
-    """Pull Request Merge Result
 
-    Pull Request Merge Result
+class PullRequestReviewRequestType(TypedDict):
+    """Pull Request Review Request
+
+    Pull Request Review Request
     """
 
-    sha: str
-    merged: bool
-    message: str
+    users: list[SimpleUserType]
+    teams: list[TeamType]
 
 
-__all__ = ("PullRequestMergeResultType",)
+__all__ = ("PullRequestReviewRequestType",)

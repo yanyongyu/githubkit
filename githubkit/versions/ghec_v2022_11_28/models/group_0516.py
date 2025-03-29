@@ -19,38 +19,42 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class WebhooksReview(GitHubModel):
-    """WebhooksReview
+class WebhooksRelease(GitHubModel):
+    """Release
 
-    The review that was affected.
+    The [release](https://docs.github.com/enterprise-
+    cloud@latest//rest/releases/releases/#get-a-release) object.
     """
 
-    links: WebhooksReviewPropLinks = Field(alias="_links")
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ] = Field(
-        title="AuthorAssociation",
-        description="How the author is associated with the repository.",
-    )
-    body: Union[str, None] = Field(description="The text of the review.")
-    commit_id: str = Field(description="A commit SHA for the review.")
+    assets: list[WebhooksReleasePropAssetsItems] = Field()
+    assets_url: str = Field()
+    author: Union[WebhooksReleasePropAuthor, None] = Field(title="User")
+    body: Union[str, None] = Field()
+    created_at: Union[datetime, None] = Field()
+    discussion_url: Missing[str] = Field(default=UNSET)
+    draft: bool = Field(description="Whether the release is a draft or published")
     html_url: str = Field()
-    id: int = Field(description="Unique identifier of the review")
+    id: int = Field()
+    name: Union[str, None] = Field()
     node_id: str = Field()
-    pull_request_url: str = Field()
-    state: str = Field()
-    submitted_at: Union[datetime, None] = Field()
-    user: Union[WebhooksReviewPropUser, None] = Field(title="User")
+    prerelease: bool = Field(
+        description="Whether the release is identified as a prerelease or a full release."
+    )
+    published_at: Union[datetime, None] = Field()
+    reactions: Missing[WebhooksReleasePropReactions] = Field(
+        default=UNSET, title="Reactions"
+    )
+    tag_name: str = Field(description="The name of the tag.")
+    tarball_url: Union[str, None] = Field()
+    target_commitish: str = Field(
+        description="Specifies the commitish value that determines where the Git tag is created from."
+    )
+    upload_url: str = Field()
+    url: str = Field()
+    zipball_url: Union[str, None] = Field()
 
 
-class WebhooksReviewPropUser(GitHubModel):
+class WebhooksReleasePropAuthor(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -77,35 +81,80 @@ class WebhooksReviewPropUser(GitHubModel):
     user_view_type: Missing[str] = Field(default=UNSET)
 
 
-class WebhooksReviewPropLinks(GitHubModel):
-    """WebhooksReviewPropLinks"""
+class WebhooksReleasePropReactions(GitHubModel):
+    """Reactions"""
 
-    html: WebhooksReviewPropLinksPropHtml = Field(title="Link")
-    pull_request: WebhooksReviewPropLinksPropPullRequest = Field(title="Link")
-
-
-class WebhooksReviewPropLinksPropHtml(GitHubModel):
-    """Link"""
-
-    href: str = Field()
-
-
-class WebhooksReviewPropLinksPropPullRequest(GitHubModel):
-    """Link"""
-
-    href: str = Field()
+    plus_one: int = Field(alias="+1")
+    minus_one: int = Field(alias="-1")
+    confused: int = Field()
+    eyes: int = Field()
+    heart: int = Field()
+    hooray: int = Field()
+    laugh: int = Field()
+    rocket: int = Field()
+    total_count: int = Field()
+    url: str = Field()
 
 
-model_rebuild(WebhooksReview)
-model_rebuild(WebhooksReviewPropUser)
-model_rebuild(WebhooksReviewPropLinks)
-model_rebuild(WebhooksReviewPropLinksPropHtml)
-model_rebuild(WebhooksReviewPropLinksPropPullRequest)
+class WebhooksReleasePropAssetsItems(GitHubModel):
+    """Release Asset
+
+    Data related to a release.
+    """
+
+    browser_download_url: str = Field()
+    content_type: str = Field()
+    created_at: datetime = Field()
+    download_count: int = Field()
+    id: int = Field()
+    label: Union[str, None] = Field()
+    name: str = Field(description="The file name of the asset.")
+    node_id: str = Field()
+    size: int = Field()
+    state: Literal["uploaded"] = Field(description="State of the release asset.")
+    updated_at: datetime = Field()
+    uploader: Missing[Union[WebhooksReleasePropAssetsItemsPropUploader, None]] = Field(
+        default=UNSET, title="User"
+    )
+    url: str = Field()
+
+
+class WebhooksReleasePropAssetsItemsPropUploader(GitHubModel):
+    """User"""
+
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(WebhooksRelease)
+model_rebuild(WebhooksReleasePropAuthor)
+model_rebuild(WebhooksReleasePropReactions)
+model_rebuild(WebhooksReleasePropAssetsItems)
+model_rebuild(WebhooksReleasePropAssetsItemsPropUploader)
 
 __all__ = (
-    "WebhooksReview",
-    "WebhooksReviewPropLinks",
-    "WebhooksReviewPropLinksPropHtml",
-    "WebhooksReviewPropLinksPropPullRequest",
-    "WebhooksReviewPropUser",
+    "WebhooksRelease",
+    "WebhooksReleasePropAssetsItems",
+    "WebhooksReleasePropAssetsItemsPropUploader",
+    "WebhooksReleasePropAuthor",
+    "WebhooksReleasePropReactions",
 )

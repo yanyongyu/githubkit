@@ -9,25 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0003 import SimpleUser
+
+class RateLimit(GitHubModel):
+    """Rate Limit"""
+
+    limit: int = Field()
+    remaining: int = Field()
+    reset: int = Field()
+    used: int = Field()
 
 
-class ProjectCollaboratorPermission(GitHubModel):
-    """Project Collaborator Permission
+model_rebuild(RateLimit)
 
-    Project Collaborator Permission
-    """
-
-    permission: str = Field()
-    user: Union[None, SimpleUser] = Field()
-
-
-model_rebuild(ProjectCollaboratorPermission)
-
-__all__ = ("ProjectCollaboratorPermission",)
+__all__ = ("RateLimit",)

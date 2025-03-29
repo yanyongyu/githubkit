@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,46 +18,28 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class GroupResponse(GitHubModel):
-    """GroupResponse"""
+class Meta(GitHubModel):
+    """Meta
 
-    schemas: list[
-        Literal[
-            "urn:ietf:params:scim:schemas:core:2.0:Group",
-            "urn:ietf:params:scim:api:messages:2.0:ListResponse",
-        ]
-    ] = Field(
-        description="The URIs that are used to indicate the namespaces of the SCIM schemas."
+    The metadata associated with the creation/updates to the user.
+    """
+
+    resource_type: Literal["User", "Group"] = Field(
+        alias="resourceType", description="A type of a resource"
     )
-    external_id: Missing[Union[str, None]] = Field(
+    created: Missing[str] = Field(
+        default=UNSET, description="A date and time when the user was created."
+    )
+    last_modified: Missing[str] = Field(
         default=UNSET,
-        alias="externalId",
-        description="A unique identifier for the resource as defined by the provisioning client.",
+        alias="lastModified",
+        description="A data and time when the user was last modified.",
     )
-    display_name: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        alias="displayName",
-        description="A human-readable name for a security group.",
-    )
-    members: Missing[list[GroupResponsePropMembersItems]] = Field(
-        default=UNSET, description="The group members."
+    location: Missing[str] = Field(
+        default=UNSET, description="A URL location of an object"
     )
 
 
-class GroupResponsePropMembersItems(GitHubModel):
-    """GroupResponsePropMembersItems"""
+model_rebuild(Meta)
 
-    value: str = Field(description="The local unique identifier for the member")
-    ref: str = Field(alias="$ref")
-    display: Missing[str] = Field(
-        default=UNSET, description="The display name associated with the member"
-    )
-
-
-model_rebuild(GroupResponse)
-model_rebuild(GroupResponsePropMembersItems)
-
-__all__ = (
-    "GroupResponse",
-    "GroupResponsePropMembersItems",
-)
+__all__ = ("Meta",)

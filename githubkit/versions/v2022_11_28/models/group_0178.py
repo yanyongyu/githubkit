@@ -9,200 +9,99 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Annotated, Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0001 import CvssSeverities
-from .group_0003 import SimpleUser
-from .group_0088 import Team
-from .group_0177 import RepositoryAdvisoryCredit
+
+class ActionsBillingUsage(GitHubModel):
+    """ActionsBillingUsage"""
+
+    total_minutes_used: int = Field(
+        description="The sum of the free and paid GitHub Actions minutes used."
+    )
+    total_paid_minutes_used: int = Field(
+        description="The total paid GitHub Actions minutes used."
+    )
+    included_minutes: int = Field(
+        description="The amount of free GitHub Actions minutes available."
+    )
+    minutes_used_breakdown: ActionsBillingUsagePropMinutesUsedBreakdown = Field()
 
 
-class RepositoryAdvisory(GitHubModel):
-    """RepositoryAdvisory
+class ActionsBillingUsagePropMinutesUsedBreakdown(GitHubModel):
+    """ActionsBillingUsagePropMinutesUsedBreakdown"""
 
-    A repository security advisory.
-    """
-
-    ghsa_id: str = Field(description="The GitHub Security Advisory ID.")
-    cve_id: Union[str, None] = Field(
-        description="The Common Vulnerabilities and Exposures (CVE) ID."
+    ubuntu: Missing[int] = Field(
+        default=UNSET,
+        alias="UBUNTU",
+        description="Total minutes used on Ubuntu runner machines.",
     )
-    url: str = Field(description="The API URL for the advisory.")
-    html_url: str = Field(description="The URL for the advisory.")
-    summary: str = Field(
-        max_length=1024, description="A short summary of the advisory."
+    macos: Missing[int] = Field(
+        default=UNSET,
+        alias="MACOS",
+        description="Total minutes used on macOS runner machines.",
     )
-    description: Union[Annotated[str, Field(max_length=65535)], None] = Field(
-        description="A detailed description of what the advisory entails."
+    windows: Missing[int] = Field(
+        default=UNSET,
+        alias="WINDOWS",
+        description="Total minutes used on Windows runner machines.",
     )
-    severity: Union[None, Literal["critical", "high", "medium", "low"]] = Field(
-        description="The severity of the advisory."
+    ubuntu_4_core: Missing[int] = Field(
+        default=UNSET,
+        description="Total minutes used on Ubuntu 4 core runner machines.",
     )
-    author: None = Field(description="The author of the advisory.")
-    publisher: None = Field(description="The publisher of the advisory.")
-    identifiers: list[RepositoryAdvisoryPropIdentifiersItems] = Field()
-    state: Literal["published", "closed", "withdrawn", "draft", "triage"] = Field(
-        description="The state of the advisory."
+    ubuntu_8_core: Missing[int] = Field(
+        default=UNSET,
+        description="Total minutes used on Ubuntu 8 core runner machines.",
     )
-    created_at: Union[datetime, None] = Field(
-        description="The date and time of when the advisory was created, in ISO 8601 format."
+    ubuntu_16_core: Missing[int] = Field(
+        default=UNSET,
+        description="Total minutes used on Ubuntu 16 core runner machines.",
     )
-    updated_at: Union[datetime, None] = Field(
-        description="The date and time of when the advisory was last updated, in ISO 8601 format."
+    ubuntu_32_core: Missing[int] = Field(
+        default=UNSET,
+        description="Total minutes used on Ubuntu 32 core runner machines.",
     )
-    published_at: Union[datetime, None] = Field(
-        description="The date and time of when the advisory was published, in ISO 8601 format."
+    ubuntu_64_core: Missing[int] = Field(
+        default=UNSET,
+        description="Total minutes used on Ubuntu 64 core runner machines.",
     )
-    closed_at: Union[datetime, None] = Field(
-        description="The date and time of when the advisory was closed, in ISO 8601 format."
+    windows_4_core: Missing[int] = Field(
+        default=UNSET,
+        description="Total minutes used on Windows 4 core runner machines.",
     )
-    withdrawn_at: Union[datetime, None] = Field(
-        description="The date and time of when the advisory was withdrawn, in ISO 8601 format."
+    windows_8_core: Missing[int] = Field(
+        default=UNSET,
+        description="Total minutes used on Windows 8 core runner machines.",
     )
-    submission: Union[RepositoryAdvisoryPropSubmission, None] = Field()
-    vulnerabilities: Union[list[RepositoryAdvisoryVulnerability], None] = Field()
-    cvss: Union[RepositoryAdvisoryPropCvss, None] = Field()
-    cvss_severities: Missing[Union[CvssSeverities, None]] = Field(default=UNSET)
-    cwes: Union[list[RepositoryAdvisoryPropCwesItems], None] = Field()
-    cwe_ids: Union[list[str], None] = Field(description="A list of only the CWE IDs.")
-    credits_: Union[list[RepositoryAdvisoryPropCreditsItems], None] = Field(
-        alias="credits"
+    windows_16_core: Missing[int] = Field(
+        default=UNSET,
+        description="Total minutes used on Windows 16 core runner machines.",
     )
-    credits_detailed: Union[list[RepositoryAdvisoryCredit], None] = Field()
-    collaborating_users: Union[list[SimpleUser], None] = Field(
-        description="A list of users that collaborate on the advisory."
+    windows_32_core: Missing[int] = Field(
+        default=UNSET,
+        description="Total minutes used on Windows 32 core runner machines.",
     )
-    collaborating_teams: Union[list[Team], None] = Field(
-        description="A list of teams that collaborate on the advisory."
+    windows_64_core: Missing[int] = Field(
+        default=UNSET,
+        description="Total minutes used on Windows 64 core runner machines.",
     )
-    private_fork: None = Field(
-        description="A temporary private fork of the advisory's repository for collaborating on a fix."
+    macos_12_core: Missing[int] = Field(
+        default=UNSET,
+        description="Total minutes used on macOS 12 core runner machines.",
     )
-
-
-class RepositoryAdvisoryPropIdentifiersItems(GitHubModel):
-    """RepositoryAdvisoryPropIdentifiersItems"""
-
-    type: Literal["CVE", "GHSA"] = Field(description="The type of identifier.")
-    value: str = Field(description="The identifier value.")
-
-
-class RepositoryAdvisoryPropSubmission(GitHubModel):
-    """RepositoryAdvisoryPropSubmission"""
-
-    accepted: bool = Field(
-        description="Whether a private vulnerability report was accepted by the repository's administrators."
-    )
-
-
-class RepositoryAdvisoryPropCvss(GitHubModel):
-    """RepositoryAdvisoryPropCvss"""
-
-    vector_string: Union[str, None] = Field(description="The CVSS vector.")
-    score: Union[Annotated[float, Field(le=10.0)], None] = Field(
-        description="The CVSS score."
+    total: Missing[int] = Field(
+        default=UNSET, description="Total minutes used on all runner machines."
     )
 
 
-class RepositoryAdvisoryPropCwesItems(GitHubModel):
-    """RepositoryAdvisoryPropCwesItems"""
-
-    cwe_id: str = Field(description="The Common Weakness Enumeration (CWE) identifier.")
-    name: str = Field(description="The name of the CWE.")
-
-
-class RepositoryAdvisoryPropCreditsItems(GitHubModel):
-    """RepositoryAdvisoryPropCreditsItems"""
-
-    login: Missing[str] = Field(
-        default=UNSET, description="The username of the user credited."
-    )
-    type: Missing[
-        Literal[
-            "analyst",
-            "finder",
-            "reporter",
-            "coordinator",
-            "remediation_developer",
-            "remediation_reviewer",
-            "remediation_verifier",
-            "tool",
-            "sponsor",
-            "other",
-        ]
-    ] = Field(default=UNSET, description="The type of credit the user is receiving.")
-
-
-class RepositoryAdvisoryVulnerability(GitHubModel):
-    """RepositoryAdvisoryVulnerability
-
-    A product affected by the vulnerability detailed in a repository security
-    advisory.
-    """
-
-    package: Union[RepositoryAdvisoryVulnerabilityPropPackage, None] = Field(
-        description="The name of the package affected by the vulnerability."
-    )
-    vulnerable_version_range: Union[str, None] = Field(
-        description="The range of the package versions affected by the vulnerability."
-    )
-    patched_versions: Union[str, None] = Field(
-        description="The package version(s) that resolve the vulnerability."
-    )
-    vulnerable_functions: Union[list[str], None] = Field(
-        description="The functions in the package that are affected."
-    )
-
-
-class RepositoryAdvisoryVulnerabilityPropPackage(GitHubModel):
-    """RepositoryAdvisoryVulnerabilityPropPackage
-
-    The name of the package affected by the vulnerability.
-    """
-
-    ecosystem: Literal[
-        "rubygems",
-        "npm",
-        "pip",
-        "maven",
-        "nuget",
-        "composer",
-        "go",
-        "rust",
-        "erlang",
-        "actions",
-        "pub",
-        "other",
-        "swift",
-    ] = Field(description="The package's language or package management ecosystem.")
-    name: Union[str, None] = Field(
-        description="The unique package name within its ecosystem."
-    )
-
-
-model_rebuild(RepositoryAdvisory)
-model_rebuild(RepositoryAdvisoryPropIdentifiersItems)
-model_rebuild(RepositoryAdvisoryPropSubmission)
-model_rebuild(RepositoryAdvisoryPropCvss)
-model_rebuild(RepositoryAdvisoryPropCwesItems)
-model_rebuild(RepositoryAdvisoryPropCreditsItems)
-model_rebuild(RepositoryAdvisoryVulnerability)
-model_rebuild(RepositoryAdvisoryVulnerabilityPropPackage)
+model_rebuild(ActionsBillingUsage)
+model_rebuild(ActionsBillingUsagePropMinutesUsedBreakdown)
 
 __all__ = (
-    "RepositoryAdvisory",
-    "RepositoryAdvisoryPropCreditsItems",
-    "RepositoryAdvisoryPropCvss",
-    "RepositoryAdvisoryPropCwesItems",
-    "RepositoryAdvisoryPropIdentifiersItems",
-    "RepositoryAdvisoryPropSubmission",
-    "RepositoryAdvisoryVulnerability",
-    "RepositoryAdvisoryVulnerabilityPropPackage",
+    "ActionsBillingUsage",
+    "ActionsBillingUsagePropMinutesUsedBreakdown",
 )

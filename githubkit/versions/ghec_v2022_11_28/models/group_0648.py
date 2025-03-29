@@ -18,7 +18,7 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0151 import IssueType
+from .group_0150 import IssueType
 from .group_0650 import WebhookIssuesClosedPropIssueAllof0PropMilestone
 from .group_0652 import WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubApp
 from .group_0653 import (

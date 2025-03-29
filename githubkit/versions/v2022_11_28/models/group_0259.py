@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from datetime import datetime
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -17,65 +18,60 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
+from .group_0041 import ReactionRollup
 
-class RepositoryCollaboratorPermission(GitHubModel):
-    """Repository Collaborator Permission
 
-    Repository Collaborator Permission
+class CommitComment(GitHubModel):
+    """Commit Comment
+
+    Commit Comment
     """
 
-    permission: str = Field()
-    role_name: str = Field()
-    user: Union[None, Collaborator] = Field()
-
-
-class Collaborator(GitHubModel):
-    """Collaborator
-
-    Collaborator
-    """
-
-    login: str = Field()
-    id: int = Field()
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    name: Missing[Union[str, None]] = Field(default=UNSET)
-    node_id: str = Field()
-    avatar_url: str = Field()
-    gravatar_id: Union[str, None] = Field()
-    url: str = Field()
     html_url: str = Field()
-    followers_url: str = Field()
-    following_url: str = Field()
-    gists_url: str = Field()
-    starred_url: str = Field()
-    subscriptions_url: str = Field()
-    organizations_url: str = Field()
-    repos_url: str = Field()
-    events_url: str = Field()
-    received_events_url: str = Field()
-    type: str = Field()
-    site_admin: bool = Field()
-    permissions: Missing[CollaboratorPropPermissions] = Field(default=UNSET)
-    role_name: str = Field()
-    user_view_type: Missing[str] = Field(default=UNSET)
+    url: str = Field()
+    id: int = Field()
+    node_id: str = Field()
+    body: str = Field()
+    path: Union[str, None] = Field()
+    position: Union[int, None] = Field()
+    line: Union[int, None] = Field()
+    commit_id: str = Field()
+    user: Union[None, SimpleUser] = Field()
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ] = Field(
+        title="author_association",
+        description="How the author is associated with the repository.",
+    )
+    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
 
 
-class CollaboratorPropPermissions(GitHubModel):
-    """CollaboratorPropPermissions"""
+class TimelineCommitCommentedEvent(GitHubModel):
+    """Timeline Commit Commented Event
 
-    pull: bool = Field()
-    triage: Missing[bool] = Field(default=UNSET)
-    push: bool = Field()
-    maintain: Missing[bool] = Field(default=UNSET)
-    admin: bool = Field()
+    Timeline Commit Commented Event
+    """
+
+    event: Missing[Literal["commit_commented"]] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    commit_id: Missing[str] = Field(default=UNSET)
+    comments: Missing[list[CommitComment]] = Field(default=UNSET)
 
 
-model_rebuild(RepositoryCollaboratorPermission)
-model_rebuild(Collaborator)
-model_rebuild(CollaboratorPropPermissions)
+model_rebuild(CommitComment)
+model_rebuild(TimelineCommitCommentedEvent)
 
 __all__ = (
-    "Collaborator",
-    "CollaboratorPropPermissions",
-    "RepositoryCollaboratorPermission",
+    "CommitComment",
+    "TimelineCommitCommentedEvent",
 )

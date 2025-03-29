@@ -9,26 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0003 import SimpleUser
 
+class CommitActivity(GitHubModel):
+    """Commit Activity
 
-class Stargazer(GitHubModel):
-    """Stargazer
-
-    Stargazer
+    Commit Activity
     """
 
-    starred_at: datetime = Field()
-    user: Union[None, SimpleUser] = Field()
+    days: list[int] = Field()
+    total: int = Field()
+    week: int = Field()
 
 
-model_rebuild(Stargazer)
+model_rebuild(CommitActivity)
 
-__all__ = ("Stargazer",)
+__all__ = ("CommitActivity",)

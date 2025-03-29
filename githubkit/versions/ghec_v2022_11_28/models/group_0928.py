@@ -9,99 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0081 import RepositoryRulesetBypassActor
-from .group_0092 import EnterpriseRulesetConditionsOneof0
-from .group_0093 import EnterpriseRulesetConditionsOneof1
-from .group_0094 import EnterpriseRulesetConditionsOneof2
-from .group_0095 import EnterpriseRulesetConditionsOneof3
-from .group_0096 import (
-    RepositoryRuleCreation,
-    RepositoryRuleDeletion,
-    RepositoryRuleNonFastForward,
-    RepositoryRuleRequiredSignatures,
-)
-from .group_0097 import RepositoryRuleUpdate
-from .group_0099 import RepositoryRuleRequiredLinearHistory
-from .group_0100 import RepositoryRuleMergeQueue
-from .group_0102 import RepositoryRuleRequiredDeployments
-from .group_0105 import RepositoryRulePullRequest
-from .group_0107 import RepositoryRuleRequiredStatusChecks
-from .group_0109 import RepositoryRuleCommitMessagePattern
-from .group_0111 import RepositoryRuleCommitAuthorEmailPattern
-from .group_0113 import RepositoryRuleCommitterEmailPattern
-from .group_0115 import RepositoryRuleBranchNamePattern
-from .group_0117 import RepositoryRuleTagNamePattern
-from .group_0119 import RepositoryRuleFilePathRestriction
-from .group_0121 import RepositoryRuleMaxFilePathLength
-from .group_0123 import RepositoryRuleFileExtensionRestriction
-from .group_0125 import RepositoryRuleMaxFileSize
-from .group_0128 import RepositoryRuleWorkflows
-from .group_0130 import RepositoryRuleCodeScanning
 
+class EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBody(
+    GitHubModel
+):
+    """EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBody"""
 
-class EnterprisesEnterpriseRulesetsPostBody(GitHubModel):
-    """EnterprisesEnterpriseRulesetsPostBody"""
-
-    name: str = Field(description="The name of the ruleset.")
-    target: Missing[Literal["branch", "tag", "push", "repository"]] = Field(
-        default=UNSET, description="The target of the ruleset"
-    )
-    enforcement: Literal["disabled", "active", "evaluate"] = Field(
-        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page. `evaluate` is not available for the `repository` target."
-    )
-    bypass_actors: Missing[list[RepositoryRulesetBypassActor]] = Field(
+    name: Missing[str] = Field(
         default=UNSET,
-        description="The actors that can bypass the rules in this ruleset",
+        description="Name of the network configuration. Must be between 1 and 100 characters and may only contain upper and lowercase letters a-z, numbers 0-9, `.`, `-`, and `_`.",
     )
-    conditions: Missing[
-        Union[
-            EnterpriseRulesetConditionsOneof0,
-            EnterpriseRulesetConditionsOneof1,
-            EnterpriseRulesetConditionsOneof2,
-            EnterpriseRulesetConditionsOneof3,
-        ]
-    ] = Field(
+    compute_service: Missing[Literal["none", "actions"]] = Field(
         default=UNSET,
-        title="Enterprise ruleset conditions",
-        description="Conditions for an enterprise ruleset. The conditions object should contain either the `organization_id` or `organization_name` property and the `repository_name` or `repository_property` property. For branch and tag rulesets, the conditions object should also contain the `ref_name` property.",
+        description="The hosted compute service to use for the network configuration.",
     )
-    rules: Missing[
-        list[
-            Union[
-                RepositoryRuleCreation,
-                RepositoryRuleUpdate,
-                RepositoryRuleDeletion,
-                RepositoryRuleRequiredLinearHistory,
-                RepositoryRuleMergeQueue,
-                RepositoryRuleRequiredDeployments,
-                RepositoryRuleRequiredSignatures,
-                RepositoryRulePullRequest,
-                RepositoryRuleRequiredStatusChecks,
-                RepositoryRuleNonFastForward,
-                RepositoryRuleCommitMessagePattern,
-                RepositoryRuleCommitAuthorEmailPattern,
-                RepositoryRuleCommitterEmailPattern,
-                RepositoryRuleBranchNamePattern,
-                RepositoryRuleTagNamePattern,
-                RepositoryRuleFilePathRestriction,
-                RepositoryRuleMaxFilePathLength,
-                RepositoryRuleFileExtensionRestriction,
-                RepositoryRuleMaxFileSize,
-                RepositoryRuleWorkflows,
-                RepositoryRuleCodeScanning,
-            ]
-        ]
-    ] = Field(default=UNSET, description="An array of rules within the ruleset.")
+    network_settings_ids: Missing[list[str]] = Field(
+        max_length=1 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="The identifier of the network settings to use for the network configuration. Exactly one network settings must be specified.",
+    )
 
 
-model_rebuild(EnterprisesEnterpriseRulesetsPostBody)
+model_rebuild(EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBody)
 
-__all__ = ("EnterprisesEnterpriseRulesetsPostBody",)
+__all__ = ("EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBody",)

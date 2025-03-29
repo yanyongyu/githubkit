@@ -9,25 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0116 import CustomPropertyValue
 
-class CustomPropertyValue(GitHubModel):
-    """Custom Property Value
 
-    Custom property name and associated value
+class OrgRepoCustomPropertyValues(GitHubModel):
+    """Organization Repository Custom Property Values
+
+    List of custom property values for a repository
     """
 
-    property_name: str = Field(description="The name of the property")
-    value: Union[str, list[str], None] = Field(
-        description="The value assigned to the property"
+    repository_id: int = Field()
+    repository_name: str = Field()
+    repository_full_name: str = Field()
+    properties: list[CustomPropertyValue] = Field(
+        description="List of custom property names and associated values"
     )
 
 
-model_rebuild(CustomPropertyValue)
+model_rebuild(OrgRepoCustomPropertyValues)
 
-__all__ = ("CustomPropertyValue",)
+__all__ = ("OrgRepoCustomPropertyValues",)

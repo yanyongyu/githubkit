@@ -12,14 +12,12 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ApiInsightsSummaryStatsType(TypedDict):
-    """Summary Stats
+class ApiInsightsTimeStatsItemsType(TypedDict):
+    """ApiInsightsTimeStatsItems"""
 
-    API Insights usage summary stats for an organization
-    """
-
+    timestamp: NotRequired[str]
     total_request_count: NotRequired[int]
     rate_limited_request_count: NotRequired[int]
 
 
-__all__ = ("ApiInsightsSummaryStatsType",)
+__all__ = ("ApiInsightsTimeStatsItemsType",)

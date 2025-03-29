@@ -16,17 +16,19 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ActionsSecret(GitHubModel):
-    """Actions Secret
+class ActionsVariable(GitHubModel):
+    """Actions Variable"""
 
-    Set secrets for GitHub Actions.
-    """
+    name: str = Field(description="The name of the variable.")
+    value: str = Field(description="The value of the variable.")
+    created_at: datetime = Field(
+        description="The date and time at which the variable was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
+    )
+    updated_at: datetime = Field(
+        description="The date and time at which the variable was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
+    )
 
-    name: str = Field(description="The name of the secret.")
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
 
+model_rebuild(ActionsVariable)
 
-model_rebuild(ActionsSecret)
-
-__all__ = ("ActionsSecret",)
+__all__ = ("ActionsVariable",)

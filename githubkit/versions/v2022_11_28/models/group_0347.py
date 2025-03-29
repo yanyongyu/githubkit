@@ -9,24 +9,80 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0088 import Team
 
 
-class PullRequestReviewRequest(GitHubModel):
-    """Pull Request Review Request
+class PullRequestReview(GitHubModel):
+    """Pull Request Review
 
-    Pull Request Review Request
+    Pull Request Reviews are reviews on pull requests.
     """
 
-    users: list[SimpleUser] = Field()
-    teams: list[Team] = Field()
+    id: int = Field(description="Unique identifier of the review")
+    node_id: str = Field()
+    user: Union[None, SimpleUser] = Field()
+    body: str = Field(description="The text of the review.")
+    state: str = Field()
+    html_url: str = Field()
+    pull_request_url: str = Field()
+    links: PullRequestReviewPropLinks = Field(alias="_links")
+    submitted_at: Missing[datetime] = Field(default=UNSET)
+    commit_id: Union[str, None] = Field(
+        description="A commit SHA for the review. If the commit object was garbage collected or forcibly deleted, then it no longer exists in Git and this value will be `null`."
+    )
+    body_html: Missing[str] = Field(default=UNSET)
+    body_text: Missing[str] = Field(default=UNSET)
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ] = Field(
+        title="author_association",
+        description="How the author is associated with the repository.",
+    )
 
 
-model_rebuild(PullRequestReviewRequest)
+class PullRequestReviewPropLinks(GitHubModel):
+    """PullRequestReviewPropLinks"""
 
-__all__ = ("PullRequestReviewRequest",)
+    html: PullRequestReviewPropLinksPropHtml = Field()
+    pull_request: PullRequestReviewPropLinksPropPullRequest = Field()
+
+
+class PullRequestReviewPropLinksPropHtml(GitHubModel):
+    """PullRequestReviewPropLinksPropHtml"""
+
+    href: str = Field()
+
+
+class PullRequestReviewPropLinksPropPullRequest(GitHubModel):
+    """PullRequestReviewPropLinksPropPullRequest"""
+
+    href: str = Field()
+
+
+model_rebuild(PullRequestReview)
+model_rebuild(PullRequestReviewPropLinks)
+model_rebuild(PullRequestReviewPropLinksPropHtml)
+model_rebuild(PullRequestReviewPropLinksPropPullRequest)
+
+__all__ = (
+    "PullRequestReview",
+    "PullRequestReviewPropLinks",
+    "PullRequestReviewPropLinksPropHtml",
+    "PullRequestReviewPropLinksPropPullRequest",
+)

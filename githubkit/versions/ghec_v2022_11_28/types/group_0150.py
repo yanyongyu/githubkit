@@ -11,33 +11,30 @@ from __future__ import annotations
 
 from datetime import datetime
 from typing import Literal, Union
-from typing_extensions import TypedDict
-
-from .group_0003 import SimpleUserType
+from typing_extensions import NotRequired, TypedDict
 
 
-class MilestoneType(TypedDict):
-    """Milestone
+class IssueTypeType(TypedDict):
+    """Issue Type
 
-    A collection of related issues and pull requests.
+    The type of issue.
     """
 
-    url: str
-    html_url: str
-    labels_url: str
     id: int
     node_id: str
-    number: int
-    state: Literal["open", "closed"]
-    title: str
+    name: str
     description: Union[str, None]
-    creator: Union[None, SimpleUserType]
-    open_issues: int
-    closed_issues: int
-    created_at: datetime
-    updated_at: datetime
-    closed_at: Union[datetime, None]
-    due_on: Union[datetime, None]
+    color: NotRequired[
+        Union[
+            None,
+            Literal[
+                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+            ],
+        ]
+    ]
+    created_at: NotRequired[datetime]
+    updated_at: NotRequired[datetime]
+    is_enabled: NotRequired[bool]
 
 
-__all__ = ("MilestoneType",)
+__all__ = ("IssueTypeType",)

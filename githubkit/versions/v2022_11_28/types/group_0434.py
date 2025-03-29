@@ -12,8 +12,8 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class WebhooksRepositoriesItemsType(TypedDict):
-    """WebhooksRepositoriesItems"""
+class WebhooksRepositoriesAddedItemsType(TypedDict):
+    """WebhooksRepositoriesAddedItems"""
 
     full_name: str
     id: int
@@ -22,4 +22,4 @@ class WebhooksRepositoriesItemsType(TypedDict):
     private: bool
 
 
-__all__ = ("WebhooksRepositoriesItemsType",)
+__all__ = ("WebhooksRepositoriesAddedItemsType",)

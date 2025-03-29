@@ -18,18 +18,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0472 import EnterpriseWebhooks
-from .group_0473 import SimpleInstallation
-from .group_0474 import OrganizationSimpleWebhooks
-from .group_0475 import RepositoryWebhooks
-from .group_0477 import ExemptionResponse
-from .group_0478 import ExemptionRequest
+from .group_0471 import EnterpriseWebhooks
+from .group_0472 import SimpleInstallation
+from .group_0473 import OrganizationSimpleWebhooks
+from .group_0474 import RepositoryWebhooks
+from .group_0476 import ExemptionResponse
+from .group_0477 import ExemptionRequest
 
 
-class WebhookExemptionRequestResponseDismissed(GitHubModel):
-    """Exemption response dismissed event"""
+class WebhookExemptionRequestResponseSubmitted(GitHubModel):
+    """Exemption response submitted event"""
 
-    action: Literal["response_dismissed"] = Field()
+    action: Literal["response_submitted"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -61,6 +61,6 @@ class WebhookExemptionRequestResponseDismissed(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookExemptionRequestResponseDismissed)
+model_rebuild(WebhookExemptionRequestResponseSubmitted)
 
-__all__ = ("WebhookExemptionRequestResponseDismissed",)
+__all__ = ("WebhookExemptionRequestResponseSubmitted",)

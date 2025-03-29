@@ -18,11 +18,11 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0472 import EnterpriseWebhooks
-from .group_0473 import SimpleInstallation
-from .group_0474 import OrganizationSimpleWebhooks
-from .group_0475 import RepositoryWebhooks
-from .group_0496 import WebhooksIssue2
+from .group_0471 import EnterpriseWebhooks
+from .group_0472 import SimpleInstallation
+from .group_0473 import OrganizationSimpleWebhooks
+from .group_0474 import RepositoryWebhooks
+from .group_0495 import WebhooksIssue2
 from .group_0675 import WebhookIssuesTransferredPropChanges
 
 

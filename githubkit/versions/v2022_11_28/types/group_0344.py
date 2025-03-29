@@ -9,34 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0020 import RepositoryType
+from .group_0261 import LinkType
 
 
-class PullRequestPropHeadType(TypedDict):
-    """PullRequestPropHead"""
+class PullRequestPropLinksType(TypedDict):
+    """PullRequestPropLinks"""
 
-    label: Union[str, None]
-    ref: str
-    repo: RepositoryType
-    sha: str
-    user: SimpleUserType
-
-
-class PullRequestPropBaseType(TypedDict):
-    """PullRequestPropBase"""
-
-    label: str
-    ref: str
-    repo: RepositoryType
-    sha: str
-    user: SimpleUserType
+    comments: LinkType
+    commits: LinkType
+    statuses: LinkType
+    html: LinkType
+    issue: LinkType
+    review_comments: LinkType
+    review_comment: LinkType
+    self_: LinkType
 
 
-__all__ = (
-    "PullRequestPropBaseType",
-    "PullRequestPropHeadType",
-)
+__all__ = ("PullRequestPropLinksType",)

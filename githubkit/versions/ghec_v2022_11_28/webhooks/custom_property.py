@@ -17,6 +17,7 @@ from githubkit.compat import GitHubModel
 from ..models import (
     WebhookCustomPropertyCreated,
     WebhookCustomPropertyDeleted,
+    WebhookCustomPropertyPromotedToEnterprise,
     WebhookCustomPropertyUpdated,
 )
 
@@ -24,6 +25,7 @@ Event: TypeAlias = Annotated[
     Union[
         WebhookCustomPropertyCreated,
         WebhookCustomPropertyDeleted,
+        WebhookCustomPropertyPromotedToEnterprise,
         WebhookCustomPropertyUpdated,
     ],
     Field(discriminator="action"),
@@ -34,6 +36,7 @@ CustomPropertyEvent: TypeAlias = Event
 action_types: dict[str, type[GitHubModel]] = {
     "created": WebhookCustomPropertyCreated,
     "deleted": WebhookCustomPropertyDeleted,
+    "promote_to_enterprise": WebhookCustomPropertyPromotedToEnterprise,
     "updated": WebhookCustomPropertyUpdated,
 }
 

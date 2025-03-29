@@ -587,12 +587,6 @@ if TYPE_CHECKING:
         CopilotUsageMetricsDayType as CopilotUsageMetricsDayType,
     )
     from githubkit.versions.v2022_11_28.types import (
-        CopilotUsageMetricsPropBreakdownItemsType as CopilotUsageMetricsPropBreakdownItemsType,
-    )
-    from githubkit.versions.v2022_11_28.types import (
-        CopilotUsageMetricsType as CopilotUsageMetricsType,
-    )
-    from githubkit.versions.v2022_11_28.types import (
         CustomDeploymentRuleAppType as CustomDeploymentRuleAppType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -3921,6 +3915,9 @@ if TYPE_CHECKING:
         WebhookCustomPropertyDeletedType as WebhookCustomPropertyDeletedType,
     )
     from githubkit.versions.v2022_11_28.types import (
+        WebhookCustomPropertyPromotedToEnterpriseType as WebhookCustomPropertyPromotedToEnterpriseType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         WebhookCustomPropertyUpdatedType as WebhookCustomPropertyUpdatedType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -5230,6 +5227,9 @@ if TYPE_CHECKING:
         WebhookIssuesTransferredType as WebhookIssuesTransferredType,
     )
     from githubkit.versions.v2022_11_28.types import (
+        WebhookIssuesTypedType as WebhookIssuesTypedType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         WebhookIssuesUnassignedType as WebhookIssuesUnassignedType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -5279,6 +5279,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.types import (
         WebhookIssuesUnpinnedType as WebhookIssuesUnpinnedType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        WebhookIssuesUntypedType as WebhookIssuesUntypedType,
     )
     from githubkit.versions.v2022_11_28.types import (
         WebhookLabelCreatedType as WebhookLabelCreatedType,
@@ -10063,8 +10066,6 @@ else:
             "CopilotIdeCodeCompletionsPropEditorsItemsType",
             "CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItemsType",
             "CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItemsPropLanguagesItemsType",
-            "CopilotUsageMetricsType",
-            "CopilotUsageMetricsPropBreakdownItemsType",
             "DependabotPublicKeyType",
             "PackageType",
             "OrganizationInvitationType",
@@ -10937,6 +10938,7 @@ else:
             "WebhookCustomPropertyCreatedType",
             "WebhookCustomPropertyDeletedType",
             "WebhookCustomPropertyDeletedPropDefinitionType",
+            "WebhookCustomPropertyPromotedToEnterpriseType",
             "WebhookCustomPropertyUpdatedType",
             "WebhookCustomPropertyValuesUpdatedType",
             "WebhookDeleteType",
@@ -11374,6 +11376,7 @@ else:
             "WebhookIssuesTransferredPropChangesPropNewIssuePropReactionsType",
             "WebhookIssuesTransferredPropChangesPropNewIssuePropSubIssuesSummaryType",
             "WebhookIssuesTransferredPropChangesPropNewIssuePropUserType",
+            "WebhookIssuesTypedType",
             "WebhookIssuesUnassignedType",
             "WebhookIssuesUnlabeledType",
             "WebhookIssuesUnlockedType",
@@ -11391,6 +11394,7 @@ else:
             "WebhookIssuesUnlockedPropIssuePropSubIssuesSummaryType",
             "WebhookIssuesUnlockedPropIssuePropUserType",
             "WebhookIssuesUnpinnedType",
+            "WebhookIssuesUntypedType",
             "WebhookLabelCreatedType",
             "WebhookLabelDeletedType",
             "WebhookLabelEditedType",

@@ -556,13 +556,7 @@ if TYPE_CHECKING:
         CopilotSeatDetails as CopilotSeatDetails,
     )
     from githubkit.versions.v2022_11_28.models import (
-        CopilotUsageMetrics as CopilotUsageMetrics,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         CopilotUsageMetricsDay as CopilotUsageMetricsDay,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        CopilotUsageMetricsPropBreakdownItems as CopilotUsageMetricsPropBreakdownItems,
     )
     from githubkit.versions.v2022_11_28.models import (
         CustomDeploymentRuleApp as CustomDeploymentRuleApp,
@@ -3785,6 +3779,9 @@ if TYPE_CHECKING:
         WebhookCustomPropertyDeletedPropDefinition as WebhookCustomPropertyDeletedPropDefinition,
     )
     from githubkit.versions.v2022_11_28.models import (
+        WebhookCustomPropertyPromotedToEnterprise as WebhookCustomPropertyPromotedToEnterprise,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         WebhookCustomPropertyUpdated as WebhookCustomPropertyUpdated,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -5090,6 +5087,9 @@ if TYPE_CHECKING:
         WebhookIssuesTransferredPropChangesPropNewRepositoryPropPermissions as WebhookIssuesTransferredPropChangesPropNewRepositoryPropPermissions,
     )
     from githubkit.versions.v2022_11_28.models import (
+        WebhookIssuesTyped as WebhookIssuesTyped,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesUnassigned as WebhookIssuesUnassigned,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -5139,6 +5139,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesUnpinned as WebhookIssuesUnpinned,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookIssuesUntyped as WebhookIssuesUntyped,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookLabelCreated as WebhookLabelCreated,
@@ -9887,8 +9890,6 @@ else:
             "CopilotIdeCodeCompletionsPropEditorsItems",
             "CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItems",
             "CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItemsPropLanguagesItems",
-            "CopilotUsageMetrics",
-            "CopilotUsageMetricsPropBreakdownItems",
             "DependabotPublicKey",
             "Package",
             "OrganizationInvitation",
@@ -10761,6 +10762,7 @@ else:
             "WebhookCustomPropertyCreated",
             "WebhookCustomPropertyDeleted",
             "WebhookCustomPropertyDeletedPropDefinition",
+            "WebhookCustomPropertyPromotedToEnterprise",
             "WebhookCustomPropertyUpdated",
             "WebhookCustomPropertyValuesUpdated",
             "WebhookDelete",
@@ -11198,6 +11200,7 @@ else:
             "WebhookIssuesTransferredPropChangesPropNewIssuePropReactions",
             "WebhookIssuesTransferredPropChangesPropNewIssuePropSubIssuesSummary",
             "WebhookIssuesTransferredPropChangesPropNewIssuePropUser",
+            "WebhookIssuesTyped",
             "WebhookIssuesUnassigned",
             "WebhookIssuesUnlabeled",
             "WebhookIssuesUnlocked",
@@ -11215,6 +11218,7 @@ else:
             "WebhookIssuesUnlockedPropIssuePropSubIssuesSummary",
             "WebhookIssuesUnlockedPropIssuePropUser",
             "WebhookIssuesUnpinned",
+            "WebhookIssuesUntyped",
             "WebhookLabelCreated",
             "WebhookLabelDeleted",
             "WebhookLabelEdited",

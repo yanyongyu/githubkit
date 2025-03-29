@@ -11,16 +11,18 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
+from .group_0430 import TrafficType
 
-class ReferrerTrafficType(TypedDict):
-    """Referrer Traffic
 
-    Referrer Traffic
+class ViewTrafficType(TypedDict):
+    """View Traffic
+
+    View Traffic
     """
 
-    referrer: str
     count: int
     uniques: int
+    views: list[TrafficType]
 
 
-__all__ = ("ReferrerTrafficType",)
+__all__ = ("ViewTrafficType",)

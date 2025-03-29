@@ -9,19 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0293 import CustomDeploymentRuleAppType
 
 
-class CustomDeploymentRuleAppType(TypedDict):
-    """Custom deployment protection rule app
+class DeploymentProtectionRuleType(TypedDict):
+    """Deployment protection rule
 
-    A GitHub App that is providing a custom deployment protection rule.
+    Deployment protection rule
     """
 
     id: int
-    slug: str
-    integration_url: str
     node_id: str
+    enabled: bool
+    app: CustomDeploymentRuleAppType
 
 
-__all__ = ("CustomDeploymentRuleAppType",)
+class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200Type(
+    TypedDict
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200
+
+    Examples:
+        {'$ref': '#/components/examples/deployment-protection-rules'}
+    """
+
+    total_count: NotRequired[int]
+    custom_deployment_protection_rules: NotRequired[list[DeploymentProtectionRuleType]]
+
+
+__all__ = (
+    "DeploymentProtectionRuleType",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200Type",
+)

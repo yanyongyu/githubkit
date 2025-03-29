@@ -13,11 +13,11 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0211 import DeploymentType
-from .group_0342 import PullRequestType
-from .group_0419 import SimpleInstallationType
-from .group_0420 import OrganizationSimpleWebhooksType
-from .group_0421 import RepositoryWebhooksType
+from .group_0210 import DeploymentType
+from .group_0341 import PullRequestType
+from .group_0418 import SimpleInstallationType
+from .group_0419 import OrganizationSimpleWebhooksType
+from .group_0420 import RepositoryWebhooksType
 
 
 class WebhookDeploymentProtectionRuleRequestedType(TypedDict):

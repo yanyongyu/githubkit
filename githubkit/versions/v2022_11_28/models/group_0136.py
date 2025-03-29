@@ -14,17 +14,22 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0137 import RepositoryRuleMergeQueuePropParameters
 
 
-class RepositoryRuleRequiredLinearHistory(GitHubModel):
-    """required_linear_history
+class RepositoryRuleMergeQueue(GitHubModel):
+    """merge_queue
 
-    Prevent merge commits from being pushed to matching refs.
+    Merges must be performed via a merge queue.
     """
 
-    type: Literal["required_linear_history"] = Field()
+    type: Literal["merge_queue"] = Field()
+    parameters: Missing[RepositoryRuleMergeQueuePropParameters] = Field(default=UNSET)
 
 
-model_rebuild(RepositoryRuleRequiredLinearHistory)
+model_rebuild(RepositoryRuleMergeQueue)
 
-__all__ = ("RepositoryRuleRequiredLinearHistory",)
+__all__ = ("RepositoryRuleMergeQueue",)

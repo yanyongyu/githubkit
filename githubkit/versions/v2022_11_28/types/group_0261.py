@@ -12,25 +12,13 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class BranchShortType(TypedDict):
-    """Branch Short
+class LinkType(TypedDict):
+    """Link
 
-    Branch Short
+    Hypermedia Link
     """
 
-    name: str
-    commit: BranchShortPropCommitType
-    protected: bool
+    href: str
 
 
-class BranchShortPropCommitType(TypedDict):
-    """BranchShortPropCommit"""
-
-    sha: str
-    url: str
-
-
-__all__ = (
-    "BranchShortPropCommitType",
-    "BranchShortType",
-)
+__all__ = ("LinkType",)

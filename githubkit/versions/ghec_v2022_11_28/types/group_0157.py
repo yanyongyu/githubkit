@@ -16,10 +16,31 @@ from typing_extensions import NotRequired, TypeAlias, TypedDict
 from .group_0003 import SimpleUserType
 
 
-class BaseGistType(TypedDict):
-    """Base Gist
+class GistHistoryType(TypedDict):
+    """Gist History
 
-    Base Gist
+    Gist History
+    """
+
+    user: NotRequired[Union[None, SimpleUserType]]
+    version: NotRequired[str]
+    committed_at: NotRequired[datetime]
+    change_status: NotRequired[GistHistoryPropChangeStatusType]
+    url: NotRequired[str]
+
+
+class GistHistoryPropChangeStatusType(TypedDict):
+    """GistHistoryPropChangeStatus"""
+
+    total: NotRequired[int]
+    additions: NotRequired[int]
+    deletions: NotRequired[int]
+
+
+class GistSimplePropForkOfType(TypedDict):
+    """Gist
+
+    Gist
     """
 
     url: str
@@ -30,7 +51,7 @@ class BaseGistType(TypedDict):
     git_pull_url: str
     git_push_url: str
     html_url: str
-    files: BaseGistPropFilesType
+    files: GistSimplePropForkOfPropFilesType
     public: bool
     created_at: datetime
     updated_at: datetime
@@ -39,18 +60,20 @@ class BaseGistType(TypedDict):
     comments_enabled: NotRequired[bool]
     user: Union[None, SimpleUserType]
     comments_url: str
-    owner: NotRequired[SimpleUserType]
+    owner: NotRequired[Union[None, SimpleUserType]]
     truncated: NotRequired[bool]
     forks: NotRequired[list[Any]]
     history: NotRequired[list[Any]]
 
 
-BaseGistPropFilesType: TypeAlias = dict[str, Any]
-"""BaseGistPropFiles
+GistSimplePropForkOfPropFilesType: TypeAlias = dict[str, Any]
+"""GistSimplePropForkOfPropFiles
 """
 
 
 __all__ = (
-    "BaseGistPropFilesType",
-    "BaseGistType",
+    "GistHistoryPropChangeStatusType",
+    "GistHistoryType",
+    "GistSimplePropForkOfPropFilesType",
+    "GistSimplePropForkOfType",
 )

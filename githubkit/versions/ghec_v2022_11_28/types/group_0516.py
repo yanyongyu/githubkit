@@ -14,35 +14,36 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksReviewType(TypedDict):
-    """WebhooksReview
+class WebhooksReleaseType(TypedDict):
+    """Release
 
-    The review that was affected.
+    The [release](https://docs.github.com/enterprise-
+    cloud@latest//rest/releases/releases/#get-a-release) object.
     """
 
-    links: WebhooksReviewPropLinksType
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
+    assets: list[WebhooksReleasePropAssetsItemsType]
+    assets_url: str
+    author: Union[WebhooksReleasePropAuthorType, None]
     body: Union[str, None]
-    commit_id: str
+    created_at: Union[datetime, None]
+    discussion_url: NotRequired[str]
+    draft: bool
     html_url: str
     id: int
+    name: Union[str, None]
     node_id: str
-    pull_request_url: str
-    state: str
-    submitted_at: Union[datetime, None]
-    user: Union[WebhooksReviewPropUserType, None]
+    prerelease: bool
+    published_at: Union[datetime, None]
+    reactions: NotRequired[WebhooksReleasePropReactionsType]
+    tag_name: str
+    tarball_url: Union[str, None]
+    target_commitish: str
+    upload_url: str
+    url: str
+    zipball_url: Union[str, None]
 
 
-class WebhooksReviewPropUserType(TypedDict):
+class WebhooksReleasePropAuthorType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -69,29 +70,72 @@ class WebhooksReviewPropUserType(TypedDict):
     user_view_type: NotRequired[str]
 
 
-class WebhooksReviewPropLinksType(TypedDict):
-    """WebhooksReviewPropLinks"""
+class WebhooksReleasePropReactionsType(TypedDict):
+    """Reactions"""
 
-    html: WebhooksReviewPropLinksPropHtmlType
-    pull_request: WebhooksReviewPropLinksPropPullRequestType
+    plus_one: int
+    minus_one: int
+    confused: int
+    eyes: int
+    heart: int
+    hooray: int
+    laugh: int
+    rocket: int
+    total_count: int
+    url: str
 
 
-class WebhooksReviewPropLinksPropHtmlType(TypedDict):
-    """Link"""
+class WebhooksReleasePropAssetsItemsType(TypedDict):
+    """Release Asset
 
-    href: str
+    Data related to a release.
+    """
+
+    browser_download_url: str
+    content_type: str
+    created_at: datetime
+    download_count: int
+    id: int
+    label: Union[str, None]
+    name: str
+    node_id: str
+    size: int
+    state: Literal["uploaded"]
+    updated_at: datetime
+    uploader: NotRequired[Union[WebhooksReleasePropAssetsItemsPropUploaderType, None]]
+    url: str
 
 
-class WebhooksReviewPropLinksPropPullRequestType(TypedDict):
-    """Link"""
+class WebhooksReleasePropAssetsItemsPropUploaderType(TypedDict):
+    """User"""
 
-    href: str
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
 
 
 __all__ = (
-    "WebhooksReviewPropLinksPropHtmlType",
-    "WebhooksReviewPropLinksPropPullRequestType",
-    "WebhooksReviewPropLinksType",
-    "WebhooksReviewPropUserType",
-    "WebhooksReviewType",
+    "WebhooksReleasePropAssetsItemsPropUploaderType",
+    "WebhooksReleasePropAssetsItemsType",
+    "WebhooksReleasePropAuthorType",
+    "WebhooksReleasePropReactionsType",
+    "WebhooksReleaseType",
 )

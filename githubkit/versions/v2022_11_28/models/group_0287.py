@@ -9,58 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0003 import SimpleUser
-from .group_0010 import Integration
 
 
-class DeploymentStatus(GitHubModel):
-    """Deployment Status
+class DeploymentBranchPolicySettings(GitHubModel):
+    """DeploymentBranchPolicySettings
 
-    The status of a deployment.
+    The type of deployment branch policy for this environment. To allow all branches
+    to deploy, set to `null`.
     """
 
-    url: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    state: Literal[
-        "error", "failure", "inactive", "pending", "success", "queued", "in_progress"
-    ] = Field(description="The state of the status.")
-    creator: Union[None, SimpleUser] = Field()
-    description: str = Field(
-        max_length=140, default="", description="A short description of the status."
+    protected_branches: bool = Field(
+        description="Whether only branches with branch protection rules can deploy to this environment. If `protected_branches` is `true`, `custom_branch_policies` must be `false`; if `protected_branches` is `false`, `custom_branch_policies` must be `true`."
     )
-    environment: Missing[str] = Field(
-        default=UNSET,
-        description="The environment of the deployment that the status is for.",
-    )
-    target_url: str = Field(
-        default="",
-        description="Closing down notice: the URL to associate with this status.",
-    )
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    deployment_url: str = Field()
-    repository_url: str = Field()
-    environment_url: Missing[str] = Field(
-        default=UNSET, description="The URL for accessing your environment."
-    )
-    log_url: Missing[str] = Field(
-        default=UNSET, description="The URL to associate with this status."
-    )
-    performed_via_github_app: Missing[Union[None, Integration, None]] = Field(
-        default=UNSET
+    custom_branch_policies: bool = Field(
+        description="Whether only branches that match the specified name patterns can deploy to this environment.  If `custom_branch_policies` is `true`, `protected_branches` must be `false`; if `custom_branch_policies` is `false`, `protected_branches` must be `true`."
     )
 
 
-model_rebuild(DeploymentStatus)
+model_rebuild(DeploymentBranchPolicySettings)
 
-__all__ = ("DeploymentStatus",)
+__all__ = ("DeploymentBranchPolicySettings",)

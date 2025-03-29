@@ -27,10 +27,12 @@ from ..models import (
     WebhookIssuesPinned,
     WebhookIssuesReopened,
     WebhookIssuesTransferred,
+    WebhookIssuesTyped,
     WebhookIssuesUnassigned,
     WebhookIssuesUnlabeled,
     WebhookIssuesUnlocked,
     WebhookIssuesUnpinned,
+    WebhookIssuesUntyped,
 )
 
 Event: TypeAlias = Annotated[
@@ -47,10 +49,12 @@ Event: TypeAlias = Annotated[
         WebhookIssuesPinned,
         WebhookIssuesReopened,
         WebhookIssuesTransferred,
+        WebhookIssuesTyped,
         WebhookIssuesUnassigned,
         WebhookIssuesUnlabeled,
         WebhookIssuesUnlocked,
         WebhookIssuesUnpinned,
+        WebhookIssuesUntyped,
     ],
     Field(discriminator="action"),
 ]
@@ -70,10 +74,12 @@ action_types: dict[str, type[GitHubModel]] = {
     "pinned": WebhookIssuesPinned,
     "reopened": WebhookIssuesReopened,
     "transferred": WebhookIssuesTransferred,
+    "typed": WebhookIssuesTyped,
     "unassigned": WebhookIssuesUnassigned,
     "unlabeled": WebhookIssuesUnlabeled,
     "unlocked": WebhookIssuesUnlocked,
     "unpinned": WebhookIssuesUnpinned,
+    "untyped": WebhookIssuesUntyped,
 }
 
 issues_action_types = action_types

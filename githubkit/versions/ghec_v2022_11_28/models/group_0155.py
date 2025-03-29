@@ -9,95 +9,86 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0153 import Issue
-from .group_0154 import IssueComment
 
+class Feed(GitHubModel):
+    """Feed
 
-class EventPropPayload(GitHubModel):
-    """EventPropPayload"""
-
-    action: Missing[str] = Field(default=UNSET)
-    issue: Missing[Issue] = Field(
-        default=UNSET,
-        title="Issue",
-        description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
-    )
-    comment: Missing[IssueComment] = Field(
-        default=UNSET,
-        title="Issue Comment",
-        description="Comments provide a way for people to collaborate on an issue.",
-    )
-    pages: Missing[list[EventPropPayloadPropPagesItems]] = Field(default=UNSET)
-
-
-class EventPropPayloadPropPagesItems(GitHubModel):
-    """EventPropPayloadPropPagesItems"""
-
-    page_name: Missing[str] = Field(default=UNSET)
-    title: Missing[str] = Field(default=UNSET)
-    summary: Missing[Union[str, None]] = Field(default=UNSET)
-    action: Missing[str] = Field(default=UNSET)
-    sha: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-
-
-class Event(GitHubModel):
-    """Event
-
-    Event
+    Feed
     """
 
-    id: str = Field()
-    type: Union[str, None] = Field()
-    actor: Actor = Field(title="Actor", description="Actor")
-    repo: EventPropRepo = Field()
-    org: Missing[Actor] = Field(default=UNSET, title="Actor", description="Actor")
-    payload: EventPropPayload = Field()
-    public: bool = Field()
-    created_at: Union[datetime, None] = Field()
+    timeline_url: str = Field()
+    user_url: str = Field()
+    current_user_public_url: Missing[str] = Field(default=UNSET)
+    current_user_url: Missing[str] = Field(default=UNSET)
+    current_user_actor_url: Missing[str] = Field(default=UNSET)
+    current_user_organization_url: Missing[str] = Field(default=UNSET)
+    current_user_organization_urls: Missing[list[str]] = Field(default=UNSET)
+    security_advisories_url: Missing[str] = Field(default=UNSET)
+    repository_discussions_url: Missing[str] = Field(
+        default=UNSET, description="A feed of discussions for a given repository."
+    )
+    repository_discussions_category_url: Missing[str] = Field(
+        default=UNSET,
+        description="A feed of discussions for a given repository and category.",
+    )
+    links: FeedPropLinks = Field(alias="_links")
 
 
-class Actor(GitHubModel):
-    """Actor
+class FeedPropLinks(GitHubModel):
+    """FeedPropLinks"""
 
-    Actor
+    timeline: LinkWithType = Field(
+        title="Link With Type", description="Hypermedia Link with Type"
+    )
+    user: LinkWithType = Field(
+        title="Link With Type", description="Hypermedia Link with Type"
+    )
+    security_advisories: Missing[LinkWithType] = Field(
+        default=UNSET, title="Link With Type", description="Hypermedia Link with Type"
+    )
+    current_user: Missing[LinkWithType] = Field(
+        default=UNSET, title="Link With Type", description="Hypermedia Link with Type"
+    )
+    current_user_public: Missing[LinkWithType] = Field(
+        default=UNSET, title="Link With Type", description="Hypermedia Link with Type"
+    )
+    current_user_actor: Missing[LinkWithType] = Field(
+        default=UNSET, title="Link With Type", description="Hypermedia Link with Type"
+    )
+    current_user_organization: Missing[LinkWithType] = Field(
+        default=UNSET, title="Link With Type", description="Hypermedia Link with Type"
+    )
+    current_user_organizations: Missing[list[LinkWithType]] = Field(default=UNSET)
+    repository_discussions: Missing[LinkWithType] = Field(
+        default=UNSET, title="Link With Type", description="Hypermedia Link with Type"
+    )
+    repository_discussions_category: Missing[LinkWithType] = Field(
+        default=UNSET, title="Link With Type", description="Hypermedia Link with Type"
+    )
+
+
+class LinkWithType(GitHubModel):
+    """Link With Type
+
+    Hypermedia Link with Type
     """
 
-    id: int = Field()
-    login: str = Field()
-    display_login: Missing[str] = Field(default=UNSET)
-    gravatar_id: Union[str, None] = Field()
-    url: str = Field()
-    avatar_url: str = Field()
+    href: str = Field()
+    type: str = Field()
 
 
-class EventPropRepo(GitHubModel):
-    """EventPropRepo"""
-
-    id: int = Field()
-    name: str = Field()
-    url: str = Field()
-
-
-model_rebuild(EventPropPayload)
-model_rebuild(EventPropPayloadPropPagesItems)
-model_rebuild(Event)
-model_rebuild(Actor)
-model_rebuild(EventPropRepo)
+model_rebuild(Feed)
+model_rebuild(FeedPropLinks)
+model_rebuild(LinkWithType)
 
 __all__ = (
-    "Actor",
-    "Event",
-    "EventPropPayload",
-    "EventPropPayloadPropPagesItems",
-    "EventPropRepo",
+    "Feed",
+    "FeedPropLinks",
+    "LinkWithType",
 )

@@ -9,22 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class NetworkConfigurationType(TypedDict):
-    """Hosted compute network configuration
+class NetworkSettingsType(TypedDict):
+    """Hosted compute network settings resource
 
-    A hosted compute network configuration.
+    A hosted compute network settings resource.
     """
 
     id: str
+    network_configuration_id: NotRequired[str]
     name: str
-    compute_service: NotRequired[Literal["none", "actions", "codespaces"]]
-    network_settings_ids: NotRequired[list[str]]
-    created_on: Union[datetime, None]
+    subnet_id: str
+    region: str
 
 
-__all__ = ("NetworkConfigurationType",)
+__all__ = ("NetworkSettingsType",)

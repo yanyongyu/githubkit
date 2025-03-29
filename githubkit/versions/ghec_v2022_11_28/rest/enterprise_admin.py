@@ -3206,7 +3206,9 @@ class EnterpriseAdminClient:
         requester: Missing[str] = UNSET,
         time_period: Missing[Literal["hour", "day", "week", "month"]] = UNSET,
         request_status: Missing[
-            Literal["completed", "cancelled", "expired", "denied", "open", "all"]
+            Literal[
+                "completed", "cancelled", "expired", "deleted", "denied", "open", "all"
+            ]
         ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
@@ -3251,7 +3253,9 @@ class EnterpriseAdminClient:
         requester: Missing[str] = UNSET,
         time_period: Missing[Literal["hour", "day", "week", "month"]] = UNSET,
         request_status: Missing[
-            Literal["completed", "cancelled", "expired", "denied", "open", "all"]
+            Literal[
+                "completed", "cancelled", "expired", "deleted", "denied", "open", "all"
+            ]
         ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,

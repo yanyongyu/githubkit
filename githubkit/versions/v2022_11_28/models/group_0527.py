@@ -13,8 +13,8 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0421 import RepositoryWebhooks
-from .group_0431 import Discussion
+from .group_0420 import RepositoryWebhooks
+from .group_0430 import Discussion
 
 
 class WebhookDiscussionTransferredPropChanges(GitHubModel):

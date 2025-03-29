@@ -9,39 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Union
-from typing_extensions import TypedDict
-
-from .group_0169 import MinimalRepositoryType
+from typing_extensions import NotRequired, TypedDict
 
 
-class ThreadType(TypedDict):
-    """Thread
+class ThreadSubscriptionType(TypedDict):
+    """Thread Subscription
 
-    Thread
+    Thread Subscription
     """
 
-    id: str
-    repository: MinimalRepositoryType
-    subject: ThreadPropSubjectType
-    reason: str
-    unread: bool
-    updated_at: str
-    last_read_at: Union[str, None]
+    subscribed: bool
+    ignored: bool
+    reason: Union[str, None]
+    created_at: Union[datetime, None]
     url: str
-    subscription_url: str
+    thread_url: NotRequired[str]
+    repository_url: NotRequired[str]
 
 
-class ThreadPropSubjectType(TypedDict):
-    """ThreadPropSubject"""
-
-    title: str
-    url: str
-    latest_comment_url: str
-    type: str
-
-
-__all__ = (
-    "ThreadPropSubjectType",
-    "ThreadType",
-)
+__all__ = ("ThreadSubscriptionType",)

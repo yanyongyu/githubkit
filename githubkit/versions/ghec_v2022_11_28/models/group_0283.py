@@ -15,39 +15,24 @@ from typing import Union
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0003 import SimpleUser
 
 
-class CodeScanningCodeqlDatabase(GitHubModel):
-    """CodeQL Database
+class CodeScanningVariantAnalysisRepository(GitHubModel):
+    """Repository Identifier
 
-    A CodeQL database.
+    Repository Identifier
     """
 
-    id: int = Field(description="The ID of the CodeQL database.")
-    name: str = Field(description="The name of the CodeQL database.")
-    language: str = Field(description="The language of the CodeQL database.")
-    uploader: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    content_type: str = Field(description="The MIME type of the CodeQL database file.")
-    size: int = Field(description="The size of the CodeQL database file in bytes.")
-    created_at: datetime = Field(
-        description="The date and time at which the CodeQL database was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
+    id: int = Field(description="A unique identifier of the repository.")
+    name: str = Field(description="The name of the repository.")
+    full_name: str = Field(
+        description="The full, globally unique, name of the repository."
     )
-    updated_at: datetime = Field(
-        description="The date and time at which the CodeQL database was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
-    )
-    url: str = Field(
-        description="The URL at which to download the CodeQL database. The `Accept` header must be set to the value of the `content_type` property."
-    )
-    commit_oid: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The commit SHA of the repository at the time the CodeQL database was created.",
-    )
+    private: bool = Field(description="Whether the repository is private.")
+    stargazers_count: int = Field()
+    updated_at: Union[datetime, None] = Field()
 
 
-model_rebuild(CodeScanningCodeqlDatabase)
+model_rebuild(CodeScanningVariantAnalysisRepository)
 
-__all__ = ("CodeScanningCodeqlDatabase",)
+__all__ = ("CodeScanningVariantAnalysisRepository",)

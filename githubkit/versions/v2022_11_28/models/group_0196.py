@@ -10,7 +10,6 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Union
 
 from pydantic import Field
 
@@ -19,43 +18,34 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class Artifact(GitHubModel):
-    """Artifact
+class ActionsCacheList(GitHubModel):
+    """Repository actions caches
 
-    An artifact
+    Repository actions caches
     """
 
-    id: int = Field()
-    node_id: str = Field()
-    name: str = Field(description="The name of the artifact.")
-    size_in_bytes: int = Field(description="The size in bytes of the artifact.")
-    url: str = Field()
-    archive_download_url: str = Field()
-    expired: bool = Field(description="Whether or not the artifact has expired.")
-    created_at: Union[datetime, None] = Field()
-    expires_at: Union[datetime, None] = Field()
-    updated_at: Union[datetime, None] = Field()
-    digest: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The SHA256 digest of the artifact. This field will only be populated on artifacts uploaded with upload-artifact v4 or newer. For older versions, this field will be null.",
+    total_count: int = Field(description="Total number of caches")
+    actions_caches: list[ActionsCacheListPropActionsCachesItems] = Field(
+        description="Array of caches"
     )
-    workflow_run: Missing[Union[ArtifactPropWorkflowRun, None]] = Field(default=UNSET)
 
 
-class ArtifactPropWorkflowRun(GitHubModel):
-    """ArtifactPropWorkflowRun"""
+class ActionsCacheListPropActionsCachesItems(GitHubModel):
+    """ActionsCacheListPropActionsCachesItems"""
 
     id: Missing[int] = Field(default=UNSET)
-    repository_id: Missing[int] = Field(default=UNSET)
-    head_repository_id: Missing[int] = Field(default=UNSET)
-    head_branch: Missing[str] = Field(default=UNSET)
-    head_sha: Missing[str] = Field(default=UNSET)
+    ref: Missing[str] = Field(default=UNSET)
+    key: Missing[str] = Field(default=UNSET)
+    version: Missing[str] = Field(default=UNSET)
+    last_accessed_at: Missing[datetime] = Field(default=UNSET)
+    created_at: Missing[datetime] = Field(default=UNSET)
+    size_in_bytes: Missing[int] = Field(default=UNSET)
 
 
-model_rebuild(Artifact)
-model_rebuild(ArtifactPropWorkflowRun)
+model_rebuild(ActionsCacheList)
+model_rebuild(ActionsCacheListPropActionsCachesItems)
 
 __all__ = (
-    "Artifact",
-    "ArtifactPropWorkflowRun",
+    "ActionsCacheList",
+    "ActionsCacheListPropActionsCachesItems",
 )

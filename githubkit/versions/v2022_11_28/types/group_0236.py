@@ -14,13 +14,12 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0079 import CodeScanningAlertRuleSummaryType
 from .group_0080 import CodeScanningAnalysisToolType
 from .group_0081 import CodeScanningAlertInstanceType
 
 
-class CodeScanningAlertItemsType(TypedDict):
-    """CodeScanningAlertItems"""
+class CodeScanningAlertType(TypedDict):
+    """CodeScanningAlert"""
 
     number: int
     created_at: datetime
@@ -36,10 +35,29 @@ class CodeScanningAlertItemsType(TypedDict):
         None, Literal["false positive", "won't fix", "used in tests"]
     ]
     dismissed_comment: NotRequired[Union[str, None]]
-    rule: CodeScanningAlertRuleSummaryType
+    rule: CodeScanningAlertRuleType
     tool: CodeScanningAnalysisToolType
     most_recent_instance: CodeScanningAlertInstanceType
     dismissal_approved_by: NotRequired[Union[None, SimpleUserType]]
 
 
-__all__ = ("CodeScanningAlertItemsType",)
+class CodeScanningAlertRuleType(TypedDict):
+    """CodeScanningAlertRule"""
+
+    id: NotRequired[Union[str, None]]
+    name: NotRequired[str]
+    severity: NotRequired[Union[None, Literal["none", "note", "warning", "error"]]]
+    security_severity_level: NotRequired[
+        Union[None, Literal["low", "medium", "high", "critical"]]
+    ]
+    description: NotRequired[str]
+    full_description: NotRequired[str]
+    tags: NotRequired[Union[list[str], None]]
+    help_: NotRequired[Union[str, None]]
+    help_uri: NotRequired[Union[str, None]]
+
+
+__all__ = (
+    "CodeScanningAlertRuleType",
+    "CodeScanningAlertType",
+)

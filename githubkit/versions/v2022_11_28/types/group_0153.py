@@ -12,14 +12,17 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class RepositoryRuleBranchNamePatternPropParametersType(TypedDict):
-    """RepositoryRuleBranchNamePatternPropParameters"""
-
-    name: NotRequired[str]
-    negate: NotRequired[bool]
-    operator: Literal["starts_with", "ends_with", "contains", "regex"]
-    pattern: str
+from .group_0154 import RepositoryRuleTagNamePatternPropParametersType
 
 
-__all__ = ("RepositoryRuleBranchNamePatternPropParametersType",)
+class RepositoryRuleTagNamePatternType(TypedDict):
+    """tag_name_pattern
+
+    Parameters to be used for the tag_name_pattern rule
+    """
+
+    type: Literal["tag_name_pattern"]
+    parameters: NotRequired[RepositoryRuleTagNamePatternPropParametersType]
+
+
+__all__ = ("RepositoryRuleTagNamePatternType",)

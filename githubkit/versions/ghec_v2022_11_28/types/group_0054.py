@@ -33,7 +33,14 @@ class PushRuleBypassRequestType(TypedDict):
     resource_identifier: NotRequired[str]
     status: NotRequired[
         Literal[
-            "pending", "denied", "approved", "cancelled", "completed", "expired", "open"
+            "pending",
+            "denied",
+            "approved",
+            "cancelled",
+            "completed",
+            "expired",
+            "deleted",
+            "open",
         ]
     ]
     requester_comment: NotRequired[Union[str, None]]

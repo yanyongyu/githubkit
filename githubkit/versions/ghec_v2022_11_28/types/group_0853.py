@@ -14,7 +14,7 @@ from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class WebhookStatusPropCommitPropCommitPropCommitterAllof0Type(TypedDict):
+class WebhookStatusPropCommitPropCommitPropAuthorAllof0Type(TypedDict):
     """Committer
 
     Metaproperties for Git author/committer information.
@@ -26,4 +26,4 @@ class WebhookStatusPropCommitPropCommitPropCommitterAllof0Type(TypedDict):
     username: NotRequired[str]
 
 
-__all__ = ("WebhookStatusPropCommitPropCommitPropCommitterAllof0Type",)
+__all__ = ("WebhookStatusPropCommitPropCommitPropAuthorAllof0Type",)

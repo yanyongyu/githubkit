@@ -16,26 +16,26 @@ from .group_0003 import SimpleUserType
 from .group_0010 import IntegrationType
 
 
-class RemovedFromProjectIssueEventType(TypedDict):
-    """Removed from Project Issue Event
+class ConvertedNoteToIssueIssueEventType(TypedDict):
+    """Converted Note to Issue Issue Event
 
-    Removed from Project Issue Event
+    Converted Note to Issue Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserType
-    event: Literal["removed_from_project"]
+    event: Literal["converted_note_to_issue"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
-    performed_via_github_app: Union[None, IntegrationType, None]
-    project_card: NotRequired[RemovedFromProjectIssueEventPropProjectCardType]
+    performed_via_github_app: Union[IntegrationType, None]
+    project_card: NotRequired[ConvertedNoteToIssueIssueEventPropProjectCardType]
 
 
-class RemovedFromProjectIssueEventPropProjectCardType(TypedDict):
-    """RemovedFromProjectIssueEventPropProjectCard"""
+class ConvertedNoteToIssueIssueEventPropProjectCardType(TypedDict):
+    """ConvertedNoteToIssueIssueEventPropProjectCard"""
 
     id: int
     url: str
@@ -46,6 +46,6 @@ class RemovedFromProjectIssueEventPropProjectCardType(TypedDict):
 
 
 __all__ = (
-    "RemovedFromProjectIssueEventPropProjectCardType",
-    "RemovedFromProjectIssueEventType",
+    "ConvertedNoteToIssueIssueEventPropProjectCardType",
+    "ConvertedNoteToIssueIssueEventType",
 )

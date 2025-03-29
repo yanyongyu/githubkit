@@ -9,11 +9,54 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksUserType(TypedDict):
+class WebhooksAnswerType(TypedDict):
+    """WebhooksAnswer"""
+
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    body: str
+    child_comment_count: int
+    created_at: datetime
+    discussion_id: int
+    html_url: str
+    id: int
+    node_id: str
+    parent_id: None
+    reactions: NotRequired[WebhooksAnswerPropReactionsType]
+    repository_url: str
+    updated_at: datetime
+    user: Union[WebhooksAnswerPropUserType, None]
+
+
+class WebhooksAnswerPropReactionsType(TypedDict):
+    """Reactions"""
+
+    plus_one: int
+    minus_one: int
+    confused: int
+    eyes: int
+    heart: int
+    hooray: int
+    laugh: int
+    rocket: int
+    total_count: int
+    url: str
+
+
+class WebhooksAnswerPropUserType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -40,4 +83,8 @@ class WebhooksUserType(TypedDict):
     user_view_type: NotRequired[str]
 
 
-__all__ = ("WebhooksUserType",)
+__all__ = (
+    "WebhooksAnswerPropReactionsType",
+    "WebhooksAnswerPropUserType",
+    "WebhooksAnswerType",
+)

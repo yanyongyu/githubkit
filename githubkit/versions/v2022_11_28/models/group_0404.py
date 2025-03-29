@@ -18,66 +18,71 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0396 import SearchResultTextMatchesItems
 
+class PrivateUser(GitHubModel):
+    """Private User
 
-class UserSearchResultItem(GitHubModel):
-    """User Search Result Item
-
-    User Search Result Item
+    Private User
     """
 
     login: str = Field()
     id: int = Field()
+    user_view_type: Missing[str] = Field(default=UNSET)
     node_id: str = Field()
     avatar_url: str = Field()
     gravatar_id: Union[str, None] = Field()
     url: str = Field()
     html_url: str = Field()
     followers_url: str = Field()
-    subscriptions_url: str = Field()
-    organizations_url: str = Field()
-    repos_url: str = Field()
-    received_events_url: str = Field()
-    type: str = Field()
-    score: float = Field()
     following_url: str = Field()
     gists_url: str = Field()
     starred_url: str = Field()
+    subscriptions_url: str = Field()
+    organizations_url: str = Field()
+    repos_url: str = Field()
     events_url: str = Field()
-    public_repos: Missing[int] = Field(default=UNSET)
-    public_gists: Missing[int] = Field(default=UNSET)
-    followers: Missing[int] = Field(default=UNSET)
-    following: Missing[int] = Field(default=UNSET)
-    created_at: Missing[datetime] = Field(default=UNSET)
-    updated_at: Missing[datetime] = Field(default=UNSET)
-    name: Missing[Union[str, None]] = Field(default=UNSET)
-    bio: Missing[Union[str, None]] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    location: Missing[Union[str, None]] = Field(default=UNSET)
+    received_events_url: str = Field()
+    type: str = Field()
     site_admin: bool = Field()
-    hireable: Missing[Union[bool, None]] = Field(default=UNSET)
-    text_matches: Missing[list[SearchResultTextMatchesItems]] = Field(
-        default=UNSET, title="Search Result Text Matches"
-    )
-    blog: Missing[Union[str, None]] = Field(default=UNSET)
-    company: Missing[Union[str, None]] = Field(default=UNSET)
-    suspended_at: Missing[Union[datetime, None]] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
+    name: Union[str, None] = Field()
+    company: Union[str, None] = Field()
+    blog: Union[str, None] = Field()
+    location: Union[str, None] = Field()
+    email: Union[str, None] = Field()
+    notification_email: Missing[Union[str, None]] = Field(default=UNSET)
+    hireable: Union[bool, None] = Field()
+    bio: Union[str, None] = Field()
+    twitter_username: Missing[Union[str, None]] = Field(default=UNSET)
+    public_repos: int = Field()
+    public_gists: int = Field()
+    followers: int = Field()
+    following: int = Field()
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+    private_gists: int = Field()
+    total_private_repos: int = Field()
+    owned_private_repos: int = Field()
+    disk_usage: int = Field()
+    collaborators: int = Field()
+    two_factor_authentication: bool = Field()
+    plan: Missing[PrivateUserPropPlan] = Field(default=UNSET)
+    business_plus: Missing[bool] = Field(default=UNSET)
+    ldap_dn: Missing[str] = Field(default=UNSET)
 
 
-class SearchUsersGetResponse200(GitHubModel):
-    """SearchUsersGetResponse200"""
+class PrivateUserPropPlan(GitHubModel):
+    """PrivateUserPropPlan"""
 
-    total_count: int = Field()
-    incomplete_results: bool = Field()
-    items: list[UserSearchResultItem] = Field()
+    collaborators: int = Field()
+    name: str = Field()
+    space: int = Field()
+    private_repos: int = Field()
 
 
-model_rebuild(UserSearchResultItem)
-model_rebuild(SearchUsersGetResponse200)
+model_rebuild(PrivateUser)
+model_rebuild(PrivateUserPropPlan)
 
 __all__ = (
-    "SearchUsersGetResponse200",
-    "UserSearchResultItem",
+    "PrivateUser",
+    "PrivateUserPropPlan",
 )

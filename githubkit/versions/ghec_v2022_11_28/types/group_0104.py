@@ -12,30 +12,18 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0105 import RepositoryRulePullRequestPropParametersType
 
-class RepositoryRuleParamsRequiredReviewerConfigurationType(TypedDict):
-    """RequiredReviewerConfiguration
 
-    A reviewing team, and file patterns describing which files they must approve
-    changes to.
+class RepositoryRulePullRequestType(TypedDict):
+    """pull_request
+
+    Require all commits be made to a non-target branch and submitted via a pull
+    request before they can be merged.
     """
 
-    file_patterns: list[str]
-    minimum_approvals: int
-    reviewer: NotRequired[RepositoryRuleParamsReviewerType]
+    type: Literal["pull_request"]
+    parameters: NotRequired[RepositoryRulePullRequestPropParametersType]
 
 
-class RepositoryRuleParamsReviewerType(TypedDict):
-    """Reviewer
-
-    A required reviewing team
-    """
-
-    id: int
-    type: Literal["Team"]
-
-
-__all__ = (
-    "RepositoryRuleParamsRequiredReviewerConfigurationType",
-    "RepositoryRuleParamsReviewerType",
-)
+__all__ = ("RepositoryRulePullRequestType",)

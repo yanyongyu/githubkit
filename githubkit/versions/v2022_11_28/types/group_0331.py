@@ -12,26 +12,23 @@ from __future__ import annotations
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0010 import IntegrationType
 
+class DeployKeyType(TypedDict):
+    """Deploy Key
 
-class StateChangeIssueEventType(TypedDict):
-    """State Change Issue Event
-
-    State Change Issue Event
+    An SSH key granting access to a single repository.
     """
 
     id: int
-    node_id: str
+    key: str
     url: str
-    actor: SimpleUserType
-    event: str
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
+    title: str
+    verified: bool
     created_at: str
-    performed_via_github_app: Union[None, IntegrationType, None]
-    state_reason: NotRequired[Union[str, None]]
+    read_only: bool
+    added_by: NotRequired[Union[str, None]]
+    last_used: NotRequired[Union[str, None]]
+    enabled: NotRequired[bool]
 
 
-__all__ = ("StateChangeIssueEventType",)
+__all__ = ("DeployKeyType",)

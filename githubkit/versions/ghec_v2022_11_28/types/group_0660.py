@@ -13,7 +13,7 @@ from datetime import datetime
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0151 import IssueTypeType
+from .group_0150 import IssueTypeType
 
 
 class WebhookIssuesDemilestonedPropIssueType(TypedDict):
