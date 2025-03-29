@@ -261,6 +261,13 @@ def build():
         logger.warning(f"Output dir {config.output_dir} already exists, deleting...")
         shutil.rmtree(config.output_dir)
         config.output_dir.mkdir(parents=True, exist_ok=True)
+    # clean legacy rest models
+    if config.legacy_rest_models.exists():
+        logger.warning(
+            f"Legacy rest models {config.legacy_rest_models} "
+            "already exists, deleting..."
+        )
+        config.legacy_rest_models.unlink()
 
     output_module = ".".join(config.output_dir.parts)
     versions: dict[str, str] = {}
