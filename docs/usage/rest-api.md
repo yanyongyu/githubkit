@@ -298,7 +298,7 @@ Current supported versions are: (you can find it in the section `[[tool.codegen.
 
 When a response from the REST API would include many results, GitHub will paginate the results and return a subset of the results. In this case, some APIs provide `page` and `per_page` parameters to control the pagination. See [GitHub Docs - Using pagination in the REST API](https://docs.github.com/en/rest/using-the-rest-api/using-pagination-in-the-rest-api) for more information.
 
-githubkit provides a built-in pagination feature to handle this. You can use the `github.paginate` method to iterate over all the results:
+githubkit provides a built-in pagination feature to handle this. You can use the `github.rest.paginate` method to iterate over all the results:
 
 > Pagination typing is checked with Pylance ([Pyright](https://github.com/microsoft/pyright)).
 
@@ -307,7 +307,7 @@ githubkit provides a built-in pagination feature to handle this. You can use the
     ```python hl_lines="3-5"
     from githubkit.versions.latest.models import Issue
 
-    for issue in github.paginate(
+    for issue in github.rest.paginate(
         github.rest.issues.list_for_repo, owner="owner", repo="repo", state="open"
     ):
         issue: Issue
@@ -319,7 +319,7 @@ githubkit provides a built-in pagination feature to handle this. You can use the
     ```python hl_lines="3-5"
     from githubkit.versions.latest.models import Issue
 
-    async for issue in github.paginate(
+    async for issue in github.rest.paginate(
         github.rest.issues.async_list_for_repo, owner="owner", repo="repo", state="open"
     ):
         issue: Issue
@@ -333,7 +333,7 @@ You can also provide a custom map function to handle complex pagination (such as
     ```python hl_lines="5"
     from githubkit.versions.latest.models import Repository
 
-    for accessible_repo in github.paginate(
+    for accessible_repo in github.rest.paginate(
         github.rest.apps.list_installation_repos_for_authenticated_user,
         map_func=lambda r: r.parsed_data.repositories,
         installation_id=1,
@@ -347,7 +347,7 @@ You can also provide a custom map function to handle complex pagination (such as
     ```python hl_lines="5"
     from githubkit.versions.latest.models import Repository
 
-    async for accessible_repo in github.paginate(
+    async for accessible_repo in github.rest.paginate(
         github.rest.apps.async_list_installation_repos_for_authenticated_user,
         map_func=lambda r: r.parsed_data.repositories,
         installation_id=1,
