@@ -64,7 +64,7 @@ class Paginator(Generic[RT]):
         self,
         rest: "RestVersionSwitcher",
         request: R[CP, CT],
-        map_func: Optional[Callable[[Response[CT]], list[RTS]]] = None,
+        map_func: Optional[Callable[[Response[CT]], list[RT]]] = None,
         *args: CP.args,
         **kwargs: CP.kwargs,
     ):
