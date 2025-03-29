@@ -81,7 +81,7 @@ class RestVersionSwitcher(_VersionProxy):
     @overload
     def paginate(
         self,
-        request: R[CP, list[RTS]],
+        request: "R[CP, list[RTS]]",
         map_func: None = None,
         *args: CP.args,
         **kwargs: CP.kwargs,
@@ -90,16 +90,16 @@ class RestVersionSwitcher(_VersionProxy):
     @overload
     def paginate(
         self,
-        request: R[CP, CT],
-        map_func: Callable[[Response[CT]], list[RTS]],
+        request: "R[CP, CT]",
+        map_func: Callable[["Response[CT]"], list[RTS]],
         *args: CP.args,
         **kwargs: CP.kwargs,
     ) -> "Paginator[RTS]": ...
 
     def paginate(
         self,
-        request: R[CP, CT],
-        map_func: Optional[Callable[[Response[CT]], list[RTS]]] = None,
+        request: "R[CP, CT]",
+        map_func: Optional[Callable[["Response[CT]"], list[RTS]]] = None,
         *args: CP.args,
         **kwargs: CP.kwargs,
     ) -> "Paginator[RTS]":
