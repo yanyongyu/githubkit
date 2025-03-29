@@ -36,7 +36,6 @@ if TYPE_CHECKING:
 CP = ParamSpec("CP")
 CT = TypeVar("CT")
 RT = TypeVar("RT")
-RTS = TypeVar("RTS")
 
 R = Union[
     Callable[CP, "Response[RT]"],
@@ -81,29 +80,29 @@ class RestVersionSwitcher(_VersionProxy):
     @overload
     def paginate(
         self,
-        request: "R[CP, list[RTS]]",
+        request: "R[CP, list[RT]]",
         map_func: None = None,
         *args: CP.args,
         **kwargs: CP.kwargs,
-    ) -> "Paginator[RTS]": ...
+    ) -> "Paginator[RT]": ...
 
     @overload
     def paginate(
         self,
         request: "R[CP, CT]",
-        map_func: Callable[["Response[CT]"], list[RTS]],
+        map_func: Callable[["Response[CT]"], list[RT]],
         *args: CP.args,
         **kwargs: CP.kwargs,
-    ) -> "Paginator[RTS]": ...
+    ) -> "Paginator[RT]": ...
 
     def paginate(
         self,
         request: "R[CP, CT]",
-        map_func: Optional[Callable[["Response[CT]"], list[RTS]]] = None,
+        map_func: Optional[Callable[["Response[CT]"], list[RT]]] = None,
         *args: CP.args,
         **kwargs: CP.kwargs,
-    ) -> "Paginator[RTS]":
-        return Paginator(self, request, map_func, *args, **kwargs)
+    ) -> "Paginator[RT]":
+        return Paginator(self, request, map_func, *args, **kwargs)  # type: ignore
 
     @overload
     def __call__(self, version: Literal["2022-11-28"]) -> "V20221128RestNamespace": ...
