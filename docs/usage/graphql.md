@@ -120,7 +120,7 @@ for result in github.graphql.paginate(
 Note that the `result` is a dict containing the list of nodes/edges for each page and the `pageInfo` object. You should iterate over the `nodes` or `edges` list to get the actual data. For example:
 
 ```python
-for result in g.graphql.paginate(query, {"owner": "owner", "repo": "repo"}):
+for result in github.graphql.paginate(query, {"owner": "owner", "repo": "repo"}):
     for issue in result["repository"]["issues"]["nodes"]:
         print(issue)
 ```

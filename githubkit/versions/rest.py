@@ -7,17 +7,40 @@ bash ./scripts/run-codegen.sh
 See https://github.com/github/rest-api-description for more information.
 """
 
+from collections.abc import Awaitable
 import importlib
-from typing import TYPE_CHECKING, Any, Literal, overload
+from typing import (
+    TYPE_CHECKING,
+    Any,
+    Callable,
+    Literal,
+    Optional,
+    TypeVar,
+    Union,
+    overload,
+)
+from typing_extensions import ParamSpec
 from weakref import WeakKeyDictionary, ref
+
+from githubkit.rest.paginator import Paginator
 
 from . import LATEST_VERSION, VERSION_TYPE, VERSIONS
 
 if TYPE_CHECKING:
-    from githubkit import GitHubCore
+    from githubkit import GitHubCore, Response
 
     from .ghec_v2022_11_28.rest import RestNamespace as GhecV20221128RestNamespace
     from .v2022_11_28.rest import RestNamespace as V20221128RestNamespace
+
+
+CP = ParamSpec("CP")
+CT = TypeVar("CT")
+RT = TypeVar("RT")
+
+R = Union[
+    Callable[CP, "Response[RT]"],
+    Callable[CP, Awaitable["Response[RT]"]],
+]
 
 if TYPE_CHECKING:
 
@@ -53,6 +76,33 @@ class RestVersionSwitcher(_VersionProxy):
             "GitHub client has already been collected. "
             "Do not use the namespace after the client has been collected."
         )
+
+    @overload
+    def paginate(
+        self,
+        request: "R[CP, list[RT]]",
+        map_func: None = None,
+        *args: CP.args,
+        **kwargs: CP.kwargs,
+    ) -> "Paginator[RT]": ...
+
+    @overload
+    def paginate(
+        self,
+        request: "R[CP, CT]",
+        map_func: Callable[["Response[CT]"], list[RT]],
+        *args: CP.args,
+        **kwargs: CP.kwargs,
+    ) -> "Paginator[RT]": ...
+
+    def paginate(
+        self,
+        request: "R[CP, CT]",
+        map_func: Optional[Callable[["Response[CT]"], list[RT]]] = None,
+        *args: CP.args,
+        **kwargs: CP.kwargs,
+    ) -> "Paginator[RT]":
+        return Paginator(self, request, map_func, *args, **kwargs)  # type: ignore
 
     @overload
     def __call__(self, version: Literal["2022-11-28"]) -> "V20221128RestNamespace": ...

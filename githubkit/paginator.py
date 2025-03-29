@@ -1,6 +1,6 @@
 from collections.abc import Awaitable
 from typing import Any, Callable, Generic, Optional, TypeVar, Union, cast, overload
-from typing_extensions import ParamSpec, Self
+from typing_extensions import ParamSpec, Self, deprecated
 
 from .response import Response
 from .utils import is_async
@@ -16,6 +16,10 @@ R = Union[
 ]
 
 
+@deprecated(
+    "Legacy pagination based on page and per_page is deprecated. "
+    "Use github.rest.paginate instead."
+)
 class Paginator(Generic[RT]):
     """Paginate through the responses of the rest api request."""
 

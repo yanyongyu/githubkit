@@ -50,3 +50,20 @@ def test_call_with_raw_body(g: GitHub):
 async def test_async_call_with_raw_body(g: GitHub):
     resp = await g.rest.markdown.async_render_raw(data="Hello **world**")
     assert isinstance(resp.text, str)
+
+
+def test_paginate(g: GitHub):
+    paginator = g.rest.paginate(
+        g.rest.issues.list_for_repo, owner=OWNER, repo=REPO, per_page=50
+    )
+    for _ in paginator:
+        ...
+
+
+@pytest.mark.anyio
+async def test_async_paginate(g: GitHub):
+    paginator = g.rest.paginate(
+        g.rest.issues.async_list_for_repo, owner=OWNER, repo=REPO, per_page=50
+    )
+    async for _ in paginator:
+        ...
