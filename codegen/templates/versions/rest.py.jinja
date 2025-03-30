@@ -4,15 +4,28 @@
 
 import importlib
 from weakref import WeakKeyDictionary, ref
-from typing import TYPE_CHECKING, Any, Literal, overload
+from typing import TYPE_CHECKING, Any, Union, Literal, TypeVar, Callable, Optional, Awaitable, overload
+from typing_extensions import ParamSpec
+
+from githubkit.rest.paginator import Paginator
 
 from . import VERSIONS, LATEST_VERSION, VERSION_TYPE
 
 if TYPE_CHECKING:
-    from githubkit import GitHubCore
+    from githubkit import GitHubCore, Response
     {% for version, module in versions.items() %}
     from .{{ module }}.rest import RestNamespace as {{ pascal_case(module) }}RestNamespace
     {% endfor %}
+
+
+CP = ParamSpec("CP")
+CT = TypeVar("CT")
+RT = TypeVar("RT")
+
+R = Union[
+    Callable[CP, "Response[RT]"],
+    Callable[CP, Awaitable["Response[RT]"]],
+]
 
 if TYPE_CHECKING:
 
@@ -45,6 +58,33 @@ class RestVersionSwitcher(_VersionProxy):
             "GitHub client has already been collected. "
             "Do not use the namespace after the client has been collected."
         )
+
+    @overload
+    def paginate(
+        self,
+        request: "R[CP, list[RT]]",
+        map_func: None = None,
+        *args: CP.args,
+        **kwargs: CP.kwargs,
+    ) -> "Paginator[RT]": ...
+
+    @overload
+    def paginate(
+        self,
+        request: "R[CP, CT]",
+        map_func: Callable[["Response[CT]"], list[RT]],
+        *args: CP.args,
+        **kwargs: CP.kwargs,
+    ) -> "Paginator[RT]": ...
+
+    def paginate(
+        self,
+        request: "R[CP, CT]",
+        map_func: Optional[Callable[["Response[CT]"], list[RT]]] = None,
+        *args: CP.args,
+        **kwargs: CP.kwargs,
+    ) -> "Paginator[RT]":
+        return Paginator(self, request, map_func, *args, **kwargs)  # type: ignore
 
     {% for version, module in versions.items() %}
     @overload
