@@ -21,9 +21,9 @@ class PullRequestPropHeadType(TypedDict):
 
     label: Union[str, None]
     ref: str
-    repo: RepositoryType
+    repo: Union[None, RepositoryType]
     sha: str
-    user: SimpleUserType
+    user: Union[None, SimpleUserType]
 
 
 class PullRequestPropBaseType(TypedDict):

@@ -238,10 +238,15 @@ source = "https://raw.githubusercontent.com/github/rest-api-description/main/des
   "string",
   "null",
 ] }
-"/components/schemas/pull-request/properties/head/properties/user" = { type = [
-  "object",
-  "null",
-] }
+"/components/schemas/pull-request/properties/head/properties/user" = { anyOf = [
+  { type = "null" },
+  { "$ref" = "#/components/schemas/simple-user" },
+], "$ref" = "<unset>" }
+# https://github.com/yanyongyu/githubkit/issues/200
+"/components/schemas/pull-request/properties/head/properties/repo" = { anyOf = [
+  { type = "null" },
+  { "$ref" = "#/components/schemas/repository" },
+], "$ref" = "<unset>" }
 
 # https://github.com/github/rest-api-description/issues/1812
 "/components/schemas/pull-request-simple/properties/labels/items/properties/description" = { type = [
