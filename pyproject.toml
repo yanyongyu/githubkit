@@ -343,6 +343,10 @@ source = "https://raw.githubusercontent.com/github/rest-api-description/main/des
   "null",
 ] }
 
+# https://github.com/yanyongyu/githubkit/issues/199
+# git user date format should be date-time
+"/components/schemas/git-user/properties/date" = { format = "date-time" }
+
 # https://github.com/yanyongyu/githubkit/pull/134
 # blob_url and raw_url may be null when the diff file is submodule's file
 "/components/schemas/diff-entry/properties/blob_url" = { type = [
