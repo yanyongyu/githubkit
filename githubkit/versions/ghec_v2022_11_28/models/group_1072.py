@@ -149,6 +149,12 @@ class ReposOwnerRepoPatchBodyPropSecurityAndAnalysis(GitHubModel):
         default=UNSET,
         description='Use the `status` property to enable or disable GitHub Advanced Security for this repository. For more information, see "[About GitHub Advanced Security](/github/getting-started-with-github/learning-about-github/about-github-advanced-security)."',
     )
+    code_security: Missing[
+        ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropCodeSecurity
+    ] = Field(
+        default=UNSET,
+        description="Use the `status` property to enable or disable GitHub Code Security for this repository.",
+    )
     secret_scanning: Missing[
         ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanning
     ] = Field(
@@ -188,6 +194,18 @@ class ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropAdvancedSecurity(GitHubM
     repository. For more information, see "[About GitHub Advanced
     Security](/github/getting-started-with-github/learning-about-github/about-
     github-advanced-security)."
+    """
+
+    status: Missing[str] = Field(
+        default=UNSET, description="Can be `enabled` or `disabled`."
+    )
+
+
+class ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropCodeSecurity(GitHubModel):
+    """ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropCodeSecurity
+
+    Use the `status` property to enable or disable GitHub Code Security for this
+    repository.
     """
 
     status: Missing[str] = Field(
@@ -275,6 +293,7 @@ class ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningValidityCh
 model_rebuild(ReposOwnerRepoPatchBody)
 model_rebuild(ReposOwnerRepoPatchBodyPropSecurityAndAnalysis)
 model_rebuild(ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropAdvancedSecurity)
+model_rebuild(ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropCodeSecurity)
 model_rebuild(ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanning)
 model_rebuild(
     ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningPushProtection
@@ -293,6 +312,7 @@ __all__ = (
     "ReposOwnerRepoPatchBody",
     "ReposOwnerRepoPatchBodyPropSecurityAndAnalysis",
     "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropAdvancedSecurity",
+    "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropCodeSecurity",
     "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanning",
     "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningAiDetection",
     "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningNonProviderPatterns",

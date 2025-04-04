@@ -24,6 +24,7 @@ class SecurityAndAnalysis(GitHubModel):
     advanced_security: Missing[SecurityAndAnalysisPropAdvancedSecurity] = Field(
         default=UNSET
     )
+    code_security: Missing[SecurityAndAnalysisPropCodeSecurity] = Field(default=UNSET)
     dependabot_security_updates: Missing[
         SecurityAndAnalysisPropDependabotSecurityUpdates
     ] = Field(
@@ -49,6 +50,12 @@ class SecurityAndAnalysis(GitHubModel):
 
 class SecurityAndAnalysisPropAdvancedSecurity(GitHubModel):
     """SecurityAndAnalysisPropAdvancedSecurity"""
+
+    status: Missing[Literal["enabled", "disabled"]] = Field(default=UNSET)
+
+
+class SecurityAndAnalysisPropCodeSecurity(GitHubModel):
+    """SecurityAndAnalysisPropCodeSecurity"""
 
     status: Missing[Literal["enabled", "disabled"]] = Field(default=UNSET)
 
@@ -97,6 +104,7 @@ class SecurityAndAnalysisPropSecretScanningValidityChecks(GitHubModel):
 
 model_rebuild(SecurityAndAnalysis)
 model_rebuild(SecurityAndAnalysisPropAdvancedSecurity)
+model_rebuild(SecurityAndAnalysisPropCodeSecurity)
 model_rebuild(SecurityAndAnalysisPropDependabotSecurityUpdates)
 model_rebuild(SecurityAndAnalysisPropSecretScanning)
 model_rebuild(SecurityAndAnalysisPropSecretScanningPushProtection)
@@ -107,6 +115,7 @@ model_rebuild(SecurityAndAnalysisPropSecretScanningValidityChecks)
 __all__ = (
     "SecurityAndAnalysis",
     "SecurityAndAnalysisPropAdvancedSecurity",
+    "SecurityAndAnalysisPropCodeSecurity",
     "SecurityAndAnalysisPropDependabotSecurityUpdates",
     "SecurityAndAnalysisPropSecretScanning",
     "SecurityAndAnalysisPropSecretScanningAiDetection",

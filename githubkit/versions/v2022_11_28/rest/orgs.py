@@ -2818,7 +2818,6 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         name: str,
         is_enabled: bool,
-        is_private: Missing[bool] = UNSET,
         description: Missing[Union[str, None]] = UNSET,
         color: Missing[
             Union[
@@ -2892,7 +2891,6 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         name: str,
         is_enabled: bool,
-        is_private: Missing[bool] = UNSET,
         description: Missing[Union[str, None]] = UNSET,
         color: Missing[
             Union[
@@ -2968,7 +2966,6 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         name: str,
         is_enabled: bool,
-        is_private: Missing[bool] = UNSET,
         description: Missing[Union[str, None]] = UNSET,
         color: Missing[
             Union[
@@ -3045,7 +3042,6 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         name: str,
         is_enabled: bool,
-        is_private: Missing[bool] = UNSET,
         description: Missing[Union[str, None]] = UNSET,
         color: Missing[
             Union[

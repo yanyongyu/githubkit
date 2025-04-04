@@ -186,6 +186,9 @@ if TYPE_CHECKING:
         SecurityAndAnalysisPropAdvancedSecurity as SecurityAndAnalysisPropAdvancedSecurity,
     )
     from .group_0057 import (
+        SecurityAndAnalysisPropCodeSecurity as SecurityAndAnalysisPropCodeSecurity,
+    )
+    from .group_0057 import (
         SecurityAndAnalysisPropDependabotSecurityUpdates as SecurityAndAnalysisPropDependabotSecurityUpdates,
     )
     from .group_0057 import (
@@ -7781,6 +7784,9 @@ if TYPE_CHECKING:
         ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropAdvancedSecurity as ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropAdvancedSecurity,
     )
     from .group_0970 import (
+        ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropCodeSecurity as ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropCodeSecurity,
+    )
+    from .group_0970 import (
         ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanning as ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanning,
     )
     from .group_0970 import (
@@ -8699,6 +8705,7 @@ else:
         ".group_0057": (
             "SecurityAndAnalysis",
             "SecurityAndAnalysisPropAdvancedSecurity",
+            "SecurityAndAnalysisPropCodeSecurity",
             "SecurityAndAnalysisPropDependabotSecurityUpdates",
             "SecurityAndAnalysisPropSecretScanning",
             "SecurityAndAnalysisPropSecretScanningPushProtection",
@@ -12400,6 +12407,7 @@ else:
             "ReposOwnerRepoPatchBody",
             "ReposOwnerRepoPatchBodyPropSecurityAndAnalysis",
             "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropAdvancedSecurity",
+            "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropCodeSecurity",
             "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanning",
             "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningPushProtection",
             "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningAiDetection",

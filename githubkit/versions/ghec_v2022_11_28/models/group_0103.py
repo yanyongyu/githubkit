@@ -14,8 +14,6 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
 class RepositoryRuleParamsRequiredReviewerConfiguration(GitHubModel):
@@ -31,8 +29,8 @@ class RepositoryRuleParamsRequiredReviewerConfiguration(GitHubModel):
     minimum_approvals: int = Field(
         description="Minimum number of approvals required from the specified team. If set to zero, the team will be added to the pull request but approval is optional."
     )
-    reviewer: Missing[RepositoryRuleParamsReviewer] = Field(
-        default=UNSET, title="Reviewer", description="A required reviewing team"
+    reviewer: RepositoryRuleParamsReviewer = Field(
+        title="Reviewer", description="A required reviewing team"
     )
 
 

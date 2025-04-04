@@ -2881,6 +2881,9 @@ if TYPE_CHECKING:
         ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropAdvancedSecurityType as ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropAdvancedSecurityType,
     )
     from githubkit.versions.v2022_11_28.types import (
+        ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropCodeSecurityType as ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropCodeSecurityType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningAiDetectionType as ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningAiDetectionType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -3169,6 +3172,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.types import (
         SecurityAndAnalysisPropAdvancedSecurityType as SecurityAndAnalysisPropAdvancedSecurityType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        SecurityAndAnalysisPropCodeSecurityType as SecurityAndAnalysisPropCodeSecurityType,
     )
     from githubkit.versions.v2022_11_28.types import (
         SecurityAndAnalysisPropDependabotSecurityUpdatesType as SecurityAndAnalysisPropDependabotSecurityUpdatesType,
@@ -9997,6 +10003,7 @@ else:
             "ApiOverviewPropDomainsPropArtifactAttestationsType",
             "SecurityAndAnalysisType",
             "SecurityAndAnalysisPropAdvancedSecurityType",
+            "SecurityAndAnalysisPropCodeSecurityType",
             "SecurityAndAnalysisPropDependabotSecurityUpdatesType",
             "SecurityAndAnalysisPropSecretScanningType",
             "SecurityAndAnalysisPropSecretScanningPushProtectionType",
@@ -12968,6 +12975,7 @@ else:
             "ReposOwnerRepoPatchBodyType",
             "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisType",
             "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropAdvancedSecurityType",
+            "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropCodeSecurityType",
             "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningType",
             "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningPushProtectionType",
             "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningAiDetectionType",

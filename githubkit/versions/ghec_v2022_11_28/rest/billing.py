@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Optional, overload
+from typing import TYPE_CHECKING, Literal, Optional, overload
 from weakref import ref
 
 from pydantic import BaseModel
@@ -20,6 +20,8 @@ from githubkit.typing import Missing, UnsetType
 from githubkit.utils import UNSET, exclude_unset
 
 if TYPE_CHECKING:
+    from typing import Literal
+
     from githubkit import GitHubCore
     from githubkit.response import Response
     from githubkit.typing import Missing
@@ -110,6 +112,9 @@ class BillingClient:
         self,
         enterprise: str,
         *,
+        advanced_security_product: Missing[
+            Literal["code_security", "secret_protection"]
+        ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
@@ -123,6 +128,7 @@ class BillingClient:
         url = f"/enterprises/{enterprise}/settings/billing/advanced-security"
 
         params = {
+            "advanced_security_product": advanced_security_product,
             "per_page": per_page,
             "page": page,
         }
@@ -141,6 +147,9 @@ class BillingClient:
         self,
         enterprise: str,
         *,
+        advanced_security_product: Missing[
+            Literal["code_security", "secret_protection"]
+        ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
@@ -154,6 +163,7 @@ class BillingClient:
         url = f"/enterprises/{enterprise}/settings/billing/advanced-security"
 
         params = {
+            "advanced_security_product": advanced_security_product,
             "per_page": per_page,
             "page": page,
         }
@@ -858,6 +868,9 @@ class BillingClient:
         self,
         org: str,
         *,
+        advanced_security_product: Missing[
+            Literal["code_security", "secret_protection"]
+        ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
@@ -871,6 +884,7 @@ class BillingClient:
         url = f"/orgs/{org}/settings/billing/advanced-security"
 
         params = {
+            "advanced_security_product": advanced_security_product,
             "per_page": per_page,
             "page": page,
         }
@@ -889,6 +903,9 @@ class BillingClient:
         self,
         org: str,
         *,
+        advanced_security_product: Missing[
+            Literal["code_security", "secret_protection"]
+        ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
@@ -902,6 +919,7 @@ class BillingClient:
         url = f"/orgs/{org}/settings/billing/advanced-security"
 
         params = {
+            "advanced_security_product": advanced_security_product,
             "per_page": per_page,
             "page": page,
         }

@@ -25,10 +25,6 @@ class OrganizationUpdateIssueType(GitHubModel):
     is_enabled: bool = Field(
         description="Whether or not the issue type is enabled at the organization level."
     )
-    is_private: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether or not the issue type is restricted to issues in private repositories.",
-    )
     description: Missing[Union[str, None]] = Field(
         default=UNSET, description="Description of the issue type."
     )

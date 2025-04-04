@@ -207,6 +207,9 @@ if TYPE_CHECKING:
         SecurityAndAnalysisPropAdvancedSecurityType as SecurityAndAnalysisPropAdvancedSecurityType,
     )
     from .group_0057 import (
+        SecurityAndAnalysisPropCodeSecurityType as SecurityAndAnalysisPropCodeSecurityType,
+    )
+    from .group_0057 import (
         SecurityAndAnalysisPropDependabotSecurityUpdatesType as SecurityAndAnalysisPropDependabotSecurityUpdatesType,
     )
     from .group_0057 import (
@@ -8219,6 +8222,9 @@ if TYPE_CHECKING:
         ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropAdvancedSecurityType as ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropAdvancedSecurityType,
     )
     from .group_0970 import (
+        ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropCodeSecurityType as ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropCodeSecurityType,
+    )
+    from .group_0970 import (
         ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningAiDetectionType as ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningAiDetectionType,
     )
     from .group_0970 import (
@@ -9175,6 +9181,7 @@ else:
         ".group_0057": (
             "SecurityAndAnalysisType",
             "SecurityAndAnalysisPropAdvancedSecurityType",
+            "SecurityAndAnalysisPropCodeSecurityType",
             "SecurityAndAnalysisPropDependabotSecurityUpdatesType",
             "SecurityAndAnalysisPropSecretScanningType",
             "SecurityAndAnalysisPropSecretScanningPushProtectionType",
@@ -12890,6 +12897,7 @@ else:
             "ReposOwnerRepoPatchBodyType",
             "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisType",
             "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropAdvancedSecurityType",
+            "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropCodeSecurityType",
             "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningType",
             "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningPushProtectionType",
             "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningAiDetectionType",

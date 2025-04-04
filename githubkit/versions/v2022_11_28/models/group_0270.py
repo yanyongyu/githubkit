@@ -35,6 +35,7 @@ class ContentTree(GitHubModel):
     html_url: Union[str, None] = Field()
     download_url: Union[str, None] = Field()
     entries: Missing[list[ContentTreePropEntriesItems]] = Field(default=UNSET)
+    encoding: Missing[str] = Field(default=UNSET)
     links: ContentTreePropLinks = Field(alias="_links")
 
 

@@ -18,7 +18,6 @@ class OrganizationCreateIssueTypeType(TypedDict):
 
     name: str
     is_enabled: bool
-    is_private: NotRequired[bool]
     description: NotRequired[Union[str, None]]
     color: NotRequired[
         Union[

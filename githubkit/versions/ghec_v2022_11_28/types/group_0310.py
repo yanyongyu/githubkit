@@ -30,6 +30,7 @@ class ContentTreeType(TypedDict):
     html_url: Union[str, None]
     download_url: Union[str, None]
     entries: NotRequired[list[ContentTreePropEntriesItemsType]]
+    encoding: NotRequired[str]
     links: ContentTreePropLinksType
 
 

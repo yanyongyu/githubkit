@@ -2793,6 +2793,9 @@ if TYPE_CHECKING:
         ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropAdvancedSecurity as ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropAdvancedSecurity,
     )
     from githubkit.versions.v2022_11_28.models import (
+        ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropCodeSecurity as ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropCodeSecurity,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanning as ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanning,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -3070,6 +3073,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         SecurityAndAnalysisPropAdvancedSecurity as SecurityAndAnalysisPropAdvancedSecurity,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        SecurityAndAnalysisPropCodeSecurity as SecurityAndAnalysisPropCodeSecurity,
     )
     from githubkit.versions.v2022_11_28.models import (
         SecurityAndAnalysisPropDependabotSecurityUpdates as SecurityAndAnalysisPropDependabotSecurityUpdates,
@@ -9821,6 +9827,7 @@ else:
             "ApiOverviewPropDomainsPropArtifactAttestations",
             "SecurityAndAnalysis",
             "SecurityAndAnalysisPropAdvancedSecurity",
+            "SecurityAndAnalysisPropCodeSecurity",
             "SecurityAndAnalysisPropDependabotSecurityUpdates",
             "SecurityAndAnalysisPropSecretScanning",
             "SecurityAndAnalysisPropSecretScanningPushProtection",
@@ -12792,6 +12799,7 @@ else:
             "ReposOwnerRepoPatchBody",
             "ReposOwnerRepoPatchBodyPropSecurityAndAnalysis",
             "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropAdvancedSecurity",
+            "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropCodeSecurity",
             "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanning",
             "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningPushProtection",
             "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningAiDetection",

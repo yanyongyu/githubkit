@@ -17,6 +17,7 @@ class SecurityAndAnalysisType(TypedDict):
     """SecurityAndAnalysis"""
 
     advanced_security: NotRequired[SecurityAndAnalysisPropAdvancedSecurityType]
+    code_security: NotRequired[SecurityAndAnalysisPropCodeSecurityType]
     dependabot_security_updates: NotRequired[
         SecurityAndAnalysisPropDependabotSecurityUpdatesType
     ]
@@ -37,6 +38,12 @@ class SecurityAndAnalysisType(TypedDict):
 
 class SecurityAndAnalysisPropAdvancedSecurityType(TypedDict):
     """SecurityAndAnalysisPropAdvancedSecurity"""
+
+    status: NotRequired[Literal["enabled", "disabled"]]
+
+
+class SecurityAndAnalysisPropCodeSecurityType(TypedDict):
+    """SecurityAndAnalysisPropCodeSecurity"""
 
     status: NotRequired[Literal["enabled", "disabled"]]
 
@@ -82,6 +89,7 @@ class SecurityAndAnalysisPropSecretScanningValidityChecksType(TypedDict):
 
 __all__ = (
     "SecurityAndAnalysisPropAdvancedSecurityType",
+    "SecurityAndAnalysisPropCodeSecurityType",
     "SecurityAndAnalysisPropDependabotSecurityUpdatesType",
     "SecurityAndAnalysisPropSecretScanningAiDetectionType",
     "SecurityAndAnalysisPropSecretScanningNonProviderPatternsType",

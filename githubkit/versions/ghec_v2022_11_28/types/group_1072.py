@@ -71,6 +71,9 @@ class ReposOwnerRepoPatchBodyPropSecurityAndAnalysisType(TypedDict):
     advanced_security: NotRequired[
         ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropAdvancedSecurityType
     ]
+    code_security: NotRequired[
+        ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropCodeSecurityType
+    ]
     secret_scanning: NotRequired[
         ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningType
     ]
@@ -95,6 +98,16 @@ class ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropAdvancedSecurityType(Typ
     repository. For more information, see "[About GitHub Advanced
     Security](/github/getting-started-with-github/learning-about-github/about-
     github-advanced-security)."
+    """
+
+    status: NotRequired[str]
+
+
+class ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropCodeSecurityType(TypedDict):
+    """ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropCodeSecurity
+
+    Use the `status` property to enable or disable GitHub Code Security for this
+    repository.
     """
 
     status: NotRequired[str]
@@ -169,6 +182,7 @@ class ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningValidityCh
 
 __all__ = (
     "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropAdvancedSecurityType",
+    "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropCodeSecurityType",
     "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningAiDetectionType",
     "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningNonProviderPatternsType",
     "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningPushProtectionType",
