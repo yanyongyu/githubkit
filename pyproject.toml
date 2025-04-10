@@ -522,7 +522,7 @@ source = "https://raw.githubusercontent.com/github/rest-api-description/main/des
 "/webhooks/repository-dispatch-sample.collected/post" = { operationId = "repository-dispatch" }
 # "/components/schemas/webhook-repository-dispatch-sample/properties/action" = { enum = "<unset>" }
 
-# Relationship between alert and repository as well as code scanning alert source were missing values, see issue: # https://github.com/yanyongyu/githubkit/issues/201
+# Relationship between alert and repository as well as code scanning alert source were missing values, see issue: # https://github.com/yanyongyu/githubkit/issues/205
 "/components/schemas/dependabot-alert-with-repository/properties/dependency/properties/relationship/enum" = { "<add>" = [
   "inconclusive",
 ] }
