@@ -1,4 +1,5 @@
 from enum import Enum
+from functools import partial
 import inspect
 from typing import Any, Generic, Literal, Optional, TypeVar, final
 
@@ -61,7 +62,18 @@ def exclude_unset(data: Any) -> Any:
     return data
 
 
+def _unwrap_partial(func: T) -> T:
+    while isinstance(func, partial):
+        func = func.func
+    return func
+
+
 def is_async(obj: Any) -> bool:
+    """Check if an object is a async callable (coroutine function)."""
+
+    # unwrap partials first
+    obj = _unwrap_partial(obj)
+
     if inspect.isroutine(obj):
         return inspect.iscoroutinefunction(obj)
     if inspect.isclass(obj):
