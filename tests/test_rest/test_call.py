@@ -1,3 +1,5 @@
+from functools import partial
+
 import pytest
 
 from githubkit import GitHub
@@ -60,10 +62,28 @@ def test_paginate(g: GitHub):
         ...
 
 
+def test_paginate_with_partial(g: GitHub):
+    paginator = g.rest.paginate(
+        partial(g.rest.issues.list_for_repo, OWNER, REPO), per_page=50
+    )
+    for _ in paginator:
+        ...
+
+
 @pytest.mark.anyio
 async def test_async_paginate(g: GitHub):
     paginator = g.rest.paginate(
         g.rest.issues.async_list_for_repo, owner=OWNER, repo=REPO, per_page=50
+    )
+    async for _ in paginator:
+        ...
+
+
+@pytest.mark.anyio
+async def test_async_paginate_with_partial(g: GitHub):
+    paginator = g.rest.paginate(
+        partial(g.rest.issues.async_list_for_repo, OWNER, REPO),
+        per_page=50,
     )
     async for _ in paginator:
         ...
