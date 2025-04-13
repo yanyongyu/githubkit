@@ -12,10 +12,10 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3ItemsType(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3Items"""
+class ReposOwnerRepoIssuesIssueNumberCommentsPostBodyType(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberCommentsPostBody"""
 
-    name: str
+    body: str
 
 
-__all__ = ("ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3ItemsType",)
+__all__ = ("ReposOwnerRepoIssuesIssueNumberCommentsPostBodyType",)

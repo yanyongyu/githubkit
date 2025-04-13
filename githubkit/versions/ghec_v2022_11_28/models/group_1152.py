@@ -9,61 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from datetime import datetime
 
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoDeploymentsPostBody(GitHubModel):
-    """ReposOwnerRepoDeploymentsPostBody"""
+class ReposOwnerRepoDependabotSecretsGetResponse200(GitHubModel):
+    """ReposOwnerRepoDependabotSecretsGetResponse200"""
 
-    ref: str = Field(
-        description="The ref to deploy. This can be a branch, tag, or SHA."
-    )
-    task: Missing[str] = Field(
-        default=UNSET,
-        description="Specifies a task to execute (e.g., `deploy` or `deploy:migrations`).",
-    )
-    auto_merge: Missing[bool] = Field(
-        default=UNSET,
-        description="Attempts to automatically merge the default branch into the requested ref, if it's behind the default branch.",
-    )
-    required_contexts: Missing[list[str]] = Field(
-        default=UNSET,
-        description="The [status](https://docs.github.com/enterprise-cloud@latest//rest/commits/statuses) contexts to verify against commit status checks. If you omit this parameter, GitHub verifies all unique contexts before creating a deployment. To bypass checking entirely, pass an empty array. Defaults to all unique contexts.",
-    )
-    payload: Missing[Union[ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0, str]] = (
-        Field(default=UNSET)
-    )
-    environment: Missing[str] = Field(
-        default=UNSET,
-        description="Name for the target deployment environment (e.g., `production`, `staging`, `qa`).",
-    )
-    description: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Short description of the deployment."
-    )
-    transient_environment: Missing[bool] = Field(
-        default=UNSET,
-        description="Specifies if the given environment is specific to the deployment and will no longer exist at some point in the future. Default: `false`",
-    )
-    production_environment: Missing[bool] = Field(
-        default=UNSET,
-        description="Specifies if the given environment is one that end-users directly interact with. Default: `true` when `environment` is `production` and `false` otherwise.",
-    )
+    total_count: int = Field()
+    secrets: list[DependabotSecret] = Field()
 
 
-class ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0(ExtraGitHubModel):
-    """ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0"""
+class DependabotSecret(GitHubModel):
+    """Dependabot Secret
+
+    Set secrets for Dependabot.
+    """
+
+    name: str = Field(description="The name of the secret.")
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
 
 
-model_rebuild(ReposOwnerRepoDeploymentsPostBody)
-model_rebuild(ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0)
+model_rebuild(ReposOwnerRepoDependabotSecretsGetResponse200)
+model_rebuild(DependabotSecret)
 
 __all__ = (
-    "ReposOwnerRepoDeploymentsPostBody",
-    "ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0",
+    "DependabotSecret",
+    "ReposOwnerRepoDependabotSecretsGetResponse200",
 )

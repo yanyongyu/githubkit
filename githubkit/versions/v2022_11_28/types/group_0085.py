@@ -9,21 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class CodespacesPublicKeyType(TypedDict):
-    """CodespacesPublicKey
-
-    The public key used for setting Codespaces secrets.
-    """
-
-    key_id: str
-    key: str
-    id: NotRequired[int]
-    url: NotRequired[str]
-    title: NotRequired[str]
-    created_at: NotRequired[str]
+from .group_0003 import SimpleUserType
+from .group_0031 import SimpleRepositoryType
+from .group_0082 import CodeScanningAlertRuleSummaryType
+from .group_0083 import CodeScanningAnalysisToolType
+from .group_0084 import CodeScanningAlertInstanceType
 
 
-__all__ = ("CodespacesPublicKeyType",)
+class CodeScanningOrganizationAlertItemsType(TypedDict):
+    """CodeScanningOrganizationAlertItems"""
+
+    number: int
+    created_at: datetime
+    updated_at: NotRequired[datetime]
+    url: str
+    html_url: str
+    instances_url: str
+    state: Union[None, Literal["open", "dismissed", "fixed"]]
+    fixed_at: NotRequired[Union[datetime, None]]
+    dismissed_by: Union[None, SimpleUserType]
+    dismissed_at: Union[datetime, None]
+    dismissed_reason: Union[
+        None, Literal["false positive", "won't fix", "used in tests"]
+    ]
+    dismissed_comment: NotRequired[Union[str, None]]
+    rule: CodeScanningAlertRuleSummaryType
+    tool: CodeScanningAnalysisToolType
+    most_recent_instance: CodeScanningAlertInstanceType
+    repository: SimpleRepositoryType
+    dismissal_approved_by: NotRequired[Union[None, SimpleUserType]]
+
+
+__all__ = ("CodeScanningOrganizationAlertItemsType",)

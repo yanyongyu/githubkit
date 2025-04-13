@@ -9,192 +9,61 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import date
-from typing import Union
+from datetime import date, datetime
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType
+from .group_0061 import OrganizationSimpleType
+from .group_0080 import TeamType
 
-class CopilotUsageMetricsDayType(TypedDict):
-    """Copilot Usage Metrics
 
-    Copilot usage metrics for a given day.
+class CopilotSeatDetailsType(TypedDict):
+    """Copilot Business Seat Detail
+
+    Information about a Copilot Business seat assignment for a user, team, or
+    organization.
     """
 
-    date: date
-    total_active_users: NotRequired[int]
-    total_engaged_users: NotRequired[int]
-    copilot_ide_code_completions: NotRequired[
-        Union[CopilotIdeCodeCompletionsType, None]
-    ]
-    copilot_ide_chat: NotRequired[Union[CopilotIdeChatType, None]]
-    copilot_dotcom_chat: NotRequired[Union[CopilotDotcomChatType, None]]
-    copilot_dotcom_pull_requests: NotRequired[
-        Union[CopilotDotcomPullRequestsType, None]
-    ]
+    assignee: SimpleUserType
+    organization: NotRequired[Union[None, OrganizationSimpleType]]
+    assigning_team: NotRequired[Union[TeamType, EnterpriseTeamType, None]]
+    pending_cancellation_date: NotRequired[Union[date, None]]
+    last_activity_at: NotRequired[Union[datetime, None]]
+    last_activity_editor: NotRequired[Union[str, None]]
+    created_at: datetime
+    updated_at: NotRequired[datetime]
+    plan_type: NotRequired[Literal["business", "enterprise", "unknown"]]
 
 
-class CopilotDotcomChatType(TypedDict):
-    """CopilotDotcomChat
+class EnterpriseTeamType(TypedDict):
+    """Enterprise Team
 
-    Usage metrics for Copilot Chat in GitHub.com
+    Group of enterprise owners and/or members
     """
 
-    total_engaged_users: NotRequired[int]
-    models: NotRequired[list[CopilotDotcomChatPropModelsItemsType]]
+    id: int
+    name: str
+    slug: str
+    url: str
+    sync_to_organizations: str
+    group_id: NotRequired[Union[str, None]]
+    group_name: NotRequired[Union[str, None]]
+    html_url: str
+    members_url: str
+    created_at: datetime
+    updated_at: datetime
 
 
-class CopilotDotcomChatPropModelsItemsType(TypedDict):
-    """CopilotDotcomChatPropModelsItems"""
+class OrgsOrgCopilotBillingSeatsGetResponse200Type(TypedDict):
+    """OrgsOrgCopilotBillingSeatsGetResponse200"""
 
-    name: NotRequired[str]
-    is_custom_model: NotRequired[bool]
-    custom_model_training_date: NotRequired[Union[str, None]]
-    total_engaged_users: NotRequired[int]
-    total_chats: NotRequired[int]
-
-
-class CopilotIdeChatType(TypedDict):
-    """CopilotIdeChat
-
-    Usage metrics for Copilot Chat in the IDE.
-    """
-
-    total_engaged_users: NotRequired[int]
-    editors: NotRequired[list[CopilotIdeChatPropEditorsItemsType]]
-
-
-class CopilotIdeChatPropEditorsItemsType(TypedDict):
-    """CopilotIdeChatPropEditorsItems
-
-    Copilot Chat metrics, for active editors.
-    """
-
-    name: NotRequired[str]
-    total_engaged_users: NotRequired[int]
-    models: NotRequired[list[CopilotIdeChatPropEditorsItemsPropModelsItemsType]]
-
-
-class CopilotIdeChatPropEditorsItemsPropModelsItemsType(TypedDict):
-    """CopilotIdeChatPropEditorsItemsPropModelsItems"""
-
-    name: NotRequired[str]
-    is_custom_model: NotRequired[bool]
-    custom_model_training_date: NotRequired[Union[str, None]]
-    total_engaged_users: NotRequired[int]
-    total_chats: NotRequired[int]
-    total_chat_insertion_events: NotRequired[int]
-    total_chat_copy_events: NotRequired[int]
-
-
-class CopilotDotcomPullRequestsType(TypedDict):
-    """CopilotDotcomPullRequests
-
-    Usage metrics for Copilot for pull requests.
-    """
-
-    total_engaged_users: NotRequired[int]
-    repositories: NotRequired[list[CopilotDotcomPullRequestsPropRepositoriesItemsType]]
-
-
-class CopilotDotcomPullRequestsPropRepositoriesItemsType(TypedDict):
-    """CopilotDotcomPullRequestsPropRepositoriesItems"""
-
-    name: NotRequired[str]
-    total_engaged_users: NotRequired[int]
-    models: NotRequired[
-        list[CopilotDotcomPullRequestsPropRepositoriesItemsPropModelsItemsType]
-    ]
-
-
-class CopilotDotcomPullRequestsPropRepositoriesItemsPropModelsItemsType(TypedDict):
-    """CopilotDotcomPullRequestsPropRepositoriesItemsPropModelsItems"""
-
-    name: NotRequired[str]
-    is_custom_model: NotRequired[bool]
-    custom_model_training_date: NotRequired[Union[str, None]]
-    total_pr_summaries_created: NotRequired[int]
-    total_engaged_users: NotRequired[int]
-
-
-class CopilotIdeCodeCompletionsType(TypedDict):
-    """CopilotIdeCodeCompletions
-
-    Usage metrics for Copilot editor code completions in the IDE.
-    """
-
-    total_engaged_users: NotRequired[int]
-    languages: NotRequired[list[CopilotIdeCodeCompletionsPropLanguagesItemsType]]
-    editors: NotRequired[list[CopilotIdeCodeCompletionsPropEditorsItemsType]]
-
-
-class CopilotIdeCodeCompletionsPropLanguagesItemsType(TypedDict):
-    """CopilotIdeCodeCompletionsPropLanguagesItems
-
-    Usage metrics for a given language for the given editor for Copilot code
-    completions.
-    """
-
-    name: NotRequired[str]
-    total_engaged_users: NotRequired[int]
-
-
-class CopilotIdeCodeCompletionsPropEditorsItemsType(TypedDict):
-    """CopilotIdeCodeCompletionsPropEditorsItems
-
-    Copilot code completion metrics for active editors.
-    """
-
-    name: NotRequired[str]
-    total_engaged_users: NotRequired[int]
-    models: NotRequired[
-        list[CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItemsType]
-    ]
-
-
-class CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItemsType(TypedDict):
-    """CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItems"""
-
-    name: NotRequired[str]
-    is_custom_model: NotRequired[bool]
-    custom_model_training_date: NotRequired[Union[str, None]]
-    total_engaged_users: NotRequired[int]
-    languages: NotRequired[
-        list[
-            CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItemsPropLanguagesItemsType
-        ]
-    ]
-
-
-class CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItemsPropLanguagesItemsType(
-    TypedDict
-):
-    """CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItemsPropLanguagesItems
-
-    Usage metrics for a given language for the given editor for Copilot code
-    completions.
-    """
-
-    name: NotRequired[str]
-    total_engaged_users: NotRequired[int]
-    total_code_suggestions: NotRequired[int]
-    total_code_acceptances: NotRequired[int]
-    total_code_lines_suggested: NotRequired[int]
-    total_code_lines_accepted: NotRequired[int]
+    total_seats: NotRequired[int]
+    seats: NotRequired[list[CopilotSeatDetailsType]]
 
 
 __all__ = (
-    "CopilotDotcomChatPropModelsItemsType",
-    "CopilotDotcomChatType",
-    "CopilotDotcomPullRequestsPropRepositoriesItemsPropModelsItemsType",
-    "CopilotDotcomPullRequestsPropRepositoriesItemsType",
-    "CopilotDotcomPullRequestsType",
-    "CopilotIdeChatPropEditorsItemsPropModelsItemsType",
-    "CopilotIdeChatPropEditorsItemsType",
-    "CopilotIdeChatType",
-    "CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItemsPropLanguagesItemsType",
-    "CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItemsType",
-    "CopilotIdeCodeCompletionsPropEditorsItemsType",
-    "CopilotIdeCodeCompletionsPropLanguagesItemsType",
-    "CopilotIdeCodeCompletionsType",
-    "CopilotUsageMetricsDayType",
+    "CopilotSeatDetailsType",
+    "EnterpriseTeamType",
+    "OrgsOrgCopilotBillingSeatsGetResponse200Type",
 )

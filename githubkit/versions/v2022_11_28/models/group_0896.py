@@ -11,18 +11,18 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0058 import MinimalRepository
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200(GitHubModel):
-    """OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200"""
+class OrgsOrgCodespacesAccessSelectedUsersDeleteBody(GitHubModel):
+    """OrgsOrgCodespacesAccessSelectedUsersDeleteBody"""
 
-    total_count: int = Field()
-    repositories: list[MinimalRepository] = Field()
+    selected_usernames: list[str] = Field(
+        max_length=100 if PYDANTIC_V2 else None,
+        description="The usernames of the organization members whose codespaces should not be billed to the organization.",
+    )
 
 
-model_rebuild(OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200)
+model_rebuild(OrgsOrgCodespacesAccessSelectedUsersDeleteBody)
 
-__all__ = ("OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200",)
+__all__ = ("OrgsOrgCodespacesAccessSelectedUsersDeleteBody",)

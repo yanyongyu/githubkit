@@ -17,25 +17,31 @@ from .group_0003 import SimpleUserType
 from .group_0151 import ReactionRollupType
 
 
-class TeamDiscussionCommentType(TypedDict):
-    """Team Discussion Comment
+class TeamDiscussionType(TypedDict):
+    """Team Discussion
 
-    A reply to a discussion within a team.
+    A team discussion is a persistent record of a free-form conversation within a
+    team.
     """
 
     author: Union[None, SimpleUserType]
     body: str
     body_html: str
     body_version: str
+    comments_count: int
+    comments_url: str
     created_at: datetime
     last_edited_at: Union[datetime, None]
-    discussion_url: str
     html_url: str
     node_id: str
     number: int
+    pinned: bool
+    private: bool
+    team_url: str
+    title: str
     updated_at: datetime
     url: str
     reactions: NotRequired[ReactionRollupType]
 
 
-__all__ = ("TeamDiscussionCommentType",)
+__all__ = ("TeamDiscussionType",)

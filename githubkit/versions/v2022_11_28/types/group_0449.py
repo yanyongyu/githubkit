@@ -14,25 +14,25 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksProjectType(TypedDict):
-    """Project"""
+class WebhooksProjectCardType(TypedDict):
+    """Project Card"""
 
-    body: Union[str, None]
-    columns_url: str
+    after_id: NotRequired[Union[int, None]]
+    archived: bool
+    column_id: int
+    column_url: str
+    content_url: NotRequired[str]
     created_at: datetime
-    creator: Union[WebhooksProjectPropCreatorType, None]
-    html_url: str
+    creator: Union[WebhooksProjectCardPropCreatorType, None]
     id: int
-    name: str
     node_id: str
-    number: int
-    owner_url: str
-    state: Literal["open", "closed"]
+    note: Union[str, None]
+    project_url: str
     updated_at: datetime
     url: str
 
 
-class WebhooksProjectPropCreatorType(TypedDict):
+class WebhooksProjectCardPropCreatorType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -60,6 +60,6 @@ class WebhooksProjectPropCreatorType(TypedDict):
 
 
 __all__ = (
-    "WebhooksProjectPropCreatorType",
-    "WebhooksProjectType",
+    "WebhooksProjectCardPropCreatorType",
+    "WebhooksProjectCardType",
 )

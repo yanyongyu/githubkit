@@ -18,6 +18,7 @@ if TYPE_CHECKING:
     from .activity import ActivityClient
     from .apps import AppsClient
     from .billing import BillingClient
+    from .campaigns import CampaignsClient
     from .checks import ChecksClient
     from .classroom import ClassroomClient
     from .code_scanning import CodeScanningClient
@@ -180,6 +181,12 @@ class RestNamespace:
         from .oidc import OidcClient
 
         return OidcClient(self._github)
+
+    @cached_property
+    def campaigns(self) -> "CampaignsClient":
+        from .campaigns import CampaignsClient
+
+        return CampaignsClient(self._github)
 
     @cached_property
     def code_scanning(self) -> "CodeScanningClient":

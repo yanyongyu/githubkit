@@ -20,43 +20,46 @@ from githubkit.utils import UNSET
 from .group_0066 import TeamSimple
 
 
-class UserRoleAssignment(GitHubModel):
-    """A Role Assignment for a User
+class TeamRoleAssignment(GitHubModel):
+    """A Role Assignment for a Team
 
-    The Relationship a User has with a role.
+    The Relationship a Team has with a role.
     """
 
     assignment: Missing[Literal["direct", "indirect", "mixed"]] = Field(
         default=UNSET,
-        description="Determines if the user has a direct, indirect, or mixed relationship to a role",
+        description="Determines if the team has a direct, indirect, or mixed relationship to a role",
     )
-    inherited_from: Missing[list[TeamSimple]] = Field(
-        default=UNSET, description="Team the user has gotten the role through"
-    )
-    name: Missing[Union[str, None]] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    login: str = Field()
     id: int = Field()
     node_id: str = Field()
-    avatar_url: str = Field()
-    gravatar_id: Union[str, None] = Field()
+    name: str = Field()
+    slug: str = Field()
+    description: Union[str, None] = Field()
+    privacy: Missing[str] = Field(default=UNSET)
+    notification_setting: Missing[str] = Field(default=UNSET)
+    permission: str = Field()
+    permissions: Missing[TeamRoleAssignmentPropPermissions] = Field(default=UNSET)
     url: str = Field()
     html_url: str = Field()
-    followers_url: str = Field()
-    following_url: str = Field()
-    gists_url: str = Field()
-    starred_url: str = Field()
-    subscriptions_url: str = Field()
-    organizations_url: str = Field()
-    repos_url: str = Field()
-    events_url: str = Field()
-    received_events_url: str = Field()
-    type: str = Field()
-    site_admin: bool = Field()
-    starred_at: Missing[str] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
+    members_url: str = Field()
+    repositories_url: str = Field()
+    parent: Union[None, TeamSimple] = Field()
 
 
-model_rebuild(UserRoleAssignment)
+class TeamRoleAssignmentPropPermissions(GitHubModel):
+    """TeamRoleAssignmentPropPermissions"""
 
-__all__ = ("UserRoleAssignment",)
+    pull: bool = Field()
+    triage: bool = Field()
+    push: bool = Field()
+    maintain: bool = Field()
+    admin: bool = Field()
+
+
+model_rebuild(TeamRoleAssignment)
+model_rebuild(TeamRoleAssignmentPropPermissions)
+
+__all__ = (
+    "TeamRoleAssignment",
+    "TeamRoleAssignmentPropPermissions",
+)

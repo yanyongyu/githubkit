@@ -47,7 +47,11 @@ class CodeScanningAlertInstance(GitHubModel):
     )
     html_url: Missing[str] = Field(default=UNSET)
     classifications: Missing[
-        list[Union[None, Literal["source", "generated", "test", "library"]]]
+        list[
+            Union[
+                None, Literal["source", "generated", "test", "library", "documentation"]
+            ]
+        ]
     ] = Field(
         default=UNSET,
         description="Classifications that have been applied to the file that triggered the alert.\nFor example identifying it as documentation, or a generated file.",

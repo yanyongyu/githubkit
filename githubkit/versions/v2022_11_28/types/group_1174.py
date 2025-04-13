@@ -11,15 +11,14 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-
-class UserEmailsPostBodyOneof0Type(TypedDict):
-    """UserEmailsPostBodyOneof0
-
-    Examples:
-        {'emails': ['octocat@github.com', 'mona@github.com']}
-    """
-
-    emails: list[str]
+from .group_0086 import CodespaceMachineType
 
 
-__all__ = ("UserEmailsPostBodyOneof0Type",)
+class UserCodespacesCodespaceNameMachinesGetResponse200Type(TypedDict):
+    """UserCodespacesCodespaceNameMachinesGetResponse200"""
+
+    total_count: int
+    machines: list[CodespaceMachineType]
+
+
+__all__ = ("UserCodespacesCodespaceNameMachinesGetResponse200Type",)

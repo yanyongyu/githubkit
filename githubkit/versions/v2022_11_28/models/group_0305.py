@@ -14,18 +14,21 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class PorterLargeFile(GitHubModel):
-    """Porter Large File
+class PorterAuthor(GitHubModel):
+    """Porter Author
 
-    Porter Large File
+    Porter Author
     """
 
-    ref_name: str = Field()
-    path: str = Field()
-    oid: str = Field()
-    size: int = Field()
+    id: int = Field()
+    remote_id: str = Field()
+    remote_name: str = Field()
+    email: str = Field()
+    name: str = Field()
+    url: str = Field()
+    import_url: str = Field()
 
 
-model_rebuild(PorterLargeFile)
+model_rebuild(PorterAuthor)
 
-__all__ = ("PorterLargeFile",)
+__all__ = ("PorterAuthor",)

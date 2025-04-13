@@ -13,17 +13,18 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoReleasesReleaseIdPatchBodyType(TypedDict):
-    """ReposOwnerRepoReleasesReleaseIdPatchBody"""
+class ReposOwnerRepoReleasesPostBodyType(TypedDict):
+    """ReposOwnerRepoReleasesPostBody"""
 
-    tag_name: NotRequired[str]
+    tag_name: str
     target_commitish: NotRequired[str]
     name: NotRequired[str]
     body: NotRequired[str]
     draft: NotRequired[bool]
     prerelease: NotRequired[bool]
-    make_latest: NotRequired[Literal["true", "false", "legacy"]]
     discussion_category_name: NotRequired[str]
+    generate_release_notes: NotRequired[bool]
+    make_latest: NotRequired[Literal["true", "false", "legacy"]]
 
 
-__all__ = ("ReposOwnerRepoReleasesReleaseIdPatchBodyType",)
+__all__ = ("ReposOwnerRepoReleasesPostBodyType",)

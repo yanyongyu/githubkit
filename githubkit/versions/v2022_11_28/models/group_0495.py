@@ -18,16 +18,16 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0114 import CustomProperty
-from .group_0417 import EnterpriseWebhooks
-from .group_0418 import SimpleInstallation
-from .group_0419 import OrganizationSimpleWebhooks
+from .group_0115 import CustomProperty
+from .group_0418 import EnterpriseWebhooks
+from .group_0419 import SimpleInstallation
+from .group_0420 import OrganizationSimpleWebhooks
 
 
-class WebhookCustomPropertyUpdated(GitHubModel):
-    """custom property updated event"""
+class WebhookCustomPropertyPromotedToEnterprise(GitHubModel):
+    """custom property promoted to business event"""
 
-    action: Literal["updated"] = Field()
+    action: Literal["promote_to_enterprise"] = Field()
     definition: CustomProperty = Field(
         title="Organization Custom Property",
         description="Custom property defined on an organization",
@@ -52,6 +52,6 @@ class WebhookCustomPropertyUpdated(GitHubModel):
     )
 
 
-model_rebuild(WebhookCustomPropertyUpdated)
+model_rebuild(WebhookCustomPropertyPromotedToEnterprise)
 
-__all__ = ("WebhookCustomPropertyUpdated",)
+__all__ = ("WebhookCustomPropertyPromotedToEnterprise",)

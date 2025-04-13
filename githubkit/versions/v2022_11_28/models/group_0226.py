@@ -9,45 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0219 import BranchProtection
-from .group_0224 import Commit
+from .group_0222 import GitUser
+from .group_0223 import Verification
 
 
-class BranchWithProtection(GitHubModel):
-    """Branch With Protection
+class CommitPropCommit(GitHubModel):
+    """CommitPropCommit"""
 
-    Branch With Protection
-    """
-
-    name: str = Field()
-    commit: Commit = Field(title="Commit", description="Commit")
-    links: BranchWithProtectionPropLinks = Field(alias="_links")
-    protected: bool = Field()
-    protection: BranchProtection = Field(
-        title="Branch Protection", description="Branch Protection"
-    )
-    protection_url: str = Field()
-    pattern: Missing[str] = Field(default=UNSET)
-    required_approving_review_count: Missing[int] = Field(default=UNSET)
+    url: str = Field()
+    author: Union[None, GitUser] = Field()
+    committer: Union[None, GitUser] = Field()
+    message: str = Field()
+    comment_count: int = Field()
+    tree: CommitPropCommitPropTree = Field()
+    verification: Missing[Verification] = Field(default=UNSET, title="Verification")
 
 
-class BranchWithProtectionPropLinks(GitHubModel):
-    """BranchWithProtectionPropLinks"""
+class CommitPropCommitPropTree(GitHubModel):
+    """CommitPropCommitPropTree"""
 
-    html: str = Field()
-    self_: str = Field(alias="self")
+    sha: str = Field()
+    url: str = Field()
 
 
-model_rebuild(BranchWithProtection)
-model_rebuild(BranchWithProtectionPropLinks)
+model_rebuild(CommitPropCommit)
+model_rebuild(CommitPropCommitPropTree)
 
 __all__ = (
-    "BranchWithProtection",
-    "BranchWithProtectionPropLinks",
+    "CommitPropCommit",
+    "CommitPropCommitPropTree",
 )

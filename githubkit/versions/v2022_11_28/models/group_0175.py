@@ -9,16 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from pydantic import Field
+
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class RulesetVersionWithStateAllof1PropState(GitHubModel):
-    """RulesetVersionWithStateAllof1PropState
-
-    The state of the ruleset version
-    """
+from .group_0176 import RulesetVersionWithStateAllof1PropState
 
 
-model_rebuild(RulesetVersionWithStateAllof1PropState)
+class RulesetVersionWithStateAllof1(GitHubModel):
+    """RulesetVersionWithStateAllof1"""
 
-__all__ = ("RulesetVersionWithStateAllof1PropState",)
+    state: RulesetVersionWithStateAllof1PropState = Field(
+        description="The state of the ruleset version"
+    )
+
+
+model_rebuild(RulesetVersionWithStateAllof1)
+
+__all__ = ("RulesetVersionWithStateAllof1",)

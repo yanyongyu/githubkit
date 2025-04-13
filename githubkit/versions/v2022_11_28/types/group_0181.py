@@ -9,20 +9,15 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class NetworkSettingsType(TypedDict):
-    """Hosted compute network settings resource
+class CombinedBillingUsageType(TypedDict):
+    """CombinedBillingUsage"""
 
-    A hosted compute network settings resource.
-    """
-
-    id: str
-    network_configuration_id: NotRequired[str]
-    name: str
-    subnet_id: str
-    region: str
+    days_left_in_billing_cycle: int
+    estimated_paid_storage_for_month: int
+    estimated_storage_for_month: int
 
 
-__all__ = ("NetworkSettingsType",)
+__all__ = ("CombinedBillingUsageType",)

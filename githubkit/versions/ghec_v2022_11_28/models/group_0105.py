@@ -27,7 +27,7 @@ class RepositoryRulePullRequestPropParameters(GitHubModel):
     )
     automatic_copilot_code_review_enabled: Missing[bool] = Field(
         default=UNSET,
-        description="> [!NOTE]\n> `automatic_copilot_code_review_enabled` is in beta and subject to change.\n\nAutomatically request review from Copilot for new pull requests, if the author has access to Copilot code review.",
+        description="Automatically request review from Copilot for new pull requests, if the author has access to Copilot code review.",
     )
     dismiss_stale_reviews_on_push: bool = Field(
         description="New, reviewable commits pushed will dismiss previous pull request review approvals."

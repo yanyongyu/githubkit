@@ -18,18 +18,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0417 import EnterpriseWebhooks
-from .group_0418 import SimpleInstallation
-from .group_0419 import OrganizationSimpleWebhooks
-from .group_0420 import RepositoryWebhooks
-from .group_0430 import Discussion
-from .group_0431 import WebhooksComment
+from .group_0418 import EnterpriseWebhooks
+from .group_0419 import SimpleInstallation
+from .group_0420 import OrganizationSimpleWebhooks
+from .group_0421 import RepositoryWebhooks
+from .group_0431 import Discussion
+from .group_0432 import WebhooksComment
 
 
-class WebhookDiscussionCommentDeleted(GitHubModel):
-    """discussion_comment deleted event"""
+class WebhookDiscussionCommentCreated(GitHubModel):
+    """discussion_comment created event"""
 
-    action: Literal["deleted"] = Field()
+    action: Literal["created"] = Field()
     comment: WebhooksComment = Field()
     discussion: Discussion = Field(
         title="Discussion", description="A Discussion in a repository."
@@ -56,6 +56,6 @@ class WebhookDiscussionCommentDeleted(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookDiscussionCommentDeleted)
+model_rebuild(WebhookDiscussionCommentCreated)
 
-__all__ = ("WebhookDiscussionCommentDeleted",)
+__all__ = ("WebhookDiscussionCommentCreated",)

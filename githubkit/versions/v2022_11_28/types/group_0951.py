@@ -13,10 +13,10 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgSecurityProductEnablementPostBodyType(TypedDict):
-    """OrgsOrgSecurityProductEnablementPostBody"""
+class OrgsOrgTeamsTeamSlugProjectsProjectIdPutBodyType(TypedDict):
+    """OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody"""
 
-    query_suite: NotRequired[Literal["default", "extended"]]
+    permission: NotRequired[Literal["read", "write", "admin"]]
 
 
-__all__ = ("OrgsOrgSecurityProductEnablementPostBodyType",)
+__all__ = ("OrgsOrgTeamsTeamSlugProjectsProjectIdPutBodyType",)

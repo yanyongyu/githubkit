@@ -12,50 +12,32 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0262 import Verification
 
 
-class GitTag(GitHubModel):
-    """Git Tag
+class GitRef(GitHubModel):
+    """Git Reference
 
-    Metadata for a Git tag
+    Git references within a repository
     """
 
+    ref: str = Field()
     node_id: str = Field()
-    tag: str = Field(description="Name of the tag")
-    sha: str = Field()
-    url: str = Field(description="URL for the tag")
-    message: str = Field(description="Message describing the purpose of the tag")
-    tagger: GitTagPropTagger = Field()
-    object_: GitTagPropObject = Field(alias="object")
-    verification: Missing[Verification] = Field(default=UNSET, title="Verification")
+    url: str = Field()
+    object_: GitRefPropObject = Field(alias="object")
 
 
-class GitTagPropTagger(GitHubModel):
-    """GitTagPropTagger"""
+class GitRefPropObject(GitHubModel):
+    """GitRefPropObject"""
 
-    date: str = Field()
-    email: str = Field()
-    name: str = Field()
-
-
-class GitTagPropObject(GitHubModel):
-    """GitTagPropObject"""
-
-    sha: str = Field()
     type: str = Field()
+    sha: str = Field(min_length=40, max_length=40, description="SHA for the reference")
     url: str = Field()
 
 
-model_rebuild(GitTag)
-model_rebuild(GitTagPropTagger)
-model_rebuild(GitTagPropObject)
+model_rebuild(GitRef)
+model_rebuild(GitRefPropObject)
 
 __all__ = (
-    "GitTag",
-    "GitTagPropObject",
-    "GitTagPropTagger",
+    "GitRef",
+    "GitRefPropObject",
 )

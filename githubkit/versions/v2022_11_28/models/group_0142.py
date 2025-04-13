@@ -17,36 +17,20 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class RepositoryRulePullRequestPropParameters(GitHubModel):
-    """RepositoryRulePullRequestPropParameters"""
-
-    allowed_merge_methods: Missing[list[Literal["merge", "squash", "rebase"]]] = Field(
-        default=UNSET,
-        description="Array of allowed merge methods. Allowed values include `merge`, `squash`, and `rebase`. At least one option must be enabled.",
-    )
-    automatic_copilot_code_review_enabled: Missing[bool] = Field(
-        default=UNSET,
-        description="> [!NOTE]\n> `automatic_copilot_code_review_enabled` is in beta and subject to change.\n\nAutomatically request review from Copilot for new pull requests, if the author has access to Copilot code review.",
-    )
-    dismiss_stale_reviews_on_push: bool = Field(
-        description="New, reviewable commits pushed will dismiss previous pull request review approvals."
-    )
-    require_code_owner_review: bool = Field(
-        description="Require an approving review in pull requests that modify files that have a designated code owner."
-    )
-    require_last_push_approval: bool = Field(
-        description="Whether the most recent reviewable push must be approved by someone other than the person who pushed it."
-    )
-    required_approving_review_count: int = Field(
-        le=10.0,
-        description="The number of approving reviews that are required before a pull request can be merged.",
-    )
-    required_review_thread_resolution: bool = Field(
-        description="All conversations on code must be resolved before a pull request can be merged."
-    )
+from .group_0143 import RepositoryRulePullRequestPropParameters
 
 
-model_rebuild(RepositoryRulePullRequestPropParameters)
+class RepositoryRulePullRequest(GitHubModel):
+    """pull_request
 
-__all__ = ("RepositoryRulePullRequestPropParameters",)
+    Require all commits be made to a non-target branch and submitted via a pull
+    request before they can be merged.
+    """
+
+    type: Literal["pull_request"] = Field()
+    parameters: Missing[RepositoryRulePullRequestPropParameters] = Field(default=UNSET)
+
+
+model_rebuild(RepositoryRulePullRequest)
+
+__all__ = ("RepositoryRulePullRequest",)

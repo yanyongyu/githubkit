@@ -14,11 +14,11 @@ from typing_extensions import TypedDict
 from .group_0067 import ActionsHostedRunnerImageType
 
 
-class OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200Type(TypedDict):
-    """OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200"""
+class OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200Type(TypedDict):
+    """OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200"""
 
     total_count: int
     images: list[ActionsHostedRunnerImageType]
 
 
-__all__ = ("OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200Type",)
+__all__ = ("OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200Type",)

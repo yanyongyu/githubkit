@@ -228,6 +228,12 @@ if TYPE_CHECKING:
         BranchWithProtectionType as BranchWithProtectionType,
     )
     from githubkit.versions.v2022_11_28.types import (
+        CampaignSummaryPropAlertStatsType as CampaignSummaryPropAlertStatsType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        CampaignSummaryType as CampaignSummaryType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         CheckAnnotationType as CheckAnnotationType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -1350,6 +1356,15 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.types import (
         OrgsOrgAttestationsSubjectDigestGetResponse200Type as OrgsOrgAttestationsSubjectDigestGetResponse200Type,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        OrgsOrgCampaignsCampaignNumberPatchBodyType as OrgsOrgCampaignsCampaignNumberPatchBodyType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsType as OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        OrgsOrgCampaignsPostBodyType as OrgsOrgCampaignsPostBodyType,
     )
     from githubkit.versions.v2022_11_28.types import (
         OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBodyType as OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBodyType,
@@ -10040,6 +10055,11 @@ else:
             "AuthenticationTokenType",
             "AuthenticationTokenPropPermissionsType",
             "ActionsPublicKeyType",
+            "TeamSimpleType",
+            "TeamType",
+            "TeamPropPermissionsType",
+            "CampaignSummaryType",
+            "CampaignSummaryPropAlertStatsType",
             "CodeScanningAlertRuleSummaryType",
             "CodeScanningAnalysisToolType",
             "CodeScanningAlertInstanceType",
@@ -10053,9 +10073,6 @@ else:
             "CodespacesPublicKeyType",
             "CopilotOrganizationDetailsType",
             "CopilotOrganizationSeatBreakdownType",
-            "TeamSimpleType",
-            "TeamType",
-            "TeamPropPermissionsType",
             "CopilotSeatDetailsType",
             "EnterpriseTeamType",
             "OrgsOrgCopilotBillingSeatsGetResponse200Type",
@@ -12870,6 +12887,9 @@ else:
             "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundleType",
             "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterialType",
             "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelopeType",
+            "OrgsOrgCampaignsPostBodyType",
+            "OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsType",
+            "OrgsOrgCampaignsCampaignNumberPatchBodyType",
             "OrgsOrgCodeSecurityConfigurationsPostBodyType",
             "OrgsOrgCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptionsType",
             "OrgsOrgCodeSecurityConfigurationsPostBodyPropSecretScanningDelegatedBypassOptionsType",

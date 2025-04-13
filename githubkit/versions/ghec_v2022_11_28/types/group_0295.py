@@ -9,32 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0060 import CodeSecurityConfigurationType
 
-class CodeownersErrorsType(TypedDict):
-    """CODEOWNERS errors
 
-    A list of errors found in a repo's CODEOWNERS file
+class CodeSecurityConfigurationForRepositoryType(TypedDict):
+    """CodeSecurityConfigurationForRepository
+
+    Code security configuration associated with a repository and attachment status
     """
 
-    errors: list[CodeownersErrorsPropErrorsItemsType]
+    status: NotRequired[
+        Literal[
+            "attached",
+            "attaching",
+            "detached",
+            "removed",
+            "enforced",
+            "failed",
+            "updating",
+            "removed_by_enterprise",
+        ]
+    ]
+    configuration: NotRequired[CodeSecurityConfigurationType]
 
 
-class CodeownersErrorsPropErrorsItemsType(TypedDict):
-    """CodeownersErrorsPropErrorsItems"""
-
-    line: int
-    column: int
-    source: NotRequired[str]
-    kind: str
-    suggestion: NotRequired[Union[str, None]]
-    message: str
-    path: str
-
-
-__all__ = (
-    "CodeownersErrorsPropErrorsItemsType",
-    "CodeownersErrorsType",
-)
+__all__ = ("CodeSecurityConfigurationForRepositoryType",)

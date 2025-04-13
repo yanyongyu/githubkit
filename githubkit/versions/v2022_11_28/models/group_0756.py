@@ -18,18 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0168 import RepositoryRuleset
-from .group_0417 import EnterpriseWebhooks
-from .group_0418 import SimpleInstallation
-from .group_0419 import OrganizationSimpleWebhooks
-from .group_0420 import RepositoryWebhooks
-from .group_0757 import WebhookRepositoryRulesetEditedPropChanges
+from .group_0169 import RepositoryRuleset
+from .group_0418 import EnterpriseWebhooks
+from .group_0419 import SimpleInstallation
+from .group_0420 import OrganizationSimpleWebhooks
+from .group_0421 import RepositoryWebhooks
 
 
-class WebhookRepositoryRulesetEdited(GitHubModel):
-    """repository ruleset edited event"""
+class WebhookRepositoryRulesetDeleted(GitHubModel):
+    """repository ruleset deleted event"""
 
-    action: Literal["edited"] = Field()
+    action: Literal["deleted"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -54,10 +53,9 @@ class WebhookRepositoryRulesetEdited(GitHubModel):
         title="Repository ruleset",
         description="A set of rules to apply when specified conditions are met.",
     )
-    changes: Missing[WebhookRepositoryRulesetEditedPropChanges] = Field(default=UNSET)
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookRepositoryRulesetEdited)
+model_rebuild(WebhookRepositoryRulesetDeleted)
 
-__all__ = ("WebhookRepositoryRulesetEdited",)
+__all__ = ("WebhookRepositoryRulesetDeleted",)

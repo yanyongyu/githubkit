@@ -12,24 +12,37 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ExternalGroupsType(TypedDict):
-    """ExternalGroups
+class ExternalGroupType(TypedDict):
+    """ExternalGroup
 
-    A list of external groups available to be connected to a team
+    Information about an external group's usage and its members
     """
-
-    groups: NotRequired[list[ExternalGroupsPropGroupsItemsType]]
-
-
-class ExternalGroupsPropGroupsItemsType(TypedDict):
-    """ExternalGroupsPropGroupsItems"""
 
     group_id: int
     group_name: str
-    updated_at: str
+    updated_at: NotRequired[str]
+    teams: list[ExternalGroupPropTeamsItemsType]
+    members: list[ExternalGroupPropMembersItemsType]
+
+
+class ExternalGroupPropTeamsItemsType(TypedDict):
+    """ExternalGroupPropTeamsItems"""
+
+    team_id: int
+    team_name: str
+
+
+class ExternalGroupPropMembersItemsType(TypedDict):
+    """ExternalGroupPropMembersItems"""
+
+    member_id: int
+    member_login: str
+    member_name: str
+    member_email: str
 
 
 __all__ = (
-    "ExternalGroupsPropGroupsItemsType",
-    "ExternalGroupsType",
+    "ExternalGroupPropMembersItemsType",
+    "ExternalGroupPropTeamsItemsType",
+    "ExternalGroupType",
 )

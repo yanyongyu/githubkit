@@ -9,17 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from datetime import datetime
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0003 import SimpleUserType
+from .group_0041 import ReactionRollupType
+from .group_0351 import ReleaseAssetType
 
 
-class ReleaseNotesContentType(TypedDict):
-    """Generated Release Notes Content
+class ReleaseType(TypedDict):
+    """Release
 
-    Generated name and body describing a release
+    A release.
     """
 
-    name: str
-    body: str
+    url: str
+    html_url: str
+    assets_url: str
+    upload_url: str
+    tarball_url: Union[str, None]
+    zipball_url: Union[str, None]
+    id: int
+    node_id: str
+    tag_name: str
+    target_commitish: str
+    name: Union[str, None]
+    body: NotRequired[Union[str, None]]
+    draft: bool
+    prerelease: bool
+    created_at: datetime
+    published_at: Union[datetime, None]
+    author: SimpleUserType
+    assets: list[ReleaseAssetType]
+    body_html: NotRequired[Union[str, None]]
+    body_text: NotRequired[Union[str, None]]
+    mentions_count: NotRequired[int]
+    discussion_url: NotRequired[str]
+    reactions: NotRequired[ReactionRollupType]
 
 
-__all__ = ("ReleaseNotesContentType",)
+__all__ = ("ReleaseType",)

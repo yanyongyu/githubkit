@@ -20,15 +20,15 @@ from githubkit.utils import UNSET
 from .group_0003 import SimpleUser
 from .group_0020 import Repository
 from .group_0042 import Issue
-from .group_0418 import SimpleInstallation
-from .group_0419 import OrganizationSimpleWebhooks
-from .group_0420 import RepositoryWebhooks
+from .group_0419 import SimpleInstallation
+from .group_0420 import OrganizationSimpleWebhooks
+from .group_0421 import RepositoryWebhooks
 
 
-class WebhookSubIssuesParentIssueRemoved(GitHubModel):
-    """parent issue removed event"""
+class WebhookSubIssuesParentIssueAdded(GitHubModel):
+    """parent issue added event"""
 
-    action: Literal["parent_issue_removed"] = Field()
+    action: Literal["parent_issue_added"] = Field()
     parent_issue_id: float = Field(description="The ID of the parent issue.")
     parent_issue: Issue = Field(
         title="Issue",
@@ -62,6 +62,6 @@ class WebhookSubIssuesParentIssueRemoved(GitHubModel):
     )
 
 
-model_rebuild(WebhookSubIssuesParentIssueRemoved)
+model_rebuild(WebhookSubIssuesParentIssueAdded)
 
-__all__ = ("WebhookSubIssuesParentIssueRemoved",)
+__all__ = ("WebhookSubIssuesParentIssueAdded",)

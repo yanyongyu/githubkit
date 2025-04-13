@@ -18,17 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0471 import EnterpriseWebhooks
-from .group_0472 import SimpleInstallation
-from .group_0473 import OrganizationSimpleWebhooks
-from .group_0474 import RepositoryWebhooks
-from .group_0502 import WebhooksMembership
+from .group_0472 import EnterpriseWebhooks
+from .group_0473 import SimpleInstallation
+from .group_0474 import OrganizationSimpleWebhooks
+from .group_0475 import RepositoryWebhooks
+from .group_0503 import WebhooksMembership
 
 
-class WebhookOrganizationMemberAdded(GitHubModel):
-    """organization member_added event"""
+class WebhookOrganizationDeleted(GitHubModel):
+    """organization deleted event"""
 
-    action: Literal["member_added"] = Field()
+    action: Literal["deleted"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -39,7 +39,8 @@ class WebhookOrganizationMemberAdded(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    membership: WebhooksMembership = Field(
+    membership: Missing[WebhooksMembership] = Field(
+        default=UNSET,
         title="Membership",
         description="The membership between the user and the organization. Not present when the action is `member_invited`.",
     )
@@ -55,6 +56,6 @@ class WebhookOrganizationMemberAdded(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookOrganizationMemberAdded)
+model_rebuild(WebhookOrganizationDeleted)
 
-__all__ = ("WebhookOrganizationMemberAdded",)
+__all__ = ("WebhookOrganizationDeleted",)

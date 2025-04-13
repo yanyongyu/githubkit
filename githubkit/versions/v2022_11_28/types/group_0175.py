@@ -11,12 +11,13 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-
-class RulesetVersionWithStateAllof1PropStateType(TypedDict):
-    """RulesetVersionWithStateAllof1PropState
-
-    The state of the ruleset version
-    """
+from .group_0176 import RulesetVersionWithStateAllof1PropStateType
 
 
-__all__ = ("RulesetVersionWithStateAllof1PropStateType",)
+class RulesetVersionWithStateAllof1Type(TypedDict):
+    """RulesetVersionWithStateAllof1"""
+
+    state: RulesetVersionWithStateAllof1PropStateType
+
+
+__all__ = ("RulesetVersionWithStateAllof1Type",)

@@ -26,7 +26,11 @@ class CodeScanningAlertInstanceType(TypedDict):
     location: NotRequired[CodeScanningAlertLocationType]
     html_url: NotRequired[str]
     classifications: NotRequired[
-        list[Union[None, Literal["source", "generated", "test", "library"]]]
+        list[
+            Union[
+                None, Literal["source", "generated", "test", "library", "documentation"]
+            ]
+        ]
     ]
 
 

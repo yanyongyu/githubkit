@@ -9,13 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from pydantic import Field
+
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ProjectsColumnsColumnIdMovesPostResponse201(GitHubModel):
-    """ProjectsColumnsColumnIdMovesPostResponse201"""
+class ProjectsColumnsColumnIdCardsPostBodyOneof1(GitHubModel):
+    """ProjectsColumnsColumnIdCardsPostBodyOneof1"""
+
+    content_id: int = Field(
+        description="The unique identifier of the content associated with the card"
+    )
+    content_type: str = Field(
+        description="The piece of content associated with the card"
+    )
 
 
-model_rebuild(ProjectsColumnsColumnIdMovesPostResponse201)
+model_rebuild(ProjectsColumnsColumnIdCardsPostBodyOneof1)
 
-__all__ = ("ProjectsColumnsColumnIdMovesPostResponse201",)
+__all__ = ("ProjectsColumnsColumnIdCardsPostBodyOneof1",)

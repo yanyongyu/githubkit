@@ -219,6 +219,10 @@ if TYPE_CHECKING:
     from githubkit.versions.v2022_11_28.models import (
         BranchWithProtectionPropLinks as BranchWithProtectionPropLinks,
     )
+    from githubkit.versions.v2022_11_28.models import CampaignSummary as CampaignSummary
+    from githubkit.versions.v2022_11_28.models import (
+        CampaignSummaryPropAlertStats as CampaignSummaryPropAlertStats,
+    )
     from githubkit.versions.v2022_11_28.models import CheckAnnotation as CheckAnnotation
     from githubkit.versions.v2022_11_28.models import (
         CheckAutomatedSecurityFixes as CheckAutomatedSecurityFixes,
@@ -1280,6 +1284,15 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterial as OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterial,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        OrgsOrgCampaignsCampaignNumberPatchBody as OrgsOrgCampaignsCampaignNumberPatchBody,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        OrgsOrgCampaignsPostBody as OrgsOrgCampaignsPostBody,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems as OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems,
     )
     from githubkit.versions.v2022_11_28.models import (
         OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody as OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody,
@@ -9864,6 +9877,11 @@ else:
             "AuthenticationToken",
             "AuthenticationTokenPropPermissions",
             "ActionsPublicKey",
+            "TeamSimple",
+            "Team",
+            "TeamPropPermissions",
+            "CampaignSummary",
+            "CampaignSummaryPropAlertStats",
             "CodeScanningAlertRuleSummary",
             "CodeScanningAnalysisTool",
             "CodeScanningAlertInstance",
@@ -9877,9 +9895,6 @@ else:
             "CodespacesPublicKey",
             "CopilotOrganizationDetails",
             "CopilotOrganizationSeatBreakdown",
-            "TeamSimple",
-            "Team",
-            "TeamPropPermissions",
             "CopilotSeatDetails",
             "EnterpriseTeam",
             "OrgsOrgCopilotBillingSeatsGetResponse200",
@@ -12694,6 +12709,9 @@ else:
             "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle",
             "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterial",
             "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelope",
+            "OrgsOrgCampaignsPostBody",
+            "OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems",
+            "OrgsOrgCampaignsCampaignNumberPatchBody",
             "OrgsOrgCodeSecurityConfigurationsPostBody",
             "OrgsOrgCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptions",
             "OrgsOrgCodeSecurityConfigurationsPostBodyPropSecretScanningDelegatedBypassOptions",
