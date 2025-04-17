@@ -1,10 +1,12 @@
+from __future__ import annotations
+
 from collections.abc import AsyncGenerator, Generator, Mapping, Sequence
 from contextlib import asynccontextmanager, contextmanager
 from contextvars import ContextVar
 from datetime import datetime, timedelta, timezone
 import time
 from types import TracebackType
-from typing import Any, Generic, Optional, TypeVar, Union, cast, overload
+from typing import TYPE_CHECKING, Any, Generic, Optional, TypeVar, Union, cast, overload
 
 import anyio
 import hishel
@@ -35,6 +37,9 @@ from .typing import (
     URLTypes,
 )
 from .utils import UNSET
+
+if TYPE_CHECKING:
+    import ssl
 
 T = TypeVar("T")
 A = TypeVar("A", bound="BaseAuthStrategy")
@@ -86,6 +91,7 @@ class GitHubCore(Generic[A]):
         throttler: Optional[BaseThrottler] = None,
         auto_retry: Union[bool, RetryDecisionFunc] = True,
         rest_api_validate_body: bool = True,
+        verify: Union[bool, str, ssl.SSLContext] = ...,
     ): ...
 
     # token auth without config
@@ -105,6 +111,7 @@ class GitHubCore(Generic[A]):
         throttler: Optional[BaseThrottler] = None,
         auto_retry: Union[bool, RetryDecisionFunc] = True,
         rest_api_validate_body: bool = True,
+        verify: Union[bool, str, ssl.SSLContext] = ...,
     ): ...
 
     # other auth strategies without config
@@ -124,6 +131,7 @@ class GitHubCore(Generic[A]):
         throttler: Optional[BaseThrottler] = None,
         auto_retry: Union[bool, RetryDecisionFunc] = True,
         rest_api_validate_body: bool = True,
+        verify: Union[bool, str, ssl.SSLContext] = ...,
     ): ...
 
     def __init__(
@@ -142,6 +150,7 @@ class GitHubCore(Generic[A]):
         throttler: Optional[BaseThrottler] = None,
         auto_retry: Union[bool, RetryDecisionFunc] = True,
         rest_api_validate_body: bool = True,
+        verify: Union[bool, str, ssl.SSLContext] = True,
     ):
         auth = auth or UnauthAuthStrategy()  # type: ignore
         self.auth: A = (  # type: ignore
@@ -160,6 +169,7 @@ class GitHubCore(Generic[A]):
             throttler=throttler,
             auto_retry=auto_retry,
             rest_api_validate_body=rest_api_validate_body,
+            verify=verify,
         )
 
         self.__sync_client: ContextVar[Optional[httpx.Client]] = ContextVar(
@@ -212,6 +222,7 @@ class GitHubCore(Generic[A]):
             },
             "timeout": self.config.timeout,
             "follow_redirects": self.config.follow_redirects,
+            "verify": self.config.verify,
         }
 
     # create sync client
