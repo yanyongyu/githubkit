@@ -1,6 +1,8 @@
+from __future__ import annotations
+
 from collections.abc import Sequence
 from dataclasses import dataclass, fields
-from typing import Any, Optional, Union
+from typing import TYPE_CHECKING, Any, Optional, Union
 from typing_extensions import Self
 
 import httpx
@@ -9,6 +11,9 @@ from .cache import DEFAULT_CACHE_STRATEGY, BaseCacheStrategy
 from .retry import RETRY_DEFAULT
 from .throttling import BaseThrottler, LocalThrottler
 from .typing import RetryDecisionFunc
+
+if TYPE_CHECKING:
+    import ssl
 
 
 @dataclass(frozen=True)
@@ -23,6 +28,7 @@ class Config:
     throttler: BaseThrottler
     auto_retry: Optional[RetryDecisionFunc]
     rest_api_validate_body: bool
+    verify: Union[bool, str, ssl.SSLContext]
 
     def dict(self) -> dict[str, Any]:
         """Return the config as a dictionary without copy values."""
@@ -109,6 +115,7 @@ def get_config(
     throttler: Optional[BaseThrottler] = None,
     auto_retry: Union[bool, RetryDecisionFunc] = True,
     rest_api_validate_body: bool = True,
+    verify: Union[bool, str, ssl.SSLContext] = True,
 ) -> Config:
     """Build the configs from the given options."""
     return Config(
@@ -122,4 +129,5 @@ def get_config(
         build_throttler(throttler),
         build_auto_retry(auto_retry),
         rest_api_validate_body,
+        verify,
     )
