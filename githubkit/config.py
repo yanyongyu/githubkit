@@ -13,7 +13,7 @@ from .throttling import BaseThrottler, LocalThrottler
 from .typing import RetryDecisionFunc
 
 if TYPE_CHECKING:
-    import ssl
+    import ssl  # pragma: no cover
 
 
 @dataclass(frozen=True)

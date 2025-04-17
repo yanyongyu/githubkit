@@ -39,7 +39,7 @@ from .typing import (
 from .utils import UNSET
 
 if TYPE_CHECKING:
-    import ssl
+    import ssl  # pragma: no cover
 
 T = TypeVar("T")
 A = TypeVar("A", bound="BaseAuthStrategy")
