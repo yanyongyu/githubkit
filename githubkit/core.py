@@ -2,9 +2,10 @@ from collections.abc import AsyncGenerator, Generator, Mapping, Sequence
 from contextlib import asynccontextmanager, contextmanager
 from contextvars import ContextVar
 from datetime import datetime, timedelta, timezone
+import ssl
 import time
 from types import TracebackType
-from typing import TYPE_CHECKING, Any, Generic, Optional, TypeVar, Union, cast, overload
+from typing import Any, Generic, Optional, TypeVar, Union, cast, overload
 
 import anyio
 import hishel
@@ -35,9 +36,6 @@ from .typing import (
     URLTypes,
 )
 from .utils import UNSET
-
-if TYPE_CHECKING:
-    import ssl  # pragma: no cover
 
 T = TypeVar("T")
 A = TypeVar("A", bound="BaseAuthStrategy")

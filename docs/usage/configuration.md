@@ -12,6 +12,7 @@ github = GitHub(
     user_agent="GitHubKit/Python",
     follow_redirects=True,
     timeout=None,
+    ssl_verify=True,
     cache_strategy=None,
     http_cache=True,
     throttler=None,
@@ -34,6 +35,7 @@ config = Config(
     user_agent="GitHubKit/Python",
     follow_redirects=True,
     timeout=httpx.Timeout(None),
+    ssl_verify=True,
     cache_strategy=DEFAULT_CACHE_STRATEGY,
     http_cache=True,
     throttler=None,
@@ -69,6 +71,10 @@ The `follow_redirects` option is used to enable or disable the HTTP redirect fol
 ### `timeout`
 
 The `timeout` option is used to set the request timeout. You can pass a float, `None` or `httpx.Timeout` to this field. By default, the requests will never timeout. See [Timeout](https://www.python-httpx.org/advanced/timeouts/) for more information.
+
+### `ssl_verify`
+
+The `ssl_verify` option is used to customize the SSL certificate verification. By default, githubkit enables the SSL certificate verification. If you want to disable the SSL certificate verification, you can set this option to `False`. Or you can provide a custom ssl context to this option. See [SSL](https://www.python-httpx.org/advanced/ssl/) for more information.
 
 ### `cache_strategy`
 
