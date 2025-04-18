@@ -2,10 +2,9 @@ from collections.abc import AsyncGenerator, Generator, Mapping, Sequence
 from contextlib import asynccontextmanager, contextmanager
 from contextvars import ContextVar
 from datetime import datetime, timedelta, timezone
-import ssl
 import time
 from types import TracebackType
-from typing import Any, Generic, Optional, TypeVar, Union, cast, overload
+from typing import TYPE_CHECKING, Any, Generic, Optional, TypeVar, Union, cast, overload
 
 import anyio
 import hishel
@@ -36,6 +35,9 @@ from .typing import (
     URLTypes,
 )
 from .utils import UNSET
+
+if TYPE_CHECKING:
+    import ssl
 
 T = TypeVar("T")
 A = TypeVar("A", bound="BaseAuthStrategy")
@@ -82,7 +84,7 @@ class GitHubCore(Generic[A]):
         user_agent: Optional[str] = None,
         follow_redirects: bool = True,
         timeout: Optional[Union[float, httpx.Timeout]] = None,
-        ssl_verify: Union[bool, ssl.SSLContext] = ...,
+        ssl_verify: Union[bool, "ssl.SSLContext"] = ...,
         cache_strategy: Optional[BaseCacheStrategy] = None,
         http_cache: bool = True,
         throttler: Optional[BaseThrottler] = None,
@@ -102,7 +104,7 @@ class GitHubCore(Generic[A]):
         user_agent: Optional[str] = None,
         follow_redirects: bool = True,
         timeout: Optional[Union[float, httpx.Timeout]] = None,
-        ssl_verify: Union[bool, ssl.SSLContext] = ...,
+        ssl_verify: Union[bool, "ssl.SSLContext"] = ...,
         cache_strategy: Optional[BaseCacheStrategy] = None,
         http_cache: bool = True,
         throttler: Optional[BaseThrottler] = None,
@@ -122,7 +124,7 @@ class GitHubCore(Generic[A]):
         user_agent: Optional[str] = None,
         follow_redirects: bool = True,
         timeout: Optional[Union[float, httpx.Timeout]] = None,
-        ssl_verify: Union[bool, ssl.SSLContext] = ...,
+        ssl_verify: Union[bool, "ssl.SSLContext"] = ...,
         cache_strategy: Optional[BaseCacheStrategy] = None,
         http_cache: bool = True,
         throttler: Optional[BaseThrottler] = None,
@@ -141,7 +143,7 @@ class GitHubCore(Generic[A]):
         user_agent: Optional[str] = None,
         follow_redirects: bool = True,
         timeout: Optional[Union[float, httpx.Timeout]] = None,
-        ssl_verify: Union[bool, ssl.SSLContext] = True,
+        ssl_verify: Union[bool, "ssl.SSLContext"] = True,
         cache_strategy: Optional[BaseCacheStrategy] = None,
         http_cache: bool = True,
         throttler: Optional[BaseThrottler] = None,

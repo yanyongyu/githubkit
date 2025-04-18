@@ -1,7 +1,6 @@
 from collections.abc import Sequence
 from dataclasses import dataclass, fields
-import ssl
-from typing import Any, Optional, Union
+from typing import TYPE_CHECKING, Any, Optional, Union
 from typing_extensions import Self
 
 import httpx
@@ -11,6 +10,9 @@ from .retry import RETRY_DEFAULT
 from .throttling import BaseThrottler, LocalThrottler
 from .typing import RetryDecisionFunc
 
+if TYPE_CHECKING:
+    import ssl
+
 
 @dataclass(frozen=True)
 class Config:
@@ -19,7 +21,7 @@ class Config:
     user_agent: str
     follow_redirects: bool
     timeout: httpx.Timeout
-    ssl_verify: Union[bool, ssl.SSLContext]
+    ssl_verify: Union[bool, "ssl.SSLContext"]
     cache_strategy: BaseCacheStrategy
     http_cache: bool
     throttler: BaseThrottler
@@ -106,7 +108,7 @@ def get_config(
     user_agent: Optional[str] = None,
     follow_redirects: bool = True,
     timeout: Optional[Union[float, httpx.Timeout]] = None,
-    ssl_verify: Union[bool, ssl.SSLContext] = True,
+    ssl_verify: Union[bool, "ssl.SSLContext"] = True,
     cache_strategy: Optional[BaseCacheStrategy] = None,
     http_cache: bool = True,
     throttler: Optional[BaseThrottler] = None,
