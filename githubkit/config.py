@@ -19,12 +19,12 @@ class Config:
     user_agent: str
     follow_redirects: bool
     timeout: httpx.Timeout
+    ssl_verify: Union[bool, ssl.SSLContext]
     cache_strategy: BaseCacheStrategy
     http_cache: bool
     throttler: BaseThrottler
     auto_retry: Optional[RetryDecisionFunc]
     rest_api_validate_body: bool
-    ssl_verify: Union[bool, ssl.SSLContext]
 
     def dict(self) -> dict[str, Any]:
         """Return the config as a dictionary without copy values."""
@@ -106,12 +106,12 @@ def get_config(
     user_agent: Optional[str] = None,
     follow_redirects: bool = True,
     timeout: Optional[Union[float, httpx.Timeout]] = None,
+    ssl_verify: Union[bool, ssl.SSLContext] = True,
     cache_strategy: Optional[BaseCacheStrategy] = None,
     http_cache: bool = True,
     throttler: Optional[BaseThrottler] = None,
     auto_retry: Union[bool, RetryDecisionFunc] = True,
     rest_api_validate_body: bool = True,
-    ssl_verify: Union[bool, ssl.SSLContext] = True,
 ) -> Config:
     """Build the configs from the given options."""
     return Config(
@@ -120,10 +120,10 @@ def get_config(
         build_user_agent(user_agent),
         follow_redirects,
         build_timeout(timeout),
+        ssl_verify,
         build_cache_strategy(cache_strategy),
         http_cache,
         build_throttler(throttler),
         build_auto_retry(auto_retry),
         rest_api_validate_body,
-        ssl_verify,
     )

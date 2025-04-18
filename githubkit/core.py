@@ -84,12 +84,12 @@ class GitHubCore(Generic[A]):
         user_agent: Optional[str] = None,
         follow_redirects: bool = True,
         timeout: Optional[Union[float, httpx.Timeout]] = None,
+        ssl_verify: Union[bool, ssl.SSLContext] = ...,
         cache_strategy: Optional[BaseCacheStrategy] = None,
         http_cache: bool = True,
         throttler: Optional[BaseThrottler] = None,
         auto_retry: Union[bool, RetryDecisionFunc] = True,
         rest_api_validate_body: bool = True,
-        ssl_verify: Union[bool, ssl.SSLContext] = ...,
     ): ...
 
     # token auth without config
@@ -104,12 +104,12 @@ class GitHubCore(Generic[A]):
         user_agent: Optional[str] = None,
         follow_redirects: bool = True,
         timeout: Optional[Union[float, httpx.Timeout]] = None,
+        ssl_verify: Union[bool, ssl.SSLContext] = ...,
         cache_strategy: Optional[BaseCacheStrategy] = None,
         http_cache: bool = True,
         throttler: Optional[BaseThrottler] = None,
         auto_retry: Union[bool, RetryDecisionFunc] = True,
         rest_api_validate_body: bool = True,
-        ssl_verify: Union[bool, ssl.SSLContext] = ...,
     ): ...
 
     # other auth strategies without config
@@ -124,12 +124,12 @@ class GitHubCore(Generic[A]):
         user_agent: Optional[str] = None,
         follow_redirects: bool = True,
         timeout: Optional[Union[float, httpx.Timeout]] = None,
+        ssl_verify: Union[bool, ssl.SSLContext] = ...,
         cache_strategy: Optional[BaseCacheStrategy] = None,
         http_cache: bool = True,
         throttler: Optional[BaseThrottler] = None,
         auto_retry: Union[bool, RetryDecisionFunc] = True,
         rest_api_validate_body: bool = True,
-        ssl_verify: Union[bool, ssl.SSLContext] = ...,
     ): ...
 
     def __init__(
@@ -143,12 +143,12 @@ class GitHubCore(Generic[A]):
         user_agent: Optional[str] = None,
         follow_redirects: bool = True,
         timeout: Optional[Union[float, httpx.Timeout]] = None,
+        ssl_verify: Union[bool, ssl.SSLContext] = True,
         cache_strategy: Optional[BaseCacheStrategy] = None,
         http_cache: bool = True,
         throttler: Optional[BaseThrottler] = None,
         auto_retry: Union[bool, RetryDecisionFunc] = True,
         rest_api_validate_body: bool = True,
-        ssl_verify: Union[bool, ssl.SSLContext] = True,
     ):
         auth = auth or UnauthAuthStrategy()  # type: ignore
         self.auth: A = (  # type: ignore
@@ -162,12 +162,12 @@ class GitHubCore(Generic[A]):
             user_agent=user_agent,
             follow_redirects=follow_redirects,
             timeout=timeout,
+            ssl_verify=ssl_verify,
             cache_strategy=cache_strategy,
             http_cache=http_cache,
             throttler=throttler,
             auto_retry=auto_retry,
             rest_api_validate_body=rest_api_validate_body,
-            ssl_verify=ssl_verify,
         )
 
         self.__sync_client: ContextVar[Optional[httpx.Client]] = ContextVar(
