@@ -12,6 +12,8 @@ from .typing import RetryDecisionFunc
 from .versions import RestVersionSwitcher, WebhooksVersionSwitcher
 
 if TYPE_CHECKING:
+    import ssl
+
     import httpx
 
     from .auth import TokenAuthStrategy, UnauthAuthStrategy
@@ -74,6 +76,7 @@ class GitHub(GitHubCore[A]):
             user_agent: Optional[str] = None,
             follow_redirects: bool = True,
             timeout: Optional[Union[float, httpx.Timeout]] = None,
+            ssl_verify: Union[bool, "ssl.SSLContext"] = ...,
             cache_strategy: Optional["BaseCacheStrategy"] = None,
             http_cache: bool = True,
             throttler: Optional["BaseThrottler"] = None,
@@ -93,6 +96,7 @@ class GitHub(GitHubCore[A]):
             user_agent: Optional[str] = None,
             follow_redirects: bool = True,
             timeout: Optional[Union[float, httpx.Timeout]] = None,
+            ssl_verify: Union[bool, "ssl.SSLContext"] = ...,
             cache_strategy: Optional["BaseCacheStrategy"] = None,
             http_cache: bool = True,
             throttler: Optional["BaseThrottler"] = None,
@@ -112,6 +116,7 @@ class GitHub(GitHubCore[A]):
             user_agent: Optional[str] = None,
             follow_redirects: bool = True,
             timeout: Optional[Union[float, httpx.Timeout]] = None,
+            ssl_verify: Union[bool, "ssl.SSLContext"] = ...,
             cache_strategy: Optional["BaseCacheStrategy"] = None,
             http_cache: bool = True,
             throttler: Optional["BaseThrottler"] = None,

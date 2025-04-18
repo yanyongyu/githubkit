@@ -4,7 +4,7 @@ from contextvars import ContextVar
 from datetime import datetime, timedelta, timezone
 import time
 from types import TracebackType
-from typing import Any, Generic, Optional, TypeVar, Union, cast, overload
+from typing import TYPE_CHECKING, Any, Generic, Optional, TypeVar, Union, cast, overload
 
 import anyio
 import hishel
@@ -35,6 +35,9 @@ from .typing import (
     URLTypes,
 )
 from .utils import UNSET
+
+if TYPE_CHECKING:
+    import ssl
 
 T = TypeVar("T")
 A = TypeVar("A", bound="BaseAuthStrategy")
@@ -81,6 +84,7 @@ class GitHubCore(Generic[A]):
         user_agent: Optional[str] = None,
         follow_redirects: bool = True,
         timeout: Optional[Union[float, httpx.Timeout]] = None,
+        ssl_verify: Union[bool, "ssl.SSLContext"] = ...,
         cache_strategy: Optional[BaseCacheStrategy] = None,
         http_cache: bool = True,
         throttler: Optional[BaseThrottler] = None,
@@ -100,6 +104,7 @@ class GitHubCore(Generic[A]):
         user_agent: Optional[str] = None,
         follow_redirects: bool = True,
         timeout: Optional[Union[float, httpx.Timeout]] = None,
+        ssl_verify: Union[bool, "ssl.SSLContext"] = ...,
         cache_strategy: Optional[BaseCacheStrategy] = None,
         http_cache: bool = True,
         throttler: Optional[BaseThrottler] = None,
@@ -119,6 +124,7 @@ class GitHubCore(Generic[A]):
         user_agent: Optional[str] = None,
         follow_redirects: bool = True,
         timeout: Optional[Union[float, httpx.Timeout]] = None,
+        ssl_verify: Union[bool, "ssl.SSLContext"] = ...,
         cache_strategy: Optional[BaseCacheStrategy] = None,
         http_cache: bool = True,
         throttler: Optional[BaseThrottler] = None,
@@ -137,6 +143,7 @@ class GitHubCore(Generic[A]):
         user_agent: Optional[str] = None,
         follow_redirects: bool = True,
         timeout: Optional[Union[float, httpx.Timeout]] = None,
+        ssl_verify: Union[bool, "ssl.SSLContext"] = True,
         cache_strategy: Optional[BaseCacheStrategy] = None,
         http_cache: bool = True,
         throttler: Optional[BaseThrottler] = None,
@@ -155,6 +162,7 @@ class GitHubCore(Generic[A]):
             user_agent=user_agent,
             follow_redirects=follow_redirects,
             timeout=timeout,
+            ssl_verify=ssl_verify,
             cache_strategy=cache_strategy,
             http_cache=http_cache,
             throttler=throttler,
@@ -212,6 +220,7 @@ class GitHubCore(Generic[A]):
             },
             "timeout": self.config.timeout,
             "follow_redirects": self.config.follow_redirects,
+            "verify": self.config.ssl_verify,
         }
 
     # create sync client
