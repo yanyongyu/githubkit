@@ -1,5 +1,6 @@
 from collections.abc import Awaitable, Sequence
 from functools import cached_property
+import ssl
 from typing import TYPE_CHECKING, Any, Callable, Optional, TypeVar, Union, overload
 from typing_extensions import ParamSpec
 
@@ -79,6 +80,7 @@ class GitHub(GitHubCore[A]):
             throttler: Optional["BaseThrottler"] = None,
             auto_retry: Union[bool, RetryDecisionFunc] = True,
             rest_api_validate_body: bool = True,
+            ssl_verify: Union[bool, ssl.SSLContext] = ...,
         ): ...
 
         # token auth without config
@@ -98,6 +100,7 @@ class GitHub(GitHubCore[A]):
             throttler: Optional["BaseThrottler"] = None,
             auto_retry: Union[bool, RetryDecisionFunc] = True,
             rest_api_validate_body: bool = True,
+            ssl_verify: Union[bool, ssl.SSLContext] = ...,
         ): ...
 
         # other auth strategies without config
@@ -117,6 +120,7 @@ class GitHub(GitHubCore[A]):
             throttler: Optional["BaseThrottler"] = None,
             auto_retry: Union[bool, RetryDecisionFunc] = True,
             rest_api_validate_body: bool = True,
+            ssl_verify: Union[bool, ssl.SSLContext] = ...,
         ): ...
 
         def __init__(self, *args, **kwargs): ...

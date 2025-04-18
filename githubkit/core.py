@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from collections.abc import AsyncGenerator, Generator, Mapping, Sequence
 from contextlib import asynccontextmanager, contextmanager
 from contextvars import ContextVar
@@ -91,7 +89,7 @@ class GitHubCore(Generic[A]):
         throttler: Optional[BaseThrottler] = None,
         auto_retry: Union[bool, RetryDecisionFunc] = True,
         rest_api_validate_body: bool = True,
-        verify: Union[bool, str, ssl.SSLContext] = ...,
+        ssl_verify: Union[bool, ssl.SSLContext] = ...,
     ): ...
 
     # token auth without config
@@ -111,7 +109,7 @@ class GitHubCore(Generic[A]):
         throttler: Optional[BaseThrottler] = None,
         auto_retry: Union[bool, RetryDecisionFunc] = True,
         rest_api_validate_body: bool = True,
-        verify: Union[bool, str, ssl.SSLContext] = ...,
+        ssl_verify: Union[bool, ssl.SSLContext] = ...,
     ): ...
 
     # other auth strategies without config
@@ -131,7 +129,7 @@ class GitHubCore(Generic[A]):
         throttler: Optional[BaseThrottler] = None,
         auto_retry: Union[bool, RetryDecisionFunc] = True,
         rest_api_validate_body: bool = True,
-        verify: Union[bool, str, ssl.SSLContext] = ...,
+        ssl_verify: Union[bool, ssl.SSLContext] = ...,
     ): ...
 
     def __init__(
@@ -150,7 +148,7 @@ class GitHubCore(Generic[A]):
         throttler: Optional[BaseThrottler] = None,
         auto_retry: Union[bool, RetryDecisionFunc] = True,
         rest_api_validate_body: bool = True,
-        verify: Union[bool, str, ssl.SSLContext] = True,
+        ssl_verify: Union[bool, ssl.SSLContext] = True,
     ):
         auth = auth or UnauthAuthStrategy()  # type: ignore
         self.auth: A = (  # type: ignore
@@ -169,7 +167,7 @@ class GitHubCore(Generic[A]):
             throttler=throttler,
             auto_retry=auto_retry,
             rest_api_validate_body=rest_api_validate_body,
-            verify=verify,
+            ssl_verify=ssl_verify,
         )
 
         self.__sync_client: ContextVar[Optional[httpx.Client]] = ContextVar(
@@ -222,7 +220,7 @@ class GitHubCore(Generic[A]):
             },
             "timeout": self.config.timeout,
             "follow_redirects": self.config.follow_redirects,
-            "verify": self.config.verify,
+            "verify": self.config.ssl_verify,
         }
 
     # create sync client
