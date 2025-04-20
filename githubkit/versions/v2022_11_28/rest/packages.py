@@ -49,7 +49,16 @@ class PackagesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Package], list[PackageType]]:
-        """See also: https://docs.github.com/rest/packages/packages#get-list-of-conflicting-packages-during-docker-migration-for-organization"""
+        """packages/list-docker-migration-conflicting-packages-for-organization
+
+        GET /orgs/{org}/docker/conflicts
+
+        Lists all packages that are in a specific organization, are readable by the requesting user, and that encountered a conflict during a Docker migration.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/packages/packages#get-list-of-conflicting-packages-during-docker-migration-for-organization
+        """
 
         from ..models import BasicError, Package
 
@@ -74,7 +83,16 @@ class PackagesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Package], list[PackageType]]:
-        """See also: https://docs.github.com/rest/packages/packages#get-list-of-conflicting-packages-during-docker-migration-for-organization"""
+        """packages/list-docker-migration-conflicting-packages-for-organization
+
+        GET /orgs/{org}/docker/conflicts
+
+        Lists all packages that are in a specific organization, are readable by the requesting user, and that encountered a conflict during a Docker migration.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/packages/packages#get-list-of-conflicting-packages-during-docker-migration-for-organization
+        """
 
         from ..models import BasicError, Package
 
@@ -105,7 +123,16 @@ class PackagesClient:
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Package], list[PackageType]]:
-        """See also: https://docs.github.com/rest/packages/packages#list-packages-for-an-organization"""
+        """packages/list-packages-for-organization
+
+        GET /orgs/{org}/packages
+
+        Lists packages in an organization readable by the user.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+
+        See also: https://docs.github.com/rest/packages/packages#list-packages-for-an-organization
+        """
 
         from ..models import BasicError, Package
 
@@ -144,7 +171,16 @@ class PackagesClient:
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Package], list[PackageType]]:
-        """See also: https://docs.github.com/rest/packages/packages#list-packages-for-an-organization"""
+        """packages/list-packages-for-organization
+
+        GET /orgs/{org}/packages
+
+        Lists packages in an organization readable by the user.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+
+        See also: https://docs.github.com/rest/packages/packages#list-packages-for-an-organization
+        """
 
         from ..models import BasicError, Package
 
@@ -181,7 +217,16 @@ class PackagesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Package, PackageType]:
-        """See also: https://docs.github.com/rest/packages/packages#get-a-package-for-an-organization"""
+        """packages/get-package-for-organization
+
+        GET /orgs/{org}/packages/{package_type}/{package_name}
+
+        Gets a specific package in an organization.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+
+        See also: https://docs.github.com/rest/packages/packages#get-a-package-for-an-organization
+        """
 
         from ..models import Package
 
@@ -206,7 +251,16 @@ class PackagesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Package, PackageType]:
-        """See also: https://docs.github.com/rest/packages/packages#get-a-package-for-an-organization"""
+        """packages/get-package-for-organization
+
+        GET /orgs/{org}/packages/{package_type}/{package_name}
+
+        Gets a specific package in an organization.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+
+        See also: https://docs.github.com/rest/packages/packages#get-a-package-for-an-organization
+        """
 
         from ..models import Package
 
@@ -231,7 +285,18 @@ class PackagesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/packages/packages#delete-a-package-for-an-organization"""
+        """packages/delete-package-for-org
+
+        DELETE /orgs/{org}/packages/{package_type}/{package_name}
+
+        Deletes an entire package in an organization. You cannot delete a public package if any version of the package has more than 5,000 downloads. In this scenario, contact GitHub support for further assistance.
+
+        The authenticated user must have admin permissions in the organization to use this endpoint. If the `package_type` belongs to a GitHub Packages registry that supports granular permissions, the authenticated user must also have admin permissions to the package. For the list of these registries, see "[About permissions for GitHub Packages](https://docs.github.com/packages/learn-github-packages/about-permissions-for-github-packages#granular-permissions-for-userorganization-scoped-packages)."
+
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` and `delete:packages` scopes to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+
+        See also: https://docs.github.com/rest/packages/packages#delete-a-package-for-an-organization
+        """
 
         from ..models import BasicError
 
@@ -260,7 +325,18 @@ class PackagesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/packages/packages#delete-a-package-for-an-organization"""
+        """packages/delete-package-for-org
+
+        DELETE /orgs/{org}/packages/{package_type}/{package_name}
+
+        Deletes an entire package in an organization. You cannot delete a public package if any version of the package has more than 5,000 downloads. In this scenario, contact GitHub support for further assistance.
+
+        The authenticated user must have admin permissions in the organization to use this endpoint. If the `package_type` belongs to a GitHub Packages registry that supports granular permissions, the authenticated user must also have admin permissions to the package. For the list of these registries, see "[About permissions for GitHub Packages](https://docs.github.com/packages/learn-github-packages/about-permissions-for-github-packages#granular-permissions-for-userorganization-scoped-packages)."
+
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` and `delete:packages` scopes to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+
+        See also: https://docs.github.com/rest/packages/packages#delete-a-package-for-an-organization
+        """
 
         from ..models import BasicError
 
@@ -290,7 +366,22 @@ class PackagesClient:
         token: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/packages/packages#restore-a-package-for-an-organization"""
+        """packages/restore-package-for-org
+
+        POST /orgs/{org}/packages/{package_type}/{package_name}/restore
+
+        Restores an entire package in an organization.
+
+        You can restore a deleted package under the following conditions:
+          - The package was deleted within the last 30 days.
+          - The same package namespace and version is still available and not reused for a new package. If the same package namespace is not available, you will not be able to restore your package. In this scenario, to restore the deleted package, you must delete the new package that uses the deleted package's namespace first.
+
+        The authenticated user must have admin permissions in the organization to use this endpoint. If the `package_type` belongs to a GitHub Packages registry that supports granular permissions, the authenticated user must also have admin permissions to the package. For the list of these registries, see "[About permissions for GitHub Packages](https://docs.github.com/packages/learn-github-packages/about-permissions-for-github-packages#granular-permissions-for-userorganization-scoped-packages)."
+
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` and `write:packages` scopes to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+
+        See also: https://docs.github.com/rest/packages/packages#restore-a-package-for-an-organization
+        """
 
         from ..models import BasicError
 
@@ -325,7 +416,22 @@ class PackagesClient:
         token: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/packages/packages#restore-a-package-for-an-organization"""
+        """packages/restore-package-for-org
+
+        POST /orgs/{org}/packages/{package_type}/{package_name}/restore
+
+        Restores an entire package in an organization.
+
+        You can restore a deleted package under the following conditions:
+          - The package was deleted within the last 30 days.
+          - The same package namespace and version is still available and not reused for a new package. If the same package namespace is not available, you will not be able to restore your package. In this scenario, to restore the deleted package, you must delete the new package that uses the deleted package's namespace first.
+
+        The authenticated user must have admin permissions in the organization to use this endpoint. If the `package_type` belongs to a GitHub Packages registry that supports granular permissions, the authenticated user must also have admin permissions to the package. For the list of these registries, see "[About permissions for GitHub Packages](https://docs.github.com/packages/learn-github-packages/about-permissions-for-github-packages#granular-permissions-for-userorganization-scoped-packages)."
+
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` and `write:packages` scopes to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+
+        See also: https://docs.github.com/rest/packages/packages#restore-a-package-for-an-organization
+        """
 
         from ..models import BasicError
 
@@ -362,7 +468,16 @@ class PackagesClient:
         state: Missing[Literal["active", "deleted"]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[PackageVersion], list[PackageVersionType]]:
-        """See also: https://docs.github.com/rest/packages/packages#list-package-versions-for-a-package-owned-by-an-organization"""
+        """packages/get-all-package-versions-for-package-owned-by-org
+
+        GET /orgs/{org}/packages/{package_type}/{package_name}/versions
+
+        Lists package versions for a package owned by an organization.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+
+        See also: https://docs.github.com/rest/packages/packages#list-package-versions-for-a-package-owned-by-an-organization
+        """
 
         from ..models import BasicError, PackageVersion
 
@@ -402,7 +517,16 @@ class PackagesClient:
         state: Missing[Literal["active", "deleted"]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[PackageVersion], list[PackageVersionType]]:
-        """See also: https://docs.github.com/rest/packages/packages#list-package-versions-for-a-package-owned-by-an-organization"""
+        """packages/get-all-package-versions-for-package-owned-by-org
+
+        GET /orgs/{org}/packages/{package_type}/{package_name}/versions
+
+        Lists package versions for a package owned by an organization.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+
+        See also: https://docs.github.com/rest/packages/packages#list-package-versions-for-a-package-owned-by-an-organization
+        """
 
         from ..models import BasicError, PackageVersion
 
@@ -440,7 +564,16 @@ class PackagesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[PackageVersion, PackageVersionType]:
-        """See also: https://docs.github.com/rest/packages/packages#get-a-package-version-for-an-organization"""
+        """packages/get-package-version-for-organization
+
+        GET /orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}
+
+        Gets a specific package version in an organization.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+
+        See also: https://docs.github.com/rest/packages/packages#get-a-package-version-for-an-organization
+        """
 
         from ..models import PackageVersion
 
@@ -466,7 +599,16 @@ class PackagesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[PackageVersion, PackageVersionType]:
-        """See also: https://docs.github.com/rest/packages/packages#get-a-package-version-for-an-organization"""
+        """packages/get-package-version-for-organization
+
+        GET /orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}
+
+        Gets a specific package version in an organization.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+
+        See also: https://docs.github.com/rest/packages/packages#get-a-package-version-for-an-organization
+        """
 
         from ..models import PackageVersion
 
@@ -492,7 +634,18 @@ class PackagesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/packages/packages#delete-package-version-for-an-organization"""
+        """packages/delete-package-version-for-org
+
+        DELETE /orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}
+
+        Deletes a specific package version in an organization. If the package is public and the package version has more than 5,000 downloads, you cannot delete the package version. In this scenario, contact GitHub support for further assistance.
+
+        The authenticated user must have admin permissions in the organization to use this endpoint. If the `package_type` belongs to a GitHub Packages registry that supports granular permissions, the authenticated user must also have admin permissions to the package. For the list of these registries, see "[About permissions for GitHub Packages](https://docs.github.com/packages/learn-github-packages/about-permissions-for-github-packages#granular-permissions-for-userorganization-scoped-packages)."
+
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` and `delete:packages` scopes to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+
+        See also: https://docs.github.com/rest/packages/packages#delete-package-version-for-an-organization
+        """
 
         from ..models import BasicError
 
@@ -522,7 +675,18 @@ class PackagesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/packages/packages#delete-package-version-for-an-organization"""
+        """packages/delete-package-version-for-org
+
+        DELETE /orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}
+
+        Deletes a specific package version in an organization. If the package is public and the package version has more than 5,000 downloads, you cannot delete the package version. In this scenario, contact GitHub support for further assistance.
+
+        The authenticated user must have admin permissions in the organization to use this endpoint. If the `package_type` belongs to a GitHub Packages registry that supports granular permissions, the authenticated user must also have admin permissions to the package. For the list of these registries, see "[About permissions for GitHub Packages](https://docs.github.com/packages/learn-github-packages/about-permissions-for-github-packages#granular-permissions-for-userorganization-scoped-packages)."
+
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` and `delete:packages` scopes to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+
+        See also: https://docs.github.com/rest/packages/packages#delete-package-version-for-an-organization
+        """
 
         from ..models import BasicError
 
@@ -552,7 +716,22 @@ class PackagesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/packages/packages#restore-package-version-for-an-organization"""
+        """packages/restore-package-version-for-org
+
+        POST /orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}/restore
+
+        Restores a specific package version in an organization.
+
+        You can restore a deleted package under the following conditions:
+          - The package was deleted within the last 30 days.
+          - The same package namespace and version is still available and not reused for a new package. If the same package namespace is not available, you will not be able to restore your package. In this scenario, to restore the deleted package, you must delete the new package that uses the deleted package's namespace first.
+
+        The authenticated user must have admin permissions in the organization to use this endpoint. If the `package_type` belongs to a GitHub Packages registry that supports granular permissions, the authenticated user must also have admin permissions to the package. For the list of these registries, see "[About permissions for GitHub Packages](https://docs.github.com/packages/learn-github-packages/about-permissions-for-github-packages#granular-permissions-for-userorganization-scoped-packages)."
+
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` and `write:packages` scopes to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+
+        See also: https://docs.github.com/rest/packages/packages#restore-package-version-for-an-organization
+        """
 
         from ..models import BasicError
 
@@ -582,7 +761,22 @@ class PackagesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/packages/packages#restore-package-version-for-an-organization"""
+        """packages/restore-package-version-for-org
+
+        POST /orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}/restore
+
+        Restores a specific package version in an organization.
+
+        You can restore a deleted package under the following conditions:
+          - The package was deleted within the last 30 days.
+          - The same package namespace and version is still available and not reused for a new package. If the same package namespace is not available, you will not be able to restore your package. In this scenario, to restore the deleted package, you must delete the new package that uses the deleted package's namespace first.
+
+        The authenticated user must have admin permissions in the organization to use this endpoint. If the `package_type` belongs to a GitHub Packages registry that supports granular permissions, the authenticated user must also have admin permissions to the package. For the list of these registries, see "[About permissions for GitHub Packages](https://docs.github.com/packages/learn-github-packages/about-permissions-for-github-packages#granular-permissions-for-userorganization-scoped-packages)."
+
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` and `write:packages` scopes to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+
+        See also: https://docs.github.com/rest/packages/packages#restore-package-version-for-an-organization
+        """
 
         from ..models import BasicError
 
@@ -606,7 +800,16 @@ class PackagesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Package], list[PackageType]]:
-        """See also: https://docs.github.com/rest/packages/packages#get-list-of-conflicting-packages-during-docker-migration-for-authenticated-user"""
+        """packages/list-docker-migration-conflicting-packages-for-authenticated-user
+
+        GET /user/docker/conflicts
+
+        Lists all packages that are owned by the authenticated user within the user's namespace, and that encountered a conflict during a Docker migration.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/packages/packages#get-list-of-conflicting-packages-during-docker-migration-for-authenticated-user
+        """
 
         from ..models import Package
 
@@ -626,7 +829,16 @@ class PackagesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Package], list[PackageType]]:
-        """See also: https://docs.github.com/rest/packages/packages#get-list-of-conflicting-packages-during-docker-migration-for-authenticated-user"""
+        """packages/list-docker-migration-conflicting-packages-for-authenticated-user
+
+        GET /user/docker/conflicts
+
+        Lists all packages that are owned by the authenticated user within the user's namespace, and that encountered a conflict during a Docker migration.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/packages/packages#get-list-of-conflicting-packages-during-docker-migration-for-authenticated-user
+        """
 
         from ..models import Package
 
@@ -652,7 +864,16 @@ class PackagesClient:
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Package], list[PackageType]]:
-        """See also: https://docs.github.com/rest/packages/packages#list-packages-for-the-authenticated-users-namespace"""
+        """packages/list-packages-for-authenticated-user
+
+        GET /user/packages
+
+        Lists packages owned by the authenticated user within the user's namespace.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+
+        See also: https://docs.github.com/rest/packages/packages#list-packages-for-the-authenticated-users-namespace
+        """
 
         from ..models import Package
 
@@ -687,7 +908,16 @@ class PackagesClient:
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Package], list[PackageType]]:
-        """See also: https://docs.github.com/rest/packages/packages#list-packages-for-the-authenticated-users-namespace"""
+        """packages/list-packages-for-authenticated-user
+
+        GET /user/packages
+
+        Lists packages owned by the authenticated user within the user's namespace.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+
+        See also: https://docs.github.com/rest/packages/packages#list-packages-for-the-authenticated-users-namespace
+        """
 
         from ..models import Package
 
@@ -720,7 +950,16 @@ class PackagesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Package, PackageType]:
-        """See also: https://docs.github.com/rest/packages/packages#get-a-package-for-the-authenticated-user"""
+        """packages/get-package-for-authenticated-user
+
+        GET /user/packages/{package_type}/{package_name}
+
+        Gets a specific package for a package owned by the authenticated user.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+
+        See also: https://docs.github.com/rest/packages/packages#get-a-package-for-the-authenticated-user
+        """
 
         from ..models import Package
 
@@ -744,7 +983,16 @@ class PackagesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Package, PackageType]:
-        """See also: https://docs.github.com/rest/packages/packages#get-a-package-for-the-authenticated-user"""
+        """packages/get-package-for-authenticated-user
+
+        GET /user/packages/{package_type}/{package_name}
+
+        Gets a specific package for a package owned by the authenticated user.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+
+        See also: https://docs.github.com/rest/packages/packages#get-a-package-for-the-authenticated-user
+        """
 
         from ..models import Package
 
@@ -768,7 +1016,16 @@ class PackagesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/packages/packages#delete-a-package-for-the-authenticated-user"""
+        """packages/delete-package-for-authenticated-user
+
+        DELETE /user/packages/{package_type}/{package_name}
+
+        Deletes a package owned by the authenticated user. You cannot delete a public package if any version of the package has more than 5,000 downloads. In this scenario, contact GitHub support for further assistance.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` and `delete:packages` scopes to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+
+        See also: https://docs.github.com/rest/packages/packages#delete-a-package-for-the-authenticated-user
+        """
 
         from ..models import BasicError
 
@@ -796,7 +1053,16 @@ class PackagesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/packages/packages#delete-a-package-for-the-authenticated-user"""
+        """packages/delete-package-for-authenticated-user
+
+        DELETE /user/packages/{package_type}/{package_name}
+
+        Deletes a package owned by the authenticated user. You cannot delete a public package if any version of the package has more than 5,000 downloads. In this scenario, contact GitHub support for further assistance.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` and `delete:packages` scopes to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+
+        See also: https://docs.github.com/rest/packages/packages#delete-a-package-for-the-authenticated-user
+        """
 
         from ..models import BasicError
 
@@ -825,7 +1091,20 @@ class PackagesClient:
         token: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/packages/packages#restore-a-package-for-the-authenticated-user"""
+        """packages/restore-package-for-authenticated-user
+
+        POST /user/packages/{package_type}/{package_name}/restore
+
+        Restores a package owned by the authenticated user.
+
+        You can restore a deleted package under the following conditions:
+          - The package was deleted within the last 30 days.
+          - The same package namespace and version is still available and not reused for a new package. If the same package namespace is not available, you will not be able to restore your package. In this scenario, to restore the deleted package, you must delete the new package that uses the deleted package's namespace first.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` and `write:packages` scopes to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+
+        See also: https://docs.github.com/rest/packages/packages#restore-a-package-for-the-authenticated-user
+        """
 
         from ..models import BasicError
 
@@ -859,7 +1138,20 @@ class PackagesClient:
         token: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/packages/packages#restore-a-package-for-the-authenticated-user"""
+        """packages/restore-package-for-authenticated-user
+
+        POST /user/packages/{package_type}/{package_name}/restore
+
+        Restores a package owned by the authenticated user.
+
+        You can restore a deleted package under the following conditions:
+          - The package was deleted within the last 30 days.
+          - The same package namespace and version is still available and not reused for a new package. If the same package namespace is not available, you will not be able to restore your package. In this scenario, to restore the deleted package, you must delete the new package that uses the deleted package's namespace first.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` and `write:packages` scopes to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+
+        See also: https://docs.github.com/rest/packages/packages#restore-a-package-for-the-authenticated-user
+        """
 
         from ..models import BasicError
 
@@ -895,7 +1187,16 @@ class PackagesClient:
         state: Missing[Literal["active", "deleted"]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[PackageVersion], list[PackageVersionType]]:
-        """See also: https://docs.github.com/rest/packages/packages#list-package-versions-for-a-package-owned-by-the-authenticated-user"""
+        """packages/get-all-package-versions-for-package-owned-by-authenticated-user
+
+        GET /user/packages/{package_type}/{package_name}/versions
+
+        Lists package versions for a package owned by the authenticated user.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+
+        See also: https://docs.github.com/rest/packages/packages#list-package-versions-for-a-package-owned-by-the-authenticated-user
+        """
 
         from ..models import BasicError, PackageVersion
 
@@ -934,7 +1235,16 @@ class PackagesClient:
         state: Missing[Literal["active", "deleted"]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[PackageVersion], list[PackageVersionType]]:
-        """See also: https://docs.github.com/rest/packages/packages#list-package-versions-for-a-package-owned-by-the-authenticated-user"""
+        """packages/get-all-package-versions-for-package-owned-by-authenticated-user
+
+        GET /user/packages/{package_type}/{package_name}/versions
+
+        Lists package versions for a package owned by the authenticated user.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+
+        See also: https://docs.github.com/rest/packages/packages#list-package-versions-for-a-package-owned-by-the-authenticated-user
+        """
 
         from ..models import BasicError, PackageVersion
 
@@ -971,7 +1281,16 @@ class PackagesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[PackageVersion, PackageVersionType]:
-        """See also: https://docs.github.com/rest/packages/packages#get-a-package-version-for-the-authenticated-user"""
+        """packages/get-package-version-for-authenticated-user
+
+        GET /user/packages/{package_type}/{package_name}/versions/{package_version_id}
+
+        Gets a specific package version for a package owned by the authenticated user.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+
+        See also: https://docs.github.com/rest/packages/packages#get-a-package-version-for-the-authenticated-user
+        """
 
         from ..models import PackageVersion
 
@@ -996,7 +1315,16 @@ class PackagesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[PackageVersion, PackageVersionType]:
-        """See also: https://docs.github.com/rest/packages/packages#get-a-package-version-for-the-authenticated-user"""
+        """packages/get-package-version-for-authenticated-user
+
+        GET /user/packages/{package_type}/{package_name}/versions/{package_version_id}
+
+        Gets a specific package version for a package owned by the authenticated user.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+
+        See also: https://docs.github.com/rest/packages/packages#get-a-package-version-for-the-authenticated-user
+        """
 
         from ..models import PackageVersion
 
@@ -1021,7 +1349,18 @@ class PackagesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/packages/packages#delete-a-package-version-for-the-authenticated-user"""
+        """packages/delete-package-version-for-authenticated-user
+
+        DELETE /user/packages/{package_type}/{package_name}/versions/{package_version_id}
+
+        Deletes a specific package version for a package owned by the authenticated user.  If the package is public and the package version has more than 5,000 downloads, you cannot delete the package version. In this scenario, contact GitHub support for further assistance.
+
+        The authenticated user must have admin permissions in the organization to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` and `delete:packages` scopes to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+
+        See also: https://docs.github.com/rest/packages/packages#delete-a-package-version-for-the-authenticated-user
+        """
 
         from ..models import BasicError
 
@@ -1050,7 +1389,18 @@ class PackagesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/packages/packages#delete-a-package-version-for-the-authenticated-user"""
+        """packages/delete-package-version-for-authenticated-user
+
+        DELETE /user/packages/{package_type}/{package_name}/versions/{package_version_id}
+
+        Deletes a specific package version for a package owned by the authenticated user.  If the package is public and the package version has more than 5,000 downloads, you cannot delete the package version. In this scenario, contact GitHub support for further assistance.
+
+        The authenticated user must have admin permissions in the organization to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` and `delete:packages` scopes to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+
+        See also: https://docs.github.com/rest/packages/packages#delete-a-package-version-for-the-authenticated-user
+        """
 
         from ..models import BasicError
 
@@ -1079,7 +1429,20 @@ class PackagesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/packages/packages#restore-a-package-version-for-the-authenticated-user"""
+        """packages/restore-package-version-for-authenticated-user
+
+        POST /user/packages/{package_type}/{package_name}/versions/{package_version_id}/restore
+
+        Restores a package version owned by the authenticated user.
+
+        You can restore a deleted package version under the following conditions:
+          - The package was deleted within the last 30 days.
+          - The same package namespace and version is still available and not reused for a new package. If the same package namespace is not available, you will not be able to restore your package. In this scenario, to restore the deleted package, you must delete the new package that uses the deleted package's namespace first.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` and `write:packages` scopes to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+
+        See also: https://docs.github.com/rest/packages/packages#restore-a-package-version-for-the-authenticated-user
+        """
 
         from ..models import BasicError
 
@@ -1108,7 +1471,20 @@ class PackagesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/packages/packages#restore-a-package-version-for-the-authenticated-user"""
+        """packages/restore-package-version-for-authenticated-user
+
+        POST /user/packages/{package_type}/{package_name}/versions/{package_version_id}/restore
+
+        Restores a package version owned by the authenticated user.
+
+        You can restore a deleted package version under the following conditions:
+          - The package was deleted within the last 30 days.
+          - The same package namespace and version is still available and not reused for a new package. If the same package namespace is not available, you will not be able to restore your package. In this scenario, to restore the deleted package, you must delete the new package that uses the deleted package's namespace first.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` and `write:packages` scopes to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+
+        See also: https://docs.github.com/rest/packages/packages#restore-a-package-version-for-the-authenticated-user
+        """
 
         from ..models import BasicError
 
@@ -1133,7 +1509,16 @@ class PackagesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Package], list[PackageType]]:
-        """See also: https://docs.github.com/rest/packages/packages#get-list-of-conflicting-packages-during-docker-migration-for-user"""
+        """packages/list-docker-migration-conflicting-packages-for-user
+
+        GET /users/{username}/docker/conflicts
+
+        Lists all packages that are in a specific user's namespace, that the requesting user has access to, and that encountered a conflict during Docker migration.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/packages/packages#get-list-of-conflicting-packages-during-docker-migration-for-user
+        """
 
         from ..models import BasicError, Package
 
@@ -1158,7 +1543,16 @@ class PackagesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Package], list[PackageType]]:
-        """See also: https://docs.github.com/rest/packages/packages#get-list-of-conflicting-packages-during-docker-migration-for-user"""
+        """packages/list-docker-migration-conflicting-packages-for-user
+
+        GET /users/{username}/docker/conflicts
+
+        Lists all packages that are in a specific user's namespace, that the requesting user has access to, and that encountered a conflict during Docker migration.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/packages/packages#get-list-of-conflicting-packages-during-docker-migration-for-user
+        """
 
         from ..models import BasicError, Package
 
@@ -1189,7 +1583,16 @@ class PackagesClient:
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Package], list[PackageType]]:
-        """See also: https://docs.github.com/rest/packages/packages#list-packages-for-a-user"""
+        """packages/list-packages-for-user
+
+        GET /users/{username}/packages
+
+        Lists all packages in a user's namespace for which the requesting user has access.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+
+        See also: https://docs.github.com/rest/packages/packages#list-packages-for-a-user
+        """
 
         from ..models import BasicError, Package
 
@@ -1228,7 +1631,16 @@ class PackagesClient:
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Package], list[PackageType]]:
-        """See also: https://docs.github.com/rest/packages/packages#list-packages-for-a-user"""
+        """packages/list-packages-for-user
+
+        GET /users/{username}/packages
+
+        Lists all packages in a user's namespace for which the requesting user has access.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+
+        See also: https://docs.github.com/rest/packages/packages#list-packages-for-a-user
+        """
 
         from ..models import BasicError, Package
 
@@ -1265,7 +1677,16 @@ class PackagesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Package, PackageType]:
-        """See also: https://docs.github.com/rest/packages/packages#get-a-package-for-a-user"""
+        """packages/get-package-for-user
+
+        GET /users/{username}/packages/{package_type}/{package_name}
+
+        Gets a specific package metadata for a public package owned by a user.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+
+        See also: https://docs.github.com/rest/packages/packages#get-a-package-for-a-user
+        """
 
         from ..models import Package
 
@@ -1290,7 +1711,16 @@ class PackagesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Package, PackageType]:
-        """See also: https://docs.github.com/rest/packages/packages#get-a-package-for-a-user"""
+        """packages/get-package-for-user
+
+        GET /users/{username}/packages/{package_type}/{package_name}
+
+        Gets a specific package metadata for a public package owned by a user.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+
+        See also: https://docs.github.com/rest/packages/packages#get-a-package-for-a-user
+        """
 
         from ..models import Package
 
@@ -1315,7 +1745,18 @@ class PackagesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/packages/packages#delete-a-package-for-a-user"""
+        """packages/delete-package-for-user
+
+        DELETE /users/{username}/packages/{package_type}/{package_name}
+
+        Deletes an entire package for a user. You cannot delete a public package if any version of the package has more than 5,000 downloads. In this scenario, contact GitHub support for further assistance.
+
+        If the `package_type` belongs to a GitHub Packages registry that supports granular permissions, the authenticated user must have admin permissions to the package. For the list of these registries, see "[About permissions for GitHub Packages](https://docs.github.com/packages/learn-github-packages/about-permissions-for-github-packages#granular-permissions-for-userorganization-scoped-packages)."
+
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` and `delete:packages` scopes to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+
+        See also: https://docs.github.com/rest/packages/packages#delete-a-package-for-a-user
+        """
 
         from ..models import BasicError
 
@@ -1344,7 +1785,18 @@ class PackagesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/packages/packages#delete-a-package-for-a-user"""
+        """packages/delete-package-for-user
+
+        DELETE /users/{username}/packages/{package_type}/{package_name}
+
+        Deletes an entire package for a user. You cannot delete a public package if any version of the package has more than 5,000 downloads. In this scenario, contact GitHub support for further assistance.
+
+        If the `package_type` belongs to a GitHub Packages registry that supports granular permissions, the authenticated user must have admin permissions to the package. For the list of these registries, see "[About permissions for GitHub Packages](https://docs.github.com/packages/learn-github-packages/about-permissions-for-github-packages#granular-permissions-for-userorganization-scoped-packages)."
+
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` and `delete:packages` scopes to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+
+        See also: https://docs.github.com/rest/packages/packages#delete-a-package-for-a-user
+        """
 
         from ..models import BasicError
 
@@ -1374,7 +1826,22 @@ class PackagesClient:
         token: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/packages/packages#restore-a-package-for-a-user"""
+        """packages/restore-package-for-user
+
+        POST /users/{username}/packages/{package_type}/{package_name}/restore
+
+        Restores an entire package for a user.
+
+        You can restore a deleted package under the following conditions:
+          - The package was deleted within the last 30 days.
+          - The same package namespace and version is still available and not reused for a new package. If the same package namespace is not available, you will not be able to restore your package. In this scenario, to restore the deleted package, you must delete the new package that uses the deleted package's namespace first.
+
+        If the `package_type` belongs to a GitHub Packages registry that supports granular permissions, the authenticated user must have admin permissions to the package. For the list of these registries, see "[About permissions for GitHub Packages](https://docs.github.com/packages/learn-github-packages/about-permissions-for-github-packages#granular-permissions-for-userorganization-scoped-packages)."
+
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` and `write:packages` scopes to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+
+        See also: https://docs.github.com/rest/packages/packages#restore-a-package-for-a-user
+        """
 
         from ..models import BasicError
 
@@ -1409,7 +1876,22 @@ class PackagesClient:
         token: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/packages/packages#restore-a-package-for-a-user"""
+        """packages/restore-package-for-user
+
+        POST /users/{username}/packages/{package_type}/{package_name}/restore
+
+        Restores an entire package for a user.
+
+        You can restore a deleted package under the following conditions:
+          - The package was deleted within the last 30 days.
+          - The same package namespace and version is still available and not reused for a new package. If the same package namespace is not available, you will not be able to restore your package. In this scenario, to restore the deleted package, you must delete the new package that uses the deleted package's namespace first.
+
+        If the `package_type` belongs to a GitHub Packages registry that supports granular permissions, the authenticated user must have admin permissions to the package. For the list of these registries, see "[About permissions for GitHub Packages](https://docs.github.com/packages/learn-github-packages/about-permissions-for-github-packages#granular-permissions-for-userorganization-scoped-packages)."
+
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` and `write:packages` scopes to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+
+        See also: https://docs.github.com/rest/packages/packages#restore-a-package-for-a-user
+        """
 
         from ..models import BasicError
 
@@ -1443,7 +1925,16 @@ class PackagesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[PackageVersion], list[PackageVersionType]]:
-        """See also: https://docs.github.com/rest/packages/packages#list-package-versions-for-a-package-owned-by-a-user"""
+        """packages/get-all-package-versions-for-package-owned-by-user
+
+        GET /users/{username}/packages/{package_type}/{package_name}/versions
+
+        Lists package versions for a public package owned by a specified user.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+
+        See also: https://docs.github.com/rest/packages/packages#list-package-versions-for-a-package-owned-by-a-user
+        """
 
         from ..models import BasicError, PackageVersion
 
@@ -1473,7 +1964,16 @@ class PackagesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[PackageVersion], list[PackageVersionType]]:
-        """See also: https://docs.github.com/rest/packages/packages#list-package-versions-for-a-package-owned-by-a-user"""
+        """packages/get-all-package-versions-for-package-owned-by-user
+
+        GET /users/{username}/packages/{package_type}/{package_name}/versions
+
+        Lists package versions for a public package owned by a specified user.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+
+        See also: https://docs.github.com/rest/packages/packages#list-package-versions-for-a-package-owned-by-a-user
+        """
 
         from ..models import BasicError, PackageVersion
 
@@ -1504,7 +2004,16 @@ class PackagesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[PackageVersion, PackageVersionType]:
-        """See also: https://docs.github.com/rest/packages/packages#get-a-package-version-for-a-user"""
+        """packages/get-package-version-for-user
+
+        GET /users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}
+
+        Gets a specific package version for a public package owned by a specified user.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+
+        See also: https://docs.github.com/rest/packages/packages#get-a-package-version-for-a-user
+        """
 
         from ..models import PackageVersion
 
@@ -1530,7 +2039,16 @@ class PackagesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[PackageVersion, PackageVersionType]:
-        """See also: https://docs.github.com/rest/packages/packages#get-a-package-version-for-a-user"""
+        """packages/get-package-version-for-user
+
+        GET /users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}
+
+        Gets a specific package version for a public package owned by a specified user.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` scope to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+
+        See also: https://docs.github.com/rest/packages/packages#get-a-package-version-for-a-user
+        """
 
         from ..models import PackageVersion
 
@@ -1556,7 +2074,18 @@ class PackagesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/packages/packages#delete-package-version-for-a-user"""
+        """packages/delete-package-version-for-user
+
+        DELETE /users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}
+
+        Deletes a specific package version for a user. If the package is public and the package version has more than 5,000 downloads, you cannot delete the package version. In this scenario, contact GitHub support for further assistance.
+
+        If the `package_type` belongs to a GitHub Packages registry that supports granular permissions, the authenticated user must have admin permissions to the package. For the list of these registries, see "[About permissions for GitHub Packages](https://docs.github.com/packages/learn-github-packages/about-permissions-for-github-packages#granular-permissions-for-userorganization-scoped-packages)."
+
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` and `delete:packages` scopes to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+
+        See also: https://docs.github.com/rest/packages/packages#delete-package-version-for-a-user
+        """
 
         from ..models import BasicError
 
@@ -1586,7 +2115,18 @@ class PackagesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/packages/packages#delete-package-version-for-a-user"""
+        """packages/delete-package-version-for-user
+
+        DELETE /users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}
+
+        Deletes a specific package version for a user. If the package is public and the package version has more than 5,000 downloads, you cannot delete the package version. In this scenario, contact GitHub support for further assistance.
+
+        If the `package_type` belongs to a GitHub Packages registry that supports granular permissions, the authenticated user must have admin permissions to the package. For the list of these registries, see "[About permissions for GitHub Packages](https://docs.github.com/packages/learn-github-packages/about-permissions-for-github-packages#granular-permissions-for-userorganization-scoped-packages)."
+
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` and `delete:packages` scopes to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+
+        See also: https://docs.github.com/rest/packages/packages#delete-package-version-for-a-user
+        """
 
         from ..models import BasicError
 
@@ -1616,7 +2156,22 @@ class PackagesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/packages/packages#restore-package-version-for-a-user"""
+        """packages/restore-package-version-for-user
+
+        POST /users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}/restore
+
+        Restores a specific package version for a user.
+
+        You can restore a deleted package under the following conditions:
+          - The package was deleted within the last 30 days.
+          - The same package namespace and version is still available and not reused for a new package. If the same package namespace is not available, you will not be able to restore your package. In this scenario, to restore the deleted package, you must delete the new package that uses the deleted package's namespace first.
+
+        If the `package_type` belongs to a GitHub Packages registry that supports granular permissions, the authenticated user must have admin permissions to the package. For the list of these registries, see "[About permissions for GitHub Packages](https://docs.github.com/packages/learn-github-packages/about-permissions-for-github-packages#granular-permissions-for-userorganization-scoped-packages)."
+
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` and `write:packages` scopes to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+
+        See also: https://docs.github.com/rest/packages/packages#restore-package-version-for-a-user
+        """
 
         from ..models import BasicError
 
@@ -1646,7 +2201,22 @@ class PackagesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/packages/packages#restore-package-version-for-a-user"""
+        """packages/restore-package-version-for-user
+
+        POST /users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}/restore
+
+        Restores a specific package version for a user.
+
+        You can restore a deleted package under the following conditions:
+          - The package was deleted within the last 30 days.
+          - The same package namespace and version is still available and not reused for a new package. If the same package namespace is not available, you will not be able to restore your package. In this scenario, to restore the deleted package, you must delete the new package that uses the deleted package's namespace first.
+
+        If the `package_type` belongs to a GitHub Packages registry that supports granular permissions, the authenticated user must have admin permissions to the package. For the list of these registries, see "[About permissions for GitHub Packages](https://docs.github.com/packages/learn-github-packages/about-permissions-for-github-packages#granular-permissions-for-userorganization-scoped-packages)."
+
+        OAuth app tokens and personal access tokens (classic) need the `read:packages` and `write:packages` scopes to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)."
+
+        See also: https://docs.github.com/rest/packages/packages#restore-package-version-for-a-user
+        """
 
         from ..models import BasicError
 

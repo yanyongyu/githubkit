@@ -69,7 +69,18 @@ class PrivateRegistriesClient:
         OrgsOrgPrivateRegistriesGetResponse200,
         OrgsOrgPrivateRegistriesGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/private-registries/organization-configurations#list-private-registries-for-an-organization"""
+        """private-registries/list-org-private-registries
+
+        GET /orgs/{org}/private-registries
+
+
+        Lists all private registry configurations available at the organization-level without revealing their encrypted
+        values.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/private-registries/organization-configurations#list-private-registries-for-an-organization
+        """
 
         from ..models import BasicError, OrgsOrgPrivateRegistriesGetResponse200
 
@@ -105,7 +116,18 @@ class PrivateRegistriesClient:
         OrgsOrgPrivateRegistriesGetResponse200,
         OrgsOrgPrivateRegistriesGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/private-registries/organization-configurations#list-private-registries-for-an-organization"""
+        """private-registries/list-org-private-registries
+
+        GET /orgs/{org}/private-registries
+
+
+        Lists all private registry configurations available at the organization-level without revealing their encrypted
+        values.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/private-registries/organization-configurations#list-private-registries-for-an-organization
+        """
 
         from ..models import BasicError, OrgsOrgPrivateRegistriesGetResponse200
 
@@ -171,7 +193,17 @@ class PrivateRegistriesClient:
         OrgPrivateRegistryConfigurationWithSelectedRepositories,
         OrgPrivateRegistryConfigurationWithSelectedRepositoriesType,
     ]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/private-registries/organization-configurations#create-a-private-registry-for-an-organization"""
+        """private-registries/create-org-private-registry
+
+        POST /orgs/{org}/private-registries
+
+
+        Creates a private registry configuration with an encrypted value for an organization. Encrypt your secret using [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). For more information, see "[Encrypting secrets for the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/encrypting-secrets-for-the-rest-api)."
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/private-registries/organization-configurations#create-a-private-registry-for-an-organization
+        """
 
         from ..models import (
             BasicError,
@@ -246,7 +278,17 @@ class PrivateRegistriesClient:
         OrgPrivateRegistryConfigurationWithSelectedRepositories,
         OrgPrivateRegistryConfigurationWithSelectedRepositoriesType,
     ]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/private-registries/organization-configurations#create-a-private-registry-for-an-organization"""
+        """private-registries/create-org-private-registry
+
+        POST /orgs/{org}/private-registries
+
+
+        Creates a private registry configuration with an encrypted value for an organization. Encrypt your secret using [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). For more information, see "[Encrypting secrets for the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/encrypting-secrets-for-the-rest-api)."
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/private-registries/organization-configurations#create-a-private-registry-for-an-organization
+        """
 
         from ..models import (
             BasicError,
@@ -289,7 +331,17 @@ class PrivateRegistriesClient:
         OrgsOrgPrivateRegistriesPublicKeyGetResponse200,
         OrgsOrgPrivateRegistriesPublicKeyGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/private-registries/organization-configurations#get-private-registries-public-key-for-an-organization"""
+        """private-registries/get-org-public-key
+
+        GET /orgs/{org}/private-registries/public-key
+
+
+        Gets the org public key, which is needed to encrypt private registry secrets. You need to encrypt a secret before you can create or update secrets.
+
+        OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/private-registries/organization-configurations#get-private-registries-public-key-for-an-organization
+        """
 
         from ..models import BasicError, OrgsOrgPrivateRegistriesPublicKeyGetResponse200
 
@@ -316,7 +368,17 @@ class PrivateRegistriesClient:
         OrgsOrgPrivateRegistriesPublicKeyGetResponse200,
         OrgsOrgPrivateRegistriesPublicKeyGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/private-registries/organization-configurations#get-private-registries-public-key-for-an-organization"""
+        """private-registries/get-org-public-key
+
+        GET /orgs/{org}/private-registries/public-key
+
+
+        Gets the org public key, which is needed to encrypt private registry secrets. You need to encrypt a secret before you can create or update secrets.
+
+        OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/private-registries/organization-configurations#get-private-registries-public-key-for-an-organization
+        """
 
         from ..models import BasicError, OrgsOrgPrivateRegistriesPublicKeyGetResponse200
 
@@ -341,7 +403,17 @@ class PrivateRegistriesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[OrgPrivateRegistryConfiguration, OrgPrivateRegistryConfigurationType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/private-registries/organization-configurations#get-a-private-registry-for-an-organization"""
+        """private-registries/get-org-private-registry
+
+        GET /orgs/{org}/private-registries/{secret_name}
+
+
+        Get the configuration of a single private registry defined for an organization, omitting its encrypted value.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/private-registries/organization-configurations#get-a-private-registry-for-an-organization
+        """
 
         from ..models import BasicError, OrgPrivateRegistryConfiguration
 
@@ -366,7 +438,17 @@ class PrivateRegistriesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[OrgPrivateRegistryConfiguration, OrgPrivateRegistryConfigurationType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/private-registries/organization-configurations#get-a-private-registry-for-an-organization"""
+        """private-registries/get-org-private-registry
+
+        GET /orgs/{org}/private-registries/{secret_name}
+
+
+        Get the configuration of a single private registry defined for an organization, omitting its encrypted value.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/private-registries/organization-configurations#get-a-private-registry-for-an-organization
+        """
 
         from ..models import BasicError, OrgPrivateRegistryConfiguration
 
@@ -391,7 +473,17 @@ class PrivateRegistriesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/private-registries/organization-configurations#delete-a-private-registry-for-an-organization"""
+        """private-registries/delete-org-private-registry
+
+        DELETE /orgs/{org}/private-registries/{secret_name}
+
+
+        Delete a private registry configuration at the organization-level.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/private-registries/organization-configurations#delete-a-private-registry-for-an-organization
+        """
 
         from ..models import BasicError
 
@@ -416,7 +508,17 @@ class PrivateRegistriesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/private-registries/organization-configurations#delete-a-private-registry-for-an-organization"""
+        """private-registries/delete-org-private-registry
+
+        DELETE /orgs/{org}/private-registries/{secret_name}
+
+
+        Delete a private registry configuration at the organization-level.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/private-registries/organization-configurations#delete-a-private-registry-for-an-organization
+        """
 
         from ..models import BasicError
 
@@ -469,7 +571,17 @@ class PrivateRegistriesClient:
         data: Missing[OrgsOrgPrivateRegistriesSecretNamePatchBodyType] = UNSET,
         **kwargs,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/private-registries/organization-configurations#update-a-private-registry-for-an-organization"""
+        """private-registries/update-org-private-registry
+
+        PATCH /orgs/{org}/private-registries/{secret_name}
+
+
+        Updates a private registry configuration with an encrypted value for an organization. Encrypt your secret using [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). For more information, see "[Encrypting secrets for the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/encrypting-secrets-for-the-rest-api)."
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/private-registries/organization-configurations#update-a-private-registry-for-an-organization
+        """
 
         from ..models import (
             BasicError,
@@ -538,7 +650,17 @@ class PrivateRegistriesClient:
         data: Missing[OrgsOrgPrivateRegistriesSecretNamePatchBodyType] = UNSET,
         **kwargs,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/private-registries/organization-configurations#update-a-private-registry-for-an-organization"""
+        """private-registries/update-org-private-registry
+
+        PATCH /orgs/{org}/private-registries/{secret_name}
+
+
+        Updates a private registry configuration with an encrypted value for an organization. Encrypt your secret using [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). For more information, see "[Encrypting secrets for the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/encrypting-secrets-for-the-rest-api)."
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/private-registries/organization-configurations#update-a-private-registry-for-an-organization
+        """
 
         from ..models import (
             BasicError,

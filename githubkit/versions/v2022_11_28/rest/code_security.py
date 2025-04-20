@@ -87,7 +87,18 @@ class CodeSecurityClient:
         after: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[CodeSecurityConfiguration], list[CodeSecurityConfigurationType]]:
-        """See also: https://docs.github.com/rest/code-security/configurations#get-code-security-configurations-for-an-enterprise"""
+        """code-security/get-configurations-for-enterprise
+
+        GET /enterprises/{enterprise}/code-security/configurations
+
+        Lists all code security configurations available in an enterprise.
+
+        The authenticated user must be an administrator of the enterprise in order to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/code-security/configurations#get-code-security-configurations-for-an-enterprise
+        """
 
         from ..models import BasicError, CodeSecurityConfiguration
 
@@ -122,7 +133,18 @@ class CodeSecurityClient:
         after: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[CodeSecurityConfiguration], list[CodeSecurityConfigurationType]]:
-        """See also: https://docs.github.com/rest/code-security/configurations#get-code-security-configurations-for-an-enterprise"""
+        """code-security/get-configurations-for-enterprise
+
+        GET /enterprises/{enterprise}/code-security/configurations
+
+        Lists all code security configurations available in an enterprise.
+
+        The authenticated user must be an administrator of the enterprise in order to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/code-security/configurations#get-code-security-configurations-for-an-enterprise
+        """
 
         from ..models import BasicError, CodeSecurityConfiguration
 
@@ -221,7 +243,18 @@ class CodeSecurityClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]:
-        """See also: https://docs.github.com/rest/code-security/configurations#create-a-code-security-configuration-for-an-enterprise"""
+        """code-security/create-configuration-for-enterprise
+
+        POST /enterprises/{enterprise}/code-security/configurations
+
+        Creates a code security configuration in an enterprise.
+
+        The authenticated user must be an administrator of the enterprise in order to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/code-security/configurations#create-a-code-security-configuration-for-an-enterprise
+        """
 
         from ..models import (
             BasicError,
@@ -330,7 +363,18 @@ class CodeSecurityClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]:
-        """See also: https://docs.github.com/rest/code-security/configurations#create-a-code-security-configuration-for-an-enterprise"""
+        """code-security/create-configuration-for-enterprise
+
+        POST /enterprises/{enterprise}/code-security/configurations
+
+        Creates a code security configuration in an enterprise.
+
+        The authenticated user must be an administrator of the enterprise in order to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/code-security/configurations#create-a-code-security-configuration-for-an-enterprise
+        """
 
         from ..models import (
             BasicError,
@@ -375,7 +419,18 @@ class CodeSecurityClient:
         list[CodeSecurityDefaultConfigurationsItems],
         list[CodeSecurityDefaultConfigurationsItemsType],
     ]:
-        """See also: https://docs.github.com/rest/code-security/configurations#get-default-code-security-configurations-for-an-enterprise"""
+        """code-security/get-default-configurations-for-enterprise
+
+        GET /enterprises/{enterprise}/code-security/configurations/defaults
+
+        Lists the default code security configurations for an enterprise.
+
+        The authenticated user must be an administrator of the enterprise in order to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/code-security/configurations#get-default-code-security-configurations-for-an-enterprise
+        """
 
         from ..models import CodeSecurityDefaultConfigurationsItems
 
@@ -399,7 +454,18 @@ class CodeSecurityClient:
         list[CodeSecurityDefaultConfigurationsItems],
         list[CodeSecurityDefaultConfigurationsItemsType],
     ]:
-        """See also: https://docs.github.com/rest/code-security/configurations#get-default-code-security-configurations-for-an-enterprise"""
+        """code-security/get-default-configurations-for-enterprise
+
+        GET /enterprises/{enterprise}/code-security/configurations/defaults
+
+        Lists the default code security configurations for an enterprise.
+
+        The authenticated user must be an administrator of the enterprise in order to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/code-security/configurations#get-default-code-security-configurations-for-an-enterprise
+        """
 
         from ..models import CodeSecurityDefaultConfigurationsItems
 
@@ -421,7 +487,18 @@ class CodeSecurityClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]:
-        """See also: https://docs.github.com/rest/code-security/configurations#retrieve-a-code-security-configuration-of-an-enterprise"""
+        """code-security/get-single-configuration-for-enterprise
+
+        GET /enterprises/{enterprise}/code-security/configurations/{configuration_id}
+
+        Gets a code security configuration available in an enterprise.
+
+        The authenticated user must be an administrator of the enterprise in order to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/code-security/configurations#retrieve-a-code-security-configuration-of-an-enterprise
+        """
 
         from ..models import BasicError, CodeSecurityConfiguration
 
@@ -449,7 +526,18 @@ class CodeSecurityClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]:
-        """See also: https://docs.github.com/rest/code-security/configurations#retrieve-a-code-security-configuration-of-an-enterprise"""
+        """code-security/get-single-configuration-for-enterprise
+
+        GET /enterprises/{enterprise}/code-security/configurations/{configuration_id}
+
+        Gets a code security configuration available in an enterprise.
+
+        The authenticated user must be an administrator of the enterprise in order to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/code-security/configurations#retrieve-a-code-security-configuration-of-an-enterprise
+        """
 
         from ..models import BasicError, CodeSecurityConfiguration
 
@@ -477,7 +565,20 @@ class CodeSecurityClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/code-security/configurations#delete-a-code-security-configuration-for-an-enterprise"""
+        """code-security/delete-configuration-for-enterprise
+
+        DELETE /enterprises/{enterprise}/code-security/configurations/{configuration_id}
+
+        Deletes a code security configuration from an enterprise.
+        Repositories attached to the configuration will retain their settings but will no longer be associated with
+        the configuration.
+
+        The authenticated user must be an administrator for the enterprise to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/code-security/configurations#delete-a-code-security-configuration-for-an-enterprise
+        """
 
         from ..models import BasicError
 
@@ -506,7 +607,20 @@ class CodeSecurityClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/code-security/configurations#delete-a-code-security-configuration-for-an-enterprise"""
+        """code-security/delete-configuration-for-enterprise
+
+        DELETE /enterprises/{enterprise}/code-security/configurations/{configuration_id}
+
+        Deletes a code security configuration from an enterprise.
+        Repositories attached to the configuration will retain their settings but will no longer be associated with
+        the configuration.
+
+        The authenticated user must be an administrator for the enterprise to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/code-security/configurations#delete-a-code-security-configuration-for-an-enterprise
+        """
 
         from ..models import BasicError
 
@@ -604,7 +718,18 @@ class CodeSecurityClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]:
-        """See also: https://docs.github.com/rest/code-security/configurations#update-a-custom-code-security-configuration-for-an-enterprise"""
+        """code-security/update-enterprise-configuration
+
+        PATCH /enterprises/{enterprise}/code-security/configurations/{configuration_id}
+
+        Updates a code security configuration in an enterprise.
+
+        The authenticated user must be an administrator of the enterprise in order to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/code-security/configurations#update-a-custom-code-security-configuration-for-an-enterprise
+        """
 
         from ..models import (
             BasicError,
@@ -719,7 +844,18 @@ class CodeSecurityClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]:
-        """See also: https://docs.github.com/rest/code-security/configurations#update-a-custom-code-security-configuration-for-an-enterprise"""
+        """code-security/update-enterprise-configuration
+
+        PATCH /enterprises/{enterprise}/code-security/configurations/{configuration_id}
+
+        Updates a code security configuration in an enterprise.
+
+        The authenticated user must be an administrator of the enterprise in order to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/code-security/configurations#update-a-custom-code-security-configuration-for-an-enterprise
+        """
 
         from ..models import (
             BasicError,
@@ -799,7 +935,20 @@ class CodeSecurityClient:
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
     ]:
-        """See also: https://docs.github.com/rest/code-security/configurations#attach-an-enterprise-configuration-to-repositories"""
+        """code-security/attach-enterprise-configuration
+
+        POST /enterprises/{enterprise}/code-security/configurations/{configuration_id}/attach
+
+        Attaches an enterprise code security configuration to repositories. If the repositories specified are already attached to a configuration, they will be re-attached to the provided configuration.
+
+        If insufficient GHAS licenses are available to attach the configuration to a repository, only free features will be enabled.
+
+        The authenticated user must be an administrator for the enterprise to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/code-security/configurations#attach-an-enterprise-configuration-to-repositories
+        """
 
         from ..models import (
             AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
@@ -877,7 +1026,20 @@ class CodeSecurityClient:
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
     ]:
-        """See also: https://docs.github.com/rest/code-security/configurations#attach-an-enterprise-configuration-to-repositories"""
+        """code-security/attach-enterprise-configuration
+
+        POST /enterprises/{enterprise}/code-security/configurations/{configuration_id}/attach
+
+        Attaches an enterprise code security configuration to repositories. If the repositories specified are already attached to a configuration, they will be re-attached to the provided configuration.
+
+        If insufficient GHAS licenses are available to attach the configuration to a repository, only free features will be enabled.
+
+        The authenticated user must be an administrator for the enterprise to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/code-security/configurations#attach-an-enterprise-configuration-to-repositories
+        """
 
         from ..models import (
             AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
@@ -957,7 +1119,20 @@ class CodeSecurityClient:
         EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200,
         EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/code-security/configurations#set-a-code-security-configuration-as-a-default-for-an-enterprise"""
+        """code-security/set-configuration-as-default-for-enterprise
+
+        PUT /enterprises/{enterprise}/code-security/configurations/{configuration_id}/defaults
+
+        Sets a code security configuration as a default to be applied to new repositories in your enterprise.
+
+        This configuration will be applied by default to the matching repository type when created, but only for organizations within the enterprise that do not already have a default code security configuration set.
+
+        The authenticated user must be an administrator for the enterprise to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/code-security/configurations#set-a-code-security-configuration-as-a-default-for-an-enterprise
+        """
 
         from ..models import (
             BasicError,
@@ -1036,7 +1211,20 @@ class CodeSecurityClient:
         EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200,
         EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/code-security/configurations#set-a-code-security-configuration-as-a-default-for-an-enterprise"""
+        """code-security/set-configuration-as-default-for-enterprise
+
+        PUT /enterprises/{enterprise}/code-security/configurations/{configuration_id}/defaults
+
+        Sets a code security configuration as a default to be applied to new repositories in your enterprise.
+
+        This configuration will be applied by default to the matching repository type when created, but only for organizations within the enterprise that do not already have a default code security configuration set.
+
+        The authenticated user must be an administrator for the enterprise to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/code-security/configurations#set-a-code-security-configuration-as-a-default-for-an-enterprise
+        """
 
         from ..models import (
             BasicError,
@@ -1086,7 +1274,18 @@ class CodeSecurityClient:
         list[CodeSecurityConfigurationRepositories],
         list[CodeSecurityConfigurationRepositoriesType],
     ]:
-        """See also: https://docs.github.com/rest/code-security/configurations#get-repositories-associated-with-an-enterprise-code-security-configuration"""
+        """code-security/get-repositories-for-enterprise-configuration
+
+        GET /enterprises/{enterprise}/code-security/configurations/{configuration_id}/repositories
+
+        Lists the repositories associated with an enterprise code security configuration in an organization.
+
+        The authenticated user must be an administrator of the enterprise in order to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/code-security/configurations#get-repositories-associated-with-an-enterprise-code-security-configuration
+        """
 
         from ..models import BasicError, CodeSecurityConfigurationRepositories
 
@@ -1127,7 +1326,18 @@ class CodeSecurityClient:
         list[CodeSecurityConfigurationRepositories],
         list[CodeSecurityConfigurationRepositoriesType],
     ]:
-        """See also: https://docs.github.com/rest/code-security/configurations#get-repositories-associated-with-an-enterprise-code-security-configuration"""
+        """code-security/get-repositories-for-enterprise-configuration
+
+        GET /enterprises/{enterprise}/code-security/configurations/{configuration_id}/repositories
+
+        Lists the repositories associated with an enterprise code security configuration in an organization.
+
+        The authenticated user must be an administrator of the enterprise in order to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/code-security/configurations#get-repositories-associated-with-an-enterprise-code-security-configuration
+        """
 
         from ..models import BasicError, CodeSecurityConfigurationRepositories
 
@@ -1164,7 +1374,18 @@ class CodeSecurityClient:
         after: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[CodeSecurityConfiguration], list[CodeSecurityConfigurationType]]:
-        """See also: https://docs.github.com/rest/code-security/configurations#get-code-security-configurations-for-an-organization"""
+        """code-security/get-configurations-for-org
+
+        GET /orgs/{org}/code-security/configurations
+
+        Lists all code security configurations available in an organization.
+
+        The authenticated user must be an administrator or security manager for the organization to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `write:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/code-security/configurations#get-code-security-configurations-for-an-organization
+        """
 
         from ..models import BasicError, CodeSecurityConfiguration
 
@@ -1201,7 +1422,18 @@ class CodeSecurityClient:
         after: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[CodeSecurityConfiguration], list[CodeSecurityConfigurationType]]:
-        """See also: https://docs.github.com/rest/code-security/configurations#get-code-security-configurations-for-an-organization"""
+        """code-security/get-configurations-for-org
+
+        GET /orgs/{org}/code-security/configurations
+
+        Lists all code security configurations available in an organization.
+
+        The authenticated user must be an administrator or security manager for the organization to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `write:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/code-security/configurations#get-code-security-configurations-for-an-organization
+        """
 
         from ..models import BasicError, CodeSecurityConfiguration
 
@@ -1305,7 +1537,18 @@ class CodeSecurityClient:
         data: Missing[OrgsOrgCodeSecurityConfigurationsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]:
-        """See also: https://docs.github.com/rest/code-security/configurations#create-a-code-security-configuration"""
+        """code-security/create-configuration
+
+        POST /orgs/{org}/code-security/configurations
+
+        Creates a code security configuration in an organization.
+
+        The authenticated user must be an administrator or security manager for the organization to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `write:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/code-security/configurations#create-a-code-security-configuration
+        """
 
         from ..models import (
             CodeSecurityConfiguration,
@@ -1410,7 +1653,18 @@ class CodeSecurityClient:
         data: Missing[OrgsOrgCodeSecurityConfigurationsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]:
-        """See also: https://docs.github.com/rest/code-security/configurations#create-a-code-security-configuration"""
+        """code-security/create-configuration
+
+        POST /orgs/{org}/code-security/configurations
+
+        Creates a code security configuration in an organization.
+
+        The authenticated user must be an administrator or security manager for the organization to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `write:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/code-security/configurations#create-a-code-security-configuration
+        """
 
         from ..models import (
             CodeSecurityConfiguration,
@@ -1447,7 +1701,18 @@ class CodeSecurityClient:
         list[CodeSecurityDefaultConfigurationsItems],
         list[CodeSecurityDefaultConfigurationsItemsType],
     ]:
-        """See also: https://docs.github.com/rest/code-security/configurations#get-default-code-security-configurations"""
+        """code-security/get-default-configurations
+
+        GET /orgs/{org}/code-security/configurations/defaults
+
+        Lists the default code security configurations for an organization.
+
+        The authenticated user must be an administrator or security manager for the organization to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `write:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/code-security/configurations#get-default-code-security-configurations
+        """
 
         from ..models import BasicError, CodeSecurityDefaultConfigurationsItems
 
@@ -1475,7 +1740,18 @@ class CodeSecurityClient:
         list[CodeSecurityDefaultConfigurationsItems],
         list[CodeSecurityDefaultConfigurationsItemsType],
     ]:
-        """See also: https://docs.github.com/rest/code-security/configurations#get-default-code-security-configurations"""
+        """code-security/get-default-configurations
+
+        GET /orgs/{org}/code-security/configurations/defaults
+
+        Lists the default code security configurations for an organization.
+
+        The authenticated user must be an administrator or security manager for the organization to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `write:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/code-security/configurations#get-default-code-security-configurations
+        """
 
         from ..models import BasicError, CodeSecurityDefaultConfigurationsItems
 
@@ -1521,7 +1797,19 @@ class CodeSecurityClient:
         data: Missing[OrgsOrgCodeSecurityConfigurationsDetachDeleteBodyType] = UNSET,
         **kwargs,
     ) -> Response:
-        """See also: https://docs.github.com/rest/code-security/configurations#detach-configurations-from-repositories"""
+        """code-security/detach-configuration
+
+        DELETE /orgs/{org}/code-security/configurations/detach
+
+        Detach code security configuration(s) from a set of repositories.
+        Repositories will retain their settings but will no longer be associated with the configuration.
+
+        The authenticated user must be an administrator or security manager for the organization to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `write:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/code-security/configurations#detach-configurations-from-repositories
+        """
 
         from ..models import (
             BasicError,
@@ -1583,7 +1871,19 @@ class CodeSecurityClient:
         data: Missing[OrgsOrgCodeSecurityConfigurationsDetachDeleteBodyType] = UNSET,
         **kwargs,
     ) -> Response:
-        """See also: https://docs.github.com/rest/code-security/configurations#detach-configurations-from-repositories"""
+        """code-security/detach-configuration
+
+        DELETE /orgs/{org}/code-security/configurations/detach
+
+        Detach code security configuration(s) from a set of repositories.
+        Repositories will retain their settings but will no longer be associated with the configuration.
+
+        The authenticated user must be an administrator or security manager for the organization to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `write:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/code-security/configurations#detach-configurations-from-repositories
+        """
 
         from ..models import (
             BasicError,
@@ -1625,7 +1925,18 @@ class CodeSecurityClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]:
-        """See also: https://docs.github.com/rest/code-security/configurations#get-a-code-security-configuration"""
+        """code-security/get-configuration
+
+        GET /orgs/{org}/code-security/configurations/{configuration_id}
+
+        Gets a code security configuration available in an organization.
+
+        The authenticated user must be an administrator or security manager for the organization to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `write:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/code-security/configurations#get-a-code-security-configuration
+        """
 
         from ..models import BasicError, CodeSecurityConfiguration
 
@@ -1651,7 +1962,18 @@ class CodeSecurityClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]:
-        """See also: https://docs.github.com/rest/code-security/configurations#get-a-code-security-configuration"""
+        """code-security/get-configuration
+
+        GET /orgs/{org}/code-security/configurations/{configuration_id}
+
+        Gets a code security configuration available in an organization.
+
+        The authenticated user must be an administrator or security manager for the organization to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `write:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/code-security/configurations#get-a-code-security-configuration
+        """
 
         from ..models import BasicError, CodeSecurityConfiguration
 
@@ -1677,7 +1999,20 @@ class CodeSecurityClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/code-security/configurations#delete-a-code-security-configuration"""
+        """code-security/delete-configuration
+
+        DELETE /orgs/{org}/code-security/configurations/{configuration_id}
+
+        Deletes the desired code security configuration from an organization.
+        Repositories attached to the configuration will retain their settings but will no longer be associated with
+        the configuration.
+
+        The authenticated user must be an administrator or security manager for the organization to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `write:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/code-security/configurations#delete-a-code-security-configuration
+        """
 
         from ..models import BasicError
 
@@ -1704,7 +2039,20 @@ class CodeSecurityClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/code-security/configurations#delete-a-code-security-configuration"""
+        """code-security/delete-configuration
+
+        DELETE /orgs/{org}/code-security/configurations/{configuration_id}
+
+        Deletes the desired code security configuration from an organization.
+        Repositories attached to the configuration will retain their settings but will no longer be associated with
+        the configuration.
+
+        The authenticated user must be an administrator or security manager for the organization to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `write:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/code-security/configurations#delete-a-code-security-configuration
+        """
 
         from ..models import BasicError
 
@@ -1806,7 +2154,18 @@ class CodeSecurityClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]:
-        """See also: https://docs.github.com/rest/code-security/configurations#update-a-code-security-configuration"""
+        """code-security/update-configuration
+
+        PATCH /orgs/{org}/code-security/configurations/{configuration_id}
+
+        Updates a code security configuration in an organization.
+
+        The authenticated user must be an administrator or security manager for the organization to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `write:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/code-security/configurations#update-a-code-security-configuration
+        """
 
         from ..models import (
             CodeSecurityConfiguration,
@@ -1918,7 +2277,18 @@ class CodeSecurityClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]:
-        """See also: https://docs.github.com/rest/code-security/configurations#update-a-code-security-configuration"""
+        """code-security/update-configuration
+
+        PATCH /orgs/{org}/code-security/configurations/{configuration_id}
+
+        Updates a code security configuration in an organization.
+
+        The authenticated user must be an administrator or security manager for the organization to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `write:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/code-security/configurations#update-a-code-security-configuration
+        """
 
         from ..models import (
             CodeSecurityConfiguration,
@@ -1996,7 +2366,20 @@ class CodeSecurityClient:
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
     ]:
-        """See also: https://docs.github.com/rest/code-security/configurations#attach-a-configuration-to-repositories"""
+        """code-security/attach-configuration
+
+        POST /orgs/{org}/code-security/configurations/{configuration_id}/attach
+
+        Attach a code security configuration to a set of repositories. If the repositories specified are already attached to a configuration, they will be re-attached to the provided configuration.
+
+        If insufficient GHAS licenses are available to attach the configuration to a repository, only free features will be enabled.
+
+        The authenticated user must be an administrator or security manager for the organization to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `write:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/code-security/configurations#attach-a-configuration-to-repositories
+        """
 
         from ..models import (
             AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
@@ -2074,7 +2457,20 @@ class CodeSecurityClient:
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
     ]:
-        """See also: https://docs.github.com/rest/code-security/configurations#attach-a-configuration-to-repositories"""
+        """code-security/attach-configuration
+
+        POST /orgs/{org}/code-security/configurations/{configuration_id}/attach
+
+        Attach a code security configuration to a set of repositories. If the repositories specified are already attached to a configuration, they will be re-attached to the provided configuration.
+
+        If insufficient GHAS licenses are available to attach the configuration to a repository, only free features will be enabled.
+
+        The authenticated user must be an administrator or security manager for the organization to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `write:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/code-security/configurations#attach-a-configuration-to-repositories
+        """
 
         from ..models import (
             AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
@@ -2147,7 +2543,20 @@ class CodeSecurityClient:
         OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200,
         OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/code-security/configurations#set-a-code-security-configuration-as-a-default-for-an-organization"""
+        """code-security/set-configuration-as-default
+
+        PUT /orgs/{org}/code-security/configurations/{configuration_id}/defaults
+
+        Sets a code security configuration as a default to be applied to new repositories in your organization.
+
+        This configuration will be applied to the matching repository type (all, none, public, private and internal) by default when they are created.
+
+        The authenticated user must be an administrator or security manager for the organization to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `write:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/code-security/configurations#set-a-code-security-configuration-as-a-default-for-an-organization
+        """
 
         from ..models import (
             BasicError,
@@ -2225,7 +2634,20 @@ class CodeSecurityClient:
         OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200,
         OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/code-security/configurations#set-a-code-security-configuration-as-a-default-for-an-organization"""
+        """code-security/set-configuration-as-default
+
+        PUT /orgs/{org}/code-security/configurations/{configuration_id}/defaults
+
+        Sets a code security configuration as a default to be applied to new repositories in your organization.
+
+        This configuration will be applied to the matching repository type (all, none, public, private and internal) by default when they are created.
+
+        The authenticated user must be an administrator or security manager for the organization to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `write:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/code-security/configurations#set-a-code-security-configuration-as-a-default-for-an-organization
+        """
 
         from ..models import (
             BasicError,
@@ -2274,7 +2696,18 @@ class CodeSecurityClient:
         list[CodeSecurityConfigurationRepositories],
         list[CodeSecurityConfigurationRepositoriesType],
     ]:
-        """See also: https://docs.github.com/rest/code-security/configurations#get-repositories-associated-with-a-code-security-configuration"""
+        """code-security/get-repositories-for-configuration
+
+        GET /orgs/{org}/code-security/configurations/{configuration_id}/repositories
+
+        Lists the repositories associated with a code security configuration in an organization.
+
+        The authenticated user must be an administrator or security manager for the organization to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `write:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/code-security/configurations#get-repositories-associated-with-a-code-security-configuration
+        """
 
         from ..models import BasicError, CodeSecurityConfigurationRepositories
 
@@ -2317,7 +2750,18 @@ class CodeSecurityClient:
         list[CodeSecurityConfigurationRepositories],
         list[CodeSecurityConfigurationRepositoriesType],
     ]:
-        """See also: https://docs.github.com/rest/code-security/configurations#get-repositories-associated-with-a-code-security-configuration"""
+        """code-security/get-repositories-for-configuration
+
+        GET /orgs/{org}/code-security/configurations/{configuration_id}/repositories
+
+        Lists the repositories associated with a code security configuration in an organization.
+
+        The authenticated user must be an administrator or security manager for the organization to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `write:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/code-security/configurations#get-repositories-associated-with-a-code-security-configuration
+        """
 
         from ..models import BasicError, CodeSecurityConfigurationRepositories
 
@@ -2356,7 +2800,18 @@ class CodeSecurityClient:
         CodeSecurityConfigurationForRepository,
         CodeSecurityConfigurationForRepositoryType,
     ]:
-        """See also: https://docs.github.com/rest/code-security/configurations#get-the-code-security-configuration-associated-with-a-repository"""
+        """code-security/get-configuration-for-repository
+
+        GET /repos/{owner}/{repo}/code-security-configuration
+
+        Get the code security configuration that manages a repository's code security settings.
+
+        The authenticated user must be an administrator or security manager for the organization to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/code-security/configurations#get-the-code-security-configuration-associated-with-a-repository
+        """
 
         from ..models import BasicError, CodeSecurityConfigurationForRepository
 
@@ -2385,7 +2840,18 @@ class CodeSecurityClient:
         CodeSecurityConfigurationForRepository,
         CodeSecurityConfigurationForRepositoryType,
     ]:
-        """See also: https://docs.github.com/rest/code-security/configurations#get-the-code-security-configuration-associated-with-a-repository"""
+        """code-security/get-configuration-for-repository
+
+        GET /repos/{owner}/{repo}/code-security-configuration
+
+        Get the code security configuration that manages a repository's code security settings.
+
+        The authenticated user must be an administrator or security manager for the organization to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/code-security/configurations#get-the-code-security-configuration-associated-with-a-repository
+        """
 
         from ..models import BasicError, CodeSecurityConfigurationForRepository
 

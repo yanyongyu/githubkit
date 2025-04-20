@@ -217,7 +217,17 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ActionsCacheUsageOrgEnterprise, ActionsCacheUsageOrgEnterpriseType]:
-        """See also: https://docs.github.com/rest/actions/cache#get-github-actions-cache-usage-for-an-organization"""
+        """actions/get-actions-cache-usage-for-org
+
+        GET /orgs/{org}/actions/cache/usage
+
+        Gets the total GitHub Actions cache usage for an organization.
+        The data fetched using this API is refreshed approximately every 5 minutes, so values returned from this endpoint may take at least 5 minutes to get updated.
+
+        OAuth tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/cache#get-github-actions-cache-usage-for-an-organization
+        """
 
         from ..models import ActionsCacheUsageOrgEnterprise
 
@@ -238,7 +248,17 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ActionsCacheUsageOrgEnterprise, ActionsCacheUsageOrgEnterpriseType]:
-        """See also: https://docs.github.com/rest/actions/cache#get-github-actions-cache-usage-for-an-organization"""
+        """actions/get-actions-cache-usage-for-org
+
+        GET /orgs/{org}/actions/cache/usage
+
+        Gets the total GitHub Actions cache usage for an organization.
+        The data fetched using this API is refreshed approximately every 5 minutes, so values returned from this endpoint may take at least 5 minutes to get updated.
+
+        OAuth tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/cache#get-github-actions-cache-usage-for-an-organization
+        """
 
         from ..models import ActionsCacheUsageOrgEnterprise
 
@@ -264,7 +284,17 @@ class ActionsClient:
         OrgsOrgActionsCacheUsageByRepositoryGetResponse200,
         OrgsOrgActionsCacheUsageByRepositoryGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/actions/cache#list-repositories-with-github-actions-cache-usage-for-an-organization"""
+        """actions/get-actions-cache-usage-by-repo-for-org
+
+        GET /orgs/{org}/actions/cache/usage-by-repository
+
+        Lists repositories and their GitHub Actions cache usage for an organization.
+        The data fetched using this API is refreshed approximately every 5 minutes, so values returned from this endpoint may take at least 5 minutes to get updated.
+
+        OAuth tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/cache#list-repositories-with-github-actions-cache-usage-for-an-organization
+        """
 
         from ..models import OrgsOrgActionsCacheUsageByRepositoryGetResponse200
 
@@ -296,7 +326,17 @@ class ActionsClient:
         OrgsOrgActionsCacheUsageByRepositoryGetResponse200,
         OrgsOrgActionsCacheUsageByRepositoryGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/actions/cache#list-repositories-with-github-actions-cache-usage-for-an-organization"""
+        """actions/get-actions-cache-usage-by-repo-for-org
+
+        GET /orgs/{org}/actions/cache/usage-by-repository
+
+        Lists repositories and their GitHub Actions cache usage for an organization.
+        The data fetched using this API is refreshed approximately every 5 minutes, so values returned from this endpoint may take at least 5 minutes to get updated.
+
+        OAuth tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/cache#list-repositories-with-github-actions-cache-usage-for-an-organization
+        """
 
         from ..models import OrgsOrgActionsCacheUsageByRepositoryGetResponse200
 
@@ -328,7 +368,16 @@ class ActionsClient:
         OrgsOrgActionsHostedRunnersGetResponse200,
         OrgsOrgActionsHostedRunnersGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/actions/hosted-runners#list-github-hosted-runners-for-an-organization"""
+        """actions/list-hosted-runners-for-org
+
+        GET /orgs/{org}/actions/hosted-runners
+
+        Lists all GitHub-hosted runners configured in an organization.
+
+        OAuth app tokens and personal access tokens (classic) need the `manage_runner:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/hosted-runners#list-github-hosted-runners-for-an-organization
+        """
 
         from ..models import OrgsOrgActionsHostedRunnersGetResponse200
 
@@ -360,7 +409,16 @@ class ActionsClient:
         OrgsOrgActionsHostedRunnersGetResponse200,
         OrgsOrgActionsHostedRunnersGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/actions/hosted-runners#list-github-hosted-runners-for-an-organization"""
+        """actions/list-hosted-runners-for-org
+
+        GET /orgs/{org}/actions/hosted-runners
+
+        Lists all GitHub-hosted runners configured in an organization.
+
+        OAuth app tokens and personal access tokens (classic) need the `manage_runner:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/hosted-runners#list-github-hosted-runners-for-an-organization
+        """
 
         from ..models import OrgsOrgActionsHostedRunnersGetResponse200
 
@@ -413,7 +471,15 @@ class ActionsClient:
         data: Missing[OrgsOrgActionsHostedRunnersPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]:
-        """See also: https://docs.github.com/rest/actions/hosted-runners#create-a-github-hosted-runner-for-an-organization"""
+        """actions/create-hosted-runner-for-org
+
+        POST /orgs/{org}/actions/hosted-runners
+
+        Creates a GitHub-hosted runner for an organization.
+        OAuth tokens and personal access tokens (classic) need the `manage_runners:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/hosted-runners#create-a-github-hosted-runner-for-an-organization
+        """
 
         from ..models import ActionsHostedRunner, OrgsOrgActionsHostedRunnersPostBody
 
@@ -470,7 +536,15 @@ class ActionsClient:
         data: Missing[OrgsOrgActionsHostedRunnersPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]:
-        """See also: https://docs.github.com/rest/actions/hosted-runners#create-a-github-hosted-runner-for-an-organization"""
+        """actions/create-hosted-runner-for-org
+
+        POST /orgs/{org}/actions/hosted-runners
+
+        Creates a GitHub-hosted runner for an organization.
+        OAuth tokens and personal access tokens (classic) need the `manage_runners:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/hosted-runners#create-a-github-hosted-runner-for-an-organization
+        """
 
         from ..models import ActionsHostedRunner, OrgsOrgActionsHostedRunnersPostBody
 
@@ -504,7 +578,14 @@ class ActionsClient:
         OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200,
         OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/actions/hosted-runners#get-github-owned-images-for-github-hosted-runners-in-an-organization"""
+        """actions/get-hosted-runners-github-owned-images-for-org
+
+        GET /orgs/{org}/actions/hosted-runners/images/github-owned
+
+        Get the list of GitHub-owned images available for GitHub-hosted runners for an organization.
+
+        See also: https://docs.github.com/rest/actions/hosted-runners#get-github-owned-images-for-github-hosted-runners-in-an-organization
+        """
 
         from ..models import OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200
 
@@ -528,7 +609,14 @@ class ActionsClient:
         OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200,
         OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/actions/hosted-runners#get-github-owned-images-for-github-hosted-runners-in-an-organization"""
+        """actions/get-hosted-runners-github-owned-images-for-org
+
+        GET /orgs/{org}/actions/hosted-runners/images/github-owned
+
+        Get the list of GitHub-owned images available for GitHub-hosted runners for an organization.
+
+        See also: https://docs.github.com/rest/actions/hosted-runners#get-github-owned-images-for-github-hosted-runners-in-an-organization
+        """
 
         from ..models import OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200
 
@@ -552,7 +640,14 @@ class ActionsClient:
         OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200,
         OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/actions/hosted-runners#get-partner-images-for-github-hosted-runners-in-an-organization"""
+        """actions/get-hosted-runners-partner-images-for-org
+
+        GET /orgs/{org}/actions/hosted-runners/images/partner
+
+        Get the list of partner images available for GitHub-hosted runners for an organization.
+
+        See also: https://docs.github.com/rest/actions/hosted-runners#get-partner-images-for-github-hosted-runners-in-an-organization
+        """
 
         from ..models import OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200
 
@@ -576,7 +671,14 @@ class ActionsClient:
         OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200,
         OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/actions/hosted-runners#get-partner-images-for-github-hosted-runners-in-an-organization"""
+        """actions/get-hosted-runners-partner-images-for-org
+
+        GET /orgs/{org}/actions/hosted-runners/images/partner
+
+        Get the list of partner images available for GitHub-hosted runners for an organization.
+
+        See also: https://docs.github.com/rest/actions/hosted-runners#get-partner-images-for-github-hosted-runners-in-an-organization
+        """
 
         from ..models import OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200
 
@@ -597,7 +699,14 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ActionsHostedRunnerLimits, ActionsHostedRunnerLimitsType]:
-        """See also: https://docs.github.com/rest/actions/hosted-runners#get-limits-on-github-hosted-runners-for-an-organization"""
+        """actions/get-hosted-runners-limits-for-org
+
+        GET /orgs/{org}/actions/hosted-runners/limits
+
+        Get the GitHub-hosted runners limits for an organization.
+
+        See also: https://docs.github.com/rest/actions/hosted-runners#get-limits-on-github-hosted-runners-for-an-organization
+        """
 
         from ..models import ActionsHostedRunnerLimits
 
@@ -618,7 +727,14 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ActionsHostedRunnerLimits, ActionsHostedRunnerLimitsType]:
-        """See also: https://docs.github.com/rest/actions/hosted-runners#get-limits-on-github-hosted-runners-for-an-organization"""
+        """actions/get-hosted-runners-limits-for-org
+
+        GET /orgs/{org}/actions/hosted-runners/limits
+
+        Get the GitHub-hosted runners limits for an organization.
+
+        See also: https://docs.github.com/rest/actions/hosted-runners#get-limits-on-github-hosted-runners-for-an-organization
+        """
 
         from ..models import ActionsHostedRunnerLimits
 
@@ -642,7 +758,14 @@ class ActionsClient:
         OrgsOrgActionsHostedRunnersMachineSizesGetResponse200,
         OrgsOrgActionsHostedRunnersMachineSizesGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/actions/hosted-runners#get-github-hosted-runners-machine-specs-for-an-organization"""
+        """actions/get-hosted-runners-machine-specs-for-org
+
+        GET /orgs/{org}/actions/hosted-runners/machine-sizes
+
+        Get the list of machine specs available for GitHub-hosted runners for an organization.
+
+        See also: https://docs.github.com/rest/actions/hosted-runners#get-github-hosted-runners-machine-specs-for-an-organization
+        """
 
         from ..models import OrgsOrgActionsHostedRunnersMachineSizesGetResponse200
 
@@ -666,7 +789,14 @@ class ActionsClient:
         OrgsOrgActionsHostedRunnersMachineSizesGetResponse200,
         OrgsOrgActionsHostedRunnersMachineSizesGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/actions/hosted-runners#get-github-hosted-runners-machine-specs-for-an-organization"""
+        """actions/get-hosted-runners-machine-specs-for-org
+
+        GET /orgs/{org}/actions/hosted-runners/machine-sizes
+
+        Get the list of machine specs available for GitHub-hosted runners for an organization.
+
+        See also: https://docs.github.com/rest/actions/hosted-runners#get-github-hosted-runners-machine-specs-for-an-organization
+        """
 
         from ..models import OrgsOrgActionsHostedRunnersMachineSizesGetResponse200
 
@@ -690,7 +820,14 @@ class ActionsClient:
         OrgsOrgActionsHostedRunnersPlatformsGetResponse200,
         OrgsOrgActionsHostedRunnersPlatformsGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/actions/hosted-runners#get-platforms-for-github-hosted-runners-in-an-organization"""
+        """actions/get-hosted-runners-platforms-for-org
+
+        GET /orgs/{org}/actions/hosted-runners/platforms
+
+        Get the list of platforms available for GitHub-hosted runners for an organization.
+
+        See also: https://docs.github.com/rest/actions/hosted-runners#get-platforms-for-github-hosted-runners-in-an-organization
+        """
 
         from ..models import OrgsOrgActionsHostedRunnersPlatformsGetResponse200
 
@@ -714,7 +851,14 @@ class ActionsClient:
         OrgsOrgActionsHostedRunnersPlatformsGetResponse200,
         OrgsOrgActionsHostedRunnersPlatformsGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/actions/hosted-runners#get-platforms-for-github-hosted-runners-in-an-organization"""
+        """actions/get-hosted-runners-platforms-for-org
+
+        GET /orgs/{org}/actions/hosted-runners/platforms
+
+        Get the list of platforms available for GitHub-hosted runners for an organization.
+
+        See also: https://docs.github.com/rest/actions/hosted-runners#get-platforms-for-github-hosted-runners-in-an-organization
+        """
 
         from ..models import OrgsOrgActionsHostedRunnersPlatformsGetResponse200
 
@@ -736,7 +880,16 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]:
-        """See also: https://docs.github.com/rest/actions/hosted-runners#get-a-github-hosted-runner-for-an-organization"""
+        """actions/get-hosted-runner-for-org
+
+        GET /orgs/{org}/actions/hosted-runners/{hosted_runner_id}
+
+        Gets a GitHub-hosted runner configured in an organization.
+
+        OAuth app tokens and personal access tokens (classic) need the `manage_runners:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/hosted-runners#get-a-github-hosted-runner-for-an-organization
+        """
 
         from ..models import ActionsHostedRunner
 
@@ -758,7 +911,16 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]:
-        """See also: https://docs.github.com/rest/actions/hosted-runners#get-a-github-hosted-runner-for-an-organization"""
+        """actions/get-hosted-runner-for-org
+
+        GET /orgs/{org}/actions/hosted-runners/{hosted_runner_id}
+
+        Gets a GitHub-hosted runner configured in an organization.
+
+        OAuth app tokens and personal access tokens (classic) need the `manage_runners:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/hosted-runners#get-a-github-hosted-runner-for-an-organization
+        """
 
         from ..models import ActionsHostedRunner
 
@@ -780,7 +942,14 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]:
-        """See also: https://docs.github.com/rest/actions/hosted-runners#delete-a-github-hosted-runner-for-an-organization"""
+        """actions/delete-hosted-runner-for-org
+
+        DELETE /orgs/{org}/actions/hosted-runners/{hosted_runner_id}
+
+        Deletes a GitHub-hosted runner for an organization.
+
+        See also: https://docs.github.com/rest/actions/hosted-runners#delete-a-github-hosted-runner-for-an-organization
+        """
 
         from ..models import ActionsHostedRunner
 
@@ -802,7 +971,14 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]:
-        """See also: https://docs.github.com/rest/actions/hosted-runners#delete-a-github-hosted-runner-for-an-organization"""
+        """actions/delete-hosted-runner-for-org
+
+        DELETE /orgs/{org}/actions/hosted-runners/{hosted_runner_id}
+
+        Deletes a GitHub-hosted runner for an organization.
+
+        See also: https://docs.github.com/rest/actions/hosted-runners#delete-a-github-hosted-runner-for-an-organization
+        """
 
         from ..models import ActionsHostedRunner
 
@@ -850,7 +1026,15 @@ class ActionsClient:
         data: Missing[OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]:
-        """See also: https://docs.github.com/rest/actions/hosted-runners#update-a-github-hosted-runner-for-an-organization"""
+        """actions/update-hosted-runner-for-org
+
+        PATCH /orgs/{org}/actions/hosted-runners/{hosted_runner_id}
+
+        Updates a GitHub-hosted runner for an organization.
+        OAuth app tokens and personal access tokens (classic) need the `manage_runners:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/hosted-runners#update-a-github-hosted-runner-for-an-organization
+        """
 
         from ..models import (
             ActionsHostedRunner,
@@ -913,7 +1097,15 @@ class ActionsClient:
         data: Missing[OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]:
-        """See also: https://docs.github.com/rest/actions/hosted-runners#update-a-github-hosted-runner-for-an-organization"""
+        """actions/update-hosted-runner-for-org
+
+        PATCH /orgs/{org}/actions/hosted-runners/{hosted_runner_id}
+
+        Updates a GitHub-hosted runner for an organization.
+        OAuth app tokens and personal access tokens (classic) need the `manage_runners:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/hosted-runners#update-a-github-hosted-runner-for-an-organization
+        """
 
         from ..models import (
             ActionsHostedRunner,
@@ -949,7 +1141,16 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ActionsOrganizationPermissions, ActionsOrganizationPermissionsType]:
-        """See also: https://docs.github.com/rest/actions/permissions#get-github-actions-permissions-for-an-organization"""
+        """actions/get-github-actions-permissions-organization
+
+        GET /orgs/{org}/actions/permissions
+
+        Gets the GitHub Actions permissions policy for repositories and allowed actions and reusable workflows in an organization.
+
+        OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/permissions#get-github-actions-permissions-for-an-organization
+        """
 
         from ..models import ActionsOrganizationPermissions
 
@@ -970,7 +1171,16 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ActionsOrganizationPermissions, ActionsOrganizationPermissionsType]:
-        """See also: https://docs.github.com/rest/actions/permissions#get-github-actions-permissions-for-an-organization"""
+        """actions/get-github-actions-permissions-organization
+
+        GET /orgs/{org}/actions/permissions
+
+        Gets the GitHub Actions permissions policy for repositories and allowed actions and reusable workflows in an organization.
+
+        OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/permissions#get-github-actions-permissions-for-an-organization
+        """
 
         from ..models import ActionsOrganizationPermissions
 
@@ -1013,7 +1223,16 @@ class ActionsClient:
         data: Missing[OrgsOrgActionsPermissionsPutBodyType] = UNSET,
         **kwargs,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/permissions#set-github-actions-permissions-for-an-organization"""
+        """actions/set-github-actions-permissions-organization
+
+        PUT /orgs/{org}/actions/permissions
+
+        Sets the GitHub Actions permissions policy for repositories and allowed actions and reusable workflows in an organization.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/permissions#set-github-actions-permissions-for-an-organization
+        """
 
         from ..models import OrgsOrgActionsPermissionsPutBody
 
@@ -1065,7 +1284,16 @@ class ActionsClient:
         data: Missing[OrgsOrgActionsPermissionsPutBodyType] = UNSET,
         **kwargs,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/permissions#set-github-actions-permissions-for-an-organization"""
+        """actions/set-github-actions-permissions-organization
+
+        PUT /orgs/{org}/actions/permissions
+
+        Sets the GitHub Actions permissions policy for repositories and allowed actions and reusable workflows in an organization.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/permissions#set-github-actions-permissions-for-an-organization
+        """
 
         from ..models import OrgsOrgActionsPermissionsPutBody
 
@@ -1100,7 +1328,16 @@ class ActionsClient:
         OrgsOrgActionsPermissionsRepositoriesGetResponse200,
         OrgsOrgActionsPermissionsRepositoriesGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/actions/permissions#list-selected-repositories-enabled-for-github-actions-in-an-organization"""
+        """actions/list-selected-repositories-enabled-github-actions-organization
+
+        GET /orgs/{org}/actions/permissions/repositories
+
+        Lists the selected repositories that are enabled for GitHub Actions in an organization. To use this endpoint, the organization permission policy for `enabled_repositories` must be configured to `selected`. For more information, see "[Set GitHub Actions permissions for an organization](#set-github-actions-permissions-for-an-organization)."
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/permissions#list-selected-repositories-enabled-for-github-actions-in-an-organization
+        """
 
         from ..models import OrgsOrgActionsPermissionsRepositoriesGetResponse200
 
@@ -1132,7 +1369,16 @@ class ActionsClient:
         OrgsOrgActionsPermissionsRepositoriesGetResponse200,
         OrgsOrgActionsPermissionsRepositoriesGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/actions/permissions#list-selected-repositories-enabled-for-github-actions-in-an-organization"""
+        """actions/list-selected-repositories-enabled-github-actions-organization
+
+        GET /orgs/{org}/actions/permissions/repositories
+
+        Lists the selected repositories that are enabled for GitHub Actions in an organization. To use this endpoint, the organization permission policy for `enabled_repositories` must be configured to `selected`. For more information, see "[Set GitHub Actions permissions for an organization](#set-github-actions-permissions-for-an-organization)."
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/permissions#list-selected-repositories-enabled-for-github-actions-in-an-organization
+        """
 
         from ..models import OrgsOrgActionsPermissionsRepositoriesGetResponse200
 
@@ -1180,7 +1426,17 @@ class ActionsClient:
         data: Missing[OrgsOrgActionsPermissionsRepositoriesPutBodyType] = UNSET,
         **kwargs,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/permissions#set-selected-repositories-enabled-for-github-actions-in-an-organization"""
+        """actions/set-selected-repositories-enabled-github-actions-organization
+
+        PUT /orgs/{org}/actions/permissions/repositories
+
+        Replaces the list of selected repositories that are enabled for GitHub Actions in an organization. To use this endpoint, the organization permission policy for `enabled_repositories` must be configured to `selected`. For more information, see "[Set GitHub Actions permissions for an organization](#set-github-actions-permissions-for-an-organization)."
+
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/permissions#set-selected-repositories-enabled-for-github-actions-in-an-organization
+        """
 
         from ..models import OrgsOrgActionsPermissionsRepositoriesPutBody
 
@@ -1233,7 +1489,17 @@ class ActionsClient:
         data: Missing[OrgsOrgActionsPermissionsRepositoriesPutBodyType] = UNSET,
         **kwargs,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/permissions#set-selected-repositories-enabled-for-github-actions-in-an-organization"""
+        """actions/set-selected-repositories-enabled-github-actions-organization
+
+        PUT /orgs/{org}/actions/permissions/repositories
+
+        Replaces the list of selected repositories that are enabled for GitHub Actions in an organization. To use this endpoint, the organization permission policy for `enabled_repositories` must be configured to `selected`. For more information, see "[Set GitHub Actions permissions for an organization](#set-github-actions-permissions-for-an-organization)."
+
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/permissions#set-selected-repositories-enabled-for-github-actions-in-an-organization
+        """
 
         from ..models import OrgsOrgActionsPermissionsRepositoriesPutBody
 
@@ -1266,7 +1532,16 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/permissions#enable-a-selected-repository-for-github-actions-in-an-organization"""
+        """actions/enable-selected-repository-github-actions-organization
+
+        PUT /orgs/{org}/actions/permissions/repositories/{repository_id}
+
+        Adds a repository to the list of selected repositories that are enabled for GitHub Actions in an organization. To use this endpoint, the organization permission policy for `enabled_repositories` must be must be configured to `selected`. For more information, see "[Set GitHub Actions permissions for an organization](#set-github-actions-permissions-for-an-organization)."
+
+        OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/permissions#enable-a-selected-repository-for-github-actions-in-an-organization
+        """
 
         url = f"/orgs/{org}/actions/permissions/repositories/{repository_id}"
 
@@ -1285,7 +1560,16 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/permissions#enable-a-selected-repository-for-github-actions-in-an-organization"""
+        """actions/enable-selected-repository-github-actions-organization
+
+        PUT /orgs/{org}/actions/permissions/repositories/{repository_id}
+
+        Adds a repository to the list of selected repositories that are enabled for GitHub Actions in an organization. To use this endpoint, the organization permission policy for `enabled_repositories` must be must be configured to `selected`. For more information, see "[Set GitHub Actions permissions for an organization](#set-github-actions-permissions-for-an-organization)."
+
+        OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/permissions#enable-a-selected-repository-for-github-actions-in-an-organization
+        """
 
         url = f"/orgs/{org}/actions/permissions/repositories/{repository_id}"
 
@@ -1304,7 +1588,16 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/permissions#disable-a-selected-repository-for-github-actions-in-an-organization"""
+        """actions/disable-selected-repository-github-actions-organization
+
+        DELETE /orgs/{org}/actions/permissions/repositories/{repository_id}
+
+        Removes a repository from the list of selected repositories that are enabled for GitHub Actions in an organization. To use this endpoint, the organization permission policy for `enabled_repositories` must be configured to `selected`. For more information, see "[Set GitHub Actions permissions for an organization](#set-github-actions-permissions-for-an-organization)."
+
+        OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/permissions#disable-a-selected-repository-for-github-actions-in-an-organization
+        """
 
         url = f"/orgs/{org}/actions/permissions/repositories/{repository_id}"
 
@@ -1323,7 +1616,16 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/permissions#disable-a-selected-repository-for-github-actions-in-an-organization"""
+        """actions/disable-selected-repository-github-actions-organization
+
+        DELETE /orgs/{org}/actions/permissions/repositories/{repository_id}
+
+        Removes a repository from the list of selected repositories that are enabled for GitHub Actions in an organization. To use this endpoint, the organization permission policy for `enabled_repositories` must be configured to `selected`. For more information, see "[Set GitHub Actions permissions for an organization](#set-github-actions-permissions-for-an-organization)."
+
+        OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/permissions#disable-a-selected-repository-for-github-actions-in-an-organization
+        """
 
         url = f"/orgs/{org}/actions/permissions/repositories/{repository_id}"
 
@@ -1341,7 +1643,16 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[SelectedActions, SelectedActionsType]:
-        """See also: https://docs.github.com/rest/actions/permissions#get-allowed-actions-and-reusable-workflows-for-an-organization"""
+        """actions/get-allowed-actions-organization
+
+        GET /orgs/{org}/actions/permissions/selected-actions
+
+        Gets the selected actions and reusable workflows that are allowed in an organization. To use this endpoint, the organization permission policy for `allowed_actions` must be configured to `selected`. For more information, see "[Set GitHub Actions permissions for an organization](#set-github-actions-permissions-for-an-organization)."
+
+        OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/permissions#get-allowed-actions-and-reusable-workflows-for-an-organization
+        """
 
         from ..models import SelectedActions
 
@@ -1362,7 +1673,16 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[SelectedActions, SelectedActionsType]:
-        """See also: https://docs.github.com/rest/actions/permissions#get-allowed-actions-and-reusable-workflows-for-an-organization"""
+        """actions/get-allowed-actions-organization
+
+        GET /orgs/{org}/actions/permissions/selected-actions
+
+        Gets the selected actions and reusable workflows that are allowed in an organization. To use this endpoint, the organization permission policy for `allowed_actions` must be configured to `selected`. For more information, see "[Set GitHub Actions permissions for an organization](#set-github-actions-permissions-for-an-organization)."
+
+        OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/permissions#get-allowed-actions-and-reusable-workflows-for-an-organization
+        """
 
         from ..models import SelectedActions
 
@@ -1406,7 +1726,16 @@ class ActionsClient:
         data: Missing[SelectedActionsType] = UNSET,
         **kwargs,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/permissions#set-allowed-actions-and-reusable-workflows-for-an-organization"""
+        """actions/set-allowed-actions-organization
+
+        PUT /orgs/{org}/actions/permissions/selected-actions
+
+        Sets the actions and reusable workflows that are allowed in an organization. To use this endpoint, the organization permission policy for `allowed_actions` must be configured to `selected`. For more information, see "[Set GitHub Actions permissions for an organization](#set-github-actions-permissions-for-an-organization)."
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/permissions#set-allowed-actions-and-reusable-workflows-for-an-organization
+        """
 
         from ..models import SelectedActions
 
@@ -1459,7 +1788,16 @@ class ActionsClient:
         data: Missing[SelectedActionsType] = UNSET,
         **kwargs,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/permissions#set-allowed-actions-and-reusable-workflows-for-an-organization"""
+        """actions/set-allowed-actions-organization
+
+        PUT /orgs/{org}/actions/permissions/selected-actions
+
+        Sets the actions and reusable workflows that are allowed in an organization. To use this endpoint, the organization permission policy for `allowed_actions` must be configured to `selected`. For more information, see "[Set GitHub Actions permissions for an organization](#set-github-actions-permissions-for-an-organization)."
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/permissions#set-allowed-actions-and-reusable-workflows-for-an-organization
+        """
 
         from ..models import SelectedActions
 
@@ -1491,7 +1829,18 @@ class ActionsClient:
     ) -> Response[
         ActionsGetDefaultWorkflowPermissions, ActionsGetDefaultWorkflowPermissionsType
     ]:
-        """See also: https://docs.github.com/rest/actions/permissions#get-default-workflow-permissions-for-an-organization"""
+        """actions/get-github-actions-default-workflow-permissions-organization
+
+        GET /orgs/{org}/actions/permissions/workflow
+
+        Gets the default workflow permissions granted to the `GITHUB_TOKEN` when running workflows in an organization,
+        as well as whether GitHub Actions can submit approving pull request reviews. For more information, see
+        "[Setting the permissions of the GITHUB_TOKEN for your organization](https://docs.github.com/organizations/managing-organization-settings/disabling-or-limiting-github-actions-for-your-organization#setting-the-permissions-of-the-github_token-for-your-organization)."
+
+        OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/permissions#get-default-workflow-permissions-for-an-organization
+        """
 
         from ..models import ActionsGetDefaultWorkflowPermissions
 
@@ -1514,7 +1863,18 @@ class ActionsClient:
     ) -> Response[
         ActionsGetDefaultWorkflowPermissions, ActionsGetDefaultWorkflowPermissionsType
     ]:
-        """See also: https://docs.github.com/rest/actions/permissions#get-default-workflow-permissions-for-an-organization"""
+        """actions/get-github-actions-default-workflow-permissions-organization
+
+        GET /orgs/{org}/actions/permissions/workflow
+
+        Gets the default workflow permissions granted to the `GITHUB_TOKEN` when running workflows in an organization,
+        as well as whether GitHub Actions can submit approving pull request reviews. For more information, see
+        "[Setting the permissions of the GITHUB_TOKEN for your organization](https://docs.github.com/organizations/managing-organization-settings/disabling-or-limiting-github-actions-for-your-organization#setting-the-permissions-of-the-github_token-for-your-organization)."
+
+        OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/permissions#get-default-workflow-permissions-for-an-organization
+        """
 
         from ..models import ActionsGetDefaultWorkflowPermissions
 
@@ -1557,7 +1917,18 @@ class ActionsClient:
         data: Missing[ActionsSetDefaultWorkflowPermissionsType] = UNSET,
         **kwargs,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/permissions#set-default-workflow-permissions-for-an-organization"""
+        """actions/set-github-actions-default-workflow-permissions-organization
+
+        PUT /orgs/{org}/actions/permissions/workflow
+
+        Sets the default workflow permissions granted to the `GITHUB_TOKEN` when running workflows in an organization, and sets if GitHub Actions
+        can submit approving pull request reviews. For more information, see
+        "[Setting the permissions of the GITHUB_TOKEN for your organization](https://docs.github.com/organizations/managing-organization-settings/disabling-or-limiting-github-actions-for-your-organization#setting-the-permissions-of-the-github_token-for-your-organization)."
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/permissions#set-default-workflow-permissions-for-an-organization
+        """
 
         from ..models import ActionsSetDefaultWorkflowPermissions
 
@@ -1609,7 +1980,18 @@ class ActionsClient:
         data: Missing[ActionsSetDefaultWorkflowPermissionsType] = UNSET,
         **kwargs,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/permissions#set-default-workflow-permissions-for-an-organization"""
+        """actions/set-github-actions-default-workflow-permissions-organization
+
+        PUT /orgs/{org}/actions/permissions/workflow
+
+        Sets the default workflow permissions granted to the `GITHUB_TOKEN` when running workflows in an organization, and sets if GitHub Actions
+        can submit approving pull request reviews. For more information, see
+        "[Setting the permissions of the GITHUB_TOKEN for your organization](https://docs.github.com/organizations/managing-organization-settings/disabling-or-limiting-github-actions-for-your-organization#setting-the-permissions-of-the-github_token-for-your-organization)."
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/permissions#set-default-workflow-permissions-for-an-organization
+        """
 
         from ..models import ActionsSetDefaultWorkflowPermissions
 
@@ -1645,7 +2027,16 @@ class ActionsClient:
         OrgsOrgActionsRunnerGroupsGetResponse200,
         OrgsOrgActionsRunnerGroupsGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#list-self-hosted-runner-groups-for-an-organization"""
+        """actions/list-self-hosted-runner-groups-for-org
+
+        GET /orgs/{org}/actions/runner-groups
+
+        Lists all self-hosted runner groups configured in an organization and inherited from an enterprise.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#list-self-hosted-runner-groups-for-an-organization
+        """
 
         from ..models import OrgsOrgActionsRunnerGroupsGetResponse200
 
@@ -1679,7 +2070,16 @@ class ActionsClient:
         OrgsOrgActionsRunnerGroupsGetResponse200,
         OrgsOrgActionsRunnerGroupsGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#list-self-hosted-runner-groups-for-an-organization"""
+        """actions/list-self-hosted-runner-groups-for-org
+
+        GET /orgs/{org}/actions/runner-groups
+
+        Lists all self-hosted runner groups configured in an organization and inherited from an enterprise.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#list-self-hosted-runner-groups-for-an-organization
+        """
 
         from ..models import OrgsOrgActionsRunnerGroupsGetResponse200
 
@@ -1735,7 +2135,16 @@ class ActionsClient:
         data: Missing[OrgsOrgActionsRunnerGroupsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[RunnerGroupsOrg, RunnerGroupsOrgType]:
-        """See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#create-a-self-hosted-runner-group-for-an-organization"""
+        """actions/create-self-hosted-runner-group-for-org
+
+        POST /orgs/{org}/actions/runner-groups
+
+        Creates a new self-hosted runner group for an organization.
+
+        OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#create-a-self-hosted-runner-group-for-an-organization
+        """
 
         from ..models import OrgsOrgActionsRunnerGroupsPostBody, RunnerGroupsOrg
 
@@ -1794,7 +2203,16 @@ class ActionsClient:
         data: Missing[OrgsOrgActionsRunnerGroupsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[RunnerGroupsOrg, RunnerGroupsOrgType]:
-        """See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#create-a-self-hosted-runner-group-for-an-organization"""
+        """actions/create-self-hosted-runner-group-for-org
+
+        POST /orgs/{org}/actions/runner-groups
+
+        Creates a new self-hosted runner group for an organization.
+
+        OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#create-a-self-hosted-runner-group-for-an-organization
+        """
 
         from ..models import OrgsOrgActionsRunnerGroupsPostBody, RunnerGroupsOrg
 
@@ -1826,7 +2244,16 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[RunnerGroupsOrg, RunnerGroupsOrgType]:
-        """See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#get-a-self-hosted-runner-group-for-an-organization"""
+        """actions/get-self-hosted-runner-group-for-org
+
+        GET /orgs/{org}/actions/runner-groups/{runner_group_id}
+
+        Gets a specific self-hosted runner group for an organization.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#get-a-self-hosted-runner-group-for-an-organization
+        """
 
         from ..models import RunnerGroupsOrg
 
@@ -1848,7 +2275,16 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[RunnerGroupsOrg, RunnerGroupsOrgType]:
-        """See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#get-a-self-hosted-runner-group-for-an-organization"""
+        """actions/get-self-hosted-runner-group-for-org
+
+        GET /orgs/{org}/actions/runner-groups/{runner_group_id}
+
+        Gets a specific self-hosted runner group for an organization.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#get-a-self-hosted-runner-group-for-an-organization
+        """
 
         from ..models import RunnerGroupsOrg
 
@@ -1870,7 +2306,16 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#delete-a-self-hosted-runner-group-from-an-organization"""
+        """actions/delete-self-hosted-runner-group-from-org
+
+        DELETE /orgs/{org}/actions/runner-groups/{runner_group_id}
+
+        Deletes a self-hosted runner group for an organization.
+
+        OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#delete-a-self-hosted-runner-group-from-an-organization
+        """
 
         url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}"
 
@@ -1889,7 +2334,16 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#delete-a-self-hosted-runner-group-from-an-organization"""
+        """actions/delete-self-hosted-runner-group-from-org
+
+        DELETE /orgs/{org}/actions/runner-groups/{runner_group_id}
+
+        Deletes a self-hosted runner group for an organization.
+
+        OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#delete-a-self-hosted-runner-group-from-an-organization
+        """
 
         url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}"
 
@@ -1936,7 +2390,16 @@ class ActionsClient:
         data: Missing[OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[RunnerGroupsOrg, RunnerGroupsOrgType]:
-        """See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#update-a-self-hosted-runner-group-for-an-organization"""
+        """actions/update-self-hosted-runner-group-for-org
+
+        PATCH /orgs/{org}/actions/runner-groups/{runner_group_id}
+
+        Updates the `name` and `visibility` of a self-hosted runner group in an organization.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#update-a-self-hosted-runner-group-for-an-organization
+        """
 
         from ..models import (
             OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBody,
@@ -2001,7 +2464,16 @@ class ActionsClient:
         data: Missing[OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[RunnerGroupsOrg, RunnerGroupsOrgType]:
-        """See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#update-a-self-hosted-runner-group-for-an-organization"""
+        """actions/update-self-hosted-runner-group-for-org
+
+        PATCH /orgs/{org}/actions/runner-groups/{runner_group_id}
+
+        Updates the `name` and `visibility` of a self-hosted runner group in an organization.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#update-a-self-hosted-runner-group-for-an-organization
+        """
 
         from ..models import (
             OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBody,
@@ -2043,7 +2515,16 @@ class ActionsClient:
         OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200,
         OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#list-github-hosted-runners-in-a-group-for-an-organization"""
+        """actions/list-github-hosted-runners-in-group-for-org
+
+        GET /orgs/{org}/actions/runner-groups/{runner_group_id}/hosted-runners
+
+        Lists the GitHub-hosted runners in an organization group.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#list-github-hosted-runners-in-a-group-for-an-organization
+        """
 
         from ..models import (
             OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200,
@@ -2078,7 +2559,16 @@ class ActionsClient:
         OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200,
         OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#list-github-hosted-runners-in-a-group-for-an-organization"""
+        """actions/list-github-hosted-runners-in-group-for-org
+
+        GET /orgs/{org}/actions/runner-groups/{runner_group_id}/hosted-runners
+
+        Lists the GitHub-hosted runners in an organization group.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#list-github-hosted-runners-in-a-group-for-an-organization
+        """
 
         from ..models import (
             OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200,
@@ -2113,7 +2603,16 @@ class ActionsClient:
         OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200,
         OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#list-repository-access-to-a-self-hosted-runner-group-in-an-organization"""
+        """actions/list-repo-access-to-self-hosted-runner-group-in-org
+
+        GET /orgs/{org}/actions/runner-groups/{runner_group_id}/repositories
+
+        Lists the repositories with access to a self-hosted runner group configured in an organization.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#list-repository-access-to-a-self-hosted-runner-group-in-an-organization
+        """
 
         from ..models import (
             OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200,
@@ -2148,7 +2647,16 @@ class ActionsClient:
         OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200,
         OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#list-repository-access-to-a-self-hosted-runner-group-in-an-organization"""
+        """actions/list-repo-access-to-self-hosted-runner-group-in-org
+
+        GET /orgs/{org}/actions/runner-groups/{runner_group_id}/repositories
+
+        Lists the repositories with access to a self-hosted runner group configured in an organization.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#list-repository-access-to-a-self-hosted-runner-group-in-an-organization
+        """
 
         from ..models import (
             OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200,
@@ -2203,7 +2711,16 @@ class ActionsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#set-repository-access-for-a-self-hosted-runner-group-in-an-organization"""
+        """actions/set-repo-access-to-self-hosted-runner-group-in-org
+
+        PUT /orgs/{org}/actions/runner-groups/{runner_group_id}/repositories
+
+        Replaces the list of repositories that have access to a self-hosted runner group configured in an organization.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#set-repository-access-for-a-self-hosted-runner-group-in-an-organization
+        """
 
         from ..models import OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBody
 
@@ -2261,7 +2778,16 @@ class ActionsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#set-repository-access-for-a-self-hosted-runner-group-in-an-organization"""
+        """actions/set-repo-access-to-self-hosted-runner-group-in-org
+
+        PUT /orgs/{org}/actions/runner-groups/{runner_group_id}/repositories
+
+        Replaces the list of repositories that have access to a self-hosted runner group configured in an organization.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#set-repository-access-for-a-self-hosted-runner-group-in-an-organization
+        """
 
         from ..models import OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBody
 
@@ -2295,7 +2821,16 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#add-repository-access-to-a-self-hosted-runner-group-in-an-organization"""
+        """actions/add-repo-access-to-self-hosted-runner-group-in-org
+
+        PUT /orgs/{org}/actions/runner-groups/{runner_group_id}/repositories/{repository_id}
+
+        Adds a repository to the list of repositories that can access a self-hosted runner group. The runner group must have `visibility` set to `selected`. For more information, see "[Create a self-hosted runner group for an organization](#create-a-self-hosted-runner-group-for-an-organization)."
+
+        OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#add-repository-access-to-a-self-hosted-runner-group-in-an-organization
+        """
 
         url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}/repositories/{repository_id}"
 
@@ -2315,7 +2850,16 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#add-repository-access-to-a-self-hosted-runner-group-in-an-organization"""
+        """actions/add-repo-access-to-self-hosted-runner-group-in-org
+
+        PUT /orgs/{org}/actions/runner-groups/{runner_group_id}/repositories/{repository_id}
+
+        Adds a repository to the list of repositories that can access a self-hosted runner group. The runner group must have `visibility` set to `selected`. For more information, see "[Create a self-hosted runner group for an organization](#create-a-self-hosted-runner-group-for-an-organization)."
+
+        OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#add-repository-access-to-a-self-hosted-runner-group-in-an-organization
+        """
 
         url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}/repositories/{repository_id}"
 
@@ -2335,7 +2879,16 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#remove-repository-access-to-a-self-hosted-runner-group-in-an-organization"""
+        """actions/remove-repo-access-to-self-hosted-runner-group-in-org
+
+        DELETE /orgs/{org}/actions/runner-groups/{runner_group_id}/repositories/{repository_id}
+
+        Removes a repository from the list of selected repositories that can access a self-hosted runner group. The runner group must have `visibility` set to `selected`. For more information, see "[Create a self-hosted runner group for an organization](#create-a-self-hosted-runner-group-for-an-organization)."
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#remove-repository-access-to-a-self-hosted-runner-group-in-an-organization
+        """
 
         url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}/repositories/{repository_id}"
 
@@ -2355,7 +2908,16 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#remove-repository-access-to-a-self-hosted-runner-group-in-an-organization"""
+        """actions/remove-repo-access-to-self-hosted-runner-group-in-org
+
+        DELETE /orgs/{org}/actions/runner-groups/{runner_group_id}/repositories/{repository_id}
+
+        Removes a repository from the list of selected repositories that can access a self-hosted runner group. The runner group must have `visibility` set to `selected`. For more information, see "[Create a self-hosted runner group for an organization](#create-a-self-hosted-runner-group-for-an-organization)."
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#remove-repository-access-to-a-self-hosted-runner-group-in-an-organization
+        """
 
         url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}/repositories/{repository_id}"
 
@@ -2379,7 +2941,16 @@ class ActionsClient:
         OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200,
         OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#list-self-hosted-runners-in-a-group-for-an-organization"""
+        """actions/list-self-hosted-runners-in-group-for-org
+
+        GET /orgs/{org}/actions/runner-groups/{runner_group_id}/runners
+
+        Lists self-hosted runners that are in a specific organization group.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#list-self-hosted-runners-in-a-group-for-an-organization
+        """
 
         from ..models import (
             OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200,
@@ -2414,7 +2985,16 @@ class ActionsClient:
         OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200,
         OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#list-self-hosted-runners-in-a-group-for-an-organization"""
+        """actions/list-self-hosted-runners-in-group-for-org
+
+        GET /orgs/{org}/actions/runner-groups/{runner_group_id}/runners
+
+        Lists self-hosted runners that are in a specific organization group.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#list-self-hosted-runners-in-a-group-for-an-organization
+        """
 
         from ..models import (
             OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200,
@@ -2469,7 +3049,16 @@ class ActionsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#set-self-hosted-runners-in-a-group-for-an-organization"""
+        """actions/set-self-hosted-runners-in-group-for-org
+
+        PUT /orgs/{org}/actions/runner-groups/{runner_group_id}/runners
+
+        Replaces the list of self-hosted runners that are part of an organization runner group.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#set-self-hosted-runners-in-a-group-for-an-organization
+        """
 
         from ..models import OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBody
 
@@ -2527,7 +3116,16 @@ class ActionsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#set-self-hosted-runners-in-a-group-for-an-organization"""
+        """actions/set-self-hosted-runners-in-group-for-org
+
+        PUT /orgs/{org}/actions/runner-groups/{runner_group_id}/runners
+
+        Replaces the list of self-hosted runners that are part of an organization runner group.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#set-self-hosted-runners-in-a-group-for-an-organization
+        """
 
         from ..models import OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBody
 
@@ -2561,7 +3159,16 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#add-a-self-hosted-runner-to-a-group-for-an-organization"""
+        """actions/add-self-hosted-runner-to-group-for-org
+
+        PUT /orgs/{org}/actions/runner-groups/{runner_group_id}/runners/{runner_id}
+
+        Adds a self-hosted runner to a runner group configured in an organization.
+
+        OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#add-a-self-hosted-runner-to-a-group-for-an-organization
+        """
 
         url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}/runners/{runner_id}"
 
@@ -2581,7 +3188,16 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#add-a-self-hosted-runner-to-a-group-for-an-organization"""
+        """actions/add-self-hosted-runner-to-group-for-org
+
+        PUT /orgs/{org}/actions/runner-groups/{runner_group_id}/runners/{runner_id}
+
+        Adds a self-hosted runner to a runner group configured in an organization.
+
+        OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#add-a-self-hosted-runner-to-a-group-for-an-organization
+        """
 
         url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}/runners/{runner_id}"
 
@@ -2601,7 +3217,16 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#remove-a-self-hosted-runner-from-a-group-for-an-organization"""
+        """actions/remove-self-hosted-runner-from-group-for-org
+
+        DELETE /orgs/{org}/actions/runner-groups/{runner_group_id}/runners/{runner_id}
+
+        Removes a self-hosted runner from a group configured in an organization. The runner is then returned to the default group.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#remove-a-self-hosted-runner-from-a-group-for-an-organization
+        """
 
         url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}/runners/{runner_id}"
 
@@ -2621,7 +3246,16 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#remove-a-self-hosted-runner-from-a-group-for-an-organization"""
+        """actions/remove-self-hosted-runner-from-group-for-org
+
+        DELETE /orgs/{org}/actions/runner-groups/{runner_group_id}/runners/{runner_id}
+
+        Removes a self-hosted runner from a group configured in an organization. The runner is then returned to the default group.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#remove-a-self-hosted-runner-from-a-group-for-an-organization
+        """
 
         url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}/runners/{runner_id}"
 
@@ -2644,7 +3278,18 @@ class ActionsClient:
     ) -> Response[
         OrgsOrgActionsRunnersGetResponse200, OrgsOrgActionsRunnersGetResponse200Type
     ]:
-        """See also: https://docs.github.com/rest/actions/self-hosted-runners#list-self-hosted-runners-for-an-organization"""
+        """actions/list-self-hosted-runners-for-org
+
+        GET /orgs/{org}/actions/runners
+
+        Lists all self-hosted runners configured in an organization.
+
+        Authenticated users must have admin access to the organization to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, the `repo` scope is also required.
+
+        See also: https://docs.github.com/rest/actions/self-hosted-runners#list-self-hosted-runners-for-an-organization
+        """
 
         from ..models import OrgsOrgActionsRunnersGetResponse200
 
@@ -2677,7 +3322,18 @@ class ActionsClient:
     ) -> Response[
         OrgsOrgActionsRunnersGetResponse200, OrgsOrgActionsRunnersGetResponse200Type
     ]:
-        """See also: https://docs.github.com/rest/actions/self-hosted-runners#list-self-hosted-runners-for-an-organization"""
+        """actions/list-self-hosted-runners-for-org
+
+        GET /orgs/{org}/actions/runners
+
+        Lists all self-hosted runners configured in an organization.
+
+        Authenticated users must have admin access to the organization to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, the `repo` scope is also required.
+
+        See also: https://docs.github.com/rest/actions/self-hosted-runners#list-self-hosted-runners-for-an-organization
+        """
 
         from ..models import OrgsOrgActionsRunnersGetResponse200
 
@@ -2705,7 +3361,18 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[RunnerApplication], list[RunnerApplicationType]]:
-        """See also: https://docs.github.com/rest/actions/self-hosted-runners#list-runner-applications-for-an-organization"""
+        """actions/list-runner-applications-for-org
+
+        GET /orgs/{org}/actions/runners/downloads
+
+        Lists binaries for the runner application that you can download and run.
+
+        Authenticated users must have admin access to the organization to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.  If the repository is private, the `repo` scope is also required.
+
+        See also: https://docs.github.com/rest/actions/self-hosted-runners#list-runner-applications-for-an-organization
+        """
 
         from ..models import RunnerApplication
 
@@ -2726,7 +3393,18 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[RunnerApplication], list[RunnerApplicationType]]:
-        """See also: https://docs.github.com/rest/actions/self-hosted-runners#list-runner-applications-for-an-organization"""
+        """actions/list-runner-applications-for-org
+
+        GET /orgs/{org}/actions/runners/downloads
+
+        Lists binaries for the runner application that you can download and run.
+
+        Authenticated users must have admin access to the organization to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.  If the repository is private, the `repo` scope is also required.
+
+        See also: https://docs.github.com/rest/actions/self-hosted-runners#list-runner-applications-for-an-organization
+        """
 
         from ..models import RunnerApplication
 
@@ -2780,7 +3458,18 @@ class ActionsClient:
         OrgsOrgActionsRunnersGenerateJitconfigPostResponse201,
         OrgsOrgActionsRunnersGenerateJitconfigPostResponse201Type,
     ]:
-        """See also: https://docs.github.com/rest/actions/self-hosted-runners#create-configuration-for-a-just-in-time-runner-for-an-organization"""
+        """actions/generate-runner-jitconfig-for-org
+
+        POST /orgs/{org}/actions/runners/generate-jitconfig
+
+        Generates a configuration that can be passed to the runner application at startup.
+
+        The authenticated user must have admin access to the organization.
+
+        OAuth tokens and personal access tokens (classic) need the`admin:org` scope to use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/self-hosted-runners#create-configuration-for-a-just-in-time-runner-for-an-organization
+        """
 
         from ..models import (
             BasicError,
@@ -2856,7 +3545,18 @@ class ActionsClient:
         OrgsOrgActionsRunnersGenerateJitconfigPostResponse201,
         OrgsOrgActionsRunnersGenerateJitconfigPostResponse201Type,
     ]:
-        """See also: https://docs.github.com/rest/actions/self-hosted-runners#create-configuration-for-a-just-in-time-runner-for-an-organization"""
+        """actions/generate-runner-jitconfig-for-org
+
+        POST /orgs/{org}/actions/runners/generate-jitconfig
+
+        Generates a configuration that can be passed to the runner application at startup.
+
+        The authenticated user must have admin access to the organization.
+
+        OAuth tokens and personal access tokens (classic) need the`admin:org` scope to use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/self-hosted-runners#create-configuration-for-a-just-in-time-runner-for-an-organization
+        """
 
         from ..models import (
             BasicError,
@@ -2899,7 +3599,24 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[AuthenticationToken, AuthenticationTokenType]:
-        """See also: https://docs.github.com/rest/actions/self-hosted-runners#create-a-registration-token-for-an-organization"""
+        """actions/create-registration-token-for-org
+
+        POST /orgs/{org}/actions/runners/registration-token
+
+        Returns a token that you can pass to the `config` script. The token expires after one hour.
+
+        For example, you can replace `TOKEN` in the following example with the registration token provided by this endpoint to configure your self-hosted runner:
+
+        ```
+        ./config.sh --url https://github.com/octo-org --token TOKEN
+        ```
+
+        Authenticated users must have admin access to the organization to use this endpoint.
+
+        OAuth tokens and personal access tokens (classic) need the`admin:org` scope to use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/self-hosted-runners#create-a-registration-token-for-an-organization
+        """
 
         from ..models import AuthenticationToken
 
@@ -2920,7 +3637,24 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[AuthenticationToken, AuthenticationTokenType]:
-        """See also: https://docs.github.com/rest/actions/self-hosted-runners#create-a-registration-token-for-an-organization"""
+        """actions/create-registration-token-for-org
+
+        POST /orgs/{org}/actions/runners/registration-token
+
+        Returns a token that you can pass to the `config` script. The token expires after one hour.
+
+        For example, you can replace `TOKEN` in the following example with the registration token provided by this endpoint to configure your self-hosted runner:
+
+        ```
+        ./config.sh --url https://github.com/octo-org --token TOKEN
+        ```
+
+        Authenticated users must have admin access to the organization to use this endpoint.
+
+        OAuth tokens and personal access tokens (classic) need the`admin:org` scope to use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/self-hosted-runners#create-a-registration-token-for-an-organization
+        """
 
         from ..models import AuthenticationToken
 
@@ -2941,7 +3675,24 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[AuthenticationToken, AuthenticationTokenType]:
-        """See also: https://docs.github.com/rest/actions/self-hosted-runners#create-a-remove-token-for-an-organization"""
+        """actions/create-remove-token-for-org
+
+        POST /orgs/{org}/actions/runners/remove-token
+
+        Returns a token that you can pass to the `config` script to remove a self-hosted runner from an organization. The token expires after one hour.
+
+        For example, you can replace `TOKEN` in the following example with the registration token provided by this endpoint to remove your self-hosted runner from an organization:
+
+        ```
+        ./config.sh remove --token TOKEN
+        ```
+
+        Authenticated users must have admin access to the organization to use this endpoint.
+
+        OAuth tokens and personal access tokens (classic) need the`admin:org` scope to use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/self-hosted-runners#create-a-remove-token-for-an-organization
+        """
 
         from ..models import AuthenticationToken
 
@@ -2962,7 +3713,24 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[AuthenticationToken, AuthenticationTokenType]:
-        """See also: https://docs.github.com/rest/actions/self-hosted-runners#create-a-remove-token-for-an-organization"""
+        """actions/create-remove-token-for-org
+
+        POST /orgs/{org}/actions/runners/remove-token
+
+        Returns a token that you can pass to the `config` script to remove a self-hosted runner from an organization. The token expires after one hour.
+
+        For example, you can replace `TOKEN` in the following example with the registration token provided by this endpoint to remove your self-hosted runner from an organization:
+
+        ```
+        ./config.sh remove --token TOKEN
+        ```
+
+        Authenticated users must have admin access to the organization to use this endpoint.
+
+        OAuth tokens and personal access tokens (classic) need the`admin:org` scope to use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/self-hosted-runners#create-a-remove-token-for-an-organization
+        """
 
         from ..models import AuthenticationToken
 
@@ -2984,7 +3752,18 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Runner, RunnerType]:
-        """See also: https://docs.github.com/rest/actions/self-hosted-runners#get-a-self-hosted-runner-for-an-organization"""
+        """actions/get-self-hosted-runner-for-org
+
+        GET /orgs/{org}/actions/runners/{runner_id}
+
+        Gets a specific self-hosted runner configured in an organization.
+
+        Authenticated users must have admin access to the organization to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, the `repo` scope is also required.
+
+        See also: https://docs.github.com/rest/actions/self-hosted-runners#get-a-self-hosted-runner-for-an-organization
+        """
 
         from ..models import Runner
 
@@ -3006,7 +3785,18 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Runner, RunnerType]:
-        """See also: https://docs.github.com/rest/actions/self-hosted-runners#get-a-self-hosted-runner-for-an-organization"""
+        """actions/get-self-hosted-runner-for-org
+
+        GET /orgs/{org}/actions/runners/{runner_id}
+
+        Gets a specific self-hosted runner configured in an organization.
+
+        Authenticated users must have admin access to the organization to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, the `repo` scope is also required.
+
+        See also: https://docs.github.com/rest/actions/self-hosted-runners#get-a-self-hosted-runner-for-an-organization
+        """
 
         from ..models import Runner
 
@@ -3028,7 +3818,18 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/self-hosted-runners#delete-a-self-hosted-runner-from-an-organization"""
+        """actions/delete-self-hosted-runner-from-org
+
+        DELETE /orgs/{org}/actions/runners/{runner_id}
+
+        Forces the removal of a self-hosted runner from an organization. You can use this endpoint to completely remove the runner when the machine you were using no longer exists.
+
+        Authenticated users must have admin access to the organization to use this endpoint.
+
+        OAuth tokens and personal access tokens (classic) need the`admin:org` scope to use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/self-hosted-runners#delete-a-self-hosted-runner-from-an-organization
+        """
 
         url = f"/orgs/{org}/actions/runners/{runner_id}"
 
@@ -3047,7 +3848,18 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/self-hosted-runners#delete-a-self-hosted-runner-from-an-organization"""
+        """actions/delete-self-hosted-runner-from-org
+
+        DELETE /orgs/{org}/actions/runners/{runner_id}
+
+        Forces the removal of a self-hosted runner from an organization. You can use this endpoint to completely remove the runner when the machine you were using no longer exists.
+
+        Authenticated users must have admin access to the organization to use this endpoint.
+
+        OAuth tokens and personal access tokens (classic) need the`admin:org` scope to use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/self-hosted-runners#delete-a-self-hosted-runner-from-an-organization
+        """
 
         url = f"/orgs/{org}/actions/runners/{runner_id}"
 
@@ -3069,7 +3881,18 @@ class ActionsClient:
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/actions/self-hosted-runners#list-labels-for-a-self-hosted-runner-for-an-organization"""
+        """actions/list-labels-for-self-hosted-runner-for-org
+
+        GET /orgs/{org}/actions/runners/{runner_id}/labels
+
+        Lists all labels for a self-hosted runner configured in an organization.
+
+        Authenticated users must have admin access to the organization to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, the `repo` scope is also required.
+
+        See also: https://docs.github.com/rest/actions/self-hosted-runners#list-labels-for-a-self-hosted-runner-for-an-organization
+        """
 
         from ..models import (
             BasicError,
@@ -3100,7 +3923,18 @@ class ActionsClient:
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/actions/self-hosted-runners#list-labels-for-a-self-hosted-runner-for-an-organization"""
+        """actions/list-labels-for-self-hosted-runner-for-org
+
+        GET /orgs/{org}/actions/runners/{runner_id}/labels
+
+        Lists all labels for a self-hosted runner configured in an organization.
+
+        Authenticated users must have admin access to the organization to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, the `repo` scope is also required.
+
+        See also: https://docs.github.com/rest/actions/self-hosted-runners#list-labels-for-a-self-hosted-runner-for-an-organization
+        """
 
         from ..models import (
             BasicError,
@@ -3160,7 +3994,19 @@ class ActionsClient:
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/actions/self-hosted-runners#set-custom-labels-for-a-self-hosted-runner-for-an-organization"""
+        """actions/set-custom-labels-for-self-hosted-runner-for-org
+
+        PUT /orgs/{org}/actions/runners/{runner_id}/labels
+
+        Remove all previous custom labels and set the new custom labels for a specific
+        self-hosted runner configured in an organization.
+
+        Authenticated users must have admin access to the organization to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, the `repo` scope is also required.
+
+        See also: https://docs.github.com/rest/actions/self-hosted-runners#set-custom-labels-for-a-self-hosted-runner-for-an-organization
+        """
 
         from ..models import (
             BasicError,
@@ -3235,7 +4081,19 @@ class ActionsClient:
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/actions/self-hosted-runners#set-custom-labels-for-a-self-hosted-runner-for-an-organization"""
+        """actions/set-custom-labels-for-self-hosted-runner-for-org
+
+        PUT /orgs/{org}/actions/runners/{runner_id}/labels
+
+        Remove all previous custom labels and set the new custom labels for a specific
+        self-hosted runner configured in an organization.
+
+        Authenticated users must have admin access to the organization to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, the `repo` scope is also required.
+
+        See also: https://docs.github.com/rest/actions/self-hosted-runners#set-custom-labels-for-a-self-hosted-runner-for-an-organization
+        """
 
         from ..models import (
             BasicError,
@@ -3310,7 +4168,18 @@ class ActionsClient:
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/actions/self-hosted-runners#add-custom-labels-to-a-self-hosted-runner-for-an-organization"""
+        """actions/add-custom-labels-to-self-hosted-runner-for-org
+
+        POST /orgs/{org}/actions/runners/{runner_id}/labels
+
+        Adds custom labels to a self-hosted runner configured in an organization.
+
+        Authenticated users must have admin access to the organization to use this endpoint.
+
+        OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/self-hosted-runners#add-custom-labels-to-a-self-hosted-runner-for-an-organization
+        """
 
         from ..models import (
             BasicError,
@@ -3385,7 +4254,18 @@ class ActionsClient:
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/actions/self-hosted-runners#add-custom-labels-to-a-self-hosted-runner-for-an-organization"""
+        """actions/add-custom-labels-to-self-hosted-runner-for-org
+
+        POST /orgs/{org}/actions/runners/{runner_id}/labels
+
+        Adds custom labels to a self-hosted runner configured in an organization.
+
+        Authenticated users must have admin access to the organization to use this endpoint.
+
+        OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/self-hosted-runners#add-custom-labels-to-a-self-hosted-runner-for-an-organization
+        """
 
         from ..models import (
             BasicError,
@@ -3431,7 +4311,19 @@ class ActionsClient:
         OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200,
         OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/actions/self-hosted-runners#remove-all-custom-labels-from-a-self-hosted-runner-for-an-organization"""
+        """actions/remove-all-custom-labels-from-self-hosted-runner-for-org
+
+        DELETE /orgs/{org}/actions/runners/{runner_id}/labels
+
+        Remove all custom labels from a self-hosted runner configured in an
+        organization. Returns the remaining read-only labels from the runner.
+
+        Authenticated users must have admin access to the organization to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, the `repo` scope is also required.
+
+        See also: https://docs.github.com/rest/actions/self-hosted-runners#remove-all-custom-labels-from-a-self-hosted-runner-for-an-organization
+        """
 
         from ..models import (
             BasicError,
@@ -3462,7 +4354,19 @@ class ActionsClient:
         OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200,
         OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/actions/self-hosted-runners#remove-all-custom-labels-from-a-self-hosted-runner-for-an-organization"""
+        """actions/remove-all-custom-labels-from-self-hosted-runner-for-org
+
+        DELETE /orgs/{org}/actions/runners/{runner_id}/labels
+
+        Remove all custom labels from a self-hosted runner configured in an
+        organization. Returns the remaining read-only labels from the runner.
+
+        Authenticated users must have admin access to the organization to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, the `repo` scope is also required.
+
+        See also: https://docs.github.com/rest/actions/self-hosted-runners#remove-all-custom-labels-from-a-self-hosted-runner-for-an-organization
+        """
 
         from ..models import (
             BasicError,
@@ -3494,7 +4398,22 @@ class ActionsClient:
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/actions/self-hosted-runners#remove-a-custom-label-from-a-self-hosted-runner-for-an-organization"""
+        """actions/remove-custom-label-from-self-hosted-runner-for-org
+
+        DELETE /orgs/{org}/actions/runners/{runner_id}/labels/{name}
+
+        Remove a custom label from a self-hosted runner configured
+        in an organization. Returns the remaining labels from the runner.
+
+        This endpoint returns a `404 Not Found` status if the custom label is not
+        present on the runner.
+
+        Authenticated users must have admin access to the organization to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, the `repo` scope is also required.
+
+        See also: https://docs.github.com/rest/actions/self-hosted-runners#remove-a-custom-label-from-a-self-hosted-runner-for-an-organization
+        """
 
         from ..models import (
             BasicError,
@@ -3528,7 +4447,22 @@ class ActionsClient:
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/actions/self-hosted-runners#remove-a-custom-label-from-a-self-hosted-runner-for-an-organization"""
+        """actions/remove-custom-label-from-self-hosted-runner-for-org
+
+        DELETE /orgs/{org}/actions/runners/{runner_id}/labels/{name}
+
+        Remove a custom label from a self-hosted runner configured
+        in an organization. Returns the remaining labels from the runner.
+
+        This endpoint returns a `404 Not Found` status if the custom label is not
+        present on the runner.
+
+        Authenticated users must have admin access to the organization to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, the `repo` scope is also required.
+
+        See also: https://docs.github.com/rest/actions/self-hosted-runners#remove-a-custom-label-from-a-self-hosted-runner-for-an-organization
+        """
 
         from ..models import (
             BasicError,
@@ -3561,7 +4495,19 @@ class ActionsClient:
     ) -> Response[
         OrgsOrgActionsSecretsGetResponse200, OrgsOrgActionsSecretsGetResponse200Type
     ]:
-        """See also: https://docs.github.com/rest/actions/secrets#list-organization-secrets"""
+        """actions/list-org-secrets
+
+        GET /orgs/{org}/actions/secrets
+
+        Lists all secrets available in an organization without revealing their
+        encrypted values.
+
+        Authenticated users must have collaborator access to a repository to create, update, or read secrets.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, the `repo` scope is also required.
+
+        See also: https://docs.github.com/rest/actions/secrets#list-organization-secrets
+        """
 
         from ..models import OrgsOrgActionsSecretsGetResponse200
 
@@ -3592,7 +4538,19 @@ class ActionsClient:
     ) -> Response[
         OrgsOrgActionsSecretsGetResponse200, OrgsOrgActionsSecretsGetResponse200Type
     ]:
-        """See also: https://docs.github.com/rest/actions/secrets#list-organization-secrets"""
+        """actions/list-org-secrets
+
+        GET /orgs/{org}/actions/secrets
+
+        Lists all secrets available in an organization without revealing their
+        encrypted values.
+
+        Authenticated users must have collaborator access to a repository to create, update, or read secrets.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, the `repo` scope is also required.
+
+        See also: https://docs.github.com/rest/actions/secrets#list-organization-secrets
+        """
 
         from ..models import OrgsOrgActionsSecretsGetResponse200
 
@@ -3619,7 +4577,19 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ActionsPublicKey, ActionsPublicKeyType]:
-        """See also: https://docs.github.com/rest/actions/secrets#get-an-organization-public-key"""
+        """actions/get-org-public-key
+
+        GET /orgs/{org}/actions/secrets/public-key
+
+        Gets your public key, which you need to encrypt secrets. You need to
+        encrypt a secret before you can create or update secrets.
+
+        The authenticated user must have collaborator access to a repository to create, update, or read secrets.
+
+        OAuth tokens and personal access tokens (classic) need the`admin:org` scope to use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/secrets#get-an-organization-public-key
+        """
 
         from ..models import ActionsPublicKey
 
@@ -3640,7 +4610,19 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ActionsPublicKey, ActionsPublicKeyType]:
-        """See also: https://docs.github.com/rest/actions/secrets#get-an-organization-public-key"""
+        """actions/get-org-public-key
+
+        GET /orgs/{org}/actions/secrets/public-key
+
+        Gets your public key, which you need to encrypt secrets. You need to
+        encrypt a secret before you can create or update secrets.
+
+        The authenticated user must have collaborator access to a repository to create, update, or read secrets.
+
+        OAuth tokens and personal access tokens (classic) need the`admin:org` scope to use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/secrets#get-an-organization-public-key
+        """
 
         from ..models import ActionsPublicKey
 
@@ -3662,7 +4644,18 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[OrganizationActionsSecret, OrganizationActionsSecretType]:
-        """See also: https://docs.github.com/rest/actions/secrets#get-an-organization-secret"""
+        """actions/get-org-secret
+
+        GET /orgs/{org}/actions/secrets/{secret_name}
+
+        Gets a single organization secret without revealing its encrypted value.
+
+        The authenticated user must have collaborator access to a repository to create, update, or read secrets
+
+        OAuth tokens and personal access tokens (classic) need the`admin:org` scope to use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/secrets#get-an-organization-secret
+        """
 
         from ..models import OrganizationActionsSecret
 
@@ -3684,7 +4677,18 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[OrganizationActionsSecret, OrganizationActionsSecretType]:
-        """See also: https://docs.github.com/rest/actions/secrets#get-an-organization-secret"""
+        """actions/get-org-secret
+
+        GET /orgs/{org}/actions/secrets/{secret_name}
+
+        Gets a single organization secret without revealing its encrypted value.
+
+        The authenticated user must have collaborator access to a repository to create, update, or read secrets
+
+        OAuth tokens and personal access tokens (classic) need the`admin:org` scope to use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/secrets#get-an-organization-secret
+        """
 
         from ..models import OrganizationActionsSecret
 
@@ -3732,7 +4736,19 @@ class ActionsClient:
         data: Missing[OrgsOrgActionsSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject, EmptyObjectType]:
-        """See also: https://docs.github.com/rest/actions/secrets#create-or-update-an-organization-secret"""
+        """actions/create-or-update-org-secret
+
+        PUT /orgs/{org}/actions/secrets/{secret_name}
+
+        Creates or updates an organization secret with an encrypted value. Encrypt your secret using
+        [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). For more information, see "[Encrypting secrets for the REST API](https://docs.github.com/rest/guides/encrypting-secrets-for-the-rest-api)."
+
+        Authenticated users must have collaborator access to a repository to create, update, or read secrets.
+
+        OAuth tokens and personal access tokens (classic) need the`admin:org` scope to use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/secrets#create-or-update-an-organization-secret
+        """
 
         from ..models import EmptyObject, OrgsOrgActionsSecretsSecretNamePutBody
 
@@ -3790,7 +4806,19 @@ class ActionsClient:
         data: Missing[OrgsOrgActionsSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject, EmptyObjectType]:
-        """See also: https://docs.github.com/rest/actions/secrets#create-or-update-an-organization-secret"""
+        """actions/create-or-update-org-secret
+
+        PUT /orgs/{org}/actions/secrets/{secret_name}
+
+        Creates or updates an organization secret with an encrypted value. Encrypt your secret using
+        [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). For more information, see "[Encrypting secrets for the REST API](https://docs.github.com/rest/guides/encrypting-secrets-for-the-rest-api)."
+
+        Authenticated users must have collaborator access to a repository to create, update, or read secrets.
+
+        OAuth tokens and personal access tokens (classic) need the`admin:org` scope to use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/secrets#create-or-update-an-organization-secret
+        """
 
         from ..models import EmptyObject, OrgsOrgActionsSecretsSecretNamePutBody
 
@@ -3822,7 +4850,18 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/secrets#delete-an-organization-secret"""
+        """actions/delete-org-secret
+
+        DELETE /orgs/{org}/actions/secrets/{secret_name}
+
+        Deletes a secret in an organization using the secret name.
+
+        Authenticated users must have collaborator access to a repository to create, update, or read secrets.
+
+        OAuth tokens and personal access tokens (classic) need the`admin:org` scope to use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/secrets#delete-an-organization-secret
+        """
 
         url = f"/orgs/{org}/actions/secrets/{secret_name}"
 
@@ -3841,7 +4880,18 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/secrets#delete-an-organization-secret"""
+        """actions/delete-org-secret
+
+        DELETE /orgs/{org}/actions/secrets/{secret_name}
+
+        Deletes a secret in an organization using the secret name.
+
+        Authenticated users must have collaborator access to a repository to create, update, or read secrets.
+
+        OAuth tokens and personal access tokens (classic) need the`admin:org` scope to use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/secrets#delete-an-organization-secret
+        """
 
         url = f"/orgs/{org}/actions/secrets/{secret_name}"
 
@@ -3865,7 +4915,19 @@ class ActionsClient:
         OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200,
         OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/actions/secrets#list-selected-repositories-for-an-organization-secret"""
+        """actions/list-selected-repos-for-org-secret
+
+        GET /orgs/{org}/actions/secrets/{secret_name}/repositories
+
+        Lists all repositories that have been selected when the `visibility`
+        for repository access to a secret is set to `selected`.
+
+        Authenticated users must have collaborator access to a repository to create, update, or read secrets.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, the `repo` scope is also required.
+
+        See also: https://docs.github.com/rest/actions/secrets#list-selected-repositories-for-an-organization-secret
+        """
 
         from ..models import OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200
 
@@ -3898,7 +4960,19 @@ class ActionsClient:
         OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200,
         OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/actions/secrets#list-selected-repositories-for-an-organization-secret"""
+        """actions/list-selected-repos-for-org-secret
+
+        GET /orgs/{org}/actions/secrets/{secret_name}/repositories
+
+        Lists all repositories that have been selected when the `visibility`
+        for repository access to a secret is set to `selected`.
+
+        Authenticated users must have collaborator access to a repository to create, update, or read secrets.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, the `repo` scope is also required.
+
+        See also: https://docs.github.com/rest/actions/secrets#list-selected-repositories-for-an-organization-secret
+        """
 
         from ..models import OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200
 
@@ -3949,7 +5023,20 @@ class ActionsClient:
         data: Missing[OrgsOrgActionsSecretsSecretNameRepositoriesPutBodyType] = UNSET,
         **kwargs,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/secrets#set-selected-repositories-for-an-organization-secret"""
+        """actions/set-selected-repos-for-org-secret
+
+        PUT /orgs/{org}/actions/secrets/{secret_name}/repositories
+
+        Replaces all repositories for an organization secret when the `visibility`
+        for repository access is set to `selected`. The visibility is set when you [Create
+        or update an organization secret](https://docs.github.com/rest/actions/secrets#create-or-update-an-organization-secret).
+
+        Authenticated users must have collaborator access to a repository to create, update, or read secrets.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, the `repo` scope is also required.
+
+        See also: https://docs.github.com/rest/actions/secrets#set-selected-repositories-for-an-organization-secret
+        """
 
         from ..models import OrgsOrgActionsSecretsSecretNameRepositoriesPutBody
 
@@ -4005,7 +5092,20 @@ class ActionsClient:
         data: Missing[OrgsOrgActionsSecretsSecretNameRepositoriesPutBodyType] = UNSET,
         **kwargs,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/secrets#set-selected-repositories-for-an-organization-secret"""
+        """actions/set-selected-repos-for-org-secret
+
+        PUT /orgs/{org}/actions/secrets/{secret_name}/repositories
+
+        Replaces all repositories for an organization secret when the `visibility`
+        for repository access is set to `selected`. The visibility is set when you [Create
+        or update an organization secret](https://docs.github.com/rest/actions/secrets#create-or-update-an-organization-secret).
+
+        Authenticated users must have collaborator access to a repository to create, update, or read secrets.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, the `repo` scope is also required.
+
+        See also: https://docs.github.com/rest/actions/secrets#set-selected-repositories-for-an-organization-secret
+        """
 
         from ..models import OrgsOrgActionsSecretsSecretNameRepositoriesPutBody
 
@@ -4039,7 +5139,20 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/secrets#add-selected-repository-to-an-organization-secret"""
+        """actions/add-selected-repo-to-org-secret
+
+        PUT /orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}
+
+        Adds a repository to an organization secret when the `visibility` for
+        repository access is set to `selected`. For more information about setting the visibility, see [Create or
+        update an organization secret](https://docs.github.com/rest/actions/secrets#create-or-update-an-organization-secret).
+
+        Authenticated users must have collaborator access to a repository to create, update, or read secrets.
+
+        OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/secrets#add-selected-repository-to-an-organization-secret
+        """
 
         url = f"/orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}"
 
@@ -4060,7 +5173,20 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/secrets#add-selected-repository-to-an-organization-secret"""
+        """actions/add-selected-repo-to-org-secret
+
+        PUT /orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}
+
+        Adds a repository to an organization secret when the `visibility` for
+        repository access is set to `selected`. For more information about setting the visibility, see [Create or
+        update an organization secret](https://docs.github.com/rest/actions/secrets#create-or-update-an-organization-secret).
+
+        Authenticated users must have collaborator access to a repository to create, update, or read secrets.
+
+        OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/secrets#add-selected-repository-to-an-organization-secret
+        """
 
         url = f"/orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}"
 
@@ -4081,7 +5207,20 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/secrets#remove-selected-repository-from-an-organization-secret"""
+        """actions/remove-selected-repo-from-org-secret
+
+        DELETE /orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}
+
+        Removes a repository from an organization secret when the `visibility`
+        for repository access is set to `selected`. The visibility is set when you [Create
+        or update an organization secret](https://docs.github.com/rest/actions/secrets#create-or-update-an-organization-secret).
+
+        Authenticated users must have collaborator access to a repository to create, update, or read secrets.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, the `repo` scope is also required.
+
+        See also: https://docs.github.com/rest/actions/secrets#remove-selected-repository-from-an-organization-secret
+        """
 
         url = f"/orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}"
 
@@ -4102,7 +5241,20 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/secrets#remove-selected-repository-from-an-organization-secret"""
+        """actions/remove-selected-repo-from-org-secret
+
+        DELETE /orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}
+
+        Removes a repository from an organization secret when the `visibility`
+        for repository access is set to `selected`. The visibility is set when you [Create
+        or update an organization secret](https://docs.github.com/rest/actions/secrets#create-or-update-an-organization-secret).
+
+        Authenticated users must have collaborator access to a repository to create, update, or read secrets.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, the `repo` scope is also required.
+
+        See also: https://docs.github.com/rest/actions/secrets#remove-selected-repository-from-an-organization-secret
+        """
 
         url = f"/orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}"
 
@@ -4125,7 +5277,18 @@ class ActionsClient:
     ) -> Response[
         OrgsOrgActionsVariablesGetResponse200, OrgsOrgActionsVariablesGetResponse200Type
     ]:
-        """See also: https://docs.github.com/rest/actions/variables#list-organization-variables"""
+        """actions/list-org-variables
+
+        GET /orgs/{org}/actions/variables
+
+        Lists all organization variables.
+
+        Authenticated users must have collaborator access to a repository to create, update, or read variables.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, the `repo` scope is also required.
+
+        See also: https://docs.github.com/rest/actions/variables#list-organization-variables
+        """
 
         from ..models import OrgsOrgActionsVariablesGetResponse200
 
@@ -4156,7 +5319,18 @@ class ActionsClient:
     ) -> Response[
         OrgsOrgActionsVariablesGetResponse200, OrgsOrgActionsVariablesGetResponse200Type
     ]:
-        """See also: https://docs.github.com/rest/actions/variables#list-organization-variables"""
+        """actions/list-org-variables
+
+        GET /orgs/{org}/actions/variables
+
+        Lists all organization variables.
+
+        Authenticated users must have collaborator access to a repository to create, update, or read variables.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, the `repo` scope is also required.
+
+        See also: https://docs.github.com/rest/actions/variables#list-organization-variables
+        """
 
         from ..models import OrgsOrgActionsVariablesGetResponse200
 
@@ -4207,7 +5381,18 @@ class ActionsClient:
         data: Missing[OrgsOrgActionsVariablesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject, EmptyObjectType]:
-        """See also: https://docs.github.com/rest/actions/variables#create-an-organization-variable"""
+        """actions/create-org-variable
+
+        POST /orgs/{org}/actions/variables
+
+        Creates an organization variable that you can reference in a GitHub Actions workflow.
+
+        Authenticated users must have collaborator access to a repository to create, update, or read variables.
+
+        OAuth tokens and personal access tokens (classic) need the`admin:org` scope to use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/variables#create-an-organization-variable
+        """
 
         from ..models import EmptyObject, OrgsOrgActionsVariablesPostBody
 
@@ -4262,7 +5447,18 @@ class ActionsClient:
         data: Missing[OrgsOrgActionsVariablesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject, EmptyObjectType]:
-        """See also: https://docs.github.com/rest/actions/variables#create-an-organization-variable"""
+        """actions/create-org-variable
+
+        POST /orgs/{org}/actions/variables
+
+        Creates an organization variable that you can reference in a GitHub Actions workflow.
+
+        Authenticated users must have collaborator access to a repository to create, update, or read variables.
+
+        OAuth tokens and personal access tokens (classic) need the`admin:org` scope to use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/variables#create-an-organization-variable
+        """
 
         from ..models import EmptyObject, OrgsOrgActionsVariablesPostBody
 
@@ -4294,7 +5490,18 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[OrganizationActionsVariable, OrganizationActionsVariableType]:
-        """See also: https://docs.github.com/rest/actions/variables#get-an-organization-variable"""
+        """actions/get-org-variable
+
+        GET /orgs/{org}/actions/variables/{name}
+
+        Gets a specific variable in an organization.
+
+        The authenticated user must have collaborator access to a repository to create, update, or read variables.
+
+        OAuth tokens and personal access tokens (classic) need the`admin:org` scope to use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/variables#get-an-organization-variable
+        """
 
         from ..models import OrganizationActionsVariable
 
@@ -4316,7 +5523,18 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[OrganizationActionsVariable, OrganizationActionsVariableType]:
-        """See also: https://docs.github.com/rest/actions/variables#get-an-organization-variable"""
+        """actions/get-org-variable
+
+        GET /orgs/{org}/actions/variables/{name}
+
+        Gets a specific variable in an organization.
+
+        The authenticated user must have collaborator access to a repository to create, update, or read variables.
+
+        OAuth tokens and personal access tokens (classic) need the`admin:org` scope to use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/variables#get-an-organization-variable
+        """
 
         from ..models import OrganizationActionsVariable
 
@@ -4338,7 +5556,18 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/variables#delete-an-organization-variable"""
+        """actions/delete-org-variable
+
+        DELETE /orgs/{org}/actions/variables/{name}
+
+        Deletes an organization variable using the variable name.
+
+        Authenticated users must have collaborator access to a repository to create, update, or read variables.
+
+        OAuth tokens and personal access tokens (classic) need the`admin:org` scope to use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/variables#delete-an-organization-variable
+        """
 
         url = f"/orgs/{org}/actions/variables/{name}"
 
@@ -4357,7 +5586,18 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/variables#delete-an-organization-variable"""
+        """actions/delete-org-variable
+
+        DELETE /orgs/{org}/actions/variables/{name}
+
+        Deletes an organization variable using the variable name.
+
+        Authenticated users must have collaborator access to a repository to create, update, or read variables.
+
+        OAuth tokens and personal access tokens (classic) need the`admin:org` scope to use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/variables#delete-an-organization-variable
+        """
 
         url = f"/orgs/{org}/actions/variables/{name}"
 
@@ -4401,7 +5641,18 @@ class ActionsClient:
         data: Missing[OrgsOrgActionsVariablesNamePatchBodyType] = UNSET,
         **kwargs,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/variables#update-an-organization-variable"""
+        """actions/update-org-variable
+
+        PATCH /orgs/{org}/actions/variables/{name}
+
+        Updates an organization variable that you can reference in a GitHub Actions workflow.
+
+        Authenticated users must have collaborator access to a repository to create, update, or read variables.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, the `repo` scope is also required.
+
+        See also: https://docs.github.com/rest/actions/variables#update-an-organization-variable
+        """
 
         from ..models import OrgsOrgActionsVariablesNamePatchBody
 
@@ -4457,7 +5708,18 @@ class ActionsClient:
         data: Missing[OrgsOrgActionsVariablesNamePatchBodyType] = UNSET,
         **kwargs,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/variables#update-an-organization-variable"""
+        """actions/update-org-variable
+
+        PATCH /orgs/{org}/actions/variables/{name}
+
+        Updates an organization variable that you can reference in a GitHub Actions workflow.
+
+        Authenticated users must have collaborator access to a repository to create, update, or read variables.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, the `repo` scope is also required.
+
+        See also: https://docs.github.com/rest/actions/variables#update-an-organization-variable
+        """
 
         from ..models import OrgsOrgActionsVariablesNamePatchBody
 
@@ -4493,7 +5755,19 @@ class ActionsClient:
         OrgsOrgActionsVariablesNameRepositoriesGetResponse200,
         OrgsOrgActionsVariablesNameRepositoriesGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/actions/variables#list-selected-repositories-for-an-organization-variable"""
+        """actions/list-selected-repos-for-org-variable
+
+        GET /orgs/{org}/actions/variables/{name}/repositories
+
+        Lists all repositories that can access an organization variable
+        that is available to selected repositories.
+
+        Authenticated users must have collaborator access to a repository to create, update, or read variables.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, the `repo` scope is also required.
+
+        See also: https://docs.github.com/rest/actions/variables#list-selected-repositories-for-an-organization-variable
+        """
 
         from ..models import OrgsOrgActionsVariablesNameRepositoriesGetResponse200
 
@@ -4527,7 +5801,19 @@ class ActionsClient:
         OrgsOrgActionsVariablesNameRepositoriesGetResponse200,
         OrgsOrgActionsVariablesNameRepositoriesGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/actions/variables#list-selected-repositories-for-an-organization-variable"""
+        """actions/list-selected-repos-for-org-variable
+
+        GET /orgs/{org}/actions/variables/{name}/repositories
+
+        Lists all repositories that can access an organization variable
+        that is available to selected repositories.
+
+        Authenticated users must have collaborator access to a repository to create, update, or read variables.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, the `repo` scope is also required.
+
+        See also: https://docs.github.com/rest/actions/variables#list-selected-repositories-for-an-organization-variable
+        """
 
         from ..models import OrgsOrgActionsVariablesNameRepositoriesGetResponse200
 
@@ -4579,7 +5865,20 @@ class ActionsClient:
         data: Missing[OrgsOrgActionsVariablesNameRepositoriesPutBodyType] = UNSET,
         **kwargs,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/variables#set-selected-repositories-for-an-organization-variable"""
+        """actions/set-selected-repos-for-org-variable
+
+        PUT /orgs/{org}/actions/variables/{name}/repositories
+
+        Replaces all repositories for an organization variable that is available
+        to selected repositories. Organization variables that are available to selected
+        repositories have their `visibility` field set to `selected`.
+
+        Authenticated users must have collaborator access to a repository to create, update, or read variables.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, the `repo` scope is also required.
+
+        See also: https://docs.github.com/rest/actions/variables#set-selected-repositories-for-an-organization-variable
+        """
 
         from ..models import OrgsOrgActionsVariablesNameRepositoriesPutBody
 
@@ -4636,7 +5935,20 @@ class ActionsClient:
         data: Missing[OrgsOrgActionsVariablesNameRepositoriesPutBodyType] = UNSET,
         **kwargs,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/variables#set-selected-repositories-for-an-organization-variable"""
+        """actions/set-selected-repos-for-org-variable
+
+        PUT /orgs/{org}/actions/variables/{name}/repositories
+
+        Replaces all repositories for an organization variable that is available
+        to selected repositories. Organization variables that are available to selected
+        repositories have their `visibility` field set to `selected`.
+
+        Authenticated users must have collaborator access to a repository to create, update, or read variables.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, the `repo` scope is also required.
+
+        See also: https://docs.github.com/rest/actions/variables#set-selected-repositories-for-an-organization-variable
+        """
 
         from ..models import OrgsOrgActionsVariablesNameRepositoriesPutBody
 
@@ -4671,7 +5983,19 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/variables#add-selected-repository-to-an-organization-variable"""
+        """actions/add-selected-repo-to-org-variable
+
+        PUT /orgs/{org}/actions/variables/{name}/repositories/{repository_id}
+
+        Adds a repository to an organization variable that is available to selected repositories.
+        Organization variables that are available to selected repositories have their `visibility` field set to `selected`.
+
+        Authenticated users must have collaborator access to a repository to create, update, or read secrets.
+
+        OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/variables#add-selected-repository-to-an-organization-variable
+        """
 
         url = f"/orgs/{org}/actions/variables/{name}/repositories/{repository_id}"
 
@@ -4692,7 +6016,19 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/variables#add-selected-repository-to-an-organization-variable"""
+        """actions/add-selected-repo-to-org-variable
+
+        PUT /orgs/{org}/actions/variables/{name}/repositories/{repository_id}
+
+        Adds a repository to an organization variable that is available to selected repositories.
+        Organization variables that are available to selected repositories have their `visibility` field set to `selected`.
+
+        Authenticated users must have collaborator access to a repository to create, update, or read secrets.
+
+        OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/variables#add-selected-repository-to-an-organization-variable
+        """
 
         url = f"/orgs/{org}/actions/variables/{name}/repositories/{repository_id}"
 
@@ -4713,7 +6049,20 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/variables#remove-selected-repository-from-an-organization-variable"""
+        """actions/remove-selected-repo-from-org-variable
+
+        DELETE /orgs/{org}/actions/variables/{name}/repositories/{repository_id}
+
+        Removes a repository from an organization variable that is
+        available to selected repositories. Organization variables that are available to
+        selected repositories have their `visibility` field set to `selected`.
+
+        Authenticated users must have collaborator access to a repository to create, update, or read variables.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, the `repo` scope is also required.
+
+        See also: https://docs.github.com/rest/actions/variables#remove-selected-repository-from-an-organization-variable
+        """
 
         url = f"/orgs/{org}/actions/variables/{name}/repositories/{repository_id}"
 
@@ -4734,7 +6083,20 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/variables#remove-selected-repository-from-an-organization-variable"""
+        """actions/remove-selected-repo-from-org-variable
+
+        DELETE /orgs/{org}/actions/variables/{name}/repositories/{repository_id}
+
+        Removes a repository from an organization variable that is
+        available to selected repositories. Organization variables that are available to
+        selected repositories have their `visibility` field set to `selected`.
+
+        Authenticated users must have collaborator access to a repository to create, update, or read variables.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, the `repo` scope is also required.
+
+        See also: https://docs.github.com/rest/actions/variables#remove-selected-repository-from-an-organization-variable
+        """
 
         url = f"/orgs/{org}/actions/variables/{name}/repositories/{repository_id}"
 
@@ -4760,7 +6122,18 @@ class ActionsClient:
         ReposOwnerRepoActionsArtifactsGetResponse200,
         ReposOwnerRepoActionsArtifactsGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/actions/artifacts#list-artifacts-for-a-repository"""
+        """actions/list-artifacts-for-repo
+
+        GET /repos/{owner}/{repo}/actions/artifacts
+
+        Lists all artifacts for a repository.
+
+        Anyone with read access to the repository can use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
+
+        See also: https://docs.github.com/rest/actions/artifacts#list-artifacts-for-a-repository
+        """
 
         from ..models import ReposOwnerRepoActionsArtifactsGetResponse200
 
@@ -4795,7 +6168,18 @@ class ActionsClient:
         ReposOwnerRepoActionsArtifactsGetResponse200,
         ReposOwnerRepoActionsArtifactsGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/actions/artifacts#list-artifacts-for-a-repository"""
+        """actions/list-artifacts-for-repo
+
+        GET /repos/{owner}/{repo}/actions/artifacts
+
+        Lists all artifacts for a repository.
+
+        Anyone with read access to the repository can use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
+
+        See also: https://docs.github.com/rest/actions/artifacts#list-artifacts-for-a-repository
+        """
 
         from ..models import ReposOwnerRepoActionsArtifactsGetResponse200
 
@@ -4825,7 +6209,18 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Artifact, ArtifactType]:
-        """See also: https://docs.github.com/rest/actions/artifacts#get-an-artifact"""
+        """actions/get-artifact
+
+        GET /repos/{owner}/{repo}/actions/artifacts/{artifact_id}
+
+        Gets a specific artifact for a workflow run.
+
+        Anyone with read access to the repository can use this endpoint.
+
+        If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/artifacts#get-an-artifact
+        """
 
         from ..models import Artifact
 
@@ -4848,7 +6243,18 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Artifact, ArtifactType]:
-        """See also: https://docs.github.com/rest/actions/artifacts#get-an-artifact"""
+        """actions/get-artifact
+
+        GET /repos/{owner}/{repo}/actions/artifacts/{artifact_id}
+
+        Gets a specific artifact for a workflow run.
+
+        Anyone with read access to the repository can use this endpoint.
+
+        If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/artifacts#get-an-artifact
+        """
 
         from ..models import Artifact
 
@@ -4871,7 +6277,15 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/artifacts#delete-an-artifact"""
+        """actions/delete-artifact
+
+        DELETE /repos/{owner}/{repo}/actions/artifacts/{artifact_id}
+
+        Deletes an artifact for a workflow run.
+        OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/artifacts#delete-an-artifact
+        """
 
         url = f"/repos/{owner}/{repo}/actions/artifacts/{artifact_id}"
 
@@ -4891,7 +6305,15 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/artifacts#delete-an-artifact"""
+        """actions/delete-artifact
+
+        DELETE /repos/{owner}/{repo}/actions/artifacts/{artifact_id}
+
+        Deletes an artifact for a workflow run.
+        OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/artifacts#delete-an-artifact
+        """
 
         url = f"/repos/{owner}/{repo}/actions/artifacts/{artifact_id}"
 
@@ -4912,7 +6334,17 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/artifacts#download-an-artifact"""
+        """actions/download-artifact
+
+        GET /repos/{owner}/{repo}/actions/artifacts/{artifact_id}/{archive_format}
+
+        Gets a redirect URL to download an archive for a repository. This URL expires after 1 minute. Look for `Location:` in
+        the response header to find the URL for the download. The `:archive_format` must be `zip`.
+
+        OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/artifacts#download-an-artifact
+        """
 
         from ..models import BasicError
 
@@ -4938,7 +6370,17 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/artifacts#download-an-artifact"""
+        """actions/download-artifact
+
+        GET /repos/{owner}/{repo}/actions/artifacts/{artifact_id}/{archive_format}
+
+        Gets a redirect URL to download an archive for a repository. This URL expires after 1 minute. Look for `Location:` in
+        the response header to find the URL for the download. The `:archive_format` must be `zip`.
+
+        OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/artifacts#download-an-artifact
+        """
 
         from ..models import BasicError
 
@@ -4962,7 +6404,19 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ActionsCacheUsageByRepository, ActionsCacheUsageByRepositoryType]:
-        """See also: https://docs.github.com/rest/actions/cache#get-github-actions-cache-usage-for-a-repository"""
+        """actions/get-actions-cache-usage
+
+        GET /repos/{owner}/{repo}/actions/cache/usage
+
+        Gets GitHub Actions cache usage for a repository.
+        The data fetched using this API is refreshed approximately every 5 minutes, so values returned from this endpoint may take at least 5 minutes to get updated.
+
+        Anyone with read access to the repository can use this endpoint.
+
+        If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/cache#get-github-actions-cache-usage-for-a-repository
+        """
 
         from ..models import ActionsCacheUsageByRepository
 
@@ -4984,7 +6438,19 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ActionsCacheUsageByRepository, ActionsCacheUsageByRepositoryType]:
-        """See also: https://docs.github.com/rest/actions/cache#get-github-actions-cache-usage-for-a-repository"""
+        """actions/get-actions-cache-usage
+
+        GET /repos/{owner}/{repo}/actions/cache/usage
+
+        Gets GitHub Actions cache usage for a repository.
+        The data fetched using this API is refreshed approximately every 5 minutes, so values returned from this endpoint may take at least 5 minutes to get updated.
+
+        Anyone with read access to the repository can use this endpoint.
+
+        If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/cache#get-github-actions-cache-usage-for-a-repository
+        """
 
         from ..models import ActionsCacheUsageByRepository
 
@@ -5014,7 +6480,16 @@ class ActionsClient:
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ActionsCacheList, ActionsCacheListType]:
-        """See also: https://docs.github.com/rest/actions/cache#list-github-actions-caches-for-a-repository"""
+        """actions/get-actions-cache-list
+
+        GET /repos/{owner}/{repo}/actions/caches
+
+        Lists the GitHub Actions caches for a repository.
+
+        OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/cache#list-github-actions-caches-for-a-repository
+        """
 
         from ..models import ActionsCacheList
 
@@ -5054,7 +6529,16 @@ class ActionsClient:
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ActionsCacheList, ActionsCacheListType]:
-        """See also: https://docs.github.com/rest/actions/cache#list-github-actions-caches-for-a-repository"""
+        """actions/get-actions-cache-list
+
+        GET /repos/{owner}/{repo}/actions/caches
+
+        Lists the GitHub Actions caches for a repository.
+
+        OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/cache#list-github-actions-caches-for-a-repository
+        """
 
         from ..models import ActionsCacheList
 
@@ -5088,7 +6572,16 @@ class ActionsClient:
         ref: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ActionsCacheList, ActionsCacheListType]:
-        """See also: https://docs.github.com/rest/actions/cache#delete-github-actions-caches-for-a-repository-using-a-cache-key"""
+        """actions/delete-actions-cache-by-key
+
+        DELETE /repos/{owner}/{repo}/actions/caches
+
+        Deletes one or more GitHub Actions caches for a repository, using a complete cache key. By default, all caches that match the provided key are deleted, but you can optionally provide a Git ref to restrict deletions to caches that match both the provided key and the Git ref.
+
+        OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/cache#delete-github-actions-caches-for-a-repository-using-a-cache-key
+        """
 
         from ..models import ActionsCacheList
 
@@ -5118,7 +6611,16 @@ class ActionsClient:
         ref: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ActionsCacheList, ActionsCacheListType]:
-        """See also: https://docs.github.com/rest/actions/cache#delete-github-actions-caches-for-a-repository-using-a-cache-key"""
+        """actions/delete-actions-cache-by-key
+
+        DELETE /repos/{owner}/{repo}/actions/caches
+
+        Deletes one or more GitHub Actions caches for a repository, using a complete cache key. By default, all caches that match the provided key are deleted, but you can optionally provide a Git ref to restrict deletions to caches that match both the provided key and the Git ref.
+
+        OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/cache#delete-github-actions-caches-for-a-repository-using-a-cache-key
+        """
 
         from ..models import ActionsCacheList
 
@@ -5147,7 +6649,16 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/cache#delete-a-github-actions-cache-for-a-repository-using-a-cache-id"""
+        """actions/delete-actions-cache-by-id
+
+        DELETE /repos/{owner}/{repo}/actions/caches/{cache_id}
+
+        Deletes a GitHub Actions cache for a repository, using a cache ID.
+
+        OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/cache#delete-a-github-actions-cache-for-a-repository-using-a-cache-id
+        """
 
         url = f"/repos/{owner}/{repo}/actions/caches/{cache_id}"
 
@@ -5167,7 +6678,16 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/cache#delete-a-github-actions-cache-for-a-repository-using-a-cache-id"""
+        """actions/delete-actions-cache-by-id
+
+        DELETE /repos/{owner}/{repo}/actions/caches/{cache_id}
+
+        Deletes a GitHub Actions cache for a repository, using a cache ID.
+
+        OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/cache#delete-a-github-actions-cache-for-a-repository-using-a-cache-id
+        """
 
         url = f"/repos/{owner}/{repo}/actions/caches/{cache_id}"
 
@@ -5187,7 +6707,18 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Job, JobType]:
-        """See also: https://docs.github.com/rest/actions/workflow-jobs#get-a-job-for-a-workflow-run"""
+        """actions/get-job-for-workflow-run
+
+        GET /repos/{owner}/{repo}/actions/jobs/{job_id}
+
+        Gets a specific job in a workflow run.
+
+        Anyone with read access to the repository can use this endpoint.
+
+        If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/workflow-jobs#get-a-job-for-a-workflow-run
+        """
 
         from ..models import Job
 
@@ -5210,7 +6741,18 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Job, JobType]:
-        """See also: https://docs.github.com/rest/actions/workflow-jobs#get-a-job-for-a-workflow-run"""
+        """actions/get-job-for-workflow-run
+
+        GET /repos/{owner}/{repo}/actions/jobs/{job_id}
+
+        Gets a specific job in a workflow run.
+
+        Anyone with read access to the repository can use this endpoint.
+
+        If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/workflow-jobs#get-a-job-for-a-workflow-run
+        """
 
         from ..models import Job
 
@@ -5233,7 +6775,19 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/workflow-jobs#download-job-logs-for-a-workflow-run"""
+        """actions/download-job-logs-for-workflow-run
+
+        GET /repos/{owner}/{repo}/actions/jobs/{job_id}/logs
+
+        Gets a redirect URL to download a plain text file of logs for a workflow job. This link expires after 1 minute. Look
+        for `Location:` in the response header to find the URL for the download.
+
+        Anyone with read access to the repository can use this endpoint.
+
+        If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/workflow-jobs#download-job-logs-for-a-workflow-run
+        """
 
         url = f"/repos/{owner}/{repo}/actions/jobs/{job_id}/logs"
 
@@ -5253,7 +6807,19 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/workflow-jobs#download-job-logs-for-a-workflow-run"""
+        """actions/download-job-logs-for-workflow-run
+
+        GET /repos/{owner}/{repo}/actions/jobs/{job_id}/logs
+
+        Gets a redirect URL to download a plain text file of logs for a workflow job. This link expires after 1 minute. Look
+        for `Location:` in the response header to find the URL for the download.
+
+        Anyone with read access to the repository can use this endpoint.
+
+        If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/workflow-jobs#download-job-logs-for-a-workflow-run
+        """
 
         url = f"/repos/{owner}/{repo}/actions/jobs/{job_id}/logs"
 
@@ -5302,7 +6868,16 @@ class ActionsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject, EmptyObjectType]:
-        """See also: https://docs.github.com/rest/actions/workflow-runs#re-run-a-job-from-a-workflow-run"""
+        """actions/re-run-job-for-workflow-run
+
+        POST /repos/{owner}/{repo}/actions/jobs/{job_id}/rerun
+
+        Re-run a job and its dependent jobs in a workflow run.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/workflow-runs#re-run-a-job-from-a-workflow-run
+        """
 
         from typing import Union
 
@@ -5375,7 +6950,16 @@ class ActionsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject, EmptyObjectType]:
-        """See also: https://docs.github.com/rest/actions/workflow-runs#re-run-a-job-from-a-workflow-run"""
+        """actions/re-run-job-for-workflow-run
+
+        POST /repos/{owner}/{repo}/actions/jobs/{job_id}/rerun
+
+        Re-run a job and its dependent jobs in a workflow run.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/workflow-runs#re-run-a-job-from-a-workflow-run
+        """
 
         from typing import Union
 
@@ -5418,7 +7002,16 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[OidcCustomSubRepo, OidcCustomSubRepoType]:
-        """See also: https://docs.github.com/rest/actions/oidc#get-the-customization-template-for-an-oidc-subject-claim-for-a-repository"""
+        """actions/get-custom-oidc-sub-claim-for-repo
+
+        GET /repos/{owner}/{repo}/actions/oidc/customization/sub
+
+        Gets the customization template for an OpenID Connect (OIDC) subject claim.
+
+        OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/oidc#get-the-customization-template-for-an-oidc-subject-claim-for-a-repository
+        """
 
         from ..models import BasicError, OidcCustomSubRepo
 
@@ -5444,7 +7037,16 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[OidcCustomSubRepo, OidcCustomSubRepoType]:
-        """See also: https://docs.github.com/rest/actions/oidc#get-the-customization-template-for-an-oidc-subject-claim-for-a-repository"""
+        """actions/get-custom-oidc-sub-claim-for-repo
+
+        GET /repos/{owner}/{repo}/actions/oidc/customization/sub
+
+        Gets the customization template for an OpenID Connect (OIDC) subject claim.
+
+        OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/oidc#get-the-customization-template-for-an-oidc-subject-claim-for-a-repository
+        """
 
         from ..models import BasicError, OidcCustomSubRepo
 
@@ -5494,7 +7096,16 @@ class ActionsClient:
         data: Missing[ReposOwnerRepoActionsOidcCustomizationSubPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject, EmptyObjectType]:
-        """See also: https://docs.github.com/rest/actions/oidc#set-the-customization-template-for-an-oidc-subject-claim-for-a-repository"""
+        """actions/set-custom-oidc-sub-claim-for-repo
+
+        PUT /repos/{owner}/{repo}/actions/oidc/customization/sub
+
+        Sets the customization template and `opt-in` or `opt-out` flag for an OpenID Connect (OIDC) subject claim for a repository.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/oidc#set-the-customization-template-for-an-oidc-subject-claim-for-a-repository
+        """
 
         from ..models import (
             BasicError,
@@ -5562,7 +7173,16 @@ class ActionsClient:
         data: Missing[ReposOwnerRepoActionsOidcCustomizationSubPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject, EmptyObjectType]:
-        """See also: https://docs.github.com/rest/actions/oidc#set-the-customization-template-for-an-oidc-subject-claim-for-a-repository"""
+        """actions/set-custom-oidc-sub-claim-for-repo
+
+        PUT /repos/{owner}/{repo}/actions/oidc/customization/sub
+
+        Sets the customization template and `opt-in` or `opt-out` flag for an OpenID Connect (OIDC) subject claim for a repository.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/oidc#set-the-customization-template-for-an-oidc-subject-claim-for-a-repository
+        """
 
         from ..models import (
             BasicError,
@@ -5611,7 +7231,19 @@ class ActionsClient:
         ReposOwnerRepoActionsOrganizationSecretsGetResponse200,
         ReposOwnerRepoActionsOrganizationSecretsGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/actions/secrets#list-repository-organization-secrets"""
+        """actions/list-repo-organization-secrets
+
+        GET /repos/{owner}/{repo}/actions/organization-secrets
+
+        Lists all organization secrets shared with a repository without revealing their encrypted
+        values.
+
+        Authenticated users must have collaborator access to a repository to create, update, or read secrets.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/secrets#list-repository-organization-secrets
+        """
 
         from ..models import ReposOwnerRepoActionsOrganizationSecretsGetResponse200
 
@@ -5644,7 +7276,19 @@ class ActionsClient:
         ReposOwnerRepoActionsOrganizationSecretsGetResponse200,
         ReposOwnerRepoActionsOrganizationSecretsGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/actions/secrets#list-repository-organization-secrets"""
+        """actions/list-repo-organization-secrets
+
+        GET /repos/{owner}/{repo}/actions/organization-secrets
+
+        Lists all organization secrets shared with a repository without revealing their encrypted
+        values.
+
+        Authenticated users must have collaborator access to a repository to create, update, or read secrets.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/secrets#list-repository-organization-secrets
+        """
 
         from ..models import ReposOwnerRepoActionsOrganizationSecretsGetResponse200
 
@@ -5677,7 +7321,18 @@ class ActionsClient:
         ReposOwnerRepoActionsOrganizationVariablesGetResponse200,
         ReposOwnerRepoActionsOrganizationVariablesGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/actions/variables#list-repository-organization-variables"""
+        """actions/list-repo-organization-variables
+
+        GET /repos/{owner}/{repo}/actions/organization-variables
+
+        Lists all organization variables shared with a repository.
+
+        Authenticated users must have collaborator access to a repository to create, update, or read variables.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/variables#list-repository-organization-variables
+        """
 
         from ..models import ReposOwnerRepoActionsOrganizationVariablesGetResponse200
 
@@ -5710,7 +7365,18 @@ class ActionsClient:
         ReposOwnerRepoActionsOrganizationVariablesGetResponse200,
         ReposOwnerRepoActionsOrganizationVariablesGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/actions/variables#list-repository-organization-variables"""
+        """actions/list-repo-organization-variables
+
+        GET /repos/{owner}/{repo}/actions/organization-variables
+
+        Lists all organization variables shared with a repository.
+
+        Authenticated users must have collaborator access to a repository to create, update, or read variables.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/variables#list-repository-organization-variables
+        """
 
         from ..models import ReposOwnerRepoActionsOrganizationVariablesGetResponse200
 
@@ -5738,7 +7404,16 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ActionsRepositoryPermissions, ActionsRepositoryPermissionsType]:
-        """See also: https://docs.github.com/rest/actions/permissions#get-github-actions-permissions-for-a-repository"""
+        """actions/get-github-actions-permissions-repository
+
+        GET /repos/{owner}/{repo}/actions/permissions
+
+        Gets the GitHub Actions permissions policy for a repository, including whether GitHub Actions is enabled and the actions and reusable workflows allowed to run in the repository.
+
+        OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/permissions#get-github-actions-permissions-for-a-repository
+        """
 
         from ..models import ActionsRepositoryPermissions
 
@@ -5760,7 +7435,16 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ActionsRepositoryPermissions, ActionsRepositoryPermissionsType]:
-        """See also: https://docs.github.com/rest/actions/permissions#get-github-actions-permissions-for-a-repository"""
+        """actions/get-github-actions-permissions-repository
+
+        GET /repos/{owner}/{repo}/actions/permissions
+
+        Gets the GitHub Actions permissions policy for a repository, including whether GitHub Actions is enabled and the actions and reusable workflows allowed to run in the repository.
+
+        OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/permissions#get-github-actions-permissions-for-a-repository
+        """
 
         from ..models import ActionsRepositoryPermissions
 
@@ -5806,7 +7490,16 @@ class ActionsClient:
         data: Missing[ReposOwnerRepoActionsPermissionsPutBodyType] = UNSET,
         **kwargs,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/permissions#set-github-actions-permissions-for-a-repository"""
+        """actions/set-github-actions-permissions-repository
+
+        PUT /repos/{owner}/{repo}/actions/permissions
+
+        Sets the GitHub Actions permissions policy for enabling GitHub Actions and allowed actions and reusable workflows in the repository.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/permissions#set-github-actions-permissions-for-a-repository
+        """
 
         from ..models import ReposOwnerRepoActionsPermissionsPutBody
 
@@ -5861,7 +7554,16 @@ class ActionsClient:
         data: Missing[ReposOwnerRepoActionsPermissionsPutBodyType] = UNSET,
         **kwargs,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/permissions#set-github-actions-permissions-for-a-repository"""
+        """actions/set-github-actions-permissions-repository
+
+        PUT /repos/{owner}/{repo}/actions/permissions
+
+        Sets the GitHub Actions permissions policy for enabling GitHub Actions and allowed actions and reusable workflows in the repository.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/permissions#set-github-actions-permissions-for-a-repository
+        """
 
         from ..models import ReposOwnerRepoActionsPermissionsPutBody
 
@@ -5894,7 +7596,18 @@ class ActionsClient:
     ) -> Response[
         ActionsWorkflowAccessToRepository, ActionsWorkflowAccessToRepositoryType
     ]:
-        """See also: https://docs.github.com/rest/actions/permissions#get-the-level-of-access-for-workflows-outside-of-the-repository"""
+        """actions/get-workflow-access-to-repository
+
+        GET /repos/{owner}/{repo}/actions/permissions/access
+
+        Gets the level of access that workflows outside of the repository have to actions and reusable workflows in the repository.
+        This endpoint only applies to private repositories.
+        For more information, see "[Allowing access to components in a private repository](https://docs.github.com/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#allowing-access-to-components-in-a-private-repository)."
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/permissions#get-the-level-of-access-for-workflows-outside-of-the-repository
+        """
 
         from ..models import ActionsWorkflowAccessToRepository
 
@@ -5918,7 +7631,18 @@ class ActionsClient:
     ) -> Response[
         ActionsWorkflowAccessToRepository, ActionsWorkflowAccessToRepositoryType
     ]:
-        """See also: https://docs.github.com/rest/actions/permissions#get-the-level-of-access-for-workflows-outside-of-the-repository"""
+        """actions/get-workflow-access-to-repository
+
+        GET /repos/{owner}/{repo}/actions/permissions/access
+
+        Gets the level of access that workflows outside of the repository have to actions and reusable workflows in the repository.
+        This endpoint only applies to private repositories.
+        For more information, see "[Allowing access to components in a private repository](https://docs.github.com/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#allowing-access-to-components-in-a-private-repository)."
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/permissions#get-the-level-of-access-for-workflows-outside-of-the-repository
+        """
 
         from ..models import ActionsWorkflowAccessToRepository
 
@@ -5963,7 +7687,18 @@ class ActionsClient:
         data: Missing[ActionsWorkflowAccessToRepositoryType] = UNSET,
         **kwargs,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/permissions#set-the-level-of-access-for-workflows-outside-of-the-repository"""
+        """actions/set-workflow-access-to-repository
+
+        PUT /repos/{owner}/{repo}/actions/permissions/access
+
+        Sets the level of access that workflows outside of the repository have to actions and reusable workflows in the repository.
+        This endpoint only applies to private repositories.
+        For more information, see "[Allowing access to components in a private repository](https://docs.github.com/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#allowing-access-to-components-in-a-private-repository)".
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/permissions#set-the-level-of-access-for-workflows-outside-of-the-repository
+        """
 
         from ..models import ActionsWorkflowAccessToRepository
 
@@ -6017,7 +7752,18 @@ class ActionsClient:
         data: Missing[ActionsWorkflowAccessToRepositoryType] = UNSET,
         **kwargs,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/permissions#set-the-level-of-access-for-workflows-outside-of-the-repository"""
+        """actions/set-workflow-access-to-repository
+
+        PUT /repos/{owner}/{repo}/actions/permissions/access
+
+        Sets the level of access that workflows outside of the repository have to actions and reusable workflows in the repository.
+        This endpoint only applies to private repositories.
+        For more information, see "[Allowing access to components in a private repository](https://docs.github.com/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#allowing-access-to-components-in-a-private-repository)".
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/permissions#set-the-level-of-access-for-workflows-outside-of-the-repository
+        """
 
         from ..models import ActionsWorkflowAccessToRepository
 
@@ -6048,7 +7794,16 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[SelectedActions, SelectedActionsType]:
-        """See also: https://docs.github.com/rest/actions/permissions#get-allowed-actions-and-reusable-workflows-for-a-repository"""
+        """actions/get-allowed-actions-repository
+
+        GET /repos/{owner}/{repo}/actions/permissions/selected-actions
+
+        Gets the settings for selected actions and reusable workflows that are allowed in a repository. To use this endpoint, the repository policy for `allowed_actions` must be configured to `selected`. For more information, see "[Set GitHub Actions permissions for a repository](#set-github-actions-permissions-for-a-repository)."
+
+        OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/permissions#get-allowed-actions-and-reusable-workflows-for-a-repository
+        """
 
         from ..models import SelectedActions
 
@@ -6070,7 +7825,16 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[SelectedActions, SelectedActionsType]:
-        """See also: https://docs.github.com/rest/actions/permissions#get-allowed-actions-and-reusable-workflows-for-a-repository"""
+        """actions/get-allowed-actions-repository
+
+        GET /repos/{owner}/{repo}/actions/permissions/selected-actions
+
+        Gets the settings for selected actions and reusable workflows that are allowed in a repository. To use this endpoint, the repository policy for `allowed_actions` must be configured to `selected`. For more information, see "[Set GitHub Actions permissions for a repository](#set-github-actions-permissions-for-a-repository)."
+
+        OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/permissions#get-allowed-actions-and-reusable-workflows-for-a-repository
+        """
 
         from ..models import SelectedActions
 
@@ -6117,7 +7881,16 @@ class ActionsClient:
         data: Missing[SelectedActionsType] = UNSET,
         **kwargs,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/permissions#set-allowed-actions-and-reusable-workflows-for-a-repository"""
+        """actions/set-allowed-actions-repository
+
+        PUT /repos/{owner}/{repo}/actions/permissions/selected-actions
+
+        Sets the actions and reusable workflows that are allowed in a repository. To use this endpoint, the repository permission policy for `allowed_actions` must be configured to `selected`. For more information, see "[Set GitHub Actions permissions for a repository](#set-github-actions-permissions-for-a-repository)."
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/permissions#set-allowed-actions-and-reusable-workflows-for-a-repository
+        """
 
         from ..models import SelectedActions
 
@@ -6173,7 +7946,16 @@ class ActionsClient:
         data: Missing[SelectedActionsType] = UNSET,
         **kwargs,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/permissions#set-allowed-actions-and-reusable-workflows-for-a-repository"""
+        """actions/set-allowed-actions-repository
+
+        PUT /repos/{owner}/{repo}/actions/permissions/selected-actions
+
+        Sets the actions and reusable workflows that are allowed in a repository. To use this endpoint, the repository permission policy for `allowed_actions` must be configured to `selected`. For more information, see "[Set GitHub Actions permissions for a repository](#set-github-actions-permissions-for-a-repository)."
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/permissions#set-allowed-actions-and-reusable-workflows-for-a-repository
+        """
 
         from ..models import SelectedActions
 
@@ -6206,7 +7988,18 @@ class ActionsClient:
     ) -> Response[
         ActionsGetDefaultWorkflowPermissions, ActionsGetDefaultWorkflowPermissionsType
     ]:
-        """See also: https://docs.github.com/rest/actions/permissions#get-default-workflow-permissions-for-a-repository"""
+        """actions/get-github-actions-default-workflow-permissions-repository
+
+        GET /repos/{owner}/{repo}/actions/permissions/workflow
+
+        Gets the default workflow permissions granted to the `GITHUB_TOKEN` when running workflows in a repository,
+        as well as if GitHub Actions can submit approving pull request reviews.
+        For more information, see "[Setting the permissions of the GITHUB_TOKEN for your repository](https://docs.github.com/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#setting-the-permissions-of-the-github_token-for-your-repository)."
+
+        OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/permissions#get-default-workflow-permissions-for-a-repository
+        """
 
         from ..models import ActionsGetDefaultWorkflowPermissions
 
@@ -6230,7 +8023,18 @@ class ActionsClient:
     ) -> Response[
         ActionsGetDefaultWorkflowPermissions, ActionsGetDefaultWorkflowPermissionsType
     ]:
-        """See also: https://docs.github.com/rest/actions/permissions#get-default-workflow-permissions-for-a-repository"""
+        """actions/get-github-actions-default-workflow-permissions-repository
+
+        GET /repos/{owner}/{repo}/actions/permissions/workflow
+
+        Gets the default workflow permissions granted to the `GITHUB_TOKEN` when running workflows in a repository,
+        as well as if GitHub Actions can submit approving pull request reviews.
+        For more information, see "[Setting the permissions of the GITHUB_TOKEN for your repository](https://docs.github.com/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#setting-the-permissions-of-the-github_token-for-your-repository)."
+
+        OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/permissions#get-default-workflow-permissions-for-a-repository
+        """
 
         from ..models import ActionsGetDefaultWorkflowPermissions
 
@@ -6276,7 +8080,18 @@ class ActionsClient:
         data: Missing[ActionsSetDefaultWorkflowPermissionsType] = UNSET,
         **kwargs,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/permissions#set-default-workflow-permissions-for-a-repository"""
+        """actions/set-github-actions-default-workflow-permissions-repository
+
+        PUT /repos/{owner}/{repo}/actions/permissions/workflow
+
+        Sets the default workflow permissions granted to the `GITHUB_TOKEN` when running workflows in a repository, and sets if GitHub Actions
+        can submit approving pull request reviews.
+        For more information, see "[Setting the permissions of the GITHUB_TOKEN for your repository](https://docs.github.com/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#setting-the-permissions-of-the-github_token-for-your-repository)."
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/permissions#set-default-workflow-permissions-for-a-repository
+        """
 
         from ..models import ActionsSetDefaultWorkflowPermissions
 
@@ -6332,7 +8147,18 @@ class ActionsClient:
         data: Missing[ActionsSetDefaultWorkflowPermissionsType] = UNSET,
         **kwargs,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/permissions#set-default-workflow-permissions-for-a-repository"""
+        """actions/set-github-actions-default-workflow-permissions-repository
+
+        PUT /repos/{owner}/{repo}/actions/permissions/workflow
+
+        Sets the default workflow permissions granted to the `GITHUB_TOKEN` when running workflows in a repository, and sets if GitHub Actions
+        can submit approving pull request reviews.
+        For more information, see "[Setting the permissions of the GITHUB_TOKEN for your repository](https://docs.github.com/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#setting-the-permissions-of-the-github_token-for-your-repository)."
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/permissions#set-default-workflow-permissions-for-a-repository
+        """
 
         from ..models import ActionsSetDefaultWorkflowPermissions
 
@@ -6370,7 +8196,18 @@ class ActionsClient:
         ReposOwnerRepoActionsRunnersGetResponse200,
         ReposOwnerRepoActionsRunnersGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/actions/self-hosted-runners#list-self-hosted-runners-for-a-repository"""
+        """actions/list-self-hosted-runners-for-repo
+
+        GET /repos/{owner}/{repo}/actions/runners
+
+        Lists all self-hosted runners configured in a repository.
+
+        Authenticated users must have admin access to the repository to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/self-hosted-runners#list-self-hosted-runners-for-a-repository
+        """
 
         from ..models import ReposOwnerRepoActionsRunnersGetResponse200
 
@@ -6405,7 +8242,18 @@ class ActionsClient:
         ReposOwnerRepoActionsRunnersGetResponse200,
         ReposOwnerRepoActionsRunnersGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/actions/self-hosted-runners#list-self-hosted-runners-for-a-repository"""
+        """actions/list-self-hosted-runners-for-repo
+
+        GET /repos/{owner}/{repo}/actions/runners
+
+        Lists all self-hosted runners configured in a repository.
+
+        Authenticated users must have admin access to the repository to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/self-hosted-runners#list-self-hosted-runners-for-a-repository
+        """
 
         from ..models import ReposOwnerRepoActionsRunnersGetResponse200
 
@@ -6434,7 +8282,18 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[RunnerApplication], list[RunnerApplicationType]]:
-        """See also: https://docs.github.com/rest/actions/self-hosted-runners#list-runner-applications-for-a-repository"""
+        """actions/list-runner-applications-for-repo
+
+        GET /repos/{owner}/{repo}/actions/runners/downloads
+
+        Lists binaries for the runner application that you can download and run.
+
+        Authenticated users must have admin access to the repository to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/self-hosted-runners#list-runner-applications-for-a-repository
+        """
 
         from ..models import RunnerApplication
 
@@ -6456,7 +8315,18 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[RunnerApplication], list[RunnerApplicationType]]:
-        """See also: https://docs.github.com/rest/actions/self-hosted-runners#list-runner-applications-for-a-repository"""
+        """actions/list-runner-applications-for-repo
+
+        GET /repos/{owner}/{repo}/actions/runners/downloads
+
+        Lists binaries for the runner application that you can download and run.
+
+        Authenticated users must have admin access to the repository to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/self-hosted-runners#list-runner-applications-for-a-repository
+        """
 
         from ..models import RunnerApplication
 
@@ -6515,7 +8385,18 @@ class ActionsClient:
         OrgsOrgActionsRunnersGenerateJitconfigPostResponse201,
         OrgsOrgActionsRunnersGenerateJitconfigPostResponse201Type,
     ]:
-        """See also: https://docs.github.com/rest/actions/self-hosted-runners#create-configuration-for-a-just-in-time-runner-for-a-repository"""
+        """actions/generate-runner-jitconfig-for-repo
+
+        POST /repos/{owner}/{repo}/actions/runners/generate-jitconfig
+
+        Generates a configuration that can be passed to the runner application at startup.
+
+        The authenticated user must have admin access to the repository.
+
+        OAuth tokens and personal access tokens (classic) need the`repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/self-hosted-runners#create-configuration-for-a-just-in-time-runner-for-a-repository
+        """
 
         from ..models import (
             BasicError,
@@ -6596,7 +8477,18 @@ class ActionsClient:
         OrgsOrgActionsRunnersGenerateJitconfigPostResponse201,
         OrgsOrgActionsRunnersGenerateJitconfigPostResponse201Type,
     ]:
-        """See also: https://docs.github.com/rest/actions/self-hosted-runners#create-configuration-for-a-just-in-time-runner-for-a-repository"""
+        """actions/generate-runner-jitconfig-for-repo
+
+        POST /repos/{owner}/{repo}/actions/runners/generate-jitconfig
+
+        Generates a configuration that can be passed to the runner application at startup.
+
+        The authenticated user must have admin access to the repository.
+
+        OAuth tokens and personal access tokens (classic) need the`repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/self-hosted-runners#create-configuration-for-a-just-in-time-runner-for-a-repository
+        """
 
         from ..models import (
             BasicError,
@@ -6640,7 +8532,24 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[AuthenticationToken, AuthenticationTokenType]:
-        """See also: https://docs.github.com/rest/actions/self-hosted-runners#create-a-registration-token-for-a-repository"""
+        """actions/create-registration-token-for-repo
+
+        POST /repos/{owner}/{repo}/actions/runners/registration-token
+
+        Returns a token that you can pass to the `config` script. The token expires after one hour.
+
+        For example, you can replace `TOKEN` in the following example with the registration token provided by this endpoint to configure your self-hosted runner:
+
+        ```
+        ./config.sh --url https://github.com/octo-org --token TOKEN
+        ```
+
+        Authenticated users must have admin access to the repository to use this endpoint.
+
+        OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/self-hosted-runners#create-a-registration-token-for-a-repository
+        """
 
         from ..models import AuthenticationToken
 
@@ -6662,7 +8571,24 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[AuthenticationToken, AuthenticationTokenType]:
-        """See also: https://docs.github.com/rest/actions/self-hosted-runners#create-a-registration-token-for-a-repository"""
+        """actions/create-registration-token-for-repo
+
+        POST /repos/{owner}/{repo}/actions/runners/registration-token
+
+        Returns a token that you can pass to the `config` script. The token expires after one hour.
+
+        For example, you can replace `TOKEN` in the following example with the registration token provided by this endpoint to configure your self-hosted runner:
+
+        ```
+        ./config.sh --url https://github.com/octo-org --token TOKEN
+        ```
+
+        Authenticated users must have admin access to the repository to use this endpoint.
+
+        OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/self-hosted-runners#create-a-registration-token-for-a-repository
+        """
 
         from ..models import AuthenticationToken
 
@@ -6684,7 +8610,24 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[AuthenticationToken, AuthenticationTokenType]:
-        """See also: https://docs.github.com/rest/actions/self-hosted-runners#create-a-remove-token-for-a-repository"""
+        """actions/create-remove-token-for-repo
+
+        POST /repos/{owner}/{repo}/actions/runners/remove-token
+
+        Returns a token that you can pass to the `config` script to remove a self-hosted runner from an repository. The token expires after one hour.
+
+        For example, you can replace `TOKEN` in the following example with the registration token provided by this endpoint to remove your self-hosted runner from an organization:
+
+        ```
+        ./config.sh remove --token TOKEN
+        ```
+
+        Authenticated users must have admin access to the repository to use this endpoint.
+
+        OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/self-hosted-runners#create-a-remove-token-for-a-repository
+        """
 
         from ..models import AuthenticationToken
 
@@ -6706,7 +8649,24 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[AuthenticationToken, AuthenticationTokenType]:
-        """See also: https://docs.github.com/rest/actions/self-hosted-runners#create-a-remove-token-for-a-repository"""
+        """actions/create-remove-token-for-repo
+
+        POST /repos/{owner}/{repo}/actions/runners/remove-token
+
+        Returns a token that you can pass to the `config` script to remove a self-hosted runner from an repository. The token expires after one hour.
+
+        For example, you can replace `TOKEN` in the following example with the registration token provided by this endpoint to remove your self-hosted runner from an organization:
+
+        ```
+        ./config.sh remove --token TOKEN
+        ```
+
+        Authenticated users must have admin access to the repository to use this endpoint.
+
+        OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/self-hosted-runners#create-a-remove-token-for-a-repository
+        """
 
         from ..models import AuthenticationToken
 
@@ -6729,7 +8689,18 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Runner, RunnerType]:
-        """See also: https://docs.github.com/rest/actions/self-hosted-runners#get-a-self-hosted-runner-for-a-repository"""
+        """actions/get-self-hosted-runner-for-repo
+
+        GET /repos/{owner}/{repo}/actions/runners/{runner_id}
+
+        Gets a specific self-hosted runner configured in a repository.
+
+        Authenticated users must have admin access to the repository to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/self-hosted-runners#get-a-self-hosted-runner-for-a-repository
+        """
 
         from ..models import Runner
 
@@ -6752,7 +8723,18 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Runner, RunnerType]:
-        """See also: https://docs.github.com/rest/actions/self-hosted-runners#get-a-self-hosted-runner-for-a-repository"""
+        """actions/get-self-hosted-runner-for-repo
+
+        GET /repos/{owner}/{repo}/actions/runners/{runner_id}
+
+        Gets a specific self-hosted runner configured in a repository.
+
+        Authenticated users must have admin access to the repository to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/self-hosted-runners#get-a-self-hosted-runner-for-a-repository
+        """
 
         from ..models import Runner
 
@@ -6775,7 +8757,18 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/self-hosted-runners#delete-a-self-hosted-runner-from-a-repository"""
+        """actions/delete-self-hosted-runner-from-repo
+
+        DELETE /repos/{owner}/{repo}/actions/runners/{runner_id}
+
+        Forces the removal of a self-hosted runner from a repository. You can use this endpoint to completely remove the runner when the machine you were using no longer exists.
+
+        Authenticated users must have admin access to the repository to use this endpoint.
+
+        OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/self-hosted-runners#delete-a-self-hosted-runner-from-a-repository
+        """
 
         url = f"/repos/{owner}/{repo}/actions/runners/{runner_id}"
 
@@ -6795,7 +8788,18 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/self-hosted-runners#delete-a-self-hosted-runner-from-a-repository"""
+        """actions/delete-self-hosted-runner-from-repo
+
+        DELETE /repos/{owner}/{repo}/actions/runners/{runner_id}
+
+        Forces the removal of a self-hosted runner from a repository. You can use this endpoint to completely remove the runner when the machine you were using no longer exists.
+
+        Authenticated users must have admin access to the repository to use this endpoint.
+
+        OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/self-hosted-runners#delete-a-self-hosted-runner-from-a-repository
+        """
 
         url = f"/repos/{owner}/{repo}/actions/runners/{runner_id}"
 
@@ -6818,7 +8822,18 @@ class ActionsClient:
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/actions/self-hosted-runners#list-labels-for-a-self-hosted-runner-for-a-repository"""
+        """actions/list-labels-for-self-hosted-runner-for-repo
+
+        GET /repos/{owner}/{repo}/actions/runners/{runner_id}/labels
+
+        Lists all labels for a self-hosted runner configured in a repository.
+
+        Authenticated users must have admin access to the repository to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/self-hosted-runners#list-labels-for-a-self-hosted-runner-for-a-repository
+        """
 
         from ..models import (
             BasicError,
@@ -6850,7 +8865,18 @@ class ActionsClient:
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/actions/self-hosted-runners#list-labels-for-a-self-hosted-runner-for-a-repository"""
+        """actions/list-labels-for-self-hosted-runner-for-repo
+
+        GET /repos/{owner}/{repo}/actions/runners/{runner_id}/labels
+
+        Lists all labels for a self-hosted runner configured in a repository.
+
+        Authenticated users must have admin access to the repository to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/self-hosted-runners#list-labels-for-a-self-hosted-runner-for-a-repository
+        """
 
         from ..models import (
             BasicError,
@@ -6913,7 +8939,19 @@ class ActionsClient:
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/actions/self-hosted-runners#set-custom-labels-for-a-self-hosted-runner-for-a-repository"""
+        """actions/set-custom-labels-for-self-hosted-runner-for-repo
+
+        PUT /repos/{owner}/{repo}/actions/runners/{runner_id}/labels
+
+        Remove all previous custom labels and set the new custom labels for a specific
+        self-hosted runner configured in a repository.
+
+        Authenticated users must have admin access to the repository to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/self-hosted-runners#set-custom-labels-for-a-self-hosted-runner-for-a-repository
+        """
 
         from ..models import (
             BasicError,
@@ -6991,7 +9029,19 @@ class ActionsClient:
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/actions/self-hosted-runners#set-custom-labels-for-a-self-hosted-runner-for-a-repository"""
+        """actions/set-custom-labels-for-self-hosted-runner-for-repo
+
+        PUT /repos/{owner}/{repo}/actions/runners/{runner_id}/labels
+
+        Remove all previous custom labels and set the new custom labels for a specific
+        self-hosted runner configured in a repository.
+
+        Authenticated users must have admin access to the repository to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/self-hosted-runners#set-custom-labels-for-a-self-hosted-runner-for-a-repository
+        """
 
         from ..models import (
             BasicError,
@@ -7069,7 +9119,18 @@ class ActionsClient:
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/actions/self-hosted-runners#add-custom-labels-to-a-self-hosted-runner-for-a-repository"""
+        """actions/add-custom-labels-to-self-hosted-runner-for-repo
+
+        POST /repos/{owner}/{repo}/actions/runners/{runner_id}/labels
+
+        Adds custom labels to a self-hosted runner configured in a repository.
+
+        Authenticated users must have admin access to the organization to use this endpoint.
+
+        OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/self-hosted-runners#add-custom-labels-to-a-self-hosted-runner-for-a-repository
+        """
 
         from ..models import (
             BasicError,
@@ -7147,7 +9208,18 @@ class ActionsClient:
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/actions/self-hosted-runners#add-custom-labels-to-a-self-hosted-runner-for-a-repository"""
+        """actions/add-custom-labels-to-self-hosted-runner-for-repo
+
+        POST /repos/{owner}/{repo}/actions/runners/{runner_id}/labels
+
+        Adds custom labels to a self-hosted runner configured in a repository.
+
+        Authenticated users must have admin access to the organization to use this endpoint.
+
+        OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/self-hosted-runners#add-custom-labels-to-a-self-hosted-runner-for-a-repository
+        """
 
         from ..models import (
             BasicError,
@@ -7194,7 +9266,19 @@ class ActionsClient:
         OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200,
         OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/actions/self-hosted-runners#remove-all-custom-labels-from-a-self-hosted-runner-for-a-repository"""
+        """actions/remove-all-custom-labels-from-self-hosted-runner-for-repo
+
+        DELETE /repos/{owner}/{repo}/actions/runners/{runner_id}/labels
+
+        Remove all custom labels from a self-hosted runner configured in a
+        repository. Returns the remaining read-only labels from the runner.
+
+        Authenticated users must have admin access to the repository to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/self-hosted-runners#remove-all-custom-labels-from-a-self-hosted-runner-for-a-repository
+        """
 
         from ..models import (
             BasicError,
@@ -7226,7 +9310,19 @@ class ActionsClient:
         OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200,
         OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/actions/self-hosted-runners#remove-all-custom-labels-from-a-self-hosted-runner-for-a-repository"""
+        """actions/remove-all-custom-labels-from-self-hosted-runner-for-repo
+
+        DELETE /repos/{owner}/{repo}/actions/runners/{runner_id}/labels
+
+        Remove all custom labels from a self-hosted runner configured in a
+        repository. Returns the remaining read-only labels from the runner.
+
+        Authenticated users must have admin access to the repository to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/self-hosted-runners#remove-all-custom-labels-from-a-self-hosted-runner-for-a-repository
+        """
 
         from ..models import (
             BasicError,
@@ -7259,7 +9355,22 @@ class ActionsClient:
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/actions/self-hosted-runners#remove-a-custom-label-from-a-self-hosted-runner-for-a-repository"""
+        """actions/remove-custom-label-from-self-hosted-runner-for-repo
+
+        DELETE /repos/{owner}/{repo}/actions/runners/{runner_id}/labels/{name}
+
+        Remove a custom label from a self-hosted runner configured
+        in a repository. Returns the remaining labels from the runner.
+
+        This endpoint returns a `404 Not Found` status if the custom label is not
+        present on the runner.
+
+        Authenticated users must have admin access to the repository to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/self-hosted-runners#remove-a-custom-label-from-a-self-hosted-runner-for-a-repository
+        """
 
         from ..models import (
             BasicError,
@@ -7294,7 +9405,22 @@ class ActionsClient:
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/actions/self-hosted-runners#remove-a-custom-label-from-a-self-hosted-runner-for-a-repository"""
+        """actions/remove-custom-label-from-self-hosted-runner-for-repo
+
+        DELETE /repos/{owner}/{repo}/actions/runners/{runner_id}/labels/{name}
+
+        Remove a custom label from a self-hosted runner configured
+        in a repository. Returns the remaining labels from the runner.
+
+        This endpoint returns a `404 Not Found` status if the custom label is not
+        present on the runner.
+
+        Authenticated users must have admin access to the repository to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/self-hosted-runners#remove-a-custom-label-from-a-self-hosted-runner-for-a-repository
+        """
 
         from ..models import (
             BasicError,
@@ -7354,7 +9480,20 @@ class ActionsClient:
         ReposOwnerRepoActionsRunsGetResponse200,
         ReposOwnerRepoActionsRunsGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/actions/workflow-runs#list-workflow-runs-for-a-repository"""
+        """actions/list-workflow-runs-for-repo
+
+        GET /repos/{owner}/{repo}/actions/runs
+
+        Lists all workflow runs for a repository. You can use parameters to narrow the list of results. For more information about using parameters, see [Parameters](https://docs.github.com/rest/guides/getting-started-with-the-rest-api#parameters).
+
+        Anyone with read access to the repository can use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
+
+        This endpoint will return up to 1,000 results for each search when using the following parameters: `actor`, `branch`, `check_suite_id`, `created`, `event`, `head_sha`, `status`.
+
+        See also: https://docs.github.com/rest/actions/workflow-runs#list-workflow-runs-for-a-repository
+        """
 
         from ..models import ReposOwnerRepoActionsRunsGetResponse200
 
@@ -7420,7 +9559,20 @@ class ActionsClient:
         ReposOwnerRepoActionsRunsGetResponse200,
         ReposOwnerRepoActionsRunsGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/actions/workflow-runs#list-workflow-runs-for-a-repository"""
+        """actions/list-workflow-runs-for-repo
+
+        GET /repos/{owner}/{repo}/actions/runs
+
+        Lists all workflow runs for a repository. You can use parameters to narrow the list of results. For more information about using parameters, see [Parameters](https://docs.github.com/rest/guides/getting-started-with-the-rest-api#parameters).
+
+        Anyone with read access to the repository can use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
+
+        This endpoint will return up to 1,000 results for each search when using the following parameters: `actor`, `branch`, `check_suite_id`, `created`, `event`, `head_sha`, `status`.
+
+        See also: https://docs.github.com/rest/actions/workflow-runs#list-workflow-runs-for-a-repository
+        """
 
         from ..models import ReposOwnerRepoActionsRunsGetResponse200
 
@@ -7458,7 +9610,18 @@ class ActionsClient:
         exclude_pull_requests: Missing[bool] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[WorkflowRun, WorkflowRunType]:
-        """See also: https://docs.github.com/rest/actions/workflow-runs#get-a-workflow-run"""
+        """actions/get-workflow-run
+
+        GET /repos/{owner}/{repo}/actions/runs/{run_id}
+
+        Gets a specific workflow run.
+
+        Anyone with read access to the repository can use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
+
+        See also: https://docs.github.com/rest/actions/workflow-runs#get-a-workflow-run
+        """
 
         from ..models import WorkflowRun
 
@@ -7487,7 +9650,18 @@ class ActionsClient:
         exclude_pull_requests: Missing[bool] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[WorkflowRun, WorkflowRunType]:
-        """See also: https://docs.github.com/rest/actions/workflow-runs#get-a-workflow-run"""
+        """actions/get-workflow-run
+
+        GET /repos/{owner}/{repo}/actions/runs/{run_id}
+
+        Gets a specific workflow run.
+
+        Anyone with read access to the repository can use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
+
+        See also: https://docs.github.com/rest/actions/workflow-runs#get-a-workflow-run
+        """
 
         from ..models import WorkflowRun
 
@@ -7515,7 +9689,18 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/workflow-runs#delete-a-workflow-run"""
+        """actions/delete-workflow-run
+
+        DELETE /repos/{owner}/{repo}/actions/runs/{run_id}
+
+        Deletes a specific workflow run.
+
+        Anyone with write access to the repository can use this endpoint.
+
+        If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/workflow-runs#delete-a-workflow-run
+        """
 
         url = f"/repos/{owner}/{repo}/actions/runs/{run_id}"
 
@@ -7535,7 +9720,18 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/workflow-runs#delete-a-workflow-run"""
+        """actions/delete-workflow-run
+
+        DELETE /repos/{owner}/{repo}/actions/runs/{run_id}
+
+        Deletes a specific workflow run.
+
+        Anyone with write access to the repository can use this endpoint.
+
+        If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/workflow-runs#delete-a-workflow-run
+        """
 
         url = f"/repos/{owner}/{repo}/actions/runs/{run_id}"
 
@@ -7555,7 +9751,16 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[EnvironmentApprovals], list[EnvironmentApprovalsType]]:
-        """See also: https://docs.github.com/rest/actions/workflow-runs#get-the-review-history-for-a-workflow-run"""
+        """actions/get-reviews-for-run
+
+        GET /repos/{owner}/{repo}/actions/runs/{run_id}/approvals
+
+        Anyone with read access to the repository can use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
+
+        See also: https://docs.github.com/rest/actions/workflow-runs#get-the-review-history-for-a-workflow-run
+        """
 
         from ..models import EnvironmentApprovals
 
@@ -7578,7 +9783,16 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[EnvironmentApprovals], list[EnvironmentApprovalsType]]:
-        """See also: https://docs.github.com/rest/actions/workflow-runs#get-the-review-history-for-a-workflow-run"""
+        """actions/get-reviews-for-run
+
+        GET /repos/{owner}/{repo}/actions/runs/{run_id}/approvals
+
+        Anyone with read access to the repository can use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
+
+        See also: https://docs.github.com/rest/actions/workflow-runs#get-the-review-history-for-a-workflow-run
+        """
 
         from ..models import EnvironmentApprovals
 
@@ -7601,7 +9815,16 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[EmptyObject, EmptyObjectType]:
-        """See also: https://docs.github.com/rest/actions/workflow-runs#approve-a-workflow-run-for-a-fork-pull-request"""
+        """actions/approve-workflow-run
+
+        POST /repos/{owner}/{repo}/actions/runs/{run_id}/approve
+
+        Approves a workflow run for a pull request from a public fork of a first time contributor. For more information, see ["Approving workflow runs from public forks](https://docs.github.com/actions/managing-workflow-runs/approving-workflow-runs-from-public-forks)."
+
+        OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/workflow-runs#approve-a-workflow-run-for-a-fork-pull-request
+        """
 
         from ..models import BasicError, EmptyObject
 
@@ -7628,7 +9851,16 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[EmptyObject, EmptyObjectType]:
-        """See also: https://docs.github.com/rest/actions/workflow-runs#approve-a-workflow-run-for-a-fork-pull-request"""
+        """actions/approve-workflow-run
+
+        POST /repos/{owner}/{repo}/actions/runs/{run_id}/approve
+
+        Approves a workflow run for a pull request from a public fork of a first time contributor. For more information, see ["Approving workflow runs from public forks](https://docs.github.com/actions/managing-workflow-runs/approving-workflow-runs-from-public-forks)."
+
+        OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/workflow-runs#approve-a-workflow-run-for-a-fork-pull-request
+        """
 
         from ..models import BasicError, EmptyObject
 
@@ -7661,7 +9893,18 @@ class ActionsClient:
         ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200,
         ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/actions/artifacts#list-workflow-run-artifacts"""
+        """actions/list-workflow-run-artifacts
+
+        GET /repos/{owner}/{repo}/actions/runs/{run_id}/artifacts
+
+        Lists artifacts for a workflow run.
+
+        Anyone with read access to the repository can use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
+
+        See also: https://docs.github.com/rest/actions/artifacts#list-workflow-run-artifacts
+        """
 
         from ..models import ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200
 
@@ -7697,7 +9940,18 @@ class ActionsClient:
         ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200,
         ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/actions/artifacts#list-workflow-run-artifacts"""
+        """actions/list-workflow-run-artifacts
+
+        GET /repos/{owner}/{repo}/actions/runs/{run_id}/artifacts
+
+        Lists artifacts for a workflow run.
+
+        Anyone with read access to the repository can use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
+
+        See also: https://docs.github.com/rest/actions/artifacts#list-workflow-run-artifacts
+        """
 
         from ..models import ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200
 
@@ -7729,7 +9983,18 @@ class ActionsClient:
         exclude_pull_requests: Missing[bool] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[WorkflowRun, WorkflowRunType]:
-        """See also: https://docs.github.com/rest/actions/workflow-runs#get-a-workflow-run-attempt"""
+        """actions/get-workflow-run-attempt
+
+        GET /repos/{owner}/{repo}/actions/runs/{run_id}/attempts/{attempt_number}
+
+        Gets a specific workflow run attempt.
+
+        Anyone with read access to the repository can use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
+
+        See also: https://docs.github.com/rest/actions/workflow-runs#get-a-workflow-run-attempt
+        """
 
         from ..models import WorkflowRun
 
@@ -7759,7 +10024,18 @@ class ActionsClient:
         exclude_pull_requests: Missing[bool] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[WorkflowRun, WorkflowRunType]:
-        """See also: https://docs.github.com/rest/actions/workflow-runs#get-a-workflow-run-attempt"""
+        """actions/get-workflow-run-attempt
+
+        GET /repos/{owner}/{repo}/actions/runs/{run_id}/attempts/{attempt_number}
+
+        Gets a specific workflow run attempt.
+
+        Anyone with read access to the repository can use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
+
+        See also: https://docs.github.com/rest/actions/workflow-runs#get-a-workflow-run-attempt
+        """
 
         from ..models import WorkflowRun
 
@@ -7793,7 +10069,19 @@ class ActionsClient:
         ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200,
         ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/actions/workflow-jobs#list-jobs-for-a-workflow-run-attempt"""
+        """actions/list-jobs-for-workflow-run-attempt
+
+        GET /repos/{owner}/{repo}/actions/runs/{run_id}/attempts/{attempt_number}/jobs
+
+        Lists jobs for a specific workflow run attempt. You can use parameters to narrow the list of results. For more information
+        about using parameters, see [Parameters](https://docs.github.com/rest/guides/getting-started-with-the-rest-api#parameters).
+
+        Anyone with read access to the repository can use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint  with a private repository.
+
+        See also: https://docs.github.com/rest/actions/workflow-jobs#list-jobs-for-a-workflow-run-attempt
+        """
 
         from ..models import (
             BasicError,
@@ -7834,7 +10122,19 @@ class ActionsClient:
         ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200,
         ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/actions/workflow-jobs#list-jobs-for-a-workflow-run-attempt"""
+        """actions/list-jobs-for-workflow-run-attempt
+
+        GET /repos/{owner}/{repo}/actions/runs/{run_id}/attempts/{attempt_number}/jobs
+
+        Lists jobs for a specific workflow run attempt. You can use parameters to narrow the list of results. For more information
+        about using parameters, see [Parameters](https://docs.github.com/rest/guides/getting-started-with-the-rest-api#parameters).
+
+        Anyone with read access to the repository can use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint  with a private repository.
+
+        See also: https://docs.github.com/rest/actions/workflow-jobs#list-jobs-for-a-workflow-run-attempt
+        """
 
         from ..models import (
             BasicError,
@@ -7870,7 +10170,19 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/workflow-runs#download-workflow-run-attempt-logs"""
+        """actions/download-workflow-run-attempt-logs
+
+        GET /repos/{owner}/{repo}/actions/runs/{run_id}/attempts/{attempt_number}/logs
+
+        Gets a redirect URL to download an archive of log files for a specific workflow run attempt. This link expires after
+        1 minute. Look for `Location:` in the response header to find the URL for the download.
+
+        Anyone with read access to the repository can use this endpoint.
+
+        If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/workflow-runs#download-workflow-run-attempt-logs
+        """
 
         url = f"/repos/{owner}/{repo}/actions/runs/{run_id}/attempts/{attempt_number}/logs"
 
@@ -7891,7 +10203,19 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/workflow-runs#download-workflow-run-attempt-logs"""
+        """actions/download-workflow-run-attempt-logs
+
+        GET /repos/{owner}/{repo}/actions/runs/{run_id}/attempts/{attempt_number}/logs
+
+        Gets a redirect URL to download an archive of log files for a specific workflow run attempt. This link expires after
+        1 minute. Look for `Location:` in the response header to find the URL for the download.
+
+        Anyone with read access to the repository can use this endpoint.
+
+        If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/workflow-runs#download-workflow-run-attempt-logs
+        """
 
         url = f"/repos/{owner}/{repo}/actions/runs/{run_id}/attempts/{attempt_number}/logs"
 
@@ -7911,7 +10235,16 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[EmptyObject, EmptyObjectType]:
-        """See also: https://docs.github.com/rest/actions/workflow-runs#cancel-a-workflow-run"""
+        """actions/cancel-workflow-run
+
+        POST /repos/{owner}/{repo}/actions/runs/{run_id}/cancel
+
+        Cancels a workflow run using its `id`.
+
+        OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/workflow-runs#cancel-a-workflow-run
+        """
 
         from ..models import BasicError, EmptyObject
 
@@ -7937,7 +10270,16 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[EmptyObject, EmptyObjectType]:
-        """See also: https://docs.github.com/rest/actions/workflow-runs#cancel-a-workflow-run"""
+        """actions/cancel-workflow-run
+
+        POST /repos/{owner}/{repo}/actions/runs/{run_id}/cancel
+
+        Cancels a workflow run using its `id`.
+
+        OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/workflow-runs#cancel-a-workflow-run
+        """
 
         from ..models import BasicError, EmptyObject
 
@@ -8009,7 +10351,19 @@ class ActionsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/workflow-runs#review-custom-deployment-protection-rules-for-a-workflow-run"""
+        """actions/review-custom-gates-for-run
+
+        POST /repos/{owner}/{repo}/actions/runs/{run_id}/deployment_protection_rule
+
+        Approve or reject custom deployment protection rules provided by a GitHub App for a workflow run. For more information, see "[Using environments for deployment](https://docs.github.com/actions/deployment/targeting-different-environments/using-environments-for-deployment)."
+
+        > [!NOTE]
+        > GitHub Apps can only review their own custom deployment protection rules. To approve or reject pending deployments that are waiting for review from a specific person or team, see [`POST /repos/{owner}/{repo}/actions/runs/{run_id}/pending_deployments`](/rest/actions/workflow-runs#review-pending-deployments-for-a-workflow-run).
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
+
+        See also: https://docs.github.com/rest/actions/workflow-runs#review-custom-deployment-protection-rules-for-a-workflow-run
+        """
 
         from typing import Union
 
@@ -8095,7 +10449,19 @@ class ActionsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/workflow-runs#review-custom-deployment-protection-rules-for-a-workflow-run"""
+        """actions/review-custom-gates-for-run
+
+        POST /repos/{owner}/{repo}/actions/runs/{run_id}/deployment_protection_rule
+
+        Approve or reject custom deployment protection rules provided by a GitHub App for a workflow run. For more information, see "[Using environments for deployment](https://docs.github.com/actions/deployment/targeting-different-environments/using-environments-for-deployment)."
+
+        > [!NOTE]
+        > GitHub Apps can only review their own custom deployment protection rules. To approve or reject pending deployments that are waiting for review from a specific person or team, see [`POST /repos/{owner}/{repo}/actions/runs/{run_id}/pending_deployments`](/rest/actions/workflow-runs#review-pending-deployments-for-a-workflow-run).
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
+
+        See also: https://docs.github.com/rest/actions/workflow-runs#review-custom-deployment-protection-rules-for-a-workflow-run
+        """
 
         from typing import Union
 
@@ -8135,7 +10501,17 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[EmptyObject, EmptyObjectType]:
-        """See also: https://docs.github.com/rest/actions/workflow-runs#force-cancel-a-workflow-run"""
+        """actions/force-cancel-workflow-run
+
+        POST /repos/{owner}/{repo}/actions/runs/{run_id}/force-cancel
+
+        Cancels a workflow run and bypasses conditions that would otherwise cause a workflow execution to continue, such as an `always()` condition on a job.
+        You should only use this endpoint to cancel a workflow run when the workflow run is not responding to [`POST /repos/{owner}/{repo}/actions/runs/{run_id}/cancel`](/rest/actions/workflow-runs#cancel-a-workflow-run).
+
+        OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/workflow-runs#force-cancel-a-workflow-run
+        """
 
         from ..models import BasicError, EmptyObject
 
@@ -8161,7 +10537,17 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[EmptyObject, EmptyObjectType]:
-        """See also: https://docs.github.com/rest/actions/workflow-runs#force-cancel-a-workflow-run"""
+        """actions/force-cancel-workflow-run
+
+        POST /repos/{owner}/{repo}/actions/runs/{run_id}/force-cancel
+
+        Cancels a workflow run and bypasses conditions that would otherwise cause a workflow execution to continue, such as an `always()` condition on a job.
+        You should only use this endpoint to cancel a workflow run when the workflow run is not responding to [`POST /repos/{owner}/{repo}/actions/runs/{run_id}/cancel`](/rest/actions/workflow-runs#cancel-a-workflow-run).
+
+        OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/workflow-runs#force-cancel-a-workflow-run
+        """
 
         from ..models import BasicError, EmptyObject
 
@@ -8193,7 +10579,19 @@ class ActionsClient:
         ReposOwnerRepoActionsRunsRunIdJobsGetResponse200,
         ReposOwnerRepoActionsRunsRunIdJobsGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/actions/workflow-jobs#list-jobs-for-a-workflow-run"""
+        """actions/list-jobs-for-workflow-run
+
+        GET /repos/{owner}/{repo}/actions/runs/{run_id}/jobs
+
+        Lists jobs for a workflow run. You can use parameters to narrow the list of results. For more information
+        about using parameters, see [Parameters](https://docs.github.com/rest/guides/getting-started-with-the-rest-api#parameters).
+
+        Anyone with read access to the repository can use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
+
+        See also: https://docs.github.com/rest/actions/workflow-jobs#list-jobs-for-a-workflow-run
+        """
 
         from ..models import ReposOwnerRepoActionsRunsRunIdJobsGetResponse200
 
@@ -8229,7 +10627,19 @@ class ActionsClient:
         ReposOwnerRepoActionsRunsRunIdJobsGetResponse200,
         ReposOwnerRepoActionsRunsRunIdJobsGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/actions/workflow-jobs#list-jobs-for-a-workflow-run"""
+        """actions/list-jobs-for-workflow-run
+
+        GET /repos/{owner}/{repo}/actions/runs/{run_id}/jobs
+
+        Lists jobs for a workflow run. You can use parameters to narrow the list of results. For more information
+        about using parameters, see [Parameters](https://docs.github.com/rest/guides/getting-started-with-the-rest-api#parameters).
+
+        Anyone with read access to the repository can use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
+
+        See also: https://docs.github.com/rest/actions/workflow-jobs#list-jobs-for-a-workflow-run
+        """
 
         from ..models import ReposOwnerRepoActionsRunsRunIdJobsGetResponse200
 
@@ -8259,7 +10669,19 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/workflow-runs#download-workflow-run-logs"""
+        """actions/download-workflow-run-logs
+
+        GET /repos/{owner}/{repo}/actions/runs/{run_id}/logs
+
+        Gets a redirect URL to download an archive of log files for a workflow run. This link expires after 1 minute. Look for
+        `Location:` in the response header to find the URL for the download.
+
+        Anyone with read access to the repository can use this endpoint.
+
+        If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/workflow-runs#download-workflow-run-logs
+        """
 
         url = f"/repos/{owner}/{repo}/actions/runs/{run_id}/logs"
 
@@ -8279,7 +10701,19 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/workflow-runs#download-workflow-run-logs"""
+        """actions/download-workflow-run-logs
+
+        GET /repos/{owner}/{repo}/actions/runs/{run_id}/logs
+
+        Gets a redirect URL to download an archive of log files for a workflow run. This link expires after 1 minute. Look for
+        `Location:` in the response header to find the URL for the download.
+
+        Anyone with read access to the repository can use this endpoint.
+
+        If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/workflow-runs#download-workflow-run-logs
+        """
 
         url = f"/repos/{owner}/{repo}/actions/runs/{run_id}/logs"
 
@@ -8299,7 +10733,16 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/workflow-runs#delete-workflow-run-logs"""
+        """actions/delete-workflow-run-logs
+
+        DELETE /repos/{owner}/{repo}/actions/runs/{run_id}/logs
+
+        Deletes all logs for a workflow run.
+
+        OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/workflow-runs#delete-workflow-run-logs
+        """
 
         from ..models import BasicError
 
@@ -8325,7 +10768,16 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/workflow-runs#delete-workflow-run-logs"""
+        """actions/delete-workflow-run-logs
+
+        DELETE /repos/{owner}/{repo}/actions/runs/{run_id}/logs
+
+        Deletes all logs for a workflow run.
+
+        OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/workflow-runs#delete-workflow-run-logs
+        """
 
         from ..models import BasicError
 
@@ -8351,7 +10803,18 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[PendingDeployment], list[PendingDeploymentType]]:
-        """See also: https://docs.github.com/rest/actions/workflow-runs#get-pending-deployments-for-a-workflow-run"""
+        """actions/get-pending-deployments-for-run
+
+        GET /repos/{owner}/{repo}/actions/runs/{run_id}/pending_deployments
+
+        Get all deployment environments for a workflow run that are waiting for protection rules to pass.
+
+        Anyone with read access to the repository can use this endpoint.
+
+        If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/workflow-runs#get-pending-deployments-for-a-workflow-run
+        """
 
         from ..models import PendingDeployment
 
@@ -8374,7 +10837,18 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[PendingDeployment], list[PendingDeploymentType]]:
-        """See also: https://docs.github.com/rest/actions/workflow-runs#get-pending-deployments-for-a-workflow-run"""
+        """actions/get-pending-deployments-for-run
+
+        GET /repos/{owner}/{repo}/actions/runs/{run_id}/pending_deployments
+
+        Get all deployment environments for a workflow run that are waiting for protection rules to pass.
+
+        Anyone with read access to the repository can use this endpoint.
+
+        If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/workflow-runs#get-pending-deployments-for-a-workflow-run
+        """
 
         from ..models import PendingDeployment
 
@@ -8426,7 +10900,18 @@ class ActionsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[list[Deployment], list[DeploymentType]]:
-        """See also: https://docs.github.com/rest/actions/workflow-runs#review-pending-deployments-for-a-workflow-run"""
+        """actions/review-pending-deployments-for-run
+
+        POST /repos/{owner}/{repo}/actions/runs/{run_id}/pending_deployments
+
+        Approve or reject pending deployments that are waiting on approval by a required reviewer.
+
+        Required reviewers with read access to the repository contents and deployments can use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/workflow-runs#review-pending-deployments-for-a-workflow-run
+        """
 
         from ..models import (
             Deployment,
@@ -8493,7 +10978,18 @@ class ActionsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[list[Deployment], list[DeploymentType]]:
-        """See also: https://docs.github.com/rest/actions/workflow-runs#review-pending-deployments-for-a-workflow-run"""
+        """actions/review-pending-deployments-for-run
+
+        POST /repos/{owner}/{repo}/actions/runs/{run_id}/pending_deployments
+
+        Approve or reject pending deployments that are waiting on approval by a required reviewer.
+
+        Required reviewers with read access to the repository contents and deployments can use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/workflow-runs#review-pending-deployments-for-a-workflow-run
+        """
 
         from ..models import (
             Deployment,
@@ -8560,7 +11056,16 @@ class ActionsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject, EmptyObjectType]:
-        """See also: https://docs.github.com/rest/actions/workflow-runs#re-run-a-workflow"""
+        """actions/re-run-workflow
+
+        POST /repos/{owner}/{repo}/actions/runs/{run_id}/rerun
+
+        Re-runs your workflow run using its `id`.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/workflow-runs#re-run-a-workflow
+        """
 
         from typing import Union
 
@@ -8626,7 +11131,16 @@ class ActionsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject, EmptyObjectType]:
-        """See also: https://docs.github.com/rest/actions/workflow-runs#re-run-a-workflow"""
+        """actions/re-run-workflow
+
+        POST /repos/{owner}/{repo}/actions/runs/{run_id}/rerun
+
+        Re-runs your workflow run using its `id`.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/workflow-runs#re-run-a-workflow
+        """
 
         from typing import Union
 
@@ -8692,7 +11206,16 @@ class ActionsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject, EmptyObjectType]:
-        """See also: https://docs.github.com/rest/actions/workflow-runs#re-run-failed-jobs-from-a-workflow-run"""
+        """actions/re-run-workflow-failed-jobs
+
+        POST /repos/{owner}/{repo}/actions/runs/{run_id}/rerun-failed-jobs
+
+        Re-run all of the failed jobs and their dependent jobs in a workflow run using the `id` of the workflow run.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/workflow-runs#re-run-failed-jobs-from-a-workflow-run
+        """
 
         from typing import Union
 
@@ -8761,7 +11284,16 @@ class ActionsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject, EmptyObjectType]:
-        """See also: https://docs.github.com/rest/actions/workflow-runs#re-run-failed-jobs-from-a-workflow-run"""
+        """actions/re-run-workflow-failed-jobs
+
+        POST /repos/{owner}/{repo}/actions/runs/{run_id}/rerun-failed-jobs
+
+        Re-run all of the failed jobs and their dependent jobs in a workflow run using the `id` of the workflow run.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/workflow-runs#re-run-failed-jobs-from-a-workflow-run
+        """
 
         from typing import Union
 
@@ -8801,7 +11333,21 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[WorkflowRunUsage, WorkflowRunUsageType]:
-        """See also: https://docs.github.com/rest/actions/workflow-runs#get-workflow-run-usage"""
+        """actions/get-workflow-run-usage
+
+        GET /repos/{owner}/{repo}/actions/runs/{run_id}/timing
+
+        > [!WARNING]
+        > This endpoint is in the process of closing down. Refer to "[Actions Get workflow usage and Get workflow run usage endpoints closing down](https://github.blog/changelog/2025-02-02-actions-get-workflow-usage-and-get-workflow-run-usage-endpoints-closing-down/)" for more information.
+
+        Gets the number of billable minutes and total run time for a specific workflow run. Billable minutes only apply to workflows in private repositories that use GitHub-hosted runners. Usage is listed for each GitHub-hosted runner operating system in milliseconds. Any job re-runs are also included in the usage. The usage does not include the multiplier for macOS and Windows runners and is not rounded up to the nearest whole minute. For more information, see "[Managing billing for GitHub Actions](https://docs.github.com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-actions)".
+
+        Anyone with read access to the repository can use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
+
+        See also: https://docs.github.com/rest/actions/workflow-runs#get-workflow-run-usage
+        """
 
         from ..models import WorkflowRunUsage
 
@@ -8824,7 +11370,21 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[WorkflowRunUsage, WorkflowRunUsageType]:
-        """See also: https://docs.github.com/rest/actions/workflow-runs#get-workflow-run-usage"""
+        """actions/get-workflow-run-usage
+
+        GET /repos/{owner}/{repo}/actions/runs/{run_id}/timing
+
+        > [!WARNING]
+        > This endpoint is in the process of closing down. Refer to "[Actions Get workflow usage and Get workflow run usage endpoints closing down](https://github.blog/changelog/2025-02-02-actions-get-workflow-usage-and-get-workflow-run-usage-endpoints-closing-down/)" for more information.
+
+        Gets the number of billable minutes and total run time for a specific workflow run. Billable minutes only apply to workflows in private repositories that use GitHub-hosted runners. Usage is listed for each GitHub-hosted runner operating system in milliseconds. Any job re-runs are also included in the usage. The usage does not include the multiplier for macOS and Windows runners and is not rounded up to the nearest whole minute. For more information, see "[Managing billing for GitHub Actions](https://docs.github.com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-actions)".
+
+        Anyone with read access to the repository can use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
+
+        See also: https://docs.github.com/rest/actions/workflow-runs#get-workflow-run-usage
+        """
 
         from ..models import WorkflowRunUsage
 
@@ -8851,7 +11411,19 @@ class ActionsClient:
         ReposOwnerRepoActionsSecretsGetResponse200,
         ReposOwnerRepoActionsSecretsGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/actions/secrets#list-repository-secrets"""
+        """actions/list-repo-secrets
+
+        GET /repos/{owner}/{repo}/actions/secrets
+
+        Lists all secrets available in a repository without revealing their encrypted
+        values.
+
+        Authenticated users must have collaborator access to a repository to create, update, or read secrets.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/secrets#list-repository-secrets
+        """
 
         from ..models import ReposOwnerRepoActionsSecretsGetResponse200
 
@@ -8884,7 +11456,19 @@ class ActionsClient:
         ReposOwnerRepoActionsSecretsGetResponse200,
         ReposOwnerRepoActionsSecretsGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/actions/secrets#list-repository-secrets"""
+        """actions/list-repo-secrets
+
+        GET /repos/{owner}/{repo}/actions/secrets
+
+        Lists all secrets available in a repository without revealing their encrypted
+        values.
+
+        Authenticated users must have collaborator access to a repository to create, update, or read secrets.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/secrets#list-repository-secrets
+        """
 
         from ..models import ReposOwnerRepoActionsSecretsGetResponse200
 
@@ -8912,7 +11496,19 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ActionsPublicKey, ActionsPublicKeyType]:
-        """See also: https://docs.github.com/rest/actions/secrets#get-a-repository-public-key"""
+        """actions/get-repo-public-key
+
+        GET /repos/{owner}/{repo}/actions/secrets/public-key
+
+        Gets your public key, which you need to encrypt secrets. You need to
+        encrypt a secret before you can create or update secrets.
+
+        Anyone with read access to the repository can use this endpoint.
+
+        If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/secrets#get-a-repository-public-key
+        """
 
         from ..models import ActionsPublicKey
 
@@ -8934,7 +11530,19 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ActionsPublicKey, ActionsPublicKeyType]:
-        """See also: https://docs.github.com/rest/actions/secrets#get-a-repository-public-key"""
+        """actions/get-repo-public-key
+
+        GET /repos/{owner}/{repo}/actions/secrets/public-key
+
+        Gets your public key, which you need to encrypt secrets. You need to
+        encrypt a secret before you can create or update secrets.
+
+        Anyone with read access to the repository can use this endpoint.
+
+        If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/secrets#get-a-repository-public-key
+        """
 
         from ..models import ActionsPublicKey
 
@@ -8957,7 +11565,18 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ActionsSecret, ActionsSecretType]:
-        """See also: https://docs.github.com/rest/actions/secrets#get-a-repository-secret"""
+        """actions/get-repo-secret
+
+        GET /repos/{owner}/{repo}/actions/secrets/{secret_name}
+
+        Gets a single repository secret without revealing its encrypted value.
+
+        The authenticated user must have collaborator access to the repository to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/secrets#get-a-repository-secret
+        """
 
         from ..models import ActionsSecret
 
@@ -8980,7 +11599,18 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ActionsSecret, ActionsSecretType]:
-        """See also: https://docs.github.com/rest/actions/secrets#get-a-repository-secret"""
+        """actions/get-repo-secret
+
+        GET /repos/{owner}/{repo}/actions/secrets/{secret_name}
+
+        Gets a single repository secret without revealing its encrypted value.
+
+        The authenticated user must have collaborator access to the repository to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/secrets#get-a-repository-secret
+        """
 
         from ..models import ActionsSecret
 
@@ -9029,7 +11659,19 @@ class ActionsClient:
         data: Missing[ReposOwnerRepoActionsSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject, EmptyObjectType]:
-        """See also: https://docs.github.com/rest/actions/secrets#create-or-update-a-repository-secret"""
+        """actions/create-or-update-repo-secret
+
+        PUT /repos/{owner}/{repo}/actions/secrets/{secret_name}
+
+        Creates or updates a repository secret with an encrypted value. Encrypt your secret using
+        [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). For more information, see "[Encrypting secrets for the REST API](https://docs.github.com/rest/guides/encrypting-secrets-for-the-rest-api)."
+
+        Authenticated users must have collaborator access to a repository to create, update, or read secrets.
+
+        OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/secrets#create-or-update-a-repository-secret
+        """
 
         from ..models import EmptyObject, ReposOwnerRepoActionsSecretsSecretNamePutBody
 
@@ -9090,7 +11732,19 @@ class ActionsClient:
         data: Missing[ReposOwnerRepoActionsSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject, EmptyObjectType]:
-        """See also: https://docs.github.com/rest/actions/secrets#create-or-update-a-repository-secret"""
+        """actions/create-or-update-repo-secret
+
+        PUT /repos/{owner}/{repo}/actions/secrets/{secret_name}
+
+        Creates or updates a repository secret with an encrypted value. Encrypt your secret using
+        [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). For more information, see "[Encrypting secrets for the REST API](https://docs.github.com/rest/guides/encrypting-secrets-for-the-rest-api)."
+
+        Authenticated users must have collaborator access to a repository to create, update, or read secrets.
+
+        OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/secrets#create-or-update-a-repository-secret
+        """
 
         from ..models import EmptyObject, ReposOwnerRepoActionsSecretsSecretNamePutBody
 
@@ -9125,7 +11779,18 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/secrets#delete-a-repository-secret"""
+        """actions/delete-repo-secret
+
+        DELETE /repos/{owner}/{repo}/actions/secrets/{secret_name}
+
+        Deletes a secret in a repository using the secret name.
+
+        Authenticated users must have collaborator access to a repository to create, update, or read secrets.
+
+        OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/secrets#delete-a-repository-secret
+        """
 
         url = f"/repos/{owner}/{repo}/actions/secrets/{secret_name}"
 
@@ -9145,7 +11810,18 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/secrets#delete-a-repository-secret"""
+        """actions/delete-repo-secret
+
+        DELETE /repos/{owner}/{repo}/actions/secrets/{secret_name}
+
+        Deletes a secret in a repository using the secret name.
+
+        Authenticated users must have collaborator access to a repository to create, update, or read secrets.
+
+        OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/secrets#delete-a-repository-secret
+        """
 
         url = f"/repos/{owner}/{repo}/actions/secrets/{secret_name}"
 
@@ -9169,7 +11845,18 @@ class ActionsClient:
         ReposOwnerRepoActionsVariablesGetResponse200,
         ReposOwnerRepoActionsVariablesGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/actions/variables#list-repository-variables"""
+        """actions/list-repo-variables
+
+        GET /repos/{owner}/{repo}/actions/variables
+
+        Lists all repository variables.
+
+        Authenticated users must have collaborator access to a repository to create, update, or read variables.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/variables#list-repository-variables
+        """
 
         from ..models import ReposOwnerRepoActionsVariablesGetResponse200
 
@@ -9202,7 +11889,18 @@ class ActionsClient:
         ReposOwnerRepoActionsVariablesGetResponse200,
         ReposOwnerRepoActionsVariablesGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/actions/variables#list-repository-variables"""
+        """actions/list-repo-variables
+
+        GET /repos/{owner}/{repo}/actions/variables
+
+        Lists all repository variables.
+
+        Authenticated users must have collaborator access to a repository to create, update, or read variables.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/variables#list-repository-variables
+        """
 
         from ..models import ReposOwnerRepoActionsVariablesGetResponse200
 
@@ -9254,7 +11952,18 @@ class ActionsClient:
         data: Missing[ReposOwnerRepoActionsVariablesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject, EmptyObjectType]:
-        """See also: https://docs.github.com/rest/actions/variables#create-a-repository-variable"""
+        """actions/create-repo-variable
+
+        POST /repos/{owner}/{repo}/actions/variables
+
+        Creates a repository variable that you can reference in a GitHub Actions workflow.
+
+        Authenticated users must have collaborator access to a repository to create, update, or read variables.
+
+        OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/variables#create-a-repository-variable
+        """
 
         from ..models import EmptyObject, ReposOwnerRepoActionsVariablesPostBody
 
@@ -9310,7 +12019,18 @@ class ActionsClient:
         data: Missing[ReposOwnerRepoActionsVariablesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject, EmptyObjectType]:
-        """See also: https://docs.github.com/rest/actions/variables#create-a-repository-variable"""
+        """actions/create-repo-variable
+
+        POST /repos/{owner}/{repo}/actions/variables
+
+        Creates a repository variable that you can reference in a GitHub Actions workflow.
+
+        Authenticated users must have collaborator access to a repository to create, update, or read variables.
+
+        OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/variables#create-a-repository-variable
+        """
 
         from ..models import EmptyObject, ReposOwnerRepoActionsVariablesPostBody
 
@@ -9343,7 +12063,18 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ActionsVariable, ActionsVariableType]:
-        """See also: https://docs.github.com/rest/actions/variables#get-a-repository-variable"""
+        """actions/get-repo-variable
+
+        GET /repos/{owner}/{repo}/actions/variables/{name}
+
+        Gets a specific variable in a repository.
+
+        The authenticated user must have collaborator access to the repository to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/variables#get-a-repository-variable
+        """
 
         from ..models import ActionsVariable
 
@@ -9366,7 +12097,18 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ActionsVariable, ActionsVariableType]:
-        """See also: https://docs.github.com/rest/actions/variables#get-a-repository-variable"""
+        """actions/get-repo-variable
+
+        GET /repos/{owner}/{repo}/actions/variables/{name}
+
+        Gets a specific variable in a repository.
+
+        The authenticated user must have collaborator access to the repository to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/variables#get-a-repository-variable
+        """
 
         from ..models import ActionsVariable
 
@@ -9389,7 +12131,18 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/variables#delete-a-repository-variable"""
+        """actions/delete-repo-variable
+
+        DELETE /repos/{owner}/{repo}/actions/variables/{name}
+
+        Deletes a repository variable using the variable name.
+
+        Authenticated users must have collaborator access to a repository to create, update, or read variables.
+
+        OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/variables#delete-a-repository-variable
+        """
 
         url = f"/repos/{owner}/{repo}/actions/variables/{name}"
 
@@ -9409,7 +12162,18 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/variables#delete-a-repository-variable"""
+        """actions/delete-repo-variable
+
+        DELETE /repos/{owner}/{repo}/actions/variables/{name}
+
+        Deletes a repository variable using the variable name.
+
+        Authenticated users must have collaborator access to a repository to create, update, or read variables.
+
+        OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/variables#delete-a-repository-variable
+        """
 
         url = f"/repos/{owner}/{repo}/actions/variables/{name}"
 
@@ -9454,7 +12218,18 @@ class ActionsClient:
         data: Missing[ReposOwnerRepoActionsVariablesNamePatchBodyType] = UNSET,
         **kwargs,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/variables#update-a-repository-variable"""
+        """actions/update-repo-variable
+
+        PATCH /repos/{owner}/{repo}/actions/variables/{name}
+
+        Updates a repository variable that you can reference in a GitHub Actions workflow.
+
+        Authenticated users must have collaborator access to a repository to create, update, or read variables.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/variables#update-a-repository-variable
+        """
 
         from ..models import ReposOwnerRepoActionsVariablesNamePatchBody
 
@@ -9513,7 +12288,18 @@ class ActionsClient:
         data: Missing[ReposOwnerRepoActionsVariablesNamePatchBodyType] = UNSET,
         **kwargs,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/variables#update-a-repository-variable"""
+        """actions/update-repo-variable
+
+        PATCH /repos/{owner}/{repo}/actions/variables/{name}
+
+        Updates a repository variable that you can reference in a GitHub Actions workflow.
+
+        Authenticated users must have collaborator access to a repository to create, update, or read variables.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/variables#update-a-repository-variable
+        """
 
         from ..models import ReposOwnerRepoActionsVariablesNamePatchBody
 
@@ -9551,7 +12337,18 @@ class ActionsClient:
         ReposOwnerRepoActionsWorkflowsGetResponse200,
         ReposOwnerRepoActionsWorkflowsGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/actions/workflows#list-repository-workflows"""
+        """actions/list-repo-workflows
+
+        GET /repos/{owner}/{repo}/actions/workflows
+
+        Lists the workflows in a repository.
+
+        Anyone with read access to the repository can use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
+
+        See also: https://docs.github.com/rest/actions/workflows#list-repository-workflows
+        """
 
         from ..models import ReposOwnerRepoActionsWorkflowsGetResponse200
 
@@ -9584,7 +12381,18 @@ class ActionsClient:
         ReposOwnerRepoActionsWorkflowsGetResponse200,
         ReposOwnerRepoActionsWorkflowsGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/actions/workflows#list-repository-workflows"""
+        """actions/list-repo-workflows
+
+        GET /repos/{owner}/{repo}/actions/workflows
+
+        Lists the workflows in a repository.
+
+        Anyone with read access to the repository can use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
+
+        See also: https://docs.github.com/rest/actions/workflows#list-repository-workflows
+        """
 
         from ..models import ReposOwnerRepoActionsWorkflowsGetResponse200
 
@@ -9613,7 +12421,19 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Workflow, WorkflowType]:
-        """See also: https://docs.github.com/rest/actions/workflows#get-a-workflow"""
+        """actions/get-workflow
+
+        GET /repos/{owner}/{repo}/actions/workflows/{workflow_id}
+
+        Gets a specific workflow. You can replace `workflow_id` with the workflow
+        file name. For example, you could use `main.yaml`.
+
+        Anyone with read access to the repository can use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
+
+        See also: https://docs.github.com/rest/actions/workflows#get-a-workflow
+        """
 
         from ..models import Workflow
 
@@ -9636,7 +12456,19 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Workflow, WorkflowType]:
-        """See also: https://docs.github.com/rest/actions/workflows#get-a-workflow"""
+        """actions/get-workflow
+
+        GET /repos/{owner}/{repo}/actions/workflows/{workflow_id}
+
+        Gets a specific workflow. You can replace `workflow_id` with the workflow
+        file name. For example, you could use `main.yaml`.
+
+        Anyone with read access to the repository can use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
+
+        See also: https://docs.github.com/rest/actions/workflows#get-a-workflow
+        """
 
         from ..models import Workflow
 
@@ -9659,7 +12491,16 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/workflows#disable-a-workflow"""
+        """actions/disable-workflow
+
+        PUT /repos/{owner}/{repo}/actions/workflows/{workflow_id}/disable
+
+        Disables a workflow and sets the `state` of the workflow to `disabled_manually`. You can replace `workflow_id` with the workflow file name. For example, you could use `main.yaml`.
+
+        OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/workflows#disable-a-workflow
+        """
 
         url = f"/repos/{owner}/{repo}/actions/workflows/{workflow_id}/disable"
 
@@ -9679,7 +12520,16 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/workflows#disable-a-workflow"""
+        """actions/disable-workflow
+
+        PUT /repos/{owner}/{repo}/actions/workflows/{workflow_id}/disable
+
+        Disables a workflow and sets the `state` of the workflow to `disabled_manually`. You can replace `workflow_id` with the workflow file name. For example, you could use `main.yaml`.
+
+        OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/workflows#disable-a-workflow
+        """
 
         url = f"/repos/{owner}/{repo}/actions/workflows/{workflow_id}/disable"
 
@@ -9729,7 +12579,18 @@ class ActionsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/workflows#create-a-workflow-dispatch-event"""
+        """actions/create-workflow-dispatch
+
+        POST /repos/{owner}/{repo}/actions/workflows/{workflow_id}/dispatches
+
+        You can use this endpoint to manually trigger a GitHub Actions workflow run. You can replace `workflow_id` with the workflow file name. For example, you could use `main.yaml`.
+
+        You must configure your GitHub Actions workflow to run when the [`workflow_dispatch` webhook](/developers/webhooks-and-events/webhook-events-and-payloads#workflow_dispatch) event occurs. The `inputs` are configured in the workflow file. For more information about how to configure the `workflow_dispatch` event in the workflow file, see "[Events that trigger workflows](/actions/reference/events-that-trigger-workflows#workflow_dispatch)."
+
+        OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/workflows#create-a-workflow-dispatch-event
+        """
 
         from ..models import ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody
 
@@ -9793,7 +12654,18 @@ class ActionsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/workflows#create-a-workflow-dispatch-event"""
+        """actions/create-workflow-dispatch
+
+        POST /repos/{owner}/{repo}/actions/workflows/{workflow_id}/dispatches
+
+        You can use this endpoint to manually trigger a GitHub Actions workflow run. You can replace `workflow_id` with the workflow file name. For example, you could use `main.yaml`.
+
+        You must configure your GitHub Actions workflow to run when the [`workflow_dispatch` webhook](/developers/webhooks-and-events/webhook-events-and-payloads#workflow_dispatch) event occurs. The `inputs` are configured in the workflow file. For more information about how to configure the `workflow_dispatch` event in the workflow file, see "[Events that trigger workflows](/actions/reference/events-that-trigger-workflows#workflow_dispatch)."
+
+        OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/workflows#create-a-workflow-dispatch-event
+        """
 
         from ..models import ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody
 
@@ -9827,7 +12699,16 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/workflows#enable-a-workflow"""
+        """actions/enable-workflow
+
+        PUT /repos/{owner}/{repo}/actions/workflows/{workflow_id}/enable
+
+        Enables a workflow and sets the `state` of the workflow to `active`. You can replace `workflow_id` with the workflow file name. For example, you could use `main.yaml`.
+
+        OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/workflows#enable-a-workflow
+        """
 
         url = f"/repos/{owner}/{repo}/actions/workflows/{workflow_id}/enable"
 
@@ -9847,7 +12728,16 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/workflows#enable-a-workflow"""
+        """actions/enable-workflow
+
+        PUT /repos/{owner}/{repo}/actions/workflows/{workflow_id}/enable
+
+        Enables a workflow and sets the `state` of the workflow to `active`. You can replace `workflow_id` with the workflow file name. For example, you could use `main.yaml`.
+
+        OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/workflows#enable-a-workflow
+        """
 
         url = f"/repos/{owner}/{repo}/actions/workflows/{workflow_id}/enable"
 
@@ -9897,7 +12787,20 @@ class ActionsClient:
         ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200,
         ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/actions/workflow-runs#list-workflow-runs-for-a-workflow"""
+        """actions/list-workflow-runs
+
+        GET /repos/{owner}/{repo}/actions/workflows/{workflow_id}/runs
+
+        List all workflow runs for a workflow. You can replace `workflow_id` with the workflow file name. For example, you could use `main.yaml`. You can use parameters to narrow the list of results. For more information about using parameters, see [Parameters](https://docs.github.com/rest/guides/getting-started-with-the-rest-api#parameters).
+
+        Anyone with read access to the repository can use this endpoint
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
+
+        This endpoint will return up to 1,000 results for each search when using the following parameters: `actor`, `branch`, `check_suite_id`, `created`, `event`, `head_sha`, `status`.
+
+        See also: https://docs.github.com/rest/actions/workflow-runs#list-workflow-runs-for-a-workflow
+        """
 
         from ..models import ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200
 
@@ -9964,7 +12867,20 @@ class ActionsClient:
         ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200,
         ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/actions/workflow-runs#list-workflow-runs-for-a-workflow"""
+        """actions/list-workflow-runs
+
+        GET /repos/{owner}/{repo}/actions/workflows/{workflow_id}/runs
+
+        List all workflow runs for a workflow. You can replace `workflow_id` with the workflow file name. For example, you could use `main.yaml`. You can use parameters to narrow the list of results. For more information about using parameters, see [Parameters](https://docs.github.com/rest/guides/getting-started-with-the-rest-api#parameters).
+
+        Anyone with read access to the repository can use this endpoint
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
+
+        This endpoint will return up to 1,000 results for each search when using the following parameters: `actor`, `branch`, `check_suite_id`, `created`, `event`, `head_sha`, `status`.
+
+        See also: https://docs.github.com/rest/actions/workflow-runs#list-workflow-runs-for-a-workflow
+        """
 
         from ..models import ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200
 
@@ -10001,7 +12917,23 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[WorkflowUsage, WorkflowUsageType]:
-        """See also: https://docs.github.com/rest/actions/workflows#get-workflow-usage"""
+        """actions/get-workflow-usage
+
+        GET /repos/{owner}/{repo}/actions/workflows/{workflow_id}/timing
+
+        > [!WARNING]
+        > This endpoint is in the process of closing down. Refer to "[Actions Get workflow usage and Get workflow run usage endpoints closing down](https://github.blog/changelog/2025-02-02-actions-get-workflow-usage-and-get-workflow-run-usage-endpoints-closing-down/)" for more information.
+
+        Gets the number of billable minutes used by a specific workflow during the current billing cycle. Billable minutes only apply to workflows in private repositories that use GitHub-hosted runners. Usage is listed for each GitHub-hosted runner operating system in milliseconds. Any job re-runs are also included in the usage. The usage does not include the multiplier for macOS and Windows runners and is not rounded up to the nearest whole minute. For more information, see "[Managing billing for GitHub Actions](https://docs.github.com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-actions)".
+
+        You can replace `workflow_id` with the workflow file name. For example, you could use `main.yaml`.
+
+        Anyone with read access to the repository can use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
+
+        See also: https://docs.github.com/rest/actions/workflows#get-workflow-usage
+        """
 
         from ..models import WorkflowUsage
 
@@ -10024,7 +12956,23 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[WorkflowUsage, WorkflowUsageType]:
-        """See also: https://docs.github.com/rest/actions/workflows#get-workflow-usage"""
+        """actions/get-workflow-usage
+
+        GET /repos/{owner}/{repo}/actions/workflows/{workflow_id}/timing
+
+        > [!WARNING]
+        > This endpoint is in the process of closing down. Refer to "[Actions Get workflow usage and Get workflow run usage endpoints closing down](https://github.blog/changelog/2025-02-02-actions-get-workflow-usage-and-get-workflow-run-usage-endpoints-closing-down/)" for more information.
+
+        Gets the number of billable minutes used by a specific workflow during the current billing cycle. Billable minutes only apply to workflows in private repositories that use GitHub-hosted runners. Usage is listed for each GitHub-hosted runner operating system in milliseconds. Any job re-runs are also included in the usage. The usage does not include the multiplier for macOS and Windows runners and is not rounded up to the nearest whole minute. For more information, see "[Managing billing for GitHub Actions](https://docs.github.com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-actions)".
+
+        You can replace `workflow_id` with the workflow file name. For example, you could use `main.yaml`.
+
+        Anyone with read access to the repository can use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
+
+        See also: https://docs.github.com/rest/actions/workflows#get-workflow-usage
+        """
 
         from ..models import WorkflowUsage
 
@@ -10052,7 +13000,19 @@ class ActionsClient:
         ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200,
         ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/actions/secrets#list-environment-secrets"""
+        """actions/list-environment-secrets
+
+        GET /repos/{owner}/{repo}/environments/{environment_name}/secrets
+
+        Lists all secrets available in an environment without revealing their
+        encrypted values.
+
+        Authenticated users must have collaborator access to a repository to create, update, or read secrets.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/secrets#list-environment-secrets
+        """
 
         from ..models import (
             ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200,
@@ -10088,7 +13048,19 @@ class ActionsClient:
         ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200,
         ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/actions/secrets#list-environment-secrets"""
+        """actions/list-environment-secrets
+
+        GET /repos/{owner}/{repo}/environments/{environment_name}/secrets
+
+        Lists all secrets available in an environment without revealing their
+        encrypted values.
+
+        Authenticated users must have collaborator access to a repository to create, update, or read secrets.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/secrets#list-environment-secrets
+        """
 
         from ..models import (
             ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200,
@@ -10119,7 +13091,19 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ActionsPublicKey, ActionsPublicKeyType]:
-        """See also: https://docs.github.com/rest/actions/secrets#get-an-environment-public-key"""
+        """actions/get-environment-public-key
+
+        GET /repos/{owner}/{repo}/environments/{environment_name}/secrets/public-key
+
+        Get the public key for an environment, which you need to encrypt environment
+        secrets. You need to encrypt a secret before you can create or update secrets.
+
+        Anyone with read access to the repository can use this endpoint.
+
+        If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/secrets#get-an-environment-public-key
+        """
 
         from ..models import ActionsPublicKey
 
@@ -10144,7 +13128,19 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ActionsPublicKey, ActionsPublicKeyType]:
-        """See also: https://docs.github.com/rest/actions/secrets#get-an-environment-public-key"""
+        """actions/get-environment-public-key
+
+        GET /repos/{owner}/{repo}/environments/{environment_name}/secrets/public-key
+
+        Get the public key for an environment, which you need to encrypt environment
+        secrets. You need to encrypt a secret before you can create or update secrets.
+
+        Anyone with read access to the repository can use this endpoint.
+
+        If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/secrets#get-an-environment-public-key
+        """
 
         from ..models import ActionsPublicKey
 
@@ -10170,7 +13166,18 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ActionsSecret, ActionsSecretType]:
-        """See also: https://docs.github.com/rest/actions/secrets#get-an-environment-secret"""
+        """actions/get-environment-secret
+
+        GET /repos/{owner}/{repo}/environments/{environment_name}/secrets/{secret_name}
+
+        Gets a single environment secret without revealing its encrypted value.
+
+        Authenticated users must have collaborator access to a repository to create, update, or read secrets.
+
+        OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/secrets#get-an-environment-secret
+        """
 
         from ..models import ActionsSecret
 
@@ -10194,7 +13201,18 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ActionsSecret, ActionsSecretType]:
-        """See also: https://docs.github.com/rest/actions/secrets#get-an-environment-secret"""
+        """actions/get-environment-secret
+
+        GET /repos/{owner}/{repo}/environments/{environment_name}/secrets/{secret_name}
+
+        Gets a single environment secret without revealing its encrypted value.
+
+        Authenticated users must have collaborator access to a repository to create, update, or read secrets.
+
+        OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/secrets#get-an-environment-secret
+        """
 
         from ..models import ActionsSecret
 
@@ -10248,7 +13266,19 @@ class ActionsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject, EmptyObjectType]:
-        """See also: https://docs.github.com/rest/actions/secrets#create-or-update-an-environment-secret"""
+        """actions/create-or-update-environment-secret
+
+        PUT /repos/{owner}/{repo}/environments/{environment_name}/secrets/{secret_name}
+
+        Creates or updates an environment secret with an encrypted value. Encrypt your secret using
+        [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). For more information, see "[Encrypting secrets for the REST API](https://docs.github.com/rest/guides/encrypting-secrets-for-the-rest-api)."
+
+        Authenticated users must have collaborator access to a repository to create, update, or read secrets.
+
+        OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/secrets#create-or-update-an-environment-secret
+        """
 
         from ..models import (
             EmptyObject,
@@ -10317,7 +13347,19 @@ class ActionsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject, EmptyObjectType]:
-        """See also: https://docs.github.com/rest/actions/secrets#create-or-update-an-environment-secret"""
+        """actions/create-or-update-environment-secret
+
+        PUT /repos/{owner}/{repo}/environments/{environment_name}/secrets/{secret_name}
+
+        Creates or updates an environment secret with an encrypted value. Encrypt your secret using
+        [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). For more information, see "[Encrypting secrets for the REST API](https://docs.github.com/rest/guides/encrypting-secrets-for-the-rest-api)."
+
+        Authenticated users must have collaborator access to a repository to create, update, or read secrets.
+
+        OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/secrets#create-or-update-an-environment-secret
+        """
 
         from ..models import (
             EmptyObject,
@@ -10356,7 +13398,18 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/secrets#delete-an-environment-secret"""
+        """actions/delete-environment-secret
+
+        DELETE /repos/{owner}/{repo}/environments/{environment_name}/secrets/{secret_name}
+
+        Deletes a secret in an environment using the secret name.
+
+        Authenticated users must have collaborator access to a repository to create, update, or read secrets.
+
+        OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/secrets#delete-an-environment-secret
+        """
 
         url = f"/repos/{owner}/{repo}/environments/{environment_name}/secrets/{secret_name}"
 
@@ -10377,7 +13430,18 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/secrets#delete-an-environment-secret"""
+        """actions/delete-environment-secret
+
+        DELETE /repos/{owner}/{repo}/environments/{environment_name}/secrets/{secret_name}
+
+        Deletes a secret in an environment using the secret name.
+
+        Authenticated users must have collaborator access to a repository to create, update, or read secrets.
+
+        OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/secrets#delete-an-environment-secret
+        """
 
         url = f"/repos/{owner}/{repo}/environments/{environment_name}/secrets/{secret_name}"
 
@@ -10402,7 +13466,18 @@ class ActionsClient:
         ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200,
         ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/actions/variables#list-environment-variables"""
+        """actions/list-environment-variables
+
+        GET /repos/{owner}/{repo}/environments/{environment_name}/variables
+
+        Lists all environment variables.
+
+        Authenticated users must have collaborator access to a repository to create, update, or read variables.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/variables#list-environment-variables
+        """
 
         from ..models import (
             ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200,
@@ -10438,7 +13513,18 @@ class ActionsClient:
         ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200,
         ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/actions/variables#list-environment-variables"""
+        """actions/list-environment-variables
+
+        GET /repos/{owner}/{repo}/environments/{environment_name}/variables
+
+        Lists all environment variables.
+
+        Authenticated users must have collaborator access to a repository to create, update, or read variables.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/variables#list-environment-variables
+        """
 
         from ..models import (
             ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200,
@@ -10497,7 +13583,18 @@ class ActionsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject, EmptyObjectType]:
-        """See also: https://docs.github.com/rest/actions/variables#create-an-environment-variable"""
+        """actions/create-environment-variable
+
+        POST /repos/{owner}/{repo}/environments/{environment_name}/variables
+
+        Create an environment variable that you can reference in a GitHub Actions workflow.
+
+        Authenticated users must have collaborator access to a repository to create, update, or read variables.
+
+        OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/variables#create-an-environment-variable
+        """
 
         from ..models import (
             EmptyObject,
@@ -10563,7 +13660,18 @@ class ActionsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject, EmptyObjectType]:
-        """See also: https://docs.github.com/rest/actions/variables#create-an-environment-variable"""
+        """actions/create-environment-variable
+
+        POST /repos/{owner}/{repo}/environments/{environment_name}/variables
+
+        Create an environment variable that you can reference in a GitHub Actions workflow.
+
+        Authenticated users must have collaborator access to a repository to create, update, or read variables.
+
+        OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/variables#create-an-environment-variable
+        """
 
         from ..models import (
             EmptyObject,
@@ -10602,7 +13710,18 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ActionsVariable, ActionsVariableType]:
-        """See also: https://docs.github.com/rest/actions/variables#get-an-environment-variable"""
+        """actions/get-environment-variable
+
+        GET /repos/{owner}/{repo}/environments/{environment_name}/variables/{name}
+
+        Gets a specific variable in an environment.
+
+        Authenticated users must have collaborator access to a repository to create, update, or read variables.
+
+        OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/variables#get-an-environment-variable
+        """
 
         from ..models import ActionsVariable
 
@@ -10626,7 +13745,18 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ActionsVariable, ActionsVariableType]:
-        """See also: https://docs.github.com/rest/actions/variables#get-an-environment-variable"""
+        """actions/get-environment-variable
+
+        GET /repos/{owner}/{repo}/environments/{environment_name}/variables/{name}
+
+        Gets a specific variable in an environment.
+
+        Authenticated users must have collaborator access to a repository to create, update, or read variables.
+
+        OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/variables#get-an-environment-variable
+        """
 
         from ..models import ActionsVariable
 
@@ -10650,7 +13780,18 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/variables#delete-an-environment-variable"""
+        """actions/delete-environment-variable
+
+        DELETE /repos/{owner}/{repo}/environments/{environment_name}/variables/{name}
+
+        Deletes an environment variable using the variable name.
+
+        Authenticated users must have collaborator access to a repository to create, update, or read variables.
+
+        OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/variables#delete-an-environment-variable
+        """
 
         url = f"/repos/{owner}/{repo}/environments/{environment_name}/variables/{name}"
 
@@ -10671,7 +13812,18 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/variables#delete-an-environment-variable"""
+        """actions/delete-environment-variable
+
+        DELETE /repos/{owner}/{repo}/environments/{environment_name}/variables/{name}
+
+        Deletes an environment variable using the variable name.
+
+        Authenticated users must have collaborator access to a repository to create, update, or read variables.
+
+        OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/variables#delete-an-environment-variable
+        """
 
         url = f"/repos/{owner}/{repo}/environments/{environment_name}/variables/{name}"
 
@@ -10721,7 +13873,18 @@ class ActionsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/variables#update-an-environment-variable"""
+        """actions/update-environment-variable
+
+        PATCH /repos/{owner}/{repo}/environments/{environment_name}/variables/{name}
+
+        Updates an environment variable that you can reference in a GitHub Actions workflow.
+
+        Authenticated users must have collaborator access to a repository to create, update, or read variables.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/variables#update-an-environment-variable
+        """
 
         from ..models import (
             ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBody,
@@ -10787,7 +13950,18 @@ class ActionsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response:
-        """See also: https://docs.github.com/rest/actions/variables#update-an-environment-variable"""
+        """actions/update-environment-variable
+
+        PATCH /repos/{owner}/{repo}/environments/{environment_name}/variables/{name}
+
+        Updates an environment variable that you can reference in a GitHub Actions workflow.
+
+        Authenticated users must have collaborator access to a repository to create, update, or read variables.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/variables#update-an-environment-variable
+        """
 
         from ..models import (
             ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBody,

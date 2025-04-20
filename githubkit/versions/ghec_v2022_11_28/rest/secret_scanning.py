@@ -89,7 +89,15 @@ class SecretScanningClient:
     ) -> Response[
         list[OrganizationSecretScanningAlert], list[OrganizationSecretScanningAlertType]
     ]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/secret-scanning#list-secret-scanning-alerts-for-an-enterprise"""
+        """secret-scanning/list-alerts-for-enterprise
+
+        GET /enterprises/{enterprise}/secret-scanning/alerts
+
+        Lists secret scanning alerts for eligible repositories in an enterprise, from newest to oldest.
+        To use this endpoint, you must be a member of the enterprise, and you must use an access token with the `repo` scope or `security_events` scope. Alerts are only returned for organizations in the enterprise for which you are an organization owner or a [security manager](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/managing-security-managers-in-your-organization), or for repositories owned by enterprise managed users.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/secret-scanning#list-secret-scanning-alerts-for-an-enterprise
+        """
 
         from ..models import (
             BasicError,
@@ -146,7 +154,15 @@ class SecretScanningClient:
     ) -> Response[
         list[OrganizationSecretScanningAlert], list[OrganizationSecretScanningAlertType]
     ]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/secret-scanning#list-secret-scanning-alerts-for-an-enterprise"""
+        """secret-scanning/list-alerts-for-enterprise
+
+        GET /enterprises/{enterprise}/secret-scanning/alerts
+
+        Lists secret scanning alerts for eligible repositories in an enterprise, from newest to oldest.
+        To use this endpoint, you must be a member of the enterprise, and you must use an access token with the `repo` scope or `security_events` scope. Alerts are only returned for organizations in the enterprise for which you are an organization owner or a [security manager](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/managing-security-managers-in-your-organization), or for repositories owned by enterprise managed users.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/secret-scanning#list-secret-scanning-alerts-for-an-enterprise
+        """
 
         from ..models import (
             BasicError,
@@ -210,7 +226,17 @@ class SecretScanningClient:
     ) -> Response[
         list[SecretScanningBypassRequest], list[SecretScanningBypassRequestType]
     ]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/delegated-bypass#list-bypass-requests-for-secret-scanning-for-an-org"""
+        """secret-scanning/list-org-bypass-requests
+
+        GET /orgs/{org}/bypass-requests/secret-scanning
+
+        List requests to bypass secret scanning push protection in an org.
+
+        Delegated bypass must be enabled on repositories in the org and the user must be a bypass reviewer to access this endpoint.
+        Personal access tokens (classic) need the `security_events` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/delegated-bypass#list-bypass-requests-for-secret-scanning-for-an-org
+        """
 
         from ..models import BasicError, SecretScanningBypassRequest
 
@@ -266,7 +292,17 @@ class SecretScanningClient:
     ) -> Response[
         list[SecretScanningBypassRequest], list[SecretScanningBypassRequestType]
     ]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/delegated-bypass#list-bypass-requests-for-secret-scanning-for-an-org"""
+        """secret-scanning/list-org-bypass-requests
+
+        GET /orgs/{org}/bypass-requests/secret-scanning
+
+        List requests to bypass secret scanning push protection in an org.
+
+        Delegated bypass must be enabled on repositories in the org and the user must be a bypass reviewer to access this endpoint.
+        Personal access tokens (classic) need the `security_events` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/delegated-bypass#list-bypass-requests-for-secret-scanning-for-an-org
+        """
 
         from ..models import BasicError, SecretScanningBypassRequest
 
@@ -315,7 +351,17 @@ class SecretScanningClient:
     ) -> Response[
         list[SecretScanningDismissalRequest], list[SecretScanningDismissalRequestType]
     ]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/alert-dismissal-requests#list-alert-dismissal-requests-for-secret-scanning-for-an-org"""
+        """secret-scanning/list-org-dismissal-requests
+
+        GET /orgs/{org}/dismissal-requests/secret-scanning
+
+        Lists requests to dismiss secret scanning alerts in an org.
+
+        Delegated alert dismissal must be enabled on repositories in the org and the user must be an org admin, security manager,
+        or have the "Review and manage secret scanning alert dismissal requests" permission to access this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/alert-dismissal-requests#list-alert-dismissal-requests-for-secret-scanning-for-an-org
+        """
 
         from ..models import BasicError, SecretScanningDismissalRequest
 
@@ -365,7 +411,17 @@ class SecretScanningClient:
     ) -> Response[
         list[SecretScanningDismissalRequest], list[SecretScanningDismissalRequestType]
     ]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/alert-dismissal-requests#list-alert-dismissal-requests-for-secret-scanning-for-an-org"""
+        """secret-scanning/list-org-dismissal-requests
+
+        GET /orgs/{org}/dismissal-requests/secret-scanning
+
+        Lists requests to dismiss secret scanning alerts in an org.
+
+        Delegated alert dismissal must be enabled on repositories in the org and the user must be an org admin, security manager,
+        or have the "Review and manage secret scanning alert dismissal requests" permission to access this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/alert-dismissal-requests#list-alert-dismissal-requests-for-secret-scanning-for-an-org
+        """
 
         from ..models import BasicError, SecretScanningDismissalRequest
 
@@ -416,7 +472,18 @@ class SecretScanningClient:
     ) -> Response[
         list[OrganizationSecretScanningAlert], list[OrganizationSecretScanningAlertType]
     ]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/secret-scanning#list-secret-scanning-alerts-for-an-organization"""
+        """secret-scanning/list-alerts-for-org
+
+        GET /orgs/{org}/secret-scanning/alerts
+
+        Lists secret scanning alerts for eligible repositories in an organization, from newest to oldest.
+
+        The authenticated user must be an administrator or security manager for the organization to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` or `security_events` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/secret-scanning#list-secret-scanning-alerts-for-an-organization
+        """
 
         from ..models import (
             BasicError,
@@ -475,7 +542,18 @@ class SecretScanningClient:
     ) -> Response[
         list[OrganizationSecretScanningAlert], list[OrganizationSecretScanningAlertType]
     ]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/secret-scanning#list-secret-scanning-alerts-for-an-organization"""
+        """secret-scanning/list-alerts-for-org
+
+        GET /orgs/{org}/secret-scanning/alerts
+
+        Lists secret scanning alerts for eligible repositories in an organization, from newest to oldest.
+
+        The authenticated user must be an administrator or security manager for the organization to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` or `security_events` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/secret-scanning#list-secret-scanning-alerts-for-an-organization
+        """
 
         from ..models import (
             BasicError,
@@ -540,7 +618,17 @@ class SecretScanningClient:
     ) -> Response[
         list[SecretScanningBypassRequest], list[SecretScanningBypassRequestType]
     ]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/delegated-bypass#list-bypass-requests-for-secret-scanning-for-a-repository"""
+        """secret-scanning/list-repo-bypass-requests
+
+        GET /repos/{owner}/{repo}/bypass-requests/secret-scanning
+
+        Lists requests to bypass secret scanning push protection in a repository.
+
+        Delegated bypass must be enabled on the repository and the user must be a bypass reviewer to access this endpoint.
+        Personal access tokens (classic) need the `security_events` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/delegated-bypass#list-bypass-requests-for-secret-scanning-for-a-repository
+        """
 
         from ..models import BasicError, SecretScanningBypassRequest
 
@@ -596,7 +684,17 @@ class SecretScanningClient:
     ) -> Response[
         list[SecretScanningBypassRequest], list[SecretScanningBypassRequestType]
     ]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/delegated-bypass#list-bypass-requests-for-secret-scanning-for-a-repository"""
+        """secret-scanning/list-repo-bypass-requests
+
+        GET /repos/{owner}/{repo}/bypass-requests/secret-scanning
+
+        Lists requests to bypass secret scanning push protection in a repository.
+
+        Delegated bypass must be enabled on the repository and the user must be a bypass reviewer to access this endpoint.
+        Personal access tokens (classic) need the `security_events` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/delegated-bypass#list-bypass-requests-for-secret-scanning-for-a-repository
+        """
 
         from ..models import BasicError, SecretScanningBypassRequest
 
@@ -634,7 +732,17 @@ class SecretScanningClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[SecretScanningBypassRequest, SecretScanningBypassRequestType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/delegated-bypass#get-a-bypass-request-for-secret-scanning"""
+        """secret-scanning/get-bypass-request
+
+        GET /repos/{owner}/{repo}/bypass-requests/secret-scanning/{bypass_request_number}
+
+        Gets a specific request to bypass secret scanning push protection in a repository.
+
+        Delegated bypass must be enabled on the repository and the user must be a bypass reviewer to access this endpoint.
+        Personal access tokens (classic) need the `security_events` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/delegated-bypass#get-a-bypass-request-for-secret-scanning
+        """
 
         from ..models import BasicError, SecretScanningBypassRequest
 
@@ -662,7 +770,17 @@ class SecretScanningClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[SecretScanningBypassRequest, SecretScanningBypassRequestType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/delegated-bypass#get-a-bypass-request-for-secret-scanning"""
+        """secret-scanning/get-bypass-request
+
+        GET /repos/{owner}/{repo}/bypass-requests/secret-scanning/{bypass_request_number}
+
+        Gets a specific request to bypass secret scanning push protection in a repository.
+
+        Delegated bypass must be enabled on the repository and the user must be a bypass reviewer to access this endpoint.
+        Personal access tokens (classic) need the `security_events` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/delegated-bypass#get-a-bypass-request-for-secret-scanning
+        """
 
         from ..models import BasicError, SecretScanningBypassRequest
 
@@ -727,7 +845,17 @@ class SecretScanningClient:
         ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200,
         ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200Type,
     ]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/delegated-bypass#review-a-bypass-request-for-secret-scanning"""
+        """secret-scanning/review-bypass-request
+
+        PATCH /repos/{owner}/{repo}/bypass-requests/secret-scanning/{bypass_request_number}
+
+        Approve or deny a request to bypass secret scanning push protection in a repository.
+
+        Delegated bypass must be enabled on the repository and the user must be a bypass reviewer to access this endpoint.
+        Personal access tokens (classic) need the `security_events` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/delegated-bypass#review-a-bypass-request-for-secret-scanning
+        """
 
         from ..models import (
             BasicError,
@@ -811,7 +939,17 @@ class SecretScanningClient:
         ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200,
         ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200Type,
     ]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/delegated-bypass#review-a-bypass-request-for-secret-scanning"""
+        """secret-scanning/review-bypass-request
+
+        PATCH /repos/{owner}/{repo}/bypass-requests/secret-scanning/{bypass_request_number}
+
+        Approve or deny a request to bypass secret scanning push protection in a repository.
+
+        Delegated bypass must be enabled on the repository and the user must be a bypass reviewer to access this endpoint.
+        Personal access tokens (classic) need the `security_events` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/delegated-bypass#review-a-bypass-request-for-secret-scanning
+        """
 
         from ..models import (
             BasicError,
@@ -858,7 +996,17 @@ class SecretScanningClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/delegated-bypass#dismiss-a-response-on-a-bypass-request-for-secret-scanning"""
+        """secret-scanning/dismiss-bypass-response
+
+        DELETE /repos/{owner}/{repo}/bypass-responses/secret-scanning/{bypass_response_id}
+
+        Dissmiss a response given to a bypass request for secret scanning push protection in a repository.
+
+        Delegated bypass must be enabled on the repository and the user must be a bypass reviewer to access this endpoint.
+        Personal access tokens (classic) need the `security_events` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/delegated-bypass#dismiss-a-response-on-a-bypass-request-for-secret-scanning
+        """
 
         from ..models import BasicError, ValidationError
 
@@ -886,7 +1034,17 @@ class SecretScanningClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/delegated-bypass#dismiss-a-response-on-a-bypass-request-for-secret-scanning"""
+        """secret-scanning/dismiss-bypass-response
+
+        DELETE /repos/{owner}/{repo}/bypass-responses/secret-scanning/{bypass_response_id}
+
+        Dissmiss a response given to a bypass request for secret scanning push protection in a repository.
+
+        Delegated bypass must be enabled on the repository and the user must be a bypass reviewer to access this endpoint.
+        Personal access tokens (classic) need the `security_events` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/delegated-bypass#dismiss-a-response-on-a-bypass-request-for-secret-scanning
+        """
 
         from ..models import BasicError, ValidationError
 
@@ -925,7 +1083,17 @@ class SecretScanningClient:
     ) -> Response[
         list[SecretScanningDismissalRequest], list[SecretScanningDismissalRequestType]
     ]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/alert-dismissal-requests#list-alert-dismissal-requests-for-secret-scanning-for-a-repository"""
+        """secret-scanning/list-repo-dismissal-requests
+
+        GET /repos/{owner}/{repo}/dismissal-requests/secret-scanning
+
+        Lists requests to dismiss secret scanning alerts in a repository.
+
+        Delegated alert dismissal must be enabled on the repository and the user must be an org admin, security manager,
+        or have the "Review and manage secret scanning alert dismissal requests" permission to access this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/alert-dismissal-requests#list-alert-dismissal-requests-for-secret-scanning-for-a-repository
+        """
 
         from ..models import BasicError, SecretScanningDismissalRequest
 
@@ -974,7 +1142,17 @@ class SecretScanningClient:
     ) -> Response[
         list[SecretScanningDismissalRequest], list[SecretScanningDismissalRequestType]
     ]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/alert-dismissal-requests#list-alert-dismissal-requests-for-secret-scanning-for-a-repository"""
+        """secret-scanning/list-repo-dismissal-requests
+
+        GET /repos/{owner}/{repo}/dismissal-requests/secret-scanning
+
+        Lists requests to dismiss secret scanning alerts in a repository.
+
+        Delegated alert dismissal must be enabled on the repository and the user must be an org admin, security manager,
+        or have the "Review and manage secret scanning alert dismissal requests" permission to access this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/alert-dismissal-requests#list-alert-dismissal-requests-for-secret-scanning-for-a-repository
+        """
 
         from ..models import BasicError, SecretScanningDismissalRequest
 
@@ -1012,7 +1190,18 @@ class SecretScanningClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[SecretScanningDismissalRequest, SecretScanningDismissalRequestType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/alert-dismissal-requests#get-an-alert-dismissal-request-for-secret-scanning"""
+        """secret-scanning/get-dismissal-request
+
+        GET /repos/{owner}/{repo}/dismissal-requests/secret-scanning/{alert_number}
+
+        Gets a specific request to dismiss a secret scanning alert in a repository.
+
+        Delegated alert dismissal must be enabled on the repository and the user must be an org admin, security manager,
+        or have the "Review and manage secret scanning alert dismissal requests" permission to access this endpoint.
+        Personal access tokens (classic) need the `security_events` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/alert-dismissal-requests#get-an-alert-dismissal-request-for-secret-scanning
+        """
 
         from ..models import BasicError, SecretScanningDismissalRequest
 
@@ -1040,7 +1229,18 @@ class SecretScanningClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[SecretScanningDismissalRequest, SecretScanningDismissalRequestType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/alert-dismissal-requests#get-an-alert-dismissal-request-for-secret-scanning"""
+        """secret-scanning/get-dismissal-request
+
+        GET /repos/{owner}/{repo}/dismissal-requests/secret-scanning/{alert_number}
+
+        Gets a specific request to dismiss a secret scanning alert in a repository.
+
+        Delegated alert dismissal must be enabled on the repository and the user must be an org admin, security manager,
+        or have the "Review and manage secret scanning alert dismissal requests" permission to access this endpoint.
+        Personal access tokens (classic) need the `security_events` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/alert-dismissal-requests#get-an-alert-dismissal-request-for-secret-scanning
+        """
 
         from ..models import BasicError, SecretScanningDismissalRequest
 
@@ -1105,7 +1305,18 @@ class SecretScanningClient:
         ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200,
         ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200Type,
     ]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/alert-dismissal-requests#review-an-alert-dismissal-request-for-secret-scanning"""
+        """secret-scanning/review-dismissal-request
+
+        PATCH /repos/{owner}/{repo}/dismissal-requests/secret-scanning/{alert_number}
+
+        Approve or deny a request to dismiss a secret scanning alert in a repository.
+
+        Delegated alert dismissal must be enabled on the repository and the user must be an org admin, security manager,
+        or have the "Review and manage secret scanning alert dismissal requests" permission to access this endpoint.
+        Personal access tokens (classic) need the `security_events` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/alert-dismissal-requests#review-an-alert-dismissal-request-for-secret-scanning
+        """
 
         from ..models import (
             BasicError,
@@ -1188,7 +1399,18 @@ class SecretScanningClient:
         ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200,
         ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200Type,
     ]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/alert-dismissal-requests#review-an-alert-dismissal-request-for-secret-scanning"""
+        """secret-scanning/review-dismissal-request
+
+        PATCH /repos/{owner}/{repo}/dismissal-requests/secret-scanning/{alert_number}
+
+        Approve or deny a request to dismiss a secret scanning alert in a repository.
+
+        Delegated alert dismissal must be enabled on the repository and the user must be an org admin, security manager,
+        or have the "Review and manage secret scanning alert dismissal requests" permission to access this endpoint.
+        Personal access tokens (classic) need the `security_events` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/alert-dismissal-requests#review-an-alert-dismissal-request-for-secret-scanning
+        """
 
         from ..models import (
             BasicError,
@@ -1245,7 +1467,18 @@ class SecretScanningClient:
         is_multi_repo: Missing[bool] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[SecretScanningAlert], list[SecretScanningAlertType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/secret-scanning#list-secret-scanning-alerts-for-a-repository"""
+        """secret-scanning/list-alerts-for-repo
+
+        GET /repos/{owner}/{repo}/secret-scanning/alerts
+
+        Lists secret scanning alerts for an eligible repository, from newest to oldest.
+
+        The authenticated user must be an administrator for the repository or for the organization that owns the repository to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` or `security_events` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/secret-scanning#list-secret-scanning-alerts-for-a-repository
+        """
 
         from ..models import (
             EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
@@ -1301,7 +1534,18 @@ class SecretScanningClient:
         is_multi_repo: Missing[bool] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[SecretScanningAlert], list[SecretScanningAlertType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/secret-scanning#list-secret-scanning-alerts-for-a-repository"""
+        """secret-scanning/list-alerts-for-repo
+
+        GET /repos/{owner}/{repo}/secret-scanning/alerts
+
+        Lists secret scanning alerts for an eligible repository, from newest to oldest.
+
+        The authenticated user must be an administrator for the repository or for the organization that owns the repository to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` or `security_events` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/secret-scanning#list-secret-scanning-alerts-for-a-repository
+        """
 
         from ..models import (
             EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
@@ -1346,7 +1590,18 @@ class SecretScanningClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[SecretScanningAlert, SecretScanningAlertType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/secret-scanning#get-a-secret-scanning-alert"""
+        """secret-scanning/get-alert
+
+        GET /repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}
+
+        Gets a single secret scanning alert detected in an eligible repository.
+
+        The authenticated user must be an administrator for the repository or for the organization that owns the repository to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` or `security_events` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/secret-scanning#get-a-secret-scanning-alert
+        """
 
         from ..models import (
             EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
@@ -1375,7 +1630,18 @@ class SecretScanningClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[SecretScanningAlert, SecretScanningAlertType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/secret-scanning#get-a-secret-scanning-alert"""
+        """secret-scanning/get-alert
+
+        GET /repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}
+
+        Gets a single secret scanning alert detected in an eligible repository.
+
+        The authenticated user must be an administrator for the repository or for the organization that owns the repository to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` or `security_events` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/secret-scanning#get-a-secret-scanning-alert
+        """
 
         from ..models import (
             EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
@@ -1437,7 +1703,18 @@ class SecretScanningClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[SecretScanningAlert, SecretScanningAlertType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/secret-scanning#update-a-secret-scanning-alert"""
+        """secret-scanning/update-alert
+
+        PATCH /repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}
+
+        Updates the status of a secret scanning alert in an eligible repository.
+
+        The authenticated user must be an administrator for the repository or for the organization that owns the repository to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` or `security_events` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/secret-scanning#update-a-secret-scanning-alert
+        """
 
         from ..models import (
             EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
@@ -1512,7 +1789,18 @@ class SecretScanningClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[SecretScanningAlert, SecretScanningAlertType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/secret-scanning#update-a-secret-scanning-alert"""
+        """secret-scanning/update-alert
+
+        PATCH /repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}
+
+        Updates the status of a secret scanning alert in an eligible repository.
+
+        The authenticated user must be an administrator for the repository or for the organization that owns the repository to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` or `security_events` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/secret-scanning#update-a-secret-scanning-alert
+        """
 
         from ..models import (
             EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
@@ -1556,7 +1844,18 @@ class SecretScanningClient:
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[SecretScanningLocation], list[SecretScanningLocationType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/secret-scanning#list-locations-for-a-secret-scanning-alert"""
+        """secret-scanning/list-locations-for-alert
+
+        GET /repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}/locations
+
+        Lists all locations for a given secret scanning alert for an eligible repository.
+
+        The authenticated user must be an administrator for the repository or for the organization that owns the repository to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` or `security_events` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/secret-scanning#list-locations-for-a-secret-scanning-alert
+        """
 
         from ..models import (
             EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
@@ -1593,7 +1892,18 @@ class SecretScanningClient:
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[SecretScanningLocation], list[SecretScanningLocationType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/secret-scanning#list-locations-for-a-secret-scanning-alert"""
+        """secret-scanning/list-locations-for-alert
+
+        GET /repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}/locations
+
+        Lists all locations for a given secret scanning alert for an eligible repository.
+
+        The authenticated user must be an administrator for the repository or for the organization that owns the repository to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` or `security_events` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/secret-scanning#list-locations-for-a-secret-scanning-alert
+        """
 
         from ..models import (
             EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
@@ -1659,7 +1969,18 @@ class SecretScanningClient:
     ) -> Response[
         SecretScanningPushProtectionBypass, SecretScanningPushProtectionBypassType
     ]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/secret-scanning#create-a-push-protection-bypass"""
+        """secret-scanning/create-push-protection-bypass
+
+        POST /repos/{owner}/{repo}/secret-scanning/push-protection-bypasses
+
+        Creates a bypass for a previously push protected secret.
+
+        The authenticated user must be the original author of the committed secret.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/secret-scanning#create-a-push-protection-bypass
+        """
 
         from ..models import (
             EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
@@ -1732,7 +2053,18 @@ class SecretScanningClient:
     ) -> Response[
         SecretScanningPushProtectionBypass, SecretScanningPushProtectionBypassType
     ]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/secret-scanning#create-a-push-protection-bypass"""
+        """secret-scanning/create-push-protection-bypass
+
+        POST /repos/{owner}/{repo}/secret-scanning/push-protection-bypasses
+
+        Creates a bypass for a previously push protected secret.
+
+        The authenticated user must be the original author of the committed secret.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/secret-scanning#create-a-push-protection-bypass
+        """
 
         from ..models import (
             EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
@@ -1773,7 +2105,16 @@ class SecretScanningClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[SecretScanningScanHistory, SecretScanningScanHistoryType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/secret-scanning#get-secret-scanning-scan-history-for-a-repository"""
+        """secret-scanning/get-scan-history
+
+        GET /repos/{owner}/{repo}/secret-scanning/scan-history
+
+        Lists the latest default incremental and backfill scans by type for a repository. Scans from Copilot Secret Scanning are not included.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` or `security_events` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/secret-scanning#get-secret-scanning-scan-history-for-a-repository
+        """
 
         from ..models import (
             EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
@@ -1801,7 +2142,16 @@ class SecretScanningClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[SecretScanningScanHistory, SecretScanningScanHistoryType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/secret-scanning#get-secret-scanning-scan-history-for-a-repository"""
+        """secret-scanning/get-scan-history
+
+        GET /repos/{owner}/{repo}/secret-scanning/scan-history
+
+        Lists the latest default incremental and backfill scans by type for a repository. Scans from Copilot Secret Scanning are not included.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` or `security_events` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/secret-scanning#get-secret-scanning-scan-history-for-a-repository
+        """
 
         from ..models import (
             EnterprisesEnterpriseCodeScanningAlertsGetResponse503,

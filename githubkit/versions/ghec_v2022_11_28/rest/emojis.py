@@ -43,7 +43,14 @@ class EmojisClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[EmojisGetResponse200, EmojisGetResponse200Type]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/emojis/emojis#get-emojis"""
+        """emojis/get
+
+        GET /emojis
+
+        Lists all the emojis available to use on GitHub Enterprise Cloud.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/emojis/emojis#get-emojis
+        """
 
         from ..models import EmojisGetResponse200
 
@@ -63,7 +70,14 @@ class EmojisClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[EmojisGetResponse200, EmojisGetResponse200Type]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/emojis/emojis#get-emojis"""
+        """emojis/get
+
+        GET /emojis
+
+        Lists all the emojis available to use on GitHub Enterprise Cloud.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/emojis/emojis#get-emojis
+        """
 
         from ..models import EmojisGetResponse200
 

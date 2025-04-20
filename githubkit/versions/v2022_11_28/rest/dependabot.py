@@ -91,7 +91,20 @@ class DependabotClient:
     ) -> Response[
         list[DependabotAlertWithRepository], list[DependabotAlertWithRepositoryType]
     ]:
-        """See also: https://docs.github.com/rest/dependabot/alerts#list-dependabot-alerts-for-an-enterprise"""
+        """dependabot/list-alerts-for-enterprise
+
+        GET /enterprises/{enterprise}/dependabot/alerts
+
+        Lists Dependabot alerts for repositories that are owned by the specified enterprise.
+
+        The authenticated user must be a member of the enterprise to use this endpoint.
+
+        Alerts are only returned for organizations in the enterprise for which you are an organization owner or a security manager. For more information about security managers, see "[Managing security managers in your organization](https://docs.github.com/organizations/managing-peoples-access-to-your-organization-with-roles/managing-security-managers-in-your-organization)."
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` or `security_events` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/dependabot/alerts#list-dependabot-alerts-for-an-enterprise
+        """
 
         from ..models import (
             BasicError,
@@ -153,7 +166,20 @@ class DependabotClient:
     ) -> Response[
         list[DependabotAlertWithRepository], list[DependabotAlertWithRepositoryType]
     ]:
-        """See also: https://docs.github.com/rest/dependabot/alerts#list-dependabot-alerts-for-an-enterprise"""
+        """dependabot/list-alerts-for-enterprise
+
+        GET /enterprises/{enterprise}/dependabot/alerts
+
+        Lists Dependabot alerts for repositories that are owned by the specified enterprise.
+
+        The authenticated user must be a member of the enterprise to use this endpoint.
+
+        Alerts are only returned for organizations in the enterprise for which you are an organization owner or a security manager. For more information about security managers, see "[Managing security managers in your organization](https://docs.github.com/organizations/managing-peoples-access-to-your-organization-with-roles/managing-security-managers-in-your-organization)."
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` or `security_events` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/dependabot/alerts#list-dependabot-alerts-for-an-enterprise
+        """
 
         from ..models import (
             BasicError,
@@ -215,7 +241,18 @@ class DependabotClient:
     ) -> Response[
         list[DependabotAlertWithRepository], list[DependabotAlertWithRepositoryType]
     ]:
-        """See also: https://docs.github.com/rest/dependabot/alerts#list-dependabot-alerts-for-an-organization"""
+        """dependabot/list-alerts-for-org
+
+        GET /orgs/{org}/dependabot/alerts
+
+        Lists Dependabot alerts for an organization.
+
+        The authenticated user must be an owner or security manager for the organization to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
+
+        See also: https://docs.github.com/rest/dependabot/alerts#list-dependabot-alerts-for-an-organization
+        """
 
         from ..models import (
             BasicError,
@@ -278,7 +315,18 @@ class DependabotClient:
     ) -> Response[
         list[DependabotAlertWithRepository], list[DependabotAlertWithRepositoryType]
     ]:
-        """See also: https://docs.github.com/rest/dependabot/alerts#list-dependabot-alerts-for-an-organization"""
+        """dependabot/list-alerts-for-org
+
+        GET /orgs/{org}/dependabot/alerts
+
+        Lists Dependabot alerts for an organization.
+
+        The authenticated user must be an owner or security manager for the organization to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
+
+        See also: https://docs.github.com/rest/dependabot/alerts#list-dependabot-alerts-for-an-organization
+        """
 
         from ..models import (
             BasicError,
@@ -331,7 +379,17 @@ class DependabotClient:
         OrgsOrgDependabotSecretsGetResponse200,
         OrgsOrgDependabotSecretsGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/dependabot/secrets#list-organization-secrets"""
+        """dependabot/list-org-secrets
+
+        GET /orgs/{org}/dependabot/secrets
+
+        Lists all secrets available in an organization without revealing their
+        encrypted values.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/dependabot/secrets#list-organization-secrets
+        """
 
         from ..models import OrgsOrgDependabotSecretsGetResponse200
 
@@ -363,7 +421,17 @@ class DependabotClient:
         OrgsOrgDependabotSecretsGetResponse200,
         OrgsOrgDependabotSecretsGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/dependabot/secrets#list-organization-secrets"""
+        """dependabot/list-org-secrets
+
+        GET /orgs/{org}/dependabot/secrets
+
+        Lists all secrets available in an organization without revealing their
+        encrypted values.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/dependabot/secrets#list-organization-secrets
+        """
 
         from ..models import OrgsOrgDependabotSecretsGetResponse200
 
@@ -390,7 +458,17 @@ class DependabotClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[DependabotPublicKey, DependabotPublicKeyType]:
-        """See also: https://docs.github.com/rest/dependabot/secrets#get-an-organization-public-key"""
+        """dependabot/get-org-public-key
+
+        GET /orgs/{org}/dependabot/secrets/public-key
+
+        Gets your public key, which you need to encrypt secrets. You need to
+        encrypt a secret before you can create or update secrets.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/dependabot/secrets#get-an-organization-public-key
+        """
 
         from ..models import DependabotPublicKey
 
@@ -411,7 +489,17 @@ class DependabotClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[DependabotPublicKey, DependabotPublicKeyType]:
-        """See also: https://docs.github.com/rest/dependabot/secrets#get-an-organization-public-key"""
+        """dependabot/get-org-public-key
+
+        GET /orgs/{org}/dependabot/secrets/public-key
+
+        Gets your public key, which you need to encrypt secrets. You need to
+        encrypt a secret before you can create or update secrets.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/dependabot/secrets#get-an-organization-public-key
+        """
 
         from ..models import DependabotPublicKey
 
@@ -433,7 +521,16 @@ class DependabotClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[OrganizationDependabotSecret, OrganizationDependabotSecretType]:
-        """See also: https://docs.github.com/rest/dependabot/secrets#get-an-organization-secret"""
+        """dependabot/get-org-secret
+
+        GET /orgs/{org}/dependabot/secrets/{secret_name}
+
+        Gets a single organization secret without revealing its encrypted value.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/dependabot/secrets#get-an-organization-secret
+        """
 
         from ..models import OrganizationDependabotSecret
 
@@ -455,7 +552,16 @@ class DependabotClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[OrganizationDependabotSecret, OrganizationDependabotSecretType]:
-        """See also: https://docs.github.com/rest/dependabot/secrets#get-an-organization-secret"""
+        """dependabot/get-org-secret
+
+        GET /orgs/{org}/dependabot/secrets/{secret_name}
+
+        Gets a single organization secret without revealing its encrypted value.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/dependabot/secrets#get-an-organization-secret
+        """
 
         from ..models import OrganizationDependabotSecret
 
@@ -503,7 +609,17 @@ class DependabotClient:
         data: Missing[OrgsOrgDependabotSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject, EmptyObjectType]:
-        """See also: https://docs.github.com/rest/dependabot/secrets#create-or-update-an-organization-secret"""
+        """dependabot/create-or-update-org-secret
+
+        PUT /orgs/{org}/dependabot/secrets/{secret_name}
+
+        Creates or updates an organization secret with an encrypted value. Encrypt your secret using
+        [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). For more information, see "[Encrypting secrets for the REST API](https://docs.github.com/rest/guides/encrypting-secrets-for-the-rest-api)."
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/dependabot/secrets#create-or-update-an-organization-secret
+        """
 
         from ..models import EmptyObject, OrgsOrgDependabotSecretsSecretNamePutBody
 
@@ -561,7 +677,17 @@ class DependabotClient:
         data: Missing[OrgsOrgDependabotSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject, EmptyObjectType]:
-        """See also: https://docs.github.com/rest/dependabot/secrets#create-or-update-an-organization-secret"""
+        """dependabot/create-or-update-org-secret
+
+        PUT /orgs/{org}/dependabot/secrets/{secret_name}
+
+        Creates or updates an organization secret with an encrypted value. Encrypt your secret using
+        [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). For more information, see "[Encrypting secrets for the REST API](https://docs.github.com/rest/guides/encrypting-secrets-for-the-rest-api)."
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/dependabot/secrets#create-or-update-an-organization-secret
+        """
 
         from ..models import EmptyObject, OrgsOrgDependabotSecretsSecretNamePutBody
 
@@ -593,7 +719,16 @@ class DependabotClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/dependabot/secrets#delete-an-organization-secret"""
+        """dependabot/delete-org-secret
+
+        DELETE /orgs/{org}/dependabot/secrets/{secret_name}
+
+        Deletes a secret in an organization using the secret name.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/dependabot/secrets#delete-an-organization-secret
+        """
 
         url = f"/orgs/{org}/dependabot/secrets/{secret_name}"
 
@@ -612,7 +747,16 @@ class DependabotClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/dependabot/secrets#delete-an-organization-secret"""
+        """dependabot/delete-org-secret
+
+        DELETE /orgs/{org}/dependabot/secrets/{secret_name}
+
+        Deletes a secret in an organization using the secret name.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/dependabot/secrets#delete-an-organization-secret
+        """
 
         url = f"/orgs/{org}/dependabot/secrets/{secret_name}"
 
@@ -636,7 +780,17 @@ class DependabotClient:
         OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200,
         OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/dependabot/secrets#list-selected-repositories-for-an-organization-secret"""
+        """dependabot/list-selected-repos-for-org-secret
+
+        GET /orgs/{org}/dependabot/secrets/{secret_name}/repositories
+
+        Lists all repositories that have been selected when the `visibility`
+        for repository access to a secret is set to `selected`.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/dependabot/secrets#list-selected-repositories-for-an-organization-secret
+        """
 
         from ..models import (
             OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200,
@@ -671,7 +825,17 @@ class DependabotClient:
         OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200,
         OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/dependabot/secrets#list-selected-repositories-for-an-organization-secret"""
+        """dependabot/list-selected-repos-for-org-secret
+
+        GET /orgs/{org}/dependabot/secrets/{secret_name}/repositories
+
+        Lists all repositories that have been selected when the `visibility`
+        for repository access to a secret is set to `selected`.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/dependabot/secrets#list-selected-repositories-for-an-organization-secret
+        """
 
         from ..models import (
             OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200,
@@ -726,7 +890,18 @@ class DependabotClient:
         ] = UNSET,
         **kwargs,
     ) -> Response:
-        """See also: https://docs.github.com/rest/dependabot/secrets#set-selected-repositories-for-an-organization-secret"""
+        """dependabot/set-selected-repos-for-org-secret
+
+        PUT /orgs/{org}/dependabot/secrets/{secret_name}/repositories
+
+        Replaces all repositories for an organization secret when the `visibility`
+        for repository access is set to `selected`. The visibility is set when you [Create
+        or update an organization secret](https://docs.github.com/rest/dependabot/secrets#create-or-update-an-organization-secret).
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/dependabot/secrets#set-selected-repositories-for-an-organization-secret
+        """
 
         from ..models import OrgsOrgDependabotSecretsSecretNameRepositoriesPutBody
 
@@ -784,7 +959,18 @@ class DependabotClient:
         ] = UNSET,
         **kwargs,
     ) -> Response:
-        """See also: https://docs.github.com/rest/dependabot/secrets#set-selected-repositories-for-an-organization-secret"""
+        """dependabot/set-selected-repos-for-org-secret
+
+        PUT /orgs/{org}/dependabot/secrets/{secret_name}/repositories
+
+        Replaces all repositories for an organization secret when the `visibility`
+        for repository access is set to `selected`. The visibility is set when you [Create
+        or update an organization secret](https://docs.github.com/rest/dependabot/secrets#create-or-update-an-organization-secret).
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/dependabot/secrets#set-selected-repositories-for-an-organization-secret
+        """
 
         from ..models import OrgsOrgDependabotSecretsSecretNameRepositoriesPutBody
 
@@ -818,7 +1004,18 @@ class DependabotClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/dependabot/secrets#add-selected-repository-to-an-organization-secret"""
+        """dependabot/add-selected-repo-to-org-secret
+
+        PUT /orgs/{org}/dependabot/secrets/{secret_name}/repositories/{repository_id}
+
+        Adds a repository to an organization secret when the `visibility` for
+        repository access is set to `selected`. The visibility is set when you [Create or
+        update an organization secret](https://docs.github.com/rest/dependabot/secrets#create-or-update-an-organization-secret).
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/dependabot/secrets#add-selected-repository-to-an-organization-secret
+        """
 
         url = (
             f"/orgs/{org}/dependabot/secrets/{secret_name}/repositories/{repository_id}"
@@ -841,7 +1038,18 @@ class DependabotClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/dependabot/secrets#add-selected-repository-to-an-organization-secret"""
+        """dependabot/add-selected-repo-to-org-secret
+
+        PUT /orgs/{org}/dependabot/secrets/{secret_name}/repositories/{repository_id}
+
+        Adds a repository to an organization secret when the `visibility` for
+        repository access is set to `selected`. The visibility is set when you [Create or
+        update an organization secret](https://docs.github.com/rest/dependabot/secrets#create-or-update-an-organization-secret).
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/dependabot/secrets#add-selected-repository-to-an-organization-secret
+        """
 
         url = (
             f"/orgs/{org}/dependabot/secrets/{secret_name}/repositories/{repository_id}"
@@ -864,7 +1072,18 @@ class DependabotClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/dependabot/secrets#remove-selected-repository-from-an-organization-secret"""
+        """dependabot/remove-selected-repo-from-org-secret
+
+        DELETE /orgs/{org}/dependabot/secrets/{secret_name}/repositories/{repository_id}
+
+        Removes a repository from an organization secret when the `visibility`
+        for repository access is set to `selected`. The visibility is set when you [Create
+        or update an organization secret](https://docs.github.com/rest/dependabot/secrets#create-or-update-an-organization-secret).
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/dependabot/secrets#remove-selected-repository-from-an-organization-secret
+        """
 
         url = (
             f"/orgs/{org}/dependabot/secrets/{secret_name}/repositories/{repository_id}"
@@ -887,7 +1106,18 @@ class DependabotClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/dependabot/secrets#remove-selected-repository-from-an-organization-secret"""
+        """dependabot/remove-selected-repo-from-org-secret
+
+        DELETE /orgs/{org}/dependabot/secrets/{secret_name}/repositories/{repository_id}
+
+        Removes a repository from an organization secret when the `visibility`
+        for repository access is set to `selected`. The visibility is set when you [Create
+        or update an organization secret](https://docs.github.com/rest/dependabot/secrets#create-or-update-an-organization-secret).
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/dependabot/secrets#remove-selected-repository-from-an-organization-secret
+        """
 
         url = (
             f"/orgs/{org}/dependabot/secrets/{secret_name}/repositories/{repository_id}"
@@ -924,7 +1154,14 @@ class DependabotClient:
         last: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[DependabotAlert], list[DependabotAlertType]]:
-        """See also: https://docs.github.com/rest/dependabot/alerts#list-dependabot-alerts-for-a-repository"""
+        """dependabot/list-alerts-for-repo
+
+        GET /repos/{owner}/{repo}/dependabot/alerts
+
+        OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
+
+        See also: https://docs.github.com/rest/dependabot/alerts#list-dependabot-alerts-for-a-repository
+        """
 
         from ..models import BasicError, DependabotAlert, ValidationErrorSimple
 
@@ -986,7 +1223,14 @@ class DependabotClient:
         last: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[DependabotAlert], list[DependabotAlertType]]:
-        """See also: https://docs.github.com/rest/dependabot/alerts#list-dependabot-alerts-for-a-repository"""
+        """dependabot/list-alerts-for-repo
+
+        GET /repos/{owner}/{repo}/dependabot/alerts
+
+        OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
+
+        See also: https://docs.github.com/rest/dependabot/alerts#list-dependabot-alerts-for-a-repository
+        """
 
         from ..models import BasicError, DependabotAlert, ValidationErrorSimple
 
@@ -1034,7 +1278,14 @@ class DependabotClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[DependabotAlert, DependabotAlertType]:
-        """See also: https://docs.github.com/rest/dependabot/alerts#get-a-dependabot-alert"""
+        """dependabot/get-alert
+
+        GET /repos/{owner}/{repo}/dependabot/alerts/{alert_number}
+
+        OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
+
+        See also: https://docs.github.com/rest/dependabot/alerts#get-a-dependabot-alert
+        """
 
         from ..models import BasicError, DependabotAlert
 
@@ -1061,7 +1312,14 @@ class DependabotClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[DependabotAlert, DependabotAlertType]:
-        """See also: https://docs.github.com/rest/dependabot/alerts#get-a-dependabot-alert"""
+        """dependabot/get-alert
+
+        GET /repos/{owner}/{repo}/dependabot/alerts/{alert_number}
+
+        OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
+
+        See also: https://docs.github.com/rest/dependabot/alerts#get-a-dependabot-alert
+        """
 
         from ..models import BasicError, DependabotAlert
 
@@ -1123,7 +1381,16 @@ class DependabotClient:
         data: Missing[ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[DependabotAlert, DependabotAlertType]:
-        """See also: https://docs.github.com/rest/dependabot/alerts#update-a-dependabot-alert"""
+        """dependabot/update-alert
+
+        PATCH /repos/{owner}/{repo}/dependabot/alerts/{alert_number}
+
+        The authenticated user must have access to security alerts for the repository to use this endpoint. For more information, see "[Granting access to security alerts](https://docs.github.com/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-security-and-analysis-settings-for-your-repository#granting-access-to-security-alerts)."
+
+        OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
+
+        See also: https://docs.github.com/rest/dependabot/alerts#update-a-dependabot-alert
+        """
 
         from ..models import (
             BasicError,
@@ -1205,7 +1472,16 @@ class DependabotClient:
         data: Missing[ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[DependabotAlert, DependabotAlertType]:
-        """See also: https://docs.github.com/rest/dependabot/alerts#update-a-dependabot-alert"""
+        """dependabot/update-alert
+
+        PATCH /repos/{owner}/{repo}/dependabot/alerts/{alert_number}
+
+        The authenticated user must have access to security alerts for the repository to use this endpoint. For more information, see "[Granting access to security alerts](https://docs.github.com/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-security-and-analysis-settings-for-your-repository#granting-access-to-security-alerts)."
+
+        OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
+
+        See also: https://docs.github.com/rest/dependabot/alerts#update-a-dependabot-alert
+        """
 
         from ..models import (
             BasicError,
@@ -1256,7 +1532,17 @@ class DependabotClient:
         ReposOwnerRepoDependabotSecretsGetResponse200,
         ReposOwnerRepoDependabotSecretsGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/dependabot/secrets#list-repository-secrets"""
+        """dependabot/list-repo-secrets
+
+        GET /repos/{owner}/{repo}/dependabot/secrets
+
+        Lists all secrets available in a repository without revealing their encrypted
+        values.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/dependabot/secrets#list-repository-secrets
+        """
 
         from ..models import ReposOwnerRepoDependabotSecretsGetResponse200
 
@@ -1289,7 +1575,17 @@ class DependabotClient:
         ReposOwnerRepoDependabotSecretsGetResponse200,
         ReposOwnerRepoDependabotSecretsGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/dependabot/secrets#list-repository-secrets"""
+        """dependabot/list-repo-secrets
+
+        GET /repos/{owner}/{repo}/dependabot/secrets
+
+        Lists all secrets available in a repository without revealing their encrypted
+        values.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/dependabot/secrets#list-repository-secrets
+        """
 
         from ..models import ReposOwnerRepoDependabotSecretsGetResponse200
 
@@ -1317,7 +1613,18 @@ class DependabotClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[DependabotPublicKey, DependabotPublicKeyType]:
-        """See also: https://docs.github.com/rest/dependabot/secrets#get-a-repository-public-key"""
+        """dependabot/get-repo-public-key
+
+        GET /repos/{owner}/{repo}/dependabot/secrets/public-key
+
+        Gets your public key, which you need to encrypt secrets. You need to
+        encrypt a secret before you can create or update secrets. Anyone with read access
+        to the repository can use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint if the repository is private.
+
+        See also: https://docs.github.com/rest/dependabot/secrets#get-a-repository-public-key
+        """
 
         from ..models import DependabotPublicKey
 
@@ -1339,7 +1646,18 @@ class DependabotClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[DependabotPublicKey, DependabotPublicKeyType]:
-        """See also: https://docs.github.com/rest/dependabot/secrets#get-a-repository-public-key"""
+        """dependabot/get-repo-public-key
+
+        GET /repos/{owner}/{repo}/dependabot/secrets/public-key
+
+        Gets your public key, which you need to encrypt secrets. You need to
+        encrypt a secret before you can create or update secrets. Anyone with read access
+        to the repository can use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint if the repository is private.
+
+        See also: https://docs.github.com/rest/dependabot/secrets#get-a-repository-public-key
+        """
 
         from ..models import DependabotPublicKey
 
@@ -1362,7 +1680,16 @@ class DependabotClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[DependabotSecret, DependabotSecretType]:
-        """See also: https://docs.github.com/rest/dependabot/secrets#get-a-repository-secret"""
+        """dependabot/get-repo-secret
+
+        GET /repos/{owner}/{repo}/dependabot/secrets/{secret_name}
+
+        Gets a single repository secret without revealing its encrypted value.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/dependabot/secrets#get-a-repository-secret
+        """
 
         from ..models import DependabotSecret
 
@@ -1385,7 +1712,16 @@ class DependabotClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[DependabotSecret, DependabotSecretType]:
-        """See also: https://docs.github.com/rest/dependabot/secrets#get-a-repository-secret"""
+        """dependabot/get-repo-secret
+
+        GET /repos/{owner}/{repo}/dependabot/secrets/{secret_name}
+
+        Gets a single repository secret without revealing its encrypted value.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/dependabot/secrets#get-a-repository-secret
+        """
 
         from ..models import DependabotSecret
 
@@ -1434,7 +1770,17 @@ class DependabotClient:
         data: Missing[ReposOwnerRepoDependabotSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject, EmptyObjectType]:
-        """See also: https://docs.github.com/rest/dependabot/secrets#create-or-update-a-repository-secret"""
+        """dependabot/create-or-update-repo-secret
+
+        PUT /repos/{owner}/{repo}/dependabot/secrets/{secret_name}
+
+        Creates or updates a repository secret with an encrypted value. Encrypt your secret using
+        [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). For more information, see "[Encrypting secrets for the REST API](https://docs.github.com/rest/guides/encrypting-secrets-for-the-rest-api)."
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/dependabot/secrets#create-or-update-a-repository-secret
+        """
 
         from ..models import (
             EmptyObject,
@@ -1498,7 +1844,17 @@ class DependabotClient:
         data: Missing[ReposOwnerRepoDependabotSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject, EmptyObjectType]:
-        """See also: https://docs.github.com/rest/dependabot/secrets#create-or-update-a-repository-secret"""
+        """dependabot/create-or-update-repo-secret
+
+        PUT /repos/{owner}/{repo}/dependabot/secrets/{secret_name}
+
+        Creates or updates a repository secret with an encrypted value. Encrypt your secret using
+        [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). For more information, see "[Encrypting secrets for the REST API](https://docs.github.com/rest/guides/encrypting-secrets-for-the-rest-api)."
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/dependabot/secrets#create-or-update-a-repository-secret
+        """
 
         from ..models import (
             EmptyObject,
@@ -1536,7 +1892,16 @@ class DependabotClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/dependabot/secrets#delete-a-repository-secret"""
+        """dependabot/delete-repo-secret
+
+        DELETE /repos/{owner}/{repo}/dependabot/secrets/{secret_name}
+
+        Deletes a secret in a repository using the secret name.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/dependabot/secrets#delete-a-repository-secret
+        """
 
         url = f"/repos/{owner}/{repo}/dependabot/secrets/{secret_name}"
 
@@ -1556,7 +1921,16 @@ class DependabotClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/dependabot/secrets#delete-a-repository-secret"""
+        """dependabot/delete-repo-secret
+
+        DELETE /repos/{owner}/{repo}/dependabot/secrets/{secret_name}
+
+        Deletes a secret in a repository using the secret name.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/dependabot/secrets#delete-a-repository-secret
+        """
 
         url = f"/repos/{owner}/{repo}/dependabot/secrets/{secret_name}"
 

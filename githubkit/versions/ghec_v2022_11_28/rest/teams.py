@@ -105,7 +105,16 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ExternalGroup, ExternalGroupType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/external-groups#get-an-external-group"""
+        """teams/external-idp-group-info-for-org
+
+        GET /orgs/{org}/external-group/{group_id}
+
+        Displays information about the specific group's usage.  Provides a list of the group's external members as well as a list of teams that this group is connected to.
+
+        You can manage team membership with your identity provider using Enterprise Managed Users for GitHub Enterprise Cloud. For more information, see "[GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products)" in the GitHub Help documentation.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/external-groups#get-an-external-group
+        """
 
         from ..models import ExternalGroup
 
@@ -135,7 +144,16 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ExternalGroup, ExternalGroupType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/external-groups#get-an-external-group"""
+        """teams/external-idp-group-info-for-org
+
+        GET /orgs/{org}/external-group/{group_id}
+
+        Displays information about the specific group's usage.  Provides a list of the group's external members as well as a list of teams that this group is connected to.
+
+        You can manage team membership with your identity provider using Enterprise Managed Users for GitHub Enterprise Cloud. For more information, see "[GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products)" in the GitHub Help documentation.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/external-groups#get-an-external-group
+        """
 
         from ..models import ExternalGroup
 
@@ -165,7 +183,16 @@ class TeamsClient:
         display_name: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ExternalGroups, ExternalGroupsType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/external-groups#list-external-groups-in-an-organization"""
+        """teams/list-external-idp-groups-for-org
+
+        GET /orgs/{org}/external-groups
+
+        Lists external groups available in an organization. You can query the groups using the `display_name` parameter, only groups with a `group_name` containing the text provided in the `display_name` parameter will be returned.  You can also limit your page results using the `per_page` parameter. GitHub Enterprise Cloud generates a url-encoded `page` token using a cursor value for where the next page begins. For more information on cursor pagination, see "[Offset and Cursor Pagination explained](https://dev.to/jackmarchant/offset-and-cursor-pagination-explained-b89)."
+
+        You can manage team membership with your identity provider using Enterprise Managed Users for GitHub Enterprise Cloud. For more information, see "[GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products)" in the GitHub Help documentation.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/external-groups#list-external-groups-in-an-organization
+        """
 
         from ..models import ExternalGroups
 
@@ -196,7 +223,16 @@ class TeamsClient:
         display_name: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ExternalGroups, ExternalGroupsType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/external-groups#list-external-groups-in-an-organization"""
+        """teams/list-external-idp-groups-for-org
+
+        GET /orgs/{org}/external-groups
+
+        Lists external groups available in an organization. You can query the groups using the `display_name` parameter, only groups with a `group_name` containing the text provided in the `display_name` parameter will be returned.  You can also limit your page results using the `per_page` parameter. GitHub Enterprise Cloud generates a url-encoded `page` token using a cursor value for where the next page begins. For more information on cursor pagination, see "[Offset and Cursor Pagination explained](https://dev.to/jackmarchant/offset-and-cursor-pagination-explained-b89)."
+
+        You can manage team membership with your identity provider using Enterprise Managed Users for GitHub Enterprise Cloud. For more information, see "[GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products)" in the GitHub Help documentation.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/external-groups#list-external-groups-in-an-organization
+        """
 
         from ..models import ExternalGroups
 
@@ -227,7 +263,14 @@ class TeamsClient:
         q: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[GroupMapping, GroupMappingType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/team-sync#list-idp-groups-for-an-organization"""
+        """teams/list-idp-groups-for-org
+
+        GET /orgs/{org}/team-sync/groups
+
+        Lists IdP groups available in an organization.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/team-sync#list-idp-groups-for-an-organization
+        """
 
         from ..models import GroupMapping
 
@@ -258,7 +301,14 @@ class TeamsClient:
         q: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[GroupMapping, GroupMappingType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/team-sync#list-idp-groups-for-an-organization"""
+        """teams/list-idp-groups-for-org
+
+        GET /orgs/{org}/team-sync/groups
+
+        Lists IdP groups available in an organization.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/team-sync#list-idp-groups-for-an-organization
+        """
 
         from ..models import GroupMapping
 
@@ -288,7 +338,14 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Team], list[TeamType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#list-teams"""
+        """teams/list
+
+        GET /orgs/{org}/teams
+
+        Lists all teams in an organization that are visible to the authenticated user.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#list-teams
+        """
 
         from ..models import BasicError, Team
 
@@ -320,7 +377,14 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Team], list[TeamType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#list-teams"""
+        """teams/list
+
+        GET /orgs/{org}/teams
+
+        Lists all teams in an organization that are visible to the authenticated user.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#list-teams
+        """
 
         from ..models import BasicError, Team
 
@@ -380,7 +444,16 @@ class TeamsClient:
         data: Missing[OrgsOrgTeamsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[TeamFull, TeamFullType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#create-a-team"""
+        """teams/create
+
+        POST /orgs/{org}/teams
+
+        To create a team, the authenticated user must be a member or owner of `{org}`. By default, organization members can create teams. Organization owners can limit team creation to organization owners. For more information, see "[Setting team creation permissions](https://docs.github.com/enterprise-cloud@latest//articles/setting-team-creation-permissions-in-your-organization)."
+
+        When you create a new team, you automatically become a team maintainer without explicitly adding yourself to the optional array of `maintainers`. For more information, see "[About teams](https://docs.github.com/enterprise-cloud@latest//github/setting-up-and-managing-organizations-and-teams/about-teams)".
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#create-a-team
+        """
 
         from ..models import BasicError, OrgsOrgTeamsPostBody, TeamFull, ValidationError
 
@@ -445,7 +518,16 @@ class TeamsClient:
         data: Missing[OrgsOrgTeamsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[TeamFull, TeamFullType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#create-a-team"""
+        """teams/create
+
+        POST /orgs/{org}/teams
+
+        To create a team, the authenticated user must be a member or owner of `{org}`. By default, organization members can create teams. Organization owners can limit team creation to organization owners. For more information, see "[Setting team creation permissions](https://docs.github.com/enterprise-cloud@latest//articles/setting-team-creation-permissions-in-your-organization)."
+
+        When you create a new team, you automatically become a team maintainer without explicitly adding yourself to the optional array of `maintainers`. For more information, see "[About teams](https://docs.github.com/enterprise-cloud@latest//github/setting-up-and-managing-organizations-and-teams/about-teams)".
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#create-a-team
+        """
 
         from ..models import BasicError, OrgsOrgTeamsPostBody, TeamFull, ValidationError
 
@@ -481,7 +563,17 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[TeamFull, TeamFullType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#get-a-team-by-name"""
+        """teams/get-by-name
+
+        GET /orgs/{org}/teams/{team_slug}
+
+        Gets a team using the team's `slug`. To create the `slug`, GitHub Enterprise Cloud replaces special characters in the `name` string, changes all words to lowercase, and replaces spaces with a `-` separator. For example, `"My TEam Näme"` would become `my-team-name`.
+
+        > [!NOTE]
+        > You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/{org_id}/team/{team_id}`.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#get-a-team-by-name
+        """
 
         from ..models import BasicError, TeamFull
 
@@ -506,7 +598,17 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[TeamFull, TeamFullType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#get-a-team-by-name"""
+        """teams/get-by-name
+
+        GET /orgs/{org}/teams/{team_slug}
+
+        Gets a team using the team's `slug`. To create the `slug`, GitHub Enterprise Cloud replaces special characters in the `name` string, changes all words to lowercase, and replaces spaces with a `-` separator. For example, `"My TEam Näme"` would become `my-team-name`.
+
+        > [!NOTE]
+        > You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/{org_id}/team/{team_id}`.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#get-a-team-by-name
+        """
 
         from ..models import BasicError, TeamFull
 
@@ -531,7 +633,19 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#delete-a-team"""
+        """teams/delete-in-org
+
+        DELETE /orgs/{org}/teams/{team_slug}
+
+        To delete a team, the authenticated user must be an organization owner or team maintainer.
+
+        If you are an organization owner, deleting a parent team will delete all of its child teams as well.
+
+        > [!NOTE]
+        > You can also specify a team by `org_id` and `team_id` using the route `DELETE /organizations/{org_id}/team/{team_id}`.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#delete-a-team
+        """
 
         url = f"/orgs/{org}/teams/{team_slug}"
 
@@ -550,7 +664,19 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#delete-a-team"""
+        """teams/delete-in-org
+
+        DELETE /orgs/{org}/teams/{team_slug}
+
+        To delete a team, the authenticated user must be an organization owner or team maintainer.
+
+        If you are an organization owner, deleting a parent team will delete all of its child teams as well.
+
+        > [!NOTE]
+        > You can also specify a team by `org_id` and `team_id` using the route `DELETE /organizations/{org_id}/team/{team_id}`.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#delete-a-team
+        """
 
         url = f"/orgs/{org}/teams/{team_slug}"
 
@@ -599,7 +725,17 @@ class TeamsClient:
         data: Missing[OrgsOrgTeamsTeamSlugPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[TeamFull, TeamFullType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#update-a-team"""
+        """teams/update-in-org
+
+        PATCH /orgs/{org}/teams/{team_slug}
+
+        To edit a team, the authenticated user must either be an organization owner or a team maintainer.
+
+        > [!NOTE]
+        > You can also specify a team by `org_id` and `team_id` using the route `PATCH /organizations/{org_id}/team/{team_id}`.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#update-a-team
+        """
 
         from ..models import (
             BasicError,
@@ -671,7 +807,17 @@ class TeamsClient:
         data: Missing[OrgsOrgTeamsTeamSlugPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[TeamFull, TeamFullType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#update-a-team"""
+        """teams/update-in-org
+
+        PATCH /orgs/{org}/teams/{team_slug}
+
+        To edit a team, the authenticated user must either be an organization owner or a team maintainer.
+
+        > [!NOTE]
+        > You can also specify a team by `org_id` and `team_id` using the route `PATCH /organizations/{org_id}/team/{team_id}`.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#update-a-team
+        """
 
         from ..models import (
             BasicError,
@@ -717,7 +863,19 @@ class TeamsClient:
         pinned: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[TeamDiscussion], list[TeamDiscussionType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#list-discussions"""
+        """teams/list-discussions-in-org
+
+        GET /orgs/{org}/teams/{team_slug}/discussions
+
+        List all discussions on a team's page.
+
+        > [!NOTE]
+        > You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/{org_id}/team/{team_id}/discussions`.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:discussion` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#list-discussions
+        """
 
         from ..models import TeamDiscussion
 
@@ -751,7 +909,19 @@ class TeamsClient:
         pinned: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[TeamDiscussion], list[TeamDiscussionType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#list-discussions"""
+        """teams/list-discussions-in-org
+
+        GET /orgs/{org}/teams/{team_slug}/discussions
+
+        List all discussions on a team's page.
+
+        > [!NOTE]
+        > You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/{org_id}/team/{team_id}/discussions`.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:discussion` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#list-discussions
+        """
 
         from ..models import TeamDiscussion
 
@@ -806,7 +976,21 @@ class TeamsClient:
         data: Missing[OrgsOrgTeamsTeamSlugDiscussionsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[TeamDiscussion, TeamDiscussionType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#create-a-discussion"""
+        """teams/create-discussion-in-org
+
+        POST /orgs/{org}/teams/{team_slug}/discussions
+
+        Creates a new discussion post on a team's page.
+
+        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest//github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)" and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/best-practices-for-using-the-rest-api)."
+
+        > [!NOTE]
+        > You can also specify a team by `org_id` and `team_id` using the route `POST /organizations/{org_id}/team/{team_id}/discussions`.
+
+        OAuth app tokens and personal access tokens (classic) need the `write:discussion` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#create-a-discussion
+        """
 
         from ..models import OrgsOrgTeamsTeamSlugDiscussionsPostBody, TeamDiscussion
 
@@ -863,7 +1047,21 @@ class TeamsClient:
         data: Missing[OrgsOrgTeamsTeamSlugDiscussionsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[TeamDiscussion, TeamDiscussionType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#create-a-discussion"""
+        """teams/create-discussion-in-org
+
+        POST /orgs/{org}/teams/{team_slug}/discussions
+
+        Creates a new discussion post on a team's page.
+
+        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest//github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)" and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/best-practices-for-using-the-rest-api)."
+
+        > [!NOTE]
+        > You can also specify a team by `org_id` and `team_id` using the route `POST /organizations/{org_id}/team/{team_id}/discussions`.
+
+        OAuth app tokens and personal access tokens (classic) need the `write:discussion` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#create-a-discussion
+        """
 
         from ..models import OrgsOrgTeamsTeamSlugDiscussionsPostBody, TeamDiscussion
 
@@ -896,7 +1094,19 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[TeamDiscussion, TeamDiscussionType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#get-a-discussion"""
+        """teams/get-discussion-in-org
+
+        GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}
+
+        Get a specific discussion on a team's page.
+
+        > [!NOTE]
+        > You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}`.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:discussion` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#get-a-discussion
+        """
 
         from ..models import TeamDiscussion
 
@@ -919,7 +1129,19 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[TeamDiscussion, TeamDiscussionType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#get-a-discussion"""
+        """teams/get-discussion-in-org
+
+        GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}
+
+        Get a specific discussion on a team's page.
+
+        > [!NOTE]
+        > You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}`.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:discussion` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#get-a-discussion
+        """
 
         from ..models import TeamDiscussion
 
@@ -942,7 +1164,19 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#delete-a-discussion"""
+        """teams/delete-discussion-in-org
+
+        DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}
+
+        Delete a discussion from a team's page.
+
+        > [!NOTE]
+        > You can also specify a team by `org_id` and `team_id` using the route `DELETE /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}`.
+
+        OAuth app tokens and personal access tokens (classic) need the `write:discussion` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#delete-a-discussion
+        """
 
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}"
 
@@ -962,7 +1196,19 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#delete-a-discussion"""
+        """teams/delete-discussion-in-org
+
+        DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}
+
+        Delete a discussion from a team's page.
+
+        > [!NOTE]
+        > You can also specify a team by `org_id` and `team_id` using the route `DELETE /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}`.
+
+        OAuth app tokens and personal access tokens (classic) need the `write:discussion` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#delete-a-discussion
+        """
 
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}"
 
@@ -1012,7 +1258,19 @@ class TeamsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[TeamDiscussion, TeamDiscussionType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#update-a-discussion"""
+        """teams/update-discussion-in-org
+
+        PATCH /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}
+
+        Edits the title and body text of a discussion post. Only the parameters you provide are updated.
+
+        > [!NOTE]
+        > You can also specify a team by `org_id` and `team_id` using the route `PATCH /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}`.
+
+        OAuth app tokens and personal access tokens (classic) need the `write:discussion` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#update-a-discussion
+        """
 
         from ..models import (
             OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody,
@@ -1080,7 +1338,19 @@ class TeamsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[TeamDiscussion, TeamDiscussionType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#update-a-discussion"""
+        """teams/update-discussion-in-org
+
+        PATCH /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}
+
+        Edits the title and body text of a discussion post. Only the parameters you provide are updated.
+
+        > [!NOTE]
+        > You can also specify a team by `org_id` and `team_id` using the route `PATCH /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}`.
+
+        OAuth app tokens and personal access tokens (classic) need the `write:discussion` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#update-a-discussion
+        """
 
         from ..models import (
             OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody,
@@ -1121,7 +1391,19 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[TeamDiscussionComment], list[TeamDiscussionCommentType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#list-discussion-comments"""
+        """teams/list-discussion-comments-in-org
+
+        GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments
+
+        List all comments on a team discussion.
+
+        > [!NOTE]
+        > You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}/comments`.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:discussion` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#list-discussion-comments
+        """
 
         from ..models import TeamDiscussionComment
 
@@ -1154,7 +1436,19 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[TeamDiscussionComment], list[TeamDiscussionCommentType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#list-discussion-comments"""
+        """teams/list-discussion-comments-in-org
+
+        GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments
+
+        List all comments on a team discussion.
+
+        > [!NOTE]
+        > You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}/comments`.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:discussion` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#list-discussion-comments
+        """
 
         from ..models import TeamDiscussionComment
 
@@ -1211,7 +1505,21 @@ class TeamsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[TeamDiscussionComment, TeamDiscussionCommentType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#create-a-discussion-comment"""
+        """teams/create-discussion-comment-in-org
+
+        POST /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments
+
+        Creates a new comment on a team discussion.
+
+        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest//github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)" and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/best-practices-for-using-the-rest-api)."
+
+        > [!NOTE]
+        > You can also specify a team by `org_id` and `team_id` using the route `POST /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}/comments`.
+
+        OAuth app tokens and personal access tokens (classic) need the `write:discussion` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#create-a-discussion-comment
+        """
 
         from ..models import (
             OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBody,
@@ -1276,7 +1584,21 @@ class TeamsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[TeamDiscussionComment, TeamDiscussionCommentType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#create-a-discussion-comment"""
+        """teams/create-discussion-comment-in-org
+
+        POST /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments
+
+        Creates a new comment on a team discussion.
+
+        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest//github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)" and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/best-practices-for-using-the-rest-api)."
+
+        > [!NOTE]
+        > You can also specify a team by `org_id` and `team_id` using the route `POST /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}/comments`.
+
+        OAuth app tokens and personal access tokens (classic) need the `write:discussion` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#create-a-discussion-comment
+        """
 
         from ..models import (
             OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBody,
@@ -1315,7 +1637,19 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[TeamDiscussionComment, TeamDiscussionCommentType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#get-a-discussion-comment"""
+        """teams/get-discussion-comment-in-org
+
+        GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}
+
+        Get a specific comment on a team discussion.
+
+        > [!NOTE]
+        > You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}/comments/{comment_number}`.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:discussion` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#get-a-discussion-comment
+        """
 
         from ..models import TeamDiscussionComment
 
@@ -1339,7 +1673,19 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[TeamDiscussionComment, TeamDiscussionCommentType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#get-a-discussion-comment"""
+        """teams/get-discussion-comment-in-org
+
+        GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}
+
+        Get a specific comment on a team discussion.
+
+        > [!NOTE]
+        > You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}/comments/{comment_number}`.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:discussion` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#get-a-discussion-comment
+        """
 
         from ..models import TeamDiscussionComment
 
@@ -1363,7 +1709,19 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#delete-a-discussion-comment"""
+        """teams/delete-discussion-comment-in-org
+
+        DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}
+
+        Deletes a comment on a team discussion.
+
+        > [!NOTE]
+        > You can also specify a team by `org_id` and `team_id` using the route `DELETE /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}/comments/{comment_number}`.
+
+        OAuth app tokens and personal access tokens (classic) need the `write:discussion` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#delete-a-discussion-comment
+        """
 
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}"
 
@@ -1384,7 +1742,19 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#delete-a-discussion-comment"""
+        """teams/delete-discussion-comment-in-org
+
+        DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}
+
+        Deletes a comment on a team discussion.
+
+        > [!NOTE]
+        > You can also specify a team by `org_id` and `team_id` using the route `DELETE /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}/comments/{comment_number}`.
+
+        OAuth app tokens and personal access tokens (classic) need the `write:discussion` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#delete-a-discussion-comment
+        """
 
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}"
 
@@ -1434,7 +1804,19 @@ class TeamsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[TeamDiscussionComment, TeamDiscussionCommentType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#update-a-discussion-comment"""
+        """teams/update-discussion-comment-in-org
+
+        PATCH /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}
+
+        Edits the body text of a discussion comment.
+
+        > [!NOTE]
+        > You can also specify a team by `org_id` and `team_id` using the route `PATCH /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}/comments/{comment_number}`.
+
+        OAuth app tokens and personal access tokens (classic) need the `write:discussion` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#update-a-discussion-comment
+        """
 
         from ..models import (
             OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBody,
@@ -1503,7 +1885,19 @@ class TeamsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[TeamDiscussionComment, TeamDiscussionCommentType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#update-a-discussion-comment"""
+        """teams/update-discussion-comment-in-org
+
+        PATCH /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}
+
+        Edits the body text of a discussion comment.
+
+        > [!NOTE]
+        > You can also specify a team by `org_id` and `team_id` using the route `PATCH /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}/comments/{comment_number}`.
+
+        OAuth app tokens and personal access tokens (classic) need the `write:discussion` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#update-a-discussion-comment
+        """
 
         from ..models import (
             OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBody,
@@ -1541,7 +1935,16 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ExternalGroups, ExternalGroupsType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/external-groups#list-a-connection-between-an-external-group-and-a-team"""
+        """teams/list-linked-external-idp-groups-to-team-for-org
+
+        GET /orgs/{org}/teams/{team_slug}/external-groups
+
+        Lists a connection between a team and an external group.
+
+        You can manage team membership with your identity provider using Enterprise Managed Users for GitHub Enterprise Cloud. For more information, see "[GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products)" in the GitHub Help documentation.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/external-groups#list-a-connection-between-an-external-group-and-a-team
+        """
 
         from ..models import ExternalGroups
 
@@ -1563,7 +1966,16 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ExternalGroups, ExternalGroupsType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/external-groups#list-a-connection-between-an-external-group-and-a-team"""
+        """teams/list-linked-external-idp-groups-to-team-for-org
+
+        GET /orgs/{org}/teams/{team_slug}/external-groups
+
+        Lists a connection between a team and an external group.
+
+        You can manage team membership with your identity provider using Enterprise Managed Users for GitHub Enterprise Cloud. For more information, see "[GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products)" in the GitHub Help documentation.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/external-groups#list-a-connection-between-an-external-group-and-a-team
+        """
 
         from ..models import ExternalGroups
 
@@ -1585,7 +1997,16 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/external-groups#remove-the-connection-between-an-external-group-and-a-team"""
+        """teams/unlink-external-idp-group-from-team-for-org
+
+        DELETE /orgs/{org}/teams/{team_slug}/external-groups
+
+        Deletes a connection between a team and an external group.
+
+        You can manage team membership with your IdP using Enterprise Managed Users for GitHub Enterprise Cloud. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/external-groups#remove-the-connection-between-an-external-group-and-a-team
+        """
 
         url = f"/orgs/{org}/teams/{team_slug}/external-groups"
 
@@ -1604,7 +2025,16 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/external-groups#remove-the-connection-between-an-external-group-and-a-team"""
+        """teams/unlink-external-idp-group-from-team-for-org
+
+        DELETE /orgs/{org}/teams/{team_slug}/external-groups
+
+        Deletes a connection between a team and an external group.
+
+        You can manage team membership with your IdP using Enterprise Managed Users for GitHub Enterprise Cloud. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/external-groups#remove-the-connection-between-an-external-group-and-a-team
+        """
 
         url = f"/orgs/{org}/teams/{team_slug}/external-groups"
 
@@ -1646,7 +2076,16 @@ class TeamsClient:
         data: Missing[OrgsOrgTeamsTeamSlugExternalGroupsPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[ExternalGroup, ExternalGroupType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/external-groups#update-the-connection-between-an-external-group-and-a-team"""
+        """teams/link-external-idp-group-to-team-for-org
+
+        PATCH /orgs/{org}/teams/{team_slug}/external-groups
+
+        Creates a connection between a team and an external group.  Only one external group can be linked to a team.
+
+        You can manage team membership with your identity provider using Enterprise Managed Users for GitHub Enterprise Cloud. For more information, see "[GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products)" in the GitHub Help documentation.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/external-groups#update-the-connection-between-an-external-group-and-a-team
+        """
 
         from ..models import ExternalGroup, OrgsOrgTeamsTeamSlugExternalGroupsPatchBody
 
@@ -1703,7 +2142,16 @@ class TeamsClient:
         data: Missing[OrgsOrgTeamsTeamSlugExternalGroupsPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[ExternalGroup, ExternalGroupType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/external-groups#update-the-connection-between-an-external-group-and-a-team"""
+        """teams/link-external-idp-group-to-team-for-org
+
+        PATCH /orgs/{org}/teams/{team_slug}/external-groups
+
+        Creates a connection between a team and an external group.  Only one external group can be linked to a team.
+
+        You can manage team membership with your identity provider using Enterprise Managed Users for GitHub Enterprise Cloud. For more information, see "[GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products)" in the GitHub Help documentation.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/external-groups#update-the-connection-between-an-external-group-and-a-team
+        """
 
         from ..models import ExternalGroup, OrgsOrgTeamsTeamSlugExternalGroupsPatchBody
 
@@ -1739,7 +2187,17 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[OrganizationInvitation], list[OrganizationInvitationType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/members#list-pending-team-invitations"""
+        """teams/list-pending-invitations-in-org
+
+        GET /orgs/{org}/teams/{team_slug}/invitations
+
+        The return hash contains a `role` field which refers to the Organization Invitation role and will be one of the following values: `direct_member`, `admin`, `billing_manager`, `hiring_manager`, or `reinstate`. If the invitee is not a GitHub Enterprise Cloud member, the `login` field in the return hash will be `null`.
+
+        > [!NOTE]
+        > You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/{org_id}/team/{team_id}/invitations`.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/members#list-pending-team-invitations
+        """
 
         from ..models import OrganizationInvitation
 
@@ -1769,7 +2227,17 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[OrganizationInvitation], list[OrganizationInvitationType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/members#list-pending-team-invitations"""
+        """teams/list-pending-invitations-in-org
+
+        GET /orgs/{org}/teams/{team_slug}/invitations
+
+        The return hash contains a `role` field which refers to the Organization Invitation role and will be one of the following values: `direct_member`, `admin`, `billing_manager`, `hiring_manager`, or `reinstate`. If the invitee is not a GitHub Enterprise Cloud member, the `login` field in the return hash will be `null`.
+
+        > [!NOTE]
+        > You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/{org_id}/team/{team_id}/invitations`.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/members#list-pending-team-invitations
+        """
 
         from ..models import OrganizationInvitation
 
@@ -1800,7 +2268,16 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/members#list-team-members"""
+        """teams/list-members-in-org
+
+        GET /orgs/{org}/teams/{team_slug}/members
+
+        Team members will include the members of child teams.
+
+        To list members in a team, the team must be visible to the authenticated user.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/members#list-team-members
+        """
 
         from ..models import SimpleUser
 
@@ -1832,7 +2309,16 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/members#list-team-members"""
+        """teams/list-members-in-org
+
+        GET /orgs/{org}/teams/{team_slug}/members
+
+        Team members will include the members of child teams.
+
+        To list members in a team, the team must be visible to the authenticated user.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/members#list-team-members
+        """
 
         from ..models import SimpleUser
 
@@ -1862,7 +2348,24 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[TeamMembership, TeamMembershipType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/members#get-team-membership-for-a-user"""
+        """teams/get-membership-for-user-in-org
+
+        GET /orgs/{org}/teams/{team_slug}/memberships/{username}
+
+        Team members will include the members of child teams.
+
+        To get a user's membership with a team, the team must be visible to the authenticated user.
+
+        > [!NOTE]
+        > You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/{org_id}/team/{team_id}/memberships/{username}`.
+
+        > [!NOTE]
+        > The response contains the `state` of the membership and the member's `role`.
+
+        The `role` for organization owners is set to `maintainer`. For more information about `maintainer` roles, see [Create a team](https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#create-a-team).
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/members#get-team-membership-for-a-user
+        """
 
         from ..models import TeamMembership
 
@@ -1886,7 +2389,24 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[TeamMembership, TeamMembershipType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/members#get-team-membership-for-a-user"""
+        """teams/get-membership-for-user-in-org
+
+        GET /orgs/{org}/teams/{team_slug}/memberships/{username}
+
+        Team members will include the members of child teams.
+
+        To get a user's membership with a team, the team must be visible to the authenticated user.
+
+        > [!NOTE]
+        > You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/{org_id}/team/{team_id}/memberships/{username}`.
+
+        > [!NOTE]
+        > The response contains the `state` of the membership and the member's `role`.
+
+        The `role` for organization owners is set to `maintainer`. For more information about `maintainer` roles, see [Create a team](https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#create-a-team).
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/members#get-team-membership-for-a-user
+        """
 
         from ..models import TeamMembership
 
@@ -1935,7 +2455,26 @@ class TeamsClient:
         data: Missing[OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[TeamMembership, TeamMembershipType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/members#add-or-update-team-membership-for-a-user"""
+        """teams/add-or-update-membership-for-user-in-org
+
+        PUT /orgs/{org}/teams/{team_slug}/memberships/{username}
+
+        Adds an organization member to a team. An authenticated organization owner or team maintainer can add organization members to a team.
+
+        Team synchronization is available for organizations using GitHub Enterprise Cloud. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+
+        > [!NOTE]
+        > When you have team synchronization set up for a team with your organization's identity provider (IdP), you will see an error if you attempt to use the API for making changes to the team's membership. If you have access to manage group membership in your IdP, you can manage GitHub Enterprise Cloud team membership through your identity provider, which automatically adds and removes team members in an organization. For more information, see "[Synchronizing teams between your identity provider and GitHub Enterprise Cloud](https://docs.github.com/enterprise-cloud@latest//articles/synchronizing-teams-between-your-identity-provider-and-github/)."
+
+        An organization owner can add someone who is not part of the team's organization to a team. When an organization owner adds someone to a team who is not an organization member, this endpoint will send an invitation to the person via email. This newly-created membership will be in the "pending" state until the person accepts the invitation, at which point the membership will transition to the "active" state and the user will be added as a member of the team.
+
+        If the user is already a member of the team, this endpoint will update the role of the team member's role. To update the membership of a team member, the authenticated user must be an organization owner or a team maintainer.
+
+        > [!NOTE]
+        > You can also specify a team by `org_id` and `team_id` using the route `PUT /organizations/{org_id}/team/{team_id}/memberships/{username}`.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/members#add-or-update-team-membership-for-a-user
+        """
 
         from ..models import (
             OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody,
@@ -1999,7 +2538,26 @@ class TeamsClient:
         data: Missing[OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[TeamMembership, TeamMembershipType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/members#add-or-update-team-membership-for-a-user"""
+        """teams/add-or-update-membership-for-user-in-org
+
+        PUT /orgs/{org}/teams/{team_slug}/memberships/{username}
+
+        Adds an organization member to a team. An authenticated organization owner or team maintainer can add organization members to a team.
+
+        Team synchronization is available for organizations using GitHub Enterprise Cloud. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+
+        > [!NOTE]
+        > When you have team synchronization set up for a team with your organization's identity provider (IdP), you will see an error if you attempt to use the API for making changes to the team's membership. If you have access to manage group membership in your IdP, you can manage GitHub Enterprise Cloud team membership through your identity provider, which automatically adds and removes team members in an organization. For more information, see "[Synchronizing teams between your identity provider and GitHub Enterprise Cloud](https://docs.github.com/enterprise-cloud@latest//articles/synchronizing-teams-between-your-identity-provider-and-github/)."
+
+        An organization owner can add someone who is not part of the team's organization to a team. When an organization owner adds someone to a team who is not an organization member, this endpoint will send an invitation to the person via email. This newly-created membership will be in the "pending" state until the person accepts the invitation, at which point the membership will transition to the "active" state and the user will be added as a member of the team.
+
+        If the user is already a member of the team, this endpoint will update the role of the team member's role. To update the membership of a team member, the authenticated user must be an organization owner or a team maintainer.
+
+        > [!NOTE]
+        > You can also specify a team by `org_id` and `team_id` using the route `PUT /organizations/{org_id}/team/{team_id}/memberships/{username}`.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/members#add-or-update-team-membership-for-a-user
+        """
 
         from ..models import (
             OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody,
@@ -2038,7 +2596,22 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/members#remove-team-membership-for-a-user"""
+        """teams/remove-membership-for-user-in-org
+
+        DELETE /orgs/{org}/teams/{team_slug}/memberships/{username}
+
+        To remove a membership between a user and a team, the authenticated user must have 'admin' permissions to the team or be an owner of the organization that the team is associated with. Removing team membership does not delete the user, it just removes their membership from the team.
+
+        Team synchronization is available for organizations using GitHub Enterprise Cloud. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+
+        > [!NOTE]
+        > When you have team synchronization set up for a team with your organization's identity provider (IdP), you will see an error if you attempt to use the API for making changes to the team's membership. If you have access to manage group membership in your IdP, you can manage GitHub Enterprise Cloud team membership through your identity provider, which automatically adds and removes team members in an organization. For more information, see "[Synchronizing teams between your identity provider and GitHub Enterprise Cloud](https://docs.github.com/enterprise-cloud@latest//articles/synchronizing-teams-between-your-identity-provider-and-github/)."
+
+        > [!NOTE]
+        > You can also specify a team by `org_id` and `team_id` using the route `DELETE /organizations/{org_id}/team/{team_id}/memberships/{username}`.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/members#remove-team-membership-for-a-user
+        """
 
         url = f"/orgs/{org}/teams/{team_slug}/memberships/{username}"
 
@@ -2059,7 +2632,22 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/members#remove-team-membership-for-a-user"""
+        """teams/remove-membership-for-user-in-org
+
+        DELETE /orgs/{org}/teams/{team_slug}/memberships/{username}
+
+        To remove a membership between a user and a team, the authenticated user must have 'admin' permissions to the team or be an owner of the organization that the team is associated with. Removing team membership does not delete the user, it just removes their membership from the team.
+
+        Team synchronization is available for organizations using GitHub Enterprise Cloud. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+
+        > [!NOTE]
+        > When you have team synchronization set up for a team with your organization's identity provider (IdP), you will see an error if you attempt to use the API for making changes to the team's membership. If you have access to manage group membership in your IdP, you can manage GitHub Enterprise Cloud team membership through your identity provider, which automatically adds and removes team members in an organization. For more information, see "[Synchronizing teams between your identity provider and GitHub Enterprise Cloud](https://docs.github.com/enterprise-cloud@latest//articles/synchronizing-teams-between-your-identity-provider-and-github/)."
+
+        > [!NOTE]
+        > You can also specify a team by `org_id` and `team_id` using the route `DELETE /organizations/{org_id}/team/{team_id}/memberships/{username}`.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/members#remove-team-membership-for-a-user
+        """
 
         url = f"/orgs/{org}/teams/{team_slug}/memberships/{username}"
 
@@ -2081,7 +2669,16 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[TeamProject], list[TeamProjectType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#list-team-projects"""
+        """DEPRECATED teams/list-projects-in-org
+
+        GET /orgs/{org}/teams/{team_slug}/projects
+
+        > [!WARNING]
+        > **Closing down notice:** Projects (classic) is being deprecated in favor of the new Projects experience.
+        > See the [changelog](https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/) for more information.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#list-team-projects
+        """
 
         from ..models import TeamProject
 
@@ -2111,7 +2708,16 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[TeamProject], list[TeamProjectType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#list-team-projects"""
+        """DEPRECATED teams/list-projects-in-org
+
+        GET /orgs/{org}/teams/{team_slug}/projects
+
+        > [!WARNING]
+        > **Closing down notice:** Projects (classic) is being deprecated in favor of the new Projects experience.
+        > See the [changelog](https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/) for more information.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#list-team-projects
+        """
 
         from ..models import TeamProject
 
@@ -2140,7 +2746,16 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[TeamProject, TeamProjectType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#check-team-permissions-for-a-project"""
+        """DEPRECATED teams/check-permissions-for-project-in-org
+
+        GET /orgs/{org}/teams/{team_slug}/projects/{project_id}
+
+        > [!WARNING]
+        > **Closing down notice:** Projects (classic) is being deprecated in favor of the new Projects experience.
+        > See the [changelog](https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/) for more information.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#check-team-permissions-for-a-project
+        """
 
         from ..models import TeamProject
 
@@ -2164,7 +2779,16 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[TeamProject, TeamProjectType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#check-team-permissions-for-a-project"""
+        """DEPRECATED teams/check-permissions-for-project-in-org
+
+        GET /orgs/{org}/teams/{team_slug}/projects/{project_id}
+
+        > [!WARNING]
+        > **Closing down notice:** Projects (classic) is being deprecated in favor of the new Projects experience.
+        > See the [changelog](https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/) for more information.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#check-team-permissions-for-a-project
+        """
 
         from ..models import TeamProject
 
@@ -2217,7 +2841,16 @@ class TeamsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#add-or-update-team-project-permissions"""
+        """DEPRECATED teams/add-or-update-project-permissions-in-org
+
+        PUT /orgs/{org}/teams/{team_slug}/projects/{project_id}
+
+        > [!WARNING]
+        > **Closing down notice:** Projects (classic) is being deprecated in favor of the new Projects experience.
+        > See the [changelog](https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/) for more information.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#add-or-update-team-project-permissions
+        """
 
         from typing import Union
 
@@ -2288,7 +2921,16 @@ class TeamsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#add-or-update-team-project-permissions"""
+        """DEPRECATED teams/add-or-update-project-permissions-in-org
+
+        PUT /orgs/{org}/teams/{team_slug}/projects/{project_id}
+
+        > [!WARNING]
+        > **Closing down notice:** Projects (classic) is being deprecated in favor of the new Projects experience.
+        > See the [changelog](https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/) for more information.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#add-or-update-team-project-permissions
+        """
 
         from typing import Union
 
@@ -2330,7 +2972,16 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#remove-a-project-from-a-team"""
+        """DEPRECATED teams/remove-project-in-org
+
+        DELETE /orgs/{org}/teams/{team_slug}/projects/{project_id}
+
+        > [!WARNING]
+        > **Closing down notice:** Projects (classic) is being deprecated in favor of the new Projects experience.
+        > See the [changelog](https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/) for more information.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#remove-a-project-from-a-team
+        """
 
         url = f"/orgs/{org}/teams/{team_slug}/projects/{project_id}"
 
@@ -2350,7 +3001,16 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#remove-a-project-from-a-team"""
+        """DEPRECATED teams/remove-project-in-org
+
+        DELETE /orgs/{org}/teams/{team_slug}/projects/{project_id}
+
+        > [!WARNING]
+        > **Closing down notice:** Projects (classic) is being deprecated in favor of the new Projects experience.
+        > See the [changelog](https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/) for more information.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#remove-a-project-from-a-team
+        """
 
         url = f"/orgs/{org}/teams/{team_slug}/projects/{project_id}"
 
@@ -2371,7 +3031,17 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#list-team-repositories"""
+        """teams/list-repos-in-org
+
+        GET /orgs/{org}/teams/{team_slug}/repos
+
+        Lists a team's repositories visible to the authenticated user.
+
+        > [!NOTE]
+        > You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/{org_id}/team/{team_id}/repos`.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#list-team-repositories
+        """
 
         from ..models import MinimalRepository
 
@@ -2401,7 +3071,17 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#list-team-repositories"""
+        """teams/list-repos-in-org
+
+        GET /orgs/{org}/teams/{team_slug}/repos
+
+        Lists a team's repositories visible to the authenticated user.
+
+        > [!NOTE]
+        > You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/{org_id}/team/{team_id}/repos`.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#list-team-repositories
+        """
 
         from ..models import MinimalRepository
 
@@ -2431,7 +3111,23 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[TeamRepository, TeamRepositoryType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#check-team-permissions-for-a-repository"""
+        """teams/check-permissions-for-repo-in-org
+
+        GET /orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}
+
+        Checks whether a team has `admin`, `push`, `maintain`, `triage`, or `pull` permission for a repository. Repositories inherited through a parent team will also be checked.
+
+        You can also get information about the specified repository, including what permissions the team grants on it, by passing the following custom [media type](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types/) via the `application/vnd.github.v3.repository+json` accept header.
+
+        If a team doesn't have permission for the repository, you will receive a `404 Not Found` response status.
+
+        If the repository is private, you must have at least `read` permission for that repository, and your token must have the `repo` or `admin:org` scope. Otherwise, you will receive a `404 Not Found` response status.
+
+        > [!NOTE]
+        > You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/{org_id}/team/{team_id}/repos/{owner}/{repo}`.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#check-team-permissions-for-a-repository
+        """
 
         from ..models import TeamRepository
 
@@ -2456,7 +3152,23 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[TeamRepository, TeamRepositoryType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#check-team-permissions-for-a-repository"""
+        """teams/check-permissions-for-repo-in-org
+
+        GET /orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}
+
+        Checks whether a team has `admin`, `push`, `maintain`, `triage`, or `pull` permission for a repository. Repositories inherited through a parent team will also be checked.
+
+        You can also get information about the specified repository, including what permissions the team grants on it, by passing the following custom [media type](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types/) via the `application/vnd.github.v3.repository+json` accept header.
+
+        If a team doesn't have permission for the repository, you will receive a `404 Not Found` response status.
+
+        If the repository is private, you must have at least `read` permission for that repository, and your token must have the `repo` or `admin:org` scope. Otherwise, you will receive a `404 Not Found` response status.
+
+        > [!NOTE]
+        > You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/{org_id}/team/{team_id}/repos/{owner}/{repo}`.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#check-team-permissions-for-a-repository
+        """
 
         from ..models import TeamRepository
 
@@ -2508,7 +3220,19 @@ class TeamsClient:
         data: Missing[OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyType] = UNSET,
         **kwargs,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#add-or-update-team-repository-permissions"""
+        """teams/add-or-update-repo-permissions-in-org
+
+        PUT /orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}
+
+        To add a repository to a team or update the team's permission on a repository, the authenticated user must have admin access to the repository, and must be able to see the team. The repository must be owned by the organization, or a direct fork of a repository owned by the organization. You will get a `422 Unprocessable Entity` status if you attempt to add a repository to a team that is not owned by the organization. Note that, if you choose not to pass any parameters, you'll need to set `Content-Length` to zero when calling out to this endpoint. For more information, see "[HTTP method](https://docs.github.com/enterprise-cloud@latest//rest/guides/getting-started-with-the-rest-api#http-method)."
+
+        > [!NOTE]
+        > You can also specify a team by `org_id` and `team_id` using the route `PUT /organizations/{org_id}/team/{team_id}/repos/{owner}/{repo}`.
+
+        For more information about the permission levels, see "[Repository permission levels for an organization](https://docs.github.com/enterprise-cloud@latest//github/setting-up-and-managing-organizations-and-teams/repository-permission-levels-for-an-organization#permission-levels-for-repositories-owned-by-an-organization)".
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#add-or-update-team-repository-permissions
+        """
 
         from ..models import OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody
 
@@ -2568,7 +3292,19 @@ class TeamsClient:
         data: Missing[OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyType] = UNSET,
         **kwargs,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#add-or-update-team-repository-permissions"""
+        """teams/add-or-update-repo-permissions-in-org
+
+        PUT /orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}
+
+        To add a repository to a team or update the team's permission on a repository, the authenticated user must have admin access to the repository, and must be able to see the team. The repository must be owned by the organization, or a direct fork of a repository owned by the organization. You will get a `422 Unprocessable Entity` status if you attempt to add a repository to a team that is not owned by the organization. Note that, if you choose not to pass any parameters, you'll need to set `Content-Length` to zero when calling out to this endpoint. For more information, see "[HTTP method](https://docs.github.com/enterprise-cloud@latest//rest/guides/getting-started-with-the-rest-api#http-method)."
+
+        > [!NOTE]
+        > You can also specify a team by `org_id` and `team_id` using the route `PUT /organizations/{org_id}/team/{team_id}/repos/{owner}/{repo}`.
+
+        For more information about the permission levels, see "[Repository permission levels for an organization](https://docs.github.com/enterprise-cloud@latest//github/setting-up-and-managing-organizations-and-teams/repository-permission-levels-for-an-organization#permission-levels-for-repositories-owned-by-an-organization)".
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#add-or-update-team-repository-permissions
+        """
 
         from ..models import OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody
 
@@ -2601,7 +3337,17 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#remove-a-repository-from-a-team"""
+        """teams/remove-repo-in-org
+
+        DELETE /orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}
+
+        If the authenticated user is an organization owner or a team maintainer, they can remove any repositories from the team. To remove a repository from a team as an organization member, the authenticated user must have admin access to the repository and must be able to see the team. This does not delete the repository, it just removes it from the team.
+
+        > [!NOTE]
+        > You can also specify a team by `org_id` and `team_id` using the route `DELETE /organizations/{org_id}/team/{team_id}/repos/{owner}/{repo}`.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#remove-a-repository-from-a-team
+        """
 
         url = f"/orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}"
 
@@ -2622,7 +3368,17 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#remove-a-repository-from-a-team"""
+        """teams/remove-repo-in-org
+
+        DELETE /orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}
+
+        If the authenticated user is an organization owner or a team maintainer, they can remove any repositories from the team. To remove a repository from a team as an organization member, the authenticated user must have admin access to the repository and must be able to see the team. This does not delete the repository, it just removes it from the team.
+
+        > [!NOTE]
+        > You can also specify a team by `org_id` and `team_id` using the route `DELETE /organizations/{org_id}/team/{team_id}/repos/{owner}/{repo}`.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#remove-a-repository-from-a-team
+        """
 
         url = f"/orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}"
 
@@ -2641,7 +3397,19 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[GroupMapping, GroupMappingType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/team-sync#list-idp-groups-for-a-team"""
+        """teams/list-idp-groups-in-org
+
+        GET /orgs/{org}/teams/{team_slug}/team-sync/group-mappings
+
+        List IdP groups connected to a team on GitHub Enterprise Cloud.
+
+        Team synchronization is available for organizations using GitHub Enterprise Cloud. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+
+        > [!NOTE]
+        > You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/{org_id}/team/{team_id}/team-sync/group-mappings`.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/team-sync#list-idp-groups-for-a-team
+        """
 
         from ..models import GroupMapping
 
@@ -2663,7 +3431,19 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[GroupMapping, GroupMappingType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/team-sync#list-idp-groups-for-a-team"""
+        """teams/list-idp-groups-in-org
+
+        GET /orgs/{org}/teams/{team_slug}/team-sync/group-mappings
+
+        List IdP groups connected to a team on GitHub Enterprise Cloud.
+
+        Team synchronization is available for organizations using GitHub Enterprise Cloud. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+
+        > [!NOTE]
+        > You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/{org_id}/team/{team_id}/team-sync/group-mappings`.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/team-sync#list-idp-groups-for-a-team
+        """
 
         from ..models import GroupMapping
 
@@ -2710,7 +3490,19 @@ class TeamsClient:
         data: Missing[OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[GroupMapping, GroupMappingType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/team-sync#create-or-update-idp-group-connections"""
+        """teams/create-or-update-idp-group-connections-in-org
+
+        PATCH /orgs/{org}/teams/{team_slug}/team-sync/group-mappings
+
+        Creates, updates, or removes a connection between a team and an IdP group. When adding groups to a team, you must include all new and existing groups to avoid replacing existing groups with the new ones. Specifying an empty `groups` array will remove all connections for a team.
+
+        Team synchronization is available for organizations using GitHub Enterprise Cloud. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+
+        > [!NOTE]
+        > You can also specify a team by `org_id` and `team_id` using the route `PATCH /organizations/{org_id}/team/{team_id}/team-sync/group-mappings`.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/team-sync#create-or-update-idp-group-connections
+        """
 
         from ..models import (
             GroupMapping,
@@ -2772,7 +3564,19 @@ class TeamsClient:
         data: Missing[OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[GroupMapping, GroupMappingType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/team-sync#create-or-update-idp-group-connections"""
+        """teams/create-or-update-idp-group-connections-in-org
+
+        PATCH /orgs/{org}/teams/{team_slug}/team-sync/group-mappings
+
+        Creates, updates, or removes a connection between a team and an IdP group. When adding groups to a team, you must include all new and existing groups to avoid replacing existing groups with the new ones. Specifying an empty `groups` array will remove all connections for a team.
+
+        Team synchronization is available for organizations using GitHub Enterprise Cloud. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+
+        > [!NOTE]
+        > You can also specify a team by `org_id` and `team_id` using the route `PATCH /organizations/{org_id}/team/{team_id}/team-sync/group-mappings`.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/team-sync#create-or-update-idp-group-connections
+        """
 
         from ..models import (
             GroupMapping,
@@ -2811,7 +3615,17 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Team], list[TeamType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#list-child-teams"""
+        """teams/list-child-in-org
+
+        GET /orgs/{org}/teams/{team_slug}/teams
+
+        Lists the child teams of the team specified by `{team_slug}`.
+
+        > [!NOTE]
+        > You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/{org_id}/team/{team_id}/teams`.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#list-child-teams
+        """
 
         from ..models import Team
 
@@ -2841,7 +3655,17 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Team], list[TeamType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#list-child-teams"""
+        """teams/list-child-in-org
+
+        GET /orgs/{org}/teams/{team_slug}/teams
+
+        Lists the child teams of the team specified by `{team_slug}`.
+
+        > [!NOTE]
+        > You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/{org_id}/team/{team_id}/teams`.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#list-child-teams
+        """
 
         from ..models import Team
 
@@ -2868,7 +3692,15 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[TeamFull, TeamFullType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#get-a-team-legacy"""
+        """DEPRECATED teams/get-legacy
+
+        GET /teams/{team_id}
+
+        > [!WARNING]
+        > **Endpoint closing down notice:** This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the [Get a team by name](https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#get-a-team-by-name) endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#get-a-team-legacy
+        """
 
         from ..models import BasicError, TeamFull
 
@@ -2892,7 +3724,15 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[TeamFull, TeamFullType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#get-a-team-legacy"""
+        """DEPRECATED teams/get-legacy
+
+        GET /teams/{team_id}
+
+        > [!WARNING]
+        > **Endpoint closing down notice:** This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the [Get a team by name](https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#get-a-team-by-name) endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#get-a-team-legacy
+        """
 
         from ..models import BasicError, TeamFull
 
@@ -2916,7 +3756,19 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#delete-a-team-legacy"""
+        """DEPRECATED teams/delete-legacy
+
+        DELETE /teams/{team_id}
+
+        > [!WARNING]
+        > **Endpoint closing down notice:** This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the new [Delete a team](https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#delete-a-team) endpoint.
+
+        To delete a team, the authenticated user must be an organization owner or team maintainer.
+
+        If you are an organization owner, deleting a parent team will delete all of its child teams as well.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#delete-a-team-legacy
+        """
 
         from ..models import BasicError, ValidationError
 
@@ -2940,7 +3792,19 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#delete-a-team-legacy"""
+        """DEPRECATED teams/delete-legacy
+
+        DELETE /teams/{team_id}
+
+        > [!WARNING]
+        > **Endpoint closing down notice:** This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the new [Delete a team](https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#delete-a-team) endpoint.
+
+        To delete a team, the authenticated user must be an organization owner or team maintainer.
+
+        If you are an organization owner, deleting a parent team will delete all of its child teams as well.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#delete-a-team-legacy
+        """
 
         from ..models import BasicError, ValidationError
 
@@ -2992,7 +3856,20 @@ class TeamsClient:
         data: Missing[TeamsTeamIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[TeamFull, TeamFullType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#update-a-team-legacy"""
+        """DEPRECATED teams/update-legacy
+
+        PATCH /teams/{team_id}
+
+        > [!WARNING]
+        > **Endpoint closing down notice:** This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the new [Update a team](https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#update-a-team) endpoint.
+
+        To edit a team, the authenticated user must either be an organization owner or a team maintainer.
+
+        > [!NOTE]
+        > With nested teams, the `privacy` for parent teams cannot be `secret`.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#update-a-team-legacy
+        """
 
         from ..models import BasicError, TeamFull, TeamsTeamIdPatchBody, ValidationError
 
@@ -3056,7 +3933,20 @@ class TeamsClient:
         data: Missing[TeamsTeamIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[TeamFull, TeamFullType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#update-a-team-legacy"""
+        """DEPRECATED teams/update-legacy
+
+        PATCH /teams/{team_id}
+
+        > [!WARNING]
+        > **Endpoint closing down notice:** This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the new [Update a team](https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#update-a-team) endpoint.
+
+        To edit a team, the authenticated user must either be an organization owner or a team maintainer.
+
+        > [!NOTE]
+        > With nested teams, the `privacy` for parent teams cannot be `secret`.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#update-a-team-legacy
+        """
 
         from ..models import BasicError, TeamFull, TeamsTeamIdPatchBody, ValidationError
 
@@ -3095,7 +3985,19 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[TeamDiscussion], list[TeamDiscussionType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#list-discussions-legacy"""
+        """DEPRECATED teams/list-discussions-legacy
+
+        GET /teams/{team_id}/discussions
+
+        > [!WARNING]
+        > **Endpoint closing down notice:** This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the new [`List discussions`](https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#list-discussions) endpoint.
+
+        List all discussions on a team's page.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:discussion` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#list-discussions-legacy
+        """
 
         from ..models import TeamDiscussion
 
@@ -3126,7 +4028,19 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[TeamDiscussion], list[TeamDiscussionType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#list-discussions-legacy"""
+        """DEPRECATED teams/list-discussions-legacy
+
+        GET /teams/{team_id}/discussions
+
+        > [!WARNING]
+        > **Endpoint closing down notice:** This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the new [`List discussions`](https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#list-discussions) endpoint.
+
+        List all discussions on a team's page.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:discussion` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#list-discussions-legacy
+        """
 
         from ..models import TeamDiscussion
 
@@ -3177,7 +4091,21 @@ class TeamsClient:
         data: Missing[TeamsTeamIdDiscussionsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[TeamDiscussion, TeamDiscussionType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#create-a-discussion-legacy"""
+        """DEPRECATED teams/create-discussion-legacy
+
+        POST /teams/{team_id}/discussions
+
+        > [!WARNING]
+        > **Endpoint closing down notice:** This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the new [`Create a discussion`](https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#create-a-discussion) endpoint.
+
+        Creates a new discussion post on a team's page.
+
+        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest//github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)" and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/best-practices-for-using-the-rest-api)."
+
+        OAuth app tokens and personal access tokens (classic) need the `write:discussion` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#create-a-discussion-legacy
+        """
 
         from ..models import TeamDiscussion, TeamsTeamIdDiscussionsPostBody
 
@@ -3231,7 +4159,21 @@ class TeamsClient:
         data: Missing[TeamsTeamIdDiscussionsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[TeamDiscussion, TeamDiscussionType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#create-a-discussion-legacy"""
+        """DEPRECATED teams/create-discussion-legacy
+
+        POST /teams/{team_id}/discussions
+
+        > [!WARNING]
+        > **Endpoint closing down notice:** This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the new [`Create a discussion`](https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#create-a-discussion) endpoint.
+
+        Creates a new discussion post on a team's page.
+
+        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest//github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)" and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/best-practices-for-using-the-rest-api)."
+
+        OAuth app tokens and personal access tokens (classic) need the `write:discussion` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#create-a-discussion-legacy
+        """
 
         from ..models import TeamDiscussion, TeamsTeamIdDiscussionsPostBody
 
@@ -3263,7 +4205,19 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[TeamDiscussion, TeamDiscussionType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#get-a-discussion-legacy"""
+        """DEPRECATED teams/get-discussion-legacy
+
+        GET /teams/{team_id}/discussions/{discussion_number}
+
+        > [!WARNING]
+        > **Endpoint closing down notice:** This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the new [Get a discussion](https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#get-a-discussion) endpoint.
+
+        Get a specific discussion on a team's page.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:discussion` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#get-a-discussion-legacy
+        """
 
         from ..models import TeamDiscussion
 
@@ -3285,7 +4239,19 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[TeamDiscussion, TeamDiscussionType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#get-a-discussion-legacy"""
+        """DEPRECATED teams/get-discussion-legacy
+
+        GET /teams/{team_id}/discussions/{discussion_number}
+
+        > [!WARNING]
+        > **Endpoint closing down notice:** This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the new [Get a discussion](https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#get-a-discussion) endpoint.
+
+        Get a specific discussion on a team's page.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:discussion` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#get-a-discussion-legacy
+        """
 
         from ..models import TeamDiscussion
 
@@ -3307,7 +4273,19 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#delete-a-discussion-legacy"""
+        """DEPRECATED teams/delete-discussion-legacy
+
+        DELETE /teams/{team_id}/discussions/{discussion_number}
+
+        > [!WARNING]
+        > **Endpoint closing down notice:** This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the new [`Delete a discussion`](https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#delete-a-discussion) endpoint.
+
+        Delete a discussion from a team's page.
+
+        OAuth app tokens and personal access tokens (classic) need the `write:discussion` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#delete-a-discussion-legacy
+        """
 
         url = f"/teams/{team_id}/discussions/{discussion_number}"
 
@@ -3326,7 +4304,19 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#delete-a-discussion-legacy"""
+        """DEPRECATED teams/delete-discussion-legacy
+
+        DELETE /teams/{team_id}/discussions/{discussion_number}
+
+        > [!WARNING]
+        > **Endpoint closing down notice:** This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the new [`Delete a discussion`](https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#delete-a-discussion) endpoint.
+
+        Delete a discussion from a team's page.
+
+        OAuth app tokens and personal access tokens (classic) need the `write:discussion` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#delete-a-discussion-legacy
+        """
 
         url = f"/teams/{team_id}/discussions/{discussion_number}"
 
@@ -3369,7 +4359,19 @@ class TeamsClient:
         data: Missing[TeamsTeamIdDiscussionsDiscussionNumberPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[TeamDiscussion, TeamDiscussionType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#update-a-discussion-legacy"""
+        """DEPRECATED teams/update-discussion-legacy
+
+        PATCH /teams/{team_id}/discussions/{discussion_number}
+
+        > [!WARNING]
+        > **Endpoint closing down notice:** This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the new [Update a discussion](https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#update-a-discussion) endpoint.
+
+        Edits the title and body text of a discussion post. Only the parameters you provide are updated.
+
+        OAuth app tokens and personal access tokens (classic) need the `write:discussion` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#update-a-discussion-legacy
+        """
 
         from ..models import (
             TeamDiscussion,
@@ -3430,7 +4432,19 @@ class TeamsClient:
         data: Missing[TeamsTeamIdDiscussionsDiscussionNumberPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[TeamDiscussion, TeamDiscussionType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#update-a-discussion-legacy"""
+        """DEPRECATED teams/update-discussion-legacy
+
+        PATCH /teams/{team_id}/discussions/{discussion_number}
+
+        > [!WARNING]
+        > **Endpoint closing down notice:** This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the new [Update a discussion](https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#update-a-discussion) endpoint.
+
+        Edits the title and body text of a discussion post. Only the parameters you provide are updated.
+
+        OAuth app tokens and personal access tokens (classic) need the `write:discussion` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussions#update-a-discussion-legacy
+        """
 
         from ..models import (
             TeamDiscussion,
@@ -3470,7 +4484,19 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[TeamDiscussionComment], list[TeamDiscussionCommentType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#list-discussion-comments-legacy"""
+        """DEPRECATED teams/list-discussion-comments-legacy
+
+        GET /teams/{team_id}/discussions/{discussion_number}/comments
+
+        > [!WARNING]
+        > **Endpoint closing down notice:** This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the new [List discussion comments](https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#list-discussion-comments) endpoint.
+
+        List all comments on a team discussion.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:discussion` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#list-discussion-comments-legacy
+        """
 
         from ..models import TeamDiscussionComment
 
@@ -3502,7 +4528,19 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[TeamDiscussionComment], list[TeamDiscussionCommentType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#list-discussion-comments-legacy"""
+        """DEPRECATED teams/list-discussion-comments-legacy
+
+        GET /teams/{team_id}/discussions/{discussion_number}/comments
+
+        > [!WARNING]
+        > **Endpoint closing down notice:** This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the new [List discussion comments](https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#list-discussion-comments) endpoint.
+
+        List all comments on a team discussion.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:discussion` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#list-discussion-comments-legacy
+        """
 
         from ..models import TeamDiscussionComment
 
@@ -3556,7 +4594,21 @@ class TeamsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[TeamDiscussionComment, TeamDiscussionCommentType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#create-a-discussion-comment-legacy"""
+        """DEPRECATED teams/create-discussion-comment-legacy
+
+        POST /teams/{team_id}/discussions/{discussion_number}/comments
+
+        > [!WARNING]
+        > **Endpoint closing down notice:** This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the new [Create a discussion comment](https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#create-a-discussion-comment) endpoint.
+
+        Creates a new comment on a team discussion.
+
+        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest//github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)" and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/best-practices-for-using-the-rest-api)."
+
+        OAuth app tokens and personal access tokens (classic) need the `write:discussion` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#create-a-discussion-comment-legacy
+        """
 
         from ..models import (
             TeamDiscussionComment,
@@ -3618,7 +4670,21 @@ class TeamsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[TeamDiscussionComment, TeamDiscussionCommentType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#create-a-discussion-comment-legacy"""
+        """DEPRECATED teams/create-discussion-comment-legacy
+
+        POST /teams/{team_id}/discussions/{discussion_number}/comments
+
+        > [!WARNING]
+        > **Endpoint closing down notice:** This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the new [Create a discussion comment](https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#create-a-discussion-comment) endpoint.
+
+        Creates a new comment on a team discussion.
+
+        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest//github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)" and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/best-practices-for-using-the-rest-api)."
+
+        OAuth app tokens and personal access tokens (classic) need the `write:discussion` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#create-a-discussion-comment-legacy
+        """
 
         from ..models import (
             TeamDiscussionComment,
@@ -3656,7 +4722,19 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[TeamDiscussionComment, TeamDiscussionCommentType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#get-a-discussion-comment-legacy"""
+        """DEPRECATED teams/get-discussion-comment-legacy
+
+        GET /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}
+
+        > [!WARNING]
+        > **Endpoint closing down notice:** This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the new [Get a discussion comment](https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#get-a-discussion-comment) endpoint.
+
+        Get a specific comment on a team discussion.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:discussion` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#get-a-discussion-comment-legacy
+        """
 
         from ..models import TeamDiscussionComment
 
@@ -3679,7 +4757,19 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[TeamDiscussionComment, TeamDiscussionCommentType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#get-a-discussion-comment-legacy"""
+        """DEPRECATED teams/get-discussion-comment-legacy
+
+        GET /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}
+
+        > [!WARNING]
+        > **Endpoint closing down notice:** This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the new [Get a discussion comment](https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#get-a-discussion-comment) endpoint.
+
+        Get a specific comment on a team discussion.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:discussion` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#get-a-discussion-comment-legacy
+        """
 
         from ..models import TeamDiscussionComment
 
@@ -3702,7 +4792,19 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#delete-a-discussion-comment-legacy"""
+        """DEPRECATED teams/delete-discussion-comment-legacy
+
+        DELETE /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}
+
+        > [!WARNING]
+        > **Endpoint closing down notice:** This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the new [Delete a discussion comment](https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#delete-a-discussion-comment) endpoint.
+
+        Deletes a comment on a team discussion.
+
+        OAuth app tokens and personal access tokens (classic) need the `write:discussion` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#delete-a-discussion-comment-legacy
+        """
 
         url = f"/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}"
 
@@ -3722,7 +4824,19 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#delete-a-discussion-comment-legacy"""
+        """DEPRECATED teams/delete-discussion-comment-legacy
+
+        DELETE /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}
+
+        > [!WARNING]
+        > **Endpoint closing down notice:** This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the new [Delete a discussion comment](https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#delete-a-discussion-comment) endpoint.
+
+        Deletes a comment on a team discussion.
+
+        OAuth app tokens and personal access tokens (classic) need the `write:discussion` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#delete-a-discussion-comment-legacy
+        """
 
         url = f"/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}"
 
@@ -3769,7 +4883,19 @@ class TeamsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[TeamDiscussionComment, TeamDiscussionCommentType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#update-a-discussion-comment-legacy"""
+        """DEPRECATED teams/update-discussion-comment-legacy
+
+        PATCH /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}
+
+        > [!WARNING]
+        > **Endpoint closing down notice:** This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the new [Update a discussion comment](https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#update-a-discussion-comment) endpoint.
+
+        Edits the body text of a discussion comment.
+
+        OAuth app tokens and personal access tokens (classic) need the `write:discussion` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#update-a-discussion-comment-legacy
+        """
 
         from ..models import (
             TeamDiscussionComment,
@@ -3835,7 +4961,19 @@ class TeamsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[TeamDiscussionComment, TeamDiscussionCommentType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#update-a-discussion-comment-legacy"""
+        """DEPRECATED teams/update-discussion-comment-legacy
+
+        PATCH /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}
+
+        > [!WARNING]
+        > **Endpoint closing down notice:** This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the new [Update a discussion comment](https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#update-a-discussion-comment) endpoint.
+
+        Edits the body text of a discussion comment.
+
+        OAuth app tokens and personal access tokens (classic) need the `write:discussion` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/discussion-comments#update-a-discussion-comment-legacy
+        """
 
         from ..models import (
             TeamDiscussionComment,
@@ -3874,7 +5012,17 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[OrganizationInvitation], list[OrganizationInvitationType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/members#list-pending-team-invitations-legacy"""
+        """DEPRECATED teams/list-pending-invitations-legacy
+
+        GET /teams/{team_id}/invitations
+
+        > [!WARNING]
+        > **Endpoint closing down notice:** This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the new [`List pending team invitations`](https://docs.github.com/enterprise-cloud@latest//rest/teams/members#list-pending-team-invitations) endpoint.
+
+        The return hash contains a `role` field which refers to the Organization Invitation role and will be one of the following values: `direct_member`, `admin`, `billing_manager`, `hiring_manager`, or `reinstate`. If the invitee is not a GitHub Enterprise Cloud member, the `login` field in the return hash will be `null`.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/members#list-pending-team-invitations-legacy
+        """
 
         from ..models import OrganizationInvitation
 
@@ -3903,7 +5051,17 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[OrganizationInvitation], list[OrganizationInvitationType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/members#list-pending-team-invitations-legacy"""
+        """DEPRECATED teams/list-pending-invitations-legacy
+
+        GET /teams/{team_id}/invitations
+
+        > [!WARNING]
+        > **Endpoint closing down notice:** This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the new [`List pending team invitations`](https://docs.github.com/enterprise-cloud@latest//rest/teams/members#list-pending-team-invitations) endpoint.
+
+        The return hash contains a `role` field which refers to the Organization Invitation role and will be one of the following values: `direct_member`, `admin`, `billing_manager`, `hiring_manager`, or `reinstate`. If the invitee is not a GitHub Enterprise Cloud member, the `login` field in the return hash will be `null`.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/members#list-pending-team-invitations-legacy
+        """
 
         from ..models import OrganizationInvitation
 
@@ -3933,7 +5091,17 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/members#list-team-members-legacy"""
+        """DEPRECATED teams/list-members-legacy
+
+        GET /teams/{team_id}/members
+
+        > [!WARNING]
+        > **Endpoint closing down notice:** This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the new [`List team members`](https://docs.github.com/enterprise-cloud@latest//rest/teams/members#list-team-members) endpoint.
+
+        Team members will include the members of child teams.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/members#list-team-members-legacy
+        """
 
         from ..models import BasicError, SimpleUser
 
@@ -3967,7 +5135,17 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/members#list-team-members-legacy"""
+        """DEPRECATED teams/list-members-legacy
+
+        GET /teams/{team_id}/members
+
+        > [!WARNING]
+        > **Endpoint closing down notice:** This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the new [`List team members`](https://docs.github.com/enterprise-cloud@latest//rest/teams/members#list-team-members) endpoint.
+
+        Team members will include the members of child teams.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/members#list-team-members-legacy
+        """
 
         from ..models import BasicError, SimpleUser
 
@@ -3999,7 +5177,18 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/members#get-team-member-legacy"""
+        """DEPRECATED teams/get-member-legacy
+
+        GET /teams/{team_id}/members/{username}
+
+        The "Get team member" endpoint (described below) is closing down.
+
+        We recommend using the [Get team membership for a user](https://docs.github.com/enterprise-cloud@latest//rest/teams/members#get-team-membership-for-a-user) endpoint instead. It allows you to get both active and pending memberships.
+
+        To list members in a team, the team must be visible to the authenticated user.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/members#get-team-member-legacy
+        """
 
         url = f"/teams/{team_id}/members/{username}"
 
@@ -4019,7 +5208,18 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/members#get-team-member-legacy"""
+        """DEPRECATED teams/get-member-legacy
+
+        GET /teams/{team_id}/members/{username}
+
+        The "Get team member" endpoint (described below) is closing down.
+
+        We recommend using the [Get team membership for a user](https://docs.github.com/enterprise-cloud@latest//rest/teams/members#get-team-membership-for-a-user) endpoint instead. It allows you to get both active and pending memberships.
+
+        To list members in a team, the team must be visible to the authenticated user.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/members#get-team-member-legacy
+        """
 
         url = f"/teams/{team_id}/members/{username}"
 
@@ -4039,7 +5239,25 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/members#add-team-member-legacy"""
+        """DEPRECATED teams/add-member-legacy
+
+        PUT /teams/{team_id}/members/{username}
+
+        The "Add team member" endpoint (described below) is closing down.
+
+        We recommend using the [Add or update team membership for a user](https://docs.github.com/enterprise-cloud@latest//rest/teams/members#add-or-update-team-membership-for-a-user) endpoint instead. It allows you to invite new organization members to your teams.
+
+        Team synchronization is available for organizations using GitHub Enterprise Cloud. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+
+        To add someone to a team, the authenticated user must be an organization owner or a team maintainer in the team they're changing. The person being added to the team must be a member of the team's organization.
+
+        > [!NOTE]
+        > When you have team synchronization set up for a team with your organization's identity provider (IdP), you will see an error if you attempt to use the API for making changes to the team's membership. If you have access to manage group membership in your IdP, you can manage GitHub Enterprise Cloud team membership through your identity provider, which automatically adds and removes team members in an organization. For more information, see "[Synchronizing teams between your identity provider and GitHub Enterprise Cloud](https://docs.github.com/enterprise-cloud@latest//articles/synchronizing-teams-between-your-identity-provider-and-github/)."
+
+        Note that you'll need to set `Content-Length` to zero when calling out to this endpoint. For more information, see "[HTTP method](https://docs.github.com/enterprise-cloud@latest//rest/guides/getting-started-with-the-rest-api#http-method)."
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/members#add-team-member-legacy
+        """
 
         from ..models import BasicError
 
@@ -4063,7 +5281,25 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/members#add-team-member-legacy"""
+        """DEPRECATED teams/add-member-legacy
+
+        PUT /teams/{team_id}/members/{username}
+
+        The "Add team member" endpoint (described below) is closing down.
+
+        We recommend using the [Add or update team membership for a user](https://docs.github.com/enterprise-cloud@latest//rest/teams/members#add-or-update-team-membership-for-a-user) endpoint instead. It allows you to invite new organization members to your teams.
+
+        Team synchronization is available for organizations using GitHub Enterprise Cloud. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+
+        To add someone to a team, the authenticated user must be an organization owner or a team maintainer in the team they're changing. The person being added to the team must be a member of the team's organization.
+
+        > [!NOTE]
+        > When you have team synchronization set up for a team with your organization's identity provider (IdP), you will see an error if you attempt to use the API for making changes to the team's membership. If you have access to manage group membership in your IdP, you can manage GitHub Enterprise Cloud team membership through your identity provider, which automatically adds and removes team members in an organization. For more information, see "[Synchronizing teams between your identity provider and GitHub Enterprise Cloud](https://docs.github.com/enterprise-cloud@latest//articles/synchronizing-teams-between-your-identity-provider-and-github/)."
+
+        Note that you'll need to set `Content-Length` to zero when calling out to this endpoint. For more information, see "[HTTP method](https://docs.github.com/enterprise-cloud@latest//rest/guides/getting-started-with-the-rest-api#http-method)."
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/members#add-team-member-legacy
+        """
 
         from ..models import BasicError
 
@@ -4087,7 +5323,23 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/members#remove-team-member-legacy"""
+        """DEPRECATED teams/remove-member-legacy
+
+        DELETE /teams/{team_id}/members/{username}
+
+        The "Remove team member" endpoint (described below) is closing down.
+
+        We recommend using the [Remove team membership for a user](https://docs.github.com/enterprise-cloud@latest//rest/teams/members#remove-team-membership-for-a-user) endpoint instead. It allows you to remove both active and pending memberships.
+
+        Team synchronization is available for organizations using GitHub Enterprise Cloud. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+
+        To remove a team member, the authenticated user must have 'admin' permissions to the team or be an owner of the org that the team is associated with. Removing a team member does not delete the user, it just removes them from the team.
+
+        > [!NOTE]
+        > When you have team synchronization set up for a team with your organization's identity provider (IdP), you will see an error if you attempt to use the API for making changes to the team's membership. If you have access to manage group membership in your IdP, you can manage GitHub Enterprise Cloud team membership through your identity provider, which automatically adds and removes team members in an organization. For more information, see "[Synchronizing teams between your identity provider and GitHub Enterprise Cloud](https://docs.github.com/enterprise-cloud@latest//articles/synchronizing-teams-between-your-identity-provider-and-github/)."
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/members#remove-team-member-legacy
+        """
 
         url = f"/teams/{team_id}/members/{username}"
 
@@ -4107,7 +5359,23 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/members#remove-team-member-legacy"""
+        """DEPRECATED teams/remove-member-legacy
+
+        DELETE /teams/{team_id}/members/{username}
+
+        The "Remove team member" endpoint (described below) is closing down.
+
+        We recommend using the [Remove team membership for a user](https://docs.github.com/enterprise-cloud@latest//rest/teams/members#remove-team-membership-for-a-user) endpoint instead. It allows you to remove both active and pending memberships.
+
+        Team synchronization is available for organizations using GitHub Enterprise Cloud. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+
+        To remove a team member, the authenticated user must have 'admin' permissions to the team or be an owner of the org that the team is associated with. Removing a team member does not delete the user, it just removes them from the team.
+
+        > [!NOTE]
+        > When you have team synchronization set up for a team with your organization's identity provider (IdP), you will see an error if you attempt to use the API for making changes to the team's membership. If you have access to manage group membership in your IdP, you can manage GitHub Enterprise Cloud team membership through your identity provider, which automatically adds and removes team members in an organization. For more information, see "[Synchronizing teams between your identity provider and GitHub Enterprise Cloud](https://docs.github.com/enterprise-cloud@latest//articles/synchronizing-teams-between-your-identity-provider-and-github/)."
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/members#remove-team-member-legacy
+        """
 
         url = f"/teams/{team_id}/members/{username}"
 
@@ -4127,7 +5395,24 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[TeamMembership, TeamMembershipType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/members#get-team-membership-for-a-user-legacy"""
+        """DEPRECATED teams/get-membership-for-user-legacy
+
+        GET /teams/{team_id}/memberships/{username}
+
+        > [!WARNING]
+        > **Endpoint closing down notice:** This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the new [Get team membership for a user](https://docs.github.com/enterprise-cloud@latest//rest/teams/members#get-team-membership-for-a-user) endpoint.
+
+        Team members will include the members of child teams.
+
+        To get a user's membership with a team, the team must be visible to the authenticated user.
+
+        **Note:**
+        The response contains the `state` of the membership and the member's `role`.
+
+        The `role` for organization owners is set to `maintainer`. For more information about `maintainer` roles, see [Create a team](https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#create-a-team).
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/members#get-team-membership-for-a-user-legacy
+        """
 
         from ..models import BasicError, TeamMembership
 
@@ -4152,7 +5437,24 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[TeamMembership, TeamMembershipType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/members#get-team-membership-for-a-user-legacy"""
+        """DEPRECATED teams/get-membership-for-user-legacy
+
+        GET /teams/{team_id}/memberships/{username}
+
+        > [!WARNING]
+        > **Endpoint closing down notice:** This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the new [Get team membership for a user](https://docs.github.com/enterprise-cloud@latest//rest/teams/members#get-team-membership-for-a-user) endpoint.
+
+        Team members will include the members of child teams.
+
+        To get a user's membership with a team, the team must be visible to the authenticated user.
+
+        **Note:**
+        The response contains the `state` of the membership and the member's `role`.
+
+        The `role` for organization owners is set to `maintainer`. For more information about `maintainer` roles, see [Create a team](https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#create-a-team).
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/members#get-team-membership-for-a-user-legacy
+        """
 
         from ..models import BasicError, TeamMembership
 
@@ -4200,7 +5502,26 @@ class TeamsClient:
         data: Missing[TeamsTeamIdMembershipsUsernamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[TeamMembership, TeamMembershipType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/members#add-or-update-team-membership-for-a-user-legacy"""
+        """DEPRECATED teams/add-or-update-membership-for-user-legacy
+
+        PUT /teams/{team_id}/memberships/{username}
+
+        > [!WARNING]
+        > **Endpoint closing down notice:** This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the new [Add or update team membership for a user](https://docs.github.com/enterprise-cloud@latest//rest/teams/members#add-or-update-team-membership-for-a-user) endpoint.
+
+        Team synchronization is available for organizations using GitHub Enterprise Cloud. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+
+        If the user is already a member of the team's organization, this endpoint will add the user to the team. To add a membership between an organization member and a team, the authenticated user must be an organization owner or a team maintainer.
+
+        > [!NOTE]
+        > When you have team synchronization set up for a team with your organization's identity provider (IdP), you will see an error if you attempt to use the API for making changes to the team's membership. If you have access to manage group membership in your IdP, you can manage GitHub Enterprise Cloud team membership through your identity provider, which automatically adds and removes team members in an organization. For more information, see "[Synchronizing teams between your identity provider and GitHub Enterprise Cloud](https://docs.github.com/enterprise-cloud@latest//articles/synchronizing-teams-between-your-identity-provider-and-github/)."
+
+        If the user is unaffiliated with the team's organization, this endpoint will send an invitation to the user via email. This newly-created membership will be in the "pending" state until the user accepts the invitation, at which point the membership will transition to the "active" state and the user will be added as a member of the team. To add a membership between an unaffiliated user and a team, the authenticated user must be an organization owner.
+
+        If the user is already a member of the team, this endpoint will update the role of the team member's role. To update the membership of a team member, the authenticated user must be an organization owner or a team maintainer.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/members#add-or-update-team-membership-for-a-user-legacy
+        """
 
         from ..models import (
             BasicError,
@@ -4262,7 +5583,26 @@ class TeamsClient:
         data: Missing[TeamsTeamIdMembershipsUsernamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[TeamMembership, TeamMembershipType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/members#add-or-update-team-membership-for-a-user-legacy"""
+        """DEPRECATED teams/add-or-update-membership-for-user-legacy
+
+        PUT /teams/{team_id}/memberships/{username}
+
+        > [!WARNING]
+        > **Endpoint closing down notice:** This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the new [Add or update team membership for a user](https://docs.github.com/enterprise-cloud@latest//rest/teams/members#add-or-update-team-membership-for-a-user) endpoint.
+
+        Team synchronization is available for organizations using GitHub Enterprise Cloud. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+
+        If the user is already a member of the team's organization, this endpoint will add the user to the team. To add a membership between an organization member and a team, the authenticated user must be an organization owner or a team maintainer.
+
+        > [!NOTE]
+        > When you have team synchronization set up for a team with your organization's identity provider (IdP), you will see an error if you attempt to use the API for making changes to the team's membership. If you have access to manage group membership in your IdP, you can manage GitHub Enterprise Cloud team membership through your identity provider, which automatically adds and removes team members in an organization. For more information, see "[Synchronizing teams between your identity provider and GitHub Enterprise Cloud](https://docs.github.com/enterprise-cloud@latest//articles/synchronizing-teams-between-your-identity-provider-and-github/)."
+
+        If the user is unaffiliated with the team's organization, this endpoint will send an invitation to the user via email. This newly-created membership will be in the "pending" state until the user accepts the invitation, at which point the membership will transition to the "active" state and the user will be added as a member of the team. To add a membership between an unaffiliated user and a team, the authenticated user must be an organization owner.
+
+        If the user is already a member of the team, this endpoint will update the role of the team member's role. To update the membership of a team member, the authenticated user must be an organization owner or a team maintainer.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/members#add-or-update-team-membership-for-a-user-legacy
+        """
 
         from ..models import (
             BasicError,
@@ -4301,7 +5641,22 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/members#remove-team-membership-for-a-user-legacy"""
+        """DEPRECATED teams/remove-membership-for-user-legacy
+
+        DELETE /teams/{team_id}/memberships/{username}
+
+        > [!WARNING]
+        > **Endpoint closing down notice:** This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the new [Remove team membership for a user](https://docs.github.com/enterprise-cloud@latest//rest/teams/members#remove-team-membership-for-a-user) endpoint.
+
+        Team synchronization is available for organizations using GitHub Enterprise Cloud. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+
+        To remove a membership between a user and a team, the authenticated user must have 'admin' permissions to the team or be an owner of the organization that the team is associated with. Removing team membership does not delete the user, it just removes their membership from the team.
+
+        > [!NOTE]
+        > When you have team synchronization set up for a team with your organization's identity provider (IdP), you will see an error if you attempt to use the API for making changes to the team's membership. If you have access to manage group membership in your IdP, you can manage GitHub Enterprise Cloud team membership through your identity provider, which automatically adds and removes team members in an organization. For more information, see "[Synchronizing teams between your identity provider and GitHub Enterprise Cloud](https://docs.github.com/enterprise-cloud@latest//articles/synchronizing-teams-between-your-identity-provider-and-github/)."
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/members#remove-team-membership-for-a-user-legacy
+        """
 
         url = f"/teams/{team_id}/memberships/{username}"
 
@@ -4321,7 +5676,22 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/members#remove-team-membership-for-a-user-legacy"""
+        """DEPRECATED teams/remove-membership-for-user-legacy
+
+        DELETE /teams/{team_id}/memberships/{username}
+
+        > [!WARNING]
+        > **Endpoint closing down notice:** This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the new [Remove team membership for a user](https://docs.github.com/enterprise-cloud@latest//rest/teams/members#remove-team-membership-for-a-user) endpoint.
+
+        Team synchronization is available for organizations using GitHub Enterprise Cloud. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+
+        To remove a membership between a user and a team, the authenticated user must have 'admin' permissions to the team or be an owner of the organization that the team is associated with. Removing team membership does not delete the user, it just removes their membership from the team.
+
+        > [!NOTE]
+        > When you have team synchronization set up for a team with your organization's identity provider (IdP), you will see an error if you attempt to use the API for making changes to the team's membership. If you have access to manage group membership in your IdP, you can manage GitHub Enterprise Cloud team membership through your identity provider, which automatically adds and removes team members in an organization. For more information, see "[Synchronizing teams between your identity provider and GitHub Enterprise Cloud](https://docs.github.com/enterprise-cloud@latest//articles/synchronizing-teams-between-your-identity-provider-and-github/)."
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/members#remove-team-membership-for-a-user-legacy
+        """
 
         url = f"/teams/{team_id}/memberships/{username}"
 
@@ -4342,7 +5712,16 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[TeamProject], list[TeamProjectType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#list-team-projects-legacy"""
+        """DEPRECATED teams/list-projects-legacy
+
+        GET /teams/{team_id}/projects
+
+        > [!WARNING]
+        > **Closing down notice:** Projects (classic) is being deprecated in favor of the new Projects experience.
+        > See the [changelog](https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/) for more information.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#list-team-projects-legacy
+        """
 
         from ..models import BasicError, TeamProject
 
@@ -4374,7 +5753,16 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[TeamProject], list[TeamProjectType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#list-team-projects-legacy"""
+        """DEPRECATED teams/list-projects-legacy
+
+        GET /teams/{team_id}/projects
+
+        > [!WARNING]
+        > **Closing down notice:** Projects (classic) is being deprecated in favor of the new Projects experience.
+        > See the [changelog](https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/) for more information.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#list-team-projects-legacy
+        """
 
         from ..models import BasicError, TeamProject
 
@@ -4405,7 +5793,16 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[TeamProject, TeamProjectType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#check-team-permissions-for-a-project-legacy"""
+        """DEPRECATED teams/check-permissions-for-project-legacy
+
+        GET /teams/{team_id}/projects/{project_id}
+
+        > [!WARNING]
+        > **Closing down notice:** Projects (classic) is being deprecated in favor of the new Projects experience.
+        > See the [changelog](https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/) for more information.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#check-team-permissions-for-a-project-legacy
+        """
 
         from ..models import TeamProject
 
@@ -4428,7 +5825,16 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[TeamProject, TeamProjectType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#check-team-permissions-for-a-project-legacy"""
+        """DEPRECATED teams/check-permissions-for-project-legacy
+
+        GET /teams/{team_id}/projects/{project_id}
+
+        > [!WARNING]
+        > **Closing down notice:** Projects (classic) is being deprecated in favor of the new Projects experience.
+        > See the [changelog](https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/) for more information.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#check-team-permissions-for-a-project-legacy
+        """
 
         from ..models import TeamProject
 
@@ -4474,7 +5880,16 @@ class TeamsClient:
         data: Missing[TeamsTeamIdProjectsProjectIdPutBodyType] = UNSET,
         **kwargs,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#add-or-update-team-project-permissions-legacy"""
+        """DEPRECATED teams/add-or-update-project-permissions-legacy
+
+        PUT /teams/{team_id}/projects/{project_id}
+
+        > [!WARNING]
+        > **Closing down notice:** Projects (classic) is being deprecated in favor of the new Projects experience.
+        > See the [changelog](https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/) for more information.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#add-or-update-team-project-permissions-legacy
+        """
 
         from ..models import (
             BasicError,
@@ -4538,7 +5953,16 @@ class TeamsClient:
         data: Missing[TeamsTeamIdProjectsProjectIdPutBodyType] = UNSET,
         **kwargs,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#add-or-update-team-project-permissions-legacy"""
+        """DEPRECATED teams/add-or-update-project-permissions-legacy
+
+        PUT /teams/{team_id}/projects/{project_id}
+
+        > [!WARNING]
+        > **Closing down notice:** Projects (classic) is being deprecated in favor of the new Projects experience.
+        > See the [changelog](https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/) for more information.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#add-or-update-team-project-permissions-legacy
+        """
 
         from ..models import (
             BasicError,
@@ -4579,7 +6003,16 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#remove-a-project-from-a-team-legacy"""
+        """DEPRECATED teams/remove-project-legacy
+
+        DELETE /teams/{team_id}/projects/{project_id}
+
+        > [!WARNING]
+        > **Closing down notice:** Projects (classic) is being deprecated in favor of the new Projects experience.
+        > See the [changelog](https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/) for more information.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#remove-a-project-from-a-team-legacy
+        """
 
         from ..models import BasicError, ValidationError
 
@@ -4604,7 +6037,16 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#remove-a-project-from-a-team-legacy"""
+        """DEPRECATED teams/remove-project-legacy
+
+        DELETE /teams/{team_id}/projects/{project_id}
+
+        > [!WARNING]
+        > **Closing down notice:** Projects (classic) is being deprecated in favor of the new Projects experience.
+        > See the [changelog](https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/) for more information.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#remove-a-project-from-a-team-legacy
+        """
 
         from ..models import BasicError, ValidationError
 
@@ -4630,7 +6072,15 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#list-team-repositories-legacy"""
+        """DEPRECATED teams/list-repos-legacy
+
+        GET /teams/{team_id}/repos
+
+        > [!WARNING]
+        > **Endpoint closing down notice:** This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the new [List team repositories](https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#list-team-repositories) endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#list-team-repositories-legacy
+        """
 
         from ..models import BasicError, MinimalRepository
 
@@ -4662,7 +6112,15 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#list-team-repositories-legacy"""
+        """DEPRECATED teams/list-repos-legacy
+
+        GET /teams/{team_id}/repos
+
+        > [!WARNING]
+        > **Endpoint closing down notice:** This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the new [List team repositories](https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#list-team-repositories) endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#list-team-repositories-legacy
+        """
 
         from ..models import BasicError, MinimalRepository
 
@@ -4694,7 +6152,20 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[TeamRepository, TeamRepositoryType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#check-team-permissions-for-a-repository-legacy"""
+        """DEPRECATED teams/check-permissions-for-repo-legacy
+
+        GET /teams/{team_id}/repos/{owner}/{repo}
+
+        > [!WARNING]
+        > **Endpoint closing down notice:** This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the new [Check team permissions for a repository](https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#check-team-permissions-for-a-repository) endpoint.
+
+        > [!NOTE]
+        > Repositories inherited through a parent team will also be checked.
+
+        You can also get information about the specified repository, including what permissions the team grants on it, by passing the following custom [media type](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types/) via the `Accept` header:
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#check-team-permissions-for-a-repository-legacy
+        """
 
         from ..models import TeamRepository
 
@@ -4718,7 +6189,20 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[TeamRepository, TeamRepositoryType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#check-team-permissions-for-a-repository-legacy"""
+        """DEPRECATED teams/check-permissions-for-repo-legacy
+
+        GET /teams/{team_id}/repos/{owner}/{repo}
+
+        > [!WARNING]
+        > **Endpoint closing down notice:** This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the new [Check team permissions for a repository](https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#check-team-permissions-for-a-repository) endpoint.
+
+        > [!NOTE]
+        > Repositories inherited through a parent team will also be checked.
+
+        You can also get information about the specified repository, including what permissions the team grants on it, by passing the following custom [media type](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types/) via the `Accept` header:
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#check-team-permissions-for-a-repository-legacy
+        """
 
         from ..models import TeamRepository
 
@@ -4767,7 +6251,19 @@ class TeamsClient:
         data: Missing[TeamsTeamIdReposOwnerRepoPutBodyType] = UNSET,
         **kwargs,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#add-or-update-team-repository-permissions-legacy"""
+        """DEPRECATED teams/add-or-update-repo-permissions-legacy
+
+        PUT /teams/{team_id}/repos/{owner}/{repo}
+
+        > [!WARNING]
+        > **Endpoint closing down notice:** This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the new "[Add or update team repository permissions](https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#add-or-update-team-repository-permissions)" endpoint.
+
+        To add a repository to a team or update the team's permission on a repository, the authenticated user must have admin access to the repository, and must be able to see the team. The repository must be owned by the organization, or a direct fork of a repository owned by the organization. You will get a `422 Unprocessable Entity` status if you attempt to add a repository to a team that is not owned by the organization.
+
+        Note that, if you choose not to pass any parameters, you'll need to set `Content-Length` to zero when calling out to this endpoint. For more information, see "[HTTP method](https://docs.github.com/enterprise-cloud@latest//rest/guides/getting-started-with-the-rest-api#http-method)."
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#add-or-update-team-repository-permissions-legacy
+        """
 
         from ..models import (
             BasicError,
@@ -4832,7 +6328,19 @@ class TeamsClient:
         data: Missing[TeamsTeamIdReposOwnerRepoPutBodyType] = UNSET,
         **kwargs,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#add-or-update-team-repository-permissions-legacy"""
+        """DEPRECATED teams/add-or-update-repo-permissions-legacy
+
+        PUT /teams/{team_id}/repos/{owner}/{repo}
+
+        > [!WARNING]
+        > **Endpoint closing down notice:** This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the new "[Add or update team repository permissions](https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#add-or-update-team-repository-permissions)" endpoint.
+
+        To add a repository to a team or update the team's permission on a repository, the authenticated user must have admin access to the repository, and must be able to see the team. The repository must be owned by the organization, or a direct fork of a repository owned by the organization. You will get a `422 Unprocessable Entity` status if you attempt to add a repository to a team that is not owned by the organization.
+
+        Note that, if you choose not to pass any parameters, you'll need to set `Content-Length` to zero when calling out to this endpoint. For more information, see "[HTTP method](https://docs.github.com/enterprise-cloud@latest//rest/guides/getting-started-with-the-rest-api#http-method)."
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#add-or-update-team-repository-permissions-legacy
+        """
 
         from ..models import (
             BasicError,
@@ -4872,7 +6380,17 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#remove-a-repository-from-a-team-legacy"""
+        """DEPRECATED teams/remove-repo-legacy
+
+        DELETE /teams/{team_id}/repos/{owner}/{repo}
+
+        > [!WARNING]
+        > **Endpoint closing down notice:** This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the new [Remove a repository from a team](https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#remove-a-repository-from-a-team) endpoint.
+
+        If the authenticated user is an organization owner or a team maintainer, they can remove any repositories from the team. To remove a repository from a team as an organization member, the authenticated user must have admin access to the repository and must be able to see the team. NOTE: This does not delete the repository, it just removes it from the team.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#remove-a-repository-from-a-team-legacy
+        """
 
         url = f"/teams/{team_id}/repos/{owner}/{repo}"
 
@@ -4892,7 +6410,17 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#remove-a-repository-from-a-team-legacy"""
+        """DEPRECATED teams/remove-repo-legacy
+
+        DELETE /teams/{team_id}/repos/{owner}/{repo}
+
+        > [!WARNING]
+        > **Endpoint closing down notice:** This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the new [Remove a repository from a team](https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#remove-a-repository-from-a-team) endpoint.
+
+        If the authenticated user is an organization owner or a team maintainer, they can remove any repositories from the team. To remove a repository from a team as an organization member, the authenticated user must have admin access to the repository and must be able to see the team. NOTE: This does not delete the repository, it just removes it from the team.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#remove-a-repository-from-a-team-legacy
+        """
 
         url = f"/teams/{team_id}/repos/{owner}/{repo}"
 
@@ -4910,7 +6438,19 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[GroupMapping, GroupMappingType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/team-sync#list-idp-groups-for-a-team-legacy"""
+        """DEPRECATED teams/list-idp-groups-for-legacy
+
+        GET /teams/{team_id}/team-sync/group-mappings
+
+        > [!WARNING]
+        > **Endpoint closing down notice:** This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the new [`List IdP groups for a team`](https://docs.github.com/enterprise-cloud@latest//rest/teams/team-sync#list-idp-groups-for-a-team) endpoint.
+
+        Team synchronization is available for organizations using GitHub Enterprise Cloud. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+
+        List IdP groups connected to a team on GitHub Enterprise Cloud.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/team-sync#list-idp-groups-for-a-team-legacy
+        """
 
         from ..models import BasicError, GroupMapping
 
@@ -4935,7 +6475,19 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[GroupMapping, GroupMappingType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/team-sync#list-idp-groups-for-a-team-legacy"""
+        """DEPRECATED teams/list-idp-groups-for-legacy
+
+        GET /teams/{team_id}/team-sync/group-mappings
+
+        > [!WARNING]
+        > **Endpoint closing down notice:** This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the new [`List IdP groups for a team`](https://docs.github.com/enterprise-cloud@latest//rest/teams/team-sync#list-idp-groups-for-a-team) endpoint.
+
+        Team synchronization is available for organizations using GitHub Enterprise Cloud. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+
+        List IdP groups connected to a team on GitHub Enterprise Cloud.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/team-sync#list-idp-groups-for-a-team-legacy
+        """
 
         from ..models import BasicError, GroupMapping
 
@@ -4982,7 +6534,19 @@ class TeamsClient:
         data: Missing[TeamsTeamIdTeamSyncGroupMappingsPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[GroupMapping, GroupMappingType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/team-sync#create-or-update-idp-group-connections-legacy"""
+        """DEPRECATED teams/create-or-update-idp-group-connections-legacy
+
+        PATCH /teams/{team_id}/team-sync/group-mappings
+
+        > [!WARNING]
+        > **Endpoint closing down notice:** This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the new [`Create or update IdP group connections`](https://docs.github.com/enterprise-cloud@latest//rest/teams/team-sync#create-or-update-idp-group-connections) endpoint.
+
+        Team synchronization is available for organizations using GitHub Enterprise Cloud. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+
+        Creates, updates, or removes a connection between a team and an IdP group. When adding groups to a team, you must include all new and existing groups to avoid replacing existing groups with the new ones. Specifying an empty `groups` array will remove all connections for a team.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/team-sync#create-or-update-idp-group-connections-legacy
+        """
 
         from ..models import (
             BasicError,
@@ -5044,7 +6608,19 @@ class TeamsClient:
         data: Missing[TeamsTeamIdTeamSyncGroupMappingsPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[GroupMapping, GroupMappingType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/team-sync#create-or-update-idp-group-connections-legacy"""
+        """DEPRECATED teams/create-or-update-idp-group-connections-legacy
+
+        PATCH /teams/{team_id}/team-sync/group-mappings
+
+        > [!WARNING]
+        > **Endpoint closing down notice:** This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the new [`Create or update IdP group connections`](https://docs.github.com/enterprise-cloud@latest//rest/teams/team-sync#create-or-update-idp-group-connections) endpoint.
+
+        Team synchronization is available for organizations using GitHub Enterprise Cloud. For more information, see [GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+
+        Creates, updates, or removes a connection between a team and an IdP group. When adding groups to a team, you must include all new and existing groups to avoid replacing existing groups with the new ones. Specifying an empty `groups` array will remove all connections for a team.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/team-sync#create-or-update-idp-group-connections-legacy
+        """
 
         from ..models import (
             BasicError,
@@ -5086,7 +6662,15 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Team], list[TeamType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#list-child-teams-legacy"""
+        """DEPRECATED teams/list-child-legacy
+
+        GET /teams/{team_id}/teams
+
+        > [!WARNING]
+        > **Endpoint closing down notice:** This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the new [`List child teams`](https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#list-child-teams) endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#list-child-teams-legacy
+        """
 
         from ..models import BasicError, Team, ValidationError
 
@@ -5120,7 +6704,15 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Team], list[TeamType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#list-child-teams-legacy"""
+        """DEPRECATED teams/list-child-legacy
+
+        GET /teams/{team_id}/teams
+
+        > [!WARNING]
+        > **Endpoint closing down notice:** This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the new [`List child teams`](https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#list-child-teams) endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#list-child-teams-legacy
+        """
 
         from ..models import BasicError, Team, ValidationError
 
@@ -5153,7 +6745,19 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[TeamFull], list[TeamFullType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#list-teams-for-the-authenticated-user"""
+        """teams/list-for-authenticated-user
+
+        GET /user/teams
+
+        List all of the teams across all of the organizations to which the authenticated
+        user belongs.
+
+        OAuth app tokens and personal access tokens (classic) need the `user`, `repo`, or `read:org` scope to use this endpoint.
+
+        When using a fine-grained personal access token, the resource owner of the token must be a single organization, and the response will only include the teams from that organization.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#list-teams-for-the-authenticated-user
+        """
 
         from ..models import BasicError, TeamFull
 
@@ -5185,7 +6789,19 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[TeamFull], list[TeamFullType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#list-teams-for-the-authenticated-user"""
+        """teams/list-for-authenticated-user
+
+        GET /user/teams
+
+        List all of the teams across all of the organizations to which the authenticated
+        user belongs.
+
+        OAuth app tokens and personal access tokens (classic) need the `user`, `repo`, or `read:org` scope to use this endpoint.
+
+        When using a fine-grained personal access token, the resource owner of the token must be a single organization, and the response will only include the teams from that organization.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/teams#list-teams-for-the-authenticated-user
+        """
 
         from ..models import BasicError, TeamFull
 

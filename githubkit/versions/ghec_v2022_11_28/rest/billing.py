@@ -72,7 +72,21 @@ class BillingClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ActionsBillingUsage, ActionsBillingUsageType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#get-github-actions-billing-for-an-enterprise"""
+        """billing/get-github-actions-billing-ghe
+
+        GET /enterprises/{enterprise}/settings/billing/actions
+
+        Gets the summary of the free and paid GitHub Actions minutes used.
+
+        Paid minutes only apply to workflows in private repositories that use GitHub-hosted runners. Minutes used is listed for each GitHub-hosted runner operating system. Any job re-runs are also included in the usage. The usage does not include the multiplier for macOS and Windows runners and is not rounded up to the nearest whole minute. For more information, see "[Managing billing for GitHub Actions](https://docs.github.com/enterprise-cloud@latest//github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-actions)".
+
+        The authenticated user must be an enterprise admin.
+
+        > [!NOTE]
+        > This endpoint is available to enterprise customers who are using the legacy billing platform.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#get-github-actions-billing-for-an-enterprise
+        """
 
         from ..models import ActionsBillingUsage
 
@@ -93,7 +107,21 @@ class BillingClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ActionsBillingUsage, ActionsBillingUsageType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#get-github-actions-billing-for-an-enterprise"""
+        """billing/get-github-actions-billing-ghe
+
+        GET /enterprises/{enterprise}/settings/billing/actions
+
+        Gets the summary of the free and paid GitHub Actions minutes used.
+
+        Paid minutes only apply to workflows in private repositories that use GitHub-hosted runners. Minutes used is listed for each GitHub-hosted runner operating system. Any job re-runs are also included in the usage. The usage does not include the multiplier for macOS and Windows runners and is not rounded up to the nearest whole minute. For more information, see "[Managing billing for GitHub Actions](https://docs.github.com/enterprise-cloud@latest//github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-actions)".
+
+        The authenticated user must be an enterprise admin.
+
+        > [!NOTE]
+        > This endpoint is available to enterprise customers who are using the legacy billing platform.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#get-github-actions-billing-for-an-enterprise
+        """
 
         from ..models import ActionsBillingUsage
 
@@ -121,7 +149,18 @@ class BillingClient:
     ) -> Response[
         AdvancedSecurityActiveCommitters, AdvancedSecurityActiveCommittersType
     ]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#get-github-advanced-security-active-committers-for-an-enterprise"""
+        """billing/get-github-advanced-security-billing-ghe
+
+        GET /enterprises/{enterprise}/settings/billing/advanced-security
+
+        Gets the GitHub Advanced Security active committers for an enterprise per repository.
+
+        Each distinct user login across all repositories is counted as a single Advanced Security seat, so the `total_advanced_security_committers` is not the sum of active_users for each repository.
+
+        The total number of repositories with committer information is tracked by the `total_count` field.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#get-github-advanced-security-active-committers-for-an-enterprise
+        """
 
         from ..models import AdvancedSecurityActiveCommitters
 
@@ -156,7 +195,18 @@ class BillingClient:
     ) -> Response[
         AdvancedSecurityActiveCommitters, AdvancedSecurityActiveCommittersType
     ]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#get-github-advanced-security-active-committers-for-an-enterprise"""
+        """billing/get-github-advanced-security-billing-ghe
+
+        GET /enterprises/{enterprise}/settings/billing/advanced-security
+
+        Gets the GitHub Advanced Security active committers for an enterprise per repository.
+
+        Each distinct user login across all repositories is counted as a single Advanced Security seat, so the `total_advanced_security_committers` is not the sum of active_users for each repository.
+
+        The total number of repositories with committer information is tracked by the `total_count` field.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#get-github-advanced-security-active-committers-for-an-enterprise
+        """
 
         from ..models import AdvancedSecurityActiveCommitters
 
@@ -184,7 +234,14 @@ class BillingClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[GetAllCostCenters, GetAllCostCentersType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#get-all-cost-centers-for-an-enterprise"""
+        """billing/get-all-cost-centers
+
+        GET /enterprises/{enterprise}/settings/billing/cost-centers
+
+        Gets a list of all the cost centers for an enterprise.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#get-all-cost-centers-for-an-enterprise
+        """
 
         from ..models import (
             BasicError,
@@ -215,7 +272,14 @@ class BillingClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[GetAllCostCenters, GetAllCostCentersType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#get-all-cost-centers-for-an-enterprise"""
+        """billing/get-all-cost-centers
+
+        GET /enterprises/{enterprise}/settings/billing/cost-centers
+
+        Gets a list of all the cost centers for an enterprise.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#get-all-cost-centers-for-an-enterprise
+        """
 
         from ..models import (
             BasicError,
@@ -281,7 +345,16 @@ class BillingClient:
         EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200,
         EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200Type,
     ]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#add-users-to-a-cost-center"""
+        """billing/add-resource-to-cost-center
+
+        POST /enterprises/{enterprise}/settings/billing/cost-centers/{cost_center_id}/resource
+
+        Adds users to a cost center.
+
+        The usage for the users will be charged to the cost center's budget. The authenticated user must be an enterprise admin in order to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#add-users-to-a-cost-center
+        """
 
         from ..models import (
             BasicError,
@@ -362,7 +435,16 @@ class BillingClient:
         EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200,
         EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200Type,
     ]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#add-users-to-a-cost-center"""
+        """billing/add-resource-to-cost-center
+
+        POST /enterprises/{enterprise}/settings/billing/cost-centers/{cost_center_id}/resource
+
+        Adds users to a cost center.
+
+        The usage for the users will be charged to the cost center's budget. The authenticated user must be an enterprise admin in order to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#add-users-to-a-cost-center
+        """
 
         from ..models import (
             BasicError,
@@ -443,7 +525,16 @@ class BillingClient:
         EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200,
         EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200Type,
     ]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#remove-users-from-a-cost-center"""
+        """billing/remove-resource-from-cost-center
+
+        DELETE /enterprises/{enterprise}/settings/billing/cost-centers/{cost_center_id}/resource
+
+        Remove users from a cost center.
+
+        The usage for the users will no longer be charged to the cost center's budget. The authenticated user must be an enterprise admin in order to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#remove-users-from-a-cost-center
+        """
 
         from ..models import (
             BasicError,
@@ -523,7 +614,16 @@ class BillingClient:
         EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200,
         EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200Type,
     ]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#remove-users-from-a-cost-center"""
+        """billing/remove-resource-from-cost-center
+
+        DELETE /enterprises/{enterprise}/settings/billing/cost-centers/{cost_center_id}/resource
+
+        Remove users from a cost center.
+
+        The usage for the users will no longer be charged to the cost center's budget. The authenticated user must be an enterprise admin in order to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#remove-users-from-a-cost-center
+        """
 
         from ..models import (
             BasicError,
@@ -568,7 +668,21 @@ class BillingClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[PackagesBillingUsage, PackagesBillingUsageType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#get-github-packages-billing-for-an-enterprise"""
+        """billing/get-github-packages-billing-ghe
+
+        GET /enterprises/{enterprise}/settings/billing/packages
+
+        Gets the free and paid storage used for GitHub Packages in gigabytes.
+
+        Paid minutes only apply to packages stored for private repositories. For more information, see "[Managing billing for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-packages)."
+
+        The authenticated user must be an enterprise admin.
+
+        > [!NOTE]
+        > This endpoint is available to enterprise customers who are using the legacy billing platform.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#get-github-packages-billing-for-an-enterprise
+        """
 
         from ..models import PackagesBillingUsage
 
@@ -589,7 +703,21 @@ class BillingClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[PackagesBillingUsage, PackagesBillingUsageType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#get-github-packages-billing-for-an-enterprise"""
+        """billing/get-github-packages-billing-ghe
+
+        GET /enterprises/{enterprise}/settings/billing/packages
+
+        Gets the free and paid storage used for GitHub Packages in gigabytes.
+
+        Paid minutes only apply to packages stored for private repositories. For more information, see "[Managing billing for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-packages)."
+
+        The authenticated user must be an enterprise admin.
+
+        > [!NOTE]
+        > This endpoint is available to enterprise customers who are using the legacy billing platform.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#get-github-packages-billing-for-an-enterprise
+        """
 
         from ..models import PackagesBillingUsage
 
@@ -610,7 +738,21 @@ class BillingClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CombinedBillingUsage, CombinedBillingUsageType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#get-shared-storage-billing-for-an-enterprise"""
+        """billing/get-shared-storage-billing-ghe
+
+        GET /enterprises/{enterprise}/settings/billing/shared-storage
+
+        Gets the estimated paid and estimated total storage used for GitHub Actions and GitHub Packages.
+
+        Paid minutes only apply to packages stored for private repositories. For more information, see "[Managing billing for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-packages)."
+
+        The authenticated user must be an enterprise admin.
+
+        > [!NOTE]
+        > This endpoint is available to enterprise customers who are using the legacy billing platform.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#get-shared-storage-billing-for-an-enterprise
+        """
 
         from ..models import CombinedBillingUsage
 
@@ -631,7 +773,21 @@ class BillingClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CombinedBillingUsage, CombinedBillingUsageType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#get-shared-storage-billing-for-an-enterprise"""
+        """billing/get-shared-storage-billing-ghe
+
+        GET /enterprises/{enterprise}/settings/billing/shared-storage
+
+        Gets the estimated paid and estimated total storage used for GitHub Actions and GitHub Packages.
+
+        Paid minutes only apply to packages stored for private repositories. For more information, see "[Managing billing for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-packages)."
+
+        The authenticated user must be an enterprise admin.
+
+        > [!NOTE]
+        > This endpoint is available to enterprise customers who are using the legacy billing platform.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#get-shared-storage-billing-for-an-enterprise
+        """
 
         from ..models import CombinedBillingUsage
 
@@ -657,7 +813,16 @@ class BillingClient:
         cost_center_id: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[BillingUsageReport, BillingUsageReportType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#get-billing-usage-report-for-an-enterprise"""
+        """billing/get-github-billing-usage-report-ghe
+
+        GET /enterprises/{enterprise}/settings/billing/usage
+
+        Gets a report of usage by cost center for an enterprise. To use this endpoint, you must be an administrator or billing manager of the enterprise. By default this endpoint will return usage that does not have a cost center.
+
+        **Note:** This endpoint is only available to enterprises with access to the enhanced billing platform. For more information, see "[About the enhanced billing platform for enterprises](https://docs.github.com/enterprise-cloud@latest//billing/using-the-enhanced-billing-platform-for-enterprises/about-the-enhanced-billing-platform-for-enterprises#how-do-i-know-if-i-can-access-the-enhanced-billing-platform)."
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#get-billing-usage-report-for-an-enterprise
+        """
 
         from ..models import (
             BasicError,
@@ -702,7 +867,16 @@ class BillingClient:
         cost_center_id: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[BillingUsageReport, BillingUsageReportType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#get-billing-usage-report-for-an-enterprise"""
+        """billing/get-github-billing-usage-report-ghe
+
+        GET /enterprises/{enterprise}/settings/billing/usage
+
+        Gets a report of usage by cost center for an enterprise. To use this endpoint, you must be an administrator or billing manager of the enterprise. By default this endpoint will return usage that does not have a cost center.
+
+        **Note:** This endpoint is only available to enterprises with access to the enhanced billing platform. For more information, see "[About the enhanced billing platform for enterprises](https://docs.github.com/enterprise-cloud@latest//billing/using-the-enhanced-billing-platform-for-enterprises/about-the-enhanced-billing-platform-for-enterprises#how-do-i-know-if-i-can-access-the-enhanced-billing-platform)."
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#get-billing-usage-report-for-an-enterprise
+        """
 
         from ..models import (
             BasicError,
@@ -746,7 +920,16 @@ class BillingClient:
         hour: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[BillingUsageReport, BillingUsageReportType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/enhanced-billing#get-billing-usage-report-for-an-organization"""
+        """billing/get-github-billing-usage-report-org
+
+        GET /organizations/{org}/settings/billing/usage
+
+        Gets a report of the total usage for an organization. To use this endpoint, you must be an administrator of an organization within an enterprise or an organization account.
+
+        **Note:** This endpoint is only available to organizations with access to the enhanced billing platform. For more information, see "[About the enhanced billing platform](https://docs.github.com/enterprise-cloud@latest//billing/using-the-new-billing-platform)."
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/enhanced-billing#get-billing-usage-report-for-an-organization
+        """
 
         from ..models import (
             BasicError,
@@ -789,7 +972,16 @@ class BillingClient:
         hour: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[BillingUsageReport, BillingUsageReportType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/enhanced-billing#get-billing-usage-report-for-an-organization"""
+        """billing/get-github-billing-usage-report-org
+
+        GET /organizations/{org}/settings/billing/usage
+
+        Gets a report of the total usage for an organization. To use this endpoint, you must be an administrator of an organization within an enterprise or an organization account.
+
+        **Note:** This endpoint is only available to organizations with access to the enhanced billing platform. For more information, see "[About the enhanced billing platform](https://docs.github.com/enterprise-cloud@latest//billing/using-the-new-billing-platform)."
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/enhanced-billing#get-billing-usage-report-for-an-organization
+        """
 
         from ..models import (
             BasicError,
@@ -828,7 +1020,18 @@ class BillingClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ActionsBillingUsage, ActionsBillingUsageType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/billing#get-github-actions-billing-for-an-organization"""
+        """billing/get-github-actions-billing-org
+
+        GET /orgs/{org}/settings/billing/actions
+
+        Gets the summary of the free and paid GitHub Actions minutes used.
+
+        Paid minutes only apply to workflows in private repositories that use GitHub-hosted runners. Minutes used is listed for each GitHub-hosted runner operating system. Any job re-runs are also included in the usage. The usage returned includes any minute multipliers for macOS and Windows runners, and is rounded up to the nearest whole minute. For more information, see "[Managing billing for GitHub Actions](https://docs.github.com/enterprise-cloud@latest//github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-actions)".
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` or `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/billing#get-github-actions-billing-for-an-organization
+        """
 
         from ..models import ActionsBillingUsage
 
@@ -849,7 +1052,18 @@ class BillingClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ActionsBillingUsage, ActionsBillingUsageType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/billing#get-github-actions-billing-for-an-organization"""
+        """billing/get-github-actions-billing-org
+
+        GET /orgs/{org}/settings/billing/actions
+
+        Gets the summary of the free and paid GitHub Actions minutes used.
+
+        Paid minutes only apply to workflows in private repositories that use GitHub-hosted runners. Minutes used is listed for each GitHub-hosted runner operating system. Any job re-runs are also included in the usage. The usage returned includes any minute multipliers for macOS and Windows runners, and is rounded up to the nearest whole minute. For more information, see "[Managing billing for GitHub Actions](https://docs.github.com/enterprise-cloud@latest//github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-actions)".
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` or `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/billing#get-github-actions-billing-for-an-organization
+        """
 
         from ..models import ActionsBillingUsage
 
@@ -877,7 +1091,20 @@ class BillingClient:
     ) -> Response[
         AdvancedSecurityActiveCommitters, AdvancedSecurityActiveCommittersType
     ]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/billing#get-github-advanced-security-active-committers-for-an-organization"""
+        """billing/get-github-advanced-security-billing-org
+
+        GET /orgs/{org}/settings/billing/advanced-security
+
+        Gets the GitHub Advanced Security active committers for an organization per repository.
+
+        Each distinct user login across all repositories is counted as a single Advanced Security seat, so the `total_advanced_security_committers` is not the sum of advanced_security_committers for each repository.
+
+        If this organization defers to an enterprise for billing, the `total_advanced_security_committers` returned from the organization API may include some users that are in more than one organization, so they will only consume a single Advanced Security seat at the enterprise level.
+
+        The total number of repositories with committer information is tracked by the `total_count` field.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/billing#get-github-advanced-security-active-committers-for-an-organization
+        """
 
         from ..models import AdvancedSecurityActiveCommitters
 
@@ -912,7 +1139,20 @@ class BillingClient:
     ) -> Response[
         AdvancedSecurityActiveCommitters, AdvancedSecurityActiveCommittersType
     ]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/billing#get-github-advanced-security-active-committers-for-an-organization"""
+        """billing/get-github-advanced-security-billing-org
+
+        GET /orgs/{org}/settings/billing/advanced-security
+
+        Gets the GitHub Advanced Security active committers for an organization per repository.
+
+        Each distinct user login across all repositories is counted as a single Advanced Security seat, so the `total_advanced_security_committers` is not the sum of advanced_security_committers for each repository.
+
+        If this organization defers to an enterprise for billing, the `total_advanced_security_committers` returned from the organization API may include some users that are in more than one organization, so they will only consume a single Advanced Security seat at the enterprise level.
+
+        The total number of repositories with committer information is tracked by the `total_count` field.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/billing#get-github-advanced-security-active-committers-for-an-organization
+        """
 
         from ..models import AdvancedSecurityActiveCommitters
 
@@ -940,7 +1180,18 @@ class BillingClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[PackagesBillingUsage, PackagesBillingUsageType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/billing#get-github-packages-billing-for-an-organization"""
+        """billing/get-github-packages-billing-org
+
+        GET /orgs/{org}/settings/billing/packages
+
+        Gets the free and paid storage used for GitHub Packages in gigabytes.
+
+        Paid minutes only apply to packages stored for private repositories. For more information, see "[Managing billing for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-packages)."
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` or `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/billing#get-github-packages-billing-for-an-organization
+        """
 
         from ..models import PackagesBillingUsage
 
@@ -961,7 +1212,18 @@ class BillingClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[PackagesBillingUsage, PackagesBillingUsageType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/billing#get-github-packages-billing-for-an-organization"""
+        """billing/get-github-packages-billing-org
+
+        GET /orgs/{org}/settings/billing/packages
+
+        Gets the free and paid storage used for GitHub Packages in gigabytes.
+
+        Paid minutes only apply to packages stored for private repositories. For more information, see "[Managing billing for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-packages)."
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` or `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/billing#get-github-packages-billing-for-an-organization
+        """
 
         from ..models import PackagesBillingUsage
 
@@ -982,7 +1244,18 @@ class BillingClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CombinedBillingUsage, CombinedBillingUsageType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/billing#get-shared-storage-billing-for-an-organization"""
+        """billing/get-shared-storage-billing-org
+
+        GET /orgs/{org}/settings/billing/shared-storage
+
+        Gets the estimated paid and estimated total storage used for GitHub Actions and GitHub Packages.
+
+        Paid minutes only apply to packages stored for private repositories. For more information, see "[Managing billing for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-packages)."
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` or `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/billing#get-shared-storage-billing-for-an-organization
+        """
 
         from ..models import CombinedBillingUsage
 
@@ -1003,7 +1276,18 @@ class BillingClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CombinedBillingUsage, CombinedBillingUsageType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/billing#get-shared-storage-billing-for-an-organization"""
+        """billing/get-shared-storage-billing-org
+
+        GET /orgs/{org}/settings/billing/shared-storage
+
+        Gets the estimated paid and estimated total storage used for GitHub Actions and GitHub Packages.
+
+        Paid minutes only apply to packages stored for private repositories. For more information, see "[Managing billing for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-packages)."
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` or `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/billing#get-shared-storage-billing-for-an-organization
+        """
 
         from ..models import CombinedBillingUsage
 
@@ -1024,7 +1308,18 @@ class BillingClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ActionsBillingUsage, ActionsBillingUsageType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/billing#get-github-actions-billing-for-a-user"""
+        """billing/get-github-actions-billing-user
+
+        GET /users/{username}/settings/billing/actions
+
+        Gets the summary of the free and paid GitHub Actions minutes used.
+
+        Paid minutes only apply to workflows in private repositories that use GitHub-hosted runners. Minutes used is listed for each GitHub-hosted runner operating system. Any job re-runs are also included in the usage. The usage returned includes any minute multipliers for macOS and Windows runners, and is rounded up to the nearest whole minute. For more information, see "[Managing billing for GitHub Actions](https://docs.github.com/enterprise-cloud@latest//github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-actions)".
+
+        OAuth app tokens and personal access tokens (classic) need the `user` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/billing#get-github-actions-billing-for-a-user
+        """
 
         from ..models import ActionsBillingUsage
 
@@ -1045,7 +1340,18 @@ class BillingClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ActionsBillingUsage, ActionsBillingUsageType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/billing#get-github-actions-billing-for-a-user"""
+        """billing/get-github-actions-billing-user
+
+        GET /users/{username}/settings/billing/actions
+
+        Gets the summary of the free and paid GitHub Actions minutes used.
+
+        Paid minutes only apply to workflows in private repositories that use GitHub-hosted runners. Minutes used is listed for each GitHub-hosted runner operating system. Any job re-runs are also included in the usage. The usage returned includes any minute multipliers for macOS and Windows runners, and is rounded up to the nearest whole minute. For more information, see "[Managing billing for GitHub Actions](https://docs.github.com/enterprise-cloud@latest//github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-actions)".
+
+        OAuth app tokens and personal access tokens (classic) need the `user` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/billing#get-github-actions-billing-for-a-user
+        """
 
         from ..models import ActionsBillingUsage
 
@@ -1066,7 +1372,18 @@ class BillingClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[PackagesBillingUsage, PackagesBillingUsageType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/billing#get-github-packages-billing-for-a-user"""
+        """billing/get-github-packages-billing-user
+
+        GET /users/{username}/settings/billing/packages
+
+        Gets the free and paid storage used for GitHub Packages in gigabytes.
+
+        Paid minutes only apply to packages stored for private repositories. For more information, see "[Managing billing for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-packages)."
+
+        OAuth app tokens and personal access tokens (classic) need the `user` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/billing#get-github-packages-billing-for-a-user
+        """
 
         from ..models import PackagesBillingUsage
 
@@ -1087,7 +1404,18 @@ class BillingClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[PackagesBillingUsage, PackagesBillingUsageType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/billing#get-github-packages-billing-for-a-user"""
+        """billing/get-github-packages-billing-user
+
+        GET /users/{username}/settings/billing/packages
+
+        Gets the free and paid storage used for GitHub Packages in gigabytes.
+
+        Paid minutes only apply to packages stored for private repositories. For more information, see "[Managing billing for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-packages)."
+
+        OAuth app tokens and personal access tokens (classic) need the `user` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/billing#get-github-packages-billing-for-a-user
+        """
 
         from ..models import PackagesBillingUsage
 
@@ -1108,7 +1436,18 @@ class BillingClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CombinedBillingUsage, CombinedBillingUsageType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/billing#get-shared-storage-billing-for-a-user"""
+        """billing/get-shared-storage-billing-user
+
+        GET /users/{username}/settings/billing/shared-storage
+
+        Gets the estimated paid and estimated total storage used for GitHub Actions and GitHub Packages.
+
+        Paid minutes only apply to packages stored for private repositories. For more information, see "[Managing billing for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-packages)."
+
+        OAuth app tokens and personal access tokens (classic) need the `user` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/billing#get-shared-storage-billing-for-a-user
+        """
 
         from ..models import CombinedBillingUsage
 
@@ -1129,7 +1468,18 @@ class BillingClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CombinedBillingUsage, CombinedBillingUsageType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/billing#get-shared-storage-billing-for-a-user"""
+        """billing/get-shared-storage-billing-user
+
+        GET /users/{username}/settings/billing/shared-storage
+
+        Gets the estimated paid and estimated total storage used for GitHub Actions and GitHub Packages.
+
+        Paid minutes only apply to packages stored for private repositories. For more information, see "[Managing billing for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-packages)."
+
+        OAuth app tokens and personal access tokens (classic) need the `user` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/billing#get-shared-storage-billing-for-a-user
+        """
 
         from ..models import CombinedBillingUsage
 

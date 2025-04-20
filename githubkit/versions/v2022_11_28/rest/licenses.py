@@ -49,7 +49,14 @@ class LicensesClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[LicenseSimple], list[LicenseSimpleType]]:
-        """See also: https://docs.github.com/rest/licenses/licenses#get-all-commonly-used-licenses"""
+        """licenses/get-all-commonly-used
+
+        GET /licenses
+
+        Lists the most commonly used licenses on GitHub. For more information, see "[Licensing a repository ](https://docs.github.com/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository)."
+
+        See also: https://docs.github.com/rest/licenses/licenses#get-all-commonly-used-licenses
+        """
 
         from ..models import LicenseSimple
 
@@ -79,7 +86,14 @@ class LicensesClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[LicenseSimple], list[LicenseSimpleType]]:
-        """See also: https://docs.github.com/rest/licenses/licenses#get-all-commonly-used-licenses"""
+        """licenses/get-all-commonly-used
+
+        GET /licenses
+
+        Lists the most commonly used licenses on GitHub. For more information, see "[Licensing a repository ](https://docs.github.com/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository)."
+
+        See also: https://docs.github.com/rest/licenses/licenses#get-all-commonly-used-licenses
+        """
 
         from ..models import LicenseSimple
 
@@ -107,7 +121,14 @@ class LicensesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[License, LicenseType]:
-        """See also: https://docs.github.com/rest/licenses/licenses#get-a-license"""
+        """licenses/get
+
+        GET /licenses/{license}
+
+        Gets information about a specific license. For more information, see "[Licensing a repository ](https://docs.github.com/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository)."
+
+        See also: https://docs.github.com/rest/licenses/licenses#get-a-license
+        """
 
         from ..models import BasicError, License
 
@@ -132,7 +153,14 @@ class LicensesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[License, LicenseType]:
-        """See also: https://docs.github.com/rest/licenses/licenses#get-a-license"""
+        """licenses/get
+
+        GET /licenses/{license}
+
+        Gets information about a specific license. For more information, see "[Licensing a repository ](https://docs.github.com/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository)."
+
+        See also: https://docs.github.com/rest/licenses/licenses#get-a-license
+        """
 
         from ..models import BasicError, License
 
@@ -159,7 +187,19 @@ class LicensesClient:
         ref: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[LicenseContent, LicenseContentType]:
-        """See also: https://docs.github.com/rest/licenses/licenses#get-the-license-for-a-repository"""
+        """licenses/get-for-repo
+
+        GET /repos/{owner}/{repo}/license
+
+        This method returns the contents of the repository's license file, if one is detected.
+
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+
+        - **`application/vnd.github.raw+json`**: Returns the raw contents of the license.
+        - **`application/vnd.github.html+json`**: Returns the license contents in HTML. Markup languages are rendered to HTML using GitHub's open-source [Markup library](https://github.com/github/markup).
+
+        See also: https://docs.github.com/rest/licenses/licenses#get-the-license-for-a-repository
+        """
 
         from ..models import BasicError, LicenseContent
 
@@ -190,7 +230,19 @@ class LicensesClient:
         ref: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[LicenseContent, LicenseContentType]:
-        """See also: https://docs.github.com/rest/licenses/licenses#get-the-license-for-a-repository"""
+        """licenses/get-for-repo
+
+        GET /repos/{owner}/{repo}/license
+
+        This method returns the contents of the repository's license file, if one is detected.
+
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+
+        - **`application/vnd.github.raw+json`**: Returns the raw contents of the license.
+        - **`application/vnd.github.html+json`**: Returns the license contents in HTML. Markup languages are rendered to HTML using GitHub's open-source [Markup library](https://github.com/github/markup).
+
+        See also: https://docs.github.com/rest/licenses/licenses#get-the-license-for-a-repository
+        """
 
         from ..models import BasicError, LicenseContent
 

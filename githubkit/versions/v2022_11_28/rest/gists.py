@@ -66,7 +66,14 @@ class GistsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[BaseGist], list[BaseGistType]]:
-        """See also: https://docs.github.com/rest/gists/gists#list-gists-for-the-authenticated-user"""
+        """gists/list
+
+        GET /gists
+
+        Lists the authenticated user's gists or if called anonymously, this endpoint returns all public gists:
+
+        See also: https://docs.github.com/rest/gists/gists#list-gists-for-the-authenticated-user
+        """
 
         from ..models import BaseGist, BasicError
 
@@ -99,7 +106,14 @@ class GistsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[BaseGist], list[BaseGistType]]:
-        """See also: https://docs.github.com/rest/gists/gists#list-gists-for-the-authenticated-user"""
+        """gists/list
+
+        GET /gists
+
+        Lists the authenticated user's gists or if called anonymously, this endpoint returns all public gists:
+
+        See also: https://docs.github.com/rest/gists/gists#list-gists-for-the-authenticated-user
+        """
 
         from ..models import BaseGist, BasicError
 
@@ -147,7 +161,17 @@ class GistsClient:
         data: Missing[GistsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[GistSimple, GistSimpleType]:
-        """See also: https://docs.github.com/rest/gists/gists#create-a-gist"""
+        """gists/create
+
+        POST /gists
+
+        Allows you to add a new gist with one or more files.
+
+        > [!NOTE]
+        > Don't name your files "gistfile" with a numerical suffix. This is the format of the automatic naming scheme that Gist uses internally.
+
+        See also: https://docs.github.com/rest/gists/gists#create-a-gist
+        """
 
         from ..models import BasicError, GistSimple, GistsPostBody, ValidationError
 
@@ -200,7 +224,17 @@ class GistsClient:
         data: Missing[GistsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[GistSimple, GistSimpleType]:
-        """See also: https://docs.github.com/rest/gists/gists#create-a-gist"""
+        """gists/create
+
+        POST /gists
+
+        Allows you to add a new gist with one or more files.
+
+        > [!NOTE]
+        > Don't name your files "gistfile" with a numerical suffix. This is the format of the automatic naming scheme that Gist uses internally.
+
+        See also: https://docs.github.com/rest/gists/gists#create-a-gist
+        """
 
         from ..models import BasicError, GistSimple, GistsPostBody, ValidationError
 
@@ -238,7 +272,16 @@ class GistsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[BaseGist], list[BaseGistType]]:
-        """See also: https://docs.github.com/rest/gists/gists#list-public-gists"""
+        """gists/list-public
+
+        GET /gists/public
+
+        List public gists sorted by most recently updated to least recently updated.
+
+        Note: With [pagination](https://docs.github.com/rest/guides/using-pagination-in-the-rest-api), you can fetch up to 3000 gists. For example, you can fetch 100 pages with 30 gists per page or 30 pages with 100 gists per page.
+
+        See also: https://docs.github.com/rest/gists/gists#list-public-gists
+        """
 
         from ..models import BaseGist, BasicError, ValidationError
 
@@ -272,7 +315,16 @@ class GistsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[BaseGist], list[BaseGistType]]:
-        """See also: https://docs.github.com/rest/gists/gists#list-public-gists"""
+        """gists/list-public
+
+        GET /gists/public
+
+        List public gists sorted by most recently updated to least recently updated.
+
+        Note: With [pagination](https://docs.github.com/rest/guides/using-pagination-in-the-rest-api), you can fetch up to 3000 gists. For example, you can fetch 100 pages with 30 gists per page or 30 pages with 100 gists per page.
+
+        See also: https://docs.github.com/rest/gists/gists#list-public-gists
+        """
 
         from ..models import BaseGist, BasicError, ValidationError
 
@@ -306,7 +358,14 @@ class GistsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[BaseGist], list[BaseGistType]]:
-        """See also: https://docs.github.com/rest/gists/gists#list-starred-gists"""
+        """gists/list-starred
+
+        GET /gists/starred
+
+        List the authenticated user's starred gists:
+
+        See also: https://docs.github.com/rest/gists/gists#list-starred-gists
+        """
 
         from ..models import BaseGist, BasicError
 
@@ -340,7 +399,14 @@ class GistsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[BaseGist], list[BaseGistType]]:
-        """See also: https://docs.github.com/rest/gists/gists#list-starred-gists"""
+        """gists/list-starred
+
+        GET /gists/starred
+
+        List the authenticated user's starred gists:
+
+        See also: https://docs.github.com/rest/gists/gists#list-starred-gists
+        """
 
         from ..models import BaseGist, BasicError
 
@@ -372,7 +438,19 @@ class GistsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[GistSimple, GistSimpleType]:
-        """See also: https://docs.github.com/rest/gists/gists#get-a-gist"""
+        """gists/get
+
+        GET /gists/{gist_id}
+
+        Gets a specified gist.
+
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+
+        - **`application/vnd.github.raw+json`**: Returns the raw markdown. This is the default if you do not pass any specific media type.
+        - **`application/vnd.github.base64+json`**: Returns the base64-encoded contents. This can be useful if your gist contains any invalid UTF-8 sequences.
+
+        See also: https://docs.github.com/rest/gists/gists#get-a-gist
+        """
 
         from ..models import BasicError, GistsGistIdGetResponse403, GistSimple
 
@@ -397,7 +475,19 @@ class GistsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[GistSimple, GistSimpleType]:
-        """See also: https://docs.github.com/rest/gists/gists#get-a-gist"""
+        """gists/get
+
+        GET /gists/{gist_id}
+
+        Gets a specified gist.
+
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+
+        - **`application/vnd.github.raw+json`**: Returns the raw markdown. This is the default if you do not pass any specific media type.
+        - **`application/vnd.github.base64+json`**: Returns the base64-encoded contents. This can be useful if your gist contains any invalid UTF-8 sequences.
+
+        See also: https://docs.github.com/rest/gists/gists#get-a-gist
+        """
 
         from ..models import BasicError, GistsGistIdGetResponse403, GistSimple
 
@@ -422,7 +512,12 @@ class GistsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/gists/gists#delete-a-gist"""
+        """gists/delete
+
+        DELETE /gists/{gist_id}
+
+        See also: https://docs.github.com/rest/gists/gists#delete-a-gist
+        """
 
         from ..models import BasicError
 
@@ -446,7 +541,12 @@ class GistsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/gists/gists#delete-a-gist"""
+        """gists/delete
+
+        DELETE /gists/{gist_id}
+
+        See also: https://docs.github.com/rest/gists/gists#delete-a-gist
+        """
 
         from ..models import BasicError
 
@@ -492,7 +592,23 @@ class GistsClient:
         data: Missing[Union[GistsGistIdPatchBodyType, None]] = UNSET,
         **kwargs,
     ) -> Response[GistSimple, GistSimpleType]:
-        """See also: https://docs.github.com/rest/gists/gists#update-a-gist"""
+        """gists/update
+
+        PATCH /gists/{gist_id}
+
+        Allows you to update a gist's description and to update, delete, or rename gist files. Files
+        from the previous version of the gist that aren't explicitly changed during an edit
+        are unchanged.
+
+        At least one of `description` or `files` is required.
+
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+
+        - **`application/vnd.github.raw+json`**: Returns the raw markdown. This is the default if you do not pass any specific media type.
+        - **`application/vnd.github.base64+json`**: Returns the base64-encoded contents. This can be useful if your gist contains any invalid UTF-8 sequences.
+
+        See also: https://docs.github.com/rest/gists/gists#update-a-gist
+        """
 
         from typing import Union
 
@@ -556,7 +672,23 @@ class GistsClient:
         data: Missing[Union[GistsGistIdPatchBodyType, None]] = UNSET,
         **kwargs,
     ) -> Response[GistSimple, GistSimpleType]:
-        """See also: https://docs.github.com/rest/gists/gists#update-a-gist"""
+        """gists/update
+
+        PATCH /gists/{gist_id}
+
+        Allows you to update a gist's description and to update, delete, or rename gist files. Files
+        from the previous version of the gist that aren't explicitly changed during an edit
+        are unchanged.
+
+        At least one of `description` or `files` is required.
+
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+
+        - **`application/vnd.github.raw+json`**: Returns the raw markdown. This is the default if you do not pass any specific media type.
+        - **`application/vnd.github.base64+json`**: Returns the base64-encoded contents. This can be useful if your gist contains any invalid UTF-8 sequences.
+
+        See also: https://docs.github.com/rest/gists/gists#update-a-gist
+        """
 
         from typing import Union
 
@@ -600,7 +732,19 @@ class GistsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[GistComment], list[GistCommentType]]:
-        """See also: https://docs.github.com/rest/gists/comments#list-gist-comments"""
+        """gists/list-comments
+
+        GET /gists/{gist_id}/comments
+
+        Lists the comments on a gist.
+
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+
+        - **`application/vnd.github.raw+json`**: Returns the raw markdown. This is the default if you do not pass any specific media type.
+        - **`application/vnd.github.base64+json`**: Returns the base64-encoded contents. This can be useful if your gist contains any invalid UTF-8 sequences.
+
+        See also: https://docs.github.com/rest/gists/comments#list-gist-comments
+        """
 
         from ..models import BasicError, GistComment
 
@@ -633,7 +777,19 @@ class GistsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[GistComment], list[GistCommentType]]:
-        """See also: https://docs.github.com/rest/gists/comments#list-gist-comments"""
+        """gists/list-comments
+
+        GET /gists/{gist_id}/comments
+
+        Lists the comments on a gist.
+
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+
+        - **`application/vnd.github.raw+json`**: Returns the raw markdown. This is the default if you do not pass any specific media type.
+        - **`application/vnd.github.base64+json`**: Returns the base64-encoded contents. This can be useful if your gist contains any invalid UTF-8 sequences.
+
+        See also: https://docs.github.com/rest/gists/comments#list-gist-comments
+        """
 
         from ..models import BasicError, GistComment
 
@@ -685,7 +841,19 @@ class GistsClient:
         data: Missing[GistsGistIdCommentsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[GistComment, GistCommentType]:
-        """See also: https://docs.github.com/rest/gists/comments#create-a-gist-comment"""
+        """gists/create-comment
+
+        POST /gists/{gist_id}/comments
+
+        Creates a comment on a gist.
+
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+
+        - **`application/vnd.github.raw+json`**: Returns the raw markdown. This is the default if you do not pass any specific media type.
+        - **`application/vnd.github.base64+json`**: Returns the base64-encoded contents. This can be useful if your gist contains any invalid UTF-8 sequences.
+
+        See also: https://docs.github.com/rest/gists/comments#create-a-gist-comment
+        """
 
         from ..models import BasicError, GistComment, GistsGistIdCommentsPostBody
 
@@ -741,7 +909,19 @@ class GistsClient:
         data: Missing[GistsGistIdCommentsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[GistComment, GistCommentType]:
-        """See also: https://docs.github.com/rest/gists/comments#create-a-gist-comment"""
+        """gists/create-comment
+
+        POST /gists/{gist_id}/comments
+
+        Creates a comment on a gist.
+
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+
+        - **`application/vnd.github.raw+json`**: Returns the raw markdown. This is the default if you do not pass any specific media type.
+        - **`application/vnd.github.base64+json`**: Returns the base64-encoded contents. This can be useful if your gist contains any invalid UTF-8 sequences.
+
+        See also: https://docs.github.com/rest/gists/comments#create-a-gist-comment
+        """
 
         from ..models import BasicError, GistComment, GistsGistIdCommentsPostBody
 
@@ -777,7 +957,19 @@ class GistsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[GistComment, GistCommentType]:
-        """See also: https://docs.github.com/rest/gists/comments#get-a-gist-comment"""
+        """gists/get-comment
+
+        GET /gists/{gist_id}/comments/{comment_id}
+
+        Gets a comment on a gist.
+
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+
+        - **`application/vnd.github.raw+json`**: Returns the raw markdown. This is the default if you do not pass any specific media type.
+        - **`application/vnd.github.base64+json`**: Returns the base64-encoded contents. This can be useful if your gist contains any invalid UTF-8 sequences.
+
+        See also: https://docs.github.com/rest/gists/comments#get-a-gist-comment
+        """
 
         from ..models import BasicError, GistComment, GistsGistIdGetResponse403
 
@@ -803,7 +995,19 @@ class GistsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[GistComment, GistCommentType]:
-        """See also: https://docs.github.com/rest/gists/comments#get-a-gist-comment"""
+        """gists/get-comment
+
+        GET /gists/{gist_id}/comments/{comment_id}
+
+        Gets a comment on a gist.
+
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+
+        - **`application/vnd.github.raw+json`**: Returns the raw markdown. This is the default if you do not pass any specific media type.
+        - **`application/vnd.github.base64+json`**: Returns the base64-encoded contents. This can be useful if your gist contains any invalid UTF-8 sequences.
+
+        See also: https://docs.github.com/rest/gists/comments#get-a-gist-comment
+        """
 
         from ..models import BasicError, GistComment, GistsGistIdGetResponse403
 
@@ -829,7 +1033,12 @@ class GistsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/gists/comments#delete-a-gist-comment"""
+        """gists/delete-comment
+
+        DELETE /gists/{gist_id}/comments/{comment_id}
+
+        See also: https://docs.github.com/rest/gists/comments#delete-a-gist-comment
+        """
 
         from ..models import BasicError
 
@@ -854,7 +1063,12 @@ class GistsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/gists/comments#delete-a-gist-comment"""
+        """gists/delete-comment
+
+        DELETE /gists/{gist_id}/comments/{comment_id}
+
+        See also: https://docs.github.com/rest/gists/comments#delete-a-gist-comment
+        """
 
         from ..models import BasicError
 
@@ -902,7 +1116,19 @@ class GistsClient:
         data: Missing[GistsGistIdCommentsCommentIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[GistComment, GistCommentType]:
-        """See also: https://docs.github.com/rest/gists/comments#update-a-gist-comment"""
+        """gists/update-comment
+
+        PATCH /gists/{gist_id}/comments/{comment_id}
+
+        Updates a comment on a gist.
+
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+
+        - **`application/vnd.github.raw+json`**: Returns the raw markdown. This is the default if you do not pass any specific media type.
+        - **`application/vnd.github.base64+json`**: Returns the base64-encoded contents. This can be useful if your gist contains any invalid UTF-8 sequences.
+
+        See also: https://docs.github.com/rest/gists/comments#update-a-gist-comment
+        """
 
         from ..models import (
             BasicError,
@@ -964,7 +1190,19 @@ class GistsClient:
         data: Missing[GistsGistIdCommentsCommentIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[GistComment, GistCommentType]:
-        """See also: https://docs.github.com/rest/gists/comments#update-a-gist-comment"""
+        """gists/update-comment
+
+        PATCH /gists/{gist_id}/comments/{comment_id}
+
+        Updates a comment on a gist.
+
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+
+        - **`application/vnd.github.raw+json`**: Returns the raw markdown. This is the default if you do not pass any specific media type.
+        - **`application/vnd.github.base64+json`**: Returns the base64-encoded contents. This can be useful if your gist contains any invalid UTF-8 sequences.
+
+        See also: https://docs.github.com/rest/gists/comments#update-a-gist-comment
+        """
 
         from ..models import (
             BasicError,
@@ -1004,7 +1242,12 @@ class GistsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[GistCommit], list[GistCommitType]]:
-        """See also: https://docs.github.com/rest/gists/gists#list-gist-commits"""
+        """gists/list-commits
+
+        GET /gists/{gist_id}/commits
+
+        See also: https://docs.github.com/rest/gists/gists#list-gist-commits
+        """
 
         from ..models import BasicError, GistCommit
 
@@ -1037,7 +1280,12 @@ class GistsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[GistCommit], list[GistCommitType]]:
-        """See also: https://docs.github.com/rest/gists/gists#list-gist-commits"""
+        """gists/list-commits
+
+        GET /gists/{gist_id}/commits
+
+        See also: https://docs.github.com/rest/gists/gists#list-gist-commits
+        """
 
         from ..models import BasicError, GistCommit
 
@@ -1070,7 +1318,12 @@ class GistsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[GistSimple], list[GistSimpleType]]:
-        """See also: https://docs.github.com/rest/gists/gists#list-gist-forks"""
+        """gists/list-forks
+
+        GET /gists/{gist_id}/forks
+
+        See also: https://docs.github.com/rest/gists/gists#list-gist-forks
+        """
 
         from ..models import BasicError, GistSimple
 
@@ -1103,7 +1356,12 @@ class GistsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[GistSimple], list[GistSimpleType]]:
-        """See also: https://docs.github.com/rest/gists/gists#list-gist-forks"""
+        """gists/list-forks
+
+        GET /gists/{gist_id}/forks
+
+        See also: https://docs.github.com/rest/gists/gists#list-gist-forks
+        """
 
         from ..models import BasicError, GistSimple
 
@@ -1134,7 +1392,12 @@ class GistsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[BaseGist, BaseGistType]:
-        """See also: https://docs.github.com/rest/gists/gists#fork-a-gist"""
+        """gists/fork
+
+        POST /gists/{gist_id}/forks
+
+        See also: https://docs.github.com/rest/gists/gists#fork-a-gist
+        """
 
         from ..models import BaseGist, BasicError, ValidationError
 
@@ -1160,7 +1423,12 @@ class GistsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[BaseGist, BaseGistType]:
-        """See also: https://docs.github.com/rest/gists/gists#fork-a-gist"""
+        """gists/fork
+
+        POST /gists/{gist_id}/forks
+
+        See also: https://docs.github.com/rest/gists/gists#fork-a-gist
+        """
 
         from ..models import BaseGist, BasicError, ValidationError
 
@@ -1186,7 +1454,12 @@ class GistsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/gists/gists#check-if-a-gist-is-starred"""
+        """gists/check-is-starred
+
+        GET /gists/{gist_id}/star
+
+        See also: https://docs.github.com/rest/gists/gists#check-if-a-gist-is-starred
+        """
 
         from ..models import BasicError, GistsGistIdStarGetResponse404
 
@@ -1210,7 +1483,12 @@ class GistsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/gists/gists#check-if-a-gist-is-starred"""
+        """gists/check-is-starred
+
+        GET /gists/{gist_id}/star
+
+        See also: https://docs.github.com/rest/gists/gists#check-if-a-gist-is-starred
+        """
 
         from ..models import BasicError, GistsGistIdStarGetResponse404
 
@@ -1234,7 +1512,14 @@ class GistsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/gists/gists#star-a-gist"""
+        """gists/star
+
+        PUT /gists/{gist_id}/star
+
+        Note that you'll need to set `Content-Length` to zero when calling out to this endpoint. For more information, see "[HTTP method](https://docs.github.com/rest/guides/getting-started-with-the-rest-api#http-method)."
+
+        See also: https://docs.github.com/rest/gists/gists#star-a-gist
+        """
 
         from ..models import BasicError
 
@@ -1258,7 +1543,14 @@ class GistsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/gists/gists#star-a-gist"""
+        """gists/star
+
+        PUT /gists/{gist_id}/star
+
+        Note that you'll need to set `Content-Length` to zero when calling out to this endpoint. For more information, see "[HTTP method](https://docs.github.com/rest/guides/getting-started-with-the-rest-api#http-method)."
+
+        See also: https://docs.github.com/rest/gists/gists#star-a-gist
+        """
 
         from ..models import BasicError
 
@@ -1282,7 +1574,12 @@ class GistsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/gists/gists#unstar-a-gist"""
+        """gists/unstar
+
+        DELETE /gists/{gist_id}/star
+
+        See also: https://docs.github.com/rest/gists/gists#unstar-a-gist
+        """
 
         from ..models import BasicError
 
@@ -1306,7 +1603,12 @@ class GistsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/gists/gists#unstar-a-gist"""
+        """gists/unstar
+
+        DELETE /gists/{gist_id}/star
+
+        See also: https://docs.github.com/rest/gists/gists#unstar-a-gist
+        """
 
         from ..models import BasicError
 
@@ -1331,7 +1633,19 @@ class GistsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[GistSimple, GistSimpleType]:
-        """See also: https://docs.github.com/rest/gists/gists#get-a-gist-revision"""
+        """gists/get-revision
+
+        GET /gists/{gist_id}/{sha}
+
+        Gets a specified gist revision.
+
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+
+        - **`application/vnd.github.raw+json`**: Returns the raw markdown. This is the default if you do not pass any specific media type.
+        - **`application/vnd.github.base64+json`**: Returns the base64-encoded contents. This can be useful if your gist contains any invalid UTF-8 sequences.
+
+        See also: https://docs.github.com/rest/gists/gists#get-a-gist-revision
+        """
 
         from ..models import BasicError, GistSimple, ValidationError
 
@@ -1358,7 +1672,19 @@ class GistsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[GistSimple, GistSimpleType]:
-        """See also: https://docs.github.com/rest/gists/gists#get-a-gist-revision"""
+        """gists/get-revision
+
+        GET /gists/{gist_id}/{sha}
+
+        Gets a specified gist revision.
+
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+
+        - **`application/vnd.github.raw+json`**: Returns the raw markdown. This is the default if you do not pass any specific media type.
+        - **`application/vnd.github.base64+json`**: Returns the base64-encoded contents. This can be useful if your gist contains any invalid UTF-8 sequences.
+
+        See also: https://docs.github.com/rest/gists/gists#get-a-gist-revision
+        """
 
         from ..models import BasicError, GistSimple, ValidationError
 
@@ -1387,7 +1713,14 @@ class GistsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[BaseGist], list[BaseGistType]]:
-        """See also: https://docs.github.com/rest/gists/gists#list-gists-for-a-user"""
+        """gists/list-for-user
+
+        GET /users/{username}/gists
+
+        Lists public gists for the specified user:
+
+        See also: https://docs.github.com/rest/gists/gists#list-gists-for-a-user
+        """
 
         from ..models import BaseGist, ValidationError
 
@@ -1421,7 +1754,14 @@ class GistsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[BaseGist], list[BaseGistType]]:
-        """See also: https://docs.github.com/rest/gists/gists#list-gists-for-a-user"""
+        """gists/list-for-user
+
+        GET /users/{username}/gists
+
+        Lists public gists for the specified user:
+
+        See also: https://docs.github.com/rest/gists/gists#list-gists-for-a-user
+        """
 
         from ..models import BaseGist, ValidationError
 

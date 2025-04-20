@@ -119,7 +119,16 @@ class CodespacesClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[OrgsOrgCodespacesGetResponse200, OrgsOrgCodespacesGetResponse200Type]:
-        """See also: https://docs.github.com/rest/codespaces/organizations#list-codespaces-for-the-organization"""
+        """codespaces/list-in-organization
+
+        GET /orgs/{org}/codespaces
+
+        Lists the codespaces associated to a specified organization.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/organizations#list-codespaces-for-the-organization
+        """
 
         from ..models import BasicError, OrgsOrgCodespacesGetResponse200
 
@@ -154,7 +163,16 @@ class CodespacesClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[OrgsOrgCodespacesGetResponse200, OrgsOrgCodespacesGetResponse200Type]:
-        """See also: https://docs.github.com/rest/codespaces/organizations#list-codespaces-for-the-organization"""
+        """codespaces/list-in-organization
+
+        GET /orgs/{org}/codespaces
+
+        Lists the codespaces associated to a specified organization.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/organizations#list-codespaces-for-the-organization
+        """
 
         from ..models import BasicError, OrgsOrgCodespacesGetResponse200
 
@@ -214,7 +232,15 @@ class CodespacesClient:
         data: Missing[OrgsOrgCodespacesAccessPutBodyType] = UNSET,
         **kwargs,
     ) -> Response:
-        """See also: https://docs.github.com/rest/codespaces/organizations#manage-access-control-for-organization-codespaces"""
+        """DEPRECATED codespaces/set-codespaces-access
+
+        PUT /orgs/{org}/codespaces/access
+
+        Sets which users can access codespaces in an organization. This is synonymous with granting or revoking codespaces access permissions for users according to the visibility.
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/organizations#manage-access-control-for-organization-codespaces
+        """
 
         from ..models import BasicError, OrgsOrgCodespacesAccessPutBody, ValidationError
 
@@ -276,7 +302,15 @@ class CodespacesClient:
         data: Missing[OrgsOrgCodespacesAccessPutBodyType] = UNSET,
         **kwargs,
     ) -> Response:
-        """See also: https://docs.github.com/rest/codespaces/organizations#manage-access-control-for-organization-codespaces"""
+        """DEPRECATED codespaces/set-codespaces-access
+
+        PUT /orgs/{org}/codespaces/access
+
+        Sets which users can access codespaces in an organization. This is synonymous with granting or revoking codespaces access permissions for users according to the visibility.
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/organizations#manage-access-control-for-organization-codespaces
+        """
 
         from ..models import BasicError, OrgsOrgCodespacesAccessPutBody, ValidationError
 
@@ -332,7 +366,19 @@ class CodespacesClient:
         data: Missing[OrgsOrgCodespacesAccessSelectedUsersPostBodyType] = UNSET,
         **kwargs,
     ) -> Response:
-        """See also: https://docs.github.com/rest/codespaces/organizations#add-users-to-codespaces-access-for-an-organization"""
+        """DEPRECATED codespaces/set-codespaces-access-users
+
+        POST /orgs/{org}/codespaces/access/selected_users
+
+        Codespaces for the specified users will be billed to the organization.
+
+        To use this endpoint, the access settings for the organization must be set to `selected_members`.
+        For information on how to change this setting, see "[Manage access control for organization codespaces](https://docs.github.com/rest/codespaces/organizations#manage-access-control-for-organization-codespaces)."
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/organizations#add-users-to-codespaces-access-for-an-organization
+        """
 
         from ..models import (
             BasicError,
@@ -394,7 +440,19 @@ class CodespacesClient:
         data: Missing[OrgsOrgCodespacesAccessSelectedUsersPostBodyType] = UNSET,
         **kwargs,
     ) -> Response:
-        """See also: https://docs.github.com/rest/codespaces/organizations#add-users-to-codespaces-access-for-an-organization"""
+        """DEPRECATED codespaces/set-codespaces-access-users
+
+        POST /orgs/{org}/codespaces/access/selected_users
+
+        Codespaces for the specified users will be billed to the organization.
+
+        To use this endpoint, the access settings for the organization must be set to `selected_members`.
+        For information on how to change this setting, see "[Manage access control for organization codespaces](https://docs.github.com/rest/codespaces/organizations#manage-access-control-for-organization-codespaces)."
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/organizations#add-users-to-codespaces-access-for-an-organization
+        """
 
         from ..models import (
             BasicError,
@@ -456,7 +514,19 @@ class CodespacesClient:
         data: Missing[OrgsOrgCodespacesAccessSelectedUsersDeleteBodyType] = UNSET,
         **kwargs,
     ) -> Response:
-        """See also: https://docs.github.com/rest/codespaces/organizations#remove-users-from-codespaces-access-for-an-organization"""
+        """DEPRECATED codespaces/delete-codespaces-access-users
+
+        DELETE /orgs/{org}/codespaces/access/selected_users
+
+        Codespaces for the specified users will no longer be billed to the organization.
+
+        To use this endpoint, the access settings for the organization must be set to `selected_members`.
+        For information on how to change this setting, see "[Manage access control for organization codespaces](https://docs.github.com/rest/codespaces/organizations#manage-access-control-for-organization-codespaces)."
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/organizations#remove-users-from-codespaces-access-for-an-organization
+        """
 
         from ..models import (
             BasicError,
@@ -518,7 +588,19 @@ class CodespacesClient:
         data: Missing[OrgsOrgCodespacesAccessSelectedUsersDeleteBodyType] = UNSET,
         **kwargs,
     ) -> Response:
-        """See also: https://docs.github.com/rest/codespaces/organizations#remove-users-from-codespaces-access-for-an-organization"""
+        """DEPRECATED codespaces/delete-codespaces-access-users
+
+        DELETE /orgs/{org}/codespaces/access/selected_users
+
+        Codespaces for the specified users will no longer be billed to the organization.
+
+        To use this endpoint, the access settings for the organization must be set to `selected_members`.
+        For information on how to change this setting, see "[Manage access control for organization codespaces](https://docs.github.com/rest/codespaces/organizations#manage-access-control-for-organization-codespaces)."
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/organizations#remove-users-from-codespaces-access-for-an-organization
+        """
 
         from ..models import (
             BasicError,
@@ -564,7 +646,17 @@ class CodespacesClient:
         OrgsOrgCodespacesSecretsGetResponse200,
         OrgsOrgCodespacesSecretsGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/codespaces/organization-secrets#list-organization-secrets"""
+        """codespaces/list-org-secrets
+
+        GET /orgs/{org}/codespaces/secrets
+
+        Lists all Codespaces development environment secrets available at the organization-level without revealing their encrypted
+        values.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/organization-secrets#list-organization-secrets
+        """
 
         from ..models import OrgsOrgCodespacesSecretsGetResponse200
 
@@ -596,7 +688,17 @@ class CodespacesClient:
         OrgsOrgCodespacesSecretsGetResponse200,
         OrgsOrgCodespacesSecretsGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/codespaces/organization-secrets#list-organization-secrets"""
+        """codespaces/list-org-secrets
+
+        GET /orgs/{org}/codespaces/secrets
+
+        Lists all Codespaces development environment secrets available at the organization-level without revealing their encrypted
+        values.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/organization-secrets#list-organization-secrets
+        """
 
         from ..models import OrgsOrgCodespacesSecretsGetResponse200
 
@@ -623,7 +725,15 @@ class CodespacesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CodespacesPublicKey, CodespacesPublicKeyType]:
-        """See also: https://docs.github.com/rest/codespaces/organization-secrets#get-an-organization-public-key"""
+        """codespaces/get-org-public-key
+
+        GET /orgs/{org}/codespaces/secrets/public-key
+
+        Gets a public key for an organization, which is required in order to encrypt secrets. You need to encrypt the value of a secret before you can create or update secrets.
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/organization-secrets#get-an-organization-public-key
+        """
 
         from ..models import CodespacesPublicKey
 
@@ -644,7 +754,15 @@ class CodespacesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CodespacesPublicKey, CodespacesPublicKeyType]:
-        """See also: https://docs.github.com/rest/codespaces/organization-secrets#get-an-organization-public-key"""
+        """codespaces/get-org-public-key
+
+        GET /orgs/{org}/codespaces/secrets/public-key
+
+        Gets a public key for an organization, which is required in order to encrypt secrets. You need to encrypt the value of a secret before you can create or update secrets.
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/organization-secrets#get-an-organization-public-key
+        """
 
         from ..models import CodespacesPublicKey
 
@@ -666,7 +784,16 @@ class CodespacesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CodespacesOrgSecret, CodespacesOrgSecretType]:
-        """See also: https://docs.github.com/rest/codespaces/organization-secrets#get-an-organization-secret"""
+        """codespaces/get-org-secret
+
+        GET /orgs/{org}/codespaces/secrets/{secret_name}
+
+        Gets an organization development environment secret without revealing its encrypted value.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/organization-secrets#get-an-organization-secret
+        """
 
         from ..models import CodespacesOrgSecret
 
@@ -688,7 +815,16 @@ class CodespacesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CodespacesOrgSecret, CodespacesOrgSecretType]:
-        """See also: https://docs.github.com/rest/codespaces/organization-secrets#get-an-organization-secret"""
+        """codespaces/get-org-secret
+
+        GET /orgs/{org}/codespaces/secrets/{secret_name}
+
+        Gets an organization development environment secret without revealing its encrypted value.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/organization-secrets#get-an-organization-secret
+        """
 
         from ..models import CodespacesOrgSecret
 
@@ -736,7 +872,17 @@ class CodespacesClient:
         data: Missing[OrgsOrgCodespacesSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject, EmptyObjectType]:
-        """See also: https://docs.github.com/rest/codespaces/organization-secrets#create-or-update-an-organization-secret"""
+        """codespaces/create-or-update-org-secret
+
+        PUT /orgs/{org}/codespaces/secrets/{secret_name}
+
+        Creates or updates an organization development environment secret with an encrypted value. Encrypt your secret using
+        [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). For more information, see "[Encrypting secrets for the REST API](https://docs.github.com/rest/guides/encrypting-secrets-for-the-rest-api)."
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/organization-secrets#create-or-update-an-organization-secret
+        """
 
         from ..models import (
             BasicError,
@@ -803,7 +949,17 @@ class CodespacesClient:
         data: Missing[OrgsOrgCodespacesSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject, EmptyObjectType]:
-        """See also: https://docs.github.com/rest/codespaces/organization-secrets#create-or-update-an-organization-secret"""
+        """codespaces/create-or-update-org-secret
+
+        PUT /orgs/{org}/codespaces/secrets/{secret_name}
+
+        Creates or updates an organization development environment secret with an encrypted value. Encrypt your secret using
+        [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). For more information, see "[Encrypting secrets for the REST API](https://docs.github.com/rest/guides/encrypting-secrets-for-the-rest-api)."
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/organization-secrets#create-or-update-an-organization-secret
+        """
 
         from ..models import (
             BasicError,
@@ -844,7 +1000,16 @@ class CodespacesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/codespaces/organization-secrets#delete-an-organization-secret"""
+        """codespaces/delete-org-secret
+
+        DELETE /orgs/{org}/codespaces/secrets/{secret_name}
+
+        Deletes an organization development environment secret using the secret name.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/organization-secrets#delete-an-organization-secret
+        """
 
         from ..models import BasicError
 
@@ -868,7 +1033,16 @@ class CodespacesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/codespaces/organization-secrets#delete-an-organization-secret"""
+        """codespaces/delete-org-secret
+
+        DELETE /orgs/{org}/codespaces/secrets/{secret_name}
+
+        Deletes an organization development environment secret using the secret name.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/organization-secrets#delete-an-organization-secret
+        """
 
         from ..models import BasicError
 
@@ -897,7 +1071,17 @@ class CodespacesClient:
         OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200,
         OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/codespaces/organization-secrets#list-selected-repositories-for-an-organization-secret"""
+        """codespaces/list-selected-repos-for-org-secret
+
+        GET /orgs/{org}/codespaces/secrets/{secret_name}/repositories
+
+        Lists all repositories that have been selected when the `visibility`
+        for repository access to a secret is set to `selected`.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/organization-secrets#list-selected-repositories-for-an-organization-secret
+        """
 
         from ..models import (
             BasicError,
@@ -936,7 +1120,17 @@ class CodespacesClient:
         OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200,
         OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/codespaces/organization-secrets#list-selected-repositories-for-an-organization-secret"""
+        """codespaces/list-selected-repos-for-org-secret
+
+        GET /orgs/{org}/codespaces/secrets/{secret_name}/repositories
+
+        Lists all repositories that have been selected when the `visibility`
+        for repository access to a secret is set to `selected`.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/organization-secrets#list-selected-repositories-for-an-organization-secret
+        """
 
         from ..models import (
             BasicError,
@@ -995,7 +1189,18 @@ class CodespacesClient:
         ] = UNSET,
         **kwargs,
     ) -> Response:
-        """See also: https://docs.github.com/rest/codespaces/organization-secrets#set-selected-repositories-for-an-organization-secret"""
+        """codespaces/set-selected-repos-for-org-secret
+
+        PUT /orgs/{org}/codespaces/secrets/{secret_name}/repositories
+
+        Replaces all repositories for an organization development environment secret when the `visibility`
+        for repository access is set to `selected`. The visibility is set when you [Create
+        or update an organization secret](https://docs.github.com/rest/codespaces/organization-secrets#create-or-update-an-organization-secret).
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/organization-secrets#set-selected-repositories-for-an-organization-secret
+        """
 
         from ..models import (
             BasicError,
@@ -1059,7 +1264,18 @@ class CodespacesClient:
         ] = UNSET,
         **kwargs,
     ) -> Response:
-        """See also: https://docs.github.com/rest/codespaces/organization-secrets#set-selected-repositories-for-an-organization-secret"""
+        """codespaces/set-selected-repos-for-org-secret
+
+        PUT /orgs/{org}/codespaces/secrets/{secret_name}/repositories
+
+        Replaces all repositories for an organization development environment secret when the `visibility`
+        for repository access is set to `selected`. The visibility is set when you [Create
+        or update an organization secret](https://docs.github.com/rest/codespaces/organization-secrets#create-or-update-an-organization-secret).
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/organization-secrets#set-selected-repositories-for-an-organization-secret
+        """
 
         from ..models import (
             BasicError,
@@ -1099,7 +1315,15 @@ class CodespacesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/codespaces/organization-secrets#add-selected-repository-to-an-organization-secret"""
+        """codespaces/add-selected-repo-to-org-secret
+
+        PUT /orgs/{org}/codespaces/secrets/{secret_name}/repositories/{repository_id}
+
+        Adds a repository to an organization development environment secret when the `visibility` for repository access is set to `selected`. The visibility is set when you [Create or update an organization secret](https://docs.github.com/rest/codespaces/organization-secrets#create-or-update-an-organization-secret).
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/organization-secrets#add-selected-repository-to-an-organization-secret
+        """
 
         from ..models import BasicError, ValidationError
 
@@ -1127,7 +1351,15 @@ class CodespacesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/codespaces/organization-secrets#add-selected-repository-to-an-organization-secret"""
+        """codespaces/add-selected-repo-to-org-secret
+
+        PUT /orgs/{org}/codespaces/secrets/{secret_name}/repositories/{repository_id}
+
+        Adds a repository to an organization development environment secret when the `visibility` for repository access is set to `selected`. The visibility is set when you [Create or update an organization secret](https://docs.github.com/rest/codespaces/organization-secrets#create-or-update-an-organization-secret).
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/organization-secrets#add-selected-repository-to-an-organization-secret
+        """
 
         from ..models import BasicError, ValidationError
 
@@ -1155,7 +1387,18 @@ class CodespacesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/codespaces/organization-secrets#remove-selected-repository-from-an-organization-secret"""
+        """codespaces/remove-selected-repo-from-org-secret
+
+        DELETE /orgs/{org}/codespaces/secrets/{secret_name}/repositories/{repository_id}
+
+        Removes a repository from an organization development environment secret when the `visibility`
+        for repository access is set to `selected`. The visibility is set when you [Create
+        or update an organization secret](https://docs.github.com/rest/codespaces/organization-secrets#create-or-update-an-organization-secret).
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/organization-secrets#remove-selected-repository-from-an-organization-secret
+        """
 
         from ..models import BasicError, ValidationError
 
@@ -1183,7 +1426,18 @@ class CodespacesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/codespaces/organization-secrets#remove-selected-repository-from-an-organization-secret"""
+        """codespaces/remove-selected-repo-from-org-secret
+
+        DELETE /orgs/{org}/codespaces/secrets/{secret_name}/repositories/{repository_id}
+
+        Removes a repository from an organization development environment secret when the `visibility`
+        for repository access is set to `selected`. The visibility is set when you [Create
+        or update an organization secret](https://docs.github.com/rest/codespaces/organization-secrets#create-or-update-an-organization-secret).
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/organization-secrets#remove-selected-repository-from-an-organization-secret
+        """
 
         from ..models import BasicError, ValidationError
 
@@ -1215,7 +1469,16 @@ class CodespacesClient:
         OrgsOrgMembersUsernameCodespacesGetResponse200,
         OrgsOrgMembersUsernameCodespacesGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/codespaces/organizations#list-codespaces-for-a-user-in-organization"""
+        """codespaces/get-codespaces-for-user-in-org
+
+        GET /orgs/{org}/members/{username}/codespaces
+
+        Lists the codespaces that a member of an organization has for repositories in that organization.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/organizations#list-codespaces-for-a-user-in-organization
+        """
 
         from ..models import BasicError, OrgsOrgMembersUsernameCodespacesGetResponse200
 
@@ -1254,7 +1517,16 @@ class CodespacesClient:
         OrgsOrgMembersUsernameCodespacesGetResponse200,
         OrgsOrgMembersUsernameCodespacesGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/codespaces/organizations#list-codespaces-for-a-user-in-organization"""
+        """codespaces/get-codespaces-for-user-in-org
+
+        GET /orgs/{org}/members/{username}/codespaces
+
+        Lists the codespaces that a member of an organization has for repositories in that organization.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/organizations#list-codespaces-for-a-user-in-organization
+        """
 
         from ..models import BasicError, OrgsOrgMembersUsernameCodespacesGetResponse200
 
@@ -1292,7 +1564,16 @@ class CodespacesClient:
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
     ]:
-        """See also: https://docs.github.com/rest/codespaces/organizations#delete-a-codespace-from-the-organization"""
+        """codespaces/delete-from-organization
+
+        DELETE /orgs/{org}/members/{username}/codespaces/{codespace_name}
+
+        Deletes a user's codespace.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/organizations#delete-a-codespace-from-the-organization
+        """
 
         from ..models import (
             AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
@@ -1327,7 +1608,16 @@ class CodespacesClient:
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
     ]:
-        """See also: https://docs.github.com/rest/codespaces/organizations#delete-a-codespace-from-the-organization"""
+        """codespaces/delete-from-organization
+
+        DELETE /orgs/{org}/members/{username}/codespaces/{codespace_name}
+
+        Deletes a user's codespace.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/organizations#delete-a-codespace-from-the-organization
+        """
 
         from ..models import (
             AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
@@ -1359,7 +1649,16 @@ class CodespacesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Codespace, CodespaceType]:
-        """See also: https://docs.github.com/rest/codespaces/organizations#stop-a-codespace-for-an-organization-user"""
+        """codespaces/stop-in-organization
+
+        POST /orgs/{org}/members/{username}/codespaces/{codespace_name}/stop
+
+        Stops a user's codespace.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/organizations#stop-a-codespace-for-an-organization-user
+        """
 
         from ..models import BasicError, Codespace
 
@@ -1388,7 +1687,16 @@ class CodespacesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Codespace, CodespaceType]:
-        """See also: https://docs.github.com/rest/codespaces/organizations#stop-a-codespace-for-an-organization-user"""
+        """codespaces/stop-in-organization
+
+        POST /orgs/{org}/members/{username}/codespaces/{codespace_name}/stop
+
+        Stops a user's codespace.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/organizations#stop-a-codespace-for-an-organization-user
+        """
 
         from ..models import BasicError, Codespace
 
@@ -1421,7 +1729,16 @@ class CodespacesClient:
         ReposOwnerRepoCodespacesGetResponse200,
         ReposOwnerRepoCodespacesGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/codespaces/codespaces#list-codespaces-in-a-repository-for-the-authenticated-user"""
+        """codespaces/list-in-repository-for-authenticated-user
+
+        GET /repos/{owner}/{repo}/codespaces
+
+        Lists the codespaces associated to a specified repository and the authenticated user.
+
+        OAuth app tokens and personal access tokens (classic) need the `codespace` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/codespaces#list-codespaces-in-a-repository-for-the-authenticated-user
+        """
 
         from ..models import BasicError, ReposOwnerRepoCodespacesGetResponse200
 
@@ -1460,7 +1777,16 @@ class CodespacesClient:
         ReposOwnerRepoCodespacesGetResponse200,
         ReposOwnerRepoCodespacesGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/codespaces/codespaces#list-codespaces-in-a-repository-for-the-authenticated-user"""
+        """codespaces/list-in-repository-for-authenticated-user
+
+        GET /repos/{owner}/{repo}/codespaces
+
+        Lists the codespaces associated to a specified repository and the authenticated user.
+
+        OAuth app tokens and personal access tokens (classic) need the `codespace` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/codespaces#list-codespaces-in-a-repository-for-the-authenticated-user
+        """
 
         from ..models import BasicError, ReposOwnerRepoCodespacesGetResponse200
 
@@ -1529,7 +1855,16 @@ class CodespacesClient:
         data: Missing[Union[ReposOwnerRepoCodespacesPostBodyType, None]] = UNSET,
         **kwargs,
     ) -> Response[Codespace, CodespaceType]:
-        """See also: https://docs.github.com/rest/codespaces/codespaces#create-a-codespace-in-a-repository"""
+        """codespaces/create-with-repo-for-authenticated-user
+
+        POST /repos/{owner}/{repo}/codespaces
+
+        Creates a codespace owned by the authenticated user in the specified repository.
+
+        OAuth app tokens and personal access tokens (classic) need the `codespace` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/codespaces#create-a-codespace-in-a-repository
+        """
 
         from typing import Union
 
@@ -1612,7 +1947,16 @@ class CodespacesClient:
         data: Missing[Union[ReposOwnerRepoCodespacesPostBodyType, None]] = UNSET,
         **kwargs,
     ) -> Response[Codespace, CodespaceType]:
-        """See also: https://docs.github.com/rest/codespaces/codespaces#create-a-codespace-in-a-repository"""
+        """codespaces/create-with-repo-for-authenticated-user
+
+        POST /repos/{owner}/{repo}/codespaces
+
+        Creates a codespace owned by the authenticated user in the specified repository.
+
+        OAuth app tokens and personal access tokens (classic) need the `codespace` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/codespaces#create-a-codespace-in-a-repository
+        """
 
         from typing import Union
 
@@ -1665,7 +2009,17 @@ class CodespacesClient:
         ReposOwnerRepoCodespacesDevcontainersGetResponse200,
         ReposOwnerRepoCodespacesDevcontainersGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/codespaces/codespaces#list-devcontainer-configurations-in-a-repository-for-the-authenticated-user"""
+        """codespaces/list-devcontainers-in-repository-for-authenticated-user
+
+        GET /repos/{owner}/{repo}/codespaces/devcontainers
+
+        Lists the devcontainer.json files associated with a specified repository and the authenticated user. These files
+        specify launchpoint configurations for codespaces created within the repository.
+
+        OAuth app tokens and personal access tokens (classic) need the `codespace` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/codespaces#list-devcontainer-configurations-in-a-repository-for-the-authenticated-user
+        """
 
         from ..models import (
             BasicError,
@@ -1708,7 +2062,17 @@ class CodespacesClient:
         ReposOwnerRepoCodespacesDevcontainersGetResponse200,
         ReposOwnerRepoCodespacesDevcontainersGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/codespaces/codespaces#list-devcontainer-configurations-in-a-repository-for-the-authenticated-user"""
+        """codespaces/list-devcontainers-in-repository-for-authenticated-user
+
+        GET /repos/{owner}/{repo}/codespaces/devcontainers
+
+        Lists the devcontainer.json files associated with a specified repository and the authenticated user. These files
+        specify launchpoint configurations for codespaces created within the repository.
+
+        OAuth app tokens and personal access tokens (classic) need the `codespace` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/codespaces#list-devcontainer-configurations-in-a-repository-for-the-authenticated-user
+        """
 
         from ..models import (
             BasicError,
@@ -1752,7 +2116,16 @@ class CodespacesClient:
         ReposOwnerRepoCodespacesMachinesGetResponse200,
         ReposOwnerRepoCodespacesMachinesGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/codespaces/machines#list-available-machine-types-for-a-repository"""
+        """codespaces/repo-machines-for-authenticated-user
+
+        GET /repos/{owner}/{repo}/codespaces/machines
+
+        List the machine types available for a given repository based on its configuration.
+
+        OAuth app tokens and personal access tokens (classic) need the `codespace` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/machines#list-available-machine-types-for-a-repository
+        """
 
         from ..models import BasicError, ReposOwnerRepoCodespacesMachinesGetResponse200
 
@@ -1793,7 +2166,16 @@ class CodespacesClient:
         ReposOwnerRepoCodespacesMachinesGetResponse200,
         ReposOwnerRepoCodespacesMachinesGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/codespaces/machines#list-available-machine-types-for-a-repository"""
+        """codespaces/repo-machines-for-authenticated-user
+
+        GET /repos/{owner}/{repo}/codespaces/machines
+
+        List the machine types available for a given repository based on its configuration.
+
+        OAuth app tokens and personal access tokens (classic) need the `codespace` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/machines#list-available-machine-types-for-a-repository
+        """
 
         from ..models import BasicError, ReposOwnerRepoCodespacesMachinesGetResponse200
 
@@ -1833,7 +2215,16 @@ class CodespacesClient:
         ReposOwnerRepoCodespacesNewGetResponse200,
         ReposOwnerRepoCodespacesNewGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/codespaces/codespaces#get-default-attributes-for-a-codespace"""
+        """codespaces/pre-flight-with-repo-for-authenticated-user
+
+        GET /repos/{owner}/{repo}/codespaces/new
+
+        Gets the default attributes for codespaces created by the user with the repository.
+
+        OAuth app tokens and personal access tokens (classic) need the `codespace` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/codespaces#get-default-attributes-for-a-codespace
+        """
 
         from ..models import BasicError, ReposOwnerRepoCodespacesNewGetResponse200
 
@@ -1871,7 +2262,16 @@ class CodespacesClient:
         ReposOwnerRepoCodespacesNewGetResponse200,
         ReposOwnerRepoCodespacesNewGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/codespaces/codespaces#get-default-attributes-for-a-codespace"""
+        """codespaces/pre-flight-with-repo-for-authenticated-user
+
+        GET /repos/{owner}/{repo}/codespaces/new
+
+        Gets the default attributes for codespaces created by the user with the repository.
+
+        OAuth app tokens and personal access tokens (classic) need the `codespace` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/codespaces#get-default-attributes-for-a-codespace
+        """
 
         from ..models import BasicError, ReposOwnerRepoCodespacesNewGetResponse200
 
@@ -1909,7 +2309,16 @@ class CodespacesClient:
         CodespacesPermissionsCheckForDevcontainer,
         CodespacesPermissionsCheckForDevcontainerType,
     ]:
-        """See also: https://docs.github.com/rest/codespaces/codespaces#check-if-permissions-defined-by-a-devcontainer-have-been-accepted-by-the-authenticated-user"""
+        """codespaces/check-permissions-for-devcontainer
+
+        GET /repos/{owner}/{repo}/codespaces/permissions_check
+
+        Checks whether the permissions defined by a given devcontainer configuration have been accepted by the authenticated user.
+
+        OAuth app tokens and personal access tokens (classic) need the `codespace` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/codespaces#check-if-permissions-defined-by-a-devcontainer-have-been-accepted-by-the-authenticated-user
+        """
 
         from ..models import (
             BasicError,
@@ -1954,7 +2363,16 @@ class CodespacesClient:
         CodespacesPermissionsCheckForDevcontainer,
         CodespacesPermissionsCheckForDevcontainerType,
     ]:
-        """See also: https://docs.github.com/rest/codespaces/codespaces#check-if-permissions-defined-by-a-devcontainer-have-been-accepted-by-the-authenticated-user"""
+        """codespaces/check-permissions-for-devcontainer
+
+        GET /repos/{owner}/{repo}/codespaces/permissions_check
+
+        Checks whether the permissions defined by a given devcontainer configuration have been accepted by the authenticated user.
+
+        OAuth app tokens and personal access tokens (classic) need the `codespace` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/codespaces#check-if-permissions-defined-by-a-devcontainer-have-been-accepted-by-the-authenticated-user
+        """
 
         from ..models import (
             BasicError,
@@ -1999,7 +2417,17 @@ class CodespacesClient:
         ReposOwnerRepoCodespacesSecretsGetResponse200,
         ReposOwnerRepoCodespacesSecretsGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/codespaces/repository-secrets#list-repository-secrets"""
+        """codespaces/list-repo-secrets
+
+        GET /repos/{owner}/{repo}/codespaces/secrets
+
+        Lists all development environment secrets available in a repository without revealing their encrypted
+        values.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/repository-secrets#list-repository-secrets
+        """
 
         from ..models import ReposOwnerRepoCodespacesSecretsGetResponse200
 
@@ -2032,7 +2460,17 @@ class CodespacesClient:
         ReposOwnerRepoCodespacesSecretsGetResponse200,
         ReposOwnerRepoCodespacesSecretsGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/codespaces/repository-secrets#list-repository-secrets"""
+        """codespaces/list-repo-secrets
+
+        GET /repos/{owner}/{repo}/codespaces/secrets
+
+        Lists all development environment secrets available in a repository without revealing their encrypted
+        values.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/repository-secrets#list-repository-secrets
+        """
 
         from ..models import ReposOwnerRepoCodespacesSecretsGetResponse200
 
@@ -2060,7 +2498,17 @@ class CodespacesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CodespacesPublicKey, CodespacesPublicKeyType]:
-        """See also: https://docs.github.com/rest/codespaces/repository-secrets#get-a-repository-public-key"""
+        """codespaces/get-repo-public-key
+
+        GET /repos/{owner}/{repo}/codespaces/secrets/public-key
+
+        Gets your public key, which you need to encrypt secrets. You need to
+        encrypt a secret before you can create or update secrets.
+
+        If the repository is private, OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/repository-secrets#get-a-repository-public-key
+        """
 
         from ..models import CodespacesPublicKey
 
@@ -2082,7 +2530,17 @@ class CodespacesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CodespacesPublicKey, CodespacesPublicKeyType]:
-        """See also: https://docs.github.com/rest/codespaces/repository-secrets#get-a-repository-public-key"""
+        """codespaces/get-repo-public-key
+
+        GET /repos/{owner}/{repo}/codespaces/secrets/public-key
+
+        Gets your public key, which you need to encrypt secrets. You need to
+        encrypt a secret before you can create or update secrets.
+
+        If the repository is private, OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/repository-secrets#get-a-repository-public-key
+        """
 
         from ..models import CodespacesPublicKey
 
@@ -2105,7 +2563,16 @@ class CodespacesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[RepoCodespacesSecret, RepoCodespacesSecretType]:
-        """See also: https://docs.github.com/rest/codespaces/repository-secrets#get-a-repository-secret"""
+        """codespaces/get-repo-secret
+
+        GET /repos/{owner}/{repo}/codespaces/secrets/{secret_name}
+
+        Gets a single repository development environment secret without revealing its encrypted value.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/repository-secrets#get-a-repository-secret
+        """
 
         from ..models import RepoCodespacesSecret
 
@@ -2128,7 +2595,16 @@ class CodespacesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[RepoCodespacesSecret, RepoCodespacesSecretType]:
-        """See also: https://docs.github.com/rest/codespaces/repository-secrets#get-a-repository-secret"""
+        """codespaces/get-repo-secret
+
+        GET /repos/{owner}/{repo}/codespaces/secrets/{secret_name}
+
+        Gets a single repository development environment secret without revealing its encrypted value.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/repository-secrets#get-a-repository-secret
+        """
 
         from ..models import RepoCodespacesSecret
 
@@ -2177,7 +2653,17 @@ class CodespacesClient:
         data: Missing[ReposOwnerRepoCodespacesSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject, EmptyObjectType]:
-        """See also: https://docs.github.com/rest/codespaces/repository-secrets#create-or-update-a-repository-secret"""
+        """codespaces/create-or-update-repo-secret
+
+        PUT /repos/{owner}/{repo}/codespaces/secrets/{secret_name}
+
+        Creates or updates a repository development environment secret with an encrypted value. Encrypt your secret using
+        [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). For more information, see "[Encrypting secrets for the REST API](https://docs.github.com/rest/guides/encrypting-secrets-for-the-rest-api)."
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint. The associated user must be a repository admin.
+
+        See also: https://docs.github.com/rest/codespaces/repository-secrets#create-or-update-a-repository-secret
+        """
 
         from ..models import (
             EmptyObject,
@@ -2241,7 +2727,17 @@ class CodespacesClient:
         data: Missing[ReposOwnerRepoCodespacesSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject, EmptyObjectType]:
-        """See also: https://docs.github.com/rest/codespaces/repository-secrets#create-or-update-a-repository-secret"""
+        """codespaces/create-or-update-repo-secret
+
+        PUT /repos/{owner}/{repo}/codespaces/secrets/{secret_name}
+
+        Creates or updates a repository development environment secret with an encrypted value. Encrypt your secret using
+        [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). For more information, see "[Encrypting secrets for the REST API](https://docs.github.com/rest/guides/encrypting-secrets-for-the-rest-api)."
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint. The associated user must be a repository admin.
+
+        See also: https://docs.github.com/rest/codespaces/repository-secrets#create-or-update-a-repository-secret
+        """
 
         from ..models import (
             EmptyObject,
@@ -2279,7 +2775,16 @@ class CodespacesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/codespaces/repository-secrets#delete-a-repository-secret"""
+        """codespaces/delete-repo-secret
+
+        DELETE /repos/{owner}/{repo}/codespaces/secrets/{secret_name}
+
+        Deletes a development environment secret in a repository using the secret name.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint. The associated user must be a repository admin.
+
+        See also: https://docs.github.com/rest/codespaces/repository-secrets#delete-a-repository-secret
+        """
 
         url = f"/repos/{owner}/{repo}/codespaces/secrets/{secret_name}"
 
@@ -2299,7 +2804,16 @@ class CodespacesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/codespaces/repository-secrets#delete-a-repository-secret"""
+        """codespaces/delete-repo-secret
+
+        DELETE /repos/{owner}/{repo}/codespaces/secrets/{secret_name}
+
+        Deletes a development environment secret in a repository using the secret name.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint. The associated user must be a repository admin.
+
+        See also: https://docs.github.com/rest/codespaces/repository-secrets#delete-a-repository-secret
+        """
 
         url = f"/repos/{owner}/{repo}/codespaces/secrets/{secret_name}"
 
@@ -2357,7 +2871,16 @@ class CodespacesClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[Codespace, CodespaceType]:
-        """See also: https://docs.github.com/rest/codespaces/codespaces#create-a-codespace-from-a-pull-request"""
+        """codespaces/create-with-pr-for-authenticated-user
+
+        POST /repos/{owner}/{repo}/pulls/{pull_number}/codespaces
+
+        Creates a codespace owned by the authenticated user for the specified pull request.
+
+        OAuth app tokens and personal access tokens (classic) need the `codespace` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/codespaces#create-a-codespace-from-a-pull-request
+        """
 
         from typing import Union
 
@@ -2443,7 +2966,16 @@ class CodespacesClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[Codespace, CodespaceType]:
-        """See also: https://docs.github.com/rest/codespaces/codespaces#create-a-codespace-from-a-pull-request"""
+        """codespaces/create-with-pr-for-authenticated-user
+
+        POST /repos/{owner}/{repo}/pulls/{pull_number}/codespaces
+
+        Creates a codespace owned by the authenticated user for the specified pull request.
+
+        OAuth app tokens and personal access tokens (classic) need the `codespace` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/codespaces#create-a-codespace-from-a-pull-request
+        """
 
         from typing import Union
 
@@ -2491,7 +3023,16 @@ class CodespacesClient:
         repository_id: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[UserCodespacesGetResponse200, UserCodespacesGetResponse200Type]:
-        """See also: https://docs.github.com/rest/codespaces/codespaces#list-codespaces-for-the-authenticated-user"""
+        """codespaces/list-for-authenticated-user
+
+        GET /user/codespaces
+
+        Lists the authenticated user's codespaces.
+
+        OAuth app tokens and personal access tokens (classic) need the `codespace` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/codespaces#list-codespaces-for-the-authenticated-user
+        """
 
         from ..models import BasicError, UserCodespacesGetResponse200
 
@@ -2527,7 +3068,16 @@ class CodespacesClient:
         repository_id: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[UserCodespacesGetResponse200, UserCodespacesGetResponse200Type]:
-        """See also: https://docs.github.com/rest/codespaces/codespaces#list-codespaces-for-the-authenticated-user"""
+        """codespaces/list-for-authenticated-user
+
+        GET /user/codespaces
+
+        Lists the authenticated user's codespaces.
+
+        OAuth app tokens and personal access tokens (classic) need the `codespace` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/codespaces#list-codespaces-for-the-authenticated-user
+        """
 
         from ..models import BasicError, UserCodespacesGetResponse200
 
@@ -2611,7 +3161,18 @@ class CodespacesClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[Codespace, CodespaceType]:
-        """See also: https://docs.github.com/rest/codespaces/codespaces#create-a-codespace-for-the-authenticated-user"""
+        """codespaces/create-for-authenticated-user
+
+        POST /user/codespaces
+
+        Creates a new codespace, owned by the authenticated user.
+
+        This endpoint requires either a `repository_id` OR a `pull_request` but not both.
+
+        OAuth app tokens and personal access tokens (classic) need the `codespace` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/codespaces#create-a-codespace-for-the-authenticated-user
+        """
 
         from typing import Union
 
@@ -2708,7 +3269,18 @@ class CodespacesClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[Codespace, CodespaceType]:
-        """See also: https://docs.github.com/rest/codespaces/codespaces#create-a-codespace-for-the-authenticated-user"""
+        """codespaces/create-for-authenticated-user
+
+        POST /user/codespaces
+
+        Creates a new codespace, owned by the authenticated user.
+
+        This endpoint requires either a `repository_id` OR a `pull_request` but not both.
+
+        OAuth app tokens and personal access tokens (classic) need the `codespace` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/codespaces#create-a-codespace-for-the-authenticated-user
+        """
 
         from typing import Union
 
@@ -2758,7 +3330,19 @@ class CodespacesClient:
     ) -> Response[
         UserCodespacesSecretsGetResponse200, UserCodespacesSecretsGetResponse200Type
     ]:
-        """See also: https://docs.github.com/rest/codespaces/secrets#list-secrets-for-the-authenticated-user"""
+        """codespaces/list-secrets-for-authenticated-user
+
+        GET /user/codespaces/secrets
+
+        Lists all development environment secrets available for a user's codespaces without revealing their
+        encrypted values.
+
+        The authenticated user must have Codespaces access to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `codespace` or `codespace:secrets` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/secrets#list-secrets-for-the-authenticated-user
+        """
 
         from ..models import UserCodespacesSecretsGetResponse200
 
@@ -2788,7 +3372,19 @@ class CodespacesClient:
     ) -> Response[
         UserCodespacesSecretsGetResponse200, UserCodespacesSecretsGetResponse200Type
     ]:
-        """See also: https://docs.github.com/rest/codespaces/secrets#list-secrets-for-the-authenticated-user"""
+        """codespaces/list-secrets-for-authenticated-user
+
+        GET /user/codespaces/secrets
+
+        Lists all development environment secrets available for a user's codespaces without revealing their
+        encrypted values.
+
+        The authenticated user must have Codespaces access to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `codespace` or `codespace:secrets` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/secrets#list-secrets-for-the-authenticated-user
+        """
 
         from ..models import UserCodespacesSecretsGetResponse200
 
@@ -2814,7 +3410,18 @@ class CodespacesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CodespacesUserPublicKey, CodespacesUserPublicKeyType]:
-        """See also: https://docs.github.com/rest/codespaces/secrets#get-public-key-for-the-authenticated-user"""
+        """codespaces/get-public-key-for-authenticated-user
+
+        GET /user/codespaces/secrets/public-key
+
+        Gets your public key, which you need to encrypt secrets. You need to encrypt a secret before you can create or update secrets.
+
+        The authenticated user must have Codespaces access to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `codespace` or `codespace:secrets` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/secrets#get-public-key-for-the-authenticated-user
+        """
 
         from ..models import CodespacesUserPublicKey
 
@@ -2834,7 +3441,18 @@ class CodespacesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CodespacesUserPublicKey, CodespacesUserPublicKeyType]:
-        """See also: https://docs.github.com/rest/codespaces/secrets#get-public-key-for-the-authenticated-user"""
+        """codespaces/get-public-key-for-authenticated-user
+
+        GET /user/codespaces/secrets/public-key
+
+        Gets your public key, which you need to encrypt secrets. You need to encrypt a secret before you can create or update secrets.
+
+        The authenticated user must have Codespaces access to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `codespace` or `codespace:secrets` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/secrets#get-public-key-for-the-authenticated-user
+        """
 
         from ..models import CodespacesUserPublicKey
 
@@ -2855,7 +3473,18 @@ class CodespacesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CodespacesSecret, CodespacesSecretType]:
-        """See also: https://docs.github.com/rest/codespaces/secrets#get-a-secret-for-the-authenticated-user"""
+        """codespaces/get-secret-for-authenticated-user
+
+        GET /user/codespaces/secrets/{secret_name}
+
+        Gets a development environment secret available to a user's codespaces without revealing its encrypted value.
+
+        The authenticated user must have Codespaces access to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `codespace` or `codespace:secrets` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/secrets#get-a-secret-for-the-authenticated-user
+        """
 
         from ..models import CodespacesSecret
 
@@ -2876,7 +3505,18 @@ class CodespacesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CodespacesSecret, CodespacesSecretType]:
-        """See also: https://docs.github.com/rest/codespaces/secrets#get-a-secret-for-the-authenticated-user"""
+        """codespaces/get-secret-for-authenticated-user
+
+        GET /user/codespaces/secrets/{secret_name}
+
+        Gets a development environment secret available to a user's codespaces without revealing its encrypted value.
+
+        The authenticated user must have Codespaces access to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `codespace` or `codespace:secrets` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/secrets#get-a-secret-for-the-authenticated-user
+        """
 
         from ..models import CodespacesSecret
 
@@ -2920,7 +3560,19 @@ class CodespacesClient:
         data: Missing[UserCodespacesSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject, EmptyObjectType]:
-        """See also: https://docs.github.com/rest/codespaces/secrets#create-or-update-a-secret-for-the-authenticated-user"""
+        """codespaces/create-or-update-secret-for-authenticated-user
+
+        PUT /user/codespaces/secrets/{secret_name}
+
+        Creates or updates a development environment secret for a user's codespace with an encrypted value. Encrypt your secret using
+        [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). For more information, see "[Encrypting secrets for the REST API](https://docs.github.com/rest/guides/encrypting-secrets-for-the-rest-api)."
+
+        The authenticated user must have Codespaces access to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `codespace` or `codespace:secrets` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/secrets#create-or-update-a-secret-for-the-authenticated-user
+        """
 
         from ..models import (
             BasicError,
@@ -2983,7 +3635,19 @@ class CodespacesClient:
         data: Missing[UserCodespacesSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject, EmptyObjectType]:
-        """See also: https://docs.github.com/rest/codespaces/secrets#create-or-update-a-secret-for-the-authenticated-user"""
+        """codespaces/create-or-update-secret-for-authenticated-user
+
+        PUT /user/codespaces/secrets/{secret_name}
+
+        Creates or updates a development environment secret for a user's codespace with an encrypted value. Encrypt your secret using
+        [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). For more information, see "[Encrypting secrets for the REST API](https://docs.github.com/rest/guides/encrypting-secrets-for-the-rest-api)."
+
+        The authenticated user must have Codespaces access to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `codespace` or `codespace:secrets` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/secrets#create-or-update-a-secret-for-the-authenticated-user
+        """
 
         from ..models import (
             BasicError,
@@ -3023,7 +3687,18 @@ class CodespacesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/codespaces/secrets#delete-a-secret-for-the-authenticated-user"""
+        """codespaces/delete-secret-for-authenticated-user
+
+        DELETE /user/codespaces/secrets/{secret_name}
+
+        Deletes a development environment secret from a user's codespaces using the secret name. Deleting the secret will remove access from all codespaces that were allowed to access the secret.
+
+        The authenticated user must have Codespaces access to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `codespace` or `codespace:secrets` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/secrets#delete-a-secret-for-the-authenticated-user
+        """
 
         url = f"/user/codespaces/secrets/{secret_name}"
 
@@ -3041,7 +3716,18 @@ class CodespacesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/codespaces/secrets#delete-a-secret-for-the-authenticated-user"""
+        """codespaces/delete-secret-for-authenticated-user
+
+        DELETE /user/codespaces/secrets/{secret_name}
+
+        Deletes a development environment secret from a user's codespaces using the secret name. Deleting the secret will remove access from all codespaces that were allowed to access the secret.
+
+        The authenticated user must have Codespaces access to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `codespace` or `codespace:secrets` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/secrets#delete-a-secret-for-the-authenticated-user
+        """
 
         url = f"/user/codespaces/secrets/{secret_name}"
 
@@ -3062,7 +3748,18 @@ class CodespacesClient:
         UserCodespacesSecretsSecretNameRepositoriesGetResponse200,
         UserCodespacesSecretsSecretNameRepositoriesGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/codespaces/secrets#list-selected-repositories-for-a-user-secret"""
+        """codespaces/list-repositories-for-secret-for-authenticated-user
+
+        GET /user/codespaces/secrets/{secret_name}/repositories
+
+        List the repositories that have been granted the ability to use a user's development environment secret.
+
+        The authenticated user must have Codespaces access to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `codespace` or `codespace:secrets` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/secrets#list-selected-repositories-for-a-user-secret
+        """
 
         from ..models import (
             BasicError,
@@ -3095,7 +3792,18 @@ class CodespacesClient:
         UserCodespacesSecretsSecretNameRepositoriesGetResponse200,
         UserCodespacesSecretsSecretNameRepositoriesGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/codespaces/secrets#list-selected-repositories-for-a-user-secret"""
+        """codespaces/list-repositories-for-secret-for-authenticated-user
+
+        GET /user/codespaces/secrets/{secret_name}/repositories
+
+        List the repositories that have been granted the ability to use a user's development environment secret.
+
+        The authenticated user must have Codespaces access to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `codespace` or `codespace:secrets` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/secrets#list-selected-repositories-for-a-user-secret
+        """
 
         from ..models import (
             BasicError,
@@ -3146,7 +3854,18 @@ class CodespacesClient:
         data: Missing[UserCodespacesSecretsSecretNameRepositoriesPutBodyType] = UNSET,
         **kwargs,
     ) -> Response:
-        """See also: https://docs.github.com/rest/codespaces/secrets#set-selected-repositories-for-a-user-secret"""
+        """codespaces/set-repositories-for-secret-for-authenticated-user
+
+        PUT /user/codespaces/secrets/{secret_name}/repositories
+
+        Select the repositories that will use a user's development environment secret.
+
+        The authenticated user must have Codespaces access to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `codespace` or `codespace:secrets` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/secrets#set-selected-repositories-for-a-user-secret
+        """
 
         from ..models import (
             BasicError,
@@ -3208,7 +3927,18 @@ class CodespacesClient:
         data: Missing[UserCodespacesSecretsSecretNameRepositoriesPutBodyType] = UNSET,
         **kwargs,
     ) -> Response:
-        """See also: https://docs.github.com/rest/codespaces/secrets#set-selected-repositories-for-a-user-secret"""
+        """codespaces/set-repositories-for-secret-for-authenticated-user
+
+        PUT /user/codespaces/secrets/{secret_name}/repositories
+
+        Select the repositories that will use a user's development environment secret.
+
+        The authenticated user must have Codespaces access to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `codespace` or `codespace:secrets` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/secrets#set-selected-repositories-for-a-user-secret
+        """
 
         from ..models import (
             BasicError,
@@ -3250,7 +3980,18 @@ class CodespacesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/codespaces/secrets#add-a-selected-repository-to-a-user-secret"""
+        """codespaces/add-repository-for-secret-for-authenticated-user
+
+        PUT /user/codespaces/secrets/{secret_name}/repositories/{repository_id}
+
+        Adds a repository to the selected repositories for a user's development environment secret.
+
+        The authenticated user must have Codespaces access to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `codespace` or `codespace:secrets` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/secrets#add-a-selected-repository-to-a-user-secret
+        """
 
         from ..models import BasicError
 
@@ -3277,7 +4018,18 @@ class CodespacesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/codespaces/secrets#add-a-selected-repository-to-a-user-secret"""
+        """codespaces/add-repository-for-secret-for-authenticated-user
+
+        PUT /user/codespaces/secrets/{secret_name}/repositories/{repository_id}
+
+        Adds a repository to the selected repositories for a user's development environment secret.
+
+        The authenticated user must have Codespaces access to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `codespace` or `codespace:secrets` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/secrets#add-a-selected-repository-to-a-user-secret
+        """
 
         from ..models import BasicError
 
@@ -3304,7 +4056,18 @@ class CodespacesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/codespaces/secrets#remove-a-selected-repository-from-a-user-secret"""
+        """codespaces/remove-repository-for-secret-for-authenticated-user
+
+        DELETE /user/codespaces/secrets/{secret_name}/repositories/{repository_id}
+
+        Removes a repository from the selected repositories for a user's development environment secret.
+
+        The authenticated user must have Codespaces access to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `codespace` or `codespace:secrets` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/secrets#remove-a-selected-repository-from-a-user-secret
+        """
 
         from ..models import BasicError
 
@@ -3331,7 +4094,18 @@ class CodespacesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/codespaces/secrets#remove-a-selected-repository-from-a-user-secret"""
+        """codespaces/remove-repository-for-secret-for-authenticated-user
+
+        DELETE /user/codespaces/secrets/{secret_name}/repositories/{repository_id}
+
+        Removes a repository from the selected repositories for a user's development environment secret.
+
+        The authenticated user must have Codespaces access to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `codespace` or `codespace:secrets` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/secrets#remove-a-selected-repository-from-a-user-secret
+        """
 
         from ..models import BasicError
 
@@ -3357,7 +4131,16 @@ class CodespacesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Codespace, CodespaceType]:
-        """See also: https://docs.github.com/rest/codespaces/codespaces#get-a-codespace-for-the-authenticated-user"""
+        """codespaces/get-for-authenticated-user
+
+        GET /user/codespaces/{codespace_name}
+
+        Gets information about a user's codespace.
+
+        OAuth app tokens and personal access tokens (classic) need the `codespace` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/codespaces#get-a-codespace-for-the-authenticated-user
+        """
 
         from ..models import BasicError, Codespace
 
@@ -3384,7 +4167,16 @@ class CodespacesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Codespace, CodespaceType]:
-        """See also: https://docs.github.com/rest/codespaces/codespaces#get-a-codespace-for-the-authenticated-user"""
+        """codespaces/get-for-authenticated-user
+
+        GET /user/codespaces/{codespace_name}
+
+        Gets information about a user's codespace.
+
+        OAuth app tokens and personal access tokens (classic) need the `codespace` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/codespaces#get-a-codespace-for-the-authenticated-user
+        """
 
         from ..models import BasicError, Codespace
 
@@ -3414,7 +4206,16 @@ class CodespacesClient:
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
     ]:
-        """See also: https://docs.github.com/rest/codespaces/codespaces#delete-a-codespace-for-the-authenticated-user"""
+        """codespaces/delete-for-authenticated-user
+
+        DELETE /user/codespaces/{codespace_name}
+
+        Deletes a user's codespace.
+
+        OAuth app tokens and personal access tokens (classic) need the `codespace` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/codespaces#delete-a-codespace-for-the-authenticated-user
+        """
 
         from ..models import (
             AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
@@ -3447,7 +4248,16 @@ class CodespacesClient:
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
     ]:
-        """See also: https://docs.github.com/rest/codespaces/codespaces#delete-a-codespace-for-the-authenticated-user"""
+        """codespaces/delete-for-authenticated-user
+
+        DELETE /user/codespaces/{codespace_name}
+
+        Deletes a user's codespace.
+
+        OAuth app tokens and personal access tokens (classic) need the `codespace` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/codespaces#delete-a-codespace-for-the-authenticated-user
+        """
 
         from ..models import (
             AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
@@ -3500,7 +4310,18 @@ class CodespacesClient:
         data: Missing[UserCodespacesCodespaceNamePatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Codespace, CodespaceType]:
-        """See also: https://docs.github.com/rest/codespaces/codespaces#update-a-codespace-for-the-authenticated-user"""
+        """codespaces/update-for-authenticated-user
+
+        PATCH /user/codespaces/{codespace_name}
+
+        Updates a codespace owned by the authenticated user. Currently only the codespace's machine type and recent folders can be modified using this endpoint.
+
+        If you specify a new machine type it will be applied the next time your codespace is started.
+
+        OAuth app tokens and personal access tokens (classic) need the `codespace` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/codespaces#update-a-codespace-for-the-authenticated-user
+        """
 
         from ..models import BasicError, Codespace, UserCodespacesCodespaceNamePatchBody
 
@@ -3559,7 +4380,18 @@ class CodespacesClient:
         data: Missing[UserCodespacesCodespaceNamePatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Codespace, CodespaceType]:
-        """See also: https://docs.github.com/rest/codespaces/codespaces#update-a-codespace-for-the-authenticated-user"""
+        """codespaces/update-for-authenticated-user
+
+        PATCH /user/codespaces/{codespace_name}
+
+        Updates a codespace owned by the authenticated user. Currently only the codespace's machine type and recent folders can be modified using this endpoint.
+
+        If you specify a new machine type it will be applied the next time your codespace is started.
+
+        OAuth app tokens and personal access tokens (classic) need the `codespace` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/codespaces#update-a-codespace-for-the-authenticated-user
+        """
 
         from ..models import BasicError, Codespace, UserCodespacesCodespaceNamePatchBody
 
@@ -3595,7 +4427,18 @@ class CodespacesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CodespaceExportDetails, CodespaceExportDetailsType]:
-        """See also: https://docs.github.com/rest/codespaces/codespaces#export-a-codespace-for-the-authenticated-user"""
+        """codespaces/export-for-authenticated-user
+
+        POST /user/codespaces/{codespace_name}/exports
+
+        Triggers an export of the specified codespace and returns a URL and ID where the status of the export can be monitored.
+
+        If changes cannot be pushed to the codespace's repository, they will be pushed to a new or previously-existing fork instead.
+
+        OAuth app tokens and personal access tokens (classic) need the `codespace` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/codespaces#export-a-codespace-for-the-authenticated-user
+        """
 
         from ..models import BasicError, CodespaceExportDetails, ValidationError
 
@@ -3623,7 +4466,18 @@ class CodespacesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CodespaceExportDetails, CodespaceExportDetailsType]:
-        """See also: https://docs.github.com/rest/codespaces/codespaces#export-a-codespace-for-the-authenticated-user"""
+        """codespaces/export-for-authenticated-user
+
+        POST /user/codespaces/{codespace_name}/exports
+
+        Triggers an export of the specified codespace and returns a URL and ID where the status of the export can be monitored.
+
+        If changes cannot be pushed to the codespace's repository, they will be pushed to a new or previously-existing fork instead.
+
+        OAuth app tokens and personal access tokens (classic) need the `codespace` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/codespaces#export-a-codespace-for-the-authenticated-user
+        """
 
         from ..models import BasicError, CodespaceExportDetails, ValidationError
 
@@ -3652,7 +4506,16 @@ class CodespacesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CodespaceExportDetails, CodespaceExportDetailsType]:
-        """See also: https://docs.github.com/rest/codespaces/codespaces#get-details-about-a-codespace-export"""
+        """codespaces/get-export-details-for-authenticated-user
+
+        GET /user/codespaces/{codespace_name}/exports/{export_id}
+
+        Gets information about an export of a codespace.
+
+        OAuth app tokens and personal access tokens (classic) need the `codespace` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/codespaces#get-details-about-a-codespace-export
+        """
 
         from ..models import BasicError, CodespaceExportDetails
 
@@ -3677,7 +4540,16 @@ class CodespacesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CodespaceExportDetails, CodespaceExportDetailsType]:
-        """See also: https://docs.github.com/rest/codespaces/codespaces#get-details-about-a-codespace-export"""
+        """codespaces/get-export-details-for-authenticated-user
+
+        GET /user/codespaces/{codespace_name}/exports/{export_id}
+
+        Gets information about an export of a codespace.
+
+        OAuth app tokens and personal access tokens (classic) need the `codespace` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/codespaces#get-details-about-a-codespace-export
+        """
 
         from ..models import BasicError, CodespaceExportDetails
 
@@ -3704,7 +4576,16 @@ class CodespacesClient:
         UserCodespacesCodespaceNameMachinesGetResponse200,
         UserCodespacesCodespaceNameMachinesGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/codespaces/machines#list-machine-types-for-a-codespace"""
+        """codespaces/codespace-machines-for-authenticated-user
+
+        GET /user/codespaces/{codespace_name}/machines
+
+        List the machine types a codespace can transition to use.
+
+        OAuth app tokens and personal access tokens (classic) need the `codespace` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/machines#list-machine-types-for-a-codespace
+        """
 
         from ..models import (
             BasicError,
@@ -3737,7 +4618,16 @@ class CodespacesClient:
         UserCodespacesCodespaceNameMachinesGetResponse200,
         UserCodespacesCodespaceNameMachinesGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/codespaces/machines#list-machine-types-for-a-codespace"""
+        """codespaces/codespace-machines-for-authenticated-user
+
+        GET /user/codespaces/{codespace_name}/machines
+
+        List the machine types a codespace can transition to use.
+
+        OAuth app tokens and personal access tokens (classic) need the `codespace` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/machines#list-machine-types-for-a-codespace
+        """
 
         from ..models import (
             BasicError,
@@ -3789,7 +4679,20 @@ class CodespacesClient:
         data: Missing[UserCodespacesCodespaceNamePublishPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[CodespaceWithFullRepository, CodespaceWithFullRepositoryType]:
-        """See also: https://docs.github.com/rest/codespaces/codespaces#create-a-repository-from-an-unpublished-codespace"""
+        """codespaces/publish-for-authenticated-user
+
+        POST /user/codespaces/{codespace_name}/publish
+
+        Publishes an unpublished codespace, creating a new repository and assigning it to the codespace.
+
+        The codespace's token is granted write permissions to the repository, allowing the user to push their changes.
+
+        This will fail for a codespace that is already published, meaning it has an associated repository.
+
+        OAuth app tokens and personal access tokens (classic) need the `codespace` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/codespaces#create-a-repository-from-an-unpublished-codespace
+        """
 
         from ..models import (
             BasicError,
@@ -3855,7 +4758,20 @@ class CodespacesClient:
         data: Missing[UserCodespacesCodespaceNamePublishPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[CodespaceWithFullRepository, CodespaceWithFullRepositoryType]:
-        """See also: https://docs.github.com/rest/codespaces/codespaces#create-a-repository-from-an-unpublished-codespace"""
+        """codespaces/publish-for-authenticated-user
+
+        POST /user/codespaces/{codespace_name}/publish
+
+        Publishes an unpublished codespace, creating a new repository and assigning it to the codespace.
+
+        The codespace's token is granted write permissions to the repository, allowing the user to push their changes.
+
+        This will fail for a codespace that is already published, meaning it has an associated repository.
+
+        OAuth app tokens and personal access tokens (classic) need the `codespace` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/codespaces#create-a-repository-from-an-unpublished-codespace
+        """
 
         from ..models import (
             BasicError,
@@ -3899,7 +4815,16 @@ class CodespacesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Codespace, CodespaceType]:
-        """See also: https://docs.github.com/rest/codespaces/codespaces#start-a-codespace-for-the-authenticated-user"""
+        """codespaces/start-for-authenticated-user
+
+        POST /user/codespaces/{codespace_name}/start
+
+        Starts a user's codespace.
+
+        OAuth app tokens and personal access tokens (classic) need the `codespace` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/codespaces#start-a-codespace-for-the-authenticated-user
+        """
 
         from ..models import BasicError, Codespace
 
@@ -3929,7 +4854,16 @@ class CodespacesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Codespace, CodespaceType]:
-        """See also: https://docs.github.com/rest/codespaces/codespaces#start-a-codespace-for-the-authenticated-user"""
+        """codespaces/start-for-authenticated-user
+
+        POST /user/codespaces/{codespace_name}/start
+
+        Starts a user's codespace.
+
+        OAuth app tokens and personal access tokens (classic) need the `codespace` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/codespaces#start-a-codespace-for-the-authenticated-user
+        """
 
         from ..models import BasicError, Codespace
 
@@ -3959,7 +4893,16 @@ class CodespacesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Codespace, CodespaceType]:
-        """See also: https://docs.github.com/rest/codespaces/codespaces#stop-a-codespace-for-the-authenticated-user"""
+        """codespaces/stop-for-authenticated-user
+
+        POST /user/codespaces/{codespace_name}/stop
+
+        Stops a user's codespace.
+
+        OAuth app tokens and personal access tokens (classic) need the `codespace` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/codespaces#stop-a-codespace-for-the-authenticated-user
+        """
 
         from ..models import BasicError, Codespace
 
@@ -3986,7 +4929,16 @@ class CodespacesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Codespace, CodespaceType]:
-        """See also: https://docs.github.com/rest/codespaces/codespaces#stop-a-codespace-for-the-authenticated-user"""
+        """codespaces/stop-for-authenticated-user
+
+        POST /user/codespaces/{codespace_name}/stop
+
+        Stops a user's codespace.
+
+        OAuth app tokens and personal access tokens (classic) need the `codespace` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/codespaces/codespaces#stop-a-codespace-for-the-authenticated-user
+        """
 
         from ..models import BasicError, Codespace
 

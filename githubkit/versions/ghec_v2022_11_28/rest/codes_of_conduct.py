@@ -43,7 +43,14 @@ class CodesOfConductClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[CodeOfConduct], list[CodeOfConductType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/codes-of-conduct/codes-of-conduct#get-all-codes-of-conduct"""
+        """codes-of-conduct/get-all-codes-of-conduct
+
+        GET /codes_of_conduct
+
+        Returns array of all GitHub's codes of conduct.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/codes-of-conduct/codes-of-conduct#get-all-codes-of-conduct
+        """
 
         from ..models import CodeOfConduct
 
@@ -63,7 +70,14 @@ class CodesOfConductClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[CodeOfConduct], list[CodeOfConductType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/codes-of-conduct/codes-of-conduct#get-all-codes-of-conduct"""
+        """codes-of-conduct/get-all-codes-of-conduct
+
+        GET /codes_of_conduct
+
+        Returns array of all GitHub's codes of conduct.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/codes-of-conduct/codes-of-conduct#get-all-codes-of-conduct
+        """
 
         from ..models import CodeOfConduct
 
@@ -84,7 +98,14 @@ class CodesOfConductClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CodeOfConduct, CodeOfConductType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/codes-of-conduct/codes-of-conduct#get-a-code-of-conduct"""
+        """codes-of-conduct/get-conduct-code
+
+        GET /codes_of_conduct/{key}
+
+        Returns information about the specified GitHub code of conduct.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/codes-of-conduct/codes-of-conduct#get-a-code-of-conduct
+        """
 
         from ..models import BasicError, CodeOfConduct
 
@@ -108,7 +129,14 @@ class CodesOfConductClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CodeOfConduct, CodeOfConductType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/codes-of-conduct/codes-of-conduct#get-a-code-of-conduct"""
+        """codes-of-conduct/get-conduct-code
+
+        GET /codes_of_conduct/{key}
+
+        Returns information about the specified GitHub code of conduct.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/codes-of-conduct/codes-of-conduct#get-a-code-of-conduct
+        """
 
         from ..models import BasicError, CodeOfConduct
 

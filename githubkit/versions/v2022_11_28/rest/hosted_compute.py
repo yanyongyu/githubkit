@@ -67,7 +67,16 @@ class HostedComputeClient:
         OrgsOrgSettingsNetworkConfigurationsGetResponse200,
         OrgsOrgSettingsNetworkConfigurationsGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/orgs/network-configurations#list-hosted-compute-network-configurations-for-an-organization"""
+        """hosted-compute/list-network-configurations-for-org
+
+        GET /orgs/{org}/settings/network-configurations
+
+        Lists all hosted compute network configurations configured in an organization.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:network_configurations` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/orgs/network-configurations#list-hosted-compute-network-configurations-for-an-organization
+        """
 
         from ..models import OrgsOrgSettingsNetworkConfigurationsGetResponse200
 
@@ -99,7 +108,16 @@ class HostedComputeClient:
         OrgsOrgSettingsNetworkConfigurationsGetResponse200,
         OrgsOrgSettingsNetworkConfigurationsGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/orgs/network-configurations#list-hosted-compute-network-configurations-for-an-organization"""
+        """hosted-compute/list-network-configurations-for-org
+
+        GET /orgs/{org}/settings/network-configurations
+
+        Lists all hosted compute network configurations configured in an organization.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:network_configurations` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/orgs/network-configurations#list-hosted-compute-network-configurations-for-an-organization
+        """
 
         from ..models import OrgsOrgSettingsNetworkConfigurationsGetResponse200
 
@@ -149,7 +167,16 @@ class HostedComputeClient:
         data: Missing[OrgsOrgSettingsNetworkConfigurationsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[NetworkConfiguration, NetworkConfigurationType]:
-        """See also: https://docs.github.com/rest/orgs/network-configurations#create-a-hosted-compute-network-configuration-for-an-organization"""
+        """hosted-compute/create-network-configuration-for-org
+
+        POST /orgs/{org}/settings/network-configurations
+
+        Creates a hosted compute network configuration for an organization.
+
+        OAuth app tokens and personal access tokens (classic) need the `write:network_configurations` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/orgs/network-configurations#create-a-hosted-compute-network-configuration-for-an-organization
+        """
 
         from ..models import (
             NetworkConfiguration,
@@ -208,7 +235,16 @@ class HostedComputeClient:
         data: Missing[OrgsOrgSettingsNetworkConfigurationsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[NetworkConfiguration, NetworkConfigurationType]:
-        """See also: https://docs.github.com/rest/orgs/network-configurations#create-a-hosted-compute-network-configuration-for-an-organization"""
+        """hosted-compute/create-network-configuration-for-org
+
+        POST /orgs/{org}/settings/network-configurations
+
+        Creates a hosted compute network configuration for an organization.
+
+        OAuth app tokens and personal access tokens (classic) need the `write:network_configurations` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/orgs/network-configurations#create-a-hosted-compute-network-configuration-for-an-organization
+        """
 
         from ..models import (
             NetworkConfiguration,
@@ -245,7 +281,16 @@ class HostedComputeClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[NetworkConfiguration, NetworkConfigurationType]:
-        """See also: https://docs.github.com/rest/orgs/network-configurations#get-a-hosted-compute-network-configuration-for-an-organization"""
+        """hosted-compute/get-network-configuration-for-org
+
+        GET /orgs/{org}/settings/network-configurations/{network_configuration_id}
+
+        Gets a hosted compute network configuration configured in an organization.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:network_configurations` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/orgs/network-configurations#get-a-hosted-compute-network-configuration-for-an-organization
+        """
 
         from ..models import NetworkConfiguration
 
@@ -267,7 +312,16 @@ class HostedComputeClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[NetworkConfiguration, NetworkConfigurationType]:
-        """See also: https://docs.github.com/rest/orgs/network-configurations#get-a-hosted-compute-network-configuration-for-an-organization"""
+        """hosted-compute/get-network-configuration-for-org
+
+        GET /orgs/{org}/settings/network-configurations/{network_configuration_id}
+
+        Gets a hosted compute network configuration configured in an organization.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:network_configurations` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/orgs/network-configurations#get-a-hosted-compute-network-configuration-for-an-organization
+        """
 
         from ..models import NetworkConfiguration
 
@@ -289,7 +343,16 @@ class HostedComputeClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/orgs/network-configurations#delete-a-hosted-compute-network-configuration-from-an-organization"""
+        """hosted-compute/delete-network-configuration-from-org
+
+        DELETE /orgs/{org}/settings/network-configurations/{network_configuration_id}
+
+        Deletes a hosted compute network configuration from an organization.
+
+        OAuth app tokens and personal access tokens (classic) need the `write:network_configurations` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/orgs/network-configurations#delete-a-hosted-compute-network-configuration-from-an-organization
+        """
 
         url = f"/orgs/{org}/settings/network-configurations/{network_configuration_id}"
 
@@ -308,7 +371,16 @@ class HostedComputeClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/orgs/network-configurations#delete-a-hosted-compute-network-configuration-from-an-organization"""
+        """hosted-compute/delete-network-configuration-from-org
+
+        DELETE /orgs/{org}/settings/network-configurations/{network_configuration_id}
+
+        Deletes a hosted compute network configuration from an organization.
+
+        OAuth app tokens and personal access tokens (classic) need the `write:network_configurations` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/orgs/network-configurations#delete-a-hosted-compute-network-configuration-from-an-organization
+        """
 
         url = f"/orgs/{org}/settings/network-configurations/{network_configuration_id}"
 
@@ -354,7 +426,16 @@ class HostedComputeClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[NetworkConfiguration, NetworkConfigurationType]:
-        """See also: https://docs.github.com/rest/orgs/network-configurations#update-a-hosted-compute-network-configuration-for-an-organization"""
+        """hosted-compute/update-network-configuration-for-org
+
+        PATCH /orgs/{org}/settings/network-configurations/{network_configuration_id}
+
+        Updates a hosted compute network configuration for an organization.
+
+        OAuth app tokens and personal access tokens (classic) need the `write:network_configurations` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/orgs/network-configurations#update-a-hosted-compute-network-configuration-for-an-organization
+        """
 
         from ..models import (
             NetworkConfiguration,
@@ -419,7 +500,16 @@ class HostedComputeClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[NetworkConfiguration, NetworkConfigurationType]:
-        """See also: https://docs.github.com/rest/orgs/network-configurations#update-a-hosted-compute-network-configuration-for-an-organization"""
+        """hosted-compute/update-network-configuration-for-org
+
+        PATCH /orgs/{org}/settings/network-configurations/{network_configuration_id}
+
+        Updates a hosted compute network configuration for an organization.
+
+        OAuth app tokens and personal access tokens (classic) need the `write:network_configurations` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/orgs/network-configurations#update-a-hosted-compute-network-configuration-for-an-organization
+        """
 
         from ..models import (
             NetworkConfiguration,
@@ -457,7 +547,16 @@ class HostedComputeClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[NetworkSettings, NetworkSettingsType]:
-        """See also: https://docs.github.com/rest/orgs/network-configurations#get-a-hosted-compute-network-settings-resource-for-an-organization"""
+        """hosted-compute/get-network-settings-for-org
+
+        GET /orgs/{org}/settings/network-settings/{network_settings_id}
+
+        Gets a hosted compute network settings resource configured for an organization.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:network_configurations` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/orgs/network-configurations#get-a-hosted-compute-network-settings-resource-for-an-organization
+        """
 
         from ..models import NetworkSettings
 
@@ -479,7 +578,16 @@ class HostedComputeClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[NetworkSettings, NetworkSettingsType]:
-        """See also: https://docs.github.com/rest/orgs/network-configurations#get-a-hosted-compute-network-settings-resource-for-an-organization"""
+        """hosted-compute/get-network-settings-for-org
+
+        GET /orgs/{org}/settings/network-settings/{network_settings_id}
+
+        Gets a hosted compute network settings resource configured for an organization.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:network_configurations` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/orgs/network-configurations#get-a-hosted-compute-network-settings-resource-for-an-organization
+        """
 
         from ..models import NetworkSettings
 

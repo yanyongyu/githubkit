@@ -61,7 +61,14 @@ class ClassroomClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ClassroomAssignment, ClassroomAssignmentType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/classroom/classroom#get-an-assignment"""
+        """classroom/get-an-assignment
+
+        GET /assignments/{assignment_id}
+
+        Gets a GitHub Classroom assignment. Assignment will only be returned if the current user is an administrator of the GitHub Classroom for the assignment.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/classroom/classroom#get-an-assignment
+        """
 
         from ..models import BasicError, ClassroomAssignment
 
@@ -85,7 +92,14 @@ class ClassroomClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ClassroomAssignment, ClassroomAssignmentType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/classroom/classroom#get-an-assignment"""
+        """classroom/get-an-assignment
+
+        GET /assignments/{assignment_id}
+
+        Gets a GitHub Classroom assignment. Assignment will only be returned if the current user is an administrator of the GitHub Classroom for the assignment.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/classroom/classroom#get-an-assignment
+        """
 
         from ..models import BasicError, ClassroomAssignment
 
@@ -113,7 +127,14 @@ class ClassroomClient:
     ) -> Response[
         list[ClassroomAcceptedAssignment], list[ClassroomAcceptedAssignmentType]
     ]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/classroom/classroom#list-accepted-assignments-for-an-assignment"""
+        """classroom/list-accepted-assignments-for-an-assignment
+
+        GET /assignments/{assignment_id}/accepted_assignments
+
+        Lists any assignment repositories that have been created by students accepting a GitHub Classroom assignment. Accepted assignments will only be returned if the current user is an administrator of the GitHub Classroom for the assignment.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/classroom/classroom#list-accepted-assignments-for-an-assignment
+        """
 
         from ..models import ClassroomAcceptedAssignment
 
@@ -144,7 +165,14 @@ class ClassroomClient:
     ) -> Response[
         list[ClassroomAcceptedAssignment], list[ClassroomAcceptedAssignmentType]
     ]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/classroom/classroom#list-accepted-assignments-for-an-assignment"""
+        """classroom/list-accepted-assignments-for-an-assignment
+
+        GET /assignments/{assignment_id}/accepted_assignments
+
+        Lists any assignment repositories that have been created by students accepting a GitHub Classroom assignment. Accepted assignments will only be returned if the current user is an administrator of the GitHub Classroom for the assignment.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/classroom/classroom#list-accepted-assignments-for-an-assignment
+        """
 
         from ..models import ClassroomAcceptedAssignment
 
@@ -171,7 +199,14 @@ class ClassroomClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[ClassroomAssignmentGrade], list[ClassroomAssignmentGradeType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/classroom/classroom#get-assignment-grades"""
+        """classroom/get-assignment-grades
+
+        GET /assignments/{assignment_id}/grades
+
+        Gets grades for a GitHub Classroom assignment. Grades will only be returned if the current user is an administrator of the GitHub Classroom for the assignment.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/classroom/classroom#get-assignment-grades
+        """
 
         from ..models import BasicError, ClassroomAssignmentGrade
 
@@ -195,7 +230,14 @@ class ClassroomClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[ClassroomAssignmentGrade], list[ClassroomAssignmentGradeType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/classroom/classroom#get-assignment-grades"""
+        """classroom/get-assignment-grades
+
+        GET /assignments/{assignment_id}/grades
+
+        Gets grades for a GitHub Classroom assignment. Grades will only be returned if the current user is an administrator of the GitHub Classroom for the assignment.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/classroom/classroom#get-assignment-grades
+        """
 
         from ..models import BasicError, ClassroomAssignmentGrade
 
@@ -220,7 +262,14 @@ class ClassroomClient:
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[SimpleClassroom], list[SimpleClassroomType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/classroom/classroom#list-classrooms"""
+        """classroom/list-classrooms
+
+        GET /classrooms
+
+        Lists GitHub Classroom classrooms for the current user. Classrooms will only be returned if the current user is an administrator of one or more GitHub Classrooms.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/classroom/classroom#list-classrooms
+        """
 
         from ..models import SimpleClassroom
 
@@ -248,7 +297,14 @@ class ClassroomClient:
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[SimpleClassroom], list[SimpleClassroomType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/classroom/classroom#list-classrooms"""
+        """classroom/list-classrooms
+
+        GET /classrooms
+
+        Lists GitHub Classroom classrooms for the current user. Classrooms will only be returned if the current user is an administrator of one or more GitHub Classrooms.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/classroom/classroom#list-classrooms
+        """
 
         from ..models import SimpleClassroom
 
@@ -275,7 +331,14 @@ class ClassroomClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Classroom, ClassroomType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/classroom/classroom#get-a-classroom"""
+        """classroom/get-a-classroom
+
+        GET /classrooms/{classroom_id}
+
+        Gets a GitHub Classroom classroom for the current user. Classroom will only be returned if the current user is an administrator of the GitHub Classroom.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/classroom/classroom#get-a-classroom
+        """
 
         from ..models import BasicError, Classroom
 
@@ -299,7 +362,14 @@ class ClassroomClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Classroom, ClassroomType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/classroom/classroom#get-a-classroom"""
+        """classroom/get-a-classroom
+
+        GET /classrooms/{classroom_id}
+
+        Gets a GitHub Classroom classroom for the current user. Classroom will only be returned if the current user is an administrator of the GitHub Classroom.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/classroom/classroom#get-a-classroom
+        """
 
         from ..models import BasicError, Classroom
 
@@ -325,7 +395,14 @@ class ClassroomClient:
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[SimpleClassroomAssignment], list[SimpleClassroomAssignmentType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/classroom/classroom#list-assignments-for-a-classroom"""
+        """classroom/list-assignments-for-a-classroom
+
+        GET /classrooms/{classroom_id}/assignments
+
+        Lists GitHub Classroom assignments for a classroom. Assignments will only be returned if the current user is an administrator of the GitHub Classroom.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/classroom/classroom#list-assignments-for-a-classroom
+        """
 
         from ..models import SimpleClassroomAssignment
 
@@ -354,7 +431,14 @@ class ClassroomClient:
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[SimpleClassroomAssignment], list[SimpleClassroomAssignmentType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/classroom/classroom#list-assignments-for-a-classroom"""
+        """classroom/list-assignments-for-a-classroom
+
+        GET /classrooms/{classroom_id}/assignments
+
+        Lists GitHub Classroom assignments for a classroom. Assignments will only be returned if the current user is an administrator of the GitHub Classroom.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/classroom/classroom#list-assignments-for-a-classroom
+        """
 
         from ..models import SimpleClassroomAssignment
 

@@ -94,7 +94,16 @@ class AppsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Union[Integration, None], Union[IntegrationType, None]]:
-        """See also: https://docs.github.com/rest/apps/apps#get-the-authenticated-app"""
+        """apps/get-authenticated
+
+        GET /app
+
+        Returns the GitHub App associated with the authentication credentials used. To see how many app installations are associated with this GitHub App, see the `installations_count` in the response. For more details about your app's installations, see the "[List installations for the authenticated app](https://docs.github.com/rest/apps/apps#list-installations-for-the-authenticated-app)" endpoint.
+
+        You must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
+
+        See also: https://docs.github.com/rest/apps/apps#get-the-authenticated-app
+        """
 
         from typing import Union
 
@@ -116,7 +125,16 @@ class AppsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Union[Integration, None], Union[IntegrationType, None]]:
-        """See also: https://docs.github.com/rest/apps/apps#get-the-authenticated-app"""
+        """apps/get-authenticated
+
+        GET /app
+
+        Returns the GitHub App associated with the authentication credentials used. To see how many app installations are associated with this GitHub App, see the `installations_count` in the response. For more details about your app's installations, see the "[List installations for the authenticated app](https://docs.github.com/rest/apps/apps#list-installations-for-the-authenticated-app)" endpoint.
+
+        You must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
+
+        See also: https://docs.github.com/rest/apps/apps#get-the-authenticated-app
+        """
 
         from typing import Union
 
@@ -142,7 +160,14 @@ class AppsClient:
         AppManifestsCodeConversionsPostResponse201,
         AppManifestsCodeConversionsPostResponse201Type,
     ]:
-        """See also: https://docs.github.com/rest/apps/apps#create-a-github-app-from-a-manifest"""
+        """apps/create-from-manifest
+
+        POST /app-manifests/{code}/conversions
+
+        Use this endpoint to complete the handshake necessary when implementing the [GitHub App Manifest flow](https://docs.github.com/apps/building-github-apps/creating-github-apps-from-a-manifest/). When you create a GitHub App with the manifest flow, you receive a temporary `code` used to retrieve the GitHub App's `id`, `pem` (private key), and `webhook_secret`.
+
+        See also: https://docs.github.com/rest/apps/apps#create-a-github-app-from-a-manifest
+        """
 
         from ..models import (
             AppManifestsCodeConversionsPostResponse201,
@@ -174,7 +199,14 @@ class AppsClient:
         AppManifestsCodeConversionsPostResponse201,
         AppManifestsCodeConversionsPostResponse201Type,
     ]:
-        """See also: https://docs.github.com/rest/apps/apps#create-a-github-app-from-a-manifest"""
+        """apps/create-from-manifest
+
+        POST /app-manifests/{code}/conversions
+
+        Use this endpoint to complete the handshake necessary when implementing the [GitHub App Manifest flow](https://docs.github.com/apps/building-github-apps/creating-github-apps-from-a-manifest/). When you create a GitHub App with the manifest flow, you receive a temporary `code` used to retrieve the GitHub App's `id`, `pem` (private key), and `webhook_secret`.
+
+        See also: https://docs.github.com/rest/apps/apps#create-a-github-app-from-a-manifest
+        """
 
         from ..models import (
             AppManifestsCodeConversionsPostResponse201,
@@ -202,7 +234,16 @@ class AppsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[WebhookConfig, WebhookConfigType]:
-        """See also: https://docs.github.com/rest/apps/webhooks#get-a-webhook-configuration-for-an-app"""
+        """apps/get-webhook-config-for-app
+
+        GET /app/hook/config
+
+        Returns the webhook configuration for a GitHub App. For more information about configuring a webhook for your app, see "[Creating a GitHub App](/developers/apps/creating-a-github-app)."
+
+        You must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
+
+        See also: https://docs.github.com/rest/apps/webhooks#get-a-webhook-configuration-for-an-app
+        """
 
         from ..models import WebhookConfig
 
@@ -222,7 +263,16 @@ class AppsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[WebhookConfig, WebhookConfigType]:
-        """See also: https://docs.github.com/rest/apps/webhooks#get-a-webhook-configuration-for-an-app"""
+        """apps/get-webhook-config-for-app
+
+        GET /app/hook/config
+
+        Returns the webhook configuration for a GitHub App. For more information about configuring a webhook for your app, see "[Creating a GitHub App](/developers/apps/creating-a-github-app)."
+
+        You must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
+
+        See also: https://docs.github.com/rest/apps/webhooks#get-a-webhook-configuration-for-an-app
+        """
 
         from ..models import WebhookConfig
 
@@ -264,7 +314,16 @@ class AppsClient:
         data: Missing[AppHookConfigPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[WebhookConfig, WebhookConfigType]:
-        """See also: https://docs.github.com/rest/apps/webhooks#update-a-webhook-configuration-for-an-app"""
+        """apps/update-webhook-config-for-app
+
+        PATCH /app/hook/config
+
+        Updates the webhook configuration for a GitHub App. For more information about configuring a webhook for your app, see "[Creating a GitHub App](/developers/apps/creating-a-github-app)."
+
+        You must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
+
+        See also: https://docs.github.com/rest/apps/webhooks#update-a-webhook-configuration-for-an-app
+        """
 
         from ..models import AppHookConfigPatchBody, WebhookConfig
 
@@ -316,7 +375,16 @@ class AppsClient:
         data: Missing[AppHookConfigPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[WebhookConfig, WebhookConfigType]:
-        """See also: https://docs.github.com/rest/apps/webhooks#update-a-webhook-configuration-for-an-app"""
+        """apps/update-webhook-config-for-app
+
+        PATCH /app/hook/config
+
+        Updates the webhook configuration for a GitHub App. For more information about configuring a webhook for your app, see "[Creating a GitHub App](/developers/apps/creating-a-github-app)."
+
+        You must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
+
+        See also: https://docs.github.com/rest/apps/webhooks#update-a-webhook-configuration-for-an-app
+        """
 
         from ..models import AppHookConfigPatchBody, WebhookConfig
 
@@ -348,7 +416,16 @@ class AppsClient:
         cursor: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[HookDeliveryItem], list[HookDeliveryItemType]]:
-        """See also: https://docs.github.com/rest/apps/webhooks#list-deliveries-for-an-app-webhook"""
+        """apps/list-webhook-deliveries
+
+        GET /app/hook/deliveries
+
+        Returns a list of webhook deliveries for the webhook configured for a GitHub App.
+
+        You must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
+
+        See also: https://docs.github.com/rest/apps/webhooks#list-deliveries-for-an-app-webhook
+        """
 
         from ..models import BasicError, HookDeliveryItem, ValidationError
 
@@ -380,7 +457,16 @@ class AppsClient:
         cursor: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[HookDeliveryItem], list[HookDeliveryItemType]]:
-        """See also: https://docs.github.com/rest/apps/webhooks#list-deliveries-for-an-app-webhook"""
+        """apps/list-webhook-deliveries
+
+        GET /app/hook/deliveries
+
+        Returns a list of webhook deliveries for the webhook configured for a GitHub App.
+
+        You must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
+
+        See also: https://docs.github.com/rest/apps/webhooks#list-deliveries-for-an-app-webhook
+        """
 
         from ..models import BasicError, HookDeliveryItem, ValidationError
 
@@ -411,7 +497,16 @@ class AppsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[HookDelivery, HookDeliveryType]:
-        """See also: https://docs.github.com/rest/apps/webhooks#get-a-delivery-for-an-app-webhook"""
+        """apps/get-webhook-delivery
+
+        GET /app/hook/deliveries/{delivery_id}
+
+        Returns a delivery for the webhook configured for a GitHub App.
+
+        You must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
+
+        See also: https://docs.github.com/rest/apps/webhooks#get-a-delivery-for-an-app-webhook
+        """
 
         from ..models import BasicError, HookDelivery, ValidationError
 
@@ -436,7 +531,16 @@ class AppsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[HookDelivery, HookDeliveryType]:
-        """See also: https://docs.github.com/rest/apps/webhooks#get-a-delivery-for-an-app-webhook"""
+        """apps/get-webhook-delivery
+
+        GET /app/hook/deliveries/{delivery_id}
+
+        Returns a delivery for the webhook configured for a GitHub App.
+
+        You must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
+
+        See also: https://docs.github.com/rest/apps/webhooks#get-a-delivery-for-an-app-webhook
+        """
 
         from ..models import BasicError, HookDelivery, ValidationError
 
@@ -464,7 +568,16 @@ class AppsClient:
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
     ]:
-        """See also: https://docs.github.com/rest/apps/webhooks#redeliver-a-delivery-for-an-app-webhook"""
+        """apps/redeliver-webhook-delivery
+
+        POST /app/hook/deliveries/{delivery_id}/attempts
+
+        Redeliver a delivery for the webhook configured for a GitHub App.
+
+        You must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
+
+        See also: https://docs.github.com/rest/apps/webhooks#redeliver-a-delivery-for-an-app-webhook
+        """
 
         from ..models import (
             AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
@@ -496,7 +609,16 @@ class AppsClient:
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
     ]:
-        """See also: https://docs.github.com/rest/apps/webhooks#redeliver-a-delivery-for-an-app-webhook"""
+        """apps/redeliver-webhook-delivery
+
+        POST /app/hook/deliveries/{delivery_id}/attempts
+
+        Redeliver a delivery for the webhook configured for a GitHub App.
+
+        You must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
+
+        See also: https://docs.github.com/rest/apps/webhooks#redeliver-a-delivery-for-an-app-webhook
+        """
 
         from ..models import (
             AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
@@ -528,7 +650,14 @@ class AppsClient:
     ) -> Response[
         list[IntegrationInstallationRequest], list[IntegrationInstallationRequestType]
     ]:
-        """See also: https://docs.github.com/rest/apps/apps#list-installation-requests-for-the-authenticated-app"""
+        """apps/list-installation-requests-for-authenticated-app
+
+        GET /app/installation-requests
+
+        Lists all the pending installation requests for the authenticated GitHub App.
+
+        See also: https://docs.github.com/rest/apps/apps#list-installation-requests-for-the-authenticated-app
+        """
 
         from ..models import BasicError, IntegrationInstallationRequest
 
@@ -561,7 +690,14 @@ class AppsClient:
     ) -> Response[
         list[IntegrationInstallationRequest], list[IntegrationInstallationRequestType]
     ]:
-        """See also: https://docs.github.com/rest/apps/apps#list-installation-requests-for-the-authenticated-app"""
+        """apps/list-installation-requests-for-authenticated-app
+
+        GET /app/installation-requests
+
+        Lists all the pending installation requests for the authenticated GitHub App.
+
+        See also: https://docs.github.com/rest/apps/apps#list-installation-requests-for-the-authenticated-app
+        """
 
         from ..models import BasicError, IntegrationInstallationRequest
 
@@ -594,7 +730,16 @@ class AppsClient:
         outdated: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Installation], list[InstallationType]]:
-        """See also: https://docs.github.com/rest/apps/apps#list-installations-for-the-authenticated-app"""
+        """apps/list-installations
+
+        GET /app/installations
+
+        The permissions the installation has are included under the `permissions` key.
+
+        You must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
+
+        See also: https://docs.github.com/rest/apps/apps#list-installations-for-the-authenticated-app
+        """
 
         from ..models import Installation
 
@@ -626,7 +771,16 @@ class AppsClient:
         outdated: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Installation], list[InstallationType]]:
-        """See also: https://docs.github.com/rest/apps/apps#list-installations-for-the-authenticated-app"""
+        """apps/list-installations
+
+        GET /app/installations
+
+        The permissions the installation has are included under the `permissions` key.
+
+        You must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
+
+        See also: https://docs.github.com/rest/apps/apps#list-installations-for-the-authenticated-app
+        """
 
         from ..models import Installation
 
@@ -655,7 +809,16 @@ class AppsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Installation, InstallationType]:
-        """See also: https://docs.github.com/rest/apps/apps#get-an-installation-for-the-authenticated-app"""
+        """apps/get-installation
+
+        GET /app/installations/{installation_id}
+
+        Enables an authenticated GitHub App to find an installation's information using the installation id.
+
+        You must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
+
+        See also: https://docs.github.com/rest/apps/apps#get-an-installation-for-the-authenticated-app
+        """
 
         from ..models import BasicError, Installation
 
@@ -679,7 +842,16 @@ class AppsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Installation, InstallationType]:
-        """See also: https://docs.github.com/rest/apps/apps#get-an-installation-for-the-authenticated-app"""
+        """apps/get-installation
+
+        GET /app/installations/{installation_id}
+
+        Enables an authenticated GitHub App to find an installation's information using the installation id.
+
+        You must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
+
+        See also: https://docs.github.com/rest/apps/apps#get-an-installation-for-the-authenticated-app
+        """
 
         from ..models import BasicError, Installation
 
@@ -703,7 +875,16 @@ class AppsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/apps/apps#delete-an-installation-for-the-authenticated-app"""
+        """apps/delete-installation
+
+        DELETE /app/installations/{installation_id}
+
+        Uninstalls a GitHub App on a user, organization, or business account. If you prefer to temporarily suspend an app's access to your account's resources, then we recommend the "[Suspend an app installation](https://docs.github.com/rest/apps/apps#suspend-an-app-installation)" endpoint.
+
+        You must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
+
+        See also: https://docs.github.com/rest/apps/apps#delete-an-installation-for-the-authenticated-app
+        """
 
         from ..models import BasicError
 
@@ -726,7 +907,16 @@ class AppsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/apps/apps#delete-an-installation-for-the-authenticated-app"""
+        """apps/delete-installation
+
+        DELETE /app/installations/{installation_id}
+
+        Uninstalls a GitHub App on a user, organization, or business account. If you prefer to temporarily suspend an app's access to your account's resources, then we recommend the "[Suspend an app installation](https://docs.github.com/rest/apps/apps#suspend-an-app-installation)" endpoint.
+
+        You must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
+
+        See also: https://docs.github.com/rest/apps/apps#delete-an-installation-for-the-authenticated-app
+        """
 
         from ..models import BasicError
 
@@ -772,7 +962,20 @@ class AppsClient:
         data: Missing[AppInstallationsInstallationIdAccessTokensPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[InstallationToken, InstallationTokenType]:
-        """See also: https://docs.github.com/rest/apps/apps#create-an-installation-access-token-for-an-app"""
+        """apps/create-installation-access-token
+
+        POST /app/installations/{installation_id}/access_tokens
+
+        Creates an installation access token that enables a GitHub App to make authenticated API requests for the app's installation on an organization or individual account. Installation tokens expire one hour from the time you create them. Using an expired token produces a status code of `401 - Unauthorized`, and requires creating a new installation token. By default the installation token has access to all repositories that the installation can access.
+
+        Optionally, you can use the `repositories` or `repository_ids` body parameters to specify individual repositories that the installation access token can access. If you don't use `repositories` or `repository_ids` to grant access to specific repositories, the installation access token will have access to all repositories that the installation was granted access to. The installation access token cannot be granted access to repositories that the installation was not granted access to. Up to 500 repositories can be listed in this manner.
+
+        Optionally, use the `permissions` body parameter to specify the permissions that the installation access token should have. If `permissions` is not specified, the installation access token will have all of the permissions that were granted to the app. The installation access token cannot be granted permissions that the app was not granted.
+
+        You must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
+
+        See also: https://docs.github.com/rest/apps/apps#create-an-installation-access-token-for-an-app
+        """
 
         from ..models import (
             AppInstallationsInstallationIdAccessTokensPostBody,
@@ -839,7 +1042,20 @@ class AppsClient:
         data: Missing[AppInstallationsInstallationIdAccessTokensPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[InstallationToken, InstallationTokenType]:
-        """See also: https://docs.github.com/rest/apps/apps#create-an-installation-access-token-for-an-app"""
+        """apps/create-installation-access-token
+
+        POST /app/installations/{installation_id}/access_tokens
+
+        Creates an installation access token that enables a GitHub App to make authenticated API requests for the app's installation on an organization or individual account. Installation tokens expire one hour from the time you create them. Using an expired token produces a status code of `401 - Unauthorized`, and requires creating a new installation token. By default the installation token has access to all repositories that the installation can access.
+
+        Optionally, you can use the `repositories` or `repository_ids` body parameters to specify individual repositories that the installation access token can access. If you don't use `repositories` or `repository_ids` to grant access to specific repositories, the installation access token will have access to all repositories that the installation was granted access to. The installation access token cannot be granted access to repositories that the installation was not granted access to. Up to 500 repositories can be listed in this manner.
+
+        Optionally, use the `permissions` body parameter to specify the permissions that the installation access token should have. If `permissions` is not specified, the installation access token will have all of the permissions that were granted to the app. The installation access token cannot be granted permissions that the app was not granted.
+
+        You must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
+
+        See also: https://docs.github.com/rest/apps/apps#create-an-installation-access-token-for-an-app
+        """
 
         from ..models import (
             AppInstallationsInstallationIdAccessTokensPostBody,
@@ -883,7 +1099,16 @@ class AppsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/apps/apps#suspend-an-app-installation"""
+        """apps/suspend-installation
+
+        PUT /app/installations/{installation_id}/suspended
+
+        Suspends a GitHub App on a user, organization, or business account, which blocks the app from accessing the account's resources. When a GitHub App is suspended, the app's access to the GitHub API or webhook events is blocked for that account.
+
+        You must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
+
+        See also: https://docs.github.com/rest/apps/apps#suspend-an-app-installation
+        """
 
         from ..models import BasicError
 
@@ -906,7 +1131,16 @@ class AppsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/apps/apps#suspend-an-app-installation"""
+        """apps/suspend-installation
+
+        PUT /app/installations/{installation_id}/suspended
+
+        Suspends a GitHub App on a user, organization, or business account, which blocks the app from accessing the account's resources. When a GitHub App is suspended, the app's access to the GitHub API or webhook events is blocked for that account.
+
+        You must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
+
+        See also: https://docs.github.com/rest/apps/apps#suspend-an-app-installation
+        """
 
         from ..models import BasicError
 
@@ -929,7 +1163,16 @@ class AppsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/apps/apps#unsuspend-an-app-installation"""
+        """apps/unsuspend-installation
+
+        DELETE /app/installations/{installation_id}/suspended
+
+        Removes a GitHub App installation suspension.
+
+        You must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
+
+        See also: https://docs.github.com/rest/apps/apps#unsuspend-an-app-installation
+        """
 
         from ..models import BasicError
 
@@ -952,7 +1195,16 @@ class AppsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/apps/apps#unsuspend-an-app-installation"""
+        """apps/unsuspend-installation
+
+        DELETE /app/installations/{installation_id}/suspended
+
+        Removes a GitHub App installation suspension.
+
+        You must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
+
+        See also: https://docs.github.com/rest/apps/apps#unsuspend-an-app-installation
+        """
 
         from ..models import BasicError
 
@@ -996,7 +1248,15 @@ class AppsClient:
         data: Missing[ApplicationsClientIdGrantDeleteBodyType] = UNSET,
         **kwargs,
     ) -> Response:
-        """See also: https://docs.github.com/rest/apps/oauth-applications#delete-an-app-authorization"""
+        """apps/delete-authorization
+
+        DELETE /applications/{client_id}/grant
+
+        OAuth and GitHub application owners can revoke a grant for their application and a specific user. You must provide a valid OAuth `access_token` as an input parameter and the grant for the token's owner will be deleted.
+        Deleting an application's grant will also delete all OAuth tokens associated with the application for the user. Once deleted, the application will have no access to the user's account and will no longer be listed on [the application authorizations settings screen within GitHub](https://github.com/settings/applications#authorized).
+
+        See also: https://docs.github.com/rest/apps/oauth-applications#delete-an-app-authorization
+        """
 
         from ..models import ApplicationsClientIdGrantDeleteBody, ValidationError
 
@@ -1050,7 +1310,15 @@ class AppsClient:
         data: Missing[ApplicationsClientIdGrantDeleteBodyType] = UNSET,
         **kwargs,
     ) -> Response:
-        """See also: https://docs.github.com/rest/apps/oauth-applications#delete-an-app-authorization"""
+        """apps/delete-authorization
+
+        DELETE /applications/{client_id}/grant
+
+        OAuth and GitHub application owners can revoke a grant for their application and a specific user. You must provide a valid OAuth `access_token` as an input parameter and the grant for the token's owner will be deleted.
+        Deleting an application's grant will also delete all OAuth tokens associated with the application for the user. Once deleted, the application will have no access to the user's account and will no longer be listed on [the application authorizations settings screen within GitHub](https://github.com/settings/applications#authorized).
+
+        See also: https://docs.github.com/rest/apps/oauth-applications#delete-an-app-authorization
+        """
 
         from ..models import ApplicationsClientIdGrantDeleteBody, ValidationError
 
@@ -1104,7 +1372,14 @@ class AppsClient:
         data: Missing[ApplicationsClientIdTokenPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Authorization, AuthorizationType]:
-        """See also: https://docs.github.com/rest/apps/oauth-applications#check-a-token"""
+        """apps/check-token
+
+        POST /applications/{client_id}/token
+
+        OAuth applications and GitHub applications with OAuth authorizations can use this API method for checking OAuth token validity without exceeding the normal rate limits for failed login attempts. Authentication works differently with this particular endpoint. Invalid tokens will return `404 NOT FOUND`.
+
+        See also: https://docs.github.com/rest/apps/oauth-applications#check-a-token
+        """
 
         from ..models import (
             ApplicationsClientIdTokenPostBody,
@@ -1165,7 +1440,14 @@ class AppsClient:
         data: Missing[ApplicationsClientIdTokenPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Authorization, AuthorizationType]:
-        """See also: https://docs.github.com/rest/apps/oauth-applications#check-a-token"""
+        """apps/check-token
+
+        POST /applications/{client_id}/token
+
+        OAuth applications and GitHub applications with OAuth authorizations can use this API method for checking OAuth token validity without exceeding the normal rate limits for failed login attempts. Authentication works differently with this particular endpoint. Invalid tokens will return `404 NOT FOUND`.
+
+        See also: https://docs.github.com/rest/apps/oauth-applications#check-a-token
+        """
 
         from ..models import (
             ApplicationsClientIdTokenPostBody,
@@ -1226,7 +1508,14 @@ class AppsClient:
         data: Missing[ApplicationsClientIdTokenDeleteBodyType] = UNSET,
         **kwargs,
     ) -> Response:
-        """See also: https://docs.github.com/rest/apps/oauth-applications#delete-an-app-token"""
+        """apps/delete-token
+
+        DELETE /applications/{client_id}/token
+
+        OAuth  or GitHub application owners can revoke a single token for an OAuth application or a GitHub application with an OAuth authorization.
+
+        See also: https://docs.github.com/rest/apps/oauth-applications#delete-an-app-token
+        """
 
         from ..models import ApplicationsClientIdTokenDeleteBody, ValidationError
 
@@ -1280,7 +1569,14 @@ class AppsClient:
         data: Missing[ApplicationsClientIdTokenDeleteBodyType] = UNSET,
         **kwargs,
     ) -> Response:
-        """See also: https://docs.github.com/rest/apps/oauth-applications#delete-an-app-token"""
+        """apps/delete-token
+
+        DELETE /applications/{client_id}/token
+
+        OAuth  or GitHub application owners can revoke a single token for an OAuth application or a GitHub application with an OAuth authorization.
+
+        See also: https://docs.github.com/rest/apps/oauth-applications#delete-an-app-token
+        """
 
         from ..models import ApplicationsClientIdTokenDeleteBody, ValidationError
 
@@ -1334,7 +1630,14 @@ class AppsClient:
         data: Missing[ApplicationsClientIdTokenPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Authorization, AuthorizationType]:
-        """See also: https://docs.github.com/rest/apps/oauth-applications#reset-a-token"""
+        """apps/reset-token
+
+        PATCH /applications/{client_id}/token
+
+        OAuth applications and GitHub applications with OAuth authorizations can use this API method to reset a valid OAuth token without end-user involvement. Applications must save the "token" property in the response because changes take effect immediately. Invalid tokens will return `404 NOT FOUND`.
+
+        See also: https://docs.github.com/rest/apps/oauth-applications#reset-a-token
+        """
 
         from ..models import (
             ApplicationsClientIdTokenPatchBody,
@@ -1393,7 +1696,14 @@ class AppsClient:
         data: Missing[ApplicationsClientIdTokenPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Authorization, AuthorizationType]:
-        """See also: https://docs.github.com/rest/apps/oauth-applications#reset-a-token"""
+        """apps/reset-token
+
+        PATCH /applications/{client_id}/token
+
+        OAuth applications and GitHub applications with OAuth authorizations can use this API method to reset a valid OAuth token without end-user involvement. Applications must save the "token" property in the response because changes take effect immediately. Invalid tokens will return `404 NOT FOUND`.
+
+        See also: https://docs.github.com/rest/apps/oauth-applications#reset-a-token
+        """
 
         from ..models import (
             ApplicationsClientIdTokenPatchBody,
@@ -1457,7 +1767,18 @@ class AppsClient:
         data: Missing[ApplicationsClientIdTokenScopedPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Authorization, AuthorizationType]:
-        """See also: https://docs.github.com/rest/apps/apps#create-a-scoped-access-token"""
+        """apps/scope-token
+
+        POST /applications/{client_id}/token/scoped
+
+        Use a non-scoped user access token to create a repository-scoped and/or permission-scoped user access token. You can specify
+        which repositories the token can access and which permissions are granted to the
+        token.
+
+        Invalid tokens will return `404 NOT FOUND`.
+
+        See also: https://docs.github.com/rest/apps/apps#create-a-scoped-access-token
+        """
 
         from ..models import (
             ApplicationsClientIdTokenScopedPostBody,
@@ -1525,7 +1846,18 @@ class AppsClient:
         data: Missing[ApplicationsClientIdTokenScopedPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Authorization, AuthorizationType]:
-        """See also: https://docs.github.com/rest/apps/apps#create-a-scoped-access-token"""
+        """apps/scope-token
+
+        POST /applications/{client_id}/token/scoped
+
+        Use a non-scoped user access token to create a repository-scoped and/or permission-scoped user access token. You can specify
+        which repositories the token can access and which permissions are granted to the
+        token.
+
+        Invalid tokens will return `404 NOT FOUND`.
+
+        See also: https://docs.github.com/rest/apps/apps#create-a-scoped-access-token
+        """
 
         from ..models import (
             ApplicationsClientIdTokenScopedPostBody,
@@ -1567,7 +1899,15 @@ class AppsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Union[Integration, None], Union[IntegrationType, None]]:
-        """See also: https://docs.github.com/rest/apps/apps#get-an-app"""
+        """apps/get-by-slug
+
+        GET /apps/{app_slug}
+
+        > [!NOTE]
+        > The `:app_slug` is just the URL-friendly name of your GitHub App. You can find this on the settings page for your GitHub App (e.g., `https://github.com/settings/apps/:app_slug`).
+
+        See also: https://docs.github.com/rest/apps/apps#get-an-app
+        """
 
         from typing import Union
 
@@ -1594,7 +1934,15 @@ class AppsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Union[Integration, None], Union[IntegrationType, None]]:
-        """See also: https://docs.github.com/rest/apps/apps#get-an-app"""
+        """apps/get-by-slug
+
+        GET /apps/{app_slug}
+
+        > [!NOTE]
+        > The `:app_slug` is just the URL-friendly name of your GitHub App. You can find this on the settings page for your GitHub App (e.g., `https://github.com/settings/apps/:app_slug`).
+
+        See also: https://docs.github.com/rest/apps/apps#get-an-app
+        """
 
         from typing import Union
 
@@ -1625,7 +1973,14 @@ class AppsClient:
         InstallationRepositoriesGetResponse200,
         InstallationRepositoriesGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/apps/installations#list-repositories-accessible-to-the-app-installation"""
+        """apps/list-repos-accessible-to-installation
+
+        GET /installation/repositories
+
+        List repositories that an app installation can access.
+
+        See also: https://docs.github.com/rest/apps/installations#list-repositories-accessible-to-the-app-installation
+        """
 
         from ..models import BasicError, InstallationRepositoriesGetResponse200
 
@@ -1660,7 +2015,14 @@ class AppsClient:
         InstallationRepositoriesGetResponse200,
         InstallationRepositoriesGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/apps/installations#list-repositories-accessible-to-the-app-installation"""
+        """apps/list-repos-accessible-to-installation
+
+        GET /installation/repositories
+
+        List repositories that an app installation can access.
+
+        See also: https://docs.github.com/rest/apps/installations#list-repositories-accessible-to-the-app-installation
+        """
 
         from ..models import BasicError, InstallationRepositoriesGetResponse200
 
@@ -1690,7 +2052,16 @@ class AppsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/apps/installations#revoke-an-installation-access-token"""
+        """apps/revoke-installation-access-token
+
+        DELETE /installation/token
+
+        Revokes the installation token you're using to authenticate as an installation and access this endpoint.
+
+        Once an installation token is revoked, the token is invalidated and cannot be used. Other endpoints that require the revoked installation token must have a new installation token to work. You can create a new token using the "[Create an installation access token for an app](https://docs.github.com/rest/apps/apps#create-an-installation-access-token-for-an-app)" endpoint.
+
+        See also: https://docs.github.com/rest/apps/installations#revoke-an-installation-access-token
+        """
 
         url = "/installation/token"
 
@@ -1707,7 +2078,16 @@ class AppsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/apps/installations#revoke-an-installation-access-token"""
+        """apps/revoke-installation-access-token
+
+        DELETE /installation/token
+
+        Revokes the installation token you're using to authenticate as an installation and access this endpoint.
+
+        Once an installation token is revoked, the token is invalidated and cannot be used. Other endpoints that require the revoked installation token must have a new installation token to work. You can create a new token using the "[Create an installation access token for an app](https://docs.github.com/rest/apps/apps#create-an-installation-access-token-for-an-app)" endpoint.
+
+        See also: https://docs.github.com/rest/apps/installations#revoke-an-installation-access-token
+        """
 
         url = "/installation/token"
 
@@ -1725,7 +2105,16 @@ class AppsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[MarketplacePurchase, MarketplacePurchaseType]:
-        """See also: https://docs.github.com/rest/apps/marketplace#get-a-subscription-plan-for-an-account"""
+        """apps/get-subscription-plan-for-account
+
+        GET /marketplace_listing/accounts/{account_id}
+
+        Shows whether the user or organization account actively subscribes to a plan listed by the authenticated GitHub App. When someone submits a plan change that won't be processed until the end of their billing cycle, you will also see the upcoming pending change.
+
+        GitHub Apps must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint. OAuth apps must use [basic authentication](https://docs.github.com/rest/authentication/authenticating-to-the-rest-api#using-basic-authentication) with their client ID and client secret to access this endpoint.
+
+        See also: https://docs.github.com/rest/apps/marketplace#get-a-subscription-plan-for-an-account
+        """
 
         from ..models import BasicError, MarketplacePurchase
 
@@ -1750,7 +2139,16 @@ class AppsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[MarketplacePurchase, MarketplacePurchaseType]:
-        """See also: https://docs.github.com/rest/apps/marketplace#get-a-subscription-plan-for-an-account"""
+        """apps/get-subscription-plan-for-account
+
+        GET /marketplace_listing/accounts/{account_id}
+
+        Shows whether the user or organization account actively subscribes to a plan listed by the authenticated GitHub App. When someone submits a plan change that won't be processed until the end of their billing cycle, you will also see the upcoming pending change.
+
+        GitHub Apps must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint. OAuth apps must use [basic authentication](https://docs.github.com/rest/authentication/authenticating-to-the-rest-api#using-basic-authentication) with their client ID and client secret to access this endpoint.
+
+        See also: https://docs.github.com/rest/apps/marketplace#get-a-subscription-plan-for-an-account
+        """
 
         from ..models import BasicError, MarketplacePurchase
 
@@ -1776,7 +2174,16 @@ class AppsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[MarketplaceListingPlan], list[MarketplaceListingPlanType]]:
-        """See also: https://docs.github.com/rest/apps/marketplace#list-plans"""
+        """apps/list-plans
+
+        GET /marketplace_listing/plans
+
+        Lists all plans that are part of your GitHub Marketplace listing.
+
+        GitHub Apps must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint. OAuth apps must use [basic authentication](https://docs.github.com/rest/authentication/authenticating-to-the-rest-api#using-basic-authentication) with their client ID and client secret to access this endpoint.
+
+        See also: https://docs.github.com/rest/apps/marketplace#list-plans
+        """
 
         from ..models import BasicError, MarketplaceListingPlan
 
@@ -1808,7 +2215,16 @@ class AppsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[MarketplaceListingPlan], list[MarketplaceListingPlanType]]:
-        """See also: https://docs.github.com/rest/apps/marketplace#list-plans"""
+        """apps/list-plans
+
+        GET /marketplace_listing/plans
+
+        Lists all plans that are part of your GitHub Marketplace listing.
+
+        GitHub Apps must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint. OAuth apps must use [basic authentication](https://docs.github.com/rest/authentication/authenticating-to-the-rest-api#using-basic-authentication) with their client ID and client secret to access this endpoint.
+
+        See also: https://docs.github.com/rest/apps/marketplace#list-plans
+        """
 
         from ..models import BasicError, MarketplaceListingPlan
 
@@ -1843,7 +2259,16 @@ class AppsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[MarketplacePurchase], list[MarketplacePurchaseType]]:
-        """See also: https://docs.github.com/rest/apps/marketplace#list-accounts-for-a-plan"""
+        """apps/list-accounts-for-plan
+
+        GET /marketplace_listing/plans/{plan_id}/accounts
+
+        Returns user and organization accounts associated with the specified plan, including free plans. For per-seat pricing, you see the list of accounts that have purchased the plan, including the number of seats purchased. When someone submits a plan change that won't be processed until the end of their billing cycle, you will also see the upcoming pending change.
+
+        GitHub Apps must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint. OAuth apps must use [basic authentication](https://docs.github.com/rest/authentication/authenticating-to-the-rest-api#using-basic-authentication) with their client ID and client secret to access this endpoint.
+
+        See also: https://docs.github.com/rest/apps/marketplace#list-accounts-for-a-plan
+        """
 
         from ..models import BasicError, MarketplacePurchase, ValidationError
 
@@ -1881,7 +2306,16 @@ class AppsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[MarketplacePurchase], list[MarketplacePurchaseType]]:
-        """See also: https://docs.github.com/rest/apps/marketplace#list-accounts-for-a-plan"""
+        """apps/list-accounts-for-plan
+
+        GET /marketplace_listing/plans/{plan_id}/accounts
+
+        Returns user and organization accounts associated with the specified plan, including free plans. For per-seat pricing, you see the list of accounts that have purchased the plan, including the number of seats purchased. When someone submits a plan change that won't be processed until the end of their billing cycle, you will also see the upcoming pending change.
+
+        GitHub Apps must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint. OAuth apps must use [basic authentication](https://docs.github.com/rest/authentication/authenticating-to-the-rest-api#using-basic-authentication) with their client ID and client secret to access this endpoint.
+
+        See also: https://docs.github.com/rest/apps/marketplace#list-accounts-for-a-plan
+        """
 
         from ..models import BasicError, MarketplacePurchase, ValidationError
 
@@ -1915,7 +2349,16 @@ class AppsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[MarketplacePurchase, MarketplacePurchaseType]:
-        """See also: https://docs.github.com/rest/apps/marketplace#get-a-subscription-plan-for-an-account-stubbed"""
+        """apps/get-subscription-plan-for-account-stubbed
+
+        GET /marketplace_listing/stubbed/accounts/{account_id}
+
+        Shows whether the user or organization account actively subscribes to a plan listed by the authenticated GitHub App. When someone submits a plan change that won't be processed until the end of their billing cycle, you will also see the upcoming pending change.
+
+        GitHub Apps must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint. OAuth apps must use [basic authentication](https://docs.github.com/rest/authentication/authenticating-to-the-rest-api#using-basic-authentication) with their client ID and client secret to access this endpoint.
+
+        See also: https://docs.github.com/rest/apps/marketplace#get-a-subscription-plan-for-an-account-stubbed
+        """
 
         from ..models import BasicError, MarketplacePurchase
 
@@ -1939,7 +2382,16 @@ class AppsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[MarketplacePurchase, MarketplacePurchaseType]:
-        """See also: https://docs.github.com/rest/apps/marketplace#get-a-subscription-plan-for-an-account-stubbed"""
+        """apps/get-subscription-plan-for-account-stubbed
+
+        GET /marketplace_listing/stubbed/accounts/{account_id}
+
+        Shows whether the user or organization account actively subscribes to a plan listed by the authenticated GitHub App. When someone submits a plan change that won't be processed until the end of their billing cycle, you will also see the upcoming pending change.
+
+        GitHub Apps must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint. OAuth apps must use [basic authentication](https://docs.github.com/rest/authentication/authenticating-to-the-rest-api#using-basic-authentication) with their client ID and client secret to access this endpoint.
+
+        See also: https://docs.github.com/rest/apps/marketplace#get-a-subscription-plan-for-an-account-stubbed
+        """
 
         from ..models import BasicError, MarketplacePurchase
 
@@ -1964,7 +2416,16 @@ class AppsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[MarketplaceListingPlan], list[MarketplaceListingPlanType]]:
-        """See also: https://docs.github.com/rest/apps/marketplace#list-plans-stubbed"""
+        """apps/list-plans-stubbed
+
+        GET /marketplace_listing/stubbed/plans
+
+        Lists all plans that are part of your GitHub Marketplace listing.
+
+        GitHub Apps must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint. OAuth apps must use [basic authentication](https://docs.github.com/rest/authentication/authenticating-to-the-rest-api#using-basic-authentication) with their client ID and client secret to access this endpoint.
+
+        See also: https://docs.github.com/rest/apps/marketplace#list-plans-stubbed
+        """
 
         from ..models import BasicError, MarketplaceListingPlan
 
@@ -1995,7 +2456,16 @@ class AppsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[MarketplaceListingPlan], list[MarketplaceListingPlanType]]:
-        """See also: https://docs.github.com/rest/apps/marketplace#list-plans-stubbed"""
+        """apps/list-plans-stubbed
+
+        GET /marketplace_listing/stubbed/plans
+
+        Lists all plans that are part of your GitHub Marketplace listing.
+
+        GitHub Apps must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint. OAuth apps must use [basic authentication](https://docs.github.com/rest/authentication/authenticating-to-the-rest-api#using-basic-authentication) with their client ID and client secret to access this endpoint.
+
+        See also: https://docs.github.com/rest/apps/marketplace#list-plans-stubbed
+        """
 
         from ..models import BasicError, MarketplaceListingPlan
 
@@ -2029,7 +2499,16 @@ class AppsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[MarketplacePurchase], list[MarketplacePurchaseType]]:
-        """See also: https://docs.github.com/rest/apps/marketplace#list-accounts-for-a-plan-stubbed"""
+        """apps/list-accounts-for-plan-stubbed
+
+        GET /marketplace_listing/stubbed/plans/{plan_id}/accounts
+
+        Returns repository and organization accounts associated with the specified plan, including free plans. For per-seat pricing, you see the list of accounts that have purchased the plan, including the number of seats purchased. When someone submits a plan change that won't be processed until the end of their billing cycle, you will also see the upcoming pending change.
+
+        GitHub Apps must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint. OAuth apps must use [basic authentication](https://docs.github.com/rest/authentication/authenticating-to-the-rest-api#using-basic-authentication) with their client ID and client secret to access this endpoint.
+
+        See also: https://docs.github.com/rest/apps/marketplace#list-accounts-for-a-plan-stubbed
+        """
 
         from ..models import BasicError, MarketplacePurchase
 
@@ -2065,7 +2544,16 @@ class AppsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[MarketplacePurchase], list[MarketplacePurchaseType]]:
-        """See also: https://docs.github.com/rest/apps/marketplace#list-accounts-for-a-plan-stubbed"""
+        """apps/list-accounts-for-plan-stubbed
+
+        GET /marketplace_listing/stubbed/plans/{plan_id}/accounts
+
+        Returns repository and organization accounts associated with the specified plan, including free plans. For per-seat pricing, you see the list of accounts that have purchased the plan, including the number of seats purchased. When someone submits a plan change that won't be processed until the end of their billing cycle, you will also see the upcoming pending change.
+
+        GitHub Apps must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint. OAuth apps must use [basic authentication](https://docs.github.com/rest/authentication/authenticating-to-the-rest-api#using-basic-authentication) with their client ID and client secret to access this endpoint.
+
+        See also: https://docs.github.com/rest/apps/marketplace#list-accounts-for-a-plan-stubbed
+        """
 
         from ..models import BasicError, MarketplacePurchase
 
@@ -2097,7 +2585,16 @@ class AppsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Installation, InstallationType]:
-        """See also: https://docs.github.com/rest/apps/apps#get-an-organization-installation-for-the-authenticated-app"""
+        """apps/get-org-installation
+
+        GET /orgs/{org}/installation
+
+        Enables an authenticated GitHub App to find the organization's installation information.
+
+        You must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
+
+        See also: https://docs.github.com/rest/apps/apps#get-an-organization-installation-for-the-authenticated-app
+        """
 
         from ..models import Installation
 
@@ -2118,7 +2615,16 @@ class AppsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Installation, InstallationType]:
-        """See also: https://docs.github.com/rest/apps/apps#get-an-organization-installation-for-the-authenticated-app"""
+        """apps/get-org-installation
+
+        GET /orgs/{org}/installation
+
+        Enables an authenticated GitHub App to find the organization's installation information.
+
+        You must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
+
+        See also: https://docs.github.com/rest/apps/apps#get-an-organization-installation-for-the-authenticated-app
+        """
 
         from ..models import Installation
 
@@ -2140,7 +2646,16 @@ class AppsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Installation, InstallationType]:
-        """See also: https://docs.github.com/rest/apps/apps#get-a-repository-installation-for-the-authenticated-app"""
+        """apps/get-repo-installation
+
+        GET /repos/{owner}/{repo}/installation
+
+        Enables an authenticated GitHub App to find the repository's installation information. The installation's account type will be either an organization or a user account, depending which account the repository belongs to.
+
+        You must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
+
+        See also: https://docs.github.com/rest/apps/apps#get-a-repository-installation-for-the-authenticated-app
+        """
 
         from ..models import BasicError, Installation
 
@@ -2165,7 +2680,16 @@ class AppsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Installation, InstallationType]:
-        """See also: https://docs.github.com/rest/apps/apps#get-a-repository-installation-for-the-authenticated-app"""
+        """apps/get-repo-installation
+
+        GET /repos/{owner}/{repo}/installation
+
+        Enables an authenticated GitHub App to find the repository's installation information. The installation's account type will be either an organization or a user account, depending which account the repository belongs to.
+
+        You must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
+
+        See also: https://docs.github.com/rest/apps/apps#get-a-repository-installation-for-the-authenticated-app
+        """
 
         from ..models import BasicError, Installation
 
@@ -2190,7 +2714,18 @@ class AppsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[UserInstallationsGetResponse200, UserInstallationsGetResponse200Type]:
-        """See also: https://docs.github.com/rest/apps/installations#list-app-installations-accessible-to-the-user-access-token"""
+        """apps/list-installations-for-authenticated-user
+
+        GET /user/installations
+
+        Lists installations of your GitHub App that the authenticated user has explicit permission (`:read`, `:write`, or `:admin`) to access.
+
+        The authenticated user has explicit permission to access repositories they own, repositories where they are a collaborator, and repositories that they can access through an organization membership.
+
+        You can find the permissions for the installation under the `permissions` key.
+
+        See also: https://docs.github.com/rest/apps/installations#list-app-installations-accessible-to-the-user-access-token
+        """
 
         from ..models import BasicError, UserInstallationsGetResponse200
 
@@ -2222,7 +2757,18 @@ class AppsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[UserInstallationsGetResponse200, UserInstallationsGetResponse200Type]:
-        """See also: https://docs.github.com/rest/apps/installations#list-app-installations-accessible-to-the-user-access-token"""
+        """apps/list-installations-for-authenticated-user
+
+        GET /user/installations
+
+        Lists installations of your GitHub App that the authenticated user has explicit permission (`:read`, `:write`, or `:admin`) to access.
+
+        The authenticated user has explicit permission to access repositories they own, repositories where they are a collaborator, and repositories that they can access through an organization membership.
+
+        You can find the permissions for the installation under the `permissions` key.
+
+        See also: https://docs.github.com/rest/apps/installations#list-app-installations-accessible-to-the-user-access-token
+        """
 
         from ..models import BasicError, UserInstallationsGetResponse200
 
@@ -2258,7 +2804,18 @@ class AppsClient:
         UserInstallationsInstallationIdRepositoriesGetResponse200,
         UserInstallationsInstallationIdRepositoriesGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/apps/installations#list-repositories-accessible-to-the-user-access-token"""
+        """apps/list-installation-repos-for-authenticated-user
+
+        GET /user/installations/{installation_id}/repositories
+
+        List repositories that the authenticated user has explicit permission (`:read`, `:write`, or `:admin`) to access for an installation.
+
+        The authenticated user has explicit permission to access repositories they own, repositories where they are a collaborator, and repositories that they can access through an organization membership.
+
+        The access the user has to each repository is included in the hash under the `permissions` key.
+
+        See also: https://docs.github.com/rest/apps/installations#list-repositories-accessible-to-the-user-access-token
+        """
 
         from ..models import (
             BasicError,
@@ -2297,7 +2854,18 @@ class AppsClient:
         UserInstallationsInstallationIdRepositoriesGetResponse200,
         UserInstallationsInstallationIdRepositoriesGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/rest/apps/installations#list-repositories-accessible-to-the-user-access-token"""
+        """apps/list-installation-repos-for-authenticated-user
+
+        GET /user/installations/{installation_id}/repositories
+
+        List repositories that the authenticated user has explicit permission (`:read`, `:write`, or `:admin`) to access for an installation.
+
+        The authenticated user has explicit permission to access repositories they own, repositories where they are a collaborator, and repositories that they can access through an organization membership.
+
+        The access the user has to each repository is included in the hash under the `permissions` key.
+
+        See also: https://docs.github.com/rest/apps/installations#list-repositories-accessible-to-the-user-access-token
+        """
 
         from ..models import (
             BasicError,
@@ -2332,7 +2900,16 @@ class AppsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/apps/installations#add-a-repository-to-an-app-installation"""
+        """apps/add-repo-to-installation-for-authenticated-user
+
+        PUT /user/installations/{installation_id}/repositories/{repository_id}
+
+        Add a single repository to an installation. The authenticated user must have admin access to the repository.
+
+        This endpoint only works for PATs (classic) with the `repo` scope.
+
+        See also: https://docs.github.com/rest/apps/installations#add-a-repository-to-an-app-installation
+        """
 
         from ..models import BasicError
 
@@ -2357,7 +2934,16 @@ class AppsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/apps/installations#add-a-repository-to-an-app-installation"""
+        """apps/add-repo-to-installation-for-authenticated-user
+
+        PUT /user/installations/{installation_id}/repositories/{repository_id}
+
+        Add a single repository to an installation. The authenticated user must have admin access to the repository.
+
+        This endpoint only works for PATs (classic) with the `repo` scope.
+
+        See also: https://docs.github.com/rest/apps/installations#add-a-repository-to-an-app-installation
+        """
 
         from ..models import BasicError
 
@@ -2382,7 +2968,16 @@ class AppsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/apps/installations#remove-a-repository-from-an-app-installation"""
+        """apps/remove-repo-from-installation-for-authenticated-user
+
+        DELETE /user/installations/{installation_id}/repositories/{repository_id}
+
+        Remove a single repository from an installation. The authenticated user must have admin access to the repository. The installation must have the `repository_selection` of `selected`.
+
+        This endpoint only works for PATs (classic) with the `repo` scope.
+
+        See also: https://docs.github.com/rest/apps/installations#remove-a-repository-from-an-app-installation
+        """
 
         from ..models import BasicError
 
@@ -2407,7 +3002,16 @@ class AppsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/apps/installations#remove-a-repository-from-an-app-installation"""
+        """apps/remove-repo-from-installation-for-authenticated-user
+
+        DELETE /user/installations/{installation_id}/repositories/{repository_id}
+
+        Remove a single repository from an installation. The authenticated user must have admin access to the repository. The installation must have the `repository_selection` of `selected`.
+
+        This endpoint only works for PATs (classic) with the `repo` scope.
+
+        See also: https://docs.github.com/rest/apps/installations#remove-a-repository-from-an-app-installation
+        """
 
         from ..models import BasicError
 
@@ -2432,7 +3036,14 @@ class AppsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[UserMarketplacePurchase], list[UserMarketplacePurchaseType]]:
-        """See also: https://docs.github.com/rest/apps/marketplace#list-subscriptions-for-the-authenticated-user"""
+        """apps/list-subscriptions-for-authenticated-user
+
+        GET /user/marketplace_purchases
+
+        Lists the active subscriptions for the authenticated user.
+
+        See also: https://docs.github.com/rest/apps/marketplace#list-subscriptions-for-the-authenticated-user
+        """
 
         from ..models import BasicError, UserMarketplacePurchase
 
@@ -2464,7 +3075,14 @@ class AppsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[UserMarketplacePurchase], list[UserMarketplacePurchaseType]]:
-        """See also: https://docs.github.com/rest/apps/marketplace#list-subscriptions-for-the-authenticated-user"""
+        """apps/list-subscriptions-for-authenticated-user
+
+        GET /user/marketplace_purchases
+
+        Lists the active subscriptions for the authenticated user.
+
+        See also: https://docs.github.com/rest/apps/marketplace#list-subscriptions-for-the-authenticated-user
+        """
 
         from ..models import BasicError, UserMarketplacePurchase
 
@@ -2496,7 +3114,14 @@ class AppsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[UserMarketplacePurchase], list[UserMarketplacePurchaseType]]:
-        """See also: https://docs.github.com/rest/apps/marketplace#list-subscriptions-for-the-authenticated-user-stubbed"""
+        """apps/list-subscriptions-for-authenticated-user-stubbed
+
+        GET /user/marketplace_purchases/stubbed
+
+        Lists the active subscriptions for the authenticated user.
+
+        See also: https://docs.github.com/rest/apps/marketplace#list-subscriptions-for-the-authenticated-user-stubbed
+        """
 
         from ..models import BasicError, UserMarketplacePurchase
 
@@ -2527,7 +3152,14 @@ class AppsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[UserMarketplacePurchase], list[UserMarketplacePurchaseType]]:
-        """See also: https://docs.github.com/rest/apps/marketplace#list-subscriptions-for-the-authenticated-user-stubbed"""
+        """apps/list-subscriptions-for-authenticated-user-stubbed
+
+        GET /user/marketplace_purchases/stubbed
+
+        Lists the active subscriptions for the authenticated user.
+
+        See also: https://docs.github.com/rest/apps/marketplace#list-subscriptions-for-the-authenticated-user-stubbed
+        """
 
         from ..models import BasicError, UserMarketplacePurchase
 
@@ -2557,7 +3189,16 @@ class AppsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Installation, InstallationType]:
-        """See also: https://docs.github.com/rest/apps/apps#get-a-user-installation-for-the-authenticated-app"""
+        """apps/get-user-installation
+
+        GET /users/{username}/installation
+
+        Enables an authenticated GitHub App to find the user’s installation information.
+
+        You must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
+
+        See also: https://docs.github.com/rest/apps/apps#get-a-user-installation-for-the-authenticated-app
+        """
 
         from ..models import Installation
 
@@ -2578,7 +3219,16 @@ class AppsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Installation, InstallationType]:
-        """See also: https://docs.github.com/rest/apps/apps#get-a-user-installation-for-the-authenticated-app"""
+        """apps/get-user-installation
+
+        GET /users/{username}/installation
+
+        Enables an authenticated GitHub App to find the user’s installation information.
+
+        You must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
+
+        See also: https://docs.github.com/rest/apps/apps#get-a-user-installation-for-the-authenticated-app
+        """
 
         from ..models import Installation
 

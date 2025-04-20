@@ -43,7 +43,14 @@ class GitignoreClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[str], list[str]]:
-        """See also: https://docs.github.com/rest/gitignore/gitignore#get-all-gitignore-templates"""
+        """gitignore/get-all-templates
+
+        GET /gitignore/templates
+
+        List all templates available to pass as an option when [creating a repository](https://docs.github.com/rest/repos/repos#create-a-repository-for-the-authenticated-user).
+
+        See also: https://docs.github.com/rest/gitignore/gitignore#get-all-gitignore-templates
+        """
 
         url = "/gitignore/templates"
 
@@ -61,7 +68,14 @@ class GitignoreClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[str], list[str]]:
-        """See also: https://docs.github.com/rest/gitignore/gitignore#get-all-gitignore-templates"""
+        """gitignore/get-all-templates
+
+        GET /gitignore/templates
+
+        List all templates available to pass as an option when [creating a repository](https://docs.github.com/rest/repos/repos#create-a-repository-for-the-authenticated-user).
+
+        See also: https://docs.github.com/rest/gitignore/gitignore#get-all-gitignore-templates
+        """
 
         url = "/gitignore/templates"
 
@@ -80,7 +94,18 @@ class GitignoreClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[GitignoreTemplate, GitignoreTemplateType]:
-        """See also: https://docs.github.com/rest/gitignore/gitignore#get-a-gitignore-template"""
+        """gitignore/get-template
+
+        GET /gitignore/templates/{name}
+
+        Get the content of a gitignore template.
+
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+
+        - **`application/vnd.github.raw+json`**: Returns the raw .gitignore contents.
+
+        See also: https://docs.github.com/rest/gitignore/gitignore#get-a-gitignore-template
+        """
 
         from ..models import GitignoreTemplate
 
@@ -101,7 +126,18 @@ class GitignoreClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[GitignoreTemplate, GitignoreTemplateType]:
-        """See also: https://docs.github.com/rest/gitignore/gitignore#get-a-gitignore-template"""
+        """gitignore/get-template
+
+        GET /gitignore/templates/{name}
+
+        Get the content of a gitignore template.
+
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+
+        - **`application/vnd.github.raw+json`**: Returns the raw .gitignore contents.
+
+        See also: https://docs.github.com/rest/gitignore/gitignore#get-a-gitignore-template
+        """
 
         from ..models import GitignoreTemplate
 

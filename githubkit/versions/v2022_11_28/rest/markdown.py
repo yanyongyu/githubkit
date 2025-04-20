@@ -68,7 +68,12 @@ class MarkdownClient:
         data: Missing[MarkdownPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[str, str]:
-        """See also: https://docs.github.com/rest/markdown/markdown#render-a-markdown-document"""
+        """markdown/render
+
+        POST /markdown
+
+        See also: https://docs.github.com/rest/markdown/markdown#render-a-markdown-document
+        """
 
         from ..models import MarkdownPostBody
 
@@ -116,7 +121,12 @@ class MarkdownClient:
         data: Missing[MarkdownPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[str, str]:
-        """See also: https://docs.github.com/rest/markdown/markdown#render-a-markdown-document"""
+        """markdown/render
+
+        POST /markdown
+
+        See also: https://docs.github.com/rest/markdown/markdown#render-a-markdown-document
+        """
 
         from ..models import MarkdownPostBody
 
@@ -147,7 +157,14 @@ class MarkdownClient:
         headers: Optional[Mapping[str, str]] = None,
         data: str,
     ) -> Response[str, str]:
-        """See also: https://docs.github.com/rest/markdown/markdown#render-a-markdown-document-in-raw-mode"""
+        """markdown/render-raw
+
+        POST /markdown/raw
+
+        You must send Markdown as plain text (using a `Content-Type` header of `text/plain` or `text/x-markdown`) to this endpoint, rather than using JSON format. In raw mode, [GitHub Flavored Markdown](https://github.github.com/gfm/) is not supported and Markdown will be rendered in plain format like a README.md file. Markdown content must be 400 KB or less.
+
+        See also: https://docs.github.com/rest/markdown/markdown#render-a-markdown-document-in-raw-mode
+        """
 
         url = "/markdown/raw"
 
@@ -173,7 +190,14 @@ class MarkdownClient:
         headers: Optional[Mapping[str, str]] = None,
         data: str,
     ) -> Response[str, str]:
-        """See also: https://docs.github.com/rest/markdown/markdown#render-a-markdown-document-in-raw-mode"""
+        """markdown/render-raw
+
+        POST /markdown/raw
+
+        You must send Markdown as plain text (using a `Content-Type` header of `text/plain` or `text/x-markdown`) to this endpoint, rather than using JSON format. In raw mode, [GitHub Flavored Markdown](https://github.github.com/gfm/) is not supported and Markdown will be rendered in plain format like a README.md file. Markdown content must be 400 KB or less.
+
+        See also: https://docs.github.com/rest/markdown/markdown#render-a-markdown-document-in-raw-mode
+        """
 
         url = "/markdown/raw"
 

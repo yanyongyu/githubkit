@@ -48,7 +48,16 @@ class OidcClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[OidcCustomSub, OidcCustomSubType]:
-        """See also: https://docs.github.com/rest/actions/oidc#get-the-customization-template-for-an-oidc-subject-claim-for-an-organization"""
+        """oidc/get-oidc-custom-sub-template-for-org
+
+        GET /orgs/{org}/actions/oidc/customization/sub
+
+        Gets the customization template for an OpenID Connect (OIDC) subject claim.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/oidc#get-the-customization-template-for-an-oidc-subject-claim-for-an-organization
+        """
 
         from ..models import OidcCustomSub
 
@@ -69,7 +78,16 @@ class OidcClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[OidcCustomSub, OidcCustomSubType]:
-        """See also: https://docs.github.com/rest/actions/oidc#get-the-customization-template-for-an-oidc-subject-claim-for-an-organization"""
+        """oidc/get-oidc-custom-sub-template-for-org
+
+        GET /orgs/{org}/actions/oidc/customization/sub
+
+        Gets the customization template for an OpenID Connect (OIDC) subject claim.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/oidc#get-the-customization-template-for-an-oidc-subject-claim-for-an-organization
+        """
 
         from ..models import OidcCustomSub
 
@@ -111,7 +129,16 @@ class OidcClient:
         data: Missing[OidcCustomSubType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject, EmptyObjectType]:
-        """See also: https://docs.github.com/rest/actions/oidc#set-the-customization-template-for-an-oidc-subject-claim-for-an-organization"""
+        """oidc/update-oidc-custom-sub-template-for-org
+
+        PUT /orgs/{org}/actions/oidc/customization/sub
+
+        Creates or updates the customization template for an OpenID Connect (OIDC) subject claim.
+
+        OAuth app tokens and personal access tokens (classic) need the `write:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/oidc#set-the-customization-template-for-an-oidc-subject-claim-for-an-organization
+        """
 
         from ..models import BasicError, EmptyObject, OidcCustomSub
 
@@ -167,7 +194,16 @@ class OidcClient:
         data: Missing[OidcCustomSubType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject, EmptyObjectType]:
-        """See also: https://docs.github.com/rest/actions/oidc#set-the-customization-template-for-an-oidc-subject-claim-for-an-organization"""
+        """oidc/update-oidc-custom-sub-template-for-org
+
+        PUT /orgs/{org}/actions/oidc/customization/sub
+
+        Creates or updates the customization template for an OpenID Connect (OIDC) subject claim.
+
+        OAuth app tokens and personal access tokens (classic) need the `write:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/oidc#set-the-customization-template-for-an-oidc-subject-claim-for-an-organization
+        """
 
         from ..models import BasicError, EmptyObject, OidcCustomSub
 

@@ -68,7 +68,14 @@ class DependencyGraphClient:
         name: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[DependencyGraphDiffItems], list[DependencyGraphDiffItemsType]]:
-        """See also: https://docs.github.com/rest/dependency-graph/dependency-review#get-a-diff-of-the-dependencies-between-commits"""
+        """dependency-graph/diff-range
+
+        GET /repos/{owner}/{repo}/dependency-graph/compare/{basehead}
+
+        Gets the diff of the dependency changes between two commits of a repository, based on the changes to the dependency manifests made in those commits.
+
+        See also: https://docs.github.com/rest/dependency-graph/dependency-review#get-a-diff-of-the-dependencies-between-commits
+        """
 
         from ..models import BasicError, DependencyGraphDiffItems
 
@@ -101,7 +108,14 @@ class DependencyGraphClient:
         name: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[DependencyGraphDiffItems], list[DependencyGraphDiffItemsType]]:
-        """See also: https://docs.github.com/rest/dependency-graph/dependency-review#get-a-diff-of-the-dependencies-between-commits"""
+        """dependency-graph/diff-range
+
+        GET /repos/{owner}/{repo}/dependency-graph/compare/{basehead}
+
+        Gets the diff of the dependency changes between two commits of a repository, based on the changes to the dependency manifests made in those commits.
+
+        See also: https://docs.github.com/rest/dependency-graph/dependency-review#get-a-diff-of-the-dependencies-between-commits
+        """
 
         from ..models import BasicError, DependencyGraphDiffItems
 
@@ -132,7 +146,14 @@ class DependencyGraphClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[DependencyGraphSpdxSbom, DependencyGraphSpdxSbomType]:
-        """See also: https://docs.github.com/rest/dependency-graph/sboms#export-a-software-bill-of-materials-sbom-for-a-repository"""
+        """dependency-graph/export-sbom
+
+        GET /repos/{owner}/{repo}/dependency-graph/sbom
+
+        Exports the software bill of materials (SBOM) for a repository in SPDX JSON format.
+
+        See also: https://docs.github.com/rest/dependency-graph/sboms#export-a-software-bill-of-materials-sbom-for-a-repository
+        """
 
         from ..models import BasicError, DependencyGraphSpdxSbom
 
@@ -158,7 +179,14 @@ class DependencyGraphClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[DependencyGraphSpdxSbom, DependencyGraphSpdxSbomType]:
-        """See also: https://docs.github.com/rest/dependency-graph/sboms#export-a-software-bill-of-materials-sbom-for-a-repository"""
+        """dependency-graph/export-sbom
+
+        GET /repos/{owner}/{repo}/dependency-graph/sbom
+
+        Exports the software bill of materials (SBOM) for a repository in SPDX JSON format.
+
+        See also: https://docs.github.com/rest/dependency-graph/sboms#export-a-software-bill-of-materials-sbom-for-a-repository
+        """
 
         from ..models import BasicError, DependencyGraphSpdxSbom
 
@@ -223,7 +251,18 @@ class DependencyGraphClient:
         ReposOwnerRepoDependencyGraphSnapshotsPostResponse201,
         ReposOwnerRepoDependencyGraphSnapshotsPostResponse201Type,
     ]:
-        """See also: https://docs.github.com/rest/dependency-graph/dependency-submission#create-a-snapshot-of-dependencies-for-a-repository"""
+        """dependency-graph/create-repository-snapshot
+
+        POST /repos/{owner}/{repo}/dependency-graph/snapshots
+
+        Create a new snapshot of a repository's dependencies.
+
+        The authenticated user must have access to the repository.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/dependency-graph/dependency-submission#create-a-snapshot-of-dependencies-for-a-repository
+        """
 
         from ..models import (
             ReposOwnerRepoDependencyGraphSnapshotsPostResponse201,
@@ -297,7 +336,18 @@ class DependencyGraphClient:
         ReposOwnerRepoDependencyGraphSnapshotsPostResponse201,
         ReposOwnerRepoDependencyGraphSnapshotsPostResponse201Type,
     ]:
-        """See also: https://docs.github.com/rest/dependency-graph/dependency-submission#create-a-snapshot-of-dependencies-for-a-repository"""
+        """dependency-graph/create-repository-snapshot
+
+        POST /repos/{owner}/{repo}/dependency-graph/snapshots
+
+        Create a new snapshot of a repository's dependencies.
+
+        The authenticated user must have access to the repository.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/dependency-graph/dependency-submission#create-a-snapshot-of-dependencies-for-a-repository
+        """
 
         from ..models import (
             ReposOwnerRepoDependencyGraphSnapshotsPostResponse201,

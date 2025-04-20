@@ -84,7 +84,15 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Event], list[EventType]]:
-        """See also: https://docs.github.com/rest/activity/events#list-public-events"""
+        """activity/list-public-events
+
+        GET /events
+
+        > [!NOTE]
+        > This API is not built to serve real-time use cases. Depending on the time of day, event latency can be anywhere from 30s to 6h.
+
+        See also: https://docs.github.com/rest/activity/events#list-public-events
+        """
 
         from ..models import (
             BasicError,
@@ -120,7 +128,15 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Event], list[EventType]]:
-        """See also: https://docs.github.com/rest/activity/events#list-public-events"""
+        """activity/list-public-events
+
+        GET /events
+
+        > [!NOTE]
+        > This API is not built to serve real-time use cases. Depending on the time of day, event latency can be anywhere from 30s to 6h.
+
+        See also: https://docs.github.com/rest/activity/events#list-public-events
+        """
 
         from ..models import (
             BasicError,
@@ -154,7 +170,27 @@ class ActivityClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Feed, FeedType]:
-        """See also: https://docs.github.com/rest/activity/feeds#get-feeds"""
+        """activity/get-feeds
+
+        GET /feeds
+
+        Lists the feeds available to the authenticated user. The response provides a URL for each feed. You can then get a specific feed by sending a request to one of the feed URLs.
+
+        *   **Timeline**: The GitHub global public timeline
+        *   **User**: The public timeline for any user, using `uri_template`. For more information, see "[Hypermedia](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#hypermedia)."
+        *   **Current user public**: The public timeline for the authenticated user
+        *   **Current user**: The private timeline for the authenticated user
+        *   **Current user actor**: The private timeline for activity created by the authenticated user
+        *   **Current user organizations**: The private timeline for the organizations the authenticated user is a member of.
+        *   **Security advisories**: A collection of public announcements that provide information about security-related vulnerabilities in software on GitHub.
+
+        By default, timeline resources are returned in JSON. You can specify the `application/atom+xml` type in the `Accept` header to return timeline resources in Atom format. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+
+        > [!NOTE]
+        > Private feeds are only returned when [authenticating via Basic Auth](https://docs.github.com/rest/authentication/authenticating-to-the-rest-api#using-basic-authentication) since current feed URIs use the older, non revocable auth tokens.
+
+        See also: https://docs.github.com/rest/activity/feeds#get-feeds
+        """
 
         from ..models import Feed
 
@@ -174,7 +210,27 @@ class ActivityClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Feed, FeedType]:
-        """See also: https://docs.github.com/rest/activity/feeds#get-feeds"""
+        """activity/get-feeds
+
+        GET /feeds
+
+        Lists the feeds available to the authenticated user. The response provides a URL for each feed. You can then get a specific feed by sending a request to one of the feed URLs.
+
+        *   **Timeline**: The GitHub global public timeline
+        *   **User**: The public timeline for any user, using `uri_template`. For more information, see "[Hypermedia](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#hypermedia)."
+        *   **Current user public**: The public timeline for the authenticated user
+        *   **Current user**: The private timeline for the authenticated user
+        *   **Current user actor**: The private timeline for activity created by the authenticated user
+        *   **Current user organizations**: The private timeline for the organizations the authenticated user is a member of.
+        *   **Security advisories**: A collection of public announcements that provide information about security-related vulnerabilities in software on GitHub.
+
+        By default, timeline resources are returned in JSON. You can specify the `application/atom+xml` type in the `Accept` header to return timeline resources in Atom format. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+
+        > [!NOTE]
+        > Private feeds are only returned when [authenticating via Basic Auth](https://docs.github.com/rest/authentication/authenticating-to-the-rest-api#using-basic-authentication) since current feed URIs use the older, non revocable auth tokens.
+
+        See also: https://docs.github.com/rest/activity/feeds#get-feeds
+        """
 
         from ..models import Feed
 
@@ -198,7 +254,15 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Event], list[EventType]]:
-        """See also: https://docs.github.com/rest/activity/events#list-public-events-for-a-network-of-repositories"""
+        """activity/list-public-events-for-repo-network
+
+        GET /networks/{owner}/{repo}/events
+
+        > [!NOTE]
+        > This API is not built to serve real-time use cases. Depending on the time of day, event latency can be anywhere from 30s to 6h.
+
+        See also: https://docs.github.com/rest/activity/events#list-public-events-for-a-network-of-repositories
+        """
 
         from ..models import BasicError, Event
 
@@ -232,7 +296,15 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Event], list[EventType]]:
-        """See also: https://docs.github.com/rest/activity/events#list-public-events-for-a-network-of-repositories"""
+        """activity/list-public-events-for-repo-network
+
+        GET /networks/{owner}/{repo}/events
+
+        > [!NOTE]
+        > This API is not built to serve real-time use cases. Depending on the time of day, event latency can be anywhere from 30s to 6h.
+
+        See also: https://docs.github.com/rest/activity/events#list-public-events-for-a-network-of-repositories
+        """
 
         from ..models import BasicError, Event
 
@@ -268,7 +340,14 @@ class ActivityClient:
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Thread], list[ThreadType]]:
-        """See also: https://docs.github.com/rest/activity/notifications#list-notifications-for-the-authenticated-user"""
+        """activity/list-notifications-for-authenticated-user
+
+        GET /notifications
+
+        List all notifications for the current user, sorted by most recently updated.
+
+        See also: https://docs.github.com/rest/activity/notifications#list-notifications-for-the-authenticated-user
+        """
 
         from ..models import BasicError, Thread, ValidationError
 
@@ -309,7 +388,14 @@ class ActivityClient:
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Thread], list[ThreadType]]:
-        """See also: https://docs.github.com/rest/activity/notifications#list-notifications-for-the-authenticated-user"""
+        """activity/list-notifications-for-authenticated-user
+
+        GET /notifications
+
+        List all notifications for the current user, sorted by most recently updated.
+
+        See also: https://docs.github.com/rest/activity/notifications#list-notifications-for-the-authenticated-user
+        """
 
         from ..models import BasicError, Thread, ValidationError
 
@@ -364,7 +450,14 @@ class ActivityClient:
         data: Missing[NotificationsPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[NotificationsPutResponse202, NotificationsPutResponse202Type]:
-        """See also: https://docs.github.com/rest/activity/notifications#mark-notifications-as-read"""
+        """activity/mark-notifications-as-read
+
+        PUT /notifications
+
+        Marks all notifications as "read" for the current user. If the number of notifications is too large to complete in one request, you will receive a `202 Accepted` status and GitHub will run an asynchronous process to mark notifications as "read." To check whether any "unread" notifications remain, you can use the [List notifications for the authenticated user](https://docs.github.com/rest/activity/notifications#list-notifications-for-the-authenticated-user) endpoint and pass the query parameter `all=false`.
+
+        See also: https://docs.github.com/rest/activity/notifications#mark-notifications-as-read
+        """
 
         from ..models import (
             BasicError,
@@ -422,7 +515,14 @@ class ActivityClient:
         data: Missing[NotificationsPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[NotificationsPutResponse202, NotificationsPutResponse202Type]:
-        """See also: https://docs.github.com/rest/activity/notifications#mark-notifications-as-read"""
+        """activity/mark-notifications-as-read
+
+        PUT /notifications
+
+        Marks all notifications as "read" for the current user. If the number of notifications is too large to complete in one request, you will receive a `202 Accepted` status and GitHub will run an asynchronous process to mark notifications as "read." To check whether any "unread" notifications remain, you can use the [List notifications for the authenticated user](https://docs.github.com/rest/activity/notifications#list-notifications-for-the-authenticated-user) endpoint and pass the query parameter `all=false`.
+
+        See also: https://docs.github.com/rest/activity/notifications#mark-notifications-as-read
+        """
 
         from ..models import (
             BasicError,
@@ -461,7 +561,14 @@ class ActivityClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Thread, ThreadType]:
-        """See also: https://docs.github.com/rest/activity/notifications#get-a-thread"""
+        """activity/get-thread
+
+        GET /notifications/threads/{thread_id}
+
+        Gets information about a notification thread.
+
+        See also: https://docs.github.com/rest/activity/notifications#get-a-thread
+        """
 
         from ..models import BasicError, Thread
 
@@ -486,7 +593,14 @@ class ActivityClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Thread, ThreadType]:
-        """See also: https://docs.github.com/rest/activity/notifications#get-a-thread"""
+        """activity/get-thread
+
+        GET /notifications/threads/{thread_id}
+
+        Gets information about a notification thread.
+
+        See also: https://docs.github.com/rest/activity/notifications#get-a-thread
+        """
 
         from ..models import BasicError, Thread
 
@@ -511,7 +625,14 @@ class ActivityClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/activity/notifications#mark-a-thread-as-done"""
+        """activity/mark-thread-as-done
+
+        DELETE /notifications/threads/{thread_id}
+
+        Marks a thread as "done." Marking a thread as "done" is equivalent to marking a notification in your notification inbox on GitHub as done: https://github.com/notifications.
+
+        See also: https://docs.github.com/rest/activity/notifications#mark-a-thread-as-done
+        """
 
         url = f"/notifications/threads/{thread_id}"
 
@@ -529,7 +650,14 @@ class ActivityClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/activity/notifications#mark-a-thread-as-done"""
+        """activity/mark-thread-as-done
+
+        DELETE /notifications/threads/{thread_id}
+
+        Marks a thread as "done." Marking a thread as "done" is equivalent to marking a notification in your notification inbox on GitHub as done: https://github.com/notifications.
+
+        See also: https://docs.github.com/rest/activity/notifications#mark-a-thread-as-done
+        """
 
         url = f"/notifications/threads/{thread_id}"
 
@@ -547,7 +675,14 @@ class ActivityClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/activity/notifications#mark-a-thread-as-read"""
+        """activity/mark-thread-as-read
+
+        PATCH /notifications/threads/{thread_id}
+
+        Marks a thread as "read." Marking a thread as "read" is equivalent to clicking a notification in your notification inbox on GitHub: https://github.com/notifications.
+
+        See also: https://docs.github.com/rest/activity/notifications#mark-a-thread-as-read
+        """
 
         from ..models import BasicError
 
@@ -570,7 +705,14 @@ class ActivityClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/activity/notifications#mark-a-thread-as-read"""
+        """activity/mark-thread-as-read
+
+        PATCH /notifications/threads/{thread_id}
+
+        Marks a thread as "read." Marking a thread as "read" is equivalent to clicking a notification in your notification inbox on GitHub: https://github.com/notifications.
+
+        See also: https://docs.github.com/rest/activity/notifications#mark-a-thread-as-read
+        """
 
         from ..models import BasicError
 
@@ -593,7 +735,16 @@ class ActivityClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ThreadSubscription, ThreadSubscriptionType]:
-        """See also: https://docs.github.com/rest/activity/notifications#get-a-thread-subscription-for-the-authenticated-user"""
+        """activity/get-thread-subscription-for-authenticated-user
+
+        GET /notifications/threads/{thread_id}/subscription
+
+        This checks to see if the current user is subscribed to a thread. You can also [get a repository subscription](https://docs.github.com/rest/activity/watching#get-a-repository-subscription).
+
+        Note that subscriptions are only generated if a user is participating in a conversation--for example, they've replied to the thread, were **@mentioned**, or manually subscribe to a thread.
+
+        See also: https://docs.github.com/rest/activity/notifications#get-a-thread-subscription-for-the-authenticated-user
+        """
 
         from ..models import BasicError, ThreadSubscription
 
@@ -618,7 +769,16 @@ class ActivityClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ThreadSubscription, ThreadSubscriptionType]:
-        """See also: https://docs.github.com/rest/activity/notifications#get-a-thread-subscription-for-the-authenticated-user"""
+        """activity/get-thread-subscription-for-authenticated-user
+
+        GET /notifications/threads/{thread_id}/subscription
+
+        This checks to see if the current user is subscribed to a thread. You can also [get a repository subscription](https://docs.github.com/rest/activity/watching#get-a-repository-subscription).
+
+        Note that subscriptions are only generated if a user is participating in a conversation--for example, they've replied to the thread, were **@mentioned**, or manually subscribe to a thread.
+
+        See also: https://docs.github.com/rest/activity/notifications#get-a-thread-subscription-for-the-authenticated-user
+        """
 
         from ..models import BasicError, ThreadSubscription
 
@@ -664,7 +824,18 @@ class ActivityClient:
         data: Missing[NotificationsThreadsThreadIdSubscriptionPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[ThreadSubscription, ThreadSubscriptionType]:
-        """See also: https://docs.github.com/rest/activity/notifications#set-a-thread-subscription"""
+        """activity/set-thread-subscription
+
+        PUT /notifications/threads/{thread_id}/subscription
+
+        If you are watching a repository, you receive notifications for all threads by default. Use this endpoint to ignore future notifications for threads until you comment on the thread or get an **@mention**.
+
+        You can also use this endpoint to subscribe to threads that you are currently not receiving notifications for or to subscribed to threads that you have previously ignored.
+
+        Unsubscribing from a conversation in a repository that you are not watching is functionally equivalent to the [Delete a thread subscription](https://docs.github.com/rest/activity/notifications#delete-a-thread-subscription) endpoint.
+
+        See also: https://docs.github.com/rest/activity/notifications#set-a-thread-subscription
+        """
 
         from ..models import (
             BasicError,
@@ -726,7 +897,18 @@ class ActivityClient:
         data: Missing[NotificationsThreadsThreadIdSubscriptionPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[ThreadSubscription, ThreadSubscriptionType]:
-        """See also: https://docs.github.com/rest/activity/notifications#set-a-thread-subscription"""
+        """activity/set-thread-subscription
+
+        PUT /notifications/threads/{thread_id}/subscription
+
+        If you are watching a repository, you receive notifications for all threads by default. Use this endpoint to ignore future notifications for threads until you comment on the thread or get an **@mention**.
+
+        You can also use this endpoint to subscribe to threads that you are currently not receiving notifications for or to subscribed to threads that you have previously ignored.
+
+        Unsubscribing from a conversation in a repository that you are not watching is functionally equivalent to the [Delete a thread subscription](https://docs.github.com/rest/activity/notifications#delete-a-thread-subscription) endpoint.
+
+        See also: https://docs.github.com/rest/activity/notifications#set-a-thread-subscription
+        """
 
         from ..models import (
             BasicError,
@@ -767,7 +949,14 @@ class ActivityClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/activity/notifications#delete-a-thread-subscription"""
+        """activity/delete-thread-subscription
+
+        DELETE /notifications/threads/{thread_id}/subscription
+
+        Mutes all future notifications for a conversation until you comment on the thread or get an **@mention**. If you are watching the repository of the thread, you will still receive notifications. To ignore future notifications for a repository you are watching, use the [Set a thread subscription](https://docs.github.com/rest/activity/notifications#set-a-thread-subscription) endpoint and set `ignore` to `true`.
+
+        See also: https://docs.github.com/rest/activity/notifications#delete-a-thread-subscription
+        """
 
         from ..models import BasicError
 
@@ -791,7 +980,14 @@ class ActivityClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/activity/notifications#delete-a-thread-subscription"""
+        """activity/delete-thread-subscription
+
+        DELETE /notifications/threads/{thread_id}/subscription
+
+        Mutes all future notifications for a conversation until you comment on the thread or get an **@mention**. If you are watching the repository of the thread, you will still receive notifications. To ignore future notifications for a repository you are watching, use the [Set a thread subscription](https://docs.github.com/rest/activity/notifications#set-a-thread-subscription) endpoint and set `ignore` to `true`.
+
+        See also: https://docs.github.com/rest/activity/notifications#delete-a-thread-subscription
+        """
 
         from ..models import BasicError
 
@@ -817,7 +1013,15 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Event], list[EventType]]:
-        """See also: https://docs.github.com/rest/activity/events#list-public-organization-events"""
+        """activity/list-public-org-events
+
+        GET /orgs/{org}/events
+
+        > [!NOTE]
+        > This API is not built to serve real-time use cases. Depending on the time of day, event latency can be anywhere from 30s to 6h.
+
+        See also: https://docs.github.com/rest/activity/events#list-public-organization-events
+        """
 
         from ..models import Event
 
@@ -846,7 +1050,15 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Event], list[EventType]]:
-        """See also: https://docs.github.com/rest/activity/events#list-public-organization-events"""
+        """activity/list-public-org-events
+
+        GET /orgs/{org}/events
+
+        > [!NOTE]
+        > This API is not built to serve real-time use cases. Depending on the time of day, event latency can be anywhere from 30s to 6h.
+
+        See also: https://docs.github.com/rest/activity/events#list-public-organization-events
+        """
 
         from ..models import Event
 
@@ -876,7 +1088,15 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Event], list[EventType]]:
-        """See also: https://docs.github.com/rest/activity/events#list-repository-events"""
+        """activity/list-repo-events
+
+        GET /repos/{owner}/{repo}/events
+
+        > [!NOTE]
+        > This API is not built to serve real-time use cases. Depending on the time of day, event latency can be anywhere from 30s to 6h.
+
+        See also: https://docs.github.com/rest/activity/events#list-repository-events
+        """
 
         from ..models import Event
 
@@ -906,7 +1126,15 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Event], list[EventType]]:
-        """See also: https://docs.github.com/rest/activity/events#list-repository-events"""
+        """activity/list-repo-events
+
+        GET /repos/{owner}/{repo}/events
+
+        > [!NOTE]
+        > This API is not built to serve real-time use cases. Depending on the time of day, event latency can be anywhere from 30s to 6h.
+
+        See also: https://docs.github.com/rest/activity/events#list-repository-events
+        """
 
         from ..models import Event
 
@@ -940,7 +1168,14 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Thread], list[ThreadType]]:
-        """See also: https://docs.github.com/rest/activity/notifications#list-repository-notifications-for-the-authenticated-user"""
+        """activity/list-repo-notifications-for-authenticated-user
+
+        GET /repos/{owner}/{repo}/notifications
+
+        Lists all notifications for the current user in the specified repository.
+
+        See also: https://docs.github.com/rest/activity/notifications#list-repository-notifications-for-the-authenticated-user
+        """
 
         from ..models import Thread
 
@@ -978,7 +1213,14 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Thread], list[ThreadType]]:
-        """See also: https://docs.github.com/rest/activity/notifications#list-repository-notifications-for-the-authenticated-user"""
+        """activity/list-repo-notifications-for-authenticated-user
+
+        GET /repos/{owner}/{repo}/notifications
+
+        Lists all notifications for the current user in the specified repository.
+
+        See also: https://docs.github.com/rest/activity/notifications#list-repository-notifications-for-the-authenticated-user
+        """
 
         from ..models import Thread
 
@@ -1042,7 +1284,14 @@ class ActivityClient:
         ReposOwnerRepoNotificationsPutResponse202,
         ReposOwnerRepoNotificationsPutResponse202Type,
     ]:
-        """See also: https://docs.github.com/rest/activity/notifications#mark-repository-notifications-as-read"""
+        """activity/mark-repo-notifications-as-read
+
+        PUT /repos/{owner}/{repo}/notifications
+
+        Marks all notifications in a repository as "read" for the current user. If the number of notifications is too large to complete in one request, you will receive a `202 Accepted` status and GitHub will run an asynchronous process to mark notifications as "read." To check whether any "unread" notifications remain, you can use the [List repository notifications for the authenticated user](https://docs.github.com/rest/activity/notifications#list-repository-notifications-for-the-authenticated-user) endpoint and pass the query parameter `all=false`.
+
+        See also: https://docs.github.com/rest/activity/notifications#mark-repository-notifications-as-read
+        """
 
         from ..models import (
             ReposOwnerRepoNotificationsPutBody,
@@ -1109,7 +1358,14 @@ class ActivityClient:
         ReposOwnerRepoNotificationsPutResponse202,
         ReposOwnerRepoNotificationsPutResponse202Type,
     ]:
-        """See also: https://docs.github.com/rest/activity/notifications#mark-repository-notifications-as-read"""
+        """activity/mark-repo-notifications-as-read
+
+        PUT /repos/{owner}/{repo}/notifications
+
+        Marks all notifications in a repository as "read" for the current user. If the number of notifications is too large to complete in one request, you will receive a `202 Accepted` status and GitHub will run an asynchronous process to mark notifications as "read." To check whether any "unread" notifications remain, you can use the [List repository notifications for the authenticated user](https://docs.github.com/rest/activity/notifications#list-repository-notifications-for-the-authenticated-user) endpoint and pass the query parameter `all=false`.
+
+        See also: https://docs.github.com/rest/activity/notifications#mark-repository-notifications-as-read
+        """
 
         from ..models import (
             ReposOwnerRepoNotificationsPutBody,
@@ -1149,7 +1405,18 @@ class ActivityClient:
         Union[list[SimpleUser], list[Stargazer]],
         Union[list[SimpleUserType], list[StargazerType]],
     ]:
-        """See also: https://docs.github.com/rest/activity/starring#list-stargazers"""
+        """activity/list-stargazers-for-repo
+
+        GET /repos/{owner}/{repo}/stargazers
+
+        Lists the people that have starred the repository.
+
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+
+        - **`application/vnd.github.star+json`**: Includes a timestamp of when the star was created.
+
+        See also: https://docs.github.com/rest/activity/starring#list-stargazers
+        """
 
         from typing import Union
 
@@ -1187,7 +1454,18 @@ class ActivityClient:
         Union[list[SimpleUser], list[Stargazer]],
         Union[list[SimpleUserType], list[StargazerType]],
     ]:
-        """See also: https://docs.github.com/rest/activity/starring#list-stargazers"""
+        """activity/list-stargazers-for-repo
+
+        GET /repos/{owner}/{repo}/stargazers
+
+        Lists the people that have starred the repository.
+
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+
+        - **`application/vnd.github.star+json`**: Includes a timestamp of when the star was created.
+
+        See also: https://docs.github.com/rest/activity/starring#list-stargazers
+        """
 
         from typing import Union
 
@@ -1222,7 +1500,14 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]:
-        """See also: https://docs.github.com/rest/activity/watching#list-watchers"""
+        """activity/list-watchers-for-repo
+
+        GET /repos/{owner}/{repo}/subscribers
+
+        Lists the people watching the specified repository.
+
+        See also: https://docs.github.com/rest/activity/watching#list-watchers
+        """
 
         from ..models import SimpleUser
 
@@ -1252,7 +1537,14 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]:
-        """See also: https://docs.github.com/rest/activity/watching#list-watchers"""
+        """activity/list-watchers-for-repo
+
+        GET /repos/{owner}/{repo}/subscribers
+
+        Lists the people watching the specified repository.
+
+        See also: https://docs.github.com/rest/activity/watching#list-watchers
+        """
 
         from ..models import SimpleUser
 
@@ -1280,7 +1572,14 @@ class ActivityClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[RepositorySubscription, RepositorySubscriptionType]:
-        """See also: https://docs.github.com/rest/activity/watching#get-a-repository-subscription"""
+        """activity/get-repo-subscription
+
+        GET /repos/{owner}/{repo}/subscription
+
+        Gets information about whether the authenticated user is subscribed to the repository.
+
+        See also: https://docs.github.com/rest/activity/watching#get-a-repository-subscription
+        """
 
         from ..models import BasicError, RepositorySubscription
 
@@ -1305,7 +1604,14 @@ class ActivityClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[RepositorySubscription, RepositorySubscriptionType]:
-        """See also: https://docs.github.com/rest/activity/watching#get-a-repository-subscription"""
+        """activity/get-repo-subscription
+
+        GET /repos/{owner}/{repo}/subscription
+
+        Gets information about whether the authenticated user is subscribed to the repository.
+
+        See also: https://docs.github.com/rest/activity/watching#get-a-repository-subscription
+        """
 
         from ..models import BasicError, RepositorySubscription
 
@@ -1354,7 +1660,14 @@ class ActivityClient:
         data: Missing[ReposOwnerRepoSubscriptionPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[RepositorySubscription, RepositorySubscriptionType]:
-        """See also: https://docs.github.com/rest/activity/watching#set-a-repository-subscription"""
+        """activity/set-repo-subscription
+
+        PUT /repos/{owner}/{repo}/subscription
+
+        If you would like to watch a repository, set `subscribed` to `true`. If you would like to ignore notifications made within a repository, set `ignored` to `true`. If you would like to stop watching a repository, [delete the repository's subscription](https://docs.github.com/rest/activity/watching#delete-a-repository-subscription) completely.
+
+        See also: https://docs.github.com/rest/activity/watching#set-a-repository-subscription
+        """
 
         from ..models import RepositorySubscription, ReposOwnerRepoSubscriptionPutBody
 
@@ -1410,7 +1723,14 @@ class ActivityClient:
         data: Missing[ReposOwnerRepoSubscriptionPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[RepositorySubscription, RepositorySubscriptionType]:
-        """See also: https://docs.github.com/rest/activity/watching#set-a-repository-subscription"""
+        """activity/set-repo-subscription
+
+        PUT /repos/{owner}/{repo}/subscription
+
+        If you would like to watch a repository, set `subscribed` to `true`. If you would like to ignore notifications made within a repository, set `ignored` to `true`. If you would like to stop watching a repository, [delete the repository's subscription](https://docs.github.com/rest/activity/watching#delete-a-repository-subscription) completely.
+
+        See also: https://docs.github.com/rest/activity/watching#set-a-repository-subscription
+        """
 
         from ..models import RepositorySubscription, ReposOwnerRepoSubscriptionPutBody
 
@@ -1442,7 +1762,14 @@ class ActivityClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/activity/watching#delete-a-repository-subscription"""
+        """activity/delete-repo-subscription
+
+        DELETE /repos/{owner}/{repo}/subscription
+
+        This endpoint should only be used to stop watching a repository. To control whether or not you wish to receive notifications from a repository, [set the repository's subscription manually](https://docs.github.com/rest/activity/watching#set-a-repository-subscription).
+
+        See also: https://docs.github.com/rest/activity/watching#delete-a-repository-subscription
+        """
 
         url = f"/repos/{owner}/{repo}/subscription"
 
@@ -1461,7 +1788,14 @@ class ActivityClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/activity/watching#delete-a-repository-subscription"""
+        """activity/delete-repo-subscription
+
+        DELETE /repos/{owner}/{repo}/subscription
+
+        This endpoint should only be used to stop watching a repository. To control whether or not you wish to receive notifications from a repository, [set the repository's subscription manually](https://docs.github.com/rest/activity/watching#set-a-repository-subscription).
+
+        See also: https://docs.github.com/rest/activity/watching#delete-a-repository-subscription
+        """
 
         url = f"/repos/{owner}/{repo}/subscription"
 
@@ -1482,7 +1816,18 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Repository], list[RepositoryType]]:
-        """See also: https://docs.github.com/rest/activity/starring#list-repositories-starred-by-the-authenticated-user"""
+        """activity/list-repos-starred-by-authenticated-user
+
+        GET /user/starred
+
+        Lists repositories the authenticated user has starred.
+
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+
+        - **`application/vnd.github.star+json`**: Includes a timestamp of when the star was created.
+
+        See also: https://docs.github.com/rest/activity/starring#list-repositories-starred-by-the-authenticated-user
+        """
 
         from ..models import BasicError, Repository
 
@@ -1518,7 +1863,18 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Repository], list[RepositoryType]]:
-        """See also: https://docs.github.com/rest/activity/starring#list-repositories-starred-by-the-authenticated-user"""
+        """activity/list-repos-starred-by-authenticated-user
+
+        GET /user/starred
+
+        Lists repositories the authenticated user has starred.
+
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+
+        - **`application/vnd.github.star+json`**: Includes a timestamp of when the star was created.
+
+        See also: https://docs.github.com/rest/activity/starring#list-repositories-starred-by-the-authenticated-user
+        """
 
         from ..models import BasicError, Repository
 
@@ -1552,7 +1908,14 @@ class ActivityClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/activity/starring#check-if-a-repository-is-starred-by-the-authenticated-user"""
+        """activity/check-repo-is-starred-by-authenticated-user
+
+        GET /user/starred/{owner}/{repo}
+
+        Whether the authenticated user has starred the repository.
+
+        See also: https://docs.github.com/rest/activity/starring#check-if-a-repository-is-starred-by-the-authenticated-user
+        """
 
         from ..models import BasicError
 
@@ -1578,7 +1941,14 @@ class ActivityClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/activity/starring#check-if-a-repository-is-starred-by-the-authenticated-user"""
+        """activity/check-repo-is-starred-by-authenticated-user
+
+        GET /user/starred/{owner}/{repo}
+
+        Whether the authenticated user has starred the repository.
+
+        See also: https://docs.github.com/rest/activity/starring#check-if-a-repository-is-starred-by-the-authenticated-user
+        """
 
         from ..models import BasicError
 
@@ -1604,7 +1974,14 @@ class ActivityClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/activity/starring#star-a-repository-for-the-authenticated-user"""
+        """activity/star-repo-for-authenticated-user
+
+        PUT /user/starred/{owner}/{repo}
+
+        Note that you'll need to set `Content-Length` to zero when calling out to this endpoint. For more information, see "[HTTP method](https://docs.github.com/rest/guides/getting-started-with-the-rest-api#http-method)."
+
+        See also: https://docs.github.com/rest/activity/starring#star-a-repository-for-the-authenticated-user
+        """
 
         from ..models import BasicError
 
@@ -1630,7 +2007,14 @@ class ActivityClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/activity/starring#star-a-repository-for-the-authenticated-user"""
+        """activity/star-repo-for-authenticated-user
+
+        PUT /user/starred/{owner}/{repo}
+
+        Note that you'll need to set `Content-Length` to zero when calling out to this endpoint. For more information, see "[HTTP method](https://docs.github.com/rest/guides/getting-started-with-the-rest-api#http-method)."
+
+        See also: https://docs.github.com/rest/activity/starring#star-a-repository-for-the-authenticated-user
+        """
 
         from ..models import BasicError
 
@@ -1656,7 +2040,14 @@ class ActivityClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/activity/starring#unstar-a-repository-for-the-authenticated-user"""
+        """activity/unstar-repo-for-authenticated-user
+
+        DELETE /user/starred/{owner}/{repo}
+
+        Unstar a repository that the authenticated user has previously starred.
+
+        See also: https://docs.github.com/rest/activity/starring#unstar-a-repository-for-the-authenticated-user
+        """
 
         from ..models import BasicError
 
@@ -1682,7 +2073,14 @@ class ActivityClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/activity/starring#unstar-a-repository-for-the-authenticated-user"""
+        """activity/unstar-repo-for-authenticated-user
+
+        DELETE /user/starred/{owner}/{repo}
+
+        Unstar a repository that the authenticated user has previously starred.
+
+        See also: https://docs.github.com/rest/activity/starring#unstar-a-repository-for-the-authenticated-user
+        """
 
         from ..models import BasicError
 
@@ -1708,7 +2106,14 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
-        """See also: https://docs.github.com/rest/activity/watching#list-repositories-watched-by-the-authenticated-user"""
+        """activity/list-watched-repos-for-authenticated-user
+
+        GET /user/subscriptions
+
+        Lists repositories the authenticated user is watching.
+
+        See also: https://docs.github.com/rest/activity/watching#list-repositories-watched-by-the-authenticated-user
+        """
 
         from ..models import BasicError, MinimalRepository
 
@@ -1740,7 +2145,14 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
-        """See also: https://docs.github.com/rest/activity/watching#list-repositories-watched-by-the-authenticated-user"""
+        """activity/list-watched-repos-for-authenticated-user
+
+        GET /user/subscriptions
+
+        Lists repositories the authenticated user is watching.
+
+        See also: https://docs.github.com/rest/activity/watching#list-repositories-watched-by-the-authenticated-user
+        """
 
         from ..models import BasicError, MinimalRepository
 
@@ -1773,7 +2185,17 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Event], list[EventType]]:
-        """See also: https://docs.github.com/rest/activity/events#list-events-for-the-authenticated-user"""
+        """activity/list-events-for-authenticated-user
+
+        GET /users/{username}/events
+
+        If you are authenticated as the given user, you will see your private events. Otherwise, you'll only see public events. _Optional_: use the fine-grained token with following permission set to view private events: "Events" user permissions (read).
+
+        > [!NOTE]
+        > This API is not built to serve real-time use cases. Depending on the time of day, event latency can be anywhere from 30s to 6h.
+
+        See also: https://docs.github.com/rest/activity/events#list-events-for-the-authenticated-user
+        """
 
         from ..models import Event
 
@@ -1802,7 +2224,17 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Event], list[EventType]]:
-        """See also: https://docs.github.com/rest/activity/events#list-events-for-the-authenticated-user"""
+        """activity/list-events-for-authenticated-user
+
+        GET /users/{username}/events
+
+        If you are authenticated as the given user, you will see your private events. Otherwise, you'll only see public events. _Optional_: use the fine-grained token with following permission set to view private events: "Events" user permissions (read).
+
+        > [!NOTE]
+        > This API is not built to serve real-time use cases. Depending on the time of day, event latency can be anywhere from 30s to 6h.
+
+        See also: https://docs.github.com/rest/activity/events#list-events-for-the-authenticated-user
+        """
 
         from ..models import Event
 
@@ -1832,7 +2264,17 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Event], list[EventType]]:
-        """See also: https://docs.github.com/rest/activity/events#list-organization-events-for-the-authenticated-user"""
+        """activity/list-org-events-for-authenticated-user
+
+        GET /users/{username}/events/orgs/{org}
+
+        This is the user's organization dashboard. You must be authenticated as the user to view this.
+
+        > [!NOTE]
+        > This API is not built to serve real-time use cases. Depending on the time of day, event latency can be anywhere from 30s to 6h.
+
+        See also: https://docs.github.com/rest/activity/events#list-organization-events-for-the-authenticated-user
+        """
 
         from ..models import Event
 
@@ -1862,7 +2304,17 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Event], list[EventType]]:
-        """See also: https://docs.github.com/rest/activity/events#list-organization-events-for-the-authenticated-user"""
+        """activity/list-org-events-for-authenticated-user
+
+        GET /users/{username}/events/orgs/{org}
+
+        This is the user's organization dashboard. You must be authenticated as the user to view this.
+
+        > [!NOTE]
+        > This API is not built to serve real-time use cases. Depending on the time of day, event latency can be anywhere from 30s to 6h.
+
+        See also: https://docs.github.com/rest/activity/events#list-organization-events-for-the-authenticated-user
+        """
 
         from ..models import Event
 
@@ -1891,7 +2343,15 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Event], list[EventType]]:
-        """See also: https://docs.github.com/rest/activity/events#list-public-events-for-a-user"""
+        """activity/list-public-events-for-user
+
+        GET /users/{username}/events/public
+
+        > [!NOTE]
+        > This API is not built to serve real-time use cases. Depending on the time of day, event latency can be anywhere from 30s to 6h.
+
+        See also: https://docs.github.com/rest/activity/events#list-public-events-for-a-user
+        """
 
         from ..models import Event
 
@@ -1920,7 +2380,15 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Event], list[EventType]]:
-        """See also: https://docs.github.com/rest/activity/events#list-public-events-for-a-user"""
+        """activity/list-public-events-for-user
+
+        GET /users/{username}/events/public
+
+        > [!NOTE]
+        > This API is not built to serve real-time use cases. Depending on the time of day, event latency can be anywhere from 30s to 6h.
+
+        See also: https://docs.github.com/rest/activity/events#list-public-events-for-a-user
+        """
 
         from ..models import Event
 
@@ -1949,7 +2417,18 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Event], list[EventType]]:
-        """See also: https://docs.github.com/rest/activity/events#list-events-received-by-the-authenticated-user"""
+        """activity/list-received-events-for-user
+
+        GET /users/{username}/received_events
+
+        These are events that you've received by watching repositories and following users. If you are authenticated as the
+        given user, you will see private events. Otherwise, you'll only see public events.
+
+        > [!NOTE]
+        > This API is not built to serve real-time use cases. Depending on the time of day, event latency can be anywhere from 30s to 6h.
+
+        See also: https://docs.github.com/rest/activity/events#list-events-received-by-the-authenticated-user
+        """
 
         from ..models import Event
 
@@ -1978,7 +2457,18 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Event], list[EventType]]:
-        """See also: https://docs.github.com/rest/activity/events#list-events-received-by-the-authenticated-user"""
+        """activity/list-received-events-for-user
+
+        GET /users/{username}/received_events
+
+        These are events that you've received by watching repositories and following users. If you are authenticated as the
+        given user, you will see private events. Otherwise, you'll only see public events.
+
+        > [!NOTE]
+        > This API is not built to serve real-time use cases. Depending on the time of day, event latency can be anywhere from 30s to 6h.
+
+        See also: https://docs.github.com/rest/activity/events#list-events-received-by-the-authenticated-user
+        """
 
         from ..models import Event
 
@@ -2007,7 +2497,15 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Event], list[EventType]]:
-        """See also: https://docs.github.com/rest/activity/events#list-public-events-received-by-a-user"""
+        """activity/list-received-public-events-for-user
+
+        GET /users/{username}/received_events/public
+
+        > [!NOTE]
+        > This API is not built to serve real-time use cases. Depending on the time of day, event latency can be anywhere from 30s to 6h.
+
+        See also: https://docs.github.com/rest/activity/events#list-public-events-received-by-a-user
+        """
 
         from ..models import Event
 
@@ -2036,7 +2534,15 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Event], list[EventType]]:
-        """See also: https://docs.github.com/rest/activity/events#list-public-events-received-by-a-user"""
+        """activity/list-received-public-events-for-user
+
+        GET /users/{username}/received_events/public
+
+        > [!NOTE]
+        > This API is not built to serve real-time use cases. Depending on the time of day, event latency can be anywhere from 30s to 6h.
+
+        See also: https://docs.github.com/rest/activity/events#list-public-events-received-by-a-user
+        """
 
         from ..models import Event
 
@@ -2070,7 +2576,18 @@ class ActivityClient:
         Union[list[StarredRepository], list[Repository]],
         Union[list[StarredRepositoryType], list[RepositoryType]],
     ]:
-        """See also: https://docs.github.com/rest/activity/starring#list-repositories-starred-by-a-user"""
+        """activity/list-repos-starred-by-user
+
+        GET /users/{username}/starred
+
+        Lists repositories a user has starred.
+
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+
+        - **`application/vnd.github.star+json`**: Includes a timestamp of when the star was created.
+
+        See also: https://docs.github.com/rest/activity/starring#list-repositories-starred-by-a-user
+        """
 
         from typing import Union
 
@@ -2108,7 +2625,18 @@ class ActivityClient:
         Union[list[StarredRepository], list[Repository]],
         Union[list[StarredRepositoryType], list[RepositoryType]],
     ]:
-        """See also: https://docs.github.com/rest/activity/starring#list-repositories-starred-by-a-user"""
+        """activity/list-repos-starred-by-user
+
+        GET /users/{username}/starred
+
+        Lists repositories a user has starred.
+
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+
+        - **`application/vnd.github.star+json`**: Includes a timestamp of when the star was created.
+
+        See also: https://docs.github.com/rest/activity/starring#list-repositories-starred-by-a-user
+        """
 
         from typing import Union
 
@@ -2141,7 +2669,14 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
-        """See also: https://docs.github.com/rest/activity/watching#list-repositories-watched-by-a-user"""
+        """activity/list-repos-watched-by-user
+
+        GET /users/{username}/subscriptions
+
+        Lists repositories a user is watching.
+
+        See also: https://docs.github.com/rest/activity/watching#list-repositories-watched-by-a-user
+        """
 
         from ..models import MinimalRepository
 
@@ -2170,7 +2705,14 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
-        """See also: https://docs.github.com/rest/activity/watching#list-repositories-watched-by-a-user"""
+        """activity/list-repos-watched-by-user
+
+        GET /users/{username}/subscriptions
+
+        Lists repositories a user is watching.
+
+        See also: https://docs.github.com/rest/activity/watching#list-repositories-watched-by-a-user
+        """
 
         from ..models import MinimalRepository
 

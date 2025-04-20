@@ -152,7 +152,26 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Issue], list[IssueType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#list-issues-assigned-to-the-authenticated-user"""
+        """issues/list
+
+        GET /issues
+
+        List issues assigned to the authenticated user across all visible repositories including owned repositories, member
+        repositories, and organization repositories. You can use the `filter` query parameter to fetch issues that are not
+        necessarily assigned to you.
+
+        > [!NOTE]
+        > GitHub's REST API considers every pull request an issue, but not every issue is a pull request. For this reason, "Issues" endpoints may return both issues and pull requests in the response. You can identify pull requests by the `pull_request` key. Be aware that the `id` of a pull request returned from "Issues" endpoints will be an _issue id_. To find out the pull request id, use the "[List pull requests](https://docs.github.com/enterprise-cloud@latest//rest/pulls/pulls#list-pull-requests)" endpoint.
+
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+
+        - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
+        - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
+        - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
+        - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#list-issues-assigned-to-the-authenticated-user
+        """
 
         from ..models import BasicError, Issue, ValidationError
 
@@ -206,7 +225,26 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Issue], list[IssueType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#list-issues-assigned-to-the-authenticated-user"""
+        """issues/list
+
+        GET /issues
+
+        List issues assigned to the authenticated user across all visible repositories including owned repositories, member
+        repositories, and organization repositories. You can use the `filter` query parameter to fetch issues that are not
+        necessarily assigned to you.
+
+        > [!NOTE]
+        > GitHub's REST API considers every pull request an issue, but not every issue is a pull request. For this reason, "Issues" endpoints may return both issues and pull requests in the response. You can identify pull requests by the `pull_request` key. Be aware that the `id` of a pull request returned from "Issues" endpoints will be an _issue id_. To find out the pull request id, use the "[List pull requests](https://docs.github.com/enterprise-cloud@latest//rest/pulls/pulls#list-pull-requests)" endpoint.
+
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+
+        - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
+        - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
+        - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
+        - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#list-issues-assigned-to-the-authenticated-user
+        """
 
         from ..models import BasicError, Issue, ValidationError
 
@@ -258,7 +296,24 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Issue], list[IssueType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#list-organization-issues-assigned-to-the-authenticated-user"""
+        """issues/list-for-org
+
+        GET /orgs/{org}/issues
+
+        List issues in an organization assigned to the authenticated user.
+
+        > [!NOTE]
+        > GitHub's REST API considers every pull request an issue, but not every issue is a pull request. For this reason, "Issues" endpoints may return both issues and pull requests in the response. You can identify pull requests by the `pull_request` key. Be aware that the `id` of a pull request returned from "Issues" endpoints will be an _issue id_. To find out the pull request id, use the "[List pull requests](https://docs.github.com/enterprise-cloud@latest//rest/pulls/pulls#list-pull-requests)" endpoint.
+
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+
+        - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
+        - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
+        - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
+        - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#list-organization-issues-assigned-to-the-authenticated-user
+        """
 
         from ..models import BasicError, Issue
 
@@ -306,7 +361,24 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Issue], list[IssueType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#list-organization-issues-assigned-to-the-authenticated-user"""
+        """issues/list-for-org
+
+        GET /orgs/{org}/issues
+
+        List issues in an organization assigned to the authenticated user.
+
+        > [!NOTE]
+        > GitHub's REST API considers every pull request an issue, but not every issue is a pull request. For this reason, "Issues" endpoints may return both issues and pull requests in the response. You can identify pull requests by the `pull_request` key. Be aware that the `id` of a pull request returned from "Issues" endpoints will be an _issue id_. To find out the pull request id, use the "[List pull requests](https://docs.github.com/enterprise-cloud@latest//rest/pulls/pulls#list-pull-requests)" endpoint.
+
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+
+        - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
+        - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
+        - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
+        - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#list-organization-issues-assigned-to-the-authenticated-user
+        """
 
         from ..models import BasicError, Issue
 
@@ -346,7 +418,14 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/assignees#list-assignees"""
+        """issues/list-assignees
+
+        GET /repos/{owner}/{repo}/assignees
+
+        Lists the [available assignees](https://docs.github.com/enterprise-cloud@latest//articles/assigning-issues-and-pull-requests-to-other-github-users/) for issues in a repository.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/assignees#list-assignees
+        """
 
         from ..models import BasicError, SimpleUser
 
@@ -379,7 +458,14 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/assignees#list-assignees"""
+        """issues/list-assignees
+
+        GET /repos/{owner}/{repo}/assignees
+
+        Lists the [available assignees](https://docs.github.com/enterprise-cloud@latest//articles/assigning-issues-and-pull-requests-to-other-github-users/) for issues in a repository.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/assignees#list-assignees
+        """
 
         from ..models import BasicError, SimpleUser
 
@@ -411,7 +497,18 @@ class IssuesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/assignees#check-if-a-user-can-be-assigned"""
+        """issues/check-user-can-be-assigned
+
+        GET /repos/{owner}/{repo}/assignees/{assignee}
+
+        Checks if a user has permission to be assigned to an issue in this repository.
+
+        If the `assignee` can be assigned to issues in the repository, a `204` header with no content is returned.
+
+        Otherwise a `404` status code is returned.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/assignees#check-if-a-user-can-be-assigned
+        """
 
         from ..models import BasicError
 
@@ -436,7 +533,18 @@ class IssuesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/assignees#check-if-a-user-can-be-assigned"""
+        """issues/check-user-can-be-assigned
+
+        GET /repos/{owner}/{repo}/assignees/{assignee}
+
+        Checks if a user has permission to be assigned to an issue in this repository.
+
+        If the `assignee` can be assigned to issues in the repository, a `204` header with no content is returned.
+
+        Otherwise a `404` status code is returned.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/assignees#check-if-a-user-can-be-assigned
+        """
 
         from ..models import BasicError
 
@@ -472,7 +580,24 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Issue], list[IssueType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#list-repository-issues"""
+        """issues/list-for-repo
+
+        GET /repos/{owner}/{repo}/issues
+
+        List issues in a repository. Only open issues will be listed.
+
+        > [!NOTE]
+        > GitHub's REST API considers every pull request an issue, but not every issue is a pull request. For this reason, "Issues" endpoints may return both issues and pull requests in the response. You can identify pull requests by the `pull_request` key. Be aware that the `id` of a pull request returned from "Issues" endpoints will be an _issue id_. To find out the pull request id, use the "[List pull requests](https://docs.github.com/enterprise-cloud@latest//rest/pulls/pulls#list-pull-requests)" endpoint.
+
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+
+        - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
+        - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
+        - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
+        - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#list-repository-issues
+        """
 
         from ..models import BasicError, Issue, ValidationError
 
@@ -526,7 +651,24 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Issue], list[IssueType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#list-repository-issues"""
+        """issues/list-for-repo
+
+        GET /repos/{owner}/{repo}/issues
+
+        List issues in a repository. Only open issues will be listed.
+
+        > [!NOTE]
+        > GitHub's REST API considers every pull request an issue, but not every issue is a pull request. For this reason, "Issues" endpoints may return both issues and pull requests in the response. You can identify pull requests by the `pull_request` key. Be aware that the `id` of a pull request returned from "Issues" endpoints will be an _issue id_. To find out the pull request id, use the "[List pull requests](https://docs.github.com/enterprise-cloud@latest//rest/pulls/pulls#list-pull-requests)" endpoint.
+
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+
+        - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
+        - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
+        - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
+        - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#list-repository-issues
+        """
 
         from ..models import BasicError, Issue, ValidationError
 
@@ -599,7 +741,24 @@ class IssuesClient:
         data: Missing[ReposOwnerRepoIssuesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Issue, IssueType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#create-an-issue"""
+        """issues/create
+
+        POST /repos/{owner}/{repo}/issues
+
+        Any user with pull access to a repository can create an issue. If [issues are disabled in the repository](https://docs.github.com/enterprise-cloud@latest//articles/disabling-issues/), the API returns a `410 Gone` status.
+
+        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest//github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)"
+        and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/best-practices-for-using-the-rest-api)."
+
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+
+        - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
+        - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
+        - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
+        - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#create-an-issue
+        """
 
         from ..models import (
             BasicError,
@@ -676,7 +835,24 @@ class IssuesClient:
         data: Missing[ReposOwnerRepoIssuesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Issue, IssueType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#create-an-issue"""
+        """issues/create
+
+        POST /repos/{owner}/{repo}/issues
+
+        Any user with pull access to a repository can create an issue. If [issues are disabled in the repository](https://docs.github.com/enterprise-cloud@latest//articles/disabling-issues/), the API returns a `410 Gone` status.
+
+        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest//github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)"
+        and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/best-practices-for-using-the-rest-api)."
+
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+
+        - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
+        - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
+        - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
+        - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#create-an-issue
+        """
 
         from ..models import (
             BasicError,
@@ -727,7 +903,23 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[IssueComment], list[IssueCommentType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/comments#list-issue-comments-for-a-repository"""
+        """issues/list-comments-for-repo
+
+        GET /repos/{owner}/{repo}/issues/comments
+
+        You can use the REST API to list comments on issues and pull requests for a repository. Every pull request is an issue, but not every issue is a pull request.
+
+        By default, issue comments are ordered by ascending ID.
+
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+
+        - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
+        - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
+        - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
+        - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/comments#list-issue-comments-for-a-repository
+        """
 
         from ..models import BasicError, IssueComment, ValidationError
 
@@ -767,7 +959,23 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[IssueComment], list[IssueCommentType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/comments#list-issue-comments-for-a-repository"""
+        """issues/list-comments-for-repo
+
+        GET /repos/{owner}/{repo}/issues/comments
+
+        You can use the REST API to list comments on issues and pull requests for a repository. Every pull request is an issue, but not every issue is a pull request.
+
+        By default, issue comments are ordered by ascending ID.
+
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+
+        - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
+        - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
+        - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
+        - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/comments#list-issue-comments-for-a-repository
+        """
 
         from ..models import BasicError, IssueComment, ValidationError
 
@@ -803,7 +1011,21 @@ class IssuesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[IssueComment, IssueCommentType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/comments#get-an-issue-comment"""
+        """issues/get-comment
+
+        GET /repos/{owner}/{repo}/issues/comments/{comment_id}
+
+        You can use the REST API to get comments on issues and pull requests. Every pull request is an issue, but not every issue is a pull request.
+
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+
+        - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
+        - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
+        - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
+        - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/comments#get-an-issue-comment
+        """
 
         from ..models import BasicError, IssueComment
 
@@ -829,7 +1051,21 @@ class IssuesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[IssueComment, IssueCommentType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/comments#get-an-issue-comment"""
+        """issues/get-comment
+
+        GET /repos/{owner}/{repo}/issues/comments/{comment_id}
+
+        You can use the REST API to get comments on issues and pull requests. Every pull request is an issue, but not every issue is a pull request.
+
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+
+        - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
+        - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
+        - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
+        - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/comments#get-an-issue-comment
+        """
 
         from ..models import BasicError, IssueComment
 
@@ -855,7 +1091,14 @@ class IssuesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/comments#delete-an-issue-comment"""
+        """issues/delete-comment
+
+        DELETE /repos/{owner}/{repo}/issues/comments/{comment_id}
+
+        You can use the REST API to delete comments on issues and pull requests. Every pull request is an issue, but not every issue is a pull request.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/comments#delete-an-issue-comment
+        """
 
         url = f"/repos/{owner}/{repo}/issues/comments/{comment_id}"
 
@@ -875,7 +1118,14 @@ class IssuesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/comments#delete-an-issue-comment"""
+        """issues/delete-comment
+
+        DELETE /repos/{owner}/{repo}/issues/comments/{comment_id}
+
+        You can use the REST API to delete comments on issues and pull requests. Every pull request is an issue, but not every issue is a pull request.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/comments#delete-an-issue-comment
+        """
 
         url = f"/repos/{owner}/{repo}/issues/comments/{comment_id}"
 
@@ -920,7 +1170,21 @@ class IssuesClient:
         data: Missing[ReposOwnerRepoIssuesCommentsCommentIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[IssueComment, IssueCommentType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/comments#update-an-issue-comment"""
+        """issues/update-comment
+
+        PATCH /repos/{owner}/{repo}/issues/comments/{comment_id}
+
+        You can use the REST API to update comments on issues and pull requests. Every pull request is an issue, but not every issue is a pull request.
+
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+
+        - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
+        - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
+        - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
+        - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/comments#update-an-issue-comment
+        """
 
         from ..models import (
             IssueComment,
@@ -987,7 +1251,21 @@ class IssuesClient:
         data: Missing[ReposOwnerRepoIssuesCommentsCommentIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[IssueComment, IssueCommentType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/comments#update-an-issue-comment"""
+        """issues/update-comment
+
+        PATCH /repos/{owner}/{repo}/issues/comments/{comment_id}
+
+        You can use the REST API to update comments on issues and pull requests. Every pull request is an issue, but not every issue is a pull request.
+
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+
+        - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
+        - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
+        - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
+        - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/comments#update-an-issue-comment
+        """
 
         from ..models import (
             IssueComment,
@@ -1030,7 +1308,14 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[IssueEvent], list[IssueEventType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/events#list-issue-events-for-a-repository"""
+        """issues/list-events-for-repo
+
+        GET /repos/{owner}/{repo}/issues/events
+
+        Lists events for a repository.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/events#list-issue-events-for-a-repository
+        """
 
         from ..models import IssueEvent, ValidationError
 
@@ -1063,7 +1348,14 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[IssueEvent], list[IssueEventType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/events#list-issue-events-for-a-repository"""
+        """issues/list-events-for-repo
+
+        GET /repos/{owner}/{repo}/issues/events
+
+        Lists events for a repository.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/events#list-issue-events-for-a-repository
+        """
 
         from ..models import IssueEvent, ValidationError
 
@@ -1095,7 +1387,14 @@ class IssuesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[IssueEvent, IssueEventType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/events#get-an-issue-event"""
+        """issues/get-event
+
+        GET /repos/{owner}/{repo}/issues/events/{event_id}
+
+        Gets a single event by the event id.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/events#get-an-issue-event
+        """
 
         from ..models import BasicError, IssueEvent
 
@@ -1123,7 +1422,14 @@ class IssuesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[IssueEvent, IssueEventType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/events#get-an-issue-event"""
+        """issues/get-event
+
+        GET /repos/{owner}/{repo}/issues/events/{event_id}
+
+        Gets a single event by the event id.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/events#get-an-issue-event
+        """
 
         from ..models import BasicError, IssueEvent
 
@@ -1151,7 +1457,29 @@ class IssuesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Issue, IssueType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#get-an-issue"""
+        """issues/get
+
+        GET /repos/{owner}/{repo}/issues/{issue_number}
+
+        The API returns a [`301 Moved Permanently` status](https://docs.github.com/enterprise-cloud@latest//rest/guides/best-practices-for-using-the-rest-api#follow-redirects) if the issue was
+        [transferred](https://docs.github.com/enterprise-cloud@latest//articles/transferring-an-issue-to-another-repository/) to another repository. If
+        the issue was transferred to or deleted from a repository where the authenticated user lacks read access, the API
+        returns a `404 Not Found` status. If the issue was deleted from a repository where the authenticated user has read
+        access, the API returns a `410 Gone` status. To receive webhook events for transferred and deleted issues, subscribe
+        to the [`issues`](https://docs.github.com/enterprise-cloud@latest//webhooks/event-payloads/#issues) webhook.
+
+        > [!NOTE]
+        > GitHub's REST API considers every pull request an issue, but not every issue is a pull request. For this reason, "Issues" endpoints may return both issues and pull requests in the response. You can identify pull requests by the `pull_request` key. Be aware that the `id` of a pull request returned from "Issues" endpoints will be an _issue id_. To find out the pull request id, use the "[List pull requests](https://docs.github.com/enterprise-cloud@latest//rest/pulls/pulls#list-pull-requests)" endpoint.
+
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+
+        - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
+        - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
+        - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
+        - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#get-an-issue
+        """
 
         from ..models import BasicError, Issue
 
@@ -1178,7 +1506,29 @@ class IssuesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Issue, IssueType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#get-an-issue"""
+        """issues/get
+
+        GET /repos/{owner}/{repo}/issues/{issue_number}
+
+        The API returns a [`301 Moved Permanently` status](https://docs.github.com/enterprise-cloud@latest//rest/guides/best-practices-for-using-the-rest-api#follow-redirects) if the issue was
+        [transferred](https://docs.github.com/enterprise-cloud@latest//articles/transferring-an-issue-to-another-repository/) to another repository. If
+        the issue was transferred to or deleted from a repository where the authenticated user lacks read access, the API
+        returns a `404 Not Found` status. If the issue was deleted from a repository where the authenticated user has read
+        access, the API returns a `410 Gone` status. To receive webhook events for transferred and deleted issues, subscribe
+        to the [`issues`](https://docs.github.com/enterprise-cloud@latest//webhooks/event-payloads/#issues) webhook.
+
+        > [!NOTE]
+        > GitHub's REST API considers every pull request an issue, but not every issue is a pull request. For this reason, "Issues" endpoints may return both issues and pull requests in the response. You can identify pull requests by the `pull_request` key. Be aware that the `id` of a pull request returned from "Issues" endpoints will be an _issue id_. To find out the pull request id, use the "[List pull requests](https://docs.github.com/enterprise-cloud@latest//rest/pulls/pulls#list-pull-requests)" endpoint.
+
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+
+        - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
+        - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
+        - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
+        - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#get-an-issue
+        """
 
         from ..models import BasicError, Issue
 
@@ -1247,7 +1597,21 @@ class IssuesClient:
         data: Missing[ReposOwnerRepoIssuesIssueNumberPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Issue, IssueType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#update-an-issue"""
+        """issues/update
+
+        PATCH /repos/{owner}/{repo}/issues/{issue_number}
+
+        Issue owners and users with push access or Triage role can edit an issue.
+
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+
+        - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
+        - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
+        - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
+        - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#update-an-issue
+        """
 
         from ..models import (
             BasicError,
@@ -1335,7 +1699,21 @@ class IssuesClient:
         data: Missing[ReposOwnerRepoIssuesIssueNumberPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Issue, IssueType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#update-an-issue"""
+        """issues/update
+
+        PATCH /repos/{owner}/{repo}/issues/{issue_number}
+
+        Issue owners and users with push access or Triage role can edit an issue.
+
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+
+        - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
+        - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
+        - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
+        - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#update-an-issue
+        """
 
         from ..models import (
             BasicError,
@@ -1406,7 +1784,14 @@ class IssuesClient:
         data: Missing[ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Issue, IssueType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/assignees#add-assignees-to-an-issue"""
+        """issues/add-assignees
+
+        POST /repos/{owner}/{repo}/issues/{issue_number}/assignees
+
+        Adds up to 10 assignees to an issue. Users already assigned to an issue are not replaced.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/assignees#add-assignees-to-an-issue
+        """
 
         from ..models import Issue, ReposOwnerRepoIssuesIssueNumberAssigneesPostBody
 
@@ -1466,7 +1851,14 @@ class IssuesClient:
         data: Missing[ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Issue, IssueType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/assignees#add-assignees-to-an-issue"""
+        """issues/add-assignees
+
+        POST /repos/{owner}/{repo}/issues/{issue_number}/assignees
+
+        Adds up to 10 assignees to an issue. Users already assigned to an issue are not replaced.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/assignees#add-assignees-to-an-issue
+        """
 
         from ..models import Issue, ReposOwnerRepoIssuesIssueNumberAssigneesPostBody
 
@@ -1526,7 +1918,14 @@ class IssuesClient:
         data: Missing[ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyType] = UNSET,
         **kwargs,
     ) -> Response[Issue, IssueType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/assignees#remove-assignees-from-an-issue"""
+        """issues/remove-assignees
+
+        DELETE /repos/{owner}/{repo}/issues/{issue_number}/assignees
+
+        Removes one or more assignees from an issue.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/assignees#remove-assignees-from-an-issue
+        """
 
         from ..models import Issue, ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBody
 
@@ -1586,7 +1985,14 @@ class IssuesClient:
         data: Missing[ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyType] = UNSET,
         **kwargs,
     ) -> Response[Issue, IssueType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/assignees#remove-assignees-from-an-issue"""
+        """issues/remove-assignees
+
+        DELETE /repos/{owner}/{repo}/issues/{issue_number}/assignees
+
+        Removes one or more assignees from an issue.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/assignees#remove-assignees-from-an-issue
+        """
 
         from ..models import Issue, ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBody
 
@@ -1622,7 +2028,18 @@ class IssuesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/assignees#check-if-a-user-can-be-assigned-to-a-issue"""
+        """issues/check-user-can-be-assigned-to-issue
+
+        GET /repos/{owner}/{repo}/issues/{issue_number}/assignees/{assignee}
+
+        Checks if a user has permission to be assigned to a specific issue.
+
+        If the `assignee` can be assigned to this issue, a `204` status code with no content is returned.
+
+        Otherwise a `404` status code is returned.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/assignees#check-if-a-user-can-be-assigned-to-a-issue
+        """
 
         from ..models import BasicError
 
@@ -1648,7 +2065,18 @@ class IssuesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/assignees#check-if-a-user-can-be-assigned-to-a-issue"""
+        """issues/check-user-can-be-assigned-to-issue
+
+        GET /repos/{owner}/{repo}/issues/{issue_number}/assignees/{assignee}
+
+        Checks if a user has permission to be assigned to a specific issue.
+
+        If the `assignee` can be assigned to this issue, a `204` status code with no content is returned.
+
+        Otherwise a `404` status code is returned.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/assignees#check-if-a-user-can-be-assigned-to-a-issue
+        """
 
         from ..models import BasicError
 
@@ -1676,7 +2104,23 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[IssueComment], list[IssueCommentType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/comments#list-issue-comments"""
+        """issues/list-comments
+
+        GET /repos/{owner}/{repo}/issues/{issue_number}/comments
+
+        You can use the REST API to list comments on issues and pull requests. Every pull request is an issue, but not every issue is a pull request.
+
+        Issue comments are ordered by ascending ID.
+
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+
+        - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
+        - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
+        - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
+        - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/comments#list-issue-comments
+        """
 
         from ..models import BasicError, IssueComment
 
@@ -1713,7 +2157,23 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[IssueComment], list[IssueCommentType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/comments#list-issue-comments"""
+        """issues/list-comments
+
+        GET /repos/{owner}/{repo}/issues/{issue_number}/comments
+
+        You can use the REST API to list comments on issues and pull requests. Every pull request is an issue, but not every issue is a pull request.
+
+        Issue comments are ordered by ascending ID.
+
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+
+        - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
+        - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
+        - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
+        - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/comments#list-issue-comments
+        """
 
         from ..models import BasicError, IssueComment
 
@@ -1772,7 +2232,26 @@ class IssuesClient:
         data: Missing[ReposOwnerRepoIssuesIssueNumberCommentsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[IssueComment, IssueCommentType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/comments#create-an-issue-comment"""
+        """issues/create-comment
+
+        POST /repos/{owner}/{repo}/issues/{issue_number}/comments
+
+        You can use the REST API to create comments on issues and pull requests. Every pull request is an issue, but not every issue is a pull request.
+
+        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest//github/managing-subscriptions-and-notifications-on-github/about-notifications).
+        Creating content too quickly using this endpoint may result in secondary rate limiting.
+        For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)"
+        and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/best-practices-for-using-the-rest-api)."
+
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+
+        - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
+        - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
+        - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
+        - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/comments#create-an-issue-comment
+        """
 
         from ..models import (
             BasicError,
@@ -1843,7 +2322,26 @@ class IssuesClient:
         data: Missing[ReposOwnerRepoIssuesIssueNumberCommentsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[IssueComment, IssueCommentType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/comments#create-an-issue-comment"""
+        """issues/create-comment
+
+        POST /repos/{owner}/{repo}/issues/{issue_number}/comments
+
+        You can use the REST API to create comments on issues and pull requests. Every pull request is an issue, but not every issue is a pull request.
+
+        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest//github/managing-subscriptions-and-notifications-on-github/about-notifications).
+        Creating content too quickly using this endpoint may result in secondary rate limiting.
+        For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)"
+        and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/best-practices-for-using-the-rest-api)."
+
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+
+        - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
+        - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
+        - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
+        - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/comments#create-an-issue-comment
+        """
 
         from ..models import (
             BasicError,
@@ -1930,7 +2428,14 @@ class IssuesClient:
             ]
         ],
     ]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/events#list-issue-events"""
+        """issues/list-events
+
+        GET /repos/{owner}/{repo}/issues/{issue_number}/events
+
+        Lists all events for an issue.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/events#list-issue-events
+        """
 
         from typing import Union
 
@@ -2040,7 +2545,14 @@ class IssuesClient:
             ]
         ],
     ]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/events#list-issue-events"""
+        """issues/list-events
+
+        GET /repos/{owner}/{repo}/issues/{issue_number}/events
+
+        Lists all events for an issue.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/events#list-issue-events
+        """
 
         from typing import Union
 
@@ -2111,7 +2623,14 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Label], list[LabelType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/labels#list-labels-for-an-issue"""
+        """issues/list-labels-on-issue
+
+        GET /repos/{owner}/{repo}/issues/{issue_number}/labels
+
+        Lists all labels for an issue.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/labels#list-labels-for-an-issue
+        """
 
         from ..models import BasicError, Label
 
@@ -2146,7 +2665,14 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Label], list[LabelType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/labels#list-labels-for-an-issue"""
+        """issues/list-labels-on-issue
+
+        GET /repos/{owner}/{repo}/issues/{issue_number}/labels
+
+        Lists all labels for an issue.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/labels#list-labels-for-an-issue
+        """
 
         from ..models import BasicError, Label
 
@@ -2234,7 +2760,14 @@ class IssuesClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[list[Label], list[LabelType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/labels#set-labels-for-an-issue"""
+        """issues/set-labels
+
+        PUT /repos/{owner}/{repo}/issues/{issue_number}/labels
+
+        Removes any previous labels and sets the new labels for an issue.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/labels#set-labels-for-an-issue
+        """
 
         from typing import Union
 
@@ -2350,7 +2883,14 @@ class IssuesClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[list[Label], list[LabelType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/labels#set-labels-for-an-issue"""
+        """issues/set-labels
+
+        PUT /repos/{owner}/{repo}/issues/{issue_number}/labels
+
+        Removes any previous labels and sets the new labels for an issue.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/labels#set-labels-for-an-issue
+        """
 
         from typing import Union
 
@@ -2466,7 +3006,14 @@ class IssuesClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[list[Label], list[LabelType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/labels#add-labels-to-an-issue"""
+        """issues/add-labels
+
+        POST /repos/{owner}/{repo}/issues/{issue_number}/labels
+
+        Adds labels to an issue. If you provide an empty array of labels, all labels are removed from the issue.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/labels#add-labels-to-an-issue
+        """
 
         from typing import Union
 
@@ -2582,7 +3129,14 @@ class IssuesClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[list[Label], list[LabelType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/labels#add-labels-to-an-issue"""
+        """issues/add-labels
+
+        POST /repos/{owner}/{repo}/issues/{issue_number}/labels
+
+        Adds labels to an issue. If you provide an empty array of labels, all labels are removed from the issue.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/labels#add-labels-to-an-issue
+        """
 
         from typing import Union
 
@@ -2643,7 +3197,14 @@ class IssuesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/labels#remove-all-labels-from-an-issue"""
+        """issues/remove-all-labels
+
+        DELETE /repos/{owner}/{repo}/issues/{issue_number}/labels
+
+        Removes all labels from an issue.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/labels#remove-all-labels-from-an-issue
+        """
 
         from ..models import BasicError
 
@@ -2669,7 +3230,14 @@ class IssuesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/labels#remove-all-labels-from-an-issue"""
+        """issues/remove-all-labels
+
+        DELETE /repos/{owner}/{repo}/issues/{issue_number}/labels
+
+        Removes all labels from an issue.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/labels#remove-all-labels-from-an-issue
+        """
 
         from ..models import BasicError
 
@@ -2696,7 +3264,14 @@ class IssuesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Label], list[LabelType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/labels#remove-a-label-from-an-issue"""
+        """issues/remove-label
+
+        DELETE /repos/{owner}/{repo}/issues/{issue_number}/labels/{name}
+
+        Removes the specified label from the issue, and returns the remaining labels on the issue. This endpoint returns a `404 Not Found` status if the label does not exist.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/labels#remove-a-label-from-an-issue
+        """
 
         from ..models import BasicError, Label
 
@@ -2724,7 +3299,14 @@ class IssuesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Label], list[LabelType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/labels#remove-a-label-from-an-issue"""
+        """issues/remove-label
+
+        DELETE /repos/{owner}/{repo}/issues/{issue_number}/labels/{name}
+
+        Removes the specified label from the issue, and returns the remaining labels on the issue. This endpoint returns a `404 Not Found` status if the label does not exist.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/labels#remove-a-label-from-an-issue
+        """
 
         from ..models import BasicError, Label
 
@@ -2782,7 +3364,16 @@ class IssuesClient:
         ] = UNSET,
         **kwargs,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#lock-an-issue"""
+        """issues/lock
+
+        PUT /repos/{owner}/{repo}/issues/{issue_number}/lock
+
+        Users with push access can lock an issue or pull request's conversation.
+
+        Note that, if you choose not to pass any parameters, you'll need to set `Content-Length` to zero when calling out to this endpoint. For more information, see "[HTTP method](https://docs.github.com/enterprise-cloud@latest//rest/guides/getting-started-with-the-rest-api#http-method)."
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#lock-an-issue
+        """
 
         from typing import Union
 
@@ -2859,7 +3450,16 @@ class IssuesClient:
         ] = UNSET,
         **kwargs,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#lock-an-issue"""
+        """issues/lock
+
+        PUT /repos/{owner}/{repo}/issues/{issue_number}/lock
+
+        Users with push access can lock an issue or pull request's conversation.
+
+        Note that, if you choose not to pass any parameters, you'll need to set `Content-Length` to zero when calling out to this endpoint. For more information, see "[HTTP method](https://docs.github.com/enterprise-cloud@latest//rest/guides/getting-started-with-the-rest-api#http-method)."
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#lock-an-issue
+        """
 
         from typing import Union
 
@@ -2905,7 +3505,14 @@ class IssuesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#unlock-an-issue"""
+        """issues/unlock
+
+        DELETE /repos/{owner}/{repo}/issues/{issue_number}/lock
+
+        Users with push access can unlock an issue's conversation.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#unlock-an-issue
+        """
 
         from ..models import BasicError
 
@@ -2931,7 +3538,14 @@ class IssuesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#unlock-an-issue"""
+        """issues/unlock
+
+        DELETE /repos/{owner}/{repo}/issues/{issue_number}/lock
+
+        Users with push access can unlock an issue's conversation.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#unlock-an-issue
+        """
 
         from ..models import BasicError
 
@@ -2982,7 +3596,22 @@ class IssuesClient:
         data: Missing[ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBodyType] = UNSET,
         **kwargs,
     ) -> Response[Issue, IssueType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/sub-issues#remove-sub-issue"""
+        """issues/remove-sub-issue
+
+        DELETE /repos/{owner}/{repo}/issues/{issue_number}/sub_issue
+
+        You can use the REST API to remove a sub-issue from an issue.
+        Removing content too quickly using this endpoint may result in secondary rate limiting.
+        For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)"
+        and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/best-practices-for-using-the-rest-api)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass a specific media type.
+        - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
+        - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
+        - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/sub-issues#remove-sub-issue
+        """
 
         from ..models import (
             BasicError,
@@ -3050,7 +3679,22 @@ class IssuesClient:
         data: Missing[ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBodyType] = UNSET,
         **kwargs,
     ) -> Response[Issue, IssueType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/sub-issues#remove-sub-issue"""
+        """issues/remove-sub-issue
+
+        DELETE /repos/{owner}/{repo}/issues/{issue_number}/sub_issue
+
+        You can use the REST API to remove a sub-issue from an issue.
+        Removing content too quickly using this endpoint may result in secondary rate limiting.
+        For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)"
+        and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/best-practices-for-using-the-rest-api)."
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+        - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass a specific media type.
+        - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
+        - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
+        - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/sub-issues#remove-sub-issue
+        """
 
         from ..models import (
             BasicError,
@@ -3095,7 +3739,21 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Issue], list[IssueType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/sub-issues#list-sub-issues"""
+        """issues/list-sub-issues
+
+        GET /repos/{owner}/{repo}/issues/{issue_number}/sub_issues
+
+        You can use the REST API to list the sub-issues on an issue.
+
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+
+        - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
+        - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
+        - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
+        - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/sub-issues#list-sub-issues
+        """
 
         from ..models import BasicError, Issue
 
@@ -3130,7 +3788,21 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Issue], list[IssueType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/sub-issues#list-sub-issues"""
+        """issues/list-sub-issues
+
+        GET /repos/{owner}/{repo}/issues/{issue_number}/sub_issues
+
+        You can use the REST API to list the sub-issues on an issue.
+
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+
+        - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
+        - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
+        - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
+        - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/sub-issues#list-sub-issues
+        """
 
         from ..models import BasicError, Issue
 
@@ -3189,7 +3861,25 @@ class IssuesClient:
         data: Missing[ReposOwnerRepoIssuesIssueNumberSubIssuesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Issue, IssueType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/sub-issues#add-sub-issue"""
+        """issues/add-sub-issue
+
+        POST /repos/{owner}/{repo}/issues/{issue_number}/sub_issues
+
+        You can use the REST API to add sub-issues to issues.
+
+        Creating content too quickly using this endpoint may result in secondary rate limiting.
+        For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)"
+        and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/best-practices-for-using-the-rest-api)."
+
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+
+        - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
+        - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
+        - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
+        - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/sub-issues#add-sub-issue
+        """
 
         from ..models import (
             BasicError,
@@ -3261,7 +3951,25 @@ class IssuesClient:
         data: Missing[ReposOwnerRepoIssuesIssueNumberSubIssuesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Issue, IssueType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/sub-issues#add-sub-issue"""
+        """issues/add-sub-issue
+
+        POST /repos/{owner}/{repo}/issues/{issue_number}/sub_issues
+
+        You can use the REST API to add sub-issues to issues.
+
+        Creating content too quickly using this endpoint may result in secondary rate limiting.
+        For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)"
+        and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/best-practices-for-using-the-rest-api)."
+
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+
+        - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
+        - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
+        - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
+        - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/sub-issues#add-sub-issue
+        """
 
         from ..models import (
             BasicError,
@@ -3336,7 +4044,14 @@ class IssuesClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[Issue, IssueType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/sub-issues#reprioritize-sub-issue"""
+        """issues/reprioritize-sub-issue
+
+        PATCH /repos/{owner}/{repo}/issues/{issue_number}/sub_issues/priority
+
+        You can use the REST API to reprioritize a sub-issue to a different position in the parent list.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/sub-issues#reprioritize-sub-issue
+        """
 
         from ..models import (
             BasicError,
@@ -3412,7 +4127,14 @@ class IssuesClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[Issue, IssueType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/sub-issues#reprioritize-sub-issue"""
+        """issues/reprioritize-sub-issue
+
+        PATCH /repos/{owner}/{repo}/issues/{issue_number}/sub_issues/priority
+
+        You can use the REST API to reprioritize a sub-issue to a different position in the parent list.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/sub-issues#reprioritize-sub-issue
+        """
 
         from ..models import (
             BasicError,
@@ -3514,7 +4236,14 @@ class IssuesClient:
             ]
         ],
     ]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/timeline#list-timeline-events-for-an-issue"""
+        """issues/list-events-for-timeline
+
+        GET /repos/{owner}/{repo}/issues/{issue_number}/timeline
+
+        List all timeline events for an issue.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/timeline#list-timeline-events-for-an-issue
+        """
 
         from typing import Union
 
@@ -3653,7 +4382,14 @@ class IssuesClient:
             ]
         ],
     ]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/timeline#list-timeline-events-for-an-issue"""
+        """issues/list-events-for-timeline
+
+        GET /repos/{owner}/{repo}/issues/{issue_number}/timeline
+
+        List all timeline events for an issue.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/timeline#list-timeline-events-for-an-issue
+        """
 
         from typing import Union
 
@@ -3738,7 +4474,14 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Label], list[LabelType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/labels#list-labels-for-a-repository"""
+        """issues/list-labels-for-repo
+
+        GET /repos/{owner}/{repo}/labels
+
+        Lists all labels for a repository.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/labels#list-labels-for-a-repository
+        """
 
         from ..models import BasicError, Label
 
@@ -3771,7 +4514,14 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Label], list[LabelType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/labels#list-labels-for-a-repository"""
+        """issues/list-labels-for-repo
+
+        GET /repos/{owner}/{repo}/labels
+
+        Lists all labels for a repository.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/labels#list-labels-for-a-repository
+        """
 
         from ..models import BasicError, Label
 
@@ -3827,7 +4577,14 @@ class IssuesClient:
         data: Missing[ReposOwnerRepoLabelsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Label, LabelType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/labels#create-a-label"""
+        """issues/create-label
+
+        POST /repos/{owner}/{repo}/labels
+
+        Creates a label for the specified repository with the given name and color. The name and color parameters are required. The color must be a valid [hexadecimal color code](http://www.color-hex.com/).
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/labels#create-a-label
+        """
 
         from ..models import (
             BasicError,
@@ -3893,7 +4650,14 @@ class IssuesClient:
         data: Missing[ReposOwnerRepoLabelsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Label, LabelType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/labels#create-a-label"""
+        """issues/create-label
+
+        POST /repos/{owner}/{repo}/labels
+
+        Creates a label for the specified repository with the given name and color. The name and color parameters are required. The color must be a valid [hexadecimal color code](http://www.color-hex.com/).
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/labels#create-a-label
+        """
 
         from ..models import (
             BasicError,
@@ -3935,7 +4699,14 @@ class IssuesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Label, LabelType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/labels#get-a-label"""
+        """issues/get-label
+
+        GET /repos/{owner}/{repo}/labels/{name}
+
+        Gets a label using the given name.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/labels#get-a-label
+        """
 
         from ..models import BasicError, Label
 
@@ -3961,7 +4732,14 @@ class IssuesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Label, LabelType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/labels#get-a-label"""
+        """issues/get-label
+
+        GET /repos/{owner}/{repo}/labels/{name}
+
+        Gets a label using the given name.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/labels#get-a-label
+        """
 
         from ..models import BasicError, Label
 
@@ -3987,7 +4765,14 @@ class IssuesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/labels#delete-a-label"""
+        """issues/delete-label
+
+        DELETE /repos/{owner}/{repo}/labels/{name}
+
+        Deletes a label using the given label name.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/labels#delete-a-label
+        """
 
         url = f"/repos/{owner}/{repo}/labels/{name}"
 
@@ -4007,7 +4792,14 @@ class IssuesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/labels#delete-a-label"""
+        """issues/delete-label
+
+        DELETE /repos/{owner}/{repo}/labels/{name}
+
+        Deletes a label using the given label name.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/labels#delete-a-label
+        """
 
         url = f"/repos/{owner}/{repo}/labels/{name}"
 
@@ -4054,7 +4846,14 @@ class IssuesClient:
         data: Missing[ReposOwnerRepoLabelsNamePatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Label, LabelType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/labels#update-a-label"""
+        """issues/update-label
+
+        PATCH /repos/{owner}/{repo}/labels/{name}
+
+        Updates a label using the given label name.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/labels#update-a-label
+        """
 
         from ..models import Label, ReposOwnerRepoLabelsNamePatchBody
 
@@ -4114,7 +4913,14 @@ class IssuesClient:
         data: Missing[ReposOwnerRepoLabelsNamePatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Label, LabelType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/labels#update-a-label"""
+        """issues/update-label
+
+        PATCH /repos/{owner}/{repo}/labels/{name}
+
+        Updates a label using the given label name.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/labels#update-a-label
+        """
 
         from ..models import Label, ReposOwnerRepoLabelsNamePatchBody
 
@@ -4151,7 +4957,14 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Milestone], list[MilestoneType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/milestones#list-milestones"""
+        """issues/list-milestones
+
+        GET /repos/{owner}/{repo}/milestones
+
+        Lists milestones for a repository.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/milestones#list-milestones
+        """
 
         from ..models import BasicError, Milestone
 
@@ -4190,7 +5003,14 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Milestone], list[MilestoneType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/milestones#list-milestones"""
+        """issues/list-milestones
+
+        GET /repos/{owner}/{repo}/milestones
+
+        Lists milestones for a repository.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/milestones#list-milestones
+        """
 
         from ..models import BasicError, Milestone
 
@@ -4250,7 +5070,14 @@ class IssuesClient:
         data: Missing[ReposOwnerRepoMilestonesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Milestone, MilestoneType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/milestones#create-a-milestone"""
+        """issues/create-milestone
+
+        POST /repos/{owner}/{repo}/milestones
+
+        Creates a milestone.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/milestones#create-a-milestone
+        """
 
         from ..models import (
             BasicError,
@@ -4317,7 +5144,14 @@ class IssuesClient:
         data: Missing[ReposOwnerRepoMilestonesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Milestone, MilestoneType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/milestones#create-a-milestone"""
+        """issues/create-milestone
+
+        POST /repos/{owner}/{repo}/milestones
+
+        Creates a milestone.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/milestones#create-a-milestone
+        """
 
         from ..models import (
             BasicError,
@@ -4359,7 +5193,14 @@ class IssuesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Milestone, MilestoneType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/milestones#get-a-milestone"""
+        """issues/get-milestone
+
+        GET /repos/{owner}/{repo}/milestones/{milestone_number}
+
+        Gets a milestone using the given milestone number.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/milestones#get-a-milestone
+        """
 
         from ..models import BasicError, Milestone
 
@@ -4385,7 +5226,14 @@ class IssuesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Milestone, MilestoneType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/milestones#get-a-milestone"""
+        """issues/get-milestone
+
+        GET /repos/{owner}/{repo}/milestones/{milestone_number}
+
+        Gets a milestone using the given milestone number.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/milestones#get-a-milestone
+        """
 
         from ..models import BasicError, Milestone
 
@@ -4411,7 +5259,14 @@ class IssuesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/milestones#delete-a-milestone"""
+        """issues/delete-milestone
+
+        DELETE /repos/{owner}/{repo}/milestones/{milestone_number}
+
+        Deletes a milestone using the given milestone number.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/milestones#delete-a-milestone
+        """
 
         from ..models import BasicError
 
@@ -4436,7 +5291,14 @@ class IssuesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/milestones#delete-a-milestone"""
+        """issues/delete-milestone
+
+        DELETE /repos/{owner}/{repo}/milestones/{milestone_number}
+
+        Deletes a milestone using the given milestone number.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/milestones#delete-a-milestone
+        """
 
         from ..models import BasicError
 
@@ -4489,7 +5351,12 @@ class IssuesClient:
         data: Missing[ReposOwnerRepoMilestonesMilestoneNumberPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Milestone, MilestoneType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/milestones#update-a-milestone"""
+        """issues/update-milestone
+
+        PATCH /repos/{owner}/{repo}/milestones/{milestone_number}
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/milestones#update-a-milestone
+        """
 
         from ..models import Milestone, ReposOwnerRepoMilestonesMilestoneNumberPatchBody
 
@@ -4552,7 +5419,12 @@ class IssuesClient:
         data: Missing[ReposOwnerRepoMilestonesMilestoneNumberPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Milestone, MilestoneType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/milestones#update-a-milestone"""
+        """issues/update-milestone
+
+        PATCH /repos/{owner}/{repo}/milestones/{milestone_number}
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/milestones#update-a-milestone
+        """
 
         from ..models import Milestone, ReposOwnerRepoMilestonesMilestoneNumberPatchBody
 
@@ -4589,7 +5461,14 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Label], list[LabelType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/labels#list-labels-for-issues-in-a-milestone"""
+        """issues/list-labels-for-milestone
+
+        GET /repos/{owner}/{repo}/milestones/{milestone_number}/labels
+
+        Lists labels for issues in a milestone.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/labels#list-labels-for-issues-in-a-milestone
+        """
 
         from ..models import Label
 
@@ -4620,7 +5499,14 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Label], list[LabelType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/labels#list-labels-for-issues-in-a-milestone"""
+        """issues/list-labels-for-milestone
+
+        GET /repos/{owner}/{repo}/milestones/{milestone_number}/labels
+
+        Lists labels for issues in a milestone.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/labels#list-labels-for-issues-in-a-milestone
+        """
 
         from ..models import Label
 
@@ -4656,7 +5542,24 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Issue], list[IssueType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#list-user-account-issues-assigned-to-the-authenticated-user"""
+        """issues/list-for-authenticated-user
+
+        GET /user/issues
+
+        List issues across owned and member repositories assigned to the authenticated user.
+
+        > [!NOTE]
+        > GitHub's REST API considers every pull request an issue, but not every issue is a pull request. For this reason, "Issues" endpoints may return both issues and pull requests in the response. You can identify pull requests by the `pull_request` key. Be aware that the `id` of a pull request returned from "Issues" endpoints will be an _issue id_. To find out the pull request id, use the "[List pull requests](https://docs.github.com/enterprise-cloud@latest//rest/pulls/pulls#list-pull-requests)" endpoint.
+
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+
+        - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
+        - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
+        - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
+        - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#list-user-account-issues-assigned-to-the-authenticated-user
+        """
 
         from ..models import BasicError, Issue
 
@@ -4701,7 +5604,24 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[Issue], list[IssueType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#list-user-account-issues-assigned-to-the-authenticated-user"""
+        """issues/list-for-authenticated-user
+
+        GET /user/issues
+
+        List issues across owned and member repositories assigned to the authenticated user.
+
+        > [!NOTE]
+        > GitHub's REST API considers every pull request an issue, but not every issue is a pull request. For this reason, "Issues" endpoints may return both issues and pull requests in the response. You can identify pull requests by the `pull_request` key. Be aware that the `id` of a pull request returned from "Issues" endpoints will be an _issue id_. To find out the pull request id, use the "[List pull requests](https://docs.github.com/enterprise-cloud@latest//rest/pulls/pulls#list-pull-requests)" endpoint.
+
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+
+        - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
+        - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
+        - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
+        - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#list-user-account-issues-assigned-to-the-authenticated-user
+        """
 
         from ..models import BasicError, Issue
 

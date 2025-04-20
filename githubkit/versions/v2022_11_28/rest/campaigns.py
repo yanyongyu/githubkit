@@ -63,7 +63,18 @@ class CampaignsClient:
         sort: Missing[Literal["created", "updated", "ends_at", "published"]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[CampaignSummary], list[CampaignSummaryType]]:
-        """See also: https://docs.github.com/rest/campaigns/campaigns#list-campaigns-for-an-organization"""
+        """campaigns/list-org-campaigns
+
+        GET /orgs/{org}/campaigns
+
+        Lists campaigns in an organization.
+
+        The authenticated user must be an owner or security manager for the organization to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/campaigns/campaigns#list-campaigns-for-an-organization
+        """
 
         from ..models import (
             BasicError,
@@ -106,7 +117,18 @@ class CampaignsClient:
         sort: Missing[Literal["created", "updated", "ends_at", "published"]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[CampaignSummary], list[CampaignSummaryType]]:
-        """See also: https://docs.github.com/rest/campaigns/campaigns#list-campaigns-for-an-organization"""
+        """campaigns/list-org-campaigns
+
+        GET /orgs/{org}/campaigns
+
+        Lists campaigns in an organization.
+
+        The authenticated user must be an owner or security manager for the organization to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/campaigns/campaigns#list-campaigns-for-an-organization
+        """
 
         from ..models import (
             BasicError,
@@ -174,7 +196,21 @@ class CampaignsClient:
         data: Missing[OrgsOrgCampaignsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[CampaignSummary, CampaignSummaryType]:
-        """See also: https://docs.github.com/rest/campaigns/campaigns#create-a-campaign-for-an-organization"""
+        """campaigns/create-campaign
+
+        POST /orgs/{org}/campaigns
+
+        Create a campaign for an organization.
+
+        The authenticated user must be an owner or security manager for the organization to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint.
+
+        Fine-grained tokens must have the "Code scanning alerts" repository permissions (read) on all repositories included
+        in the campaign.
+
+        See also: https://docs.github.com/rest/campaigns/campaigns#create-a-campaign-for-an-organization
+        """
 
         from ..models import (
             BasicError,
@@ -246,7 +282,21 @@ class CampaignsClient:
         data: Missing[OrgsOrgCampaignsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[CampaignSummary, CampaignSummaryType]:
-        """See also: https://docs.github.com/rest/campaigns/campaigns#create-a-campaign-for-an-organization"""
+        """campaigns/create-campaign
+
+        POST /orgs/{org}/campaigns
+
+        Create a campaign for an organization.
+
+        The authenticated user must be an owner or security manager for the organization to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint.
+
+        Fine-grained tokens must have the "Code scanning alerts" repository permissions (read) on all repositories included
+        in the campaign.
+
+        See also: https://docs.github.com/rest/campaigns/campaigns#create-a-campaign-for-an-organization
+        """
 
         from ..models import (
             BasicError,
@@ -289,7 +339,18 @@ class CampaignsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CampaignSummary, CampaignSummaryType]:
-        """See also: https://docs.github.com/rest/campaigns/campaigns#get-a-campaign-for-an-organization"""
+        """campaigns/get-campaign-summary
+
+        GET /orgs/{org}/campaigns/{campaign_number}
+
+        Gets a campaign for an organization.
+
+        The authenticated user must be an owner or security manager for the organization to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/campaigns/campaigns#get-a-campaign-for-an-organization
+        """
 
         from ..models import (
             BasicError,
@@ -320,7 +381,18 @@ class CampaignsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CampaignSummary, CampaignSummaryType]:
-        """See also: https://docs.github.com/rest/campaigns/campaigns#get-a-campaign-for-an-organization"""
+        """campaigns/get-campaign-summary
+
+        GET /orgs/{org}/campaigns/{campaign_number}
+
+        Gets a campaign for an organization.
+
+        The authenticated user must be an owner or security manager for the organization to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/campaigns/campaigns#get-a-campaign-for-an-organization
+        """
 
         from ..models import (
             BasicError,
@@ -351,7 +423,18 @@ class CampaignsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/campaigns/campaigns#delete-a-campaign-for-an-organization"""
+        """campaigns/delete-campaign
+
+        DELETE /orgs/{org}/campaigns/{campaign_number}
+
+        Deletes a campaign in an organization.
+
+        The authenticated user must be an owner or security manager for the organization to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/campaigns/campaigns#delete-a-campaign-for-an-organization
+        """
 
         from ..models import (
             BasicError,
@@ -379,7 +462,18 @@ class CampaignsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/campaigns/campaigns#delete-a-campaign-for-an-organization"""
+        """campaigns/delete-campaign
+
+        DELETE /orgs/{org}/campaigns/{campaign_number}
+
+        Deletes a campaign in an organization.
+
+        The authenticated user must be an owner or security manager for the organization to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/campaigns/campaigns#delete-a-campaign-for-an-organization
+        """
 
         from ..models import (
             BasicError,
@@ -436,7 +530,18 @@ class CampaignsClient:
         data: Missing[OrgsOrgCampaignsCampaignNumberPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[CampaignSummary, CampaignSummaryType]:
-        """See also: https://docs.github.com/rest/campaigns/campaigns#update-a-campaign"""
+        """campaigns/update-campaign
+
+        PATCH /orgs/{org}/campaigns/{campaign_number}
+
+        Updates a campaign in an organization.
+
+        The authenticated user must be an owner or security manager for the organization to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/campaigns/campaigns#update-a-campaign
+        """
 
         from ..models import (
             BasicError,
@@ -508,7 +613,18 @@ class CampaignsClient:
         data: Missing[OrgsOrgCampaignsCampaignNumberPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[CampaignSummary, CampaignSummaryType]:
-        """See also: https://docs.github.com/rest/campaigns/campaigns#update-a-campaign"""
+        """campaigns/update-campaign
+
+        PATCH /orgs/{org}/campaigns/{campaign_number}
+
+        Updates a campaign in an organization.
+
+        The authenticated user must be an owner or security manager for the organization to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/campaigns/campaigns#update-a-campaign
+        """
 
         from ..models import (
             BasicError,

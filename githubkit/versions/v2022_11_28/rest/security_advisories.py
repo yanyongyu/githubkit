@@ -107,7 +107,16 @@ class SecurityAdvisoriesClient:
         ] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[GlobalAdvisory], list[GlobalAdvisoryType]]:
-        """See also: https://docs.github.com/rest/security-advisories/global-advisories#list-global-security-advisories"""
+        """security-advisories/list-global-advisories
+
+        GET /advisories
+
+        Lists all global security advisories that match the specified parameters. If no other parameters are defined, the request will return only GitHub-reviewed advisories that are not malware.
+
+        By default, all responses will exclude advisories for malware, because malware are not standard vulnerabilities. To list advisories for malware, you must include the `type` parameter in your request, with the value `malware`. For more information about the different types of security advisories, see "[About the GitHub Advisory database](https://docs.github.com/code-security/security-advisories/global-security-advisories/about-the-github-advisory-database#about-types-of-security-advisories)."
+
+        See also: https://docs.github.com/rest/security-advisories/global-advisories#list-global-security-advisories
+        """
 
         from ..models import BasicError, GlobalAdvisory, ValidationErrorSimple
 
@@ -191,7 +200,16 @@ class SecurityAdvisoriesClient:
         ] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[GlobalAdvisory], list[GlobalAdvisoryType]]:
-        """See also: https://docs.github.com/rest/security-advisories/global-advisories#list-global-security-advisories"""
+        """security-advisories/list-global-advisories
+
+        GET /advisories
+
+        Lists all global security advisories that match the specified parameters. If no other parameters are defined, the request will return only GitHub-reviewed advisories that are not malware.
+
+        By default, all responses will exclude advisories for malware, because malware are not standard vulnerabilities. To list advisories for malware, you must include the `type` parameter in your request, with the value `malware`. For more information about the different types of security advisories, see "[About the GitHub Advisory database](https://docs.github.com/code-security/security-advisories/global-security-advisories/about-the-github-advisory-database#about-types-of-security-advisories)."
+
+        See also: https://docs.github.com/rest/security-advisories/global-advisories#list-global-security-advisories
+        """
 
         from ..models import BasicError, GlobalAdvisory, ValidationErrorSimple
 
@@ -238,7 +256,14 @@ class SecurityAdvisoriesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[GlobalAdvisory, GlobalAdvisoryType]:
-        """See also: https://docs.github.com/rest/security-advisories/global-advisories#get-a-global-security-advisory"""
+        """security-advisories/get-global-advisory
+
+        GET /advisories/{ghsa_id}
+
+        Gets a global security advisory using its GitHub Security Advisory (GHSA) identifier.
+
+        See also: https://docs.github.com/rest/security-advisories/global-advisories#get-a-global-security-advisory
+        """
 
         from ..models import BasicError, GlobalAdvisory
 
@@ -262,7 +287,14 @@ class SecurityAdvisoriesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[GlobalAdvisory, GlobalAdvisoryType]:
-        """See also: https://docs.github.com/rest/security-advisories/global-advisories#get-a-global-security-advisory"""
+        """security-advisories/get-global-advisory
+
+        GET /advisories/{ghsa_id}
+
+        Gets a global security advisory using its GitHub Security Advisory (GHSA) identifier.
+
+        See also: https://docs.github.com/rest/security-advisories/global-advisories#get-a-global-security-advisory
+        """
 
         from ..models import BasicError, GlobalAdvisory
 
@@ -292,7 +324,18 @@ class SecurityAdvisoriesClient:
         state: Missing[Literal["triage", "draft", "published", "closed"]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[RepositoryAdvisory], list[RepositoryAdvisoryType]]:
-        """See also: https://docs.github.com/rest/security-advisories/repository-advisories#list-repository-security-advisories-for-an-organization"""
+        """security-advisories/list-org-repository-advisories
+
+        GET /orgs/{org}/security-advisories
+
+        Lists repository security advisories for an organization.
+
+        The authenticated user must be an owner or security manager for the organization to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` or `repository_advisories:write` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/security-advisories/repository-advisories#list-repository-security-advisories-for-an-organization
+        """
 
         from ..models import BasicError, RepositoryAdvisory
 
@@ -333,7 +376,18 @@ class SecurityAdvisoriesClient:
         state: Missing[Literal["triage", "draft", "published", "closed"]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[RepositoryAdvisory], list[RepositoryAdvisoryType]]:
-        """See also: https://docs.github.com/rest/security-advisories/repository-advisories#list-repository-security-advisories-for-an-organization"""
+        """security-advisories/list-org-repository-advisories
+
+        GET /orgs/{org}/security-advisories
+
+        Lists repository security advisories for an organization.
+
+        The authenticated user must be an owner or security manager for the organization to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` or `repository_advisories:write` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/security-advisories/repository-advisories#list-repository-security-advisories-for-an-organization
+        """
 
         from ..models import BasicError, RepositoryAdvisory
 
@@ -375,7 +429,18 @@ class SecurityAdvisoriesClient:
         state: Missing[Literal["triage", "draft", "published", "closed"]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[RepositoryAdvisory], list[RepositoryAdvisoryType]]:
-        """See also: https://docs.github.com/rest/security-advisories/repository-advisories#list-repository-security-advisories"""
+        """security-advisories/list-repository-advisories
+
+        GET /repos/{owner}/{repo}/security-advisories
+
+        Lists security advisories in a repository.
+
+        The authenticated user can access unpublished security advisories from a repository if they are a security manager or administrator of that repository, or if they are a collaborator on any security advisory.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` or `repository_advisories:read` scope to to get a published security advisory in a private repository, or any unpublished security advisory that the authenticated user has access to.
+
+        See also: https://docs.github.com/rest/security-advisories/repository-advisories#list-repository-security-advisories
+        """
 
         from ..models import BasicError, RepositoryAdvisory
 
@@ -417,7 +482,18 @@ class SecurityAdvisoriesClient:
         state: Missing[Literal["triage", "draft", "published", "closed"]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[RepositoryAdvisory], list[RepositoryAdvisoryType]]:
-        """See also: https://docs.github.com/rest/security-advisories/repository-advisories#list-repository-security-advisories"""
+        """security-advisories/list-repository-advisories
+
+        GET /repos/{owner}/{repo}/security-advisories
+
+        Lists security advisories in a repository.
+
+        The authenticated user can access unpublished security advisories from a repository if they are a security manager or administrator of that repository, or if they are a collaborator on any security advisory.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` or `repository_advisories:read` scope to to get a published security advisory in a private repository, or any unpublished security advisory that the authenticated user has access to.
+
+        See also: https://docs.github.com/rest/security-advisories/repository-advisories#list-repository-security-advisories
+        """
 
         from ..models import BasicError, RepositoryAdvisory
 
@@ -488,7 +564,18 @@ class SecurityAdvisoriesClient:
         data: Missing[RepositoryAdvisoryCreateType] = UNSET,
         **kwargs,
     ) -> Response[RepositoryAdvisory, RepositoryAdvisoryType]:
-        """See also: https://docs.github.com/rest/security-advisories/repository-advisories#create-a-repository-security-advisory"""
+        """security-advisories/create-repository-advisory
+
+        POST /repos/{owner}/{repo}/security-advisories
+
+        Creates a new repository security advisory.
+
+        In order to create a draft repository security advisory, the authenticated user must be a security manager or administrator of that repository.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` or `repository_advisories:write` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/security-advisories/repository-advisories#create-a-repository-security-advisory
+        """
 
         from ..models import (
             BasicError,
@@ -565,7 +652,18 @@ class SecurityAdvisoriesClient:
         data: Missing[RepositoryAdvisoryCreateType] = UNSET,
         **kwargs,
     ) -> Response[RepositoryAdvisory, RepositoryAdvisoryType]:
-        """See also: https://docs.github.com/rest/security-advisories/repository-advisories#create-a-repository-security-advisory"""
+        """security-advisories/create-repository-advisory
+
+        POST /repos/{owner}/{repo}/security-advisories
+
+        Creates a new repository security advisory.
+
+        In order to create a draft repository security advisory, the authenticated user must be a security manager or administrator of that repository.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` or `repository_advisories:write` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/security-advisories/repository-advisories#create-a-repository-security-advisory
+        """
 
         from ..models import (
             BasicError,
@@ -642,7 +740,15 @@ class SecurityAdvisoriesClient:
         data: Missing[PrivateVulnerabilityReportCreateType] = UNSET,
         **kwargs,
     ) -> Response[RepositoryAdvisory, RepositoryAdvisoryType]:
-        """See also: https://docs.github.com/rest/security-advisories/repository-advisories#privately-report-a-security-vulnerability"""
+        """security-advisories/create-private-vulnerability-report
+
+        POST /repos/{owner}/{repo}/security-advisories/reports
+
+        Report a security vulnerability to the maintainers of the repository.
+        See "[Privately reporting a security vulnerability](https://docs.github.com/code-security/security-advisories/guidance-on-reporting-and-writing/privately-reporting-a-security-vulnerability)" for more information about private vulnerability reporting.
+
+        See also: https://docs.github.com/rest/security-advisories/repository-advisories#privately-report-a-security-vulnerability
+        """
 
         from ..models import (
             BasicError,
@@ -719,7 +825,15 @@ class SecurityAdvisoriesClient:
         data: Missing[PrivateVulnerabilityReportCreateType] = UNSET,
         **kwargs,
     ) -> Response[RepositoryAdvisory, RepositoryAdvisoryType]:
-        """See also: https://docs.github.com/rest/security-advisories/repository-advisories#privately-report-a-security-vulnerability"""
+        """security-advisories/create-private-vulnerability-report
+
+        POST /repos/{owner}/{repo}/security-advisories/reports
+
+        Report a security vulnerability to the maintainers of the repository.
+        See "[Privately reporting a security vulnerability](https://docs.github.com/code-security/security-advisories/guidance-on-reporting-and-writing/privately-reporting-a-security-vulnerability)" for more information about private vulnerability reporting.
+
+        See also: https://docs.github.com/rest/security-advisories/repository-advisories#privately-report-a-security-vulnerability
+        """
 
         from ..models import (
             BasicError,
@@ -762,7 +876,21 @@ class SecurityAdvisoriesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[RepositoryAdvisory, RepositoryAdvisoryType]:
-        """See also: https://docs.github.com/rest/security-advisories/repository-advisories#get-a-repository-security-advisory"""
+        """security-advisories/get-repository-advisory
+
+        GET /repos/{owner}/{repo}/security-advisories/{ghsa_id}
+
+        Get a repository security advisory using its GitHub Security Advisory (GHSA) identifier.
+
+        Anyone can access any published security advisory on a public repository.
+
+        The authenticated user can access an unpublished security advisory from a repository if they are a security manager or administrator of that repository, or if they are a
+        collaborator on the security advisory.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` or `repository_advisories:read` scope to to get a published security advisory in a private repository, or any unpublished security advisory that the authenticated user has access to.
+
+        See also: https://docs.github.com/rest/security-advisories/repository-advisories#get-a-repository-security-advisory
+        """
 
         from ..models import BasicError, RepositoryAdvisory
 
@@ -789,7 +917,21 @@ class SecurityAdvisoriesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[RepositoryAdvisory, RepositoryAdvisoryType]:
-        """See also: https://docs.github.com/rest/security-advisories/repository-advisories#get-a-repository-security-advisory"""
+        """security-advisories/get-repository-advisory
+
+        GET /repos/{owner}/{repo}/security-advisories/{ghsa_id}
+
+        Get a repository security advisory using its GitHub Security Advisory (GHSA) identifier.
+
+        Anyone can access any published security advisory on a public repository.
+
+        The authenticated user can access an unpublished security advisory from a repository if they are a security manager or administrator of that repository, or if they are a
+        collaborator on the security advisory.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` or `repository_advisories:read` scope to to get a published security advisory in a private repository, or any unpublished security advisory that the authenticated user has access to.
+
+        See also: https://docs.github.com/rest/security-advisories/repository-advisories#get-a-repository-security-advisory
+        """
 
         from ..models import BasicError, RepositoryAdvisory
 
@@ -857,7 +999,19 @@ class SecurityAdvisoriesClient:
         data: Missing[RepositoryAdvisoryUpdateType] = UNSET,
         **kwargs,
     ) -> Response[RepositoryAdvisory, RepositoryAdvisoryType]:
-        """See also: https://docs.github.com/rest/security-advisories/repository-advisories#update-a-repository-security-advisory"""
+        """security-advisories/update-repository-advisory
+
+        PATCH /repos/{owner}/{repo}/security-advisories/{ghsa_id}
+
+        Update a repository security advisory using its GitHub Security Advisory (GHSA) identifier.
+
+        In order to update any security advisory, the authenticated user must be a security manager or administrator of that repository,
+        or a collaborator on the repository security advisory.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` or `repository_advisories:write` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/security-advisories/repository-advisories#update-a-repository-security-advisory
+        """
 
         from ..models import (
             BasicError,
@@ -941,7 +1095,19 @@ class SecurityAdvisoriesClient:
         data: Missing[RepositoryAdvisoryUpdateType] = UNSET,
         **kwargs,
     ) -> Response[RepositoryAdvisory, RepositoryAdvisoryType]:
-        """See also: https://docs.github.com/rest/security-advisories/repository-advisories#update-a-repository-security-advisory"""
+        """security-advisories/update-repository-advisory
+
+        PATCH /repos/{owner}/{repo}/security-advisories/{ghsa_id}
+
+        Update a repository security advisory using its GitHub Security Advisory (GHSA) identifier.
+
+        In order to update any security advisory, the authenticated user must be a security manager or administrator of that repository,
+        or a collaborator on the repository security advisory.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` or `repository_advisories:write` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/security-advisories/repository-advisories#update-a-repository-security-advisory
+        """
 
         from ..models import (
             BasicError,
@@ -987,7 +1153,20 @@ class SecurityAdvisoriesClient:
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
     ]:
-        """See also: https://docs.github.com/rest/security-advisories/repository-advisories#request-a-cve-for-a-repository-security-advisory"""
+        """security-advisories/create-repository-advisory-cve-request
+
+        POST /repos/{owner}/{repo}/security-advisories/{ghsa_id}/cve
+
+        If you want a CVE identification number for the security vulnerability in your project, and don't already have one, you can request a CVE identification number from GitHub. For more information see "[Requesting a CVE identification number](https://docs.github.com/code-security/security-advisories/repository-security-advisories/publishing-a-repository-security-advisory#requesting-a-cve-identification-number-optional)."
+
+        You may request a CVE for public repositories, but cannot do so for private repositories.
+
+        In order to request a CVE for a repository security advisory, the authenticated user must be a security manager or administrator of that repository.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` or `repository_advisories:write` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/security-advisories/repository-advisories#request-a-cve-for-a-repository-security-advisory
+        """
 
         from ..models import (
             AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
@@ -1023,7 +1202,20 @@ class SecurityAdvisoriesClient:
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
     ]:
-        """See also: https://docs.github.com/rest/security-advisories/repository-advisories#request-a-cve-for-a-repository-security-advisory"""
+        """security-advisories/create-repository-advisory-cve-request
+
+        POST /repos/{owner}/{repo}/security-advisories/{ghsa_id}/cve
+
+        If you want a CVE identification number for the security vulnerability in your project, and don't already have one, you can request a CVE identification number from GitHub. For more information see "[Requesting a CVE identification number](https://docs.github.com/code-security/security-advisories/repository-security-advisories/publishing-a-repository-security-advisory#requesting-a-cve-identification-number-optional)."
+
+        You may request a CVE for public repositories, but cannot do so for private repositories.
+
+        In order to request a CVE for a repository security advisory, the authenticated user must be a security manager or administrator of that repository.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` or `repository_advisories:write` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/security-advisories/repository-advisories#request-a-cve-for-a-repository-security-advisory
+        """
 
         from ..models import (
             AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
@@ -1056,7 +1248,17 @@ class SecurityAdvisoriesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[FullRepository, FullRepositoryType]:
-        """See also: https://docs.github.com/rest/security-advisories/repository-advisories#create-a-temporary-private-fork"""
+        """security-advisories/create-fork
+
+        POST /repos/{owner}/{repo}/security-advisories/{ghsa_id}/forks
+
+        Create a temporary private fork to collaborate on fixing a security vulnerability in your repository.
+
+        > [!NOTE]
+        > Forking a repository happens asynchronously. You may have to wait up to 5 minutes before you can access the fork.
+
+        See also: https://docs.github.com/rest/security-advisories/repository-advisories#create-a-temporary-private-fork
+        """
 
         from ..models import BasicError, FullRepository, ValidationError
 
@@ -1085,7 +1287,17 @@ class SecurityAdvisoriesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[FullRepository, FullRepositoryType]:
-        """See also: https://docs.github.com/rest/security-advisories/repository-advisories#create-a-temporary-private-fork"""
+        """security-advisories/create-fork
+
+        POST /repos/{owner}/{repo}/security-advisories/{ghsa_id}/forks
+
+        Create a temporary private fork to collaborate on fixing a security vulnerability in your repository.
+
+        > [!NOTE]
+        > Forking a repository happens asynchronously. You may have to wait up to 5 minutes before you can access the fork.
+
+        See also: https://docs.github.com/rest/security-advisories/repository-advisories#create-a-temporary-private-fork
+        """
 
         from ..models import BasicError, FullRepository, ValidationError
 

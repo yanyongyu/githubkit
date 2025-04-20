@@ -79,7 +79,20 @@ class SecretScanningClient:
     ) -> Response[
         list[OrganizationSecretScanningAlert], list[OrganizationSecretScanningAlertType]
     ]:
-        """See also: https://docs.github.com/rest/secret-scanning/secret-scanning#list-secret-scanning-alerts-for-an-enterprise"""
+        """secret-scanning/list-alerts-for-enterprise
+
+        GET /enterprises/{enterprise}/secret-scanning/alerts
+
+        Lists secret scanning alerts for eligible repositories in an enterprise, from newest to oldest.
+
+        Alerts are only returned for organizations in the enterprise for which the authenticated user is an organization owner or a [security manager](https://docs.github.com/organizations/managing-peoples-access-to-your-organization-with-roles/managing-security-managers-in-your-organization).
+
+        The authenticated user must be a member of the enterprise in order to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope or `security_events` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/secret-scanning/secret-scanning#list-secret-scanning-alerts-for-an-enterprise
+        """
 
         from ..models import (
             BasicError,
@@ -136,7 +149,20 @@ class SecretScanningClient:
     ) -> Response[
         list[OrganizationSecretScanningAlert], list[OrganizationSecretScanningAlertType]
     ]:
-        """See also: https://docs.github.com/rest/secret-scanning/secret-scanning#list-secret-scanning-alerts-for-an-enterprise"""
+        """secret-scanning/list-alerts-for-enterprise
+
+        GET /enterprises/{enterprise}/secret-scanning/alerts
+
+        Lists secret scanning alerts for eligible repositories in an enterprise, from newest to oldest.
+
+        Alerts are only returned for organizations in the enterprise for which the authenticated user is an organization owner or a [security manager](https://docs.github.com/organizations/managing-peoples-access-to-your-organization-with-roles/managing-security-managers-in-your-organization).
+
+        The authenticated user must be a member of the enterprise in order to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope or `security_events` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/secret-scanning/secret-scanning#list-secret-scanning-alerts-for-an-enterprise
+        """
 
         from ..models import (
             BasicError,
@@ -194,7 +220,18 @@ class SecretScanningClient:
     ) -> Response[
         list[OrganizationSecretScanningAlert], list[OrganizationSecretScanningAlertType]
     ]:
-        """See also: https://docs.github.com/rest/secret-scanning/secret-scanning#list-secret-scanning-alerts-for-an-organization"""
+        """secret-scanning/list-alerts-for-org
+
+        GET /orgs/{org}/secret-scanning/alerts
+
+        Lists secret scanning alerts for eligible repositories in an organization, from newest to oldest.
+
+        The authenticated user must be an administrator or security manager for the organization to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` or `security_events` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
+
+        See also: https://docs.github.com/rest/secret-scanning/secret-scanning#list-secret-scanning-alerts-for-an-organization
+        """
 
         from ..models import (
             BasicError,
@@ -253,7 +290,18 @@ class SecretScanningClient:
     ) -> Response[
         list[OrganizationSecretScanningAlert], list[OrganizationSecretScanningAlertType]
     ]:
-        """See also: https://docs.github.com/rest/secret-scanning/secret-scanning#list-secret-scanning-alerts-for-an-organization"""
+        """secret-scanning/list-alerts-for-org
+
+        GET /orgs/{org}/secret-scanning/alerts
+
+        Lists secret scanning alerts for eligible repositories in an organization, from newest to oldest.
+
+        The authenticated user must be an administrator or security manager for the organization to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` or `security_events` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
+
+        See also: https://docs.github.com/rest/secret-scanning/secret-scanning#list-secret-scanning-alerts-for-an-organization
+        """
 
         from ..models import (
             BasicError,
@@ -311,7 +359,18 @@ class SecretScanningClient:
         is_multi_repo: Missing[bool] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[SecretScanningAlert], list[SecretScanningAlertType]]:
-        """See also: https://docs.github.com/rest/secret-scanning/secret-scanning#list-secret-scanning-alerts-for-a-repository"""
+        """secret-scanning/list-alerts-for-repo
+
+        GET /repos/{owner}/{repo}/secret-scanning/alerts
+
+        Lists secret scanning alerts for an eligible repository, from newest to oldest.
+
+        The authenticated user must be an administrator for the repository or for the organization that owns the repository to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` or `security_events` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
+
+        See also: https://docs.github.com/rest/secret-scanning/secret-scanning#list-secret-scanning-alerts-for-a-repository
+        """
 
         from ..models import (
             EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
@@ -367,7 +426,18 @@ class SecretScanningClient:
         is_multi_repo: Missing[bool] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[SecretScanningAlert], list[SecretScanningAlertType]]:
-        """See also: https://docs.github.com/rest/secret-scanning/secret-scanning#list-secret-scanning-alerts-for-a-repository"""
+        """secret-scanning/list-alerts-for-repo
+
+        GET /repos/{owner}/{repo}/secret-scanning/alerts
+
+        Lists secret scanning alerts for an eligible repository, from newest to oldest.
+
+        The authenticated user must be an administrator for the repository or for the organization that owns the repository to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` or `security_events` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
+
+        See also: https://docs.github.com/rest/secret-scanning/secret-scanning#list-secret-scanning-alerts-for-a-repository
+        """
 
         from ..models import (
             EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
@@ -412,7 +482,18 @@ class SecretScanningClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[SecretScanningAlert, SecretScanningAlertType]:
-        """See also: https://docs.github.com/rest/secret-scanning/secret-scanning#get-a-secret-scanning-alert"""
+        """secret-scanning/get-alert
+
+        GET /repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}
+
+        Gets a single secret scanning alert detected in an eligible repository.
+
+        The authenticated user must be an administrator for the repository or for the organization that owns the repository to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` or `security_events` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
+
+        See also: https://docs.github.com/rest/secret-scanning/secret-scanning#get-a-secret-scanning-alert
+        """
 
         from ..models import (
             EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
@@ -441,7 +522,18 @@ class SecretScanningClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[SecretScanningAlert, SecretScanningAlertType]:
-        """See also: https://docs.github.com/rest/secret-scanning/secret-scanning#get-a-secret-scanning-alert"""
+        """secret-scanning/get-alert
+
+        GET /repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}
+
+        Gets a single secret scanning alert detected in an eligible repository.
+
+        The authenticated user must be an administrator for the repository or for the organization that owns the repository to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` or `security_events` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
+
+        See also: https://docs.github.com/rest/secret-scanning/secret-scanning#get-a-secret-scanning-alert
+        """
 
         from ..models import (
             EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
@@ -503,7 +595,18 @@ class SecretScanningClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[SecretScanningAlert, SecretScanningAlertType]:
-        """See also: https://docs.github.com/rest/secret-scanning/secret-scanning#update-a-secret-scanning-alert"""
+        """secret-scanning/update-alert
+
+        PATCH /repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}
+
+        Updates the status of a secret scanning alert in an eligible repository.
+
+        The authenticated user must be an administrator for the repository or for the organization that owns the repository to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` or `security_events` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
+
+        See also: https://docs.github.com/rest/secret-scanning/secret-scanning#update-a-secret-scanning-alert
+        """
 
         from ..models import (
             EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
@@ -578,7 +681,18 @@ class SecretScanningClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[SecretScanningAlert, SecretScanningAlertType]:
-        """See also: https://docs.github.com/rest/secret-scanning/secret-scanning#update-a-secret-scanning-alert"""
+        """secret-scanning/update-alert
+
+        PATCH /repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}
+
+        Updates the status of a secret scanning alert in an eligible repository.
+
+        The authenticated user must be an administrator for the repository or for the organization that owns the repository to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` or `security_events` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
+
+        See also: https://docs.github.com/rest/secret-scanning/secret-scanning#update-a-secret-scanning-alert
+        """
 
         from ..models import (
             EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
@@ -622,7 +736,18 @@ class SecretScanningClient:
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[SecretScanningLocation], list[SecretScanningLocationType]]:
-        """See also: https://docs.github.com/rest/secret-scanning/secret-scanning#list-locations-for-a-secret-scanning-alert"""
+        """secret-scanning/list-locations-for-alert
+
+        GET /repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}/locations
+
+        Lists all locations for a given secret scanning alert for an eligible repository.
+
+        The authenticated user must be an administrator for the repository or for the organization that owns the repository to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` or `security_events` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
+
+        See also: https://docs.github.com/rest/secret-scanning/secret-scanning#list-locations-for-a-secret-scanning-alert
+        """
 
         from ..models import (
             EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
@@ -659,7 +784,18 @@ class SecretScanningClient:
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[SecretScanningLocation], list[SecretScanningLocationType]]:
-        """See also: https://docs.github.com/rest/secret-scanning/secret-scanning#list-locations-for-a-secret-scanning-alert"""
+        """secret-scanning/list-locations-for-alert
+
+        GET /repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}/locations
+
+        Lists all locations for a given secret scanning alert for an eligible repository.
+
+        The authenticated user must be an administrator for the repository or for the organization that owns the repository to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` or `security_events` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
+
+        See also: https://docs.github.com/rest/secret-scanning/secret-scanning#list-locations-for-a-secret-scanning-alert
+        """
 
         from ..models import (
             EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
@@ -725,7 +861,18 @@ class SecretScanningClient:
     ) -> Response[
         SecretScanningPushProtectionBypass, SecretScanningPushProtectionBypassType
     ]:
-        """See also: https://docs.github.com/rest/secret-scanning/secret-scanning#create-a-push-protection-bypass"""
+        """secret-scanning/create-push-protection-bypass
+
+        POST /repos/{owner}/{repo}/secret-scanning/push-protection-bypasses
+
+        Creates a bypass for a previously push protected secret.
+
+        The authenticated user must be the original author of the committed secret.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/secret-scanning/secret-scanning#create-a-push-protection-bypass
+        """
 
         from ..models import (
             EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
@@ -798,7 +945,18 @@ class SecretScanningClient:
     ) -> Response[
         SecretScanningPushProtectionBypass, SecretScanningPushProtectionBypassType
     ]:
-        """See also: https://docs.github.com/rest/secret-scanning/secret-scanning#create-a-push-protection-bypass"""
+        """secret-scanning/create-push-protection-bypass
+
+        POST /repos/{owner}/{repo}/secret-scanning/push-protection-bypasses
+
+        Creates a bypass for a previously push protected secret.
+
+        The authenticated user must be the original author of the committed secret.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/secret-scanning/secret-scanning#create-a-push-protection-bypass
+        """
 
         from ..models import (
             EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
@@ -839,7 +997,16 @@ class SecretScanningClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[SecretScanningScanHistory, SecretScanningScanHistoryType]:
-        """See also: https://docs.github.com/rest/secret-scanning/secret-scanning#get-secret-scanning-scan-history-for-a-repository"""
+        """secret-scanning/get-scan-history
+
+        GET /repos/{owner}/{repo}/secret-scanning/scan-history
+
+        Lists the latest default incremental and backfill scans by type for a repository. Scans from Copilot Secret Scanning are not included.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` or `security_events` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
+
+        See also: https://docs.github.com/rest/secret-scanning/secret-scanning#get-secret-scanning-scan-history-for-a-repository
+        """
 
         from ..models import (
             EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
@@ -867,7 +1034,16 @@ class SecretScanningClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[SecretScanningScanHistory, SecretScanningScanHistoryType]:
-        """See also: https://docs.github.com/rest/secret-scanning/secret-scanning#get-secret-scanning-scan-history-for-a-repository"""
+        """secret-scanning/get-scan-history
+
+        GET /repos/{owner}/{repo}/secret-scanning/scan-history
+
+        Lists the latest default incremental and backfill scans by type for a repository. Scans from Copilot Secret Scanning are not included.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` or `security_events` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
+
+        See also: https://docs.github.com/rest/secret-scanning/secret-scanning#get-secret-scanning-scan-history-for-a-repository
+        """
 
         from ..models import (
             EnterprisesEnterpriseSecretScanningAlertsGetResponse503,

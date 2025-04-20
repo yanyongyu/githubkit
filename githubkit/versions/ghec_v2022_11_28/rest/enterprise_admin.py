@@ -151,7 +151,16 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ActionsEnterprisePermissions, ActionsEnterprisePermissionsType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-github-actions-permissions-for-an-enterprise"""
+        """enterprise-admin/get-github-actions-permissions-enterprise
+
+        GET /enterprises/{enterprise}/actions/permissions
+
+        Gets the GitHub Actions permissions policy for organizations and allowed actions and reusable workflows in an enterprise.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-github-actions-permissions-for-an-enterprise
+        """
 
         from ..models import ActionsEnterprisePermissions
 
@@ -172,7 +181,16 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ActionsEnterprisePermissions, ActionsEnterprisePermissionsType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-github-actions-permissions-for-an-enterprise"""
+        """enterprise-admin/get-github-actions-permissions-enterprise
+
+        GET /enterprises/{enterprise}/actions/permissions
+
+        Gets the GitHub Actions permissions policy for organizations and allowed actions and reusable workflows in an enterprise.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-github-actions-permissions-for-an-enterprise
+        """
 
         from ..models import ActionsEnterprisePermissions
 
@@ -215,7 +233,16 @@ class EnterpriseAdminClient:
         data: Missing[EnterprisesEnterpriseActionsPermissionsPutBodyType] = UNSET,
         **kwargs,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#set-github-actions-permissions-for-an-enterprise"""
+        """enterprise-admin/set-github-actions-permissions-enterprise
+
+        PUT /enterprises/{enterprise}/actions/permissions
+
+        Sets the GitHub Actions permissions policy for organizations and allowed actions and reusable workflows in an enterprise.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#set-github-actions-permissions-for-an-enterprise
+        """
 
         from ..models import EnterprisesEnterpriseActionsPermissionsPutBody
 
@@ -269,7 +296,16 @@ class EnterpriseAdminClient:
         data: Missing[EnterprisesEnterpriseActionsPermissionsPutBodyType] = UNSET,
         **kwargs,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#set-github-actions-permissions-for-an-enterprise"""
+        """enterprise-admin/set-github-actions-permissions-enterprise
+
+        PUT /enterprises/{enterprise}/actions/permissions
+
+        Sets the GitHub Actions permissions policy for organizations and allowed actions and reusable workflows in an enterprise.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#set-github-actions-permissions-for-an-enterprise
+        """
 
         from ..models import EnterprisesEnterpriseActionsPermissionsPutBody
 
@@ -306,7 +342,16 @@ class EnterpriseAdminClient:
         EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200,
         EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#list-selected-organizations-enabled-for-github-actions-in-an-enterprise"""
+        """enterprise-admin/list-selected-organizations-enabled-github-actions-enterprise
+
+        GET /enterprises/{enterprise}/actions/permissions/organizations
+
+        Lists the organizations that are selected to have GitHub Actions enabled in an enterprise. To use this endpoint, the enterprise permission policy for `enabled_organizations` must be configured to `selected`. For more information, see "[Set GitHub Actions permissions for an enterprise](#set-github-actions-permissions-for-an-enterprise)."
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#list-selected-organizations-enabled-for-github-actions-in-an-enterprise
+        """
 
         from ..models import (
             EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200,
@@ -340,7 +385,16 @@ class EnterpriseAdminClient:
         EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200,
         EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#list-selected-organizations-enabled-for-github-actions-in-an-enterprise"""
+        """enterprise-admin/list-selected-organizations-enabled-github-actions-enterprise
+
+        GET /enterprises/{enterprise}/actions/permissions/organizations
+
+        Lists the organizations that are selected to have GitHub Actions enabled in an enterprise. To use this endpoint, the enterprise permission policy for `enabled_organizations` must be configured to `selected`. For more information, see "[Set GitHub Actions permissions for an enterprise](#set-github-actions-permissions-for-an-enterprise)."
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#list-selected-organizations-enabled-for-github-actions-in-an-enterprise
+        """
 
         from ..models import (
             EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200,
@@ -392,7 +446,16 @@ class EnterpriseAdminClient:
         ] = UNSET,
         **kwargs,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#set-selected-organizations-enabled-for-github-actions-in-an-enterprise"""
+        """enterprise-admin/set-selected-organizations-enabled-github-actions-enterprise
+
+        PUT /enterprises/{enterprise}/actions/permissions/organizations
+
+        Replaces the list of selected organizations that are enabled for GitHub Actions in an enterprise. To use this endpoint, the enterprise permission policy for `enabled_organizations` must be configured to `selected`. For more information, see "[Set GitHub Actions permissions for an enterprise](#set-github-actions-permissions-for-an-enterprise)."
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#set-selected-organizations-enabled-for-github-actions-in-an-enterprise
+        """
 
         from ..models import EnterprisesEnterpriseActionsPermissionsOrganizationsPutBody
 
@@ -447,7 +510,16 @@ class EnterpriseAdminClient:
         ] = UNSET,
         **kwargs,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#set-selected-organizations-enabled-for-github-actions-in-an-enterprise"""
+        """enterprise-admin/set-selected-organizations-enabled-github-actions-enterprise
+
+        PUT /enterprises/{enterprise}/actions/permissions/organizations
+
+        Replaces the list of selected organizations that are enabled for GitHub Actions in an enterprise. To use this endpoint, the enterprise permission policy for `enabled_organizations` must be configured to `selected`. For more information, see "[Set GitHub Actions permissions for an enterprise](#set-github-actions-permissions-for-an-enterprise)."
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#set-selected-organizations-enabled-for-github-actions-in-an-enterprise
+        """
 
         from ..models import EnterprisesEnterpriseActionsPermissionsOrganizationsPutBody
 
@@ -480,7 +552,16 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#enable-a-selected-organization-for-github-actions-in-an-enterprise"""
+        """enterprise-admin/enable-selected-organization-github-actions-enterprise
+
+        PUT /enterprises/{enterprise}/actions/permissions/organizations/{org_id}
+
+        Adds an organization to the list of selected organizations that are enabled for GitHub Actions in an enterprise. To use this endpoint, the enterprise permission policy for `enabled_organizations` must be configured to `selected`. For more information, see "[Set GitHub Actions permissions for an enterprise](#set-github-actions-permissions-for-an-enterprise)."
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#enable-a-selected-organization-for-github-actions-in-an-enterprise
+        """
 
         url = f"/enterprises/{enterprise}/actions/permissions/organizations/{org_id}"
 
@@ -499,7 +580,16 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#enable-a-selected-organization-for-github-actions-in-an-enterprise"""
+        """enterprise-admin/enable-selected-organization-github-actions-enterprise
+
+        PUT /enterprises/{enterprise}/actions/permissions/organizations/{org_id}
+
+        Adds an organization to the list of selected organizations that are enabled for GitHub Actions in an enterprise. To use this endpoint, the enterprise permission policy for `enabled_organizations` must be configured to `selected`. For more information, see "[Set GitHub Actions permissions for an enterprise](#set-github-actions-permissions-for-an-enterprise)."
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#enable-a-selected-organization-for-github-actions-in-an-enterprise
+        """
 
         url = f"/enterprises/{enterprise}/actions/permissions/organizations/{org_id}"
 
@@ -518,7 +608,16 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#disable-a-selected-organization-for-github-actions-in-an-enterprise"""
+        """enterprise-admin/disable-selected-organization-github-actions-enterprise
+
+        DELETE /enterprises/{enterprise}/actions/permissions/organizations/{org_id}
+
+        Removes an organization from the list of selected organizations that are enabled for GitHub Actions in an enterprise. To use this endpoint, the enterprise permission policy for `enabled_organizations` must be configured to `selected`. For more information, see "[Set GitHub Actions permissions for an enterprise](#set-github-actions-permissions-for-an-enterprise)."
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#disable-a-selected-organization-for-github-actions-in-an-enterprise
+        """
 
         url = f"/enterprises/{enterprise}/actions/permissions/organizations/{org_id}"
 
@@ -537,7 +636,16 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#disable-a-selected-organization-for-github-actions-in-an-enterprise"""
+        """enterprise-admin/disable-selected-organization-github-actions-enterprise
+
+        DELETE /enterprises/{enterprise}/actions/permissions/organizations/{org_id}
+
+        Removes an organization from the list of selected organizations that are enabled for GitHub Actions in an enterprise. To use this endpoint, the enterprise permission policy for `enabled_organizations` must be configured to `selected`. For more information, see "[Set GitHub Actions permissions for an enterprise](#set-github-actions-permissions-for-an-enterprise)."
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#disable-a-selected-organization-for-github-actions-in-an-enterprise
+        """
 
         url = f"/enterprises/{enterprise}/actions/permissions/organizations/{org_id}"
 
@@ -555,7 +663,16 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[SelectedActions, SelectedActionsType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-allowed-actions-and-reusable-workflows-for-an-enterprise"""
+        """enterprise-admin/get-allowed-actions-enterprise
+
+        GET /enterprises/{enterprise}/actions/permissions/selected-actions
+
+        Gets the selected actions and reusable workflows that are allowed in an enterprise. To use this endpoint, the enterprise permission policy for `allowed_actions` must be configured to `selected`. For more information, see "[Set GitHub Actions permissions for an enterprise](#set-github-actions-permissions-for-an-enterprise)."
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-allowed-actions-and-reusable-workflows-for-an-enterprise
+        """
 
         from ..models import SelectedActions
 
@@ -576,7 +693,16 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[SelectedActions, SelectedActionsType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-allowed-actions-and-reusable-workflows-for-an-enterprise"""
+        """enterprise-admin/get-allowed-actions-enterprise
+
+        GET /enterprises/{enterprise}/actions/permissions/selected-actions
+
+        Gets the selected actions and reusable workflows that are allowed in an enterprise. To use this endpoint, the enterprise permission policy for `allowed_actions` must be configured to `selected`. For more information, see "[Set GitHub Actions permissions for an enterprise](#set-github-actions-permissions-for-an-enterprise)."
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-allowed-actions-and-reusable-workflows-for-an-enterprise
+        """
 
         from ..models import SelectedActions
 
@@ -620,7 +746,16 @@ class EnterpriseAdminClient:
         data: Missing[SelectedActionsType] = UNSET,
         **kwargs,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#set-allowed-actions-and-reusable-workflows-for-an-enterprise"""
+        """enterprise-admin/set-allowed-actions-enterprise
+
+        PUT /enterprises/{enterprise}/actions/permissions/selected-actions
+
+        Sets the actions and reusable workflows that are allowed in an enterprise. To use this endpoint, the enterprise permission policy for `allowed_actions` must be configured to `selected`. For more information, see "[Set GitHub Actions permissions for an enterprise](#set-github-actions-permissions-for-an-enterprise)."
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#set-allowed-actions-and-reusable-workflows-for-an-enterprise
+        """
 
         from ..models import SelectedActions
 
@@ -673,7 +808,16 @@ class EnterpriseAdminClient:
         data: Missing[SelectedActionsType] = UNSET,
         **kwargs,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#set-allowed-actions-and-reusable-workflows-for-an-enterprise"""
+        """enterprise-admin/set-allowed-actions-enterprise
+
+        PUT /enterprises/{enterprise}/actions/permissions/selected-actions
+
+        Sets the actions and reusable workflows that are allowed in an enterprise. To use this endpoint, the enterprise permission policy for `allowed_actions` must be configured to `selected`. For more information, see "[Set GitHub Actions permissions for an enterprise](#set-github-actions-permissions-for-an-enterprise)."
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#set-allowed-actions-and-reusable-workflows-for-an-enterprise
+        """
 
         from ..models import SelectedActions
 
@@ -709,7 +853,16 @@ class EnterpriseAdminClient:
         EnterprisesEnterpriseActionsRunnerGroupsGetResponse200,
         EnterprisesEnterpriseActionsRunnerGroupsGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#list-self-hosted-runner-groups-for-an-enterprise"""
+        """enterprise-admin/list-self-hosted-runner-groups-for-enterprise
+
+        GET /enterprises/{enterprise}/actions/runner-groups
+
+        Lists all self-hosted runner groups for an enterprise.
+
+        OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#list-self-hosted-runner-groups-for-an-enterprise
+        """
 
         from ..models import EnterprisesEnterpriseActionsRunnerGroupsGetResponse200
 
@@ -743,7 +896,16 @@ class EnterpriseAdminClient:
         EnterprisesEnterpriseActionsRunnerGroupsGetResponse200,
         EnterprisesEnterpriseActionsRunnerGroupsGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#list-self-hosted-runner-groups-for-an-enterprise"""
+        """enterprise-admin/list-self-hosted-runner-groups-for-enterprise
+
+        GET /enterprises/{enterprise}/actions/runner-groups
+
+        Lists all self-hosted runner groups for an enterprise.
+
+        OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#list-self-hosted-runner-groups-for-an-enterprise
+        """
 
         from ..models import EnterprisesEnterpriseActionsRunnerGroupsGetResponse200
 
@@ -799,7 +961,16 @@ class EnterpriseAdminClient:
         data: Missing[EnterprisesEnterpriseActionsRunnerGroupsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[RunnerGroupsEnterprise, RunnerGroupsEnterpriseType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#create-a-self-hosted-runner-group-for-an-enterprise"""
+        """enterprise-admin/create-self-hosted-runner-group-for-enterprise
+
+        POST /enterprises/{enterprise}/actions/runner-groups
+
+        Creates a new self-hosted runner group for an enterprise.
+
+        OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#create-a-self-hosted-runner-group-for-an-enterprise
+        """
 
         from ..models import (
             EnterprisesEnterpriseActionsRunnerGroupsPostBody,
@@ -863,7 +1034,16 @@ class EnterpriseAdminClient:
         data: Missing[EnterprisesEnterpriseActionsRunnerGroupsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[RunnerGroupsEnterprise, RunnerGroupsEnterpriseType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#create-a-self-hosted-runner-group-for-an-enterprise"""
+        """enterprise-admin/create-self-hosted-runner-group-for-enterprise
+
+        POST /enterprises/{enterprise}/actions/runner-groups
+
+        Creates a new self-hosted runner group for an enterprise.
+
+        OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#create-a-self-hosted-runner-group-for-an-enterprise
+        """
 
         from ..models import (
             EnterprisesEnterpriseActionsRunnerGroupsPostBody,
@@ -900,7 +1080,16 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[RunnerGroupsEnterprise, RunnerGroupsEnterpriseType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#get-a-self-hosted-runner-group-for-an-enterprise"""
+        """enterprise-admin/get-self-hosted-runner-group-for-enterprise
+
+        GET /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}
+
+        Gets a specific self-hosted runner group for an enterprise.
+
+        OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#get-a-self-hosted-runner-group-for-an-enterprise
+        """
 
         from ..models import RunnerGroupsEnterprise
 
@@ -922,7 +1111,16 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[RunnerGroupsEnterprise, RunnerGroupsEnterpriseType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#get-a-self-hosted-runner-group-for-an-enterprise"""
+        """enterprise-admin/get-self-hosted-runner-group-for-enterprise
+
+        GET /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}
+
+        Gets a specific self-hosted runner group for an enterprise.
+
+        OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#get-a-self-hosted-runner-group-for-an-enterprise
+        """
 
         from ..models import RunnerGroupsEnterprise
 
@@ -944,7 +1142,16 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#delete-a-self-hosted-runner-group-from-an-enterprise"""
+        """enterprise-admin/delete-self-hosted-runner-group-from-enterprise
+
+        DELETE /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}
+
+        Deletes a self-hosted runner group for an enterprise.
+
+        OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#delete-a-self-hosted-runner-group-from-an-enterprise
+        """
 
         url = f"/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}"
 
@@ -963,7 +1170,16 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#delete-a-self-hosted-runner-group-from-an-enterprise"""
+        """enterprise-admin/delete-self-hosted-runner-group-from-enterprise
+
+        DELETE /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}
+
+        Deletes a self-hosted runner group for an enterprise.
+
+        OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#delete-a-self-hosted-runner-group-from-an-enterprise
+        """
 
         url = f"/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}"
 
@@ -1014,7 +1230,16 @@ class EnterpriseAdminClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[RunnerGroupsEnterprise, RunnerGroupsEnterpriseType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#update-a-self-hosted-runner-group-for-an-enterprise"""
+        """enterprise-admin/update-self-hosted-runner-group-for-enterprise
+
+        PATCH /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}
+
+        Updates the `name` and `visibility` of a self-hosted runner group in an enterprise.
+
+        OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#update-a-self-hosted-runner-group-for-an-enterprise
+        """
 
         from ..models import (
             EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBody,
@@ -1083,7 +1308,16 @@ class EnterpriseAdminClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[RunnerGroupsEnterprise, RunnerGroupsEnterpriseType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#update-a-self-hosted-runner-group-for-an-enterprise"""
+        """enterprise-admin/update-self-hosted-runner-group-for-enterprise
+
+        PATCH /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}
+
+        Updates the `name` and `visibility` of a self-hosted runner group in an enterprise.
+
+        OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#update-a-self-hosted-runner-group-for-an-enterprise
+        """
 
         from ..models import (
             EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBody,
@@ -1125,7 +1359,16 @@ class EnterpriseAdminClient:
         EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200,
         EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#list-organization-access-to-a-self-hosted-runner-group-in-an-enterprise"""
+        """enterprise-admin/list-org-access-to-self-hosted-runner-group-in-enterprise
+
+        GET /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations
+
+        Lists the organizations with access to a self-hosted runner group.
+
+        OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#list-organization-access-to-a-self-hosted-runner-group-in-an-enterprise
+        """
 
         from ..models import (
             EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200,
@@ -1160,7 +1403,16 @@ class EnterpriseAdminClient:
         EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200,
         EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#list-organization-access-to-a-self-hosted-runner-group-in-an-enterprise"""
+        """enterprise-admin/list-org-access-to-self-hosted-runner-group-in-enterprise
+
+        GET /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations
+
+        Lists the organizations with access to a self-hosted runner group.
+
+        OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#list-organization-access-to-a-self-hosted-runner-group-in-an-enterprise
+        """
 
         from ..models import (
             EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200,
@@ -1215,7 +1467,16 @@ class EnterpriseAdminClient:
         ] = UNSET,
         **kwargs,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#set-organization-access-for-a-self-hosted-runner-group-in-an-enterprise"""
+        """enterprise-admin/set-org-access-to-self-hosted-runner-group-in-enterprise
+
+        PUT /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations
+
+        Replaces the list of organizations that have access to a self-hosted runner configured in an enterprise.
+
+        OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#set-organization-access-for-a-self-hosted-runner-group-in-an-enterprise
+        """
 
         from ..models import (
             EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsPutBody,
@@ -1276,7 +1537,16 @@ class EnterpriseAdminClient:
         ] = UNSET,
         **kwargs,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#set-organization-access-for-a-self-hosted-runner-group-in-an-enterprise"""
+        """enterprise-admin/set-org-access-to-self-hosted-runner-group-in-enterprise
+
+        PUT /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations
+
+        Replaces the list of organizations that have access to a self-hosted runner configured in an enterprise.
+
+        OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#set-organization-access-for-a-self-hosted-runner-group-in-an-enterprise
+        """
 
         from ..models import (
             EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsPutBody,
@@ -1313,7 +1583,16 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#add-organization-access-to-a-self-hosted-runner-group-in-an-enterprise"""
+        """enterprise-admin/add-org-access-to-self-hosted-runner-group-in-enterprise
+
+        PUT /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations/{org_id}
+
+        Adds an organization to the list of selected organizations that can access a self-hosted runner group. The runner group must have `visibility` set to `selected`. For more information, see "[Create a self-hosted runner group for an enterprise](#create-a-self-hosted-runner-group-for-an-enterprise)."
+
+        OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#add-organization-access-to-a-self-hosted-runner-group-in-an-enterprise
+        """
 
         url = f"/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations/{org_id}"
 
@@ -1333,7 +1612,16 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#add-organization-access-to-a-self-hosted-runner-group-in-an-enterprise"""
+        """enterprise-admin/add-org-access-to-self-hosted-runner-group-in-enterprise
+
+        PUT /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations/{org_id}
+
+        Adds an organization to the list of selected organizations that can access a self-hosted runner group. The runner group must have `visibility` set to `selected`. For more information, see "[Create a self-hosted runner group for an enterprise](#create-a-self-hosted-runner-group-for-an-enterprise)."
+
+        OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#add-organization-access-to-a-self-hosted-runner-group-in-an-enterprise
+        """
 
         url = f"/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations/{org_id}"
 
@@ -1353,7 +1641,16 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#remove-organization-access-to-a-self-hosted-runner-group-in-an-enterprise"""
+        """enterprise-admin/remove-org-access-to-self-hosted-runner-group-in-enterprise
+
+        DELETE /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations/{org_id}
+
+        Removes an organization from the list of selected organizations that can access a self-hosted runner group. The runner group must have `visibility` set to `selected`. For more information, see "[Create a self-hosted runner group for an enterprise](#create-a-self-hosted-runner-group-for-an-enterprise)."
+
+        OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#remove-organization-access-to-a-self-hosted-runner-group-in-an-enterprise
+        """
 
         url = f"/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations/{org_id}"
 
@@ -1373,7 +1670,16 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#remove-organization-access-to-a-self-hosted-runner-group-in-an-enterprise"""
+        """enterprise-admin/remove-org-access-to-self-hosted-runner-group-in-enterprise
+
+        DELETE /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations/{org_id}
+
+        Removes an organization from the list of selected organizations that can access a self-hosted runner group. The runner group must have `visibility` set to `selected`. For more information, see "[Create a self-hosted runner group for an enterprise](#create-a-self-hosted-runner-group-for-an-enterprise)."
+
+        OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#remove-organization-access-to-a-self-hosted-runner-group-in-an-enterprise
+        """
 
         url = f"/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations/{org_id}"
 
@@ -1397,7 +1703,16 @@ class EnterpriseAdminClient:
         EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200,
         EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#list-self-hosted-runners-in-a-group-for-an-enterprise"""
+        """enterprise-admin/list-self-hosted-runners-in-group-for-enterprise
+
+        GET /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners
+
+        Lists the self-hosted runners that are in a specific enterprise group.
+
+        OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#list-self-hosted-runners-in-a-group-for-an-enterprise
+        """
 
         from ..models import (
             EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200,
@@ -1434,7 +1749,16 @@ class EnterpriseAdminClient:
         EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200,
         EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#list-self-hosted-runners-in-a-group-for-an-enterprise"""
+        """enterprise-admin/list-self-hosted-runners-in-group-for-enterprise
+
+        GET /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners
+
+        Lists the self-hosted runners that are in a specific enterprise group.
+
+        OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#list-self-hosted-runners-in-a-group-for-an-enterprise
+        """
 
         from ..models import (
             EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200,
@@ -1491,7 +1815,16 @@ class EnterpriseAdminClient:
         ] = UNSET,
         **kwargs,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#set-self-hosted-runners-in-a-group-for-an-enterprise"""
+        """enterprise-admin/set-self-hosted-runners-in-group-for-enterprise
+
+        PUT /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners
+
+        Replaces the list of self-hosted runners that are part of an enterprise runner group.
+
+        OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#set-self-hosted-runners-in-a-group-for-an-enterprise
+        """
 
         from ..models import (
             EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersPutBody,
@@ -1554,7 +1887,16 @@ class EnterpriseAdminClient:
         ] = UNSET,
         **kwargs,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#set-self-hosted-runners-in-a-group-for-an-enterprise"""
+        """enterprise-admin/set-self-hosted-runners-in-group-for-enterprise
+
+        PUT /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners
+
+        Replaces the list of self-hosted runners that are part of an enterprise runner group.
+
+        OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#set-self-hosted-runners-in-a-group-for-an-enterprise
+        """
 
         from ..models import (
             EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersPutBody,
@@ -1593,7 +1935,16 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#add-a-self-hosted-runner-to-a-group-for-an-enterprise"""
+        """enterprise-admin/add-self-hosted-runner-to-group-for-enterprise
+
+        PUT /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners/{runner_id}
+
+        Adds a self-hosted runner to a runner group configured in an enterprise.
+
+        OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#add-a-self-hosted-runner-to-a-group-for-an-enterprise
+        """
 
         url = f"/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners/{runner_id}"
 
@@ -1613,7 +1964,16 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#add-a-self-hosted-runner-to-a-group-for-an-enterprise"""
+        """enterprise-admin/add-self-hosted-runner-to-group-for-enterprise
+
+        PUT /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners/{runner_id}
+
+        Adds a self-hosted runner to a runner group configured in an enterprise.
+
+        OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#add-a-self-hosted-runner-to-a-group-for-an-enterprise
+        """
 
         url = f"/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners/{runner_id}"
 
@@ -1633,7 +1993,16 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#remove-a-self-hosted-runner-from-a-group-for-an-enterprise"""
+        """enterprise-admin/remove-self-hosted-runner-from-group-for-enterprise
+
+        DELETE /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners/{runner_id}
+
+        Removes a self-hosted runner from a group configured in an enterprise. The runner is then returned to the default group.
+
+        OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#remove-a-self-hosted-runner-from-a-group-for-an-enterprise
+        """
 
         url = f"/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners/{runner_id}"
 
@@ -1653,7 +2022,16 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#remove-a-self-hosted-runner-from-a-group-for-an-enterprise"""
+        """enterprise-admin/remove-self-hosted-runner-from-group-for-enterprise
+
+        DELETE /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners/{runner_id}
+
+        Removes a self-hosted runner from a group configured in an enterprise. The runner is then returned to the default group.
+
+        OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#remove-a-self-hosted-runner-from-a-group-for-an-enterprise
+        """
 
         url = f"/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners/{runner_id}"
 
@@ -1677,7 +2055,16 @@ class EnterpriseAdminClient:
         EnterprisesEnterpriseActionsRunnersGetResponse200,
         EnterprisesEnterpriseActionsRunnersGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#list-self-hosted-runners-for-an-enterprise"""
+        """enterprise-admin/list-self-hosted-runners-for-enterprise
+
+        GET /enterprises/{enterprise}/actions/runners
+
+        Lists all self-hosted runners configured for an enterprise.
+
+        OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#list-self-hosted-runners-for-an-enterprise
+        """
 
         from ..models import EnterprisesEnterpriseActionsRunnersGetResponse200
 
@@ -1711,7 +2098,16 @@ class EnterpriseAdminClient:
         EnterprisesEnterpriseActionsRunnersGetResponse200,
         EnterprisesEnterpriseActionsRunnersGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#list-self-hosted-runners-for-an-enterprise"""
+        """enterprise-admin/list-self-hosted-runners-for-enterprise
+
+        GET /enterprises/{enterprise}/actions/runners
+
+        Lists all self-hosted runners configured for an enterprise.
+
+        OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#list-self-hosted-runners-for-an-enterprise
+        """
 
         from ..models import EnterprisesEnterpriseActionsRunnersGetResponse200
 
@@ -1739,7 +2135,16 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[RunnerApplication], list[RunnerApplicationType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#list-runner-applications-for-an-enterprise"""
+        """enterprise-admin/list-runner-applications-for-enterprise
+
+        GET /enterprises/{enterprise}/actions/runners/downloads
+
+        Lists binaries for the runner application that you can download and run.
+
+        OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#list-runner-applications-for-an-enterprise
+        """
 
         from ..models import RunnerApplication
 
@@ -1760,7 +2165,16 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[RunnerApplication], list[RunnerApplicationType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#list-runner-applications-for-an-enterprise"""
+        """enterprise-admin/list-runner-applications-for-enterprise
+
+        GET /enterprises/{enterprise}/actions/runners/downloads
+
+        Lists binaries for the runner application that you can download and run.
+
+        OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#list-runner-applications-for-an-enterprise
+        """
 
         from ..models import RunnerApplication
 
@@ -1781,7 +2195,24 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[AuthenticationToken, AuthenticationTokenType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#create-a-registration-token-for-an-enterprise"""
+        """enterprise-admin/create-registration-token-for-enterprise
+
+        POST /enterprises/{enterprise}/actions/runners/registration-token
+
+        Returns a token that you can pass to the `config` script. The token expires after one hour.
+
+        Example using registration token:
+
+        Configure your self-hosted runner, replacing `TOKEN` with the registration token provided by this endpoint.
+
+        ```
+        ./config.sh --url https://github.com/enterprises/octo-enterprise --token TOKEN
+        ```
+
+        OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#create-a-registration-token-for-an-enterprise
+        """
 
         from ..models import AuthenticationToken
 
@@ -1802,7 +2233,24 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[AuthenticationToken, AuthenticationTokenType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#create-a-registration-token-for-an-enterprise"""
+        """enterprise-admin/create-registration-token-for-enterprise
+
+        POST /enterprises/{enterprise}/actions/runners/registration-token
+
+        Returns a token that you can pass to the `config` script. The token expires after one hour.
+
+        Example using registration token:
+
+        Configure your self-hosted runner, replacing `TOKEN` with the registration token provided by this endpoint.
+
+        ```
+        ./config.sh --url https://github.com/enterprises/octo-enterprise --token TOKEN
+        ```
+
+        OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#create-a-registration-token-for-an-enterprise
+        """
 
         from ..models import AuthenticationToken
 
@@ -1823,7 +2271,25 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[AuthenticationToken, AuthenticationTokenType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#create-a-remove-token-for-an-enterprise"""
+        """enterprise-admin/create-remove-token-for-enterprise
+
+        POST /enterprises/{enterprise}/actions/runners/remove-token
+
+        Returns a token that you can pass to the `config` script to remove a self-hosted runner from an enterprise. The token expires after one hour.
+
+        Example using remove token:
+
+        To remove your self-hosted runner from an enterprise, replace `TOKEN` with the remove token provided by this
+        endpoint.
+
+        ```
+        ./config.sh remove --token TOKEN
+        ```
+
+        OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#create-a-remove-token-for-an-enterprise
+        """
 
         from ..models import AuthenticationToken
 
@@ -1844,7 +2310,25 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[AuthenticationToken, AuthenticationTokenType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#create-a-remove-token-for-an-enterprise"""
+        """enterprise-admin/create-remove-token-for-enterprise
+
+        POST /enterprises/{enterprise}/actions/runners/remove-token
+
+        Returns a token that you can pass to the `config` script to remove a self-hosted runner from an enterprise. The token expires after one hour.
+
+        Example using remove token:
+
+        To remove your self-hosted runner from an enterprise, replace `TOKEN` with the remove token provided by this
+        endpoint.
+
+        ```
+        ./config.sh remove --token TOKEN
+        ```
+
+        OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#create-a-remove-token-for-an-enterprise
+        """
 
         from ..models import AuthenticationToken
 
@@ -1866,7 +2350,16 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Runner, RunnerType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#get-a-self-hosted-runner-for-an-enterprise"""
+        """enterprise-admin/get-self-hosted-runner-for-enterprise
+
+        GET /enterprises/{enterprise}/actions/runners/{runner_id}
+
+        Gets a specific self-hosted runner configured in an enterprise.
+
+        OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#get-a-self-hosted-runner-for-an-enterprise
+        """
 
         from ..models import Runner
 
@@ -1888,7 +2381,16 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Runner, RunnerType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#get-a-self-hosted-runner-for-an-enterprise"""
+        """enterprise-admin/get-self-hosted-runner-for-enterprise
+
+        GET /enterprises/{enterprise}/actions/runners/{runner_id}
+
+        Gets a specific self-hosted runner configured in an enterprise.
+
+        OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#get-a-self-hosted-runner-for-an-enterprise
+        """
 
         from ..models import Runner
 
@@ -1910,7 +2412,16 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#delete-a-self-hosted-runner-from-an-enterprise"""
+        """enterprise-admin/delete-self-hosted-runner-from-enterprise
+
+        DELETE /enterprises/{enterprise}/actions/runners/{runner_id}
+
+        Forces the removal of a self-hosted runner from an enterprise. You can use this endpoint to completely remove the runner when the machine you were using no longer exists.
+
+        OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#delete-a-self-hosted-runner-from-an-enterprise
+        """
 
         url = f"/enterprises/{enterprise}/actions/runners/{runner_id}"
 
@@ -1929,7 +2440,16 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#delete-a-self-hosted-runner-from-an-enterprise"""
+        """enterprise-admin/delete-self-hosted-runner-from-enterprise
+
+        DELETE /enterprises/{enterprise}/actions/runners/{runner_id}
+
+        Forces the removal of a self-hosted runner from an enterprise. You can use this endpoint to completely remove the runner when the machine you were using no longer exists.
+
+        OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#delete-a-self-hosted-runner-from-an-enterprise
+        """
 
         url = f"/enterprises/{enterprise}/actions/runners/{runner_id}"
 
@@ -1951,7 +2471,16 @@ class EnterpriseAdminClient:
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#list-labels-for-a-self-hosted-runner-for-an-enterprise"""
+        """enterprise-admin/list-labels-for-self-hosted-runner-for-enterprise
+
+        GET /enterprises/{enterprise}/actions/runners/{runner_id}/labels
+
+        Lists all labels for a self-hosted runner configured in an enterprise.
+
+        OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#list-labels-for-a-self-hosted-runner-for-an-enterprise
+        """
 
         from ..models import (
             BasicError,
@@ -1982,7 +2511,16 @@ class EnterpriseAdminClient:
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#list-labels-for-a-self-hosted-runner-for-an-enterprise"""
+        """enterprise-admin/list-labels-for-self-hosted-runner-for-enterprise
+
+        GET /enterprises/{enterprise}/actions/runners/{runner_id}/labels
+
+        Lists all labels for a self-hosted runner configured in an enterprise.
+
+        OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#list-labels-for-a-self-hosted-runner-for-an-enterprise
+        """
 
         from ..models import (
             BasicError,
@@ -2044,7 +2582,17 @@ class EnterpriseAdminClient:
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#set-custom-labels-for-a-self-hosted-runner-for-an-enterprise"""
+        """enterprise-admin/set-custom-labels-for-self-hosted-runner-for-enterprise
+
+        PUT /enterprises/{enterprise}/actions/runners/{runner_id}/labels
+
+        Remove all previous custom labels and set the new custom labels for a specific
+        self-hosted runner configured in an enterprise.
+
+        OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#set-custom-labels-for-a-self-hosted-runner-for-an-enterprise
+        """
 
         from ..models import (
             BasicError,
@@ -2121,7 +2669,17 @@ class EnterpriseAdminClient:
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#set-custom-labels-for-a-self-hosted-runner-for-an-enterprise"""
+        """enterprise-admin/set-custom-labels-for-self-hosted-runner-for-enterprise
+
+        PUT /enterprises/{enterprise}/actions/runners/{runner_id}/labels
+
+        Remove all previous custom labels and set the new custom labels for a specific
+        self-hosted runner configured in an enterprise.
+
+        OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#set-custom-labels-for-a-self-hosted-runner-for-an-enterprise
+        """
 
         from ..models import (
             BasicError,
@@ -2198,7 +2756,16 @@ class EnterpriseAdminClient:
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#add-custom-labels-to-a-self-hosted-runner-for-an-enterprise"""
+        """enterprise-admin/add-custom-labels-to-self-hosted-runner-for-enterprise
+
+        POST /enterprises/{enterprise}/actions/runners/{runner_id}/labels
+
+        Add custom labels to a self-hosted runner configured in an enterprise.
+
+        OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#add-custom-labels-to-a-self-hosted-runner-for-an-enterprise
+        """
 
         from ..models import (
             BasicError,
@@ -2275,7 +2842,16 @@ class EnterpriseAdminClient:
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#add-custom-labels-to-a-self-hosted-runner-for-an-enterprise"""
+        """enterprise-admin/add-custom-labels-to-self-hosted-runner-for-enterprise
+
+        POST /enterprises/{enterprise}/actions/runners/{runner_id}/labels
+
+        Add custom labels to a self-hosted runner configured in an enterprise.
+
+        OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#add-custom-labels-to-a-self-hosted-runner-for-an-enterprise
+        """
 
         from ..models import (
             BasicError,
@@ -2321,7 +2897,17 @@ class EnterpriseAdminClient:
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200,
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200Type,
     ]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#remove-all-custom-labels-from-a-self-hosted-runner-for-an-enterprise"""
+        """enterprise-admin/remove-all-custom-labels-from-self-hosted-runner-for-enterprise
+
+        DELETE /enterprises/{enterprise}/actions/runners/{runner_id}/labels
+
+        Remove all custom labels from a self-hosted runner configured in an
+        enterprise. Returns the remaining read-only labels from the runner.
+
+        OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#remove-all-custom-labels-from-a-self-hosted-runner-for-an-enterprise
+        """
 
         from ..models import (
             BasicError,
@@ -2354,7 +2940,17 @@ class EnterpriseAdminClient:
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200,
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200Type,
     ]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#remove-all-custom-labels-from-a-self-hosted-runner-for-an-enterprise"""
+        """enterprise-admin/remove-all-custom-labels-from-self-hosted-runner-for-enterprise
+
+        DELETE /enterprises/{enterprise}/actions/runners/{runner_id}/labels
+
+        Remove all custom labels from a self-hosted runner configured in an
+        enterprise. Returns the remaining read-only labels from the runner.
+
+        OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#remove-all-custom-labels-from-a-self-hosted-runner-for-an-enterprise
+        """
 
         from ..models import (
             BasicError,
@@ -2388,7 +2984,20 @@ class EnterpriseAdminClient:
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#remove-a-custom-label-from-a-self-hosted-runner-for-an-enterprise"""
+        """enterprise-admin/remove-custom-label-from-self-hosted-runner-for-enterprise
+
+        DELETE /enterprises/{enterprise}/actions/runners/{runner_id}/labels/{name}
+
+        Remove a custom label from a self-hosted runner configured
+        in an enterprise. Returns the remaining labels from the runner.
+
+        This endpoint returns a `404 Not Found` status if the custom label is not
+        present on the runner.
+
+        OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#remove-a-custom-label-from-a-self-hosted-runner-for-an-enterprise
+        """
 
         from ..models import (
             BasicError,
@@ -2422,7 +3031,20 @@ class EnterpriseAdminClient:
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#remove-a-custom-label-from-a-self-hosted-runner-for-an-enterprise"""
+        """enterprise-admin/remove-custom-label-from-self-hosted-runner-for-enterprise
+
+        DELETE /enterprises/{enterprise}/actions/runners/{runner_id}/labels/{name}
+
+        Remove a custom label from a self-hosted runner configured
+        in an enterprise. Returns the remaining labels from the runner.
+
+        This endpoint returns a `404 Not Found` status if the custom label is not
+        present on the runner.
+
+        OAuth app tokens and personal access tokens (classic) need the `manage_runners:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#remove-a-custom-label-from-a-self-hosted-runner-for-an-enterprise
+        """
 
         from ..models import (
             BasicError,
@@ -2451,7 +3073,14 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[AnnouncementBanner, AnnouncementBannerType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/announcement-banners/enterprises#get-announcement-banner-for-enterprise"""
+        """announcement-banners/get-announcement-banner-for-enterprise
+
+        GET /enterprises/{enterprise}/announcement
+
+        Gets the announcement banner currently set for the enterprise.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/announcement-banners/enterprises#get-announcement-banner-for-enterprise
+        """
 
         from ..models import AnnouncementBanner
 
@@ -2472,7 +3101,14 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[AnnouncementBanner, AnnouncementBannerType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/announcement-banners/enterprises#get-announcement-banner-for-enterprise"""
+        """announcement-banners/get-announcement-banner-for-enterprise
+
+        GET /enterprises/{enterprise}/announcement
+
+        Gets the announcement banner currently set for the enterprise.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/announcement-banners/enterprises#get-announcement-banner-for-enterprise
+        """
 
         from ..models import AnnouncementBanner
 
@@ -2493,7 +3129,14 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/announcement-banners/enterprises#remove-announcement-banner-from-enterprise"""
+        """announcement-banners/remove-announcement-banner-for-enterprise
+
+        DELETE /enterprises/{enterprise}/announcement
+
+        Removes the announcement banner currently set for the enterprise.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/announcement-banners/enterprises#remove-announcement-banner-from-enterprise
+        """
 
         url = f"/enterprises/{enterprise}/announcement"
 
@@ -2511,7 +3154,14 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/announcement-banners/enterprises#remove-announcement-banner-from-enterprise"""
+        """announcement-banners/remove-announcement-banner-for-enterprise
+
+        DELETE /enterprises/{enterprise}/announcement
+
+        Removes the announcement banner currently set for the enterprise.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/announcement-banners/enterprises#remove-announcement-banner-from-enterprise
+        """
 
         url = f"/enterprises/{enterprise}/announcement"
 
@@ -2552,7 +3202,14 @@ class EnterpriseAdminClient:
         data: Missing[AnnouncementType] = UNSET,
         **kwargs,
     ) -> Response[AnnouncementBanner, AnnouncementBannerType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/announcement-banners/enterprises#set-announcement-banner-for-enterprise"""
+        """announcement-banners/set-announcement-banner-for-enterprise
+
+        PATCH /enterprises/{enterprise}/announcement
+
+        Sets the announcement banner to display for the enterprise.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/announcement-banners/enterprises#set-announcement-banner-for-enterprise
+        """
 
         from ..models import Announcement, AnnouncementBanner
 
@@ -2606,7 +3263,14 @@ class EnterpriseAdminClient:
         data: Missing[AnnouncementType] = UNSET,
         **kwargs,
     ) -> Response[AnnouncementBanner, AnnouncementBannerType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/announcement-banners/enterprises#set-announcement-banner-for-enterprise"""
+        """announcement-banners/set-announcement-banner-for-enterprise
+
+        PATCH /enterprises/{enterprise}/announcement
+
+        Sets the announcement banner to display for the enterprise.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/announcement-banners/enterprises#set-announcement-banner-for-enterprise
+        """
 
         from ..models import Announcement, AnnouncementBanner
 
@@ -2644,7 +3308,20 @@ class EnterpriseAdminClient:
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[AuditLogEvent], list[AuditLogEventType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/audit-log#get-the-audit-log-for-an-enterprise"""
+        """enterprise-admin/get-audit-log
+
+        GET /enterprises/{enterprise}/audit-log
+
+        Gets the audit log for an enterprise.
+
+        This endpoint has a rate limit of 1,750 queries per hour per user and IP address. If your integration receives a rate limit error (typically a 403 or 429 response), it should wait before making another request to the GitHub API. For more information, see "[Rate limits for the REST API](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/rate-limits-for-the-rest-api)" and "[Best practices for integrators](https://docs.github.com/enterprise-cloud@latest//rest/guides/best-practices-for-integrators)."
+
+        The authenticated user must be an enterprise admin to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:audit_log` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/audit-log#get-the-audit-log-for-an-enterprise
+        """
 
         from ..models import AuditLogEvent
 
@@ -2683,7 +3360,20 @@ class EnterpriseAdminClient:
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[AuditLogEvent], list[AuditLogEventType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/audit-log#get-the-audit-log-for-an-enterprise"""
+        """enterprise-admin/get-audit-log
+
+        GET /enterprises/{enterprise}/audit-log
+
+        Gets the audit log for an enterprise.
+
+        This endpoint has a rate limit of 1,750 queries per hour per user and IP address. If your integration receives a rate limit error (typically a 403 or 429 response), it should wait before making another request to the GitHub API. For more information, see "[Rate limits for the REST API](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/rate-limits-for-the-rest-api)" and "[Best practices for integrators](https://docs.github.com/enterprise-cloud@latest//rest/guides/best-practices-for-integrators)."
+
+        The authenticated user must be an enterprise admin to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:audit_log` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/audit-log#get-the-audit-log-for-an-enterprise
+        """
 
         from ..models import AuditLogEvent
 
@@ -2715,7 +3405,16 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[AuditLogStreamKey, AuditLogStreamKeyType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/audit-log#get-the-audit-log-stream-key-for-encrypting-secrets"""
+        """enterprise-admin/get-audit-log-stream-key
+
+        GET /enterprises/{enterprise}/audit-log/stream-key
+
+        Retrieves the audit log streaming public key for encrypting secrets.
+
+        When using this endpoint, you must encrypt the credentials following the same encryption steps as outlined in the guide on encrypting secrets. See "[Encrypting secrets for the REST API](/rest/guides/encrypting-secrets-for-the-rest-api)."
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/audit-log#get-the-audit-log-stream-key-for-encrypting-secrets
+        """
 
         from ..models import AuditLogStreamKey
 
@@ -2736,7 +3435,16 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[AuditLogStreamKey, AuditLogStreamKeyType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/audit-log#get-the-audit-log-stream-key-for-encrypting-secrets"""
+        """enterprise-admin/get-audit-log-stream-key
+
+        GET /enterprises/{enterprise}/audit-log/stream-key
+
+        Retrieves the audit log streaming public key for encrypting secrets.
+
+        When using this endpoint, you must encrypt the credentials following the same encryption steps as outlined in the guide on encrypting secrets. See "[Encrypting secrets for the REST API](/rest/guides/encrypting-secrets-for-the-rest-api)."
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/audit-log#get-the-audit-log-stream-key-for-encrypting-secrets
+        """
 
         from ..models import AuditLogStreamKey
 
@@ -2759,7 +3467,17 @@ class EnterpriseAdminClient:
     ) -> Response[
         list[GetAuditLogStreamConfigsItems], list[GetAuditLogStreamConfigsItemsType]
     ]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/audit-log#list-audit-log-stream-configurations-for-an-enterprise"""
+        """enterprise-admin/get-audit-log-streams
+
+        GET /enterprises/{enterprise}/audit-log/streams
+
+        Lists the configured audit log streaming configurations for an enterprise.
+        This only lists configured streams for supported providers.
+
+        When using this endpoint, you must encrypt the credentials following the same encryption steps as outlined in the guide on encrypting secrets. See "[Encrypting secrets for the REST API](/rest/guides/encrypting-secrets-for-the-rest-api)."
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/audit-log#list-audit-log-stream-configurations-for-an-enterprise
+        """
 
         from ..models import GetAuditLogStreamConfigsItems
 
@@ -2782,7 +3500,17 @@ class EnterpriseAdminClient:
     ) -> Response[
         list[GetAuditLogStreamConfigsItems], list[GetAuditLogStreamConfigsItemsType]
     ]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/audit-log#list-audit-log-stream-configurations-for-an-enterprise"""
+        """enterprise-admin/get-audit-log-streams
+
+        GET /enterprises/{enterprise}/audit-log/streams
+
+        Lists the configured audit log streaming configurations for an enterprise.
+        This only lists configured streams for supported providers.
+
+        When using this endpoint, you must encrypt the credentials following the same encryption steps as outlined in the guide on encrypting secrets. See "[Encrypting secrets for the REST API](/rest/guides/encrypting-secrets-for-the-rest-api)."
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/audit-log#list-audit-log-stream-configurations-for-an-enterprise
+        """
 
         from ..models import GetAuditLogStreamConfigsItems
 
@@ -2843,7 +3571,16 @@ class EnterpriseAdminClient:
         data: Missing[EnterprisesEnterpriseAuditLogStreamsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[GetAuditLogStreamConfig, GetAuditLogStreamConfigType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/audit-log#create-an-audit-log-streaming-configuration-for-an-enterprise"""
+        """enterprise-admin/create-audit-log-stream
+
+        POST /enterprises/{enterprise}/audit-log/streams
+
+        Creates an audit log streaming configuration for any of the supported streaming endpoints: Azure Blob Storage, Azure Event Hubs, Amazon S3, Splunk, Google Cloud Storage, Datadog.
+
+        When using this endpoint, you must encrypt the credentials following the same encryption steps as outlined in the guide on encrypting secrets. See "[Encrypting secrets for the REST API](/rest/guides/encrypting-secrets-for-the-rest-api)."
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/audit-log#create-an-audit-log-streaming-configuration-for-an-enterprise
+        """
 
         from ..models import (
             EnterprisesEnterpriseAuditLogStreamsPostBody,
@@ -2919,7 +3656,16 @@ class EnterpriseAdminClient:
         data: Missing[EnterprisesEnterpriseAuditLogStreamsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[GetAuditLogStreamConfig, GetAuditLogStreamConfigType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/audit-log#create-an-audit-log-streaming-configuration-for-an-enterprise"""
+        """enterprise-admin/create-audit-log-stream
+
+        POST /enterprises/{enterprise}/audit-log/streams
+
+        Creates an audit log streaming configuration for any of the supported streaming endpoints: Azure Blob Storage, Azure Event Hubs, Amazon S3, Splunk, Google Cloud Storage, Datadog.
+
+        When using this endpoint, you must encrypt the credentials following the same encryption steps as outlined in the guide on encrypting secrets. See "[Encrypting secrets for the REST API](/rest/guides/encrypting-secrets-for-the-rest-api)."
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/audit-log#create-an-audit-log-streaming-configuration-for-an-enterprise
+        """
 
         from ..models import (
             EnterprisesEnterpriseAuditLogStreamsPostBody,
@@ -2956,7 +3702,16 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[GetAuditLogStreamConfig, GetAuditLogStreamConfigType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/audit-log#list-one-audit-log-streaming-configuration-via-a-stream-id"""
+        """enterprise-admin/get-one-audit-log-stream
+
+        GET /enterprises/{enterprise}/audit-log/streams/{stream_id}
+
+        Lists one audit log stream configuration via a stream ID.
+
+        When using this endpoint, you must encrypt the credentials following the same encryption steps as outlined in the guide on encrypting secrets. See "[Encrypting secrets for the REST API](/rest/guides/encrypting-secrets-for-the-rest-api)."
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/audit-log#list-one-audit-log-streaming-configuration-via-a-stream-id
+        """
 
         from ..models import GetAuditLogStreamConfig
 
@@ -2978,7 +3733,16 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[GetAuditLogStreamConfig, GetAuditLogStreamConfigType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/audit-log#list-one-audit-log-streaming-configuration-via-a-stream-id"""
+        """enterprise-admin/get-one-audit-log-stream
+
+        GET /enterprises/{enterprise}/audit-log/streams/{stream_id}
+
+        Lists one audit log stream configuration via a stream ID.
+
+        When using this endpoint, you must encrypt the credentials following the same encryption steps as outlined in the guide on encrypting secrets. See "[Encrypting secrets for the REST API](/rest/guides/encrypting-secrets-for-the-rest-api)."
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/audit-log#list-one-audit-log-streaming-configuration-via-a-stream-id
+        """
 
         from ..models import GetAuditLogStreamConfig
 
@@ -3042,7 +3806,16 @@ class EnterpriseAdminClient:
         data: Missing[EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[GetAuditLogStreamConfig, GetAuditLogStreamConfigType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/audit-log#update-an-existing-audit-log-stream-configuration"""
+        """enterprise-admin/update-audit-log-stream
+
+        PUT /enterprises/{enterprise}/audit-log/streams/{stream_id}
+
+        Updates an existing audit log stream configuration for an enterprise.
+
+        When using this endpoint, you must encrypt the credentials following the same encryption steps as outlined in the guide on encrypting secrets. See "[Encrypting secrets for the REST API](/rest/guides/encrypting-secrets-for-the-rest-api)."
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/audit-log#update-an-existing-audit-log-stream-configuration
+        """
 
         from ..models import (
             EnterprisesEnterpriseAuditLogStreamsStreamIdPutBody,
@@ -3125,7 +3898,16 @@ class EnterpriseAdminClient:
         data: Missing[EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[GetAuditLogStreamConfig, GetAuditLogStreamConfigType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/audit-log#update-an-existing-audit-log-stream-configuration"""
+        """enterprise-admin/update-audit-log-stream
+
+        PUT /enterprises/{enterprise}/audit-log/streams/{stream_id}
+
+        Updates an existing audit log stream configuration for an enterprise.
+
+        When using this endpoint, you must encrypt the credentials following the same encryption steps as outlined in the guide on encrypting secrets. See "[Encrypting secrets for the REST API](/rest/guides/encrypting-secrets-for-the-rest-api)."
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/audit-log#update-an-existing-audit-log-stream-configuration
+        """
 
         from ..models import (
             EnterprisesEnterpriseAuditLogStreamsStreamIdPutBody,
@@ -3166,7 +3948,16 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/audit-log#delete-an-audit-log-streaming-configuration-for-an-enterprise"""
+        """enterprise-admin/delete-audit-log-stream
+
+        DELETE /enterprises/{enterprise}/audit-log/streams/{stream_id}
+
+        Deletes an existing audit log stream configuration for an enterprise.
+
+        When using this endpoint, you must encrypt the credentials following the same encryption steps as outlined in the guide on encrypting secrets. See "[Encrypting secrets for the REST API](/rest/guides/encrypting-secrets-for-the-rest-api)."
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/audit-log#delete-an-audit-log-streaming-configuration-for-an-enterprise
+        """
 
         url = f"/enterprises/{enterprise}/audit-log/streams/{stream_id}"
 
@@ -3185,7 +3976,16 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/audit-log#delete-an-audit-log-streaming-configuration-for-an-enterprise"""
+        """enterprise-admin/delete-audit-log-stream
+
+        DELETE /enterprises/{enterprise}/audit-log/streams/{stream_id}
+
+        Deletes an existing audit log stream configuration for an enterprise.
+
+        When using this endpoint, you must encrypt the credentials following the same encryption steps as outlined in the guide on encrypting secrets. See "[Encrypting secrets for the REST API](/rest/guides/encrypting-secrets-for-the-rest-api)."
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/audit-log#delete-an-audit-log-streaming-configuration-for-an-enterprise
+        """
 
         url = f"/enterprises/{enterprise}/audit-log/streams/{stream_id}"
 
@@ -3221,7 +4021,14 @@ class EnterpriseAdminClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[PushRuleBypassRequest], list[PushRuleBypassRequestType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/bypass-requests#list-push-rule-bypass-requests-within-an-enterprise"""
+        """enterprise-admin/list-push-bypass-requests
+
+        GET /enterprises/{enterprise}/bypass-requests/push-rules
+
+        Lists the requests made by users of a repository to bypass push protection rules within an enterprise.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/bypass-requests#list-push-rule-bypass-requests-within-an-enterprise
+        """
 
         from ..models import BasicError, PushRuleBypassRequest
 
@@ -3275,7 +4082,14 @@ class EnterpriseAdminClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[PushRuleBypassRequest], list[PushRuleBypassRequestType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/bypass-requests#list-push-rule-bypass-requests-within-an-enterprise"""
+        """enterprise-admin/list-push-bypass-requests
+
+        GET /enterprises/{enterprise}/bypass-requests/push-rules
+
+        Lists the requests made by users of a repository to bypass push protection rules within an enterprise.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/bypass-requests#list-push-rule-bypass-requests-within-an-enterprise
+        """
 
         from ..models import BasicError, PushRuleBypassRequest
 
@@ -3313,7 +4127,21 @@ class EnterpriseAdminClient:
     ) -> Response[
         EnterpriseSecurityAnalysisSettings, EnterpriseSecurityAnalysisSettingsType
     ]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/code-security-and-analysis#get-code-security-and-analysis-features-for-an-enterprise"""
+        """DEPRECATED secret-scanning/get-security-analysis-settings-for-enterprise
+
+        GET /enterprises/{enterprise}/code_security_and_analysis
+
+        > [!WARNING]
+        > **Closing down notice:** The ability to fetch code security and analysis settings for an enterprise is closing down. Please use [code security configurations](https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations) instead. For more information, see the [changelog](https://github.blog/changelog/2024-09-27-upcoming-replacement-of-enterprise-code-security-enablement-ui-and-apis).
+
+        Gets code security and analysis settings for the specified enterprise.
+
+        The authenticated user must be an administrator of the enterprise in order to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/code-security-and-analysis#get-code-security-and-analysis-features-for-an-enterprise
+        """
 
         from ..models import BasicError, EnterpriseSecurityAnalysisSettings
 
@@ -3339,7 +4167,21 @@ class EnterpriseAdminClient:
     ) -> Response[
         EnterpriseSecurityAnalysisSettings, EnterpriseSecurityAnalysisSettingsType
     ]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/code-security-and-analysis#get-code-security-and-analysis-features-for-an-enterprise"""
+        """DEPRECATED secret-scanning/get-security-analysis-settings-for-enterprise
+
+        GET /enterprises/{enterprise}/code_security_and_analysis
+
+        > [!WARNING]
+        > **Closing down notice:** The ability to fetch code security and analysis settings for an enterprise is closing down. Please use [code security configurations](https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations) instead. For more information, see the [changelog](https://github.blog/changelog/2024-09-27-upcoming-replacement-of-enterprise-code-security-enablement-ui-and-apis).
+
+        Gets code security and analysis settings for the specified enterprise.
+
+        The authenticated user must be an administrator of the enterprise in order to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/code-security-and-analysis#get-code-security-and-analysis-features-for-an-enterprise
+        """
 
         from ..models import BasicError, EnterpriseSecurityAnalysisSettings
 
@@ -3398,7 +4240,21 @@ class EnterpriseAdminClient:
         ] = UNSET,
         **kwargs,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/code-security-and-analysis#update-code-security-and-analysis-features-for-an-enterprise"""
+        """DEPRECATED secret-scanning/patch-security-analysis-settings-for-enterprise
+
+        PATCH /enterprises/{enterprise}/code_security_and_analysis
+
+        > [!WARNING]
+        > **Closing down notice:** The ability to update code security and analysis settings for an enterprise is closing down. Please use [code security configurations](https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations) instead. For more information, see the [changelog](https://github.blog/changelog/2024-09-27-upcoming-replacement-of-enterprise-code-security-enablement-ui-and-apis).
+
+        Updates the settings for advanced security, Dependabot alerts, secret scanning, and push protection for new repositories in an enterprise.
+
+        The authenticated user must be an administrator of the enterprise to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/code-security-and-analysis#update-code-security-and-analysis-features-for-an-enterprise
+        """
 
         from ..models import (
             BasicError,
@@ -3471,7 +4327,21 @@ class EnterpriseAdminClient:
         ] = UNSET,
         **kwargs,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/code-security-and-analysis#update-code-security-and-analysis-features-for-an-enterprise"""
+        """DEPRECATED secret-scanning/patch-security-analysis-settings-for-enterprise
+
+        PATCH /enterprises/{enterprise}/code_security_and_analysis
+
+        > [!WARNING]
+        > **Closing down notice:** The ability to update code security and analysis settings for an enterprise is closing down. Please use [code security configurations](https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations) instead. For more information, see the [changelog](https://github.blog/changelog/2024-09-27-upcoming-replacement-of-enterprise-code-security-enablement-ui-and-apis).
+
+        Updates the settings for advanced security, Dependabot alerts, secret scanning, and push protection for new repositories in an enterprise.
+
+        The authenticated user must be an administrator of the enterprise to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/code-security-and-analysis#update-code-security-and-analysis-features-for-an-enterprise
+        """
 
         from ..models import (
             BasicError,
@@ -3511,7 +4381,18 @@ class EnterpriseAdminClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[GetConsumedLicenses, GetConsumedLicensesType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/license#list-enterprise-consumed-licenses"""
+        """enterprise-admin/get-consumed-licenses
+
+        GET /enterprises/{enterprise}/consumed-licenses
+
+        Lists the license consumption information for all users, including those from connected servers, associated with an enterprise.
+
+        The authenticated user must be an enterprise admin to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/license#list-enterprise-consumed-licenses
+        """
 
         from ..models import GetConsumedLicenses
 
@@ -3540,7 +4421,18 @@ class EnterpriseAdminClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[GetConsumedLicenses, GetConsumedLicensesType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/license#list-enterprise-consumed-licenses"""
+        """enterprise-admin/get-consumed-licenses
+
+        GET /enterprises/{enterprise}/consumed-licenses
+
+        Lists the license consumption information for all users, including those from connected servers, associated with an enterprise.
+
+        The authenticated user must be an enterprise admin to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/license#list-enterprise-consumed-licenses
+        """
 
         from ..models import GetConsumedLicenses
 
@@ -3567,7 +4459,18 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[GetLicenseSyncStatus, GetLicenseSyncStatusType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/license#get-a-license-sync-status"""
+        """enterprise-admin/get-license-sync-status
+
+        GET /enterprises/{enterprise}/license-sync-status
+
+        Gets information about the status of a license sync job for an enterprise.
+
+        The authenticated user must be an enterprise admin to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/license#get-a-license-sync-status
+        """
 
         from ..models import GetLicenseSyncStatus
 
@@ -3588,7 +4491,18 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[GetLicenseSyncStatus, GetLicenseSyncStatusType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/license#get-a-license-sync-status"""
+        """enterprise-admin/get-license-sync-status
+
+        GET /enterprises/{enterprise}/license-sync-status
+
+        Gets information about the status of a license sync job for an enterprise.
+
+        The authenticated user must be an enterprise admin to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/license#get-a-license-sync-status
+        """
 
         from ..models import GetLicenseSyncStatus
 
@@ -3614,7 +4528,14 @@ class EnterpriseAdminClient:
         EnterprisesEnterpriseNetworkConfigurationsGetResponse200,
         EnterprisesEnterpriseNetworkConfigurationsGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/network-configurations#list-hosted-compute-network-configurations-for-an-enterprise"""
+        """hosted-compute/list-network-configurations-for-enterprise
+
+        GET /enterprises/{enterprise}/network-configurations
+
+        Lists all hosted compute network configurations configured in an enterprise.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/network-configurations#list-hosted-compute-network-configurations-for-an-enterprise
+        """
 
         from ..models import EnterprisesEnterpriseNetworkConfigurationsGetResponse200
 
@@ -3646,7 +4567,14 @@ class EnterpriseAdminClient:
         EnterprisesEnterpriseNetworkConfigurationsGetResponse200,
         EnterprisesEnterpriseNetworkConfigurationsGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/network-configurations#list-hosted-compute-network-configurations-for-an-enterprise"""
+        """hosted-compute/list-network-configurations-for-enterprise
+
+        GET /enterprises/{enterprise}/network-configurations
+
+        Lists all hosted compute network configurations configured in an enterprise.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/network-configurations#list-hosted-compute-network-configurations-for-an-enterprise
+        """
 
         from ..models import EnterprisesEnterpriseNetworkConfigurationsGetResponse200
 
@@ -3696,7 +4624,14 @@ class EnterpriseAdminClient:
         data: Missing[EnterprisesEnterpriseNetworkConfigurationsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[NetworkConfiguration, NetworkConfigurationType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/network-configurations#create-a-hosted-compute-network-configuration-for-an-enterprise"""
+        """hosted-compute/create-network-configuration-for-enterprise
+
+        POST /enterprises/{enterprise}/network-configurations
+
+        Creates a hosted compute network configuration for an enterprise.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/network-configurations#create-a-hosted-compute-network-configuration-for-an-enterprise
+        """
 
         from ..models import (
             EnterprisesEnterpriseNetworkConfigurationsPostBody,
@@ -3755,7 +4690,14 @@ class EnterpriseAdminClient:
         data: Missing[EnterprisesEnterpriseNetworkConfigurationsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[NetworkConfiguration, NetworkConfigurationType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/network-configurations#create-a-hosted-compute-network-configuration-for-an-enterprise"""
+        """hosted-compute/create-network-configuration-for-enterprise
+
+        POST /enterprises/{enterprise}/network-configurations
+
+        Creates a hosted compute network configuration for an enterprise.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/network-configurations#create-a-hosted-compute-network-configuration-for-an-enterprise
+        """
 
         from ..models import (
             EnterprisesEnterpriseNetworkConfigurationsPostBody,
@@ -3792,7 +4734,14 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[NetworkConfiguration, NetworkConfigurationType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/network-configurations#get-a-hosted-compute-network-configuration-for-an-enterprise"""
+        """hosted-compute/get-network-configuration-for-enterprise
+
+        GET /enterprises/{enterprise}/network-configurations/{network_configuration_id}
+
+        Gets a hosted compute network configuration configured in an enterprise.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/network-configurations#get-a-hosted-compute-network-configuration-for-an-enterprise
+        """
 
         from ..models import NetworkConfiguration
 
@@ -3814,7 +4763,14 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[NetworkConfiguration, NetworkConfigurationType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/network-configurations#get-a-hosted-compute-network-configuration-for-an-enterprise"""
+        """hosted-compute/get-network-configuration-for-enterprise
+
+        GET /enterprises/{enterprise}/network-configurations/{network_configuration_id}
+
+        Gets a hosted compute network configuration configured in an enterprise.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/network-configurations#get-a-hosted-compute-network-configuration-for-an-enterprise
+        """
 
         from ..models import NetworkConfiguration
 
@@ -3836,7 +4792,14 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/network-configurations#delete-a-hosted-compute-network-configuration-from-an-enterprise"""
+        """hosted-compute/delete-network-configuration-from-enterprise
+
+        DELETE /enterprises/{enterprise}/network-configurations/{network_configuration_id}
+
+        Deletes a hosted compute network configuration from an enterprise.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/network-configurations#delete-a-hosted-compute-network-configuration-from-an-enterprise
+        """
 
         url = f"/enterprises/{enterprise}/network-configurations/{network_configuration_id}"
 
@@ -3855,7 +4818,14 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/network-configurations#delete-a-hosted-compute-network-configuration-from-an-enterprise"""
+        """hosted-compute/delete-network-configuration-from-enterprise
+
+        DELETE /enterprises/{enterprise}/network-configurations/{network_configuration_id}
+
+        Deletes a hosted compute network configuration from an enterprise.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/network-configurations#delete-a-hosted-compute-network-configuration-from-an-enterprise
+        """
 
         url = f"/enterprises/{enterprise}/network-configurations/{network_configuration_id}"
 
@@ -3901,7 +4871,14 @@ class EnterpriseAdminClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[NetworkConfiguration, NetworkConfigurationType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/network-configurations#update-a-hosted-compute-network-configuration-for-an-enterprise"""
+        """hosted-compute/update-network-configuration-for-enterprise
+
+        PATCH /enterprises/{enterprise}/network-configurations/{network_configuration_id}
+
+        Updates a hosted compute network configuration for an enterprise.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/network-configurations#update-a-hosted-compute-network-configuration-for-an-enterprise
+        """
 
         from ..models import (
             EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBody,
@@ -3966,7 +4943,14 @@ class EnterpriseAdminClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[NetworkConfiguration, NetworkConfigurationType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/network-configurations#update-a-hosted-compute-network-configuration-for-an-enterprise"""
+        """hosted-compute/update-network-configuration-for-enterprise
+
+        PATCH /enterprises/{enterprise}/network-configurations/{network_configuration_id}
+
+        Updates a hosted compute network configuration for an enterprise.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/network-configurations#update-a-hosted-compute-network-configuration-for-an-enterprise
+        """
 
         from ..models import (
             EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBody,
@@ -4004,7 +4988,14 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[NetworkSettings, NetworkSettingsType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/network-configurations#get-a-hosted-compute-network-settings-resource-for-an-enterprise"""
+        """hosted-compute/get-network-settings-for-enterprise
+
+        GET /enterprises/{enterprise}/network-settings/{network_settings_id}
+
+        Gets a hosted compute network settings resource configured for an enterprise.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/network-configurations#get-a-hosted-compute-network-settings-resource-for-an-enterprise
+        """
 
         from ..models import NetworkSettings
 
@@ -4026,7 +5017,14 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[NetworkSettings, NetworkSettingsType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/network-configurations#get-a-hosted-compute-network-settings-resource-for-an-enterprise"""
+        """hosted-compute/get-network-settings-for-enterprise
+
+        GET /enterprises/{enterprise}/network-settings/{network_settings_id}
+
+        Gets a hosted compute network settings resource configured for an enterprise.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/network-configurations#get-a-hosted-compute-network-settings-resource-for-an-enterprise
+        """
 
         from ..models import NetworkSettings
 
@@ -4047,7 +5045,15 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[CustomProperty], list[CustomPropertyType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties#get-custom-properties-for-an-enterprise"""
+        """enterprise-admin/get-enterprise-custom-properties
+
+        GET /enterprises/{enterprise}/properties/schema
+
+        Gets all custom properties defined for an enterprise.
+        Enterprise members can read these properties.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties#get-custom-properties-for-an-enterprise
+        """
 
         from ..models import BasicError, CustomProperty
 
@@ -4072,7 +5078,15 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[CustomProperty], list[CustomPropertyType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties#get-custom-properties-for-an-enterprise"""
+        """enterprise-admin/get-enterprise-custom-properties
+
+        GET /enterprises/{enterprise}/properties/schema
+
+        Gets all custom properties defined for an enterprise.
+        Enterprise members can read these properties.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties#get-custom-properties-for-an-enterprise
+        """
 
         from ..models import BasicError, CustomProperty
 
@@ -4118,7 +5132,20 @@ class EnterpriseAdminClient:
         data: Missing[EnterprisesEnterprisePropertiesSchemaPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[list[CustomProperty], list[CustomPropertyType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties#create-or-update-custom-properties-for-an-enterprise"""
+        """enterprise-admin/create-or-update-enterprise-custom-properties
+
+        PATCH /enterprises/{enterprise}/properties/schema
+
+        Creates new or updates existing custom properties defined for an enterprise in a batch.
+
+        If the property already exists, the existing property will be replaced with the new values.
+        Missing optional values will fall back to default values, previous values will be overwritten.
+        E.g. if a property exists with `values_editable_by: org_and_repo_actors` and it's updated without specifying `values_editable_by`, it will be updated to default value `org_actors`.
+
+        To use this endpoint, the authenticated user must be an administrator for the enterprise.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties#create-or-update-custom-properties-for-an-enterprise
+        """
 
         from ..models import (
             BasicError,
@@ -4180,7 +5207,20 @@ class EnterpriseAdminClient:
         data: Missing[EnterprisesEnterprisePropertiesSchemaPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[list[CustomProperty], list[CustomPropertyType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties#create-or-update-custom-properties-for-an-enterprise"""
+        """enterprise-admin/create-or-update-enterprise-custom-properties
+
+        PATCH /enterprises/{enterprise}/properties/schema
+
+        Creates new or updates existing custom properties defined for an enterprise in a batch.
+
+        If the property already exists, the existing property will be replaced with the new values.
+        Missing optional values will fall back to default values, previous values will be overwritten.
+        E.g. if a property exists with `values_editable_by: org_and_repo_actors` and it's updated without specifying `values_editable_by`, it will be updated to default value `org_actors`.
+
+        To use this endpoint, the authenticated user must be an administrator for the enterprise.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties#create-or-update-custom-properties-for-an-enterprise
+        """
 
         from ..models import (
             BasicError,
@@ -4223,7 +5263,16 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CustomProperty, CustomPropertyType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties#promote-a-custom-property-to-an-enterprise"""
+        """enterprise-admin/promote-custom-property-to-enterprise
+
+        PUT /enterprises/{enterprise}/properties/schema/organizations/{org}/{custom_property_name}/promote
+
+        Promotes an existing organization custom property to an enterprise.
+
+        To use this endpoint, the authenticated user must be an administrator for the enterprise.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties#promote-a-custom-property-to-an-enterprise
+        """
 
         from ..models import BasicError, CustomProperty
 
@@ -4250,7 +5299,16 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CustomProperty, CustomPropertyType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties#promote-a-custom-property-to-an-enterprise"""
+        """enterprise-admin/promote-custom-property-to-enterprise
+
+        PUT /enterprises/{enterprise}/properties/schema/organizations/{org}/{custom_property_name}/promote
+
+        Promotes an existing organization custom property to an enterprise.
+
+        To use this endpoint, the authenticated user must be an administrator for the enterprise.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties#promote-a-custom-property-to-an-enterprise
+        """
 
         from ..models import BasicError, CustomProperty
 
@@ -4276,7 +5334,15 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CustomProperty, CustomPropertyType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties#get-a-custom-property-for-an-enterprise"""
+        """enterprise-admin/get-enterprise-custom-property
+
+        GET /enterprises/{enterprise}/properties/schema/{custom_property_name}
+
+        Gets a custom property that is defined for an enterprise.
+        Enterprise members can read these properties.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties#get-a-custom-property-for-an-enterprise
+        """
 
         from ..models import BasicError, CustomProperty
 
@@ -4302,7 +5368,15 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CustomProperty, CustomPropertyType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties#get-a-custom-property-for-an-enterprise"""
+        """enterprise-admin/get-enterprise-custom-property
+
+        GET /enterprises/{enterprise}/properties/schema/{custom_property_name}
+
+        Gets a custom property that is defined for an enterprise.
+        Enterprise members can read these properties.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties#get-a-custom-property-for-an-enterprise
+        """
 
         from ..models import BasicError, CustomProperty
 
@@ -4358,7 +5432,16 @@ class EnterpriseAdminClient:
         data: Missing[CustomPropertySetPayloadType] = UNSET,
         **kwargs,
     ) -> Response[CustomProperty, CustomPropertyType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties#create-or-update-a-custom-property-for-an-enterprise"""
+        """enterprise-admin/create-or-update-enterprise-custom-property
+
+        PUT /enterprises/{enterprise}/properties/schema/{custom_property_name}
+
+        Creates a new or updates an existing custom property that is defined for an enterprise.
+
+        To use this endpoint, the authenticated user must be an administrator for the enterprise.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties#create-or-update-a-custom-property-for-an-enterprise
+        """
 
         from ..models import BasicError, CustomProperty, CustomPropertySetPayload
 
@@ -4424,7 +5507,16 @@ class EnterpriseAdminClient:
         data: Missing[CustomPropertySetPayloadType] = UNSET,
         **kwargs,
     ) -> Response[CustomProperty, CustomPropertyType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties#create-or-update-a-custom-property-for-an-enterprise"""
+        """enterprise-admin/create-or-update-enterprise-custom-property
+
+        PUT /enterprises/{enterprise}/properties/schema/{custom_property_name}
+
+        Creates a new or updates an existing custom property that is defined for an enterprise.
+
+        To use this endpoint, the authenticated user must be an administrator for the enterprise.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties#create-or-update-a-custom-property-for-an-enterprise
+        """
 
         from ..models import BasicError, CustomProperty, CustomPropertySetPayload
 
@@ -4460,7 +5552,16 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties#remove-a-custom-property-for-an-enterprise"""
+        """enterprise-admin/remove-enterprise-custom-property
+
+        DELETE /enterprises/{enterprise}/properties/schema/{custom_property_name}
+
+        Remove a custom property that is defined for an enterprise.
+
+        To use this endpoint, the authenticated user must be an administrator for the enterprise.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties#remove-a-custom-property-for-an-enterprise
+        """
 
         from ..models import BasicError
 
@@ -4485,7 +5586,16 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties#remove-a-custom-property-for-an-enterprise"""
+        """enterprise-admin/remove-enterprise-custom-property
+
+        DELETE /enterprises/{enterprise}/properties/schema/{custom_property_name}
+
+        Remove a custom property that is defined for an enterprise.
+
+        To use this endpoint, the authenticated user must be an administrator for the enterprise.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties#remove-a-custom-property-for-an-enterprise
+        """
 
         from ..models import BasicError
 
@@ -4512,7 +5622,14 @@ class EnterpriseAdminClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[RulesetVersion], list[RulesetVersionType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/rules#get-enterprise-ruleset-history"""
+        """enterprise-admin/get-enterprise-ruleset-history
+
+        GET /enterprises/{enterprise}/rulesets/{ruleset_id}/history
+
+        Get the history of an enterprise ruleset.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/rules#get-enterprise-ruleset-history
+        """
 
         from ..models import BasicError, RulesetVersion
 
@@ -4546,7 +5663,14 @@ class EnterpriseAdminClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[RulesetVersion], list[RulesetVersionType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/rules#get-enterprise-ruleset-history"""
+        """enterprise-admin/get-enterprise-ruleset-history
+
+        GET /enterprises/{enterprise}/rulesets/{ruleset_id}/history
+
+        Get the history of an enterprise ruleset.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/rules#get-enterprise-ruleset-history
+        """
 
         from ..models import BasicError, RulesetVersion
 
@@ -4579,7 +5703,14 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[RulesetVersionWithState, RulesetVersionWithStateType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/rules#get-enterprise-ruleset-version"""
+        """enterprise-admin/get-enterprise-ruleset-version
+
+        GET /enterprises/{enterprise}/rulesets/{ruleset_id}/history/{version_id}
+
+        Get a version of an enterprise ruleset.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/rules#get-enterprise-ruleset-version
+        """
 
         from ..models import BasicError, RulesetVersionWithState
 
@@ -4606,7 +5737,14 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[RulesetVersionWithState, RulesetVersionWithStateType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/rules#get-enterprise-ruleset-version"""
+        """enterprise-admin/get-enterprise-ruleset-version
+
+        GET /enterprises/{enterprise}/rulesets/{ruleset_id}/history/{version_id}
+
+        Get a version of an enterprise ruleset.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/rules#get-enterprise-ruleset-version
+        """
 
         from ..models import BasicError, RulesetVersionWithState
 
@@ -4640,7 +5778,21 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/code-security-and-analysis#enable-or-disable-a-security-feature"""
+        """DEPRECATED secret-scanning/post-security-product-enablement-for-enterprise
+
+        POST /enterprises/{enterprise}/{security_product}/{enablement}
+
+        > [!WARNING]
+        > **Closing down notice:** The ability to enable or disable a security feature for an enterprise is closing down. Please use [code security configurations](https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations) instead. For more information, see the [changelog](https://github.blog/changelog/2024-09-27-upcoming-replacement-of-enterprise-code-security-enablement-ui-and-apis).
+
+        Enables or disables the specified security feature for all repositories in an enterprise.
+
+        The authenticated user must be an administrator of the enterprise to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/code-security-and-analysis#enable-or-disable-a-security-feature
+        """
 
         from ..models import BasicError
 
@@ -4672,7 +5824,21 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/code-security-and-analysis#enable-or-disable-a-security-feature"""
+        """DEPRECATED secret-scanning/post-security-product-enablement-for-enterprise
+
+        POST /enterprises/{enterprise}/{security_product}/{enablement}
+
+        > [!WARNING]
+        > **Closing down notice:** The ability to enable or disable a security feature for an enterprise is closing down. Please use [code security configurations](https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations) instead. For more information, see the [changelog](https://github.blog/changelog/2024-09-27-upcoming-replacement-of-enterprise-code-security-enablement-ui-and-apis).
+
+        Enables or disables the specified security feature for all repositories in an enterprise.
+
+        The authenticated user must be an administrator of the enterprise to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/code-security-and-analysis#enable-or-disable-a-security-feature
+        """
 
         from ..models import BasicError
 
@@ -4699,7 +5865,16 @@ class EnterpriseAdminClient:
         count: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ScimEnterpriseGroupList, ScimEnterpriseGroupListType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#list-provisioned-scim-groups-for-an-enterprise"""
+        """enterprise-admin/list-provisioned-groups-enterprise
+
+        GET /scim/v2/enterprises/{enterprise}/Groups
+
+        Lists provisioned SCIM groups in an enterprise.
+
+        You can improve query search time by using the `excludedAttributes` query parameter with a value of `members` to exclude members from the response.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#list-provisioned-scim-groups-for-an-enterprise
+        """
 
         from ..models import ScimEnterpriseGroupList, ScimError
 
@@ -4737,7 +5912,16 @@ class EnterpriseAdminClient:
         count: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ScimEnterpriseGroupList, ScimEnterpriseGroupListType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#list-provisioned-scim-groups-for-an-enterprise"""
+        """enterprise-admin/list-provisioned-groups-enterprise
+
+        GET /scim/v2/enterprises/{enterprise}/Groups
+
+        Lists provisioned SCIM groups in an enterprise.
+
+        You can improve query search time by using the `excludedAttributes` query parameter with a value of `members` to exclude members from the response.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#list-provisioned-scim-groups-for-an-enterprise
+        """
 
         from ..models import ScimEnterpriseGroupList, ScimError
 
@@ -4795,7 +5979,16 @@ class EnterpriseAdminClient:
         data: Missing[GroupType] = UNSET,
         **kwargs,
     ) -> Response[ScimEnterpriseGroupResponse, ScimEnterpriseGroupResponseType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#provision-a-scim-enterprise-group"""
+        """enterprise-admin/provision-enterprise-group
+
+        POST /scim/v2/enterprises/{enterprise}/Groups
+
+        Creates a SCIM group for an enterprise.
+
+        When members are part of the group provisioning payload, they're designated as external group members. Providers are responsible for maintaining a mapping between the `externalId` and `id` for each user.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#provision-a-scim-enterprise-group
+        """
 
         from ..models import Group, ScimEnterpriseGroupResponse, ScimError
 
@@ -4855,7 +6048,16 @@ class EnterpriseAdminClient:
         data: Missing[GroupType] = UNSET,
         **kwargs,
     ) -> Response[ScimEnterpriseGroupResponse, ScimEnterpriseGroupResponseType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#provision-a-scim-enterprise-group"""
+        """enterprise-admin/provision-enterprise-group
+
+        POST /scim/v2/enterprises/{enterprise}/Groups
+
+        Creates a SCIM group for an enterprise.
+
+        When members are part of the group provisioning payload, they're designated as external group members. Providers are responsible for maintaining a mapping between the `externalId` and `id` for each user.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#provision-a-scim-enterprise-group
+        """
 
         from ..models import Group, ScimEnterpriseGroupResponse, ScimError
 
@@ -4893,7 +6095,14 @@ class EnterpriseAdminClient:
         excluded_attributes: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ScimEnterpriseGroupResponse, ScimEnterpriseGroupResponseType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#get-scim-provisioning-information-for-an-enterprise-group"""
+        """enterprise-admin/get-provisioning-information-for-enterprise-group
+
+        GET /scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}
+
+        Gets information about a SCIM group.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#get-scim-provisioning-information-for-an-enterprise-group
+        """
 
         from ..models import BasicError, ScimEnterpriseGroupResponse, ScimError
 
@@ -4927,7 +6136,14 @@ class EnterpriseAdminClient:
         excluded_attributes: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ScimEnterpriseGroupResponse, ScimEnterpriseGroupResponseType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#get-scim-provisioning-information-for-an-enterprise-group"""
+        """enterprise-admin/get-provisioning-information-for-enterprise-group
+
+        GET /scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}
+
+        Gets information about a SCIM group.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#get-scim-provisioning-information-for-an-enterprise-group
+        """
 
         from ..models import BasicError, ScimEnterpriseGroupResponse, ScimError
 
@@ -4986,7 +6202,16 @@ class EnterpriseAdminClient:
         data: Missing[GroupType] = UNSET,
         **kwargs,
     ) -> Response[ScimEnterpriseGroupResponse, ScimEnterpriseGroupResponseType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#set-scim-information-for-a-provisioned-enterprise-group"""
+        """enterprise-admin/set-information-for-provisioned-enterprise-group
+
+        PUT /scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}
+
+        Replaces an existing provisioned group’s information.
+
+        You must provide all the information required for the group as if you were provisioning it for the first time. Any existing group information that you don't provide will be removed, including group membership. If you want to only update a specific attribute, use the [Update an attribute for a SCIM enterprise group](#update-an-attribute-for-a-scim-enterprise-group) endpoint instead.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#set-scim-information-for-a-provisioned-enterprise-group
+        """
 
         from ..models import BasicError, Group, ScimEnterpriseGroupResponse, ScimError
 
@@ -5050,7 +6275,16 @@ class EnterpriseAdminClient:
         data: Missing[GroupType] = UNSET,
         **kwargs,
     ) -> Response[ScimEnterpriseGroupResponse, ScimEnterpriseGroupResponseType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#set-scim-information-for-a-provisioned-enterprise-group"""
+        """enterprise-admin/set-information-for-provisioned-enterprise-group
+
+        PUT /scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}
+
+        Replaces an existing provisioned group’s information.
+
+        You must provide all the information required for the group as if you were provisioning it for the first time. Any existing group information that you don't provide will be removed, including group membership. If you want to only update a specific attribute, use the [Update an attribute for a SCIM enterprise group](#update-an-attribute-for-a-scim-enterprise-group) endpoint instead.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#set-scim-information-for-a-provisioned-enterprise-group
+        """
 
         from ..models import BasicError, Group, ScimEnterpriseGroupResponse, ScimError
 
@@ -5088,7 +6322,14 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#delete-a-scim-group-from-an-enterprise"""
+        """enterprise-admin/delete-scim-group-from-enterprise
+
+        DELETE /scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}
+
+        Deletes a SCIM group from an enterprise.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#delete-a-scim-group-from-an-enterprise
+        """
 
         from ..models import BasicError, ScimError
 
@@ -5115,7 +6356,14 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#delete-a-scim-group-from-an-enterprise"""
+        """enterprise-admin/delete-scim-group-from-enterprise
+
+        DELETE /scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}
+
+        Deletes a SCIM group from an enterprise.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#delete-a-scim-group-from-an-enterprise
+        """
 
         from ..models import BasicError, ScimError
 
@@ -5166,7 +6414,21 @@ class EnterpriseAdminClient:
         data: Missing[PatchSchemaType] = UNSET,
         **kwargs,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#update-an-attribute-for-a-scim-enterprise-group"""
+        """enterprise-admin/update-attribute-for-enterprise-group
+
+        PATCH /scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}
+
+        Update a provisioned group’s individual attributes.
+
+        To modify a group's values, you'll need to use a specific Operations JSON format which must include at least one of the following operations: add, remove, or replace. For examples and more information on this SCIM format, consult the [SCIM specification](https://tools.ietf.org/html/rfc7644#section-3.5.2). The update function can also be used to add group memberships.
+
+        You can submit group memberships individually or in batches for improved efficiency.
+
+        > [!NOTE]
+        > Memberships are referenced via a local user id. Ensure users are created before referencing them here.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#update-an-attribute-for-a-scim-enterprise-group
+        """
 
         from ..models import BasicError, PatchSchema, ScimError
 
@@ -5227,7 +6489,21 @@ class EnterpriseAdminClient:
         data: Missing[PatchSchemaType] = UNSET,
         **kwargs,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#update-an-attribute-for-a-scim-enterprise-group"""
+        """enterprise-admin/update-attribute-for-enterprise-group
+
+        PATCH /scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}
+
+        Update a provisioned group’s individual attributes.
+
+        To modify a group's values, you'll need to use a specific Operations JSON format which must include at least one of the following operations: add, remove, or replace. For examples and more information on this SCIM format, consult the [SCIM specification](https://tools.ietf.org/html/rfc7644#section-3.5.2). The update function can also be used to add group memberships.
+
+        You can submit group memberships individually or in batches for improved efficiency.
+
+        > [!NOTE]
+        > Memberships are referenced via a local user id. Ensure users are created before referencing them here.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#update-an-attribute-for-a-scim-enterprise-group
+        """
 
         from ..models import BasicError, PatchSchema, ScimError
 
@@ -5266,7 +6542,16 @@ class EnterpriseAdminClient:
         count: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ScimEnterpriseUserList, ScimEnterpriseUserListType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#list-scim-provisioned-identities-for-an-enterprise"""
+        """enterprise-admin/list-provisioned-identities-enterprise
+
+        GET /scim/v2/enterprises/{enterprise}/Users
+
+        Lists provisioned SCIM enterprise members.
+
+        When you remove a user with a SCIM-provisioned external identity from an enterprise using a `patch` with `active` flag to `false`, the user's metadata remains intact. This means they can potentially re-join the enterprise later. Although, while suspended, the user can't sign in. If you want to ensure the user can't re-join in the future, use the delete request. Only users who weren't permanently deleted will appear in the result list.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#list-scim-provisioned-identities-for-an-enterprise
+        """
 
         from ..models import ScimEnterpriseUserList, ScimError
 
@@ -5302,7 +6587,16 @@ class EnterpriseAdminClient:
         count: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ScimEnterpriseUserList, ScimEnterpriseUserListType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#list-scim-provisioned-identities-for-an-enterprise"""
+        """enterprise-admin/list-provisioned-identities-enterprise
+
+        GET /scim/v2/enterprises/{enterprise}/Users
+
+        Lists provisioned SCIM enterprise members.
+
+        When you remove a user with a SCIM-provisioned external identity from an enterprise using a `patch` with `active` flag to `false`, the user's metadata remains intact. This means they can potentially re-join the enterprise later. Although, while suspended, the user can't sign in. If you want to ensure the user can't re-join in the future, use the delete request. Only users who weren't permanently deleted will appear in the result list.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#list-scim-provisioned-identities-for-an-enterprise
+        """
 
         from ..models import ScimEnterpriseUserList, ScimError
 
@@ -5363,7 +6657,16 @@ class EnterpriseAdminClient:
         data: Missing[UserType] = UNSET,
         **kwargs,
     ) -> Response[ScimEnterpriseUserResponse, ScimEnterpriseUserResponseType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#provision-a-scim-enterprise-user"""
+        """enterprise-admin/provision-enterprise-user
+
+        POST /scim/v2/enterprises/{enterprise}/Users
+
+        Creates an external identity for a new SCIM enterprise user.
+
+        SCIM is responsible for user provisioning, not authentication. The actual user authentication is handled by SAML. However, with SCIM enabled, users must first be provisioned via SCIM before they can sign in through SAML.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#provision-a-scim-enterprise-user
+        """
 
         from ..models import ScimEnterpriseUserResponse, ScimError, User
 
@@ -5427,7 +6730,16 @@ class EnterpriseAdminClient:
         data: Missing[UserType] = UNSET,
         **kwargs,
     ) -> Response[ScimEnterpriseUserResponse, ScimEnterpriseUserResponseType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#provision-a-scim-enterprise-user"""
+        """enterprise-admin/provision-enterprise-user
+
+        POST /scim/v2/enterprises/{enterprise}/Users
+
+        Creates an external identity for a new SCIM enterprise user.
+
+        SCIM is responsible for user provisioning, not authentication. The actual user authentication is handled by SAML. However, with SCIM enabled, users must first be provisioned via SCIM before they can sign in through SAML.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#provision-a-scim-enterprise-user
+        """
 
         from ..models import ScimEnterpriseUserResponse, ScimError, User
 
@@ -5464,7 +6776,14 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ScimEnterpriseUserResponse, ScimEnterpriseUserResponseType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#get-scim-provisioning-information-for-an-enterprise-user"""
+        """enterprise-admin/get-provisioning-information-for-enterprise-user
+
+        GET /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
+
+        Gets information about a SCIM user.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#get-scim-provisioning-information-for-an-enterprise-user
+        """
 
         from ..models import BasicError, ScimEnterpriseUserResponse, ScimError
 
@@ -5492,7 +6811,14 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ScimEnterpriseUserResponse, ScimEnterpriseUserResponseType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#get-scim-provisioning-information-for-an-enterprise-user"""
+        """enterprise-admin/get-provisioning-information-for-enterprise-user
+
+        GET /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
+
+        Gets information about a SCIM user.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#get-scim-provisioning-information-for-an-enterprise-user
+        """
 
         from ..models import BasicError, ScimEnterpriseUserResponse, ScimError
 
@@ -5550,7 +6876,19 @@ class EnterpriseAdminClient:
         data: Missing[UserType] = UNSET,
         **kwargs,
     ) -> Response[ScimEnterpriseUserResponse, ScimEnterpriseUserResponseType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#set-scim-information-for-a-provisioned-enterprise-user"""
+        """enterprise-admin/set-information-for-provisioned-enterprise-user
+
+        PUT /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
+
+        Replaces an existing provisioned user's information.
+
+        You must supply complete user information, just as you would when provisioning them initially. Any previously existing data not provided will be deleted. To update only a specific attribute, refer to the [Update an attribute for a SCIM user](#update-an-attribute-for-a-scim-enterprise-user) endpoint.
+
+        > [!WARNING]
+        > Setting `active: false` will suspend a user, and their handle and email will be obfuscated.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#set-scim-information-for-a-provisioned-enterprise-user
+        """
 
         from ..models import BasicError, ScimEnterpriseUserResponse, ScimError, User
 
@@ -5618,7 +6956,19 @@ class EnterpriseAdminClient:
         data: Missing[UserType] = UNSET,
         **kwargs,
     ) -> Response[ScimEnterpriseUserResponse, ScimEnterpriseUserResponseType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#set-scim-information-for-a-provisioned-enterprise-user"""
+        """enterprise-admin/set-information-for-provisioned-enterprise-user
+
+        PUT /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
+
+        Replaces an existing provisioned user's information.
+
+        You must supply complete user information, just as you would when provisioning them initially. Any previously existing data not provided will be deleted. To update only a specific attribute, refer to the [Update an attribute for a SCIM user](#update-an-attribute-for-a-scim-enterprise-user) endpoint.
+
+        > [!WARNING]
+        > Setting `active: false` will suspend a user, and their handle and email will be obfuscated.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#set-scim-information-for-a-provisioned-enterprise-user
+        """
 
         from ..models import BasicError, ScimEnterpriseUserResponse, ScimError, User
 
@@ -5656,7 +7006,14 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#delete-a-scim-user-from-an-enterprise"""
+        """enterprise-admin/delete-user-from-enterprise
+
+        DELETE /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
+
+        Suspends a SCIM user permanently from an enterprise. This action will: remove all the user's data,  anonymize their login, email, and display name, erase all external identity SCIM attributes, delete the user's emails, avatar, PATs, SSH keys, OAuth authorizations, GPG keys, and SAML mappings. This action is irreversible.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#delete-a-scim-user-from-an-enterprise
+        """
 
         from ..models import BasicError, ScimError
 
@@ -5683,7 +7040,14 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#delete-a-scim-user-from-an-enterprise"""
+        """enterprise-admin/delete-user-from-enterprise
+
+        DELETE /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
+
+        Suspends a SCIM user permanently from an enterprise. This action will: remove all the user's data,  anonymize their login, email, and display name, erase all external identity SCIM attributes, delete the user's emails, avatar, PATs, SSH keys, OAuth authorizations, GPG keys, and SAML mappings. This action is irreversible.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#delete-a-scim-user-from-an-enterprise
+        """
 
         from ..models import BasicError, ScimError
 
@@ -5734,7 +7098,32 @@ class EnterpriseAdminClient:
         data: Missing[PatchSchemaType] = UNSET,
         **kwargs,
     ) -> Response[ScimEnterpriseUserResponse, ScimEnterpriseUserResponseType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#update-an-attribute-for-a-scim-enterprise-user"""
+        """enterprise-admin/update-attribute-for-enterprise-user
+
+        PATCH /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
+
+        Update a provisioned user's individual attributes.
+
+        To modify a user's attributes, you'll need to provide a `Operations` JSON formatted request that includes at least one of the following actions: add, remove, or replace. For specific examples and more information on the SCIM operations format, please refer to the [SCIM specification](https://tools.ietf.org/html/rfc7644#section-3.5.2).
+
+        > [!NOTE]
+        > Complex SCIM `path` selectors that include filters are not supported. For example, a `path` selector defined as `"path": "emails[type eq \"work\"]"` will be ineffective.
+
+        > [!WARNING]
+        > Setting `active: false` will suspend a user, and their handle and email will be obfuscated.
+        > ```
+        > {
+        >   "Operations":[{
+        >     "op":"replace",
+        >     "value":{
+        >       "active":false
+        >     }
+        >   }]
+        > }
+        > ```
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#update-an-attribute-for-a-scim-enterprise-user
+        """
 
         from ..models import (
             BasicError,
@@ -5801,7 +7190,32 @@ class EnterpriseAdminClient:
         data: Missing[PatchSchemaType] = UNSET,
         **kwargs,
     ) -> Response[ScimEnterpriseUserResponse, ScimEnterpriseUserResponseType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#update-an-attribute-for-a-scim-enterprise-user"""
+        """enterprise-admin/update-attribute-for-enterprise-user
+
+        PATCH /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
+
+        Update a provisioned user's individual attributes.
+
+        To modify a user's attributes, you'll need to provide a `Operations` JSON formatted request that includes at least one of the following actions: add, remove, or replace. For specific examples and more information on the SCIM operations format, please refer to the [SCIM specification](https://tools.ietf.org/html/rfc7644#section-3.5.2).
+
+        > [!NOTE]
+        > Complex SCIM `path` selectors that include filters are not supported. For example, a `path` selector defined as `"path": "emails[type eq \"work\"]"` will be ineffective.
+
+        > [!WARNING]
+        > Setting `active: false` will suspend a user, and their handle and email will be obfuscated.
+        > ```
+        > {
+        >   "Operations":[{
+        >     "op":"replace",
+        >     "value":{
+        >       "active":false
+        >     }
+        >   }]
+        > }
+        > ```
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#update-an-attribute-for-a-scim-enterprise-user
+        """
 
         from ..models import (
             BasicError,

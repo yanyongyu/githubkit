@@ -49,7 +49,20 @@ class ServerStatisticsClient:
         date_end: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[ServerStatisticsItems], list[ServerStatisticsItemsType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/admin-stats#get-github-enterprise-server-statistics"""
+        """enterprise-admin/get-server-statistics
+
+        GET /enterprise-installation/{enterprise_or_org}/server-statistics
+
+        Returns aggregate usage metrics for your GitHub Enterprise Server 3.5+ instance for a specified time period up to 365 days.
+
+        To use this endpoint, your GitHub Enterprise Server instance must be connected to GitHub Enterprise Cloud using GitHub Connect. You must enable Server Statistics, and for the API request provide your enterprise account name or organization name connected to the GitHub Enterprise Server. For more information, see "[Enabling Server Statistics for your enterprise](/admin/configuration/configuring-github-connect/enabling-server-statistics-for-your-enterprise)" in the GitHub Enterprise Server documentation.
+
+        OAuth app tokens and personal access tokens (classic) need:
+          - the `read:enterprise` scope if you connected your GitHub Enterprise Server to an enterprise account and enabled Server Statistics
+          - the `read:org` scope if you connected your GitHub Enterprise Server to an organization account and enabled Server Statistics
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/admin-stats#get-github-enterprise-server-statistics
+        """
 
         from ..models import ServerStatisticsItems
 
@@ -78,7 +91,20 @@ class ServerStatisticsClient:
         date_end: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[ServerStatisticsItems], list[ServerStatisticsItemsType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/admin-stats#get-github-enterprise-server-statistics"""
+        """enterprise-admin/get-server-statistics
+
+        GET /enterprise-installation/{enterprise_or_org}/server-statistics
+
+        Returns aggregate usage metrics for your GitHub Enterprise Server 3.5+ instance for a specified time period up to 365 days.
+
+        To use this endpoint, your GitHub Enterprise Server instance must be connected to GitHub Enterprise Cloud using GitHub Connect. You must enable Server Statistics, and for the API request provide your enterprise account name or organization name connected to the GitHub Enterprise Server. For more information, see "[Enabling Server Statistics for your enterprise](/admin/configuration/configuring-github-connect/enabling-server-statistics-for-your-enterprise)" in the GitHub Enterprise Server documentation.
+
+        OAuth app tokens and personal access tokens (classic) need:
+          - the `read:enterprise` scope if you connected your GitHub Enterprise Server to an enterprise account and enabled Server Statistics
+          - the `read:org` scope if you connected your GitHub Enterprise Server to an organization account and enabled Server Statistics
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/admin-stats#get-github-enterprise-server-statistics
+        """
 
         from ..models import ServerStatisticsItems
 

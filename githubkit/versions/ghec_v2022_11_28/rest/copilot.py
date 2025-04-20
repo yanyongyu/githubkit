@@ -79,7 +79,28 @@ class CopilotClient:
         EnterprisesEnterpriseCopilotBillingSeatsGetResponse200,
         EnterprisesEnterpriseCopilotBillingSeatsGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#list-all-copilot-seat-assignments-for-an-enterprise"""
+        """copilot/list-copilot-seats-for-enterprise
+
+        GET /enterprises/{enterprise}/copilot/billing/seats
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Lists all Copilot seats currently being billed for across organizations or enterprise teams for an enterprise with a Copilot Business or Copilot Enterprise subscription.
+
+        Users with access through multiple organizations or enterprise teams will only be counted toward `total_seats` once.
+
+        For each organization or enterprise team which grants Copilot access to a user, a seat detail object will appear in the `seats` array.
+        Each seat object contains information about the assigned user's most recent Copilot activity. Users must have
+        telemetry enabled in their IDE for Copilot in the IDE activity to be reflected in `last_activity_at`. For more information about activity data,
+        see "[Reviewing user activity data for Copilot in your organization](https://docs.github.com/enterprise-cloud@latest//copilot/managing-copilot/managing-github-copilot-in-your-organization/reviewing-activity-related-to-github-copilot-in-your-organization/reviewing-user-activity-data-for-copilot-in-your-organization)."
+
+        Only enterprise owners and billing managers can view assigned Copilot seats across their child organizations or enterprise teams.
+
+        Personal access tokens (classic) need either the `manage_billing:copilot` or `read:enterprise` scopes to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#list-all-copilot-seat-assignments-for-an-enterprise
+        """
 
         from ..models import (
             BasicError,
@@ -120,7 +141,28 @@ class CopilotClient:
         EnterprisesEnterpriseCopilotBillingSeatsGetResponse200,
         EnterprisesEnterpriseCopilotBillingSeatsGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#list-all-copilot-seat-assignments-for-an-enterprise"""
+        """copilot/list-copilot-seats-for-enterprise
+
+        GET /enterprises/{enterprise}/copilot/billing/seats
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Lists all Copilot seats currently being billed for across organizations or enterprise teams for an enterprise with a Copilot Business or Copilot Enterprise subscription.
+
+        Users with access through multiple organizations or enterprise teams will only be counted toward `total_seats` once.
+
+        For each organization or enterprise team which grants Copilot access to a user, a seat detail object will appear in the `seats` array.
+        Each seat object contains information about the assigned user's most recent Copilot activity. Users must have
+        telemetry enabled in their IDE for Copilot in the IDE activity to be reflected in `last_activity_at`. For more information about activity data,
+        see "[Reviewing user activity data for Copilot in your organization](https://docs.github.com/enterprise-cloud@latest//copilot/managing-copilot/managing-github-copilot-in-your-organization/reviewing-activity-related-to-github-copilot-in-your-organization/reviewing-user-activity-data-for-copilot-in-your-organization)."
+
+        Only enterprise owners and billing managers can view assigned Copilot seats across their child organizations or enterprise teams.
+
+        Personal access tokens (classic) need either the `manage_billing:copilot` or `read:enterprise` scopes to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#list-all-copilot-seat-assignments-for-an-enterprise
+        """
 
         from ..models import (
             BasicError,
@@ -160,7 +202,23 @@ class CopilotClient:
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[CopilotUsageMetricsDay], list[CopilotUsageMetricsDayType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-metrics#get-copilot-metrics-for-an-enterprise"""
+        """copilot/copilot-metrics-for-enterprise
+
+        GET /enterprises/{enterprise}/copilot/metrics
+
+        Use this endpoint to see a breakdown of aggregated metrics for various GitHub Copilot features. See the response schema tab for detailed metrics definitions.
+
+        The response contains metrics for up to 28 days prior. Metrics are processed once per day for the previous day,
+        and the response will only include data up until yesterday. In order for an end user to be counted towards these metrics,
+        they must have telemetry enabled in their IDE.
+
+        To access this endpoint, the Copilot Metrics API access policy must be enabled or set to "no policy" for the enterprise within GitHub settings.
+        Only enterprise owners and billing managers can view Copilot metrics for the enterprise.
+
+        OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `read:enterprise` scopes to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-metrics#get-copilot-metrics-for-an-enterprise
+        """
 
         from ..models import BasicError, CopilotUsageMetricsDay
 
@@ -199,7 +257,23 @@ class CopilotClient:
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[CopilotUsageMetricsDay], list[CopilotUsageMetricsDayType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-metrics#get-copilot-metrics-for-an-enterprise"""
+        """copilot/copilot-metrics-for-enterprise
+
+        GET /enterprises/{enterprise}/copilot/metrics
+
+        Use this endpoint to see a breakdown of aggregated metrics for various GitHub Copilot features. See the response schema tab for detailed metrics definitions.
+
+        The response contains metrics for up to 28 days prior. Metrics are processed once per day for the previous day,
+        and the response will only include data up until yesterday. In order for an end user to be counted towards these metrics,
+        they must have telemetry enabled in their IDE.
+
+        To access this endpoint, the Copilot Metrics API access policy must be enabled or set to "no policy" for the enterprise within GitHub settings.
+        Only enterprise owners and billing managers can view Copilot metrics for the enterprise.
+
+        OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `read:enterprise` scopes to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-metrics#get-copilot-metrics-for-an-enterprise
+        """
 
         from ..models import BasicError, CopilotUsageMetricsDay
 
@@ -239,7 +313,29 @@ class CopilotClient:
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[CopilotUsageMetricsDay], list[CopilotUsageMetricsDayType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-metrics#get-copilot-metrics-for-an-enterprise-team"""
+        """copilot/copilot-metrics-for-enterprise-team
+
+        GET /enterprises/{enterprise}/team/{team_slug}/copilot/metrics
+
+        > [!NOTE]
+        > This endpoint is only applicable to dedicated enterprise accounts for Copilot Business. See "[About enterprise accounts for Copilot Business](https://docs.github.com/enterprise-cloud@latest//admin/copilot-business-only/about-enterprise-accounts-for-copilot-business)."
+
+        Use this endpoint to see a breakdown of aggregated metrics for various GitHub Copilot features. See the response schema tab for detailed metrics definitions.
+
+        The response contains metrics for up to 28 days prior. Metrics are processed once per day for the previous day,
+        and the response will only include data up until yesterday. In order for an end user to be counted towards these metrics,
+        they must have telemetry enabled in their IDE.
+
+        > [!NOTE]
+        > This endpoint will only return results for a given day if the enterprise team had **five or more members with active Copilot licenses** on that day, as evaluated at the end of that day.
+
+        To access this endpoint, the Copilot Metrics API access policy must be enabled or set to "no policy" for the enterprise within GitHub settings.
+        Only owners and billing managers for the enterprise that contains the enterprise team can view Copilot metrics for the enterprise team.
+
+        OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `read:enterprise` scopes to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-metrics#get-copilot-metrics-for-an-enterprise-team
+        """
 
         from ..models import BasicError, CopilotUsageMetricsDay
 
@@ -279,7 +375,29 @@ class CopilotClient:
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[CopilotUsageMetricsDay], list[CopilotUsageMetricsDayType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-metrics#get-copilot-metrics-for-an-enterprise-team"""
+        """copilot/copilot-metrics-for-enterprise-team
+
+        GET /enterprises/{enterprise}/team/{team_slug}/copilot/metrics
+
+        > [!NOTE]
+        > This endpoint is only applicable to dedicated enterprise accounts for Copilot Business. See "[About enterprise accounts for Copilot Business](https://docs.github.com/enterprise-cloud@latest//admin/copilot-business-only/about-enterprise-accounts-for-copilot-business)."
+
+        Use this endpoint to see a breakdown of aggregated metrics for various GitHub Copilot features. See the response schema tab for detailed metrics definitions.
+
+        The response contains metrics for up to 28 days prior. Metrics are processed once per day for the previous day,
+        and the response will only include data up until yesterday. In order for an end user to be counted towards these metrics,
+        they must have telemetry enabled in their IDE.
+
+        > [!NOTE]
+        > This endpoint will only return results for a given day if the enterprise team had **five or more members with active Copilot licenses** on that day, as evaluated at the end of that day.
+
+        To access this endpoint, the Copilot Metrics API access policy must be enabled or set to "no policy" for the enterprise within GitHub settings.
+        Only owners and billing managers for the enterprise that contains the enterprise team can view Copilot metrics for the enterprise team.
+
+        OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `read:enterprise` scopes to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-metrics#get-copilot-metrics-for-an-enterprise-team
+        """
 
         from ..models import BasicError, CopilotUsageMetricsDay
 
@@ -314,7 +432,23 @@ class CopilotClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CopilotOrganizationDetails, CopilotOrganizationDetailsType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#get-copilot-seat-information-and-settings-for-an-organization"""
+        """copilot/get-copilot-organization-details
+
+        GET /orgs/{org}/copilot/billing
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Gets information about an organization's Copilot subscription, including seat breakdown
+        and feature policies. To configure these settings, go to your organization's settings on GitHub.com.
+        For more information, see "[Managing policies for Copilot in your organization](https://docs.github.com/enterprise-cloud@latest//copilot/managing-copilot/managing-policies-for-copilot-business-in-your-organization)."
+
+        Only organization owners can view details about the organization's Copilot Business or Copilot Enterprise subscription.
+
+        OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `read:org` scopes to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#get-copilot-seat-information-and-settings-for-an-organization
+        """
 
         from ..models import BasicError, CopilotOrganizationDetails
 
@@ -341,7 +475,23 @@ class CopilotClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CopilotOrganizationDetails, CopilotOrganizationDetailsType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#get-copilot-seat-information-and-settings-for-an-organization"""
+        """copilot/get-copilot-organization-details
+
+        GET /orgs/{org}/copilot/billing
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Gets information about an organization's Copilot subscription, including seat breakdown
+        and feature policies. To configure these settings, go to your organization's settings on GitHub.com.
+        For more information, see "[Managing policies for Copilot in your organization](https://docs.github.com/enterprise-cloud@latest//copilot/managing-copilot/managing-policies-for-copilot-business-in-your-organization)."
+
+        Only organization owners can view details about the organization's Copilot Business or Copilot Enterprise subscription.
+
+        OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `read:org` scopes to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#get-copilot-seat-information-and-settings-for-an-organization
+        """
 
         from ..models import BasicError, CopilotOrganizationDetails
 
@@ -373,7 +523,23 @@ class CopilotClient:
         OrgsOrgCopilotBillingSeatsGetResponse200,
         OrgsOrgCopilotBillingSeatsGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#list-all-copilot-seat-assignments-for-an-organization"""
+        """copilot/list-copilot-seats
+
+        GET /orgs/{org}/copilot/billing/seats
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Lists all Copilot seats for which an organization with a Copilot Business or Copilot Enterprise subscription is currently being billed.
+        Only organization owners can view assigned seats.
+
+        Each seat object contains information about the assigned user's most recent Copilot activity. Users must have telemetry enabled in their IDE for Copilot in the IDE activity to be reflected in `last_activity_at`.
+        For more information about activity data, see "[Reviewing user activity data for Copilot in your organization](https://docs.github.com/enterprise-cloud@latest//copilot/managing-copilot/managing-github-copilot-in-your-organization/reviewing-activity-related-to-github-copilot-in-your-organization/reviewing-user-activity-data-for-copilot-in-your-organization)."
+
+        OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `read:org` scopes to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#list-all-copilot-seat-assignments-for-an-organization
+        """
 
         from ..models import BasicError, OrgsOrgCopilotBillingSeatsGetResponse200
 
@@ -411,7 +577,23 @@ class CopilotClient:
         OrgsOrgCopilotBillingSeatsGetResponse200,
         OrgsOrgCopilotBillingSeatsGetResponse200Type,
     ]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#list-all-copilot-seat-assignments-for-an-organization"""
+        """copilot/list-copilot-seats
+
+        GET /orgs/{org}/copilot/billing/seats
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Lists all Copilot seats for which an organization with a Copilot Business or Copilot Enterprise subscription is currently being billed.
+        Only organization owners can view assigned seats.
+
+        Each seat object contains information about the assigned user's most recent Copilot activity. Users must have telemetry enabled in their IDE for Copilot in the IDE activity to be reflected in `last_activity_at`.
+        For more information about activity data, see "[Reviewing user activity data for Copilot in your organization](https://docs.github.com/enterprise-cloud@latest//copilot/managing-copilot/managing-github-copilot-in-your-organization/reviewing-activity-related-to-github-copilot-in-your-organization/reviewing-user-activity-data-for-copilot-in-your-organization)."
+
+        OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `read:org` scopes to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#list-all-copilot-seat-assignments-for-an-organization
+        """
 
         from ..models import BasicError, OrgsOrgCopilotBillingSeatsGetResponse200
 
@@ -474,7 +656,26 @@ class CopilotClient:
         OrgsOrgCopilotBillingSelectedTeamsPostResponse201,
         OrgsOrgCopilotBillingSelectedTeamsPostResponse201Type,
     ]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#add-teams-to-the-copilot-subscription-for-an-organization"""
+        """copilot/add-copilot-seats-for-teams
+
+        POST /orgs/{org}/copilot/billing/selected_teams
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Purchases a GitHub Copilot seat for all users within each specified team.
+        The organization will be billed for each seat based on the organization's Copilot plan. For more information about Copilot pricing, see "[About billing for GitHub Copilot in your organization](https://docs.github.com/enterprise-cloud@latest//copilot/managing-copilot/managing-github-copilot-in-your-organization/managing-the-copilot-subscription-for-your-organization/about-billing-for-github-copilot-in-your-organization)."
+
+        Only organization owners can purchase Copilot seats for their organization members. The organization must have a Copilot Business or Copilot Enterprise subscription and a configured suggestion matching policy.
+        For more information about setting up a Copilot subscription, see "[Subscribing to Copilot for your organization](https://docs.github.com/enterprise-cloud@latest//copilot/managing-copilot/managing-github-copilot-in-your-organization/managing-the-copilot-subscription-for-your-organization/subscribing-to-copilot-for-your-organization)."
+        For more information about setting a suggestion matching policy, see "[Managing policies for Copilot in your organization](https://docs.github.com/enterprise-cloud@latest//copilot/managing-copilot/managing-github-copilot-in-your-organization/setting-policies-for-copilot-in-your-organization/managing-policies-for-copilot-in-your-organization#policies-for-suggestion-matching)."
+
+        The response contains the total number of new seats that were created and existing seats that were refreshed.
+
+        OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `admin:org` scopes to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#add-teams-to-the-copilot-subscription-for-an-organization
+        """
 
         from ..models import (
             BasicError,
@@ -547,7 +748,26 @@ class CopilotClient:
         OrgsOrgCopilotBillingSelectedTeamsPostResponse201,
         OrgsOrgCopilotBillingSelectedTeamsPostResponse201Type,
     ]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#add-teams-to-the-copilot-subscription-for-an-organization"""
+        """copilot/add-copilot-seats-for-teams
+
+        POST /orgs/{org}/copilot/billing/selected_teams
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Purchases a GitHub Copilot seat for all users within each specified team.
+        The organization will be billed for each seat based on the organization's Copilot plan. For more information about Copilot pricing, see "[About billing for GitHub Copilot in your organization](https://docs.github.com/enterprise-cloud@latest//copilot/managing-copilot/managing-github-copilot-in-your-organization/managing-the-copilot-subscription-for-your-organization/about-billing-for-github-copilot-in-your-organization)."
+
+        Only organization owners can purchase Copilot seats for their organization members. The organization must have a Copilot Business or Copilot Enterprise subscription and a configured suggestion matching policy.
+        For more information about setting up a Copilot subscription, see "[Subscribing to Copilot for your organization](https://docs.github.com/enterprise-cloud@latest//copilot/managing-copilot/managing-github-copilot-in-your-organization/managing-the-copilot-subscription-for-your-organization/subscribing-to-copilot-for-your-organization)."
+        For more information about setting a suggestion matching policy, see "[Managing policies for Copilot in your organization](https://docs.github.com/enterprise-cloud@latest//copilot/managing-copilot/managing-github-copilot-in-your-organization/setting-policies-for-copilot-in-your-organization/managing-policies-for-copilot-in-your-organization#policies-for-suggestion-matching)."
+
+        The response contains the total number of new seats that were created and existing seats that were refreshed.
+
+        OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `admin:org` scopes to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#add-teams-to-the-copilot-subscription-for-an-organization
+        """
 
         from ..models import (
             BasicError,
@@ -620,7 +840,25 @@ class CopilotClient:
         OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200,
         OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200Type,
     ]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#remove-teams-from-the-copilot-subscription-for-an-organization"""
+        """copilot/cancel-copilot-seat-assignment-for-teams
+
+        DELETE /orgs/{org}/copilot/billing/selected_teams
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Sets seats for all members of each team specified to "pending cancellation".
+        This will cause the members of the specified team(s) to lose access to GitHub Copilot at the end of the current billing cycle unless they retain access through another team.
+        For more information about disabling access to Copilot, see "[Revoking access to Copilot for members of your organization](https://docs.github.com/enterprise-cloud@latest//copilot/managing-copilot/managing-github-copilot-in-your-organization/managing-access-to-github-copilot-in-your-organization/revoking-access-to-copilot-for-members-of-your-organization)."
+
+        Only organization owners can cancel Copilot seats for their organization members.
+
+        The response contains the total number of seats set to "pending cancellation".
+
+        OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `admin:org` scopes to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#remove-teams-from-the-copilot-subscription-for-an-organization
+        """
 
         from ..models import (
             BasicError,
@@ -693,7 +931,25 @@ class CopilotClient:
         OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200,
         OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200Type,
     ]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#remove-teams-from-the-copilot-subscription-for-an-organization"""
+        """copilot/cancel-copilot-seat-assignment-for-teams
+
+        DELETE /orgs/{org}/copilot/billing/selected_teams
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Sets seats for all members of each team specified to "pending cancellation".
+        This will cause the members of the specified team(s) to lose access to GitHub Copilot at the end of the current billing cycle unless they retain access through another team.
+        For more information about disabling access to Copilot, see "[Revoking access to Copilot for members of your organization](https://docs.github.com/enterprise-cloud@latest//copilot/managing-copilot/managing-github-copilot-in-your-organization/managing-access-to-github-copilot-in-your-organization/revoking-access-to-copilot-for-members-of-your-organization)."
+
+        Only organization owners can cancel Copilot seats for their organization members.
+
+        The response contains the total number of seats set to "pending cancellation".
+
+        OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `admin:org` scopes to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#remove-teams-from-the-copilot-subscription-for-an-organization
+        """
 
         from ..models import (
             BasicError,
@@ -766,7 +1022,26 @@ class CopilotClient:
         OrgsOrgCopilotBillingSelectedUsersPostResponse201,
         OrgsOrgCopilotBillingSelectedUsersPostResponse201Type,
     ]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#add-users-to-the-copilot-subscription-for-an-organization"""
+        """copilot/add-copilot-seats-for-users
+
+        POST /orgs/{org}/copilot/billing/selected_users
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Purchases a GitHub Copilot seat for each user specified.
+        The organization will be billed for each seat based on the organization's Copilot plan. For more information about Copilot pricing, see "[About billing for GitHub Copilot in your organization](https://docs.github.com/enterprise-cloud@latest//copilot/managing-copilot/managing-github-copilot-in-your-organization/managing-the-copilot-subscription-for-your-organization/about-billing-for-github-copilot-in-your-organization)."
+
+        Only organization owners can purchase Copilot seats for their organization members. The organization must have a Copilot Business or Copilot Enterprise subscription and a configured suggestion matching policy.
+        For more information about setting up a Copilot subscription, see "[Subscribing to Copilot for your organization](https://docs.github.com/enterprise-cloud@latest//copilot/managing-copilot/managing-github-copilot-in-your-organization/managing-the-copilot-subscription-for-your-organization/subscribing-to-copilot-for-your-organization)."
+        For more information about setting a suggestion matching policy, see "[Managing policies for Copilot in your organization](https://docs.github.com/enterprise-cloud@latest//copilot/managing-copilot/managing-github-copilot-in-your-organization/setting-policies-for-copilot-in-your-organization/managing-policies-for-copilot-in-your-organization#policies-for-suggestion-matching)."
+
+        The response contains the total number of new seats that were created and existing seats that were refreshed.
+
+        OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `admin:org` scopes to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#add-users-to-the-copilot-subscription-for-an-organization
+        """
 
         from ..models import (
             BasicError,
@@ -839,7 +1114,26 @@ class CopilotClient:
         OrgsOrgCopilotBillingSelectedUsersPostResponse201,
         OrgsOrgCopilotBillingSelectedUsersPostResponse201Type,
     ]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#add-users-to-the-copilot-subscription-for-an-organization"""
+        """copilot/add-copilot-seats-for-users
+
+        POST /orgs/{org}/copilot/billing/selected_users
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Purchases a GitHub Copilot seat for each user specified.
+        The organization will be billed for each seat based on the organization's Copilot plan. For more information about Copilot pricing, see "[About billing for GitHub Copilot in your organization](https://docs.github.com/enterprise-cloud@latest//copilot/managing-copilot/managing-github-copilot-in-your-organization/managing-the-copilot-subscription-for-your-organization/about-billing-for-github-copilot-in-your-organization)."
+
+        Only organization owners can purchase Copilot seats for their organization members. The organization must have a Copilot Business or Copilot Enterprise subscription and a configured suggestion matching policy.
+        For more information about setting up a Copilot subscription, see "[Subscribing to Copilot for your organization](https://docs.github.com/enterprise-cloud@latest//copilot/managing-copilot/managing-github-copilot-in-your-organization/managing-the-copilot-subscription-for-your-organization/subscribing-to-copilot-for-your-organization)."
+        For more information about setting a suggestion matching policy, see "[Managing policies for Copilot in your organization](https://docs.github.com/enterprise-cloud@latest//copilot/managing-copilot/managing-github-copilot-in-your-organization/setting-policies-for-copilot-in-your-organization/managing-policies-for-copilot-in-your-organization#policies-for-suggestion-matching)."
+
+        The response contains the total number of new seats that were created and existing seats that were refreshed.
+
+        OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `admin:org` scopes to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#add-users-to-the-copilot-subscription-for-an-organization
+        """
 
         from ..models import (
             BasicError,
@@ -912,7 +1206,25 @@ class CopilotClient:
         OrgsOrgCopilotBillingSelectedUsersDeleteResponse200,
         OrgsOrgCopilotBillingSelectedUsersDeleteResponse200Type,
     ]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#remove-users-from-the-copilot-subscription-for-an-organization"""
+        """copilot/cancel-copilot-seat-assignment-for-users
+
+        DELETE /orgs/{org}/copilot/billing/selected_users
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Sets seats for all users specified to "pending cancellation".
+        This will cause the specified users to lose access to GitHub Copilot at the end of the current billing cycle unless they retain access through team membership.
+        For more information about disabling access to Copilot, see "[Revoking access to Copilot for members of your organization](https://docs.github.com/enterprise-cloud@latest//copilot/managing-copilot/managing-github-copilot-in-your-organization/managing-access-to-github-copilot-in-your-organization/revoking-access-to-copilot-for-members-of-your-organization)."
+
+        Only organization owners can cancel Copilot seats for their organization members.
+
+        The response contains the total number of seats set to "pending cancellation".
+
+        OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `admin:org` scopes to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#remove-users-from-the-copilot-subscription-for-an-organization
+        """
 
         from ..models import (
             BasicError,
@@ -985,7 +1297,25 @@ class CopilotClient:
         OrgsOrgCopilotBillingSelectedUsersDeleteResponse200,
         OrgsOrgCopilotBillingSelectedUsersDeleteResponse200Type,
     ]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#remove-users-from-the-copilot-subscription-for-an-organization"""
+        """copilot/cancel-copilot-seat-assignment-for-users
+
+        DELETE /orgs/{org}/copilot/billing/selected_users
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Sets seats for all users specified to "pending cancellation".
+        This will cause the specified users to lose access to GitHub Copilot at the end of the current billing cycle unless they retain access through team membership.
+        For more information about disabling access to Copilot, see "[Revoking access to Copilot for members of your organization](https://docs.github.com/enterprise-cloud@latest//copilot/managing-copilot/managing-github-copilot-in-your-organization/managing-access-to-github-copilot-in-your-organization/revoking-access-to-copilot-for-members-of-your-organization)."
+
+        Only organization owners can cancel Copilot seats for their organization members.
+
+        The response contains the total number of seats set to "pending cancellation".
+
+        OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `admin:org` scopes to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#remove-users-from-the-copilot-subscription-for-an-organization
+        """
 
         from ..models import (
             BasicError,
@@ -1032,7 +1362,26 @@ class CopilotClient:
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[CopilotUsageMetricsDay], list[CopilotUsageMetricsDayType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-metrics#get-copilot-metrics-for-an-organization"""
+        """copilot/copilot-metrics-for-organization
+
+        GET /orgs/{org}/copilot/metrics
+
+        Use this endpoint to see a breakdown of aggregated metrics for various GitHub Copilot features. See the response schema tab for detailed metrics definitions.
+
+        > [!NOTE]
+        > This endpoint will only return results for a given day if the organization contained **five or more members with active Copilot licenses** on that day, as evaluated at the end of that day.
+
+        The response contains metrics for up to 28 days prior. Metrics are processed once per day for the previous day,
+        and the response will only include data up until yesterday. In order for an end user to be counted towards these metrics,
+        they must have telemetry enabled in their IDE.
+
+        To access this endpoint, the Copilot Metrics API access policy must be enabled for the organization.
+        Only organization owners and owners and billing managers of the parent enterprise can view Copilot metrics.
+
+        OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot`, `read:org`, or `read:enterprise` scopes to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-metrics#get-copilot-metrics-for-an-organization
+        """
 
         from ..models import BasicError, CopilotUsageMetricsDay
 
@@ -1071,7 +1420,26 @@ class CopilotClient:
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[CopilotUsageMetricsDay], list[CopilotUsageMetricsDayType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-metrics#get-copilot-metrics-for-an-organization"""
+        """copilot/copilot-metrics-for-organization
+
+        GET /orgs/{org}/copilot/metrics
+
+        Use this endpoint to see a breakdown of aggregated metrics for various GitHub Copilot features. See the response schema tab for detailed metrics definitions.
+
+        > [!NOTE]
+        > This endpoint will only return results for a given day if the organization contained **five or more members with active Copilot licenses** on that day, as evaluated at the end of that day.
+
+        The response contains metrics for up to 28 days prior. Metrics are processed once per day for the previous day,
+        and the response will only include data up until yesterday. In order for an end user to be counted towards these metrics,
+        they must have telemetry enabled in their IDE.
+
+        To access this endpoint, the Copilot Metrics API access policy must be enabled for the organization.
+        Only organization owners and owners and billing managers of the parent enterprise can view Copilot metrics.
+
+        OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot`, `read:org`, or `read:enterprise` scopes to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-metrics#get-copilot-metrics-for-an-organization
+        """
 
         from ..models import BasicError, CopilotUsageMetricsDay
 
@@ -1107,7 +1475,24 @@ class CopilotClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CopilotSeatDetails, CopilotSeatDetailsType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#get-copilot-seat-assignment-details-for-a-user"""
+        """copilot/get-copilot-seat-details-for-user
+
+        GET /orgs/{org}/members/{username}/copilot
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Gets the GitHub Copilot seat details for a member of an organization who currently has access to GitHub Copilot.
+
+        The seat object contains information about the user's most recent Copilot activity. Users must have telemetry enabled in their IDE for Copilot in the IDE activity to be reflected in `last_activity_at`.
+        For more information about activity data, see "[Reviewing user activity data for Copilot in your organization](https://docs.github.com/enterprise-cloud@latest//copilot/managing-copilot/managing-github-copilot-in-your-organization/reviewing-activity-related-to-github-copilot-in-your-organization/reviewing-user-activity-data-for-copilot-in-your-organization)."
+
+        Only organization owners can view Copilot seat assignment details for members of their organization.
+
+        OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `read:org` scopes to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#get-copilot-seat-assignment-details-for-a-user
+        """
 
         from ..models import BasicError, CopilotSeatDetails
 
@@ -1135,7 +1520,24 @@ class CopilotClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[CopilotSeatDetails, CopilotSeatDetailsType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#get-copilot-seat-assignment-details-for-a-user"""
+        """copilot/get-copilot-seat-details-for-user
+
+        GET /orgs/{org}/members/{username}/copilot
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Gets the GitHub Copilot seat details for a member of an organization who currently has access to GitHub Copilot.
+
+        The seat object contains information about the user's most recent Copilot activity. Users must have telemetry enabled in their IDE for Copilot in the IDE activity to be reflected in `last_activity_at`.
+        For more information about activity data, see "[Reviewing user activity data for Copilot in your organization](https://docs.github.com/enterprise-cloud@latest//copilot/managing-copilot/managing-github-copilot-in-your-organization/reviewing-activity-related-to-github-copilot-in-your-organization/reviewing-user-activity-data-for-copilot-in-your-organization)."
+
+        Only organization owners can view Copilot seat assignment details for members of their organization.
+
+        OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `read:org` scopes to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#get-copilot-seat-assignment-details-for-a-user
+        """
 
         from ..models import BasicError, CopilotSeatDetails
 
@@ -1167,7 +1569,26 @@ class CopilotClient:
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[CopilotUsageMetricsDay], list[CopilotUsageMetricsDayType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-metrics#get-copilot-metrics-for-a-team"""
+        """copilot/copilot-metrics-for-team
+
+        GET /orgs/{org}/team/{team_slug}/copilot/metrics
+
+        Use this endpoint to see a breakdown of aggregated metrics for various GitHub Copilot features. See the response schema tab for detailed metrics definitions.
+
+        > [!NOTE]
+        > This endpoint will only return results for a given day if the team had **five or more members with active Copilot licenses** on that day, as evaluated at the end of that day.
+
+        The response contains metrics for up to 28 days prior. Metrics are processed once per day for the previous day,
+        and the response will only include data up until yesterday. In order for an end user to be counted towards these metrics,
+        they must have telemetry enabled in their IDE.
+
+        To access this endpoint, the Copilot Metrics API access policy must be enabled for the organization containing the team within GitHub settings.
+        Only organization owners for the organization that contains this team and owners and billing managers of the parent enterprise can view Copilot metrics for a team.
+
+        OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot`, `read:org`, or `read:enterprise` scopes to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-metrics#get-copilot-metrics-for-a-team
+        """
 
         from ..models import BasicError, CopilotUsageMetricsDay
 
@@ -1207,7 +1628,26 @@ class CopilotClient:
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[CopilotUsageMetricsDay], list[CopilotUsageMetricsDayType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-metrics#get-copilot-metrics-for-a-team"""
+        """copilot/copilot-metrics-for-team
+
+        GET /orgs/{org}/team/{team_slug}/copilot/metrics
+
+        Use this endpoint to see a breakdown of aggregated metrics for various GitHub Copilot features. See the response schema tab for detailed metrics definitions.
+
+        > [!NOTE]
+        > This endpoint will only return results for a given day if the team had **five or more members with active Copilot licenses** on that day, as evaluated at the end of that day.
+
+        The response contains metrics for up to 28 days prior. Metrics are processed once per day for the previous day,
+        and the response will only include data up until yesterday. In order for an end user to be counted towards these metrics,
+        they must have telemetry enabled in their IDE.
+
+        To access this endpoint, the Copilot Metrics API access policy must be enabled for the organization containing the team within GitHub settings.
+        Only organization owners for the organization that contains this team and owners and billing managers of the parent enterprise can view Copilot metrics for a team.
+
+        OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot`, `read:org`, or `read:enterprise` scopes to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-metrics#get-copilot-metrics-for-a-team
+        """
 
         from ..models import BasicError, CopilotUsageMetricsDay
 

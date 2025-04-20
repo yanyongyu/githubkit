@@ -48,7 +48,14 @@ class MetaClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Root, RootType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/meta/meta#github-api-root"""
+        """meta/root
+
+        GET /
+
+        Get Hypermedia links to resources accessible in GitHub's REST API
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/meta/meta#github-api-root
+        """
 
         from ..models import Root
 
@@ -68,7 +75,14 @@ class MetaClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Root, RootType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/meta/meta#github-api-root"""
+        """meta/root
+
+        GET /
+
+        Get Hypermedia links to resources accessible in GitHub's REST API
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/meta/meta#github-api-root
+        """
 
         from ..models import Root
 
@@ -88,7 +102,21 @@ class MetaClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ApiOverview, ApiOverviewType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/meta/meta#get-apiname-meta-information"""
+        """meta/get
+
+        GET /meta
+
+        Returns meta information about GitHub, including a list of GitHub's IP addresses. For more information, see "[About GitHub's IP addresses](https://docs.github.com/enterprise-cloud@latest//articles/about-github-s-ip-addresses/)."
+
+        The API's response also includes a list of GitHub's domain names.
+
+        The values shown in the documentation's response are example values. You must always query the API directly to get the latest values.
+
+        > [!NOTE]
+        > This endpoint returns both IPv4 and IPv6 addresses. However, not all features support IPv6. You should refer to the specific documentation for each feature to determine if IPv6 is supported.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/meta/meta#get-apiname-meta-information
+        """
 
         from ..models import ApiOverview
 
@@ -108,7 +136,21 @@ class MetaClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[ApiOverview, ApiOverviewType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/meta/meta#get-apiname-meta-information"""
+        """meta/get
+
+        GET /meta
+
+        Returns meta information about GitHub, including a list of GitHub's IP addresses. For more information, see "[About GitHub's IP addresses](https://docs.github.com/enterprise-cloud@latest//articles/about-github-s-ip-addresses/)."
+
+        The API's response also includes a list of GitHub's domain names.
+
+        The values shown in the documentation's response are example values. You must always query the API directly to get the latest values.
+
+        > [!NOTE]
+        > This endpoint returns both IPv4 and IPv6 addresses. However, not all features support IPv6. You should refer to the specific documentation for each feature to determine if IPv6 is supported.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/meta/meta#get-apiname-meta-information
+        """
 
         from ..models import ApiOverview
 
@@ -129,7 +171,14 @@ class MetaClient:
         s: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[str, str]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/meta/meta#get-octocat"""
+        """meta/get-octocat
+
+        GET /octocat
+
+        Get the octocat as ASCII art
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/meta/meta#get-octocat
+        """
 
         url = "/octocat"
 
@@ -153,7 +202,14 @@ class MetaClient:
         s: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[str, str]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/meta/meta#get-octocat"""
+        """meta/get-octocat
+
+        GET /octocat
+
+        Get the octocat as ASCII art
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/meta/meta#get-octocat
+        """
 
         url = "/octocat"
 
@@ -176,7 +232,14 @@ class MetaClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[date], list[date]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/meta/meta#get-all-api-versions"""
+        """meta/get-all-versions
+
+        GET /versions
+
+        Get all supported GitHub Enterprise Cloud API versions.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/meta/meta#get-all-api-versions
+        """
 
         from datetime import date
 
@@ -201,7 +264,14 @@ class MetaClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[date], list[date]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/meta/meta#get-all-api-versions"""
+        """meta/get-all-versions
+
+        GET /versions
+
+        Get all supported GitHub Enterprise Cloud API versions.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/meta/meta#get-all-api-versions
+        """
 
         from datetime import date
 
@@ -226,7 +296,14 @@ class MetaClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[str, str]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/meta/meta#get-the-zen-of-github"""
+        """meta/get-zen
+
+        GET /zen
+
+        Get a random sentence from the Zen of GitHub
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/meta/meta#get-the-zen-of-github
+        """
 
         url = "/zen"
 
@@ -244,7 +321,14 @@ class MetaClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[str, str]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/meta/meta#get-the-zen-of-github"""
+        """meta/get-zen
+
+        GET /zen
+
+        Get a random sentence from the Zen of GitHub
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/meta/meta#get-the-zen-of-github
+        """
 
         url = "/zen"
 

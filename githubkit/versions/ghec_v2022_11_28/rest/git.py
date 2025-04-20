@@ -94,7 +94,12 @@ class GitClient:
         data: Missing[ReposOwnerRepoGitBlobsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[ShortBlob, ShortBlobType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/git/blobs#create-a-blob"""
+        """git/create-blob
+
+        POST /repos/{owner}/{repo}/git/blobs
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/git/blobs#create-a-blob
+        """
 
         from typing import Union
 
@@ -164,7 +169,12 @@ class GitClient:
         data: Missing[ReposOwnerRepoGitBlobsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[ShortBlob, ShortBlobType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/git/blobs#create-a-blob"""
+        """git/create-blob
+
+        POST /repos/{owner}/{repo}/git/blobs
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/git/blobs#create-a-blob
+        """
 
         from typing import Union
 
@@ -211,7 +221,21 @@ class GitClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Blob, BlobType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/git/blobs#get-a-blob"""
+        """git/get-blob
+
+        GET /repos/{owner}/{repo}/git/blobs/{file_sha}
+
+        The `content` in the response will always be Base64 encoded.
+
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+
+        - **`application/vnd.github.raw+json`**: Returns the raw blob data.
+        - **`application/vnd.github+json`**: Returns a JSON representation of the blob with `content` as a base64 encoded string. This is the default if no media type is specified.
+
+        **Note** This endpoint supports blobs up to 100 megabytes in size.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/git/blobs#get-a-blob
+        """
 
         from ..models import BasicError, Blob, ValidationError
 
@@ -240,7 +264,21 @@ class GitClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[Blob, BlobType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/git/blobs#get-a-blob"""
+        """git/get-blob
+
+        GET /repos/{owner}/{repo}/git/blobs/{file_sha}
+
+        The `content` in the response will always be Base64 encoded.
+
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+
+        - **`application/vnd.github.raw+json`**: Returns the raw blob data.
+        - **`application/vnd.github+json`**: Returns a JSON representation of the blob with `content` as a base64 encoded string. This is the default if no media type is specified.
+
+        **Note** This endpoint supports blobs up to 100 megabytes in size.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/git/blobs#get-a-blob
+        """
 
         from ..models import BasicError, Blob, ValidationError
 
@@ -296,7 +334,44 @@ class GitClient:
         data: Missing[ReposOwnerRepoGitCommitsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[GitCommit, GitCommitType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/git/commits#create-a-commit"""
+        """git/create-commit
+
+        POST /repos/{owner}/{repo}/git/commits
+
+        Creates a new Git [commit object](https://git-scm.com/book/en/v2/Git-Internals-Git-Objects).
+
+        **Signature verification object**
+
+        The response will include a `verification` object that describes the result of verifying the commit's signature. The following fields are included in the `verification` object:
+
+        | Name | Type | Description |
+        | ---- | ---- | ----------- |
+        | `verified` | `boolean` | Indicates whether GitHub considers the signature in this commit to be verified. |
+        | `reason` | `string` | The reason for verified value. Possible values and their meanings are enumerated in the table below. |
+        | `signature` | `string` | The signature that was extracted from the commit. |
+        | `payload` | `string` | The value that was signed. |
+        | `verified_at` | `string` | The date the signature was verified by GitHub. |
+
+        These are the possible values for `reason` in the `verification` object:
+
+        | Value | Description |
+        | ----- | ----------- |
+        | `expired_key` | The key that made the signature is expired. |
+        | `not_signing_key` | The "signing" flag is not among the usage flags in the GPG key that made the signature. |
+        | `gpgverify_error` | There was an error communicating with the signature verification service. |
+        | `gpgverify_unavailable` | The signature verification service is currently unavailable. |
+        | `unsigned` | The object does not include a signature. |
+        | `unknown_signature_type` | A non-PGP signature was found in the commit. |
+        | `no_user` | No user was associated with the `committer` email address in the commit. |
+        | `unverified_email` | The `committer` email address in the commit was associated with a user, but the email address is not verified on their account. |
+        | `bad_email` | The `committer` email address in the commit is not included in the identities of the PGP key that made the signature. |
+        | `unknown_key` | The key that made the signature has not been registered with any user's account. |
+        | `malformed_signature` | There was an error parsing the signature. |
+        | `invalid` | The signature could not be cryptographically verified using the key whose key-id was found in the signature. |
+        | `valid` | None of the above errors applied, so the signature is considered to be verified. |
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/git/commits#create-a-commit
+        """
 
         from ..models import (
             BasicError,
@@ -366,7 +441,44 @@ class GitClient:
         data: Missing[ReposOwnerRepoGitCommitsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[GitCommit, GitCommitType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/git/commits#create-a-commit"""
+        """git/create-commit
+
+        POST /repos/{owner}/{repo}/git/commits
+
+        Creates a new Git [commit object](https://git-scm.com/book/en/v2/Git-Internals-Git-Objects).
+
+        **Signature verification object**
+
+        The response will include a `verification` object that describes the result of verifying the commit's signature. The following fields are included in the `verification` object:
+
+        | Name | Type | Description |
+        | ---- | ---- | ----------- |
+        | `verified` | `boolean` | Indicates whether GitHub considers the signature in this commit to be verified. |
+        | `reason` | `string` | The reason for verified value. Possible values and their meanings are enumerated in the table below. |
+        | `signature` | `string` | The signature that was extracted from the commit. |
+        | `payload` | `string` | The value that was signed. |
+        | `verified_at` | `string` | The date the signature was verified by GitHub. |
+
+        These are the possible values for `reason` in the `verification` object:
+
+        | Value | Description |
+        | ----- | ----------- |
+        | `expired_key` | The key that made the signature is expired. |
+        | `not_signing_key` | The "signing" flag is not among the usage flags in the GPG key that made the signature. |
+        | `gpgverify_error` | There was an error communicating with the signature verification service. |
+        | `gpgverify_unavailable` | The signature verification service is currently unavailable. |
+        | `unsigned` | The object does not include a signature. |
+        | `unknown_signature_type` | A non-PGP signature was found in the commit. |
+        | `no_user` | No user was associated with the `committer` email address in the commit. |
+        | `unverified_email` | The `committer` email address in the commit was associated with a user, but the email address is not verified on their account. |
+        | `bad_email` | The `committer` email address in the commit is not included in the identities of the PGP key that made the signature. |
+        | `unknown_key` | The key that made the signature has not been registered with any user's account. |
+        | `malformed_signature` | There was an error parsing the signature. |
+        | `invalid` | The signature could not be cryptographically verified using the key whose key-id was found in the signature. |
+        | `valid` | None of the above errors applied, so the signature is considered to be verified. |
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/git/commits#create-a-commit
+        """
 
         from ..models import (
             BasicError,
@@ -409,7 +521,46 @@ class GitClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[GitCommit, GitCommitType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/git/commits#get-a-commit-object"""
+        """git/get-commit
+
+        GET /repos/{owner}/{repo}/git/commits/{commit_sha}
+
+        Gets a Git [commit object](https://git-scm.com/book/en/v2/Git-Internals-Git-Objects).
+
+        To get the contents of a commit, see "[Get a commit](/rest/commits/commits#get-a-commit)."
+
+        **Signature verification object**
+
+        The response will include a `verification` object that describes the result of verifying the commit's signature. The following fields are included in the `verification` object:
+
+        | Name | Type | Description |
+        | ---- | ---- | ----------- |
+        | `verified` | `boolean` | Indicates whether GitHub considers the signature in this commit to be verified. |
+        | `reason` | `string` | The reason for verified value. Possible values and their meanings are enumerated in the table below. |
+        | `signature` | `string` | The signature that was extracted from the commit. |
+        | `payload` | `string` | The value that was signed. |
+        | `verified_at` | `string` | The date the signature was verified by GitHub. |
+
+        These are the possible values for `reason` in the `verification` object:
+
+        | Value | Description |
+        | ----- | ----------- |
+        | `expired_key` | The key that made the signature is expired. |
+        | `not_signing_key` | The "signing" flag is not among the usage flags in the GPG key that made the signature. |
+        | `gpgverify_error` | There was an error communicating with the signature verification service. |
+        | `gpgverify_unavailable` | The signature verification service is currently unavailable. |
+        | `unsigned` | The object does not include a signature. |
+        | `unknown_signature_type` | A non-PGP signature was found in the commit. |
+        | `no_user` | No user was associated with the `committer` email address in the commit. |
+        | `unverified_email` | The `committer` email address in the commit was associated with a user, but the email address is not verified on their account. |
+        | `bad_email` | The `committer` email address in the commit is not included in the identities of the PGP key that made the signature. |
+        | `unknown_key` | The key that made the signature has not been registered with any user's account. |
+        | `malformed_signature` | There was an error parsing the signature. |
+        | `invalid` | The signature could not be cryptographically verified using the key whose key-id was found in the signature. |
+        | `valid` | None of the above errors applied, so the signature is considered to be verified. |
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/git/commits#get-a-commit-object
+        """
 
         from ..models import BasicError, GitCommit
 
@@ -436,7 +587,46 @@ class GitClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[GitCommit, GitCommitType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/git/commits#get-a-commit-object"""
+        """git/get-commit
+
+        GET /repos/{owner}/{repo}/git/commits/{commit_sha}
+
+        Gets a Git [commit object](https://git-scm.com/book/en/v2/Git-Internals-Git-Objects).
+
+        To get the contents of a commit, see "[Get a commit](/rest/commits/commits#get-a-commit)."
+
+        **Signature verification object**
+
+        The response will include a `verification` object that describes the result of verifying the commit's signature. The following fields are included in the `verification` object:
+
+        | Name | Type | Description |
+        | ---- | ---- | ----------- |
+        | `verified` | `boolean` | Indicates whether GitHub considers the signature in this commit to be verified. |
+        | `reason` | `string` | The reason for verified value. Possible values and their meanings are enumerated in the table below. |
+        | `signature` | `string` | The signature that was extracted from the commit. |
+        | `payload` | `string` | The value that was signed. |
+        | `verified_at` | `string` | The date the signature was verified by GitHub. |
+
+        These are the possible values for `reason` in the `verification` object:
+
+        | Value | Description |
+        | ----- | ----------- |
+        | `expired_key` | The key that made the signature is expired. |
+        | `not_signing_key` | The "signing" flag is not among the usage flags in the GPG key that made the signature. |
+        | `gpgverify_error` | There was an error communicating with the signature verification service. |
+        | `gpgverify_unavailable` | The signature verification service is currently unavailable. |
+        | `unsigned` | The object does not include a signature. |
+        | `unknown_signature_type` | A non-PGP signature was found in the commit. |
+        | `no_user` | No user was associated with the `committer` email address in the commit. |
+        | `unverified_email` | The `committer` email address in the commit was associated with a user, but the email address is not verified on their account. |
+        | `bad_email` | The `committer` email address in the commit is not included in the identities of the PGP key that made the signature. |
+        | `unknown_key` | The key that made the signature has not been registered with any user's account. |
+        | `malformed_signature` | There was an error parsing the signature. |
+        | `invalid` | The signature could not be cryptographically verified using the key whose key-id was found in the signature. |
+        | `valid` | None of the above errors applied, so the signature is considered to be verified. |
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/git/commits#get-a-commit-object
+        """
 
         from ..models import BasicError, GitCommit
 
@@ -463,7 +653,21 @@ class GitClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[GitRef], list[GitRefType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/git/refs#list-matching-references"""
+        """git/list-matching-refs
+
+        GET /repos/{owner}/{repo}/git/matching-refs/{ref}
+
+        Returns an array of references from your Git database that match the supplied name. The `:ref` in the URL must be formatted as `heads/<branch name>` for branches and `tags/<tag name>` for tags. If the `:ref` doesn't exist in the repository, but existing refs start with `:ref`, they will be returned as an array.
+
+        When you use this endpoint without providing a `:ref`, it will return an array of all the references from your Git database, including notes and stashes if they exist on the server. Anything in the namespace is returned, not just `heads` and `tags`.
+
+        > [!NOTE]
+        > You need to explicitly [request a pull request](https://docs.github.com/enterprise-cloud@latest//rest/pulls/pulls#get-a-pull-request) to trigger a test merge commit, which checks the mergeability of pull requests. For more information, see "[Checking mergeability of pull requests](https://docs.github.com/enterprise-cloud@latest//rest/guides/getting-started-with-the-git-database-api#checking-mergeability-of-pull-requests)".
+
+        If you request matching references for a branch named `feature` but the branch `feature` doesn't exist, the response can still include other matching head refs that start with the word `feature`, such as `featureA` and `featureB`.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/git/refs#list-matching-references
+        """
 
         from ..models import BasicError, GitRef
 
@@ -489,7 +693,21 @@ class GitClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[GitRef], list[GitRefType]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/git/refs#list-matching-references"""
+        """git/list-matching-refs
+
+        GET /repos/{owner}/{repo}/git/matching-refs/{ref}
+
+        Returns an array of references from your Git database that match the supplied name. The `:ref` in the URL must be formatted as `heads/<branch name>` for branches and `tags/<tag name>` for tags. If the `:ref` doesn't exist in the repository, but existing refs start with `:ref`, they will be returned as an array.
+
+        When you use this endpoint without providing a `:ref`, it will return an array of all the references from your Git database, including notes and stashes if they exist on the server. Anything in the namespace is returned, not just `heads` and `tags`.
+
+        > [!NOTE]
+        > You need to explicitly [request a pull request](https://docs.github.com/enterprise-cloud@latest//rest/pulls/pulls#get-a-pull-request) to trigger a test merge commit, which checks the mergeability of pull requests. For more information, see "[Checking mergeability of pull requests](https://docs.github.com/enterprise-cloud@latest//rest/guides/getting-started-with-the-git-database-api#checking-mergeability-of-pull-requests)".
+
+        If you request matching references for a branch named `feature` but the branch `feature` doesn't exist, the response can still include other matching head refs that start with the word `feature`, such as `featureA` and `featureB`.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/git/refs#list-matching-references
+        """
 
         from ..models import BasicError, GitRef
 
@@ -515,7 +733,17 @@ class GitClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[GitRef, GitRefType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/git/refs#get-a-reference"""
+        """git/get-ref
+
+        GET /repos/{owner}/{repo}/git/ref/{ref}
+
+        Returns a single reference from your Git database. The `:ref` in the URL must be formatted as `heads/<branch name>` for branches and `tags/<tag name>` for tags. If the `:ref` doesn't match an existing ref, a `404` is returned.
+
+        > [!NOTE]
+        > You need to explicitly [request a pull request](https://docs.github.com/enterprise-cloud@latest//rest/pulls/pulls#get-a-pull-request) to trigger a test merge commit, which checks the mergeability of pull requests. For more information, see "[Checking mergeability of pull requests](https://docs.github.com/enterprise-cloud@latest//rest/guides/getting-started-with-the-git-database-api#checking-mergeability-of-pull-requests)".
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/git/refs#get-a-reference
+        """
 
         from ..models import BasicError, GitRef
 
@@ -542,7 +770,17 @@ class GitClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[GitRef, GitRefType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/git/refs#get-a-reference"""
+        """git/get-ref
+
+        GET /repos/{owner}/{repo}/git/ref/{ref}
+
+        Returns a single reference from your Git database. The `:ref` in the URL must be formatted as `heads/<branch name>` for branches and `tags/<tag name>` for tags. If the `:ref` doesn't match an existing ref, a `404` is returned.
+
+        > [!NOTE]
+        > You need to explicitly [request a pull request](https://docs.github.com/enterprise-cloud@latest//rest/pulls/pulls#get-a-pull-request) to trigger a test merge commit, which checks the mergeability of pull requests. For more information, see "[Checking mergeability of pull requests](https://docs.github.com/enterprise-cloud@latest//rest/guides/getting-started-with-the-git-database-api#checking-mergeability-of-pull-requests)".
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/git/refs#get-a-reference
+        """
 
         from ..models import BasicError, GitRef
 
@@ -592,7 +830,14 @@ class GitClient:
         data: Missing[ReposOwnerRepoGitRefsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[GitRef, GitRefType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/git/refs#create-a-reference"""
+        """git/create-ref
+
+        POST /repos/{owner}/{repo}/git/refs
+
+        Creates a reference for your repository. You are unable to create new references for empty repositories, even if the commit SHA-1 hash used exists. Empty repositories are repositories without branches.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/git/refs#create-a-reference
+        """
 
         from ..models import (
             BasicError,
@@ -657,7 +902,14 @@ class GitClient:
         data: Missing[ReposOwnerRepoGitRefsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[GitRef, GitRefType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/git/refs#create-a-reference"""
+        """git/create-ref
+
+        POST /repos/{owner}/{repo}/git/refs
+
+        Creates a reference for your repository. You are unable to create new references for empty repositories, even if the commit SHA-1 hash used exists. Empty repositories are repositories without branches.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/git/refs#create-a-reference
+        """
 
         from ..models import (
             BasicError,
@@ -699,7 +951,14 @@ class GitClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/git/refs#delete-a-reference"""
+        """git/delete-ref
+
+        DELETE /repos/{owner}/{repo}/git/refs/{ref}
+
+        Deletes the provided reference.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/git/refs#delete-a-reference
+        """
 
         from ..models import BasicError
 
@@ -724,7 +983,14 @@ class GitClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/git/refs#delete-a-reference"""
+        """git/delete-ref
+
+        DELETE /repos/{owner}/{repo}/git/refs/{ref}
+
+        Deletes the provided reference.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/git/refs#delete-a-reference
+        """
 
         from ..models import BasicError
 
@@ -775,7 +1041,14 @@ class GitClient:
         data: Missing[ReposOwnerRepoGitRefsRefPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[GitRef, GitRefType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/git/refs#update-a-reference"""
+        """git/update-ref
+
+        PATCH /repos/{owner}/{repo}/git/refs/{ref}
+
+        Updates the provided reference to point to a new SHA. For more information, see "[Git References](https://git-scm.com/book/en/v2/Git-Internals-Git-References)" in the Git documentation.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/git/refs#update-a-reference
+        """
 
         from ..models import (
             BasicError,
@@ -843,7 +1116,14 @@ class GitClient:
         data: Missing[ReposOwnerRepoGitRefsRefPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[GitRef, GitRefType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/git/refs#update-a-reference"""
+        """git/update-ref
+
+        PATCH /repos/{owner}/{repo}/git/refs/{ref}
+
+        Updates the provided reference to point to a new SHA. For more information, see "[Git References](https://git-scm.com/book/en/v2/Git-Internals-Git-References)" in the Git documentation.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/git/refs#update-a-reference
+        """
 
         from ..models import (
             BasicError,
@@ -911,7 +1191,44 @@ class GitClient:
         data: Missing[ReposOwnerRepoGitTagsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[GitTag, GitTagType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/git/tags#create-a-tag-object"""
+        """git/create-tag
+
+        POST /repos/{owner}/{repo}/git/tags
+
+        Note that creating a tag object does not create the reference that makes a tag in Git. If you want to create an annotated tag in Git, you have to do this call to create the tag object, and then [create](https://docs.github.com/enterprise-cloud@latest//rest/git/refs#create-a-reference) the `refs/tags/[tag]` reference. If you want to create a lightweight tag, you only have to [create](https://docs.github.com/enterprise-cloud@latest//rest/git/refs#create-a-reference) the tag reference - this call would be unnecessary.
+
+        **Signature verification object**
+
+        The response will include a `verification` object that describes the result of verifying the commit's signature. The following fields are included in the `verification` object:
+
+        | Name | Type | Description |
+        | ---- | ---- | ----------- |
+        | `verified` | `boolean` | Indicates whether GitHub considers the signature in this commit to be verified. |
+        | `reason` | `string` | The reason for verified value. Possible values and their meanings are enumerated in table below. |
+        | `signature` | `string` | The signature that was extracted from the commit. |
+        | `payload` | `string` | The value that was signed. |
+        | `verified_at` | `string` | The date the signature was verified by GitHub. |
+
+        These are the possible values for `reason` in the `verification` object:
+
+        | Value | Description |
+        | ----- | ----------- |
+        | `expired_key` | The key that made the signature is expired. |
+        | `not_signing_key` | The "signing" flag is not among the usage flags in the GPG key that made the signature. |
+        | `gpgverify_error` | There was an error communicating with the signature verification service. |
+        | `gpgverify_unavailable` | The signature verification service is currently unavailable. |
+        | `unsigned` | The object does not include a signature. |
+        | `unknown_signature_type` | A non-PGP signature was found in the commit. |
+        | `no_user` | No user was associated with the `committer` email address in the commit. |
+        | `unverified_email` | The `committer` email address in the commit was associated with a user, but the email address is not verified on their account. |
+        | `bad_email` | The `committer` email address in the commit is not included in the identities of the PGP key that made the signature. |
+        | `unknown_key` | The key that made the signature has not been registered with any user's account. |
+        | `malformed_signature` | There was an error parsing the signature. |
+        | `invalid` | The signature could not be cryptographically verified using the key whose key-id was found in the signature. |
+        | `valid` | None of the above errors applied, so the signature is considered to be verified. |
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/git/tags#create-a-tag-object
+        """
 
         from ..models import (
             BasicError,
@@ -979,7 +1296,44 @@ class GitClient:
         data: Missing[ReposOwnerRepoGitTagsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[GitTag, GitTagType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/git/tags#create-a-tag-object"""
+        """git/create-tag
+
+        POST /repos/{owner}/{repo}/git/tags
+
+        Note that creating a tag object does not create the reference that makes a tag in Git. If you want to create an annotated tag in Git, you have to do this call to create the tag object, and then [create](https://docs.github.com/enterprise-cloud@latest//rest/git/refs#create-a-reference) the `refs/tags/[tag]` reference. If you want to create a lightweight tag, you only have to [create](https://docs.github.com/enterprise-cloud@latest//rest/git/refs#create-a-reference) the tag reference - this call would be unnecessary.
+
+        **Signature verification object**
+
+        The response will include a `verification` object that describes the result of verifying the commit's signature. The following fields are included in the `verification` object:
+
+        | Name | Type | Description |
+        | ---- | ---- | ----------- |
+        | `verified` | `boolean` | Indicates whether GitHub considers the signature in this commit to be verified. |
+        | `reason` | `string` | The reason for verified value. Possible values and their meanings are enumerated in table below. |
+        | `signature` | `string` | The signature that was extracted from the commit. |
+        | `payload` | `string` | The value that was signed. |
+        | `verified_at` | `string` | The date the signature was verified by GitHub. |
+
+        These are the possible values for `reason` in the `verification` object:
+
+        | Value | Description |
+        | ----- | ----------- |
+        | `expired_key` | The key that made the signature is expired. |
+        | `not_signing_key` | The "signing" flag is not among the usage flags in the GPG key that made the signature. |
+        | `gpgverify_error` | There was an error communicating with the signature verification service. |
+        | `gpgverify_unavailable` | The signature verification service is currently unavailable. |
+        | `unsigned` | The object does not include a signature. |
+        | `unknown_signature_type` | A non-PGP signature was found in the commit. |
+        | `no_user` | No user was associated with the `committer` email address in the commit. |
+        | `unverified_email` | The `committer` email address in the commit was associated with a user, but the email address is not verified on their account. |
+        | `bad_email` | The `committer` email address in the commit is not included in the identities of the PGP key that made the signature. |
+        | `unknown_key` | The key that made the signature has not been registered with any user's account. |
+        | `malformed_signature` | There was an error parsing the signature. |
+        | `invalid` | The signature could not be cryptographically verified using the key whose key-id was found in the signature. |
+        | `valid` | None of the above errors applied, so the signature is considered to be verified. |
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/git/tags#create-a-tag-object
+        """
 
         from ..models import (
             BasicError,
@@ -1021,7 +1375,42 @@ class GitClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[GitTag, GitTagType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/git/tags#get-a-tag"""
+        """git/get-tag
+
+        GET /repos/{owner}/{repo}/git/tags/{tag_sha}
+
+        **Signature verification object**
+
+        The response will include a `verification` object that describes the result of verifying the commit's signature. The following fields are included in the `verification` object:
+
+        | Name | Type | Description |
+        | ---- | ---- | ----------- |
+        | `verified` | `boolean` | Indicates whether GitHub considers the signature in this commit to be verified. |
+        | `reason` | `string` | The reason for verified value. Possible values and their meanings are enumerated in table below. |
+        | `signature` | `string` | The signature that was extracted from the commit. |
+        | `payload` | `string` | The value that was signed. |
+        | `verified_at` | `string` | The date the signature was verified by GitHub. |
+
+        These are the possible values for `reason` in the `verification` object:
+
+        | Value | Description |
+        | ----- | ----------- |
+        | `expired_key` | The key that made the signature is expired. |
+        | `not_signing_key` | The "signing" flag is not among the usage flags in the GPG key that made the signature. |
+        | `gpgverify_error` | There was an error communicating with the signature verification service. |
+        | `gpgverify_unavailable` | The signature verification service is currently unavailable. |
+        | `unsigned` | The object does not include a signature. |
+        | `unknown_signature_type` | A non-PGP signature was found in the commit. |
+        | `no_user` | No user was associated with the `committer` email address in the commit. |
+        | `unverified_email` | The `committer` email address in the commit was associated with a user, but the email address is not verified on their account. |
+        | `bad_email` | The `committer` email address in the commit is not included in the identities of the PGP key that made the signature. |
+        | `unknown_key` | The key that made the signature has not been registered with any user's account. |
+        | `malformed_signature` | There was an error parsing the signature. |
+        | `invalid` | The signature could not be cryptographically verified using the key whose key-id was found in the signature. |
+        | `valid` | None of the above errors applied, so the signature is considered to be verified. |
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/git/tags#get-a-tag
+        """
 
         from ..models import BasicError, GitTag
 
@@ -1048,7 +1437,42 @@ class GitClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[GitTag, GitTagType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/git/tags#get-a-tag"""
+        """git/get-tag
+
+        GET /repos/{owner}/{repo}/git/tags/{tag_sha}
+
+        **Signature verification object**
+
+        The response will include a `verification` object that describes the result of verifying the commit's signature. The following fields are included in the `verification` object:
+
+        | Name | Type | Description |
+        | ---- | ---- | ----------- |
+        | `verified` | `boolean` | Indicates whether GitHub considers the signature in this commit to be verified. |
+        | `reason` | `string` | The reason for verified value. Possible values and their meanings are enumerated in table below. |
+        | `signature` | `string` | The signature that was extracted from the commit. |
+        | `payload` | `string` | The value that was signed. |
+        | `verified_at` | `string` | The date the signature was verified by GitHub. |
+
+        These are the possible values for `reason` in the `verification` object:
+
+        | Value | Description |
+        | ----- | ----------- |
+        | `expired_key` | The key that made the signature is expired. |
+        | `not_signing_key` | The "signing" flag is not among the usage flags in the GPG key that made the signature. |
+        | `gpgverify_error` | There was an error communicating with the signature verification service. |
+        | `gpgverify_unavailable` | The signature verification service is currently unavailable. |
+        | `unsigned` | The object does not include a signature. |
+        | `unknown_signature_type` | A non-PGP signature was found in the commit. |
+        | `no_user` | No user was associated with the `committer` email address in the commit. |
+        | `unverified_email` | The `committer` email address in the commit was associated with a user, but the email address is not verified on their account. |
+        | `bad_email` | The `committer` email address in the commit is not included in the identities of the PGP key that made the signature. |
+        | `unknown_key` | The key that made the signature has not been registered with any user's account. |
+        | `malformed_signature` | There was an error parsing the signature. |
+        | `invalid` | The signature could not be cryptographically verified using the key whose key-id was found in the signature. |
+        | `valid` | None of the above errors applied, so the signature is considered to be verified. |
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/git/tags#get-a-tag
+        """
 
         from ..models import BasicError, GitTag
 
@@ -1098,7 +1522,18 @@ class GitClient:
         data: Missing[ReposOwnerRepoGitTreesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[GitTree, GitTreeType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/git/trees#create-a-tree"""
+        """git/create-tree
+
+        POST /repos/{owner}/{repo}/git/trees
+
+        The tree creation API accepts nested entries. If you specify both a tree and a nested path modifying that tree, this endpoint will overwrite the contents of the tree with the new path contents, and create a new tree structure.
+
+        If you use this endpoint to add, delete, or modify the file contents in a tree, you will need to commit the tree and then update a branch to point to the commit. For more information see "[Create a commit](https://docs.github.com/enterprise-cloud@latest//rest/git/commits#create-a-commit)" and "[Update a reference](https://docs.github.com/enterprise-cloud@latest//rest/git/refs#update-a-reference)."
+
+        Returns an error if you try to delete a file that does not exist.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/git/trees#create-a-tree
+        """
 
         from ..models import (
             BasicError,
@@ -1165,7 +1600,18 @@ class GitClient:
         data: Missing[ReposOwnerRepoGitTreesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[GitTree, GitTreeType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/git/trees#create-a-tree"""
+        """git/create-tree
+
+        POST /repos/{owner}/{repo}/git/trees
+
+        The tree creation API accepts nested entries. If you specify both a tree and a nested path modifying that tree, this endpoint will overwrite the contents of the tree with the new path contents, and create a new tree structure.
+
+        If you use this endpoint to add, delete, or modify the file contents in a tree, you will need to commit the tree and then update a branch to point to the commit. For more information see "[Create a commit](https://docs.github.com/enterprise-cloud@latest//rest/git/commits#create-a-commit)" and "[Update a reference](https://docs.github.com/enterprise-cloud@latest//rest/git/refs#update-a-reference)."
+
+        Returns an error if you try to delete a file that does not exist.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/git/trees#create-a-tree
+        """
 
         from ..models import (
             BasicError,
@@ -1210,7 +1656,19 @@ class GitClient:
         recursive: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[GitTree, GitTreeType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/git/trees#get-a-tree"""
+        """git/get-tree
+
+        GET /repos/{owner}/{repo}/git/trees/{tree_sha}
+
+        Returns a single tree using the SHA1 value or ref name for that tree.
+
+        If `truncated` is `true` in the response then the number of items in the `tree` array exceeded our maximum limit. If you need to fetch more items, use the non-recursive method of fetching trees, and fetch one sub-tree at a time.
+
+        > [!NOTE]
+        > The limit for the `tree` array is 100,000 entries with a maximum size of 7 MB when using the `recursive` parameter.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/git/trees#get-a-tree
+        """
 
         from ..models import BasicError, GitTree, ValidationError
 
@@ -1244,7 +1702,19 @@ class GitClient:
         recursive: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[GitTree, GitTreeType]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/git/trees#get-a-tree"""
+        """git/get-tree
+
+        GET /repos/{owner}/{repo}/git/trees/{tree_sha}
+
+        Returns a single tree using the SHA1 value or ref name for that tree.
+
+        If `truncated` is `true` in the response then the number of items in the `tree` array exceeded our maximum limit. If you need to fetch more items, use the non-recursive method of fetching trees, and fetch one sub-tree at a time.
+
+        > [!NOTE]
+        > The limit for the `tree` array is 100,000 entries with a maximum size of 7 MB when using the `recursive` parameter.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/git/trees#get-a-tree
+        """
 
         from ..models import BasicError, GitTree, ValidationError
 
