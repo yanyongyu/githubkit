@@ -140,6 +140,7 @@ defineConstant = { PYDANTIC_V2 = true }
 executionEnvironments = [
   # disable overload check for generated version codes
   { root = "githubkit/versions/", reportOverlappingOverload = false },
+  { root = "codegen", pythonVersion = "3.10" },
 ]
 
 exclude = ["codegen/**"]

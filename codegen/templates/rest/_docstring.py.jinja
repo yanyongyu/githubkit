@@ -1,0 +1,15 @@
+{% macro build_docstring(endpoint) %}
+"""{% if endpoint.deprecated %}DEPRECATED {% endif %}{% if endpoint.operation_id %}{{ endpoint.operation_id }}
+{% endif %}
+
+{{ endpoint.method | upper }} {{ endpoint.path }}
+{% if endpoint.description %}
+
+{{ endpoint.description }}
+{% endif %}
+{% if endpoint.external_docs %}
+
+See also: {{ endpoint.external_docs }}
+{% endif %}
+"""
+{% endmacro %}
