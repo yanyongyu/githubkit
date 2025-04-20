@@ -166,7 +166,9 @@ class CodeSecurityClient:
         headers: Optional[Mapping[str, str]] = None,
         name: str,
         description: str,
-        advanced_security: Missing[Literal["enabled", "disabled"]] = UNSET,
+        advanced_security: Missing[
+            Literal["enabled", "disabled", "code_security", "secret_protection"]
+        ] = UNSET,
         dependency_graph: Missing[Literal["enabled", "disabled", "not_set"]] = UNSET,
         dependency_graph_autosubmit_action: Missing[
             Literal["enabled", "disabled", "not_set"]
@@ -273,7 +275,9 @@ class CodeSecurityClient:
         headers: Optional[Mapping[str, str]] = None,
         name: str,
         description: str,
-        advanced_security: Missing[Literal["enabled", "disabled"]] = UNSET,
+        advanced_security: Missing[
+            Literal["enabled", "disabled", "code_security", "secret_protection"]
+        ] = UNSET,
         dependency_graph: Missing[Literal["enabled", "disabled", "not_set"]] = UNSET,
         dependency_graph_autosubmit_action: Missing[
             Literal["enabled", "disabled", "not_set"]
@@ -544,7 +548,9 @@ class CodeSecurityClient:
         headers: Optional[Mapping[str, str]] = None,
         name: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
-        advanced_security: Missing[Literal["enabled", "disabled"]] = UNSET,
+        advanced_security: Missing[
+            Literal["enabled", "disabled", "code_security", "secret_protection"]
+        ] = UNSET,
         dependency_graph: Missing[Literal["enabled", "disabled", "not_set"]] = UNSET,
         dependency_graph_autosubmit_action: Missing[
             Literal["enabled", "disabled", "not_set"]
@@ -657,7 +663,9 @@ class CodeSecurityClient:
         headers: Optional[Mapping[str, str]] = None,
         name: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
-        advanced_security: Missing[Literal["enabled", "disabled"]] = UNSET,
+        advanced_security: Missing[
+            Literal["enabled", "disabled", "code_security", "secret_protection"]
+        ] = UNSET,
         dependency_graph: Missing[Literal["enabled", "disabled", "not_set"]] = UNSET,
         dependency_graph_autosubmit_action: Missing[
             Literal["enabled", "disabled", "not_set"]
@@ -1238,7 +1246,9 @@ class CodeSecurityClient:
         headers: Optional[Mapping[str, str]] = None,
         name: str,
         description: str,
-        advanced_security: Missing[Literal["enabled", "disabled"]] = UNSET,
+        advanced_security: Missing[
+            Literal["enabled", "disabled", "code_security", "secret_protection"]
+        ] = UNSET,
         dependency_graph: Missing[Literal["enabled", "disabled", "not_set"]] = UNSET,
         dependency_graph_autosubmit_action: Missing[
             Literal["enabled", "disabled", "not_set"]
@@ -1341,7 +1351,9 @@ class CodeSecurityClient:
         headers: Optional[Mapping[str, str]] = None,
         name: str,
         description: str,
-        advanced_security: Missing[Literal["enabled", "disabled"]] = UNSET,
+        advanced_security: Missing[
+            Literal["enabled", "disabled", "code_security", "secret_protection"]
+        ] = UNSET,
         dependency_graph: Missing[Literal["enabled", "disabled", "not_set"]] = UNSET,
         dependency_graph_autosubmit_action: Missing[
             Literal["enabled", "disabled", "not_set"]
@@ -1732,7 +1744,9 @@ class CodeSecurityClient:
         headers: Optional[Mapping[str, str]] = None,
         name: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
-        advanced_security: Missing[Literal["enabled", "disabled"]] = UNSET,
+        advanced_security: Missing[
+            Literal["enabled", "disabled", "code_security", "secret_protection"]
+        ] = UNSET,
         dependency_graph: Missing[Literal["enabled", "disabled", "not_set"]] = UNSET,
         dependency_graph_autosubmit_action: Missing[
             Literal["enabled", "disabled", "not_set"]
@@ -1842,7 +1856,9 @@ class CodeSecurityClient:
         headers: Optional[Mapping[str, str]] = None,
         name: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
-        advanced_security: Missing[Literal["enabled", "disabled"]] = UNSET,
+        advanced_security: Missing[
+            Literal["enabled", "disabled", "code_security", "secret_protection"]
+        ] = UNSET,
         dependency_graph: Missing[Literal["enabled", "disabled", "not_set"]] = UNSET,
         dependency_graph_autosubmit_action: Missing[
             Literal["enabled", "disabled", "not_set"]

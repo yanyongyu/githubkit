@@ -46,16 +46,15 @@ from .group_0134 import OrgRulesetConditionsOneof1
 from .group_0135 import OrgRulesetConditionsOneof2
 
 
-class OrgsOrgRulesetsRulesetIdPutBody(GitHubModel):
-    """OrgsOrgRulesetsRulesetIdPutBody"""
+class OrgsOrgRulesetsPostBody(GitHubModel):
+    """OrgsOrgRulesetsPostBody"""
 
-    name: Missing[str] = Field(default=UNSET, description="The name of the ruleset.")
+    name: str = Field(description="The name of the ruleset.")
     target: Missing[Literal["branch", "tag", "push", "repository"]] = Field(
         default=UNSET, description="The target of the ruleset"
     )
-    enforcement: Missing[Literal["disabled", "active", "evaluate"]] = Field(
-        default=UNSET,
-        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page. `evaluate` is not available for the `repository` target.",
+    enforcement: Literal["disabled", "active", "evaluate"] = Field(
+        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page. `evaluate` is not available for the `repository` target."
     )
     bypass_actors: Missing[list[RepositoryRulesetBypassActor]] = Field(
         default=UNSET,
@@ -101,6 +100,6 @@ class OrgsOrgRulesetsRulesetIdPutBody(GitHubModel):
     ] = Field(default=UNSET, description="An array of rules within the ruleset.")
 
 
-model_rebuild(OrgsOrgRulesetsRulesetIdPutBody)
+model_rebuild(OrgsOrgRulesetsPostBody)
 
-__all__ = ("OrgsOrgRulesetsRulesetIdPutBody",)
+__all__ = ("OrgsOrgRulesetsPostBody",)

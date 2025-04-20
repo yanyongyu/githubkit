@@ -38,7 +38,9 @@ class CodeSecurityConfiguration(GitHubModel):
     description: Missing[str] = Field(
         default=UNSET, description="A description of the code security configuration"
     )
-    advanced_security: Missing[Literal["enabled", "disabled"]] = Field(
+    advanced_security: Missing[
+        Literal["enabled", "disabled", "code_security", "secret_protection"]
+    ] = Field(
         default=UNSET, description="The enablement status of GitHub Advanced Security"
     )
     dependency_graph: Missing[Literal["enabled", "disabled", "not_set"]] = Field(

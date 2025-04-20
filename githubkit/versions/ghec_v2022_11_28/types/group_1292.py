@@ -9,14 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0020 import RepositoryType
 
 
-class UserMembershipsOrgsOrgPatchBodyType(TypedDict):
-    """UserMembershipsOrgsOrgPatchBody"""
+class UserInstallationsInstallationIdRepositoriesGetResponse200Type(TypedDict):
+    """UserInstallationsInstallationIdRepositoriesGetResponse200"""
 
-    state: Literal["active"]
+    total_count: int
+    repository_selection: NotRequired[str]
+    repositories: list[RepositoryType]
 
 
-__all__ = ("UserMembershipsOrgsOrgPatchBodyType",)
+__all__ = ("UserInstallationsInstallationIdRepositoriesGetResponse200Type",)

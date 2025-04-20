@@ -14,24 +14,22 @@ from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
 from .group_0136 import RepositoryRulesetType
-from .group_0472 import EnterpriseWebhooksType
-from .group_0473 import SimpleInstallationType
-from .group_0474 import OrganizationSimpleWebhooksType
-from .group_0475 import RepositoryWebhooksType
-from .group_0819 import WebhookRepositoryRulesetEditedPropChangesType
+from .group_0473 import EnterpriseWebhooksType
+from .group_0474 import SimpleInstallationType
+from .group_0475 import OrganizationSimpleWebhooksType
+from .group_0476 import RepositoryWebhooksType
 
 
-class WebhookRepositoryRulesetEditedType(TypedDict):
-    """repository ruleset edited event"""
+class WebhookRepositoryRulesetDeletedType(TypedDict):
+    """repository ruleset deleted event"""
 
-    action: Literal["edited"]
+    action: Literal["deleted"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: NotRequired[RepositoryWebhooksType]
     repository_ruleset: RepositoryRulesetType
-    changes: NotRequired[WebhookRepositoryRulesetEditedPropChangesType]
     sender: SimpleUserType
 
 
-__all__ = ("WebhookRepositoryRulesetEditedType",)
+__all__ = ("WebhookRepositoryRulesetDeletedType",)

@@ -6394,7 +6394,14 @@ class ReposClient:
         time_period: Missing[Literal["hour", "day", "week", "month"]] = UNSET,
         request_status: Missing[
             Literal[
-                "completed", "cancelled", "expired", "deleted", "denied", "open", "all"
+                "completed",
+                "cancelled",
+                "approved",
+                "expired",
+                "deleted",
+                "denied",
+                "open",
+                "all",
             ]
         ] = UNSET,
         per_page: Missing[int] = UNSET,
@@ -6440,7 +6447,14 @@ class ReposClient:
         time_period: Missing[Literal["hour", "day", "week", "month"]] = UNSET,
         request_status: Missing[
             Literal[
-                "completed", "cancelled", "expired", "deleted", "denied", "open", "all"
+                "completed",
+                "cancelled",
+                "approved",
+                "expired",
+                "deleted",
+                "denied",
+                "open",
+                "all",
             ]
         ] = UNSET,
         per_page: Missing[int] = UNSET,

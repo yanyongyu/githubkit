@@ -9,52 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0323 import Metadata
+from .group_0324 import Metadata
 
 
-class Manifest(GitHubModel):
-    """Manifest"""
+class Dependency(GitHubModel):
+    """Dependency"""
 
-    name: str = Field(description="The name of the manifest.")
-    file: Missing[ManifestPropFile] = Field(default=UNSET)
+    package_url: Missing[str] = Field(
+        pattern="^pkg",
+        default=UNSET,
+        description="Package-url (PURL) of dependency. See https://github.com/package-url/purl-spec for more details.",
+    )
     metadata: Missing[Metadata] = Field(
         default=UNSET,
         title="metadata",
         description="User-defined metadata to store domain-specific information limited to 8 keys with scalar values.",
     )
-    resolved: Missing[ManifestPropResolved] = Field(
-        default=UNSET, description="A collection of resolved package dependencies."
-    )
-
-
-class ManifestPropFile(GitHubModel):
-    """ManifestPropFile"""
-
-    source_location: Missing[str] = Field(
+    relationship: Missing[Literal["direct", "indirect"]] = Field(
         default=UNSET,
-        description="The path of the manifest file relative to the root of the Git repository.",
+        description="A notation of whether a dependency is requested directly by this manifest or is a dependency of another dependency.",
+    )
+    scope: Missing[Literal["runtime", "development"]] = Field(
+        default=UNSET,
+        description="A notation of whether the dependency is required for the primary build artifact (runtime) or is only used for development. Future versions of this specification may allow for more granular scopes.",
+    )
+    dependencies: Missing[list[str]] = Field(
+        default=UNSET,
+        description="Array of package-url (PURLs) of direct child dependencies.",
     )
 
 
-class ManifestPropResolved(ExtraGitHubModel):
-    """ManifestPropResolved
+model_rebuild(Dependency)
 
-    A collection of resolved package dependencies.
-    """
-
-
-model_rebuild(Manifest)
-model_rebuild(ManifestPropFile)
-model_rebuild(ManifestPropResolved)
-
-__all__ = (
-    "Manifest",
-    "ManifestPropFile",
-    "ManifestPropResolved",
-)
+__all__ = ("Dependency",)

@@ -13,21 +13,25 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0473 import SimpleInstallationType
-from .group_0474 import OrganizationSimpleWebhooksType
-from .group_0475 import RepositoryWebhooksType
-from .group_0480 import CheckRunWithSimpleCheckSuiteType
+from .group_0473 import EnterpriseWebhooksType
+from .group_0474 import SimpleInstallationType
+from .group_0475 import OrganizationSimpleWebhooksType
+from .group_0476 import RepositoryWebhooksType
+from .group_0478 import ExemptionResponseType
+from .group_0479 import ExemptionRequestType
 
 
-class WebhookCheckRunCompletedType(TypedDict):
-    """Check Run Completed Event"""
+class WebhookExemptionRequestResponseSubmittedType(TypedDict):
+    """Exemption response submitted event"""
 
-    action: Literal["completed"]
-    check_run: CheckRunWithSimpleCheckSuiteType
+    action: Literal["response_submitted"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
+    repository: NotRequired[RepositoryWebhooksType]
+    exemption_request: ExemptionRequestType
+    exemption_response: ExemptionResponseType
     sender: SimpleUserType
 
 
-__all__ = ("WebhookCheckRunCompletedType",)
+__all__ = ("WebhookExemptionRequestResponseSubmittedType",)

@@ -9,20 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import TypedDict
 
+from .group_0215 import CustomPropertyValueType
 
-class CodeOfConductSimpleType(TypedDict):
-    """Code Of Conduct Simple
 
-    Code of Conduct Simple
+class OrgRepoCustomPropertyValuesType(TypedDict):
+    """Organization Repository Custom Property Values
+
+    List of custom property values for a repository
     """
 
-    url: str
-    key: str
-    name: str
-    html_url: Union[str, None]
+    repository_id: int
+    repository_name: str
+    repository_full_name: str
+    properties: list[CustomPropertyValueType]
 
 
-__all__ = ("CodeOfConductSimpleType",)
+__all__ = ("OrgRepoCustomPropertyValuesType",)

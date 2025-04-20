@@ -24,7 +24,9 @@ class CodeSecurityConfigurationType(TypedDict):
     name: NotRequired[str]
     target_type: NotRequired[Literal["global", "organization", "enterprise"]]
     description: NotRequired[str]
-    advanced_security: NotRequired[Literal["enabled", "disabled"]]
+    advanced_security: NotRequired[
+        Literal["enabled", "disabled", "code_security", "secret_protection"]
+    ]
     dependency_graph: NotRequired[Literal["enabled", "disabled", "not_set"]]
     dependency_graph_autosubmit_action: NotRequired[
         Literal["enabled", "disabled", "not_set"]

@@ -701,7 +701,7 @@ class GitClient:
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/git/refs#delete-a-reference"""
 
-        from ..models import BasicError, ValidationError
+        from ..models import BasicError
 
         url = f"/repos/{owner}/{repo}/git/refs/{ref}"
 
@@ -712,7 +712,6 @@ class GitClient:
             url,
             headers=exclude_unset(headers),
             error_models={
-                "422": ValidationError,
                 "409": BasicError,
             },
         )
@@ -727,7 +726,7 @@ class GitClient:
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/git/refs#delete-a-reference"""
 
-        from ..models import BasicError, ValidationError
+        from ..models import BasicError
 
         url = f"/repos/{owner}/{repo}/git/refs/{ref}"
 
@@ -738,7 +737,6 @@ class GitClient:
             url,
             headers=exclude_unset(headers),
             error_models={
-                "422": ValidationError,
                 "409": BasicError,
             },
         )

@@ -10,24 +10,45 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0365 import TimelineCrossReferencedEventPropSourceType
+from .group_0010 import IntegrationType
+from .group_0151 import ReactionRollupType
 
 
-class TimelineCrossReferencedEventType(TypedDict):
-    """Timeline Cross Referenced Event
+class TimelineCommentEventType(TypedDict):
+    """Timeline Comment Event
 
-    Timeline Cross Referenced Event
+    Timeline Comment Event
     """
 
-    event: Literal["cross-referenced"]
-    actor: NotRequired[SimpleUserType]
+    event: Literal["commented"]
+    actor: SimpleUserType
+    id: int
+    node_id: str
+    url: str
+    body: NotRequired[str]
+    body_text: NotRequired[str]
+    body_html: NotRequired[str]
+    html_url: str
+    user: SimpleUserType
     created_at: datetime
     updated_at: datetime
-    source: TimelineCrossReferencedEventPropSourceType
+    issue_url: str
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
+    reactions: NotRequired[ReactionRollupType]
 
 
-__all__ = ("TimelineCrossReferencedEventType",)
+__all__ = ("TimelineCommentEventType",)

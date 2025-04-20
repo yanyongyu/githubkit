@@ -29,8 +29,11 @@ class EnterprisesEnterpriseCodeSecurityConfigurationsPostBody(GitHubModel):
     description: str = Field(
         max_length=255, description="A description of the code security configuration"
     )
-    advanced_security: Missing[Literal["enabled", "disabled"]] = Field(
-        default=UNSET, description="The enablement status of GitHub Advanced Security"
+    advanced_security: Missing[
+        Literal["enabled", "disabled", "code_security", "secret_protection"]
+    ] = Field(
+        default=UNSET,
+        description="The enablement status of GitHub Advanced Security features. `enabled` will enable both Code Security and Secret Protection features.",
     )
     dependency_graph: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
         default=UNSET, description="The enablement status of Dependency Graph"

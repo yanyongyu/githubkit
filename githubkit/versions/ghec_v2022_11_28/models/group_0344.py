@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from datetime import datetime
 
 from pydantic import Field
 
@@ -17,67 +17,39 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0011 import WebhookConfig
+from .group_0343 import HookResponse
 
-class Import(GitHubModel):
-    """Import
 
-    A repository import from an external source.
+class Hook(GitHubModel):
+    """Webhook
+
+    Webhooks for repositories.
     """
 
-    vcs: Union[str, None] = Field()
-    use_lfs: Missing[bool] = Field(default=UNSET)
-    vcs_url: str = Field(description="The URL of the originating repository.")
-    svc_root: Missing[str] = Field(default=UNSET)
-    tfvc_project: Missing[str] = Field(default=UNSET)
-    status: Literal[
-        "auth",
-        "error",
-        "none",
-        "detecting",
-        "choose",
-        "auth_failed",
-        "importing",
-        "mapping",
-        "waiting_to_push",
-        "pushing",
-        "complete",
-        "setup",
-        "unknown",
-        "detection_found_multiple",
-        "detection_found_nothing",
-        "detection_needs_auth",
-    ] = Field()
-    status_text: Missing[Union[str, None]] = Field(default=UNSET)
-    failed_step: Missing[Union[str, None]] = Field(default=UNSET)
-    error_message: Missing[Union[str, None]] = Field(default=UNSET)
-    import_percent: Missing[Union[int, None]] = Field(default=UNSET)
-    commit_count: Missing[Union[int, None]] = Field(default=UNSET)
-    push_percent: Missing[Union[int, None]] = Field(default=UNSET)
-    has_large_files: Missing[bool] = Field(default=UNSET)
-    large_files_size: Missing[int] = Field(default=UNSET)
-    large_files_count: Missing[int] = Field(default=UNSET)
-    project_choices: Missing[list[ImportPropProjectChoicesItems]] = Field(default=UNSET)
-    message: Missing[str] = Field(default=UNSET)
-    authors_count: Missing[Union[int, None]] = Field(default=UNSET)
+    type: str = Field()
+    id: int = Field(description="Unique identifier of the webhook.")
+    name: str = Field(
+        description="The name of a valid service, use 'web' for a webhook."
+    )
+    active: bool = Field(
+        description="Determines whether the hook is actually triggered on pushes."
+    )
+    events: list[str] = Field(
+        description="Determines what events the hook is triggered for. Default: ['push']."
+    )
+    config: WebhookConfig = Field(
+        title="Webhook Configuration", description="Configuration object of the webhook"
+    )
+    updated_at: datetime = Field()
+    created_at: datetime = Field()
     url: str = Field()
-    html_url: str = Field()
-    authors_url: str = Field()
-    repository_url: str = Field()
-    svn_root: Missing[str] = Field(default=UNSET)
+    test_url: str = Field()
+    ping_url: str = Field()
+    deliveries_url: Missing[str] = Field(default=UNSET)
+    last_response: HookResponse = Field(title="Hook Response")
 
 
-class ImportPropProjectChoicesItems(GitHubModel):
-    """ImportPropProjectChoicesItems"""
+model_rebuild(Hook)
 
-    vcs: Missing[str] = Field(default=UNSET)
-    tfvc_project: Missing[str] = Field(default=UNSET)
-    human_name: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(Import)
-model_rebuild(ImportPropProjectChoicesItems)
-
-__all__ = (
-    "Import",
-    "ImportPropProjectChoicesItems",
-)
+__all__ = ("Hook",)

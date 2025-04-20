@@ -42,12 +42,12 @@ from .group_0127 import RepositoryRuleWorkflowsType
 from .group_0129 import RepositoryRuleCodeScanningType
 
 
-class EnterprisesEnterpriseRulesetsRulesetIdPutBodyType(TypedDict):
-    """EnterprisesEnterpriseRulesetsRulesetIdPutBody"""
+class EnterprisesEnterpriseRulesetsPostBodyType(TypedDict):
+    """EnterprisesEnterpriseRulesetsPostBody"""
 
-    name: NotRequired[str]
+    name: str
     target: NotRequired[Literal["branch", "tag", "push", "repository"]]
-    enforcement: NotRequired[Literal["disabled", "active", "evaluate"]]
+    enforcement: Literal["disabled", "active", "evaluate"]
     bypass_actors: NotRequired[list[RepositoryRulesetBypassActorType]]
     conditions: NotRequired[
         Union[
@@ -86,4 +86,4 @@ class EnterprisesEnterpriseRulesetsRulesetIdPutBodyType(TypedDict):
     ]
 
 
-__all__ = ("EnterprisesEnterpriseRulesetsRulesetIdPutBodyType",)
+__all__ = ("EnterprisesEnterpriseRulesetsPostBodyType",)

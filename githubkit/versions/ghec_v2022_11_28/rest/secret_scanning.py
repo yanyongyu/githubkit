@@ -30,8 +30,10 @@ if TYPE_CHECKING:
     from ..models import (
         OrganizationSecretScanningAlert,
         ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200,
+        ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200,
         SecretScanningAlert,
         SecretScanningBypassRequest,
+        SecretScanningDismissalRequest,
         SecretScanningLocation,
         SecretScanningPushProtectionBypass,
         SecretScanningScanHistory,
@@ -40,10 +42,13 @@ if TYPE_CHECKING:
         OrganizationSecretScanningAlertType,
         ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchBodyType,
         ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200Type,
+        ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchBodyType,
+        ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200Type,
         ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyType,
         ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyType,
         SecretScanningAlertType,
         SecretScanningBypassRequestType,
+        SecretScanningDismissalRequestType,
         SecretScanningLocationType,
         SecretScanningPushProtectionBypassType,
         SecretScanningScanHistoryType,
@@ -189,7 +194,14 @@ class SecretScanningClient:
         time_period: Missing[Literal["hour", "day", "week", "month"]] = UNSET,
         request_status: Missing[
             Literal[
-                "completed", "cancelled", "expired", "deleted", "denied", "open", "all"
+                "completed",
+                "cancelled",
+                "approved",
+                "expired",
+                "deleted",
+                "denied",
+                "open",
+                "all",
             ]
         ] = UNSET,
         per_page: Missing[int] = UNSET,
@@ -238,7 +250,14 @@ class SecretScanningClient:
         time_period: Missing[Literal["hour", "day", "week", "month"]] = UNSET,
         request_status: Missing[
             Literal[
-                "completed", "cancelled", "expired", "deleted", "denied", "open", "all"
+                "completed",
+                "cancelled",
+                "approved",
+                "expired",
+                "deleted",
+                "denied",
+                "open",
+                "all",
             ]
         ] = UNSET,
         per_page: Missing[int] = UNSET,
@@ -273,6 +292,106 @@ class SecretScanningClient:
             response_model=list[SecretScanningBypassRequest],
             error_models={
                 "404": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    def list_org_dismissal_requests(
+        self,
+        org: str,
+        *,
+        repository_name: Missing[str] = UNSET,
+        reviewer: Missing[str] = UNSET,
+        requester: Missing[str] = UNSET,
+        time_period: Missing[Literal["hour", "day", "week", "month"]] = UNSET,
+        request_status: Missing[
+            Literal[
+                "completed", "cancelled", "approved", "expired", "denied", "open", "all"
+            ]
+        ] = UNSET,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+    ) -> Response[
+        list[SecretScanningDismissalRequest], list[SecretScanningDismissalRequestType]
+    ]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/alert-dismissal-requests#list-alert-dismissal-requests-for-secret-scanning-for-an-org"""
+
+        from ..models import BasicError, SecretScanningDismissalRequest
+
+        url = f"/orgs/{org}/dismissal-requests/secret-scanning"
+
+        params = {
+            "repository_name": repository_name,
+            "reviewer": reviewer,
+            "requester": requester,
+            "time_period": time_period,
+            "request_status": request_status,
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=list[SecretScanningDismissalRequest],
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    async def async_list_org_dismissal_requests(
+        self,
+        org: str,
+        *,
+        repository_name: Missing[str] = UNSET,
+        reviewer: Missing[str] = UNSET,
+        requester: Missing[str] = UNSET,
+        time_period: Missing[Literal["hour", "day", "week", "month"]] = UNSET,
+        request_status: Missing[
+            Literal[
+                "completed", "cancelled", "approved", "expired", "denied", "open", "all"
+            ]
+        ] = UNSET,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+    ) -> Response[
+        list[SecretScanningDismissalRequest], list[SecretScanningDismissalRequestType]
+    ]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/alert-dismissal-requests#list-alert-dismissal-requests-for-secret-scanning-for-an-org"""
+
+        from ..models import BasicError, SecretScanningDismissalRequest
+
+        url = f"/orgs/{org}/dismissal-requests/secret-scanning"
+
+        params = {
+            "repository_name": repository_name,
+            "reviewer": reviewer,
+            "requester": requester,
+            "time_period": time_period,
+            "request_status": request_status,
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=list[SecretScanningDismissalRequest],
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
                 "500": BasicError,
             },
         )
@@ -405,7 +524,14 @@ class SecretScanningClient:
         time_period: Missing[Literal["hour", "day", "week", "month"]] = UNSET,
         request_status: Missing[
             Literal[
-                "completed", "cancelled", "expired", "deleted", "denied", "open", "all"
+                "completed",
+                "cancelled",
+                "approved",
+                "expired",
+                "deleted",
+                "denied",
+                "open",
+                "all",
             ]
         ] = UNSET,
         per_page: Missing[int] = UNSET,
@@ -454,7 +580,14 @@ class SecretScanningClient:
         time_period: Missing[Literal["hour", "day", "week", "month"]] = UNSET,
         request_status: Missing[
             Literal[
-                "completed", "cancelled", "expired", "deleted", "denied", "open", "all"
+                "completed",
+                "cancelled",
+                "approved",
+                "expired",
+                "deleted",
+                "denied",
+                "open",
+                "all",
             ]
         ] = UNSET,
         per_page: Missing[int] = UNSET,
@@ -765,6 +898,326 @@ class SecretScanningClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+                "422": ValidationError,
+                "500": BasicError,
+            },
+        )
+
+    def list_repo_dismissal_requests(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        reviewer: Missing[str] = UNSET,
+        requester: Missing[str] = UNSET,
+        time_period: Missing[Literal["hour", "day", "week", "month"]] = UNSET,
+        request_status: Missing[
+            Literal[
+                "completed", "cancelled", "approved", "expired", "denied", "open", "all"
+            ]
+        ] = UNSET,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+    ) -> Response[
+        list[SecretScanningDismissalRequest], list[SecretScanningDismissalRequestType]
+    ]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/alert-dismissal-requests#list-alert-dismissal-requests-for-secret-scanning-for-a-repository"""
+
+        from ..models import BasicError, SecretScanningDismissalRequest
+
+        url = f"/repos/{owner}/{repo}/dismissal-requests/secret-scanning"
+
+        params = {
+            "reviewer": reviewer,
+            "requester": requester,
+            "time_period": time_period,
+            "request_status": request_status,
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=list[SecretScanningDismissalRequest],
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    async def async_list_repo_dismissal_requests(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        reviewer: Missing[str] = UNSET,
+        requester: Missing[str] = UNSET,
+        time_period: Missing[Literal["hour", "day", "week", "month"]] = UNSET,
+        request_status: Missing[
+            Literal[
+                "completed", "cancelled", "approved", "expired", "denied", "open", "all"
+            ]
+        ] = UNSET,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+    ) -> Response[
+        list[SecretScanningDismissalRequest], list[SecretScanningDismissalRequestType]
+    ]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/alert-dismissal-requests#list-alert-dismissal-requests-for-secret-scanning-for-a-repository"""
+
+        from ..models import BasicError, SecretScanningDismissalRequest
+
+        url = f"/repos/{owner}/{repo}/dismissal-requests/secret-scanning"
+
+        params = {
+            "reviewer": reviewer,
+            "requester": requester,
+            "time_period": time_period,
+            "request_status": request_status,
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=list[SecretScanningDismissalRequest],
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    def get_dismissal_request(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+    ) -> Response[SecretScanningDismissalRequest, SecretScanningDismissalRequestType]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/alert-dismissal-requests#get-an-alert-dismissal-request-for-secret-scanning"""
+
+        from ..models import BasicError, SecretScanningDismissalRequest
+
+        url = f"/repos/{owner}/{repo}/dismissal-requests/secret-scanning/{alert_number}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=SecretScanningDismissalRequest,
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    async def async_get_dismissal_request(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+    ) -> Response[SecretScanningDismissalRequest, SecretScanningDismissalRequestType]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/alert-dismissal-requests#get-an-alert-dismissal-request-for-secret-scanning"""
+
+        from ..models import BasicError, SecretScanningDismissalRequest
+
+        url = f"/repos/{owner}/{repo}/dismissal-requests/secret-scanning/{alert_number}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=SecretScanningDismissalRequest,
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    @overload
+    def review_dismissal_request(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        data: ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchBodyType,
+    ) -> Response[
+        ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200,
+        ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200Type,
+    ]: ...
+
+    @overload
+    def review_dismissal_request(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        status: Literal["approve", "deny"],
+        message: str,
+    ) -> Response[
+        ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200,
+        ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200Type,
+    ]: ...
+
+    def review_dismissal_request(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        data: Missing[
+            ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[
+        ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200,
+        ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200Type,
+    ]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/alert-dismissal-requests#review-an-alert-dismissal-request-for-secret-scanning"""
+
+        from ..models import (
+            BasicError,
+            ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchBody,
+            ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200,
+            ValidationError,
+        )
+
+        url = f"/repos/{owner}/{repo}/dismissal-requests/secret-scanning/{alert_number}"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200,
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+                "422": ValidationError,
+                "500": BasicError,
+            },
+        )
+
+    @overload
+    async def async_review_dismissal_request(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        data: ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchBodyType,
+    ) -> Response[
+        ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200,
+        ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200Type,
+    ]: ...
+
+    @overload
+    async def async_review_dismissal_request(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        status: Literal["approve", "deny"],
+        message: str,
+    ) -> Response[
+        ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200,
+        ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200Type,
+    ]: ...
+
+    async def async_review_dismissal_request(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        data: Missing[
+            ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[
+        ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200,
+        ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200Type,
+    ]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/alert-dismissal-requests#review-an-alert-dismissal-request-for-secret-scanning"""
+
+        from ..models import (
+            BasicError,
+            ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchBody,
+            ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200,
+            ValidationError,
+        )
+
+        url = f"/repos/{owner}/{repo}/dismissal-requests/secret-scanning/{alert_number}"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200,
             error_models={
                 "404": BasicError,
                 "403": BasicError,

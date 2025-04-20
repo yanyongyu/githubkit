@@ -30,7 +30,7 @@ class CopilotSeatDetails(GitHubModel):
     organization.
     """
 
-    assignee: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    assignee: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
     organization: Missing[Union[None, OrganizationSimple]] = Field(default=UNSET)
     assigning_team: Missing[Union[Team, EnterpriseTeam, None]] = Field(
         default=UNSET,

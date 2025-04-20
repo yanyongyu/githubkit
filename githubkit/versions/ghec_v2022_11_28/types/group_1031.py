@@ -9,14 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgPrivateRegistriesPublicKeyGetResponse200Type(TypedDict):
-    """OrgsOrgPrivateRegistriesPublicKeyGetResponse200"""
+class OrgsOrgPrivateRegistriesPostBodyType(TypedDict):
+    """OrgsOrgPrivateRegistriesPostBody"""
 
+    registry_type: Literal["maven_repository"]
+    username: NotRequired[Union[str, None]]
+    encrypted_value: str
     key_id: str
-    key: str
+    visibility: Literal["all", "private", "selected"]
+    selected_repository_ids: NotRequired[list[int]]
 
 
-__all__ = ("OrgsOrgPrivateRegistriesPublicKeyGetResponse200Type",)
+__all__ = ("OrgsOrgPrivateRegistriesPostBodyType",)

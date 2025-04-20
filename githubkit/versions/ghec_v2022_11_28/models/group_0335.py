@@ -12,55 +12,28 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0334 import CustomDeploymentRuleApp
 
 
-class DeploymentProtectionRule(GitHubModel):
-    """Deployment protection rule
+class CustomDeploymentRuleApp(GitHubModel):
+    """Custom deployment protection rule app
 
-    Deployment protection rule
+    A GitHub App that is providing a custom deployment protection rule.
     """
 
     id: int = Field(
-        description="The unique identifier for the deployment protection rule."
+        description="The unique identifier of the deployment protection rule integration."
     )
-    node_id: str = Field(description="The node ID for the deployment protection rule.")
-    enabled: bool = Field(
-        description="Whether the deployment protection rule is enabled for the environment."
+    slug: str = Field(
+        description="The slugified name of the deployment protection rule integration."
     )
-    app: CustomDeploymentRuleApp = Field(
-        title="Custom deployment protection rule app",
-        description="A GitHub App that is providing a custom deployment protection rule.",
+    integration_url: str = Field(
+        description="The URL for the endpoint to get details about the app."
     )
-
-
-class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200(
-    GitHubModel
-):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200
-
-    Examples:
-        {'$ref': '#/components/examples/deployment-protection-rules'}
-    """
-
-    total_count: Missing[int] = Field(
-        default=UNSET,
-        description="The number of enabled custom deployment protection rules for this environment",
-    )
-    custom_deployment_protection_rules: Missing[list[DeploymentProtectionRule]] = Field(
-        default=UNSET
+    node_id: str = Field(
+        description="The node ID for the deployment protection rule integration."
     )
 
 
-model_rebuild(DeploymentProtectionRule)
-model_rebuild(
-    ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200
-)
+model_rebuild(CustomDeploymentRuleApp)
 
-__all__ = (
-    "DeploymentProtectionRule",
-    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200",
-)
+__all__ = ("CustomDeploymentRuleApp",)

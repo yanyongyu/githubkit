@@ -34,9 +34,11 @@ class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBody(
         default=UNSET,
         description="A description of the code security configuration",
     )
-    advanced_security: Missing[Literal["enabled", "disabled"]] = Field(
+    advanced_security: Missing[
+        Literal["enabled", "disabled", "code_security", "secret_protection"]
+    ] = Field(
         default=UNSET,
-        description="The enablement status of GitHub Advanced Security. Must be set to enabled if you want to enable any GHAS settings.",
+        description="The enablement status of GitHub Advanced Security features. `enabled` will enable both Code Security and Secret Protection features.",
     )
     dependency_graph: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
         default=UNSET, description="The enablement status of Dependency Graph"
