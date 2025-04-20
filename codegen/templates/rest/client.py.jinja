@@ -5,6 +5,7 @@
 {% from "rest/_param.py.jinja" import endpoint_params, endpoint_raw_params, endpoint_model_params %}
 {% from "rest/_response.py.jinja" import build_response_type %}
 {% from "rest/_request.py.jinja" import build_request, build_request_params %}
+{% from "rest/_docstring.py.jinja" import build_docstring %}
 
 from __future__ import annotations
 
@@ -98,10 +99,8 @@ class {{ pascal_case(tag) }}Client:
         self,
         {{ endpoint_params(endpoint) | indent(8) }}
     ) -> {{ build_response_type(endpoint.success_response) }}:
-        {% if endpoint.external_docs %}
-        """See also: {{ endpoint.external_docs }}"""
+        {{ build_docstring(endpoint) | indent(8) }}
 
-        {% endif %}
         {{ build_request(endpoint) | indent(8) }}
         return self._github.request(
             {{ build_request_params(endpoint) | indent(12) }}
@@ -131,10 +130,8 @@ class {{ pascal_case(tag) }}Client:
         self,
         {{ endpoint_params(endpoint) | indent(8) }}
     ) -> {{ build_response_type(endpoint.success_response) }}:
-        {% if endpoint.external_docs %}
-        """See also: {{ endpoint.external_docs }}"""
+        {{ build_docstring(endpoint) | indent(8) }}
 
-        {% endif %}
         {{ build_request(endpoint) | indent(8) }}
         return await self._github.arequest(
             {{ build_request_params(endpoint) | indent(12) }}

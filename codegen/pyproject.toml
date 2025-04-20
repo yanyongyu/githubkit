@@ -5,13 +5,3 @@ target-version = "py310"
 
 [tool.ruff.lint]
 ignore = ["TID"]
-
-[tool.pyright]
-typeCheckingMode = "standard"
-reportPrivateImportUsage = false
-reportShadowedImports = false
-disableBytesTypePromotions = true
-
-pythonVersion = "3.10"
-pythonPlatform = "All"
-defineConstant = { PYDANTIC_V2 = true }
