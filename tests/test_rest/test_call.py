@@ -65,7 +65,7 @@ async def test_async_call_with_raw_body(g: GitHub):
 
 def test_paginate(g: GitHub):
     paginator = g.rest.paginate(
-        g.rest.issues.list_for_repo, owner=OWNER, repo=REPO, per_page=50
+        g.rest.issues.list_for_repo, owner=OWNER, repo=REPO, state="all", per_page=50
     )
     count = 0
     for issue in paginator:
@@ -78,7 +78,7 @@ def test_paginate(g: GitHub):
 
 def test_paginate_with_partial(g: GitHub):
     paginator = g.rest.paginate(
-        partial(g.rest.issues.list_for_repo, OWNER, REPO), per_page=50
+        partial(g.rest.issues.list_for_repo, OWNER, REPO), state="all", per_page=50
     )
     for issue in paginator:
         assert isinstance(issue, Issue)
@@ -87,7 +87,11 @@ def test_paginate_with_partial(g: GitHub):
 @pytest.mark.anyio
 async def test_async_paginate(g: GitHub):
     paginator = g.rest.paginate(
-        g.rest.issues.async_list_for_repo, owner=OWNER, repo=REPO, per_page=50
+        g.rest.issues.async_list_for_repo,
+        owner=OWNER,
+        repo=REPO,
+        state="all",
+        per_page=50,
     )
     count = 0
     async for issue in paginator:
@@ -102,6 +106,7 @@ async def test_async_paginate(g: GitHub):
 async def test_async_paginate_with_partial(g: GitHub):
     paginator = g.rest.paginate(
         partial(g.rest.issues.async_list_for_repo, OWNER, REPO),
+        state="all",
         per_page=50,
     )
     async for issue in paginator:
