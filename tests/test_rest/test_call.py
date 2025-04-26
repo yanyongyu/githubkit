@@ -4,10 +4,19 @@ import pytest
 
 from githubkit import GitHub
 from githubkit.versions import LATEST_VERSION
-from githubkit.versions.latest.models import FullRepository
+from githubkit.versions.latest.models import FullRepository, Issue
 
 OWNER = "yanyongyu"
 REPO = "githubkit"
+ISSUE_COUNT_QUERY = """
+query($owner: String!, $repo: String!) {
+  repository(owner: $owner, name: $repo) {
+    issues {
+      totalCount
+    }
+  }
+}
+"""
 
 
 def test_call(g: GitHub):
@@ -58,16 +67,21 @@ def test_paginate(g: GitHub):
     paginator = g.rest.paginate(
         g.rest.issues.list_for_repo, owner=OWNER, repo=REPO, per_page=50
     )
-    for _ in paginator:
-        ...
+    count = 0
+    for issue in paginator:
+        assert isinstance(issue, Issue)
+        count += 1
+
+    result = g.graphql.request(ISSUE_COUNT_QUERY, {"owner": OWNER, "repo": REPO})
+    assert result["repository"]["issues"]["totalCount"] == count
 
 
 def test_paginate_with_partial(g: GitHub):
     paginator = g.rest.paginate(
         partial(g.rest.issues.list_for_repo, OWNER, REPO), per_page=50
     )
-    for _ in paginator:
-        ...
+    for issue in paginator:
+        assert isinstance(issue, Issue)
 
 
 @pytest.mark.anyio
@@ -75,8 +89,13 @@ async def test_async_paginate(g: GitHub):
     paginator = g.rest.paginate(
         g.rest.issues.async_list_for_repo, owner=OWNER, repo=REPO, per_page=50
     )
-    async for _ in paginator:
-        ...
+    count = 0
+    async for issue in paginator:
+        assert isinstance(issue, Issue)
+        count += 1
+
+    result = g.graphql.request(ISSUE_COUNT_QUERY, {"owner": OWNER, "repo": REPO})
+    assert result["repository"]["issues"]["totalCount"] == count
 
 
 @pytest.mark.anyio
@@ -85,5 +104,5 @@ async def test_async_paginate_with_partial(g: GitHub):
         partial(g.rest.issues.async_list_for_repo, OWNER, REPO),
         per_page=50,
     )
-    async for _ in paginator:
-        ...
+    async for issue in paginator:
+        assert isinstance(issue, Issue)

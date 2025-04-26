@@ -6,8 +6,8 @@ from typing import (
     Callable,
     Generic,
     Optional,
-    TypeVar,
     TypedDict,
+    TypeVar,
     Union,
     cast,
     overload,
@@ -17,8 +17,8 @@ from typing_extensions import ParamSpec, Self
 import httpx
 
 from githubkit.response import Response
-from githubkit.utils import is_async
 from githubkit.typing import HeaderTypes
+from githubkit.utils import is_async
 
 if TYPE_CHECKING:
     from githubkit.versions import RestVersionSwitcher
@@ -93,10 +93,10 @@ class Paginator(Generic[RT]):
     def finalized(self) -> bool:
         """Whether the paginator is finalized or not."""
         return (self._state["next_link"] is None) if self._state is not None else False
-    
+
     @property
     def _headers(self) -> Optional[HeaderTypes]:
-        return self.kwargs.get("headers")
+        return self.kwargs.get("headers")  # type: ignore
 
     def reset(self) -> None:
         """Reset the paginator to the initial state."""
@@ -107,9 +107,10 @@ class Paginator(Generic[RT]):
 
     def __next__(self) -> RT:
         while self._index >= len(self._cached_data):
-            self._get_next_page()
             if self.finalized:
                 raise StopIteration
+
+            self._get_next_page()
 
         current = self._cached_data[self._index]
         self._index += 1
@@ -122,9 +123,10 @@ class Paginator(Generic[RT]):
 
     async def __anext__(self) -> RT:
         while self._index >= len(self._cached_data):
-            await self._aget_next_page()
             if self.finalized:
                 raise StopAsyncIteration
+
+            await self._aget_next_page()
 
         current = self._cached_data[self._index]
         self._index += 1
@@ -161,12 +163,12 @@ class Paginator(Generic[RT]):
     def _get_next_page(self) -> None:
         if self._state is None:
             # First request
-            response = cast(
-                Response[Any],
-                self.request(*self.args, **self.kwargs)
-            )
+            response = cast(Response[Any], self.request(*self.args, **self.kwargs))
         else:
             # we request the next page with the same method and response model
+            if self._state["next_link"] is None:
+                raise RuntimeError("No next page to request")
+
             response = cast(
                 Response[Any],
                 self.rest._github.request(
@@ -180,7 +182,7 @@ class Paginator(Generic[RT]):
         self._state = PaginatorState(
             next_link=self._find_next_link(response),
             request_method=response.raw_request.method,
-            response_model=response._data_model
+            response_model=response._data_model,
         )
         self._fill_cache_data(self._apply_map_func(response))
 
@@ -193,6 +195,9 @@ class Paginator(Generic[RT]):
             )
         else:
             # we request the next page with the same method and response model
+            if self._state["next_link"] is None:
+                raise RuntimeError("No next page to request")
+
             response = cast(
                 Response[Any],
                 await self.rest._github.request(
@@ -206,6 +211,6 @@ class Paginator(Generic[RT]):
         self._state = PaginatorState(
             next_link=self._find_next_link(response),
             request_method=response.raw_request.method,
-            response_model=response._data_model
+            response_model=response._data_model,
         )
         self._fill_cache_data(self._apply_map_func(response))
