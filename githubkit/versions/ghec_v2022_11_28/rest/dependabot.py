@@ -20,7 +20,7 @@ from githubkit.typing import Missing, UnsetType
 from githubkit.utils import UNSET, exclude_unset
 
 if TYPE_CHECKING:
-    from typing import Literal
+    from typing import Literal, Union
 
     from githubkit import GitHubCore
     from githubkit.response import Response
@@ -79,6 +79,7 @@ class DependabotClient:
         ecosystem: Missing[str] = UNSET,
         package: Missing[str] = UNSET,
         epss_percentage: Missing[str] = UNSET,
+        has: Missing[Union[str, list[Literal["patch"]]]] = UNSET,
         scope: Missing[Literal["development", "runtime"]] = UNSET,
         sort: Missing[Literal["created", "updated", "epss_percentage"]] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
@@ -120,6 +121,7 @@ class DependabotClient:
             "ecosystem": ecosystem,
             "package": package,
             "epss_percentage": epss_percentage,
+            "has": has,
             "scope": scope,
             "sort": sort,
             "direction": direction,
@@ -154,6 +156,7 @@ class DependabotClient:
         ecosystem: Missing[str] = UNSET,
         package: Missing[str] = UNSET,
         epss_percentage: Missing[str] = UNSET,
+        has: Missing[Union[str, list[Literal["patch"]]]] = UNSET,
         scope: Missing[Literal["development", "runtime"]] = UNSET,
         sort: Missing[Literal["created", "updated", "epss_percentage"]] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
@@ -195,6 +198,7 @@ class DependabotClient:
             "ecosystem": ecosystem,
             "package": package,
             "epss_percentage": epss_percentage,
+            "has": has,
             "scope": scope,
             "sort": sort,
             "direction": direction,
@@ -229,6 +233,7 @@ class DependabotClient:
         ecosystem: Missing[str] = UNSET,
         package: Missing[str] = UNSET,
         epss_percentage: Missing[str] = UNSET,
+        has: Missing[Union[str, list[Literal["patch"]]]] = UNSET,
         scope: Missing[Literal["development", "runtime"]] = UNSET,
         sort: Missing[Literal["created", "updated", "epss_percentage"]] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
@@ -268,6 +273,7 @@ class DependabotClient:
             "ecosystem": ecosystem,
             "package": package,
             "epss_percentage": epss_percentage,
+            "has": has,
             "scope": scope,
             "sort": sort,
             "direction": direction,
@@ -303,6 +309,7 @@ class DependabotClient:
         ecosystem: Missing[str] = UNSET,
         package: Missing[str] = UNSET,
         epss_percentage: Missing[str] = UNSET,
+        has: Missing[Union[str, list[Literal["patch"]]]] = UNSET,
         scope: Missing[Literal["development", "runtime"]] = UNSET,
         sort: Missing[Literal["created", "updated", "epss_percentage"]] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
@@ -342,6 +349,7 @@ class DependabotClient:
             "ecosystem": ecosystem,
             "package": package,
             "epss_percentage": epss_percentage,
+            "has": has,
             "scope": scope,
             "sort": sort,
             "direction": direction,
@@ -1143,6 +1151,7 @@ class DependabotClient:
         package: Missing[str] = UNSET,
         manifest: Missing[str] = UNSET,
         epss_percentage: Missing[str] = UNSET,
+        has: Missing[Union[str, list[Literal["patch"]]]] = UNSET,
         scope: Missing[Literal["development", "runtime"]] = UNSET,
         sort: Missing[Literal["created", "updated", "epss_percentage"]] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
@@ -1174,6 +1183,7 @@ class DependabotClient:
             "package": package,
             "manifest": manifest,
             "epss_percentage": epss_percentage,
+            "has": has,
             "scope": scope,
             "sort": sort,
             "direction": direction,
@@ -1212,6 +1222,7 @@ class DependabotClient:
         package: Missing[str] = UNSET,
         manifest: Missing[str] = UNSET,
         epss_percentage: Missing[str] = UNSET,
+        has: Missing[Union[str, list[Literal["patch"]]]] = UNSET,
         scope: Missing[Literal["development", "runtime"]] = UNSET,
         sort: Missing[Literal["created", "updated", "epss_percentage"]] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
@@ -1243,6 +1254,7 @@ class DependabotClient:
             "package": package,
             "manifest": manifest,
             "epss_percentage": epss_percentage,
+            "has": has,
             "scope": scope,
             "sort": sort,
             "direction": direction,
