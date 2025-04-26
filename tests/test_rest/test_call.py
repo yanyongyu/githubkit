@@ -70,7 +70,8 @@ def test_paginate(g: GitHub):
     count = 0
     for issue in paginator:
         assert isinstance(issue, Issue)
-        count += 1
+        if not issue.pull_request:
+            count += 1
 
     result = g.graphql.request(ISSUE_COUNT_QUERY, {"owner": OWNER, "repo": REPO})
     assert result["repository"]["issues"]["totalCount"] == count
@@ -96,7 +97,8 @@ async def test_async_paginate(g: GitHub):
     count = 0
     async for issue in paginator:
         assert isinstance(issue, Issue)
-        count += 1
+        if not issue.pull_request:
+            count += 1
 
     result = g.graphql.request(ISSUE_COUNT_QUERY, {"owner": OWNER, "repo": REPO})
     assert result["repository"]["issues"]["totalCount"] == count
