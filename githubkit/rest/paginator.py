@@ -200,7 +200,7 @@ class Paginator(Generic[RT]):
 
             response = cast(
                 Response[Any],
-                await self.rest._github.request(
+                await self.rest._github.arequest(
                     self._state["request_method"],
                     self._state["next_link"],
                     headers=self._headers,  # type: ignore
