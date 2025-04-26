@@ -7,6 +7,7 @@ from typing import (
     Generic,
     Optional,
     TypeVar,
+    TypedDict,
     Union,
     cast,
     overload,
@@ -17,6 +18,7 @@ import httpx
 
 from githubkit.response import Response
 from githubkit.utils import is_async
+from githubkit.typing import HeaderTypes
 
 if TYPE_CHECKING:
     from githubkit.versions import RestVersionSwitcher
@@ -33,6 +35,12 @@ R = Union[
 
 # https://github.com/octokit/plugin-paginate-rest.js/blob/1f44b5469b31ddec9621000e6e1aee63c71ea8bf/src/iterator.ts#L40
 NEXT_LINK_PATTERN = r'<([^<>]+)>;\s*rel="next"'
+
+
+class PaginatorState(TypedDict):
+    next_link: Optional[httpx.URL]
+    request_method: str
+    response_model: Any
 
 
 # https://docs.github.com/en/rest/using-the-rest-api/using-pagination-in-the-rest-api
@@ -76,10 +84,7 @@ class Paginator(Generic[RT]):
 
         self.map_func = map_func
 
-        self._initialized: bool = False
-        self._request_method: Optional[str] = None
-        self._response_model: Optional[Any] = None
-        self._next_link: Optional[httpx.URL] = None
+        self._state: Optional[PaginatorState] = None
 
         self._index: int = 0
         self._cached_data: list[RT] = []
@@ -87,13 +92,16 @@ class Paginator(Generic[RT]):
     @property
     def finalized(self) -> bool:
         """Whether the paginator is finalized or not."""
-        return self._initialized and self._next_link is None
+        return (self._state["next_link"] is None) if self._state is not None else False
+    
+    @property
+    def _headers(self) -> Optional[HeaderTypes]:
+        return self.kwargs.get("headers")
 
     def reset(self) -> None:
         """Reset the paginator to the initial state."""
 
-        self._initialized = False
-        self._next_link = None
+        self._state = None
         self._index = 0
         self._cached_data = []
 
@@ -151,64 +159,53 @@ class Paginator(Generic[RT]):
         self._index = 0
 
     def _get_next_page(self) -> None:
-        if not self._initialized:
+        if self._state is None:
             # First request
             response = cast(
                 Response[Any],
-                self.request(*self.args, **self.kwargs),
+                self.request(*self.args, **self.kwargs)
             )
-            self._initialized = True
-            self._request_method = response.raw_request.method
         else:
-            # Next request
-            if self._next_link is None:
-                raise RuntimeError("Paginator is finalized, no more pages to fetch.")
-            if self._request_method is None:
-                raise RuntimeError("Request method is not set, this should not happen.")
-            if self._response_model is None:
-                raise RuntimeError("Response model is not set, this should not happen.")
-
             # we request the next page with the same method and response model
             response = cast(
                 Response[Any],
                 self.rest._github.request(
-                    self._request_method,
-                    self._next_link,
-                    headers=self.kwargs.get("headers"),  # type: ignore
-                    response_model=self._response_model,  # type: ignore
+                    self._state["request_method"],
+                    self._state["next_link"],
+                    headers=self._headers,  # type: ignore
+                    response_model=self._state["response_model"],  # type: ignore
                 ),
             )
 
-        self._next_link = self._find_next_link(response)
+        self._state = PaginatorState(
+            next_link=self._find_next_link(response),
+            request_method=response.raw_request.method,
+            response_model=response._data_model
+        )
         self._fill_cache_data(self._apply_map_func(response))
 
     async def _aget_next_page(self) -> None:
-        if not self._initialized:
+        if self._state is None:
             # First request
             response = cast(
                 Response[Any],
                 await self.request(*self.args, **self.kwargs),  # type: ignore
             )
-            self._initialized = True
-            self._request_method = response.raw_request.method
         else:
-            # Next request
-            if self._next_link is None:
-                raise RuntimeError("Paginator is finalized, no more pages to fetch.")
-            if self._request_method is None:
-                raise RuntimeError("Request method is not set, this should not happen.")
-            if self._response_model is None:
-                raise RuntimeError("Response model is not set, this should not happen.")
-
+            # we request the next page with the same method and response model
             response = cast(
                 Response[Any],
                 await self.rest._github.request(
-                    self._request_method,
-                    self._next_link,
-                    headers=self.kwargs.get("headers"),  # type: ignore
-                    response_model=self._response_model,  # type: ignore
+                    self._state["request_method"],
+                    self._state["next_link"],
+                    headers=self._headers,  # type: ignore
+                    response_model=self._state["response_model"],  # type: ignore
                 ),
             )
 
-        self._next_link = self._find_next_link(response)
+        self._state = PaginatorState(
+            next_link=self._find_next_link(response),
+            request_method=response.raw_request.method,
+            response_model=response._data_model
+        )
         self._fill_cache_data(self._apply_map_func(response))
