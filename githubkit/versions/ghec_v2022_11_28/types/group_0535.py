@@ -13,18 +13,18 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0473 import EnterpriseWebhooksType
-from .group_0474 import SimpleInstallationType
-from .group_0475 import OrganizationSimpleWebhooksType
-from .group_0476 import RepositoryWebhooksType
-from .group_0478 import ExemptionResponseType
-from .group_0479 import ExemptionRequestType
+from .group_0474 import EnterpriseWebhooksType
+from .group_0475 import SimpleInstallationType
+from .group_0476 import OrganizationSimpleWebhooksType
+from .group_0477 import RepositoryWebhooksType
+from .group_0479 import ExemptionResponseType
+from .group_0480 import ExemptionRequestType
 
 
-class WebhookExemptionRequestResponseSubmittedType(TypedDict):
-    """Exemption response submitted event"""
+class WebhookExemptionRequestResponseDismissedType(TypedDict):
+    """Exemption response dismissed event"""
 
-    action: Literal["response_submitted"]
+    action: Literal["response_dismissed"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
@@ -34,4 +34,4 @@ class WebhookExemptionRequestResponseSubmittedType(TypedDict):
     sender: SimpleUserType
 
 
-__all__ = ("WebhookExemptionRequestResponseSubmittedType",)
+__all__ = ("WebhookExemptionRequestResponseDismissedType",)

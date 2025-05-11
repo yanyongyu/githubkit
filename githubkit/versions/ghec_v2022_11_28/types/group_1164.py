@@ -12,14 +12,14 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBodyType(
+class ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200Type(
     TypedDict
 ):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody"""
+    """ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200"""
 
-    integration_id: NotRequired[int]
+    dismissal_review_id: NotRequired[int]
 
 
 __all__ = (
-    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBodyType",
+    "ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200Type",
 )

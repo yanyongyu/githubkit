@@ -11,21 +11,44 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0020 import Repository
+
+class GistsGistIdPatchBody(GitHubModel):
+    """GistsGistIdPatchBody"""
+
+    description: Missing[str] = Field(
+        default=UNSET, description="The description of the gist."
+    )
+    files: Missing[GistsGistIdPatchBodyPropFiles] = Field(
+        default=UNSET,
+        description="The gist files to be updated, renamed, or deleted. Each `key` must match the current filename\n(including extension) of the targeted gist file. For example: `hello.py`.\n\nTo delete a file, set the whole file to null. For example: `hello.py : null`. The file will also be\ndeleted if the specified object does not contain at least one of `content` or `filename`.",
+    )
 
 
-class InstallationRepositoriesGetResponse200(GitHubModel):
-    """InstallationRepositoriesGetResponse200"""
+class GistsGistIdPatchBodyPropFiles(ExtraGitHubModel):
+    """GistsGistIdPatchBodyPropFiles
 
-    total_count: int = Field()
-    repositories: list[Repository] = Field()
-    repository_selection: Missing[str] = Field(default=UNSET)
+    The gist files to be updated, renamed, or deleted. Each `key` must match the
+    current filename
+    (including extension) of the targeted gist file. For example: `hello.py`.
+
+    To delete a file, set the whole file to null. For example: `hello.py : null`.
+    The file will also be
+    deleted if the specified object does not contain at least one of `content` or
+    `filename`.
+
+    Examples:
+        {'hello.rb': {'content': 'blah', 'filename': 'goodbye.rb'}}
+    """
 
 
-model_rebuild(InstallationRepositoriesGetResponse200)
+model_rebuild(GistsGistIdPatchBody)
+model_rebuild(GistsGistIdPatchBodyPropFiles)
 
-__all__ = ("InstallationRepositoriesGetResponse200",)
+__all__ = (
+    "GistsGistIdPatchBody",
+    "GistsGistIdPatchBodyPropFiles",
+)

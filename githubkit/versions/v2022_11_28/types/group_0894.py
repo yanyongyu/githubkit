@@ -13,16 +13,13 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgCodespacesAccessPutBodyType(TypedDict):
-    """OrgsOrgCodespacesAccessPutBody"""
+class OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBodyType(TypedDict):
+    """OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody"""
 
-    visibility: Literal[
-        "disabled",
-        "selected_members",
-        "all_members",
-        "all_members_and_outside_collaborators",
+    scope: Literal[
+        "all", "all_without_configurations", "public", "private_or_internal", "selected"
     ]
-    selected_usernames: NotRequired[list[str]]
+    selected_repository_ids: NotRequired[list[int]]
 
 
-__all__ = ("OrgsOrgCodespacesAccessPutBodyType",)
+__all__ = ("OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBodyType",)

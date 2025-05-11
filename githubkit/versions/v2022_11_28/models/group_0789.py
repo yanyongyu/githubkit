@@ -18,19 +18,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0418 import EnterpriseWebhooks
-from .group_0419 import SimpleInstallation
-from .group_0420 import OrganizationSimpleWebhooks
-from .group_0421 import RepositoryWebhooks
-from .group_0466 import WebhooksSponsorship
-from .group_0467 import WebhooksChanges8
+from .group_0419 import EnterpriseWebhooks
+from .group_0420 import SimpleInstallation
+from .group_0421 import OrganizationSimpleWebhooks
+from .group_0422 import RepositoryWebhooks
+from .group_0467 import WebhooksSponsorship
 
 
-class WebhookSponsorshipTierChanged(GitHubModel):
-    """sponsorship tier_changed event"""
+class WebhookSponsorshipEdited(GitHubModel):
+    """sponsorship edited event"""
 
-    action: Literal["tier_changed"] = Field()
-    changes: WebhooksChanges8 = Field()
+    action: Literal["edited"] = Field()
+    changes: WebhookSponsorshipEditedPropChanges = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -55,6 +54,29 @@ class WebhookSponsorshipTierChanged(GitHubModel):
     sponsorship: WebhooksSponsorship = Field()
 
 
-model_rebuild(WebhookSponsorshipTierChanged)
+class WebhookSponsorshipEditedPropChanges(GitHubModel):
+    """WebhookSponsorshipEditedPropChanges"""
 
-__all__ = ("WebhookSponsorshipTierChanged",)
+    privacy_level: Missing[WebhookSponsorshipEditedPropChangesPropPrivacyLevel] = Field(
+        default=UNSET
+    )
+
+
+class WebhookSponsorshipEditedPropChangesPropPrivacyLevel(GitHubModel):
+    """WebhookSponsorshipEditedPropChangesPropPrivacyLevel"""
+
+    from_: str = Field(
+        alias="from",
+        description="The `edited` event types include the details about the change when someone edits a sponsorship to change the privacy.",
+    )
+
+
+model_rebuild(WebhookSponsorshipEdited)
+model_rebuild(WebhookSponsorshipEditedPropChanges)
+model_rebuild(WebhookSponsorshipEditedPropChangesPropPrivacyLevel)
+
+__all__ = (
+    "WebhookSponsorshipEdited",
+    "WebhookSponsorshipEditedPropChanges",
+    "WebhookSponsorshipEditedPropChangesPropPrivacyLevel",
+)

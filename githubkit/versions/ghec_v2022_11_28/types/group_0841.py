@@ -9,27 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from datetime import datetime
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0473 import EnterpriseWebhooksType
-from .group_0474 import SimpleInstallationType
-from .group_0475 import OrganizationSimpleWebhooksType
-from .group_0476 import RepositoryWebhooksType
-from .group_0842 import WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryType
+from .group_0474 import EnterpriseWebhooksType
+from .group_0475 import SimpleInstallationType
+from .group_0476 import OrganizationSimpleWebhooksType
+from .group_0477 import RepositoryWebhooksType
 
 
-class WebhookSecurityAdvisoryWithdrawnType(TypedDict):
-    """security_advisory withdrawn event"""
+class WebhookSecretScanningScanCompletedType(TypedDict):
+    """secret_scanning_scan completed event"""
 
-    action: Literal["withdrawn"]
+    action: Literal["completed"]
+    type: Literal["backfill", "custom-pattern-backfill", "pattern-version-backfill"]
+    source: Literal["git", "issues", "pull-requests", "discussions", "wiki"]
+    started_at: datetime
+    completed_at: datetime
+    secret_types: NotRequired[Union[list[str], None]]
+    custom_pattern_name: NotRequired[Union[str, None]]
+    custom_pattern_scope: NotRequired[
+        Union[None, Literal["repository", "organization", "enterprise"]]
+    ]
+    repository: NotRequired[RepositoryWebhooksType]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: NotRequired[RepositoryWebhooksType]
-    security_advisory: WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryType
     sender: NotRequired[SimpleUserType]
 
 
-__all__ = ("WebhookSecurityAdvisoryWithdrawnType",)
+__all__ = ("WebhookSecretScanningScanCompletedType",)

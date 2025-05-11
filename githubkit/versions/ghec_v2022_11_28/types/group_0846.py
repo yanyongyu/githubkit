@@ -9,27 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0473 import EnterpriseWebhooksType
-from .group_0474 import SimpleInstallationType
-from .group_0475 import OrganizationSimpleWebhooksType
-from .group_0476 import RepositoryWebhooksType
-from .group_0523 import WebhooksSponsorshipType
+from .group_0218 import FullRepositoryType
+from .group_0474 import EnterpriseWebhooksType
+from .group_0475 import SimpleInstallationType
+from .group_0476 import OrganizationSimpleWebhooksType
+from .group_0847 import WebhookSecurityAndAnalysisPropChangesType
 
 
-class WebhookSponsorshipCancelledType(TypedDict):
-    """sponsorship cancelled event"""
+class WebhookSecurityAndAnalysisType(TypedDict):
+    """security_and_analysis event"""
 
-    action: Literal["cancelled"]
+    changes: WebhookSecurityAndAnalysisPropChangesType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: NotRequired[RepositoryWebhooksType]
-    sender: SimpleUserType
-    sponsorship: WebhooksSponsorshipType
+    repository: FullRepositoryType
+    sender: NotRequired[SimpleUserType]
 
 
-__all__ = ("WebhookSponsorshipCancelledType",)
+__all__ = ("WebhookSecurityAndAnalysisType",)

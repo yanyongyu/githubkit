@@ -13,21 +13,22 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0474 import SimpleInstallationType
-from .group_0475 import OrganizationSimpleWebhooksType
-from .group_0510 import WebhooksProjectChangesType
-from .group_0511 import ProjectsV2ItemType
+from .group_0475 import SimpleInstallationType
+from .group_0476 import OrganizationSimpleWebhooksType
+from .group_0510 import ProjectsV2Type
 
 
-class WebhookProjectsV2ItemArchivedType(TypedDict):
-    """Projects v2 Item Archived Event"""
+class WebhookProjectsV2ProjectCreatedType(TypedDict):
+    """WebhookProjectsV2ProjectCreated
 
-    action: Literal["archived"]
-    changes: WebhooksProjectChangesType
+    A project was created
+    """
+
+    action: Literal["created"]
     installation: NotRequired[SimpleInstallationType]
     organization: OrganizationSimpleWebhooksType
-    projects_v2_item: ProjectsV2ItemType
+    projects_v2: ProjectsV2Type
     sender: SimpleUserType
 
 
-__all__ = ("WebhookProjectsV2ItemArchivedType",)
+__all__ = ("WebhookProjectsV2ProjectCreatedType",)

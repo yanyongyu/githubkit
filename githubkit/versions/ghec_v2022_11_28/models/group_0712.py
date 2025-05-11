@@ -18,17 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0473 import EnterpriseWebhooks
-from .group_0474 import SimpleInstallation
-from .group_0475 import OrganizationSimpleWebhooks
-from .group_0476 import RepositoryWebhooks
-from .group_0504 import WebhooksMembership
+from .group_0474 import EnterpriseWebhooks
+from .group_0475 import SimpleInstallation
+from .group_0476 import OrganizationSimpleWebhooks
+from .group_0477 import RepositoryWebhooks
+from .group_0505 import WebhooksMembership
 
 
-class WebhookOrganizationMemberRemoved(GitHubModel):
-    """organization member_removed event"""
+class WebhookOrganizationDeleted(GitHubModel):
+    """organization deleted event"""
 
-    action: Literal["member_removed"] = Field()
+    action: Literal["deleted"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -39,7 +39,8 @@ class WebhookOrganizationMemberRemoved(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    membership: WebhooksMembership = Field(
+    membership: Missing[WebhooksMembership] = Field(
+        default=UNSET,
         title="Membership",
         description="The membership between the user and the organization. Not present when the action is `member_invited`.",
     )
@@ -55,6 +56,6 @@ class WebhookOrganizationMemberRemoved(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookOrganizationMemberRemoved)
+model_rebuild(WebhookOrganizationDeleted)
 
-__all__ = ("WebhookOrganizationMemberRemoved",)
+__all__ = ("WebhookOrganizationDeleted",)

@@ -18,39 +18,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgActionsRunnerGroupsPostBody(GitHubModel):
-    """OrgsOrgActionsRunnerGroupsPostBody"""
+class OrgsOrgActionsPermissionsPutBody(GitHubModel):
+    """OrgsOrgActionsPermissionsPutBody"""
 
-    name: str = Field(description="Name of the runner group.")
-    visibility: Missing[Literal["selected", "all", "private"]] = Field(
-        default=UNSET,
-        description="Visibility of a runner group. You can select all repositories, select individual repositories, or limit access to private repositories.",
+    enabled_repositories: Literal["all", "none", "selected"] = Field(
+        description="The policy that controls the repositories in the organization that are allowed to run GitHub Actions."
     )
-    selected_repository_ids: Missing[list[int]] = Field(
+    allowed_actions: Missing[Literal["all", "local_only", "selected"]] = Field(
         default=UNSET,
-        description="List of repository IDs that can access the runner group.",
-    )
-    runners: Missing[list[int]] = Field(
-        default=UNSET, description="List of runner IDs to add to the runner group."
-    )
-    allows_public_repositories: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether the runner group can be used by `public` repositories.",
-    )
-    restricted_to_workflows: Missing[bool] = Field(
-        default=UNSET,
-        description="If `true`, the runner group will be restricted to running only the workflows specified in the `selected_workflows` array.",
-    )
-    selected_workflows: Missing[list[str]] = Field(
-        default=UNSET,
-        description="List of workflows the runner group should be allowed to run. This setting will be ignored unless `restricted_to_workflows` is set to `true`.",
-    )
-    network_configuration_id: Missing[str] = Field(
-        default=UNSET,
-        description="The identifier of a hosted compute network configuration.",
+        description="The permissions policy that controls the actions and reusable workflows that are allowed to run.",
     )
 
 
-model_rebuild(OrgsOrgActionsRunnerGroupsPostBody)
+model_rebuild(OrgsOrgActionsPermissionsPutBody)
 
-__all__ = ("OrgsOrgActionsRunnerGroupsPostBody",)
+__all__ = ("OrgsOrgActionsPermissionsPutBody",)

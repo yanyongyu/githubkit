@@ -31,6 +31,7 @@ if TYPE_CHECKING:
         ActionsBillingUsage,
         AdvancedSecurityActiveCommitters,
         BillingUsageReport,
+        BillingUsageReportUser,
         CombinedBillingUsage,
         EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200,
         EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200,
@@ -41,6 +42,7 @@ if TYPE_CHECKING:
         ActionsBillingUsageType,
         AdvancedSecurityActiveCommittersType,
         BillingUsageReportType,
+        BillingUsageReportUserType,
         CombinedBillingUsageType,
         EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBodyType,
         EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200Type,
@@ -1492,4 +1494,108 @@ class BillingClient:
             url,
             headers=exclude_unset(headers),
             response_model=CombinedBillingUsage,
+        )
+
+    def get_github_billing_usage_report_user(
+        self,
+        username: str,
+        *,
+        year: Missing[int] = UNSET,
+        month: Missing[int] = UNSET,
+        day: Missing[int] = UNSET,
+        hour: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+    ) -> Response[BillingUsageReportUser, BillingUsageReportUserType]:
+        """billing/get-github-billing-usage-report-user
+
+        GET /users/{username}/settings/billing/usage
+
+        Gets a report of the total usage for a user.
+
+        **Note:** This endpoint is only available to users with access to the enhanced billing platform.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/enhanced-billing#get-billing-usage-report-for-a-user
+        """
+
+        from ..models import (
+            BasicError,
+            BillingUsageReportUser,
+            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+        )
+
+        url = f"/users/{username}/settings/billing/usage"
+
+        params = {
+            "year": year,
+            "month": month,
+            "day": day,
+            "hour": hour,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=BillingUsageReportUser,
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "500": BasicError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
+    async def async_get_github_billing_usage_report_user(
+        self,
+        username: str,
+        *,
+        year: Missing[int] = UNSET,
+        month: Missing[int] = UNSET,
+        day: Missing[int] = UNSET,
+        hour: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+    ) -> Response[BillingUsageReportUser, BillingUsageReportUserType]:
+        """billing/get-github-billing-usage-report-user
+
+        GET /users/{username}/settings/billing/usage
+
+        Gets a report of the total usage for a user.
+
+        **Note:** This endpoint is only available to users with access to the enhanced billing platform.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/enhanced-billing#get-billing-usage-report-for-a-user
+        """
+
+        from ..models import (
+            BasicError,
+            BillingUsageReportUser,
+            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+        )
+
+        url = f"/users/{username}/settings/billing/usage"
+
+        params = {
+            "year": year,
+            "month": month,
+            "day": day,
+            "hour": hour,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=BillingUsageReportUser,
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "500": BasicError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
         )

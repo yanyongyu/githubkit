@@ -9,17 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgActionsSecretsSecretNamePutBodyType(TypedDict):
-    """OrgsOrgActionsSecretsSecretNamePutBody"""
+class OrgsOrgActionsRunnersGenerateJitconfigPostBodyType(TypedDict):
+    """OrgsOrgActionsRunnersGenerateJitconfigPostBody"""
 
-    encrypted_value: str
-    key_id: str
-    visibility: Literal["all", "private", "selected"]
-    selected_repository_ids: NotRequired[list[int]]
+    name: str
+    runner_group_id: int
+    labels: list[str]
+    work_folder: NotRequired[str]
 
 
-__all__ = ("OrgsOrgActionsSecretsSecretNamePutBodyType",)
+__all__ = ("OrgsOrgActionsRunnersGenerateJitconfigPostBodyType",)

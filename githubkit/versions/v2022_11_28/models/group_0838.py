@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,26 +18,23 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class GistsGistIdGetResponse403(GitHubModel):
-    """GistsGistIdGetResponse403"""
+class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBody(
+    GitHubModel
+):
+    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBody"""
 
-    block: Missing[GistsGistIdGetResponse403PropBlock] = Field(default=UNSET)
-    message: Missing[str] = Field(default=UNSET)
-    documentation_url: Missing[str] = Field(default=UNSET)
-
-
-class GistsGistIdGetResponse403PropBlock(GitHubModel):
-    """GistsGistIdGetResponse403PropBlock"""
-
-    reason: Missing[str] = Field(default=UNSET)
-    created_at: Missing[str] = Field(default=UNSET)
-    html_url: Missing[Union[str, None]] = Field(default=UNSET)
+    default_for_new_repos: Missing[
+        Literal["all", "none", "private_and_internal", "public"]
+    ] = Field(
+        default=UNSET,
+        description="Specify which types of repository this security configuration should be applied to by default.",
+    )
 
 
-model_rebuild(GistsGistIdGetResponse403)
-model_rebuild(GistsGistIdGetResponse403PropBlock)
+model_rebuild(
+    EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBody
+)
 
 __all__ = (
-    "GistsGistIdGetResponse403",
-    "GistsGistIdGetResponse403PropBlock",
+    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBody",
 )

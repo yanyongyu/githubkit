@@ -16,84 +16,35 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoAttestationsSubjectDigestGetResponse200(GitHubModel):
-    """ReposOwnerRepoAttestationsSubjectDigestGetResponse200"""
+class ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody(GitHubModel):
+    """ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody"""
 
-    attestations: Missing[
-        list[ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItems]
-    ] = Field(default=UNSET)
-
-
-class ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItems(
-    GitHubModel
-):
-    """ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItems"""
-
-    bundle: Missing[
-        ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle
+    ref: str = Field(
+        description="The git reference for the workflow. The reference can be a branch or tag name."
+    )
+    inputs: Missing[
+        ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs
     ] = Field(
         default=UNSET,
-        description="The attestation's Sigstore Bundle.\nRefer to the [Sigstore Bundle Specification](https://github.com/sigstore/protobuf-specs/blob/main/protos/sigstore_bundle.proto) for more information.",
+        description="Input keys and values configured in the workflow file. The maximum number of properties is 10. Any default properties configured in the workflow file will be used when `inputs` are omitted.",
     )
-    repository_id: Missing[int] = Field(default=UNSET)
-    bundle_url: Missing[str] = Field(default=UNSET)
 
 
-class ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle(
-    GitHubModel
-):
-    """ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBu
-    ndle
-
-    The attestation's Sigstore Bundle.
-    Refer to the [Sigstore Bundle
-    Specification](https://github.com/sigstore/protobuf-
-    specs/blob/main/protos/sigstore_bundle.proto) for more information.
-    """
-
-    media_type: Missing[str] = Field(default=UNSET, alias="mediaType")
-    verification_material: Missing[
-        ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterial
-    ] = Field(default=UNSET, alias="verificationMaterial")
-    dsse_envelope: Missing[
-        ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelope
-    ] = Field(default=UNSET, alias="dsseEnvelope")
-
-
-class ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterial(
+class ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs(
     ExtraGitHubModel
 ):
-    """ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBu
-    ndlePropVerificationMaterial
+    """ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs
+
+    Input keys and values configured in the workflow file. The maximum number of
+    properties is 10. Any default properties configured in the workflow file will be
+    used when `inputs` are omitted.
     """
 
 
-class ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelope(
-    ExtraGitHubModel
-):
-    """ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBu
-    ndlePropDsseEnvelope
-    """
-
-
-model_rebuild(ReposOwnerRepoAttestationsSubjectDigestGetResponse200)
-model_rebuild(
-    ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItems
-)
-model_rebuild(
-    ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle
-)
-model_rebuild(
-    ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterial
-)
-model_rebuild(
-    ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelope
-)
+model_rebuild(ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody)
+model_rebuild(ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs)
 
 __all__ = (
-    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200",
-    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItems",
-    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle",
-    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelope",
-    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterial",
+    "ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody",
+    "ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs",
 )

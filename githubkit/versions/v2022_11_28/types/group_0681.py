@@ -13,51 +13,23 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0418 import EnterpriseWebhooksType
-from .group_0419 import SimpleInstallationType
-from .group_0420 import OrganizationSimpleWebhooksType
-from .group_0421 import RepositoryWebhooksType
-from .group_0450 import WebhooksProjectType
+from .group_0419 import EnterpriseWebhooksType
+from .group_0420 import SimpleInstallationType
+from .group_0421 import OrganizationSimpleWebhooksType
+from .group_0422 import RepositoryWebhooksType
+from .group_0452 import WebhooksProjectColumnType
 
 
-class WebhookProjectEditedType(TypedDict):
-    """project edited event"""
+class WebhookProjectColumnMovedType(TypedDict):
+    """project_column moved event"""
 
-    action: Literal["edited"]
-    changes: NotRequired[WebhookProjectEditedPropChangesType]
+    action: Literal["moved"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    project: WebhooksProjectType
+    project_column: WebhooksProjectColumnType
     repository: NotRequired[RepositoryWebhooksType]
-    sender: NotRequired[SimpleUserType]
+    sender: SimpleUserType
 
 
-class WebhookProjectEditedPropChangesType(TypedDict):
-    """WebhookProjectEditedPropChanges
-
-    The changes to the project if the action was `edited`.
-    """
-
-    body: NotRequired[WebhookProjectEditedPropChangesPropBodyType]
-    name: NotRequired[WebhookProjectEditedPropChangesPropNameType]
-
-
-class WebhookProjectEditedPropChangesPropBodyType(TypedDict):
-    """WebhookProjectEditedPropChangesPropBody"""
-
-    from_: str
-
-
-class WebhookProjectEditedPropChangesPropNameType(TypedDict):
-    """WebhookProjectEditedPropChangesPropName"""
-
-    from_: str
-
-
-__all__ = (
-    "WebhookProjectEditedPropChangesPropBodyType",
-    "WebhookProjectEditedPropChangesPropNameType",
-    "WebhookProjectEditedPropChangesType",
-    "WebhookProjectEditedType",
-)
+__all__ = ("WebhookProjectColumnMovedType",)

@@ -18,21 +18,16 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0418 import EnterpriseWebhooks
-from .group_0419 import SimpleInstallation
-from .group_0420 import OrganizationSimpleWebhooks
-from .group_0421 import RepositoryWebhooks
-from .group_0463 import WebhooksAlert
+from .group_0419 import EnterpriseWebhooks
+from .group_0420 import SimpleInstallation
+from .group_0421 import OrganizationSimpleWebhooks
+from .group_0422 import RepositoryWebhooks
 
 
-class WebhookRepositoryVulnerabilityAlertReopen(GitHubModel):
-    """repository_vulnerability_alert reopen event"""
+class WebhookRepositoryUnarchived(GitHubModel):
+    """repository unarchived event"""
 
-    action: Literal["reopen"] = Field()
-    alert: WebhooksAlert = Field(
-        title="Repository Vulnerability Alert Alert",
-        description="The security alert of the vulnerable dependency.",
-    )
+    action: Literal["unarchived"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -55,6 +50,6 @@ class WebhookRepositoryVulnerabilityAlertReopen(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookRepositoryVulnerabilityAlertReopen)
+model_rebuild(WebhookRepositoryUnarchived)
 
-__all__ = ("WebhookRepositoryVulnerabilityAlertReopen",)
+__all__ = ("WebhookRepositoryUnarchived",)

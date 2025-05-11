@@ -140,6 +140,12 @@ class SecretScanningDismissalRequestPropDataItems(GitHubModel):
         default=UNSET,
         description="The number of the secret scanning alert that was detected.",
     )
+    reason: Missing[Literal["fixed_later", "false_positive", "tests", "revoked"]] = (
+        Field(
+            default=UNSET,
+            description="The reason the user provided for requesting the dismissal.",
+        )
+    )
 
 
 model_rebuild(SecretScanningDismissalRequest)

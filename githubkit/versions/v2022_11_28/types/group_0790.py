@@ -9,26 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0418 import EnterpriseWebhooksType
-from .group_0419 import SimpleInstallationType
-from .group_0420 import OrganizationSimpleWebhooksType
-from .group_0421 import RepositoryWebhooksType
+from .group_0419 import EnterpriseWebhooksType
+from .group_0420 import SimpleInstallationType
+from .group_0421 import OrganizationSimpleWebhooksType
+from .group_0422 import RepositoryWebhooksType
+from .group_0467 import WebhooksSponsorshipType
 
 
-class WebhookStarCreatedType(TypedDict):
-    """star created event"""
+class WebhookSponsorshipPendingCancellationType(TypedDict):
+    """sponsorship pending_cancellation event"""
 
-    action: Literal["created"]
+    action: Literal["pending_cancellation"]
+    effective_date: NotRequired[str]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
+    repository: NotRequired[RepositoryWebhooksType]
     sender: SimpleUserType
-    starred_at: Union[str, None]
+    sponsorship: WebhooksSponsorshipType
 
 
-__all__ = ("WebhookStarCreatedType",)
+__all__ = ("WebhookSponsorshipPendingCancellationType",)

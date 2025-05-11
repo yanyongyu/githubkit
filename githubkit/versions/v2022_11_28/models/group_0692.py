@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,16 +18,15 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0419 import SimpleInstallation
-from .group_0420 import OrganizationSimpleWebhooks
-from .group_0454 import ProjectsV2Item
+from .group_0420 import SimpleInstallation
+from .group_0421 import OrganizationSimpleWebhooks
+from .group_0455 import ProjectsV2Item
 
 
-class WebhookProjectsV2ItemReordered(GitHubModel):
-    """Projects v2 Item Reordered Event"""
+class WebhookProjectsV2ItemCreated(GitHubModel):
+    """Projects v2 Item Created Event"""
 
-    action: Literal["reordered"] = Field()
-    changes: WebhookProjectsV2ItemReorderedPropChanges = Field()
+    action: Literal["created"] = Field()
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
         title="Simple Installation",
@@ -43,29 +42,6 @@ class WebhookProjectsV2ItemReordered(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-class WebhookProjectsV2ItemReorderedPropChanges(GitHubModel):
-    """WebhookProjectsV2ItemReorderedPropChanges"""
+model_rebuild(WebhookProjectsV2ItemCreated)
 
-    previous_projects_v2_item_node_id: Missing[
-        WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeId
-    ] = Field(default=UNSET)
-
-
-class WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeId(
-    GitHubModel
-):
-    """WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeId"""
-
-    from_: Missing[Union[str, None]] = Field(default=UNSET, alias="from")
-    to: Missing[Union[str, None]] = Field(default=UNSET)
-
-
-model_rebuild(WebhookProjectsV2ItemReordered)
-model_rebuild(WebhookProjectsV2ItemReorderedPropChanges)
-model_rebuild(WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeId)
-
-__all__ = (
-    "WebhookProjectsV2ItemReordered",
-    "WebhookProjectsV2ItemReorderedPropChanges",
-    "WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeId",
-)
+__all__ = ("WebhookProjectsV2ItemCreated",)

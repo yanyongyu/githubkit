@@ -13,23 +13,22 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0418 import EnterpriseWebhooksType
-from .group_0419 import SimpleInstallationType
-from .group_0420 import OrganizationSimpleWebhooksType
-from .group_0421 import RepositoryWebhooksType
-from .group_0446 import WebhooksMilestone3Type
+from .group_0420 import SimpleInstallationType
+from .group_0421 import OrganizationSimpleWebhooksType
+from .group_0422 import RepositoryWebhooksType
+from .group_0446 import MergeGroupType
 
 
-class WebhookMilestoneCreatedType(TypedDict):
-    """milestone created event"""
+class WebhookMergeGroupDestroyedType(TypedDict):
+    """WebhookMergeGroupDestroyed"""
 
-    action: Literal["created"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
+    action: Literal["destroyed"]
+    reason: NotRequired[Literal["merged", "invalidated", "dequeued"]]
     installation: NotRequired[SimpleInstallationType]
-    milestone: WebhooksMilestone3Type
+    merge_group: MergeGroupType
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: NotRequired[SimpleUserType]
 
 
-__all__ = ("WebhookMilestoneCreatedType",)
+__all__ = ("WebhookMergeGroupDestroyedType",)

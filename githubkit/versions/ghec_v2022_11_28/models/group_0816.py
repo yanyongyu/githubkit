@@ -18,17 +18,15 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0473 import EnterpriseWebhooks
-from .group_0474 import SimpleInstallation
-from .group_0475 import OrganizationSimpleWebhooks
-from .group_0476 import RepositoryWebhooks
+from .group_0474 import EnterpriseWebhooks
+from .group_0475 import SimpleInstallation
+from .group_0476 import OrganizationSimpleWebhooks
+from .group_0477 import RepositoryWebhooks
 
 
-class WebhookRepositoryRenamed(GitHubModel):
-    """repository renamed event"""
+class WebhookRepositoryImport(GitHubModel):
+    """repository_import event"""
 
-    action: Literal["renamed"] = Field()
-    changes: WebhookRepositoryRenamedPropChanges = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -49,34 +47,9 @@ class WebhookRepositoryRenamed(GitHubModel):
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    status: Literal["success", "cancelled", "failure"] = Field()
 
 
-class WebhookRepositoryRenamedPropChanges(GitHubModel):
-    """WebhookRepositoryRenamedPropChanges"""
+model_rebuild(WebhookRepositoryImport)
 
-    repository: WebhookRepositoryRenamedPropChangesPropRepository = Field()
-
-
-class WebhookRepositoryRenamedPropChangesPropRepository(GitHubModel):
-    """WebhookRepositoryRenamedPropChangesPropRepository"""
-
-    name: WebhookRepositoryRenamedPropChangesPropRepositoryPropName = Field()
-
-
-class WebhookRepositoryRenamedPropChangesPropRepositoryPropName(GitHubModel):
-    """WebhookRepositoryRenamedPropChangesPropRepositoryPropName"""
-
-    from_: str = Field(alias="from")
-
-
-model_rebuild(WebhookRepositoryRenamed)
-model_rebuild(WebhookRepositoryRenamedPropChanges)
-model_rebuild(WebhookRepositoryRenamedPropChangesPropRepository)
-model_rebuild(WebhookRepositoryRenamedPropChangesPropRepositoryPropName)
-
-__all__ = (
-    "WebhookRepositoryRenamed",
-    "WebhookRepositoryRenamedPropChanges",
-    "WebhookRepositoryRenamedPropChangesPropRepository",
-    "WebhookRepositoryRenamedPropChangesPropRepositoryPropName",
-)
+__all__ = ("WebhookRepositoryImport",)

@@ -16,21 +16,16 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody(
+class ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200(
     GitHubModel
 ):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody"""
+    """ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200"""
 
-    integration_id: Missing[int] = Field(
-        default=UNSET,
-        description="The ID of the custom app that will be enabled on the environment.",
+    dismissal_review_id: Missing[int] = Field(
+        default=UNSET, description="ID of the dismissal review."
     )
 
 
-model_rebuild(
-    ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody
-)
+model_rebuild(ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200)
 
-__all__ = (
-    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody",
-)
+__all__ = ("ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200",)

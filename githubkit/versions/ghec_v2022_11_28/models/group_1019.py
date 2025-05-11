@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
@@ -18,29 +18,46 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgInvitationsPostBody(GitHubModel):
-    """OrgsOrgInvitationsPostBody"""
+class OrgsOrgHooksHookIdPatchBody(GitHubModel):
+    """OrgsOrgHooksHookIdPatchBody"""
 
-    invitee_id: Missing[int] = Field(
+    config: Missing[OrgsOrgHooksHookIdPatchBodyPropConfig] = Field(
         default=UNSET,
-        description="**Required unless you provide `email`**. GitHub user ID for the person you are inviting.",
+        description="Key/value pairs to provide settings for this webhook.",
     )
-    email: Missing[str] = Field(
+    events: Missing[list[str]] = Field(
         default=UNSET,
-        description="**Required unless you provide `invitee_id`**. Email address of the person you are inviting, which can be an existing GitHub user.",
+        description="Determines what [events](https://docs.github.com/enterprise-cloud@latest//webhooks/event-payloads) the hook is triggered for.",
     )
-    role: Missing[Literal["admin", "direct_member", "billing_manager", "reinstate"]] = (
-        Field(
-            default=UNSET,
-            description="The role for the new member. \n * `admin` - Organization owners with full administrative rights to the organization and complete access to all repositories and teams.  \n * `direct_member` - Non-owner organization members with ability to see other members and join teams by invitation.  \n * `billing_manager` - Non-owner organization members with ability to manage the billing settings of your organization. \n * `reinstate` - The previous role assigned to the invitee before they were removed from your organization. Can be one of the roles listed above. Only works if the invitee was previously part of your organization.",
-        )
-    )
-    team_ids: Missing[list[int]] = Field(
+    active: Missing[bool] = Field(
         default=UNSET,
-        description="Specify IDs for the teams you want to invite new members to.",
+        description="Determines if notifications are sent when the webhook is triggered. Set to `true` to send notifications.",
     )
+    name: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(OrgsOrgInvitationsPostBody)
+class OrgsOrgHooksHookIdPatchBodyPropConfig(GitHubModel):
+    """OrgsOrgHooksHookIdPatchBodyPropConfig
 
-__all__ = ("OrgsOrgInvitationsPostBody",)
+    Key/value pairs to provide settings for this webhook.
+    """
+
+    url: str = Field(description="The URL to which the payloads will be delivered.")
+    content_type: Missing[str] = Field(
+        default=UNSET,
+        description="The media type used to serialize the payloads. Supported values include `json` and `form`. The default is `form`.",
+    )
+    secret: Missing[str] = Field(
+        default=UNSET,
+        description="If provided, the `secret` will be used as the `key` to generate the HMAC hex digest value for [delivery signature headers](https://docs.github.com/enterprise-cloud@latest//webhooks/event-payloads/#delivery-headers).",
+    )
+    insecure_ssl: Missing[Union[str, float]] = Field(default=UNSET)
+
+
+model_rebuild(OrgsOrgHooksHookIdPatchBody)
+model_rebuild(OrgsOrgHooksHookIdPatchBodyPropConfig)
+
+__all__ = (
+    "OrgsOrgHooksHookIdPatchBody",
+    "OrgsOrgHooksHookIdPatchBodyPropConfig",
+)

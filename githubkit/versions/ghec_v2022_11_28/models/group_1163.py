@@ -14,46 +14,19 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200(
-    GitHubModel
-):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200"""
+class ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchBody(GitHubModel):
+    """ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchBody"""
 
-    total_count: int = Field(
-        description="The number of deployment branch policies for the environment."
+    status: Literal["approve", "deny"] = Field(
+        description="The review action to perform on the dismissal request."
     )
-    branch_policies: list[DeploymentBranchPolicy] = Field()
-
-
-class DeploymentBranchPolicy(GitHubModel):
-    """Deployment branch policy
-
-    Details of a deployment branch or tag policy.
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the branch or tag policy."
-    )
-    node_id: Missing[str] = Field(default=UNSET)
-    name: Missing[str] = Field(
-        default=UNSET,
-        description="The name pattern that branches or tags must match in order to deploy to the environment.",
-    )
-    type: Missing[Literal["branch", "tag"]] = Field(
-        default=UNSET, description="Whether this rule targets a branch or tag."
+    message: str = Field(
+        description="A message to include with the review. Has a maximum character length of 2048."
     )
 
 
-model_rebuild(
-    ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200
-)
-model_rebuild(DeploymentBranchPolicy)
+model_rebuild(ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchBody)
 
-__all__ = (
-    "DeploymentBranchPolicy",
-    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200",
-)
+__all__ = ("ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchBody",)

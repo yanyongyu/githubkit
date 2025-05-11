@@ -9,19 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class OrgsOrgPrivateRegistriesSecretNamePatchBodyType(TypedDict):
-    """OrgsOrgPrivateRegistriesSecretNamePatchBody"""
+class OrgsOrgPersonalAccessTokensPatIdPostBodyType(TypedDict):
+    """OrgsOrgPersonalAccessTokensPatIdPostBody"""
 
-    registry_type: NotRequired[Literal["maven_repository"]]
-    username: NotRequired[Union[str, None]]
-    encrypted_value: NotRequired[str]
-    key_id: NotRequired[str]
-    visibility: NotRequired[Literal["all", "private", "selected"]]
-    selected_repository_ids: NotRequired[list[int]]
+    action: Literal["revoke"]
 
 
-__all__ = ("OrgsOrgPrivateRegistriesSecretNamePatchBodyType",)
+__all__ = ("OrgsOrgPersonalAccessTokensPatIdPostBodyType",)

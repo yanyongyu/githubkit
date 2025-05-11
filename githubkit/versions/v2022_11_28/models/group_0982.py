@@ -11,18 +11,18 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
+
+from .group_0201 import ActionsVariable
 
 
-class ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody(GitHubModel):
-    """ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody"""
+class ReposOwnerRepoActionsOrganizationVariablesGetResponse200(GitHubModel):
+    """ReposOwnerRepoActionsOrganizationVariablesGetResponse200"""
 
-    labels: list[str] = Field(
-        max_length=100 if PYDANTIC_V2 else None,
-        description="The names of the custom labels to set for the runner. You can pass an empty array to remove all custom labels.",
-    )
+    total_count: int = Field()
+    variables: list[ActionsVariable] = Field()
 
 
-model_rebuild(ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody)
+model_rebuild(ReposOwnerRepoActionsOrganizationVariablesGetResponse200)
 
-__all__ = ("ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody",)
+__all__ = ("ReposOwnerRepoActionsOrganizationVariablesGetResponse200",)

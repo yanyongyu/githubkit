@@ -16,17 +16,21 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class TeamsTeamIdDiscussionsDiscussionNumberPatchBody(GitHubModel):
-    """TeamsTeamIdDiscussionsDiscussionNumberPatchBody"""
+class ReposOwnerRepoTransferPostBody(GitHubModel):
+    """ReposOwnerRepoTransferPostBody"""
 
-    title: Missing[str] = Field(
-        default=UNSET, description="The discussion post's title."
+    new_owner: str = Field(
+        description="The username or organization name the repository will be transferred to."
     )
-    body: Missing[str] = Field(
-        default=UNSET, description="The discussion post's body text."
+    new_name: Missing[str] = Field(
+        default=UNSET, description="The new name to be given to the repository."
+    )
+    team_ids: Missing[list[int]] = Field(
+        default=UNSET,
+        description="ID of the team or teams to add to the repository. Teams can only be added to organization-owned repositories.",
     )
 
 
-model_rebuild(TeamsTeamIdDiscussionsDiscussionNumberPatchBody)
+model_rebuild(ReposOwnerRepoTransferPostBody)
 
-__all__ = ("TeamsTeamIdDiscussionsDiscussionNumberPatchBody",)
+__all__ = ("ReposOwnerRepoTransferPostBody",)

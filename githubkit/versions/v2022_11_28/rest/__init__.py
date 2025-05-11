@@ -26,6 +26,7 @@ if TYPE_CHECKING:
     from .codes_of_conduct import CodesOfConductClient
     from .codespaces import CodespacesClient
     from .copilot import CopilotClient
+    from .credentials import CredentialsClient
     from .dependabot import DependabotClient
     from .dependency_graph import DependencyGraphClient
     from .emojis import EmojisClient
@@ -97,6 +98,12 @@ class RestNamespace:
         from .codes_of_conduct import CodesOfConductClient
 
         return CodesOfConductClient(self._github)
+
+    @cached_property
+    def credentials(self) -> "CredentialsClient":
+        from .credentials import CredentialsClient
+
+        return CredentialsClient(self._github)
 
     @cached_property
     def emojis(self) -> "EmojisClient":

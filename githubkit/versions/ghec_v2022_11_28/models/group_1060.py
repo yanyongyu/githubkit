@@ -16,19 +16,29 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ProjectsColumnsCardsCardIdMovesPostBody(GitHubModel):
-    """ProjectsColumnsCardsCardIdMovesPostBody"""
+class OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBody(GitHubModel):
+    """OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBody"""
 
-    position: str = Field(
-        pattern="^(?:top|bottom|after:\\d+)$",
-        description="The position of the card in a column. Can be one of: `top`, `bottom`, or `after:<card_id>` to place after the specified card.",
-    )
-    column_id: Missing[int] = Field(
+    groups: Missing[
+        list[OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItems]
+    ] = Field(
         default=UNSET,
-        description="The unique identifier of the column the card should be moved to",
+        description="The IdP groups you want to connect to a GitHub team. When updating, the new `groups` object will replace the original one. You must include any existing groups that you don't want to remove.",
     )
 
 
-model_rebuild(ProjectsColumnsCardsCardIdMovesPostBody)
+class OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItems(GitHubModel):
+    """OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItems"""
 
-__all__ = ("ProjectsColumnsCardsCardIdMovesPostBody",)
+    group_id: str = Field(description="ID of the IdP group.")
+    group_name: str = Field(description="Name of the IdP group.")
+    group_description: str = Field(description="Description of the IdP group.")
+
+
+model_rebuild(OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBody)
+model_rebuild(OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItems)
+
+__all__ = (
+    "OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBody",
+    "OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItems",
+)

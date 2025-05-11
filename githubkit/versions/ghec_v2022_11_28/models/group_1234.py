@@ -18,24 +18,29 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoPullsPullNumberMergePutBody(GitHubModel):
-    """ReposOwnerRepoPullsPullNumberMergePutBody"""
+class ReposOwnerRepoPullsPullNumberPatchBody(GitHubModel):
+    """ReposOwnerRepoPullsPullNumberPatchBody"""
 
-    commit_title: Missing[str] = Field(
-        default=UNSET, description="Title for the automatic commit message."
+    title: Missing[str] = Field(
+        default=UNSET, description="The title of the pull request."
     )
-    commit_message: Missing[str] = Field(
-        default=UNSET, description="Extra detail to append to automatic commit message."
+    body: Missing[str] = Field(
+        default=UNSET, description="The contents of the pull request."
     )
-    sha: Missing[str] = Field(
+    state: Missing[Literal["open", "closed"]] = Field(
         default=UNSET,
-        description="SHA that pull request head must match to allow merge.",
+        description="State of this Pull Request. Either `open` or `closed`.",
     )
-    merge_method: Missing[Literal["merge", "squash", "rebase"]] = Field(
-        default=UNSET, description="The merge method to use."
+    base: Missing[str] = Field(
+        default=UNSET,
+        description="The name of the branch you want your changes pulled into. This should be an existing branch on the current repository. You cannot update the base branch on a pull request to point to another repository.",
+    )
+    maintainer_can_modify: Missing[bool] = Field(
+        default=UNSET,
+        description="Indicates whether [maintainers can modify](https://docs.github.com/enterprise-cloud@latest//articles/allowing-changes-to-a-pull-request-branch-created-from-a-fork/) the pull request.",
     )
 
 
-model_rebuild(ReposOwnerRepoPullsPullNumberMergePutBody)
+model_rebuild(ReposOwnerRepoPullsPullNumberPatchBody)
 
-__all__ = ("ReposOwnerRepoPullsPullNumberMergePutBody",)
+__all__ = ("ReposOwnerRepoPullsPullNumberPatchBody",)

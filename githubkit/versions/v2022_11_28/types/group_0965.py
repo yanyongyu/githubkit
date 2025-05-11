@@ -12,10 +12,10 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class ProjectsColumnsColumnIdMovesPostBodyType(TypedDict):
-    """ProjectsColumnsColumnIdMovesPostBody"""
+class ProjectsColumnsColumnIdPatchBodyType(TypedDict):
+    """ProjectsColumnsColumnIdPatchBody"""
 
-    position: str
+    name: str
 
 
-__all__ = ("ProjectsColumnsColumnIdMovesPostBodyType",)
+__all__ = ("ProjectsColumnsColumnIdPatchBodyType",)

@@ -16,51 +16,26 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgActionsRunnerGroupsGetResponse200(GitHubModel):
-    """OrgsOrgActionsRunnerGroupsGetResponse200"""
+class OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBody(GitHubModel):
+    """OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBody"""
 
-    total_count: float = Field()
-    runner_groups: list[RunnerGroupsOrg] = Field()
-
-
-class RunnerGroupsOrg(GitHubModel):
-    """RunnerGroupsOrg"""
-
-    id: float = Field()
-    name: str = Field()
-    visibility: str = Field()
-    default: bool = Field()
-    selected_repositories_url: Missing[str] = Field(
+    name: Missing[str] = Field(
         default=UNSET,
-        description="Link to the selected repositories resource for this runner group. Not present unless visibility was set to `selected`",
+        description="Name of the runner. Must be between 1 and 64 characters and may only contain upper and lowercase letters a-z, numbers 0-9, '.', '-', and '_'.",
     )
-    runners_url: str = Field()
-    hosted_runners_url: Missing[str] = Field(default=UNSET)
-    network_configuration_id: Missing[str] = Field(
-        default=UNSET,
-        description="The identifier of a hosted compute network configuration.",
+    runner_group_id: Missing[int] = Field(
+        default=UNSET, description="The existing runner group to add this runner to."
     )
-    inherited: bool = Field()
-    inherited_allows_public_repositories: Missing[bool] = Field(default=UNSET)
-    allows_public_repositories: bool = Field()
-    workflow_restrictions_read_only: Missing[bool] = Field(
+    maximum_runners: Missing[int] = Field(
         default=UNSET,
-        description="If `true`, the `restricted_to_workflows` and `selected_workflows` fields cannot be modified.",
+        description="The maximum amount of runners to scale up to. Runners will not auto-scale above this number. Use this setting to limit your cost.",
     )
-    restricted_to_workflows: Missing[bool] = Field(
+    enable_static_ip: Missing[bool] = Field(
         default=UNSET,
-        description="If `true`, the runner group will be restricted to running only the workflows specified in the `selected_workflows` array.",
-    )
-    selected_workflows: Missing[list[str]] = Field(
-        default=UNSET,
-        description="List of workflows the runner group should be allowed to run. This setting will be ignored unless `restricted_to_workflows` is set to `true`.",
+        description="Whether this runner should be updated with a static public IP. Note limit on account. To list limits on account, use `GET actions/hosted-runners/limits`",
     )
 
 
-model_rebuild(OrgsOrgActionsRunnerGroupsGetResponse200)
-model_rebuild(RunnerGroupsOrg)
+model_rebuild(OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBody)
 
-__all__ = (
-    "OrgsOrgActionsRunnerGroupsGetResponse200",
-    "RunnerGroupsOrg",
-)
+__all__ = ("OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBody",)

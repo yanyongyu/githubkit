@@ -13,18 +13,18 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0473 import EnterpriseWebhooksType
-from .group_0474 import SimpleInstallationType
-from .group_0475 import OrganizationSimpleWebhooksType
-from .group_0476 import RepositoryWebhooksType
-from .group_0488 import DiscussionType
-from .group_0489 import WebhooksCommentType
+from .group_0474 import EnterpriseWebhooksType
+from .group_0475 import SimpleInstallationType
+from .group_0476 import OrganizationSimpleWebhooksType
+from .group_0477 import RepositoryWebhooksType
+from .group_0489 import DiscussionType
+from .group_0490 import WebhooksCommentType
 
 
-class WebhookDiscussionCommentDeletedType(TypedDict):
-    """discussion_comment deleted event"""
+class WebhookDiscussionCommentCreatedType(TypedDict):
+    """discussion_comment created event"""
 
-    action: Literal["deleted"]
+    action: Literal["created"]
     comment: WebhooksCommentType
     discussion: DiscussionType
     enterprise: NotRequired[EnterpriseWebhooksType]
@@ -34,4 +34,4 @@ class WebhookDiscussionCommentDeletedType(TypedDict):
     sender: SimpleUserType
 
 
-__all__ = ("WebhookDiscussionCommentDeletedType",)
+__all__ = ("WebhookDiscussionCommentCreatedType",)

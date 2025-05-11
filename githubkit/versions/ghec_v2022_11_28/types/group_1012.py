@@ -11,14 +11,14 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0168 import MinimalRepositoryType
+
+class OrgsOrgCopilotBillingSelectedUsersDeleteResponse200Type(TypedDict):
+    """OrgsOrgCopilotBillingSelectedUsersDeleteResponse200
+
+    The total number of seats set to "pending cancellation" for the specified users.
+    """
+
+    seats_cancelled: int
 
 
-class OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200Type(TypedDict):
-    """OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200"""
-
-    total_count: int
-    repositories: list[MinimalRepositoryType]
-
-
-__all__ = ("OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200Type",)
+__all__ = ("OrgsOrgCopilotBillingSelectedUsersDeleteResponse200Type",)

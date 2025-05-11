@@ -9,29 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0040 import IssueTypeType
-from .group_0418 import EnterpriseWebhooksType
-from .group_0419 import SimpleInstallationType
-from .group_0420 import OrganizationSimpleWebhooksType
-from .group_0421 import RepositoryWebhooksType
-from .group_0438 import WebhooksIssueType
+from .group_0419 import EnterpriseWebhooksType
+from .group_0420 import SimpleInstallationType
+from .group_0421 import OrganizationSimpleWebhooksType
+from .group_0422 import RepositoryWebhooksType
+from .group_0624 import WebhookIssuesUnlockedPropIssueType
 
 
-class WebhookIssuesUntypedType(TypedDict):
-    """issues untyped event"""
+class WebhookIssuesUnlockedType(TypedDict):
+    """issues unlocked event"""
 
-    action: Literal["untyped"]
+    action: Literal["unlocked"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    issue: WebhooksIssueType
-    type: Union[IssueTypeType, None]
+    issue: WebhookIssuesUnlockedPropIssueType
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-__all__ = ("WebhookIssuesUntypedType",)
+__all__ = ("WebhookIssuesUnlockedType",)

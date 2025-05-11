@@ -9,15 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyType(TypedDict):
-    """ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody"""
+class ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1Type(TypedDict):
+    """ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1"""
 
-    message: str
-    event: NotRequired[Literal["DISMISS"]]
+    reviewers: NotRequired[list[str]]
+    team_reviewers: list[str]
 
 
-__all__ = ("ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyType",)
+__all__ = ("ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1Type",)

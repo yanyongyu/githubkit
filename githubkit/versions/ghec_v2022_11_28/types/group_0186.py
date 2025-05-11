@@ -80,6 +80,7 @@ class SecretScanningDismissalRequestPropDataItemsType(TypedDict):
 
     secret_type: NotRequired[str]
     alert_number: NotRequired[str]
+    reason: NotRequired[Literal["fixed_later", "false_positive", "tests", "revoked"]]
 
 
 __all__ = (

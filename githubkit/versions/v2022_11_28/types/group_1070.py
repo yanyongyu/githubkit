@@ -9,28 +9,49 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from datetime import datetime
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoGitTreesPostBodyType(TypedDict):
-    """ReposOwnerRepoGitTreesPostBody"""
+class ReposOwnerRepoGitCommitsPostBodyType(TypedDict):
+    """ReposOwnerRepoGitCommitsPostBody"""
 
-    tree: list[ReposOwnerRepoGitTreesPostBodyPropTreeItemsType]
-    base_tree: NotRequired[str]
+    message: str
+    tree: str
+    parents: NotRequired[list[str]]
+    author: NotRequired[ReposOwnerRepoGitCommitsPostBodyPropAuthorType]
+    committer: NotRequired[ReposOwnerRepoGitCommitsPostBodyPropCommitterType]
+    signature: NotRequired[str]
 
 
-class ReposOwnerRepoGitTreesPostBodyPropTreeItemsType(TypedDict):
-    """ReposOwnerRepoGitTreesPostBodyPropTreeItems"""
+class ReposOwnerRepoGitCommitsPostBodyPropAuthorType(TypedDict):
+    """ReposOwnerRepoGitCommitsPostBodyPropAuthor
 
-    path: NotRequired[str]
-    mode: NotRequired[Literal["100644", "100755", "040000", "160000", "120000"]]
-    type: NotRequired[Literal["blob", "tree", "commit"]]
-    sha: NotRequired[Union[str, None]]
-    content: NotRequired[str]
+    Information about the author of the commit. By default, the `author` will be the
+    authenticated user and the current date. See the `author` and `committer` object
+    below for details.
+    """
+
+    name: str
+    email: str
+    date: NotRequired[datetime]
+
+
+class ReposOwnerRepoGitCommitsPostBodyPropCommitterType(TypedDict):
+    """ReposOwnerRepoGitCommitsPostBodyPropCommitter
+
+    Information about the person who is making the commit. By default, `committer`
+    will use the information set in `author`. See the `author` and `committer`
+    object below for details.
+    """
+
+    name: NotRequired[str]
+    email: NotRequired[str]
+    date: NotRequired[datetime]
 
 
 __all__ = (
-    "ReposOwnerRepoGitTreesPostBodyPropTreeItemsType",
-    "ReposOwnerRepoGitTreesPostBodyType",
+    "ReposOwnerRepoGitCommitsPostBodyPropAuthorType",
+    "ReposOwnerRepoGitCommitsPostBodyPropCommitterType",
+    "ReposOwnerRepoGitCommitsPostBodyType",
 )

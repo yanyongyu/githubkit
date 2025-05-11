@@ -19,37 +19,32 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgActionsVariablesGetResponse200(GitHubModel):
-    """OrgsOrgActionsVariablesGetResponse200"""
+class OrgsOrgActionsSecretsGetResponse200(GitHubModel):
+    """OrgsOrgActionsSecretsGetResponse200"""
 
     total_count: int = Field()
-    variables: list[OrganizationActionsVariable] = Field()
+    secrets: list[OrganizationActionsSecret] = Field()
 
 
-class OrganizationActionsVariable(GitHubModel):
-    """Actions Variable for an Organization
+class OrganizationActionsSecret(GitHubModel):
+    """Actions Secret for an Organization
 
-    Organization variable for GitHub Actions.
+    Secrets for GitHub Actions for an organization.
     """
 
-    name: str = Field(description="The name of the variable.")
-    value: str = Field(description="The value of the variable.")
-    created_at: datetime = Field(
-        description="The date and time at which the variable was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
-    )
-    updated_at: datetime = Field(
-        description="The date and time at which the variable was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
-    )
+    name: str = Field(description="The name of the secret.")
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
     visibility: Literal["all", "private", "selected"] = Field(
-        description="Visibility of a variable"
+        description="Visibility of a secret"
     )
     selected_repositories_url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(OrgsOrgActionsVariablesGetResponse200)
-model_rebuild(OrganizationActionsVariable)
+model_rebuild(OrgsOrgActionsSecretsGetResponse200)
+model_rebuild(OrganizationActionsSecret)
 
 __all__ = (
-    "OrganizationActionsVariable",
-    "OrgsOrgActionsVariablesGetResponse200",
+    "OrganizationActionsSecret",
+    "OrgsOrgActionsSecretsGetResponse200",
 )

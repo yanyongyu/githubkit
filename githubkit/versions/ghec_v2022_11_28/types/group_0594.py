@@ -13,17 +13,17 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0473 import EnterpriseWebhooksType
-from .group_0474 import SimpleInstallationType
-from .group_0475 import OrganizationSimpleWebhooksType
-from .group_0476 import RepositoryWebhooksType
-from .group_0488 import DiscussionType
+from .group_0474 import EnterpriseWebhooksType
+from .group_0475 import SimpleInstallationType
+from .group_0476 import OrganizationSimpleWebhooksType
+from .group_0477 import RepositoryWebhooksType
+from .group_0489 import DiscussionType
 
 
-class WebhookDiscussionUnpinnedType(TypedDict):
-    """discussion unpinned event"""
+class WebhookDiscussionUnlockedType(TypedDict):
+    """discussion unlocked event"""
 
-    action: Literal["unpinned"]
+    action: Literal["unlocked"]
     discussion: DiscussionType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
@@ -32,4 +32,4 @@ class WebhookDiscussionUnpinnedType(TypedDict):
     sender: SimpleUserType
 
 
-__all__ = ("WebhookDiscussionUnpinnedType",)
+__all__ = ("WebhookDiscussionUnlockedType",)

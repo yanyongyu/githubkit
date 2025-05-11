@@ -9,46 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class UserCodespacesSecretsGetResponse200(GitHubModel):
-    """UserCodespacesSecretsGetResponse200"""
+class UserPatchBody(GitHubModel):
+    """UserPatchBody"""
 
-    total_count: int = Field()
-    secrets: list[CodespacesSecret] = Field()
-
-
-class CodespacesSecret(GitHubModel):
-    """Codespaces Secret
-
-    Secrets for a GitHub Codespace.
-    """
-
-    name: str = Field(description="The name of the secret")
-    created_at: datetime = Field(
-        description="The date and time at which the secret was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
+    name: Missing[str] = Field(default=UNSET, description="The new name of the user.")
+    email: Missing[str] = Field(
+        default=UNSET, description="The publicly visible email address of the user."
     )
-    updated_at: datetime = Field(
-        description="The date and time at which the secret was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
+    blog: Missing[str] = Field(
+        default=UNSET, description="The new blog URL of the user."
     )
-    visibility: Literal["all", "private", "selected"] = Field(
-        description="The type of repositories in the organization that the secret is visible to"
+    twitter_username: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The new Twitter username of the user."
     )
-    selected_repositories_url: str = Field(
-        description="The API URL at which the list of repositories this secret is visible to can be retrieved"
+    company: Missing[str] = Field(
+        default=UNSET, description="The new company of the user."
+    )
+    location: Missing[str] = Field(
+        default=UNSET, description="The new location of the user."
+    )
+    hireable: Missing[bool] = Field(
+        default=UNSET, description="The new hiring availability of the user."
+    )
+    bio: Missing[str] = Field(
+        default=UNSET, description="The new short biography of the user."
     )
 
 
-model_rebuild(UserCodespacesSecretsGetResponse200)
-model_rebuild(CodespacesSecret)
+model_rebuild(UserPatchBody)
 
-__all__ = (
-    "CodespacesSecret",
-    "UserCodespacesSecretsGetResponse200",
-)
+__all__ = ("UserPatchBody",)

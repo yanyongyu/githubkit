@@ -9,22 +9,15 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType(
-    TypedDict
-):
-    """OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPos
-    tBody
-    """
+class OrgsOrgTeamsTeamSlugDiscussionsPostBodyType(TypedDict):
+    """OrgsOrgTeamsTeamSlugDiscussionsPostBody"""
 
-    content: Literal[
-        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-    ]
+    title: str
+    body: str
+    private: NotRequired[bool]
 
 
-__all__ = (
-    "OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType",
-)
+__all__ = ("OrgsOrgTeamsTeamSlugDiscussionsPostBodyType",)

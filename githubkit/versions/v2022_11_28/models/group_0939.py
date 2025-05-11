@@ -9,48 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
-
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+
+from .group_0117 import CustomPropertyValue
 
 
-class OrgsOrgSettingsNetworkConfigurationsGetResponse200(GitHubModel):
-    """OrgsOrgSettingsNetworkConfigurationsGetResponse200"""
+class OrgsOrgPropertiesValuesPatchBody(GitHubModel):
+    """OrgsOrgPropertiesValuesPatchBody"""
 
-    total_count: int = Field()
-    network_configurations: list[NetworkConfiguration] = Field()
-
-
-class NetworkConfiguration(GitHubModel):
-    """Hosted compute network configuration
-
-    A hosted compute network configuration.
-    """
-
-    id: str = Field(description="The unique identifier of the network configuration.")
-    name: str = Field(description="The name of the network configuration.")
-    compute_service: Missing[Literal["none", "actions", "codespaces"]] = Field(
-        default=UNSET,
-        description="The hosted compute service the network configuration supports.",
+    repository_names: list[str] = Field(
+        max_length=30 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        description="The names of repositories that the custom property values will be applied to.",
     )
-    network_settings_ids: Missing[list[str]] = Field(
-        default=UNSET,
-        description="The unique identifier of each network settings in the configuration.",
-    )
-    created_on: Union[datetime, None] = Field(
-        description="The time at which the network configuration was created, in ISO 8601 format."
+    properties: list[CustomPropertyValue] = Field(
+        description="List of custom property names and associated values to apply to the repositories."
     )
 
 
-model_rebuild(OrgsOrgSettingsNetworkConfigurationsGetResponse200)
-model_rebuild(NetworkConfiguration)
+model_rebuild(OrgsOrgPropertiesValuesPatchBody)
 
-__all__ = (
-    "NetworkConfiguration",
-    "OrgsOrgSettingsNetworkConfigurationsGetResponse200",
-)
+__all__ = ("OrgsOrgPropertiesValuesPatchBody",)

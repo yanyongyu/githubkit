@@ -9,14 +9,11 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import TypedDict
 
 
-class ProjectsColumnsColumnIdCardsPostBodyOneof0Type(TypedDict):
-    """ProjectsColumnsColumnIdCardsPostBodyOneof0"""
-
-    note: Union[str, None]
+class ProjectsColumnsCardsCardIdMovesPostResponse201Type(TypedDict):
+    """ProjectsColumnsCardsCardIdMovesPostResponse201"""
 
 
-__all__ = ("ProjectsColumnsColumnIdCardsPostBodyOneof0Type",)
+__all__ = ("ProjectsColumnsCardsCardIdMovesPostResponse201Type",)

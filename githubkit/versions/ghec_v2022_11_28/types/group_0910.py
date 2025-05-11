@@ -9,16 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0041 import RunnerType
-
-
-class EnterprisesEnterpriseActionsRunnersGetResponse200Type(TypedDict):
-    """EnterprisesEnterpriseActionsRunnersGetResponse200"""
-
-    total_count: NotRequired[float]
-    runners: NotRequired[list[RunnerType]]
+from .group_0036 import OrganizationSimpleType
 
 
-__all__ = ("EnterprisesEnterpriseActionsRunnersGetResponse200Type",)
+class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200Type(
+    TypedDict
+):
+    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200"""
+
+    total_count: float
+    organizations: list[OrganizationSimpleType]
+
+
+__all__ = (
+    "EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200Type",
+)

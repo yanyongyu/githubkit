@@ -13,21 +13,21 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0418 import EnterpriseWebhooksType
-from .group_0419 import SimpleInstallationType
-from .group_0420 import OrganizationSimpleWebhooksType
-from .group_0421 import RepositoryWebhooksType
+from .group_0419 import EnterpriseWebhooksType
+from .group_0420 import SimpleInstallationType
+from .group_0421 import OrganizationSimpleWebhooksType
+from .group_0422 import RepositoryWebhooksType
 
 
-class WebhookRepositoryImportType(TypedDict):
-    """repository_import event"""
+class WebhookRepositoryDeletedType(TypedDict):
+    """repository deleted event"""
 
+    action: Literal["deleted"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
-    status: Literal["success", "cancelled", "failure"]
 
 
-__all__ = ("WebhookRepositoryImportType",)
+__all__ = ("WebhookRepositoryDeletedType",)

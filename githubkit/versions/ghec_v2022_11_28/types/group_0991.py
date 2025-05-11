@@ -9,23 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0060 import CodeSecurityConfigurationType
+
+class OrgsOrgCodeSecurityConfigurationsDetachDeleteBodyType(TypedDict):
+    """OrgsOrgCodeSecurityConfigurationsDetachDeleteBody"""
+
+    selected_repository_ids: NotRequired[list[int]]
 
 
-class OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200Type(
-    TypedDict
-):
-    """OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200"""
-
-    default_for_new_repos: NotRequired[
-        Literal["all", "none", "private_and_internal", "public"]
-    ]
-    configuration: NotRequired[CodeSecurityConfigurationType]
-
-
-__all__ = (
-    "OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200Type",
-)
+__all__ = ("OrgsOrgCodeSecurityConfigurationsDetachDeleteBodyType",)

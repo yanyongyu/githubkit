@@ -9,97 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0133 import (
-    RepositoryRuleCreationType,
-    RepositoryRuleDeletionType,
-    RepositoryRuleNonFastForwardType,
-    RepositoryRuleRequiredSignaturesType,
+from .group_0762 import WebhookRepositoryRulesetEditedPropChangesPropConditionsType
+from .group_0764 import WebhookRepositoryRulesetEditedPropChangesPropRulesType
+
+
+class WebhookRepositoryRulesetEditedPropChangesType(TypedDict):
+    """WebhookRepositoryRulesetEditedPropChanges"""
+
+    name: NotRequired[WebhookRepositoryRulesetEditedPropChangesPropNameType]
+    enforcement: NotRequired[
+        WebhookRepositoryRulesetEditedPropChangesPropEnforcementType
+    ]
+    conditions: NotRequired[WebhookRepositoryRulesetEditedPropChangesPropConditionsType]
+    rules: NotRequired[WebhookRepositoryRulesetEditedPropChangesPropRulesType]
+
+
+class WebhookRepositoryRulesetEditedPropChangesPropNameType(TypedDict):
+    """WebhookRepositoryRulesetEditedPropChangesPropName"""
+
+    from_: NotRequired[str]
+
+
+class WebhookRepositoryRulesetEditedPropChangesPropEnforcementType(TypedDict):
+    """WebhookRepositoryRulesetEditedPropChangesPropEnforcement"""
+
+    from_: NotRequired[str]
+
+
+__all__ = (
+    "WebhookRepositoryRulesetEditedPropChangesPropEnforcementType",
+    "WebhookRepositoryRulesetEditedPropChangesPropNameType",
+    "WebhookRepositoryRulesetEditedPropChangesType",
 )
-from .group_0134 import RepositoryRuleUpdateType
-from .group_0136 import RepositoryRuleRequiredLinearHistoryType
-from .group_0137 import RepositoryRuleMergeQueueType
-from .group_0139 import RepositoryRuleRequiredDeploymentsType
-from .group_0142 import RepositoryRulePullRequestType
-from .group_0144 import RepositoryRuleRequiredStatusChecksType
-from .group_0146 import RepositoryRuleCommitMessagePatternType
-from .group_0148 import RepositoryRuleCommitAuthorEmailPatternType
-from .group_0150 import RepositoryRuleCommitterEmailPatternType
-from .group_0152 import RepositoryRuleBranchNamePatternType
-from .group_0154 import RepositoryRuleTagNamePatternType
-from .group_0156 import RepositoryRuleFilePathRestrictionType
-from .group_0158 import RepositoryRuleMaxFilePathLengthType
-from .group_0160 import RepositoryRuleFileExtensionRestrictionType
-from .group_0162 import RepositoryRuleMaxFileSizeType
-from .group_0165 import RepositoryRuleWorkflowsType
-from .group_0167 import RepositoryRuleCodeScanningType
-from .group_0762 import (
-    WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsType,
-)
-
-
-class WebhookRepositoryRulesetEditedPropChangesPropRulesType(TypedDict):
-    """WebhookRepositoryRulesetEditedPropChangesPropRules"""
-
-    added: NotRequired[
-        list[
-            Union[
-                RepositoryRuleCreationType,
-                RepositoryRuleUpdateType,
-                RepositoryRuleDeletionType,
-                RepositoryRuleRequiredLinearHistoryType,
-                RepositoryRuleMergeQueueType,
-                RepositoryRuleRequiredDeploymentsType,
-                RepositoryRuleRequiredSignaturesType,
-                RepositoryRulePullRequestType,
-                RepositoryRuleRequiredStatusChecksType,
-                RepositoryRuleNonFastForwardType,
-                RepositoryRuleCommitMessagePatternType,
-                RepositoryRuleCommitAuthorEmailPatternType,
-                RepositoryRuleCommitterEmailPatternType,
-                RepositoryRuleBranchNamePatternType,
-                RepositoryRuleTagNamePatternType,
-                RepositoryRuleFilePathRestrictionType,
-                RepositoryRuleMaxFilePathLengthType,
-                RepositoryRuleFileExtensionRestrictionType,
-                RepositoryRuleMaxFileSizeType,
-                RepositoryRuleWorkflowsType,
-                RepositoryRuleCodeScanningType,
-            ]
-        ]
-    ]
-    deleted: NotRequired[
-        list[
-            Union[
-                RepositoryRuleCreationType,
-                RepositoryRuleUpdateType,
-                RepositoryRuleDeletionType,
-                RepositoryRuleRequiredLinearHistoryType,
-                RepositoryRuleMergeQueueType,
-                RepositoryRuleRequiredDeploymentsType,
-                RepositoryRuleRequiredSignaturesType,
-                RepositoryRulePullRequestType,
-                RepositoryRuleRequiredStatusChecksType,
-                RepositoryRuleNonFastForwardType,
-                RepositoryRuleCommitMessagePatternType,
-                RepositoryRuleCommitAuthorEmailPatternType,
-                RepositoryRuleCommitterEmailPatternType,
-                RepositoryRuleBranchNamePatternType,
-                RepositoryRuleTagNamePatternType,
-                RepositoryRuleFilePathRestrictionType,
-                RepositoryRuleMaxFilePathLengthType,
-                RepositoryRuleFileExtensionRestrictionType,
-                RepositoryRuleMaxFileSizeType,
-                RepositoryRuleWorkflowsType,
-                RepositoryRuleCodeScanningType,
-            ]
-        ]
-    ]
-    updated: NotRequired[
-        list[WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsType]
-    ]
-
-
-__all__ = ("WebhookRepositoryRulesetEditedPropChangesPropRulesType",)

@@ -9,27 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0473 import EnterpriseWebhooksType
-from .group_0474 import SimpleInstallationType
-from .group_0475 import OrganizationSimpleWebhooksType
-from .group_0476 import RepositoryWebhooksType
-from .group_0504 import WebhooksMembershipType
+from .group_0474 import EnterpriseWebhooksType
+from .group_0475 import SimpleInstallationType
+from .group_0476 import OrganizationSimpleWebhooksType
+from .group_0477 import RepositoryWebhooksType
+from .group_0487 import WebhooksUserType
 
 
-class WebhookOrganizationMemberAddedType(TypedDict):
-    """organization member_added event"""
+class WebhookOrgBlockBlockedType(TypedDict):
+    """org_block blocked event"""
 
-    action: Literal["member_added"]
+    action: Literal["blocked"]
+    blocked_user: Union[WebhooksUserType, None]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    membership: WebhooksMembershipType
     organization: OrganizationSimpleWebhooksType
     repository: NotRequired[RepositoryWebhooksType]
     sender: SimpleUserType
 
 
-__all__ = ("WebhookOrganizationMemberAddedType",)
+__all__ = ("WebhookOrgBlockBlockedType",)

@@ -13,17 +13,17 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0473 import EnterpriseWebhooksType
-from .group_0474 import SimpleInstallationType
-from .group_0475 import OrganizationSimpleWebhooksType
-from .group_0476 import RepositoryWebhooksType
-from .group_0482 import WebhooksDeployKeyType
+from .group_0474 import EnterpriseWebhooksType
+from .group_0475 import SimpleInstallationType
+from .group_0476 import OrganizationSimpleWebhooksType
+from .group_0477 import RepositoryWebhooksType
+from .group_0483 import WebhooksDeployKeyType
 
 
-class WebhookDeployKeyDeletedType(TypedDict):
-    """deploy_key deleted event"""
+class WebhookDeployKeyCreatedType(TypedDict):
+    """deploy_key created event"""
 
-    action: Literal["deleted"]
+    action: Literal["created"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     key: WebhooksDeployKeyType
@@ -32,4 +32,4 @@ class WebhookDeployKeyDeletedType(TypedDict):
     sender: SimpleUserType
 
 
-__all__ = ("WebhookDeployKeyDeletedType",)
+__all__ = ("WebhookDeployKeyCreatedType",)

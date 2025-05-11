@@ -13,23 +13,25 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0418 import EnterpriseWebhooksType
-from .group_0419 import SimpleInstallationType
-from .group_0420 import OrganizationSimpleWebhooksType
-from .group_0421 import RepositoryWebhooksType
-from .group_0440 import WebhooksIssue2Type
+from .group_0419 import EnterpriseWebhooksType
+from .group_0420 import SimpleInstallationType
+from .group_0421 import OrganizationSimpleWebhooksType
+from .group_0422 import RepositoryWebhooksType
+from .group_0434 import WebhooksLabelType
+from .group_0439 import WebhooksIssueType
 
 
-class WebhookIssuesUnpinnedType(TypedDict):
-    """issues unpinned event"""
+class WebhookIssuesUnlabeledType(TypedDict):
+    """issues unlabeled event"""
 
-    action: Literal["unpinned"]
+    action: Literal["unlabeled"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    issue: WebhooksIssue2Type
+    issue: WebhooksIssueType
+    label: NotRequired[WebhooksLabelType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-__all__ = ("WebhookIssuesUnpinnedType",)
+__all__ = ("WebhookIssuesUnlabeledType",)

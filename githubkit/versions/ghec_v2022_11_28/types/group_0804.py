@@ -13,17 +13,18 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0473 import EnterpriseWebhooksType
-from .group_0474 import SimpleInstallationType
-from .group_0475 import OrganizationSimpleWebhooksType
-from .group_0476 import RepositoryWebhooksType
-from .group_0518 import WebhooksReleaseType
+from .group_0474 import EnterpriseWebhooksType
+from .group_0475 import SimpleInstallationType
+from .group_0476 import OrganizationSimpleWebhooksType
+from .group_0477 import RepositoryWebhooksType
+from .group_0519 import WebhooksReleaseType
 
 
-class WebhookReleaseReleasedType(TypedDict):
-    """release released event"""
+class WebhookReleaseEditedType(TypedDict):
+    """release edited event"""
 
-    action: Literal["released"]
+    action: Literal["edited"]
+    changes: WebhookReleaseEditedPropChangesType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
@@ -32,4 +33,44 @@ class WebhookReleaseReleasedType(TypedDict):
     sender: NotRequired[SimpleUserType]
 
 
-__all__ = ("WebhookReleaseReleasedType",)
+class WebhookReleaseEditedPropChangesType(TypedDict):
+    """WebhookReleaseEditedPropChanges"""
+
+    body: NotRequired[WebhookReleaseEditedPropChangesPropBodyType]
+    name: NotRequired[WebhookReleaseEditedPropChangesPropNameType]
+    tag_name: NotRequired[WebhookReleaseEditedPropChangesPropTagNameType]
+    make_latest: NotRequired[WebhookReleaseEditedPropChangesPropMakeLatestType]
+
+
+class WebhookReleaseEditedPropChangesPropBodyType(TypedDict):
+    """WebhookReleaseEditedPropChangesPropBody"""
+
+    from_: str
+
+
+class WebhookReleaseEditedPropChangesPropNameType(TypedDict):
+    """WebhookReleaseEditedPropChangesPropName"""
+
+    from_: str
+
+
+class WebhookReleaseEditedPropChangesPropTagNameType(TypedDict):
+    """WebhookReleaseEditedPropChangesPropTagName"""
+
+    from_: str
+
+
+class WebhookReleaseEditedPropChangesPropMakeLatestType(TypedDict):
+    """WebhookReleaseEditedPropChangesPropMakeLatest"""
+
+    to: bool
+
+
+__all__ = (
+    "WebhookReleaseEditedPropChangesPropBodyType",
+    "WebhookReleaseEditedPropChangesPropMakeLatestType",
+    "WebhookReleaseEditedPropChangesPropNameType",
+    "WebhookReleaseEditedPropChangesPropTagNameType",
+    "WebhookReleaseEditedPropChangesType",
+    "WebhookReleaseEditedType",
+)

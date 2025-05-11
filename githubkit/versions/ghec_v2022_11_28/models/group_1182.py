@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
@@ -18,27 +18,51 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoImportPatchBody(GitHubModel):
-    """ReposOwnerRepoImportPatchBody"""
+class ReposOwnerRepoHooksPostBody(GitHubModel):
+    """ReposOwnerRepoHooksPostBody"""
 
-    vcs_username: Missing[str] = Field(
+    name: Missing[str] = Field(
         default=UNSET,
-        description="The username to provide to the originating repository.",
+        description="Use `web` to create a webhook. Default: `web`. This parameter only accepts the value `web`.",
     )
-    vcs_password: Missing[str] = Field(
+    config: Missing[ReposOwnerRepoHooksPostBodyPropConfig] = Field(
         default=UNSET,
-        description="The password to provide to the originating repository.",
+        description="Key/value pairs to provide settings for this webhook.",
     )
-    vcs: Missing[Literal["subversion", "tfvc", "git", "mercurial"]] = Field(
+    events: Missing[list[str]] = Field(
         default=UNSET,
-        description="The type of version control system you are migrating from.",
+        description="Determines what [events](https://docs.github.com/enterprise-cloud@latest//webhooks/event-payloads) the hook is triggered for.",
     )
-    tfvc_project: Missing[str] = Field(
+    active: Missing[bool] = Field(
         default=UNSET,
-        description="For a tfvc import, the name of the project that is being imported.",
+        description="Determines if notifications are sent when the webhook is triggered. Set to `true` to send notifications.",
     )
 
 
-model_rebuild(ReposOwnerRepoImportPatchBody)
+class ReposOwnerRepoHooksPostBodyPropConfig(GitHubModel):
+    """ReposOwnerRepoHooksPostBodyPropConfig
 
-__all__ = ("ReposOwnerRepoImportPatchBody",)
+    Key/value pairs to provide settings for this webhook.
+    """
+
+    url: Missing[str] = Field(
+        default=UNSET, description="The URL to which the payloads will be delivered."
+    )
+    content_type: Missing[str] = Field(
+        default=UNSET,
+        description="The media type used to serialize the payloads. Supported values include `json` and `form`. The default is `form`.",
+    )
+    secret: Missing[str] = Field(
+        default=UNSET,
+        description="If provided, the `secret` will be used as the `key` to generate the HMAC hex digest value for [delivery signature headers](https://docs.github.com/enterprise-cloud@latest//webhooks/event-payloads/#delivery-headers).",
+    )
+    insecure_ssl: Missing[Union[str, float]] = Field(default=UNSET)
+
+
+model_rebuild(ReposOwnerRepoHooksPostBody)
+model_rebuild(ReposOwnerRepoHooksPostBodyPropConfig)
+
+__all__ = (
+    "ReposOwnerRepoHooksPostBody",
+    "ReposOwnerRepoHooksPostBodyPropConfig",
+)

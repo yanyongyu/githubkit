@@ -9,33 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class EnterprisesEnterpriseActionsHostedRunnersPostBodyType(TypedDict):
-    """EnterprisesEnterpriseActionsHostedRunnersPostBody"""
-
-    name: str
-    image: EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImageType
-    size: str
-    runner_group_id: int
-    maximum_runners: NotRequired[int]
-    enable_static_ip: NotRequired[bool]
+from .group_0017 import AppPermissionsType
 
 
-class EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImageType(TypedDict):
-    """EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImage
+class ApplicationsClientIdTokenScopedPostBodyType(TypedDict):
+    """ApplicationsClientIdTokenScopedPostBody"""
 
-    The image of runner. To list all available images, use `GET /actions/hosted-
-    runners/images/github-owned` or `GET /actions/hosted-runners/images/partner`.
-    """
+    access_token: str
+    target: NotRequired[str]
+    target_id: NotRequired[int]
+    repositories: NotRequired[list[str]]
+    repository_ids: NotRequired[list[int]]
+    permissions: NotRequired[AppPermissionsType]
 
-    id: NotRequired[str]
-    source: NotRequired[Literal["github", "partner", "custom"]]
 
-
-__all__ = (
-    "EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImageType",
-    "EnterprisesEnterpriseActionsHostedRunnersPostBodyType",
-)
+__all__ = ("ApplicationsClientIdTokenScopedPostBodyType",)

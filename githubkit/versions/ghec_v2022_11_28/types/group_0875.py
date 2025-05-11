@@ -13,7 +13,7 @@ from typing import Literal, Union
 from typing_extensions import TypedDict
 
 
-class WebhookWorkflowJobInProgressPropWorkflowJobAllof0Type(TypedDict):
+class WebhookWorkflowJobCompletedPropWorkflowJobAllof0Type(TypedDict):
     """Workflow Job
 
     The workflow job. Many `workflow_job` keys, such as `head_sha`, `conclusion`,
@@ -22,7 +22,18 @@ class WebhookWorkflowJobInProgressPropWorkflowJobAllof0Type(TypedDict):
 
     check_run_url: str
     completed_at: Union[str, None]
-    conclusion: Union[None, Literal["success", "failure", "cancelled", "neutral"]]
+    conclusion: Union[
+        None,
+        Literal[
+            "success",
+            "failure",
+            "skipped",
+            "cancelled",
+            "action_required",
+            "neutral",
+            "timed_out",
+        ],
+    ]
     created_at: str
     head_sha: str
     html_url: str
@@ -38,14 +49,14 @@ class WebhookWorkflowJobInProgressPropWorkflowJobAllof0Type(TypedDict):
     runner_id: Union[int, None]
     runner_name: Union[str, None]
     started_at: str
-    status: Literal["queued", "in_progress", "completed"]
+    status: Literal["queued", "in_progress", "completed", "waiting"]
     head_branch: Union[str, None]
     workflow_name: Union[str, None]
-    steps: list[WebhookWorkflowJobInProgressPropWorkflowJobAllof0PropStepsItemsType]
+    steps: list[WebhookWorkflowJobCompletedPropWorkflowJobAllof0PropStepsItemsType]
     url: str
 
 
-class WebhookWorkflowJobInProgressPropWorkflowJobAllof0PropStepsItemsType(TypedDict):
+class WebhookWorkflowJobCompletedPropWorkflowJobAllof0PropStepsItemsType(TypedDict):
     """Workflow Step"""
 
     completed_at: Union[str, None]
@@ -53,10 +64,10 @@ class WebhookWorkflowJobInProgressPropWorkflowJobAllof0PropStepsItemsType(TypedD
     name: str
     number: int
     started_at: Union[str, None]
-    status: Literal["in_progress", "completed", "queued", "pending"]
+    status: Literal["in_progress", "completed", "queued"]
 
 
 __all__ = (
-    "WebhookWorkflowJobInProgressPropWorkflowJobAllof0PropStepsItemsType",
-    "WebhookWorkflowJobInProgressPropWorkflowJobAllof0Type",
+    "WebhookWorkflowJobCompletedPropWorkflowJobAllof0PropStepsItemsType",
+    "WebhookWorkflowJobCompletedPropWorkflowJobAllof0Type",
 )

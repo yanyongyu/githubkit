@@ -13,16 +13,16 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0036 import OrganizationSimple
+from .group_0030 import ActionsHostedRunnerMachineSpec
 
 
-class EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200(GitHubModel):
-    """EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200"""
+class EnterprisesEnterpriseActionsHostedRunnersMachineSizesGetResponse200(GitHubModel):
+    """EnterprisesEnterpriseActionsHostedRunnersMachineSizesGetResponse200"""
 
-    total_count: float = Field()
-    organizations: list[OrganizationSimple] = Field()
+    total_count: int = Field()
+    machine_specs: list[ActionsHostedRunnerMachineSpec] = Field()
 
 
-model_rebuild(EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200)
+model_rebuild(EnterprisesEnterpriseActionsHostedRunnersMachineSizesGetResponse200)
 
-__all__ = ("EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200",)
+__all__ = ("EnterprisesEnterpriseActionsHostedRunnersMachineSizesGetResponse200",)

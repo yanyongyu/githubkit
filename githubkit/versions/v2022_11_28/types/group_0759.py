@@ -9,24 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0122 import RepositoryRulesetConditionsType
-from .group_0760 import (
-    WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsType,
-)
+from .group_0003 import SimpleUserType
+from .group_0169 import RepositoryRulesetType
+from .group_0419 import EnterpriseWebhooksType
+from .group_0420 import SimpleInstallationType
+from .group_0421 import OrganizationSimpleWebhooksType
+from .group_0422 import RepositoryWebhooksType
 
 
-class WebhookRepositoryRulesetEditedPropChangesPropConditionsType(TypedDict):
-    """WebhookRepositoryRulesetEditedPropChangesPropConditions"""
+class WebhookRepositoryRulesetDeletedType(TypedDict):
+    """repository ruleset deleted event"""
 
-    added: NotRequired[list[RepositoryRulesetConditionsType]]
-    deleted: NotRequired[list[RepositoryRulesetConditionsType]]
-    updated: NotRequired[
-        list[
-            WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsType
-        ]
-    ]
+    action: Literal["deleted"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: NotRequired[RepositoryWebhooksType]
+    repository_ruleset: RepositoryRulesetType
+    sender: SimpleUserType
 
 
-__all__ = ("WebhookRepositoryRulesetEditedPropChangesPropConditionsType",)
+__all__ = ("WebhookRepositoryRulesetDeletedType",)

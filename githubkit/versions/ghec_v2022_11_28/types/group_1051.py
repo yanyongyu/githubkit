@@ -12,10 +12,10 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class OrgsOrgTeamsTeamSlugExternalGroupsPatchBodyType(TypedDict):
-    """OrgsOrgTeamsTeamSlugExternalGroupsPatchBody"""
+class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBodyType(TypedDict):
+    """OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBody"""
 
-    group_id: int
+    body: str
 
 
-__all__ = ("OrgsOrgTeamsTeamSlugExternalGroupsPatchBodyType",)
+__all__ = ("OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBodyType",)

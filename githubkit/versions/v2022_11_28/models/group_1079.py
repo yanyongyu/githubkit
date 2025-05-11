@@ -18,17 +18,27 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoInvitationsInvitationIdPatchBody(GitHubModel):
-    """ReposOwnerRepoInvitationsInvitationIdPatchBody"""
+class ReposOwnerRepoImportPatchBody(GitHubModel):
+    """ReposOwnerRepoImportPatchBody"""
 
-    permissions: Missing[Literal["read", "write", "maintain", "triage", "admin"]] = (
-        Field(
-            default=UNSET,
-            description="The permissions that the associated user will have on the repository. Valid values are `read`, `write`, `maintain`, `triage`, and `admin`.",
-        )
+    vcs_username: Missing[str] = Field(
+        default=UNSET,
+        description="The username to provide to the originating repository.",
+    )
+    vcs_password: Missing[str] = Field(
+        default=UNSET,
+        description="The password to provide to the originating repository.",
+    )
+    vcs: Missing[Literal["subversion", "tfvc", "git", "mercurial"]] = Field(
+        default=UNSET,
+        description="The type of version control system you are migrating from.",
+    )
+    tfvc_project: Missing[str] = Field(
+        default=UNSET,
+        description="For a tfvc import, the name of the project that is being imported.",
     )
 
 
-model_rebuild(ReposOwnerRepoInvitationsInvitationIdPatchBody)
+model_rebuild(ReposOwnerRepoImportPatchBody)
 
-__all__ = ("ReposOwnerRepoInvitationsInvitationIdPatchBody",)
+__all__ = ("ReposOwnerRepoImportPatchBody",)

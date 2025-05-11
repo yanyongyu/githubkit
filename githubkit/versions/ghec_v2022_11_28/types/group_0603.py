@@ -9,28 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
 from .group_0018 import InstallationType
-from .group_0473 import EnterpriseWebhooksType
-from .group_0475 import OrganizationSimpleWebhooksType
-from .group_0476 import RepositoryWebhooksType
-from .group_0491 import WebhooksRepositoriesItemsType
+from .group_0474 import EnterpriseWebhooksType
+from .group_0476 import OrganizationSimpleWebhooksType
+from .group_0477 import RepositoryWebhooksType
+from .group_0487 import WebhooksUserType
+from .group_0492 import WebhooksRepositoriesItemsType
 
 
-class WebhookInstallationDeletedType(TypedDict):
-    """installation deleted event"""
+class WebhookInstallationCreatedType(TypedDict):
+    """installation created event"""
 
-    action: Literal["deleted"]
+    action: Literal["created"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: InstallationType
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repositories: NotRequired[list[WebhooksRepositoriesItemsType]]
     repository: NotRequired[RepositoryWebhooksType]
-    requester: NotRequired[None]
+    requester: NotRequired[Union[WebhooksUserType, None]]
     sender: SimpleUserType
 
 
-__all__ = ("WebhookInstallationDeletedType",)
+__all__ = ("WebhookInstallationCreatedType",)

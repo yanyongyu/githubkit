@@ -13,25 +13,24 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0418 import EnterpriseWebhooksType
-from .group_0419 import SimpleInstallationType
-from .group_0420 import OrganizationSimpleWebhooksType
-from .group_0421 import RepositoryWebhooksType
-from .group_0549 import WebhookIssueCommentCreatedPropCommentType
-from .group_0550 import WebhookIssueCommentCreatedPropIssueType
+from .group_0018 import InstallationType
+from .group_0419 import EnterpriseWebhooksType
+from .group_0421 import OrganizationSimpleWebhooksType
+from .group_0422 import RepositoryWebhooksType
+from .group_0435 import WebhooksRepositoriesItemsType
 
 
-class WebhookIssueCommentCreatedType(TypedDict):
-    """issue_comment created event"""
+class WebhookInstallationUnsuspendType(TypedDict):
+    """installation unsuspend event"""
 
-    action: Literal["created"]
-    comment: WebhookIssueCommentCreatedPropCommentType
+    action: Literal["unsuspend"]
     enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    issue: WebhookIssueCommentCreatedPropIssueType
+    installation: InstallationType
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
+    repositories: NotRequired[list[WebhooksRepositoriesItemsType]]
+    repository: NotRequired[RepositoryWebhooksType]
+    requester: NotRequired[None]
     sender: SimpleUserType
 
 
-__all__ = ("WebhookIssueCommentCreatedType",)
+__all__ = ("WebhookInstallationUnsuspendType",)

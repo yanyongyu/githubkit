@@ -13,17 +13,17 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0418 import EnterpriseWebhooksType
-from .group_0419 import SimpleInstallationType
-from .group_0420 import OrganizationSimpleWebhooksType
-from .group_0421 import RepositoryWebhooksType
-from .group_0450 import WebhooksProjectType
+from .group_0419 import EnterpriseWebhooksType
+from .group_0420 import SimpleInstallationType
+from .group_0421 import OrganizationSimpleWebhooksType
+from .group_0422 import RepositoryWebhooksType
+from .group_0451 import WebhooksProjectType
 
 
-class WebhookProjectReopenedType(TypedDict):
-    """project reopened event"""
+class WebhookProjectCreatedType(TypedDict):
+    """project created event"""
 
-    action: Literal["reopened"]
+    action: Literal["created"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
@@ -32,4 +32,4 @@ class WebhookProjectReopenedType(TypedDict):
     sender: SimpleUserType
 
 
-__all__ = ("WebhookProjectReopenedType",)
+__all__ = ("WebhookProjectCreatedType",)

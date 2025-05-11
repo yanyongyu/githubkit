@@ -9,24 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchBody(GitHubModel):
-    """ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchBody"""
+class ReposOwnerRepoDependencyGraphSnapshotsPostResponse201(GitHubModel):
+    """ReposOwnerRepoDependencyGraphSnapshotsPostResponse201"""
 
-    status: Literal["approve", "deny"] = Field(
-        description="The review action to perform on the dismissal request."
+    id: int = Field(description="ID of the created snapshot.")
+    created_at: str = Field(description="The time at which the snapshot was created.")
+    result: str = Field(
+        description='Either "SUCCESS", "ACCEPTED", or "INVALID". "SUCCESS" indicates that the snapshot was successfully created and the repository\'s dependencies were updated. "ACCEPTED" indicates that the snapshot was successfully created, but the repository\'s dependencies were not updated. "INVALID" indicates that the snapshot was malformed.'
     )
     message: str = Field(
-        description="A message to include with the review. Has a maximum character length of 2048."
+        description="A message providing further details about the result, such as why the dependencies were not updated."
     )
 
 
-model_rebuild(ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchBody)
+model_rebuild(ReposOwnerRepoDependencyGraphSnapshotsPostResponse201)
 
-__all__ = ("ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchBody",)
+__all__ = ("ReposOwnerRepoDependencyGraphSnapshotsPostResponse201",)

@@ -13,11 +13,10 @@ from typing import Literal
 from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyType(TypedDict):
-    """ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody"""
+class ReposOwnerRepoReleasesReleaseIdReactionsPostBodyType(TypedDict):
+    """ReposOwnerRepoReleasesReleaseIdReactionsPostBody"""
 
-    reason: Literal["false_positive", "used_in_tests", "will_fix_later"]
-    placeholder_id: str
+    content: Literal["+1", "laugh", "heart", "hooray", "rocket", "eyes"]
 
 
-__all__ = ("ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyType",)
+__all__ = ("ReposOwnerRepoReleasesReleaseIdReactionsPostBodyType",)

@@ -9,27 +9,117 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0473 import EnterpriseWebhooksType
-from .group_0474 import SimpleInstallationType
-from .group_0475 import OrganizationSimpleWebhooksType
-from .group_0476 import RepositoryWebhooksType
-from .group_0520 import WebhooksAlertType
+from .group_0095 import (
+    RepositoryRuleCreationType,
+    RepositoryRuleDeletionType,
+    RepositoryRuleNonFastForwardType,
+    RepositoryRuleRequiredSignaturesType,
+)
+from .group_0096 import RepositoryRuleUpdateType
+from .group_0098 import RepositoryRuleRequiredLinearHistoryType
+from .group_0099 import RepositoryRuleMergeQueueType
+from .group_0101 import RepositoryRuleRequiredDeploymentsType
+from .group_0104 import RepositoryRulePullRequestType
+from .group_0106 import RepositoryRuleRequiredStatusChecksType
+from .group_0108 import RepositoryRuleCommitMessagePatternType
+from .group_0110 import RepositoryRuleCommitAuthorEmailPatternType
+from .group_0112 import RepositoryRuleCommitterEmailPatternType
+from .group_0114 import RepositoryRuleBranchNamePatternType
+from .group_0116 import RepositoryRuleTagNamePatternType
+from .group_0118 import RepositoryRuleFilePathRestrictionType
+from .group_0120 import RepositoryRuleMaxFilePathLengthType
+from .group_0122 import RepositoryRuleFileExtensionRestrictionType
+from .group_0124 import RepositoryRuleMaxFileSizeType
+from .group_0127 import RepositoryRuleWorkflowsType
+from .group_0129 import RepositoryRuleCodeScanningType
 
 
-class WebhookRepositoryVulnerabilityAlertCreateType(TypedDict):
-    """repository_vulnerability_alert create event"""
+class WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsType(TypedDict):
+    """WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItems"""
 
-    action: Literal["create"]
-    alert: WebhooksAlertType
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
+    rule: NotRequired[
+        Union[
+            RepositoryRuleCreationType,
+            RepositoryRuleUpdateType,
+            RepositoryRuleDeletionType,
+            RepositoryRuleRequiredLinearHistoryType,
+            RepositoryRuleMergeQueueType,
+            RepositoryRuleRequiredDeploymentsType,
+            RepositoryRuleRequiredSignaturesType,
+            RepositoryRulePullRequestType,
+            RepositoryRuleRequiredStatusChecksType,
+            RepositoryRuleNonFastForwardType,
+            RepositoryRuleCommitMessagePatternType,
+            RepositoryRuleCommitAuthorEmailPatternType,
+            RepositoryRuleCommitterEmailPatternType,
+            RepositoryRuleBranchNamePatternType,
+            RepositoryRuleTagNamePatternType,
+            RepositoryRuleFilePathRestrictionType,
+            RepositoryRuleMaxFilePathLengthType,
+            RepositoryRuleFileExtensionRestrictionType,
+            RepositoryRuleMaxFileSizeType,
+            RepositoryRuleWorkflowsType,
+            RepositoryRuleCodeScanningType,
+        ]
+    ]
+    changes: NotRequired[
+        WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesType
+    ]
 
 
-__all__ = ("WebhookRepositoryVulnerabilityAlertCreateType",)
+class WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesType(
+    TypedDict
+):
+    """WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChanges"""
+
+    configuration: NotRequired[
+        WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropConfigurationType
+    ]
+    rule_type: NotRequired[
+        WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropRuleTypeType
+    ]
+    pattern: NotRequired[
+        WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropPatternType
+    ]
+
+
+class WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropConfigurationType(
+    TypedDict
+):
+    """WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPro
+    pConfiguration
+    """
+
+    from_: NotRequired[str]
+
+
+class WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropRuleTypeType(
+    TypedDict
+):
+    """WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPro
+    pRuleType
+    """
+
+    from_: NotRequired[str]
+
+
+class WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropPatternType(
+    TypedDict
+):
+    """WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPro
+    pPattern
+    """
+
+    from_: NotRequired[str]
+
+
+__all__ = (
+    "WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropConfigurationType",
+    "WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropPatternType",
+    "WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropRuleTypeType",
+    "WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesType",
+    "WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsType",
+)

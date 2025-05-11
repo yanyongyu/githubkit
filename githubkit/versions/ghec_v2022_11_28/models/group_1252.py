@@ -9,90 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0080 import RepositoryRulesetBypassActor
-from .group_0085 import RepositoryRulesetConditions
-from .group_0095 import (
-    RepositoryRuleCreation,
-    RepositoryRuleDeletion,
-    RepositoryRuleNonFastForward,
-    RepositoryRuleRequiredSignatures,
-)
-from .group_0096 import RepositoryRuleUpdate
-from .group_0098 import RepositoryRuleRequiredLinearHistory
-from .group_0099 import RepositoryRuleMergeQueue
-from .group_0101 import RepositoryRuleRequiredDeployments
-from .group_0104 import RepositoryRulePullRequest
-from .group_0106 import RepositoryRuleRequiredStatusChecks
-from .group_0108 import RepositoryRuleCommitMessagePattern
-from .group_0110 import RepositoryRuleCommitAuthorEmailPattern
-from .group_0112 import RepositoryRuleCommitterEmailPattern
-from .group_0114 import RepositoryRuleBranchNamePattern
-from .group_0116 import RepositoryRuleTagNamePattern
-from .group_0118 import RepositoryRuleFilePathRestriction
-from .group_0120 import RepositoryRuleMaxFilePathLength
-from .group_0122 import RepositoryRuleFileExtensionRestriction
-from .group_0124 import RepositoryRuleMaxFileSize
-from .group_0127 import RepositoryRuleWorkflows
-from .group_0129 import RepositoryRuleCodeScanning
 
+class ReposOwnerRepoReleasesGenerateNotesPostBody(GitHubModel):
+    """ReposOwnerRepoReleasesGenerateNotesPostBody"""
 
-class ReposOwnerRepoRulesetsRulesetIdPutBody(GitHubModel):
-    """ReposOwnerRepoRulesetsRulesetIdPutBody"""
-
-    name: Missing[str] = Field(default=UNSET, description="The name of the ruleset.")
-    target: Missing[Literal["branch", "tag", "push"]] = Field(
-        default=UNSET, description="The target of the ruleset"
+    tag_name: str = Field(
+        description="The tag name for the release. This can be an existing tag or a new one."
     )
-    enforcement: Missing[Literal["disabled", "active", "evaluate"]] = Field(
+    target_commitish: Missing[str] = Field(
         default=UNSET,
-        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page. `evaluate` is not available for the `repository` target.",
+        description="Specifies the commitish value that will be the target for the release's tag. Required if the supplied tag_name does not reference an existing tag. Ignored if the tag_name already exists.",
     )
-    bypass_actors: Missing[list[RepositoryRulesetBypassActor]] = Field(
+    previous_tag_name: Missing[str] = Field(
         default=UNSET,
-        description="The actors that can bypass the rules in this ruleset",
+        description="The name of the previous tag to use as the starting point for the release notes. Use to manually specify the range for the set of changes considered as part this release.",
     )
-    conditions: Missing[RepositoryRulesetConditions] = Field(
+    configuration_file_path: Missing[str] = Field(
         default=UNSET,
-        title="Repository ruleset conditions for ref names",
-        description="Parameters for a repository ruleset ref name condition",
+        description="Specifies a path to a file in the repository containing configuration settings used for generating the release notes. If unspecified, the configuration file located in the repository at '.github/release.yml' or '.github/release.yaml' will be used. If that is not present, the default configuration will be used.",
     )
-    rules: Missing[
-        list[
-            Union[
-                RepositoryRuleCreation,
-                RepositoryRuleUpdate,
-                RepositoryRuleDeletion,
-                RepositoryRuleRequiredLinearHistory,
-                RepositoryRuleMergeQueue,
-                RepositoryRuleRequiredDeployments,
-                RepositoryRuleRequiredSignatures,
-                RepositoryRulePullRequest,
-                RepositoryRuleRequiredStatusChecks,
-                RepositoryRuleNonFastForward,
-                RepositoryRuleCommitMessagePattern,
-                RepositoryRuleCommitAuthorEmailPattern,
-                RepositoryRuleCommitterEmailPattern,
-                RepositoryRuleBranchNamePattern,
-                RepositoryRuleTagNamePattern,
-                RepositoryRuleFilePathRestriction,
-                RepositoryRuleMaxFilePathLength,
-                RepositoryRuleFileExtensionRestriction,
-                RepositoryRuleMaxFileSize,
-                RepositoryRuleWorkflows,
-                RepositoryRuleCodeScanning,
-            ]
-        ]
-    ] = Field(default=UNSET, description="An array of rules within the ruleset.")
 
 
-model_rebuild(ReposOwnerRepoRulesetsRulesetIdPutBody)
+model_rebuild(ReposOwnerRepoReleasesGenerateNotesPostBody)
 
-__all__ = ("ReposOwnerRepoRulesetsRulesetIdPutBody",)
+__all__ = ("ReposOwnerRepoReleasesGenerateNotesPostBody",)

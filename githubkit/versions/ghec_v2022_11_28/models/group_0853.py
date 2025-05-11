@@ -18,16 +18,23 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0473 import EnterpriseWebhooks
-from .group_0474 import SimpleInstallation
-from .group_0475 import OrganizationSimpleWebhooks
-from .group_0476 import RepositoryWebhooks
+from .group_0474 import EnterpriseWebhooks
+from .group_0475 import SimpleInstallation
+from .group_0476 import OrganizationSimpleWebhooks
+from .group_0477 import RepositoryWebhooks
+from .group_0524 import WebhooksSponsorship
+from .group_0525 import WebhooksChanges8
 
 
-class WebhookStarDeleted(GitHubModel):
-    """star deleted event"""
+class WebhookSponsorshipPendingTierChange(GitHubModel):
+    """sponsorship pending_tier_change event"""
 
-    action: Literal["deleted"] = Field()
+    action: Literal["pending_tier_change"] = Field()
+    changes: WebhooksChanges8 = Field()
+    effective_date: Missing[str] = Field(
+        default=UNSET,
+        description="The `pending_cancellation` and `pending_tier_change` event types will include the date the cancellation or tier change will take effect.",
+    )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -43,16 +50,15 @@ class WebhookStarDeleted(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repository: RepositoryWebhooks = Field(
+    repository: Missing[RepositoryWebhooks] = Field(
+        default=UNSET,
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    starred_at: None = Field(
-        description="The time the star was created. This is a timestamp in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`. Will be `null` for the `deleted` action."
-    )
+    sponsorship: WebhooksSponsorship = Field()
 
 
-model_rebuild(WebhookStarDeleted)
+model_rebuild(WebhookSponsorshipPendingTierChange)
 
-__all__ = ("WebhookStarDeleted",)
+__all__ = ("WebhookSponsorshipPendingTierChange",)

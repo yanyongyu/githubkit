@@ -9,32 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoHooksPostBodyType(TypedDict):
-    """ReposOwnerRepoHooksPostBody"""
+class ReposOwnerRepoGitRefsPostBodyType(TypedDict):
+    """ReposOwnerRepoGitRefsPostBody"""
 
-    name: NotRequired[str]
-    config: NotRequired[ReposOwnerRepoHooksPostBodyPropConfigType]
-    events: NotRequired[list[str]]
-    active: NotRequired[bool]
+    ref: str
+    sha: str
 
 
-class ReposOwnerRepoHooksPostBodyPropConfigType(TypedDict):
-    """ReposOwnerRepoHooksPostBodyPropConfig
-
-    Key/value pairs to provide settings for this webhook.
-    """
-
-    url: NotRequired[str]
-    content_type: NotRequired[str]
-    secret: NotRequired[str]
-    insecure_ssl: NotRequired[Union[str, float]]
-
-
-__all__ = (
-    "ReposOwnerRepoHooksPostBodyPropConfigType",
-    "ReposOwnerRepoHooksPostBodyType",
-)
+__all__ = ("ReposOwnerRepoGitRefsPostBodyType",)

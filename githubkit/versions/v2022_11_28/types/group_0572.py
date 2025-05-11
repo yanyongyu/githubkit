@@ -10,35 +10,35 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal, Union
+from typing_extensions import TypedDict
 
-from .group_0567 import (
-    WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType,
-    WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType,
+from .group_0566 import (
+    WebhookIssueCommentDeletedPropIssueAllof0PropMilestonePropCreatorType,
 )
 
 
-class WebhookIssueCommentDeletedPropIssueMergedPerformedViaGithubAppType(TypedDict):
-    """WebhookIssueCommentDeletedPropIssueMergedPerformedViaGithubApp"""
+class WebhookIssueCommentDeletedPropIssueMergedMilestoneType(TypedDict):
+    """WebhookIssueCommentDeletedPropIssueMergedMilestone"""
 
-    created_at: Union[datetime, None]
+    closed_at: Union[datetime, None]
+    closed_issues: int
+    created_at: datetime
+    creator: Union[
+        WebhookIssueCommentDeletedPropIssueAllof0PropMilestonePropCreatorType, None
+    ]
     description: Union[str, None]
-    events: NotRequired[list[str]]
-    external_url: Union[str, None]
+    due_on: Union[datetime, None]
     html_url: str
-    id: Union[int, None]
-    name: str
+    id: int
+    labels_url: str
     node_id: str
-    owner: Union[
-        WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType,
-        None,
-    ]
-    permissions: NotRequired[
-        WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType
-    ]
-    slug: NotRequired[str]
-    updated_at: Union[datetime, None]
+    number: int
+    open_issues: int
+    state: Literal["open", "closed"]
+    title: str
+    updated_at: datetime
+    url: str
 
 
-__all__ = ("WebhookIssueCommentDeletedPropIssueMergedPerformedViaGithubAppType",)
+__all__ = ("WebhookIssueCommentDeletedPropIssueMergedMilestoneType",)

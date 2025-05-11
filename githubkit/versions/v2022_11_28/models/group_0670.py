@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,18 +18,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0418 import EnterpriseWebhooks
-from .group_0419 import SimpleInstallation
-from .group_0420 import OrganizationSimpleWebhooks
-from .group_0421 import RepositoryWebhooks
-from .group_0449 import WebhooksProjectCard
+from .group_0419 import EnterpriseWebhooks
+from .group_0420 import SimpleInstallation
+from .group_0421 import OrganizationSimpleWebhooks
+from .group_0422 import RepositoryWebhooks
+from .group_0450 import WebhooksProjectCard
 
 
-class WebhookProjectCardEdited(GitHubModel):
-    """project_card edited event"""
+class WebhookProjectCardConverted(GitHubModel):
+    """project_card converted event"""
 
-    action: Literal["edited"] = Field()
-    changes: WebhookProjectCardEditedPropChanges = Field()
+    action: Literal["converted"] = Field()
+    changes: WebhookProjectCardConvertedPropChanges = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -54,24 +54,24 @@ class WebhookProjectCardEdited(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-class WebhookProjectCardEditedPropChanges(GitHubModel):
-    """WebhookProjectCardEditedPropChanges"""
+class WebhookProjectCardConvertedPropChanges(GitHubModel):
+    """WebhookProjectCardConvertedPropChanges"""
 
-    note: WebhookProjectCardEditedPropChangesPropNote = Field()
-
-
-class WebhookProjectCardEditedPropChangesPropNote(GitHubModel):
-    """WebhookProjectCardEditedPropChangesPropNote"""
-
-    from_: Union[str, None] = Field(alias="from")
+    note: WebhookProjectCardConvertedPropChangesPropNote = Field()
 
 
-model_rebuild(WebhookProjectCardEdited)
-model_rebuild(WebhookProjectCardEditedPropChanges)
-model_rebuild(WebhookProjectCardEditedPropChangesPropNote)
+class WebhookProjectCardConvertedPropChangesPropNote(GitHubModel):
+    """WebhookProjectCardConvertedPropChangesPropNote"""
+
+    from_: str = Field(alias="from")
+
+
+model_rebuild(WebhookProjectCardConverted)
+model_rebuild(WebhookProjectCardConvertedPropChanges)
+model_rebuild(WebhookProjectCardConvertedPropChangesPropNote)
 
 __all__ = (
-    "WebhookProjectCardEdited",
-    "WebhookProjectCardEditedPropChanges",
-    "WebhookProjectCardEditedPropChangesPropNote",
+    "WebhookProjectCardConverted",
+    "WebhookProjectCardConvertedPropChanges",
+    "WebhookProjectCardConvertedPropChangesPropNote",
 )

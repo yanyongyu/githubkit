@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Literal, Union
 
 from pydantic import Field
@@ -19,20 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0473 import EnterpriseWebhooks
-from .group_0474 import SimpleInstallation
-from .group_0475 import OrganizationSimpleWebhooks
-from .group_0476 import RepositoryWebhooks
+from .group_0474 import EnterpriseWebhooks
+from .group_0475 import SimpleInstallation
+from .group_0476 import OrganizationSimpleWebhooks
+from .group_0477 import RepositoryWebhooks
 
 
-class WebhookRepositoryVulnerabilityAlertDismiss(GitHubModel):
-    """repository_vulnerability_alert dismiss event"""
+class WebhookRepositoryTransferred(GitHubModel):
+    """repository transferred event"""
 
-    action: Literal["dismiss"] = Field()
-    alert: WebhookRepositoryVulnerabilityAlertDismissPropAlert = Field(
-        title="Repository Vulnerability Alert Alert",
-        description="The security alert of the vulnerable dependency.",
-    )
+    action: Literal["transferred"] = Field()
+    changes: WebhookRepositoryTransferredPropChanges = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -55,35 +51,52 @@ class WebhookRepositoryVulnerabilityAlertDismiss(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-class WebhookRepositoryVulnerabilityAlertDismissPropAlert(GitHubModel):
-    """Repository Vulnerability Alert Alert
+class WebhookRepositoryTransferredPropChanges(GitHubModel):
+    """WebhookRepositoryTransferredPropChanges"""
 
-    The security alert of the vulnerable dependency.
-    """
+    owner: WebhookRepositoryTransferredPropChangesPropOwner = Field()
 
-    affected_package_name: str = Field()
-    affected_range: str = Field()
-    created_at: str = Field()
-    dismiss_comment: Missing[Union[str, None]] = Field(default=UNSET)
-    dismiss_reason: str = Field()
-    dismissed_at: str = Field()
-    dismisser: Union[
-        WebhookRepositoryVulnerabilityAlertDismissPropAlertPropDismisser, None
-    ] = Field(title="User")
-    external_identifier: str = Field()
-    external_reference: Union[str, None] = Field()
-    fix_reason: Missing[str] = Field(default=UNSET)
-    fixed_at: Missing[datetime] = Field(default=UNSET)
-    fixed_in: Missing[str] = Field(default=UNSET)
-    ghsa_id: str = Field()
+
+class WebhookRepositoryTransferredPropChangesPropOwner(GitHubModel):
+    """WebhookRepositoryTransferredPropChangesPropOwner"""
+
+    from_: WebhookRepositoryTransferredPropChangesPropOwnerPropFrom = Field(
+        alias="from"
+    )
+
+
+class WebhookRepositoryTransferredPropChangesPropOwnerPropFrom(GitHubModel):
+    """WebhookRepositoryTransferredPropChangesPropOwnerPropFrom"""
+
+    organization: Missing[
+        WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropOrganization
+    ] = Field(default=UNSET, title="Organization")
+    user: Missing[
+        Union[WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropUser, None]
+    ] = Field(default=UNSET, title="User")
+
+
+class WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropOrganization(
+    GitHubModel
+):
+    """Organization"""
+
+    avatar_url: str = Field()
+    description: Union[str, None] = Field()
+    events_url: str = Field()
+    hooks_url: str = Field()
+    html_url: Missing[str] = Field(default=UNSET)
     id: int = Field()
+    issues_url: str = Field()
+    login: str = Field()
+    members_url: str = Field()
     node_id: str = Field()
-    number: int = Field()
-    severity: str = Field()
-    state: Literal["dismissed"] = Field()
+    public_members_url: str = Field()
+    repos_url: str = Field()
+    url: str = Field()
 
 
-class WebhookRepositoryVulnerabilityAlertDismissPropAlertPropDismisser(GitHubModel):
+class WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropUser(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -110,12 +123,18 @@ class WebhookRepositoryVulnerabilityAlertDismissPropAlertPropDismisser(GitHubMod
     user_view_type: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhookRepositoryVulnerabilityAlertDismiss)
-model_rebuild(WebhookRepositoryVulnerabilityAlertDismissPropAlert)
-model_rebuild(WebhookRepositoryVulnerabilityAlertDismissPropAlertPropDismisser)
+model_rebuild(WebhookRepositoryTransferred)
+model_rebuild(WebhookRepositoryTransferredPropChanges)
+model_rebuild(WebhookRepositoryTransferredPropChangesPropOwner)
+model_rebuild(WebhookRepositoryTransferredPropChangesPropOwnerPropFrom)
+model_rebuild(WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropOrganization)
+model_rebuild(WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropUser)
 
 __all__ = (
-    "WebhookRepositoryVulnerabilityAlertDismiss",
-    "WebhookRepositoryVulnerabilityAlertDismissPropAlert",
-    "WebhookRepositoryVulnerabilityAlertDismissPropAlertPropDismisser",
+    "WebhookRepositoryTransferred",
+    "WebhookRepositoryTransferredPropChanges",
+    "WebhookRepositoryTransferredPropChangesPropOwner",
+    "WebhookRepositoryTransferredPropChangesPropOwnerPropFrom",
+    "WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropOrganization",
+    "WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropUser",
 )

@@ -12,17 +12,17 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoPullsPostBodyType(TypedDict):
-    """ReposOwnerRepoPullsPostBody"""
+class ReposOwnerRepoPagesDeploymentsPostBodyType(TypedDict):
+    """ReposOwnerRepoPagesDeploymentsPostBody
 
-    title: NotRequired[str]
-    head: str
-    head_repo: NotRequired[str]
-    base: str
-    body: NotRequired[str]
-    maintainer_can_modify: NotRequired[bool]
-    draft: NotRequired[bool]
-    issue: NotRequired[int]
+    The object used to create GitHub Pages deployment
+    """
+
+    artifact_id: NotRequired[float]
+    artifact_url: NotRequired[str]
+    environment: NotRequired[str]
+    pages_build_version: str
+    oidc_token: str
 
 
-__all__ = ("ReposOwnerRepoPullsPostBodyType",)
+__all__ = ("ReposOwnerRepoPagesDeploymentsPostBodyType",)

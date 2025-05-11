@@ -9,35 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0473 import EnterpriseWebhooksType
-from .group_0474 import SimpleInstallationType
-from .group_0475 import OrganizationSimpleWebhooksType
-from .group_0476 import RepositoryWebhooksType
+from .group_0474 import EnterpriseWebhooksType
+from .group_0475 import SimpleInstallationType
+from .group_0476 import OrganizationSimpleWebhooksType
+from .group_0477 import RepositoryWebhooksType
+from .group_0522 import SecretScanningAlertWebhookType
 
 
-class WebhookSecretScanningScanCompletedType(TypedDict):
-    """secret_scanning_scan completed event"""
+class WebhookSecretScanningAlertReopenedType(TypedDict):
+    """secret_scanning_alert reopened event"""
 
-    action: Literal["completed"]
-    type: Literal["backfill", "custom-pattern-backfill", "pattern-version-backfill"]
-    source: Literal["git", "issues", "pull-requests", "discussions", "wiki"]
-    started_at: datetime
-    completed_at: datetime
-    secret_types: NotRequired[Union[list[str], None]]
-    custom_pattern_name: NotRequired[Union[str, None]]
-    custom_pattern_scope: NotRequired[
-        Union[None, Literal["repository", "organization", "enterprise"]]
-    ]
-    repository: NotRequired[RepositoryWebhooksType]
+    action: Literal["reopened"]
+    alert: SecretScanningAlertWebhookType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
     sender: NotRequired[SimpleUserType]
 
 
-__all__ = ("WebhookSecretScanningScanCompletedType",)
+__all__ = ("WebhookSecretScanningAlertReopenedType",)

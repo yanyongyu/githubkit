@@ -171,6 +171,12 @@ if TYPE_CHECKING:
     from githubkit.versions.v2022_11_28.types import (
         BillingUsageReportType as BillingUsageReportType,
     )
+    from githubkit.versions.v2022_11_28.types import (
+        BillingUsageReportUserPropUsageItemsItemsType as BillingUsageReportUserPropUsageItemsItemsType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        BillingUsageReportUserType as BillingUsageReportUserType,
+    )
     from githubkit.versions.v2022_11_28.types import BlobType as BlobType
     from githubkit.versions.v2022_11_28.types import (
         BranchProtectionPropAllowDeletionsType as BranchProtectionPropAllowDeletionsType,
@@ -591,6 +597,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.types import (
         CopilotUsageMetricsDayType as CopilotUsageMetricsDayType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        CredentialsRevokePostBodyType as CredentialsRevokePostBodyType,
     )
     from githubkit.versions.v2022_11_28.types import (
         CustomDeploymentRuleAppType as CustomDeploymentRuleAppType,
@@ -10655,6 +10664,8 @@ else:
             "HovercardType",
             "HovercardPropContextsItemsType",
             "KeySimpleType",
+            "BillingUsageReportUserType",
+            "BillingUsageReportUserPropUsageItemsItemsType",
             "EnterpriseWebhooksType",
             "SimpleInstallationType",
             "OrganizationSimpleWebhooksType",
@@ -11334,6 +11345,11 @@ else:
             "WebhookIssuesMilestonedPropIssuePropUserType",
             "WebhookIssuesOpenedType",
             "WebhookIssuesOpenedPropChangesType",
+            "WebhookIssuesOpenedPropChangesPropOldRepositoryType",
+            "WebhookIssuesOpenedPropChangesPropOldRepositoryPropCustomPropertiesType",
+            "WebhookIssuesOpenedPropChangesPropOldRepositoryPropLicenseType",
+            "WebhookIssuesOpenedPropChangesPropOldRepositoryPropOwnerType",
+            "WebhookIssuesOpenedPropChangesPropOldRepositoryPropPermissionsType",
             "WebhookIssuesOpenedPropChangesPropOldIssueType",
             "WebhookIssuesOpenedPropChangesPropOldIssuePropAssigneeType",
             "WebhookIssuesOpenedPropChangesPropOldIssuePropAssigneesItemsType",
@@ -11347,11 +11363,6 @@ else:
             "WebhookIssuesOpenedPropChangesPropOldIssuePropReactionsType",
             "WebhookIssuesOpenedPropChangesPropOldIssuePropSubIssuesSummaryType",
             "WebhookIssuesOpenedPropChangesPropOldIssuePropUserType",
-            "WebhookIssuesOpenedPropChangesPropOldRepositoryType",
-            "WebhookIssuesOpenedPropChangesPropOldRepositoryPropCustomPropertiesType",
-            "WebhookIssuesOpenedPropChangesPropOldRepositoryPropLicenseType",
-            "WebhookIssuesOpenedPropChangesPropOldRepositoryPropOwnerType",
-            "WebhookIssuesOpenedPropChangesPropOldRepositoryPropPermissionsType",
             "WebhookIssuesOpenedPropIssueType",
             "WebhookIssuesOpenedPropIssuePropAssigneeType",
             "WebhookIssuesOpenedPropIssuePropAssigneesItemsType",
@@ -12818,6 +12829,7 @@ else:
             "ApplicationsClientIdTokenDeleteBodyType",
             "ApplicationsClientIdTokenPatchBodyType",
             "ApplicationsClientIdTokenScopedPostBodyType",
+            "CredentialsRevokePostBodyType",
             "EmojisGetResponse200Type",
             "EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyType",
             "EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptionsType",

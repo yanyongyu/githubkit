@@ -14,23 +14,23 @@ from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
 from .group_0018 import InstallationType
-from .group_0473 import EnterpriseWebhooksType
-from .group_0475 import OrganizationSimpleWebhooksType
-from .group_0476 import RepositoryWebhooksType
-from .group_0486 import WebhooksUserType
-from .group_0492 import WebhooksRepositoriesAddedItemsType
+from .group_0474 import EnterpriseWebhooksType
+from .group_0476 import OrganizationSimpleWebhooksType
+from .group_0477 import RepositoryWebhooksType
+from .group_0487 import WebhooksUserType
+from .group_0493 import WebhooksRepositoriesAddedItemsType
 
 
-class WebhookInstallationRepositoriesRemovedType(TypedDict):
-    """installation_repositories removed event"""
+class WebhookInstallationRepositoriesAddedType(TypedDict):
+    """installation_repositories added event"""
 
-    action: Literal["removed"]
+    action: Literal["added"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: InstallationType
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repositories_added: list[WebhooksRepositoriesAddedItemsType]
     repositories_removed: list[
-        WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItemsType
+        WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItemsType
     ]
     repository: NotRequired[RepositoryWebhooksType]
     repository_selection: Literal["all", "selected"]
@@ -38,17 +38,17 @@ class WebhookInstallationRepositoriesRemovedType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItemsType(TypedDict):
-    """WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItems"""
+class WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItemsType(TypedDict):
+    """WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItems"""
 
-    full_name: str
-    id: int
-    name: str
-    node_id: str
-    private: bool
+    full_name: NotRequired[str]
+    id: NotRequired[int]
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    private: NotRequired[bool]
 
 
 __all__ = (
-    "WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItemsType",
-    "WebhookInstallationRepositoriesRemovedType",
+    "WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItemsType",
+    "WebhookInstallationRepositoriesAddedType",
 )

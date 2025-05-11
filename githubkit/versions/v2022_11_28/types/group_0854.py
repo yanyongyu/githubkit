@@ -11,14 +11,14 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0065 import ActionsHostedRunnerMachineSpecType
+from .group_0066 import ActionsHostedRunnerType
 
 
-class OrgsOrgActionsHostedRunnersMachineSizesGetResponse200Type(TypedDict):
-    """OrgsOrgActionsHostedRunnersMachineSizesGetResponse200"""
+class OrgsOrgActionsHostedRunnersGetResponse200Type(TypedDict):
+    """OrgsOrgActionsHostedRunnersGetResponse200"""
 
     total_count: int
-    machine_specs: list[ActionsHostedRunnerMachineSpecType]
+    runners: list[ActionsHostedRunnerType]
 
 
-__all__ = ("OrgsOrgActionsHostedRunnersMachineSizesGetResponse200Type",)
+__all__ = ("OrgsOrgActionsHostedRunnersGetResponse200Type",)

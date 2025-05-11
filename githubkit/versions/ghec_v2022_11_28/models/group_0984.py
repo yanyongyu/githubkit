@@ -9,66 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgCampaignsPostBody(GitHubModel):
-    """OrgsOrgCampaignsPostBody"""
+class OrgsOrgActionsVariablesNamePatchBody(GitHubModel):
+    """OrgsOrgActionsVariablesNamePatchBody"""
 
-    name: str = Field(
-        min_length=1, max_length=50, description="The name of the campaign"
-    )
-    description: str = Field(
-        min_length=1, max_length=255, description="A description for the campaign"
-    )
-    managers: Missing[list[str]] = Field(
-        max_length=10 if PYDANTIC_V2 else None,
+    name: Missing[str] = Field(default=UNSET, description="The name of the variable.")
+    value: Missing[str] = Field(default=UNSET, description="The value of the variable.")
+    visibility: Missing[Literal["all", "private", "selected"]] = Field(
         default=UNSET,
-        description="The logins of the users to set as the campaign managers. At this time, only a single manager can be supplied.",
+        description="The type of repositories in the organization that can access the variable. `selected` means only the repositories specified by `selected_repository_ids` can access the variable.",
     )
-    team_managers: Missing[list[str]] = Field(
-        max_length=10 if PYDANTIC_V2 else None,
+    selected_repository_ids: Missing[list[int]] = Field(
         default=UNSET,
-        description="The slugs of the teams to set as the campaign managers.",
-    )
-    ends_at: datetime = Field(
-        description="The end date and time of the campaign. The date must be in the future."
-    )
-    contact_link: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The contact link of the campaign. Must be a URI."
-    )
-    code_scanning_alerts: list[OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems] = (
-        Field(
-            min_length=1 if PYDANTIC_V2 else None,
-            description="The code scanning alerts to include in this campaign",
-        )
-    )
-    generate_issues: Missing[bool] = Field(
-        default=UNSET,
-        description="If true, will automatically generate issues for the campaign. The default is false.",
+        description="An array of repository ids that can access the organization variable. You can only provide a list of repository ids when the `visibility` is set to `selected`.",
     )
 
 
-class OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems(GitHubModel):
-    """OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems"""
+model_rebuild(OrgsOrgActionsVariablesNamePatchBody)
 
-    repository_id: int = Field(description="The repository id")
-    alert_numbers: list[int] = Field(
-        min_length=1 if PYDANTIC_V2 else None, description="The alert numbers"
-    )
-
-
-model_rebuild(OrgsOrgCampaignsPostBody)
-model_rebuild(OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems)
-
-__all__ = (
-    "OrgsOrgCampaignsPostBody",
-    "OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems",
-)
+__all__ = ("OrgsOrgActionsVariablesNamePatchBody",)

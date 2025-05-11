@@ -13,22 +13,26 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0418 import EnterpriseWebhooksType
-from .group_0419 import SimpleInstallationType
-from .group_0420 import OrganizationSimpleWebhooksType
-from .group_0421 import RepositoryWebhooksType
+from .group_0419 import EnterpriseWebhooksType
+from .group_0420 import SimpleInstallationType
+from .group_0421 import OrganizationSimpleWebhooksType
+from .group_0422 import RepositoryWebhooksType
+from .group_0467 import WebhooksSponsorshipType
+from .group_0468 import WebhooksChanges8Type
 
 
-class WebhookStarDeletedType(TypedDict):
-    """star deleted event"""
+class WebhookSponsorshipPendingTierChangeType(TypedDict):
+    """sponsorship pending_tier_change event"""
 
-    action: Literal["deleted"]
+    action: Literal["pending_tier_change"]
+    changes: WebhooksChanges8Type
+    effective_date: NotRequired[str]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
+    repository: NotRequired[RepositoryWebhooksType]
     sender: SimpleUserType
-    starred_at: None
+    sponsorship: WebhooksSponsorshipType
 
 
-__all__ = ("WebhookStarDeletedType",)
+__all__ = ("WebhookSponsorshipPendingTierChangeType",)

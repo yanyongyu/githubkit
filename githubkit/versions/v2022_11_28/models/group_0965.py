@@ -14,15 +14,12 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ProjectsColumnsColumnIdMovesPostBody(GitHubModel):
-    """ProjectsColumnsColumnIdMovesPostBody"""
+class ProjectsColumnsColumnIdPatchBody(GitHubModel):
+    """ProjectsColumnsColumnIdPatchBody"""
 
-    position: str = Field(
-        pattern="^(?:first|last|after:\\d+)$",
-        description="The position of the column in a project. Can be one of: `first`, `last`, or `after:<column_id>` to place after the specified column.",
-    )
+    name: str = Field(description="Name of the project column")
 
 
-model_rebuild(ProjectsColumnsColumnIdMovesPostBody)
+model_rebuild(ProjectsColumnsColumnIdPatchBody)
 
-__all__ = ("ProjectsColumnsColumnIdMovesPostBody",)
+__all__ = ("ProjectsColumnsColumnIdPatchBody",)

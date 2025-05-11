@@ -15,27 +15,32 @@ from typing import Union
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0003 import SimpleUser
 
 
-class WebhooksProjectChanges(GitHubModel):
-    """WebhooksProjectChanges"""
+class ProjectsV2(GitHubModel):
+    """Projects v2 Project
 
-    archived_at: Missing[WebhooksProjectChangesPropArchivedAt] = Field(default=UNSET)
+    A projects v2 project
+    """
+
+    id: float = Field()
+    node_id: str = Field()
+    owner: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    creator: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    title: str = Field()
+    description: Union[str, None] = Field()
+    public: bool = Field()
+    closed_at: Union[datetime, None] = Field()
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+    number: int = Field()
+    short_description: Union[str, None] = Field()
+    deleted_at: Union[datetime, None] = Field()
+    deleted_by: Union[None, SimpleUser] = Field()
 
 
-class WebhooksProjectChangesPropArchivedAt(GitHubModel):
-    """WebhooksProjectChangesPropArchivedAt"""
+model_rebuild(ProjectsV2)
 
-    from_: Missing[Union[datetime, None]] = Field(default=UNSET, alias="from")
-    to: Missing[Union[datetime, None]] = Field(default=UNSET)
-
-
-model_rebuild(WebhooksProjectChanges)
-model_rebuild(WebhooksProjectChangesPropArchivedAt)
-
-__all__ = (
-    "WebhooksProjectChanges",
-    "WebhooksProjectChangesPropArchivedAt",
-)
+__all__ = ("ProjectsV2",)

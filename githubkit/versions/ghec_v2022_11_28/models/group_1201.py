@@ -9,23 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoIssuesIssueNumberReactionsPostBody(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberReactionsPostBody"""
+class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0"""
 
-    content: Literal[
-        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-    ] = Field(
-        description="The [reaction type](https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#about-reactions) to add to the issue."
+    labels: Missing[list[str]] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description='The names of the labels to add to the issue\'s existing labels. You can pass an empty array to remove all labels. Alternatively, you can pass a single label as a `string` or an `array` of labels directly, but GitHub recommends passing an object with the `labels` key. You can also replace all of the labels for an issue. For more information, see "[Set labels for an issue](https://docs.github.com/enterprise-cloud@latest//rest/issues/labels#set-labels-for-an-issue)."',
     )
 
 
-model_rebuild(ReposOwnerRepoIssuesIssueNumberReactionsPostBody)
+model_rebuild(ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0)
 
-__all__ = ("ReposOwnerRepoIssuesIssueNumberReactionsPostBody",)
+__all__ = ("ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0",)

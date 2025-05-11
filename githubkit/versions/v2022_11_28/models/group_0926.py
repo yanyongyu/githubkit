@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Annotated, Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,18 +16,16 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody(GitHubModel):
-    """OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody"""
+class OrgsOrgOutsideCollaboratorsUsernamePutBody(GitHubModel):
+    """OrgsOrgOutsideCollaboratorsUsernamePutBody"""
 
-    action: Literal["approve", "deny"] = Field(
-        description="Action to apply to the request."
-    )
-    reason: Missing[Union[Annotated[str, Field(max_length=1024)], None]] = Field(
+    async_: Missing[bool] = Field(
         default=UNSET,
-        description="Reason for approving or denying the request. Max 1024 characters.",
+        alias="async",
+        description="When set to `true`, the request will be performed asynchronously. Returns a 202 status code when the job is successfully queued.",
     )
 
 
-model_rebuild(OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody)
+model_rebuild(OrgsOrgOutsideCollaboratorsUsernamePutBody)
 
-__all__ = ("OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody",)
+__all__ = ("OrgsOrgOutsideCollaboratorsUsernamePutBody",)

@@ -9,39 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class OrgsOrgActionsCacheUsageByRepositoryGetResponse200(GitHubModel):
-    """OrgsOrgActionsCacheUsageByRepositoryGetResponse200"""
+class NotificationsPutBody(GitHubModel):
+    """NotificationsPutBody"""
 
-    total_count: int = Field()
-    repository_cache_usages: list[ActionsCacheUsageByRepository] = Field()
-
-
-class ActionsCacheUsageByRepository(GitHubModel):
-    """Actions Cache Usage by repository
-
-    GitHub Actions Cache Usage by repository.
-    """
-
-    full_name: str = Field(
-        description="The repository owner and name for the cache usage being shown."
+    last_read_at: Missing[datetime] = Field(
+        default=UNSET,
+        description="Describes the last point that notifications were checked. Anything updated since this time will not be marked as read. If you omit this parameter, all notifications are marked as read. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`. Default: The current timestamp.",
     )
-    active_caches_size_in_bytes: int = Field(
-        description="The sum of the size in bytes of all the active cache items in the repository."
-    )
-    active_caches_count: int = Field(
-        description="The number of active caches in the repository."
+    read: Missing[bool] = Field(
+        default=UNSET, description="Whether the notification has been read."
     )
 
 
-model_rebuild(OrgsOrgActionsCacheUsageByRepositoryGetResponse200)
-model_rebuild(ActionsCacheUsageByRepository)
+model_rebuild(NotificationsPutBody)
 
-__all__ = (
-    "ActionsCacheUsageByRepository",
-    "OrgsOrgActionsCacheUsageByRepositoryGetResponse200",
-)
+__all__ = ("NotificationsPutBody",)

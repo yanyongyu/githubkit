@@ -9,38 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0288 import DeploymentBranchPolicySettingsType
+from typing import Any, Union
+from typing_extensions import NotRequired, TypeAlias, TypedDict
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyType(TypedDict):
-    """ReposOwnerRepoEnvironmentsEnvironmentNamePutBody"""
+class ReposOwnerRepoDeploymentsPostBodyType(TypedDict):
+    """ReposOwnerRepoDeploymentsPostBody"""
 
-    wait_timer: NotRequired[int]
-    prevent_self_review: NotRequired[bool]
-    reviewers: NotRequired[
-        Union[
-            list[
-                ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItemsType
-            ],
-            None,
-        ]
+    ref: str
+    task: NotRequired[str]
+    auto_merge: NotRequired[bool]
+    required_contexts: NotRequired[list[str]]
+    payload: NotRequired[
+        Union[ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0Type, str]
     ]
-    deployment_branch_policy: NotRequired[
-        Union[DeploymentBranchPolicySettingsType, None]
-    ]
+    environment: NotRequired[str]
+    description: NotRequired[Union[str, None]]
+    transient_environment: NotRequired[bool]
+    production_environment: NotRequired[bool]
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItemsType(TypedDict):
-    """ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems"""
-
-    type: NotRequired[Literal["User", "Team"]]
-    id: NotRequired[int]
+ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0Type: TypeAlias = dict[str, Any]
+"""ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0
+"""
 
 
 __all__ = (
-    "ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItemsType",
-    "ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyType",
+    "ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0Type",
+    "ReposOwnerRepoDeploymentsPostBodyType",
 )

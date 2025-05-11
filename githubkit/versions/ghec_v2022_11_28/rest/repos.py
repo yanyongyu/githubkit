@@ -7766,12 +7766,12 @@ class ReposClient:
         GET /repos/{owner}/{repo}/collaborators
 
         For organization-owned repositories, the list of collaborators includes outside collaborators, organization members that are direct collaborators, organization members with access through team memberships, organization members with access through default organization permissions, and organization owners.
-        Organization members with write, maintain, or admin privileges on the organization-owned repository can use this endpoint.
+        The `permissions` hash returned in the response contains the base role permissions of the collaborator. The `role_name` is the highest role assigned to the collaborator after considering all sources of grants, including: repo, teams, organization, and enterprise.
+        There is presently not a way to differentiate between an organization level grant and a repository level grant from this endpoint response.
 
         Team members will include the members of child teams.
 
-        The authenticated user must have push access to the repository to use this endpoint.
-
+        The authenticated user must have write, maintain, or admin privileges on the repository to use this endpoint. For organization-owned repositories, the authenticated user needs to be a member of the organization.
         OAuth app tokens and personal access tokens (classic) need the `read:org` and `repo` scopes to use this endpoint.
 
         See also: https://docs.github.com/enterprise-cloud@latest//rest/collaborators/collaborators#list-repository-collaborators
@@ -7819,12 +7819,12 @@ class ReposClient:
         GET /repos/{owner}/{repo}/collaborators
 
         For organization-owned repositories, the list of collaborators includes outside collaborators, organization members that are direct collaborators, organization members with access through team memberships, organization members with access through default organization permissions, and organization owners.
-        Organization members with write, maintain, or admin privileges on the organization-owned repository can use this endpoint.
+        The `permissions` hash returned in the response contains the base role permissions of the collaborator. The `role_name` is the highest role assigned to the collaborator after considering all sources of grants, including: repo, teams, organization, and enterprise.
+        There is presently not a way to differentiate between an organization level grant and a repository level grant from this endpoint response.
 
         Team members will include the members of child teams.
 
-        The authenticated user must have push access to the repository to use this endpoint.
-
+        The authenticated user must have write, maintain, or admin privileges on the repository to use this endpoint. For organization-owned repositories, the authenticated user needs to be a member of the organization.
         OAuth app tokens and personal access tokens (classic) need the `read:org` and `repo` scopes to use this endpoint.
 
         See also: https://docs.github.com/enterprise-cloud@latest//rest/collaborators/collaborators#list-repository-collaborators
@@ -7959,11 +7959,13 @@ class ReposClient:
 
         PUT /repos/{owner}/{repo}/collaborators/{username}
 
-        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest//github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)" and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/best-practices-for-using-the-rest-api)."
+        Add a user to a repository with a specified level of access. If the repository is owned by an organization, this API does not add the user to the organization - a user that has repository access without being an organization member is called an "outside collaborator" (if they are not an Enterprise Managed User) or a "repository collaborator" if they are an Enterprise Managed User. These users are exempt from some organization policies - see "[Adding outside collaborators to repositories](https://docs.github.com/enterprise-cloud@latest//organizations/managing-user-access-to-your-organizations-repositories/managing-outside-collaborators/adding-outside-collaborators-to-repositories-in-your-organization)" to learn more about these collaborator types.
 
-        Adding an outside collaborator may be restricted by enterprise administrators. For more information, see "[Enforcing repository management policies in your enterprise](https://docs.github.com/enterprise-cloud@latest//admin/policies/enforcing-policies-for-your-enterprise/enforcing-repository-management-policies-in-your-enterprise#enforcing-a-policy-for-inviting-outside-collaborators-to-repositories)."
+        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest//github/managing-subscriptions-and-notifications-on-github/about-notifications).
 
-        For more information on permission levels, see "[Repository permission levels for an organization](https://docs.github.com/enterprise-cloud@latest//github/setting-up-and-managing-organizations-and-teams/repository-permission-levels-for-an-organization#permission-levels-for-repositories-owned-by-an-organization)". There are restrictions on which permissions can be granted to organization members when an organization base role is in place. In this case, the permission being given must be equal to or higher than the org base permission. Otherwise, the request will fail with:
+        Adding an outside collaborator may be restricted by enterprise and organization administrators. For more information, see "[Enforcing repository management policies in your enterprise](https://docs.github.com/enterprise-cloud@latest//admin/policies/enforcing-policies-for-your-enterprise/enforcing-repository-management-policies-in-your-enterprise#enforcing-a-policy-for-inviting-outside-collaborators-to-repositories)" and "[Setting permissions for adding outside collaborators](https://docs.github.com/enterprise-cloud@latest//organizations/managing-organization-settings/setting-permissions-for-adding-outside-collaborators)" for organization settings.
+
+        For more information on permission levels, see "[Repository permission levels for an organization](https://docs.github.com/enterprise-cloud@latest//github/setting-up-and-managing-organizations-and-teams/repository-permission-levels-for-an-organization#permission-levels-for-repositories-owned-by-an-organization)". There are restrictions on which permissions can be granted to organization members when an organization base role is in place. In this case, the role being given must be equal to or higher than the org base permission. Otherwise, the request will fail with:
 
         ```
         Cannot assign {member} permission of {role name}
@@ -7972,6 +7974,8 @@ class ReposClient:
         Note that, if you choose not to pass any parameters, you'll need to set `Content-Length` to zero when calling out to this endpoint. For more information, see "[HTTP method](https://docs.github.com/enterprise-cloud@latest//rest/guides/getting-started-with-the-rest-api#http-method)."
 
         The invitee will receive a notification that they have been invited to the repository, which they must accept or decline. They may do this via the notifications page, the email they receive, or by using the [API](https://docs.github.com/enterprise-cloud@latest//rest/collaborators/invitations).
+
+        For Enterprise Managed Users, this endpoint does not send invitations - these users are automatically added to organizations and repositories. Enterprise Managed Users can only be added to organizations and repositories within their enterprise.
 
         **Updating an existing collaborator's permission level**
 
@@ -8055,11 +8059,13 @@ class ReposClient:
 
         PUT /repos/{owner}/{repo}/collaborators/{username}
 
-        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest//github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)" and "[Best practices for using the REST API](https://docs.github.com/enterprise-cloud@latest//rest/guides/best-practices-for-using-the-rest-api)."
+        Add a user to a repository with a specified level of access. If the repository is owned by an organization, this API does not add the user to the organization - a user that has repository access without being an organization member is called an "outside collaborator" (if they are not an Enterprise Managed User) or a "repository collaborator" if they are an Enterprise Managed User. These users are exempt from some organization policies - see "[Adding outside collaborators to repositories](https://docs.github.com/enterprise-cloud@latest//organizations/managing-user-access-to-your-organizations-repositories/managing-outside-collaborators/adding-outside-collaborators-to-repositories-in-your-organization)" to learn more about these collaborator types.
 
-        Adding an outside collaborator may be restricted by enterprise administrators. For more information, see "[Enforcing repository management policies in your enterprise](https://docs.github.com/enterprise-cloud@latest//admin/policies/enforcing-policies-for-your-enterprise/enforcing-repository-management-policies-in-your-enterprise#enforcing-a-policy-for-inviting-outside-collaborators-to-repositories)."
+        This endpoint triggers [notifications](https://docs.github.com/enterprise-cloud@latest//github/managing-subscriptions-and-notifications-on-github/about-notifications).
 
-        For more information on permission levels, see "[Repository permission levels for an organization](https://docs.github.com/enterprise-cloud@latest//github/setting-up-and-managing-organizations-and-teams/repository-permission-levels-for-an-organization#permission-levels-for-repositories-owned-by-an-organization)". There are restrictions on which permissions can be granted to organization members when an organization base role is in place. In this case, the permission being given must be equal to or higher than the org base permission. Otherwise, the request will fail with:
+        Adding an outside collaborator may be restricted by enterprise and organization administrators. For more information, see "[Enforcing repository management policies in your enterprise](https://docs.github.com/enterprise-cloud@latest//admin/policies/enforcing-policies-for-your-enterprise/enforcing-repository-management-policies-in-your-enterprise#enforcing-a-policy-for-inviting-outside-collaborators-to-repositories)" and "[Setting permissions for adding outside collaborators](https://docs.github.com/enterprise-cloud@latest//organizations/managing-organization-settings/setting-permissions-for-adding-outside-collaborators)" for organization settings.
+
+        For more information on permission levels, see "[Repository permission levels for an organization](https://docs.github.com/enterprise-cloud@latest//github/setting-up-and-managing-organizations-and-teams/repository-permission-levels-for-an-organization#permission-levels-for-repositories-owned-by-an-organization)". There are restrictions on which permissions can be granted to organization members when an organization base role is in place. In this case, the role being given must be equal to or higher than the org base permission. Otherwise, the request will fail with:
 
         ```
         Cannot assign {member} permission of {role name}
@@ -8068,6 +8074,8 @@ class ReposClient:
         Note that, if you choose not to pass any parameters, you'll need to set `Content-Length` to zero when calling out to this endpoint. For more information, see "[HTTP method](https://docs.github.com/enterprise-cloud@latest//rest/guides/getting-started-with-the-rest-api#http-method)."
 
         The invitee will receive a notification that they have been invited to the repository, which they must accept or decline. They may do this via the notifications page, the email they receive, or by using the [API](https://docs.github.com/enterprise-cloud@latest//rest/collaborators/invitations).
+
+        For Enterprise Managed Users, this endpoint does not send invitations - these users are automatically added to organizations and repositories. Enterprise Managed Users can only be added to organizations and repositories within their enterprise.
 
         **Updating an existing collaborator's permission level**
 
@@ -8236,13 +8244,15 @@ class ReposClient:
 
         GET /repos/{owner}/{repo}/collaborators/{username}/permission
 
-        Checks the repository permission of a collaborator. The possible repository
-        permissions are `admin`, `write`, `read`, and `none`.
+        Checks the repository permission and role of a collaborator.
 
-        *Note*: The `permission` attribute provides the legacy base roles of `admin`, `write`, `read`, and `none`, where the
-        `maintain` role is mapped to `write` and the `triage` role is mapped to `read`. To determine the role assigned to the
-        collaborator, see the `role_name` attribute, which will provide the full role name, including custom roles. The
-        `permissions` hash can also be used to determine which base level of access the collaborator has to the repository.
+        The `permission` attribute provides the legacy base roles of `admin`, `write`, `read`, and `none`, where the
+        `maintain` role is mapped to `write` and the `triage` role is mapped to `read`.
+        The `role_name` attribute provides the name of the assigned role, including custom roles. The
+        `permission` can also be used to determine which base level of access the collaborator has to the repository.
+
+        The calculated permissions are the highest role assigned to the collaborator after considering all sources of grants, including: repo, teams, organization, and enterprise.
+        There is presently not a way to differentiate between an organization level grant and a repository level grant from this endpoint response.
 
         See also: https://docs.github.com/enterprise-cloud@latest//rest/collaborators/collaborators#get-repository-permissions-for-a-user
         """
@@ -8277,13 +8287,15 @@ class ReposClient:
 
         GET /repos/{owner}/{repo}/collaborators/{username}/permission
 
-        Checks the repository permission of a collaborator. The possible repository
-        permissions are `admin`, `write`, `read`, and `none`.
+        Checks the repository permission and role of a collaborator.
 
-        *Note*: The `permission` attribute provides the legacy base roles of `admin`, `write`, `read`, and `none`, where the
-        `maintain` role is mapped to `write` and the `triage` role is mapped to `read`. To determine the role assigned to the
-        collaborator, see the `role_name` attribute, which will provide the full role name, including custom roles. The
-        `permissions` hash can also be used to determine which base level of access the collaborator has to the repository.
+        The `permission` attribute provides the legacy base roles of `admin`, `write`, `read`, and `none`, where the
+        `maintain` role is mapped to `write` and the `triage` role is mapped to `read`.
+        The `role_name` attribute provides the name of the assigned role, including custom roles. The
+        `permission` can also be used to determine which base level of access the collaborator has to the repository.
+
+        The calculated permissions are the highest role assigned to the collaborator after considering all sources of grants, including: repo, teams, organization, and enterprise.
+        There is presently not a way to differentiate between an organization level grant and a repository level grant from this endpoint response.
 
         See also: https://docs.github.com/enterprise-cloud@latest//rest/collaborators/collaborators#get-repository-permissions-for-a-user
         """

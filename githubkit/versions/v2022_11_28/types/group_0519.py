@@ -13,19 +13,18 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0418 import EnterpriseWebhooksType
-from .group_0419 import SimpleInstallationType
-from .group_0420 import OrganizationSimpleWebhooksType
-from .group_0421 import RepositoryWebhooksType
-from .group_0431 import DiscussionType
-from .group_0432 import WebhooksCommentType
+from .group_0419 import EnterpriseWebhooksType
+from .group_0420 import SimpleInstallationType
+from .group_0421 import OrganizationSimpleWebhooksType
+from .group_0422 import RepositoryWebhooksType
+from .group_0432 import DiscussionType
+from .group_0433 import WebhooksCommentType
 
 
-class WebhookDiscussionCommentEditedType(TypedDict):
-    """discussion_comment edited event"""
+class WebhookDiscussionCommentDeletedType(TypedDict):
+    """discussion_comment deleted event"""
 
-    action: Literal["edited"]
-    changes: WebhookDiscussionCommentEditedPropChangesType
+    action: Literal["deleted"]
     comment: WebhooksCommentType
     discussion: DiscussionType
     enterprise: NotRequired[EnterpriseWebhooksType]
@@ -35,20 +34,4 @@ class WebhookDiscussionCommentEditedType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookDiscussionCommentEditedPropChangesType(TypedDict):
-    """WebhookDiscussionCommentEditedPropChanges"""
-
-    body: WebhookDiscussionCommentEditedPropChangesPropBodyType
-
-
-class WebhookDiscussionCommentEditedPropChangesPropBodyType(TypedDict):
-    """WebhookDiscussionCommentEditedPropChangesPropBody"""
-
-    from_: str
-
-
-__all__ = (
-    "WebhookDiscussionCommentEditedPropChangesPropBodyType",
-    "WebhookDiscussionCommentEditedPropChangesType",
-    "WebhookDiscussionCommentEditedType",
-)
+__all__ = ("WebhookDiscussionCommentDeletedType",)

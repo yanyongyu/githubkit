@@ -9,23 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0419 import SimpleInstallationType
-from .group_0420 import OrganizationSimpleWebhooksType
-from .group_0452 import ProjectsV2Type
+from .group_0419 import EnterpriseWebhooksType
+from .group_0420 import SimpleInstallationType
+from .group_0421 import OrganizationSimpleWebhooksType
+from .group_0422 import RepositoryWebhooksType
+from .group_0451 import WebhooksProjectType
 
 
-class WebhookProjectsV2ProjectClosedType(TypedDict):
-    """Projects v2 Project Closed Event"""
+class WebhookProjectDeletedType(TypedDict):
+    """project deleted event"""
 
-    action: Literal["closed"]
+    action: Literal["deleted"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    organization: OrganizationSimpleWebhooksType
-    projects_v2: ProjectsV2Type
-    sender: SimpleUserType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    project: WebhooksProjectType
+    repository: NotRequired[Union[None, RepositoryWebhooksType]]
+    sender: NotRequired[SimpleUserType]
 
 
-__all__ = ("WebhookProjectsV2ProjectClosedType",)
+__all__ = ("WebhookProjectDeletedType",)

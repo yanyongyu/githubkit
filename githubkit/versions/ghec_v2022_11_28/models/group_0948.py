@@ -15,15 +15,17 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class NotificationsThreadsThreadIdSubscriptionPutBody(GitHubModel):
-    """NotificationsThreadsThreadIdSubscriptionPutBody"""
-
-    ignored: Missing[bool] = Field(
-        default=UNSET, description="Whether to block all notifications from a thread."
-    )
+from .group_0020 import Repository
 
 
-model_rebuild(NotificationsThreadsThreadIdSubscriptionPutBody)
+class InstallationRepositoriesGetResponse200(GitHubModel):
+    """InstallationRepositoriesGetResponse200"""
 
-__all__ = ("NotificationsThreadsThreadIdSubscriptionPutBody",)
+    total_count: int = Field()
+    repositories: list[Repository] = Field()
+    repository_selection: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(InstallationRepositoriesGetResponse200)
+
+__all__ = ("InstallationRepositoriesGetResponse200",)

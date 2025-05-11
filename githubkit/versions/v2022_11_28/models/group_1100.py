@@ -16,23 +16,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoLabelsNamePatchBody(GitHubModel):
-    """ReposOwnerRepoLabelsNamePatchBody"""
+class ReposOwnerRepoIssuesIssueNumberSubIssuesPostBody(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberSubIssuesPostBody"""
 
-    new_name: Missing[str] = Field(
-        default=UNSET,
-        description='The new name of the label. Emoji can be added to label names, using either native emoji or colon-style markup. For example, typing `:strawberry:` will render the emoji ![:strawberry:](https://github.githubassets.com/images/icons/emoji/unicode/1f353.png ":strawberry:"). For a full list of available emoji and codes, see "[Emoji cheat sheet](https://github.com/ikatyang/emoji-cheat-sheet)."',
+    sub_issue_id: int = Field(
+        description="The id of the sub-issue to add. The sub-issue must belong to the same repository owner as the parent issue"
     )
-    color: Missing[str] = Field(
+    replace_parent: Missing[bool] = Field(
         default=UNSET,
-        description="The [hexadecimal color code](http://www.color-hex.com/) for the label, without the leading `#`.",
-    )
-    description: Missing[str] = Field(
-        default=UNSET,
-        description="A short description of the label. Must be 100 characters or fewer.",
+        description="Option that, when true, instructs the operation to replace the sub-issues current parent issue",
     )
 
 
-model_rebuild(ReposOwnerRepoLabelsNamePatchBody)
+model_rebuild(ReposOwnerRepoIssuesIssueNumberSubIssuesPostBody)
 
-__all__ = ("ReposOwnerRepoLabelsNamePatchBody",)
+__all__ = ("ReposOwnerRepoIssuesIssueNumberSubIssuesPostBody",)

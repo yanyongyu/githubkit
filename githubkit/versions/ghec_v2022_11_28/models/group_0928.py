@@ -9,20 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0076 import NetworkConfiguration
-
-
-class EnterprisesEnterpriseNetworkConfigurationsGetResponse200(GitHubModel):
-    """EnterprisesEnterpriseNetworkConfigurationsGetResponse200"""
-
-    total_count: int = Field()
-    network_configurations: list[NetworkConfiguration] = Field()
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-model_rebuild(EnterprisesEnterpriseNetworkConfigurationsGetResponse200)
+class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBody(
+    GitHubModel
+):
+    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBody"""
 
-__all__ = ("EnterprisesEnterpriseNetworkConfigurationsGetResponse200",)
+    default_for_new_repos: Missing[
+        Literal["all", "none", "private_and_internal", "public"]
+    ] = Field(
+        default=UNSET,
+        description="Specify which types of repository this security configuration should be applied to by default.",
+    )
+
+
+model_rebuild(
+    EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBody
+)
+
+__all__ = (
+    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBody",
+)

@@ -13,45 +13,21 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0473 import EnterpriseWebhooksType
-from .group_0474 import SimpleInstallationType
-from .group_0475 import OrganizationSimpleWebhooksType
-from .group_0476 import RepositoryWebhooksType
+from .group_0474 import EnterpriseWebhooksType
+from .group_0475 import SimpleInstallationType
+from .group_0476 import OrganizationSimpleWebhooksType
+from .group_0477 import RepositoryWebhooksType
 
 
-class WebhookRepositoryRenamedType(TypedDict):
-    """repository renamed event"""
+class WebhookRepositoryImportType(TypedDict):
+    """repository_import event"""
 
-    action: Literal["renamed"]
-    changes: WebhookRepositoryRenamedPropChangesType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
+    status: Literal["success", "cancelled", "failure"]
 
 
-class WebhookRepositoryRenamedPropChangesType(TypedDict):
-    """WebhookRepositoryRenamedPropChanges"""
-
-    repository: WebhookRepositoryRenamedPropChangesPropRepositoryType
-
-
-class WebhookRepositoryRenamedPropChangesPropRepositoryType(TypedDict):
-    """WebhookRepositoryRenamedPropChangesPropRepository"""
-
-    name: WebhookRepositoryRenamedPropChangesPropRepositoryPropNameType
-
-
-class WebhookRepositoryRenamedPropChangesPropRepositoryPropNameType(TypedDict):
-    """WebhookRepositoryRenamedPropChangesPropRepositoryPropName"""
-
-    from_: str
-
-
-__all__ = (
-    "WebhookRepositoryRenamedPropChangesPropRepositoryPropNameType",
-    "WebhookRepositoryRenamedPropChangesPropRepositoryType",
-    "WebhookRepositoryRenamedPropChangesType",
-    "WebhookRepositoryRenamedType",
-)
+__all__ = ("WebhookRepositoryImportType",)

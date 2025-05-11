@@ -13,13 +13,14 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoPullsPullNumberMergePutBodyType(TypedDict):
-    """ReposOwnerRepoPullsPullNumberMergePutBody"""
+class ReposOwnerRepoPullsPullNumberPatchBodyType(TypedDict):
+    """ReposOwnerRepoPullsPullNumberPatchBody"""
 
-    commit_title: NotRequired[str]
-    commit_message: NotRequired[str]
-    sha: NotRequired[str]
-    merge_method: NotRequired[Literal["merge", "squash", "rebase"]]
+    title: NotRequired[str]
+    body: NotRequired[str]
+    state: NotRequired[Literal["open", "closed"]]
+    base: NotRequired[str]
+    maintainer_can_modify: NotRequired[bool]
 
 
-__all__ = ("ReposOwnerRepoPullsPullNumberMergePutBodyType",)
+__all__ = ("ReposOwnerRepoPullsPullNumberPatchBodyType",)

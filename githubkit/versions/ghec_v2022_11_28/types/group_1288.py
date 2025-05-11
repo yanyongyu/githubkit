@@ -9,17 +9,15 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class UserEmailsPostBodyOneof0Type(TypedDict):
-    """UserEmailsPostBodyOneof0
+class UserCodespacesCodespaceNamePatchBodyType(TypedDict):
+    """UserCodespacesCodespaceNamePatchBody"""
 
-    Examples:
-        {'emails': ['octocat@github.com', 'mona@github.com']}
-    """
-
-    emails: list[str]
+    machine: NotRequired[str]
+    display_name: NotRequired[str]
+    recent_folders: NotRequired[list[str]]
 
 
-__all__ = ("UserEmailsPostBodyOneof0Type",)
+__all__ = ("UserCodespacesCodespaceNamePatchBodyType",)

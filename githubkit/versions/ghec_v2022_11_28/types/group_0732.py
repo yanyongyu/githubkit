@@ -9,22 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0473 import EnterpriseWebhooksType
-from .group_0474 import SimpleInstallationType
-from .group_0475 import OrganizationSimpleWebhooksType
-from .group_0476 import RepositoryWebhooksType
-from .group_0506 import WebhooksProjectCardType
+from .group_0474 import EnterpriseWebhooksType
+from .group_0475 import SimpleInstallationType
+from .group_0476 import OrganizationSimpleWebhooksType
+from .group_0477 import RepositoryWebhooksType
+from .group_0507 import WebhooksProjectCardType
 
 
-class WebhookProjectCardEditedType(TypedDict):
-    """project_card edited event"""
+class WebhookProjectCardConvertedType(TypedDict):
+    """project_card converted event"""
 
-    action: Literal["edited"]
-    changes: WebhookProjectCardEditedPropChangesType
+    action: Literal["converted"]
+    changes: WebhookProjectCardConvertedPropChangesType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
@@ -33,20 +33,20 @@ class WebhookProjectCardEditedType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookProjectCardEditedPropChangesType(TypedDict):
-    """WebhookProjectCardEditedPropChanges"""
+class WebhookProjectCardConvertedPropChangesType(TypedDict):
+    """WebhookProjectCardConvertedPropChanges"""
 
-    note: WebhookProjectCardEditedPropChangesPropNoteType
+    note: WebhookProjectCardConvertedPropChangesPropNoteType
 
 
-class WebhookProjectCardEditedPropChangesPropNoteType(TypedDict):
-    """WebhookProjectCardEditedPropChangesPropNote"""
+class WebhookProjectCardConvertedPropChangesPropNoteType(TypedDict):
+    """WebhookProjectCardConvertedPropChangesPropNote"""
 
-    from_: Union[str, None]
+    from_: str
 
 
 __all__ = (
-    "WebhookProjectCardEditedPropChangesPropNoteType",
-    "WebhookProjectCardEditedPropChangesType",
-    "WebhookProjectCardEditedType",
+    "WebhookProjectCardConvertedPropChangesPropNoteType",
+    "WebhookProjectCardConvertedPropChangesType",
+    "WebhookProjectCardConvertedType",
 )

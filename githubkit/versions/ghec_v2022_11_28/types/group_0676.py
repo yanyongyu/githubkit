@@ -13,19 +13,17 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0473 import EnterpriseWebhooksType
-from .group_0474 import SimpleInstallationType
-from .group_0475 import OrganizationSimpleWebhooksType
-from .group_0476 import RepositoryWebhooksType
-from .group_0497 import WebhooksIssue2Type
-from .group_0677 import WebhookIssuesTransferredPropChangesType
+from .group_0474 import EnterpriseWebhooksType
+from .group_0475 import SimpleInstallationType
+from .group_0476 import OrganizationSimpleWebhooksType
+from .group_0477 import RepositoryWebhooksType
+from .group_0498 import WebhooksIssue2Type
 
 
-class WebhookIssuesTransferredType(TypedDict):
-    """issues transferred event"""
+class WebhookIssuesPinnedType(TypedDict):
+    """issues pinned event"""
 
-    action: Literal["transferred"]
-    changes: WebhookIssuesTransferredPropChangesType
+    action: Literal["pinned"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     issue: WebhooksIssue2Type
@@ -34,4 +32,4 @@ class WebhookIssuesTransferredType(TypedDict):
     sender: SimpleUserType
 
 
-__all__ = ("WebhookIssuesTransferredType",)
+__all__ = ("WebhookIssuesPinnedType",)

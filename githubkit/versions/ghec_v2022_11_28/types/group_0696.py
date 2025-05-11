@@ -9,27 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0473 import EnterpriseWebhooksType
-from .group_0474 import SimpleInstallationType
-from .group_0475 import OrganizationSimpleWebhooksType
-from .group_0476 import RepositoryWebhooksType
-from .group_0486 import WebhooksUserType
+from .group_0474 import EnterpriseWebhooksType
+from .group_0475 import SimpleInstallationType
+from .group_0476 import OrganizationSimpleWebhooksType
+from .group_0477 import RepositoryWebhooksType
+from .group_0500 import WebhooksMarketplacePurchaseType
+from .group_0501 import WebhooksPreviousMarketplacePurchaseType
 
 
-class WebhookMemberRemovedType(TypedDict):
-    """member removed event"""
+class WebhookMarketplacePurchasePurchasedType(TypedDict):
+    """marketplace_purchase purchased event"""
 
-    action: Literal["removed"]
+    action: Literal["purchased"]
+    effective_date: str
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    member: Union[WebhooksUserType, None]
+    marketplace_purchase: WebhooksMarketplacePurchaseType
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
+    previous_marketplace_purchase: NotRequired[WebhooksPreviousMarketplacePurchaseType]
+    repository: NotRequired[RepositoryWebhooksType]
     sender: SimpleUserType
 
 
-__all__ = ("WebhookMemberRemovedType",)
+__all__ = ("WebhookMarketplacePurchasePurchasedType",)

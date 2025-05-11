@@ -13,25 +13,45 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0169 import RepositoryRulesetType
-from .group_0418 import EnterpriseWebhooksType
-from .group_0419 import SimpleInstallationType
-from .group_0420 import OrganizationSimpleWebhooksType
-from .group_0421 import RepositoryWebhooksType
-from .group_0758 import WebhookRepositoryRulesetEditedPropChangesType
+from .group_0419 import EnterpriseWebhooksType
+from .group_0420 import SimpleInstallationType
+from .group_0421 import OrganizationSimpleWebhooksType
+from .group_0422 import RepositoryWebhooksType
 
 
-class WebhookRepositoryRulesetEditedType(TypedDict):
-    """repository ruleset edited event"""
+class WebhookRepositoryRenamedType(TypedDict):
+    """repository renamed event"""
 
-    action: Literal["edited"]
+    action: Literal["renamed"]
+    changes: WebhookRepositoryRenamedPropChangesType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: NotRequired[RepositoryWebhooksType]
-    repository_ruleset: RepositoryRulesetType
-    changes: NotRequired[WebhookRepositoryRulesetEditedPropChangesType]
+    repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-__all__ = ("WebhookRepositoryRulesetEditedType",)
+class WebhookRepositoryRenamedPropChangesType(TypedDict):
+    """WebhookRepositoryRenamedPropChanges"""
+
+    repository: WebhookRepositoryRenamedPropChangesPropRepositoryType
+
+
+class WebhookRepositoryRenamedPropChangesPropRepositoryType(TypedDict):
+    """WebhookRepositoryRenamedPropChangesPropRepository"""
+
+    name: WebhookRepositoryRenamedPropChangesPropRepositoryPropNameType
+
+
+class WebhookRepositoryRenamedPropChangesPropRepositoryPropNameType(TypedDict):
+    """WebhookRepositoryRenamedPropChangesPropRepositoryPropName"""
+
+    from_: str
+
+
+__all__ = (
+    "WebhookRepositoryRenamedPropChangesPropRepositoryPropNameType",
+    "WebhookRepositoryRenamedPropChangesPropRepositoryType",
+    "WebhookRepositoryRenamedPropChangesType",
+    "WebhookRepositoryRenamedType",
+)

@@ -11,14 +11,14 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0020 import RepositoryType
+from .group_0065 import ActionsHostedRunnerMachineSpecType
 
 
-class OrgsOrgActionsPermissionsRepositoriesGetResponse200Type(TypedDict):
-    """OrgsOrgActionsPermissionsRepositoriesGetResponse200"""
+class OrgsOrgActionsHostedRunnersMachineSizesGetResponse200Type(TypedDict):
+    """OrgsOrgActionsHostedRunnersMachineSizesGetResponse200"""
 
-    total_count: float
-    repositories: list[RepositoryType]
+    total_count: int
+    machine_specs: list[ActionsHostedRunnerMachineSpecType]
 
 
-__all__ = ("OrgsOrgActionsPermissionsRepositoriesGetResponse200Type",)
+__all__ = ("OrgsOrgActionsHostedRunnersMachineSizesGetResponse200Type",)

@@ -9,27 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0003 import SimpleUserType
-from .group_0418 import EnterpriseWebhooksType
-from .group_0419 import SimpleInstallationType
-from .group_0420 import OrganizationSimpleWebhooksType
-from .group_0421 import RepositoryWebhooksType
-from .group_0464 import SecretScanningAlertWebhookType
+from typing_extensions import TypedDict
 
 
-class WebhookSecretScanningAlertResolvedType(TypedDict):
-    """secret_scanning_alert resolved event"""
+class WebhookSecretScanningAlertLocationCreatedFormEncodedType(TypedDict):
+    """Secret Scanning Alert Location Created Event"""
 
-    action: Literal["resolved"]
-    alert: SecretScanningAlertWebhookType
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: NotRequired[SimpleUserType]
+    payload: str
 
 
-__all__ = ("WebhookSecretScanningAlertResolvedType",)
+__all__ = ("WebhookSecretScanningAlertLocationCreatedFormEncodedType",)

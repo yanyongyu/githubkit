@@ -9,14 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0242 import ActionsVariableType
 
 
-class ReposOwnerRepoGitBlobsPostBodyType(TypedDict):
-    """ReposOwnerRepoGitBlobsPostBody"""
+class ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200Type(TypedDict):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200"""
 
-    content: str
-    encoding: NotRequired[str]
+    total_count: int
+    variables: list[ActionsVariableType]
 
 
-__all__ = ("ReposOwnerRepoGitBlobsPostBodyType",)
+__all__ = ("ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200Type",)

@@ -13,40 +13,23 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0418 import EnterpriseWebhooksType
-from .group_0419 import SimpleInstallationType
-from .group_0420 import OrganizationSimpleWebhooksType
-from .group_0421 import RepositoryWebhooksType
-from .group_0447 import WebhooksMembershipType
+from .group_0419 import EnterpriseWebhooksType
+from .group_0420 import SimpleInstallationType
+from .group_0421 import OrganizationSimpleWebhooksType
+from .group_0422 import RepositoryWebhooksType
+from .group_0448 import WebhooksMembershipType
 
 
-class WebhookOrganizationRenamedType(TypedDict):
-    """organization renamed event"""
+class WebhookOrganizationMemberAddedType(TypedDict):
+    """organization member_added event"""
 
-    action: Literal["renamed"]
-    changes: NotRequired[WebhookOrganizationRenamedPropChangesType]
+    action: Literal["member_added"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    membership: NotRequired[WebhooksMembershipType]
+    membership: WebhooksMembershipType
     organization: OrganizationSimpleWebhooksType
     repository: NotRequired[RepositoryWebhooksType]
     sender: SimpleUserType
 
 
-class WebhookOrganizationRenamedPropChangesType(TypedDict):
-    """WebhookOrganizationRenamedPropChanges"""
-
-    login: NotRequired[WebhookOrganizationRenamedPropChangesPropLoginType]
-
-
-class WebhookOrganizationRenamedPropChangesPropLoginType(TypedDict):
-    """WebhookOrganizationRenamedPropChangesPropLogin"""
-
-    from_: NotRequired[str]
-
-
-__all__ = (
-    "WebhookOrganizationRenamedPropChangesPropLoginType",
-    "WebhookOrganizationRenamedPropChangesType",
-    "WebhookOrganizationRenamedType",
-)
+__all__ = ("WebhookOrganizationMemberAddedType",)

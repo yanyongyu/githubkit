@@ -9,16 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0178 import CodespaceMachineType
-
-
-class ReposOwnerRepoCodespacesMachinesGetResponse200Type(TypedDict):
-    """ReposOwnerRepoCodespacesMachinesGetResponse200"""
-
-    total_count: int
-    machines: list[CodespaceMachineType]
+from datetime import datetime
+from typing_extensions import NotRequired, TypedDict
 
 
-__all__ = ("ReposOwnerRepoCodespacesMachinesGetResponse200Type",)
+class ReposOwnerRepoCodeScanningSarifsPostBodyType(TypedDict):
+    """ReposOwnerRepoCodeScanningSarifsPostBody"""
+
+    commit_sha: str
+    ref: str
+    sarif: str
+    checkout_uri: NotRequired[str]
+    started_at: NotRequired[datetime]
+    tool_name: NotRequired[str]
+    validate_: NotRequired[bool]
+
+
+__all__ = ("ReposOwnerRepoCodeScanningSarifsPostBodyType",)

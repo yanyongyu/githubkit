@@ -12,11 +12,23 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ProjectsColumnsCardsCardIdMovesPostBodyType(TypedDict):
-    """ProjectsColumnsCardsCardIdMovesPostBody"""
+class OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyType(TypedDict):
+    """OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBody"""
 
-    position: str
-    column_id: NotRequired[int]
+    groups: NotRequired[
+        list[OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItemsType]
+    ]
 
 
-__all__ = ("ProjectsColumnsCardsCardIdMovesPostBodyType",)
+class OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItemsType(TypedDict):
+    """OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItems"""
+
+    group_id: str
+    group_name: str
+    group_description: str
+
+
+__all__ = (
+    "OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItemsType",
+    "OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyType",
+)

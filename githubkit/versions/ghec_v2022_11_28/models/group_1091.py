@@ -9,25 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody(GitHubModel):
-    """ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody"""
-
-    environment_ids: list[int] = Field(
-        description="The list of environment ids to approve or reject"
-    )
-    state: Literal["approved", "rejected"] = Field(
-        description="Whether to approve or reject deployment to the specified environments."
-    )
-    comment: str = Field(description="A comment to accompany the deployment review")
+from .group_0247 import WorkflowRun
 
 
-model_rebuild(ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody)
+class ReposOwnerRepoActionsRunsGetResponse200(GitHubModel):
+    """ReposOwnerRepoActionsRunsGetResponse200"""
 
-__all__ = ("ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody",)
+    total_count: int = Field()
+    workflow_runs: list[WorkflowRun] = Field()
+
+
+model_rebuild(ReposOwnerRepoActionsRunsGetResponse200)
+
+__all__ = ("ReposOwnerRepoActionsRunsGetResponse200",)

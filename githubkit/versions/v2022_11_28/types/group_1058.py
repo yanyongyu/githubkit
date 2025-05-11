@@ -9,24 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Any
+from typing_extensions import NotRequired, TypeAlias, TypedDict
 
-from .group_0294 import CustomDeploymentRuleAppType
+
+class ReposOwnerRepoDispatchesPostBodyType(TypedDict):
+    """ReposOwnerRepoDispatchesPostBody"""
+
+    event_type: str
+    client_payload: NotRequired[ReposOwnerRepoDispatchesPostBodyPropClientPayloadType]
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200Type(
-    TypedDict
-):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetRespons
-    e200
-    """
+ReposOwnerRepoDispatchesPostBodyPropClientPayloadType: TypeAlias = dict[str, Any]
+"""ReposOwnerRepoDispatchesPostBodyPropClientPayload
 
-    total_count: NotRequired[int]
-    available_custom_deployment_protection_rule_integrations: NotRequired[
-        list[CustomDeploymentRuleAppType]
-    ]
+JSON payload with extra information about the webhook event that your action or
+workflow may use. The maximum number of top-level properties is 10. The total
+size of the JSON payload must be less than 64KB.
+"""
 
 
 __all__ = (
-    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200Type",
+    "ReposOwnerRepoDispatchesPostBodyPropClientPayloadType",
+    "ReposOwnerRepoDispatchesPostBodyType",
 )

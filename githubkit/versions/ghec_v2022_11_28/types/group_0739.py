@@ -13,40 +13,23 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0473 import EnterpriseWebhooksType
-from .group_0474 import SimpleInstallationType
-from .group_0475 import OrganizationSimpleWebhooksType
-from .group_0476 import RepositoryWebhooksType
-from .group_0508 import WebhooksProjectColumnType
+from .group_0474 import EnterpriseWebhooksType
+from .group_0475 import SimpleInstallationType
+from .group_0476 import OrganizationSimpleWebhooksType
+from .group_0477 import RepositoryWebhooksType
+from .group_0508 import WebhooksProjectType
 
 
-class WebhookProjectColumnEditedType(TypedDict):
-    """project_column edited event"""
+class WebhookProjectClosedType(TypedDict):
+    """project closed event"""
 
-    action: Literal["edited"]
-    changes: WebhookProjectColumnEditedPropChangesType
+    action: Literal["closed"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    project_column: WebhooksProjectColumnType
+    project: WebhooksProjectType
     repository: NotRequired[RepositoryWebhooksType]
-    sender: NotRequired[SimpleUserType]
+    sender: SimpleUserType
 
 
-class WebhookProjectColumnEditedPropChangesType(TypedDict):
-    """WebhookProjectColumnEditedPropChanges"""
-
-    name: NotRequired[WebhookProjectColumnEditedPropChangesPropNameType]
-
-
-class WebhookProjectColumnEditedPropChangesPropNameType(TypedDict):
-    """WebhookProjectColumnEditedPropChangesPropName"""
-
-    from_: str
-
-
-__all__ = (
-    "WebhookProjectColumnEditedPropChangesPropNameType",
-    "WebhookProjectColumnEditedPropChangesType",
-    "WebhookProjectColumnEditedType",
-)
+__all__ = ("WebhookProjectClosedType",)

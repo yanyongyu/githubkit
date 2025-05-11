@@ -9,33 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class UserCodespacesPostBodyOneof1Type(TypedDict):
-    """UserCodespacesPostBodyOneof1"""
+class TeamsTeamIdTeamSyncGroupMappingsPatchBodyType(TypedDict):
+    """TeamsTeamIdTeamSyncGroupMappingsPatchBody"""
 
-    pull_request: UserCodespacesPostBodyOneof1PropPullRequestType
-    location: NotRequired[str]
-    geo: NotRequired[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]]
-    machine: NotRequired[str]
-    devcontainer_path: NotRequired[str]
-    working_directory: NotRequired[str]
-    idle_timeout_minutes: NotRequired[int]
+    groups: list[TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItemsType]
+    synced_at: NotRequired[str]
 
 
-class UserCodespacesPostBodyOneof1PropPullRequestType(TypedDict):
-    """UserCodespacesPostBodyOneof1PropPullRequest
+class TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItemsType(TypedDict):
+    """TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItems"""
 
-    Pull request number for this codespace
-    """
-
-    pull_request_number: int
-    repository_id: int
+    group_id: str
+    group_name: str
+    group_description: str
+    id: NotRequired[str]
+    name: NotRequired[str]
+    description: NotRequired[str]
 
 
 __all__ = (
-    "UserCodespacesPostBodyOneof1PropPullRequestType",
-    "UserCodespacesPostBodyOneof1Type",
+    "TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItemsType",
+    "TeamsTeamIdTeamSyncGroupMappingsPatchBodyType",
 )

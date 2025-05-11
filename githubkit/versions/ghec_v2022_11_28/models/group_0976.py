@@ -11,18 +11,18 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0168 import MinimalRepository
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200(GitHubModel):
-    """OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200"""
+class OrgsOrgActionsRunnersRunnerIdLabelsPutBody(GitHubModel):
+    """OrgsOrgActionsRunnersRunnerIdLabelsPutBody"""
 
-    total_count: int = Field()
-    repositories: list[MinimalRepository] = Field()
+    labels: list[str] = Field(
+        max_length=100 if PYDANTIC_V2 else None,
+        description="The names of the custom labels to set for the runner. You can pass an empty array to remove all custom labels.",
+    )
 
 
-model_rebuild(OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200)
+model_rebuild(OrgsOrgActionsRunnersRunnerIdLabelsPutBody)
 
-__all__ = ("OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200",)
+__all__ = ("OrgsOrgActionsRunnersRunnerIdLabelsPutBody",)

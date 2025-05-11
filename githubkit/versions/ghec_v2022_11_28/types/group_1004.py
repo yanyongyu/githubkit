@@ -9,17 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0068 import CopilotSeatDetailsType
 
 
-class OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200Type(TypedDict):
-    """OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200
+class OrgsOrgCopilotBillingSeatsGetResponse200Type(TypedDict):
+    """OrgsOrgCopilotBillingSeatsGetResponse200"""
 
-    The total number of seats set to "pending cancellation" for members of the
-    specified team(s).
-    """
-
-    seats_cancelled: int
+    total_seats: NotRequired[int]
+    seats: NotRequired[list[CopilotSeatDetailsType]]
 
 
-__all__ = ("OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200Type",)
+__all__ = ("OrgsOrgCopilotBillingSeatsGetResponse200Type",)

@@ -13,75 +13,24 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0473 import EnterpriseWebhooksType
-from .group_0474 import SimpleInstallationType
-from .group_0475 import OrganizationSimpleWebhooksType
-from .group_0476 import RepositoryWebhooksType
-from .group_0513 import PullRequestWebhookType
+from .group_0474 import EnterpriseWebhooksType
+from .group_0475 import SimpleInstallationType
+from .group_0476 import OrganizationSimpleWebhooksType
+from .group_0477 import RepositoryWebhooksType
+from .group_0514 import PullRequestWebhookType
 
 
-class WebhookPullRequestEditedType(TypedDict):
-    """pull_request edited event"""
+class WebhookPullRequestConvertedToDraftType(TypedDict):
+    """pull_request converted_to_draft event"""
 
-    action: Literal["edited"]
-    changes: WebhookPullRequestEditedPropChangesType
+    action: Literal["converted_to_draft"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     number: int
     organization: NotRequired[OrganizationSimpleWebhooksType]
     pull_request: PullRequestWebhookType
     repository: RepositoryWebhooksType
-    sender: NotRequired[SimpleUserType]
+    sender: SimpleUserType
 
 
-class WebhookPullRequestEditedPropChangesType(TypedDict):
-    """WebhookPullRequestEditedPropChanges
-
-    The changes to the comment if the action was `edited`.
-    """
-
-    base: NotRequired[WebhookPullRequestEditedPropChangesPropBaseType]
-    body: NotRequired[WebhookPullRequestEditedPropChangesPropBodyType]
-    title: NotRequired[WebhookPullRequestEditedPropChangesPropTitleType]
-
-
-class WebhookPullRequestEditedPropChangesPropBodyType(TypedDict):
-    """WebhookPullRequestEditedPropChangesPropBody"""
-
-    from_: str
-
-
-class WebhookPullRequestEditedPropChangesPropTitleType(TypedDict):
-    """WebhookPullRequestEditedPropChangesPropTitle"""
-
-    from_: str
-
-
-class WebhookPullRequestEditedPropChangesPropBaseType(TypedDict):
-    """WebhookPullRequestEditedPropChangesPropBase"""
-
-    ref: WebhookPullRequestEditedPropChangesPropBasePropRefType
-    sha: WebhookPullRequestEditedPropChangesPropBasePropShaType
-
-
-class WebhookPullRequestEditedPropChangesPropBasePropRefType(TypedDict):
-    """WebhookPullRequestEditedPropChangesPropBasePropRef"""
-
-    from_: str
-
-
-class WebhookPullRequestEditedPropChangesPropBasePropShaType(TypedDict):
-    """WebhookPullRequestEditedPropChangesPropBasePropSha"""
-
-    from_: str
-
-
-__all__ = (
-    "WebhookPullRequestEditedPropChangesPropBasePropRefType",
-    "WebhookPullRequestEditedPropChangesPropBasePropShaType",
-    "WebhookPullRequestEditedPropChangesPropBaseType",
-    "WebhookPullRequestEditedPropChangesPropBodyType",
-    "WebhookPullRequestEditedPropChangesPropTitleType",
-    "WebhookPullRequestEditedPropChangesType",
-    "WebhookPullRequestEditedType",
-)
+__all__ = ("WebhookPullRequestConvertedToDraftType",)

@@ -11,14 +11,12 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0215 import CustomPropertyValueType
+
+class OrgsOrgPrivateRegistriesPublicKeyGetResponse200Type(TypedDict):
+    """OrgsOrgPrivateRegistriesPublicKeyGetResponse200"""
+
+    key_id: str
+    key: str
 
 
-class OrgsOrgPropertiesValuesPatchBodyType(TypedDict):
-    """OrgsOrgPropertiesValuesPatchBody"""
-
-    repository_names: list[str]
-    properties: list[CustomPropertyValueType]
-
-
-__all__ = ("OrgsOrgPropertiesValuesPatchBodyType",)
+__all__ = ("OrgsOrgPrivateRegistriesPublicKeyGetResponse200Type",)

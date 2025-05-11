@@ -9,14 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoIssuesIssueNumberSubIssuesPostBodyType(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberSubIssuesPostBody"""
+class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3ItemsType(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3Items"""
 
-    sub_issue_id: int
-    replace_parent: NotRequired[bool]
+    name: str
 
 
-__all__ = ("ReposOwnerRepoIssuesIssueNumberSubIssuesPostBodyType",)
+__all__ = ("ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3ItemsType",)

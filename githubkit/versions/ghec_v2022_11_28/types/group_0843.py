@@ -9,25 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0218 import FullRepositoryType
-from .group_0473 import EnterpriseWebhooksType
-from .group_0474 import SimpleInstallationType
-from .group_0475 import OrganizationSimpleWebhooksType
-from .group_0844 import WebhookSecurityAndAnalysisPropChangesType
+from .group_0474 import EnterpriseWebhooksType
+from .group_0475 import SimpleInstallationType
+from .group_0476 import OrganizationSimpleWebhooksType
+from .group_0477 import RepositoryWebhooksType
+from .group_0523 import WebhooksSecurityAdvisoryType
 
 
-class WebhookSecurityAndAnalysisType(TypedDict):
-    """security_and_analysis event"""
+class WebhookSecurityAdvisoryUpdatedType(TypedDict):
+    """security_advisory updated event"""
 
-    changes: WebhookSecurityAndAnalysisPropChangesType
+    action: Literal["updated"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: FullRepositoryType
+    repository: NotRequired[RepositoryWebhooksType]
+    security_advisory: WebhooksSecurityAdvisoryType
     sender: NotRequired[SimpleUserType]
 
 
-__all__ = ("WebhookSecurityAndAnalysisType",)
+__all__ = ("WebhookSecurityAdvisoryUpdatedType",)

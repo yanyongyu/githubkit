@@ -12,31 +12,13 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseActionsRunnerGroupsGetResponse200Type(TypedDict):
-    """EnterprisesEnterpriseActionsRunnerGroupsGetResponse200"""
+class EnterprisesEnterpriseActionsHostedRunnersHostedRunnerIdPatchBodyType(TypedDict):
+    """EnterprisesEnterpriseActionsHostedRunnersHostedRunnerIdPatchBody"""
 
-    total_count: float
-    runner_groups: list[RunnerGroupsEnterpriseType]
-
-
-class RunnerGroupsEnterpriseType(TypedDict):
-    """RunnerGroupsEnterprise"""
-
-    id: float
-    name: str
-    visibility: str
-    default: bool
-    selected_organizations_url: NotRequired[str]
-    runners_url: str
-    hosted_runners_url: NotRequired[str]
-    network_configuration_id: NotRequired[str]
-    allows_public_repositories: bool
-    workflow_restrictions_read_only: NotRequired[bool]
-    restricted_to_workflows: NotRequired[bool]
-    selected_workflows: NotRequired[list[str]]
+    name: NotRequired[str]
+    runner_group_id: NotRequired[int]
+    maximum_runners: NotRequired[int]
+    enable_static_ip: NotRequired[bool]
 
 
-__all__ = (
-    "EnterprisesEnterpriseActionsRunnerGroupsGetResponse200Type",
-    "RunnerGroupsEnterpriseType",
-)
+__all__ = ("EnterprisesEnterpriseActionsHostedRunnersHostedRunnerIdPatchBodyType",)

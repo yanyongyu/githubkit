@@ -13,23 +13,23 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0418 import EnterpriseWebhooksType
-from .group_0419 import SimpleInstallationType
-from .group_0420 import OrganizationSimpleWebhooksType
-from .group_0421 import RepositoryWebhooksType
-from .group_0433 import WebhooksLabelType
+from .group_0419 import EnterpriseWebhooksType
+from .group_0420 import SimpleInstallationType
+from .group_0421 import OrganizationSimpleWebhooksType
+from .group_0422 import RepositoryWebhooksType
+from .group_0441 import WebhooksIssue2Type
 
 
-class WebhookLabelDeletedType(TypedDict):
-    """label deleted event"""
+class WebhookIssuesUnpinnedType(TypedDict):
+    """issues unpinned event"""
 
-    action: Literal["deleted"]
+    action: Literal["unpinned"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    label: WebhooksLabelType
+    issue: WebhooksIssue2Type
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-__all__ = ("WebhookLabelDeletedType",)
+__all__ = ("WebhookIssuesUnpinnedType",)

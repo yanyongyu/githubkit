@@ -11,14 +11,14 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-
-class OrgsOrgCopilotBillingSelectedTeamsPostResponse201Type(TypedDict):
-    """OrgsOrgCopilotBillingSelectedTeamsPostResponse201
-
-    The total number of seats created for members of the specified team(s).
-    """
-
-    seats_created: int
+from .group_0168 import MinimalRepositoryType
 
 
-__all__ = ("OrgsOrgCopilotBillingSelectedTeamsPostResponse201Type",)
+class OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200Type(TypedDict):
+    """OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200"""
+
+    total_count: int
+    repositories: list[MinimalRepositoryType]
+
+
+__all__ = ("OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200Type",)

@@ -13,17 +13,17 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0418 import EnterpriseWebhooksType
-from .group_0419 import SimpleInstallationType
-from .group_0420 import OrganizationSimpleWebhooksType
-from .group_0421 import RepositoryWebhooksType
-from .group_0431 import DiscussionType
+from .group_0419 import EnterpriseWebhooksType
+from .group_0420 import SimpleInstallationType
+from .group_0421 import OrganizationSimpleWebhooksType
+from .group_0422 import RepositoryWebhooksType
+from .group_0432 import DiscussionType
 
 
-class WebhookDiscussionReopenedType(TypedDict):
-    """discussion reopened event"""
+class WebhookDiscussionPinnedType(TypedDict):
+    """discussion pinned event"""
 
-    action: Literal["reopened"]
+    action: Literal["pinned"]
     discussion: DiscussionType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
@@ -32,4 +32,4 @@ class WebhookDiscussionReopenedType(TypedDict):
     sender: SimpleUserType
 
 
-__all__ = ("WebhookDiscussionReopenedType",)
+__all__ = ("WebhookDiscussionPinnedType",)

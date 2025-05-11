@@ -13,52 +13,76 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0473 import EnterpriseWebhooksType
-from .group_0474 import SimpleInstallationType
-from .group_0475 import OrganizationSimpleWebhooksType
-from .group_0476 import RepositoryWebhooksType
-from .group_0486 import WebhooksUserType
+from .group_0474 import EnterpriseWebhooksType
+from .group_0475 import SimpleInstallationType
+from .group_0476 import OrganizationSimpleWebhooksType
+from .group_0477 import RepositoryWebhooksType
+from .group_0501 import WebhooksPreviousMarketplacePurchaseType
 
 
-class WebhookMemberEditedType(TypedDict):
-    """member edited event"""
+class WebhookMarketplacePurchasePendingChangeCancelledType(TypedDict):
+    """marketplace_purchase pending_change_cancelled event"""
 
-    action: Literal["edited"]
-    changes: WebhookMemberEditedPropChangesType
+    action: Literal["pending_change_cancelled"]
+    effective_date: str
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    member: Union[WebhooksUserType, None]
+    marketplace_purchase: (
+        WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseType
+    )
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
+    previous_marketplace_purchase: NotRequired[WebhooksPreviousMarketplacePurchaseType]
+    repository: NotRequired[RepositoryWebhooksType]
     sender: SimpleUserType
 
 
-class WebhookMemberEditedPropChangesType(TypedDict):
-    """WebhookMemberEditedPropChanges
+class WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseType(
+    TypedDict
+):
+    """Marketplace Purchase"""
 
-    The changes to the collaborator permissions
+    account: WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropAccountType
+    billing_cycle: str
+    free_trial_ends_on: None
+    next_billing_date: Union[str, None]
+    on_free_trial: bool
+    plan: WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropPlanType
+    unit_count: int
+
+
+class WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropAccountType(
+    TypedDict
+):
+    """WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropAccou
+    nt
     """
 
-    old_permission: NotRequired[WebhookMemberEditedPropChangesPropOldPermissionType]
-    permission: NotRequired[WebhookMemberEditedPropChangesPropPermissionType]
+    id: int
+    login: str
+    node_id: str
+    organization_billing_email: Union[str, None]
+    type: str
 
 
-class WebhookMemberEditedPropChangesPropOldPermissionType(TypedDict):
-    """WebhookMemberEditedPropChangesPropOldPermission"""
+class WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropPlanType(
+    TypedDict
+):
+    """WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropPlan"""
 
-    from_: str
-
-
-class WebhookMemberEditedPropChangesPropPermissionType(TypedDict):
-    """WebhookMemberEditedPropChangesPropPermission"""
-
-    from_: NotRequired[Union[str, None]]
-    to: NotRequired[Union[str, None]]
+    bullets: list[str]
+    description: str
+    has_free_trial: bool
+    id: int
+    monthly_price_in_cents: int
+    name: str
+    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
+    unit_name: Union[str, None]
+    yearly_price_in_cents: int
 
 
 __all__ = (
-    "WebhookMemberEditedPropChangesPropOldPermissionType",
-    "WebhookMemberEditedPropChangesPropPermissionType",
-    "WebhookMemberEditedPropChangesType",
-    "WebhookMemberEditedType",
+    "WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropAccountType",
+    "WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropPlanType",
+    "WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseType",
+    "WebhookMarketplacePurchasePendingChangeCancelledType",
 )

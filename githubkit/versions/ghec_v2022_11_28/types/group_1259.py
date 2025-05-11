@@ -9,15 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoTransferPostBodyType(TypedDict):
-    """ReposOwnerRepoTransferPostBody"""
+class ReposOwnerRepoStatusesShaPostBodyType(TypedDict):
+    """ReposOwnerRepoStatusesShaPostBody"""
 
-    new_owner: str
-    new_name: NotRequired[str]
-    team_ids: NotRequired[list[int]]
+    state: Literal["error", "failure", "pending", "success"]
+    target_url: NotRequired[Union[str, None]]
+    description: NotRequired[Union[str, None]]
+    context: NotRequired[str]
 
 
-__all__ = ("ReposOwnerRepoTransferPostBodyType",)
+__all__ = ("ReposOwnerRepoStatusesShaPostBodyType",)

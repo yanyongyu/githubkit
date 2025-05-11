@@ -1415,6 +1415,7 @@ class CodeScanningClient:
             error_models={
                 "403": BasicError,
                 "404": BasicError,
+                "422": BasicError,
                 "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
             },
         )
@@ -1470,6 +1471,7 @@ class CodeScanningClient:
             error_models={
                 "403": BasicError,
                 "404": BasicError,
+                "422": BasicError,
                 "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
             },
         )
