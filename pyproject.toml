@@ -293,6 +293,13 @@ source = "https://raw.githubusercontent.com/github/rest-api-description/main/des
   "null",
 ] }
 
+# https://github.com/yanyongyu/githubkit/issues/214
+# repo owner account may be deleted, can be null in pull request
+"/components/schemas/repository/properties/owner" = { anyOf = [
+  { type = "null" },
+  { "$ref" = "#/components/schemas/simple-user" },
+], "$ref" = "<unset>" }
+
 # https://github.com/github/rest-api-description/issues/2491
 "/components/schemas/auto-merge/properties/commit_title" = { type = [
   "string",

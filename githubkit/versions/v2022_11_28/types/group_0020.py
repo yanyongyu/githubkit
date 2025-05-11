@@ -30,7 +30,7 @@ class RepositoryType(TypedDict):
     license_: Union[None, LicenseSimpleType]
     forks: int
     permissions: NotRequired[RepositoryPropPermissionsType]
-    owner: SimpleUserType
+    owner: Union[None, SimpleUserType]
     private: bool
     html_url: str
     description: Union[str, None]
