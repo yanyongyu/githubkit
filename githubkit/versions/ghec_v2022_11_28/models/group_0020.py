@@ -35,7 +35,7 @@ class Repository(GitHubModel):
     license_: Union[None, LicenseSimple] = Field(alias="license")
     forks: int = Field()
     permissions: Missing[RepositoryPropPermissions] = Field(default=UNSET)
-    owner: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    owner: Union[None, SimpleUser] = Field()
     private: bool = Field(
         default=False, description="Whether the repository is private or public."
     )
