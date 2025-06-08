@@ -16,5 +16,5 @@ from .compat import GitHubModel as GitHubModel
 from .config import Config as Config
 from .core import GitHubCore as GitHubCore
 from .github import GitHub as GitHub
-from .paginator import Paginator as Paginator
 from .response import Response as Response
+from .rest.paginator import Paginator as Paginator
