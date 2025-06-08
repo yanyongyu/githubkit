@@ -10,23 +10,23 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class WebhooksPreviousMarketplacePurchaseType(TypedDict):
+class WebhooksMarketplacePurchaseType(TypedDict):
     """Marketplace Purchase"""
 
-    account: WebhooksPreviousMarketplacePurchasePropAccountType
+    account: WebhooksMarketplacePurchasePropAccountType
     billing_cycle: str
-    free_trial_ends_on: None
-    next_billing_date: NotRequired[Union[str, None]]
+    free_trial_ends_on: Union[str, None]
+    next_billing_date: Union[str, None]
     on_free_trial: bool
-    plan: WebhooksPreviousMarketplacePurchasePropPlanType
+    plan: WebhooksMarketplacePurchasePropPlanType
     unit_count: int
 
 
-class WebhooksPreviousMarketplacePurchasePropAccountType(TypedDict):
-    """WebhooksPreviousMarketplacePurchasePropAccount"""
+class WebhooksMarketplacePurchasePropAccountType(TypedDict):
+    """WebhooksMarketplacePurchasePropAccount"""
 
     id: int
     login: str
@@ -35,10 +35,10 @@ class WebhooksPreviousMarketplacePurchasePropAccountType(TypedDict):
     type: str
 
 
-class WebhooksPreviousMarketplacePurchasePropPlanType(TypedDict):
-    """WebhooksPreviousMarketplacePurchasePropPlan"""
+class WebhooksMarketplacePurchasePropPlanType(TypedDict):
+    """WebhooksMarketplacePurchasePropPlan"""
 
-    bullets: list[str]
+    bullets: list[Union[str, None]]
     description: str
     has_free_trial: bool
     id: int
@@ -50,7 +50,7 @@ class WebhooksPreviousMarketplacePurchasePropPlanType(TypedDict):
 
 
 __all__ = (
-    "WebhooksPreviousMarketplacePurchasePropAccountType",
-    "WebhooksPreviousMarketplacePurchasePropPlanType",
-    "WebhooksPreviousMarketplacePurchaseType",
+    "WebhooksMarketplacePurchasePropAccountType",
+    "WebhooksMarketplacePurchasePropPlanType",
+    "WebhooksMarketplacePurchaseType",
 )

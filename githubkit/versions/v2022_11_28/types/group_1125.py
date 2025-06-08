@@ -12,10 +12,10 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoPullsCommentsCommentIdPatchBodyType(TypedDict):
-    """ReposOwnerRepoPullsCommentsCommentIdPatchBody"""
+class ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200Type(TypedDict):
+    """ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200"""
 
-    body: str
+    enabled: bool
 
 
-__all__ = ("ReposOwnerRepoPullsCommentsCommentIdPatchBodyType",)
+__all__ = ("ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200Type",)

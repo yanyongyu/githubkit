@@ -18,13 +18,14 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0537 import WebhookForkPropForkeeAllof0PropPermissions
+from .group_0538 import WebhookForkPropForkeeAllof0PropPermissions
 
 
-class WebhookForkPropForkeeAllof0(GitHubModel):
-    """Repository
+class WebhookForkPropForkee(GitHubModel):
+    """WebhookForkPropForkee
 
-    A git repository
+    The created [`repository`](https://docs.github.com/rest/repos/repos#get-a-
+    repository) resource.
     """
 
     allow_auto_merge: Missing[bool] = Field(
@@ -57,20 +58,20 @@ class WebhookForkPropForkeeAllof0(GitHubModel):
     compare_url: str = Field()
     contents_url: str = Field()
     contributors_url: str = Field()
-    created_at: Union[int, datetime] = Field()
+    created_at: datetime = Field()
     default_branch: str = Field(description="The default branch of the repository.")
     delete_branch_on_merge: Missing[bool] = Field(
         default=UNSET,
         description="Whether to delete head branches when pull requests are merged",
     )
     deployments_url: str = Field()
-    description: Union[str, None] = Field()
+    description: Union[Union[str, None], None] = Field()
     disabled: Missing[bool] = Field(
         default=UNSET, description="Returns whether or not this repository is disabled."
     )
     downloads_url: str = Field()
     events_url: str = Field()
-    fork: bool = Field()
+    fork: Literal[True] = Field()
     forks: int = Field()
     forks_count: int = Field()
     forks_url: str = Field()
@@ -88,7 +89,7 @@ class WebhookForkPropForkeeAllof0(GitHubModel):
         default=True, description="Whether projects are enabled."
     )
     has_wiki: bool = Field(default=True, description="Whether the wiki is enabled.")
-    homepage: Union[str, None] = Field()
+    homepage: Union[Union[str, None], None] = Field()
     hooks_url: str = Field()
     html_url: str = Field()
     id: int = Field(description="Unique identifier of the repository")
@@ -98,29 +99,27 @@ class WebhookForkPropForkeeAllof0(GitHubModel):
     issues_url: str = Field()
     keys_url: str = Field()
     labels_url: str = Field()
-    language: Union[str, None] = Field()
+    language: Union[None, None] = Field()
     languages_url: str = Field()
-    license_: Union[WebhookForkPropForkeeAllof0PropLicense, None] = Field(
-        alias="license", title="License"
-    )
+    license_: Union[WebhookForkPropForkeeMergedLicense, None] = Field(alias="license")
     master_branch: Missing[str] = Field(default=UNSET)
     merges_url: str = Field()
     milestones_url: str = Field()
-    mirror_url: Union[str, None] = Field()
+    mirror_url: Union[None, None] = Field()
     name: str = Field(description="The name of the repository.")
     node_id: str = Field()
     notifications_url: str = Field()
     open_issues: int = Field()
     open_issues_count: int = Field()
     organization: Missing[str] = Field(default=UNSET)
-    owner: Union[WebhookForkPropForkeeAllof0PropOwner, None] = Field(title="User")
+    owner: WebhookForkPropForkeeMergedOwner = Field()
     permissions: Missing[WebhookForkPropForkeeAllof0PropPermissions] = Field(
         default=UNSET
     )
     private: bool = Field(description="Whether the repository is private or public.")
     public: Missing[bool] = Field(default=UNSET)
     pulls_url: str = Field()
-    pushed_at: Union[int, datetime, None] = Field()
+    pushed_at: datetime = Field()
     releases_url: str = Field()
     role_name: Missing[Union[str, None]] = Field(default=UNSET)
     size: int = Field()
@@ -147,8 +146,8 @@ class WebhookForkPropForkeeAllof0(GitHubModel):
     )
 
 
-class WebhookForkPropForkeeAllof0PropLicense(GitHubModel):
-    """License"""
+class WebhookForkPropForkeeMergedLicense(GitHubModel):
+    """WebhookForkPropForkeeMergedLicense"""
 
     key: str = Field()
     name: str = Field()
@@ -157,8 +156,8 @@ class WebhookForkPropForkeeAllof0PropLicense(GitHubModel):
     url: Union[str, None] = Field()
 
 
-class WebhookForkPropForkeeAllof0PropOwner(GitHubModel):
-    """User"""
+class WebhookForkPropForkeeMergedOwner(GitHubModel):
+    """WebhookForkPropForkeeMergedOwner"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
     deleted: Missing[bool] = Field(default=UNSET)
@@ -184,12 +183,12 @@ class WebhookForkPropForkeeAllof0PropOwner(GitHubModel):
     user_view_type: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhookForkPropForkeeAllof0)
-model_rebuild(WebhookForkPropForkeeAllof0PropLicense)
-model_rebuild(WebhookForkPropForkeeAllof0PropOwner)
+model_rebuild(WebhookForkPropForkee)
+model_rebuild(WebhookForkPropForkeeMergedLicense)
+model_rebuild(WebhookForkPropForkeeMergedOwner)
 
 __all__ = (
-    "WebhookForkPropForkeeAllof0",
-    "WebhookForkPropForkeeAllof0PropLicense",
-    "WebhookForkPropForkeeAllof0PropOwner",
+    "WebhookForkPropForkee",
+    "WebhookForkPropForkeeMergedLicense",
+    "WebhookForkPropForkeeMergedOwner",
 )

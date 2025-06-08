@@ -18,18 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0419 import EnterpriseWebhooks
-from .group_0420 import SimpleInstallation
-from .group_0421 import OrganizationSimpleWebhooks
-from .group_0422 import RepositoryWebhooks
-from .group_0462 import WebhooksRelease
+from .group_0420 import EnterpriseWebhooks
+from .group_0421 import SimpleInstallation
+from .group_0422 import OrganizationSimpleWebhooks
+from .group_0423 import RepositoryWebhooks
+from .group_0463 import WebhooksRelease
 
 
-class WebhookReleaseEdited(GitHubModel):
-    """release edited event"""
+class WebhookReleaseDeleted(GitHubModel):
+    """release deleted event"""
 
-    action: Literal["edited"] = Field()
-    changes: WebhookReleaseEditedPropChanges = Field()
+    action: Literal["deleted"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -53,69 +52,9 @@ class WebhookReleaseEdited(GitHubModel):
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    sender: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
-    )
+    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-class WebhookReleaseEditedPropChanges(GitHubModel):
-    """WebhookReleaseEditedPropChanges"""
+model_rebuild(WebhookReleaseDeleted)
 
-    body: Missing[WebhookReleaseEditedPropChangesPropBody] = Field(default=UNSET)
-    name: Missing[WebhookReleaseEditedPropChangesPropName] = Field(default=UNSET)
-    tag_name: Missing[WebhookReleaseEditedPropChangesPropTagName] = Field(default=UNSET)
-    make_latest: Missing[WebhookReleaseEditedPropChangesPropMakeLatest] = Field(
-        default=UNSET
-    )
-
-
-class WebhookReleaseEditedPropChangesPropBody(GitHubModel):
-    """WebhookReleaseEditedPropChangesPropBody"""
-
-    from_: str = Field(
-        alias="from",
-        description="The previous version of the body if the action was `edited`.",
-    )
-
-
-class WebhookReleaseEditedPropChangesPropName(GitHubModel):
-    """WebhookReleaseEditedPropChangesPropName"""
-
-    from_: str = Field(
-        alias="from",
-        description="The previous version of the name if the action was `edited`.",
-    )
-
-
-class WebhookReleaseEditedPropChangesPropTagName(GitHubModel):
-    """WebhookReleaseEditedPropChangesPropTagName"""
-
-    from_: str = Field(
-        alias="from",
-        description="The previous version of the tag_name if the action was `edited`.",
-    )
-
-
-class WebhookReleaseEditedPropChangesPropMakeLatest(GitHubModel):
-    """WebhookReleaseEditedPropChangesPropMakeLatest"""
-
-    to: bool = Field(
-        description="Whether this release was explicitly `edited` to be the latest."
-    )
-
-
-model_rebuild(WebhookReleaseEdited)
-model_rebuild(WebhookReleaseEditedPropChanges)
-model_rebuild(WebhookReleaseEditedPropChangesPropBody)
-model_rebuild(WebhookReleaseEditedPropChangesPropName)
-model_rebuild(WebhookReleaseEditedPropChangesPropTagName)
-model_rebuild(WebhookReleaseEditedPropChangesPropMakeLatest)
-
-__all__ = (
-    "WebhookReleaseEdited",
-    "WebhookReleaseEditedPropChanges",
-    "WebhookReleaseEditedPropChangesPropBody",
-    "WebhookReleaseEditedPropChangesPropMakeLatest",
-    "WebhookReleaseEditedPropChangesPropName",
-    "WebhookReleaseEditedPropChangesPropTagName",
-)
+__all__ = ("WebhookReleaseDeleted",)

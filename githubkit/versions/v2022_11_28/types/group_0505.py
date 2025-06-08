@@ -13,17 +13,17 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0279 import DependabotAlertType
-from .group_0419 import EnterpriseWebhooksType
-from .group_0420 import SimpleInstallationType
-from .group_0421 import OrganizationSimpleWebhooksType
-from .group_0422 import RepositoryWebhooksType
+from .group_0280 import DependabotAlertType
+from .group_0420 import EnterpriseWebhooksType
+from .group_0421 import SimpleInstallationType
+from .group_0422 import OrganizationSimpleWebhooksType
+from .group_0423 import RepositoryWebhooksType
 
 
-class WebhookDependabotAlertReintroducedType(TypedDict):
-    """Dependabot alert reintroduced event"""
+class WebhookDependabotAlertFixedType(TypedDict):
+    """Dependabot alert fixed event"""
 
-    action: Literal["reintroduced"]
+    action: Literal["fixed"]
     alert: DependabotAlertType
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
@@ -32,4 +32,4 @@ class WebhookDependabotAlertReintroducedType(TypedDict):
     sender: SimpleUserType
 
 
-__all__ = ("WebhookDependabotAlertReintroducedType",)
+__all__ = ("WebhookDependabotAlertFixedType",)

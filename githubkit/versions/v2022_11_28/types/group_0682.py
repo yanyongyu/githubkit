@@ -13,23 +13,23 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0419 import EnterpriseWebhooksType
-from .group_0420 import SimpleInstallationType
-from .group_0421 import OrganizationSimpleWebhooksType
-from .group_0422 import RepositoryWebhooksType
-from .group_0451 import WebhooksProjectType
+from .group_0420 import EnterpriseWebhooksType
+from .group_0421 import SimpleInstallationType
+from .group_0422 import OrganizationSimpleWebhooksType
+from .group_0423 import RepositoryWebhooksType
+from .group_0453 import WebhooksProjectColumnType
 
 
-class WebhookProjectCreatedType(TypedDict):
-    """project created event"""
+class WebhookProjectColumnMovedType(TypedDict):
+    """project_column moved event"""
 
-    action: Literal["created"]
+    action: Literal["moved"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    project: WebhooksProjectType
+    project_column: WebhooksProjectColumnType
     repository: NotRequired[RepositoryWebhooksType]
     sender: SimpleUserType
 
 
-__all__ = ("WebhookProjectCreatedType",)
+__all__ = ("WebhookProjectColumnMovedType",)

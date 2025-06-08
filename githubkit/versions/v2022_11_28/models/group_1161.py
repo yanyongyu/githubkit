@@ -12,14 +12,31 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBody(GitHubModel):
-    """TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBody"""
+class ReposTemplateOwnerTemplateRepoGeneratePostBody(GitHubModel):
+    """ReposTemplateOwnerTemplateRepoGeneratePostBody"""
 
-    body: str = Field(description="The discussion comment's body text.")
+    owner: Missing[str] = Field(
+        default=UNSET,
+        description="The organization or person who will own the new repository. To create a new repository in an organization, the authenticated user must be a member of the specified organization.",
+    )
+    name: str = Field(description="The name of the new repository.")
+    description: Missing[str] = Field(
+        default=UNSET, description="A short description of the new repository."
+    )
+    include_all_branches: Missing[bool] = Field(
+        default=UNSET,
+        description="Set to `true` to include the directory structure and files from all branches in the template repository, and not just the default branch. Default: `false`.",
+    )
+    private: Missing[bool] = Field(
+        default=UNSET,
+        description="Either `true` to create a new private repository or `false` to create a new public one.",
+    )
 
 
-model_rebuild(TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBody)
+model_rebuild(ReposTemplateOwnerTemplateRepoGeneratePostBody)
 
-__all__ = ("TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBody",)
+__all__ = ("ReposTemplateOwnerTemplateRepoGeneratePostBody",)

@@ -11,23 +11,31 @@ from __future__ import annotations
 
 from datetime import datetime
 from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0003 import SimpleUserType
 
 
-class WebhooksProjectChangesType(TypedDict):
-    """WebhooksProjectChanges"""
+class ProjectsV2Type(TypedDict):
+    """Projects v2 Project
 
-    archived_at: NotRequired[WebhooksProjectChangesPropArchivedAtType]
+    A projects v2 project
+    """
+
+    id: float
+    node_id: str
+    owner: SimpleUserType
+    creator: SimpleUserType
+    title: str
+    description: Union[str, None]
+    public: bool
+    closed_at: Union[datetime, None]
+    created_at: datetime
+    updated_at: datetime
+    number: int
+    short_description: Union[str, None]
+    deleted_at: Union[datetime, None]
+    deleted_by: Union[None, SimpleUserType]
 
 
-class WebhooksProjectChangesPropArchivedAtType(TypedDict):
-    """WebhooksProjectChangesPropArchivedAt"""
-
-    from_: NotRequired[Union[datetime, None]]
-    to: NotRequired[Union[datetime, None]]
-
-
-__all__ = (
-    "WebhooksProjectChangesPropArchivedAtType",
-    "WebhooksProjectChangesType",
-)
+__all__ = ("ProjectsV2Type",)

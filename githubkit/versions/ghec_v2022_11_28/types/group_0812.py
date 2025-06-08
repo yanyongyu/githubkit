@@ -13,16 +13,16 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0474 import EnterpriseWebhooksType
-from .group_0475 import SimpleInstallationType
-from .group_0476 import OrganizationSimpleWebhooksType
-from .group_0477 import RepositoryWebhooksType
+from .group_0475 import EnterpriseWebhooksType
+from .group_0476 import SimpleInstallationType
+from .group_0477 import OrganizationSimpleWebhooksType
+from .group_0478 import RepositoryWebhooksType
 
 
-class WebhookRepositoryCreatedType(TypedDict):
-    """repository created event"""
+class WebhookRepositoryArchivedType(TypedDict):
+    """repository archived event"""
 
-    action: Literal["created"]
+    action: Literal["archived"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
@@ -30,4 +30,4 @@ class WebhookRepositoryCreatedType(TypedDict):
     sender: SimpleUserType
 
 
-__all__ = ("WebhookRepositoryCreatedType",)
+__all__ = ("WebhookRepositoryArchivedType",)

@@ -9,32 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class BillingUsageReportType(TypedDict):
-    """BillingUsageReport"""
-
-    usage_items: NotRequired[list[BillingUsageReportPropUsageItemsItemsType]]
+from .group_0031 import SimpleRepositoryType
 
 
-class BillingUsageReportPropUsageItemsItemsType(TypedDict):
-    """BillingUsageReportPropUsageItemsItems"""
+class DependabotRepositoryAccessDetailsType(TypedDict):
+    """Dependabot Repository Access Details
 
-    date: str
-    product: str
-    sku: str
-    quantity: int
-    unit_type: str
-    price_per_unit: float
-    gross_amount: float
-    discount_amount: float
-    net_amount: float
-    organization_name: str
-    repository_name: NotRequired[str]
+    Information about repositories that Dependabot is able to access in an
+    organization
+    """
+
+    default_level: NotRequired[Union[None, Literal["public", "internal"]]]
+    accessible_repositories: NotRequired[list[SimpleRepositoryType]]
 
 
-__all__ = (
-    "BillingUsageReportPropUsageItemsItemsType",
-    "BillingUsageReportType",
-)
+__all__ = ("DependabotRepositoryAccessDetailsType",)

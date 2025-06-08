@@ -13,23 +13,23 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0419 import EnterpriseWebhooksType
-from .group_0420 import SimpleInstallationType
-from .group_0421 import OrganizationSimpleWebhooksType
-from .group_0422 import RepositoryWebhooksType
-from .group_0462 import WebhooksReleaseType
+from .group_0420 import EnterpriseWebhooksType
+from .group_0421 import SimpleInstallationType
+from .group_0422 import OrganizationSimpleWebhooksType
+from .group_0423 import RepositoryWebhooksType
+from .group_0464 import WebhooksRelease1Type
 
 
-class WebhookReleaseReleasedType(TypedDict):
-    """release released event"""
+class WebhookReleasePublishedType(TypedDict):
+    """release published event"""
 
-    action: Literal["released"]
+    action: Literal["published"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    release: WebhooksReleaseType
+    release: WebhooksRelease1Type
     repository: RepositoryWebhooksType
     sender: NotRequired[SimpleUserType]
 
 
-__all__ = ("WebhookReleaseReleasedType",)
+__all__ = ("WebhookReleasePublishedType",)

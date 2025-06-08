@@ -16,13 +16,15 @@ from githubkit.compat import GitHubModel, model_rebuild
 from .group_0032 import ActionsHostedRunnerImage
 
 
-class EnterprisesEnterpriseActionsHostedRunnersImagesPartnerGetResponse200(GitHubModel):
-    """EnterprisesEnterpriseActionsHostedRunnersImagesPartnerGetResponse200"""
+class EnterprisesEnterpriseActionsHostedRunnersImagesGithubOwnedGetResponse200(
+    GitHubModel
+):
+    """EnterprisesEnterpriseActionsHostedRunnersImagesGithubOwnedGetResponse200"""
 
     total_count: int = Field()
     images: list[ActionsHostedRunnerImage] = Field()
 
 
-model_rebuild(EnterprisesEnterpriseActionsHostedRunnersImagesPartnerGetResponse200)
+model_rebuild(EnterprisesEnterpriseActionsHostedRunnersImagesGithubOwnedGetResponse200)
 
-__all__ = ("EnterprisesEnterpriseActionsHostedRunnersImagesPartnerGetResponse200",)
+__all__ = ("EnterprisesEnterpriseActionsHostedRunnersImagesGithubOwnedGetResponse200",)

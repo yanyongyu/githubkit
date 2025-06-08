@@ -17,89 +17,35 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0080 import RepositoryRulesetBypassActor
-from .group_0095 import (
-    RepositoryRuleCreation,
-    RepositoryRuleDeletion,
-    RepositoryRuleNonFastForward,
-    RepositoryRuleRequiredSignatures,
-)
-from .group_0096 import RepositoryRuleUpdate
-from .group_0098 import RepositoryRuleRequiredLinearHistory
-from .group_0099 import RepositoryRuleMergeQueue
-from .group_0101 import RepositoryRuleRequiredDeployments
-from .group_0104 import RepositoryRulePullRequest
-from .group_0106 import RepositoryRuleRequiredStatusChecks
-from .group_0108 import RepositoryRuleCommitMessagePattern
-from .group_0110 import RepositoryRuleCommitAuthorEmailPattern
-from .group_0112 import RepositoryRuleCommitterEmailPattern
-from .group_0114 import RepositoryRuleBranchNamePattern
-from .group_0116 import RepositoryRuleTagNamePattern
-from .group_0118 import RepositoryRuleFilePathRestriction
-from .group_0120 import RepositoryRuleMaxFilePathLength
-from .group_0122 import RepositoryRuleFileExtensionRestriction
-from .group_0124 import RepositoryRuleMaxFileSize
-from .group_0127 import RepositoryRuleWorkflows
-from .group_0129 import RepositoryRuleCodeScanning
-from .group_0133 import OrgRulesetConditionsOneof0
-from .group_0134 import OrgRulesetConditionsOneof1
-from .group_0135 import OrgRulesetConditionsOneof2
 
+class OrgsOrgPrivateRegistriesSecretNamePatchBody(GitHubModel):
+    """OrgsOrgPrivateRegistriesSecretNamePatchBody"""
 
-class OrgsOrgRulesetsPostBody(GitHubModel):
-    """OrgsOrgRulesetsPostBody"""
-
-    name: str = Field(description="The name of the ruleset.")
-    target: Missing[Literal["branch", "tag", "push", "repository"]] = Field(
-        default=UNSET, description="The target of the ruleset"
-    )
-    enforcement: Literal["disabled", "active", "evaluate"] = Field(
-        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page. `evaluate` is not available for the `repository` target."
-    )
-    bypass_actors: Missing[list[RepositoryRulesetBypassActor]] = Field(
+    registry_type: Missing[
+        Literal["maven_repository", "nuget_feed", "goproxy_server"]
+    ] = Field(default=UNSET, description="The registry type.")
+    username: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="The actors that can bypass the rules in this ruleset",
+        description="The username to use when authenticating with the private registry. This field should be omitted if the private registry does not require a username for authentication.",
     )
-    conditions: Missing[
-        Union[
-            OrgRulesetConditionsOneof0,
-            OrgRulesetConditionsOneof1,
-            OrgRulesetConditionsOneof2,
-        ]
-    ] = Field(
+    encrypted_value: Missing[str] = Field(
+        pattern="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
         default=UNSET,
-        title="Organization ruleset conditions",
-        description="Conditions for an organization ruleset.\nThe branch and tag rulesets conditions object should contain both `repository_name` and `ref_name` properties, or both `repository_id` and `ref_name` properties, or both `repository_property` and `ref_name` properties.\nThe push rulesets conditions object does not require the `ref_name` property.\nFor repository policy rulesets, the conditions object should only contain the `repository_name`, the `repository_id`, or the `repository_property`.",
+        description="The value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get private registries public key for an organization](https://docs.github.com/enterprise-cloud@latest//rest/private-registries/organization-configurations#get-private-registries-public-key-for-an-organization) endpoint.",
     )
-    rules: Missing[
-        list[
-            Union[
-                RepositoryRuleCreation,
-                RepositoryRuleUpdate,
-                RepositoryRuleDeletion,
-                RepositoryRuleRequiredLinearHistory,
-                RepositoryRuleMergeQueue,
-                RepositoryRuleRequiredDeployments,
-                RepositoryRuleRequiredSignatures,
-                RepositoryRulePullRequest,
-                RepositoryRuleRequiredStatusChecks,
-                RepositoryRuleNonFastForward,
-                RepositoryRuleCommitMessagePattern,
-                RepositoryRuleCommitAuthorEmailPattern,
-                RepositoryRuleCommitterEmailPattern,
-                RepositoryRuleBranchNamePattern,
-                RepositoryRuleTagNamePattern,
-                RepositoryRuleFilePathRestriction,
-                RepositoryRuleMaxFilePathLength,
-                RepositoryRuleFileExtensionRestriction,
-                RepositoryRuleMaxFileSize,
-                RepositoryRuleWorkflows,
-                RepositoryRuleCodeScanning,
-            ]
-        ]
-    ] = Field(default=UNSET, description="An array of rules within the ruleset.")
+    key_id: Missing[str] = Field(
+        default=UNSET, description="The ID of the key you used to encrypt the secret."
+    )
+    visibility: Missing[Literal["all", "private", "selected"]] = Field(
+        default=UNSET,
+        description="Which type of organization repositories have access to the private registry. `selected` means only the repositories specified by `selected_repository_ids` can access the private registry.",
+    )
+    selected_repository_ids: Missing[list[int]] = Field(
+        default=UNSET,
+        description="An array of repository IDs that can access the organization private registry. You can only provide a list of repository IDs when `visibility` is set to `selected`. This field should be omitted if `visibility` is set to `all` or `private`.",
+    )
 
 
-model_rebuild(OrgsOrgRulesetsPostBody)
+model_rebuild(OrgsOrgPrivateRegistriesSecretNamePatchBody)
 
-__all__ = ("OrgsOrgRulesetsPostBody",)
+__all__ = ("OrgsOrgPrivateRegistriesSecretNamePatchBody",)

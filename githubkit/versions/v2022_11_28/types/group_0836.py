@@ -15,13 +15,11 @@ from typing_extensions import NotRequired, TypedDict
 from .group_0029 import CodeScanningDefaultSetupOptionsType
 
 
-class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyType(
-    TypedDict
-):
-    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBody"""
+class EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyType(TypedDict):
+    """EnterprisesEnterpriseCodeSecurityConfigurationsPostBody"""
 
-    name: NotRequired[str]
-    description: NotRequired[str]
+    name: str
+    description: str
     advanced_security: NotRequired[
         Literal["enabled", "disabled", "code_security", "secret_protection"]
     ]
@@ -30,7 +28,7 @@ class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyTyp
         Literal["enabled", "disabled", "not_set"]
     ]
     dependency_graph_autosubmit_action_options: NotRequired[
-        EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptionsType
+        EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptionsType
     ]
     dependabot_alerts: NotRequired[Literal["enabled", "disabled", "not_set"]]
     dependabot_security_updates: NotRequired[Literal["enabled", "disabled", "not_set"]]
@@ -63,11 +61,11 @@ class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyTyp
     enforcement: NotRequired[Literal["enforced", "unenforced"]]
 
 
-class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptionsType(
+class EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptionsType(
     TypedDict
 ):
-    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDepen
-    dencyGraphAutosubmitActionOptions
+    """EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosu
+    bmitActionOptions
 
     Feature options for Automatic dependency submission
     """
@@ -76,6 +74,6 @@ class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPro
 
 
 __all__ = (
-    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptionsType",
-    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyType",
+    "EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptionsType",
+    "EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyType",
 )

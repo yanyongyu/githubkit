@@ -41,9 +41,6 @@ class IntegrationType(TypedDict):
     permissions: IntegrationPropPermissionsType
     events: list[str]
     installations_count: NotRequired[int]
-    client_secret: NotRequired[str]
-    webhook_secret: NotRequired[Union[str, None]]
-    pem: NotRequired[str]
 
 
 __all__ = ("IntegrationType",)

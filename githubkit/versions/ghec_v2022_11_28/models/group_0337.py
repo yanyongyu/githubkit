@@ -12,18 +12,55 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0336 import CustomDeploymentRuleApp
 
 
-class ShortBlob(GitHubModel):
-    """Short Blob
+class DeploymentProtectionRule(GitHubModel):
+    """Deployment protection rule
 
-    Short Blob
+    Deployment protection rule
     """
 
-    url: str = Field()
-    sha: str = Field()
+    id: int = Field(
+        description="The unique identifier for the deployment protection rule."
+    )
+    node_id: str = Field(description="The node ID for the deployment protection rule.")
+    enabled: bool = Field(
+        description="Whether the deployment protection rule is enabled for the environment."
+    )
+    app: CustomDeploymentRuleApp = Field(
+        title="Custom deployment protection rule app",
+        description="A GitHub App that is providing a custom deployment protection rule.",
+    )
 
 
-model_rebuild(ShortBlob)
+class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200(
+    GitHubModel
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200
 
-__all__ = ("ShortBlob",)
+    Examples:
+        {'$ref': '#/components/examples/deployment-protection-rules'}
+    """
+
+    total_count: Missing[int] = Field(
+        default=UNSET,
+        description="The number of enabled custom deployment protection rules for this environment",
+    )
+    custom_deployment_protection_rules: Missing[list[DeploymentProtectionRule]] = Field(
+        default=UNSET
+    )
+
+
+model_rebuild(DeploymentProtectionRule)
+model_rebuild(
+    ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200
+)
+
+__all__ = (
+    "DeploymentProtectionRule",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200",
+)

@@ -12,17 +12,17 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0066 import ActionsHostedRunner
-
-
-class OrgsOrgActionsHostedRunnersGetResponse200(GitHubModel):
-    """OrgsOrgActionsHostedRunnersGetResponse200"""
-
-    total_count: int = Field()
-    runners: list[ActionsHostedRunner] = Field()
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-model_rebuild(OrgsOrgActionsHostedRunnersGetResponse200)
+class OrganizationsOrgDependabotRepositoryAccessPatchBodyOneof1(GitHubModel):
+    """OrganizationsOrgDependabotRepositoryAccessPatchBodyOneof1"""
 
-__all__ = ("OrgsOrgActionsHostedRunnersGetResponse200",)
+    repository_ids_to_add: Missing[list[int]] = Field(default=UNSET)
+    repository_ids_to_remove: list[int] = Field()
+
+
+model_rebuild(OrganizationsOrgDependabotRepositoryAccessPatchBodyOneof1)
+
+__all__ = ("OrganizationsOrgDependabotRepositoryAccessPatchBodyOneof1",)

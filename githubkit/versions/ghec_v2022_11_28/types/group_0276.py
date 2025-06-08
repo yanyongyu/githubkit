@@ -9,38 +9,69 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0010 import IntegrationType
 from .group_0168 import MinimalRepositoryType
+from .group_0246 import PullRequestMinimalType
+from .group_0247 import SimpleCommitType
 
 
-class CheckSuitePreferenceType(TypedDict):
-    """Check Suite Preference
+class CheckSuiteType(TypedDict):
+    """CheckSuite
 
-    Check suite configuration preferences for a repository.
+    A suite of checks performed on the code of a given code change
     """
 
-    preferences: CheckSuitePreferencePropPreferencesType
-    repository: MinimalRepositoryType
-
-
-class CheckSuitePreferencePropPreferencesType(TypedDict):
-    """CheckSuitePreferencePropPreferences"""
-
-    auto_trigger_checks: NotRequired[
-        list[CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsType]
+    id: int
+    node_id: str
+    head_branch: Union[str, None]
+    head_sha: str
+    status: Union[
+        None,
+        Literal[
+            "queued", "in_progress", "completed", "waiting", "requested", "pending"
+        ],
     ]
+    conclusion: Union[
+        None,
+        Literal[
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "skipped",
+            "timed_out",
+            "action_required",
+            "startup_failure",
+            "stale",
+        ],
+    ]
+    url: Union[str, None]
+    before: Union[str, None]
+    after: Union[str, None]
+    pull_requests: Union[list[PullRequestMinimalType], None]
+    app: Union[None, IntegrationType, None]
+    repository: MinimalRepositoryType
+    created_at: Union[datetime, None]
+    updated_at: Union[datetime, None]
+    head_commit: SimpleCommitType
+    latest_check_runs_count: int
+    check_runs_url: str
+    rerequestable: NotRequired[bool]
+    runs_rerequestable: NotRequired[bool]
 
 
-class CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsType(TypedDict):
-    """CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems"""
+class ReposOwnerRepoCommitsRefCheckSuitesGetResponse200Type(TypedDict):
+    """ReposOwnerRepoCommitsRefCheckSuitesGetResponse200"""
 
-    app_id: int
-    setting: bool
+    total_count: int
+    check_suites: list[CheckSuiteType]
 
 
 __all__ = (
-    "CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsType",
-    "CheckSuitePreferencePropPreferencesType",
-    "CheckSuitePreferenceType",
+    "CheckSuiteType",
+    "ReposOwnerRepoCommitsRefCheckSuitesGetResponse200Type",
 )

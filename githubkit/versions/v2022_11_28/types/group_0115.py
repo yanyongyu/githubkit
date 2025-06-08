@@ -9,27 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType
 
-class CustomPropertyType(TypedDict):
-    """Organization Custom Property
 
-    Custom property defined on an organization
+class ProjectType(TypedDict):
+    """Project
+
+    Projects are a way to organize columns and cards of work.
     """
 
-    property_name: str
-    url: NotRequired[str]
-    source_type: NotRequired[Literal["organization", "enterprise"]]
-    value_type: Literal["string", "single_select", "multi_select", "true_false"]
-    required: NotRequired[bool]
-    default_value: NotRequired[Union[str, list[str], None]]
-    description: NotRequired[Union[str, None]]
-    allowed_values: NotRequired[Union[list[str], None]]
-    values_editable_by: NotRequired[
-        Union[None, Literal["org_actors", "org_and_repo_actors"]]
-    ]
+    owner_url: str
+    url: str
+    html_url: str
+    columns_url: str
+    id: int
+    node_id: str
+    name: str
+    body: Union[str, None]
+    number: int
+    state: str
+    creator: Union[None, SimpleUserType]
+    created_at: datetime
+    updated_at: datetime
+    organization_permission: NotRequired[Literal["read", "write", "admin", "none"]]
+    private: NotRequired[bool]
 
 
-__all__ = ("CustomPropertyType",)
+__all__ = ("ProjectType",)

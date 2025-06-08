@@ -120,6 +120,7 @@ class RepositoryType(TypedDict):
     master_branch: NotRequired[str]
     starred_at: NotRequired[str]
     anonymous_access_enabled: NotRequired[bool]
+    code_search_index_status: NotRequired[RepositoryPropCodeSearchIndexStatusType]
 
 
 class RepositoryPropPermissionsType(TypedDict):
@@ -132,7 +133,18 @@ class RepositoryPropPermissionsType(TypedDict):
     maintain: NotRequired[bool]
 
 
+class RepositoryPropCodeSearchIndexStatusType(TypedDict):
+    """RepositoryPropCodeSearchIndexStatus
+
+    The status of the code search index for this repository
+    """
+
+    lexical_search_ok: NotRequired[bool]
+    lexical_commit_sha: NotRequired[str]
+
+
 __all__ = (
+    "RepositoryPropCodeSearchIndexStatusType",
     "RepositoryPropPermissionsType",
     "RepositoryType",
 )

@@ -16,28 +16,29 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ProjectsColumnsColumnIdCardsPostResponse503(GitHubModel):
-    """ProjectsColumnsColumnIdCardsPostResponse503"""
+class ProjectsColumnsCardsCardIdMovesPostResponse403(GitHubModel):
+    """ProjectsColumnsCardsCardIdMovesPostResponse403"""
 
-    code: Missing[str] = Field(default=UNSET)
     message: Missing[str] = Field(default=UNSET)
     documentation_url: Missing[str] = Field(default=UNSET)
     errors: Missing[
-        list[ProjectsColumnsColumnIdCardsPostResponse503PropErrorsItems]
+        list[ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItems]
     ] = Field(default=UNSET)
 
 
-class ProjectsColumnsColumnIdCardsPostResponse503PropErrorsItems(GitHubModel):
-    """ProjectsColumnsColumnIdCardsPostResponse503PropErrorsItems"""
+class ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItems(GitHubModel):
+    """ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItems"""
 
     code: Missing[str] = Field(default=UNSET)
     message: Missing[str] = Field(default=UNSET)
+    resource: Missing[str] = Field(default=UNSET)
+    field: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(ProjectsColumnsColumnIdCardsPostResponse503)
-model_rebuild(ProjectsColumnsColumnIdCardsPostResponse503PropErrorsItems)
+model_rebuild(ProjectsColumnsCardsCardIdMovesPostResponse403)
+model_rebuild(ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItems)
 
 __all__ = (
-    "ProjectsColumnsColumnIdCardsPostResponse503",
-    "ProjectsColumnsColumnIdCardsPostResponse503PropErrorsItems",
+    "ProjectsColumnsCardsCardIdMovesPostResponse403",
+    "ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItems",
 )

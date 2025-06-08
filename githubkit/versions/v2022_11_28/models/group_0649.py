@@ -18,17 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0419 import EnterpriseWebhooks
-from .group_0420 import SimpleInstallation
-from .group_0421 import OrganizationSimpleWebhooks
-from .group_0422 import RepositoryWebhooks
-from .group_0430 import WebhooksUser
+from .group_0420 import EnterpriseWebhooks
+from .group_0421 import SimpleInstallation
+from .group_0422 import OrganizationSimpleWebhooks
+from .group_0423 import RepositoryWebhooks
+from .group_0431 import WebhooksUser
 
 
-class WebhookOrgBlockUnblocked(GitHubModel):
-    """org_block unblocked event"""
+class WebhookOrgBlockBlocked(GitHubModel):
+    """org_block blocked event"""
 
-    action: Literal["unblocked"] = Field()
+    action: Literal["blocked"] = Field()
     blocked_user: Union[WebhooksUser, None] = Field(title="User")
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
@@ -52,6 +52,6 @@ class WebhookOrgBlockUnblocked(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookOrgBlockUnblocked)
+model_rebuild(WebhookOrgBlockBlocked)
 
-__all__ = ("WebhookOrgBlockUnblocked",)
+__all__ = ("WebhookOrgBlockBlocked",)

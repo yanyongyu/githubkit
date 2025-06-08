@@ -668,6 +668,9 @@ if TYPE_CHECKING:
         DependabotPublicKeyType as DependabotPublicKeyType,
     )
     from githubkit.versions.v2022_11_28.types import (
+        DependabotRepositoryAccessDetailsType as DependabotRepositoryAccessDetailsType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         DependabotSecretType as DependabotSecretType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -1211,6 +1214,15 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.types import (
         OrganizationSimpleWebhooksType as OrganizationSimpleWebhooksType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBodyType as OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBodyType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        OrganizationsOrgDependabotRepositoryAccessPatchBodyOneof0Type as OrganizationsOrgDependabotRepositoryAccessPatchBodyOneof0Type,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        OrganizationsOrgDependabotRepositoryAccessPatchBodyOneof1Type as OrganizationsOrgDependabotRepositoryAccessPatchBodyOneof1Type,
     )
     from githubkit.versions.v2022_11_28.types import (
         OrganizationUpdateIssueTypeType as OrganizationUpdateIssueTypeType,
@@ -2059,6 +2071,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.types import (
         RepositoryInvitationType as RepositoryInvitationType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        RepositoryPropCodeSearchIndexStatusType as RepositoryPropCodeSearchIndexStatusType,
     )
     from githubkit.versions.v2022_11_28.types import (
         RepositoryPropPermissionsType as RepositoryPropPermissionsType,
@@ -9951,6 +9966,7 @@ else:
             "LicenseSimpleType",
             "RepositoryType",
             "RepositoryPropPermissionsType",
+            "RepositoryPropCodeSearchIndexStatusType",
             "InstallationTokenType",
             "ScopedInstallationType",
             "AuthorizationType",
@@ -10041,6 +10057,7 @@ else:
             "ThreadPropSubjectType",
             "ThreadSubscriptionType",
             "OrganizationSimpleType",
+            "DependabotRepositoryAccessDetailsType",
             "BillingUsageReportType",
             "BillingUsageReportPropUsageItemsItemsType",
             "OrganizationFullType",
@@ -12853,6 +12870,9 @@ else:
             "NotificationsPutBodyType",
             "NotificationsPutResponse202Type",
             "NotificationsThreadsThreadIdSubscriptionPutBodyType",
+            "OrganizationsOrgDependabotRepositoryAccessPatchBodyOneof0Type",
+            "OrganizationsOrgDependabotRepositoryAccessPatchBodyOneof1Type",
+            "OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBodyType",
             "OrgsOrgPatchBodyType",
             "OrgsOrgActionsCacheUsageByRepositoryGetResponse200Type",
             "ActionsCacheUsageByRepositoryType",

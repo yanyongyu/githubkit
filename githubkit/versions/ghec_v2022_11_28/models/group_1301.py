@@ -9,24 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class UserProjectsPostBody(GitHubModel):
-    """UserProjectsPostBody"""
-
-    name: str = Field(description="Name of the project")
-    body: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Body of the project"
-    )
+from .group_0020 import Repository
 
 
-model_rebuild(UserProjectsPostBody)
+class UserInstallationsInstallationIdRepositoriesGetResponse200(GitHubModel):
+    """UserInstallationsInstallationIdRepositoriesGetResponse200"""
 
-__all__ = ("UserProjectsPostBody",)
+    total_count: int = Field()
+    repository_selection: Missing[str] = Field(default=UNSET)
+    repositories: list[Repository] = Field()
+
+
+model_rebuild(UserInstallationsInstallationIdRepositoriesGetResponse200)
+
+__all__ = ("UserInstallationsInstallationIdRepositoriesGetResponse200",)

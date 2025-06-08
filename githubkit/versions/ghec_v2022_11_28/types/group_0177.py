@@ -13,40 +13,81 @@ from datetime import datetime
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0067 import TeamType
+from .group_0053 import BypassResponseType
 
 
-class CampaignSummaryType(TypedDict):
-    """Campaign summary
+class SecretScanningBypassRequestType(TypedDict):
+    """Secret scanning bypass request
 
-    The campaign metadata and alert stats.
+    A bypass request made by a user asking to be exempted from push protection in
+    this repository.
     """
 
-    number: int
-    created_at: datetime
-    updated_at: datetime
+    id: NotRequired[int]
+    number: NotRequired[int]
+    repository: NotRequired[SecretScanningBypassRequestPropRepositoryType]
+    organization: NotRequired[SecretScanningBypassRequestPropOrganizationType]
+    requester: NotRequired[SecretScanningBypassRequestPropRequesterType]
+    request_type: NotRequired[str]
+    data: NotRequired[Union[list[SecretScanningBypassRequestPropDataItemsType], None]]
+    resource_identifier: NotRequired[str]
+    status: NotRequired[
+        Literal[
+            "pending", "denied", "approved", "cancelled", "completed", "expired", "open"
+        ]
+    ]
+    requester_comment: NotRequired[Union[str, None]]
+    expires_at: NotRequired[datetime]
+    created_at: NotRequired[datetime]
+    responses: NotRequired[Union[list[BypassResponseType], None]]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+
+
+class SecretScanningBypassRequestPropRepositoryType(TypedDict):
+    """SecretScanningBypassRequestPropRepository
+
+    The repository the bypass request is for.
+    """
+
+    id: NotRequired[int]
     name: NotRequired[str]
-    description: str
-    managers: list[SimpleUserType]
-    team_managers: NotRequired[list[TeamType]]
-    published_at: NotRequired[datetime]
-    ends_at: datetime
-    closed_at: NotRequired[Union[datetime, None]]
-    state: Literal["open", "closed"]
-    contact_link: Union[str, None]
-    alert_stats: NotRequired[CampaignSummaryPropAlertStatsType]
+    full_name: NotRequired[str]
 
 
-class CampaignSummaryPropAlertStatsType(TypedDict):
-    """CampaignSummaryPropAlertStats"""
+class SecretScanningBypassRequestPropOrganizationType(TypedDict):
+    """SecretScanningBypassRequestPropOrganization
 
-    open_count: int
-    closed_count: int
-    in_progress_count: int
+    The organization associated with the repository the bypass request is for.
+    """
+
+    id: NotRequired[int]
+    name: NotRequired[str]
+
+
+class SecretScanningBypassRequestPropRequesterType(TypedDict):
+    """SecretScanningBypassRequestPropRequester
+
+    The user who requested the bypass.
+    """
+
+    actor_id: NotRequired[int]
+    actor_name: NotRequired[str]
+
+
+class SecretScanningBypassRequestPropDataItemsType(TypedDict):
+    """SecretScanningBypassRequestPropDataItems"""
+
+    secret_type: NotRequired[str]
+    bypass_reason: NotRequired[Literal["used_in_tests", "false_positive", "fix_later"]]
+    path: NotRequired[str]
+    branch: NotRequired[str]
 
 
 __all__ = (
-    "CampaignSummaryPropAlertStatsType",
-    "CampaignSummaryType",
+    "SecretScanningBypassRequestPropDataItemsType",
+    "SecretScanningBypassRequestPropOrganizationType",
+    "SecretScanningBypassRequestPropRepositoryType",
+    "SecretScanningBypassRequestPropRequesterType",
+    "SecretScanningBypassRequestType",
 )

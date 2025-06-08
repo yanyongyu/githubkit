@@ -2423,6 +2423,8 @@ class EnterpriseAdminClient:
         See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#delete-a-self-hosted-runner-from-an-enterprise
         """
 
+        from ..models import ValidationErrorSimple
+
         url = f"/enterprises/{enterprise}/actions/runners/{runner_id}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -2431,6 +2433,9 @@ class EnterpriseAdminClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            error_models={
+                "422": ValidationErrorSimple,
+            },
         )
 
     async def async_delete_self_hosted_runner_from_enterprise(
@@ -2451,6 +2456,8 @@ class EnterpriseAdminClient:
         See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#delete-a-self-hosted-runner-from-an-enterprise
         """
 
+        from ..models import ValidationErrorSimple
+
         url = f"/enterprises/{enterprise}/actions/runners/{runner_id}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -2459,6 +2466,9 @@ class EnterpriseAdminClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            error_models={
+                "422": ValidationErrorSimple,
+            },
         )
 
     def list_labels_for_self_hosted_runner_for_enterprise(

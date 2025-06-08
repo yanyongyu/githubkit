@@ -9,13 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0158 import RepositoryRuleFilePathRestrictionPropParametersType
 
 
-class RepositoryRuleFilePathRestrictionPropParametersType(TypedDict):
-    """RepositoryRuleFilePathRestrictionPropParameters"""
+class RepositoryRuleFilePathRestrictionType(TypedDict):
+    """file_path_restriction
 
-    restricted_file_paths: list[str]
+    Prevent commits that include changes in specified file and folder paths from
+    being pushed to the commit graph. This includes absolute paths that contain file
+    names.
+    """
+
+    type: Literal["file_path_restriction"]
+    parameters: NotRequired[RepositoryRuleFilePathRestrictionPropParametersType]
 
 
-__all__ = ("RepositoryRuleFilePathRestrictionPropParametersType",)
+__all__ = ("RepositoryRuleFilePathRestrictionType",)

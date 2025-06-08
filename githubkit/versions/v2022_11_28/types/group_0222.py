@@ -9,19 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0221 import BranchProtectionType
 
-class GitUserType(TypedDict):
-    """Git User
 
-    Metaproperties for Git author/committer information.
+class ShortBranchType(TypedDict):
+    """Short Branch
+
+    Short Branch
     """
 
-    name: NotRequired[str]
-    email: NotRequired[str]
-    date: NotRequired[datetime]
+    name: str
+    commit: ShortBranchPropCommitType
+    protected: bool
+    protection: NotRequired[BranchProtectionType]
+    protection_url: NotRequired[str]
 
 
-__all__ = ("GitUserType",)
+class ShortBranchPropCommitType(TypedDict):
+    """ShortBranchPropCommit"""
+
+    sha: str
+    url: str
+
+
+__all__ = (
+    "ShortBranchPropCommitType",
+    "ShortBranchType",
+)

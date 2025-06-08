@@ -12,14 +12,10 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class UserEmailsPostBodyOneof0Type(TypedDict):
-    """UserEmailsPostBodyOneof0
+class UserCodespacesSecretsSecretNameRepositoriesPutBodyType(TypedDict):
+    """UserCodespacesSecretsSecretNameRepositoriesPutBody"""
 
-    Examples:
-        {'emails': ['octocat@github.com', 'mona@github.com']}
-    """
-
-    emails: list[str]
+    selected_repository_ids: list[int]
 
 
-__all__ = ("UserEmailsPostBodyOneof0Type",)
+__all__ = ("UserCodespacesSecretsSecretNameRepositoriesPutBodyType",)

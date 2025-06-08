@@ -12,17 +12,19 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0179 import Codespace
-
-
-class OrgsOrgCodespacesGetResponse200(GitHubModel):
-    """OrgsOrgCodespacesGetResponse200"""
-
-    total_count: int = Field()
-    codespaces: list[Codespace] = Field()
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-model_rebuild(OrgsOrgCodespacesGetResponse200)
+class OrgsOrgCodeSecurityConfigurationsDetachDeleteBody(GitHubModel):
+    """OrgsOrgCodeSecurityConfigurationsDetachDeleteBody"""
 
-__all__ = ("OrgsOrgCodespacesGetResponse200",)
+    selected_repository_ids: Missing[list[int]] = Field(
+        default=UNSET,
+        description="An array of repository IDs to detach from configurations.",
+    )
+
+
+model_rebuild(OrgsOrgCodeSecurityConfigurationsDetachDeleteBody)
+
+__all__ = ("OrgsOrgCodeSecurityConfigurationsDetachDeleteBody",)

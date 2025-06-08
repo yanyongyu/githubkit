@@ -18,17 +18,20 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0474 import EnterpriseWebhooks
-from .group_0475 import SimpleInstallation
-from .group_0476 import OrganizationSimpleWebhooks
-from .group_0477 import RepositoryWebhooks
-from .group_0504 import WebhooksMilestone3
+from .group_0475 import EnterpriseWebhooks
+from .group_0476 import SimpleInstallation
+from .group_0477 import OrganizationSimpleWebhooks
+from .group_0478 import RepositoryWebhooks
+from .group_0498 import WebhooksMilestone
 
 
-class WebhookMilestoneOpened(GitHubModel):
-    """milestone opened event"""
+class WebhookMilestoneEdited(GitHubModel):
+    """milestone edited event"""
 
-    action: Literal["opened"] = Field()
+    action: Literal["edited"] = Field()
+    changes: WebhookMilestoneEditedPropChanges = Field(
+        description="The changes to the milestone if the action was `edited`."
+    )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -39,7 +42,7 @@ class WebhookMilestoneOpened(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    milestone: WebhooksMilestone3 = Field(
+    milestone: WebhooksMilestone = Field(
         title="Milestone",
         description="A collection of related issues and pull requests.",
     )
@@ -55,6 +58,56 @@ class WebhookMilestoneOpened(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookMilestoneOpened)
+class WebhookMilestoneEditedPropChanges(GitHubModel):
+    """WebhookMilestoneEditedPropChanges
 
-__all__ = ("WebhookMilestoneOpened",)
+    The changes to the milestone if the action was `edited`.
+    """
+
+    description: Missing[WebhookMilestoneEditedPropChangesPropDescription] = Field(
+        default=UNSET
+    )
+    due_on: Missing[WebhookMilestoneEditedPropChangesPropDueOn] = Field(default=UNSET)
+    title: Missing[WebhookMilestoneEditedPropChangesPropTitle] = Field(default=UNSET)
+
+
+class WebhookMilestoneEditedPropChangesPropDescription(GitHubModel):
+    """WebhookMilestoneEditedPropChangesPropDescription"""
+
+    from_: str = Field(
+        alias="from",
+        description="The previous version of the description if the action was `edited`.",
+    )
+
+
+class WebhookMilestoneEditedPropChangesPropDueOn(GitHubModel):
+    """WebhookMilestoneEditedPropChangesPropDueOn"""
+
+    from_: str = Field(
+        alias="from",
+        description="The previous version of the due date if the action was `edited`.",
+    )
+
+
+class WebhookMilestoneEditedPropChangesPropTitle(GitHubModel):
+    """WebhookMilestoneEditedPropChangesPropTitle"""
+
+    from_: str = Field(
+        alias="from",
+        description="The previous version of the title if the action was `edited`.",
+    )
+
+
+model_rebuild(WebhookMilestoneEdited)
+model_rebuild(WebhookMilestoneEditedPropChanges)
+model_rebuild(WebhookMilestoneEditedPropChangesPropDescription)
+model_rebuild(WebhookMilestoneEditedPropChangesPropDueOn)
+model_rebuild(WebhookMilestoneEditedPropChangesPropTitle)
+
+__all__ = (
+    "WebhookMilestoneEdited",
+    "WebhookMilestoneEditedPropChanges",
+    "WebhookMilestoneEditedPropChangesPropDescription",
+    "WebhookMilestoneEditedPropChangesPropDueOn",
+    "WebhookMilestoneEditedPropChangesPropTitle",
+)

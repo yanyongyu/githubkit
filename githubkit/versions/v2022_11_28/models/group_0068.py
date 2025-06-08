@@ -9,38 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ActionsHostedRunnerLimits(GitHubModel):
-    """ActionsHostedRunnerLimits"""
+class ActionsHostedRunnerImage(GitHubModel):
+    """GitHub-hosted runner image details.
 
-    public_ips: ActionsHostedRunnerLimitsPropPublicIps = Field(
-        title="Static public IP Limits for GitHub-hosted Hosted Runners.",
-        description="Provides details of static public IP limits for GitHub-hosted Hosted Runners",
-    )
-
-
-class ActionsHostedRunnerLimitsPropPublicIps(GitHubModel):
-    """Static public IP Limits for GitHub-hosted Hosted Runners.
-
-    Provides details of static public IP limits for GitHub-hosted Hosted Runners
+    Provides details of a hosted runner image
     """
 
-    maximum: int = Field(
-        description="The maximum number of static public IP addresses that can be used for Hosted Runners."
+    id: str = Field(
+        description="The ID of the image. Use this ID for the `image` parameter when creating a new larger runner."
     )
-    current_usage: int = Field(
-        description="The current number of static public IP addresses in use by Hosted Runners."
+    platform: str = Field(description="The operating system of the image.")
+    size_gb: int = Field(description="Image size in GB.")
+    display_name: str = Field(description="Display name for this image.")
+    source: Literal["github", "partner", "custom"] = Field(
+        description="The image provider."
     )
 
 
-model_rebuild(ActionsHostedRunnerLimits)
-model_rebuild(ActionsHostedRunnerLimitsPropPublicIps)
+model_rebuild(ActionsHostedRunnerImage)
 
-__all__ = (
-    "ActionsHostedRunnerLimits",
-    "ActionsHostedRunnerLimitsPropPublicIps",
-)
+__all__ = ("ActionsHostedRunnerImage",)

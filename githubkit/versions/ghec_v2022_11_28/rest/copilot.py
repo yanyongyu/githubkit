@@ -30,6 +30,7 @@ if TYPE_CHECKING:
         CopilotSeatDetails,
         CopilotUsageMetricsDay,
         EnterprisesEnterpriseCopilotBillingSeatsGetResponse200,
+        EnterprisesEnterpriseMembersUsernameCopilotGetResponse200,
         OrgsOrgCopilotBillingSeatsGetResponse200,
         OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200,
         OrgsOrgCopilotBillingSelectedTeamsPostResponse201,
@@ -41,6 +42,7 @@ if TYPE_CHECKING:
         CopilotSeatDetailsType,
         CopilotUsageMetricsDayType,
         EnterprisesEnterpriseCopilotBillingSeatsGetResponse200Type,
+        EnterprisesEnterpriseMembersUsernameCopilotGetResponse200Type,
         OrgsOrgCopilotBillingSeatsGetResponse200Type,
         OrgsOrgCopilotBillingSelectedTeamsDeleteBodyType,
         OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200Type,
@@ -299,6 +301,106 @@ class CopilotClient:
                 "403": BasicError,
                 "404": BasicError,
                 "422": BasicError,
+            },
+        )
+
+    def get_copilot_seat_details_for_enterprise_user(
+        self,
+        enterprise: str,
+        username: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+    ) -> Response[
+        EnterprisesEnterpriseMembersUsernameCopilotGetResponse200,
+        EnterprisesEnterpriseMembersUsernameCopilotGetResponse200Type,
+    ]:
+        """copilot/get-copilot-seat-details-for-enterprise-user
+
+        GET /enterprises/{enterprise}/members/{username}/copilot
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Gets the GitHub Copilot seat details for a member of an enterprise who currently has access to GitHub Copilot.
+
+        The seat object contains information about the user's most recent Copilot activity. Users must have telemetry enabled in their IDE for Copilot in the IDE activity to be reflected in `last_activity_at`.
+
+        Only enterprise owners can view Copilot seat assignment details for members of their enterprise.
+
+        OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `read:org` scopes to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#get-copilot-seat-assignment-details-for-an-enterprise-user
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseMembersUsernameCopilotGetResponse200,
+        )
+
+        url = f"/enterprises/{enterprise}/members/{username}/copilot"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=EnterprisesEnterpriseMembersUsernameCopilotGetResponse200,
+            error_models={
+                "500": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_get_copilot_seat_details_for_enterprise_user(
+        self,
+        enterprise: str,
+        username: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+    ) -> Response[
+        EnterprisesEnterpriseMembersUsernameCopilotGetResponse200,
+        EnterprisesEnterpriseMembersUsernameCopilotGetResponse200Type,
+    ]:
+        """copilot/get-copilot-seat-details-for-enterprise-user
+
+        GET /enterprises/{enterprise}/members/{username}/copilot
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Gets the GitHub Copilot seat details for a member of an enterprise who currently has access to GitHub Copilot.
+
+        The seat object contains information about the user's most recent Copilot activity. Users must have telemetry enabled in their IDE for Copilot in the IDE activity to be reflected in `last_activity_at`.
+
+        Only enterprise owners can view Copilot seat assignment details for members of their enterprise.
+
+        OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `read:org` scopes to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#get-copilot-seat-assignment-details-for-an-enterprise-user
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseMembersUsernameCopilotGetResponse200,
+        )
+
+        url = f"/enterprises/{enterprise}/members/{username}/copilot"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=EnterprisesEnterpriseMembersUsernameCopilotGetResponse200,
+            error_models={
+                "500": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
             },
         )
 

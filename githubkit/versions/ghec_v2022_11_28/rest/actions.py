@@ -5222,6 +5222,8 @@ class ActionsClient:
         See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#delete-a-self-hosted-runner-from-an-organization
         """
 
+        from ..models import ValidationErrorSimple
+
         url = f"/orgs/{org}/actions/runners/{runner_id}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -5230,6 +5232,9 @@ class ActionsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            error_models={
+                "422": ValidationErrorSimple,
+            },
         )
 
     async def async_delete_self_hosted_runner_from_org(
@@ -5252,6 +5257,8 @@ class ActionsClient:
         See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#delete-a-self-hosted-runner-from-an-organization
         """
 
+        from ..models import ValidationErrorSimple
+
         url = f"/orgs/{org}/actions/runners/{runner_id}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -5260,6 +5267,9 @@ class ActionsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            error_models={
+                "422": ValidationErrorSimple,
+            },
         )
 
     def list_labels_for_self_hosted_runner_for_org(
@@ -10177,6 +10187,8 @@ class ActionsClient:
         See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#delete-a-self-hosted-runner-from-a-repository
         """
 
+        from ..models import ValidationErrorSimple
+
         url = f"/repos/{owner}/{repo}/actions/runners/{runner_id}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -10185,6 +10197,9 @@ class ActionsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            error_models={
+                "422": ValidationErrorSimple,
+            },
         )
 
     async def async_delete_self_hosted_runner_from_repo(
@@ -10208,6 +10223,8 @@ class ActionsClient:
         See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#delete-a-self-hosted-runner-from-a-repository
         """
 
+        from ..models import ValidationErrorSimple
+
         url = f"/repos/{owner}/{repo}/actions/runners/{runner_id}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -10216,6 +10233,9 @@ class ActionsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            error_models={
+                "422": ValidationErrorSimple,
+            },
         )
 
     def list_labels_for_self_hosted_runner_for_repo(

@@ -171,7 +171,7 @@ class PrivateRegistriesClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
-        registry_type: Literal["maven_repository"],
+        registry_type: Literal["maven_repository", "nuget_feed", "goproxy_server"],
         username: Missing[Union[str, None]] = UNSET,
         encrypted_value: str,
         key_id: str,
@@ -256,7 +256,7 @@ class PrivateRegistriesClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
-        registry_type: Literal["maven_repository"],
+        registry_type: Literal["maven_repository", "nuget_feed", "goproxy_server"],
         username: Missing[Union[str, None]] = UNSET,
         encrypted_value: str,
         key_id: str,
@@ -554,7 +554,9 @@ class PrivateRegistriesClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
-        registry_type: Missing[Literal["maven_repository"]] = UNSET,
+        registry_type: Missing[
+            Literal["maven_repository", "nuget_feed", "goproxy_server"]
+        ] = UNSET,
         username: Missing[Union[str, None]] = UNSET,
         encrypted_value: Missing[str] = UNSET,
         key_id: Missing[str] = UNSET,
@@ -633,7 +635,9 @@ class PrivateRegistriesClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
-        registry_type: Missing[Literal["maven_repository"]] = UNSET,
+        registry_type: Missing[
+            Literal["maven_repository", "nuget_feed", "goproxy_server"]
+        ] = UNSET,
         username: Missing[Union[str, None]] = UNSET,
         encrypted_value: Missing[str] = UNSET,
         key_id: Missing[str] = UNSET,

@@ -2418,6 +2418,7 @@ class CodeScanningClient:
         runner_type: Missing[Literal["standard", "labeled"]] = UNSET,
         runner_label: Missing[Union[str, None]] = UNSET,
         query_suite: Missing[Literal["default", "extended"]] = UNSET,
+        threat_model: Missing[Literal["remote", "remote_and_local"]] = UNSET,
         languages: Missing[
             list[
                 Literal[
@@ -2511,6 +2512,7 @@ class CodeScanningClient:
         runner_type: Missing[Literal["standard", "labeled"]] = UNSET,
         runner_label: Missing[Union[str, None]] = UNSET,
         query_suite: Missing[Literal["default", "extended"]] = UNSET,
+        threat_model: Missing[Literal["remote", "remote_and_local"]] = UNSET,
         languages: Missing[
             list[
                 Literal[

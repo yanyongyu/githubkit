@@ -10,33 +10,23 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
 
+class OrgPrivateRegistryConfigurationWithSelectedRepositoriesType(TypedDict):
+    """Organization private registry
 
-class ProjectType(TypedDict):
-    """Project
-
-    Projects are a way to organize columns and cards of work.
+    Private registry configuration for an organization
     """
 
-    owner_url: str
-    url: str
-    html_url: str
-    columns_url: str
-    id: int
-    node_id: str
     name: str
-    body: Union[str, None]
-    number: int
-    state: str
-    creator: Union[None, SimpleUserType]
+    registry_type: Literal["maven_repository", "nuget_feed", "goproxy_server"]
+    username: NotRequired[str]
+    visibility: Literal["all", "private", "selected"]
+    selected_repository_ids: NotRequired[list[int]]
     created_at: datetime
     updated_at: datetime
-    organization_permission: NotRequired[Literal["read", "write", "admin", "none"]]
-    private: NotRequired[bool]
 
 
-__all__ = ("ProjectType",)
+__all__ = ("OrgPrivateRegistryConfigurationWithSelectedRepositoriesType",)

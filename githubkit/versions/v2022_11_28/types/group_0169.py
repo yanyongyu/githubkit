@@ -9,120 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0121 import RepositoryRulesetBypassActorType
-from .group_0122 import RepositoryRulesetConditionsType
-from .group_0130 import OrgRulesetConditionsOneof0Type
-from .group_0131 import OrgRulesetConditionsOneof1Type
-from .group_0132 import OrgRulesetConditionsOneof2Type
-from .group_0133 import (
-    RepositoryRuleCreationType,
-    RepositoryRuleDeletionType,
-    RepositoryRuleNonFastForwardType,
-    RepositoryRuleRequiredSignaturesType,
-)
-from .group_0134 import RepositoryRuleUpdateType
-from .group_0136 import RepositoryRuleRequiredLinearHistoryType
-from .group_0137 import RepositoryRuleMergeQueueType
-from .group_0139 import RepositoryRuleRequiredDeploymentsType
-from .group_0142 import RepositoryRulePullRequestType
-from .group_0144 import RepositoryRuleRequiredStatusChecksType
-from .group_0146 import RepositoryRuleCommitMessagePatternType
-from .group_0148 import RepositoryRuleCommitAuthorEmailPatternType
-from .group_0150 import RepositoryRuleCommitterEmailPatternType
-from .group_0152 import RepositoryRuleBranchNamePatternType
-from .group_0154 import RepositoryRuleTagNamePatternType
-from .group_0156 import RepositoryRuleFilePathRestrictionType
-from .group_0158 import RepositoryRuleMaxFilePathLengthType
-from .group_0160 import RepositoryRuleFileExtensionRestrictionType
-from .group_0162 import RepositoryRuleMaxFileSizeType
-from .group_0165 import RepositoryRuleWorkflowsType
-from .group_0167 import RepositoryRuleCodeScanningType
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class RepositoryRulesetType(TypedDict):
-    """Repository ruleset
+class RepositoryRuleCodeScanningPropParametersType(TypedDict):
+    """RepositoryRuleCodeScanningPropParameters"""
 
-    A set of rules to apply when specified conditions are met.
+    code_scanning_tools: list[RepositoryRuleParamsCodeScanningToolType]
+
+
+class RepositoryRuleParamsCodeScanningToolType(TypedDict):
+    """CodeScanningTool
+
+    A tool that must provide code scanning results for this rule to pass.
     """
 
-    id: int
-    name: str
-    target: NotRequired[Literal["branch", "tag", "push", "repository"]]
-    source_type: NotRequired[Literal["Repository", "Organization", "Enterprise"]]
-    source: str
-    enforcement: Literal["disabled", "active", "evaluate"]
-    bypass_actors: NotRequired[list[RepositoryRulesetBypassActorType]]
-    current_user_can_bypass: NotRequired[
-        Literal["always", "pull_requests_only", "never"]
+    alerts_threshold: Literal["none", "errors", "errors_and_warnings", "all"]
+    security_alerts_threshold: Literal[
+        "none", "critical", "high_or_higher", "medium_or_higher", "all"
     ]
-    node_id: NotRequired[str]
-    links: NotRequired[RepositoryRulesetPropLinksType]
-    conditions: NotRequired[
-        Union[
-            RepositoryRulesetConditionsType,
-            OrgRulesetConditionsOneof0Type,
-            OrgRulesetConditionsOneof1Type,
-            OrgRulesetConditionsOneof2Type,
-            None,
-        ]
-    ]
-    rules: NotRequired[
-        list[
-            Union[
-                RepositoryRuleCreationType,
-                RepositoryRuleUpdateType,
-                RepositoryRuleDeletionType,
-                RepositoryRuleRequiredLinearHistoryType,
-                RepositoryRuleMergeQueueType,
-                RepositoryRuleRequiredDeploymentsType,
-                RepositoryRuleRequiredSignaturesType,
-                RepositoryRulePullRequestType,
-                RepositoryRuleRequiredStatusChecksType,
-                RepositoryRuleNonFastForwardType,
-                RepositoryRuleCommitMessagePatternType,
-                RepositoryRuleCommitAuthorEmailPatternType,
-                RepositoryRuleCommitterEmailPatternType,
-                RepositoryRuleBranchNamePatternType,
-                RepositoryRuleTagNamePatternType,
-                RepositoryRuleFilePathRestrictionType,
-                RepositoryRuleMaxFilePathLengthType,
-                RepositoryRuleFileExtensionRestrictionType,
-                RepositoryRuleMaxFileSizeType,
-                RepositoryRuleWorkflowsType,
-                RepositoryRuleCodeScanningType,
-            ]
-        ]
-    ]
-    created_at: NotRequired[datetime]
-    updated_at: NotRequired[datetime]
-
-
-class RepositoryRulesetPropLinksType(TypedDict):
-    """RepositoryRulesetPropLinks"""
-
-    self_: NotRequired[RepositoryRulesetPropLinksPropSelfType]
-    html: NotRequired[Union[RepositoryRulesetPropLinksPropHtmlType, None]]
-
-
-class RepositoryRulesetPropLinksPropSelfType(TypedDict):
-    """RepositoryRulesetPropLinksPropSelf"""
-
-    href: NotRequired[str]
-
-
-class RepositoryRulesetPropLinksPropHtmlType(TypedDict):
-    """RepositoryRulesetPropLinksPropHtml"""
-
-    href: NotRequired[str]
+    tool: str
 
 
 __all__ = (
-    "RepositoryRulesetPropLinksPropHtmlType",
-    "RepositoryRulesetPropLinksPropSelfType",
-    "RepositoryRulesetPropLinksType",
-    "RepositoryRulesetType",
+    "RepositoryRuleCodeScanningPropParametersType",
+    "RepositoryRuleParamsCodeScanningToolType",
 )

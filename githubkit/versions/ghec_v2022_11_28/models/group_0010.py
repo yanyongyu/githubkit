@@ -48,14 +48,13 @@ class Integration(GitHubModel):
     permissions: IntegrationPropPermissions = Field(
         description="The set of permissions for the GitHub app"
     )
-    events: list[str] = Field(description="The list of events for the GitHub app")
+    events: list[str] = Field(
+        description="The list of events for the GitHub app. Note that the `installation_target`, `security_advisory`, and `meta` events are not included because they are global events and not specific to an installation."
+    )
     installations_count: Missing[int] = Field(
         default=UNSET,
-        description="The number of installations associated with the GitHub app",
+        description="The number of installations associated with the GitHub app. Only returned when the integration is requesting details about itself.",
     )
-    client_secret: Missing[str] = Field(default=UNSET)
-    webhook_secret: Missing[Union[str, None]] = Field(default=UNSET)
-    pem: Missing[str] = Field(default=UNSET)
 
 
 model_rebuild(Integration)

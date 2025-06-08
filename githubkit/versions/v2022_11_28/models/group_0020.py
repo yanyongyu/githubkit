@@ -185,6 +185,10 @@ class Repository(GitHubModel):
         default=UNSET,
         description="Whether anonymous git access is enabled for this repository",
     )
+    code_search_index_status: Missing[RepositoryPropCodeSearchIndexStatus] = Field(
+        default=UNSET,
+        description="The status of the code search index for this repository",
+    )
 
 
 class RepositoryPropPermissions(GitHubModel):
@@ -197,10 +201,22 @@ class RepositoryPropPermissions(GitHubModel):
     maintain: Missing[bool] = Field(default=UNSET)
 
 
+class RepositoryPropCodeSearchIndexStatus(GitHubModel):
+    """RepositoryPropCodeSearchIndexStatus
+
+    The status of the code search index for this repository
+    """
+
+    lexical_search_ok: Missing[bool] = Field(default=UNSET)
+    lexical_commit_sha: Missing[str] = Field(default=UNSET)
+
+
 model_rebuild(Repository)
 model_rebuild(RepositoryPropPermissions)
+model_rebuild(RepositoryPropCodeSearchIndexStatus)
 
 __all__ = (
     "Repository",
+    "RepositoryPropCodeSearchIndexStatus",
     "RepositoryPropPermissions",
 )

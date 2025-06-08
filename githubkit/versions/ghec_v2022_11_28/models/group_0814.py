@@ -9,39 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0474 import EnterpriseWebhooks
-from .group_0475 import SimpleInstallation
-from .group_0476 import OrganizationSimpleWebhooks
-from .group_0477 import RepositoryWebhooks
+from .group_0475 import EnterpriseWebhooks
+from .group_0476 import SimpleInstallation
+from .group_0477 import OrganizationSimpleWebhooks
+from .group_0478 import RepositoryWebhooks
 
 
-class WebhookRepositoryDispatchSample(GitHubModel):
-    """repository_dispatch event"""
+class WebhookRepositoryDeleted(GitHubModel):
+    """repository deleted event"""
 
-    action: str = Field(
-        description="The `event_type` that was specified in the `POST /repos/{owner}/{repo}/dispatches` request body."
-    )
-    branch: str = Field()
-    client_payload: Union[WebhookRepositoryDispatchSamplePropClientPayload, None] = (
-        Field(
-            description="The `client_payload` that was specified in the `POST /repos/{owner}/{repo}/dispatches` request body."
-        )
-    )
+    action: Literal["deleted"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
         description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."',
     )
-    installation: SimpleInstallation = Field(
+    installation: Missing[SimpleInstallation] = Field(
+        default=UNSET,
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
@@ -57,18 +50,6 @@ class WebhookRepositoryDispatchSample(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-class WebhookRepositoryDispatchSamplePropClientPayload(ExtraGitHubModel):
-    """WebhookRepositoryDispatchSamplePropClientPayload
+model_rebuild(WebhookRepositoryDeleted)
 
-    The `client_payload` that was specified in the `POST
-    /repos/{owner}/{repo}/dispatches` request body.
-    """
-
-
-model_rebuild(WebhookRepositoryDispatchSample)
-model_rebuild(WebhookRepositoryDispatchSamplePropClientPayload)
-
-__all__ = (
-    "WebhookRepositoryDispatchSample",
-    "WebhookRepositoryDispatchSamplePropClientPayload",
-)
+__all__ = ("WebhookRepositoryDeleted",)

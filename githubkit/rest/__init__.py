@@ -632,6 +632,9 @@ if TYPE_CHECKING:
         DependabotPublicKey as DependabotPublicKey,
     )
     from githubkit.versions.v2022_11_28.models import (
+        DependabotRepositoryAccessDetails as DependabotRepositoryAccessDetails,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         DependabotSecret as DependabotSecret,
     )
     from githubkit.versions.v2022_11_28.models import Dependency as Dependency
@@ -1141,6 +1144,15 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         OrganizationSimpleWebhooks as OrganizationSimpleWebhooks,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBody as OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBody,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        OrganizationsOrgDependabotRepositoryAccessPatchBodyOneof0 as OrganizationsOrgDependabotRepositoryAccessPatchBodyOneof0,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        OrganizationsOrgDependabotRepositoryAccessPatchBodyOneof1 as OrganizationsOrgDependabotRepositoryAccessPatchBodyOneof1,
     )
     from githubkit.versions.v2022_11_28.models import (
         OrganizationUpdateIssueType as OrganizationUpdateIssueType,
@@ -1964,6 +1976,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         RepositoryInvitation as RepositoryInvitation,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        RepositoryPropCodeSearchIndexStatus as RepositoryPropCodeSearchIndexStatus,
     )
     from githubkit.versions.v2022_11_28.models import (
         RepositoryPropPermissions as RepositoryPropPermissions,
@@ -9773,6 +9788,7 @@ else:
             "LicenseSimple",
             "Repository",
             "RepositoryPropPermissions",
+            "RepositoryPropCodeSearchIndexStatus",
             "InstallationToken",
             "ScopedInstallation",
             "Authorization",
@@ -9863,6 +9879,7 @@ else:
             "ThreadPropSubject",
             "ThreadSubscription",
             "OrganizationSimple",
+            "DependabotRepositoryAccessDetails",
             "BillingUsageReport",
             "BillingUsageReportPropUsageItemsItems",
             "OrganizationFull",
@@ -12675,6 +12692,9 @@ else:
             "NotificationsPutBody",
             "NotificationsPutResponse202",
             "NotificationsThreadsThreadIdSubscriptionPutBody",
+            "OrganizationsOrgDependabotRepositoryAccessPatchBodyOneof0",
+            "OrganizationsOrgDependabotRepositoryAccessPatchBodyOneof1",
+            "OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBody",
             "OrgsOrgPatchBody",
             "OrgsOrgActionsCacheUsageByRepositoryGetResponse200",
             "ActionsCacheUsageByRepository",

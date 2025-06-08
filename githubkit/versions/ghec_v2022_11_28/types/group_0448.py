@@ -11,13 +11,16 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-
-class ScimEnterpriseUserResponseAllof1PropGroupsItemsType(TypedDict):
-    """ScimEnterpriseUserResponseAllof1PropGroupsItems"""
-
-    value: NotRequired[str]
-    ref: NotRequired[str]
-    display: NotRequired[str]
+from .group_0439 import MetaType
+from .group_0449 import ScimEnterpriseUserResponseAllof1PropGroupsItemsType
 
 
-__all__ = ("ScimEnterpriseUserResponseAllof1PropGroupsItemsType",)
+class ScimEnterpriseUserResponseAllof1Type(TypedDict):
+    """ScimEnterpriseUserResponseAllof1"""
+
+    id: str
+    groups: NotRequired[list[ScimEnterpriseUserResponseAllof1PropGroupsItemsType]]
+    meta: MetaType
+
+
+__all__ = ("ScimEnterpriseUserResponseAllof1Type",)

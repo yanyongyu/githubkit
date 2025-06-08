@@ -9,21 +9,61 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0330 import DeploymentBranchPolicySettings
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBody(GitHubModel):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBody"""
+class ReposOwnerRepoEnvironmentsEnvironmentNamePutBody(GitHubModel):
+    """ReposOwnerRepoEnvironmentsEnvironmentNamePutBody"""
 
-    encrypted_value: str = Field(
-        pattern="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
-        description="Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get an environment public key](https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#get-an-environment-public-key) endpoint.",
+    wait_timer: Missing[int] = Field(
+        default=UNSET,
+        description="The amount of time to delay a job after the job is initially triggered. The time (in minutes) must be an integer between 0 and 43,200 (30 days).",
     )
-    key_id: str = Field(description="ID of the key you used to encrypt the secret.")
+    prevent_self_review: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether or not a user who created the job is prevented from approving their own job.",
+    )
+    reviewers: Missing[
+        Union[
+            list[ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems],
+            None,
+        ]
+    ] = Field(
+        default=UNSET,
+        description="The people or teams that may review jobs that reference the environment. You can list up to six users or teams as reviewers. The reviewers must have at least read access to the repository. Only one of the required reviewers needs to approve the job for it to proceed.",
+    )
+    deployment_branch_policy: Missing[Union[DeploymentBranchPolicySettings, None]] = (
+        Field(
+            default=UNSET,
+            description="The type of deployment branch policy for this environment. To allow all branches to deploy, set to `null`.",
+        )
+    )
 
 
-model_rebuild(ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBody)
+class ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems(GitHubModel):
+    """ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems"""
 
-__all__ = ("ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBody",)
+    type: Missing[Literal["User", "Team"]] = Field(
+        default=UNSET, description="The type of reviewer."
+    )
+    id: Missing[int] = Field(
+        default=UNSET,
+        description="The id of the user or team who can review the deployment",
+    )
+
+
+model_rebuild(ReposOwnerRepoEnvironmentsEnvironmentNamePutBody)
+model_rebuild(ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems)
+
+__all__ = (
+    "ReposOwnerRepoEnvironmentsEnvironmentNamePutBody",
+    "ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems",
+)

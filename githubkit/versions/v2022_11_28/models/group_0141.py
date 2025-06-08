@@ -9,47 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class RepositoryRuleParamsRequiredReviewerConfiguration(GitHubModel):
-    """RequiredReviewerConfiguration
+class RepositoryRuleRequiredDeploymentsPropParameters(GitHubModel):
+    """RepositoryRuleRequiredDeploymentsPropParameters"""
 
-    A reviewing team, and file patterns describing which files they must approve
-    changes to.
-    """
-
-    file_patterns: list[str] = Field(
-        description="Array of file patterns. Pull requests which change matching files must be approved by the specified team. File patterns use the same syntax as `.gitignore` files."
-    )
-    minimum_approvals: int = Field(
-        description="Minimum number of approvals required from the specified team. If set to zero, the team will be added to the pull request but approval is optional."
-    )
-    reviewer: RepositoryRuleParamsReviewer = Field(
-        title="Reviewer", description="A required reviewing team"
+    required_deployment_environments: list[str] = Field(
+        description="The environments that must be successfully deployed to before branches can be merged."
     )
 
 
-class RepositoryRuleParamsReviewer(GitHubModel):
-    """Reviewer
+model_rebuild(RepositoryRuleRequiredDeploymentsPropParameters)
 
-    A required reviewing team
-    """
-
-    id: int = Field(
-        description="ID of the reviewer which must review changes to matching files."
-    )
-    type: Literal["Team"] = Field(description="The type of the reviewer")
-
-
-model_rebuild(RepositoryRuleParamsRequiredReviewerConfiguration)
-model_rebuild(RepositoryRuleParamsReviewer)
-
-__all__ = (
-    "RepositoryRuleParamsRequiredReviewerConfiguration",
-    "RepositoryRuleParamsReviewer",
-)
+__all__ = ("RepositoryRuleRequiredDeploymentsPropParameters",)

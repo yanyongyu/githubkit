@@ -10,51 +10,27 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0053 import MarketplaceListingPlan
 
 
-class UserMarketplacePurchase(GitHubModel):
-    """User Marketplace Purchase
+class Key(GitHubModel):
+    """Key
 
-    User Marketplace Purchase
+    Key
     """
 
-    billing_cycle: str = Field()
-    next_billing_date: Union[datetime, None] = Field()
-    unit_count: Union[int, None] = Field()
-    on_free_trial: bool = Field()
-    free_trial_ends_on: Union[datetime, None] = Field()
-    updated_at: Union[datetime, None] = Field()
-    account: MarketplaceAccount = Field(title="Marketplace Account")
-    plan: MarketplaceListingPlan = Field(
-        title="Marketplace Listing Plan", description="Marketplace Listing Plan"
-    )
-
-
-class MarketplaceAccount(GitHubModel):
-    """Marketplace Account"""
-
-    url: str = Field()
+    key: str = Field()
     id: int = Field()
-    type: str = Field()
-    node_id: Missing[str] = Field(default=UNSET)
-    login: str = Field()
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    organization_billing_email: Missing[Union[str, None]] = Field(default=UNSET)
+    url: str = Field()
+    title: str = Field()
+    created_at: datetime = Field()
+    verified: bool = Field()
+    read_only: bool = Field()
 
 
-model_rebuild(UserMarketplacePurchase)
-model_rebuild(MarketplaceAccount)
+model_rebuild(Key)
 
-__all__ = (
-    "MarketplaceAccount",
-    "UserMarketplacePurchase",
-)
+__all__ = ("Key",)

@@ -85,6 +85,7 @@ class SecretScanningClient:
         validity: Missing[str] = UNSET,
         is_publicly_leaked: Missing[bool] = UNSET,
         is_multi_repo: Missing[bool] = UNSET,
+        hide_secret: Missing[bool] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         list[OrganizationSecretScanningAlert], list[OrganizationSecretScanningAlertType]
@@ -119,6 +120,7 @@ class SecretScanningClient:
             "validity": validity,
             "is_publicly_leaked": is_publicly_leaked,
             "is_multi_repo": is_multi_repo,
+            "hide_secret": hide_secret,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -150,6 +152,7 @@ class SecretScanningClient:
         validity: Missing[str] = UNSET,
         is_publicly_leaked: Missing[bool] = UNSET,
         is_multi_repo: Missing[bool] = UNSET,
+        hide_secret: Missing[bool] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         list[OrganizationSecretScanningAlert], list[OrganizationSecretScanningAlertType]
@@ -184,6 +187,7 @@ class SecretScanningClient:
             "validity": validity,
             "is_publicly_leaked": is_publicly_leaked,
             "is_multi_repo": is_multi_repo,
+            "hide_secret": hide_secret,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -468,6 +472,7 @@ class SecretScanningClient:
         validity: Missing[str] = UNSET,
         is_publicly_leaked: Missing[bool] = UNSET,
         is_multi_repo: Missing[bool] = UNSET,
+        hide_secret: Missing[bool] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         list[OrganizationSecretScanningAlert], list[OrganizationSecretScanningAlertType]
@@ -506,6 +511,7 @@ class SecretScanningClient:
             "validity": validity,
             "is_publicly_leaked": is_publicly_leaked,
             "is_multi_repo": is_multi_repo,
+            "hide_secret": hide_secret,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -538,6 +544,7 @@ class SecretScanningClient:
         validity: Missing[str] = UNSET,
         is_publicly_leaked: Missing[bool] = UNSET,
         is_multi_repo: Missing[bool] = UNSET,
+        hide_secret: Missing[bool] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         list[OrganizationSecretScanningAlert], list[OrganizationSecretScanningAlertType]
@@ -576,6 +583,7 @@ class SecretScanningClient:
             "validity": validity,
             "is_publicly_leaked": is_publicly_leaked,
             "is_multi_repo": is_multi_repo,
+            "hide_secret": hide_secret,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -1465,6 +1473,7 @@ class SecretScanningClient:
         validity: Missing[str] = UNSET,
         is_publicly_leaked: Missing[bool] = UNSET,
         is_multi_repo: Missing[bool] = UNSET,
+        hide_secret: Missing[bool] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[SecretScanningAlert], list[SecretScanningAlertType]]:
         """secret-scanning/list-alerts-for-repo
@@ -1500,6 +1509,7 @@ class SecretScanningClient:
             "validity": validity,
             "is_publicly_leaked": is_publicly_leaked,
             "is_multi_repo": is_multi_repo,
+            "hide_secret": hide_secret,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -1532,6 +1542,7 @@ class SecretScanningClient:
         validity: Missing[str] = UNSET,
         is_publicly_leaked: Missing[bool] = UNSET,
         is_multi_repo: Missing[bool] = UNSET,
+        hide_secret: Missing[bool] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[list[SecretScanningAlert], list[SecretScanningAlertType]]:
         """secret-scanning/list-alerts-for-repo
@@ -1567,6 +1578,7 @@ class SecretScanningClient:
             "validity": validity,
             "is_publicly_leaked": is_publicly_leaked,
             "is_multi_repo": is_multi_repo,
+            "hide_secret": hide_secret,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -1588,6 +1600,7 @@ class SecretScanningClient:
         repo: str,
         alert_number: int,
         *,
+        hide_secret: Missing[bool] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[SecretScanningAlert, SecretScanningAlertType]:
         """secret-scanning/get-alert
@@ -1610,11 +1623,16 @@ class SecretScanningClient:
 
         url = f"/repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}"
 
+        params = {
+            "hide_secret": hide_secret,
+        }
+
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
             url,
+            params=exclude_unset(params),
             headers=exclude_unset(headers),
             response_model=SecretScanningAlert,
             error_models={
@@ -1628,6 +1646,7 @@ class SecretScanningClient:
         repo: str,
         alert_number: int,
         *,
+        hide_secret: Missing[bool] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[SecretScanningAlert, SecretScanningAlertType]:
         """secret-scanning/get-alert
@@ -1650,11 +1669,16 @@ class SecretScanningClient:
 
         url = f"/repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}"
 
+        params = {
+            "hide_secret": hide_secret,
+        }
+
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
             url,
+            params=exclude_unset(params),
             headers=exclude_unset(headers),
             response_model=SecretScanningAlert,
             error_models={

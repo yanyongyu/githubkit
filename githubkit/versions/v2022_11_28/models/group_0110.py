@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,62 +17,46 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0080 import TeamSimple
 
-class PackageVersion(GitHubModel):
-    """Package Version
 
-    A version of a software package
+class UserRoleAssignment(GitHubModel):
+    """A Role Assignment for a User
+
+    The Relationship a User has with a role.
     """
 
-    id: int = Field(description="Unique identifier of the package version.")
-    name: str = Field(description="The name of the package version.")
+    assignment: Missing[Literal["direct", "indirect", "mixed"]] = Field(
+        default=UNSET,
+        description="Determines if the user has a direct, indirect, or mixed relationship to a role",
+    )
+    inherited_from: Missing[list[TeamSimple]] = Field(
+        default=UNSET, description="Team the user has gotten the role through"
+    )
+    name: Missing[Union[str, None]] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    login: str = Field()
+    id: int = Field()
+    node_id: str = Field()
+    avatar_url: str = Field()
+    gravatar_id: Union[str, None] = Field()
     url: str = Field()
-    package_html_url: str = Field()
-    html_url: Missing[str] = Field(default=UNSET)
-    license_: Missing[str] = Field(default=UNSET, alias="license")
-    description: Missing[str] = Field(default=UNSET)
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    deleted_at: Missing[datetime] = Field(default=UNSET)
-    metadata: Missing[PackageVersionPropMetadata] = Field(
-        default=UNSET, title="Package Version Metadata"
-    )
+    html_url: str = Field()
+    followers_url: str = Field()
+    following_url: str = Field()
+    gists_url: str = Field()
+    starred_url: str = Field()
+    subscriptions_url: str = Field()
+    organizations_url: str = Field()
+    repos_url: str = Field()
+    events_url: str = Field()
+    received_events_url: str = Field()
+    type: str = Field()
+    site_admin: bool = Field()
+    starred_at: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
 
 
-class PackageVersionPropMetadata(GitHubModel):
-    """Package Version Metadata"""
+model_rebuild(UserRoleAssignment)
 
-    package_type: Literal[
-        "npm", "maven", "rubygems", "docker", "nuget", "container"
-    ] = Field()
-    container: Missing[PackageVersionPropMetadataPropContainer] = Field(
-        default=UNSET, title="Container Metadata"
-    )
-    docker: Missing[PackageVersionPropMetadataPropDocker] = Field(
-        default=UNSET, title="Docker Metadata"
-    )
-
-
-class PackageVersionPropMetadataPropContainer(GitHubModel):
-    """Container Metadata"""
-
-    tags: list[str] = Field()
-
-
-class PackageVersionPropMetadataPropDocker(GitHubModel):
-    """Docker Metadata"""
-
-    tag: Missing[list[str]] = Field(default=UNSET)
-
-
-model_rebuild(PackageVersion)
-model_rebuild(PackageVersionPropMetadata)
-model_rebuild(PackageVersionPropMetadataPropContainer)
-model_rebuild(PackageVersionPropMetadataPropDocker)
-
-__all__ = (
-    "PackageVersion",
-    "PackageVersionPropMetadata",
-    "PackageVersionPropMetadataPropContainer",
-    "PackageVersionPropMetadataPropDocker",
-)
+__all__ = ("UserRoleAssignment",)

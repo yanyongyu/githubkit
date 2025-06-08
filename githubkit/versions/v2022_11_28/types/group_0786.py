@@ -9,16 +9,15 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0057 import SecurityAndAnalysisType
+from .group_0787 import WebhookSecurityAndAnalysisPropChangesPropFromType
 
 
-class WebhookSecurityAndAnalysisPropChangesPropFromType(TypedDict):
-    """WebhookSecurityAndAnalysisPropChangesPropFrom"""
+class WebhookSecurityAndAnalysisPropChangesType(TypedDict):
+    """WebhookSecurityAndAnalysisPropChanges"""
 
-    security_and_analysis: NotRequired[Union[SecurityAndAnalysisType, None]]
+    from_: NotRequired[WebhookSecurityAndAnalysisPropChangesPropFromType]
 
 
-__all__ = ("WebhookSecurityAndAnalysisPropChangesPropFromType",)
+__all__ = ("WebhookSecurityAndAnalysisPropChangesType",)

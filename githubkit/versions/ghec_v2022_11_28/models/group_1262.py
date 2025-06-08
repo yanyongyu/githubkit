@@ -9,19 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoTopicsPutBody(GitHubModel):
-    """ReposOwnerRepoTopicsPutBody"""
+class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBody(GitHubModel):
+    """ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBody"""
 
-    names: list[str] = Field(
-        description="An array of topics to add to the repository. Pass one or more topics to _replace_ the set of existing topics. Send an empty array (`[]`) to clear all topics from the repository. **Note:** Topic `names` will be saved as lowercase."
+    state: Literal["open", "resolved"] = Field(
+        description="Sets the state of the secret scanning alert. You must provide `resolution` when you set the state to `resolved`."
+    )
+    resolution: Missing[
+        Union[None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]]
+    ] = Field(
+        default=UNSET,
+        description="**Required when the `state` is `resolved`.** The reason for resolving the alert.",
+    )
+    resolution_comment: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="An optional comment when closing or reopening an alert. Cannot be updated or deleted.",
     )
 
 
-model_rebuild(ReposOwnerRepoTopicsPutBody)
+model_rebuild(ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBody)
 
-__all__ = ("ReposOwnerRepoTopicsPutBody",)
+__all__ = ("ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBody",)

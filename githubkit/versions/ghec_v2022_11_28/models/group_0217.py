@@ -9,25 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0216 import CustomPropertyValue
 
-class CodeOfConductSimple(GitHubModel):
-    """Code Of Conduct Simple
 
-    Code of Conduct Simple
+class OrgRepoCustomPropertyValues(GitHubModel):
+    """Organization Repository Custom Property Values
+
+    List of custom property values for a repository
     """
 
-    url: str = Field()
-    key: str = Field()
-    name: str = Field()
-    html_url: Union[str, None] = Field()
+    repository_id: int = Field()
+    repository_name: str = Field()
+    repository_full_name: str = Field()
+    properties: list[CustomPropertyValue] = Field(
+        description="List of custom property names and associated values"
+    )
 
 
-model_rebuild(CodeOfConductSimple)
+model_rebuild(OrgRepoCustomPropertyValues)
 
-__all__ = ("CodeOfConductSimple",)
+__all__ = ("OrgRepoCustomPropertyValues",)

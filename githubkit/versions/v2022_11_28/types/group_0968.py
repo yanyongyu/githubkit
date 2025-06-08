@@ -12,25 +12,25 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ProjectsColumnsColumnIdCardsPostResponse503Type(TypedDict):
-    """ProjectsColumnsColumnIdCardsPostResponse503"""
+class ProjectsColumnsCardsCardIdMovesPostResponse503Type(TypedDict):
+    """ProjectsColumnsCardsCardIdMovesPostResponse503"""
 
     code: NotRequired[str]
     message: NotRequired[str]
     documentation_url: NotRequired[str]
     errors: NotRequired[
-        list[ProjectsColumnsColumnIdCardsPostResponse503PropErrorsItemsType]
+        list[ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItemsType]
     ]
 
 
-class ProjectsColumnsColumnIdCardsPostResponse503PropErrorsItemsType(TypedDict):
-    """ProjectsColumnsColumnIdCardsPostResponse503PropErrorsItems"""
+class ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItemsType(TypedDict):
+    """ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItems"""
 
     code: NotRequired[str]
     message: NotRequired[str]
 
 
 __all__ = (
-    "ProjectsColumnsColumnIdCardsPostResponse503PropErrorsItemsType",
-    "ProjectsColumnsColumnIdCardsPostResponse503Type",
+    "ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItemsType",
+    "ProjectsColumnsCardsCardIdMovesPostResponse503Type",
 )

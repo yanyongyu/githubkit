@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,73 +18,44 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0474 import EnterpriseWebhooks
-from .group_0475 import SimpleInstallation
-from .group_0476 import OrganizationSimpleWebhooks
-from .group_0477 import RepositoryWebhooks
+from .group_0476 import SimpleInstallation
+from .group_0477 import OrganizationSimpleWebhooks
+from .group_0478 import RepositoryWebhooks
+from .group_0504 import MergeGroup
 
 
-class WebhookMetaDeleted(GitHubModel):
-    """meta deleted event"""
+class WebhookMergeGroupDestroyed(GitHubModel):
+    """WebhookMergeGroupDestroyed"""
 
-    action: Literal["deleted"] = Field()
-    enterprise: Missing[EnterpriseWebhooks] = Field(
+    action: Literal["destroyed"] = Field()
+    reason: Missing[Literal["merged", "invalidated", "dequeued"]] = Field(
         default=UNSET,
-        title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."',
+        description="Explains why the merge group is being destroyed. The group could have been merged, removed from the queue (dequeued), or invalidated by an earlier queue entry being dequeued (invalidated).",
     )
-    hook: WebhookMetaDeletedPropHook = Field(
-        description="The modified webhook. This will contain different keys based on the type of webhook it is: repository, organization, business, app, or GitHub Marketplace."
-    )
-    hook_id: int = Field(description="The id of the modified webhook.")
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
+    )
+    merge_group: MergeGroup = Field(
+        title="Merge Group",
+        description="A group of pull requests that the merge queue has grouped together to be merged.",
     )
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repository: Missing[Union[None, RepositoryWebhooks]] = Field(default=UNSET)
+    repository: Missing[RepositoryWebhooks] = Field(
+        default=UNSET,
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    )
     sender: Missing[SimpleUser] = Field(
         default=UNSET, title="Simple User", description="A GitHub user."
     )
 
 
-class WebhookMetaDeletedPropHook(GitHubModel):
-    """WebhookMetaDeletedPropHook
+model_rebuild(WebhookMergeGroupDestroyed)
 
-    The modified webhook. This will contain different keys based on the type of
-    webhook it is: repository, organization, business, app, or GitHub Marketplace.
-    """
-
-    active: bool = Field()
-    config: WebhookMetaDeletedPropHookPropConfig = Field()
-    created_at: str = Field()
-    events: list[str] = Field()
-    id: int = Field()
-    name: str = Field()
-    type: str = Field()
-    updated_at: str = Field()
-
-
-class WebhookMetaDeletedPropHookPropConfig(GitHubModel):
-    """WebhookMetaDeletedPropHookPropConfig"""
-
-    content_type: Literal["json", "form"] = Field()
-    insecure_ssl: str = Field()
-    secret: Missing[str] = Field(default=UNSET)
-    url: str = Field()
-
-
-model_rebuild(WebhookMetaDeleted)
-model_rebuild(WebhookMetaDeletedPropHook)
-model_rebuild(WebhookMetaDeletedPropHookPropConfig)
-
-__all__ = (
-    "WebhookMetaDeleted",
-    "WebhookMetaDeletedPropHook",
-    "WebhookMetaDeletedPropHookPropConfig",
-)
+__all__ = ("WebhookMergeGroupDestroyed",)

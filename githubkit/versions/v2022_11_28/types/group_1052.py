@@ -9,29 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing_extensions import TypedDict
 
+from .group_0233 import CheckRunType
 
-class ReposOwnerRepoDependabotSecretsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoDependabotSecretsGetResponse200"""
+
+class ReposOwnerRepoCommitsRefCheckRunsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoCommitsRefCheckRunsGetResponse200"""
 
     total_count: int
-    secrets: list[DependabotSecretType]
+    check_runs: list[CheckRunType]
 
 
-class DependabotSecretType(TypedDict):
-    """Dependabot Secret
-
-    Set secrets for Dependabot.
-    """
-
-    name: str
-    created_at: datetime
-    updated_at: datetime
-
-
-__all__ = (
-    "DependabotSecretType",
-    "ReposOwnerRepoDependabotSecretsGetResponse200Type",
-)
+__all__ = ("ReposOwnerRepoCommitsRefCheckRunsGetResponse200Type",)

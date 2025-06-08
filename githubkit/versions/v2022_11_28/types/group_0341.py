@@ -9,88 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class PagesHealthCheckType(TypedDict):
-    """Pages Health Check Status
+class PagesDeploymentStatusType(TypedDict):
+    """GitHub Pages deployment status"""
 
-    Pages Health Check Status
-    """
-
-    domain: NotRequired[PagesHealthCheckPropDomainType]
-    alt_domain: NotRequired[Union[PagesHealthCheckPropAltDomainType, None]]
-
-
-class PagesHealthCheckPropDomainType(TypedDict):
-    """PagesHealthCheckPropDomain"""
-
-    host: NotRequired[str]
-    uri: NotRequired[str]
-    nameservers: NotRequired[str]
-    dns_resolves: NotRequired[bool]
-    is_proxied: NotRequired[Union[bool, None]]
-    is_cloudflare_ip: NotRequired[Union[bool, None]]
-    is_fastly_ip: NotRequired[Union[bool, None]]
-    is_old_ip_address: NotRequired[Union[bool, None]]
-    is_a_record: NotRequired[Union[bool, None]]
-    has_cname_record: NotRequired[Union[bool, None]]
-    has_mx_records_present: NotRequired[Union[bool, None]]
-    is_valid_domain: NotRequired[bool]
-    is_apex_domain: NotRequired[bool]
-    should_be_a_record: NotRequired[Union[bool, None]]
-    is_cname_to_github_user_domain: NotRequired[Union[bool, None]]
-    is_cname_to_pages_dot_github_dot_com: NotRequired[Union[bool, None]]
-    is_cname_to_fastly: NotRequired[Union[bool, None]]
-    is_pointed_to_github_pages_ip: NotRequired[Union[bool, None]]
-    is_non_github_pages_ip_present: NotRequired[Union[bool, None]]
-    is_pages_domain: NotRequired[bool]
-    is_served_by_pages: NotRequired[Union[bool, None]]
-    is_valid: NotRequired[bool]
-    reason: NotRequired[Union[str, None]]
-    responds_to_https: NotRequired[bool]
-    enforces_https: NotRequired[bool]
-    https_error: NotRequired[Union[str, None]]
-    is_https_eligible: NotRequired[Union[bool, None]]
-    caa_error: NotRequired[Union[str, None]]
+    status: NotRequired[
+        Literal[
+            "deployment_in_progress",
+            "syncing_files",
+            "finished_file_sync",
+            "updating_pages",
+            "purging_cdn",
+            "deployment_cancelled",
+            "deployment_failed",
+            "deployment_content_failed",
+            "deployment_attempt_error",
+            "deployment_lost",
+            "succeed",
+        ]
+    ]
 
 
-class PagesHealthCheckPropAltDomainType(TypedDict):
-    """PagesHealthCheckPropAltDomain"""
-
-    host: NotRequired[str]
-    uri: NotRequired[str]
-    nameservers: NotRequired[str]
-    dns_resolves: NotRequired[bool]
-    is_proxied: NotRequired[Union[bool, None]]
-    is_cloudflare_ip: NotRequired[Union[bool, None]]
-    is_fastly_ip: NotRequired[Union[bool, None]]
-    is_old_ip_address: NotRequired[Union[bool, None]]
-    is_a_record: NotRequired[Union[bool, None]]
-    has_cname_record: NotRequired[Union[bool, None]]
-    has_mx_records_present: NotRequired[Union[bool, None]]
-    is_valid_domain: NotRequired[bool]
-    is_apex_domain: NotRequired[bool]
-    should_be_a_record: NotRequired[Union[bool, None]]
-    is_cname_to_github_user_domain: NotRequired[Union[bool, None]]
-    is_cname_to_pages_dot_github_dot_com: NotRequired[Union[bool, None]]
-    is_cname_to_fastly: NotRequired[Union[bool, None]]
-    is_pointed_to_github_pages_ip: NotRequired[Union[bool, None]]
-    is_non_github_pages_ip_present: NotRequired[Union[bool, None]]
-    is_pages_domain: NotRequired[bool]
-    is_served_by_pages: NotRequired[Union[bool, None]]
-    is_valid: NotRequired[bool]
-    reason: NotRequired[Union[str, None]]
-    responds_to_https: NotRequired[bool]
-    enforces_https: NotRequired[bool]
-    https_error: NotRequired[Union[str, None]]
-    is_https_eligible: NotRequired[Union[bool, None]]
-    caa_error: NotRequired[Union[str, None]]
-
-
-__all__ = (
-    "PagesHealthCheckPropAltDomainType",
-    "PagesHealthCheckPropDomainType",
-    "PagesHealthCheckType",
-)
+__all__ = ("PagesDeploymentStatusType",)

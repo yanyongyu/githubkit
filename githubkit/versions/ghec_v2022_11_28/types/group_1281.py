@@ -9,16 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0179 import CodespaceType
-
-
-class UserCodespacesGetResponse200Type(TypedDict):
-    """UserCodespacesGetResponse200"""
-
-    total_count: int
-    codespaces: list[CodespaceType]
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-__all__ = ("UserCodespacesGetResponse200Type",)
+class TeamsTeamIdProjectsProjectIdPutBodyType(TypedDict):
+    """TeamsTeamIdProjectsProjectIdPutBody"""
+
+    permission: NotRequired[Literal["read", "write", "admin"]]
+
+
+__all__ = ("TeamsTeamIdProjectsProjectIdPutBodyType",)

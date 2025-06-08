@@ -9,20 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0032 import ActionsHostedRunnerImage
+
+class OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBody(GitHubModel):
+    """OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBody"""
+
+    default_level: Literal["public", "internal"] = Field(
+        description="The default repository access level for Dependabot updates."
+    )
 
 
-class OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200(GitHubModel):
-    """OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200"""
+model_rebuild(OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBody)
 
-    total_count: int = Field()
-    images: list[ActionsHostedRunnerImage] = Field()
-
-
-model_rebuild(OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200)
-
-__all__ = ("OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200",)
+__all__ = ("OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBody",)

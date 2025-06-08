@@ -9,23 +9,79 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0122 import RepositoryRulesetBypassActorType
+from .group_0131 import OrgRulesetConditionsOneof0Type
+from .group_0132 import OrgRulesetConditionsOneof1Type
+from .group_0133 import OrgRulesetConditionsOneof2Type
+from .group_0134 import (
+    RepositoryRuleCreationType,
+    RepositoryRuleDeletionType,
+    RepositoryRuleNonFastForwardType,
+    RepositoryRuleRequiredSignaturesType,
+)
+from .group_0135 import RepositoryRuleUpdateType
+from .group_0137 import RepositoryRuleRequiredLinearHistoryType
+from .group_0138 import RepositoryRuleMergeQueueType
+from .group_0140 import RepositoryRuleRequiredDeploymentsType
+from .group_0143 import RepositoryRulePullRequestType
+from .group_0145 import RepositoryRuleRequiredStatusChecksType
+from .group_0147 import RepositoryRuleCommitMessagePatternType
+from .group_0149 import RepositoryRuleCommitAuthorEmailPatternType
+from .group_0151 import RepositoryRuleCommitterEmailPatternType
+from .group_0153 import RepositoryRuleBranchNamePatternType
+from .group_0155 import RepositoryRuleTagNamePatternType
+from .group_0157 import RepositoryRuleFilePathRestrictionType
+from .group_0159 import RepositoryRuleMaxFilePathLengthType
+from .group_0161 import RepositoryRuleFileExtensionRestrictionType
+from .group_0163 import RepositoryRuleMaxFileSizeType
+from .group_0166 import RepositoryRuleWorkflowsType
+from .group_0168 import RepositoryRuleCodeScanningType
 
-class OrgsOrgTeamsPostBodyType(TypedDict):
-    """OrgsOrgTeamsPostBody"""
 
-    name: str
-    description: NotRequired[str]
-    maintainers: NotRequired[list[str]]
-    repo_names: NotRequired[list[str]]
-    privacy: NotRequired[Literal["secret", "closed"]]
-    notification_setting: NotRequired[
-        Literal["notifications_enabled", "notifications_disabled"]
+class OrgsOrgRulesetsRulesetIdPutBodyType(TypedDict):
+    """OrgsOrgRulesetsRulesetIdPutBody"""
+
+    name: NotRequired[str]
+    target: NotRequired[Literal["branch", "tag", "push", "repository"]]
+    enforcement: NotRequired[Literal["disabled", "active", "evaluate"]]
+    bypass_actors: NotRequired[list[RepositoryRulesetBypassActorType]]
+    conditions: NotRequired[
+        Union[
+            OrgRulesetConditionsOneof0Type,
+            OrgRulesetConditionsOneof1Type,
+            OrgRulesetConditionsOneof2Type,
+        ]
     ]
-    permission: NotRequired[Literal["pull", "push"]]
-    parent_team_id: NotRequired[int]
+    rules: NotRequired[
+        list[
+            Union[
+                RepositoryRuleCreationType,
+                RepositoryRuleUpdateType,
+                RepositoryRuleDeletionType,
+                RepositoryRuleRequiredLinearHistoryType,
+                RepositoryRuleMergeQueueType,
+                RepositoryRuleRequiredDeploymentsType,
+                RepositoryRuleRequiredSignaturesType,
+                RepositoryRulePullRequestType,
+                RepositoryRuleRequiredStatusChecksType,
+                RepositoryRuleNonFastForwardType,
+                RepositoryRuleCommitMessagePatternType,
+                RepositoryRuleCommitAuthorEmailPatternType,
+                RepositoryRuleCommitterEmailPatternType,
+                RepositoryRuleBranchNamePatternType,
+                RepositoryRuleTagNamePatternType,
+                RepositoryRuleFilePathRestrictionType,
+                RepositoryRuleMaxFilePathLengthType,
+                RepositoryRuleFileExtensionRestrictionType,
+                RepositoryRuleMaxFileSizeType,
+                RepositoryRuleWorkflowsType,
+                RepositoryRuleCodeScanningType,
+            ]
+        ]
+    ]
 
 
-__all__ = ("OrgsOrgTeamsPostBodyType",)
+__all__ = ("OrgsOrgRulesetsRulesetIdPutBodyType",)

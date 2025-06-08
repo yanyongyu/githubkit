@@ -1564,6 +1564,7 @@ class ReposClient:
             error_models={
                 "403": ReposOwnerRepoDeleteResponse403,
                 "404": BasicError,
+                "409": BasicError,
             },
         )
 
@@ -1601,6 +1602,7 @@ class ReposClient:
             error_models={
                 "403": ReposOwnerRepoDeleteResponse403,
                 "404": BasicError,
+                "409": BasicError,
             },
         )
 
