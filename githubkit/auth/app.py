@@ -212,9 +212,13 @@ class AppAuth(httpx.Auth):
             response.read()
             response = self._parse_installation_auth_response(response)
             token = response.parsed_data.token
-            expire = datetime.strptime(
-                response.parsed_data.expires_at, "%Y-%m-%dT%H:%M:%SZ"
-            ).replace(tzinfo=timezone.utc) - datetime.now(timezone.utc)
+            expire = (
+                datetime.strptime(
+                    response.parsed_data.expires_at, "%Y-%m-%dT%H:%M:%SZ"
+                ).replace(tzinfo=timezone.utc)
+                - datetime.now(timezone.utc)
+                - timedelta(minutes=1)
+            )
             cache.set(key, token, expire)
         request.headers["Authorization"] = f"token {token}"
         yield request
@@ -250,9 +254,13 @@ class AppAuth(httpx.Auth):
             await response.aread()
             response = self._parse_installation_auth_response(response)
             token = response.parsed_data.token
-            expire = datetime.strptime(
-                response.parsed_data.expires_at, "%Y-%m-%dT%H:%M:%SZ"
-            ).replace(tzinfo=timezone.utc) - datetime.now(timezone.utc)
+            expire = (
+                datetime.strptime(
+                    response.parsed_data.expires_at, "%Y-%m-%dT%H:%M:%SZ"
+                ).replace(tzinfo=timezone.utc)
+                - datetime.now(timezone.utc)
+                - timedelta(minutes=1)
+            )
             await cache.aset(key, token, expire)
         request.headers["Authorization"] = f"token {token}"
         yield request
