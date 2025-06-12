@@ -9,25 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Union
+from typing_extensions import TypedDict
 
-from .group_0194 import RateLimitType
-
-
-class RateLimitOverviewPropResourcesType(TypedDict):
-    """RateLimitOverviewPropResources"""
-
-    core: RateLimitType
-    graphql: NotRequired[RateLimitType]
-    search: RateLimitType
-    code_search: NotRequired[RateLimitType]
-    source_import: NotRequired[RateLimitType]
-    integration_manifest: NotRequired[RateLimitType]
-    code_scanning_upload: NotRequired[RateLimitType]
-    actions_runner_registration: NotRequired[RateLimitType]
-    scim: NotRequired[RateLimitType]
-    dependency_snapshots: NotRequired[RateLimitType]
-    code_scanning_autofix: NotRequired[RateLimitType]
+from .group_0003 import SimpleUserType
 
 
-__all__ = ("RateLimitOverviewPropResourcesType",)
+class ProjectCollaboratorPermissionType(TypedDict):
+    """Project Collaborator Permission
+
+    Project Collaborator Permission
+    """
+
+    permission: str
+    user: Union[None, SimpleUserType]
+
+
+__all__ = ("ProjectCollaboratorPermissionType",)

@@ -12,18 +12,76 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0125 import RepositoryRulesetBypassActorType
+from .group_0134 import OrgRulesetConditionsOneof0Type
+from .group_0135 import OrgRulesetConditionsOneof1Type
+from .group_0136 import OrgRulesetConditionsOneof2Type
+from .group_0137 import (
+    RepositoryRuleCreationType,
+    RepositoryRuleDeletionType,
+    RepositoryRuleNonFastForwardType,
+    RepositoryRuleRequiredSignaturesType,
+)
+from .group_0138 import RepositoryRuleUpdateType
+from .group_0140 import RepositoryRuleRequiredLinearHistoryType
+from .group_0141 import RepositoryRuleMergeQueueType
+from .group_0143 import RepositoryRuleRequiredDeploymentsType
+from .group_0146 import RepositoryRulePullRequestType
+from .group_0148 import RepositoryRuleRequiredStatusChecksType
+from .group_0150 import RepositoryRuleCommitMessagePatternType
+from .group_0152 import RepositoryRuleCommitAuthorEmailPatternType
+from .group_0154 import RepositoryRuleCommitterEmailPatternType
+from .group_0156 import RepositoryRuleBranchNamePatternType
+from .group_0158 import RepositoryRuleTagNamePatternType
+from .group_0160 import RepositoryRuleFilePathRestrictionType
+from .group_0162 import RepositoryRuleMaxFilePathLengthType
+from .group_0164 import RepositoryRuleFileExtensionRestrictionType
+from .group_0166 import RepositoryRuleMaxFileSizeType
+from .group_0169 import RepositoryRuleWorkflowsType
+from .group_0171 import RepositoryRuleCodeScanningType
 
-class OrgsOrgTeamsTeamSlugPatchBodyType(TypedDict):
-    """OrgsOrgTeamsTeamSlugPatchBody"""
+
+class OrgsOrgRulesetsRulesetIdPutBodyType(TypedDict):
+    """OrgsOrgRulesetsRulesetIdPutBody"""
 
     name: NotRequired[str]
-    description: NotRequired[str]
-    privacy: NotRequired[Literal["secret", "closed"]]
-    notification_setting: NotRequired[
-        Literal["notifications_enabled", "notifications_disabled"]
+    target: NotRequired[Literal["branch", "tag", "push", "repository"]]
+    enforcement: NotRequired[Literal["disabled", "active", "evaluate"]]
+    bypass_actors: NotRequired[list[RepositoryRulesetBypassActorType]]
+    conditions: NotRequired[
+        Union[
+            OrgRulesetConditionsOneof0Type,
+            OrgRulesetConditionsOneof1Type,
+            OrgRulesetConditionsOneof2Type,
+        ]
     ]
-    permission: NotRequired[Literal["pull", "push", "admin"]]
-    parent_team_id: NotRequired[Union[int, None]]
+    rules: NotRequired[
+        list[
+            Union[
+                RepositoryRuleCreationType,
+                RepositoryRuleUpdateType,
+                RepositoryRuleDeletionType,
+                RepositoryRuleRequiredLinearHistoryType,
+                RepositoryRuleMergeQueueType,
+                RepositoryRuleRequiredDeploymentsType,
+                RepositoryRuleRequiredSignaturesType,
+                RepositoryRulePullRequestType,
+                RepositoryRuleRequiredStatusChecksType,
+                RepositoryRuleNonFastForwardType,
+                RepositoryRuleCommitMessagePatternType,
+                RepositoryRuleCommitAuthorEmailPatternType,
+                RepositoryRuleCommitterEmailPatternType,
+                RepositoryRuleBranchNamePatternType,
+                RepositoryRuleTagNamePatternType,
+                RepositoryRuleFilePathRestrictionType,
+                RepositoryRuleMaxFilePathLengthType,
+                RepositoryRuleFileExtensionRestrictionType,
+                RepositoryRuleMaxFileSizeType,
+                RepositoryRuleWorkflowsType,
+                RepositoryRuleCodeScanningType,
+            ]
+        ]
+    ]
 
 
-__all__ = ("OrgsOrgTeamsTeamSlugPatchBodyType",)
+__all__ = ("OrgsOrgRulesetsRulesetIdPutBodyType",)

@@ -9,29 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0018 import InstallationType
-from .group_0420 import EnterpriseWebhooksType
-from .group_0422 import OrganizationSimpleWebhooksType
-from .group_0423 import RepositoryWebhooksType
-from .group_0431 import WebhooksUserType
-from .group_0436 import WebhooksRepositoriesItemsType
+
+class WebhookForkPropForkeeAllof0PropPermissionsType(TypedDict):
+    """WebhookForkPropForkeeAllof0PropPermissions"""
+
+    admin: bool
+    maintain: NotRequired[bool]
+    pull: bool
+    push: bool
+    triage: NotRequired[bool]
 
 
-class WebhookInstallationCreatedType(TypedDict):
-    """installation created event"""
-
-    action: Literal["created"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: InstallationType
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repositories: NotRequired[list[WebhooksRepositoriesItemsType]]
-    repository: NotRequired[RepositoryWebhooksType]
-    requester: NotRequired[Union[WebhooksUserType, None]]
-    sender: SimpleUserType
-
-
-__all__ = ("WebhookInstallationCreatedType",)
+__all__ = ("WebhookForkPropForkeeAllof0PropPermissionsType",)

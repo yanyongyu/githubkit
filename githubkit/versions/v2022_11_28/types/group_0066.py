@@ -9,19 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class ActionsHostedRunnerMachineSpecType(TypedDict):
-    """Github-owned VM details.
+class BillingUsageReportType(TypedDict):
+    """BillingUsageReport"""
 
-    Provides details of a particular machine spec.
-    """
-
-    id: str
-    cpu_cores: int
-    memory_gb: int
-    storage_gb: int
+    usage_items: NotRequired[list[BillingUsageReportPropUsageItemsItemsType]]
 
 
-__all__ = ("ActionsHostedRunnerMachineSpecType",)
+class BillingUsageReportPropUsageItemsItemsType(TypedDict):
+    """BillingUsageReportPropUsageItemsItems"""
+
+    date: str
+    product: str
+    sku: str
+    quantity: int
+    unit_type: str
+    price_per_unit: float
+    gross_amount: float
+    discount_amount: float
+    net_amount: float
+    organization_name: str
+    repository_name: NotRequired[str]
+
+
+__all__ = (
+    "BillingUsageReportPropUsageItemsItemsType",
+    "BillingUsageReportType",
+)

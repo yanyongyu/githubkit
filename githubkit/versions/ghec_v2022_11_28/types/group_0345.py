@@ -9,32 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0011 import WebhookConfigType
-from .group_0344 import HookResponseType
+from .group_0268 import VerificationType
 
 
-class HookType(TypedDict):
-    """Webhook
+class GitTagType(TypedDict):
+    """Git Tag
 
-    Webhooks for repositories.
+    Metadata for a Git tag
     """
 
-    type: str
-    id: int
-    name: str
-    active: bool
-    events: list[str]
-    config: WebhookConfigType
-    updated_at: datetime
-    created_at: datetime
+    node_id: str
+    tag: str
+    sha: str
     url: str
-    test_url: str
-    ping_url: str
-    deliveries_url: NotRequired[str]
-    last_response: HookResponseType
+    message: str
+    tagger: GitTagPropTaggerType
+    object_: GitTagPropObjectType
+    verification: NotRequired[VerificationType]
 
 
-__all__ = ("HookType",)
+class GitTagPropTaggerType(TypedDict):
+    """GitTagPropTagger"""
+
+    date: str
+    email: str
+    name: str
+
+
+class GitTagPropObjectType(TypedDict):
+    """GitTagPropObject"""
+
+    sha: str
+    type: str
+    url: str
+
+
+__all__ = (
+    "GitTagPropObjectType",
+    "GitTagPropTaggerType",
+    "GitTagType",
+)

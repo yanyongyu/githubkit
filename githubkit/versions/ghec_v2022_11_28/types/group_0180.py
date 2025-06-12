@@ -13,90 +13,81 @@ from datetime import datetime
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0168 import MinimalRepositoryType
-from .group_0179 import CodespaceMachineType
+from .group_0053 import BypassResponseType
 
 
-class CodespaceType(TypedDict):
-    """Codespace
+class SecretScanningBypassRequestType(TypedDict):
+    """Secret scanning bypass request
 
-    A codespace.
+    A bypass request made by a user asking to be exempted from push protection in
+    this repository.
     """
 
-    id: int
-    name: str
-    display_name: NotRequired[Union[str, None]]
-    environment_id: Union[str, None]
-    owner: SimpleUserType
-    billable_owner: SimpleUserType
-    repository: MinimalRepositoryType
-    machine: Union[None, CodespaceMachineType]
-    devcontainer_path: NotRequired[Union[str, None]]
-    prebuild: Union[bool, None]
-    created_at: datetime
-    updated_at: datetime
-    last_used_at: datetime
-    state: Literal[
-        "Unknown",
-        "Created",
-        "Queued",
-        "Provisioning",
-        "Available",
-        "Awaiting",
-        "Unavailable",
-        "Deleted",
-        "Moved",
-        "Shutdown",
-        "Archived",
-        "Starting",
-        "ShuttingDown",
-        "Failed",
-        "Exporting",
-        "Updating",
-        "Rebuilding",
+    id: NotRequired[int]
+    number: NotRequired[int]
+    repository: NotRequired[SecretScanningBypassRequestPropRepositoryType]
+    organization: NotRequired[SecretScanningBypassRequestPropOrganizationType]
+    requester: NotRequired[SecretScanningBypassRequestPropRequesterType]
+    request_type: NotRequired[str]
+    data: NotRequired[Union[list[SecretScanningBypassRequestPropDataItemsType], None]]
+    resource_identifier: NotRequired[str]
+    status: NotRequired[
+        Literal[
+            "pending", "denied", "approved", "cancelled", "completed", "expired", "open"
+        ]
     ]
-    url: str
-    git_status: CodespacePropGitStatusType
-    location: Literal["EastUs", "SouthEastAsia", "WestEurope", "WestUs2"]
-    idle_timeout_minutes: Union[int, None]
-    web_url: str
-    machines_url: str
-    start_url: str
-    stop_url: str
-    publish_url: NotRequired[Union[str, None]]
-    pulls_url: Union[str, None]
-    recent_folders: list[str]
-    runtime_constraints: NotRequired[CodespacePropRuntimeConstraintsType]
-    pending_operation: NotRequired[Union[bool, None]]
-    pending_operation_disabled_reason: NotRequired[Union[str, None]]
-    idle_timeout_notice: NotRequired[Union[str, None]]
-    retention_period_minutes: NotRequired[Union[int, None]]
-    retention_expires_at: NotRequired[Union[datetime, None]]
-    last_known_stop_notice: NotRequired[Union[str, None]]
+    requester_comment: NotRequired[Union[str, None]]
+    expires_at: NotRequired[datetime]
+    created_at: NotRequired[datetime]
+    responses: NotRequired[Union[list[BypassResponseType], None]]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
 
 
-class CodespacePropGitStatusType(TypedDict):
-    """CodespacePropGitStatus
+class SecretScanningBypassRequestPropRepositoryType(TypedDict):
+    """SecretScanningBypassRequestPropRepository
 
-    Details about the codespace's git repository.
+    The repository the bypass request is for.
     """
 
-    ahead: NotRequired[int]
-    behind: NotRequired[int]
-    has_unpushed_changes: NotRequired[bool]
-    has_uncommitted_changes: NotRequired[bool]
-    ref: NotRequired[str]
+    id: NotRequired[int]
+    name: NotRequired[str]
+    full_name: NotRequired[str]
 
 
-class CodespacePropRuntimeConstraintsType(TypedDict):
-    """CodespacePropRuntimeConstraints"""
+class SecretScanningBypassRequestPropOrganizationType(TypedDict):
+    """SecretScanningBypassRequestPropOrganization
 
-    allowed_port_privacy_settings: NotRequired[Union[list[str], None]]
+    The organization associated with the repository the bypass request is for.
+    """
+
+    id: NotRequired[int]
+    name: NotRequired[str]
+
+
+class SecretScanningBypassRequestPropRequesterType(TypedDict):
+    """SecretScanningBypassRequestPropRequester
+
+    The user who requested the bypass.
+    """
+
+    actor_id: NotRequired[int]
+    actor_name: NotRequired[str]
+
+
+class SecretScanningBypassRequestPropDataItemsType(TypedDict):
+    """SecretScanningBypassRequestPropDataItems"""
+
+    secret_type: NotRequired[str]
+    bypass_reason: NotRequired[Literal["used_in_tests", "false_positive", "fix_later"]]
+    path: NotRequired[str]
+    branch: NotRequired[str]
 
 
 __all__ = (
-    "CodespacePropGitStatusType",
-    "CodespacePropRuntimeConstraintsType",
-    "CodespaceType",
+    "SecretScanningBypassRequestPropDataItemsType",
+    "SecretScanningBypassRequestPropOrganizationType",
+    "SecretScanningBypassRequestPropRepositoryType",
+    "SecretScanningBypassRequestPropRequesterType",
+    "SecretScanningBypassRequestType",
 )

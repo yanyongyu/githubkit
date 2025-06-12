@@ -13,23 +13,23 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0420 import EnterpriseWebhooksType
-from .group_0421 import SimpleInstallationType
-from .group_0422 import OrganizationSimpleWebhooksType
-from .group_0423 import RepositoryWebhooksType
-from .group_0452 import WebhooksProjectType
+from .group_0424 import EnterpriseWebhooksType
+from .group_0425 import SimpleInstallationType
+from .group_0426 import OrganizationSimpleWebhooksType
+from .group_0427 import RepositoryWebhooksType
+from .group_0457 import WebhooksProjectColumnType
 
 
-class WebhookProjectDeletedType(TypedDict):
-    """project deleted event"""
+class WebhookProjectColumnDeletedType(TypedDict):
+    """project_column deleted event"""
 
     action: Literal["deleted"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    project: WebhooksProjectType
+    project_column: WebhooksProjectColumnType
     repository: NotRequired[Union[None, RepositoryWebhooksType]]
     sender: NotRequired[SimpleUserType]
 
 
-__all__ = ("WebhookProjectDeletedType",)
+__all__ = ("WebhookProjectColumnDeletedType",)

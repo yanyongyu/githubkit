@@ -48,8 +48,7 @@ if TYPE_CHECKING:
         EmptyObjectType,
         OrganizationDependabotSecretType,
         OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBodyType,
-        OrganizationsOrgDependabotRepositoryAccessPatchBodyOneof0Type,
-        OrganizationsOrgDependabotRepositoryAccessPatchBodyOneof1Type,
+        OrganizationsOrgDependabotRepositoryAccessPatchBodyType,
         OrgsOrgDependabotSecretsGetResponse200Type,
         OrgsOrgDependabotSecretsSecretNamePutBodyType,
         OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200Type,
@@ -233,6 +232,8 @@ class DependabotClient:
         self,
         org: str,
         *,
+        page: Missing[int] = UNSET,
+        per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         DependabotRepositoryAccessDetails, DependabotRepositoryAccessDetailsType
@@ -252,11 +253,17 @@ class DependabotClient:
 
         url = f"/organizations/{org}/dependabot/repository-access"
 
+        params = {
+            "page": page,
+            "per_page": per_page,
+        }
+
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
             url,
+            params=exclude_unset(params),
             headers=exclude_unset(headers),
             response_model=DependabotRepositoryAccessDetails,
             error_models={
@@ -269,6 +276,8 @@ class DependabotClient:
         self,
         org: str,
         *,
+        page: Missing[int] = UNSET,
+        per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
     ) -> Response[
         DependabotRepositoryAccessDetails, DependabotRepositoryAccessDetailsType
@@ -288,11 +297,17 @@ class DependabotClient:
 
         url = f"/organizations/{org}/dependabot/repository-access"
 
+        params = {
+            "page": page,
+            "per_page": per_page,
+        }
+
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
             url,
+            params=exclude_unset(params),
             headers=exclude_unset(headers),
             response_model=DependabotRepositoryAccessDetails,
             error_models={
@@ -307,21 +322,7 @@ class DependabotClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
-        data: Union[
-            OrganizationsOrgDependabotRepositoryAccessPatchBodyOneof0Type,
-            OrganizationsOrgDependabotRepositoryAccessPatchBodyOneof1Type,
-        ],
-    ) -> Response: ...
-
-    @overload
-    def update_repository_access_for_org(
-        self,
-        org: str,
-        *,
-        data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
-        repository_ids_to_add: list[int],
-        repository_ids_to_remove: Missing[list[int]] = UNSET,
+        data: OrganizationsOrgDependabotRepositoryAccessPatchBodyType,
     ) -> Response: ...
 
     @overload
@@ -332,7 +333,7 @@ class DependabotClient:
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         repository_ids_to_add: Missing[list[int]] = UNSET,
-        repository_ids_to_remove: list[int],
+        repository_ids_to_remove: Missing[list[int]] = UNSET,
     ) -> Response: ...
 
     def update_repository_access_for_org(
@@ -340,12 +341,7 @@ class DependabotClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
-        data: Missing[
-            Union[
-                OrganizationsOrgDependabotRepositoryAccessPatchBodyOneof0Type,
-                OrganizationsOrgDependabotRepositoryAccessPatchBodyOneof1Type,
-            ]
-        ] = UNSET,
+        data: Missing[OrganizationsOrgDependabotRepositoryAccessPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response:
         """dependabot/update-repository-access-for-org
@@ -356,15 +352,20 @@ class DependabotClient:
         >    This operation supports both server-to-server and user-to-server access.
         Unauthorized users will not see the existence of this endpoint.
 
+        **Example request body:**
+        ```json
+        {
+          "repository_ids_to_add": [123, 456],
+          "repository_ids_to_remove": [789]
+        }
+        ```
+
         See also: https://docs.github.com/rest/dependabot/repository-access#updates-repositories-to-the-list-of-repositories-that-organization-admins-have-allowed-dependabot-to-access-when-updating-dependencies
         """
 
-        from typing import Union
-
         from ..models import (
             BasicError,
-            OrganizationsOrgDependabotRepositoryAccessPatchBodyOneof0,
-            OrganizationsOrgDependabotRepositoryAccessPatchBodyOneof1,
+            OrganizationsOrgDependabotRepositoryAccessPatchBody,
         )
 
         url = f"/organizations/{org}/dependabot/repository-access"
@@ -378,11 +379,7 @@ class DependabotClient:
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_validate_body:
             json = type_validate_python(
-                Union[
-                    OrganizationsOrgDependabotRepositoryAccessPatchBodyOneof0,
-                    OrganizationsOrgDependabotRepositoryAccessPatchBodyOneof1,
-                ],
-                json,
+                OrganizationsOrgDependabotRepositoryAccessPatchBody, json
             )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -403,21 +400,7 @@ class DependabotClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
-        data: Union[
-            OrganizationsOrgDependabotRepositoryAccessPatchBodyOneof0Type,
-            OrganizationsOrgDependabotRepositoryAccessPatchBodyOneof1Type,
-        ],
-    ) -> Response: ...
-
-    @overload
-    async def async_update_repository_access_for_org(
-        self,
-        org: str,
-        *,
-        data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
-        repository_ids_to_add: list[int],
-        repository_ids_to_remove: Missing[list[int]] = UNSET,
+        data: OrganizationsOrgDependabotRepositoryAccessPatchBodyType,
     ) -> Response: ...
 
     @overload
@@ -428,7 +411,7 @@ class DependabotClient:
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         repository_ids_to_add: Missing[list[int]] = UNSET,
-        repository_ids_to_remove: list[int],
+        repository_ids_to_remove: Missing[list[int]] = UNSET,
     ) -> Response: ...
 
     async def async_update_repository_access_for_org(
@@ -436,12 +419,7 @@ class DependabotClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
-        data: Missing[
-            Union[
-                OrganizationsOrgDependabotRepositoryAccessPatchBodyOneof0Type,
-                OrganizationsOrgDependabotRepositoryAccessPatchBodyOneof1Type,
-            ]
-        ] = UNSET,
+        data: Missing[OrganizationsOrgDependabotRepositoryAccessPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response:
         """dependabot/update-repository-access-for-org
@@ -452,15 +430,20 @@ class DependabotClient:
         >    This operation supports both server-to-server and user-to-server access.
         Unauthorized users will not see the existence of this endpoint.
 
+        **Example request body:**
+        ```json
+        {
+          "repository_ids_to_add": [123, 456],
+          "repository_ids_to_remove": [789]
+        }
+        ```
+
         See also: https://docs.github.com/rest/dependabot/repository-access#updates-repositories-to-the-list-of-repositories-that-organization-admins-have-allowed-dependabot-to-access-when-updating-dependencies
         """
 
-        from typing import Union
-
         from ..models import (
             BasicError,
-            OrganizationsOrgDependabotRepositoryAccessPatchBodyOneof0,
-            OrganizationsOrgDependabotRepositoryAccessPatchBodyOneof1,
+            OrganizationsOrgDependabotRepositoryAccessPatchBody,
         )
 
         url = f"/organizations/{org}/dependabot/repository-access"
@@ -474,11 +457,7 @@ class DependabotClient:
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_validate_body:
             json = type_validate_python(
-                Union[
-                    OrganizationsOrgDependabotRepositoryAccessPatchBodyOneof0,
-                    OrganizationsOrgDependabotRepositoryAccessPatchBodyOneof1,
-                ],
-                json,
+                OrganizationsOrgDependabotRepositoryAccessPatchBody, json
             )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 

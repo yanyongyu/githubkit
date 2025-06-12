@@ -9,52 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0003 import SimpleUser
-from .group_0041 import ReactionRollup
 
 
-class TeamDiscussion(GitHubModel):
-    """Team Discussion
+class CombinedBillingUsage(GitHubModel):
+    """CombinedBillingUsage"""
 
-    A team discussion is a persistent record of a free-form conversation within a
-    team.
-    """
-
-    author: Union[None, SimpleUser] = Field()
-    body: str = Field(description="The main text of the discussion.")
-    body_html: str = Field()
-    body_version: str = Field(
-        description="The current version of the body content. If provided, this update operation will be rejected if the given version does not match the latest version on the server."
+    days_left_in_billing_cycle: int = Field(
+        description="Numbers of days left in billing cycle."
     )
-    comments_count: int = Field()
-    comments_url: str = Field()
-    created_at: datetime = Field()
-    last_edited_at: Union[datetime, None] = Field()
-    html_url: str = Field()
-    node_id: str = Field()
-    number: int = Field(description="The unique sequence number of a team discussion.")
-    pinned: bool = Field(
-        description="Whether or not this discussion should be pinned for easy retrieval."
+    estimated_paid_storage_for_month: int = Field(
+        description="Estimated storage space (GB) used in billing cycle."
     )
-    private: bool = Field(
-        description="Whether or not this discussion should be restricted to team members and organization owners."
+    estimated_storage_for_month: int = Field(
+        description="Estimated sum of free and paid storage space (GB) used in billing cycle."
     )
-    team_url: str = Field()
-    title: str = Field(description="The title of the discussion.")
-    updated_at: datetime = Field()
-    url: str = Field()
-    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
 
 
-model_rebuild(TeamDiscussion)
+model_rebuild(CombinedBillingUsage)
 
-__all__ = ("TeamDiscussion",)
+__all__ = ("CombinedBillingUsage",)

@@ -9,29 +9,15 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0003 import SimpleUserType
-from .group_0420 import EnterpriseWebhooksType
-from .group_0421 import SimpleInstallationType
-from .group_0422 import OrganizationSimpleWebhooksType
-from .group_0423 import RepositoryWebhooksType
-from .group_0431 import WebhooksUserType
-from .group_0440 import WebhooksIssueType
+from typing_extensions import TypedDict
 
 
-class WebhookIssuesAssignedType(TypedDict):
-    """issues assigned event"""
+class WebhookIssueCommentEditedPropIssueAllof0PropSubIssuesSummaryType(TypedDict):
+    """Sub-issues Summary"""
 
-    action: Literal["assigned"]
-    assignee: NotRequired[Union[WebhooksUserType, None]]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    issue: WebhooksIssueType
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
+    total: int
+    completed: int
+    percent_completed: int
 
 
-__all__ = ("WebhookIssuesAssignedType",)
+__all__ = ("WebhookIssueCommentEditedPropIssueAllof0PropSubIssuesSummaryType",)

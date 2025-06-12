@@ -14,47 +14,29 @@ from typing import Union
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0163 import MarketplaceListingPlan
 
 
-class MarketplacePurchasePropMarketplacePendingChange(GitHubModel):
-    """MarketplacePurchasePropMarketplacePendingChange"""
+class License(GitHubModel):
+    """License
 
-    is_installed: Missing[bool] = Field(default=UNSET)
-    effective_date: Missing[str] = Field(default=UNSET)
-    unit_count: Missing[Union[int, None]] = Field(default=UNSET)
-    id: Missing[int] = Field(default=UNSET)
-    plan: Missing[MarketplaceListingPlan] = Field(
-        default=UNSET,
-        title="Marketplace Listing Plan",
-        description="Marketplace Listing Plan",
-    )
+    License
+    """
 
-
-class MarketplacePurchasePropMarketplacePurchase(GitHubModel):
-    """MarketplacePurchasePropMarketplacePurchase"""
-
-    billing_cycle: Missing[str] = Field(default=UNSET)
-    next_billing_date: Missing[Union[str, None]] = Field(default=UNSET)
-    is_installed: Missing[bool] = Field(default=UNSET)
-    unit_count: Missing[Union[int, None]] = Field(default=UNSET)
-    on_free_trial: Missing[bool] = Field(default=UNSET)
-    free_trial_ends_on: Missing[Union[str, None]] = Field(default=UNSET)
-    updated_at: Missing[str] = Field(default=UNSET)
-    plan: Missing[MarketplaceListingPlan] = Field(
-        default=UNSET,
-        title="Marketplace Listing Plan",
-        description="Marketplace Listing Plan",
-    )
+    key: str = Field()
+    name: str = Field()
+    spdx_id: Union[str, None] = Field()
+    url: Union[str, None] = Field()
+    node_id: str = Field()
+    html_url: str = Field()
+    description: str = Field()
+    implementation: str = Field()
+    permissions: list[str] = Field()
+    conditions: list[str] = Field()
+    limitations: list[str] = Field()
+    body: str = Field()
+    featured: bool = Field()
 
 
-model_rebuild(MarketplacePurchasePropMarketplacePendingChange)
-model_rebuild(MarketplacePurchasePropMarketplacePurchase)
+model_rebuild(License)
 
-__all__ = (
-    "MarketplacePurchasePropMarketplacePendingChange",
-    "MarketplacePurchasePropMarketplacePurchase",
-)
+__all__ = ("License",)

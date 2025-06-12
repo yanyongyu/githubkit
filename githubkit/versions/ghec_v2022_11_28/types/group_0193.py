@@ -9,39 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgHookType(TypedDict):
-    """Org Hook
+class ExternalGroupsType(TypedDict):
+    """ExternalGroups
 
-    Org Hook
+    A list of external groups available to be connected to a team
     """
 
-    id: int
-    url: str
-    ping_url: str
-    deliveries_url: NotRequired[str]
-    name: str
-    events: list[str]
-    active: bool
-    config: OrgHookPropConfigType
-    updated_at: datetime
-    created_at: datetime
-    type: str
+    groups: NotRequired[list[ExternalGroupsPropGroupsItemsType]]
 
 
-class OrgHookPropConfigType(TypedDict):
-    """OrgHookPropConfig"""
+class ExternalGroupsPropGroupsItemsType(TypedDict):
+    """ExternalGroupsPropGroupsItems"""
 
-    url: NotRequired[str]
-    insecure_ssl: NotRequired[str]
-    content_type: NotRequired[str]
-    secret: NotRequired[str]
+    group_id: int
+    group_name: str
+    updated_at: str
 
 
 __all__ = (
-    "OrgHookPropConfigType",
-    "OrgHookType",
+    "ExternalGroupsPropGroupsItemsType",
+    "ExternalGroupsType",
 )

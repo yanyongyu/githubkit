@@ -9,111 +9,141 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0003 import SimpleUser
-from .group_0031 import SimpleRepository
 
 
-class OrganizationSecretScanningAlert(GitHubModel):
-    """OrganizationSecretScanningAlert"""
+class SecretScanningLocationCommit(GitHubModel):
+    """SecretScanningLocationCommit
 
-    number: Missing[int] = Field(
-        default=UNSET, description="The security alert number."
+    Represents a 'commit' secret scanning location type. This location type shows
+    that a secret was detected inside a commit to a repository.
+    """
+
+    path: str = Field(description="The file path in the repository")
+    start_line: float = Field(
+        description="Line number at which the secret starts in the file"
     )
-    created_at: Missing[datetime] = Field(
-        default=UNSET,
-        description="The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+    end_line: float = Field(
+        description="Line number at which the secret ends in the file"
     )
-    updated_at: Missing[Union[None, datetime]] = Field(default=UNSET)
-    url: Missing[str] = Field(
-        default=UNSET, description="The REST API URL of the alert resource."
+    start_column: float = Field(
+        description="The column at which the secret starts within the start line when the file is interpreted as 8BIT ASCII"
     )
-    html_url: Missing[str] = Field(
-        default=UNSET, description="The GitHub URL of the alert resource."
+    end_column: float = Field(
+        description="The column at which the secret ends within the end line when the file is interpreted as 8BIT ASCII"
     )
-    locations_url: Missing[str] = Field(
-        default=UNSET,
-        description="The REST API URL of the code locations for this alert.",
-    )
-    state: Missing[Literal["open", "resolved"]] = Field(
-        default=UNSET,
-        description="Sets the state of the secret scanning alert. You must provide `resolution` when you set the state to `resolved`.",
-    )
-    resolution: Missing[
-        Union[None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]]
-    ] = Field(
-        default=UNSET,
-        description="**Required when the `state` is `resolved`.** The reason for resolving the alert.",
-    )
-    resolved_at: Missing[Union[datetime, None]] = Field(
-        default=UNSET,
-        description="The time that the alert was resolved in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
-    )
-    resolved_by: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
-    secret_type: Missing[str] = Field(
-        default=UNSET, description="The type of secret that secret scanning detected."
-    )
-    secret_type_display_name: Missing[str] = Field(
-        default=UNSET,
-        description='User-friendly name for the detected secret, matching the `secret_type`.\nFor a list of built-in patterns, see "[Supported secret scanning patterns](https://docs.github.com/code-security/secret-scanning/introduction/supported-secret-scanning-patterns#supported-secrets)."',
-    )
-    secret: Missing[str] = Field(
-        default=UNSET, description="The secret that was detected."
-    )
-    repository: Missing[SimpleRepository] = Field(
-        default=UNSET, title="Simple Repository", description="A GitHub repository."
-    )
-    push_protection_bypassed: Missing[Union[bool, None]] = Field(
-        default=UNSET,
-        description="Whether push protection was bypassed for the detected secret.",
-    )
-    push_protection_bypassed_by: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
-    push_protection_bypassed_at: Missing[Union[datetime, None]] = Field(
-        default=UNSET,
-        description="The time that push protection was bypassed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
-    )
-    push_protection_bypass_request_reviewer: Missing[Union[None, SimpleUser]] = Field(
-        default=UNSET
-    )
-    push_protection_bypass_request_reviewer_comment: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="An optional comment when reviewing a push protection bypass.",
-    )
-    push_protection_bypass_request_comment: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="An optional comment when requesting a push protection bypass.",
-    )
-    push_protection_bypass_request_html_url: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The URL to a push protection bypass request."
-    )
-    resolution_comment: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The comment that was optionally added when this alert was closed",
-    )
-    validity: Missing[Literal["active", "inactive", "unknown"]] = Field(
-        default=UNSET, description="The token status as of the latest validity check."
-    )
-    publicly_leaked: Missing[Union[bool, None]] = Field(
-        default=UNSET, description="Whether the secret was publicly leaked."
-    )
-    multi_repo: Missing[Union[bool, None]] = Field(
-        default=UNSET,
-        description="Whether the detected secret was found in multiple repositories in the same organization or enterprise.",
-    )
-    is_base64_encoded: Missing[Union[bool, None]] = Field(
-        default=UNSET,
-        description="A boolean value representing whether or not alert is base64 encoded",
+    blob_sha: str = Field(description="SHA-1 hash ID of the associated blob")
+    blob_url: str = Field(description="The API URL to get the associated blob resource")
+    commit_sha: str = Field(description="SHA-1 hash ID of the associated commit")
+    commit_url: str = Field(
+        description="The API URL to get the associated commit resource"
     )
 
 
-model_rebuild(OrganizationSecretScanningAlert)
+class SecretScanningLocationWikiCommit(GitHubModel):
+    """SecretScanningLocationWikiCommit
 
-__all__ = ("OrganizationSecretScanningAlert",)
+    Represents a 'wiki_commit' secret scanning location type. This location type
+    shows that a secret was detected inside a commit to a repository wiki.
+    """
+
+    path: str = Field(description="The file path of the wiki page")
+    start_line: float = Field(
+        description="Line number at which the secret starts in the file"
+    )
+    end_line: float = Field(
+        description="Line number at which the secret ends in the file"
+    )
+    start_column: float = Field(
+        description="The column at which the secret starts within the start line when the file is interpreted as 8-bit ASCII."
+    )
+    end_column: float = Field(
+        description="The column at which the secret ends within the end line when the file is interpreted as 8-bit ASCII."
+    )
+    blob_sha: str = Field(description="SHA-1 hash ID of the associated blob")
+    page_url: str = Field(description="The GitHub URL to get the associated wiki page")
+    commit_sha: str = Field(description="SHA-1 hash ID of the associated commit")
+    commit_url: str = Field(
+        description="The GitHub URL to get the associated wiki commit"
+    )
+
+
+class SecretScanningLocationIssueBody(GitHubModel):
+    """SecretScanningLocationIssueBody
+
+    Represents an 'issue_body' secret scanning location type. This location type
+    shows that a secret was detected in the body of an issue.
+    """
+
+    issue_body_url: str = Field(
+        description="The API URL to get the issue where the secret was detected."
+    )
+
+
+class SecretScanningLocationDiscussionTitle(GitHubModel):
+    """SecretScanningLocationDiscussionTitle
+
+    Represents a 'discussion_title' secret scanning location type. This location
+    type shows that a secret was detected in the title of a discussion.
+    """
+
+    discussion_title_url: str = Field(
+        description="The URL to the discussion where the secret was detected."
+    )
+
+
+class SecretScanningLocationDiscussionComment(GitHubModel):
+    """SecretScanningLocationDiscussionComment
+
+    Represents a 'discussion_comment' secret scanning location type. This location
+    type shows that a secret was detected in a comment on a discussion.
+    """
+
+    discussion_comment_url: str = Field(
+        description="The API URL to get the discussion comment where the secret was detected."
+    )
+
+
+class SecretScanningLocationPullRequestBody(GitHubModel):
+    """SecretScanningLocationPullRequestBody
+
+    Represents a 'pull_request_body' secret scanning location type. This location
+    type shows that a secret was detected in the body of a pull request.
+    """
+
+    pull_request_body_url: str = Field(
+        description="The API URL to get the pull request where the secret was detected."
+    )
+
+
+class SecretScanningLocationPullRequestReview(GitHubModel):
+    """SecretScanningLocationPullRequestReview
+
+    Represents a 'pull_request_review' secret scanning location type. This location
+    type shows that a secret was detected in a review on a pull request.
+    """
+
+    pull_request_review_url: str = Field(
+        description="The API URL to get the pull request review where the secret was detected."
+    )
+
+
+model_rebuild(SecretScanningLocationCommit)
+model_rebuild(SecretScanningLocationWikiCommit)
+model_rebuild(SecretScanningLocationIssueBody)
+model_rebuild(SecretScanningLocationDiscussionTitle)
+model_rebuild(SecretScanningLocationDiscussionComment)
+model_rebuild(SecretScanningLocationPullRequestBody)
+model_rebuild(SecretScanningLocationPullRequestReview)
+
+__all__ = (
+    "SecretScanningLocationCommit",
+    "SecretScanningLocationDiscussionComment",
+    "SecretScanningLocationDiscussionTitle",
+    "SecretScanningLocationIssueBody",
+    "SecretScanningLocationPullRequestBody",
+    "SecretScanningLocationPullRequestReview",
+    "SecretScanningLocationWikiCommit",
+)

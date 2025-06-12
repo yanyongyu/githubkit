@@ -9,31 +9,47 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
-from .group_0058 import SimpleRepository
+from .group_0171 import MinimalRepository
 
 
-class DependabotRepositoryAccessDetails(GitHubModel):
-    """Dependabot Repository Access Details
+class Thread(GitHubModel):
+    """Thread
 
-    Information about repositories that Dependabot is able to access in an
-    organization
+    Thread
     """
 
-    default_level: Missing[Union[None, Literal["public", "internal"]]] = Field(
-        default=UNSET,
-        description="The default repository access level for Dependabot updates.",
+    id: str = Field()
+    repository: MinimalRepository = Field(
+        title="Minimal Repository", description="Minimal Repository"
     )
-    accessible_repositories: Missing[list[SimpleRepository]] = Field(default=UNSET)
+    subject: ThreadPropSubject = Field()
+    reason: str = Field()
+    unread: bool = Field()
+    updated_at: str = Field()
+    last_read_at: Union[str, None] = Field()
+    url: str = Field()
+    subscription_url: str = Field()
 
 
-model_rebuild(DependabotRepositoryAccessDetails)
+class ThreadPropSubject(GitHubModel):
+    """ThreadPropSubject"""
 
-__all__ = ("DependabotRepositoryAccessDetails",)
+    title: str = Field()
+    url: str = Field()
+    latest_comment_url: str = Field()
+    type: str = Field()
+
+
+model_rebuild(Thread)
+model_rebuild(ThreadPropSubject)
+
+__all__ = (
+    "Thread",
+    "ThreadPropSubject",
+)

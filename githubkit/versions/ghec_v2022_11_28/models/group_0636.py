@@ -18,14 +18,20 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0631 import (
+from .group_0635 import (
     WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropOwner,
     WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropPermissions,
 )
 
 
-class WebhookIssueCommentDeletedPropIssueMergedPerformedViaGithubApp(GitHubModel):
-    """WebhookIssueCommentDeletedPropIssueMergedPerformedViaGithubApp"""
+class WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubApp(GitHubModel):
+    """App
+
+    GitHub apps are a new way to extend GitHub. They can be installed directly on
+    organizations and user accounts and granted access to specific repositories.
+    They come with granular permissions and built-in webhooks. GitHub apps are first
+    class actors within GitHub.
+    """
 
     created_at: Union[datetime, None] = Field()
     description: Union[str, None] = Field()
@@ -50,6 +56,6 @@ class WebhookIssueCommentDeletedPropIssueMergedPerformedViaGithubApp(GitHubModel
     updated_at: Union[datetime, None] = Field()
 
 
-model_rebuild(WebhookIssueCommentDeletedPropIssueMergedPerformedViaGithubApp)
+model_rebuild(WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubApp)
 
-__all__ = ("WebhookIssueCommentDeletedPropIssueMergedPerformedViaGithubApp",)
+__all__ = ("WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubApp",)

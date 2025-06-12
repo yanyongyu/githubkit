@@ -9,24 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 from .group_0003 import SimpleUser
-from .group_0067 import Team
+from .group_0020 import Repository
 
 
-class PullRequestReviewRequest(GitHubModel):
-    """Pull Request Review Request
+class PullRequestPropHead(GitHubModel):
+    """PullRequestPropHead"""
 
-    Pull Request Review Request
-    """
+    label: Union[str, None] = Field()
+    ref: str = Field()
+    repo: Union[None, Repository] = Field()
+    sha: str = Field()
+    user: Union[None, SimpleUser] = Field()
 
-    users: list[SimpleUser] = Field()
-    teams: list[Team] = Field()
+
+class PullRequestPropBase(GitHubModel):
+    """PullRequestPropBase"""
+
+    label: str = Field()
+    ref: str = Field()
+    repo: Repository = Field(title="Repository", description="A repository on GitHub.")
+    sha: str = Field()
+    user: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(PullRequestReviewRequest)
+model_rebuild(PullRequestPropHead)
+model_rebuild(PullRequestPropBase)
 
-__all__ = ("PullRequestReviewRequest",)
+__all__ = (
+    "PullRequestPropBase",
+    "PullRequestPropHead",
+)

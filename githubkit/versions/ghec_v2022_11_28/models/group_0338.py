@@ -14,16 +14,14 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ShortBlob(GitHubModel):
-    """Short Blob
+class DeploymentBranchPolicyNamePattern(GitHubModel):
+    """Deployment branch policy name pattern"""
 
-    Short Blob
-    """
-
-    url: str = Field()
-    sha: str = Field()
+    name: str = Field(
+        description="The name pattern that branches must match in order to deploy to the environment.\n\nWildcard characters will not match `/`. For example, to match branches that begin with `release/` and contain an additional single slash, use `release/*/*`.\nFor more information about pattern matching syntax, see the [Ruby File.fnmatch documentation](https://ruby-doc.org/core-2.5.1/File.html#method-c-fnmatch)."
+    )
 
 
-model_rebuild(ShortBlob)
+model_rebuild(DeploymentBranchPolicyNamePattern)
 
-__all__ = ("ShortBlob",)
+__all__ = ("DeploymentBranchPolicyNamePattern",)

@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -19,39 +19,26 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0081 import Team
 
 
-class PendingDeploymentPropReviewersItems(GitHubModel):
-    """PendingDeploymentPropReviewersItems"""
+class EnvironmentApprovals(GitHubModel):
+    """Environment Approval
 
-    type: Missing[Literal["User", "Team"]] = Field(
-        default=UNSET, description="The type of reviewer."
-    )
-    reviewer: Missing[Union[SimpleUser, Team]] = Field(default=UNSET)
-
-
-class PendingDeployment(GitHubModel):
-    """Pending Deployment
-
-    Details of a deployment that is waiting for protection rules to pass
+    An entry in the reviews log for environment deployments
     """
 
-    environment: PendingDeploymentPropEnvironment = Field()
-    wait_timer: int = Field(description="The set duration of the wait timer")
-    wait_timer_started_at: Union[datetime, None] = Field(
-        description="The time that the wait timer began."
+    environments: list[EnvironmentApprovalsPropEnvironmentsItems] = Field(
+        description="The list of environments that were approved or rejected"
     )
-    current_user_can_approve: bool = Field(
-        description="Whether the currently authenticated user can approve the deployment"
+    state: Literal["approved", "rejected", "pending"] = Field(
+        description="Whether deployment to the environment(s) was approved or rejected or pending (with comments)"
     )
-    reviewers: list[PendingDeploymentPropReviewersItems] = Field(
-        description="The people or teams that may approve jobs that reference the environment. You can list up to six users or teams as reviewers. The reviewers must have at least read access to the repository. Only one of the required reviewers needs to approve the job for it to proceed."
-    )
+    user: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    comment: str = Field(description="The comment submitted with the deployment review")
 
 
-class PendingDeploymentPropEnvironment(GitHubModel):
-    """PendingDeploymentPropEnvironment"""
+class EnvironmentApprovalsPropEnvironmentsItems(GitHubModel):
+    """EnvironmentApprovalsPropEnvironmentsItems"""
 
     id: Missing[int] = Field(default=UNSET, description="The id of the environment.")
     node_id: Missing[str] = Field(default=UNSET)
@@ -60,14 +47,20 @@ class PendingDeploymentPropEnvironment(GitHubModel):
     )
     url: Missing[str] = Field(default=UNSET)
     html_url: Missing[str] = Field(default=UNSET)
+    created_at: Missing[datetime] = Field(
+        default=UNSET,
+        description="The time that the environment was created, in ISO 8601 format.",
+    )
+    updated_at: Missing[datetime] = Field(
+        default=UNSET,
+        description="The time that the environment was last updated, in ISO 8601 format.",
+    )
 
 
-model_rebuild(PendingDeploymentPropReviewersItems)
-model_rebuild(PendingDeployment)
-model_rebuild(PendingDeploymentPropEnvironment)
+model_rebuild(EnvironmentApprovals)
+model_rebuild(EnvironmentApprovalsPropEnvironmentsItems)
 
 __all__ = (
-    "PendingDeployment",
-    "PendingDeploymentPropEnvironment",
-    "PendingDeploymentPropReviewersItems",
+    "EnvironmentApprovals",
+    "EnvironmentApprovalsPropEnvironmentsItems",
 )

@@ -9,120 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Any, Union
-from typing_extensions import NotRequired, TypeAlias, TypedDict
-
-from .group_0003 import SimpleUserType
-from .group_0157 import GistHistoryType, GistSimplePropForkOfType
+from typing_extensions import NotRequired, TypedDict
 
 
-class GistSimpleType(TypedDict):
-    """Gist Simple
+class FeedType(TypedDict):
+    """Feed
 
-    Gist Simple
+    Feed
     """
 
-    forks: NotRequired[Union[list[GistSimplePropForksItemsType], None]]
-    history: NotRequired[Union[list[GistHistoryType], None]]
-    fork_of: NotRequired[Union[GistSimplePropForkOfType, None]]
-    url: NotRequired[str]
-    forks_url: NotRequired[str]
-    commits_url: NotRequired[str]
-    id: NotRequired[str]
-    node_id: NotRequired[str]
-    git_pull_url: NotRequired[str]
-    git_push_url: NotRequired[str]
-    html_url: NotRequired[str]
-    files: NotRequired[GistSimplePropFilesType]
-    public: NotRequired[bool]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
-    description: NotRequired[Union[str, None]]
-    comments: NotRequired[int]
-    comments_enabled: NotRequired[bool]
-    user: NotRequired[Union[str, None]]
-    comments_url: NotRequired[str]
-    owner: NotRequired[SimpleUserType]
-    truncated: NotRequired[bool]
+    timeline_url: str
+    user_url: str
+    current_user_public_url: NotRequired[str]
+    current_user_url: NotRequired[str]
+    current_user_actor_url: NotRequired[str]
+    current_user_organization_url: NotRequired[str]
+    current_user_organization_urls: NotRequired[list[str]]
+    security_advisories_url: NotRequired[str]
+    repository_discussions_url: NotRequired[str]
+    repository_discussions_category_url: NotRequired[str]
+    links: FeedPropLinksType
 
 
-GistSimplePropFilesType: TypeAlias = dict[str, Any]
-"""GistSimplePropFiles
-"""
+class FeedPropLinksType(TypedDict):
+    """FeedPropLinks"""
+
+    timeline: LinkWithTypeType
+    user: LinkWithTypeType
+    security_advisories: NotRequired[LinkWithTypeType]
+    current_user: NotRequired[LinkWithTypeType]
+    current_user_public: NotRequired[LinkWithTypeType]
+    current_user_actor: NotRequired[LinkWithTypeType]
+    current_user_organization: NotRequired[LinkWithTypeType]
+    current_user_organizations: NotRequired[list[LinkWithTypeType]]
+    repository_discussions: NotRequired[LinkWithTypeType]
+    repository_discussions_category: NotRequired[LinkWithTypeType]
 
 
-class GistSimplePropForksItemsType(TypedDict):
-    """GistSimplePropForksItems"""
+class LinkWithTypeType(TypedDict):
+    """Link With Type
 
-    id: NotRequired[str]
-    url: NotRequired[str]
-    user: NotRequired[PublicUserType]
-    created_at: NotRequired[datetime]
-    updated_at: NotRequired[datetime]
-
-
-class PublicUserType(TypedDict):
-    """Public User
-
-    Public User
+    Hypermedia Link with Type
     """
 
-    login: str
-    id: int
-    user_view_type: NotRequired[str]
-    node_id: str
-    avatar_url: str
-    gravatar_id: Union[str, None]
-    url: str
-    html_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    starred_url: str
-    subscriptions_url: str
-    organizations_url: str
-    repos_url: str
-    events_url: str
-    received_events_url: str
+    href: str
     type: str
-    site_admin: bool
-    name: Union[str, None]
-    company: Union[str, None]
-    blog: Union[str, None]
-    location: Union[str, None]
-    email: Union[str, None]
-    notification_email: NotRequired[Union[str, None]]
-    hireable: Union[bool, None]
-    bio: Union[str, None]
-    twitter_username: NotRequired[Union[str, None]]
-    public_repos: int
-    public_gists: int
-    followers: int
-    following: int
-    created_at: datetime
-    updated_at: datetime
-    plan: NotRequired[PublicUserPropPlanType]
-    private_gists: NotRequired[int]
-    total_private_repos: NotRequired[int]
-    owned_private_repos: NotRequired[int]
-    disk_usage: NotRequired[int]
-    collaborators: NotRequired[int]
-
-
-class PublicUserPropPlanType(TypedDict):
-    """PublicUserPropPlan"""
-
-    collaborators: int
-    name: str
-    space: int
-    private_repos: int
 
 
 __all__ = (
-    "GistSimplePropFilesType",
-    "GistSimplePropForksItemsType",
-    "GistSimpleType",
-    "PublicUserPropPlanType",
-    "PublicUserType",
+    "FeedPropLinksType",
+    "FeedType",
+    "LinkWithTypeType",
 )

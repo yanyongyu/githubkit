@@ -9,22 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0031 import SimpleRepository
 
 
-class ActionsCacheUsageOrgEnterprise(GitHubModel):
-    """ActionsCacheUsageOrgEnterprise"""
+class DependabotRepositoryAccessDetails(GitHubModel):
+    """Dependabot Repository Access Details
 
-    total_active_caches_count: int = Field(
-        description="The count of active caches across all repositories of an enterprise or an organization."
+    Information about repositories that Dependabot is able to access in an
+    organization
+    """
+
+    default_level: Missing[Union[None, Literal["public", "internal"]]] = Field(
+        default=UNSET,
+        description="The default repository access level for Dependabot updates.",
     )
-    total_active_caches_size_in_bytes: int = Field(
-        description="The total size in bytes of all active cache items across all repositories of an enterprise or an organization."
+    accessible_repositories: Missing[list[Union[None, SimpleRepository]]] = Field(
+        default=UNSET
     )
 
 
-model_rebuild(ActionsCacheUsageOrgEnterprise)
+model_rebuild(DependabotRepositoryAccessDetails)
 
-__all__ = ("ActionsCacheUsageOrgEnterprise",)
+__all__ = ("DependabotRepositoryAccessDetails",)

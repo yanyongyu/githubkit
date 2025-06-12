@@ -9,38 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0397 import SearchResultTextMatchesItemsType
+from .group_0061 import MinimalRepositoryType
+from .group_0401 import SearchResultTextMatchesItemsType
 
 
-class LabelSearchResultItemType(TypedDict):
-    """Label Search Result Item
+class CodeSearchResultItemType(TypedDict):
+    """Code Search Result Item
 
-    Label Search Result Item
+    Code Search Result Item
     """
 
-    id: int
-    node_id: str
-    url: str
     name: str
-    color: str
-    default: bool
-    description: Union[str, None]
+    path: str
+    sha: str
+    url: str
+    git_url: str
+    html_url: str
+    repository: MinimalRepositoryType
     score: float
+    file_size: NotRequired[int]
+    language: NotRequired[Union[str, None]]
+    last_modified_at: NotRequired[datetime]
+    line_numbers: NotRequired[list[str]]
     text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
 
 
-class SearchLabelsGetResponse200Type(TypedDict):
-    """SearchLabelsGetResponse200"""
+class SearchCodeGetResponse200Type(TypedDict):
+    """SearchCodeGetResponse200"""
 
     total_count: int
     incomplete_results: bool
-    items: list[LabelSearchResultItemType]
+    items: list[CodeSearchResultItemType]
 
 
 __all__ = (
-    "LabelSearchResultItemType",
-    "SearchLabelsGetResponse200Type",
+    "CodeSearchResultItemType",
+    "SearchCodeGetResponse200Type",
 )

@@ -12,17 +12,36 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class NetworkSettingsType(TypedDict):
-    """Hosted compute network settings resource
+class ActionsBillingUsageType(TypedDict):
+    """ActionsBillingUsage"""
 
-    A hosted compute network settings resource.
-    """
-
-    id: str
-    network_configuration_id: NotRequired[str]
-    name: str
-    subnet_id: str
-    region: str
+    total_minutes_used: int
+    total_paid_minutes_used: int
+    included_minutes: int
+    minutes_used_breakdown: ActionsBillingUsagePropMinutesUsedBreakdownType
 
 
-__all__ = ("NetworkSettingsType",)
+class ActionsBillingUsagePropMinutesUsedBreakdownType(TypedDict):
+    """ActionsBillingUsagePropMinutesUsedBreakdown"""
+
+    ubuntu: NotRequired[int]
+    macos: NotRequired[int]
+    windows: NotRequired[int]
+    ubuntu_4_core: NotRequired[int]
+    ubuntu_8_core: NotRequired[int]
+    ubuntu_16_core: NotRequired[int]
+    ubuntu_32_core: NotRequired[int]
+    ubuntu_64_core: NotRequired[int]
+    windows_4_core: NotRequired[int]
+    windows_8_core: NotRequired[int]
+    windows_16_core: NotRequired[int]
+    windows_32_core: NotRequired[int]
+    windows_64_core: NotRequired[int]
+    macos_12_core: NotRequired[int]
+    total: NotRequired[int]
+
+
+__all__ = (
+    "ActionsBillingUsagePropMinutesUsedBreakdownType",
+    "ActionsBillingUsageType",
+)

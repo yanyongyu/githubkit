@@ -13,40 +13,28 @@ from datetime import datetime
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0010 import IntegrationType
-from .group_0151 import ReactionRollupType
 
+class IssueTypeType(TypedDict):
+    """Issue Type
 
-class IssueCommentType(TypedDict):
-    """Issue Comment
-
-    Comments provide a way for people to collaborate on an issue.
+    The type of issue.
     """
 
     id: int
     node_id: str
-    url: str
-    body: NotRequired[str]
-    body_text: NotRequired[str]
-    body_html: NotRequired[str]
-    html_url: str
-    user: Union[None, SimpleUserType]
-    created_at: datetime
-    updated_at: datetime
-    issue_url: str
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
+    name: str
+    description: Union[str, None]
+    color: NotRequired[
+        Union[
+            None,
+            Literal[
+                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+            ],
+        ]
     ]
-    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
-    reactions: NotRequired[ReactionRollupType]
+    created_at: NotRequired[datetime]
+    updated_at: NotRequired[datetime]
+    is_enabled: NotRequired[bool]
 
 
-__all__ = ("IssueCommentType",)
+__all__ = ("IssueTypeType",)

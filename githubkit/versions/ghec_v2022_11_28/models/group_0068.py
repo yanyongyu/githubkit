@@ -69,9 +69,11 @@ class EnterpriseTeam(GitHubModel):
 
     id: int = Field()
     name: str = Field()
+    description: Missing[str] = Field(default=UNSET)
     slug: str = Field()
     url: str = Field()
-    sync_to_organizations: str = Field()
+    sync_to_organizations: Missing[str] = Field(default=UNSET)
+    organization_selection_type: Missing[str] = Field(default=UNSET)
     group_id: Missing[Union[str, None]] = Field(default=UNSET)
     group_name: Missing[Union[str, None]] = Field(default=UNSET)
     html_url: str = Field()

@@ -55,6 +55,7 @@ if TYPE_CHECKING:
         OrgHook,
         OrgMembership,
         OrgRepoCustomPropertyValues,
+        OrgsOrgAttestationsBulkListPostResponse200,
         OrgsOrgAttestationsSubjectDigestGetResponse200,
         OrgsOrgCustomRepositoryRolesGetResponse200,
         OrgsOrgInstallationsGetResponse200,
@@ -107,6 +108,8 @@ if TYPE_CHECKING:
         OrgHookType,
         OrgMembershipType,
         OrgRepoCustomPropertyValuesType,
+        OrgsOrgAttestationsBulkListPostBodyType,
+        OrgsOrgAttestationsBulkListPostResponse200Type,
         OrgsOrgAttestationsSubjectDigestGetResponse200Type,
         OrgsOrgCustomRepositoryRolesGetResponse200Type,
         OrgsOrgHooksHookIdConfigPatchBodyType,
@@ -939,6 +942,190 @@ class OrgsClient:
             json=exclude_unset(json),
             headers=exclude_unset(headers),
             response_model=AnnouncementBanner,
+        )
+
+    @overload
+    def list_attestations_bulk(
+        self,
+        org: str,
+        *,
+        per_page: Missing[int] = UNSET,
+        before: Missing[str] = UNSET,
+        after: Missing[str] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        data: OrgsOrgAttestationsBulkListPostBodyType,
+    ) -> Response[
+        OrgsOrgAttestationsBulkListPostResponse200,
+        OrgsOrgAttestationsBulkListPostResponse200Type,
+    ]: ...
+
+    @overload
+    def list_attestations_bulk(
+        self,
+        org: str,
+        *,
+        per_page: Missing[int] = UNSET,
+        before: Missing[str] = UNSET,
+        after: Missing[str] = UNSET,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        subject_digests: list[str],
+        predicate_type: Missing[str] = UNSET,
+    ) -> Response[
+        OrgsOrgAttestationsBulkListPostResponse200,
+        OrgsOrgAttestationsBulkListPostResponse200Type,
+    ]: ...
+
+    def list_attestations_bulk(
+        self,
+        org: str,
+        *,
+        per_page: Missing[int] = UNSET,
+        before: Missing[str] = UNSET,
+        after: Missing[str] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        data: Missing[OrgsOrgAttestationsBulkListPostBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[
+        OrgsOrgAttestationsBulkListPostResponse200,
+        OrgsOrgAttestationsBulkListPostResponse200Type,
+    ]:
+        """orgs/list-attestations-bulk
+
+        POST /orgs/{org}/attestations/bulk-list
+
+        List a collection of artifact attestations associated with any entry in a list of subject digests owned by an organization.
+
+        The collection of attestations returned by this endpoint is filtered according to the authenticated user's permissions; if the authenticated user cannot read a repository, the attestations associated with that repository will not be included in the response. In addition, when using a fine-grained access token the `attestations:read` permission is required.
+
+        **Please note:** in order to offer meaningful security benefits, an attestation's signature and timestamps **must** be cryptographically verified, and the identity of the attestation signer **must** be validated. Attestations can be verified using the [GitHub CLI `attestation verify` command](https://cli.github.com/manual/gh_attestation_verify). For more information, see [our guide on how to use artifact attestations to establish a build's provenance](https://docs.github.com/enterprise-cloud@latest//actions/security-guides/using-artifact-attestations-to-establish-provenance-for-builds).
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#list-attestations-by-bulk-subject-digests
+        """
+
+        from ..models import (
+            OrgsOrgAttestationsBulkListPostBody,
+            OrgsOrgAttestationsBulkListPostResponse200,
+        )
+
+        url = f"/orgs/{org}/attestations/bulk-list"
+
+        params = {
+            "per_page": per_page,
+            "before": before,
+            "after": after,
+        }
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(OrgsOrgAttestationsBulkListPostBody, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            params=exclude_unset(params),
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=OrgsOrgAttestationsBulkListPostResponse200,
+        )
+
+    @overload
+    async def async_list_attestations_bulk(
+        self,
+        org: str,
+        *,
+        per_page: Missing[int] = UNSET,
+        before: Missing[str] = UNSET,
+        after: Missing[str] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        data: OrgsOrgAttestationsBulkListPostBodyType,
+    ) -> Response[
+        OrgsOrgAttestationsBulkListPostResponse200,
+        OrgsOrgAttestationsBulkListPostResponse200Type,
+    ]: ...
+
+    @overload
+    async def async_list_attestations_bulk(
+        self,
+        org: str,
+        *,
+        per_page: Missing[int] = UNSET,
+        before: Missing[str] = UNSET,
+        after: Missing[str] = UNSET,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        subject_digests: list[str],
+        predicate_type: Missing[str] = UNSET,
+    ) -> Response[
+        OrgsOrgAttestationsBulkListPostResponse200,
+        OrgsOrgAttestationsBulkListPostResponse200Type,
+    ]: ...
+
+    async def async_list_attestations_bulk(
+        self,
+        org: str,
+        *,
+        per_page: Missing[int] = UNSET,
+        before: Missing[str] = UNSET,
+        after: Missing[str] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        data: Missing[OrgsOrgAttestationsBulkListPostBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[
+        OrgsOrgAttestationsBulkListPostResponse200,
+        OrgsOrgAttestationsBulkListPostResponse200Type,
+    ]:
+        """orgs/list-attestations-bulk
+
+        POST /orgs/{org}/attestations/bulk-list
+
+        List a collection of artifact attestations associated with any entry in a list of subject digests owned by an organization.
+
+        The collection of attestations returned by this endpoint is filtered according to the authenticated user's permissions; if the authenticated user cannot read a repository, the attestations associated with that repository will not be included in the response. In addition, when using a fine-grained access token the `attestations:read` permission is required.
+
+        **Please note:** in order to offer meaningful security benefits, an attestation's signature and timestamps **must** be cryptographically verified, and the identity of the attestation signer **must** be validated. Attestations can be verified using the [GitHub CLI `attestation verify` command](https://cli.github.com/manual/gh_attestation_verify). For more information, see [our guide on how to use artifact attestations to establish a build's provenance](https://docs.github.com/enterprise-cloud@latest//actions/security-guides/using-artifact-attestations-to-establish-provenance-for-builds).
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#list-attestations-by-bulk-subject-digests
+        """
+
+        from ..models import (
+            OrgsOrgAttestationsBulkListPostBody,
+            OrgsOrgAttestationsBulkListPostResponse200,
+        )
+
+        url = f"/orgs/{org}/attestations/bulk-list"
+
+        params = {
+            "per_page": per_page,
+            "before": before,
+            "after": after,
+        }
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(OrgsOrgAttestationsBulkListPostBody, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            params=exclude_unset(params),
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=OrgsOrgAttestationsBulkListPostResponse200,
         )
 
     def list_attestations(

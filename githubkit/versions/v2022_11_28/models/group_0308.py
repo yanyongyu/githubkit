@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Literal, Union
 
 from pydantic import Field
@@ -18,141 +17,67 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0010 import Integration
-from .group_0042 import Issue
-from .group_0081 import Team
 
+class Import(GitHubModel):
+    """Import
 
-class IssueEvent(GitHubModel):
-    """Issue Event
-
-    Issue Event
+    A repository import from an external source.
     """
 
-    id: int = Field()
-    node_id: str = Field()
+    vcs: Union[str, None] = Field()
+    use_lfs: Missing[bool] = Field(default=UNSET)
+    vcs_url: str = Field(description="The URL of the originating repository.")
+    svc_root: Missing[str] = Field(default=UNSET)
+    tfvc_project: Missing[str] = Field(default=UNSET)
+    status: Literal[
+        "auth",
+        "error",
+        "none",
+        "detecting",
+        "choose",
+        "auth_failed",
+        "importing",
+        "mapping",
+        "waiting_to_push",
+        "pushing",
+        "complete",
+        "setup",
+        "unknown",
+        "detection_found_multiple",
+        "detection_found_nothing",
+        "detection_needs_auth",
+    ] = Field()
+    status_text: Missing[Union[str, None]] = Field(default=UNSET)
+    failed_step: Missing[Union[str, None]] = Field(default=UNSET)
+    error_message: Missing[Union[str, None]] = Field(default=UNSET)
+    import_percent: Missing[Union[int, None]] = Field(default=UNSET)
+    commit_count: Missing[Union[int, None]] = Field(default=UNSET)
+    push_percent: Missing[Union[int, None]] = Field(default=UNSET)
+    has_large_files: Missing[bool] = Field(default=UNSET)
+    large_files_size: Missing[int] = Field(default=UNSET)
+    large_files_count: Missing[int] = Field(default=UNSET)
+    project_choices: Missing[list[ImportPropProjectChoicesItems]] = Field(default=UNSET)
+    message: Missing[str] = Field(default=UNSET)
+    authors_count: Missing[Union[int, None]] = Field(default=UNSET)
     url: str = Field()
-    actor: Union[None, SimpleUser] = Field()
-    event: str = Field()
-    commit_id: Union[str, None] = Field()
-    commit_url: Union[str, None] = Field()
-    created_at: datetime = Field()
-    issue: Missing[Union[None, Issue]] = Field(default=UNSET)
-    label: Missing[IssueEventLabel] = Field(
-        default=UNSET, title="Issue Event Label", description="Issue Event Label"
-    )
-    assignee: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
-    assigner: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
-    review_requester: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
-    requested_reviewer: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
-    requested_team: Missing[Team] = Field(
-        default=UNSET,
-        title="Team",
-        description="Groups of organization members that gives permissions on specified repositories.",
-    )
-    dismissed_review: Missing[IssueEventDismissedReview] = Field(
-        default=UNSET, title="Issue Event Dismissed Review"
-    )
-    milestone: Missing[IssueEventMilestone] = Field(
-        default=UNSET,
-        title="Issue Event Milestone",
-        description="Issue Event Milestone",
-    )
-    project_card: Missing[IssueEventProjectCard] = Field(
-        default=UNSET,
-        title="Issue Event Project Card",
-        description="Issue Event Project Card",
-    )
-    rename: Missing[IssueEventRename] = Field(
-        default=UNSET, title="Issue Event Rename", description="Issue Event Rename"
-    )
-    author_association: Missing[
-        Literal[
-            "COLLABORATOR",
-            "CONTRIBUTOR",
-            "FIRST_TIMER",
-            "FIRST_TIME_CONTRIBUTOR",
-            "MANNEQUIN",
-            "MEMBER",
-            "NONE",
-            "OWNER",
-        ]
-    ] = Field(
-        default=UNSET,
-        title="author_association",
-        description="How the author is associated with the repository.",
-    )
-    lock_reason: Missing[Union[str, None]] = Field(default=UNSET)
-    performed_via_github_app: Missing[Union[None, Integration, None]] = Field(
-        default=UNSET
-    )
+    html_url: str = Field()
+    authors_url: str = Field()
+    repository_url: str = Field()
+    svn_root: Missing[str] = Field(default=UNSET)
 
 
-class IssueEventLabel(GitHubModel):
-    """Issue Event Label
+class ImportPropProjectChoicesItems(GitHubModel):
+    """ImportPropProjectChoicesItems"""
 
-    Issue Event Label
-    """
-
-    name: Union[str, None] = Field()
-    color: Union[str, None] = Field()
+    vcs: Missing[str] = Field(default=UNSET)
+    tfvc_project: Missing[str] = Field(default=UNSET)
+    human_name: Missing[str] = Field(default=UNSET)
 
 
-class IssueEventDismissedReview(GitHubModel):
-    """Issue Event Dismissed Review"""
-
-    state: str = Field()
-    review_id: int = Field()
-    dismissal_message: Union[str, None] = Field()
-    dismissal_commit_id: Missing[Union[str, None]] = Field(default=UNSET)
-
-
-class IssueEventMilestone(GitHubModel):
-    """Issue Event Milestone
-
-    Issue Event Milestone
-    """
-
-    title: str = Field()
-
-
-class IssueEventProjectCard(GitHubModel):
-    """Issue Event Project Card
-
-    Issue Event Project Card
-    """
-
-    url: str = Field()
-    id: int = Field()
-    project_url: str = Field()
-    project_id: int = Field()
-    column_name: str = Field()
-    previous_column_name: Missing[str] = Field(default=UNSET)
-
-
-class IssueEventRename(GitHubModel):
-    """Issue Event Rename
-
-    Issue Event Rename
-    """
-
-    from_: str = Field(alias="from")
-    to: str = Field()
-
-
-model_rebuild(IssueEvent)
-model_rebuild(IssueEventLabel)
-model_rebuild(IssueEventDismissedReview)
-model_rebuild(IssueEventMilestone)
-model_rebuild(IssueEventProjectCard)
-model_rebuild(IssueEventRename)
+model_rebuild(Import)
+model_rebuild(ImportPropProjectChoicesItems)
 
 __all__ = (
-    "IssueEvent",
-    "IssueEventDismissedReview",
-    "IssueEventLabel",
-    "IssueEventMilestone",
-    "IssueEventProjectCard",
-    "IssueEventRename",
+    "Import",
+    "ImportPropProjectChoicesItems",
 )

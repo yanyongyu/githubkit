@@ -12,14 +12,14 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class KeySimpleType(TypedDict):
-    """Key Simple
+class SocialAccountType(TypedDict):
+    """Social account
 
-    Key Simple
+    Social media account
     """
 
-    id: int
-    key: str
+    provider: str
+    url: str
 
 
-__all__ = ("KeySimpleType",)
+__all__ = ("SocialAccountType",)

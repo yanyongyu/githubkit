@@ -9,114 +9,67 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0010 import IntegrationType
-from .group_0042 import IssueType
-from .group_0081 import TeamType
 
+class ImportType(TypedDict):
+    """Import
 
-class IssueEventType(TypedDict):
-    """Issue Event
-
-    Issue Event
+    A repository import from an external source.
     """
 
-    id: int
-    node_id: str
-    url: str
-    actor: Union[None, SimpleUserType]
-    event: str
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: datetime
-    issue: NotRequired[Union[None, IssueType]]
-    label: NotRequired[IssueEventLabelType]
-    assignee: NotRequired[Union[None, SimpleUserType]]
-    assigner: NotRequired[Union[None, SimpleUserType]]
-    review_requester: NotRequired[Union[None, SimpleUserType]]
-    requested_reviewer: NotRequired[Union[None, SimpleUserType]]
-    requested_team: NotRequired[TeamType]
-    dismissed_review: NotRequired[IssueEventDismissedReviewType]
-    milestone: NotRequired[IssueEventMilestoneType]
-    project_card: NotRequired[IssueEventProjectCardType]
-    rename: NotRequired[IssueEventRenameType]
-    author_association: NotRequired[
-        Literal[
-            "COLLABORATOR",
-            "CONTRIBUTOR",
-            "FIRST_TIMER",
-            "FIRST_TIME_CONTRIBUTOR",
-            "MANNEQUIN",
-            "MEMBER",
-            "NONE",
-            "OWNER",
-        ]
+    vcs: Union[str, None]
+    use_lfs: NotRequired[bool]
+    vcs_url: str
+    svc_root: NotRequired[str]
+    tfvc_project: NotRequired[str]
+    status: Literal[
+        "auth",
+        "error",
+        "none",
+        "detecting",
+        "choose",
+        "auth_failed",
+        "importing",
+        "mapping",
+        "waiting_to_push",
+        "pushing",
+        "complete",
+        "setup",
+        "unknown",
+        "detection_found_multiple",
+        "detection_found_nothing",
+        "detection_needs_auth",
     ]
-    lock_reason: NotRequired[Union[str, None]]
-    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
-
-
-class IssueEventLabelType(TypedDict):
-    """Issue Event Label
-
-    Issue Event Label
-    """
-
-    name: Union[str, None]
-    color: Union[str, None]
-
-
-class IssueEventDismissedReviewType(TypedDict):
-    """Issue Event Dismissed Review"""
-
-    state: str
-    review_id: int
-    dismissal_message: Union[str, None]
-    dismissal_commit_id: NotRequired[Union[str, None]]
-
-
-class IssueEventMilestoneType(TypedDict):
-    """Issue Event Milestone
-
-    Issue Event Milestone
-    """
-
-    title: str
-
-
-class IssueEventProjectCardType(TypedDict):
-    """Issue Event Project Card
-
-    Issue Event Project Card
-    """
-
+    status_text: NotRequired[Union[str, None]]
+    failed_step: NotRequired[Union[str, None]]
+    error_message: NotRequired[Union[str, None]]
+    import_percent: NotRequired[Union[int, None]]
+    commit_count: NotRequired[Union[int, None]]
+    push_percent: NotRequired[Union[int, None]]
+    has_large_files: NotRequired[bool]
+    large_files_size: NotRequired[int]
+    large_files_count: NotRequired[int]
+    project_choices: NotRequired[list[ImportPropProjectChoicesItemsType]]
+    message: NotRequired[str]
+    authors_count: NotRequired[Union[int, None]]
     url: str
-    id: int
-    project_url: str
-    project_id: int
-    column_name: str
-    previous_column_name: NotRequired[str]
+    html_url: str
+    authors_url: str
+    repository_url: str
+    svn_root: NotRequired[str]
 
 
-class IssueEventRenameType(TypedDict):
-    """Issue Event Rename
+class ImportPropProjectChoicesItemsType(TypedDict):
+    """ImportPropProjectChoicesItems"""
 
-    Issue Event Rename
-    """
-
-    from_: str
-    to: str
+    vcs: NotRequired[str]
+    tfvc_project: NotRequired[str]
+    human_name: NotRequired[str]
 
 
 __all__ = (
-    "IssueEventDismissedReviewType",
-    "IssueEventLabelType",
-    "IssueEventMilestoneType",
-    "IssueEventProjectCardType",
-    "IssueEventRenameType",
-    "IssueEventType",
+    "ImportPropProjectChoicesItemsType",
+    "ImportType",
 )

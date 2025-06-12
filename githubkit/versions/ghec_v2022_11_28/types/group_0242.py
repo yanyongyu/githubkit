@@ -10,18 +10,32 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class ActionsSecretType(TypedDict):
-    """Actions Secret
+class ActionsCacheListType(TypedDict):
+    """Repository actions caches
 
-    Set secrets for GitHub Actions.
+    Repository actions caches
     """
 
-    name: str
-    created_at: datetime
-    updated_at: datetime
+    total_count: int
+    actions_caches: list[ActionsCacheListPropActionsCachesItemsType]
 
 
-__all__ = ("ActionsSecretType",)
+class ActionsCacheListPropActionsCachesItemsType(TypedDict):
+    """ActionsCacheListPropActionsCachesItems"""
+
+    id: NotRequired[int]
+    ref: NotRequired[str]
+    key: NotRequired[str]
+    version: NotRequired[str]
+    last_accessed_at: NotRequired[datetime]
+    created_at: NotRequired[datetime]
+    size_in_bytes: NotRequired[int]
+
+
+__all__ = (
+    "ActionsCacheListPropActionsCachesItemsType",
+    "ActionsCacheListType",
+)

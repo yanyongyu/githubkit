@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,70 +17,27 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class SecretScanningScanHistory(GitHubModel):
-    """SecretScanningScanHistory"""
-
-    incremental_scans: Missing[list[SecretScanningScan]] = Field(default=UNSET)
-    pattern_update_scans: Missing[list[SecretScanningScan]] = Field(default=UNSET)
-    backfill_scans: Missing[list[SecretScanningScan]] = Field(default=UNSET)
-    custom_pattern_backfill_scans: Missing[
-        list[SecretScanningScanHistoryPropCustomPatternBackfillScansItems]
-    ] = Field(default=UNSET)
+from .group_0130 import RepositoryRuleCodeScanningPropParameters
 
 
-class SecretScanningScan(GitHubModel):
-    """SecretScanningScan
+class RepositoryRuleDetailedOneof20(GitHubModel):
+    """RepositoryRuleDetailedOneof20"""
 
-    Information on a single scan performed by secret scanning on the repository
-    """
-
-    type: Missing[str] = Field(default=UNSET, description="The type of scan")
-    status: Missing[str] = Field(
+    type: Literal["code_scanning"] = Field()
+    parameters: Missing[RepositoryRuleCodeScanningPropParameters] = Field(default=UNSET)
+    ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
         default=UNSET,
-        description='The state of the scan. Either "completed", "running", or "pending"',
+        description="The type of source for the ruleset that includes this rule.",
     )
-    completed_at: Missing[Union[datetime, None]] = Field(
+    ruleset_source: Missing[str] = Field(
         default=UNSET,
-        description="The time that the scan was completed. Empty if the scan is running",
+        description="The name of the source of the ruleset that includes this rule.",
     )
-    started_at: Missing[Union[datetime, None]] = Field(
-        default=UNSET,
-        description="The time that the scan was started. Empty if the scan is pending",
+    ruleset_id: Missing[int] = Field(
+        default=UNSET, description="The ID of the ruleset that includes this rule."
     )
 
 
-class SecretScanningScanHistoryPropCustomPatternBackfillScansItems(GitHubModel):
-    """SecretScanningScanHistoryPropCustomPatternBackfillScansItems"""
+model_rebuild(RepositoryRuleDetailedOneof20)
 
-    type: Missing[str] = Field(default=UNSET, description="The type of scan")
-    status: Missing[str] = Field(
-        default=UNSET,
-        description='The state of the scan. Either "completed", "running", or "pending"',
-    )
-    completed_at: Missing[Union[datetime, None]] = Field(
-        default=UNSET,
-        description="The time that the scan was completed. Empty if the scan is running",
-    )
-    started_at: Missing[Union[datetime, None]] = Field(
-        default=UNSET,
-        description="The time that the scan was started. Empty if the scan is pending",
-    )
-    pattern_name: Missing[str] = Field(
-        default=UNSET, description="Name of the custom pattern for custom pattern scans"
-    )
-    pattern_scope: Missing[str] = Field(
-        default=UNSET,
-        description='Level at which the custom pattern is defined, one of "repository", "organization", or "enterprise"',
-    )
-
-
-model_rebuild(SecretScanningScanHistory)
-model_rebuild(SecretScanningScan)
-model_rebuild(SecretScanningScanHistoryPropCustomPatternBackfillScansItems)
-
-__all__ = (
-    "SecretScanningScan",
-    "SecretScanningScanHistory",
-    "SecretScanningScanHistoryPropCustomPatternBackfillScansItems",
-)
+__all__ = ("RepositoryRuleDetailedOneof20",)

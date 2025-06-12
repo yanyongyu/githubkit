@@ -9,31 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0055 import (
-    MarketplacePurchasePropMarketplacePendingChangeType,
-    MarketplacePurchasePropMarketplacePurchaseType,
-)
+from typing_extensions import TypedDict
 
 
-class MarketplacePurchaseType(TypedDict):
-    """Marketplace Purchase
+class GitignoreTemplateType(TypedDict):
+    """Gitignore Template
 
-    Marketplace Purchase
+    Gitignore Template
     """
 
-    url: str
-    type: str
-    id: int
-    login: str
-    organization_billing_email: NotRequired[str]
-    email: NotRequired[Union[str, None]]
-    marketplace_pending_change: NotRequired[
-        Union[MarketplacePurchasePropMarketplacePendingChangeType, None]
-    ]
-    marketplace_purchase: MarketplacePurchasePropMarketplacePurchaseType
+    name: str
+    source: str
 
 
-__all__ = ("MarketplacePurchaseType",)
+__all__ = ("GitignoreTemplateType",)

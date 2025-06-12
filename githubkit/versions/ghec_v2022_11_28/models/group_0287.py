@@ -9,24 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0286 import CodeScanningVariantAnalysisRepository
 
+class CodeScanningAnalysisDeletion(GitHubModel):
+    """Analysis deletion
 
-class CodeScanningVariantAnalysisSkippedRepoGroup(GitHubModel):
-    """CodeScanningVariantAnalysisSkippedRepoGroup"""
+    Successful deletion of a code scanning analysis
+    """
 
-    repository_count: int = Field(
-        description="The total number of repositories that were skipped for this reason."
+    next_analysis_url: Union[str, None] = Field(
+        description="Next deletable analysis in chain, without last analysis deletion confirmation"
     )
-    repositories: list[CodeScanningVariantAnalysisRepository] = Field(
-        description="A list of repositories that were skipped. This list may not include all repositories that were skipped. This is only available when the repository was found and the user has access to it."
+    confirm_delete_url: Union[str, None] = Field(
+        description="Next deletable analysis in chain, with last analysis deletion confirmation"
     )
 
 
-model_rebuild(CodeScanningVariantAnalysisSkippedRepoGroup)
+model_rebuild(CodeScanningAnalysisDeletion)
 
-__all__ = ("CodeScanningVariantAnalysisSkippedRepoGroup",)
+__all__ = ("CodeScanningAnalysisDeletion",)

@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,36 +16,23 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class TeamSimple(GitHubModel):
-    """Team Simple
+class RunnerApplication(GitHubModel):
+    """Runner Application
 
-    Groups of organization members that gives permissions on specified repositories.
+    Runner Application
     """
 
-    id: int = Field(description="Unique identifier of the team")
-    node_id: str = Field()
-    url: str = Field(description="URL for the team")
-    members_url: str = Field()
-    name: str = Field(description="Name of the team")
-    description: Union[str, None] = Field(description="Description of the team")
-    permission: str = Field(
-        description="Permission that the team will have for its repositories"
-    )
-    privacy: Missing[str] = Field(
-        default=UNSET, description="The level of privacy this team should have"
-    )
-    notification_setting: Missing[str] = Field(
-        default=UNSET, description="The notification setting the team has set"
-    )
-    html_url: str = Field()
-    repositories_url: str = Field()
-    slug: str = Field()
-    ldap_dn: Missing[str] = Field(
+    os: str = Field()
+    architecture: str = Field()
+    download_url: str = Field()
+    filename: str = Field()
+    temp_download_token: Missing[str] = Field(
         default=UNSET,
-        description="Distinguished Name (DN) that team maps to within LDAP environment",
+        description="A short lived bearer token used to download the runner, if needed.",
     )
+    sha256_checksum: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(TeamSimple)
+model_rebuild(RunnerApplication)
 
-__all__ = ("TeamSimple",)
+__all__ = ("RunnerApplication",)

@@ -9,32 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from datetime import datetime
 from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType
+from .group_0177 import RulesetVersionPropActorType
+from .group_0180 import RulesetVersionWithStateAllof1PropStateType
 
 
-class RepositoryAdvisoryCreditType(TypedDict):
-    """RepositoryAdvisoryCredit
+class RulesetVersionWithStateType(TypedDict):
+    """RulesetVersionWithState"""
 
-    A credit given to a user for a repository security advisory.
-    """
-
-    user: SimpleUserType
-    type: Literal[
-        "analyst",
-        "finder",
-        "reporter",
-        "coordinator",
-        "remediation_developer",
-        "remediation_reviewer",
-        "remediation_verifier",
-        "tool",
-        "sponsor",
-        "other",
-    ]
-    state: Literal["accepted", "declined", "pending"]
+    version_id: int
+    actor: RulesetVersionPropActorType
+    updated_at: datetime
+    state: RulesetVersionWithStateAllof1PropStateType
 
 
-__all__ = ("RepositoryAdvisoryCreditType",)
+__all__ = ("RulesetVersionWithStateType",)

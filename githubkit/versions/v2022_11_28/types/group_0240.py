@@ -9,17 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class CodeScanningAutofixCommitsType(TypedDict):
-    """CodeScanningAutofixCommits
-
-    Commit an autofix for a code scanning alert
-    """
-
-    target_ref: NotRequired[str]
-    message: NotRequired[str]
+from .group_0003 import SimpleUserType
+from .group_0086 import CodeScanningAlertRuleSummaryType
+from .group_0087 import CodeScanningAnalysisToolType
+from .group_0088 import CodeScanningAlertInstanceType
 
 
-__all__ = ("CodeScanningAutofixCommitsType",)
+class CodeScanningAlertItemsType(TypedDict):
+    """CodeScanningAlertItems"""
+
+    number: int
+    created_at: datetime
+    updated_at: NotRequired[datetime]
+    url: str
+    html_url: str
+    instances_url: str
+    state: Union[None, Literal["open", "dismissed", "fixed"]]
+    fixed_at: NotRequired[Union[datetime, None]]
+    dismissed_by: Union[None, SimpleUserType]
+    dismissed_at: Union[datetime, None]
+    dismissed_reason: Union[
+        None, Literal["false positive", "won't fix", "used in tests"]
+    ]
+    dismissed_comment: NotRequired[Union[str, None]]
+    rule: CodeScanningAlertRuleSummaryType
+    tool: CodeScanningAnalysisToolType
+    most_recent_instance: CodeScanningAlertInstanceType
+    dismissal_approved_by: NotRequired[Union[None, SimpleUserType]]
+
+
+__all__ = ("CodeScanningAlertItemsType",)

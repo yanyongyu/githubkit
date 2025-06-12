@@ -9,14 +9,15 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrganizationsOrgDependabotRepositoryAccessPatchBodyOneof0Type(TypedDict):
-    """OrganizationsOrgDependabotRepositoryAccessPatchBodyOneof0"""
+class NotificationsPutBodyType(TypedDict):
+    """NotificationsPutBody"""
 
-    repository_ids_to_add: list[int]
-    repository_ids_to_remove: NotRequired[list[int]]
+    last_read_at: NotRequired[datetime]
+    read: NotRequired[bool]
 
 
-__all__ = ("OrganizationsOrgDependabotRepositoryAccessPatchBodyOneof0Type",)
+__all__ = ("NotificationsPutBodyType",)

@@ -9,42 +9,48 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0003 import SimpleUser
+from .group_0019 import LicenseSimple
 
 
-class PageBuild(GitHubModel):
-    """Page Build
+class LicenseContent(GitHubModel):
+    """License Content
 
-    Page Build
+    License Content
     """
 
+    name: str = Field()
+    path: str = Field()
+    sha: str = Field()
+    size: int = Field()
     url: str = Field()
-    status: str = Field()
-    error: PageBuildPropError = Field()
-    pusher: Union[None, SimpleUser] = Field()
-    commit: str = Field()
-    duration: int = Field()
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
+    html_url: Union[str, None] = Field()
+    git_url: Union[str, None] = Field()
+    download_url: Union[str, None] = Field()
+    type: str = Field()
+    content: str = Field()
+    encoding: str = Field()
+    links: LicenseContentPropLinks = Field(alias="_links")
+    license_: Union[None, LicenseSimple] = Field(alias="license")
 
 
-class PageBuildPropError(GitHubModel):
-    """PageBuildPropError"""
+class LicenseContentPropLinks(GitHubModel):
+    """LicenseContentPropLinks"""
 
-    message: Union[str, None] = Field()
+    git: Union[str, None] = Field()
+    html: Union[str, None] = Field()
+    self_: str = Field(alias="self")
 
 
-model_rebuild(PageBuild)
-model_rebuild(PageBuildPropError)
+model_rebuild(LicenseContent)
+model_rebuild(LicenseContentPropLinks)
 
 __all__ = (
-    "PageBuild",
-    "PageBuildPropError",
+    "LicenseContent",
+    "LicenseContentPropLinks",
 )

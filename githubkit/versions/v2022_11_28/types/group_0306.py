@@ -9,22 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import TypedDict
 
 
-class PorterAuthorType(TypedDict):
-    """Porter Author
+class HookResponseType(TypedDict):
+    """Hook Response"""
 
-    Porter Author
-    """
-
-    id: int
-    remote_id: str
-    remote_name: str
-    email: str
-    name: str
-    url: str
-    import_url: str
+    code: Union[int, None]
+    status: Union[str, None]
+    message: Union[str, None]
 
 
-__all__ = ("PorterAuthorType",)
+__all__ = ("HookResponseType",)

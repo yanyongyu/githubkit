@@ -9,49 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
-
-class RepositoryRuleCreationType(TypedDict):
-    """creation
-
-    Only allow users with bypass permission to create matching refs.
-    """
-
-    type: Literal["creation"]
-
-
-class RepositoryRuleDeletionType(TypedDict):
-    """deletion
-
-    Only allow users with bypass permissions to delete matching refs.
-    """
-
-    type: Literal["deletion"]
-
-
-class RepositoryRuleRequiredSignaturesType(TypedDict):
-    """required_signatures
-
-    Commits pushed to matching refs must have verified signatures.
-    """
-
-    type: Literal["required_signatures"]
-
-
-class RepositoryRuleNonFastForwardType(TypedDict):
-    """non_fast_forward
-
-    Prevent users with push access from force pushing to refs.
-    """
-
-    type: Literal["non_fast_forward"]
-
-
-__all__ = (
-    "RepositoryRuleCreationType",
-    "RepositoryRuleDeletionType",
-    "RepositoryRuleNonFastForwardType",
-    "RepositoryRuleRequiredSignaturesType",
+from .group_0127 import RepositoryRulesetConditionsPropRefNameType
+from .group_0129 import (
+    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType,
 )
+
+
+class OrgRulesetConditionsOneof0Type(TypedDict):
+    """repository_name_and_ref_name
+
+    Conditions to target repositories by name and refs by name
+    """
+
+    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
+    repository_name: (
+        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType
+    )
+
+
+__all__ = ("OrgRulesetConditionsOneof0Type",)

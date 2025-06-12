@@ -60,6 +60,8 @@ if TYPE_CHECKING:
         UserSocialAccountsDeleteBodyType,
         UserSocialAccountsPostBodyType,
         UserSshSigningKeysPostBodyType,
+        UsersUsernameAttestationsDeleteRequestPostBodyOneof0Type,
+        UsersUsernameAttestationsDeleteRequestPostBodyOneof1Type,
         UsersUsernameAttestationsSubjectDigestGetResponse200Type,
     )
 
@@ -3159,6 +3161,314 @@ class UsersClient:
             headers=exclude_unset(headers),
             response_model=Union[PrivateUser, PublicUser],
             error_models={
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def delete_attestations_bulk(
+        self,
+        username: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        data: Union[
+            UsersUsernameAttestationsDeleteRequestPostBodyOneof0Type,
+            UsersUsernameAttestationsDeleteRequestPostBodyOneof1Type,
+        ],
+    ) -> Response: ...
+
+    @overload
+    def delete_attestations_bulk(
+        self,
+        username: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        subject_digests: list[str],
+    ) -> Response: ...
+
+    @overload
+    def delete_attestations_bulk(
+        self,
+        username: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        attestation_ids: list[int],
+    ) -> Response: ...
+
+    def delete_attestations_bulk(
+        self,
+        username: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        data: Missing[
+            Union[
+                UsersUsernameAttestationsDeleteRequestPostBodyOneof0Type,
+                UsersUsernameAttestationsDeleteRequestPostBodyOneof1Type,
+            ]
+        ] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """users/delete-attestations-bulk
+
+        POST /users/{username}/attestations/delete-request
+
+        Delete artifact attestations in bulk by either subject digests or unique ID.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/attestations#delete-attestations-in-bulk
+        """
+
+        from typing import Union
+
+        from ..models import (
+            BasicError,
+            UsersUsernameAttestationsDeleteRequestPostBodyOneof0,
+            UsersUsernameAttestationsDeleteRequestPostBodyOneof1,
+        )
+
+        url = f"/users/{username}/attestations/delete-request"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                Union[
+                    UsersUsernameAttestationsDeleteRequestPostBodyOneof0,
+                    UsersUsernameAttestationsDeleteRequestPostBodyOneof1,
+                ],
+                json,
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    async def async_delete_attestations_bulk(
+        self,
+        username: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        data: Union[
+            UsersUsernameAttestationsDeleteRequestPostBodyOneof0Type,
+            UsersUsernameAttestationsDeleteRequestPostBodyOneof1Type,
+        ],
+    ) -> Response: ...
+
+    @overload
+    async def async_delete_attestations_bulk(
+        self,
+        username: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        subject_digests: list[str],
+    ) -> Response: ...
+
+    @overload
+    async def async_delete_attestations_bulk(
+        self,
+        username: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        attestation_ids: list[int],
+    ) -> Response: ...
+
+    async def async_delete_attestations_bulk(
+        self,
+        username: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        data: Missing[
+            Union[
+                UsersUsernameAttestationsDeleteRequestPostBodyOneof0Type,
+                UsersUsernameAttestationsDeleteRequestPostBodyOneof1Type,
+            ]
+        ] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """users/delete-attestations-bulk
+
+        POST /users/{username}/attestations/delete-request
+
+        Delete artifact attestations in bulk by either subject digests or unique ID.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/attestations#delete-attestations-in-bulk
+        """
+
+        from typing import Union
+
+        from ..models import (
+            BasicError,
+            UsersUsernameAttestationsDeleteRequestPostBodyOneof0,
+            UsersUsernameAttestationsDeleteRequestPostBodyOneof1,
+        )
+
+        url = f"/users/{username}/attestations/delete-request"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                Union[
+                    UsersUsernameAttestationsDeleteRequestPostBodyOneof0,
+                    UsersUsernameAttestationsDeleteRequestPostBodyOneof1,
+                ],
+                json,
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    def delete_attestations_by_subject_digest(
+        self,
+        username: str,
+        subject_digest: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+    ) -> Response:
+        """users/delete-attestations-by-subject-digest
+
+        DELETE /users/{username}/attestations/digest/{subject_digest}
+
+        Delete an artifact attestation by subject digest.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/attestations#delete-attestations-by-subject-digest
+        """
+
+        from ..models import BasicError
+
+        url = f"/users/{username}/attestations/digest/{subject_digest}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    async def async_delete_attestations_by_subject_digest(
+        self,
+        username: str,
+        subject_digest: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+    ) -> Response:
+        """users/delete-attestations-by-subject-digest
+
+        DELETE /users/{username}/attestations/digest/{subject_digest}
+
+        Delete an artifact attestation by subject digest.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/attestations#delete-attestations-by-subject-digest
+        """
+
+        from ..models import BasicError
+
+        url = f"/users/{username}/attestations/digest/{subject_digest}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    def delete_attestations_by_id(
+        self,
+        username: str,
+        attestation_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+    ) -> Response:
+        """users/delete-attestations-by-id
+
+        DELETE /users/{username}/attestations/{attestation_id}
+
+        Delete an artifact attestation by unique ID that is associated with a repository owned by a user.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/attestations#delete-attestations-by-id
+        """
+
+        from ..models import BasicError
+
+        url = f"/users/{username}/attestations/{attestation_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_delete_attestations_by_id(
+        self,
+        username: str,
+        attestation_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+    ) -> Response:
+        """users/delete-attestations-by-id
+
+        DELETE /users/{username}/attestations/{attestation_id}
+
+        Delete an artifact attestation by unique ID that is associated with a repository owned by a user.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/users/attestations#delete-attestations-by-id
+        """
+
+        from ..models import BasicError
+
+        url = f"/users/{username}/attestations/{attestation_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            error_models={
+                "403": BasicError,
                 "404": BasicError,
             },
         )

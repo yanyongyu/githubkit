@@ -9,16 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import TypedDict
 
 
-class HookResponseType(TypedDict):
-    """Hook Response"""
+class GitRefType(TypedDict):
+    """Git Reference
 
-    code: Union[int, None]
-    status: Union[str, None]
-    message: Union[str, None]
+    Git references within a repository
+    """
+
+    ref: str
+    node_id: str
+    url: str
+    object_: GitRefPropObjectType
 
 
-__all__ = ("HookResponseType",)
+class GitRefPropObjectType(TypedDict):
+    """GitRefPropObject"""
+
+    type: str
+    sha: str
+    url: str
+
+
+__all__ = (
+    "GitRefPropObjectType",
+    "GitRefType",
+)

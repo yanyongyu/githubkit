@@ -9,19 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0159 import RepositoryRuleTagNamePatternPropParameters
 
 
-class RepositoryRuleFilePathRestrictionPropParameters(GitHubModel):
-    """RepositoryRuleFilePathRestrictionPropParameters"""
+class RepositoryRuleTagNamePattern(GitHubModel):
+    """tag_name_pattern
 
-    restricted_file_paths: list[str] = Field(
-        description="The file paths that are restricted from being pushed to the commit graph."
+    Parameters to be used for the tag_name_pattern rule
+    """
+
+    type: Literal["tag_name_pattern"] = Field()
+    parameters: Missing[RepositoryRuleTagNamePatternPropParameters] = Field(
+        default=UNSET
     )
 
 
-model_rebuild(RepositoryRuleFilePathRestrictionPropParameters)
+model_rebuild(RepositoryRuleTagNamePattern)
 
-__all__ = ("RepositoryRuleFilePathRestrictionPropParameters",)
+__all__ = ("RepositoryRuleTagNamePattern",)

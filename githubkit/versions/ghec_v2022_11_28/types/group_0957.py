@@ -12,11 +12,10 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrganizationsOrgDependabotRepositoryAccessPatchBodyOneof1Type(TypedDict):
-    """OrganizationsOrgDependabotRepositoryAccessPatchBodyOneof1"""
+class NotificationsPutResponse202Type(TypedDict):
+    """NotificationsPutResponse202"""
 
-    repository_ids_to_add: NotRequired[list[int]]
-    repository_ids_to_remove: list[int]
+    message: NotRequired[str]
 
 
-__all__ = ("OrganizationsOrgDependabotRepositoryAccessPatchBodyOneof1Type",)
+__all__ = ("NotificationsPutResponse202Type",)

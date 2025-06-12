@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,40 +17,23 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0020 import Repository
 
+class RunnerLabel(GitHubModel):
+    """Self hosted runner label
 
-class AuthenticationToken(GitHubModel):
-    """Authentication Token
-
-    Authentication Token
+    A label for a self hosted runner
     """
 
-    token: str = Field(description="The token used for authentication")
-    expires_at: datetime = Field(description="The time this token expires")
-    permissions: Missing[AuthenticationTokenPropPermissions] = Field(default=UNSET)
-    repositories: Missing[list[Repository]] = Field(
-        default=UNSET, description="The repositories this token has access to"
+    id: Missing[int] = Field(
+        default=UNSET, description="Unique identifier of the label."
     )
-    single_file: Missing[Union[str, None]] = Field(default=UNSET)
-    repository_selection: Missing[Literal["all", "selected"]] = Field(
+    name: str = Field(description="Name of the label.")
+    type: Missing[Literal["read-only", "custom"]] = Field(
         default=UNSET,
-        description="Describe whether all repositories have been selected or there's a selection involved",
+        description="The type of label. Read-only labels are applied automatically when the runner is configured.",
     )
 
 
-class AuthenticationTokenPropPermissions(GitHubModel):
-    """AuthenticationTokenPropPermissions
+model_rebuild(RunnerLabel)
 
-    Examples:
-        {'issues': 'read', 'deployments': 'write'}
-    """
-
-
-model_rebuild(AuthenticationToken)
-model_rebuild(AuthenticationTokenPropPermissions)
-
-__all__ = (
-    "AuthenticationToken",
-    "AuthenticationTokenPropPermissions",
-)
+__all__ = ("RunnerLabel",)

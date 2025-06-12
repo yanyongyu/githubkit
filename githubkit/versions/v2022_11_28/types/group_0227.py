@@ -10,32 +10,17 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0223 import GitUserType
-from .group_0224 import VerificationType
+from typing_extensions import TypedDict
 
 
-class CommitPropCommitType(TypedDict):
-    """CommitPropCommit"""
+class VerificationType(TypedDict):
+    """Verification"""
 
-    url: str
-    author: Union[None, GitUserType]
-    committer: Union[None, GitUserType]
-    message: str
-    comment_count: int
-    tree: CommitPropCommitPropTreeType
-    verification: NotRequired[VerificationType]
+    verified: bool
+    reason: str
+    payload: Union[str, None]
+    signature: Union[str, None]
+    verified_at: Union[str, None]
 
 
-class CommitPropCommitPropTreeType(TypedDict):
-    """CommitPropCommitPropTree"""
-
-    sha: str
-    url: str
-
-
-__all__ = (
-    "CommitPropCommitPropTreeType",
-    "CommitPropCommitType",
-)
+__all__ = ("VerificationType",)

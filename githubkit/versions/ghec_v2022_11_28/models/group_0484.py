@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from datetime import datetime
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,25 +19,36 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class WebhooksDeployKey(GitHubModel):
-    """WebhooksDeployKey
+class ExemptionResponse(GitHubModel):
+    """Exemption response
 
-    The [`deploy key`](https://docs.github.com/enterprise-cloud@latest//rest/deploy-
-    keys/deploy-keys#get-a-deploy-key) resource.
+    A response to an exemption request by a delegated bypasser.
     """
 
-    added_by: Missing[Union[str, None]] = Field(default=UNSET)
-    created_at: str = Field()
-    id: int = Field()
-    key: str = Field()
-    last_used: Missing[Union[str, None]] = Field(default=UNSET)
-    read_only: bool = Field()
-    title: str = Field()
-    url: str = Field()
-    verified: bool = Field()
-    enabled: Missing[bool] = Field(default=UNSET)
+    id: Missing[int] = Field(
+        default=UNSET, description="The ID of the exemption response."
+    )
+    reviewer_id: Missing[int] = Field(
+        default=UNSET,
+        description="The ID of the user who reviewed the exemption request.",
+    )
+    reviewer_login: Missing[str] = Field(
+        default=UNSET,
+        description="The login of the user who reviewed the exemption request.",
+    )
+    status: Missing[Literal["approved", "rejected", "dismissed"]] = Field(
+        default=UNSET, description="The status of the exemption response."
+    )
+    reviewer_comment: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The comment the reviewer provided when responding to the exemption request.",
+    )
+    created_at: Missing[datetime] = Field(
+        default=UNSET,
+        description="The date and time the exemption request was created.",
+    )
 
 
-model_rebuild(WebhooksDeployKey)
+model_rebuild(ExemptionResponse)
 
-__all__ = ("WebhooksDeployKey",)
+__all__ = ("ExemptionResponse",)

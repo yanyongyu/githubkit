@@ -12,13 +12,11 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class TopicType(TypedDict):
-    """Topic
+class ParticipationStatsType(TypedDict):
+    """Participation Stats"""
 
-    A topic aggregates entities that are related to a subject.
-    """
-
-    names: list[str]
+    all_: list[int]
+    owner: list[int]
 
 
-__all__ = ("TopicType",)
+__all__ = ("ParticipationStatsType",)

@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -19,21 +18,108 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ThreadSubscription(GitHubModel):
-    """Thread Subscription
+class SecurityAndAnalysis(GitHubModel):
+    """SecurityAndAnalysis"""
 
-    Thread Subscription
+    advanced_security: Missing[SecurityAndAnalysisPropAdvancedSecurity] = Field(
+        default=UNSET
+    )
+    code_security: Missing[SecurityAndAnalysisPropCodeSecurity] = Field(default=UNSET)
+    dependabot_security_updates: Missing[
+        SecurityAndAnalysisPropDependabotSecurityUpdates
+    ] = Field(
+        default=UNSET,
+        description="Enable or disable Dependabot security updates for the repository.",
+    )
+    secret_scanning: Missing[SecurityAndAnalysisPropSecretScanning] = Field(
+        default=UNSET
+    )
+    secret_scanning_push_protection: Missing[
+        SecurityAndAnalysisPropSecretScanningPushProtection
+    ] = Field(default=UNSET)
+    secret_scanning_non_provider_patterns: Missing[
+        SecurityAndAnalysisPropSecretScanningNonProviderPatterns
+    ] = Field(default=UNSET)
+    secret_scanning_ai_detection: Missing[
+        SecurityAndAnalysisPropSecretScanningAiDetection
+    ] = Field(default=UNSET)
+    secret_scanning_validity_checks: Missing[
+        SecurityAndAnalysisPropSecretScanningValidityChecks
+    ] = Field(default=UNSET)
+
+
+class SecurityAndAnalysisPropAdvancedSecurity(GitHubModel):
+    """SecurityAndAnalysisPropAdvancedSecurity"""
+
+    status: Missing[Literal["enabled", "disabled"]] = Field(default=UNSET)
+
+
+class SecurityAndAnalysisPropCodeSecurity(GitHubModel):
+    """SecurityAndAnalysisPropCodeSecurity"""
+
+    status: Missing[Literal["enabled", "disabled"]] = Field(default=UNSET)
+
+
+class SecurityAndAnalysisPropDependabotSecurityUpdates(GitHubModel):
+    """SecurityAndAnalysisPropDependabotSecurityUpdates
+
+    Enable or disable Dependabot security updates for the repository.
     """
 
-    subscribed: bool = Field()
-    ignored: bool = Field()
-    reason: Union[str, None] = Field()
-    created_at: Union[datetime, None] = Field()
-    url: str = Field()
-    thread_url: Missing[str] = Field(default=UNSET)
-    repository_url: Missing[str] = Field(default=UNSET)
+    status: Missing[Literal["enabled", "disabled"]] = Field(
+        default=UNSET,
+        description="The enablement status of Dependabot security updates for the repository.",
+    )
 
 
-model_rebuild(ThreadSubscription)
+class SecurityAndAnalysisPropSecretScanning(GitHubModel):
+    """SecurityAndAnalysisPropSecretScanning"""
 
-__all__ = ("ThreadSubscription",)
+    status: Missing[Literal["enabled", "disabled"]] = Field(default=UNSET)
+
+
+class SecurityAndAnalysisPropSecretScanningPushProtection(GitHubModel):
+    """SecurityAndAnalysisPropSecretScanningPushProtection"""
+
+    status: Missing[Literal["enabled", "disabled"]] = Field(default=UNSET)
+
+
+class SecurityAndAnalysisPropSecretScanningNonProviderPatterns(GitHubModel):
+    """SecurityAndAnalysisPropSecretScanningNonProviderPatterns"""
+
+    status: Missing[Literal["enabled", "disabled"]] = Field(default=UNSET)
+
+
+class SecurityAndAnalysisPropSecretScanningAiDetection(GitHubModel):
+    """SecurityAndAnalysisPropSecretScanningAiDetection"""
+
+    status: Missing[Literal["enabled", "disabled"]] = Field(default=UNSET)
+
+
+class SecurityAndAnalysisPropSecretScanningValidityChecks(GitHubModel):
+    """SecurityAndAnalysisPropSecretScanningValidityChecks"""
+
+    status: Missing[Literal["enabled", "disabled"]] = Field(default=UNSET)
+
+
+model_rebuild(SecurityAndAnalysis)
+model_rebuild(SecurityAndAnalysisPropAdvancedSecurity)
+model_rebuild(SecurityAndAnalysisPropCodeSecurity)
+model_rebuild(SecurityAndAnalysisPropDependabotSecurityUpdates)
+model_rebuild(SecurityAndAnalysisPropSecretScanning)
+model_rebuild(SecurityAndAnalysisPropSecretScanningPushProtection)
+model_rebuild(SecurityAndAnalysisPropSecretScanningNonProviderPatterns)
+model_rebuild(SecurityAndAnalysisPropSecretScanningAiDetection)
+model_rebuild(SecurityAndAnalysisPropSecretScanningValidityChecks)
+
+__all__ = (
+    "SecurityAndAnalysis",
+    "SecurityAndAnalysisPropAdvancedSecurity",
+    "SecurityAndAnalysisPropCodeSecurity",
+    "SecurityAndAnalysisPropDependabotSecurityUpdates",
+    "SecurityAndAnalysisPropSecretScanning",
+    "SecurityAndAnalysisPropSecretScanningAiDetection",
+    "SecurityAndAnalysisPropSecretScanningNonProviderPatterns",
+    "SecurityAndAnalysisPropSecretScanningPushProtection",
+    "SecurityAndAnalysisPropSecretScanningValidityChecks",
+)

@@ -18,18 +18,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0475 import EnterpriseWebhooks
-from .group_0476 import SimpleInstallation
-from .group_0477 import OrganizationSimpleWebhooks
-from .group_0478 import RepositoryWebhooks
-from .group_0501 import WebhooksMarketplacePurchase
-from .group_0502 import WebhooksPreviousMarketplacePurchase
+from .group_0479 import EnterpriseWebhooks
+from .group_0480 import SimpleInstallation
+from .group_0481 import OrganizationSimpleWebhooks
+from .group_0482 import RepositoryWebhooks
+from .group_0505 import WebhooksMarketplacePurchase
+from .group_0506 import WebhooksPreviousMarketplacePurchase
 
 
-class WebhookMarketplacePurchasePurchased(GitHubModel):
-    """marketplace_purchase purchased event"""
+class WebhookMarketplacePurchaseCancelled(GitHubModel):
+    """marketplace_purchase cancelled event"""
 
-    action: Literal["purchased"] = Field()
+    action: Literal["cancelled"] = Field()
     effective_date: str = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
@@ -60,6 +60,6 @@ class WebhookMarketplacePurchasePurchased(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookMarketplacePurchasePurchased)
+model_rebuild(WebhookMarketplacePurchaseCancelled)
 
-__all__ = ("WebhookMarketplacePurchasePurchased",)
+__all__ = ("WebhookMarketplacePurchaseCancelled",)

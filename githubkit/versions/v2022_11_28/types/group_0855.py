@@ -9,14 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBodyType(TypedDict):
-    """OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBody"""
+class NotificationsPutResponse202Type(TypedDict):
+    """NotificationsPutResponse202"""
 
-    default_level: Literal["public", "internal"]
+    message: NotRequired[str]
 
 
-__all__ = ("OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBodyType",)
+__all__ = ("NotificationsPutResponse202Type",)

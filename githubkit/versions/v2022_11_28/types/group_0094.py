@@ -9,31 +9,63 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+from datetime import date, datetime
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0058 import MinimalRepositoryType
+from .group_0064 import OrganizationSimpleType
+from .group_0084 import TeamType
 
 
-class PackageType(TypedDict):
-    """Package
+class CopilotSeatDetailsType(TypedDict):
+    """Copilot Business Seat Detail
 
-    A software package
+    Information about a Copilot Business seat assignment for a user, team, or
+    organization.
+    """
+
+    assignee: NotRequired[Union[None, SimpleUserType]]
+    organization: NotRequired[Union[None, OrganizationSimpleType]]
+    assigning_team: NotRequired[Union[TeamType, EnterpriseTeamType, None]]
+    pending_cancellation_date: NotRequired[Union[date, None]]
+    last_activity_at: NotRequired[Union[datetime, None]]
+    last_activity_editor: NotRequired[Union[str, None]]
+    created_at: datetime
+    updated_at: NotRequired[datetime]
+    plan_type: NotRequired[Literal["business", "enterprise", "unknown"]]
+
+
+class EnterpriseTeamType(TypedDict):
+    """Enterprise Team
+
+    Group of enterprise owners and/or members
     """
 
     id: int
     name: str
-    package_type: Literal["npm", "maven", "rubygems", "docker", "nuget", "container"]
+    description: NotRequired[str]
+    slug: str
     url: str
+    sync_to_organizations: NotRequired[str]
+    organization_selection_type: NotRequired[str]
+    group_id: NotRequired[Union[str, None]]
+    group_name: NotRequired[Union[str, None]]
     html_url: str
-    version_count: int
-    visibility: Literal["private", "public"]
-    owner: NotRequired[Union[None, SimpleUserType]]
-    repository: NotRequired[Union[None, MinimalRepositoryType]]
+    members_url: str
     created_at: datetime
     updated_at: datetime
 
 
-__all__ = ("PackageType",)
+class OrgsOrgCopilotBillingSeatsGetResponse200Type(TypedDict):
+    """OrgsOrgCopilotBillingSeatsGetResponse200"""
+
+    total_seats: NotRequired[int]
+    seats: NotRequired[list[CopilotSeatDetailsType]]
+
+
+__all__ = (
+    "CopilotSeatDetailsType",
+    "EnterpriseTeamType",
+    "OrgsOrgCopilotBillingSeatsGetResponse200Type",
+)

@@ -12,130 +12,56 @@ from __future__ import annotations
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0220 import BranchRestrictionPolicyType
-from .group_0230 import ProtectedBranchPropRequiredPullRequestReviewsType
+from .group_0003 import SimpleUserType
+from .group_0228 import DiffEntryType
+from .group_0230 import CommitPropCommitType
 
 
-class ProtectedBranchType(TypedDict):
-    """Protected Branch
+class CommitType(TypedDict):
+    """Commit
 
-    Branch protections protect branches
+    Commit
     """
 
     url: str
-    required_status_checks: NotRequired[StatusCheckPolicyType]
-    required_pull_request_reviews: NotRequired[
-        ProtectedBranchPropRequiredPullRequestReviewsType
-    ]
-    required_signatures: NotRequired[ProtectedBranchPropRequiredSignaturesType]
-    enforce_admins: NotRequired[ProtectedBranchPropEnforceAdminsType]
-    required_linear_history: NotRequired[ProtectedBranchPropRequiredLinearHistoryType]
-    allow_force_pushes: NotRequired[ProtectedBranchPropAllowForcePushesType]
-    allow_deletions: NotRequired[ProtectedBranchPropAllowDeletionsType]
-    restrictions: NotRequired[BranchRestrictionPolicyType]
-    required_conversation_resolution: NotRequired[
-        ProtectedBranchPropRequiredConversationResolutionType
-    ]
-    block_creations: NotRequired[ProtectedBranchPropBlockCreationsType]
-    lock_branch: NotRequired[ProtectedBranchPropLockBranchType]
-    allow_fork_syncing: NotRequired[ProtectedBranchPropAllowForkSyncingType]
+    sha: str
+    node_id: str
+    html_url: str
+    comments_url: str
+    commit: CommitPropCommitType
+    author: Union[SimpleUserType, EmptyObjectType, None]
+    committer: Union[SimpleUserType, EmptyObjectType, None]
+    parents: list[CommitPropParentsItemsType]
+    stats: NotRequired[CommitPropStatsType]
+    files: NotRequired[list[DiffEntryType]]
 
 
-class ProtectedBranchPropRequiredSignaturesType(TypedDict):
-    """ProtectedBranchPropRequiredSignatures"""
+class EmptyObjectType(TypedDict):
+    """Empty Object
 
-    url: str
-    enabled: bool
-
-
-class ProtectedBranchPropEnforceAdminsType(TypedDict):
-    """ProtectedBranchPropEnforceAdmins"""
-
-    url: str
-    enabled: bool
-
-
-class ProtectedBranchPropRequiredLinearHistoryType(TypedDict):
-    """ProtectedBranchPropRequiredLinearHistory"""
-
-    enabled: bool
-
-
-class ProtectedBranchPropAllowForcePushesType(TypedDict):
-    """ProtectedBranchPropAllowForcePushes"""
-
-    enabled: bool
-
-
-class ProtectedBranchPropAllowDeletionsType(TypedDict):
-    """ProtectedBranchPropAllowDeletions"""
-
-    enabled: bool
-
-
-class ProtectedBranchPropRequiredConversationResolutionType(TypedDict):
-    """ProtectedBranchPropRequiredConversationResolution"""
-
-    enabled: NotRequired[bool]
-
-
-class ProtectedBranchPropBlockCreationsType(TypedDict):
-    """ProtectedBranchPropBlockCreations"""
-
-    enabled: bool
-
-
-class ProtectedBranchPropLockBranchType(TypedDict):
-    """ProtectedBranchPropLockBranch
-
-    Whether to set the branch as read-only. If this is true, users will not be able
-    to push to the branch.
+    An object without any properties.
     """
 
-    enabled: NotRequired[bool]
 
+class CommitPropParentsItemsType(TypedDict):
+    """CommitPropParentsItems"""
 
-class ProtectedBranchPropAllowForkSyncingType(TypedDict):
-    """ProtectedBranchPropAllowForkSyncing
-
-    Whether users can pull changes from upstream when the branch is locked. Set to
-    `true` to allow fork syncing. Set to `false` to prevent fork syncing.
-    """
-
-    enabled: NotRequired[bool]
-
-
-class StatusCheckPolicyType(TypedDict):
-    """Status Check Policy
-
-    Status Check Policy
-    """
-
+    sha: str
     url: str
-    strict: bool
-    contexts: list[str]
-    checks: list[StatusCheckPolicyPropChecksItemsType]
-    contexts_url: str
+    html_url: NotRequired[str]
 
 
-class StatusCheckPolicyPropChecksItemsType(TypedDict):
-    """StatusCheckPolicyPropChecksItems"""
+class CommitPropStatsType(TypedDict):
+    """CommitPropStats"""
 
-    context: str
-    app_id: Union[int, None]
+    additions: NotRequired[int]
+    deletions: NotRequired[int]
+    total: NotRequired[int]
 
 
 __all__ = (
-    "ProtectedBranchPropAllowDeletionsType",
-    "ProtectedBranchPropAllowForcePushesType",
-    "ProtectedBranchPropAllowForkSyncingType",
-    "ProtectedBranchPropBlockCreationsType",
-    "ProtectedBranchPropEnforceAdminsType",
-    "ProtectedBranchPropLockBranchType",
-    "ProtectedBranchPropRequiredConversationResolutionType",
-    "ProtectedBranchPropRequiredLinearHistoryType",
-    "ProtectedBranchPropRequiredSignaturesType",
-    "ProtectedBranchType",
-    "StatusCheckPolicyPropChecksItemsType",
-    "StatusCheckPolicyType",
+    "CommitPropParentsItemsType",
+    "CommitPropStatsType",
+    "CommitType",
+    "EmptyObjectType",
 )

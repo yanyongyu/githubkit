@@ -18,64 +18,38 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class RepositoryCollaboratorPermission(GitHubModel):
-    """Repository Collaborator Permission
+class CodeownersErrors(GitHubModel):
+    """CODEOWNERS errors
 
-    Repository Collaborator Permission
+    A list of errors found in a repo's CODEOWNERS file
     """
 
-    permission: str = Field()
-    role_name: str = Field()
-    user: Union[None, Collaborator] = Field()
+    errors: list[CodeownersErrorsPropErrorsItems] = Field()
 
 
-class Collaborator(GitHubModel):
-    """Collaborator
+class CodeownersErrorsPropErrorsItems(GitHubModel):
+    """CodeownersErrorsPropErrorsItems"""
 
-    Collaborator
-    """
-
-    login: str = Field()
-    id: int = Field()
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    name: Missing[Union[str, None]] = Field(default=UNSET)
-    node_id: str = Field()
-    avatar_url: str = Field()
-    gravatar_id: Union[str, None] = Field()
-    url: str = Field()
-    html_url: str = Field()
-    followers_url: str = Field()
-    following_url: str = Field()
-    gists_url: str = Field()
-    starred_url: str = Field()
-    subscriptions_url: str = Field()
-    organizations_url: str = Field()
-    repos_url: str = Field()
-    events_url: str = Field()
-    received_events_url: str = Field()
-    type: str = Field()
-    site_admin: bool = Field()
-    permissions: Missing[CollaboratorPropPermissions] = Field(default=UNSET)
-    role_name: str = Field()
-    user_view_type: Missing[str] = Field(default=UNSET)
+    line: int = Field(description="The line number where this errors occurs.")
+    column: int = Field(description="The column number where this errors occurs.")
+    source: Missing[str] = Field(
+        default=UNSET, description="The contents of the line where the error occurs."
+    )
+    kind: str = Field(description="The type of error.")
+    suggestion: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="Suggested action to fix the error. This will usually be `null`, but is provided for some common errors.",
+    )
+    message: str = Field(
+        description="A human-readable description of the error, combining information from multiple fields, laid out for display in a monospaced typeface (for example, a command-line setting)."
+    )
+    path: str = Field(description="The path of the file where the error occured.")
 
 
-class CollaboratorPropPermissions(GitHubModel):
-    """CollaboratorPropPermissions"""
-
-    pull: bool = Field()
-    triage: Missing[bool] = Field(default=UNSET)
-    push: bool = Field()
-    maintain: Missing[bool] = Field(default=UNSET)
-    admin: bool = Field()
-
-
-model_rebuild(RepositoryCollaboratorPermission)
-model_rebuild(Collaborator)
-model_rebuild(CollaboratorPropPermissions)
+model_rebuild(CodeownersErrors)
+model_rebuild(CodeownersErrorsPropErrorsItems)
 
 __all__ = (
-    "Collaborator",
-    "CollaboratorPropPermissions",
-    "RepositoryCollaboratorPermission",
+    "CodeownersErrors",
+    "CodeownersErrorsPropErrorsItems",
 )

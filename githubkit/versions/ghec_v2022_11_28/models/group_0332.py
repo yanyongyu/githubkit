@@ -9,33 +9,58 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0333 import EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems
+from .group_0003 import SimpleUser
+from .group_0010 import Integration
 
 
-class EnvironmentPropProtectionRulesItemsAnyof1(GitHubModel):
-    """EnvironmentPropProtectionRulesItemsAnyof1"""
+class DeploymentStatus(GitHubModel):
+    """Deployment Status
 
+    The status of a deployment.
+    """
+
+    url: str = Field()
     id: int = Field()
     node_id: str = Field()
-    prevent_self_review: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether deployments to this environment can be approved by the user who created the deployment.",
+    state: Literal[
+        "error", "failure", "inactive", "pending", "success", "queued", "in_progress"
+    ] = Field(description="The state of the status.")
+    creator: Union[None, SimpleUser] = Field()
+    description: str = Field(
+        max_length=140, default="", description="A short description of the status."
     )
-    type: str = Field()
-    reviewers: Missing[
-        list[EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems]
-    ] = Field(
+    environment: Missing[str] = Field(
         default=UNSET,
-        description="The people or teams that may approve jobs that reference the environment. You can list up to six users or teams as reviewers. The reviewers must have at least read access to the repository. Only one of the required reviewers needs to approve the job for it to proceed.",
+        description="The environment of the deployment that the status is for.",
+    )
+    target_url: str = Field(
+        default="",
+        description="Closing down notice: the URL to associate with this status.",
+    )
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+    deployment_url: str = Field()
+    repository_url: str = Field()
+    environment_url: Missing[str] = Field(
+        default=UNSET, description="The URL for accessing your environment."
+    )
+    log_url: Missing[str] = Field(
+        default=UNSET, description="The URL to associate with this status."
+    )
+    performed_via_github_app: Missing[Union[None, Integration, None]] = Field(
+        default=UNSET
     )
 
 
-model_rebuild(EnvironmentPropProtectionRulesItemsAnyof1)
+model_rebuild(DeploymentStatus)
 
-__all__ = ("EnvironmentPropProtectionRulesItemsAnyof1",)
+__all__ = ("DeploymentStatus",)

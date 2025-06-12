@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
@@ -17,39 +17,100 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0475 import EnterpriseWebhooks
-from .group_0476 import SimpleInstallation
-from .group_0477 import OrganizationSimpleWebhooks
-from .group_0478 import RepositoryWebhooks
+from .group_0001 import CvssSeverities
 
 
-class WebhookBranchProtectionConfigurationDisabled(GitHubModel):
-    """branch protection configuration disabled event"""
+class WebhooksSecurityAdvisory(GitHubModel):
+    """WebhooksSecurityAdvisory
 
-    action: Literal["disabled"] = Field()
-    enterprise: Missing[EnterpriseWebhooks] = Field(
-        default=UNSET,
-        title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."',
-    )
-    installation: Missing[SimpleInstallation] = Field(
-        default=UNSET,
-        title="Simple Installation",
-        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
-    )
-    organization: Missing[OrganizationSimpleWebhooks] = Field(
-        default=UNSET,
-        title="Organization Simple",
-        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
-    )
-    repository: RepositoryWebhooks = Field(
-        title="Repository",
-        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
-    )
-    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    The details of the security advisory, including summary, description, and
+    severity.
+    """
+
+    cvss: WebhooksSecurityAdvisoryPropCvss = Field()
+    cvss_severities: Missing[Union[CvssSeverities, None]] = Field(default=UNSET)
+    cwes: list[WebhooksSecurityAdvisoryPropCwesItems] = Field()
+    description: str = Field()
+    ghsa_id: str = Field()
+    identifiers: list[WebhooksSecurityAdvisoryPropIdentifiersItems] = Field()
+    published_at: str = Field()
+    references: list[WebhooksSecurityAdvisoryPropReferencesItems] = Field()
+    severity: str = Field()
+    summary: str = Field()
+    updated_at: str = Field()
+    vulnerabilities: list[WebhooksSecurityAdvisoryPropVulnerabilitiesItems] = Field()
+    withdrawn_at: Union[str, None] = Field()
 
 
-model_rebuild(WebhookBranchProtectionConfigurationDisabled)
+class WebhooksSecurityAdvisoryPropCvss(GitHubModel):
+    """WebhooksSecurityAdvisoryPropCvss"""
 
-__all__ = ("WebhookBranchProtectionConfigurationDisabled",)
+    score: float = Field()
+    vector_string: Union[str, None] = Field()
+
+
+class WebhooksSecurityAdvisoryPropCwesItems(GitHubModel):
+    """WebhooksSecurityAdvisoryPropCwesItems"""
+
+    cwe_id: str = Field()
+    name: str = Field()
+
+
+class WebhooksSecurityAdvisoryPropIdentifiersItems(GitHubModel):
+    """WebhooksSecurityAdvisoryPropIdentifiersItems"""
+
+    type: str = Field()
+    value: str = Field()
+
+
+class WebhooksSecurityAdvisoryPropReferencesItems(GitHubModel):
+    """WebhooksSecurityAdvisoryPropReferencesItems"""
+
+    url: str = Field()
+
+
+class WebhooksSecurityAdvisoryPropVulnerabilitiesItems(GitHubModel):
+    """WebhooksSecurityAdvisoryPropVulnerabilitiesItems"""
+
+    first_patched_version: Union[
+        WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion, None
+    ] = Field()
+    package: WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackage = Field()
+    severity: str = Field()
+    vulnerable_version_range: str = Field()
+
+
+class WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion(
+    GitHubModel
+):
+    """WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion"""
+
+    identifier: str = Field()
+
+
+class WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackage(GitHubModel):
+    """WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackage"""
+
+    ecosystem: str = Field()
+    name: str = Field()
+
+
+model_rebuild(WebhooksSecurityAdvisory)
+model_rebuild(WebhooksSecurityAdvisoryPropCvss)
+model_rebuild(WebhooksSecurityAdvisoryPropCwesItems)
+model_rebuild(WebhooksSecurityAdvisoryPropIdentifiersItems)
+model_rebuild(WebhooksSecurityAdvisoryPropReferencesItems)
+model_rebuild(WebhooksSecurityAdvisoryPropVulnerabilitiesItems)
+model_rebuild(WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion)
+model_rebuild(WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackage)
+
+__all__ = (
+    "WebhooksSecurityAdvisory",
+    "WebhooksSecurityAdvisoryPropCvss",
+    "WebhooksSecurityAdvisoryPropCwesItems",
+    "WebhooksSecurityAdvisoryPropIdentifiersItems",
+    "WebhooksSecurityAdvisoryPropReferencesItems",
+    "WebhooksSecurityAdvisoryPropVulnerabilitiesItems",
+    "WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion",
+    "WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackage",
+)

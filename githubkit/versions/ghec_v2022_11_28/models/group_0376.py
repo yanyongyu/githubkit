@@ -14,43 +14,31 @@ from typing import Union
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0019 import LicenseSimple
+from .group_0003 import SimpleUser
+from .group_0010 import Integration
 
 
-class LicenseContent(GitHubModel):
-    """License Content
+class StateChangeIssueEvent(GitHubModel):
+    """State Change Issue Event
 
-    License Content
+    State Change Issue Event
     """
 
-    name: str = Field()
-    path: str = Field()
-    sha: str = Field()
-    size: int = Field()
+    id: int = Field()
+    node_id: str = Field()
     url: str = Field()
-    html_url: Union[str, None] = Field()
-    git_url: Union[str, None] = Field()
-    download_url: Union[str, None] = Field()
-    type: str = Field()
-    content: str = Field()
-    encoding: str = Field()
-    links: LicenseContentPropLinks = Field(alias="_links")
-    license_: Union[None, LicenseSimple] = Field(alias="license")
+    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    event: str = Field()
+    commit_id: Union[str, None] = Field()
+    commit_url: Union[str, None] = Field()
+    created_at: str = Field()
+    performed_via_github_app: Union[None, Integration, None] = Field()
+    state_reason: Missing[Union[str, None]] = Field(default=UNSET)
 
 
-class LicenseContentPropLinks(GitHubModel):
-    """LicenseContentPropLinks"""
+model_rebuild(StateChangeIssueEvent)
 
-    git: Union[str, None] = Field()
-    html: Union[str, None] = Field()
-    self_: str = Field(alias="self")
-
-
-model_rebuild(LicenseContent)
-model_rebuild(LicenseContentPropLinks)
-
-__all__ = (
-    "LicenseContent",
-    "LicenseContentPropLinks",
-)
+__all__ = ("StateChangeIssueEvent",)

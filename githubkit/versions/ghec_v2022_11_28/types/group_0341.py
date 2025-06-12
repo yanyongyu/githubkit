@@ -12,27 +12,14 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class GitRefType(TypedDict):
-    """Git Reference
+class ShortBlobType(TypedDict):
+    """Short Blob
 
-    Git references within a repository
+    Short Blob
     """
 
-    ref: str
-    node_id: str
     url: str
-    object_: GitRefPropObjectType
-
-
-class GitRefPropObjectType(TypedDict):
-    """GitRefPropObject"""
-
-    type: str
     sha: str
-    url: str
 
 
-__all__ = (
-    "GitRefPropObjectType",
-    "GitRefType",
-)
+__all__ = ("ShortBlobType",)

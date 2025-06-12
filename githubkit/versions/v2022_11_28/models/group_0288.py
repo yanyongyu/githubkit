@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,49 +17,36 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0010 import Integration
+from .group_0287 import Metadata
 
 
-class DeploymentStatus(GitHubModel):
-    """Deployment Status
+class Dependency(GitHubModel):
+    """Dependency"""
 
-    The status of a deployment.
-    """
-
-    url: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    state: Literal[
-        "error", "failure", "inactive", "pending", "success", "queued", "in_progress"
-    ] = Field(description="The state of the status.")
-    creator: Union[None, SimpleUser] = Field()
-    description: str = Field(
-        max_length=140, default="", description="A short description of the status."
-    )
-    environment: Missing[str] = Field(
+    package_url: Missing[str] = Field(
+        pattern="^pkg",
         default=UNSET,
-        description="The environment of the deployment that the status is for.",
+        description="Package-url (PURL) of dependency. See https://github.com/package-url/purl-spec for more details.",
     )
-    target_url: str = Field(
-        default="",
-        description="Closing down notice: the URL to associate with this status.",
+    metadata: Missing[Metadata] = Field(
+        default=UNSET,
+        title="metadata",
+        description="User-defined metadata to store domain-specific information limited to 8 keys with scalar values.",
     )
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    deployment_url: str = Field()
-    repository_url: str = Field()
-    environment_url: Missing[str] = Field(
-        default=UNSET, description="The URL for accessing your environment."
+    relationship: Missing[Literal["direct", "indirect"]] = Field(
+        default=UNSET,
+        description="A notation of whether a dependency is requested directly by this manifest or is a dependency of another dependency.",
     )
-    log_url: Missing[str] = Field(
-        default=UNSET, description="The URL to associate with this status."
+    scope: Missing[Literal["runtime", "development"]] = Field(
+        default=UNSET,
+        description="A notation of whether the dependency is required for the primary build artifact (runtime) or is only used for development. Future versions of this specification may allow for more granular scopes.",
     )
-    performed_via_github_app: Missing[Union[None, Integration, None]] = Field(
-        default=UNSET
+    dependencies: Missing[list[str]] = Field(
+        default=UNSET,
+        description="Array of package-url (PURLs) of direct child dependencies.",
     )
 
 
-model_rebuild(DeploymentStatus)
+model_rebuild(Dependency)
 
-__all__ = ("DeploymentStatus",)
+__all__ = ("Dependency",)

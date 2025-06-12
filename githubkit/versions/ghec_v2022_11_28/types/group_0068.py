@@ -44,9 +44,11 @@ class EnterpriseTeamType(TypedDict):
 
     id: int
     name: str
+    description: NotRequired[str]
     slug: str
     url: str
-    sync_to_organizations: str
+    sync_to_organizations: NotRequired[str]
+    organization_selection_type: NotRequired[str]
     group_id: NotRequired[Union[str, None]]
     group_name: NotRequired[Union[str, None]]
     html_url: str

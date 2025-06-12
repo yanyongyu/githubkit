@@ -9,36 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0265 import BranchProtection
 
-class DiffEntry(GitHubModel):
-    """Diff Entry
 
-    Diff Entry
+class ShortBranch(GitHubModel):
+    """Short Branch
+
+    Short Branch
     """
 
-    sha: Union[str, None] = Field()
-    filename: str = Field()
-    status: Literal[
-        "added", "removed", "modified", "renamed", "copied", "changed", "unchanged"
-    ] = Field()
-    additions: int = Field()
-    deletions: int = Field()
-    changes: int = Field()
-    blob_url: Union[str, None] = Field()
-    raw_url: Union[str, None] = Field()
-    contents_url: str = Field()
-    patch: Missing[str] = Field(default=UNSET)
-    previous_filename: Missing[str] = Field(default=UNSET)
+    name: str = Field()
+    commit: ShortBranchPropCommit = Field()
+    protected: bool = Field()
+    protection: Missing[BranchProtection] = Field(
+        default=UNSET, title="Branch Protection", description="Branch Protection"
+    )
+    protection_url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(DiffEntry)
+class ShortBranchPropCommit(GitHubModel):
+    """ShortBranchPropCommit"""
 
-__all__ = ("DiffEntry",)
+    sha: str = Field()
+    url: str = Field()
+
+
+model_rebuild(ShortBranch)
+model_rebuild(ShortBranchPropCommit)
+
+__all__ = (
+    "ShortBranch",
+    "ShortBranchPropCommit",
+)

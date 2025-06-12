@@ -11,14 +11,13 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0076 import NetworkConfigurationType
+from .group_0078 import CustomPropertyType
 
 
-class OrgsOrgSettingsNetworkConfigurationsGetResponse200Type(TypedDict):
-    """OrgsOrgSettingsNetworkConfigurationsGetResponse200"""
+class OrgsOrgPropertiesSchemaPatchBodyType(TypedDict):
+    """OrgsOrgPropertiesSchemaPatchBody"""
 
-    total_count: int
-    network_configurations: list[NetworkConfigurationType]
+    properties: list[CustomPropertyType]
 
 
-__all__ = ("OrgsOrgSettingsNetworkConfigurationsGetResponse200Type",)
+__all__ = ("OrgsOrgPropertiesSchemaPatchBodyType",)

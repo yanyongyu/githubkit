@@ -12,43 +12,32 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0080 import TeamSimpleType
+from .group_0003 import SimpleUserType
+from .group_0064 import OrganizationSimpleType
 
 
-class TeamRoleAssignmentType(TypedDict):
-    """A Role Assignment for a Team
+class OrgMembershipType(TypedDict):
+    """Org Membership
 
-    The Relationship a Team has with a role.
+    Org Membership
     """
 
-    assignment: NotRequired[Literal["direct", "indirect", "mixed"]]
-    id: int
-    node_id: str
-    name: str
-    slug: str
-    description: Union[str, None]
-    privacy: NotRequired[str]
-    notification_setting: NotRequired[str]
-    permission: str
-    permissions: NotRequired[TeamRoleAssignmentPropPermissionsType]
     url: str
-    html_url: str
-    members_url: str
-    repositories_url: str
-    parent: Union[None, TeamSimpleType]
+    state: Literal["active", "pending"]
+    role: Literal["admin", "member", "billing_manager"]
+    organization_url: str
+    organization: OrganizationSimpleType
+    user: Union[None, SimpleUserType]
+    permissions: NotRequired[OrgMembershipPropPermissionsType]
 
 
-class TeamRoleAssignmentPropPermissionsType(TypedDict):
-    """TeamRoleAssignmentPropPermissions"""
+class OrgMembershipPropPermissionsType(TypedDict):
+    """OrgMembershipPropPermissions"""
 
-    pull: bool
-    triage: bool
-    push: bool
-    maintain: bool
-    admin: bool
+    can_create_repository: bool
 
 
 __all__ = (
-    "TeamRoleAssignmentPropPermissionsType",
-    "TeamRoleAssignmentType",
+    "OrgMembershipPropPermissionsType",
+    "OrgMembershipType",
 )

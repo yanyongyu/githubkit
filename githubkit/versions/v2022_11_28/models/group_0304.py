@@ -9,47 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0011 import WebhookConfig
-from .group_0303 import HookResponse
+from .group_0227 import Verification
 
 
-class Hook(GitHubModel):
-    """Webhook
+class GitTag(GitHubModel):
+    """Git Tag
 
-    Webhooks for repositories.
+    Metadata for a Git tag
     """
 
+    node_id: str = Field()
+    tag: str = Field(description="Name of the tag")
+    sha: str = Field()
+    url: str = Field(description="URL for the tag")
+    message: str = Field(description="Message describing the purpose of the tag")
+    tagger: GitTagPropTagger = Field()
+    object_: GitTagPropObject = Field(alias="object")
+    verification: Missing[Verification] = Field(default=UNSET, title="Verification")
+
+
+class GitTagPropTagger(GitHubModel):
+    """GitTagPropTagger"""
+
+    date: str = Field()
+    email: str = Field()
+    name: str = Field()
+
+
+class GitTagPropObject(GitHubModel):
+    """GitTagPropObject"""
+
+    sha: str = Field()
     type: str = Field()
-    id: int = Field(description="Unique identifier of the webhook.")
-    name: str = Field(
-        description="The name of a valid service, use 'web' for a webhook."
-    )
-    active: bool = Field(
-        description="Determines whether the hook is actually triggered on pushes."
-    )
-    events: list[str] = Field(
-        description="Determines what events the hook is triggered for. Default: ['push']."
-    )
-    config: WebhookConfig = Field(
-        title="Webhook Configuration", description="Configuration object of the webhook"
-    )
-    updated_at: datetime = Field()
-    created_at: datetime = Field()
     url: str = Field()
-    test_url: str = Field()
-    ping_url: str = Field()
-    deliveries_url: Missing[str] = Field(default=UNSET)
-    last_response: HookResponse = Field(title="Hook Response")
 
 
-model_rebuild(Hook)
+model_rebuild(GitTag)
+model_rebuild(GitTagPropTagger)
+model_rebuild(GitTagPropObject)
 
-__all__ = ("Hook",)
+__all__ = (
+    "GitTag",
+    "GitTagPropObject",
+    "GitTagPropTagger",
+)
