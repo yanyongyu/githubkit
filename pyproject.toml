@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "GitHubKit"
-version = "0.12.13"
+version = "0.12.14"
 description = "GitHub SDK for Python"
 authors = ["yanyongyu <yyy@yyydl.top>"]
 license = "MIT"
