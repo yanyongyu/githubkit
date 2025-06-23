@@ -3,9 +3,10 @@ from functools import partial
 from typing import TYPE_CHECKING, Any, NoReturn, Optional
 from typing_extensions import override
 
-from hishel import AsyncBaseStorage, AsyncRedisStorage, Controller, RedisStorage
+from hishel import AsyncBaseStorage, AsyncRedisStorage, RedisStorage
 
 from githubkit.exception import CacheUnsupportedError
+from githubkit.typing import HishelControllerOptions
 from githubkit.utils import hishel_key_generator_with_prefix
 
 from .base import AsyncBaseCache, BaseCache, BaseCacheStrategy
@@ -82,13 +83,15 @@ class RedisCacheStrategy(BaseCacheStrategy):
         )
 
     @override
-    def get_hishel_controller(self) -> Optional[Controller]:
+    def get_hishel_controller_options(self) -> HishelControllerOptions:
+        options = super().get_hishel_controller_options()
+
         if self.prefix is not None:
-            return Controller(
-                key_generator=partial(
-                    hishel_key_generator_with_prefix, prefix=self.prefix
-                )
+            options["key_generator"] = partial(
+                hishel_key_generator_with_prefix, prefix=self.prefix
             )
+
+        return options
 
     @override
     def get_hishel_storage(self) -> RedisStorage:
