@@ -4,6 +4,8 @@ from typing import Optional
 
 from hishel import AsyncBaseStorage, BaseStorage, Controller
 
+from githubkit.typing import HishelControllerOptions
+
 
 class BaseCache(abc.ABC):
     @abc.abstractmethod
@@ -42,12 +44,18 @@ class BaseCacheStrategy(abc.ABC):
         """
         raise NotImplementedError
 
-    def get_hishel_controller(self) -> Optional[Controller]:
+    def get_hishel_controller_options(self) -> HishelControllerOptions:
+        """Get the hishel controller options"""
+        # set always revalidate by default
+        # See: https://hishel.com/examples/github/
+        return HishelControllerOptions(always_revalidate=True)
+
+    def get_hishel_controller(self) -> Controller:
         """Get the hishel controller instance
 
-        Return `None` to use the default controller
+        Get the controller options from `get_hishel_controller_options` method
         """
-        return None
+        return Controller(**self.get_hishel_controller_options())
 
     @abc.abstractmethod
     def get_hishel_storage(self) -> BaseStorage:

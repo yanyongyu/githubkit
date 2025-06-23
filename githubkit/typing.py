@@ -2,22 +2,28 @@ from collections.abc import Hashable, Mapping, Sequence
 from datetime import timedelta
 from typing import (
     IO,
+    TYPE_CHECKING,
     Annotated,
     Callable,
     Literal,
     NamedTuple,
     Optional,
+    TypedDict,
     TypeVar,
     Union,
 )
 from typing_extensions import TypeAlias
 
+import httpcore
 import httpx
 from pydantic import Field
 
 from .compat import PYDANTIC_V2
 from .exception import GitHubException
 from .utils import Unset
+
+if TYPE_CHECKING:
+    from hishel._utils import BaseClock
 
 T = TypeVar("T")
 H = TypeVar("H", bound=Hashable)
@@ -89,3 +95,17 @@ class RetryOption(NamedTuple):
 
 
 RetryDecisionFunc: TypeAlias = Callable[[GitHubException, int], RetryOption]
+
+
+class HishelControllerOptions(TypedDict, total=False):
+    """Options for the hishel controller."""
+
+    cacheable_methods: Optional[list[str]]
+    cacheable_status_codes: Optional[list[int]]
+    cache_private: bool
+    allow_heuristics: bool
+    clock: Optional["BaseClock"]
+    allow_stale: bool
+    always_revalidate: bool
+    force_cache: bool
+    key_generator: Optional[Callable[[httpcore.Request, Optional[bytes]], str]]
