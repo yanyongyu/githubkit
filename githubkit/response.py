@@ -1,10 +1,12 @@
 from collections.abc import AsyncIterator, Iterator
+from contextlib import asynccontextmanager, contextmanager
 from typing import Any, Generic, Optional
 from typing_extensions import TypeVar
 
 import httpx
 
 from .compat import type_validate_json
+from .exception import RequestError, RequestTimeout
 
 MT = TypeVar("MT", default=Any)
 JT = TypeVar("JT", default=Any)
@@ -94,32 +96,62 @@ class Response(Generic[MT, JT]):
     def parsed_data(self) -> MT:
         return type_validate_json(self._data_model, self.content)
 
+    @contextmanager
+    def _catch_and_close(self):
+        try:
+            yield
+        except httpx.TimeoutException as e:
+            raise RequestTimeout(e) from e
+        except Exception as e:
+            raise RequestError(e) from e
+        finally:
+            self._response.close()
+
+    @asynccontextmanager
+    async def _acatch_and_close(self):
+        try:
+            yield
+        except httpx.TimeoutException as e:
+            raise RequestTimeout(e) from e
+        except Exception as e:
+            raise RequestError(e) from e
+        finally:
+            await self._response.aclose()
+
     def iter_bytes(self, chunk_size: Optional[int] = None) -> Iterator[bytes]:
-        yield from self._response.iter_bytes(chunk_size=chunk_size)
+        with self._catch_and_close():
+            yield from self._response.iter_bytes(chunk_size=chunk_size)
 
     def iter_text(self, chunk_size: Optional[int] = None) -> Iterator[str]:
-        yield from self._response.iter_text(chunk_size=chunk_size)
+        with self._catch_and_close():
+            yield from self._response.iter_text(chunk_size=chunk_size)
 
     def iter_lines(self) -> Iterator[str]:
-        yield from self._response.iter_lines()
+        with self._catch_and_close():
+            yield from self._response.iter_lines()
 
     def iter_raw(self, chunk_size: Optional[int] = None) -> Iterator[bytes]:
-        yield from self._response.iter_raw(chunk_size=chunk_size)
+        with self._catch_and_close():
+            yield from self._response.iter_raw(chunk_size=chunk_size)
 
     async def aiter_bytes(
         self, chunk_size: Optional[int] = None
     ) -> AsyncIterator[bytes]:
-        async for chunk in self._response.aiter_bytes(chunk_size=chunk_size):
-            yield chunk
+        async with self._acatch_and_close():
+            async for chunk in self._response.aiter_bytes(chunk_size=chunk_size):
+                yield chunk
 
     async def aiter_text(self, chunk_size: Optional[int] = None) -> AsyncIterator[str]:
-        async for chunk in self._response.aiter_text(chunk_size=chunk_size):
-            yield chunk
+        async with self._acatch_and_close():
+            async for chunk in self._response.aiter_text(chunk_size=chunk_size):
+                yield chunk
 
     async def aiter_lines(self) -> AsyncIterator[str]:
-        async for line in self._response.aiter_lines():
-            yield line
+        async with self._acatch_and_close():
+            async for line in self._response.aiter_lines():
+                yield line
 
     async def aiter_raw(self, chunk_size: Optional[int] = None) -> AsyncIterator[bytes]:
-        async for chunk in self._response.aiter_raw(chunk_size=chunk_size):
-            yield chunk
+        async with self._acatch_and_close():
+            async for chunk in self._response.aiter_raw(chunk_size=chunk_size):
+                yield chunk
