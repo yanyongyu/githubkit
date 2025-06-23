@@ -103,6 +103,7 @@ headers=exclude_unset(headers),
 {% if endpoint.cookie_params %}
 cookies=exclude_unset(cookies),
 {% endif %}
+stream=stream,
 {% if endpoint.success_response and endpoint.success_response.response_schema %}
 response_model={{ build_response_model(endpoint.success_response) }},
 {% endif %}
