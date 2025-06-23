@@ -62,6 +62,7 @@ class BillingClient:
         day: Missing[int] = UNSET,
         hour: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[BillingUsageReport, BillingUsageReportType]:
         """billing/get-github-billing-usage-report-org
 
@@ -96,6 +97,7 @@ class BillingClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=BillingUsageReport,
             error_models={
                 "400": BasicError,
@@ -114,6 +116,7 @@ class BillingClient:
         day: Missing[int] = UNSET,
         hour: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[BillingUsageReport, BillingUsageReportType]:
         """billing/get-github-billing-usage-report-org
 
@@ -148,6 +151,7 @@ class BillingClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=BillingUsageReport,
             error_models={
                 "400": BasicError,
@@ -162,6 +166,7 @@ class BillingClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[ActionsBillingUsage, ActionsBillingUsageType]:
         """billing/get-github-actions-billing-org
 
@@ -186,6 +191,7 @@ class BillingClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ActionsBillingUsage,
         )
 
@@ -194,6 +200,7 @@ class BillingClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[ActionsBillingUsage, ActionsBillingUsageType]:
         """billing/get-github-actions-billing-org
 
@@ -218,6 +225,7 @@ class BillingClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ActionsBillingUsage,
         )
 
@@ -226,6 +234,7 @@ class BillingClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[PackagesBillingUsage, PackagesBillingUsageType]:
         """billing/get-github-packages-billing-org
 
@@ -250,6 +259,7 @@ class BillingClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=PackagesBillingUsage,
         )
 
@@ -258,6 +268,7 @@ class BillingClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[PackagesBillingUsage, PackagesBillingUsageType]:
         """billing/get-github-packages-billing-org
 
@@ -282,6 +293,7 @@ class BillingClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=PackagesBillingUsage,
         )
 
@@ -290,6 +302,7 @@ class BillingClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[CombinedBillingUsage, CombinedBillingUsageType]:
         """billing/get-shared-storage-billing-org
 
@@ -314,6 +327,7 @@ class BillingClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CombinedBillingUsage,
         )
 
@@ -322,6 +336,7 @@ class BillingClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[CombinedBillingUsage, CombinedBillingUsageType]:
         """billing/get-shared-storage-billing-org
 
@@ -346,6 +361,7 @@ class BillingClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CombinedBillingUsage,
         )
 
@@ -354,6 +370,7 @@ class BillingClient:
         username: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[ActionsBillingUsage, ActionsBillingUsageType]:
         """billing/get-github-actions-billing-user
 
@@ -378,6 +395,7 @@ class BillingClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ActionsBillingUsage,
         )
 
@@ -386,6 +404,7 @@ class BillingClient:
         username: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[ActionsBillingUsage, ActionsBillingUsageType]:
         """billing/get-github-actions-billing-user
 
@@ -410,6 +429,7 @@ class BillingClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ActionsBillingUsage,
         )
 
@@ -418,6 +438,7 @@ class BillingClient:
         username: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[PackagesBillingUsage, PackagesBillingUsageType]:
         """billing/get-github-packages-billing-user
 
@@ -442,6 +463,7 @@ class BillingClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=PackagesBillingUsage,
         )
 
@@ -450,6 +472,7 @@ class BillingClient:
         username: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[PackagesBillingUsage, PackagesBillingUsageType]:
         """billing/get-github-packages-billing-user
 
@@ -474,6 +497,7 @@ class BillingClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=PackagesBillingUsage,
         )
 
@@ -482,6 +506,7 @@ class BillingClient:
         username: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[CombinedBillingUsage, CombinedBillingUsageType]:
         """billing/get-shared-storage-billing-user
 
@@ -506,6 +531,7 @@ class BillingClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CombinedBillingUsage,
         )
 
@@ -514,6 +540,7 @@ class BillingClient:
         username: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[CombinedBillingUsage, CombinedBillingUsageType]:
         """billing/get-shared-storage-billing-user
 
@@ -538,6 +565,7 @@ class BillingClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CombinedBillingUsage,
         )
 
@@ -550,6 +578,7 @@ class BillingClient:
         day: Missing[int] = UNSET,
         hour: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[BillingUsageReportUser, BillingUsageReportUserType]:
         """billing/get-github-billing-usage-report-user
 
@@ -584,6 +613,7 @@ class BillingClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=BillingUsageReportUser,
             error_models={
                 "400": BasicError,
@@ -602,6 +632,7 @@ class BillingClient:
         day: Missing[int] = UNSET,
         hour: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[BillingUsageReportUser, BillingUsageReportUserType]:
         """billing/get-github-billing-usage-report-user
 
@@ -636,6 +667,7 @@ class BillingClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=BillingUsageReportUser,
             error_models={
                 "400": BasicError,

@@ -47,6 +47,7 @@ class OidcClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[OidcCustomSub, OidcCustomSubType]:
         """oidc/get-oidc-custom-sub-template-for-org
 
@@ -69,6 +70,7 @@ class OidcClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OidcCustomSub,
         )
 
@@ -77,6 +79,7 @@ class OidcClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[OidcCustomSub, OidcCustomSubType]:
         """oidc/get-oidc-custom-sub-template-for-org
 
@@ -99,6 +102,7 @@ class OidcClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OidcCustomSub,
         )
 
@@ -108,6 +112,7 @@ class OidcClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OidcCustomSubType,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
 
@@ -118,6 +123,7 @@ class OidcClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         include_claim_keys: list[str],
     ) -> Response[EmptyObject, EmptyObjectType]: ...
 
@@ -126,6 +132,7 @@ class OidcClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OidcCustomSubType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject, EmptyObjectType]:
@@ -160,6 +167,7 @@ class OidcClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=EmptyObject,
             error_models={
                 "404": BasicError,
@@ -173,6 +181,7 @@ class OidcClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OidcCustomSubType,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
 
@@ -183,6 +192,7 @@ class OidcClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         include_claim_keys: list[str],
     ) -> Response[EmptyObject, EmptyObjectType]: ...
 
@@ -191,6 +201,7 @@ class OidcClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OidcCustomSubType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject, EmptyObjectType]:
@@ -225,6 +236,7 @@ class OidcClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=EmptyObject,
             error_models={
                 "404": BasicError,

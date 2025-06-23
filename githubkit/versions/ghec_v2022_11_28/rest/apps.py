@@ -93,6 +93,7 @@ class AppsClient:
         self,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[Union[Integration, None], Union[IntegrationType, None]]:
         """apps/get-authenticated
 
@@ -117,6 +118,7 @@ class AppsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Union[Integration, None],
         )
 
@@ -124,6 +126,7 @@ class AppsClient:
         self,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[Union[Integration, None], Union[IntegrationType, None]]:
         """apps/get-authenticated
 
@@ -148,6 +151,7 @@ class AppsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Union[Integration, None],
         )
 
@@ -156,6 +160,7 @@ class AppsClient:
         code: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         AppManifestsCodeConversionsPostResponse201,
         AppManifestsCodeConversionsPostResponse201Type,
@@ -183,6 +188,7 @@ class AppsClient:
             "POST",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=AppManifestsCodeConversionsPostResponse201,
             error_models={
                 "404": BasicError,
@@ -195,6 +201,7 @@ class AppsClient:
         code: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         AppManifestsCodeConversionsPostResponse201,
         AppManifestsCodeConversionsPostResponse201Type,
@@ -222,6 +229,7 @@ class AppsClient:
             "POST",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=AppManifestsCodeConversionsPostResponse201,
             error_models={
                 "404": BasicError,
@@ -233,6 +241,7 @@ class AppsClient:
         self,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[WebhookConfig, WebhookConfigType]:
         """apps/get-webhook-config-for-app
 
@@ -255,6 +264,7 @@ class AppsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=WebhookConfig,
         )
 
@@ -262,6 +272,7 @@ class AppsClient:
         self,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[WebhookConfig, WebhookConfigType]:
         """apps/get-webhook-config-for-app
 
@@ -284,6 +295,7 @@ class AppsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=WebhookConfig,
         )
 
@@ -292,6 +304,7 @@ class AppsClient:
         self,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: AppHookConfigPatchBodyType,
     ) -> Response[WebhookConfig, WebhookConfigType]: ...
 
@@ -301,6 +314,7 @@ class AppsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         url: Missing[str] = UNSET,
         content_type: Missing[str] = UNSET,
         secret: Missing[str] = UNSET,
@@ -311,6 +325,7 @@ class AppsClient:
         self,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[AppHookConfigPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[WebhookConfig, WebhookConfigType]:
@@ -345,6 +360,7 @@ class AppsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=WebhookConfig,
         )
 
@@ -353,6 +369,7 @@ class AppsClient:
         self,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: AppHookConfigPatchBodyType,
     ) -> Response[WebhookConfig, WebhookConfigType]: ...
 
@@ -362,6 +379,7 @@ class AppsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         url: Missing[str] = UNSET,
         content_type: Missing[str] = UNSET,
         secret: Missing[str] = UNSET,
@@ -372,6 +390,7 @@ class AppsClient:
         self,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[AppHookConfigPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[WebhookConfig, WebhookConfigType]:
@@ -406,6 +425,7 @@ class AppsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=WebhookConfig,
         )
 
@@ -415,6 +435,7 @@ class AppsClient:
         per_page: Missing[int] = UNSET,
         cursor: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[HookDeliveryItem], list[HookDeliveryItemType]]:
         """apps/list-webhook-deliveries
 
@@ -443,6 +464,7 @@ class AppsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[HookDeliveryItem],
             error_models={
                 "400": BasicError,
@@ -456,6 +478,7 @@ class AppsClient:
         per_page: Missing[int] = UNSET,
         cursor: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[HookDeliveryItem], list[HookDeliveryItemType]]:
         """apps/list-webhook-deliveries
 
@@ -484,6 +507,7 @@ class AppsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[HookDeliveryItem],
             error_models={
                 "400": BasicError,
@@ -496,6 +520,7 @@ class AppsClient:
         delivery_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[HookDelivery, HookDeliveryType]:
         """apps/get-webhook-delivery
 
@@ -518,6 +543,7 @@ class AppsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=HookDelivery,
             error_models={
                 "400": BasicError,
@@ -530,6 +556,7 @@ class AppsClient:
         delivery_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[HookDelivery, HookDeliveryType]:
         """apps/get-webhook-delivery
 
@@ -552,6 +579,7 @@ class AppsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=HookDelivery,
             error_models={
                 "400": BasicError,
@@ -564,6 +592,7 @@ class AppsClient:
         delivery_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
@@ -593,6 +622,7 @@ class AppsClient:
             "POST",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
             error_models={
                 "400": BasicError,
@@ -605,6 +635,7 @@ class AppsClient:
         delivery_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
@@ -634,6 +665,7 @@ class AppsClient:
             "POST",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
             error_models={
                 "400": BasicError,
@@ -647,6 +679,7 @@ class AppsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         list[IntegrationInstallationRequest], list[IntegrationInstallationRequestType]
     ]:
@@ -675,6 +708,7 @@ class AppsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[IntegrationInstallationRequest],
             error_models={
                 "401": BasicError,
@@ -687,6 +721,7 @@ class AppsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         list[IntegrationInstallationRequest], list[IntegrationInstallationRequestType]
     ]:
@@ -715,6 +750,7 @@ class AppsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[IntegrationInstallationRequest],
             error_models={
                 "401": BasicError,
@@ -729,6 +765,7 @@ class AppsClient:
         since: Missing[datetime] = UNSET,
         outdated: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Installation], list[InstallationType]]:
         """apps/list-installations
 
@@ -759,6 +796,7 @@ class AppsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Installation],
         )
 
@@ -770,6 +808,7 @@ class AppsClient:
         since: Missing[datetime] = UNSET,
         outdated: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Installation], list[InstallationType]]:
         """apps/list-installations
 
@@ -800,6 +839,7 @@ class AppsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Installation],
         )
 
@@ -808,6 +848,7 @@ class AppsClient:
         installation_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[Installation, InstallationType]:
         """apps/get-installation
 
@@ -830,6 +871,7 @@ class AppsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Installation,
             error_models={
                 "404": BasicError,
@@ -841,6 +883,7 @@ class AppsClient:
         installation_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[Installation, InstallationType]:
         """apps/get-installation
 
@@ -863,6 +906,7 @@ class AppsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Installation,
             error_models={
                 "404": BasicError,
@@ -874,6 +918,7 @@ class AppsClient:
         installation_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """apps/delete-installation
 
@@ -896,6 +941,7 @@ class AppsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
             },
@@ -906,6 +952,7 @@ class AppsClient:
         installation_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """apps/delete-installation
 
@@ -928,6 +975,7 @@ class AppsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
             },
@@ -939,6 +987,7 @@ class AppsClient:
         installation_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[AppInstallationsInstallationIdAccessTokensPostBodyType] = UNSET,
     ) -> Response[InstallationToken, InstallationTokenType]: ...
 
@@ -949,6 +998,7 @@ class AppsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         repositories: Missing[list[str]] = UNSET,
         repository_ids: Missing[list[int]] = UNSET,
         permissions: Missing[AppPermissionsType] = UNSET,
@@ -959,6 +1009,7 @@ class AppsClient:
         installation_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[AppInstallationsInstallationIdAccessTokensPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[InstallationToken, InstallationTokenType]:
@@ -1004,6 +1055,7 @@ class AppsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=InstallationToken,
             error_models={
                 "403": BasicError,
@@ -1019,6 +1071,7 @@ class AppsClient:
         installation_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[AppInstallationsInstallationIdAccessTokensPostBodyType] = UNSET,
     ) -> Response[InstallationToken, InstallationTokenType]: ...
 
@@ -1029,6 +1082,7 @@ class AppsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         repositories: Missing[list[str]] = UNSET,
         repository_ids: Missing[list[int]] = UNSET,
         permissions: Missing[AppPermissionsType] = UNSET,
@@ -1039,6 +1093,7 @@ class AppsClient:
         installation_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[AppInstallationsInstallationIdAccessTokensPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[InstallationToken, InstallationTokenType]:
@@ -1084,6 +1139,7 @@ class AppsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=InstallationToken,
             error_models={
                 "403": BasicError,
@@ -1098,6 +1154,7 @@ class AppsClient:
         installation_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """apps/suspend-installation
 
@@ -1120,6 +1177,7 @@ class AppsClient:
             "PUT",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
             },
@@ -1130,6 +1188,7 @@ class AppsClient:
         installation_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """apps/suspend-installation
 
@@ -1152,6 +1211,7 @@ class AppsClient:
             "PUT",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
             },
@@ -1162,6 +1222,7 @@ class AppsClient:
         installation_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """apps/unsuspend-installation
 
@@ -1184,6 +1245,7 @@ class AppsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
             },
@@ -1194,6 +1256,7 @@ class AppsClient:
         installation_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """apps/unsuspend-installation
 
@@ -1216,6 +1279,7 @@ class AppsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
             },
@@ -1227,6 +1291,7 @@ class AppsClient:
         client_id: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ApplicationsClientIdGrantDeleteBodyType,
     ) -> Response: ...
 
@@ -1237,6 +1302,7 @@ class AppsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         access_token: str,
     ) -> Response: ...
 
@@ -1245,6 +1311,7 @@ class AppsClient:
         client_id: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ApplicationsClientIdGrantDeleteBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -1278,6 +1345,7 @@ class AppsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "422": ValidationError,
             },
@@ -1289,6 +1357,7 @@ class AppsClient:
         client_id: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ApplicationsClientIdGrantDeleteBodyType,
     ) -> Response: ...
 
@@ -1299,6 +1368,7 @@ class AppsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         access_token: str,
     ) -> Response: ...
 
@@ -1307,6 +1377,7 @@ class AppsClient:
         client_id: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ApplicationsClientIdGrantDeleteBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -1340,6 +1411,7 @@ class AppsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "422": ValidationError,
             },
@@ -1351,6 +1423,7 @@ class AppsClient:
         client_id: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ApplicationsClientIdTokenPostBodyType,
     ) -> Response[Authorization, AuthorizationType]: ...
 
@@ -1361,6 +1434,7 @@ class AppsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         access_token: str,
     ) -> Response[Authorization, AuthorizationType]: ...
 
@@ -1369,6 +1443,7 @@ class AppsClient:
         client_id: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ApplicationsClientIdTokenPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Authorization, AuthorizationType]:
@@ -1406,6 +1481,7 @@ class AppsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Authorization,
             error_models={
                 "422": ValidationError,
@@ -1419,6 +1495,7 @@ class AppsClient:
         client_id: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ApplicationsClientIdTokenPostBodyType,
     ) -> Response[Authorization, AuthorizationType]: ...
 
@@ -1429,6 +1506,7 @@ class AppsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         access_token: str,
     ) -> Response[Authorization, AuthorizationType]: ...
 
@@ -1437,6 +1515,7 @@ class AppsClient:
         client_id: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ApplicationsClientIdTokenPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Authorization, AuthorizationType]:
@@ -1474,6 +1553,7 @@ class AppsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Authorization,
             error_models={
                 "422": ValidationError,
@@ -1487,6 +1567,7 @@ class AppsClient:
         client_id: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ApplicationsClientIdTokenDeleteBodyType,
     ) -> Response: ...
 
@@ -1497,6 +1578,7 @@ class AppsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         access_token: str,
     ) -> Response: ...
 
@@ -1505,6 +1587,7 @@ class AppsClient:
         client_id: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ApplicationsClientIdTokenDeleteBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -1537,6 +1620,7 @@ class AppsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "422": ValidationError,
             },
@@ -1548,6 +1632,7 @@ class AppsClient:
         client_id: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ApplicationsClientIdTokenDeleteBodyType,
     ) -> Response: ...
 
@@ -1558,6 +1643,7 @@ class AppsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         access_token: str,
     ) -> Response: ...
 
@@ -1566,6 +1652,7 @@ class AppsClient:
         client_id: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ApplicationsClientIdTokenDeleteBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -1598,6 +1685,7 @@ class AppsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "422": ValidationError,
             },
@@ -1609,6 +1697,7 @@ class AppsClient:
         client_id: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ApplicationsClientIdTokenPatchBodyType,
     ) -> Response[Authorization, AuthorizationType]: ...
 
@@ -1619,6 +1708,7 @@ class AppsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         access_token: str,
     ) -> Response[Authorization, AuthorizationType]: ...
 
@@ -1627,6 +1717,7 @@ class AppsClient:
         client_id: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ApplicationsClientIdTokenPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Authorization, AuthorizationType]:
@@ -1663,6 +1754,7 @@ class AppsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Authorization,
             error_models={
                 "422": ValidationError,
@@ -1675,6 +1767,7 @@ class AppsClient:
         client_id: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ApplicationsClientIdTokenPatchBodyType,
     ) -> Response[Authorization, AuthorizationType]: ...
 
@@ -1685,6 +1778,7 @@ class AppsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         access_token: str,
     ) -> Response[Authorization, AuthorizationType]: ...
 
@@ -1693,6 +1787,7 @@ class AppsClient:
         client_id: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ApplicationsClientIdTokenPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Authorization, AuthorizationType]:
@@ -1729,6 +1824,7 @@ class AppsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Authorization,
             error_models={
                 "422": ValidationError,
@@ -1741,6 +1837,7 @@ class AppsClient:
         client_id: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ApplicationsClientIdTokenScopedPostBodyType,
     ) -> Response[Authorization, AuthorizationType]: ...
 
@@ -1751,6 +1848,7 @@ class AppsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         access_token: str,
         target: Missing[str] = UNSET,
         target_id: Missing[int] = UNSET,
@@ -1764,6 +1862,7 @@ class AppsClient:
         client_id: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ApplicationsClientIdTokenScopedPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Authorization, AuthorizationType]:
@@ -1805,6 +1904,7 @@ class AppsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Authorization,
             error_models={
                 "401": BasicError,
@@ -1820,6 +1920,7 @@ class AppsClient:
         client_id: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ApplicationsClientIdTokenScopedPostBodyType,
     ) -> Response[Authorization, AuthorizationType]: ...
 
@@ -1830,6 +1931,7 @@ class AppsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         access_token: str,
         target: Missing[str] = UNSET,
         target_id: Missing[int] = UNSET,
@@ -1843,6 +1945,7 @@ class AppsClient:
         client_id: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ApplicationsClientIdTokenScopedPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Authorization, AuthorizationType]:
@@ -1884,6 +1987,7 @@ class AppsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Authorization,
             error_models={
                 "401": BasicError,
@@ -1898,6 +2002,7 @@ class AppsClient:
         app_slug: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[Union[Integration, None], Union[IntegrationType, None]]:
         """apps/get-by-slug
 
@@ -1921,6 +2026,7 @@ class AppsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Union[Integration, None],
             error_models={
                 "403": BasicError,
@@ -1933,6 +2039,7 @@ class AppsClient:
         app_slug: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[Union[Integration, None], Union[IntegrationType, None]]:
         """apps/get-by-slug
 
@@ -1956,6 +2063,7 @@ class AppsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Union[Integration, None],
             error_models={
                 "403": BasicError,
@@ -1969,6 +2077,7 @@ class AppsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         InstallationRepositoriesGetResponse200,
         InstallationRepositoriesGetResponse200Type,
@@ -1998,6 +2107,7 @@ class AppsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=InstallationRepositoriesGetResponse200,
             error_models={
                 "403": BasicError,
@@ -2011,6 +2121,7 @@ class AppsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         InstallationRepositoriesGetResponse200,
         InstallationRepositoriesGetResponse200Type,
@@ -2040,6 +2151,7 @@ class AppsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=InstallationRepositoriesGetResponse200,
             error_models={
                 "403": BasicError,
@@ -2051,6 +2163,7 @@ class AppsClient:
         self,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """apps/revoke-installation-access-token
 
@@ -2071,12 +2184,14 @@ class AppsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     async def async_revoke_installation_access_token(
         self,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """apps/revoke-installation-access-token
 
@@ -2097,6 +2212,7 @@ class AppsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     def get_subscription_plan_for_account(
@@ -2104,6 +2220,7 @@ class AppsClient:
         account_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[MarketplacePurchase, MarketplacePurchaseType]:
         """apps/get-subscription-plan-for-account
 
@@ -2126,6 +2243,7 @@ class AppsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=MarketplacePurchase,
             error_models={
                 "404": BasicError,
@@ -2138,6 +2256,7 @@ class AppsClient:
         account_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[MarketplacePurchase, MarketplacePurchaseType]:
         """apps/get-subscription-plan-for-account
 
@@ -2160,6 +2279,7 @@ class AppsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=MarketplacePurchase,
             error_models={
                 "404": BasicError,
@@ -2173,6 +2293,7 @@ class AppsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[MarketplaceListingPlan], list[MarketplaceListingPlanType]]:
         """apps/list-plans
 
@@ -2201,6 +2322,7 @@ class AppsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[MarketplaceListingPlan],
             error_models={
                 "404": BasicError,
@@ -2214,6 +2336,7 @@ class AppsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[MarketplaceListingPlan], list[MarketplaceListingPlanType]]:
         """apps/list-plans
 
@@ -2242,6 +2365,7 @@ class AppsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[MarketplaceListingPlan],
             error_models={
                 "404": BasicError,
@@ -2258,6 +2382,7 @@ class AppsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[MarketplacePurchase], list[MarketplacePurchaseType]]:
         """apps/list-accounts-for-plan
 
@@ -2288,6 +2413,7 @@ class AppsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[MarketplacePurchase],
             error_models={
                 "404": BasicError,
@@ -2305,6 +2431,7 @@ class AppsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[MarketplacePurchase], list[MarketplacePurchaseType]]:
         """apps/list-accounts-for-plan
 
@@ -2335,6 +2462,7 @@ class AppsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[MarketplacePurchase],
             error_models={
                 "404": BasicError,
@@ -2348,6 +2476,7 @@ class AppsClient:
         account_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[MarketplacePurchase, MarketplacePurchaseType]:
         """apps/get-subscription-plan-for-account-stubbed
 
@@ -2370,6 +2499,7 @@ class AppsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=MarketplacePurchase,
             error_models={
                 "401": BasicError,
@@ -2381,6 +2511,7 @@ class AppsClient:
         account_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[MarketplacePurchase, MarketplacePurchaseType]:
         """apps/get-subscription-plan-for-account-stubbed
 
@@ -2403,6 +2534,7 @@ class AppsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=MarketplacePurchase,
             error_models={
                 "401": BasicError,
@@ -2415,6 +2547,7 @@ class AppsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[MarketplaceListingPlan], list[MarketplaceListingPlanType]]:
         """apps/list-plans-stubbed
 
@@ -2443,6 +2576,7 @@ class AppsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[MarketplaceListingPlan],
             error_models={
                 "401": BasicError,
@@ -2455,6 +2589,7 @@ class AppsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[MarketplaceListingPlan], list[MarketplaceListingPlanType]]:
         """apps/list-plans-stubbed
 
@@ -2483,6 +2618,7 @@ class AppsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[MarketplaceListingPlan],
             error_models={
                 "401": BasicError,
@@ -2498,6 +2634,7 @@ class AppsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[MarketplacePurchase], list[MarketplacePurchaseType]]:
         """apps/list-accounts-for-plan-stubbed
 
@@ -2528,6 +2665,7 @@ class AppsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[MarketplacePurchase],
             error_models={
                 "401": BasicError,
@@ -2543,6 +2681,7 @@ class AppsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[MarketplacePurchase], list[MarketplacePurchaseType]]:
         """apps/list-accounts-for-plan-stubbed
 
@@ -2573,6 +2712,7 @@ class AppsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[MarketplacePurchase],
             error_models={
                 "401": BasicError,
@@ -2584,6 +2724,7 @@ class AppsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[Installation, InstallationType]:
         """apps/get-org-installation
 
@@ -2606,6 +2747,7 @@ class AppsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Installation,
         )
 
@@ -2614,6 +2756,7 @@ class AppsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[Installation, InstallationType]:
         """apps/get-org-installation
 
@@ -2636,6 +2779,7 @@ class AppsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Installation,
         )
 
@@ -2645,6 +2789,7 @@ class AppsClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[Installation, InstallationType]:
         """apps/get-repo-installation
 
@@ -2667,6 +2812,7 @@ class AppsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Installation,
             error_models={
                 "404": BasicError,
@@ -2679,6 +2825,7 @@ class AppsClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[Installation, InstallationType]:
         """apps/get-repo-installation
 
@@ -2701,6 +2848,7 @@ class AppsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Installation,
             error_models={
                 "404": BasicError,
@@ -2713,6 +2861,7 @@ class AppsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[UserInstallationsGetResponse200, UserInstallationsGetResponse200Type]:
         """apps/list-installations-for-authenticated-user
 
@@ -2743,6 +2892,7 @@ class AppsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=UserInstallationsGetResponse200,
             error_models={
                 "403": BasicError,
@@ -2756,6 +2906,7 @@ class AppsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[UserInstallationsGetResponse200, UserInstallationsGetResponse200Type]:
         """apps/list-installations-for-authenticated-user
 
@@ -2786,6 +2937,7 @@ class AppsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=UserInstallationsGetResponse200,
             error_models={
                 "403": BasicError,
@@ -2800,6 +2952,7 @@ class AppsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         UserInstallationsInstallationIdRepositoriesGetResponse200,
         UserInstallationsInstallationIdRepositoriesGetResponse200Type,
@@ -2836,6 +2989,7 @@ class AppsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=UserInstallationsInstallationIdRepositoriesGetResponse200,
             error_models={
                 "404": BasicError,
@@ -2850,6 +3004,7 @@ class AppsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         UserInstallationsInstallationIdRepositoriesGetResponse200,
         UserInstallationsInstallationIdRepositoriesGetResponse200Type,
@@ -2886,6 +3041,7 @@ class AppsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=UserInstallationsInstallationIdRepositoriesGetResponse200,
             error_models={
                 "404": BasicError,
@@ -2899,6 +3055,7 @@ class AppsClient:
         repository_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """apps/add-repo-to-installation-for-authenticated-user
 
@@ -2921,6 +3078,7 @@ class AppsClient:
             "PUT",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "403": BasicError,
                 "404": BasicError,
@@ -2933,6 +3091,7 @@ class AppsClient:
         repository_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """apps/add-repo-to-installation-for-authenticated-user
 
@@ -2955,6 +3114,7 @@ class AppsClient:
             "PUT",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "403": BasicError,
                 "404": BasicError,
@@ -2967,6 +3127,7 @@ class AppsClient:
         repository_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """apps/remove-repo-from-installation-for-authenticated-user
 
@@ -2989,6 +3150,7 @@ class AppsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "403": BasicError,
                 "404": BasicError,
@@ -3001,6 +3163,7 @@ class AppsClient:
         repository_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """apps/remove-repo-from-installation-for-authenticated-user
 
@@ -3023,6 +3186,7 @@ class AppsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "403": BasicError,
                 "404": BasicError,
@@ -3035,6 +3199,7 @@ class AppsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[UserMarketplacePurchase], list[UserMarketplacePurchaseType]]:
         """apps/list-subscriptions-for-authenticated-user
 
@@ -3061,6 +3226,7 @@ class AppsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[UserMarketplacePurchase],
             error_models={
                 "401": BasicError,
@@ -3074,6 +3240,7 @@ class AppsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[UserMarketplacePurchase], list[UserMarketplacePurchaseType]]:
         """apps/list-subscriptions-for-authenticated-user
 
@@ -3100,6 +3267,7 @@ class AppsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[UserMarketplacePurchase],
             error_models={
                 "401": BasicError,
@@ -3113,6 +3281,7 @@ class AppsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[UserMarketplacePurchase], list[UserMarketplacePurchaseType]]:
         """apps/list-subscriptions-for-authenticated-user-stubbed
 
@@ -3139,6 +3308,7 @@ class AppsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[UserMarketplacePurchase],
             error_models={
                 "401": BasicError,
@@ -3151,6 +3321,7 @@ class AppsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[UserMarketplacePurchase], list[UserMarketplacePurchaseType]]:
         """apps/list-subscriptions-for-authenticated-user-stubbed
 
@@ -3177,6 +3348,7 @@ class AppsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[UserMarketplacePurchase],
             error_models={
                 "401": BasicError,
@@ -3188,6 +3360,7 @@ class AppsClient:
         username: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[Installation, InstallationType]:
         """apps/get-user-installation
 
@@ -3210,6 +3383,7 @@ class AppsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Installation,
         )
 
@@ -3218,6 +3392,7 @@ class AppsClient:
         username: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[Installation, InstallationType]:
         """apps/get-user-installation
 
@@ -3240,5 +3415,6 @@ class AppsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Installation,
         )

@@ -48,6 +48,7 @@ class LicensesClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[LicenseSimple], list[LicenseSimpleType]]:
         """licenses/get-all-commonly-used
 
@@ -75,6 +76,7 @@ class LicensesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[LicenseSimple],
         )
 
@@ -85,6 +87,7 @@ class LicensesClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[LicenseSimple], list[LicenseSimpleType]]:
         """licenses/get-all-commonly-used
 
@@ -112,6 +115,7 @@ class LicensesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[LicenseSimple],
         )
 
@@ -120,6 +124,7 @@ class LicensesClient:
         license_: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[License, LicenseType]:
         """licenses/get
 
@@ -140,6 +145,7 @@ class LicensesClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=License,
             error_models={
                 "403": BasicError,
@@ -152,6 +158,7 @@ class LicensesClient:
         license_: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[License, LicenseType]:
         """licenses/get
 
@@ -172,6 +179,7 @@ class LicensesClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=License,
             error_models={
                 "403": BasicError,
@@ -186,6 +194,7 @@ class LicensesClient:
         *,
         ref: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[LicenseContent, LicenseContentType]:
         """licenses/get-for-repo
 
@@ -216,6 +225,7 @@ class LicensesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=LicenseContent,
             error_models={
                 "404": BasicError,
@@ -229,6 +239,7 @@ class LicensesClient:
         *,
         ref: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[LicenseContent, LicenseContentType]:
         """licenses/get-for-repo
 
@@ -259,6 +270,7 @@ class LicensesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=LicenseContent,
             error_models={
                 "404": BasicError,

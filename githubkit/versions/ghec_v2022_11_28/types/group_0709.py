@@ -35,7 +35,7 @@ class WebhookMetaDeletedType(TypedDict):
 class WebhookMetaDeletedPropHookType(TypedDict):
     """WebhookMetaDeletedPropHook
 
-    The modified webhook. This will contain different keys based on the type of
+    The deleted webhook. This will contain different keys based on the type of
     webhook it is: repository, organization, business, app, or GitHub Marketplace.
     """
 

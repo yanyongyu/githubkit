@@ -62,6 +62,7 @@ class InteractionsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         Union[InteractionLimitResponse, OrgsOrgInteractionLimitsGetResponse200Anyof1],
         Union[
@@ -93,6 +94,7 @@ class InteractionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Union[
                 InteractionLimitResponse, OrgsOrgInteractionLimitsGetResponse200Anyof1
             ],
@@ -103,6 +105,7 @@ class InteractionsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         Union[InteractionLimitResponse, OrgsOrgInteractionLimitsGetResponse200Anyof1],
         Union[
@@ -134,6 +137,7 @@ class InteractionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Union[
                 InteractionLimitResponse, OrgsOrgInteractionLimitsGetResponse200Anyof1
             ],
@@ -145,6 +149,7 @@ class InteractionsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: InteractionLimitType,
     ) -> Response[InteractionLimitResponse, InteractionLimitResponseType]: ...
 
@@ -155,6 +160,7 @@ class InteractionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         limit: Literal["existing_users", "contributors_only", "collaborators_only"],
         expiry: Missing[
             Literal["one_day", "three_days", "one_week", "one_month", "six_months"]
@@ -166,6 +172,7 @@ class InteractionsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[InteractionLimitType] = UNSET,
         **kwargs,
     ) -> Response[InteractionLimitResponse, InteractionLimitResponseType]:
@@ -198,6 +205,7 @@ class InteractionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=InteractionLimitResponse,
             error_models={
                 "422": ValidationError,
@@ -210,6 +218,7 @@ class InteractionsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: InteractionLimitType,
     ) -> Response[InteractionLimitResponse, InteractionLimitResponseType]: ...
 
@@ -220,6 +229,7 @@ class InteractionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         limit: Literal["existing_users", "contributors_only", "collaborators_only"],
         expiry: Missing[
             Literal["one_day", "three_days", "one_week", "one_month", "six_months"]
@@ -231,6 +241,7 @@ class InteractionsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[InteractionLimitType] = UNSET,
         **kwargs,
     ) -> Response[InteractionLimitResponse, InteractionLimitResponseType]:
@@ -263,6 +274,7 @@ class InteractionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=InteractionLimitResponse,
             error_models={
                 "422": ValidationError,
@@ -274,6 +286,7 @@ class InteractionsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """interactions/remove-restrictions-for-org
 
@@ -292,6 +305,7 @@ class InteractionsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     async def async_remove_restrictions_for_org(
@@ -299,6 +313,7 @@ class InteractionsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """interactions/remove-restrictions-for-org
 
@@ -317,6 +332,7 @@ class InteractionsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     def get_restrictions_for_repo(
@@ -325,6 +341,7 @@ class InteractionsClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         Union[
             InteractionLimitResponse,
@@ -359,6 +376,7 @@ class InteractionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Union[
                 InteractionLimitResponse,
                 ReposOwnerRepoInteractionLimitsGetResponse200Anyof1,
@@ -371,6 +389,7 @@ class InteractionsClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         Union[
             InteractionLimitResponse,
@@ -405,6 +424,7 @@ class InteractionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Union[
                 InteractionLimitResponse,
                 ReposOwnerRepoInteractionLimitsGetResponse200Anyof1,
@@ -418,6 +438,7 @@ class InteractionsClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: InteractionLimitType,
     ) -> Response[InteractionLimitResponse, InteractionLimitResponseType]: ...
 
@@ -429,6 +450,7 @@ class InteractionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         limit: Literal["existing_users", "contributors_only", "collaborators_only"],
         expiry: Missing[
             Literal["one_day", "three_days", "one_week", "one_month", "six_months"]
@@ -441,6 +463,7 @@ class InteractionsClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[InteractionLimitType] = UNSET,
         **kwargs,
     ) -> Response[InteractionLimitResponse, InteractionLimitResponseType]:
@@ -473,6 +496,7 @@ class InteractionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=InteractionLimitResponse,
             error_models={},
         )
@@ -484,6 +508,7 @@ class InteractionsClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: InteractionLimitType,
     ) -> Response[InteractionLimitResponse, InteractionLimitResponseType]: ...
 
@@ -495,6 +520,7 @@ class InteractionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         limit: Literal["existing_users", "contributors_only", "collaborators_only"],
         expiry: Missing[
             Literal["one_day", "three_days", "one_week", "one_month", "six_months"]
@@ -507,6 +533,7 @@ class InteractionsClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[InteractionLimitType] = UNSET,
         **kwargs,
     ) -> Response[InteractionLimitResponse, InteractionLimitResponseType]:
@@ -539,6 +566,7 @@ class InteractionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=InteractionLimitResponse,
             error_models={},
         )
@@ -549,6 +577,7 @@ class InteractionsClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """interactions/remove-restrictions-for-repo
 
@@ -567,6 +596,7 @@ class InteractionsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={},
         )
 
@@ -576,6 +606,7 @@ class InteractionsClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """interactions/remove-restrictions-for-repo
 
@@ -594,6 +625,7 @@ class InteractionsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={},
         )
 
@@ -601,6 +633,7 @@ class InteractionsClient:
         self,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         Union[InteractionLimitResponse, UserInteractionLimitsGetResponse200Anyof1],
         Union[
@@ -631,6 +664,7 @@ class InteractionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Union[
                 InteractionLimitResponse, UserInteractionLimitsGetResponse200Anyof1
             ],
@@ -640,6 +674,7 @@ class InteractionsClient:
         self,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         Union[InteractionLimitResponse, UserInteractionLimitsGetResponse200Anyof1],
         Union[
@@ -670,6 +705,7 @@ class InteractionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Union[
                 InteractionLimitResponse, UserInteractionLimitsGetResponse200Anyof1
             ],
@@ -677,7 +713,11 @@ class InteractionsClient:
 
     @overload
     def set_restrictions_for_authenticated_user(
-        self, *, headers: Optional[Mapping[str, str]] = None, data: InteractionLimitType
+        self,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: InteractionLimitType,
     ) -> Response[InteractionLimitResponse, InteractionLimitResponseType]: ...
 
     @overload
@@ -686,6 +726,7 @@ class InteractionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         limit: Literal["existing_users", "contributors_only", "collaborators_only"],
         expiry: Missing[
             Literal["one_day", "three_days", "one_week", "one_month", "six_months"]
@@ -696,6 +737,7 @@ class InteractionsClient:
         self,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[InteractionLimitType] = UNSET,
         **kwargs,
     ) -> Response[InteractionLimitResponse, InteractionLimitResponseType]:
@@ -728,6 +770,7 @@ class InteractionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=InteractionLimitResponse,
             error_models={
                 "422": ValidationError,
@@ -736,7 +779,11 @@ class InteractionsClient:
 
     @overload
     async def async_set_restrictions_for_authenticated_user(
-        self, *, headers: Optional[Mapping[str, str]] = None, data: InteractionLimitType
+        self,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: InteractionLimitType,
     ) -> Response[InteractionLimitResponse, InteractionLimitResponseType]: ...
 
     @overload
@@ -745,6 +792,7 @@ class InteractionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         limit: Literal["existing_users", "contributors_only", "collaborators_only"],
         expiry: Missing[
             Literal["one_day", "three_days", "one_week", "one_month", "six_months"]
@@ -755,6 +803,7 @@ class InteractionsClient:
         self,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[InteractionLimitType] = UNSET,
         **kwargs,
     ) -> Response[InteractionLimitResponse, InteractionLimitResponseType]:
@@ -787,6 +836,7 @@ class InteractionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=InteractionLimitResponse,
             error_models={
                 "422": ValidationError,
@@ -797,6 +847,7 @@ class InteractionsClient:
         self,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """interactions/remove-restrictions-for-authenticated-user
 
@@ -815,12 +866,14 @@ class InteractionsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     async def async_remove_restrictions_for_authenticated_user(
         self,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """interactions/remove-restrictions-for-authenticated-user
 
@@ -839,4 +892,5 @@ class InteractionsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )

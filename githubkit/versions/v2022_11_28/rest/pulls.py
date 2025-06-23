@@ -99,6 +99,7 @@ class PullsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[PullRequestSimple], list[PullRequestSimpleType]]:
         """pulls/list
 
@@ -143,6 +144,7 @@ class PullsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[PullRequestSimple],
             error_models={
                 "422": ValidationError,
@@ -164,6 +166,7 @@ class PullsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[PullRequestSimple], list[PullRequestSimpleType]]:
         """pulls/list
 
@@ -208,6 +211,7 @@ class PullsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[PullRequestSimple],
             error_models={
                 "422": ValidationError,
@@ -221,6 +225,7 @@ class PullsClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoPullsPostBodyType,
     ) -> Response[PullRequest, PullRequestType]: ...
 
@@ -232,6 +237,7 @@ class PullsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         title: Missing[str] = UNSET,
         head: str,
         head_repo: Missing[str] = UNSET,
@@ -248,6 +254,7 @@ class PullsClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoPullsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[PullRequest, PullRequestType]:
@@ -296,6 +303,7 @@ class PullsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=PullRequest,
             error_models={
                 "403": BasicError,
@@ -310,6 +318,7 @@ class PullsClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoPullsPostBodyType,
     ) -> Response[PullRequest, PullRequestType]: ...
 
@@ -321,6 +330,7 @@ class PullsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         title: Missing[str] = UNSET,
         head: str,
         head_repo: Missing[str] = UNSET,
@@ -337,6 +347,7 @@ class PullsClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoPullsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[PullRequest, PullRequestType]:
@@ -385,6 +396,7 @@ class PullsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=PullRequest,
             error_models={
                 "403": BasicError,
@@ -403,6 +415,7 @@ class PullsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[PullRequestReviewComment], list[PullRequestReviewCommentType]]:
         """pulls/list-review-comments-for-repo
 
@@ -440,6 +453,7 @@ class PullsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[PullRequestReviewComment],
         )
 
@@ -454,6 +468,7 @@ class PullsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[PullRequestReviewComment], list[PullRequestReviewCommentType]]:
         """pulls/list-review-comments-for-repo
 
@@ -491,6 +506,7 @@ class PullsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[PullRequestReviewComment],
         )
 
@@ -501,6 +517,7 @@ class PullsClient:
         comment_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[PullRequestReviewComment, PullRequestReviewCommentType]:
         """pulls/get-review-comment
 
@@ -528,6 +545,7 @@ class PullsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=PullRequestReviewComment,
             error_models={
                 "404": BasicError,
@@ -541,6 +559,7 @@ class PullsClient:
         comment_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[PullRequestReviewComment, PullRequestReviewCommentType]:
         """pulls/get-review-comment
 
@@ -568,6 +587,7 @@ class PullsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=PullRequestReviewComment,
             error_models={
                 "404": BasicError,
@@ -581,6 +601,7 @@ class PullsClient:
         comment_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """pulls/delete-review-comment
 
@@ -601,6 +622,7 @@ class PullsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
             },
@@ -613,6 +635,7 @@ class PullsClient:
         comment_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """pulls/delete-review-comment
 
@@ -633,6 +656,7 @@ class PullsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
             },
@@ -646,6 +670,7 @@ class PullsClient:
         comment_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoPullsCommentsCommentIdPatchBodyType,
     ) -> Response[PullRequestReviewComment, PullRequestReviewCommentType]: ...
 
@@ -658,6 +683,7 @@ class PullsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         body: str,
     ) -> Response[PullRequestReviewComment, PullRequestReviewCommentType]: ...
 
@@ -668,6 +694,7 @@ class PullsClient:
         comment_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoPullsCommentsCommentIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[PullRequestReviewComment, PullRequestReviewCommentType]:
@@ -712,6 +739,7 @@ class PullsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=PullRequestReviewComment,
         )
 
@@ -723,6 +751,7 @@ class PullsClient:
         comment_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoPullsCommentsCommentIdPatchBodyType,
     ) -> Response[PullRequestReviewComment, PullRequestReviewCommentType]: ...
 
@@ -735,6 +764,7 @@ class PullsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         body: str,
     ) -> Response[PullRequestReviewComment, PullRequestReviewCommentType]: ...
 
@@ -745,6 +775,7 @@ class PullsClient:
         comment_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoPullsCommentsCommentIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[PullRequestReviewComment, PullRequestReviewCommentType]:
@@ -789,6 +820,7 @@ class PullsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=PullRequestReviewComment,
         )
 
@@ -799,6 +831,7 @@ class PullsClient:
         pull_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[PullRequest, PullRequestType]:
         """pulls/get
 
@@ -845,6 +878,7 @@ class PullsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=PullRequest,
             error_models={
                 "404": BasicError,
@@ -861,6 +895,7 @@ class PullsClient:
         pull_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[PullRequest, PullRequestType]:
         """pulls/get
 
@@ -907,6 +942,7 @@ class PullsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=PullRequest,
             error_models={
                 "404": BasicError,
@@ -924,6 +960,7 @@ class PullsClient:
         pull_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoPullsPullNumberPatchBodyType] = UNSET,
     ) -> Response[PullRequest, PullRequestType]: ...
 
@@ -936,6 +973,7 @@ class PullsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         title: Missing[str] = UNSET,
         body: Missing[str] = UNSET,
         state: Missing[Literal["open", "closed"]] = UNSET,
@@ -950,6 +988,7 @@ class PullsClient:
         pull_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoPullsPullNumberPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[PullRequest, PullRequestType]:
@@ -996,6 +1035,7 @@ class PullsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=PullRequest,
             error_models={
                 "422": ValidationError,
@@ -1011,6 +1051,7 @@ class PullsClient:
         pull_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoPullsPullNumberPatchBodyType] = UNSET,
     ) -> Response[PullRequest, PullRequestType]: ...
 
@@ -1023,6 +1064,7 @@ class PullsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         title: Missing[str] = UNSET,
         body: Missing[str] = UNSET,
         state: Missing[Literal["open", "closed"]] = UNSET,
@@ -1037,6 +1079,7 @@ class PullsClient:
         pull_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoPullsPullNumberPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[PullRequest, PullRequestType]:
@@ -1083,6 +1126,7 @@ class PullsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=PullRequest,
             error_models={
                 "422": ValidationError,
@@ -1102,6 +1146,7 @@ class PullsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[PullRequestReviewComment], list[PullRequestReviewCommentType]]:
         """pulls/list-review-comments
 
@@ -1139,6 +1184,7 @@ class PullsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[PullRequestReviewComment],
         )
 
@@ -1154,6 +1200,7 @@ class PullsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[PullRequestReviewComment], list[PullRequestReviewCommentType]]:
         """pulls/list-review-comments
 
@@ -1191,6 +1238,7 @@ class PullsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[PullRequestReviewComment],
         )
 
@@ -1202,6 +1250,7 @@ class PullsClient:
         pull_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoPullsPullNumberCommentsPostBodyType,
     ) -> Response[PullRequestReviewComment, PullRequestReviewCommentType]: ...
 
@@ -1214,6 +1263,7 @@ class PullsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         body: str,
         commit_id: str,
         path: str,
@@ -1233,6 +1283,7 @@ class PullsClient:
         pull_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoPullsPullNumberCommentsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[PullRequestReviewComment, PullRequestReviewCommentType]:
@@ -1286,6 +1337,7 @@ class PullsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=PullRequestReviewComment,
             error_models={
                 "422": ValidationError,
@@ -1301,6 +1353,7 @@ class PullsClient:
         pull_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoPullsPullNumberCommentsPostBodyType,
     ) -> Response[PullRequestReviewComment, PullRequestReviewCommentType]: ...
 
@@ -1313,6 +1366,7 @@ class PullsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         body: str,
         commit_id: str,
         path: str,
@@ -1332,6 +1386,7 @@ class PullsClient:
         pull_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoPullsPullNumberCommentsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[PullRequestReviewComment, PullRequestReviewCommentType]:
@@ -1385,6 +1440,7 @@ class PullsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=PullRequestReviewComment,
             error_models={
                 "422": ValidationError,
@@ -1401,6 +1457,7 @@ class PullsClient:
         comment_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBodyType,
     ) -> Response[PullRequestReviewComment, PullRequestReviewCommentType]: ...
 
@@ -1414,6 +1471,7 @@ class PullsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         body: str,
     ) -> Response[PullRequestReviewComment, PullRequestReviewCommentType]: ...
 
@@ -1425,6 +1483,7 @@ class PullsClient:
         comment_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBodyType
         ] = UNSET,
@@ -1475,6 +1534,7 @@ class PullsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=PullRequestReviewComment,
             error_models={
                 "404": BasicError,
@@ -1490,6 +1550,7 @@ class PullsClient:
         comment_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBodyType,
     ) -> Response[PullRequestReviewComment, PullRequestReviewCommentType]: ...
 
@@ -1503,6 +1564,7 @@ class PullsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         body: str,
     ) -> Response[PullRequestReviewComment, PullRequestReviewCommentType]: ...
 
@@ -1514,6 +1576,7 @@ class PullsClient:
         comment_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBodyType
         ] = UNSET,
@@ -1564,6 +1627,7 @@ class PullsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=PullRequestReviewComment,
             error_models={
                 "404": BasicError,
@@ -1579,6 +1643,7 @@ class PullsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Commit], list[CommitType]]:
         """pulls/list-commits
 
@@ -1614,6 +1679,7 @@ class PullsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Commit],
         )
 
@@ -1626,6 +1692,7 @@ class PullsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Commit], list[CommitType]]:
         """pulls/list-commits
 
@@ -1661,6 +1728,7 @@ class PullsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Commit],
         )
 
@@ -1673,6 +1741,7 @@ class PullsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[DiffEntry], list[DiffEntryType]]:
         """pulls/list-files
 
@@ -1714,6 +1783,7 @@ class PullsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[DiffEntry],
             error_models={
                 "422": ValidationError,
@@ -1731,6 +1801,7 @@ class PullsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[DiffEntry], list[DiffEntryType]]:
         """pulls/list-files
 
@@ -1772,6 +1843,7 @@ class PullsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[DiffEntry],
             error_models={
                 "422": ValidationError,
@@ -1787,6 +1859,7 @@ class PullsClient:
         pull_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """pulls/check-if-merged
 
@@ -1805,6 +1878,7 @@ class PullsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={},
         )
 
@@ -1815,6 +1889,7 @@ class PullsClient:
         pull_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """pulls/check-if-merged
 
@@ -1833,6 +1908,7 @@ class PullsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={},
         )
 
@@ -1844,6 +1920,7 @@ class PullsClient:
         pull_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             Union[ReposOwnerRepoPullsPullNumberMergePutBodyType, None]
         ] = UNSET,
@@ -1858,6 +1935,7 @@ class PullsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         commit_title: Missing[str] = UNSET,
         commit_message: Missing[str] = UNSET,
         sha: Missing[str] = UNSET,
@@ -1871,6 +1949,7 @@ class PullsClient:
         pull_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             Union[ReposOwnerRepoPullsPullNumberMergePutBodyType, None]
         ] = UNSET,
@@ -1917,6 +1996,7 @@ class PullsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=PullRequestMergeResult,
             error_models={
                 "405": ReposOwnerRepoPullsPullNumberMergePutResponse405,
@@ -1935,6 +2015,7 @@ class PullsClient:
         pull_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             Union[ReposOwnerRepoPullsPullNumberMergePutBodyType, None]
         ] = UNSET,
@@ -1949,6 +2030,7 @@ class PullsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         commit_title: Missing[str] = UNSET,
         commit_message: Missing[str] = UNSET,
         sha: Missing[str] = UNSET,
@@ -1962,6 +2044,7 @@ class PullsClient:
         pull_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             Union[ReposOwnerRepoPullsPullNumberMergePutBodyType, None]
         ] = UNSET,
@@ -2008,6 +2091,7 @@ class PullsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=PullRequestMergeResult,
             error_models={
                 "405": ReposOwnerRepoPullsPullNumberMergePutResponse405,
@@ -2025,6 +2109,7 @@ class PullsClient:
         pull_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[PullRequestReviewRequest, PullRequestReviewRequestType]:
         """pulls/list-requested-reviewers
 
@@ -2045,6 +2130,7 @@ class PullsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=PullRequestReviewRequest,
         )
 
@@ -2055,6 +2141,7 @@ class PullsClient:
         pull_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[PullRequestReviewRequest, PullRequestReviewRequestType]:
         """pulls/list-requested-reviewers
 
@@ -2075,6 +2162,7 @@ class PullsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=PullRequestReviewRequest,
         )
 
@@ -2086,6 +2174,7 @@ class PullsClient:
         pull_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             Union[
                 ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0Type,
@@ -2103,6 +2192,7 @@ class PullsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         reviewers: list[str],
         team_reviewers: Missing[list[str]] = UNSET,
     ) -> Response[PullRequestSimple, PullRequestSimpleType]: ...
@@ -2116,6 +2206,7 @@ class PullsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         reviewers: Missing[list[str]] = UNSET,
         team_reviewers: list[str],
     ) -> Response[PullRequestSimple, PullRequestSimpleType]: ...
@@ -2127,6 +2218,7 @@ class PullsClient:
         pull_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             Union[
                 ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0Type,
@@ -2178,6 +2270,7 @@ class PullsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=PullRequestSimple,
             error_models={
                 "403": BasicError,
@@ -2192,6 +2285,7 @@ class PullsClient:
         pull_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             Union[
                 ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0Type,
@@ -2209,6 +2303,7 @@ class PullsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         reviewers: list[str],
         team_reviewers: Missing[list[str]] = UNSET,
     ) -> Response[PullRequestSimple, PullRequestSimpleType]: ...
@@ -2222,6 +2317,7 @@ class PullsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         reviewers: Missing[list[str]] = UNSET,
         team_reviewers: list[str],
     ) -> Response[PullRequestSimple, PullRequestSimpleType]: ...
@@ -2233,6 +2329,7 @@ class PullsClient:
         pull_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             Union[
                 ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0Type,
@@ -2284,6 +2381,7 @@ class PullsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=PullRequestSimple,
             error_models={
                 "403": BasicError,
@@ -2298,6 +2396,7 @@ class PullsClient:
         pull_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBodyType,
     ) -> Response[PullRequestSimple, PullRequestSimpleType]: ...
 
@@ -2310,6 +2409,7 @@ class PullsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         reviewers: list[str],
         team_reviewers: Missing[list[str]] = UNSET,
     ) -> Response[PullRequestSimple, PullRequestSimpleType]: ...
@@ -2321,6 +2421,7 @@ class PullsClient:
         pull_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBodyType
         ] = UNSET,
@@ -2361,6 +2462,7 @@ class PullsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=PullRequestSimple,
             error_models={
                 "422": ValidationError,
@@ -2375,6 +2477,7 @@ class PullsClient:
         pull_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBodyType,
     ) -> Response[PullRequestSimple, PullRequestSimpleType]: ...
 
@@ -2387,6 +2490,7 @@ class PullsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         reviewers: list[str],
         team_reviewers: Missing[list[str]] = UNSET,
     ) -> Response[PullRequestSimple, PullRequestSimpleType]: ...
@@ -2398,6 +2502,7 @@ class PullsClient:
         pull_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBodyType
         ] = UNSET,
@@ -2438,6 +2543,7 @@ class PullsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=PullRequestSimple,
             error_models={
                 "422": ValidationError,
@@ -2453,6 +2559,7 @@ class PullsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[PullRequestReview], list[PullRequestReviewType]]:
         """pulls/list-reviews
 
@@ -2486,6 +2593,7 @@ class PullsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[PullRequestReview],
         )
 
@@ -2498,6 +2606,7 @@ class PullsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[PullRequestReview], list[PullRequestReviewType]]:
         """pulls/list-reviews
 
@@ -2531,6 +2640,7 @@ class PullsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[PullRequestReview],
         )
 
@@ -2542,6 +2652,7 @@ class PullsClient:
         pull_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoPullsPullNumberReviewsPostBodyType] = UNSET,
     ) -> Response[PullRequestReview, PullRequestReviewType]: ...
 
@@ -2554,6 +2665,7 @@ class PullsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         commit_id: Missing[str] = UNSET,
         body: Missing[str] = UNSET,
         event: Missing[Literal["APPROVE", "REQUEST_CHANGES", "COMMENT"]] = UNSET,
@@ -2569,6 +2681,7 @@ class PullsClient:
         pull_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoPullsPullNumberReviewsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[PullRequestReview, PullRequestReviewType]:
@@ -2624,6 +2737,7 @@ class PullsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=PullRequestReview,
             error_models={
                 "422": ValidationErrorSimple,
@@ -2639,6 +2753,7 @@ class PullsClient:
         pull_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoPullsPullNumberReviewsPostBodyType] = UNSET,
     ) -> Response[PullRequestReview, PullRequestReviewType]: ...
 
@@ -2651,6 +2766,7 @@ class PullsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         commit_id: Missing[str] = UNSET,
         body: Missing[str] = UNSET,
         event: Missing[Literal["APPROVE", "REQUEST_CHANGES", "COMMENT"]] = UNSET,
@@ -2666,6 +2782,7 @@ class PullsClient:
         pull_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoPullsPullNumberReviewsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[PullRequestReview, PullRequestReviewType]:
@@ -2721,6 +2838,7 @@ class PullsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=PullRequestReview,
             error_models={
                 "422": ValidationErrorSimple,
@@ -2736,6 +2854,7 @@ class PullsClient:
         review_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[PullRequestReview, PullRequestReviewType]:
         """pulls/get-review
 
@@ -2763,6 +2882,7 @@ class PullsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=PullRequestReview,
             error_models={
                 "404": BasicError,
@@ -2777,6 +2897,7 @@ class PullsClient:
         review_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[PullRequestReview, PullRequestReviewType]:
         """pulls/get-review
 
@@ -2804,6 +2925,7 @@ class PullsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=PullRequestReview,
             error_models={
                 "404": BasicError,
@@ -2819,6 +2941,7 @@ class PullsClient:
         review_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBodyType,
     ) -> Response[PullRequestReview, PullRequestReviewType]: ...
 
@@ -2832,6 +2955,7 @@ class PullsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         body: str,
     ) -> Response[PullRequestReview, PullRequestReviewType]: ...
 
@@ -2843,6 +2967,7 @@ class PullsClient:
         review_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[PullRequestReview, PullRequestReviewType]:
@@ -2888,6 +3013,7 @@ class PullsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=PullRequestReview,
             error_models={
                 "422": ValidationErrorSimple,
@@ -2903,6 +3029,7 @@ class PullsClient:
         review_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBodyType,
     ) -> Response[PullRequestReview, PullRequestReviewType]: ...
 
@@ -2916,6 +3043,7 @@ class PullsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         body: str,
     ) -> Response[PullRequestReview, PullRequestReviewType]: ...
 
@@ -2927,6 +3055,7 @@ class PullsClient:
         review_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[PullRequestReview, PullRequestReviewType]:
@@ -2972,6 +3101,7 @@ class PullsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=PullRequestReview,
             error_models={
                 "422": ValidationErrorSimple,
@@ -2986,6 +3116,7 @@ class PullsClient:
         review_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[PullRequestReview, PullRequestReviewType]:
         """pulls/delete-pending-review
 
@@ -3013,6 +3144,7 @@ class PullsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=PullRequestReview,
             error_models={
                 "422": ValidationErrorSimple,
@@ -3028,6 +3160,7 @@ class PullsClient:
         review_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[PullRequestReview, PullRequestReviewType]:
         """pulls/delete-pending-review
 
@@ -3055,6 +3188,7 @@ class PullsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=PullRequestReview,
             error_models={
                 "422": ValidationErrorSimple,
@@ -3072,6 +3206,7 @@ class PullsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[ReviewComment], list[ReviewCommentType]]:
         """pulls/list-comments-for-review
 
@@ -3105,6 +3240,7 @@ class PullsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[ReviewComment],
             error_models={
                 "404": BasicError,
@@ -3121,6 +3257,7 @@ class PullsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[ReviewComment], list[ReviewCommentType]]:
         """pulls/list-comments-for-review
 
@@ -3154,6 +3291,7 @@ class PullsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[ReviewComment],
             error_models={
                 "404": BasicError,
@@ -3169,6 +3307,7 @@ class PullsClient:
         review_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyType,
     ) -> Response[PullRequestReview, PullRequestReviewType]: ...
 
@@ -3182,6 +3321,7 @@ class PullsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         message: str,
         event: Missing[Literal["DISMISS"]] = UNSET,
     ) -> Response[PullRequestReview, PullRequestReviewType]: ...
@@ -3194,6 +3334,7 @@ class PullsClient:
         review_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyType
         ] = UNSET,
@@ -3247,6 +3388,7 @@ class PullsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=PullRequestReview,
             error_models={
                 "404": BasicError,
@@ -3263,6 +3405,7 @@ class PullsClient:
         review_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyType,
     ) -> Response[PullRequestReview, PullRequestReviewType]: ...
 
@@ -3276,6 +3419,7 @@ class PullsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         message: str,
         event: Missing[Literal["DISMISS"]] = UNSET,
     ) -> Response[PullRequestReview, PullRequestReviewType]: ...
@@ -3288,6 +3432,7 @@ class PullsClient:
         review_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyType
         ] = UNSET,
@@ -3341,6 +3486,7 @@ class PullsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=PullRequestReview,
             error_models={
                 "404": BasicError,
@@ -3357,6 +3503,7 @@ class PullsClient:
         review_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyType,
     ) -> Response[PullRequestReview, PullRequestReviewType]: ...
 
@@ -3370,6 +3517,7 @@ class PullsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         body: Missing[str] = UNSET,
         event: Literal["APPROVE", "REQUEST_CHANGES", "COMMENT"],
     ) -> Response[PullRequestReview, PullRequestReviewType]: ...
@@ -3382,6 +3530,7 @@ class PullsClient:
         review_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyType
         ] = UNSET,
@@ -3430,6 +3579,7 @@ class PullsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=PullRequestReview,
             error_models={
                 "404": BasicError,
@@ -3447,6 +3597,7 @@ class PullsClient:
         review_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyType,
     ) -> Response[PullRequestReview, PullRequestReviewType]: ...
 
@@ -3460,6 +3611,7 @@ class PullsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         body: Missing[str] = UNSET,
         event: Literal["APPROVE", "REQUEST_CHANGES", "COMMENT"],
     ) -> Response[PullRequestReview, PullRequestReviewType]: ...
@@ -3472,6 +3624,7 @@ class PullsClient:
         review_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyType
         ] = UNSET,
@@ -3520,6 +3673,7 @@ class PullsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=PullRequestReview,
             error_models={
                 "404": BasicError,
@@ -3536,6 +3690,7 @@ class PullsClient:
         pull_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             Union[ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyType, None]
         ] = UNSET,
@@ -3553,6 +3708,7 @@ class PullsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         expected_head_sha: Missing[str] = UNSET,
     ) -> Response[
         ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202,
@@ -3566,6 +3722,7 @@ class PullsClient:
         pull_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             Union[ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyType, None]
         ] = UNSET,
@@ -3613,6 +3770,7 @@ class PullsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202,
             error_models={
                 "422": ValidationError,
@@ -3628,6 +3786,7 @@ class PullsClient:
         pull_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             Union[ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyType, None]
         ] = UNSET,
@@ -3645,6 +3804,7 @@ class PullsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         expected_head_sha: Missing[str] = UNSET,
     ) -> Response[
         ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202,
@@ -3658,6 +3818,7 @@ class PullsClient:
         pull_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             Union[ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyType, None]
         ] = UNSET,
@@ -3705,6 +3866,7 @@ class PullsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202,
             error_models={
                 "422": ValidationError,

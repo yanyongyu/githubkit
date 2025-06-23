@@ -63,6 +63,7 @@ class ScimClient:
         count: Missing[int] = UNSET,
         filter_: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[ScimUserList, ScimUserListType]:
         """scim/list-provisioned-identities
 
@@ -94,6 +95,7 @@ class ScimClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ScimUserList,
             error_models={
                 "404": ScimError,
@@ -111,6 +113,7 @@ class ScimClient:
         count: Missing[int] = UNSET,
         filter_: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[ScimUserList, ScimUserListType]:
         """scim/list-provisioned-identities
 
@@ -142,6 +145,7 @@ class ScimClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ScimUserList,
             error_models={
                 "404": ScimError,
@@ -157,6 +161,7 @@ class ScimClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ScimV2OrganizationsOrgUsersPostBodyType,
     ) -> Response[ScimUser, ScimUserType]: ...
 
@@ -167,6 +172,7 @@ class ScimClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         user_name: str,
         display_name: Missing[str] = UNSET,
         name: ScimV2OrganizationsOrgUsersPostBodyPropNameType,
@@ -182,6 +188,7 @@ class ScimClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ScimV2OrganizationsOrgUsersPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[ScimUser, ScimUserType]:
@@ -214,6 +221,7 @@ class ScimClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ScimUser,
             error_models={
                 "404": ScimError,
@@ -230,6 +238,7 @@ class ScimClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ScimV2OrganizationsOrgUsersPostBodyType,
     ) -> Response[ScimUser, ScimUserType]: ...
 
@@ -240,6 +249,7 @@ class ScimClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         user_name: str,
         display_name: Missing[str] = UNSET,
         name: ScimV2OrganizationsOrgUsersPostBodyPropNameType,
@@ -255,6 +265,7 @@ class ScimClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ScimV2OrganizationsOrgUsersPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[ScimUser, ScimUserType]:
@@ -287,6 +298,7 @@ class ScimClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ScimUser,
             error_models={
                 "404": ScimError,
@@ -303,6 +315,7 @@ class ScimClient:
         scim_user_id: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[ScimUser, ScimUserType]:
         """scim/get-provisioning-information-for-user
 
@@ -323,6 +336,7 @@ class ScimClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ScimUser,
             error_models={
                 "404": ScimError,
@@ -336,6 +350,7 @@ class ScimClient:
         scim_user_id: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[ScimUser, ScimUserType]:
         """scim/get-provisioning-information-for-user
 
@@ -356,6 +371,7 @@ class ScimClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ScimUser,
             error_models={
                 "404": ScimError,
@@ -370,6 +386,7 @@ class ScimClient:
         scim_user_id: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ScimV2OrganizationsOrgUsersScimUserIdPutBodyType,
     ) -> Response[ScimUser, ScimUserType]: ...
 
@@ -381,6 +398,7 @@ class ScimClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         schemas: Missing[list[str]] = UNSET,
         display_name: Missing[str] = UNSET,
         external_id: Missing[str] = UNSET,
@@ -397,6 +415,7 @@ class ScimClient:
         scim_user_id: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ScimV2OrganizationsOrgUsersScimUserIdPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[ScimUser, ScimUserType]:
@@ -440,6 +459,7 @@ class ScimClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ScimUser,
             error_models={
                 "404": ScimError,
@@ -454,6 +474,7 @@ class ScimClient:
         scim_user_id: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ScimV2OrganizationsOrgUsersScimUserIdPutBodyType,
     ) -> Response[ScimUser, ScimUserType]: ...
 
@@ -465,6 +486,7 @@ class ScimClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         schemas: Missing[list[str]] = UNSET,
         display_name: Missing[str] = UNSET,
         external_id: Missing[str] = UNSET,
@@ -481,6 +503,7 @@ class ScimClient:
         scim_user_id: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ScimV2OrganizationsOrgUsersScimUserIdPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[ScimUser, ScimUserType]:
@@ -524,6 +547,7 @@ class ScimClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ScimUser,
             error_models={
                 "404": ScimError,
@@ -537,6 +561,7 @@ class ScimClient:
         scim_user_id: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """scim/delete-user-from-org
 
@@ -557,6 +582,7 @@ class ScimClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": ScimError,
                 "403": ScimError,
@@ -569,6 +595,7 @@ class ScimClient:
         scim_user_id: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """scim/delete-user-from-org
 
@@ -589,6 +616,7 @@ class ScimClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": ScimError,
                 "403": ScimError,
@@ -602,6 +630,7 @@ class ScimClient:
         scim_user_id: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ScimV2OrganizationsOrgUsersScimUserIdPatchBodyType,
     ) -> Response[ScimUser, ScimUserType]: ...
 
@@ -613,6 +642,7 @@ class ScimClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         schemas: Missing[list[str]] = UNSET,
         operations: list[
             ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsType
@@ -625,6 +655,7 @@ class ScimClient:
         scim_user_id: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ScimV2OrganizationsOrgUsersScimUserIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[ScimUser, ScimUserType]:
@@ -680,6 +711,7 @@ class ScimClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ScimUser,
             error_models={
                 "404": ScimError,
@@ -696,6 +728,7 @@ class ScimClient:
         scim_user_id: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ScimV2OrganizationsOrgUsersScimUserIdPatchBodyType,
     ) -> Response[ScimUser, ScimUserType]: ...
 
@@ -707,6 +740,7 @@ class ScimClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         schemas: Missing[list[str]] = UNSET,
         operations: list[
             ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsType
@@ -719,6 +753,7 @@ class ScimClient:
         scim_user_id: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ScimV2OrganizationsOrgUsersScimUserIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[ScimUser, ScimUserType]:
@@ -774,6 +809,7 @@ class ScimClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ScimUser,
             error_models={
                 "404": ScimError,

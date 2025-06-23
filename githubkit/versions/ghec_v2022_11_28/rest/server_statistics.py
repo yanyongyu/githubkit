@@ -48,6 +48,7 @@ class ServerStatisticsClient:
         date_start: Missing[str] = UNSET,
         date_end: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[ServerStatisticsItems], list[ServerStatisticsItemsType]]:
         """enterprise-admin/get-server-statistics
 
@@ -80,6 +81,7 @@ class ServerStatisticsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[ServerStatisticsItems],
         )
 
@@ -90,6 +92,7 @@ class ServerStatisticsClient:
         date_start: Missing[str] = UNSET,
         date_end: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[ServerStatisticsItems], list[ServerStatisticsItemsType]]:
         """enterprise-admin/get-server-statistics
 
@@ -122,5 +125,6 @@ class ServerStatisticsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[ServerStatisticsItems],
         )

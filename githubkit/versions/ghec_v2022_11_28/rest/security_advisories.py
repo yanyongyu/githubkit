@@ -106,6 +106,7 @@ class SecurityAdvisoriesClient:
             Literal["updated", "published", "epss_percentage", "epss_percentile"]
         ] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[GlobalAdvisory], list[GlobalAdvisoryType]]:
         """security-advisories/list-global-advisories
 
@@ -150,6 +151,7 @@ class SecurityAdvisoriesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[GlobalAdvisory],
             error_models={
                 "429": BasicError,
@@ -199,6 +201,7 @@ class SecurityAdvisoriesClient:
             Literal["updated", "published", "epss_percentage", "epss_percentile"]
         ] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[GlobalAdvisory], list[GlobalAdvisoryType]]:
         """security-advisories/list-global-advisories
 
@@ -243,6 +246,7 @@ class SecurityAdvisoriesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[GlobalAdvisory],
             error_models={
                 "429": BasicError,
@@ -255,6 +259,7 @@ class SecurityAdvisoriesClient:
         ghsa_id: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[GlobalAdvisory, GlobalAdvisoryType]:
         """security-advisories/get-global-advisory
 
@@ -275,6 +280,7 @@ class SecurityAdvisoriesClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=GlobalAdvisory,
             error_models={
                 "404": BasicError,
@@ -286,6 +292,7 @@ class SecurityAdvisoriesClient:
         ghsa_id: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[GlobalAdvisory, GlobalAdvisoryType]:
         """security-advisories/get-global-advisory
 
@@ -306,6 +313,7 @@ class SecurityAdvisoriesClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=GlobalAdvisory,
             error_models={
                 "404": BasicError,
@@ -323,6 +331,7 @@ class SecurityAdvisoriesClient:
         per_page: Missing[int] = UNSET,
         state: Missing[Literal["triage", "draft", "published", "closed"]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[RepositoryAdvisory], list[RepositoryAdvisoryType]]:
         """security-advisories/list-org-repository-advisories
 
@@ -357,6 +366,7 @@ class SecurityAdvisoriesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[RepositoryAdvisory],
             error_models={
                 "400": BasicError,
@@ -375,6 +385,7 @@ class SecurityAdvisoriesClient:
         per_page: Missing[int] = UNSET,
         state: Missing[Literal["triage", "draft", "published", "closed"]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[RepositoryAdvisory], list[RepositoryAdvisoryType]]:
         """security-advisories/list-org-repository-advisories
 
@@ -409,6 +420,7 @@ class SecurityAdvisoriesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[RepositoryAdvisory],
             error_models={
                 "400": BasicError,
@@ -428,6 +440,7 @@ class SecurityAdvisoriesClient:
         per_page: Missing[int] = UNSET,
         state: Missing[Literal["triage", "draft", "published", "closed"]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[RepositoryAdvisory], list[RepositoryAdvisoryType]]:
         """security-advisories/list-repository-advisories
 
@@ -462,6 +475,7 @@ class SecurityAdvisoriesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[RepositoryAdvisory],
             error_models={
                 "400": BasicError,
@@ -481,6 +495,7 @@ class SecurityAdvisoriesClient:
         per_page: Missing[int] = UNSET,
         state: Missing[Literal["triage", "draft", "published", "closed"]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[RepositoryAdvisory], list[RepositoryAdvisoryType]]:
         """security-advisories/list-repository-advisories
 
@@ -515,6 +530,7 @@ class SecurityAdvisoriesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[RepositoryAdvisory],
             error_models={
                 "400": BasicError,
@@ -529,6 +545,7 @@ class SecurityAdvisoriesClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: RepositoryAdvisoryCreateType,
     ) -> Response[RepositoryAdvisory, RepositoryAdvisoryType]: ...
 
@@ -540,6 +557,7 @@ class SecurityAdvisoriesClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         summary: str,
         description: str,
         cve_id: Missing[Union[str, None]] = UNSET,
@@ -561,6 +579,7 @@ class SecurityAdvisoriesClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[RepositoryAdvisoryCreateType] = UNSET,
         **kwargs,
     ) -> Response[RepositoryAdvisory, RepositoryAdvisoryType]:
@@ -602,6 +621,7 @@ class SecurityAdvisoriesClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=RepositoryAdvisory,
             error_models={
                 "403": BasicError,
@@ -617,6 +637,7 @@ class SecurityAdvisoriesClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: RepositoryAdvisoryCreateType,
     ) -> Response[RepositoryAdvisory, RepositoryAdvisoryType]: ...
 
@@ -628,6 +649,7 @@ class SecurityAdvisoriesClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         summary: str,
         description: str,
         cve_id: Missing[Union[str, None]] = UNSET,
@@ -649,6 +671,7 @@ class SecurityAdvisoriesClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[RepositoryAdvisoryCreateType] = UNSET,
         **kwargs,
     ) -> Response[RepositoryAdvisory, RepositoryAdvisoryType]:
@@ -690,6 +713,7 @@ class SecurityAdvisoriesClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=RepositoryAdvisory,
             error_models={
                 "403": BasicError,
@@ -705,6 +729,7 @@ class SecurityAdvisoriesClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: PrivateVulnerabilityReportCreateType,
     ) -> Response[RepositoryAdvisory, RepositoryAdvisoryType]: ...
 
@@ -716,6 +741,7 @@ class SecurityAdvisoriesClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         summary: str,
         description: str,
         vulnerabilities: Missing[
@@ -737,6 +763,7 @@ class SecurityAdvisoriesClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[PrivateVulnerabilityReportCreateType] = UNSET,
         **kwargs,
     ) -> Response[RepositoryAdvisory, RepositoryAdvisoryType]:
@@ -775,6 +802,7 @@ class SecurityAdvisoriesClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=RepositoryAdvisory,
             error_models={
                 "403": BasicError,
@@ -790,6 +818,7 @@ class SecurityAdvisoriesClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: PrivateVulnerabilityReportCreateType,
     ) -> Response[RepositoryAdvisory, RepositoryAdvisoryType]: ...
 
@@ -801,6 +830,7 @@ class SecurityAdvisoriesClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         summary: str,
         description: str,
         vulnerabilities: Missing[
@@ -822,6 +852,7 @@ class SecurityAdvisoriesClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[PrivateVulnerabilityReportCreateType] = UNSET,
         **kwargs,
     ) -> Response[RepositoryAdvisory, RepositoryAdvisoryType]:
@@ -860,6 +891,7 @@ class SecurityAdvisoriesClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=RepositoryAdvisory,
             error_models={
                 "403": BasicError,
@@ -875,6 +907,7 @@ class SecurityAdvisoriesClient:
         ghsa_id: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[RepositoryAdvisory, RepositoryAdvisoryType]:
         """security-advisories/get-repository-advisory
 
@@ -902,6 +935,7 @@ class SecurityAdvisoriesClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=RepositoryAdvisory,
             error_models={
                 "403": BasicError,
@@ -916,6 +950,7 @@ class SecurityAdvisoriesClient:
         ghsa_id: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[RepositoryAdvisory, RepositoryAdvisoryType]:
         """security-advisories/get-repository-advisory
 
@@ -943,6 +978,7 @@ class SecurityAdvisoriesClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=RepositoryAdvisory,
             error_models={
                 "403": BasicError,
@@ -958,6 +994,7 @@ class SecurityAdvisoriesClient:
         ghsa_id: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: RepositoryAdvisoryUpdateType,
     ) -> Response[RepositoryAdvisory, RepositoryAdvisoryType]: ...
 
@@ -970,6 +1007,7 @@ class SecurityAdvisoriesClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         summary: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
         cve_id: Missing[Union[str, None]] = UNSET,
@@ -996,6 +1034,7 @@ class SecurityAdvisoriesClient:
         ghsa_id: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[RepositoryAdvisoryUpdateType] = UNSET,
         **kwargs,
     ) -> Response[RepositoryAdvisory, RepositoryAdvisoryType]:
@@ -1038,6 +1077,7 @@ class SecurityAdvisoriesClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=RepositoryAdvisory,
             error_models={
                 "403": BasicError,
@@ -1054,6 +1094,7 @@ class SecurityAdvisoriesClient:
         ghsa_id: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: RepositoryAdvisoryUpdateType,
     ) -> Response[RepositoryAdvisory, RepositoryAdvisoryType]: ...
 
@@ -1066,6 +1107,7 @@ class SecurityAdvisoriesClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         summary: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
         cve_id: Missing[Union[str, None]] = UNSET,
@@ -1092,6 +1134,7 @@ class SecurityAdvisoriesClient:
         ghsa_id: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[RepositoryAdvisoryUpdateType] = UNSET,
         **kwargs,
     ) -> Response[RepositoryAdvisory, RepositoryAdvisoryType]:
@@ -1134,6 +1177,7 @@ class SecurityAdvisoriesClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=RepositoryAdvisory,
             error_models={
                 "403": BasicError,
@@ -1149,6 +1193,7 @@ class SecurityAdvisoriesClient:
         ghsa_id: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
@@ -1182,6 +1227,7 @@ class SecurityAdvisoriesClient:
             "POST",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
             error_models={
                 "400": BasicError,
@@ -1198,6 +1244,7 @@ class SecurityAdvisoriesClient:
         ghsa_id: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
@@ -1231,6 +1278,7 @@ class SecurityAdvisoriesClient:
             "POST",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
             error_models={
                 "400": BasicError,
@@ -1247,6 +1295,7 @@ class SecurityAdvisoriesClient:
         ghsa_id: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[FullRepository, FullRepositoryType]:
         """security-advisories/create-fork
 
@@ -1270,6 +1319,7 @@ class SecurityAdvisoriesClient:
             "POST",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=FullRepository,
             error_models={
                 "400": BasicError,
@@ -1286,6 +1336,7 @@ class SecurityAdvisoriesClient:
         ghsa_id: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[FullRepository, FullRepositoryType]:
         """security-advisories/create-fork
 
@@ -1309,6 +1360,7 @@ class SecurityAdvisoriesClient:
             "POST",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=FullRepository,
             error_models={
                 "400": BasicError,

@@ -143,6 +143,7 @@ class OrgsClient:
         since: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[OrganizationSimple], list[OrganizationSimpleType]]:
         """orgs/list
 
@@ -172,6 +173,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[OrganizationSimple],
         )
 
@@ -181,6 +183,7 @@ class OrgsClient:
         since: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[OrganizationSimple], list[OrganizationSimpleType]]:
         """orgs/list
 
@@ -210,6 +213,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[OrganizationSimple],
         )
 
@@ -218,6 +222,7 @@ class OrgsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[OrganizationFull, OrganizationFullType]:
         """orgs/get
 
@@ -246,6 +251,7 @@ class OrgsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrganizationFull,
             error_models={
                 "404": BasicError,
@@ -257,6 +263,7 @@ class OrgsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[OrganizationFull, OrganizationFullType]:
         """orgs/get
 
@@ -285,6 +292,7 @@ class OrgsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrganizationFull,
             error_models={
                 "404": BasicError,
@@ -296,6 +304,7 @@ class OrgsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
@@ -328,6 +337,7 @@ class OrgsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
             error_models={
                 "404": BasicError,
@@ -340,6 +350,7 @@ class OrgsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
@@ -372,6 +383,7 @@ class OrgsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
             error_models={
                 "404": BasicError,
@@ -385,6 +397,7 @@ class OrgsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgPatchBodyType] = UNSET,
     ) -> Response[OrganizationFull, OrganizationFullType]: ...
 
@@ -395,6 +408,7 @@ class OrgsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         billing_email: Missing[str] = UNSET,
         company: Missing[str] = UNSET,
         email: Missing[str] = UNSET,
@@ -438,6 +452,7 @@ class OrgsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[OrganizationFull, OrganizationFullType]:
@@ -488,6 +503,7 @@ class OrgsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrganizationFull,
             error_models={
                 "422": Union[ValidationError, ValidationErrorSimple],
@@ -501,6 +517,7 @@ class OrgsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgPatchBodyType] = UNSET,
     ) -> Response[OrganizationFull, OrganizationFullType]: ...
 
@@ -511,6 +528,7 @@ class OrgsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         billing_email: Missing[str] = UNSET,
         company: Missing[str] = UNSET,
         email: Missing[str] = UNSET,
@@ -554,6 +572,7 @@ class OrgsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[OrganizationFull, OrganizationFullType]:
@@ -604,6 +623,7 @@ class OrgsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrganizationFull,
             error_models={
                 "422": Union[ValidationError, ValidationErrorSimple],
@@ -620,6 +640,7 @@ class OrgsClient:
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgAttestationsBulkListPostBodyType,
     ) -> Response[
         OrgsOrgAttestationsBulkListPostResponse200,
@@ -636,6 +657,7 @@ class OrgsClient:
         after: Missing[str] = UNSET,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         subject_digests: list[str],
         predicate_type: Missing[str] = UNSET,
     ) -> Response[
@@ -651,6 +673,7 @@ class OrgsClient:
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgAttestationsBulkListPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[
@@ -700,6 +723,7 @@ class OrgsClient:
             params=exclude_unset(params),
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgAttestationsBulkListPostResponse200,
         )
 
@@ -712,6 +736,7 @@ class OrgsClient:
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgAttestationsBulkListPostBodyType,
     ) -> Response[
         OrgsOrgAttestationsBulkListPostResponse200,
@@ -728,6 +753,7 @@ class OrgsClient:
         after: Missing[str] = UNSET,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         subject_digests: list[str],
         predicate_type: Missing[str] = UNSET,
     ) -> Response[
@@ -743,6 +769,7 @@ class OrgsClient:
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgAttestationsBulkListPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[
@@ -792,6 +819,7 @@ class OrgsClient:
             params=exclude_unset(params),
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgAttestationsBulkListPostResponse200,
         )
 
@@ -805,6 +833,7 @@ class OrgsClient:
         after: Missing[str] = UNSET,
         predicate_type: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         OrgsOrgAttestationsSubjectDigestGetResponse200,
         OrgsOrgAttestationsSubjectDigestGetResponse200Type,
@@ -840,6 +869,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgAttestationsSubjectDigestGetResponse200,
         )
 
@@ -853,6 +883,7 @@ class OrgsClient:
         after: Missing[str] = UNSET,
         predicate_type: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         OrgsOrgAttestationsSubjectDigestGetResponse200,
         OrgsOrgAttestationsSubjectDigestGetResponse200Type,
@@ -888,6 +919,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgAttestationsSubjectDigestGetResponse200,
         )
 
@@ -898,6 +930,7 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """orgs/list-blocked-users
 
@@ -924,6 +957,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[SimpleUser],
         )
 
@@ -934,6 +968,7 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """orgs/list-blocked-users
 
@@ -960,6 +995,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[SimpleUser],
         )
 
@@ -969,6 +1005,7 @@ class OrgsClient:
         username: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """orgs/check-blocked-user
 
@@ -989,6 +1026,7 @@ class OrgsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
             },
@@ -1000,6 +1038,7 @@ class OrgsClient:
         username: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """orgs/check-blocked-user
 
@@ -1020,6 +1059,7 @@ class OrgsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
             },
@@ -1031,6 +1071,7 @@ class OrgsClient:
         username: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """orgs/block-user
 
@@ -1051,6 +1092,7 @@ class OrgsClient:
             "PUT",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "422": ValidationError,
             },
@@ -1062,6 +1104,7 @@ class OrgsClient:
         username: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """orgs/block-user
 
@@ -1082,6 +1125,7 @@ class OrgsClient:
             "PUT",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "422": ValidationError,
             },
@@ -1093,6 +1137,7 @@ class OrgsClient:
         username: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """orgs/unblock-user
 
@@ -1111,6 +1156,7 @@ class OrgsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     async def async_unblock_user(
@@ -1119,6 +1165,7 @@ class OrgsClient:
         username: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """orgs/unblock-user
 
@@ -1137,6 +1184,7 @@ class OrgsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     def list_failed_invitations(
@@ -1146,6 +1194,7 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[OrganizationInvitation], list[OrganizationInvitationType]]:
         """orgs/list-failed-invitations
 
@@ -1172,6 +1221,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[OrganizationInvitation],
             error_models={
                 "404": BasicError,
@@ -1185,6 +1235,7 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[OrganizationInvitation], list[OrganizationInvitationType]]:
         """orgs/list-failed-invitations
 
@@ -1211,6 +1262,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[OrganizationInvitation],
             error_models={
                 "404": BasicError,
@@ -1224,6 +1276,7 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[OrgHook], list[OrgHookType]]:
         """orgs/list-webhooks
 
@@ -1255,6 +1308,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[OrgHook],
             error_models={
                 "404": BasicError,
@@ -1268,6 +1322,7 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[OrgHook], list[OrgHookType]]:
         """orgs/list-webhooks
 
@@ -1299,6 +1354,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[OrgHook],
             error_models={
                 "404": BasicError,
@@ -1311,6 +1367,7 @@ class OrgsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgHooksPostBodyType,
     ) -> Response[OrgHook, OrgHookType]: ...
 
@@ -1321,6 +1378,7 @@ class OrgsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: str,
         config: OrgsOrgHooksPostBodyPropConfigType,
         events: Missing[list[str]] = UNSET,
@@ -1332,6 +1390,7 @@ class OrgsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgHooksPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[OrgHook, OrgHookType]:
@@ -1369,6 +1428,7 @@ class OrgsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgHook,
             error_models={
                 "422": ValidationError,
@@ -1382,6 +1442,7 @@ class OrgsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgHooksPostBodyType,
     ) -> Response[OrgHook, OrgHookType]: ...
 
@@ -1392,6 +1453,7 @@ class OrgsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: str,
         config: OrgsOrgHooksPostBodyPropConfigType,
         events: Missing[list[str]] = UNSET,
@@ -1403,6 +1465,7 @@ class OrgsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgHooksPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[OrgHook, OrgHookType]:
@@ -1440,6 +1503,7 @@ class OrgsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgHook,
             error_models={
                 "422": ValidationError,
@@ -1453,6 +1517,7 @@ class OrgsClient:
         hook_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[OrgHook, OrgHookType]:
         """orgs/get-webhook
 
@@ -1479,6 +1544,7 @@ class OrgsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgHook,
             error_models={
                 "404": BasicError,
@@ -1491,6 +1557,7 @@ class OrgsClient:
         hook_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[OrgHook, OrgHookType]:
         """orgs/get-webhook
 
@@ -1517,6 +1584,7 @@ class OrgsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgHook,
             error_models={
                 "404": BasicError,
@@ -1529,6 +1597,7 @@ class OrgsClient:
         hook_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """orgs/delete-webhook
 
@@ -1554,6 +1623,7 @@ class OrgsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
             },
@@ -1565,6 +1635,7 @@ class OrgsClient:
         hook_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """orgs/delete-webhook
 
@@ -1590,6 +1661,7 @@ class OrgsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
             },
@@ -1602,6 +1674,7 @@ class OrgsClient:
         hook_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgHooksHookIdPatchBodyType] = UNSET,
     ) -> Response[OrgHook, OrgHookType]: ...
 
@@ -1613,6 +1686,7 @@ class OrgsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         config: Missing[OrgsOrgHooksHookIdPatchBodyPropConfigType] = UNSET,
         events: Missing[list[str]] = UNSET,
         active: Missing[bool] = UNSET,
@@ -1625,6 +1699,7 @@ class OrgsClient:
         hook_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgHooksHookIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[OrgHook, OrgHookType]:
@@ -1671,6 +1746,7 @@ class OrgsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgHook,
             error_models={
                 "422": ValidationError,
@@ -1685,6 +1761,7 @@ class OrgsClient:
         hook_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgHooksHookIdPatchBodyType] = UNSET,
     ) -> Response[OrgHook, OrgHookType]: ...
 
@@ -1696,6 +1773,7 @@ class OrgsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         config: Missing[OrgsOrgHooksHookIdPatchBodyPropConfigType] = UNSET,
         events: Missing[list[str]] = UNSET,
         active: Missing[bool] = UNSET,
@@ -1708,6 +1786,7 @@ class OrgsClient:
         hook_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgHooksHookIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[OrgHook, OrgHookType]:
@@ -1754,6 +1833,7 @@ class OrgsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgHook,
             error_models={
                 "422": ValidationError,
@@ -1767,6 +1847,7 @@ class OrgsClient:
         hook_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[WebhookConfig, WebhookConfigType]:
         """orgs/get-webhook-config-for-org
 
@@ -1792,6 +1873,7 @@ class OrgsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=WebhookConfig,
         )
 
@@ -1801,6 +1883,7 @@ class OrgsClient:
         hook_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[WebhookConfig, WebhookConfigType]:
         """orgs/get-webhook-config-for-org
 
@@ -1826,6 +1909,7 @@ class OrgsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=WebhookConfig,
         )
 
@@ -1836,6 +1920,7 @@ class OrgsClient:
         hook_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgHooksHookIdConfigPatchBodyType] = UNSET,
     ) -> Response[WebhookConfig, WebhookConfigType]: ...
 
@@ -1847,6 +1932,7 @@ class OrgsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         url: Missing[str] = UNSET,
         content_type: Missing[str] = UNSET,
         secret: Missing[str] = UNSET,
@@ -1859,6 +1945,7 @@ class OrgsClient:
         hook_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgHooksHookIdConfigPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[WebhookConfig, WebhookConfigType]:
@@ -1896,6 +1983,7 @@ class OrgsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=WebhookConfig,
         )
 
@@ -1906,6 +1994,7 @@ class OrgsClient:
         hook_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgHooksHookIdConfigPatchBodyType] = UNSET,
     ) -> Response[WebhookConfig, WebhookConfigType]: ...
 
@@ -1917,6 +2006,7 @@ class OrgsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         url: Missing[str] = UNSET,
         content_type: Missing[str] = UNSET,
         secret: Missing[str] = UNSET,
@@ -1929,6 +2019,7 @@ class OrgsClient:
         hook_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgHooksHookIdConfigPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[WebhookConfig, WebhookConfigType]:
@@ -1966,6 +2057,7 @@ class OrgsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=WebhookConfig,
         )
 
@@ -1977,6 +2069,7 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         cursor: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[HookDeliveryItem], list[HookDeliveryItemType]]:
         """orgs/list-webhook-deliveries
 
@@ -2008,6 +2101,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[HookDeliveryItem],
             error_models={
                 "400": BasicError,
@@ -2023,6 +2117,7 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         cursor: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[HookDeliveryItem], list[HookDeliveryItemType]]:
         """orgs/list-webhook-deliveries
 
@@ -2054,6 +2149,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[HookDeliveryItem],
             error_models={
                 "400": BasicError,
@@ -2068,6 +2164,7 @@ class OrgsClient:
         delivery_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[HookDelivery, HookDeliveryType]:
         """orgs/get-webhook-delivery
 
@@ -2093,6 +2190,7 @@ class OrgsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=HookDelivery,
             error_models={
                 "400": BasicError,
@@ -2107,6 +2205,7 @@ class OrgsClient:
         delivery_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[HookDelivery, HookDeliveryType]:
         """orgs/get-webhook-delivery
 
@@ -2132,6 +2231,7 @@ class OrgsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=HookDelivery,
             error_models={
                 "400": BasicError,
@@ -2146,6 +2246,7 @@ class OrgsClient:
         delivery_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
@@ -2178,6 +2279,7 @@ class OrgsClient:
             "POST",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
             error_models={
                 "400": BasicError,
@@ -2192,6 +2294,7 @@ class OrgsClient:
         delivery_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
@@ -2224,6 +2327,7 @@ class OrgsClient:
             "POST",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
             error_models={
                 "400": BasicError,
@@ -2237,6 +2341,7 @@ class OrgsClient:
         hook_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """orgs/ping-webhook
 
@@ -2263,6 +2368,7 @@ class OrgsClient:
             "POST",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
             },
@@ -2274,6 +2380,7 @@ class OrgsClient:
         hook_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """orgs/ping-webhook
 
@@ -2300,6 +2407,7 @@ class OrgsClient:
             "POST",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
             },
@@ -2336,6 +2444,7 @@ class OrgsClient:
         ] = UNSET,
         api_route_substring: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         list[ApiInsightsRouteStatsItems], list[ApiInsightsRouteStatsItemsType]
     ]:
@@ -2369,6 +2478,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[ApiInsightsRouteStatsItems],
         )
 
@@ -2403,6 +2513,7 @@ class OrgsClient:
         ] = UNSET,
         api_route_substring: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         list[ApiInsightsRouteStatsItems], list[ApiInsightsRouteStatsItemsType]
     ]:
@@ -2436,6 +2547,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[ApiInsightsRouteStatsItems],
         )
 
@@ -2461,6 +2573,7 @@ class OrgsClient:
         ] = UNSET,
         subject_name_substring: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         list[ApiInsightsSubjectStatsItems], list[ApiInsightsSubjectStatsItemsType]
     ]:
@@ -2494,6 +2607,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[ApiInsightsSubjectStatsItems],
         )
 
@@ -2519,6 +2633,7 @@ class OrgsClient:
         ] = UNSET,
         subject_name_substring: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         list[ApiInsightsSubjectStatsItems], list[ApiInsightsSubjectStatsItemsType]
     ]:
@@ -2552,6 +2667,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[ApiInsightsSubjectStatsItems],
         )
 
@@ -2562,6 +2678,7 @@ class OrgsClient:
         min_timestamp: str,
         max_timestamp: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[ApiInsightsSummaryStats, ApiInsightsSummaryStatsType]:
         """api-insights/get-summary-stats
 
@@ -2588,6 +2705,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ApiInsightsSummaryStats,
         )
 
@@ -2598,6 +2716,7 @@ class OrgsClient:
         min_timestamp: str,
         max_timestamp: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[ApiInsightsSummaryStats, ApiInsightsSummaryStatsType]:
         """api-insights/get-summary-stats
 
@@ -2624,6 +2743,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ApiInsightsSummaryStats,
         )
 
@@ -2635,6 +2755,7 @@ class OrgsClient:
         min_timestamp: str,
         max_timestamp: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[ApiInsightsSummaryStats, ApiInsightsSummaryStatsType]:
         """api-insights/get-summary-stats-by-user
 
@@ -2661,6 +2782,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ApiInsightsSummaryStats,
         )
 
@@ -2672,6 +2794,7 @@ class OrgsClient:
         min_timestamp: str,
         max_timestamp: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[ApiInsightsSummaryStats, ApiInsightsSummaryStatsType]:
         """api-insights/get-summary-stats-by-user
 
@@ -2698,6 +2821,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ApiInsightsSummaryStats,
         )
 
@@ -2716,6 +2840,7 @@ class OrgsClient:
         min_timestamp: str,
         max_timestamp: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[ApiInsightsSummaryStats, ApiInsightsSummaryStatsType]:
         """api-insights/get-summary-stats-by-actor
 
@@ -2742,6 +2867,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ApiInsightsSummaryStats,
         )
 
@@ -2760,6 +2886,7 @@ class OrgsClient:
         min_timestamp: str,
         max_timestamp: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[ApiInsightsSummaryStats, ApiInsightsSummaryStatsType]:
         """api-insights/get-summary-stats-by-actor
 
@@ -2786,6 +2913,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ApiInsightsSummaryStats,
         )
 
@@ -2797,6 +2925,7 @@ class OrgsClient:
         max_timestamp: Missing[str] = UNSET,
         timestamp_increment: str,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[ApiInsightsTimeStatsItems], list[ApiInsightsTimeStatsItemsType]]:
         """api-insights/get-time-stats
 
@@ -2824,6 +2953,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[ApiInsightsTimeStatsItems],
         )
 
@@ -2835,6 +2965,7 @@ class OrgsClient:
         max_timestamp: Missing[str] = UNSET,
         timestamp_increment: str,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[ApiInsightsTimeStatsItems], list[ApiInsightsTimeStatsItemsType]]:
         """api-insights/get-time-stats
 
@@ -2862,6 +2993,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[ApiInsightsTimeStatsItems],
         )
 
@@ -2874,6 +3006,7 @@ class OrgsClient:
         max_timestamp: Missing[str] = UNSET,
         timestamp_increment: str,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[ApiInsightsTimeStatsItems], list[ApiInsightsTimeStatsItemsType]]:
         """api-insights/get-time-stats-by-user
 
@@ -2901,6 +3034,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[ApiInsightsTimeStatsItems],
         )
 
@@ -2913,6 +3047,7 @@ class OrgsClient:
         max_timestamp: Missing[str] = UNSET,
         timestamp_increment: str,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[ApiInsightsTimeStatsItems], list[ApiInsightsTimeStatsItemsType]]:
         """api-insights/get-time-stats-by-user
 
@@ -2940,6 +3075,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[ApiInsightsTimeStatsItems],
         )
 
@@ -2959,6 +3095,7 @@ class OrgsClient:
         max_timestamp: Missing[str] = UNSET,
         timestamp_increment: str,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[ApiInsightsTimeStatsItems], list[ApiInsightsTimeStatsItemsType]]:
         """api-insights/get-time-stats-by-actor
 
@@ -2986,6 +3123,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[ApiInsightsTimeStatsItems],
         )
 
@@ -3005,6 +3143,7 @@ class OrgsClient:
         max_timestamp: Missing[str] = UNSET,
         timestamp_increment: str,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[ApiInsightsTimeStatsItems], list[ApiInsightsTimeStatsItemsType]]:
         """api-insights/get-time-stats-by-actor
 
@@ -3032,6 +3171,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[ApiInsightsTimeStatsItems],
         )
 
@@ -3058,6 +3198,7 @@ class OrgsClient:
         ] = UNSET,
         actor_name_substring: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[ApiInsightsUserStatsItems], list[ApiInsightsUserStatsItemsType]]:
         """api-insights/get-user-stats
 
@@ -3089,6 +3230,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[ApiInsightsUserStatsItems],
         )
 
@@ -3115,6 +3257,7 @@ class OrgsClient:
         ] = UNSET,
         actor_name_substring: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[ApiInsightsUserStatsItems], list[ApiInsightsUserStatsItemsType]]:
         """api-insights/get-user-stats
 
@@ -3146,6 +3289,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[ApiInsightsUserStatsItems],
         )
 
@@ -3156,6 +3300,7 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         OrgsOrgInstallationsGetResponse200, OrgsOrgInstallationsGetResponse200Type
     ]:
@@ -3189,6 +3334,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgInstallationsGetResponse200,
         )
 
@@ -3199,6 +3345,7 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         OrgsOrgInstallationsGetResponse200, OrgsOrgInstallationsGetResponse200Type
     ]:
@@ -3232,6 +3379,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgInstallationsGetResponse200,
         )
 
@@ -3248,6 +3396,7 @@ class OrgsClient:
         ] = UNSET,
         invitation_source: Missing[Literal["all", "member", "scim"]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[OrganizationInvitation], list[OrganizationInvitationType]]:
         """orgs/list-pending-invitations
 
@@ -3279,6 +3428,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[OrganizationInvitation],
             error_models={
                 "404": BasicError,
@@ -3298,6 +3448,7 @@ class OrgsClient:
         ] = UNSET,
         invitation_source: Missing[Literal["all", "member", "scim"]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[OrganizationInvitation], list[OrganizationInvitationType]]:
         """orgs/list-pending-invitations
 
@@ -3329,6 +3480,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[OrganizationInvitation],
             error_models={
                 "404": BasicError,
@@ -3341,6 +3493,7 @@ class OrgsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgInvitationsPostBodyType] = UNSET,
     ) -> Response[OrganizationInvitation, OrganizationInvitationType]: ...
 
@@ -3351,6 +3504,7 @@ class OrgsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         invitee_id: Missing[int] = UNSET,
         email: Missing[str] = UNSET,
         role: Missing[
@@ -3364,6 +3518,7 @@ class OrgsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgInvitationsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[OrganizationInvitation, OrganizationInvitationType]:
@@ -3404,6 +3559,7 @@ class OrgsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrganizationInvitation,
             error_models={
                 "422": ValidationError,
@@ -3417,6 +3573,7 @@ class OrgsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgInvitationsPostBodyType] = UNSET,
     ) -> Response[OrganizationInvitation, OrganizationInvitationType]: ...
 
@@ -3427,6 +3584,7 @@ class OrgsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         invitee_id: Missing[int] = UNSET,
         email: Missing[str] = UNSET,
         role: Missing[
@@ -3440,6 +3598,7 @@ class OrgsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgInvitationsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[OrganizationInvitation, OrganizationInvitationType]:
@@ -3480,6 +3639,7 @@ class OrgsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrganizationInvitation,
             error_models={
                 "422": ValidationError,
@@ -3493,6 +3653,7 @@ class OrgsClient:
         invitation_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """orgs/cancel-invitation
 
@@ -3515,6 +3676,7 @@ class OrgsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "422": ValidationError,
                 "404": BasicError,
@@ -3527,6 +3689,7 @@ class OrgsClient:
         invitation_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """orgs/cancel-invitation
 
@@ -3549,6 +3712,7 @@ class OrgsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "422": ValidationError,
                 "404": BasicError,
@@ -3563,6 +3727,7 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Team], list[TeamType]]:
         """orgs/list-invitation-teams
 
@@ -3589,6 +3754,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Team],
             error_models={
                 "404": BasicError,
@@ -3603,6 +3769,7 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Team], list[TeamType]]:
         """orgs/list-invitation-teams
 
@@ -3629,6 +3796,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Team],
             error_models={
                 "404": BasicError,
@@ -3640,6 +3808,7 @@ class OrgsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Union[IssueType, None]], list[Union[IssueTypeType, None]]]:
         """orgs/list-issue-types
 
@@ -3662,6 +3831,7 @@ class OrgsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Union[IssueType, None]],
             error_models={
                 "404": BasicError,
@@ -3673,6 +3843,7 @@ class OrgsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Union[IssueType, None]], list[Union[IssueTypeType, None]]]:
         """orgs/list-issue-types
 
@@ -3695,6 +3866,7 @@ class OrgsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Union[IssueType, None]],
             error_models={
                 "404": BasicError,
@@ -3707,6 +3879,7 @@ class OrgsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrganizationCreateIssueTypeType,
     ) -> Response[Union[IssueType, None], Union[IssueTypeType, None]]: ...
 
@@ -3717,6 +3890,7 @@ class OrgsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: str,
         is_enabled: bool,
         description: Missing[Union[str, None]] = UNSET,
@@ -3735,6 +3909,7 @@ class OrgsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrganizationCreateIssueTypeType] = UNSET,
         **kwargs,
     ) -> Response[Union[IssueType, None], Union[IssueTypeType, None]]:
@@ -3779,6 +3954,7 @@ class OrgsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Union[IssueType, None],
             error_models={
                 "404": BasicError,
@@ -3792,6 +3968,7 @@ class OrgsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrganizationCreateIssueTypeType,
     ) -> Response[Union[IssueType, None], Union[IssueTypeType, None]]: ...
 
@@ -3802,6 +3979,7 @@ class OrgsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: str,
         is_enabled: bool,
         description: Missing[Union[str, None]] = UNSET,
@@ -3820,6 +3998,7 @@ class OrgsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrganizationCreateIssueTypeType] = UNSET,
         **kwargs,
     ) -> Response[Union[IssueType, None], Union[IssueTypeType, None]]:
@@ -3864,6 +4043,7 @@ class OrgsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Union[IssueType, None],
             error_models={
                 "404": BasicError,
@@ -3878,6 +4058,7 @@ class OrgsClient:
         issue_type_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrganizationUpdateIssueTypeType,
     ) -> Response[Union[IssueType, None], Union[IssueTypeType, None]]: ...
 
@@ -3889,6 +4070,7 @@ class OrgsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: str,
         is_enabled: bool,
         description: Missing[Union[str, None]] = UNSET,
@@ -3908,6 +4090,7 @@ class OrgsClient:
         issue_type_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrganizationUpdateIssueTypeType] = UNSET,
         **kwargs,
     ) -> Response[Union[IssueType, None], Union[IssueTypeType, None]]:
@@ -3952,6 +4135,7 @@ class OrgsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Union[IssueType, None],
             error_models={
                 "404": BasicError,
@@ -3966,6 +4150,7 @@ class OrgsClient:
         issue_type_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrganizationUpdateIssueTypeType,
     ) -> Response[Union[IssueType, None], Union[IssueTypeType, None]]: ...
 
@@ -3977,6 +4162,7 @@ class OrgsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: str,
         is_enabled: bool,
         description: Missing[Union[str, None]] = UNSET,
@@ -3996,6 +4182,7 @@ class OrgsClient:
         issue_type_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrganizationUpdateIssueTypeType] = UNSET,
         **kwargs,
     ) -> Response[Union[IssueType, None], Union[IssueTypeType, None]]:
@@ -4040,6 +4227,7 @@ class OrgsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Union[IssueType, None],
             error_models={
                 "404": BasicError,
@@ -4053,6 +4241,7 @@ class OrgsClient:
         issue_type_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """orgs/delete-issue-type
 
@@ -4078,6 +4267,7 @@ class OrgsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "422": ValidationErrorSimple,
                 "404": BasicError,
@@ -4090,6 +4280,7 @@ class OrgsClient:
         issue_type_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """orgs/delete-issue-type
 
@@ -4115,6 +4306,7 @@ class OrgsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "422": ValidationErrorSimple,
                 "404": BasicError,
@@ -4130,6 +4322,7 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """orgs/list-members
 
@@ -4158,6 +4351,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[SimpleUser],
             error_models={
                 "422": ValidationError,
@@ -4173,6 +4367,7 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """orgs/list-members
 
@@ -4201,6 +4396,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[SimpleUser],
             error_models={
                 "422": ValidationError,
@@ -4213,6 +4409,7 @@ class OrgsClient:
         username: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """orgs/check-membership-for-user
 
@@ -4231,6 +4428,7 @@ class OrgsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={},
         )
 
@@ -4240,6 +4438,7 @@ class OrgsClient:
         username: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """orgs/check-membership-for-user
 
@@ -4258,6 +4457,7 @@ class OrgsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={},
         )
 
@@ -4267,6 +4467,7 @@ class OrgsClient:
         username: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """orgs/remove-member
 
@@ -4287,6 +4488,7 @@ class OrgsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "403": BasicError,
             },
@@ -4298,6 +4500,7 @@ class OrgsClient:
         username: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """orgs/remove-member
 
@@ -4318,6 +4521,7 @@ class OrgsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "403": BasicError,
             },
@@ -4329,6 +4533,7 @@ class OrgsClient:
         username: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[OrgMembership, OrgMembershipType]:
         """orgs/get-membership-for-user
 
@@ -4349,6 +4554,7 @@ class OrgsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgMembership,
             error_models={
                 "404": BasicError,
@@ -4362,6 +4568,7 @@ class OrgsClient:
         username: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[OrgMembership, OrgMembershipType]:
         """orgs/get-membership-for-user
 
@@ -4382,6 +4589,7 @@ class OrgsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgMembership,
             error_models={
                 "404": BasicError,
@@ -4396,6 +4604,7 @@ class OrgsClient:
         username: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgMembershipsUsernamePutBodyType] = UNSET,
     ) -> Response[OrgMembership, OrgMembershipType]: ...
 
@@ -4407,6 +4616,7 @@ class OrgsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         role: Missing[Literal["admin", "member"]] = UNSET,
     ) -> Response[OrgMembership, OrgMembershipType]: ...
 
@@ -4416,6 +4626,7 @@ class OrgsClient:
         username: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgMembershipsUsernamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[OrgMembership, OrgMembershipType]:
@@ -4461,6 +4672,7 @@ class OrgsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgMembership,
             error_models={
                 "422": ValidationError,
@@ -4475,6 +4687,7 @@ class OrgsClient:
         username: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgMembershipsUsernamePutBodyType] = UNSET,
     ) -> Response[OrgMembership, OrgMembershipType]: ...
 
@@ -4486,6 +4699,7 @@ class OrgsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         role: Missing[Literal["admin", "member"]] = UNSET,
     ) -> Response[OrgMembership, OrgMembershipType]: ...
 
@@ -4495,6 +4709,7 @@ class OrgsClient:
         username: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgMembershipsUsernamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[OrgMembership, OrgMembershipType]:
@@ -4540,6 +4755,7 @@ class OrgsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgMembership,
             error_models={
                 "422": ValidationError,
@@ -4553,6 +4769,7 @@ class OrgsClient:
         username: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """orgs/remove-membership-for-user
 
@@ -4575,6 +4792,7 @@ class OrgsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "403": BasicError,
                 "404": BasicError,
@@ -4587,6 +4805,7 @@ class OrgsClient:
         username: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """orgs/remove-membership-for-user
 
@@ -4609,6 +4828,7 @@ class OrgsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "403": BasicError,
                 "404": BasicError,
@@ -4620,6 +4840,7 @@ class OrgsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         OrgsOrgOrganizationRolesGetResponse200,
         OrgsOrgOrganizationRolesGetResponse200Type,
@@ -4654,6 +4875,7 @@ class OrgsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgOrganizationRolesGetResponse200,
             error_models={
                 "404": BasicError,
@@ -4666,6 +4888,7 @@ class OrgsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         OrgsOrgOrganizationRolesGetResponse200,
         OrgsOrgOrganizationRolesGetResponse200Type,
@@ -4700,6 +4923,7 @@ class OrgsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgOrganizationRolesGetResponse200,
             error_models={
                 "404": BasicError,
@@ -4713,6 +4937,7 @@ class OrgsClient:
         team_slug: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """orgs/revoke-all-org-roles-team
 
@@ -4735,6 +4960,7 @@ class OrgsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     async def async_revoke_all_org_roles_team(
@@ -4743,6 +4969,7 @@ class OrgsClient:
         team_slug: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """orgs/revoke-all-org-roles-team
 
@@ -4765,6 +4992,7 @@ class OrgsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     def assign_team_to_org_role(
@@ -4774,6 +5002,7 @@ class OrgsClient:
         role_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """orgs/assign-team-to-org-role
 
@@ -4796,6 +5025,7 @@ class OrgsClient:
             "PUT",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={},
         )
 
@@ -4806,6 +5036,7 @@ class OrgsClient:
         role_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """orgs/assign-team-to-org-role
 
@@ -4828,6 +5059,7 @@ class OrgsClient:
             "PUT",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={},
         )
 
@@ -4838,6 +5070,7 @@ class OrgsClient:
         role_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """orgs/revoke-org-role-team
 
@@ -4860,6 +5093,7 @@ class OrgsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     async def async_revoke_org_role_team(
@@ -4869,6 +5103,7 @@ class OrgsClient:
         role_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """orgs/revoke-org-role-team
 
@@ -4891,6 +5126,7 @@ class OrgsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     def revoke_all_org_roles_user(
@@ -4899,6 +5135,7 @@ class OrgsClient:
         username: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """orgs/revoke-all-org-roles-user
 
@@ -4921,6 +5158,7 @@ class OrgsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     async def async_revoke_all_org_roles_user(
@@ -4929,6 +5167,7 @@ class OrgsClient:
         username: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """orgs/revoke-all-org-roles-user
 
@@ -4951,6 +5190,7 @@ class OrgsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     def assign_user_to_org_role(
@@ -4960,6 +5200,7 @@ class OrgsClient:
         role_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """orgs/assign-user-to-org-role
 
@@ -4982,6 +5223,7 @@ class OrgsClient:
             "PUT",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={},
         )
 
@@ -4992,6 +5234,7 @@ class OrgsClient:
         role_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """orgs/assign-user-to-org-role
 
@@ -5014,6 +5257,7 @@ class OrgsClient:
             "PUT",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={},
         )
 
@@ -5024,6 +5268,7 @@ class OrgsClient:
         role_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """orgs/revoke-org-role-user
 
@@ -5046,6 +5291,7 @@ class OrgsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     async def async_revoke_org_role_user(
@@ -5055,6 +5301,7 @@ class OrgsClient:
         role_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """orgs/revoke-org-role-user
 
@@ -5077,6 +5324,7 @@ class OrgsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     def get_org_role(
@@ -5085,6 +5333,7 @@ class OrgsClient:
         role_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[OrganizationRole, OrganizationRoleType]:
         """orgs/get-org-role
 
@@ -5112,6 +5361,7 @@ class OrgsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrganizationRole,
             error_models={
                 "404": BasicError,
@@ -5125,6 +5375,7 @@ class OrgsClient:
         role_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[OrganizationRole, OrganizationRoleType]:
         """orgs/get-org-role
 
@@ -5152,6 +5403,7 @@ class OrgsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrganizationRole,
             error_models={
                 "404": BasicError,
@@ -5167,6 +5419,7 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[TeamRoleAssignment], list[TeamRoleAssignmentType]]:
         """orgs/list-org-role-teams
 
@@ -5197,6 +5450,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[TeamRoleAssignment],
             error_models={},
         )
@@ -5209,6 +5463,7 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[TeamRoleAssignment], list[TeamRoleAssignmentType]]:
         """orgs/list-org-role-teams
 
@@ -5239,6 +5494,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[TeamRoleAssignment],
             error_models={},
         )
@@ -5251,6 +5507,7 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[UserRoleAssignment], list[UserRoleAssignmentType]]:
         """orgs/list-org-role-users
 
@@ -5281,6 +5538,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[UserRoleAssignment],
             error_models={},
         )
@@ -5293,6 +5551,7 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[UserRoleAssignment], list[UserRoleAssignmentType]]:
         """orgs/list-org-role-users
 
@@ -5323,6 +5582,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[UserRoleAssignment],
             error_models={},
         )
@@ -5335,6 +5595,7 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """orgs/list-outside-collaborators
 
@@ -5362,6 +5623,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[SimpleUser],
         )
 
@@ -5373,6 +5635,7 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """orgs/list-outside-collaborators
 
@@ -5400,6 +5663,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[SimpleUser],
         )
 
@@ -5410,6 +5674,7 @@ class OrgsClient:
         username: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgOutsideCollaboratorsUsernamePutBodyType] = UNSET,
     ) -> Response[
         OrgsOrgOutsideCollaboratorsUsernamePutResponse202,
@@ -5424,6 +5689,7 @@ class OrgsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         async_: Missing[bool] = UNSET,
     ) -> Response[
         OrgsOrgOutsideCollaboratorsUsernamePutResponse202,
@@ -5436,6 +5702,7 @@ class OrgsClient:
         username: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgOutsideCollaboratorsUsernamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[
@@ -5477,6 +5744,7 @@ class OrgsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgOutsideCollaboratorsUsernamePutResponse202,
             error_models={
                 "404": BasicError,
@@ -5490,6 +5758,7 @@ class OrgsClient:
         username: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgOutsideCollaboratorsUsernamePutBodyType] = UNSET,
     ) -> Response[
         OrgsOrgOutsideCollaboratorsUsernamePutResponse202,
@@ -5504,6 +5773,7 @@ class OrgsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         async_: Missing[bool] = UNSET,
     ) -> Response[
         OrgsOrgOutsideCollaboratorsUsernamePutResponse202,
@@ -5516,6 +5786,7 @@ class OrgsClient:
         username: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgOutsideCollaboratorsUsernamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[
@@ -5557,6 +5828,7 @@ class OrgsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgOutsideCollaboratorsUsernamePutResponse202,
             error_models={
                 "404": BasicError,
@@ -5569,6 +5841,7 @@ class OrgsClient:
         username: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """orgs/remove-outside-collaborator
 
@@ -5589,6 +5862,7 @@ class OrgsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "422": OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422,
             },
@@ -5600,6 +5874,7 @@ class OrgsClient:
         username: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """orgs/remove-outside-collaborator
 
@@ -5620,6 +5895,7 @@ class OrgsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "422": OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422,
             },
@@ -5640,6 +5916,7 @@ class OrgsClient:
         last_used_after: Missing[datetime] = UNSET,
         token_id: Missing[list[str]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         list[OrganizationProgrammaticAccessGrantRequest],
         list[OrganizationProgrammaticAccessGrantRequestType],
@@ -5683,6 +5960,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[OrganizationProgrammaticAccessGrantRequest],
             error_models={
                 "500": BasicError,
@@ -5707,6 +5985,7 @@ class OrgsClient:
         last_used_after: Missing[datetime] = UNSET,
         token_id: Missing[list[str]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         list[OrganizationProgrammaticAccessGrantRequest],
         list[OrganizationProgrammaticAccessGrantRequestType],
@@ -5750,6 +6029,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[OrganizationProgrammaticAccessGrantRequest],
             error_models={
                 "500": BasicError,
@@ -5765,6 +6045,7 @@ class OrgsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgPersonalAccessTokenRequestsPostBodyType,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
@@ -5778,6 +6059,7 @@ class OrgsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         pat_request_ids: Missing[list[int]] = UNSET,
         action: Literal["approve", "deny"],
         reason: Missing[Union[str, None]] = UNSET,
@@ -5791,6 +6073,7 @@ class OrgsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgPersonalAccessTokenRequestsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[
@@ -5835,6 +6118,7 @@ class OrgsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
             error_models={
                 "500": BasicError,
@@ -5850,6 +6134,7 @@ class OrgsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgPersonalAccessTokenRequestsPostBodyType,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
@@ -5863,6 +6148,7 @@ class OrgsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         pat_request_ids: Missing[list[int]] = UNSET,
         action: Literal["approve", "deny"],
         reason: Missing[Union[str, None]] = UNSET,
@@ -5876,6 +6162,7 @@ class OrgsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgPersonalAccessTokenRequestsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[
@@ -5920,6 +6207,7 @@ class OrgsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
             error_models={
                 "500": BasicError,
@@ -5936,6 +6224,7 @@ class OrgsClient:
         pat_request_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBodyType,
     ) -> Response: ...
 
@@ -5947,6 +6236,7 @@ class OrgsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         action: Literal["approve", "deny"],
         reason: Missing[Union[str, None]] = UNSET,
     ) -> Response: ...
@@ -5957,6 +6247,7 @@ class OrgsClient:
         pat_request_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBodyType
         ] = UNSET,
@@ -5999,6 +6290,7 @@ class OrgsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "500": BasicError,
                 "422": ValidationError,
@@ -6014,6 +6306,7 @@ class OrgsClient:
         pat_request_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBodyType,
     ) -> Response: ...
 
@@ -6025,6 +6318,7 @@ class OrgsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         action: Literal["approve", "deny"],
         reason: Missing[Union[str, None]] = UNSET,
     ) -> Response: ...
@@ -6035,6 +6329,7 @@ class OrgsClient:
         pat_request_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBodyType
         ] = UNSET,
@@ -6077,6 +6372,7 @@ class OrgsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "500": BasicError,
                 "422": ValidationError,
@@ -6093,6 +6389,7 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
         """orgs/list-pat-grant-request-repositories
 
@@ -6123,6 +6420,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[MinimalRepository],
             error_models={
                 "500": BasicError,
@@ -6139,6 +6437,7 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
         """orgs/list-pat-grant-request-repositories
 
@@ -6169,6 +6468,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[MinimalRepository],
             error_models={
                 "500": BasicError,
@@ -6192,6 +6492,7 @@ class OrgsClient:
         last_used_after: Missing[datetime] = UNSET,
         token_id: Missing[list[str]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         list[OrganizationProgrammaticAccessGrant],
         list[OrganizationProgrammaticAccessGrantType],
@@ -6235,6 +6536,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[OrganizationProgrammaticAccessGrant],
             error_models={
                 "500": BasicError,
@@ -6259,6 +6561,7 @@ class OrgsClient:
         last_used_after: Missing[datetime] = UNSET,
         token_id: Missing[list[str]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         list[OrganizationProgrammaticAccessGrant],
         list[OrganizationProgrammaticAccessGrantType],
@@ -6302,6 +6605,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[OrganizationProgrammaticAccessGrant],
             error_models={
                 "500": BasicError,
@@ -6317,6 +6621,7 @@ class OrgsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgPersonalAccessTokensPostBodyType,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
@@ -6330,6 +6635,7 @@ class OrgsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         action: Literal["revoke"],
         pat_ids: list[int],
     ) -> Response[
@@ -6342,6 +6648,7 @@ class OrgsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgPersonalAccessTokensPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[
@@ -6384,6 +6691,7 @@ class OrgsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
             error_models={
                 "500": BasicError,
@@ -6399,6 +6707,7 @@ class OrgsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgPersonalAccessTokensPostBodyType,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
@@ -6412,6 +6721,7 @@ class OrgsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         action: Literal["revoke"],
         pat_ids: list[int],
     ) -> Response[
@@ -6424,6 +6734,7 @@ class OrgsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgPersonalAccessTokensPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[
@@ -6466,6 +6777,7 @@ class OrgsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
             error_models={
                 "500": BasicError,
@@ -6482,6 +6794,7 @@ class OrgsClient:
         pat_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgPersonalAccessTokensPatIdPostBodyType,
     ) -> Response: ...
 
@@ -6493,6 +6806,7 @@ class OrgsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         action: Literal["revoke"],
     ) -> Response: ...
 
@@ -6502,6 +6816,7 @@ class OrgsClient:
         pat_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgPersonalAccessTokensPatIdPostBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -6540,6 +6855,7 @@ class OrgsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "500": BasicError,
                 "404": BasicError,
@@ -6555,6 +6871,7 @@ class OrgsClient:
         pat_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgPersonalAccessTokensPatIdPostBodyType,
     ) -> Response: ...
 
@@ -6566,6 +6883,7 @@ class OrgsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         action: Literal["revoke"],
     ) -> Response: ...
 
@@ -6575,6 +6893,7 @@ class OrgsClient:
         pat_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgPersonalAccessTokensPatIdPostBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -6613,6 +6932,7 @@ class OrgsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "500": BasicError,
                 "404": BasicError,
@@ -6629,6 +6949,7 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
         """orgs/list-pat-grant-repositories
 
@@ -6657,6 +6978,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[MinimalRepository],
             error_models={
                 "500": BasicError,
@@ -6673,6 +6995,7 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
         """orgs/list-pat-grant-repositories
 
@@ -6701,6 +7024,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[MinimalRepository],
             error_models={
                 "500": BasicError,
@@ -6714,6 +7038,7 @@ class OrgsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[CustomProperty], list[CustomPropertyType]]:
         """orgs/get-all-custom-properties
 
@@ -6735,6 +7060,7 @@ class OrgsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[CustomProperty],
             error_models={
                 "403": BasicError,
@@ -6747,6 +7073,7 @@ class OrgsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[CustomProperty], list[CustomPropertyType]]:
         """orgs/get-all-custom-properties
 
@@ -6768,6 +7095,7 @@ class OrgsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[CustomProperty],
             error_models={
                 "403": BasicError,
@@ -6781,6 +7109,7 @@ class OrgsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgPropertiesSchemaPatchBodyType,
     ) -> Response[list[CustomProperty], list[CustomPropertyType]]: ...
 
@@ -6791,6 +7120,7 @@ class OrgsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         properties: list[CustomPropertyType],
     ) -> Response[list[CustomProperty], list[CustomPropertyType]]: ...
 
@@ -6799,6 +7129,7 @@ class OrgsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgPropertiesSchemaPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[list[CustomProperty], list[CustomPropertyType]]:
@@ -6843,6 +7174,7 @@ class OrgsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[CustomProperty],
             error_models={
                 "403": BasicError,
@@ -6856,6 +7188,7 @@ class OrgsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgPropertiesSchemaPatchBodyType,
     ) -> Response[list[CustomProperty], list[CustomPropertyType]]: ...
 
@@ -6866,6 +7199,7 @@ class OrgsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         properties: list[CustomPropertyType],
     ) -> Response[list[CustomProperty], list[CustomPropertyType]]: ...
 
@@ -6874,6 +7208,7 @@ class OrgsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgPropertiesSchemaPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[list[CustomProperty], list[CustomPropertyType]]:
@@ -6918,6 +7253,7 @@ class OrgsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[CustomProperty],
             error_models={
                 "403": BasicError,
@@ -6931,6 +7267,7 @@ class OrgsClient:
         custom_property_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[CustomProperty, CustomPropertyType]:
         """orgs/get-custom-property
 
@@ -6952,6 +7289,7 @@ class OrgsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CustomProperty,
             error_models={
                 "403": BasicError,
@@ -6965,6 +7303,7 @@ class OrgsClient:
         custom_property_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[CustomProperty, CustomPropertyType]:
         """orgs/get-custom-property
 
@@ -6986,6 +7325,7 @@ class OrgsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CustomProperty,
             error_models={
                 "403": BasicError,
@@ -7000,6 +7340,7 @@ class OrgsClient:
         custom_property_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: CustomPropertySetPayloadType,
     ) -> Response[CustomProperty, CustomPropertyType]: ...
 
@@ -7011,6 +7352,7 @@ class OrgsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         value_type: Literal["string", "single_select", "multi_select", "true_false"],
         required: Missing[bool] = UNSET,
         default_value: Missing[Union[str, list[str], None]] = UNSET,
@@ -7027,6 +7369,7 @@ class OrgsClient:
         custom_property_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[CustomPropertySetPayloadType] = UNSET,
         **kwargs,
     ) -> Response[CustomProperty, CustomPropertyType]:
@@ -7063,6 +7406,7 @@ class OrgsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CustomProperty,
             error_models={
                 "403": BasicError,
@@ -7077,6 +7421,7 @@ class OrgsClient:
         custom_property_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: CustomPropertySetPayloadType,
     ) -> Response[CustomProperty, CustomPropertyType]: ...
 
@@ -7088,6 +7433,7 @@ class OrgsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         value_type: Literal["string", "single_select", "multi_select", "true_false"],
         required: Missing[bool] = UNSET,
         default_value: Missing[Union[str, list[str], None]] = UNSET,
@@ -7104,6 +7450,7 @@ class OrgsClient:
         custom_property_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[CustomPropertySetPayloadType] = UNSET,
         **kwargs,
     ) -> Response[CustomProperty, CustomPropertyType]:
@@ -7140,6 +7487,7 @@ class OrgsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CustomProperty,
             error_models={
                 "403": BasicError,
@@ -7153,6 +7501,7 @@ class OrgsClient:
         custom_property_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """orgs/remove-custom-property
 
@@ -7177,6 +7526,7 @@ class OrgsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "403": BasicError,
                 "404": BasicError,
@@ -7189,6 +7539,7 @@ class OrgsClient:
         custom_property_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """orgs/remove-custom-property
 
@@ -7213,6 +7564,7 @@ class OrgsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "403": BasicError,
                 "404": BasicError,
@@ -7227,6 +7579,7 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         repository_query: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         list[OrgRepoCustomPropertyValues], list[OrgRepoCustomPropertyValuesType]
     ]:
@@ -7257,6 +7610,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[OrgRepoCustomPropertyValues],
             error_models={
                 "403": BasicError,
@@ -7272,6 +7626,7 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         repository_query: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         list[OrgRepoCustomPropertyValues], list[OrgRepoCustomPropertyValuesType]
     ]:
@@ -7302,6 +7657,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[OrgRepoCustomPropertyValues],
             error_models={
                 "403": BasicError,
@@ -7315,6 +7671,7 @@ class OrgsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgPropertiesValuesPatchBodyType,
     ) -> Response: ...
 
@@ -7325,6 +7682,7 @@ class OrgsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         repository_names: list[str],
         properties: list[CustomPropertyValueType],
     ) -> Response: ...
@@ -7334,6 +7692,7 @@ class OrgsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgPropertiesValuesPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -7379,6 +7738,7 @@ class OrgsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "403": BasicError,
                 "404": BasicError,
@@ -7392,6 +7752,7 @@ class OrgsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgPropertiesValuesPatchBodyType,
     ) -> Response: ...
 
@@ -7402,6 +7763,7 @@ class OrgsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         repository_names: list[str],
         properties: list[CustomPropertyValueType],
     ) -> Response: ...
@@ -7411,6 +7773,7 @@ class OrgsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgPropertiesValuesPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -7456,6 +7819,7 @@ class OrgsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "403": BasicError,
                 "404": BasicError,
@@ -7470,6 +7834,7 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """orgs/list-public-members
 
@@ -7496,6 +7861,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[SimpleUser],
         )
 
@@ -7506,6 +7872,7 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """orgs/list-public-members
 
@@ -7532,6 +7899,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[SimpleUser],
         )
 
@@ -7541,6 +7909,7 @@ class OrgsClient:
         username: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """orgs/check-public-membership-for-user
 
@@ -7559,6 +7928,7 @@ class OrgsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={},
         )
 
@@ -7568,6 +7938,7 @@ class OrgsClient:
         username: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """orgs/check-public-membership-for-user
 
@@ -7586,6 +7957,7 @@ class OrgsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={},
         )
 
@@ -7595,6 +7967,7 @@ class OrgsClient:
         username: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """orgs/set-public-membership-for-authenticated-user
 
@@ -7617,6 +7990,7 @@ class OrgsClient:
             "PUT",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "403": BasicError,
             },
@@ -7628,6 +8002,7 @@ class OrgsClient:
         username: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """orgs/set-public-membership-for-authenticated-user
 
@@ -7650,6 +8025,7 @@ class OrgsClient:
             "PUT",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "403": BasicError,
             },
@@ -7661,6 +8037,7 @@ class OrgsClient:
         username: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """orgs/remove-public-membership-for-authenticated-user
 
@@ -7679,6 +8056,7 @@ class OrgsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     async def async_remove_public_membership_for_authenticated_user(
@@ -7687,6 +8065,7 @@ class OrgsClient:
         username: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """orgs/remove-public-membership-for-authenticated-user
 
@@ -7705,6 +8084,7 @@ class OrgsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     def get_org_ruleset_history(
@@ -7715,6 +8095,7 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[RulesetVersion], list[RulesetVersionType]]:
         """orgs/get-org-ruleset-history
 
@@ -7741,6 +8122,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[RulesetVersion],
             error_models={
                 "404": BasicError,
@@ -7756,6 +8138,7 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[RulesetVersion], list[RulesetVersionType]]:
         """orgs/get-org-ruleset-history
 
@@ -7782,6 +8165,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[RulesetVersion],
             error_models={
                 "404": BasicError,
@@ -7796,6 +8180,7 @@ class OrgsClient:
         version_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[RulesetVersionWithState, RulesetVersionWithStateType]:
         """orgs/get-org-ruleset-version
 
@@ -7816,6 +8201,7 @@ class OrgsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=RulesetVersionWithState,
             error_models={
                 "404": BasicError,
@@ -7830,6 +8216,7 @@ class OrgsClient:
         version_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[RulesetVersionWithState, RulesetVersionWithStateType]:
         """orgs/get-org-ruleset-version
 
@@ -7850,6 +8237,7 @@ class OrgsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=RulesetVersionWithState,
             error_models={
                 "404": BasicError,
@@ -7862,6 +8250,7 @@ class OrgsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[TeamSimple], list[TeamSimpleType]]:
         """DEPRECATED orgs/list-security-manager-teams
 
@@ -7883,6 +8272,7 @@ class OrgsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[TeamSimple],
         )
 
@@ -7891,6 +8281,7 @@ class OrgsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[TeamSimple], list[TeamSimpleType]]:
         """DEPRECATED orgs/list-security-manager-teams
 
@@ -7912,6 +8303,7 @@ class OrgsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[TeamSimple],
         )
 
@@ -7921,6 +8313,7 @@ class OrgsClient:
         team_slug: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """DEPRECATED orgs/add-security-manager-team
 
@@ -7940,6 +8333,7 @@ class OrgsClient:
             "PUT",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     async def async_add_security_manager_team(
@@ -7948,6 +8342,7 @@ class OrgsClient:
         team_slug: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """DEPRECATED orgs/add-security-manager-team
 
@@ -7967,6 +8362,7 @@ class OrgsClient:
             "PUT",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     def remove_security_manager_team(
@@ -7975,6 +8371,7 @@ class OrgsClient:
         team_slug: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """DEPRECATED orgs/remove-security-manager-team
 
@@ -7994,6 +8391,7 @@ class OrgsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     async def async_remove_security_manager_team(
@@ -8002,6 +8400,7 @@ class OrgsClient:
         team_slug: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """DEPRECATED orgs/remove-security-manager-team
 
@@ -8021,6 +8420,7 @@ class OrgsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     @overload
@@ -8039,6 +8439,7 @@ class OrgsClient:
         enablement: Literal["enable_all", "disable_all"],
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgSecurityProductEnablementPostBodyType] = UNSET,
     ) -> Response: ...
 
@@ -8059,6 +8460,7 @@ class OrgsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         query_suite: Missing[Literal["default", "extended"]] = UNSET,
     ) -> Response: ...
 
@@ -8077,6 +8479,7 @@ class OrgsClient:
         enablement: Literal["enable_all", "disable_all"],
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgSecurityProductEnablementPostBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -8116,6 +8519,7 @@ class OrgsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={},
         )
 
@@ -8135,6 +8539,7 @@ class OrgsClient:
         enablement: Literal["enable_all", "disable_all"],
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgSecurityProductEnablementPostBodyType] = UNSET,
     ) -> Response: ...
 
@@ -8155,6 +8560,7 @@ class OrgsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         query_suite: Missing[Literal["default", "extended"]] = UNSET,
     ) -> Response: ...
 
@@ -8173,6 +8579,7 @@ class OrgsClient:
         enablement: Literal["enable_all", "disable_all"],
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgSecurityProductEnablementPostBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -8212,6 +8619,7 @@ class OrgsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={},
         )
 
@@ -8222,6 +8630,7 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[OrgMembership], list[OrgMembershipType]]:
         """orgs/list-memberships-for-authenticated-user
 
@@ -8249,6 +8658,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[OrgMembership],
             error_models={
                 "403": BasicError,
@@ -8264,6 +8674,7 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[OrgMembership], list[OrgMembershipType]]:
         """orgs/list-memberships-for-authenticated-user
 
@@ -8291,6 +8702,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[OrgMembership],
             error_models={
                 "403": BasicError,
@@ -8304,6 +8716,7 @@ class OrgsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[OrgMembership, OrgMembershipType]:
         """orgs/get-membership-for-authenticated-user
 
@@ -8324,6 +8737,7 @@ class OrgsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgMembership,
             error_models={
                 "403": BasicError,
@@ -8336,6 +8750,7 @@ class OrgsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[OrgMembership, OrgMembershipType]:
         """orgs/get-membership-for-authenticated-user
 
@@ -8356,6 +8771,7 @@ class OrgsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgMembership,
             error_models={
                 "403": BasicError,
@@ -8369,6 +8785,7 @@ class OrgsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: UserMembershipsOrgsOrgPatchBodyType,
     ) -> Response[OrgMembership, OrgMembershipType]: ...
 
@@ -8379,6 +8796,7 @@ class OrgsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         state: Literal["active"],
     ) -> Response[OrgMembership, OrgMembershipType]: ...
 
@@ -8387,6 +8805,7 @@ class OrgsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[UserMembershipsOrgsOrgPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[OrgMembership, OrgMembershipType]:
@@ -8424,6 +8843,7 @@ class OrgsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgMembership,
             error_models={
                 "403": BasicError,
@@ -8438,6 +8858,7 @@ class OrgsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: UserMembershipsOrgsOrgPatchBodyType,
     ) -> Response[OrgMembership, OrgMembershipType]: ...
 
@@ -8448,6 +8869,7 @@ class OrgsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         state: Literal["active"],
     ) -> Response[OrgMembership, OrgMembershipType]: ...
 
@@ -8456,6 +8878,7 @@ class OrgsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[UserMembershipsOrgsOrgPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[OrgMembership, OrgMembershipType]:
@@ -8493,6 +8916,7 @@ class OrgsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgMembership,
             error_models={
                 "403": BasicError,
@@ -8507,6 +8931,7 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[OrganizationSimple], list[OrganizationSimpleType]]:
         """orgs/list-for-authenticated-user
 
@@ -8538,6 +8963,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[OrganizationSimple],
             error_models={
                 "403": BasicError,
@@ -8551,6 +8977,7 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[OrganizationSimple], list[OrganizationSimpleType]]:
         """orgs/list-for-authenticated-user
 
@@ -8582,6 +9009,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[OrganizationSimple],
             error_models={
                 "403": BasicError,
@@ -8596,6 +9024,7 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[OrganizationSimple], list[OrganizationSimpleType]]:
         """orgs/list-for-user
 
@@ -8624,6 +9053,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[OrganizationSimple],
         )
 
@@ -8634,6 +9064,7 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[OrganizationSimple], list[OrganizationSimpleType]]:
         """orgs/list-for-user
 
@@ -8662,5 +9093,6 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[OrganizationSimple],
         )

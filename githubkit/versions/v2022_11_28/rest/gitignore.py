@@ -42,6 +42,7 @@ class GitignoreClient:
         self,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[str], list[str]]:
         """gitignore/get-all-templates
 
@@ -60,6 +61,7 @@ class GitignoreClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[str],
         )
 
@@ -67,6 +69,7 @@ class GitignoreClient:
         self,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[str], list[str]]:
         """gitignore/get-all-templates
 
@@ -85,6 +88,7 @@ class GitignoreClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[str],
         )
 
@@ -93,6 +97,7 @@ class GitignoreClient:
         name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[GitignoreTemplate, GitignoreTemplateType]:
         """gitignore/get-template
 
@@ -117,6 +122,7 @@ class GitignoreClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=GitignoreTemplate,
         )
 
@@ -125,6 +131,7 @@ class GitignoreClient:
         name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[GitignoreTemplate, GitignoreTemplateType]:
         """gitignore/get-template
 
@@ -149,5 +156,6 @@ class GitignoreClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=GitignoreTemplate,
         )

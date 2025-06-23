@@ -33,6 +33,7 @@ class RateLimitOverviewPropResources(GitHubModel):
     )
     scim: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
     dependency_snapshots: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
+    dependency_sbom: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
     code_scanning_autofix: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
 
 

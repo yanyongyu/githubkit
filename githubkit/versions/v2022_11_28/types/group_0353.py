@@ -61,6 +61,7 @@ class ReviewCommentType(TypedDict):
     original_line: NotRequired[int]
     start_line: NotRequired[Union[int, None]]
     original_start_line: NotRequired[Union[int, None]]
+    subject_type: NotRequired[Literal["line", "file"]]
 
 
 __all__ = ("ReviewCommentType",)

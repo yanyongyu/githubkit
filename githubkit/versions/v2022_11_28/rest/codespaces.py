@@ -118,6 +118,7 @@ class CodespacesClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[OrgsOrgCodespacesGetResponse200, OrgsOrgCodespacesGetResponse200Type]:
         """codespaces/list-in-organization
 
@@ -146,6 +147,7 @@ class CodespacesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgCodespacesGetResponse200,
             error_models={
                 "500": BasicError,
@@ -162,6 +164,7 @@ class CodespacesClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[OrgsOrgCodespacesGetResponse200, OrgsOrgCodespacesGetResponse200Type]:
         """codespaces/list-in-organization
 
@@ -190,6 +193,7 @@ class CodespacesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgCodespacesGetResponse200,
             error_models={
                 "500": BasicError,
@@ -205,6 +209,7 @@ class CodespacesClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgCodespacesAccessPutBodyType,
     ) -> Response: ...
 
@@ -215,6 +220,7 @@ class CodespacesClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         visibility: Literal[
             "disabled",
             "selected_members",
@@ -229,6 +235,7 @@ class CodespacesClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgCodespacesAccessPutBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -262,6 +269,7 @@ class CodespacesClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
                 "422": ValidationError,
@@ -275,6 +283,7 @@ class CodespacesClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgCodespacesAccessPutBodyType,
     ) -> Response: ...
 
@@ -285,6 +294,7 @@ class CodespacesClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         visibility: Literal[
             "disabled",
             "selected_members",
@@ -299,6 +309,7 @@ class CodespacesClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgCodespacesAccessPutBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -332,6 +343,7 @@ class CodespacesClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
                 "422": ValidationError,
@@ -345,6 +357,7 @@ class CodespacesClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgCodespacesAccessSelectedUsersPostBodyType,
     ) -> Response: ...
 
@@ -355,6 +368,7 @@ class CodespacesClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         selected_usernames: list[str],
     ) -> Response: ...
 
@@ -363,6 +377,7 @@ class CodespacesClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgCodespacesAccessSelectedUsersPostBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -406,6 +421,7 @@ class CodespacesClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
                 "422": ValidationError,
@@ -419,6 +435,7 @@ class CodespacesClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgCodespacesAccessSelectedUsersPostBodyType,
     ) -> Response: ...
 
@@ -429,6 +446,7 @@ class CodespacesClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         selected_usernames: list[str],
     ) -> Response: ...
 
@@ -437,6 +455,7 @@ class CodespacesClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgCodespacesAccessSelectedUsersPostBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -480,6 +499,7 @@ class CodespacesClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
                 "422": ValidationError,
@@ -493,6 +513,7 @@ class CodespacesClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgCodespacesAccessSelectedUsersDeleteBodyType,
     ) -> Response: ...
 
@@ -503,6 +524,7 @@ class CodespacesClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         selected_usernames: list[str],
     ) -> Response: ...
 
@@ -511,6 +533,7 @@ class CodespacesClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgCodespacesAccessSelectedUsersDeleteBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -554,6 +577,7 @@ class CodespacesClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
                 "422": ValidationError,
@@ -567,6 +591,7 @@ class CodespacesClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgCodespacesAccessSelectedUsersDeleteBodyType,
     ) -> Response: ...
 
@@ -577,6 +602,7 @@ class CodespacesClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         selected_usernames: list[str],
     ) -> Response: ...
 
@@ -585,6 +611,7 @@ class CodespacesClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgCodespacesAccessSelectedUsersDeleteBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -628,6 +655,7 @@ class CodespacesClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
                 "422": ValidationError,
@@ -642,6 +670,7 @@ class CodespacesClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         OrgsOrgCodespacesSecretsGetResponse200,
         OrgsOrgCodespacesSecretsGetResponse200Type,
@@ -674,6 +703,7 @@ class CodespacesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgCodespacesSecretsGetResponse200,
         )
 
@@ -684,6 +714,7 @@ class CodespacesClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         OrgsOrgCodespacesSecretsGetResponse200,
         OrgsOrgCodespacesSecretsGetResponse200Type,
@@ -716,6 +747,7 @@ class CodespacesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgCodespacesSecretsGetResponse200,
         )
 
@@ -724,6 +756,7 @@ class CodespacesClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[CodespacesPublicKey, CodespacesPublicKeyType]:
         """codespaces/get-org-public-key
 
@@ -745,6 +778,7 @@ class CodespacesClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CodespacesPublicKey,
         )
 
@@ -753,6 +787,7 @@ class CodespacesClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[CodespacesPublicKey, CodespacesPublicKeyType]:
         """codespaces/get-org-public-key
 
@@ -774,6 +809,7 @@ class CodespacesClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CodespacesPublicKey,
         )
 
@@ -783,6 +819,7 @@ class CodespacesClient:
         secret_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[CodespacesOrgSecret, CodespacesOrgSecretType]:
         """codespaces/get-org-secret
 
@@ -805,6 +842,7 @@ class CodespacesClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CodespacesOrgSecret,
         )
 
@@ -814,6 +852,7 @@ class CodespacesClient:
         secret_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[CodespacesOrgSecret, CodespacesOrgSecretType]:
         """codespaces/get-org-secret
 
@@ -836,6 +875,7 @@ class CodespacesClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CodespacesOrgSecret,
         )
 
@@ -846,6 +886,7 @@ class CodespacesClient:
         secret_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgCodespacesSecretsSecretNamePutBodyType,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
 
@@ -857,6 +898,7 @@ class CodespacesClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         encrypted_value: Missing[str] = UNSET,
         key_id: Missing[str] = UNSET,
         visibility: Literal["all", "private", "selected"],
@@ -869,6 +911,7 @@ class CodespacesClient:
         secret_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgCodespacesSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject, EmptyObjectType]:
@@ -909,6 +952,7 @@ class CodespacesClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=EmptyObject,
             error_models={
                 "404": BasicError,
@@ -923,6 +967,7 @@ class CodespacesClient:
         secret_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgCodespacesSecretsSecretNamePutBodyType,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
 
@@ -934,6 +979,7 @@ class CodespacesClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         encrypted_value: Missing[str] = UNSET,
         key_id: Missing[str] = UNSET,
         visibility: Literal["all", "private", "selected"],
@@ -946,6 +992,7 @@ class CodespacesClient:
         secret_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgCodespacesSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject, EmptyObjectType]:
@@ -986,6 +1033,7 @@ class CodespacesClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=EmptyObject,
             error_models={
                 "404": BasicError,
@@ -999,6 +1047,7 @@ class CodespacesClient:
         secret_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """codespaces/delete-org-secret
 
@@ -1021,6 +1070,7 @@ class CodespacesClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
             },
@@ -1032,6 +1082,7 @@ class CodespacesClient:
         secret_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """codespaces/delete-org-secret
 
@@ -1054,6 +1105,7 @@ class CodespacesClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
             },
@@ -1067,6 +1119,7 @@ class CodespacesClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200,
         OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200Type,
@@ -1102,6 +1155,7 @@ class CodespacesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200,
             error_models={
                 "404": BasicError,
@@ -1116,6 +1170,7 @@ class CodespacesClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200,
         OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200Type,
@@ -1151,6 +1206,7 @@ class CodespacesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200,
             error_models={
                 "404": BasicError,
@@ -1164,6 +1220,7 @@ class CodespacesClient:
         secret_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBodyType,
     ) -> Response: ...
 
@@ -1175,6 +1232,7 @@ class CodespacesClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         selected_repository_ids: list[int],
     ) -> Response: ...
 
@@ -1184,6 +1242,7 @@ class CodespacesClient:
         secret_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBodyType
         ] = UNSET,
@@ -1227,6 +1286,7 @@ class CodespacesClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
             },
@@ -1239,6 +1299,7 @@ class CodespacesClient:
         secret_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBodyType,
     ) -> Response: ...
 
@@ -1250,6 +1311,7 @@ class CodespacesClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         selected_repository_ids: list[int],
     ) -> Response: ...
 
@@ -1259,6 +1321,7 @@ class CodespacesClient:
         secret_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBodyType
         ] = UNSET,
@@ -1302,6 +1365,7 @@ class CodespacesClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
             },
@@ -1314,6 +1378,7 @@ class CodespacesClient:
         repository_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """codespaces/add-selected-repo-to-org-secret
 
@@ -1337,6 +1402,7 @@ class CodespacesClient:
             "PUT",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
                 "422": ValidationError,
@@ -1350,6 +1416,7 @@ class CodespacesClient:
         repository_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """codespaces/add-selected-repo-to-org-secret
 
@@ -1373,6 +1440,7 @@ class CodespacesClient:
             "PUT",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
                 "422": ValidationError,
@@ -1386,6 +1454,7 @@ class CodespacesClient:
         repository_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """codespaces/remove-selected-repo-from-org-secret
 
@@ -1412,6 +1481,7 @@ class CodespacesClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
                 "422": ValidationError,
@@ -1425,6 +1495,7 @@ class CodespacesClient:
         repository_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """codespaces/remove-selected-repo-from-org-secret
 
@@ -1451,6 +1522,7 @@ class CodespacesClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
                 "422": ValidationError,
@@ -1465,6 +1537,7 @@ class CodespacesClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         OrgsOrgMembersUsernameCodespacesGetResponse200,
         OrgsOrgMembersUsernameCodespacesGetResponse200Type,
@@ -1496,6 +1569,7 @@ class CodespacesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgMembersUsernameCodespacesGetResponse200,
             error_models={
                 "500": BasicError,
@@ -1513,6 +1587,7 @@ class CodespacesClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         OrgsOrgMembersUsernameCodespacesGetResponse200,
         OrgsOrgMembersUsernameCodespacesGetResponse200Type,
@@ -1544,6 +1619,7 @@ class CodespacesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgMembersUsernameCodespacesGetResponse200,
             error_models={
                 "500": BasicError,
@@ -1560,6 +1636,7 @@ class CodespacesClient:
         codespace_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
@@ -1588,6 +1665,7 @@ class CodespacesClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
             error_models={
                 "500": BasicError,
@@ -1604,6 +1682,7 @@ class CodespacesClient:
         codespace_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
@@ -1632,6 +1711,7 @@ class CodespacesClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
             error_models={
                 "500": BasicError,
@@ -1648,6 +1728,7 @@ class CodespacesClient:
         codespace_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[Codespace, CodespaceType]:
         """codespaces/stop-in-organization
 
@@ -1670,6 +1751,7 @@ class CodespacesClient:
             "POST",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Codespace,
             error_models={
                 "500": BasicError,
@@ -1686,6 +1768,7 @@ class CodespacesClient:
         codespace_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[Codespace, CodespaceType]:
         """codespaces/stop-in-organization
 
@@ -1708,6 +1791,7 @@ class CodespacesClient:
             "POST",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Codespace,
             error_models={
                 "500": BasicError,
@@ -1725,6 +1809,7 @@ class CodespacesClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         ReposOwnerRepoCodespacesGetResponse200,
         ReposOwnerRepoCodespacesGetResponse200Type,
@@ -1756,6 +1841,7 @@ class CodespacesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ReposOwnerRepoCodespacesGetResponse200,
             error_models={
                 "500": BasicError,
@@ -1773,6 +1859,7 @@ class CodespacesClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         ReposOwnerRepoCodespacesGetResponse200,
         ReposOwnerRepoCodespacesGetResponse200Type,
@@ -1804,6 +1891,7 @@ class CodespacesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ReposOwnerRepoCodespacesGetResponse200,
             error_models={
                 "500": BasicError,
@@ -1820,6 +1908,7 @@ class CodespacesClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Union[ReposOwnerRepoCodespacesPostBodyType, None],
     ) -> Response[Codespace, CodespaceType]: ...
 
@@ -1831,6 +1920,7 @@ class CodespacesClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         ref: Missing[str] = UNSET,
         location: Missing[str] = UNSET,
         geo: Missing[
@@ -1852,6 +1942,7 @@ class CodespacesClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[Union[ReposOwnerRepoCodespacesPostBodyType, None]] = UNSET,
         **kwargs,
     ) -> Response[Codespace, CodespaceType]:
@@ -1895,6 +1986,7 @@ class CodespacesClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Codespace,
             error_models={
                 "400": BasicError,
@@ -1912,6 +2004,7 @@ class CodespacesClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Union[ReposOwnerRepoCodespacesPostBodyType, None],
     ) -> Response[Codespace, CodespaceType]: ...
 
@@ -1923,6 +2016,7 @@ class CodespacesClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         ref: Missing[str] = UNSET,
         location: Missing[str] = UNSET,
         geo: Missing[
@@ -1944,6 +2038,7 @@ class CodespacesClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[Union[ReposOwnerRepoCodespacesPostBodyType, None]] = UNSET,
         **kwargs,
     ) -> Response[Codespace, CodespaceType]:
@@ -1987,6 +2082,7 @@ class CodespacesClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Codespace,
             error_models={
                 "400": BasicError,
@@ -2005,6 +2101,7 @@ class CodespacesClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         ReposOwnerRepoCodespacesDevcontainersGetResponse200,
         ReposOwnerRepoCodespacesDevcontainersGetResponse200Type,
@@ -2040,6 +2137,7 @@ class CodespacesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ReposOwnerRepoCodespacesDevcontainersGetResponse200,
             error_models={
                 "500": BasicError,
@@ -2058,6 +2156,7 @@ class CodespacesClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         ReposOwnerRepoCodespacesDevcontainersGetResponse200,
         ReposOwnerRepoCodespacesDevcontainersGetResponse200Type,
@@ -2093,6 +2192,7 @@ class CodespacesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ReposOwnerRepoCodespacesDevcontainersGetResponse200,
             error_models={
                 "500": BasicError,
@@ -2112,6 +2212,7 @@ class CodespacesClient:
         client_ip: Missing[str] = UNSET,
         ref: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         ReposOwnerRepoCodespacesMachinesGetResponse200,
         ReposOwnerRepoCodespacesMachinesGetResponse200Type,
@@ -2144,6 +2245,7 @@ class CodespacesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ReposOwnerRepoCodespacesMachinesGetResponse200,
             error_models={
                 "500": BasicError,
@@ -2162,6 +2264,7 @@ class CodespacesClient:
         client_ip: Missing[str] = UNSET,
         ref: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         ReposOwnerRepoCodespacesMachinesGetResponse200,
         ReposOwnerRepoCodespacesMachinesGetResponse200Type,
@@ -2194,6 +2297,7 @@ class CodespacesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ReposOwnerRepoCodespacesMachinesGetResponse200,
             error_models={
                 "500": BasicError,
@@ -2211,6 +2315,7 @@ class CodespacesClient:
         ref: Missing[str] = UNSET,
         client_ip: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         ReposOwnerRepoCodespacesNewGetResponse200,
         ReposOwnerRepoCodespacesNewGetResponse200Type,
@@ -2242,6 +2347,7 @@ class CodespacesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ReposOwnerRepoCodespacesNewGetResponse200,
             error_models={
                 "401": BasicError,
@@ -2258,6 +2364,7 @@ class CodespacesClient:
         ref: Missing[str] = UNSET,
         client_ip: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         ReposOwnerRepoCodespacesNewGetResponse200,
         ReposOwnerRepoCodespacesNewGetResponse200Type,
@@ -2289,6 +2396,7 @@ class CodespacesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ReposOwnerRepoCodespacesNewGetResponse200,
             error_models={
                 "401": BasicError,
@@ -2305,6 +2413,7 @@ class CodespacesClient:
         ref: str,
         devcontainer_path: str,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         CodespacesPermissionsCheckForDevcontainer,
         CodespacesPermissionsCheckForDevcontainerType,
@@ -2341,6 +2450,7 @@ class CodespacesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CodespacesPermissionsCheckForDevcontainer,
             error_models={
                 "401": BasicError,
@@ -2359,6 +2469,7 @@ class CodespacesClient:
         ref: str,
         devcontainer_path: str,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         CodespacesPermissionsCheckForDevcontainer,
         CodespacesPermissionsCheckForDevcontainerType,
@@ -2395,6 +2506,7 @@ class CodespacesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CodespacesPermissionsCheckForDevcontainer,
             error_models={
                 "401": BasicError,
@@ -2413,6 +2525,7 @@ class CodespacesClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         ReposOwnerRepoCodespacesSecretsGetResponse200,
         ReposOwnerRepoCodespacesSecretsGetResponse200Type,
@@ -2445,6 +2558,7 @@ class CodespacesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ReposOwnerRepoCodespacesSecretsGetResponse200,
         )
 
@@ -2456,6 +2570,7 @@ class CodespacesClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         ReposOwnerRepoCodespacesSecretsGetResponse200,
         ReposOwnerRepoCodespacesSecretsGetResponse200Type,
@@ -2488,6 +2603,7 @@ class CodespacesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ReposOwnerRepoCodespacesSecretsGetResponse200,
         )
 
@@ -2497,6 +2613,7 @@ class CodespacesClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[CodespacesPublicKey, CodespacesPublicKeyType]:
         """codespaces/get-repo-public-key
 
@@ -2520,6 +2637,7 @@ class CodespacesClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CodespacesPublicKey,
         )
 
@@ -2529,6 +2647,7 @@ class CodespacesClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[CodespacesPublicKey, CodespacesPublicKeyType]:
         """codespaces/get-repo-public-key
 
@@ -2552,6 +2671,7 @@ class CodespacesClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CodespacesPublicKey,
         )
 
@@ -2562,6 +2682,7 @@ class CodespacesClient:
         secret_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[RepoCodespacesSecret, RepoCodespacesSecretType]:
         """codespaces/get-repo-secret
 
@@ -2584,6 +2705,7 @@ class CodespacesClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=RepoCodespacesSecret,
         )
 
@@ -2594,6 +2716,7 @@ class CodespacesClient:
         secret_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[RepoCodespacesSecret, RepoCodespacesSecretType]:
         """codespaces/get-repo-secret
 
@@ -2616,6 +2739,7 @@ class CodespacesClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=RepoCodespacesSecret,
         )
 
@@ -2627,6 +2751,7 @@ class CodespacesClient:
         secret_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoCodespacesSecretsSecretNamePutBodyType,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
 
@@ -2639,6 +2764,7 @@ class CodespacesClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         encrypted_value: Missing[str] = UNSET,
         key_id: Missing[str] = UNSET,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
@@ -2650,6 +2776,7 @@ class CodespacesClient:
         secret_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoCodespacesSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject, EmptyObjectType]:
@@ -2690,6 +2817,7 @@ class CodespacesClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=EmptyObject,
         )
 
@@ -2701,6 +2829,7 @@ class CodespacesClient:
         secret_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoCodespacesSecretsSecretNamePutBodyType,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
 
@@ -2713,6 +2842,7 @@ class CodespacesClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         encrypted_value: Missing[str] = UNSET,
         key_id: Missing[str] = UNSET,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
@@ -2724,6 +2854,7 @@ class CodespacesClient:
         secret_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoCodespacesSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject, EmptyObjectType]:
@@ -2764,6 +2895,7 @@ class CodespacesClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=EmptyObject,
         )
 
@@ -2774,6 +2906,7 @@ class CodespacesClient:
         secret_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """codespaces/delete-repo-secret
 
@@ -2794,6 +2927,7 @@ class CodespacesClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     async def async_delete_repo_secret(
@@ -2803,6 +2937,7 @@ class CodespacesClient:
         secret_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """codespaces/delete-repo-secret
 
@@ -2823,6 +2958,7 @@ class CodespacesClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     @overload
@@ -2833,6 +2969,7 @@ class CodespacesClient:
         pull_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Union[ReposOwnerRepoPullsPullNumberCodespacesPostBodyType, None],
     ) -> Response[Codespace, CodespaceType]: ...
 
@@ -2845,6 +2982,7 @@ class CodespacesClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         location: Missing[str] = UNSET,
         geo: Missing[
             Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]
@@ -2866,6 +3004,7 @@ class CodespacesClient:
         pull_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             Union[ReposOwnerRepoPullsPullNumberCodespacesPostBodyType, None]
         ] = UNSET,
@@ -2911,6 +3050,7 @@ class CodespacesClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Codespace,
             error_models={
                 "401": BasicError,
@@ -2928,6 +3068,7 @@ class CodespacesClient:
         pull_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Union[ReposOwnerRepoPullsPullNumberCodespacesPostBodyType, None],
     ) -> Response[Codespace, CodespaceType]: ...
 
@@ -2940,6 +3081,7 @@ class CodespacesClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         location: Missing[str] = UNSET,
         geo: Missing[
             Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]
@@ -2961,6 +3103,7 @@ class CodespacesClient:
         pull_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             Union[ReposOwnerRepoPullsPullNumberCodespacesPostBodyType, None]
         ] = UNSET,
@@ -3006,6 +3149,7 @@ class CodespacesClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Codespace,
             error_models={
                 "401": BasicError,
@@ -3022,6 +3166,7 @@ class CodespacesClient:
         page: Missing[int] = UNSET,
         repository_id: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[UserCodespacesGetResponse200, UserCodespacesGetResponse200Type]:
         """codespaces/list-for-authenticated-user
 
@@ -3051,6 +3196,7 @@ class CodespacesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=UserCodespacesGetResponse200,
             error_models={
                 "500": BasicError,
@@ -3067,6 +3213,7 @@ class CodespacesClient:
         page: Missing[int] = UNSET,
         repository_id: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[UserCodespacesGetResponse200, UserCodespacesGetResponse200Type]:
         """codespaces/list-for-authenticated-user
 
@@ -3096,6 +3243,7 @@ class CodespacesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=UserCodespacesGetResponse200,
             error_models={
                 "500": BasicError,
@@ -3110,6 +3258,7 @@ class CodespacesClient:
         self,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Union[UserCodespacesPostBodyOneof0Type, UserCodespacesPostBodyOneof1Type],
     ) -> Response[Codespace, CodespaceType]: ...
 
@@ -3119,6 +3268,7 @@ class CodespacesClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         repository_id: int,
         ref: Missing[str] = UNSET,
         location: Missing[str] = UNSET,
@@ -3141,6 +3291,7 @@ class CodespacesClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         pull_request: UserCodespacesPostBodyOneof1PropPullRequestType,
         location: Missing[str] = UNSET,
         geo: Missing[
@@ -3156,6 +3307,7 @@ class CodespacesClient:
         self,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             Union[UserCodespacesPostBodyOneof0Type, UserCodespacesPostBodyOneof1Type]
         ] = UNSET,
@@ -3204,6 +3356,7 @@ class CodespacesClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Codespace,
             error_models={
                 "401": BasicError,
@@ -3218,6 +3371,7 @@ class CodespacesClient:
         self,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Union[UserCodespacesPostBodyOneof0Type, UserCodespacesPostBodyOneof1Type],
     ) -> Response[Codespace, CodespaceType]: ...
 
@@ -3227,6 +3381,7 @@ class CodespacesClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         repository_id: int,
         ref: Missing[str] = UNSET,
         location: Missing[str] = UNSET,
@@ -3249,6 +3404,7 @@ class CodespacesClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         pull_request: UserCodespacesPostBodyOneof1PropPullRequestType,
         location: Missing[str] = UNSET,
         geo: Missing[
@@ -3264,6 +3420,7 @@ class CodespacesClient:
         self,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             Union[UserCodespacesPostBodyOneof0Type, UserCodespacesPostBodyOneof1Type]
         ] = UNSET,
@@ -3312,6 +3469,7 @@ class CodespacesClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Codespace,
             error_models={
                 "401": BasicError,
@@ -3327,6 +3485,7 @@ class CodespacesClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         UserCodespacesSecretsGetResponse200, UserCodespacesSecretsGetResponse200Type
     ]:
@@ -3360,6 +3519,7 @@ class CodespacesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=UserCodespacesSecretsGetResponse200,
         )
 
@@ -3369,6 +3529,7 @@ class CodespacesClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         UserCodespacesSecretsGetResponse200, UserCodespacesSecretsGetResponse200Type
     ]:
@@ -3402,6 +3563,7 @@ class CodespacesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=UserCodespacesSecretsGetResponse200,
         )
 
@@ -3409,6 +3571,7 @@ class CodespacesClient:
         self,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[CodespacesUserPublicKey, CodespacesUserPublicKeyType]:
         """codespaces/get-public-key-for-authenticated-user
 
@@ -3433,6 +3596,7 @@ class CodespacesClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CodespacesUserPublicKey,
         )
 
@@ -3440,6 +3604,7 @@ class CodespacesClient:
         self,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[CodespacesUserPublicKey, CodespacesUserPublicKeyType]:
         """codespaces/get-public-key-for-authenticated-user
 
@@ -3464,6 +3629,7 @@ class CodespacesClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CodespacesUserPublicKey,
         )
 
@@ -3472,6 +3638,7 @@ class CodespacesClient:
         secret_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[CodespacesSecret, CodespacesSecretType]:
         """codespaces/get-secret-for-authenticated-user
 
@@ -3496,6 +3663,7 @@ class CodespacesClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CodespacesSecret,
         )
 
@@ -3504,6 +3672,7 @@ class CodespacesClient:
         secret_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[CodespacesSecret, CodespacesSecretType]:
         """codespaces/get-secret-for-authenticated-user
 
@@ -3528,6 +3697,7 @@ class CodespacesClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CodespacesSecret,
         )
 
@@ -3537,6 +3707,7 @@ class CodespacesClient:
         secret_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: UserCodespacesSecretsSecretNamePutBodyType,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
 
@@ -3547,6 +3718,7 @@ class CodespacesClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         encrypted_value: Missing[str] = UNSET,
         key_id: str,
         selected_repository_ids: Missing[list[Union[int, str]]] = UNSET,
@@ -3557,6 +3729,7 @@ class CodespacesClient:
         secret_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[UserCodespacesSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject, EmptyObjectType]:
@@ -3599,6 +3772,7 @@ class CodespacesClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=EmptyObject,
             error_models={
                 "422": ValidationError,
@@ -3612,6 +3786,7 @@ class CodespacesClient:
         secret_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: UserCodespacesSecretsSecretNamePutBodyType,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
 
@@ -3622,6 +3797,7 @@ class CodespacesClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         encrypted_value: Missing[str] = UNSET,
         key_id: str,
         selected_repository_ids: Missing[list[Union[int, str]]] = UNSET,
@@ -3632,6 +3808,7 @@ class CodespacesClient:
         secret_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[UserCodespacesSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject, EmptyObjectType]:
@@ -3674,6 +3851,7 @@ class CodespacesClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=EmptyObject,
             error_models={
                 "422": ValidationError,
@@ -3686,6 +3864,7 @@ class CodespacesClient:
         secret_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """codespaces/delete-secret-for-authenticated-user
 
@@ -3708,6 +3887,7 @@ class CodespacesClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     async def async_delete_secret_for_authenticated_user(
@@ -3715,6 +3895,7 @@ class CodespacesClient:
         secret_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """codespaces/delete-secret-for-authenticated-user
 
@@ -3737,6 +3918,7 @@ class CodespacesClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     def list_repositories_for_secret_for_authenticated_user(
@@ -3744,6 +3926,7 @@ class CodespacesClient:
         secret_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         UserCodespacesSecretsSecretNameRepositoriesGetResponse200,
         UserCodespacesSecretsSecretNameRepositoriesGetResponse200Type,
@@ -3774,6 +3957,7 @@ class CodespacesClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=UserCodespacesSecretsSecretNameRepositoriesGetResponse200,
             error_models={
                 "401": BasicError,
@@ -3788,6 +3972,7 @@ class CodespacesClient:
         secret_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         UserCodespacesSecretsSecretNameRepositoriesGetResponse200,
         UserCodespacesSecretsSecretNameRepositoriesGetResponse200Type,
@@ -3818,6 +4003,7 @@ class CodespacesClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=UserCodespacesSecretsSecretNameRepositoriesGetResponse200,
             error_models={
                 "401": BasicError,
@@ -3833,6 +4019,7 @@ class CodespacesClient:
         secret_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: UserCodespacesSecretsSecretNameRepositoriesPutBodyType,
     ) -> Response: ...
 
@@ -3843,6 +4030,7 @@ class CodespacesClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         selected_repository_ids: list[int],
     ) -> Response: ...
 
@@ -3851,6 +4039,7 @@ class CodespacesClient:
         secret_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[UserCodespacesSecretsSecretNameRepositoriesPutBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -3892,6 +4081,7 @@ class CodespacesClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "401": BasicError,
                 "403": BasicError,
@@ -3906,6 +4096,7 @@ class CodespacesClient:
         secret_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: UserCodespacesSecretsSecretNameRepositoriesPutBodyType,
     ) -> Response: ...
 
@@ -3916,6 +4107,7 @@ class CodespacesClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         selected_repository_ids: list[int],
     ) -> Response: ...
 
@@ -3924,6 +4116,7 @@ class CodespacesClient:
         secret_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[UserCodespacesSecretsSecretNameRepositoriesPutBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -3965,6 +4158,7 @@ class CodespacesClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "401": BasicError,
                 "403": BasicError,
@@ -3979,6 +4173,7 @@ class CodespacesClient:
         repository_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """codespaces/add-repository-for-secret-for-authenticated-user
 
@@ -4003,6 +4198,7 @@ class CodespacesClient:
             "PUT",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "401": BasicError,
                 "403": BasicError,
@@ -4017,6 +4213,7 @@ class CodespacesClient:
         repository_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """codespaces/add-repository-for-secret-for-authenticated-user
 
@@ -4041,6 +4238,7 @@ class CodespacesClient:
             "PUT",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "401": BasicError,
                 "403": BasicError,
@@ -4055,6 +4253,7 @@ class CodespacesClient:
         repository_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """codespaces/remove-repository-for-secret-for-authenticated-user
 
@@ -4079,6 +4278,7 @@ class CodespacesClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "401": BasicError,
                 "403": BasicError,
@@ -4093,6 +4293,7 @@ class CodespacesClient:
         repository_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """codespaces/remove-repository-for-secret-for-authenticated-user
 
@@ -4117,6 +4318,7 @@ class CodespacesClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "401": BasicError,
                 "403": BasicError,
@@ -4130,6 +4332,7 @@ class CodespacesClient:
         codespace_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[Codespace, CodespaceType]:
         """codespaces/get-for-authenticated-user
 
@@ -4152,6 +4355,7 @@ class CodespacesClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Codespace,
             error_models={
                 "500": BasicError,
@@ -4166,6 +4370,7 @@ class CodespacesClient:
         codespace_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[Codespace, CodespaceType]:
         """codespaces/get-for-authenticated-user
 
@@ -4188,6 +4393,7 @@ class CodespacesClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Codespace,
             error_models={
                 "500": BasicError,
@@ -4202,6 +4408,7 @@ class CodespacesClient:
         codespace_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
@@ -4230,6 +4437,7 @@ class CodespacesClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
             error_models={
                 "500": BasicError,
@@ -4244,6 +4452,7 @@ class CodespacesClient:
         codespace_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
@@ -4272,6 +4481,7 @@ class CodespacesClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
             error_models={
                 "500": BasicError,
@@ -4287,6 +4497,7 @@ class CodespacesClient:
         codespace_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[UserCodespacesCodespaceNamePatchBodyType] = UNSET,
     ) -> Response[Codespace, CodespaceType]: ...
 
@@ -4297,6 +4508,7 @@ class CodespacesClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         machine: Missing[str] = UNSET,
         display_name: Missing[str] = UNSET,
         recent_folders: Missing[list[str]] = UNSET,
@@ -4307,6 +4519,7 @@ class CodespacesClient:
         codespace_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[UserCodespacesCodespaceNamePatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Codespace, CodespaceType]:
@@ -4343,6 +4556,7 @@ class CodespacesClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Codespace,
             error_models={
                 "401": BasicError,
@@ -4357,6 +4571,7 @@ class CodespacesClient:
         codespace_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[UserCodespacesCodespaceNamePatchBodyType] = UNSET,
     ) -> Response[Codespace, CodespaceType]: ...
 
@@ -4367,6 +4582,7 @@ class CodespacesClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         machine: Missing[str] = UNSET,
         display_name: Missing[str] = UNSET,
         recent_folders: Missing[list[str]] = UNSET,
@@ -4377,6 +4593,7 @@ class CodespacesClient:
         codespace_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[UserCodespacesCodespaceNamePatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Codespace, CodespaceType]:
@@ -4413,6 +4630,7 @@ class CodespacesClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Codespace,
             error_models={
                 "401": BasicError,
@@ -4426,6 +4644,7 @@ class CodespacesClient:
         codespace_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[CodespaceExportDetails, CodespaceExportDetailsType]:
         """codespaces/export-for-authenticated-user
 
@@ -4450,6 +4669,7 @@ class CodespacesClient:
             "POST",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CodespaceExportDetails,
             error_models={
                 "500": BasicError,
@@ -4465,6 +4685,7 @@ class CodespacesClient:
         codespace_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[CodespaceExportDetails, CodespaceExportDetailsType]:
         """codespaces/export-for-authenticated-user
 
@@ -4489,6 +4710,7 @@ class CodespacesClient:
             "POST",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CodespaceExportDetails,
             error_models={
                 "500": BasicError,
@@ -4505,6 +4727,7 @@ class CodespacesClient:
         export_id: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[CodespaceExportDetails, CodespaceExportDetailsType]:
         """codespaces/get-export-details-for-authenticated-user
 
@@ -4527,6 +4750,7 @@ class CodespacesClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CodespaceExportDetails,
             error_models={
                 "404": BasicError,
@@ -4539,6 +4763,7 @@ class CodespacesClient:
         export_id: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[CodespaceExportDetails, CodespaceExportDetailsType]:
         """codespaces/get-export-details-for-authenticated-user
 
@@ -4561,6 +4786,7 @@ class CodespacesClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CodespaceExportDetails,
             error_models={
                 "404": BasicError,
@@ -4572,6 +4798,7 @@ class CodespacesClient:
         codespace_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         UserCodespacesCodespaceNameMachinesGetResponse200,
         UserCodespacesCodespaceNameMachinesGetResponse200Type,
@@ -4600,6 +4827,7 @@ class CodespacesClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=UserCodespacesCodespaceNameMachinesGetResponse200,
             error_models={
                 "500": BasicError,
@@ -4614,6 +4842,7 @@ class CodespacesClient:
         codespace_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         UserCodespacesCodespaceNameMachinesGetResponse200,
         UserCodespacesCodespaceNameMachinesGetResponse200Type,
@@ -4642,6 +4871,7 @@ class CodespacesClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=UserCodespacesCodespaceNameMachinesGetResponse200,
             error_models={
                 "500": BasicError,
@@ -4657,6 +4887,7 @@ class CodespacesClient:
         codespace_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: UserCodespacesCodespaceNamePublishPostBodyType,
     ) -> Response[CodespaceWithFullRepository, CodespaceWithFullRepositoryType]: ...
 
@@ -4667,6 +4898,7 @@ class CodespacesClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: Missing[str] = UNSET,
         private: Missing[bool] = UNSET,
     ) -> Response[CodespaceWithFullRepository, CodespaceWithFullRepositoryType]: ...
@@ -4676,6 +4908,7 @@ class CodespacesClient:
         codespace_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[UserCodespacesCodespaceNamePublishPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[CodespaceWithFullRepository, CodespaceWithFullRepositoryType]:
@@ -4721,6 +4954,7 @@ class CodespacesClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CodespaceWithFullRepository,
             error_models={
                 "401": BasicError,
@@ -4736,6 +4970,7 @@ class CodespacesClient:
         codespace_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: UserCodespacesCodespaceNamePublishPostBodyType,
     ) -> Response[CodespaceWithFullRepository, CodespaceWithFullRepositoryType]: ...
 
@@ -4746,6 +4981,7 @@ class CodespacesClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: Missing[str] = UNSET,
         private: Missing[bool] = UNSET,
     ) -> Response[CodespaceWithFullRepository, CodespaceWithFullRepositoryType]: ...
@@ -4755,6 +4991,7 @@ class CodespacesClient:
         codespace_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[UserCodespacesCodespaceNamePublishPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[CodespaceWithFullRepository, CodespaceWithFullRepositoryType]:
@@ -4800,6 +5037,7 @@ class CodespacesClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CodespaceWithFullRepository,
             error_models={
                 "401": BasicError,
@@ -4814,6 +5052,7 @@ class CodespacesClient:
         codespace_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[Codespace, CodespaceType]:
         """codespaces/start-for-authenticated-user
 
@@ -4836,6 +5075,7 @@ class CodespacesClient:
             "POST",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Codespace,
             error_models={
                 "500": BasicError,
@@ -4853,6 +5093,7 @@ class CodespacesClient:
         codespace_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[Codespace, CodespaceType]:
         """codespaces/start-for-authenticated-user
 
@@ -4875,6 +5116,7 @@ class CodespacesClient:
             "POST",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Codespace,
             error_models={
                 "500": BasicError,
@@ -4892,6 +5134,7 @@ class CodespacesClient:
         codespace_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[Codespace, CodespaceType]:
         """codespaces/stop-for-authenticated-user
 
@@ -4914,6 +5157,7 @@ class CodespacesClient:
             "POST",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Codespace,
             error_models={
                 "500": BasicError,
@@ -4928,6 +5172,7 @@ class CodespacesClient:
         codespace_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[Codespace, CodespaceType]:
         """codespaces/stop-for-authenticated-user
 
@@ -4950,6 +5195,7 @@ class CodespacesClient:
             "POST",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Codespace,
             error_models={
                 "500": BasicError,

@@ -66,6 +66,9 @@ class CodeSecurityConfiguration(GitHubModel):
             description="The enablement status of Dependabot security updates",
         )
     )
+    code_scanning_options: Missing[
+        Union[CodeSecurityConfigurationPropCodeScanningOptions, None]
+    ] = Field(default=UNSET, description="Feature options for code scanning")
     code_scanning_default_setup: Missing[Literal["enabled", "disabled", "not_set"]] = (
         Field(
             default=UNSET,
@@ -156,6 +159,13 @@ class CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptions(GitHub
     )
 
 
+class CodeSecurityConfigurationPropCodeScanningOptions(GitHubModel):
+    """CodeSecurityConfigurationPropCodeScanningOptions
+
+    Feature options for code scanning
+    """
+
+
 class CodeSecurityConfigurationPropCodeScanningDefaultSetupOptions(GitHubModel):
     """CodeSecurityConfigurationPropCodeScanningDefaultSetupOptions
 
@@ -207,6 +217,7 @@ class CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropRevie
 
 model_rebuild(CodeSecurityConfiguration)
 model_rebuild(CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptions)
+model_rebuild(CodeSecurityConfigurationPropCodeScanningOptions)
 model_rebuild(CodeSecurityConfigurationPropCodeScanningDefaultSetupOptions)
 model_rebuild(CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptions)
 model_rebuild(
@@ -216,6 +227,7 @@ model_rebuild(
 __all__ = (
     "CodeSecurityConfiguration",
     "CodeSecurityConfigurationPropCodeScanningDefaultSetupOptions",
+    "CodeSecurityConfigurationPropCodeScanningOptions",
     "CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptions",
     "CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptions",
     "CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropReviewersItems",

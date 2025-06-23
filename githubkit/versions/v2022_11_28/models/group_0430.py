@@ -30,7 +30,10 @@ class CheckRunWithSimpleCheckSuite(GitHubModel):
     A check performed on the code of a given code change
     """
 
-    app: Union[None, Integration, None] = Field()
+    app: Union[Integration, None] = Field(
+        title="GitHub app",
+        description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
+    )
     check_suite: SimpleCheckSuite = Field(
         description="A suite of checks performed on the code of a given code change"
     )

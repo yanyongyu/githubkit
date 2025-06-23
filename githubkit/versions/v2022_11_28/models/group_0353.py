@@ -87,6 +87,10 @@ class ReviewComment(GitHubModel):
         default=UNSET,
         description="The original first line of the range for a multi-line comment.",
     )
+    subject_type: Missing[Literal["line", "file"]] = Field(
+        default=UNSET,
+        description="The level at which the comment is targeted, can be a diff line or a file.",
+    )
 
 
 model_rebuild(ReviewComment)

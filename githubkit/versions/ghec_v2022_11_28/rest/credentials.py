@@ -50,6 +50,7 @@ class CredentialsClient:
         self,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: CredentialsRevokePostBodyType,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
@@ -62,6 +63,7 @@ class CredentialsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         credentials: list[str],
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
@@ -72,6 +74,7 @@ class CredentialsClient:
         self,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[CredentialsRevokePostBodyType] = UNSET,
         **kwargs,
     ) -> Response[
@@ -124,6 +127,7 @@ class CredentialsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
             error_models={
                 "422": ValidationErrorSimple,
@@ -136,6 +140,7 @@ class CredentialsClient:
         self,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: CredentialsRevokePostBodyType,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
@@ -148,6 +153,7 @@ class CredentialsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         credentials: list[str],
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
@@ -158,6 +164,7 @@ class CredentialsClient:
         self,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[CredentialsRevokePostBodyType] = UNSET,
         **kwargs,
     ) -> Response[
@@ -210,6 +217,7 @@ class CredentialsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
             error_models={
                 "422": ValidationErrorSimple,

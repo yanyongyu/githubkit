@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -29,6 +31,9 @@ class GetAllCostCentersPropCostCentersItems(GitHubModel):
 
     id: str = Field(description="ID of the cost center.")
     name: str = Field(description="Name of the cost center.")
+    state: Missing[Literal["active", "deleted"]] = Field(
+        default=UNSET, description="State of the cost center."
+    )
     resources: list[GetAllCostCentersPropCostCentersItemsPropResourcesItems] = Field()
 
 

@@ -36,6 +36,9 @@ class CodeSecurityConfigurationType(TypedDict):
     ]
     dependabot_alerts: NotRequired[Literal["enabled", "disabled", "not_set"]]
     dependabot_security_updates: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    code_scanning_options: NotRequired[
+        Union[CodeSecurityConfigurationPropCodeScanningOptionsType, None]
+    ]
     code_scanning_default_setup: NotRequired[Literal["enabled", "disabled", "not_set"]]
     code_scanning_default_setup_options: NotRequired[
         Union[CodeSecurityConfigurationPropCodeScanningDefaultSetupOptionsType, None]
@@ -86,6 +89,13 @@ class CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptionsType(
     labeled_runners: NotRequired[bool]
 
 
+class CodeSecurityConfigurationPropCodeScanningOptionsType(TypedDict):
+    """CodeSecurityConfigurationPropCodeScanningOptions
+
+    Feature options for code scanning
+    """
+
+
 class CodeSecurityConfigurationPropCodeScanningDefaultSetupOptionsType(TypedDict):
     """CodeSecurityConfigurationPropCodeScanningDefaultSetupOptions
 
@@ -122,6 +132,7 @@ class CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropRevie
 
 __all__ = (
     "CodeSecurityConfigurationPropCodeScanningDefaultSetupOptionsType",
+    "CodeSecurityConfigurationPropCodeScanningOptionsType",
     "CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptionsType",
     "CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropReviewersItemsType",
     "CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsType",

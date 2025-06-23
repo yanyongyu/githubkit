@@ -48,6 +48,7 @@ class PackagesClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Package], list[PackageType]]:
         """packages/list-docker-migration-conflicting-packages-for-organization
 
@@ -70,6 +71,7 @@ class PackagesClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Package],
             error_models={
                 "403": BasicError,
@@ -82,6 +84,7 @@ class PackagesClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Package], list[PackageType]]:
         """packages/list-docker-migration-conflicting-packages-for-organization
 
@@ -104,6 +107,7 @@ class PackagesClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Package],
             error_models={
                 "403": BasicError,
@@ -122,6 +126,7 @@ class PackagesClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Package], list[PackageType]]:
         """packages/list-packages-for-organization
 
@@ -152,6 +157,7 @@ class PackagesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Package],
             error_models={
                 "403": BasicError,
@@ -170,6 +176,7 @@ class PackagesClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Package], list[PackageType]]:
         """packages/list-packages-for-organization
 
@@ -200,6 +207,7 @@ class PackagesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Package],
             error_models={
                 "403": BasicError,
@@ -216,6 +224,7 @@ class PackagesClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[Package, PackageType]:
         """packages/get-package-for-organization
 
@@ -238,6 +247,7 @@ class PackagesClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Package,
         )
 
@@ -250,6 +260,7 @@ class PackagesClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[Package, PackageType]:
         """packages/get-package-for-organization
 
@@ -272,6 +283,7 @@ class PackagesClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Package,
         )
 
@@ -284,6 +296,7 @@ class PackagesClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """packages/delete-package-for-org
 
@@ -308,6 +321,7 @@ class PackagesClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -324,6 +338,7 @@ class PackagesClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """packages/delete-package-for-org
 
@@ -348,6 +363,7 @@ class PackagesClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -365,6 +381,7 @@ class PackagesClient:
         *,
         token: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """packages/restore-package-for-org
 
@@ -398,6 +415,7 @@ class PackagesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -415,6 +433,7 @@ class PackagesClient:
         *,
         token: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """packages/restore-package-for-org
 
@@ -448,6 +467,7 @@ class PackagesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -467,6 +487,7 @@ class PackagesClient:
         per_page: Missing[int] = UNSET,
         state: Missing[Literal["active", "deleted"]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[PackageVersion], list[PackageVersionType]]:
         """packages/get-all-package-versions-for-package-owned-by-org
 
@@ -496,6 +517,7 @@ class PackagesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[PackageVersion],
             error_models={
                 "404": BasicError,
@@ -516,6 +538,7 @@ class PackagesClient:
         per_page: Missing[int] = UNSET,
         state: Missing[Literal["active", "deleted"]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[PackageVersion], list[PackageVersionType]]:
         """packages/get-all-package-versions-for-package-owned-by-org
 
@@ -545,6 +568,7 @@ class PackagesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[PackageVersion],
             error_models={
                 "404": BasicError,
@@ -563,6 +587,7 @@ class PackagesClient:
         package_version_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[PackageVersion, PackageVersionType]:
         """packages/get-package-version-for-organization
 
@@ -585,6 +610,7 @@ class PackagesClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=PackageVersion,
         )
 
@@ -598,6 +624,7 @@ class PackagesClient:
         package_version_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[PackageVersion, PackageVersionType]:
         """packages/get-package-version-for-organization
 
@@ -620,6 +647,7 @@ class PackagesClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=PackageVersion,
         )
 
@@ -633,6 +661,7 @@ class PackagesClient:
         package_version_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """packages/delete-package-version-for-org
 
@@ -657,6 +686,7 @@ class PackagesClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -674,6 +704,7 @@ class PackagesClient:
         package_version_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """packages/delete-package-version-for-org
 
@@ -698,6 +729,7 @@ class PackagesClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -715,6 +747,7 @@ class PackagesClient:
         package_version_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """packages/restore-package-version-for-org
 
@@ -743,6 +776,7 @@ class PackagesClient:
             "POST",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -760,6 +794,7 @@ class PackagesClient:
         package_version_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """packages/restore-package-version-for-org
 
@@ -788,6 +823,7 @@ class PackagesClient:
             "POST",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -799,6 +835,7 @@ class PackagesClient:
         self,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Package], list[PackageType]]:
         """packages/list-docker-migration-conflicting-packages-for-authenticated-user
 
@@ -821,6 +858,7 @@ class PackagesClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Package],
         )
 
@@ -828,6 +866,7 @@ class PackagesClient:
         self,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Package], list[PackageType]]:
         """packages/list-docker-migration-conflicting-packages-for-authenticated-user
 
@@ -850,6 +889,7 @@ class PackagesClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Package],
         )
 
@@ -863,6 +903,7 @@ class PackagesClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Package], list[PackageType]]:
         """packages/list-packages-for-authenticated-user
 
@@ -893,6 +934,7 @@ class PackagesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Package],
             error_models={},
         )
@@ -907,6 +949,7 @@ class PackagesClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Package], list[PackageType]]:
         """packages/list-packages-for-authenticated-user
 
@@ -937,6 +980,7 @@ class PackagesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Package],
             error_models={},
         )
@@ -949,6 +993,7 @@ class PackagesClient:
         package_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[Package, PackageType]:
         """packages/get-package-for-authenticated-user
 
@@ -971,6 +1016,7 @@ class PackagesClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Package,
         )
 
@@ -982,6 +1028,7 @@ class PackagesClient:
         package_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[Package, PackageType]:
         """packages/get-package-for-authenticated-user
 
@@ -1004,6 +1051,7 @@ class PackagesClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Package,
         )
 
@@ -1015,6 +1063,7 @@ class PackagesClient:
         package_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """packages/delete-package-for-authenticated-user
 
@@ -1037,6 +1086,7 @@ class PackagesClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -1052,6 +1102,7 @@ class PackagesClient:
         package_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """packages/delete-package-for-authenticated-user
 
@@ -1074,6 +1125,7 @@ class PackagesClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -1090,6 +1142,7 @@ class PackagesClient:
         *,
         token: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """packages/restore-package-for-authenticated-user
 
@@ -1121,6 +1174,7 @@ class PackagesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -1137,6 +1191,7 @@ class PackagesClient:
         *,
         token: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """packages/restore-package-for-authenticated-user
 
@@ -1168,6 +1223,7 @@ class PackagesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -1186,6 +1242,7 @@ class PackagesClient:
         per_page: Missing[int] = UNSET,
         state: Missing[Literal["active", "deleted"]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[PackageVersion], list[PackageVersionType]]:
         """packages/get-all-package-versions-for-package-owned-by-authenticated-user
 
@@ -1215,6 +1272,7 @@ class PackagesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[PackageVersion],
             error_models={
                 "404": BasicError,
@@ -1234,6 +1292,7 @@ class PackagesClient:
         per_page: Missing[int] = UNSET,
         state: Missing[Literal["active", "deleted"]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[PackageVersion], list[PackageVersionType]]:
         """packages/get-all-package-versions-for-package-owned-by-authenticated-user
 
@@ -1263,6 +1322,7 @@ class PackagesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[PackageVersion],
             error_models={
                 "404": BasicError,
@@ -1280,6 +1340,7 @@ class PackagesClient:
         package_version_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[PackageVersion, PackageVersionType]:
         """packages/get-package-version-for-authenticated-user
 
@@ -1302,6 +1363,7 @@ class PackagesClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=PackageVersion,
         )
 
@@ -1314,6 +1376,7 @@ class PackagesClient:
         package_version_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[PackageVersion, PackageVersionType]:
         """packages/get-package-version-for-authenticated-user
 
@@ -1336,6 +1399,7 @@ class PackagesClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=PackageVersion,
         )
 
@@ -1348,6 +1412,7 @@ class PackagesClient:
         package_version_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """packages/delete-package-version-for-authenticated-user
 
@@ -1372,6 +1437,7 @@ class PackagesClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -1388,6 +1454,7 @@ class PackagesClient:
         package_version_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """packages/delete-package-version-for-authenticated-user
 
@@ -1412,6 +1479,7 @@ class PackagesClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -1428,6 +1496,7 @@ class PackagesClient:
         package_version_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """packages/restore-package-version-for-authenticated-user
 
@@ -1454,6 +1523,7 @@ class PackagesClient:
             "POST",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -1470,6 +1540,7 @@ class PackagesClient:
         package_version_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """packages/restore-package-version-for-authenticated-user
 
@@ -1496,6 +1567,7 @@ class PackagesClient:
             "POST",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -1508,6 +1580,7 @@ class PackagesClient:
         username: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Package], list[PackageType]]:
         """packages/list-docker-migration-conflicting-packages-for-user
 
@@ -1530,6 +1603,7 @@ class PackagesClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Package],
             error_models={
                 "403": BasicError,
@@ -1542,6 +1616,7 @@ class PackagesClient:
         username: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Package], list[PackageType]]:
         """packages/list-docker-migration-conflicting-packages-for-user
 
@@ -1564,6 +1639,7 @@ class PackagesClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Package],
             error_models={
                 "403": BasicError,
@@ -1582,6 +1658,7 @@ class PackagesClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Package], list[PackageType]]:
         """packages/list-packages-for-user
 
@@ -1612,6 +1689,7 @@ class PackagesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Package],
             error_models={
                 "403": BasicError,
@@ -1630,6 +1708,7 @@ class PackagesClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Package], list[PackageType]]:
         """packages/list-packages-for-user
 
@@ -1660,6 +1739,7 @@ class PackagesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Package],
             error_models={
                 "403": BasicError,
@@ -1676,6 +1756,7 @@ class PackagesClient:
         username: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[Package, PackageType]:
         """packages/get-package-for-user
 
@@ -1698,6 +1779,7 @@ class PackagesClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Package,
         )
 
@@ -1710,6 +1792,7 @@ class PackagesClient:
         username: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[Package, PackageType]:
         """packages/get-package-for-user
 
@@ -1732,6 +1815,7 @@ class PackagesClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Package,
         )
 
@@ -1744,6 +1828,7 @@ class PackagesClient:
         username: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """packages/delete-package-for-user
 
@@ -1768,6 +1853,7 @@ class PackagesClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -1784,6 +1870,7 @@ class PackagesClient:
         username: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """packages/delete-package-for-user
 
@@ -1808,6 +1895,7 @@ class PackagesClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -1825,6 +1913,7 @@ class PackagesClient:
         *,
         token: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """packages/restore-package-for-user
 
@@ -1858,6 +1947,7 @@ class PackagesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -1875,6 +1965,7 @@ class PackagesClient:
         *,
         token: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """packages/restore-package-for-user
 
@@ -1908,6 +1999,7 @@ class PackagesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -1924,6 +2016,7 @@ class PackagesClient:
         username: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[PackageVersion], list[PackageVersionType]]:
         """packages/get-all-package-versions-for-package-owned-by-user
 
@@ -1946,6 +2039,7 @@ class PackagesClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[PackageVersion],
             error_models={
                 "404": BasicError,
@@ -1963,6 +2057,7 @@ class PackagesClient:
         username: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[PackageVersion], list[PackageVersionType]]:
         """packages/get-all-package-versions-for-package-owned-by-user
 
@@ -1985,6 +2080,7 @@ class PackagesClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[PackageVersion],
             error_models={
                 "404": BasicError,
@@ -2003,6 +2099,7 @@ class PackagesClient:
         username: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[PackageVersion, PackageVersionType]:
         """packages/get-package-version-for-user
 
@@ -2025,6 +2122,7 @@ class PackagesClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=PackageVersion,
         )
 
@@ -2038,6 +2136,7 @@ class PackagesClient:
         username: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[PackageVersion, PackageVersionType]:
         """packages/get-package-version-for-user
 
@@ -2060,6 +2159,7 @@ class PackagesClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=PackageVersion,
         )
 
@@ -2073,6 +2173,7 @@ class PackagesClient:
         package_version_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """packages/delete-package-version-for-user
 
@@ -2097,6 +2198,7 @@ class PackagesClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -2114,6 +2216,7 @@ class PackagesClient:
         package_version_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """packages/delete-package-version-for-user
 
@@ -2138,6 +2241,7 @@ class PackagesClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -2155,6 +2259,7 @@ class PackagesClient:
         package_version_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """packages/restore-package-version-for-user
 
@@ -2183,6 +2288,7 @@ class PackagesClient:
             "POST",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -2200,6 +2306,7 @@ class PackagesClient:
         package_version_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """packages/restore-package-version-for-user
 
@@ -2228,6 +2335,7 @@ class PackagesClient:
             "POST",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
                 "403": BasicError,

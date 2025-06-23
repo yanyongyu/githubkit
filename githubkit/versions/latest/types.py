@@ -387,6 +387,9 @@ if TYPE_CHECKING:
         CodeSecurityConfigurationPropCodeScanningDefaultSetupOptionsType as CodeSecurityConfigurationPropCodeScanningDefaultSetupOptionsType,
     )
     from githubkit.versions.v2022_11_28.types import (
+        CodeSecurityConfigurationPropCodeScanningOptionsType as CodeSecurityConfigurationPropCodeScanningOptionsType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptionsType as CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptionsType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -10000,6 +10003,7 @@ else:
             "ClassroomAssignmentGradeType",
             "CodeSecurityConfigurationType",
             "CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptionsType",
+            "CodeSecurityConfigurationPropCodeScanningOptionsType",
             "CodeSecurityConfigurationPropCodeScanningDefaultSetupOptionsType",
             "CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsType",
             "CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropReviewersItemsType",

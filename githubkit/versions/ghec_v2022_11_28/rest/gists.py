@@ -65,6 +65,7 @@ class GistsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[BaseGist], list[BaseGistType]]:
         """gists/list
 
@@ -92,6 +93,7 @@ class GistsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[BaseGist],
             error_models={
                 "403": BasicError,
@@ -105,6 +107,7 @@ class GistsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[BaseGist], list[BaseGistType]]:
         """gists/list
 
@@ -132,6 +135,7 @@ class GistsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[BaseGist],
             error_models={
                 "403": BasicError,
@@ -140,7 +144,11 @@ class GistsClient:
 
     @overload
     def create(
-        self, *, headers: Optional[Mapping[str, str]] = None, data: GistsPostBodyType
+        self,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: GistsPostBodyType,
     ) -> Response[GistSimple, GistSimpleType]: ...
 
     @overload
@@ -149,6 +157,7 @@ class GistsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         description: Missing[str] = UNSET,
         files: GistsPostBodyPropFilesType,
         public: Missing[Union[bool, Literal["true", "false"]]] = UNSET,
@@ -158,6 +167,7 @@ class GistsClient:
         self,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[GistsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[GistSimple, GistSimpleType]:
@@ -193,6 +203,7 @@ class GistsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=GistSimple,
             error_models={
                 "422": ValidationError,
@@ -203,7 +214,11 @@ class GistsClient:
 
     @overload
     async def async_create(
-        self, *, headers: Optional[Mapping[str, str]] = None, data: GistsPostBodyType
+        self,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: GistsPostBodyType,
     ) -> Response[GistSimple, GistSimpleType]: ...
 
     @overload
@@ -212,6 +227,7 @@ class GistsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         description: Missing[str] = UNSET,
         files: GistsPostBodyPropFilesType,
         public: Missing[Union[bool, Literal["true", "false"]]] = UNSET,
@@ -221,6 +237,7 @@ class GistsClient:
         self,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[GistsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[GistSimple, GistSimpleType]:
@@ -256,6 +273,7 @@ class GistsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=GistSimple,
             error_models={
                 "422": ValidationError,
@@ -271,6 +289,7 @@ class GistsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[BaseGist], list[BaseGistType]]:
         """gists/list-public
 
@@ -300,6 +319,7 @@ class GistsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[BaseGist],
             error_models={
                 "422": ValidationError,
@@ -314,6 +334,7 @@ class GistsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[BaseGist], list[BaseGistType]]:
         """gists/list-public
 
@@ -343,6 +364,7 @@ class GistsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[BaseGist],
             error_models={
                 "422": ValidationError,
@@ -357,6 +379,7 @@ class GistsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[BaseGist], list[BaseGistType]]:
         """gists/list-starred
 
@@ -384,6 +407,7 @@ class GistsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[BaseGist],
             error_models={
                 "401": BasicError,
@@ -398,6 +422,7 @@ class GistsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[BaseGist], list[BaseGistType]]:
         """gists/list-starred
 
@@ -425,6 +450,7 @@ class GistsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[BaseGist],
             error_models={
                 "401": BasicError,
@@ -437,6 +463,7 @@ class GistsClient:
         gist_id: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[GistSimple, GistSimpleType]:
         """gists/get
 
@@ -462,6 +489,7 @@ class GistsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=GistSimple,
             error_models={
                 "403": GistsGistIdGetResponse403,
@@ -474,6 +502,7 @@ class GistsClient:
         gist_id: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[GistSimple, GistSimpleType]:
         """gists/get
 
@@ -499,6 +528,7 @@ class GistsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=GistSimple,
             error_models={
                 "403": GistsGistIdGetResponse403,
@@ -511,6 +541,7 @@ class GistsClient:
         gist_id: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """gists/delete
 
@@ -529,6 +560,7 @@ class GistsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -540,6 +572,7 @@ class GistsClient:
         gist_id: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """gists/delete
 
@@ -558,6 +591,7 @@ class GistsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -570,6 +604,7 @@ class GistsClient:
         gist_id: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Union[GistsGistIdPatchBodyType, None],
     ) -> Response[GistSimple, GistSimpleType]: ...
 
@@ -580,6 +615,7 @@ class GistsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         description: Missing[str] = UNSET,
         files: Missing[GistsGistIdPatchBodyPropFilesType] = UNSET,
     ) -> Response[GistSimple, GistSimpleType]: ...
@@ -589,6 +625,7 @@ class GistsClient:
         gist_id: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[Union[GistsGistIdPatchBodyType, None]] = UNSET,
         **kwargs,
     ) -> Response[GistSimple, GistSimpleType]:
@@ -637,6 +674,7 @@ class GistsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=GistSimple,
             error_models={
                 "422": ValidationError,
@@ -650,6 +688,7 @@ class GistsClient:
         gist_id: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Union[GistsGistIdPatchBodyType, None],
     ) -> Response[GistSimple, GistSimpleType]: ...
 
@@ -660,6 +699,7 @@ class GistsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         description: Missing[str] = UNSET,
         files: Missing[GistsGistIdPatchBodyPropFilesType] = UNSET,
     ) -> Response[GistSimple, GistSimpleType]: ...
@@ -669,6 +709,7 @@ class GistsClient:
         gist_id: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[Union[GistsGistIdPatchBodyType, None]] = UNSET,
         **kwargs,
     ) -> Response[GistSimple, GistSimpleType]:
@@ -717,6 +758,7 @@ class GistsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=GistSimple,
             error_models={
                 "422": ValidationError,
@@ -731,6 +773,7 @@ class GistsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[GistComment], list[GistCommentType]]:
         """gists/list-comments
 
@@ -762,6 +805,7 @@ class GistsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[GistComment],
             error_models={
                 "404": BasicError,
@@ -776,6 +820,7 @@ class GistsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[GistComment], list[GistCommentType]]:
         """gists/list-comments
 
@@ -807,6 +852,7 @@ class GistsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[GistComment],
             error_models={
                 "404": BasicError,
@@ -820,6 +866,7 @@ class GistsClient:
         gist_id: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: GistsGistIdCommentsPostBodyType,
     ) -> Response[GistComment, GistCommentType]: ...
 
@@ -830,6 +877,7 @@ class GistsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         body: str,
     ) -> Response[GistComment, GistCommentType]: ...
 
@@ -838,6 +886,7 @@ class GistsClient:
         gist_id: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[GistsGistIdCommentsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[GistComment, GistCommentType]:
@@ -875,6 +924,7 @@ class GistsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=GistComment,
             error_models={
                 "404": BasicError,
@@ -888,6 +938,7 @@ class GistsClient:
         gist_id: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: GistsGistIdCommentsPostBodyType,
     ) -> Response[GistComment, GistCommentType]: ...
 
@@ -898,6 +949,7 @@ class GistsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         body: str,
     ) -> Response[GistComment, GistCommentType]: ...
 
@@ -906,6 +958,7 @@ class GistsClient:
         gist_id: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[GistsGistIdCommentsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[GistComment, GistCommentType]:
@@ -943,6 +996,7 @@ class GistsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=GistComment,
             error_models={
                 "404": BasicError,
@@ -956,6 +1010,7 @@ class GistsClient:
         comment_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[GistComment, GistCommentType]:
         """gists/get-comment
 
@@ -981,6 +1036,7 @@ class GistsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=GistComment,
             error_models={
                 "404": BasicError,
@@ -994,6 +1050,7 @@ class GistsClient:
         comment_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[GistComment, GistCommentType]:
         """gists/get-comment
 
@@ -1019,6 +1076,7 @@ class GistsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=GistComment,
             error_models={
                 "404": BasicError,
@@ -1032,6 +1090,7 @@ class GistsClient:
         comment_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """gists/delete-comment
 
@@ -1050,6 +1109,7 @@ class GistsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -1062,6 +1122,7 @@ class GistsClient:
         comment_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """gists/delete-comment
 
@@ -1080,6 +1141,7 @@ class GistsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -1093,6 +1155,7 @@ class GistsClient:
         comment_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: GistsGistIdCommentsCommentIdPatchBodyType,
     ) -> Response[GistComment, GistCommentType]: ...
 
@@ -1104,6 +1167,7 @@ class GistsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         body: str,
     ) -> Response[GistComment, GistCommentType]: ...
 
@@ -1113,6 +1177,7 @@ class GistsClient:
         comment_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[GistsGistIdCommentsCommentIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[GistComment, GistCommentType]:
@@ -1154,6 +1219,7 @@ class GistsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=GistComment,
             error_models={
                 "404": BasicError,
@@ -1167,6 +1233,7 @@ class GistsClient:
         comment_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: GistsGistIdCommentsCommentIdPatchBodyType,
     ) -> Response[GistComment, GistCommentType]: ...
 
@@ -1178,6 +1245,7 @@ class GistsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         body: str,
     ) -> Response[GistComment, GistCommentType]: ...
 
@@ -1187,6 +1255,7 @@ class GistsClient:
         comment_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[GistsGistIdCommentsCommentIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[GistComment, GistCommentType]:
@@ -1228,6 +1297,7 @@ class GistsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=GistComment,
             error_models={
                 "404": BasicError,
@@ -1241,6 +1311,7 @@ class GistsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[GistCommit], list[GistCommitType]]:
         """gists/list-commits
 
@@ -1265,6 +1336,7 @@ class GistsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[GistCommit],
             error_models={
                 "404": BasicError,
@@ -1279,6 +1351,7 @@ class GistsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[GistCommit], list[GistCommitType]]:
         """gists/list-commits
 
@@ -1303,6 +1376,7 @@ class GistsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[GistCommit],
             error_models={
                 "404": BasicError,
@@ -1317,6 +1391,7 @@ class GistsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[GistSimple], list[GistSimpleType]]:
         """gists/list-forks
 
@@ -1341,6 +1416,7 @@ class GistsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[GistSimple],
             error_models={
                 "404": BasicError,
@@ -1355,6 +1431,7 @@ class GistsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[GistSimple], list[GistSimpleType]]:
         """gists/list-forks
 
@@ -1379,6 +1456,7 @@ class GistsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[GistSimple],
             error_models={
                 "404": BasicError,
@@ -1391,6 +1469,7 @@ class GistsClient:
         gist_id: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[BaseGist, BaseGistType]:
         """gists/fork
 
@@ -1409,6 +1488,7 @@ class GistsClient:
             "POST",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=BaseGist,
             error_models={
                 "404": BasicError,
@@ -1422,6 +1502,7 @@ class GistsClient:
         gist_id: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[BaseGist, BaseGistType]:
         """gists/fork
 
@@ -1440,6 +1521,7 @@ class GistsClient:
             "POST",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=BaseGist,
             error_models={
                 "404": BasicError,
@@ -1453,6 +1535,7 @@ class GistsClient:
         gist_id: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """gists/check-is-starred
 
@@ -1471,6 +1554,7 @@ class GistsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": GistsGistIdStarGetResponse404,
                 "403": BasicError,
@@ -1482,6 +1566,7 @@ class GistsClient:
         gist_id: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """gists/check-is-starred
 
@@ -1500,6 +1585,7 @@ class GistsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": GistsGistIdStarGetResponse404,
                 "403": BasicError,
@@ -1511,6 +1597,7 @@ class GistsClient:
         gist_id: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """gists/star
 
@@ -1531,6 +1618,7 @@ class GistsClient:
             "PUT",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -1542,6 +1630,7 @@ class GistsClient:
         gist_id: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """gists/star
 
@@ -1562,6 +1651,7 @@ class GistsClient:
             "PUT",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -1573,6 +1663,7 @@ class GistsClient:
         gist_id: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """gists/unstar
 
@@ -1591,6 +1682,7 @@ class GistsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -1602,6 +1694,7 @@ class GistsClient:
         gist_id: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """gists/unstar
 
@@ -1620,6 +1713,7 @@ class GistsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -1632,6 +1726,7 @@ class GistsClient:
         sha: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[GistSimple, GistSimpleType]:
         """gists/get-revision
 
@@ -1657,6 +1752,7 @@ class GistsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=GistSimple,
             error_models={
                 "422": ValidationError,
@@ -1671,6 +1767,7 @@ class GistsClient:
         sha: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[GistSimple, GistSimpleType]:
         """gists/get-revision
 
@@ -1696,6 +1793,7 @@ class GistsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=GistSimple,
             error_models={
                 "422": ValidationError,
@@ -1712,6 +1810,7 @@ class GistsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[BaseGist], list[BaseGistType]]:
         """gists/list-for-user
 
@@ -1739,6 +1838,7 @@ class GistsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[BaseGist],
             error_models={
                 "422": ValidationError,
@@ -1753,6 +1853,7 @@ class GistsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[BaseGist], list[BaseGistType]]:
         """gists/list-for-user
 
@@ -1780,6 +1881,7 @@ class GistsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[BaseGist],
             error_models={
                 "422": ValidationError,

@@ -27,6 +27,7 @@ class RateLimitOverviewPropResourcesType(TypedDict):
     actions_runner_registration: NotRequired[RateLimitType]
     scim: NotRequired[RateLimitType]
     dependency_snapshots: NotRequired[RateLimitType]
+    dependency_sbom: NotRequired[RateLimitType]
     code_scanning_autofix: NotRequired[RateLimitType]
 
 

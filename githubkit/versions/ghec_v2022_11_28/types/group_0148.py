@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
@@ -23,6 +24,7 @@ class GetAllCostCentersPropCostCentersItemsType(TypedDict):
 
     id: str
     name: str
+    state: NotRequired[Literal["active", "deleted"]]
     resources: list[GetAllCostCentersPropCostCentersItemsPropResourcesItemsType]
 
 

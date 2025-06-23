@@ -47,6 +47,7 @@ class MetaClient:
         self,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[Root, RootType]:
         """meta/root
 
@@ -67,6 +68,7 @@ class MetaClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Root,
         )
 
@@ -74,6 +76,7 @@ class MetaClient:
         self,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[Root, RootType]:
         """meta/root
 
@@ -94,6 +97,7 @@ class MetaClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Root,
         )
 
@@ -101,6 +105,7 @@ class MetaClient:
         self,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[ApiOverview, ApiOverviewType]:
         """meta/get
 
@@ -128,6 +133,7 @@ class MetaClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ApiOverview,
         )
 
@@ -135,6 +141,7 @@ class MetaClient:
         self,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[ApiOverview, ApiOverviewType]:
         """meta/get
 
@@ -162,6 +169,7 @@ class MetaClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ApiOverview,
         )
 
@@ -170,6 +178,7 @@ class MetaClient:
         *,
         s: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[str, str]:
         """meta/get-octocat
 
@@ -193,6 +202,7 @@ class MetaClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=str,
         )
 
@@ -201,6 +211,7 @@ class MetaClient:
         *,
         s: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[str, str]:
         """meta/get-octocat
 
@@ -224,6 +235,7 @@ class MetaClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=str,
         )
 
@@ -231,6 +243,7 @@ class MetaClient:
         self,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[date], list[date]]:
         """meta/get-all-versions
 
@@ -253,6 +266,7 @@ class MetaClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[date],
             error_models={
                 "404": BasicError,
@@ -263,6 +277,7 @@ class MetaClient:
         self,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[date], list[date]]:
         """meta/get-all-versions
 
@@ -285,6 +300,7 @@ class MetaClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[date],
             error_models={
                 "404": BasicError,
@@ -295,6 +311,7 @@ class MetaClient:
         self,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[str, str]:
         """meta/get-zen
 
@@ -313,6 +330,7 @@ class MetaClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=str,
         )
 
@@ -320,6 +338,7 @@ class MetaClient:
         self,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[str, str]:
         """meta/get-zen
 
@@ -338,5 +357,6 @@ class MetaClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=str,
         )

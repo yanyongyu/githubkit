@@ -42,6 +42,7 @@ class RateLimitClient:
         self,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[RateLimitOverview, RateLimitOverviewType]:
         """rate-limit/get
 
@@ -57,6 +58,7 @@ class RateLimitClient:
         * The `graphql` object provides your rate limit status for the GraphQL API. For more information, see "[Resource limitations](https://docs.github.com/enterprise-cloud@latest//graphql/overview/resource-limitations#rate-limit)."
         * The `integration_manifest` object provides your rate limit status for the `POST /app-manifests/{code}/conversions` operation. For more information, see "[Creating a GitHub App from a manifest](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/setting-up-a-github-app/creating-a-github-app-from-a-manifest#3-you-exchange-the-temporary-code-to-retrieve-the-app-configuration)."
         * The `dependency_snapshots` object provides your rate limit status for submitting snapshots to the dependency graph. For more information, see "[Dependency graph](https://docs.github.com/enterprise-cloud@latest//rest/dependency-graph)."
+        * The `dependency_sbom` object provides your rate limit status for requesting SBOMs from the dependency graph. For more information, see "[Dependency graph](https://docs.github.com/enterprise-cloud@latest//rest/dependency-graph)."
         * The `code_scanning_upload` object provides your rate limit status for uploading SARIF results to code scanning. For more information, see "[Uploading a SARIF file to GitHub](https://docs.github.com/enterprise-cloud@latest//code-security/code-scanning/integrating-with-code-scanning/uploading-a-sarif-file-to-github)."
         * The `actions_runner_registration` object provides your rate limit status for registering self-hosted runners in GitHub Actions. For more information, see "[Self-hosted runners](https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners)."
         * The `source_import` object is no longer in use for any API endpoints, and it will be removed in the next API version. For more information about API versions, see "[API Versions](https://docs.github.com/enterprise-cloud@latest//rest/about-the-rest-api/api-versions)."
@@ -77,6 +79,7 @@ class RateLimitClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=RateLimitOverview,
             error_models={
                 "404": BasicError,
@@ -87,6 +90,7 @@ class RateLimitClient:
         self,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[RateLimitOverview, RateLimitOverviewType]:
         """rate-limit/get
 
@@ -102,6 +106,7 @@ class RateLimitClient:
         * The `graphql` object provides your rate limit status for the GraphQL API. For more information, see "[Resource limitations](https://docs.github.com/enterprise-cloud@latest//graphql/overview/resource-limitations#rate-limit)."
         * The `integration_manifest` object provides your rate limit status for the `POST /app-manifests/{code}/conversions` operation. For more information, see "[Creating a GitHub App from a manifest](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/setting-up-a-github-app/creating-a-github-app-from-a-manifest#3-you-exchange-the-temporary-code-to-retrieve-the-app-configuration)."
         * The `dependency_snapshots` object provides your rate limit status for submitting snapshots to the dependency graph. For more information, see "[Dependency graph](https://docs.github.com/enterprise-cloud@latest//rest/dependency-graph)."
+        * The `dependency_sbom` object provides your rate limit status for requesting SBOMs from the dependency graph. For more information, see "[Dependency graph](https://docs.github.com/enterprise-cloud@latest//rest/dependency-graph)."
         * The `code_scanning_upload` object provides your rate limit status for uploading SARIF results to code scanning. For more information, see "[Uploading a SARIF file to GitHub](https://docs.github.com/enterprise-cloud@latest//code-security/code-scanning/integrating-with-code-scanning/uploading-a-sarif-file-to-github)."
         * The `actions_runner_registration` object provides your rate limit status for registering self-hosted runners in GitHub Actions. For more information, see "[Self-hosted runners](https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners)."
         * The `source_import` object is no longer in use for any API endpoints, and it will be removed in the next API version. For more information about API versions, see "[API Versions](https://docs.github.com/enterprise-cloud@latest//rest/about-the-rest-api/api-versions)."
@@ -122,6 +127,7 @@ class RateLimitClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=RateLimitOverview,
             error_models={
                 "404": BasicError,

@@ -100,6 +100,7 @@ class CodeScanningClient:
         state: Missing[Literal["open", "closed", "dismissed", "fixed"]] = UNSET,
         sort: Missing[Literal["created", "updated"]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         list[CodeScanningOrganizationAlertItems],
         list[CodeScanningOrganizationAlertItemsType],
@@ -144,6 +145,7 @@ class CodeScanningClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[CodeScanningOrganizationAlertItems],
             error_models={
                 "404": BasicError,
@@ -165,6 +167,7 @@ class CodeScanningClient:
         state: Missing[Literal["open", "closed", "dismissed", "fixed"]] = UNSET,
         sort: Missing[Literal["created", "updated"]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         list[CodeScanningOrganizationAlertItems],
         list[CodeScanningOrganizationAlertItemsType],
@@ -209,6 +212,7 @@ class CodeScanningClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[CodeScanningOrganizationAlertItems],
             error_models={
                 "404": BasicError,
@@ -233,6 +237,7 @@ class CodeScanningClient:
             Literal["critical", "high", "medium", "low", "warning", "note", "error"]
         ] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         list[CodeScanningOrganizationAlertItems],
         list[CodeScanningOrganizationAlertItemsType],
@@ -278,6 +283,7 @@ class CodeScanningClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[CodeScanningOrganizationAlertItems],
             error_models={
                 "404": BasicError,
@@ -302,6 +308,7 @@ class CodeScanningClient:
             Literal["critical", "high", "medium", "low", "warning", "note", "error"]
         ] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         list[CodeScanningOrganizationAlertItems],
         list[CodeScanningOrganizationAlertItemsType],
@@ -347,6 +354,7 @@ class CodeScanningClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[CodeScanningOrganizationAlertItems],
             error_models={
                 "404": BasicError,
@@ -374,6 +382,7 @@ class CodeScanningClient:
             Literal["critical", "high", "medium", "low", "warning", "note", "error"]
         ] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[CodeScanningAlertItems], list[CodeScanningAlertItemsType]]:
         """code-scanning/list-alerts-for-repo
 
@@ -420,6 +429,7 @@ class CodeScanningClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[CodeScanningAlertItems],
             error_models={
                 "403": BasicError,
@@ -448,6 +458,7 @@ class CodeScanningClient:
             Literal["critical", "high", "medium", "low", "warning", "note", "error"]
         ] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[CodeScanningAlertItems], list[CodeScanningAlertItemsType]]:
         """code-scanning/list-alerts-for-repo
 
@@ -494,6 +505,7 @@ class CodeScanningClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[CodeScanningAlertItems],
             error_models={
                 "403": BasicError,
@@ -509,6 +521,7 @@ class CodeScanningClient:
         alert_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[CodeScanningAlert, CodeScanningAlertType]:
         """code-scanning/get-alert
 
@@ -535,6 +548,7 @@ class CodeScanningClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CodeScanningAlert,
             error_models={
                 "403": BasicError,
@@ -550,6 +564,7 @@ class CodeScanningClient:
         alert_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[CodeScanningAlert, CodeScanningAlertType]:
         """code-scanning/get-alert
 
@@ -576,6 +591,7 @@ class CodeScanningClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CodeScanningAlert,
             error_models={
                 "403": BasicError,
@@ -592,6 +608,7 @@ class CodeScanningClient:
         alert_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyType,
     ) -> Response[CodeScanningAlert, CodeScanningAlertType]: ...
 
@@ -604,6 +621,7 @@ class CodeScanningClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         state: Literal["open", "dismissed"],
         dismissed_reason: Missing[
             Union[None, Literal["false positive", "won't fix", "used in tests"]]
@@ -619,6 +637,7 @@ class CodeScanningClient:
         alert_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[CodeScanningAlert, CodeScanningAlertType]:
@@ -659,6 +678,7 @@ class CodeScanningClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CodeScanningAlert,
             error_models={
                 "400": BasicError,
@@ -676,6 +696,7 @@ class CodeScanningClient:
         alert_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyType,
     ) -> Response[CodeScanningAlert, CodeScanningAlertType]: ...
 
@@ -688,6 +709,7 @@ class CodeScanningClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         state: Literal["open", "dismissed"],
         dismissed_reason: Missing[
             Union[None, Literal["false positive", "won't fix", "used in tests"]]
@@ -703,6 +725,7 @@ class CodeScanningClient:
         alert_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[CodeScanningAlert, CodeScanningAlertType]:
@@ -743,6 +766,7 @@ class CodeScanningClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CodeScanningAlert,
             error_models={
                 "400": BasicError,
@@ -759,6 +783,7 @@ class CodeScanningClient:
         alert_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[CodeScanningAutofix, CodeScanningAutofixType]:
         """code-scanning/get-autofix
 
@@ -785,6 +810,7 @@ class CodeScanningClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CodeScanningAutofix,
             error_models={
                 "400": BasicError,
@@ -801,6 +827,7 @@ class CodeScanningClient:
         alert_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[CodeScanningAutofix, CodeScanningAutofixType]:
         """code-scanning/get-autofix
 
@@ -827,6 +854,7 @@ class CodeScanningClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CodeScanningAutofix,
             error_models={
                 "400": BasicError,
@@ -843,6 +871,7 @@ class CodeScanningClient:
         alert_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[CodeScanningAutofix, CodeScanningAutofixType]:
         """code-scanning/create-autofix
 
@@ -873,6 +902,7 @@ class CodeScanningClient:
             "POST",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CodeScanningAutofix,
             error_models={
                 "400": BasicError,
@@ -889,6 +919,7 @@ class CodeScanningClient:
         alert_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[CodeScanningAutofix, CodeScanningAutofixType]:
         """code-scanning/create-autofix
 
@@ -919,6 +950,7 @@ class CodeScanningClient:
             "POST",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CodeScanningAutofix,
             error_models={
                 "400": BasicError,
@@ -936,6 +968,7 @@ class CodeScanningClient:
         alert_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[Union[CodeScanningAutofixCommitsType, None]] = UNSET,
     ) -> Response[
         CodeScanningAutofixCommitsResponse, CodeScanningAutofixCommitsResponseType
@@ -950,6 +983,7 @@ class CodeScanningClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         target_ref: Missing[str] = UNSET,
         message: Missing[str] = UNSET,
     ) -> Response[
@@ -963,6 +997,7 @@ class CodeScanningClient:
         alert_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[Union[CodeScanningAutofixCommitsType, None]] = UNSET,
         **kwargs,
     ) -> Response[
@@ -1010,6 +1045,7 @@ class CodeScanningClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CodeScanningAutofixCommitsResponse,
             error_models={
                 "400": BasicError,
@@ -1027,6 +1063,7 @@ class CodeScanningClient:
         alert_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[Union[CodeScanningAutofixCommitsType, None]] = UNSET,
     ) -> Response[
         CodeScanningAutofixCommitsResponse, CodeScanningAutofixCommitsResponseType
@@ -1041,6 +1078,7 @@ class CodeScanningClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         target_ref: Missing[str] = UNSET,
         message: Missing[str] = UNSET,
     ) -> Response[
@@ -1054,6 +1092,7 @@ class CodeScanningClient:
         alert_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[Union[CodeScanningAutofixCommitsType, None]] = UNSET,
         **kwargs,
     ) -> Response[
@@ -1101,6 +1140,7 @@ class CodeScanningClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CodeScanningAutofixCommitsResponse,
             error_models={
                 "400": BasicError,
@@ -1121,6 +1161,7 @@ class CodeScanningClient:
         ref: Missing[str] = UNSET,
         pr: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[CodeScanningAlertInstance], list[CodeScanningAlertInstanceType]]:
         """code-scanning/list-alert-instances
 
@@ -1155,6 +1196,7 @@ class CodeScanningClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[CodeScanningAlertInstance],
             error_models={
                 "403": BasicError,
@@ -1174,6 +1216,7 @@ class CodeScanningClient:
         ref: Missing[str] = UNSET,
         pr: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[CodeScanningAlertInstance], list[CodeScanningAlertInstanceType]]:
         """code-scanning/list-alert-instances
 
@@ -1208,6 +1251,7 @@ class CodeScanningClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[CodeScanningAlertInstance],
             error_models={
                 "403": BasicError,
@@ -1231,6 +1275,7 @@ class CodeScanningClient:
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         sort: Missing[Literal["created"]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[CodeScanningAnalysis], list[CodeScanningAnalysisType]]:
         """code-scanning/list-recent-analyses
 
@@ -1282,6 +1327,7 @@ class CodeScanningClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[CodeScanningAnalysis],
             error_models={
                 "403": BasicError,
@@ -1305,6 +1351,7 @@ class CodeScanningClient:
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         sort: Missing[Literal["created"]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[CodeScanningAnalysis], list[CodeScanningAnalysisType]]:
         """code-scanning/list-recent-analyses
 
@@ -1356,6 +1403,7 @@ class CodeScanningClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[CodeScanningAnalysis],
             error_models={
                 "403": BasicError,
@@ -1371,6 +1419,7 @@ class CodeScanningClient:
         analysis_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[CodeScanningAnalysis, CodeScanningAnalysisType]:
         """code-scanning/get-analysis
 
@@ -1411,6 +1460,7 @@ class CodeScanningClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CodeScanningAnalysis,
             error_models={
                 "403": BasicError,
@@ -1427,6 +1477,7 @@ class CodeScanningClient:
         analysis_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[CodeScanningAnalysis, CodeScanningAnalysisType]:
         """code-scanning/get-analysis
 
@@ -1467,6 +1518,7 @@ class CodeScanningClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CodeScanningAnalysis,
             error_models={
                 "403": BasicError,
@@ -1484,6 +1536,7 @@ class CodeScanningClient:
         *,
         confirm_delete: Missing[Union[str, None]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[CodeScanningAnalysisDeletion, CodeScanningAnalysisDeletionType]:
         """code-scanning/delete-analysis
 
@@ -1576,6 +1629,7 @@ class CodeScanningClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CodeScanningAnalysisDeletion,
             error_models={
                 "400": BasicError,
@@ -1593,6 +1647,7 @@ class CodeScanningClient:
         *,
         confirm_delete: Missing[Union[str, None]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[CodeScanningAnalysisDeletion, CodeScanningAnalysisDeletionType]:
         """code-scanning/delete-analysis
 
@@ -1685,6 +1740,7 @@ class CodeScanningClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CodeScanningAnalysisDeletion,
             error_models={
                 "400": BasicError,
@@ -1700,6 +1756,7 @@ class CodeScanningClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         list[CodeScanningCodeqlDatabase], list[CodeScanningCodeqlDatabaseType]
     ]:
@@ -1728,6 +1785,7 @@ class CodeScanningClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[CodeScanningCodeqlDatabase],
             error_models={
                 "403": BasicError,
@@ -1742,6 +1800,7 @@ class CodeScanningClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         list[CodeScanningCodeqlDatabase], list[CodeScanningCodeqlDatabaseType]
     ]:
@@ -1770,6 +1829,7 @@ class CodeScanningClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[CodeScanningCodeqlDatabase],
             error_models={
                 "403": BasicError,
@@ -1785,6 +1845,7 @@ class CodeScanningClient:
         language: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[CodeScanningCodeqlDatabase, CodeScanningCodeqlDatabaseType]:
         """code-scanning/get-codeql-database
 
@@ -1817,6 +1878,7 @@ class CodeScanningClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CodeScanningCodeqlDatabase,
             error_models={
                 "403": BasicError,
@@ -1832,6 +1894,7 @@ class CodeScanningClient:
         language: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[CodeScanningCodeqlDatabase, CodeScanningCodeqlDatabaseType]:
         """code-scanning/get-codeql-database
 
@@ -1864,6 +1927,7 @@ class CodeScanningClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CodeScanningCodeqlDatabase,
             error_models={
                 "403": BasicError,
@@ -1879,6 +1943,7 @@ class CodeScanningClient:
         language: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """code-scanning/delete-codeql-database
 
@@ -1904,6 +1969,7 @@ class CodeScanningClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "403": BasicError,
                 "404": BasicError,
@@ -1918,6 +1984,7 @@ class CodeScanningClient:
         language: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """code-scanning/delete-codeql-database
 
@@ -1943,6 +2010,7 @@ class CodeScanningClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "403": BasicError,
                 "404": BasicError,
@@ -1957,6 +2025,7 @@ class CodeScanningClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Union[
             ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0Type,
             ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1Type,
@@ -1972,6 +2041,7 @@ class CodeScanningClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         language: Literal[
             "cpp",
             "csharp",
@@ -1997,6 +2067,7 @@ class CodeScanningClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         language: Literal[
             "cpp",
             "csharp",
@@ -2022,6 +2093,7 @@ class CodeScanningClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         language: Literal[
             "cpp",
             "csharp",
@@ -2045,6 +2117,7 @@ class CodeScanningClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             Union[
                 ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0Type,
@@ -2106,6 +2179,7 @@ class CodeScanningClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CodeScanningVariantAnalysis,
             error_models={
                 "404": BasicError,
@@ -2121,6 +2195,7 @@ class CodeScanningClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Union[
             ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0Type,
             ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1Type,
@@ -2136,6 +2211,7 @@ class CodeScanningClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         language: Literal[
             "cpp",
             "csharp",
@@ -2161,6 +2237,7 @@ class CodeScanningClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         language: Literal[
             "cpp",
             "csharp",
@@ -2186,6 +2263,7 @@ class CodeScanningClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         language: Literal[
             "cpp",
             "csharp",
@@ -2209,6 +2287,7 @@ class CodeScanningClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             Union[
                 ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0Type,
@@ -2270,6 +2349,7 @@ class CodeScanningClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CodeScanningVariantAnalysis,
             error_models={
                 "404": BasicError,
@@ -2285,6 +2365,7 @@ class CodeScanningClient:
         codeql_variant_analysis_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[CodeScanningVariantAnalysis, CodeScanningVariantAnalysisType]:
         """code-scanning/get-variant-analysis
 
@@ -2311,6 +2392,7 @@ class CodeScanningClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CodeScanningVariantAnalysis,
             error_models={
                 "404": BasicError,
@@ -2325,6 +2407,7 @@ class CodeScanningClient:
         codeql_variant_analysis_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[CodeScanningVariantAnalysis, CodeScanningVariantAnalysisType]:
         """code-scanning/get-variant-analysis
 
@@ -2351,6 +2434,7 @@ class CodeScanningClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CodeScanningVariantAnalysis,
             error_models={
                 "404": BasicError,
@@ -2367,6 +2451,7 @@ class CodeScanningClient:
         repo_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         CodeScanningVariantAnalysisRepoTask, CodeScanningVariantAnalysisRepoTaskType
     ]:
@@ -2395,6 +2480,7 @@ class CodeScanningClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CodeScanningVariantAnalysisRepoTask,
             error_models={
                 "404": BasicError,
@@ -2411,6 +2497,7 @@ class CodeScanningClient:
         repo_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         CodeScanningVariantAnalysisRepoTask, CodeScanningVariantAnalysisRepoTaskType
     ]:
@@ -2439,6 +2526,7 @@ class CodeScanningClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CodeScanningVariantAnalysisRepoTask,
             error_models={
                 "404": BasicError,
@@ -2452,6 +2540,7 @@ class CodeScanningClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[CodeScanningDefaultSetup, CodeScanningDefaultSetupType]:
         """code-scanning/get-default-setup
 
@@ -2478,6 +2567,7 @@ class CodeScanningClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CodeScanningDefaultSetup,
             error_models={
                 "403": BasicError,
@@ -2492,6 +2582,7 @@ class CodeScanningClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[CodeScanningDefaultSetup, CodeScanningDefaultSetupType]:
         """code-scanning/get-default-setup
 
@@ -2518,6 +2609,7 @@ class CodeScanningClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CodeScanningDefaultSetup,
             error_models={
                 "403": BasicError,
@@ -2533,6 +2625,7 @@ class CodeScanningClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: CodeScanningDefaultSetupUpdateType,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
 
@@ -2544,6 +2637,7 @@ class CodeScanningClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         state: Missing[Literal["configured", "not-configured"]] = UNSET,
         runner_type: Missing[Literal["standard", "labeled"]] = UNSET,
         runner_label: Missing[Union[str, None]] = UNSET,
@@ -2572,6 +2666,7 @@ class CodeScanningClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[CodeScanningDefaultSetupUpdateType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject, EmptyObjectType]:
@@ -2611,6 +2706,7 @@ class CodeScanningClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=EmptyObject,
             error_models={
                 "403": BasicError,
@@ -2627,6 +2723,7 @@ class CodeScanningClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: CodeScanningDefaultSetupUpdateType,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
 
@@ -2638,6 +2735,7 @@ class CodeScanningClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         state: Missing[Literal["configured", "not-configured"]] = UNSET,
         runner_type: Missing[Literal["standard", "labeled"]] = UNSET,
         runner_label: Missing[Union[str, None]] = UNSET,
@@ -2666,6 +2764,7 @@ class CodeScanningClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[CodeScanningDefaultSetupUpdateType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject, EmptyObjectType]:
@@ -2705,6 +2804,7 @@ class CodeScanningClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=EmptyObject,
             error_models={
                 "403": BasicError,
@@ -2721,6 +2821,7 @@ class CodeScanningClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoCodeScanningSarifsPostBodyType,
     ) -> Response[CodeScanningSarifsReceipt, CodeScanningSarifsReceiptType]: ...
 
@@ -2732,6 +2833,7 @@ class CodeScanningClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         commit_sha: str,
         ref: str,
         sarif: str,
@@ -2747,6 +2849,7 @@ class CodeScanningClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoCodeScanningSarifsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[CodeScanningSarifsReceipt, CodeScanningSarifsReceiptType]:
@@ -2817,6 +2920,7 @@ class CodeScanningClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CodeScanningSarifsReceipt,
             error_models={
                 "403": BasicError,
@@ -2832,6 +2936,7 @@ class CodeScanningClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoCodeScanningSarifsPostBodyType,
     ) -> Response[CodeScanningSarifsReceipt, CodeScanningSarifsReceiptType]: ...
 
@@ -2843,6 +2948,7 @@ class CodeScanningClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         commit_sha: str,
         ref: str,
         sarif: str,
@@ -2858,6 +2964,7 @@ class CodeScanningClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoCodeScanningSarifsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[CodeScanningSarifsReceipt, CodeScanningSarifsReceiptType]:
@@ -2928,6 +3035,7 @@ class CodeScanningClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CodeScanningSarifsReceipt,
             error_models={
                 "403": BasicError,
@@ -2943,6 +3051,7 @@ class CodeScanningClient:
         sarif_id: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[CodeScanningSarifsStatus, CodeScanningSarifsStatusType]:
         """code-scanning/get-sarif
 
@@ -2968,6 +3077,7 @@ class CodeScanningClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CodeScanningSarifsStatus,
             error_models={
                 "403": BasicError,
@@ -2982,6 +3092,7 @@ class CodeScanningClient:
         sarif_id: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[CodeScanningSarifsStatus, CodeScanningSarifsStatusType]:
         """code-scanning/get-sarif
 
@@ -3007,6 +3118,7 @@ class CodeScanningClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CodeScanningSarifsStatus,
             error_models={
                 "403": BasicError,

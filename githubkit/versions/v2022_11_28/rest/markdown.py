@@ -47,7 +47,11 @@ class MarkdownClient:
 
     @overload
     def render(
-        self, *, headers: Optional[Mapping[str, str]] = None, data: MarkdownPostBodyType
+        self,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: MarkdownPostBodyType,
     ) -> Response[str, str]: ...
 
     @overload
@@ -56,6 +60,7 @@ class MarkdownClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         text: str,
         mode: Missing[Literal["markdown", "gfm"]] = UNSET,
         context: Missing[str] = UNSET,
@@ -65,12 +70,15 @@ class MarkdownClient:
         self,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[MarkdownPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[str, str]:
         """markdown/render
 
         POST /markdown
+
+        Depending on what is rendered in the Markdown, you may need to provide additional token scopes for labels, such as `issues:read` or `pull_requests:read`.
 
         See also: https://docs.github.com/rest/markdown/markdown#render-a-markdown-document
         """
@@ -95,12 +103,17 @@ class MarkdownClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=str,
         )
 
     @overload
     async def async_render(
-        self, *, headers: Optional[Mapping[str, str]] = None, data: MarkdownPostBodyType
+        self,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: MarkdownPostBodyType,
     ) -> Response[str, str]: ...
 
     @overload
@@ -109,6 +122,7 @@ class MarkdownClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         text: str,
         mode: Missing[Literal["markdown", "gfm"]] = UNSET,
         context: Missing[str] = UNSET,
@@ -118,12 +132,15 @@ class MarkdownClient:
         self,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[MarkdownPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[str, str]:
         """markdown/render
 
         POST /markdown
+
+        Depending on what is rendered in the Markdown, you may need to provide additional token scopes for labels, such as `issues:read` or `pull_requests:read`.
 
         See also: https://docs.github.com/rest/markdown/markdown#render-a-markdown-document
         """
@@ -148,6 +165,7 @@ class MarkdownClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=str,
         )
 
@@ -155,6 +173,7 @@ class MarkdownClient:
         self,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: str,
     ) -> Response[str, str]:
         """markdown/render-raw
@@ -181,6 +200,7 @@ class MarkdownClient:
             url,
             content=exclude_unset(content),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=str,
         )
 
@@ -188,6 +208,7 @@ class MarkdownClient:
         self,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: str,
     ) -> Response[str, str]:
         """markdown/render-raw
@@ -214,5 +235,6 @@ class MarkdownClient:
             url,
             content=exclude_unset(content),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=str,
         )

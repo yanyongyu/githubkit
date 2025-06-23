@@ -82,6 +82,7 @@ class ProjectsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Project], list[ProjectType]]:
         """DEPRECATED projects/list-for-org
 
@@ -111,6 +112,7 @@ class ProjectsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Project],
             error_models={
                 "422": ValidationErrorSimple,
@@ -125,6 +127,7 @@ class ProjectsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Project], list[ProjectType]]:
         """DEPRECATED projects/list-for-org
 
@@ -154,6 +157,7 @@ class ProjectsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Project],
             error_models={
                 "422": ValidationErrorSimple,
@@ -166,6 +170,7 @@ class ProjectsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgProjectsPostBodyType,
     ) -> Response[Project, ProjectType]: ...
 
@@ -176,6 +181,7 @@ class ProjectsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: str,
         body: Missing[str] = UNSET,
     ) -> Response[Project, ProjectType]: ...
@@ -185,6 +191,7 @@ class ProjectsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgProjectsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Project, ProjectType]:
@@ -224,6 +231,7 @@ class ProjectsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Project,
             error_models={
                 "401": BasicError,
@@ -240,6 +248,7 @@ class ProjectsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgProjectsPostBodyType,
     ) -> Response[Project, ProjectType]: ...
 
@@ -250,6 +259,7 @@ class ProjectsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: str,
         body: Missing[str] = UNSET,
     ) -> Response[Project, ProjectType]: ...
@@ -259,6 +269,7 @@ class ProjectsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgProjectsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Project, ProjectType]:
@@ -298,6 +309,7 @@ class ProjectsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Project,
             error_models={
                 "401": BasicError,
@@ -313,6 +325,7 @@ class ProjectsClient:
         card_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[ProjectCard, ProjectCardType]:
         """DEPRECATED projects/get-card
 
@@ -335,6 +348,7 @@ class ProjectsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ProjectCard,
             error_models={
                 "403": BasicError,
@@ -348,6 +362,7 @@ class ProjectsClient:
         card_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[ProjectCard, ProjectCardType]:
         """DEPRECATED projects/get-card
 
@@ -370,6 +385,7 @@ class ProjectsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ProjectCard,
             error_models={
                 "403": BasicError,
@@ -383,6 +399,7 @@ class ProjectsClient:
         card_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """DEPRECATED projects/delete-card
 
@@ -405,6 +422,7 @@ class ProjectsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "403": ProjectsColumnsCardsCardIdDeleteResponse403,
                 "401": BasicError,
@@ -417,6 +435,7 @@ class ProjectsClient:
         card_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """DEPRECATED projects/delete-card
 
@@ -439,6 +458,7 @@ class ProjectsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "403": ProjectsColumnsCardsCardIdDeleteResponse403,
                 "401": BasicError,
@@ -452,6 +472,7 @@ class ProjectsClient:
         card_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ProjectsColumnsCardsCardIdPatchBodyType] = UNSET,
     ) -> Response[ProjectCard, ProjectCardType]: ...
 
@@ -462,6 +483,7 @@ class ProjectsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         note: Missing[Union[str, None]] = UNSET,
         archived: Missing[bool] = UNSET,
     ) -> Response[ProjectCard, ProjectCardType]: ...
@@ -471,6 +493,7 @@ class ProjectsClient:
         card_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ProjectsColumnsCardsCardIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[ProjectCard, ProjectCardType]:
@@ -510,6 +533,7 @@ class ProjectsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ProjectCard,
             error_models={
                 "403": BasicError,
@@ -525,6 +549,7 @@ class ProjectsClient:
         card_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ProjectsColumnsCardsCardIdPatchBodyType] = UNSET,
     ) -> Response[ProjectCard, ProjectCardType]: ...
 
@@ -535,6 +560,7 @@ class ProjectsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         note: Missing[Union[str, None]] = UNSET,
         archived: Missing[bool] = UNSET,
     ) -> Response[ProjectCard, ProjectCardType]: ...
@@ -544,6 +570,7 @@ class ProjectsClient:
         card_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ProjectsColumnsCardsCardIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[ProjectCard, ProjectCardType]:
@@ -583,6 +610,7 @@ class ProjectsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ProjectCard,
             error_models={
                 "403": BasicError,
@@ -598,6 +626,7 @@ class ProjectsClient:
         card_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ProjectsColumnsCardsCardIdMovesPostBodyType,
     ) -> Response[
         ProjectsColumnsCardsCardIdMovesPostResponse201,
@@ -611,6 +640,7 @@ class ProjectsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         position: str,
         column_id: Missing[int] = UNSET,
     ) -> Response[
@@ -623,6 +653,7 @@ class ProjectsClient:
         card_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ProjectsColumnsCardsCardIdMovesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[
@@ -667,6 +698,7 @@ class ProjectsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ProjectsColumnsCardsCardIdMovesPostResponse201,
             error_models={
                 "403": ProjectsColumnsCardsCardIdMovesPostResponse403,
@@ -682,6 +714,7 @@ class ProjectsClient:
         card_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ProjectsColumnsCardsCardIdMovesPostBodyType,
     ) -> Response[
         ProjectsColumnsCardsCardIdMovesPostResponse201,
@@ -695,6 +728,7 @@ class ProjectsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         position: str,
         column_id: Missing[int] = UNSET,
     ) -> Response[
@@ -707,6 +741,7 @@ class ProjectsClient:
         card_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ProjectsColumnsCardsCardIdMovesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[
@@ -751,6 +786,7 @@ class ProjectsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ProjectsColumnsCardsCardIdMovesPostResponse201,
             error_models={
                 "403": ProjectsColumnsCardsCardIdMovesPostResponse403,
@@ -765,6 +801,7 @@ class ProjectsClient:
         column_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[ProjectColumn, ProjectColumnType]:
         """DEPRECATED projects/get-column
 
@@ -787,6 +824,7 @@ class ProjectsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ProjectColumn,
             error_models={
                 "403": BasicError,
@@ -800,6 +838,7 @@ class ProjectsClient:
         column_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[ProjectColumn, ProjectColumnType]:
         """DEPRECATED projects/get-column
 
@@ -822,6 +861,7 @@ class ProjectsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ProjectColumn,
             error_models={
                 "403": BasicError,
@@ -835,6 +875,7 @@ class ProjectsClient:
         column_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """DEPRECATED projects/delete-column
 
@@ -857,6 +898,7 @@ class ProjectsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "403": BasicError,
                 "401": BasicError,
@@ -868,6 +910,7 @@ class ProjectsClient:
         column_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """DEPRECATED projects/delete-column
 
@@ -890,6 +933,7 @@ class ProjectsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "403": BasicError,
                 "401": BasicError,
@@ -902,6 +946,7 @@ class ProjectsClient:
         column_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ProjectsColumnsColumnIdPatchBodyType,
     ) -> Response[ProjectColumn, ProjectColumnType]: ...
 
@@ -912,6 +957,7 @@ class ProjectsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: str,
     ) -> Response[ProjectColumn, ProjectColumnType]: ...
 
@@ -920,6 +966,7 @@ class ProjectsClient:
         column_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ProjectsColumnsColumnIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[ProjectColumn, ProjectColumnType]:
@@ -954,6 +1001,7 @@ class ProjectsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ProjectColumn,
             error_models={
                 "403": BasicError,
@@ -967,6 +1015,7 @@ class ProjectsClient:
         column_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ProjectsColumnsColumnIdPatchBodyType,
     ) -> Response[ProjectColumn, ProjectColumnType]: ...
 
@@ -977,6 +1026,7 @@ class ProjectsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: str,
     ) -> Response[ProjectColumn, ProjectColumnType]: ...
 
@@ -985,6 +1035,7 @@ class ProjectsClient:
         column_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ProjectsColumnsColumnIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[ProjectColumn, ProjectColumnType]:
@@ -1019,6 +1070,7 @@ class ProjectsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ProjectColumn,
             error_models={
                 "403": BasicError,
@@ -1034,6 +1086,7 @@ class ProjectsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[ProjectCard], list[ProjectCardType]]:
         """DEPRECATED projects/list-cards
 
@@ -1063,6 +1116,7 @@ class ProjectsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[ProjectCard],
             error_models={
                 "403": BasicError,
@@ -1078,6 +1132,7 @@ class ProjectsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[ProjectCard], list[ProjectCardType]]:
         """DEPRECATED projects/list-cards
 
@@ -1107,6 +1162,7 @@ class ProjectsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[ProjectCard],
             error_models={
                 "403": BasicError,
@@ -1120,6 +1176,7 @@ class ProjectsClient:
         column_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Union[
             ProjectsColumnsColumnIdCardsPostBodyOneof0Type,
             ProjectsColumnsColumnIdCardsPostBodyOneof1Type,
@@ -1133,6 +1190,7 @@ class ProjectsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         note: Union[str, None],
     ) -> Response[ProjectCard, ProjectCardType]: ...
 
@@ -1143,6 +1201,7 @@ class ProjectsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         content_id: int,
         content_type: str,
     ) -> Response[ProjectCard, ProjectCardType]: ...
@@ -1152,6 +1211,7 @@ class ProjectsClient:
         column_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             Union[
                 ProjectsColumnsColumnIdCardsPostBodyOneof0Type,
@@ -1207,6 +1267,7 @@ class ProjectsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ProjectCard,
             error_models={
                 "403": BasicError,
@@ -1222,6 +1283,7 @@ class ProjectsClient:
         column_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Union[
             ProjectsColumnsColumnIdCardsPostBodyOneof0Type,
             ProjectsColumnsColumnIdCardsPostBodyOneof1Type,
@@ -1235,6 +1297,7 @@ class ProjectsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         note: Union[str, None],
     ) -> Response[ProjectCard, ProjectCardType]: ...
 
@@ -1245,6 +1308,7 @@ class ProjectsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         content_id: int,
         content_type: str,
     ) -> Response[ProjectCard, ProjectCardType]: ...
@@ -1254,6 +1318,7 @@ class ProjectsClient:
         column_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             Union[
                 ProjectsColumnsColumnIdCardsPostBodyOneof0Type,
@@ -1309,6 +1374,7 @@ class ProjectsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ProjectCard,
             error_models={
                 "403": BasicError,
@@ -1324,6 +1390,7 @@ class ProjectsClient:
         column_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ProjectsColumnsColumnIdMovesPostBodyType,
     ) -> Response[
         ProjectsColumnsColumnIdMovesPostResponse201,
@@ -1337,6 +1404,7 @@ class ProjectsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         position: str,
     ) -> Response[
         ProjectsColumnsColumnIdMovesPostResponse201,
@@ -1348,6 +1416,7 @@ class ProjectsClient:
         column_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ProjectsColumnsColumnIdMovesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[
@@ -1390,6 +1459,7 @@ class ProjectsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ProjectsColumnsColumnIdMovesPostResponse201,
             error_models={
                 "403": BasicError,
@@ -1404,6 +1474,7 @@ class ProjectsClient:
         column_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ProjectsColumnsColumnIdMovesPostBodyType,
     ) -> Response[
         ProjectsColumnsColumnIdMovesPostResponse201,
@@ -1417,6 +1488,7 @@ class ProjectsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         position: str,
     ) -> Response[
         ProjectsColumnsColumnIdMovesPostResponse201,
@@ -1428,6 +1500,7 @@ class ProjectsClient:
         column_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ProjectsColumnsColumnIdMovesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[
@@ -1470,6 +1543,7 @@ class ProjectsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ProjectsColumnsColumnIdMovesPostResponse201,
             error_models={
                 "403": BasicError,
@@ -1483,6 +1557,7 @@ class ProjectsClient:
         project_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[Project, ProjectType]:
         """DEPRECATED projects/get
 
@@ -1505,6 +1580,7 @@ class ProjectsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Project,
             error_models={
                 "403": BasicError,
@@ -1517,6 +1593,7 @@ class ProjectsClient:
         project_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[Project, ProjectType]:
         """DEPRECATED projects/get
 
@@ -1539,6 +1616,7 @@ class ProjectsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Project,
             error_models={
                 "403": BasicError,
@@ -1551,6 +1629,7 @@ class ProjectsClient:
         project_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """DEPRECATED projects/delete
 
@@ -1573,6 +1652,7 @@ class ProjectsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "403": ProjectsProjectIdDeleteResponse403,
                 "401": BasicError,
@@ -1586,6 +1666,7 @@ class ProjectsClient:
         project_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """DEPRECATED projects/delete
 
@@ -1608,6 +1689,7 @@ class ProjectsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "403": ProjectsProjectIdDeleteResponse403,
                 "401": BasicError,
@@ -1622,6 +1704,7 @@ class ProjectsClient:
         project_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ProjectsProjectIdPatchBodyType] = UNSET,
     ) -> Response[Project, ProjectType]: ...
 
@@ -1632,6 +1715,7 @@ class ProjectsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: Missing[str] = UNSET,
         body: Missing[Union[str, None]] = UNSET,
         state: Missing[str] = UNSET,
@@ -1646,6 +1730,7 @@ class ProjectsClient:
         project_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ProjectsProjectIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Project, ProjectType]:
@@ -1686,6 +1771,7 @@ class ProjectsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Project,
             error_models={
                 "403": ProjectsProjectIdPatchResponse403,
@@ -1701,6 +1787,7 @@ class ProjectsClient:
         project_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ProjectsProjectIdPatchBodyType] = UNSET,
     ) -> Response[Project, ProjectType]: ...
 
@@ -1711,6 +1798,7 @@ class ProjectsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: Missing[str] = UNSET,
         body: Missing[Union[str, None]] = UNSET,
         state: Missing[str] = UNSET,
@@ -1725,6 +1813,7 @@ class ProjectsClient:
         project_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ProjectsProjectIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Project, ProjectType]:
@@ -1765,6 +1854,7 @@ class ProjectsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Project,
             error_models={
                 "403": ProjectsProjectIdPatchResponse403,
@@ -1782,6 +1872,7 @@ class ProjectsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """DEPRECATED projects/list-collaborators
 
@@ -1811,6 +1902,7 @@ class ProjectsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[SimpleUser],
             error_models={
                 "404": BasicError,
@@ -1828,6 +1920,7 @@ class ProjectsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """DEPRECATED projects/list-collaborators
 
@@ -1857,6 +1950,7 @@ class ProjectsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[SimpleUser],
             error_models={
                 "404": BasicError,
@@ -1873,6 +1967,7 @@ class ProjectsClient:
         username: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             Union[ProjectsProjectIdCollaboratorsUsernamePutBodyType, None]
         ] = UNSET,
@@ -1886,6 +1981,7 @@ class ProjectsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         permission: Missing[Literal["read", "write", "admin"]] = UNSET,
     ) -> Response: ...
 
@@ -1895,6 +1991,7 @@ class ProjectsClient:
         username: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             Union[ProjectsProjectIdCollaboratorsUsernamePutBodyType, None]
         ] = UNSET,
@@ -1939,6 +2036,7 @@ class ProjectsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
                 "422": ValidationError,
@@ -1954,6 +2052,7 @@ class ProjectsClient:
         username: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             Union[ProjectsProjectIdCollaboratorsUsernamePutBodyType, None]
         ] = UNSET,
@@ -1967,6 +2066,7 @@ class ProjectsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         permission: Missing[Literal["read", "write", "admin"]] = UNSET,
     ) -> Response: ...
 
@@ -1976,6 +2076,7 @@ class ProjectsClient:
         username: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             Union[ProjectsProjectIdCollaboratorsUsernamePutBodyType, None]
         ] = UNSET,
@@ -2020,6 +2121,7 @@ class ProjectsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
                 "422": ValidationError,
@@ -2034,6 +2136,7 @@ class ProjectsClient:
         username: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """DEPRECATED projects/remove-collaborator
 
@@ -2056,6 +2159,7 @@ class ProjectsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -2070,6 +2174,7 @@ class ProjectsClient:
         username: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """DEPRECATED projects/remove-collaborator
 
@@ -2092,6 +2197,7 @@ class ProjectsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -2106,6 +2212,7 @@ class ProjectsClient:
         username: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[ProjectCollaboratorPermission, ProjectCollaboratorPermissionType]:
         """DEPRECATED projects/get-permission-for-user
 
@@ -2128,6 +2235,7 @@ class ProjectsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ProjectCollaboratorPermission,
             error_models={
                 "404": BasicError,
@@ -2143,6 +2251,7 @@ class ProjectsClient:
         username: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[ProjectCollaboratorPermission, ProjectCollaboratorPermissionType]:
         """DEPRECATED projects/get-permission-for-user
 
@@ -2165,6 +2274,7 @@ class ProjectsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ProjectCollaboratorPermission,
             error_models={
                 "404": BasicError,
@@ -2181,6 +2291,7 @@ class ProjectsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[ProjectColumn], list[ProjectColumnType]]:
         """DEPRECATED projects/list-columns
 
@@ -2209,6 +2320,7 @@ class ProjectsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[ProjectColumn],
             error_models={
                 "403": BasicError,
@@ -2223,6 +2335,7 @@ class ProjectsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[ProjectColumn], list[ProjectColumnType]]:
         """DEPRECATED projects/list-columns
 
@@ -2251,6 +2364,7 @@ class ProjectsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[ProjectColumn],
             error_models={
                 "403": BasicError,
@@ -2264,6 +2378,7 @@ class ProjectsClient:
         project_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ProjectsProjectIdColumnsPostBodyType,
     ) -> Response[ProjectColumn, ProjectColumnType]: ...
 
@@ -2274,6 +2389,7 @@ class ProjectsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: str,
     ) -> Response[ProjectColumn, ProjectColumnType]: ...
 
@@ -2282,6 +2398,7 @@ class ProjectsClient:
         project_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ProjectsProjectIdColumnsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[ProjectColumn, ProjectColumnType]:
@@ -2321,6 +2438,7 @@ class ProjectsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ProjectColumn,
             error_models={
                 "403": BasicError,
@@ -2335,6 +2453,7 @@ class ProjectsClient:
         project_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ProjectsProjectIdColumnsPostBodyType,
     ) -> Response[ProjectColumn, ProjectColumnType]: ...
 
@@ -2345,6 +2464,7 @@ class ProjectsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: str,
     ) -> Response[ProjectColumn, ProjectColumnType]: ...
 
@@ -2353,6 +2473,7 @@ class ProjectsClient:
         project_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ProjectsProjectIdColumnsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[ProjectColumn, ProjectColumnType]:
@@ -2392,6 +2513,7 @@ class ProjectsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ProjectColumn,
             error_models={
                 "403": BasicError,
@@ -2409,6 +2531,7 @@ class ProjectsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Project], list[ProjectType]]:
         """DEPRECATED projects/list-for-repo
 
@@ -2438,6 +2561,7 @@ class ProjectsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Project],
             error_models={
                 "401": BasicError,
@@ -2457,6 +2581,7 @@ class ProjectsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Project], list[ProjectType]]:
         """DEPRECATED projects/list-for-repo
 
@@ -2486,6 +2611,7 @@ class ProjectsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Project],
             error_models={
                 "401": BasicError,
@@ -2503,6 +2629,7 @@ class ProjectsClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoProjectsPostBodyType,
     ) -> Response[Project, ProjectType]: ...
 
@@ -2514,6 +2641,7 @@ class ProjectsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: str,
         body: Missing[str] = UNSET,
     ) -> Response[Project, ProjectType]: ...
@@ -2524,6 +2652,7 @@ class ProjectsClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoProjectsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Project, ProjectType]:
@@ -2563,6 +2692,7 @@ class ProjectsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Project,
             error_models={
                 "401": BasicError,
@@ -2580,6 +2710,7 @@ class ProjectsClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoProjectsPostBodyType,
     ) -> Response[Project, ProjectType]: ...
 
@@ -2591,6 +2722,7 @@ class ProjectsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: str,
         body: Missing[str] = UNSET,
     ) -> Response[Project, ProjectType]: ...
@@ -2601,6 +2733,7 @@ class ProjectsClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoProjectsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Project, ProjectType]:
@@ -2640,6 +2773,7 @@ class ProjectsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Project,
             error_models={
                 "401": BasicError,
@@ -2655,6 +2789,7 @@ class ProjectsClient:
         self,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: UserProjectsPostBodyType,
     ) -> Response[Project, ProjectType]: ...
 
@@ -2664,6 +2799,7 @@ class ProjectsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: str,
         body: Missing[Union[str, None]] = UNSET,
     ) -> Response[Project, ProjectType]: ...
@@ -2672,6 +2808,7 @@ class ProjectsClient:
         self,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[UserProjectsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Project, ProjectType]:
@@ -2711,6 +2848,7 @@ class ProjectsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Project,
             error_models={
                 "403": BasicError,
@@ -2724,6 +2862,7 @@ class ProjectsClient:
         self,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: UserProjectsPostBodyType,
     ) -> Response[Project, ProjectType]: ...
 
@@ -2733,6 +2872,7 @@ class ProjectsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: str,
         body: Missing[Union[str, None]] = UNSET,
     ) -> Response[Project, ProjectType]: ...
@@ -2741,6 +2881,7 @@ class ProjectsClient:
         self,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[UserProjectsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Project, ProjectType]:
@@ -2780,6 +2921,7 @@ class ProjectsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Project,
             error_models={
                 "403": BasicError,
@@ -2796,6 +2938,7 @@ class ProjectsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Project], list[ProjectType]]:
         """DEPRECATED projects/list-for-user
 
@@ -2825,6 +2968,7 @@ class ProjectsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Project],
             error_models={
                 "422": ValidationError,
@@ -2839,6 +2983,7 @@ class ProjectsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Project], list[ProjectType]]:
         """DEPRECATED projects/list-for-user
 
@@ -2868,6 +3013,7 @@ class ProjectsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Project],
             error_models={
                 "422": ValidationError,

@@ -216,6 +216,7 @@ class ActionsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[ActionsCacheUsageOrgEnterprise, ActionsCacheUsageOrgEnterpriseType]:
         """actions/get-actions-cache-usage-for-org
 
@@ -239,6 +240,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ActionsCacheUsageOrgEnterprise,
         )
 
@@ -247,6 +249,7 @@ class ActionsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[ActionsCacheUsageOrgEnterprise, ActionsCacheUsageOrgEnterpriseType]:
         """actions/get-actions-cache-usage-for-org
 
@@ -270,6 +273,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ActionsCacheUsageOrgEnterprise,
         )
 
@@ -280,6 +284,7 @@ class ActionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         OrgsOrgActionsCacheUsageByRepositoryGetResponse200,
         OrgsOrgActionsCacheUsageByRepositoryGetResponse200Type,
@@ -312,6 +317,7 @@ class ActionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgActionsCacheUsageByRepositoryGetResponse200,
         )
 
@@ -322,6 +328,7 @@ class ActionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         OrgsOrgActionsCacheUsageByRepositoryGetResponse200,
         OrgsOrgActionsCacheUsageByRepositoryGetResponse200Type,
@@ -354,6 +361,7 @@ class ActionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgActionsCacheUsageByRepositoryGetResponse200,
         )
 
@@ -364,6 +372,7 @@ class ActionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         OrgsOrgActionsHostedRunnersGetResponse200,
         OrgsOrgActionsHostedRunnersGetResponse200Type,
@@ -395,6 +404,7 @@ class ActionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgActionsHostedRunnersGetResponse200,
         )
 
@@ -405,6 +415,7 @@ class ActionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         OrgsOrgActionsHostedRunnersGetResponse200,
         OrgsOrgActionsHostedRunnersGetResponse200Type,
@@ -436,6 +447,7 @@ class ActionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgActionsHostedRunnersGetResponse200,
         )
 
@@ -445,6 +457,7 @@ class ActionsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgActionsHostedRunnersPostBodyType,
     ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]: ...
 
@@ -455,6 +468,7 @@ class ActionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: str,
         image: OrgsOrgActionsHostedRunnersPostBodyPropImageType,
         size: str,
@@ -468,6 +482,7 @@ class ActionsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgActionsHostedRunnersPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]:
@@ -501,6 +516,7 @@ class ActionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ActionsHostedRunner,
         )
 
@@ -510,6 +526,7 @@ class ActionsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgActionsHostedRunnersPostBodyType,
     ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]: ...
 
@@ -520,6 +537,7 @@ class ActionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: str,
         image: OrgsOrgActionsHostedRunnersPostBodyPropImageType,
         size: str,
@@ -533,6 +551,7 @@ class ActionsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgActionsHostedRunnersPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]:
@@ -566,6 +585,7 @@ class ActionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ActionsHostedRunner,
         )
 
@@ -574,6 +594,7 @@ class ActionsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200,
         OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200Type,
@@ -597,6 +618,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200,
         )
 
@@ -605,6 +627,7 @@ class ActionsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200,
         OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200Type,
@@ -628,6 +651,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200,
         )
 
@@ -636,6 +660,7 @@ class ActionsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200,
         OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200Type,
@@ -659,6 +684,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200,
         )
 
@@ -667,6 +693,7 @@ class ActionsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200,
         OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200Type,
@@ -690,6 +717,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200,
         )
 
@@ -698,6 +726,7 @@ class ActionsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[ActionsHostedRunnerLimits, ActionsHostedRunnerLimitsType]:
         """actions/get-hosted-runners-limits-for-org
 
@@ -718,6 +747,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ActionsHostedRunnerLimits,
         )
 
@@ -726,6 +756,7 @@ class ActionsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[ActionsHostedRunnerLimits, ActionsHostedRunnerLimitsType]:
         """actions/get-hosted-runners-limits-for-org
 
@@ -746,6 +777,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ActionsHostedRunnerLimits,
         )
 
@@ -754,6 +786,7 @@ class ActionsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         OrgsOrgActionsHostedRunnersMachineSizesGetResponse200,
         OrgsOrgActionsHostedRunnersMachineSizesGetResponse200Type,
@@ -777,6 +810,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgActionsHostedRunnersMachineSizesGetResponse200,
         )
 
@@ -785,6 +819,7 @@ class ActionsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         OrgsOrgActionsHostedRunnersMachineSizesGetResponse200,
         OrgsOrgActionsHostedRunnersMachineSizesGetResponse200Type,
@@ -808,6 +843,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgActionsHostedRunnersMachineSizesGetResponse200,
         )
 
@@ -816,6 +852,7 @@ class ActionsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         OrgsOrgActionsHostedRunnersPlatformsGetResponse200,
         OrgsOrgActionsHostedRunnersPlatformsGetResponse200Type,
@@ -839,6 +876,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgActionsHostedRunnersPlatformsGetResponse200,
         )
 
@@ -847,6 +885,7 @@ class ActionsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         OrgsOrgActionsHostedRunnersPlatformsGetResponse200,
         OrgsOrgActionsHostedRunnersPlatformsGetResponse200Type,
@@ -870,6 +909,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgActionsHostedRunnersPlatformsGetResponse200,
         )
 
@@ -879,6 +919,7 @@ class ActionsClient:
         hosted_runner_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]:
         """actions/get-hosted-runner-for-org
 
@@ -901,6 +942,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ActionsHostedRunner,
         )
 
@@ -910,6 +952,7 @@ class ActionsClient:
         hosted_runner_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]:
         """actions/get-hosted-runner-for-org
 
@@ -932,6 +975,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ActionsHostedRunner,
         )
 
@@ -941,6 +985,7 @@ class ActionsClient:
         hosted_runner_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]:
         """actions/delete-hosted-runner-for-org
 
@@ -961,6 +1006,7 @@ class ActionsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ActionsHostedRunner,
         )
 
@@ -970,6 +1016,7 @@ class ActionsClient:
         hosted_runner_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]:
         """actions/delete-hosted-runner-for-org
 
@@ -990,6 +1037,7 @@ class ActionsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ActionsHostedRunner,
         )
 
@@ -1000,6 +1048,7 @@ class ActionsClient:
         hosted_runner_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBodyType,
     ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]: ...
 
@@ -1011,6 +1060,7 @@ class ActionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: Missing[str] = UNSET,
         runner_group_id: Missing[int] = UNSET,
         maximum_runners: Missing[int] = UNSET,
@@ -1023,6 +1073,7 @@ class ActionsClient:
         hosted_runner_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]:
@@ -1061,6 +1112,7 @@ class ActionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ActionsHostedRunner,
         )
 
@@ -1071,6 +1123,7 @@ class ActionsClient:
         hosted_runner_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBodyType,
     ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]: ...
 
@@ -1082,6 +1135,7 @@ class ActionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: Missing[str] = UNSET,
         runner_group_id: Missing[int] = UNSET,
         maximum_runners: Missing[int] = UNSET,
@@ -1094,6 +1148,7 @@ class ActionsClient:
         hosted_runner_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]:
@@ -1132,6 +1187,7 @@ class ActionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ActionsHostedRunner,
         )
 
@@ -1140,6 +1196,7 @@ class ActionsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[ActionsOrganizationPermissions, ActionsOrganizationPermissionsType]:
         """actions/get-github-actions-permissions-organization
 
@@ -1162,6 +1219,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ActionsOrganizationPermissions,
         )
 
@@ -1170,6 +1228,7 @@ class ActionsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[ActionsOrganizationPermissions, ActionsOrganizationPermissionsType]:
         """actions/get-github-actions-permissions-organization
 
@@ -1192,6 +1251,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ActionsOrganizationPermissions,
         )
 
@@ -1201,6 +1261,7 @@ class ActionsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgActionsPermissionsPutBodyType,
     ) -> Response: ...
 
@@ -1211,6 +1272,7 @@ class ActionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         enabled_repositories: Literal["all", "none", "selected"],
         allowed_actions: Missing[Literal["all", "local_only", "selected"]] = UNSET,
     ) -> Response: ...
@@ -1220,6 +1282,7 @@ class ActionsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgActionsPermissionsPutBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -1254,6 +1317,7 @@ class ActionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     @overload
@@ -1262,6 +1326,7 @@ class ActionsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgActionsPermissionsPutBodyType,
     ) -> Response: ...
 
@@ -1272,6 +1337,7 @@ class ActionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         enabled_repositories: Literal["all", "none", "selected"],
         allowed_actions: Missing[Literal["all", "local_only", "selected"]] = UNSET,
     ) -> Response: ...
@@ -1281,6 +1347,7 @@ class ActionsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgActionsPermissionsPutBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -1315,6 +1382,7 @@ class ActionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     def list_selected_repositories_enabled_github_actions_organization(
@@ -1324,6 +1392,7 @@ class ActionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         OrgsOrgActionsPermissionsRepositoriesGetResponse200,
         OrgsOrgActionsPermissionsRepositoriesGetResponse200Type,
@@ -1355,6 +1424,7 @@ class ActionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgActionsPermissionsRepositoriesGetResponse200,
         )
 
@@ -1365,6 +1435,7 @@ class ActionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         OrgsOrgActionsPermissionsRepositoriesGetResponse200,
         OrgsOrgActionsPermissionsRepositoriesGetResponse200Type,
@@ -1396,6 +1467,7 @@ class ActionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgActionsPermissionsRepositoriesGetResponse200,
         )
 
@@ -1405,6 +1477,7 @@ class ActionsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgActionsPermissionsRepositoriesPutBodyType,
     ) -> Response: ...
 
@@ -1415,6 +1488,7 @@ class ActionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         selected_repository_ids: list[int],
     ) -> Response: ...
 
@@ -1423,6 +1497,7 @@ class ActionsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgActionsPermissionsRepositoriesPutBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -1460,6 +1535,7 @@ class ActionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     @overload
@@ -1468,6 +1544,7 @@ class ActionsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgActionsPermissionsRepositoriesPutBodyType,
     ) -> Response: ...
 
@@ -1478,6 +1555,7 @@ class ActionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         selected_repository_ids: list[int],
     ) -> Response: ...
 
@@ -1486,6 +1564,7 @@ class ActionsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgActionsPermissionsRepositoriesPutBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -1523,6 +1602,7 @@ class ActionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     def enable_selected_repository_github_actions_organization(
@@ -1531,6 +1611,7 @@ class ActionsClient:
         repository_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """actions/enable-selected-repository-github-actions-organization
 
@@ -1551,6 +1632,7 @@ class ActionsClient:
             "PUT",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     async def async_enable_selected_repository_github_actions_organization(
@@ -1559,6 +1641,7 @@ class ActionsClient:
         repository_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """actions/enable-selected-repository-github-actions-organization
 
@@ -1579,6 +1662,7 @@ class ActionsClient:
             "PUT",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     def disable_selected_repository_github_actions_organization(
@@ -1587,6 +1671,7 @@ class ActionsClient:
         repository_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """actions/disable-selected-repository-github-actions-organization
 
@@ -1607,6 +1692,7 @@ class ActionsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     async def async_disable_selected_repository_github_actions_organization(
@@ -1615,6 +1701,7 @@ class ActionsClient:
         repository_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """actions/disable-selected-repository-github-actions-organization
 
@@ -1635,6 +1722,7 @@ class ActionsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     def get_allowed_actions_organization(
@@ -1642,6 +1730,7 @@ class ActionsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[SelectedActions, SelectedActionsType]:
         """actions/get-allowed-actions-organization
 
@@ -1664,6 +1753,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=SelectedActions,
         )
 
@@ -1672,6 +1762,7 @@ class ActionsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[SelectedActions, SelectedActionsType]:
         """actions/get-allowed-actions-organization
 
@@ -1694,6 +1785,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=SelectedActions,
         )
 
@@ -1703,6 +1795,7 @@ class ActionsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[SelectedActionsType] = UNSET,
     ) -> Response: ...
 
@@ -1713,6 +1806,7 @@ class ActionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         github_owned_allowed: Missing[bool] = UNSET,
         verified_allowed: Missing[bool] = UNSET,
         patterns_allowed: Missing[list[str]] = UNSET,
@@ -1723,6 +1817,7 @@ class ActionsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[SelectedActionsType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -1757,6 +1852,7 @@ class ActionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     @overload
@@ -1765,6 +1861,7 @@ class ActionsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[SelectedActionsType] = UNSET,
     ) -> Response: ...
 
@@ -1775,6 +1872,7 @@ class ActionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         github_owned_allowed: Missing[bool] = UNSET,
         verified_allowed: Missing[bool] = UNSET,
         patterns_allowed: Missing[list[str]] = UNSET,
@@ -1785,6 +1883,7 @@ class ActionsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[SelectedActionsType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -1819,6 +1918,7 @@ class ActionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     def get_github_actions_default_workflow_permissions_organization(
@@ -1826,6 +1926,7 @@ class ActionsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         ActionsGetDefaultWorkflowPermissions, ActionsGetDefaultWorkflowPermissionsType
     ]:
@@ -1852,6 +1953,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ActionsGetDefaultWorkflowPermissions,
         )
 
@@ -1860,6 +1962,7 @@ class ActionsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         ActionsGetDefaultWorkflowPermissions, ActionsGetDefaultWorkflowPermissionsType
     ]:
@@ -1886,6 +1989,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ActionsGetDefaultWorkflowPermissions,
         )
 
@@ -1895,6 +1999,7 @@ class ActionsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ActionsSetDefaultWorkflowPermissionsType] = UNSET,
     ) -> Response: ...
 
@@ -1905,6 +2010,7 @@ class ActionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         default_workflow_permissions: Missing[Literal["read", "write"]] = UNSET,
         can_approve_pull_request_reviews: Missing[bool] = UNSET,
     ) -> Response: ...
@@ -1914,6 +2020,7 @@ class ActionsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ActionsSetDefaultWorkflowPermissionsType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -1950,6 +2057,7 @@ class ActionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     @overload
@@ -1958,6 +2066,7 @@ class ActionsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ActionsSetDefaultWorkflowPermissionsType] = UNSET,
     ) -> Response: ...
 
@@ -1968,6 +2077,7 @@ class ActionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         default_workflow_permissions: Missing[Literal["read", "write"]] = UNSET,
         can_approve_pull_request_reviews: Missing[bool] = UNSET,
     ) -> Response: ...
@@ -1977,6 +2087,7 @@ class ActionsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ActionsSetDefaultWorkflowPermissionsType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -2013,6 +2124,7 @@ class ActionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     def list_self_hosted_runner_groups_for_org(
@@ -2023,6 +2135,7 @@ class ActionsClient:
         page: Missing[int] = UNSET,
         visible_to_repository: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         OrgsOrgActionsRunnerGroupsGetResponse200,
         OrgsOrgActionsRunnerGroupsGetResponse200Type,
@@ -2055,6 +2168,7 @@ class ActionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgActionsRunnerGroupsGetResponse200,
         )
 
@@ -2066,6 +2180,7 @@ class ActionsClient:
         page: Missing[int] = UNSET,
         visible_to_repository: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         OrgsOrgActionsRunnerGroupsGetResponse200,
         OrgsOrgActionsRunnerGroupsGetResponse200Type,
@@ -2098,6 +2213,7 @@ class ActionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgActionsRunnerGroupsGetResponse200,
         )
 
@@ -2107,6 +2223,7 @@ class ActionsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgActionsRunnerGroupsPostBodyType,
     ) -> Response[RunnerGroupsOrg, RunnerGroupsOrgType]: ...
 
@@ -2117,6 +2234,7 @@ class ActionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: str,
         visibility: Missing[Literal["selected", "all", "private"]] = UNSET,
         selected_repository_ids: Missing[list[int]] = UNSET,
@@ -2132,6 +2250,7 @@ class ActionsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgActionsRunnerGroupsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[RunnerGroupsOrg, RunnerGroupsOrgType]:
@@ -2166,6 +2285,7 @@ class ActionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=RunnerGroupsOrg,
         )
 
@@ -2175,6 +2295,7 @@ class ActionsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgActionsRunnerGroupsPostBodyType,
     ) -> Response[RunnerGroupsOrg, RunnerGroupsOrgType]: ...
 
@@ -2185,6 +2306,7 @@ class ActionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: str,
         visibility: Missing[Literal["selected", "all", "private"]] = UNSET,
         selected_repository_ids: Missing[list[int]] = UNSET,
@@ -2200,6 +2322,7 @@ class ActionsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgActionsRunnerGroupsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[RunnerGroupsOrg, RunnerGroupsOrgType]:
@@ -2234,6 +2357,7 @@ class ActionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=RunnerGroupsOrg,
         )
 
@@ -2243,6 +2367,7 @@ class ActionsClient:
         runner_group_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[RunnerGroupsOrg, RunnerGroupsOrgType]:
         """actions/get-self-hosted-runner-group-for-org
 
@@ -2265,6 +2390,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=RunnerGroupsOrg,
         )
 
@@ -2274,6 +2400,7 @@ class ActionsClient:
         runner_group_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[RunnerGroupsOrg, RunnerGroupsOrgType]:
         """actions/get-self-hosted-runner-group-for-org
 
@@ -2296,6 +2423,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=RunnerGroupsOrg,
         )
 
@@ -2305,6 +2433,7 @@ class ActionsClient:
         runner_group_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """actions/delete-self-hosted-runner-group-from-org
 
@@ -2325,6 +2454,7 @@ class ActionsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     async def async_delete_self_hosted_runner_group_from_org(
@@ -2333,6 +2463,7 @@ class ActionsClient:
         runner_group_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """actions/delete-self-hosted-runner-group-from-org
 
@@ -2353,6 +2484,7 @@ class ActionsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     @overload
@@ -2362,6 +2494,7 @@ class ActionsClient:
         runner_group_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBodyType,
     ) -> Response[RunnerGroupsOrg, RunnerGroupsOrgType]: ...
 
@@ -2373,6 +2506,7 @@ class ActionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: str,
         visibility: Missing[Literal["selected", "all", "private"]] = UNSET,
         allows_public_repositories: Missing[bool] = UNSET,
@@ -2387,6 +2521,7 @@ class ActionsClient:
         runner_group_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[RunnerGroupsOrg, RunnerGroupsOrgType]:
@@ -2426,6 +2561,7 @@ class ActionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=RunnerGroupsOrg,
         )
 
@@ -2436,6 +2572,7 @@ class ActionsClient:
         runner_group_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBodyType,
     ) -> Response[RunnerGroupsOrg, RunnerGroupsOrgType]: ...
 
@@ -2447,6 +2584,7 @@ class ActionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: str,
         visibility: Missing[Literal["selected", "all", "private"]] = UNSET,
         allows_public_repositories: Missing[bool] = UNSET,
@@ -2461,6 +2599,7 @@ class ActionsClient:
         runner_group_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[RunnerGroupsOrg, RunnerGroupsOrgType]:
@@ -2500,6 +2639,7 @@ class ActionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=RunnerGroupsOrg,
         )
 
@@ -2511,6 +2651,7 @@ class ActionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200,
         OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200Type,
@@ -2544,6 +2685,7 @@ class ActionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200,
         )
 
@@ -2555,6 +2697,7 @@ class ActionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200,
         OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200Type,
@@ -2588,6 +2731,7 @@ class ActionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200,
         )
 
@@ -2599,6 +2743,7 @@ class ActionsClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200,
         OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200Type,
@@ -2632,6 +2777,7 @@ class ActionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200,
         )
 
@@ -2643,6 +2789,7 @@ class ActionsClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200,
         OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200Type,
@@ -2676,6 +2823,7 @@ class ActionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200,
         )
 
@@ -2686,6 +2834,7 @@ class ActionsClient:
         runner_group_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBodyType,
     ) -> Response: ...
 
@@ -2697,6 +2846,7 @@ class ActionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         selected_repository_ids: list[int],
     ) -> Response: ...
 
@@ -2706,6 +2856,7 @@ class ActionsClient:
         runner_group_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBodyType
         ] = UNSET,
@@ -2744,6 +2895,7 @@ class ActionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     @overload
@@ -2753,6 +2905,7 @@ class ActionsClient:
         runner_group_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBodyType,
     ) -> Response: ...
 
@@ -2764,6 +2917,7 @@ class ActionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         selected_repository_ids: list[int],
     ) -> Response: ...
 
@@ -2773,6 +2927,7 @@ class ActionsClient:
         runner_group_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBodyType
         ] = UNSET,
@@ -2811,6 +2966,7 @@ class ActionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     def add_repo_access_to_self_hosted_runner_group_in_org(
@@ -2820,6 +2976,7 @@ class ActionsClient:
         repository_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """actions/add-repo-access-to-self-hosted-runner-group-in-org
 
@@ -2840,6 +2997,7 @@ class ActionsClient:
             "PUT",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     async def async_add_repo_access_to_self_hosted_runner_group_in_org(
@@ -2849,6 +3007,7 @@ class ActionsClient:
         repository_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """actions/add-repo-access-to-self-hosted-runner-group-in-org
 
@@ -2869,6 +3028,7 @@ class ActionsClient:
             "PUT",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     def remove_repo_access_to_self_hosted_runner_group_in_org(
@@ -2878,6 +3038,7 @@ class ActionsClient:
         repository_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """actions/remove-repo-access-to-self-hosted-runner-group-in-org
 
@@ -2898,6 +3059,7 @@ class ActionsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     async def async_remove_repo_access_to_self_hosted_runner_group_in_org(
@@ -2907,6 +3069,7 @@ class ActionsClient:
         repository_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """actions/remove-repo-access-to-self-hosted-runner-group-in-org
 
@@ -2927,6 +3090,7 @@ class ActionsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     def list_self_hosted_runners_in_group_for_org(
@@ -2937,6 +3101,7 @@ class ActionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200,
         OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200Type,
@@ -2970,6 +3135,7 @@ class ActionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200,
         )
 
@@ -2981,6 +3147,7 @@ class ActionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200,
         OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200Type,
@@ -3014,6 +3181,7 @@ class ActionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200,
         )
 
@@ -3024,6 +3192,7 @@ class ActionsClient:
         runner_group_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBodyType,
     ) -> Response: ...
 
@@ -3035,6 +3204,7 @@ class ActionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         runners: list[int],
     ) -> Response: ...
 
@@ -3044,6 +3214,7 @@ class ActionsClient:
         runner_group_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBodyType
         ] = UNSET,
@@ -3082,6 +3253,7 @@ class ActionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     @overload
@@ -3091,6 +3263,7 @@ class ActionsClient:
         runner_group_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBodyType,
     ) -> Response: ...
 
@@ -3102,6 +3275,7 @@ class ActionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         runners: list[int],
     ) -> Response: ...
 
@@ -3111,6 +3285,7 @@ class ActionsClient:
         runner_group_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBodyType
         ] = UNSET,
@@ -3149,6 +3324,7 @@ class ActionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     def add_self_hosted_runner_to_group_for_org(
@@ -3158,6 +3334,7 @@ class ActionsClient:
         runner_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """actions/add-self-hosted-runner-to-group-for-org
 
@@ -3178,6 +3355,7 @@ class ActionsClient:
             "PUT",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     async def async_add_self_hosted_runner_to_group_for_org(
@@ -3187,6 +3365,7 @@ class ActionsClient:
         runner_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """actions/add-self-hosted-runner-to-group-for-org
 
@@ -3207,6 +3386,7 @@ class ActionsClient:
             "PUT",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     def remove_self_hosted_runner_from_group_for_org(
@@ -3216,6 +3396,7 @@ class ActionsClient:
         runner_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """actions/remove-self-hosted-runner-from-group-for-org
 
@@ -3236,6 +3417,7 @@ class ActionsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     async def async_remove_self_hosted_runner_from_group_for_org(
@@ -3245,6 +3427,7 @@ class ActionsClient:
         runner_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """actions/remove-self-hosted-runner-from-group-for-org
 
@@ -3265,6 +3448,7 @@ class ActionsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     def list_self_hosted_runners_for_org(
@@ -3275,6 +3459,7 @@ class ActionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         OrgsOrgActionsRunnersGetResponse200, OrgsOrgActionsRunnersGetResponse200Type
     ]:
@@ -3308,6 +3493,7 @@ class ActionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgActionsRunnersGetResponse200,
         )
 
@@ -3319,6 +3505,7 @@ class ActionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         OrgsOrgActionsRunnersGetResponse200, OrgsOrgActionsRunnersGetResponse200Type
     ]:
@@ -3352,6 +3539,7 @@ class ActionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgActionsRunnersGetResponse200,
         )
 
@@ -3360,6 +3548,7 @@ class ActionsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[RunnerApplication], list[RunnerApplicationType]]:
         """actions/list-runner-applications-for-org
 
@@ -3384,6 +3573,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[RunnerApplication],
         )
 
@@ -3392,6 +3582,7 @@ class ActionsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[RunnerApplication], list[RunnerApplicationType]]:
         """actions/list-runner-applications-for-org
 
@@ -3416,6 +3607,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[RunnerApplication],
         )
 
@@ -3425,6 +3617,7 @@ class ActionsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgActionsRunnersGenerateJitconfigPostBodyType,
     ) -> Response[
         OrgsOrgActionsRunnersGenerateJitconfigPostResponse201,
@@ -3438,6 +3631,7 @@ class ActionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: str,
         runner_group_id: int,
         labels: list[str],
@@ -3452,6 +3646,7 @@ class ActionsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgActionsRunnersGenerateJitconfigPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[
@@ -3498,6 +3693,7 @@ class ActionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgActionsRunnersGenerateJitconfigPostResponse201,
             error_models={
                 "404": BasicError,
@@ -3512,6 +3708,7 @@ class ActionsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgActionsRunnersGenerateJitconfigPostBodyType,
     ) -> Response[
         OrgsOrgActionsRunnersGenerateJitconfigPostResponse201,
@@ -3525,6 +3722,7 @@ class ActionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: str,
         runner_group_id: int,
         labels: list[str],
@@ -3539,6 +3737,7 @@ class ActionsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgActionsRunnersGenerateJitconfigPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[
@@ -3585,6 +3784,7 @@ class ActionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgActionsRunnersGenerateJitconfigPostResponse201,
             error_models={
                 "404": BasicError,
@@ -3598,6 +3798,7 @@ class ActionsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[AuthenticationToken, AuthenticationTokenType]:
         """actions/create-registration-token-for-org
 
@@ -3628,6 +3829,7 @@ class ActionsClient:
             "POST",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=AuthenticationToken,
         )
 
@@ -3636,6 +3838,7 @@ class ActionsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[AuthenticationToken, AuthenticationTokenType]:
         """actions/create-registration-token-for-org
 
@@ -3666,6 +3869,7 @@ class ActionsClient:
             "POST",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=AuthenticationToken,
         )
 
@@ -3674,6 +3878,7 @@ class ActionsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[AuthenticationToken, AuthenticationTokenType]:
         """actions/create-remove-token-for-org
 
@@ -3704,6 +3909,7 @@ class ActionsClient:
             "POST",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=AuthenticationToken,
         )
 
@@ -3712,6 +3918,7 @@ class ActionsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[AuthenticationToken, AuthenticationTokenType]:
         """actions/create-remove-token-for-org
 
@@ -3742,6 +3949,7 @@ class ActionsClient:
             "POST",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=AuthenticationToken,
         )
 
@@ -3751,6 +3959,7 @@ class ActionsClient:
         runner_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[Runner, RunnerType]:
         """actions/get-self-hosted-runner-for-org
 
@@ -3775,6 +3984,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Runner,
         )
 
@@ -3784,6 +3994,7 @@ class ActionsClient:
         runner_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[Runner, RunnerType]:
         """actions/get-self-hosted-runner-for-org
 
@@ -3808,6 +4019,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Runner,
         )
 
@@ -3817,6 +4029,7 @@ class ActionsClient:
         runner_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """actions/delete-self-hosted-runner-from-org
 
@@ -3841,6 +4054,7 @@ class ActionsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "422": ValidationErrorSimple,
             },
@@ -3852,6 +4066,7 @@ class ActionsClient:
         runner_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """actions/delete-self-hosted-runner-from-org
 
@@ -3876,6 +4091,7 @@ class ActionsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "422": ValidationErrorSimple,
             },
@@ -3887,6 +4103,7 @@ class ActionsClient:
         runner_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200Type,
@@ -3917,6 +4134,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
             error_models={
                 "404": BasicError,
@@ -3929,6 +4147,7 @@ class ActionsClient:
         runner_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200Type,
@@ -3959,6 +4178,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
             error_models={
                 "404": BasicError,
@@ -3972,6 +4192,7 @@ class ActionsClient:
         runner_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgActionsRunnersRunnerIdLabelsPutBodyType,
     ) -> Response[
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
@@ -3986,6 +4207,7 @@ class ActionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         labels: list[str],
     ) -> Response[
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
@@ -3998,6 +4220,7 @@ class ActionsClient:
         runner_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgActionsRunnersRunnerIdLabelsPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[
@@ -4045,6 +4268,7 @@ class ActionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
             error_models={
                 "404": BasicError,
@@ -4059,6 +4283,7 @@ class ActionsClient:
         runner_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgActionsRunnersRunnerIdLabelsPutBodyType,
     ) -> Response[
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
@@ -4073,6 +4298,7 @@ class ActionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         labels: list[str],
     ) -> Response[
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
@@ -4085,6 +4311,7 @@ class ActionsClient:
         runner_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgActionsRunnersRunnerIdLabelsPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[
@@ -4132,6 +4359,7 @@ class ActionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
             error_models={
                 "404": BasicError,
@@ -4146,6 +4374,7 @@ class ActionsClient:
         runner_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgActionsRunnersRunnerIdLabelsPostBodyType,
     ) -> Response[
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
@@ -4160,6 +4389,7 @@ class ActionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         labels: list[str],
     ) -> Response[
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
@@ -4172,6 +4402,7 @@ class ActionsClient:
         runner_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgActionsRunnersRunnerIdLabelsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[
@@ -4218,6 +4449,7 @@ class ActionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
             error_models={
                 "404": BasicError,
@@ -4232,6 +4464,7 @@ class ActionsClient:
         runner_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgActionsRunnersRunnerIdLabelsPostBodyType,
     ) -> Response[
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
@@ -4246,6 +4479,7 @@ class ActionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         labels: list[str],
     ) -> Response[
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
@@ -4258,6 +4492,7 @@ class ActionsClient:
         runner_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgActionsRunnersRunnerIdLabelsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[
@@ -4304,6 +4539,7 @@ class ActionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
             error_models={
                 "404": BasicError,
@@ -4317,6 +4553,7 @@ class ActionsClient:
         runner_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200,
         OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200Type,
@@ -4348,6 +4585,7 @@ class ActionsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200,
             error_models={
                 "404": BasicError,
@@ -4360,6 +4598,7 @@ class ActionsClient:
         runner_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200,
         OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200Type,
@@ -4391,6 +4630,7 @@ class ActionsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200,
             error_models={
                 "404": BasicError,
@@ -4404,6 +4644,7 @@ class ActionsClient:
         name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200Type,
@@ -4439,6 +4680,7 @@ class ActionsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
             error_models={
                 "404": BasicError,
@@ -4453,6 +4695,7 @@ class ActionsClient:
         name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200Type,
@@ -4488,6 +4731,7 @@ class ActionsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
             error_models={
                 "404": BasicError,
@@ -4502,6 +4746,7 @@ class ActionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         OrgsOrgActionsSecretsGetResponse200, OrgsOrgActionsSecretsGetResponse200Type
     ]:
@@ -4535,6 +4780,7 @@ class ActionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgActionsSecretsGetResponse200,
         )
 
@@ -4545,6 +4791,7 @@ class ActionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         OrgsOrgActionsSecretsGetResponse200, OrgsOrgActionsSecretsGetResponse200Type
     ]:
@@ -4578,6 +4825,7 @@ class ActionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgActionsSecretsGetResponse200,
         )
 
@@ -4586,6 +4834,7 @@ class ActionsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[ActionsPublicKey, ActionsPublicKeyType]:
         """actions/get-org-public-key
 
@@ -4611,6 +4860,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ActionsPublicKey,
         )
 
@@ -4619,6 +4869,7 @@ class ActionsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[ActionsPublicKey, ActionsPublicKeyType]:
         """actions/get-org-public-key
 
@@ -4644,6 +4895,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ActionsPublicKey,
         )
 
@@ -4653,6 +4905,7 @@ class ActionsClient:
         secret_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[OrganizationActionsSecret, OrganizationActionsSecretType]:
         """actions/get-org-secret
 
@@ -4677,6 +4930,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrganizationActionsSecret,
         )
 
@@ -4686,6 +4940,7 @@ class ActionsClient:
         secret_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[OrganizationActionsSecret, OrganizationActionsSecretType]:
         """actions/get-org-secret
 
@@ -4710,6 +4965,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrganizationActionsSecret,
         )
 
@@ -4720,6 +4976,7 @@ class ActionsClient:
         secret_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgActionsSecretsSecretNamePutBodyType,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
 
@@ -4731,6 +4988,7 @@ class ActionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         encrypted_value: str,
         key_id: str,
         visibility: Literal["all", "private", "selected"],
@@ -4743,6 +5001,7 @@ class ActionsClient:
         secret_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgActionsSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject, EmptyObjectType]:
@@ -4780,6 +5039,7 @@ class ActionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=EmptyObject,
         )
 
@@ -4790,6 +5050,7 @@ class ActionsClient:
         secret_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgActionsSecretsSecretNamePutBodyType,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
 
@@ -4801,6 +5062,7 @@ class ActionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         encrypted_value: str,
         key_id: str,
         visibility: Literal["all", "private", "selected"],
@@ -4813,6 +5075,7 @@ class ActionsClient:
         secret_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgActionsSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject, EmptyObjectType]:
@@ -4850,6 +5113,7 @@ class ActionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=EmptyObject,
         )
 
@@ -4859,6 +5123,7 @@ class ActionsClient:
         secret_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """actions/delete-org-secret
 
@@ -4881,6 +5146,7 @@ class ActionsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     async def async_delete_org_secret(
@@ -4889,6 +5155,7 @@ class ActionsClient:
         secret_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """actions/delete-org-secret
 
@@ -4911,6 +5178,7 @@ class ActionsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     def list_selected_repos_for_org_secret(
@@ -4921,6 +5189,7 @@ class ActionsClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200,
         OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200Type,
@@ -4955,6 +5224,7 @@ class ActionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200,
         )
 
@@ -4966,6 +5236,7 @@ class ActionsClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200,
         OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200Type,
@@ -5000,6 +5271,7 @@ class ActionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200,
         )
 
@@ -5010,6 +5282,7 @@ class ActionsClient:
         secret_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgActionsSecretsSecretNameRepositoriesPutBodyType,
     ) -> Response: ...
 
@@ -5021,6 +5294,7 @@ class ActionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         selected_repository_ids: list[int],
     ) -> Response: ...
 
@@ -5030,6 +5304,7 @@ class ActionsClient:
         secret_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgActionsSecretsSecretNameRepositoriesPutBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -5070,6 +5345,7 @@ class ActionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     @overload
@@ -5079,6 +5355,7 @@ class ActionsClient:
         secret_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgActionsSecretsSecretNameRepositoriesPutBodyType,
     ) -> Response: ...
 
@@ -5090,6 +5367,7 @@ class ActionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         selected_repository_ids: list[int],
     ) -> Response: ...
 
@@ -5099,6 +5377,7 @@ class ActionsClient:
         secret_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgActionsSecretsSecretNameRepositoriesPutBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -5139,6 +5418,7 @@ class ActionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     def add_selected_repo_to_org_secret(
@@ -5148,6 +5428,7 @@ class ActionsClient:
         repository_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """actions/add-selected-repo-to-org-secret
 
@@ -5172,6 +5453,7 @@ class ActionsClient:
             "PUT",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={},
         )
 
@@ -5182,6 +5464,7 @@ class ActionsClient:
         repository_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """actions/add-selected-repo-to-org-secret
 
@@ -5206,6 +5489,7 @@ class ActionsClient:
             "PUT",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={},
         )
 
@@ -5216,6 +5500,7 @@ class ActionsClient:
         repository_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """actions/remove-selected-repo-from-org-secret
 
@@ -5240,6 +5525,7 @@ class ActionsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={},
         )
 
@@ -5250,6 +5536,7 @@ class ActionsClient:
         repository_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """actions/remove-selected-repo-from-org-secret
 
@@ -5274,6 +5561,7 @@ class ActionsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={},
         )
 
@@ -5284,6 +5572,7 @@ class ActionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         OrgsOrgActionsVariablesGetResponse200, OrgsOrgActionsVariablesGetResponse200Type
     ]:
@@ -5316,6 +5605,7 @@ class ActionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgActionsVariablesGetResponse200,
         )
 
@@ -5326,6 +5616,7 @@ class ActionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         OrgsOrgActionsVariablesGetResponse200, OrgsOrgActionsVariablesGetResponse200Type
     ]:
@@ -5358,6 +5649,7 @@ class ActionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgActionsVariablesGetResponse200,
         )
 
@@ -5367,6 +5659,7 @@ class ActionsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgActionsVariablesPostBodyType,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
 
@@ -5377,6 +5670,7 @@ class ActionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: str,
         value: str,
         visibility: Literal["all", "private", "selected"],
@@ -5388,6 +5682,7 @@ class ActionsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgActionsVariablesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject, EmptyObjectType]:
@@ -5424,6 +5719,7 @@ class ActionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=EmptyObject,
         )
 
@@ -5433,6 +5729,7 @@ class ActionsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgActionsVariablesPostBodyType,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
 
@@ -5443,6 +5740,7 @@ class ActionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: str,
         value: str,
         visibility: Literal["all", "private", "selected"],
@@ -5454,6 +5752,7 @@ class ActionsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgActionsVariablesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject, EmptyObjectType]:
@@ -5490,6 +5789,7 @@ class ActionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=EmptyObject,
         )
 
@@ -5499,6 +5799,7 @@ class ActionsClient:
         name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[OrganizationActionsVariable, OrganizationActionsVariableType]:
         """actions/get-org-variable
 
@@ -5523,6 +5824,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrganizationActionsVariable,
         )
 
@@ -5532,6 +5834,7 @@ class ActionsClient:
         name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[OrganizationActionsVariable, OrganizationActionsVariableType]:
         """actions/get-org-variable
 
@@ -5556,6 +5859,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrganizationActionsVariable,
         )
 
@@ -5565,6 +5869,7 @@ class ActionsClient:
         name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """actions/delete-org-variable
 
@@ -5587,6 +5892,7 @@ class ActionsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     async def async_delete_org_variable(
@@ -5595,6 +5901,7 @@ class ActionsClient:
         name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """actions/delete-org-variable
 
@@ -5617,6 +5924,7 @@ class ActionsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     @overload
@@ -5626,6 +5934,7 @@ class ActionsClient:
         name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgActionsVariablesNamePatchBodyType,
     ) -> Response: ...
 
@@ -5637,6 +5946,7 @@ class ActionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         value: Missing[str] = UNSET,
         visibility: Missing[Literal["all", "private", "selected"]] = UNSET,
         selected_repository_ids: Missing[list[int]] = UNSET,
@@ -5648,6 +5958,7 @@ class ActionsClient:
         name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgActionsVariablesNamePatchBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -5684,6 +5995,7 @@ class ActionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     @overload
@@ -5693,6 +6005,7 @@ class ActionsClient:
         name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgActionsVariablesNamePatchBodyType,
     ) -> Response: ...
 
@@ -5704,6 +6017,7 @@ class ActionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         value: Missing[str] = UNSET,
         visibility: Missing[Literal["all", "private", "selected"]] = UNSET,
         selected_repository_ids: Missing[list[int]] = UNSET,
@@ -5715,6 +6029,7 @@ class ActionsClient:
         name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgActionsVariablesNamePatchBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -5751,6 +6066,7 @@ class ActionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     def list_selected_repos_for_org_variable(
@@ -5761,6 +6077,7 @@ class ActionsClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         OrgsOrgActionsVariablesNameRepositoriesGetResponse200,
         OrgsOrgActionsVariablesNameRepositoriesGetResponse200Type,
@@ -5795,6 +6112,7 @@ class ActionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgActionsVariablesNameRepositoriesGetResponse200,
             error_models={},
         )
@@ -5807,6 +6125,7 @@ class ActionsClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         OrgsOrgActionsVariablesNameRepositoriesGetResponse200,
         OrgsOrgActionsVariablesNameRepositoriesGetResponse200Type,
@@ -5841,6 +6160,7 @@ class ActionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgActionsVariablesNameRepositoriesGetResponse200,
             error_models={},
         )
@@ -5852,6 +6172,7 @@ class ActionsClient:
         name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgActionsVariablesNameRepositoriesPutBodyType,
     ) -> Response: ...
 
@@ -5863,6 +6184,7 @@ class ActionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         selected_repository_ids: list[int],
     ) -> Response: ...
 
@@ -5872,6 +6194,7 @@ class ActionsClient:
         name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgActionsVariablesNameRepositoriesPutBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -5912,6 +6235,7 @@ class ActionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={},
         )
 
@@ -5922,6 +6246,7 @@ class ActionsClient:
         name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgActionsVariablesNameRepositoriesPutBodyType,
     ) -> Response: ...
 
@@ -5933,6 +6258,7 @@ class ActionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         selected_repository_ids: list[int],
     ) -> Response: ...
 
@@ -5942,6 +6268,7 @@ class ActionsClient:
         name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgActionsVariablesNameRepositoriesPutBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -5982,6 +6309,7 @@ class ActionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={},
         )
 
@@ -5992,6 +6320,7 @@ class ActionsClient:
         repository_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """actions/add-selected-repo-to-org-variable
 
@@ -6015,6 +6344,7 @@ class ActionsClient:
             "PUT",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={},
         )
 
@@ -6025,6 +6355,7 @@ class ActionsClient:
         repository_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """actions/add-selected-repo-to-org-variable
 
@@ -6048,6 +6379,7 @@ class ActionsClient:
             "PUT",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={},
         )
 
@@ -6058,6 +6390,7 @@ class ActionsClient:
         repository_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """actions/remove-selected-repo-from-org-variable
 
@@ -6082,6 +6415,7 @@ class ActionsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={},
         )
 
@@ -6092,6 +6426,7 @@ class ActionsClient:
         repository_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """actions/remove-selected-repo-from-org-variable
 
@@ -6116,6 +6451,7 @@ class ActionsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={},
         )
 
@@ -6128,6 +6464,7 @@ class ActionsClient:
         page: Missing[int] = UNSET,
         name: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         ReposOwnerRepoActionsArtifactsGetResponse200,
         ReposOwnerRepoActionsArtifactsGetResponse200Type,
@@ -6162,6 +6499,7 @@ class ActionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ReposOwnerRepoActionsArtifactsGetResponse200,
         )
 
@@ -6174,6 +6512,7 @@ class ActionsClient:
         page: Missing[int] = UNSET,
         name: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         ReposOwnerRepoActionsArtifactsGetResponse200,
         ReposOwnerRepoActionsArtifactsGetResponse200Type,
@@ -6208,6 +6547,7 @@ class ActionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ReposOwnerRepoActionsArtifactsGetResponse200,
         )
 
@@ -6218,6 +6558,7 @@ class ActionsClient:
         artifact_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[Artifact, ArtifactType]:
         """actions/get-artifact
 
@@ -6242,6 +6583,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Artifact,
         )
 
@@ -6252,6 +6594,7 @@ class ActionsClient:
         artifact_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[Artifact, ArtifactType]:
         """actions/get-artifact
 
@@ -6276,6 +6619,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Artifact,
         )
 
@@ -6286,6 +6630,7 @@ class ActionsClient:
         artifact_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """actions/delete-artifact
 
@@ -6305,6 +6650,7 @@ class ActionsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     async def async_delete_artifact(
@@ -6314,6 +6660,7 @@ class ActionsClient:
         artifact_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """actions/delete-artifact
 
@@ -6333,6 +6680,7 @@ class ActionsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     def download_artifact(
@@ -6343,6 +6691,7 @@ class ActionsClient:
         archive_format: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """actions/download-artifact
 
@@ -6366,6 +6715,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "410": BasicError,
             },
@@ -6379,6 +6729,7 @@ class ActionsClient:
         archive_format: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """actions/download-artifact
 
@@ -6402,6 +6753,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "410": BasicError,
             },
@@ -6413,6 +6765,7 @@ class ActionsClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[ActionsCacheUsageByRepository, ActionsCacheUsageByRepositoryType]:
         """actions/get-actions-cache-usage
 
@@ -6438,6 +6791,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ActionsCacheUsageByRepository,
         )
 
@@ -6447,6 +6801,7 @@ class ActionsClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[ActionsCacheUsageByRepository, ActionsCacheUsageByRepositoryType]:
         """actions/get-actions-cache-usage
 
@@ -6472,6 +6827,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ActionsCacheUsageByRepository,
         )
 
@@ -6489,6 +6845,7 @@ class ActionsClient:
         ] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[ActionsCacheList, ActionsCacheListType]:
         """actions/get-actions-cache-list
 
@@ -6521,6 +6878,7 @@ class ActionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ActionsCacheList,
         )
 
@@ -6538,6 +6896,7 @@ class ActionsClient:
         ] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[ActionsCacheList, ActionsCacheListType]:
         """actions/get-actions-cache-list
 
@@ -6570,6 +6929,7 @@ class ActionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ActionsCacheList,
         )
 
@@ -6581,6 +6941,7 @@ class ActionsClient:
         key: str,
         ref: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[ActionsCacheList, ActionsCacheListType]:
         """actions/delete-actions-cache-by-key
 
@@ -6609,6 +6970,7 @@ class ActionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ActionsCacheList,
         )
 
@@ -6620,6 +6982,7 @@ class ActionsClient:
         key: str,
         ref: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[ActionsCacheList, ActionsCacheListType]:
         """actions/delete-actions-cache-by-key
 
@@ -6648,6 +7011,7 @@ class ActionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ActionsCacheList,
         )
 
@@ -6658,6 +7022,7 @@ class ActionsClient:
         cache_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """actions/delete-actions-cache-by-id
 
@@ -6678,6 +7043,7 @@ class ActionsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     async def async_delete_actions_cache_by_id(
@@ -6687,6 +7053,7 @@ class ActionsClient:
         cache_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """actions/delete-actions-cache-by-id
 
@@ -6707,6 +7074,7 @@ class ActionsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     def get_job_for_workflow_run(
@@ -6716,6 +7084,7 @@ class ActionsClient:
         job_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[Job, JobType]:
         """actions/get-job-for-workflow-run
 
@@ -6740,6 +7109,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Job,
         )
 
@@ -6750,6 +7120,7 @@ class ActionsClient:
         job_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[Job, JobType]:
         """actions/get-job-for-workflow-run
 
@@ -6774,6 +7145,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Job,
         )
 
@@ -6784,6 +7156,7 @@ class ActionsClient:
         job_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """actions/download-job-logs-for-workflow-run
 
@@ -6807,6 +7180,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     async def async_download_job_logs_for_workflow_run(
@@ -6816,6 +7190,7 @@ class ActionsClient:
         job_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """actions/download-job-logs-for-workflow-run
 
@@ -6839,6 +7214,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     @overload
@@ -6849,6 +7225,7 @@ class ActionsClient:
         job_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             Union[ReposOwnerRepoActionsJobsJobIdRerunPostBodyType, None]
         ] = UNSET,
@@ -6863,6 +7240,7 @@ class ActionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         enable_debug_logging: Missing[bool] = UNSET,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
 
@@ -6873,6 +7251,7 @@ class ActionsClient:
         job_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             Union[ReposOwnerRepoActionsJobsJobIdRerunPostBodyType, None]
         ] = UNSET,
@@ -6917,6 +7296,7 @@ class ActionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=EmptyObject,
             error_models={
                 "403": BasicError,
@@ -6931,6 +7311,7 @@ class ActionsClient:
         job_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             Union[ReposOwnerRepoActionsJobsJobIdRerunPostBodyType, None]
         ] = UNSET,
@@ -6945,6 +7326,7 @@ class ActionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         enable_debug_logging: Missing[bool] = UNSET,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
 
@@ -6955,6 +7337,7 @@ class ActionsClient:
         job_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             Union[ReposOwnerRepoActionsJobsJobIdRerunPostBodyType, None]
         ] = UNSET,
@@ -6999,6 +7382,7 @@ class ActionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=EmptyObject,
             error_models={
                 "403": BasicError,
@@ -7011,6 +7395,7 @@ class ActionsClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[OidcCustomSubRepo, OidcCustomSubRepoType]:
         """actions/get-custom-oidc-sub-claim-for-repo
 
@@ -7033,6 +7418,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OidcCustomSubRepo,
             error_models={
                 "400": BasicError,
@@ -7046,6 +7432,7 @@ class ActionsClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[OidcCustomSubRepo, OidcCustomSubRepoType]:
         """actions/get-custom-oidc-sub-claim-for-repo
 
@@ -7068,6 +7455,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OidcCustomSubRepo,
             error_models={
                 "400": BasicError,
@@ -7082,6 +7470,7 @@ class ActionsClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoActionsOidcCustomizationSubPutBodyType,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
 
@@ -7093,6 +7482,7 @@ class ActionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         use_default: bool,
         include_claim_keys: Missing[list[str]] = UNSET,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
@@ -7103,6 +7493,7 @@ class ActionsClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoActionsOidcCustomizationSubPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject, EmptyObjectType]:
@@ -7144,6 +7535,7 @@ class ActionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=EmptyObject,
             error_models={
                 "404": BasicError,
@@ -7159,6 +7551,7 @@ class ActionsClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoActionsOidcCustomizationSubPutBodyType,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
 
@@ -7170,6 +7563,7 @@ class ActionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         use_default: bool,
         include_claim_keys: Missing[list[str]] = UNSET,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
@@ -7180,6 +7574,7 @@ class ActionsClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoActionsOidcCustomizationSubPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject, EmptyObjectType]:
@@ -7221,6 +7616,7 @@ class ActionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=EmptyObject,
             error_models={
                 "404": BasicError,
@@ -7237,6 +7633,7 @@ class ActionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         ReposOwnerRepoActionsOrganizationSecretsGetResponse200,
         ReposOwnerRepoActionsOrganizationSecretsGetResponse200Type,
@@ -7271,6 +7668,7 @@ class ActionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ReposOwnerRepoActionsOrganizationSecretsGetResponse200,
         )
 
@@ -7282,6 +7680,7 @@ class ActionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         ReposOwnerRepoActionsOrganizationSecretsGetResponse200,
         ReposOwnerRepoActionsOrganizationSecretsGetResponse200Type,
@@ -7316,6 +7715,7 @@ class ActionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ReposOwnerRepoActionsOrganizationSecretsGetResponse200,
         )
 
@@ -7327,6 +7727,7 @@ class ActionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         ReposOwnerRepoActionsOrganizationVariablesGetResponse200,
         ReposOwnerRepoActionsOrganizationVariablesGetResponse200Type,
@@ -7360,6 +7761,7 @@ class ActionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ReposOwnerRepoActionsOrganizationVariablesGetResponse200,
         )
 
@@ -7371,6 +7773,7 @@ class ActionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         ReposOwnerRepoActionsOrganizationVariablesGetResponse200,
         ReposOwnerRepoActionsOrganizationVariablesGetResponse200Type,
@@ -7404,6 +7807,7 @@ class ActionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ReposOwnerRepoActionsOrganizationVariablesGetResponse200,
         )
 
@@ -7413,6 +7817,7 @@ class ActionsClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[ActionsRepositoryPermissions, ActionsRepositoryPermissionsType]:
         """actions/get-github-actions-permissions-repository
 
@@ -7435,6 +7840,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ActionsRepositoryPermissions,
         )
 
@@ -7444,6 +7850,7 @@ class ActionsClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[ActionsRepositoryPermissions, ActionsRepositoryPermissionsType]:
         """actions/get-github-actions-permissions-repository
 
@@ -7466,6 +7873,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ActionsRepositoryPermissions,
         )
 
@@ -7476,6 +7884,7 @@ class ActionsClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoActionsPermissionsPutBodyType,
     ) -> Response: ...
 
@@ -7487,6 +7896,7 @@ class ActionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         enabled: bool,
         allowed_actions: Missing[Literal["all", "local_only", "selected"]] = UNSET,
     ) -> Response: ...
@@ -7497,6 +7907,7 @@ class ActionsClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoActionsPermissionsPutBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -7531,6 +7942,7 @@ class ActionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     @overload
@@ -7540,6 +7952,7 @@ class ActionsClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoActionsPermissionsPutBodyType,
     ) -> Response: ...
 
@@ -7551,6 +7964,7 @@ class ActionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         enabled: bool,
         allowed_actions: Missing[Literal["all", "local_only", "selected"]] = UNSET,
     ) -> Response: ...
@@ -7561,6 +7975,7 @@ class ActionsClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoActionsPermissionsPutBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -7595,6 +8010,7 @@ class ActionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     def get_workflow_access_to_repository(
@@ -7603,6 +8019,7 @@ class ActionsClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         ActionsWorkflowAccessToRepository, ActionsWorkflowAccessToRepositoryType
     ]:
@@ -7629,6 +8046,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ActionsWorkflowAccessToRepository,
         )
 
@@ -7638,6 +8056,7 @@ class ActionsClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         ActionsWorkflowAccessToRepository, ActionsWorkflowAccessToRepositoryType
     ]:
@@ -7664,6 +8083,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ActionsWorkflowAccessToRepository,
         )
 
@@ -7674,6 +8094,7 @@ class ActionsClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ActionsWorkflowAccessToRepositoryType,
     ) -> Response: ...
 
@@ -7685,6 +8106,7 @@ class ActionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         access_level: Literal["none", "user", "organization"],
     ) -> Response: ...
 
@@ -7694,6 +8116,7 @@ class ActionsClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ActionsWorkflowAccessToRepositoryType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -7730,6 +8153,7 @@ class ActionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     @overload
@@ -7739,6 +8163,7 @@ class ActionsClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ActionsWorkflowAccessToRepositoryType,
     ) -> Response: ...
 
@@ -7750,6 +8175,7 @@ class ActionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         access_level: Literal["none", "user", "organization"],
     ) -> Response: ...
 
@@ -7759,6 +8185,7 @@ class ActionsClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ActionsWorkflowAccessToRepositoryType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -7795,6 +8222,7 @@ class ActionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     def get_allowed_actions_repository(
@@ -7803,6 +8231,7 @@ class ActionsClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[SelectedActions, SelectedActionsType]:
         """actions/get-allowed-actions-repository
 
@@ -7825,6 +8254,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=SelectedActions,
         )
 
@@ -7834,6 +8264,7 @@ class ActionsClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[SelectedActions, SelectedActionsType]:
         """actions/get-allowed-actions-repository
 
@@ -7856,6 +8287,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=SelectedActions,
         )
 
@@ -7866,6 +8298,7 @@ class ActionsClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[SelectedActionsType] = UNSET,
     ) -> Response: ...
 
@@ -7877,6 +8310,7 @@ class ActionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         github_owned_allowed: Missing[bool] = UNSET,
         verified_allowed: Missing[bool] = UNSET,
         patterns_allowed: Missing[list[str]] = UNSET,
@@ -7888,6 +8322,7 @@ class ActionsClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[SelectedActionsType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -7922,6 +8357,7 @@ class ActionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     @overload
@@ -7931,6 +8367,7 @@ class ActionsClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[SelectedActionsType] = UNSET,
     ) -> Response: ...
 
@@ -7942,6 +8379,7 @@ class ActionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         github_owned_allowed: Missing[bool] = UNSET,
         verified_allowed: Missing[bool] = UNSET,
         patterns_allowed: Missing[list[str]] = UNSET,
@@ -7953,6 +8391,7 @@ class ActionsClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[SelectedActionsType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -7987,6 +8426,7 @@ class ActionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     def get_github_actions_default_workflow_permissions_repository(
@@ -7995,6 +8435,7 @@ class ActionsClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         ActionsGetDefaultWorkflowPermissions, ActionsGetDefaultWorkflowPermissionsType
     ]:
@@ -8021,6 +8462,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ActionsGetDefaultWorkflowPermissions,
         )
 
@@ -8030,6 +8472,7 @@ class ActionsClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         ActionsGetDefaultWorkflowPermissions, ActionsGetDefaultWorkflowPermissionsType
     ]:
@@ -8056,6 +8499,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ActionsGetDefaultWorkflowPermissions,
         )
 
@@ -8066,6 +8510,7 @@ class ActionsClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ActionsSetDefaultWorkflowPermissionsType,
     ) -> Response: ...
 
@@ -8077,6 +8522,7 @@ class ActionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         default_workflow_permissions: Missing[Literal["read", "write"]] = UNSET,
         can_approve_pull_request_reviews: Missing[bool] = UNSET,
     ) -> Response: ...
@@ -8087,6 +8533,7 @@ class ActionsClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ActionsSetDefaultWorkflowPermissionsType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -8123,6 +8570,7 @@ class ActionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={},
         )
 
@@ -8133,6 +8581,7 @@ class ActionsClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ActionsSetDefaultWorkflowPermissionsType,
     ) -> Response: ...
 
@@ -8144,6 +8593,7 @@ class ActionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         default_workflow_permissions: Missing[Literal["read", "write"]] = UNSET,
         can_approve_pull_request_reviews: Missing[bool] = UNSET,
     ) -> Response: ...
@@ -8154,6 +8604,7 @@ class ActionsClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ActionsSetDefaultWorkflowPermissionsType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -8190,6 +8641,7 @@ class ActionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={},
         )
 
@@ -8202,6 +8654,7 @@ class ActionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         ReposOwnerRepoActionsRunnersGetResponse200,
         ReposOwnerRepoActionsRunnersGetResponse200Type,
@@ -8236,6 +8689,7 @@ class ActionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ReposOwnerRepoActionsRunnersGetResponse200,
         )
 
@@ -8248,6 +8702,7 @@ class ActionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         ReposOwnerRepoActionsRunnersGetResponse200,
         ReposOwnerRepoActionsRunnersGetResponse200Type,
@@ -8282,6 +8737,7 @@ class ActionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ReposOwnerRepoActionsRunnersGetResponse200,
         )
 
@@ -8291,6 +8747,7 @@ class ActionsClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[RunnerApplication], list[RunnerApplicationType]]:
         """actions/list-runner-applications-for-repo
 
@@ -8315,6 +8772,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[RunnerApplication],
         )
 
@@ -8324,6 +8782,7 @@ class ActionsClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[RunnerApplication], list[RunnerApplicationType]]:
         """actions/list-runner-applications-for-repo
 
@@ -8348,6 +8807,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[RunnerApplication],
         )
 
@@ -8358,6 +8818,7 @@ class ActionsClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoActionsRunnersGenerateJitconfigPostBodyType,
     ) -> Response[
         OrgsOrgActionsRunnersGenerateJitconfigPostResponse201,
@@ -8372,6 +8833,7 @@ class ActionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: str,
         runner_group_id: int,
         labels: list[str],
@@ -8387,6 +8849,7 @@ class ActionsClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             ReposOwnerRepoActionsRunnersGenerateJitconfigPostBodyType
         ] = UNSET,
@@ -8435,6 +8898,7 @@ class ActionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgActionsRunnersGenerateJitconfigPostResponse201,
             error_models={
                 "404": BasicError,
@@ -8450,6 +8914,7 @@ class ActionsClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoActionsRunnersGenerateJitconfigPostBodyType,
     ) -> Response[
         OrgsOrgActionsRunnersGenerateJitconfigPostResponse201,
@@ -8464,6 +8929,7 @@ class ActionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: str,
         runner_group_id: int,
         labels: list[str],
@@ -8479,6 +8945,7 @@ class ActionsClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             ReposOwnerRepoActionsRunnersGenerateJitconfigPostBodyType
         ] = UNSET,
@@ -8527,6 +8994,7 @@ class ActionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgActionsRunnersGenerateJitconfigPostResponse201,
             error_models={
                 "404": BasicError,
@@ -8541,6 +9009,7 @@ class ActionsClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[AuthenticationToken, AuthenticationTokenType]:
         """actions/create-registration-token-for-repo
 
@@ -8571,6 +9040,7 @@ class ActionsClient:
             "POST",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=AuthenticationToken,
         )
 
@@ -8580,6 +9050,7 @@ class ActionsClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[AuthenticationToken, AuthenticationTokenType]:
         """actions/create-registration-token-for-repo
 
@@ -8610,6 +9081,7 @@ class ActionsClient:
             "POST",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=AuthenticationToken,
         )
 
@@ -8619,6 +9091,7 @@ class ActionsClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[AuthenticationToken, AuthenticationTokenType]:
         """actions/create-remove-token-for-repo
 
@@ -8649,6 +9122,7 @@ class ActionsClient:
             "POST",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=AuthenticationToken,
         )
 
@@ -8658,6 +9132,7 @@ class ActionsClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[AuthenticationToken, AuthenticationTokenType]:
         """actions/create-remove-token-for-repo
 
@@ -8688,6 +9163,7 @@ class ActionsClient:
             "POST",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=AuthenticationToken,
         )
 
@@ -8698,6 +9174,7 @@ class ActionsClient:
         runner_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[Runner, RunnerType]:
         """actions/get-self-hosted-runner-for-repo
 
@@ -8722,6 +9199,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Runner,
         )
 
@@ -8732,6 +9210,7 @@ class ActionsClient:
         runner_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[Runner, RunnerType]:
         """actions/get-self-hosted-runner-for-repo
 
@@ -8756,6 +9235,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Runner,
         )
 
@@ -8766,6 +9246,7 @@ class ActionsClient:
         runner_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """actions/delete-self-hosted-runner-from-repo
 
@@ -8790,6 +9271,7 @@ class ActionsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "422": ValidationErrorSimple,
             },
@@ -8802,6 +9284,7 @@ class ActionsClient:
         runner_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """actions/delete-self-hosted-runner-from-repo
 
@@ -8826,6 +9309,7 @@ class ActionsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "422": ValidationErrorSimple,
             },
@@ -8838,6 +9322,7 @@ class ActionsClient:
         runner_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200Type,
@@ -8868,6 +9353,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
             error_models={
                 "404": BasicError,
@@ -8881,6 +9367,7 @@ class ActionsClient:
         runner_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200Type,
@@ -8911,6 +9398,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
             error_models={
                 "404": BasicError,
@@ -8925,6 +9413,7 @@ class ActionsClient:
         runner_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBodyType,
     ) -> Response[
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
@@ -8940,6 +9429,7 @@ class ActionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         labels: list[str],
     ) -> Response[
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
@@ -8953,6 +9443,7 @@ class ActionsClient:
         runner_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[
@@ -9000,6 +9491,7 @@ class ActionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
             error_models={
                 "404": BasicError,
@@ -9015,6 +9507,7 @@ class ActionsClient:
         runner_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBodyType,
     ) -> Response[
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
@@ -9030,6 +9523,7 @@ class ActionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         labels: list[str],
     ) -> Response[
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
@@ -9043,6 +9537,7 @@ class ActionsClient:
         runner_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[
@@ -9090,6 +9585,7 @@ class ActionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
             error_models={
                 "404": BasicError,
@@ -9105,6 +9601,7 @@ class ActionsClient:
         runner_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBodyType,
     ) -> Response[
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
@@ -9120,6 +9617,7 @@ class ActionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         labels: list[str],
     ) -> Response[
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
@@ -9133,6 +9631,7 @@ class ActionsClient:
         runner_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[
@@ -9179,6 +9678,7 @@ class ActionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
             error_models={
                 "404": BasicError,
@@ -9194,6 +9694,7 @@ class ActionsClient:
         runner_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBodyType,
     ) -> Response[
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
@@ -9209,6 +9710,7 @@ class ActionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         labels: list[str],
     ) -> Response[
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
@@ -9222,6 +9724,7 @@ class ActionsClient:
         runner_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[
@@ -9268,6 +9771,7 @@ class ActionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
             error_models={
                 "404": BasicError,
@@ -9282,6 +9786,7 @@ class ActionsClient:
         runner_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200,
         OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200Type,
@@ -9313,6 +9818,7 @@ class ActionsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200,
             error_models={
                 "404": BasicError,
@@ -9326,6 +9832,7 @@ class ActionsClient:
         runner_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200,
         OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200Type,
@@ -9357,6 +9864,7 @@ class ActionsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200,
             error_models={
                 "404": BasicError,
@@ -9371,6 +9879,7 @@ class ActionsClient:
         name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200Type,
@@ -9406,6 +9915,7 @@ class ActionsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
             error_models={
                 "404": BasicError,
@@ -9421,6 +9931,7 @@ class ActionsClient:
         name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200Type,
@@ -9456,6 +9967,7 @@ class ActionsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
             error_models={
                 "404": BasicError,
@@ -9496,6 +10008,7 @@ class ActionsClient:
         check_suite_id: Missing[int] = UNSET,
         head_sha: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         ReposOwnerRepoActionsRunsGetResponse200,
         ReposOwnerRepoActionsRunsGetResponse200Type,
@@ -9539,6 +10052,7 @@ class ActionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ReposOwnerRepoActionsRunsGetResponse200,
         )
 
@@ -9575,6 +10089,7 @@ class ActionsClient:
         check_suite_id: Missing[int] = UNSET,
         head_sha: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         ReposOwnerRepoActionsRunsGetResponse200,
         ReposOwnerRepoActionsRunsGetResponse200Type,
@@ -9618,6 +10133,7 @@ class ActionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ReposOwnerRepoActionsRunsGetResponse200,
         )
 
@@ -9629,6 +10145,7 @@ class ActionsClient:
         *,
         exclude_pull_requests: Missing[bool] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[WorkflowRun, WorkflowRunType]:
         """actions/get-workflow-run
 
@@ -9658,6 +10175,7 @@ class ActionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=WorkflowRun,
         )
 
@@ -9669,6 +10187,7 @@ class ActionsClient:
         *,
         exclude_pull_requests: Missing[bool] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[WorkflowRun, WorkflowRunType]:
         """actions/get-workflow-run
 
@@ -9698,6 +10217,7 @@ class ActionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=WorkflowRun,
         )
 
@@ -9708,6 +10228,7 @@ class ActionsClient:
         run_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """actions/delete-workflow-run
 
@@ -9730,6 +10251,7 @@ class ActionsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     async def async_delete_workflow_run(
@@ -9739,6 +10261,7 @@ class ActionsClient:
         run_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """actions/delete-workflow-run
 
@@ -9761,6 +10284,7 @@ class ActionsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     def get_reviews_for_run(
@@ -9770,6 +10294,7 @@ class ActionsClient:
         run_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[EnvironmentApprovals], list[EnvironmentApprovalsType]]:
         """actions/get-reviews-for-run
 
@@ -9792,6 +10317,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[EnvironmentApprovals],
         )
 
@@ -9802,6 +10328,7 @@ class ActionsClient:
         run_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[EnvironmentApprovals], list[EnvironmentApprovalsType]]:
         """actions/get-reviews-for-run
 
@@ -9824,6 +10351,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[EnvironmentApprovals],
         )
 
@@ -9834,6 +10362,7 @@ class ActionsClient:
         run_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[EmptyObject, EmptyObjectType]:
         """actions/approve-workflow-run
 
@@ -9856,6 +10385,7 @@ class ActionsClient:
             "POST",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=EmptyObject,
             error_models={
                 "404": BasicError,
@@ -9870,6 +10400,7 @@ class ActionsClient:
         run_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[EmptyObject, EmptyObjectType]:
         """actions/approve-workflow-run
 
@@ -9892,6 +10423,7 @@ class ActionsClient:
             "POST",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=EmptyObject,
             error_models={
                 "404": BasicError,
@@ -9909,6 +10441,7 @@ class ActionsClient:
         page: Missing[int] = UNSET,
         name: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200,
         ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200Type,
@@ -9943,6 +10476,7 @@ class ActionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200,
         )
 
@@ -9956,6 +10490,7 @@ class ActionsClient:
         page: Missing[int] = UNSET,
         name: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200,
         ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200Type,
@@ -9990,6 +10525,7 @@ class ActionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200,
         )
 
@@ -10002,6 +10538,7 @@ class ActionsClient:
         *,
         exclude_pull_requests: Missing[bool] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[WorkflowRun, WorkflowRunType]:
         """actions/get-workflow-run-attempt
 
@@ -10031,6 +10568,7 @@ class ActionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=WorkflowRun,
         )
 
@@ -10043,6 +10581,7 @@ class ActionsClient:
         *,
         exclude_pull_requests: Missing[bool] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[WorkflowRun, WorkflowRunType]:
         """actions/get-workflow-run-attempt
 
@@ -10072,6 +10611,7 @@ class ActionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=WorkflowRun,
         )
 
@@ -10085,6 +10625,7 @@ class ActionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200,
         ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200Type,
@@ -10122,6 +10663,7 @@ class ActionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200,
             error_models={
                 "404": BasicError,
@@ -10138,6 +10680,7 @@ class ActionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200,
         ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200Type,
@@ -10175,6 +10718,7 @@ class ActionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200,
             error_models={
                 "404": BasicError,
@@ -10189,6 +10733,7 @@ class ActionsClient:
         attempt_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """actions/download-workflow-run-attempt-logs
 
@@ -10212,6 +10757,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     async def async_download_workflow_run_attempt_logs(
@@ -10222,6 +10768,7 @@ class ActionsClient:
         attempt_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """actions/download-workflow-run-attempt-logs
 
@@ -10245,6 +10792,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     def cancel_workflow_run(
@@ -10254,6 +10802,7 @@ class ActionsClient:
         run_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[EmptyObject, EmptyObjectType]:
         """actions/cancel-workflow-run
 
@@ -10276,6 +10825,7 @@ class ActionsClient:
             "POST",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=EmptyObject,
             error_models={
                 "409": BasicError,
@@ -10289,6 +10839,7 @@ class ActionsClient:
         run_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[EmptyObject, EmptyObjectType]:
         """actions/cancel-workflow-run
 
@@ -10311,6 +10862,7 @@ class ActionsClient:
             "POST",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=EmptyObject,
             error_models={
                 "409": BasicError,
@@ -10325,6 +10877,7 @@ class ActionsClient:
         run_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Union[
             ReviewCustomGatesCommentRequiredType, ReviewCustomGatesStateRequiredType
         ],
@@ -10339,6 +10892,7 @@ class ActionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         environment_name: str,
         comment: str,
     ) -> Response: ...
@@ -10352,6 +10906,7 @@ class ActionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         environment_name: str,
         state: Literal["approved", "rejected"],
         comment: Missing[str] = UNSET,
@@ -10364,6 +10919,7 @@ class ActionsClient:
         run_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             Union[
                 ReviewCustomGatesCommentRequiredType, ReviewCustomGatesStateRequiredType
@@ -10413,6 +10969,7 @@ class ActionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     @overload
@@ -10423,6 +10980,7 @@ class ActionsClient:
         run_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Union[
             ReviewCustomGatesCommentRequiredType, ReviewCustomGatesStateRequiredType
         ],
@@ -10437,6 +10995,7 @@ class ActionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         environment_name: str,
         comment: str,
     ) -> Response: ...
@@ -10450,6 +11009,7 @@ class ActionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         environment_name: str,
         state: Literal["approved", "rejected"],
         comment: Missing[str] = UNSET,
@@ -10462,6 +11022,7 @@ class ActionsClient:
         run_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             Union[
                 ReviewCustomGatesCommentRequiredType, ReviewCustomGatesStateRequiredType
@@ -10511,6 +11072,7 @@ class ActionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     def force_cancel_workflow_run(
@@ -10520,6 +11082,7 @@ class ActionsClient:
         run_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[EmptyObject, EmptyObjectType]:
         """actions/force-cancel-workflow-run
 
@@ -10543,6 +11106,7 @@ class ActionsClient:
             "POST",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=EmptyObject,
             error_models={
                 "409": BasicError,
@@ -10556,6 +11120,7 @@ class ActionsClient:
         run_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[EmptyObject, EmptyObjectType]:
         """actions/force-cancel-workflow-run
 
@@ -10579,6 +11144,7 @@ class ActionsClient:
             "POST",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=EmptyObject,
             error_models={
                 "409": BasicError,
@@ -10595,6 +11161,7 @@ class ActionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         ReposOwnerRepoActionsRunsRunIdJobsGetResponse200,
         ReposOwnerRepoActionsRunsRunIdJobsGetResponse200Type,
@@ -10630,6 +11197,7 @@ class ActionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ReposOwnerRepoActionsRunsRunIdJobsGetResponse200,
         )
 
@@ -10643,6 +11211,7 @@ class ActionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         ReposOwnerRepoActionsRunsRunIdJobsGetResponse200,
         ReposOwnerRepoActionsRunsRunIdJobsGetResponse200Type,
@@ -10678,6 +11247,7 @@ class ActionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ReposOwnerRepoActionsRunsRunIdJobsGetResponse200,
         )
 
@@ -10688,6 +11258,7 @@ class ActionsClient:
         run_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """actions/download-workflow-run-logs
 
@@ -10711,6 +11282,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     async def async_download_workflow_run_logs(
@@ -10720,6 +11292,7 @@ class ActionsClient:
         run_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """actions/download-workflow-run-logs
 
@@ -10743,6 +11316,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     def delete_workflow_run_logs(
@@ -10752,6 +11326,7 @@ class ActionsClient:
         run_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """actions/delete-workflow-run-logs
 
@@ -10774,6 +11349,7 @@ class ActionsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "403": BasicError,
                 "500": BasicError,
@@ -10787,6 +11363,7 @@ class ActionsClient:
         run_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """actions/delete-workflow-run-logs
 
@@ -10809,6 +11386,7 @@ class ActionsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "403": BasicError,
                 "500": BasicError,
@@ -10822,6 +11400,7 @@ class ActionsClient:
         run_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[PendingDeployment], list[PendingDeploymentType]]:
         """actions/get-pending-deployments-for-run
 
@@ -10846,6 +11425,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[PendingDeployment],
         )
 
@@ -10856,6 +11436,7 @@ class ActionsClient:
         run_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[PendingDeployment], list[PendingDeploymentType]]:
         """actions/get-pending-deployments-for-run
 
@@ -10880,6 +11461,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[PendingDeployment],
         )
 
@@ -10891,6 +11473,7 @@ class ActionsClient:
         run_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBodyType,
     ) -> Response[list[Deployment], list[DeploymentType]]: ...
 
@@ -10903,6 +11486,7 @@ class ActionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         environment_ids: list[int],
         state: Literal["approved", "rejected"],
         comment: str,
@@ -10915,6 +11499,7 @@ class ActionsClient:
         run_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBodyType
         ] = UNSET,
@@ -10958,6 +11543,7 @@ class ActionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Deployment],
         )
 
@@ -10969,6 +11555,7 @@ class ActionsClient:
         run_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBodyType,
     ) -> Response[list[Deployment], list[DeploymentType]]: ...
 
@@ -10981,6 +11568,7 @@ class ActionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         environment_ids: list[int],
         state: Literal["approved", "rejected"],
         comment: str,
@@ -10993,6 +11581,7 @@ class ActionsClient:
         run_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBodyType
         ] = UNSET,
@@ -11036,6 +11625,7 @@ class ActionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Deployment],
         )
 
@@ -11047,6 +11637,7 @@ class ActionsClient:
         run_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             Union[ReposOwnerRepoActionsRunsRunIdRerunPostBodyType, None]
         ] = UNSET,
@@ -11061,6 +11652,7 @@ class ActionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         enable_debug_logging: Missing[bool] = UNSET,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
 
@@ -11071,6 +11663,7 @@ class ActionsClient:
         run_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             Union[ReposOwnerRepoActionsRunsRunIdRerunPostBodyType, None]
         ] = UNSET,
@@ -11111,6 +11704,7 @@ class ActionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=EmptyObject,
         )
 
@@ -11122,6 +11716,7 @@ class ActionsClient:
         run_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             Union[ReposOwnerRepoActionsRunsRunIdRerunPostBodyType, None]
         ] = UNSET,
@@ -11136,6 +11731,7 @@ class ActionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         enable_debug_logging: Missing[bool] = UNSET,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
 
@@ -11146,6 +11742,7 @@ class ActionsClient:
         run_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             Union[ReposOwnerRepoActionsRunsRunIdRerunPostBodyType, None]
         ] = UNSET,
@@ -11186,6 +11783,7 @@ class ActionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=EmptyObject,
         )
 
@@ -11197,6 +11795,7 @@ class ActionsClient:
         run_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             Union[ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBodyType, None]
         ] = UNSET,
@@ -11211,6 +11810,7 @@ class ActionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         enable_debug_logging: Missing[bool] = UNSET,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
 
@@ -11221,6 +11821,7 @@ class ActionsClient:
         run_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             Union[ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBodyType, None]
         ] = UNSET,
@@ -11264,6 +11865,7 @@ class ActionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=EmptyObject,
         )
 
@@ -11275,6 +11877,7 @@ class ActionsClient:
         run_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             Union[ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBodyType, None]
         ] = UNSET,
@@ -11289,6 +11892,7 @@ class ActionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         enable_debug_logging: Missing[bool] = UNSET,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
 
@@ -11299,6 +11903,7 @@ class ActionsClient:
         run_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             Union[ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBodyType, None]
         ] = UNSET,
@@ -11342,6 +11947,7 @@ class ActionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=EmptyObject,
         )
 
@@ -11352,6 +11958,7 @@ class ActionsClient:
         run_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[WorkflowRunUsage, WorkflowRunUsageType]:
         """actions/get-workflow-run-usage
 
@@ -11379,6 +11986,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=WorkflowRunUsage,
         )
 
@@ -11389,6 +11997,7 @@ class ActionsClient:
         run_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[WorkflowRunUsage, WorkflowRunUsageType]:
         """actions/get-workflow-run-usage
 
@@ -11416,6 +12025,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=WorkflowRunUsage,
         )
 
@@ -11427,6 +12037,7 @@ class ActionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         ReposOwnerRepoActionsSecretsGetResponse200,
         ReposOwnerRepoActionsSecretsGetResponse200Type,
@@ -11461,6 +12072,7 @@ class ActionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ReposOwnerRepoActionsSecretsGetResponse200,
         )
 
@@ -11472,6 +12084,7 @@ class ActionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         ReposOwnerRepoActionsSecretsGetResponse200,
         ReposOwnerRepoActionsSecretsGetResponse200Type,
@@ -11506,6 +12119,7 @@ class ActionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ReposOwnerRepoActionsSecretsGetResponse200,
         )
 
@@ -11515,6 +12129,7 @@ class ActionsClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[ActionsPublicKey, ActionsPublicKeyType]:
         """actions/get-repo-public-key
 
@@ -11540,6 +12155,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ActionsPublicKey,
         )
 
@@ -11549,6 +12165,7 @@ class ActionsClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[ActionsPublicKey, ActionsPublicKeyType]:
         """actions/get-repo-public-key
 
@@ -11574,6 +12191,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ActionsPublicKey,
         )
 
@@ -11584,6 +12202,7 @@ class ActionsClient:
         secret_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[ActionsSecret, ActionsSecretType]:
         """actions/get-repo-secret
 
@@ -11608,6 +12227,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ActionsSecret,
         )
 
@@ -11618,6 +12238,7 @@ class ActionsClient:
         secret_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[ActionsSecret, ActionsSecretType]:
         """actions/get-repo-secret
 
@@ -11642,6 +12263,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ActionsSecret,
         )
 
@@ -11653,6 +12275,7 @@ class ActionsClient:
         secret_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoActionsSecretsSecretNamePutBodyType,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
 
@@ -11665,6 +12288,7 @@ class ActionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         encrypted_value: str,
         key_id: str,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
@@ -11676,6 +12300,7 @@ class ActionsClient:
         secret_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoActionsSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject, EmptyObjectType]:
@@ -11715,6 +12340,7 @@ class ActionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=EmptyObject,
         )
 
@@ -11726,6 +12352,7 @@ class ActionsClient:
         secret_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoActionsSecretsSecretNamePutBodyType,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
 
@@ -11738,6 +12365,7 @@ class ActionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         encrypted_value: str,
         key_id: str,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
@@ -11749,6 +12377,7 @@ class ActionsClient:
         secret_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoActionsSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject, EmptyObjectType]:
@@ -11788,6 +12417,7 @@ class ActionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=EmptyObject,
         )
 
@@ -11798,6 +12428,7 @@ class ActionsClient:
         secret_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """actions/delete-repo-secret
 
@@ -11820,6 +12451,7 @@ class ActionsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     async def async_delete_repo_secret(
@@ -11829,6 +12461,7 @@ class ActionsClient:
         secret_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """actions/delete-repo-secret
 
@@ -11851,6 +12484,7 @@ class ActionsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     def list_repo_variables(
@@ -11861,6 +12495,7 @@ class ActionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         ReposOwnerRepoActionsVariablesGetResponse200,
         ReposOwnerRepoActionsVariablesGetResponse200Type,
@@ -11894,6 +12529,7 @@ class ActionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ReposOwnerRepoActionsVariablesGetResponse200,
         )
 
@@ -11905,6 +12541,7 @@ class ActionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         ReposOwnerRepoActionsVariablesGetResponse200,
         ReposOwnerRepoActionsVariablesGetResponse200Type,
@@ -11938,6 +12575,7 @@ class ActionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ReposOwnerRepoActionsVariablesGetResponse200,
         )
 
@@ -11948,6 +12586,7 @@ class ActionsClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoActionsVariablesPostBodyType,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
 
@@ -11959,6 +12598,7 @@ class ActionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: str,
         value: str,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
@@ -11969,6 +12609,7 @@ class ActionsClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoActionsVariablesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject, EmptyObjectType]:
@@ -12005,6 +12646,7 @@ class ActionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=EmptyObject,
         )
 
@@ -12015,6 +12657,7 @@ class ActionsClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoActionsVariablesPostBodyType,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
 
@@ -12026,6 +12669,7 @@ class ActionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: str,
         value: str,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
@@ -12036,6 +12680,7 @@ class ActionsClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoActionsVariablesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject, EmptyObjectType]:
@@ -12072,6 +12717,7 @@ class ActionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=EmptyObject,
         )
 
@@ -12082,6 +12728,7 @@ class ActionsClient:
         name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[ActionsVariable, ActionsVariableType]:
         """actions/get-repo-variable
 
@@ -12106,6 +12753,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ActionsVariable,
         )
 
@@ -12116,6 +12764,7 @@ class ActionsClient:
         name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[ActionsVariable, ActionsVariableType]:
         """actions/get-repo-variable
 
@@ -12140,6 +12789,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ActionsVariable,
         )
 
@@ -12150,6 +12800,7 @@ class ActionsClient:
         name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """actions/delete-repo-variable
 
@@ -12172,6 +12823,7 @@ class ActionsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     async def async_delete_repo_variable(
@@ -12181,6 +12833,7 @@ class ActionsClient:
         name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """actions/delete-repo-variable
 
@@ -12203,6 +12856,7 @@ class ActionsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     @overload
@@ -12213,6 +12867,7 @@ class ActionsClient:
         name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoActionsVariablesNamePatchBodyType,
     ) -> Response: ...
 
@@ -12225,6 +12880,7 @@ class ActionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         value: Missing[str] = UNSET,
     ) -> Response: ...
 
@@ -12235,6 +12891,7 @@ class ActionsClient:
         name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoActionsVariablesNamePatchBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -12273,6 +12930,7 @@ class ActionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     @overload
@@ -12283,6 +12941,7 @@ class ActionsClient:
         name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoActionsVariablesNamePatchBodyType,
     ) -> Response: ...
 
@@ -12295,6 +12954,7 @@ class ActionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         value: Missing[str] = UNSET,
     ) -> Response: ...
 
@@ -12305,6 +12965,7 @@ class ActionsClient:
         name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoActionsVariablesNamePatchBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -12343,6 +13004,7 @@ class ActionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     def list_repo_workflows(
@@ -12353,6 +13015,7 @@ class ActionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         ReposOwnerRepoActionsWorkflowsGetResponse200,
         ReposOwnerRepoActionsWorkflowsGetResponse200Type,
@@ -12386,6 +13049,7 @@ class ActionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ReposOwnerRepoActionsWorkflowsGetResponse200,
         )
 
@@ -12397,6 +13061,7 @@ class ActionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         ReposOwnerRepoActionsWorkflowsGetResponse200,
         ReposOwnerRepoActionsWorkflowsGetResponse200Type,
@@ -12430,6 +13095,7 @@ class ActionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ReposOwnerRepoActionsWorkflowsGetResponse200,
         )
 
@@ -12440,6 +13106,7 @@ class ActionsClient:
         workflow_id: Union[int, str],
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[Workflow, WorkflowType]:
         """actions/get-workflow
 
@@ -12465,6 +13132,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Workflow,
         )
 
@@ -12475,6 +13143,7 @@ class ActionsClient:
         workflow_id: Union[int, str],
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[Workflow, WorkflowType]:
         """actions/get-workflow
 
@@ -12500,6 +13169,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Workflow,
         )
 
@@ -12510,6 +13180,7 @@ class ActionsClient:
         workflow_id: Union[int, str],
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """actions/disable-workflow
 
@@ -12530,6 +13201,7 @@ class ActionsClient:
             "PUT",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     async def async_disable_workflow(
@@ -12539,6 +13211,7 @@ class ActionsClient:
         workflow_id: Union[int, str],
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """actions/disable-workflow
 
@@ -12559,6 +13232,7 @@ class ActionsClient:
             "PUT",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     @overload
@@ -12569,6 +13243,7 @@ class ActionsClient:
         workflow_id: Union[int, str],
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyType,
     ) -> Response: ...
 
@@ -12581,6 +13256,7 @@ class ActionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         ref: str,
         inputs: Missing[
             ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsType
@@ -12594,6 +13270,7 @@ class ActionsClient:
         workflow_id: Union[int, str],
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyType
         ] = UNSET,
@@ -12634,6 +13311,7 @@ class ActionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     @overload
@@ -12644,6 +13322,7 @@ class ActionsClient:
         workflow_id: Union[int, str],
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyType,
     ) -> Response: ...
 
@@ -12656,6 +13335,7 @@ class ActionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         ref: str,
         inputs: Missing[
             ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsType
@@ -12669,6 +13349,7 @@ class ActionsClient:
         workflow_id: Union[int, str],
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyType
         ] = UNSET,
@@ -12709,6 +13390,7 @@ class ActionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     def enable_workflow(
@@ -12718,6 +13400,7 @@ class ActionsClient:
         workflow_id: Union[int, str],
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """actions/enable-workflow
 
@@ -12738,6 +13421,7 @@ class ActionsClient:
             "PUT",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     async def async_enable_workflow(
@@ -12747,6 +13431,7 @@ class ActionsClient:
         workflow_id: Union[int, str],
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """actions/enable-workflow
 
@@ -12767,6 +13452,7 @@ class ActionsClient:
             "PUT",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     def list_workflow_runs(
@@ -12803,6 +13489,7 @@ class ActionsClient:
         check_suite_id: Missing[int] = UNSET,
         head_sha: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200,
         ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200Type,
@@ -12846,6 +13533,7 @@ class ActionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200,
         )
 
@@ -12883,6 +13571,7 @@ class ActionsClient:
         check_suite_id: Missing[int] = UNSET,
         head_sha: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200,
         ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200Type,
@@ -12926,6 +13615,7 @@ class ActionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200,
         )
 
@@ -12936,6 +13626,7 @@ class ActionsClient:
         workflow_id: Union[int, str],
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[WorkflowUsage, WorkflowUsageType]:
         """actions/get-workflow-usage
 
@@ -12965,6 +13656,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=WorkflowUsage,
         )
 
@@ -12975,6 +13667,7 @@ class ActionsClient:
         workflow_id: Union[int, str],
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[WorkflowUsage, WorkflowUsageType]:
         """actions/get-workflow-usage
 
@@ -13004,6 +13697,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=WorkflowUsage,
         )
 
@@ -13016,6 +13710,7 @@ class ActionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200,
         ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200Type,
@@ -13052,6 +13747,7 @@ class ActionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200,
         )
 
@@ -13064,6 +13760,7 @@ class ActionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200,
         ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200Type,
@@ -13100,6 +13797,7 @@ class ActionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200,
         )
 
@@ -13110,6 +13808,7 @@ class ActionsClient:
         environment_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[ActionsPublicKey, ActionsPublicKeyType]:
         """actions/get-environment-public-key
 
@@ -13137,6 +13836,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ActionsPublicKey,
         )
 
@@ -13147,6 +13847,7 @@ class ActionsClient:
         environment_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[ActionsPublicKey, ActionsPublicKeyType]:
         """actions/get-environment-public-key
 
@@ -13174,6 +13875,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ActionsPublicKey,
         )
 
@@ -13185,6 +13887,7 @@ class ActionsClient:
         secret_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[ActionsSecret, ActionsSecretType]:
         """actions/get-environment-secret
 
@@ -13209,6 +13912,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ActionsSecret,
         )
 
@@ -13220,6 +13924,7 @@ class ActionsClient:
         secret_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[ActionsSecret, ActionsSecretType]:
         """actions/get-environment-secret
 
@@ -13244,6 +13949,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ActionsSecret,
         )
 
@@ -13256,6 +13962,7 @@ class ActionsClient:
         secret_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBodyType,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
 
@@ -13269,6 +13976,7 @@ class ActionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         encrypted_value: str,
         key_id: str,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
@@ -13281,6 +13989,7 @@ class ActionsClient:
         secret_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBodyType
         ] = UNSET,
@@ -13325,6 +14034,7 @@ class ActionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=EmptyObject,
         )
 
@@ -13337,6 +14047,7 @@ class ActionsClient:
         secret_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBodyType,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
 
@@ -13350,6 +14061,7 @@ class ActionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         encrypted_value: str,
         key_id: str,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
@@ -13362,6 +14074,7 @@ class ActionsClient:
         secret_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBodyType
         ] = UNSET,
@@ -13406,6 +14119,7 @@ class ActionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=EmptyObject,
         )
 
@@ -13417,6 +14131,7 @@ class ActionsClient:
         secret_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """actions/delete-environment-secret
 
@@ -13439,6 +14154,7 @@ class ActionsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     async def async_delete_environment_secret(
@@ -13449,6 +14165,7 @@ class ActionsClient:
         secret_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """actions/delete-environment-secret
 
@@ -13471,6 +14188,7 @@ class ActionsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     def list_environment_variables(
@@ -13482,6 +14200,7 @@ class ActionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200,
         ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200Type,
@@ -13517,6 +14236,7 @@ class ActionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200,
         )
 
@@ -13529,6 +14249,7 @@ class ActionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200,
         ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200Type,
@@ -13564,6 +14285,7 @@ class ActionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200,
         )
 
@@ -13575,6 +14297,7 @@ class ActionsClient:
         environment_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBodyType,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
 
@@ -13587,6 +14310,7 @@ class ActionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: str,
         value: str,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
@@ -13598,6 +14322,7 @@ class ActionsClient:
         environment_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBodyType
         ] = UNSET,
@@ -13641,6 +14366,7 @@ class ActionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=EmptyObject,
         )
 
@@ -13652,6 +14378,7 @@ class ActionsClient:
         environment_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBodyType,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
 
@@ -13664,6 +14391,7 @@ class ActionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: str,
         value: str,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
@@ -13675,6 +14403,7 @@ class ActionsClient:
         environment_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBodyType
         ] = UNSET,
@@ -13718,6 +14447,7 @@ class ActionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=EmptyObject,
         )
 
@@ -13729,6 +14459,7 @@ class ActionsClient:
         name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[ActionsVariable, ActionsVariableType]:
         """actions/get-environment-variable
 
@@ -13753,6 +14484,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ActionsVariable,
         )
 
@@ -13764,6 +14496,7 @@ class ActionsClient:
         name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[ActionsVariable, ActionsVariableType]:
         """actions/get-environment-variable
 
@@ -13788,6 +14521,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ActionsVariable,
         )
 
@@ -13799,6 +14533,7 @@ class ActionsClient:
         environment_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """actions/delete-environment-variable
 
@@ -13821,6 +14556,7 @@ class ActionsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     async def async_delete_environment_variable(
@@ -13831,6 +14567,7 @@ class ActionsClient:
         environment_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """actions/delete-environment-variable
 
@@ -13853,6 +14590,7 @@ class ActionsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     @overload
@@ -13864,6 +14602,7 @@ class ActionsClient:
         environment_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBodyType,
     ) -> Response: ...
 
@@ -13877,6 +14616,7 @@ class ActionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         value: Missing[str] = UNSET,
     ) -> Response: ...
 
@@ -13888,6 +14628,7 @@ class ActionsClient:
         environment_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBodyType
         ] = UNSET,
@@ -13930,6 +14671,7 @@ class ActionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     @overload
@@ -13941,6 +14683,7 @@ class ActionsClient:
         environment_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBodyType,
     ) -> Response: ...
 
@@ -13954,6 +14697,7 @@ class ActionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         value: Missing[str] = UNSET,
     ) -> Response: ...
 
@@ -13965,6 +14709,7 @@ class ActionsClient:
         environment_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBodyType
         ] = UNSET,
@@ -14007,4 +14752,5 @@ class ActionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
         )

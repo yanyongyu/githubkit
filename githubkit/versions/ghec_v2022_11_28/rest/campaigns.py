@@ -62,6 +62,7 @@ class CampaignsClient:
         state: Missing[Literal["open", "closed"]] = UNSET,
         sort: Missing[Literal["created", "updated", "ends_at", "published"]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[CampaignSummary], list[CampaignSummaryType]]:
         """campaigns/list-org-campaigns
 
@@ -99,6 +100,7 @@ class CampaignsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[CampaignSummary],
             error_models={
                 "404": BasicError,
@@ -116,6 +118,7 @@ class CampaignsClient:
         state: Missing[Literal["open", "closed"]] = UNSET,
         sort: Missing[Literal["created", "updated", "ends_at", "published"]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[CampaignSummary], list[CampaignSummaryType]]:
         """campaigns/list-org-campaigns
 
@@ -153,6 +156,7 @@ class CampaignsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[CampaignSummary],
             error_models={
                 "404": BasicError,
@@ -166,6 +170,7 @@ class CampaignsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgCampaignsPostBodyType,
     ) -> Response[CampaignSummary, CampaignSummaryType]: ...
 
@@ -176,6 +181,7 @@ class CampaignsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: str,
         description: str,
         managers: Missing[list[str]] = UNSET,
@@ -193,6 +199,7 @@ class CampaignsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgCampaignsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[CampaignSummary, CampaignSummaryType]:
@@ -237,6 +244,7 @@ class CampaignsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CampaignSummary,
             error_models={
                 "400": BasicError,
@@ -252,6 +260,7 @@ class CampaignsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgCampaignsPostBodyType,
     ) -> Response[CampaignSummary, CampaignSummaryType]: ...
 
@@ -262,6 +271,7 @@ class CampaignsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: str,
         description: str,
         managers: Missing[list[str]] = UNSET,
@@ -279,6 +289,7 @@ class CampaignsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgCampaignsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[CampaignSummary, CampaignSummaryType]:
@@ -323,6 +334,7 @@ class CampaignsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CampaignSummary,
             error_models={
                 "400": BasicError,
@@ -338,6 +350,7 @@ class CampaignsClient:
         campaign_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[CampaignSummary, CampaignSummaryType]:
         """campaigns/get-campaign-summary
 
@@ -366,6 +379,7 @@ class CampaignsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CampaignSummary,
             error_models={
                 "404": BasicError,
@@ -380,6 +394,7 @@ class CampaignsClient:
         campaign_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[CampaignSummary, CampaignSummaryType]:
         """campaigns/get-campaign-summary
 
@@ -408,6 +423,7 @@ class CampaignsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CampaignSummary,
             error_models={
                 "404": BasicError,
@@ -422,6 +438,7 @@ class CampaignsClient:
         campaign_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """campaigns/delete-campaign
 
@@ -449,6 +466,7 @@ class CampaignsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
                 "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
@@ -461,6 +479,7 @@ class CampaignsClient:
         campaign_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """campaigns/delete-campaign
 
@@ -488,6 +507,7 @@ class CampaignsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
                 "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
@@ -501,6 +521,7 @@ class CampaignsClient:
         campaign_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgCampaignsCampaignNumberPatchBodyType,
     ) -> Response[CampaignSummary, CampaignSummaryType]: ...
 
@@ -512,6 +533,7 @@ class CampaignsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
         managers: Missing[list[str]] = UNSET,
@@ -527,6 +549,7 @@ class CampaignsClient:
         campaign_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgCampaignsCampaignNumberPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[CampaignSummary, CampaignSummaryType]:
@@ -568,6 +591,7 @@ class CampaignsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CampaignSummary,
             error_models={
                 "400": BasicError,
@@ -584,6 +608,7 @@ class CampaignsClient:
         campaign_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgCampaignsCampaignNumberPatchBodyType,
     ) -> Response[CampaignSummary, CampaignSummaryType]: ...
 
@@ -595,6 +620,7 @@ class CampaignsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
         managers: Missing[list[str]] = UNSET,
@@ -610,6 +636,7 @@ class CampaignsClient:
         campaign_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgCampaignsCampaignNumberPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[CampaignSummary, CampaignSummaryType]:
@@ -651,6 +678,7 @@ class CampaignsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CampaignSummary,
             error_models={
                 "400": BasicError,

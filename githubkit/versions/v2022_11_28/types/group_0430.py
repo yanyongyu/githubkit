@@ -25,7 +25,7 @@ class CheckRunWithSimpleCheckSuiteType(TypedDict):
     A check performed on the code of a given code change
     """
 
-    app: Union[None, IntegrationType, None]
+    app: Union[IntegrationType, None]
     check_suite: SimpleCheckSuiteType
     completed_at: Union[datetime, None]
     conclusion: Union[

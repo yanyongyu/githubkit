@@ -71,6 +71,7 @@ class CopilotClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[CopilotOrganizationDetails, CopilotOrganizationDetailsType]:
         """copilot/get-copilot-organization-details
 
@@ -100,6 +101,7 @@ class CopilotClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CopilotOrganizationDetails,
             error_models={
                 "500": BasicError,
@@ -114,6 +116,7 @@ class CopilotClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[CopilotOrganizationDetails, CopilotOrganizationDetailsType]:
         """copilot/get-copilot-organization-details
 
@@ -143,6 +146,7 @@ class CopilotClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CopilotOrganizationDetails,
             error_models={
                 "500": BasicError,
@@ -159,6 +163,7 @@ class CopilotClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         OrgsOrgCopilotBillingSeatsGetResponse200,
         OrgsOrgCopilotBillingSeatsGetResponse200Type,
@@ -197,6 +202,7 @@ class CopilotClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgCopilotBillingSeatsGetResponse200,
             error_models={
                 "500": BasicError,
@@ -213,6 +219,7 @@ class CopilotClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         OrgsOrgCopilotBillingSeatsGetResponse200,
         OrgsOrgCopilotBillingSeatsGetResponse200Type,
@@ -251,6 +258,7 @@ class CopilotClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgCopilotBillingSeatsGetResponse200,
             error_models={
                 "500": BasicError,
@@ -266,6 +274,7 @@ class CopilotClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgCopilotBillingSelectedTeamsPostBodyType,
     ) -> Response[
         OrgsOrgCopilotBillingSelectedTeamsPostResponse201,
@@ -279,6 +288,7 @@ class CopilotClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         selected_teams: list[str],
     ) -> Response[
         OrgsOrgCopilotBillingSelectedTeamsPostResponse201,
@@ -290,6 +300,7 @@ class CopilotClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgCopilotBillingSelectedTeamsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[
@@ -343,6 +354,7 @@ class CopilotClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgCopilotBillingSelectedTeamsPostResponse201,
             error_models={
                 "500": BasicError,
@@ -358,6 +370,7 @@ class CopilotClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgCopilotBillingSelectedTeamsPostBodyType,
     ) -> Response[
         OrgsOrgCopilotBillingSelectedTeamsPostResponse201,
@@ -371,6 +384,7 @@ class CopilotClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         selected_teams: list[str],
     ) -> Response[
         OrgsOrgCopilotBillingSelectedTeamsPostResponse201,
@@ -382,6 +396,7 @@ class CopilotClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgCopilotBillingSelectedTeamsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[
@@ -435,6 +450,7 @@ class CopilotClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgCopilotBillingSelectedTeamsPostResponse201,
             error_models={
                 "500": BasicError,
@@ -450,6 +466,7 @@ class CopilotClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgCopilotBillingSelectedTeamsDeleteBodyType,
     ) -> Response[
         OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200,
@@ -463,6 +480,7 @@ class CopilotClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         selected_teams: list[str],
     ) -> Response[
         OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200,
@@ -474,6 +492,7 @@ class CopilotClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgCopilotBillingSelectedTeamsDeleteBodyType] = UNSET,
         **kwargs,
     ) -> Response[
@@ -526,6 +545,7 @@ class CopilotClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200,
             error_models={
                 "500": BasicError,
@@ -541,6 +561,7 @@ class CopilotClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgCopilotBillingSelectedTeamsDeleteBodyType,
     ) -> Response[
         OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200,
@@ -554,6 +575,7 @@ class CopilotClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         selected_teams: list[str],
     ) -> Response[
         OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200,
@@ -565,6 +587,7 @@ class CopilotClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgCopilotBillingSelectedTeamsDeleteBodyType] = UNSET,
         **kwargs,
     ) -> Response[
@@ -617,6 +640,7 @@ class CopilotClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200,
             error_models={
                 "500": BasicError,
@@ -632,6 +656,7 @@ class CopilotClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgCopilotBillingSelectedUsersPostBodyType,
     ) -> Response[
         OrgsOrgCopilotBillingSelectedUsersPostResponse201,
@@ -645,6 +670,7 @@ class CopilotClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         selected_usernames: list[str],
     ) -> Response[
         OrgsOrgCopilotBillingSelectedUsersPostResponse201,
@@ -656,6 +682,7 @@ class CopilotClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgCopilotBillingSelectedUsersPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[
@@ -709,6 +736,7 @@ class CopilotClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgCopilotBillingSelectedUsersPostResponse201,
             error_models={
                 "500": BasicError,
@@ -724,6 +752,7 @@ class CopilotClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgCopilotBillingSelectedUsersPostBodyType,
     ) -> Response[
         OrgsOrgCopilotBillingSelectedUsersPostResponse201,
@@ -737,6 +766,7 @@ class CopilotClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         selected_usernames: list[str],
     ) -> Response[
         OrgsOrgCopilotBillingSelectedUsersPostResponse201,
@@ -748,6 +778,7 @@ class CopilotClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgCopilotBillingSelectedUsersPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[
@@ -801,6 +832,7 @@ class CopilotClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgCopilotBillingSelectedUsersPostResponse201,
             error_models={
                 "500": BasicError,
@@ -816,6 +848,7 @@ class CopilotClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgCopilotBillingSelectedUsersDeleteBodyType,
     ) -> Response[
         OrgsOrgCopilotBillingSelectedUsersDeleteResponse200,
@@ -829,6 +862,7 @@ class CopilotClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         selected_usernames: list[str],
     ) -> Response[
         OrgsOrgCopilotBillingSelectedUsersDeleteResponse200,
@@ -840,6 +874,7 @@ class CopilotClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgCopilotBillingSelectedUsersDeleteBodyType] = UNSET,
         **kwargs,
     ) -> Response[
@@ -892,6 +927,7 @@ class CopilotClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgCopilotBillingSelectedUsersDeleteResponse200,
             error_models={
                 "500": BasicError,
@@ -907,6 +943,7 @@ class CopilotClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgCopilotBillingSelectedUsersDeleteBodyType,
     ) -> Response[
         OrgsOrgCopilotBillingSelectedUsersDeleteResponse200,
@@ -920,6 +957,7 @@ class CopilotClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         selected_usernames: list[str],
     ) -> Response[
         OrgsOrgCopilotBillingSelectedUsersDeleteResponse200,
@@ -931,6 +969,7 @@ class CopilotClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgCopilotBillingSelectedUsersDeleteBodyType] = UNSET,
         **kwargs,
     ) -> Response[
@@ -983,6 +1022,7 @@ class CopilotClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgCopilotBillingSelectedUsersDeleteResponse200,
             error_models={
                 "500": BasicError,
@@ -1001,6 +1041,7 @@ class CopilotClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[CopilotUsageMetricsDay], list[CopilotUsageMetricsDayType]]:
         """copilot/copilot-metrics-for-organization
 
@@ -1041,6 +1082,7 @@ class CopilotClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[CopilotUsageMetricsDay],
             error_models={
                 "500": BasicError,
@@ -1059,6 +1101,7 @@ class CopilotClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[CopilotUsageMetricsDay], list[CopilotUsageMetricsDayType]]:
         """copilot/copilot-metrics-for-organization
 
@@ -1099,6 +1142,7 @@ class CopilotClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[CopilotUsageMetricsDay],
             error_models={
                 "500": BasicError,
@@ -1114,6 +1158,7 @@ class CopilotClient:
         username: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[CopilotSeatDetails, CopilotSeatDetailsType]:
         """copilot/get-copilot-seat-details-for-user
 
@@ -1144,6 +1189,7 @@ class CopilotClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CopilotSeatDetails,
             error_models={
                 "500": BasicError,
@@ -1159,6 +1205,7 @@ class CopilotClient:
         username: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[CopilotSeatDetails, CopilotSeatDetailsType]:
         """copilot/get-copilot-seat-details-for-user
 
@@ -1189,6 +1236,7 @@ class CopilotClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CopilotSeatDetails,
             error_models={
                 "500": BasicError,
@@ -1208,6 +1256,7 @@ class CopilotClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[CopilotUsageMetricsDay], list[CopilotUsageMetricsDayType]]:
         """copilot/copilot-metrics-for-team
 
@@ -1248,6 +1297,7 @@ class CopilotClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[CopilotUsageMetricsDay],
             error_models={
                 "500": BasicError,
@@ -1267,6 +1317,7 @@ class CopilotClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[CopilotUsageMetricsDay], list[CopilotUsageMetricsDayType]]:
         """copilot/copilot-metrics-for-team
 
@@ -1307,6 +1358,7 @@ class CopilotClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[CopilotUsageMetricsDay],
             error_models={
                 "500": BasicError,

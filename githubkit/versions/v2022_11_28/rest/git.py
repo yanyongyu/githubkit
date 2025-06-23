@@ -70,6 +70,7 @@ class GitClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoGitBlobsPostBodyType,
     ) -> Response[ShortBlob, ShortBlobType]: ...
 
@@ -81,6 +82,7 @@ class GitClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         content: str,
         encoding: Missing[str] = UNSET,
     ) -> Response[ShortBlob, ShortBlobType]: ...
@@ -91,6 +93,7 @@ class GitClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoGitBlobsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[ShortBlob, ShortBlobType]:
@@ -129,6 +132,7 @@ class GitClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ShortBlob,
             error_models={
                 "404": BasicError,
@@ -145,6 +149,7 @@ class GitClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoGitBlobsPostBodyType,
     ) -> Response[ShortBlob, ShortBlobType]: ...
 
@@ -156,6 +161,7 @@ class GitClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         content: str,
         encoding: Missing[str] = UNSET,
     ) -> Response[ShortBlob, ShortBlobType]: ...
@@ -166,6 +172,7 @@ class GitClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoGitBlobsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[ShortBlob, ShortBlobType]:
@@ -204,6 +211,7 @@ class GitClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ShortBlob,
             error_models={
                 "404": BasicError,
@@ -220,6 +228,7 @@ class GitClient:
         file_sha: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[Blob, BlobType]:
         """git/get-blob
 
@@ -247,6 +256,7 @@ class GitClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Blob,
             error_models={
                 "404": BasicError,
@@ -263,6 +273,7 @@ class GitClient:
         file_sha: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[Blob, BlobType]:
         """git/get-blob
 
@@ -290,6 +301,7 @@ class GitClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Blob,
             error_models={
                 "404": BasicError,
@@ -306,6 +318,7 @@ class GitClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoGitCommitsPostBodyType,
     ) -> Response[GitCommit, GitCommitType]: ...
 
@@ -317,6 +330,7 @@ class GitClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         message: str,
         tree: str,
         parents: Missing[list[str]] = UNSET,
@@ -331,6 +345,7 @@ class GitClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoGitCommitsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[GitCommit, GitCommitType]:
@@ -398,6 +413,7 @@ class GitClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=GitCommit,
             error_models={
                 "422": ValidationError,
@@ -413,6 +429,7 @@ class GitClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoGitCommitsPostBodyType,
     ) -> Response[GitCommit, GitCommitType]: ...
 
@@ -424,6 +441,7 @@ class GitClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         message: str,
         tree: str,
         parents: Missing[list[str]] = UNSET,
@@ -438,6 +456,7 @@ class GitClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoGitCommitsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[GitCommit, GitCommitType]:
@@ -505,6 +524,7 @@ class GitClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=GitCommit,
             error_models={
                 "422": ValidationError,
@@ -520,6 +540,7 @@ class GitClient:
         commit_sha: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[GitCommit, GitCommitType]:
         """git/get-commit
 
@@ -572,6 +593,7 @@ class GitClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=GitCommit,
             error_models={
                 "404": BasicError,
@@ -586,6 +608,7 @@ class GitClient:
         commit_sha: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[GitCommit, GitCommitType]:
         """git/get-commit
 
@@ -638,6 +661,7 @@ class GitClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=GitCommit,
             error_models={
                 "404": BasicError,
@@ -652,6 +676,7 @@ class GitClient:
         ref: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[GitRef], list[GitRefType]]:
         """git/list-matching-refs
 
@@ -679,6 +704,7 @@ class GitClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[GitRef],
             error_models={
                 "409": BasicError,
@@ -692,6 +718,7 @@ class GitClient:
         ref: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[GitRef], list[GitRefType]]:
         """git/list-matching-refs
 
@@ -719,6 +746,7 @@ class GitClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[GitRef],
             error_models={
                 "409": BasicError,
@@ -732,6 +760,7 @@ class GitClient:
         ref: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[GitRef, GitRefType]:
         """git/get-ref
 
@@ -755,6 +784,7 @@ class GitClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=GitRef,
             error_models={
                 "404": BasicError,
@@ -769,6 +799,7 @@ class GitClient:
         ref: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[GitRef, GitRefType]:
         """git/get-ref
 
@@ -792,6 +823,7 @@ class GitClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=GitRef,
             error_models={
                 "404": BasicError,
@@ -806,6 +838,7 @@ class GitClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoGitRefsPostBodyType,
     ) -> Response[GitRef, GitRefType]: ...
 
@@ -817,6 +850,7 @@ class GitClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         ref: str,
         sha: str,
     ) -> Response[GitRef, GitRefType]: ...
@@ -827,6 +861,7 @@ class GitClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoGitRefsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[GitRef, GitRefType]:
@@ -864,6 +899,7 @@ class GitClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=GitRef,
             error_models={
                 "422": ValidationError,
@@ -878,6 +914,7 @@ class GitClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoGitRefsPostBodyType,
     ) -> Response[GitRef, GitRefType]: ...
 
@@ -889,6 +926,7 @@ class GitClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         ref: str,
         sha: str,
     ) -> Response[GitRef, GitRefType]: ...
@@ -899,6 +937,7 @@ class GitClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoGitRefsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[GitRef, GitRefType]:
@@ -936,6 +975,7 @@ class GitClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=GitRef,
             error_models={
                 "422": ValidationError,
@@ -950,6 +990,7 @@ class GitClient:
         ref: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """git/delete-ref
 
@@ -970,6 +1011,7 @@ class GitClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "409": BasicError,
             },
@@ -982,6 +1024,7 @@ class GitClient:
         ref: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """git/delete-ref
 
@@ -1002,6 +1045,7 @@ class GitClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "409": BasicError,
             },
@@ -1015,6 +1059,7 @@ class GitClient:
         ref: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoGitRefsRefPatchBodyType,
     ) -> Response[GitRef, GitRefType]: ...
 
@@ -1027,6 +1072,7 @@ class GitClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         sha: str,
         force: Missing[bool] = UNSET,
     ) -> Response[GitRef, GitRefType]: ...
@@ -1038,6 +1084,7 @@ class GitClient:
         ref: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoGitRefsRefPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[GitRef, GitRefType]:
@@ -1075,6 +1122,7 @@ class GitClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=GitRef,
             error_models={
                 "422": ValidationError,
@@ -1090,6 +1138,7 @@ class GitClient:
         ref: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoGitRefsRefPatchBodyType,
     ) -> Response[GitRef, GitRefType]: ...
 
@@ -1102,6 +1151,7 @@ class GitClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         sha: str,
         force: Missing[bool] = UNSET,
     ) -> Response[GitRef, GitRefType]: ...
@@ -1113,6 +1163,7 @@ class GitClient:
         ref: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoGitRefsRefPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[GitRef, GitRefType]:
@@ -1150,6 +1201,7 @@ class GitClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=GitRef,
             error_models={
                 "422": ValidationError,
@@ -1164,6 +1216,7 @@ class GitClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoGitTagsPostBodyType,
     ) -> Response[GitTag, GitTagType]: ...
 
@@ -1175,6 +1228,7 @@ class GitClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         tag: str,
         message: str,
         object_: str,
@@ -1188,6 +1242,7 @@ class GitClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoGitTagsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[GitTag, GitTagType]:
@@ -1255,6 +1310,7 @@ class GitClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=GitTag,
             error_models={
                 "422": ValidationError,
@@ -1269,6 +1325,7 @@ class GitClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoGitTagsPostBodyType,
     ) -> Response[GitTag, GitTagType]: ...
 
@@ -1280,6 +1337,7 @@ class GitClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         tag: str,
         message: str,
         object_: str,
@@ -1293,6 +1351,7 @@ class GitClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoGitTagsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[GitTag, GitTagType]:
@@ -1360,6 +1419,7 @@ class GitClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=GitTag,
             error_models={
                 "422": ValidationError,
@@ -1374,6 +1434,7 @@ class GitClient:
         tag_sha: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[GitTag, GitTagType]:
         """git/get-tag
 
@@ -1422,6 +1483,7 @@ class GitClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=GitTag,
             error_models={
                 "404": BasicError,
@@ -1436,6 +1498,7 @@ class GitClient:
         tag_sha: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[GitTag, GitTagType]:
         """git/get-tag
 
@@ -1484,6 +1547,7 @@ class GitClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=GitTag,
             error_models={
                 "404": BasicError,
@@ -1498,6 +1562,7 @@ class GitClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoGitTreesPostBodyType,
     ) -> Response[GitTree, GitTreeType]: ...
 
@@ -1509,6 +1574,7 @@ class GitClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         tree: list[ReposOwnerRepoGitTreesPostBodyPropTreeItemsType],
         base_tree: Missing[str] = UNSET,
     ) -> Response[GitTree, GitTreeType]: ...
@@ -1519,6 +1585,7 @@ class GitClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoGitTreesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[GitTree, GitTreeType]:
@@ -1560,6 +1627,7 @@ class GitClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=GitTree,
             error_models={
                 "422": ValidationError,
@@ -1576,6 +1644,7 @@ class GitClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoGitTreesPostBodyType,
     ) -> Response[GitTree, GitTreeType]: ...
 
@@ -1587,6 +1656,7 @@ class GitClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         tree: list[ReposOwnerRepoGitTreesPostBodyPropTreeItemsType],
         base_tree: Missing[str] = UNSET,
     ) -> Response[GitTree, GitTreeType]: ...
@@ -1597,6 +1667,7 @@ class GitClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoGitTreesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[GitTree, GitTreeType]:
@@ -1638,6 +1709,7 @@ class GitClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=GitTree,
             error_models={
                 "422": ValidationError,
@@ -1655,6 +1727,7 @@ class GitClient:
         *,
         recursive: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[GitTree, GitTreeType]:
         """git/get-tree
 
@@ -1685,6 +1758,7 @@ class GitClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=GitTree,
             error_models={
                 "422": ValidationError,
@@ -1701,6 +1775,7 @@ class GitClient:
         *,
         recursive: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[GitTree, GitTreeType]:
         """git/get-tree
 
@@ -1731,6 +1806,7 @@ class GitClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=GitTree,
             error_models={
                 "422": ValidationError,

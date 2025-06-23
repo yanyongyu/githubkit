@@ -87,6 +87,7 @@ class SecretScanningClient:
         is_multi_repo: Missing[bool] = UNSET,
         hide_secret: Missing[bool] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         list[OrganizationSecretScanningAlert], list[OrganizationSecretScanningAlertType]
     ]:
@@ -130,6 +131,7 @@ class SecretScanningClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[OrganizationSecretScanningAlert],
             error_models={
                 "404": BasicError,
@@ -154,6 +156,7 @@ class SecretScanningClient:
         is_multi_repo: Missing[bool] = UNSET,
         hide_secret: Missing[bool] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         list[OrganizationSecretScanningAlert], list[OrganizationSecretScanningAlertType]
     ]:
@@ -197,6 +200,7 @@ class SecretScanningClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[OrganizationSecretScanningAlert],
             error_models={
                 "404": BasicError,
@@ -227,6 +231,7 @@ class SecretScanningClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         list[SecretScanningBypassRequest], list[SecretScanningBypassRequestType]
     ]:
@@ -263,6 +268,7 @@ class SecretScanningClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[SecretScanningBypassRequest],
             error_models={
                 "404": BasicError,
@@ -293,6 +299,7 @@ class SecretScanningClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         list[SecretScanningBypassRequest], list[SecretScanningBypassRequestType]
     ]:
@@ -329,6 +336,7 @@ class SecretScanningClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[SecretScanningBypassRequest],
             error_models={
                 "404": BasicError,
@@ -352,6 +360,7 @@ class SecretScanningClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         list[SecretScanningDismissalRequest], list[SecretScanningDismissalRequestType]
     ]:
@@ -388,6 +397,7 @@ class SecretScanningClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[SecretScanningDismissalRequest],
             error_models={
                 "404": BasicError,
@@ -412,6 +422,7 @@ class SecretScanningClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         list[SecretScanningDismissalRequest], list[SecretScanningDismissalRequestType]
     ]:
@@ -448,6 +459,7 @@ class SecretScanningClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[SecretScanningDismissalRequest],
             error_models={
                 "404": BasicError,
@@ -474,6 +486,7 @@ class SecretScanningClient:
         is_multi_repo: Missing[bool] = UNSET,
         hide_secret: Missing[bool] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         list[OrganizationSecretScanningAlert], list[OrganizationSecretScanningAlertType]
     ]:
@@ -521,6 +534,7 @@ class SecretScanningClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[OrganizationSecretScanningAlert],
             error_models={
                 "404": BasicError,
@@ -546,6 +560,7 @@ class SecretScanningClient:
         is_multi_repo: Missing[bool] = UNSET,
         hide_secret: Missing[bool] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         list[OrganizationSecretScanningAlert], list[OrganizationSecretScanningAlertType]
     ]:
@@ -593,6 +608,7 @@ class SecretScanningClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[OrganizationSecretScanningAlert],
             error_models={
                 "404": BasicError,
@@ -623,6 +639,7 @@ class SecretScanningClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         list[SecretScanningBypassRequest], list[SecretScanningBypassRequestType]
     ]:
@@ -658,6 +675,7 @@ class SecretScanningClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[SecretScanningBypassRequest],
             error_models={
                 "404": BasicError,
@@ -689,6 +707,7 @@ class SecretScanningClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         list[SecretScanningBypassRequest], list[SecretScanningBypassRequestType]
     ]:
@@ -724,6 +743,7 @@ class SecretScanningClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[SecretScanningBypassRequest],
             error_models={
                 "404": BasicError,
@@ -739,6 +759,7 @@ class SecretScanningClient:
         bypass_request_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[SecretScanningBypassRequest, SecretScanningBypassRequestType]:
         """secret-scanning/get-bypass-request
 
@@ -762,6 +783,7 @@ class SecretScanningClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=SecretScanningBypassRequest,
             error_models={
                 "404": BasicError,
@@ -777,6 +799,7 @@ class SecretScanningClient:
         bypass_request_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[SecretScanningBypassRequest, SecretScanningBypassRequestType]:
         """secret-scanning/get-bypass-request
 
@@ -800,6 +823,7 @@ class SecretScanningClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=SecretScanningBypassRequest,
             error_models={
                 "404": BasicError,
@@ -816,6 +840,7 @@ class SecretScanningClient:
         bypass_request_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchBodyType,
     ) -> Response[
         ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200,
@@ -831,6 +856,7 @@ class SecretScanningClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         status: Literal["approve", "reject"],
         message: str,
     ) -> Response[
@@ -845,6 +871,7 @@ class SecretScanningClient:
         bypass_request_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchBodyType
         ] = UNSET,
@@ -893,6 +920,7 @@ class SecretScanningClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200,
             error_models={
                 "404": BasicError,
@@ -910,6 +938,7 @@ class SecretScanningClient:
         bypass_request_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchBodyType,
     ) -> Response[
         ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200,
@@ -925,6 +954,7 @@ class SecretScanningClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         status: Literal["approve", "reject"],
         message: str,
     ) -> Response[
@@ -939,6 +969,7 @@ class SecretScanningClient:
         bypass_request_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchBodyType
         ] = UNSET,
@@ -987,6 +1018,7 @@ class SecretScanningClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200,
             error_models={
                 "404": BasicError,
@@ -1003,6 +1035,7 @@ class SecretScanningClient:
         bypass_response_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """secret-scanning/dismiss-bypass-response
 
@@ -1026,6 +1059,7 @@ class SecretScanningClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -1041,6 +1075,7 @@ class SecretScanningClient:
         bypass_response_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """secret-scanning/dismiss-bypass-response
 
@@ -1064,6 +1099,7 @@ class SecretScanningClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -1088,6 +1124,7 @@ class SecretScanningClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         list[SecretScanningDismissalRequest], list[SecretScanningDismissalRequestType]
     ]:
@@ -1123,6 +1160,7 @@ class SecretScanningClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[SecretScanningDismissalRequest],
             error_models={
                 "404": BasicError,
@@ -1147,6 +1185,7 @@ class SecretScanningClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         list[SecretScanningDismissalRequest], list[SecretScanningDismissalRequestType]
     ]:
@@ -1182,6 +1221,7 @@ class SecretScanningClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[SecretScanningDismissalRequest],
             error_models={
                 "404": BasicError,
@@ -1197,6 +1237,7 @@ class SecretScanningClient:
         alert_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[SecretScanningDismissalRequest, SecretScanningDismissalRequestType]:
         """secret-scanning/get-dismissal-request
 
@@ -1221,6 +1262,7 @@ class SecretScanningClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=SecretScanningDismissalRequest,
             error_models={
                 "404": BasicError,
@@ -1236,6 +1278,7 @@ class SecretScanningClient:
         alert_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[SecretScanningDismissalRequest, SecretScanningDismissalRequestType]:
         """secret-scanning/get-dismissal-request
 
@@ -1260,6 +1303,7 @@ class SecretScanningClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=SecretScanningDismissalRequest,
             error_models={
                 "404": BasicError,
@@ -1276,6 +1320,7 @@ class SecretScanningClient:
         alert_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchBodyType,
     ) -> Response[
         ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200,
@@ -1291,6 +1336,7 @@ class SecretScanningClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         status: Literal["approve", "deny"],
         message: str,
     ) -> Response[
@@ -1305,6 +1351,7 @@ class SecretScanningClient:
         alert_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchBodyType
         ] = UNSET,
@@ -1353,6 +1400,7 @@ class SecretScanningClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200,
             error_models={
                 "404": BasicError,
@@ -1370,6 +1418,7 @@ class SecretScanningClient:
         alert_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchBodyType,
     ) -> Response[
         ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200,
@@ -1385,6 +1434,7 @@ class SecretScanningClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         status: Literal["approve", "deny"],
         message: str,
     ) -> Response[
@@ -1399,6 +1449,7 @@ class SecretScanningClient:
         alert_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchBodyType
         ] = UNSET,
@@ -1447,6 +1498,7 @@ class SecretScanningClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200,
             error_models={
                 "404": BasicError,
@@ -1475,6 +1527,7 @@ class SecretScanningClient:
         is_multi_repo: Missing[bool] = UNSET,
         hide_secret: Missing[bool] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[SecretScanningAlert], list[SecretScanningAlertType]]:
         """secret-scanning/list-alerts-for-repo
 
@@ -1519,6 +1572,7 @@ class SecretScanningClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[SecretScanningAlert],
             error_models={
                 "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
@@ -1544,6 +1598,7 @@ class SecretScanningClient:
         is_multi_repo: Missing[bool] = UNSET,
         hide_secret: Missing[bool] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[SecretScanningAlert], list[SecretScanningAlertType]]:
         """secret-scanning/list-alerts-for-repo
 
@@ -1588,6 +1643,7 @@ class SecretScanningClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[SecretScanningAlert],
             error_models={
                 "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
@@ -1602,6 +1658,7 @@ class SecretScanningClient:
         *,
         hide_secret: Missing[bool] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[SecretScanningAlert, SecretScanningAlertType]:
         """secret-scanning/get-alert
 
@@ -1634,6 +1691,7 @@ class SecretScanningClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=SecretScanningAlert,
             error_models={
                 "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
@@ -1648,6 +1706,7 @@ class SecretScanningClient:
         *,
         hide_secret: Missing[bool] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[SecretScanningAlert, SecretScanningAlertType]:
         """secret-scanning/get-alert
 
@@ -1680,6 +1739,7 @@ class SecretScanningClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=SecretScanningAlert,
             error_models={
                 "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
@@ -1694,6 +1754,7 @@ class SecretScanningClient:
         alert_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyType,
     ) -> Response[SecretScanningAlert, SecretScanningAlertType]: ...
 
@@ -1706,6 +1767,7 @@ class SecretScanningClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         state: Literal["open", "resolved"],
         resolution: Missing[
             Union[
@@ -1722,6 +1784,7 @@ class SecretScanningClient:
         alert_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyType
         ] = UNSET,
@@ -1766,6 +1829,7 @@ class SecretScanningClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=SecretScanningAlert,
             error_models={
                 "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
@@ -1780,6 +1844,7 @@ class SecretScanningClient:
         alert_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyType,
     ) -> Response[SecretScanningAlert, SecretScanningAlertType]: ...
 
@@ -1792,6 +1857,7 @@ class SecretScanningClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         state: Literal["open", "resolved"],
         resolution: Missing[
             Union[
@@ -1808,6 +1874,7 @@ class SecretScanningClient:
         alert_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyType
         ] = UNSET,
@@ -1852,6 +1919,7 @@ class SecretScanningClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=SecretScanningAlert,
             error_models={
                 "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
@@ -1867,6 +1935,7 @@ class SecretScanningClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[SecretScanningLocation], list[SecretScanningLocationType]]:
         """secret-scanning/list-locations-for-alert
 
@@ -1900,6 +1969,7 @@ class SecretScanningClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[SecretScanningLocation],
             error_models={
                 "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
@@ -1915,6 +1985,7 @@ class SecretScanningClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[SecretScanningLocation], list[SecretScanningLocationType]]:
         """secret-scanning/list-locations-for-alert
 
@@ -1948,6 +2019,7 @@ class SecretScanningClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[SecretScanningLocation],
             error_models={
                 "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
@@ -1961,6 +2033,7 @@ class SecretScanningClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyType,
     ) -> Response[
         SecretScanningPushProtectionBypass, SecretScanningPushProtectionBypassType
@@ -1974,6 +2047,7 @@ class SecretScanningClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         reason: Literal["false_positive", "used_in_tests", "will_fix_later"],
         placeholder_id: str,
     ) -> Response[
@@ -1986,6 +2060,7 @@ class SecretScanningClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyType
         ] = UNSET,
@@ -2032,6 +2107,7 @@ class SecretScanningClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=SecretScanningPushProtectionBypass,
             error_models={
                 "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
@@ -2045,6 +2121,7 @@ class SecretScanningClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyType,
     ) -> Response[
         SecretScanningPushProtectionBypass, SecretScanningPushProtectionBypassType
@@ -2058,6 +2135,7 @@ class SecretScanningClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         reason: Literal["false_positive", "used_in_tests", "will_fix_later"],
         placeholder_id: str,
     ) -> Response[
@@ -2070,6 +2148,7 @@ class SecretScanningClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyType
         ] = UNSET,
@@ -2116,6 +2195,7 @@ class SecretScanningClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=SecretScanningPushProtectionBypass,
             error_models={
                 "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
@@ -2128,6 +2208,7 @@ class SecretScanningClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[SecretScanningScanHistory, SecretScanningScanHistoryType]:
         """secret-scanning/get-scan-history
 
@@ -2153,6 +2234,7 @@ class SecretScanningClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=SecretScanningScanHistory,
             error_models={
                 "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
@@ -2165,6 +2247,7 @@ class SecretScanningClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[SecretScanningScanHistory, SecretScanningScanHistoryType]:
         """secret-scanning/get-scan-history
 
@@ -2190,6 +2273,7 @@ class SecretScanningClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=SecretScanningScanHistory,
             error_models={
                 "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,

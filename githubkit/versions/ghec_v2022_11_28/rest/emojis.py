@@ -42,6 +42,7 @@ class EmojisClient:
         self,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[EmojisGetResponse200, EmojisGetResponse200Type]:
         """emojis/get
 
@@ -62,6 +63,7 @@ class EmojisClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=EmojisGetResponse200,
         )
 
@@ -69,6 +71,7 @@ class EmojisClient:
         self,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[EmojisGetResponse200, EmojisGetResponse200Type]:
         """emojis/get
 
@@ -89,5 +92,6 @@ class EmojisClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=EmojisGetResponse200,
         )

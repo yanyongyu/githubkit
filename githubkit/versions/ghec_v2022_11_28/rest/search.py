@@ -68,6 +68,7 @@ class SearchClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[SearchCodeGetResponse200, SearchCodeGetResponse200Type]:
         """search/code
 
@@ -121,6 +122,7 @@ class SearchClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=SearchCodeGetResponse200,
             error_models={
                 "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
@@ -138,6 +140,7 @@ class SearchClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[SearchCodeGetResponse200, SearchCodeGetResponse200Type]:
         """search/code
 
@@ -191,6 +194,7 @@ class SearchClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=SearchCodeGetResponse200,
             error_models={
                 "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
@@ -208,6 +212,7 @@ class SearchClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[SearchCommitsGetResponse200, SearchCommitsGetResponse200Type]:
         """search/commits
 
@@ -244,6 +249,7 @@ class SearchClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=SearchCommitsGetResponse200,
         )
 
@@ -256,6 +262,7 @@ class SearchClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[SearchCommitsGetResponse200, SearchCommitsGetResponse200Type]:
         """search/commits
 
@@ -292,6 +299,7 @@ class SearchClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=SearchCommitsGetResponse200,
         )
 
@@ -319,6 +327,7 @@ class SearchClient:
         page: Missing[int] = UNSET,
         advanced_search: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[SearchIssuesGetResponse200, SearchIssuesGetResponse200Type]:
         """DEPRECATED search/issues-and-pull-requests
 
@@ -356,6 +365,7 @@ class SearchClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=SearchIssuesGetResponse200,
             error_models={
                 "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
@@ -388,6 +398,7 @@ class SearchClient:
         page: Missing[int] = UNSET,
         advanced_search: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[SearchIssuesGetResponse200, SearchIssuesGetResponse200Type]:
         """DEPRECATED search/issues-and-pull-requests
 
@@ -425,6 +436,7 @@ class SearchClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=SearchIssuesGetResponse200,
             error_models={
                 "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
@@ -443,6 +455,7 @@ class SearchClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[SearchLabelsGetResponse200, SearchLabelsGetResponse200Type]:
         """search/labels
 
@@ -481,6 +494,7 @@ class SearchClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=SearchLabelsGetResponse200,
             error_models={
                 "404": BasicError,
@@ -499,6 +513,7 @@ class SearchClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[SearchLabelsGetResponse200, SearchLabelsGetResponse200Type]:
         """search/labels
 
@@ -537,6 +552,7 @@ class SearchClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=SearchLabelsGetResponse200,
             error_models={
                 "404": BasicError,
@@ -556,6 +572,7 @@ class SearchClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         SearchRepositoriesGetResponse200, SearchRepositoriesGetResponse200Type
     ]:
@@ -599,6 +616,7 @@ class SearchClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=SearchRepositoriesGetResponse200,
             error_models={
                 "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
@@ -617,6 +635,7 @@ class SearchClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         SearchRepositoriesGetResponse200, SearchRepositoriesGetResponse200Type
     ]:
@@ -660,6 +679,7 @@ class SearchClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=SearchRepositoriesGetResponse200,
             error_models={
                 "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
@@ -674,6 +694,7 @@ class SearchClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[SearchTopicsGetResponse200, SearchTopicsGetResponse200Type]:
         r"""search/topics
 
@@ -709,6 +730,7 @@ class SearchClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=SearchTopicsGetResponse200,
         )
 
@@ -719,6 +741,7 @@ class SearchClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[SearchTopicsGetResponse200, SearchTopicsGetResponse200Type]:
         r"""search/topics
 
@@ -754,6 +777,7 @@ class SearchClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=SearchTopicsGetResponse200,
         )
 
@@ -766,6 +790,7 @@ class SearchClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[SearchUsersGetResponse200, SearchUsersGetResponse200Type]:
         """search/users
 
@@ -809,6 +834,7 @@ class SearchClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=SearchUsersGetResponse200,
             error_models={
                 "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
@@ -825,6 +851,7 @@ class SearchClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[SearchUsersGetResponse200, SearchUsersGetResponse200Type]:
         """search/users
 
@@ -868,6 +895,7 @@ class SearchClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=SearchUsersGetResponse200,
             error_models={
                 "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,

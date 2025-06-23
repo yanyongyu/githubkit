@@ -72,6 +72,7 @@ class MigrationsClient:
         page: Missing[int] = UNSET,
         exclude: Missing[list[Literal["repositories"]]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Migration], list[MigrationType]]:
         """migrations/list-for-org
 
@@ -101,6 +102,7 @@ class MigrationsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Migration],
         )
 
@@ -112,6 +114,7 @@ class MigrationsClient:
         page: Missing[int] = UNSET,
         exclude: Missing[list[Literal["repositories"]]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Migration], list[MigrationType]]:
         """migrations/list-for-org
 
@@ -141,6 +144,7 @@ class MigrationsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Migration],
         )
 
@@ -150,6 +154,7 @@ class MigrationsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgMigrationsPostBodyType,
     ) -> Response[Migration, MigrationType]: ...
 
@@ -160,6 +165,7 @@ class MigrationsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         repositories: list[str],
         lock_repositories: Missing[bool] = UNSET,
         exclude_metadata: Missing[bool] = UNSET,
@@ -176,6 +182,7 @@ class MigrationsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgMigrationsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Migration, MigrationType]:
@@ -213,6 +220,7 @@ class MigrationsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Migration,
             error_models={
                 "404": BasicError,
@@ -226,6 +234,7 @@ class MigrationsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgMigrationsPostBodyType,
     ) -> Response[Migration, MigrationType]: ...
 
@@ -236,6 +245,7 @@ class MigrationsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         repositories: list[str],
         lock_repositories: Missing[bool] = UNSET,
         exclude_metadata: Missing[bool] = UNSET,
@@ -252,6 +262,7 @@ class MigrationsClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgMigrationsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Migration, MigrationType]:
@@ -289,6 +300,7 @@ class MigrationsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Migration,
             error_models={
                 "404": BasicError,
@@ -303,6 +315,7 @@ class MigrationsClient:
         *,
         exclude: Missing[list[Literal["repositories"]]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[Migration, MigrationType]:
         """migrations/get-status-for-org
 
@@ -335,6 +348,7 @@ class MigrationsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Migration,
             error_models={
                 "404": BasicError,
@@ -348,6 +362,7 @@ class MigrationsClient:
         *,
         exclude: Missing[list[Literal["repositories"]]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[Migration, MigrationType]:
         """migrations/get-status-for-org
 
@@ -380,6 +395,7 @@ class MigrationsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Migration,
             error_models={
                 "404": BasicError,
@@ -392,6 +408,7 @@ class MigrationsClient:
         migration_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """migrations/download-archive-for-org
 
@@ -412,6 +429,7 @@ class MigrationsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
             },
@@ -423,6 +441,7 @@ class MigrationsClient:
         migration_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """migrations/download-archive-for-org
 
@@ -443,6 +462,7 @@ class MigrationsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
             },
@@ -454,6 +474,7 @@ class MigrationsClient:
         migration_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """migrations/delete-archive-for-org
 
@@ -474,6 +495,7 @@ class MigrationsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
             },
@@ -485,6 +507,7 @@ class MigrationsClient:
         migration_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """migrations/delete-archive-for-org
 
@@ -505,6 +528,7 @@ class MigrationsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
             },
@@ -517,6 +541,7 @@ class MigrationsClient:
         repo_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """migrations/unlock-repo-for-org
 
@@ -537,6 +562,7 @@ class MigrationsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
             },
@@ -549,6 +575,7 @@ class MigrationsClient:
         repo_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """migrations/unlock-repo-for-org
 
@@ -569,6 +596,7 @@ class MigrationsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
             },
@@ -582,6 +610,7 @@ class MigrationsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
         """migrations/list-repos-for-org
 
@@ -608,6 +637,7 @@ class MigrationsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[MinimalRepository],
             error_models={
                 "404": BasicError,
@@ -622,6 +652,7 @@ class MigrationsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
         """migrations/list-repos-for-org
 
@@ -648,6 +679,7 @@ class MigrationsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[MinimalRepository],
             error_models={
                 "404": BasicError,
@@ -660,6 +692,7 @@ class MigrationsClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[Import, ImportType]:
         """DEPRECATED migrations/get-import-status
 
@@ -716,6 +749,7 @@ class MigrationsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Import,
             error_models={
                 "404": BasicError,
@@ -729,6 +763,7 @@ class MigrationsClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[Import, ImportType]:
         """DEPRECATED migrations/get-import-status
 
@@ -785,6 +820,7 @@ class MigrationsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Import,
             error_models={
                 "404": BasicError,
@@ -799,6 +835,7 @@ class MigrationsClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoImportPutBodyType,
     ) -> Response[Import, ImportType]: ...
 
@@ -810,6 +847,7 @@ class MigrationsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         vcs_url: str,
         vcs: Missing[Literal["subversion", "git", "mercurial", "tfvc"]] = UNSET,
         vcs_username: Missing[str] = UNSET,
@@ -823,6 +861,7 @@ class MigrationsClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoImportPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[Import, ImportType]:
@@ -865,6 +904,7 @@ class MigrationsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Import,
             error_models={
                 "422": ValidationError,
@@ -880,6 +920,7 @@ class MigrationsClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoImportPutBodyType,
     ) -> Response[Import, ImportType]: ...
 
@@ -891,6 +932,7 @@ class MigrationsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         vcs_url: str,
         vcs: Missing[Literal["subversion", "git", "mercurial", "tfvc"]] = UNSET,
         vcs_username: Missing[str] = UNSET,
@@ -904,6 +946,7 @@ class MigrationsClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoImportPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[Import, ImportType]:
@@ -946,6 +989,7 @@ class MigrationsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Import,
             error_models={
                 "422": ValidationError,
@@ -960,6 +1004,7 @@ class MigrationsClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """DEPRECATED migrations/cancel-import
 
@@ -983,6 +1028,7 @@ class MigrationsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "503": BasicError,
             },
@@ -994,6 +1040,7 @@ class MigrationsClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """DEPRECATED migrations/cancel-import
 
@@ -1017,6 +1064,7 @@ class MigrationsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "503": BasicError,
             },
@@ -1029,6 +1077,7 @@ class MigrationsClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[Union[ReposOwnerRepoImportPatchBodyType, None]] = UNSET,
     ) -> Response[Import, ImportType]: ...
 
@@ -1040,6 +1089,7 @@ class MigrationsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         vcs_username: Missing[str] = UNSET,
         vcs_password: Missing[str] = UNSET,
         vcs: Missing[Literal["subversion", "tfvc", "git", "mercurial"]] = UNSET,
@@ -1052,6 +1102,7 @@ class MigrationsClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[Union[ReposOwnerRepoImportPatchBodyType, None]] = UNSET,
         **kwargs,
     ) -> Response[Import, ImportType]:
@@ -1096,6 +1147,7 @@ class MigrationsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Import,
             error_models={
                 "503": BasicError,
@@ -1109,6 +1161,7 @@ class MigrationsClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[Union[ReposOwnerRepoImportPatchBodyType, None]] = UNSET,
     ) -> Response[Import, ImportType]: ...
 
@@ -1120,6 +1173,7 @@ class MigrationsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         vcs_username: Missing[str] = UNSET,
         vcs_password: Missing[str] = UNSET,
         vcs: Missing[Literal["subversion", "tfvc", "git", "mercurial"]] = UNSET,
@@ -1132,6 +1186,7 @@ class MigrationsClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[Union[ReposOwnerRepoImportPatchBodyType, None]] = UNSET,
         **kwargs,
     ) -> Response[Import, ImportType]:
@@ -1176,6 +1231,7 @@ class MigrationsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Import,
             error_models={
                 "503": BasicError,
@@ -1189,6 +1245,7 @@ class MigrationsClient:
         *,
         since: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[PorterAuthor], list[PorterAuthorType]]:
         """DEPRECATED migrations/get-commit-authors
 
@@ -1219,6 +1276,7 @@ class MigrationsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[PorterAuthor],
             error_models={
                 "404": BasicError,
@@ -1233,6 +1291,7 @@ class MigrationsClient:
         *,
         since: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[PorterAuthor], list[PorterAuthorType]]:
         """DEPRECATED migrations/get-commit-authors
 
@@ -1263,6 +1322,7 @@ class MigrationsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[PorterAuthor],
             error_models={
                 "404": BasicError,
@@ -1278,6 +1338,7 @@ class MigrationsClient:
         author_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoImportAuthorsAuthorIdPatchBodyType] = UNSET,
     ) -> Response[PorterAuthor, PorterAuthorType]: ...
 
@@ -1290,6 +1351,7 @@ class MigrationsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         email: Missing[str] = UNSET,
         name: Missing[str] = UNSET,
     ) -> Response[PorterAuthor, PorterAuthorType]: ...
@@ -1301,6 +1363,7 @@ class MigrationsClient:
         author_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoImportAuthorsAuthorIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[PorterAuthor, PorterAuthorType]:
@@ -1344,6 +1407,7 @@ class MigrationsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=PorterAuthor,
             error_models={
                 "422": ValidationError,
@@ -1360,6 +1424,7 @@ class MigrationsClient:
         author_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoImportAuthorsAuthorIdPatchBodyType] = UNSET,
     ) -> Response[PorterAuthor, PorterAuthorType]: ...
 
@@ -1372,6 +1437,7 @@ class MigrationsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         email: Missing[str] = UNSET,
         name: Missing[str] = UNSET,
     ) -> Response[PorterAuthor, PorterAuthorType]: ...
@@ -1383,6 +1449,7 @@ class MigrationsClient:
         author_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoImportAuthorsAuthorIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[PorterAuthor, PorterAuthorType]:
@@ -1426,6 +1493,7 @@ class MigrationsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=PorterAuthor,
             error_models={
                 "422": ValidationError,
@@ -1440,6 +1508,7 @@ class MigrationsClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[PorterLargeFile], list[PorterLargeFileType]]:
         """DEPRECATED migrations/get-large-files
 
@@ -1463,6 +1532,7 @@ class MigrationsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[PorterLargeFile],
             error_models={
                 "503": BasicError,
@@ -1475,6 +1545,7 @@ class MigrationsClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[PorterLargeFile], list[PorterLargeFileType]]:
         """DEPRECATED migrations/get-large-files
 
@@ -1498,6 +1569,7 @@ class MigrationsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[PorterLargeFile],
             error_models={
                 "503": BasicError,
@@ -1511,6 +1583,7 @@ class MigrationsClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoImportLfsPatchBodyType,
     ) -> Response[Import, ImportType]: ...
 
@@ -1522,6 +1595,7 @@ class MigrationsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         use_lfs: Literal["opt_in", "opt_out"],
     ) -> Response[Import, ImportType]: ...
 
@@ -1531,6 +1605,7 @@ class MigrationsClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoImportLfsPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Import, ImportType]:
@@ -1575,6 +1650,7 @@ class MigrationsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Import,
             error_models={
                 "422": ValidationError,
@@ -1589,6 +1665,7 @@ class MigrationsClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoImportLfsPatchBodyType,
     ) -> Response[Import, ImportType]: ...
 
@@ -1600,6 +1677,7 @@ class MigrationsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         use_lfs: Literal["opt_in", "opt_out"],
     ) -> Response[Import, ImportType]: ...
 
@@ -1609,6 +1687,7 @@ class MigrationsClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoImportLfsPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Import, ImportType]:
@@ -1653,6 +1732,7 @@ class MigrationsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Import,
             error_models={
                 "422": ValidationError,
@@ -1666,6 +1746,7 @@ class MigrationsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Migration], list[MigrationType]]:
         """migrations/list-for-authenticated-user
 
@@ -1692,6 +1773,7 @@ class MigrationsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Migration],
             error_models={
                 "403": BasicError,
@@ -1705,6 +1787,7 @@ class MigrationsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Migration], list[MigrationType]]:
         """migrations/list-for-authenticated-user
 
@@ -1731,6 +1814,7 @@ class MigrationsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Migration],
             error_models={
                 "403": BasicError,
@@ -1743,6 +1827,7 @@ class MigrationsClient:
         self,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: UserMigrationsPostBodyType,
     ) -> Response[Migration, MigrationType]: ...
 
@@ -1752,6 +1837,7 @@ class MigrationsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         lock_repositories: Missing[bool] = UNSET,
         exclude_metadata: Missing[bool] = UNSET,
         exclude_git_data: Missing[bool] = UNSET,
@@ -1767,6 +1853,7 @@ class MigrationsClient:
         self,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[UserMigrationsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Migration, MigrationType]:
@@ -1804,6 +1891,7 @@ class MigrationsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Migration,
             error_models={
                 "422": ValidationError,
@@ -1817,6 +1905,7 @@ class MigrationsClient:
         self,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: UserMigrationsPostBodyType,
     ) -> Response[Migration, MigrationType]: ...
 
@@ -1826,6 +1915,7 @@ class MigrationsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         lock_repositories: Missing[bool] = UNSET,
         exclude_metadata: Missing[bool] = UNSET,
         exclude_git_data: Missing[bool] = UNSET,
@@ -1841,6 +1931,7 @@ class MigrationsClient:
         self,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[UserMigrationsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Migration, MigrationType]:
@@ -1878,6 +1969,7 @@ class MigrationsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Migration,
             error_models={
                 "422": ValidationError,
@@ -1892,6 +1984,7 @@ class MigrationsClient:
         *,
         exclude: Missing[list[str]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[Migration, MigrationType]:
         """migrations/get-status-for-authenticated-user
 
@@ -1924,6 +2017,7 @@ class MigrationsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Migration,
             error_models={
                 "404": BasicError,
@@ -1938,6 +2032,7 @@ class MigrationsClient:
         *,
         exclude: Missing[list[str]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[Migration, MigrationType]:
         """migrations/get-status-for-authenticated-user
 
@@ -1970,6 +2065,7 @@ class MigrationsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Migration,
             error_models={
                 "404": BasicError,
@@ -1983,6 +2079,7 @@ class MigrationsClient:
         migration_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         r"""migrations/get-archive-for-authenticated-user
 
@@ -2023,6 +2120,7 @@ class MigrationsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "403": BasicError,
                 "401": BasicError,
@@ -2034,6 +2132,7 @@ class MigrationsClient:
         migration_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         r"""migrations/get-archive-for-authenticated-user
 
@@ -2074,6 +2173,7 @@ class MigrationsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "403": BasicError,
                 "401": BasicError,
@@ -2085,6 +2185,7 @@ class MigrationsClient:
         migration_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """migrations/delete-archive-for-authenticated-user
 
@@ -2105,6 +2206,7 @@ class MigrationsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -2117,6 +2219,7 @@ class MigrationsClient:
         migration_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """migrations/delete-archive-for-authenticated-user
 
@@ -2137,6 +2240,7 @@ class MigrationsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -2150,6 +2254,7 @@ class MigrationsClient:
         repo_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """migrations/unlock-repo-for-authenticated-user
 
@@ -2170,6 +2275,7 @@ class MigrationsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -2183,6 +2289,7 @@ class MigrationsClient:
         repo_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """migrations/unlock-repo-for-authenticated-user
 
@@ -2203,6 +2310,7 @@ class MigrationsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -2217,6 +2325,7 @@ class MigrationsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
         """migrations/list-repos-for-authenticated-user
 
@@ -2243,6 +2352,7 @@ class MigrationsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[MinimalRepository],
             error_models={
                 "404": BasicError,
@@ -2256,6 +2366,7 @@ class MigrationsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
         """migrations/list-repos-for-authenticated-user
 
@@ -2282,6 +2393,7 @@ class MigrationsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[MinimalRepository],
             error_models={
                 "404": BasicError,

@@ -212,6 +212,9 @@ if TYPE_CHECKING:
         CodeSecurityConfigurationPropCodeScanningDefaultSetupOptions as CodeSecurityConfigurationPropCodeScanningDefaultSetupOptions,
     )
     from .group_0060 import (
+        CodeSecurityConfigurationPropCodeScanningOptions as CodeSecurityConfigurationPropCodeScanningOptions,
+    )
+    from .group_0060 import (
         CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptions as CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptions,
     )
     from .group_0060 import (
@@ -9250,6 +9253,7 @@ else:
         ".group_0060": (
             "CodeSecurityConfiguration",
             "CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptions",
+            "CodeSecurityConfigurationPropCodeScanningOptions",
             "CodeSecurityConfigurationPropCodeScanningDefaultSetupOptions",
             "CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptions",
             "CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropReviewersItems",

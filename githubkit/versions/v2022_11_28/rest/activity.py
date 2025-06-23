@@ -83,6 +83,7 @@ class ActivityClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Event], list[EventType]]:
         """activity/list-public-events
 
@@ -114,6 +115,7 @@ class ActivityClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Event],
             error_models={
                 "403": BasicError,
@@ -127,6 +129,7 @@ class ActivityClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Event], list[EventType]]:
         """activity/list-public-events
 
@@ -158,6 +161,7 @@ class ActivityClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Event],
             error_models={
                 "403": BasicError,
@@ -169,6 +173,7 @@ class ActivityClient:
         self,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[Feed, FeedType]:
         """activity/get-feeds
 
@@ -202,6 +207,7 @@ class ActivityClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Feed,
         )
 
@@ -209,6 +215,7 @@ class ActivityClient:
         self,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[Feed, FeedType]:
         """activity/get-feeds
 
@@ -242,6 +249,7 @@ class ActivityClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Feed,
         )
 
@@ -253,6 +261,7 @@ class ActivityClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Event], list[EventType]]:
         """activity/list-public-events-for-repo-network
 
@@ -280,6 +289,7 @@ class ActivityClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Event],
             error_models={
                 "404": BasicError,
@@ -295,6 +305,7 @@ class ActivityClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Event], list[EventType]]:
         """activity/list-public-events-for-repo-network
 
@@ -322,6 +333,7 @@ class ActivityClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Event],
             error_models={
                 "404": BasicError,
@@ -339,6 +351,7 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Thread], list[ThreadType]]:
         """activity/list-notifications-for-authenticated-user
 
@@ -369,6 +382,7 @@ class ActivityClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Thread],
             error_models={
                 "403": BasicError,
@@ -387,6 +401,7 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Thread], list[ThreadType]]:
         """activity/list-notifications-for-authenticated-user
 
@@ -417,6 +432,7 @@ class ActivityClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Thread],
             error_models={
                 "403": BasicError,
@@ -430,6 +446,7 @@ class ActivityClient:
         self,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[NotificationsPutBodyType] = UNSET,
     ) -> Response[NotificationsPutResponse202, NotificationsPutResponse202Type]: ...
 
@@ -439,6 +456,7 @@ class ActivityClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         last_read_at: Missing[datetime] = UNSET,
         read: Missing[bool] = UNSET,
     ) -> Response[NotificationsPutResponse202, NotificationsPutResponse202Type]: ...
@@ -447,6 +465,7 @@ class ActivityClient:
         self,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[NotificationsPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[NotificationsPutResponse202, NotificationsPutResponse202Type]:
@@ -483,6 +502,7 @@ class ActivityClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=NotificationsPutResponse202,
             error_models={
                 "403": BasicError,
@@ -495,6 +515,7 @@ class ActivityClient:
         self,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[NotificationsPutBodyType] = UNSET,
     ) -> Response[NotificationsPutResponse202, NotificationsPutResponse202Type]: ...
 
@@ -504,6 +525,7 @@ class ActivityClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         last_read_at: Missing[datetime] = UNSET,
         read: Missing[bool] = UNSET,
     ) -> Response[NotificationsPutResponse202, NotificationsPutResponse202Type]: ...
@@ -512,6 +534,7 @@ class ActivityClient:
         self,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[NotificationsPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[NotificationsPutResponse202, NotificationsPutResponse202Type]:
@@ -548,6 +571,7 @@ class ActivityClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=NotificationsPutResponse202,
             error_models={
                 "403": BasicError,
@@ -560,6 +584,7 @@ class ActivityClient:
         thread_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[Thread, ThreadType]:
         """activity/get-thread
 
@@ -580,6 +605,7 @@ class ActivityClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Thread,
             error_models={
                 "403": BasicError,
@@ -592,6 +618,7 @@ class ActivityClient:
         thread_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[Thread, ThreadType]:
         """activity/get-thread
 
@@ -612,6 +639,7 @@ class ActivityClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Thread,
             error_models={
                 "403": BasicError,
@@ -624,6 +652,7 @@ class ActivityClient:
         thread_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """activity/mark-thread-as-done
 
@@ -642,6 +671,7 @@ class ActivityClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     async def async_mark_thread_as_done(
@@ -649,6 +679,7 @@ class ActivityClient:
         thread_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """activity/mark-thread-as-done
 
@@ -667,6 +698,7 @@ class ActivityClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     def mark_thread_as_read(
@@ -674,6 +706,7 @@ class ActivityClient:
         thread_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """activity/mark-thread-as-read
 
@@ -694,6 +727,7 @@ class ActivityClient:
             "PATCH",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "403": BasicError,
             },
@@ -704,6 +738,7 @@ class ActivityClient:
         thread_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """activity/mark-thread-as-read
 
@@ -724,6 +759,7 @@ class ActivityClient:
             "PATCH",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "403": BasicError,
             },
@@ -734,6 +770,7 @@ class ActivityClient:
         thread_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[ThreadSubscription, ThreadSubscriptionType]:
         """activity/get-thread-subscription-for-authenticated-user
 
@@ -756,6 +793,7 @@ class ActivityClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ThreadSubscription,
             error_models={
                 "403": BasicError,
@@ -768,6 +806,7 @@ class ActivityClient:
         thread_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[ThreadSubscription, ThreadSubscriptionType]:
         """activity/get-thread-subscription-for-authenticated-user
 
@@ -790,6 +829,7 @@ class ActivityClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ThreadSubscription,
             error_models={
                 "403": BasicError,
@@ -803,6 +843,7 @@ class ActivityClient:
         thread_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[NotificationsThreadsThreadIdSubscriptionPutBodyType] = UNSET,
     ) -> Response[ThreadSubscription, ThreadSubscriptionType]: ...
 
@@ -813,6 +854,7 @@ class ActivityClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         ignored: Missing[bool] = UNSET,
     ) -> Response[ThreadSubscription, ThreadSubscriptionType]: ...
 
@@ -821,6 +863,7 @@ class ActivityClient:
         thread_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[NotificationsThreadsThreadIdSubscriptionPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[ThreadSubscription, ThreadSubscriptionType]:
@@ -863,6 +906,7 @@ class ActivityClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ThreadSubscription,
             error_models={
                 "403": BasicError,
@@ -876,6 +920,7 @@ class ActivityClient:
         thread_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[NotificationsThreadsThreadIdSubscriptionPutBodyType] = UNSET,
     ) -> Response[ThreadSubscription, ThreadSubscriptionType]: ...
 
@@ -886,6 +931,7 @@ class ActivityClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         ignored: Missing[bool] = UNSET,
     ) -> Response[ThreadSubscription, ThreadSubscriptionType]: ...
 
@@ -894,6 +940,7 @@ class ActivityClient:
         thread_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[NotificationsThreadsThreadIdSubscriptionPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[ThreadSubscription, ThreadSubscriptionType]:
@@ -936,6 +983,7 @@ class ActivityClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ThreadSubscription,
             error_models={
                 "403": BasicError,
@@ -948,6 +996,7 @@ class ActivityClient:
         thread_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """activity/delete-thread-subscription
 
@@ -968,6 +1017,7 @@ class ActivityClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "403": BasicError,
                 "401": BasicError,
@@ -979,6 +1029,7 @@ class ActivityClient:
         thread_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """activity/delete-thread-subscription
 
@@ -999,6 +1050,7 @@ class ActivityClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "403": BasicError,
                 "401": BasicError,
@@ -1012,6 +1064,7 @@ class ActivityClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Event], list[EventType]]:
         """activity/list-public-org-events
 
@@ -1039,6 +1092,7 @@ class ActivityClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Event],
         )
 
@@ -1049,6 +1103,7 @@ class ActivityClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Event], list[EventType]]:
         """activity/list-public-org-events
 
@@ -1076,6 +1131,7 @@ class ActivityClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Event],
         )
 
@@ -1087,6 +1143,7 @@ class ActivityClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Event], list[EventType]]:
         """activity/list-repo-events
 
@@ -1114,6 +1171,7 @@ class ActivityClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Event],
         )
 
@@ -1125,6 +1183,7 @@ class ActivityClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Event], list[EventType]]:
         """activity/list-repo-events
 
@@ -1152,6 +1211,7 @@ class ActivityClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Event],
         )
 
@@ -1167,6 +1227,7 @@ class ActivityClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Thread], list[ThreadType]]:
         """activity/list-repo-notifications-for-authenticated-user
 
@@ -1197,6 +1258,7 @@ class ActivityClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Thread],
         )
 
@@ -1212,6 +1274,7 @@ class ActivityClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Thread], list[ThreadType]]:
         """activity/list-repo-notifications-for-authenticated-user
 
@@ -1242,6 +1305,7 @@ class ActivityClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Thread],
         )
 
@@ -1252,6 +1316,7 @@ class ActivityClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoNotificationsPutBodyType] = UNSET,
     ) -> Response[
         ReposOwnerRepoNotificationsPutResponse202,
@@ -1266,6 +1331,7 @@ class ActivityClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         last_read_at: Missing[datetime] = UNSET,
     ) -> Response[
         ReposOwnerRepoNotificationsPutResponse202,
@@ -1278,6 +1344,7 @@ class ActivityClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoNotificationsPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[
@@ -1316,6 +1383,7 @@ class ActivityClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ReposOwnerRepoNotificationsPutResponse202,
         )
 
@@ -1326,6 +1394,7 @@ class ActivityClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoNotificationsPutBodyType] = UNSET,
     ) -> Response[
         ReposOwnerRepoNotificationsPutResponse202,
@@ -1340,6 +1409,7 @@ class ActivityClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         last_read_at: Missing[datetime] = UNSET,
     ) -> Response[
         ReposOwnerRepoNotificationsPutResponse202,
@@ -1352,6 +1422,7 @@ class ActivityClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoNotificationsPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[
@@ -1390,6 +1461,7 @@ class ActivityClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ReposOwnerRepoNotificationsPutResponse202,
         )
 
@@ -1401,6 +1473,7 @@ class ActivityClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         Union[list[SimpleUser], list[Stargazer]],
         Union[list[SimpleUserType], list[StargazerType]],
@@ -1436,6 +1509,7 @@ class ActivityClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Union[list[SimpleUser], list[Stargazer]],
             error_models={
                 "422": ValidationError,
@@ -1450,6 +1524,7 @@ class ActivityClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         Union[list[SimpleUser], list[Stargazer]],
         Union[list[SimpleUserType], list[StargazerType]],
@@ -1485,6 +1560,7 @@ class ActivityClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Union[list[SimpleUser], list[Stargazer]],
             error_models={
                 "422": ValidationError,
@@ -1499,6 +1575,7 @@ class ActivityClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """activity/list-watchers-for-repo
 
@@ -1525,6 +1602,7 @@ class ActivityClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[SimpleUser],
         )
 
@@ -1536,6 +1614,7 @@ class ActivityClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """activity/list-watchers-for-repo
 
@@ -1562,6 +1641,7 @@ class ActivityClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[SimpleUser],
         )
 
@@ -1571,6 +1651,7 @@ class ActivityClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[RepositorySubscription, RepositorySubscriptionType]:
         """activity/get-repo-subscription
 
@@ -1591,6 +1672,7 @@ class ActivityClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=RepositorySubscription,
             error_models={
                 "403": BasicError,
@@ -1603,6 +1685,7 @@ class ActivityClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[RepositorySubscription, RepositorySubscriptionType]:
         """activity/get-repo-subscription
 
@@ -1623,6 +1706,7 @@ class ActivityClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=RepositorySubscription,
             error_models={
                 "403": BasicError,
@@ -1636,6 +1720,7 @@ class ActivityClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoSubscriptionPutBodyType] = UNSET,
     ) -> Response[RepositorySubscription, RepositorySubscriptionType]: ...
 
@@ -1647,6 +1732,7 @@ class ActivityClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         subscribed: Missing[bool] = UNSET,
         ignored: Missing[bool] = UNSET,
     ) -> Response[RepositorySubscription, RepositorySubscriptionType]: ...
@@ -1657,6 +1743,7 @@ class ActivityClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoSubscriptionPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[RepositorySubscription, RepositorySubscriptionType]:
@@ -1689,6 +1776,7 @@ class ActivityClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=RepositorySubscription,
         )
 
@@ -1699,6 +1787,7 @@ class ActivityClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoSubscriptionPutBodyType] = UNSET,
     ) -> Response[RepositorySubscription, RepositorySubscriptionType]: ...
 
@@ -1710,6 +1799,7 @@ class ActivityClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         subscribed: Missing[bool] = UNSET,
         ignored: Missing[bool] = UNSET,
     ) -> Response[RepositorySubscription, RepositorySubscriptionType]: ...
@@ -1720,6 +1810,7 @@ class ActivityClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoSubscriptionPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[RepositorySubscription, RepositorySubscriptionType]:
@@ -1752,6 +1843,7 @@ class ActivityClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=RepositorySubscription,
         )
 
@@ -1761,6 +1853,7 @@ class ActivityClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """activity/delete-repo-subscription
 
@@ -1779,6 +1872,7 @@ class ActivityClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     async def async_delete_repo_subscription(
@@ -1787,6 +1881,7 @@ class ActivityClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """activity/delete-repo-subscription
 
@@ -1805,6 +1900,7 @@ class ActivityClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     def list_repos_starred_by_authenticated_user(
@@ -1815,6 +1911,7 @@ class ActivityClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Repository], list[RepositoryType]]:
         """activity/list-repos-starred-by-authenticated-user
 
@@ -1847,6 +1944,7 @@ class ActivityClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Repository],
             error_models={
                 "403": BasicError,
@@ -1862,6 +1960,7 @@ class ActivityClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Repository], list[RepositoryType]]:
         """activity/list-repos-starred-by-authenticated-user
 
@@ -1894,6 +1993,7 @@ class ActivityClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Repository],
             error_models={
                 "403": BasicError,
@@ -1907,6 +2007,7 @@ class ActivityClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """activity/check-repo-is-starred-by-authenticated-user
 
@@ -1927,6 +2028,7 @@ class ActivityClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
                 "401": BasicError,
@@ -1940,6 +2042,7 @@ class ActivityClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """activity/check-repo-is-starred-by-authenticated-user
 
@@ -1960,6 +2063,7 @@ class ActivityClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
                 "401": BasicError,
@@ -1973,6 +2077,7 @@ class ActivityClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """activity/star-repo-for-authenticated-user
 
@@ -1993,6 +2098,7 @@ class ActivityClient:
             "PUT",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "403": BasicError,
                 "404": BasicError,
@@ -2006,6 +2112,7 @@ class ActivityClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """activity/star-repo-for-authenticated-user
 
@@ -2026,6 +2133,7 @@ class ActivityClient:
             "PUT",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "403": BasicError,
                 "404": BasicError,
@@ -2039,6 +2147,7 @@ class ActivityClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """activity/unstar-repo-for-authenticated-user
 
@@ -2059,6 +2168,7 @@ class ActivityClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
                 "401": BasicError,
@@ -2072,6 +2182,7 @@ class ActivityClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """activity/unstar-repo-for-authenticated-user
 
@@ -2092,6 +2203,7 @@ class ActivityClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
                 "401": BasicError,
@@ -2105,6 +2217,7 @@ class ActivityClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
         """activity/list-watched-repos-for-authenticated-user
 
@@ -2131,6 +2244,7 @@ class ActivityClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[MinimalRepository],
             error_models={
                 "403": BasicError,
@@ -2144,6 +2258,7 @@ class ActivityClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
         """activity/list-watched-repos-for-authenticated-user
 
@@ -2170,6 +2285,7 @@ class ActivityClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[MinimalRepository],
             error_models={
                 "403": BasicError,
@@ -2184,6 +2300,7 @@ class ActivityClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Event], list[EventType]]:
         """activity/list-events-for-authenticated-user
 
@@ -2213,6 +2330,7 @@ class ActivityClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Event],
         )
 
@@ -2223,6 +2341,7 @@ class ActivityClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Event], list[EventType]]:
         """activity/list-events-for-authenticated-user
 
@@ -2252,6 +2371,7 @@ class ActivityClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Event],
         )
 
@@ -2263,6 +2383,7 @@ class ActivityClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Event], list[EventType]]:
         """activity/list-org-events-for-authenticated-user
 
@@ -2292,6 +2413,7 @@ class ActivityClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Event],
         )
 
@@ -2303,6 +2425,7 @@ class ActivityClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Event], list[EventType]]:
         """activity/list-org-events-for-authenticated-user
 
@@ -2332,6 +2455,7 @@ class ActivityClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Event],
         )
 
@@ -2342,6 +2466,7 @@ class ActivityClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Event], list[EventType]]:
         """activity/list-public-events-for-user
 
@@ -2369,6 +2494,7 @@ class ActivityClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Event],
         )
 
@@ -2379,6 +2505,7 @@ class ActivityClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Event], list[EventType]]:
         """activity/list-public-events-for-user
 
@@ -2406,6 +2533,7 @@ class ActivityClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Event],
         )
 
@@ -2416,6 +2544,7 @@ class ActivityClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Event], list[EventType]]:
         """activity/list-received-events-for-user
 
@@ -2446,6 +2575,7 @@ class ActivityClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Event],
         )
 
@@ -2456,6 +2586,7 @@ class ActivityClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Event], list[EventType]]:
         """activity/list-received-events-for-user
 
@@ -2486,6 +2617,7 @@ class ActivityClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Event],
         )
 
@@ -2496,6 +2628,7 @@ class ActivityClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Event], list[EventType]]:
         """activity/list-received-public-events-for-user
 
@@ -2523,6 +2656,7 @@ class ActivityClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Event],
         )
 
@@ -2533,6 +2667,7 @@ class ActivityClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Event], list[EventType]]:
         """activity/list-received-public-events-for-user
 
@@ -2560,6 +2695,7 @@ class ActivityClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Event],
         )
 
@@ -2572,6 +2708,7 @@ class ActivityClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         Union[list[StarredRepository], list[Repository]],
         Union[list[StarredRepositoryType], list[RepositoryType]],
@@ -2609,6 +2746,7 @@ class ActivityClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Union[list[StarredRepository], list[Repository]],
         )
 
@@ -2621,6 +2759,7 @@ class ActivityClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         Union[list[StarredRepository], list[Repository]],
         Union[list[StarredRepositoryType], list[RepositoryType]],
@@ -2658,6 +2797,7 @@ class ActivityClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Union[list[StarredRepository], list[Repository]],
         )
 
@@ -2668,6 +2808,7 @@ class ActivityClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
         """activity/list-repos-watched-by-user
 
@@ -2694,6 +2835,7 @@ class ActivityClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[MinimalRepository],
         )
 
@@ -2704,6 +2846,7 @@ class ActivityClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
         """activity/list-repos-watched-by-user
 
@@ -2730,5 +2873,6 @@ class ActivityClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[MinimalRepository],
         )

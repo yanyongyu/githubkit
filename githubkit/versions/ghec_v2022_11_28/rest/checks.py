@@ -83,6 +83,7 @@ class ChecksClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Union[
             ReposOwnerRepoCheckRunsPostBodyOneof0Type,
             ReposOwnerRepoCheckRunsPostBodyOneof1Type,
@@ -97,6 +98,7 @@ class ChecksClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: str,
         head_sha: str,
         details_url: Missing[str] = UNSET,
@@ -128,6 +130,7 @@ class ChecksClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: str,
         head_sha: str,
         details_url: Missing[str] = UNSET,
@@ -161,6 +164,7 @@ class ChecksClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             Union[
                 ReposOwnerRepoCheckRunsPostBodyOneof0Type,
@@ -217,6 +221,7 @@ class ChecksClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CheckRun,
         )
 
@@ -227,6 +232,7 @@ class ChecksClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Union[
             ReposOwnerRepoCheckRunsPostBodyOneof0Type,
             ReposOwnerRepoCheckRunsPostBodyOneof1Type,
@@ -241,6 +247,7 @@ class ChecksClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: str,
         head_sha: str,
         details_url: Missing[str] = UNSET,
@@ -272,6 +279,7 @@ class ChecksClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: str,
         head_sha: str,
         details_url: Missing[str] = UNSET,
@@ -305,6 +313,7 @@ class ChecksClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             Union[
                 ReposOwnerRepoCheckRunsPostBodyOneof0Type,
@@ -361,6 +370,7 @@ class ChecksClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CheckRun,
         )
 
@@ -371,6 +381,7 @@ class ChecksClient:
         check_run_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[CheckRun, CheckRunType]:
         """checks/get
 
@@ -396,6 +407,7 @@ class ChecksClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CheckRun,
         )
 
@@ -406,6 +418,7 @@ class ChecksClient:
         check_run_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[CheckRun, CheckRunType]:
         """checks/get
 
@@ -431,6 +444,7 @@ class ChecksClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CheckRun,
         )
 
@@ -442,6 +456,7 @@ class ChecksClient:
         check_run_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Union[
             ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0Type,
             ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1Type,
@@ -457,6 +472,7 @@ class ChecksClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: Missing[str] = UNSET,
         details_url: Missing[str] = UNSET,
         external_id: Missing[str] = UNSET,
@@ -490,6 +506,7 @@ class ChecksClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: Missing[str] = UNSET,
         details_url: Missing[str] = UNSET,
         external_id: Missing[str] = UNSET,
@@ -523,6 +540,7 @@ class ChecksClient:
         check_run_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             Union[
                 ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0Type,
@@ -577,6 +595,7 @@ class ChecksClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CheckRun,
         )
 
@@ -588,6 +607,7 @@ class ChecksClient:
         check_run_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Union[
             ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0Type,
             ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1Type,
@@ -603,6 +623,7 @@ class ChecksClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: Missing[str] = UNSET,
         details_url: Missing[str] = UNSET,
         external_id: Missing[str] = UNSET,
@@ -636,6 +657,7 @@ class ChecksClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: Missing[str] = UNSET,
         details_url: Missing[str] = UNSET,
         external_id: Missing[str] = UNSET,
@@ -669,6 +691,7 @@ class ChecksClient:
         check_run_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             Union[
                 ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0Type,
@@ -723,6 +746,7 @@ class ChecksClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CheckRun,
         )
 
@@ -735,6 +759,7 @@ class ChecksClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[CheckAnnotation], list[CheckAnnotationType]]:
         """checks/list-annotations
 
@@ -763,6 +788,7 @@ class ChecksClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[CheckAnnotation],
         )
 
@@ -775,6 +801,7 @@ class ChecksClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[CheckAnnotation], list[CheckAnnotationType]]:
         """checks/list-annotations
 
@@ -803,6 +830,7 @@ class ChecksClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[CheckAnnotation],
         )
 
@@ -813,6 +841,7 @@ class ChecksClient:
         check_run_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[EmptyObject, EmptyObjectType]:
         """checks/rerequest-run
 
@@ -835,6 +864,7 @@ class ChecksClient:
             "POST",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=EmptyObject,
             error_models={
                 "403": BasicError,
@@ -850,6 +880,7 @@ class ChecksClient:
         check_run_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[EmptyObject, EmptyObjectType]:
         """checks/rerequest-run
 
@@ -872,6 +903,7 @@ class ChecksClient:
             "POST",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=EmptyObject,
             error_models={
                 "403": BasicError,
@@ -887,6 +919,7 @@ class ChecksClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoCheckSuitesPostBodyType,
     ) -> Response[CheckSuite, CheckSuiteType]: ...
 
@@ -898,6 +931,7 @@ class ChecksClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         head_sha: str,
     ) -> Response[CheckSuite, CheckSuiteType]: ...
 
@@ -907,6 +941,7 @@ class ChecksClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoCheckSuitesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[CheckSuite, CheckSuiteType]:
@@ -944,6 +979,7 @@ class ChecksClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CheckSuite,
         )
 
@@ -954,6 +990,7 @@ class ChecksClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoCheckSuitesPostBodyType,
     ) -> Response[CheckSuite, CheckSuiteType]: ...
 
@@ -965,6 +1002,7 @@ class ChecksClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         head_sha: str,
     ) -> Response[CheckSuite, CheckSuiteType]: ...
 
@@ -974,6 +1012,7 @@ class ChecksClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoCheckSuitesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[CheckSuite, CheckSuiteType]:
@@ -1011,6 +1050,7 @@ class ChecksClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CheckSuite,
         )
 
@@ -1021,6 +1061,7 @@ class ChecksClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoCheckSuitesPreferencesPatchBodyType,
     ) -> Response[CheckSuitePreference, CheckSuitePreferenceType]: ...
 
@@ -1032,6 +1073,7 @@ class ChecksClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         auto_trigger_checks: Missing[
             list[
                 ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsType
@@ -1045,6 +1087,7 @@ class ChecksClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoCheckSuitesPreferencesPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[CheckSuitePreference, CheckSuitePreferenceType]:
@@ -1083,6 +1126,7 @@ class ChecksClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CheckSuitePreference,
         )
 
@@ -1093,6 +1137,7 @@ class ChecksClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoCheckSuitesPreferencesPatchBodyType,
     ) -> Response[CheckSuitePreference, CheckSuitePreferenceType]: ...
 
@@ -1104,6 +1149,7 @@ class ChecksClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         auto_trigger_checks: Missing[
             list[
                 ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsType
@@ -1117,6 +1163,7 @@ class ChecksClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoCheckSuitesPreferencesPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[CheckSuitePreference, CheckSuitePreferenceType]:
@@ -1155,6 +1202,7 @@ class ChecksClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CheckSuitePreference,
         )
 
@@ -1165,6 +1213,7 @@ class ChecksClient:
         check_suite_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[CheckSuite, CheckSuiteType]:
         """checks/get-suite
 
@@ -1190,6 +1239,7 @@ class ChecksClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CheckSuite,
         )
 
@@ -1200,6 +1250,7 @@ class ChecksClient:
         check_suite_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[CheckSuite, CheckSuiteType]:
         """checks/get-suite
 
@@ -1225,6 +1276,7 @@ class ChecksClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CheckSuite,
         )
 
@@ -1240,6 +1292,7 @@ class ChecksClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200,
         ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200Type,
@@ -1279,6 +1332,7 @@ class ChecksClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200,
         )
 
@@ -1294,6 +1348,7 @@ class ChecksClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200,
         ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200Type,
@@ -1333,6 +1388,7 @@ class ChecksClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200,
         )
 
@@ -1343,6 +1399,7 @@ class ChecksClient:
         check_suite_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[EmptyObject, EmptyObjectType]:
         """checks/rerequest-suite
 
@@ -1363,6 +1420,7 @@ class ChecksClient:
             "POST",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=EmptyObject,
         )
 
@@ -1373,6 +1431,7 @@ class ChecksClient:
         check_suite_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[EmptyObject, EmptyObjectType]:
         """checks/rerequest-suite
 
@@ -1393,6 +1452,7 @@ class ChecksClient:
             "POST",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=EmptyObject,
         )
 
@@ -1409,6 +1469,7 @@ class ChecksClient:
         page: Missing[int] = UNSET,
         app_id: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         ReposOwnerRepoCommitsRefCheckRunsGetResponse200,
         ReposOwnerRepoCommitsRefCheckRunsGetResponse200Type,
@@ -1449,6 +1510,7 @@ class ChecksClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ReposOwnerRepoCommitsRefCheckRunsGetResponse200,
         )
 
@@ -1465,6 +1527,7 @@ class ChecksClient:
         page: Missing[int] = UNSET,
         app_id: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         ReposOwnerRepoCommitsRefCheckRunsGetResponse200,
         ReposOwnerRepoCommitsRefCheckRunsGetResponse200Type,
@@ -1505,6 +1568,7 @@ class ChecksClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ReposOwnerRepoCommitsRefCheckRunsGetResponse200,
         )
 
@@ -1519,6 +1583,7 @@ class ChecksClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         ReposOwnerRepoCommitsRefCheckSuitesGetResponse200,
         ReposOwnerRepoCommitsRefCheckSuitesGetResponse200Type,
@@ -1555,6 +1620,7 @@ class ChecksClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ReposOwnerRepoCommitsRefCheckSuitesGetResponse200,
         )
 
@@ -1569,6 +1635,7 @@ class ChecksClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         ReposOwnerRepoCommitsRefCheckSuitesGetResponse200,
         ReposOwnerRepoCommitsRefCheckSuitesGetResponse200Type,
@@ -1605,5 +1672,6 @@ class ChecksClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ReposOwnerRepoCommitsRefCheckSuitesGetResponse200,
         )

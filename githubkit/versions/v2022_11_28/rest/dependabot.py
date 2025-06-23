@@ -93,6 +93,7 @@ class DependabotClient:
         last: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         list[DependabotAlertWithRepository], list[DependabotAlertWithRepositoryType]
     ]:
@@ -143,6 +144,7 @@ class DependabotClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[DependabotAlertWithRepository],
             error_models={
                 "403": BasicError,
@@ -170,6 +172,7 @@ class DependabotClient:
         last: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         list[DependabotAlertWithRepository], list[DependabotAlertWithRepositoryType]
     ]:
@@ -220,6 +223,7 @@ class DependabotClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[DependabotAlertWithRepository],
             error_models={
                 "403": BasicError,
@@ -235,6 +239,7 @@ class DependabotClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         DependabotRepositoryAccessDetails, DependabotRepositoryAccessDetailsType
     ]:
@@ -265,6 +270,7 @@ class DependabotClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=DependabotRepositoryAccessDetails,
             error_models={
                 "403": BasicError,
@@ -279,6 +285,7 @@ class DependabotClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         DependabotRepositoryAccessDetails, DependabotRepositoryAccessDetailsType
     ]:
@@ -309,6 +316,7 @@ class DependabotClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=DependabotRepositoryAccessDetails,
             error_models={
                 "403": BasicError,
@@ -322,6 +330,7 @@ class DependabotClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrganizationsOrgDependabotRepositoryAccessPatchBodyType,
     ) -> Response: ...
 
@@ -332,6 +341,7 @@ class DependabotClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         repository_ids_to_add: Missing[list[int]] = UNSET,
         repository_ids_to_remove: Missing[list[int]] = UNSET,
     ) -> Response: ...
@@ -341,6 +351,7 @@ class DependabotClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrganizationsOrgDependabotRepositoryAccessPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -388,6 +399,7 @@ class DependabotClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "403": BasicError,
                 "404": BasicError,
@@ -400,6 +412,7 @@ class DependabotClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrganizationsOrgDependabotRepositoryAccessPatchBodyType,
     ) -> Response: ...
 
@@ -410,6 +423,7 @@ class DependabotClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         repository_ids_to_add: Missing[list[int]] = UNSET,
         repository_ids_to_remove: Missing[list[int]] = UNSET,
     ) -> Response: ...
@@ -419,6 +433,7 @@ class DependabotClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrganizationsOrgDependabotRepositoryAccessPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -466,6 +481,7 @@ class DependabotClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "403": BasicError,
                 "404": BasicError,
@@ -478,6 +494,7 @@ class DependabotClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBodyType,
     ) -> Response: ...
 
@@ -488,6 +505,7 @@ class DependabotClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         default_level: Literal["public", "internal"],
     ) -> Response: ...
 
@@ -496,6 +514,7 @@ class DependabotClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBodyType
         ] = UNSET,
@@ -541,6 +560,7 @@ class DependabotClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "403": BasicError,
                 "404": BasicError,
@@ -553,6 +573,7 @@ class DependabotClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBodyType,
     ) -> Response: ...
 
@@ -563,6 +584,7 @@ class DependabotClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         default_level: Literal["public", "internal"],
     ) -> Response: ...
 
@@ -571,6 +593,7 @@ class DependabotClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBodyType
         ] = UNSET,
@@ -616,6 +639,7 @@ class DependabotClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "403": BasicError,
                 "404": BasicError,
@@ -641,6 +665,7 @@ class DependabotClient:
         last: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         list[DependabotAlertWithRepository], list[DependabotAlertWithRepositoryType]
     ]:
@@ -689,6 +714,7 @@ class DependabotClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[DependabotAlertWithRepository],
             error_models={
                 "400": BasicError,
@@ -717,6 +743,7 @@ class DependabotClient:
         last: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         list[DependabotAlertWithRepository], list[DependabotAlertWithRepositoryType]
     ]:
@@ -765,6 +792,7 @@ class DependabotClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[DependabotAlertWithRepository],
             error_models={
                 "400": BasicError,
@@ -781,6 +809,7 @@ class DependabotClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         OrgsOrgDependabotSecretsGetResponse200,
         OrgsOrgDependabotSecretsGetResponse200Type,
@@ -813,6 +842,7 @@ class DependabotClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgDependabotSecretsGetResponse200,
         )
 
@@ -823,6 +853,7 @@ class DependabotClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         OrgsOrgDependabotSecretsGetResponse200,
         OrgsOrgDependabotSecretsGetResponse200Type,
@@ -855,6 +886,7 @@ class DependabotClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgDependabotSecretsGetResponse200,
         )
 
@@ -863,6 +895,7 @@ class DependabotClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[DependabotPublicKey, DependabotPublicKeyType]:
         """dependabot/get-org-public-key
 
@@ -886,6 +919,7 @@ class DependabotClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=DependabotPublicKey,
         )
 
@@ -894,6 +928,7 @@ class DependabotClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[DependabotPublicKey, DependabotPublicKeyType]:
         """dependabot/get-org-public-key
 
@@ -917,6 +952,7 @@ class DependabotClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=DependabotPublicKey,
         )
 
@@ -926,6 +962,7 @@ class DependabotClient:
         secret_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[OrganizationDependabotSecret, OrganizationDependabotSecretType]:
         """dependabot/get-org-secret
 
@@ -948,6 +985,7 @@ class DependabotClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrganizationDependabotSecret,
         )
 
@@ -957,6 +995,7 @@ class DependabotClient:
         secret_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[OrganizationDependabotSecret, OrganizationDependabotSecretType]:
         """dependabot/get-org-secret
 
@@ -979,6 +1018,7 @@ class DependabotClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrganizationDependabotSecret,
         )
 
@@ -989,6 +1029,7 @@ class DependabotClient:
         secret_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgDependabotSecretsSecretNamePutBodyType,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
 
@@ -1000,6 +1041,7 @@ class DependabotClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         encrypted_value: Missing[str] = UNSET,
         key_id: Missing[str] = UNSET,
         visibility: Literal["all", "private", "selected"],
@@ -1012,6 +1054,7 @@ class DependabotClient:
         secret_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgDependabotSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject, EmptyObjectType]:
@@ -1047,6 +1090,7 @@ class DependabotClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=EmptyObject,
         )
 
@@ -1057,6 +1101,7 @@ class DependabotClient:
         secret_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgDependabotSecretsSecretNamePutBodyType,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
 
@@ -1068,6 +1113,7 @@ class DependabotClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         encrypted_value: Missing[str] = UNSET,
         key_id: Missing[str] = UNSET,
         visibility: Literal["all", "private", "selected"],
@@ -1080,6 +1126,7 @@ class DependabotClient:
         secret_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgDependabotSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject, EmptyObjectType]:
@@ -1115,6 +1162,7 @@ class DependabotClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=EmptyObject,
         )
 
@@ -1124,6 +1172,7 @@ class DependabotClient:
         secret_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """dependabot/delete-org-secret
 
@@ -1144,6 +1193,7 @@ class DependabotClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     async def async_delete_org_secret(
@@ -1152,6 +1202,7 @@ class DependabotClient:
         secret_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """dependabot/delete-org-secret
 
@@ -1172,6 +1223,7 @@ class DependabotClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     def list_selected_repos_for_org_secret(
@@ -1182,6 +1234,7 @@ class DependabotClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200,
         OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200Type,
@@ -1216,6 +1269,7 @@ class DependabotClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200,
         )
 
@@ -1227,6 +1281,7 @@ class DependabotClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200,
         OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200Type,
@@ -1261,6 +1316,7 @@ class DependabotClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200,
         )
 
@@ -1271,6 +1327,7 @@ class DependabotClient:
         secret_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgDependabotSecretsSecretNameRepositoriesPutBodyType,
     ) -> Response: ...
 
@@ -1282,6 +1339,7 @@ class DependabotClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         selected_repository_ids: list[int],
     ) -> Response: ...
 
@@ -1291,6 +1349,7 @@ class DependabotClient:
         secret_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             OrgsOrgDependabotSecretsSecretNameRepositoriesPutBodyType
         ] = UNSET,
@@ -1331,6 +1390,7 @@ class DependabotClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     @overload
@@ -1340,6 +1400,7 @@ class DependabotClient:
         secret_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgDependabotSecretsSecretNameRepositoriesPutBodyType,
     ) -> Response: ...
 
@@ -1351,6 +1412,7 @@ class DependabotClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         selected_repository_ids: list[int],
     ) -> Response: ...
 
@@ -1360,6 +1422,7 @@ class DependabotClient:
         secret_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             OrgsOrgDependabotSecretsSecretNameRepositoriesPutBodyType
         ] = UNSET,
@@ -1400,6 +1463,7 @@ class DependabotClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     def add_selected_repo_to_org_secret(
@@ -1409,6 +1473,7 @@ class DependabotClient:
         repository_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """dependabot/add-selected-repo-to-org-secret
 
@@ -1433,6 +1498,7 @@ class DependabotClient:
             "PUT",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={},
         )
 
@@ -1443,6 +1509,7 @@ class DependabotClient:
         repository_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """dependabot/add-selected-repo-to-org-secret
 
@@ -1467,6 +1534,7 @@ class DependabotClient:
             "PUT",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={},
         )
 
@@ -1477,6 +1545,7 @@ class DependabotClient:
         repository_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """dependabot/remove-selected-repo-from-org-secret
 
@@ -1501,6 +1570,7 @@ class DependabotClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={},
         )
 
@@ -1511,6 +1581,7 @@ class DependabotClient:
         repository_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """dependabot/remove-selected-repo-from-org-secret
 
@@ -1535,6 +1606,7 @@ class DependabotClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={},
         )
 
@@ -1560,6 +1632,7 @@ class DependabotClient:
         first: Missing[int] = UNSET,
         last: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[DependabotAlert], list[DependabotAlertType]]:
         """dependabot/list-alerts-for-repo
 
@@ -1600,6 +1673,7 @@ class DependabotClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[DependabotAlert],
             error_models={
                 "400": BasicError,
@@ -1631,6 +1705,7 @@ class DependabotClient:
         first: Missing[int] = UNSET,
         last: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[DependabotAlert], list[DependabotAlertType]]:
         """dependabot/list-alerts-for-repo
 
@@ -1671,6 +1746,7 @@ class DependabotClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[DependabotAlert],
             error_models={
                 "400": BasicError,
@@ -1687,6 +1763,7 @@ class DependabotClient:
         alert_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[DependabotAlert, DependabotAlertType]:
         """dependabot/get-alert
 
@@ -1707,6 +1784,7 @@ class DependabotClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=DependabotAlert,
             error_models={
                 "403": BasicError,
@@ -1721,6 +1799,7 @@ class DependabotClient:
         alert_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[DependabotAlert, DependabotAlertType]:
         """dependabot/get-alert
 
@@ -1741,6 +1820,7 @@ class DependabotClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=DependabotAlert,
             error_models={
                 "403": BasicError,
@@ -1756,6 +1836,7 @@ class DependabotClient:
         alert_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyType,
     ) -> Response[DependabotAlert, DependabotAlertType]: ...
 
@@ -1768,6 +1849,7 @@ class DependabotClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         state: Literal["dismissed", "open"],
         dismissed_reason: Missing[
             Literal[
@@ -1788,6 +1870,7 @@ class DependabotClient:
         alert_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[DependabotAlert, DependabotAlertType]:
@@ -1829,6 +1912,7 @@ class DependabotClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=DependabotAlert,
             error_models={
                 "400": BasicError,
@@ -1847,6 +1931,7 @@ class DependabotClient:
         alert_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyType,
     ) -> Response[DependabotAlert, DependabotAlertType]: ...
 
@@ -1859,6 +1944,7 @@ class DependabotClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         state: Literal["dismissed", "open"],
         dismissed_reason: Missing[
             Literal[
@@ -1879,6 +1965,7 @@ class DependabotClient:
         alert_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[DependabotAlert, DependabotAlertType]:
@@ -1920,6 +2007,7 @@ class DependabotClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=DependabotAlert,
             error_models={
                 "400": BasicError,
@@ -1938,6 +2026,7 @@ class DependabotClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         ReposOwnerRepoDependabotSecretsGetResponse200,
         ReposOwnerRepoDependabotSecretsGetResponse200Type,
@@ -1970,6 +2059,7 @@ class DependabotClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ReposOwnerRepoDependabotSecretsGetResponse200,
         )
 
@@ -1981,6 +2071,7 @@ class DependabotClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         ReposOwnerRepoDependabotSecretsGetResponse200,
         ReposOwnerRepoDependabotSecretsGetResponse200Type,
@@ -2013,6 +2104,7 @@ class DependabotClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ReposOwnerRepoDependabotSecretsGetResponse200,
         )
 
@@ -2022,6 +2114,7 @@ class DependabotClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[DependabotPublicKey, DependabotPublicKeyType]:
         """dependabot/get-repo-public-key
 
@@ -2046,6 +2139,7 @@ class DependabotClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=DependabotPublicKey,
         )
 
@@ -2055,6 +2149,7 @@ class DependabotClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[DependabotPublicKey, DependabotPublicKeyType]:
         """dependabot/get-repo-public-key
 
@@ -2079,6 +2174,7 @@ class DependabotClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=DependabotPublicKey,
         )
 
@@ -2089,6 +2185,7 @@ class DependabotClient:
         secret_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[DependabotSecret, DependabotSecretType]:
         """dependabot/get-repo-secret
 
@@ -2111,6 +2208,7 @@ class DependabotClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=DependabotSecret,
         )
 
@@ -2121,6 +2219,7 @@ class DependabotClient:
         secret_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[DependabotSecret, DependabotSecretType]:
         """dependabot/get-repo-secret
 
@@ -2143,6 +2242,7 @@ class DependabotClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=DependabotSecret,
         )
 
@@ -2154,6 +2254,7 @@ class DependabotClient:
         secret_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoDependabotSecretsSecretNamePutBodyType,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
 
@@ -2166,6 +2267,7 @@ class DependabotClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         encrypted_value: Missing[str] = UNSET,
         key_id: Missing[str] = UNSET,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
@@ -2177,6 +2279,7 @@ class DependabotClient:
         secret_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoDependabotSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject, EmptyObjectType]:
@@ -2217,6 +2320,7 @@ class DependabotClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=EmptyObject,
         )
 
@@ -2228,6 +2332,7 @@ class DependabotClient:
         secret_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoDependabotSecretsSecretNamePutBodyType,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
 
@@ -2240,6 +2345,7 @@ class DependabotClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         encrypted_value: Missing[str] = UNSET,
         key_id: Missing[str] = UNSET,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
@@ -2251,6 +2357,7 @@ class DependabotClient:
         secret_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoDependabotSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject, EmptyObjectType]:
@@ -2291,6 +2398,7 @@ class DependabotClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=EmptyObject,
         )
 
@@ -2301,6 +2409,7 @@ class DependabotClient:
         secret_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """dependabot/delete-repo-secret
 
@@ -2321,6 +2430,7 @@ class DependabotClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     async def async_delete_repo_secret(
@@ -2330,6 +2440,7 @@ class DependabotClient:
         secret_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """dependabot/delete-repo-secret
 
@@ -2350,4 +2461,5 @@ class DependabotClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )

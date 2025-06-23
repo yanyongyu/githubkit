@@ -42,6 +42,7 @@ class CodesOfConductClient:
         self,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[CodeOfConduct], list[CodeOfConductType]]:
         """codes-of-conduct/get-all-codes-of-conduct
 
@@ -62,6 +63,7 @@ class CodesOfConductClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[CodeOfConduct],
         )
 
@@ -69,6 +71,7 @@ class CodesOfConductClient:
         self,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[CodeOfConduct], list[CodeOfConductType]]:
         """codes-of-conduct/get-all-codes-of-conduct
 
@@ -89,6 +92,7 @@ class CodesOfConductClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[CodeOfConduct],
         )
 
@@ -97,6 +101,7 @@ class CodesOfConductClient:
         key: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[CodeOfConduct, CodeOfConductType]:
         """codes-of-conduct/get-conduct-code
 
@@ -117,6 +122,7 @@ class CodesOfConductClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CodeOfConduct,
             error_models={
                 "404": BasicError,
@@ -128,6 +134,7 @@ class CodesOfConductClient:
         key: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[CodeOfConduct, CodeOfConductType]:
         """codes-of-conduct/get-conduct-code
 
@@ -148,6 +155,7 @@ class CodesOfConductClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CodeOfConduct,
             error_models={
                 "404": BasicError,

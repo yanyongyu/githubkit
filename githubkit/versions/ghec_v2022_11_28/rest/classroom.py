@@ -60,6 +60,7 @@ class ClassroomClient:
         assignment_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[ClassroomAssignment, ClassroomAssignmentType]:
         """classroom/get-an-assignment
 
@@ -80,6 +81,7 @@ class ClassroomClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ClassroomAssignment,
             error_models={
                 "404": BasicError,
@@ -91,6 +93,7 @@ class ClassroomClient:
         assignment_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[ClassroomAssignment, ClassroomAssignmentType]:
         """classroom/get-an-assignment
 
@@ -111,6 +114,7 @@ class ClassroomClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ClassroomAssignment,
             error_models={
                 "404": BasicError,
@@ -124,6 +128,7 @@ class ClassroomClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         list[ClassroomAcceptedAssignment], list[ClassroomAcceptedAssignmentType]
     ]:
@@ -152,6 +157,7 @@ class ClassroomClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[ClassroomAcceptedAssignment],
         )
 
@@ -162,6 +168,7 @@ class ClassroomClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         list[ClassroomAcceptedAssignment], list[ClassroomAcceptedAssignmentType]
     ]:
@@ -190,6 +197,7 @@ class ClassroomClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[ClassroomAcceptedAssignment],
         )
 
@@ -198,6 +206,7 @@ class ClassroomClient:
         assignment_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[ClassroomAssignmentGrade], list[ClassroomAssignmentGradeType]]:
         """classroom/get-assignment-grades
 
@@ -218,6 +227,7 @@ class ClassroomClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[ClassroomAssignmentGrade],
             error_models={
                 "404": BasicError,
@@ -229,6 +239,7 @@ class ClassroomClient:
         assignment_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[ClassroomAssignmentGrade], list[ClassroomAssignmentGradeType]]:
         """classroom/get-assignment-grades
 
@@ -249,6 +260,7 @@ class ClassroomClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[ClassroomAssignmentGrade],
             error_models={
                 "404": BasicError,
@@ -261,6 +273,7 @@ class ClassroomClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[SimpleClassroom], list[SimpleClassroomType]]:
         """classroom/list-classrooms
 
@@ -287,6 +300,7 @@ class ClassroomClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[SimpleClassroom],
         )
 
@@ -296,6 +310,7 @@ class ClassroomClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[SimpleClassroom], list[SimpleClassroomType]]:
         """classroom/list-classrooms
 
@@ -322,6 +337,7 @@ class ClassroomClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[SimpleClassroom],
         )
 
@@ -330,6 +346,7 @@ class ClassroomClient:
         classroom_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[Classroom, ClassroomType]:
         """classroom/get-a-classroom
 
@@ -350,6 +367,7 @@ class ClassroomClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Classroom,
             error_models={
                 "404": BasicError,
@@ -361,6 +379,7 @@ class ClassroomClient:
         classroom_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[Classroom, ClassroomType]:
         """classroom/get-a-classroom
 
@@ -381,6 +400,7 @@ class ClassroomClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Classroom,
             error_models={
                 "404": BasicError,
@@ -394,6 +414,7 @@ class ClassroomClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[SimpleClassroomAssignment], list[SimpleClassroomAssignmentType]]:
         """classroom/list-assignments-for-a-classroom
 
@@ -420,6 +441,7 @@ class ClassroomClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[SimpleClassroomAssignment],
         )
 
@@ -430,6 +452,7 @@ class ClassroomClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[SimpleClassroomAssignment], list[SimpleClassroomAssignmentType]]:
         """classroom/list-assignments-for-a-classroom
 
@@ -456,5 +479,6 @@ class ClassroomClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[SimpleClassroomAssignment],
         )

@@ -67,6 +67,7 @@ class DependencyGraphClient:
         *,
         name: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[DependencyGraphDiffItems], list[DependencyGraphDiffItemsType]]:
         """dependency-graph/diff-range
 
@@ -92,6 +93,7 @@ class DependencyGraphClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[DependencyGraphDiffItems],
             error_models={
                 "404": BasicError,
@@ -107,6 +109,7 @@ class DependencyGraphClient:
         *,
         name: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[DependencyGraphDiffItems], list[DependencyGraphDiffItemsType]]:
         """dependency-graph/diff-range
 
@@ -132,6 +135,7 @@ class DependencyGraphClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[DependencyGraphDiffItems],
             error_models={
                 "404": BasicError,
@@ -145,6 +149,7 @@ class DependencyGraphClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[DependencyGraphSpdxSbom, DependencyGraphSpdxSbomType]:
         """dependency-graph/export-sbom
 
@@ -165,6 +170,7 @@ class DependencyGraphClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=DependencyGraphSpdxSbom,
             error_models={
                 "404": BasicError,
@@ -178,6 +184,7 @@ class DependencyGraphClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[DependencyGraphSpdxSbom, DependencyGraphSpdxSbomType]:
         """dependency-graph/export-sbom
 
@@ -198,6 +205,7 @@ class DependencyGraphClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=DependencyGraphSpdxSbom,
             error_models={
                 "404": BasicError,
@@ -212,6 +220,7 @@ class DependencyGraphClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: SnapshotType,
     ) -> Response[
         ReposOwnerRepoDependencyGraphSnapshotsPostResponse201,
@@ -226,6 +235,7 @@ class DependencyGraphClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         version: int,
         job: SnapshotPropJobType,
         sha: str,
@@ -245,6 +255,7 @@ class DependencyGraphClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[SnapshotType] = UNSET,
         **kwargs,
     ) -> Response[
@@ -287,6 +298,7 @@ class DependencyGraphClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ReposOwnerRepoDependencyGraphSnapshotsPostResponse201,
         )
 
@@ -297,6 +309,7 @@ class DependencyGraphClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: SnapshotType,
     ) -> Response[
         ReposOwnerRepoDependencyGraphSnapshotsPostResponse201,
@@ -311,6 +324,7 @@ class DependencyGraphClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         version: int,
         job: SnapshotPropJobType,
         sha: str,
@@ -330,6 +344,7 @@ class DependencyGraphClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[SnapshotType] = UNSET,
         **kwargs,
     ) -> Response[
@@ -372,5 +387,6 @@ class DependencyGraphClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ReposOwnerRepoDependencyGraphSnapshotsPostResponse201,
         )

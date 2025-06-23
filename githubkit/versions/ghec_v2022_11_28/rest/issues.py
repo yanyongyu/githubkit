@@ -151,6 +151,7 @@ class IssuesClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Issue], list[IssueType]]:
         """issues/list
 
@@ -199,6 +200,7 @@ class IssuesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Issue],
             error_models={
                 "422": ValidationError,
@@ -224,6 +226,7 @@ class IssuesClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Issue], list[IssueType]]:
         """issues/list
 
@@ -272,6 +275,7 @@ class IssuesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Issue],
             error_models={
                 "422": ValidationError,
@@ -295,6 +299,7 @@ class IssuesClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Issue], list[IssueType]]:
         """issues/list-for-org
 
@@ -338,6 +343,7 @@ class IssuesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Issue],
             error_models={
                 "404": BasicError,
@@ -360,6 +366,7 @@ class IssuesClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Issue], list[IssueType]]:
         """issues/list-for-org
 
@@ -403,6 +410,7 @@ class IssuesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Issue],
             error_models={
                 "404": BasicError,
@@ -417,6 +425,7 @@ class IssuesClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """issues/list-assignees
 
@@ -443,6 +452,7 @@ class IssuesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[SimpleUser],
             error_models={
                 "404": BasicError,
@@ -457,6 +467,7 @@ class IssuesClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """issues/list-assignees
 
@@ -483,6 +494,7 @@ class IssuesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[SimpleUser],
             error_models={
                 "404": BasicError,
@@ -496,6 +508,7 @@ class IssuesClient:
         assignee: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """issues/check-user-can-be-assigned
 
@@ -520,6 +533,7 @@ class IssuesClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
             },
@@ -532,6 +546,7 @@ class IssuesClient:
         assignee: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """issues/check-user-can-be-assigned
 
@@ -556,6 +571,7 @@ class IssuesClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
             },
@@ -579,6 +595,7 @@ class IssuesClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Issue], list[IssueType]]:
         """issues/list-for-repo
 
@@ -625,6 +642,7 @@ class IssuesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Issue],
             error_models={
                 "422": ValidationError,
@@ -650,6 +668,7 @@ class IssuesClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Issue], list[IssueType]]:
         """issues/list-for-repo
 
@@ -696,6 +715,7 @@ class IssuesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Issue],
             error_models={
                 "422": ValidationError,
@@ -710,6 +730,7 @@ class IssuesClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoIssuesPostBodyType,
     ) -> Response[Issue, IssueType]: ...
 
@@ -721,6 +742,7 @@ class IssuesClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         title: Union[str, int],
         body: Missing[str] = UNSET,
         assignee: Missing[Union[str, None]] = UNSET,
@@ -738,6 +760,7 @@ class IssuesClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Issue, IssueType]:
@@ -786,6 +809,7 @@ class IssuesClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Issue,
             error_models={
                 "400": BasicError,
@@ -804,6 +828,7 @@ class IssuesClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoIssuesPostBodyType,
     ) -> Response[Issue, IssueType]: ...
 
@@ -815,6 +840,7 @@ class IssuesClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         title: Union[str, int],
         body: Missing[str] = UNSET,
         assignee: Missing[Union[str, None]] = UNSET,
@@ -832,6 +858,7 @@ class IssuesClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Issue, IssueType]:
@@ -880,6 +907,7 @@ class IssuesClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Issue,
             error_models={
                 "400": BasicError,
@@ -902,6 +930,7 @@ class IssuesClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[IssueComment], list[IssueCommentType]]:
         """issues/list-comments-for-repo
 
@@ -940,6 +969,7 @@ class IssuesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[IssueComment],
             error_models={
                 "422": ValidationError,
@@ -958,6 +988,7 @@ class IssuesClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[IssueComment], list[IssueCommentType]]:
         """issues/list-comments-for-repo
 
@@ -996,6 +1027,7 @@ class IssuesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[IssueComment],
             error_models={
                 "422": ValidationError,
@@ -1010,6 +1042,7 @@ class IssuesClient:
         comment_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[IssueComment, IssueCommentType]:
         """issues/get-comment
 
@@ -1037,6 +1070,7 @@ class IssuesClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=IssueComment,
             error_models={
                 "404": BasicError,
@@ -1050,6 +1084,7 @@ class IssuesClient:
         comment_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[IssueComment, IssueCommentType]:
         """issues/get-comment
 
@@ -1077,6 +1112,7 @@ class IssuesClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=IssueComment,
             error_models={
                 "404": BasicError,
@@ -1090,6 +1126,7 @@ class IssuesClient:
         comment_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """issues/delete-comment
 
@@ -1108,6 +1145,7 @@ class IssuesClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     async def async_delete_comment(
@@ -1117,6 +1155,7 @@ class IssuesClient:
         comment_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """issues/delete-comment
 
@@ -1135,6 +1174,7 @@ class IssuesClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     @overload
@@ -1145,6 +1185,7 @@ class IssuesClient:
         comment_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoIssuesCommentsCommentIdPatchBodyType,
     ) -> Response[IssueComment, IssueCommentType]: ...
 
@@ -1157,6 +1198,7 @@ class IssuesClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         body: str,
     ) -> Response[IssueComment, IssueCommentType]: ...
 
@@ -1167,6 +1209,7 @@ class IssuesClient:
         comment_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesCommentsCommentIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[IssueComment, IssueCommentType]:
@@ -1212,6 +1255,7 @@ class IssuesClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=IssueComment,
             error_models={
                 "422": ValidationError,
@@ -1226,6 +1270,7 @@ class IssuesClient:
         comment_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoIssuesCommentsCommentIdPatchBodyType,
     ) -> Response[IssueComment, IssueCommentType]: ...
 
@@ -1238,6 +1283,7 @@ class IssuesClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         body: str,
     ) -> Response[IssueComment, IssueCommentType]: ...
 
@@ -1248,6 +1294,7 @@ class IssuesClient:
         comment_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesCommentsCommentIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[IssueComment, IssueCommentType]:
@@ -1293,6 +1340,7 @@ class IssuesClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=IssueComment,
             error_models={
                 "422": ValidationError,
@@ -1307,6 +1355,7 @@ class IssuesClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[IssueEvent], list[IssueEventType]]:
         """issues/list-events-for-repo
 
@@ -1333,6 +1382,7 @@ class IssuesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[IssueEvent],
             error_models={
                 "422": ValidationError,
@@ -1347,6 +1397,7 @@ class IssuesClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[IssueEvent], list[IssueEventType]]:
         """issues/list-events-for-repo
 
@@ -1373,6 +1424,7 @@ class IssuesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[IssueEvent],
             error_models={
                 "422": ValidationError,
@@ -1386,6 +1438,7 @@ class IssuesClient:
         event_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[IssueEvent, IssueEventType]:
         """issues/get-event
 
@@ -1406,6 +1459,7 @@ class IssuesClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=IssueEvent,
             error_models={
                 "404": BasicError,
@@ -1421,6 +1475,7 @@ class IssuesClient:
         event_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[IssueEvent, IssueEventType]:
         """issues/get-event
 
@@ -1441,6 +1496,7 @@ class IssuesClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=IssueEvent,
             error_models={
                 "404": BasicError,
@@ -1456,6 +1512,7 @@ class IssuesClient:
         issue_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[Issue, IssueType]:
         """issues/get
 
@@ -1491,6 +1548,7 @@ class IssuesClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Issue,
             error_models={
                 "404": BasicError,
@@ -1505,6 +1563,7 @@ class IssuesClient:
         issue_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[Issue, IssueType]:
         """issues/get
 
@@ -1540,6 +1599,7 @@ class IssuesClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Issue,
             error_models={
                 "404": BasicError,
@@ -1555,6 +1615,7 @@ class IssuesClient:
         issue_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesIssueNumberPatchBodyType] = UNSET,
     ) -> Response[Issue, IssueType]: ...
 
@@ -1567,6 +1628,7 @@ class IssuesClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         title: Missing[Union[str, int, None]] = UNSET,
         body: Missing[Union[str, None]] = UNSET,
         assignee: Missing[Union[str, None]] = UNSET,
@@ -1594,6 +1656,7 @@ class IssuesClient:
         issue_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesIssueNumberPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Issue, IssueType]:
@@ -1639,6 +1702,7 @@ class IssuesClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Issue,
             error_models={
                 "422": ValidationError,
@@ -1657,6 +1721,7 @@ class IssuesClient:
         issue_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesIssueNumberPatchBodyType] = UNSET,
     ) -> Response[Issue, IssueType]: ...
 
@@ -1669,6 +1734,7 @@ class IssuesClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         title: Missing[Union[str, int, None]] = UNSET,
         body: Missing[Union[str, None]] = UNSET,
         assignee: Missing[Union[str, None]] = UNSET,
@@ -1696,6 +1762,7 @@ class IssuesClient:
         issue_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesIssueNumberPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Issue, IssueType]:
@@ -1741,6 +1808,7 @@ class IssuesClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Issue,
             error_models={
                 "422": ValidationError,
@@ -1759,6 +1827,7 @@ class IssuesClient:
         issue_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType] = UNSET,
     ) -> Response[Issue, IssueType]: ...
 
@@ -1771,6 +1840,7 @@ class IssuesClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         assignees: Missing[list[str]] = UNSET,
     ) -> Response[Issue, IssueType]: ...
 
@@ -1781,6 +1851,7 @@ class IssuesClient:
         issue_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Issue, IssueType]:
@@ -1815,6 +1886,7 @@ class IssuesClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Issue,
         )
 
@@ -1826,6 +1898,7 @@ class IssuesClient:
         issue_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType] = UNSET,
     ) -> Response[Issue, IssueType]: ...
 
@@ -1838,6 +1911,7 @@ class IssuesClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         assignees: Missing[list[str]] = UNSET,
     ) -> Response[Issue, IssueType]: ...
 
@@ -1848,6 +1922,7 @@ class IssuesClient:
         issue_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Issue, IssueType]:
@@ -1882,6 +1957,7 @@ class IssuesClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Issue,
         )
 
@@ -1893,6 +1969,7 @@ class IssuesClient:
         issue_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyType] = UNSET,
     ) -> Response[Issue, IssueType]: ...
 
@@ -1905,6 +1982,7 @@ class IssuesClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         assignees: Missing[list[str]] = UNSET,
     ) -> Response[Issue, IssueType]: ...
 
@@ -1915,6 +1993,7 @@ class IssuesClient:
         issue_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyType] = UNSET,
         **kwargs,
     ) -> Response[Issue, IssueType]:
@@ -1949,6 +2028,7 @@ class IssuesClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Issue,
         )
 
@@ -1960,6 +2040,7 @@ class IssuesClient:
         issue_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyType] = UNSET,
     ) -> Response[Issue, IssueType]: ...
 
@@ -1972,6 +2053,7 @@ class IssuesClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         assignees: Missing[list[str]] = UNSET,
     ) -> Response[Issue, IssueType]: ...
 
@@ -1982,6 +2064,7 @@ class IssuesClient:
         issue_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyType] = UNSET,
         **kwargs,
     ) -> Response[Issue, IssueType]:
@@ -2016,6 +2099,7 @@ class IssuesClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Issue,
         )
 
@@ -2027,6 +2111,7 @@ class IssuesClient:
         assignee: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """issues/check-user-can-be-assigned-to-issue
 
@@ -2051,6 +2136,7 @@ class IssuesClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
             },
@@ -2064,6 +2150,7 @@ class IssuesClient:
         assignee: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """issues/check-user-can-be-assigned-to-issue
 
@@ -2088,6 +2175,7 @@ class IssuesClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
             },
@@ -2103,6 +2191,7 @@ class IssuesClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[IssueComment], list[IssueCommentType]]:
         """issues/list-comments
 
@@ -2139,6 +2228,7 @@ class IssuesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[IssueComment],
             error_models={
                 "404": BasicError,
@@ -2156,6 +2246,7 @@ class IssuesClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[IssueComment], list[IssueCommentType]]:
         """issues/list-comments
 
@@ -2192,6 +2283,7 @@ class IssuesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[IssueComment],
             error_models={
                 "404": BasicError,
@@ -2207,6 +2299,7 @@ class IssuesClient:
         issue_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoIssuesIssueNumberCommentsPostBodyType,
     ) -> Response[IssueComment, IssueCommentType]: ...
 
@@ -2219,6 +2312,7 @@ class IssuesClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         body: str,
     ) -> Response[IssueComment, IssueCommentType]: ...
 
@@ -2229,6 +2323,7 @@ class IssuesClient:
         issue_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesIssueNumberCommentsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[IssueComment, IssueCommentType]:
@@ -2280,6 +2375,7 @@ class IssuesClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=IssueComment,
             error_models={
                 "403": BasicError,
@@ -2297,6 +2393,7 @@ class IssuesClient:
         issue_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoIssuesIssueNumberCommentsPostBodyType,
     ) -> Response[IssueComment, IssueCommentType]: ...
 
@@ -2309,6 +2406,7 @@ class IssuesClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         body: str,
     ) -> Response[IssueComment, IssueCommentType]: ...
 
@@ -2319,6 +2417,7 @@ class IssuesClient:
         issue_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesIssueNumberCommentsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[IssueComment, IssueCommentType]:
@@ -2370,6 +2469,7 @@ class IssuesClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=IssueComment,
             error_models={
                 "403": BasicError,
@@ -2388,6 +2488,7 @@ class IssuesClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         list[
             Union[
@@ -2472,6 +2573,7 @@ class IssuesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[
                 Union[
                     LabeledIssueEvent,
@@ -2505,6 +2607,7 @@ class IssuesClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         list[
             Union[
@@ -2589,6 +2692,7 @@ class IssuesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[
                 Union[
                     LabeledIssueEvent,
@@ -2622,6 +2726,7 @@ class IssuesClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Label], list[LabelType]]:
         """issues/list-labels-on-issue
 
@@ -2648,6 +2753,7 @@ class IssuesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Label],
             error_models={
                 "404": BasicError,
@@ -2664,6 +2770,7 @@ class IssuesClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Label], list[LabelType]]:
         """issues/list-labels-on-issue
 
@@ -2690,6 +2797,7 @@ class IssuesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Label],
             error_models={
                 "404": BasicError,
@@ -2705,6 +2813,7 @@ class IssuesClient:
         issue_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             Union[
                 ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0Type,
@@ -2725,6 +2834,7 @@ class IssuesClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         labels: Missing[list[str]] = UNSET,
     ) -> Response[list[Label], list[LabelType]]: ...
 
@@ -2737,6 +2847,7 @@ class IssuesClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         labels: Missing[
             list[ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsType]
         ] = UNSET,
@@ -2749,6 +2860,7 @@ class IssuesClient:
         issue_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             Union[
                 ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0Type,
@@ -2812,6 +2924,7 @@ class IssuesClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Label],
             error_models={
                 "404": BasicError,
@@ -2828,6 +2941,7 @@ class IssuesClient:
         issue_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             Union[
                 ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0Type,
@@ -2848,6 +2962,7 @@ class IssuesClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         labels: Missing[list[str]] = UNSET,
     ) -> Response[list[Label], list[LabelType]]: ...
 
@@ -2860,6 +2975,7 @@ class IssuesClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         labels: Missing[
             list[ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsType]
         ] = UNSET,
@@ -2872,6 +2988,7 @@ class IssuesClient:
         issue_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             Union[
                 ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0Type,
@@ -2935,6 +3052,7 @@ class IssuesClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Label],
             error_models={
                 "404": BasicError,
@@ -2951,6 +3069,7 @@ class IssuesClient:
         issue_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             Union[
                 ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0Type,
@@ -2971,6 +3090,7 @@ class IssuesClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         labels: Missing[list[str]] = UNSET,
     ) -> Response[list[Label], list[LabelType]]: ...
 
@@ -2983,6 +3103,7 @@ class IssuesClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         labels: Missing[
             list[ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItemsType]
         ] = UNSET,
@@ -2995,6 +3116,7 @@ class IssuesClient:
         issue_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             Union[
                 ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0Type,
@@ -3058,6 +3180,7 @@ class IssuesClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Label],
             error_models={
                 "404": BasicError,
@@ -3074,6 +3197,7 @@ class IssuesClient:
         issue_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             Union[
                 ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0Type,
@@ -3094,6 +3218,7 @@ class IssuesClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         labels: Missing[list[str]] = UNSET,
     ) -> Response[list[Label], list[LabelType]]: ...
 
@@ -3106,6 +3231,7 @@ class IssuesClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         labels: Missing[
             list[ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItemsType]
         ] = UNSET,
@@ -3118,6 +3244,7 @@ class IssuesClient:
         issue_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             Union[
                 ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0Type,
@@ -3181,6 +3308,7 @@ class IssuesClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Label],
             error_models={
                 "404": BasicError,
@@ -3196,6 +3324,7 @@ class IssuesClient:
         issue_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """issues/remove-all-labels
 
@@ -3216,6 +3345,7 @@ class IssuesClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
                 "410": BasicError,
@@ -3229,6 +3359,7 @@ class IssuesClient:
         issue_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """issues/remove-all-labels
 
@@ -3249,6 +3380,7 @@ class IssuesClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
                 "410": BasicError,
@@ -3263,6 +3395,7 @@ class IssuesClient:
         name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Label], list[LabelType]]:
         """issues/remove-label
 
@@ -3283,6 +3416,7 @@ class IssuesClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Label],
             error_models={
                 "404": BasicError,
@@ -3298,6 +3432,7 @@ class IssuesClient:
         name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Label], list[LabelType]]:
         """issues/remove-label
 
@@ -3318,6 +3453,7 @@ class IssuesClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Label],
             error_models={
                 "404": BasicError,
@@ -3333,6 +3469,7 @@ class IssuesClient:
         issue_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             Union[ReposOwnerRepoIssuesIssueNumberLockPutBodyType, None]
         ] = UNSET,
@@ -3347,6 +3484,7 @@ class IssuesClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         lock_reason: Missing[
             Literal["off-topic", "too heated", "resolved", "spam"]
         ] = UNSET,
@@ -3359,6 +3497,7 @@ class IssuesClient:
         issue_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             Union[ReposOwnerRepoIssuesIssueNumberLockPutBodyType, None]
         ] = UNSET,
@@ -3403,6 +3542,7 @@ class IssuesClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "403": BasicError,
                 "410": BasicError,
@@ -3419,6 +3559,7 @@ class IssuesClient:
         issue_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             Union[ReposOwnerRepoIssuesIssueNumberLockPutBodyType, None]
         ] = UNSET,
@@ -3433,6 +3574,7 @@ class IssuesClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         lock_reason: Missing[
             Literal["off-topic", "too heated", "resolved", "spam"]
         ] = UNSET,
@@ -3445,6 +3587,7 @@ class IssuesClient:
         issue_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             Union[ReposOwnerRepoIssuesIssueNumberLockPutBodyType, None]
         ] = UNSET,
@@ -3489,6 +3632,7 @@ class IssuesClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "403": BasicError,
                 "410": BasicError,
@@ -3504,6 +3648,7 @@ class IssuesClient:
         issue_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """issues/unlock
 
@@ -3524,6 +3669,7 @@ class IssuesClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "403": BasicError,
                 "404": BasicError,
@@ -3537,6 +3683,7 @@ class IssuesClient:
         issue_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """issues/unlock
 
@@ -3557,6 +3704,7 @@ class IssuesClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "403": BasicError,
                 "404": BasicError,
@@ -3571,6 +3719,7 @@ class IssuesClient:
         issue_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBodyType,
     ) -> Response[Issue, IssueType]: ...
 
@@ -3583,6 +3732,7 @@ class IssuesClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         sub_issue_id: int,
     ) -> Response[Issue, IssueType]: ...
 
@@ -3593,6 +3743,7 @@ class IssuesClient:
         issue_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBodyType] = UNSET,
         **kwargs,
     ) -> Response[Issue, IssueType]:
@@ -3639,6 +3790,7 @@ class IssuesClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Issue,
             error_models={
                 "400": BasicError,
@@ -3654,6 +3806,7 @@ class IssuesClient:
         issue_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBodyType,
     ) -> Response[Issue, IssueType]: ...
 
@@ -3666,6 +3819,7 @@ class IssuesClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         sub_issue_id: int,
     ) -> Response[Issue, IssueType]: ...
 
@@ -3676,6 +3830,7 @@ class IssuesClient:
         issue_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBodyType] = UNSET,
         **kwargs,
     ) -> Response[Issue, IssueType]:
@@ -3722,6 +3877,7 @@ class IssuesClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Issue,
             error_models={
                 "400": BasicError,
@@ -3738,6 +3894,7 @@ class IssuesClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Issue], list[IssueType]]:
         """issues/list-sub-issues
 
@@ -3771,6 +3928,7 @@ class IssuesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Issue],
             error_models={
                 "404": BasicError,
@@ -3787,6 +3945,7 @@ class IssuesClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Issue], list[IssueType]]:
         """issues/list-sub-issues
 
@@ -3820,6 +3979,7 @@ class IssuesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Issue],
             error_models={
                 "404": BasicError,
@@ -3835,6 +3995,7 @@ class IssuesClient:
         issue_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoIssuesIssueNumberSubIssuesPostBodyType,
     ) -> Response[Issue, IssueType]: ...
 
@@ -3847,6 +4008,7 @@ class IssuesClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         sub_issue_id: int,
         replace_parent: Missing[bool] = UNSET,
     ) -> Response[Issue, IssueType]: ...
@@ -3858,6 +4020,7 @@ class IssuesClient:
         issue_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesIssueNumberSubIssuesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Issue, IssueType]:
@@ -3908,6 +4071,7 @@ class IssuesClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Issue,
             error_models={
                 "403": BasicError,
@@ -3925,6 +4089,7 @@ class IssuesClient:
         issue_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoIssuesIssueNumberSubIssuesPostBodyType,
     ) -> Response[Issue, IssueType]: ...
 
@@ -3937,6 +4102,7 @@ class IssuesClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         sub_issue_id: int,
         replace_parent: Missing[bool] = UNSET,
     ) -> Response[Issue, IssueType]: ...
@@ -3948,6 +4114,7 @@ class IssuesClient:
         issue_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesIssueNumberSubIssuesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Issue, IssueType]:
@@ -3998,6 +4165,7 @@ class IssuesClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Issue,
             error_models={
                 "403": BasicError,
@@ -4015,6 +4183,7 @@ class IssuesClient:
         issue_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBodyType,
     ) -> Response[Issue, IssueType]: ...
 
@@ -4027,6 +4196,7 @@ class IssuesClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         sub_issue_id: int,
         after_id: Missing[int] = UNSET,
         before_id: Missing[int] = UNSET,
@@ -4039,6 +4209,7 @@ class IssuesClient:
         issue_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBodyType
         ] = UNSET,
@@ -4081,6 +4252,7 @@ class IssuesClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Issue,
             error_models={
                 "403": BasicError,
@@ -4098,6 +4270,7 @@ class IssuesClient:
         issue_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBodyType,
     ) -> Response[Issue, IssueType]: ...
 
@@ -4110,6 +4283,7 @@ class IssuesClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         sub_issue_id: int,
         after_id: Missing[int] = UNSET,
         before_id: Missing[int] = UNSET,
@@ -4122,6 +4296,7 @@ class IssuesClient:
         issue_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBodyType
         ] = UNSET,
@@ -4164,6 +4339,7 @@ class IssuesClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Issue,
             error_models={
                 "403": BasicError,
@@ -4182,6 +4358,7 @@ class IssuesClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         list[
             Union[
@@ -4287,6 +4464,7 @@ class IssuesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[
                 Union[
                     LabeledIssueEvent,
@@ -4328,6 +4506,7 @@ class IssuesClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         list[
             Union[
@@ -4433,6 +4612,7 @@ class IssuesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[
                 Union[
                     LabeledIssueEvent,
@@ -4473,6 +4653,7 @@ class IssuesClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Label], list[LabelType]]:
         """issues/list-labels-for-repo
 
@@ -4499,6 +4680,7 @@ class IssuesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Label],
             error_models={
                 "404": BasicError,
@@ -4513,6 +4695,7 @@ class IssuesClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Label], list[LabelType]]:
         """issues/list-labels-for-repo
 
@@ -4539,6 +4722,7 @@ class IssuesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Label],
             error_models={
                 "404": BasicError,
@@ -4552,6 +4736,7 @@ class IssuesClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoLabelsPostBodyType,
     ) -> Response[Label, LabelType]: ...
 
@@ -4563,6 +4748,7 @@ class IssuesClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: str,
         color: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
@@ -4574,6 +4760,7 @@ class IssuesClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoLabelsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Label, LabelType]:
@@ -4611,6 +4798,7 @@ class IssuesClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Label,
             error_models={
                 "422": ValidationError,
@@ -4625,6 +4813,7 @@ class IssuesClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoLabelsPostBodyType,
     ) -> Response[Label, LabelType]: ...
 
@@ -4636,6 +4825,7 @@ class IssuesClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: str,
         color: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
@@ -4647,6 +4837,7 @@ class IssuesClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoLabelsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Label, LabelType]:
@@ -4684,6 +4875,7 @@ class IssuesClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Label,
             error_models={
                 "422": ValidationError,
@@ -4698,6 +4890,7 @@ class IssuesClient:
         name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[Label, LabelType]:
         """issues/get-label
 
@@ -4718,6 +4911,7 @@ class IssuesClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Label,
             error_models={
                 "404": BasicError,
@@ -4731,6 +4925,7 @@ class IssuesClient:
         name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[Label, LabelType]:
         """issues/get-label
 
@@ -4751,6 +4946,7 @@ class IssuesClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Label,
             error_models={
                 "404": BasicError,
@@ -4764,6 +4960,7 @@ class IssuesClient:
         name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """issues/delete-label
 
@@ -4782,6 +4979,7 @@ class IssuesClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     async def async_delete_label(
@@ -4791,6 +4989,7 @@ class IssuesClient:
         name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """issues/delete-label
 
@@ -4809,6 +5008,7 @@ class IssuesClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     @overload
@@ -4819,6 +5019,7 @@ class IssuesClient:
         name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoLabelsNamePatchBodyType] = UNSET,
     ) -> Response[Label, LabelType]: ...
 
@@ -4831,6 +5032,7 @@ class IssuesClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         new_name: Missing[str] = UNSET,
         color: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
@@ -4843,6 +5045,7 @@ class IssuesClient:
         name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoLabelsNamePatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Label, LabelType]:
@@ -4875,6 +5078,7 @@ class IssuesClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Label,
         )
 
@@ -4886,6 +5090,7 @@ class IssuesClient:
         name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoLabelsNamePatchBodyType] = UNSET,
     ) -> Response[Label, LabelType]: ...
 
@@ -4898,6 +5103,7 @@ class IssuesClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         new_name: Missing[str] = UNSET,
         color: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
@@ -4910,6 +5116,7 @@ class IssuesClient:
         name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoLabelsNamePatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Label, LabelType]:
@@ -4942,6 +5149,7 @@ class IssuesClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Label,
         )
 
@@ -4956,6 +5164,7 @@ class IssuesClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Milestone], list[MilestoneType]]:
         """issues/list-milestones
 
@@ -4985,6 +5194,7 @@ class IssuesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Milestone],
             error_models={
                 "404": BasicError,
@@ -5002,6 +5212,7 @@ class IssuesClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Milestone], list[MilestoneType]]:
         """issues/list-milestones
 
@@ -5031,6 +5242,7 @@ class IssuesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Milestone],
             error_models={
                 "404": BasicError,
@@ -5044,6 +5256,7 @@ class IssuesClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoMilestonesPostBodyType,
     ) -> Response[Milestone, MilestoneType]: ...
 
@@ -5055,6 +5268,7 @@ class IssuesClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         title: str,
         state: Missing[Literal["open", "closed"]] = UNSET,
         description: Missing[str] = UNSET,
@@ -5067,6 +5281,7 @@ class IssuesClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoMilestonesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Milestone, MilestoneType]:
@@ -5104,6 +5319,7 @@ class IssuesClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Milestone,
             error_models={
                 "404": BasicError,
@@ -5118,6 +5334,7 @@ class IssuesClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoMilestonesPostBodyType,
     ) -> Response[Milestone, MilestoneType]: ...
 
@@ -5129,6 +5346,7 @@ class IssuesClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         title: str,
         state: Missing[Literal["open", "closed"]] = UNSET,
         description: Missing[str] = UNSET,
@@ -5141,6 +5359,7 @@ class IssuesClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoMilestonesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Milestone, MilestoneType]:
@@ -5178,6 +5397,7 @@ class IssuesClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Milestone,
             error_models={
                 "404": BasicError,
@@ -5192,6 +5412,7 @@ class IssuesClient:
         milestone_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[Milestone, MilestoneType]:
         """issues/get-milestone
 
@@ -5212,6 +5433,7 @@ class IssuesClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Milestone,
             error_models={
                 "404": BasicError,
@@ -5225,6 +5447,7 @@ class IssuesClient:
         milestone_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[Milestone, MilestoneType]:
         """issues/get-milestone
 
@@ -5245,6 +5468,7 @@ class IssuesClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Milestone,
             error_models={
                 "404": BasicError,
@@ -5258,6 +5482,7 @@ class IssuesClient:
         milestone_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """issues/delete-milestone
 
@@ -5278,6 +5503,7 @@ class IssuesClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
             },
@@ -5290,6 +5516,7 @@ class IssuesClient:
         milestone_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """issues/delete-milestone
 
@@ -5310,6 +5537,7 @@ class IssuesClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
             },
@@ -5323,6 +5551,7 @@ class IssuesClient:
         milestone_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoMilestonesMilestoneNumberPatchBodyType] = UNSET,
     ) -> Response[Milestone, MilestoneType]: ...
 
@@ -5335,6 +5564,7 @@ class IssuesClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         title: Missing[str] = UNSET,
         state: Missing[Literal["open", "closed"]] = UNSET,
         description: Missing[str] = UNSET,
@@ -5348,6 +5578,7 @@ class IssuesClient:
         milestone_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoMilestonesMilestoneNumberPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Milestone, MilestoneType]:
@@ -5380,6 +5611,7 @@ class IssuesClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Milestone,
         )
 
@@ -5391,6 +5623,7 @@ class IssuesClient:
         milestone_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoMilestonesMilestoneNumberPatchBodyType] = UNSET,
     ) -> Response[Milestone, MilestoneType]: ...
 
@@ -5403,6 +5636,7 @@ class IssuesClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         title: Missing[str] = UNSET,
         state: Missing[Literal["open", "closed"]] = UNSET,
         description: Missing[str] = UNSET,
@@ -5416,6 +5650,7 @@ class IssuesClient:
         milestone_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoMilestonesMilestoneNumberPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Milestone, MilestoneType]:
@@ -5448,6 +5683,7 @@ class IssuesClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Milestone,
         )
 
@@ -5460,6 +5696,7 @@ class IssuesClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Label], list[LabelType]]:
         """issues/list-labels-for-milestone
 
@@ -5486,6 +5723,7 @@ class IssuesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Label],
         )
 
@@ -5498,6 +5736,7 @@ class IssuesClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Label], list[LabelType]]:
         """issues/list-labels-for-milestone
 
@@ -5524,6 +5763,7 @@ class IssuesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Label],
         )
 
@@ -5541,6 +5781,7 @@ class IssuesClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Issue], list[IssueType]]:
         """issues/list-for-authenticated-user
 
@@ -5583,6 +5824,7 @@ class IssuesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Issue],
             error_models={
                 "404": BasicError,
@@ -5603,6 +5845,7 @@ class IssuesClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Issue], list[IssueType]]:
         """issues/list-for-authenticated-user
 
@@ -5645,6 +5888,7 @@ class IssuesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Issue],
             error_models={
                 "404": BasicError,

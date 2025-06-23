@@ -374,6 +374,7 @@ class ReposClient:
         enterprise: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: EnterprisesEnterpriseRulesetsPostBodyType,
     ) -> Response[RepositoryRuleset, RepositoryRulesetType]: ...
 
@@ -384,6 +385,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: str,
         target: Missing[Literal["branch", "tag", "push", "repository"]] = UNSET,
         enforcement: Literal["disabled", "active", "evaluate"],
@@ -430,6 +432,7 @@ class ReposClient:
         enterprise: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[EnterprisesEnterpriseRulesetsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[RepositoryRuleset, RepositoryRulesetType]:
@@ -466,6 +469,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=RepositoryRuleset,
             error_models={
                 "404": BasicError,
@@ -479,6 +483,7 @@ class ReposClient:
         enterprise: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: EnterprisesEnterpriseRulesetsPostBodyType,
     ) -> Response[RepositoryRuleset, RepositoryRulesetType]: ...
 
@@ -489,6 +494,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: str,
         target: Missing[Literal["branch", "tag", "push", "repository"]] = UNSET,
         enforcement: Literal["disabled", "active", "evaluate"],
@@ -535,6 +541,7 @@ class ReposClient:
         enterprise: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[EnterprisesEnterpriseRulesetsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[RepositoryRuleset, RepositoryRulesetType]:
@@ -571,6 +578,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=RepositoryRuleset,
             error_models={
                 "404": BasicError,
@@ -584,6 +592,7 @@ class ReposClient:
         ruleset_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[RepositoryRuleset, RepositoryRulesetType]:
         """repos/get-enterprise-ruleset
 
@@ -607,6 +616,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=RepositoryRuleset,
             error_models={
                 "404": BasicError,
@@ -620,6 +630,7 @@ class ReposClient:
         ruleset_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[RepositoryRuleset, RepositoryRulesetType]:
         """repos/get-enterprise-ruleset
 
@@ -643,6 +654,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=RepositoryRuleset,
             error_models={
                 "404": BasicError,
@@ -657,6 +669,7 @@ class ReposClient:
         ruleset_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[EnterprisesEnterpriseRulesetsRulesetIdPutBodyType] = UNSET,
     ) -> Response[RepositoryRuleset, RepositoryRulesetType]: ...
 
@@ -668,6 +681,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: Missing[str] = UNSET,
         target: Missing[Literal["branch", "tag", "push", "repository"]] = UNSET,
         enforcement: Missing[Literal["disabled", "active", "evaluate"]] = UNSET,
@@ -715,6 +729,7 @@ class ReposClient:
         ruleset_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[EnterprisesEnterpriseRulesetsRulesetIdPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[RepositoryRuleset, RepositoryRulesetType]:
@@ -753,6 +768,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=RepositoryRuleset,
             error_models={
                 "404": BasicError,
@@ -767,6 +783,7 @@ class ReposClient:
         ruleset_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[EnterprisesEnterpriseRulesetsRulesetIdPutBodyType] = UNSET,
     ) -> Response[RepositoryRuleset, RepositoryRulesetType]: ...
 
@@ -778,6 +795,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: Missing[str] = UNSET,
         target: Missing[Literal["branch", "tag", "push", "repository"]] = UNSET,
         enforcement: Missing[Literal["disabled", "active", "evaluate"]] = UNSET,
@@ -825,6 +843,7 @@ class ReposClient:
         ruleset_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[EnterprisesEnterpriseRulesetsRulesetIdPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[RepositoryRuleset, RepositoryRulesetType]:
@@ -863,6 +882,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=RepositoryRuleset,
             error_models={
                 "404": BasicError,
@@ -876,6 +896,7 @@ class ReposClient:
         ruleset_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """repos/delete-enterprise-ruleset
 
@@ -896,6 +917,7 @@ class ReposClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
                 "500": BasicError,
@@ -908,6 +930,7 @@ class ReposClient:
         ruleset_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """repos/delete-enterprise-ruleset
 
@@ -928,6 +951,7 @@ class ReposClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
                 "500": BasicError,
@@ -946,6 +970,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
         """repos/list-for-org
 
@@ -978,6 +1003,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[MinimalRepository],
         )
 
@@ -993,6 +1019,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
         """repos/list-for-org
 
@@ -1025,6 +1052,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[MinimalRepository],
         )
 
@@ -1034,6 +1062,7 @@ class ReposClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgReposPostBodyType,
     ) -> Response[FullRepository, FullRepositoryType]: ...
 
@@ -1044,6 +1073,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: str,
         description: Missing[str] = UNSET,
         homepage: Missing[str] = UNSET,
@@ -1082,6 +1112,7 @@ class ReposClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgReposPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[FullRepository, FullRepositoryType]:
@@ -1121,6 +1152,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=FullRepository,
             error_models={
                 "403": BasicError,
@@ -1134,6 +1166,7 @@ class ReposClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgReposPostBodyType,
     ) -> Response[FullRepository, FullRepositoryType]: ...
 
@@ -1144,6 +1177,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: str,
         description: Missing[str] = UNSET,
         homepage: Missing[str] = UNSET,
@@ -1182,6 +1216,7 @@ class ReposClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgReposPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[FullRepository, FullRepositoryType]:
@@ -1221,6 +1256,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=FullRepository,
             error_models={
                 "403": BasicError,
@@ -1236,6 +1272,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         targets: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[RepositoryRuleset], list[RepositoryRulesetType]]:
         """repos/get-org-rulesets
 
@@ -1263,6 +1300,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[RepositoryRuleset],
             error_models={
                 "404": BasicError,
@@ -1278,6 +1316,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         targets: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[RepositoryRuleset], list[RepositoryRulesetType]]:
         """repos/get-org-rulesets
 
@@ -1305,6 +1344,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[RepositoryRuleset],
             error_models={
                 "404": BasicError,
@@ -1318,6 +1358,7 @@ class ReposClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgRulesetsPostBodyType,
     ) -> Response[RepositoryRuleset, RepositoryRulesetType]: ...
 
@@ -1328,6 +1369,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: str,
         target: Missing[Literal["branch", "tag", "push", "repository"]] = UNSET,
         enforcement: Literal["disabled", "active", "evaluate"],
@@ -1373,6 +1415,7 @@ class ReposClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgRulesetsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[RepositoryRuleset, RepositoryRulesetType]:
@@ -1405,6 +1448,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=RepositoryRuleset,
             error_models={
                 "404": BasicError,
@@ -1418,6 +1462,7 @@ class ReposClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgRulesetsPostBodyType,
     ) -> Response[RepositoryRuleset, RepositoryRulesetType]: ...
 
@@ -1428,6 +1473,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: str,
         target: Missing[Literal["branch", "tag", "push", "repository"]] = UNSET,
         enforcement: Literal["disabled", "active", "evaluate"],
@@ -1473,6 +1519,7 @@ class ReposClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgRulesetsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[RepositoryRuleset, RepositoryRulesetType]:
@@ -1505,6 +1552,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=RepositoryRuleset,
             error_models={
                 "404": BasicError,
@@ -1524,6 +1572,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[RuleSuitesItems], list[RuleSuitesItemsType]]:
         """repos/get-org-rule-suites
 
@@ -1556,6 +1605,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[RuleSuitesItems],
             error_models={
                 "404": BasicError,
@@ -1575,6 +1625,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[RuleSuitesItems], list[RuleSuitesItemsType]]:
         """repos/get-org-rule-suites
 
@@ -1607,6 +1658,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[RuleSuitesItems],
             error_models={
                 "404": BasicError,
@@ -1620,6 +1672,7 @@ class ReposClient:
         rule_suite_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[RuleSuite, RuleSuiteType]:
         """repos/get-org-rule-suite
 
@@ -1641,6 +1694,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=RuleSuite,
             error_models={
                 "404": BasicError,
@@ -1654,6 +1708,7 @@ class ReposClient:
         rule_suite_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[RuleSuite, RuleSuiteType]:
         """repos/get-org-rule-suite
 
@@ -1675,6 +1730,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=RuleSuite,
             error_models={
                 "404": BasicError,
@@ -1688,6 +1744,7 @@ class ReposClient:
         ruleset_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[RepositoryRuleset, RepositoryRulesetType]:
         """repos/get-org-ruleset
 
@@ -1711,6 +1768,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=RepositoryRuleset,
             error_models={
                 "404": BasicError,
@@ -1724,6 +1782,7 @@ class ReposClient:
         ruleset_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[RepositoryRuleset, RepositoryRulesetType]:
         """repos/get-org-ruleset
 
@@ -1747,6 +1806,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=RepositoryRuleset,
             error_models={
                 "404": BasicError,
@@ -1761,6 +1821,7 @@ class ReposClient:
         ruleset_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgRulesetsRulesetIdPutBodyType] = UNSET,
     ) -> Response[RepositoryRuleset, RepositoryRulesetType]: ...
 
@@ -1772,6 +1833,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: Missing[str] = UNSET,
         target: Missing[Literal["branch", "tag", "push", "repository"]] = UNSET,
         enforcement: Missing[Literal["disabled", "active", "evaluate"]] = UNSET,
@@ -1818,6 +1880,7 @@ class ReposClient:
         ruleset_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgRulesetsRulesetIdPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[RepositoryRuleset, RepositoryRulesetType]:
@@ -1854,6 +1917,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=RepositoryRuleset,
             error_models={
                 "404": BasicError,
@@ -1868,6 +1932,7 @@ class ReposClient:
         ruleset_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgRulesetsRulesetIdPutBodyType] = UNSET,
     ) -> Response[RepositoryRuleset, RepositoryRulesetType]: ...
 
@@ -1879,6 +1944,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: Missing[str] = UNSET,
         target: Missing[Literal["branch", "tag", "push", "repository"]] = UNSET,
         enforcement: Missing[Literal["disabled", "active", "evaluate"]] = UNSET,
@@ -1925,6 +1991,7 @@ class ReposClient:
         ruleset_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgRulesetsRulesetIdPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[RepositoryRuleset, RepositoryRulesetType]:
@@ -1961,6 +2028,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=RepositoryRuleset,
             error_models={
                 "404": BasicError,
@@ -1974,6 +2042,7 @@ class ReposClient:
         ruleset_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """repos/delete-org-ruleset
 
@@ -1994,6 +2063,7 @@ class ReposClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
                 "500": BasicError,
@@ -2006,6 +2076,7 @@ class ReposClient:
         ruleset_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """repos/delete-org-ruleset
 
@@ -2026,6 +2097,7 @@ class ReposClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
                 "500": BasicError,
@@ -2038,6 +2110,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[FullRepository, FullRepositoryType]:
         """repos/get
 
@@ -2061,6 +2134,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=FullRepository,
             error_models={
                 "403": BasicError,
@@ -2074,6 +2148,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[FullRepository, FullRepositoryType]:
         """repos/get
 
@@ -2097,6 +2172,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=FullRepository,
             error_models={
                 "403": BasicError,
@@ -2110,6 +2186,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """repos/delete
 
@@ -2135,6 +2212,7 @@ class ReposClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "403": ReposOwnerRepoDeleteResponse403,
                 "404": BasicError,
@@ -2148,6 +2226,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """repos/delete
 
@@ -2173,6 +2252,7 @@ class ReposClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "403": ReposOwnerRepoDeleteResponse403,
                 "404": BasicError,
@@ -2187,6 +2267,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoPatchBodyType] = UNSET,
     ) -> Response[FullRepository, FullRepositoryType]: ...
 
@@ -2198,6 +2279,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
         homepage: Missing[str] = UNSET,
@@ -2237,6 +2319,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[FullRepository, FullRepositoryType]:
@@ -2274,6 +2357,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=FullRepository,
             error_models={
                 "403": BasicError,
@@ -2289,6 +2373,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoPatchBodyType] = UNSET,
     ) -> Response[FullRepository, FullRepositoryType]: ...
 
@@ -2300,6 +2385,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
         homepage: Missing[str] = UNSET,
@@ -2339,6 +2425,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[FullRepository, FullRepositoryType]:
@@ -2376,6 +2463,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=FullRepository,
             error_models={
                 "403": BasicError,
@@ -2409,6 +2497,7 @@ class ReposClient:
             ]
         ] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Activity], list[ActivityType]]:
         """repos/list-activities
 
@@ -2444,6 +2533,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Activity],
             error_models={
                 "422": ValidationErrorSimple,
@@ -2475,6 +2565,7 @@ class ReposClient:
             ]
         ] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Activity], list[ActivityType]]:
         """repos/list-activities
 
@@ -2510,6 +2601,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Activity],
             error_models={
                 "422": ValidationErrorSimple,
@@ -2523,6 +2615,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoAttestationsPostBodyType,
     ) -> Response[
         ReposOwnerRepoAttestationsPostResponse201,
@@ -2537,6 +2630,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         bundle: ReposOwnerRepoAttestationsPostBodyPropBundleType,
     ) -> Response[
         ReposOwnerRepoAttestationsPostResponse201,
@@ -2549,6 +2643,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoAttestationsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[
@@ -2593,6 +2688,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ReposOwnerRepoAttestationsPostResponse201,
             error_models={
                 "403": BasicError,
@@ -2607,6 +2703,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoAttestationsPostBodyType,
     ) -> Response[
         ReposOwnerRepoAttestationsPostResponse201,
@@ -2621,6 +2718,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         bundle: ReposOwnerRepoAttestationsPostBodyPropBundleType,
     ) -> Response[
         ReposOwnerRepoAttestationsPostResponse201,
@@ -2633,6 +2731,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoAttestationsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[
@@ -2677,6 +2776,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ReposOwnerRepoAttestationsPostResponse201,
             error_models={
                 "403": BasicError,
@@ -2695,6 +2795,7 @@ class ReposClient:
         after: Missing[str] = UNSET,
         predicate_type: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         ReposOwnerRepoAttestationsSubjectDigestGetResponse200,
         ReposOwnerRepoAttestationsSubjectDigestGetResponse200Type,
@@ -2730,6 +2831,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ReposOwnerRepoAttestationsSubjectDigestGetResponse200,
         )
 
@@ -2744,6 +2846,7 @@ class ReposClient:
         after: Missing[str] = UNSET,
         predicate_type: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         ReposOwnerRepoAttestationsSubjectDigestGetResponse200,
         ReposOwnerRepoAttestationsSubjectDigestGetResponse200Type,
@@ -2779,6 +2882,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ReposOwnerRepoAttestationsSubjectDigestGetResponse200,
         )
 
@@ -2788,6 +2892,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Autolink], list[AutolinkType]]:
         """repos/list-autolinks
 
@@ -2810,6 +2915,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Autolink],
         )
 
@@ -2819,6 +2925,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Autolink], list[AutolinkType]]:
         """repos/list-autolinks
 
@@ -2841,6 +2948,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Autolink],
         )
 
@@ -2851,6 +2959,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoAutolinksPostBodyType,
     ) -> Response[Autolink, AutolinkType]: ...
 
@@ -2862,6 +2971,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         key_prefix: str,
         url_template: str,
         is_alphanumeric: Missing[bool] = UNSET,
@@ -2873,6 +2983,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoAutolinksPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Autolink, AutolinkType]:
@@ -2905,6 +3016,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Autolink,
             error_models={
                 "422": ValidationError,
@@ -2918,6 +3030,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoAutolinksPostBodyType,
     ) -> Response[Autolink, AutolinkType]: ...
 
@@ -2929,6 +3042,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         key_prefix: str,
         url_template: str,
         is_alphanumeric: Missing[bool] = UNSET,
@@ -2940,6 +3054,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoAutolinksPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Autolink, AutolinkType]:
@@ -2972,6 +3087,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Autolink,
             error_models={
                 "422": ValidationError,
@@ -2985,6 +3101,7 @@ class ReposClient:
         autolink_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[Autolink, AutolinkType]:
         """repos/get-autolink
 
@@ -3007,6 +3124,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Autolink,
             error_models={
                 "404": BasicError,
@@ -3020,6 +3138,7 @@ class ReposClient:
         autolink_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[Autolink, AutolinkType]:
         """repos/get-autolink
 
@@ -3042,6 +3161,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Autolink,
             error_models={
                 "404": BasicError,
@@ -3055,6 +3175,7 @@ class ReposClient:
         autolink_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """repos/delete-autolink
 
@@ -3077,6 +3198,7 @@ class ReposClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
             },
@@ -3089,6 +3211,7 @@ class ReposClient:
         autolink_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """repos/delete-autolink
 
@@ -3111,6 +3234,7 @@ class ReposClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
             },
@@ -3122,6 +3246,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[CheckAutomatedSecurityFixes, CheckAutomatedSecurityFixesType]:
         """repos/check-automated-security-fixes
 
@@ -3142,6 +3267,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CheckAutomatedSecurityFixes,
             error_models={},
         )
@@ -3152,6 +3278,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[CheckAutomatedSecurityFixes, CheckAutomatedSecurityFixesType]:
         """repos/check-automated-security-fixes
 
@@ -3172,6 +3299,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CheckAutomatedSecurityFixes,
             error_models={},
         )
@@ -3182,6 +3310,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """repos/enable-automated-security-fixes
 
@@ -3200,6 +3329,7 @@ class ReposClient:
             "PUT",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     async def async_enable_automated_security_fixes(
@@ -3208,6 +3338,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """repos/enable-automated-security-fixes
 
@@ -3226,6 +3357,7 @@ class ReposClient:
             "PUT",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     def disable_automated_security_fixes(
@@ -3234,6 +3366,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """repos/disable-automated-security-fixes
 
@@ -3252,6 +3385,7 @@ class ReposClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     async def async_disable_automated_security_fixes(
@@ -3260,6 +3394,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """repos/disable-automated-security-fixes
 
@@ -3278,6 +3413,7 @@ class ReposClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     def list_branches(
@@ -3289,6 +3425,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[ShortBranch], list[ShortBranchType]]:
         """repos/list-branches
 
@@ -3314,6 +3451,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[ShortBranch],
             error_models={
                 "404": BasicError,
@@ -3329,6 +3467,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[ShortBranch], list[ShortBranchType]]:
         """repos/list-branches
 
@@ -3354,6 +3493,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[ShortBranch],
             error_models={
                 "404": BasicError,
@@ -3367,6 +3507,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[BranchWithProtection, BranchWithProtectionType]:
         """repos/get-branch
 
@@ -3385,6 +3526,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=BranchWithProtection,
             error_models={
                 "404": BasicError,
@@ -3398,6 +3540,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[BranchWithProtection, BranchWithProtectionType]:
         """repos/get-branch
 
@@ -3416,6 +3559,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=BranchWithProtection,
             error_models={
                 "404": BasicError,
@@ -3429,6 +3573,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[BranchProtection, BranchProtectionType]:
         """repos/get-branch-protection
 
@@ -3449,6 +3594,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=BranchProtection,
             error_models={
                 "404": BasicError,
@@ -3462,6 +3608,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[BranchProtection, BranchProtectionType]:
         """repos/get-branch-protection
 
@@ -3482,6 +3629,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=BranchProtection,
             error_models={
                 "404": BasicError,
@@ -3496,6 +3644,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoBranchesBranchProtectionPutBodyType,
     ) -> Response[ProtectedBranch, ProtectedBranchType]: ...
 
@@ -3508,6 +3657,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         required_status_checks: Union[
             ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksType,
             None,
@@ -3536,6 +3686,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoBranchesBranchProtectionPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[ProtectedBranch, ProtectedBranchType]:
@@ -3583,6 +3734,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ProtectedBranch,
             error_models={
                 "403": BasicError,
@@ -3599,6 +3751,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoBranchesBranchProtectionPutBodyType,
     ) -> Response[ProtectedBranch, ProtectedBranchType]: ...
 
@@ -3611,6 +3764,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         required_status_checks: Union[
             ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksType,
             None,
@@ -3639,6 +3793,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoBranchesBranchProtectionPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[ProtectedBranch, ProtectedBranchType]:
@@ -3686,6 +3841,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ProtectedBranch,
             error_models={
                 "403": BasicError,
@@ -3701,6 +3857,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """repos/delete-branch-protection
 
@@ -3721,6 +3878,7 @@ class ReposClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "403": BasicError,
             },
@@ -3733,6 +3891,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """repos/delete-branch-protection
 
@@ -3753,6 +3912,7 @@ class ReposClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "403": BasicError,
             },
@@ -3765,6 +3925,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[ProtectedBranchAdminEnforced, ProtectedBranchAdminEnforcedType]:
         """repos/get-admin-branch-protection
 
@@ -3785,6 +3946,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ProtectedBranchAdminEnforced,
         )
 
@@ -3795,6 +3957,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[ProtectedBranchAdminEnforced, ProtectedBranchAdminEnforcedType]:
         """repos/get-admin-branch-protection
 
@@ -3815,6 +3978,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ProtectedBranchAdminEnforced,
         )
 
@@ -3825,6 +3989,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[ProtectedBranchAdminEnforced, ProtectedBranchAdminEnforcedType]:
         """repos/set-admin-branch-protection
 
@@ -3847,6 +4012,7 @@ class ReposClient:
             "POST",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ProtectedBranchAdminEnforced,
         )
 
@@ -3857,6 +4023,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[ProtectedBranchAdminEnforced, ProtectedBranchAdminEnforcedType]:
         """repos/set-admin-branch-protection
 
@@ -3879,6 +4046,7 @@ class ReposClient:
             "POST",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ProtectedBranchAdminEnforced,
         )
 
@@ -3889,6 +4057,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """repos/delete-admin-branch-protection
 
@@ -3911,6 +4080,7 @@ class ReposClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
             },
@@ -3923,6 +4093,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """repos/delete-admin-branch-protection
 
@@ -3945,6 +4116,7 @@ class ReposClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
             },
@@ -3957,6 +4129,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         ProtectedBranchPullRequestReview, ProtectedBranchPullRequestReviewType
     ]:
@@ -3979,6 +4152,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ProtectedBranchPullRequestReview,
         )
 
@@ -3989,6 +4163,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         ProtectedBranchPullRequestReview, ProtectedBranchPullRequestReviewType
     ]:
@@ -4011,6 +4186,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ProtectedBranchPullRequestReview,
         )
 
@@ -4021,6 +4197,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """repos/delete-pull-request-review-protection
 
@@ -4041,6 +4218,7 @@ class ReposClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
             },
@@ -4053,6 +4231,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """repos/delete-pull-request-review-protection
 
@@ -4073,6 +4252,7 @@ class ReposClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
             },
@@ -4086,6 +4266,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyType
         ] = UNSET,
@@ -4102,6 +4283,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         dismissal_restrictions: Missing[
             ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictionsType
         ] = UNSET,
@@ -4123,6 +4305,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyType
         ] = UNSET,
@@ -4171,6 +4354,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ProtectedBranchPullRequestReview,
             error_models={
                 "422": ValidationError,
@@ -4185,6 +4369,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyType
         ] = UNSET,
@@ -4201,6 +4386,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         dismissal_restrictions: Missing[
             ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictionsType
         ] = UNSET,
@@ -4222,6 +4408,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyType
         ] = UNSET,
@@ -4270,6 +4457,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ProtectedBranchPullRequestReview,
             error_models={
                 "422": ValidationError,
@@ -4283,6 +4471,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[ProtectedBranchAdminEnforced, ProtectedBranchAdminEnforcedType]:
         """repos/get-commit-signature-protection
 
@@ -4308,6 +4497,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ProtectedBranchAdminEnforced,
             error_models={
                 "404": BasicError,
@@ -4321,6 +4511,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[ProtectedBranchAdminEnforced, ProtectedBranchAdminEnforcedType]:
         """repos/get-commit-signature-protection
 
@@ -4346,6 +4537,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ProtectedBranchAdminEnforced,
             error_models={
                 "404": BasicError,
@@ -4359,6 +4551,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[ProtectedBranchAdminEnforced, ProtectedBranchAdminEnforcedType]:
         """repos/create-commit-signature-protection
 
@@ -4381,6 +4574,7 @@ class ReposClient:
             "POST",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ProtectedBranchAdminEnforced,
             error_models={
                 "404": BasicError,
@@ -4394,6 +4588,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[ProtectedBranchAdminEnforced, ProtectedBranchAdminEnforcedType]:
         """repos/create-commit-signature-protection
 
@@ -4416,6 +4611,7 @@ class ReposClient:
             "POST",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ProtectedBranchAdminEnforced,
             error_models={
                 "404": BasicError,
@@ -4429,6 +4625,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """repos/delete-commit-signature-protection
 
@@ -4451,6 +4648,7 @@ class ReposClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
             },
@@ -4463,6 +4661,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """repos/delete-commit-signature-protection
 
@@ -4485,6 +4684,7 @@ class ReposClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
             },
@@ -4497,6 +4697,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[StatusCheckPolicy, StatusCheckPolicyType]:
         """repos/get-status-checks-protection
 
@@ -4519,6 +4720,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=StatusCheckPolicy,
             error_models={
                 "404": BasicError,
@@ -4532,6 +4734,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[StatusCheckPolicy, StatusCheckPolicyType]:
         """repos/get-status-checks-protection
 
@@ -4554,6 +4757,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=StatusCheckPolicy,
             error_models={
                 "404": BasicError,
@@ -4567,6 +4771,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """repos/remove-status-check-protection
 
@@ -4587,6 +4792,7 @@ class ReposClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     async def async_remove_status_check_protection(
@@ -4596,6 +4802,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """repos/remove-status-check-protection
 
@@ -4616,6 +4823,7 @@ class ReposClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     @overload
@@ -4626,6 +4834,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyType
         ] = UNSET,
@@ -4640,6 +4849,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         strict: Missing[bool] = UNSET,
         contexts: Missing[list[str]] = UNSET,
         checks: Missing[
@@ -4656,6 +4866,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyType
         ] = UNSET,
@@ -4702,6 +4913,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=StatusCheckPolicy,
             error_models={
                 "404": BasicError,
@@ -4717,6 +4929,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyType
         ] = UNSET,
@@ -4731,6 +4944,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         strict: Missing[bool] = UNSET,
         contexts: Missing[list[str]] = UNSET,
         checks: Missing[
@@ -4747,6 +4961,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyType
         ] = UNSET,
@@ -4793,6 +5008,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=StatusCheckPolicy,
             error_models={
                 "404": BasicError,
@@ -4807,6 +5023,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[str], list[str]]:
         """repos/get-all-status-check-contexts
 
@@ -4827,6 +5044,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[str],
             error_models={
                 "404": BasicError,
@@ -4840,6 +5058,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[str], list[str]]:
         """repos/get-all-status-check-contexts
 
@@ -4860,6 +5079,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[str],
             error_models={
                 "404": BasicError,
@@ -4874,6 +5094,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0Type,
@@ -4891,6 +5112,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         contexts: list[str],
     ) -> Response[list[str], list[str]]: ...
 
@@ -4901,6 +5123,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0Type,
@@ -4950,6 +5173,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[str],
             error_models={
                 "422": ValidationError,
@@ -4965,6 +5189,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0Type,
@@ -4982,6 +5207,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         contexts: list[str],
     ) -> Response[list[str], list[str]]: ...
 
@@ -4992,6 +5218,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0Type,
@@ -5041,6 +5268,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[str],
             error_models={
                 "422": ValidationError,
@@ -5056,6 +5284,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0Type,
@@ -5073,6 +5302,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         contexts: list[str],
     ) -> Response[list[str], list[str]]: ...
 
@@ -5083,6 +5313,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0Type,
@@ -5132,6 +5363,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[str],
             error_models={
                 "422": ValidationError,
@@ -5148,6 +5380,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0Type,
@@ -5165,6 +5398,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         contexts: list[str],
     ) -> Response[list[str], list[str]]: ...
 
@@ -5175,6 +5409,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0Type,
@@ -5224,6 +5459,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[str],
             error_models={
                 "422": ValidationError,
@@ -5240,6 +5476,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0Type,
@@ -5257,6 +5494,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         contexts: list[str],
     ) -> Response[list[str], list[str]]: ...
 
@@ -5267,6 +5505,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0Type,
@@ -5316,6 +5555,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[str],
             error_models={
                 "404": BasicError,
@@ -5331,6 +5571,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0Type,
@@ -5348,6 +5589,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         contexts: list[str],
     ) -> Response[list[str], list[str]]: ...
 
@@ -5358,6 +5600,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0Type,
@@ -5407,6 +5650,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[str],
             error_models={
                 "404": BasicError,
@@ -5421,6 +5665,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[BranchRestrictionPolicy, BranchRestrictionPolicyType]:
         """repos/get-access-restrictions
 
@@ -5446,6 +5691,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=BranchRestrictionPolicy,
             error_models={
                 "404": BasicError,
@@ -5459,6 +5705,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[BranchRestrictionPolicy, BranchRestrictionPolicyType]:
         """repos/get-access-restrictions
 
@@ -5484,6 +5731,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=BranchRestrictionPolicy,
             error_models={
                 "404": BasicError,
@@ -5497,6 +5745,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """repos/delete-access-restrictions
 
@@ -5517,6 +5766,7 @@ class ReposClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     async def async_delete_access_restrictions(
@@ -5526,6 +5776,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """repos/delete-access-restrictions
 
@@ -5546,6 +5797,7 @@ class ReposClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     def get_apps_with_access_to_protected_branch(
@@ -5555,6 +5807,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Union[Integration, None]], list[Union[IntegrationType, None]]]:
         """repos/get-apps-with-access-to-protected-branch
 
@@ -5579,6 +5832,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Union[Integration, None]],
             error_models={
                 "404": BasicError,
@@ -5592,6 +5846,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Union[Integration, None]], list[Union[IntegrationType, None]]]:
         """repos/get-apps-with-access-to-protected-branch
 
@@ -5616,6 +5871,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Union[Integration, None]],
             error_models={
                 "404": BasicError,
@@ -5630,6 +5886,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyType,
     ) -> Response[
         list[Union[Integration, None]], list[Union[IntegrationType, None]]
@@ -5644,6 +5901,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         apps: list[str],
     ) -> Response[
         list[Union[Integration, None]], list[Union[IntegrationType, None]]
@@ -5656,6 +5914,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyType
         ] = UNSET,
@@ -5700,6 +5959,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Union[Integration, None]],
             error_models={
                 "422": ValidationError,
@@ -5714,6 +5974,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyType,
     ) -> Response[
         list[Union[Integration, None]], list[Union[IntegrationType, None]]
@@ -5728,6 +5989,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         apps: list[str],
     ) -> Response[
         list[Union[Integration, None]], list[Union[IntegrationType, None]]
@@ -5740,6 +6002,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyType
         ] = UNSET,
@@ -5784,6 +6047,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Union[Integration, None]],
             error_models={
                 "422": ValidationError,
@@ -5798,6 +6062,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyType,
     ) -> Response[
         list[Union[Integration, None]], list[Union[IntegrationType, None]]
@@ -5812,6 +6077,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         apps: list[str],
     ) -> Response[
         list[Union[Integration, None]], list[Union[IntegrationType, None]]
@@ -5824,6 +6090,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyType
         ] = UNSET,
@@ -5868,6 +6135,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Union[Integration, None]],
             error_models={
                 "422": ValidationError,
@@ -5882,6 +6150,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyType,
     ) -> Response[
         list[Union[Integration, None]], list[Union[IntegrationType, None]]
@@ -5896,6 +6165,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         apps: list[str],
     ) -> Response[
         list[Union[Integration, None]], list[Union[IntegrationType, None]]
@@ -5908,6 +6178,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyType
         ] = UNSET,
@@ -5952,6 +6223,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Union[Integration, None]],
             error_models={
                 "422": ValidationError,
@@ -5966,6 +6238,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyType,
     ) -> Response[
         list[Union[Integration, None]], list[Union[IntegrationType, None]]
@@ -5980,6 +6253,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         apps: list[str],
     ) -> Response[
         list[Union[Integration, None]], list[Union[IntegrationType, None]]
@@ -5992,6 +6266,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyType
         ] = UNSET,
@@ -6036,6 +6311,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Union[Integration, None]],
             error_models={
                 "422": ValidationError,
@@ -6050,6 +6326,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyType,
     ) -> Response[
         list[Union[Integration, None]], list[Union[IntegrationType, None]]
@@ -6064,6 +6341,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         apps: list[str],
     ) -> Response[
         list[Union[Integration, None]], list[Union[IntegrationType, None]]
@@ -6076,6 +6354,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyType
         ] = UNSET,
@@ -6120,6 +6399,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Union[Integration, None]],
             error_models={
                 "422": ValidationError,
@@ -6133,6 +6413,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Team], list[TeamType]]:
         """repos/get-teams-with-access-to-protected-branch
 
@@ -6155,6 +6436,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Team],
             error_models={
                 "404": BasicError,
@@ -6168,6 +6450,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Team], list[TeamType]]:
         """repos/get-teams-with-access-to-protected-branch
 
@@ -6190,6 +6473,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Team],
             error_models={
                 "404": BasicError,
@@ -6204,6 +6488,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0Type,
@@ -6221,6 +6506,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         teams: list[str],
     ) -> Response[list[Team], list[TeamType]]: ...
 
@@ -6231,6 +6517,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0Type,
@@ -6282,6 +6569,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Team],
             error_models={
                 "422": ValidationError,
@@ -6296,6 +6584,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0Type,
@@ -6313,6 +6602,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         teams: list[str],
     ) -> Response[list[Team], list[TeamType]]: ...
 
@@ -6323,6 +6613,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0Type,
@@ -6374,6 +6665,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Team],
             error_models={
                 "422": ValidationError,
@@ -6388,6 +6680,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0Type,
@@ -6405,6 +6698,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         teams: list[str],
     ) -> Response[list[Team], list[TeamType]]: ...
 
@@ -6415,6 +6709,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0Type,
@@ -6466,6 +6761,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Team],
             error_models={
                 "422": ValidationError,
@@ -6480,6 +6776,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0Type,
@@ -6497,6 +6794,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         teams: list[str],
     ) -> Response[list[Team], list[TeamType]]: ...
 
@@ -6507,6 +6805,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0Type,
@@ -6558,6 +6857,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Team],
             error_models={
                 "422": ValidationError,
@@ -6572,6 +6872,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0Type,
@@ -6589,6 +6890,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         teams: list[str],
     ) -> Response[list[Team], list[TeamType]]: ...
 
@@ -6599,6 +6901,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0Type,
@@ -6650,6 +6953,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Team],
             error_models={
                 "422": ValidationError,
@@ -6664,6 +6968,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0Type,
@@ -6681,6 +6986,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         teams: list[str],
     ) -> Response[list[Team], list[TeamType]]: ...
 
@@ -6691,6 +6997,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0Type,
@@ -6742,6 +7049,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Team],
             error_models={
                 "422": ValidationError,
@@ -6755,6 +7063,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """repos/get-users-with-access-to-protected-branch
 
@@ -6777,6 +7086,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[SimpleUser],
             error_models={
                 "404": BasicError,
@@ -6790,6 +7100,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """repos/get-users-with-access-to-protected-branch
 
@@ -6812,6 +7123,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[SimpleUser],
             error_models={
                 "404": BasicError,
@@ -6826,6 +7138,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyType,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]: ...
 
@@ -6838,6 +7151,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         users: list[str],
     ) -> Response[list[SimpleUser], list[SimpleUserType]]: ...
 
@@ -6848,6 +7162,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyType
         ] = UNSET,
@@ -6894,6 +7209,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[SimpleUser],
             error_models={
                 "422": ValidationError,
@@ -6908,6 +7224,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyType,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]: ...
 
@@ -6920,6 +7237,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         users: list[str],
     ) -> Response[list[SimpleUser], list[SimpleUserType]]: ...
 
@@ -6930,6 +7248,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyType
         ] = UNSET,
@@ -6976,6 +7295,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[SimpleUser],
             error_models={
                 "422": ValidationError,
@@ -6990,6 +7310,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyType,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]: ...
 
@@ -7002,6 +7323,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         users: list[str],
     ) -> Response[list[SimpleUser], list[SimpleUserType]]: ...
 
@@ -7012,6 +7334,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyType
         ] = UNSET,
@@ -7058,6 +7381,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[SimpleUser],
             error_models={
                 "422": ValidationError,
@@ -7072,6 +7396,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyType,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]: ...
 
@@ -7084,6 +7409,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         users: list[str],
     ) -> Response[list[SimpleUser], list[SimpleUserType]]: ...
 
@@ -7094,6 +7420,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyType
         ] = UNSET,
@@ -7140,6 +7467,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[SimpleUser],
             error_models={
                 "422": ValidationError,
@@ -7154,6 +7482,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyType,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]: ...
 
@@ -7166,6 +7495,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         users: list[str],
     ) -> Response[list[SimpleUser], list[SimpleUserType]]: ...
 
@@ -7176,6 +7506,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyType
         ] = UNSET,
@@ -7222,6 +7553,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[SimpleUser],
             error_models={
                 "422": ValidationError,
@@ -7236,6 +7568,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyType,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]: ...
 
@@ -7248,6 +7581,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         users: list[str],
     ) -> Response[list[SimpleUser], list[SimpleUserType]]: ...
 
@@ -7258,6 +7592,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyType
         ] = UNSET,
@@ -7304,6 +7639,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[SimpleUser],
             error_models={
                 "422": ValidationError,
@@ -7318,6 +7654,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoBranchesBranchRenamePostBodyType,
     ) -> Response[BranchWithProtection, BranchWithProtectionType]: ...
 
@@ -7330,6 +7667,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         new_name: str,
     ) -> Response[BranchWithProtection, BranchWithProtectionType]: ...
 
@@ -7340,6 +7678,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoBranchesBranchRenamePostBodyType] = UNSET,
         **kwargs,
     ) -> Response[BranchWithProtection, BranchWithProtectionType]:
@@ -7386,6 +7725,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=BranchWithProtection,
             error_models={
                 "403": BasicError,
@@ -7402,6 +7742,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoBranchesBranchRenamePostBodyType,
     ) -> Response[BranchWithProtection, BranchWithProtectionType]: ...
 
@@ -7414,6 +7755,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         new_name: str,
     ) -> Response[BranchWithProtection, BranchWithProtectionType]: ...
 
@@ -7424,6 +7766,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoBranchesBranchRenamePostBodyType] = UNSET,
         **kwargs,
     ) -> Response[BranchWithProtection, BranchWithProtectionType]:
@@ -7470,6 +7813,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=BranchWithProtection,
             error_models={
                 "403": BasicError,
@@ -7501,6 +7845,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[PushRuleBypassRequest], list[PushRuleBypassRequestType]]:
         """repos/list-repo-push-bypass-requests
 
@@ -7531,6 +7876,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[PushRuleBypassRequest],
             error_models={
                 "404": BasicError,
@@ -7561,6 +7907,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[PushRuleBypassRequest], list[PushRuleBypassRequestType]]:
         """repos/list-repo-push-bypass-requests
 
@@ -7591,6 +7938,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[PushRuleBypassRequest],
             error_models={
                 "404": BasicError,
@@ -7605,6 +7953,7 @@ class ReposClient:
         bypass_request_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[PushRuleBypassRequest, PushRuleBypassRequestType]:
         """repos/get-repo-push-bypass-request
 
@@ -7627,6 +7976,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=PushRuleBypassRequest,
             error_models={
                 "404": BasicError,
@@ -7641,6 +7991,7 @@ class ReposClient:
         bypass_request_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[PushRuleBypassRequest, PushRuleBypassRequestType]:
         """repos/get-repo-push-bypass-request
 
@@ -7663,6 +8014,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=PushRuleBypassRequest,
             error_models={
                 "404": BasicError,
@@ -7677,6 +8029,7 @@ class ReposClient:
         *,
         ref: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[CodeownersErrors, CodeownersErrorsType]:
         """repos/codeowners-errors
 
@@ -7706,6 +8059,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CodeownersErrors,
             error_models={},
         )
@@ -7717,6 +8071,7 @@ class ReposClient:
         *,
         ref: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[CodeownersErrors, CodeownersErrorsType]:
         """repos/codeowners-errors
 
@@ -7746,6 +8101,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CodeownersErrors,
             error_models={},
         )
@@ -7762,6 +8118,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Collaborator], list[CollaboratorType]]:
         """repos/list-collaborators
 
@@ -7797,6 +8154,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Collaborator],
             error_models={
                 "404": BasicError,
@@ -7815,6 +8173,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Collaborator], list[CollaboratorType]]:
         """repos/list-collaborators
 
@@ -7850,6 +8209,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Collaborator],
             error_models={
                 "404": BasicError,
@@ -7863,6 +8223,7 @@ class ReposClient:
         username: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """repos/check-collaborator
 
@@ -7887,6 +8248,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={},
         )
 
@@ -7897,6 +8259,7 @@ class ReposClient:
         username: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """repos/check-collaborator
 
@@ -7921,6 +8284,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={},
         )
 
@@ -7932,6 +8296,7 @@ class ReposClient:
         username: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoCollaboratorsUsernamePutBodyType] = UNSET,
     ) -> Response[RepositoryInvitation, RepositoryInvitationType]: ...
 
@@ -7944,6 +8309,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         permission: Missing[str] = UNSET,
     ) -> Response[RepositoryInvitation, RepositoryInvitationType]: ...
 
@@ -7954,6 +8320,7 @@ class ReposClient:
         username: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoCollaboratorsUsernamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[RepositoryInvitation, RepositoryInvitationType]:
@@ -8017,6 +8384,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=RepositoryInvitation,
             error_models={
                 "422": ValidationError,
@@ -8032,6 +8400,7 @@ class ReposClient:
         username: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoCollaboratorsUsernamePutBodyType] = UNSET,
     ) -> Response[RepositoryInvitation, RepositoryInvitationType]: ...
 
@@ -8044,6 +8413,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         permission: Missing[str] = UNSET,
     ) -> Response[RepositoryInvitation, RepositoryInvitationType]: ...
 
@@ -8054,6 +8424,7 @@ class ReposClient:
         username: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoCollaboratorsUsernamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[RepositoryInvitation, RepositoryInvitationType]:
@@ -8117,6 +8488,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=RepositoryInvitation,
             error_models={
                 "422": ValidationError,
@@ -8131,6 +8503,7 @@ class ReposClient:
         username: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """repos/remove-collaborator
 
@@ -8172,6 +8545,7 @@ class ReposClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "422": ValidationError,
                 "403": BasicError,
@@ -8185,6 +8559,7 @@ class ReposClient:
         username: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """repos/remove-collaborator
 
@@ -8226,6 +8601,7 @@ class ReposClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "422": ValidationError,
                 "403": BasicError,
@@ -8239,6 +8615,7 @@ class ReposClient:
         username: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         RepositoryCollaboratorPermission, RepositoryCollaboratorPermissionType
     ]:
@@ -8269,6 +8646,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=RepositoryCollaboratorPermission,
             error_models={
                 "404": BasicError,
@@ -8282,6 +8660,7 @@ class ReposClient:
         username: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         RepositoryCollaboratorPermission, RepositoryCollaboratorPermissionType
     ]:
@@ -8312,6 +8691,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=RepositoryCollaboratorPermission,
             error_models={
                 "404": BasicError,
@@ -8326,6 +8706,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[CommitComment], list[CommitCommentType]]:
         """repos/list-commit-comments-for-repo
 
@@ -8359,6 +8740,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[CommitComment],
         )
 
@@ -8370,6 +8752,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[CommitComment], list[CommitCommentType]]:
         """repos/list-commit-comments-for-repo
 
@@ -8403,6 +8786,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[CommitComment],
         )
 
@@ -8413,6 +8797,7 @@ class ReposClient:
         comment_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[CommitComment, CommitCommentType]:
         """repos/get-commit-comment
 
@@ -8440,6 +8825,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CommitComment,
             error_models={
                 "404": BasicError,
@@ -8453,6 +8839,7 @@ class ReposClient:
         comment_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[CommitComment, CommitCommentType]:
         """repos/get-commit-comment
 
@@ -8480,6 +8867,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CommitComment,
             error_models={
                 "404": BasicError,
@@ -8493,6 +8881,7 @@ class ReposClient:
         comment_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """repos/delete-commit-comment
 
@@ -8511,6 +8900,7 @@ class ReposClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
             },
@@ -8523,6 +8913,7 @@ class ReposClient:
         comment_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """repos/delete-commit-comment
 
@@ -8541,6 +8932,7 @@ class ReposClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
             },
@@ -8554,6 +8946,7 @@ class ReposClient:
         comment_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoCommentsCommentIdPatchBodyType,
     ) -> Response[CommitComment, CommitCommentType]: ...
 
@@ -8566,6 +8959,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         body: str,
     ) -> Response[CommitComment, CommitCommentType]: ...
 
@@ -8576,6 +8970,7 @@ class ReposClient:
         comment_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoCommentsCommentIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[CommitComment, CommitCommentType]:
@@ -8619,6 +9014,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CommitComment,
             error_models={
                 "404": BasicError,
@@ -8633,6 +9029,7 @@ class ReposClient:
         comment_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoCommentsCommentIdPatchBodyType,
     ) -> Response[CommitComment, CommitCommentType]: ...
 
@@ -8645,6 +9042,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         body: str,
     ) -> Response[CommitComment, CommitCommentType]: ...
 
@@ -8655,6 +9053,7 @@ class ReposClient:
         comment_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoCommentsCommentIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[CommitComment, CommitCommentType]:
@@ -8698,6 +9097,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CommitComment,
             error_models={
                 "404": BasicError,
@@ -8718,6 +9118,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Commit], list[CommitType]]:
         """repos/list-commits
 
@@ -8778,6 +9179,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Commit],
             error_models={
                 "500": BasicError,
@@ -8801,6 +9203,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Commit], list[CommitType]]:
         """repos/list-commits
 
@@ -8861,6 +9264,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Commit],
             error_models={
                 "500": BasicError,
@@ -8877,6 +9281,7 @@ class ReposClient:
         commit_sha: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[BranchShort], list[BranchShortType]]:
         """repos/list-branches-for-head-commit
 
@@ -8899,6 +9304,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[BranchShort],
             error_models={
                 "422": ValidationError,
@@ -8913,6 +9319,7 @@ class ReposClient:
         commit_sha: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[BranchShort], list[BranchShortType]]:
         """repos/list-branches-for-head-commit
 
@@ -8935,6 +9342,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[BranchShort],
             error_models={
                 "422": ValidationError,
@@ -8951,6 +9359,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[CommitComment], list[CommitCommentType]]:
         """repos/list-comments-for-commit
 
@@ -8984,6 +9393,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[CommitComment],
         )
 
@@ -8996,6 +9406,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[CommitComment], list[CommitCommentType]]:
         """repos/list-comments-for-commit
 
@@ -9029,6 +9440,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[CommitComment],
         )
 
@@ -9040,6 +9452,7 @@ class ReposClient:
         commit_sha: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoCommitsCommitShaCommentsPostBodyType,
     ) -> Response[CommitComment, CommitCommentType]: ...
 
@@ -9052,6 +9465,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         body: str,
         path: Missing[str] = UNSET,
         position: Missing[int] = UNSET,
@@ -9065,6 +9479,7 @@ class ReposClient:
         commit_sha: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoCommitsCommitShaCommentsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[CommitComment, CommitCommentType]:
@@ -9113,6 +9528,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CommitComment,
             error_models={
                 "403": BasicError,
@@ -9128,6 +9544,7 @@ class ReposClient:
         commit_sha: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoCommitsCommitShaCommentsPostBodyType,
     ) -> Response[CommitComment, CommitCommentType]: ...
 
@@ -9140,6 +9557,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         body: str,
         path: Missing[str] = UNSET,
         position: Missing[int] = UNSET,
@@ -9153,6 +9571,7 @@ class ReposClient:
         commit_sha: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoCommitsCommitShaCommentsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[CommitComment, CommitCommentType]:
@@ -9201,6 +9620,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CommitComment,
             error_models={
                 "403": BasicError,
@@ -9217,6 +9637,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[PullRequestSimple], list[PullRequestSimpleType]]:
         """repos/list-pull-requests-associated-with-commit
 
@@ -9245,6 +9666,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[PullRequestSimple],
             error_models={
                 "409": BasicError,
@@ -9260,6 +9682,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[PullRequestSimple], list[PullRequestSimpleType]]:
         """repos/list-pull-requests-associated-with-commit
 
@@ -9288,6 +9711,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[PullRequestSimple],
             error_models={
                 "409": BasicError,
@@ -9303,6 +9727,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[Commit, CommitType]:
         """repos/get-commit
 
@@ -9373,6 +9798,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Commit,
             error_models={
                 "422": ValidationError,
@@ -9392,6 +9818,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[Commit, CommitType]:
         """repos/get-commit
 
@@ -9462,6 +9889,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Commit,
             error_models={
                 "422": ValidationError,
@@ -9481,6 +9909,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[CombinedCommitStatus, CombinedCommitStatusType]:
         """repos/get-combined-status-for-ref
 
@@ -9514,6 +9943,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CombinedCommitStatus,
             error_models={
                 "404": BasicError,
@@ -9529,6 +9959,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[CombinedCommitStatus, CombinedCommitStatusType]:
         """repos/get-combined-status-for-ref
 
@@ -9562,6 +9993,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CombinedCommitStatus,
             error_models={
                 "404": BasicError,
@@ -9577,6 +10009,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Status], list[StatusType]]:
         """repos/list-commit-statuses-for-ref
 
@@ -9605,6 +10038,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Status],
         )
 
@@ -9617,6 +10051,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Status], list[StatusType]]:
         """repos/list-commit-statuses-for-ref
 
@@ -9645,6 +10080,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Status],
         )
 
@@ -9654,6 +10090,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[CommunityProfile, CommunityProfileType]:
         r"""repos/get-community-profile-metrics
 
@@ -9684,6 +10121,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CommunityProfile,
         )
 
@@ -9693,6 +10131,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[CommunityProfile, CommunityProfileType]:
         r"""repos/get-community-profile-metrics
 
@@ -9723,6 +10162,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CommunityProfile,
         )
 
@@ -9735,6 +10175,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[CommitComparison, CommitComparisonType]:
         """repos/compare-commits
 
@@ -9815,6 +10256,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CommitComparison,
             error_models={
                 "404": BasicError,
@@ -9832,6 +10274,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[CommitComparison, CommitComparisonType]:
         """repos/compare-commits
 
@@ -9912,6 +10355,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CommitComparison,
             error_models={
                 "404": BasicError,
@@ -9928,6 +10372,7 @@ class ReposClient:
         *,
         ref: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         Union[
             list[ContentDirectoryItems], ContentFile, ContentSymlink, ContentSubmodule
@@ -9995,6 +10440,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Union[
                 list[ContentDirectoryItems],
                 ContentFile,
@@ -10015,6 +10461,7 @@ class ReposClient:
         *,
         ref: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         Union[
             list[ContentDirectoryItems], ContentFile, ContentSymlink, ContentSubmodule
@@ -10082,6 +10529,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Union[
                 list[ContentDirectoryItems],
                 ContentFile,
@@ -10102,6 +10550,7 @@ class ReposClient:
         path: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoContentsPathPutBodyType,
     ) -> Response[FileCommit, FileCommitType]: ...
 
@@ -10114,6 +10563,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         message: str,
         content: str,
         sha: Missing[str] = UNSET,
@@ -10129,6 +10579,7 @@ class ReposClient:
         path: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoContentsPathPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[FileCommit, FileCommitType]:
@@ -10174,6 +10625,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=FileCommit,
             error_models={
                 "404": BasicError,
@@ -10190,6 +10642,7 @@ class ReposClient:
         path: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoContentsPathPutBodyType,
     ) -> Response[FileCommit, FileCommitType]: ...
 
@@ -10202,6 +10655,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         message: str,
         content: str,
         sha: Missing[str] = UNSET,
@@ -10217,6 +10671,7 @@ class ReposClient:
         path: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoContentsPathPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[FileCommit, FileCommitType]:
@@ -10262,6 +10717,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=FileCommit,
             error_models={
                 "404": BasicError,
@@ -10278,6 +10734,7 @@ class ReposClient:
         path: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoContentsPathDeleteBodyType,
     ) -> Response[FileCommit, FileCommitType]: ...
 
@@ -10290,6 +10747,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         message: str,
         sha: str,
         branch: Missing[str] = UNSET,
@@ -10306,6 +10764,7 @@ class ReposClient:
         path: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoContentsPathDeleteBodyType] = UNSET,
         **kwargs,
     ) -> Response[FileCommit, FileCommitType]:
@@ -10353,6 +10812,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=FileCommit,
             error_models={
                 "422": ValidationError,
@@ -10370,6 +10830,7 @@ class ReposClient:
         path: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoContentsPathDeleteBodyType,
     ) -> Response[FileCommit, FileCommitType]: ...
 
@@ -10382,6 +10843,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         message: str,
         sha: str,
         branch: Missing[str] = UNSET,
@@ -10398,6 +10860,7 @@ class ReposClient:
         path: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoContentsPathDeleteBodyType] = UNSET,
         **kwargs,
     ) -> Response[FileCommit, FileCommitType]:
@@ -10445,6 +10908,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=FileCommit,
             error_models={
                 "422": ValidationError,
@@ -10463,6 +10927,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Contributor], list[ContributorType]]:
         """repos/list-contributors
 
@@ -10492,6 +10957,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Contributor],
             error_models={
                 "403": BasicError,
@@ -10508,6 +10974,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Contributor], list[ContributorType]]:
         """repos/list-contributors
 
@@ -10537,6 +11004,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Contributor],
             error_models={
                 "403": BasicError,
@@ -10556,6 +11024,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Deployment], list[DeploymentType]]:
         """repos/list-deployments
 
@@ -10586,6 +11055,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Deployment],
         )
 
@@ -10601,6 +11071,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Deployment], list[DeploymentType]]:
         """repos/list-deployments
 
@@ -10631,6 +11102,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Deployment],
         )
 
@@ -10641,6 +11113,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoDeploymentsPostBodyType,
     ) -> Response[Deployment, DeploymentType]: ...
 
@@ -10652,6 +11125,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         ref: str,
         task: Missing[str] = UNSET,
         auto_merge: Missing[bool] = UNSET,
@@ -10671,6 +11145,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoDeploymentsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Deployment, DeploymentType]:
@@ -10754,6 +11229,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Deployment,
             error_models={
                 "422": ValidationError,
@@ -10767,6 +11243,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoDeploymentsPostBodyType,
     ) -> Response[Deployment, DeploymentType]: ...
 
@@ -10778,6 +11255,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         ref: str,
         task: Missing[str] = UNSET,
         auto_merge: Missing[bool] = UNSET,
@@ -10797,6 +11275,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoDeploymentsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Deployment, DeploymentType]:
@@ -10880,6 +11359,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Deployment,
             error_models={
                 "422": ValidationError,
@@ -10893,6 +11373,7 @@ class ReposClient:
         deployment_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[Deployment, DeploymentType]:
         """repos/get-deployment
 
@@ -10911,6 +11392,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Deployment,
             error_models={
                 "404": BasicError,
@@ -10924,6 +11406,7 @@ class ReposClient:
         deployment_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[Deployment, DeploymentType]:
         """repos/get-deployment
 
@@ -10942,6 +11425,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Deployment,
             error_models={
                 "404": BasicError,
@@ -10955,6 +11439,7 @@ class ReposClient:
         deployment_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """repos/delete-deployment
 
@@ -10984,6 +11469,7 @@ class ReposClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
                 "422": ValidationErrorSimple,
@@ -10997,6 +11483,7 @@ class ReposClient:
         deployment_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """repos/delete-deployment
 
@@ -11026,6 +11513,7 @@ class ReposClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
                 "422": ValidationErrorSimple,
@@ -11041,6 +11529,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[DeploymentStatus], list[DeploymentStatusType]]:
         """repos/list-deployment-statuses
 
@@ -11067,6 +11556,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[DeploymentStatus],
             error_models={
                 "404": BasicError,
@@ -11082,6 +11572,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[DeploymentStatus], list[DeploymentStatusType]]:
         """repos/list-deployment-statuses
 
@@ -11108,6 +11599,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[DeploymentStatus],
             error_models={
                 "404": BasicError,
@@ -11122,6 +11614,7 @@ class ReposClient:
         deployment_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyType,
     ) -> Response[DeploymentStatus, DeploymentStatusType]: ...
 
@@ -11134,6 +11627,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         state: Literal[
             "error",
             "failure",
@@ -11158,6 +11652,7 @@ class ReposClient:
         deployment_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyType
         ] = UNSET,
@@ -11200,6 +11695,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=DeploymentStatus,
             error_models={
                 "422": ValidationError,
@@ -11214,6 +11710,7 @@ class ReposClient:
         deployment_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyType,
     ) -> Response[DeploymentStatus, DeploymentStatusType]: ...
 
@@ -11226,6 +11723,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         state: Literal[
             "error",
             "failure",
@@ -11250,6 +11748,7 @@ class ReposClient:
         deployment_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyType
         ] = UNSET,
@@ -11292,6 +11791,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=DeploymentStatus,
             error_models={
                 "422": ValidationError,
@@ -11306,6 +11806,7 @@ class ReposClient:
         status_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[DeploymentStatus, DeploymentStatusType]:
         """repos/get-deployment-status
 
@@ -11326,6 +11827,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=DeploymentStatus,
             error_models={
                 "404": BasicError,
@@ -11340,6 +11842,7 @@ class ReposClient:
         status_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[DeploymentStatus, DeploymentStatusType]:
         """repos/get-deployment-status
 
@@ -11360,6 +11863,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=DeploymentStatus,
             error_models={
                 "404": BasicError,
@@ -11373,6 +11877,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoDispatchesPostBodyType,
     ) -> Response: ...
 
@@ -11384,6 +11889,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         event_type: str,
         client_payload: Missing[
             ReposOwnerRepoDispatchesPostBodyPropClientPayloadType
@@ -11396,6 +11902,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoDispatchesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -11438,6 +11945,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
                 "422": ValidationError,
@@ -11451,6 +11959,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoDispatchesPostBodyType,
     ) -> Response: ...
 
@@ -11462,6 +11971,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         event_type: str,
         client_payload: Missing[
             ReposOwnerRepoDispatchesPostBodyPropClientPayloadType
@@ -11474,6 +11984,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoDispatchesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -11516,6 +12027,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
                 "422": ValidationError,
@@ -11530,6 +12042,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         ReposOwnerRepoEnvironmentsGetResponse200,
         ReposOwnerRepoEnvironmentsGetResponse200Type,
@@ -11563,6 +12076,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ReposOwnerRepoEnvironmentsGetResponse200,
         )
 
@@ -11574,6 +12088,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         ReposOwnerRepoEnvironmentsGetResponse200,
         ReposOwnerRepoEnvironmentsGetResponse200Type,
@@ -11607,6 +12122,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ReposOwnerRepoEnvironmentsGetResponse200,
         )
 
@@ -11617,6 +12133,7 @@ class ReposClient:
         environment_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[Environment, EnvironmentType]:
         """repos/get-environment
 
@@ -11642,6 +12159,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Environment,
         )
 
@@ -11652,6 +12170,7 @@ class ReposClient:
         environment_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[Environment, EnvironmentType]:
         """repos/get-environment
 
@@ -11677,6 +12196,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Environment,
         )
 
@@ -11688,6 +12208,7 @@ class ReposClient:
         environment_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             Union[ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyType, None]
         ] = UNSET,
@@ -11702,6 +12223,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         wait_timer: Missing[int] = UNSET,
         prevent_self_review: Missing[bool] = UNSET,
         reviewers: Missing[
@@ -11724,6 +12246,7 @@ class ReposClient:
         environment_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             Union[ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyType, None]
         ] = UNSET,
@@ -11774,6 +12297,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Environment,
             error_models={
                 "422": BasicError,
@@ -11788,6 +12312,7 @@ class ReposClient:
         environment_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             Union[ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyType, None]
         ] = UNSET,
@@ -11802,6 +12327,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         wait_timer: Missing[int] = UNSET,
         prevent_self_review: Missing[bool] = UNSET,
         reviewers: Missing[
@@ -11824,6 +12350,7 @@ class ReposClient:
         environment_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             Union[ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyType, None]
         ] = UNSET,
@@ -11874,6 +12401,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Environment,
             error_models={
                 "422": BasicError,
@@ -11887,6 +12415,7 @@ class ReposClient:
         environment_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """repos/delete-an-environment
 
@@ -11905,6 +12434,7 @@ class ReposClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     async def async_delete_an_environment(
@@ -11914,6 +12444,7 @@ class ReposClient:
         environment_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """repos/delete-an-environment
 
@@ -11932,6 +12463,7 @@ class ReposClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     def list_deployment_branch_policies(
@@ -11943,6 +12475,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200,
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200Type,
@@ -11978,6 +12511,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200,
         )
 
@@ -11990,6 +12524,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200,
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200Type,
@@ -12025,6 +12560,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200,
         )
 
@@ -12036,6 +12572,7 @@ class ReposClient:
         environment_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: DeploymentBranchPolicyNamePatternWithTypeType,
     ) -> Response[DeploymentBranchPolicy, DeploymentBranchPolicyType]: ...
 
@@ -12048,6 +12585,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: str,
         type: Missing[Literal["branch", "tag"]] = UNSET,
     ) -> Response[DeploymentBranchPolicy, DeploymentBranchPolicyType]: ...
@@ -12059,6 +12597,7 @@ class ReposClient:
         environment_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[DeploymentBranchPolicyNamePatternWithTypeType] = UNSET,
         **kwargs,
     ) -> Response[DeploymentBranchPolicy, DeploymentBranchPolicyType]:
@@ -12096,6 +12635,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=DeploymentBranchPolicy,
             error_models={},
         )
@@ -12108,6 +12648,7 @@ class ReposClient:
         environment_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: DeploymentBranchPolicyNamePatternWithTypeType,
     ) -> Response[DeploymentBranchPolicy, DeploymentBranchPolicyType]: ...
 
@@ -12120,6 +12661,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: str,
         type: Missing[Literal["branch", "tag"]] = UNSET,
     ) -> Response[DeploymentBranchPolicy, DeploymentBranchPolicyType]: ...
@@ -12131,6 +12673,7 @@ class ReposClient:
         environment_name: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[DeploymentBranchPolicyNamePatternWithTypeType] = UNSET,
         **kwargs,
     ) -> Response[DeploymentBranchPolicy, DeploymentBranchPolicyType]:
@@ -12168,6 +12711,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=DeploymentBranchPolicy,
             error_models={},
         )
@@ -12180,6 +12724,7 @@ class ReposClient:
         branch_policy_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[DeploymentBranchPolicy, DeploymentBranchPolicyType]:
         """repos/get-deployment-branch-policy
 
@@ -12204,6 +12749,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=DeploymentBranchPolicy,
         )
 
@@ -12215,6 +12761,7 @@ class ReposClient:
         branch_policy_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[DeploymentBranchPolicy, DeploymentBranchPolicyType]:
         """repos/get-deployment-branch-policy
 
@@ -12239,6 +12786,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=DeploymentBranchPolicy,
         )
 
@@ -12251,6 +12799,7 @@ class ReposClient:
         branch_policy_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: DeploymentBranchPolicyNamePatternType,
     ) -> Response[DeploymentBranchPolicy, DeploymentBranchPolicyType]: ...
 
@@ -12264,6 +12813,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: str,
     ) -> Response[DeploymentBranchPolicy, DeploymentBranchPolicyType]: ...
 
@@ -12275,6 +12825,7 @@ class ReposClient:
         branch_policy_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[DeploymentBranchPolicyNamePatternType] = UNSET,
         **kwargs,
     ) -> Response[DeploymentBranchPolicy, DeploymentBranchPolicyType]:
@@ -12309,6 +12860,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=DeploymentBranchPolicy,
         )
 
@@ -12321,6 +12873,7 @@ class ReposClient:
         branch_policy_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: DeploymentBranchPolicyNamePatternType,
     ) -> Response[DeploymentBranchPolicy, DeploymentBranchPolicyType]: ...
 
@@ -12334,6 +12887,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: str,
     ) -> Response[DeploymentBranchPolicy, DeploymentBranchPolicyType]: ...
 
@@ -12345,6 +12899,7 @@ class ReposClient:
         branch_policy_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[DeploymentBranchPolicyNamePatternType] = UNSET,
         **kwargs,
     ) -> Response[DeploymentBranchPolicy, DeploymentBranchPolicyType]:
@@ -12379,6 +12934,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=DeploymentBranchPolicy,
         )
 
@@ -12390,6 +12946,7 @@ class ReposClient:
         branch_policy_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """repos/delete-deployment-branch-policy
 
@@ -12410,6 +12967,7 @@ class ReposClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     async def async_delete_deployment_branch_policy(
@@ -12420,6 +12978,7 @@ class ReposClient:
         branch_policy_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """repos/delete-deployment-branch-policy
 
@@ -12440,6 +12999,7 @@ class ReposClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     def get_all_deployment_protection_rules(
@@ -12449,6 +13009,7 @@ class ReposClient:
         owner: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200,
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200Type,
@@ -12478,6 +13039,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200,
         )
 
@@ -12488,6 +13050,7 @@ class ReposClient:
         owner: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200,
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200Type,
@@ -12517,6 +13080,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200,
         )
 
@@ -12528,6 +13092,7 @@ class ReposClient:
         owner: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBodyType,
     ) -> Response[DeploymentProtectionRule, DeploymentProtectionRuleType]: ...
 
@@ -12540,6 +13105,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         integration_id: Missing[int] = UNSET,
     ) -> Response[DeploymentProtectionRule, DeploymentProtectionRuleType]: ...
 
@@ -12550,6 +13116,7 @@ class ReposClient:
         owner: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBodyType
         ] = UNSET,
@@ -12596,6 +13163,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=DeploymentProtectionRule,
         )
 
@@ -12607,6 +13175,7 @@ class ReposClient:
         owner: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBodyType,
     ) -> Response[DeploymentProtectionRule, DeploymentProtectionRuleType]: ...
 
@@ -12619,6 +13188,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         integration_id: Missing[int] = UNSET,
     ) -> Response[DeploymentProtectionRule, DeploymentProtectionRuleType]: ...
 
@@ -12629,6 +13199,7 @@ class ReposClient:
         owner: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBodyType
         ] = UNSET,
@@ -12675,6 +13246,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=DeploymentProtectionRule,
         )
 
@@ -12687,6 +13259,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200,
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200Type,
@@ -12726,6 +13299,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200,
         )
 
@@ -12738,6 +13312,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200,
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200Type,
@@ -12777,6 +13352,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200,
         )
 
@@ -12788,6 +13364,7 @@ class ReposClient:
         protection_rule_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[DeploymentProtectionRule, DeploymentProtectionRuleType]:
         """repos/get-custom-deployment-protection-rule
 
@@ -12812,6 +13389,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=DeploymentProtectionRule,
         )
 
@@ -12823,6 +13401,7 @@ class ReposClient:
         protection_rule_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[DeploymentProtectionRule, DeploymentProtectionRuleType]:
         """repos/get-custom-deployment-protection-rule
 
@@ -12847,6 +13426,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=DeploymentProtectionRule,
         )
 
@@ -12858,6 +13438,7 @@ class ReposClient:
         protection_rule_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """repos/disable-deployment-protection-rule
 
@@ -12880,6 +13461,7 @@ class ReposClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     async def async_disable_deployment_protection_rule(
@@ -12890,6 +13472,7 @@ class ReposClient:
         protection_rule_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """repos/disable-deployment-protection-rule
 
@@ -12912,6 +13495,7 @@ class ReposClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     def list_forks(
@@ -12923,6 +13507,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
         """repos/list-forks
 
@@ -12948,6 +13533,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[MinimalRepository],
             error_models={
                 "400": BasicError,
@@ -12963,6 +13549,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
         """repos/list-forks
 
@@ -12988,6 +13575,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[MinimalRepository],
             error_models={
                 "400": BasicError,
@@ -13001,6 +13589,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[Union[ReposOwnerRepoForksPostBodyType, None]] = UNSET,
     ) -> Response[FullRepository, FullRepositoryType]: ...
 
@@ -13012,6 +13601,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         organization: Missing[str] = UNSET,
         name: Missing[str] = UNSET,
         default_branch_only: Missing[bool] = UNSET,
@@ -13023,6 +13613,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[Union[ReposOwnerRepoForksPostBodyType, None]] = UNSET,
         **kwargs,
     ) -> Response[FullRepository, FullRepositoryType]:
@@ -13068,6 +13659,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=FullRepository,
             error_models={
                 "400": BasicError,
@@ -13084,6 +13676,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[Union[ReposOwnerRepoForksPostBodyType, None]] = UNSET,
     ) -> Response[FullRepository, FullRepositoryType]: ...
 
@@ -13095,6 +13688,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         organization: Missing[str] = UNSET,
         name: Missing[str] = UNSET,
         default_branch_only: Missing[bool] = UNSET,
@@ -13106,6 +13700,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[Union[ReposOwnerRepoForksPostBodyType, None]] = UNSET,
         **kwargs,
     ) -> Response[FullRepository, FullRepositoryType]:
@@ -13151,6 +13746,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=FullRepository,
             error_models={
                 "400": BasicError,
@@ -13168,6 +13764,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Hook], list[HookType]]:
         """repos/list-webhooks
 
@@ -13194,6 +13791,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Hook],
             error_models={
                 "404": BasicError,
@@ -13208,6 +13806,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Hook], list[HookType]]:
         """repos/list-webhooks
 
@@ -13234,6 +13833,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Hook],
             error_models={
                 "404": BasicError,
@@ -13247,6 +13847,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[Union[ReposOwnerRepoHooksPostBodyType, None]] = UNSET,
     ) -> Response[Hook, HookType]: ...
 
@@ -13258,6 +13859,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: Missing[str] = UNSET,
         config: Missing[ReposOwnerRepoHooksPostBodyPropConfigType] = UNSET,
         events: Missing[list[str]] = UNSET,
@@ -13270,6 +13872,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[Union[ReposOwnerRepoHooksPostBodyType, None]] = UNSET,
         **kwargs,
     ) -> Response[Hook, HookType]:
@@ -13310,6 +13913,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Hook,
             error_models={
                 "404": BasicError,
@@ -13325,6 +13929,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[Union[ReposOwnerRepoHooksPostBodyType, None]] = UNSET,
     ) -> Response[Hook, HookType]: ...
 
@@ -13336,6 +13941,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: Missing[str] = UNSET,
         config: Missing[ReposOwnerRepoHooksPostBodyPropConfigType] = UNSET,
         events: Missing[list[str]] = UNSET,
@@ -13348,6 +13954,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[Union[ReposOwnerRepoHooksPostBodyType, None]] = UNSET,
         **kwargs,
     ) -> Response[Hook, HookType]:
@@ -13388,6 +13995,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Hook,
             error_models={
                 "404": BasicError,
@@ -13403,6 +14011,7 @@ class ReposClient:
         hook_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[Hook, HookType]:
         """repos/get-webhook
 
@@ -13423,6 +14032,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Hook,
             error_models={
                 "404": BasicError,
@@ -13436,6 +14046,7 @@ class ReposClient:
         hook_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[Hook, HookType]:
         """repos/get-webhook
 
@@ -13456,6 +14067,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Hook,
             error_models={
                 "404": BasicError,
@@ -13469,6 +14081,7 @@ class ReposClient:
         hook_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """repos/delete-webhook
 
@@ -13491,6 +14104,7 @@ class ReposClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
             },
@@ -13503,6 +14117,7 @@ class ReposClient:
         hook_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """repos/delete-webhook
 
@@ -13525,6 +14140,7 @@ class ReposClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
             },
@@ -13538,6 +14154,7 @@ class ReposClient:
         hook_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoHooksHookIdPatchBodyType,
     ) -> Response[Hook, HookType]: ...
 
@@ -13550,6 +14167,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         config: Missing[WebhookConfigType] = UNSET,
         events: Missing[list[str]] = UNSET,
         add_events: Missing[list[str]] = UNSET,
@@ -13564,6 +14182,7 @@ class ReposClient:
         hook_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoHooksHookIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Hook, HookType]:
@@ -13601,6 +14220,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Hook,
             error_models={
                 "422": ValidationError,
@@ -13616,6 +14236,7 @@ class ReposClient:
         hook_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoHooksHookIdPatchBodyType,
     ) -> Response[Hook, HookType]: ...
 
@@ -13628,6 +14249,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         config: Missing[WebhookConfigType] = UNSET,
         events: Missing[list[str]] = UNSET,
         add_events: Missing[list[str]] = UNSET,
@@ -13642,6 +14264,7 @@ class ReposClient:
         hook_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoHooksHookIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Hook, HookType]:
@@ -13679,6 +14302,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Hook,
             error_models={
                 "422": ValidationError,
@@ -13693,6 +14317,7 @@ class ReposClient:
         hook_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[WebhookConfig, WebhookConfigType]:
         """repos/get-webhook-config-for-repo
 
@@ -13715,6 +14340,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=WebhookConfig,
         )
 
@@ -13725,6 +14351,7 @@ class ReposClient:
         hook_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[WebhookConfig, WebhookConfigType]:
         """repos/get-webhook-config-for-repo
 
@@ -13747,6 +14374,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=WebhookConfig,
         )
 
@@ -13758,6 +14386,7 @@ class ReposClient:
         hook_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoHooksHookIdConfigPatchBodyType] = UNSET,
     ) -> Response[WebhookConfig, WebhookConfigType]: ...
 
@@ -13770,6 +14399,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         url: Missing[str] = UNSET,
         content_type: Missing[str] = UNSET,
         secret: Missing[str] = UNSET,
@@ -13783,6 +14413,7 @@ class ReposClient:
         hook_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoHooksHookIdConfigPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[WebhookConfig, WebhookConfigType]:
@@ -13817,6 +14448,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=WebhookConfig,
         )
 
@@ -13828,6 +14460,7 @@ class ReposClient:
         hook_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoHooksHookIdConfigPatchBodyType] = UNSET,
     ) -> Response[WebhookConfig, WebhookConfigType]: ...
 
@@ -13840,6 +14473,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         url: Missing[str] = UNSET,
         content_type: Missing[str] = UNSET,
         secret: Missing[str] = UNSET,
@@ -13853,6 +14487,7 @@ class ReposClient:
         hook_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoHooksHookIdConfigPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[WebhookConfig, WebhookConfigType]:
@@ -13887,6 +14522,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=WebhookConfig,
         )
 
@@ -13899,6 +14535,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         cursor: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[HookDeliveryItem], list[HookDeliveryItemType]]:
         """repos/list-webhook-deliveries
 
@@ -13925,6 +14562,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[HookDeliveryItem],
             error_models={
                 "400": BasicError,
@@ -13941,6 +14579,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         cursor: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[HookDeliveryItem], list[HookDeliveryItemType]]:
         """repos/list-webhook-deliveries
 
@@ -13967,6 +14606,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[HookDeliveryItem],
             error_models={
                 "400": BasicError,
@@ -13982,6 +14622,7 @@ class ReposClient:
         delivery_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[HookDelivery, HookDeliveryType]:
         """repos/get-webhook-delivery
 
@@ -14002,6 +14643,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=HookDelivery,
             error_models={
                 "400": BasicError,
@@ -14017,6 +14659,7 @@ class ReposClient:
         delivery_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[HookDelivery, HookDeliveryType]:
         """repos/get-webhook-delivery
 
@@ -14037,6 +14680,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=HookDelivery,
             error_models={
                 "400": BasicError,
@@ -14052,6 +14696,7 @@ class ReposClient:
         delivery_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
@@ -14079,6 +14724,7 @@ class ReposClient:
             "POST",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
             error_models={
                 "400": BasicError,
@@ -14094,6 +14740,7 @@ class ReposClient:
         delivery_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
@@ -14121,6 +14768,7 @@ class ReposClient:
             "POST",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
             error_models={
                 "400": BasicError,
@@ -14135,6 +14783,7 @@ class ReposClient:
         hook_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """repos/ping-webhook
 
@@ -14155,6 +14804,7 @@ class ReposClient:
             "POST",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
             },
@@ -14167,6 +14817,7 @@ class ReposClient:
         hook_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """repos/ping-webhook
 
@@ -14187,6 +14838,7 @@ class ReposClient:
             "POST",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
             },
@@ -14199,6 +14851,7 @@ class ReposClient:
         hook_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """repos/test-push-webhook
 
@@ -14222,6 +14875,7 @@ class ReposClient:
             "POST",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
             },
@@ -14234,6 +14888,7 @@ class ReposClient:
         hook_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """repos/test-push-webhook
 
@@ -14257,6 +14912,7 @@ class ReposClient:
             "POST",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
             },
@@ -14270,6 +14926,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[RepositoryInvitation], list[RepositoryInvitationType]]:
         """repos/list-invitations
 
@@ -14296,6 +14953,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[RepositoryInvitation],
         )
 
@@ -14307,6 +14965,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[RepositoryInvitation], list[RepositoryInvitationType]]:
         """repos/list-invitations
 
@@ -14333,6 +14992,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[RepositoryInvitation],
         )
 
@@ -14343,6 +15003,7 @@ class ReposClient:
         invitation_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """repos/delete-invitation
 
@@ -14359,6 +15020,7 @@ class ReposClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     async def async_delete_invitation(
@@ -14368,6 +15030,7 @@ class ReposClient:
         invitation_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """repos/delete-invitation
 
@@ -14384,6 +15047,7 @@ class ReposClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     @overload
@@ -14394,6 +15058,7 @@ class ReposClient:
         invitation_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoInvitationsInvitationIdPatchBodyType] = UNSET,
     ) -> Response[RepositoryInvitation, RepositoryInvitationType]: ...
 
@@ -14406,6 +15071,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         permissions: Missing[
             Literal["read", "write", "maintain", "triage", "admin"]
         ] = UNSET,
@@ -14418,6 +15084,7 @@ class ReposClient:
         invitation_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoInvitationsInvitationIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[RepositoryInvitation, RepositoryInvitationType]:
@@ -14453,6 +15120,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=RepositoryInvitation,
         )
 
@@ -14464,6 +15132,7 @@ class ReposClient:
         invitation_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoInvitationsInvitationIdPatchBodyType] = UNSET,
     ) -> Response[RepositoryInvitation, RepositoryInvitationType]: ...
 
@@ -14476,6 +15145,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         permissions: Missing[
             Literal["read", "write", "maintain", "triage", "admin"]
         ] = UNSET,
@@ -14488,6 +15158,7 @@ class ReposClient:
         invitation_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoInvitationsInvitationIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[RepositoryInvitation, RepositoryInvitationType]:
@@ -14523,6 +15194,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=RepositoryInvitation,
         )
 
@@ -14534,6 +15206,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[DeployKey], list[DeployKeyType]]:
         """repos/list-deploy-keys
 
@@ -14558,6 +15231,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[DeployKey],
         )
 
@@ -14569,6 +15243,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[DeployKey], list[DeployKeyType]]:
         """repos/list-deploy-keys
 
@@ -14593,6 +15268,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[DeployKey],
         )
 
@@ -14603,6 +15279,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoKeysPostBodyType,
     ) -> Response[DeployKey, DeployKeyType]: ...
 
@@ -14614,6 +15291,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         title: Missing[str] = UNSET,
         key: str,
         read_only: Missing[bool] = UNSET,
@@ -14625,6 +15303,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoKeysPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[DeployKey, DeployKeyType]:
@@ -14657,6 +15336,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=DeployKey,
             error_models={
                 "422": ValidationError,
@@ -14670,6 +15350,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoKeysPostBodyType,
     ) -> Response[DeployKey, DeployKeyType]: ...
 
@@ -14681,6 +15362,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         title: Missing[str] = UNSET,
         key: str,
         read_only: Missing[bool] = UNSET,
@@ -14692,6 +15374,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoKeysPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[DeployKey, DeployKeyType]:
@@ -14724,6 +15407,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=DeployKey,
             error_models={
                 "422": ValidationError,
@@ -14737,6 +15421,7 @@ class ReposClient:
         key_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[DeployKey, DeployKeyType]:
         """repos/get-deploy-key
 
@@ -14755,6 +15440,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=DeployKey,
             error_models={
                 "404": BasicError,
@@ -14768,6 +15454,7 @@ class ReposClient:
         key_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[DeployKey, DeployKeyType]:
         """repos/get-deploy-key
 
@@ -14786,6 +15473,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=DeployKey,
             error_models={
                 "404": BasicError,
@@ -14799,6 +15487,7 @@ class ReposClient:
         key_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """repos/delete-deploy-key
 
@@ -14817,6 +15506,7 @@ class ReposClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     async def async_delete_deploy_key(
@@ -14826,6 +15516,7 @@ class ReposClient:
         key_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """repos/delete-deploy-key
 
@@ -14844,6 +15535,7 @@ class ReposClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     def list_languages(
@@ -14852,6 +15544,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[Language, LanguageType]:
         """repos/list-languages
 
@@ -14872,6 +15565,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Language,
         )
 
@@ -14881,6 +15575,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[Language, LanguageType]:
         """repos/list-languages
 
@@ -14901,6 +15596,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Language,
         )
 
@@ -14910,6 +15606,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
@@ -14935,6 +15632,7 @@ class ReposClient:
             "PUT",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
             error_models={},
         )
@@ -14945,6 +15643,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
@@ -14970,6 +15669,7 @@ class ReposClient:
             "PUT",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
             error_models={},
         )
@@ -14980,6 +15680,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """repos/disable-lfs-for-repo
 
@@ -15000,6 +15701,7 @@ class ReposClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     async def async_disable_lfs_for_repo(
@@ -15008,6 +15710,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """repos/disable-lfs-for-repo
 
@@ -15028,6 +15731,7 @@ class ReposClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     @overload
@@ -15037,6 +15741,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoMergeUpstreamPostBodyType,
     ) -> Response[MergedUpstream, MergedUpstreamType]: ...
 
@@ -15048,6 +15753,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         branch: str,
     ) -> Response[MergedUpstream, MergedUpstreamType]: ...
 
@@ -15057,6 +15763,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoMergeUpstreamPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[MergedUpstream, MergedUpstreamType]:
@@ -15089,6 +15796,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=MergedUpstream,
             error_models={},
         )
@@ -15100,6 +15808,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoMergeUpstreamPostBodyType,
     ) -> Response[MergedUpstream, MergedUpstreamType]: ...
 
@@ -15111,6 +15820,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         branch: str,
     ) -> Response[MergedUpstream, MergedUpstreamType]: ...
 
@@ -15120,6 +15830,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoMergeUpstreamPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[MergedUpstream, MergedUpstreamType]:
@@ -15152,6 +15863,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=MergedUpstream,
             error_models={},
         )
@@ -15163,6 +15875,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoMergesPostBodyType,
     ) -> Response[Commit, CommitType]: ...
 
@@ -15174,6 +15887,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         base: str,
         head: str,
         commit_message: Missing[str] = UNSET,
@@ -15185,6 +15899,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoMergesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Commit, CommitType]:
@@ -15220,6 +15935,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Commit,
             error_models={
                 "403": BasicError,
@@ -15234,6 +15950,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoMergesPostBodyType,
     ) -> Response[Commit, CommitType]: ...
 
@@ -15245,6 +15962,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         base: str,
         head: str,
         commit_message: Missing[str] = UNSET,
@@ -15256,6 +15974,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoMergesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Commit, CommitType]:
@@ -15291,6 +16010,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Commit,
             error_models={
                 "403": BasicError,
@@ -15304,6 +16024,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[Page, PageType]:
         """repos/get-pages
 
@@ -15326,6 +16047,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Page,
             error_models={
                 "404": BasicError,
@@ -15338,6 +16060,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[Page, PageType]:
         """repos/get-pages
 
@@ -15360,6 +16083,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Page,
             error_models={
                 "404": BasicError,
@@ -15373,6 +16097,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Union[
             ReposOwnerRepoPagesPutBodyAnyof0Type,
             ReposOwnerRepoPagesPutBodyAnyof1Type,
@@ -15390,6 +16115,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         cname: Missing[Union[str, None]] = UNSET,
         https_enforced: Missing[bool] = UNSET,
         build_type: Literal["legacy", "workflow"],
@@ -15410,6 +16136,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         cname: Missing[Union[str, None]] = UNSET,
         https_enforced: Missing[bool] = UNSET,
         build_type: Missing[Literal["legacy", "workflow"]] = UNSET,
@@ -15428,6 +16155,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         cname: Union[str, None],
         https_enforced: Missing[bool] = UNSET,
         build_type: Missing[Literal["legacy", "workflow"]] = UNSET,
@@ -15448,6 +16176,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         cname: Missing[Union[str, None]] = UNSET,
         https_enforced: Missing[bool] = UNSET,
         build_type: Missing[Literal["legacy", "workflow"]] = UNSET,
@@ -15468,6 +16197,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         cname: Missing[Union[str, None]] = UNSET,
         https_enforced: bool,
         build_type: Missing[Literal["legacy", "workflow"]] = UNSET,
@@ -15486,6 +16216,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             Union[
                 ReposOwnerRepoPagesPutBodyAnyof0Type,
@@ -15549,6 +16280,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "422": ValidationError,
                 "400": BasicError,
@@ -15563,6 +16295,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Union[
             ReposOwnerRepoPagesPutBodyAnyof0Type,
             ReposOwnerRepoPagesPutBodyAnyof1Type,
@@ -15580,6 +16313,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         cname: Missing[Union[str, None]] = UNSET,
         https_enforced: Missing[bool] = UNSET,
         build_type: Literal["legacy", "workflow"],
@@ -15600,6 +16334,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         cname: Missing[Union[str, None]] = UNSET,
         https_enforced: Missing[bool] = UNSET,
         build_type: Missing[Literal["legacy", "workflow"]] = UNSET,
@@ -15618,6 +16353,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         cname: Union[str, None],
         https_enforced: Missing[bool] = UNSET,
         build_type: Missing[Literal["legacy", "workflow"]] = UNSET,
@@ -15638,6 +16374,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         cname: Missing[Union[str, None]] = UNSET,
         https_enforced: Missing[bool] = UNSET,
         build_type: Missing[Literal["legacy", "workflow"]] = UNSET,
@@ -15658,6 +16395,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         cname: Missing[Union[str, None]] = UNSET,
         https_enforced: bool,
         build_type: Missing[Literal["legacy", "workflow"]] = UNSET,
@@ -15676,6 +16414,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             Union[
                 ReposOwnerRepoPagesPutBodyAnyof0Type,
@@ -15739,6 +16478,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "422": ValidationError,
                 "400": BasicError,
@@ -15753,6 +16493,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Union[
             ReposOwnerRepoPagesPostBodyAnyof0Type,
             None,
@@ -15769,6 +16510,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         build_type: Missing[Literal["legacy", "workflow"]] = UNSET,
         source: ReposOwnerRepoPagesPostBodyPropSourceType,
     ) -> Response[Page, PageType]: ...
@@ -15781,6 +16523,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         build_type: Literal["legacy", "workflow"],
         source: Missing[ReposOwnerRepoPagesPostBodyPropSourceType] = UNSET,
     ) -> Response[Page, PageType]: ...
@@ -15791,6 +16534,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             Union[
                 ReposOwnerRepoPagesPostBodyAnyof0Type,
@@ -15850,6 +16594,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Page,
             error_models={
                 "422": ValidationError,
@@ -15864,6 +16609,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Union[
             ReposOwnerRepoPagesPostBodyAnyof0Type,
             None,
@@ -15880,6 +16626,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         build_type: Missing[Literal["legacy", "workflow"]] = UNSET,
         source: ReposOwnerRepoPagesPostBodyPropSourceType,
     ) -> Response[Page, PageType]: ...
@@ -15892,6 +16639,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         build_type: Literal["legacy", "workflow"],
         source: Missing[ReposOwnerRepoPagesPostBodyPropSourceType] = UNSET,
     ) -> Response[Page, PageType]: ...
@@ -15902,6 +16650,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             Union[
                 ReposOwnerRepoPagesPostBodyAnyof0Type,
@@ -15961,6 +16710,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Page,
             error_models={
                 "422": ValidationError,
@@ -15974,6 +16724,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """repos/delete-pages-site
 
@@ -15998,6 +16749,7 @@ class ReposClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "422": ValidationError,
                 "404": BasicError,
@@ -16011,6 +16763,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """repos/delete-pages-site
 
@@ -16035,6 +16788,7 @@ class ReposClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "422": ValidationError,
                 "404": BasicError,
@@ -16050,6 +16804,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[PageBuild], list[PageBuildType]]:
         """repos/list-pages-builds
 
@@ -16078,6 +16833,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[PageBuild],
         )
 
@@ -16089,6 +16845,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[PageBuild], list[PageBuildType]]:
         """repos/list-pages-builds
 
@@ -16117,6 +16874,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[PageBuild],
         )
 
@@ -16126,6 +16884,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[PageBuildStatus, PageBuildStatusType]:
         """repos/request-pages-build
 
@@ -16148,6 +16907,7 @@ class ReposClient:
             "POST",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=PageBuildStatus,
         )
 
@@ -16157,6 +16917,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[PageBuildStatus, PageBuildStatusType]:
         """repos/request-pages-build
 
@@ -16179,6 +16940,7 @@ class ReposClient:
             "POST",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=PageBuildStatus,
         )
 
@@ -16188,6 +16950,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[PageBuild, PageBuildType]:
         """repos/get-latest-pages-build
 
@@ -16210,6 +16973,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=PageBuild,
         )
 
@@ -16219,6 +16983,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[PageBuild, PageBuildType]:
         """repos/get-latest-pages-build
 
@@ -16241,6 +17006,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=PageBuild,
         )
 
@@ -16251,6 +17017,7 @@ class ReposClient:
         build_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[PageBuild, PageBuildType]:
         """repos/get-pages-build
 
@@ -16273,6 +17040,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=PageBuild,
         )
 
@@ -16283,6 +17051,7 @@ class ReposClient:
         build_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[PageBuild, PageBuildType]:
         """repos/get-pages-build
 
@@ -16305,6 +17074,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=PageBuild,
         )
 
@@ -16315,6 +17085,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoPagesDeploymentsPostBodyType,
     ) -> Response[PageDeployment, PageDeploymentType]: ...
 
@@ -16326,6 +17097,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         artifact_id: Missing[float] = UNSET,
         artifact_url: Missing[str] = UNSET,
         environment: Missing[str] = UNSET,
@@ -16339,6 +17111,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoPagesDeploymentsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[PageDeployment, PageDeploymentType]:
@@ -16378,6 +17151,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=PageDeployment,
             error_models={
                 "400": BasicError,
@@ -16393,6 +17167,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoPagesDeploymentsPostBodyType,
     ) -> Response[PageDeployment, PageDeploymentType]: ...
 
@@ -16404,6 +17179,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         artifact_id: Missing[float] = UNSET,
         artifact_url: Missing[str] = UNSET,
         environment: Missing[str] = UNSET,
@@ -16417,6 +17193,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoPagesDeploymentsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[PageDeployment, PageDeploymentType]:
@@ -16456,6 +17233,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=PageDeployment,
             error_models={
                 "400": BasicError,
@@ -16471,6 +17249,7 @@ class ReposClient:
         pages_deployment_id: Union[int, str],
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[PagesDeploymentStatus, PagesDeploymentStatusType]:
         """repos/get-pages-deployment
 
@@ -16493,6 +17272,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=PagesDeploymentStatus,
             error_models={
                 "404": BasicError,
@@ -16506,6 +17286,7 @@ class ReposClient:
         pages_deployment_id: Union[int, str],
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[PagesDeploymentStatus, PagesDeploymentStatusType]:
         """repos/get-pages-deployment
 
@@ -16528,6 +17309,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=PagesDeploymentStatus,
             error_models={
                 "404": BasicError,
@@ -16541,6 +17323,7 @@ class ReposClient:
         pages_deployment_id: Union[int, str],
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """repos/cancel-pages-deployment
 
@@ -16563,6 +17346,7 @@ class ReposClient:
             "POST",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
             },
@@ -16575,6 +17359,7 @@ class ReposClient:
         pages_deployment_id: Union[int, str],
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """repos/cancel-pages-deployment
 
@@ -16597,6 +17382,7 @@ class ReposClient:
             "POST",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
             },
@@ -16608,6 +17394,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[PagesHealthCheck, PagesHealthCheckType]:
         """repos/get-pages-health-check
 
@@ -16634,6 +17421,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=PagesHealthCheck,
             error_models={
                 "404": BasicError,
@@ -16646,6 +17434,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[PagesHealthCheck, PagesHealthCheckType]:
         """repos/get-pages-health-check
 
@@ -16672,6 +17461,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=PagesHealthCheck,
             error_models={
                 "404": BasicError,
@@ -16684,6 +17474,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200,
         ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200Type,
@@ -16710,6 +17501,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200,
             error_models={
                 "422": BasicError,
@@ -16722,6 +17514,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200,
         ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200Type,
@@ -16748,6 +17541,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200,
             error_models={
                 "422": BasicError,
@@ -16760,6 +17554,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """repos/enable-private-vulnerability-reporting
 
@@ -16780,6 +17575,7 @@ class ReposClient:
             "PUT",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "422": BasicError,
             },
@@ -16791,6 +17587,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """repos/enable-private-vulnerability-reporting
 
@@ -16811,6 +17608,7 @@ class ReposClient:
             "PUT",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "422": BasicError,
             },
@@ -16822,6 +17620,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """repos/disable-private-vulnerability-reporting
 
@@ -16842,6 +17641,7 @@ class ReposClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "422": BasicError,
             },
@@ -16853,6 +17653,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """repos/disable-private-vulnerability-reporting
 
@@ -16873,6 +17674,7 @@ class ReposClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "422": BasicError,
             },
@@ -16884,6 +17686,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[CustomPropertyValue], list[CustomPropertyValueType]]:
         """repos/get-custom-properties-values
 
@@ -16905,6 +17708,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[CustomPropertyValue],
             error_models={
                 "403": BasicError,
@@ -16918,6 +17722,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[CustomPropertyValue], list[CustomPropertyValueType]]:
         """repos/get-custom-properties-values
 
@@ -16939,6 +17744,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[CustomPropertyValue],
             error_models={
                 "403": BasicError,
@@ -16953,6 +17759,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoPropertiesValuesPatchBodyType,
     ) -> Response: ...
 
@@ -16964,6 +17771,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         properties: list[CustomPropertyValueType],
     ) -> Response: ...
 
@@ -16973,6 +17781,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoPropertiesValuesPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -17012,6 +17821,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "403": BasicError,
                 "404": BasicError,
@@ -17026,6 +17836,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoPropertiesValuesPatchBodyType,
     ) -> Response: ...
 
@@ -17037,6 +17848,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         properties: list[CustomPropertyValueType],
     ) -> Response: ...
 
@@ -17046,6 +17858,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoPropertiesValuesPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -17085,6 +17898,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "403": BasicError,
                 "404": BasicError,
@@ -17099,6 +17913,7 @@ class ReposClient:
         *,
         ref: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[ContentFile, ContentFileType]:
         """repos/get-readme
 
@@ -17129,6 +17944,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ContentFile,
             error_models={
                 "404": BasicError,
@@ -17143,6 +17959,7 @@ class ReposClient:
         *,
         ref: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[ContentFile, ContentFileType]:
         """repos/get-readme
 
@@ -17173,6 +17990,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ContentFile,
             error_models={
                 "404": BasicError,
@@ -17188,6 +18006,7 @@ class ReposClient:
         *,
         ref: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[ContentFile, ContentFileType]:
         """repos/get-readme-in-directory
 
@@ -17218,6 +18037,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ContentFile,
             error_models={
                 "404": BasicError,
@@ -17233,6 +18053,7 @@ class ReposClient:
         *,
         ref: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[ContentFile, ContentFileType]:
         """repos/get-readme-in-directory
 
@@ -17263,6 +18084,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ContentFile,
             error_models={
                 "404": BasicError,
@@ -17278,6 +18100,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Release], list[ReleaseType]]:
         """repos/list-releases
 
@@ -17306,6 +18129,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Release],
             error_models={
                 "404": BasicError,
@@ -17320,6 +18144,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Release], list[ReleaseType]]:
         """repos/list-releases
 
@@ -17348,6 +18173,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Release],
             error_models={
                 "404": BasicError,
@@ -17361,6 +18187,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoReleasesPostBodyType,
     ) -> Response[Release, ReleaseType]: ...
 
@@ -17372,6 +18199,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         tag_name: str,
         target_commitish: Missing[str] = UNSET,
         name: Missing[str] = UNSET,
@@ -17389,6 +18217,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoReleasesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Release, ReleaseType]:
@@ -17428,6 +18257,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Release,
             error_models={
                 "404": BasicError,
@@ -17442,6 +18272,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoReleasesPostBodyType,
     ) -> Response[Release, ReleaseType]: ...
 
@@ -17453,6 +18284,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         tag_name: str,
         target_commitish: Missing[str] = UNSET,
         name: Missing[str] = UNSET,
@@ -17470,6 +18302,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoReleasesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Release, ReleaseType]:
@@ -17509,6 +18342,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Release,
             error_models={
                 "404": BasicError,
@@ -17523,6 +18357,7 @@ class ReposClient:
         asset_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[ReleaseAsset, ReleaseAssetType]:
         """repos/get-release-asset
 
@@ -17549,6 +18384,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ReleaseAsset,
             error_models={
                 "404": BasicError,
@@ -17562,6 +18398,7 @@ class ReposClient:
         asset_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[ReleaseAsset, ReleaseAssetType]:
         """repos/get-release-asset
 
@@ -17588,6 +18425,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ReleaseAsset,
             error_models={
                 "404": BasicError,
@@ -17601,6 +18439,7 @@ class ReposClient:
         asset_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """repos/delete-release-asset
 
@@ -17617,6 +18456,7 @@ class ReposClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     async def async_delete_release_asset(
@@ -17626,6 +18466,7 @@ class ReposClient:
         asset_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """repos/delete-release-asset
 
@@ -17642,6 +18483,7 @@ class ReposClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     @overload
@@ -17652,6 +18494,7 @@ class ReposClient:
         asset_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoReleasesAssetsAssetIdPatchBodyType] = UNSET,
     ) -> Response[ReleaseAsset, ReleaseAssetType]: ...
 
@@ -17664,6 +18507,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: Missing[str] = UNSET,
         label: Missing[str] = UNSET,
         state: Missing[str] = UNSET,
@@ -17676,6 +18520,7 @@ class ReposClient:
         asset_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoReleasesAssetsAssetIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[ReleaseAsset, ReleaseAssetType]:
@@ -17710,6 +18555,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ReleaseAsset,
         )
 
@@ -17721,6 +18567,7 @@ class ReposClient:
         asset_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoReleasesAssetsAssetIdPatchBodyType] = UNSET,
     ) -> Response[ReleaseAsset, ReleaseAssetType]: ...
 
@@ -17733,6 +18580,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: Missing[str] = UNSET,
         label: Missing[str] = UNSET,
         state: Missing[str] = UNSET,
@@ -17745,6 +18593,7 @@ class ReposClient:
         asset_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoReleasesAssetsAssetIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[ReleaseAsset, ReleaseAssetType]:
@@ -17779,6 +18628,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ReleaseAsset,
         )
 
@@ -17789,6 +18639,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoReleasesGenerateNotesPostBodyType,
     ) -> Response[ReleaseNotesContent, ReleaseNotesContentType]: ...
 
@@ -17800,6 +18651,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         tag_name: str,
         target_commitish: Missing[str] = UNSET,
         previous_tag_name: Missing[str] = UNSET,
@@ -17812,6 +18664,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoReleasesGenerateNotesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[ReleaseNotesContent, ReleaseNotesContentType]:
@@ -17850,6 +18703,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ReleaseNotesContent,
             error_models={
                 "404": BasicError,
@@ -17863,6 +18717,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoReleasesGenerateNotesPostBodyType,
     ) -> Response[ReleaseNotesContent, ReleaseNotesContentType]: ...
 
@@ -17874,6 +18729,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         tag_name: str,
         target_commitish: Missing[str] = UNSET,
         previous_tag_name: Missing[str] = UNSET,
@@ -17886,6 +18742,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoReleasesGenerateNotesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[ReleaseNotesContent, ReleaseNotesContentType]:
@@ -17924,6 +18781,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ReleaseNotesContent,
             error_models={
                 "404": BasicError,
@@ -17936,6 +18794,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[Release, ReleaseType]:
         """repos/get-latest-release
 
@@ -17958,6 +18817,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Release,
         )
 
@@ -17967,6 +18827,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[Release, ReleaseType]:
         """repos/get-latest-release
 
@@ -17989,6 +18850,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Release,
         )
 
@@ -17999,6 +18861,7 @@ class ReposClient:
         tag: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[Release, ReleaseType]:
         """repos/get-release-by-tag
 
@@ -18019,6 +18882,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Release,
             error_models={
                 "404": BasicError,
@@ -18032,6 +18896,7 @@ class ReposClient:
         tag: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[Release, ReleaseType]:
         """repos/get-release-by-tag
 
@@ -18052,6 +18917,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Release,
             error_models={
                 "404": BasicError,
@@ -18065,6 +18931,7 @@ class ReposClient:
         release_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[Release, ReleaseType]:
         """repos/get-release
 
@@ -18088,6 +18955,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Release,
             error_models={},
         )
@@ -18099,6 +18967,7 @@ class ReposClient:
         release_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[Release, ReleaseType]:
         """repos/get-release
 
@@ -18122,6 +18991,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Release,
             error_models={},
         )
@@ -18133,6 +19003,7 @@ class ReposClient:
         release_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """repos/delete-release
 
@@ -18151,6 +19022,7 @@ class ReposClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     async def async_delete_release(
@@ -18160,6 +19032,7 @@ class ReposClient:
         release_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """repos/delete-release
 
@@ -18178,6 +19051,7 @@ class ReposClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     @overload
@@ -18188,6 +19062,7 @@ class ReposClient:
         release_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoReleasesReleaseIdPatchBodyType] = UNSET,
     ) -> Response[Release, ReleaseType]: ...
 
@@ -18200,6 +19075,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         tag_name: Missing[str] = UNSET,
         target_commitish: Missing[str] = UNSET,
         name: Missing[str] = UNSET,
@@ -18217,6 +19093,7 @@ class ReposClient:
         release_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoReleasesReleaseIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Release, ReleaseType]:
@@ -18253,6 +19130,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Release,
             error_models={
                 "404": BasicError,
@@ -18267,6 +19145,7 @@ class ReposClient:
         release_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoReleasesReleaseIdPatchBodyType] = UNSET,
     ) -> Response[Release, ReleaseType]: ...
 
@@ -18279,6 +19158,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         tag_name: Missing[str] = UNSET,
         target_commitish: Missing[str] = UNSET,
         name: Missing[str] = UNSET,
@@ -18296,6 +19176,7 @@ class ReposClient:
         release_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoReleasesReleaseIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Release, ReleaseType]:
@@ -18332,6 +19213,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Release,
             error_models={
                 "404": BasicError,
@@ -18347,6 +19229,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[ReleaseAsset], list[ReleaseAssetType]]:
         """repos/list-release-assets
 
@@ -18371,6 +19254,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[ReleaseAsset],
         )
 
@@ -18383,6 +19267,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[ReleaseAsset], list[ReleaseAssetType]]:
         """repos/list-release-assets
 
@@ -18407,6 +19292,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[ReleaseAsset],
         )
 
@@ -18419,6 +19305,7 @@ class ReposClient:
         name: str,
         label: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: FileTypes,
     ) -> Response[ReleaseAsset, ReleaseAssetType]:
         """repos/upload-release-asset
@@ -18471,6 +19358,7 @@ class ReposClient:
             params=exclude_unset(params),
             content=exclude_unset(content),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ReleaseAsset,
             error_models={},
         )
@@ -18484,6 +19372,7 @@ class ReposClient:
         name: str,
         label: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: FileTypes,
     ) -> Response[ReleaseAsset, ReleaseAssetType]:
         """repos/upload-release-asset
@@ -18536,6 +19425,7 @@ class ReposClient:
             params=exclude_unset(params),
             content=exclude_unset(content),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ReleaseAsset,
             error_models={},
         )
@@ -18549,6 +19439,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         list[
             Union[
@@ -18653,6 +19544,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[
                 Union[
                     RepositoryRuleDetailedOneof0,
@@ -18689,6 +19581,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         list[
             Union[
@@ -18793,6 +19686,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[
                 Union[
                     RepositoryRuleDetailedOneof0,
@@ -18830,6 +19724,7 @@ class ReposClient:
         includes_parents: Missing[bool] = UNSET,
         targets: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[RepositoryRuleset], list[RepositoryRulesetType]]:
         """repos/get-repo-rulesets
 
@@ -18858,6 +19753,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[RepositoryRuleset],
             error_models={
                 "404": BasicError,
@@ -18875,6 +19771,7 @@ class ReposClient:
         includes_parents: Missing[bool] = UNSET,
         targets: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[RepositoryRuleset], list[RepositoryRulesetType]]:
         """repos/get-repo-rulesets
 
@@ -18903,6 +19800,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[RepositoryRuleset],
             error_models={
                 "404": BasicError,
@@ -18917,6 +19815,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoRulesetsPostBodyType,
     ) -> Response[RepositoryRuleset, RepositoryRulesetType]: ...
 
@@ -18928,6 +19827,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: str,
         target: Missing[Literal["branch", "tag", "push"]] = UNSET,
         enforcement: Literal["disabled", "active", "evaluate"],
@@ -18968,6 +19868,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoRulesetsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[RepositoryRuleset, RepositoryRulesetType]:
@@ -19004,6 +19905,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=RepositoryRuleset,
             error_models={
                 "404": BasicError,
@@ -19018,6 +19920,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoRulesetsPostBodyType,
     ) -> Response[RepositoryRuleset, RepositoryRulesetType]: ...
 
@@ -19029,6 +19932,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: str,
         target: Missing[Literal["branch", "tag", "push"]] = UNSET,
         enforcement: Literal["disabled", "active", "evaluate"],
@@ -19069,6 +19973,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoRulesetsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[RepositoryRuleset, RepositoryRulesetType]:
@@ -19105,6 +20010,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=RepositoryRuleset,
             error_models={
                 "404": BasicError,
@@ -19124,6 +20030,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[RuleSuitesItems], list[RuleSuitesItemsType]]:
         """repos/get-repo-rule-suites
 
@@ -19155,6 +20062,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[RuleSuitesItems],
             error_models={
                 "404": BasicError,
@@ -19174,6 +20082,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[RuleSuitesItems], list[RuleSuitesItemsType]]:
         """repos/get-repo-rule-suites
 
@@ -19205,6 +20114,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[RuleSuitesItems],
             error_models={
                 "404": BasicError,
@@ -19219,6 +20129,7 @@ class ReposClient:
         rule_suite_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[RuleSuite, RuleSuiteType]:
         """repos/get-repo-rule-suite
 
@@ -19240,6 +20151,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=RuleSuite,
             error_models={
                 "404": BasicError,
@@ -19254,6 +20166,7 @@ class ReposClient:
         rule_suite_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[RuleSuite, RuleSuiteType]:
         """repos/get-repo-rule-suite
 
@@ -19275,6 +20188,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=RuleSuite,
             error_models={
                 "404": BasicError,
@@ -19290,6 +20204,7 @@ class ReposClient:
         *,
         includes_parents: Missing[bool] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[RepositoryRuleset, RepositoryRulesetType]:
         """repos/get-repo-ruleset
 
@@ -19318,6 +20233,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=RepositoryRuleset,
             error_models={
                 "404": BasicError,
@@ -19333,6 +20249,7 @@ class ReposClient:
         *,
         includes_parents: Missing[bool] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[RepositoryRuleset, RepositoryRulesetType]:
         """repos/get-repo-ruleset
 
@@ -19361,6 +20278,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=RepositoryRuleset,
             error_models={
                 "404": BasicError,
@@ -19376,6 +20294,7 @@ class ReposClient:
         ruleset_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoRulesetsRulesetIdPutBodyType] = UNSET,
     ) -> Response[RepositoryRuleset, RepositoryRulesetType]: ...
 
@@ -19388,6 +20307,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: Missing[str] = UNSET,
         target: Missing[Literal["branch", "tag", "push"]] = UNSET,
         enforcement: Missing[Literal["disabled", "active", "evaluate"]] = UNSET,
@@ -19429,6 +20349,7 @@ class ReposClient:
         ruleset_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoRulesetsRulesetIdPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[RepositoryRuleset, RepositoryRulesetType]:
@@ -19465,6 +20386,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=RepositoryRuleset,
             error_models={
                 "404": BasicError,
@@ -19480,6 +20402,7 @@ class ReposClient:
         ruleset_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoRulesetsRulesetIdPutBodyType] = UNSET,
     ) -> Response[RepositoryRuleset, RepositoryRulesetType]: ...
 
@@ -19492,6 +20415,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: Missing[str] = UNSET,
         target: Missing[Literal["branch", "tag", "push"]] = UNSET,
         enforcement: Missing[Literal["disabled", "active", "evaluate"]] = UNSET,
@@ -19533,6 +20457,7 @@ class ReposClient:
         ruleset_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoRulesetsRulesetIdPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[RepositoryRuleset, RepositoryRulesetType]:
@@ -19569,6 +20494,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=RepositoryRuleset,
             error_models={
                 "404": BasicError,
@@ -19583,6 +20509,7 @@ class ReposClient:
         ruleset_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """repos/delete-repo-ruleset
 
@@ -19603,6 +20530,7 @@ class ReposClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
                 "500": BasicError,
@@ -19616,6 +20544,7 @@ class ReposClient:
         ruleset_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """repos/delete-repo-ruleset
 
@@ -19636,6 +20565,7 @@ class ReposClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "404": BasicError,
                 "500": BasicError,
@@ -19651,6 +20581,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[RulesetVersion], list[RulesetVersionType]]:
         """repos/get-repo-ruleset-history
 
@@ -19677,6 +20608,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[RulesetVersion],
             error_models={
                 "404": BasicError,
@@ -19693,6 +20625,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[RulesetVersion], list[RulesetVersionType]]:
         """repos/get-repo-ruleset-history
 
@@ -19719,6 +20652,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[RulesetVersion],
             error_models={
                 "404": BasicError,
@@ -19734,6 +20668,7 @@ class ReposClient:
         version_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[RulesetVersionWithState, RulesetVersionWithStateType]:
         """repos/get-repo-ruleset-version
 
@@ -19754,6 +20689,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=RulesetVersionWithState,
             error_models={
                 "404": BasicError,
@@ -19769,6 +20705,7 @@ class ReposClient:
         version_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[RulesetVersionWithState, RulesetVersionWithStateType]:
         """repos/get-repo-ruleset-version
 
@@ -19789,6 +20726,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=RulesetVersionWithState,
             error_models={
                 "404": BasicError,
@@ -19802,6 +20740,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[list[int]], list[list[int]]]:
         """repos/get-code-frequency-stats
 
@@ -19823,6 +20762,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[list[int]],
             error_models={},
         )
@@ -19833,6 +20773,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[list[int]], list[list[int]]]:
         """repos/get-code-frequency-stats
 
@@ -19854,6 +20795,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[list[int]],
             error_models={},
         )
@@ -19864,6 +20806,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[CommitActivity], list[CommitActivityType]]:
         """repos/get-commit-activity-stats
 
@@ -19884,6 +20827,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[CommitActivity],
         )
 
@@ -19893,6 +20837,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[CommitActivity], list[CommitActivityType]]:
         """repos/get-commit-activity-stats
 
@@ -19913,6 +20858,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[CommitActivity],
         )
 
@@ -19922,6 +20868,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[ContributorActivity], list[ContributorActivityType]]:
         """repos/get-contributors-stats
 
@@ -19951,6 +20898,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[ContributorActivity],
         )
 
@@ -19960,6 +20908,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[ContributorActivity], list[ContributorActivityType]]:
         """repos/get-contributors-stats
 
@@ -19989,6 +20938,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[ContributorActivity],
         )
 
@@ -19998,6 +20948,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[ParticipationStats, ParticipationStatsType]:
         """repos/get-participation-stats
 
@@ -20022,6 +20973,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ParticipationStats,
             error_models={
                 "404": BasicError,
@@ -20034,6 +20986,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[ParticipationStats, ParticipationStatsType]:
         """repos/get-participation-stats
 
@@ -20058,6 +21011,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ParticipationStats,
             error_models={
                 "404": BasicError,
@@ -20070,6 +21024,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[list[int]], list[list[int]]]:
         """repos/get-punch-card-stats
 
@@ -20094,6 +21049,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[list[int]],
         )
 
@@ -20103,6 +21059,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[list[int]], list[list[int]]]:
         """repos/get-punch-card-stats
 
@@ -20127,6 +21084,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[list[int]],
         )
 
@@ -20138,6 +21096,7 @@ class ReposClient:
         sha: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoStatusesShaPostBodyType,
     ) -> Response[Status, StatusType]: ...
 
@@ -20150,6 +21109,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         state: Literal["error", "failure", "pending", "success"],
         target_url: Missing[Union[str, None]] = UNSET,
         description: Missing[Union[str, None]] = UNSET,
@@ -20163,6 +21123,7 @@ class ReposClient:
         sha: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoStatusesShaPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Status, StatusType]:
@@ -20197,6 +21158,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Status,
         )
 
@@ -20208,6 +21170,7 @@ class ReposClient:
         sha: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoStatusesShaPostBodyType,
     ) -> Response[Status, StatusType]: ...
 
@@ -20220,6 +21183,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         state: Literal["error", "failure", "pending", "success"],
         target_url: Missing[Union[str, None]] = UNSET,
         description: Missing[Union[str, None]] = UNSET,
@@ -20233,6 +21197,7 @@ class ReposClient:
         sha: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoStatusesShaPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Status, StatusType]:
@@ -20267,6 +21232,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Status,
         )
 
@@ -20278,6 +21244,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Tag], list[TagType]]:
         """repos/list-tags
 
@@ -20302,6 +21269,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Tag],
         )
 
@@ -20313,6 +21281,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Tag], list[TagType]]:
         """repos/list-tags
 
@@ -20337,6 +21306,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Tag],
         )
 
@@ -20346,6 +21316,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[TagProtection], list[TagProtectionType]]:
         """DEPRECATED repos/list-tag-protection
 
@@ -20371,6 +21342,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[TagProtection],
             error_models={
                 "403": BasicError,
@@ -20384,6 +21356,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[TagProtection], list[TagProtectionType]]:
         """DEPRECATED repos/list-tag-protection
 
@@ -20409,6 +21382,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[TagProtection],
             error_models={
                 "403": BasicError,
@@ -20423,6 +21397,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoTagsProtectionPostBodyType,
     ) -> Response[TagProtection, TagProtectionType]: ...
 
@@ -20434,6 +21409,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         pattern: str,
     ) -> Response[TagProtection, TagProtectionType]: ...
 
@@ -20443,6 +21419,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoTagsProtectionPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[TagProtection, TagProtectionType]:
@@ -20483,6 +21460,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=TagProtection,
             error_models={
                 "403": BasicError,
@@ -20497,6 +21475,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoTagsProtectionPostBodyType,
     ) -> Response[TagProtection, TagProtectionType]: ...
 
@@ -20508,6 +21487,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         pattern: str,
     ) -> Response[TagProtection, TagProtectionType]: ...
 
@@ -20517,6 +21497,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoTagsProtectionPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[TagProtection, TagProtectionType]:
@@ -20557,6 +21538,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=TagProtection,
             error_models={
                 "403": BasicError,
@@ -20571,6 +21553,7 @@ class ReposClient:
         tag_protection_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """DEPRECATED repos/delete-tag-protection
 
@@ -20595,6 +21578,7 @@ class ReposClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "403": BasicError,
                 "404": BasicError,
@@ -20608,6 +21592,7 @@ class ReposClient:
         tag_protection_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """DEPRECATED repos/delete-tag-protection
 
@@ -20632,6 +21617,7 @@ class ReposClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "403": BasicError,
                 "404": BasicError,
@@ -20645,6 +21631,7 @@ class ReposClient:
         ref: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """repos/download-tarball-archive
 
@@ -20668,6 +21655,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     async def async_download_tarball_archive(
@@ -20677,6 +21665,7 @@ class ReposClient:
         ref: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """repos/download-tarball-archive
 
@@ -20700,6 +21689,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     def list_teams(
@@ -20710,6 +21700,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Team], list[TeamType]]:
         """repos/list-teams
 
@@ -20740,6 +21731,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Team],
             error_models={
                 "404": BasicError,
@@ -20754,6 +21746,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Team], list[TeamType]]:
         """repos/list-teams
 
@@ -20784,6 +21777,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Team],
             error_models={
                 "404": BasicError,
@@ -20798,6 +21792,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[Topic, TopicType]:
         """repos/get-all-topics
 
@@ -20822,6 +21817,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Topic,
             error_models={
                 "404": BasicError,
@@ -20836,6 +21832,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[Topic, TopicType]:
         """repos/get-all-topics
 
@@ -20860,6 +21857,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Topic,
             error_models={
                 "404": BasicError,
@@ -20873,6 +21871,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoTopicsPutBodyType,
     ) -> Response[Topic, TopicType]: ...
 
@@ -20884,6 +21883,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         names: list[str],
     ) -> Response[Topic, TopicType]: ...
 
@@ -20893,6 +21893,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoTopicsPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[Topic, TopicType]:
@@ -20928,6 +21929,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Topic,
             error_models={
                 "404": BasicError,
@@ -20942,6 +21944,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoTopicsPutBodyType,
     ) -> Response[Topic, TopicType]: ...
 
@@ -20953,6 +21956,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         names: list[str],
     ) -> Response[Topic, TopicType]: ...
 
@@ -20962,6 +21966,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoTopicsPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[Topic, TopicType]:
@@ -20997,6 +22002,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Topic,
             error_models={
                 "404": BasicError,
@@ -21011,6 +22017,7 @@ class ReposClient:
         *,
         per: Missing[Literal["day", "week"]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[CloneTraffic, CloneTrafficType]:
         """repos/get-clones
 
@@ -21036,6 +22043,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CloneTraffic,
             error_models={
                 "403": BasicError,
@@ -21049,6 +22057,7 @@ class ReposClient:
         *,
         per: Missing[Literal["day", "week"]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[CloneTraffic, CloneTrafficType]:
         """repos/get-clones
 
@@ -21074,6 +22083,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CloneTraffic,
             error_models={
                 "403": BasicError,
@@ -21086,6 +22096,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[ContentTraffic], list[ContentTrafficType]]:
         """repos/get-top-paths
 
@@ -21106,6 +22117,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[ContentTraffic],
             error_models={
                 "403": BasicError,
@@ -21118,6 +22130,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[ContentTraffic], list[ContentTrafficType]]:
         """repos/get-top-paths
 
@@ -21138,6 +22151,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[ContentTraffic],
             error_models={
                 "403": BasicError,
@@ -21150,6 +22164,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[ReferrerTraffic], list[ReferrerTrafficType]]:
         """repos/get-top-referrers
 
@@ -21170,6 +22185,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[ReferrerTraffic],
             error_models={
                 "403": BasicError,
@@ -21182,6 +22198,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[ReferrerTraffic], list[ReferrerTrafficType]]:
         """repos/get-top-referrers
 
@@ -21202,6 +22219,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[ReferrerTraffic],
             error_models={
                 "403": BasicError,
@@ -21215,6 +22233,7 @@ class ReposClient:
         *,
         per: Missing[Literal["day", "week"]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[ViewTraffic, ViewTrafficType]:
         """repos/get-views
 
@@ -21240,6 +22259,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ViewTraffic,
             error_models={
                 "403": BasicError,
@@ -21253,6 +22273,7 @@ class ReposClient:
         *,
         per: Missing[Literal["day", "week"]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[ViewTraffic, ViewTrafficType]:
         """repos/get-views
 
@@ -21278,6 +22299,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=ViewTraffic,
             error_models={
                 "403": BasicError,
@@ -21291,6 +22313,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoTransferPostBodyType,
     ) -> Response[MinimalRepository, MinimalRepositoryType]: ...
 
@@ -21302,6 +22325,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         new_owner: str,
         new_name: Missing[str] = UNSET,
         team_ids: Missing[list[int]] = UNSET,
@@ -21313,6 +22337,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoTransferPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[MinimalRepository, MinimalRepositoryType]:
@@ -21345,6 +22370,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=MinimalRepository,
         )
 
@@ -21355,6 +22381,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoTransferPostBodyType,
     ) -> Response[MinimalRepository, MinimalRepositoryType]: ...
 
@@ -21366,6 +22393,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         new_owner: str,
         new_name: Missing[str] = UNSET,
         team_ids: Missing[list[int]] = UNSET,
@@ -21377,6 +22405,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoTransferPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[MinimalRepository, MinimalRepositoryType]:
@@ -21409,6 +22438,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=MinimalRepository,
         )
 
@@ -21418,6 +22448,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """repos/check-vulnerability-alerts
 
@@ -21436,6 +22467,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={},
         )
 
@@ -21445,6 +22477,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """repos/check-vulnerability-alerts
 
@@ -21463,6 +22496,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={},
         )
 
@@ -21472,6 +22506,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """repos/enable-vulnerability-alerts
 
@@ -21490,6 +22525,7 @@ class ReposClient:
             "PUT",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     async def async_enable_vulnerability_alerts(
@@ -21498,6 +22534,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """repos/enable-vulnerability-alerts
 
@@ -21516,6 +22553,7 @@ class ReposClient:
             "PUT",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     def disable_vulnerability_alerts(
@@ -21524,6 +22562,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """repos/disable-vulnerability-alerts
 
@@ -21544,6 +22583,7 @@ class ReposClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     async def async_disable_vulnerability_alerts(
@@ -21552,6 +22592,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """repos/disable-vulnerability-alerts
 
@@ -21572,6 +22613,7 @@ class ReposClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     def download_zipball_archive(
@@ -21581,6 +22623,7 @@ class ReposClient:
         ref: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """repos/download-zipball-archive
 
@@ -21604,6 +22647,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     async def async_download_zipball_archive(
@@ -21613,6 +22657,7 @@ class ReposClient:
         ref: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """repos/download-zipball-archive
 
@@ -21636,6 +22681,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     @overload
@@ -21645,6 +22691,7 @@ class ReposClient:
         template_repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposTemplateOwnerTemplateRepoGeneratePostBodyType,
     ) -> Response[FullRepository, FullRepositoryType]: ...
 
@@ -21656,6 +22703,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         owner: Missing[str] = UNSET,
         name: str,
         description: Missing[str] = UNSET,
@@ -21669,6 +22717,7 @@ class ReposClient:
         template_repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposTemplateOwnerTemplateRepoGeneratePostBodyType] = UNSET,
         **kwargs,
     ) -> Response[FullRepository, FullRepositoryType]:
@@ -21708,6 +22757,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=FullRepository,
         )
 
@@ -21718,6 +22768,7 @@ class ReposClient:
         template_repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposTemplateOwnerTemplateRepoGeneratePostBodyType,
     ) -> Response[FullRepository, FullRepositoryType]: ...
 
@@ -21729,6 +22780,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         owner: Missing[str] = UNSET,
         name: str,
         description: Missing[str] = UNSET,
@@ -21742,6 +22794,7 @@ class ReposClient:
         template_repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposTemplateOwnerTemplateRepoGeneratePostBodyType] = UNSET,
         **kwargs,
     ) -> Response[FullRepository, FullRepositoryType]:
@@ -21781,6 +22834,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=FullRepository,
         )
 
@@ -21789,6 +22843,7 @@ class ReposClient:
         *,
         since: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
         """repos/list-public
 
@@ -21818,6 +22873,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[MinimalRepository],
             error_models={
                 "422": ValidationError,
@@ -21829,6 +22885,7 @@ class ReposClient:
         *,
         since: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
         """repos/list-public
 
@@ -21858,6 +22915,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[MinimalRepository],
             error_models={
                 "422": ValidationError,
@@ -21877,6 +22935,7 @@ class ReposClient:
         since: Missing[datetime] = UNSET,
         before: Missing[datetime] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Repository], list[RepositoryType]]:
         """repos/list-for-authenticated-user
 
@@ -21912,6 +22971,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Repository],
             error_models={
                 "422": ValidationError,
@@ -21933,6 +22993,7 @@ class ReposClient:
         since: Missing[datetime] = UNSET,
         before: Missing[datetime] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Repository], list[RepositoryType]]:
         """repos/list-for-authenticated-user
 
@@ -21968,6 +23029,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Repository],
             error_models={
                 "422": ValidationError,
@@ -21981,6 +23043,7 @@ class ReposClient:
         self,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: UserReposPostBodyType,
     ) -> Response[FullRepository, FullRepositoryType]: ...
 
@@ -21990,6 +23053,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: str,
         description: Missing[str] = UNSET,
         homepage: Missing[str] = UNSET,
@@ -22023,6 +23087,7 @@ class ReposClient:
         self,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[UserReposPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[FullRepository, FullRepositoryType]:
@@ -22062,6 +23127,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=FullRepository,
             error_models={
                 "401": BasicError,
@@ -22077,6 +23143,7 @@ class ReposClient:
         self,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: UserReposPostBodyType,
     ) -> Response[FullRepository, FullRepositoryType]: ...
 
@@ -22086,6 +23153,7 @@ class ReposClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: str,
         description: Missing[str] = UNSET,
         homepage: Missing[str] = UNSET,
@@ -22119,6 +23187,7 @@ class ReposClient:
         self,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[UserReposPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[FullRepository, FullRepositoryType]:
@@ -22158,6 +23227,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=FullRepository,
             error_models={
                 "401": BasicError,
@@ -22174,6 +23244,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[RepositoryInvitation], list[RepositoryInvitationType]]:
         """repos/list-invitations-for-authenticated-user
 
@@ -22200,6 +23271,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[RepositoryInvitation],
             error_models={
                 "404": BasicError,
@@ -22214,6 +23286,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[RepositoryInvitation], list[RepositoryInvitationType]]:
         """repos/list-invitations-for-authenticated-user
 
@@ -22240,6 +23313,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[RepositoryInvitation],
             error_models={
                 "404": BasicError,
@@ -22253,6 +23327,7 @@ class ReposClient:
         invitation_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """repos/decline-invitation-for-authenticated-user
 
@@ -22271,6 +23346,7 @@ class ReposClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "409": BasicError,
                 "404": BasicError,
@@ -22283,6 +23359,7 @@ class ReposClient:
         invitation_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """repos/decline-invitation-for-authenticated-user
 
@@ -22301,6 +23378,7 @@ class ReposClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "409": BasicError,
                 "404": BasicError,
@@ -22313,6 +23391,7 @@ class ReposClient:
         invitation_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """repos/accept-invitation-for-authenticated-user
 
@@ -22331,6 +23410,7 @@ class ReposClient:
             "PATCH",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "403": BasicError,
                 "409": BasicError,
@@ -22343,6 +23423,7 @@ class ReposClient:
         invitation_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """repos/accept-invitation-for-authenticated-user
 
@@ -22361,6 +23442,7 @@ class ReposClient:
             "PATCH",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "403": BasicError,
                 "409": BasicError,
@@ -22378,6 +23460,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
         """repos/list-for-user
 
@@ -22407,6 +23490,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[MinimalRepository],
         )
 
@@ -22420,6 +23504,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
         """repos/list-for-user
 
@@ -22449,5 +23534,6 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[MinimalRepository],
         )

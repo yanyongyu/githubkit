@@ -86,6 +86,7 @@ class CodeSecurityClient:
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[CodeSecurityConfiguration], list[CodeSecurityConfigurationType]]:
         """code-security/get-configurations-for-enterprise
 
@@ -117,6 +118,7 @@ class CodeSecurityClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[CodeSecurityConfiguration],
             error_models={
                 "403": BasicError,
@@ -132,6 +134,7 @@ class CodeSecurityClient:
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[CodeSecurityConfiguration], list[CodeSecurityConfigurationType]]:
         """code-security/get-configurations-for-enterprise
 
@@ -163,6 +166,7 @@ class CodeSecurityClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[CodeSecurityConfiguration],
             error_models={
                 "403": BasicError,
@@ -176,6 +180,7 @@ class CodeSecurityClient:
         enterprise: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyType,
     ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]: ...
 
@@ -186,6 +191,7 @@ class CodeSecurityClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: str,
         description: str,
         advanced_security: Missing[
@@ -238,6 +244,7 @@ class CodeSecurityClient:
         enterprise: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyType
         ] = UNSET,
@@ -282,6 +289,7 @@ class CodeSecurityClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CodeSecurityConfiguration,
             error_models={
                 "400": BasicError,
@@ -296,6 +304,7 @@ class CodeSecurityClient:
         enterprise: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyType,
     ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]: ...
 
@@ -306,6 +315,7 @@ class CodeSecurityClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: str,
         description: str,
         advanced_security: Missing[
@@ -358,6 +368,7 @@ class CodeSecurityClient:
         enterprise: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyType
         ] = UNSET,
@@ -402,6 +413,7 @@ class CodeSecurityClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CodeSecurityConfiguration,
             error_models={
                 "400": BasicError,
@@ -415,6 +427,7 @@ class CodeSecurityClient:
         enterprise: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         list[CodeSecurityDefaultConfigurationsItems],
         list[CodeSecurityDefaultConfigurationsItemsType],
@@ -442,6 +455,7 @@ class CodeSecurityClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[CodeSecurityDefaultConfigurationsItems],
         )
 
@@ -450,6 +464,7 @@ class CodeSecurityClient:
         enterprise: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         list[CodeSecurityDefaultConfigurationsItems],
         list[CodeSecurityDefaultConfigurationsItemsType],
@@ -477,6 +492,7 @@ class CodeSecurityClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[CodeSecurityDefaultConfigurationsItems],
         )
 
@@ -486,6 +502,7 @@ class CodeSecurityClient:
         configuration_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]:
         """code-security/get-single-configuration-for-enterprise
 
@@ -512,6 +529,7 @@ class CodeSecurityClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CodeSecurityConfiguration,
             error_models={
                 "403": BasicError,
@@ -525,6 +543,7 @@ class CodeSecurityClient:
         configuration_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]:
         """code-security/get-single-configuration-for-enterprise
 
@@ -551,6 +570,7 @@ class CodeSecurityClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CodeSecurityConfiguration,
             error_models={
                 "403": BasicError,
@@ -564,6 +584,7 @@ class CodeSecurityClient:
         configuration_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """code-security/delete-configuration-for-enterprise
 
@@ -592,6 +613,7 @@ class CodeSecurityClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "400": BasicError,
                 "403": BasicError,
@@ -606,6 +628,7 @@ class CodeSecurityClient:
         configuration_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """code-security/delete-configuration-for-enterprise
 
@@ -634,6 +657,7 @@ class CodeSecurityClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "400": BasicError,
                 "403": BasicError,
@@ -649,6 +673,7 @@ class CodeSecurityClient:
         configuration_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyType,
     ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]: ...
 
@@ -660,6 +685,7 @@ class CodeSecurityClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
         advanced_security: Missing[
@@ -713,6 +739,7 @@ class CodeSecurityClient:
         configuration_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyType
         ] = UNSET,
@@ -760,6 +787,7 @@ class CodeSecurityClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CodeSecurityConfiguration,
             error_models={
                 "403": BasicError,
@@ -775,6 +803,7 @@ class CodeSecurityClient:
         configuration_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyType,
     ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]: ...
 
@@ -786,6 +815,7 @@ class CodeSecurityClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
         advanced_security: Missing[
@@ -839,6 +869,7 @@ class CodeSecurityClient:
         configuration_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyType
         ] = UNSET,
@@ -886,6 +917,7 @@ class CodeSecurityClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CodeSecurityConfiguration,
             error_models={
                 "403": BasicError,
@@ -901,6 +933,7 @@ class CodeSecurityClient:
         configuration_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBodyType,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
@@ -915,6 +948,7 @@ class CodeSecurityClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         scope: Literal["all", "all_without_configurations"],
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
@@ -927,6 +961,7 @@ class CodeSecurityClient:
         configuration_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBodyType
         ] = UNSET,
@@ -977,6 +1012,7 @@ class CodeSecurityClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
             error_models={
                 "403": BasicError,
@@ -992,6 +1028,7 @@ class CodeSecurityClient:
         configuration_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBodyType,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
@@ -1006,6 +1043,7 @@ class CodeSecurityClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         scope: Literal["all", "all_without_configurations"],
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
@@ -1018,6 +1056,7 @@ class CodeSecurityClient:
         configuration_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBodyType
         ] = UNSET,
@@ -1068,6 +1107,7 @@ class CodeSecurityClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
             error_models={
                 "403": BasicError,
@@ -1083,6 +1123,7 @@ class CodeSecurityClient:
         configuration_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType,
     ) -> Response[
         EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200,
@@ -1097,6 +1138,7 @@ class CodeSecurityClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         default_for_new_repos: Missing[
             Literal["all", "none", "private_and_internal", "public"]
         ] = UNSET,
@@ -1111,6 +1153,7 @@ class CodeSecurityClient:
         configuration_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType
         ] = UNSET,
@@ -1161,6 +1204,7 @@ class CodeSecurityClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200,
             error_models={
                 "403": BasicError,
@@ -1175,6 +1219,7 @@ class CodeSecurityClient:
         configuration_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType,
     ) -> Response[
         EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200,
@@ -1189,6 +1234,7 @@ class CodeSecurityClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         default_for_new_repos: Missing[
             Literal["all", "none", "private_and_internal", "public"]
         ] = UNSET,
@@ -1203,6 +1249,7 @@ class CodeSecurityClient:
         configuration_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType
         ] = UNSET,
@@ -1253,6 +1300,7 @@ class CodeSecurityClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200,
             error_models={
                 "403": BasicError,
@@ -1270,6 +1318,7 @@ class CodeSecurityClient:
         after: Missing[str] = UNSET,
         status: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         list[CodeSecurityConfigurationRepositories],
         list[CodeSecurityConfigurationRepositoriesType],
@@ -1305,6 +1354,7 @@ class CodeSecurityClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[CodeSecurityConfigurationRepositories],
             error_models={
                 "403": BasicError,
@@ -1322,6 +1372,7 @@ class CodeSecurityClient:
         after: Missing[str] = UNSET,
         status: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         list[CodeSecurityConfigurationRepositories],
         list[CodeSecurityConfigurationRepositoriesType],
@@ -1357,6 +1408,7 @@ class CodeSecurityClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[CodeSecurityConfigurationRepositories],
             error_models={
                 "403": BasicError,
@@ -1373,6 +1425,7 @@ class CodeSecurityClient:
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[CodeSecurityConfiguration], list[CodeSecurityConfigurationType]]:
         """code-security/get-configurations-for-org
 
@@ -1405,6 +1458,7 @@ class CodeSecurityClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[CodeSecurityConfiguration],
             error_models={
                 "403": BasicError,
@@ -1421,6 +1475,7 @@ class CodeSecurityClient:
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[CodeSecurityConfiguration], list[CodeSecurityConfigurationType]]:
         """code-security/get-configurations-for-org
 
@@ -1453,6 +1508,7 @@ class CodeSecurityClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[CodeSecurityConfiguration],
             error_models={
                 "403": BasicError,
@@ -1466,6 +1522,7 @@ class CodeSecurityClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgCodeSecurityConfigurationsPostBodyType,
     ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]: ...
 
@@ -1476,6 +1533,7 @@ class CodeSecurityClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: str,
         description: str,
         advanced_security: Missing[
@@ -1534,6 +1592,7 @@ class CodeSecurityClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgCodeSecurityConfigurationsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]:
@@ -1573,6 +1632,7 @@ class CodeSecurityClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CodeSecurityConfiguration,
         )
 
@@ -1582,6 +1642,7 @@ class CodeSecurityClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgCodeSecurityConfigurationsPostBodyType,
     ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]: ...
 
@@ -1592,6 +1653,7 @@ class CodeSecurityClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: str,
         description: str,
         advanced_security: Missing[
@@ -1650,6 +1712,7 @@ class CodeSecurityClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgCodeSecurityConfigurationsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]:
@@ -1689,6 +1752,7 @@ class CodeSecurityClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CodeSecurityConfiguration,
         )
 
@@ -1697,6 +1761,7 @@ class CodeSecurityClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         list[CodeSecurityDefaultConfigurationsItems],
         list[CodeSecurityDefaultConfigurationsItemsType],
@@ -1724,6 +1789,7 @@ class CodeSecurityClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[CodeSecurityDefaultConfigurationsItems],
             error_models={
                 "403": BasicError,
@@ -1736,6 +1802,7 @@ class CodeSecurityClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         list[CodeSecurityDefaultConfigurationsItems],
         list[CodeSecurityDefaultConfigurationsItemsType],
@@ -1763,6 +1830,7 @@ class CodeSecurityClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[CodeSecurityDefaultConfigurationsItems],
             error_models={
                 "403": BasicError,
@@ -1776,6 +1844,7 @@ class CodeSecurityClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgCodeSecurityConfigurationsDetachDeleteBodyType,
     ) -> Response: ...
 
@@ -1786,6 +1855,7 @@ class CodeSecurityClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         selected_repository_ids: Missing[list[int]] = UNSET,
     ) -> Response: ...
 
@@ -1794,6 +1864,7 @@ class CodeSecurityClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgCodeSecurityConfigurationsDetachDeleteBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -1836,6 +1907,7 @@ class CodeSecurityClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "400": BasicError,
                 "403": BasicError,
@@ -1850,6 +1922,7 @@ class CodeSecurityClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgCodeSecurityConfigurationsDetachDeleteBodyType,
     ) -> Response: ...
 
@@ -1860,6 +1933,7 @@ class CodeSecurityClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         selected_repository_ids: Missing[list[int]] = UNSET,
     ) -> Response: ...
 
@@ -1868,6 +1942,7 @@ class CodeSecurityClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgCodeSecurityConfigurationsDetachDeleteBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -1910,6 +1985,7 @@ class CodeSecurityClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "400": BasicError,
                 "403": BasicError,
@@ -1924,6 +2000,7 @@ class CodeSecurityClient:
         configuration_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]:
         """code-security/get-configuration
 
@@ -1948,6 +2025,7 @@ class CodeSecurityClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CodeSecurityConfiguration,
             error_models={
                 "403": BasicError,
@@ -1961,6 +2039,7 @@ class CodeSecurityClient:
         configuration_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]:
         """code-security/get-configuration
 
@@ -1985,6 +2064,7 @@ class CodeSecurityClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CodeSecurityConfiguration,
             error_models={
                 "403": BasicError,
@@ -1998,6 +2078,7 @@ class CodeSecurityClient:
         configuration_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """code-security/delete-configuration
 
@@ -2024,6 +2105,7 @@ class CodeSecurityClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "400": BasicError,
                 "403": BasicError,
@@ -2038,6 +2120,7 @@ class CodeSecurityClient:
         configuration_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """code-security/delete-configuration
 
@@ -2064,6 +2147,7 @@ class CodeSecurityClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             error_models={
                 "400": BasicError,
                 "403": BasicError,
@@ -2079,6 +2163,7 @@ class CodeSecurityClient:
         configuration_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyType,
     ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]: ...
 
@@ -2090,6 +2175,7 @@ class CodeSecurityClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
         advanced_security: Missing[
@@ -2149,6 +2235,7 @@ class CodeSecurityClient:
         configuration_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyType
         ] = UNSET,
@@ -2192,6 +2279,7 @@ class CodeSecurityClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CodeSecurityConfiguration,
         )
 
@@ -2202,6 +2290,7 @@ class CodeSecurityClient:
         configuration_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyType,
     ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]: ...
 
@@ -2213,6 +2302,7 @@ class CodeSecurityClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
         advanced_security: Missing[
@@ -2272,6 +2362,7 @@ class CodeSecurityClient:
         configuration_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyType
         ] = UNSET,
@@ -2315,6 +2406,7 @@ class CodeSecurityClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CodeSecurityConfiguration,
         )
 
@@ -2325,6 +2417,7 @@ class CodeSecurityClient:
         configuration_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBodyType,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
@@ -2339,6 +2432,7 @@ class CodeSecurityClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         scope: Literal[
             "all",
             "all_without_configurations",
@@ -2358,6 +2452,7 @@ class CodeSecurityClient:
         configuration_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBodyType
         ] = UNSET,
@@ -2406,6 +2501,7 @@ class CodeSecurityClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
         )
 
@@ -2416,6 +2512,7 @@ class CodeSecurityClient:
         configuration_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBodyType,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
@@ -2430,6 +2527,7 @@ class CodeSecurityClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         scope: Literal[
             "all",
             "all_without_configurations",
@@ -2449,6 +2547,7 @@ class CodeSecurityClient:
         configuration_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBodyType
         ] = UNSET,
@@ -2497,6 +2596,7 @@ class CodeSecurityClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
         )
 
@@ -2507,6 +2607,7 @@ class CodeSecurityClient:
         configuration_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType,
     ) -> Response[
         OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200,
@@ -2521,6 +2622,7 @@ class CodeSecurityClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         default_for_new_repos: Missing[
             Literal["all", "none", "private_and_internal", "public"]
         ] = UNSET,
@@ -2535,6 +2637,7 @@ class CodeSecurityClient:
         configuration_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType
         ] = UNSET,
@@ -2584,6 +2687,7 @@ class CodeSecurityClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200,
             error_models={
                 "403": BasicError,
@@ -2598,6 +2702,7 @@ class CodeSecurityClient:
         configuration_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType,
     ) -> Response[
         OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200,
@@ -2612,6 +2717,7 @@ class CodeSecurityClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         default_for_new_repos: Missing[
             Literal["all", "none", "private_and_internal", "public"]
         ] = UNSET,
@@ -2626,6 +2732,7 @@ class CodeSecurityClient:
         configuration_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType
         ] = UNSET,
@@ -2675,6 +2782,7 @@ class CodeSecurityClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200,
             error_models={
                 "403": BasicError,
@@ -2692,6 +2800,7 @@ class CodeSecurityClient:
         after: Missing[str] = UNSET,
         status: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         list[CodeSecurityConfigurationRepositories],
         list[CodeSecurityConfigurationRepositoriesType],
@@ -2729,6 +2838,7 @@ class CodeSecurityClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[CodeSecurityConfigurationRepositories],
             error_models={
                 "403": BasicError,
@@ -2746,6 +2856,7 @@ class CodeSecurityClient:
         after: Missing[str] = UNSET,
         status: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         list[CodeSecurityConfigurationRepositories],
         list[CodeSecurityConfigurationRepositoriesType],
@@ -2783,6 +2894,7 @@ class CodeSecurityClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[CodeSecurityConfigurationRepositories],
             error_models={
                 "403": BasicError,
@@ -2796,6 +2908,7 @@ class CodeSecurityClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         CodeSecurityConfigurationForRepository,
         CodeSecurityConfigurationForRepositoryType,
@@ -2823,6 +2936,7 @@ class CodeSecurityClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CodeSecurityConfigurationForRepository,
             error_models={
                 "403": BasicError,
@@ -2836,6 +2950,7 @@ class CodeSecurityClient:
         repo: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         CodeSecurityConfigurationForRepository,
         CodeSecurityConfigurationForRepositoryType,
@@ -2863,6 +2978,7 @@ class CodeSecurityClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=CodeSecurityConfigurationForRepository,
             error_models={
                 "403": BasicError,

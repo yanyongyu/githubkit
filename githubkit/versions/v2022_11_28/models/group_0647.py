@@ -34,7 +34,7 @@ class WebhookMetaDeleted(GitHubModel):
         description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."',
     )
     hook: WebhookMetaDeletedPropHook = Field(
-        description="The modified webhook. This will contain different keys based on the type of webhook it is: repository, organization, business, app, or GitHub Marketplace."
+        description="The deleted webhook. This will contain different keys based on the type of webhook it is: repository, organization, business, app, or GitHub Marketplace."
     )
     hook_id: int = Field(description="The id of the modified webhook.")
     installation: Missing[SimpleInstallation] = Field(
@@ -56,14 +56,14 @@ class WebhookMetaDeleted(GitHubModel):
 class WebhookMetaDeletedPropHook(GitHubModel):
     """WebhookMetaDeletedPropHook
 
-    The modified webhook. This will contain different keys based on the type of
+    The deleted webhook. This will contain different keys based on the type of
     webhook it is: repository, organization, business, app, or GitHub Marketplace.
     """
 
     active: bool = Field()
     config: WebhookMetaDeletedPropHookPropConfig = Field()
     created_at: str = Field()
-    events: list[str] = Field()
+    events: list[str] = Field(description="")
     id: int = Field()
     name: str = Field()
     type: str = Field()

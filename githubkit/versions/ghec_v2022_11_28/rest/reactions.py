@@ -72,6 +72,7 @@ class ReactionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Reaction], list[ReactionType]]:
         """reactions/list-for-team-discussion-comment-in-org
 
@@ -104,6 +105,7 @@ class ReactionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Reaction],
         )
 
@@ -122,6 +124,7 @@ class ReactionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Reaction], list[ReactionType]]:
         """reactions/list-for-team-discussion-comment-in-org
 
@@ -154,6 +157,7 @@ class ReactionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Reaction],
         )
 
@@ -166,6 +170,7 @@ class ReactionsClient:
         comment_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType,
     ) -> Response[Reaction, ReactionType]: ...
 
@@ -179,6 +184,7 @@ class ReactionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
@@ -192,6 +198,7 @@ class ReactionsClient:
         comment_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType
         ] = UNSET,
@@ -239,6 +246,7 @@ class ReactionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Reaction,
         )
 
@@ -251,6 +259,7 @@ class ReactionsClient:
         comment_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType,
     ) -> Response[Reaction, ReactionType]: ...
 
@@ -264,6 +273,7 @@ class ReactionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
@@ -277,6 +287,7 @@ class ReactionsClient:
         comment_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType
         ] = UNSET,
@@ -324,6 +335,7 @@ class ReactionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Reaction,
         )
 
@@ -336,6 +348,7 @@ class ReactionsClient:
         reaction_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """reactions/delete-for-team-discussion-comment
 
@@ -359,6 +372,7 @@ class ReactionsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     async def async_delete_for_team_discussion_comment(
@@ -370,6 +384,7 @@ class ReactionsClient:
         reaction_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """reactions/delete-for-team-discussion-comment
 
@@ -393,6 +408,7 @@ class ReactionsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     def list_for_team_discussion_in_org(
@@ -409,6 +425,7 @@ class ReactionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Reaction], list[ReactionType]]:
         """reactions/list-for-team-discussion-in-org
 
@@ -441,6 +458,7 @@ class ReactionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Reaction],
         )
 
@@ -458,6 +476,7 @@ class ReactionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Reaction], list[ReactionType]]:
         """reactions/list-for-team-discussion-in-org
 
@@ -490,6 +509,7 @@ class ReactionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Reaction],
         )
 
@@ -501,6 +521,7 @@ class ReactionsClient:
         discussion_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBodyType,
     ) -> Response[Reaction, ReactionType]: ...
 
@@ -513,6 +534,7 @@ class ReactionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
@@ -525,6 +547,7 @@ class ReactionsClient:
         discussion_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBodyType
         ] = UNSET,
@@ -571,6 +594,7 @@ class ReactionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Reaction,
         )
 
@@ -582,6 +606,7 @@ class ReactionsClient:
         discussion_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBodyType,
     ) -> Response[Reaction, ReactionType]: ...
 
@@ -594,6 +619,7 @@ class ReactionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
@@ -606,6 +632,7 @@ class ReactionsClient:
         discussion_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBodyType
         ] = UNSET,
@@ -652,6 +679,7 @@ class ReactionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Reaction,
         )
 
@@ -663,6 +691,7 @@ class ReactionsClient:
         reaction_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """reactions/delete-for-team-discussion
 
@@ -686,6 +715,7 @@ class ReactionsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     async def async_delete_for_team_discussion(
@@ -696,6 +726,7 @@ class ReactionsClient:
         reaction_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """reactions/delete-for-team-discussion
 
@@ -719,6 +750,7 @@ class ReactionsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     def list_for_commit_comment(
@@ -735,6 +767,7 @@ class ReactionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Reaction], list[ReactionType]]:
         """reactions/list-for-commit-comment
 
@@ -762,6 +795,7 @@ class ReactionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Reaction],
             error_models={
                 "404": BasicError,
@@ -782,6 +816,7 @@ class ReactionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Reaction], list[ReactionType]]:
         """reactions/list-for-commit-comment
 
@@ -809,6 +844,7 @@ class ReactionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Reaction],
             error_models={
                 "404": BasicError,
@@ -823,6 +859,7 @@ class ReactionsClient:
         comment_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoCommentsCommentIdReactionsPostBodyType,
     ) -> Response[Reaction, ReactionType]: ...
 
@@ -835,6 +872,7 @@ class ReactionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
@@ -847,6 +885,7 @@ class ReactionsClient:
         comment_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoCommentsCommentIdReactionsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Reaction, ReactionType]:
@@ -885,6 +924,7 @@ class ReactionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Reaction,
             error_models={
                 "422": ValidationError,
@@ -899,6 +939,7 @@ class ReactionsClient:
         comment_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoCommentsCommentIdReactionsPostBodyType,
     ) -> Response[Reaction, ReactionType]: ...
 
@@ -911,6 +952,7 @@ class ReactionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
@@ -923,6 +965,7 @@ class ReactionsClient:
         comment_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoCommentsCommentIdReactionsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Reaction, ReactionType]:
@@ -961,6 +1004,7 @@ class ReactionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Reaction,
             error_models={
                 "422": ValidationError,
@@ -975,6 +1019,7 @@ class ReactionsClient:
         reaction_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """reactions/delete-for-commit-comment
 
@@ -996,6 +1041,7 @@ class ReactionsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     async def async_delete_for_commit_comment(
@@ -1006,6 +1052,7 @@ class ReactionsClient:
         reaction_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """reactions/delete-for-commit-comment
 
@@ -1027,6 +1074,7 @@ class ReactionsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     def list_for_issue_comment(
@@ -1043,6 +1091,7 @@ class ReactionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Reaction], list[ReactionType]]:
         """reactions/list-for-issue-comment
 
@@ -1070,6 +1119,7 @@ class ReactionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Reaction],
             error_models={
                 "404": BasicError,
@@ -1090,6 +1140,7 @@ class ReactionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Reaction], list[ReactionType]]:
         """reactions/list-for-issue-comment
 
@@ -1117,6 +1168,7 @@ class ReactionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Reaction],
             error_models={
                 "404": BasicError,
@@ -1131,6 +1183,7 @@ class ReactionsClient:
         comment_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBodyType,
     ) -> Response[Reaction, ReactionType]: ...
 
@@ -1143,6 +1196,7 @@ class ReactionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
@@ -1155,6 +1209,7 @@ class ReactionsClient:
         comment_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBodyType
         ] = UNSET,
@@ -1195,6 +1250,7 @@ class ReactionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Reaction,
             error_models={
                 "422": ValidationError,
@@ -1209,6 +1265,7 @@ class ReactionsClient:
         comment_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBodyType,
     ) -> Response[Reaction, ReactionType]: ...
 
@@ -1221,6 +1278,7 @@ class ReactionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
@@ -1233,6 +1291,7 @@ class ReactionsClient:
         comment_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBodyType
         ] = UNSET,
@@ -1273,6 +1332,7 @@ class ReactionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Reaction,
             error_models={
                 "422": ValidationError,
@@ -1287,6 +1347,7 @@ class ReactionsClient:
         reaction_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """reactions/delete-for-issue-comment
 
@@ -1308,6 +1369,7 @@ class ReactionsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     async def async_delete_for_issue_comment(
@@ -1318,6 +1380,7 @@ class ReactionsClient:
         reaction_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """reactions/delete-for-issue-comment
 
@@ -1339,6 +1402,7 @@ class ReactionsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     def list_for_issue(
@@ -1355,6 +1419,7 @@ class ReactionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Reaction], list[ReactionType]]:
         """reactions/list-for-issue
 
@@ -1382,6 +1447,7 @@ class ReactionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Reaction],
             error_models={
                 "404": BasicError,
@@ -1403,6 +1469,7 @@ class ReactionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Reaction], list[ReactionType]]:
         """reactions/list-for-issue
 
@@ -1430,6 +1497,7 @@ class ReactionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Reaction],
             error_models={
                 "404": BasicError,
@@ -1445,6 +1513,7 @@ class ReactionsClient:
         issue_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoIssuesIssueNumberReactionsPostBodyType,
     ) -> Response[Reaction, ReactionType]: ...
 
@@ -1457,6 +1526,7 @@ class ReactionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
@@ -1469,6 +1539,7 @@ class ReactionsClient:
         issue_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesIssueNumberReactionsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Reaction, ReactionType]:
@@ -1507,6 +1578,7 @@ class ReactionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Reaction,
             error_models={
                 "422": ValidationError,
@@ -1521,6 +1593,7 @@ class ReactionsClient:
         issue_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoIssuesIssueNumberReactionsPostBodyType,
     ) -> Response[Reaction, ReactionType]: ...
 
@@ -1533,6 +1606,7 @@ class ReactionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
@@ -1545,6 +1619,7 @@ class ReactionsClient:
         issue_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesIssueNumberReactionsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Reaction, ReactionType]:
@@ -1583,6 +1658,7 @@ class ReactionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Reaction,
             error_models={
                 "422": ValidationError,
@@ -1597,6 +1673,7 @@ class ReactionsClient:
         reaction_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """reactions/delete-for-issue
 
@@ -1618,6 +1695,7 @@ class ReactionsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     async def async_delete_for_issue(
@@ -1628,6 +1706,7 @@ class ReactionsClient:
         reaction_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """reactions/delete-for-issue
 
@@ -1649,6 +1728,7 @@ class ReactionsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     def list_for_pull_request_review_comment(
@@ -1665,6 +1745,7 @@ class ReactionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Reaction], list[ReactionType]]:
         """reactions/list-for-pull-request-review-comment
 
@@ -1692,6 +1773,7 @@ class ReactionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Reaction],
             error_models={
                 "404": BasicError,
@@ -1712,6 +1794,7 @@ class ReactionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Reaction], list[ReactionType]]:
         """reactions/list-for-pull-request-review-comment
 
@@ -1739,6 +1822,7 @@ class ReactionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Reaction],
             error_models={
                 "404": BasicError,
@@ -1753,6 +1837,7 @@ class ReactionsClient:
         comment_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoPullsCommentsCommentIdReactionsPostBodyType,
     ) -> Response[Reaction, ReactionType]: ...
 
@@ -1765,6 +1850,7 @@ class ReactionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
@@ -1777,6 +1863,7 @@ class ReactionsClient:
         comment_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             ReposOwnerRepoPullsCommentsCommentIdReactionsPostBodyType
         ] = UNSET,
@@ -1817,6 +1904,7 @@ class ReactionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Reaction,
             error_models={
                 "422": ValidationError,
@@ -1831,6 +1919,7 @@ class ReactionsClient:
         comment_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoPullsCommentsCommentIdReactionsPostBodyType,
     ) -> Response[Reaction, ReactionType]: ...
 
@@ -1843,6 +1932,7 @@ class ReactionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
@@ -1855,6 +1945,7 @@ class ReactionsClient:
         comment_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             ReposOwnerRepoPullsCommentsCommentIdReactionsPostBodyType
         ] = UNSET,
@@ -1895,6 +1986,7 @@ class ReactionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Reaction,
             error_models={
                 "422": ValidationError,
@@ -1909,6 +2001,7 @@ class ReactionsClient:
         reaction_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """reactions/delete-for-pull-request-comment
 
@@ -1932,6 +2025,7 @@ class ReactionsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     async def async_delete_for_pull_request_comment(
@@ -1942,6 +2036,7 @@ class ReactionsClient:
         reaction_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """reactions/delete-for-pull-request-comment
 
@@ -1965,6 +2060,7 @@ class ReactionsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     def list_for_release(
@@ -1979,6 +2075,7 @@ class ReactionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Reaction], list[ReactionType]]:
         """reactions/list-for-release
 
@@ -2006,6 +2103,7 @@ class ReactionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Reaction],
             error_models={
                 "404": BasicError,
@@ -2024,6 +2122,7 @@ class ReactionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Reaction], list[ReactionType]]:
         """reactions/list-for-release
 
@@ -2051,6 +2150,7 @@ class ReactionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Reaction],
             error_models={
                 "404": BasicError,
@@ -2065,6 +2165,7 @@ class ReactionsClient:
         release_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoReleasesReleaseIdReactionsPostBodyType,
     ) -> Response[Reaction, ReactionType]: ...
 
@@ -2077,6 +2178,7 @@ class ReactionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         content: Literal["+1", "laugh", "heart", "hooray", "rocket", "eyes"],
     ) -> Response[Reaction, ReactionType]: ...
 
@@ -2087,6 +2189,7 @@ class ReactionsClient:
         release_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoReleasesReleaseIdReactionsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Reaction, ReactionType]:
@@ -2125,6 +2228,7 @@ class ReactionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Reaction,
             error_models={
                 "422": ValidationError,
@@ -2139,6 +2243,7 @@ class ReactionsClient:
         release_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: ReposOwnerRepoReleasesReleaseIdReactionsPostBodyType,
     ) -> Response[Reaction, ReactionType]: ...
 
@@ -2151,6 +2256,7 @@ class ReactionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         content: Literal["+1", "laugh", "heart", "hooray", "rocket", "eyes"],
     ) -> Response[Reaction, ReactionType]: ...
 
@@ -2161,6 +2267,7 @@ class ReactionsClient:
         release_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[ReposOwnerRepoReleasesReleaseIdReactionsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Reaction, ReactionType]:
@@ -2199,6 +2306,7 @@ class ReactionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Reaction,
             error_models={
                 "422": ValidationError,
@@ -2213,6 +2321,7 @@ class ReactionsClient:
         reaction_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """reactions/delete-for-release
 
@@ -2234,6 +2343,7 @@ class ReactionsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     async def async_delete_for_release(
@@ -2244,6 +2354,7 @@ class ReactionsClient:
         reaction_id: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """reactions/delete-for-release
 
@@ -2265,6 +2376,7 @@ class ReactionsClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     def list_for_team_discussion_comment_legacy(
@@ -2281,6 +2393,7 @@ class ReactionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Reaction], list[ReactionType]]:
         """DEPRECATED reactions/list-for-team-discussion-comment-legacy
 
@@ -2313,6 +2426,7 @@ class ReactionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Reaction],
         )
 
@@ -2330,6 +2444,7 @@ class ReactionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Reaction], list[ReactionType]]:
         """DEPRECATED reactions/list-for-team-discussion-comment-legacy
 
@@ -2362,6 +2477,7 @@ class ReactionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Reaction],
         )
 
@@ -2373,6 +2489,7 @@ class ReactionsClient:
         comment_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType,
     ) -> Response[Reaction, ReactionType]: ...
 
@@ -2385,6 +2502,7 @@ class ReactionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
@@ -2397,6 +2515,7 @@ class ReactionsClient:
         comment_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType
         ] = UNSET,
@@ -2444,6 +2563,7 @@ class ReactionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Reaction,
         )
 
@@ -2455,6 +2575,7 @@ class ReactionsClient:
         comment_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType,
     ) -> Response[Reaction, ReactionType]: ...
 
@@ -2467,6 +2588,7 @@ class ReactionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
@@ -2479,6 +2601,7 @@ class ReactionsClient:
         comment_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType
         ] = UNSET,
@@ -2526,6 +2649,7 @@ class ReactionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Reaction,
         )
 
@@ -2542,6 +2666,7 @@ class ReactionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Reaction], list[ReactionType]]:
         """DEPRECATED reactions/list-for-team-discussion-legacy
 
@@ -2574,6 +2699,7 @@ class ReactionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Reaction],
         )
 
@@ -2590,6 +2716,7 @@ class ReactionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[list[Reaction], list[ReactionType]]:
         """DEPRECATED reactions/list-for-team-discussion-legacy
 
@@ -2622,6 +2749,7 @@ class ReactionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=list[Reaction],
         )
 
@@ -2632,6 +2760,7 @@ class ReactionsClient:
         discussion_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBodyType,
     ) -> Response[Reaction, ReactionType]: ...
 
@@ -2643,6 +2772,7 @@ class ReactionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
@@ -2654,6 +2784,7 @@ class ReactionsClient:
         discussion_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBodyType
         ] = UNSET,
@@ -2700,6 +2831,7 @@ class ReactionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Reaction,
         )
 
@@ -2710,6 +2842,7 @@ class ReactionsClient:
         discussion_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBodyType,
     ) -> Response[Reaction, ReactionType]: ...
 
@@ -2721,6 +2854,7 @@ class ReactionsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
@@ -2732,6 +2866,7 @@ class ReactionsClient:
         discussion_number: int,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBodyType
         ] = UNSET,
@@ -2778,5 +2913,6 @@ class ReactionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=Reaction,
         )

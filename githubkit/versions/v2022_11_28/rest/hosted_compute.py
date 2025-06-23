@@ -63,6 +63,7 @@ class HostedComputeClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         OrgsOrgSettingsNetworkConfigurationsGetResponse200,
         OrgsOrgSettingsNetworkConfigurationsGetResponse200Type,
@@ -94,6 +95,7 @@ class HostedComputeClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgSettingsNetworkConfigurationsGetResponse200,
         )
 
@@ -104,6 +106,7 @@ class HostedComputeClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[
         OrgsOrgSettingsNetworkConfigurationsGetResponse200,
         OrgsOrgSettingsNetworkConfigurationsGetResponse200Type,
@@ -135,6 +138,7 @@ class HostedComputeClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=OrgsOrgSettingsNetworkConfigurationsGetResponse200,
         )
 
@@ -144,6 +148,7 @@ class HostedComputeClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgSettingsNetworkConfigurationsPostBodyType,
     ) -> Response[NetworkConfiguration, NetworkConfigurationType]: ...
 
@@ -154,6 +159,7 @@ class HostedComputeClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: str,
         compute_service: Missing[Literal["none", "actions"]] = UNSET,
         network_settings_ids: list[str],
@@ -164,6 +170,7 @@ class HostedComputeClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgSettingsNetworkConfigurationsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[NetworkConfiguration, NetworkConfigurationType]:
@@ -203,6 +210,7 @@ class HostedComputeClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=NetworkConfiguration,
         )
 
@@ -212,6 +220,7 @@ class HostedComputeClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgSettingsNetworkConfigurationsPostBodyType,
     ) -> Response[NetworkConfiguration, NetworkConfigurationType]: ...
 
@@ -222,6 +231,7 @@ class HostedComputeClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: str,
         compute_service: Missing[Literal["none", "actions"]] = UNSET,
         network_settings_ids: list[str],
@@ -232,6 +242,7 @@ class HostedComputeClient:
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[OrgsOrgSettingsNetworkConfigurationsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[NetworkConfiguration, NetworkConfigurationType]:
@@ -271,6 +282,7 @@ class HostedComputeClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=NetworkConfiguration,
         )
 
@@ -280,6 +292,7 @@ class HostedComputeClient:
         network_configuration_id: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[NetworkConfiguration, NetworkConfigurationType]:
         """hosted-compute/get-network-configuration-for-org
 
@@ -302,6 +315,7 @@ class HostedComputeClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=NetworkConfiguration,
         )
 
@@ -311,6 +325,7 @@ class HostedComputeClient:
         network_configuration_id: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[NetworkConfiguration, NetworkConfigurationType]:
         """hosted-compute/get-network-configuration-for-org
 
@@ -333,6 +348,7 @@ class HostedComputeClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=NetworkConfiguration,
         )
 
@@ -342,6 +358,7 @@ class HostedComputeClient:
         network_configuration_id: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """hosted-compute/delete-network-configuration-from-org
 
@@ -362,6 +379,7 @@ class HostedComputeClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     async def async_delete_network_configuration_from_org(
@@ -370,6 +388,7 @@ class HostedComputeClient:
         network_configuration_id: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response:
         """hosted-compute/delete-network-configuration-from-org
 
@@ -390,6 +409,7 @@ class HostedComputeClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
         )
 
     @overload
@@ -399,6 +419,7 @@ class HostedComputeClient:
         network_configuration_id: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBodyType,
     ) -> Response[NetworkConfiguration, NetworkConfigurationType]: ...
 
@@ -410,6 +431,7 @@ class HostedComputeClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: Missing[str] = UNSET,
         compute_service: Missing[Literal["none", "actions"]] = UNSET,
         network_settings_ids: Missing[list[str]] = UNSET,
@@ -421,6 +443,7 @@ class HostedComputeClient:
         network_configuration_id: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBodyType
         ] = UNSET,
@@ -463,6 +486,7 @@ class HostedComputeClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=NetworkConfiguration,
         )
 
@@ -473,6 +497,7 @@ class HostedComputeClient:
         network_configuration_id: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBodyType,
     ) -> Response[NetworkConfiguration, NetworkConfigurationType]: ...
 
@@ -484,6 +509,7 @@ class HostedComputeClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         name: Missing[str] = UNSET,
         compute_service: Missing[Literal["none", "actions"]] = UNSET,
         network_settings_ids: Missing[list[str]] = UNSET,
@@ -495,6 +521,7 @@ class HostedComputeClient:
         network_configuration_id: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
         data: Missing[
             OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBodyType
         ] = UNSET,
@@ -537,6 +564,7 @@ class HostedComputeClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=NetworkConfiguration,
         )
 
@@ -546,6 +574,7 @@ class HostedComputeClient:
         network_settings_id: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[NetworkSettings, NetworkSettingsType]:
         """hosted-compute/get-network-settings-for-org
 
@@ -568,6 +597,7 @@ class HostedComputeClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=NetworkSettings,
         )
 
@@ -577,6 +607,7 @@ class HostedComputeClient:
         network_settings_id: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
     ) -> Response[NetworkSettings, NetworkSettingsType]:
         """hosted-compute/get-network-settings-for-org
 
@@ -599,5 +630,6 @@ class HostedComputeClient:
             "GET",
             url,
             headers=exclude_unset(headers),
+            stream=stream,
             response_model=NetworkSettings,
         )
