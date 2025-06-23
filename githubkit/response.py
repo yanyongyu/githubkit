@@ -1,4 +1,5 @@
-from typing import Any, Generic
+from collections.abc import AsyncIterator, Iterator
+from typing import Any, Generic, Optional
 from typing_extensions import TypeVar
 
 import httpx
@@ -92,3 +93,33 @@ class Response(Generic[MT, JT]):
     @property
     def parsed_data(self) -> MT:
         return type_validate_json(self._data_model, self.content)
+
+    def iter_bytes(self, chunk_size: Optional[int] = None) -> Iterator[bytes]:
+        yield from self._response.iter_bytes(chunk_size=chunk_size)
+
+    def iter_text(self, chunk_size: Optional[int] = None) -> Iterator[str]:
+        yield from self._response.iter_text(chunk_size=chunk_size)
+
+    def iter_lines(self) -> Iterator[str]:
+        yield from self._response.iter_lines()
+
+    def iter_raw(self, chunk_size: Optional[int] = None) -> Iterator[bytes]:
+        yield from self._response.iter_raw(chunk_size=chunk_size)
+
+    async def aiter_bytes(
+        self, chunk_size: Optional[int] = None
+    ) -> AsyncIterator[bytes]:
+        async for chunk in self._response.aiter_bytes(chunk_size=chunk_size):
+            yield chunk
+
+    async def aiter_text(self, chunk_size: Optional[int] = None) -> AsyncIterator[str]:
+        async for chunk in self._response.aiter_text(chunk_size=chunk_size):
+            yield chunk
+
+    async def aiter_lines(self) -> AsyncIterator[str]:
+        async for line in self._response.aiter_lines():
+            yield line
+
+    async def aiter_raw(self, chunk_size: Optional[int] = None) -> AsyncIterator[bytes]:
+        async for chunk in self._response.aiter_raw(chunk_size=chunk_size):
+            yield chunk

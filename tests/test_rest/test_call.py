@@ -1,5 +1,6 @@
 from functools import partial
 
+from httpx import ResponseNotRead
 import pytest
 
 from githubkit import GitHub
@@ -8,6 +9,7 @@ from githubkit.versions.latest.models import FullRepository, Issue
 
 OWNER = "yanyongyu"
 REPO = "githubkit"
+REF = "master"
 ISSUE_COUNT_QUERY = """
 query($owner: String!, $repo: String!) {
   repository(owner: $owner, name: $repo) {
@@ -61,6 +63,31 @@ def test_call_with_raw_body(g: GitHub):
 async def test_async_call_with_raw_body(g: GitHub):
     resp = await g.rest.markdown.async_render_raw(data="Hello **world**")
     assert isinstance(resp.text, str)
+
+
+def test_call_streaming(g: GitHub):
+    resp = g.rest.repos.download_tarball_archive(OWNER, REPO, REF, stream=True)
+
+    with pytest.raises(ResponseNotRead):
+        resp.content
+
+    for chunk in resp.iter_bytes():
+        assert isinstance(chunk, bytes)
+        assert len(chunk) > 0
+
+
+@pytest.mark.anyio
+async def test_async_call_streaming(g: GitHub):
+    resp = await g.rest.repos.async_download_tarball_archive(
+        OWNER, REPO, REF, stream=True
+    )
+
+    with pytest.raises(ResponseNotRead):
+        resp.content
+
+    async for chunk in resp.aiter_bytes():
+        assert isinstance(chunk, bytes)
+        assert len(chunk) > 0
 
 
 def test_paginate(g: GitHub):

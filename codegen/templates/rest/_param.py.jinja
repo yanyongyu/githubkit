@@ -37,6 +37,7 @@
 {{ header_params(endpoint) }}
 {{ cookie_params(endpoint) }}
 headers: Optional[Mapping[str, str]] = None,
+stream: bool = False,
 {{ endpoint.request_body.get_raw_definition() }}
 {% endmacro %}
 
@@ -48,6 +49,7 @@ headers: Optional[Mapping[str, str]] = None,
 {{ cookie_params(endpoint) }}
 data: UnsetType = UNSET,
 headers: Optional[Mapping[str, str]] = None,
+stream: bool = False,
 {{ body_params(model, endpoint.param_names) }}
 {% endmacro %}
 
@@ -58,6 +60,7 @@ headers: Optional[Mapping[str, str]] = None,
 {{ header_params(endpoint) }}
 {{ cookie_params(endpoint) }}
 headers: Optional[Mapping[str, str]] = None,
+stream: bool = False,
 {%- if endpoint.request_body %}
 {{ endpoint.request_body.get_endpoint_definition() }},
 {%- if endpoint.request_body.allowed_models %}

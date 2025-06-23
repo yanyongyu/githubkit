@@ -286,6 +286,7 @@ class GitHubCore(Generic[A]):
         json: Optional[Any] = None,
         headers: Optional[HeaderTypes] = None,
         cookies: Optional[CookieTypes] = None,
+        stream: bool = False,
     ) -> httpx.Response:
         with self.get_sync_client() as client:
             request = client.build_request(
@@ -301,7 +302,7 @@ class GitHubCore(Generic[A]):
             )
             with self.config.throttler.acquire(request):
                 try:
-                    return client.send(request)
+                    return client.send(request, stream=stream)
                 except httpx.TimeoutException as e:
                     raise RequestTimeout(e) from e
                 except Exception as e:
@@ -320,6 +321,7 @@ class GitHubCore(Generic[A]):
         json: Optional[Any] = None,
         headers: Optional[HeaderTypes] = None,
         cookies: Optional[CookieTypes] = None,
+        stream: bool = False,
     ) -> httpx.Response:
         async with (
             self.get_async_client() as client,
@@ -337,7 +339,7 @@ class GitHubCore(Generic[A]):
             )
             async with self.config.throttler.async_acquire(request):
                 try:
-                    return await client.send(request)
+                    return await client.send(request, stream=stream)
                 except httpx.TimeoutException as e:
                     raise RequestTimeout(e) from e
                 except Exception as e:
@@ -360,13 +362,17 @@ class GitHubCore(Generic[A]):
         error_models: Optional[Mapping[str, type]] = None,
     ) -> Response[Any]: ...
 
+    def _check_is_error(self, response: httpx.Response) -> bool:
+        """Check if the response is an error."""
+        return response.is_error
+
     def _check(
         self,
         response: httpx.Response,
         response_model: Union[type[T], UnsetType] = UNSET,
         error_models: Optional[Mapping[str, type]] = None,
     ) -> Union[Response[T], Response[Any]]:
-        if response.is_error:
+        if self._check_is_error(response):
             error_models = error_models or {}
             status_code = str(response.status_code)
 
@@ -386,7 +392,7 @@ class GitHubCore(Generic[A]):
         if response.status_code in (403, 429):
             self._check_rate_limit(resp)
 
-        if response.is_error:
+        if self._check_is_error(response):
             raise RequestFailed(resp)
         return resp
 
@@ -453,6 +459,7 @@ class GitHubCore(Generic[A]):
         json: Optional[Any] = None,
         headers: Optional[HeaderTypes] = None,
         cookies: Optional[CookieTypes] = None,
+        stream: bool = False,
         response_model: type[T],
         error_models: Optional[Mapping[str, type]] = None,
     ) -> Response[T]: ...
@@ -470,6 +477,7 @@ class GitHubCore(Generic[A]):
         json: Optional[Any] = None,
         headers: Optional[HeaderTypes] = None,
         cookies: Optional[CookieTypes] = None,
+        stream: bool = False,
         response_model: UnsetType = UNSET,
         error_models: Optional[Mapping[str, type]] = None,
     ) -> Response[Any]: ...
@@ -486,6 +494,7 @@ class GitHubCore(Generic[A]):
         json: Optional[Any] = None,
         headers: Optional[HeaderTypes] = None,
         cookies: Optional[CookieTypes] = None,
+        stream: bool = False,
         response_model: Union[type[T], UnsetType] = UNSET,
         error_models: Optional[Mapping[str, type]] = None,
     ) -> Union[Response[T], Response[Any]]:
@@ -507,7 +516,12 @@ class GitHubCore(Generic[A]):
                     json=json,
                     headers=headers,
                     cookies=cookies,
+                    stream=stream,
                 )
+                if self._check_is_error(raw_resp) and stream:
+                    # if the response is an error and stream is True,
+                    # we need to read the response first
+                    raw_resp.read()
                 return self._check(raw_resp, response_model, error_models)
             except GitHubException as e:
                 if self.config.auto_retry is None:
@@ -535,6 +549,7 @@ class GitHubCore(Generic[A]):
         json: Optional[Any] = None,
         headers: Optional[HeaderTypes] = None,
         cookies: Optional[CookieTypes] = None,
+        stream: bool = False,
         response_model: type[T],
         error_models: Optional[Mapping[str, type]] = None,
     ) -> Response[T]: ...
@@ -552,6 +567,7 @@ class GitHubCore(Generic[A]):
         json: Optional[Any] = None,
         headers: Optional[HeaderTypes] = None,
         cookies: Optional[CookieTypes] = None,
+        stream: bool = False,
         response_model: UnsetType = UNSET,
         error_models: Optional[Mapping[str, type]] = None,
     ) -> Response[Any]: ...
@@ -568,6 +584,7 @@ class GitHubCore(Generic[A]):
         json: Optional[Any] = None,
         headers: Optional[HeaderTypes] = None,
         cookies: Optional[CookieTypes] = None,
+        stream: bool = False,
         response_model: Union[type[T], UnsetType] = UNSET,
         error_models: Optional[Mapping[str, type]] = None,
     ) -> Union[Response[T], Response[Any]]:
@@ -589,7 +606,12 @@ class GitHubCore(Generic[A]):
                     json=json,
                     headers=headers,
                     cookies=cookies,
+                    stream=stream,
                 )
+                if self._check_is_error(raw_resp) and stream:
+                    # if the response is an error and stream is True,
+                    # we need to read the response first
+                    await raw_resp.aread()
                 return self._check(raw_resp, response_model, error_models)
             except GitHubException as e:
                 if self.config.auto_retry is None:
