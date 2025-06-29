@@ -9,6 +9,7 @@ from typing import TYPE_CHECKING, Any, Generic, Optional, TypeVar, Union, cast, 
 import anyio
 import hishel
 import httpx
+from httpx._utils import get_environment_proxies
 
 from .auth import BaseAuthStrategy, TokenAuthStrategy, UnauthAuthStrategy
 from .cache import BaseCacheStrategy
@@ -42,6 +43,8 @@ if TYPE_CHECKING:
 T = TypeVar("T")
 A = TypeVar("A", bound="BaseAuthStrategy")
 AS = TypeVar("AS", bound="BaseAuthStrategy")
+TP = TypeVar("TP", bound=httpx.BaseTransport)
+ATP = TypeVar("ATP", bound=httpx.AsyncBaseTransport)
 
 
 class GitHubCore(Generic[A]):
@@ -209,8 +212,35 @@ class GitHubCore(Generic[A]):
         await cast(httpx.AsyncClient, self.__async_client.get()).aclose()
         self.__async_client.set(None)
 
-    # default args for creating client
-    def _get_client_defaults(self):
+    def _get_client_proxy_map(self) -> dict[str, Optional[httpx.Proxy]]:
+        """Get the proxy mounts for the httpx client.
+
+        Note: we need to get the proxy config from environment variables
+        because httpx does not read them when transport is set.
+
+        https://github.com/encode/httpx/blob/4fb9528c2f5ac000441c3634d297e77da23067cd/httpx/_client.py#L685-L686
+
+        https://github.com/encode/httpx/blob/4fb9528c2f5ac000441c3634d297e77da23067cd/httpx/_client.py#L239-L251
+        """
+        if self.config.proxy is not None:
+            proxy = (
+                httpx.Proxy(url=self.config.proxy)
+                if isinstance(self.config.proxy, (str, httpx.URL))
+                else self.config.proxy
+            )
+            return {"all://": proxy}
+
+        if self.config.trust_env:
+            return {
+                key: None if url is None else httpx.Proxy(url=url)
+                for key, url in get_environment_proxies().items()
+            }
+
+        return {}
+
+    def _get_client_defaults(self) -> dict[str, Any]:
+        """Get default arguments for creating a httpx client."""
+
         return {
             "auth": self.auth.get_auth_flow(self),
             "base_url": self.config.base_url,
@@ -223,18 +253,42 @@ class GitHubCore(Generic[A]):
             "verify": self.config.ssl_verify,
         }
 
-    # create sync client
-    def _create_sync_client(self) -> httpx.Client:
+    def _wrap_transport_with_cache(
+        self, transport: TP
+    ) -> Union[TP, hishel.CacheTransport]:
+        """Wrap the transport with hishel if http_cache is enabled."""
         if self.config.http_cache:
-            transport = hishel.CacheTransport(
-                httpx.HTTPTransport(),
+            # wrap transport with hishel cache transport
+            return hishel.CacheTransport(
+                transport,
                 storage=self.config.cache_strategy.get_hishel_storage(),
                 controller=self.config.cache_strategy.get_hishel_controller(),
             )
-        else:
-            transport = httpx.HTTPTransport()
+        return transport
 
-        return httpx.Client(**self._get_client_defaults(), transport=transport)
+    def _create_sync_client(self) -> httpx.Client:
+        transport = self._wrap_transport_with_cache(
+            httpx.HTTPTransport(
+                verify=self.config.ssl_verify, trust_env=self.config.trust_env
+            )
+        )
+
+        mounts = {
+            key: None
+            if value is None
+            else self._wrap_transport_with_cache(
+                httpx.HTTPTransport(
+                    verify=self.config.ssl_verify,
+                    trust_env=self.config.trust_env,
+                    proxy=value,
+                )
+            )
+            for key, value in self._get_client_proxy_map().items()
+        }
+
+        return httpx.Client(
+            **self._get_client_defaults(), transport=transport, mounts=mounts
+        )
 
     # get or create sync client
     @contextmanager
@@ -248,18 +302,42 @@ class GitHubCore(Generic[A]):
             finally:
                 client.close()
 
-    # create async client
-    def _create_async_client(self) -> httpx.AsyncClient:
+    def _wrap_async_transport_with_cache(
+        self, transport: ATP
+    ) -> Union[ATP, hishel.AsyncCacheTransport]:
+        """Wrap the async transport with hishel if http_cache is enabled."""
         if self.config.http_cache:
-            transport = hishel.AsyncCacheTransport(
-                httpx.AsyncHTTPTransport(),
+            # wrap transport with hishel async cache transport
+            return hishel.AsyncCacheTransport(
+                transport,
                 storage=self.config.cache_strategy.get_async_hishel_storage(),
                 controller=self.config.cache_strategy.get_hishel_controller(),
             )
-        else:
-            transport = httpx.AsyncHTTPTransport()
+        return transport
 
-        return httpx.AsyncClient(**self._get_client_defaults(), transport=transport)
+    def _create_async_client(self) -> httpx.AsyncClient:
+        transport = self._wrap_async_transport_with_cache(
+            httpx.AsyncHTTPTransport(
+                verify=self.config.ssl_verify, trust_env=self.config.trust_env
+            )
+        )
+
+        mounts = {
+            key: None
+            if value is None
+            else self._wrap_async_transport_with_cache(
+                httpx.AsyncHTTPTransport(
+                    verify=self.config.ssl_verify,
+                    trust_env=self.config.trust_env,
+                    proxy=value,
+                )
+            )
+            for key, value in self._get_client_proxy_map().items()
+        }
+
+        return httpx.AsyncClient(
+            **self._get_client_defaults(), transport=transport, mounts=mounts
+        )
 
     # get or create async client
     @asynccontextmanager
