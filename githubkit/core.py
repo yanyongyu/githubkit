@@ -28,6 +28,7 @@ from .typing import (
     ContentTypes,
     CookieTypes,
     HeaderTypes,
+    ProxyTypes,
     QueryParamTypes,
     RequestFiles,
     RetryDecisionFunc,
@@ -85,6 +86,8 @@ class GitHubCore(Generic[A]):
         follow_redirects: bool = True,
         timeout: Optional[Union[float, httpx.Timeout]] = None,
         ssl_verify: Union[bool, "ssl.SSLContext"] = ...,
+        trust_env: bool = True,
+        proxy: Optional[ProxyTypes] = None,
         cache_strategy: Optional[BaseCacheStrategy] = None,
         http_cache: bool = True,
         throttler: Optional[BaseThrottler] = None,
@@ -105,6 +108,8 @@ class GitHubCore(Generic[A]):
         follow_redirects: bool = True,
         timeout: Optional[Union[float, httpx.Timeout]] = None,
         ssl_verify: Union[bool, "ssl.SSLContext"] = ...,
+        trust_env: bool = True,
+        proxy: Optional[ProxyTypes] = None,
         cache_strategy: Optional[BaseCacheStrategy] = None,
         http_cache: bool = True,
         throttler: Optional[BaseThrottler] = None,
@@ -125,6 +130,8 @@ class GitHubCore(Generic[A]):
         follow_redirects: bool = True,
         timeout: Optional[Union[float, httpx.Timeout]] = None,
         ssl_verify: Union[bool, "ssl.SSLContext"] = ...,
+        trust_env: bool = True,
+        proxy: Optional[ProxyTypes] = None,
         cache_strategy: Optional[BaseCacheStrategy] = None,
         http_cache: bool = True,
         throttler: Optional[BaseThrottler] = None,
@@ -144,6 +151,8 @@ class GitHubCore(Generic[A]):
         follow_redirects: bool = True,
         timeout: Optional[Union[float, httpx.Timeout]] = None,
         ssl_verify: Union[bool, "ssl.SSLContext"] = True,
+        trust_env: bool = True,
+        proxy: Optional[ProxyTypes] = None,
         cache_strategy: Optional[BaseCacheStrategy] = None,
         http_cache: bool = True,
         throttler: Optional[BaseThrottler] = None,
@@ -163,6 +172,8 @@ class GitHubCore(Generic[A]):
             follow_redirects=follow_redirects,
             timeout=timeout,
             ssl_verify=ssl_verify,
+            trust_env=trust_env,
+            proxy=proxy,
             cache_strategy=cache_strategy,
             http_cache=http_cache,
             throttler=throttler,
@@ -209,8 +220,9 @@ class GitHubCore(Generic[A]):
         await cast(httpx.AsyncClient, self.__async_client.get()).aclose()
         self.__async_client.set(None)
 
-    # default args for creating client
-    def _get_client_defaults(self):
+    def _get_client_defaults(self) -> dict[str, Any]:
+        """Get default arguments for creating a httpx client."""
+
         return {
             "auth": self.auth.get_auth_flow(self),
             "base_url": self.config.base_url,
@@ -221,20 +233,19 @@ class GitHubCore(Generic[A]):
             "timeout": self.config.timeout,
             "follow_redirects": self.config.follow_redirects,
             "verify": self.config.ssl_verify,
+            "trust_env": self.config.trust_env,
+            "proxy": self.config.proxy,
         }
 
-    # create sync client
     def _create_sync_client(self) -> httpx.Client:
         if self.config.http_cache:
-            transport = hishel.CacheTransport(
-                httpx.HTTPTransport(),
+            return hishel.CacheClient(
+                **self._get_client_defaults(),
                 storage=self.config.cache_strategy.get_hishel_storage(),
                 controller=self.config.cache_strategy.get_hishel_controller(),
             )
-        else:
-            transport = httpx.HTTPTransport()
 
-        return httpx.Client(**self._get_client_defaults(), transport=transport)
+        return httpx.Client(**self._get_client_defaults())
 
     # get or create sync client
     @contextmanager
@@ -248,18 +259,15 @@ class GitHubCore(Generic[A]):
             finally:
                 client.close()
 
-    # create async client
     def _create_async_client(self) -> httpx.AsyncClient:
         if self.config.http_cache:
-            transport = hishel.AsyncCacheTransport(
-                httpx.AsyncHTTPTransport(),
+            return hishel.AsyncCacheClient(
+                **self._get_client_defaults(),
                 storage=self.config.cache_strategy.get_async_hishel_storage(),
                 controller=self.config.cache_strategy.get_hishel_controller(),
             )
-        else:
-            transport = httpx.AsyncHTTPTransport()
 
-        return httpx.AsyncClient(**self._get_client_defaults(), transport=transport)
+        return httpx.AsyncClient(**self._get_client_defaults())
 
     # get or create async client
     @asynccontextmanager

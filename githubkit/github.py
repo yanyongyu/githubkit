@@ -8,7 +8,7 @@ from .core import GitHubCore
 from .graphql import GraphQLNamespace
 from .paginator import Paginator
 from .response import Response
-from .typing import RetryDecisionFunc
+from .typing import ProxyTypes, RetryDecisionFunc
 from .versions import RestVersionSwitcher, WebhooksVersionSwitcher
 
 if TYPE_CHECKING:
@@ -77,6 +77,8 @@ class GitHub(GitHubCore[A]):
             follow_redirects: bool = True,
             timeout: Optional[Union[float, httpx.Timeout]] = None,
             ssl_verify: Union[bool, "ssl.SSLContext"] = ...,
+            trust_env: bool = True,
+            proxy: Optional[ProxyTypes] = None,
             cache_strategy: Optional["BaseCacheStrategy"] = None,
             http_cache: bool = True,
             throttler: Optional["BaseThrottler"] = None,
@@ -97,6 +99,8 @@ class GitHub(GitHubCore[A]):
             follow_redirects: bool = True,
             timeout: Optional[Union[float, httpx.Timeout]] = None,
             ssl_verify: Union[bool, "ssl.SSLContext"] = ...,
+            trust_env: bool = True,
+            proxy: Optional[ProxyTypes] = None,
             cache_strategy: Optional["BaseCacheStrategy"] = None,
             http_cache: bool = True,
             throttler: Optional["BaseThrottler"] = None,
@@ -117,6 +121,8 @@ class GitHub(GitHubCore[A]):
             follow_redirects: bool = True,
             timeout: Optional[Union[float, httpx.Timeout]] = None,
             ssl_verify: Union[bool, "ssl.SSLContext"] = ...,
+            trust_env: bool = True,
+            proxy: Optional[ProxyTypes] = None,
             cache_strategy: Optional["BaseCacheStrategy"] = None,
             http_cache: bool = True,
             throttler: Optional["BaseThrottler"] = None,

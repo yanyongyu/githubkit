@@ -30,6 +30,8 @@ H = TypeVar("H", bound=Hashable)
 
 URLTypes: TypeAlias = Union[httpx.URL, str]
 
+ProxyTypes: TypeAlias = Union[httpx.URL, str, httpx.Proxy]
+
 PrimitiveData: TypeAlias = Optional[Union[str, int, float, bool]]
 QueryParamTypes: TypeAlias = Union[
     httpx.QueryParams,
