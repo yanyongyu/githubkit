@@ -9,24 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchBody(GitHubModel):
-    """ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchBody"""
+class ReposOwnerRepoDeploymentsPostResponse202(GitHubModel):
+    """ReposOwnerRepoDeploymentsPostResponse202"""
 
-    status: Literal["approve", "deny"] = Field(
-        description="The review action to perform on the dismissal request."
-    )
-    message: str = Field(
-        description="A message to include with the review. Has a maximum character length of 2048."
-    )
+    message: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchBody)
+model_rebuild(ReposOwnerRepoDeploymentsPostResponse202)
 
-__all__ = ("ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchBody",)
+__all__ = ("ReposOwnerRepoDeploymentsPostResponse202",)

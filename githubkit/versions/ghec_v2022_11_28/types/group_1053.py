@@ -9,79 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Any, Literal
+from typing_extensions import NotRequired, TypeAlias, TypedDict
 
-from .group_0080 import RepositoryRulesetBypassActorType
-from .group_0095 import (
-    RepositoryRuleCreationType,
-    RepositoryRuleDeletionType,
-    RepositoryRuleNonFastForwardType,
-    RepositoryRuleRequiredSignaturesType,
+
+class OrgsOrgReposPostBodyType(TypedDict):
+    """OrgsOrgReposPostBody"""
+
+    name: str
+    description: NotRequired[str]
+    homepage: NotRequired[str]
+    private: NotRequired[bool]
+    visibility: NotRequired[Literal["public", "private", "internal"]]
+    has_issues: NotRequired[bool]
+    has_projects: NotRequired[bool]
+    has_wiki: NotRequired[bool]
+    has_downloads: NotRequired[bool]
+    is_template: NotRequired[bool]
+    team_id: NotRequired[int]
+    auto_init: NotRequired[bool]
+    gitignore_template: NotRequired[str]
+    license_template: NotRequired[str]
+    allow_squash_merge: NotRequired[bool]
+    allow_merge_commit: NotRequired[bool]
+    allow_rebase_merge: NotRequired[bool]
+    allow_auto_merge: NotRequired[bool]
+    delete_branch_on_merge: NotRequired[bool]
+    use_squash_pr_title_as_default: NotRequired[bool]
+    squash_merge_commit_title: NotRequired[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]]
+    squash_merge_commit_message: NotRequired[
+        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
+    ]
+    merge_commit_title: NotRequired[Literal["PR_TITLE", "MERGE_MESSAGE"]]
+    merge_commit_message: NotRequired[Literal["PR_BODY", "PR_TITLE", "BLANK"]]
+    custom_properties: NotRequired[OrgsOrgReposPostBodyPropCustomPropertiesType]
+
+
+OrgsOrgReposPostBodyPropCustomPropertiesType: TypeAlias = dict[str, Any]
+"""OrgsOrgReposPostBodyPropCustomProperties
+
+The custom properties for the new repository. The keys are the custom property
+names, and the values are the corresponding custom property values.
+"""
+
+
+__all__ = (
+    "OrgsOrgReposPostBodyPropCustomPropertiesType",
+    "OrgsOrgReposPostBodyType",
 )
-from .group_0096 import RepositoryRuleUpdateType
-from .group_0098 import RepositoryRuleRequiredLinearHistoryType
-from .group_0099 import RepositoryRuleMergeQueueType
-from .group_0101 import RepositoryRuleRequiredDeploymentsType
-from .group_0104 import RepositoryRulePullRequestType
-from .group_0106 import RepositoryRuleRequiredStatusChecksType
-from .group_0108 import RepositoryRuleCommitMessagePatternType
-from .group_0110 import RepositoryRuleCommitAuthorEmailPatternType
-from .group_0112 import RepositoryRuleCommitterEmailPatternType
-from .group_0114 import RepositoryRuleBranchNamePatternType
-from .group_0116 import RepositoryRuleTagNamePatternType
-from .group_0118 import RepositoryRuleFilePathRestrictionType
-from .group_0120 import RepositoryRuleMaxFilePathLengthType
-from .group_0122 import RepositoryRuleFileExtensionRestrictionType
-from .group_0124 import RepositoryRuleMaxFileSizeType
-from .group_0127 import RepositoryRuleWorkflowsType
-from .group_0129 import RepositoryRuleCodeScanningType
-from .group_0133 import OrgRulesetConditionsOneof0Type
-from .group_0134 import OrgRulesetConditionsOneof1Type
-from .group_0135 import OrgRulesetConditionsOneof2Type
-
-
-class OrgsOrgRulesetsRulesetIdPutBodyType(TypedDict):
-    """OrgsOrgRulesetsRulesetIdPutBody"""
-
-    name: NotRequired[str]
-    target: NotRequired[Literal["branch", "tag", "push", "repository"]]
-    enforcement: NotRequired[Literal["disabled", "active", "evaluate"]]
-    bypass_actors: NotRequired[list[RepositoryRulesetBypassActorType]]
-    conditions: NotRequired[
-        Union[
-            OrgRulesetConditionsOneof0Type,
-            OrgRulesetConditionsOneof1Type,
-            OrgRulesetConditionsOneof2Type,
-        ]
-    ]
-    rules: NotRequired[
-        list[
-            Union[
-                RepositoryRuleCreationType,
-                RepositoryRuleUpdateType,
-                RepositoryRuleDeletionType,
-                RepositoryRuleRequiredLinearHistoryType,
-                RepositoryRuleMergeQueueType,
-                RepositoryRuleRequiredDeploymentsType,
-                RepositoryRuleRequiredSignaturesType,
-                RepositoryRulePullRequestType,
-                RepositoryRuleRequiredStatusChecksType,
-                RepositoryRuleNonFastForwardType,
-                RepositoryRuleCommitMessagePatternType,
-                RepositoryRuleCommitAuthorEmailPatternType,
-                RepositoryRuleCommitterEmailPatternType,
-                RepositoryRuleBranchNamePatternType,
-                RepositoryRuleTagNamePatternType,
-                RepositoryRuleFilePathRestrictionType,
-                RepositoryRuleMaxFilePathLengthType,
-                RepositoryRuleFileExtensionRestrictionType,
-                RepositoryRuleMaxFileSizeType,
-                RepositoryRuleWorkflowsType,
-                RepositoryRuleCodeScanningType,
-            ]
-        ]
-    ]
-
-
-__all__ = ("OrgsOrgRulesetsRulesetIdPutBodyType",)

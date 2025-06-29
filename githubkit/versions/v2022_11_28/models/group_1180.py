@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
@@ -18,53 +18,33 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UserCodespacesPostBodyOneof0(GitHubModel):
-    """UserCodespacesPostBodyOneof0"""
+class UserPatchBody(GitHubModel):
+    """UserPatchBody"""
 
-    repository_id: int = Field(description="Repository id for this codespace")
-    ref: Missing[str] = Field(
-        default=UNSET,
-        description="Git ref (typically a branch name) for this codespace",
+    name: Missing[str] = Field(default=UNSET, description="The new name of the user.")
+    email: Missing[str] = Field(
+        default=UNSET, description="The publicly visible email address of the user."
+    )
+    blog: Missing[str] = Field(
+        default=UNSET, description="The new blog URL of the user."
+    )
+    twitter_username: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The new Twitter username of the user."
+    )
+    company: Missing[str] = Field(
+        default=UNSET, description="The new company of the user."
     )
     location: Missing[str] = Field(
-        default=UNSET,
-        description="The requested location for a new codespace. Best efforts are made to respect this upon creation. Assigned by IP if not provided.",
+        default=UNSET, description="The new location of the user."
     )
-    geo: Missing[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]] = Field(
-        default=UNSET,
-        description="The geographic area for this codespace. If not specified, the value is assigned by IP. This property replaces `location`, which is closing down.",
+    hireable: Missing[bool] = Field(
+        default=UNSET, description="The new hiring availability of the user."
     )
-    client_ip: Missing[str] = Field(
-        default=UNSET,
-        description="IP for location auto-detection when proxying a request",
-    )
-    machine: Missing[str] = Field(
-        default=UNSET, description="Machine type to use for this codespace"
-    )
-    devcontainer_path: Missing[str] = Field(
-        default=UNSET,
-        description="Path to devcontainer.json config to use for this codespace",
-    )
-    multi_repo_permissions_opt_out: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether to authorize requested permissions from devcontainer.json",
-    )
-    working_directory: Missing[str] = Field(
-        default=UNSET, description="Working directory for this codespace"
-    )
-    idle_timeout_minutes: Missing[int] = Field(
-        default=UNSET,
-        description="Time in minutes before codespace stops from inactivity",
-    )
-    display_name: Missing[str] = Field(
-        default=UNSET, description="Display name for this codespace"
-    )
-    retention_period_minutes: Missing[int] = Field(
-        default=UNSET,
-        description="Duration in minutes after codespace has gone idle in which it will be deleted. Must be integer minutes between 0 and 43200 (30 days).",
+    bio: Missing[str] = Field(
+        default=UNSET, description="The new short biography of the user."
     )
 
 
-model_rebuild(UserCodespacesPostBodyOneof0)
+model_rebuild(UserPatchBody)
 
-__all__ = ("UserCodespacesPostBodyOneof0",)
+__all__ = ("UserPatchBody",)

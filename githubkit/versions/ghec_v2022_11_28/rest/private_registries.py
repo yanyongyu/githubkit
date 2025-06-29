@@ -178,6 +178,7 @@ class PrivateRegistriesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         registry_type: Literal["maven_repository", "nuget_feed", "goproxy_server"],
+        url: str,
         username: Missing[Union[str, None]] = UNSET,
         encrypted_value: str,
         key_id: str,
@@ -267,6 +268,7 @@ class PrivateRegistriesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         registry_type: Literal["maven_repository", "nuget_feed", "goproxy_server"],
+        url: str,
         username: Missing[Union[str, None]] = UNSET,
         encrypted_value: str,
         key_id: str,
@@ -583,6 +585,7 @@ class PrivateRegistriesClient:
         registry_type: Missing[
             Literal["maven_repository", "nuget_feed", "goproxy_server"]
         ] = UNSET,
+        url: Missing[str] = UNSET,
         username: Missing[Union[str, None]] = UNSET,
         encrypted_value: Missing[str] = UNSET,
         key_id: Missing[str] = UNSET,
@@ -668,6 +671,7 @@ class PrivateRegistriesClient:
         registry_type: Missing[
             Literal["maven_repository", "nuget_feed", "goproxy_server"]
         ] = UNSET,
+        url: Missing[str] = UNSET,
         username: Missing[Union[str, None]] = UNSET,
         encrypted_value: Missing[str] = UNSET,
         key_id: Missing[str] = UNSET,

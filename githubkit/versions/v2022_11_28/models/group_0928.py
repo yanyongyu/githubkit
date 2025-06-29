@@ -18,12 +18,30 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgHooksHookIdConfigPatchBody(GitHubModel):
-    """OrgsOrgHooksHookIdConfigPatchBody"""
+class OrgsOrgHooksPostBody(GitHubModel):
+    """OrgsOrgHooksPostBody"""
 
-    url: Missing[str] = Field(
-        default=UNSET, description="The URL to which the payloads will be delivered."
+    name: str = Field(description='Must be passed as "web".')
+    config: OrgsOrgHooksPostBodyPropConfig = Field(
+        description="Key/value pairs to provide settings for this webhook."
     )
+    events: Missing[list[str]] = Field(
+        default=UNSET,
+        description='Determines what [events](https://docs.github.com/webhooks/event-payloads) the hook is triggered for. Set to `["*"]` to receive all possible events.',
+    )
+    active: Missing[bool] = Field(
+        default=UNSET,
+        description="Determines if notifications are sent when the webhook is triggered. Set to `true` to send notifications.",
+    )
+
+
+class OrgsOrgHooksPostBodyPropConfig(GitHubModel):
+    """OrgsOrgHooksPostBodyPropConfig
+
+    Key/value pairs to provide settings for this webhook.
+    """
+
+    url: str = Field(description="The URL to which the payloads will be delivered.")
     content_type: Missing[str] = Field(
         default=UNSET,
         description="The media type used to serialize the payloads. Supported values include `json` and `form`. The default is `form`.",
@@ -33,8 +51,14 @@ class OrgsOrgHooksHookIdConfigPatchBody(GitHubModel):
         description="If provided, the `secret` will be used as the `key` to generate the HMAC hex digest value for [delivery signature headers](https://docs.github.com/webhooks/event-payloads/#delivery-headers).",
     )
     insecure_ssl: Missing[Union[str, float]] = Field(default=UNSET)
+    username: Missing[str] = Field(default=UNSET)
+    password: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(OrgsOrgHooksHookIdConfigPatchBody)
+model_rebuild(OrgsOrgHooksPostBody)
+model_rebuild(OrgsOrgHooksPostBodyPropConfig)
 
-__all__ = ("OrgsOrgHooksHookIdConfigPatchBody",)
+__all__ = (
+    "OrgsOrgHooksPostBody",
+    "OrgsOrgHooksPostBodyPropConfig",
+)

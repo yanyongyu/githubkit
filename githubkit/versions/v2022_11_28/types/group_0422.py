@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from datetime import datetime
+from typing_extensions import NotRequired, TypedDict
 
 
 class KeySimpleType(TypedDict):
@@ -20,6 +21,7 @@ class KeySimpleType(TypedDict):
 
     id: int
     key: str
+    created_at: NotRequired[datetime]
 
 
 __all__ = ("KeySimpleType",)

@@ -11,18 +11,27 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0018 import Installation
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class UserInstallationsGetResponse200(GitHubModel):
-    """UserInstallationsGetResponse200"""
+class UserEmailsDeleteBodyOneof0(GitHubModel):
+    """UserEmailsDeleteBodyOneof0
 
-    total_count: int = Field()
-    installations: list[Installation] = Field()
+    Deletes one or more email addresses from your GitHub account. Must contain at
+    least one email address. **Note:** Alternatively, you can pass a single email
+    address or an `array` of emails addresses directly, but we recommend that you
+    pass an object using the `emails` key.
+
+    Examples:
+        {'emails': ['octocat@github.com', 'mona@github.com']}
+    """
+
+    emails: list[str] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
+        description="Email addresses associated with the GitHub user account.",
+    )
 
 
-model_rebuild(UserInstallationsGetResponse200)
+model_rebuild(UserEmailsDeleteBodyOneof0)
 
-__all__ = ("UserInstallationsGetResponse200",)
+__all__ = ("UserEmailsDeleteBodyOneof0",)

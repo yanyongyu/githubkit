@@ -11,14 +11,14 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0202 import JobType
+from .group_0200 import ArtifactType
 
 
-class ReposOwnerRepoActionsRunsRunIdJobsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoActionsRunsRunIdJobsGetResponse200"""
+class ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200"""
 
     total_count: int
-    jobs: list[JobType]
+    artifacts: list[ArtifactType]
 
 
-__all__ = ("ReposOwnerRepoActionsRunsRunIdJobsGetResponse200Type",)
+__all__ = ("ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200Type",)

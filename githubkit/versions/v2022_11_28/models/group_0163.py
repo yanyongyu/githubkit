@@ -18,7 +18,7 @@ class RepositoryRuleMaxFilePathLengthPropParameters(GitHubModel):
     """RepositoryRuleMaxFilePathLengthPropParameters"""
 
     max_file_path_length: int = Field(
-        le=256.0,
+        le=32767.0,
         ge=1.0,
         description="The maximum amount of characters allowed in file paths.",
     )

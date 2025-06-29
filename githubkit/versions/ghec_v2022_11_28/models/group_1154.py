@@ -12,33 +12,17 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0183 import Codespace
 
 
-class ReposOwnerRepoCodespacesDevcontainersGetResponse200(GitHubModel):
-    """ReposOwnerRepoCodespacesDevcontainersGetResponse200"""
+class ReposOwnerRepoCodespacesGetResponse200(GitHubModel):
+    """ReposOwnerRepoCodespacesGetResponse200"""
 
     total_count: int = Field()
-    devcontainers: list[
-        ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems
-    ] = Field()
+    codespaces: list[Codespace] = Field()
 
 
-class ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems(
-    GitHubModel
-):
-    """ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems"""
+model_rebuild(ReposOwnerRepoCodespacesGetResponse200)
 
-    path: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    display_name: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(ReposOwnerRepoCodespacesDevcontainersGetResponse200)
-model_rebuild(ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems)
-
-__all__ = (
-    "ReposOwnerRepoCodespacesDevcontainersGetResponse200",
-    "ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems",
-)
+__all__ = ("ReposOwnerRepoCodespacesGetResponse200",)

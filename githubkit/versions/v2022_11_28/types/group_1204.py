@@ -12,10 +12,15 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class UsersUsernameAttestationsDeleteRequestPostBodyOneof0Type(TypedDict):
-    """UsersUsernameAttestationsDeleteRequestPostBodyOneof0"""
+class UserSocialAccountsDeleteBodyType(TypedDict):
+    """UserSocialAccountsDeleteBody
 
-    subject_digests: list[str]
+    Examples:
+        {'account_urls': ['https://www.linkedin.com/company/github/',
+    'https://twitter.com/github']}
+    """
+
+    account_urls: list[str]
 
 
-__all__ = ("UsersUsernameAttestationsDeleteRequestPostBodyOneof0Type",)
+__all__ = ("UserSocialAccountsDeleteBodyType",)

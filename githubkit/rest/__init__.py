@@ -1307,6 +1307,12 @@ if TYPE_CHECKING:
         OrgsOrgAttestationsBulkListPostResponse200PropPageInfo as OrgsOrgAttestationsBulkListPostResponse200PropPageInfo,
     )
     from githubkit.versions.v2022_11_28.models import (
+        OrgsOrgAttestationsDeleteRequestPostBodyOneof0 as OrgsOrgAttestationsDeleteRequestPostBodyOneof0,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        OrgsOrgAttestationsDeleteRequestPostBodyOneof1 as OrgsOrgAttestationsDeleteRequestPostBodyOneof1,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         OrgsOrgAttestationsSubjectDigestGetResponse200 as OrgsOrgAttestationsSubjectDigestGetResponse200,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -3448,6 +3454,18 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         UserSshSigningKeysPostBody as UserSshSigningKeysPostBody,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        UsersUsernameAttestationsBulkListPostBody as UsersUsernameAttestationsBulkListPostBody,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        UsersUsernameAttestationsBulkListPostResponse200 as UsersUsernameAttestationsBulkListPostResponse200,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigests as UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigests,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        UsersUsernameAttestationsBulkListPostResponse200PropPageInfo as UsersUsernameAttestationsBulkListPostResponse200PropPageInfo,
     )
     from githubkit.versions.v2022_11_28.models import (
         UsersUsernameAttestationsDeleteRequestPostBodyOneof0 as UsersUsernameAttestationsDeleteRequestPostBodyOneof0,
@@ -12762,6 +12780,8 @@ else:
             "OrgsOrgAttestationsBulkListPostResponse200",
             "OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigests",
             "OrgsOrgAttestationsBulkListPostResponse200PropPageInfo",
+            "OrgsOrgAttestationsDeleteRequestPostBodyOneof0",
+            "OrgsOrgAttestationsDeleteRequestPostBodyOneof1",
             "OrgsOrgAttestationsSubjectDigestGetResponse200",
             "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems",
             "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle",
@@ -13146,6 +13166,10 @@ else:
             "UserSocialAccountsPostBody",
             "UserSocialAccountsDeleteBody",
             "UserSshSigningKeysPostBody",
+            "UsersUsernameAttestationsBulkListPostBody",
+            "UsersUsernameAttestationsBulkListPostResponse200",
+            "UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigests",
+            "UsersUsernameAttestationsBulkListPostResponse200PropPageInfo",
             "UsersUsernameAttestationsDeleteRequestPostBodyOneof0",
             "UsersUsernameAttestationsDeleteRequestPostBodyOneof1",
             "UsersUsernameAttestationsSubjectDigestGetResponse200",

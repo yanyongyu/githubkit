@@ -9,42 +9,62 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_1138 import (
-    ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType,
-    ReposOwnerRepoCheckRunsPostBodyPropOutputType,
+
+class ReposOwnerRepoCheckRunsPostBodyPropOutputType(TypedDict):
+    """ReposOwnerRepoCheckRunsPostBodyPropOutput
+
+    Check runs can accept a variety of data in the `output` object, including a
+    `title` and `summary` and can optionally provide descriptive details about the
+    run.
+    """
+
+    title: str
+    summary: str
+    text: NotRequired[str]
+    annotations: NotRequired[
+        list[ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItemsType]
+    ]
+    images: NotRequired[
+        list[ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItemsType]
+    ]
+
+
+class ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItemsType(TypedDict):
+    """ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItems"""
+
+    path: str
+    start_line: int
+    end_line: int
+    start_column: NotRequired[int]
+    end_column: NotRequired[int]
+    annotation_level: Literal["notice", "warning", "failure"]
+    message: str
+    title: NotRequired[str]
+    raw_details: NotRequired[str]
+
+
+class ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItemsType(TypedDict):
+    """ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItems"""
+
+    alt: str
+    image_url: str
+    caption: NotRequired[str]
+
+
+class ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType(TypedDict):
+    """ReposOwnerRepoCheckRunsPostBodyPropActionsItems"""
+
+    label: str
+    description: str
+    identifier: str
+
+
+__all__ = (
+    "ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType",
+    "ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItemsType",
+    "ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItemsType",
+    "ReposOwnerRepoCheckRunsPostBodyPropOutputType",
 )
-
-
-class ReposOwnerRepoCheckRunsPostBodyOneof1Type(TypedDict):
-    """ReposOwnerRepoCheckRunsPostBodyOneof1"""
-
-    name: str
-    head_sha: str
-    details_url: NotRequired[str]
-    external_id: NotRequired[str]
-    status: NotRequired[
-        Literal["queued", "in_progress", "waiting", "requested", "pending"]
-    ]
-    started_at: NotRequired[datetime]
-    conclusion: NotRequired[
-        Literal[
-            "action_required",
-            "cancelled",
-            "failure",
-            "neutral",
-            "success",
-            "skipped",
-            "stale",
-            "timed_out",
-        ]
-    ]
-    completed_at: NotRequired[datetime]
-    output: NotRequired[ReposOwnerRepoCheckRunsPostBodyPropOutputType]
-    actions: NotRequired[list[ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType]]
-
-
-__all__ = ("ReposOwnerRepoCheckRunsPostBodyOneof1Type",)

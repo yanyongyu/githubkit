@@ -17,25 +17,81 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0125 import RepositoryRulesetBypassActor
+from .group_0126 import RepositoryRulesetConditions
+from .group_0137 import (
+    RepositoryRuleCreation,
+    RepositoryRuleDeletion,
+    RepositoryRuleNonFastForward,
+    RepositoryRuleRequiredSignatures,
+)
+from .group_0138 import RepositoryRuleUpdate
+from .group_0140 import RepositoryRuleRequiredLinearHistory
+from .group_0141 import RepositoryRuleMergeQueue
+from .group_0143 import RepositoryRuleRequiredDeployments
+from .group_0146 import RepositoryRulePullRequest
+from .group_0148 import RepositoryRuleRequiredStatusChecks
+from .group_0150 import RepositoryRuleCommitMessagePattern
+from .group_0152 import RepositoryRuleCommitAuthorEmailPattern
+from .group_0154 import RepositoryRuleCommitterEmailPattern
+from .group_0156 import RepositoryRuleBranchNamePattern
+from .group_0158 import RepositoryRuleTagNamePattern
+from .group_0160 import RepositoryRuleFilePathRestriction
+from .group_0162 import RepositoryRuleMaxFilePathLength
+from .group_0164 import RepositoryRuleFileExtensionRestriction
+from .group_0166 import RepositoryRuleMaxFileSize
+from .group_0169 import RepositoryRuleWorkflows
+from .group_0171 import RepositoryRuleCodeScanning
 
-class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBody(GitHubModel):
-    """ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBody"""
 
-    state: Literal["open", "resolved"] = Field(
-        description="Sets the state of the secret scanning alert. You must provide `resolution` when you set the state to `resolved`."
+class ReposOwnerRepoRulesetsPostBody(GitHubModel):
+    """ReposOwnerRepoRulesetsPostBody"""
+
+    name: str = Field(description="The name of the ruleset.")
+    target: Missing[Literal["branch", "tag", "push"]] = Field(
+        default=UNSET, description="The target of the ruleset"
     )
-    resolution: Missing[
-        Union[None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]]
-    ] = Field(
+    enforcement: Literal["disabled", "active", "evaluate"] = Field(
+        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise)."
+    )
+    bypass_actors: Missing[list[RepositoryRulesetBypassActor]] = Field(
         default=UNSET,
-        description="**Required when the `state` is `resolved`.** The reason for resolving the alert.",
+        description="The actors that can bypass the rules in this ruleset",
     )
-    resolution_comment: Missing[Union[str, None]] = Field(
+    conditions: Missing[RepositoryRulesetConditions] = Field(
         default=UNSET,
-        description="An optional comment when closing or reopening an alert. Cannot be updated or deleted.",
+        title="Repository ruleset conditions for ref names",
+        description="Parameters for a repository ruleset ref name condition",
     )
+    rules: Missing[
+        list[
+            Union[
+                RepositoryRuleCreation,
+                RepositoryRuleUpdate,
+                RepositoryRuleDeletion,
+                RepositoryRuleRequiredLinearHistory,
+                RepositoryRuleMergeQueue,
+                RepositoryRuleRequiredDeployments,
+                RepositoryRuleRequiredSignatures,
+                RepositoryRulePullRequest,
+                RepositoryRuleRequiredStatusChecks,
+                RepositoryRuleNonFastForward,
+                RepositoryRuleCommitMessagePattern,
+                RepositoryRuleCommitAuthorEmailPattern,
+                RepositoryRuleCommitterEmailPattern,
+                RepositoryRuleBranchNamePattern,
+                RepositoryRuleTagNamePattern,
+                RepositoryRuleFilePathRestriction,
+                RepositoryRuleMaxFilePathLength,
+                RepositoryRuleFileExtensionRestriction,
+                RepositoryRuleMaxFileSize,
+                RepositoryRuleWorkflows,
+                RepositoryRuleCodeScanning,
+            ]
+        ]
+    ] = Field(default=UNSET, description="An array of rules within the ruleset.")
 
 
-model_rebuild(ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBody)
+model_rebuild(ReposOwnerRepoRulesetsPostBody)
 
-__all__ = ("ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBody",)
+__all__ = ("ReposOwnerRepoRulesetsPostBody",)

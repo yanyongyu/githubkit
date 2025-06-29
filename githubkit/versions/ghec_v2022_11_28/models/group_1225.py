@@ -9,9 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -19,25 +16,21 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoMilestonesMilestoneNumberPatchBody(GitHubModel):
-    """ReposOwnerRepoMilestonesMilestoneNumberPatchBody"""
+class ReposOwnerRepoMergesPostBody(GitHubModel):
+    """ReposOwnerRepoMergesPostBody"""
 
-    title: Missing[str] = Field(
-        default=UNSET, description="The title of the milestone."
+    base: str = Field(
+        description="The name of the base branch that the head will be merged into."
     )
-    state: Missing[Literal["open", "closed"]] = Field(
+    head: str = Field(
+        description="The head to merge. This can be a branch name or a commit SHA1."
+    )
+    commit_message: Missing[str] = Field(
         default=UNSET,
-        description="The state of the milestone. Either `open` or `closed`.",
-    )
-    description: Missing[str] = Field(
-        default=UNSET, description="A description of the milestone."
-    )
-    due_on: Missing[datetime] = Field(
-        default=UNSET,
-        description="The milestone due date. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        description="Commit message to use for the merge commit. If omitted, a default message will be used.",
     )
 
 
-model_rebuild(ReposOwnerRepoMilestonesMilestoneNumberPatchBody)
+model_rebuild(ReposOwnerRepoMergesPostBody)
 
-__all__ = ("ReposOwnerRepoMilestonesMilestoneNumberPatchBody",)
+__all__ = ("ReposOwnerRepoMergesPostBody",)

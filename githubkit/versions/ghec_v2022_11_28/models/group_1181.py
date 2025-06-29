@@ -12,18 +12,32 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0339 import CustomDeploymentRuleApp
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBody(GitHubModel):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBody"""
+class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200(
+    GitHubModel
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetRespons
+    e200
+    """
 
-    encrypted_value: str = Field(
-        pattern="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
-        description="Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get an environment public key](https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#get-an-environment-public-key) endpoint.",
+    total_count: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of custom deployment protection rule integrations available for this environment.",
     )
-    key_id: str = Field(description="ID of the key you used to encrypt the secret.")
+    available_custom_deployment_protection_rule_integrations: Missing[
+        list[CustomDeploymentRuleApp]
+    ] = Field(default=UNSET)
 
 
-model_rebuild(ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBody)
+model_rebuild(
+    ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200
+)
 
-__all__ = ("ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBody",)
+__all__ = (
+    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200",
+)

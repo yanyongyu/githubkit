@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from datetime import datetime
 
 from pydantic import Field
 
@@ -18,52 +18,41 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoCodespacesPostBody(GitHubModel):
-    """ReposOwnerRepoCodespacesPostBody"""
+class ReposOwnerRepoCodeScanningSarifsPostBody(GitHubModel):
+    """ReposOwnerRepoCodeScanningSarifsPostBody"""
 
-    ref: Missing[str] = Field(
+    commit_sha: str = Field(
+        min_length=40,
+        max_length=40,
+        pattern="^[0-9a-fA-F]+$",
+        description="The SHA of the commit to which the analysis you are uploading relates.",
+    )
+    ref: str = Field(
+        pattern="^refs/(heads|tags|pull)/.*$",
+        description="The full Git reference, formatted as `refs/heads/<branch name>`,\n`refs/tags/<tag>`, `refs/pull/<number>/merge`, or `refs/pull/<number>/head`.",
+    )
+    sarif: str = Field(
+        description='A Base64 string representing the SARIF file to upload. You must first compress your SARIF file using [`gzip`](http://www.gnu.org/software/gzip/manual/gzip.html) and then translate the contents of the file into a Base64 encoding string. For more information, see "[SARIF support for code scanning](https://docs.github.com/code-security/secure-coding/sarif-support-for-code-scanning)."'
+    )
+    checkout_uri: Missing[str] = Field(
         default=UNSET,
-        description="Git ref (typically a branch name) for this codespace",
+        description="The base directory used in the analysis, as it appears in the SARIF file.\nThis property is used to convert file paths from absolute to relative, so that alerts can be mapped to their correct location in the repository.",
     )
-    location: Missing[str] = Field(
+    started_at: Missing[datetime] = Field(
         default=UNSET,
-        description="The requested location for a new codespace. Best efforts are made to respect this upon creation. Assigned by IP if not provided.",
+        description="The time that the analysis run began. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
     )
-    geo: Missing[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]] = Field(
+    tool_name: Missing[str] = Field(
         default=UNSET,
-        description="The geographic area for this codespace. If not specified, the value is assigned by IP. This property replaces `location`, which is closing down.",
+        description='The name of the tool used to generate the code scanning analysis. If this parameter is not used, the tool name defaults to "API". If the uploaded SARIF contains a tool GUID, this will be available for filtering using the `tool_guid` parameter of operations such as `GET /repos/{owner}/{repo}/code-scanning/alerts`.',
     )
-    client_ip: Missing[str] = Field(
+    validate_: Missing[bool] = Field(
         default=UNSET,
-        description="IP for location auto-detection when proxying a request",
-    )
-    machine: Missing[str] = Field(
-        default=UNSET, description="Machine type to use for this codespace"
-    )
-    devcontainer_path: Missing[str] = Field(
-        default=UNSET,
-        description="Path to devcontainer.json config to use for this codespace",
-    )
-    multi_repo_permissions_opt_out: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether to authorize requested permissions from devcontainer.json",
-    )
-    working_directory: Missing[str] = Field(
-        default=UNSET, description="Working directory for this codespace"
-    )
-    idle_timeout_minutes: Missing[int] = Field(
-        default=UNSET,
-        description="Time in minutes before codespace stops from inactivity",
-    )
-    display_name: Missing[str] = Field(
-        default=UNSET, description="Display name for this codespace"
-    )
-    retention_period_minutes: Missing[int] = Field(
-        default=UNSET,
-        description="Duration in minutes after codespace has gone idle in which it will be deleted. Must be integer minutes between 0 and 43200 (30 days).",
+        alias="validate",
+        description="Whether the SARIF file will be validated according to the code scanning specifications.\nThis parameter is intended to help integrators ensure that the uploaded SARIF files are correctly rendered by code scanning.",
     )
 
 
-model_rebuild(ReposOwnerRepoCodespacesPostBody)
+model_rebuild(ReposOwnerRepoCodeScanningSarifsPostBody)
 
-__all__ = ("ReposOwnerRepoCodespacesPostBody",)
+__all__ = ("ReposOwnerRepoCodeScanningSarifsPostBody",)
