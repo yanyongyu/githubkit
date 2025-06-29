@@ -76,6 +76,14 @@ The `timeout` option is used to set the request timeout. You can pass a float, `
 
 The `ssl_verify` option is used to customize the SSL certificate verification. By default, githubkit enables the SSL certificate verification. If you want to disable the SSL certificate verification, you can set this option to `False`. Or you can provide a custom ssl context to this option. See [SSL](https://www.python-httpx.org/advanced/ssl/) for more information.
 
+### `trust_env`
+
+If `trust_env` is set to `True`, githubkit (httpx) will look for the environment variables to configure the proxy and SSL certificate verification. By default, this option is set to `True`. If you want to disable this feature, you can set this option to `False`.
+
+### `proxy`
+
+If you want to set a proxy for client programmatically, you can pass a proxy URL to the `proxy` option. See [httpx's proxies documentation](https://www.python-httpx.org/advanced/proxies/) for more information.
+
 ### `cache_strategy`
 
 The `cache_strategy` option defines how to cache the tokens or http responses. You can provide a githubkit built-in cache strategy or a custom one that implements the `BaseCacheStrategy` interface. By default, githubkit uses the `MemCacheStrategy` to cache the data in memory.
