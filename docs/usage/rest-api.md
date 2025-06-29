@@ -253,6 +253,38 @@ repo: FullRepositoryType = resp.json()
     repo_json: str = repo.model_dump_json(by_alias=True, exclude_unset=True)
     ```
 
+## Data Streaming
+
+Some APIs may return large amounts of data, such as downloading the repository archive. In this case, you can use the `stream` parameter to enable streaming mode and iterate over the response data in chunks. For example, to download a repository archive:
+
+=== "Sync"
+
+    ```python hl_lines="4-7"
+    from githubkit import GitHub
+
+    github = GitHub("<your_token_here>")
+    resp = github.rest.repos.download_tarball_archive(
+        "owner", "repo", "branch", stream=True
+    )
+    for chunk in resp.iter_bytes(chunk_size=8192):
+        # do something with the chunk
+        print(f"Received {len(chunk)} bytes")
+    ```
+
+=== "Async"
+
+    ```python hl_lines="4-7"
+    from githubkit import GitHub
+
+    github = GitHub("<your_token_here>")
+    resp = await github.rest.repos.async_download_tarball_archive(
+        "owner", "repo", "branch", stream=True
+    )
+    async for chunk in resp.aiter_bytes(chunk_size=8192):
+        # do something with the chunk
+        print(f"Received {len(chunk)} bytes")
+    ```
+
 ## REST API Versioning
 
 githubkit supports multiple versions of GitHub API, you can switch between versions as follows:
