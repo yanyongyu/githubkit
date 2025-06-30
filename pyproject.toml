@@ -361,6 +361,11 @@ source = "https://raw.githubusercontent.com/github/rest-api-description/main/des
 # git user date format should be date-time
 "/components/schemas/git-user/properties/date" = { format = "date-time" }
 
+# https://github.com/yanyongyu/githubkit/pull/229
+# https://github.com/github/rest-api-description/issues/4995
+# verified_at should be optional when commit not verified
+"/components/schemas/verification/required" = { "<remove>" = ["verified_at"] }
+
 # https://github.com/yanyongyu/githubkit/pull/134
 # blob_url and raw_url may be null when the diff file is submodule's file
 "/components/schemas/diff-entry/properties/blob_url" = { type = [
