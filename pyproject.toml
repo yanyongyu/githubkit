@@ -362,7 +362,7 @@ source = "https://raw.githubusercontent.com/github/rest-api-description/main/des
 "/components/schemas/git-user/properties/date" = { format = "date-time" }
 
 # https://github.com/yanyongyu/githubkit/pull/229
-# [The OpenAPI spec incorrectly lists verified_at as required, but the actual API response](https://github.com/github/rest-api-description/issues/4995)
+# https://github.com/github/rest-api-description/issues/4995
 # verified_at should be optional when commit not verified
 "/components/schemas/verification/required" = { "<remove>" = ["verified_at"] }
 
